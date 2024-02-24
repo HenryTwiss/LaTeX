@@ -1,0 +1,403 @@
+\documentclass[12pt,reqno]{amsart}
+\usepackage{fullpage}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{color}
+\usepackage{textcomp}
+\usepackage{esint}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, pdfstartview=FitH, linkcolor=blue, citecolor=blue, urlcolor=blue]{hyperref}
+\usepackage{mathrsfs}
+%\usepackage{fouriernc,amsmath}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{remark}[theorem]{Remark}
+\numberwithin{equation}{section}
+%\numberwithin{table}{section} 
+%\numberwithin{figure}{section}
+
+% Base TeX has the \mod and \pmod commands; we never use \mod in number theory, and the default spacing of \pmod is terrible. I use this \mod command, which includes parentheses but also has better spacing then \pmod.
+\renewcommand{\mod}[1]{{\ifmmode\text{\rm\ (mod~$#1$)}\else\discretionary{}{}{\hbox{ }}\rm(mod~$#1$)\fi}}
+\newcommand{\ep}{\varepsilon}
+\newcommand{\C}{{\mathbb C}}
+\newcommand{\N}{{\mathbb N}}
+\newcommand{\R}{{\mathbb R}}
+\newcommand{\Z}{{\mathbb Z}}
+\renewcommand{\labelenumi}{(\alph{enumi})}
+\vfuzz=2pt
+
+\begin{document}
+
+\begin{abstract}
+    A important prime number race is Mertens's product race between the partial Euler product $\prod_{p \le x}(1-p^{-1})^{-1}$ and $e^{\gamma}\log(x)$. Recently, the density (in the logarithmic sense) for when the product leads the race has been computed assuming the Riemann hypothesis and the linear independence conjecture. Interestingly, the density is connected to the more classical race between $\pi(x)$ and $\mathrm{Li}(x)$. Moreover, this race is connected to an old conjcture of Erd\H{o}s. This article is an overview of the results given in \cite{Li}, \cite{La}, and \cite{LMP}.
+\end{abstract}
+
+\title{Merten\textquotesingle s product race and the Erd\H{o}s conjecture}
+\author{Sreerupa Bhattacharjee, Henry Twiss}
+\maketitle
+\thispagestyle{empty}
+
+\section{Classical Prime Number Races}
+    For $x \ge 2$, we define
+    \[
+        \mathrm{Li}(x) = \int_{2}^{x}\frac{dt}{\log(t)},
+    \]
+    where $\mathrm{Li}(x)$ is the \textbf{logarithmic integral}. If $\pi(x) = \sum_{p \le x}1$ is the prime counting function, then the prime number theorem (PNT) states that   the logarithmic integral forms a good approximation to $ \pi(x)$:
+    \begin{equation}\label{equ:classical_PNT}
+        \pi(x) \sim \mathrm{Li}(x).
+    \end{equation}
+    Equivalently, the density of the primes up to $x$ behaves like $\mathrm{Li}(x)$. Using integration by parts one can show that $\mathrm{Li}(x) \sim \frac{x}{\log(x)}$, and a more classical version of PNT states that $x \sim x/\log(x)$. However, $\mathrm{Li}(x)$ is a better numerical approximation to $\pi(x)$ than $x/\log(x)$, and as such is used more commonly. Gauss gathered vast amounts of numerical evidence for PNT (see \cite{G}) as early as 1792-93, and finally, in 1896, building on the works on several influential mathematicians, Hadamard and de la Vall\'ee Poussin independently gave proofs of PNT (see \cite{H} and \cite{P}). Since then, PNT  has been one of the crowning achievements of analytic number theory. As an analogue to $\pi(x)$, we define $\pi(x;q;a)$ to be the number of primes up to $x$ that are congruent to $a$ modulo $q$. As every prime $p$ is congruent to $1$ or $3$ modulo $4$, it can be shown that
+    \[
+        \pi(x;4;1) \sim \pi(x;4;3) \sim \frac{1}{2}\frac{x}{\log(x)}.
+    \]
+    Loosely speaking, the densities of the primes congruent to $1$ or $3$ modulo $4$ are equal. That is, half of the primes are congruent to $1$ modulo $4$ and the other half are congruent to $3$ modulo $4$. At this point, it is natural to assume that  $\pi(x;4;1) > \pi(x;4;3)$ and $\pi(x;4;3) > \pi(x;4;1)$ each occur with $.5$ probability. Surprisingly, this is not true as it has been shown that it is much more likely that for a randomly chosen $x$, $\pi(x;4;3) > \pi(x;4;1)$. In other words, there is a bias towards primes being of the form $3 \mod{4}$ than of the form $1 \mod{4}$, and we call this phenomena \textbf{Chebyshev's bias}. Actually, the first time $\pi(x;4;1) > \pi(x;4;3)$ is for $x = 26861$ (see \cite{GM}). To measure the degree of which this bias occurs, we introduce the \textbf{upper}/\textbf{lower} \textbf{logarithmic density} for any set $M \subset \R_{\ge 2}$:
+    \[
+        \overline{\delta}(M) = \limsup_{x \to \infty}\frac{1}{\log(x)}\int_{M \cap [2,x]}\,\frac{dt}{t} \quad \text{and} \quad \underline{\delta}(M) = \liminf_{x \to \infty}\frac{1}{\log(x)}\int_{M \cap [2,x]}\,\frac{dt}{t}.
+    \]
+    If the upper and lower logarithmic densities are equal then we call the common value $\delta(M)$ the \textbf{logarithmic density} of $M$.
+    
+    Chebyshev's bias sparked an important branch of analytic number theory now know as \textbf{prime number races}. Many results about prime number races that we will discuss are conditional upon the following two hypotheses:
+    \begin{itemize}
+        \item Riemann Hypothesis (RH): the hypothesis that all the nontrivial zeros $\zeta(s)$ lie on the line $\Re(s) = 1/2$.
+        \item Linear Independence Conjecture (LIC or LI): the conjecture that the imaginary parts of the nontrivial zeros of $\zeta(s)$ in the upper half plane are linearly independent over the rationals.
+    \end{itemize}
+    
+    For example, under RH and LI, Rubinstein and Sarnak showed that the logarithmic density for those $x$ for which $ \pi(x;4;3) > \pi(x;4;1)$ is approximately $0.9959$ (see \cite{RS}) which is a very strong bias. So we can rephrase Chebyshev's bias as the race between $\pi(x;4;3)$ and $\pi(x;4;1)$ where, conditionally, it turns out that $\pi(x;4;3)$ is leading the race approximately $99.59\%$ of the time. For the reader interested in standard prime number races, see the survey paper \cite{GM} of Granville and Martin. 
+    
+    Another important race is the the race between $\pi(x)$ and $\mathrm{Li}(x)$. We can ask how often $\pi(x)$ leads in the race against $\mathrm{Li}(x)$. The classical result due to Littlewood says that both lead infinitely often (see \cite{L}):
+
+    \begin{theorem}[Littlewood]\label{thm:Littlewood_sign_change_result}
+        $\pi(x)-\mathrm{Li}(x)$ has infinitely many sign changes as $x \to \infty$.
+    \end{theorem}
+
+    Actually, conditional upon RH and LI, the logarithmic density $\delta_{0}$ for the set of $x$ for which $\pi(x)$ leads exists and is positive (see \cite{LMP}). Throughout, we will define $\delta_{0}$ to be \textbf{the logarithmic density for the set of $x$ for which $\pi(x)$ leads the race between $\mathrm{Li}(x)$}. Explicitly,
+    \begin{equation}\label{equ:approx_form_for_delta_zero}
+        \delta_{0} \approx 2.6\times10^{-7},
+    \end{equation}
+    and so $\pi(x)$ is almost never leading. It turns out that this density is intimately connected with Mertens's product race which comprises the main discussion of this paper.
+
+\section{Mertens's Product Race}
+    It was Euler in \cite{E} who first argued that the harmonic series diverges like the logarithm:
+    \[
+        \sum_{n \le x}\frac{1}{n} \sim \log(x).
+    \]
+    Euler also observed the (at the time formal) relationship
+    \begin{equation}\label{equ:formal_Euler_product}
+      \sum_{n \ge 1}\frac{1}{n} = \prod_{p}\left(1-\frac{1}{p}\right)^{-1}. 
+    \end{equation}
+    The precise version of this relationship is more commonly known as the \textbf{Euler product} for the Riemann zeta function. Taking the logarithm of Equation \ref{equ:formal_Euler_product}, Euler argued that the sum of the reciprocals of the primes should diverge like the logarithm of the harmonics and therefore
+    \begin{equation}\label{equ:divergence_of_reciprocials_of_primes}
+        \sum_{p}\frac{1}{p} \sim \log\log(x).
+    \end{equation}
+    Moreover, one might expect that the rate of divergence of the product is similar. Explicitly, for some positive constant $C$, we suspect the following:
+    \begin{equation}\label{equ:divergence_of_product_formula}
+        \prod_{p \le x}\left(1-\frac{1}{p}\right)^{-1} \sim C\log(x).
+    \end{equation}
+    Euler was able to prove the divergence of $\sum_{p}(1/p)$ but only gave a heuristic proofs of Equations \ref{equ:formal_Euler_product} and \ref{equ:divergence_of_product_formula}. Success came in 1847 (see \cite{M}) when Mertens proved three results on the distribution of primes. His second result was a slightly more precise reformulation of Equation \ref{equ:divergence_of_reciprocials_of_primes} and his third result verified Equation \ref{equ:divergence_of_product_formula} with $C = e^{\gamma}$ where $\gamma$ is the Euler--Mascheroni constant. Now Equation \ref{equ:divergence_of_product_formula} only tells us that the relative error between $\prod_{p \le x}(1-p^{-1})^{-1}$ and $e^{\gamma}\log\log(x)$ tends to zero for large $x$. This naturally leads us to wonder how large the exact error
+    \[
+        \prod_{p \le x}\left(1-\frac{1}{p}\right)^{-1}-e^{\gamma}\log(x),
+    \]
+    can be and if we can obtain precise estimates for it. In \cite{RoS}, Rosser and Schoenfeld showed that for $2 \le x \le 10^{8}$ the exact error is positive. Moreover they conjectured that it might be true that the error changes sign infinitely often. In \cite{DP}, Diamond and Pintz proved the conjecture. This means that we can ask interesting questions about the race between $\prod_{p \le x}\left(1-\frac{1}{p}\right)^{-1}$ and $e^{\gamma}\log(x)$. This race is known as the \textbf{Mertens's product race}. As we did with Chebyshev's bias, a natural first question to ask is if upper/lower logarithmic densities exist, and if so, are they equal. Accordingly, let $\mathcal{M}$ be the set of those $x \ge 2$ such that
+    \begin{equation}\label{equ:lead_in_Mertens's_product_race}
+        \prod_{p \le x}\left(1-\frac{1}{p}\right)^{-1} > e^{\gamma}\log(x).
+    \end{equation}
+    That is, $\mathcal{M}$ is the set of $x$ for which the product leads in the race. Under RH, we will sketch the proof of the following result concerning the logarithmic density of $\mathcal{M}$:
+
+    \begin{theorem}\label{thm:prelim_densities_of_Mertens's_product_race}
+        Under RH, $\underline{\delta}(\mathcal{M}) > 0$ and $\overline{\delta}(\mathcal{M}) < 1$.
+    \end{theorem}
+
+    If we also assume LI, then the logarithmic density of $\mathcal{M}$ exists and is related to $\delta_{0}$:
+    \begin{theorem}\label{thm:density_of_Mertens's_product_race}
+        Under RH and LI, the logarithmic density $\delta(\mathcal{M})$ exists and
+        \[
+            \delta(\mathcal{M}) = 1-\delta_{0}.
+        \]
+    \end{theorem}
+
+    Theorem \ref{thm:density_of_Mertens's_product_race} is somewhat more interesting because, under the reasonable belief that RH and LI are true, Mertens's product race is connected to the more classical race between $\pi(x)$ and $\mathrm{Li}(x)$ as given in the introduction.
+
+    The idea behind the proof of Theorem \ref{thm:prelim_densities_of_Mertens's_product_race} is to estimate a normalized form of the logarithmic remainder between the two players in the product race. We define
+    \[
+        E_{M}(x) = \sqrt{x}\log(x)\left(\log\left(\prod_{p \le x}\left(1-\frac{1}{p}\right)^{-1}\right)-\log(e^{\gamma}\log(x))\right).
+    \]
+    The role of $\sqrt{x}\log(x)$ is a normalization factor, as the remaining term is the logarithmic difference between $\prod_{p \le x}\left(1-\frac{1}{p}\right)^{-1}$ and $e^{\gamma}\log(x)$. In particular, $E_{M}(x)$ is positive if and only if $x \in \mathcal{M}$. It now suffices to study the density of those $x$ for which $E_{M}(x)$ is positive. We will achieve this by writing $E_{M}(x)$ as a sum over zeros of $\zeta(s)$ with an error term. This is essentially an ``explicit formula with error'' for $E_{M}(x)$ analogous to the classical explicit formula due to Riemann for $\pi(x)$:
+
+    \begin{proposition}\label{prop:exact_formula_with_error_for_E}
+        For any $T,x \ge 5$,
+        \[
+            E_{M}(x) = 1+\sum_{|\Im(\rho)| \le T}\frac{x^{\rho-\frac{1}{2}}}{\rho-1}+O\left(\frac{1}{\log(x)}\sum_{|\Im(\rho)| \le T}\frac{x^{\Re(\rho)-\frac{1}{2}}}{\Im(\rho)^{2}}+\frac{\sqrt{x}\log((xT)^{2})}{T}+\frac{1}{\log(x)}\right),
+        \]
+        where $\rho$ is a nontrivial zero of $\zeta(s)$.
+    \end{proposition}
+
+    In order to prove Proposition \ref{prop:exact_formula_with_error_for_E}, we will require two estimates. The proofs are standard and details are given in \cite{La}, so we only sketch them:
+
+    \begin{lemma}\label{lem:lemma_1}
+        For any $x \ge 2$,
+        \[
+            \log\left(\prod_{p \le x}\left(1-\frac{1}{p}\right)^{-1}\right) = \sum_{n \le x}\frac{\Lambda(n)}{n\log(n)}+\frac{1}{\sqrt{x}\log(x)}+O\left(\frac{1}{x\log(x)^{2}}\right).
+        \]
+    \end{lemma}
+    \begin{proof}[Sketch of Proof]
+        Expressing $\log(\prod_{p \le x}(1-p^{-1})^{-1})$ as a series,
+        \[
+            \log\left(\prod_{p \le x}\left(1-\frac{1}{p}\right)^{-1}\right) = \sum_{n \le x}\frac{\Lambda(n)}{n\log(n)}+\sum_{\substack{k \ge 2 \\ x^{1/k} < p \le x}}\frac{1}{kp^{k}}.
+        \]
+        The remainder term $\sum\frac{1}{kp^{k}}$ can be estimated by
+        \[
+            \sum_{\sqrt{x} < p \le x}\frac{1}{2p^{2}}+O\left(\frac{1}{x^{2/3}}\right).
+        \]
+        Estimating the sum $\sum\frac{1}{2p^{2}}$ by $\int\frac{d\pi(t)}{t^{2}}$, PNT implies that the total error from $\sum1/2p^{2}+O(1/x^{2/3})$ is no larger than $2/(\sqrt{x}\log(x))+O(1/(\sqrt{x}\log(x)^{2}))$.
+    \end{proof}
+
+    The second lemma is an explicit formula with error for the Dirichlet series of $\Lambda(n)$:
+
+    \begin{lemma}\label{lem:lemma_2}
+        For any $\alpha > 1$ and $x,T \ge 5$,
+        \begin{align*}
+           \sum_{n \le x}\frac{\Lambda(n)}{n^{\alpha}} &= -\frac{\zeta'}{\zeta}(\alpha)+\frac{x^{1-\alpha}}{1-\alpha}-\sum_{|\Im(\rho)| \le T}\frac{x^{\rho-\alpha}}{\rho-\alpha} \\
+           &+O\left(x^{-\alpha}\log(x)+\frac{x^{1-\alpha}}{T}\left(4^{\alpha}+(\log(x))^{2}+\frac{\log(T)^{2}}{\log(x)}\right)+\frac{1}{T}\sum_{n \ge 1}\frac{\Lambda(n)}{n^{\alpha+1/\log(x)}}\right)
+        \end{align*}
+    \end{lemma}
+    \begin{proof}[Sketch of Proof]
+        Choose $T > 0$ and set $c = 1/\log(x)$ and consider the integral
+        \[
+            \frac{1}{2\pi i}\int_{c-iT}^{c+iT}\left(-\frac{\zeta'}{\zeta}(\alpha+s)\right)x^{s}\frac{ds}{s}.
+        \]
+        First apply Perron's formula to obtain the estimate
+        \[
+            \sum_{n \le x}\frac{\Lambda(n)}{n^{\alpha}} = \frac{1}{2\pi i}\int_{c-iT}^{c+iT}\left(-\frac{\zeta'}{\zeta}(\alpha+s)\right)x^{s}\frac{ds}{s}+O\left(\sum_{n \ge 1}\frac{\Lambda(n)}{n^{\alpha+c}}\min\left(1,\frac{1}{T|\log(x/n)|}\right)\right).
+        \]
+        To bound the error term, if $n \le x/2$ or $n \ge 2x$ then $|\log(x/n)| \ge \log(2)$ so that their contribution is
+        \[
+          \ll \frac{1}{T}\sum_{n \ge 1}\frac{\Lambda(n)}{n^{\alpha+c}}.  
+        \]
+        For the remaining terms, if we set $r = n-x$, then we either get a contribution on the size of $x^{-\alpha}\log(x)$ or $|\log(x/n)| \gg |r|/x$ according to whether $|r| \le 1$ or not. Therefore the total contribution is
+        \[
+            \frac{x^{1-\alpha}\log(x)}{T}\sum_{1 \le |r| \le x}\frac{1}{|r|} \ll \frac{x^{1-\alpha}\log(x)^{2}}{T}.
+        \]
+        The error term is then
+        \[
+            O\left(x^{-\alpha}\log(x)+\frac{x^{1-\alpha}\log(x)^{2}}{T}+\frac{1}{T}\sum_{n \ge 1}\frac{\Lambda(n)}{n^{\alpha+c}}\right).
+        \]
+        Now the integral term is estimated. By shifting the line of integration far to the left, say $-N$, and applying the residue theorem we deduce
+        \[
+            \frac{1}{2\pi i}\int_{-N-iT}^{-N+iT}\left(-\frac{\zeta'}{\zeta}(\alpha+s)\right)x^{s}\frac{ds}{s} = -\frac{\zeta'}{\zeta}(\alpha)+\frac{x^{1-\alpha}}{1-\alpha}+\sum_{|\Im(\rho)| \le T}\frac{x^{\rho-\alpha}}{\rho-\alpha}+\sum_{n \le (N-\alpha)/2}\frac{x^{-2n-\alpha}}{2n+\alpha}+I,
+        \]
+        where $\rho$ is a nontrivial zero of $\zeta$ and the corresponding sum is counted with multiplicity according to the order of the zero. The last sum is a sum over trivial zeros. Also, $I$ is the remainder integral corresponding to the other three sides of the rectangle of integration. The sum over the nontrivial zeros is $\ll x^{1-\alpha}\log(T)/T$ and the sum over the trivial zeros is at most $\ll x^{-2-\alpha}$. As for $I$, a routine but careful estimation shows that
+        \[
+            I \ll \frac{x^{1-\alpha}}{T}\left(4^{\alpha}+\log(x)+\frac{\log(T)^{2}}{\log(x)}\right)+\frac{1}{T}\sum_{n \ge 1}\frac{\Lambda(n)}{n^{\alpha+c}}.
+        \]
+        Combining these bounds together finishes the proof.
+    \end{proof}
+
+    With these two lemmas, we can now sketch the proof of  Proposition \ref{prop:exact_formula_with_error_for_E}:
+
+    \begin{proof}[Proof sketch of  Proposition \ref{prop:exact_formula_with_error_for_E}]
+        Fix $\sigma > 1$. By Lemma \ref{lem:lemma_2},
+        \begin{align}
+        \begin{split}\label{equ:Dirichlet_sum_with_E_error}
+            \sum_{n \le x}\frac{\Lambda(n)}{n^{\sigma}\log(n)} &= \int_{\sigma}^{\infty}\sum_{n \le x}\frac{\Lambda(n)}{n^{\alpha}}\,d\alpha \\
+            &= \log\zeta(\sigma)+\int_{\sigma}^{\infty}\frac{x^{1-\alpha}}{1-\alpha}\,d\alpha-\sum_{|\Im(\rho)| \le T}\int_{\sigma}^{\infty}\frac{x^{\rho-\alpha}}{\rho-\alpha}\,d\alpha+E_{1},
+        \end{split}
+        \end{align}
+        where
+        \[
+            E_{1} \ll \frac{1}{T}\left(\log(x)+\frac{\log(T)^{2}}{\log(x)^{2}}\right)+\frac{1}{x}.
+        \]
+        Now it is not hard to see that
+        \begin{equation}\label{equ:limit_sigma_positive}
+            \lim_{\sigma \to 1^{+}}\left(\log\zeta(\sigma)+\int_{\sigma}^{\infty}\frac{x^{1-\alpha}}{\rho-\alpha}\,d\alpha\right) = \log\log(x)+\gamma,
+        \end{equation}
+        where $\gamma$ is the Euler--Mascheroni constant. So taking the limit as $\sigma \to 1^{+}$ in Equation \ref{equ:Dirichlet_sum_with_E_error} and applying Equation \ref{equ:limit_sigma_positive} yields
+        \begin{equation}\label{equ:Dirichlet_sum_with_improved_error}
+            \sum_{n \le x}\frac{\Lambda(n)}{n\log(n)} = \log\log(x)+\gamma-\sum_{|\Im(\rho)| \le T}x^{\rho}\int_{1}^{\infty}\frac{x^{-\alpha}}{\rho-\alpha}\,d\alpha+O\left(\frac{\log(x)}{T}+\frac{\log(T)^{2}}{T\log(x)^{2}}+\frac{1}{x}\right).
+        \end{equation}
+        All that remains is to estimate the remaining integral. By making a change of variables $(\alpha-1)\log(x) \to u$, we find that
+        \[
+            \int_{1}^{\infty}\frac{x^{-\alpha}}{\rho-\alpha}\,d\alpha = \frac{1}{x}\int_{0}^{\infty}\frac{e^{u}}{(\rho-1)\log(x)-u)}.
+        \]
+        Since $|(\rho-1)\log(x)-u| \ge |\Im(\rho)|\log(x)$, for all $u$, it follows that
+        \[
+            \frac{1}{(\rho-1)\log(x)-u)} = \frac{1}{(\rho-1)\log(x)}+O\left(\frac{u}{(\Im(\rho)\log(x))^{2}}\right).
+        \]
+        The estimate above implies
+        \[
+            \int_{1}^{\infty}\frac{x^{-\alpha}}{\rho-\alpha}\,d\alpha = \frac{1}{x\log(x)(\rho-1)}+O\left(\frac{1}{x\log(x)^{2}\Im(\rho)^{2}}\right),
+        \]
+        which upon inserting into Equation \ref{equ:Dirichlet_sum_with_improved_error} and applying \ref{lem:lemma_1} finishes the proof.
+    \end{proof}
+
+    Under RH, Theorem \ref{thm:prelim_densities_of_Mertens's_product_race} will follow from Proposition \ref{prop:exact_formula_with_error_for_E} and some results of Rubinstein and Sarnak:
+
+    \begin{proof}[Proof sketch of Theorem \ref{thm:prelim_densities_of_Mertens's_product_race}]
+        Assume $Y$ to be large and set $x = e^{Y}$. Make the change of variables $y \to \log(t)$, to get 
+        \begin{align}
+            \begin{split}\label{eqn:integral_in_form_of_measure}
+                    \frac{1}{\log(x)} \int_{\mathcal{M}\cap [2,x]}\,\frac{dt}{t} &= \frac{1}{Y}\mathrm{meas}(\{ \log(2) \leq y \leq Y : e^{y} \in \mathcal{M}\})
+                \\ & =  \frac{1}{Y}\mathrm{meas}\{\log(2) \leq y \leq Y : E_M(e^{y})>0\}.
+            \end{split}
+        \end{align}
+       We recall that the Riemann--von Mangoldt formula is given as:
+        \[
+            N(2\pi T) = T\log(T)-T+O(\log(T)),
+        \]
+        where $N(T)$ is the number of zeros of $\zeta(s)$ up to height $T$. Assuming RH, an application of the Riemann--von Mangoldt formula to Proposition \ref{prop:exact_formula_with_error_for_E} gives the refined bound
+        \[
+            E_{M}(e^{y}) = 2\sum_{0 < \gamma_{n} < T}\frac{\sin(\gamma_{n}y)}{\gamma_{n}}+O\left(1+\frac{(y+\log(T))^{2}e^{y/2}}{T}\right),
+        \]
+        where $\gamma_{n}$ is the height of the $n$th zero of the Riemann zeta function. Moreover, $\sum\frac{\sin(\gamma_{n}y)}{\gamma_{n}} \asymp E_{M}(e^{Y})$. Now Rubinstein and Sarnak (see \cite{RS}) proved that for sufficiently large $\lambda$,
+        \[
+            \frac{1}{Y}\mathrm{meas}\left(\left\{2 \le y \le Y:\left|\sum_{0 < \gamma_n < e^{Y}} \frac{\sin(\gamma_{n}y)}{\gamma_{n}}\right| > \lambda \right\}\right) \ge c_{1}\exp(-\exp(-c_{2}\lambda)),
+        \]
+        for some absolute positive constants $c_{1}$ and $c_{2}$. Also, $\sum\frac{\sin(\gamma_{n}y)}{\gamma_{n}}$ alternates in sign. Together with Equation \ref{eqn:integral_in_form_of_measure}, when $\sum\frac{\sin(\gamma_{n}y)}{\gamma_{n}}$ is positive this implies
+        \[
+            \frac{1}{\log(x)} \int_{\mathcal{M}\cap [2,x]}\,\frac{dt}{t} \ge \frac{c_{1}}{2}\exp(-\exp(c_{2}A)),
+        \]
+        for large enough $Y$. From this, $\underline{\delta}(\mathcal{M}) \ge \frac{c_{1}}{2}\exp(-\exp(-c_{2}A)) > 0$. An analogous argument holds when $\sum\frac{\sin(\gamma_{n}y)}{\gamma_{n}}$ is negative to conclude that $\overline{\delta}(\mathcal{M}) \le 1- \frac{c_{1}}{2}\exp(-\exp(-c_{2}A)) < 1$ as desired.
+ \end{proof}
+
+Assuming LI, Theorem \ref{thm:density_of_Mertens's_product_race} will follow. However, we require two results (see \cite{La}) which will be instrumental in proving the theorem:
+
+\begin{proposition}\label{prop:limiting_distribution_exists}
+    Assuming RH, there exists a probability measure $\mu_{m}$ on $\R$ such that 
+    \begin{align*}
+        \lim_{x \to \infty}\frac{1}{\log(x)}\int_{2}^{x}f(E_M(t))\,\frac{dt}{t} = \int_{-\infty}^{\infty}f(t)\,d\mu_{m}.
+    \end{align*} 
+for all bounded functions on $\R$.
+\end{proposition}
+
+\begin{proposition}\label{prop:Z_random_variable_distribution}
+    Assume RH and LI and let $X(\gamma_{n})$ be a sequence of independent random variables, indexed by the positive imaginary part of the non-trivial zeros of $\zeta(s)$, that are uniformly distributed on the unit circle. Then $\mu_M$ is the distribution of the random variable
+    \[
+        Z = 1+2\Re\left(\sum_{\gamma_{n} >0} \frac{X(\gamma_{n})}{\sqrt{\frac{1}{4}+ \gamma_{n}^{2}}}\right).
+    \]
+\end{proposition} 
+
+A sufficient understanding of $\mu_{m}$ and $Z$ is enough to prove Theorem \ref{thm:density_of_Mertens's_product_race}:
+
+\begin{proof}[Proof sketch of Theorem \ref{thm:density_of_Mertens's_product_race}]
+    Since $Z$ is the sum of continuous random variables, then by proposition \ref{prop:Z_random_variable_distribution}, the probability distribution $\mu_M$ is absolutely continuous. Now let $\epsilon >0$ be given, and let $f_{1}(x)\colon\R \to [0,1]$ be a continuous function such that $f_{1} \equiv 1$ for $x \ge 1$ and $f_{1} \equiv 0$ for $x < \epsilon$. Then by Propositions \ref{prop:limiting_distribution_exists} and \ref{prop:Z_random_variable_distribution}, 
+    \[
+        \overline{\delta}(\mathcal{M}) \le \lim_{x \to \infty}\frac{1}{\log(x)}\int_{2}^{x}f_{1}(E_{M}(t))\,\frac{dt}{t} = \int_{-\infty}^{\infty}f_{1}(t)\,d\mu_{M} \le \mu_{M}(-\epsilon,\infty) = \mathbb{P}(Z > 0)+O(\epsilon),
+    \]
+    where the last equality follows by absolute continuity. Similarly, let $f_{2}(x)\colon\R \to [0,1]$ be a continuous function such that $f_{2} \equiv 1$ for $x \ge \epsilon$ and $f_{2} \equiv 0$ for $x \le 0$. In just the same way, we obtain
+    \[
+        \underline{\delta}(\mathcal{M}) \ge \lim_{x \to \infty}\frac{1}{\log(x)}\int_{2}^{x}f_{2}(E_{M}(t))\,\frac{dt}{t} = \int_{-\infty}^{\infty}f_{2}(t)\,d\mu_{M} \le \mu_{M}(\epsilon,\infty) = \mathbb{P}(Z > 0)+O(\epsilon),
+    \]
+    Letting $\epsilon \to 0$, these two bounds imply $\delta(\mathcal{M})$ exists and $\delta(\mathcal{M}) = \mathbb{P}(Z > 0)$. From work of Rubinstein and Sarnak \cite{RS}, it follows easily that $\mathbb{P}(Z > 0) = 1-\delta_{0}$.
+\end{proof}
+
+\section{The Erd\H{o}s Conjecture}
+The Mertens's product race has recently been used to prove an old conjecture of Erd\'os about primes. The following serves as a small overview of the progress surrounding the conjecture and its resolution as well as an application of the Mertens's product race.
+
+A set $A$ of positive integers is said to be \textbf{primitive} if no member divides another. The prototypical example of a primitive set is the set of primes $\mathcal{P}$ (or any of its subsets). We can consider sums built from primitive sets such as
+\[
+    \sum_{a \in A}\frac{1}{a} \quad \text{or} \quad \sum_{a \in A}\frac{1}{a\log(a)}.
+\]
+Unfortunately, the first sum need not converge. For example, if we consider $\mathcal{P}$, then Equation \ref{equ:divergence_of_reciprocials_of_primes} tells us that the first sum diverges. It turns out that inserting the weight factor $\frac{1}{\log(a)}$ is enough to guarantee convergence. Accordingly, let $f(A) = \sum1/(a\log(a))$ where we set $f(a) = 1/(a\log(a))$ in accordance if $A$ is a singleton set. In 1935 Erd\H{o}s proved that $f(A)$ is universally bounded over all primitive sets $A$. A natural next question to ask, is if this universal bound is obtained for some primitive set. That is, does $f(A)$ admit a maximum. It's not too hard to guess what the answer $A$ \textit{should} be. Indeed, if $a$ is composite its contribution to $f(A)$ is less than any prime factor $p$ of $a$, so a natural guess is that this maximum would be obtained for the primitive set $\mathcal{P}$. Accordingly, \textbf{Erd\H{o}s's conjecture} is the following:
+
+\begin{conjecture}[The Erd\H{o}s conjecture]\label{conj:Erdos_conjecture}
+    For any primitive set $A$, we have $f(A) \le f(\mathcal{P})$.
+\end{conjecture}
+
+This conjecture has been resolved quite recently and the proof is due to Lichtman in \cite{Li}. Before recounting his argument, we discuss some historical progress and the connection to the Mertens's product race. The Mertens's product race is concerned with the limiting distribution of those real $x \ge 2$ for which Equation \ref{equ:lead_in_Mertens's_product_race} holds or equivalently for which $E_{M}(x) > 0$. Nevertheless, it is still an interesting to know for which primes $p$, we have $E_{M}(p) > 0$. Such primes are said to be \textbf{Mertens}. To connect this to the Erd\H{o}s conjecture we need to understand two pieces of machinery: another type of prime and another type of density. For the first piece of machinery, as in \cite{LMP}, a prime $p$ is said to be \textbf{Erd\H{o}s strong} if $f(A) \le f(p)$ for all primitive sets $A$ such that every $a \in A$ has $p$ as its least prime factor. It is easy to see that if every prime is Erd\H{o}s strong then Erd\H{o}s's conjecture holds by partitioning $A$ into subsets
+\[
+        A_{p} = \{a \in A:\text{ $a$ has least prime factor $p$}\}.
+\]
+This raises the question as to which primes are Erd\H{o}s strong. Now a sufficient condition for $p$ to be Erd\H{o}s strong is
+\[
+    e^{\gamma}\prod_{q < p}\left(1-\frac{1}{q}\right) \le \frac{1}{\log(p)},
+\]
+where $q$ runs over primes (see \cite{Li}). From this it can be deduced that every Mertens prime is Erd\H{o}s strong (see \cite{LP}). As for the second piece of machinery, for any subset $M \subset \R_{\ge 2}$, we define the \textbf{logarithmic density relative to the prime numbers} $\delta'(M)$ to be
+\[
+    \delta'(M) = \lim_{x \to \infty}\frac{1}{\log\log(x)}\sum_{\substack{p \le x \\ p \in M}}\frac{1}{p},
+\]
+provided this limit exists. The \textbf{upper/lower relative} densities are defined according to the limit supremum and limit infimum. The idea behind these relative densities is that we are only recording the logarithmic density of the primes inside $M$. The normalizing factor $1/\log\log(x)$ is to account for the rate of divergence in Equation \ref{equ:divergence_of_reciprocials_of_primes}. 
+
+Now we can discuss earlier partial progress. In 1991, Zhang in \cite{Z} proved the Erd\H{o}s conjecture for any primitive set $A$ such that no $a \in A$ had more than four prime factors (counted with multiplicity). Cohen in \cite{C} computed $f(\mathcal{P})$:
+\[
+    f(\mathcal{P}) = \sum_{p}\frac{1}{p\log(p)} = 1.6366....
+\]
+and some subsequent bounds were found for $f(A)$ in later years. Major progress came in 2019 (see \cite{LP}) when it was shown that the first $10^{8}$ odd primes are Mertens and that the Mertens primes have large lower logarithmic density:
+
+\begin{theorem}\label{thm:Lots_of_Mertens's_primes}
+    The first $10^{8}$ odd primes are Mertens. Moreover, under RH and LI the Mertens primes have relative lower logarithmic density larger than $0.995$. 
+\end{theorem}
+
+This is good progress since it means that lots of primes are Erd\H{o}s strong. Unfortunately, this is not sufficient enough to give a proof of the Erd\H{o}s conjecture since not every prime is Mertens. For example $2$ is not a Mertens prime as $2 > e^{\gamma}\log(2) \approx 0.5361$.
+
+Now for the resolution of the Erd\H{o}s conjecture. In 2019, Lichtman, Martin, and Pomerance provided the following improvement to  Theorem \ref{thm:Lots_of_Mertens's_primes} by applying results about the Mertens's race. Their result is the following:
+
+\begin{theorem}
+   Assuming RH and LI, the Mertens primes have relative logarithmic density $1-\delta_{0}$.
+\end{theorem}
+
+ In 2022 Lichtman finished off the proof of the Erd\H{o}s conjecture (see \cite{Li}). He showed this by proving that every odd primes is Erd\H{o}s strong using the following result:
+ 
+\begin{theorem}\label{thm:odd_primes_are_Erdos_strong}
+    For any primitive set $A$ and any prime $p > 2$, we have $f(A_{p}) \le f(\mathcal{P})$.
+\end{theorem}
+
+The idea behind the proof of Theorem \ref{thm:odd_primes_are_Erdos_strong} is technical improvement upon the main results in \cite{LP}. The main idea is the following. Let $A$ be a primitive set. If $a \ge 1$ is any integer, let $P(a)$ denote the largest prime factor of $a$. For example, $P(p) = p$ for any prime $p$. Improvements for bounding $f(A)$ can be made by showing that $A$ cannot contain too many elements $a$ with $P(a)$ is slightly less than $a$. The exceptional case is when $A$ is $\mathcal{P}$, but then $P(p)$ is maximized for all elements of $A$. It is then not too hard to deal with the prime $2$ separately and conclude from Theorem \ref{thm:odd_primes_are_Erdos_strong} that Erd\H{o}s's conjecture is true. Surprisingly, while it is known that $2$ is not Mertens's, it remains open whether $2$ is Erd\H{o}s strong. 
+
+\begin{thebibliography}{99}
+    \bibitem{C}
+    Cohen, H. (1999). High precision computation of Hardy-Littlewood constants. preprint available on the author’s web page.
+
+    \bibitem{DP}
+    Diamond, H. G., \& Pintz, J. (2009). Oscillation of Mertens’ product formula. Journal de théorie des nombres de Bordeaux, 21(3), 523-533.
+
+    \bibitem{Li}
+    Duker Lichtman, J. (2022). A proof of the Erdős primitive set conjecture. arXiv e-prints, arXiv-2202.
+
+    \bibitem{G}
+    Gauss, C. F. (1872). Tafel der Frequenz der Primzahlen. Werke, 2, 436-442.
+
+    \bibitem{GM}
+    Granville, A., \& Martin, G. (2006). Prime number races. The American Mathematical Monthly, 113(1), 1-33.
+
+    \bibitem{H}
+    Hadamard, J. (1896). Sur la distribution des zéros de la fonction $\zeta (s) $ et ses conséquences arithmétiques. Bulletin de la Societé mathematique de France, 24, 199-220.
+
+    \bibitem{La}
+    Lamzouri, Y. (2016). A bias in Mertens’ product formula. International Journal of Number Theory, 12(01), 97-109.
+
+    \bibitem{E}
+    Leonhard Euler. Variae observationes circa series infinitas. Commentarii academiae scientiarum imperialis Petropolitanae, 9(1737):160–188, 1737.
+
+    \bibitem{LMP}
+    Lichtman, J., Martin, G., \& Pomerance, C. (2019). Primes in prime number races. Proceedings of the American Mathematical Society, 147(9), 3743-3757.
+
+    \bibitem{LP}
+    Lichtman, J., \& Pomerance, C. (2019). The Erdős conjecture for primitive sets. Proceedings of the American Mathematical Society, Series B, 6(1), 1-14.
+
+    \bibitem{L}
+    Littlewood, J. E. (1914). Sur la distribution des nombres premiers. CR Acad. Sci. Paris, 158(1869), 1872.
+
+    \bibitem{M}
+    Mertens, F. (1874). Ein Beitrag zur analytischen Zahlentheorie.
+
+    \bibitem{P}
+    Poussin, C. J. D. L. V. (1897). Recherches analytiques sur la théorie des nombres premiers (Vol. 1). Hayez.
+
+    \bibitem{RoS}
+    Rosser, J. B., \& Schoenfeld, L. (1962). Approximate formulas for some functions of prime numbers. Illinois Journal of Mathematics, 6(1), 64-94.
+
+    \bibitem{RS}
+    Rubinstein, M., \& Sarnak, P. (1994). Chebyshev's bias. Experimental Mathematics, 3(3), 173-197.
+
+    \bibitem{Z}
+    Zhang, Z. (1991). On a conjecture of Erd\H{o}s on the sum $\sum_{p \le n}1/(p\log p)$. Journal of Number Theory, 39(1), 14-17.
+\end{thebibliography}
+
+\end{document}

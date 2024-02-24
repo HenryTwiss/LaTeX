@@ -1,0 +1,146 @@
+\chapter{Hypotheses of \texorpdfstring{$L$}{L}-functions}
+  In this chapter we discuss two hypotheses of $L$-functions. The first is the more important open question in number theory and perhapse all of mathematics: the Riemann hypothesis. It discusses the distribution of the zeros of the Riemann zeta function. After surveying the Riemann hypothesis we introduce its weaker cousin the Lindel\"of hypothesis which is about the growth rate of the Riemann zeta function along the crtitical line. In our survey of the Lindel\"of hypothesis we also discuss the classical convexity argument. Analogs of these hypotheses to other $L$-functions are also mentioned.
+  \section{The Riemann Hypothesis \& Non-trivial Zeros}
+      Along with non-vanishing results, it turns out that the zeros of $L$-functions are also extremely important but this requires some level of discussion to be convincing. Let's start with our prototypical $L$-function the Riemann zeta function. We would like to understand its zeros. Reall that for $\Re(s) > 1$, $\z(s)$ admits an Euler product:
+      \[
+        \z(s) = \prod_{p}(1-p^{-s})^{-1}.
+      \]
+      This product vanishes if and only if one of its factors are zero. But in the region $\Re(s) > 1$, $(1-p^{-s})^{-1} \neq 0$ so $\z(s)$ has no zeros in this region. The functional equation will allow us to understand the zeros in the region $\Re(s) < 0$. Indeed, we can rewrite the functional equation for $\z(s)$ as
+      \begin{equation}\label{equ:fun_eq_zeta_for_zero_type}
+        \z(1-s) = \pi^{\frac{1}{2}-s}\frac{\G\left(\frac{s}{2}\right)}{\G\left(\frac{1-s}{2}\right)}\z(s).
+      \end{equation}
+      We want to understand when the right-hand side of \cref{equ:fun_eq_zeta_for_zero_type} vanishes in the region $\Re(s) \ge 1$. We just showed that $\z(s)$ has no zeros in the region $\Re(s) > 1$ and by \cref{thm:non-vanishing_of_zeta_on_Re(s)=1} this extends to $\Re(s) \ge 1$. So if there is a zero it comes from either of the gamma factors. This happens exactly at poles of $\G\left(\frac{1-s}{2}\right)$ for $\Re(s) \ge 1$ which by \cref{thm:continuation_of_gamma_function} are all simple and occur at $s = 1+2n$ for any integer $n \ge 0$. But at $s = 0$, $\G\left(\frac{s}{2}\right)$ has a simple pole and this cancels the simple zero of the other gamma factor. In terms of the region $\Re(s) \le 0$, $\z(s)$ has simple zeros at $s = -2n$ for $n \ge 1$. So we have shown that $\z(s)$ has simple zeros at negative even integers.
+
+      Let $\chi$ be a primitive Dirichlet character of modulus $q > 1$. We can repeat the same procedure for $L(s,\chi)$. Indeed, for $\Re(s) > 1$, $L(s,\chi)$ has the Euler product
+      \[
+        L(s,\chi) = \prod_{p}(1-\chi(p)p^{-s})^{-1},
+      \]
+      and this product vanishes if and only if one of the factors are zero. But for $\Re(s) > 1$, $(1-\chi(p)p^{-s})^{-1} \neq 0$ so $L(s,\chi)$ has no zeros in this region. We can rewrite the functional equation for $L(s,\chi)$ as
+      \begin{equation}\label{equ:fun_eq_Dirichlet_for_zero_type}
+        L(1-s,\chi) = \frac{i^{\mf{a}}}{\e_{\chi}}q^{s-\frac{1}{2}}\pi^{s-\frac{1}{2}}\frac{\G\left(\frac{s+\mf{a}}{2}\right)}{\G\left(\frac{(1-s)+\mf{a}}{2}\right)}L(s,\cchi).
+      \end{equation}
+      Just as for $\z(s)$, we want to understand when the right-hand side of \cref{equ:fun_eq_Dirichlet_for_zero_type} vanishes for $\Re(s) \ge 1$. Now $L(s,\chi)$ and $L(s,\cchi)$ don't have zeros in the region $\Re(s) > 1$ and by \cref{thm:non-vanishing_of_Dirichlet_on_Re(s)=1} this extends to $\Re(s) \ge 1$. Hence the right-hand side is zero if and only if one of the gamma factors vanish. The zeros come from the poles of $\G\left(\frac{(1-s)+\mf{a}}{2}\right)$ for $\Re(s) \ge 1$. By \cref{thm:continuation_of_gamma_function} these are all simple and occur at $s = 1+\mf{a}+2n$ for $n \ge 0$. In terms of the region $\Re(s) \le 0$, $L(s,\chi)$ has simple zeros at $s = -2n$ for $n \ge 0$ if $\chi$ is even and at $s = -(2n+1)$ for $n \ge 0$ if $\chi$ is odd. We can state our results compactly as follows: $L(s,\chi)$ has simple zeros at non-positive even integers if $\chi$ is even and at negative odd integers if $\chi$ is odd. In particular, if $\chi$ is even there is a zero at $s = 0$ (a boundary point of the critical strip).
+
+      For a general Selberg class $L$-function $L(s)$, the situation is analogous. From the Euler product, $L(s)$ will have no zeros in the region $\Re(s) > 1$. The functional equation then shows that the zeros $L(s)$ in the region $\Re(s) < 0$ come from the the poles of the gamma functions. Some additional care is needed at the boundary lines $\Re(s) = 0,1$. The zeros of $L(s)$ outside or at the boundary of the critial strip are called \textbf{trivial zeros}\index{trivial zeros}. The zeros of $L(s)$ inside the critical strip are called \textbf{non-trivial zeros}\index{non-trivial zeros}.
+
+      Returning to the Riemann zeta function, let $\rho$ be a non-trivial zero. Inside the critial strip the gamma factors in the functional equation are holomorphic and non-vanishing. So the functional equation implies $1-\rho$ is also a non-trivial zero. Actually, we can do slighly better. Since $\z(s)$ takes real values for real $s > 1$ ($\z(s)$ is defined by a Dirichlet series there), the Schwarz reflection principal implies $\z(\conj{s}) = \conj{\z(s)}$ and that $\z(s)$ takes real values on the entire real axis (save for the pole). So $\conj{\rho}$ and $1-\conj{\rho}$ are non-trivial zeros too and therefore the non-trivial zeros of $z(s)$ come in sets of four:
+      \[
+        \rho, \quad \conj{\rho}, \quad 1-\rho, \quad \text{and} \quad 1-\conj{\rho}.
+      \]
+      Almost the same type of symmetry holds for $L(s,\chi)$. Let $\rho$ be a non-trivial zero of $L(s,\chi)$. Note that $\conj{L(s,\chi)} = L(\conj{s},\cchi)$ by the identity theorem and that this equality holds for $\Re(s) > 1$ (where $L(s,\chi)$ is defined by a Dirichlet series). This implies $\conj{\rho}$ is a non-trivial zero of $L(s,\cchi)$. Inside the critical strip, the gamma factors in the functional equation are non-zero and holomorphic so we conclude that $1-\conj{\rho}$ is also a non-trivial zero of $L(s,\chi)$. Unfortunately, if $\chi$ is complex $L(s,\chi)$ does not necessarily take real values for real $s > 1$ and so we cannot conclude that $\conj{\rho}$ is a non-trivial zero. However, if $\chi$ is quadratic then it only takes real values and so $\conj{\rho}$ will also be a non-trivial zero. In the case of $\z(s)$, the Riemann hypothesis says that this symmetry of zeros is as simple as it could possibly be:
+
+      \begin{theorem}[Riemann hypothesis]
+        All of the non-trivial zeros of $\z(s)$ lie on the line $\Re(s) = \frac{1}{2}$.
+      \end{theorem}
+
+      This is one of, if not the most, famous and important open problems in mathematics. It has resisted all attempts of a proof by every great mathematician over the last century and a half. The Clay Mathematics Institute has also named it one of the millennium pize problems which means that anyone who can give a proof (or disproof) will recieve a \$1 million cash prize. Riemann's original motivation for the conjecture came from looking for an explicit formula for $\pi(x)$ which is the purpose of his 1859 manuscript (see \cite{riemann1859ueber}). This explicit formula for $\pi(x)$ involves the non-trivial zeros of Riemann zeta function. Riemann computed a few of them, found that they were on the critical line, and conjectured that it is very likely that all of them lie on the critical line.
+
+      The Riemann hypothesis is important because, if true, it tells us a lot of information about how the primes are distributed among the positive integers. In particular, Koch in 1901 showed that the Riemann hypothesis implies an asymptotic estimate for the exact error between $\pi(x)$ and $\Li(x)$ (see \cite{von1901distribution}):
+
+      \begin{proposition}
+        Under the assumption of the Riemann hypothesis,
+        \[
+        \pi(x) = \Li(x)+O(\sqrt{x}\log(x)).
+        \]
+      \end{proposition}
+
+      The Riemann hypothesis also implies the Lindel\"of hypothesis although it is not an immediate consequence. In 1919 Backlund showed the following equivalence for the Lindel\"of hypothesis (see \cite{backlund1919beziehung}):
+
+      \begin{proposition}\label{prop:Lindelof_hypothesis_equivalence}
+      The Lindel\"of hypothesis is equivalent to the following statement: Fix an $\e > 0$, a real $T$, and set
+      \[
+      Z_{\e,T} = \left\{s \in \C : \z(s) = 0, \Re(s) \ge \frac{1}{2}+\e, T \le \Im(s) \le T+1 \right\}.
+      \]
+      Then
+      \[
+      |Z_{\e,T}| = o(\log(T)).
+      \]
+      \end{proposition}
+
+      If the Riemann hypothesis is true, then \cref{prop:Lindelof_hypothesis_equivalence} is immediate because $Z_{\e,T}$ would be empty for any $\e > 0$ and all $T$. Therefore the Riemann hypothesis implies the Lindel\"of hypothesis. There are more interesting implications and consequences but we will not discuss them here. Instead, we would like to make an interesting comment about \cref{thm:Littlewood_Li_approximation_theorem}. Littlewood's original proof (see \cite{littlewood1914distribution}) is actually independent of the truth of the Riemann hypothesis. Assuming the Riemann hypothesis is true, he deduces a contradiction if $\pi-\Li(x)$ changes sign finitely many times. Then assuming the Riemann hypothesis is false, he again deduces a contradiction if $\pi-\Li(x)$ changes sign finitely many times.
+
+      Lastly, there is also the \textbf{Selberg class Riemann hypothesis}\index{Selberg class Riemann hypothesis} which is an analogous conjecture for Selberg class $L$-functions:
+
+      \begin{conjecture}[Selberg class Riemann hypothesis]
+        For any Selberg class $L$-function $L(s)$, all of the non-trivial zeros of $L(s)$ lie on the line $\Re(s) = \frac{1}{2}$.
+      \end{conjecture}
+
+      The Selberg class Riemann hypothesis also implies other interesting results, but we will not discuss them here.
+  \section{The Lindel\"of Hypothesis \& Convexity Arguments}
+    A slightly weaker conjectured result than the Riemann hypothesis is the Lindel\"of hypothesis. In 1908 Lindel\"of made a conjecture which is about the rate of growth of the zeta function on the critical line (see \cite{lindelof1908quelques}). This is now known as the \textbf{classical Lindel\"of hypothesis}\index{classical Lindel\"of hypothesis}:
+
+    \begin{conjecture}[Classical Lindel\"of hypothesis]
+      For any $\e > 0$,
+      \[
+        \z\left(\frac{1}{2}+it\right) \ll_{\e} t^{\e}.
+      \]
+    \end{conjecture}
+
+    This conjecture still remains wide open today, but over the years there have been some advances toward proving this conjecture. These advances go by the name of subconvexity arguments. This motivates the question: what is a convexity argument anways? A \textbf{convexity argument}\index{convexity argument} is one where estimates about the growth of an $L$-function on the critical line is dervied from \textbf{trivial bounds}\index{trivial bounds}, that is bounds given by absolute convergence, via the functional equation. Usually this is achieved by methods of complex analysis and Sirling's formula.
+
+    We will demonstrate a standard convexity argument, also referred to as the \textbf{Lindel\"of convexity argument}\index{Lindel\"of convexity argument} for the Riemann zeta function. Let $s = \s+it$. The first step is to guarantee the Phragm\'en-Lindel\"of convexity principal in a region containing the critical strip. The zeta function being order $1$ implies this immediately (see \cref{append:The_Phragmen_Lindelof_Convexity_principal}). Therefore, we are reduced to estimating the growth of $\z(s,f)$ for $\s$ to the left of $0$ and to the right of $1$. That is, just outside the edges of the critical strip. The right edge is easy. Letting $\e > 0$ and setting $\s = 1+\e$, we have that the zeta function is absolutely convergent in this region giving the trivial bound
+    \begin{equation}\label{equ:convexity_bound_1}
+      \z((1+\e)+it,f) \ll_{\e} 1.
+    \end{equation}
+    The left edge is only slightly more difficult. The functional equation implies
+    \begin{equation}\label{equ:convexity_bound_left_edge}
+      |\z(s,f)| \le \left|\frac{\g(1-s,f)}{\g(s,f)}\right||\z(1-s,f)|.
+    \end{equation}
+    We now require an estimate for the ratio of the gamma factors. We will get this estimate from \cref{equ:weaker_Stirling_formula}. Since $s \sim_{\s} t$, we can replace $s$ with $t$, except for the exponenets, provided we let the implicit constant depend upon $\s$. For the exponents, we can reaplce $s$ with $\s$ because any complex number raised to a purely imaginary power has absolute value $1$. So, our simplified estimate is
+    \[
+      \G(s) = \sqrt{2\pi}t^{\s-\frac{1}{2}}e^{-\s}(1+O_{\s}(1)),
+    \]
+    which is equivaent to
+    \[
+      \frac{1}{\G(s)} = \frac{1}{\sqrt{2\pi}}t^{\frac{1}{2}-\s}e^{\s}(1+O_{\s}(1)),
+    \]
+    In terms of Vinogradov's symbol the above estimates imply
+    \[
+      \G(s) \ll_{\s} t^{\s-\frac{1}{2}}e^{-\s} \ll_{\s} t^{\s-\frac{1}{2}} \quad \text{and} \quad \frac{1}{\G(s)} \ll_{\s} t^{\frac{1}{2}-\s}e^{\s} \ll_{\s} t^{\frac{1}{2}-\s}.
+    \]
+    We can then estimate the ratio of gamma factors as 
+    \begin{equation}\label{equ:ratio_of_gamma_estimate}
+      \frac{\G(1-s)}{\G(s)} \ll_{\s} t^{1-2\s}.
+    \end{equation}
+
+    From \cref{equ:ratio_of_gamma_estimate} it follows that
+    \[
+      \frac{\g(1-s,f)}{\g(s,f)} \ll_{\s} t^{\frac{1-2\s}{2}}.
+    \]
+    Let $\e > 0$ and set $\s = -\e$. Then plugging our estimate above into \cref{equ:convexity_bound_left_edge} and using the trivial bound $|\z((1+\e)+it)| \ll_{\e} 1$ gives
+    \begin{equation}\label{equ:convexity_bound_2}
+      \z(-\e+it) \ll_{\e} t^{\frac{1+2\e}{2}}.
+    \end{equation}
+    By the Phragm\'en-Lindel\"of convexity principal, \cref{equ:convexity_bound_1,equ:convexity_bound_2} imply the \textbf{convexity bound}\index{convexity bound}
+    \[
+      \z(s) \ll_{\s,\e} t^{\frac{1+\e-\s}{2}},
+    \]
+    for $-\e \le \s \le 1+\e$. At the critical line, the convexity bound becomes
+    \begin{equation}\label{equ:convexity_bound_zeta_function}
+      \z\left(\frac{1}{2}+it\right) \ll_{\e} t^{\frac{1}{4}+\e}.
+    \end{equation}
+    So the classical Lindel\"of hypothesis says that the exponenet $\frac{1}{4}+\e$ can be improved to be $\e$. For a general Selberg class $L$-function, the Lindel\"of convexity argument is the following:
+
+    \begin{method}[Lindel\"of convexity argument]
+      Suppose we are given a general $L$-function $L(s)$ of degree $d$ (not necessarily of the Selberg class) such that the following hold:
+      \begin{enumerate}[label=(\roman*)]
+        \item $L(s)$ is absolutely convergent for $\Re(s) > 1$.
+        \item $L(s)$ has a functional equation of shape $s \to 1-s$.
+        \item $L(s)$ is of finite order.
+        \item $L(s)$ has analytic continuation to the critical strip.
+      \end{enumerate}
+      Then a convexity bound of shape $L(s) \ll_{\s,\e} t^{\frac{d(1+\e-\s)}{2}}$ can be obtained inside the critical strip. Indeed, if $L(s)$ has poles inside the critical strip, remove them by multiplying by the corresponding polar divisors. We can then divide out by these factors after obtaining the estimate. Since $L(s)$ is finite order, $L(s)$ will satisfy the Phragm\'en-Lindel\"of convexity principal in a region containing the critical strip. Now use the absolute convergence of $L(s)$ to bound the right edge by a constant. Then use the functional equation to isolate the $L$-function at the left edge and apply Stirling's formula to the ratio of gamma factors coming from the functional equation to deduce a polynomial bound of shape $t^{\frac{d(1+2\e)}{2}}$. The Phragm\'en-Lindel\"of convexity principal will then give the result.
+    \end{method}
+
+    Notice that the convexity bound depends on the degree $d$ of the Euler product. In particular, at the critical line the Lindel\"of convexity argument gives a polynomial bound of $\frac{d}{4}+\e$. This is precisely because there is one gamma function in the gamma factor for each degree of the Euler product. For a given Selberg class $L$-function, any improvment upon $\frac{d}{4}+\e$ at the critical line is called \textbf{breaking convexity}\index{breaking convexity}, and an argument used to do so is called a \textbf{subconvexity argument}\index{subconvexity argument}. The \textbf{Selberg class Lindel\"of hypothesis}\index{Lindel\"of hypothesis} says that each of these exponents can be improved to be $\e$:
+
+    \begin{conjecture}[Selberg class Lindel\"of hypothesis]
+      For any Selberg class $L$-function $L(s)$ and any $\e > 0$,
+      \[
+        L\left(\frac{1}{2}+it\right) \ll_{\e} t^{\e}.
+      \]
+    \end{conjecture}
+
+    \begin{remark}
+      Sometimes the Lindel\"of hypothesis for an $L$-function is written using $(1+|t|)^{\e}$ rather than $t^{\e}$. This is because the bound in the form $(1+|t|)^{\e}$ holds for all $t$, even $t$ close to zero, where the bound in the form $t^{\e}$ only holds for large $t$.
+    \end{remark}

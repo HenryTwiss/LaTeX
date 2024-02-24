@@ -1,0 +1,493 @@
+\appendix
+\chapter{Number Theory}
+  \section{Arithmetic Functions}\label{append:Arithmetic_Functions}
+    An arithmetic function $f$ is a function $f:\N \to \C$. That is, it takes the positive integers into the complex numbers. We say that $f$ is \textbf{additive}\index{additive} if $f(nm) = f(n)+f(m)$ for all positive integers $n$ and $m$ such that $(n,m) = 1$. If this condition simply holds for all $n$ and $m$ then we say $f$ is \textbf{completely additive}\index{completely additive}. Similarly, we say that $f$ is \textbf{multiplicative}\index{multiplicative} if $f(nm) = f(n)f(m)$ for all positive integers $n$ and $m$ such that $(n,m) = 1$. If this condition simply holds for all $n$ and $m$ then we say $f$ is \textbf{completely multiplicative}\index{completely multiplicative}. Many important arithmetic functions are either additive, completely additive, multiplicative, or completely multiplicative. Note that if a $f$ is additive or multiplicative then $f$ is uniquely determined by its values on prime powers and if $f$ is completely additive or completely multiplicative then it is uniquely determined by its values on primes. Moreover, if $f$ is additive or completely additive then $f(1) = 0$ and if $f$ is multiplicative or completely multiplicative then $f(1) = 1$.
+
+    Below is a list defining the most important arithmetic functions. Some of these functions are restrictions of common functions but we define them here as arithmetic functions because their domain being $\N$ is important.
+    \begin{enumerate}[label=(\roman*)]
+      \item The \textbf{constant function}\index{constant function}: The function $\mathbf{1}(n)$ defined by $\mathbf{1}(n) = 1$ for all $n \ge 1$. This function is neither additive or multiplicative.
+      \item The \textbf{unit function}\index{unit function}: The function $e(n)$ defined by
+      \[
+        e(n) = \begin{cases} 1 & \text{if $n = 1$}, \\ 0 & \text{if $n \ge 2$}. \end{cases}
+      \]
+      This function is completely multiplicative.
+      \item The \textbf{identity function}\index{identity function}: The identity function $\id(n)$ restricted to all $n \ge 1$. This function is completely multiplicative.
+      \item The \textbf{logarithm}\index{logarithm function}: The function $\log(n)$ restricted to all $n \ge 1$. This function is completely additive.
+      \item The \textbf{M\"obius function}\index{M\"obius function}: The function $\mu(n)$ defined by
+      \[
+        \mu(n) = \begin{cases} 1 & \text{if $n$ is square-free with an even number of prime factors}, \\ -1 & \text{if $n$ is square-free with an odd number of prime factors}, \\ 0 & \text{if $n$ is not square-free}, \end{cases}
+      \]
+      for all $n \ge 1$. This function is multiplicative.
+      \item The \textbf{characteristic function of square-free integers}\index{characteristic function of square-free integers}: The square of the M\"obius function $\mu^{2}(n)$ or $|\mu(n)|$ for all $n \ge 1$. This function is multiplicative.
+      \item \textbf{Liouville's function}\index{Liouville's function}: The function $\l(n)$ defined by
+      \[
+        \l(n) = \begin{cases} 1 & \text{if $n = 1$}, \\ (-1)^{k} & \text{if $n$ is composed of $k$ not necessarily distinct prime factors}, \end{cases}
+      \]
+      for all $n \ge 1$. This function is completely multiplicative.
+      \item \textbf{Euler's totient function}\index{Euler's totient function}: The function $\phi(n)$ defined by
+      \[
+        \phi(n) = \psum_{m \tmod{n}}1,
+      \]
+      for all $n \ge 1$. This function is multiplicative.
+      \item The \textbf{divisor function}\index{divisor function}: The function $\s_{0}(n)$ defined by
+      \[
+        \s_{0}(n) = \sum_{d \mid n}1,
+      \]
+      for all $n \ge 1$. This function is multiplicative.
+      \item The \textbf{sum of divisors function}\index{sum of divisors function}: The function $\s_{1}(n)$ defined by
+      \[
+        \s_{1}(n) = \sum_{d \mid n}d,
+      \]
+      for all $n \ge 1$. This function is multiplicative.
+      \item The \textbf{generalized sum of divisors function}\index{generalized sum of divisors function}: The function $\s_{s}(n)$ defined by
+      \[
+        \s_{s}(n) = \sum_{d \mid n}d^{s},
+      \]
+      for all $n \ge 1$ and any complex number $s$. This function is multiplicative.
+      \item The \textbf{number of distinct prime factors function}\index{number of distinct prime factors function}: The function $\w(n)$ defined by
+      \[
+        \w(n) = \sum_{p \mid n}1,
+      \]
+      for all $n \ge 1$. This function is additive.
+      \item The \textbf{total number of prime divisors function}\index{total number of prime divisors function}: The function $\W(n)$ defined by
+      \[
+        \W(n) = \sum_{p ^{m} \mid n}1,
+      \]
+      for all $n \ge 1$ and where $m \ge 1$. This function is completely additive.
+      \item The \textbf{von Mangoldt function}\index{von Mangoldt function}: The function $\L(n)$ defined by
+      \[
+        \L(n) = \begin{cases} 0 & \text{if $n$ is not a prime power}, \\ \log(p) & \text{if $n = p^{m}$ for some prime $p$ and integer $m \ge 1$}, \end{cases}
+      \]
+      for all $n \ge 1$. This function is neither additive or multiplicative.
+    \end{enumerate}
+  \section{The M\"obius Function}
+    Recall that the M\"obius function is the arithmetic function $\mu$ defined by
+    \[
+      \mu(n) = \begin{cases} 1 & \text{if $n$ is square-free with an even number of prime factors}, \\ -1 & \text{if $n$ is square-free with an odd number of prime factors}, \\ 0 & \text{if $n$ is not square-free}, \end{cases}
+    \]
+    and it is multiplicative. It also satisfies an important summation property:
+
+    \begin{proposition}\label{prop:Mobius_dirac_delta}
+      \[
+        \sum_{d \mid n}\mu(d) = \d_{n,1}.
+      \]
+    \end{proposition}
+
+    From this property, the important \textbf{M\"obius inversion formula}\index{M\"obius inversion formula} can be derived:
+
+    \begin{theorem}[M\"obius inversion formula]
+      Suppose $f$ and $g$ are arithmetic functions satisfying
+      \[
+        g(n) = \sum_{d \mid n}f(d),
+      \]
+      for all $n \ge 1$. Then
+      \[
+        f(n) = \sum_{d \mid n}\mu(d)g\left(\frac{n}{d}\right)
+      \]
+      for all $n \ge 1$.
+    \end{theorem}
+
+    Using M\"obius inversion, the following useful formula can also be derived:
+
+    \begin{proposition}\label{prop:Dirichlet_Mobius_is_zeta_inverse}
+      For $\Re(s) > 1$,
+      \[
+        \sum_{n \ge 1}\frac{\mu(n)}{n^{s}} = \z(s)^{-1} = \prod_{p}(1-p^{-s}).
+      \]
+    \end{proposition}
+  \section{The Generalized Sum of Divisors Function}
+    Recall that the generalized sum of divisor function $\s_{s}(n)$ defined by
+    \[
+      \s_{s}(n) = \sum_{d \mid n}d^{s}.
+    \]
+    As we always take divisors to by positive, the sign of $n$ is irrelevent. So
+    \[
+      \s_{s}(n)  = \s_{s}(-n) = \s_{s}(|n|).
+    \]
+    More importantly, $\s_{s}(n)$ has a remarkable property: it can be written as a product. Recalling that $\ord_{p}(n)$ is the positive integer satisfying $p^{\ord_{p}(n)} \mid\mid n$, we have the following statement:
+
+    \begin{proposition}\label{prop:generalized_sum_of_divisors_as_product}
+      For $s \neq 0$,
+      \[
+        \s_{s}(n) = \prod_{p \mid n}\frac{p^{(\ord_{p}(n)+1)s}-1}{p^{s}-1}.
+      \]
+    \end{proposition}
+
+  \section{Quadratic Reciprocity}
+    Let $p$ be an odd prime. We are ofted interested in when the equation $x^{2} = a \tmod{p}$ is solvable for some $a \in \Z$. The \textbf{Legendre symbol}\index{Legendre symbol} $\tlegendre{a}{p}$ keeps track of this:
+    \[
+      \legendre{p}{q} = \begin{cases} 1 & \text{if $x^{2} \equiv q \tmod{p}$ is solvable}, \\ -1 & \text{if $x^{2} \equiv q \tmod{p}$ is not solvable}, \\ 0 & \text{if $a \equiv 0 \tmod{p}$}. \end{cases}
+    \]
+    \textbf{Euler's criterion}\index{Euler's criterion} gives an alernative expression for Legendre symbol when $a$ is coprime to $p$:
+    \begin{proposition}[Euler's criterion]
+      Let $p$ be an odd prime and suppose $(a,p) = 1$. Then
+      \[
+        \legendre{a}{p} = a^{\frac{p-1}{2}} \tmod{p}.
+      \]
+    \end{proposition}
+    From the definition and Euler's criterion is it not difficult to show that the Legendre symbol satisfies the following properties:
+    \begin{proposition}\label{prop:Legendre_symbol_properties}
+      Let $p$ be an odd prime and let $a,b \in \Z$. Then the following hold:
+      \begin{enumerate}[label=(\roman*)]
+        \item If $a \equiv b \tmod{p}$, then $\tlegendre{a}{p} = \tlegendre{b}{p}$.
+        \item $\tlegendre{ab}{p} = \tlegendre{a}{p}\tlegendre{b}{p}$.
+      \end{enumerate}
+    \end{proposition}
+    From \cref{prop:Legendre_symbol_properties}, to compute the Legendre symbol in general it suffices to know how to compute $\tlegendre{-1}{p}$, $\tlegendre{2}{p}$, and $\tlegendre{q}{p}$ where $q$ is another odd prime. The \textbf{supplemental laws of quadratic reciprocity}\index{supplemental laws of quadratic reciprocity} are formulas for the first two symbols:
+    \begin{proposition}[Supplemental laws of quadratic reciprocity]
+      Let $p$ be an odd prime.
+      \begin{enumerate}[label=(\roman*)]
+        \item
+        \[
+          \legendre{-1}{p} = (-1)^{\frac{p-1}{2}} = \begin{cases} 1 & \text{if $p \equiv 1 \tmod{4}$}, \\ -1 & \text{if $p \equiv 3 \tmod{4}$}. \end{cases}
+        \]
+        \item
+        \[
+          \legendre{2}{p} = (-1)^{\frac{p^{2}-1}{8}} = \begin{cases} 1 & \text{if $p \equiv 1,7 \tmod{8}$}, \\ -1 & \text{if $p \equiv 3,5 \tmod{8}$}. \end{cases}
+        \]
+      \end{enumerate}
+    \end{proposition}
+    The \textbf{law of quadratic reciprocity}\index{law of quadratic reciprocity} handles the last symbol by relating $\tlegendre{q}{p}$ to $\tlegendre{p}{q}$:
+    \begin{theorem}[Law of quadratic reciprocity]
+      Let $p$ and $q$ be distinct odd primes. Then
+      \[
+        \legendre{p}{q}\legendre{q}{p} = (-1)^{\frac{p-1}{2}\frac{q-1}{2}} = \begin{cases} 1 & \text{if $p \equiv 1 \tmod{4}$ or $q \equiv 1 \tmod{4}$}, \\ -1 & \text{if $p \equiv 3 \tmod{4}$ and $q \equiv 3 \tmod{4}$}. \end{cases}
+      \]
+    \end{theorem}
+    Let $n$ be a positive odd integer and let $a \in \Z$. The \textbf{Jacobi symbol}\index{Jacobi symbol} $\tlegendre{a}{n}$ is defined by
+    \[
+      \legendre{a}{n} = \legendre{a}{p_{1}}^{e_{1}}\legendre{a}{p_{2}}^{e_{2}} \cdots \legendre{a}{p_{k}}^{E_{k,\chi}},
+    \]
+    where $n = p_{1}^{e_{1}}p_{2}^{e_{2}} \cdots p_{k}^{E_{k,\chi}}$ is the prime factorization of $n$. When $n = p$ is prime, the Jacobi symbol reduces to the Legendre symbol, and the Jacobi symbol is precisely the unique multiplicative extension of the Legendre symbol to all positive odd integers. Accordingly, the Jacobi symbol has the following properties:
+    \begin{proposition}
+      Let $n$ and $m$ be positive odd integers and let $a,b \in \Z$. Then the following hold:
+      \begin{enumerate}[label=(\roman*)]
+        \item If $a \equiv b \tmod{p}$, then $\tlegendre{a}{n} = \tlegendre{b}{n}$.
+        \item $\tlegendre{a}{mn} = \tlegendre{a}{m}\tlegendre{a}{n}$.
+        \item $\tlegendre{ab}{n} = \tlegendre{a}{n}\tlegendre{b}{n}$.
+      \end{enumerate}
+    \end{proposition}
+    There is also an associated reciprocity law:
+    \begin{proposition}
+      Let $n$ and $m$ be distinct positive odd integers. Then
+      \[
+        \legendre{m}{n}\legendre{n}{m} = (-1)^{\frac{m-1}{2}\frac{n-1}{2}} = \begin{cases} 1 & \text{if $m \equiv 1 \tmod{4}$ or $n \equiv 1 \tmod{4}$}, \\ -1 & \text{if $m \equiv 3 \tmod{4}$ and $n \equiv 3 \tmod{4}$}. \end{cases}
+      \]
+    \end{proposition}
+\chapter{Analysis}
+  \section{Absolute Uniform Convergence on Compacta}
+    Often, we are interested in some series
+    \[
+      \sum_{n \ge 1}f_{n}(z),
+    \]
+    where the $f_{n}(z)$ are analytic functions on some region $\W$. We say that the series above \textbf{converges absolutely uniformly on compacta}\index{converges absolutely uniformly on compacta} if
+    \[
+      \sum_{n \ge 1}|f_{n}(z)|,
+    \]
+    convergs uniformly on compact subsets of $\W$. This mode of convergence is very useful because it is enough to guarantee the series is analytic on $\W$:
+
+    \begin{theorem}
+      Suppose $(f_{n}(z))_{n \ge 1}$ is a sequence of analytic functions on a region $\W$. Then if
+      \[
+        \sum_{n \ge 1}f_{n}(z),
+      \]
+      converges absolutely uniformly on compacta, it is analytic on $\W$.
+    \end{theorem}
+
+    We can also apply this idea in the case of integrals. Suppose we have an integral
+    \[
+      \int_{D}f(z,x)\,dx,
+    \]
+    where $f(z,x)$ is an analytic function on some region $\W \x D$. The integral is a function of $z$, and we say that the integral is \textbf{absolutely uniformly bounded on compacta}\index{absolutely uniformly bounded on compacta} if
+    \[
+      \int_{D}|f(z,x)|\,dx,
+    \]
+    is uniformly bounded on compact subsets of $\W$. Similar to the series case, this mode of convergence is very useful because it guarantees the integral is analytic on $\W$:
+
+    \begin{theorem}\label{thm:analytic_integral}
+      Suppose $f(z,x)$ is an analytic function on a region $\W \x D$. Then if
+      \[
+        \int_{D}f(z,x)\,dx,
+      \]
+      is absolutely uniformly bounded on compacta, it is holomorphic on $\W$.
+    \end{theorem}
+  \section{Interchange of Integrals, Sums \& Derivatives}
+    Often, we would like to interchange a limit and a integral. This process is not always allowed, but in many instances it is. The \textbf{dominated convergence theorem}\index{dominated convergence theorem} (DCT) covers the most well-known sufficient condition:
+
+    \begin{theorem}[Dominated convergence theorem]
+      Let $(f_{n}(z))_{n \ge 1}$ be a sequence of continuous real or complex integrable functions on some region $\W$. Suppose that that the sequence converges pointwise to a function $f$, and that there is some integrable function $g$ on $\W$ such that
+      \[
+        |f_{n}(z)| \le g(z)
+      \]
+      for all $n \ge 1$ and all $z \in \W$. Then $f$ is integrable on $\W$ and
+      \[
+        \lim_{n \to \infty}\int_{\W}f_{n}(z)\,dz = \int_{\W}f(z)\,dz.
+      \]
+    \end{theorem}
+
+    This theorem is often employed when the underlying sequence is a sequence of partial sums of an absolutely convergent series ($g(s)$ will be the absolute series). In this case we have the following result:
+
+    \begin{corollary}\label{cor:DCT_for_series_and_integrals}
+      Suppose $\sum_{n \ge 1}f_{n}(z)$ is an absolutely convergent series of real or complex continuous functions that are integrable on some region $\W$ and that either $\int_{\W}\sum_{n \ge 1}|f_{n}(z)|\,dz$ or $\sum_{n \ge 1}\int_{\W}|f_{n}(z)|\,dz$ is finite. Then
+      \[
+        \sum_{n \ge 1}\int_{\W}f_{n}(z)\,dz = \int_{\W}\sum_{n \ge 1}f_{n}(z)\,dz.
+      \]
+    \end{corollary}
+
+    Of course, we can apply \cref{cor:DCT_for_series_and_integrals} repeatedly to interchange a sum with multiple integrals provided that the partial sums are absolutely convergent in each variable.
+
+    Other times we would also like to interchange a derivative and an integral. The \textbf{Leibniz integral rule}\index{Leibniz integral rule} tells us when this is allowed:
+
+    \begin{theorem}[Leibniz integral rule]
+      Suppose $f(\mathbf{x},t)$ is a function such that both $f(\mathbf{x},t)$ and its partial derivative $\frac{\del}{\del x_{i}}f(\mathbf{x},t)$ are continuous in $\mathbf{x}$ and $t$ in some region including $\W \x [a(\mathbf{x}),b(\mathbf{x})]$ for some real-valued functions $a(\mathbf{x})$ and $b(\mathbf{x})$ and region $\W$. Also suppose that $a(\mathbf{x})$ and $b(\mathbf{x})$ are continuous with continuous partial derivatives $\frac{\del}{\del x_{i}}a(\mathbf{x})$ and $\frac{\del}{\del x_{i}}b(\mathbf{x})$ for $\mathbf{x} \in \W$. Then for $\mathbf{x} \in \W$, we have
+      \[
+        \frac{\del}{\del x_{i}}\left(\int_{a(\mathbf{x})}^{b(\mathbf{x})}f(\mathbf{x},t)\,dt\right) = f(\mathbf{x},b(\mathbf{x}))\frac{\del}{\del x_{i}}b(\mathbf{x})-f(\mathbf{x},a(\mathbf{x}))\frac{\del}{\del x_{i}}a(\mathbf{x})+\int_{a(\mathbf{x})}^{b(\mathbf{x})}\frac{\del}{\del x_{i}}f(\mathbf{x},t)\,dt.
+      \]
+    \end{theorem}
+    
+    The Leibniz integral rule is sometimes applied in the case when $a(\mathbf{x}) = a$ and $b(\mathbf{x}) = b$ are constant. In this case, we get the following corollary:
+
+    \begin{corollary}
+      Suppose $f(\mathbf{x},t)$ is a function such that both $f(\mathbf{x},t)$ and its partial derivative $\frac{\del}{\del x_{i}}f(\mathbf{x},t)$ are continuous in $\mathbf{x}$ and $t$ in some region including $\W \x [a,b]$ for some reals $a$ and $b$ and region $\W$. Then for $\mathbf{x} \in \W$, we have
+      \[
+        \frac{\del}{\del x_{i}}\left(\int_{a}^{b}f(\mathbf{x},t)\,dt\right) = \int_{a}^{b}\frac{\del}{\del x_{i}}f(\mathbf{x},t)\,dt.
+      \]
+    \end{corollary}
+  \section{Summation Formulas}\label{append:Summation_Formulas}
+    The most well-known summation formula is \textbf{partial summation}\index{partial summation}:
+
+    \begin{theorem}[Partial summation]\label{thm:partial_summation}
+      Let $(a_{n})_{n \ge 1}$ and $(b_{n})_{n \ge 1}$ be two seqeunces of complex numbers. Then for any positive integers $N$ and $M$ with $1 \le M < N$ we have
+      \[
+        \sum_{M \le k \le N}a_{k}(b_{k+1}-b_{k}) = (a_{N}b_{N+1}-a_{M}b_{M})-\sum_{M+1 \le k \le N}b_{k}(a_{k}-a_{k-1}).
+      \]
+    \end{theorem}
+    
+    There is a more useful summation formula for analytic number theory as it lets one estimate discrete sums by integrals. For this we need some notation. If $(a_{n})_{n \ge 1}$ is a sequence of complex numbers, for every real $X$ set
+    \[
+        A(X) = \sum_{n \le X}a_{n}.
+    \]
+    Then \textbf{Abel's summation formula}\index{Abel's summation formula} is the following:
+
+    \begin{theorem}[Abel's summation formula]
+      Let $(a_{n})_{n \ge 1}$ be a sequence of complex numbers. For every real $X$ and $Y$ with $X < Y$ and continuously differentiable function $\phi:[X,Y] \to \C$, we have
+      \[
+        \sum_{X \le n \le Y}a_{n}\phi(n) = A(Y)\phi(Y)-A(X)\phi(X)-\int_{X}^{Y}A(u)\phi'(u)\,du.
+      \]
+    \end{theorem}
+
+    There are also some useful corollaries. For example, if we take the limit as $Y \to \infty$ we obtain:
+
+    \begin{corollary}\label{cor:Abels_summation_formula_limit_version}
+      Let $(a_{n})_{n \ge 1}$ be a sequence of complex numbers. For every real $X$ and continuously differentiable function $\phi:\R_{\ge X} \to \C$, we have
+      \[
+        \sum_{n \ge X}a_{n}\phi(n) = \lim_{Y \to \infty}A(Y)\phi(Y)-A(X)\phi(X)-\int_{X}^{\infty}A(u)\phi'(u)\,du.
+      \]
+    \end{corollary}
+
+    We can take this corollary further by letting $X = 0$ so that $A(X) = 0$ to get the following:
+
+    \begin{corollary}\label{cor:Abels_summation_formula_limit_version_specialization}
+      Let $(a_{n})_{n \ge 1}$ be a sequence of complex numbers. For every continuously differentiable function $\phi:\R_{\ge 0} \to \C$, we have
+      \[
+        \sum_{n \ge 1}a_{n}\phi(n) = \lim_{Y \to \infty}A(Y)\phi(Y)-\int_{1}^{\infty}A(u)\phi'(u)\,du.
+      \]
+    \end{corollary}
+  \section{Fourier Series}\label{append:Fourier_Series}
+    Let $N \ge 1$ be an integer. If $f:\R \to \C$ is $N$-periodic and integrable on $[0,N]$, then we define the $n$-th \textbf{Fourier coefficient}\index{Fourier coefficient} $\hat{f}(n)$ of $f$ to be
+    \[
+      \hat{f}(n) = \int_{0}^{N}f(x)e^{-\frac{2\pi inx}{N}}\,dx.
+    \]
+    The \textbf{Fourier series}\index{Fourier series} of $f$ is defined by the series
+    \[
+      \sum_{n \in \Z}\hat{f}(n)e^{\frac{2\pi inx}{N}}.
+    \]
+    There is the question of whether the Fourier series of $f$ converges at all and if so does it even converge to $f$ itself. Under reasonable conditions the answer is yes as is seen in the following proposition:
+
+    \begin{proposition}
+      If $f$ is smooth and $N$-periodic it converges uniformly to its Fourier series eveywhere.
+    \end{proposition}
+
+    In particular, all holomorphic $N$-periodic functions $f$ converge uniformly to their Fourier series everywhere because for fixed $x$ or $y$ in $z = x+iy$, $f$ restricts to an $N$-periodic smooth function on $\R$ that's integrable on $[0,N]$. Actually we can do a little better. If $f$ is $N$-periodic and meromorphic on $\C$, then after clearing polar divisors we will have a holomorphic function on $\C$ and hence it will have a Fourier series converging uniformly everywhere. Therefore $f$ will have such a Fourier series with meromorphic Fourier coefficients. In either situation, the case $N = 1$ is the most commonly seen. So for meromorphic (or holomorphic) $1$-periodic functions $f$,
+    \[
+      f(z) = \sum_{n \in \Z}\hat{f}(n)e^{2\pi inz},
+    \]
+    uniformly everywhere.
+  \section{Factorizations, Order \& Rank}\label{append:Factorizations_and_Finite_Order}
+    The \textbf{elementary factors}\index{elementary factors}, also referred to as \textbf{primary factors}\index{primary factors}, are the entire functions $E_{n}(z)$ defined by
+    \[
+      E_{n}(z) = \begin{cases} 1-z & \text{if } n = 0, \\ (1-z)e^{z+\frac{z^{2}}{2}+\cdots+\frac{z^{n}}{n}} & \text{if } n \neq 0. \end{cases}
+    \]
+    If $f$ is an entire function, then it admits a factorization in terms of its zeros and the elementary factors. This is called the \textbf{Weierstrass factorization}\index{Weierstrass factorization} of $f$:
+
+    \begin{theorem}[Weierstrass factorization]
+      Let $f$ be an entire function with $\{a_{n}\}_{n \ge 1}$ the non-zero zeros of $f$ counted with multiplicity. Also suppose that $f$ has a zero of order $m$ at $z = 0$ where it is understood that if $m = 0$ we mean $f(0) \neq 0$ and if $m < 0$ we mean $f$ has a pole of order $|m|$ at $z = 0$. Then there exists an entire function $g$ and sequence of non-negative integers $(p_{n})_{n \ge 1}$ such that
+      \[
+        f(z) = z^{m}e^{g(z)}\prod_{n \ge 1}E_{p_{n}}\left(\frac{z}{a_{n}}\right).
+      \]
+    \end{theorem}
+
+    The Weierstrass factorization of $f$ can be strengthened if $f$ does not grow too fast. We say $f$ is of \textbf{finite order}\index{finite order} if there exists a $\rho_{0} > 0$ such that
+    \[
+      f(z) \ll e^{|z|^{\rho_{0}}},
+    \]
+    for all $z \in \C$. The \textbf{order}\index{order} $\rho$ of $f$ is the infimum of the $\rho_{0}$. Let $q = \lf \rho \rf$. If there is no such $\rho_{0}$, $f$ is said to be of \textbf{infinite order}\index{infinite order} and we set $\rho = q = \infty$. Let $\{a_{n}\}_{n \ge 1}$ be the non-zero zeros of $f$ that are not zero and ordered such that $a_{n} \to \infty$ as $n \to \infty$ if there are infinitely many zeros. Then we define the \textbf{rank}\index{rank} of $f$ to be the smallest positive integer $p$ such that the series
+    \[
+      \sum_{n \ge 1}\frac{1}{|a_{n}|^{p+1}},
+    \]
+    converges. If there is no such integer we set $p = \infty$ and if there are finitely many zeros we set $p = 0$. We set $g = max\{p,q\}$ and call $g$ the \textbf{genus}\index{genus} of $f$. We can now state the \textbf{Hadamard factorization}\index{Hadamard factorization} of $f$:
+
+    \begin{theorem}[Hadamard factorization]
+      Let $f$ be an entire function of finite order $\rho$. If $p$ is the rank and $g$ is the genus, then $g \le \rho$. Moreover, let $\{a_{n}\}_{n \ge 1}$ be the non-zero zeros of $f$ counted with multiplicity and suppose that $f$ has a zero of order $m$ at $z = 0$ where it is understood that if $m = 0$ we mean $f(0) \neq 0$ and if $m < 0$ we mean $f$ has a pole of order $|m|$ at $z = 0$. Then there exists a polynomial $Q(z)$ of degree at most $q$ such that
+      \[
+        f(z) = z^{m}e^{Q(z)}\prod_{n \ge 1}E_{p}\left(\frac{z}{a_{n}}\right).
+      \]
+    \end{theorem}
+  \section{The Phragmen-Lindel\"of Convexity principal for a Strip}\label{append:The_Phragmen_Lindelof_Convexity_principal}
+    The \textbf{Phragmen-Lindel\"of convexity principal}\index{Phragmen-Lindel\"of convexity principal} is a generic name for extending the maximum modulus principal to unbounded regions. The \textbf{Phragmen-Lindel\"of Convexity principal for a strip}\index{Phragmen-Lindel\"of Convexity principal for a strip} is the case when the unbounded region is the vertical strip $a < \Re(z) < b$:
+
+    \begin{theorem}[Phragmen-Lindel\"of Convexity principal for a strip]\label{thm:Phragmen-Lindelof_convexity_principal}
+      Suppose $f$ is a holomorphic functions on an open neighborhood of a strip $a < \Re(z) < b$ such that $f(z) \ll e^{|z|^{A}}$ for some $A \ge 0$. Set $z = \s+it$. Then the following hold:
+      \begin{enumerate}[label=(\roman*)]
+        \item If $|f(z)| \le M$ for $\s = a,b$, that is on the boundary edges of the strip, then $|f(z)| \le M$ for all $z$ in the strip.
+        \item Assume that
+        \[
+          f(a+it) \ll_{a} t^{\a} \quad \text{and} \quad f(b+it) \ll_{b} t^{\b},
+        \]
+        for all $t \in \R$. Then
+        \[
+          f(\s+it) \ll_{\s} t^{\a\ell(\s)+\b(1-\ell(\s))},
+        \]
+        where $\ell$ is the linear function such that $\ell(a) = 1$ and $\ell(b) = 0$.
+      \end{enumerate}
+    \end{theorem}
+\chapter{Special Functions, Sums, \& Integrals}
+  \section{Bessel Functions}\label{append:Bessel_Functions}
+    For any $\nu \in \C$, the \textbf{Bessel equation}\index{Bessel equation} is the ODE
+    \[
+      x^{2}\frac{d^{2}y}{dx^{2}}+x\frac{dy}{dx}+(x^{2}-\nu^{2})y = 0.
+    \]
+    There are two linearly independent solutions to this equation. One solution is the \textbf{Bessel function of the first kind}\index{Bessel function of the first kind} $J_{\nu}(x)$ defined by
+    \[
+      J_{\nu}(x) = \sum_{n \ge 0}\frac{(-1)^{n}}{n!\G(n+\nu+1)}\left(\frac{x}{2}\right)^{2n+\nu}.
+    \]
+    For integers $n$, $J_{n}(x)$ is entire and we have
+    \[
+      J_{n}(x) = (-1)^{n}J_{-n}(x).
+    \]
+    Otherwise, $J_{\nu}(x)$ has a pole at $x = 0$ and $J_{\nu}(x)$ and $J_{-\nu}(x)$ are linearly independent solutions to the Bessel equation. The other solution is the \textbf{Bessel function of the second kind}\index{Bessel function of the second kind} $Y_{\nu}(x)$ defined by
+    \[
+      Y_{\nu}(x) = \frac{J_{\nu}(x)\cos(\nu\pi)-J_{-\nu}(x)}{\sin(\nu\pi)},
+    \]
+    for non-integers $\nu$, and for integers $n$ is
+    \[
+      Y_{n}(x) = \lim_{\nu \to n}Y_{\nu}(x).
+    \]
+    For any integer $n$, we also have
+    \[
+      Y_{n}(x) = (-1)^{n}Y_{-n}(x).
+    \]
+    For the $J$-Bessel function there is also an important integral representation called the \textbf{Schl\"aflin integral representation}\index{Schl\"aflin integral representation}:
+
+    \begin{proposition}[Schl\"aflin integral representation for the $J$-Bessel function]
+      For any $\nu \in \C$ and $\Re(z) > 0$,
+      \[
+        J_{\nu}(z) = \frac{1}{2\pi i}\left(\frac{z}{2}\right)^{\nu}\int_{-\infty}^{(0^{+})}t^{-(\nu+1)}e^{t-\frac{z^{2}}{4t}}\,dt.
+      \]
+    \end{proposition}
+
+    The \textbf{modified Bessel equation}\index{modified Bessel equation} is the ODE
+    \[
+      x^{2}\frac{d^{2}y}{dx^{2}}+x\frac{dy}{dx}-(x^{2}+\nu^{2})y = 0.
+    \]
+    Like the Bessel equation, there are two linearly independent solutions. One solution is the \textbf{modified Bessel function of the first kind}\index{Bessel function of the first kind} $I_{\nu}(x)$ given by
+    \[
+      I_{\nu}(x) = i^{-\nu}J_{\nu}(ix) = \sum_{n \ge 0}\frac{1}{n!\G(n+\nu+1)}\left(\frac{x}{2}\right)^{2n+\nu}.
+    \]
+    For integers $n$, this solution is symmetric in $n$. That is,
+    \[
+      I_{n}(x) = I_{-n}(x).
+    \]
+    We also have a useful integral repersentation in a half-plane:
+
+    \begin{proposition}\label{prop:integral_representation_I-Bessel_function}
+      For any $\nu \in \C$ and $\Re(x) > 0$,
+      \[
+        I_{\nu}(x) = \frac{1}{\pi}\int_{0}^{\pi}e^{x\cos(t)}\cos(\nu t)\,dt-\frac{\sin(\nu\pi)}{\pi}\int_{0}^{\infty}e^{-x\cosh(t)-\nu t}\,dt,
+      \]
+      where the integrals are understood to be complex integrals.
+    \end{proposition}
+
+    From this integral representation we can show that $K_{\nu}(x)$ has at most exponential grwoth in this half-plane:
+
+    \begin{lemma}\label{lem:exponential_growth_I-Bessel_function}
+      For any $\nu \in \C$ and $\Re(x) > 0$,
+      \[
+        I_{\nu}(x) = O_{\nu}(e^{x}).
+      \]
+    \end{lemma}
+
+    The other solution is the \textbf{modified Bessel function of the second kind}\index{modified Bessel function of the second kind} $K_{\nu}(x)$ defined by
+    \[
+      K_{\nu}(x) = \frac{\pi}{2}\frac{I_{-\nu}(x)-I_{\nu}(x)}{\sin(\nu\pi)},
+    \]
+    for non-integers $\nu$, and for integers $n$ is
+    \[
+      K_{n}(x)= \lim_{\nu \to n}K_{\nu}(x).
+    \]
+    This is one of the more important types of Bessel functions as they appear in the Fourier coefficients of certian Eisenstein series. This function is symmetric in $\nu$ even when $\nu$ is an integer. That is,
+    \[
+      K_{\nu}(x) = K_{-\nu}(x),
+    \]
+    for all $\nu$. We also have a very useful integral representation in a half-plane:
+
+    \begin{proposition}\label{prop:integral_representation_K-Bessel_function}
+      For any $\nu \in \C$ and $\Re(x) > 0$,
+      \[
+        K_{\nu}(x) = \int_{0}^{\infty}e^{-x\cosh(t)}\cosh(\nu t)\,dt,
+      \]
+      where the integral is understood to be a complex integral.
+    \end{proposition}
+
+    From this integral representation it does not take much to show that $K_{\nu}(x)$ has worse than exponential decay in this half-plane:
+
+    \begin{lemma}\label{lem:exponential_decay_K-Bessel_function}
+      For any $\nu \in \C$ and $\Re(x) > 0$,
+      \[
+        K_{\nu}(x) = o_{\nu}(e^{-x}).
+      \]
+    \end{lemma}
+  \section{Sums Over Lattices}
+    Let $\mathbf{a} = (a_{1},a_{2},\ldots,a_{d}) \in \R^{d}$ and let $||\mathbf{a}|| = \sqrt{a_{1}^{2}+a_{2}^{2}+\cdots+a_{d}^{2}}$ be the usual norm. We are often interested in series that obtained by summing over the lattice $\Z^{d} \subset \R^{d}$. In particular, we have the following general result:
+
+    \begin{theorem}
+      Let $d \ge 1$ be an integer. Then
+      \[
+        \sum_{\mathbf{a} \in \Z^{d}-\{\mathbf{0}\}}\frac{1}{||a||^{s}},
+      \]
+      converges absolutely uniformly on compacta in the region $\Re(s) > d$.
+    \end{theorem}
+
+    In a practical setting, we usually restrict to the case $d = 2$. In this setting, with a little more work can show a more useful result:
+
+    \begin{proposition}\label{prop:general_lattice_sum_convergence_for_two_variables}
+      Let $z \in \H$. Then
+      \[
+        \sum_{(n,m) \in \Z^{2}-\{\mathbf{0}\}}\frac{1}{|nz+m|^{s}},
+      \]
+      converges absolutely uniformly on compacta in the region $\Re(s) > 2$. In addition, it converges absolutely uniformly on compacta as a function of $z$ provided $s > 2$.
+    \end{proposition}
+  \section{Special Integrals}\label{append:Special_Integrals}
+    Below is a table of well-known integrals that are used throughout the text:
+    \begin{center}
+      \begin{stabular}[3]{|c|c|c|}
+        \hline
+        Reference & Assumptions & Integral \\
+        \hline
+        Gaussian & & $\displaystyle{\int_{-\infty}^{\infty}e^{-\pi x^{2}}\,dx = 1}$ \\
+        \hline
+        \cite{goldfeld2006automorphic} & $n \in \Z$, $s \in \C$, $y > 0$ & $\displaystyle{\int_{-\infty}^{\infty}\frac{1}{(x^{2}+1)^{s}}e^{-2\pi inxy}\,dx = \begin{cases} \frac{2\pi^{s}y^{s-\frac{1}{2}}|n|^{s-\frac{1}{2}}}{\G(s)}K_{s-\frac{1}{2}}(2\pi|n|y) & \text{if $n \neq 0$}, \\ \frac{\sqrt{\pi}\G\left(s-\frac{1}{2}\right)}{\G(s)} & \text{if $n = 0$}. \end{cases}}$ \\
+        \hline
+        \cite{davenport2013multiplicative} & $c > 0$ & $\displaystyle{\frac{1}{2\pi i}\int_{(c)}y^{s}\,\frac{ds}{s} = \begin{cases} 0 & \text{if $0 < y < 1$}, \\ \frac{1}{2} & \text{if $y = 1$}, \\ 1 & \text{if $y > 1$}. \end{cases}}$
+      \end{stabular}
+    \end{center}
