@@ -78,27 +78,68 @@
         The statement now follows from truncated Perron's formula.
       \end{proof}
 
-      There is also a version of Perron's formula where we add a smoothing function. This is achieved by rewriting the sum
+      There is also a version of Perron's formula where we add a smoothing function $\psi:[0,\infty) \to [0,\infty)$. These sums generally look like
       \[
-        A(X) = \sum_{n \le X}a(n),
+        \sum_{n \ge 1}a(n)\psi\left(\frac{n}{X}\right),
       \]
-      as a smooth object. For example, let $\psi:[0,\infty) \to [0,\infty)$ be a smooth bump function that is identically $1$ on $[0,1]$ and decays to zero in the interval $\left[1,\frac{X+1}{X}\right]$. Explicitely,
+      where $\psi\left(\frac{x}{N}\right)$ weights $a(n)$ in such a way that the weight is dampened as $x \to \infty$ and or as $x \to 0$. This is most useful in two cases. The first is when we choose $\psi(x)$ to be a smooth bump function. In this setting, the bump function has either weight $1$ or $0$ depending upon $n$ and we can estimate sums like
+      \[
+        \sum_{\frac{X}{2} \le n < X}a(n) \quad \text{or} \quad \sum_{X \le n < X+Y}a(n).
+      \]
+      For some $X$ and $Y$ with $Y < X$. Sums of this type are called \textbf{unweighted}\index{unweighted}. In the second case, we might want to estimate the weighted sums
+      \[
+        \sum_{n \ge 1}a(n)\psi\left(\frac{n}{X}\right),
+      \]
+      where $\psi\left(\frac{x}{N}\right)$ weights $a(n)$ in such a way that the weight is dampened as $x \to \infty$ but is not always $0$ or $1$ as in the unweighted case. Sums of this type are called \textbf{weighted}\index{weighted}. As an example of an unweighted sum, let $\psi:[0,\infty) \to [0,\infty)$ be a smooth bump function that is identically $1$ on $[0,1]$ and decays to zero in the interval $\left[1,\frac{X+1}{X}\right]$. Explicitely,
       \[
           \psi(t) = \begin{cases} 1 & \text{if $0 \le t \le 1$}, \\ e^{-\frac{1-t}{\frac{X+1}{X}-t}} & \text{if $1 < t \le \frac{X+1}{X}$}, \\ 0 & \text{if $t \ge \frac{X+1}{X}$}. \end{cases}
       \]
       Then 
-      \begin{equation}\label{equ:smoothed_sum_equation}
-        \sum_{n \le X}a(n) = \sum_{n \ge 1}a(n)\psi\left(\frac{n}{X}\right).
-      \end{equation}
-      We call the right-hand side of \cref{equ:smoothed_sum_equation} a \textbf{smoothed sum}\index{smoothed sum} of $\sum_{n \le X}a(n)$. We can estaimte the size of $A(X)$ by using the Mellin inverse reprensentation of $\psi$. First, we note that the Mellin transform $\Psi$ of $\psi$ exists. Let $K$ be a compact set in the region $\Re(s) > 0$ and let $\b = \inf_{s \in K}\{\Re(s)\}$. Then for $s \in K$,
       \[
-        \Psi(s) = \int_{0}^{\infty}\left|\psi(x)x^{s-1}\right|\,dx \le \int_{0}^{\frac{X+1}{X}}x^{\Re(s)-1}\,dx = \frac{x^{\Re(s)}}{\Re(s)}\bigg|_{0}^{\frac{X+1}{X}} \le \frac{X+1}{\b X}.
+        \sum_{n \ge 1}a(n)\psi\left(\frac{n}{X}\right) = \sum_{n \le X}a(n).
       \]
-      Therefore $\Psi(s)$ is absolutely bounded on compacta for $\Re(s) > 0$. In particular, the Mellin inversion formula implies that $\psi$ is the Mellin inverse of $\Psi$. Now we can state our analog of Perron's formula:
+      In general, we require $\psi:[0,\infty) \to [0,\infty)$ to be a compactly supported smooth function. Suppose the support of $\psi(x)$ is contained in $[0,C]$. These conditions will force the Mellin transform $\Psi(s)$ of $\psi(x)$ to exist and have nice properties. To see that $\Psi(s)$ exists, let $K$ be a compact set in the region $\Re(s) > 0$ and let $\b = \inf_{s \in K}\{\Re(s)\}$. Note that $\psi(x)$ is bounded because it is compactly supported. Then for $s \in K$,
+      \[
+        \Psi(s) = \int_{0}^{\infty}\psi(x)x^{s}\,\frac{dx}{x} \ll \int_{0}^{C}x^{\Re(s)-1}\,dx = \frac{x^{\Re(s)}}{\Re(s)}\bigg|_{0}^{C} \le \frac{C^{\Re(s)}}{\b}.
+      \]
+      Therefore $\Psi(s)$ is absolutely bounded on compacta for $\Re(s) > 0$. In particular, the Mellin inversion formula implies that $\psi(x)$ is the Mellin inverse of $\Psi(s)$. As for nice properties, $\Psi(s)$ does not grow too fast in vertical strips:
+
+      \begin{proposition}\label{prop:smoothing_function_Mellin_inverse_vertical_strips}
+        Let $\psi:[0,\infty) \to [0,\infty)$ to be a compactly supported smooth function and let $\Psi(s)$ denote its Mellin transform. Then for any $N \ge 1$,
+        \[
+          \Psi(s) \ll s^{-N},
+        \]
+        for $s$ contained in the vertical strip $a < \Re(s) < b$ for any $a$ and $b$ with $0 < a < b$.
+      \end{proposition}
+      \begin{proof}
+        Fix $a$ and $b$ with $0 < a < b$. Also, let the support of $\psi(x)$ is contained in $[0,C]$. Now consider
+        \[
+          \Psi(s) = \int_{0}^{\infty}\psi(x)x^{s}\,\frac{dx}{x}.
+        \]
+        Since $\psi(x)$ is compactly supported, integrating by parts yields
+        \[
+          \Psi(s) = \frac{1}{s}\int_{0}^{\infty}\psi'(x)x^{s+1}\,\frac{dx}{x}.
+        \]
+        Repeatedly integrating by parts $N \ge 1$ times, we arrive at
+        \[
+          \Psi(s) = \frac{1}{s(s+1) \cdots (s+N-1)}\int_{0}^{\infty}\psi^{(N)}(x)x^{s+N}\,\frac{dx}{x}.
+        \]
+        As $s+k-1 \sim s$ for $1 \le k \le N$, we have
+        \[
+          \Psi(s) \ll s^{-N}\int_{0}^{\infty}\psi^{(N)}(x)x^{s+N}\,\frac{dx}{x}.
+        \]
+        The claim will follow if we can show that the integral is bounded by a constant. Since $\psi(x)$ is compactly supported so is $\psi^{(N)}(x)$. In particular, this implies that $\psi^{(N)}(x)$ is bounded. Therefore
+        \[
+          \int_{0}^{\infty}\psi^{(N)}(x)x^{s+N}\,\frac{dx}{x} \ll \int_{0}^{C}x^{s+N}\,\frac{dx}{x} = \frac{x^{s+N}}{s+N}\bigg|_{0}^{C} = \frac{C^{s+N}}{s+N} \ll \frac{C^{b+N}}{N} \ll 1,
+        \]
+        where the second to last estimate follows because $a < \Re(s) < b$ with $0 < a < b$. So the integral is bounded by a constant and the claim follows.
+      \end{proof}
+      
+      Now we can state our analog of Perron's formula:
 
       \begin{theorem}[Smoothed Perron's formula]\label{thm:Perron's_formula_with_test_function
       }
-        Let $a(n)$ be the coefficients of some Dirichlet series $D(s)$ with finite and nonnegative abscissa of absolute convergence $\s_{a}$. Let $\psi:[0,\infty) \to [0,1]$ be a smooth bump function that is identically $1$ on $[0,1]$ and decays to zero in the interval $\left[1,\frac{X+1}{X}\right]$. Then for any $c > \s_{a}$,
+        Let $a(n)$ be the coefficients of some Dirichlet series $D(s)$ with finite and nonnegative abscissa of absolute convergence $\s_{a}$. Let $\psi:[0,\infty) \to [0,\infty)$ be a compactly supported smooth function. Then for any $c > \s_{a}$,
         \[
           A(X) = \frac{1}{2\pi i}\int_{\Re(s) = c}D(s)\Psi(s)X^{s}\,ds,
         \]
@@ -115,7 +156,7 @@
       \end{align*}
       \end{proof}
 
-      Smoothed Perron's formula is useful because it is often more versatile than working with Perron's formula directly. In this situation, improving the bounds for $A(X)$ often boils down to improving the abscissa of absolute convergence $\s_{a}$ or choosing appropriate functions $\psi$.
+      Smoothed Perron's formula is useful because it is often more versatile than working with Perron's formula directly. In this situation, improving the bounds for $A(X)$ often boils down to improving the abscissa of absolute convergence $\s_{a}$ or choosing appropriate functions $\psi$. The integral in the formula can be estimated by shifting the line of integration past the poles of $D(s)$ to obtain a main term and using \cref{prop:smoothing_function_Mellin_inverse_vertical_strips} and other estimates for $D(s)$. 
     \section{The Petersson Trace Formula}
       From \cref{thm:newforms_characterization}, $\mc{S}_{k}(N,\chi)$ admits an orthonormal basis of primitive Hecke eigenforms. Call this basis $\{u_{j}\}_{1 \le j \le r}$ where $r$ is the dimension of $\mc{S}_{k}(N,\chi)$. Each of these cusp forms admits a Fourier series
       \[
