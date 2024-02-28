@@ -7,7 +7,7 @@
       where the ' indicates that the last term is multiplied by $\frac{1}{2}$ if $X$ is an integer. We would like to relate $A'(X)$ to an integral involving the entire Dirichlet series $D(s)$. In particular, this integral is a type of inverse Mellin transform. Any formula that relates a finite sum of coefficeints of a Dirichlet series to an integral involving the entire Dirichlet series is called a \textbf{Perron type formula}\index{Perron type formula}. We will see several of them, the first being \textbf{Perron's formula}\index{Perron's formula} which is a consquence of Abel's summation formula and the Mellin inversion formula applied to Dirichlet series:
 
       \begin{theorem}[Perron's formula]
-        Let $a(n)$ be the coefficients of some Dirichlet series $D(s)$ with finite and non-negative abscissa of absolute convergence $\s_{a}$. Then for any $c > \s_{a}$,
+        Let $D(s)$ be a Dirichlet series with coefficient $a(n)$ and finite and non-negative abscissa of absolute convergence $\s_{a}$. Then for any $c > \s_{a}$,
         \[
           A'(X) = \frac{1}{2\pi i}\int_{\Re(s) = c}D(s)X^{s}\,\frac{ds}{s}.
         \]
@@ -26,7 +26,7 @@
 
       We would like to relate this sum to an integral involving the entire Dirichlet series $D(s)$. In particular, this integral is a type of inverse Mellin transform. Any formula that resembles  
 
-      Perron's formula is particularly useful because it allows one examine a sum of Dirichlet coefficients, a discrete object, by means of a complex integral where analytic techniques are at our disposal. There is also a truncated version of Perron's formula which is often more useful for estimates rather than abstract results. To state it, we need to setup some notation and will require a lemma. For any $c > 0$, set
+      Perron's formula is particularly useful because it allows one examine a sum of Dirichlet coefficients, a discrete object, by means of a complex integral where analytic techniques are at our disposal. There is also a truncated formulation of Perron's formula which is often more useful for estimates rather than abstract results. To state it, we need to setup some notation and will require a lemma. For any $c > 0$, set
       \[
         \d(y) = \frac{1}{2\pi i}\int_{(c)}y^{s}\,\frac{ds}{s},
       \]
@@ -43,10 +43,10 @@
         \]
       \end{lemma}
 
-      We can now state and prove the truncated version of Perron's formula:
+      We can now state and prove the truncated formulation of Perron's formula:
 
-      \begin{theorem}[Perron's formula, truncated version]
-        Let $a(n)$ be the coefficients of some Dirichlet series $D(s)$ with finite and non-negative abscissa of absolute convergence $\s_{a}$. Then for any $c > \s_{a}$ and $T > 0$,
+      \begin{theorem}[Perron's formula, truncated formulation]
+        Let $D(s)$ be a Dirichlet series with coefficient $a(n)$ and finite and non-negative abscissa of absolute convergence $\s_{a}$. Then for any $c > \s_{a}$ and $T > 0$,
         \[
           A'(X) = \frac{1}{2\pi i}\int_{c-iT}^{c+iT}D(s)X^{s}\,\frac{ds}{s}+O\left(X^{c}\sum_{\substack{n \ge 1 \\ n \neq X}}\frac{a(n)}{n^{c}}\min\left(1,\frac{1}{T\left|\log\left(\frac{X}{n}\right)\right|}\right)+\d_{X}\frac{c}{T}\right),
         \]
@@ -64,10 +64,10 @@
         Since $D(s)$ converges absolutely we may move the sum inside of the big $O$-estimate, and moreover, the dominated convergence theorem implies we may interchange the sum and the integral. The statement of the lemma follows.
       \end{proof}
 
-      There is a slighly weaker version of the truncated version of Perron's formula that follows as a corollary:
+      There is a slighly weaker variant of the truncated formulation of Perron's formula that follows as a corollary:
 
       \begin{corollary}
-        Let $a(n)$ be the coefficients of some Dirichlet series $D(s)$ with finite and non-negative abscissa of absolute convergence $\s_{a}$. Then for any $c > \s_{a}$ and $T > 0$,
+        Let $D(s)$ be a Dirichlet series with coefficient $a(n)$ and finite and non-negative abscissa of absolute convergence $\s_{a}$. Then for any $c > \s_{a}$ and $T > 0$,
         \[
           A'(X) = \frac{1}{2\pi i}\int_{c-iT}^{c+iT}D(s)X^{s}\,\frac{ds}{s}+O_{c}\left(\frac{X^{c}}{T}\right),
         \]
@@ -77,10 +77,10 @@
         \[
           \min\left(1,\frac{1}{T\left|\log\left(\frac{X}{n}\right)\right|}\right) <_{c} \frac{X^{c}}{T}.
         \]
-        The statement now follows from the truncated version of Perron's formula.
+        The statement now follows from the truncated formulation of Perron's formula.
       \end{proof}
 
-      There is also a version of Perron's formula where we add a smoothing function $\psi:[0,\infty) \to [0,\infty)$. These sums generally look like
+      There is also a formulation of Perron's formula where we add a smoothing function $\psi:[0,\infty) \to [0,\infty)$. These sums generally look like
       \[
         \sum_{n \ge 1}a(n)\psi\left(\frac{n}{X}\right),
       \]
@@ -111,10 +111,10 @@
         \[
           \Psi(s) \ll s^{-N},
         \]
-        for $s$ contained in the vertical strip $a < \Re(s) < b$ for any $a$ and $b$ with $0 < a < b$.
+        provided $s$ is contained in the vertical strip $a < \Re(s) < b$, for any $a$ and $b$ with $0 < a < b$.
       \end{proposition}
       \begin{proof}
-        Fix $a$ and $b$ with $0 < a < b$. Also, let the support of $\psi(x)$ is contained in $[0,C]$. Now consider
+        Fix $a$ and $b$ with $a < b$. Also, let the support of $\psi(x)$ is contained in $[0,C]$. Now consider
         \[
           \Psi(s) = \int_{0}^{\infty}\psi(x)x^{s}\,\frac{dx}{x}.
         \]
@@ -130,18 +130,17 @@
         \[
           \Psi(s) \ll s^{-N}\int_{0}^{\infty}\psi^{(N)}(x)x^{s+N}\,\frac{dx}{x}.
         \]
-        The claim will follow if we can show that the integral is bounded by a constant. Since $\psi(x)$ is compactly supported so is $\psi^{(N)}(x)$. In particular, this implies that $\psi^{(N)}(x)$ is bounded. Therefore
+        The claim will follow if we can show that the integral is bounded by a constant. Since $\psi(x)$ is compactly supported so is $\psi^{(N)}(x)$. In particular, this implies $\psi^{(N)}(x)$ is bounded. Therefore
         \[
           \int_{0}^{\infty}\psi^{(N)}(x)x^{s+N}\,\frac{dx}{x} \ll \int_{0}^{C}x^{s+N}\,\frac{dx}{x} = \frac{x^{s+N}}{s+N}\bigg|_{0}^{C} = \frac{C^{s+N}}{s+N} \ll \frac{C^{b+N}}{N} \ll 1,
         \]
         where the second to last estimate follows because $a < \Re(s) < b$ with $0 < a < b$. So the integral is bounded by a constant and the claim follows.
       \end{proof}
       
-      Now we can prove the smoothed version of Perron's formula:
+      The following theorem is the smoothed formulation of Perron's formula:
 
-      \begin{theorem}[Perron's formula, smoothed version]\label{thm:Perron's_formula_with_test_function
-      }
-        Let $a(n)$ be the coefficients of some Dirichlet series $D(s)$ with finite and nonnegative abscissa of absolute convergence $\s_{a}$. Let $\psi:[0,\infty) \to [0,\infty)$ be a compactly supported smooth function. Then for any $c > \s_{a}$,
+      \begin{theorem}[Perron's formula, smoothed formulation]
+        Let $D(s)$ be a Dirichlet series with coefficient $a(n)$ and finite and nonnegative abscissa of absolute convergence $\s_{a}$. Let $\psi:[0,\infty) \to [0,\infty)$ be a compactly supported smooth function. Then for any $c > \s_{a}$,
         \[
           A(X) = \frac{1}{2\pi i}\int_{\Re(s) = c}D(s)\Psi(s)X^{s}\,ds,
         \]
@@ -158,7 +157,7 @@
       \end{align*}
       \end{proof}
 
-      The smoothed version of Perron's formula is useful because it is often more versatile than working with Perron's formula directly. In this situation, improving the bounds for $A(X)$ often boils down to improving the abscissa of absolute convergence $\s_{a}$ or choosing appropriate functions $\psi$. The integral in the formula can be estimated by shifting the line of integration past the poles of $D(s)$ to obtain a main term and using \cref{prop:smoothing_function_Mellin_inverse_vertical_strips} and other estimates for $D(s)$.
+      The smoothed formulation of Perron's formula is useful because it is often more versatile than working with Perron's formula directly. In this situation, improving the bounds for $A(X)$ often boils down to improving the abscissa of absolute convergence $\s_{a}$ or choosing appropriate functions $\psi$. The integral in the formula can be estimated by shifting the line of integration past the poles of $D(s)$ to obtain a main term and using \cref{prop:smoothing_function_Mellin_inverse_vertical_strips} and other estimates for $D(s)$.
     \section{The Petersson Trace Formula}
       From \cref{thm:newforms_characterization}, $\mc{S}_{k}(N,\chi)$ admits an orthonormal basis of primitive Hecke eigenforms. Call this basis $\{u_{j}\}_{1 \le j \le r}$ where $r$ is the dimension of $\mc{S}_{k}(N,\chi)$. Each of these cusp forms admits a Fourier series
       \[
@@ -275,7 +274,7 @@
         \]
       \end{theorem}
     \section{The Ramanujan Conjecture on Average}
-      Let $f$ be a weight $k$ primitive Hecke eigenform with Fourier coefficients $\l_{f}(n)$. As an application of the Rankin-Selberg convolution, it is possible to show the slightly weaker result $\l_{f}(n) \ll n^{\frac{k-1}{2}+\e}$ holds on average for any $\e > 0$ without assuming the Ramanujan conjecture. To see this, for any real $X$ we have
+      Let $f$ be a weight $k$ primitive Hecke eigenform with Fourier coefficients $\l_{f}(n)$. As an application of Rankin-Selberg convolution, it is possible to show the slightly weaker result $\l_{f}(n) \ll n^{\frac{k-1}{2}+\e}$ holds on average for any $\e > 0$ without assuming the Ramanujan conjecture. To see this, for any real $X$ we have
       \begin{equation}\label{equ:Ramanujan_conjecture_on_average_1}
         \left(\sum_{n \le X}\l_{f}(n)\right)^{2} \le X\sum_{n \le X}|\l_{f}(n)|^{2},
       \end{equation}
