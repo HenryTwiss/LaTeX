@@ -4,7 +4,7 @@
       \[
         A'(X) = \psum_{n \le X}a(n),
       \]
-      where the ' indicates that the last term is multiplied by $\frac{1}{2}$ if $X$ is an integer. We can now state the aforementioned result known as \textbf{Perron's formula}\index{Perron's formula} which is a consquence of Abel's summation formula and the Mellin inversion formula applied to Dirichlet series:
+      where the ' indicates that the last term is multiplied by $\frac{1}{2}$ if $X$ is an integer. We would like to relate $A'(X)$ to an integral involving the entire Dirichlet series $D(s)$. In particular, this integral is a type of inverse Mellin transform. Any formula that relates a finite sum of coefficeints of a Dirichlet series to an integral involving the entire Dirichlet series is called a \textbf{Perron type formula}\index{Perron type formula}. We will see several of them, the first being \textbf{Perron's formula}\index{Perron's formula} which is a consquence of Abel's summation formula and the Mellin inversion formula applied to Dirichlet series:
 
       \begin{theorem}[Perron's formula]
         Let $a(n)$ be the coefficients of some Dirichlet series $D(s)$ with finite and non-negative abscissa of absolute convergence $\s_{a}$. Then for any $c > \s_{a}$,
@@ -23,6 +23,8 @@
         \]
         where the second equality follows because $A(u) = 0$ in the interval $[0,1)$. The Mellin inversion formula immediately gives the result.
       \end{proof}
+
+      We would like to relate this sum to an integral involving the entire Dirichlet series $D(s)$. In particular, this integral is a type of inverse Mellin transform. Any formula that resembles  
 
       Perron's formula is particularly useful because it allows one examine a sum of Dirichlet coefficients, a discrete object, by means of a complex integral where analytic techniques are at our disposal. There is also a truncated version of Perron's formula which is often more useful for estimates rather than abstract results. To state it, we need to setup some notation and will require a lemma. For any $c > 0$, set
       \[
@@ -43,7 +45,7 @@
 
       We can now state and prove the truncated version of Perron's formula:
 
-      \begin{theorem}[Truncated Perron's formula]
+      \begin{theorem}[Perron's formula, truncated version]
         Let $a(n)$ be the coefficients of some Dirichlet series $D(s)$ with finite and non-negative abscissa of absolute convergence $\s_{a}$. Then for any $c > \s_{a}$ and $T > 0$,
         \[
           A'(X) = \frac{1}{2\pi i}\int_{c-iT}^{c+iT}D(s)X^{s}\,\frac{ds}{s}+O\left(X^{c}\sum_{\substack{n \ge 1 \\ n \neq X}}\frac{a(n)}{n^{c}}\min\left(1,\frac{1}{T\left|\log\left(\frac{X}{n}\right)\right|}\right)+\d_{X}\frac{c}{T}\right),
@@ -59,10 +61,10 @@
         \[
           A'(X) = \sum_{n \ge 1}a(n)\frac{1}{2\pi i}\int_{c-iT}^{c+iT}\frac{X^{s}}{n^{s}}\,\frac{ds}{s}+\sum_{\substack{n \ge 1 \\ n \neq X}}a(n)\left[O\left(\frac{X^{c}}{n^{c}}\min\left(1,\frac{1}{T\left|\log\left(\frac{X}{n}\right)\right|}\right)+\d_{X}\frac{c}{T}\right)\right].
         \]
-        Since $D(s)$ converges absolutely we may move the sum inside of the big $O$-estimate, and moreover, the dominated convergence theorem implies we may interchange the sum and the integral. The statement of the lemme now follows.
+        Since $D(s)$ converges absolutely we may move the sum inside of the big $O$-estimate, and moreover, the dominated convergence theorem implies we may interchange the sum and the integral. The statement of the lemma follows.
       \end{proof}
 
-      There is a slighly weaker version of truncated Perron's formula that follows as a corollary:
+      There is a slighly weaker version of the truncated version of Perron's formula that follows as a corollary:
 
       \begin{corollary}
         Let $a(n)$ be the coefficients of some Dirichlet series $D(s)$ with finite and non-negative abscissa of absolute convergence $\s_{a}$. Then for any $c > \s_{a}$ and $T > 0$,
@@ -75,7 +77,7 @@
         \[
           \min\left(1,\frac{1}{T\left|\log\left(\frac{X}{n}\right)\right|}\right) <_{c} \frac{X^{c}}{T}.
         \]
-        The statement now follows from truncated Perron's formula.
+        The statement now follows from the truncated version of Perron's formula.
       \end{proof}
 
       There is also a version of Perron's formula where we add a smoothing function $\psi:[0,\infty) \to [0,\infty)$. These sums generally look like
@@ -135,9 +137,9 @@
         where the second to last estimate follows because $a < \Re(s) < b$ with $0 < a < b$. So the integral is bounded by a constant and the claim follows.
       \end{proof}
       
-      Now we can state our analog of Perron's formula:
+      Now we can prove the smoothed version of Perron's formula:
 
-      \begin{theorem}[Smoothed Perron's formula]\label{thm:Perron's_formula_with_test_function
+      \begin{theorem}[Perron's formula, smoothed version]\label{thm:Perron's_formula_with_test_function
       }
         Let $a(n)$ be the coefficients of some Dirichlet series $D(s)$ with finite and nonnegative abscissa of absolute convergence $\s_{a}$. Let $\psi:[0,\infty) \to [0,\infty)$ be a compactly supported smooth function. Then for any $c > \s_{a}$,
         \[
@@ -156,7 +158,7 @@
       \end{align*}
       \end{proof}
 
-      Smoothed Perron's formula is useful because it is often more versatile than working with Perron's formula directly. In this situation, improving the bounds for $A(X)$ often boils down to improving the abscissa of absolute convergence $\s_{a}$ or choosing appropriate functions $\psi$. The integral in the formula can be estimated by shifting the line of integration past the poles of $D(s)$ to obtain a main term and using \cref{prop:smoothing_function_Mellin_inverse_vertical_strips} and other estimates for $D(s)$. 
+      The smoothed version of Perron's formula is useful because it is often more versatile than working with Perron's formula directly. In this situation, improving the bounds for $A(X)$ often boils down to improving the abscissa of absolute convergence $\s_{a}$ or choosing appropriate functions $\psi$. The integral in the formula can be estimated by shifting the line of integration past the poles of $D(s)$ to obtain a main term and using \cref{prop:smoothing_function_Mellin_inverse_vertical_strips} and other estimates for $D(s)$.
     \section{The Petersson Trace Formula}
       From \cref{thm:newforms_characterization}, $\mc{S}_{k}(N,\chi)$ admits an orthonormal basis of primitive Hecke eigenforms. Call this basis $\{u_{j}\}_{1 \le j \le r}$ where $r$ is the dimension of $\mc{S}_{k}(N,\chi)$. Each of these cusp forms admits a Fourier series
       \[
