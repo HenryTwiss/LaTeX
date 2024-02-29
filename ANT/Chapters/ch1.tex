@@ -172,51 +172,50 @@
         \begin{enumerate}[label=(\roman*)]
           \item
           \[
-            \sum_{a \tmod{m}}\chi(a)\conj{\psi}(a) = \phi(m)\d_{\chi,\psi}.
+            \frac{1}{\phi(m)}\sum_{a \tmod{m}}\chi(a)\conj{\psi}(a) = \d_{\chi,\psi}.
           \]
           \item
           \[
-            \sum_{\chi \in \what{(\Z/m\Z)^{\ast}}}\chi(a)\cchi(b) = \phi(m)\d_{a,b}.
+            \frac{1}{\phi(m)}\sum_{\chi \in \what{(\Z/m\Z)^{\ast}}}\chi(a)\cchi(b) = \d_{a,b}.
           \]
         \end{enumerate}
       \end{proposition}
       \begin{proof}
         We will prove the statements separately.
         \begin{enumerate}[label=(\roman*)]
-          \item Denote the sum by $S$ and let $b \equiv 1 \tmod{m}$. Then $a \to ab$ is a bijection on $(\Z/m\Z)$ so that
+          \item Denote the left-hand side by $S$ and let $b \equiv 1 \tmod{m}$. Then $a \to ab$ is a bijection on $(\Z/m\Z)$ so that
           \[
             \chi(b)\conj{\psi}(b)\sum_{a \tmod{m}}\chi(a)\conj{\psi}(a) = \sum_{a \tmod{m}}\chi(ab)\conj{\psi}(ab) = \sum_{a \tmod{m}}\chi(a)\conj{\psi}(a).
           \]
-          Consquently $\chi(b)\conj{\psi}(b)S = S$ so that $S = 0$ unless $\chi(b)\conj{\psi}(b) = 1$ for all $b$. This latter case happens if and only if $\psi = \chi$ and so $S = \phi(m)$. This proves (i).
-          \item Denote the sum by $S$. Let $\psi$ be any Dirichlet character modulo $m$. Since the Dirichlet characters form a group,
+          Consquently $\chi(b)\conj{\psi}(b)S = S$ so that $S = 0$ unless $\chi(b)\conj{\psi}(b) = 1$ for all $b$. This happens if and only if $\psi = \chi$ in which case $S = 1$. This proves (i).
+          \item Denote the left-hand side by $S$. Let $\psi$ be any Dirichlet character modulo $m$. Since the Dirichlet characters form a group,
           \[
             \psi(a)\conj{\psi}(b)\sum_{\chi \in \what{(\Z/m\Z)^{\ast}}}\chi(a)\cchi(b) = \sum_{\chi \in \what{(\Z/m\Z)^{\ast}}}\psi\chi(a)\conj{\psi\chi}(b) = \sum_{\chi \in \what{(\Z/m\Z)^{\ast}}}\chi(a)\cchi(b).
           \]
-          Therefore $\psi(a)\conj{\psi}(b)S = S$ so that $S = 0$ unless both $a$ and $b$ are invertible modulo $m$ and $\psi(a)\conj{\psi}(b) = \psi(a\conj{b}) = 1$ for all $\psi$. This latter case happens if and only if $a \equiv b \tmod{m}$. To see this, suppose $a\conj{b} \neq 1 \tmod{m}$. Then taking $G = (\Z/m\Z)^{\ast}$ in the proof of \cref{prop:dual_character_isomorphism} and setting $\chi = \Phi(a\conj{b})$, we have that $\chi(a\conj{b})$ is the product of those primitive roots of unity whose orders are the prime power factors of $a\conj{b}$. So all of them have pairwise relatively prime order and hence cannot be $1$, a contradiction. So indeed $a \equiv b \tmod{m}$ and therefore $S = \phi(m)$. This proves (ii).
+          Therefore $\psi(a)\conj{\psi}(b)S = S$ so that $S = 0$ unless both $a$ and $b$ are invertible modulo $m$ and $\psi(a)\conj{\psi}(b) = \psi(a\conj{b}) = 1$ for all $\psi$. This latter case happens if and only if $a \equiv b \tmod{m}$. To see this, suppose $a\conj{b} \neq 1 \tmod{m}$. Then taking $G = (\Z/m\Z)^{\ast}$ in the proof of \cref{prop:dual_character_isomorphism} and setting $\chi = \Phi(a\conj{b})$, we have that $\chi(a\conj{b})$ is the product of those primitive roots of unity whose orders are the prime power factors of $a\conj{b}$. So all of them have pairwise relatively prime order and hence cannot be $1$, a contradiction. So indeed $a \equiv b \tmod{m}$ and therefore $S = 1$. This proves (ii).
         \end{enumerate}
       \end{proof}
 
       In practical settings, the orthogonality relations are often used in the following form:
 
       \begin{corollary}\label{cor:Dirichlet_orthogonality_relations}
-        Let $\chi$ be a Dirichlet character modulo $m$, and let $a$ and $b$ be any two integers. Then
+        Let $\chi$ be a Dirichlet character modulo $m$, and let $a$ be an integer modulo $m$. Then
         \begin{enumerate}[label=(\roman*)]
           \item
           \[
-            \sum_{a \tmod{m}}\chi(a) = \phi(m)\d_{\chi,\chi_{m,0}}.
+            \frac{1}{\phi(m)}\sum_{a \tmod{m}}\chi(a) = \d_{\chi,\chi_{m,0}}.
           \]
           \item
           \[
-            \sum_{\chi \in \what{(\Z/m\Z)^{\ast}}}\chi(a) = \phi(m)\d_{a,1},
+            \frac{1}{\phi(m)}\sum_{\chi \in \what{(\Z/m\Z)^{\ast}}}\chi(a) = \d_{a,1}.
           \]
-          where $a$ and $b$ are taken modulo $m$.
         \end{enumerate}
       \end{corollary}
       \begin{proof}
         For (i), take $\psi = \chi_{m,0}$ in \cref{prop:Dirichlet_orthogonality_relations} (i). For (ii), take $b \equiv 1 \tmod{m}$ in \cref{prop:Dirichlet_orthogonality_relations} (ii).
       \end{proof}
 
-      Now that we understad the basics of Dirichlet characters, we might be interested in computing them. This is not hard to do by hand for small $m$. For example, the table below gives the Dirichlet characters modulo $5$ where $i$ in $\chi_{5,i}$ is an indexing variable:
+      Now that we understand the basics of Dirichlet characters, we might be interested in computing them. This is not hard to do by hand for small $m$. For example, the table below gives the Dirichlet characters modulo $5$ where $i$ in $\chi_{5,i}$ is an indexing variable:
 
       \begin{center}
         \begin{stabular}[1.5]{|c|c|c|c|c|c|}
