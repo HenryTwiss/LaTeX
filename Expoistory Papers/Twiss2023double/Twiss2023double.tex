@@ -49,7 +49,7 @@
     If $\chi$ is a character then its conjugate $\conj{\chi}$ is also a character. Moreover, $\conj{\chi}$ is the multiplicative inverse to $\chi$ and the characters modulo $f$ form a group under multiplication. This group is always finite any denote its order by $\phi(f)$. Characters also satifty orthogonality properties:
 
     \begin{theorem}[Orthogonality relations]
-        Let $\chi$ and $\psi$ be Dirichlet character modulo $f$ and let $g$ and $h$ be two polynomials modulo $f$. Then
+        Let $\chi$ and $\psi$ be any two Dirichlets character modulo $f$ and let $g$ and $h$ be two polynomials modulo $f$. Then
         \begin{enumerate}[label=(\roman*)]
           \item
           \[
@@ -79,11 +79,11 @@
         \]
     \end{theorem}
 
-    Note that if $q \equiv 1 \tmod{4}$, the sign in the statement of quadratic reciprocity is always $1$ so that the reciprocity is perfect. We now describe the Hilbert symbols on $\F_{q}[t]$. In fact, there is only one non-trivial character $\psi$ defined by
+    Note that if $q \equiv 1 \tmod{4}$, the sign in the statement of quadratic reciprocity is always $1$ so that the reciprocity is perfect. We now describe the Hilbert symbols on $\F_{q}[t]$. In fact, there are only two Hilbert symbols, one non-trivial, and one trivial. The non-trivial Hilbert symbol is $\chi_{\t}$ where $\t \in \F^{\x}-(\F^{\x})^{2}$:
     \[
-        \psi(f) = (-1)^{\deg(f)}.
+        \chi_{\t}(f) = (-1)^{\deg(f)}.
     \]
-    The other Hilbert symbol is the trivial character $\psi^{2} = 1$. To see that $\psi$ is given by a quadratic residue symbol, just notice that for $\t \in \F^{\x}-(\F^{\x})^{2}$ we have $\chi_{\t}(f) = (-1)^{\deg(f)}$. Moreover, the trivial character is then given by $\chi_{1}$. We will find it more useful to denote the non-trivial Hilbert symbol by $\chi_{\t}$. In general, we denote a Hilbert symbol by $\chi_{a}$ where $a \in \{1,\t\}$.
+    Note that $\conj{\chi_{\t}} = \chi_{\t}$. The other Hilbert symbol is the trivial character $\chi_{\t}^{2} = \chi_{\t\t} = \chi_{1}$. In general, we denote a Hilbert symbol by $\chi_{a}$ where $a \in \{1,\t\}$.
 
     We can now define the $L$-functions attached to the symbol $\chi_{f}$ for not necessarily monic $f$. We define the $L$-series $L(s,\chi_{f})$ attached to $\chi_{f}$ by a Dirichlet series or Euler product:
     \[
@@ -168,7 +168,7 @@
         \]
     \end{proof}
 
-    The symmetry in the interchange is not typical of a larger reality. In more general setting the argument is more complicated than the proof presented. One does not usually arrive at such a nice symmetric expression because the correction polynomials in $w$ need not be equal to those in $s$. In other words, when $Z(s,w)$ is represented as a sum of $L$-functions in $s$ the corretion polynomials are $Q_{a_{1}f_{0}f_{1}^{2}}(s)$, but when $Z(s,w)$ is represented as a sum of $L$-functions in $w$ the correction polynomials take the form $P_{a_{2}g_{0}g_{1}^{2}}(w)$. In our setting, it is a special case that $P_{g_{0}g_{1}^{2}}(w) = Q_{g_{0}g_{1}^{2}}(w)$.
+    The symmetry in the interchange is not typical of a larger reality. In more general setting the argument is more complicated than the proof presented. One does not usually arrive at such a nice symmetric expression because the correction polynomials in $w$ need not be equal to those in $s$. In other words, when $Z(s,w)$ is represented as a sum of $L$-functions in $s$ the corretion polynomials are $Q_{a_{1}f_{0}f_{1}^{2}}(s)$, but when $Z(s,w)$ is represented as a sum of $L$-functions in $w$ the correction polynomials take the form $P_{a_{2}g_{0}g_{1}^{2}}(w)$. In our setting, it is a special case that these polnomials are the same when $f = g$ and $s = w$.
 
     \begin{remark}\label{rem:symmetry_of_Double_Dirichlet_series}
         When $a_{1} = a_{2} = 1$, the interchange implies that $Z(s,w)$ is symmetric in $s$ and $w$. That is,
@@ -219,7 +219,7 @@
     \]
     so that
     \[
-        Z_{a_{1},a_{2}}(s,w) = \sum_{\text{$g$ monic}}\frac{\chi_{a_{1}}(g)L(s,\what{\chi}_{a_{2}g})}{|g|^{w}}.
+        Z_{a_{1},a_{2}}(s,w) = \sum_{\text{$g$ monic}}\frac{\chi_{a_{1}}(g)L(w,\what{\chi}_{a_{2}g})}{|g|^{s}}.
     \]
     We can now derive an important relationship for the weighting coefficients. Equating the coefficients of the two expansions for $Z_{a_{1},a_{2}}(s,w)$ gives
     \[
@@ -403,49 +403,59 @@
     \[
         L^{\ast}(s,\what{\chi}_{a_{1}f}) = L^{\ast}(s,\chi_{a_{1}f_{0}})Q_{a_{1}f_{0}f_{1}^{2}}(s).
     \]
-    Combining \cref{thm:functional_equation_correction_polynomials}, the functional equation for $L^{\ast}(s,\chi_{a_{1}f_{0}})$, and noting that $\deg(f) \equiv \deg(f_{0}) \tmod{2}$, we obtain a functional equation for $L^{\ast}(s,\what{\chi}_{a_{1}f})$:
+    Combining \cref{thm:functional_equation_correction_polynomials}, the functional equation for $L^{\ast}(s,\chi_{a_{1}f_{0}})$, and that $\deg(f) \equiv \deg(f_{0}) \tmod{2}$, we obtain a functional equation for $L^{\ast}(s,\what{\chi}_{a_{1}f})$:
 
     \[
         L^{\ast}(s,\what{\chi}_{a_{1}f}) = \begin{cases} q^{2s-1}|f|^{\frac{1}{2}-s}L^{\ast}(1-s,\what{\chi}_{a_{1}f}) & \text{if $\deg(f)$ is even}, \\ q^{s-\frac{1}{2}}|f|^{\frac{1}{2}-s}L^{\ast}(1-s,\what{\chi}_{a_{1}f}) & \text{if $\deg(f)$ is odd}. \end{cases}
     \]
 
-    We would like the functional equation for $L^{\ast}(s,\what{\chi}_{a_{1}f})$ to induce a functional equation for $Z_{a_{1},a_{2}}(s,w)$ but there is one technical issue. The gamma factors for $L^{\ast}(s,\what{\chi}_{a_{1}f})$ depend upon the degree of $f$ and in order to obtain a functional equation we need the gamma factors to be constant. We will be able to move past this obstruction by exploiting the orthogonality of characters, in particular, the Hilbert symbols. \todo{xxxx}
-    
-    Define $Z_{\text{even}}(s,w)$ and $Z_{\text{odd}}(z,w)$ by
+    We would like the functional equation for $L^{\ast}(s,\what{\chi}_{a_{1}f})$ to induce a functional equation for $Z_{a_{1},a_{2}}(s,w)$ but there is one technical issue. The gamma factors for $L^{\ast}(s,\what{\chi}_{a_{1}f})$ depend upon the degree of $f$ and in order to obtain a functional equation we need the gamma factors to be constant. We will be able to move past this obstruction by exploiting the orthogonality for characters, in particular, the Hilbert symbols. Define $Z_{a_{1},a_{2}}^{+}(s,w)$ and $Z_{a_{1},a_{2}}^{-}(z,w)$ by
     \[
-        Z_{\text{even}}(s,w) = \frac{Z(s,w)+Z_{1,\t}(z,w)}{2} \quad \text{and} \quad Z_{\text{odd}}(s,w) = \frac{Z(s,w)-{Z_{1,\t}(z,w)}}{2}.
+        Z_{a_{1},a_{2}}^{+}(s,w) = \frac{Z_{a_{1},a_{2}}(s,w)+Z_{a_{1},\t a_{2}}(z,w)}{2} \quad \text{and} \quad Z_{a_{1},a_{2}}^{-}(s,w) = \frac{Z_{a_{1},a_{2}}(s,w)-{Z_{a_{1},\t a_{2}}(z,w)}}{2}.
     \]
-    In terms of the representations
+    In terms of the representation
     \[
-        Z(s,w) = \sum_{\text{$f$ monic}}\frac{L(s,\what{\chi}_{f})}{|f|^{w}} = \sum_{\text{$g$ monic}}\frac{L(w,\what{\chi}_{g})}{|g|^{s}},
+        Z_{a_{1},a_{2}}(s,w) = \sum_{\text{$f$ monic}}\frac{\chi_{a_{2}}(f)L(s,\what{\chi}_{a_{1}f})}{|f|^{w}},
     \]
-    given by the interchange we see that $Z_{\text{even}}(s,w)$ is the subseries containing only those $f$ (or $g$) with even degree and $Z_{\text{odd}}(s,w)$ is the subseries containing only those $f$ (or $g$) with odd degree. As $Z_{\text{even}}(s,w)$ and $Z_{\text{odd}}(s,w)$ are sums of $L$-functions with a fixed gamma factor we can obtain functional equations for them. The fact that $Z(s,w)$ is a linear combination of these series will induce a function equation for $Z(s,w)$ in terms of $Z(s,w)$ and $Z_{1,\t}(s,w)$:
+    and the orthogonality relation (ii) for the Hilbert symbols, we see that $Z_{a_{1},a_{2}}^{\pm}(s,w)$ is the subseries containing only those $f$ with $\chi_{\t}(f) = \pm 1$. Equivalently, $Z_{a_{1},a_{2}}^{+}(s,w)$ and $Z_{a_{1},a_{2}}^{-}(s,w)$ are the subseries consisting of only thos $f$ with even and odd degree respectively. But then $Z_{a_{1},a_{2}}^{+}(s,w)$ and $Z_{a_{1},a_{2}}^{-}(s,w)$ are sums of $L$-functions with a fixed gamma factor we can obtain functional equations for them. The fact that $Z_{a_{1},a_{2}}(s,w)$ is a linear combination of these series will induce a function equation for $Z_{a_{1},a_{2}}(s,w)$ in terms of other twisted double Dirichlet series:
 
     \begin{theorem}\label{thm:double_Dirichlet_series_functional_equation}
-        $Z(s,w)$ admits the functional equations
+        $Z_{a_{1},a_{2}}(s,w)$ admits the functional equations
         \begin{align*}
-            Z(s,w) = \frac{1}{2}\left(\frac{q^{2s-1}(1-q^{-s})}{1-q^{s-1}}+q^{s-\frac{1}{2}}\right)&Z\left(1-s,s+w-\frac{1}{2}\right) \\
-            &+\frac{1}{2}\left(\frac{q^{2s-1}(1-q^{-s})}{1-q^{s-1}}-q^{s-\frac{1}{2}}\right)Z_{1,\t}\left(1-s,s+w-\frac{1}{2}\right),
+            Z_{a_{1},a_{2}}(s,w) = \frac{1}{2}\left(\frac{q^{2s-1}(1-q^{-s})}{1-q^{s-1}}+q^{s-\frac{1}{2}}\right)&Z_{a_{1},a_{2}}\left(1-s,s+w-\frac{1}{2}\right) \\
+            &+\frac{1}{2}\left(\frac{q^{2s-1}(1-q^{-s})}{1-q^{s-1}}-q^{s-\frac{1}{2}}\right)Z_{a_{1},\t a_{2}}\left(1-s,s+w-\frac{1}{2}\right),
         \end{align*}
         and
         \begin{align*}
-            Z(s,w) = \frac{1}{2}\left(\frac{q^{2w-1}(1-q^{-w})}{1-q^{w-1}}+q^{w-\frac{1}{2}}\right)&Z\left(s+w-\frac{1}{2},1-w\right) \\
-            &+\frac{1}{2}\left(\frac{q^{2w-1}(1-q^{-w})}{1-q^{w-1}}-q^{w-\frac{1}{2}}\right)Z_{1,\t}\left(s+w-\frac{1}{2},1-w\right).
+            Z_{a_{1},a_{2}}(s,w) = \frac{1}{2}\left(\frac{q^{2w-1}(1-q^{-w})}{1-q^{w-1}}+q^{w-\frac{1}{2}}\right)&Z_{a_{2},a_{1}}\left(s+w-\frac{1}{2},1-w\right) \\
+            &+\frac{1}{2}\left(\frac{q^{2w-1}(1-q^{-w})}{1-q^{w-1}}-q^{w-\frac{1}{2}}\right)Z_{a_{2},\t a_{1}}\left(s+w-\frac{1}{2},1-w\right).
         \end{align*}
     \end{theorem}
     \begin{proof}
-        From the interchange, the correction polynomials when $Z(s,w)$ is represented a sum of $L$-functions is $s$ are the same as those when $Z(s,w)$ is represented as a sum of $L$-functions in $w$. Therefore it only suffices to prove the first functional equation as the second one will follow by symmetry. The functional equation for the $L$-function attached to a quadratic residue symbol induces the functional equations
+        As the interchange implies $Z_{a_{1},a_{2}}(s,w) = Z_{a_{2},a_{1}}(w,s)$, the second functional equation will follow from the first one. The functional equation for the $L$-function attached to a quadratic residue symbol induces the functional equations
         \[
-            Z_{\text{even}}(s,w) = \frac{q^{2s-1}(1-q^{-s})}{1-q^{s-1}}Z_{\text{even}}\left(1-s,s+w-\frac{1}{2}\right) \quad \text{and} \quad Z_{\text{odd}}(s,w) = q^{s-\frac{1}{2}}Z_{\text{odd}}\left(1-s,s+w-\frac{1}{2}\right).
+            Z_{a_{1},a_{2}}^{+}(s,w) = \frac{q^{2s-1}(1-q^{-s})}{1-q^{s-1}}Z_{a_{1},a_{2}}^{+}\left(1-s,s+w-\frac{1}{2}\right),
         \]
-        As $Z(s,w) = Z_{\text{even}}(s,w)+Z_{\text{odd}}(s,w)$, the functional equations just stated give
+        and
         \[
-            Z(s,w) = \frac{q^{2s-1}(1-q^{-s})}{1-q^{s-1}}Z_{\text{even}}\left(1-s,s+w-\frac{1}{2}\right)+q^{s-\frac{1}{2}}Z_{\text{odd}}\left(1-s,s+w-\frac{1}{2}\right).
+            Z_{a_{1},a_{2}}^{-}(s,w) = q^{s-\frac{1}{2}}Z_{a_{1},a_{2}}^{-}\left(1-s,s+w-\frac{1}{2}\right).
         \]
-        The desired functional equation for $Z(s,w)$ follows by expressing the even and odd double Dirichlet series in terms of $Z(s,w)$ and $Z_{1,\t}(s,w)$.
+        Since $Z_{a_{1},a_{2}}(s,w) = Z_{a_{1},a_{2}}^{+}(s,w)+Z_{a_{1},a_{2}}^{-}(s,w)$ the functional equations just stated give
+        \[
+            Z_{a_{1},a_{2}}(s,w) = \frac{q^{2s-1}(1-q^{-s})}{1-q^{s-1}}Z_{a_{1},a_{2}}^{+}\left(1-s,s+w-\frac{1}{2}\right)+q^{s-\frac{1}{2}}Z_{a_{1},a_{2}}^{-}\left(1-s,s+w-\frac{1}{2}\right).
+        \]
+        The desired functional equation for $Z_{a_{1},a_{2}}(s,w)$ follows by expressing $Z_{a_{1},a_{2}}^{\pm}(s,w)$ in terms of $Z_{a_{1},a_{2}}(s,w)$ and $Z_{a_{1},\t a_{2}}(s,w)$.
     \end{proof}
 
-    In more general settings, the functional equations for $Z(s,w)$ need not be so symmetric. Indeed, when the correction polynomials $P_{g_{0}g_{1}^{2}}(w)$ are not of the form $Q_{f_{0}f_{1}^{2}}(s)$, we require functional equations for both of these correction polynomials. We then have to use each functional equation for each correction polynomial to deduce functional equations for $Z(s,w)$ of shape $s \to 1-s$ and $w \to 1-w$. From \cref{thm:double_Dirichlet_series_functional_equation} we have two functional equations of shapes
+    We can more compactly state \cref{thm:double_Dirichlet_series_functional_equation} in vector form. To do this, define
+    \[
+        \mathbf{Z}(s,w) = \begin{pmatrix} Z_{1,1}(s,w) \\ Z_{1,\t}(s,w) \\ Z_{\t,1}(s,w) \\ Z_{\t,\t}(s,w) \end{pmatrix}.
+    \]
+    Then \cref{thm:double_Dirichlet_series_functional_equation} implies the existance of a $4 \x 4$ matrix $\Phi(s,w)$ such that
+    \[
+        \mathbf{Z}\left(1-s,s+w-\frac{1}{2}\right) = \Phi(s,w)\mathbf{Z}(s,w) \quad \text{and} \quad \mathbf{Z}\left(1-s,s+w-\frac{1}{2}\right) = \Phi(w,s)\mathbf{Z}(s,w).
+    \]
+    In more general settings, the functional equations for $Z_{a_{1},a_{2}}(s,w)$ need not be so symmetric. Indeed, when the correction polynomials $P_{g_{0}g_{1}^{2}}(w)$ are not of the form $Q_{f_{0}f_{1}^{2}}(s)$, we require functional equations for both of these correction polynomials. We then have to use each functional equation for each correction polynomial. Moreover, if there are more Hilbert symbols we need a more refined decomposition of $Z_{a_{1},a_{2}}(s,w)$ corresponding to the orthogonality relations. In any case, from \cref{thm:double_Dirichlet_series_functional_equation} we have two functional equations of shapes
     \[
         \s_{1}:(s,w) \to \left(1-s,s+w-\frac{1}{2}\right) \quad \text{and} \quad \s_{2}:(s,w) \to \left(s+w-\frac{1}{2},1-w\right).
     \]
@@ -457,9 +467,9 @@
     \[
         W = \<\s_{1},\s_{2}:\s_{1}^{2} = \s_{2}^{2} = (\s_{1}\s_{2})^{3} = 1\> \cong D_{6} \cong S_{3}.
     \]
-    For convience we will set $w_{0} = \s_{1}\s_{2}\s_{1} = \s_{2}\s_{1}\s_{2}$. It follows that $Z(s,w)$ doesn't just posess two functional equations, it has a group of $6$ functional equations. Actually, if we include the functional equation $(s,w) \to (w,s)$ coming from the fact that $Z(s,w)$ is symmetric in $s$ and $w$, there are $12$ functional equations and the group is isomorphic to $D_{12}$. We can use these functional equations to meromorphically continue $Z(s,w)$ to the entire $(s,w)$-plane.
+    For convience we will set $w_{0} = \s_{1}\s_{2}\s_{1} = \s_{2}\s_{1}\s_{2}$. It follows that $Z_{a_{1},a_{2}}(s,w)$ doesn't just posess two functional equations, it has a group of $6$ functional equations. Actually, if we include the functional equation $(s,w) \to (w,s)$ coming from the interchange, there are $12$ functional equations and the group is isomorphic to $D_{12}$. We can use these functional equations to meromorphically continue $Z(s,w)$ to the entire $(s,w)$-plane.
 \section{Meromorphic Continuation}
-    Now it is time to establish the meromorphic continuation of $Z(s,w)$ to the entire $(s,w)$-plane. We will start by describing the action of $W$ on the $(s,w)$-plane geometrically. First, it is easy to see from the definition of the actions $\s_{1}$ and $\s_{2}$ that there is a unique $W$-invariant point $\left(\frac{1}{2},\frac{1}{2}\right)$. Representing the point $(s,w)$ by $(\Re(s),\Re(w))$ we have a geometric visualization of the action of $W$ on the $(s,w)$-plane:
+    Now it is time to establish the meromorphic continuation of $Z(s,w)$ to the entire $(s,w)$-plane. We could do this for each twisted double Dirichlet series $Z_{a_{1},a_{2}}(s,w)$, but we will not need this level of generality here or further on. We will start by describing the action of $W$ on the $(s,w)$-plane geometrically. First, it is easy to see from the definition of the actions $\s_{1}$ and $\s_{2}$ that there is a unique $W$-invariant point $\left(\frac{1}{2},\frac{1}{2}\right)$. Representing the point $(s,w)$ by $(\Re(s),\Re(w))$ we have a geometric visualization of the action of $W$ on the $(s,w)$-plane:
 
     \begin{center}
         \begin{tikzpicture}[scale=3]
@@ -584,7 +594,7 @@
         \end{tikzpicture}
     \end{center}
 
-    Because the functional equation for $Z(s,w)$ involves both $Z(s,w)$ and $Z_{1,\psi}(s,w)$, it was necessarily to analytically continue both of these double Dirichlet series to $\L_{0}$ before we applied the functional equation. Now $\L_{12}$ is a connected tube domain whose convex hull is $\C^{2}$. So by applying Bochner's continuation theorem (or rather our comment for meromorphic functions) we see that $Z(s,w)$ admits meromorphic continuation to the $(s,w)$-plane with at most a finite set of polar divisors. This method is better than repeatedly applying the functional equations corresponding to every $w \in W$. Indeed, if we did we would obtain meromorphic continuation to the region
+    Because the functional equation for $Z(s,w)$ involves both $Z(s,w)$ and $Z_{1,\t}(s,w)$, it was necessarily to analytically continue both of these double Dirichlet series to $\L_{0}$ before we applied the functional equation. Now $\L_{12}$ is a connected tube domain whose convex hull is $\C^{2}$. So by applying Bochner's continuation theorem (or rather our comment for meromorphic functions) we see that $Z(s,w)$ admits meromorphic continuation to the $(s,w)$-plane with at most a finite set of polar divisors. This method is better than repeatedly applying the functional equations corresponding to every $w \in W$. Indeed, if we did we would obtain meromorphic continuation to the region
     \[
         \L_{W} = \bigcup_{w \in W} w\L_{0}.
     \]
