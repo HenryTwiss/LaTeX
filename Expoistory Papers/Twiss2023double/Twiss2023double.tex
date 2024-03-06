@@ -13,7 +13,7 @@
 \begin{document}
 
 \begin{abstract}
-    We construct a double Dirichlet series $Z(s,w)$ built from single variable Dirichlet $L$-functions $L(s,\chi)$ attached to the functional field $\F_{q}(t)$. We prove that $Z(s,w)$ admits meromorphic continuation to the $(s,w)$-plane and satisfies a group of functional equations. We also outline an application of the usefulness of $Z(s,w)$ and show that $Z(s,w)$ is a rational function in $x = q^{-s}$ and $y = q^{-w}$. This is the simplest construction of a Weyl group multiple Dirichlet series over a global field.
+    We construct a double Dirichlet series $Z(s,w)$ built from single variable Dirichlet $L$-functions $L(s,\chi)$ attached to the functional field $\F_{q}(t)$. We prove that $Z(s,w)$ admits meromorphic continuation to the $(s,w)$-plane and satisfies a group of functional equations. We also outline an application of the usefulness of $Z(s,w)$ and show that it is a rational function in $x = q^{-s}$ and $y = q^{-w}$. This is the simplest construction of a Weyl group multiple Dirichlet series over a global field.
 \end{abstract}
 
 \maketitle
@@ -39,13 +39,29 @@
     \[
         \z^{\ast}(s) = q^{2s-1}\z^{\ast}(1-s).
     \]
-    Recall that characters on $\F_{q}[t]$ are multiplicative functions to the complex numbers. The two flavors we care about are:
+    Recall that characters on $\F_{q}[t]$ are multiplicative functions $\chi:\F_{q}[t] \to \C$. Their image always lands in the roots of unity. The two flavors of characters are:
     
     \begin{itemize}
-        \item Dirichlet characters: multiplicative functions to the complex numbers $\chi_{f}$ that are $f$-periodic for some $f \in \F_{q}[t]$ and such that $\chi_{f}(g) = 0$ if $(f,g) > 1$.
+        \item Dirichlet characters: multiplicative functions $\chi_{f}:\F_{q}[t] \to \C$ modulo $f \in \F_{q}[t]$ (in that they are $f$-periodic) and such that $\chi_{f}(g) = 0$ if $(f,g) > 1$.
         \item Hilbert symbols: Dirichlet characters modulo $1$.
     \end{itemize}
     
+    If $\chi$ is a character then its conjugate $\conj{\chi}$ is also a character. Moreover, $\conj{\chi}$ is the multiplicative inverse to $\chi$ and the characters modulo $f$ form a group under multiplication. This group is always finite any denote its order by $\phi(f)$. Characters also satifty orthogonality properties:
+
+    \begin{theorem}[Orthogonality relations]
+        Let $\chi$ and $\psi$ be Dirichlet character modulo $f$ and let $g$ and $h$ be two polynomials modulo $f$. Then
+        \begin{enumerate}[label=(\roman*)]
+          \item
+          \[
+            \frac{1}{\phi(f)}\sum_{g \tmod{f}}\chi(g)\conj{\psi}(g) = \d_{\chi,\psi}.
+          \]
+          \item
+          \[
+            \frac{1}{\phi(f)}\sum_{\chi \tmod{f}}\chi(g)\cchi(h) = \d_{g,h}.
+          \]
+        \end{enumerate}
+    \end{theorem}
+
     The Dirichlet characters that are of interest to us are those given by the quadratic residue symbol on $\F_{q}[t]$. If $f \in \F_{q}[t]$ is a monic non-constant irreducible, define the quadratic residue symbol $\chi_{f}$ by
     \[
         \chi_{f}(g) = \legendre{f}{g} = g^{\frac{|f|-1}{2}} \pmod{f},
@@ -333,15 +349,15 @@
         \]
         is the Dirichlet series
         \[
-            \chi_{a_{2}}(f)L(s,\what{\chi}_{f}) = \chi_{a_{2}}(f)L(s,\chi_{a_{1}f_{0}})Q_{a_{1}f_{0}f_{1}^{2}f_{2}^{2}}(s) = \chi_{a_{2}}(f)\sum_{\text{$g$ monic}}\frac{\chi_{a_{1}f_{0}}(\what{g})a(f,g)}{|g|^{s}}.
+            \chi_{a_{2}}(f)L(s,\what{\chi}_{a_{1}f}) = \chi_{a_{2}}(f)L(s,\chi_{a_{1}f_{0}})Q_{a_{1}f_{0}f_{1}^{2}f_{2}^{2}}(s) = \chi_{a_{2}}(f)\sum_{\text{$g$ monic}}\frac{\chi_{a_{1}f_{0}}(\what{g})a(f,g)}{|g|^{s}}.
         \]
-        By \cref{prop:multiplicativity_of_weighting_coefficients} the coefficients of $L(s,\what{\chi}_{f})$ are multiplicative. Therefore $L(s,\what{\chi}_{f})$ admits the Euler product
+        By \cref{prop:multiplicativity_of_weighting_coefficients} the coefficients of $L(s,\what{\chi}_{a_{1}f})$ are multiplicative. Therefore $L(s,\what{\chi}_{a_{1}f})$ admits the Euler product
         \[
-            L(s,\what{\chi}_{f}) = \prod_{P}\left(\sum_{k \ge 0}\frac{\chi_{a_{1}f_{0}}(\what{P^{k}})a(f,P^{k})}{|P|^{ks}}\right).
+            L(s,\what{\chi}_{a_{1}f}) = \prod_{P}\left(\sum_{k \ge 0}\frac{\chi_{a_{1}f_{0}}(\what{P^{k}})a(f,P^{k})}{|P|^{ks}}\right).
         \]
         Decomposing the product according to irreducibles dividing $f = f_{0}f_{1}^{2}f_{2}^{2}$, we see that
         \begin{align*}
-            & L(s,\what{\chi}_{f}) \\
+            & L(s,\what{\chi}_{a_{1}f}) \\
             &= \prod_{P}\left(\sum_{k \ge 0}\frac{\chi_{a_{1}f_{0}}(\what{P^{k}})a(f,P^{k})}{|P|^{ks}}\right) \\
             &= \prod_{P \nmid f}\left(\sum_{k \ge 0}\frac{\chi_{a_{1}f_{0}}(\what{P^{k}})a(1,P^{k})}{|P|^{ks}}\right)\prod_{P^{\a} \mid\mid f_{1}}\left(\sum_{k \ge 0}\frac{\chi_{a_{1}f_{0}}(\what{P^{k}})a(P^{2\a+1},P^{k})}{|P|^{ks}}\right) \cdot \prod_{P^{\b} \mid\mid f_{2}}\left(\sum_{k \ge 0}\frac{\chi_{a_{1}f_{0}}(\what{P^{k}})a(P^{\b},P^{k})}{|P|^{ks}}\right) \\
             &= \prod_{P \nmid f}\left(\sum_{k \ge 0}\frac{\chi_{a_{1}f_{0}}(\what{P^{k}})}{|P|^{ks}}\right)\prod_{P^{\a} \mid\mid f_{1}}\left(\sum_{k \ge 0}\frac{\chi_{a_{1}f_{0}}(\what{P^{k}})a(P^{2\a+1},P^{k})}{|P|^{ks}}\right) \cdot \prod_{P^{\b} \mid\mid f_{2}}\left(\sum_{k \ge 0}\frac{\chi_{a_{1}f_{0}}(\what{P^{k}})a(P^{\b},P^{k})}{|P|^{ks}}\right) \\
@@ -357,43 +373,45 @@
         \]
         But then upon canceling the $\chi_{a_{2}}(f)$ term, we have
         \[
-            L(s,\what{\chi}_{f}) = L(s,\chi_{a_{1}f_{0}})Q_{a_{1}f_{0}f_{1}^{2}f_{2}^{2}}(s) = L(s,\chi_{a_{1}f_{0}}) \cdot \prod_{P^{\a} \mid\mid f_{1}}Q_{P^{2\a+1}}(s) \cdot \prod_{P^{\b} \mid\mid f_{2}}Q_{a_{1}f_{0}P^{2\b}}(s),
+            L(s,\what{\chi}_{a_{1}f}) = L(s,\chi_{a_{1}f_{0}})Q_{a_{1}f_{0}f_{1}^{2}f_{2}^{2}}(s) = L(s,\chi_{a_{1}f_{0}}) \cdot \prod_{P^{\a} \mid\mid f_{1}}Q_{P^{2\a+1}}(s) \cdot \prod_{P^{\b} \mid\mid f_{2}}Q_{a_{1}f_{0}P^{2\b}}(s),
         \]
         and the proof is complete.
     \end{proof}
 
     It is worth noting that for $f = f_{0}f_{1}^{2}f_{2}^{2}$, the irreducible factors that divide $f_{1}f_{2}$ are exactly those factors that divide $f$ to power larger than $1$. In particular, from \cref{thm:correction_polynomial_Euler_product} we see that the Euler product for $Q_{a_{1}f_{0}f_{1}^{2}f_{2}^{2}}(s)$ is supported on exactly the primes dividing $f$ to order larger than $1$ but also depends upon the character $\chi_{a_{1}f_{0}}$. Also, \cref{thm:correction_polynomial_Euler_product} is typical of a larger reality. In more general settigns when the correction polynomials $P_{a_{2}g_{0}g_{1}^{2}}(w)$ on the other side of the interchange are not of the form $Q_{a_{1}f_{0}f_{1}^{2}}(s)$, the correction polynomials $P_{a_{2}g_{0}g_{1}^{2}}(w)$ still posess Euler products.
 \section{Functional Equations}
-    Returning to the double Dirichlet series $Z(s,w)$, we are ready to derive functional equations. In order to do this we require a functional equation for $L(s,\what{\chi}_{f})$ which ammounts to having a functional equation for the correction polynomials $Q_{f_{0}f_{1}^{2}}(s)$:
+    We are now ready to derive functional equations for $Z_{a_{1},a_{2}}(s,w)$. In order to do this we require a functional equation for $L(s,\what{\chi}_{a_{1}f})$ which amounts to having a functional equation for the correction polynomials $Q_{a_{1}f_{0}f_{1}^{2}}(s)$:
 
     \begin{theorem}\label{thm:functional_equation_correction_polynomials}
-        $Q_{f_{0}f_{1}^{2}}(s)$ admits the functional equation.
+        $Q_{a_{1}f_{0}f_{1}^{2}}(s)$ admits the functional equation.
         \[
-            Q_{f_{0}f_{1}^{2}}(s) = |f_{1}|^{1-2s}Q_{f_{0}f_{1}^{2}}(1-s).
+            Q_{a_{1}f_{0}f_{1}^{2}}(s) = |f_{1}|^{1-2s}Q_{a_{1}f_{0}f_{1}^{2}}(1-s).
         \]
     \end{theorem}
     \begin{proof}
         The idea is that $e_{2}$ and $e_{3}$ are interchangeed in the sum. The computation is simple:
         \begin{align*}
-            |f_{1}|^{1-2s}Q_{f_{0}f_{1}^{2}}(1-s) &= |f_{1}|^{1-2s}\sum_{e_{1}e_{2}e_{3} = f_{1}}\mu(e_{1})\chi_{f_{0}}(e_{1})|e_{1}|^{s-1}|e_{2}|^{2s-1} \\
-            &= \sum_{e_{1}e_{2}e_{3} = f_{1}}\mu(e_{1})\chi_{f_{0}}(e_{1})|e_{1}|^{s-1}\left|\frac{f_{1}}{e_{2}}\right|^{1-2s} \\
-            &= \sum_{e_{1}e_{2}e_{3} = f_{1}}\mu(e_{1})\chi_{f_{0}}(e_{1})|e_{1}|^{s-1}|e_{1}e_{3}|^{1-2s} \\
-            &= \sum_{e_{1}e_{2}e_{3} = f_{1}}\mu(e_{1})\chi_{f_{0}}(e_{1})|e_{1}|^{-s}|e_{3}|^{1-2s} \\
-            &= Q_{f_{0}f_{1}^{2}}(s).
+            |f_{1}|^{1-2s}Q_{f_{0}f_{1}^{2}}(1-s) &= |f_{1}|^{1-2s}\sum_{e_{1}e_{2}e_{3} = f_{1}}\mu(e_{1})\chi_{a_{1}f_{0}}(e_{1})|e_{1}|^{s-1}|e_{2}|^{2s-1} \\
+            &= \sum_{e_{1}e_{2}e_{3} = f_{1}}\mu(e_{1})\chi_{a_{1}f_{0}}(e_{1})|e_{1}|^{s-1}\left|\frac{f_{1}}{e_{2}}\right|^{1-2s} \\
+            &= \sum_{e_{1}e_{2}e_{3} = f_{1}}\mu(e_{1})\chi_{a_{1}f_{0}}(e_{1})|e_{1}|^{s-1}|e_{1}e_{3}|^{1-2s} \\
+            &= \sum_{e_{1}e_{2}e_{3} = f_{1}}\mu(e_{1})\chi_{a_{1}f_{0}}(e_{1})|e_{1}|^{-s}|e_{3}|^{1-2s} \\
+            &= Q_{a_{1}f_{0}f_{1}^{2}}(s).
         \end{align*}
     \end{proof}
 
     Define the completed $L$-function
     \[
-        L^{\ast}(s,\what{\chi}_{f}) = L^{\ast}(s,\chi_{f_{0}})Q_{f_{0}f_{1}^{2}}(s).
+        L^{\ast}(s,\what{\chi}_{a_{1}f}) = L^{\ast}(s,\chi_{a_{1}f_{0}})Q_{a_{1}f_{0}f_{1}^{2}}(s).
     \]
-    Combining \cref{thm:functional_equation_correction_polynomials}, the functional equation for $L^{\ast}(s,\chi_{f_{0}})$, and noting that $\deg(f) \equiv \deg(f_{0}) \tmod{2}$, we obtain a functional equation for $L^{\ast}(s,\what{\chi}_{f})$:
+    Combining \cref{thm:functional_equation_correction_polynomials}, the functional equation for $L^{\ast}(s,\chi_{a_{1}f_{0}})$, and noting that $\deg(f) \equiv \deg(f_{0}) \tmod{2}$, we obtain a functional equation for $L^{\ast}(s,\what{\chi}_{a_{1}f})$:
 
     \[
-        L^{\ast}(s,\what{\chi}_{f}) = \begin{cases} q^{2s-1}|f|^{\frac{1}{2}-s}L^{\ast}(1-s,\what{\chi}_{f}) & \text{if $\deg(f)$ is even}, \\ q^{s-\frac{1}{2}}|f|^{\frac{1}{2}-s}L^{\ast}(1-s,\what{\chi}_{f}) & \text{if $\deg(f)$ is odd}. \end{cases}
+        L^{\ast}(s,\what{\chi}_{a_{1}f}) = \begin{cases} q^{2s-1}|f|^{\frac{1}{2}-s}L^{\ast}(1-s,\what{\chi}_{a_{1}f}) & \text{if $\deg(f)$ is even}, \\ q^{s-\frac{1}{2}}|f|^{\frac{1}{2}-s}L^{\ast}(1-s,\what{\chi}_{a_{1}f}) & \text{if $\deg(f)$ is odd}. \end{cases}
     \]
 
-    We would like the functional equation for $L^{\ast}(s,\what{\chi}_{f})$ to induce a functional equation for $Z(s,w)$ but there is one technical issue. The gamma factors for $L^{\ast}(s,\what{\chi}_{f})$ depend upon the degree of $f$ and in order to obtain a functional equation we need the gamma factors to be constant. We will be able to move past this obstruction by using the twisted double Dirichlet series $Z_{1,\t}(s,w)$. Define $Z_{\text{even}}(s,w)$ and $Z_{\text{odd}}(z,w)$ by
+    We would like the functional equation for $L^{\ast}(s,\what{\chi}_{a_{1}f})$ to induce a functional equation for $Z_{a_{1},a_{2}}(s,w)$ but there is one technical issue. The gamma factors for $L^{\ast}(s,\what{\chi}_{a_{1}f})$ depend upon the degree of $f$ and in order to obtain a functional equation we need the gamma factors to be constant. We will be able to move past this obstruction by exploiting the orthogonality of characters, in particular, the Hilbert symbols. \todo{xxxx}
+    
+    Define $Z_{\text{even}}(s,w)$ and $Z_{\text{odd}}(z,w)$ by
     \[
         Z_{\text{even}}(s,w) = \frac{Z(s,w)+Z_{1,\t}(z,w)}{2} \quad \text{and} \quad Z_{\text{odd}}(s,w) = \frac{Z(s,w)-{Z_{1,\t}(z,w)}}{2}.
     \]
