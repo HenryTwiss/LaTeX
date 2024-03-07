@@ -1,0 +1,571 @@
+\chapter{Non-vanishing Results for \texorpdfstring{$L$}{L}-functions}\label{ch:Selected_topics_in_L-functions}
+  This chapter is special in that it is the first time we see how $L$-functions can be used to prove interesting arithmetic results. Namely, we prove two crowing germs of analytic number theory: Dirichlet's theorem on primes in arithmetic progressions and the prime number theorem. The first of these two theorems, is a consequence of a non-vanishing results for Dirichlet $L$-functions at $s = 1$. This should give sufficient motivation for the study of non-vanishing results so after proving Dirichlet's result, we prove two stronger non-vanishing theorems: one for the Riemann zeta function and the other for Dirichlet $L$-functions. We then use the non-vanishing result for the Riemann zeta function to prove the other crowning gem of analytic number theory: the prime number theorem. These results are important not only because they are famous and were sought after, but because many other analytic techniques we will devlope will be used to prove generalizations and sharper versions of both Dirichlet theorem on primes in arithmetic progressions and the prime number theorem. For example, after devloping some additional machinery in the later chapters we will give another proof of the prime number theorem that is more easily generalizable to other settings.
+
+  As for what a non-vanishing result is, given an $L$-function $L(s)$ admitting meromorphic continuation to $\C$ and a functional equation of shape $s \to 1-s$, it is an interesting question to ask for which $s$, $L(s) \neq 0$. A result that says for $s = s_{0}$, $L(s_{0}) \neq 0$ is known as a \textbf{non-vanishing result}\index{non-vanishing result}. Non-vanishing results tend to have very important consequences about the arithmetic of $\Z$ since $L$-functions are encoding arithmetic information. Some particularly important cases are when $s = \frac{1}{2}$, $s = 1$, or more generally when $s$ is either on the critical line or the right boundary of the critical strip (the left boundary is immediate from the functional equation).
+    \section{Dirichlet's Theorem on Primes in Arithmetic Progressions}
+      One of the more well-known arithmetic results proved using $L$-functions is \textbf{Dirichlet's theorem on primes in arithmetic progressions}\index{Dirichlet's theorem on primes in arithmetic progressions}:
+
+      \begin{theorem}[Dirichlet's theorem on primes in arithmetic progressions]\label{thm:Dirichlet's_theorem_on_primes_in_arithmetic_progressions}
+        Let $a$ and $m$ be positive integers such that $(a,m) = 1$. Then the arithmetic progression $\{a+km \mid k \in \N\}$ contain infinitely many primes.
+      \end{theorem}
+
+      We will delay the proof for the moment, for it is well-worth understanding the some of the motivation behind why this theorem is interesting and how exactly Dirichlet used the analytic techniques of $L$-functions to attack this purely arithmetic statement. We being by recalling Euclid's famous theorem on the infitude of the primes. Euclid's proof is completely elementary and arithmetic in nature. He argues that if there were finitely many primes $p_{1},p_{2},\ldots,p_{k}$ then a short consideration of $(p_{1}p_{2} \cdots p_{k})+1$ shows that this number must either be divisible by a prime not in our list or must be prime itself. As primes are the multiplicative building blocks of arithmetic, Euclid assures us that we have an ample amount of prime clay to work with. Now there is a slightly stronger result due to Euler (see \cite{euler1737variae}) requiring analytic techniques (this result was introduced in \cref{ch:Standard_Class_L-functions}):
+
+      \begin{theorem}\label{thm:reciprocial_sum_of_primes_diverges}
+        The series
+        \[
+          \sum_{p}\frac{1}{p},
+        \]
+        diverges.
+      \end{theorem}
+      \begin{proof}
+        For $\Re(s) > 1$, $\z(s)$ is holomorphic and admits the Euler product
+        \[
+          \z(s) = \prod_{p}(1-p^{-s})^{-1}.
+        \]
+        Taking the logarithm, we get
+        \[
+          \log\z(s) = -\sum_{p}\log(1-p^{-s}).
+        \]
+        The Taylor series of the logarithm gives
+        \[
+          \log(1-p^{-s}) = \sum_{k \ge 1}(-1)^{k-1}\frac{(-p^{-s})^{k}}{k} = \sum_{k \ge 1}(-1)^{2k-1}\frac{1}{kp^{ks}},
+        \]
+        so that
+        \begin{equation}\label{equ:log_zeta_expansion}
+          \log\z(s) = \sum_{p}\sum_{k \ge 1}\frac{1}{kp^{ks}}.
+        \end{equation}
+        The double sum restricted to $k \ge 2$ is uniformly bounded for $\Re(s) > 1$. To see this, first observe
+        \[
+          \left|\sum_{k \ge 2}\frac{1}{kp^{ks}}\right| \le \sum_{k \ge 2}\left|\frac{1}{kp^{ks}}\right| \le \sum_{k \ge 2}\left|\frac{1}{p^{ks}}\right| \le \sum_{k \ge 2}\frac{1}{p^{k}} = \frac{1}{p^{2}}\sum_{k \ge 0}\frac{1}{p^{k}} = \frac{1}{p^{2}}(1-p^{-1})^{-1} \le \frac{2}{p^{2}},
+        \]
+        where the last inequality follows because $p \ge 2$. Then
+        \begin{equation}\label{equ:reciprocial_sum_of_primes_diverges_1}
+          \left|\sum_{p}\sum_{k \ge 2}\frac{1}{kp^{ks}}\right| \le 2\sum_{p}\frac{1}{p^{2}} < 2\sum_{n \ge 1}\frac{1}{n^{2}} = 2\z(2).
+        \end{equation}
+        So by equation \cref{equ:log_zeta_expansion,equ:reciprocial_sum_of_primes_diverges_1},
+        \[
+          \left|\log\z(s)-\sum_{p}\frac{1}{p^{s}}\right| = \left|\sum_{p}\sum_{k \ge 2}\frac{1}{kp^{ks}}\right|,
+        \]
+        remains bounded as $s \to 1$. The claim now follows since $\z(s)$ has a simple pole at $s = 1$.
+      \end{proof}
+
+      \cref{thm:reciprocial_sum_of_primes_diverges} tells us that there are infinitely many primes, but also that the primes are not too ``sparce'' in the integers for otherwise the series would converge. The idea Dirichlet used to prove his result on primes in arithmetic progressions was in a very similar spirit. He sought out to prove the divergence of the series
+      \[
+        \sum_{p \equiv a \tmod{m}}\frac{1}{p},
+      \]
+      for positive integers $a$ and $m$ with $(a,m) = 1$ as the divergence immediately implies there are infinitely many primes $p$ of the form $p \equiv a \tmod{m}$. In the case $a = 1$ and $m = 2$ we recover \cref{thm:reciprocial_sum_of_primes_diverges} exactly since every prime is odd.
+
+      Dirichlet's proof proceeds in a similar way to that of \cref{thm:reciprocial_sum_of_primes_diverges} and this is where Dirichlet used what are now known as Dirichlet characters and Dirichlet $L$-functions. The proof can be broken into three steps. The first is to proceed as Euler did, but with the Dirichlet $L$-function $L(s,\chi)$ where $\chi$ has modulus $m$. That is, write $L(s,\chi)$ as a sum over primes and a bounded term as $s \to 1$. The next step is to use the orthogonality relations of the characters to sieve out the correct sum. The last step is to show the non-vanishing result $L(1,\chi) \neq 0$ for all non-principal characters $\chi$. This is the essential part of the proof as it is what assures us that the sum diverges. We will prove this non-vanishing result first and then prove Dirichlet's theorem on primes in arithmetic progressions.
+
+      \begin{theorem}\label{thm:non-vanishing_of_Dirichlet_L-functions_at_s=1}
+        For any non-principal Dirichlet character $\chi$, $L(1,\chi) \neq 0$.
+      \end{theorem}
+      \begin{proof}
+        Choose a positive integer $m > 1$. It will be enough to prove this for all Dirichlet characters $\chi$ modulo $m$. We establish a preliminary result first. We claim there exist positive integers $f_{p}$ and $g_{p}$ with $f_{p}g_{p} = \phi(m)$ such that
+        \[
+          \prod_{\chi}L(s,\chi) = \prod_{p \nmid m}(1-p^{-f_{p}s})^{-g_{p}}.
+        \]
+        To see this, the map $\chi \to \chi(p)$ is a homomorphism from the group of Dirichlet characters modulo $m$ into $\mu_{m}$ the group of $m$-th roots of unity. Since $\mu_{m}$ is cyclic, the image of this map is a cyclic group of order say $f_{p}$. In other words, the image is exactly $\mu_{f_{p}}$. Letting $g_{p}$ be the order of the kernel, $f_{p}g_{p} = \phi(m)$ because $X_{m} \cong (\Z/m\Z)^{\ast}$. In other words, for every $\w \in \mu_{f_{p}}$ there are $g_{p}$ characters $\chi$ such that $\chi(p) = \w$. So for fixed $p \nmid m$, we compute
+        \begin{equation}\label{equ:non-vanishing_of_Dirichlet_L-functions_at_s=1_1}
+          \prod_{\chi}(1-\chi(p)p^{-s}) = \prod_{\w \in \mu_{m}}(1-\w p^{-s})^{g_{p}} = (1-p^{-f_{p}s})^{g_{p}},
+        \end{equation}
+        where the last equality follows since the product is over all $f_{p}$-th roots of unity. Then \cref{equ:non-vanishing_of_Dirichlet_L-functions_at_s=1_1} implies
+        \begin{equation}\label{equ:non-vanishing_of_Dirichlet_L-functions_at_s=1_2}
+          \prod_{\chi}L(s,\chi) = \prod_{\chi}\prod_{p \nmid m}(1-\chi(p)p^{-s})^{-1} = \prod_{p \nmid m}\prod_{\chi}(1-\chi(p)p^{-s})^{-1} = \prod_{p \nmid m}(1-p^{-f_{p}s})^{-g_{p}}.
+        \end{equation}
+        This establishes the preliminary result. Upon expanding the last product in \cref{equ:non-vanishing_of_Dirichlet_L-functions_at_s=1_2}, we see that $\prod_{\chi}L(s,\chi)$ defines a Dirichlet series with positive coefficients and constant term $1$. Therefore it takes positive values larger than $1$ along the part of the real line in the region $\Re(s) > 1$. We will now show $L(1,\chi) \neq 0$ for non-principal $\chi$, and we will seperate the cases $\chi$ is real or complex. Suppose $\chi$ is complex. If $L(1,\chi) = 0$ then the functional equation implies $L(1,\cchi) = 0$. Now on the other hand, $L(s,\chi_{m,0})$ has a simple pole at $s = 1$ (coming from the $\z(s)$ factor) so altogether $\prod_{\chi}L(s,\chi)$ is zero at $s = 1$. This contradicts that it takes positive values larger than $1$ along the part of the real line in the region $\Re(s) > 1$ and so $L(1,\chi) \neq 0$. Now suppose $\chi$ is real and consider
+        \[
+          \frac{L(s,\chi_{m,0})L(s,\chi)}{L(2s,\chi_{m,0})} = \prod_{p \nmid m}\frac{(1-p^{-s})^{-1}(1-\chi(p)p^{-s})^{-1}}{(1-p^{-2s})^{-1}}.
+        \]
+        If $\chi(p) = -1$ then the corresponding factor on the right-hand side is $1$. If $\chi(p) = 1$, then
+        \[
+          \frac{(1-p^{-s})^{-1}(1-\chi(p)p^{-s})^{-1}}{(1-p^{-2s})^{-1}} = \frac{(1-p^{-s})^{-2}}{(1-p^{-2s})^{-1}} = \frac{(1+p^{-s})}{(1-p^{-s})} = 1+2\sum_{k \ge 1}\frac{1}{p^{ks}}.
+        \]
+        These facts together imply that $\frac{L(s,\chi_{m,0})L(s,\chi)}{L(2s,\chi_{m,0})}$ defines a Dirichlet series with positive coefficients and constant term $1$. Therefore it takes positive values larger than $1$ along the part of the real line in the region $\Re(s) > 1$. If $L(1,\chi) = 0$ then $\frac{L(s,\chi_{m,0})L(s,\chi)}{L(2s,\chi_{m,0})}$ is zero at $s = 1$ because the zero of $L(s,\chi)$ cancels the simple pole of $L(s,\chi_{m,0})$ at $s = 1$ and $L(2,\chi_{m,0}) \neq 0$ because $L(s,\chi_{m,0})$ is defined by a Dirichlet series with positive coefficients in the region $\Re(s) > 1$. As in the complex case, this gives a contradiction. So we have shown $L(1,\chi) \neq 0$ for all non-principal $\chi$ which completes the proof.
+      \end{proof}
+
+      We now have enough machinery to prove Dirichlet's theorem on primes in arithmetic progressions:
+
+      \begin{proof}[Proof of Dirichlet's theorem on primes in arithmetic progressions]
+          Let $\chi$ be a Dirichlet character modulo $m$. Then for $\Re(s) > 1$, $L(s,\chi)$ is holomorphic and admits the Euler product
+          \[
+            L(s,\chi) = \prod_{p}(1-\chi(p)p^{-s})^{-1}.
+          \]
+          Taking the logarithm gives
+          \[
+            \log L(s,\chi) = -\sum_{p}\log(1-\chi(p)p^{-s}).
+          \]
+          The Taylor series of the logarithm implies
+          \[
+            \log(1-\chi(p)p^{-s}) = \sum_{k \ge 1}(-1)^{k-1}\frac{(-\chi(p)p^{-s})^{k}}{k} = \sum_{k \ge 1}(-1)^{2k-1}\frac{\chi(p^{k})}{kp^{ks}},
+          \]
+          so that
+          \begin{equation}\label{equ:log_Dirichlet_L-function_expansion}
+            \log L(s,\chi) = \sum_{p}\sum_{k \ge 1}\frac{\chi(p^{k})}{kp^{ks}}.
+          \end{equation}
+          The double sum restricted to $k \ge 2$ is uniformly bounded for $\Re(s) > 1$. Indeed, first observe
+          \[
+            \left|\sum_{k \ge 2}\frac{\chi(p^{k})}{kp^{ks}}\right| \le \sum_{k \ge 2}\left|\frac{\chi(p^{k})}{kp^{ks}}\right| \le \sum_{k \ge 2}\left|\frac{1}{p^{ks}}\right| \le \sum_{k \ge 2}\frac{1}{p^{k}} = \frac{1}{p^{2}}\sum_{k \ge 0}\frac{1}{p^{k}} = \frac{1}{p^{2}}(1-p^{-1})^{-1} \le \frac{2}{p^{2}},
+          \]
+          where the last inequality follows because $p > 2$. Then
+          \[
+            \left|\sum_{p}\sum_{k \ge 2}\frac{\chi(p^{k})}{kp^{ks}}\right| \le 2\sum_{p}\frac{1}{p^{2}} < 2\sum_{n \ge 1}\frac{1}{n^{2}} = 2\z(2),
+          \]
+          as desired. Now using \cref{equ:log_Dirichlet_L-function_expansion}, we have
+          \begin{equation}\label{equ:Dirichlet's_theorem_on_primes_in_arithmetric_progressions_1}
+            \sum_{\chi}\conj{\chi(a)}\log L(s,\chi) = \sum_{\chi}\sum_{p}\frac{\conj{\chi(a)}\chi(p)}{p^{s}}+\sum_{\chi}\conj{\chi(a)}\sum_{p}\sum_{k \ge 2}\frac{\chi(p^{k})}{kp^{ks}}.
+          \end{equation}
+          By the orthogonality relations (\cref{prop:Dirichlet_orthogonality_relations} (ii)), we find that
+          \begin{equation}\label{equ:Dirichlet's_theorem_on_primes_in_arithmetric_progressions_2}
+            \sum_{\chi}\sum_{p}\frac{\conj{\chi(a)}\chi(p)}{p^{s}} = \sum_{p}\frac1{p^{s}}\sum_{\chi}\conj{\chi(a)}\chi(p) = \phi(m)\sum_{p \equiv{a} \tmod{m}}\frac{1}{p^{s}},
+          \end{equation}
+          and so combining \cref{equ:Dirichlet's_theorem_on_primes_in_arithmetric_progressions_1,equ:Dirichlet's_theorem_on_primes_in_arithmetric_progressions_2} gives
+          \[
+            \sum_{\chi}\conj{\chi(a)}\log L(s,\chi)-\sum_{\chi}\conj{\chi(a)}\sum_{p}\sum_{k \ge 2}\frac{\chi(p^{k})}{kp^{ks}} = \phi(m)\sum_{p \equiv{a} \tmod{m}}\frac{1}{p^{s}}.
+          \]
+          The latter sum on the left-hand side is uniformly bounded for $\Re(s) > 1$ because the inner double sum is and there are finitely many Dirichlet characters modulo $m$. Therefore it suffices to show that the first sum on the left-hand side diverges as $s \to 1$. For $\chi = \chi_{m,0}$,
+          \[
+            L(s,\chi_{m,0}) = \z(s)\prod_{p \mid m}(1-p^{-s}).
+          \]
+          So the corresponding term in the sum is
+          \[
+            \conj{\chi_{m,0}}(a)\log L(s,\chi_{m,0}) = \log L(s,\chi_{m,0}) = \log\left(\z(s)\prod_{p \mid m}(1-p^{-s})\right) = \log\z(s)+\sum_{p \mid m}\log(1-p^{-s}),
+          \]
+          which diverges as $s \to 1$ because $\z(s)$ has a simple pole at $s = 1$. We will be done if $\log L(s,\chi)$ remains bounded as $s \to 1$ for all $\chi \neq \chi_{m,0}$. So assume $\chi$ is not principal. Then if $\wtilde{\chi}$ is the character inducing $\chi$, we have
+          \[
+            L(s,\chi) = L(s,\wtilde{\chi})\prod_{p \mid m}(1-\wtilde{\chi}(p)p^{-s}),
+          \]
+          where $L(s,\wtilde{\chi})$ is holomorphic. Therefore $L(s,\chi)$ is holomorphic too so it further suffices to show $L(1,\chi) \neq 0$. This follows from \cref{thm:non-vanishing_of_Dirichlet_L-functions_at_s=1} and thus the proof is complete.
+      \end{proof}
+    \section{Non-vanishing on \texorpdfstring{$\Re(s) = 1$}{\Re(s) = 1}}
+      Here we provide proofs that the Riemann zeta function and Dirichlet $L$-functions do not vanish on the line $\Re(s) = 1$. The second of these two results can be regarded as a stronger version of \cref{thm:non-vanishing_of_Dirichlet_L-functions_at_s=1}. While both will play a role in understanding the zeros of these $L$-functions, the non-vanishing result for the Riemann zeta function is the key ingredient in the proof of the prime number theorem. We will proof the non-vanishing result for $\z(s)$ first, but we need a lemma that will be immensely useful in other investigations:
+
+      \begin{lemma}\label{lem:zero-free_region_zeta_lemma}
+        For any non-zero real $t$, set
+        \[
+          \eta(s) = \z(s)^{3}\z(s+it)^{4}\z(s+2it). 
+        \]
+        Then for $s = \s > 1$,
+        \[
+          \Re\left(\frac{\eta'}{\eta}(\s)\right) = \Re\left(3\frac{\z'}{\z}(\s)+4\frac{\z'}{\z}(\s+it)+\frac{\z'}{\z}(\s+2it)\right) \le 0.
+        \]
+      \end{lemma}
+      \begin{proof}
+        In the region $\Re(s) > 1$, $\z(s)$ is holomorphic and admits the Euler product
+        \[
+          \z(s) = \prod_{p}(1-p^{-s})^{-1}.
+        \]
+        Taking the logarithmic derivative of $\z(s)$ gives
+        \begin{equation}\label{equ:Drichlet_series_log_derivative_zeta}
+          \frac{\z'}{\z}(s) = -\sum_{p}\frac{\log(p)p^{-s}}{1-p^{-s}} = -\sum_{p}\sum_{k \ge 1}\frac{\log(p)}{p^{ks}} = -\sum_{n \ge 1}\frac{\L(n)}{n^{s}},
+        \end{equation}
+        where $\L(n)$ is the von Mangoldt function (see \cref{append:Arithmetic_Functions}). Now fix $s = \s+it$ with $\s > 1$ and observe
+        \begin{align*}
+          \sum_{n \ge 1}\frac{\L(n)}{n^{s}} &= \sum_{n \ge 1}\frac{\L(n)}{n^{\s}n^{it}} \\
+          &= \sum_{n \ge 1}\frac{\L(n)}{n^{\s}}e^{-it\log(n)} \\
+          &= \sum_{n \ge 1}\frac{\L(n)}{n^{\s}}\bigg(\cos(t\log(n))-i\sin(t\log(n))\bigg).
+        \end{align*}
+        We conclude
+        \begin{equation}\label{equ:non-vanishing_of_zeta_on_Re(s)=1_1}
+          \Re\left(\frac{\z'}{\z}(s)\right) = -\sum_{n \ge 1}\frac{\L(n)}{n^{\s}}\cos(t\log(n)).
+        \end{equation}
+        Since $\cos(2\t) = 2\cos(\t)-1$ for any $\t$, we have
+        \begin{equation}\label{equ:cosine_inequality_for_analytic_number_theory}
+          3+4\cos(\t)+\cos(2\t) = 2(1+\cos(\t))^{2} \ge 0,
+        \end{equation}
+        provided $\t$ is real. As $\frac{\L(n)}{n^{\s}} \ge 0$ for all $n \ge 1$, so \cref{equ:cosine_inequality_for_analytic_number_theory} implies
+        \begin{equation}\label{equ:real_part_eta_zeta_inequality}
+          \sum_{n \ge 1}\frac{\L(n)}{n^{\s}}\bigg(3+4\cos(t\log(n))+\cos(2t\log(n))\bigg) \ge 0,
+        \end{equation}
+        for any real $t$.
+      \end{proof}
+
+      The non-vanishing result follows very easily from \cref{lem:zero-free_region_zeta_lemma}:
+
+      \begin{theorem}\label{thm:non-vanishing_of_zeta_on_Re(s)=1}
+        $\z(s) \neq 0$ on the line $\Re(s) = 1$.
+      \end{theorem}
+      \begin{proof}
+        We will now show $\z(s) \neq 0$ on the line $\Re(s) = 1$. We may assume $s \neq 1$ because we know $\z(s)$ has a simple pole there. So fix a real non-zero $t$ and consider the function
+        \[
+          \eta(s) = \z(s)^{3}\z(s+it)^{4}\z(s+2it),
+        \]
+        Suppose $\z(1+it) = 0$. Then at $s = 1$, $\eta(s)$ would have a zero, either simple or of order $2$, depending on if $\z(s+2it)$ was zero or not since $\z(s)^{3}(s+it)^{4}$ has a simple zero at $s = 1$. Therefore it suffices to show $\eta(s)$ is non-zero at $s = 1$. Let $d$ be the order of the zero of $\eta(s)$ at $s = 1$. Note that $d \ge 1$. Then $\eta(s) = (s-1)^{d}\eta_{1}(s)$ with $\eta_{1}(s)$ holomorphic at $s = 1$ and such that $\eta_{1}(1) \neq 0$. Upon taking the logarithmic derivative, we obtain
+        \[
+          \frac{\eta'}{\eta}(s) = \frac{d}{s-1}+\frac{\eta_{1}'}{\eta_{1}}(s).
+        \]
+        Then for $\s > 1$, it follows that
+        \[
+          \lim_{\s \to 1}(\s-1)\frac{\eta'}{\eta}(\s) = d.
+        \]
+        But from \cref{lem:zero-free_region_zeta_lemma}, $(\s-1)\frac{\eta'}{\eta}(\s)$ has non-positive real part and so the limit cannot be the positive integer $d$. This is a contradiction. Therefore $\eta(s)$ is non-zero at $s = 1$ and thus $\z(1+it) \neq 0$.
+      \end{proof}
+
+      There is a completely analogous lemma and argument for Dirichlet $L$-functions. First the lemma:
+
+      \begin{lemma}\label{lem:zero-free_region_Dirichlet_lemma}
+        For any non-principal Dirichlet character $\chi$ of conductor $q > 1$, and non-zero real $t$, set
+        \[
+          \eta(s,\chi) = L(s,\chi_{q,0})^{3}L(s+it,\chi)^{4}L(s+2it,\chi^{2}).
+        \]
+        Then for $s = \s > 1$,
+        \[
+          \Re\left(\frac{\eta'}{\eta}(\s,\chi)\right) = \Re\left(3\frac{L'}{L}(\s,\chi_{q,0})+4\frac{L'}{L}(\s+it,\chi)+\frac{L'}{L}(\s+2it,\chi^{2})\right) \le 0.
+        \]
+      \end{lemma}
+      \begin{proof}
+        In the region $\Re(s) > 1$, $L(s,\chi)$ is holomorphic and admits the Euler product
+        \[
+          L(s,\chi) = \prod_{p}(1-\chi(p)p^{-s})^{-1}.
+        \]
+        Taking the logarithmic derivative of $L(s,\chi)$ yields
+        \begin{equation}\label{equ:Drichlet_series_log_derivative_Dirichlet}
+          \frac{L'}{L}(s,\chi) = -\sum_{p}\frac{\chi(p)\log(p)p^{-s}}{1-\chi(p)p^{-s}} = -\sum_{p}\sum_{k \ge 1}\frac{\chi(p^{k})\log(p)}{p^{ks}} = -\sum_{n \ge 1}\frac{\chi(n)\L(n)}{n^{s}},
+        \end{equation}
+        where $\L(n)$ is the von Mangoldt function. Setting $s = \s+it$ with $\s > 1$ and writing $\chi(n) = e^{i\vphi}$, we have
+        \begin{align*}
+          \sum_{n \ge 1}\frac{\chi(n)\L(n)}{n^{s}} &= \sum_{n \ge 1}\frac{\chi(n)\L(n)}{n^{\s}n^{it}} \\
+          &= \sum_{n \ge 1}\frac{\L(n)}{n^{\s}}e^{i(\vphi-t\log(n))} \\
+          &= \sum_{n \ge 1}\frac{\chi(n)\L(n)}{n^{\s}}\bigg(\cos(\vphi-t\log(n))+i\sin(\vphi-t\log(n))\bigg).
+        \end{align*}
+        It follows that
+        \begin{equation}\label{equ:zero-free_region_Dirichlet_lemma_1}
+          \Re\left(\frac{L'}{L}(s,\chi)\right) = -\sum_{n \ge 1}\frac{\L(n)}{n^{\s}}\cos(\vphi-t\log(n)).
+        \end{equation}
+        Because $\chi^{2}(n) = e^{2i\vphi}$ and $\chi_{q,0}(n) = 1$, we obtain analogous equations to \cref{equ:zero-free_region_Dirichlet_lemma_1}:
+        \begin{equation}\label{equ:zero-free_region_Dirichlet_lemma_2}
+          \Re\left(\frac{L'}{L}(s,\chi^{2})\right) = -\sum_{n \ge 1}\frac{\L(n)}{n^{\s}}\cos(2\vphi-t\log(n)),
+        \end{equation}
+        and
+        \begin{equation}\label{equ:zero-free_region_Dirichlet_lemma_3}
+          \Re\left(\frac{L'}{L}(s,\chi_{q,0})\right) = -\sum_{n \ge 1}\frac{\L(n)}{n^{\s}}\cos(t\log(n)).
+        \end{equation}
+        Since $\frac{\L(n)}{n^{\s}} \ge 0$ for all $n \ge 1$, \cref{equ:cosine_inequality_for_analytic_number_theory} implies
+        \begin{equation}\label{equ:zero-free_region_Dirichlet_lemma_4}
+          \sum_{n \ge 1}\frac{\L(n)}{n^{\s}}\bigg(3+4\cos(\vphi-t\log(n))+4\cos(2\vphi-2t\log(n))\bigg),
+        \end{equation}
+        for any real $t$. Now for $s = \s$ with $\s > 1$, upon taking the logarithmic derivative of $\eta(\s,\chi)$, \cref{equ:zero-free_region_Dirichlet_lemma_1,equ:zero-free_region_Dirichlet_lemma_2,equ:zero-free_region_Dirichlet_lemma_3,equ:zero-free_region_Dirichlet_lemma_4} together imply
+        \[
+          \Re\left(\frac{\eta'}{\eta}(\s,\chi)\right) = \Re\left(3\frac{L'}{L}(\s,\chi_{q,0})+4\frac{L'}{L}(\s+it,\chi)+\frac{L'}{L}(\s+2it,\chi^{2})\right) \le 0.
+        \]
+      \end{proof}
+
+      The non-vanishing result for $L(s,\chi)$ is proven in a manner similar to $\z(s)$ using \cref{lem:zero-free_region_Dirichlet_lemma}:
+
+      \begin{theorem}\label{thm:non-vanishing_of_Dirichlet_on_Re(s)=1}
+        For any non-principal Dirichlet charachter $\chi$, $L(s,\chi) \neq 0$ on the line $\Re(s) = 1$.
+      \end{theorem}
+      \begin{proof}
+        Let $t$ be real and non-zero and consider
+        \[
+          \eta(s,\chi) = L(s,\chi_{q,0})^{3}L(s+it,\chi)^{4}L(s+2it,\chi^{2}),
+        \]
+        Recall that $L(s,\chi_{q,0})$ has a simple pole at $s = 1$. Now suppose $L(1+it,\chi) = 0$. Then at $s = 1$, $\eta(s,\chi)$ would have a zero, either simple or of order $2$, depending on if $L(s+2it,\chi)$ was zero or not since $L(s,\chi_{q,0})^{3}L(s+it,\chi)^{4}$ has a simple zero at $s = 1$. Therefore we need to show $\eta(s,\chi)$ is non-zero at $s = 1$. Let $d$ be the order of the zero of $\eta(s,\chi)$ at $s = 1$. Then $d \ge 1$ and we can write $\eta(s,\chi) = (s-1)^{d}\eta_{1}(s,\chi)$ with $\eta_{1}(s,\chi)$ holomorphic at $s = 1$ and such that $\eta_{1}(1,\chi) \neq 0$. Taking the logarithmic derivative, we find
+        \[
+          \frac{\eta'}{\eta}(s,\chi) = \frac{d}{s-1}+\frac{\eta_{1}'}{\eta_{1}}(s,\chi).
+        \]
+        Then for $\s > 1$, we have
+        \[
+          \lim_{\s \to 1}(\s-1)\frac{\eta'}{\eta}(\s,\chi) = d.
+        \]
+        But from \cref{lem:zero-free_region_Dirichlet_lemma}, $(\s-1)\frac{\eta'}{\eta}(\s,\chi)$ has non-positive real part and so the limit cannot be $d$. This gives a contradiction. Hence $\eta(s,\chi)$ is non-zero at $s = 1$ and so $L(1+it,\chi) \neq 0$.
+      \end{proof}
+    \section{The Prime Number Theorem}
+      The \textbf{prime counting function}\index{prime counting function} $\pi(x)$ is defined by
+      \[
+        \pi(x) = \sum_{p \le x}1,
+      \]
+      for a real $x$. So $\pi(x)$ counts the number of primes that no larger than $x$. Euclid's infitude of the primes is equivaent to $\pi(x) \to \infty$ as $x \to \infty$. A more interesting question is to ask how the primes are distributed among the integers. The \textbf{prime number theorem}\index{prime number theorem} answers this question and the precise statement is the following:
+
+      \begin{theorem}[Prime number theorem]
+        \phantom{ }
+        \[
+          \pi(x) \sim \frac{x}{\log(x)}.
+        \]
+      \end{theorem}
+
+      As with Dirichlet's theorem on primes in arithmetic progressions, we will delay the proof for the moment and give some intuition and historical context to the result. Intuitively, the prime number theorem is a result about how dense the primes are in the integers. To see this, notice that the result is equivalent to the asymptotic
+      \[
+        \frac{\pi(x)}{x} \sim \frac{1}{\log(x)}.
+      \]
+      Letting $x \ge 1$, the left-hand side is the probability that a radomly chosen positive integer no larger than $x$ is prime. Thus the asymptotic result says that for large enough $x$, the probability that a randomly chosen integer no larger than $x$ is prime is approximately $\frac{1}{\log(x)}$. We can also interpret this as saying that the average gap between primes no larger than $x$ is approximately $\frac{1}{\log(x)}$. As a consequence, a positive integer with at most $2n$ digits is about half as likely to be prime than a positive integer with at most $n$ digits. Indeed, there are $10^{n}-1$ numbers with at most $n$ digits, $10^{2n}-1$ with at most $2n$ digits, and $\log(10^{2n}-1)$ is approximately $2\log(10^{n})$. Note that the prime number theorem says nothing about the exact error $\pi(x)-\frac{x}{\log(x)}$ as $x \to \infty$. The theorem only says that the relative error tends to zero:
+      \[
+        \lim_{x \to \infty}\frac{\pi(x)-\frac{x}{\log(x)}}{\frac{x}{\log(x)}} = 0.
+      \]
+      Now for some hisotrical context. While Gauss was not the first to put forth a conjectural form of the prime number theorem, he had done extensive work on primes long before anyone else. Gauss was known for compiling extensive tables of primes (see \cite{gauss1872tafel}), and he suspected that the density of the primes up to $x$ was roughly $\frac{1}{\log(x)}$. How might one suspect this is the correct density? Well, let $d\d_{p}$ be the weighted point measure that assigns $\frac{1}{p}$ at the prime $p$ and zero everywhere else. Then
+      \[
+        \sum_{p \le x}\frac{1}{p} = \int_{1}^{x}\,d\d_{p}(u).
+      \]
+      We can interpret the integral as integrating the density $d\d_{p}$ over the volume $[1,x]$. Let's try and find a more explicit expression for the density $d\d_{p}$. Now Euler (see \cite{euler1737variae}), argued that
+      \[
+        \sum_{p \le x}\frac{1}{p} \sim \log\log(x).
+      \]
+      But notice that
+      \[
+        \log\log(x) = \int_{1}^{\log(x)}\frac{du}{u} = \int_{e}^{x}\frac{1}{u}\frac{du}{\log{u}},
+      \]
+      where in the second equality we have made the change of variables $u \to \log(u)$. So altogether,
+      \[
+        \sum_{p \le x}\frac{1}{p} \sim \int_{e}^{x}\frac{1}{u}\frac{du}{\log{u}}.
+      \]
+      This is an asymptotic formula that gives a more explicit representation of the density $d\d_{p}$. Notice that both sides of this asymptotic are weighted the same, the left-hand side by $\frac{1}{p}$, and the right-hand side by $\frac{1}{u}$. If we remove these weight (this is not strictly allowed), then we might hope
+      \[
+        \pi(x) = \sum_{p \le x}1 \sim \int_{e}^{x}\frac{1}{\log(u)}du.
+      \]
+      Interpreting the integral as an integral of density over volume, then for large $x$ the density of primes up to $x$ is approximately $\frac{1}{\log(x)}$ which is what the prime number theorem claims. Legendre was the first to put forth a conjectural form of the prime number theorem. In 1798 (see \cite{legendreessai}), he claimed that $\pi(x)$ was of the form
+      \[
+        \frac{x}{A\log(x)+B},
+      \]
+      for some constants $A$ and $B$. In 1808 (see \cite{legendre1808essai}) he refined his conjecture by claiming
+      \[
+        \frac{x}{\log(x)+A(x)},
+      \]
+      where $\lim_{x \to \infty}A(x) \approx 1.08366$. Also in 1808 (see \cite{legendre1808essai}), Legendre conjectured what is now known as Dirichlet's theorem on primes in arithmetic progressions. As we have seen, Dirichlet's idea used complex analytic methods to resolve an arithmetic question. A similar type of idea is essential in proving the prime number theorem, and so Dirichlet's ideas are certainly due credit. It was not until 1896 that the prime number theorem was proved independently by Hadamard and de la Vall\'ee Poussin (see \cite{hadamard1896distribution,poussin1897recherches}). Their proofs, as well as every proof thereon out until 1949, used complex analytic methods in an essential way (there are now elementary proofs due to Erd\"os and Selberg). The proof we present uses \cref{thm:non-vanishing_of_zeta_on_Re(s)=1} and requires a few different preliminary results. Many of these results are somewhat disconnected, so we will prove them seperately and then prove the prime number theorem. However, we will outline the overall idea. Start with the \textbf{Tchebychef functions}\index{Tchebychef functions}:
+      \[
+        \t(x) = \sum_{p \le x}\log(p) \quad \text{and} \quad \psi(x) = \sum_{n \le x}\L(n),
+      \]
+      defined for a real $x$, where $m \ge 1$ is an integer, and where $\L(n)$ is the von Mangoldt function. Since $\frac{\log(p^{m})}{\log(p)} = m$ and $\frac{\log(x)}{\log(p)}$ is continuous, for $x > 0$ we may write
+      \begin{equation}\label{equ:alternative_form_for_Tchebychef function}
+        \psi(x) = \sum_{n \le x}\L(n) = \sum_{p^{m} \le x}\log(p) = \sum_{p \le x}\left\lfloor\frac{\log(x)}{\log(p)}\right\rfloor\log(p).
+      \end{equation}
+      This is often a more useful representation. We will first reduce the asymptotis of $\pi(x)$ to that of the Tchebychef functions, in particular, $\psi(x)$. We will then show $\psi(x) = O(x)$ which is a weaker statement than the prime number theorem. After, we introduce a technical result that will be needed in the proof of the prime number theorem. Once all of this is done we will be ready to prove the theorem itself. This will be acomplished by relating $\z(s)$ to $\psi(x)$ and using the technical theorem to deduce asymptotics for $\psi(x)$ which will complete the proof. Our first result, as we have mentioned, relates the asymptotics of $\pi(x)$, $\t(x)$, and $\psi(x)$. Actually, it is an equivalence:
+
+      \begin{lemma}\label{lem:prime_number_theorem_equivalence}
+        The following are equivalent:
+        \begin{enumerate}[label=(\roman*)]
+          \item $\pi(x) \sim \frac{x}{\log(x)}$.
+          \item $\t(x) \sim x$.
+          \item $\psi(x) \sim x$.
+        \end{enumerate}
+      \end{lemma}
+      \begin{proof}
+        Let $x > 0$. Then
+        \[
+          \t(x) = \sum_{p \le x}\log(p) \le \sum_{p \le x}\left\lfloor\frac{\log(x)}{\log(p)}\right\rfloor\log(p) \le \sum_{p \le x}\frac{\log(x)}{\log(p)}\log(p) \le \sum_{p \le x}\log(x) = \pi(x)\log(x).
+        \]
+        This chain of inequalities and \cref{equ:alternative_form_for_Tchebychef function} together imply
+        \[
+          \frac{\t(x)}{x} \le \frac{\psi(x)}{x} \le \frac{x\log(x)}{x}.
+        \]
+        Therefore we have
+        \begin{equation}\label{equ:prime_number_theorem_equivalence_1}
+          \lim_{x \to \infty}\frac{\t(x)}{x} \le \lim_{x \to \infty}\frac{\psi(x)}{x} \le \lim_{x \to \infty}\frac{\pi(x)\log(x)}{x}.
+        \end{equation}
+        Now fix an $\a$ with $0 < \a < 1$ and let $x > 1$. Then
+        \[
+          \t(x) = \sum_{p \le x}\log(p) \ge \sum_{x^{\a} < p \le x}\log(p) \ge \sum_{x^{\a} < p \le x}\a\log(x) = \a\log(x)(\pi(x)-\pi(x^{\a})) > \a\log(x)(\pi(x)-x^{\a}),
+        \]
+        where the last inequality follows because $\pi(x) < x$ provided $x > 0$. This chain of inequalities implies
+        \[
+          \frac{\t(x)}{x} \ge \a\frac{\pi(x)\log(x)}{x}-\a x^{\a-1}\log(x).
+        \]
+        Note that $x^{\a-1}\log(x) \to 0$ as $x \to \infty$ because $0 < \a < 1$. Then
+        \[
+          \lim_{x \to \infty}\frac{\t(x)}{x} \ge \a\lim_{x \to \infty}\frac{\pi(x)\log(x)}{x},
+        \]
+        and letting $\a \to 1$ we conclude
+        \begin{equation}\label{equ:prime_number_theorem_equivalence_2}
+          \lim_{x \to \infty}\frac{\t(x)}{x} \ge \lim_{x \to \infty}\frac{\pi(x)\log(x)}{x}.
+        \end{equation}
+        So \cref{equ:prime_number_theorem_equivalence_1,equ:prime_number_theorem_equivalence_2} together give
+        \[
+          \lim_{x \to \infty}\frac{\pi(x)\log(x)}{x} \le \lim_{x \to \infty}\frac{\t(x)}{x} \le \lim_{x \to \infty}\frac{\psi(x)}{x} \le \lim_{x \to \infty}\frac{\pi(x)\log(x)}{x}.
+        \]
+        This completes the proof.
+      \end{proof}
+
+      We now prove the weaker asymptotic $\psi(x) = O(x)$:
+
+      \begin{proposition}\label{prop:second_Tchebychef_is_big_Oh_of_x}
+        \phantom{ }
+        \[
+          \psi(x) = O(x).
+        \]
+      \end{proposition}
+      \begin{proof}
+        Let $m > 1$ be an integer and fix an $x > 0$ such that $2^{m} < x \le 2^{m+1}$. By \cref{equ:alternative_form_for_Tchebychef function}
+        \[
+          \psi(x) = \sum_{p \le x}\left\lfloor\frac{\log(x)}{\log(p)}\right\rfloor\log(p).
+        \]
+        Then by our choice of $m$,
+        \begin{equation}\label{equ:second_Tchebychef_is_big_Oh_of_x_1}
+          \begin{aligned}
+            \psi(x) &= \psi(x)+\psi(2^{m})-\psi(2^{m}) \\
+            &\le \psi(2^{m})+\psi(2^{m+1})-\psi(2^{m}) \\
+            &= \sum_{p \le 2^{m}}\left\lfloor\frac{\log(2^{m})}{\log(p)}\right\rfloor\log(p)+\sum_{2^{m} < p \le 2^{m+1}}\left\lfloor\frac{\log(2^{m+1})}{\log(p)}\right\rfloor\log(p).
+          \end{aligned}
+        \end{equation}
+        We will now discuss two general estimates and then return to the two sums in \cref{equ:second_Tchebychef_is_big_Oh_of_x_1}. For the first estimate, if $n \ge 1$ is an integer and $p$ is a prime such that $n < p \le 2n$, then $p$ divides $\frac{(2n)!}{n!} = n!\binom{2n}{n}$. Since $p$ does not divide $n!$ it must divide $\binom{2n}{n}$ so that
+        \[
+          \prod_{n < p \le 2n}p \le \binom{2n}{n} < (1+1)^{2n} = 2^{2n},
+        \]
+        where the last inequality follows by the binomial theorem. In particular,
+        \[
+          \sum_{n < p \le 2n}\log(p) = \log\left(\prod_{n < p \le 2n}p\right) < \log(2^{2n}) = 2n\log(2).
+        \]
+        Therefore
+        \begin{equation}\label{equ:second_Tchebychef_is_big_Oh_of_x_2}
+          \sum_{p \le 2^{m}}\log(p) = \sum_{1 \le k \le m}\left(\sum_{2^{k-1} < p \le 2^{k}}\log(p)\right) < \sum_{1 \le k \le m}2^{k}\log(2) < 2^{m+1}\log(2).
+        \end{equation}
+        For our second estimate, if $p \le x$ is a prime such that $\left\lfloor\frac{\log(x)}{\log(p)}\right\rfloor > 1$ then $\left\lfloor\frac{\log(x)}{\log(p)}\right\rfloor \ge 2$ so that $x \ge p^{2}$ and hence $\sqrt{x} \ge p$. So
+        \begin{equation}\label{equ:second_Tchebychef_is_big_Oh_of_x_3}
+          \sum_{p \le \sqrt{x}}\left\lfloor\frac{\log(x)}{\log(p)}\right\rfloor\log(p) \le \sum_{p \le \sqrt{x}}\frac{\log(x)}{\log(p)}\log(p) = \log(x)\sum_{p \le \sqrt{x}}1 = \pi(\sqrt{x})\log(x).
+        \end{equation}
+        Returning to the first of our two sums in \cref{equ:second_Tchebychef_is_big_Oh_of_x_1} and recalling that $2^{m} < x \le 2^{m+1}$, \cref{equ:second_Tchebychef_is_big_Oh_of_x_2,equ:second_Tchebychef_is_big_Oh_of_x_3} imply
+        \begin{equation}\label{equ:second_Tchebychef_is_big_Oh_of_x_4}
+          \begin{aligned}
+            \sum_{p \le 2^{m}}\left\lfloor\frac{\log(2^{m})}{\log(p)}\right\rfloor\log(p) &= \sum_{p \le \sqrt{2^{m}}}\left\lfloor\frac{\log(2^{m})}{\log(p)}\right\rfloor\log(p)+\sum_{\sqrt{2^{m}} < p \le 2^{m}}\log(p) \\
+            &\le \sum_{p \le \sqrt{2^{m}}}\left\lfloor\frac{\log(2^{m})}{\log(p)}\right\rfloor\log(p)+\sum_{p \le 2^{m}}\log(p) \\
+            &< \pi(\sqrt{2^{m}})\log(2^{m})+2^{m+1}\log(2) \\
+            &= \pi(\sqrt{x})\log(x)+2^{m+1}\log(2).
+          \end{aligned}
+        \end{equation}
+        As for the second sum in \cref{equ:second_Tchebychef_is_big_Oh_of_x_1}, $p > 2^{m}$ implies $p > \sqrt{2^{m+1}}$ because $m > 1$. Therefore $\left\lfloor\frac{\log(2^{m+1})}{\log(p)}\right\rfloor = 1$ so from \cref{equ:second_Tchebychef_is_big_Oh_of_x_2}
+        \begin{equation}\label{equ:second_Tchebychef_is_big_Oh_of_x_5}
+          \sum_{2^{m} < p \le 2^{m+1}}\left\lfloor\frac{\log(2^{m+1})}{\log(p)}\right\rfloor\log(p) = \sum_{2^{m} < p \le 2^{m+1}}\log(p) < 2^{m+1}\log(2).
+        \end{equation}
+        Altogether, \cref{equ:second_Tchebychef_is_big_Oh_of_x_1,equ:second_Tchebychef_is_big_Oh_of_x_4,equ:second_Tchebychef_is_big_Oh_of_x_5} give the first inequality in the following chain:
+        \begin{align*}
+          \psi(x) &< \pi(\sqrt{x})\log(x)+2^{m+1}\log(2)+2^{m+1}\log(2) \\
+          &= \pi(\sqrt{x})\log(x)+4(2^{m})\log(2) \\
+          &< \pi(\sqrt{x})\log(x)+4x\log(2) \\
+          &< \sqrt{x}\log(x)+4x\log(2) \\
+          &= \left(\frac{1}{\sqrt{x}}\log(x)+4\log(2)\right)x.
+        \end{align*}
+        Since $\frac{1}{\sqrt{x}}\log(x) \to 0$ as $x \to \infty$, there is a positive $M$ such that $\left|\frac{1}{\sqrt{x}}\log(x)\right| < M$ for all $x \ge 0$. Hence
+        \[
+          \psi(x) < (M+4\log(2))x,
+        \]
+        for all $x \ge 0$. But this is to say that $\psi(x) = O(x)$.
+      \end{proof}
+
+      We now discuss our technical result. A \textbf{Tauberian theorem}\index{Tauberian theorem} is a theorem which gives conditions for when a series or integral converges at some part of the boundary of its domain of definition. Our technical theorem is of this kind and is due to Newman (see \cite{vatwani2015simple} for a proof):
+
+      \begin{theorem}\label{thm:Tauberian_theorem_for_the_prime_number_theorem}
+        Let $f(x)$ be bounded and locally integrable function on $[1,\infty)$. Moreover, suppose
+        \[
+          g(s) = \int_{1}^{\infty}f(x)x^{-(s+1)}\,dx,
+        \]
+        defines an analytic function for $\Re(s) > 0$ and admits analytic continuation to a neighborhood of $\Re(s) = 0$. Then $\int_{1}^{\infty}\frac{f(x)}{x}\,dx$ exists and
+        \[
+          \int_{1}^{\infty}\frac{f(x)}{x}\,dx = g(0).
+        \]
+      \end{theorem}
+
+      \cref{thm:Tauberian_theorem_for_the_prime_number_theorem} is interesting because the analytic continuation of $g(s)$ is not necessarily given by its defining integral, but this theorem guarantees that it is at $s = 0$. We are now ready to prove the prime number theorem:
+
+      \begin{proof}[Proof of the prime number theorem]
+        By \cref{lem:prime_number_theorem_equivalence} it suffices to show $\psi(x) \sim x$. This is what we will prove. Consider the integral
+        \[
+          s\int_{1}^{\infty}\psi(x)x^{-(s+1)}\,dx,
+        \]
+        as a function of a complex variable $s$. So by \cref{prop:second_Tchebychef_is_big_Oh_of_x}, we have the estimate
+        \[
+          s\int_{1}^{\infty}\psi(x)x^{-(s+1)}\,dx = O\left(\int_{1}^{\infty}x^{-s}\,dx\right).
+        \]
+        For $\Re(s) > 1$, the integral in the right-hand side of the $O$-estimate above is absolutely uniformly bounded on compacta so that the left-hand side is too. Thus the left-hand side defines a holomorphic function for $\Re(s) > 1$. We now derive an alternaive description for this function. Recalling \cref{equ:Drichlet_series_log_derivative_zeta} and that $\psi(x) = \sum_{n \le x}\L(n)$, we can apply the Mellin inversion formula to Perron's formula (or follow the proof of Perron's formula) to obtain
+        \[
+          -\frac{\z'}{\z}(s) = s\int_{1}^{\infty}\psi(x)x^{-(s+1)}\,dx,
+        \]
+        for $\Re(s) > 1$. Now consider
+        \[
+          -\frac{\z'}{\z}(s)-\frac{1}{s-1} = s\int_{1}^{\infty}\psi(x)x^{-(s+1)}\,dx-\frac{1}{s-1}.
+        \]
+        We claim that $-\frac{\z'}{\z}(s)-\frac{1}{s-1}$ has analytic contunuation to a neighborhood of $\Re(s) = 1$. By the meromorphic continuation of $\z(s)$, $-\frac{\z'}{\z}(s)-\frac{1}{s-1}$ is holomorphic everywhere except possibly at the points where $\z(s)$ has zeros or at the pole $s = 1$. By \cref{thm:non-vanishing_of_zeta_on_Re(s)=1}, $\frac{1}{\z(s)}$ is defined on $\Re(s) = 1$ and hence is holomorphic in a neighborhood of $\Re(s) = 1$ since $\z(s)$ is. Therefore $-\frac{\z'}{\z}(s)-\frac{1}{s-1}$ is holomorphic except possibly at $s = 1$. In this case, the pole is simple so $\z(s) = (s-1)\z_{1}(s)$ where $\z_{1}(s)$ is holomorphic and such that $\z_{1}(1) \neq 0$ and hence is non-zero is a neighborhood of $1$. Upon taking the logarithmic derivative of $\z(s)$ we see that
+        \[
+          -\frac{\z'}{\z}(s)-\frac{1}{s-1} = \frac{\z_{1}'}{\z_{1}}(s).
+        \]
+        It follows that $-\frac{\z'}{\z}(s)-\frac{1}{s-1}$ is holomorphic at $s = 1$ too. Thus $-\frac{\z'}{\z}(s)-\frac{1}{s-1}$ is holomorphic on the line $\Re(s) = 1$ and therefore admits analytic continuation to a neighborhood of $\Re(s) = 1$. In particular,
+        \[
+          s\int_{1}^{\infty}\psi(x)x^{-(s+1)}\,dx-\frac{1}{s-1}.
+        \]
+        is analytic in a neighborhood of $\Re(s) = 1$. We will now use the Tauberian theorem. Observe that in a neighborhood of $\Re(s) = 1$ with $\Re(s) > 0$, we have
+        \begin{equation}\label{equ:prime_number_theorem_1}
+          \begin{aligned}
+            \int_{1}^{\infty}\left(\frac{\psi(x)-x}{x}\right)x^{-(s+1)}\,dx &= \int_{1}^{\infty}\left(\frac{\psi(x)}{x}-1\right)x^{-(s+1)}\,dx \\
+            &= \int_{1}^{\infty}\psi(x)x^{-(s+2)}\,dx-\int_{1}^{\infty}x^{-(s+1)}\,dx \\
+            &= \int_{1}^{\infty}\psi(x)x^{-(s+2)}\,dx-\frac{1}{s} \\
+            &= \frac{1}{s+1}(s+1)\int_{1}^{\infty}\psi(x)x^{-(s+2)}\,dx-\frac{1}{s} \\
+            &= \frac{1}{s+1}\left((s+1)\int_{1}^{\infty}\psi(x)x^{-(s+2)}\,dx-\frac{1}{s}-1\right),
+          \end{aligned}
+        \end{equation}
+        where the second line follows because $\Re(s) > 0$ and the last line follows because $\frac{1}{s+1}\left(\frac{1}{s}-1\right) = \frac{1}{s}$. But
+        \[
+          (s+1)\int_{1}^{\infty}\psi(x)x^{-(s+2)}\,dx-\frac{1}{s},
+        \]
+        admits anaytic continuation to a neighborhood of $\Re(s) = 0$ by what we have already shown and so the last expression in \cref{equ:prime_number_theorem_1} is also analytic in a neighborhood of $\Re(s) = 0$. Hence,
+        \[
+          \int_{1}^{\infty}\left(\frac{\psi(x)-x}{x}\right)x^{-(s+1)}\,dx,
+        \]
+        admits analytic continuation to a neighborhood of $\Re(s) = 0$. Since $\psi(x) = O(x)$, $\frac{\psi(x)-x}{x}$ is bounded on $[1,\infty)$. Also, $\psi(x)$ has finitely many jump discontinuities so that it is locally integrable on $[1,\infty)$ and therefore $\frac{\psi(x)-x}{x}$ is too. So all of the assumptions of \cref{thm:Tauberian_theorem_for_the_prime_number_theorem} are satisfied and we conclude that
+        \[
+          \int_{1}^{\infty}\frac{\psi(x)-x}{x^{2}}\,dx,
+        \]
+        exists. The existance of this integral will imply $\psi(x) \sim x$ which finishes the proof. Indeed, if this asymptotic does not hold then $\lim_{x \to \infty}\left|\frac{\psi(x)}{x}\right| \neq 1$ so that either $\left|\frac{\psi(x)}{x}\right| > 1$ or $\left|\frac{\psi(x)}{x}\right| < 1$ for arbitrarily large values of $x$. As $x$ is positive and $\psi(x)$ is a positive function, either $\frac{\psi(x)}{x} > 1$ or $\frac{\psi(x)}{x} < 1$ for arbitrarily large values of $x$. In the first case, $\frac{\psi(x)}{x} > 1$ is equivalent to the existance of a positive $\l > 1$ such that $\psi(x) \ge \l x$. This inequality together with the fact that $\psi(x)$ is monotonic increasing together imply the inequality in the following chain:
+        \[
+          \int_{x}^{\l x}\frac{\psi(t)-t}{t^{2}}\,dt = \int_{x}^{\l x}\frac{\psi(t)-t}{t}\,\frac{dt}{t} \ge \int_{x}^{\l x}\frac{\l x-t}{t}\,\frac{dt}{t} = \int_{1}^{\l}\frac{\l x-tx}{tx}\,\frac{dt}{t} = \int_{1}^{\l}\frac{\l-t}{t^{2}}\,dt > 0,
+        \]
+        where in the second equality we have used the change of variables $t \to xt$. Since this lower bound is independent of $x$, $\int_{x}^{\l x}\frac{\psi(t)-t}{t^{2}}\,dt$ is bounded away from zero by a constant for arbitrarily large values of $x$. This gives a contradiction since the existance of $\int_{1}^{\infty}\frac{\psi(x)-x}{x^{2}}\,dx$ implies that $\int_{x}^{\l x}\frac{\psi(t)-t}{t^{2}}\,dt \to 0$ as $x \to \infty$. In the second case, $\frac{\psi(x)}{x} < 1$ is equivalent to the existance of a positive $\l < 1$ such that $\psi(x) \le \l x$. Analogous to the first case,
+        \[
+          \int_{\l x}^{x}\frac{\psi(t)-t}{t^{2}}\,dt = \int_{\l x}^{x}\frac{\psi(t)-t}{t}\,\frac{dt}{t} \le \int_{\l x}^{x}\frac{\l x-t}{t}\,\frac{dt}{t} = \int_{\l}^{1}\frac{\l x-tx}{tx}\,\frac{dt}{t} = \int_{\l}^{1}\frac{\l-t}{t^{2}}\,dt < 0.
+        \]
+        Since this upper bound is independent of $x$, $\int_{\l x}^{x}\frac{\psi(t)-t}{t^{2}}\,dt$ is bounded away from zero by a constant for arbitrarily large values of $x$. Again, this gives a contradiction since the existance of $\int_{1}^{\infty}\frac{\psi(x)-x}{x^{2}}\,dx$ implies that $\int_{\l x}^{x}\frac{\psi(t)-t}{t^{2}}\,dt \to 0$ as $x \to \infty$. So finally $\psi(x) \sim x$ and the theorem is proved.
+      \end{proof}
+
+      A more classical proof of the prime number theorem is observing, as we did, that $-\frac{\z'}{\z}(s) = \sum_{n \ge 1}\frac{\L(n)}{n^{s}}$ and $\psi(x) = \sum_{n \le x}\L(x)$ and then appealing to Perron's formula to write
+      \[
+        \psi(x) = \frac{1}{2\pi i}\int_{\Re(s) = c}-\frac{\z'}{\z}(s)x^{s}\frac{ds}{s}.
+      \]
+      One then performs a very careful analysis of the latter integral to conclude $\psi(x) \sim x$. This involves making several estimates about the growth rate of $\frac{\z'}{\z}(s)$ as well as other convergence arguments. However, not much is needed beyond a good understanding of complex analysis. We have deviated from this style of proof for technical simplicity even though the underlying idea is, perhapse, more straightforward.
+
+      \begin{remark}
+        It's interesting to note that our use of non-vanishing results in the proofs of the prime number theorem and Dirichlet's theorem on primes in arithmetic progressions served different purposes. In the proof of the prime number theorem the non-vanishing result was used to establish analytic continuation of $\frac{\z'}{\z}(s)$. On the other hand, in the proof of Dirichlet's theorem on primes in arithmetic progressions the non-vanishing result was used to conclude that $\log L(s,\chi)$ was bounded provided the Dirichlet character $\chi$ was not principal.
+      \end{remark}
+
+      We will introduce one last function before we are done discussing the prime number theorem. That function is the \textbf{logarithmic integral}\index{logarithmic integral} $\Li(x)$ defined by
+      \[
+        \Li(x) = \int_{2}^{x}\frac{dt}{\log(t)},
+      \]
+      for $x \ge 2$. Notice that $\Li(x) \sim \frac{x}{\log{x}}$ because
+      \[
+        \lim_{x \to \infty}\left|\frac{\Li(x)}{\frac{x}{\log{x}}}\right| = \lim_{x \to \infty}\left|\frac{\int_{2}^{x}\frac{dt}{\log(t)}}{\frac{x}{\log{x}}}\right| = \lim_{x \to \infty}\left|\frac{\frac{1}{\log(x)}}{\frac{\log(x)-1}{\log^{2}(x)}}\right| = \lim_{x \to \infty}\left|\frac{\log(x)}{\log(x)-1}\right| = 1.
+      \]
+      where in the second equality we have used  l'H\^opital's rule. So an equivalent version of the prime number theorem is the following:
+
+      \begin{theorem}[Prime number theorem]
+        \phantom{ }
+        \[
+          \pi(x) \sim \Li(x).
+        \]
+      \end{theorem}
+
+      The advantage of using $\Li(x)$ is that it is a better numerical approximation to $\pi(x)$ than $\frac{x}{\log(x)}$. To make this statment precise, first observe that we have yet another equivalent version of the prime number theorem:
+
+      \begin{theorem}[Prime number theorem]
+        \phantom{ }
+        \[
+          \pi(x) = \frac{x}{\log(x)}+o\left(\frac{x}{\log(x)}\right).
+        \]
+      \end{theorem}
+
+      So, in particular, the prime number theorem implies the weaker asymptotic
+      \[
+        \pi(x) = \frac{x}{\log(x)}+O\left(\frac{x}{\log(x)}\right),
+      \]
+      which says that the extact error between $\pi(x)$ and $\frac{x}{\log(x)}$ grows no faster than $\frac{x}{\log(x)}$. However, there is the following result of de la Vall\'ee Poussin (see \cite{poussin1899fonction}):
+
+      \begin{proposition}
+        For some $a > 0$,
+        \[
+          \pi(x) = \Li(x)+O\left(xe^{-a\sqrt{\log(x)}}\right),
+        \]
+      \end{proposition}
+      
+      Since $xe^{-a\sqrt{\log(x)}} \to 0$ as $x \to \infty$ and $\frac{x}{\log(x)} \to \infty$ as $x \to \infty$, $xe^{-a\sqrt{\log(x)}} < \frac{x}{\log(x)}$ for sufficiently large $x$. Therefore the extact error $\pi(x)-\Li(x)$ grows slower than $\pi(x)-\frac{x}{\log{x}}$ for sufficiently large $x$. This is what we mean when we say $\Li(x)$ is a better numerical approximation to $\pi(x)$ than $\frac{x}{\log(x)}$. There is also the following result due to Littlewood (see \cite{littlewood1914distribution}):
+
+      \begin{proposition}\label{thm:Littlewood_Li_approximation_theorem}
+        $\pi(x)-\Li(x)$ changes sign infinitely often as $x \to \infty$.
+      \end{proposition}
+
+      So in addition, \cref{thm:Littlewood_Li_approximation_theorem} implies that $\Li(x)$ never underestimates or overestimates $\pi(x)$ continuously. On the other hand, the exact error $\pi(x)-\frac{x}{\log(x)}$ is positive provided $x \ge 17$ (see \cite{rosser1962approximate}).

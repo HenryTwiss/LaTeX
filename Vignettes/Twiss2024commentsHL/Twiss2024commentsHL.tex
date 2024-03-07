@@ -1,0 +1,227 @@
+\documentclass[12pt,reqno,oneside]{amsart}
+\usepackage{import}
+\input{preamble}
+
+%=================%
+%  Title & Index  %
+%=================%
+\title{Comments on coefficients of Maass forms
+and the Siegel zero \& An effective zero-free region}
+\author{Henry Twiss}
+\date{\today}
+\makeindex
+
+\begin{document}
+
+\begin{abstract}
+    We present a condensed exposition on \cite{HL} and its appendix \cite{GHL}. All of the notation will be as in \cite{HL}.
+\end{abstract}
+
+\maketitle
+
+\section{Main Theorems}
+    Let $f$ be a Maass form that is a newform for $\G_{0}(N)$, with eigenvalue $\l$, and character $\chi$, analytically normalized so that $\<f,f\> = 1$ where $\<\cdot,\cdot\>$ is the Petersson inner product. Denote the Fourier coefficients of $f$ by $\rho(n)$ and the Hecke eigenvalues by $a(n)$. The primary aim of \cite{HL} is to establish an upper bound for $\rho(1)$ in terms of $\l$ and $N$. An upper bound for $\rho(1)$ induces an upper bound for $\rho(n)$ because
+    \[
+        \rho(n) = \pm\rho(-n) \quad \text{and} \quad \rho(n) = a(n)\rho(1),
+    \]
+    for all $n \ge 1$ since $f$ is a newform. The general stragety to estimate $\rho(1)$ is as follows: consider the Rankin-Selberg convolution
+    \[
+        L(s,f \x f) = \z(2s)\sum_{n \ge 1}\frac{|a(n)|^{2}}{n^{s}}.
+    \]
+    Then $L(s,f \x f)$ admits an Euler product and meromorphic continuation to $\C$ with a simple pole at $s = 1$. The residue is given by
+    \begin{equation}\label{equ:key_equation_1}
+        \Res_{s = 1}L(s,f \x f) = \frac{2\pi}{3}|\rho(1)|^{-2}.
+    \end{equation}
+    On the other hand, to any newform $f$, there is an associated $\GL(3)$ form $F$ called the \textbf{adjoint square lift} with Fourier coefficients $a(m,n)$ and $L$-function
+    \[
+        L(s,F) = \sum_{n \ge 1}\frac{a(1,n)}{n^{s}}.
+    \]
+    The existance of $F$ and its properties are establish in \cite{GJ}. Now $\z(s)L(s,F)$ admits an Euler product and the local $p$ factors of $\z(s)L(s,F)$ and $L(s,f \x f)$ agree provided $p \nmid N$. Therefore
+    \begin{equation}\label{equ:key_equation_2}
+        L(s,f \x f) = \z(s)L_{N}(s)L(s,F),
+    \end{equation}
+    where $L_{N}(s)$ is a Dirichlet polynomial supported on the primes dividing $N$. Moreover, $L(s,F)$ is entire and $L(1,F) \neq 0$. It follows from \cref{equ:key_equation_2} that
+    \begin{equation}\label{equ:key_equation_3}
+        \Res_{s = 1}L(s,f \x f) = L_{N}(1)L(1,F).
+    \end{equation}
+    Now one can deduce from \cite{GJ} that the growth of $L_{N}(1)$ is minor in the sense that
+    \begin{equation}\label{equ:key_equation_4}
+        N^{-\e} \ll_{\e} L_{N}(1) \ll_{\e} N^{\e},
+    \end{equation}
+    for small $\e > 0$. Combining \cref{equ:key_equation_1,equ:key_equation_3,equ:key_equation_4} yields
+    \begin{equation}\label{equ:key_equation_5}
+        N^{-\e}L(1,F)^{-1} \ll_{\e} |\rho(1)|^{2} \ll_{\e} N^{\e}L(1,F)^{-1}.
+    \end{equation}
+    We see from \cref{equ:key_equation_5} that finding effective upper bounds for $|\rho(1)|$ follows from effective lower bounds for $L(s,F)$ at the special value $s = 1$.
+
+    This situation largely mimics the classical class number problem for quadratic number fields of discriminant $D < 0$. Indeed, let $h(D)$ be the ideal class number of $\Q(\sqrt{D})$ and let $\chi_{D}$ be the aossciated quadratic character. Then it is known that
+    \[
+        L(1,\chi_{D}) = \frac{2\pi}{\w_{D}\sqrt{|D|}}h(D),
+    \]
+    where $\w_{D}$ is the number of roots of unity in $\Q(\sqrt{D})$. It follows that estimates for $L(1,\chi_{D})$ induce corresponding estimates for $h(D)$. Via Siegel's theorem, estimates for $L(1,\chi_{D})$ are intimately related to existance of Siegel zeros for $L(1,\chi_{D})$. That is, how close real zeros of $L(s,\chi_{D})$ can be to $s = 1$. In our setting, $\rho(1)$ is playing the role of $h(D)$ and $L(s,F)$ is playing the role of $L(s,\chi_{D})$. Indeed, \cite{HL} shows that lower bounds for $L(1,F)$ are closely related to the existance or non-existance of \textbf{Siegel zeros} for $L(s,F)$. That is, real zeros of $L(s,F)$ close to $s = 1$. The main results of \cite{HL} are the following:
+
+    \begin{theorem}\label{thm:main_theorem_1}
+        Suppose there exists a constant $c$ such that $L(s,F)$ has no real zeros in the range
+        \[
+            1-\frac{c}{\log(\l N+1)} < s < 1.
+        \]
+        Then there are effective constants $c_{1}$ and $c_{2}$, depending only on $c$, such that
+        \[
+            L(1,F) \ge \frac{c_{1}}{\log(\l N+1)},
+        \]
+        and
+        \[
+            |\rho(1)|^{2} \le c_{2}\log(\l N+1).
+        \]
+    \end{theorem}
+
+    \cref{thm:main_theorem_1} gives an upper bound for $\rho(1)$ in the case that the Siegel zero of $L(s,F)$ does not exist. The following result gives an estimate that is unconditional on the existance of a Siegel zero:
+
+    \begin{theorem}\label{thm:main_theorem_2}
+        For any $\e > 0$, there exsits an effective constant $c(\e)$ so that the inequality
+        \[
+            L(1,F) \ge c(\e)(\l N)^{\e},
+        \]
+        holds for all $F$ with at most one exception.
+    \end{theorem}
+
+    The second statement in \cref{thm:main_theorem_2} shows that unconditionally the existance of Siegel zeros are rare. In particular, \cref{thm:main_theorem_2} implies $L(1,F) \gg (\l N)^{\e}$ with an inneffective constant. Combining with \cref{equ:key_equation_5} gives the following corollary:
+
+    \begin{corollary}
+        Let $f$ be a newform for $\G_{0}(N)$ with eigenvalue $\l$ and analytically normalized so that $\<f,f\> = 1$. Then for any $\e > 0$,
+        \[
+            \rho(1) \ll_{\e} (\l N)^{\e}.
+        \]
+    \end{corollary}
+\section*{The Appendix}
+    About a year after \cite{HL} was circulated, an appendix (see \cite{GHL}) was written. This occured because through some discussions it became apparent how eliminate the existance of Siegel zeros of $L(s,F)$ for many $F$. This boils down to an additional factorization of $L(s,F \x F)$. In particular, \cref{thm:main_theorem_1} is true unconditionally as long as $f$ is not a lift from $\GL(1)$. Even if these forms are included, the result still holds in the $\l$-aspect but either the constant must be weakened in the $N$-aspect. Explicitely:
+
+    \begin{theorem}\label{thm:main_theorem_3}
+        Let $f$ be a Maass form that is a newform for $\G_{0}(N)$, with eigenvalue $\l$, and character $\chi$, analytically normalized so that $\<f,f\> = 1$. Let $\rho(1)$ denote the first Fourier coefficient of $f$ and let $F$ be the adjoint square lift of $f$ to $\GL(3)$. The following are true
+        \begin{enumerate}[label=(\roman*)]
+            \item If $f$ is not a lift from $\GL(1)$, then there exists effective constants $c_{1}$ and $c_{2}$ such that
+            \[
+                L(1,F) \ge \frac{c_{1}}{\log(\l N+1)},
+            \]
+            and
+            \[
+                |\rho(1)|^{2} \le c_{2}\log(\l N+1).
+            \]
+            \item If $f$ is a lift from $\GL(1)$, then there exists effective constants $c_{3}$ and $c_{4}$ such that
+            \[
+                L(1,F) \ge c_{3}\min\left(\frac{1}{\sqrt{N}},\frac{1}{\log(\l N+1)}\right),
+            \]
+            and
+            \[
+                |\rho(1)|^{2} \le c_{4}\max\left(\sqrt{N},\log(\l N+1)\right).
+            \]
+            Moreover, $\sqrt{N}$ can be replaced by $N^{\e}$, for any $\e > 0$, at the cost of making $c_{3}$ and $c_{4}$ inneffective depending on $\e$.
+        \end{enumerate}
+    \end{theorem}
+
+    The proof of \cref{thm:main_theorem_3} naturally breaks into two cases (i) and (ii). In the first case, one can eliminate the existance of Siegel zeros for $L(s,F)$. In the second case, if $f$ is a lift from $\GL(1)$, the $L$-function $L(s,F)$ is divisible by a quadratic Dirichlet $L$-series which may exhibit a Siegel zero. Hence, $L(s,F)$ may have a Siegel zero induced from one for a quadratic Dirichlet $L$-function.
+
+    \begin{remark}
+        In many instances there are no forms $f$ which are lifts from $\GL(1)$. For example, on $\PSL_{2}(\Z)$ or $\G_{0}(N)$ for prime $N$ and trivial character.
+    \end{remark}
+
+    We being with a lemma:
+
+    \begin{lemma}\label{lem:product_lemma}
+        Let $\vphi(s)$ be a Dirichlet series with non-negative coefficients and absolutely convergent for $\Re(s) > 1$. Also suppose that $\vphi(s)$ admits an Euller product so that $\vphi(s) \neq 0$ for $\Re(s) > 1$, and the logarthmic derivative of $\vphi(s)$ is negative for real $s > 1$. Let $\vphi(s)$ have a pole of order $m$ at $s = 1$ and set
+        \[
+            \L(s) = s^{m}(1-s)^{m}G(s)\vphi(s),
+        \]
+        is entire of order $1$ satisfying the functional equation
+        \[
+            \L(s) = \L(1-s),
+        \]
+        where
+        \[
+            G(s) = D^{s}\prod_{1 \le i \le l}\G\left(\frac{s+c_{l}}{2}\right),
+        \]
+        for some constants $c_{l}$ and an integer $D > 1$. Then there exists an effective constant $c$, depending only on $l$ and $m$, such that $\vphi(s)$ has at most $m$ real zeros in the range
+        \[
+            1-\frac{c}{\log(M)} < s < 1,
+        \]
+        where $M = 1+D\max_{1 \le i \le l}\{|c_{i}|\}$.
+    \end{lemma}
+    \begin{proof}
+        Since $\L(s)$ is entire and of order $1$, it admits the Hadamard factorization
+        \[
+            \L(s) = e^{A+Bs}\prod_{\rho}\left(1-\frac{s}{\rho}\right)e^{\frac{s}{\rho}},
+        \]
+        where the product is taken over the zeros $\rho$ of $\L(s)$. Taking the logarthmic derivative of this expression gives
+        \[
+            \frac{\L'}{\L}(s) = B+\sum_{\rho}\frac{1}{s-\rho}+\frac{1}{\rho},
+        \]
+        and using the functional equation (exactly as in the case for $\z(s)$) we see that
+        \[
+            B = -\sum_{\rho}\frac{1}{\rho}.
+        \]
+        On the other hand, the defintion of $\L(s)$ gives
+        \[
+            \frac{\L'}{\L}(s) = \frac{m}{s}+\frac{m}{s-1}+\frac{G'}{G}(s)+\frac{\vphi'}{\vphi}(s).
+        \]
+        Combing our work results in the identity
+        \[
+            \sum_{\rho}\frac{1}{s-\rho} = \frac{m}{s}+\frac{m}{s-1}+\frac{G'}{G}(s)+\frac{\vphi'}{\vphi}(s).
+        \]
+        By assumption $\frac{\vphi'}{\vphi}(s) < 0$ if $s$ is real and $s > 1$. Moreover, if we write
+        \[
+            \sum_{\rho}\frac{1}{s-\rho} = \asum_{\rho}\left(\frac{1}{s-\rho}+\frac{1}{s-\conj{\rho}}\right),
+        \]
+        where the $\ast$ indicates that we are summing over $\rho$ and not $\conj{\rho}$, then each term in the latter sum is real and positive. So upon removing $\frac{\vphi'}{\vphi}(s)$ and all of the terms $\rho$ except for those where $\rho = \b$ for some positive real root $\b \ge 1-\frac{c}{\log(M)}$, there exists an effective constant $c_{1}$ such that
+        \[
+            \sum_{\b}\frac{1}{s-\b} \le \frac{m}{s-1}+c_{1}\log(M).
+        \]
+        Setting $s = 1+\frac{\d}{\log(M)}$ with $\d < \frac{1}{c_{1}}$ and taking $c$ small enough compared to $\d$, we obtain a contradiction if there are least $m+1$ roots $\b$ in the sum.
+    \end{proof}
+
+    Now we can begin the work to prove \cref{thm:main_theorem_3}. Similar to the proof of Siegel's theroem, we will prove the claim from estimates of a Dirichlet series $\vphi(s)$ that is a multiple of two $L$-functions $L(s,F_{1})$ and $L(s,F_{2})$ corresponding to two Maass forms $f_{1}$ and $f_{2}$ and has non-negative coefficeints. As presented in \cite{HL}, this Dirichlet series is
+    \[
+        \vphi(s) = \z(s)L(s,F_{1})L(s,F_{2})L(s,F_{1} \x F_{2}).
+    \]
+    Analgous to Siegel's theorem, $L(s,F_{1})$ plays the role of a quadratic Dirichlet $L$-series with a possible Siegel zero, $L(s,F_{2})$ plays the role of quadratic Dirichlet $L$-series with another character, and $L(s,F_{1} \x F_{2})$ plays the role of the Dirichlet $L$-series formed with the product of the two characters. It was proved in \cite{HL} that if $F_{1} \neq F_{2}$, then $\vphi(s)$ has non-negative coefficients, admits meromorphic continuation to $\C$ with a simple pole at $s = 1$, posses a functional equation of shape $s \to 1-s$, and has polynomial growth in bounded vertical strips. By \cref{lem:product_lemma} it follows that $\vphi(s)$ has at most a single real zero close to $1$.
+    
+    In \cite{GHL}, they take $F_{1} = F_{2} = F$ so that
+    \[
+        \vphi(s) = \z(s)L(s,F)^{2}L(s,F \x F).
+    \]
+    It turns out that $\vphi(s)$ retains all of the properties in the generic case when $F_{1} \neq F_{2}$ except for the order of the pole. To compute the order of the pole, it follows from inspecting local factors that $L(s,F \x F)$ decomposes as
+    \[
+        L(s,F \x F) = L(s,F)L(s,F,\vee^{2}),
+    \]
+    where $L(s,F,\vee^{2})$ is the symmetric square $L$-function of $F$. Therefore,
+    \[
+        \vphi(s) = \z(s)L(s,F)^{3}L(s,F,\vee^{2}).
+    \]
+    The remainder of the argument breaks into cases depending on if $f$ is a lift from $\GL(1)$ or not:
+    \begin{enumerate}[label=(\roman*)]
+        \item Suppose $f$ is not a lift from $\GL(1)$. It was shown in \cite{BG} that $L(s,F,\vee^{2})$ has a simple pole at $s = 1$ and is analytic elsewhere. As $L(1,F) \neq 0$, it follows that $\vphi(s)$ has a double pole at $s = 1$. Moreover, any zero of $F(s,F)$ will be a zero of order at least $3$ for $\vphi(s)$. Applying \cref{lem:product_lemma} (where $m = 2$ and $M = \l N+1$) it follows that $\vphi(s)$ cannot have a triple zero within $\frac{c}{\log(M)}$ of $1$ because it only has a double pole. In short, the lemme implies the existance of an effective constant $c$ such that $L(s,F)$ has no real zeros in the interval
+        \[
+            1-\frac{c}{\log(\l N+1)} < s < 1.
+        \]
+        This eliminates the existance of Siegel zeros for such $F$ and the result then follows from \cref{thm:main_theorem_1}.
+        \item Now suppose $f$ is a lift from $\GL(1)$. This means that $L(s,f) = L(s,\psi,K)$ where $K$ is a quadratic number field and $\psi$ is a Hecke character defined over $K$. Moreover, $L(s,F)$ factors as
+        \[
+            L(s,F) = L(s,\psi_{K})L(s,\psi^{2}(\psi^{-1} \circ N_{K/\Q}),K),
+        \]
+        where $L(s,\psi_{K})$ is the quadratic Dirichlet $L$-function associated to $K$. It follows that an Siegel zero for $L(s,\psi_{K})$ or $L(s,\psi^{2}(\psi^{-1} \circ N_{K/\Q}),K)$ induces a Siegel zero for $L(s,F)$. Actally, if $\psi^{2}$ is not trivial, then $L(s,\psi^{2}(\psi^{-1} \circ N_{K/\Q}),K)$ cannot have a Siegel zero. In any case, the level of $L(s,F)$ is bounded above by $N$ and then one can prove the result using the effective bound $1-\b \gg \frac{1}{\sqrt{N}}$ or the inneffective bound $1-\b \gg N^{-\e}$ coming from Siegel's theorem.
+    \end{enumerate}
+
+\begin{thebibliography}{99}
+    \bibitem{HL}
+    Hoffstein, J., \& Lockhart, P. (1994). Coefficients of Maass forms and the Siegel zero. Annals of Mathematics, 140(1), 161-176.
+
+    \bibitem{GHL}
+    Goldfeld, D., Hoffstein, J., \& Lieman, D. (1994). An effective zero-free region. Annals of Mathematics, 140(1), 177-181.
+
+    \bibitem{GJ}
+    Gelbart, S., \& Jacquet, H. (1978). A relation between automorphic representations of ${\rm GL}(2) $ and ${\rm GL}(3) $. In Annales scientifiques de l'École normale supérieure (Vol. 11, No. 4, pp. 471-542).
+
+    \bibitem{BG}
+    Bump, D., \& Ginzburg, D. (1992). Symmetric square L-functions on GL (r). Annals of mathematics, 136(1), 137-205.
+\end{thebibliography}
+
+\end{document}
