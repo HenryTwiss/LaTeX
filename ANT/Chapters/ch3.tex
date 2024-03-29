@@ -1122,15 +1122,16 @@
         Make the following observation: summing over all pairs $(c,d)$ with $c \ge 1$, $d \in \Z$, $c \equiv 0 \tmod{NM}$, and $(c,d) = 1$ is the same as summing over all triples $(c,\ell,r)$ with $c \ge 1$, $\ell \in \Z$, $r \tmod{c}$, with $c \equiv 0 \tmod{NM}$ and $(r,c) = 1$. This is seen by writing $d = c\ell+r$. Therefore
         \begin{align*}
           I(z,s) &= \int_{0}^{1}\sum_{\substack{c \ge 1, d \in \Z \\ (c,d) = 1}}\frac{y^{s}}{|cx+icy+d|^{2s}}e^{-2\pi inx}\,dx \\
-          &= \int_{0}^{1}\sum_{(c,\ell,r)}\frac{y^{s}}{|cx+icy+c\ell+r|^{2s}}e^{-2\pi inx}\,dx \\
-          &= \sum_{(c,\ell,r)}\int_{0}^{1}\frac{y^{s}}{|cx+icy+c\ell+r|^{2s}}e^{-2\pi inx}\,dx &&\text{DCT} \\
-          &= \sum_{(c,\ell,r)}\frac{y^{s}}{c^{2s}}\int_{0}^{1}\frac{1}{|x+iy+\ell+\frac{r}{c}|^{2s}}e^{-2\pi inx}\,dx \\
-          &= \sum_{(c,\ell,r)}\frac{y^{s}}{c^{2s}}\int_{\ell}^{\ell+1}\frac{1}{|x+iy+\frac{r}{c}|^{2s}}e^{-2\pi inx}\,dx &&\text{$x \to x-\ell$} \\
-          &= \psum_{\substack{c \ge 1 \\ r \tmod{c}}}\frac{y^{s}}{c^{2s}}\int_{-\infty}^{\infty}\frac{1}{|x+iy+\frac{r}{c}|^{2s}}e^{-2\pi inx}\,dx &&\text{DCT} \\
-          &= \sum_{c \ge 1}\frac{y^{s}}{c^{2s}}\psum_{r \tmod{c}}e^{\frac{2\pi inr}{c}}\int_{-\infty}^{\infty}\frac{1}{(x^{2}+y^{2})^{s}}e^{-2\pi inx}\,dx &&\text{$x \to x-\frac{r}{c}$} \\
-          &= \sum_{c \ge 1}\frac{y^{s}}{c^{2s}}r(n;c)\int_{-\infty}^{\infty}\frac{1}{(x^{2}+y^{2})^{s}}e^{-2\pi inx}\,dx,
+          &= \int_{0}^{1}\sum_{(c,\ell,r)}\frac{y^{s}}{|c(x+\ell)+r+icy|^{2s}}e^{-2\pi inx}\,dx \\
+          &= \sum_{(c,\ell,r)}\int_{0}^{1}\frac{y^{s}}{|c(x+\ell)+r+icy|^{2s}}e^{-2\pi inx}\,dx &&\text{DCT} \\
+          &= \sum_{(c,\ell,r)}\frac{1}{c^{2s}}\int_{0}^{1}\frac{y^{s}}{\left|x+\ell+\frac{r}{c}+iy\right|^{2s}}e^{-2\pi inx}\,dx \\
+          &= \sum_{(c,\ell,r)}\frac{1}{c^{2s}}\int_{\ell}^{\ell+1}\frac{y^{s}}{\left|x+\frac{r}{c}+iy\right|^{2s}}e^{-2\pi inx}\,dx &&\text{$x \to x-\ell$} \\
+          &= \psum_{\substack{c \ge 1 \\ r \tmod{c}}}\frac{1}{c^{2s}}\int_{-\infty}^{\infty}\frac{y^{s}}{\left|x+\frac{r}{c}+iy\right|^{2s}}e^{-2\pi inx}\,dx &&\text{DCT} \\
+          &= \sum_{c \ge 1}\frac{1}{c^{2s}}\psum_{r \tmod{c}}e^{\frac{2\pi inr}{c}}\int_{-\infty}^{\infty}\frac{y^{s}}{(x^{2}+y^{2})^{s}}e^{-2\pi inx}\,dx &&\text{$x \to x-\frac{r}{c}$} \\
+          &= \sum_{c \ge 1}\frac{r(n;c)}{c^{2s}}\int_{-\infty}^{\infty}\frac{y^{s}}{(x^{2}+y^{2})^{s}}e^{-2\pi inx}\,dx \\
+          &= \sum_{c \ge 1}\frac{r(n;c)}{c^{2s}}y^{1-s}\int_{-\infty}^{\infty}\frac{1}{(x^{2}+1)^{s}}e^{-2\pi inxy}\,dx && \text{$x \to xy$},
         \end{align*}
-        where on the right-hand side it is understood we are summing over all triples $(c,\ell,r)$ with the prescribed properties. Using \cref{lem:Ramanujan_zeta_relation} and applying the change of variables $x \to xy$ yields
+        where on the right-hand side it is understood we are summing over all triples $(c,\ell,r)$ with the prescribed properties. Using \cref{lem:Ramanujan_zeta_relation} yields
         \[
          I(z,s) = \begin{cases} \frac{\s_{1-2s}(|n|)}{\z(2s)}y^{1-s}\int_{-\infty}^{\infty}\frac{1}{(x^{2}+1)^{s}}e^{-2\pi inxy}\,dx & \text{if $n \neq 0$}, \\ \frac{\z(2s-1)}{\z(2s)}y^{1-s}\int_{-\infty}^{\infty}\frac{1}{(x^{2}+1)^{s}}\,dx & \text{if $n = 0$}. \end{cases}
         \]
