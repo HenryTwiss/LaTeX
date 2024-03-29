@@ -1063,21 +1063,12 @@
       \begin{lemma}\label{lem:Ramanujan_zeta_relation}
         Let $M \ge 1$ be square-free. Then for $\Re(s) > 1$ and $b \in \Z$,
         \[
-          \sum_{m \ge 1}\frac{r(b;m)}{m^{2s}} = \begin{cases} \frac{\s_{1-2s}(|b|)}{\z(2s)} & \text{if $b \neq 0$}, \\ \frac{\z(2s-1)}{\z(2s)} & \text{if $b = 0$}, \end{cases}
+          \sum_{m \ge 1}\frac{r(b;m)}{m^{2s}} = \begin{cases} \frac{\z(2s-1)}{\z(2s)} & \text{if $b = 0$}, \\ \frac{\s_{1-2s}(|b|)}{\z(2s)} & \text{if $b \neq 0$}, \end{cases}
         \]
         where $\s_{s}(b)$ is the generalized sum of divisors function.
       \end{lemma}
       \begin{proof}
-        If $\Re(s) > 1$ then the desired evaulation of the sum is locally absolutely uniformly convergent because the zeta function is in that region. Hence the sum will be too provided we prove the identity. If $b$ is non-zero, \cref{prop:Ramanujan_sum_evaluation} gives the first equality in the following chain:
-        \begin{align*}
-          \sum_{m \ge 1}\frac{r(b;m)}{m^{2s}} &= \sum_{m \ge 1}m^{-2s}\sum_{\ell \mid (b,m)}\ell\mu\left(\frac{m}{\ell}\right) \\
-          &= \sum_{\ell \mid b}\ell\sum_{m \ge 1}\frac{\mu(m)}{(m\ell)^{2s}} \\
-          &= \left(\sum_{\ell \mid b}\ell^{1-2s}\right)\left(\sum_{m \ge 1}\frac{\mu(m)}{m^{2s}}\right) \\
-          &= \s_{1-2s}(b)\sum_{m \ge 1}\frac{\mu(m)}{m^{2s}} \\
-          &= \s_{1-2s}(|b|)\sum_{m \ge 1}\frac{\mu(m)}{m^{2s}} \\
-          &= \frac{\s_{1-2s}(|b|)}{\z(2s)} && \text{\cref{prop:Dirichlet_Mobius_is_zeta_inverse}}.
-        \end{align*}
-        Now suppose $b = 0$. Then $r(0;m) = \phi(m)$. Since $\phi(m)$ is multiplicative we have
+        If $\Re(s) > 1$ then the desired evaulation of the sum is locally absolutely uniformly convergent because the zeta function is in that region. Hence the sum will be too provided we prove the identity. Suppose $b = 0$. Then $r(0;m) = \phi(m)$. Since $\phi(m)$ is multiplicative we have
         \begin{equation}\label{equ:Ramanujan_zeta_relation_1}
           \sum_{m \ge 1}\frac{\phi(m)}{m^{2s}} = \prod_{p}\left(\sum_{k \ge 0}\frac{\phi(p^{k})}{p^{k(2s)}}\right).
         \end{equation}
@@ -1095,6 +1086,15 @@
         \[
           \sum_{m \ge 1}\frac{\phi(m)}{m^{2s}} = \frac{\z(2s-1)}{\z(2s)}.
         \]
+        Now suppose $b \neq 0$, \cref{prop:Ramanujan_sum_evaluation} gives the first equality in the following chain:
+        \begin{align*}
+          \sum_{m \ge 1}\frac{r(b;m)}{m^{2s}} &= \sum_{m \ge 1}m^{-2s}\sum_{\ell \mid (b,m)}\ell\mu\left(\frac{m}{\ell}\right) \\
+          &= \sum_{\ell \mid b}\ell\sum_{m \ge 1}\frac{\mu(m)}{(m\ell)^{2s}} \\
+          &= \left(\sum_{\ell \mid b}\ell^{1-2s}\right)\left(\sum_{m \ge 1}\frac{\mu(m)}{m^{2s}}\right) \\
+          &= \s_{1-2s}(b)\sum_{m \ge 1}\frac{\mu(m)}{m^{2s}} \\
+          &= \s_{1-2s}(|b|)\sum_{m \ge 1}\frac{\mu(m)}{m^{2s}} \\
+          &= \frac{\s_{1-2s}(|b|)}{\z(2s)} && \text{\cref{prop:Dirichlet_Mobius_is_zeta_inverse}}.
+        \end{align*}
       \end{proof}
 
       We can now compute the Fourier coefficients $a(n,y,s)$:
@@ -1102,7 +1102,7 @@
       \begin{proposition}\label{prop:Fourier_coefficients_of_real-analytic_Eisenstein_series}
         The Fourier coefficients $a(n,y,s)$ are given by
         \[
-          a(n,y,s) = \begin{cases} 2\pi^{s}|n|^{s-\frac{1}{2}}\frac{\s_{1-2s}(|n|)}{\G(s)\z(2s)}\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y) & \text{if $n \neq 0$}, \\ y^{s}+y^{1-s}\frac{\sqrt{\pi}\G\left(s-\frac{1}{2}\right)\z(2s-1)}{\G(s)\z(2s)} & \text{if $n = 0$}, \end{cases}
+          a(n,y,s) = \begin{cases} y^{s}+y^{1-s}\frac{\sqrt{\pi}\G\left(s-\frac{1}{2}\right)\z(2s-1)}{\G(s)\z(2s)} & \text{if $n = 0$}, \\ 2\pi^{s}|n|^{s-\frac{1}{2}}\frac{\s_{1-2s}(|n|)}{\G(s)\z(2s)}\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y) & \text{if $n \neq 0$}, \end{cases}
         \]
         where $K_{s}(y)$ is the $K$-Bessel function.
       \end{proposition}
@@ -1133,7 +1133,7 @@
         \end{align*}
         where on the right-hand side it is understood we are summing over all triples $(c,\ell,r)$ with the prescribed properties. Using \cref{lem:Ramanujan_zeta_relation} yields
         \[
-         I(z,s) = \begin{cases} \frac{\s_{1-2s}(|n|)}{\z(2s)}y^{1-s}\int_{-\infty}^{\infty}\frac{1}{(x^{2}+1)^{s}}e^{-2\pi inxy}\,dx & \text{if $n \neq 0$}, \\ \frac{\z(2s-1)}{\z(2s)}y^{1-s}\int_{-\infty}^{\infty}\frac{1}{(x^{2}+1)^{s}}\,dx & \text{if $n = 0$}. \end{cases}
+         I(z,s) = \begin{cases} \frac{\z(2s-1)}{\z(2s)}y^{1-s}\int_{-\infty}^{\infty}\frac{1}{(x^{2}+1)^{s}}\,dx & \text{if $n = 0$}, \\ \frac{\s_{1-2s}(|n|)}{\z(2s)}y^{1-s}\int_{-\infty}^{\infty}\frac{1}{(x^{2}+1)^{s}}e^{-2\pi inxy}\,dx & \text{if $n \neq 0$}. \end{cases}
         \]
         Appealing to \cref{append:Special_Integrals} for this last integral and substiuting the result back into \cref{equ:real-analytic_Eisenstein_fourier_coefficient_definition} finishes the proof.
       \end{proof}
@@ -1144,13 +1144,13 @@
       \]
       From \cref{prop:Fourier_coefficients_of_real-analytic_Eisenstein_series}, the Fourier coefficients $a^{\ast}(n,y,s)$ of $E^{\ast}(z,s)$ are given by
       \[
-        a^{\ast}(n,y,s) = \begin{cases} 2|n|^{s-\frac{1}{2}}\s_{1-2s}(|n|)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y) & \text{if $n \neq 0$}, \\ y^{s}\pi^{-s}\G(s)\z(2s)+y^{1-s}\pi^{-\left(s-\frac{1}{2}\right)}\G(s-\frac{1}{2})\z(2s-1) & \text{if $n = 0$}. \end{cases}
+        a^{\ast}(n,y,s) = \begin{cases} y^{s}\pi^{-s}\G(s)\z(2s)+y^{1-s}\pi^{-\left(s-\frac{1}{2}\right)}\G(s-\frac{1}{2})\z(2s-1) & \text{if $n = 0$}, \\ 2|n|^{s-\frac{1}{2}}\s_{1-2s}(|n|)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y) & \text{if $n \neq 0$}. \end{cases}
       \]
       Our goal is to now derive a functional equation for $E^{\ast}(z,s)$. Using the definition and functional equation for $\L(2s-1,\z)$, we can rewrite the second term in the $n = 0$ coefficient to get
       \begin{equation}\label{equ:Fourier_coefficients_for_completed_real-analytic_Eisenstein_series}
-        a^{\ast}(n,y,s) = \begin{cases} 2|n|^{s-\frac{1}{2}}\s_{1-2s}(|n|)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y) & \text{if $n \neq 0$}, \\ y^{s}\L(2s,\z)+y^{1-s}\L(2(1-s),\z) & \text{if $n = 0$}. \end{cases}
+        a^{\ast}(n,y,s) = \begin{cases} y^{s}\L(2s,\z)+y^{1-s}\L(2(1-s),\z) & \text{if $n = 0$}, \\ 2|n|^{s-\frac{1}{2}}\s_{1-2s}(|n|)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y) & \text{if $n \neq 0$}. \end{cases}
       \end{equation}
-      Now observe that the $n = 0$ coefficient is invariant under $s \to 1-s$. Each $n \neq 0$ term is also invariant under $s \to 1-s$. To see this we will use two facts. First, from \cref{append:Bessel_Functions}, $K_{s}(y)$ is invariant under $s \to -s$ and $s-\frac{1}{2} \mapsto \frac{1}{2}-s$ under $s \to 1-s$. Therefore $K_{s-\frac{1}{2}}(2\pi|n|y)$ is invariant as $s \to 1-s$. Second, for $n \ge 1$ we have
+      Now observe that the $n = 0$ coefficient is invariant under $s \to 1-s$. Each $n \neq 0$ coefficeint is also invariant under $s \to 1-s$. To see this we will use two facts. First, from \cref{append:Bessel_Functions}, $K_{s}(y)$ is invariant under $s \to -s$ and $s-\frac{1}{2} \mapsto \frac{1}{2}-s$ under $s \to 1-s$. Therefore $K_{s-\frac{1}{2}}(2\pi|n|y)$ is invariant as $s \to 1-s$. Second, for $n \ge 1$ we have
       \[
         n^{s-\frac{1}{2}}\s_{1-2s}(n) = n^{\frac{1}{2}-s}n^{2s-1}\s_{1-2s}(n) = n^{\frac{1}{2}-s}n^{2s-1}\sum_{d \mid n}d^{1-2s} = n^{\frac{1}{2}-s}\sum_{d \mid n}\left(\frac{n}{d}\right)^{2s-1} = n^{\frac{1}{2}-s}\s_{2s-1}(n),
       \]
