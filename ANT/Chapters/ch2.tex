@@ -602,19 +602,19 @@
       \]
       Then $\G_{1}$ acts on the set $\G_{1}\a\G_{2}$ by left multiplication so that it decomposes into a disjoin union of orbit spaces. So
       \[
-        \G_{1}\a\G_{2} = \bigcup_{\b_{j}}\G_{1}\b_{j},
+        \G_{1}\a\G_{2} = \bigcup_{\b}\G_{1}\b,
       \]
-      where the union ranges over a set of orbit representatives $\b_{j}$ for $\G_{1}\a\G_{2}$. The general operators we will define will be double coset operators, but in order for them to be well-defined it is necessary that the orbit decomposition above is a finite union. This is indeed the case (see \cite{diamond2005first} for a proof):
+      where the union ranges over a set of orbit representatives $\b$ for $\G_{1}\a\G_{2}$. The general operators we will define will be double coset operators, but in order for them to be well-defined it is necessary that the orbit decomposition above is a finite union. This is indeed the case (see \cite{diamond2005first} for a proof):
 
       \begin{proposition}\label{prop:double_congruence_subgroup_coset_decomposition_is_finite}
         Let $\a \in \GL_{2}^{+}(\Q)$. Then the orbit decomposition
         \[
-          \G_{1}\a\G_{2} = \bigcup_{\b_{j}}\G_{1}\b_{j},
+          \G_{1}\a\G_{2} = \bigcup_{\b}\G_{1}\b,
         \]
         with respect to the action of $\G_{1}$ by left multiplication, is a finite union.
       \end{proposition}
 
-      We will now introduce our operators. Fix some congruence subgroup $\G$ and consider $\mc{M}_{k}(\G)$. Then for $\a \in \GL_{2}^{+}(\Q)$, we define the weight $k$ operator $[\a]_{k}$ on $\mc{M}_{k}(\G)$ to be the linear operator given by
+      We will now introduce our operators. Fix some congruence subgroup $\G$ and consider $\mc{M}_{k}(\G)$. Then for $\a \in \GL_{2}^{+}(\Q)$, we define the operator $[\a]_{k}$ of weight $k$ on $\mc{M}_{k}(\G)$ to be the linear operator given by
       \[
         (f[\a]_{k})(z) = (\det(\a))^{k-1}j(\a,z)^{-k}f(\a z),
       \]
@@ -629,7 +629,7 @@
       \[
         (f[\g]_{k})(z) = j(\g,z)^{-k}f(\g z) = f(z),
       \]
-      is equivalent to the modularity of untwisted $f$ on $\GH$. Thus $f$ is an untwisted modular form on $\GH$ if and only if $f[\g]_{k} = f$ for all $\g \in \G$ where $\g$ is chosen to be the representative with positive determinant. Now let $\G_{1}$ and $\G_{2}$ be two congruence subgroups and let $\a \in \GL_{2}^{+}(\Q)$. We define the weight $k$ \textbf{double coset operator}\index{double coset operator} $[\G_{1}\a\G_{2}]_{k}$ on $\mc{M}_{k}(\G_{1})$ to be the linear operator given by
+      is equivalent to the modularity of untwisted $f$ on $\GH$. Thus $f$ is an untwisted modular form on $\GH$ if and only if $f[\g]_{k} = f$ for all $\g \in \G$ where $\g$ is chosen to be the representative with positive determinant. Now let $\G_{1}$ and $\G_{2}$ be two congruence subgroups and let $\a \in \GL_{2}^{+}(\Q)$. We define the \textbf{double coset operator}\index{double coset operator} $[\G_{1}\a\G_{2}]_{k}$ of weight $k$ on $\mc{M}_{k}(\G_{1})$ to be the linear operator given by
       \[
         (f[\G_{1}\a\G_{2}]_{k})(z) = \sum_{\b \in \G_{1}\a\G_{2}}(f[\b]_{k})(z) = \sum_{\b \in \G_{1}\a\G_{2}}(\det(\b))^{k-1}j(\b,z)^{-k}f(\b z),
       \]
@@ -678,7 +678,7 @@
       \[
         (\<d\>f)(z) = (f[\a]_{k})(z),
       \]
-      for any $\a = \begin{psmallmatrix} \ast & \ast \\ \ast & d \end{psmallmatrix} \in \G_{0}(N)$. Our discussion above has already shown that the diamond operators $\<d\>$ are well-defined. Also, since the weight $k$ operator $[\a]_{k}$ is multiplicative and
+      for any $\a = \begin{psmallmatrix} \ast & \ast \\ \ast & d \end{psmallmatrix} \in \G_{0}(N)$. Our discussion above has already shown that the diamond operators $\<d\>$ are well-defined. Also, since the operator $[\a]_{k}$ is multiplicative and
       \[
         \begin{pmatrix} \ast & \ast \\ 0 & d \end{pmatrix}\begin{pmatrix} \ast & \ast \\ 0 & e \end{pmatrix} \equiv \begin{pmatrix} \ast & \ast \\ 0 & de \end{pmatrix} \tmod{N},
       \]
@@ -717,7 +717,50 @@
       \[
         (T_{p}f)(z) = \left(\left[\G_{1}(N)\begin{pmatrix} 1 & 0 \\ 0 & p \end{pmatrix}\G_{1}(N)\right]_{k}f\right)(z).
       \]
-      By \cref{prop:double_coset_operator_preserves_subspaces_modular}, $T_{p}$ preserves $\mc{M}_{k}(\G_{1}(N))$ and $\mc{S}_{k}(\G_{1}(N))$. Since there is a $p$-th Hecke operator for each weight $k$, if the weight of a modular form is given, it is assumed that $T_{p}$ is the Hecke operator corresponding to modular forms of that weight. An explicit desiction of the right coset representatives of $\G_{1}(N)\begin{psmallmatrix} 1 & 0 \\ 0 & p \end{psmallmatrix}\G_{1}(N)$ will give an explicit desction of the Hecke operator $T_{p}$. Indeed we have the following proposition (see \cite{diamond2005first} for a proof):
+      By \cref{prop:double_coset_operator_preserves_subspaces_modular}, $T_{p}$ preserves $\mc{M}_{k}(\G_{1}(N))$ and $\mc{S}_{k}(\G_{1}(N))$. We will start discussing properties of the diamond and Hecke operators, but we first state an important lemma that will be used throughout (see \cite{diamond2005first} for a proof):
+
+      \begin{lemma}\label{lem:cosets_for_Hecek_operators}
+        A complete set of representatives for $\G_{1}(N)\begin{psmallmatrix} 1 & 0 \\ 0 & p \end{psmallmatrix}\G_{1}(N)$ is
+        \[
+          \G_{1}(N)\begin{pmatrix} 1 & 0 \\ 0 & p \end{pmatrix}\G_{1}(N) = \left\{\g \in \Mat_{2}(\Z):\g \equiv \begin{pmatrix} 1 & 0 \\ 0 & p \end{pmatrix} \tmod{N}, \det(\g) = p\right\}.
+        \]
+      \end{lemma}
+
+       As a first proposition, it is not too hard to see that the diamond and Hecke operators commute:
+
+      \begin{proposition}\label{prop:diamond_Hecke_operators_commute_modular}
+        For every prime $p$ and $d \in (\Z/N\Z)^{\ast}$, the Hecke operator $T_{p}$ and diamond operator $\<d\>$ commute:
+        \[
+          T_{p}\<d\> = \<d\>T_{p}.
+        \]
+      \end{proposition}
+      \begin{proof}
+        Let $\a = \begin{psmallmatrix} 1 & 0 \\ 0 & p \end{psmallmatrix}$. For $\g = \begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix} \in \G_{0}(N)$, we have
+        \[
+          \g\a\g^{-1} \equiv \begin{pmatrix} a & b \\ c & d \end{pmatrix}\begin{pmatrix} 1 & 0 \\ 0 & p \end{pmatrix}\begin{pmatrix} d & -b \\ -c & a \end{pmatrix} = \begin{pmatrix} 1 & \ast \\ 0 & p \end{pmatrix} \tmod{N},
+        \]
+        because $c \equiv 0 \tmod{N}$, $ad-bc = 1$, and $ad \equiv {1} \tmod{N}$. By \cref{lem:cosets_for_Hecek_operators}, $\g\a\g^{-1} \in \G_{1}(N)\a\G_{1}(N)$ and so we can use this representative in place of $\a$. Now write
+        \[
+          \G_{1}(N)\a\G_{1}(N) = \bigcup_{\b}\G_{1}(N)\b.
+        \]
+        Using $\g\a\g^{-1}$ in place of $\a$ and the normality of $\G_{1}(N)$ in $\G_{0}(N)$, we compute
+        \begin{align*}
+          \G_{1}(N)\a\G_{1}(N) &= \G_{1}(N)\g\a\g^{}\G_{1}(N) \\
+          &= \g\G_{1}(N)\a\G_{1}(N)\g^{-1} \\
+          &= \g\bigcup_{\b}\G_{1}(N)\b\g^{-1} \\
+          &= \bigcup_{\b}\G_{1}(N)\g\b\g^{-1}.
+        \end{align*}
+        Upon comparing these two decompositions of $\G_{1}(N)\a\G_{1}(N)$ gives
+        \[
+          \bigcup_{\b}\G_{1}(N)\b\g = \bigcup_{\b}\G_{1}(N)\g\b.
+        \]
+        Now let $f \in \mc{M}_{k}(\G_{1}(N))$. Then this equivalence of unions implies
+        \[
+        \<d\>T_{p}f = \sum_{\b \in \G_{1}(N)\a\G_{1}(N)}f[\b\g]_{k} = \sum_{\b \in \G_{1}(N)\a\G_{1}(N)}f[\g\b]_{k} = T_{p}\<d\>f.
+        \]
+      \end{proof}
+      
+      Using \cref{lem:cosets_for_Hecek_operators} we can obtain an explicit desction of the Hecke operator $T_{p}$:
 
       \begin{proposition}\label{prop:explicit_description_of_Hecke_operators_modular}
         Let $f \in \mc{M}_{k}(\G_{1}(N))$. Then the Hecke operator $T_{p}$ acts on $f$ as follows:
@@ -730,7 +773,7 @@
         \todo{xxx}
       \end{proof}
 
-      This explicit definition of $T_{p}$ can be used to compute how the Hecke operators act on the Fourier coefficients of a modular form (see \cite{diamond2005first} for a proof):
+      This explicit definition of $T_{p}$ can be used to compute how the Hecke operators act on the Fourier coefficients of a modular form:
 
       \begin{proposition}\label{prop:prime_Hecke_operators_acting_on_Fourier_coefficients_modular}
         Let $f \in \mc{M}_{k}(\G_{1}(N))$ with Fourier coefficients $a_{n}(f)$. Then
@@ -747,10 +790,10 @@
         \todo{xxx}
       \end{proof}
 
-      We now mention the crucial result about Hecke operators which is that they form a simultaneously commuting family with the diamond operators (see \cite{diamond2005first} for a proof):
+      We now mention the crucial result about Hecke operators which is that they form a simultaneously commuting family with the diamond operators:
 
       \begin{proposition}\label{prop:Hecke_operators_commute_modular}
-        Let $p$ and $q$ be distinct primes and $d \in (\Z/N\Z)^{\ast}$. Then the Hecke operators $T_{p}$ and $T_{q}$ and diamond operators $\<d\>$ simultaneously commute:
+        Let $p$ and $q$ be distinct primes and $d \in (\Z/N\Z)^{\ast}$. Then the Hecke operators $T_{p}$ and $T_{q}$ and diamond operator $\<d\>$ simultaneously commute:
         \[
           T_{p}T_{q} = T_{q}T_{p} \quad \text{and} \quad \<d\>T_{p} = T_{p}\<d\>.
         \]
@@ -767,7 +810,7 @@
       \[
         T_{p^{e}} = \begin{cases} T_{p}T_{p^{e-1}}-p^{k-1}\<p\>T_{p^{e-2}} & \text{if $p \nmid N$}, \\ (T_{p})^{e} & \text{if $p \mid N$}, \end{cases}
       \]
-      for all $e \ge 2$. Then by \cref{prop:Hecke_operators_commute_modular}, the Hecke operators $T_{m}$ are multiplicative but not completely multiplicative in $m$. Moreover, they commute with the diamond operators $\<m\>$. Using these definitions, \cref{prop:prime_Hecke_operators_acting_on_Fourier_coefficients_modular,prop:Hecke_operators_commute_modular}, a more general formula for how the Hecke operators $T_{m}$ act on Fourier coefficients can be derived (see \cite{diamond2005first} for a proof):
+      for all $e \ge 2$. Then by \cref{prop:Hecke_operators_commute_modular}, the Hecke operators $T_{m}$ are multiplicative but not completely multiplicative in $m$. Moreover, they commute with the diamond operators $\<m\>$. Using these definitions, \cref{prop:prime_Hecke_operators_acting_on_Fourier_coefficients_modular,prop:Hecke_operators_commute_modular}, a more general formula for how the Hecke operators $T_{m}$ act on Fourier coefficients can be derived:
 
       \begin{proposition}\label{prop:general_Hecke_operators_acting_on_Fourier_coefficients_modular}
         Let $f \in \mc{M}_{k}(\G_{1}(N))$ with Fourier coefficients $a_{n}(f)$. Then
@@ -1300,7 +1343,7 @@
         is automorphic on $\GH$ and belongs to $\mc{L}(\G)$.
       \end{theorem}
       
-      Unfortunately, the Eisenstein series $E_{\mf{a}}(z,\psi)$ fail to be Maass forms because they are not eigenfunctions for the Laplace operator. This is because compactly supported functions cannot be real-analytic (which as we have already mentioned is implied for any eigenfunction of the Laplace operator). However, there is an important interaction between incomplete Eisenstein series and Maass cusp forms. Let $\mc{E}(\G)$ and $\mc{C}(\G)$ be the spaces of such forms respectively. Moreover, let $\mc{A}(\G)$ be the space of all Maass forms. Note that $\mc{E}(\G)$ and $\mc{C}(\G)$ are are subspaces of $\mc{B}(\G)$ but $\mc{A}(\G)$ need not be. Let $\mc{E}_{s}(\G)$, $\mc{S}_{s}(\G)$, $\mc{A}_{s}(\G)$, and $\mc{B}_{s}(\G)$ denote the corresponding subspaces of such forms whose eigenvalue is $\l = s(1-s)$. As we will now show, $\mc{E}(\G)$ and $\mc{C}(\G)$ constitute all of $\mc{B}(\G)$. Indeed, let $f \in \mc{B}(\G)$ with $E_{\mf{a}}(\cdot,\psi) \in \mc{E}(\G)$. We compute their inner product:
+      Unfortunately, the Eisenstein series $E_{\mf{a}}(z,\psi)$ fail to be Maass forms because they are not eigenfunctions for the Laplace operator. This is because compactly supported functions cannot be real-analytic (which as we have already mentioned is implied for any eigenfunction of the Laplace operator). However, there is an important interaction between incomplete Eisenstein series and Maass cusp forms. Let $\mc{E}(\G)$ and $\mc{C}(\G)$ be the spaces of such forms respectively. Moreover, let $\mc{A}(\G)$ be the space of all Maass forms. Note that $\mc{E}(\G)$ and $\mc{C}(\G)$ are are subspaces of $\mc{B}(\G)$ but $\mc{A}(\G)$ need not be. Let $\mc{E}_{s}(\G)$, $\mc{C}_{s}(\G)$, $\mc{A}_{s}(\G)$, and $\mc{B}_{s}(\G)$ denote the corresponding subspaces of such forms whose eigenvalue is $\l = s(1-s)$. As we will now show, $\mc{E}(\G)$ and $\mc{C}(\G)$ constitute all of $\mc{B}(\G)$. Indeed, let $f \in \mc{B}(\G)$ with $E_{\mf{a}}(\cdot,\psi) \in \mc{E}(\G)$. We compute their inner product:
       \begin{align*}
         \<f,E_{\mf{a}}(\cdot,\psi)\> &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}f(z)\conj{E_{\mf{a}}(z,\psi)}\,d\mu \\
         &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}f(z)\conj{\sum_{\g \in \GG}\psi(\Im(\s_{\mf{a}}^{-1}\g z))}\,d\mu \\
@@ -1312,7 +1355,7 @@
         &= \int_{0}^{\infty}\int_{0}^{1}f(\s_{\mf{a}}(x+iy))\conj{\psi(y)}\,\frac{dx\,dy}{y^{2}} \\
         &= \int_{0}^{\infty}\left(\int_{0}^{1}f(\s_{\mf{a}}(x+iy))\,dx\right)\conj{\psi(y)}\,\frac{dy}{y^{2}}.
       \end{align*}
-      The inner integral is precisely the constant term in the Fourier series of $f$ at the $\mf{a}$ cusp. It follows that $f$ is orthogonal to $\mc{E}(\G)$ if and only if $f$ is a cusp form. By what we have just show,
+      The inner integral is precisely the constant term in the Fourier series of $f$ at the $\mf{a}$ cusp. It follows that $f$ is orthogonal to $\mc{E}(\G)$ if and only if $f$ is a cusp form. By what we have just shown,
       \[
         \mc{B}(\G) = \mc{E}(\G) \op \mc{C}(\G) \quad \text{and} \quad \mc{B}_{s}(\G) = \mc{E}_{s}(\G) \op \mc{S}_{s}(\G),
       \]
@@ -1410,15 +1453,15 @@
     \subsection*{Double Coset Operators}
       We can extend the theory of of double coset operators to automorphic functions. Indeed, for any $\a \in \GL_{2}^{+}(\Q)$, we define the operator $[\a]$ on $\mc{A}(\G)$ to be the linear operator given by
       \[
-        (f[\a])(z) = (\det(\a))^{k-1}f(\a z),
+        (f[\a])(z) = (\det(\a))^{-1}f(\a z),
       \]
-      for any $f \in \mc{A}(\G)$. Notice that $[\a]$ is just $[\a]_{k}$ with $k = 0$ and acting on $\mc{A}(\G)$ instead of $\mc{M}_{k}(\G)$. In particular, $[\a]$ is easily seen to be multiplicative by repeating the proof of $[\a]_{k}$ with $k = 0$. Moreover, if $\g \in \G$ and we choose the representative with positive determinant, then the chain of equalities
+      for any $f \in \mc{A}(\G)$. Notice that $[\a]$ is just $[\a]_{k}$ with $k = 0$ and acting on $\mc{A}(\G)$ instead of $\mc{M}_{k}(\G)$. In particular, $[\a]$ is easily seen to be multiplicative by repeating the argument for $[\a]_{k}$ with $k = 0$. Moreover, if $\g \in \G$ and we choose the representative with positive determinant, then the chain of equalities
       \[
-        (f[\g]_{k})(z) = f(\g z) = f(z),
+        (f[\g])(z) = f(\g z) = f(z),
       \]
       is equivalent to the automorphy of $f$ on $\GH$. For any two congruence subgroups $\G_{1}$ and $\G_{2}$ (not necessarily of the same level) and any $\a \in \GL_{2}^{+}(\Q)$ we define the \textbf{double coset operator}\index{double coset operator} $[\G_{1}\a\G_{2}]$ to be the linear operator on $\mc{A}(\G_{1})$ given by
       \[
-        (f[\G_{1}\a\G_{2}])(z) = \sum_{\b \in \G_{1}\a\G_{2}}(f[\b]_{k})(z) = \sum_{\b \in \G_{1}\a\G_{2}}(\det(\b))^{k-1}f(\b z).
+        (f[\G_{1}\a\G_{2}])(z) = \sum_{\b \in \G_{1}\a\G_{2}}(f[\b]_{k})(z) = \sum_{\b \in \G_{1}\a\G_{2}}(\det(\b))^{-1}f(\b z).
       \]
       for any $f \in \mc{A}(\G_{1})$. As with modular forms, \cref{prop:double_congruence_subgroup_coset_decomposition_is_finite} implies that this sum is finite and repeating the same argument for $[\G_{1}\a\G_{2}]_{k}$ with $k = 0$, we see that $[\G_{1}\a\G_{2}]$ is well-defined.  We also have an analogous statement about the double coset operators for Maass forms:
 
@@ -1428,9 +1471,9 @@
       \begin{proof}
         We first show that if $f$ is automorphic with respect to $G_{1}$, then $f[\G_{1}\a\G_{2}]$ is automorphic with respect to $\G_{2}$. So suppose $\g \in \G_{2}$. Then
         \[
-          (f[\G_{1}\a\G_{2}])(\g z) = \sum_{\b \in \G_{1}\a\G_{2}}(\det(\b))^{k-1}f(\b \g z) = \sum_{\b \in \G_{1}\a\G_{2}}(\det(\b))^{k-1}f(\b z) = (f[\G_{1}\a\G_{2}])(z),
+          (f[\G_{1}\a\G_{2}])(\g z) = \sum_{\b \in \G_{1}\a\G_{2}}(\det(\b))^{-1}f(\b \g z) = \sum_{\b \in \G_{1}\a\G_{2}}(\det(\b))^{-1}f(\b z) = (f[\G_{1}\a\G_{2}])(z),
         \]
-        where the second equality follows because $\b \to \b\g^{-1}$ is a bijection on $\G_{1}\a\G_{2}$. Repeating the proof of \cref{prop:double_coset_operator_preserves_subspaces_modular} with $k = 0$, smoothness replacing holomorphy, and the analogous growth condition for Maass forms, the only piece left to verify is that $f[\G_{1}\a\G_{2}]$ is an eigenfunction for $\D$ with eigenvalue $\l$ if $f$ is. If $f$ is such a Maass form, linearity and $\G_{1}$-invariance of $\D$ together imply
+        where the second equality follows because $\b \to \b\g^{-1}$ is a bijection on $\G_{1}\a\G_{2}$. Repeating the proof of \cref{prop:double_coset_operator_preserves_subspaces_modular} with $k = 0$, smoothness replacing holomorphy, and the analogous growth condition for Maass forms, the only piece left to verify is that $f[\G_{1}\a\G_{2}]$ is an eigenfunction for $\D$ with eigenvalue $\l$ if $f$ is. For such a Maass form $f$, linearity and $\G_{1}$-invariance of $\D$ together imply
         \[
           \D(f[\G_{1}\a\G_{2}])(z) = \sum_{\b \in \G_{1}\a\G_{2}}(\det(\b))^{k-1}(\D f)(\b z) = \l\sum_{\b \in \G_{1}\a\G_{2}}(\det(\b))^{k-1}f(\b z) = \l(f[\G_{1}\a\G_{2}])(z). 
         \]
@@ -1439,22 +1482,22 @@
     \subsection*{\todo{Diamond \& Hecke Operators}}
       Extending the theory of diamond operators and Hecke operators to Maass forms is fairly straightforward. To see this, we have already shown $\G_{1}(N)$ is a normal subgroup of $\G_{0}(N)$ so that
       \[
-        \left(f\left[\G_{1}(N)\a\G_{1}(N)\right]\right)(z) = \sum_{\b \in \G_{1}(N)\a\G_{1}(N)}(f[\b]_{k})(z) = (f[\a])(z),
+        \left(f\left[\G_{1}(N)\a\G_{1}(N)\right]\right)(z) = \sum_{\b \in \G_{1}(N)\a\G_{1}(N)}(f[\b])(z) = (f[\a])(z),
       \]
-      for any $\a = \begin{psmallmatrix} \ast & \ast \\ \ast & d \end{psmallmatrix} \in \G_{0}(N)$. Thus, for any $d$ taken modulo $N$, we define the \textbf{diamond operator} $\<d\>:\mc{A}_{s}(\G_{1}(N)) \to \mc{A}_{s}(\G_{1}(N))$ to be the linear operative given by
+      for any $\a = \begin{psmallmatrix} \ast & \ast \\ \ast & d \end{psmallmatrix} \in \G_{0}(N)$. Thus, for any $d$ taken modulo $N$, we define the \textbf{diamond operator} $\<d\>:\mc{A}(\G_{1}(N)) \to \mc{A}(\G_{1}(N))$ to be the linear operative given by
       \[
         (\<d\>f)(z) = (f[\a])(z),
       \]
-      for any $\a = \begin{psmallmatrix} \ast & \ast \\ \ast & d \end{psmallmatrix} \in \G_{0}(N)$. As for modular forms, the diamond operators are multiplicative. They also decompose $\mc{A}_{s}(\G_{1}(N))$ into eigenspaces. For any Dirichlet character modulo $N$, let
+      for any $\a = \begin{psmallmatrix} \ast & \ast \\ \ast & d \end{psmallmatrix} \in \G_{0}(N)$. As for modular forms, the diamond operators are multiplicative. They also decompose $\mc{A}(\G_{1}(N))$ into eigenspaces. For any Dirichlet character modulo $N$, let
       \[
-        \mc{A}_{s}(N,\chi) = \{f \in \mc{A}_{s}(\G_{1}(N)):\<d\>f = \chi(d)f \text{ for all } d \in (\Z/N\Z)^{\ast}\},
+        \mc{A}(N,\chi) = \{f \in \mc{A}(\G_{1}(N)):\<d\>f = \chi(d)f \text{ for all } d \in (\Z/N\Z)^{\ast}\},
       \]
-      be the $\chi$-eigenspace of eigenvalue $\l = s(1-s)$. Also let $\mc{C}_{k}(N,\chi)$ be the corresponding subspace of cusp forms. Then $\mc{A}_{s}(\G_{1}(N))$ admits a decomposition into these eigenspaces:
+      be the $\chi$-eigenspace. Also let $\mc{C}(N,\chi)$ be the corresponding subspace of cusp forms. Then $\mc{A}(\G_{1}(N))$ admits a decomposition into these eigenspaces:
 
       \begin{proposition}\label{thm:diamond_operator_decomposition_Maass}
         We have the direct sum decomposition
         \[
-          \mc{A}_{s}(\G_{1}(N)) = \bigop_{\chi \tmod{N}}\mc{A}_{s}(N,\chi).
+          \mc{A}(\G_{1}(N)) = \bigop_{\chi \tmod{N}}\mc{A}(N,\chi).
         \]
         Moreover, this direct sum decomposition respects the subspace of cusp forms.
       \end{proposition}
@@ -1466,20 +1509,32 @@
       \[
         (\<d\>f)(z) = (f[\g])(z) = f(\g z) = \chi(d)f(z),
       \]
-      is equivalent to the twisted automorphy of $f$ with twist $\chi$ on $\G_{0}(N)\backslash\H$. So $f$ is a Maass form twisted by $\chi$ on $\G_{0}(N)\backslash\H$ if and only if $f[\g]_{k} = \chi(\g)f$ for all $\g \in \G_{0}(N)$ where $\g$ is chosen to be the representative with positive determinant. This means that if $\mc{A}_{s}(\G,\chi)$ denotes the space of Maass forms on $\GH$ twisted by $\chi$, and $\mc{C}_{s}(\G,\chi)$ denotes the corresponding subspace of cusp forms, then $\mc{A}_{s}(N,\chi) = \mc{A}_{s}(\G_{0}(N),\chi)$ and $\mc{S}_{k}(N,\chi) = \mc{S}_{k}(\G_{0}(N),\chi)$. So by \cref{thm:diamond_operator_decomposition_Maass}, we have
+      is equivalent to the twisted automorphy of $f$ with twist $\chi$ on $\G_{0}(N)\backslash\H$. So $f$ is a Maass form twisted by $\chi$ on $\G_{0}(N)\backslash\H$ if and only if $f[\g]_{k} = \chi(\g)f$ for all $\g \in \G_{0}(N)$ where $\g$ is chosen to be the representative with positive determinant. This means that if $\mc{A}(\G,\chi)$ denotes the space of Maass forms on $\GH$ twisted by $\chi$, and $\mc{C}(\G,\chi)$ denotes the corresponding subspace of cusp forms, then $\mc{A}(N,\chi) = \mc{A}(\G_{0}(N),\chi)$ and $\mc{C}(N,\chi) = \mc{C}(\G_{0}(N),\chi)$. So by \cref{thm:diamond_operator_decomposition_Maass}, we have
       \[
-        \mc{A}_{s}(\G_{1}(N)) = \bigop_{\chi \tmod{N}}\mc{A}_{s}(\G_{0}(N),\chi),
+        \mc{A}(\G_{1}(N)) = \bigop_{\chi \tmod{N}}\mc{A}(\G_{0}(N),\chi),
       \]
       and this decomposition respects the subspace of cusp forms.
       
-      Now it is time to discuss the Hecke operators. For a prime $p$, we define the $p$-th \textbf{Hecke operator}\index{Hecke operator} $T_{p}:\mc{A}_{s}(\G_{1}(N)) \to \mc{A}_{s}(\G_{1}(N))$ to be the linear operator given by
+      Now it is time to discuss the Hecke operators. For a prime $p$, we define the $p$-th \textbf{Hecke operator}\index{Hecke operator} $T_{p}:\mc{A}(\G_{1}(N)) \to \mc{A}(\G_{1}(N))$ to be the linear operator given by
       \[
         (T_{p}f)(z) = \left(f\left[\G_{1}(N)\begin{pmatrix} 1 & 0 \\ 0 & p \end{pmatrix}\G_{1}(N)\right]\right)(z).
       \]
-      By \cref{prop:double_coset_operator_preserves_subspaces_Maass}, $T_{p}$ preserves $\mc{A}_{s}(\G_{1}(N))$ and $\mc{C}_{s}(\G_{1}(N))$. Exaclty as for modular forms, an explicit desiction of the right coset representatives of $\G_{1}(N)\begin{psmallmatrix} 1 & 0 \\ 0 & p \end{psmallmatrix}\G_{1}(N)$ will give an explicit desction of the Hecke operator $T_{p}$:
+      By \cref{prop:double_coset_operator_preserves_subspaces_Maass}, $T_{p}$ preserves $\mc{A}(\G_{1}(N))$ and $\mc{C}(\G_{1}(N))$. The diamond and Hecke operators commute:
+
+      \begin{proposition}\label{prop:diamond_Hecke_operators_commute_Maass}
+        For every prime $p$ and $d \in (\Z/N\Z)^{\ast}$, the Hecke operator $T_{p}$ and diamond operator $\<d\>$ commute:
+        \[
+          T_{p}\<d\> = \<d\>T_{p}.
+        \]
+      \end{proposition}
+      \begin{proof}
+        Repeat the proof of \cref{prop:diamond_Hecke_operators_commute_Maass}.
+      \end{proof}
+
+      Exaclty as for modular forms, \cref{lem:cosets_for_Hecek_operators} will give an explicit desction of the Hecke operator $T_{p}$:
 
       \begin{proposition}\label{prop:explicit_description_of_Hecke_operators_Maass}
-        Let $f \in \mc{A}_{s}(\G_{1}(N))$. Then the Hecke operator $T_{p}$ acts on $f$ as follows:
+        Let $f \in \mc{A}(\G_{1}(N))$. Then the Hecke operator $T_{p}$ acts on $f$ as follows:
         \[
           (T_{p}f)(z) = \begin{cases} \displaystyle\sum_{1 \le j \le p-1}\left(f\left[\begin{pmatrix} 1 & j \\ 0 & p \end{pmatrix}\right]\right)(z)+\left(f\left[\begin{pmatrix} m & n \\ N & p \end{pmatrix}\begin{pmatrix} 1 & j \\ 0 & p \end{pmatrix}\right]\right)(z) & \text{if $p \nmid N$}, \\ \displaystyle\sum_{1 \le j \le p-1}\left(f\left[\begin{pmatrix} 1 & j \\ 0 & p \end{pmatrix}\right]\right)(z) & \text{if $p \mid N$}, \end{cases}
         \]
@@ -1492,11 +1547,11 @@
       We use \cref{prop:explicit_description_of_Hecke_operators_Maass} to understand how the Hecke operators act on the Fourier coefficeints of Maass forms:
 
       \begin{proposition}\label{prop:prime_Hecke_operators_acting_on_Fourier_coefficients_Maass}
-        Let $f \in \mc{A}_{s}(\G_{1}(N))$ with Fourier coefficients $a_{n}(f)$. Then
+        Let $f \in \mc{A}(\G_{1}(N))$ with Fourier coefficients $a_{n}(f)$. Then
         \[
           (T_{p}f)(z) = \sum_{n \in \Z}\left(a_{np}(f)+\chi_{N,0}(p)p^{-1}a_{\frac{n}{p}}(\<p\>f)\right)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y)e^{2\pi inx},
         \]
-        is the Fourier series of $T_{p}f$ where it is understood that $a_{\frac{n}{p}}(f) = 0$ if $p \nmid n$. Moreover, if $f \in \mc{A}_{s}(N,\chi)$ then $T_{p}f \in \mc{A}_{s}(N,\chi)$ and
+        is the Fourier series of $T_{p}f$ where it is understood that $a_{\frac{n}{p}}(f) = 0$ if $p \nmid n$. Moreover, if $f \in \mc{A}(N,\chi)$ then $T_{p}f \in \mc{A}(N,\chi)$ and
         \[
           (T_{p}f)(z) = \sum_{n \in \Z}\left(a_{np}(f)+\chi(p)p^{-1}a_{\frac{n}{p}}(f)\right)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y)e^{2\pi inx},
         \]
@@ -1509,7 +1564,7 @@
       As for modular forms, the Hecke operators form a simultaneously commuting family with the diamond operators:
 
       \begin{proposition}\label{prop:Hecke_operators_commute_Maass}
-        Let $p$ and $q$ be distinct primes and $d \in (\Z/N\Z)^{\ast}$. Then the Hecke operators $T_{p}$ and $T_{q}$ and diamond operators $\<d\>$ simultaneously commute:
+        Let $p$ and $q$ be distinct primes and $d \in (\Z/N\Z)^{\ast}$. Then the Hecke operators $T_{p}$ and $T_{q}$ and diamond operator $\<d\>$ simultaneously commute:
         \[
           T_{p}T_{q} = T_{q}T_{p} \quad \text{and} \quad \<d\>T_{p} = T_{p}\<d\>.
         \]
@@ -1518,7 +1573,7 @@
         Repeat the proof of \cref{prop:Hecke_operators_commute_modular}.
       \end{proof}
 
-      We use \cref{prop:Hecke_operators_commute_Maass} to construct diamond operators $\<m\>$ and Hecke operators $T_{m}$ for all $m \ge 1$ exactly as for modular forms. Explicitely, the \textbf{diamond operator}\index{diamond operator} $\<m\>:\mc{A}_{s}(\G_{1}(N)) \to \mc{A}_{s}(\G_{1}(N))$ of eigenvalue $\l = s(1-s)$ is defined by the diamond operator $m \tmod{N}$ of eigenvalue $\l = s(1-s)$ if $(m,N) = 1$ and defined to be the zero operator otherwise. For the Hecke operators, if $m = p_{1}^{e_{1}}p_{2}^{e_{2}} \cdots p_{k}^{e_{k}}$ is the prime decomposition of $m$, then the $m$-th \textbf{Hecke operator}\index{Hecke operator} $T_{m}:\mc{A}_{s}(\G) \to \mc{A}_{s}(\G)$ of eigenvalue $\l = s(1-s)$ is linear operator given by
+      We use \cref{prop:Hecke_operators_commute_Maass} to construct diamond operators $\<m\>$ and Hecke operators $T_{m}$ for all $m \ge 1$ exactly as for modular forms. Explicitely, the \textbf{diamond operator}\index{diamond operator} $\<m\>:\mc{A}(\G_{1}(N)) \to \mc{A}(\G_{1}(N))$ is defined by the diamond operator $m \tmod{N}$ if $(m,N) = 1$ and defined to be the zero operator otherwise. For the Hecke operators, if $m = p_{1}^{e_{1}}p_{2}^{e_{2}} \cdots p_{k}^{e_{k}}$ is the prime decomposition of $m$, then the $m$-th \textbf{Hecke operator}\index{Hecke operator} $T_{m}:\mc{A}(\G) \to \mc{A}(\G)$ is linear operator given by
       \[
         T_{m} = \prod_{1 \le i \le k}T_{p_{i}^{e_{i}}},
       \]
@@ -1529,11 +1584,11 @@
       for all $e \ge 2$. By \cref{prop:Hecke_operators_commute_Maass}, the Hecke operators $T_{m}$ are multiplicative but not completely multiplicative in $m$ and they commute with the diamond operators $\<m\>$. Moreover, a more general formula for how the Hecke operators $T_{m}$ act on the Fourier coefficients can be derived:
 
       \begin{proposition}\label{prop:general_Hecke_operators_acting_on_Fourier_coefficients_Maass}
-        Let $f \in \mc{A}_{s}(\G_{1}(N))$ with Fourier coefficients $a_{n}(f)$. Then
+        Let $f \in \mc{A}(\G_{1}(N))$ with Fourier coefficients $a_{n}(f)$. Then
         \[
           (T_{m}f)(z) = \sum_{n \ge 0}\left(\sum_{d \mid (n,m)}d^{k-1}a_{\frac{nm}{d^{2}}}(\<d\>f)\right)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y)e^{2\pi inx},
         \]
-        is the Fourier series of $T_{m}f$. Moreover, if $f \in \mc{A}_{s}(N,\chi)$, then
+        is the Fourier series of $T_{m}f$. Moreover, if $f \in \mc{A}(N,\chi)$, then
         \[
           (T_{m}f)(z) = \sum_{n \ge 0}\left(\sum_{d \mid (n,m)}\chi(d)d^{k-1}a_{\frac{nm}{d^{2}}}(f)\right)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y)e^{2\pi inx}.
         \]
