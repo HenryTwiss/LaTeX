@@ -600,16 +600,16 @@
       \[
         \G_{1}\a\G_{2} = \{\g_{1}\a\g_{2}:\g_{1} \in \G_{1}, \g_{2} \in \G_{2}\}.
       \]
-      Then $\G_{1}$ acts on the set $\G_{1}\a\G_{2}$ by left multiplication so that it decomposes into a disjoin union of orbit spaces. So
+      Then $\G_{1}$ acts on the set $\G_{1}\a\G_{2}$ by left multiplication so that it decomposes into a disjoin union of orbit spaces. Thus
       \[
-        \G_{1}\a\G_{2} = \bigcup_{\b}\G_{1}\b,
+        \G_{1}\a\G_{2} = \bigcup_{\b \in \G_{1}\backslash\G_{1}\a\G_{2}}\G_{1}\b,
       \]
-      where the union ranges over a set of orbit representatives $\b$ for $\G_{1}\a\G_{2}$. The general operators we will define will be double coset operators, but in order for them to be well-defined it is necessary that the orbit decomposition above is a finite union. This is indeed the case (see \cite{diamond2005first} for a proof):
+      The general operators we will define will be double coset operators, but in order for them to be well-defined it is necessary that the orbit decomposition above is a finite union. This is indeed the case (see \cite{diamond2005first} for a proof):
 
       \begin{proposition}\label{prop:double_congruence_subgroup_coset_decomposition_is_finite}
         Let $\a \in \GL_{2}^{+}(\Q)$. Then the orbit decomposition
         \[
-          \G_{1}\a\G_{2} = \bigcup_{\b}\G_{1}\b,
+          \G_{1}\a\G_{2} = \bigcup_{\b \in \G_{1}\backslash\G_{1}\a\G_{2}}\G_{1}\b,
         \]
         with respect to the action of $\G_{1}$ by left multiplication, is a finite union.
       \end{proposition}
@@ -631,7 +631,7 @@
       \]
       is equivalent to the modularity of untwisted $f$ on $\GH$. Thus $f$ is an untwisted modular form on $\GH$ if and only if $f[\g]_{k} = f$ for all $\g \in \G$ where $\g$ is chosen to be the representative with positive determinant. Now let $\G_{1}$ and $\G_{2}$ be two congruence subgroups and let $\a \in \GL_{2}^{+}(\Q)$. We define the \textbf{double coset operator}\index{double coset operator} $[\G_{1}\a\G_{2}]_{k}$ of weight $k$ on $\mc{M}_{k}(\G_{1})$ to be the linear operator given by
       \[
-        (f[\G_{1}\a\G_{2}]_{k})(z) = \sum_{\b \in \G_{1}\a\G_{2}}(f[\b]_{k})(z) = \sum_{\b \in \G_{1}\a\G_{2}}(\det(\b))^{k-1}j(\b,z)^{-k}f(\b z),
+        (f[\G_{1}\a\G_{2}]_{k})(z) = \sum_{\b \in \G_{1}\backslash\G_{1}\a\G_{2}}(f[\b]_{k})(z) = \sum_{\b \in \G_{1}\backslash\G_{1}\a\G_{2}}(\det(\b))^{k-1}j(\b,z)^{-k}f(\b z),
       \]
       for any $f \in \mc{M}_{k}(\G_{1})$. By \cref{prop:double_congruence_subgroup_coset_decomposition_is_finite} this sum is finite. It remains to check that $f[\G_{1}\a\G_{2}]_{k}$ is well-defined. Indeed, if $\b$ and $\b'$ belong to the same orbit, then $\b'\b^{-1} \in \G_{1}$. But then as $f \in \mc{M}_{k}(\G_{1})$, is it invariant under the $[\b'\b^{-1}]_{k}$ operator so that
       \[
@@ -645,21 +645,21 @@
       \begin{proof}
         Suppose $f \in \mc{M}_{k}(\G_{1})$ and $\g \in \G_{2}$. Then
         \begin{align*}
-          (f[\G_{1}\a\G_{2}]_{k})(\g z) &= \sum_{\b \in \G_{1}\a\G_{2}}(\det(\b))^{k-1}j(\b,\g z)^{-k}f(\b\g z) \\
-          &= \sum_{\b \in \G_{1}\a\G_{2}}(\det(\b\g))^{k-1}j(\b,\g z)^{-k}f(\b\g z) && \text{$\det(\g) = 1$} \\
-          &= \sum_{\b \in \G_{1}\a\G_{2}}(\det(\b\g))^{k-1}\left(\frac{j(\g,z)}{j(\b\g,z)}\right)^{k}f(\b\g z) && \text{cocycle condition} \\
-          &= j(\g,z)^{k}\sum_{\b \in \G_{1}\a\G_{2}}(\det(\b\g))^{k-1}j(\b\g,z)^{-k}f(\b\g z) \\
-          &= j(\g,z)^{k}\sum_{\b \in \G_{1}\a\G_{2}}(\det(\b))^{k-1}j(\b,z)^{-k}f(\b z) && \text{$\b \to \b\g^{-1}$ bijection on $\G_{1}\a\G_{2}$} \\
-          &= j(\g,z)^{k}\sum_{\b \in \G_{1}\a\G_{2}}(f[\b]_{k})(z) \\
+          (f[\G_{1}\a\G_{2}]_{k})(\g z) &= \sum_{\b \in \G_{1}\backslash\G_{1}\a\G_{2}}(\det(\b))^{k-1}j(\b,\g z)^{-k}f(\b\g z) \\
+          &= \sum_{\b \in \G_{1}\backslash\G_{1}\a\G_{2}}(\det(\b\g))^{k-1}j(\b,\g z)^{-k}f(\b\g z) && \text{$\det(\g) = 1$} \\
+          &= \sum_{\b \in \G_{1}\backslash\G_{1}\a\G_{2}}(\det(\b\g))^{k-1}\left(\frac{j(\g,z)}{j(\b\g,z)}\right)^{k}f(\b\g z) && \text{cocycle condition} \\
+          &= j(\g,z)^{k}\sum_{\b \in \G_{1}\backslash\G_{1}\a\G_{2}}(\det(\b\g))^{k-1}j(\b\g,z)^{-k}f(\b\g z) \\
+          &= j(\g,z)^{k}\sum_{\b \in \G_{1}\backslash\G_{1}\a\G_{2}}(\det(\b))^{k-1}j(\b,z)^{-k}f(\b z) && \text{$\b \to \b\g^{-1}$ bijection on $\G_{1}\a\G_{2}$} \\
+          &= j(\g,z)^{k}\sum_{\b \in \G_{1}\backslash\G_{1}\a\G_{2}}(f[\b]_{k})(z) \\
           &= j(\g,z)^{k}(f[\G_{1}\a\G_{2}]_{k})(z),
         \end{align*}
-        So $f[\G_{1}\a\G_{2}]_{k}$ is modular. Holomorphy and the growth condition are immediate since the sum is finite by \cref{prop:double_congruence_subgroup_coset_decomposition_is_finite}. Therefore $f[\G_{1}\a\G_{2}]_{k} \in \mc{M}_{k}(\G_{2})$. To see that $[\G_{1}\a\G_{2}]_{k}$ preserves the subspace of cusp forms, let $\s_{\mf{a}}$ be a scaling matrix for the cusp $\mf{a}$ of $\G_{2}\backslash\H$ and let $f \in \mc{S}_{k}(\G_{1})$. If $\b \in \G_{1}\a\G_{2}$, then $\b\s_{\mf{a}}$ takes $\infty$ to an element of $\Q \cup \{\infty\}$ since $\a \in \GL_{2}^{+}(\Q)$. In other words, $\b\s_{\mf{a}}\infty = \mf{b}$ for some cusp $\mf{b}$ of $\G_{1}\backslash\H$. Now choose an integer $r \ge 1$ such that $r\a \in \GL_{2}^{+}(\Z)$. As a consquence, there exist integers $n,m \ge 1$ such that $rj(\b,\s_{\mf{a}}z) = |n\s_{\mf{a}}z+m|$. Then letting $\Im(z) > 1$ and $\d$ be as in \cref{lem:technical_Eisenstein_convergence_lemma}, we have
+        So $f[\G_{1}\a\G_{2}]_{k}$ is modular. Holomorphy and the growth condition are immediate since the sum is finite by \cref{prop:double_congruence_subgroup_coset_decomposition_is_finite}. Therefore $f[\G_{1}\a\G_{2}]_{k} \in \mc{M}_{k}(\G_{2})$. To see that $[\G_{1}\a\G_{2}]_{k}$ preserves the subspace of cusp forms, let $\s_{\mf{a}}$ be a scaling matrix for the cusp $\mf{a}$ of $\G_{2}\backslash\H$ and let $f \in \mc{S}_{k}(\G_{1})$. If $\b \in \G_{1}\backslash\G_{1}\a\G_{2}$, then $\b\s_{\mf{a}}$ takes $\infty$ to an element of $\Q \cup \{\infty\}$ since $\a \in \GL_{2}^{+}(\Q)$. In other words, $\b\s_{\mf{a}}\infty = \mf{b}$ for some cusp $\mf{b}$ of $\G_{1}\backslash\H$. Now choose an integer $r \ge 1$ such that $r\a \in \GL_{2}^{+}(\Z)$. As a consquence, there exist integers $n,m \ge 1$ such that $rj(\b,\s_{\mf{a}}z) = |n\s_{\mf{a}}z+m|$. Then letting $\Im(z) > 1$ and $\d$ be as in \cref{lem:technical_Eisenstein_convergence_lemma}, we have
         \[
           j(\b,\s_{\mf{a}}z) = \frac{|n\s_{\mf{a}}z+m|}{r} \ge \frac{\d|ni+m|}{r}.
         \]
         From this bound, we see that
         \[
-          (f[\G_{1}\a\G_{2}]_{k})(\s_{\mf{a}}z) = \sum_{\b \in \G_{1}\a\G_{2}}(\det(\b))^{k-1}j(\b,\s_{\mf{a}} z)^{-k}f(\b\s_{\mf{a}} z) \ll \left(\frac{\d|ni+m|}{r}\right)^{-k}\sum_{\b \in \G_{1}\a\G_{2}}(\det(\b))^{k-1}f(\b\s_{\mf{a}} z).
+          (f[\G_{1}\a\G_{2}]_{k})(\s_{\mf{a}}z) \ll \left(\frac{\d|ni+m|}{r}\right)^{-k}\sum_{\b \in \G_{1}\backslash\G_{1}\a\G_{2}}(\det(\b))^{k-1}f(\b\s_{\mf{a}} z).
         \]
         As $f$ is a cusp form, it has exponential decay to zero near the cusps so that the sum on the right-hand side tends to zero as $\Im(z) \to \infty$. Then $f[\G_{1}\a\G_{2}]_{k}$ is a cusp form too.
       \end{proof}
@@ -720,13 +720,13 @@
       By \cref{prop:double_coset_operator_preserves_subspaces_modular}, $T_{p}$ preserves $\mc{M}_{k}(\G_{1}(N))$ and $\mc{S}_{k}(\G_{1}(N))$. We will start discussing properties of the diamond and Hecke operators, but we first state an important lemma that will be used throughout (see \cite{diamond2005first} for a proof):
 
       \begin{lemma}\label{lem:cosets_for_Hecek_operators}
-        A complete set of representatives for $\G_{1}(N)\begin{psmallmatrix} 1 & 0 \\ 0 & p \end{psmallmatrix}\G_{1}(N)$ is
+        As sets,
         \[
           \G_{1}(N)\begin{pmatrix} 1 & 0 \\ 0 & p \end{pmatrix}\G_{1}(N) = \left\{\g \in \Mat_{2}(\Z):\g \equiv \begin{pmatrix} 1 & 0 \\ 0 & p \end{pmatrix} \tmod{N}, \det(\g) = p\right\}.
         \]
       \end{lemma}
-
-       As a first proposition, it is not too hard to see that the diamond and Hecke operators commute:
+      
+      With \cref{lem:cosets_for_Hecek_operators}, it is not too hard to see that the diamond and Hecke operators commute:
 
       \begin{proposition}\label{prop:diamond_Hecke_operators_commute_modular}
         For every prime $p$ and $d \in (\Z/N\Z)^{\ast}$, the Hecke operator $T_{p}$ and diamond operator $\<d\>$ commute:
@@ -760,7 +760,7 @@
         \]
       \end{proof}
       
-      Using \cref{lem:cosets_for_Hecek_operators} we can obtain an explicit desction of the Hecke operator $T_{p}$:
+      Using \cref{lem:cosets_for_Hecek_operators} we can obtain an explicit description of the Hecke operator $T_{p}$:
 
       \begin{proposition}\label{prop:explicit_description_of_Hecke_operators_modular}
         Let $f \in \mc{M}_{k}(\G_{1}(N))$. Then the Hecke operator $T_{p}$ acts on $f$ as follows:
@@ -1461,7 +1461,7 @@
       \]
       is equivalent to the automorphy of $f$ on $\GH$. For any two congruence subgroups $\G_{1}$ and $\G_{2}$ (not necessarily of the same level) and any $\a \in \GL_{2}^{+}(\Q)$ we define the \textbf{double coset operator}\index{double coset operator} $[\G_{1}\a\G_{2}]$ to be the linear operator on $\mc{A}(\G_{1})$ given by
       \[
-        (f[\G_{1}\a\G_{2}])(z) = \sum_{\b \in \G_{1}\a\G_{2}}(f[\b]_{k})(z) = \sum_{\b \in \G_{1}\a\G_{2}}(\det(\b))^{-1}f(\b z).
+        (f[\G_{1}\a\G_{2}])(z) = \sum_{\b \in \G_{1}\backslash\G_{1}\a\G_{2}}(f[\b]_{k})(z) = \sum_{\b \in \G_{1}\backslash\G_{1}\a\G_{2}}(\det(\b))^{-1}f(\b z).
       \]
       for any $f \in \mc{A}(\G_{1})$. As with modular forms, \cref{prop:double_congruence_subgroup_coset_decomposition_is_finite} implies that this sum is finite and repeating the same argument for $[\G_{1}\a\G_{2}]_{k}$ with $k = 0$, we see that $[\G_{1}\a\G_{2}]$ is well-defined.  We also have an analogous statement about the double coset operators for Maass forms:
 
@@ -1471,11 +1471,11 @@
       \begin{proof}
         We first show that if $f$ is automorphic with respect to $G_{1}$, then $f[\G_{1}\a\G_{2}]$ is automorphic with respect to $\G_{2}$. So suppose $\g \in \G_{2}$. Then
         \[
-          (f[\G_{1}\a\G_{2}])(\g z) = \sum_{\b \in \G_{1}\a\G_{2}}(\det(\b))^{-1}f(\b \g z) = \sum_{\b \in \G_{1}\a\G_{2}}(\det(\b))^{-1}f(\b z) = (f[\G_{1}\a\G_{2}])(z),
+          (f[\G_{1}\a\G_{2}])(\g z) = \sum_{\b \in \G_{1}\backslash\G_{1}\a\G_{2}}(\det(\b))^{-1}f(\b \g z) = \sum_{\b \in \G_{1}\backslash\G_{1}\a\G_{2}}(\det(\b))^{-1}f(\b z) = (f[\G_{1}\a\G_{2}])(z),
         \]
         where the second equality follows because $\b \to \b\g^{-1}$ is a bijection on $\G_{1}\a\G_{2}$. Repeating the proof of \cref{prop:double_coset_operator_preserves_subspaces_modular} with $k = 0$, smoothness replacing holomorphy, and the analogous growth condition for Maass forms, the only piece left to verify is that $f[\G_{1}\a\G_{2}]$ is an eigenfunction for $\D$ with eigenvalue $\l$ if $f$ is. For such a Maass form $f$, linearity and $\G_{1}$-invariance of $\D$ together imply
         \[
-          \D(f[\G_{1}\a\G_{2}])(z) = \sum_{\b \in \G_{1}\a\G_{2}}(\det(\b))^{k-1}(\D f)(\b z) = \l\sum_{\b \in \G_{1}\a\G_{2}}(\det(\b))^{k-1}f(\b z) = \l(f[\G_{1}\a\G_{2}])(z). 
+          \D(f[\G_{1}\a\G_{2}])(z) = \sum_{\b \in \G_{1}\backslash\G_{1}\a\G_{2}}(\det(\b))^{k-1}(\D f)(\b z) = \l\sum_{\b \in \G_{1}\backslash\G_{1}\a\G_{2}}(\det(\b))^{k-1}f(\b z) = \l(f[\G_{1}\a\G_{2}])(z). 
         \]
         Thus $f[\G_{1}\a\G_{2}]$ is an eigenfunction for $\D$ with eigenvalue $\l$. This completes the proof.
       \end{proof}
@@ -1531,7 +1531,7 @@
         Repeat the proof of \cref{prop:diamond_Hecke_operators_commute_Maass}.
       \end{proof}
 
-      Exaclty as for modular forms, \cref{lem:cosets_for_Hecek_operators} will give an explicit desction of the Hecke operator $T_{p}$:
+      Exaclty as for modular forms, \cref{lem:cosets_for_Hecek_operators} will give an explicit description of the Hecke operator $T_{p}$:
 
       \begin{proposition}\label{prop:explicit_description_of_Hecke_operators_Maass}
         Let $f \in \mc{A}(\G_{1}(N))$. Then the Hecke operator $T_{p}$ acts on $f$ as follows:
