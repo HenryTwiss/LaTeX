@@ -487,7 +487,114 @@
         Then $\mc{M}_{k}(\G)$ is finite dimensional.
       \end{theorem}
 
-      Since $\mc{S}_{k}(\G)$ is a subspace of $\mc{M}_{k}(\G)$, \cref{thm:modular_forms_space_classification} implies that $\mc{S}_{k}(\G)$ is also finite dimensional. Actually, \cite{diamond2005first} gives explicit formulas for the dimensions of $\mc{M}_{k}(\G)$ and $\mc{S}_{k}(\G)$ in terms of properties of the modular curve $\GH$ but we will not require this level of detail.
+      Since $\mc{S}_{k}(\G)$ is a subspace of $\mc{M}_{k}(\G)$, \cref{thm:modular_forms_space_classification} implies that $\mc{S}_{k}(\G)$ is also finite dimensional. It turns out that $\mc{S}_{k}(\G)$ is naturally an inner product space, and to acomplish this we define the inner product on $\mc{S}_{k}(\G,\chi) \x \mc{M}_{k}(\G,\chi)$. Set $V_{\G} = [\PSL_{2}(\Z):\G]$ and recall that this is finite because $\G$ is a congruence subgroup. For $f \in \mc{S}_{k}(\G,\chi)$ and $g \in \mc{M}_{k}(\G,\chi)$, define their \textbf{Petersson inner product}\index{Petersson inner product} by
+      \[
+        \<f,g\> = \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}f(z)\conj{g(z)}\Im(z)^{k}\,d\mu,
+      \]
+      where $\mc{F}_{\G}$ is a fundamental domain for $\GH$. Since the integrand is $\G$-invariant, the integral is independent of the choice of fundamental domain. The integral is also absolutely bounded by \cref{met:decay_compacta_integral} (since $f$ is a cusp form). These two facts together imply that the Petersson inner product is well-defined. Actually, we have the following proposition:
+
+      \begin{proposition}\label{prop:Petersson_inner_product_hermitian}
+        $\mc{S}_{k}(\G,\chi)$ is a Hilbert space with respect to Petersson inner product.
+      \end{proposition}
+      \begin{proof}
+        Let $f,g \in \mc{S}_{k}(\G,\chi)$. Linearity of the integral immediately implies that the Petersson inner product is linear on $\mc{S}_{k}(\G,\chi)$. It is also positive definite since
+        \[
+          \<f,f\> = \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}f(z)\conj{f(z)}\Im(z)^{k}\,d\mu = \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}|f(z)|^{2}\Im(z)^{k}\,d\mu \ge 0,
+        \]
+        with equality if and only if $f$ is identically zero because $|f(z)|^{2}\Im(z)^{k} \ge 0$. To see that it is conjugate symetric, observe
+        \begin{align*}
+          \conj{\<g,f\>} &= \conj{\frac{1}{V_{\G}}\int_{\mc{F}_{\G}}g(z)\conj{f(z)}\Im(z)^{k}\,d\mu} \\
+          &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}\conj{g(z)\conj{f(z)}\Im(z)^{k}\,d\mu} \\
+          &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}\conj{g(z)}f(z)\Im(z)^{k}\,\conj{d\mu} \\
+          &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}\conj{g(z)}f(z)\Im(z)^{k}\,d\mu && \text{$d\mu = \frac{dx\,dy}{y^{2}}$} \\
+          &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}f(z)\conj{g(z)}\Im(z)^{k}\,d\mu \\
+          &= \<f,g\>.
+        \end{align*}
+        So the Petersson inner product is a Hermitian inner product on $\mc{S}_{k}(\G,\chi)$. Since $\mc{S}_{k}(\G,\chi)$ is finite dimensional by \cref{thm:modular_forms_space_classification}, it follows immediately that $\mc{S}_{k}(\G,\chi)$ is a Hilbert space.
+      \end{proof}
+
+      \begin{remark}\label{rem:non-degeneracy_of_Petersson_inner_product}
+        As a consquence of \cref{prop:Petersson_inner_product_hermitian}, the Petersson inner product is also non-degenerate on $\mc{S}_{k}(\G,\chi)$. Actually, for the exact same reasoning this holds on $\mc{S}_{k}(\G,\chi) \x \mc{M}_{k}(\G,\chi)$ wherever the Petersson inner product is defined.
+      \end{remark}
+
+      Now suppose $f \in \mc{S}_{k}(\G,\chi)$ with Fouier coefficients $a_{n}(f)$. Define linear functionals $\phi_{m,k}:\mc{S}_{k}(\G,\chi) \to \C$, for every $m \ge 1$, by
+      \[
+        \phi_{m,k}(f) = a_{m}(f).
+      \]
+      Since $\mc{S}_{k}(\G,\chi)$ is a finite dimensional Hilbert space, the Riesz representation theorem implies that there exists a unique $v_{m,k} \in \mc{S}_{k}(\G,\chi)$ such that
+      \[
+        \<f,v_{m,k}\> = \phi_{m,k}(f) = a_{m}(f).
+      \]
+      We would like to know what these cusp forms are. It turns out that $v_{m,k}$ will be the Poincar\'e series $P_{m,k,\chi}$ up to a normalization factor. To see this, we compute the inner product:
+      \begin{align*}
+        \<f,P_{m,k,\chi}\> &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}f(z)\conj{P_{m,k,\chi}(z)}\Im(z)^{k}\,d\mu \\
+        &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}f(z)\sum_{\g \in \GG}\chi(\g)\conj{j(\g,z)^{-k}}e^{-2\pi im\conj{\g z}}\Im(z)^{k}\,d\mu \\
+        &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}f(z)\sum_{\g \in \GG}\frac{\chi(\g)j(\g,z)^{k}}{|j(\g,z)|^{2k}}e^{-2\pi im\conj{\g z}}\Im(z)^{k}\,d\mu \\
+        &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}f(\g z)\sum_{\g \in \GG}\frac{1}{|j(\g,z)^{k}|^{2k}}e^{-2\pi im\conj{\g z}}\Im(z)^{k}\,d\mu && \text{modularity} \\
+        &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}f(\g z)\sum_{\g \in \GG}e^{-2\pi im\conj{\g z}}\Im(\g z)^{k}\,d\mu && \text{$\Im(\g z)^{k} = \frac{\Im(z)^{k}}{|j(\g,z)|^{2k}}$.}
+      \end{align*}
+      We put this last integral into a different form. The idea is to rewrite the integral over the fundamental domain $\mc{F}_{\G}$ as an integral over the strip $\G_{\infty}\backslash\H$. First, observe
+      \begin{align*}
+        \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}f(\g z)\sum_{\g \in \GG}e^{-2\pi im\conj{\g z}}\Im(\g z)^{k}\,d\mu &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}\sum_{\g \in \GG}f(\g z)e^{-2\pi im\conj{\g z}}\Im(\g z)^{k}\,d\mu \\
+        &= \frac{1}{V_{\G}}\sum_{\g \in \GG}\int_{\mc{F}_{\G}}f(\g z)e^{-2\pi im\conj{\g z}}\Im(\g z)^{k}\,d\mu && \text{DCT} \\
+        &= \frac{1}{V_{\G}}\sum_{\g \in \GG}\int_{\g\mc{F}_{\G}}f(z)e^{-2\pi im\conj{z}}\Im(z)^{k}\,d\mu && \text{$z \to \g^{-1}z$.}
+      \end{align*}
+      Now $\H = \bigcup_{\g \in \G}\g\mc{F}_{\G}$ so that $\G_{\infty}\backslash\H = \bigcup_{\g \in \GG}\g\mc{F}_{\G}$. Therefore we can write
+      \[
+        \frac{1}{V_{\G}}\sum_{\g \in \GG}\int_{\g\mc{F}_{\G}}f(z)e^{-2\pi im\conj{z}}\Im(z)^{k}\,d\mu = \frac{1}{V_{\G}}\int_{\G_{\infty}\backslash\H}f(z)e^{-2\pi im\conj{z}}\Im(z)^{k}\,d\mu.
+      \]
+      The rest is a computation:
+      \begin{align*}
+        \frac{1}{V_{\G}}\sum_{\g \in \GG}\int_{\g\mc{F}_{\G}}f(z)e^{-2\pi im\conj{z}}\Im(z)^{k}\,d\mu &= \frac{1}{V_{\G}}\int_{\G_{\infty}\backslash\H}f(z)e^{-2\pi im\conj{z}}\Im(z)^{k}\,d\mu \\
+        &= \frac{1}{V_{\G}}\int_{0}^{\infty}\int_{0}^{1}\sum_{n \ge 1}a_{n}(f)e^{2\pi i(n-m)x}e^{-2\pi(n+m)y}y^{k}\,\frac{dx\,dy}{y^{2}} \\
+        &= \frac{1}{V_{\G}}\int_{0}^{\infty}\sum_{n \ge 1}\int_{0}^{1}a_{n}(f)e^{2\pi i(n-m)x}e^{-2\pi(n+m)y}y^{k}\,\frac{dx\,dy}{y^{2}} && \text{DCT} \\
+        &= \frac{1}{V_{\G}}\int_{0}^{\infty}a_{m}(f)e^{-4\pi my}y^{k}\,\frac{dy}{y^{2}},
+      \end{align*}
+      where the last line follows because
+      \begin{equation}\label{equ:Dirac_integral_representation}
+        \int_{0}^{1}e^{2\pi i(n-m)x}\,dx = \d_{n-m,0},
+      \end{equation}
+      so that the inner integral cuts off all the terms except for the $n = m$ term. Then
+      \begin{align*}
+        \frac{1}{V_{\G}}\int_{0}^{\infty}a_{m}(f)e^{-4\pi my}y^{k}\,\frac{dy}{y^{2}} &= \frac{a_{m}(f)}{V_{\G}}\int_{0}^{\infty}e^{-4\pi my}y^{k-1}\,\frac{dy}{y} \\
+        &= \frac{a_{m}(f)}{V_{\G}}\int_{0}^{\infty}e^{-4\pi my}y^{k-1}\,\frac{dy}{y} && \text{$y \to \frac{y}{4\pi m}$} \\
+        &= \frac{a_{m}(f)}{V_{\G}(4\pi m)^{k-1}}\int_{0}^{\infty}e^{-y}y^{k-1}\,\frac{dy}{y} \\
+        &= \frac{\G(k-1)}{V_{\G}(4\pi m)^{k-1}}a_{m}(f) && \text{definition of $\G(k-1)$.}
+      \end{align*}
+      In conclusion,
+      \begin{equation}\label{equ:Petersson_inner_product_with_Poincare_series}
+        \<f,P_{m,k,\chi}\> = \frac{\G(k-1)}{V_{\G}(4\pi m)^{k-1}}a_{m}(f).
+      \end{equation}
+      Now set $\wtilde{P_{m,k,\chi}} = \frac{V_{\G}(4\pi m)^{k-1}}{\G(k-1)}P_{m,k,\chi}$. For all cusp forms $f$ (actually any modular form where the Petersson inner product is defined),
+      \[
+        \<f,\wtilde{P_{m,k,\chi}}-v_{m,k}\> = 0.
+      \]
+      By \cref{rem:non-degeneracy_of_Petersson_inner_product} the Petersson inner product is non-degenerate so we conclude $v_{m,k} = \wtilde{P_{m,k,\chi}}$. In particular, this shows that the Poincar\'e series $P_{m,k,\chi}$ are cusp forms. We usually work with the Poincar\'e series $P_{m,k,\chi}$ instead of their normalized counterparts $\wtilde{P_{m,k,\chi}}$. In any case, with \cref{equ:Petersson_inner_product_with_Poincare_series} in hand we can prove the following result:
+
+      \begin{theorem}
+        The Poincar\'e series span $\mc{S}_{k}(\G,\chi)$.
+      \end{theorem}
+      \begin{proof}
+        Let $f \in \mc{S}_{k}(\G,\chi)$ with Fourier coefficients $a_{n}(f)$. Since $\G(k-1) \neq 0$, \cref{equ:Petersson_inner_product_with_Poincare_series} implies $\<f,P_{m,k,\chi}\> = 0$ if and only if $a_{m}(f) = 0$. So $f$ is orthogonal to all the Poincar\'e series if and only if every Fourier coefficient $a_{m}(f)$ is zero. But this happens if and only if $f$ is identically zero.
+      \end{proof}
+
+      Let's return to the previous computation for a breif moment. The procedure of changing an integral over a fundamental domain $\mc{F}_{\G}$ into an integral over the strip $\G_{\infty}\backslash\H$, or vice versa, works in a more general setting and is called \textbf{unfolding the integral}\index{unfolding the integral} or \textbf{folding the integral}\index{folding the integral} respectively:
+
+      \begin{method}[Unfolding/folding the integral]
+        Suppose $\G$ is any congruence subgroup with fundamental domain $\mc{F}_{\G}$, and we are given an absolutely convergent integral of the form
+        \[
+          \int_{\mc{F}_{\G}}\sum_{\g \in \G'\backslash\G}f(\g z)\,d\mu,
+        \]
+        where $\G' \le \G$ is a subgroup ($f$ is not necessarily a modular form). Then the above integral can be written in the form
+        \[
+          \int_{\G'\backslash\H}f(z)\,d\mu.
+        \]
+        To do this use DCT to interchange the sum and integral and then make the change of variales $z \to \g^{-1}z$ to put the integral in the form
+        \[
+          \sum_{\g \in \G'\backslash\G}\int_{\g\F_{\G}}f(z)\,d\mu.
+        \]
+        Then observe $\H = \bigcup_{\g \in \G}\g\mc{F}_{\G}$ so that $\G'\backslash\H = \bigcup_{\g \in \G'\backslash\G}\g\mc{F}_{\G}$ and the desired result follows. Of course, this is an equality everywhere so we can also run the procedure in reverse.
+      \end{method}
     \subsection*{Double Coset Operators}
       We are ready to introduce a class of general operators, depending upon double cosets, on any congruence subgroup $\G$ of level $N$. We will use these operators to define the diamond and Hecke operators. Recall that $j(\g,z) = (cz+d)$, where $\g = \begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix} \in \G$, is the factor of modularity. Actually, $j(\g,z)$ makes sense for any $\g \in \GL_{2}^{+}(\Q)$ and we extend it accordingly. Let $\G_{1}$ and $\G_{2}$ be two congruence subgroups (not necessarily of the same level). For $\a \in \GL_{2}^{+}(\Q)$ consider the double coset
       \[
@@ -675,117 +782,8 @@
       \begin{proof}
         \todo{xxx}
       \end{proof}
-    \subsection*{The Petersson Inner Product}
-      Fix a weight $k \ge 1$. Let $\G$ be a congruence subgroup of level $N$ and let $\chi$ be a Dirichlet character with conductor $q \mid N$. We would like to turn $\mc{M}_{k}(\G,\chi)$ into an inner product space in order to devlope a spectral theory of the linear operators just introduced. Unfortunately this is not possible unless we restrict to $\mc{S}_{k}(\G,\chi)$. However, we can define the inner product on $\mc{S}_{k}(\G,\chi) \x \mc{M}_{k}(\G,\chi)$. Set $V_{\G} = [\PSL_{2}(\Z):\G]$ and recall that this is finite because $\G$ is a congruence subgroup. For $f \in \mc{S}_{k}(\G,\chi)$ and $g \in \mc{M}_{k}(\G,\chi)$, define their \textbf{Petersson inner product}\index{Petersson inner product} by
-      \[
-        \<f,g\> = \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}f(z)\conj{g(z)}\Im(z)^{k}\,d\mu,
-      \]
-      where $\mc{F}_{\G}$ is a fundamental domain for $\GH$. Since the integrand is $\G$-invariant, the integral is independent of the choice of fundamental domain. The integral is also absolutely bounded by \cref{met:decay_compacta_integral} (since $f$ is a cusp form). These two facts together imply that the Petersson inner product is well-defined. Actually, we have the following proposition:
 
-      \begin{proposition}\label{prop:Petersson_inner_product_hermitian}
-        $\mc{S}_{k}(\G,\chi)$ is a Hilbert space with respect to Petersson inner product.
-      \end{proposition}
-      \begin{proof}
-        Let $f,g \in \mc{S}_{k}(\G,\chi)$. Linearity of the integral immediately implies that the Petersson inner product is linear on $\mc{S}_{k}(\G,\chi)$. It is also positive definite since
-        \[
-          \<f,f\> = \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}f(z)\conj{f(z)}\Im(z)^{k}\,d\mu = \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}|f(z)|^{2}\Im(z)^{k}\,d\mu \ge 0,
-        \]
-        with equality if and only if $f$ is identically zero because $|f(z)|^{2}\Im(z)^{k} \ge 0$. To see that it is conjugate symetric, observe
-        \begin{align*}
-          \conj{\<g,f\>} &= \conj{\frac{1}{V_{\G}}\int_{\mc{F}_{\G}}g(z)\conj{f(z)}\Im(z)^{k}\,d\mu} \\
-          &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}\conj{g(z)\conj{f(z)}\Im(z)^{k}\,d\mu} \\
-          &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}\conj{g(z)}f(z)\Im(z)^{k}\,\conj{d\mu} \\
-          &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}\conj{g(z)}f(z)\Im(z)^{k}\,d\mu && \text{$d\mu = \frac{dx\,dy}{y^{2}}$} \\
-          &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}f(z)\conj{g(z)}\Im(z)^{k}\,d\mu \\
-          &= \<f,g\>.
-        \end{align*}
-        So the Petersson inner product is a Hermitian inner product on $\mc{S}_{k}(\G,\chi)$. Since $\mc{S}_{k}(\G,\chi)$ is finite dimensional by \cref{thm:modular_forms_space_classification}, it follows immediately that $\mc{S}_{k}(\G,\chi)$ is a Hilbert space.
-      \end{proof}
-
-      \begin{remark}\label{rem:non-degeneracy_of_Petersson_inner_product}
-        As a consquence of \cref{prop:Petersson_inner_product_hermitian}, the Petersson inner product is also non-degenerate on $\mc{S}_{k}(\G,\chi)$. Actually, for the exact same reasoning this holds on $\mc{S}_{k}(\G,\chi) \x \mc{M}_{k}(\G,\chi)$ wherever the Petersson inner product is defined.
-      \end{remark}
-
-      Now suppose $f \in \mc{S}_{k}(\G,\chi)$ with Fouier coefficients $a_{n}(f)$. Define linear functionals $\phi_{m,k}:\mc{S}_{k}(\G,\chi) \to \C$, for every $m \ge 1$, by
-      \[
-        \phi_{m,k}(f) = a_{m}(f).
-      \]
-      Since $\mc{S}_{k}(\G,\chi)$ is a finite dimensional Hilbert space, the Riesz representation theorem implies that there exists a unique $v_{m,k} \in \mc{S}_{k}(\G,\chi)$ such that
-      \[
-        \<f,v_{m,k}\> = \phi_{m,k}(f) = a_{m}(f).
-      \]
-      We would like to know what these cusp forms are. It turns out that $v_{m,k}$ will be the Poincar\'e series $P_{m,k,\chi}$ up to a normalization factor. To see this, we compute the inner product:
-      \begin{align*}
-        \<f,P_{m,k,\chi}\> &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}f(z)\conj{P_{m,k,\chi}(z)}\Im(z)^{k}\,d\mu \\
-        &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}f(z)\sum_{\g \in \GG}\chi(\g)\conj{j(\g,z)^{-k}}e^{-2\pi im\conj{\g z}}\Im(z)^{k}\,d\mu \\
-        &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}f(z)\sum_{\g \in \GG}\frac{\chi(\g)j(\g,z)^{k}}{|j(\g,z)|^{2k}}e^{-2\pi im\conj{\g z}}\Im(z)^{k}\,d\mu \\
-        &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}f(\g z)\sum_{\g \in \GG}\frac{1}{|j(\g,z)^{k}|^{2k}}e^{-2\pi im\conj{\g z}}\Im(z)^{k}\,d\mu && \text{modularity} \\
-        &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}f(\g z)\sum_{\g \in \GG}e^{-2\pi im\conj{\g z}}\Im(\g z)^{k}\,d\mu && \text{$\Im(\g z)^{k} = \frac{\Im(z)^{k}}{|j(\g,z)|^{2k}}$.}
-      \end{align*}
-      Now we put this last integral into a different form. The idea is to rewrite the integral over the fundamental domain $\mc{F}_{\G}$ as an integral over the strip $\G_{\infty}\backslash\H$. First, observe
-      \begin{align*}
-        \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}f(\g z)\sum_{\g \in \GG}e^{-2\pi im\conj{\g z}}\Im(\g z)^{k}\,d\mu &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}\sum_{\g \in \GG}f(\g z)e^{-2\pi im\conj{\g z}}\Im(\g z)^{k}\,d\mu \\
-        &= \frac{1}{V_{\G}}\sum_{\g \in \GG}\int_{\mc{F}_{\G}}f(\g z)e^{-2\pi im\conj{\g z}}\Im(\g z)^{k}\,d\mu && \text{DCT} \\
-        &= \frac{1}{V_{\G}}\sum_{\g \in \GG}\int_{\g\mc{F}_{\G}}f(z)e^{-2\pi im\conj{z}}\Im(z)^{k}\,d\mu && \text{$z \to \g^{-1}z$.}
-      \end{align*}
-      Now $\H = \bigcup_{\g \in \G}\g\mc{F}_{\G}$ so that $\G_{\infty}\backslash\H = \bigcup_{\g \in \GG}\g\mc{F}_{\G}$. Therefore we can write
-      \[
-        \frac{1}{V_{\G}}\sum_{\g \in \GG}\int_{\g\mc{F}_{\G}}f(z)e^{-2\pi im\conj{z}}\Im(z)^{k}\,d\mu = \frac{1}{V_{\G}}\int_{\G_{\infty}\backslash\H}f(z)e^{-2\pi im\conj{z}}\Im(z)^{k}\,d\mu.
-      \]
-      The rest is a computation:
-      \begin{align*}
-        \frac{1}{V_{\G}}\sum_{\g \in \GG}\int_{\g\mc{F}_{\G}}f(z)e^{-2\pi im\conj{z}}\Im(z)^{k}\,d\mu &= \frac{1}{V_{\G}}\int_{\G_{\infty}\backslash\H}f(z)e^{-2\pi im\conj{z}}\Im(z)^{k}\,d\mu \\
-        &= \frac{1}{V_{\G}}\int_{0}^{\infty}\int_{0}^{1}\sum_{n \ge 1}a_{n}(f)e^{2\pi i(n-m)x}e^{-2\pi(n+m)y}y^{k}\,\frac{dx\,dy}{y^{2}} \\
-        &= \frac{1}{V_{\G}}\int_{0}^{\infty}\sum_{n \ge 1}\int_{0}^{1}a_{n}(f)e^{2\pi i(n-m)x}e^{-2\pi(n+m)y}y^{k}\,\frac{dx\,dy}{y^{2}} && \text{DCT} \\
-        &= \frac{1}{V_{\G}}\int_{0}^{\infty}a_{m}(f)e^{-4\pi my}y^{k}\,\frac{dy}{y^{2}},
-      \end{align*}
-      where the last line follows because
-      \begin{equation}\label{equ:Dirac_integral_representation}
-        \int_{0}^{1}e^{2\pi i(n-m)x}\,dx = \d_{n-m,0},
-      \end{equation}
-      so that the inner integral cuts off all the terms except for the $n = m$ term. Then
-      \begin{align*}
-        \frac{1}{V_{\G}}\int_{0}^{\infty}a_{m}(f)e^{-4\pi my}y^{k}\,\frac{dy}{y^{2}} &= \frac{a_{m}(f)}{V_{\G}}\int_{0}^{\infty}e^{-4\pi my}y^{k-1}\,\frac{dy}{y} \\
-        &= \frac{a_{m}(f)}{V_{\G}}\int_{0}^{\infty}e^{-4\pi my}y^{k-1}\,\frac{dy}{y} && \text{$y \to \frac{y}{4\pi m}$} \\
-        &= \frac{a_{m}(f)}{V_{\G}(4\pi m)^{k-1}}\int_{0}^{\infty}e^{-y}y^{k-1}\,\frac{dy}{y} \\
-        &= \frac{\G(k-1)}{V_{\G}(4\pi m)^{k-1}}a_{m}(f) && \text{definition of $\G(k-1)$.}
-      \end{align*}
-      In conclusion,
-      \begin{equation}\label{equ:Petersson_inner_product_with_Poincare_series}
-        \<f,P_{m,k,\chi}\> = \frac{\G(k-1)}{V_{\G}(4\pi m)^{k-1}}a_{m}(f).
-      \end{equation}
-      Now set $\wtilde{P_{m,k,\chi}} = \frac{V_{\G}(4\pi m)^{k-1}}{\G(k-1)}P_{m,k,\chi}$. For all cusp forms $f$ (actually any modular form where the Petersson inner product is defined),
-      \[
-        \<f,\wtilde{P_{m,k,\chi}}-v_{m,k}\> = 0.
-      \]
-      By \cref{rem:non-degeneracy_of_Petersson_inner_product} the Petersson inner product is non-degenerate so we conclude $v_{m,k} = \wtilde{P_{m,k,\chi}}$. In particular, this shows that the Poincar\'e series $P_{m,k,\chi}$ are cusp forms. We usually work with the Poincar\'e series $P_{m,k,\chi}$ instead of their normalized counterparts $\wtilde{P_{m,k,\chi}}$. In any case, with \cref{equ:Petersson_inner_product_with_Poincare_series} in hand we can prove the following result:
-
-      \begin{theorem}
-        The Poincar\'e series span $\mc{S}_{k}(\G,\chi)$.
-      \end{theorem}
-      \begin{proof}
-        Let $f \in \mc{S}_{k}(\G,\chi)$ with Fourier coefficients $a_{n}(f)$. Since $\G(k-1) \neq 0$, \cref{equ:Petersson_inner_product_with_Poincare_series} implies $\<f,P_{m,k,\chi}\> = 0$ if and only if $a_{m}(f) = 0$. So $f$ is orthogonal to all the Poincar\'e series if and only if every Fourier coefficient $a_{m}(f)$ is zero. But this happens if and only if $f$ is identically zero.
-      \end{proof}
-
-      Let's return to the previous computation for a breif moment. The procedure of changing an integral over a fundamental domain $\mc{F}_{\G}$ into an integral over the strip $\G_{\infty}\backslash\H$, or vice versa, works in a more general setting and is called \textbf{unfolding the integral}\index{unfolding the integral} or \textbf{folding the integral}\index{folding the integral} respectively:
-
-      \begin{method}[Unfolding/folding the integral]
-        Suppose $\G$ is any congruence subgroup with fundamental domain $\mc{F}_{\G}$, and we are given an absolutely convergent integral of the form
-        \[
-          \int_{\mc{F}_{\G}}\sum_{\g \in \G'\backslash\G}f(\g z)\,d\mu,
-        \]
-        where $\G' \le \G$ is a subgroup ($f$ is not necessarily a modular form). Then the above integral can be written in the form
-        \[
-          \int_{\G'\backslash\H}f(z)\,d\mu.
-        \]
-        To do this use DCT to interchange the sum and integral and then make the change of variales $z \to \g^{-1}z$ to put the integral in the form
-        \[
-          \sum_{\g \in \G'\backslash\G}\int_{\g\F_{\G}}f(z)\,d\mu.
-        \]
-        Then observe $\H = \bigcup_{\g \in \G}\g\mc{F}_{\G}$ so that $\G'\backslash\H = \bigcup_{\g \in \G'\backslash\G}\g\mc{F}_{\G}$ and the desired result follows. Of course, this is an equality everywhere so we can also run the procedure in reverse.
-      \end{method}
-
-      Returning to the Petersson inner product, we restrict to the case when the congruence subgroup is $\G_{1}(N)$. In this instance, the Petersson inner product behaves well with the Hecke operators (see \cite{lang1987introduction} for a proof):
+      The diamond and Hecke operators also behave well with the Petersson inner product on the subspace of cusp forms (see \cite{lang1987introduction} for a proof):
 
       \begin{proposition}\label{prop:Hecke_operators_normal}
         On $\mc{S}_{k}(\G_{1}(N))$, the diamond operators $\<m\>$ and Hecke operators $T_{m}$ are normal for all $m \ge 1$ with $(m,N) = 1$. Moreover, the adjoints are given by
@@ -797,11 +795,12 @@
       In the case of the modular group (the only congruence subgroup of level $1$), \cref{prop:Hecke_operators_normal} says that all of the Hecke operators are normal. Now suppose $f$ is a non-constant modular form with Fourier coefficients $a_{n}(f)$. If $f$ is such that $T_{m}f = \l_{f}(m)f$ for some $\l_{f}(m) \in \C$, we say $f$ is an \textbf{eigenfunction}\index{eigenfunction} for $T_{m}$ with eigenvalue $\l_{f}(m)$. If $f$ is a modular form on $\G_{1}(N)\backslash\H$ that is a simultaneous eigenfunction for all diamond operators $\<m\>$ and Hecke operators $T_{m}$ with $(m,N) = 1$, we call $f$ an \textbf{eigenform}\index{eigenform}. If the condition $(m,N) = 1$ can be dropped, so $f$ is a simultaneous eigenfunction for all diamond and Hecke operators, then we say $f$ is a \textbf{Hecke eigenform}\index{Hecke eigenform}. In particular, on $\PSL_{2}(\Z)$ all eigenforms are Hecke eigenforms. In any case, \cref{prop:general_Hecke_operators_acting_on_Fourier_coefficients_modular} immediately implies that the first Fourier coefficient of $T_{m}f$ is $a_{m}(f)$ so we must have $a_{m}(f) = \l_{f}(m)a_{1}(f)$ for all $m \ge 1$ with $(m,N) = 1$. Therefore we cannot have $a_{1}(f) = 0$ for this would mean $f$ is constant. We can normalize $f$ by dividing by $a_{1}(f)$ so that the Fourier series has constant term $1$. It follows that the $m$-th Fourier coefficient of $f$, such that $(m,N) = 1$, is precisely the eigenvalue $\l_{f}(m)$. This normalization is called the \textbf{algebraic normalization}\index{algebraic normalization} of $f$. The \textbf{analytic normalization}\index{analytic normalization} of $f$ is where we normalize so that $\<f,f\> = 1$. From the spectral theorem we derive an important corollary:
 
       \begin{theorem}\label{thm:eigenforms_forms_spectral_theory}
-        $\mc{S}_{k}(\G_{1}(N))$ admits an orthonormal basis of eigenforms for the operators $\{T_{m},\<m\>:m \ge 1, (m,N) = 1\}$.
+        $\mc{S}_{k}(\G_{1}(N))$ admits an orthonormal basis of eigenforms with respect to the diamond operators $\<m\>$ and Hecke operators $T_{m}$ for all $m \ge 1$ with $(m,N) = 1$.
       \end{theorem}
       \begin{proof}
         This follows immediately from the spectral theorem along with \cref{prop:Hecke_operators_commute_modular,prop:Hecke_operators_normal}.
       \end{proof}
+
     \subsection*{Atkin–Lehner Theory}
       So far, our entire theory of modular forms has started with a fixed congruence subgroup of some level. Atkin–Lehner theory, or the theory of oldforms \& newforms, allows us to discuss modular forms in the context of moving between levels. In this setting, we will only deal with congruence subgroups of the form $\G_{1}(N)$. The easiest way lift from a smaller level to a larger level is to observe that if $M \mid N$, then $\G_{1}(N) \le \G_{1}(M)$ so there is a natural inclusion $\mc{S}_{k}(\G_{1}(M)) \subseteq \mc{S}_{k}(\G_{1}(N))$. There is a less trivial way of lifting from $\mc{S}_{k}(\G_{1}(M))$ to $\mc{S}_{k}(\G_{1}(N))$. For any $d \mid \frac{N}{M}$, let $\a_{d} = \begin{psmallmatrix} d & 0 \\ 0 & 1 \end{psmallmatrix}$. If $f \in \mc{S}_{k}(\G_{1}(M))$, then
       \[
@@ -1282,7 +1281,7 @@
         \s = 1-\s \quad \text{and} \quad t = t,
       \]
       and thus $s = \frac{1}{2}+it$ with $t$ real. In the later case, $s$ is real and since $\l$ is positive we must have $s \in (0,1)$. Therefore either $\l = \frac{1}{4}+t^{2}$ for some real $t$ or $\l \in (0,1)$. In the first case, we refer to $t$ as the \textbf{spectral parameter} of $f$.
-    \subsection*{Incomplete Eisenstein Series}
+
       Unfortunately the Eisenstein series $E_{\mf{a}}(z,s)$ are not $L^{2}$-integrable over $\mc{F}_{\G}$ and so do not belong to $\mc{L}(\G)$. To obtain integrable automorphic functions we will agument these Eisenstein series so that they have compact support. Let $\psi:\R^{+} \to \C$ be a smooth compactly supported function and $\s_{\mf{a}}$ be a scaling matrix for the $\mf{a}$ cusp. We define the \textbf{(incomplete) Eisenstein series}\index{(incomplete) Eisenstein series} $E_{\mf{a}}(z,\psi)$ at the $\mf{a}$ cusp with respect to $\psi$ by
       \[
         E_{\mf{a}}(z,\psi) = \sum_{\g \in \G_{\mf{a}}\backslash\G}\psi(\Im(\s_{\mf{a}}^{-1}\g z)).
@@ -1301,7 +1300,7 @@
         is automorphic on $\GH$ and belongs to $\mc{L}(\G)$.
       \end{theorem}
       
-      Unfortunately, these Eisenstein series fail to be Maass forms because they are not eigenfunctions for the Laplace operator. This is because compactly supported functions cannot be real-analytic (which as we have already mentioned is implied for any eigenfunction of the Laplace operator). However, there is an important interaction between incomplete Eisenstein series and Maass cusp forms. Let $\mc{E}(\G)$ and $\mc{C}(\G)$ be the spaces of such forms respectively. Moreover, let $\mc{A}(\G)$ be the space of all Maass forms. Note that $\mc{E}(\G)$ and $\mc{C}(\G)$ are are subspaces of $\mc{B}(\G)$ but $\mc{A}(\G)$ need not be. Let $\mc{E}_{s}(\G)$, $\mc{S}_{s}(\G)$, $\mc{A}_{s}(\G)$, and $\mc{B}_{s}(\G)$ denote the corresponding subspaces of such forms whose eigenvalue is $\l = s(1-s)$. As we will now show, $\mc{E}(\G)$ and $\mc{C}(\G)$ constitute all of $\mc{B}(\G)$. Indeed, let $f \in \mc{B}(\G)$ with $E_{\mf{a}}(\cdot,\psi) \in \mc{E}(\G)$. We compute their inner product:
+      Unfortunately, the Eisenstein series $E_{\mf{a}}(z,\psi)$ fail to be Maass forms because they are not eigenfunctions for the Laplace operator. This is because compactly supported functions cannot be real-analytic (which as we have already mentioned is implied for any eigenfunction of the Laplace operator). However, there is an important interaction between incomplete Eisenstein series and Maass cusp forms. Let $\mc{E}(\G)$ and $\mc{C}(\G)$ be the spaces of such forms respectively. Moreover, let $\mc{A}(\G)$ be the space of all Maass forms. Note that $\mc{E}(\G)$ and $\mc{C}(\G)$ are are subspaces of $\mc{B}(\G)$ but $\mc{A}(\G)$ need not be. Let $\mc{E}_{s}(\G)$, $\mc{S}_{s}(\G)$, $\mc{A}_{s}(\G)$, and $\mc{B}_{s}(\G)$ denote the corresponding subspaces of such forms whose eigenvalue is $\l = s(1-s)$. As we will now show, $\mc{E}(\G)$ and $\mc{C}(\G)$ constitute all of $\mc{B}(\G)$. Indeed, let $f \in \mc{B}(\G)$ with $E_{\mf{a}}(\cdot,\psi) \in \mc{E}(\G)$. We compute their inner product:
       \begin{align*}
         \<f,E_{\mf{a}}(\cdot,\psi)\> &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}f(z)\conj{E_{\mf{a}}(z,\psi)}\,d\mu \\
         &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}f(z)\conj{\sum_{\g \in \GG}\psi(\Im(\s_{\mf{a}}^{-1}\g z))}\,d\mu \\
