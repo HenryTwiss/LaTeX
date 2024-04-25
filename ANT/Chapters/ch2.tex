@@ -29,7 +29,7 @@
       \[
         \G(N) = \left\{\begin{pmatrix} a & b \\ c & d \end{pmatrix} \in \PSL_{2}(\Z):\begin{pmatrix} a & b \\ c & d \end{pmatrix} \equiv \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} \tmod{N}\right\}.
       \]
-      Then $\G(N)$ is the kernel of the natural homomorphism $\PSL_{2}(\Z) \to \PSL_{2}(\Z/N\Z)$ so it is a normal subgroup with finite index. Actually this map is surjective:
+      Then $\G(N)$ is the kernel of the natural homomorphism $\PSL_{2}(\Z) \to \PSL_{2}(\Z/N\Z)$ so it is a normal subgroup with finite index. We call $\G(N)$ the \textbf{principal congruence subgroup}\index{principal congruence subgroup} of level $N$. For $\G \le \PSL_{2}(\Z)$, we say $\G$ is a \textbf{congruence subgroup}\index{congruence subgroup} if $\G(N) \le \G$ for some $N$ and the minimal such $N$ is called the \textbf{level}\index{level} of $\G$. Note that if $M \mid N$, then $\G(N) \le \G(M)$. Thus if $\G$ is a congruence subgroup of level $N$, then $\G(kN) \le \G$ for all $k \ge 1$. It turns out that the natural homomorphism $\PSL_{2}(\Z) \to \PSL_{2}(\Z/N\Z)$ is surjective:
 
       \begin{proposition}\label{prop:surjective_modulo_N_for_modular_group}
         The natural homomorphism $\PSL_{2}(\Z) \to \PSL_{2}(\Z/N\Z)$ is surjective.
@@ -38,17 +38,15 @@
         Suppose $\begin{psmallmatrix} \conj{a} & \conj{b} \\ \conj{c} & \conj{d} \end{psmallmatrix} \in \SL_{2}(\Z/N\Z)$. Then $\conj{a}\conj{d}-\conj{b}\conj{c} \equiv 1 \tmod{N}$ so by B\'ezout's identity (generalized to three integers) $(\conj{c},\conj{d},N) = 1$. We claim that there exists $s$ and $t$ such that $c = \conj{c}+sN$, $d = \conj{d}+tN$ with $(c,d) = 1$. Set $g = (\conj{c},\conj{d})$. Then $(g,N) = 1$ because $(\conj{c},\conj{d},N) = 1$. If $\conj{c} = 0$ then set $s = 0$ so $c = 0$ and choose $t$ such that $t \equiv 1 \tmod{p}$ for any prime $p \mid g$ and $t \equiv 0 \tmod{p}$ for any prime $p \nmid g$ and $p \mid \conj{d}$. Such a $t$ exists by the Chinese remainder theorem. Now if $p \mid (c,d)$, then either $p \mid g$ or $p \nmid g$. If $p \mid g$, then $p \mid d-\conj{d} = tN$ which is absurd since $t \equiv 1 \tmod{p}$ and $(t,N) = 1$. If $p \nmid g$, then $p \nmid d-\conj{d} = tN$ but this is also absurd since $t \equiv 0 \tmod{p}$. Therefore $(c,d) = 1$ as claimed. If $\conj{c} = 0$ then $\conj{d} \neq 0$, and we can proceed similarly. Since $(c,d) = 1$ there exists $a$ and $b$ such that $ad-bc = 1$. Then $\begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix} \in \SL_{2}(\Z)$ and maps onto $\begin{psmallmatrix} \conj{a} & \conj{b} \\ \conj{c} & \conj{d} \end{psmallmatrix}$. This proves surjectivity.
       \end{proof}
       
-        By \cref{prop:surjective_modulo_N_for_modular_group}, $[\PSL_{2}(Z):\G(N)] = |\PSL_{2}(\Z/N\Z)|$. We call $\G(N)$ the \textbf{principal congruence subgroup}\index{principal congruence subgroup} of level $N$. For $\G \le \PSL_{2}(\Z)$, we say $\G$ is a \textbf{congruence subgroup}\index{congruence subgroup} if $\G(N) \le \G$ for some $N$ and the minimal such $N$ is called the \textbf{level}\index{level} of $\G$. Since $\G(N) \le \G$ and $\G(N)$ has finite index in $\PSL_{2}(\Z)$ so does $\G$. The subgroups
+        By \cref{prop:surjective_modulo_N_for_modular_group}, $[\PSL_{2}(Z):\G(N)] = |\PSL_{2}(\Z/N\Z)|$. Since $\G(N) \le \G$ and $\G(N)$ has finite index in $\PSL_{2}(\Z)$ so does $\G$. The subgroups
       \[
         \G_{1}(N) = \left\{\begin{pmatrix} a & b \\ c & d \end{pmatrix} \in \PSL_{2}(\Z):\begin{pmatrix} a & b \\ c & d \end{pmatrix} \equiv \begin{pmatrix} 1 & \ast \\ 0 & 1 \end{pmatrix} \tmod{N}\right\},
       \]
       and
       \[
-        \G_{0}(N) = \left\{\begin{pmatrix} a & b \\ c & d \end{pmatrix} \in \PSL_{2}(\Z):\begin{pmatrix} a & b \\ c & d \end{pmatrix} \equiv \begin{pmatrix} \ast & \ast \\ 0 & \ast \end{pmatrix} \tmod{N}\right\}.
+        \G_{0}(N) = \left\{\begin{pmatrix} a & b \\ c & d \end{pmatrix} \in \PSL_{2}(\Z):\begin{pmatrix} a & b \\ c & d \end{pmatrix} \equiv \begin{pmatrix} \ast & \ast \\ 0 & \ast \end{pmatrix} \tmod{N}\right\},
       \]
-      are particularly important and are congruence subgroups of level $N$. The latter subgroup is called a \textbf{Hecke congruence subgroup}\index{Hecke congruence subgroup}. Note that $\G(N) \le \G_{1}(N) \le \G_{0}(N)$.
-
-      If $\G$ is a general congruence subgroup, it is useful to find a generating set for $\G$ in order to reduce results about $\G$ to that of the generators. This is usually achieved by performing some sort of Euclidean division argument on the enrties of a matrix $\g \in \G$ using the supposed generating set to construct the inverse for $\g$. For example, this was the proof stragety employed in \cref{prop:PSL_generator}.
+      are particularly important and are congruence subgroups of level $N$. The latter subgroup is called the \textbf{Hecke congruence subgroup}\index{Hecke congruence subgroup} of level $N$. Note that $\G(N) \le \G_{1}(N) \le \G_{0}(N)$. If $\G$ is a general congruence subgroup, it is useful to find a generating set for $\G$ in order to reduce results about $\G$ to that of the generators. This is usually achieved by performing some sort of Euclidean division argument on the enrties of a matrix $\g \in \G$ using the supposed generating set to construct the inverse for $\g$. For example, this was the proof stragety employed in \cref{prop:PSL_generator}.
     \subsection*{Modular Curves}
       The modular group naturally acts on the Riemann sphere $\hat{\C}$ by M\"obius transformations (sometimes called fractional linear transformations). Explicitly, any $\g = \begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix} \in \PSL_{2}(\Z)$ acts on $z \in \hat{\C}$ by
       \[
@@ -602,15 +600,27 @@
       \]
       Then $\G_{1}$ acts on the set $\G_{1}\a\G_{2}$ by left multiplication so that it decomposes into a disjoin union of orbit spaces. Thus
       \[
-        \G_{1}\a\G_{2} = \bigcup_{\b \in \G_{1}\backslash\G_{1}\a\G_{2}}\G_{1}\b
+        \G_{1}\a\G_{2} = \bigcup_{\b \text{ orbit}}\G_{1}\b,
       \]
-      The operators we will define will be sums over the orbit representatives $\b$, that is, representatives of $\G_{1}\backslash\G_{1}\a\G_{2}$. However, in order for these operators to be well-defined it is necessary that the orbit decomposition above is a finite union. This is indeed the case and we will require two lemmas. The first is that congruence subgroups are preserved under conjugation by elements of $\GL_{2}^{+}(\Q)$ provided we restrict to those elements in $\PSL_{2}(\Z)$:
+      where the sum is over the orbit representatives $\b$, that is, representatives of $\G_{1}\backslash\G_{1}\a\G_{2}$. However, in order for these operators to be well-defined it is necessary that the orbit decomposition above is a finite union. This is indeed the case and we will require two lemmas. The first is that congruence subgroups are preserved under conjugation by elements of $\GL_{2}^{+}(\Q)$ provided we restrict to those elements in $\PSL_{2}(\Z)$:
 
       \begin{lemma}\label{lem:coset_lemma_1}
         Let $\G$ be a congruence subgroup and let $\a \in \GL_{2}^{+}(\Q)$. Then $\a^{-1}\G\a \cap \PSL_{2}(\Z)$ is a congruence subgroup.
       \end{lemma}
       \begin{proof}
-        \todo{xxx}
+        Recall that if $\G$ is of level $M$, then $\G(kM) \le \G$ for every $k \ge 1$. Thus there is an integer $\wtilde{N}$ such that $\G(\wtilde{N}) \le \G$, $\wtilde{N}\a \in \GL_{2}^{+}(\Z)$, and $\wtilde{N}\a \in \GL_{2}^{+}(\Z)$. Now let $N = \wtilde{N}^{3}$ and notice that any $\g \in \G(N)$ is of the form
+        \[
+          \g = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}+N\begin{pmatrix} k_{1} & k_{2} \\ k_{3} & k_{4} \end{pmatrix},
+        \]
+        for $k_{1},\ldots,k_{4} \in \Z$. Therefore $\G(N) \subseteq I+N\Mat_{2}(\Z)$. Thus
+        \[
+          \a\G(N)\a^{-1} \le \a(I+N\Mat_{2}(\Z))\a^{-1} = I+\wtilde{N}\Mat_{2}(\Z).
+        \]
+        As every matrix in $\a\G(N)\a^{-1}$ has determinant $1$ and $\G(\wtilde{N}) \subseteq I+\wtilde{N}\Mat_{2}(\Z)$, it follows that $\a\G(N)\a^{-1} \le \G(\wtilde{N})$. As $\G(\wtilde{N}) \le \G$, we conclude
+        \[
+          \G(N) \le \a^{-1}\G\a,
+        \]
+        and intersecting with $\PSL_{2}(\Z)$ completes the proof.
       \end{proof}
 
       Our second lemma gives a way to describe the orbit representatives for $\G_{1}\a\G_{2}$ in terms of coset representatives:
@@ -623,7 +633,15 @@
         induces a bijection from the coset space $\G_{3}\backslash\G_{2}$ to the orbit space $\G_{1}\backslash\G_{1}\a\G_{2}$.
       \end{lemma}
       \begin{proof}
-        \todo{xxx}
+        We will show that the induced map is both surjective and injective. For surjectivity, the orbit representatives $\b$ of $\G_{1}\backslash\G_{1}\a\G_{2}$ are of the form $\b = \g_{1}\a\g_{2}$ for some $\g_{1} \in \G_{1}$ and $\g_{2} \in \G_{2}$. Since $\G_{1}$ is acting on $\G_{1}\a\G_{2}$ by left multiplication, $\b$ can be written as $\b = \a\g'_{2}$ for some $\g'_{2} \in \G_{2}$. This shows that the induced map is a surjection. To prove injectivity, let $\g_{2},\g'_{2} \in \G_{2}$ be such that the orbit space representatives $\a\g_{2}$ and $\a\g'_{2}$ are equivalent. That is,
+        \[
+          \G_{1}\a\g_{2} = \G_{1}\a\g'_{2}.
+        \]
+        This implies $\a\g_{2}(\g'_{2})^{-1} \in \G_{1}\a$ and so $\g_{2}(\g'_{2})^{-1} \in \a^{-1}\G_{1}\a$. But we also have $\g_{2}(\g'_{2})^{-1} \in \G_{2}$ and these two facts together imply $\g_{2}(\g'_{2})^{-1} \in \G_{3}$. Hence
+        \[
+          \G_{3}\g_{2} = \G_{3}\g'_{2},
+        \]
+        which shows that the induced map is also an injection.
       \end{proof}
 
       With these lemmas in hand, we can prove that the orbit decomposition of $\G_{1}\a\G_{2}$ is finite:
@@ -631,12 +649,12 @@
       \begin{proposition}\label{prop:double_congruence_subgroup_coset_decomposition_is_finite}
         Let $\a \in \GL_{2}^{+}(\Q)$. Then the orbit decomposition
         \[
-          \G_{1}\a\G_{2} = \bigcup_{\b \in \G_{1}\backslash\G_{1}\a\G_{2}}\G_{1}\b,
+          \G_{1}\a\G_{2} = \bigcup_{\b \text{ orbit}}\G_{1}\b,
         \]
         with respect to the action of $\G_{1}$ by left multiplication, is a finite union.
       \end{proposition}
       \begin{proof}
-        \todo{xxx}
+        Let $\G_{3} = \a\G_{1}\a^{-1} \cap \G_{2}$. Then $\G_{3}$ acts on $\G_{2}$ by left multiplication. By \cref{lem:coset_lemma_2}, the number of orbits of $\G_{1}\backslash\G_{1}\a\G_{2}$ is the same as the number of cosets of $\G_{3}\backslash\G_{2}$ which is $[\G_{2}:\G_{3}]$. By \cref{lem:coset_lemma_1}, $\a^{-1}\G_{1}\a \cap \PSL_{2}(\Z)$ is a congruence subgroup and hence $[\PSL_{2}(\Z):\a^{-1}\G_{1}\a \cap \PSL_{2}(\Z)]$ is finite. As $\G_{2} = \PSL_{2}(\Z) \cap \G_{2}$ and $\G_{3} = \a^{-1}\G_{1}\a \cap \PSL_{2}(\Z) \cap \G_{2}$, it follows that $[\G_{2}:\G_{3}] \le [\PSL_{2}(\Z):\a^{-1}\G_{1}\a \cap \PSL_{2}(\Z)]$ completing the proof.
       \end{proof}
 
       We will now introduce our operators. Fix some congruence subgroup $\G$ and consider $\mc{M}_{k}(\G)$. Then for $\a \in \GL_{2}^{+}(\Q)$, we define the operator $[\a]_{k}$ of weight $k$ on $\mc{M}_{k}(\G)$ to be the linear operator given by
@@ -656,7 +674,7 @@
       \]
       is equivalent to the modularity of untwisted $f$ on $\GH$. Thus $f$ is an untwisted modular form on $\GH$ if and only if $f[\g]_{k} = f$ for all $\g \in \G$ where $\g$ is chosen to be the representative with positive determinant. Now let $\G_{1}$ and $\G_{2}$ be two congruence subgroups and let $\a \in \GL_{2}^{+}(\Q)$. We define the \textbf{double coset operator}\index{double coset operator} $[\G_{1}\a\G_{2}]_{k}$ of weight $k$ on $\mc{M}_{k}(\G_{1})$ to be the linear operator given by
       \[
-        (f[\G_{1}\a\G_{2}]_{k})(z) = \sum_{\b \in \G_{1}\backslash\G_{1}\a\G_{2}}(f[\b]_{k})(z) = \sum_{\b \in \G_{1}\backslash\G_{1}\a\G_{2}}(\det(\b))^{k-1}j(\b,z)^{-k}f(\b z),
+        (f[\G_{1}\a\G_{2}]_{k})(z) = \sum_{\b \text{ orbit}}(f[\b]_{k})(z) = \sum_{\b \text{ orbit}}(\det(\b))^{k-1}j(\b,z)^{-k}f(\b z),
       \]
       for any $f \in \mc{M}_{k}(\G_{1})$. By \cref{prop:double_congruence_subgroup_coset_decomposition_is_finite} this sum is finite. It remains to check that $f[\G_{1}\a\G_{2}]_{k}$ is well-defined. Indeed, if $\b$ and $\b'$ belong to the same orbit, then $\b'\b^{-1} \in \G_{1}$. But then as $f \in \mc{M}_{k}(\G_{1})$, is it invariant under the $[\b'\b^{-1}]_{k}$ operator so that
       \[
@@ -670,21 +688,21 @@
       \begin{proof}
         Suppose $f \in \mc{M}_{k}(\G_{1})$ and $\g \in \G_{2}$. Then
         \begin{align*}
-          (f[\G_{1}\a\G_{2}]_{k})(\g z) &= \sum_{\b \in \G_{1}\backslash\G_{1}\a\G_{2}}(\det(\b))^{k-1}j(\b,\g z)^{-k}f(\b\g z) \\
-          &= \sum_{\b \in \G_{1}\backslash\G_{1}\a\G_{2}}(\det(\b\g))^{k-1}j(\b,\g z)^{-k}f(\b\g z) && \text{$\det(\g) = 1$} \\
-          &= \sum_{\b \in \G_{1}\backslash\G_{1}\a\G_{2}}(\det(\b\g))^{k-1}\left(\frac{j(\g,z)}{j(\b\g,z)}\right)^{k}f(\b\g z) && \text{cocycle condition} \\
-          &= j(\g,z)^{k}\sum_{\b \in \G_{1}\backslash\G_{1}\a\G_{2}}(\det(\b\g))^{k-1}j(\b\g,z)^{-k}f(\b\g z) \\
-          &= j(\g,z)^{k}\sum_{\b \in \G_{1}\backslash\G_{1}\a\G_{2}}(\det(\b))^{k-1}j(\b,z)^{-k}f(\b z) && \text{$\b \to \b\g^{-1}$ bijection on $\G_{1}\a\G_{2}$} \\
-          &= j(\g,z)^{k}\sum_{\b \in \G_{1}\backslash\G_{1}\a\G_{2}}(f[\b]_{k})(z) \\
+          (f[\G_{1}\a\G_{2}]_{k})(\g z) &= \sum_{\b \text{ orbit}}(\det(\b))^{k-1}j(\b,\g z)^{-k}f(\b\g z) \\
+          &= \sum_{\b \text{ orbit}}(\det(\b\g))^{k-1}j(\b,\g z)^{-k}f(\b\g z) && \text{$\det(\g) = 1$} \\
+          &= \sum_{\b \text{ orbit}}(\det(\b\g))^{k-1}\left(\frac{j(\g,z)}{j(\b\g,z)}\right)^{k}f(\b\g z) && \text{cocycle condition} \\
+          &= j(\g,z)^{k}\sum_{\b \text{ orbit}}(\det(\b\g))^{k-1}j(\b\g,z)^{-k}f(\b\g z) \\
+          &= j(\g,z)^{k}\sum_{\b \text{ orbit}}(\det(\b))^{k-1}j(\b,z)^{-k}f(\b z) && \text{$\b \to \b\g^{-1}$ bijection on $\G_{1}\a\G_{2}$} \\
+          &= j(\g,z)^{k}\sum_{\b \text{ orbit}}(f[\b]_{k})(z) \\
           &= j(\g,z)^{k}(f[\G_{1}\a\G_{2}]_{k})(z),
         \end{align*}
-        So $f[\G_{1}\a\G_{2}]_{k}$ is modular. Holomorphy and the growth condition are immediate since the sum is finite by \cref{prop:double_congruence_subgroup_coset_decomposition_is_finite}. Therefore $f[\G_{1}\a\G_{2}]_{k} \in \mc{M}_{k}(\G_{2})$. To see that $[\G_{1}\a\G_{2}]_{k}$ preserves the subspace of cusp forms, let $\s_{\mf{a}}$ be a scaling matrix for the cusp $\mf{a}$ of $\G_{2}\backslash\H$ and let $f \in \mc{S}_{k}(\G_{1})$. If $\b \in \G_{1}\backslash\G_{1}\a\G_{2}$, then $\b\s_{\mf{a}}$ takes $\infty$ to an element of $\Q \cup \{\infty\}$ since $\a \in \GL_{2}^{+}(\Q)$. In other words, $\b\s_{\mf{a}}\infty = \mf{b}$ for some cusp $\mf{b}$ of $\G_{1}\backslash\H$. Now choose an integer $r \ge 1$ such that $r\a \in \GL_{2}^{+}(\Z)$. As a consquence, there exist integers $n,m \ge 1$ such that $rj(\b,\s_{\mf{a}}z) = |n\s_{\mf{a}}z+m|$. Then letting $\Im(z) > 1$ and $\d$ be as in \cref{lem:technical_Eisenstein_convergence_lemma}, we have
+        So $f[\G_{1}\a\G_{2}]_{k}$ is modular. Holomorphy and the growth condition are immediate since the sum is finite by \cref{prop:double_congruence_subgroup_coset_decomposition_is_finite}. Therefore $f[\G_{1}\a\G_{2}]_{k} \in \mc{M}_{k}(\G_{2})$. To see that $[\G_{1}\a\G_{2}]_{k}$ preserves the subspace of cusp forms, let $\s_{\mf{a}}$ be a scaling matrix for the cusp $\mf{a}$ of $\G_{2}\backslash\H$ and let $f \in \mc{S}_{k}(\G_{1})$. If $\b \text{ orbit}$, then $\b\s_{\mf{a}}$ takes $\infty$ to an element of $\Q \cup \{\infty\}$ since $\a \in \GL_{2}^{+}(\Q)$. In other words, $\b\s_{\mf{a}}\infty = \mf{b}$ for some cusp $\mf{b}$ of $\G_{1}\backslash\H$. Now choose an integer $r \ge 1$ such that $r\a \in \GL_{2}^{+}(\Z)$. As a consquence, there exist integers $n,m \ge 1$ such that $rj(\b,\s_{\mf{a}}z) = |n\s_{\mf{a}}z+m|$. Then letting $\Im(z) > 1$ and $\d$ be as in \cref{lem:technical_Eisenstein_convergence_lemma}, we have
         \[
           j(\b,\s_{\mf{a}}z) = \frac{|n\s_{\mf{a}}z+m|}{r} \ge \frac{\d|ni+m|}{r}.
         \]
         From this bound, we see that
         \[
-          (f[\G_{1}\a\G_{2}]_{k})(\s_{\mf{a}}z) \ll \left(\frac{\d|ni+m|}{r}\right)^{-k}\sum_{\b \in \G_{1}\backslash\G_{1}\a\G_{2}}(\det(\b))^{k-1}f(\b\s_{\mf{a}} z).
+          (f[\G_{1}\a\G_{2}]_{k})(\s_{\mf{a}}z) \ll \left(\frac{\d|ni+m|}{r}\right)^{-k}\sum_{\b \text{ orbit}}(\det(\b))^{k-1}f(\b\s_{\mf{a}} z).
         \]
         As $f$ is a cusp form, it has exponential decay to zero near the cusps so that the sum on the right-hand side tends to zero as $\Im(z) \to \infty$. Then $f[\G_{1}\a\G_{2}]_{k}$ is a cusp form too.
       \end{proof}
@@ -697,7 +715,7 @@
       \]
       ($d$ is invertible modulo $N$ since $c \equiv 0 \tmod{N}$ and $ad-bc = 1$). This is a surjective homomorphism and its kernel is exaclty $\G_{1}(N)$ so that $\G_{1}(N)$ is a normal subgroup of $\G_{0}(N)$ and $\G_{0}(N)/\G_{1}(N) \cong (\Z/N\Z)^{\ast}$. Letting $\a = \begin{psmallmatrix} \ast & \ast \\ \ast & d \end{psmallmatrix} \in \G_{0}(N)$ and $f \in \mc{M}_{k}(\G_{1})$, consider $\left(f\left[\G_{1}(N)\a\G_{1}(N)\right]_{k}\right)(z)$. This is only dependent upon the lower-right entry $d$ of $\a$ taken modulo $N$. To see this, since $\G_{1}(N)$ is normal in $\G_{0}(N)$, $\G_{1}(N)\a = \a\G_{1}(N)$ so that $\G_{1}(N)\a\G_{1}(N) = \a\G_{1}(N)$ and hence there is only one representative for the orbit decomposition. Therefore
       \[
-        \left(f\left[\G_{1}(N)\a\G_{1}(N)\right]_{k}\right)(z) = \sum_{\b \in \G_{1}(N)\a\G_{1}(N)}(f[\b]_{k})(z) = (f[\a]_{k})(z).
+        \left(f\left[\G_{1}(N)\a\G_{1}(N)\right]_{k}\right)(z) = \sum_{\b \text{ orbit}}(f[\b]_{k})(z) = (f[\a]_{k})(z).
       \]
       This induces an action of $\G_{0}(N)$ on $\mc{M}_{k}(\G_{1})$ and since $\G_{1}(N)$ acts trivially, this is really an action of $\G_{0}(N)/\G_{1}(N) \cong (\Z/N\Z)^{\ast}$. In other words, we have an induced action that depends only upon the lower-right entry $d$ of $\a$ taken modulo $N$. So for any $d$ modulo $N$, we define the \textbf{diamond operator}\index{diamond operator} $\<d\>:\mc{M}_{k}(\G_{1}(N)) \to \mc{M}_{k}(\G_{1}(N))$ of weight $k$ to be the linear operator given by
       \[
@@ -766,22 +784,19 @@
         \]
         because $c \equiv 0 \tmod{N}$, $ad-bc = 1$, and $ad \equiv {1} \tmod{N}$. By \cref{lem:cosets_for_Hecek_operators}, $\g\a\g^{-1} \in \G_{1}(N)\a\G_{1}(N)$ and so we can use this representative in place of $\a$. Now write
         \[
-          \G_{1}(N)\a\G_{1}(N) = \bigcup_{\b}\G_{1}(N)\b.
+          \G_{1}(N)\a\G_{1}(N) = \bigcup_{\b \text{ orbit}}\G_{1}(N)\b.
         \]
         Using $\g\a\g^{-1}$ in place of $\a$ and the normality of $\G_{1}(N)$ in $\G_{0}(N)$, we compute
-        \begin{align*}
-          \G_{1}(N)\a\G_{1}(N) &= \G_{1}(N)\g\a\g^{}\G_{1}(N) \\
-          &= \g\G_{1}(N)\a\G_{1}(N)\g^{-1} \\
-          &= \g\bigcup_{\b}\G_{1}(N)\b\g^{-1} \\
-          &= \bigcup_{\b}\G_{1}(N)\g\b\g^{-1}.
-        \end{align*}
+        \[
+          \G_{1}(N)\a\G_{1}(N) = \G_{1}(N)\g\a\g^{}\G_{1}(N) = \g\G_{1}(N)\a\G_{1}(N)\g^{-1} = \g\bigcup_{\b \text{ orbit}}\G_{1}(N)\b\g^{-1} = \bigcup_{\b \text{ orbit}}\G_{1}(N)\g\b\g^{-1}.
+        \]
         Upon comparing these two decompositions of $\G_{1}(N)\a\G_{1}(N)$ gives
         \[
-          \bigcup_{\b}\G_{1}(N)\b\g = \bigcup_{\b}\G_{1}(N)\g\b.
+          \bigcup_{\b \text{ orbit}}\G_{1}(N)\b\g = \bigcup_{\b \text{ orbit}}\G_{1}(N)\g\b.
         \]
         Now let $f \in \mc{M}_{k}(\G_{1}(N))$. Then this equivalence of unions implies
         \[
-        \<d\>T_{p}f = \sum_{\b \in \G_{1}(N)\a\G_{1}(N)}f[\b\g]_{k} = \sum_{\b \in \G_{1}(N)\a\G_{1}(N)}f[\g\b]_{k} = T_{p}\<d\>f.
+        \<d\>T_{p}f = \sum_{\b \text{ orbit}}f[\b\g]_{k} = \sum_{\b \text{ orbit}}f[\g\b]_{k} = T_{p}\<d\>f.
         \]
       \end{proof}
       
@@ -1486,7 +1501,7 @@
       \]
       is equivalent to the automorphy of $f$ on $\GH$. For any two congruence subgroups $\G_{1}$ and $\G_{2}$ (not necessarily of the same level) and any $\a \in \GL_{2}^{+}(\Q)$ we define the \textbf{double coset operator}\index{double coset operator} $[\G_{1}\a\G_{2}]$ to be the linear operator on $\mc{A}(\G_{1})$ given by
       \[
-        (f[\G_{1}\a\G_{2}])(z) = \sum_{\b \in \G_{1}\backslash\G_{1}\a\G_{2}}(f[\b]_{k})(z) = \sum_{\b \in \G_{1}\backslash\G_{1}\a\G_{2}}(\det(\b))^{-1}f(\b z).
+        (f[\G_{1}\a\G_{2}])(z) = \sum_{\b \text{ orbit}}(f[\b]_{k})(z) = \sum_{\b \text{ orbit}}(\det(\b))^{-1}f(\b z).
       \]
       for any $f \in \mc{A}(\G_{1})$. As was the case for modular forms, \cref{prop:double_congruence_subgroup_coset_decomposition_is_finite} implies that this sum is finite. Repeating the same argument for $[\G_{1}\a\G_{2}]_{k}$ with $k = 0$, we see that $[\G_{1}\a\G_{2}]$ is also well-defined.  We also have an analogous statement about the double coset operators for Maass forms:
 
@@ -1496,18 +1511,18 @@
       \begin{proof}
         We first show that if $f$ is automorphic with respect to $G_{1}$, then $f[\G_{1}\a\G_{2}]$ is automorphic with respect to $\G_{2}$. So suppose $\g \in \G_{2}$. Then
         \[
-          (f[\G_{1}\a\G_{2}])(\g z) = \sum_{\b \in \G_{1}\backslash\G_{1}\a\G_{2}}(\det(\b))^{-1}f(\b \g z) = \sum_{\b \in \G_{1}\backslash\G_{1}\a\G_{2}}(\det(\b))^{-1}f(\b z) = (f[\G_{1}\a\G_{2}])(z),
+          (f[\G_{1}\a\G_{2}])(\g z) = \sum_{\b \text{ orbit}}(\det(\b))^{-1}f(\b \g z) = \sum_{\b \text{ orbit}}(\det(\b))^{-1}f(\b z) = (f[\G_{1}\a\G_{2}])(z),
         \]
         where the second equality follows because $\b \to \b\g^{-1}$ is a bijection on $\G_{1}\a\G_{2}$. Repeating the proof of \cref{prop:double_coset_operator_preserves_subspaces_modular} with $k = 0$, smoothness replacing holomorphy, and the analogous growth condition for Maass forms, the only piece left to verify is that $f[\G_{1}\a\G_{2}]$ is an eigenfunction for $\D$ with eigenvalue $\l$ if $f$ is. For such a Maass form $f$, linearity and $\G_{1}$-invariance of $\D$ together imply
         \[
-          \D(f[\G_{1}\a\G_{2}])(z) = \sum_{\b \in \G_{1}\backslash\G_{1}\a\G_{2}}(\det(\b))^{k-1}(\D f)(\b z) = \l\sum_{\b \in \G_{1}\backslash\G_{1}\a\G_{2}}(\det(\b))^{k-1}f(\b z) = \l(f[\G_{1}\a\G_{2}])(z). 
+          \D(f[\G_{1}\a\G_{2}])(z) = \sum_{\b \text{ orbit}}(\det(\b))^{k-1}(\D f)(\b z) = \l\sum_{\b \text{ orbit}}(\det(\b))^{k-1}f(\b z) = \l(f[\G_{1}\a\G_{2}])(z). 
         \]
         Thus $f[\G_{1}\a\G_{2}]$ is an eigenfunction for $\D$ with eigenvalue $\l$. This completes the proof.
       \end{proof}
     \subsection*{\todo{Diamond \& Hecke Operators}}
       Extending the theory of diamond operators and Hecke operators to Maass forms is fairly straightforward. To see this, we have already shown $\G_{1}(N)$ is a normal subgroup of $\G_{0}(N)$ so that
       \[
-        \left(f\left[\G_{1}(N)\a\G_{1}(N)\right]\right)(z) = \sum_{\b \in \G_{1}(N)\a\G_{1}(N)}(f[\b])(z) = (f[\a])(z),
+        \left(f\left[\G_{1}(N)\a\G_{1}(N)\right]\right)(z) = \sum_{\b \text{ orbit}}(f[\b])(z) = (f[\a])(z),
       \]
       for any $\a = \begin{psmallmatrix} \ast & \ast \\ \ast & d \end{psmallmatrix} \in \G_{0}(N)$. Thus, for any $d$ taken modulo $N$, we define the \textbf{diamond operator} $\<d\>:\mc{A}(\G_{1}(N)) \to \mc{A}(\G_{1}(N))$ to be the linear operative given by
       \[
