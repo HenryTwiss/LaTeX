@@ -805,16 +805,16 @@
       \begin{proposition}\label{prop:explicit_description_of_Hecke_operators_modular}
         Let $f \in \mc{M}_{k}(\G_{1}(N))$. Then the Hecke operator $T_{p}$ acts on $f$ as follows:
         \[
-          (T_{p}f)(z) = \begin{cases} \displaystyle\sum_{1 \le i \le p-1}\left(f\left[\begin{pmatrix} 1 & i \\ 0 & p \end{pmatrix}\right]_{k}\right)(z)+\left(f\left[\begin{pmatrix} m & n \\ N & p \end{pmatrix}\begin{pmatrix} p & 0 \\ 0 & 1 \end{pmatrix}\right]_{k}\right)(z) & \text{if $p \nmid N$}, \\ \displaystyle\sum_{1 \le i \le p-1}\left(f\left[\begin{pmatrix} 1 & i \\ 0 & p \end{pmatrix}\right]_{k}\right)(z) & \text{if $p \mid N$}, \end{cases}
+          (T_{p}f)(z) = \begin{cases} \displaystyle{\sum_{j \tmod{p}}}\left(f\left[\begin{pmatrix} 1 & j \\ 0 & p \end{pmatrix}\right]_{k}\right)(z)+\left(f\left[\begin{pmatrix} m & n \\ N & p \end{pmatrix}\begin{pmatrix} p & 0 \\ 0 & 1 \end{pmatrix}\right]_{k}\right)(z) & \text{if $p \nmid N$}, \\ \displaystyle{\sum_{j \tmod{p}}}\left(f\left[\begin{pmatrix} 1 & j \\ 0 & p \end{pmatrix}\right]_{k}\right)(z) & \text{if $p \mid N$}, \end{cases}
         \]
         where $m$ and $n$ are chosen such that $\det\left(\begin{psmallmatrix} m & n \\ N & p \end{psmallmatrix}\right) = 1$.
       \end{proposition}
       \begin{proof}
         Set $\G_{3} = \a^{1}\G_{1}(N)\a \cap \G_{1}(N)$ where $\a = \begin{psmallmatrix} 1 & 0 \\ 0 & p \end{psmallmatrix}$. Define
         \[
-          \b_{i} = \begin{pmatrix} 1 & i \\ 0 & p \end{pmatrix} \quad \text{and} \quad \b_{\infty} = \begin{pmatrix} m & n \\ N & p \end{pmatrix}\begin{pmatrix} p & 0 \\ 0 & 1 \end{pmatrix},
+          \b_{j} = \begin{pmatrix} 1 & j \\ 0 & p \end{pmatrix} \quad \text{and} \quad \b_{\infty} = \begin{pmatrix} m & n \\ N & p \end{pmatrix}\begin{pmatrix} p & 0 \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} pm & n \\ pN & p \end{pmatrix},
         \]
-        for $0 \le i \le p-1$ and where where $m$ and $n$ are chosen such that $\det\left(\begin{psmallmatrix} m & n \\ N & p \end{psmallmatrix}\right) = 1$. It suffices to show $\{\b_{1},\ldots,\b_{p-1}\}$ and $\{\b_{1},\ldots,\b_{p-1},\b_{\infty}\}$ are complete sets of orbit representatives for $\G_{1}(N)\backslash\G_{1}(N)\a\G_{1}(N)$ depending on if $p \nmid N$ or not. To acomplish this, we will find a complete set of coset representatives for $\G_{3}\backslash\G_{1}(N)$ and then use \cref{lem:coset_lemma_2}. First we require an explicit description of $\G_{3}$. Let
+        for $j$ taken modulo $p$ and where where $m$ and $n$ are chosen such that $\det\left(\begin{psmallmatrix} m & n \\ N & p \end{psmallmatrix}\right) = 1$. It suffices to show $\{\b_{1},\ldots,\b_{p-1}\}$ and $\{\b_{1},\ldots,\b_{p-1},\b_{\infty}\}$ are complete sets of orbit representatives for $\G_{1}(N)\backslash\G_{1}(N)\a\G_{1}(N)$ depending on if $p \nmid N$ or not. To acomplish this, we will find a complete set of coset representatives for $\G_{3}\backslash\G_{1}(N)$ and then use \cref{lem:coset_lemma_2}. First we require an explicit description of $\G_{3}$. Let
         \[
           \G^{0}(p) = \left\{\begin{pmatrix} a & b \\ c & d \end{pmatrix} \in \SL_{2}(\Z):\begin{pmatrix} a & b \\ c & d \end{pmatrix} \equiv \begin{pmatrix} \ast & 0 \\ \ast & \ast \end{pmatrix} \tmod{p}\right\},
         \]
@@ -836,30 +836,33 @@
         \]
         where $\g = \begin{psmallmatrix} a & k \\ pc & d \end{psmallmatrix}$. As $\begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix} \in \G_{1}(N)$ we conclude $\g \in \G_{1}(N)$ as well. Now let
         \[
-          \g_{i} = \begin{pmatrix} 1 & i \\ 0 & 1 \end{pmatrix} \quad \text{and} \quad \g_{\infty} = \begin{pmatrix} pm & n \\ N & 1 \end{pmatrix},
+          \g_{j} = \begin{pmatrix} 1 & j \\ 0 & 1 \end{pmatrix} \quad \text{and} \quad \g_{\infty} = \begin{pmatrix} pm & n \\ N & 1 \end{pmatrix},
         \]
-        for $0 \le i \le p-1$ as where $m$ and $n$ are as before. Clearly $\g_{i} \in \G_{1}(N)$ for $1 \le i \le p-1$. As $pm-Nn = 1$, we have $pm \equiv 1 \tmod{N}$ so that $\g_{\infty} \in \G_{1}(N)$ as well. We claim that $\{\g_{1},\ldots,\g_{p-1}\}$ and $\{\g_{1},\ldots,\b_{p-1},\g_{\infty}\}$ are sets of coset representatives for $\G_{3}\backslash\G_{1}(N)$ depending on if $p \nmid N$ or not. Let $\g = \begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix} \in \G_{1}(N)$ and consider
+        for $j$ taken modulo $p$ and where $m$ and $n$ are as before. Clearly $\g_{j} \in \G_{1}(N)$ for all $j$. As $pm-Nn = 1$, we have $pm \equiv 1 \tmod{N}$ so that $\g_{\infty} \in \G_{1}(N)$ as well. We claim that $\{\g_{1},\ldots,\g_{p-1}\}$ and $\{\g_{1},\ldots,\b_{p-1},\g_{\infty}\}$ are sets of coset representatives for $\G_{3}\backslash\G_{1}(N)$ depending on if $p \nmid N$ or not. Let $\g = \begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix} \in \G_{1}(N)$ and consider
         \[
-          \g\g_{i}^{-1} = \begin{pmatrix} a & b \\ c & d \end{pmatrix}\begin{pmatrix} 1 & -i \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} a & b-ai \\ c & d-ci \end{pmatrix}.
+          \g\g_{j}^{-1} = \begin{pmatrix} a & b \\ c & d \end{pmatrix}\begin{pmatrix} 1 & -j \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} a & b-aj \\ c & d-cj \end{pmatrix}.
         \]
-        As $\g\g_{i}^{-1} \in \G_{1}(N)$ because both $\g$ and $\g_{i}$ are, $\g\g_{i}^{-1} \in \G_{3} = \G_{1}^{0}(N,p)$ for some $i$ if and only if
+        As $\g\g_{j}^{-1} \in \G_{1}(N)$ because both $\g$ and $\g_{i}$ are, $\g\g_{j}^{-1} \in \G_{3} = \G_{1}^{0}(N,p)$ for some $i$ if and only if
         \[
-          b \equiv ai \tmod{p}.
+          b \equiv aj \tmod{p}.
         \]
-        First suppose $p \nmid a$. Then $a$ is invertible modulo $p$ so we may take $i = \conj{a}b \tmod{p}$. Now suppose $p \mid a$. If there is some $i$ satisfying $b \equiv ai \tmod{p}$, then we also have $p \mid b$. But as $ad-bc = 1$, this is impossible and so no such $i$ exists. As $a \equiv 1 \tmod{N}$, $p \mid a$ if and only if $p \nmid N$. In this case consider instead
+        First suppose $p \nmid a$. Then $a$ is invertible modulo $p$ so we may take $j = \conj{a}b \tmod{p}$. Now suppose $p \mid a$. If there is some $i$ satisfying $b \equiv ai \tmod{p}$, then we also have $p \mid b$. But as $ad-bc = 1$, this is impossible and so no such $i$ exists. As $a \equiv 1 \tmod{N}$, $p \mid a$ if and only if $p \nmid N$. In this case consider instead
         \[
           \g\g_{\infty}^{-1} = \begin{pmatrix} a & b \\ c & d \end{pmatrix}\begin{pmatrix} 1 & -n \\ -N & pm \end{pmatrix} = \begin{pmatrix} a-Nb & pmb-na \\ c-Nd & pmd-nc \end{pmatrix}.
         \]
-        Since $p \mid a$, we have $pmb-na \equiv 0 \mod{p}$ so that $\g\g_{\infty}^{-1} \in \G_{3} = \G_{1}^{0}(N,p)$. Altogether, we have shown that $\{\g_{1},\ldots,\g_{p-1}\}$ and $\{\g_{1},\ldots,\b_{p-1},\g_{\infty}\}$ are sets of coset representatives for $\G_{3}\backslash\G_{1}(N)$ depending on if $p \nmid N$ or not. To show they are complete sets, we need to show that no two representatives belong to the same coset. To this end, let $0 \le i < j \le p-1$ and consider
+        Since $p \mid a$, we have $pmb-na \equiv 0 \mod{p}$ so that $\g\g_{\infty}^{-1} \in \G_{3} = \G_{1}^{0}(N,p)$. Altogether, we have shown that $\{\g_{1},\ldots,\g_{p-1}\}$ and $\{\g_{1},\ldots,\b_{p-1},\g_{\infty}\}$ are sets of coset representatives for $\G_{3}\backslash\G_{1}(N)$ depending on if $p \nmid N$ or not. To show they are complete sets, we need to show that no two representatives belong to the same coset. To this end, suppose $j$ and $j'$ are distinct, taken modulo $p$, and consider
         \[
-          \g_{i}\g_{j}^{-1} = \begin{pmatrix} 1 & i \\ 0 & 1 \end{pmatrix}\begin{pmatrix} 1 & j \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} 1 & i-j \\ 0 & 1 \end{pmatrix}.
+          \g_{j}\g_{j'}^{-1} = \begin{pmatrix} 1 & j \\ 0 & 1 \end{pmatrix}\begin{pmatrix} 1 & j' \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} 1 & j-j' \\ 0 & 1 \end{pmatrix}.
         \]
-        Then $\g_{i}\g_{j}^{-1} \in 
-        \G_{3} = \G_{1}^{0}(N,p)$ if and only if $i-j \equiv 0 \tmod{p}$. This is impossible since $0 \le i < j \le p-1$. Hence $\g_{i}$ and $\g_{j}$ represent distinct cosets. Now consider
+        Then $\g_{j}\g_{j'}^{-1} \in \G_{3} = \G_{1}^{0}(N,p)$ if and only if $j-j' \equiv 0 \tmod{p}$. This is impossible since $j$ and $j'$ are distinct. Hence $\g_{j}$ and $\g_{j'}$ represent distinct cosets. Now consider
         \[
-          \g_{i}\g_{\infty}^{-1} = \begin{pmatrix} 1 & i \\ 0 & 1 \end{pmatrix}\begin{pmatrix} 1 & -n \\ -N & pm \end{pmatrix} = \begin{pmatrix} 1-Ni & pmi-n \\ -N & pm \end{pmatrix}.
+          \g_{j}\g_{\infty}^{-1} = \begin{pmatrix} 1 & j \\ 0 & 1 \end{pmatrix}\begin{pmatrix} 1 & -n \\ -N & pm \end{pmatrix} = \begin{pmatrix} 1-Nj & pmj-n \\ -N & pm \end{pmatrix}.
         \]
-        Now $\g_{i}\g_{\infty}^{-1} \in  \G_{3} = \G_{1}^{0}(N,p)$ if and only if $pmi-n \equiv 0 \tmod{p}$. This is impossible sice $pm-Nn = 1$ implies $p \nmid n$. Therefore $\g_{i}$ and $\g_{\infty}$ represent distinct cosets. It follows that $\{\g_{1},\ldots,\g_{p-1}\}$ and $\{\g_{1},\ldots,\b_{p-1},\g_{\infty}\}$ are complete sets of coset representatives completing the proof. 
+        Now $\g_{j}\g_{\infty}^{-1} \in  \G_{3} = \G_{1}^{0}(N,p)$ if and only if $pmj-n \equiv 0 \tmod{p}$. This is impossible sice $pm-Nn = 1$ implies $p \nmid n$. Therefore $\g_{j}$ and $\g_{\infty}$ represent distinct cosets. It follows that $\{\g_{1},\ldots,\g_{p-1}\}$ and $\{\g_{1},\ldots,\b_{p-1},\g_{\infty}\}$ are complete sets of coset representatives completing the proof. As
+        \[
+          \a\g_{j} = \begin{pmatrix} 1 & 0 \\ 0 & p \end{pmatrix}\begin{pmatrix} 1 & j \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} 1 & j \\ 0 & p \end{pmatrix} = \b_{j} \quad \text{and} \quad \a\g_{\infty} = \begin{pmatrix} 1 & 0 \\ 0 & p \end{pmatrix}\begin{pmatrix} pm & n \\ N & 1 \end{pmatrix} = \begin{pmatrix} pm & n \\ pN & p \end{pmatrix} = \b_{\infty},
+        \]
+        \cref{lem:coset_lemma_2} finishes the proof.
       \end{proof}
 
       This explicit definition of $T_{p}$ can be used to compute how the Hecke operators act on the Fourier coefficients of a modular form:
@@ -876,15 +879,45 @@
         is the Fourier series of $T_{p}f$ where it is understood that $a_{\frac{n}{p}}(f) = 0$ if $p \nmid n$.
       \end{proposition}
       \begin{proof}
-        \todo{xxx}
+        Observe that
+        \[
+          \left(f\left[\begin{pmatrix} 1 & j \\ 0 & p \end{pmatrix}\right]_{k}\right)(z) = \frac{1}{p}f\left(\frac{z+j}{p}\right) = \frac{1}{p}\sum_{n \ge 0}a_{n}(f)e^{\frac{2\pi in(z+j)}{p}}.
+        \]
+        Summing over all $j$ modulo $p$ gives
+        \[
+          \sum_{j \tmod{p}}\left(f\left[\begin{pmatrix} 1 & j \\ 0 & p \end{pmatrix}\right]_{k}\right)(z) = \sum_{j \tmod{p}}\frac{1}{p}\sum_{n \ge 0}a_{n}(f)e^{\frac{2\pi in(z+j)}{p}} = \sum_{n \ge 0}a_{n}(f)e^{\frac{2\pi inz}{p}}\frac{1}{p}\sum_{j \tmod{p}}e^{\frac{2\pi nij}{p}}
+        \]
+        If $p \nmid N$ then the inner sum vanishes because it is the sum over all $p$-th roots of unity. If $p \mid N$ then the sum is $p$. Therefore
+        \[
+          \sum_{j \tmod{p}}\left(f\left[\begin{pmatrix} 1 & j \\ 0 & p \end{pmatrix}\right]_{k}\right)(z) = \sum_{n \ge 0}a_{np}(f)e^{\pi inz}.
+        \]
+        If $p \mid N$, then \cref{prop:explicit_description_of_Hecke_operators_modular} implies
+        \[
+          (T_{p}f)(z) = \sum_{n \ge 0}a_{np}(f)e^{\pi inz},
+        \]
+        which is the claimed Fourier expansion of $T_{p}f$. $p \nmid N$, then we have the additional term
+        \begin{align*}
+          \left(f\left[\begin{pmatrix} m & n \\ N & p \end{pmatrix}\begin{pmatrix} p & 0 \\ 0 & 1 \end{pmatrix}\right]_{k}\right)(z) &= \left(\<p\>f\left[\begin{pmatrix} p & 0 \\ 0 & 1 \end{pmatrix}\right]_{k}\right)(z) \\
+          &= p^{k-1}(\<p\>f)(pz) \\
+          &= p^{k-1}\sum_{n \ge 0}a_{n}(\<p\>f)e^{2\pi ipnz},
+        \end{align*}
+        where the first equality holds because $\begin{psmallmatrix} m & n \\ N & p \end{psmallmatrix} \in \G_{0}(N)$. In this case, \cref{prop:explicit_description_of_Hecke_operators_modular} gives
+        \[
+          (T_{p}f)(z) = \sum_{n \ge 0}a_{np}(f)+p^{k-1}a_{\frac{n}{p}}(\<p\>f)e^{\pi inz}.
+        \]
+        These two cases can be expressed together as 
+        \[
+          (T_{p}f)(z) = \sum_{n \ge 0}\left(a_{np}(f)+\chi_{N,0}(p)p^{k-1}a_{\frac{n}{p}}(\<p\>f)\right)e^{2\pi inz},
+        \]
+        Now suppose $f \in \mc{M}_{k}(N,\chi)$. By \cref{prop:diamond_Hecke_operators_commute_modular}, we immediately conclude that $T_{p}f \in \mc{M}_{k}(N,\chi)$. Moreover, $\<p\>f = \chi(p)f$ so that $a_{n}(\<p\>f) = \chi(p)a_{n}(f)$. This completes the proof.
       \end{proof}
 
       We now mention the crucial result about Hecke operators which is that they form a simultaneously commuting family with the diamond operators:
 
       \begin{proposition}\label{prop:Hecke_operators_commute_modular}
-        Let $p$ and $q$ be distinct primes and $d \in (\Z/N\Z)^{\ast}$. Then the Hecke operators $T_{p}$ and $T_{q}$ and diamond operator $\<d\>$ simultaneously commute:
+        Let $p$ and $q$ be primes and $d,e \in (\Z/N\Z)^{\ast}$. Then the Hecke operators $T_{p}$ and $T_{q}$ and diamond operators $\<d\>$ and $\<e\>$ simultaneously commute:
         \[
-          T_{p}T_{q} = T_{q}T_{p} \quad \text{and} \quad \<d\>T_{p} = T_{p}\<d\>.
+          T_{p}T_{q} = T_{q}T_{p}, \quad \<d\>T_{p} = T_{p}\<d\>, \quad \text{and} \quad \<d\>\<e\> = \<e\>\<d\>.
         \]
       \end{proposition}
       \begin{proof}
@@ -983,7 +1016,7 @@
         $\mc{S}_{k}(\G_{1}(N))^{\mathrm{old}}$ and $\mc{S}_{k}(\G_{1}(N))^{\mathrm{new}}$ admit orthonormal bases of eigenforms for the operators $\{T_{m},\<m\>:m \ge 1, (m,N) = 1\}$.
       \end{corollary}
       \begin{proof}
-        This follows immeditely from \cref{thm:eigenforms_forms_spectral_theory,prop:old/new_subspaces_are_invariant}
+        This follows immediately from \cref{thm:eigenforms_forms_spectral_theory,prop:old/new_subspaces_are_invariant}
       \end{proof}
 
       Something quite amazing happens for the subspace in $\mc{S}_{k}(\G_{1}(N))^{\mathrm{new}}$ \cref{cor:old/new_eigenbasis}; the condition $(m,N) = 1$ can be removed so that the bases of eigenforms are eigenfunctions for all of the diamond and Hecke operators. We require a preliminary result whose proof is quite invovled but it is not beyond the scope of this text (see \cite{diamond2005first} for a proof):
@@ -1625,7 +1658,7 @@
       \begin{proposition}\label{prop:explicit_description_of_Hecke_operators_Maass}
         Let $f \in \mc{A}(\G_{1}(N))$. Then the Hecke operator $T_{p}$ acts on $f$ as follows:
         \[
-          (T_{p}f)(z) = \begin{cases} \displaystyle\sum_{1 \le i \le p-1}\left(f\left[\begin{pmatrix} 1 & i \\ 0 & p \end{pmatrix}\right]\right)(z)+\left(f\left[\begin{pmatrix} m & n \\ N & p \end{pmatrix}\begin{pmatrix} p & 0 \\ 0 & 1 \end{pmatrix}\right]\right)(z) & \text{if $p \nmid N$}, \\ \displaystyle\sum_{1 \le i \le p-1}\left(f\left[\begin{pmatrix} 1 & i \\ 0 & p \end{pmatrix}\right]\right)(z) & \text{if $p \mid N$}, \end{cases}
+          (T_{p}f)(z) = \begin{cases} \displaystyle{\sum_{j \tmod{p}}}\left(f\left[\begin{pmatrix} 1 & j \\ 0 & p \end{pmatrix}\right]\right)(z)+\left(f\left[\begin{pmatrix} m & n \\ N & p \end{pmatrix}\begin{pmatrix} p & 0 \\ 0 & 1 \end{pmatrix}\right]\right)(z) & \text{if $p \nmid N$}, \\ \displaystyle{\sum_{j \tmod{p}}}\left(f\left[\begin{pmatrix} 1 & j \\ 0 & p \end{pmatrix}\right]\right)(z) & \text{if $p \mid N$}, \end{cases}
         \]
         where $m$ and $n$ are chosen such that $\det\left(\begin{psmallmatrix} m & n \\ N & p \end{psmallmatrix}\right) = 1$.
       \end{proposition}
@@ -1653,9 +1686,9 @@
       As for modular forms, the Hecke operators form a simultaneously commuting family with the diamond operators:
 
       \begin{proposition}\label{prop:Hecke_operators_commute_Maass}
-        Let $p$ and $q$ be distinct primes and $d \in (\Z/N\Z)^{\ast}$. Then the Hecke operators $T_{p}$ and $T_{q}$ and diamond operator $\<d\>$ simultaneously commute:
+        Let $p$ and $q$ be primes and $d,e \in (\Z/N\Z)^{\ast}$. Then the Hecke operators $T_{p}$ and $T_{q}$ and diamond operators $\<d\>$ and $\<e\>$ simultaneously commute:
         \[
-          T_{p}T_{q} = T_{q}T_{p} \quad \text{and} \quad \<d\>T_{p} = T_{p}\<d\>.
+          T_{p}T_{q} = T_{q}T_{p}, \quad \<d\>T_{p} = T_{p}\<d\>, \quad \text{and} \quad \<d\>\<e\> = \<e\>\<d\>.
         \]
       \end{proposition}
       \begin{proof}
