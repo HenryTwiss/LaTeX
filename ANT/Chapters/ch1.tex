@@ -504,11 +504,11 @@
                 \sum_{a'' \tmod{mn}}e^{\frac{2\pi i(a'')^{2}b}{mn}},
               \]
               which is precisely $g(b,mn)$. So (ii) is proven.
-            \item If $m = p$, then \cref{prop:Gauss_sum_equivalence_for_primes}, \cref{prop:Gauss_sum_reduction} (ii), and that quadratic characters are their own conjugate altogether imply the claim. Now let $r$ be a positive integer and assume by strong induction that the claim holds when $m = p^{r'}$ for all positive integers $r'$ such that $r' < r$. Then by (i), we have
+            \item If $m = p$, then \cref{prop:Gauss_sum_equivalence_for_primes}, \cref{prop:Gauss_sum_reduction} (ii), and that quadratic characters are their own conjugate altogether imply the claim. Now let $r \ge 1$ and assume by strong induction that the claim holds when $m = p^{r'}$ for all positive integers $r'$ such that $r' < r$. Then by (i), we have
             \begin{equation}\label{equ:quadratic_Gauss_sum_reduction_1}
               g(b,p^{r}) = pg(b,p^{r-2}) = \legendre{b}{p^{r-2}}pg(1,p^{r-2}) = \legendre{b}{p^{r-2}}g(1,p^{r}) = \legendre{b}{p^{r}}g(1,p^{r}).
             \end{equation}
-            It now suffices to prove the claim when $m = p^{r}q^{s}$ where $q$ is another odd prime and $s$ is a positive integer. Then by (ii) and \cref{equ:quadratic_Gauss_sum_reduction_1}, we compute
+            It now suffices to prove the claim when $m = p^{r}q^{s}$ where $q$ is another odd prime and $s \ge 1$. Then by (ii) and \cref{equ:quadratic_Gauss_sum_reduction_1}, we compute
             \begin{align*}
               g(b,p^{r}q^{s}) &= g(bq^{s},p^{r})g(bp^{r},q^{s}) \\
               &= \legendre{bq^{s}}{p^{r}}\legendre{bp^{r}}{q^{s}}g(1,p^{r})g(1,q^{s}) \\
@@ -530,13 +530,13 @@
           \]
         \end{theorem}
         \begin{proof}
-          Since $\chi$ is quadratic, it suffices to prove the claim when $b = 1$ by \cref{prop:Gauss_sum_reduction} (ii) and \cref{prop:quadratic_Gauss_sum_reduction} (iii). Now let $m = p_{1}^{e_{1}}p_{2}^{e_{2}} \cdots p_{k}^{E_{k,\chi}}$ be the prime decomposition of $m$. Upon observing $\tlegendre{\cdot}{p}^{2} = \chi_{p,0}$, we see that $\chi = \wtilde{\chi}\chi_{p_{1}p_{2} \cdots p_{k},0}$ where $\wtilde{\chi}$ is the primitive and quadratic Dirichlet character given by the Jacobi symbol with modulus $q$ being the product of those primes $p_{i}$ with $e_{i}$ odd. Then by \cref{prop:Gauss_sum_reduction} (v), we have
+          Since $\chi$ is quadratic, it suffices to prove the claim when $b = 1$ by \cref{prop:Gauss_sum_reduction} (ii) and \cref{prop:quadratic_Gauss_sum_reduction} (iii). Now let $m = p_{1}^{r_{1}}p_{2}^{r_{2}} \cdots p_{k}^{r_{k}}$ be the prime decomposition of $m$. Upon observing $\tlegendre{\cdot}{p}^{2} = \chi_{p,0}$, we see that $\chi = \wtilde{\chi}\chi_{p_{1}p_{2} \cdots p_{k},0}$ where $\wtilde{\chi}$ is the primitive and quadratic Dirichlet character given by the Jacobi symbol with modulus $q$ being the product of those primes $p_{i}$ with $e_{i}$ odd. Then by \cref{prop:Gauss_sum_reduction} (v), we have
           \[
             \tau(1,\chi) = \mu\left(\frac{m}{q}\right)\wtilde{\chi}\left(\frac{m}{q}\right)\tau(1,\wtilde{\chi}) = \tau(1,\wtilde{\chi}),
           \]
           where the latter equality follows because the defining property of $q$ implies $\frac{m}{q}$ is a product of even powers of primes and $\wtilde{\chi}$ is quadratic. Letting $\chi_{p}$ denote the quadratic Dirichlet character modulo $p$ given by the Legendre symbol, multiplicativity of the Jacobi symbol and repeated application of \cref{prop:Gauss_sum_reduction} (iv) gives the first equality in the chain
           \[
-            \tau(1,\wtilde{\chi}) = \prod_{\substack{1 \le i,j \le k \\ e_{i},e_{j} \equiv 1 \tmod{2}}}\chi_{p_{i}}(p_{j})\prod_{\substack{1 \le i \le k \\ e_{i} \equiv 1 \tmod{2}}}\tau(1,\chi_{p_{i}}) = \prod_{\substack{1 \le i,j \le k \\ e_{i},e_{j} \equiv 1 \tmod{2}}}\legendre{p_{j}}{p_{i}}\prod_{\substack{1 \le i \le k \\ e_{i} \equiv 1 \tmod{2}}}g(1,p_{i}) = g(1,q).
+            \tau(1,\wtilde{\chi}) = \prod_{\substack{1 \le i,j \le k \\ r_{i},r_{j} \equiv 1 \tmod{2}}}\chi_{p_{i}}(p_{j})\prod_{\substack{1 \le i \le k \\ r_{i} \equiv 1 \tmod{2}}}\tau(1,\chi_{p_{i}}) = \prod_{\substack{1 \le i,j \le k \\ r_{i},r_{j} \equiv 1 \tmod{2}}}\legendre{p_{j}}{p_{i}}\prod_{\substack{1 \le i \le k \\ r_{i} \equiv 1 \tmod{2}}}g(1,p_{i}) = g(1,q).
           \]
           The middle equality comes from \cref{prop:Gauss_sum_equivalence_for_primes} and the last equality from repeated application of \cref{prop:quadratic_Gauss_sum_reduction} (ii). So altogether we conclude $\tau(1,\chi) = g(1,q)$.
         \end{proof}
