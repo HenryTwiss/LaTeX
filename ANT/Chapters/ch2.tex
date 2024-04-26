@@ -805,16 +805,16 @@
       \begin{proposition}\label{prop:explicit_description_of_Hecke_operators_modular}
         Let $f \in \mc{M}_{k}(\G_{1}(N))$. Then the Hecke operator $T_{p}$ acts on $f$ as follows:
         \[
-          (T_{p}f)(z) = \begin{cases} \displaystyle\sum_{1 \le j \le p-1}\left(f\left[\begin{pmatrix} 1 & j \\ 0 & p \end{pmatrix}\right]_{k}\right)(z)+\left(f\left[\begin{pmatrix} m & n \\ N & p \end{pmatrix}\begin{pmatrix} 1 & j \\ 0 & p \end{pmatrix}\right]_{k}\right)(z) & \text{if $p \nmid N$}, \\ \displaystyle\sum_{1 \le j \le p-1}\left(f\left[\begin{pmatrix} 1 & j \\ 0 & p \end{pmatrix}\right]_{k}\right)(z) & \text{if $p \mid N$}, \end{cases}
+          (T_{p}f)(z) = \begin{cases} \displaystyle\sum_{1 \le i \le p-1}\left(f\left[\begin{pmatrix} 1 & i \\ 0 & p \end{pmatrix}\right]_{k}\right)(z)+\left(f\left[\begin{pmatrix} m & n \\ N & p \end{pmatrix}\begin{pmatrix} p & 0 \\ 0 & 1 \end{pmatrix}\right]_{k}\right)(z) & \text{if $p \nmid N$}, \\ \displaystyle\sum_{1 \le i \le p-1}\left(f\left[\begin{pmatrix} 1 & i \\ 0 & p \end{pmatrix}\right]_{k}\right)(z) & \text{if $p \mid N$}, \end{cases}
         \]
         where $m$ and $n$ are chosen such that $\det\left(\begin{psmallmatrix} m & n \\ N & p \end{psmallmatrix}\right) = 1$.
       \end{proposition}
       \begin{proof}
         Set $\G_{3} = \a^{1}\G_{1}(N)\a \cap \G_{1}(N)$ where $\a = \begin{psmallmatrix} 1 & 0 \\ 0 & p \end{psmallmatrix}$. Define
         \[
-          \b_{j} = \begin{pmatrix} 1 & j \\ 0 & p \end{pmatrix} \quad \text{and} \quad \b_{\infty} = \begin{pmatrix} m & n \\ N & p \end{pmatrix},
+          \b_{i} = \begin{pmatrix} 1 & i \\ 0 & p \end{pmatrix} \quad \text{and} \quad \b_{\infty} = \begin{pmatrix} m & n \\ N & p \end{pmatrix}\begin{pmatrix} p & 0 \\ 0 & 1 \end{pmatrix},
         \]
-        for $0 \le j \le p-1$ and where where $m$ and $n$ are chosen such that $\det\left(\begin{psmallmatrix} m & n \\ N & p \end{psmallmatrix}\right) = 1$. It suffices to show $\{\b_{1},\ldots,\b_{j}\}$ and $\{\b_{1},\ldots,\b_{j},\b_{\infty}\}$ are complete sets of orbit representatives for $\G_{1}(N)\backslash\G_{1}(N)\a\G_{1}(N)$ depending on if $p \nmid N$ or not. To acomplish this, we will find a complete set of coset representatives for $\G_{3}\backslash\G_{2}$ and then use \cref{lem:coset_lemma_2}. First we require an explicit description of $\G_{3}$. Let
+        for $0 \le i \le p-1$ and where where $m$ and $n$ are chosen such that $\det\left(\begin{psmallmatrix} m & n \\ N & p \end{psmallmatrix}\right) = 1$. It suffices to show $\{\b_{1},\ldots,\b_{p-1}\}$ and $\{\b_{1},\ldots,\b_{p-1},\b_{\infty}\}$ are complete sets of orbit representatives for $\G_{1}(N)\backslash\G_{1}(N)\a\G_{1}(N)$ depending on if $p \nmid N$ or not. To acomplish this, we will find a complete set of coset representatives for $\G_{3}\backslash\G_{1}(N)$ and then use \cref{lem:coset_lemma_2}. First we require an explicit description of $\G_{3}$. Let
         \[
           \G^{0}(p) = \left\{\begin{pmatrix} a & b \\ c & d \end{pmatrix} \in \SL_{2}(\Z):\begin{pmatrix} a & b \\ c & d \end{pmatrix} \equiv \begin{pmatrix} \ast & 0 \\ \ast & \ast \end{pmatrix} \tmod{p}\right\},
         \]
@@ -822,7 +822,44 @@
         \[
           \G_{1}^{0}(N,p) = \G_{1}(N) \cap \G^{0}(p).
         \]
-        We claim $\G_{3} = \G_{1}^{0}(N,p)$. \todo{...}
+        We claim $\G_{3} = \G_{1}^{0}(N,p)$. For the forward inclusion, let $\g = \begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix} \in \G_{1}(N)$ and observe that
+        \[
+          \a^{-1}\g\a = \begin{pmatrix} 1 & 0 \\ 0 & p^{-1} \end{pmatrix}\begin{pmatrix} a & b \\ c & d \end{pmatrix}\begin{pmatrix} 1 & 0 \\ 0 & p \end{pmatrix} = \begin{pmatrix} a & pd \\ p^{-1}c & d \end{pmatrix}.
+        \]
+        If $\a^{-1}\g\a \in \G_{3}$, then $\a^{-1}\g\a \in \G_{1}(N)$ and thus $p \mid c$ so that $\a^{-1}\g\a \in \SL_{2}(\Z)$. Moreover, the previous computation implies
+        \[
+          \a^{-1}\g\a = \begin{pmatrix} \ast & 0 \\ \ast & \ast \end{pmatrix} \tmod{p}.
+        \]
+        This shows $\G_{3} \subseteq \G_{1}^{0}(N,p)$. For the reverse inclusion, suppose $\begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix} \in \G_{0}^{1}(N,p)$. Then $b = pk$ for some $k \in \Z$. Now observe
+        \[
+          \begin{pmatrix} a & b \\ c & d \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & p^{-1} \end{pmatrix}\begin{pmatrix} a & k \\ pc & d \end{pmatrix}\begin{pmatrix} 1 & 0 \\ 0 & p \end{pmatrix} = \a^{-1}\g\a,
+        \]
+        where $\g = \begin{psmallmatrix} a & k \\ pc & d \end{psmallmatrix}$. As $\begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix} \in \G_{1}(N)$ we conclude $\g \in \G_{1}(N)$ as well. Now let
+        \[
+          \g_{i} = \begin{pmatrix} 1 & i \\ 0 & 1 \end{pmatrix} \quad \text{and} \quad \g_{\infty} = \begin{pmatrix} pm & n \\ N & 1 \end{pmatrix},
+        \]
+        for $0 \le i \le p-1$ as where $m$ and $n$ are as before. Clearly $\g_{i} \in \G_{1}(N)$ for $1 \le i \le p-1$. As $pm-Nn = 1$, we have $pm \equiv 1 \tmod{N}$ so that $\g_{\infty} \in \G_{1}(N)$ as well. We claim that $\{\g_{1},\ldots,\g_{p-1}\}$ and $\{\g_{1},\ldots,\b_{p-1},\g_{\infty}\}$ are sets of coset representatives for $\G_{3}\backslash\G_{1}(N)$ depending on if $p \nmid N$ or not. Let $\g = \begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix} \in \G_{1}(N)$ and consider
+        \[
+          \g\g_{i}^{-1} = \begin{pmatrix} a & b \\ c & d \end{pmatrix}\begin{pmatrix} 1 & -i \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} a & b-ai \\ c & d-ci \end{pmatrix}.
+        \]
+        As $\g\g_{i}^{-1} \in \G_{1}(N)$ because both $\g$ and $\g_{i}$ are, $\g\g_{i}^{-1} \in \G_{3} = \G_{1}^{0}(N,p)$ for some $i$ if and only if
+        \[
+          b \equiv ai \tmod{p}.
+        \]
+        First suppose $p \nmid a$. Then $a$ is invertible modulo $p$ so we may take $i = \conj{a}b \tmod{p}$. Now suppose $p \mid a$. If there is some $i$ satisfying $b \equiv ai \tmod{p}$, then we also have $p \mid b$. But as $ad-bc = 1$, this is impossible and so no such $i$ exists. As $a \equiv 1 \tmod{N}$, $p \mid a$ if and only if $p \nmid N$. In this case consider instead
+        \[
+          \g\g_{\infty}^{-1} = \begin{pmatrix} a & b \\ c & d \end{pmatrix}\begin{pmatrix} 1 & -n \\ -N & pm \end{pmatrix} = \begin{pmatrix} a-Nb & pmb-na \\ c-Nd & pmd-nc \end{pmatrix}.
+        \]
+        Since $p \mid a$, we have $pmb-na \equiv 0 \mod{p}$ so that $\g\g_{\infty}^{-1} \in \G_{3} = \G_{1}^{0}(N,p)$. Altogether, we have shown that $\{\g_{1},\ldots,\g_{p-1}\}$ and $\{\g_{1},\ldots,\b_{p-1},\g_{\infty}\}$ are sets of coset representatives for $\G_{3}\backslash\G_{1}(N)$ depending on if $p \nmid N$ or not. To show they are complete sets, we need to show that no two representatives belong to the same coset. To this end, let $0 \le i < j \le p-1$ and consider
+        \[
+          \g_{i}\g_{j}^{-1} = \begin{pmatrix} 1 & i \\ 0 & 1 \end{pmatrix}\begin{pmatrix} 1 & j \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} 1 & i-j \\ 0 & 1 \end{pmatrix}.
+        \]
+        Then $\g_{i}\g_{j}^{-1} \in 
+        \G_{3} = \G_{1}^{0}(N,p)$ if and only if $i-j \equiv 0 \tmod{p}$. This is impossible since $0 \le i < j \le p-1$. Hence $\g_{i}$ and $\g_{j}$ represent distinct cosets. Now consider
+        \[
+          \g_{i}\g_{\infty}^{-1} = \begin{pmatrix} 1 & i \\ 0 & 1 \end{pmatrix}\begin{pmatrix} 1 & -n \\ -N & pm \end{pmatrix} = \begin{pmatrix} 1-Ni & pmi-n \\ -N & pm \end{pmatrix}.
+        \]
+        Now $\g_{i}\g_{\infty}^{-1} \in  \G_{3} = \G_{1}^{0}(N,p)$ if and only if $pmi-n \equiv 0 \tmod{p}$. This is impossible sice $pm-Nn = 1$ implies $p \nmid n$. Therefore $\g_{i}$ and $\g_{\infty}$ represent distinct cosets. It follows that $\{\g_{1},\ldots,\g_{p-1}\}$ and $\{\g_{1},\ldots,\b_{p-1},\g_{\infty}\}$ are complete sets of coset representatives completing the proof. 
       \end{proof}
 
       This explicit definition of $T_{p}$ can be used to compute how the Hecke operators act on the Fourier coefficients of a modular form:
@@ -1588,12 +1625,12 @@
       \begin{proposition}\label{prop:explicit_description_of_Hecke_operators_Maass}
         Let $f \in \mc{A}(\G_{1}(N))$. Then the Hecke operator $T_{p}$ acts on $f$ as follows:
         \[
-          (T_{p}f)(z) = \begin{cases} \displaystyle\sum_{1 \le j \le p-1}\left(f\left[\begin{pmatrix} 1 & j \\ 0 & p \end{pmatrix}\right]\right)(z)+\left(f\left[\begin{pmatrix} m & n \\ N & p \end{pmatrix}\begin{pmatrix} 1 & j \\ 0 & p \end{pmatrix}\right]\right)(z) & \text{if $p \nmid N$}, \\ \displaystyle\sum_{1 \le j \le p-1}\left(f\left[\begin{pmatrix} 1 & j \\ 0 & p \end{pmatrix}\right]\right)(z) & \text{if $p \mid N$}, \end{cases}
+          (T_{p}f)(z) = \begin{cases} \displaystyle\sum_{1 \le i \le p-1}\left(f\left[\begin{pmatrix} 1 & i \\ 0 & p \end{pmatrix}\right]\right)(z)+\left(f\left[\begin{pmatrix} m & n \\ N & p \end{pmatrix}\begin{pmatrix} p & 0 \\ 0 & 1 \end{pmatrix}\right]\right)(z) & \text{if $p \nmid N$}, \\ \displaystyle\sum_{1 \le i \le p-1}\left(f\left[\begin{pmatrix} 1 & i \\ 0 & p \end{pmatrix}\right]\right)(z) & \text{if $p \mid N$}, \end{cases}
         \]
         where $m$ and $n$ are chosen such that $\det\left(\begin{psmallmatrix} m & n \\ N & p \end{psmallmatrix}\right) = 1$.
       \end{proposition}
       \begin{proof}
-        Repeat the proof of \cref{prop:explicit_description_of_Hecke_operators_modular} with $k = 0$.
+        Repeat the proof of \cref{prop:explicit_description_of_Hecke_operators_modular}.
       \end{proof}
 
       We use \cref{prop:explicit_description_of_Hecke_operators_Maass} to understand how the Hecke operators act on the Fourier coefficeints of Maass forms:
