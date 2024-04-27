@@ -485,17 +485,25 @@
         Then $\mc{M}_{k}(\G)$ is finite dimensional.
       \end{theorem}
 
-      Since $\mc{S}_{k}(\G)$ is a subspace of $\mc{M}_{k}(\G)$, \cref{thm:modular_forms_space_classification} implies that $\mc{S}_{k}(\G)$ is also finite dimensional. It turns out that $\mc{S}_{k}(\G)$ is naturally an inner product space, and to acomplish this we define the inner product on $\mc{S}_{k}(\G,\chi) \x \mc{M}_{k}(\G,\chi)$. Set $V_{\G} = [\PSL_{2}(\Z):\G]$ and recall that this is finite because $\G$ is a congruence subgroup. For $f \in \mc{S}_{k}(\G,\chi)$ and $g \in \mc{M}_{k}(\G,\chi)$, define their \textbf{Petersson inner product}\index{Petersson inner product} by
+      Since $\mc{S}_{k}(\G)$ is a subspace of $\mc{M}_{k}(\G)$, \cref{thm:modular_forms_space_classification} implies that $\mc{S}_{k}(\G)$ is also finite dimensional. It turns out that $\mc{S}_{k}(\G)$ is naturally an inner product space, and to acomplish this we define the inner product on $\mc{S}_{k}(\G) \x \mc{M}_{k}(\G)$. Let $\mc{F}_{\G}$ be a fundamental domain for $\GH$ and set
+      \[
+        V_{\G} = \int_{\mc{F}_{\G}}\,d\mu.
+      \]
+      We call $V_{\G}$ the \textbf{volume}\index{volume} of $\GH$. Also, if $\mc{F}_{\G} = \mc{F}$ we write $V_{\G} = V$. In other words, $V$ is the volume of $\PSL_{2}(\Z)\backslash\H$. Since the integrand is $\G$-invariant, $V_{\G}$ is independent of the choice of fundamental domain. There is also a simple relation between $V_{\G}$ and the index of $\G$ in $\PSL_{2}(\Z)$:
+      \begin{equation}\label{equ:Petersson_volume_relation}
+        V_{\G} = [\PSL_{2}(\Z):\G]V,
+      \end{equation}
+      which follows immeditely from \cref{prop:fundamental_domain_congruence_subgroup}. Now for $f \in \mc{S}_{k}(\G)$ and $g \in \mc{M}_{k}(\G)$, define their \textbf{Petersson inner product}\index{Petersson inner product} by
       \[
         \<f,g\> = \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}f(z)\conj{g(z)}\Im(z)^{k}\,d\mu,
       \]
-      where $\mc{F}_{\G}$ is a fundamental domain for $\GH$. Since the integrand is $\G$-invariant, the integral is independent of the choice of fundamental domain. The integral is also absolutely bounded by \cref{met:decay_compacta_integral} (since $f$ is a cusp form). These two facts together imply that the Petersson inner product is well-defined. Actually, we have the following proposition:
+      The integrand is also $\G$-invariant so that the integral independent of the choice of fundamental domain. The integral is also absolutely bounded by \cref{met:decay_compacta_integral} (since $f$ is a cusp form). These two facts together imply that the Petersson inner product is well-defined. Actually, we have the following proposition:
 
       \begin{proposition}\label{prop:Petersson_inner_product_hermitian}
-        $\mc{S}_{k}(\G,\chi)$ is a Hilbert space with respect to Petersson inner product.
+        $\mc{S}_{k}(\G)$ is a Hilbert space with respect to Petersson inner product.
       \end{proposition}
       \begin{proof}
-        Let $f,g \in \mc{S}_{k}(\G,\chi)$. Linearity of the integral immediately implies that the Petersson inner product is linear on $\mc{S}_{k}(\G,\chi)$. It is also positive definite since
+        Let $f,g \in \mc{S}_{k}(\G)$. Linearity of the integral immediately implies that the Petersson inner product is linear on $\mc{S}_{k}(\G)$. It is also positive definite since
         \[
           \<f,f\> = \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}f(z)\conj{f(z)}\Im(z)^{k}\,d\mu = \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}|f(z)|^{2}\Im(z)^{k}\,d\mu \ge 0,
         \]
@@ -508,18 +516,18 @@
           &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}f(z)\conj{g(z)}\Im(z)^{k}\,d\mu \\
           &= \<f,g\>.
         \end{align*}
-        So the Petersson inner product is a Hermitian inner product on $\mc{S}_{k}(\G,\chi)$. Since $\mc{S}_{k}(\G,\chi)$ is finite dimensional by \cref{thm:modular_forms_space_classification}, it follows immediately that $\mc{S}_{k}(\G,\chi)$ is a Hilbert space.
+        So the Petersson inner product is a Hermitian inner product on $\mc{S}_{k}(\G)$. Since $\mc{S}_{k}(\G)$ is finite dimensional by \cref{thm:modular_forms_space_classification}, it follows immediately that $\mc{S}_{k}(\G)$ is a Hilbert space.
       \end{proof}
 
       \begin{remark}\label{rem:non-degeneracy_of_Petersson_inner_product}
-        As a consquence of \cref{prop:Petersson_inner_product_hermitian}, the Petersson inner product is also non-degenerate on $\mc{S}_{k}(\G,\chi)$. Actually, for the exact same reasoning this holds on $\mc{S}_{k}(\G,\chi) \x \mc{M}_{k}(\G,\chi)$ wherever the Petersson inner product is defined.
+        As a consequence of \cref{prop:Petersson_inner_product_hermitian}, the Petersson inner product is also non-degenerate on $\mc{S}_{k}(\G)$. Actually, for the exact same reasoning this holds on $\mc{S}_{k}(\G) \x \mc{M}_{k}(\G)$ wherever the Petersson inner product is defined.
       \end{remark}
 
-      Now suppose $f \in \mc{S}_{k}(\G,\chi)$ with Fouier coefficients $a_{n}(f)$. Define linear functionals $\phi_{m,k}:\mc{S}_{k}(\G,\chi) \to \C$, for every $m \ge 1$, by
+      Now suppose $f \in \mc{S}_{k}(\G)$ with Fouier coefficients $a_{n}(f)$. Define linear functionals $\phi_{m,k}:\mc{S}_{k}(\G) \to \C$, for every $m \ge 1$, by
       \[
         \phi_{m,k}(f) = a_{m}(f).
       \]
-      Since $\mc{S}_{k}(\G,\chi)$ is a finite dimensional Hilbert space, the Riesz representation theorem implies that there exists a unique $v_{m,k} \in \mc{S}_{k}(\G,\chi)$ such that
+      Since $\mc{S}_{k}(\G)$ is a finite dimensional Hilbert space, the Riesz representation theorem implies that there exists a unique $v_{m,k} \in \mc{S}_{k}(\G)$ such that
       \[
         \<f,v_{m,k}\> = \phi_{m,k}(f) = a_{m}(f).
       \]
@@ -570,10 +578,10 @@
       By \cref{rem:non-degeneracy_of_Petersson_inner_product} the Petersson inner product is non-degenerate so we conclude $v_{m,k} = \wtilde{P_{m,k,\chi}}$. In particular, this shows that the Poincar\'e series $P_{m,k,\chi}$ are cusp forms. We usually work with the Poincar\'e series $P_{m,k,\chi}$ instead of their normalized counterparts $\wtilde{P_{m,k,\chi}}$. In any case, with \cref{equ:Petersson_inner_product_with_Poincare_series} in hand we can prove the following result:
 
       \begin{theorem}
-        The Poincar\'e series span $\mc{S}_{k}(\G,\chi)$.
+        The Poincar\'e series span $\mc{S}_{k}(\G)$.
       \end{theorem}
       \begin{proof}
-        Let $f \in \mc{S}_{k}(\G,\chi)$ with Fourier coefficients $a_{n}(f)$. Since $\G(k-1) \neq 0$, \cref{equ:Petersson_inner_product_with_Poincare_series} implies $\<f,P_{m,k,\chi}\> = 0$ if and only if $a_{m}(f) = 0$. So $f$ is orthogonal to all the Poincar\'e series if and only if every Fourier coefficient $a_{m}(f)$ is zero. But this happens if and only if $f$ is identically zero.
+        Let $f \in \mc{S}_{k}(\G)$ with Fourier coefficients $a_{n}(f)$. Since $\G(k-1) \neq 0$, \cref{equ:Petersson_inner_product_with_Poincare_series} implies $\<f,P_{m,k,\chi}\> = 0$ if and only if $a_{m}(f) = 0$. So $f$ is orthogonal to all the Poincar\'e series if and only if every Fourier coefficient $a_{m}(f)$ is zero. But this happens if and only if $f$ is identically zero.
       \end{proof}
 
       Let's return to the previous computation for a breif moment. The procedure of changing an integral over a fundamental domain $\mc{F}_{\G}$ into an integral over the strip $\G_{\infty}\backslash\H$, or vice versa, works in a more general setting and is called \textbf{unfolding the integral}\index{unfolding the integral} or \textbf{folding the integral}\index{folding the integral} respectively:
@@ -600,9 +608,9 @@
       \]
       Then $\G_{1}$ acts on the set $\G_{1}\a\G_{2}$ by left multiplication so that it decomposes into a disjoin union of orbit spaces. Thus
       \[
-        \G_{1}\a\G_{2} = \bigcup_{\b \text{ orbit}}\G_{1}\b,
+        \G_{1}\a\G_{2} = \bigcup_{\b \in \G_{1}\backslash\G_{1}\a\G_{2}}\G_{1}\b,
       \]
-      where the sum is over the orbit representatives $\b$, that is, representatives of $\G_{1}\backslash\G_{1}\a\G_{2}$. However, in order for these operators to be well-defined it is necessary that the orbit decomposition above is a finite union. This is indeed the case and we will require two lemmas. The first is that congruence subgroups are preserved under conjugation by elements of $\GL_{2}^{+}(\Q)$ provided we restrict to those elements in $\PSL_{2}(\Z)$:
+      where the sum is over the orbit representatives $\b$. However, in order for these operators to be well-defined it is necessary that the orbit decomposition above is a finite union. This is indeed the case and we will require two lemmas. The first is that congruence subgroups are preserved under conjugation by elements of $\GL_{2}^{+}(\Q)$ provided we restrict to those elements in $\PSL_{2}(\Z)$:
 
       \begin{lemma}\label{lem:coset_lemma_1}
         Let $\G$ be a congruence subgroup and let $\a \in \GL_{2}^{+}(\Q)$. Then $\a^{-1}\G\a \cap \PSL_{2}(\Z)$ is a congruence subgroup.
@@ -649,7 +657,7 @@
       \begin{proposition}\label{prop:double_congruence_subgroup_coset_decomposition_is_finite}
         Let $\a \in \GL_{2}^{+}(\Q)$. Then the orbit decomposition
         \[
-          \G_{1}\a\G_{2} = \bigcup_{\b \text{ orbit}}\G_{1}\b,
+          \G_{1}\a\G_{2} = \bigcup_{j}\G_{1}\b,
         \]
         with respect to the action of $\G_{1}$ by left multiplication, is a finite union.
       \end{proposition}
@@ -657,15 +665,15 @@
         Let $\G_{3} = \a\G_{1}\a^{-1} \cap \G_{2}$. Then $\G_{3}$ acts on $\G_{2}$ by left multiplication. By \cref{lem:coset_lemma_2}, the number of orbits of $\G_{1}\backslash\G_{1}\a\G_{2}$ is the same as the number of cosets of $\G_{3}\backslash\G_{2}$ which is $[\G_{2}:\G_{3}]$. By \cref{lem:coset_lemma_1}, $\a^{-1}\G_{1}\a \cap \PSL_{2}(\Z)$ is a congruence subgroup and hence $[\PSL_{2}(\Z):\a^{-1}\G_{1}\a \cap \PSL_{2}(\Z)]$ is finite. As $\G_{2} = \PSL_{2}(\Z) \cap \G_{2}$ and $\G_{3} = \a^{-1}\G_{1}\a \cap \PSL_{2}(\Z) \cap \G_{2}$, it follows that $[\G_{2}:\G_{3}] \le [\PSL_{2}(\Z):\a^{-1}\G_{1}\a \cap \PSL_{2}(\Z)]$ completing the proof.
       \end{proof}
 
-      We will now introduce our operators. Fix some congruence subgroup $\G$ and consider $\mc{M}_{k}(\G)$. Then for $\a \in \GL_{2}^{+}(\Q)$, we define the operator $[\a]_{k}$ on $\mc{M}_{k}(\G)$ to be the linear operator given by
+      In light of \cref{prop:double_congruence_subgroup_coset_decomposition_is_finite}, we will denote the orbit representatives by $\b_{j}$ to make it clear that there are finitely many. We can now introduce our operators. Fix some congruence subgroup $\G$ and consider $\mc{M}_{k}(\G)$. Then for $\a \in \GL_{2}^{+}(\Q)$, we define the operator $[\a]_{k}$ on $\mc{M}_{k}(\G)$ to be the linear operator given by
       \[
-        (f[\a]_{k})(z) = (\det(\a))^{k-1}j(\a,z)^{-k}f(\a z),
+        (f[\a]_{k})(z) = \det(\a)^{k-1}j(\a,z)^{-k}f(\a z),
       \]
       for any $f \in \mc{M}_{k}(\G)$. Moreover, $[\a]_{k}$ is multiplicative. Indeed, if $\a,\a' \in \GL_{2}^{+}(\Q)$, then
       \begin{align*}
-        ((f[\a']_{k})[\a]_{k})(z) &= (\det(\a))^{k-1}j(\a,z)^{-k}(f[\a']_{k})(\a z) \\
-        &= (\det(\a'))^{k-1}(\det(\a))^{k-1}j(\a',\a z)^{-k}j(\a,z)^{-k}f(\a'\a z) \\
-        &= (\det(\a'\a))^{k-1}j(\a'\a,z)^{-k}f(\a'\a z) && \text{cocycle condition} \\
+        ((f[\a']_{k})[\a]_{k})(z) &= \det(\a)^{k-1}j(\a,z)^{-k}(f[\a']_{k})(\a z) \\
+        &= \det(\a')^{k-1}\det(\a)^{k-1}j(\a',\a z)^{-k}j(\a,z)^{-k}f(\a'\a z) \\
+        &= \det(\a'\a)^{k-1}j(\a'\a,z)^{-k}f(\a'\a z) && \text{cocycle condition} \\
         &= (f[\a'\a]_{k})(z).
       \end{align*}
       Also, if $\g \in \G$ and we choose the representative with $\det(\g) = 1$, then the chain of equalities
@@ -674,11 +682,11 @@
       \]
       is equivalent to the modularity of untwisted $f$ on $\GH$. Thus $f$ is an untwisted modular form on $\GH$ if and only if $f[\g]_{k} = f$ for all $\g \in \G$ where $\g$ is chosen to be the representative with positive determinant. Now let $\G_{1}$ and $\G_{2}$ be two congruence subgroups and let $\a \in \GL_{2}^{+}(\Q)$. We define the \textbf{double coset operator}\index{double coset operator} $[\G_{1}\a\G_{2}]_{k}$ on $\mc{M}_{k}(\G_{1})$ to be the linear operator given by
       \[
-        (f[\G_{1}\a\G_{2}]_{k})(z) = \sum_{\b \text{ orbit}}(f[\b]_{k})(z) = \sum_{\b \text{ orbit}}(\det(\b))^{k-1}j(\b,z)^{-k}f(\b z),
+        (f[\G_{1}\a\G_{2}]_{k})(z) = \sum_{j}(f[\b_{j}]_{k})(z) = \sum_{j}\det(\b_{j})^{k-1}j(\b_{j},z)^{-k}f(\b_{j}z),
       \]
-      for any $f \in \mc{M}_{k}(\G_{1})$. By \cref{prop:double_congruence_subgroup_coset_decomposition_is_finite} this sum is finite. It remains to check that $f[\G_{1}\a\G_{2}]_{k}$ is well-defined. Indeed, if $\b$ and $\b'$ belong to the same orbit, then $\b'\b^{-1} \in \G_{1}$. But then as $f \in \mc{M}_{k}(\G_{1})$, is it invariant under the $[\b'\b^{-1}]_{k}$ operator so that
+      for any $f \in \mc{M}_{k}(\G_{1})$. By \cref{prop:double_congruence_subgroup_coset_decomposition_is_finite} this sum is finite. It remains to check that $f[\G_{1}\a\G_{2}]_{k}$ is well-defined. Indeed, if $\b_{j}$ and $\b_{j}'$ belong to the same orbit, then $\b_{j}'\b_{j}^{-1} \in \G_{1}$. But then as $f \in \mc{M}_{k}(\G_{1})$, is it invariant under the $[\b_{j}'\b_{j}^{-1}]_{k}$ operator so that
       \[
-        (f[\b]_{k})(z) = ((f[\b'\b^{-1}]_{k})[\b]_{k})(z) = (f[\b']_{k})(z),
+        (f[\b_{j}]_{k})(z) = ((f[\b_{j}'\b_{j}^{-1}]_{k})[\b_{j}]_{k})(z) = (f[\b_{j}']_{k})(z),
       \]
       and therefore the $[\G_{1}\a\G_{2}]_{k}$ operator is well-defined. Actually, the map $[\G_{1}\a\G_{2}]_{k}$ preserves modular forms:
 
@@ -688,21 +696,21 @@
       \begin{proof}
         Suppose $f \in \mc{M}_{k}(\G_{1})$ and $\g \in \G_{2}$. Then
         \begin{align*}
-          (f[\G_{1}\a\G_{2}]_{k})(\g z) &= \sum_{\b \text{ orbit}}(\det(\b))^{k-1}j(\b,\g z)^{-k}f(\b\g z) \\
-          &= \sum_{\b \text{ orbit}}(\det(\b\g))^{k-1}j(\b,\g z)^{-k}f(\b\g z) && \text{$\det(\g) = 1$} \\
-          &= \sum_{\b \text{ orbit}}(\det(\b\g))^{k-1}\left(\frac{j(\g,z)}{j(\b\g,z)}\right)^{k}f(\b\g z) && \text{cocycle condition} \\
-          &= j(\g,z)^{k}\sum_{\b \text{ orbit}}(\det(\b\g))^{k-1}j(\b\g,z)^{-k}f(\b\g z) \\
-          &= j(\g,z)^{k}\sum_{\b \text{ orbit}}(\det(\b))^{k-1}j(\b,z)^{-k}f(\b z) && \text{$\b \to \b\g^{-1}$ bijection on $\G_{1}\a\G_{2}$} \\
-          &= j(\g,z)^{k}\sum_{\b \text{ orbit}}(f[\b]_{k})(z) \\
+          (f[\G_{1}\a\G_{2}]_{k})(\g z) &= \sum_{j}\det(\b_{j})^{k-1}j(\b_{j},\g z)^{-k}f(\b_{j}\g z) \\
+          &= \sum_{j}\det(\b_{j}\g)^{k-1}j(\b_{j},\g z)^{-k}f(\b_{j}\g z) && \text{$\det(\g) = 1$} \\
+          &= \sum_{j}\det(\b_{j}\g)^{k-1}\left(\frac{j(\g,z)}{j(\b_{j}\g,z)}\right)^{k}f(\b_{j}\g z) && \text{cocycle condition} \\
+          &= j(\g,z)^{k}\sum_{j}\det(\b_{j}\g)^{k-1}j(\b_{j}\g,z)^{-k}f(\b_{j}\g z) \\
+          &= j(\g,z)^{k}\sum_{j}\det(\b_{j})^{k-1}j(\b_{j},z)^{-k}f(\b_{j}z) && \text{$\b_{j} \to \b_{j}\g^{-1}$ bijection on $\G_{1}\a\G_{2}$} \\
+          &= j(\g,z)^{k}\sum_{j}(f[\b_{j}]_{k})(z) \\
           &= j(\g,z)^{k}(f[\G_{1}\a\G_{2}]_{k})(z),
         \end{align*}
-        So $f[\G_{1}\a\G_{2}]_{k}$ is modular. Holomorphy and the growth condition are immediate since the sum is finite by \cref{prop:double_congruence_subgroup_coset_decomposition_is_finite}. Therefore $f[\G_{1}\a\G_{2}]_{k} \in \mc{M}_{k}(\G_{2})$. To see that $[\G_{1}\a\G_{2}]_{k}$ preserves the subspace of cusp forms, let $\s_{\mf{a}}$ be a scaling matrix for the cusp $\mf{a}$ of $\G_{2}\backslash\H$ and let $f \in \mc{S}_{k}(\G_{1})$. If $\b \text{ orbit}$, then $\b\s_{\mf{a}}$ takes $\infty$ to an element of $\Q \cup \{\infty\}$ since $\a \in \GL_{2}^{+}(\Q)$. In other words, $\b\s_{\mf{a}}\infty = \mf{b}$ for some cusp $\mf{b}$ of $\G_{1}\backslash\H$. Now choose an integer $r \ge 1$ such that $r\a \in \GL_{2}^{+}(\Z)$. As a consquence, there exist integers $n,m \ge 1$ such that $rj(\b,\s_{\mf{a}}z) = |n\s_{\mf{a}}z+m|$. Then letting $\Im(z) > 1$ and $\d$ be as in \cref{lem:technical_Eisenstein_convergence_lemma}, we have
+        So $f[\G_{1}\a\G_{2}]_{k}$ is modular. Holomorphy and the growth condition are immediate since the sum is finite by \cref{prop:double_congruence_subgroup_coset_decomposition_is_finite}. Therefore $f[\G_{1}\a\G_{2}]_{k} \in \mc{M}_{k}(\G_{2})$. To see that $[\G_{1}\a\G_{2}]_{k}$ preserves the subspace of cusp forms, let $\s_{\mf{a}}$ be a scaling matrix for the cusp $\mf{a}$ of $\G_{2}\backslash\H$ and let $f \in \mc{S}_{k}(\G_{1})$. For any orbit representative $\b_{j}$, $\b_{j}\s_{\mf{a}}$ takes $\infty$ to an element of $\Q \cup \{\infty\}$ since $\b_{j} \in \GL_{2}^{+}(\Q)$. In other words, $\b_{j}\s_{\mf{a}}\infty = \mf{b}$ for some cusp $\mf{b}$ of $\G_{1}\backslash\H$. Now choose an integer $r \ge 1$ such that $r\a \in \GL_{2}^{+}(\Z)$. As a consequence, there exist integers $n,m \ge 1$ such that $rj(\b_{j},\s_{\mf{a}}z) = |n\s_{\mf{a}}z+m|$. Then letting $\Im(z) > 1$ and $\d$ be as in \cref{lem:technical_Eisenstein_convergence_lemma}, we have
         \[
-          j(\b,\s_{\mf{a}}z) = \frac{|n\s_{\mf{a}}z+m|}{r} \ge \frac{\d|ni+m|}{r}.
+          j(\b_{j},\s_{\mf{a}}z) = \frac{|n\s_{\mf{a}}z+m|}{r} \ge \frac{\d|ni+m|}{r}.
         \]
         From this bound, we see that
         \[
-          (f[\G_{1}\a\G_{2}]_{k})(\s_{\mf{a}}z) \ll \left(\frac{\d|ni+m|}{r}\right)^{-k}\sum_{\b \text{ orbit}}(\det(\b))^{k-1}f(\b\s_{\mf{a}} z).
+          (f[\G_{1}\a\G_{2}]_{k})(\s_{\mf{a}}z) \ll \left(\frac{\d|ni+m|}{r}\right)^{-k}\sum_{j}\det(\b_{j})^{k-1}f(\b_{j}\s_{\mf{a}} z).
         \]
         As $f$ is a cusp form, it has exponential decay to zero near the cusps so that the sum on the right-hand side tends to zero as $\Im(z) \to \infty$. Then $f[\G_{1}\a\G_{2}]_{k}$ is a cusp form too.
       \end{proof}
@@ -715,7 +723,7 @@
       \]
       ($d$ is invertible modulo $N$ since $c \equiv 0 \tmod{N}$ and $ad-bc = 1$). This is a surjective homomorphism and its kernel is exaclty $\G_{1}(N)$ so that $\G_{1}(N)$ is a normal subgroup of $\G_{0}(N)$ and $\G_{0}(N)/\G_{1}(N) \cong (\Z/N\Z)^{\ast}$. Letting $\a = \begin{psmallmatrix} \ast & \ast \\ \ast & d \end{psmallmatrix} \in \G_{0}(N)$ and $f \in \mc{M}_{k}(\G_{1})$, consider $\left(f\left[\G_{1}(N)\a\G_{1}(N)\right]_{k}\right)(z)$. This is only dependent upon the lower-right entry $d$ of $\a$ taken modulo $N$. To see this, since $\G_{1}(N)$ is normal in $\G_{0}(N)$, $\G_{1}(N)\a = \a\G_{1}(N)$ so that $\G_{1}(N)\a\G_{1}(N) = \a\G_{1}(N)$ and hence there is only one representative for the orbit decomposition. Therefore
       \[
-        \left(f\left[\G_{1}(N)\a\G_{1}(N)\right]_{k}\right)(z) = \sum_{\b \text{ orbit}}(f[\b]_{k})(z) = (f[\a]_{k})(z).
+        \left(f\left[\G_{1}(N)\a\G_{1}(N)\right]_{k}\right)(z) = \sum_{j}(f[\b]_{k})(z) = (f[\a]_{k})(z).
       \]
       This induces an action of $\G_{0}(N)$ on $\mc{M}_{k}(\G_{1})$ and since $\G_{1}(N)$ acts trivially, this is really an action of $\G_{0}(N)/\G_{1}(N) \cong (\Z/N\Z)^{\ast}$. In other words, we have an induced action that depends only upon the lower-right entry $d$ of $\a$ taken modulo $N$. So for any $d$ modulo $N$, we define the \textbf{diamond operator}\index{diamond operator} $\<d\>:\mc{M}_{k}(\G_{1}(N)) \to \mc{M}_{k}(\G_{1}(N))$ to be the linear operator given by
       \[
@@ -729,7 +737,7 @@
       \[
         \mc{M}_{k}(N,\chi) = \{f \in \mc{M}_{k}(\G_{1}(N)):\<d\>f = \chi(d)f \text{ for all } d \in (\Z/N\Z)^{\ast}\},
       \]
-      be the $\chi$-eigenspace. Also let $\mc{S}_{k}(N,\chi)$ be the corresponding subspace of cusp forms. Then $\mc{M}_{k}(\G_{1}(N))$ admits a decomposition into these eigenspaces (see \cite{diamond2005first} for a proof):
+      be the $\chi$-eigenspace. Also let $\mc{S}_{k}(N,\chi)$ be the corresponding subspace of cusp forms. Then $\mc{M}_{k}(\G_{1}(N))$ admits a decomposition into these eigenspaces:
 
       \begin{proposition}\label{thm:diamond_operator_decomposition_modular}
         We have the direct sum decomposition
@@ -784,19 +792,19 @@
         \]
         because $c \equiv 0 \tmod{N}$, $ad-bc = 1$, and $ad \equiv {1} \tmod{N}$. By \cref{lem:cosets_for_Hecek_operators}, $\g\a\g^{-1} \in \G_{1}(N)\a\G_{1}(N)$ and so we can use this representative in place of $\a$. Now write
         \[
-          \G_{1}(N)\a\G_{1}(N) = \bigcup_{\b \text{ orbit}}\G_{1}(N)\b.
+          \G_{1}(N)\a\G_{1}(N) = \bigcup_{j}\G_{1}(N)\b_{j}.
         \]
         Using $\g\a\g^{-1}$ in place of $\a$ and the normality of $\G_{1}(N)$ in $\G_{0}(N)$, we compute
         \[
-          \G_{1}(N)\a\G_{1}(N) = \G_{1}(N)\g\a\g^{}\G_{1}(N) = \g\G_{1}(N)\a\G_{1}(N)\g^{-1} = \g\bigcup_{\b \text{ orbit}}\G_{1}(N)\b\g^{-1} = \bigcup_{\b \text{ orbit}}\G_{1}(N)\g\b\g^{-1}.
+          \G_{1}(N)\a\G_{1}(N) = \G_{1}(N)\g\a\g^{}\G_{1}(N) = \g\G_{1}(N)\a\G_{1}(N)\g^{-1} = \g\bigcup_{j}\G_{1}(N)\b_{j}\g^{-1} = \bigcup_{j}\G_{1}(N)\g\b_{j}\g^{-1}.
         \]
         Upon comparing these two decompositions of $\G_{1}(N)\a\G_{1}(N)$ gives
         \[
-          \bigcup_{\b \text{ orbit}}\G_{1}(N)\b\g = \bigcup_{\b \text{ orbit}}\G_{1}(N)\g\b.
+          \bigcup_{j}\G_{1}(N)\b_{j}\g = \bigcup_{j}\G_{1}(N)\g\b_{j}.
         \]
         Now let $f \in \mc{M}_{k}(\G_{1}(N))$. Then this equivalence of unions implies
         \[
-        \<d\>T_{p}f = \sum_{\b \text{ orbit}}f[\b\g]_{k} = \sum_{\b \text{ orbit}}f[\g\b]_{k} = T_{p}\<d\>f.
+        \<d\>T_{p}f = \sum_{j}f[\b_{j}\g]_{k} = \sum_{j}f[\g\b_{j}]_{k} = T_{p}\<d\>f.
         \]
       \end{proof}
       
@@ -1004,7 +1012,27 @@
         This completes the proof.
       \end{proof}
 
-      The diamond and Hecke operators also behave well with the Petersson inner product on the subspace of cusp forms (see \cite{lang1987introduction} for a proof):
+      The diamond and Hecke operators turn out to be normal with respect to the Petersson inner product on the subspace of cusp forms. To prove this fact, we will require a lemma:
+
+      \begin{lemma}
+        Let $\G$ be a congruence subgroup and let $\a \in \GL_{2}^{+}(\Q)$. Then the following are true:
+        \begin{enumerate}[label=(\roman*)]
+          \item If $\a^{-1}\G\a \subseteq \SL_{2}(\Z)$, then $V_{\a^{-1}\G\a} = V_{\G}$ and $[\PSL_{2}(\Z):\a^{-1}\G\a] = [\PSL_{2}(\Z):\G]$.
+          \item There exist $\b_{1},\ldots,\b_{n} \in \GL_{2}^{+}(\Q)$, where $n = \PSL_{2}(\Z):\a^{-1}\G\a] = [\PSL_{2}(\Z):\G]$, and such that
+          \[
+            \G\a\G = \bigcup_{j}\G\b_{j} = \bigcup_{j}\b_{j}\G.
+          \]
+        \end{enumerate}
+      \end{lemma}
+      \begin{proof}
+        For (i), we have
+        \[
+          V_{\a^{-1}\G\a} = \int_{\mc{F}_{\a^{-1}\G\a}}\,d\mu = \int_{\mc{F}_{\G}}\,d\mu = V_{\G}.
+        \]
+        where the middle equality follows by making the change of variables $z \to \a z$ and then observing that $\mc{F}_{\a^{-1}\G} = \a^{-1}\mc{F}_{\G}$. The second statement now follows from \cref{equ:Petersson_volume_relation}. For (ii) \todo{xxx}
+      \end{proof}
+
+      \todo{xxx}
 
       \begin{proposition}\label{prop:Hecke_operators_normal}
         On $\mc{S}_{k}(\G_{1}(N))$, the diamond operators $\<m\>$ and Hecke operators $T_{m}$ are normal for all $m \ge 1$ with $(m,N) = 1$. Moreover, the adjoints are given by
@@ -1186,7 +1214,7 @@
 
       In the 1970's Deligne proved the Ramanujan conjecture (see \cite{deligne1971formes} and \cite{deligne1974conjecture} for the full proof). The argument is significantly beyond the scope of this text, and in actuality follows from Deligne's work on the Weil conjectures (except in the case $k = 1$ which requires a modified argument). This requires understanding classical algebraic topology and $\ell$-acid cohomology in addition to the basic analytic number theory. As such, the proof of the Ramanujan conjecture has been one of the biggest advances in analytic number theory in recent decades.
   \section{The General Setup for Automorphic \& Maass Forms}
-    Throughout we will suppose $\G$ is a level $N$ congruence subgroup. Also let $\mc{F}_{\G}$ be a fundamental domain for $\GH$ with $V_{\G} = [\PSL_{2}(\Z):\G]$ as usual.
+    Throughout we will suppose $\G$ is a level $N$ congruence subgroup. Also let $\mc{F}_{\G}$ be a fundamental domain for $\GH$.
     \subsection*{Automorphic Forms}
       We say that a function $f:\H \to \C$ is \textbf{automorphic}\index{automorphic} on $\G\backslash\H$ if $f(\g z) = f(z)$ for all $\g \in \G$. That is, $f$ is $\G$-invariant and we call this invariance the \textbf{automorphy condition}\index{automorphy condition}.
 
@@ -1308,7 +1336,7 @@
       \end{enumerate}
       Note that the integral in condition (v) is exactly the constant coefficient of the Fourier series of $f$ at the $\mf{a}$ cusp. So $f$ is a cusp form precisely if $a_{\mf{a}}(0,y) = 0$ for every Fourier series of $f$ at every cusp $\mf{a}$. We can actually say a little more. As we have already mentioned, automorphic forms are smooth since $\D$ is an elliptic operator. This fact with \cref{equ:automorphic_form_growth} implies that Maass forms, automorphic forms, and their corresponding cusp forms are equivalent precisely when $\chi$ is the trivial character. We will henceforth make no distinction between the two in this specific setting.
   \section{The Theory of Maass Forms}
-    We will assume $\G$ is a level $N$ congruence subgroup reduced at infinity. This latter condition is to ensure that all of our Maass forms are $1$-periodic. Let $\mc{F}_{\G}$ be a fundamental domain for $\GH$ with $V_{\G} = [\PSL_{2}(\Z):\G]$. Moreover, unless explicitely mentioned, we will assume that the twist $\chi$ is the trivial character so that all of our Maass forms are actually automorphic forms.
+    We will assume $\G$ is a level $N$ congruence subgroup reduced at infinity. This latter condition is to ensure that all of our Maass forms are $1$-periodic. Let $\mc{F}_{\G}$ be a fundamental domain for $\GH$. Moreover, unless explicitely mentioned, we will assume that the twist $\chi$ is the trivial character so that all of our Maass forms are actually automorphic forms.
     \subsection*{Eisenstein Series \& Poincar\'e Series with Test Functions}
       We will be interested in studying two classes of automorphic forms. The first is a class of Maass forms naturally defined on $\GH$. These Maass forms are actually functions defined on a large space $\H \x \W$ for some domain $\W$ and hence are functions of two variables say $z$ and $s$. In this sense, we think of these functions as Maass forms for every fixed $s \in \W$. For every cusp $\mf{a}$ of $\GH$, there is an associated Maass form. So let $\s_{\mf{a}}$ be a scaling matrix for the cusp $\mf{a}$. The Maass form $E_{\mf{a}}(z,s)$ we are interested in is called the \textbf{(real-analytic) Eisenstein series}\index{(real-analytic) Eisenstein series} on $\GH$ at the $\mf{a}$ cusp and is defined as
       \[
@@ -1631,7 +1659,7 @@
     \subsection*{Double Coset Operators}
       We can extend the theory of of double coset operators to automorphic functions. Indeed, for any $\a \in \GL_{2}^{+}(\Q)$, we define the operator $[\a]$ on $\mc{A}(\G)$ to be the linear operator given by
       \[
-        (f[\a])(z) = (\det(\a))^{-1}f(\a z),
+        (f[\a])(z) = \det(\a)^{-1}f(\a z),
       \]
       for any $f \in \mc{A}(\G)$. Notice that $[\a]$ is just $[\a]_{k}$ with $k = 0$ and acting on $\mc{A}(\G)$ instead of $\mc{M}_{k}(\G)$. In particular, $[\a]$ is easily seen to be multiplicative by repeating the argument for $[\a]_{k}$ with $k = 0$. Moreover, if $\g \in \G$ and we choose the representative with positive determinant, then the chain of equalities
       \[
@@ -1639,7 +1667,7 @@
       \]
       is equivalent to the automorphy of $f$ on $\GH$. For any two congruence subgroups $\G_{1}$ and $\G_{2}$ (not necessarily of the same level) and any $\a \in \GL_{2}^{+}(\Q)$ we define the \textbf{double coset operator}\index{double coset operator} $[\G_{1}\a\G_{2}]$ to be the linear operator on $\mc{A}(\G_{1})$ given by
       \[
-        (f[\G_{1}\a\G_{2}])(z) = \sum_{\b \text{ orbit}}(f[\b]_{k})(z) = \sum_{\b \text{ orbit}}(\det(\b))^{-1}f(\b z).
+        (f[\G_{1}\a\G_{2}])(z) = \sum_{j}(f[\b_{j}]_{k})(z) = \sum_{j}\det(\b_{j})^{-1}f(\b_{j}z).
       \]
       for any $f \in \mc{A}(\G_{1})$. As was the case for modular forms, \cref{prop:double_congruence_subgroup_coset_decomposition_is_finite} implies that this sum is finite. Repeating the same argument for $[\G_{1}\a\G_{2}]_{k}$ with $k = 0$, we see that $[\G_{1}\a\G_{2}]$ is also well-defined.  We also have an analogous statement about the double coset operators for Maass forms:
 
@@ -1649,18 +1677,18 @@
       \begin{proof}
         We first show that if $f$ is automorphic with respect to $G_{1}$, then $f[\G_{1}\a\G_{2}]$ is automorphic with respect to $\G_{2}$. So suppose $\g \in \G_{2}$. Then
         \[
-          (f[\G_{1}\a\G_{2}])(\g z) = \sum_{\b \text{ orbit}}(\det(\b))^{-1}f(\b \g z) = \sum_{\b \text{ orbit}}(\det(\b))^{-1}f(\b z) = (f[\G_{1}\a\G_{2}])(z),
+          (f[\G_{1}\a\G_{2}])(\g z) = \sum_{j}\det(\b_{j})^{-1}f(\b_{j}\g z) = \sum_{j}\det(\b_{j})^{-1}f(\b_{j}z) = (f[\G_{1}\a\G_{2}])(z),
         \]
-        where the second equality follows because $\b \to \b\g^{-1}$ is a bijection on $\G_{1}\a\G_{2}$. Repeating the proof of \cref{prop:double_coset_operator_preserves_subspaces_modular} with $k = 0$, smoothness replacing holomorphy, and the analogous growth condition for Maass forms, the only piece left to verify is that $f[\G_{1}\a\G_{2}]$ is an eigenfunction for $\D$ with eigenvalue $\l$ if $f$ is. For such a Maass form $f$, linearity and $\G_{1}$-invariance of $\D$ together imply
+        where the second equality follows because $\b_{j} \to \b_{j}\g^{-1}$ is a bijection on $\G_{1}\a\G_{2}$. Repeating the proof of \cref{prop:double_coset_operator_preserves_subspaces_modular} with $k = 0$, smoothness replacing holomorphy, and the analogous growth condition for Maass forms, the only piece left to verify is that $f[\G_{1}\a\G_{2}]$ is an eigenfunction for $\D$ with eigenvalue $\l$ if $f$ is. For such a Maass form $f$, linearity and $\G_{1}$-invariance of $\D$ together imply
         \[
-          \D(f[\G_{1}\a\G_{2}])(z) = \sum_{\b \text{ orbit}}(\det(\b))^{k-1}(\D f)(\b z) = \l\sum_{\b \text{ orbit}}(\det(\b))^{k-1}f(\b z) = \l(f[\G_{1}\a\G_{2}])(z). 
+          \D(f[\G_{1}\a\G_{2}])(z) = \sum_{j}\det(\b_{j})^{-1}(\D f)(\b_{j}z) = \l\sum_{j}\det(\b_{j})^{-1}f(\b_{j}z) = \l(f[\G_{1}\a\G_{2}])(z). 
         \]
         Thus $f[\G_{1}\a\G_{2}]$ is an eigenfunction for $\D$ with eigenvalue $\l$. This completes the proof.
       \end{proof}
     \subsection*{\todo{Diamond \& Hecke Operators}}
       Extending the theory of diamond operators and Hecke operators to Maass forms is fairly straightforward. To see this, we have already shown $\G_{1}(N)$ is a normal subgroup of $\G_{0}(N)$ so that
       \[
-        \left(f\left[\G_{1}(N)\a\G_{1}(N)\right]\right)(z) = \sum_{\b \text{ orbit}}(f[\b])(z) = (f[\a])(z),
+        \left(f\left[\G_{1}(N)\a\G_{1}(N)\right]\right)(z) = \sum_{j}(f[\b_{j}])(z) = (f[\a])(z),
       \]
       for any $\a = \begin{psmallmatrix} \ast & \ast \\ \ast & d \end{psmallmatrix} \in \G_{0}(N)$. Thus, for any $d$ taken modulo $N$, we define the \textbf{diamond operator} $\<d\>:\mc{A}(\G_{1}(N)) \to \mc{A}(\G_{1}(N))$ to be the linear operative given by
       \[
