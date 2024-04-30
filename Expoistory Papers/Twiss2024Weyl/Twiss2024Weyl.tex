@@ -518,7 +518,7 @@
     \]
     The idea is to express the inner sum over $m_{j}$ as the product of an $L$-function and a Dirichlet polynomial up to a constant. Set $N_{j} = m_{1} \cdots m_{j-1}m_{j+1} \cdots m_{r}$. Then write $m_{j} = nn_{j}$ where $n_{j} \mid N_{j}$ and $(n,n_{j}) = 1$. Equivalently, $n$ is the part of $m_{j}$ that is relatively prime to $N_{j}$. So we also have $(n,N_{j}) = 1$. Then we may write
     \begin{align*}
-        \sum_{\text{$m_{j}$ monic}}\frac{\psi_{j}(m_{j})H(m_{1},\ldots,m_{r})}{|m_{j}|^{s_{j}}} &= \sum_{\text{$nn_{j}$ monic}}\frac{\psi_{j}(nn_{j})H(m_{1},\ldots,m_{j},\ldots,m_{r})}{|nn_{j}|^{s_{j}}} \\
+        \sum_{\text{$m_{j}$ monic}}\frac{\psi_{j}(m_{j})H(m_{1},\ldots,m_{r})}{|m_{j}|^{s_{j}}} &= \sum_{\text{$nn_{j}$ monic}}\frac{\psi_{j}(nn_{j})H(m_{1},\ldots,nn_{j},\ldots,m_{r})}{|nn_{j}|^{s_{j}}} \\
         &= \sum_{n_{j} \mid N_{j}^{\infty}}\sum_{(n,N_{j}) = 1}\frac{\psi_{j}(nn_{j})H(m_{1},\ldots,nn_{j},\ldots,m_{r})}{|nn_{j}|^{s_{j}}} \\
         &= \sum_{n_{j} \mid N_{j}^{\infty}}\frac{\psi_{j}(n_{j})}{|n_{j}|^{s_{j}}}\sum_{(n,N_{j}) = 1}\frac{\psi_{j}(n)H(m_{1},\ldots,nn_{j},\ldots,m_{r})}{|n|^{s_{j}}},
     \end{align*}
@@ -534,12 +534,12 @@
     \begin{equation}\label{equ:WMDS_functional_equation_1}
         \sum_{\text{$m_{j}$ monic}}\frac{\psi_{j}(m_{j})H(m_{1},\ldots,m_{r})}{|m_{j}|^{s_{j}}} = L^{(N_{j})}(s_{j},\psi_{j}\chi_{M_{0}})\sum_{n_{j} \mid N_{j}^{\infty}}\frac{\psi_{j}(n_{j})H(m_{1},\ldots,n_{j},\ldots,m_{r})}{|n_{j}|^{s_{j}}}.
     \end{equation}
-    We will now examine the sum in the right-hand side of \cref{equ:WMDS_functional_equation_1}. We will show that it factors as a product. To see this, let $P$ be a prime dividing $N_{j}$. Then we may write
+    We will now examine the sum in the right-hand side of \cref{equ:WMDS_functional_equation_1}. We will show that it factors as a product over primes dividing $N_{j}$. To see this, let $P$ be a prime dividing $N_{j}$. Then we may write
     \begin{align*}
         \sum_{n_{j} \mid N_{j}^{\infty}}\frac{\psi_{j}(n_{j})H(m_{1},\ldots,n_{j},\ldots,m_{r})}{|n_{j}|^{s_{j}}} &= \sum_{\substack{n_{j} \mid N_{j}^{\infty} \\ (n_{j},P) = 1}}\sum_{k_{j} \ge 0}\frac{\psi_{j}(n_{j}P^{k_{j}})H(m_{1},\ldots,n_{j}P^{k_{j}},\ldots,m_{r})}{|n_{j}P^{k_{j}}|^{s_{j}}} \\
         &= \sum_{\substack{n_{j} \mid N_{j}^{\infty} \\ (n_{j},P) = 1}}\frac{\psi_{j}(n_{j})}{|n_{j}|^{s_{j}}}\sum_{k_{j} \ge 0}\frac{\psi_{j}(P^{k_{j}})H(m_{1},\ldots,n_{j}P^{k_{j}},\ldots,m_{r})}{|P^{k_{j}}|^{s_{j}}}.
     \end{align*}
-    Now let $P^{\b_{i}} \mid\mid m_{i}$ and $m_{i}^{(P)} = \frac{m_{i}}{P^{\b_{i}}}$ for $1 \le i \le r$. Then by twisted multiplicativity we may pull out a factor $H(m_{1}^{(P)},\ldots,n_{j},\ldots,m_{r}^{(P)})$ obtaining
+    Now let $P^{\b_{i}} \mid\mid m_{i}$ and let $m_{i}^{(P)}$ be the part of $m_{i}$ reltaviely prime to $P$ for $1 \le i \le r$. Then by twisted multiplicativity we may pull out a factor $H(m_{1}^{(P)},\ldots,n_{j},\ldots,m_{r}^{(P)})$ obtaining
     \begin{align*}
         \sum_{\substack{n_{j} \mid N_{j}^{\infty} \\ (n_{j},P) = 1}}\frac{\psi_{j}(n_{j})H(m_{1}^{(P)},\ldots,n_{j},\ldots,m_{r}^{(P)})}{|n_{j}|^{s_{j}}}\sum_{k_{j} \ge 0}\frac{\psi_{j}(P^{k_{j}})H(P^{\b_{1}},\ldots,P^{k_{j}},\ldots,P^{\b_{r}})}{|P^{k_{j}}|^{s_{j}}}&\prod_{\substack{i \sim j}}\legendre{m_{i}^{(P)}}{P^{k_{j}}}\legendre{P^{\b_{i}}}{n_{j}} \\
         \cdot &\prod_{\substack{i \sim \ell \\ i,\ell \neq j}}\legendre{m_{i}^{(P)}}{P^{\b_{\ell}}}\legendre{P^{\b_{i}}}{m_{\ell}^{(P)}}.
@@ -550,7 +550,7 @@
     \]
     Now set
     \[
-        \e_{P}(\what{m}) = \prod_{\substack{i \sim \ell \\ i,\ell \neq j}}\prod_{\substack{i \sim \ell \\ i,\ell \neq j}}\legendre{(m_{i}m_{\ell})^{(P)}}{P^{\b_{i}+\b_{\ell}}} \quad \text{and} \quad \e_{j}(\what{m}) = \prod_{P \mid N_{j}}\e_{P}(\what{m}).
+        \e_{P}(\what{m}) = \prod_{\substack{i \sim \ell \\ i,\ell \neq j}}\legendre{(m_{i}m_{\ell})^{(P)}}{P^{\b_{i}+\b_{\ell}}} \quad \text{and} \quad \e_{j}(\what{m}) = \prod_{P \mid N_{j}}\e_{P}(\what{m}).
     \]
     Note that $\e_{P}(\what{m})$ is the second product in our expression above. This factor is independent of both sums and so we may pull it outside. Further factoring out the sum over $k_{j}$, we obtain
     \begin{align*}
@@ -559,13 +559,13 @@
     \end{align*}
     After repeating this process to
     \[
-        \sum_{\substack{n_{j} \mid N_{j}^{\infty} \\ (n_{j},P) = 1}}\frac{\psi_{j}(n)H(m_{1}^{(P)},\ldots,n,\ldots,m_{r}^{(P)})}{|n|^{s_{j}}}\prod_{\substack{i \sim j}}\legendre{P^{\b_{i}}}{n},
+        \sum_{\substack{n_{j} \mid N_{j}^{\infty} \\ (n_{j},P) = 1}}\frac{\psi_{j}(n_{j})H(m_{1}^{(P)},\ldots,n_{j},\ldots,m_{r}^{(P)})}{|n|^{s_{j}}}\prod_{\substack{i \sim j}}\legendre{P^{\b_{i}}}{n_{j}},
     \]
     for all primes dividing $N_{j}$, the sum over $n_{j}$ factors as
     \[
-        \e_{j}(\what{m})\prod_{\substack{P \mid N_{j} \\ P^{\b_{i} \mid\mid m_{i}}}}\sum_{k_{j} \ge 0}\frac{\psi_{j}(P^{k_{j}})H(P^{\b_{1}},\ldots,P^{k_{j}},\ldots,P^{\b_{r}})}{|P^{k_{j}}|^{s_{j}}}\legendre{M^{(P)}}{P^{k_{j}}}.
+        \e_{j}(\what{m})\prod_{\substack{P \mid N_{j} \\ P^{\b_{i} \mid\mid m_{i}}}}\sum_{k_{j} \ge 0}\frac{\psi_{j}(P^{k_{j}})H(P^{\b_{1}},\ldots,P^{k_{j}},\ldots,P^{\b_{r}})}{|P^{k_{j}}|^{s_{j}}}\legendre{M^{(P)}}{P^{k_{j}}},
     \]
-    Therefore, we have
+    where $M^{(P)} = \prod_{i \sim j}m_{i}^{(P)}$ is the part of $M$ relatively prime to $P$. Therefore, we have
     \begin{equation}\label{equ:WMDS_functional_equation_2}
         \begin{aligned}
             \sum_{\text{$m_{j}$ monic}}\frac{\psi_{j}(m_{j})H(m_{1},\ldots,m_{r})}{|m_{j}|^{s_{j}}} &= \e_{j}(\what{m})L^{(N_{j})}(s_{j},\psi_{j}\chi_{M_{0}}) \\
@@ -597,7 +597,7 @@
         \[
             Q_{P^{2\a}}(s_{j};\psi_{j}\chi_{M_{0}}) = (1-(\psi_{j}\chi_{M_{0}})(P)|P|^{-s_{j}})\sum_{k_{j} \ge 0}\frac{(\psi_{j}\chi_{M_{0}})(P^{k_{j}})H(P^{\b_{1}},\ldots,P^{k_{j}},\ldots,P^{\b_{r}})}{|P^{k_{j}}|^{s_{j}}}.
         \]
-        Then $(1-(\psi_{j}\chi_{M_{0}})(P)|P|^{-s_{j}})^{-1}Q_{P^{2\a}}(s_{j};\psi_{j}\chi_{M_{0}})$ is the sum over $k_{j}$. Using statement (i) of \cref{prop:T_functional_equations} with $x_{j} = (\psi_{j}\chi_{M^{(P)}})(P)|P|^{-s_{j}}$ again and using using the fact $((\psi_{j}\chi_{M^{(P)}})(P))^{2} = 1$ yields the functional equation
+        Then $(1-(\psi_{j}\chi_{M_{0}})(P)|P|^{-s_{j}})^{-1}Q_{P^{2\a}}(s_{j};\psi_{j}\chi_{M_{0}})$ is the sum over $k_{j}$. Using statement (i) of \cref{prop:T_functional_equations} with $x_{j} = (\psi_{j}\chi_{M^{(P)}})(P)|P|^{-s_{j}}$ again and using the fact $((\psi_{j}\chi_{M^{(P)}})(P))^{2} = 1$ yields the functional equation
         \[
             Q_{P^{2\a}}(s_{j};\psi_{j}\chi_{M_{0}}) = |P|^{\a(1-2s_{j})}Q_{P^{2\a}}(1-s_{j};\psi_{j}\chi_{M_{0}}).
         \]
@@ -736,7 +736,7 @@
     \[
         \L_{0} = \L \cup \bigcup_{1 \le j \le r} \{(s_{1},\ldots,s_{r}):\Re(s_{j}) > -c_{2}, \Re(s_{i}) > 2c_{2}+c_{3}+2 \text{ for } i \neq j\}.
     \]
-    Technically we only need $\Re(s_{i}) > 2c_{2}+c_{3}+2$ if $i \sim j$ and $\Re(s_{i}) > 1+c_{3}$ otherwise. But this is unimportant since $\L_{0}$ is sufficiently large. Indeed, $\L_{0}$ is a connected tube domain and
+    Technically we only need $\Re(s_{i}) > 2c_{2}+c_{3}+2$ if $i \sim j$ and $\Re(s_{i}) > 1+c_{3}$ otherwise. But this is unimportant since $\L_{0}$ is a sufficiently large region. Indeed, $\L_{0}$ is a connected tube domain and
     \[
         \L_{W} = \bigcup_{w \in W}w\L_{0},
     \]
