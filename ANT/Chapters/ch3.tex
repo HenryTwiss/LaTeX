@@ -1,5 +1,5 @@
 \chapter{\texorpdfstring{$L$}{L}-functions}\label{ch:Standard_Class_L-functions}
-  We start our discussion of $L$-functions with Dirichlet series. Dirichlet series are essential tools in analytic number theory because they are a way of analytically encoding arithmetic information. If the Dirichlet series possesses sufficiently large analytic continuation we call it an $L$-function and from the analytic properties of $L$-functions we can extract number theoritic results. After discussing Dirichlet series we will define a specific class of $L$-functions: Selberg class $L$-functions. Next we show that several natural Dirichlet series are actually Selberg class $L$-functions. Specifically, we discuss the Riemann zeta function, $L$-functions attached to Dirichlet characters, and $L$-functions formed from modular forms. In the case of modular forms we also describe a method of Rankin and Selberg for constructing new $L$-functions from old ones.
+  We start our discussion of $L$-functions with Dirichlet series. Dirichlet series are essential tools in analytic number theory because they are a way of analytically encoding arithmetic information. If the Dirichlet series possesses sufficiently large analytic continuation we call it an $L$-function and from the analytic properties of $L$-functions we can extract number theoritic results. After discussing Dirichlet series we will define a specific class of $L$-functions: Selberg class $L$-functions. Next we show that several natural Dirichlet series are actually Selberg class $L$-functions. Specifically, we discuss the Riemann zeta function, $L$-functions attached to Dirichlet characters, and $L$-functions formed from holomorphic forms. In the case of holomorphic forms we also describe a method of Rankin and Selberg for constructing new $L$-functions from old ones.
   \section{The General Setup for \texorpdfstring{$L$}{L}-functions}\label{sec:The_General_Setup_for_L-functions}
     \subsection*{Dirichlet Series}
       A \textbf{Dirichlet series}\index{Dirichlet series} $D(s)$ is a sum of the form
@@ -775,7 +775,7 @@
       \[
         L(s,f) = \sum_{n \ge 1}\frac{a_{f}(n)}{n^{s}} = \sum_{n \ge 1}\frac{\l_{f}(n)}{n^{s+\frac{k-1}{2}}},
       \]
-      where $a_{f}(n) = \l_{f}(n)n^{-\frac{k-1}{2}}$ (here we are abusing notation for the Fourier coefficeints of modular forms). Our goal now is to show that this $L$-function satisfies many properties of the Selberg class and will belong to the Selberg class if $f$ is a primitive Hecke eigenform. First, we need to ensure that the $L$-function is locally absolutely uniformly convergent. By appealing to a trick of Hecke, suitably named \textbf{Hecke's trick}\index{Hecke's trick} we can obtain a weak polynomial bound for $\l_{f}(n)$. Hecke's trick actually works over any congruence subgroup $\G$ and any cusp form on $\G\backslash\H$ so we will state it somewhat generally:
+      where $a_{f}(n) = \l_{f}(n)n^{-\frac{k-1}{2}}$ (here we are abusing notation for the Fourier coefficeints of holomorphic forms). Our goal now is to show that this $L$-function satisfies many properties of the Selberg class and will belong to the Selberg class if $f$ is a primitive Hecke eigenform. First, we need to ensure that the $L$-function is locally absolutely uniformly convergent. By appealing to a trick of Hecke, suitably named \textbf{Hecke's trick}\index{Hecke's trick} we can obtain a weak polynomial bound for $\l_{f}(n)$. Hecke's trick actually works over any congruence subgroup $\G$ and any cusp form on $\G\backslash\H$ so we will state it somewhat generally:
 
       \begin{method}[Hecke's trick]
         Let $f \in \mc{S}_{k}(\G)$ with Fourier coefficients $a(n)$. The function $\left|f(z)\Im(z)^{\frac{k}{2}}\right|$ is $\G$-invariant because $\Im(\g z)^{\frac{k}{2}} = \frac{\Im(z)^{\frac{k}{2}}}{|j(\g,z)|^{k}}$ and $|\chi(\g)| = 1$. Moreover, it is bounded on $\mc{F}_{\G}$ because $f$ is a cusp form. Then $\G$-invariance implies $\left|f(z)\Im(z)^{\frac{k}{2}}\right|$ is bounded on $\H$. From the definition of the Fourier coefficients, it follows that
@@ -787,7 +787,7 @@
 
       From Hecke's trick it follows immediately that $L(s,f)$ is locally absolutely uniformly convergent in the region $\Re(s) > \frac{3}{2}$. As $f$ is a primitive Hecke eigenform we can do better. Indeed, by the Ramanujan conjecture, for any $\e > 0$ we have $\l_{f}(n) \ll n^{\frac{k-1}{2}+\e}$ because the Fourier coefficients are multiplicative and $\s_{0}(n) \ll n^{\e}$ (see \cite{montgomery2006multiplicative} for a proof). In particular, $a_{f}(n) \ll n^{\e}$. So $L(s,f)$ is locally absolutely uniformly convergent for $\Re(s) > 1+\e$ and hence locally absolutely uniformly convergent for $\Re(s) > 1$.
 
-      The $L$-function will have an Euler product since $f$ is a primitive Hecke eigenform. In this case, \cref{prop:newform_Fourier_coefficient_recurrence_modular} implies that the coefficients $a_{f}(n)$ are multiplicative and satisfy
+      The $L$-function will have an Euler product since $f$ is a primitive Hecke eigenform. In this case, \cref{prop:newform_Fourier_coefficient_recurrence_holomorphic} implies that the coefficients $a_{f}(n)$ are multiplicative and satisfy
       \begin{equation}\label{equ:primitive_Hecke_eigenform_recurrence_for_coefficients_of_modular_L-function}
         a_{f}(p^{n}) = \begin{cases} a_{f}(p^{n-1})a_{f}(p)-\chi(p)a_{f}(p^{n-2}) & \text{if $p \nmid N$}, \\ (a_{f}(p))^{n} & \text{if $p \mid N$}, \end{cases}
       \end{equation}
@@ -934,7 +934,7 @@
         \]
       \end{theorem}
   \section{The Rankin-Selberg Method}\label{sec:The_Rankin-Selberg_Method}
-    We are ready to describe the Rankin-Selberg method. This is a process by which we can construct new $L$-functions from old ones. We discuss the method only in the simplest case for two reasons. The first is that many technical difficulties arise in the fully general setting. The second is that in the simplest case the Rankin-Selberg convolution involves a Maass form we have studied and this establishes a direct connection between modular forms and Maass forms. To combat not working in full generality, we make remarks where the theory needs to be adjusted in more general settings.
+    We are ready to describe the Rankin-Selberg method. This is a process by which we can construct new $L$-functions from old ones. We discuss the method only in the simplest case for two reasons. The first is that many technical difficulties arise in the fully general setting. The second is that in the simplest case the Rankin-Selberg convolution involves a Maass form we have studied and this establishes a direct connection between holomorphic forms and Maass forms. To combat not working in full generality, we make remarks where the theory needs to be adjusted in more general settings.
     \subsection*{The Defintion \& Euler Product of \texorpdfstring{$L(s,f \ox g)$}{L(s,f \ox g)}}
       We will start by discussing two different but related $L$-functions. Let $f,g \in \mc{S}_{k}(\PSL_{2}(\Z))$ be primitive Hecke eigenforms. Let the Fourier series for $f$ and $g$ be given by
       \[
@@ -1298,7 +1298,7 @@
         \]
       \end{proof}
 
-      Notice that if $g = f$, then $\<f,f\> \neq 0$ and therefore the residue at $s = 1$ is not zero and hence there is a genuine pole. Actually, by \cref{thm:newforms_characterization_modular} the primitive Hecke eigenforms are orthogonal so that $\<f,g\> = 0$ unless $f = g$. This is the only instance in which there is a pole. This verifies adjustment (iv) for Rankin-Selberg convolutions, and therefore we have shown altogether that $L(s,f \ox g)$ is the Rankin-Selberg convolution of $L(s,f)$ and $L(s,g)$. We summarize all of our work into the following theorem:
+      Notice that if $g = f$, then $\<f,f\> \neq 0$ and therefore the residue at $s = 1$ is not zero and hence there is a genuine pole. Actually, by \cref{thm:newforms_characterization_holomorphic} the primitive Hecke eigenforms are orthogonal so that $\<f,g\> = 0$ unless $f = g$. This is the only instance in which there is a pole. This verifies adjustment (iv) for Rankin-Selberg convolutions, and therefore we have shown altogether that $L(s,f \ox g)$ is the Rankin-Selberg convolution of $L(s,f)$ and $L(s,g)$. We summarize all of our work into the following theorem:
 
       \begin{theorem}
         For any two primitive Hecke eigenforms $f,g \in \mc{S}_{k}(\PSL_{2}(\Z))$, $L(s,f \ox g)$ is a Selberg class $L$-function. It admits meromorphic continuation to $\C$ via the integral representation
