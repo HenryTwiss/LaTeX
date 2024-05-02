@@ -138,8 +138,8 @@
           Statements (i)-(iii) and (v) follow immediately from the definition of the $o$-estimate and basic properties of limits. Statement (iv) follows from the definition and that $\sum_{1 \le i \le n}|g_{i}(z)| \ge |g_{i}(z)|$ for any $1 \le i \le n$.
         \end{proof}
     \section{Dirichlet Characters}
-      The most important multiplicative periodic functions for an analytic number theorist are the Dirichlet characters. These have a rich theory of their own which we will discuss, and naturally appear in many other places. It will be convienent to setup some notation for the remainder of the text. If $a$ is a residue class that is invertible, we let $\conj{a}$ denote the inverse class. For example, if $a$ is taken modulo $m$ and $(a,m) = 1$ then $\conj{a}$ is the residue class modulo $m$ such that $a\conj{a} \equiv 1 \tmod{m}$.
-      
+      The most important multiplicative periodic functions for an analytic number theorist are the Dirichlet characters. These have a rich theory of their own which we will discuss, and naturally appear in many other places. It will be convienent to setup some notation for the remainder of the text. If $a$ is a residue class that is invertible, we let $\conj{a}$ denote the inverse class. For example, if $a$ is taken modulo $m$ and $(a,m) = 1$ then $\conj{a}$ is the residue class modulo $m$ such that $a\conj{a} \equiv 1 \tmod{m}$. Moreover, a $'$ on a sum over a set of integers modulo $m$ will indicate that the sum is over all $a \tmod{m}$ such that $(a,m) = 1$.
+
       For any finite abelian group $G$, a \textbf{character}\index{character} $\vphi$ is a homomorphism $\vphi:G \to \C$. Therefore they form a group under multiplication. This is the \textbf{character group}\index{character group} $\what{G}$. If $|G| = n$, then $\vphi(g)^{n} = \vphi(g^{n}) = 1$ so that $\vphi$ takes values in the $n$-th roots of unity. Moreover, we define the \textbf{conjugate character}\index{conjugate character} $\conj{\vphi}$ by $\conj{\vphi}(g) = \conj{\vphi(a)}$. Clearly this is also a character. Since $\vphi$ takes its value in the roots of unity, $\conj{\vphi(a)} = \vphi(a)^{-1}$ so that $\conj{\vphi} = \vphi^{-1}$. The character group is easy to classifiy:
 
       \begin{proposition}\label{prop:dual_character_isomorphism}
@@ -172,7 +172,7 @@
         \begin{enumerate}[label=(\roman*)]
           \item
           \[
-            \frac{1}{\phi(m)}\sum_{a \tmod{m}}\chi(a)\conj{\psi}(a) = \d_{\chi,\psi}.
+            \frac{1}{\phi(m)}\psum_{a \tmod{m}}\chi(a)\conj{\psi}(a) = \d_{\chi,\psi}.
           \]
           \item
           \[
@@ -183,9 +183,9 @@
       \begin{proof}
         We will prove the statements separately.
         \begin{enumerate}[label=(\roman*)]
-          \item Denote the left-hand side by $S$ and let $b \equiv 1 \tmod{m}$. Then $a \to ab$ is a bijection on $(\Z/m\Z)$ so that
+          \item Denote the left-hand side by $S$ and let $b \equiv 1 \tmod{m}$. Then $a \to ab$ is a bijection on $(\Z/m\Z)^{\ast}$ so that
           \[
-            \chi(b)\conj{\psi}(b)\sum_{a \tmod{m}}\chi(a)\conj{\psi}(a) = \sum_{a \tmod{m}}\chi(ab)\conj{\psi}(ab) = \sum_{a \tmod{m}}\chi(a)\conj{\psi}(a).
+            \chi(b)\conj{\psi}(b)\psum_{a \tmod{m}}\chi(a)\conj{\psi}(a) = \psum_{a \tmod{m}}\chi(ab)\conj{\psi}(ab) = \psum_{a \tmod{m}}\chi(a)\conj{\psi}(a).
           \]
           Consquently $\chi(b)\conj{\psi}(b)S = S$ so that $S = 0$ unless $\chi(b)\conj{\psi}(b) = 1$ for all $b$. This happens if and only if $\psi = \chi$ in which case $S = 1$. This proves (i).
           \item Denote the left-hand side by $S$. Let $\psi$ be any Dirichlet character modulo $m$. Since the Dirichlet characters form a group,
@@ -203,7 +203,7 @@
         \begin{enumerate}[label=(\roman*)]
           \item
           \[
-            \frac{1}{\phi(m)}\sum_{a \tmod{m}}\chi(a) = \d_{\chi,\chi_{m,0}}.
+            \frac{1}{\phi(m)}\psum_{a \tmod{m}}\chi(a) = \d_{\chi,\chi_{m,0}}.
           \]
           \item
           \[
@@ -270,9 +270,9 @@
       \subsection*{Ramanujan Sums}
         Let's begin with the Ramanujan sum. For a positive integer $m$ and any integer $b$, the \textbf{Ramanujan sum}\index{Ramanujan sum} $r(b;m)$ is defined by
         \[
-          r(b;m) = \sum_{\substack{a \tmod{m} \\ (a,m) = 1}}e^{\frac{2\pi iab}{m}} = \psum_{a \tmod{m}}e^{\frac{2\pi iab}{m}},
+          r(b;m) = \psum_{a \tmod{m}}e^{\frac{2\pi iab}{m}}.
         \]
-        where the $'$ in the second sum indicates that the sum is over all $a \tmod{m}$ such that $(a,m) = 1$. From now on, this is what a $'$ on a sum will mean provided the sum is over a residue class modulo a positive integer. In other cases, we will explain what the $'$ means. Note that the Ramanujan sum is a finite sum of $m$-th roots of unity on the unit circle. Clearly $r(0;m) = \phi(m)$ where $\phi$ is Euler's totient function. Ramanujan sums can be computed explicitly by means of the M\"obius function (see \cref{append:Arithmetic_Functions}):
+        Note that the Ramanujan sum is a finite sum of $m$-th roots of unity on the unit circle. Clearly $r(0;m) = \phi(m)$ where $\phi$ is Euler's totient function. Ramanujan sums can be computed explicitly by means of the M\"obius function (see \cref{append:Arithmetic_Functions}):
 
         \begin{proposition}\label{prop:Ramanujan_sum_evaluation}
           For any positive integer $m$ and any nonzero $b \in \Z$,
