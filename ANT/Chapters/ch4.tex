@@ -1,6 +1,6 @@
   \chapter{Additional Results}
     \section{Perron Formulas}
-      With the Mellin inversion formula, it is not hard to prove a very useful integral expression for the sum of coefficients of a Dirichlet series. First, we setup some general notation. If $D(s)$ is a Dirichlet series with coefficients $a(n)$, then for any real $X$ we set
+      With the Mellin inversion formula, it is not hard to prove a very useful integral expression for the sum of coefficients of a Dirichlet series. First, we setup some general notation. If $D(s)$ is a Dirichlet series with coefficients $a(n)$, then for any real $X$, we set
       \[
         A'(X) = \psum_{n \le X}a(n),
       \]
@@ -80,27 +80,23 @@
         The statement now follows from the truncated version of Perron's formula.
       \end{proof}
 
-      There is also a version of Perron's formula where we add a smoothing function $\psi:[0,\infty) \to [0,\infty)$. These sums generally look like
+      There is also a version of Perron's formula where we add a smoothing function. For any real $X$, we set
       \[
-        \sum_{n \ge 1}a(n)\psi\left(\frac{n}{X}\right),
+        A_{\psi}(X) = \sum_{n \ge 1}a(n)\psi\left(\frac{n}{X}\right),
       \]
-      where $\psi\left(\frac{x}{N}\right)$ weights $a(n)$ in such a way that the weight is dampened as $x \to \infty$ and or as $x \to 0$. This is most useful in two cases. The first is when we choose $\psi(x)$ to be a smooth bump function. In this setting, the bump function has either weight $1$ or $0$ depending upon $n$ and we can estimate sums like
+      where $\psi:[0,\infty) \to [0,\infty)$ is a compactly supported smooth function. This is most useful in two cases. The first is when we choose $\psi(x)$ to be a smooth bump function. In this setting, the bump function has applies weight $1$ or $0$ to the Dirichlet coefficeints $a(n)$ and we can estimate sums like
       \[
-        \sum_{\frac{X}{2} \le n < X}a(n) \quad \text{or} \quad \sum_{X \le n < X+Y}a(n).
+        \sum_{\frac{X}{2} \le n < X}a(n) \quad \text{or} \quad \sum_{X \le n < X+Y}a(n),
       \]
-      For some $X$ and $Y$ with $Y < X$. Sums of this type are called \textbf{unweighted}\index{unweighted}. In the second case, we might want to estimate the weighted sums
+      for some $X$ and $Y$ with $Y < X$. Sums of this type are called \textbf{unweighted}\index{unweighted}. As an example of an unweighted sum, let $\psi:[0,\infty) \to [0,\infty)$ be a smooth bump function that is identically $1$ on $[0,1]$ and decays to zero in the interval $\left[1,\frac{X+1}{X}\right]$. Explicitely,
       \[
-        \sum_{n \ge 1}a(n)\psi\left(\frac{n}{X}\right),
-      \]
-      where $\psi\left(\frac{x}{N}\right)$ weights $a(n)$ in such a way that the weight is dampened as $x \to \infty$ but is not always $0$ or $1$ as in the unweighted case. Sums of this type are called \textbf{weighted}\index{weighted}. As an example of an unweighted sum, let $\psi:[0,\infty) \to [0,\infty)$ be a smooth bump function that is identically $1$ on $[0,1]$ and decays to zero in the interval $\left[1,\frac{X+1}{X}\right]$. Explicitely,
-      \[
-          \psi(t) = \begin{cases} 1 & \text{if $0 \le t \le 1$}, \\ e^{-\frac{1-t}{\frac{X+1}{X}-t}} & \text{if $1 < t \le \frac{X+1}{X}$}, \\ 0 & \text{if $t \ge \frac{X+1}{X}$}. \end{cases}
+        \psi(t) = \begin{cases} 1 & \text{if $0 \le t \le 1$}, \\ e^{-\frac{1-t}{\frac{X+1}{X}-t}} & \text{if $1 < t \le \frac{X+1}{X}$}, \\ 0 & \text{if $t \ge \frac{X+1}{X}$}. \end{cases}
       \]
       Then 
       \[
-        \sum_{n \ge 1}a(n)\psi\left(\frac{n}{X}\right) = \sum_{n \le X}a(n).
+        A_{\psi}(X) = \sum_{n \ge 1}a(n)\psi\left(\frac{n}{X}\right) = \sum_{n \le X}a(n).
       \]
-      In general, we require $\psi:[0,\infty) \to [0,\infty)$ to be a compactly supported smooth function. Suppose the support of $\psi(x)$ is contained in $[0,C]$. These conditions will force the Mellin transform $\Psi(s)$ of $\psi(x)$ to exist and have nice properties. To see that $\Psi(s)$ exists, let $K$ be a compact set in the region $\Re(s) > 0$ and let $\b = \inf_{s \in K}\{\Re(s)\}$. Note that $\psi(x)$ is bounded because it is compactly supported. Then for $s \in K$,
+      In the second case, we want $\psi$ to dampen the $a(n)$ with a weight other than $1$ or $0$. Sums of this type are called \textbf{weighted}\index{weighted}. In any case, suppose the support of $\psi(x)$ is contained in $[0,C]$. These conditions will force the Mellin transform $\Psi(s)$ of $\psi(x)$ to exist and have nice properties. To see that $\Psi(s)$ exists, let $K$ be a compact set in the region $\Re(s) > 0$ and let $\b = \inf_{s \in K}\{\Re(s)\}$. Note that $\psi(x)$ is bounded because it is compactly supported. Then for $s \in K$,
       \[
         \Psi(s) = \int_{0}^{\infty}\psi(x)x^{s}\,\frac{dx}{x} \ll \int_{0}^{C}x^{\Re(s)-1}\,dx = \frac{x^{\Re(s)}}{\Re(s)}\bigg|_{0}^{C} \le \frac{C^{\Re(s)}}{\b}.
       \]
@@ -142,15 +138,14 @@
       \begin{theorem}[Perron's formula, smoothed version]
         Let $D(s)$ be a Dirichlet series with coefficient $a(n)$ and finite and nonnegative abscissa of absolute convergence $\s_{a}$. Let $\psi:[0,\infty) \to [0,\infty)$ be a compactly supported smooth function. Then for any $c > \s_{a}$,
         \[
-          A(X) = \frac{1}{2\pi i}\int_{\Re(s) = c}D(s)\Psi(s)X^{s}\,ds,
+          A_{\psi}(X) = \frac{1}{2\pi i}\int_{\Re(s) = c}D(s)\Psi(s)X^{s}\,ds,
         \]
         where $\Psi$ is the Mellin transform of $\psi$.
       \end{theorem}
       \begin{proof}
         This is just a computation:
         \begin{align*}
-          A(X) &= \sum_{n \le X}a(n) \\
-          &= \sum_{n \ge 1}a(n)\psi\left(\frac{n}{X}\right) \\
+          A_{\psi}(X) &= \sum_{n \ge 1}a(n)\psi\left(\frac{n}{X}\right) \\
           &= \sum_{n \ge 1}\frac{a(n)}{2\pi i}\int_{\Re(s) = c}\Psi(s)\left(\frac{n}{X}\right)^{-s}\,ds & \text{inverse mellin transform} \\
           &= \frac{1}{2\pi i}\int_{\Re(s) = \s}\sum_{n \ge 1}a(n)\Psi(s)\left(\frac{n}{X}\right)^{-s}\,ds & \text{DCT} \\
           &= \frac{1}{2\pi i}\int_{\Re(s) = c}D(s)\Psi(s)X^{s}\,ds. \\
@@ -274,7 +269,7 @@
         \]
       \end{theorem}
     \section{The Ramanujan Conjecture on Average}
-      Let $f$ be a weight $k$ primitive Hecke eigenform with Fourier coefficients $\l_{f}(n)$. As an application of the Rankin-Selberg method, it is possible to show the slightly weaker result that $\l_{f}(n) \ll n^{\frac{k-1}{2}+\e}$ holds on average, for any $\e > 0$, without assuming the Ramanujan conjecture. To see this, for any real $X$ we have
+      Let $f$ be a weight $k$ primitive Hecke eigenform with Fourier coefficients $\l_{f}(n)$. As an application of the Rankin-Selberg method, it is possible to show the slightly weaker result that $\l_{f}(n) \ll n^{\frac{k-1}{2}+\e}$ holds on average, for any $\e > 0$, without assuming the Ramanujan conjecture. To see this, for any real $X$, we have
       \begin{equation}\label{equ:Ramanujan_conjecture_on_average_1}
         \left(\sum_{n \le X}\l_{f}(n)\right)^{2} \le X\sum_{n \le X}|\l_{f}(n)|^{2},
       \end{equation}
