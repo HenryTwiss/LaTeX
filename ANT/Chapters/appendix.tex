@@ -60,7 +60,7 @@
       \]
       for all $n \ge 1$. This function is neither additive or multiplicative.
     \end{enumerate}
-  \section{The M\"obius Function}
+  \section{The M\"obius Function}\label{append:The_Mobius_Function}
     Recall that the M\"obius function is the arithmetic function $\mu$ defined by
     \[
       \mu(n) = \begin{cases} 1 & \text{if $n$ is square-free with an even number of prime factors}, \\ -1 & \text{if $n$ is square-free with an odd number of prime factors}, \\ 0 & \text{if $n$ is not square-free}, \end{cases}
@@ -76,11 +76,11 @@
     From this property, the important \textbf{M\"obius inversion formula}\index{M\"obius inversion formula} can be derived:
 
     \begin{theorem}[M\"obius inversion formula]
-      Suppose $f$ and $g$ are arithmetic functions satisfying
+      Suppose $f$ and $g$ are arithmetic functions. Then
       \[
         g(n) = \sum_{d \mid n}f(d),
       \]
-      for all $n \ge 1$. Then
+      for all $n \ge 1$, if and only if
       \[
         f(n) = \sum_{d \mid n}\mu(d)g\left(\frac{n}{d}\right)
       \]
@@ -95,6 +95,26 @@
         \sum_{n \ge 1}\frac{\mu(n)}{n^{s}} = \z(s)^{-1} = \prod_{p}(1-p^{-s}).
       \]
     \end{proposition}
+
+    There is also an important similar statement to the M\"obius inversion formula that we will need:
+
+    \begin{theorem}\label{thm:specially_multiplicative_functions}
+      Let $f$ be an arithmetic function and $B$ be the completely multiplicitive function defined on primes $p$ by
+      \[
+        B(p) = f(p)^{2}-f(p^{2}).
+      \]
+      Then
+      \[
+        f(n)f(m) = \sum_{d \mid (n,m)}B(d)f\left(\frac{nm}{d^{2}}\right),
+      \]
+      for all $n,m \ge 1$, if and only if
+      \[
+        f(nm) = \sum_{d \mid (n,m)}\mu(d)B(d)f\left(\frac{n}{d}\right)f\left(\frac{m}{d}\right),
+      \]
+      for all $n,m \ge 1$.
+    \end{theorem}
+
+    Any function $f$ satisfying the conditions of \cref{thm:specially_multiplicative_functions} is said to be \textbf{specially multiplicative}\index{specially multiplicative}.
   \section{The Generalized Sum of Divisors Function}
     Recall that the generalized sum of divisor function $\s_{s}(n)$ defined by
     \[
