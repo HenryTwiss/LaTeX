@@ -303,7 +303,7 @@
         where the last equality follows because $\chi(a) = 0$ unless $(a,m) = 1$. Gauss sums are interesting because the Dirichlet character is a multiplicative character while the exponenetial is an additive one. So the Gauss sums is a convolution between a multiplicative and additive character. This is the fundamental reason that makes them difficult to study as one needs to seperate the additive and multiplicative structures. Observe that if $m = 1$ then $\chi$ is the trivial character and $\tau(b,\chi) = 1$. So the interesting cases are when $m \ge 2$. There are some basic properties of Gauss sums that are very useful:
 
         \begin{proposition}\label{prop:Gauss_sum_reduction}
-          Let $\chi$ and $\psi$ be Dirichlet characters modulo $m \ge 2$ and $n \ge 2$ respectively and let $b \in \Z$. Then the following hold:
+          Let $\chi$ and $\psi$ be Dirichlet characters modulo $m,n \ge 2$ respectively and let $b \in \Z$. Then the following hold:
           \begin{enumerate}[label=(\roman*)]
             \item $\conj{\tau(b,\cchi)} = \chi(-1)\tau(b,\chi)$.
             \item If $(b,m) = 1$, then $\tau(b,\chi) = \cchi(b)\tau(1,\chi)$.
@@ -390,6 +390,23 @@
             &= \sum_{a' \tmod{m}}\chi(a')\left(\sum_{a \tmod{m}}e^{\frac{2\pi ia(a'-1)}{m}}\right).
           \end{align*}
           Let $S(a')$ denote the inner sum. For the $a'$ such that $a'-1 \equiv 0 \tmod{m}$, $S(a') = m$. Otherwise $a \to a\conj{(a'-1)}$ is a bijection on $\Z/m\Z$ (we assumed $m \neq 1$) so that $S(a') = 0$ because it is the sum of all $m$-th roots of unity. It follows that the double sum is $\chi(1)m = m$. So altogether $|\tau(1,\chi)|^{2} = m$ and hence $|\tau(1,\chi)| = \sqrt{m}$.
+        \end{proof}
+
+        As an almost immediate corollary to \cref{thm:Gauss_sum_modulus}, we deduce a useful expression for primitive Dirichlet characters:
+
+        \begin{corollary}
+          Let $\chi$ be a primitive Dirichlet character modulo $m$ Then
+          \[
+            \tau(n,\chi) = \cchi(n)\tau(1,\chi),
+          \]
+          for all $n \ge 1$. In particular,
+          \[
+            \chi(n) = \frac{1}{\tau(1,\cchi)}\sum_{a \tmod{m}}\cchi(a)e^{\frac{2\pi ian}{m}},
+          \]
+          for all $n \ge 1$.
+        \end{corollary}
+        \begin{proof}
+          If $(n,m) = 1$, then the first identity is \cref{prop:Gauss_sum_reduction} (ii). If $(n,m) > 1$, then the first identity follows from \cref{prop:Gauss_sum_reduction} (iii) and that $\cchi(n) = 0$. This proves the first identity in full. For the second identity, first note that $\tau(1,\chi) \neq 0$ by \cref{thm:Gauss_sum_modulus}. Replacing $\chi$ with $\cchi$, dividing the first identity by $\tau(1,\chi)$, and expanding the Gauss sum, gives the second identity.
         \end{proof}
 
         In light of \cref{thm:Gauss_sum_modulus} we define the \textbf{epsilon factor}\index{epsilon factor} $\e_{\chi}$ for a Dirichlet character $\chi$ of modulus $m$ by
