@@ -878,7 +878,7 @@
       This explicit definition of $T_{p}$ can be used to compute how the Hecke operators act on the Fourier coefficients of a holomorphic form:
 
       \begin{proposition}\label{prop:prime_Hecke_operators_acting_on_Fourier_coefficients_holomorphic}
-        Let $f \in \mc{M}_{k}(\G_{1}(N))$ with Fourier coefficients $a_{n}(f)$. Then
+        Let $f \in \mc{M}_{k}(\G_{1}(N))$ with Fourier coefficients $a_{n}(f)$. Then for primes $p$ with $(p,N) = 1$,
         \[
           (T_{p}f)(z) = \sum_{n \ge 0}\left(a_{np}(f)+\chi_{N,0}(p)p^{k-1}a_{\frac{n}{p}}(\<p\>f)\right)e^{2\pi inz},
         \]
@@ -967,7 +967,7 @@
       for all $r \ge 2$. Then by \cref{prop:Hecke_operators_commute_holomorphic}, the Hecke operators $T_{m}$ are multiplicative but not completely multiplicative in $m$. Moreover, they commute with the diamond operators $\<m\>$. Using these definitions, \cref{prop:prime_Hecke_operators_acting_on_Fourier_coefficients_holomorphic,prop:Hecke_operators_commute_holomorphic}, a more general formula for how the Hecke operators $T_{m}$ act on Fourier coefficients can be derived:
 
       \begin{proposition}\label{prop:general_Hecke_operators_acting_on_Fourier_coefficients_holomorphic}
-        Let $f \in \mc{M}_{k}(\G_{1}(N))$ with Fourier coefficients $a_{n}(f)$. Then
+        Let $f \in \mc{M}_{k}(\G_{1}(N))$ with Fourier coefficients $a_{n}(f)$. Then for $m \ge 1$ with $(m,N) = 1$,
         \[
           (T_{m}f)(z) = \sum_{n \ge 0}\left(\sum_{d \mid (n,m)}d^{k-1}a_{\frac{nm}{d^{2}}}(\<d\>f)\right)e^{2\pi inz},
         \]
@@ -1131,6 +1131,37 @@
       \begin{proof}
         This follows immediately from the spectral theorem along with \cref{prop:Hecke_operators_commute_holomorphic,prop:Hecke_operators_normal_holomorphic}.
       \end{proof}
+
+      As a near immediate consequence of \cref{thm:eigenforms_forms_spectral_theory_holomorphic}, we can show that the Fourier coefficients of eigenforms satisfy certain relations known as the \textbf{Hecke relations}\index{Hecke relations}:
+
+      \begin{proposition}[Hecke relations, holomorphic version]
+      Let $f \in \mc{S}_{k}(N,\chi)$ be a primitive Hecke eigenform with Fourier coefficients $\l_{f}(n)$. Then the Fourier coefficients are multiplicative and satisfy
+      \[
+        \l_{f}(n)\l_{f}(m) = \sum_{d \mid (n,m)}\chi(d)d^{k-1}\l_{f}\left(\frac{nm}{d^{2}}\right) \quad \text{and} \quad \l_{f}(nm) = \sum_{d \mid (n,m)}\mu(d)\chi(d)d^{k-1}\l_{f}\left(\frac{n}{d}\right)\l_{f}\left(\frac{m}{d}\right),
+      \]
+      for all $n,m \ge 1$ with $(nm,N) = 1$.
+      \end{proposition}
+      \begin{proof}
+        By \cref{thm:eigenforms_forms_spectral_theory_holomorphic} it suffices to verify this when $f$ is a Hecke eigenform. We may also assume $f$ is Hecke normalized without any harm. The multiplicativity of the Fourier coefficients now follows from the multiplicity of the Hecke operators. Moreover, the first identity follows immeditely from computing the $n$-th Fourier coefficeint of $T_{m}f$ in two different ways. On the one hand, use that $f$ is a Hecke eigenform. On the other hand, use \cref{prop:general_Hecke_operators_acting_on_Fourier_coefficients_holomorphic}. For the second identity, we have
+        \[
+          \chi(p)p^{k-1} = \l_{f}(p)^{2}-\l_{f}(p^{2}),
+        \]
+        provided $(p,N) = 1$, by computing the $p$-th Fourier coefficeint of $T_{p}f$ in two different ways as we just did above. The second identity now follows from the first because $\l_{f}(n)$ is a specially multiplicative function in $n$ (see \cref{append:The_Mobius_Function}).
+      \end{proof}
+
+      As an immedite consequence of the Hecke relations, the Hecke operators satisfy analogous relations:
+
+      \begin{corollary}\label{cor:Hecke_relations_operator_holomorphic}
+        For all $n,m \ge 1$ with $(nm,N) = 1$, we have
+        \[
+          T_{n}T_{m} = \sum_{d \mid (n,m)}\chi(d)d^{k-1}T_{\frac{nm}{d^{2}}} \quad \text{and} \quad T_{nm} = \sum_{d \mid (n,m)}\mu(d)\chi(d)d^{k-1}T_{\frac{n}{d}}T_{\frac{m}{d}}.
+        \]
+      \end{corollary}
+      \begin{proof}
+        This is immedite from \cref{thm:eigenforms_forms_spectral_theory_holomorphic} and the Hecke relations.
+      \end{proof}
+
+      The identities in \cref{cor:Hecke_relations_operator_holomorphic} can also be established directly. Moreover, the first identity is symmetric in $n$ and $m$ so it can be used to show that the Hecke operators commute.
     \subsection*{Atkin–Lehner Theory}
       So far, our entire theory of holomorphic forms has started with a fixed congruence subgroup of some level. Atkin–Lehner theory, or the theory of oldforms \& newforms, allows us to discuss holomorphic forms in the context of moving between levels. In this setting, we will only deal with congruence subgroups of the form $\G_{1}(N)$ and cusp forms on $\G_{1}(N)\backslash\H$. The easiest way lift a holomorphic form from a smaller level to a larger level is to observe that if $M \mid N$, then $\G_{1}(N) \le \G_{1}(M)$ so there is a natural inclusion $\mc{S}_{k}(\G_{1}(M)) \subseteq \mc{S}_{k}(\G_{1}(N))$. There is a less trivial way of lifting from $\mc{S}_{k}(\G_{1}(M))$ to $\mc{S}_{k}(\G_{1}(N))$. For any $d \mid \frac{N}{M}$, let $\a_{d} = \begin{psmallmatrix} d & 0 \\ 0 & 1 \end{psmallmatrix}$. If $f \in \mc{S}_{k}(\G_{1}(M))$, then
       \[
@@ -1222,24 +1253,7 @@
         Since $r$ was chosen to be minimal, we must have $\l_{f_{i}}(p)-\l_{f_{1}}(p)$ for all $i$. But $p$ was arbitrary, so $f_{i} = f_{1}$ for all $i$ by since eigenforms are determined by their Fourier coefficients at primes (see the definition of $T_{n}$ and \cref{prop:Hecke_operators_commute_holomorphic}). Hence $r = 1$ which is a contradiction.
       \end{proof}
 
-      Statement (i) in \cref{thm:newforms_characterization_holomorphic} says that newforms are Hecke eigenforms. This shows that newforms are the generalization of eigenforms for the congruence subgroups $\G_{1}(N)$. Also, the Fourier coefficients of primitive Hecke eigenforms satisfy the \textbf{Hecke relations}\index{Hecke relations}:
-
-      \begin{proposition}[Hecke relations, holomorphic version]
-      Let $f \in \mc{S}_{k}(N,\chi)$ be a primitive Hecke eigenform with Fourier coefficients $\l_{f}(n)$. Then the Fourier coefficients are multiplicative and satisfy
-      \[
-        \l_{f}(n)\l_{f}(m) = \sum_{d \mid (n,m)}\chi(d)d^{k-1}\l_{f}\left(\frac{nm}{d^{2}}\right) \quad \text{and} \quad \l_{f}(nm) = \sum_{d \mid (n,m)}\mu(d)\chi(d)d^{k-1}\l_{f}\left(\frac{n}{d}\right)\l_{f}\left(\frac{m}{d}\right),
-      \]
-      for all $n,m \ge 1$.
-      \end{proposition}
-      \begin{proof}
-        The Fourier coefficients are multiplicative since the Hecke operators are and $f$ is a primitive Hecke eigenform. The first identity follows immeditely from computing the $n$-th Fourier coefficeint of $T_{m}f$ in two different ways. On the one hand, use that $f$ is a primitive Hecke eigenform. On the other hand, use \cref{prop:general_Hecke_operators_acting_on_Fourier_coefficients_holomorphic}. For the second identity, we have
-        \[
-          \chi(p)p^{k-1} = \l_{f}(p)^{2}-\l_{f}(p^{2}),
-        \]
-        by computing the $p$-th Fourier coefficeint of $T_{p}f$ in two different ways as we just did. The second identity now follows because $\l_{f}(n)$ is a specially multiplicative function in $n$ (see \cref{append:The_Mobius_Function}).
-      \end{proof}
-
-      Statement (ii) in \cref{thm:newforms_characterization_holomorphic} is referred to as the \textbf{multiplicity one theorem}\index{multiplicity one theorem} for holomorphic forms. It can be interpreted as saying that a basis of newforms for $\mc{S}_{k}(\G_{1}(N))^{\mathrm{new}}$ contains one element per ``eigenvalue'' where we mean a set of eigenvalues one for each Hecke operator $T_{m}$. With a stronger version of the multiplicity one theorem, often called the \textbf{strong multiplicity one theorem}\index{strong multiplicity one theorem} for holomorphic forms, one can prove that the Fourier coefficeints of primitive Hecke eigenforms are real. This result takes a lot of work to show (see \cite{diamond2005first} for a note and appropriate references) and while we will not need it in the following, we state it for convenience:
+      Statement (i) in \cref{thm:newforms_characterization_holomorphic} says that newforms are Hecke eigenforms. This shows that newforms are the generalization of eigenforms for the congruence subgroups $\G_{1}(N)$. In particular, the Hecke relations for primitive Hecke eigenforms hold for all $n,m \ge 1$. Statement (ii) in \cref{thm:newforms_characterization_holomorphic} is referred to as the \textbf{multiplicity one theorem}\index{multiplicity one theorem} for holomorphic forms. It can be interpreted as saying that a basis of newforms for $\mc{S}_{k}(\G_{1}(N))^{\mathrm{new}}$ contains one element per ``eigenvalue'' where we mean a set of eigenvalues one for each Hecke operator $T_{m}$. With a stronger version of the multiplicity one theorem, often called the \textbf{strong multiplicity one theorem}\index{strong multiplicity one theorem} for holomorphic forms, one can prove that the Fourier coefficeints of primitive Hecke eigenforms are real. This result takes a lot of work to show (see \cite{diamond2005first} for a note and appropriate references) and while we will not need it in the following, we state it for convenience:
 
       \begin{theorem}
         The Fourier coefficeints of primitive Hecke eigenforms are real.
@@ -1819,7 +1833,7 @@
       We use \cref{prop:explicit_description_of_Hecke_operators_Maass} to understand how the Hecke operators act on the Fourier coefficeints of Maass forms:
 
       \begin{proposition}\label{prop:prime_Hecke_operators_acting_on_Fourier_coefficients_Maass}
-        Let $f \in \mc{A}_{t}(\G_{1}(N))$ with Fourier coefficients $a_{n}(f)$. Then
+        Let $f \in \mc{A}_{t}(\G_{1}(N))$ with Fourier coefficients $a_{n}(f)$. Then for primes $p$ with $(p,N) = 1$,
         \[
           (T_{p}f)(z) = \sum_{n \in \Z}\left(a_{np}(f)+\chi_{N,0}(p)a_{\frac{n}{p}}(\<p\>f)\right)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y)e^{2\pi inx},
         \]
@@ -1860,7 +1874,7 @@
       for all $r \ge 2$. By \cref{prop:Hecke_operators_commute_Maass}, the Hecke operators $T_{m}$ are multiplicative but not completely multiplicative in $m$ and they commute with the diamond operators $\<m\>$. Moreover, a more general formula for how the Hecke operators $T_{m}$ act on the Fourier coefficients can be derived:
 
       \begin{proposition}\label{prop:general_Hecke_operators_acting_on_Fourier_coefficients_Maass}
-        Let $f \in \mc{A}_{t}(\G_{1}(N))$ with Fourier coefficients $a_{n}(f)$. Then
+        Let $f \in \mc{A}_{t}(\G_{1}(N))$ with Fourier coefficients $a_{n}(f)$. Then for $m \ge 1$ with $(m,N) = 1$,
         \[
           (T_{m}f)(z) = \sum_{n \ge 0}\left(\sum_{d \mid (n,m)}a_{\frac{nm}{d^{2}}}(\<d\>f)\right)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y)e^{2\pi inx},
         \]
@@ -1914,7 +1928,33 @@
         This follows immediately from the spectral theorem along with \cref{prop:Hecke_operators_commute_Maass,prop:Hecke_operators_normal_Maass}.
       \end{proof}
 
-      The orthonormal basis in \cref{thm:cusp_form_spectrum} can be taken to be an orthonormal basis of eigenforms. Indeed, it is clear that the Laplace operator commutes with the diamond and Hecke operators on $\mc{C}_{t}(\G)$. The observation now follows from \cref{thm:eigenforms_forms_spectral_theory_Maass}.
+      The orthonormal basis in \cref{thm:cusp_form_spectrum} can be taken to be an orthonormal basis of eigenforms. Indeed, it is clear that the Laplace operator commutes with the diamond and Hecke operators on $\mc{C}_{t}(\G)$. The observation now follows from \cref{thm:eigenforms_forms_spectral_theory_Maass}. Also, just as in the holomorphic setting, we have \textbf{Hecke relations}\index{Hecke relations}:
+
+      \begin{proposition}[Hecke relations, Maass version]
+        Let $f \in \mc{C}_{t}(N,\chi)$ be a primitive Hecke-Maass eigenform with Fourier coefficients $\l_{f}(n)$. Then the Fourier coefficients are multiplicative and satisfy
+        \[
+          \l_{f}(n)\l_{f}(m) = \sum_{d \mid (n,m)}\chi(d)\l_{f}\left(\frac{nm}{d^{2}}\right) \quad \text{and} \quad \l_{f}(nm) = \sum_{d \mid (n,m)}\mu(d)\chi(d)\l_{f}\left(\frac{n}{d}\right)\l_{f}\left(\frac{m}{d}\right),
+        \]
+        for all $n,m \ge 1$ with $(nm,N) = 1$.
+      \end{proposition}
+      \begin{proof}
+        Mimic the proof of the Hecke relations for holomorphic forms.
+      \end{proof}
+      
+
+      As an immedite consequence of the Hecke relations, the Hecke operators satisfy analogous relations:
+
+      \begin{corollary}\label{cor:Hecke_relations_operator_Maass}
+        For all $n,m \ge 1$ with $(nm,N) = 1$, we have
+        \[
+          T_{n}T_{m} = \sum_{d \mid (n,m)}\chi(d)T_{\frac{nm}{d^{2}}} \quad \text{and} \quad T_{nm} = \sum_{d \mid (n,m)}\mu(d)\chi(d)T_{\frac{n}{d}}T_{\frac{m}{d}}.
+        \]
+      \end{corollary}
+      \begin{proof}
+        Mimic the proof of \cref{cor:Hecke_relations_operator_holomorphic}.
+      \end{proof}
+
+      Just as for holomorphic forms, the identities in \cref{cor:Hecke_relations_operator_Maass} can also be established directly and the first identity can be used to show that the Hecke operators commute.
     \subsection*{Atkin–Lehner Theory}
       There is also an Atkin–Lehner theoy for Maass forms. As with holomorphic forms, we will only deal with congruence subgroups of the form $\G_{1}(N)$ and cusp forms on $\G_{1}(N)\backslash\H$. The trivial way to lift Maass forms from a smaller level to a larger level is via the natural inclusion $\mc{C}_{t}(\G_{1}(M)) \subseteq \mc{C}_{t}(\G_{1}(N))$ provided $M \mid N$ which follows from $\G_{1}(N) \le \G_{1}(M)$. Alternatively, for any $d \mid \frac{N}{M}$, let $\a_{d} = \begin{psmallmatrix} d & 0 \\ 0 & 1 \end{psmallmatrix}$. If $f \in \mc{C}_{t}(\G_{1}(M))$, then
       \[
@@ -1984,20 +2024,7 @@
         Mimic the proof of \cref{thm:newforms_characterization_holomorphic}.
       \end{proof}
 
-      Statement (i) in \cref{thm:newforms_characterization_Maass} says that newforms are Hecke-Maass eigenforms. So again, newforms are the generalization of eigenforms for the congruence subgroups $\G_{1}(N)$. The Fourier coefficients of primitive Hecke-Maass eigenforms also satisfy the \textbf{Hecke relations}\index{Hecke relations}:
-
-      \begin{proposition}[Hecke relations, Maass version]
-        Let $f \in \mc{C}_{t}(N,\chi)$ be a primitive Hecke-Maass eigenform with Fourier coefficients $\l_{f}(n)$. Then the Fourier coefficients are multiplicative and satisfy
-        \[
-          \l_{f}(n)\l_{f}(m) = \sum_{d \mid (n,m)}\chi(d)\l_{f}\left(\frac{nm}{d^{2}}\right) \quad \text{and} \quad \l_{f}(nm) = \sum_{d \mid (n,m)}\mu(d)\chi(d)\l_{f}\left(\frac{n}{d}\right)\l_{f}\left(\frac{m}{d}\right),
-        \]
-        for all $n,m \ge 1$.
-      \end{proposition}
-      \begin{proof}
-        Mimic the proof of the Hecke relations for holomorphic forms.
-      \end{proof}
-      
-      Statement (ii) in \cref{thm:newforms_characterization_Maass} is referred to as the \textbf{multiplicity one theorem}\index{multiplicity one theorem} for Maass forms. So as is the case for holomorphic forms, $\mc{C}_{t}(\G_{1}(N))^{\mathrm{new}}$ contains one element per ``eigenvalue'' where we mean a set of eigenvalues one for each Hecke operator $T_{m}$. Interestingly, unlike holomorphic forms it is unknown if the Fourier coefficients of Maass forms are real or even algebraic.
+      Statement (i) in \cref{thm:newforms_characterization_Maass} says that newforms are Hecke-Maass eigenforms. So again, newforms are the generalization of eigenforms for the congruence subgroups $\G_{1}(N)$. In particular, primitive Maass-Hecke eigenforms satisfy the Hecke relations for all $n,m \ge 1$. Statement (ii) in \cref{thm:newforms_characterization_Maass} is referred to as the \textbf{multiplicity one theorem}\index{multiplicity one theorem} for Maass forms. So as is the case for holomorphic forms, $\mc{C}_{t}(\G_{1}(N))^{\mathrm{new}}$ contains one element per ``eigenvalue'' where we mean a set of eigenvalues one for each Hecke operator $T_{m}$. Interestingly, unlike holomorphic forms it is unknown if the Fourier coefficients of Maass forms are real or even algebraic.
     \subsection*{The Ramanujan-Petersson Conjecture}
       As for the size of the Fourier coefficients of Maass forms, much is currently unknown. But there is an analogous conjecture, known as the Ramanujan-Petersson conjecture, with some partial progress. To state it, suppose $f \in \mc{C}_{t}(N,\chi)$ is a primitive Hecke-Maass eigenform with Fourier coefficients $\l_{f}(n)$. For each prime $p$, consider the polynomial
       \[
