@@ -140,24 +140,7 @@
     \section{Dirichlet Characters}
       The most important multiplicative periodic functions for an analytic number theorist are the Dirichlet characters. These have a rich theory of their own which we will discuss, and naturally appear in many other places. It will be convienent to setup some notation for the remainder of the text. If $a$ is a residue class that is invertible, we let $\conj{a}$ denote the inverse class. For example, if $a$ is taken modulo $m$ and $(a,m) = 1$ then $\conj{a}$ is the residue class modulo $m$ such that $a\conj{a} \equiv 1 \tmod{m}$. Moreover, a $'$ on a sum over a set of integers modulo $m$ will indicate that the sum is over all $a \tmod{m}$ such that $(a,m) = 1$.
 
-      For any finite abelian group $G$, a \textbf{character}\index{character} $\vphi$ is a homomorphism $\vphi:G \to \C$. Therefore they form a group under multiplication. This is the \textbf{character group}\index{character group} $\what{G}$. If $|G| = n$, then $\vphi(g)^{n} = \vphi(g^{n}) = 1$ so that $\vphi$ takes values in the $n$-th roots of unity. Moreover, we define the \textbf{conjugate character}\index{conjugate character} $\conj{\vphi}$ by $\conj{\vphi}(g) = \conj{\vphi(a)}$. Clearly this is also a character. Since $\vphi$ takes its value in the roots of unity, $\conj{\vphi(a)} = \vphi(a)^{-1}$ so that $\conj{\vphi} = \vphi^{-1}$. The character group is easy to classifiy:
-
-      \begin{proposition}\label{prop:dual_character_isomorphism}
-        $\what{G} \cong G$.
-      \end{proposition}
-      \begin{proof}
-        By the classification of finite abelian groups write $G = \<g_{1}\> \x \<g_{2}\> \x \cdots \x \<g_{r}\>$ where the $g_{i}$ are cyclic of order say $n_{i}$ respectively. Then every $g \in G$ is of the form $g_{1}^{e_{1}}g_{2}^{e_{2}} \cdots g_{r}^{e_{r}}$ with $0 \le e_{i} \le n_{i}-1$. For each $g_{i}$, let $\w_{i}$ be a primtive $n_{i}$-th root of unity. Define a map
-        \[
-          \Phi:G \to \what{G} \qquad g_{1}^{e_{1}}g_{2}^{e_{2}} \cdots g_{r}^{e_{r}} \to \left(g_{1}^{f_{1}}g_{2}^{f_{2}} \cdots g_{r}^{f_{r}} \mapsto \w_{1}^{e_{1}f_{1}}\w_{2}^{e_{2}f_{2}} \cdots \w_{r}^{e_{r}f_{2}} \right).
-        \]
-        Since $\Phi(g)(h_{1})\Phi(g)(h_{2}) = \Phi(g)(h_{1}h_{2})$, $\Phi(g)$ is indeed a character of $G$. Clearly $\Phi$ is a homomorphism. Now let $\mu_{n_{i}}$ denote the group of $n_{i}$-th roots of unity and let $\rho_{i}:\mu_{n_{i}} \to (\Z/n_{i}\Z)$ be the unique isomorphism defined by $\rho_{i}(\w_{i}) = 1$. Define a map
-        \[
-          \Phi^{-1}:\what{G} \to G \qquad \chi \to g_{1}^{\rho_{1}(\chi(g_{1}))}g_{2}^{\rho_{2}(\chi(g_{2}))} \cdots g_{r}^{\rho_{r}(\chi(g_{r}))}.
-        \]
-        Clearly this is a homomorphism. Now $\chi$ is defined by its values on the $g_{i}$ each of which is taken to a power of $\w_{i}$ respectively say $e_{i}$. It follows that $\Phi$ and $\Phi^{-1}$ are inverses of each other and hence isomorphisms.
-      \end{proof}
-
-      A \textbf{Dirichlet character}\index{Dirichlet character} $\chi$ modulo $m \in \Z_{\ge 1}$ (or of modulus $m$) is an $m$-periodic completely multiplicative function $\chi:\Z \to \C$ such that $\chi(a) = 0$ if and only if $(a,m) > 1$. Unfortunately there is not a standard notation in the literature for indicating the modulus of a Dirichlet character. So when one sees $\chi$, the assumption is that the modulus is either clear from context or unimportant. We will follow this implicit approach, but if necessary we will write $\chi_{m}$ to denote a Dirichlet character modulo $m$. For any $m$, there is always the \textbf{principal Dirichlet character}\index{principal Dirichlet character} modulo $m$ which we denote by $\chi_{m,0}$ (sometimes also seen as $\chi_{0,m}$ or the ever more confusing $\chi_{0}$) and is defined by
+      A \textbf{Dirichlet character}\index{Dirichlet character} $\chi$ modulo $m \ge 1$ (or of modulus $m \ge 1$) is an $m$-periodic completely multiplicative function $\chi:\Z \to \C$ such that $\chi(a) = 0$ if and only if $(a,m) > 1$. Sometimes we will also write $\chi_{m}$ to denote a Dirichlet character modulo $m$ if we need to express the dependence upon the modulus. For any $m$, there is always the \textbf{principal Dirichlet character}\index{principal Dirichlet character} modulo $m$ which we denote by $\chi_{m,0}$ (sometimes also seen as $\chi_{0,m}$ or the ever more confusing $\chi_{0}$) and is defined by
       \[
         \chi_{m,0}(a) = \begin{cases} 1 & (a,m) = 1, \\ 0 & (a,m) > 1. \end{cases}
       \]
@@ -165,16 +148,16 @@
 
       We now discuss some basic facts of Dirichlet characters. Since $a^{\phi(m)} \equiv 1 \tmod{m}$  by Euler's little theorem, where $\phi$ is Euler's totient function, the multiplicativity of $\chi$ implies $\chi(a)^{\phi(m)} = 1$. Therefore the nonzero values of $\chi_{m}$ are $\phi(m)$-th roots of unity. In particular, there are only finitely many Dirichlet characters of any fixed modulus $m$. Given two Dirichlet character $\chi$ and $\psi$ modulo $m$, we define $\chi\psi$ by $\chi\psi(a) = \chi(a)\psi(a)$. This is also a Dirichlet character modulo $m$, so the Dirichlet characters modulo $m$ form an abelian group denoted by $X_{m}$. If we have a Dirichlet character $\chi$ modulo $m$, then $\cchi$ defined by $\cchi(a) = \conj{\chi(a)}$ is also a Dirichlet character modulo $m$ and is called the \textbf{conjugate Dirichlet character}\index{conjugate Dirichlet character} of $\chi$. Since the nonzero values of $\chi$ are roots of unity, if $(a,m) = 1$ then $\cchi(a) = \chi(a)^{-1}$. So $\cchi$ is the inverse of $\chi$.
 
-      This is all strikingly similar to characters on $(\Z/m\Z)^{\ast}$, and there is a connection. To see it, by the periodicity of $\chi$, it's nonzero values are uniquely determined by $(\Z/m\Z)^{\ast}$. Then since $\chi$ is multiplicative, it descends to a character $\chi$ of $(\Z/m\Z)^{\ast}$ (we abuse notation here). Conversely, if we are given a character $\chi$ of $(\Z/m\Z)^{\ast}$ we can extend it to a Dirichlet character by defining it to be $m$-periodic and declaring $\chi(a) = 0$ if $(a,m) > 1$. We call this extension the \textbf{zero extension}\index{zero extension}. So in other words, Dirichlet characters modulo $m$ are the zero extensions of group characters on $(\Z/m\Z)^{\ast}$. Clearly zero-extension respects multiplication of characters, so from \cref{prop:dual_character_isomorphism} we deduce that the group of Dirichlet characers modulo $m$ is isomorphic to $(\Z/m\Z)^{\ast}$. That is, $X_{m} \cong \what{(\Z/m\Z)^{\ast}} \cong (\Z/m\Z)^{\ast}$. In particular, there are $\phi(m)$ Dirichlet characters modulo $m$. From now on we identify Dirichlet characters modulo $m$ with their corresponding group characters of $(\Z/m\Z)^{\ast}$. We now state two very useful relations called \textbf{orthogonality relations}\index{orthogonality relations} for Dirichlet characters (there is a generalization to group characters but we will not need it):
+      This is all strikingly similar to characters on $(\Z/m\Z)^{\ast}$ (see \cref{append:Character_Theory}), and there is a connection. To see it, by the periodicity of $\chi$, it's nonzero values are uniquely determined by $(\Z/m\Z)^{\ast}$. Then since $\chi$ is multiplicative, it descends to a character $\chi$ of $(\Z/m\Z)^{\ast}$ (we abuse notation here). Conversely, if we are given a character $\chi$ of $(\Z/m\Z)^{\ast}$ we can extend it to a Dirichlet character by defining it to be $m$-periodic and declaring $\chi(a) = 0$ if $(a,m) > 1$. We call this extension the \textbf{zero extension}\index{zero extension}. So in other words, Dirichlet characters modulo $m$ are the zero extensions of group characters on $(\Z/m\Z)^{\ast}$. Clearly zero-extension respects multiplication of characters. As groups are isomorphic to their character groups (see \cref{append:Character_Theory}), we deduce that the group of Dirichlet characers modulo $m$ is isomorphic to $(\Z/m\Z)^{\ast}$. That is, $X_{m} \cong \what{(\Z/m\Z)^{\ast}} \cong (\Z/m\Z)^{\ast}$. In particular, there are $\phi(m)$ Dirichlet characters modulo $m$. From now on we identify Dirichlet characters modulo $m$ with their corresponding group characters of $(\Z/m\Z)^{\ast}$. We now state two very useful relations called \textbf{orthogonality relations}\index{orthogonality relations} for Dirichlet characters (this follows from the more general orthogonality relations in \cref{append:Character_Theory} but we wish to give a direct proof):
 
       \begin{proposition}\label{prop:Dirichlet_orthogonality_relations}
-        Let $\chi$ and $\psi$ be any two Dirichlet characters modulo $m$ and let $a$ and $b$ be any two integers modulo $m$. Then
+      \phantom{ }
         \begin{enumerate}[label=(\roman*)]
-          \item
+          \item For any two Dirichlet characters $\chi$ and $\psi$ modulo $m$,
           \[
             \frac{1}{\phi(m)}\psum_{a \tmod{m}}\chi(a)\conj{\psi}(a) = \d_{\chi,\psi}.
           \]
-          \item
+          \item For any two integers $a$ and $b$ taken modulo $m$,
           \[
             \frac{1}{\phi(m)}\sum_{\chi \tmod{m}}\chi(a)\cchi(b) = \d_{a,b}.
           \]
@@ -183,29 +166,29 @@
       \begin{proof}
         We will prove the statements separately.
         \begin{enumerate}[label=(\roman*)]
-          \item Denote the left-hand side by $S$ and let $b \equiv 1 \tmod{m}$. Then $a \to ab$ is a bijection on $(\Z/m\Z)^{\ast}$ so that
+          \item Denote the left-hand side by $S$ and let $b$ be such that $(b,m) = 1$. Then $a \to ab^{-1}$ is a bijection on $(\Z/m\Z)^{\ast}$ so that
           \[
-            \chi(b)\conj{\psi}(b)\psum_{a \tmod{m}}\chi(a)\conj{\psi}(a) = \psum_{a \tmod{m}}\chi(ab)\conj{\psi}(ab) = \psum_{a \tmod{m}}\chi(a)\conj{\psi}(a).
+            \frac{\chi(b)\conj{\psi}(b)}{\phi(m)}\psum_{a \tmod{m}}\chi(a)\conj{\psi}(a) = \frac{1}{\phi(m)}\psum_{a \tmod{m}}\chi(ab)\conj{\psi}(ab) = \frac{1}{\phi(m)}\psum_{a \tmod{m}}\chi(a)\conj{\psi}(a).
           \]
-          Consquently $\chi(b)\conj{\psi}(b)S = S$ so that $S = 0$ unless $\chi(b)\conj{\psi}(b) = 1$ for all $b$. This happens if and only if $\psi = \chi$ in which case $S = 1$. This proves (i).
-          \item Denote the left-hand side by $S$. Let $\psi$ be any Dirichlet character modulo $m$. Since the Dirichlet characters form a group,
+          Consquently $\chi(b)\conj{\psi}(b)S = S$ so that $S = 0$ unless $\chi(b)\conj{\psi}(b) = 1$ for all $b$ such that $(b,m) = 1$. This happens if and only if $\psi = \chi$ in which case $S = 1$. This proves (i).
+          \item Denote the left-hand side by $S$. Let $\psi$ be any Dirichlet character modulo $m$. As $\chi \to \chi\conj{\psi}$ is a bijection on $X_{m}$, we have
           \[
-            \psi(a)\conj{\psi}(b)\sum_{\chi \tmod{m}}\chi(a)\cchi(b) = \sum_{\chi \tmod{m}}\psi\chi(a)\conj{\psi\chi}(b) = \sum_{\chi \tmod{m}}\chi(a)\cchi(b).
+            \frac{\psi(a)\conj{\psi}(b)}{\phi(m)}\sum_{\chi \tmod{m}}\chi(a)\cchi(b) = \frac{1}{\phi(m)}\sum_{\chi \tmod{m}}\psi\chi(a)\conj{\psi\chi}(b) = \frac{1}{\phi(m)}\sum_{\chi \tmod{m}}\chi(a)\cchi(b).
           \]
-          Therefore $\psi(a)\conj{\psi}(b)S = S$ so that $S = 0$ unless both $a$ and $b$ are invertible modulo $m$ and $\psi(a)\conj{\psi}(b) = \psi(a\conj{b}) = 1$ for all $\psi$. This latter case happens if and only if $a \equiv b \tmod{m}$. To see this, suppose $a\conj{b} \neq 1 \tmod{m}$. Then taking $G = (\Z/m\Z)^{\ast}$ in the proof of \cref{prop:dual_character_isomorphism} and setting $\chi = \Phi(a\conj{b})$, we have that $\chi(a\conj{b})$ is the product of those primitive roots of unity whose orders are the prime power factors of $a\conj{b}$. So all of them have pairwise relatively prime order and hence cannot be $1$, a contradiction. So indeed $a \equiv b \tmod{m}$ and therefore $S = 1$. This proves (ii).
+          Therefore $\psi(a)\conj{\psi}(b)S = S$ so that $S = 0$ unless $(ab,m) = 1$ and $\psi(a)\conj{\psi}(b) = \psi(a\conj{b}) = 1$ for all Dirichlet characters $\psi$ modulo $m$. Given $(ab,m) = 1$, this last condition happens if and only if $a \equiv b \tmod{m}$ in which case $S = 1$. This proves (ii).
         \end{enumerate}
       \end{proof}
 
       In practical settings, the orthogonality relations are often used in the following form:
 
       \begin{corollary}\label{cor:Dirichlet_orthogonality_relations}
-        Let $\chi$ be a Dirichlet character modulo $m$ and let $a$ be an integer modulo $m$. Then
+      \phantom{ }
         \begin{enumerate}[label=(\roman*)]
-          \item
+          \item For any Dirichlet character $\chi$ modulo $m$,
           \[
             \frac{1}{\phi(m)}\psum_{a \tmod{m}}\chi(a) = \d_{\chi,\chi_{m,0}}.
           \]
-          \item
+          \item For any integer $a$ taken modulo $m$,
           \[
             \frac{1}{\phi(m)}\sum_{\chi \tmod{m}}\chi(a) = \d_{a,1}.
           \]
@@ -300,18 +283,18 @@
         \[
           \tau(b,\chi) = \sum_{a \tmod{m}}\chi(a)e^{\frac{2\pi iab}{m}} = \psum_{a \tmod{m}}\chi(a)e^{\frac{2\pi iab}{m}},
         \]
-        where the last equality follows because $\chi(a) = 0$ unless $(a,m) = 1$. Gauss sums are interesting because the Dirichlet character is a multiplicative character while the exponenetial is an additive one. So the Gauss sums is a convolution between a multiplicative and additive character. This is the fundamental reason that makes them difficult to study as one needs to seperate the additive and multiplicative structures. Observe that if $m = 1$ then $\chi$ is the trivial character and $\tau(b,\chi) = 1$. So the interesting cases are when $m \ge 2$. There are some basic properties of Gauss sums that are very useful:
+        where the last equality follows because $\chi(a) = 0$ unless $(a,m) = 1$. If $b = 1$ we will write $\tau(\chi)$ instead. That is, $\tau(\chi) = \tau(1,\chi)$. Gauss sums are interesting because the Dirichlet character is a multiplicative character while the exponenetial is an additive one. So the Gauss sums is a convolution between a multiplicative and additive character. This is the fundamental reason that makes them difficult to study as one needs to seperate the additive and multiplicative structures. Observe that if $m = 1$ then $\chi$ is the trivial character and $\tau(b,\chi) = 1$. So the interesting cases are when $m \ge 2$. There are some basic properties of Gauss sums that are very useful:
 
         \begin{proposition}\label{prop:Gauss_sum_reduction}
           Let $\chi$ and $\psi$ be Dirichlet characters modulo $m,n \ge 2$ respectively and let $b \in \Z$. Then the following hold:
           \begin{enumerate}[label=(\roman*)]
             \item $\conj{\tau(b,\cchi)} = \chi(-1)\tau(b,\chi)$.
-            \item If $(b,m) = 1$, then $\tau(b,\chi) = \cchi(b)\tau(1,\chi)$.
+            \item If $(b,m) = 1$, then $\tau(b,\chi) = \cchi(b)\tau(\chi)$.
             \item If $(b,m) > 1$ and $\chi$ is primitive, then $\tau(b,\chi) = 0$.
             \item If $(m,n) = 1$, then $\tau(b,\chi\psi) = \chi(n)\psi(m)\tau(b,\chi)\tau(b,\psi)$.
             \item Let $q$ be the conductor of $\chi$ and let $\wtilde{\chi}$ be the primitive Dirichlet character that lifts to $\chi$. Then
             \[
-              \tau(1,\chi) = \mu\left(\frac{m}{q}\right)\wtilde{\chi}\left(\frac{m}{q}\right)\tau(1,\wtilde{\chi}).
+              \tau(\chi) = \mu\left(\frac{m}{q}\right)\wtilde{\chi}\left(\frac{m}{q}\right)\tau(\wtilde{\chi}).
             \]
           \end{enumerate}
         \end{proposition}
@@ -329,7 +312,7 @@
             and (i) follows.
             \item The map $a \to a\conj{b}$ is an isomorphism of $\Z/m\Z$ since $(b,m) = 1$. Therefore
             \[
-              \tau(b,\chi) = \sum_{a \tmod{m}}\chi(a)e^{\frac{2\pi iab}{m}} = \sum_{a \tmod{m}}\chi(a\conj{b})e^{\frac{2\pi ia}{m}} = \cchi(b)\sum_{a \tmod{m}}\chi(a)e^{\frac{2\pi ia}{m}} = \cchi(b)\tau(1,\chi),
+              \tau(b,\chi) = \sum_{a \tmod{m}}\chi(a)e^{\frac{2\pi iab}{m}} = \sum_{a \tmod{m}}\chi(a\conj{b})e^{\frac{2\pi ia}{m}} = \cchi(b)\sum_{a \tmod{m}}\chi(a)e^{\frac{2\pi ia}{m}} = \cchi(b)\tau(\chi),
             \]
             and (ii) is proven.
             \item Now fix a divisor $d < m$ of $m$ and choose an integer $c$ such that $c \equiv 1 \tmod{m}$. Then necessarily $(c,m) = 1$. As $d \mid m$, $c \equiv 1 \tmod{d}$ and $(c,d) = 1$. Moreover, there is such a $c$ with the additional property that $\chi(c) \neq 1$. For if not, $\chi$ is induced from $\chi_{d,0}$ which contradicts $\chi$ being primitive. Now set $d = \frac{m}{(b,m)} < m$ and choose $c$ as above. Since $(c,m) = 1$, $a \to a\conj{c}$ is a bijection on $\Z/m\Z$, so that
@@ -351,9 +334,9 @@
               &= \chi(n)\psi(m)\tau(b,\chi)\tau(b,\psi).
             \end{align*}
             This proves (iv).
-            \item If $\left(\frac{m}{q},q\right) > 1$, then $\wtilde{\chi}\left(\frac{m}{q}\right) = 0$ so we need to show $\tau(1,\chi) = 0$. As $\left(\frac{m}{q},q\right) > 1$, there exists a prime $p$ such that $p \mid \frac{m}{q}$ and $p \mid q$. By Euclidean division we may write any $a$ modulo $m$ in the form $a = a'\frac{m}{p}+a''$ with $a'$ taken modulo $p$ and $a''$ taken modulo $\frac{m}{p}$. Then
+            \item If $\left(\frac{m}{q},q\right) > 1$, then $\wtilde{\chi}\left(\frac{m}{q}\right) = 0$ so we need to show $\tau(\chi) = 0$. As $\left(\frac{m}{q},q\right) > 1$, there exists a prime $p$ such that $p \mid \frac{m}{q}$ and $p \mid q$. By Euclidean division we may write any $a$ modulo $m$ in the form $a = a'\frac{m}{p}+a''$ with $a'$ taken modulo $p$ and $a''$ taken modulo $\frac{m}{p}$. Then
             \begin{equation}\label{equ:Gauss_sum_reduction_1}
-              \tau(1,\chi) = \sum_{a \tmod{m}}\chi(a)e^{\frac{2\pi ia}{m}} = \sum_{\substack{a' \tmod{p} \\ a'' \tmod{\frac{m}{p}}}}\chi\left(a'\frac{m}{p}+a''\right)e^{\frac{2\pi i\left(a'\frac{m}{p}+a''\right)}{m}}.
+              \tau(\chi) = \sum_{a \tmod{m}}\chi(a)e^{\frac{2\pi ia}{m}} = \sum_{\substack{a' \tmod{p} \\ a'' \tmod{\frac{m}{p}}}}\chi\left(a'\frac{m}{p}+a''\right)e^{\frac{2\pi i\left(a'\frac{m}{p}+a''\right)}{m}}.
             \end{equation}
             Since $p \mid \left(\frac{m}{q},q\right)$, we have $p^{2} \mid m$. Therefore $\left(a'\frac{m}{p}+a'',m\right) = 1$ if and only if $\left(a'\frac{m}{p}+a'',\frac{m}{p}\right) = 1$ and this latter condition is equivalent to $\left(a'',\frac{m}{p}\right) = 1$. Thus the last sum in \cref{equ:Gauss_sum_reduction_1} is
             \[
@@ -364,54 +347,54 @@
               \psum_{a'' \tmod{\frac{m}{p}}}\wtilde{\chi}(a'')e^{\frac{2\pi ia''}{m}}\sum_{a' \tmod{p}}e^{\frac{2\pi ia'}{p}}.
             \end{equation}
           \end{enumerate}
-          The inner sum in \cref{equ:Gauss_sum_reduction_2} vanishes since it is the sum over all $p$-th roots of unity and thus $\tau(1,\chi) = 0$. Now suppose $\left(\frac{m}{q},q\right) = 1$. Then (iv) implies
+          The inner sum in \cref{equ:Gauss_sum_reduction_2} vanishes since it is the sum over all $p$-th roots of unity and thus $\tau(\chi) = 0$. Now suppose $\left(\frac{m}{q},q\right) = 1$. Then (iv) implies
           \[
-            \tau(1,\chi) = \tau(\wtilde{\chi}\chi_{\frac{m}{q},0}) = \wtilde{\chi}\left(\frac{m}{q}\right)\chi_{\frac{m}{q},0}(q)\tau(1,\wtilde{\chi})\tau(1,\chi_{\frac{m}{q},0}) = \tau(1,\chi_{\frac{m}{q},0})\wtilde{\chi}\left(\frac{m}{q}\right)\tau(1,\wtilde{\chi}).
+            \tau(\chi) = \tau(\wtilde{\chi}\chi_{\frac{m}{q},0}) = \wtilde{\chi}\left(\frac{m}{q}\right)\chi_{\frac{m}{q},0}(q)\tau(\wtilde{\chi})\tau(\chi_{\frac{m}{q},0}) = \tau(\chi_{\frac{m}{q},0})\wtilde{\chi}\left(\frac{m}{q}\right)\tau(\wtilde{\chi}).
           \]
-          Now observe that $\tau(1,\chi_{\frac{m}{q},0}) = r\left(1;\frac{m}{q}\right)$. By \cref{prop:Ramanujan_sum_evaluation} we see that $r\left(1;\frac{m}{q}\right) = \mu\left(\frac{m}{q}\right)$ and (v) follows.
+          Now observe that $\tau(\chi_{\frac{m}{q},0}) = r\left(1;\frac{m}{q}\right)$. By \cref{prop:Ramanujan_sum_evaluation} we see that $r\left(1;\frac{m}{q}\right) = \mu\left(\frac{m}{q}\right)$ and (v) follows.
         \end{proof}
 
-        Notice that \cref{prop:Gauss_sum_reduction} reduces the evaluation of the Gauss sum $\tau(b,\chi)$ to that of $\tau(1,\chi)$ at least when $\chi$ is primitive. When $\chi$ is not primitive and $(b,m) > 1$ we need to appeal to evaulating $\tau(b,\chi)$ by more direct means. Evaluating $\tau(1,\chi)$ for general characters $\chi$ turns out to be a very difficult problem and is still open. However, it is not difficult to determine the modulus of $\tau(1,\chi)$ when $\chi$ is primitive:
+        Notice that \cref{prop:Gauss_sum_reduction} reduces the evaluation of the Gauss sum $\tau(b,\chi)$ to that of $\tau(\chi)$ at least when $\chi$ is primitive. When $\chi$ is not primitive and $(b,m) > 1$ we need to appeal to evaulating $\tau(b,\chi)$ by more direct means. Evaluating $\tau(\chi)$ for general characters $\chi$ turns out to be a very difficult problem and is still open. However, it is not difficult to determine the modulus of $\tau(\chi)$ when $\chi$ is primitive:
 
         \begin{theorem}\label{thm:Gauss_sum_modulus}
           Let $\chi$ be a primitive Dirichlet character modulo $m \ge 2$. Then
           \[
-            |\tau(1,\chi)| = \sqrt{m}.
+            |\tau(\chi)| = \sqrt{m}.
           \]
         \end{theorem}
         \begin{proof}
           This is just a computation:
           \begin{align*}
-            |\tau(1,\chi)|^{2} &= \tau(1,\chi)\conj{\tau(1,\chi)} \\
-            &= \sum_{a \tmod{m}}\tau(1,\chi)\cchi(a)e^{-\frac{2\pi ia}{m}} \\
+            |\tau(\chi)|^{2} &= \tau(\chi)\conj{\tau(\chi)} \\
+            &= \sum_{a \tmod{m}}\tau(\chi)\cchi(a)e^{-\frac{2\pi ia}{m}} \\
             &=  \sum_{a \tmod{m}}\tau(a,\chi)e^{-\frac{2\pi ia}{m}} & \text{\cref{prop:Gauss_sum_reduction} (i) and (ii)} \\
             &= \sum_{a \tmod{m}}\left(\sum_{a' \tmod{m}}\chi(a')e^{\frac{2\pi iaa'}{m}}\right)e^{-\frac{2\pi ia}{m}} \\
             &= \sum_{a,a' \tmod{m}}\chi(a')e^{\frac{2\pi ia(a'-1)}{m}} \\
             &= \sum_{a' \tmod{m}}\chi(a')\left(\sum_{a \tmod{m}}e^{\frac{2\pi ia(a'-1)}{m}}\right).
           \end{align*}
-          Let $S(a')$ denote the inner sum. For the $a'$ such that $a'-1 \equiv 0 \tmod{m}$, $S(a') = m$. Otherwise $a \to a\conj{(a'-1)}$ is a bijection on $\Z/m\Z$ (we assumed $m \neq 1$) so that $S(a') = 0$ because it is the sum of all $m$-th roots of unity. It follows that the double sum is $\chi(1)m = m$. So altogether $|\tau(1,\chi)|^{2} = m$ and hence $|\tau(1,\chi)| = \sqrt{m}$.
+          Let $S(a')$ denote the inner sum. For the $a'$ such that $a'-1 \equiv 0 \tmod{m}$, $S(a') = m$. Otherwise $a \to a\conj{(a'-1)}$ is a bijection on $\Z/m\Z$ (we assumed $m \neq 1$) so that $S(a') = 0$ because it is the sum of all $m$-th roots of unity. It follows that the double sum is $\chi(1)m = m$. So altogether $|\tau(\chi)|^{2} = m$ and hence $|\tau(\chi)| = \sqrt{m}$.
         \end{proof}
 
         As an almost immediate corollary to \cref{thm:Gauss_sum_modulus}, we deduce a useful expression for primitive Dirichlet characters:
 
-        \begin{corollary}
+        \begin{corollary}\label{cor:gauss_sum_primitive_formula}
           Let $\chi$ be a primitive Dirichlet character modulo $m$ Then
           \[
-            \tau(n,\chi) = \cchi(n)\tau(1,\chi),
+            \tau(n,\chi) = \cchi(n)\tau(\chi),
           \]
-          for all $n \ge 1$. In particular,
+          for all $n \in \Z$. In particular,
           \[
-            \chi(n) = \frac{1}{\tau(1,\cchi)}\sum_{a \tmod{m}}\cchi(a)e^{\frac{2\pi ian}{m}},
+            \chi(n) = \frac{1}{\tau(\cchi)}\sum_{a \tmod{m}}\cchi(a)e^{\frac{2\pi ian}{m}},
           \]
-          for all $n \ge 1$.
+          for all $n \in \Z$.
         \end{corollary}
         \begin{proof}
-          If $(n,m) = 1$, then the first identity is \cref{prop:Gauss_sum_reduction} (ii). If $(n,m) > 1$, then the first identity follows from \cref{prop:Gauss_sum_reduction} (iii) and that $\cchi(n) = 0$. This proves the first identity in full. For the second identity, first note that $\tau(1,\chi) \neq 0$ by \cref{thm:Gauss_sum_modulus}. Replacing $\chi$ with $\cchi$, dividing the first identity by $\tau(1,\chi)$, and expanding the Gauss sum, gives the second identity.
+          If $(n,m) = 1$, then the first identity is \cref{prop:Gauss_sum_reduction} (ii). If $(n,m) > 1$, then the first identity follows from \cref{prop:Gauss_sum_reduction} (iii) and that $\cchi(n) = 0$. This proves the first identity in full. For the second identity, first note that $\tau(\chi) \neq 0$ by \cref{thm:Gauss_sum_modulus}. Replacing $\chi$ with $\cchi$, dividing the first identity by $\tau(\chi)$, and expanding the Gauss sum, gives the second identity.
         \end{proof}
 
         In light of \cref{thm:Gauss_sum_modulus} we define the \textbf{epsilon factor}\index{epsilon factor} $\e_{\chi}$ for a Dirichlet character $\chi$ of modulus $m$ by
         \[
-          \e_{\chi} = \frac{\tau(1,\chi)}{\sqrt{m}}.
+          \e_{\chi} = \frac{\tau(\chi)}{\sqrt{m}}.
         \]
         \cref{thm:Gauss_sum_modulus} says that this value lies on the unit circle when $\chi$ is primitive and not the trivial character. In any case, the question of the evaluation of Gauss sums further boils down to determining what value the epsilon factor is. This is the real difficultly as the epsilon factor is very hard to calculate and its value is not known for general Dirichlet characters. When $\chi$ is primitive, there is a simple relationship between $\e_{\chi}$ and $\e_{\cchi}$:
 
@@ -424,7 +407,7 @@
         \begin{proof}
           By \cref{prop:Gauss_sum_reduction} (iii) and that $\e_{\chi}$ lies on the unit circle,
           \[
-            \e_{\chi} = \frac{\tau(1,\chi)}{\sqrt{m}} = \chi(-1)\conj{\frac{\tau(1,\chi)}{\sqrt{m}}} = \chi(-1)\e_{\cchi}^{-1},
+            \e_{\chi} = \frac{\tau(\chi)}{\sqrt{m}} = \chi(-1)\conj{\frac{\tau(\chi)}{\sqrt{m}}} = \chi(-1)\e_{\cchi}^{-1},
           \]
           from whence the statement follows.
         \end{proof}
@@ -433,7 +416,7 @@
         \[
           g(b,m) = \sum_{a \tmod{m}}e^{\frac{2\pi ia^{2}b}{m}}.
         \]
-        This is somewhat abusive of language since if $\chi$ is the quadratic Dirichlet character modulo $m$ (necessarily odd) given by the Jacobi symbol then we have the two quadratic Gauss sums $g(b,m)$ and $\tau(b,\chi)$. It turns out that the sum $g(b,m) = \tau(b,\chi)$ when $m$ is odd and $\chi$ is the quadratic Dirichlet character modulo $m$ given by the Jacobi symbol. This will take a little work to prove. We first reduce to the case when $(b,m) = 1$:
+        If $b = 1$ we write $g(m)$ instead. That is, $g(m) = g(m)$. Our language is somehwat abusive since if $\chi$ is the quadratic Dirichlet character modulo $m$ (necessarily odd) given by the Jacobi symbol, then we have the two quadratic Gauss sums $g(b,m)$ and $\tau(b,\chi)$. It turns out that the sum $g(b,m) = \tau(b,\chi)$ when $m$ is odd and $\chi$ is the quadratic Dirichlet character modulo $m$ given by the Jacobi symbol. This will take a little work to prove. We first reduce to the case when $(b,m) = 1$:
 
         \begin{proposition}\label{prop:quadratic_Gauss_sum_relatively_prime_reduction}
           Let $m$ be a positive odd integer and let $b \in \Z$. Then
@@ -488,7 +471,7 @@
           \begin{enumerate}[label=(\roman*)]
             \item If $(b,p) = 1$, then $g(b,p^{r}) = pg(b,p^{r-2})$ for all $r \in \Z$ with $r \ge 2$.
             \item If $(m,n) = 1$ and $(b,mn) = 1$, then $g(b,mn) = g(bn,m)g(bm,n)$.
-            \item If $m$ is odd and $(b,m) = 1$, then $g(b,m) = \tlegendre{b}{m}g(1,m)$ where $\tlegendre{b}{m}$ is the Jacobi symbol.
+            \item If $m$ is odd and $(b,m) = 1$, then $g(b,m) = \tlegendre{b}{m}g(m)$ where $\tlegendre{b}{m}$ is the Jacobi symbol.
           \end{enumerate}
         \end{proposition}
         \begin{proof}
@@ -522,16 +505,16 @@
               which is precisely $g(b,mn)$. So (ii) is proven.
             \item If $m = p$, then \cref{prop:Gauss_sum_equivalence_for_primes}, \cref{prop:Gauss_sum_reduction} (ii), and that quadratic characters are their own conjugate altogether imply the claim. Now let $r \ge 1$ and assume by strong induction that the claim holds when $m = p^{r'}$ for all positive integers $r'$ such that $r' < r$. Then by (i), we have
             \begin{equation}\label{equ:quadratic_Gauss_sum_reduction_1}
-              g(b,p^{r}) = pg(b,p^{r-2}) = \legendre{b}{p^{r-2}}pg(1,p^{r-2}) = \legendre{b}{p^{r-2}}g(1,p^{r}) = \legendre{b}{p^{r}}g(1,p^{r}).
+              g(b,p^{r}) = pg(b,p^{r-2}) = \legendre{b}{p^{r-2}}pg(p^{r-2}) = \legendre{b}{p^{r-2}}g(p^{r}) = \legendre{b}{p^{r}}g(p^{r}).
             \end{equation}
             It now suffices to prove the claim when $m = p^{r}q^{s}$ where $q$ is another odd prime and $s \ge 1$. Then by (ii) and \cref{equ:quadratic_Gauss_sum_reduction_1}, we compute
             \begin{align*}
               g(b,p^{r}q^{s}) &= g(bq^{s},p^{r})g(bp^{r},q^{s}) \\
-              &= \legendre{bq^{s}}{p^{r}}\legendre{bp^{r}}{q^{s}}g(1,p^{r})g(1,q^{s}) \\
-              &= \legendre{b}{p^{r}}\legendre{q^{s}}{p^{r}}\legendre{b}{q^{s}}\legendre{p^{r}}{q^{s}}g(1,p^{r})g(1,q^{s}) \\
-              &= \legendre{b}{p^{r}q^{s}}\legendre{q^{s}}{p^{r}}\legendre{p^{r}}{q^{s}}g(1,p^{r})g(1,q^{s}) \\
+              &= \legendre{bq^{s}}{p^{r}}\legendre{bp^{r}}{q^{s}}g(p^{r})g(q^{s}) \\
+              &= \legendre{b}{p^{r}}\legendre{q^{s}}{p^{r}}\legendre{b}{q^{s}}\legendre{p^{r}}{q^{s}}g(p^{r})g(q^{s}) \\
+              &= \legendre{b}{p^{r}q^{s}}\legendre{q^{s}}{p^{r}}\legendre{p^{r}}{q^{s}}g(p^{r})g(q^{s}) \\
               &= \legendre{b}{p^{r}q^{s}}g(q^{s},p^{r})g(p^{r},q^{s}) \\
-              &= \legendre{b}{p^{r}q^{s}}g(1,p^{r}q^{s}).
+              &= \legendre{b}{p^{r}q^{s}}g(p^{r}q^{s}).
             \end{align*}
             This proves (iii).
           \end{enumerate}
@@ -548,34 +531,34 @@
         \begin{proof}
           Since $\chi$ is quadratic, it suffices to prove the claim when $b = 1$ by \cref{prop:Gauss_sum_reduction} (ii) and \cref{prop:quadratic_Gauss_sum_reduction} (iii). Now let $m = p_{1}^{r_{1}}p_{2}^{r_{2}} \cdots p_{k}^{r_{k}}$ be the prime decomposition of $m$. Upon observing $\tlegendre{\cdot}{p}^{2} = \chi_{p,0}$, we see that $\chi = \wtilde{\chi}\chi_{p_{1}p_{2} \cdots p_{k},0}$ where $\wtilde{\chi}$ is the primitive and quadratic Dirichlet character given by the Jacobi symbol with modulus $q$ being the product of those primes $p_{i}$ with $e_{i}$ odd. Then by \cref{prop:Gauss_sum_reduction} (v), we have
           \[
-            \tau(1,\chi) = \mu\left(\frac{m}{q}\right)\wtilde{\chi}\left(\frac{m}{q}\right)\tau(1,\wtilde{\chi}) = \tau(1,\wtilde{\chi}),
+            \tau(\chi) = \mu\left(\frac{m}{q}\right)\wtilde{\chi}\left(\frac{m}{q}\right)\tau(\wtilde{\chi}) = \tau(\wtilde{\chi}),
           \]
           where the latter equality follows because the defining property of $q$ implies $\frac{m}{q}$ is a product of even powers of primes and $\wtilde{\chi}$ is quadratic. Letting $\chi_{p}$ denote the quadratic Dirichlet character modulo $p$ given by the Legendre symbol, multiplicativity of the Jacobi symbol and repeated application of \cref{prop:Gauss_sum_reduction} (iv) gives the first equality in the chain
           \[
-            \tau(1,\wtilde{\chi}) = \prod_{\substack{1 \le i,j \le k \\ r_{i},r_{j} \equiv 1 \tmod{2}}}\chi_{p_{i}}(p_{j})\prod_{\substack{1 \le i \le k \\ r_{i} \equiv 1 \tmod{2}}}\tau(1,\chi_{p_{i}}) = \prod_{\substack{1 \le i,j \le k \\ r_{i},r_{j} \equiv 1 \tmod{2}}}\legendre{p_{j}}{p_{i}}\prod_{\substack{1 \le i \le k \\ r_{i} \equiv 1 \tmod{2}}}g(1,p_{i}) = g(1,q).
+            \tau(\wtilde{\chi}) = \prod_{\substack{1 \le i,j \le k \\ r_{i},r_{j} \equiv 1 \tmod{2}}}\chi_{p_{i}}(p_{j})\prod_{\substack{1 \le i \le k \\ r_{i} \equiv 1 \tmod{2}}}\tau(\chi_{p_{i}}) = \prod_{\substack{1 \le i,j \le k \\ r_{i},r_{j} \equiv 1 \tmod{2}}}\legendre{p_{j}}{p_{i}}\prod_{\substack{1 \le i \le k \\ r_{i} \equiv 1 \tmod{2}}}g(p_{i}) = g(q).
           \]
-          The middle equality comes from \cref{prop:Gauss_sum_equivalence_for_primes} and the last equality from repeated application of \cref{prop:quadratic_Gauss_sum_reduction} (ii). So altogether we conclude $\tau(1,\chi) = g(1,q)$.
+          The middle equality comes from \cref{prop:Gauss_sum_equivalence_for_primes} and the last equality from repeated application of \cref{prop:quadratic_Gauss_sum_reduction} (ii). So altogether we conclude $\tau(\chi) = g(q)$.
         \end{proof}
 
-        Now let's turn to \cref{prop:quadratic_Gauss_sum_reduction} and the evaluation of the quadratic Gauss sum. \cref{prop:quadratic_Gauss_sum_reduction} (ii) and (iii) reduce the evaluation of $g(b,m)$ for odd $m$ and $(b,m) = 1$ to computing $g(1,p)$ for $p$ an odd prime. As with the Gauss sum, it is not difficult to compute the modulus of the quadratic Gauss sum:
+        Now let's turn to \cref{prop:quadratic_Gauss_sum_reduction} and the evaluation of the quadratic Gauss sum. \cref{prop:quadratic_Gauss_sum_reduction} (ii) and (iii) reduce the evaluation of $g(b,m)$ for odd $m$ and $(b,m) = 1$ to computing $g(p)$ for $p$ an odd prime. As with the Gauss sum, it is not difficult to compute the modulus of the quadratic Gauss sum:
 
         \begin{theorem}\label{thm:quadratic_Gauss_sum_modulus}
           Let $m$ be a positive odd integer. Then
           \[
-            |g(1,m)| = \sqrt{m}.
+            |g(m)| = \sqrt{m}.
           \]
         \end{theorem}
         \begin{proof}
           By \cref{prop:quadratic_Gauss_sum_reduction} (ii), it suffices to prove this when $m = p^{r}$ is a power of an odd prime. By Euclidean division write $r = 2n+r'$ for some positive integer $n$ and with $r' = 0,1$ depending on if $r$ is even or odd respectively. Then \cref{prop:quadratic_Gauss_sum_reduction} (i) implies
           \[
-            |g(1,p^{r})|^{2} = p^{2n}|g(1,p^{r'})|^{2}.
+            |g(p^{r})|^{2} = p^{2n}|g(p^{r'})|^{2}.
           \]
-          If $r' = 0$, then $2n = r$ so that $p^{2n} = p^{r}$. Thus $|g(1,p^{r})| = \sqrt{p^{r}}$. If $r' = 1$, then \cref{thm:Gauss_sum_modulus,prop:Gauss_sum_equivalence_for_primes} together imply $|g(1,p^{r'})|^{2} = p$ so that the right-hand side above is $p^{2n+1} = p^{r}$ and again we have $|g(1,p^{r})| = \sqrt{p^{r}}$.
+          If $r' = 0$, then $2n = r$ so that $p^{2n} = p^{r}$. Thus $|g(p^{r})| = \sqrt{p^{r}}$. If $r' = 1$, then \cref{thm:Gauss_sum_modulus,prop:Gauss_sum_equivalence_for_primes} together imply $|g(p^{r'})|^{2} = p$ so that the right-hand side above is $p^{2n+1} = p^{r}$ and again we have $|g(p^{r})| = \sqrt{p^{r}}$.
         \end{proof}
 
         Accordingly, we define the \textbf{epsilon factor}\index{epsilon factor} $\e_{m}$ for a positive integer $m$ by
         \[
-          \e_{m} = \frac{g(1,m)}{\sqrt{m}}.
+          \e_{m} = \frac{g(m)}{\sqrt{m}}.
         \]
         \cref{thm:quadratic_Gauss_sum_modulus} says that this value lies on the unit circle when $m$ is odd. Thus the question of the evaluation of quadratic Gauss sums reduces to determining what the epsilon factor is. This was completely resolved and the original proof is due to Gauss in 1808 (see \cite{Gauss1808summatio}). He actually treated the case $m$ is even as well. We have avoided discussing this because we will not need it in the following and many of the previous proofs need to be augmented when $m$ is even (see \cite{lang1994algebraic} for a treatment of the even case). As for the evaluation, one of the cleanest proofs uses analytic techniques (see \cite{lang1994algebraic}) and the precise statement is the following:
 
