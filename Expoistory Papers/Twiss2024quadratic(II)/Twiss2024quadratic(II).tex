@@ -21,71 +21,83 @@
 \section{Preliminaries}
     We present an overview of quadratic Dirichlet $L$-functions over $\Q$. We begin with the Riemann zeta-function. The zeta function $\z(s)$ is defined as the Dirichlet series or Euler product
     \[
-        \z(s) = \sum_{n \ge 1}\frac{1}{n^{s}} = \prod_{\text{$p$ prime}}\left(1-\frac{1}{p^{s}}\right)^{-1},
+        \z(s) = \sum_{m \ge 1}\frac{1}{m^{s}} = \prod_{\text{$p$ prime}}\left(1-\frac{1}{p^{s}}\right)^{-1},
     \]
     for $\Re(s) > 1$. The second equality is an analytic reformulation of the fundamental theorem of arithmetic. The Riemann zeta function also admits meromorphic continuation to $\C$ with a simple pole at $s = 1$ of residue $1$. The functional equation is
     \[
         \pi^{-\frac{s}{2}}\G\left(\frac{s}{2}\right)\z(s) = \pi^{-\frac{1-s}{2}}\G\left(\frac{1-s}{2}\right)\z(1-s).
     \]
-    Now we recall the characters on $\Z$. They are multiplicative functions $\chi:\Z \to \C$. Their image always lands in the roots of unity. The two flavors of characters of interest to use are:
+    Now we recall characters on $\Z$. They are multiplicative functions $\chi:\Z \to \C$. The two flavors of characters of interest to use are:
     
     \begin{itemize}
-        \item Dirichlet characters: multiplicative functions $\chi_{m}:\Z \to \C$ modulo $m \ge 1$ (in that they are $m$-periodic) and such that $\chi_{m}(n) = 0$ if $(m,n) > 1$.
+        \item Dirichlet characters: multiplicative functions $\chi_{m}:\Z \to \C$ modulo $m \ge 1$ (in that they are $m$-periodic) and such that $\chi_{m}(d) = 0$ if $(d,m) > 1$.
         \item Hilbert symbols: Dirichlet characters modulo $1$.
     \end{itemize}
     
-    If $\chi$ is a character then its conjugate $\conj{\chi}$ is also a character. Moreover, $\conj{\chi}$ is the multiplicative inverse to $\chi$ and the characters modulo $m$ form a group under multiplication. This group is always finite and its order is $\phi(m)$. Characters also satisfy orthogonality properties:
+    In either case, the image always lands in the roots of unity. If $\chi$ is a Dirichlet character then its conjugate $\conj{\chi}$ is also a Dirichlet character. Moreover, $\conj{\chi}$ is the multiplicative inverse to $\chi$ and the Dirichlet characters modulo $m$ form a group under multiplication. This group is always finite and its order is $\phi(m) = |(\Z/m\Z)^{\ast}|$. Dirichlet characters also satisfy orthogonality relations:
 
     \begin{theorem}[Orthogonality relations]
-        Let $\chi$ and $\psi$ be any two Dirichlets character modulo $m$ and let $a$ and $b$ be any two integers modulo $m$. Then
+        \phantom{ }
         \begin{enumerate}[label=(\roman*)]
-          \item
+          \item For any two Dirichlet characters $\chi$ and $\psi$ modulo $m$,
           \[
-            \frac{1}{\phi(m)}\sum_{a \tmod{m}}\chi(a)\conj{\psi}(a) = \d_{\chi,\psi}.
+            \frac{1}{\phi(m)}\psum_{a \tmod{m}}\chi(a)\conj{\psi}(a) = \d_{\chi,\psi}.
           \]
-          \item
+          \item For any $a,b \in (\Z/m\Z)^{\ast}$,
           \[
             \frac{1}{\phi(m)}\sum_{\chi \tmod{m}}\chi(a)\cchi(b) = \d_{a,b}.
           \]
         \end{enumerate}
     \end{theorem}
 
-    \todo{continue here} The Dirichlet characters that are of interest to us are those given by the quadratic residue symbol on $\F_{q}[t]$. If $f \in \F_{q}[t]$ is a monic non-constant irreducible, define the quadratic residue symbol $\chi_{f}$ by
+    The Dirichlet characters that are of interest to us are those given by the quadratic residue symbol on $\F_{q}[t]$. First let us recall this symbol. For any irreducible $p \in \F_{q}[t]$ and any $m \in \F_{q}[t]$, we define the quadratic residue symbol $\tlegendre{m}{p}$ by
     \[
-        \chi_{f}(g) = \legendre{f}{g} = g^{\frac{|f|-1}{2}} \pmod{f},
+        \legendre{m}{p} \equiv m^{\frac{|p|-1}{2}} \tmod{p} \in \{0,1,-1\}.
     \]
-    for any $g \in \F_{q}[t]$. Then $\chi_{f}(g) \in \{\pm 1\}$ provided $f$ and $g$ are relatively prime and $\chi_{f}(g) = 0$ if $(f,g) > 1$. If $b \in \F^{\x}$, then we define the quadratic residue symbol $\chi_{b}$ by
+    In other words, $\tlegendre{m}{p} = 0,1,-1$ accoding to whether $p \mid m$, $m$ is a square modulo $p$, or $m$ is not a square modulo $p$. This symbol is multiplicative in $m$. Moreover, if $b \in \F_{q}^{\ast}$, we have
     \[
-        \chi_{b}(g) = \legendre{b}{m} = \sgn(b)^{\deg(f)},
+        \legendre{b}{p} = \sgn(b)^{\deg(p)}.
     \]
-    where $\sgn(b) = \pm1$ depending on if $b \in (\F^{\x})^{2}$ or not. Moreover, if $d \in \F_{q}[t]$ then we set $\sgn(d) = \sgn(b_{n})$ if $d(t) = b_{n}t^{n}+b_{n-1}t^{n+1}+\cdots+b_{0}$ (with $b_{n} \neq 0$). Extending $\chi_{f}$ multiplicativity in $f$, $\chi_{f}$ is defined for any $f$ not necessarily monic. The quadratic residue symbol also has the following reciprocity property:
+    where $\sgn(b) = \pm1$ depending on if $b \in (\F_{q}^{\x})^{2}$ or not. For $m \in \F_{q}[t]$ we define $\sgn(m) = \sgn(b_{n})$ if $m(t) = b_{n}t^{n}+b_{n-1}t^{n+1}+\cdots+b_{0}$ (with $b_{n} \neq 0$). We can extend the quadratic residue symbol multiplicatively in the denomator. If $d = bp_{1}^{e_{1}}p_{2}^{e_{2}} \cdots p_{k}^{e_{k}}$ is the prime factorization of $d$ (with $b \in \F_{q}^{\ast}$), then we define
+    \[
+        \legendre{m}{d} = \prod_{1 \le i \le k}\legendre{m}{p_{i}}^{e_{i}}.
+    \]
+    So the quadratic residue symbol now makes sense for any non-zero $d \in \F_{q}[t]$. The quadratic residue symbol also has the following reciprocity property:
 
     \begin{theorem}[Quadratic reciprocity]
-        If $f,g \in \F_{q}[t]$ are monic, square-free, and relatively prime, then
+        If $d,m \in \F_{q}[t]$ are monic, relatively prime, and non-zero, then
         \[
-            \legendre{f}{g} = (-1)^{\frac{q-1}{2}\deg(f)\deg(g)}\legendre{g}{f}.
+            \legendre{d}{m} = (-1)^{\frac{q-1}{2}\deg(d)\deg(m)}\legendre{m}{d}.
         \]
     \end{theorem}
 
-    Note that if $q \equiv 1 \tmod{4}$, the sign in the statement of quadratic reciprocity is always $1$ so that the reciprocity is perfect. We now describe the Hilbert symbols on $\F_{q}[t]$. In fact, there are only two Hilbert symbols, one nontrivial, and one trivial. The nontrivial Hilbert symbol is $\chi_{\t}$ where $\t \in \F^{\x}-(\F^{\x})^{2}$:
+    Note that if $q \equiv 1 \tmod{4}$, the sign in the statement of quadratic reciprocity is always $1$ so that reciprocity is perfect. We can now define the quadratic Dirichlet characters. For any non-zero $d \in \F_{q}[t]$, define the quadratic Dirichlet character $\chi_{d}$ by the following quadratic residue symbol:
     \[
-        \chi_{\t}(f) = (-1)^{\deg(f)}.
+        \chi_{d}(m) = \legendre{d}{m} = m^{\frac{|d|-1}{2}} \pmod{d},
     \]
-    Note that $\conj{\chi_{\t}} = \chi_{\t}$. The other Hilbert symbol is the trivial character $\chi_{\t}^{2} = \chi_{\t\t} = \chi_{1}$. In general, we denote a Hilbert symbol by $\chi_{a}$ where $a \in \{1,\t\}$.
-
-    We can now define the $L$-functions attached to the symbol $\chi_{f}$ for not necessarily monic $f$. We define the $L$-series $L(s,\chi_{f})$ attached to $\chi_{f}$ by a Dirichlet series or Euler product:
+    for any non-zero monic $m \in \F_{q}[t]$. Then $\chi_{d}(m) \in \{\pm 1\}$ provided $d$ and $m$ are relatively prime and $\chi_{d}(m) = 0$ if $(m,d) > 1$. Note that by quadratic reciprocity, $\chi_{d}$ is a Dirichlet character modulo $d$ if $d$ is monic. Since the quadratic residue symbols are multiplicative, $\chi_{d}$ is multiplicative in $d$. Therefore, factoring out a constant if necessary, we may always force $d$ to be monic. Moreover, for $b \in \F_{q}^{\x}$, we see that $\chi_{b}$ is a Hilbert symbol:
     \[
-        L(s,\chi_{f}) = \sum_{\text{$g$ monic}}\frac{\chi_{f}(g)}{|g|^{s}} = \prod_{\text{$P$ monic irr}}\left(1-\frac{\chi_{f}(P)}{|P|^{s}}\right)^{-1}.
+        \chi_{b}(m) = \legendre{b}{m} = \sgn(b)^{\deg(m)},
     \]
-    By definition of the quadratic residue symbol, $L(s,\chi_{f}) \ll \z(s)$ for $\Re(s) > 1$ so that $L(s,\chi_{f})$ is absolutely uniformly convergent on compacta in this region. $L(s,\chi_{f})$ also admits meromorphic continuation to $\C$ with a simple pole at $s = 1$ if $f$ is square-free and is analytic otherwise (see \cite{R} for a proof). Moreover, $L(s,\chi_{f})$ is a polynomial in $q^{-s}$ of degree at most $\deg(f)-1$. The completed $L$-function is defined as follows:
+    where $m \in \F_{q}[t]$ is a non-zero monic. The only Hilbet symbols we will need are those given by the quadratic reisdue symbol. There are only two of them: one nontrivial and one trivial. The nontrivial Hilbert symbol is $\chi_{\t}$ where $\t \in \F^{\x}-(\F^{\x})^{2}$:
     \[
-        L^{\ast}(s,\chi_{f}) = \begin{cases} \frac{1}{1-q^{-s}}L(s,\chi_{f}) & \text{if $\deg(f)$ is even}, \\ L(s,\chi_{f}) & \text{if $\deg(f)$ is odd}, \end{cases}
+        \chi_{\t}(m) = (-1)^{\deg(m)},
+    \]
+    where $m \in \F_{q}[t]$ is a non-zero monic. Note that $\conj{\chi_{\t}} = \chi_{\t}$. The other Hilbert symbol is the trivial character $\chi_{\t}^{2} = \chi_{\t\t} = \chi_{1}$. In general, we denote a Hilbert symbol by $\chi_{a}$ where $a \in \{1,\t\}$.
+    
+    With the Dirichlet characters and Hilbert symbols introduced, we are ready to discuss the $L$-functions associated to quadratic Dirichlet characters. We define the $L$-function $L(s,\chi_{d})$ attached to $\chi_{d}$ by a Dirichlet series or Euler product:
+    \[
+        L(s,\chi_{d}) = \sum_{\text{$m$ monic}}\frac{\chi_{d}(m)}{|m|^{s}} = \prod_{\text{$P$ monic irr}}\left(1-\frac{\chi_{d}(P)}{|P|^{s}}\right)^{-1}.
+    \]
+    By definition of the quadratic Dirichlet character, $L(s,\chi_{d}) \ll \z(s)$ for $\Re(s) > 1$ so that $L(s,\chi_{d})$ is locally absolutely uniformly convergent in this region. $L(s,\chi_{d})$ also admits meromorphic continuation to $\C$ with a simple pole at $s = 1$ if $d$ is a perfect square and is analytic otherwise (see \cite{rosen2002number} for a proof). Moreover, $L(s,\chi_{d})$ is a polynomial in $q^{-s}$ of degree at most $\deg(d)-1$. The completed $L$-function is defined as follows:
+    \[
+        L^{\ast}(s,\chi_{d}) = \begin{cases} \frac{1}{1-q^{-s}}L(s,\chi_{d}) & \text{if $\deg(d)$ is even}, \\ L(s,\chi_{d}) & \text{if $\deg(d)$ is odd}, \end{cases}
     \]
     and satisfies the functional equation
     \[
-        L^{\ast}(s,\chi_{f}) = \begin{cases} q^{2s-1}|f|^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{f}) & \text{if $\deg(f)$ is even}, \\ q^{2s-1}(q|f|)^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{f}) & \text{if $\deg(f)$ is odd}. \end{cases}
+        L^{\ast}(s,\chi_{d}) = \begin{cases} q^{2s-1}|d|^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{d}) & \text{if $\deg(d)$ is even}, \\ q^{2s-1}(q|d|)^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{d}) & \text{if $\deg(d)$ is odd}. \end{cases}
     \]
-    Note that in the case $\deg(f)$ is even, the conductor is $|f|$ and in the case $\deg(f)$ is odd, the conductor is $q|f|$. In other words, the gamma factors depend upon the degree of $f$. This will cause a small but important technical issue later when we want to derive functional equations for the quadratic double Dirichlet series.
+    Note that in the case $\deg(d)$ is even, the conductor is $|d|$ and in the case $\deg(d)$ is odd, the conductor is $q|d|$. In other words, the gamma factors depend upon the degree of $d$. This will cause a small but important technical issue later when we want to derive functional equations for the quadratic double Dirichlet series.
 \section*{The Quadratic Double Dirichlet Series}
 \section*{The Interchange}
 \section*{Weighting Terms}
