@@ -42,22 +42,22 @@
     Recall that characters on $\F_{q}[t]$ are multiplicative functions $\chi:\F_{q}[t] \to \C$. The two flavors we will care about are:
     
     \begin{itemize}
-        \item Dirichlet characters: multiplicative functions $\chi_{m}:\F_{q}[t] \to \C$ modulo $m \in \F_{q}[t]$ (in that they are $d$-periodic) and such that $\chi_{m}(d) = 0$ if $(d,m) > 1$.
+        \item Dirichlet characters: multiplicative functions $\chi_{d}:\F_{q}[t] \to \C$ modulo $d \in \F_{q}[t]$ (in that they are $d$-periodic) and such that $\chi_{d}(m) = 0$ if $(m,d) > 1$.
         \item Hilbert symbols: Dirichlet characters modulo $1$.
     \end{itemize}
     
-    In either case, the image always lands in the roots of unity. If $\chi$ is a Dirichlet character then its conjugate $\conj{\chi}$ is also a Dirichlet character. Moreover, $\conj{\chi}$ is the multiplicative inverse to $\chi$ and the Dirichlet characters modulo $m$ form a group under multiplication. This group is always finite and its order is $\phi(m) = |(\F_{q}[t]/m\F_{q}[t])^{\x}|$. Dirichlet characters also satisfy orthogonality relations:
+    In either case, the image always lands in the roots of unity. If $\chi$ is a Dirichlet character then its conjugate $\conj{\chi}$ is also a Dirichlet character. Moreover, $\conj{\chi}$ is the multiplicative inverse to $\chi$ and the Dirichlet characters modulo $d$ form a group under multiplication. This group is always finite and its order is $\phi(d) = |(\F_{q}[t]/d\F_{q}[t])^{\x}|$. Dirichlet characters also satisfy orthogonality relations:
 
     \begin{theorem}[Orthogonality relations]
         \phantom{ }
         \begin{enumerate}[label=(\roman*)]
-          \item For any two Dirichlet characters $\chi$ and $\psi$ modulo $m$,
+          \item For any two Dirichlet characters $\chi$ and $\psi$ modulo $d$,
           \[
-            \frac{1}{\phi(m)}\psum_{f \tmod{m}}\chi(f)\conj{\psi}(f) = \d_{\chi,\psi}.
+            \frac{1}{\phi(d)}\psum_{f \tmod{d}}\chi(f)\conj{\psi}(f) = \d_{\chi,\psi}.
           \]
-          \item For any $f,g \in (\F_{q}[t]/m\F_{q}[t])^{\x}$,
+          \item For any $f,g \in (\F_{q}[t]/d\F_{q}[t])^{\x}$,
           \[
-            \frac{1}{\phi(m)}\sum_{\chi \tmod{m}}\chi(f)\cchi(g) = \d_{f,g}.
+            \frac{1}{\phi(d)}\sum_{\chi \tmod{d}}\chi(f)\cchi(g) = \d_{f,g}.
           \]
         \end{enumerate}
     \end{theorem}
@@ -74,28 +74,28 @@
     \[
         \legendre{m}{d} = \prod_{1 \le i \le k}\legendre{m}{p_{i}}^{e_{i}}.
     \]
-    So the quadratic residue symbol now makes sense for any non-zero $d \in \F_{q}[t]$. The quadratic residue symbol also has the following reciprocity property:
+    So the quadratic residue symbol now makes sense for any nonzero $d \in \F_{q}[t]$. The quadratic residue symbol also has the following reciprocity property:
 
     \begin{theorem}[Quadratic reciprocity]
-        If $d,m \in \F_{q}[t]$ are monic, relatively prime, and non-zero, then
+        If $d,m \in \F_{q}[t]$ are monic, relatively prime, and nonzero, then
         \[
             \legendre{d}{m} = (-1)^{\frac{q-1}{2}\deg(d)\deg(m)}\legendre{m}{d}.
         \]
     \end{theorem}
 
-    Note that if $q \equiv 1 \tmod{4}$, the sign in the statement of quadratic reciprocity is always $1$ so that reciprocity is perfect. We can now define the quadratic Dirichlet characters. For any non-zero $d \in \F_{q}[t]$, define the quadratic Dirichlet character $\chi_{d}$ by the following quadratic residue symbol:
+    Note that if $q \equiv 1 \tmod{4}$, the sign in the statement of quadratic reciprocity is always $1$ so that reciprocity is perfect. We can now define the quadratic Dirichlet characters. For any nonzero $d \in \F_{q}[t]$, define the quadratic Dirichlet character $\chi_{d}$ by the following quadratic residue symbol:
     \[
-        \chi_{d}(m) = \legendre{d}{m} = m^{\frac{|d|-1}{2}} \pmod{d},
+        \chi_{d}(m) = \legendre{d}{m} = d^{\frac{|m|-1}{2}} \pmod{m},
     \]
-    for any non-zero monic $m \in \F_{q}[t]$. Then $\chi_{d}(m) \in \{\pm 1\}$ provided $d$ and $m$ are relatively prime and $\chi_{d}(m) = 0$ if $(m,d) > 1$. Note that by quadratic reciprocity, $\chi_{d}$ is a Dirichlet character modulo $d$ if $d$ is monic. Since the quadratic residue symbols are multiplicative, $\chi_{d}$ is multiplicative in $d$. Therefore, factoring out a constant if necessary, we may always force $d$ to be monic. Moreover, for $b \in \F_{q}^{\x}$, we see that $\chi_{b}$ is a Hilbert symbol:
+    for any nonzero monic $m \in \F_{q}[t]$. Then $\chi_{d}(m) \in \{\pm 1\}$ provided $d$ and $m$ are relatively prime and $\chi_{d}(m) = 0$ if $(m,d) > 1$. Note that by quadratic reciprocity, $\chi_{d}$ is a Dirichlet character modulo $d$ if $d$ is monic. Since the quadratic residue symbols are multiplicative, $\chi_{d}$ is multiplicative in $d$. Therefore, factoring out a constant if necessary, we may always force $d$ to be monic. Moreover, for $b \in \F_{q}^{\x}$, we see that $\chi_{b}$ is a Hilbert symbol:
     \[
         \chi_{b}(m) = \legendre{b}{m} = \sgn(b)^{\deg(m)},
     \]
-    where $m \in \F_{q}[t]$ is a non-zero monic. The only Hilbet symbols we will need are those given by the quadratic reisdue symbol. There are only two of them: one nontrivial and one trivial. The nontrivial Hilbert symbol is $\chi_{\t}$ where $\t \in \F^{\x}-(\F^{\x})^{2}$:
+    where $m \in \F_{q}[t]$ is a nonzero monic. The only Hilbet symbols we will need are those given by the quadratic reisdue symbol. There are only two of them: one nontrivial and one trivial. The nontrivial Hilbert symbol is $\chi_{\t}$ where $\t \in \F^{\x}-(\F^{\x})^{2}$:
     \[
         \chi_{\t}(m) = (-1)^{\deg(m)},
     \]
-    where $m \in \F_{q}[t]$ is a non-zero monic. Note that $\conj{\chi_{\t}} = \chi_{\t}$. The other Hilbert symbol is the trivial character $\chi_{\t}^{2} = \chi_{\t\t} = \chi_{1}$. In general, we denote a Hilbert symbol by $\chi_{a}$ where $a \in \{1,\t\}$.
+    where $m \in \F_{q}[t]$ is a nonzero monic. Note that $\conj{\chi_{\t}} = \chi_{\t}$. The other Hilbert symbol is the trivial character $\chi_{\t}^{2} = \chi_{\t\t} = \chi_{1}$. In general, we denote a Hilbert symbol by $\chi_{a}$ where $a \in \{1,\t\}$.
     
     With the Dirichlet characters and Hilbert symbols introduced, we are ready to discuss the $L$-functions associated to quadratic Dirichlet characters. We define the $L$-function $L(s,\chi_{d})$ attached to $\chi_{d}$ by a Dirichlet series or Euler product:
     \[

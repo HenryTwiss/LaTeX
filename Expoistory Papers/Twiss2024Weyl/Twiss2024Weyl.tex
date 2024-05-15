@@ -40,41 +40,69 @@
         \[
             \z^{\ast}(s) = q^{2s-1}\z^{\ast}(1-s).
         \]
-        Recall that characters on $\F_{q}[t]$ are multiplicative functions to the complex numbers. The two flavors we care about are:
+        Recall that characters on $\F_{q}[t]$ are multiplicative functions $\chi:\F_{q}[t] \to \C$. The two flavors we will care about are:
         
         \begin{itemize}
-            \item Dirichlet characters: multiplicative functions $\chi_{d}:\F_{q}[t] \to \C$ modulo $d \in \F_{q}[t]$ (in that they are $d$-periodic) and such that $\chi_{d}(m) = 0$ if $(d,m) > 1$.
+            \item Dirichlet characters: multiplicative functions $\chi_{d}:\F_{q}[t] \to \C$ modulo $d \in \F_{q}[t]$ (in that they are $d$-periodic) and such that $\chi_{d}(m) = 0$ if $(m,d) > 1$.
             \item Hilbert symbols: Dirichlet characters modulo $1$.
         \end{itemize}
         
-        In either case, the image always lands in the roots of unity. The Dirichlet characters that are of interest to us are those given by the quadratic residue symbol on $\F_{q}[t]$. If $d \in \F_{q}[t]$ is a monic non-constant irreducible, define the quadratic character $\chi_{d}$ by the following quadratic residue symbol:
+        In either case, the image always lands in the roots of unity. If $\chi$ is a Dirichlet character then its conjugate $\conj{\chi}$ is also a Dirichlet character. Moreover, $\conj{\chi}$ is the multiplicative inverse to $\chi$ and the Dirichlet characters modulo $d$ form a group under multiplication. This group is always finite and its order is $\phi(d) = |(\F_{q}[t]/d\F_{q}[t])^{\x}|$. Dirichlet characters also satisfy orthogonality relations:
+
+        \begin{theorem}[Orthogonality relations]
+            \phantom{ }
+            \begin{enumerate}[label=(\roman*)]
+            \item For any two Dirichlet characters $\chi$ and $\psi$ modulo $d$,
+            \[
+                \frac{1}{\phi(d)}\psum_{f \tmod{d}}\chi(f)\conj{\psi}(f) = \d_{\chi,\psi}.
+            \]
+            \item For any $f,g \in (\F_{q}[t]/d\F_{q}[t])^{\x}$,
+            \[
+                \frac{1}{\phi(d)}\sum_{\chi \tmod{d}}\chi(f)\cchi(g) = \d_{f,g}.
+            \]
+            \end{enumerate}
+        \end{theorem}
+
+        The Dirichlet characters that are of interest to us are those given by the quadratic residue symbol on $\F_{q}[t]$. First let us recall this symbol. For any irreducible $p \in \F_{q}[t]$ and any $m \in \F_{q}[t]$, we define the quadratic residue symbol $\tlegendre{m}{p}$ by
         \[
-            \chi_{d}(m) = \legendre{d}{m} = m^{\frac{|d|-1}{2}} \pmod{d},
+            \legendre{m}{p} \equiv m^{\frac{|p|-1}{2}} \tmod{p} \in \{0,1,-1\}.
         \]
-        for any $m \in \F_{q}[t]$. Then $\chi_{d}(m) \in \{\pm 1\}$ provided $d$ and $m$ are relatively prime and $\chi_{d}(m) = 0$ if $(d,m) > 1$. Recall that if $b \in \F^{\x}$, then $\sgn(b) = \pm1$ depending on if $b \in (\F^{\x})^{2}$ or not. Moreover, for $d \in \F_{q}[t]$ we have $\sgn(d) = \sgn(b_{n})$ if $d(t) = b_{n}t^{n}+b_{n-1}t^{n+1}+\cdots+b_{0}$ (with $b_{n} \neq 0$). For $b \in \F^{\x}$, we define the quadratic character $\chi_{b}$ by the following quadratic residue symbol:
+        In other words, $\tlegendre{m}{p} = 0,1,-1$ accoding to whether $p \mid m$, $m$ is a square modulo $p$, or $m$ is not a square modulo $p$. This symbol is multiplicative in $m$. Moreover, if $b \in \F_{q}^{\ast}$, we have
         \[
-            \chi_{b}(m) = \legendre{b}{m} = \sgn(b)^{\deg(m)}.
+            \legendre{b}{p} = \sgn(b)^{\deg(p)}.
         \]
-        Extending $\chi_{d}$ multiplicativity in $d$, $\chi_{d}$ is defined for any $d$ not necessarily non-constant, monic, or irreducible. The quadratic residue symbol also has the following reciprocity property:
+        where $\sgn(b) = \pm1$ depending on if $b \in (\F_{q}^{\x})^{2}$ or not. For $m \in \F_{q}[t]$ we define $\sgn(m) = \sgn(b_{n})$ if $m(t) = b_{n}t^{n}+b_{n-1}t^{n+1}+\cdots+b_{0}$ (with $b_{n} \neq 0$). We can extend the quadratic residue symbol multiplicatively in the denomator. If $d = bp_{1}^{e_{1}}p_{2}^{e_{2}} \cdots p_{k}^{e_{k}}$ is the prime factorization of $d$ (with $b \in \F_{q}^{\ast}$), then we define
+        \[
+            \legendre{m}{d} = \prod_{1 \le i \le k}\legendre{m}{p_{i}}^{e_{i}}.
+        \]
+        So the quadratic residue symbol now makes sense for any nonzero $d \in \F_{q}[t]$. The quadratic residue symbol also has the following reciprocity property:
 
         \begin{theorem}[Quadratic reciprocity]
-            If $d,m \in \F_{q}[t]$ are monic, square-free, and relatively prime, then
+            If $d,m \in \F_{q}[t]$ are monic, relatively prime, and nonzero, then
             \[
                 \legendre{d}{m} = (-1)^{\frac{q-1}{2}\deg(d)\deg(m)}\legendre{m}{d}.
             \]
         \end{theorem}
 
-        Note that if $q \equiv 1 \tmod{4}$, the sign in the statement of quadratic reciprocity is always $1$ so that reciprocity is perfect. We now describe the Hilbert symbols on $\F_{q}[t]$. In fact, there is only one nontrivial character $\psi$ defined by
+        Note that if $q \equiv 1 \tmod{4}$, the sign in the statement of quadratic reciprocity is always $1$ so that reciprocity is perfect. We can now define the quadratic Dirichlet characters. For any nonzero $d \in \F_{q}[t]$, define the quadratic Dirichlet character $\chi_{d}$ by the following quadratic residue symbol:
         \[
-            \psi(d) = (-1)^{\deg(d)}.
+            \chi_{d}(m) = \legendre{d}{m} = d^{\frac{|m|-1}{2}} \pmod{m},
         \]
-        The other Hilbert symbol is the trivial character $\psi^{2} = 1$. To see that $\psi$ is given by a quadratic character, just notice that for $\t \in \F^{\x}-(\F^{\x})^{2}$ we have $\chi_{\t}(d) = (-1)^{\deg(d)}$. Moreover, the trivial character is then given by $\chi_{1}$.
+        for any nonzero monic $m \in \F_{q}[t]$. Then $\chi_{d}(m) \in \{\pm 1\}$ provided $d$ and $m$ are relatively prime and $\chi_{d}(m) = 0$ if $(m,d) > 1$. Note that by quadratic reciprocity, $\chi_{d}$ is a Dirichlet character modulo $d$ if $d$ is monic. Since the quadratic residue symbols are multiplicative, $\chi_{d}$ is multiplicative in $d$. Therefore, factoring out a constant if necessary, we may always force $d$ to be monic. Moreover, for $b \in \F_{q}^{\x}$, we see that $\chi_{b}$ is a Hilbert symbol:
+        \[
+            \chi_{b}(m) = \legendre{b}{m} = \sgn(b)^{\deg(m)},
+        \]
+        where $m \in \F_{q}[t]$ is a nonzero monic. The only Hilbet symbols we will need are those given by the quadratic reisdue symbol. There are only two of them: one nontrivial and one trivial. The nontrivial Hilbert symbol $\psi$ is defined by
+        \[
+            \psi(m) = (-1)^{\deg(m)},
+        \]
+        for any nonzero monic $m \in \F_{q}[t]$. The other Hilbert symbol is the trivial character $\psi^{2} = 1$. To see that $\psi$ is given by a quadratic Dirichlet character, just notice that for $\t \in \F^{\x}-(\F^{\x})^{2}$ we have $\chi_{\t}(m) = (-1)^{\deg(m)}$. Moreover, the trivial character is then given by $\chi_{1}$.
 
-        We are now ready to discuss the $L$-functions associated to quadratic characters. We define the $L$-function $L(s,\chi_{d})$ attached to $\chi_{d}$ by a Dirichlet series or Euler product:
+        We are now ready to discuss the $L$-functions associated to quadratic Dirichlet characters. We define the $L$-function $L(s,\chi_{d})$ attached to $\chi_{d}$ by a Dirichlet series or Euler product:
         \[
             L(s,\chi_{d}) = \sum_{\text{$m$ monic}}\frac{\chi_{d}(m)}{|m|^{s}} = \prod_{\text{$P$ monic irr}}\left(1-\frac{\chi_{d}(P)}{|P|^{s}}\right)^{-1}.
         \]
-        By definition of the quadratic character, $L(s,\chi_{d}) \ll \z(s)$ for $\Re(s) > 1$ so that $L(s,\chi_{d})$ is locally absolutely uniformly convergent in this region. $L(s,\chi_{d})$ also admits meromorphic continuation to $\C$ with a simple pole at $s = 1$ if $d$ is a perfect square and is analytic otherwise (see \cite{rosen2002number} for a proof). The completed $L$-function is defined as follows:
+        By definition of the quadratic Dirichlet character, $L(s,\chi_{d}) \ll \z(s)$ for $\Re(s) > 1$ so that $L(s,\chi_{d})$ is locally absolutely uniformly convergent in this region. $L(s,\chi_{d})$ also admits meromorphic continuation to $\C$ with a simple pole at $s = 1$ if $d$ is a perfect square and is analytic otherwise (see \cite{rosen2002number} for a proof). The completed $L$-function is defined as follows:
         \[
             L^{\ast}(s,\chi_{d}) = \begin{cases} \frac{1}{1-q^{-s}}L(s,\chi_{d}) & \text{if $\deg(d)$ is even}, \\ L(s,\chi_{d}) & \text{if $\deg(d)$ is odd}, \end{cases}
         \]
@@ -506,7 +534,7 @@
     \[
         Z_{\psi_{1},\ldots,\psi_{r}}(s_{1},\ldots,s_{r}) = \sum_{\text{$m_{1},\ldots,m_{r}$ monic}}\frac{\psi_{1}(m_{1}) \cdots \psi_{r}(m_{r})H(m_{1},\ldots,m_{r})}{|m_{1}|^{s_{1}} \cdots |m_{r}|^{s_{r}}}.
     \]
-    Since the Hilbert symbols are given by quadratic characters, it follows that $Z_{\psi_{1},\ldots,\psi_{r}}(s_{1},\ldots,s_{r})$ converges locally absolutely uniformly in the same region as $Z(s_{1},\ldots,s_{r})$. Note that if $\psi_{1} = \cdots = \psi_{r} = \chi_{1}$, then $Z_{\psi_{1},\ldots,\psi_{r}}(s_{1},\ldots,s_{r}) = Z(s_{1},\ldots,s_{r})$.
+    Since the Hilbert symbols are given by quadratic Dirichlet characters, it follows that $Z_{\psi_{1},\ldots,\psi_{r}}(s_{1},\ldots,s_{r})$ converges locally absolutely uniformly in the same region as $Z(s_{1},\ldots,s_{r})$. Note that if $\psi_{1} = \cdots = \psi_{r} = \chi_{1}$, then $Z_{\psi_{1},\ldots,\psi_{r}}(s_{1},\ldots,s_{r}) = Z(s_{1},\ldots,s_{r})$.
 \section{Correction polynomials}
     We will now deduce expressions for subsums of $Z_{\psi_{1},\ldots,\psi_{r}}(s_{1},\ldots,s_{r})$. For this, we always work in the region of local absolute uniform convergence. To begin, fix an index $1 \le j \le r$. Also, for any $r$-tuple $m = (m_{1},\ldots,m_{r})$, set
     \[
