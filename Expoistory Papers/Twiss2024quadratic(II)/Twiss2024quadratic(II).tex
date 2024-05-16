@@ -52,9 +52,9 @@
 
     The Dirichlet characters that are of interest to us are those given by the quadratic residue symbol on $\Z$. First let us recall this symbol. For any odd prime $p$ and any $m \ge 1$, we define the quadratic residue symbol $\tlegendre{m}{p}$ by
     \[
-        \legendre{m}{p} \equiv m^{\frac{p-1}{2}} \tmod{p} = \begin{cases} 1 & \text{if $x^{2} \equiv m \tmod{p}$ is solvable}, \\ -1 & \text{if $x^{2} \equiv m \tmod{p}$ is not solvable}, \\ 0 & \text{if $m \equiv 0 \tmod{p}$}. \end{cases}.
+        \legendre{m}{p} \equiv m^{\frac{p-1}{2}} \tmod{p} = \begin{cases} 1 & \text{if $x^{2} \equiv m \tmod{p}$ is solvable}, \\ -1 & \text{if $x^{2} \equiv m \tmod{p}$ is not solvable}, \\ 0 & \text{if $m \equiv 0 \tmod{p}$}. \end{cases}
     \]
-    This symbol is multiplicative in $m$. Moreover,
+    This symbol only depends upon $m$ modulo $p$ and is multiplicative in $m$. Moreover,
     \[
         \legendre{-1}{p} = (-1)^{\frac{p-1}{2}} = \begin{cases} 1 & \text{$p \equiv 1 \tmod{4}$}, \\ -1 & \text{$p \equiv 3 \tmod{4}$}, \end{cases} \quad \text{and} \quad \legendre{2}{p} = (-1)^{\frac{p^{2}-1}{8}} = \begin{cases} 1 & \text{$p \equiv 1,7 \tmod{8}$}, \\ -1 & \text{$p \equiv 3,5 \tmod{8}$}. \end{cases}
     \]
@@ -62,39 +62,38 @@
     \[
         \legendre{m}{d} = \prod_{1 \le i \le k}\legendre{m}{p_{i}}^{e_{i}}.
     \]
-    So the quadratic residue symbol now makes sense for any odd $d \ge 1$. The quadratic residue symbol also has the following reciprocity property:
+    So the quadratic residue symbol now makes sense for any odd $d \ge 1$. We can extend this symbol further and allow $d \ge 1$ to be even. To this end, we define
+    \[
+        \legendre{m}{2} = \begin{cases} 1 & \text{if $m \equiv 1,7 \tmod{8}$}, \\ -1 & \text{if $m \equiv 3,5 \tmod{8}$}, \\ 0 & \text{if $m \equiv 0 \tmod{2}$}, \end{cases}
+    \]
+    and extend $\tlegendre{m}{d}$ multiplatively in $d$ when $d$ is even. Now the quadratic residue symbol makes sense for any $m,d \ge 1$. Moreover, it is multiplicative in both $m$ and $d$ but no longer depends upon only $m$ modulo $d$ (it also depends upon $m$ modulo $2$ and $m$ modulo $8$). The quadratic residue symbol also admits the following reciprocity law:
 
     \begin{theorem}[Quadratic reciprocity]
-        If $d,m \ge 1$ are odd and relatively prime, then
+        If $d,m \ge 1$ are relatively prime, then
         \[
-            \legendre{d}{m} = (-1)^{\frac{d-1}{2}\frac{m-1}{2}}\legendre{m}{d}.
+            \legendre{d}{m} = (-1)^{\frac{d^{(2)}-1}{2}\frac{m^{(2)}-1}{2}}\legendre{m}{d},
         \]
+        where $d^{(2)}$ and $m^{(2)}$ are the parts of $d$ and $m$ relatively prime to $2$ respectively.
     \end{theorem}
 
-    We will require a version of quadratic reciprocity when $d,m \ge 1$ are relatively prime but not necessarily odd. To this end, we define the symbol $\tlegendre{m}{2}$ by
+     We can now define the quadratic Dirichlet characters. For any $d \ge 1$, define the quadratic Dirichlet character $\chi_{d}$ by the following quadratic residue symbol:
     \[
-        \legendre{m}{2} = \begin{cases} 1 & \text{if $m \equiv 1,7 \tmod{8}$}, \\ -1 & \text{if $m \equiv 3,5 \tmod{8}$}, \\ 0 & \text{if $m \equiv 0 \tmod{2}$}. \end{cases},
+        \chi_{d}(m) = \begin{cases} \legendre{d}{m} & \text{if $d \equiv \todo{0},1 \tmod{4}$}, \\ \legendre{4d}{m} & \text{if $d \equiv 2,3 \tmod{4}$}, \end{cases}
     \]
-    This definition is chosen in accordance with $\tlegendre{2}{m}$. Indeed, we have the reciprocity law
-    \[
-        \legendre{d}{m} = (-1)^{\frac{d^{(2)}-1}{2}\frac{m^{(2)}-1}{2}}\legendre{m}{d},
-    \]
-    \todo{xxx}
+    for any $m \ge 1$. In particular, $\chi_{d}(m) = \pm1$ provided $d$ and $m$ are relatively prime and $\chi_{d}(m) = 0$ if $(m,d) > 1$. Quadratic reciprocity implies that $\chi_{d}$ is a Dirichlet character modulo $d$ if $d \equiv 0,1 \tmod{4}$ and is a Dirichlet character modulo $4d$ if $d \equiv 2,3 \tmod{4}$.
     
-    We can now define the quadratic Dirichlet characters. For any non-zero $d \in \F_{q}[t]$, define the quadratic Dirichlet character $\chi_{d}$ by the following quadratic residue symbol:
+    Moreover, for $b \in \F_{q}^{\x}$, $\chi_{b}$ is given by
     \[
-        \chi_{d}(m) = \legendre{d}{m} = m^{\frac{|d|-1}{2}} \pmod{d},
+        \chi_{b}(m) = \legendre{b}{m} = \sgn(b)^{\deg(m)}.
     \]
-    for any non-zero monic $m \in \F_{q}[t]$. Then $\chi_{d}(m) \in \{\pm 1\}$ provided $d$ and $m$ are relatively prime and $\chi_{d}(m) = 0$ if $(m,d) > 1$. Note that by quadratic reciprocity, $\chi_{d}$ is a Dirichlet character modulo $d$ if $d$ is monic. Since the quadratic residue symbols are multiplicative, $\chi_{d}$ is multiplicative in $d$. Therefore, factoring out a constant if necessary, we may always force $d$ to be monic. Moreover, for $b \in \F_{q}^{\x}$, we see that $\chi_{b}$ is a Hilbert symbol:
+    This is a Hilbert symbol as we will now see. The only Hilbet symbols we will need are those given by the quadratic reisdue symbol. There are only two of them: one nontrivial and one trivial. The nontrivial Hilbert symbol is $\chi_{\t}$ where $\t \in \F^{\x}-(\F^{\x})^{2}$:
     \[
-        \chi_{b}(m) = \legendre{b}{m} = \sgn(b)^{\deg(m)},
+        \chi_{\t}(m) = (-1)^{\deg(m)}.
     \]
-    where $m \in \F_{q}[t]$ is a non-zero monic. The only Hilbet symbols we will need are those given by the quadratic reisdue symbol. There are only two of them: one nontrivial and one trivial. The nontrivial Hilbert symbol is $\chi_{\t}$ where $\t \in \F^{\x}-(\F^{\x})^{2}$:
-    \[
-        \chi_{\t}(m) = (-1)^{\deg(m)},
-    \]
-    where $m \in \F_{q}[t]$ is a non-zero monic. Note that $\conj{\chi_{\t}} = \chi_{\t}$. The other Hilbert symbol is the trivial character $\chi_{\t}^{2} = \chi_{\t\t} = \chi_{1}$. In general, we denote a Hilbert symbol by $\chi_{a}$ where $a \in \{1,\t\}$.
-    
+    Note that $\conj{\chi_{\t}} = \chi_{\t}$. The other Hilbert symbol is the trivial Dirichlet character $\chi_{\t}^{2} = \chi_{\t\t} = \chi_{1}$. In general, we denote a Hilbert symbol by $\chi_{a}$ where $a \in \{1,\t\}$. The Hilbert symbols are necessary because they control the possible sign change in the statement of quadratic reciprocity coming from the $\sgn(d)^{\deg(m)}$ and $\sgn(m)^{-\deg(d)}$ factors. Technically speaking, we would also require Hilbert symbols to keep track of the $(-1)^{\frac{q-1}{2}\deg(d)\deg(m)}$ factor but as we will assume $q \equiv 1 \tmod{4}$, we will not discuss this additional difficulty.
+
+    \todo{XXXXXX}
+
     With the Dirichlet characters and Hilbert symbols introduced, we are ready to discuss the $L$-functions associated to quadratic Dirichlet characters. We define the $L$-function $L(s,\chi_{d})$ attached to $\chi_{d}$ by a Dirichlet series or Euler product:
     \[
         L(s,\chi_{d}) = \sum_{\text{$m$ monic}}\frac{\chi_{d}(m)}{|m|^{s}} = \prod_{\text{$P$ monic irr}}\left(1-\frac{\chi_{d}(P)}{|P|^{s}}\right)^{-1}.
