@@ -377,7 +377,7 @@
       \begin{equation}\label{equ:integral_representation_zeta_1}
         \z(s) = \frac{\pi^{\frac{s}{2}}}{\G\left(\frac{s}{2}\right)}\int_{0}^{\infty}\w(x)x^{\frac{s}{2}}\,\frac{dx}{x}.
       \end{equation}
-      This was essentially Riemann's insight: rewrite the zeta function in terms of the Gamma function. Unfortunately, we cannot proceed until we understand $\w(x)$. So we will make a slight detour and come back to the integral representation after.
+      This was essentially Riemann's insight: rewrite the zeta function in terms of a Mellin transform. Unfortunately, we cannot proceed until we understand $\w(x)$. So we will make a slight detour and come back to the integral representation after.
     \subsection*{Jacobi's Theta Function \texorpdfstring{$\vt(s)$}{\vt(s)}}
       \textbf{Jacobi's theta function}\index{Jacobi's theta function} $\vt(s)$ is defined for $\Re(s) > 0$ by
       \[
@@ -845,7 +845,7 @@
         is locally absolutely uniformly convergent with degree $2$ Euler product.
       \end{theorem}
     \subsection*{The Integral Representation of \texorpdfstring{$L(s,f)$}{L(s,f)}}
-      We now look to represent $L(s,f)$ as a symmetric integral under $s \to 1-s$. The integral we want to consider is
+      We now look to represent $L(s,f)$ as a symmetric integral under $s \to 1-s$. The integral we want to consider is a Mellin tranform:
       \[
         \int_{0}^{\infty}f(iy)y^{s+\frac{k-1}{2}}\,\frac{dy}{y}.
       \]
@@ -869,7 +869,7 @@
       \[
         \int_{\frac{1}{\sqrt{N}}}^{\infty}f\left(\frac{i}{Ny}\right)(Ny)^{-s-\frac{k-1}{2}}\,\frac{dy}{y}.
       \]
-      Rewriting in terms of the Atkin–Lehner involution $f\w_{N}$ and recalling that $f\w_{N} = \w_{N}(f)f$ by \cref{prop:Atkin_Lehner_involution_preserves_subspaces}, we have
+      Rewriting in terms of the Atkin–Lehner involution $f\w_{N}$ and recalling that $f\w_{N} = \w_{N}(f)f$ by \cref{prop:Atkin_Lehner_involution_preserves_subspaces_holomorphic}, we have
       \begin{align*}
         \int_{\frac{1}{\sqrt{N}}}^{\infty}f\left(\frac{i}{Ny}\right)(Ny)^{-s-\frac{k-1}{2}}\,\frac{dy}{y} &= \int_{\frac{1}{\sqrt{N}}}^{\infty}f\left(-\frac{1}{iNy}\right)(Ny)^{-s-\frac{k-1}{2}}\,\frac{dy}{y} \\
         &= \int_{\frac{1}{\sqrt{N}}}^{\infty}\left(\sqrt{N}iy\right)^{k}(f\w_{N})(iy)y^{-s-\frac{k-1}{2}}\,\frac{dy}{y} \\
@@ -1014,7 +1014,7 @@
       \[
         \int_{\G_{\infty}\backslash\H}f(z)\conj{g(z)}\Im(z)^{s+k}\,d\mu,
       \]
-      where $\G_{\infty}$ is the associated subgroup corresponding to $\PSL_{2}(\Z)$.
+      where $\G_{\infty}$ is the associated subgroup corresponding to $\PSL_{2}(\Z)$. This will turn out to be a Mellin transform as we will soon see.
 
       \begin{remark}
         If $f \in \mc{S}_{k}(N,\chi)$ and $g \in \mc{S}_{\ell}(N,\psi)$, then $\G_{\infty}$ is the associated subgroup corresponding to $\G_{0}(NM)$. Also, for $k \neq \ell$ the power of $\Im(z)$ in the integrand needs to be adjusted.
@@ -1031,7 +1031,7 @@
         &= \int_{0}^{\infty}\sum_{n,m \ge 1}\int_{0}^{1}a(n)\conj{b(m)}e^{2\pi i(n-m)x}e^{-2\pi(n+m)y}y^{s+k}\,\frac{dx\,dy}{y^{2}} && \text{DCT} \\
         &= \int_{0}^{\infty}\sum_{n \ge 1}a(n)\conj{b(n)}e^{-4\pi ny}y^{s+k}\,\frac{dy}{y^{2}},
       \end{align*}
-      where the last line follows by \cref{equ:Dirac_integral_representation}. The rest is a computation:
+      where the last line follows by \cref{equ:Dirac_integral_representation}. Notice that the last integral is a Mellin transform. The rest is a computation:
       \begin{align*}
         \int_{0}^{\infty}\sum_{n \ge 1}a(n)\conj{b(n)}e^{-4\pi ny}y^{s+k}\,\frac{dy}{y^{2}} &= \sum_{n \ge 1}a(n)\conj{b(n)}\int_{0}^{\infty}e^{-4\pi ny}y^{s+k}\,\frac{dy}{y^{2}} &&\text{DCT} \\
         &= \sum_{n \ge 1}\frac{a(n)\conj{b(n)}}{(4\pi n)^{s+k-1}}\int_{0}^{\infty}e^{-y}y^{s+k-1}\,\frac{dy}{y} &&\text{$y \to \frac{y}{4\pi n}$} \\
