@@ -900,11 +900,11 @@
         \]
         If $p \nmid N$ then the inner sum vanishes because it is the sum over all $p$-th roots of unity. If $p \mid N$ then the sum is $p$. Therefore
         \[
-          \sum_{j \tmod{p}}\left(f\left[\begin{pmatrix} 1 & j \\ 0 & p \end{pmatrix}\right]_{k}\right)(z) = \sum_{n \ge 0}a_{np}(f)e^{\pi inz}.
+          \sum_{j \tmod{p}}\left(f\left[\begin{pmatrix} 1 & j \\ 0 & p \end{pmatrix}\right]_{k}\right)(z) = \sum_{n \ge 0}a_{np}(f)e^{2\pi inz}.
         \]
         If $p \mid N$, then \cref{prop:explicit_description_of_Hecke_operators_holomorphic} implies
         \[
-          (T_{p}f)(z) = \sum_{n \ge 0}a_{np}(f)e^{\pi inz},
+          (T_{p}f)(z) = \sum_{n \ge 0}a_{np}(f)e^{2\pi inz},
         \]
         which is the claimed Fourier series of $T_{p}f$. $p \nmid N$, then we have the additional term
         \begin{align*}
@@ -915,7 +915,7 @@
         \end{align*}
         where the first equality holds because $\begin{psmallmatrix} m & n \\ N & p \end{psmallmatrix} \in \G_{0}(N)$ and the last equality holds because $\<p\>f = \chi(p)f$. In this case, \cref{prop:explicit_description_of_Hecke_operators_holomorphic} gives
         \[
-          (T_{p}f)(z) = \sum_{n \ge 0}a_{np}(f)+\chi(p)p^{k-1}a_{\frac{n}{p}}(f)e^{\pi inz}.
+          (T_{p}f)(z) = \sum_{n \ge 0}a_{np}(f)+\chi(p)p^{k-1}a_{\frac{n}{p}}(f)e^{2\pi inz}.
         \]
         Since $\chi(p) = 0$ if $p \mid N$, these two cases can be expressed together as 
         \[
@@ -1389,19 +1389,19 @@
         \]
       \end{theorem}
 
-      We say that $f$ is \textbf{even}\index{even} if $f(-\conj{z}) = f(z)$ and is \textbf{odd}\index{odd} if $f(-\conj{z}) = -f(z)$. Note that if $f$ is odd it must be a cusp form. Since $-\conj{z} = -x+iy$, this means that $f$ is even or odd with respect to $\Re(z) = x$. As $e^{2\pi inx} = \cos(nx)+i\sin(nx)$, if $f$ has eigenvalue $\l = s(1-s)$ and $\s_{\mf{a}}$ is a scaling matrix for the $\mf{a}$ cusp, then the Fourier series of $f$ at the $\mf{a}$ cusp is 
+      We can simplify this Fourier series in some cases. We say $f$ is \textbf{even}\index{even} if $f(-\conj{z}) = f(z)$ and is \textbf{odd}\index{odd} if $f(-\conj{z}) = -f(z)$. Since $-\conj{z} = -x+iy$, this means that $f$ is even or odd with respect to $\Re(z) = x$. Note that if $f$ is odd it must be a cusp form. As $e^{2\pi inx} = \cos(nx)+i\sin(nx)$, if $f$ has eigenvalue $\l = s(1-s)$ and $\s_{\mf{a}}$ is a scaling matrix for the $\mf{a}$ cusp, then the Fourier series of $f$ at the $\mf{a}$ cusp is 
       \[
-        f(\s_{\mf{a}}z) = a_{\mf{a}}(0)y^{s}+b_{\mf{a}}(0)y^{1-s}+\sum_{n \neq 0}a_{\mf{a}}(n)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y)\cos(2\pi nx),
+        f(\s_{\mf{a}}z) = a_{\mf{a}}(0)y^{s}+b_{\mf{a}}(0)y^{1-s}+\sum_{n \neq 0}a_{\mf{a}}(n)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y)\cos\left(\frac{2\pi nx}{t}\right),
       \]
       if $f$ is even, and
       \[
-        f(z) = \sum_{n \neq 0}a_{\mf{a}}(n)i\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y)\sin(2\pi nx),
+        f(z) = \sum_{n \neq 0}a_{\mf{a}}(n)i\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y)\sin\left(\frac{2\pi nx}{t}\right),
       \]
-      if $f$ is odd. Therefore, in even case $a_{\mf{a}}(-n) = a_{\mf{a}}(n)$ for all $n \ge 1$ and in the odd case $-a_{\mf{a}}(-n) = a_{\mf{a}}(n)$ for all $n \ge 1$. This means that $f$ admits a Fourier series
+      if $f$ is odd. Therefore, in even case $a_{\mf{a}}(-n) = a_{\mf{a}}(n)$ for all $n \ge 1$ and in the odd case $-a_{\mf{a}}(-n) = a_{\mf{a}}(n)$ for all $n \ge 1$. In either case, $f$ admits a Fourier series of the form
       \[
-        f(\s_{\mf{a}}z) = a_{\mf{a}}(0)y^{s}+b_{\mf{a}}(0)y^{1-s}+\sum_{n \ge 1}a_{\mf{a}}(n)\sqrt{y}K_{s-\frac{1}{2}}(2\pi ny)\SC(2\pi nx),
+        f(\s_{\mf{a}}z) = a_{\mf{a}}(0)y^{s}+b_{\mf{a}}(0)y^{1-s}+\sum_{n \ge 1}a_{\mf{a}}(n)\sqrt{y}K_{s-\frac{1}{2}}(2\pi ny)\SC\left(\frac{2\pi nx}{t}\right),
       \]
-      for some different Fourier coefficeints $a_{\mf{a}}(n)$, $a_{\mf{a}}(0)$, and $b_{\mf{a}}(0)$ and where $\SC(x) = \cos(x)$ if $f$ is even and $\SC(x) = \sin(x)$ if $f$ is odd. From now on, if we are discussing an even or odd cusp form, we will always mean this Fourier series. In any case, if $f$ is a cusp form \cref{thm:Fourier_series_of_automorphic_forms} implies that the Foruier series of $f$ at the $\mf{a}$ cusp is given by
+      for some different Fourier coefficeints $a_{\mf{a}}(n)$, $a_{\mf{a}}(0)$, and $b_{\mf{a}}(0)$ and where $\SC(x) = \cos(x)$ if $f$ is even and $\SC(x) = \sin(x)$ if $f$ is odd. If $f$ is odd, or more generally a cusp form, then necessarily $a_{\mf{a}}(0) = b_{\mf{a}}(0) = 0$. From now on, if we are discussing an even or odd automorphic form, we will always mean this Fourier series. For any cusp form, we can derive an important growth condition. Indeed, \cref{thm:Fourier_series_of_automorphic_forms} implies that the Foruier series of $f$ at the $\mf{a}$ cusp is given by
       \[
         f(\s_{\mf{a}}z) = \sum_{n \neq 0}a_{\mf{a}}(n)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y)e^{\frac{2\pi inx}{t}}.
       \]
@@ -1409,7 +1409,7 @@
       \begin{equation}\label{equ:automorphic_form_growth}
         f(\s_{\mf{a}}z) = o_{s}\left(\sqrt{y}\sum_{n \neq 0}e^{-2\pi|n|y}\right) = o_{s}\left(\sqrt{y}\sum_{n \in \Z}e^{-2\pi|n|y}\right) = o_{s}\left(\frac{2\sqrt{y}}{1-e^{-2\pi y}}\right) = o_{s}(e^{2\pi y}).
       \end{equation}
-      Observe that \cref{equ:automorphic_form_growth} implies that automorphic cusp forms are bounded on $\H$. We will make more use of this estimate when we discuss Maass forms.
+      \cref{equ:automorphic_form_growth} implies that cusp forms are bounded on $\H$. We will make more use of this estimate soon.
     \subsection*{Maass Forms}
       Maass forms are essentially $\G$-invariant analogues to holomorphic forms. They are also eigenfunctions for the Laplace operator. Let $\G$ be a congruence subgroup of level $N$ and let $\chi$ be a Dirichlet character of conductor $q \mid N$. We say that a function $f:\H \to \C$ is a \textbf{Maass form}\index{Maass form} on $\GH$ with eigenvalue $\l$ and \textbf{character}\index{character} (or \textbf{nebentypus}\index{nebentypus} or \textbf{twist}\index{twist}) $\chi$ if the following properties are satisfied:
       \begin{enumerate}[label=(\roman*)]
@@ -1756,6 +1756,7 @@
       \[
         (f[\a])(z) = f(\a z),
       \]
+      \todo{GIVING WRONG HECKE RELATIONS}
       Clearly $[\a]$ is multiplicative. Moreover, if $\g \in \G$ and we choose the representative with positive determinant, then the chain of equalities
       \[
         (f[\g])(z) = f(\g z) = f(z),
@@ -1777,7 +1778,7 @@
         Thus $f[\G_{1}\a\G_{2}]$ is an eigenfunction for $\D$ with eigenvalue $\l$. This completes the proof.
       \end{proof}
     \subsection*{Diamond \& Hecke Operators}
-      Extending the theory of diamond operators and Hecke operators to Maass forms is fairly straightforward. To see this, we have already shown that $\G_{1}(N)$ is normal in $\G_{0}(N)$ so that
+      Extending the theory of diamond operators and Hecke operators to Maass forms is fairly straightforward. To see this, we have already shown that $\G_{1}(N)$ is normal in $\G_{0}(N)$ so
       \[
         \left(f\left[\G_{1}(N)\a\G_{1}(N)\right]\right)(z) = \sum_{j}(f[\b_{j}])(z) = (f[\a])(z),
       \]
@@ -1806,7 +1807,7 @@
       \[
         (\<d\>f)(z) = (f[\g])(z) = f(\g z) = \chi(d)f(z),
       \]
-      is equivalent to the automorphy of $f$ with character $\chi$ on $\G_{0}(N)\backslash\H$. So $f$ is a Maass form with character $\chi$ on $\G_{0}(N)\backslash\H$ if and only if $f[\g] = \chi(\g)f$ for all $\g \in \G_{0}(N)$ where $\g$ is chosen to be the representative with positive determinant. This means that if $\mc{A}_{t}(\G,\chi)$ denotes the space of Maass forms on $\GH$ with character $\chi$, and $\mc{C}_{t}(\G,\chi)$ denotes the corresponding subspace of cusp forms, then $\mc{A}_{t}(N,\chi) = \mc{A}_{t}(\G_{0}(N),\chi)$ and $\mc{C}_{t}(N,\chi) = \mc{C}_{t}(\G_{0}(N),\chi)$. So by \cref{thm:diamond_operator_decomposition_Maass}, we have
+      is equivalent to the automorphy of $f$ with character $\chi$ on $\G_{0}(N)\backslash\H$. So $f$ is a Maass form with character $\chi$ on $\G_{0}(N)\backslash\H$ if and only if $f[\g] = \chi(\g)f$ for all $\g \in \G_{0}(N)$ where $\g$ is chosen to be the representative with positive determinant. This means that if $\mc{A}_{t}(\G,\chi)$ denotes the space of Maass forms on $\GH$ with spectral parameter $t$ and character $\chi$, and $\mc{C}_{t}(\G,\chi)$ denotes the corresponding subspace of cusp forms, then $\mc{A}_{t}(N,\chi) = \mc{A}_{t}(\G_{0}(N),\chi)$ and $\mc{C}_{t}(N,\chi) = \mc{C}_{t}(\G_{0}(N),\chi)$. So by \cref{thm:diamond_operator_decomposition_Maass}, we have
       \[
         \mc{A}_{t}(\G_{1}(N)) = \bigop_{\chi \tmod{N}}\mc{A}_{t}(\G_{0}(N),\chi),
       \]
