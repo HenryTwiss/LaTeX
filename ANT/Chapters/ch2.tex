@@ -1762,16 +1762,15 @@
     \subsection*{Double Coset Operators}
       We can extend the theory of double coset operators to Maass forms just as we did for holomorphic forms. Indeed, for any $\a \in \GL_{2}^{+}(\Q)$, we define the operator $[\a]$ on $\mc{A}_{t}(\G)$ to be the linear operator given by
       \[
-        (f[\a])(z) = f(\a z),
+        (f[\a])(z) = \det(\a)^{-\frac{1}{2}}f(\a z),
       \]
-      \todo{GIVING WRONG HECKE RELATIONS}
       Clearly $[\a]$ is multiplicative. Moreover, if $\g \in \G$ and we choose the representative with positive determinant, then the chain of equalities
       \[
         (f[\g])(z) = f(\g z) = f(z),
       \]
       is equivalent to the automorphy of $f$ on $\GH$. For any two congruence subgroups $\G_{1}$ and $\G_{2}$ (not necessarily of the same level) and any $\a \in \GL_{2}^{+}(\Q)$, we define the \textbf{double coset operator}\index{double coset operator} $[\G_{1}\a\G_{2}]$ to be the linear operator on $\mc{A}_{t}(\G_{1})$ given by
       \[
-        (f[\G_{1}\a\G_{2}])(z) = \sum_{j}(f[\b_{j}])(z) = \sum_{j}f(\b_{j}z).
+        (f[\G_{1}\a\G_{2}])(z) = \sum_{j}(f[\b_{j}])(z) = \sum_{j}\det(\b_{j})^{-\frac{1}{2}}f(\b_{j}z).
       \]
       for any $f \in \mc{A}_{t}(\G_{1})$. As was the case for holomorphic forms, \cref{prop:double_congruence_subgroup_coset_decomposition_is_finite} implies that this sum is finite. Mimicing the same argument for $[\G_{1}\a\G_{2}]_{k}$, we see that $[\G_{1}\a\G_{2}]$ is also well-defined. There is also an analogous statement about the double coset operators for Maass forms:
 
@@ -1781,7 +1780,7 @@
       \begin{proof}
         Mimicing the proof of \cref{prop:double_coset_operator_preserves_subspaces_holomorphic}, smoothness replacing holomorphy, and the analogous growth condition for Maass forms, the only piece left to verify is that $f[\G_{1}\a\G_{2}]$ is an eigenfunction for $\D$ with eigenvalue $\l$ if $f$ is. This is easy, since
         \[
-          \D(f[\G_{1}\a\G_{2}])(z) = \sum_{j}(\D f)(\b_{j}z) = \l\sum_{j}f(\b_{j}z) = \l(f[\G_{1}\a\G_{2}])(z). 
+          \D(f[\G_{1}\a\G_{2}])(z) = \sum_{j}\D((f[\b_{j}])(z)) = \l\sum_{j}\det(\b_{j})^{-\frac{1}{2}}f(\b_{j}z) = \l(f[\G_{1}\a\G_{2}])(z). 
         \]
         Thus $f[\G_{1}\a\G_{2}]$ is an eigenfunction for $\D$ with eigenvalue $\l$. This completes the proof.
       \end{proof}
@@ -1855,11 +1854,11 @@
       \begin{proposition}\label{prop:prime_Hecke_operators_acting_on_Fourier_coefficients_Maass}
         Let $f \in \mc{A}_{t}(\G_{1}(N))$ be even or odd with Fourier coefficients $a_{n}(f)$, $a_{0}(f)$, and $b_{0}(f)$. Then for primes $p$ with $(p,N) = 1$, $T_{p}f$ is even or odd respectively and
         \[
-          (T_{p}f)(z) = a_{0}(f)y^{s}+b_{0}(f)y^{1-s}+\sum_{n \ge 1}\left(a_{np}(f)+\chi_{N,0}(p)a_{\frac{n}{p}}(\<p\>f)\right)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y)\SC(2\pi nx),
+          (T_{p}f)(z) = a_{0}(T_{p}f)y^{s}+b_{0}(T_{p}f)y^{1-s}+\sum_{n \ge 1}\left(a_{np}(f)+\chi_{N,0}(p)a_{\frac{n}{p}}(\<p\>f)\right)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y)\SC(2\pi nx),
         \]
         is the Fourier series of $T_{p}f$ where it is understood that $a_{\frac{n}{p}}(f) = 0$ if $p \nmid n$. Moreover, if $f \in \mc{A}_{t}(N,\chi)$ then $T_{p}f \in \mc{A}_{t}(N,\chi)$ and
         \[
-          (T_{p}f)(z) = a_{0}(f)y^{s}+b_{0}(f)y^{1-s}+\sum_{n \ge 1}\left(a_{np}(f)+\chi(p)a_{\frac{n}{p}}(f)\right)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y)\SC(2\pi nx),
+          (T_{p}f)(z) = a_{0}(T_{p}f)y^{s}+b_{0}(T_{p}f)y^{1-s}+\sum_{n \ge 1}\left(a_{np}(f)+\chi(p)a_{\frac{n}{p}}(f)\right)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y)\SC(2\pi nx),
         \]
         is the Fourier series of $T_{p}f$ where it is understood that $a_{\frac{n}{p}}(f) = 0$ if $p \nmid n$.
       \end{proposition}
@@ -1896,11 +1895,11 @@
       \begin{proposition}\label{prop:general_Hecke_operators_acting_on_Fourier_coefficients_Maass}
         Let $f \in \mc{A}_{t}(\G_{1}(N))$ be even or odd with Fourier coefficients $a_{n}(f)$, $a_{0}(f)$, and $b_{0}(f)$. Then for $m \ge 1$ with $(m,N) = 1$, $T_{m}f$ is even or odd respectively and
         \[
-          (T_{m}f)(z) = a_{0}(f)y^{s}+b_{0}(f)y^{1-s}+\sum_{n \ge 1}\left(\sum_{d \mid (n,m)}a_{\frac{nm}{d^{2}}}(\<d\>f)\right)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y)\SC(2\pi inx),
+          (T_{m}f)(z) = a_{0}(T_{m}f)y^{s}+b_{0}(T_{m}f)y^{1-s}+\sum_{n \ge 1}\left(\sum_{d \mid (n,m)}a_{\frac{nm}{d^{2}}}(\<d\>f)\right)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y)\SC(2\pi inx),
         \]
         is the Fourier series of $T_{m}f$. Moreover, if $f \in \mc{A}_{t}(N,\chi)$, then
         \[
-          (T_{m}f)(z) = a_{0}(f)y^{s}+b_{0}(f)y^{1-s}+\sum_{n \ge 1}\left(\sum_{d \mid (n,m)}\chi(d)a_{\frac{nm}{d^{2}}}(f)\right)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y)\SC(2\pi inx).
+          (T_{m}f)(z) = a_{0}(T_{m}f)y^{s}+b_{0}(T_{m}f)y^{1-s}+\sum_{n \ge 1}\left(\sum_{d \mid (n,m)}\chi(d)a_{\frac{nm}{d^{2}}}(f)\right)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y)\SC(2\pi inx).
         \]
       \end{proposition}
       \begin{proof}
