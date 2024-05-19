@@ -499,7 +499,7 @@
       \[
         \<f,g\>_{\G} = \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}f(z)\conj{g(z)}\Im(z)^{k}\,d\mu.
       \]
-      If the congruence subgroup is clear from context we will supress the dependence upon $\G$. The integrand is also $\G$-invariant so that the integral independent of the choice of fundamental domain. The integral is also absolutely bounded by \cref{met:decay_compacta_integral} (since $f$ is a cusp form). These two facts together imply that the Petersson inner product is well-defined. Actually, we have the following proposition:
+      If the congruence subgroup is clear from context we will supress the dependence upon $\G$. Since $f$ is a cusp form, the integral is absolutely bounded by \cref{met:decay_compacta_integral}. The integrand is also $\G$-invariant so that the integral independent of the choice of fundamental domain. These two facts together imply that the Petersson inner product is well-defined. Actually, we have the following proposition:
 
       \begin{proposition}\label{prop:Petersson_inner_product_hermitian}
         $\mc{S}_{k}(\G)$ is a Hilbert space with respect to Petersson inner product.
@@ -554,6 +554,7 @@
       The rest is a computation:
       \begin{align*}
         \frac{1}{V_{\G}}\sum_{\g \in \GG}\int_{\g\mc{F}_{\G}}f(z)e^{-2\pi im\conj{z}}\Im(z)^{k}\,d\mu &= \frac{1}{V_{\G}}\int_{\G_{\infty}\backslash\H}f(z)e^{-2\pi im\conj{z}}\Im(z)^{k}\,d\mu \\
+        &= \frac{1}{V_{\G}}\int_{0}^{\infty}\int_{0}^{1}f(x+iy)e^{-2\pi im\conj{(x+iy)}}y^{k}\,d\mu \\
         &= \frac{1}{V_{\G}}\int_{0}^{\infty}\int_{0}^{1}\sum_{n \ge 1}a_{n}(f)e^{2\pi i(n-m)x}e^{-2\pi(n+m)y}y^{k}\,\frac{dx\,dy}{y^{2}} \\
         &= \frac{1}{V_{\G}}\int_{0}^{\infty}\sum_{n \ge 1}\int_{0}^{1}a_{n}(f)e^{2\pi i(n-m)x}e^{-2\pi(n+m)y}y^{k}\,\frac{dx\,dy}{y^{2}} && \text{DCT} \\
         &= \frac{1}{V_{\G}}\int_{0}^{\infty}a_{m}(f)e^{-4\pi my}y^{k}\,\frac{dy}{y^{2}},
@@ -1316,7 +1317,7 @@
         \[
           \l_{f}(n)y^{\frac{k}{2}} = \int_{0}^{1}f(x+iy)y^{\frac{k}{2}}e^{-2\pi in(x+iy)}\,dx \le e^{2\pi ny}\int_{0}^{1}\left|f(x+iy)y^{\frac{k}{2}}\right|\,dx \ll e^{2\pi ny}.
         \]
-        Setting $y = 1/n$ implies 
+        Setting $y = \frac{1}{n}$ implies 
         \[
           \l_{f}(n) \ll n^{\frac{k}{2}}.
         \]
@@ -1575,7 +1576,7 @@
       \[
         \<f,g\>_{\G} = \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}f(z)\conj{g(z)}\,d\mu.
       \]
-      If the congruence subgroup is clear from context we will supress the dependence upon $\G$. As $f$ and $g$ are automorphic, the integral is independent of the choice of fundamental domain. In fact, we can do better:
+      If the congruence subgroup is clear from context we will supress the dependence upon $\G$. The integral is absolutely bounded by the Cauchy–Schwarz inequality and that $f,g \in \mc{L}(\G)$. As $f$ and $g$ are automorphic, the integral is independent of the choice of fundamental domain. In fact, we can do better:
 
       \begin{theorem}
         $\mc{L}(\G)$ is a Hilbert space with respect to the Petersson inner product.
@@ -1632,8 +1633,10 @@
       \[
         \s = 1-\s \quad \text{and} \quad t = t.
       \]
-      Therefore $s = \frac{1}{2}+it$. In the later case, $s$ is real and since $\l$ is positive we must have $s \in (0,1)$. It follows that in either case, we may write $\l = \frac{1}{4}+t^{2}$ with either $t \in \R$ or $it \in [0,\frac{1}{2})$. We refer to $t$ as the \textbf{spectral parameter} of $f$.
-
+      Therefore $s = \frac{1}{2}+it$. In the later case, $s$ is real and since $\l$ is positive we must have $s \in (0,1)$. It follows that in either case, we may write $\l = \frac{1}{4}+t^{2}$ with either $t \in \R$ or $it \in [0,\frac{1}{2})$. We refer to $t$ as the \textbf{spectral parameter} of $f$. Note that we can then write
+      \[
+        \l = s(1-s) = \frac{1}{4}+t^{2}.
+      \]
       Unfortunately the Eisenstein series $E_{\mf{a}}(z,s)$ are not $L^{2}$-integrable over $\mc{F}_{\G}$ and so do not belong to $\mc{L}(\G)$. To obtain integrable automorphic functions we will agument these Eisenstein series so that they have compact support. Let $\psi:\R^{+} \to \C$ be a smooth compactly supported function and $\s_{\mf{a}}$ be a scaling matrix for the $\mf{a}$ cusp. We define the \textbf{(incomplete) Eisenstein series}\index{(incomplete) Eisenstein series} $E_{\mf{a}}(z,\psi)$ at the $\mf{a}$ cusp with respect to $\psi$ by
       \[
         E_{\mf{a}}(z,\psi) = \sum_{\g \in \G_{\mf{a}}\backslash\G}\psi(\Im(\s_{\mf{a}}^{-1}\g z)).
@@ -1689,7 +1692,7 @@
       \begin{theorem}\label{thm:meromorphic_continuation_of_Eisenstein_series}
         Let $\mf{a}$ and $\mf{b}$ be cusps of $\GH$. The Eisenstein series $E_{\mf{a}}(z,s)$ admits meromorphic continuation to $\C$ in the $s$-plane, via a Fourier series at the $\mf{b}$ cusp given by
         \[
-          E_{\mf{a}}(\s_{\mf{b}}z,s) = \d_{\mf{a},\mf{b}}y^{s}+\tau_{\mf{a},\mf{b}}(s)y^{1-s}+\sum_{n \neq 0}\tau_{\mf{a},\mf{b}}(n,s)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y)e^{2\pi inx},
+          E_{\mf{a}}(\s_{\mf{b}}z,s) = \d_{\mf{a},\mf{b}}y^{s}+\tau_{\mf{a},\mf{b}}(s)y^{1-s}+\sum_{n \neq 0}\tau_{\mf{a},\mf{b}}(n,s)\sqrt{y}K_{it}(2\pi|n|y)e^{2\pi inx},
         \]
         where $\tau_{\mf{a},\mf{b}}(s)$ and $\tau_{\mf{a},\mf{b}}(n,s)$ are meromorphic functions. The poles of $\tau_{\mf{a},\mf{b}}(s)$ are simple and belong to the segment $(\frac{1}{2},1]$. A pole of $\tau_{\mf{a},\mf{b}}(s)$ is also a pole of $\tau_{\mf{a},\mf{a}}(s)$, and the poles of $E_{\mf{a}}(z,s)$ are among the poles of $\tau_{\mf{a},\mf{a}}(s)$. Also, the residues of the Eisenstein series at these poles are Maass forms in $\mc{E}(\G)$.
       \end{theorem}
@@ -1854,11 +1857,11 @@
       \begin{proposition}\label{prop:prime_Hecke_operators_acting_on_Fourier_coefficients_Maass}
         Let $f \in \mc{A}_{t}(\G_{1}(N))$ be even or odd with Fourier coefficients $a_{n}(f)$, $a_{0}(f)$, and $b_{0}(f)$. Then for primes $p$ with $(p,N) = 1$, $T_{p}f$ is even or odd respectively and
         \[
-          (T_{p}f)(z) = a_{0}(T_{p}f)y^{s}+b_{0}(T_{p}f)y^{1-s}+\sum_{n \ge 1}\left(a_{np}(f)+\chi_{N,0}(p)a_{\frac{n}{p}}(\<p\>f)\right)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y)\SC(2\pi nx),
+          (T_{p}f)(z) = a_{0}(T_{p}f)y^{s}+b_{0}(T_{p}f)y^{1-s}+\sum_{n \ge 1}\left(a_{np}(f)+\chi_{N,0}(p)a_{\frac{n}{p}}(\<p\>f)\right)\sqrt{y}K_{it}(2\pi|n|y)\SC(2\pi nx),
         \]
         is the Fourier series of $T_{p}f$ where it is understood that $a_{\frac{n}{p}}(f) = 0$ if $p \nmid n$. Moreover, if $f \in \mc{A}_{t}(N,\chi)$ then $T_{p}f \in \mc{A}_{t}(N,\chi)$ and
         \[
-          (T_{p}f)(z) = a_{0}(T_{p}f)y^{s}+b_{0}(T_{p}f)y^{1-s}+\sum_{n \ge 1}\left(a_{np}(f)+\chi(p)a_{\frac{n}{p}}(f)\right)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y)\SC(2\pi nx),
+          (T_{p}f)(z) = a_{0}(T_{p}f)y^{s}+b_{0}(T_{p}f)y^{1-s}+\sum_{n \ge 1}\left(a_{np}(f)+\chi(p)a_{\frac{n}{p}}(f)\right)\sqrt{y}K_{it}(2\pi|n|y)\SC(2\pi nx),
         \]
         is the Fourier series of $T_{p}f$ where it is understood that $a_{\frac{n}{p}}(f) = 0$ if $p \nmid n$.
       \end{proposition}
@@ -1895,11 +1898,11 @@
       \begin{proposition}\label{prop:general_Hecke_operators_acting_on_Fourier_coefficients_Maass}
         Let $f \in \mc{A}_{t}(\G_{1}(N))$ be even or odd with Fourier coefficients $a_{n}(f)$, $a_{0}(f)$, and $b_{0}(f)$. Then for $m \ge 1$ with $(m,N) = 1$, $T_{m}f$ is even or odd respectively and
         \[
-          (T_{m}f)(z) = a_{0}(T_{m}f)y^{s}+b_{0}(T_{m}f)y^{1-s}+\sum_{n \ge 1}\left(\sum_{d \mid (n,m)}a_{\frac{nm}{d^{2}}}(\<d\>f)\right)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y)\SC(2\pi inx),
+          (T_{m}f)(z) = a_{0}(T_{m}f)y^{s}+b_{0}(T_{m}f)y^{1-s}+\sum_{n \ge 1}\left(\sum_{d \mid (n,m)}a_{\frac{nm}{d^{2}}}(\<d\>f)\right)\sqrt{y}K_{it}(2\pi|n|y)\SC(2\pi inx),
         \]
         is the Fourier series of $T_{m}f$. Moreover, if $f \in \mc{A}_{t}(N,\chi)$, then
         \[
-          (T_{m}f)(z) = a_{0}(T_{m}f)y^{s}+b_{0}(T_{m}f)y^{1-s}+\sum_{n \ge 1}\left(\sum_{d \mid (n,m)}\chi(d)a_{\frac{nm}{d^{2}}}(f)\right)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y)\SC(2\pi inx).
+          (T_{m}f)(z) = a_{0}(T_{m}f)y^{s}+b_{0}(T_{m}f)y^{1-s}+\sum_{n \ge 1}\left(\sum_{d \mid (n,m)}\chi(d)a_{\frac{nm}{d^{2}}}(f)\right)\sqrt{y}K_{it}(2\pi|n|y)\SC(2\pi inx).
         \]
       \end{proposition}
       \begin{proof}
@@ -2111,7 +2114,36 @@
         \]
       \end{theorem}
 
-      The Ramanujan-Petersson conjecture has not been proven, but there has been partial progress toward the conjecture. The currest best bound is $|\l_{f}(p)| \le 2p^{\frac{7}{64}}$ and is due to Kim and Sarnak (see \cite{kim2003functoriality} for the proof). It turns out that the Ramanujan-Petersson conjecture is tightly connected to another conjecture of Selberg about the smallest possible eigenvalue of Maass forms on $\GH$. Note that the possible eigenvalues are discrete by \cref{thm:the_full_spectral_resolution} and so there exists a smallest eigenvalue. To state it, recall that if $f$ is a Maass form with eigenvalue $\l$ on $\GH$, then $\l = \frac{1}{4}+t^{2}$ with either $t \in \R$ or $it \in [0,\frac{1}{2})$. \textbf{Selberg's conjecture}\index{Selberg's conjecture} claims that the second case never occurs:
+      The Ramanujan-Petersson conjecture has not been proven, but there has been partial progress toward the conjecture. The currest best bound is $|\l_{f}(p)| \le 2p^{\frac{7}{64}}$ and is due to Kim and Sarnak (see \cite{kim2003functoriality} for the proof). Nevertheless, we can get close to the Ramanujan-Petersson conjecture without much work. Let $f \in \mc{C}_{t}(N,\chi)$ be a primitive Hecke-Maass eigenform. Fix some $Y > 0$ and consider
+      \[
+        \int_{Y}^{\infty}\int_{0}^{1}|f(x+iy)|^{2}\,\frac{dx\,dy}{y^{2}}.
+      \]
+      Since $f$ is a cusp form, this integral is absolutely bounded by \cref{met:decay_compacta_integral}.
+      Moreover, this integral can be expressed as
+      \[
+        \int_{Y}^{\infty}\int_{0}^{1}\sum_{n,m \neq 0}\l_{f}(n)\conj{\l_{f}(m)}K_{it}(2\pi|n|y)\conj{K_{it}(2\pi|m|y)}e^{2\pi i(n-m)x}e^{-2\pi(n+m)y}\,\frac{dx\,dy}{y}.
+      \]
+      Appealing to the dominated convergence theorem, we can interchange the sum and the inner integral. Then \cref{equ:Dirac_integral_representation} implies that the inner integral cuts off all of the terms except the diagional resulting in
+      \[
+        \int_{Y}^{\infty}\sum_{n \neq 0}|\l_{f}(n)|^{2}|K_{it}(2\pi|n|y)|^{2}e^{-4\pi ny}\,\frac{dx\,dy}{y}.
+      \]
+      As this expression is finite, we have
+      \[
+        |\l_{f}(n)|^{2}\int_{Y}^{\infty}K_{it}(2\pi|n|y)|^{2}e^{-4\pi ny}\,\frac{dx\,dy}{y} \ll \int_{Y}^{\infty}\int_{0}^{1}|f(x+iy)|^{2}\,\frac{dx\,dy}{y^{2}},
+      \]
+      where we note that the integral on the left-hand side is finite. On the other hand,
+      \[
+        \int_{Y}^{\infty}\int_{0}^{1}|f(x+iy)|^{2}\,\frac{dx\,dy}{y^{2}} \ll \frac{1}{Y}\int_{0}^{\infty}\int_{0}^{1}|f(x+iy)|^{2}\,\frac{dx\,dy}{y^{2}} \ll \frac{1}{Y},
+      \]
+      \todo{xxx}. Note that the latter integral is absolutely bounded by \cref{equ:Dirac_integral_representation}. Putting these two estimates together gives
+      \[
+        |\l_{f}(n)|^{2}\int_{Y}^{\infty}K_{it}(2\pi|n|y)|^{2}e^{-4\pi ny}\,\frac{dx\,dy}{y} \ll \frac{1}{Y}.
+      \]
+      Taking $Y = \frac{1}{n}$ results in
+      \[
+        \l_{f}(n) \ll n^{\frac{1}{2}}.
+      \]
+      This bound is known as the \textbf{Hecke bound}\index{Hecke bound} for Maass forms. It turns out that the Ramanujan-Petersson conjecture is tightly connected to another conjecture of Selberg about the smallest possible eigenvalue of Maass forms on $\GH$. Note that the possible eigenvalues are discrete by \cref{thm:the_full_spectral_resolution} and so there exists a smallest eigenvalue. To state it, recall that if $f$ is a Maass form with eigenvalue $\l$ on $\GH$, then $\l = \frac{1}{4}+t^{2}$ with either $t \in \R$ or $it \in [0,\frac{1}{2})$. \textbf{Selberg's conjecture}\index{Selberg's conjecture} claims that the second case never occurs:
 
       \begin{conjecture}[Selberg's conjecture]
         If $\l$ is the smallest eigenvalue for Maass forms on $\GH$, then
@@ -2129,4 +2161,4 @@
         \]
       \end{theorem}
 
-      In the language of automorphic representations, these two conejctures are a consequence of a much larger conjecture about automorphic representations (see \cite{blomer2013role} for details).
+      In the language of automorphic representations, these two conejctures are a consequence of a much larger conjecture (see \cite{blomer2013role} for details).
