@@ -35,7 +35,7 @@
         The natural homomorphism $\PSL_{2}(\Z) \to \PSL_{2}(\Z/N\Z)$ is surjective.
       \end{proposition}
       \begin{proof}
-        Suppose $\begin{psmallmatrix} \conj{a} & \conj{b} \\ \conj{c} & \conj{d} \end{psmallmatrix} \in \SL_{2}(\Z/N\Z)$. Then $\conj{a}\conj{d}-\conj{b}\conj{c} \equiv 1 \tmod{N}$ so by B\'ezout's identity (generalized to three integers) $(\conj{c},\conj{d},N) = 1$. We claim that there exists $s$ and $t$ such that $c = \conj{c}+sN$, $d = \conj{d}+tN$ with $(c,d) = 1$. Set $g = (\conj{c},\conj{d})$. Then $(g,N) = 1$ because $(\conj{c},\conj{d},N) = 1$. If $\conj{c} = 0$ then set $s = 0$ so $c = 0$ and choose $t$ such that $t \equiv 1 \tmod{p}$ for any prime $p \mid g$ and $t \equiv 0 \tmod{p}$ for any prime $p \nmid g$ and $p \mid \conj{d}$. Such a $t$ exists by the Chinese remainder theorem. Now if $p \mid (c,d)$, then either $p \mid g$ or $p \nmid g$. If $p \mid g$, then $p \mid d-\conj{d} = tN$ which is absurd since $t \equiv 1 \tmod{p}$ and $(t,N) = 1$. If $p \nmid g$, then $p \nmid d-\conj{d} = tN$ but this is also absurd since $t \equiv 0 \tmod{p}$. Therefore $(c,d) = 1$ as claimed. If $\conj{c} = 0$ then $\conj{d} \neq 0$, and we can proceed similarly. Since $(c,d) = 1$ there exists $a$ and $b$ such that $ad-bc = 1$. Then $\begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix} \in \SL_{2}(\Z)$ and maps onto $\begin{psmallmatrix} \conj{a} & \conj{b} \\ \conj{c} & \conj{d} \end{psmallmatrix}$. This proves surjectivity.
+        Suppose $\begin{psmallmatrix} \conj{a} & \conj{b} \\ \conj{c} & \conj{d} \end{psmallmatrix} \in \SL_{2}(\Z/N\Z)$. Then $\conj{a}\conj{d}-\conj{b}\conj{c} \equiv 1 \tmod{N}$ so by B\'ezout's identity (generalized to three integers) $(\conj{c},\conj{d},N) = 1$. We claim that there exists $s$ and $t$ such that $c = \conj{c}+sN$, $d = \conj{d}+tN$ with $(c,d) = 1$. Set $g = (\conj{c},\conj{d})$. Then $(g,N) = 1$ because $(\conj{c},\conj{d},N) = 1$. If $\conj{c} = 0$ then set $s = 0$ so $c = 0$ and choose $t$ such that $t \equiv 1 \tmod{p}$ for any prime $p \mid g$ and $t \equiv 0 \tmod{p}$ for any prime $p \nmid g$ and $p \mid \conj{d}$. Such a $t$ exists by the Chinese remainder theorem. Now if $p \mid (c,d)$, then either $p \mid g$ or $p \nmid g$. If $p \mid g$, then $p \mid d-\conj{d} = tN$ which is absurd since $t \equiv 1 \tmod{p}$ and $(t,N) = 1$. If $p \nmid g$, then $p \nmid d-\conj{d} = tN$ but this is also absurd since $t \equiv 0 \tmod{p}$. Therefore $(c,d) = 1$ as claimed. If $\conj{c} = 0$ then $\conj{d} \neq 0$, and we can proceed similarly. Since $(c,d) = 1$ there exists $a$ and $b$ such that $ad-bc = 1$. Then $\begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix} \in \PSL_{2}(\Z)$ and maps onto $\begin{psmallmatrix} \conj{a} & \conj{b} \\ \conj{c} & \conj{d} \end{psmallmatrix}$. This proves surjectivity.
       \end{proof}
       
         By \cref{prop:surjective_modulo_N_for_modular_group}, $[\PSL_{2}(Z):\G(N)] = |\PSL_{2}(\Z/N\Z)|$. Since $\G(N) \le \G$ and $\G(N)$ has finite index in $\PSL_{2}(\Z)$ so does $\G$. The subgroups
@@ -214,7 +214,7 @@
         \]
         where the latter two equalities hold because $w_{\infty}$ is a translation and translations commute. Every other element of $\s_{\mf{a}}^{-1}\g\s_{\mf{b}}$ belongs to one of the double cosets $\W_{d/c}$ with $c \ge 1$ (since we are working in $\PSL_{2}(\Z)$). The relation
         \[
-          \begin{pmatrix} 1 & n \\ 0 & 1 \end{pmatrix}\begin{pmatrix} \ast & \ast \\ c & d \end{pmatrix}\begin{pmatrix} 1 & m \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} \ast & \ast \\ c & d+cm \end{pmatrix},
+          \begin{pmatrix} 1 & n \\ 0 & 1 \end{pmatrix}\begin{pmatrix} \ast & \ast \\ c & d \end{pmatrix}\begin{pmatrix} 1 & m \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} \ast & \ast \\ c & cm+d \end{pmatrix},
         \]
         shows that $\W_{d/c}$ is determined uniquely by $c$ and $d \tmod{c}$. This completes the proof of the theorem.
       \end{proof}
@@ -634,7 +634,7 @@
         and intersecting with $\PSL_{2}(\Z)$ completes the proof.
       \end{proof}
 
-      Note that by \cref{lem:coset_lemma_1}, if $\a^{-1}\G\a \subset \SL_{2}(\Z)$ then $\a^{-1}\G\a$ is a congruence subgroup of $\G$ is. Moreover, since congruence subgroups are closed under intersection, \cref{lem:coset_lemma_1} further implies that $\a^{-1}\G_{1}\a \cap \G_{2}$ is a congruence subgroup for and two congruence subgroups $\G_{1}$ and $\G_{2}$ any any $\a \in \GL_{2}^{+}(\Q)$. Our second lemma gives a way to describe the orbit representatives for $\G_{1}\a\G_{2}$ in terms of coset representatives:
+      Note that by \cref{lem:coset_lemma_1}, if $\a^{-1}\G\a \subset \PSL_{2}(\Z)$ then $\a^{-1}\G\a$ is a congruence subgroup of $\G$ is. Moreover, since congruence subgroups are closed under intersection, \cref{lem:coset_lemma_1} further implies that $\a^{-1}\G_{1}\a \cap \G_{2}$ is a congruence subgroup for and two congruence subgroups $\G_{1}$ and $\G_{2}$ any any $\a \in \GL_{2}^{+}(\Q)$. Our second lemma gives a way to describe the orbit representatives for $\G_{1}\a\G_{2}$ in terms of coset representatives:
 
       \begin{lemma}\label{lem:coset_lemma_2}
         Let $\G_{1}$ and $\G_{2}$ be congruence subgroups and let let $\a \in \GL_{2}^{+}(\Q)$. Set $\G_{3} = \a^{-1}\G_{1}\a \cap \G_{2}$. Then left multiplication map
@@ -776,7 +776,7 @@
       \begin{lemma}\label{lem:cosets_for_Hecek_operators}
         As sets,
         \[
-          \G_{1}(N)\begin{pmatrix} 1 & 0 \\ 0 & p \end{pmatrix}\G_{1}(N) = \left\{\g \in \Mat_{2}(\Z):\g \equiv \begin{pmatrix} 1 & 0 \\ 0 & p \end{pmatrix} \tmod{N}, \det(\g) = p\right\}.
+          \G_{1}(N)\begin{pmatrix} 1 & 0 \\ 0 & p \end{pmatrix}\G_{1}(N) = \left\{\g \in \Mat_{2}(\Z):\g \equiv \begin{pmatrix} 1 & \ast \\ 0 & p \end{pmatrix} \tmod{N}, \det(\g) = p\right\}.
         \]
       \end{lemma}
       
@@ -791,7 +791,7 @@
       \begin{proof}
         Let $\a = \begin{psmallmatrix} 1 & 0 \\ 0 & p \end{psmallmatrix}$. For $\g = \begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix} \in \G_{0}(N)$, we have
         \[
-          \g\a\g^{-1} \equiv \begin{pmatrix} a & b \\ c & d \end{pmatrix}\begin{pmatrix} 1 & 0 \\ 0 & p \end{pmatrix}\begin{pmatrix} d & -b \\ -c & a \end{pmatrix} = \begin{pmatrix} 1 & \ast \\ 0 & p \end{pmatrix} \tmod{N},
+          \g\a\g^{-1} \equiv \begin{pmatrix} a & b \\ c & d \end{pmatrix}\begin{pmatrix} 1 & 0 \\ 0 & p \end{pmatrix}\begin{pmatrix} d & -b \\ -c & a \end{pmatrix} = \begin{pmatrix} 1 & (p-1)ab \\ 0 & p \end{pmatrix} \tmod{N},
         \]
         because $c \equiv 0 \tmod{N}$, $ad-bc = 1$, and $ad \equiv {1} \tmod{N}$. By \cref{lem:cosets_for_Hecek_operators}, $\g\a\g^{-1} \in \G_{1}(N)\a\G_{1}(N)$ and so we can use this representative in place of $\a$. On the one hand,
         \[
@@ -827,7 +827,7 @@
         \]
         for $j$ taken modulo $p$ and where where $m$ and $n$ are chosen such that $\det\left(\begin{psmallmatrix} m & n \\ N & p \end{psmallmatrix}\right) = 1$. It suffices to show $\{\b_{1},\ldots,\b_{p-1}\}$ and $\{\b_{1},\ldots,\b_{p-1},\b_{\infty}\}$ are complete sets of orbit representatives for $\G_{1}(N)\backslash\G_{1}(N)\a\G_{1}(N)$ depending on if $p \nmid N$ or not. To acomplish this, we will find a complete set of coset representatives for $\G_{3}\backslash\G_{1}(N)$ and then use \cref{lem:coset_lemma_2}. First we require an explicit description of $\G_{3}$. Let
         \[
-          \G^{0}(p) = \left\{\begin{pmatrix} a & b \\ c & d \end{pmatrix} \in \SL_{2}(\Z):\begin{pmatrix} a & b \\ c & d \end{pmatrix} \equiv \begin{pmatrix} \ast & 0 \\ \ast & \ast \end{pmatrix} \tmod{p}\right\},
+          \G^{0}(p) = \left\{\begin{pmatrix} a & b \\ c & d \end{pmatrix} \in \PSL_{2}(\Z):\begin{pmatrix} a & b \\ c & d \end{pmatrix} \equiv \begin{pmatrix} \ast & 0 \\ \ast & \ast \end{pmatrix} \tmod{p}\right\},
         \]
         and define
         \[
@@ -837,11 +837,7 @@
         \[
           \a^{-1}\g\a = \begin{pmatrix} 1 & 0 \\ 0 & p^{-1} \end{pmatrix}\begin{pmatrix} a & b \\ c & d \end{pmatrix}\begin{pmatrix} 1 & 0 \\ 0 & p \end{pmatrix} = \begin{pmatrix} a & pd \\ p^{-1}c & d \end{pmatrix}.
         \]
-        If $\a^{-1}\g\a \in \G_{3}$, then $\a^{-1}\g\a \in \G_{1}(N)$ and thus $p \mid c$ so that $\a^{-1}\g\a \in \SL_{2}(\Z)$. Moreover, the previous computation implies
-        \[
-          \a^{-1}\g\a = \begin{pmatrix} \ast & 0 \\ \ast & \ast \end{pmatrix} \tmod{p}.
-        \]
-        This shows $\G_{3} \subseteq \G_{1}^{0}(N,p)$. For the reverse inclusion, suppose $\begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix} \in \G_{0}^{1}(N,p)$. Then $b = pk$ for some $k \in \Z$. Now observe
+        If $\a^{-1}\g\a \in \G_{3}$, then $\a^{-1}\g\a \in \G_{1}(N)$ and thus $p \mid c$ so that $\a^{-1}\g\a \in \PSL_{2}(\Z)$. Moreover, the previous computation implies $\a^{-1}\g\a \in \G_{1}^{0}(N,p)$ and so $\G_{3} \subseteq \G_{1}^{0}(N,p)$. For the reverse inclusion, suppose $\begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix} \in \G_{0}^{1}(N,p)$. Then $b = pk$ for some $k \in \Z$. Now observe
         \[
           \begin{pmatrix} a & b \\ c & d \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & p^{-1} \end{pmatrix}\begin{pmatrix} a & k \\ pc & d \end{pmatrix}\begin{pmatrix} 1 & 0 \\ 0 & p \end{pmatrix} = \a^{-1}\g\a,
         \]
@@ -935,7 +931,7 @@
       \begin{proof}
         Showing the diamond and Hecke operators commute was \cref{prop:diamond_Hecke_operators_commute_holomorphic}. To show commutativity of the diamond operators, let $\g = \begin{psmallmatrix} \ast & \ast \\ \ast & d \end{psmallmatrix} \in \G_{0}(N)$  and $\eta = \begin{psmallmatrix} \ast & \ast \\ \ast & e \end{psmallmatrix} \in \G_{0}(N)$. Then
         \[
-          \g\eta \equiv \begin{pmatrix} \ast & \ast \\ \ast & de \end{pmatrix} \equiv \begin{pmatrix} \ast & \ast \\ \ast & ed \end{pmatrix} \equiv \eta\g \tmod{N}.
+          \g\eta \equiv \begin{pmatrix} \ast & \ast \\ 0 & de \end{pmatrix} \equiv \begin{pmatrix} \ast & \ast \\ 0 & ed \end{pmatrix} \equiv \eta\g \tmod{N}.
         \]
         Therefore $[\g\eta]_{k} = [\eta\g]_{k}$ and so for any $f \in \mc{M}_{k}(\G_{1}(N))$, we have
         \[
@@ -1020,7 +1016,7 @@
       \begin{lemma}\label{lem:Petersson_normality_lemma}
         Let $\G$ be a congruence subgroup and let $\a \in \GL_{2}^{+}(\Q)$. Then the following are true:
         \begin{enumerate}[label=(\roman*)]
-          \item If $\a^{-1}\G\a \subseteq \SL_{2}(\Z)$, then $V_{\a^{-1}\G\a} = V_{\G}$ and $[\PSL_{2}(\Z):\a^{-1}\G\a] = [\PSL_{2}(\Z):\G]$.
+          \item If $\a^{-1}\G\a \subseteq \PSL_{2}(\Z)$, then $V_{\a^{-1}\G\a} = V_{\G}$ and $[\PSL_{2}(\Z):\a^{-1}\G\a] = [\PSL_{2}(\Z):\G]$.
           \item There exist $\b_{1},\ldots,\b_{n} \in \GL_{2}^{+}(\Q)$, where $n = [\G:\a^{-1}\G\a \cap \G] = [\G:\a\G\a^{-1} \cap \G]$, and such that
           \[
             \G\a\G = \bigcup_{j}\G\b_{j} = \bigcup_{j}\b_{j}\G.
@@ -1063,7 +1059,7 @@
       \begin{proposition}\label{prop:Petersson_adjoint_holomorphic}
         Let $\G$ be a congruence subgroup and let $\a \in \GL_{2}^{+}(\Q)$. Set $\a' = \det(\a)\a^{-1}$. Then the following are true:
         \begin{enumerate}[label=(\roman*)]
-          \item If $\a^{-1}\G\a \subseteq \SL_{2}(\Z)$, then for all $f \in \mc{S}_{k}(\G)$ and $g \in \mc{S}_{k}(\a^{-1}\G\a)$, we have
+          \item If $\a^{-1}\G\a \subseteq \PSL_{2}(\Z)$, then for all $f \in \mc{S}_{k}(\G)$ and $g \in \mc{S}_{k}(\a^{-1}\G\a)$, we have
           \[
             \<f[\a]_{k},g\>_{\a^{-1}\G\a} = \<f,g[\a']_{k}\>_{\G}.
           \]
@@ -1945,7 +1941,7 @@
       \begin{proposition}\label{prop:Petersson_adjoint_Maass}
         Let $\G$ be a congruence subgroup and let $\a \in \GL_{2}^{+}(\Q)$. Then the following are true:
         \begin{enumerate}[label=(\roman*)]
-          \item If $\a^{-1}\G\a \subseteq \SL_{2}(\Z)$, then for all $f \in \mc{C}_{t}(\G)$ and $g \in \mc{C}_{t}(\a^{-1}\G\a)$, we have
+          \item If $\a^{-1}\G\a \subseteq \PSL_{2}(\Z)$, then for all $f \in \mc{C}_{t}(\G)$ and $g \in \mc{C}_{t}(\a^{-1}\G\a)$, we have
           \[
             \<f[\a],g\>_{\a^{-1}\G\a} = \<f,g[\a^{-1}]\>_{\G}.
           \]
