@@ -17,6 +17,20 @@
 \tableofcontents
 \setcounter{page}{0}
 
+  \section{The Ramanujan Conjecture on Average}
+      Let $f$ be a weight $k$ primitive Hecke eigenform with Fourier coefficients $\l_{f}(n)$. As an application of the Rankin-Selberg method, it is possible to show the slightly weaker result that $\l_{f}(n) \ll n^{\frac{k-1}{2}+\e}$ holds on average, for any $\e > 0$, without assuming the Ramanujan conjecture. To see this, for any real $X$, we have
+      \begin{equation}\label{equ:Ramanujan_conjecture_on_average_1}
+        \left(\sum_{n \le X}\l_{f}(n)\right)^{2} \le X\sum_{n \le X}|\l_{f}(n)|^{2},
+      \end{equation}
+      by Cauchy-Schwarz. Now, without assuming the Ramanujan conjecture, the Rankin-Selberg square $L(s,f \ox f)$ is absolutely convergent for $\Re(s) > \frac{3}{2}$. So while the critical strip is wider, it still admits meromorphic continuation to $\C$ with a simple pole at $s = 1$. By Landau's theorem, the abscissa of absolute convergence of $L(s,f \ox f)$, and hence $L(s,f \x f)$ too, is $1$ so that $\sum_{n \le X}|\l_{f}(n)|^{2} \ll_{\e} X^{k+\e}$. Substiuting this bound into \cref{equ:Ramanujan_conjecture_on_average_1}, we obtain
+      \[
+        \left(\sum_{n \le X}\l_{f}(n)\right)^{2} \ll_{\e} X^{k-1+\e}.
+      \]
+      Upon taking the square root,
+      \[
+        \sum_{n \le X}\l_{f}(n) \ll_{\e} X^{\frac{k-1}{2}+\e},
+      \]
+      for some $\e > 0$. This bound should be compared with the implication $\l_{f}(n) \ll n^{\frac{k-1}{2}+\e}$ that follows from the Ramanujan conjecture.
 \part{Half-integral Weight Modular Forms \& Trace Formulas}
   \chapter{Half-integral Weight Modular Forms}
     \todo{Introduction}
@@ -257,29 +271,6 @@
         \item The first $1.5 \x 10^{9}+1$ zeros of $\z(s)$ lie on the critial line (see \todo{van1986zeros}).
       \end{itemize}
   \chapter{Techniques}
-    \section{The Approximate Funcational Equation}
-      If $L(s,f)$ is a Selberg class $L$-function then the \textbf{approximate functional equation}\index{approximate functional equation} is a compromise between the functional equation for $L(s,f)$ and expressing $L(s,f)$ as a Dirichlet series which is valid inside the cirital strip:
-
-      \begin{theorem}[The approximate functional equation]
-        Let $L(s,f)$ be a Selberg class $L$-function and $g(u)$ be any even holomorphic function bounded on the strip $|\Re(u)| < 4$ and such that $g(0) = 1$. Let $X > 0$. Then for $s$ in the critial strip,
-        \[
-          L(s,f) = \sum_{n \ge 1}\frac{a_{f}(n)}{n^{s}}V_{s}\left(\frac{n}{X\sqrt{q(f)}}\right)+\e(f,s)\sum_{n \ge 1}\frac{a_{\conj{f}}(n)}{n^{1-s}}V_{1-s}\left(\frac{nX}{\sqrt{q(f)}}\right)+R,
-        \]
-        where $V_{s}(y)$ is a smooth function defined by
-        \[
-          V_{s}(y) = \frac{1}{2\pi i}\int_{\Re(u) = 3}y^{-u}g(u)\frac{\g(f,s+u)}{\g(f,s)}\frac{du}{u},
-        \]
-        and
-        \[
-          \e(f,s) = \e(f)q(f)^{\frac{1}{2}-s}\frac{\g(f,1-s)}{\g(f,s)}.
-        \]
-        Moreover, the remainder $R$ is zero if $\L(f,s)$ is entire and otherwise
-        \[
-          R = \left(\Res_{u = 1-s}+\Res_{u = -s}\right)\frac{\L(f,s+u)g(u)}{q^{\frac{s}{2}}\g(f,s)}X^{u}.
-        \]
-      \end{theorem}
-
-      The function $g(u)$ is a test function so that $V_{s}(y)$ has the effect of smoothing out the two sums on the right-hand side of the approximate functional equation. In fact, $V_{s}(y)$ is a bump function by choosing \todo{$g(u) = ...$}. This technique was first introduced by Hardy and Littlewood in \todo{year} (see \todo{cite}) to obtain asymptotics for the second moment of the zeta function.
   \chapter{Theories \& Philosophies}
 
   \end{document}

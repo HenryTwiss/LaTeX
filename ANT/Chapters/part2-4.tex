@@ -1,0 +1,117 @@
+\chapter{Trace Formulas}
+    There are various types of formulas that relate the Fourier coefficients of holomorphic and Maass forms to various other types of functions. One of the most important such formulas is the Petersson trace formula.
+    \section{The Petersson Trace Formula}
+        From \cref{thm:newforms_characterization_holomorphic}, $\mc{S}_{k}(N,\chi)$ admits an orthonormal basis of primitive Hecke eigenforms. Call this basis $\{u_{j}\}_{1 \le j \le r}$ where $r$ is the dimension of $\mc{S}_{k}(N,\chi)$. Each of these cusp forms admits a Fourier series
+        \[
+        u_{j}(z) = \sum_{n \ge 1}\l_{j}(n)e^{2\pi inz}.
+        \]
+        The Petersson trace formula is an equation relating the Fourier coefficients $\l_{j}(n)$ of the basis $\{u_{j}\}_{1 \le j \le r}$ to a sum of $J$-Bessel functions and Sali\'e sums. To prove the Petersson trace formula we compute the inner product of two Poincar\'e series $P_{n,k,\chi}$ and $P_{m,k,\chi}$ in two different ways. One way is geometric in nature using the unfolding method and the other uses the spectral theory of $\mc{S}_{k}(N,\chi)$. Since \cref{equ:Petersson_inner_product_with_Poincare_series} says that $\<P_{n,k,\chi},P_{m,k,\chi}\>$ essentially extacts the $m$-th Fourier coefficeint of $P_{n,k,\chi}$, the Petersson trace formula amounts to computing the $m$-th Fourier coefficient of $P_{n,k,\chi}$ in two different ways.
+
+        We will begin with the geometric method first which utilizes \cref{equ:Petersson_inner_product_with_Poincare_series}. In order to make use of this equation we need to compute the Forier series of $P_{n,k,\chi}$ and this is achieved by the Poisson summation formula. From \cref{rem:Bruhat_bijection}, we have
+        \[
+        P_{n,k,\chi}(z) = e^{2\pi inz}+\sum_{\substack{c \ge 1, d \in \Z \\ c \equiv 0 \tmod{N} \\ (c,d) = 1}}\cchi(d)\frac{e^{2\pi in\left(\frac{a}{c}-\frac{1}{c^{2}z+cd}\right)}}{(cz+d)^{k}},
+        \]
+        where $a$ and $b$ are chosen such that $\det\left(\begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix}\right) = 1$ and we have used the fact that
+        \[
+        \frac{a}{c}-\frac{1}{c^{2}z+cd} = \frac{az+b}{cz+d}.
+        \]
+        Now summing over all pairs $(c,d)$ with $c \ge 1$, $d \in \Z$, $c \equiv 0 \tmod{N}$, and $(c,d) = 1$ is the same as summing over all triples $(c,\ell,r)$ with $c \ge 1$, $\ell \in \Z$, $r \tmod{c}$, with $c \equiv 0 \tmod{N}$ and $(r,c) = 1$. Indeed, this is seen by writing $d = c\ell+r$. Moreover, since $ad-bc = 1$ we have $a(c\ell+r)-bc = 1$ which further implies that $ar \equiv 1 \tmod{c}$. So we may take $a$ to be the inverse for $r$ modulo $c$. Then
+        \begin{align*}
+        \sum_{\substack{c \ge 1,d \in \Z \\ (c,d) = 1 \\ c \equiv 0 \tmod{N}}}\cchi(d)\frac{e^{2\pi in\left(\frac{a}{c}-\frac{1}{c^{2}z+cd}\right)}}{(cz+d)^{k}} &= \sum_{(c,\ell,r)}\cchi(c\ell+r)\frac{e^{2\pi in\left(\frac{a}{c}-\frac{1}{c^{2}z+c^{2}\ell+cr}\right)}}{(cz+c\ell+r)^{k}} \\
+        &= \sum_{(c,\ell,r)}\cchi(r)\frac{e^{2\pi in\left(\frac{a}{c}-\frac{1}{c^{2}z+c^{2}\ell+cr}\right)}}{(cz+c\ell+r)^{k}} \\
+        &= \psum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N} \\ r \tmod{c}}}\sum_{\ell \in \Z}\cchi(r)\frac{e^{2\pi in\left(\frac{a}{c}-\frac{1}{c^{2}z+c^{2}\ell+cr}\right)}}{(cz+c\ell+r)^{k}} \\
+        &= \psum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N} \\ r \tmod{c}}}\cchi(r)\sum_{\ell \in \Z}\frac{e^{2\pi in\left(\frac{a}{c}-\frac{1}{c^{2}z+c^{2}\ell+cr}\right)}}{(cz+c\ell+r)^{k}}, 
+        \end{align*}
+        where the second line holds since $\chi$ has conductor $q \mid N$ and $c \equiv 0 \tmod{N}$. We will now apply the Poisson summation formula to the innermost sum. Set
+        \[
+        I_{c,r}(z) = \sum_{\ell \in \Z}\frac{e^{2\pi in\left(\frac{a}{c}-\frac{1}{c^{2}z+c^{2}\ell+cr}\right)}}{(cz+c\ell+r)^{k}}.
+        \]
+        We will prove a transformation law for $I_{c,r}(z)$. Note that this function is holomorphic on $\H$ because $P_{n,k,\chi}(z)$ is holomorphic on $\H$. So by the identity theorem we may verify a transformation law on a set containing a limit point. Accordingly, set $z = iy$ for $y > 1$ and define
+        \[
+        f(x) = \frac{e^{2\pi in\left(\frac{a}{c}-\frac{1}{c^{2}x+cr+ic^{2}y}\right)}}{(cx+r+icy)^{k}}.
+        \]
+        To see that $f(x)$ is Schwarzm first observe
+        \[
+        \Im\left(\frac{a}{c}-\frac{1}{c^{2}x+cr+ic^{2}y}\right) = \Im\left(-\frac{1}{c^{2}x+cr+ic^{2}y}\right) = \Im\left(\frac{c^{2}x+cr-ic^{2}y}{|c^{2}x+cr+ic^{2}y|}\right) = \frac{c^{2}y}{|c^{2}x+cr+ic^{2}y|}.
+        \]
+        It follows that $\Im\left(\frac{a}{c}-\frac{1}{c^{2}x+cr+ic^{2}y}\right)$ tends to zero as $x \to \pm\infty$. Moreover, $|cx+r+icy| \ge |icy| \ge c$ so that
+        \[
+        f(x) \ll \frac{e^{-2\pi n\Im\left(\frac{a}{c}-\frac{1}{c^{2}x+cr+ic^{2}y}\right)}}{c},
+        \]
+        as $x \to \pm\infty$. Since the right-hand side of this estimate has exponential decay to zero, $f(x)$ is Schwarz. We now compute the Fourier transform:
+        \[
+        \hat{f}(t) = \int_{-\infty}^{\infty}f(x)e^{-2\pi itx}\,dx = \int_{-\infty}^{\infty}\frac{e^{2\pi in\left(\frac{a}{c}-\frac{1}{c^{2}x+cr+ic^{2}y}\right)}}{(cx+r+icy)^{k}}e^{-2\pi itx}\,dx.
+        \]
+        Complexify the integral to get
+        \[
+        \int_{\Im(z) = 0}\frac{e^{2\pi in\left(\frac{a}{c}-\frac{1}{c^{2}z+cr+ic^{2}y}\right)}}{(cz+r+icy)^{k}}e^{-2\pi itz}\,dz.
+        \]
+        Now make the change of variables $z \to z-\frac{r}{c}-iy$ to obtain
+        \[
+        e^{2\pi in\frac{a}{c}}e^{2\pi it\left(iy+\frac{r}{c}\right)}\int_{\Im(z) = y}\frac{e^{-\frac{2\pi in}{c^{2}z}}}{(cz)^{k}}e^{-2\pi itz}\,dz.
+        \]
+        The integrand is meromorphic with a pole only at $z = 0$. Therefore by shifting the line of integration we may take the limit as $\Im(z) \to \infty$ without picking up additional residues. However
+        \[
+        \left|e^{-\frac{2\pi in}{c^{2}z}}\right| = e^{2\pi n\left(\frac{\Im(z)}{|cz|^{2}}\right)} \quad \text{and} \quad \left|e^{-2\pi itz}\right| = e^{2\pi t\Im(z)}.
+        \]
+        So as $\Im(z) \to \infty$, the first expression has exponential decay to zero and the second expression does to if and only if $t < 0$. Moreover, when $t = 0$ the second expression is bounded. Altogether this means that the integral vanishes if $t \le 0$. It remains to compute the integral for $t > 0$. To do this, make the change of variables $z \to - \frac{z}{2\pi it}$ to the to obtain
+        \begin{align*}
+        -\frac{1}{2\pi it}\int_{\Re(x) = 2\pi ty}\frac{e^{-\frac{4\pi^{2}nt}{c^{2}z}}}{\left(-\frac{cz}{2\pi it}\right)^{k}}e^{z}\,dz &= -\frac{1}{2\pi it}\int_{\Re(z) = 2\pi ty}\left(-\frac{2\pi it}{cz}\right)^{k}e^{z-\frac{4\pi^{2}nt}{c^{2}z}}\,dz \\
+        &= \frac{(-2\pi it)^{k-1}}{c^{k}}\int_{\Re(z) = 2\pi ty}z^{-k}e^{z-\frac{4\pi^{2}nt}{c^{2}z}}\,dz \\
+        &= \frac{(-2\pi it)^{k-1}}{c^{k}}\int_{-\infty}^{(0^{+})}z^{-k}e^{z-\frac{4\pi^{2}nt}{c^{2}z}}\,dz \\
+        &= \frac{2\pi i^{-k}}{c}\left(\frac{\sqrt{t}}{\sqrt{n}}\right)^{k-1}J_{k-1}\left(\frac{4\pi\sqrt{nt}}{c}\right),
+        \end{align*}
+        where in the second to last line we have homotoped the line of integration to a Hankle contour about the negative real axis and in the last line we have used the Schl\"aflin integral representation for the $J$-Bessel function (see \cref{append:Bessel_Functions}). So in total we obtain
+        \[
+        \left(\frac{2\pi i^{-k}}{c}\left(\frac{\sqrt{t}}{\sqrt{n}}\right)^{k-1}J_{k-1}\left(\frac{4\pi\sqrt{nt}}{c}\right)e^{2\pi in\frac{a}{c}+2\pi it\frac{r}{c}}\right)e^{2\pi t(iy)},
+        \]
+        when $t > 0$. By the Poisson summation formula and the identity theorem, we have
+        \[
+        I_{c,r}(z) = \sum_{t > 0}\left(\frac{2\pi i^{-k}}{c}\left(\frac{\sqrt{t}}{\sqrt{n}}\right)^{k-1}J_{k-1}\left(\frac{4\pi\sqrt{nt}}{c}\right)e^{2\pi in\frac{a}{c}+2\pi it\frac{r}{c}}\right)e^{2\pi itz},
+        \]
+        for all $z \in \H$. Plugging this back into the Poincar\'e series gives a form of the Fourier series
+        \begin{align*}
+        P_{n,k,\chi}(z) &= e^{2\pi inz}+\psum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N} \\ r \tmod{c}}}\cchi(r)\sum_{t > 0}\left(\frac{2\pi i^{-k}}{c}\left(\frac{\sqrt{t}}{\sqrt{n}}\right)^{k-1}J_{k-1}\left(\frac{4\pi\sqrt{nt}}{c}\right)e^{2\pi in\frac{a}{c}+2\pi it\frac{r}{c}}\right)e^{2\pi inz} \\
+        &= \sum_{t > 0}\left(\d_{n,t}+\left(\frac{\sqrt{t}}{\sqrt{n}}\right)^{k-1}\psum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N} \\ r \tmod{c}}}\cchi(r)\frac{2\pi i^{-k}}{c}J_{k-1}\left(\frac{4\pi\sqrt{nt}}{c}\right)e^{2\pi in\frac{a}{c}+2\pi it\frac{r}{c}}\right)e^{2\pi itz} \\
+        &= \sum_{t > 0}\left(\d_{n,t}+\left(\frac{\sqrt{t}}{\sqrt{n}}\right)^{k-1}\sum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N}}}\frac{2\pi i^{-k}}{c}J_{k-1}\left(\frac{4\pi\sqrt{nt}}{c}\right)\psum_{r \tmod{c}}\cchi(r)e^{2\pi in\frac{a}{c}+2\pi it\frac{r}{c}}\right)e^{2\pi itz}.
+        \end{align*}
+        We will simplify the innermostsum. Since $a$ is the inverse for $r$ modulo $c$, the innermost sum above becomes
+        \[
+        \psum_{r \tmod{c}}\cchi(r)e^{2\pi in\frac{a}{c}+2\pi it\frac{r}{c}} = \psum_{r \tmod{c}}\cchi(\conj{a})e^{2\pi in\frac{a}{c}+2\pi it\frac{\conj{a}}{c}} = \psum_{a \tmod{c}}\chi(a)e^{\frac{2\pi i(an+\conj{a}t)}{c}} = S_{\chi}(n,t;c).
+        \]
+        So at last, we obtain our desired Fourier series
+        \[
+        P_{n,k,\chi}(z) = \sum_{t > 0}\left(\d_{n,t}+\left(\frac{\sqrt{t}}{\sqrt{n}}\right)^{k-1}\sum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N}}}\frac{2\pi i^{-k}}{c}J_{k-1}\left(\frac{4\pi\sqrt{nt}}{c}\right)S_{\chi}(n,t;c)\right)e^{2\pi itz}.
+        \]
+        We can now derive the first half of the Petersson trace formula. Using \cref{equ:Petersson_inner_product_with_Poincare_series} we obtain
+        \[
+        \<P_{n,k,\chi},P_{m,k,\chi}\> = \frac{\G(k-1)}{V_{\G_{0}(N)}(4\pi m)^{k-1}}\left(\d_{n,m}+\left(\frac{\sqrt{m}}{\sqrt{n}}\right)^{k-1}\sum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N}}}\frac{2\pi i^{-k}}{c}J_{k-1}\left(\frac{4\pi\sqrt{nm}}{c}\right)S_{\chi}(n,m;c)\right).
+        \]
+        To obtain the second half of the Petersson trace formula, we use the fact that $\{u_{j}\}_{1 \le j \le r}$ is an orthonormal basis and \cref{equ:Petersson_inner_product_with_Poincare_series} to write
+        \begin{align*}
+        P_{n,k,\chi}(z) &= \sum_{1 \le j \le r}\<P_{n,k,\chi},u_{j}\>u_{j}(z) \\
+        &= \sum_{1 \le j \le r}\conj{\<P_{n,k,\chi},u_{j}\>}u_{j}(z) \\
+        &= \frac{\G(k-1)}{V_{\G_{0}(N)}(4\pi m)^{k-1}}\sum_{1 \le j \le r}\l_{j}(n)u_{j}(z) \\
+        &= \frac{\G(k-1)}{V_{\G_{0}(N)}(4\pi m)^{k-1}}\sum_{1 \le j \le r}\l_{j}(n)\sum_{t \ge 1}\l_{j}(t)e^{2\pi itz} \\
+        &= \sum_{t \ge 1}\left(\frac{\G(k-1)}{V_{\G_{0}(N)}(4\pi m)^{k-1}}\sum_{1 \le j \le r}\conj{\l_{j}(n)}\l_{j}(t)\right)e^{2\pi itz}.
+        \end{align*}
+        The last expression is an alternative representation of the Fourier series of $P_{n,k,\chi}$. Using \cref{equ:Petersson_inner_product_with_Poincare_series} again but aplied to this reprensentation, we obtain the second half of the Petersson trace formula
+        \[
+        \<P_{n,k,\chi},P_{m,k,\chi}\> = \left(\frac{\G(k-1)}{V_{\G_{0}(N)}(4\pi m)^{k-1}}\right)^{2}\sum_{1 \le j \le r}\conj{\l_{j}(n)}\l_{j}(m).
+        \]
+        Equating the first and second half and canceling the common $\frac{\G(k-1)}{V_{\G_{0}(N)}(4\pi m)^{k-1}}$ factor gives
+        \[
+        \frac{\G(k-1)}{V_{\G_{0}(N)}(4\pi m)^{k-1}}\sum_{1 \le j \le r}\conj{\l_{j}(n)}\l_{j}(m) = \d_{n,m}+\left(\frac{\sqrt{m}}{\sqrt{n}}\right)^{k-1}\sum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N}}}\frac{2\pi i^{-k}}{c}J_{k-1}\left(\frac{4\pi\sqrt{nm}}{c}\right)S_{\chi}(n,m;c).
+        \]
+        Now when $n = m$, $\left(\frac{\sqrt{m}}{\sqrt{n}}\right)^{k-1} = 1$ so we can factor this term out of the entire right-hand side and cancel it resulting in the \textbf{Petersson trace formula}\index{Petersson trace formula}:
+        \[
+        \frac{\G(k-1)}{V_{\G_{0}(N)}(4\pi\sqrt{nm})^{k-1}}\sum_{1 \le j \le r}\conj{\l_{j}(n)}\l_{j}(m) = \d_{n,m}+\sum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N}}}\frac{2\pi i^{-k}}{c}J_{k-1}\left(\frac{4\pi\sqrt{nm}}{c}\right)S_{\chi}(n,m;c).
+        \]
+        We refer to the left-hand side side as the \textbf{spectral side}\index{spectral side} and the right-hand side as the \textbf{geometric side}\index{geometric side}. We collect our work as a theorem:
+
+        \begin{theorem}[Petersson trace formula]
+        Let $\{u_{j}\}_{1 \le j \le r}$ be an orthonormal basis of primitive Hecke eigenforms for $\mc{S}_{k}(N,\chi)$ with Fourier coefficeints $\l_{j}(n)$. Then for any positive integers $n,m \ge 1$, we have
+        \[
+            \frac{\G(k-1)}{V_{\G_{0}(N)}(4\pi\sqrt{nm})^{k-1}}\sum_{1 \le j \le r}\conj{\l_{j}(n)}\l_{j}(m) = \d_{n,m}+\sum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N}}}\frac{2\pi i^{-k}}{c}J_{k-1}\left(\frac{4\pi\sqrt{nm}}{c}\right)S_{\chi}(n,m;c).
+        \]
+        \end{theorem}
