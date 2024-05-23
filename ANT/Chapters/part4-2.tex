@@ -44,22 +44,7 @@
         \]
       \end{proposition}
 
-      The Riemann hypothesis also implies the Lindel\"of hypothesis although it is not an immediate consequence. In 1919 Backlund showed the following equivalence for the Lindel\"of hypothesis (see \cite{backlund1919beziehung}):
-
-      \begin{proposition}\label{prop:Lindelof_hypothesis_equivalence}
-      The Lindel\"of hypothesis is equivalent to the following statement: Fix an $\e > 0$, a real $T$, and set
-      \[
-        Z_{\e,T} = \left\{s \in \C : \z(s) = 0, \Re(s) \ge \frac{1}{2}+\e, T \le \Im(s) \le T+1 \right\}.
-      \]
-      Then
-      \[
-        |Z_{\e,T}| = o(\log(T)).
-      \]
-      \end{proposition}
-
-      If the Riemann hypothesis is true, then \cref{prop:Lindelof_hypothesis_equivalence} is immediate because $Z_{\e,T}$ would be empty for any $\e > 0$ and all $T$. Therefore the Riemann hypothesis implies the Lindel\"of hypothesis. There are more interesting implications and consequences but we will not discuss them here. Instead, we would like to make an interesting comment about \cref{thm:Littlewood_Li_approximation_theorem}. The original proof (see \cite{hardy1916contributions}) is actually independent of the truth of the Riemann hypothesis. Assuming the Riemann hypothesis is true, one deduces a contradiction if $\pi-\Li(x)$ changes sign finitely many times. Then assuming the Riemann hypothesis is false, one again deduces a contradiction if $\pi-\Li(x)$ changes sign finitely many times.
-
-      Lastly, there is also the \textbf{Selberg class Riemann hypothesis}\index{Selberg class Riemann hypothesis} which is an analogous conjecture for Selberg class $L$-functions:
+      There is also the \textbf{Selberg class Riemann hypothesis}\index{Selberg class Riemann hypothesis} which is an analogous conjecture for Selberg class $L$-functions:
 
       \begin{conjecture}[Selberg class Riemann hypothesis]
         For any Selberg class $L$-function $L(s)$, all of the nontrivial zeros of $L(s)$ lie on the line $\Re(s) = \frac{1}{2}$.
@@ -76,38 +61,34 @@
       \]
     \end{conjecture}
 
-    This conjecture still remains wide open today, but over the years there have been some advances toward proving this conjecture. These advances go by the name of subconvexity arguments. This motivates the question: what is a convexity argument anways? A \textbf{convexity argument}\index{convexity argument} is one where estimates about the growth of an $L$-function on the critical line is dervied from \textbf{trivial bounds}\index{trivial bounds}, that is bounds given by absolute convergence, via the functional equation. Usually this is achieved by methods of complex analysis and Sirling's formula.
+    The Riemann hypothesis implies the Lindel\"of hypothesis although it is not an immediate consequence. Indeed, in 1919 Backlund showed the following equivalence for the Lindel\"of hypothesis (see \cite{backlund1919beziehung}):
 
-    We will demonstrate a standard convexity argument, also referred to as the \textbf{Lindel\"of convexity argument}\index{Lindel\"of convexity argument} for the Riemann zeta function. Let $s = \s+it$. The first step is to guarantee the Phragm\'en-Lindel\"of convexity principle in a region containing the critical strip. The zeta function being order $1$ implies this immediately (see \cref{append:The_Phragmen_Lindelof_Convexity_principle}). Therefore, we are reduced to estimating the growth of $\z(s,f)$ for $\s$ to the left of $0$ and to the right of $1$. That is, just outside the edges of the critical strip. The right edge is easy. Letting $\e > 0$ and setting $\s = 1+\e$, we have that the zeta function is absolutely convergent in this region giving the trivial bound
+    \begin{proposition}\label{prop:Lindelof_hypothesis_equivalence}
+      The Lindel\"of hypothesis is equivalent to the following statement: Fix an $\e > 0$, a real $T$, and set
+      \[
+        Z_{\e,T} = \left\{s = \s+it \in \C : \z(s) = 0, \s \ge \frac{1}{2}+\e, T \le t \le T+1 \right\}.
+      \]
+      Then
+      \[
+        |Z_{\e,T}| = o(\log(T)).
+      \]
+    \end{proposition}
+
+    If the Riemann hypothesis is true, then \cref{prop:Lindelof_hypothesis_equivalence} is immediate because $Z_{\e,T}$ would be empty for any $\e > 0$ and all $T$. Nevertheless, Lindel\"of hypothesis still remains wide open today, but over the years there have been some advances toward proving this conjecture. These advances go by the name of subconvexity arguments. This motivates the question: what is a convexity argument anways? A \textbf{convexity argument}\index{convexity argument} is one where estimates about the growth of an $L$-function on the critical line is dervied from \textbf{trivial bounds}\index{trivial bounds}, that is bounds given by absolute convergence, via the functional equation. Usually this is achieved by methods of complex analysis and Sirling's formula.
+
+    We will demonstrate a standard convexity argument, also referred to as the \textbf{Lindel\"of convexity argument}\index{Lindel\"of convexity argument} for the Riemann zeta function. This is essentially a refinement of the proof of \cref{prop:L_function_bounded_in_vertical_strips}. The first step is to guarantee the Phragm\'en-Lindel\"of convexity principle in a region containing the critical strip. The zeta function being order $1$ implies this immediately (see \cref{append:The_Phragmen_Lindelof_Convexity_principle}). Therefore, we are reduced to estimating the growth of $\z(s)$ for $\s$ to the left of $0$ and to the right of $1$. That is, just outside the edges of the critical strip. The right edge is easy. Letting $\e > 0$ and setting $\s = 1+\e$, we have that the zeta function is absolutely convergent in this region giving the trivial bound
     \begin{equation}\label{equ:convexity_bound_1}
-      \z((1+\e)+it,f) \ll_{\e} 1.
+      \z((1+\e)+it) \ll_{\e} 1.
     \end{equation}
     The left edge is only slightly more difficult. The functional equation implies
     \begin{equation}\label{equ:convexity_bound_left_edge}
-      |\z(s,f)| \le \left|\frac{\g(1-s,f)}{\g(s,f)}\right||\z(1-s,f)|.
+      \z(s) \ll \frac{\g(1-s,f)}{\g(s,f)}\z(1-s).
     \end{equation}
-    We now require an estimate for the ratio of the gamma factors. We will get this estimate from \cref{equ:weaker_Stirling_formula}. Since $s \sim_{\s} t$, we replace $s$ with $t$, except for the exponenets, provided we let the implicit constant depend upon $\s$. For the exponents, we can reaplce $s$ with $\s$ because any complex number raised to a purely imaginary power has absolute value $1$. So, our simplified estimate is
-    \[
-      \G(s) = \sqrt{2\pi}t^{\s-\frac{1}{2}}e^{-\s}(1+O_{\s}(1)),
-    \]
-    which is equivalent to
-    \[
-      \frac{1}{\G(s)} = \frac{1}{\sqrt{2\pi}}t^{\frac{1}{2}-\s}e^{\s}(1+O_{\s}(1)),
-    \]
-    In terms of Vinogradov's symbol the above estimates imply
-    \[
-      \G(s) \ll_{\s} t^{\s-\frac{1}{2}}e^{-\s} \ll_{\s} t^{\s-\frac{1}{2}} \quad \text{and} \quad \frac{1}{\G(s)} \ll_{\s} t^{\frac{1}{2}-\s}e^{\s} \ll_{\s} t^{\frac{1}{2}-\s}.
-    \]
-    We can then estimate the ratio of gamma factors as 
-    \begin{equation}\label{equ:ratio_of_gamma_estimate}
-      \frac{\G(1-s)}{\G(s)} \ll_{\s} t^{1-2\s}.
-    \end{equation}
-
     From \cref{equ:ratio_of_gamma_estimate} it follows that
     \[
       \frac{\g(1-s,f)}{\g(s,f)} \ll_{\s} t^{\frac{1-2\s}{2}}.
     \]
-    Let $\e > 0$ and set $\s = -\e$. Then plugging our estimate above into \cref{equ:convexity_bound_left_edge} and using the trivial bound $|\z((1+\e)+it)| \ll_{\e} 1$ gives
+    Let $\e > 0$ and set $\s = -\e$. Then plugging this estimate into \cref{equ:convexity_bound_left_edge} and using the trivial bound $|\z((1+\e)+it)| \ll_{\e} 1$ gives
     \begin{equation}\label{equ:convexity_bound_2}
       \z(-\e+it) \ll_{\e} t^{\frac{1+2\e}{2}}.
     \end{equation}

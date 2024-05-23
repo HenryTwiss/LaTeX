@@ -449,7 +449,7 @@
         for some $\g_{i}(p) \in \C$ with $|\g_{i}(p)| < p$.
         \item The gamma factor takes the form
         \[
-          \g(s,f \ox g) = (\pi)^{-\frac{des}{2}}\prod_{i,j}\G\left(\frac{s+\mu_{i,j}}{2}\right),
+          \g(s,f \ox g) = \pi^{-\frac{des}{2}}\prod_{i,j}\G\left(\frac{s+\mu_{i,j}}{2}\right),
         \]
         where the local parameter at infinity $\mu_{i,j}$ corresponding to $(\k_{i},\nu_{j})$ satisfies the addition bounds $\Re(\mu_{i,j}) \le \Re(\k_{i})+\Re(\nu_{j})$ and $|\mu_{i,j}| \le |\k_{i}|+|\nu_{j}|$.
         \item The conductor $q(f \ox g)$ divides $q(f)^{d}q(g)^{e}$.
@@ -483,20 +483,60 @@
         \caption{The critical strip and critical line.}
         \label{fig:critical_strip}
       \end{figure}
-    \iffalse
-    \section{The Approximate Funcational Equation}
-      If $L(s,f)$ is a Selberg class $L$-function then there is a formula which acts as a compromise between the functional equation for $L(s,f)$ and expressing $L(s,f)$ as a Dirichlet series. This formula is known as the approximate functional equation and it is important because it is valid inside of the cirital strip and therefore can be used to obtain data about $L(s,f)$. First, we need a general result that $L(s,f)$ is bounded in vertical strips:
+    \section{The Approximate Functional Equation}
+      If $L(s,f)$ is a Selberg class $L$-function then there is a formula which acts as a compromise between the functional equation for $L(s,f)$ and expressing $L(s,f)$ as a Dirichlet series. This formula is known as the approximate functional equation and it is important because it is valid inside of the cirital strip and therefore can be used to obtain data about $L(s,f)$. First, we need to state an important asymptotic about the ratio of gamma factors that we will use later on. Let $s = \s+it$ and recall 
+      \[
+          \G(s) = \sqrt{2\pi}s^{s-\frac{1}{2}}e^{-s}(1+O(1)).
+      \]
+      which comes from \cref{equ:weaker_Stirling_formula}. As $s \sim_{\s} t$, we may replace $s$ with $t$, except for the exponenets, provided we let the implicit constant depend upon $\s$. For the exponents, we can reaplce $s$ with $\s$ as well because any complex number raised to a purely imaginary power has absolute value $1$. This gives the simplified estimate
+      \[
+        \G(s) = \sqrt{2\pi}t^{\s-\frac{1}{2}}e^{-\s}(1+O_{\s}(1)),
+      \]
+      which is equivalent to
+      \[
+        \frac{1}{\G(s)} = \frac{1}{\sqrt{2\pi}}t^{\frac{1}{2}-\s}e^{\s}(1+O_{\s}(1)).
+      \]
+      In terms of Vinogradov's symbol the above estimates imply
+      \[
+        \G(s) \ll_{\s} t^{\s-\frac{1}{2}}e^{-\s} \ll_{\s} t^{\s-\frac{1}{2}} \quad \text{and} \quad \frac{1}{\G(s)} \ll_{\s} t^{\frac{1}{2}-\s}e^{\s} \ll_{\s} t^{\frac{1}{2}-\s}.
+      \]
+      We can then estimate the ratio of gamma factors as 
+      \begin{equation}\label{equ:ratio_of_gamma_estimate}
+        \frac{\G(1-s)}{\G(s)} \ll_{\s} t^{1-2\s}.
+      \end{equation}
+      This important estimate will be used to show that $L(s,f)$ is bounded in vertical strips:
 
-      \begin{proposition}
-        If $L(s,f)$ is a Selberg class $L$-function, then $L(s,f)$ is polynomially bounded in the vertical strip
+      \begin{proposition}\label{prop:L_function_bounded_in_vertical_strips}
+        If $L(s,f)$ is a Selberg class $L$-function, then for any real $a$ and $b$ with $a < b$ there is a real $\a$ such that
         \[
-          \{s \in \C:a < \Re(s)| < b, |\Im(s)| > 1\},
+          L(s,f) \ll |t|^{\a},
         \]
-        for any real $a$ and $b$ with $a < b$.
+        in the vertical strip
+        \[
+          \{s = \s+it \in \C:a \le \s \le b, |t| > 1\}.
+        \]
       \end{proposition}
       \begin{proof}
-        \todo{xxx}
+        Let $\e > 0$. Since $L(s,f)$ is absolutely convergent for $\Re(s) > 1+\e$, $L(s,f) \ll_{\e} 1$ in this region. By the functional equation,
+        \[
+          L(s,f) \ll \frac{\g(1-s,f)}{\g(s,f)}L(1-s,f).
+        \]
+        Using \cref{equ:ratio_of_gamma_estimate} and the definition of $\g(s,f)$, it follows that
+        \[
+          \frac{\g(1-s,f)}{\g(s,f)} \ll_{\s} t^{\a(\s)},
+        \]
+        where $\a(\s)$ is a real-valued continuous function. Letting $\s < 0$ and noting that $L(1-s) \ll 1$, we have
+        \[
+          L(s,f) \ll_{\s} t^{\a(\s)}.
+        \]
+        for $\Re(s) < 0$ and where $\a(\s)$ is real and depends upon $\s$. As $L(s,f)$ is order $1$, we can apply the Phragm\'en-Lindel\"of convexity principle (see \cref{append:The_Phragmen_Lindelof_Convexity_principle}) so that the estimate
+        \[
+          L(s,f) \ll_{\s,\e} t^{\a(\s)},
+        \]
+        holds for all $s$ with $|t| > 1$. Restricting $a < \s < b$, $\a(\s)$ takes a maximum value on the compact set $[a,b]$ which completes the proof. 
       \end{proof}
+
+      \cref{prop:L_function_bounded_in_vertical_strips} is a very important property that $L$-functions posess. It is usually used to estimate Perron type formulas. We can also use it to deduce the approximate function equation:
 
       \begin{theorem}[The approximate functional equation]
         Let $L(s,f)$ be a Selberg class $L$-function and $g(u)$ be any even holomorphic function bounded on the strip $|\Re(u)| < 4$ and such that $g(0) = 1$. Let $X > 0$. Then for $s$ in the critial strip,
@@ -516,6 +556,8 @@
           R = \left(\Res_{u = 1-s}+\Res_{u = -s}\right)\frac{\L(f,s+u)g(u)}{q^{\frac{s}{2}}\g(f,s)}X^{u}.
         \]
       \end{theorem}
+      \begin{proof}
+        \todo{xxx}
+      \end{proof}
 
-      The function $g(u)$ is a test function so that $V_{s}(y)$ has the effect of smoothing out the two sums on the right-hand side of the approximate functional equation. In fact, $V_{s}(y)$ is a bump function by choosing \todo{$g(u) = ...$}. This technique was first introduced by Hardy and Littlewood in \todo{year} (see \todo{cite}) to obtain asymptotics for the second moment of the zeta function. 
-      \fi
+      The function $g(u)$ is a test function so that $V_{s}(y)$ has the effect of smoothing out the two sums on the right-hand side of the approximate functional equation. In fact, $V_{s}(y)$ is a bump function by choosing \todo{$g(u) = ...$}. This idea was first introduced by Hardy and Littlewood in \todo{year} (see \todo{cite}).
