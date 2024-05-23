@@ -1,7 +1,5 @@
 \chapter{Non-vanishing Results for \texorpdfstring{$L$}{L}-functions}\label{ch:Selected_topics_in_L-functions}
   This chapter is special in that it is the first time we see how $L$-functions can be used to prove interesting arithmetic results. Namely, we prove two crowing germs of analytic number theory: Dirichlet's theorem on primes in arithmetic progressions and the prime number theorem. The first of these two theorems, is a consequence of a non-vanishing results for Dirichlet $L$-functions at $s = 1$. This should give sufficient motivation for the study of non-vanishing results so after proving Dirichlet's result, we prove two stronger non-vanishing theorems: one for the Riemann zeta function and the other for Dirichlet $L$-functions. We then use the non-vanishing result for the Riemann zeta function to prove the other crowning gem of analytic number theory: the prime number theorem. These results are important not only because they are famous and were sought after, but because many other analytic techniques we will devlope will be used to prove generalizations and sharper versions of both Dirichlet theorem on primes in arithmetic progressions and the prime number theorem. For example, after devloping some additional machinery in the later chapters we will give another proof of the prime number theorem that is more easily generalizable to other settings.
-
-  As for what a non-vanishing result is, given an $L$-function $L(s)$ admitting meromorphic continuation to $\C$ and a functional equation of shape $s \to 1-s$, it is an interesting question to ask for which $s$, $L(s) \neq 0$. A result that says for $s = s_{0}$, $L(s_{0}) \neq 0$ is known as a \textbf{non-vanishing result}\index{non-vanishing result}. Non-vanishing results tend to have very important consequences about the arithmetic of $\Z$ since $L$-functions are encoding arithmetic information. Some particularly important cases are when $s = \frac{1}{2}$, $s = 1$, or more generally when $s$ is either on the critical line or the right boundary of the critical strip (the left boundary is immediate from the functional equation).
     \section{Dirichlet's Theorem on Primes in Arithmetic Progressions}
       One of the more well-known arithmetic results proved using $L$-functions is \textbf{Dirichlet's theorem on primes in arithmetic progressions}\index{Dirichlet's theorem on primes in arithmetic progressions}:
 
@@ -202,7 +200,11 @@
         But from \cref{lem:zero-free_region_zeta_lemma}, $(\s-1)\frac{\eta'}{\eta}(\s)$ has nonpositive real part and so the limit cannot be the positive integer $d$. This is a contradiction. Therefore $\eta(s)$ is nonzero at $s = 1$ and thus $\z(1+it) \neq 0$.
       \end{proof}
 
-      There is a completely analogous lemma and argument for Dirichlet $L$-functions. First the lemma:
+      With \cref{thm:non-vanishing_of_zeta_on_Re(s)=1}, we can make a slight improvement about the nontrivial zeros of $\z(s)$. Indeed, $\z(s)$ has no zeros for $\Re(s) > 1$ since it is an Euler product there and \cref{thm:non-vanishing_of_zeta_on_Re(s)=1} improves that region to $\Re(s) \ge 1$. We can say a little more. Rewrite the functional equation for $\z(s)$ as
+      \[
+        \z(1-s) = \pi^{\frac{1}{2}-s}\frac{\G\left(\frac{s}{2}\right)}{\G\left(\frac{1-s}{2}\right)}\z(s).
+      \]
+      Then \cref{thm:non-vanishing_of_zeta_on_Re(s)=1} implies that there are no zeros on the line $\Re(s) = 0$ and there is no pole at $s = 0$ either since $\z(1-s)$ has a simple pole there which is cacnelled by the simple zero of $\G\left(\frac{s}{2}\right)$. As for other Selberg class $L$-functions, there is also a completely analogous lemma and argument for Dirichlet $L$-functions. First the lemma:
 
       \begin{lemma}\label{lem:zero-free_region_Dirichlet_lemma}
         For any non-principal Dirichlet character $\chi$ of conductor $q > 1$, and nonzero real $t$, set
@@ -515,7 +517,7 @@
 
       A more classical proof of the prime number theorem is observing, as we did, that $-\frac{\z'}{\z}(s) = \sum_{n \ge 1}\frac{\L(n)}{n^{s}}$ and $\psi(x) = \sum_{n \le x}\L(x)$ and then appealing to Perron's formula to write
       \[
-        \psi(x) = \frac{1}{2\pi i}\int_{\Re(s) = c}-\frac{\z'}{\z}(s)x^{s}\frac{ds}{s}.
+        \psi(x) = \frac{1}{2\pi i}\int_{(c)}-\frac{\z'}{\z}(s)x^{s}\frac{ds}{s}.
       \]
       One then performs a very careful analysis of the latter integral to conclude $\psi(x) \sim x$. This involves making several estimates about the growth rate of $\frac{\z'}{\z}(s)$ as well as other convergence arguments. However, not much is needed beyond a good understanding of complex analysis. We have deviated from this style of proof for technical simplicity even though the underlying idea is, perhapse, more straightforward.
 
@@ -568,4 +570,11 @@
         $\pi(x)-\Li(x)$ changes sign infinitely often as $x \to \infty$.
       \end{proposition}
 
-      So in addition, \cref{thm:Littlewood_Li_approximation_theorem} implies that $\Li(x)$ never underestimates or overestimates $\pi(x)$ continuously. On the other hand, the exact error $\pi(x)-\frac{x}{\log(x)}$ is positive provided $x \ge 17$ (see \cite{rosser1962approximate}).
+      So in addition, \cref{thm:Littlewood_Li_approximation_theorem} implies that $\Li(x)$ never underestimates or overestimates $\pi(x)$ continuously. On the other hand, the exact error $\pi(x)-\frac{x}{\log(x)}$ is positive provided $x \ge 17$ (see \cite{rosser1962approximate}). Under the Riemann hypothesis, we can do better. In particular, Koch in 1901 showed that the Riemann hypothesis implies an asymptotic estimate for the exact error between $\pi(x)$ and $\Li(x)$ (see \cite{von1901distribution}):
+
+      \begin{proposition}
+        Under the assumption of the Riemann hypothesis,
+        \[
+          \pi(x) = \Li(x)+O(\sqrt{x}\log(x)).
+        \]
+      \end{proposition}

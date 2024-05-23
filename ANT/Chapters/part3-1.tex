@@ -425,12 +425,12 @@
         \[
           \L(s,f) = q(f)^{\frac{s}{2}}\g(s,f)L(s,f),
         \]
-        the \textbf{completed} $L$-function of $L(s,f)$. It must satisfy the functional equation
+        the \textbf{completed $L$-function}\index{completed $L$-function} of $L(s,f)$. It must satisfy the functional equation
         \[
           \L(s,f) = \e(f)\L(1-s,\conj{f}),
         \]
         where $\e(f)$ is a complex number with $|\e(f)| = 1$ called the \textbf{root number}\index{root number} of $L(s,f)$, and $\conj{f}$ is an object associated to $f$ called the \textbf{dual}\index{dual} of $f$ such that $L(s,\conj{f})$ satisfies $a_{\conj{f}}(n) = \conj{a_{f}(n)}$, $\g(s,\conj{f}) = \g(s,f)$, $q(\conj{f}) = q(f)$, and $\e(\conj{f}) = \conj{\e(f)}$, for $L(s,\conj{f})$. We call $L(s,\conj{f})$ the \textbf{dual}\index{dual} of $L(s,f)$. If $\conj{f} = f$ in the functional equation we say $L(s,f)$ is \textbf{self-dual}\index{self-dual}.
-        \item $L(s,f)$ admits meromorphic continuation to $\C$ with at most pole at $s = 1$, and must be of order $1$ (see \cref{append:Factorizations_and_Finite_Order}) after clearing the polar divisors.
+        \item $L(s,f)$ admits meromorphic continuation to $\C$ with at most a simple pole at $s = 1$, and must be of order $1$ (see \cref{append:Factorizations_and_Finite_Order}) after clearing the polar divisor.
       \end{enumerate}
       Suppose we are given two $L$-functions $L(s,f)$ and $L(s,g)$. We define the $L$-series $L(s,f \x g)$ by
       \[
@@ -582,3 +582,88 @@
       \end{proof}
 
       The function $V_{s}(y)$ has the effect of smoothing out the two sums on the right-hand side of the approximate functional equation for any choice of $G(u)$. This idea was first introduced by Hardy and Littlewood in the series \cite{hardyzeros1921,hardyapproximate1923,hardyapproximate1929}.
+    \section{The Riemann Hypothesis \& Nontrivial Zeros}
+      The zeros of Selberg class $L$-functions $L(s,f)$ are closely tied to important arithmetic data of $f$. Recall that for $\Re(s) > 1$, $L(s,f)$ admits the Euler product
+      \[
+        L(s,f) = \prod_{p}(1-\a_{1}(p)p^{-s})^{-1}(1-\a_{2}(p)p^{-s})^{-1} \cdots (1-\a_{d}(p)p^{-s})^{-1}.
+      \]
+      This product vanishes if and only if one of its factors are zero. As $\Re(s) > 1$, this is impossible so that $L(s,f)$ has no zeros in this region. The functional equation will allow us to understand more about the zeros of $L(s,f)$. Rewrite the functional equation for $L(s,f)$ as
+      \begin{equation}\label{equ:fun_eq_for_zeros}
+        L(s,f) = \e(f)q(f)^{\frac{1}{2}-s}\frac{\g(1-s,f)}{\g(s,f)}L(1-s,\conj{f}).
+      \end{equation}
+      If $\Re(s) < 0$ then $L(1-s,\conj{f})$ is not zero by our previous comments. Moroever, $\g(1-s,f)$ is holomorphic in this region because $\Re(\k_{i}) \ge -1$ for all $i$. Therefore, we conclude that poles of $\g(s,f)$ are zeros of $L(s,f)$. Such zeros are called \textbf{trivial zeros}\index{trivial zeros}. From the definition of $\g(s,f)$, they are all simple and are of the form $s = \k_{i}-2n$ for some parameter at infinity $\k_{i}$ and some integer $n \ge 0$. Any other zero of $L(s,f)$ is called a \textbf{nontrivial zeros}\index{nontrivial zeros} and it lies inside of the critical strip. 
+      
+      Now let $\rho$ be a nontrivial zero of $L(s,f)$. Note that $\conj{L(s,f)} = L(\conj{s},\conj{f})$ by the identity theorem and that this equality holds for $\Re(s) > 1$ where $L(s,f)$ is defined by a Dirichlet series. It follows that $\conj{\rho}$ is a nontrivial zero of $L(s,\conj{f})$. In the interior of critical strip, the gamma factor is nonzero and holomorphic (again we have used $\Re(\k_{i}) \ge 1$ for all $i$). From the functional equation, it follows that $1-\conj{\rho}$ is also a nontrivial zero of $L(s,f)$. In short, the nontrivial zeros occur in pairs
+      \[
+        \rho \quad \text{and} \quad 1-\conj{\rho}.
+      \]
+      We can sometimes say more. If $L(s,f)$ takes real values for real $s > 1$, the Schwarz reflection principle implies $L(\conj{s},f) = \conj{L(s,f)}$ and that $L(s,f)$ takes real values on the entire real axis save for the pole at $ s = 1$. We find that $\conj{\rho}$ and $1-\conj{\rho}$ are nontrivial zeros too and therefore the nontrivial zeros of $L(s,f)$ come in sets of four:
+      \[
+        \rho, \quad \conj{\rho}, \quad 1-\rho, \quad \text{and} \quad 1-\conj{\rho}.
+      \]
+      For example, this is the situation for the Riemann zeta function $\z(s)$. The \textbf{classical Riemann hypothesis}\index{classical Riemann hypothesis} says that this symmetry of zeros is as simple as it could possibly be:
+
+      \begin{theorem}[Classical Riemann hypothesis]
+        All of the nontrivial zeros of $\z(s)$ lie on the line $\Re(s) = \frac{1}{2}$.
+      \end{theorem}
+
+      This is one of, if not the most, famous and important open problems in mathematics. It has resisted all attempts of a proof by every great mathematician over the last century and a half. The Clay Mathematics Institute has also named it one of the millennium pize problems which means that anyone who can give a proof (or disproof) will recieve a \$1 million cash prize. Riemann's original motivation for the conjecture came from looking for an explicit formula for the prime counting function $\pi(x)$ which is the purpose of his 1859 manuscript (see \cite{riemann1859ueber}). This explicit formula for $\pi(x)$ involves the nontrivial zeros of Riemann zeta function. Riemann computed a few of them, found that they were on the critical line, and conjectured that it is very likely that all of them lie on the critical line. There is also the \textbf{Selberg class Riemann hypothesis}\index{Selberg class Riemann hypothesis} which is an analogous conjecture for Selberg class $L$-functions:
+
+      \begin{conjecture}[Selberg class Riemann hypothesis]
+        For any Selberg class $L$-function $L(s,f)$, all of the nontrivial zeros of $L(s,f)$ lie on the line $\Re(s) = \frac{1}{2}$.
+      \end{conjecture}
+    \section{The Lindel\"of Hypothesis \& Convexity Arguments}
+      Instead of asking about the zeros of a Selberg class $L$-function $L(s,f)$ on the critical line, we can ask about the growth of $L(s,f)$ on the critial line. A \textbf{convexity argument}\index{convexity argument} is one where estimates about the growth of a Selberg class $L$-function on the critical line are deduced. Usually this is achieved by methods of complex analysis and Sirling's formula. The standard argument for any Selberg class $L$-function is known \textbf{Lindel\"of convexity argument}\index{Lindel\"of convexity argument}. It is essentially a refinement of the proof of \cref{prop:L_function_bounded_in_vertical_strips}. Suppose $L(s,f)$ has a degree $d$ Euler product. Let $s = \s+it$ and suppose $|t| > 1$ so that we are away from the poles of $L(s,f)$. The first step is to guarantee the Phragm\'en-Lindel\"of convexity principle in a region containing the critical strip with $|t| > 1$. As $L(s,f)$ is of order $1$, this is assured (see \cref{append:The_Phragmen_Lindelof_Convexity_principle}). Therefore, we are reduced to estimating the growth of $L(s,f)$ for $\s$ to the left of $0$ and to the right of $1$. That is, just outside the edges of the critical strip. The right edge is easy. Letting $\e > 0$ and setting $\s = 1+\e$, we have
+    \begin{equation}\label{equ:convexity_bound_1}
+      L((1+\e)+it,f) \ll_{\e} 1.
+    \end{equation}
+    The left edge is only slightly more difficult. The functional equation implies
+    \begin{equation}\label{equ:convexity_bound_left_edge}
+      L(s,f) \ll \frac{\g(1-s,f)}{\g(s,f)}L(1-s,f).
+    \end{equation}
+    From \cref{equ:ratio_of_gamma_estimate} and that $L(s,f)$ has $d$ gamma functions in its gamma factor, it follows that
+    \[
+      \frac{\g(1-s,f)}{\g(s,f)} \ll q(f)^{\frac{1-2\s}{2}}t^{\frac{d(1-2\s)}{2}}.
+    \]
+    Let $\e > 0$ and set $\s = -\e$. Then plugging this estimate into \cref{equ:convexity_bound_left_edge} and that $L((1+\e)+it,f) \ll_{\e} 1$ gives
+    \begin{equation}\label{equ:convexity_bound_2}
+      L(-\e+it,f) \ll_{\e} q(f)^{\frac{1+2\e}{2}}t^{\frac{d(1+2\e)}{2}}.
+    \end{equation}
+    By the Phragm\'en-Lindel\"of convexity principle, \cref{equ:convexity_bound_1,equ:convexity_bound_2} we obtain
+    \[
+      L(s,f) \ll_{\e} q(f)^{\frac{1+\e-\s}{2}}t^{\frac{1+\e-\s}{2}},
+    \]
+    for $-\e \le \s \le 1+\e$. At the critical line, we have the \textbf{convexity bound}\index{convexity bound}:
+    \begin{equation}\label{equ:convexity_bound_L_function}
+      L\left(\frac{1}{2}+it,f\right) \ll_{\e} q^{\frac{1}{4}+\e}t^{\frac{1}{4}+\e}.
+    \end{equation}
+    The classical Lindel\"of hypothesis says that the exponenet $\frac{1}{4}+\e$ can be improved to be $\e$:
+    \begin{conjecture}[Classical Lindel\"of hypothesis]
+      For any $\e > 0$,
+      \[
+        \z\left(\frac{1}{2}+it\right) \ll_{\e} t^{\e}.
+      \]
+    \end{conjecture}
+    In 1908 Lindel\"of made this conjecture (see \cite{lindelof1908quelques}). The Riemann hypothesis implies the Lindel\"of hypothesis although it is not an immediate consequence. Indeed, in 1919 Backlund showed the following equivalence for the Lindel\"of hypothesis (see \cite{backlund1919beziehung}):
+
+    \begin{proposition}\label{prop:Lindelof_hypothesis_equivalence}
+      The Lindel\"of hypothesis is equivalent to the following statement: Fix an $\e > 0$, a real $T$, and set
+      \[
+        Z_{\e,T} = \left\{s = \s+it \in \C : \z(s) = 0, \s \ge \frac{1}{2}+\e, T \le t \le T+1 \right\}.
+      \]
+      Then
+      \[
+        |Z_{\e,T}| = o(\log(T)).
+      \]
+    \end{proposition}
+
+    If the Riemann hypothesis is true, then \cref{prop:Lindelof_hypothesis_equivalence} is immediate because $Z_{\e,T}$ would be empty for any $\e > 0$ and all $T$. Nevertheless, the Lindel\"of hypothesis still remains wide open today. The \textbf{Selberg class Lindel\"of hypothesis}\index{Lindel\"of hypothesis} is the analog to the classical Lindel\"of hypothesis for any Selberg class $L$-function:
+
+    \begin{conjecture}[Selberg class Lindel\"of hypothesis]
+      For any Selberg class $L$-function $L(s,f)$ and any $\e > 0$,
+      \[
+        L\left(\frac{1}{2}+it\right) \ll_{\e} (q(f)t)^{\e}.
+      \]
+    \end{conjecture}
+
+    For any Selberg class $L$-function, any improvment upon either exponent at the critical line is called \textbf{breaking convexity}\index{breaking convexity} (or a \textbf{convexity breaking bound}\index{convexity breaking bound}). Any argument used to do so is called a \textbf{subconvexity argument}\index{subconvexity argument}.
