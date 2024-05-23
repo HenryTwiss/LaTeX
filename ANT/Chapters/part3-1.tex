@@ -429,7 +429,7 @@
         \[
           \L(s,f) = \e(f)\L(1-s,\conj{f}),
         \]
-        where $\e(f)$ is a complex number with $|\e(f)| = 1$ called the \textbf{root number}\index{root number} of $L(s,f)$, and $\conj{f}$ is an object associated to $f$ called the \textbf{dual}\index{dual} of $f$ such that $L(s,\conj{f})$ satisfies $a_{\conj{f}}(n) = \conj{a_{f}(n)}$, $\g(s,\conj{f}) = \g(s,f)$, and $q(\conj{f}) = q(f)$ for $L(s,\conj{f})$. We call $L(s,\conj{f})$ the \textbf{dual}\index{dual} of $L(s,f)$. If $\conj{f} = f$ in the functional equation we say $L(s,f)$ is \textbf{self-dual}\index{self-dual}.
+        where $\e(f)$ is a complex number with $|\e(f)| = 1$ called the \textbf{root number}\index{root number} of $L(s,f)$, and $\conj{f}$ is an object associated to $f$ called the \textbf{dual}\index{dual} of $f$ such that $L(s,\conj{f})$ satisfies $a_{\conj{f}}(n) = \conj{a_{f}(n)}$, $\g(s,\conj{f}) = \g(s,f)$, $q(\conj{f}) = q(f)$, and $\e(\conj{f}) = \conj{\e(f)}$, for $L(s,\conj{f})$. We call $L(s,\conj{f})$ the \textbf{dual}\index{dual} of $L(s,f)$. If $\conj{f} = f$ in the functional equation we say $L(s,f)$ is \textbf{self-dual}\index{self-dual}.
         \item $L(s,f)$ admits meromorphic continuation to $\C$ with at most pole at $s = 1$, and must be of order $1$ (see \cref{append:Factorizations_and_Finite_Order}) after clearing the polar divisors.
       \end{enumerate}
       Suppose we are given two $L$-functions $L(s,f)$ and $L(s,g)$. We define the $L$-series $L(s,f \x g)$ by
@@ -531,29 +531,54 @@
       \cref{prop:L_function_bounded_in_vertical_strips} is a very important property that $L$-functions posess. It is usually used to estimate Perron type formulas. We can also use it to deduce the approximate function equation:
 
       \begin{theorem}[The approximate functional equation]
-        Let $L(s,f)$ be a Selberg class $L$-function and $g(u)$ be an even holomorphic function bounded on the strip $|\Re(u)| < a$, for any $a > 1$, and such that $g(0) = 1$. Let $X > 0$. Then for $s$ in the critial strip,
+        Let $L(s,f)$ be a Selberg class $L$-function and $G(u)$ be an even holomorphic function bounded on the strip $|\Re(u)| < a$, for any $a > 1$, and such that $g(0) = 1$. Let $X > 0$. Then for $s$ in the critial strip,
         \[
-          L(s,f) = \sum_{n \ge 1}\frac{a_{f}(n)}{n^{s}}V_{s}\left(\frac{n}{X\sqrt{q(f)}}\right)+\e(f,s)\sum_{n \ge 1}\frac{a_{\conj{f}}(n)}{n^{1-s}}V_{1-s}\left(\frac{nX}{\sqrt{q(f)}}\right)+R,
+          L(s,f) = \sum_{n \ge 1}\frac{a_{f}(n)}{n^{s}}V_{s}\left(\frac{n}{\sqrt{q(f)}X}\right)+\e(f,s)\sum_{n \ge 1}\frac{\conj{a_{f}(n)}}{n^{1-s}}V_{1-s}\left(\frac{nX}{\sqrt{q(f)}}\right)-\frac{R}{q^{\frac{s}{2}}\g(s,f)},
         \]
         where $V_{s}(y)$ is a smooth function defined by
         \[
-          V_{s}(y) = \frac{1}{2\pi i}\int_{\Re(u) = 3}y^{-u}g(u)\frac{\g(f,s+u)}{\g(f,s)}\frac{du}{u},
+          V_{s}(y) = \frac{1}{2\pi i}\int_{(a)}\frac{\g(f,s+u)}{\g(s,f)}G(u)y^{-u}\frac{du}{u},
         \]
         and
         \[
-          \e(f,s) = \e(f)q(f)^{\frac{1}{2}-s}\frac{\g(f,1-s)}{\g(f,s)}.
+          \e(s,f) = \e(f)q(f)^{\frac{1}{2}-s}\frac{\g(1-s,f)}{\g(s,f)}.
         \]
         Moreover, the remainder $R$ is zero if $\L(f,s)$ is entire and otherwise
         \[
-          R = \left(\Res_{u = 1-s}+\Res_{u = -s}\right)\frac{\L(f,s+u)g(u)}{q^{\frac{s}{2}}\g(f,s)}X^{u}.
+          R = \left(\Res_{u = 1-s}+\Res_{u = -s}\right)\frac{\L(f,s+u)G(u)X^{u}}{u}.
         \]
       \end{theorem}
       \begin{proof}
         Let
         \[
-          I(X,s,f) = \frac{1}{2\pi i}\int_{(a)}\L(s+u,f)g(u)X^{s}\,\frac{du}{u}.
+          I(X,s,f) = \frac{1}{2\pi i}\int_{(a)}\L(s+u,f)G(u)X^{u}\,\frac{du}{u}.
         \]
-        By our choice of $a$ and that $s$ is in the critial strip, $\Re(s+u) > 1$ so that $L(s+u) \ll 1$. \todo{xxx}
+        By our choice of $a$ and that $s$ is in the critial strip, $\Re(s+u) > 1$ so that $L(s+u) \ll 1$. Moreover, from \cref{equ:weaker_Stirling_formula} we see that $\g(s+u,f)$ has exponential decay to zero as $\Im(u) \to \infty$. Since $G(u)$ is bounded, it follows that the integral is absolutely bounded by \cref{met:decay_compacta_integral}. By \cref{prop:L_function_bounded_in_vertical_strips} and \cref{equ:weaker_Stirling_formula}, the integrand also had exponential decay to zero as $\Im(u) \to \infty$ in a vertical strip containing $|\Re(u)| \le a$. Therefore we may shift the line of integration to $(-a)$. We pass by a simple pole at $u = 0$ and possible simple poles at $u = 1-s$ and $u = -s$ giving
+        \[
+          I(X,s,f) = \frac{1}{2\pi i}\int_{(-a)}\L(s+u,f)G(u)X^{u}\,\frac{du}{u}+\L(s,f)+R.
+        \]
+        Applying the functional equation to $\L(s+u,f)$ and performing the change of variables $u \to -u$, we obtain
+        \[
+          I(X,s,f) = -\e(f)I(X^{-1},1-s,\conj{f})+\L(s,f)+R,
+        \]
+        since $G(u)$ is even. This equation is equivalent to
+        \[
+          \L(s,f) = I(X,s,f)+\e(f)I(X^{-1},1-s,\conj{f})-R.
+        \]
+        Since $\Re(s+u) > 1$, we can expand the $L$-function $L(s,f)$ inside of $I(X,s,f)$ as a Dirichlet series:
+        \begin{align*}
+          I(X,s,f) &= \frac{1}{2\pi i}\int_{(a)}\L(s+u,f)G(u)X^{u}\,\frac{du}{u} \\
+          &= \frac{1}{2\pi i}\int_{(a)}q(f)^{\frac{s+u}{2}}\g(s+u,f)L(s+u,f)G(u)X^{u}\,\frac{du}{u} \\
+          &= \frac{1}{2\pi i}\int_{(a)}\sum_{n \ge 1}\frac{a_{f}(n)}{n^{s+u}}q(f)^{\frac{s+u}{2}}\g(s+u,f)G(u)X^{u}\,\frac{du}{u} \\
+          &= \sum_{n \ge 1}\frac{1}{2\pi i}\int_{(a)}\frac{a_{f}(n)}{n^{s+u}}q(f)^{\frac{s+u}{2}}\g(s+u,f)G(u)X^{u}\,\frac{du}{u} && \text{DCT} \\
+          &= q(f)^{\frac{s}{2}}\g(s,f)\sum_{n \ge 1}\frac{a_{f}(n)}{n^{s}}\frac{1}{2\pi i}\int_{(a)}\frac{\g(s+u,f)}{\g(s,f)}G(u)\left(\frac{\sqrt{q(f)}X}{n}\right)^{u}\,\frac{du}{u} \\
+          &= q(f)^{\frac{s}{2}}\g(s,f)\sum_{n \ge 1}\frac{a_{f}(n)}{n^{s}}V_{s}\left(\frac{n}{\sqrt{q(f)}X}\right).
+        \end{align*}
+        Performing the same computation for $I(X^{-1},1-s,\conj{f})$ and substituting in the results, we arrive at
+        \[
+          \L(s,f) = q(f)^{\frac{s}{2}}\g(s,f)\sum_{n \ge 1}\frac{a_{f}(n)}{n^{s}}V_{s}\left(\frac{n}{\sqrt{q(f)}X}\right)+\e(f)q(f)^{\frac{1-s}{2}}\g(1-s,f)\sum_{n \ge 1}\frac{a_{f}(n)}{n^{1-s}}V_{1-s}\left(\frac{nX}{\sqrt{q(f)}}\right)-R.
+        \]
+        Diving by $q^{\frac{s}{2}}\g(s,f)$ completes the proof.
       \end{proof}
 
-      The function $g(u)$ is a test function so that $V_{s}(y)$ has the effect of smoothing out the two sums on the right-hand side of the approximate functional equation. This idea was first introduced by Hardy and Littlewood in \todo{year} (see \todo{cite}).
+      The function $V_{s}(y)$ has the effect of smoothing out the two sums on the right-hand side of the approximate functional equation for any choice of $G(u)$. This idea was first introduced by Hardy and Littlewood in the series \cite{hardyzeros1921,hardyapproximate1923,hardyapproximate1929}.

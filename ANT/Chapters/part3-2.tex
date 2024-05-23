@@ -82,53 +82,15 @@
             \[
             \frac{e^{-\frac{\pi t^{2}}{s}}}{\sqrt{s}}\int_{-\infty}^{\infty}e^{-\pi\left(x+\frac{it}{\sqrt{s}}\right)^{2}}\,dx.
             \]
-            We now treat this last integral as a complex integral. That is,
-            \begin{equation}\label{transformation_law_for_Jacobi's_theta_function_1}
-            \int_{-\infty}^{\infty}e^{-\pi\left(x+\frac{it}{\sqrt{s}}\right)^{2}}\,dx = \int_{\Im(z) = 0}e^{-\pi\left(z+\frac{it}{\sqrt{s}}\right)^{2}}\,dz = \int_{\Im(z) = \frac{t}{\sqrt{s}}}e^{-\pi z^{2}}\,dz,
-            \end{equation}
-            where in the last equality we have made the change of variables $z \to z-\frac{it}{\sqrt{s}}$. Now fix $T > 0$ and let $R_{T}$ be the positively oriented rectangle bounded by the lines $\Im(z) = 0$, $\Im(z) = \frac{t}{\sqrt{s}}$, $\Re(z) = -T$ and $\Re(z) = T$. Consider
-            \[
-            \lim_{T \to \infty}\int_{R_{T}}e^{-\pi z^{2}}\,dz.
-            \]
-            On the one hand, the residue theorem implies that the integral is the sum of a $2\pi i$ multiple of the residues in the rectangle $R_{T}$ and so the limit is the sum of a $2\pi i$ multiple of the residues in the strip bounded by $\Im(z) = 0$ and $\Im(z) = \frac{t}{\sqrt{s}}$. Since $e^{-\pi\left(z+\frac{it}{\sqrt{s}}\right)^{2}}$ is entire, this is zero. On the other hand, we can decompose the integral as
-            \[
-            \int_{\Im(z) = 0}e^{-\pi z^{2}}\,dz+\lim_{T \to \infty}\int_{0}^{\frac{t}{\sqrt{s}}}e^{-\pi(iz+T)^{2}}\,dz-\int_{\Im(z) = \frac{t}{\sqrt{s}}}e^{-\pi z^{2}}\,dz-\lim_{T \to \infty}\int_{0}^{\frac{t}{\sqrt{s}}}e^{-\pi(iz-T)^{2}}\,dz.
-            \]
-            Since $(iz \pm T)^{2} \ll_{z} T^{2}$, the integrands of the second and fourth terms decay to zero as $T \to \infty$. Hence the corresponding limits of integrals is zero. Putting these two remarks together shows
-            \begin{equation}\label{transformation_law_for_Jacobi's_theta_function_2}
-            \int_{\Im(z) = \frac{t}{\sqrt{s}}}e^{-\pi z^{2}}\,dz = \int_{\Im(z) = 0}e^{-\pi z^{2}}\,dz = \int_{-\infty}^{\infty}e^{-\pi x^{2}}\,dx.
-            \end{equation}
-            So back to the integral at hand, \cref{transformation_law_for_Jacobi's_theta_function_1,transformation_law_for_Jacobi's_theta_function_2} together imply
+            The change of variables $x \to \frac{x}{\sqrt{s}}-\frac{it}{\sqrt{s}}$ is permitted without affecting the line of integration by viewing the integral as a complex integral, noting that the integrand is entire as a complex function, and shifting the line of integration. This gives
             \[
             \frac{e^{-\frac{\pi t^{2}}{s}}}{\sqrt{s}}\int_{-\infty}^{\infty}e^{-\pi\left(x+\frac{it}{\sqrt{s}}\right)^{2}}\,dx = \frac{e^{-\frac{\pi t^{2}}{s}}}{\sqrt{s}}\int_{-\infty}^{\infty}e^{-\pi x^{2}}\,dx = \frac{e^{-\frac{\pi t^{2}}{s}}}{\sqrt{s}},
             \]
             where the last equality follows because the last integral above is $1$ since it is the Gaussian integral (see \cref{append:Special_Integrals}). The Poisson summation formula and the identity theorem together finish the proof.
         \end{proof}
 
-        Take note that the key ingredient in the proof was the Poisson summation formula. This is typical of a larger relaity when one needs to prove transformation laws. Also, the method of changing the line of integration from $\Im(z) = \frac{t}{\sqrt{s}}$ to $\Im(z) = 0$ works in a much more general setting and is a very useful analytic technique called \textbf{shifting the line of integration}\index{shifting the line of integration}:
-
-        \begin{method}[Shifting the line of integration]
-            Suppose we are given an integral
-            \[
-            \int_{\Re(z) = a}f(z)\,dz \quad \text{or} \quad \int_{\Im(z) = a}f(z)\,dz,
-            \]
-            and some real $b$ with $b < a$ in the first case and $b > a$ in the second case. Also suppose the following conditions hold corresponding to each case:
-            \begin{enumerate}[label=(\roman*)]
-            \item $f$ is meromorphic on a strip containing $\Re(z) = a,b$ or $\Im(z) = a,b$ respectively.
-            \item $f$ is holomorphic about $\Re(z) = a,b$ or $\Im(z) = a,b$ respectively.
-            \item $f(z) \to 0$ as $\Im(z) \to \infty$ or $f(z) \to 0$ as $\Re(z) \to \infty$ respectively.
-            \end{enumerate}
-            To collect these cases, let $(a)$ stand for the line $\Re(z) = a$ or $\Im(z) = a$ respectively with positive orientation. Then the line of integration $(a)$ can be shifted to the line of integration $(b)$ with the possible addition of residues. Take a rectangle $R_{T}$ given positive orientation and with its edges on $(a)$ and $(b)$ respectively and consider
-            \[
-            \lim_{T \to \infty}\int_{R_{T}}f(z)\,dz.
-            \]
-            On the one hand, the residue theorem implies the integral is a sum of a $2\pi i$ multiple of the residues $r_{i}$ in the rectangle $R_{T}$ and hence the limit is a sum of a $2\pi i$ multiple of the residues in the strip bounded by $(a)$ and $(b)$. Denote the corresponding set of poles inside this strip by $P$. On the other hand, the integral can be decomposed into a sum of four integrals along the edges of $R_{T}$ and by taking the limit the edges other than $(a)$ and $(b)$ will tend to zero because of the assumptions on $f$. The remaining two pieces is the difference between the integral along $(a)$ and $(b)$. So in total,
-            \[
-            \int_{(a)}f(z)\,dz = \int_{(b)}f(z)\,dz+2\pi i\sum_{\rho \in P}\Res_{z = \rho}f(z).
-            \]
-        \end{method}
-
-        A particular application of interest is when the integral in question is real and over the entire real line, the integrand is entire as a complex function, and one is trying to shift the line of integration of the complexified integral to $\Im(z) = a$. In this case, shifting the line of integration amounts to making the change of variables $x \to x-ia$ without affecting the initial line of integration. For example, in the proof of the transformation law for Jacobi's theta function we can make the change of variables $x \to \frac{x}{\sqrt{s}}-\frac{it}{\sqrt{s}}$ without affecting the line of integration. We will appeal to this application often when proving transformation laws and one should become familiar with it. This completes our interest in Jacobi's theta function.
+        This completes our interest in Jacobi's theta function.
+        
         \subsection*{The Integral Representation of \texorpdfstring{$\z(s)$}{\z(s)}: Part II}
         Returning to the Riemann zeta function, we split the integral in \cref{equ:integral_representation_zeta_1} into two pieces
         \begin{equation}\label{equ:symmetric_integral_zeta_split}
