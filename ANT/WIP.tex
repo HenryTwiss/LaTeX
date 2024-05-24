@@ -257,6 +257,37 @@
         \sum_{n \le X}\l_{f}(n) \ll_{\e} X^{\frac{k-1}{2}+\e},
       \]
       for some $\e > 0$. This bound should be compared with the implication $\l_{f}(n) \ll n^{\frac{k-1}{2}+\e}$ that follows from the Ramanujan conjecture.
+    \section{Theta Functions}
+        At this point we have shown that the Riemann zeta function, Dirichlet $L$-functions, and Hecke $L$-functions, all admit meromorphic continuation to $\C$ and satisfy a functional equation of shape $s \to 1-s$. In all of these cases, the idea was to find an integral representation that is meromorphic on $\C$ and symmetric under $s \to 1-s$. There is a unifying idea which encompasses all of these cases and more. That idea is lifting a transformation law of a theta function by taking its Mellin transform. To connect the Mellin transform to $L$-functions, we require theta functions. For our purposes, a \textbf{theta function}\index{theta function} is an infinite series indexed over a lattice whose terms are exponentials. We also require the theta function to be holomorphic on $\C$ and admit exponential decay to zero near $\infty$. Each of the $L$-functions we have studied, excluding the Rankin-Selberg convolution, is associated to a theta function:
+        \begin{align*}
+        \z(s) &\longleftrightarrow \vt(s) = \sum_{n \in \Z}e^{-\pi n^{2}s}, \\
+        L(s,\chi) &\longleftrightarrow \vt_{\chi}(s) = \sum_{n \in \Z}\chi(n)n^{\mf{a}}e^{-\pi n^{2}s}, \\
+        L(s,f) &\longleftrightarrow f(iy) = \sum_{n \in \Z}a(n)e^{-\pi ny},
+        \end{align*}
+        where in the last case we note that $a(n) = 0$ for $n < 0$ because $f$ is holomorphic and $a(0) = 0$ because $f$ is cuspidal. Now on the one hand, all of these theta functions can be written as sums over $n \ge 1$: the first two cases by symmetry of the $n$ and $-n$ terms and the last case by the above comment. Isolating the subsum over $n \ge 1$ and specializing at a nonnegative real variable we get $\w(x)$, $\w_{\chi}(x)$, and $f(iy)$ respectively. Taking the Mellin transform of these latter functions reproduced the associated $L$-functions up to gamma factors. We then decomposed the Mellin transform into two pieces and symmetrized the result by using transformation laws for the theta functions. The most difficult part of all of these arguments was cooking up the theta function that corresponds to the $L$-function solely from its representation as a Dirichlet series in the region of absolute convergence. For the Riemann zeta function this was essentially ``Riemann's insight'': start with the Gamma function, apply a change of variables, and sum over all $n \ge 1$ to obtain the Mellin transform of the corresponding theta function. For $L(s,\chi)$, the argument is adapted from that of Riemann although it is more complicated since the associated theta function depends on if the character $\chi$ is even or odd (odd being the more difficult case). On the other hand, $L(s,f)$ has the advantage that the theta function is easy to guess outright. It's the Fourier series of $f$ along the upper-half imaginary axis. Moreover, it comes equip with the necessary transformation law via the modularity of $f$. In more general settings, we need to know something algebraic or geometric about a given theta function in order to deduce a transformation law that can be used to prove meromorphic continuation and a functional equation for its associated $L$-function. In general the method of meromorphic continuation is as follows:
 
+        \begin{method}
+        Suppose we are given an $L$-series
+        \[
+            L(s,f) = \sum_{n \ge 1}\frac{a(n)}{n^{s}},
+        \]
+        that is locally absolutely uniformly convergent for $\Re(s) > 1$, and there is a theta function $\w_{f}(s)$ such that $L(s,f)$ is approximately the Mellin transform of $\w_{f}(s)$. That is, 
+        \[
+            L(s,f) \approx \int_{0}^{\infty}\w_{f}(s)x^{s}\,\frac{dx}{x}.
+        \]
+        Also suppose $\w_{f}(s)$ satisfies a tranformation law approximately of the form
+        \[
+            \w_{f}(x) \approx \w_{f}\left(\frac{1}{q(f)^{2}x}\right),
+        \]
+        for some constant $q(f)$ (that will be the conductor of the $L$-function). Then $L(s,f)$ admits meromorphic continuation to $\C$. To acomplish this, first decompose the Mellin transform into two pieces:
+        \[
+            \int_{0}^{\infty}\w_{f}(x)x^{s}\,\frac{dx}{x} = \int_{0}^{\frac{1}{q(f)}}\w_{f}(x)x^{s}\,\frac{dx}{x}+\int_{\frac{1}{q(f)}}^{\infty}\w_{f}(x)x^{s}\,\frac{dx}{x}.
+        \]
+        Then apply the transformation law for $\w_{f}(s)$ to the first piece and symmetrize the result to obtain an integral representation of the following form:
+        \[
+            L(s,f) \approx \text{polar factor}+\int_{\frac{1}{q(f)}}^{\infty}\w_{f}(x)x^{1-s}\,\frac{dx}{x}+\int_{\frac{1}{q(f)}}^{\infty}\w_{f}(x)x^{s}\,\frac{dx}{x},
+        \]
+        where the polar factor will appear if there is a constant term in $\w_{f}(x)$. Both of the integrals will be locally absolutely uniformly bounded by the exponential decay of $\w_{f}(x)$. Since the integral representation is symmetric under $s \to 1-s$, this gives the meromorphic continuation to $\C$.
+        \end{method}
 
   \end{document}
