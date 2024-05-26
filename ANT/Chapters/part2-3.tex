@@ -321,7 +321,6 @@
       &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}f(\g^{-1}\s_{\mf{a}}z)\sum_{\g \in \GG}\conj{\psi(\Im(z))}\,d\mu && \text{$z \to \g^{-1}\s_{\mf{a}}z$} \\
       &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}f(\s_{\mf{a}}z)\sum_{\g \in \GG}\conj{\psi(\Im(z))}\,d\mu  && \text{automorphy} \\
       &= \int_{\G_{\infty}\backslash\H}f(\s_{\mf{a}}z)\conj{\psi(\Im(z))}\,d\mu && \text{unfolding} \\
-      &= \int_{\G_{\infty}\backslash\H}f(\s_{\mf{a}}z)\conj{\psi(\Im(z))}\,d\mu \\
       &= \int_{0}^{\infty}\int_{0}^{1}f(\s_{\mf{a}}(x+iy))\conj{\psi(y)}\,\frac{dx\,dy}{y^{2}} \\
       &= \int_{0}^{\infty}\left(\int_{0}^{1}f(\s_{\mf{a}}(x+iy))\,dx\right)\conj{\psi(y)}\,\frac{dy}{y^{2}}.
     \end{align*}
@@ -345,14 +344,38 @@
       which is locally absolutely uniformly convergent if $f \in \mc{D}(\G)$ and converges in the $L^{2}$-norm otherwise.
     \end{theorem}
 
-    We will now discuss the spectrum of the Laplace operator on $\mc{E}(\G)$. Essential is the meromorphic continuation of the Eisenstein series $E_{\mf{a}}(z,s)$ (see \cite{iwaniec2002spectral} for a complete argument):
+    We will now discuss the spectrum of the Laplace operator on $\mc{E}(\G)$. Essential is the meromorphic continuation of the Eisenstein series $E_{\mf{a}}(z,s)$ (see \cite{iwaniec2002spectral} for a proof):
 
     \begin{theorem}\label{thm:meromorphic_continuation_of_Eisenstein_series}
       Let $\mf{a}$ and $\mf{b}$ be cusps of $\GH$. The Eisenstein series $E_{\mf{a}}(z,s)$ admits meromorphic continuation to $\C$ in the $s$-plane, via a Fourier series at the $\mf{b}$ cusp given by
       \[
         E_{\mf{a}}(\s_{\mf{b}}z,s) = \d_{\mf{a},\mf{b}}y^{s}+\tau_{\mf{a},\mf{b}}(s)y^{1-s}+\sum_{n \neq 0}\tau_{\mf{a},\mf{b}}(n,s)\sqrt{y}K_{it}(2\pi|n|y)e^{2\pi inx},
       \]
-      where $\tau_{\mf{a},\mf{b}}(s)$ and $\tau_{\mf{a},\mf{b}}(n,s)$ are meromorphic functions. The poles of $\tau_{\mf{a},\mf{b}}(s)$ are simple and belong to the segment $(\frac{1}{2},1]$. A pole of $\tau_{\mf{a},\mf{b}}(s)$ is also a pole of $\tau_{\mf{a},\mf{a}}(s)$, and the poles of $E_{\mf{a}}(z,s)$ are among the poles of $\tau_{\mf{a},\mf{a}}(s)$. Also, the residues of the Eisenstein series at these poles are Maass forms in $\mc{E}(\G)$.
+      where $\tau_{\mf{a},\mf{b}}(s)$ and $\tau_{\mf{a},\mf{b}}(n,s)$ are meromorphic functions.
+    \end{theorem}
+
+    The Eisenstein series $E_{\mf{a}}(z,s)$ also satisfty a functional equation. To state it we need some notation. Fix an ordering of the cusps $\mf{a}$ of $\GH$ and define
+    \[
+      \mc{E}(z,s) = (E_{\mf{a}}(z,s))_{\mf{a}}^{t} \quad \text{and} \quad \Phi(s) = (\tau_{\mf{a},\mf{b}}(s))_{\mf{a},\mf{b}}.
+    \]
+    In other words, $\mc{E}(z,s)$ is the column vector of the Eisenstein series and $\Phi(s)$ is the square matrix of meromorphic functions $\tau_{\mf{a},\mf{b}}(s)$ described in \cref{thm:meromorphic_continuation_of_Eisenstein_series}. Then we have the following (see \cite{iwaniec2002spectral} for a proof): 
+
+    \begin{theorem}\label{thm:functional_equation_of_Eisenstein_series}
+      The Eisenstein series $E_{\mf{a}}(z,s)$ on $\GH$ satisfty the functional equation 
+      \[
+        \mc{E}(z,s) = \Phi(s)\mc{E}(z,1-s).
+      \]
+      Moreover, the matrix $\Phi(s)$ satisfies the functional equation
+      \[
+        \Phi(s)\Phi(1-s) = I,
+      \]
+      is unitary on the line $\Re(s) = \frac{1}{2}$, and hermitian if $s$ is real.
+    \end{theorem}
+
+    Understaning the poles of $\tau_{\mf{a},\mf{b}}$ are also important for understanding the poles of the Eisenstein series $E_{\mf{a}}(z,s)$ (see \cite{iwaniec2002spectral} for a proof):
+
+    \begin{theorem}\label{thm:residues_of_Eisenstein_series}
+      The functions $\tau_{\mf{a},\mf{b}}(s)$ are meromorphic for $\Re(s) \ge \frac{1}{2}$ with a finite number of simple poles in the segment $(\frac{1}{2},1]$. A pole of $\tau_{\mf{a},\mf{b}}(s)$ is also a pole of $\tau_{\mf{a},\mf{a}}(s)$. Moreover, the poles of $E_{\mf{a}}(z,s)$ are among the poles of $\tau_{\mf{a},\mf{a}}(s)$, $E_{\mf{a}}(z,s)$ has no poles on the line $\Re(s) = \frac{1}{2}$, and the residues of $E_{\mf{a}}(z,s)$ are Maass forms in $\mc{E}(\G)$.
     \end{theorem}
 
     To begin decomposing the space $\mc{E}(\G)$, consider the subspace $C_{0}^{\infty}(\R^{+})$ of $\mc{L}^{2}(\R^{+})$ with the normalized standard inner product
@@ -381,7 +404,7 @@
     \[
       (Mf)(r) = \left(\frac{1}{4}+r^{2}\right)f(r),
     \]
-    for all $f \in C_{0}^{\infty}(\R^{+})$. Therefore if $E_{\mf{a}}f$ belongs to $\mc{E}_{\mf{a}}(\G)$ then so does $E_{\mf{a}}(Mf)$. But as $f,Mf \in C_{0}^{\infty}(\R^{+})$, this means $\mc{E}_{\mf{a}}(\G)$ is invariant under the Laplace operator. While the Eisenstein spaces are invairant, they do not make up all of $\mc{E}(\G)$. By \cref{thm:meromorphic_continuation_of_Eisenstein_series}, the residues of the Eisenstein series belong to $\mc{E}(\G)$. Let $\mc{R}(\G)$ denote the subspace spanned by the residues of all the Eisenstein series. We call any element of $\mc{R}(\G)$ a \textbf{(residual) Maass form}\index{(residual) Maass form} (by \cref{thm:meromorphic_continuation_of_Eisenstein_series} they are Maass forms). Also let $\mc{R}_{s_{j}}(\G)$ denote the subspace spanned by those residues taken at $s = s_{j}$. Since there are finitely many cusps of $\GH$, each $\mc{R}_{s_{j}}(\G)$ is finite dimensional. As the number of residues in $(\frac{1}{2},1]$ is finite by \cref{thm:meromorphic_continuation_of_Eisenstein_series}, it follows that $\mc{R}(\G)$ is finite dimensional too. So $\mc{R}(\G)$ decomposes as
+    for all $f \in C_{0}^{\infty}(\R^{+})$. Therefore if $E_{\mf{a}}f$ belongs to $\mc{E}_{\mf{a}}(\G)$ then so does $E_{\mf{a}}(Mf)$. But as $f,Mf \in C_{0}^{\infty}(\R^{+})$, this means $\mc{E}_{\mf{a}}(\G)$ is invariant under the Laplace operator. While the Eisenstein spaces are invairant, they do not make up all of $\mc{E}(\G)$. By \cref{thm:residues_of_Eisenstein_series}, the residues of the Eisenstein series belong to $\mc{E}(\G)$. Let $\mc{R}(\G)$ denote the subspace spanned by the residues of all the Eisenstein series. We call any element of $\mc{R}(\G)$ a \textbf{(residual) Maass form}\index{(residual) Maass form} (by \cref{thm:residues_of_Eisenstein_series} they are Maass forms). Also let $\mc{R}_{s_{j}}(\G)$ denote the subspace spanned by those residues taken at $s = s_{j}$. Since there are finitely many cusps of $\GH$, each $\mc{R}_{s_{j}}(\G)$ is finite dimensional. As the number of residues in $(\frac{1}{2},1]$ is finite by \cref{thm:residues_of_Eisenstein_series}, it follows that $\mc{R}(\G)$ is finite dimensional too. So $\mc{R}(\G)$ decomposes as
     \[
       \mc{R}(\G) = \bigoplus_{\frac{1}{2} < s_{j} \le 1}\mc{R}_{s_{j}}(\G).
     \]
