@@ -1,72 +1,25 @@
 \chapter{The Theory of Holomorphic Forms}
   Holomorphic forms are special classes of functions on the upper half-space $\H$ of the complex plane. They are holomorphic, have a transformation law with respect to a congruence subgroup, and satisfy a growth condition. We will introduce these forms in a general context.
   \section{Holomorphic Forms}
-    Let $\G$ be a congruence subgroup of level $N$ and let $\chi$ be a Dirichlet character of conductor $q \mid N$. Define $\chi(\g) = \chi(d)$ if $\g = \begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix} \in \G$. We say that a function $f:\H \to \C$ is \textbf{holomorphic form}\index{holomorphic form} (or \textbf{modular form}\index{modular form}) of weight $k \ge 1$, level $N$, and \textbf{character}\index{character} (or \textbf{nebentypus}\index{nebentypus} or \textbf{twist}\index{twist}) $\chi$, on $\GH$ if the following properties are satisfied:
+    Let $\G$ be a congruence subgroup of level $N$ and let $\chi$ be a Dirichlet character of conductor $q \mid N$ where we set $\chi(\g) = \chi(d)$ if $\g = \begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix} \in \G$. We say that a function $f:\H \to \C$ is \textbf{holomorphic form}\index{holomorphic form} (or \textbf{modular form}\index{modular form}) on $\GH$ of weight $k \ge 1$, level $N$, and character $\chi$, if the following properties are satisfied:
     \begin{enumerate}[label=(\roman*)]
       \item $f$ is holomorphic on $\H$.
       \item $f(\g z) = \chi(\g)(cz+d)^{k}f(z)$ for all $\g = \begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix} \in \G$.
-      \item $f(\a z)$ remains bounded as $\Im(z) \to \infty$ for all $\a \in \PSL_{2}(\Z)$.
+      \item $f(\a z) = O(1)$ as $\Im(z) \to \infty$ for all $\a \in \PSL_{2}(\Z)$.
     \end{enumerate}
-    Property (ii) is called the \textbf{modularity condition}\index{modularity condition} and we say $f$ is \textbf{modular}\index{modular}. We set $j(\g,z) = (cz+d)$ and call $j(\g,z)$ the \textbf{factor of modularity}\index{factor of modularity} of $f$. Property (iii) is called the \textbf{growth condition}\index{growth condition} and we say $f$ is \textbf{holomorphic at the cusps}\index{holomorphic at the cusps}. Also, we say $f$ is a \textbf{(holomorphic) cusp form}\index{(holomorphic) cusp form} if in addition,
+    We say $f$ is a \textbf{(holomorphic) cusp form}\index{(holomorphic) cusp form} if the additional property is satisfied:
     \begin{enumerate}[label=(\roman*)]
       \setcounter{enumi}{3}
-      \item $f(\a z) \to 0$ as $\Im(z) \to \infty$ for all $\a \in \PSL_{2}(\Z)$.
+      \item For all cusps $\mf{a}$,
+      \[
+        \int_{0}^{t}f(\s_{\mf{a}}(x+iy))\,dx = 0.
+      \]
     \end{enumerate}
-    Holomorphic forms also admit Fourier series. Let $\begin{psmallmatrix} 1 & t \\ 0 & 1 \end{psmallmatrix}$ be the smallest translation belonging to $\G$. By modularity,
+    Property (ii) is called the \textbf{modularity condition}\index{modularity condition} and we say $f$ is \textbf{modular}\index{modular}. In particular, it implies that $f$ is a function on $\mc{F}_{\G}$. We set $j(\g,z) = (cz+d)$ and call $j(\g,z)$ the \textbf{factor of modularity}\index{factor of modularity} of $f$. Property (iii) is called the \textbf{growth condition}\index{growth condition} and we say $f$ is \textbf{holomorphic at the cusps}\index{holomorphic at the cusps}. The factor of modularity satisfies a very useful property. To state it, let $\g = \begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix} \in \G$ and $\g' = \begin{psmallmatrix} a' & b' \\ c' & d' \end{psmallmatrix} \in \G$. Then
     \[
-      f(z+t) = f\left(\begin{pmatrix} 1 & t \\ 0 & 1 \end{pmatrix}z\right) = f(z),
+      \g\g' = \begin{pmatrix} a & b \\ c & d \end{pmatrix}\begin{pmatrix} a' & b' \\ c' & d' \end{pmatrix} = \begin{pmatrix} a'a+b'c & a'b+b'b \\ c'a+d'c & c'b+d'd \end{pmatrix},
     \]
-    so that $f$ is $t$-periodic.
-
-    \begin{remark}
-      If $f$ is $t$-periodic, then we may think of $f$ as a function on $\G_{\infty}\backslash\H$. Taking representatives, $\G_{\infty}\backslash\H$ is a strip in $\H$ with bounded real part so that $f$ is a function on a domain with boudned real part.
-    \end{remark}
-
-    As $f$ is $t$-periodic it admits a Fourier series
-    \[
-      f(z) = \sum_{n \in \Z}a(n,y)e^{\frac{2\pi inx}{t}}.
-    \]
-    Actually, the Fourier coefficients $a(n,y)$ do not depend on $y$. To see this, since $f$ is holomorphic we know
-    \[
-      \frac{\del f}{\del\conj{z}} = \frac{1}{2}\left(\frac{\del f}{\del x}+i\frac{\del f}{\del y}\right) = 0.
-    \]
-    Substiuting in the Fourier series and equating coefficients we obtain the ODE
-    \[
-      2\pi na(n,y)+a'(n,y) = 0,
-    \]
-    where the $'$ indicates differentiation with respect to $y$. Solving this ODE (by separation of variables) we see that there exists an $a(n)$ such that
-    \[
-      a(n,y) = a(n)e^{-2\pi ny}.
-    \]
-    Using these constant coefficients instead, we say $f$ has a \textbf{Fourier series at the $\infty$ cusp}\index{Fourier series at the $\infty$ cusp}:
-    \[
-      f(z) = \sum_{n \in \Z}a(n)e^{\frac{2\pi inz}{t}}.
-    \]
-    Accordingly, we say $f$ is \textbf{holomorphic at infinity}\index{holomorphic at infinity} if
-    \[
-      \lim_{z \to \infty}\sum_{n \in \Z}a(n)e^{\frac{2\pi inz}{t}},
-    \]
-    exists and is finite. This is equivalent to $f(z)$ remaining bounded as $\Im(z) \to \infty$ and therefore the Fourier series is actually over all $n \ge 0$ (the negative terms do not exhibit decay as $\Im(z) \to \infty$ unless their Fourier coefficients vanish). Moreover, the limit above is $a(0)$ and $f$ will have exponential decay to $a(0)$ as $\Im(z) \to \infty$. Writing $z = x+iy$ and fixing any $y > 0$, $f$ restricts to a $t$-periodic smooth function on $\R$ that is integrable on $[0,t]$, as it is holomorphic, so we have
-    \[
-      a(n) = \int_{0}^{t}f_{\infty}(x+iy)e^{-\frac{2\pi inx}{t}}\,dx.
-    \]
-    For a general cusp $\mf{a}$ of $\GH$, let $\s_{\mf{a}}$ be a scaling matrix for $\mf{a}$. That is, $\s_{\mf{a}}\infty = \mf{a}$. Then $f(\s_{\mf{a}}z)$ is holomorphic at infinity precisely when $f(\s_{\mf{a}}z)$ remains bounded as $\Im(z) \to \infty$ which is to say that $f(z)$ remains bounded as $z \to \mf{a}$. This motivates the saying that $f$ is holomorphic at the cusps. More generally, $f$ has a \textbf{Fourier series at the $\mf{a}$ cusp}\index{Fourier series at the $\mf{a}$ cusp}:
-    \[
-      f(\s_{\mf{a}}z) = \sum_{n \ge 0}a_{\mf{a}}(n)e^{\frac{2\pi inz}{t}}.
-    \]
-    Also, the Fourier series above is independent of the scaling matrix because $f$ is $\G_{\infty}$-invariant and the set of scaling matrices is stable under multiplication from $\G_{\mf{a}}$ on the right. For ease of communication, if it is clear what cusp we are working at we will mention the Fourier series and its coefficients without regard to the cusp. The Fourier coefficients $a_{\mf{a}}(n)$ are then given by
-    \[
-      a_{\mf{a}}(n) = \int_{0}^{t}f(\s_{\mf{a}}(x+iy))e^{-\frac{2\pi inx}{t}}\,dx,
-    \]
-    for any fixed $y > 0$. Notice that $f$ is a cusp form precisely if $a_{\mf{a}}(0) = 0$ for every Fourier series of $f$ at every cusp $\mf{a}$. In particular, $f$ exhibits exponential decay to zero near the cusps. Since the Fourier series is independent of the scaling matrix used, we only need to check condition (iii) for a set of scaling matrices for the cusps since every element of $\PSL_{2}(\Z)$ is either a scaling matrix for a cusp or belongs to $\G_{\infty}$ depending on if it fixes $\infty$ or not. From now on, we will always assume that our congruence subgroups are reduced at infinity so that $t = 1$.
-    
-    Sometimes we will be interested in holomorphic forms with nontrivial characters $\chi$ on $\GH$. To ensure that our holomorphic forms are not identically zero, the weight $k$ depends on $\chi$. Indeed, if $f$ is a weight $k$ holomorphic form on $\GH$, modularity implies
-    \[
-      f(z) = f\left(\begin{pmatrix} -1 & 0 \\ 0 & -1 \end{pmatrix}z\right) = \chi(-1)(-1)^{k}f(z),
-    \]
-    So $f$ is identically zero unless $\chi(-1) = (-1)^{k}$. In other words, if $\chi$ is odd then $k$ must be odd and if $\chi$ is even then $k$ must be even.
-
-    We will now discuss a very useful property that the factor of modularity satisfies. Let $\g,\g' \in \G$ and suppose $j(\g,z)$ is the factor of modularity of a holomorphic form $f$ on $\GH$. Set $\g = \begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix}$ and $\g' = \begin{psmallmatrix} a' & b' \\ c' & d' \end{psmallmatrix}$ so that $\g'\g = \begin{psmallmatrix} a'a+b'c & a'b+b'b \\ c'a+d'c & c'b+d'd \end{psmallmatrix}$. Then
+    and we have
     \begin{align*}
       j(\g',\g z)j(\g,z) &= \left(c'\frac{az+b}{cz+d}+d'\right)(cz+d) \\
       &= \left(c'\frac{az+b}{cz+d}+d'\right)(cz+d) \\
@@ -78,7 +31,35 @@
     \[
       j(\g'\g,z) =  j(\g',\g z)j(\g,z),
     \]
-    and this is called the \textbf{cocycle condition}\index{cocycle condition} for $j(\g,z)$. The cocycle condition immediately implies that the factor of modularity is determined by any set of generators for $\G$. This is a very useful fact to remember because it is often easier to verify modularity on a generating set of a congruence subgroup.
+    and this identity is called the \textbf{cocycle condition}\index{cocycle condition}. The cocycle condition immediately implies that the factor of modularity is determined by any set of generators for $\G$. This is a very useful fact to remember because it is often easier to verify modularity on a generating set of a congruence subgroup. Holomorphic forms also admit Fourier series. Let $\begin{psmallmatrix} 1 & t \\ 0 & 1 \end{psmallmatrix}$ be the smallest translation belonging to $\G$. Then modularity implies
+    \[
+      f(z+t) = f\left(\begin{pmatrix} 1 & t \\ 0 & 1 \end{pmatrix}z\right) = f(z),
+    \]
+    so that $f$ is $t$-periodic. We can say more. Let $\s_{\mf{a}}$ be a scaling matrix for the $\mf{a}$ cusp. As $\G_{\mf{a}} = \s_{\mf{a}}\G_{\infty}\s_{\mf{a}}^{-1}$, or equivalently $\G_{\mf{a}}\s_{\mf{a}} = \s_{\mf{a}}\G_{\infty}$, the function $f(\s_{\mf{a}}z)$ is independent of the scaling matrix $\s_{\mf{a}}$. Moreover, by the same reasoning
+    \[
+      f(\s_{\mf{a}}(z+t)) = f(\s_{\mf{a}}z).
+    \]
+    Thus $f(\s_{\mf{a}}z)$ is $t$-periodic. Holomorphy at the cusps implies that $f(\s_{\mf{a}}z)$ remains bounded as $\Im(z) \to \infty$ and so we have a Fourier series
+    \[
+      f(\s_{\mf{a}}z) = \sum_{n \ge 0}a_{\mf{a}}(n,y)e^{\frac{2\pi inx}{t}}.
+    \]
+    This Fourier series is independent of the scaling matrix because $f(\s_{\mf{a}}z)$ is. We can simplfy the Fourier coefficients $a_{\mf{a}}(n,y)$. To see this, since $f$ is holomorphic we know
+    \[
+      \frac{\del f}{\del\conj{z}} = \frac{1}{2}\left(\frac{\del f}{\del x}+i\frac{\del f}{\del y}\right) = 0.
+    \]
+    Substiuting in the Fourier series and equating coefficients we obtain the ODE
+    \[
+      2\pi na_{\mf{a}}(n,y)+a_{\mf{a}}'(n,y) = 0,
+    \]
+    where the $'$ indicates differentiation with respect to $y$. Solving this ODE (by separation of variables) we see that there exists an $a_{\mf{a}}(n)$ such that
+    \[
+      a_{\mf{a}}(n,y) = a_{\mf{a}}(n)e^{-2\pi ny}.
+    \]
+    The coefficeints $a_{\mf{a}}(n)$ are the only part of the Fourier series depending on the implicit congruence subgroup $\G$. Using these coefficeints instead, $f$ admits a \textbf{Fourier series at the $\mf{a}$ cusp}\index{Fourier series at the $\mf{a}$ cusp}:
+    \[
+      f(\s_{\mf{a}}z) = \sum_{n \ge 0}a_{\mf{a}}(n)e^{\frac{2\pi inz}{t}}.
+    \]
+    For ease of notation, if it is clear what cusp we are working at we will mention the Fourier series and its coefficients without mentioning the cusp. Moreover, by property (iv) $f$ is a cusp form if and only if $a_{\mf{a}}(n) = 0$ for every cusp $\mf{a}$. In particular, $f$ exhibits exponential decay to zero near the cusps and so is bounded on $\H$. From now on, we will always assume that our congruence subgroups are reduced at infinity so that $t = 1$.
   \section{Eisenstein \& Poincar\'e Series}
     Let $\G$ be a congruence subgroup of level $N$. We will introduce two important classes of holomorphic forms on $\GH$ namely the Eisenstein series and the Poincar\'e series. For any weight $k \ge 4$ and Dirichlet character $\chi$ with conductor $q \mid N$, we define the \textbf{(holomorphic) Eisenstein series}\index{(holomorphic) Eisenstein series} $E_{k,\chi}$ of weight $k$ twised by $\chi$ on $\GH$ by
     \[
