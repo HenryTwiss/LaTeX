@@ -947,3 +947,75 @@
         \]
         and if $f = g$ there is simple pole at $s = 1$ of residue $\frac{4^{k}\pi^{k+1}V}{2\G(k)}\<f,g\>$.
       \end{theorem}
+    \subsection*{The Rankin-Selberg Method}
+      The Rankin-Selberg method in general is much more comlicated, but the argument is essentially the same. Let $f$ and $g$ each be a primitive Hecke or Heck-Maass eigenform with Fourier coefficients $\l_{f}(n)$ and $\l_{g}(n)$ respectively. We suppose $f$ has weight $k$/eigenvalue $\l$, level $N$, and character $\chi$ and $g$ has weight $\ell$/eigenvalur $\nu$, level $M$, and character $\psi$. 
+      The $L$-function $L(s,f \x g)$ of $f$ and $g$ is give by the $L$-series
+      \[
+        L(s,f \x g) = \sum_{n \ge 1}\frac{a_{f \x g}(n)}{n^{s}} = \sum_{n \ge 1}\frac{a_{f}(n)\conj{b_{g}(n)}}{n^{s}}.
+      \]
+      The \textbf{Rankin-Selberg convolution}\index{Rankin-Selberg convolution} $L(s,f \ox g)$ of $f$ and $g$ is defined as an $L$-series:
+      \[
+        L(s,f \ox g) = \sum_{n \ge 1}\frac{a_{f \ox g}(n)}{n^{s}} = L(2s,\chi\conj{\psi})L(s,f \x g),
+      \]
+      where $a_{f \ox g}(n) = \sum_{n = m\ell^{2}}(\chi\conj{\psi})(\ell^{2})a_{f}(m)\conj{b_{g}(m)}$. The following argument is the \textbf{Rankin-Selberg method}\index{Rankin-Selberg method}:
+
+      \begin{method}[Rankin-Selberg method]
+        Suppose the following hold:
+        \begin{enumerate}[label=(\roman*)]
+          \item $f$ is a primitive Hecke or Heck-Maass eigenform with weight $k$/eigenvalue $\l$, level $N$, and character $\chi$.
+          \item $g$ is a primitive Hecke or Heck-Maass eigenform with weight $\ell$/eigenvalur $\nu$, level $M$, and character $\psi$.
+        \end{enumerate}
+        Then the Rankin-Selberg convolution $L(s,f \ox g)$ is a Selberg class $L$-function. 
+      \end{method}
+      \iffalse
+      \begin{remark}
+        If $f \in \mc{S}_{k}(N,\chi)$ and $g \in \mc{S}_{\ell}(M,\psi)$, one needs to use the Dirichlet $L$-function $L(2s,\chi\psi)$ instead of $\z(2s)$.
+      \end{remark}
+
+      \begin{remark}
+        If $f \in \mc{S}_{k}(N,\chi)$ and $g \in \mc{S}_{\ell}(M,\psi)$, the Euler product becomes more difficult to compute since the local $p$ factors for $p \mid NM$ change as either $\a_{2}(p) = 0$ or $\b_{2}(p) = 0$. Moreover, the situation is increasing complicated if $(N,M) > 1$ since conductor dropping can occur.
+      \end{remark}
+
+      \begin{remark}
+        If $f \in \mc{S}_{k}(N,\chi)$ and $g \in \mc{S}_{\ell}(M,\psi)$ with $k \neq \ell$, then the power of $\Im(z)$ in the integrand needs to be adjusted.
+      \end{remark}
+
+
+      \begin{remark}
+        For $f \in \mc{S}_{k}(N,\chi)$ and $g \in \mc{S}_{\ell}(M,\psi)$, the integral representation involves a different Eisenstein series other than $E_{\infty}(z,s)$ because we can not easily combine the factors $\chi(\g)j(\g,z)^{k}$ and $\conj{\psi(\g)j(\g,z)^{\ell}}$ that appear after folding.
+      \end{remark}
+
+      \begin{remark}
+        For $f \in \mc{S}_{k}(N,\chi)$ and $g \in \mc{S}_{\ell}(M,\psi)$, we use a modified version of the Eisenstein series $E_{\infty}(z,s)$ on $\G_{0}(NM)\backslash\H$. In particular if $NM > 1$, then on this congruence subgroup there are more cusps than just the cusp at $\infty$. In particular, there is also a cusp at $0$. The functional equation of the modified Eisenstein series at the $\infty$ cusp becomes much more complicated as it reflects into a modified version of the Eisenstein series at the $0$ cusp as $s \to 1-s$. Thus, we need to understand the Fourier coefficients of both of these Eisenstein series.
+      \end{remark}
+      \fi
+  \section{Applications of The Rankin-Selberg Method}
+    \subsection*{The Ramanujan-Petersson Conjecture on Average}
+      Let $f$ be a Hecke or Hecke-Maass eigenform. As an application of the Rankin-Selberg method, it is possible to show the weaker result that $a_{f}(n) \ll n^{\e}$ holds on average, for any $\e > 0$, without assuming the corresponding Ramanujan-Petersson conjecture:
+      
+      \begin{proposition}\label{prop:Ramanujan_Petersson_average}
+        Let $f$ be a Hecke or Hecke-Maass eigenform. Then for any $X > 0$, we have
+        \[
+        \sum_{n \le X}a_{f}(n) \ll_{\e} X^{1+\e},
+        \]
+      \end{proposition}
+      \begin{proof}
+        By Cauchy-Schwarz,
+        \begin{equation}\label{equ:Ramanujan_conjecture_on_average_1}
+          \left(\sum_{n \le X}a_{f}(n)\right)^{2} \le X\sum_{n \le X}|a_{f}(n)|^{2},
+        \end{equation}
+        By the Rankin-Selberg method, the Rankin-Selberg square $L(s,f \ox f)$ is locally absolutely uniformly convergent for $\Re(s) > \frac{3}{2}$. Therefore it still admits meromorphic continuation to $\C$ with a simple pole at $s = 1$. By Landau's theorem, the abscissa of absolute convergence of $L(s,f \ox f)$, and hence $L(s,f \x f)$ too, is $1$ so by \cref{prop:Dirichlet_series_coefficient_size_on_average} we have
+        \[
+          \sum_{n \le X}|a_{f}(n)|^{2} \ll_{\e} X^{1+\e},
+        \]
+        for any $\e > 0$. Substiuting this bound into \cref{equ:Ramanujan_conjecture_on_average_1}, we obtain
+        \[
+          \left(\sum_{n \le X}a_{f}(n)\right)^{2} \ll_{\e} X^{2+\e},
+        \]
+        and taking the square root yields
+        \[
+          \sum_{n \le X}a_{f}(n) \ll_{\e} X^{1+\e}.
+        \]
+      \end{proof}
+      
+      The bound in \cref{prop:Ramanujan_Petersson_average} should be compared with the implication $\l_{f}(n) \ll n^{\frac{k-1}{2}+\e}$ that follows from the corresponding Ramanujan-Petersson conjecture. While \cref{prop:Ramanujan_Petersson_average} is not useful in the holomorphic form case, it is in the Maass form case. Indeed, recall that if $f$ is a primitive Hecke-Maass eigenform we needed to assume the Ramanujan-Petersson to ensure $a_{f}(n) \ll n^{\e}$ so that $L(s,f)$ was locally absolutely uniformly convergent for $\Re(s) > 1$. However, \cref{prop:Dirichlet_series_convergence_polynomial_bound,prop:Ramanujan_Petersson_average} together imply that $L(s,f)$ is locally absolutely uniformly convergent for $\Re(s) > 1+\e$ and hence for $\Re(s) > 1$. This method avoides assuming the Ramanujan-Petersson conjecture for Maass forms. 
