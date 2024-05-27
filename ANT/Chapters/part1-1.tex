@@ -608,7 +608,7 @@
         If either $n = 0$ or $m = 0$ then the Sali\'e sum reduces to a Gauss sum.
     \section{Integral Methods \& Transforms}
       \subsection*{Integral Methods}
-        Complex integrals are a core backbone of analytic number theory and all too often the domain we are integrating over is unbounded. Accordingly, the functions we would like to work with should be integrable over these domains. One way to ``have our cake and eat it too'' would be to require that our functions decay very rapidly near the unbounded regions. More precisely, we consider functions $f$ such that $f(x)-\a = o(x^{c})$ as $x \to x_{0}$ for all $c \in \R$. In this case we say $f$ has \textbf{exponential decay}\index{exponential decay} (or \textbf{rapid decay}\index{rapid decay}) to $\a$ as $x \to x_{0}$. So save the constant term, $f$ decays faster than any polynomial in $x$. Often we work with function $f$ where $f$ has exponential decay to zero, or we will work with functions $f(z,x)$ where for fixed $z$, $f$ has exponential decay to zero in $x$. These functions guarantee that many integrals we take will be locally absolutely uniformly bounded under very mild conditions:
+        Complex integrals are a core backbone of analytic number theory and all too often the domain we are integrating over is unbounded. Accordingly, the functions we would like to work with should be integrable over these domains. One way to ``have our cake and eat it too'' would be to require that our functions decay near the unbounded regions. If $f$ is such that $f(x) = o(x^{c})$ as $x \to x_{0}$ for all $c > 0$ then we say $f$ has \textbf{exponential decay}\index{exponential decay} (or \textbf{rapid decay}\index{rapid decay}) as $x \to x_{0}$. This means that $f$ decays faster than any polynomial in $x$. If $f(x) = o(x^{c})$ for some $c > 1$ as $x \to x_{0}$ then we say $f$ has \textbf{polynomial decay}\index{polynomial decay} (or \textbf{moderate decay}\index{moderate decay}) as as $x \to x_{0}$. This is weaker than exponential decay but it is enough to guarantee that many integrals we take will be locally absolutely uniformly bounded:
 
         \begin{method}\label{met:decay_compacta_integral}
           Suppose we are given an integral
@@ -618,9 +618,9 @@
           where $D$ is an unbounded domain and such that the following hold:
           \begin{enumerate}[label=(\roman*)]
             \item $f(z,x)$ is analytic on $\W \x D$ for some reigion $\W$.
-            \item For any fixed $z$, we can decompose $D = D' \cup (D-D')$ into where $D'$ is compact, $f$ is integrable on $D'$, and $f$ vanishes at infinity with exponential decay on $(D-D')$.
+            \item For any fixed $z$, we can decompose $D$ as $D = D' \cup (D-D')$ where $D'$ is compact, $f$ is integrable on $D'$, and of moderate decay on $(D-D')$.
           \end{enumerate}
-          Then the integral is holomorpic in $z$. By (i) and \cref{thm:analytic_integral} it suffices to show that the integral is locally absolutely uniformly bounded. We argue by splitting the region of integration into $D = D' \cup (D-D')$ where $D'$ is compact. Choosing some compact subset $K$ of $\W$, the exponential decay of $f$ implies that there is some $c$ such that $f(z,x) = o\left(x^{c}\right)$. Say, take $c$ to be the smallest $c$ over all $z \in K$ with $c < 1$. Then
+          Then the integral is holomorpic in $z$. By (i) and \cref{thm:analytic_integral} it suffices to show that the integral is locally absolutely uniformly bounded. We argue by splitting the region of integration into $D = D' \cup (D-D')$ where $D'$ is compact. Choosing some compact subset $K$ of $\W$, the moderate decay of $f$ implies that there is some $c > 1$ such that $f(z,x) = o\left(x^{c}\right)$. Then
           \[
             \int_{D}|f(z,x)|\,d\mu = \int_{D'}|f(z,x)|\,dx+\int_{D-D'}|f(z,x)|\,dx \ll MV+\int_{D-D'}\left|x^{c}\right|\,dx,
           \]
@@ -630,24 +630,24 @@
         Notice that if $f(z,s) = f(z)$ the same argument shows that the integral is absolutely bounded. This method we will use repeatedly throughout the remainder of the text, and one should become familar with it. There is also another useful analytic technique called \textbf{shifting the line of integration}\index{shifting the line of integration}:
 
         \begin{method}[Shifting the line of integration]
-            Suppose we are given an integral
-            \[
-              \int_{\Re(z) = a}f(z)\,dz \quad \text{or} \quad \int_{\Im(z) = a}f(z)\,dz,
-            \]
-            and some real $b$ with $b < a$ in the first case and $b > a$ in the second case. Also suppose the following conditions hold corresponding to each case:
-            \begin{enumerate}[label=(\roman*)]
-              \item $f$ is meromorphic on a strip containing $\Re(z) = a,b$ or $\Im(z) = a,b$ respectively.
-              \item $f$ is holomorphic about $\Re(z) = a,b$ or $\Im(z) = a,b$ respectively.
-              \item $f(z) \to 0$ as $\Im(z) \to \infty$ or $f(z) \to 0$ as $\Re(z) \to \infty$ respectively.
-            \end{enumerate}
-            To collect these cases, let $(a)$ stand for the line $\Re(z) = a$ or $\Im(z) = a$ respectively with positive orientation. Then the line of integration $(a)$ can be shifted to the line of integration $(b)$ with the possible addition of residues. Take a rectangle $R_{T}$ given positive orientation and with its edges on $(a)$ and $(b)$ respectively and consider
-            \[
-              \lim_{T \to \infty}\int_{R_{T}}f(z)\,dz.
-            \]
-            On the one hand, the residue theorem implies the integral is a sum of a $2\pi i$ multiple of the residues $r_{i}$ in the rectangle $R_{T}$ and hence the limit is a sum of a $2\pi i$ multiple of the residues in the strip bounded by $(a)$ and $(b)$. Denote the corresponding set of poles inside this strip by $P$. On the other hand, the integral can be decomposed into a sum of four integrals along the edges of $R_{T}$ and by taking the limit the edges other than $(a)$ and $(b)$ will tend to zero because of the assumptions on $f$. The remaining two pieces is the difference between the integral along $(a)$ and $(b)$. So in total,
-            \[
-              \int_{(a)}f(z)\,dz = \int_{(b)}f(z)\,dz+2\pi i\sum_{\rho \in P}\Res_{z = \rho}f(z).
-            \]
+          Suppose we are given an integral
+          \[
+            \int_{\Re(z) = a}f(z)\,dz \quad \text{or} \quad \int_{\Im(z) = a}f(z)\,dz,
+          \]
+          and some real $b$ with $b < a$ in the first case and $b > a$ in the second case. Also suppose the following conditions hold corresponding to each case:
+          \begin{enumerate}[label=(\roman*)]
+            \item $f$ is meromorphic on a strip containing $\Re(z) = a,b$ or $\Im(z) = a,b$ respectively.
+            \item $f$ is holomorphic about $\Re(z) = a,b$ or $\Im(z) = a,b$ respectively.
+            \item $f(z) \to 0$ as $\Im(z) \to \infty$ or $f(z) \to 0$ as $\Re(z) \to \infty$ respectively.
+          \end{enumerate}
+          To collect these cases, let $(a)$ stand for the line $\Re(z) = a$ or $\Im(z) = a$ respectively with positive orientation. Then the line of integration $(a)$ can be shifted to the line of integration $(b)$ with the possible addition of residues. Take a rectangle $R_{T}$ given positive orientation and with its edges on $(a)$ and $(b)$ respectively and consider
+          \[
+            \lim_{T \to \infty}\int_{R_{T}}f(z)\,dz.
+          \]
+          On the one hand, the residue theorem implies the integral is a sum of a $2\pi i$ multiple of the residues $r_{i}$ in the rectangle $R_{T}$ and hence the limit is a sum of a $2\pi i$ multiple of the residues in the strip bounded by $(a)$ and $(b)$. Denote the corresponding set of poles inside this strip by $P$. On the other hand, the integral can be decomposed into a sum of four integrals along the edges of $R_{T}$ and by taking the limit the edges other than $(a)$ and $(b)$ will tend to zero because of the assumptions on $f$. The remaining two pieces is the difference between the integral along $(a)$ and $(b)$. So in total,
+          \[
+            \int_{(a)}f(z)\,dz = \int_{(b)}f(z)\,dz+2\pi i\sum_{\rho \in P}\Res_{z = \rho}f(z).
+          \]
         \end{method}
 
         A particular application of interest is when the integral in question is real and over the entire real line, the integrand is entire as a complex function, and one is trying to shift the line of integration of the complexified integral to $\Im(z) = a$. In this case, shifting the line of integration amounts to making the change of variables $x \to x-ia$ without affecting the initial line of integration.
