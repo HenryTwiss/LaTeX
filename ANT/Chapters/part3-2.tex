@@ -800,7 +800,7 @@
         Appealing to \cref{append:Special_Integrals} for this last integral and substiuting the result back into \cref{equ:real-analytic_Eisenstein_fourier_coefficient_definition} finishes the proof.
       \end{proof}
 
-      Having computed the Fourier coefficients, we would like to obtain a functional equation for $E_{\infty}(z,s)$ as $s \to 1-s$ (this follows from \cref{thm:functional_equation_of_Eisenstein_series} but we will demonstrate a full proof for the single Eisenstein series on $\PSL_{2}(\Z)\backslash\H$). To this end, we define the the \textbf{completed real-analytic Eisenstein series}\index{completed real-analytic Eisenstein series} $E^{\ast}(z,s)$ by
+      Having computed the Fourier coefficients, we would like to obtain a functional equation for $E_{\infty}(z,s)$ as $s \to 1-s$ (this follows from \cref{thm:functional_equation_of_Eisenstein_series} but we will demonstrate a full proof for the single Eisenstein series on $\PSL_{2}(\Z)\backslash\H$). To this end, we define the \textbf{completed real-analytic Eisenstein series}\index{completed real-analytic Eisenstein series} $E^{\ast}(z,s)$ by
       \[
         E^{\ast}(z,s) = \L(2s,\z)E_{\infty}(z,s) = \pi^{-s}\G(s)\z(2s)E_{\infty}(z,s).
       \]
@@ -975,7 +975,7 @@
       Let $f$ be a Hecke or Hecke-Maass eigenform. As an application of the Rankin-Selberg method, it is possible to show the weaker result that $a_{f}(n) \ll n^{\e}$ holds on average, for any $\e > 0$, without assuming the corresponding Ramanujan-Petersson conjecture:
       
       \begin{proposition}\label{prop:Ramanujan_Petersson_average}
-        Let $f$ be a Hecke or Hecke-Maass eigenform. Then for any $X > 0$, we have
+        Let $f$ be a primitive Hecke or Hecke-Maass eigenform. Then for any $X > 0$, we have
         \[
         \sum_{n \le X}a_{f}(n) \ll_{\e} X^{1+\e},
         \]
@@ -999,4 +999,21 @@
         \]
       \end{proof}
       
-      The bound in \cref{prop:Ramanujan_Petersson_average} should be compared with the implication $\l_{f}(n) \ll n^{\frac{k-1}{2}+\e}$ that follows from the corresponding Ramanujan-Petersson conjecture. While \cref{prop:Ramanujan_Petersson_average} is not useful in the holomorphic form case, it is in the Maass form case. Indeed, recall that if $f$ is a primitive Hecke-Maass eigenform we needed to assume the Ramanujan-Petersson to ensure $a_{f}(n) \ll n^{\e}$ so that $L(s,f)$ was locally absolutely uniformly convergent for $\Re(s) > 1$. However, \cref{prop:Dirichlet_series_convergence_polynomial_bound,prop:Ramanujan_Petersson_average} together imply that $L(s,f)$ is locally absolutely uniformly convergent for $\Re(s) > 1+\e$ and hence for $\Re(s) > 1$. This method avoides assuming the Ramanujan-Petersson conjecture for Maass forms. 
+      The bound in \cref{prop:Ramanujan_Petersson_average} should be compared with the implication $\l_{f}(n) \ll n^{\frac{k-1}{2}+\e}$ that follows from the corresponding Ramanujan-Petersson conjecture. While \cref{prop:Ramanujan_Petersson_average} is not useful in the holomorphic form case, it is in the Maass form case. Indeed, recall that if $f$ is a primitive Hecke-Maass eigenform we needed to assume the Ramanujan-Petersson to ensure $a_{f}(n) \ll n^{\e}$ so that $L(s,f)$ was locally absolutely uniformly convergent for $\Re(s) > 1$. However, \cref{prop:Dirichlet_series_convergence_polynomial_bound,prop:Ramanujan_Petersson_average} together imply that $L(s,f)$ is locally absolutely uniformly convergent for $\Re(s) > 1+\e$ and hence for $\Re(s) > 1$. This method avoides assuming the Ramanujan-Petersson conjecture for Maass forms.
+    \subsection*{Strong Multiplicity One}
+      Let $f$ be a primitive Hecke or Hecke-Maass eigenform. Recall that the corresponding multiplicty one theorem states that $f$ is determined by its Fourier coefficients. Actually, since the Fourier coefficeints are multiplicative the corresponding Hecke relations imply that $f$ is determined by its Fourier coefficeints at primes. The \textbf{strong multiplicity one}\index{strong multiplicity one} theroem says that we can do better:
+
+      \begin{theorem}[Strong multiplicity one, holomorphic and Maass versions]
+        Let $f$ and $g$ both be primitive Hecke or Hecke-Maass eigenforms with character $\chi$ and Fourier coefficients $\l_{f}(n)$ and $\l_{g}(n)$. If $\l_{f}(p) = \l_{g}(p)$ for all but finitely many primes $p$, then $f = g$.
+      \end{theorem}
+      \begin{proof}
+        Let $S$ be the set the primes for which $\l_{f}(p) \neq \l_{g}(p)$ and including the primes that ramify for $L(s,f)$ and $L(s,g)$. By assumption, $S$ is finite. As the local factors of $L(s,f \ox g)$ are holomorphic and nonzero at $s = 1$, the order of the pole of $L(s,f \ox g)$ is the same as the order of the pole of
+        \[
+          L(s,f \ox g)\prod_{p \in S}L_{p}(s,f \ox g)^{-1} = \prod_{p \notin S}L_{p}(s,f \ox g).
+        \]
+        But as $\l_{f}(p) = \l_{g}(p)$ and $\chi$ is the same character for both $f$ and $g$, we have
+        \[
+          \prod_{p \notin S}L_{p}(s,f \ox g) = \prod_{p \notin S}L_{p}(s,f \ox f).
+        \]
+        Since $L(s,f \ox f)$ has a simple pole at $s = 1$, it follows that $L(s,f \ox g)$ does too. But then $f = g$.
+      \end{proof}
