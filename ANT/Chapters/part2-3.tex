@@ -47,7 +47,7 @@
     \[
       f(\s_{\mf{a}}z) = \sum_{n \in \Z}a_{\mf{a}}(n,y)e^{\frac{2\pi inx}{t}}.
     \]
-    This Fourier series is independent of the scaling matrix because $f(\s_{\mf{a}}z)$ is. Moreover, the sum is over all $n \in \Z$ since $f$ may be unbounded as $\Im(z) \to \infty$. The Fourier coefficients $a_{\mf{a}}(n,y)$ are mostly determined by $\D$. To see this first note that the Fourier series of $f(\s_{\mf{a}}z)$ cusp converges absolutely, since $f$ is smooth (see \cref{append:Fourier_Series}), so we may differentiate termwise. The fact that $f$ is an eigenfunction for $\D$ with eigenvalue $\l$ gives the ODE
+    This Fourier series is independent of the scaling matrix because $f(\s_{\mf{a}}z)$ is. Moreover, the sum is over all $n \in \Z$ since $f$ may be unbounded as $\Im(z) \to \infty$. The Fourier coefficients $a_{\mf{a}}(n,y)$ are mostly determined by $\D$. To see this, since $f$ is smooth we may differentiate the Fourier series of $f(\s_{\mf{a}}z)$ termwise. The fact that $f$ is an eigenfunction for $\D$ with eigenvalue $\l$ gives the ODE
     \[
       -y^{2}a''_{\mf{a}}(n,y)+4\pi^{2}n^{2}y^{2}a_{\mf{a}}(n,y) = \l a_{\mf{a}}(n,y),
     \]
@@ -75,7 +75,7 @@
     \[
       a_{\mf{a}}(n,y) = a_{\mf{a}}(n)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y)+b_{\mf{a}}(n)I_{s-\frac{1}{2}}(2\pi|n|y),
     \]
-    for some coefficients $a_{\mf{a}}(n)$ and $b_{\mf{a}}(n)$ possibly depending upon $s$ (see \cref{append:Bessel_Functions}). But $I_{s-\frac{1}{2}}(2\pi|n|y)$ grows exponentially in $y$ (see \cref{append:Bessel_Functions}) and since $f$ has moderate growth at the cusps we must have $b_{\mf{a}}(n) = 0$ for all $n \neq 0$. If $n = 0$, then the differential equation is a second order linear ODE which in homogeneous form is
+    for some coefficients $a_{\mf{a}}(n)$ and $b_{\mf{a}}(n)$ possibly depending upon $s$ (see \cref{append:Bessel_Functions}). But $I_{s-\frac{1}{2}}(2\pi|n|y)$ has exponential growth (see \cref{lem:exponential_growth_I-Bessel_function}) and since $f$ has moderate growth at the cusps we must have $b_{\mf{a}}(n) = 0$ for all $n \neq 0$. If $n = 0$, then the differential equation is a second order linear ODE which in homogeneous form is
     \[
       y^{2}a''_{\mf{a}}(0,y)+\l a_{\mf{a}}(0,y) = 0.
     \]
@@ -107,11 +107,11 @@
     \[
       f(\s_{\mf{a}}z) = \sum_{n \neq 0}a_{\mf{a}}(n)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y)e^{\frac{2\pi inx}{t}}.
     \]
-    Now $K_{s-\frac{1}{2}}(2\pi|n|y) = o_{s}(e^{-2\pi|n|y})$ (see \cref{append:Bessel_Functions}), so that
+    Now $K_{s-\frac{1}{2}}(2\pi|n|y) = o_{s}(e^{-2\pi|n|y})$ (see \cref{lem:moderate_decay_K-Bessel_function}), so that
     \[
-      f(\s_{\mf{a}}z) = o_{s}\left(\sqrt{y}\sum_{n \neq 0}e^{-2\pi|n|y}\right) = o_{s}\left(\sqrt{y}\sum_{n \in \Z}e^{-2\pi|n|y}\right) = o_{s}\left(\frac{2\sqrt{y}}{1-e^{-2\pi y}}\right) = o_{s}(e^{2\pi y}).
+      f(\s_{\mf{a}}z) = o_{s}\left(\sqrt{y}\sum_{n \neq 0}e^{-2\pi|n|y}\right) = o_{s}\left(\sqrt{y}\sum_{n \in \Z}e^{-2\pi|n|y}\right) = o_{s}\left(\frac{2\sqrt{y}}{1-e^{-2\pi y}}\right) = o_{s}(e^{-2\pi y}).
     \]
-    In particular, $f$ exhibits moderate decay near the cusps and so is bounded on $\H$. From now on, we will always assume that our congruence subgroups are reduced at infinity so that $t = 1$.
+    Accordingly, we say that $f$ exhibits \textbf{moderate decay at the cusps}\index{moderate decay at the cusps}. In particular, $f$ is bounded on $\H$. From now on, we will always assume that our congruence subgroups are reduced at infinity so that $t = 1$.
   \section{Eisenstein Series \& Poincar\'e Series with Test Functions}
     We will be interested in studying a classes of Maass forms naturally defined on $\GH$. They are actually functions defined on a large space $\H \x \W$ for some domain $\W$ and hence are functions of two variables namely $z$ and $s$. These functions are Maass forms for every fixed $s \in \W$. For every cusp $\mf{a}$ of $\GH$, there is an associated Maass form. So let $\s_{\mf{a}}$ be a scaling matrix for the cusp $\mf{a}$. The Maass form $E_{\mf{a}}(z,s)$ we are interested in is called the \textbf{(real-analytic) Eisenstein series}\index{(real-analytic) Eisenstein series} on $\GH$ at the $\mf{a}$ cusp and is defined as
     \[
@@ -794,16 +794,16 @@
   \section{The Ramanujan-Petersson Conjecture}
     As for the size of the Fourier coefficients of Maass forms, much is currently unknown. But there is an analogous conjecture for Maass forms. To state it, suppose $f \in \mc{C}_{t}(N,\chi)$ is a primitive Hecke-Maass eigenform with Fourier coefficients $\l_{f}(n)$. For each prime $p$, consider the polynomial
     \[
-      1-\l_{f}(p)p^{-s}+\chi(p)p^{-2s},
+      1-\l_{f}(p)p^{-s}+\chi(p)p^{-2s}.
     \]
-    and let $\a_{1}(p)$ and $\a_{2}(p)$ denote the roots. Then
+    We call this the $p$-th \textbf{Hecke polynomial}\index{Hecke polynomial} of $f$. Let $\a_{1}(p)$ and $\a_{2}(p)$ denote the roots. Then
     \[
       \a_{1}(p)+\a_{2}(p) = \l_{f}(p) \quad \text{and} \quad \a_{1}(p)\a_{2}(p) = \chi(p).
     \]
-    The \textbf{Ramanujan-Petersson conjecture}\index{Ramanujan-Petersson conjecture} for Maass forms is following statement:
+    The \textbf{Ramanujan-Petersson conjecture (for Maass forms)}\index{Ramanujan-Petersson conjecture (for Maass forms)} is following statement:
 
     \begin{conjecture}[Ramanujan-Petersson conjecture, Maass version]
-      Let $f \in \mc{C}_{t}(N,\chi)$ be a primitive Hecke-Maass eigenform. Denote the Fourier coefficients by $\l_{f}(n)$ and let $\a_{1}(p)$ and $\a_{2}(p)$ be the roots of $1-\l_{f}(p)p^{-s}+\chi(p)p^{-2s}$. Then for all primes $p$,
+      Suppose $f \in \mc{C}_{t}(N,\chi)$ is a primitive Hecke-Maass eigenform with Hecke eigenvalues $\l_{f}(n)$. Let $\a_{1}(p)$ and $\a_{2}(p)$ be the roots of the $p$-th Hecke polynomial. Then for all primes $p$,
       \[
         |\l_{f}(p)| \le 2.
       \]

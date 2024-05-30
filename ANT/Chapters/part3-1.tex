@@ -1,5 +1,5 @@
 \chapter{The Theory of \texorpdfstring{$L$}{L}-functions}
-  We start our discussion of $L$-functions with Dirichlet series. Dirichlet series are essential tools in analytic number theory because they are a way of analytically encoding arithmetic information. If the Dirichlet series possesses sufficiently large analytic continuation we call it an $L$-function and from the analytic properties of $L$-functions we can extract number theoritic results. After discussing Dirichlet series we will define a specific class of $L$-functions: Selberg class $L$-functions and discuss their general properties.
+  We start our discussion of $L$-functions with Dirichlet series. Dirichlet series are essential tools in analytic number theory because they are a way of analytically encoding arithmetic information. If the Dirichlet series possesses sufficiently large analytic continuation we call it an $L$-function and from the analytic properties of $L$-functions we can extract number theoritic results. After discussing Dirichlet series we will define $L$-functions and their associated data. We will also define a special class of $L$-functions called the Selberg class. Selberg class $L$-functions are conjectured to satisfy two results known as the Riemann hypothesis and Lindel\"of hypothesis which we also introduce in some generality.
   \section{Dirichlet Series}
     A \textbf{Dirichlet series}\index{Dirichlet series} $D(s)$ is a sum of the form
     \[
@@ -158,7 +158,7 @@
       But $\b > \a$ so this term is also bounded as $N \to \infty$. This finishes the proof.
     \end{proof}
 
-    Do not be fooled; \cref{prop:Dirichlet_series_convergence_polynomial_bound_average} is in general weaker than \cref{prop:Dirichlet_series_convergence_polynomial_bound}. For example, from our comments following \cref{prop:Dirichlet_series_coefficient_size_on_average}, if $D(s)$ is a Dirichlet series with coefficients $a(n)$ and we have the estimate $A(X) \ll_{\e} X^{\b}$ for some real $\b$ then \cref{prop:Dirichlet_series_convergence_polynomial_bound_average} only says that $\s_{a} \le \b$. If $\a$ is very small compared to $\b$, this is a significantly worse upper bound for the abscissa of absolute convergence than what \cref{prop:Dirichlet_series_convergence_polynomial_bound} would imply if $a(n) \ll n^{\a}$. Actually, the question of sharp polynomial bounds for Dirichlet coefficients can be very deep. However, if the coefficients $a(n)$ are always nonnegative, then \textbf{Landau's theorem}\index{Landau's theorem} provides a way of obtaining a lower bound for polynomially growth as well as describing a singularity of $D(s)$:
+    Do not be fooled; \cref{prop:Dirichlet_series_convergence_polynomial_bound_average} is in general weaker than \cref{prop:Dirichlet_series_convergence_polynomial_bound}. For example, from our comments following \cref{prop:Dirichlet_series_coefficient_size_on_average}, if $D(s)$ is a Dirichlet series with coefficients $a(n)$ and we have the estimate $A(X) \ll_{\e} X^{\b}$ for some real $\b$ then \cref{prop:Dirichlet_series_convergence_polynomial_bound_average} only says that $\s_{a} \le \b$. If $\a$ is very small compared to $\b$, this is a significantly worse upper bound for the abscissa of absolute convergence than what \cref{prop:Dirichlet_series_convergence_polynomial_bound} would imply if $a(n) \ll n^{\a}$. Actually, the question of sharp polynomial bounds for Dirichlet coefficients can be very deep. However, if the coefficients $a(n)$ are always nonnegative, then \textbf{Landau's theorem}\index{Landau's theorem} provides a way of obtaining a lower bound for their growth as well as describing a singularity of $D(s)$:
 
     \begin{theorem}[Landau's theorem]
       Suppose $D(s)$ is a Dirichlet series with nonnegative coefficients $a(n)$ and finite abscissa of absolute convergence $\s_{a}$. Then $\s_{a}$ is a singularity of $D(s)$.
@@ -187,7 +187,7 @@
       for $-\d' < s < 1$. As $\d' > 0$, this implies that $D(s)$ converges absolutely (since $a(n) \ge 0$) for some $s$ with $\Re(s) < 0$ (say $s = -\frac{\d'}{2}$) which contradicts $\s_{a} = 0$.
     \end{proof}
 
-    What Landau's theorem implies is that if $D(s)$ is a Dirichlet series with nonnegative coefficients then $a(n) \not\ll n^{\s_{a}-(1+\e)}$ for any $\e > 0$ because otherwise \cref{prop:Dirichlet_series_convergence_polynomial_bound} implies $\s_{a} \le \s_{a}-\e$. So it gives a lower bound for polynomial growth. Actually, Landau's theorem also gives the lower bound $A(X) \not\ll X^{\s_{a}-\e}$ for otherwise \cref{prop:Dirichlet_series_convergence_polynomial_bound_average} would similarly imply $\s_{a} \le \s_{\a}-\e$. When we come across Dirichlet series whose coefficients are polynomially bounded or polynomially bounded on average, we will invoke these results without mention, except for Landau's theorem, as this is also common practice in the literature.
+    What Landau's theorem implies is that if $D(s)$ is a Dirichlet series with nonnegative coefficients then $a(n) \not\ll n^{\s_{a}-(1+\e)}$ for any $\e > 0$ because otherwise \cref{prop:Dirichlet_series_convergence_polynomial_bound} implies $\s_{a} \le \s_{a}-\e$. Actually, Landau's theorem also gives the lower bound $A(X) \not\ll X^{\s_{a}-\e}$ for otherwise \cref{prop:Dirichlet_series_convergence_polynomial_bound_average} would similarly imply $\s_{a} \le \s_{\a}-\e$. When we come across Dirichlet series whose coefficients are polynomially bounded or polynomially bounded on average, we will invoke these results without mention, except for Landau's theorem, as this is also common practice in the literature.
 
     If the coefficients $a(n)$ are chosen at random, $D(s)$ will not usually posses any good properties outside of convergence in some region (it might not even posess that). However, the Dirichlet series we will encounter, and a fair few in the wild, will have multiplicitive coefficients. In this case, the Dirichlet series admits an infinite product expression:
 
@@ -250,9 +250,9 @@
     \[
       A'(X) = \psum_{n \le X}a(n),
     \]
-    where the ' indicates that the last term is multiplied by $\frac{1}{2}$ if $X$ is an integer. We would like to relate $A'(X)$ to an integral involving the entire Dirichlet series $D(s)$. In particular, this integral is a type of inverse Mellin transform. Any formula that relates a finite sum of coefficeints of a Dirichlet series to an integral involving the entire Dirichlet series is called a \textbf{Perron type formula}\index{Perron type formula}. We will see several of them, the first being \textbf{Perron's formula}\index{Perron's formula} which is a consequence of Abel's summation formula and the Mellin inversion formula applied to Dirichlet series:
+    where the ' indicates that the last term is multiplied by $\frac{1}{2}$ if $X$ is an integer. We would like to relate $A'(X)$ to an integral involving the entire Dirichlet series $D(s)$. In particular, this integral is a type of inverse Mellin transform. Any formula that relates a finite sum of coefficeints of a Dirichlet series to an integral involving the entire Dirichlet series is called a \textbf{Perron-type formula}\index{Perron-type formula}. We will see several of them, the first being \textbf{(classical) Perron's formula}\index{(classical) Perron's formula} which is a consequence of Abel's summation formula and the Mellin inversion formula applied to Dirichlet series:
 
-    \begin{theorem}[Perron's formula]
+    \begin{theorem}[Perron's formula, classical version]
       Let $D(s)$ be a Dirichlet series with coefficient $a(n)$ and finite and nonnegative abscissa of absolute convergence $\s_{a}$. Then for any $c > \s_{a}$,
       \[
         A'(X) = \frac{1}{2\pi i}\int_{\Re(s) = c}D(s)X^{s}\,\frac{ds}{s}.
@@ -270,9 +270,7 @@
       where the second equality follows because $A(u) = 0$ in the interval $[0,1)$. The Mellin inversion formula immediately gives the result.
     \end{proof}
 
-    We would like to relate this sum to an integral involving the entire Dirichlet series $D(s)$. In particular, this integral is a type of inverse Mellin transform. Any formula that resembles  
-
-    Perron's formula is particularly useful because it allows one examine a sum of Dirichlet coefficients, a discrete object, by means of a complex integral where analytic techniques are at our disposal. There is also a truncated version of Perron's formula which is often more useful for estimates rather than abstract results. To state it, we need to setup some notation and will require a lemma. For any $c > 0$, consider the discontinuous integral (see \cite{davenport1980multiplicative})
+    We would like to relate this sum to an integral involving the entire Dirichlet series $D(s)$. In particular, this integral is a type of inverse Mellin transform. Any formula that resembles Perron's formula is particularly useful because it allows one examine a sum of Dirichlet coefficients, a discrete object, by means of a complex integral where analytic techniques are at our disposal. There is also a truncated version of Perron's formula which is often more useful for estimates rather than abstract results. To state it, we need to setup some notation and will require a lemma. For any $c > 0$, consider the discontinuous integral (see \cite{davenport1980multiplicative})
     \[
       \d(y) = \frac{1}{2\pi i}\int_{(c)}y^{s}\,\frac{ds}{s} = \begin{cases} 0 & \text{if $0 < y < 1$}, \\ \frac{1}{2} & \text{if $y = 1$}, \\ 1 & \text{if $y > 1$}. \end{cases}
     \]
@@ -289,7 +287,7 @@
       \]
     \end{lemma}
 
-    We can now state and prove the truncated version of Perron's formula:
+    We can now state and prove \textbf{(truncated) Perron's formula}\index{(truncated) Perron's formula}:
 
     \begin{theorem}[Perron's formula, truncated version]
       Let $D(s)$ be a Dirichlet series with coefficient $a(n)$ and finite and nonnegative abscissa of absolute convergence $\s_{a}$. Then for any $c > \s_{a}$ and $T > 0$,
@@ -310,7 +308,7 @@
       Since $D(s)$ converges absolutely we may move the sum inside of the big $O$-estimate, and moreover, the dominated convergence theorem implies we may interchange the sum and the integral. The statement of the lemma follows.
     \end{proof}
 
-    There is a slighly weaker variant of the truncated version of Perron's formula that follows as a corollary:
+    There is a slighly weaker variant of truncated Perron's formula that follows as a corollary:
 
     \begin{corollary}
       Let $D(s)$ be a Dirichlet series with coefficient $a(n)$ and finite and nonnegative abscissa of absolute convergence $\s_{a}$. Then for any $c > \s_{a}$ and $T > 0$,
@@ -323,7 +321,7 @@
       \[
         \min\left(1,\frac{1}{T\left|\log\left(\frac{X}{n}\right)\right|}\right) \ll_{c} \frac{X^{c}}{T}.
       \]
-      The statement now follows from the truncated version of Perron's formula.
+      The statement now follows from truncated Perron's formula.
     \end{proof}
 
     There is also a version of Perron's formula where we add a smoothing function. For any real $X$, we set
@@ -379,7 +377,7 @@
       where the second to last estimate follows because $a < \Re(s) < b$ with $0 < a < b$. So the integral is bounded by a constant and the claim follows.
     \end{proof}
     
-    The following theorem is the smoothed version of Perron's formula:
+    The following theorem is \textbf{(smoothed) Perron's formula}\index{(smoothed) Perron's formula}:
 
     \begin{theorem}[Perron's formula, smoothed version]
       Let $D(s)$ be a Dirichlet series with coefficient $a(n)$ and finite and nonnegative abscissa of absolute convergence $\s_{a}$. Let $\psi:[0,\infty) \to [0,\infty)$ be a compactly supported smooth function. Then for any $c > \s_{a}$,
@@ -398,7 +396,7 @@
     \end{align*}
     \end{proof}
 
-    The smoothed version of Perron's formula is useful because it is often more versatile than working with Perron's formula directly. Indeed, from \cref{prop:smoothing_function_Mellin_inverse_vertical_strips} the convergence of the integral in the smoothed version improves and we can use analytic techniques to estimate this integral.
+    Smoothed Perron's formula is useful because it is often more versatile as the convergence of the integral is improved if $\psi$ is chosen appropriately.
   \section{Analytic Data of \texorpdfstring{$L$}{L}-functions}
     We are now ready to discuss $L$-functions in some generality. In the following, we will denote an $L$-functions by $L(s,f)$, and for the moment, $f$ will carry no formal meaning. It is only used to suggest that the $L$-function is attached to some interesting arithmetic object $f$. When we discuss specific $L$-functions, $f$ will carry a formal meaning. An \textbf{$L$-series}\index{$L$-series} $L(s,f)$ is a Dirichlet series
     \[
@@ -490,20 +488,20 @@
     \[
         \G(s) \sim \sqrt{2\pi}|t|^{\s-\frac{1}{2}}e^{-\frac{\pi}{2}|t|},
     \]
-    which comes from \cref{equ:weaker_Stirling_formula}. This gives the simplified estimates
-    \[
-      \G(s) \ll t^{\s-\frac{1}{2}} \quad \text{and} \quad \frac{1}{\G(s)} \ll t^{\frac{1}{2}-\s}.
-    \]
+    which comes from \cref{equ:weaker_Stirling_formula}. This gives the weaker estimates
+    \begin{equation}\label{equ:simplified_gamma_estimates}
+      \G(s) \ll t^{\s-\frac{1}{2}}e^{-\frac{\pi}{2}|t|} \quad \text{and} \quad \frac{1}{\G(s)} \ll t^{\frac{1}{2}-\s}e^{\frac{\pi}{2}|t|} .
+    \end{equation}
     We can then estimate the ratio of gamma factors as 
     \begin{equation}\label{equ:ratio_of_gamma_estimate}
       \frac{\G(1-s)}{\G(s)} \ll t^{1-2\s}.
     \end{equation}
-    This important estimate will be used to show that $L(s,f)$ is bounded in vertical strips:
+    This last estimate will be used to show that $L(s,f)$ is has polynomial growth in the $t$-aspect in vertical strips:
 
     \begin{proposition}\label{prop:L_function_bounded_in_vertical_strips}
       If $L(s,f)$ is an $L$-function, then for any real $a$ and $b$ with $a < b$ there is a real $\a$ such that
       \[
-        L(s,f) \ll |t|^{\a},
+        L(s,f) \ll t^{\a},
       \]
       in the vertical strip
       \[
@@ -535,7 +533,7 @@
     \begin{theorem}[Approximate functional equation]
       Let $L(s,f)$ be an $L$-function and let $G(u)$ be an even holomorphic function bounded on the strip $|\Re(u)| < a$, for any $a > 1$, and such that $g(0) = 1$. Let $X > 0$. Then for $s$ in the critial strip,
       \[
-        L(s,f) = \sum_{n \ge 1}\frac{a_{f}(n)}{n^{s}}V_{s}\left(\frac{n}{\sqrt{q(f)}X}\right)+\e(f,s)\sum_{n \ge 1}\frac{\conj{a_{f}(n)}}{n^{1-s}}V_{1-s}\left(\frac{nX}{\sqrt{q(f)}}\right)-\frac{R}{q^{\frac{s}{2}}\g(s,f)},
+        L(s,f) = \sum_{n \ge 1}\frac{a_{f}(n)}{n^{s}}V_{s}\left(\frac{n}{\sqrt{q(f)}X}\right)+\e(s,f)\sum_{n \ge 1}\frac{\conj{a_{f}(n)}}{n^{1-s}}V_{1-s}\left(\frac{nX}{\sqrt{q(f)}}\right)-\frac{R}{q^{\frac{s}{2}}\g(s,f)},
       \]
       where $V_{s}(y)$ is a smooth function defined by
       \[
@@ -555,7 +553,7 @@
       \[
         I(X,s,f) = \frac{1}{2\pi i}\int_{(a)}\L(s+u,f)G(u)X^{u}\,\frac{du}{u}.
       \]
-      By our choice of $a$ and that $s$ is in the critial strip, $\Re(s+u) > 1$ so that $L(s+u) \ll 1$. Moreover, from \cref{equ:weaker_Stirling_formula} we see that $\g(s+u,f)$ has exponential decay as $\Im(u) \to \infty$. Since $G(u)$ is bounded, it follows that the integral is absolutely bounded by \cref{met:decay_compacta_integral}. By \cref{prop:L_function_bounded_in_vertical_strips} and \cref{equ:weaker_Stirling_formula}, the integrand also had exponential decay as $\Im(u) \to \infty$ in a vertical strip containing $|\Re(u)| \le a$. Therefore we may shift the line of integration to $(-a)$. We pass by a simple pole at $u = 0$ and possible poles at $u = 1-s$ and $u = -s$, giving
+      By our choice of $a$ and that $s$ is in the critial strip, $\Re(s+u) > 1$ so that $L(s+u) \ll 1$. Moreover, from \cref{equ:weaker_Stirling_formula} we see that $\g(s+u,f)$ has exponential decay. Since $G(u)$ is bounded, it follows that the integral is absolutely bounded by \cref{met:decay_compacta_integral}. By \cref{prop:L_function_bounded_in_vertical_strips} and \cref{equ:weaker_Stirling_formula}, the integrand also had exponential decay in a vertical strip containing $|\Re(u)| \le a$. Therefore we may shift the line of integration to $(-a)$. We pass by a simple pole at $u = 0$ and possible poles at $u = 1-s$ and $u = -s$, giving
       \[
         I(X,s,f) = \frac{1}{2\pi i}\int_{(-a)}\L(s+u,f)G(u)X^{u}\,\frac{du}{u}+\L(s,f)+R.
       \]
@@ -583,7 +581,15 @@
       Diving by $q^{\frac{s}{2}}\g(s,f)$ completes the proof.
     \end{proof}
 
-    The function $V_{s}(y)$ has the effect of smoothing out the two sums on the right-hand side of the approximate functional equation for any choice of $G(u)$. This idea was first introduced by Hardy and Littlewood in the series \cite{hardyzeros1921,hardyapproximate1923,hardyapproximate1929}.
+    The idea of the approximate functional equation was devloped by Hardy and Littlewood in the series \cite{hardyzeros1921,hardyapproximate1923,hardyapproximate1929}.
+
+    \begin{remark}\label{rem:effect_of_V_in_approximate_functional_equation}
+      The function $V_{s}\left(y\right)$ has the effect of smoothing out the two sums in the right-hand side of the approximate functional equation. Indeed, this function restricts the sums to $n \ll \sqrt{q(f)}$ up to some error. For if $\frac{n}{\sqrt{q(f)}X} \ll 1$ we see that
+      \[
+        V_{s}\left(\frac{n}{\sqrt{q(f)}X}\right) \ll 1,
+      \]
+      for this range of $n$. For $n \gg \sqrt{q(f)}$, the integrand of $V_{s}\left(\frac{n}{\sqrt{q(f)}X}\right)$ has exponential decay coming from the $\left(\frac{n}{\sqrt{q(f)}X}\right)^{-u}$ factor as the ratio of gamma factors has polynomial growth by \cref{equ:simplified_gamma_estimates} and $G(u)$ is bounded by assumption. As $s$ is in the critical strip, the exact same estimates hold for $V_{1-s}\left(\frac{n}{\sqrt{q(f)}X}\right)$.
+    \end{remark}
   \section{The Riemann Hypothesis \& Nontrivial Zeros}
     The zeros of $L$-functions $L(s,f)$ are closely tied to important arithmetic data of $f$. Let $L(s,f)$ be a degree $d$ $L$-function so that
     \[
@@ -607,16 +613,16 @@
     \[
       \rho, \quad \conj{\rho}, \quad 1-\rho, \quad \text{and} \quad 1-\conj{\rho}.
     \]
-    For example, this is the situation for the Riemann zeta function $\z(s)$. The \textbf{classical Riemann hypothesis}\index{classical Riemann hypothesis} says that this symmetry of zeros is as simple as it could possibly be:
+    For example, this is the situation for the Riemann zeta function $\z(s)$. The \textbf{(classical) Riemann hypothesis}\index{(classical) Riemann hypothesis} says that this symmetry of zeros is as simple as it could possibly be:
 
-    \begin{theorem}[Classical Riemann hypothesis]
+    \begin{theorem}[Riemann hypothesis, classical version]
       All of the nontrivial zeros of $\z(s)$ lie on the line $\Re(s) = \frac{1}{2}$.
     \end{theorem}
 
-    This is one of, if not the most, famous and important open problems in mathematics. It has resisted all attempts of a proof by every great mathematician over the last century and a half. The Clay Mathematics Institute has also named it one of the millennium pize problems which means that anyone who can give a proof (or disproof) will recieve a million cash prize. Riemann's original motivation for the conjecture came from looking for an explicit formula for the prime counting function $\pi(x)$ which is the purpose of his 1859 manuscript (see \cite{riemann1859ueber}). This explicit formula for $\pi(x)$ involves the nontrivial zeros of Riemann zeta function. Riemann computed a few of them, found that they were on the critical line, and conjectured that it is very likely that all of them lie on the critical line. There is also the \textbf{Selberg class Riemann hypothesis}\index{Selberg class Riemann hypothesis} which is an analogous conjecture for Selberg class $L$-functions:
+    This is one of, if not the most, famous and important open problems in mathematics. It has resisted all attempts of a proof by every great mathematician over the last century and a half. The Clay Mathematics Institute has also named it one of the millennium pize problems which means that anyone who can give a proof (or disproof) will recieve a million cash prize. Riemann's original motivation for the conjecture came from looking for an explicit formula for the prime counting function $\pi(x)$ which is the purpose of his 1859 manuscript (see \cite{riemann1859ueber}). This explicit formula for $\pi(x)$ involves the nontrivial zeros of Riemann zeta function. Riemann computed a few of them, found that they were on the critical line, and conjectured that it is very likely that all of them lie on the critical line. There is also the \textbf{(Selberg class) Riemann hypothesis}\index{(Selberg class) Riemann hypothesis} which is an analogous conjecture for Selberg class $L$-functions:
 
-    \begin{conjecture}[Selberg class Riemann hypothesis]
-      For any Selberg class $L$-function $L(s,f)$, all of the nontrivial zeros of $L(s,f)$ lie on the line $\Re(s) = \frac{1}{2}$.
+    \begin{conjecture}[Riemann hypothesis, Selberg class version]
+      All of the nontrivial zeros of any $L$-function $L(s,f)$ belonging to the Selberg class lie on the line $\Re(s) = \frac{1}{2}$.
     \end{conjecture}
   \section{The Lindel\"of Hypothesis \& Convexity Arguments}
     Instead of asking about the zeros of an $L$-function $L(s,f)$ on the critical line, we can ask about the growth of $L(s,f)$ on the critial line. A \textbf{convexity argument}\index{convexity argument} is one where estimates about the growth of an $L$-function on the critical line are deduced. Usually this is achieved by methods of complex analysis and Sirling's formula. The standard argument for any $L$-function is known \textbf{Lindel\"of convexity argument}\index{Lindel\"of convexity argument}. It is essentially a refinement of the proof of \cref{prop:L_function_bounded_in_vertical_strips}. Suppose $L(s,f)$ has a degree $d$ Euler product. Let $s = \s+it$ and suppose $|t| > 1$ so that we are away from the poles of $L(s,f)$. The first step is to guarantee the Phragm\'en-Lindel\"of convexity principle in a region containing the critical strip with $|t| > 1$. As $L(s,f)$ is of order $1$, this is assured (see \cref{append:The_Phragmen_Lindelof_Convexity_principle}). Therefore, we are reduced to estimating the growth of $L(s,f)$ for $\s$ to the left of $0$ and to the right of $1$. That is, just outside the edges of the critical strip. The right edge is easy. Letting $\e > 0$ and setting $\s = 1+\e$, we have
@@ -628,10 +634,10 @@
       L(s,f) \ll \frac{\g(1-s,f)}{\g(s,f)}L(1-s,f).
     \end{equation}
     From \cref{equ:ratio_of_gamma_estimate} and that $L(s,f)$ has $d$ gamma functions in its gamma factor, it follows that
-    \[
+    \begin{equation}\label{equ:ratio_gamma_factor_explicit}
       \frac{\g(1-s,f)}{\g(s,f)} \ll q(f)^{\frac{1-2\s}{2}}t^{\frac{d(1-2\s)}{2}}.
-    \]
-    Let $\e > 0$ and set $\s = -\e$. Then plugging this estimate into \cref{equ:convexity_bound_left_edge} and that $L((1+\e)+it,f) \ll_{\e} 1$ gives
+    \end{equation}
+    Let $\e > 0$ and set $\s = -\e$. Then plugging \cref{equ:ratio_gamma_factor_explicit} into \cref{equ:convexity_bound_left_edge} and using the fact that $L((1+\e)+it,f) \ll_{\e} 1$ gives
     \begin{equation}\label{equ:convexity_bound_2}
       L(-\e+it,f) \ll_{\e} q(f)^{\frac{1+2\e}{2}}t^{\frac{d(1+2\e)}{2}}.
     \end{equation}
@@ -641,19 +647,19 @@
     \]
     for $-\e \le \s \le 1+\e$. At the critical line, we have the \textbf{convexity bound}\index{convexity bound}:
     \begin{equation}\label{equ:convexity_bound_L_function}
-      L\left(\frac{1}{2}+it,f\right) \ll_{\e} q^{\frac{1}{4}+\e}t^{\frac{1}{4}+\e}.
+      L\left(\frac{1}{2}+it,f\right) \ll_{\e} q(f)^{\frac{1}{4}+\e}t^{\frac{d}{4}+\e}.
     \end{equation}
-    The classical Lindel\"of hypothesis says that the exponenet $\frac{1}{4}+\e$ can be improved to be $\e$:
-    \begin{conjecture}[Classical Lindel\"of hypothesis]
+    The \textbf{(classical) Lindel\"of hypothesis}\index{(classical) Lindel\"of hypothesis} says that both exponenets can be improved to be $\e$ for the Riemann zeta function $\z(s)$ (note that this is really just improvement in the $t$-aspect because $q(\z) = 1$):
+    \begin{conjecture}[Lindel\"of hypothesis, classical version]
       For any $\e > 0$,
       \[
         \z\left(\frac{1}{2}+it\right) \ll_{\e} t^{\e}.
       \]
     \end{conjecture}
-    In 1908 Lindel\"of made this conjecture (see \cite{lindelof1908quelques}). The Riemann hypothesis implies the Lindel\"of hypothesis although it is not an immediate consequence. Indeed, in 1919 Backlund showed the following equivalence for the Lindel\"of hypothesis (see \cite{backlund1919beziehung}):
+    In 1908 Lindel\"of made this conjecture (see \cite{lindelof1908quelques}). The classical Riemann hypothesis implies the classical Lindel\"of hypothesis although it is not an immediate consequence. Indeed, in 1919 Backlund showed the following equivalence for the classical Lindel\"of hypothesis (see \cite{backlund1919beziehung}):
 
     \begin{proposition}\label{prop:Lindelof_hypothesis_equivalence}
-      The Lindel\"of hypothesis is equivalent to the following statement: Fix an $\e > 0$, a real $T$, and set
+      The classical Lindel\"of hypothesis is equivalent to the following statement: Fix an $\e > 0$, a real $T$, and set
       \[
         Z_{\e,T} = \left\{s = \s+it \in \C : \z(s) = 0, \s \ge \frac{1}{2}+\e, T \le t \le T+1 \right\}.
       \]
@@ -663,13 +669,17 @@
       \]
     \end{proposition}
 
-    If the Riemann hypothesis is true, then \cref{prop:Lindelof_hypothesis_equivalence} is immediate because $Z_{\e,T}$ would be empty for any $\e > 0$ and all $T$. Nevertheless, the Lindel\"of hypothesis still remains wide open today. The \textbf{Selberg class Lindel\"of hypothesis}\index{Lindel\"of hypothesis} is the analog to the classical Lindel\"of hypothesis for any Selberg class $L$-function:
+    If the Riemann hypothesis is true, then \cref{prop:Lindelof_hypothesis_equivalence} is immediate because $Z_{\e,T}$ would be empty for any $\e > 0$ and all $T$. Nevertheless, the classical Lindel\"of hypothesis still remains wide open today. The \textbf{(Selberg class) Lindel\"of hypothesis}\index{(Selberg class) Lindel\"of hypothesis} is the analog to the classical Lindel\"of hypothesis for any Selberg class $L$-function:
 
-    \begin{conjecture}[Selberg class Lindel\"of hypothesis]
-      For any Selberg class $L$-function $L(s,f)$ and any $\e > 0$,
+    \begin{conjecture}[Lindel\"of hypothesis, Selberg class version]
+      For any $L$-function $L(s,f)$ belonging to the Selberg class and any $\e > 0$,
       \[
         L\left(\frac{1}{2}+it\right) \ll_{\e} (q(f)t)^{\e}.
       \]
     \end{conjecture}
 
-    For any $L$-function, any improvment upon either exponent in the convexity bound is called \textbf{breaking convexity}\index{breaking convexity} (or a \textbf{convexity breaking bound}\index{convexity breaking bound}). Any argument used to do so is called a \textbf{subconvexity argument}\index{subconvexity argument}.
+    For any $L$-function, any improvment upon either exponent in the convexity bound is called \textbf{breaking convexity}\index{breaking convexity} (or a \textbf{convexity breaking bound}\index{convexity breaking bound}). Any argument used to do so is called a \textbf{subconvexity argument}\index{subconvexity argument}. One method of breaking convexity is by appealing to the approximate functional equation. Setting $s = \frac{1}{2}+it$ and noting that $\e\left(\frac{1}{2}+it,f\right) \ll 1$ by \cref{equ:ratio_gamma_factor_explicit}, the approximate functional equation gives
+    \[
+      L\left(\frac{1}{2}+it,f\right) = \sum_{n \ge 1}\frac{a_{f}(n)}{n^{\frac{1}{2}+it}}V_{\frac{1}{2}+it}\left(\frac{n}{\sqrt{q(f)}X}\right)+\sum_{n \ge 1}\frac{\conj{a_{f}(n)}}{n^{\frac{1}{2}-it}}V_{\frac{1}{2}-it}\left(\frac{nX}{\sqrt{q(f)}}\right)-\frac{R}{q^{\frac{1}{4}+\frac{it}{2}}\g\left(\frac{1}{2}+it,f\right)}.
+    \]
+    Estimating the left-hand side can be acomplished using Perron-type formulas for the sums and the residue term can usually be computed outright or estimated directly.
