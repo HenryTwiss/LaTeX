@@ -415,10 +415,17 @@
       the \textbf{local factor}\index{local factor} at $p$, and the $\a_{i}(p)$ are called the \textbf{local roots}\index{local roots} (or \textbf{local parameters}\index{local parameters}) at $p$.
       \item There exists a factor
       \[
-        \g(s,f) = \pi^{-\frac{ds}{2}}\prod_{i = 1}^{d}\G\left(\frac{s+\k_{i}}{2}\right),
+        \g(s,f) = \pi^{-\frac{ds}{2}}\prod_{1 \le i \le d}\G\left(\frac{s+\k_{i}}{2}\right),
       \]
       with $\k_{i} \in \C$ that are either real or appear in conjugate pairs. We also require $\Re(\k_{i}) \ge -1$. The $\k_{i}$ are called the \textbf{local roots}\index{local roots} (or \textbf{local parameters}\index{local parameters}) at infinity.
-      \item There exists an integer $q(f) \ge 1$ called the \textbf{conductor}\index{conductor} such that $\a_{i}(p) \neq 0$ for all prime $p$ such that $p \nmid q(f)$. If $p \mid q(f)$, then we say $p$ is \textbf{ramified}\index{ramified} and is \textbf{unramified}\index{unramified} otherwise.
+      \item There exists an integer $q(f) \ge 1$ called the \textbf{conductor}\index{conductor} such that $\a_{i}(p) \neq 0$ for all prime $p$ such that $p \nmid q(f)$. If $p \mid q(f)$, then we say $p$ is \textbf{ramified}\index{ramified} and is \textbf{unramified}\index{unramified} otherwise. The \textbf{analytic conductor}\index{analytic conductor} $q(s,f)$ is defined to be
+      \[
+        q(s,f) = q(f)q_{\infty}(s),
+      \]
+      where we set
+      \[
+        q_{\infty}(s) = \prod_{1 \le i \le d}(|s+\k_{i}|+1).
+      \]
       \item The \textbf{completed $L$-function}\index{completed $L$-function}
       \[
         \L(s,f) = q(f)^{\frac{s}{2}}\g(s,f)L(s,f),
@@ -484,7 +491,7 @@
       \label{fig:critical_strip}
     \end{figure}
   \section{The Approximate Functional Equation}
-    If $L(s,f)$ is an $L$-function, then there is a formula which acts as a compromise between the functional equation for $L(s,f)$ and expressing $L(s,f)$ as a Dirichlet series. This formula is known as the approximate functional equation and it is important because it is valid inside of the cirital strip and therefore can be used to obtain data about $L(s,f)$. First, we need to state an important asymptotic about the ratio of gamma factors that we will use later on. Suppose $\Re(s)$ is bounded, let $s = \s+it$, and recall 
+    If $L(s,f)$ is an $L$-function, then there is a formula which acts as a compromise between the functional equation for $L(s,f)$ and expressing $L(s,f)$ as a Dirichlet series. This formula is known as the approximate functional equation and it is important because it is valid inside of the cirital strip and therefore can be used to obtain data about $L(s,f)$. First, we need to state an important asymptotic about the ratio of gamma factors that we will use later on. Let $s = \s+it$, $\s$ is bounded, and $|t| > 1$. This guarantees that $s$ is bounded away from zero. Recall
     \[
         \G(s) \sim \sqrt{2\pi}|t|^{\s-\frac{1}{2}}e^{-\frac{\pi}{2}|t|},
     \]
@@ -492,7 +499,7 @@
     \begin{equation}\label{equ:simplified_gamma_estimates}
       \G(s) \ll t^{\s-\frac{1}{2}}e^{-\frac{\pi}{2}|t|} \quad \text{and} \quad \frac{1}{\G(s)} \ll t^{\frac{1}{2}-\s}e^{\frac{\pi}{2}|t|} .
     \end{equation}
-    We can then estimate the ratio of gamma factors as 
+    We then have an important estimate for the ratio of gamma factors which is
     \begin{equation}\label{equ:ratio_of_gamma_estimate}
       \frac{\G(1-s)}{\G(s)} \ll t^{1-2\s}.
     \end{equation}
@@ -537,15 +544,15 @@
       \]
       where $V_{s}(y)$ is a smooth function defined by
       \[
-        V_{s}(y) = \frac{1}{2\pi i}\int_{(a)}\frac{\g(f,s+u)}{\g(s,f)}G(u)y^{-u}\frac{du}{u},
+        V_{s}(y) = \frac{1}{2\pi i}\int_{(a)}\frac{\g(s+u,f)}{\g(s,f)}G(u)y^{-u}\frac{du}{u},
       \]
       and
       \[
         \e(s,f) = \e(f)q(f)^{\frac{1}{2}-s}\frac{\g(1-s,f)}{\g(s,f)}.
       \]
-      Moreover, the remainder $R$ is zero if $\L(f,s)$ is entire and otherwise
+      Moreover, the remainder $R$ is zero if $\L(s,f)$ is entire and otherwise
       \[
-        R = \left(\Res_{u = 1-s}+\Res_{u = -s}\right)\frac{\L(f,s+u)G(u)X^{u}}{u}.
+        R = \left(\Res_{u = 1-s}+\Res_{u = -s}\right)\frac{\L(s+u,f)G(u)X^{u}}{u}.
       \]
     \end{theorem}
     \begin{proof}
@@ -605,7 +612,7 @@
       Recall that for any $L$-function $L(s,f)$, the completed $L$-function $\L(s,f)$ is required to be meromorphic on $\C$ with at most poles at $s = 0$ and $s = 1$. We have shown that the trivial zeros of $L(s,f)$ are poles of $\g(s,f)$ for $\Re(s) < 0$ and they are all simple. As $L(s,f)$ is meromorphic on $\C$ with at most a pole at $s = 1$, and $\g(s,f)$ has at most a pole at $s = 0$ for $\Re(s) \ge 0$, $\L(s,f)$ is meromorphic on $\C$ with at most poles at $s = 0$ and $s = 1$.
     \end{remark}
     
-    Now let $\rho$ be a nontrivial zero of $L(s,f)$. Note that $\conj{L(s,f)} = L(\conj{s},\conj{f})$ by the identity theorem and that this equality holds for $\Re(s) > 1$ where $L(s,f)$ is defined by a Dirichlet series. It follows that $\conj{\rho}$ is a nontrivial zero of $L(s,\conj{f})$. In the interior of critical strip, the gamma factor is nonzero and holomorphic (again we have used $\Re(\k_{i}) \ge 1$ for all $i$). From the functional equation, it follows that $1-\conj{\rho}$ is also a nontrivial zero of $L(s,f)$. In short, the nontrivial zeros occur in pairs
+    Now let $\rho$ be a nontrivial zero of $L(s,f)$. Note that $\conj{L(s,f)} = L(\conj{s},\conj{f})$ by the identity theorem and that this equality holds for $\Re(s) > 1$ where $L(s,f)$ is defined by a Dirichlet series. It follows that $\conj{\rho}$ is a nontrivial zero of $L(s,\conj{f})$. In the interior of critical strip, the gamma factor is nonzero and holomorphic (again we have used $\Re(\k_{i}) \ge 1$ for all $i$). From the functional equation, it follows that $1-\conj{\rho}$ is also a nontrivial zero of $L(s,f)$. In short, the nontrivial zeros occur in pairs:
     \[
       \rho \quad \text{and} \quad 1-\conj{\rho}.
     \]
@@ -613,73 +620,51 @@
     \[
       \rho, \quad \conj{\rho}, \quad 1-\rho, \quad \text{and} \quad 1-\conj{\rho}.
     \]
-    For example, this is the situation for the Riemann zeta function $\z(s)$. The \textbf{(classical) Riemann hypothesis}\index{(classical) Riemann hypothesis} says that this symmetry of zeros is as simple as it could possibly be:
-
-    \begin{theorem}[Riemann hypothesis, classical version]
-      All of the nontrivial zeros of $\z(s)$ lie on the line $\Re(s) = \frac{1}{2}$.
-    \end{theorem}
-
-    This is one of, if not the most, famous and important open problems in mathematics. It has resisted all attempts of a proof by every great mathematician over the last century and a half. The Clay Mathematics Institute has also named it one of the millennium pize problems which means that anyone who can give a proof (or disproof) will recieve a million cash prize. Riemann's original motivation for the conjecture came from looking for an explicit formula for the prime counting function $\pi(x)$ which is the purpose of his 1859 manuscript (see \cite{riemann1859ueber}). This explicit formula for $\pi(x)$ involves the nontrivial zeros of Riemann zeta function. Riemann computed a few of them, found that they were on the critical line, and conjectured that it is very likely that all of them lie on the critical line. There is also the \textbf{(Selberg class) Riemann hypothesis}\index{(Selberg class) Riemann hypothesis} which is an analogous conjecture for Selberg class $L$-functions:
+    The \textbf{(Selberg class) Riemann hypothesis}\index{(Selberg class) Riemann hypothesis} says that this symmetry should be as simple as possible:
 
     \begin{conjecture}[Riemann hypothesis, Selberg class version]
       All of the nontrivial zeros of any $L$-function $L(s,f)$ belonging to the Selberg class lie on the line $\Re(s) = \frac{1}{2}$.
     \end{conjecture}
   \section{The Lindel\"of Hypothesis \& Convexity Arguments}
-    Instead of asking about the zeros of an $L$-function $L(s,f)$ on the critical line, we can ask about the growth of $L(s,f)$ on the critial line. A \textbf{convexity argument}\index{convexity argument} is one where estimates about the growth of an $L$-function on the critical line are deduced. Usually this is achieved by methods of complex analysis and Sirling's formula. The standard argument for any $L$-function is known \textbf{Lindel\"of convexity argument}\index{Lindel\"of convexity argument}. It is essentially a refinement of the proof of \cref{prop:L_function_bounded_in_vertical_strips}. Suppose $L(s,f)$ has a degree $d$ Euler product. Let $s = \s+it$ and suppose $|t| > 1$ so that we are away from the poles of $L(s,f)$. The first step is to guarantee the Phragm\'en-Lindel\"of convexity principle in a region containing the critical strip with $|t| > 1$. As $L(s,f)$ is of order $1$, this is assured (see \cref{append:The_Phragmen_Lindelof_Convexity_principle}). Therefore, we are reduced to estimating the growth of $L(s,f)$ for $\s$ to the left of $0$ and to the right of $1$. That is, just outside the edges of the critical strip. The right edge is easy. Letting $\e > 0$ and setting $\s = 1+\e$, we have
+    Instead of asking about the zeros of an $L$-function $L(s,f)$ on the critical line, we can ask about the growth of $L(s,f)$ on the critial line. A \textbf{convexity argument}\index{convexity argument} is one where estimates about the growth of an $L$-function on the critical line are deduced. Usually this is achieved by methods of complex analysis and Sirling's formula. The standard argument for any $L$-function is known \textbf{Lindel\"of convexity argument}\index{Lindel\"of convexity argument}. It is essentially a refinement of the proof of \cref{prop:L_function_bounded_in_vertical_strips}. Suppose $L(s,f)$ has a degree $d$ Euler product. Also suppose $L(s,f)$ as a pole of order $r \ge 0$ at $s = 1$ and let
+    \[
+      p_{r}(s) = \left(\frac{s-1}{s+1}\right)^{r}.
+    \]
+    Note that $p_{r}(s) \sim 1$. The first step is to guarantee the Phragm\'en-Lindel\"of convexity principle for $p_{r}(s)L(s,f)$ in a region containing the critical strip. As $L(s,f)$ is of order $1$, this is assured (see \cref{append:The_Phragmen_Lindelof_Convexity_principle}). Therefore, we are reduced to estimating the growth of $p_{r}(s)L(s,f)$ for $\s$ to the left of $0$ and to the right of $1$. That is, just outside the edges of the critical strip. So we will assume $-\e \le \s \le 1+\e$ for some $\e > 0$. The right edge is easily estimated by setting $\s = 1+\e$ so that
     \begin{equation}\label{equ:convexity_bound_1}
-      L((1+\e)+it,f) \ll_{\e} 1.
+      p_{r}(1+\e+it)L(1+\e+it,f) \ll_{\e} 1.
     \end{equation}
     The left edge is only slightly more difficult. The functional equation implies
     \begin{equation}\label{equ:convexity_bound_left_edge}
-      L(s,f) \ll \frac{\g(1-s,f)}{\g(s,f)}L(1-s,f).
+      p_{r}(s)L(s,f) \ll \frac{\g(1-s,f)}{\g(s,f)}p_{r}(s)L(1-s,f).
     \end{equation}
     From \cref{equ:ratio_of_gamma_estimate} and that $L(s,f)$ has $d$ gamma functions in its gamma factor, it follows that
+    \begin{equation}
+      \frac{\g(1-s,f)}{\g(s,f)} \ll (q(f)t^{d})^{\frac{1-2\s}{2}},
+    \end{equation}
+    for $-\e \le \s \le 1+\e$ with $|t| > 1$. Since $\Re(s)$ is bounded, we have the estimate
     \begin{equation}\label{equ:ratio_gamma_factor_explicit}
-      \frac{\g(1-s,f)}{\g(s,f)} \ll q(f)^{\frac{1-2\s}{2}}t^{\frac{d(1-2\s)}{2}}.
+      \frac{\g(1-s,f)}{\g(s,f)} \ll q(s,f)^{\frac{1-2\s}{2}},
     \end{equation}
-    Let $\e > 0$ and set $\s = -\e$. Then plugging \cref{equ:ratio_gamma_factor_explicit} into \cref{equ:convexity_bound_left_edge} and using the fact that $L((1+\e)+it,f) \ll_{\e} 1$ gives
+    for $-\e \le \s \le 1+\e$. Now let $\e > 0$ and set $\s = -\e$. Then plugging \cref{equ:ratio_gamma_factor_explicit} into \cref{equ:convexity_bound_left_edge} and using \cref{equ:convexity_bound_1} gives
     \begin{equation}\label{equ:convexity_bound_2}
-      L(-\e+it,f) \ll_{\e} q(f)^{\frac{1+2\e}{2}}t^{\frac{d(1+2\e)}{2}}.
+      p_{r}(-\e+it)L(-\e+it,f) \ll_{\e} q(s,f)^{\frac{1+\e-\s}{2}}.
     \end{equation}
-    By the Phragm\'en-Lindel\"of convexity principle, \cref{equ:convexity_bound_1,equ:convexity_bound_2} we obtain
+    By the Phragm\'en-Lindel\"of convexity principle, \cref{equ:convexity_bound_1,equ:convexity_bound_2}, and that $p_{r}(s) \sim 1$, we obtain
     \[
-      L(s,f) \ll_{\e} q(f)^{\frac{1+\e-\s}{2}}t^{\frac{1+\e-\s}{2}},
+      L(s,f) \ll_{\e} q(s,f)^{\frac{1-2\s}{2}},
     \]
     for $-\e \le \s \le 1+\e$. At the critical line, we have the \textbf{convexity bound}\index{convexity bound}:
     \begin{equation}\label{equ:convexity_bound_L_function}
-      L\left(\frac{1}{2}+it,f\right) \ll_{\e} q(f)^{\frac{1}{4}+\e}t^{\frac{d}{4}+\e}.
+      L\left(\frac{1}{2}+it,f\right) \ll_{\e} q\left(\frac{1}{2}+it,f\right)^{\frac{1}{4}+\e}.
     \end{equation}
-    The \textbf{(classical) Lindel\"of hypothesis}\index{(classical) Lindel\"of hypothesis} says that both exponenets can be improved to be $\e$ for the Riemann zeta function $\z(s)$ (note that this is really just improvement in the $t$-aspect because $q(\z) = 1$):
-    \begin{conjecture}[Lindel\"of hypothesis, classical version]
-      For any $\e > 0$,
-      \[
-        \z\left(\frac{1}{2}+it\right) \ll_{\e} t^{\e}.
-      \]
-    \end{conjecture}
-    In 1908 Lindel\"of made this conjecture (see \cite{lindelof1908quelques}). The classical Riemann hypothesis implies the classical Lindel\"of hypothesis although it is not an immediate consequence. Indeed, in 1919 Backlund showed the following equivalence for the classical Lindel\"of hypothesis (see \cite{backlund1919beziehung}):
-
-    \begin{proposition}\label{prop:Lindelof_hypothesis_equivalence}
-      The classical Lindel\"of hypothesis is equivalent to the following statement: Fix an $\e > 0$, a real $T$, and set
-      \[
-        Z_{\e,T} = \left\{s = \s+it \in \C : \z(s) = 0, \s \ge \frac{1}{2}+\e, T \le t \le T+1 \right\}.
-      \]
-      Then
-      \[
-        |Z_{\e,T}| = o(\log(T)).
-      \]
-    \end{proposition}
-
-    If the Riemann hypothesis is true, then \cref{prop:Lindelof_hypothesis_equivalence} is immediate because $Z_{\e,T}$ would be empty for any $\e > 0$ and all $T$. Nevertheless, the classical Lindel\"of hypothesis still remains wide open today. The \textbf{(Selberg class) Lindel\"of hypothesis}\index{(Selberg class) Lindel\"of hypothesis} is the analog to the classical Lindel\"of hypothesis for any Selberg class $L$-function:
+    Note that $q\left(\frac{1}{2}+it,f\right) \sim q(f)t^{d}$. The \textbf{(Selberg class) Lindel\"of hypothesis}\index{(Selberg class) Lindel\"of hypothesis} says that the exponent can be reduced to $\e$:
 
     \begin{conjecture}[Lindel\"of hypothesis, Selberg class version]
       For any $L$-function $L(s,f)$ belonging to the Selberg class and any $\e > 0$,
       \[
-        L\left(\frac{1}{2}+it\right) \ll_{\e} (q(f)t)^{\e}.
+        L\left(\frac{1}{2}+it,f\right) \ll_{\e} q\left(\frac{1}{2}+it,f\right)^{\e}.
       \]
     \end{conjecture}
 
-    For any $L$-function, any improvment upon either exponent in the convexity bound is called \textbf{breaking convexity}\index{breaking convexity} (or a \textbf{convexity breaking bound}\index{convexity breaking bound}). Any argument used to do so is called a \textbf{subconvexity argument}\index{subconvexity argument}. One method of breaking convexity is by appealing to the approximate functional equation. Setting $s = \frac{1}{2}+it$ and noting that $\e\left(\frac{1}{2}+it,f\right) \ll 1$ by \cref{equ:ratio_gamma_factor_explicit}, the approximate functional equation gives
-    \[
-      L\left(\frac{1}{2}+it,f\right) = \sum_{n \ge 1}\frac{a_{f}(n)}{n^{\frac{1}{2}+it}}V_{\frac{1}{2}+it}\left(\frac{n}{\sqrt{q(f)}X}\right)+\sum_{n \ge 1}\frac{\conj{a_{f}(n)}}{n^{\frac{1}{2}-it}}V_{\frac{1}{2}-it}\left(\frac{nX}{\sqrt{q(f)}}\right)-\frac{R}{q^{\frac{1}{4}+\frac{it}{2}}\g\left(\frac{1}{2}+it,f\right)}.
-    \]
-    Estimating the left-hand side can be acomplished using Perron-type formulas for the sums and the residue term can usually be computed outright or estimated.
+    For any $L$-function $L(s,f)$, any improvment upon the exponent in the convexity bound in any aspect of the analytic conductor is called \textbf{breaking convexity}\index{breaking convexity} (or a \textbf{convexity breaking bound}\index{convexity breaking bound}). Any argument used to do so is called a \textbf{subconvexity argument}\index{subconvexity argument}.
