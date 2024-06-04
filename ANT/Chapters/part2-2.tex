@@ -263,15 +263,14 @@
     We would like to know what these cusp forms are. It turns out that $v_{m,k}$ will be the Poincar\'e series $P_{m,k,\chi}$ up to a normalization factor. To see this, we compute the inner product:
     \begin{align*}
       \<f,P_{m,k,\chi}\> &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}f(z)\conj{P_{m,k,\chi}(z)}\Im(z)^{k}\,d\mu \\
-      &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}f(z)\sum_{\g \in \GG}\chi(\g)\conj{j(\g,z)^{-k}}e^{-2\pi im\conj{\g z}}\Im(z)^{k}\,d\mu \\
-      &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}f(z)\sum_{\g \in \GG}\frac{\chi(\g)j(\g,z)^{k}}{|j(\g,z)|^{2k}}e^{-2\pi im\conj{\g z}}\Im(z)^{k}\,d\mu \\
-      &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}f(\g z)\sum_{\g \in \GG}\frac{1}{|j(\g,z)^{k}|^{2k}}e^{-2\pi im\conj{\g z}}\Im(z)^{k}\,d\mu && \text{modularity} \\
-      &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}f(\g z)\sum_{\g \in \GG}e^{-2\pi im\conj{\g z}}\Im(\g z)^{k}\,d\mu && \text{$\Im(\g z)^{k} = \frac{\Im(z)^{k}}{|j(\g,z)|^{2k}}$.}
+      &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}\sum_{\g \in \GG}\chi(\g)\conj{j(\g,z)^{-k}}f(z)e^{-2\pi im\conj{\g z}}\Im(z)^{k}\,d\mu \\
+      &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}\sum_{\g \in \GG}\frac{\chi(\g)j(\g,z)^{k}}{|j(\g,z)|^{2k}}f(z)e^{-2\pi im\conj{\g z}}\Im(z)^{k}\,d\mu \\
+      &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}\sum_{\g \in \GG}\frac{1}{|j(\g,z)^{k}|^{2k}}f(\g z)e^{-2\pi im\conj{\g z}}\Im(z)^{k}\,d\mu && \text{modularity} \\
+      &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}\sum_{\g \in \GG}f(\g z)e^{-2\pi im\conj{\g z}}\Im(\g z)^{k}\,d\mu && \text{$\Im(\g z)^{k} = \frac{\Im(z)^{k}}{|j(\g,z)|^{2k}}$.}
     \end{align*}
     We put this last integral into a different form. The idea is to rewrite the integral over the fundamental domain $\mc{F}_{\G}$ as an integral over the strip $\G_{\infty}\backslash\H$. First, observe
     \begin{align*}
-      \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}f(\g z)\sum_{\g \in \GG}e^{-2\pi im\conj{\g z}}\Im(\g z)^{k}\,d\mu &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}\sum_{\g \in \GG}f(\g z)e^{-2\pi im\conj{\g z}}\Im(\g z)^{k}\,d\mu \\
-      &= \frac{1}{V_{\G}}\sum_{\g \in \GG}\int_{\mc{F}_{\G}}f(\g z)e^{-2\pi im\conj{\g z}}\Im(\g z)^{k}\,d\mu && \text{DCT} \\
+      \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}\sum_{\g \in \GG}f(\g z)e^{-2\pi im\conj{\g z}}\Im(\g z)^{k}\,d\mu &= \frac{1}{V_{\G}}\sum_{\g \in \GG}\int_{\mc{F}_{\G}}f(\g z)e^{-2\pi im\conj{\g z}}\Im(\g z)^{k}\,d\mu && \text{DCT} \\
       &= \frac{1}{V_{\G}}\sum_{\g \in \GG}\int_{\g\mc{F}_{\G}}f(z)e^{-2\pi im\conj{z}}\Im(z)^{k}\,d\mu && \text{$z \to \g^{-1}z$.}
     \end{align*}
     Now $\H = \bigcup_{\g \in \G}\g\mc{F}_{\G}$ so that $\G_{\infty}\backslash\H = \bigcup_{\g \in \GG}\g\mc{F}_{\G}$. Therefore we can write
@@ -321,13 +320,13 @@
       \[
         \int_{\mc{F}_{\G}}\sum_{\g \in \G'\backslash\G}f(\g z)\,d\mu,
       \]
-      where $\G' \le \G$ is a subgroup ($f$ is not necessarily a holomorphic form). Then the above integral can be written in the form
+      where $\G' \le \G$ is a subgroup. Then the above integral can be written in the form
       \[
         \int_{\G'\backslash\H}f(z)\,d\mu.
       \]
       To do this use DCT to interchange the sum and integral and then make the change of variales $z \to \g^{-1}z$ to put the integral in the form
       \[
-        \sum_{\g \in \G'\backslash\G}\int_{\g\F_{\G}}f(z)\,d\mu.
+        \sum_{\g \in \G'\backslash\G}\int_{\g\mc{F}_{\G}}f(z)\,d\mu.
       \]
       Then observe $\H = \bigcup_{\g \in \G}\g\mc{F}_{\G}$ so that $\G'\backslash\H = \bigcup_{\g \in \G'\backslash\G}\g\mc{F}_{\G}$. The desired result follows. Of course, there is equality everywhere so we can also run the procedure in reverse.
     \end{method}
