@@ -61,7 +61,7 @@
     \]
     For ease of notation, if it is clear what cusp we are working at we will mention the Fourier series and its coefficients without mentioning the cusp. Moreover, by property (iv) $f$ is a cusp form if and only if $a_{\mf{a}}(n) = 0$ for every cusp $\mf{a}$. In particular, $f(\s_{\mf{a}}z)$ exhibits exponential decay for every cusp $\mf{a}$. Accordingly, we say that $f$ exhibits \textbf{exponential decay at the cusps}\index{exponential decay at the cusps} and note that $f(z)$ is bounded on $\H$. From now on, we will always assume that our congruence subgroups are reduced at infinity so that $t = 1$.
   \section{Eisenstein \& Poincar\'e Series}
-    Let $\G$ be a congruence subgroup of level $N$. We will introduce two important classes of holomorphic forms on $\GH$ namely the Eisenstein series and the Poincar\'e series. For any weight $k \ge 4$ and Dirichlet character $\chi$ with conductor $q \mid N$, we define the \textbf{(holomorphic) Eisenstein series}\index{(holomorphic) Eisenstein series} $E_{k,\chi}$ of weight $k$ twised by $\chi$ on $\GH$ by
+    Let $\G$ be a congruence subgroup of level $N$. We will introduce two important classes of holomorphic forms on $\GH$ namely the Eisenstein series and the Poincar\'e series. For any weight $k \ge 4$ and Dirichlet character $\chi$ with conductor $q \mid N$, we define the \textbf{(holomorphic) Eisenstein series}\index{(holomorphic) Eisenstein series} $E_{k,\chi}(z)$ of weight $k$ twised by $\chi$ on $\GH$ by
     \[
       E_{k,\chi}(z) = \sum_{\g \in \GG}\cchi(\g)j(\g,z)^{-k},
     \]
@@ -81,13 +81,13 @@
     \[
       \left\{\begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}\right\} \cup \left\{\begin{pmatrix} \ast & \ast \\ c & d \end{pmatrix}:c \ge 1, d \in \Z, (c,d) = 1\right\}.
     \]
-    Then $E_{k,\chi}$ is given by
+    Then $E_{k,\chi}(z)$ is given by
       \[
         E_{k,\chi}(z) = 1+\sum_{\substack{c \ge 1, d \in \Z \\ (c,d) = 1}}\frac{\cchi(d)}{(cz+d)^{k}}.
       \]
     \end{remark}
 
-    We now show that $E_{k,\chi}$ is modular. This is just a computation:
+    We now show that $E_{k,\chi}(z)$ is modular. This is just a computation:
     \begin{align*}
       E_{k,\chi}(\g z) &= \sum_{\g' \in \GG}\cchi(\g')j(\g',\g z)^{-k} \\
       &= \sum_{\g' \in \GG}\cchi(\g')\left(\frac{j(\g'\g,z)}{j(\g,z)}\right)^{-k} && \text{cocycle condition} \\
@@ -134,7 +134,7 @@
       It follows that $f(z,x) > \frac{1}{2}$ outside of $S_{a,b}^{Y} \x [-Y,Y]$. But this latter region is compact and so $f(z,x)$ obtains a minimum $\d'$ on it. Then set $\d = \min\{\frac{1}{2},\d'\}$ and we are done.
     \end{proof}
 
-    We can now show that $E_{k,\chi}$ is holomorphic at the cusps. Let $\s_{\mf{a}}$ be a scaling matrix for the cusp $\mf{a}$. Then
+    We can now show that $E_{k,\chi}(z)$ is holomorphic at the cusps. Let $\s_{\mf{a}}$ be a scaling matrix for the cusp $\mf{a}$. Then
     \[
       E_{k,\chi}(\s_{\mf{a}}z) \ll \sum_{(c,d) \in \Z^{2}-\{\mathbf{0}\}}\frac{1}{|c\s_{\mf{a}}z+d|^{k}}.
     \]
@@ -158,19 +158,15 @@
       is a weight $k$ holomorphic form with character $\chi$ on $\GH$.
     \end{theorem}
 
-    \begin{remark}
-      The intuition behind the construction of the Eisenstein series $E_{k,\chi}$ is that $E_{k,\chi}$ is built by averaging the character and factor of modularity over $\G$. Actually, this average happens over $\GG$ because $\G_{\infty}$ acts trivially since $j(\g,z) = 1$ if $\g \in \G_{\infty}$ as $\g = \begin{psmallmatrix} 1 & n \\ 0 & 1 \end{psmallmatrix}$ for some $n \in \Z$.
-    \end{remark}
-
-    Now we will discuss our second class of holomorphic forms. For every $m \ge 1$, weight $k \ge 4$ and Dirichlet character $\chi$ with conductor $q \mid N$, we define the $m$-th \textbf{(holomorphic) Poincar\'e series}\index{(holomorphic) Poincar\'e series} $P_{m,k,\chi}$ of weight $k$ with character $\chi$ on $\GH$ by
+    Now we will discuss our second class of holomorphic forms. For every $m \ge 1$, weight $k \ge 4$ and Dirichlet character $\chi$ with conductor $q \mid N$, we define the $m$-th \textbf{(holomorphic) Poincar\'e series}\index{(holomorphic) Poincar\'e series} $P_{m,k,\chi}(z)$ of weight $k$ with character $\chi$ on $\GH$ by
     \[
       P_{m,k,\chi}(z) = \sum_{\g \in \GG}\cchi(\g)j(\g,z)^{-k}e^{2\pi im\g z}.
     \]
-    We first need to verify that $P_{m,k,\chi}$ is actually well-defined. This amounts to checking $e^{2\pi im\g z}$ is independent of the representative $\g$. Indeed, if $\g'$ represents the same element as $\g$ in $\GG$, then they differ on the left by an element of $\eta_{\infty} \in \G_{\infty}$. So suppose $\g' = \eta_{\infty}\g$ with $\eta_{\infty} = \begin{psmallmatrix} 1 & n \\ 0 & 1 \end{psmallmatrix} \in \G_{\infty}$. Then
+    We first need to verify that $P_{m,k,\chi}(z)$ is actually well-defined. This amounts to checking $e^{2\pi im\g z}$ is independent of the representative $\g$. Indeed, if $\g'$ represents the same element as $\g$ in $\GG$, then they differ on the left by an element of $\eta_{\infty} \in \G_{\infty}$. So suppose $\g' = \eta_{\infty}\g$ with $\eta_{\infty} = \begin{psmallmatrix} 1 & n \\ 0 & 1 \end{psmallmatrix} \in \G_{\infty}$. Then
     \[
       e^{2\pi im\g' z} = e^{2\pi im\eta_{\infty}\g z} = e^{2\pi im(\g z+n)} = e^{2\pi im\g z}e^{2\pi imnz} = e^{2\pi im\g z},
     \]
-    and hence $P_{m,k,\chi}$ is well-defined. To see that $P_{m,k,\chi}$ is holomorphic on $\H$, first note that $|e^{2\pi im\g z}| = e^{-2\pi m\Im(\g z)} < 1$ for all $\g \in \G$. Applying the Bruhat decomposition to $\GG$, we see that
+    and hence $P_{m,k,\chi}(z)$ is well-defined. To see that $P_{m,k,\chi}(z)$ is holomorphic on $\H$, first note that $|e^{2\pi im\g z}| = e^{-2\pi m\Im(\g z)} < 1$ for all $\g \in \G$. Applying the Bruhat decomposition to $\GG$, we see that
     \[
       P_{m,k,\chi}(z) \ll \sum_{(c,d) \in \Z^{2}-\{\mathbf{0}\}}\frac{1}{|cz+d|^{k}}.
     \]
@@ -181,14 +177,14 @@
     \[
       \left\{\begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}\right\} \cup \left\{\begin{pmatrix} \ast & \ast \\ c & d \end{pmatrix}:c \ge 1, d \in \Z, (c,d) = 1\right\}.
     \]
-    as in \cref{rem:Eisenstein_series_on_modular_group}. Then $P_{m,k,\chi}$ is given by
+    as in \cref{rem:Eisenstein_series_on_modular_group}. Then $P_{m,k,\chi}(z)$ is given by
       \[
         P_{m,k,\chi}(z) = e^{2\pi imz}+\sum_{\substack{c \ge 1, d \in \Z \\ (c,d) = 1}}\cchi(d)\frac{e^{2\pi im\left(\frac{az+b}{cz+d}\right)}}{(cz+d)^{k}},
       \]
       where $a$ and $b$ are chosen such that $\det\left(\begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix}\right) = 1$.
     \end{remark}
 
-    We now show that $P_{m,k,\chi}$ is modular. This is just a computation:
+    We now show that $P_{m,k,\chi}(z)$ is modular. This is just a computation:
     \begin{align*}
       P_{m,k,\chi}(\g z) &= \sum_{\g' \in \GG}\cchi(\g')j(\g',\g z)^{-k}e^{2\pi im\g'\g z} \\
       &= \sum_{\g' \in \GG}\cchi(\g')\left(\frac{j(\g'\g,z)}{j(\g,z)}\right)^{-k}e^{2\pi im\g'\g z} && \text{cocycle condition} \\
@@ -202,7 +198,7 @@
     \[
       P_{m,k,\chi}(\s_{\mf{a}}z) \ll \sum_{(c,d) \in \Z^{2}-\{\mathbf{0}\}}\frac{1}{|c\s_{\mf{a}}z+d|^{k}},
     \]
-    and now we can proceed in exactly the same way used to show that $E_{k,\chi}$ was holomorphic at the cusps. We collect all of this work as a theorem:
+    and now we can proceed in exactly the same way used to show that $E_{k,\chi}(z)$ was holomorphic at the cusps. We collect all of this work as a theorem:
 
     \begin{theorem}
       Let $k \ge 4$ and $\chi$ be a Dirichlet character with conductor $q \mid N$. The Poincar\'e series
@@ -260,7 +256,7 @@
     \[
       \<f,v_{m,k}\> = \phi_{m,k}(f) = a_{m}(f).
     \]
-    We would like to know what these cusp forms are. It turns out that $v_{m,k}$ will be the Poincar\'e series $P_{m,k,\chi}$ up to a normalization factor. To see this, we compute the inner product:
+    We would like to know what these cusp forms are. It turns out that $v_{m,k}(z)$ will be the Poincar\'e series $P_{m,k,\chi}(z)$ up to a normalization factor. To see this, we compute the inner product:
     \begin{align*}
       \<f,P_{m,k,\chi}\> &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}f(z)\conj{P_{m,k,\chi}(z)}\Im(z)^{k}\,d\mu \\
       &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}\sum_{\g \in \GG}\chi(\g)\conj{j(\g,z)^{-k}}f(z)e^{-2\pi im\conj{\g z}}\Im(z)^{k}\,d\mu \\
@@ -300,11 +296,11 @@
     \begin{equation}\label{equ:Petersson_inner_product_with_Poincare_series}
       \<f,P_{m,k,\chi}\> = \frac{\G(k-1)}{V_{\G}(4\pi m)^{k-1}}a_{m}(f).
     \end{equation}
-    Now set $\wtilde{P_{m,k,\chi}} = \frac{V_{\G}(4\pi m)^{k-1}}{\G(k-1)}P_{m,k,\chi}$. For all cusp forms $f$ (actually any holomorphic form where the Petersson inner product is defined),
+    Now set $\wtilde{P_{m,k,\chi}}(z) = \frac{V_{\G}(4\pi m)^{k-1}}{\G(k-1)}P_{m,k,\chi}(z)$. For all cusp forms $f$ (actually any holomorphic form where the Petersson inner product is defined),
     \[
       \<f,\wtilde{P_{m,k,\chi}}-v_{m,k}\> = 0.
     \]
-    By \cref{rem:non-degeneracy_of_Petersson_inner_product} the Petersson inner product is non-degenerate so we conclude $v_{m,k} = \wtilde{P_{m,k,\chi}}$. In particular, this shows that the Poincar\'e series $P_{m,k,\chi}$ are cusp forms. We usually work with the Poincar\'e series $P_{m,k,\chi}$ instead of their normalized counterparts $\wtilde{P_{m,k,\chi}}$. In any case, with \cref{equ:Petersson_inner_product_with_Poincare_series} in hand we can prove the following result:
+    By \cref{rem:non-degeneracy_of_Petersson_inner_product} the Petersson inner product is non-degenerate so we conclude $v_{m,k}(z) = \wtilde{P_{m,k,\chi}}(z)$. In particular, this shows that the Poincar\'e series $P_{m,k,\chi}(z)$ are cusp forms. We usually work with the Poincar\'e series $P_{m,k,\chi}(z)$ instead of their normalized counterparts $\wtilde{P_{m,k,\chi}}(z)$. In any case, with \cref{equ:Petersson_inner_product_with_Poincare_series} in hand we can prove the following result:
 
     \begin{theorem}
       The Poincar\'e series span $\mc{S}_{k}(\G)$.
