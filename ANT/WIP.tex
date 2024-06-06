@@ -289,6 +289,65 @@
         \]
         where the polar factor will appear if there is a constant term in $\w_{f}(x)$. Both of the integrals will be locally absolutely uniformly bounded by the exponential decay of $\w_{f}(x)$. Since the integral representation is symmetric under $s \to 1-s$, this gives the meromorphic continuation to $\C$.
         \end{method}
+    \section{Poincare Series}
 
+    There is another important class of Maass forms. They are are the Poincar\'e series with test functions. To build these series we first need the notion of a test function. If $\psi:\R^{+} \to \C$ is a smooth function such that
+    \[
+      \psi(y) \ll y^{1+\e}
+    \]
+    for some $\e > 0$ as $y \to 0$. We call $\psi$ a \textbf{test function}\index{test function}. We will consider a Poincar\'e series modified by $\psi$. Let $\s_{\mf{a}}$ be a scaling matrix for the $\mf{a}$ cusp. Then the \textbf{(Maass) Poincar\'e series}\index{(Maass) Poincar\'e series} $P_{\mf{a},m}(z,\psi)$ at the $\mf{a}$ cusp with test function $\psi$ is defined by
+    \[
+      P_{\mf{a},m}(z,\psi) = \sum_{\g \in \G_{\mf{a}}\backslash\G}\psi(\Im(\s_{\mf{a}}^{-1}\g z))e^{2\pi im\s_{\mf{a}}^{-1}\g z}.
+    \]
+    We first show $P_{\mf{a},m}(z,\psi)$ is well-defined. To do this we need to check that $e^{2\pi im\s_{\mf{a}}^{-1}\g z}$ is independent of the representative $\g$ used. If $\g'$ represents the same element as $\g$ in $\G_{\mf{a}}\backslash\G$, then they differ on the left by an element of $\eta_{\mf{a}} \in \G_{\mf{a}}$. So suppose $\g' = \eta_{\mf{a}}\g$. As $\G_{\mf{a}} = \s_{\mf{a}}\G_{\infty}\s_{\mf{a}}^{-1}$, $\eta_{\mf{a}} = \s_{\mf{a}}\eta_{\infty}\s_{\mf{a}}^{-1}$ for some $\eta_{\infty} \in \G_{\infty}$ say with $\eta_{\infty} = \begin{psmallmatrix} 1 & n \\ 0 & 1 \end{psmallmatrix} \in \G_{\infty}$. Then
+    \[
+      e^{2\pi im\s_{\mf{a}}^{-1}\g' z} = e^{2\pi im\s_{\mf{a}}^{-1}\eta_{\mf{a}}\g z} = e^{2\pi im\eta_{\infty}\s_{\mf{a}}^{-1}\g z} = e^{2\pi im(\s_{\mf{a}}^{-1}\g z+n)} = e^{2\pi im\s_{\mf{a}}^{-1}\g z}e^{2\pi imnz} = e^{2\pi im\s_{\mf{a}}^{-1}\g z},
+    \]
+    and hence $P_{\mf{a},m}(z,\psi)$ is well-defined. We now show that $P_{\mf{a},m}(z,\psi)$ is also independent of the scaling matrix. To see this, first note that $\Im(\s_{\mf{a}}^{-1}\g z)$ is independent of the scaling matrix in exactly the same way as we showed for the Eisenstein series. It now suffices to show that $e^{2\pi im\s_{\mf{a}}^{-1}\g z}$ is independent of the scaling matrix too. So suppose $\s_{\mf{a}}'$ is another scaling matrix for the $\mf{a}$ cusp. Then $\s_{\mf{a}}' = \eta_{\mf{a}}\s_{\mf{a}}\eta_{\infty}$ for some $\eta_{\mf{a}} \in \G_{\mf{a}}$ and $\eta_{\infty} \in \G_{\infty}$ say with $\eta_{\infty} = \begin{psmallmatrix} 1 & n \\ 0 & 1 \end{psmallmatrix} \in \G_{\infty}$. But then $(\s_{\mf{a}}')^{-1} = \eta_{\infty}^{-1}\s_{\mf{a}}^{-1}\eta_{\mf{a}}^{-1}$ and as $\eta_{\infty}^{-1} = \begin{psmallmatrix} 1 & -n \\ 0 & 1 \end{psmallmatrix}$, we have
+    \[
+      e^{2\pi im(\s_{\mf{a}}')^{-1}\g z} = e^{2\pi im\eta_{\infty}^{-1}\s_{\mf{a}}^{-1}\eta_{\mf{a}}^{-1}\g z} = e^{2\pi im(\s_{\mf{a}}^{-1}\eta_{\mf{a}}^{-1}\g z-n)} = e^{2\pi im\s_{\mf{a}}^{-1}\eta_{\mf{a}}^{-1}\g z}e^{-2\pi imn} = e^{2\pi im\s_{\mf{a}}^{-1}\eta_{\mf{a}}^{-1}\g z} = e^{2\pi im\s_{\mf{a}}^{-1}\g z},
+    \]
+    where the last equality follows since $\eta_{\mf{a}}^{-1}\g$ is in the same equivalence class as $\g$ and that $e^{2\pi im\s_{\mf{a}}^{-1}\g z}$ is independent of the representative $\g$ used. It follows that $P_{\mf{a},m}(z,\psi)$ is independent of the scaling matrix. Moreover, $P_{\mf{a},m}(z,\psi)$ is locally absolutely uniformly convergent for $z \in \H$, but to see this we first require a technical lemma:
+
+    \begin{lemma}\label{lem:finitely_many_pairs_with_size_larger_than_one}
+      For any compact subset $K$ of $\H$, there are finitely many pairs $(c,d) \in \Z^{2}-\{\mathbf{0}\}$, with $c \neq 0$, for which
+      \[
+        \frac{\Im(z)}{|cz+d|^{2}} > 1,
+      \]
+      for all $z \in K$.
+      \end{lemma}
+      \begin{proof}
+      Let $\b = \sup_{z \in K}|z|$ . As $|cz+d| \ge |cz| > 0$ and $\Im(z) < |z|$, we have
+      \[
+        \frac{\Im(z)}{|cz+d|^{2}} \le \frac{1}{|c|^{2}|z|} \le \frac{1}{|c|^{2}\b}.
+      \]
+      So if $\frac{\Im(z)}{|cz+d|^{2}} > 1$, then $\frac{1}{|c|^{2}\b} > 1$ which is to say $|c| < \frac{1}{\sqrt{\b}}$ and therefore $|c|$ is bounded. On the other hand, $|cz+d| \ge |d| \ge 0$. Excluding the finitely many terms $(c,0)$, we may assume $|d| > 0$. In this case, similarly  
+      \[
+        \frac{\Im(z)}{|cz+d|^{2}} \le \frac{|z|}{|d|^{2}} \le \frac{\b}{|d|^{2}}.
+      \]
+      So if $\frac{\Im(z)}{|cz+d|^{2}} > 1$, then $\frac{\b}{|d|^{2}}> 1$ which is to say $|d| < \sqrt{\b}$. So $|d|$ is also bounded. Since both $|c|$ and $|d|$ are bounded, the claim follows.
+    \end{proof}
+    
+    Now we are ready to show that $P_{\mf{a},m}(z,\psi)$ is locally absolutely uniformly convergent. Let $K$ be a compact subset of $\H$. Then it suffices to show $P_{\mf{a},m}(z,\psi)$ is uniformly convergent on $K$. Applying the Bruhat decomposition to $\s_{\mf{a}}^{-1}\G_{\mf{a}}\backslash\G = \G_{\infty}\backslash\s_{\mf{a}}^{-1}\G$ gives
+    \[
+      P_{\mf{a},m}(z,\psi) \ll \psi(\Im(z))+\sum_{\substack{(c,d) \in \Z^{2}-\{\mathbf{0}\}}}\psi\left(\frac{\Im(z)}{|cz+d|^{2}}\right).
+    \]
+    It now further suffices to show that the series above is uniformly convergent on $K$. By \cref{lem:finitely_many_pairs_with_size_larger_than_one} there are all but finitely many terms in the sum with $\psi\left(\frac{\Im(z)}{|cz+d|^{2}}\right) \ll \left(\frac{\Im(z)}{|cz+d|^{2}}\right)^{1+\e}$. But the finitely many other terms are all uniformly bounded on $K$ because $\psi$ is continuous (as it is smooth). Therefore
+    \[
+      \sum_{\substack{(c,d) \in \Z^{2}-\{\mathbf{0}\} \\ d \tmod{c}}}\psi\left(\frac{\Im(z)}{|cz+d|^{2}}\right) \ll \sum_{\substack{(c,d) \in \Z^{2}-\{\mathbf{0}\} \\ d \tmod{c}}}\left(\frac{\Im(z)}{|cz+d|^{2}}\right)^{1+\e} \ll \sum_{(c,d) \in \Z^{2}-\{\mathbf{0}\}}\left(\frac{\Im(z)}{|cz+d|^{2}}\right)^{1+\e},
+    \]
+    and this last series is locally absolutely uniformly convergent for $z \in \H$ by \cref{prop:general_lattice_sum_convergence_for_two_variables}. It follows that $P_{\mf{a},m}(z,\psi)$ does too. We now show that $P_{\mf{a},m}(z,\psi)$ is automorphic on $\GH$. So letting $\g \in \G$, we have
+    \[
+      P_{\mf{a},m}(\g z,\psi) = \sum_{\g' \in \G_{\mf{a}}\backslash\G}\psi(\Im(\s_{\mf{a}}^{-1}\g'\g z))e^{2\pi im\s_{\mf{a}}^{-1}\g'\g z} = \sum_{\g' \in \G_{\mf{a}}\backslash\G}\psi(\Im(\s_{\mf{a}}^{-1}\g' z))e^{2\pi im\s_{\mf{a}}^{-1}\g' z} = P_{\mf{a},m}(z,\psi),
+    \]
+    where the second equality follows because $\g' \to \g'\g^{-1}$ is a bijection on $\G$. Therefore $P_{\mf{a},m}(z,\psi)$ is automorphic on $\GH$. We collect this work as a theorem:
+
+    \begin{theorem}
+      Let $\psi$ be a test function. The Poincar\'e series
+      \[
+        P_{\mf{a},m}(z,\psi) = \sum_{\g \in \G_{\mf{a}}\backslash\G}\psi(\Im(\s_{\mf{a}}^{-1}\g z))e^{2\pi im\s_{\mf{a}}^{-1}\g z},
+      \]
+      is an automorphic function on $\GH$.
+    \end{theorem}
 
   \end{document}

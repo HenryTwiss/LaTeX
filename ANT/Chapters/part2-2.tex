@@ -1,28 +1,17 @@
 \chapter{The Theory of Holomorphic Forms}
   Holomorphic forms are special classes of functions on the upper half-space $\H$ of the complex plane. They are holomorphic, have a transformation law with respect to a congruence subgroup, and satisfy a growth condition. We will introduce these forms in a general context.
   \section{Holomorphic Forms}
-    Let $\G$ be a congruence subgroup of level $N$ and let $\chi$ be a Dirichlet character of conductor $q \mid N$. Set $\chi(\g) = \chi(d)$ for all for all $\g = \begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix} \in \G$. We also set $j(\g,z) = (cz+d)$ for all $\g = \begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix} \in \G$. We call $j(\g,z)$ the \textbf{factor of modularity}\index{factor of modularity}. We say that a function $f:\H \to \C$ is \textbf{holomorphic form}\index{holomorphic form} (or \textbf{modular form}\index{modular form}) on $\GH$ of \textbf{weight}\index{weight} $k \ge 1$, \textbf{level}\index{level} $N$, and \textbf{character}\index{character} $\chi$, if the following properties are satisfied:
-    \begin{enumerate}[label=(\roman*)]
-      \item $f$ is holomorphic on $\H$.
-      \item $f(\g z) = \chi(\g)j(\g,z)^{k}f(z)$ for all $\g = \begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix} \in \G$.
-      \item $f(\a z) = O(1)$ as $\Im(z) \to \infty$ for all $\a \in \PSL_{2}(\Z)$.
-    \end{enumerate}
-    We say $f$ is a \textbf{(holomorphic) cusp form}\index{(holomorphic) cusp form} if the additional property is satisfied:
-    \begin{enumerate}[label=(\roman*)]
-      \setcounter{enumi}{3}
-      \item For all cusps $\mf{a}$,
-      \[
-        \int_{0}^{t}f(\s_{\mf{a}}(x+iy))\,dx = 0.
-      \]
-    \end{enumerate}
-    Property (ii) is called the \textbf{modularity condition}\index{modularity condition} and we say $f$ is \textbf{modular}\index{modular}. Property (iii) is called the \textbf{growth condition}\index{growth condition} and we say $f$ is \textbf{holomorphic at the cusps}\index{holomorphic at the cusps}. The factor of modularity satisfies a very useful property. To state it, let $\g = \begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix} \in \G$ and $\g' = \begin{psmallmatrix} a' & b' \\ c' & d' \end{psmallmatrix} \in \G$. Then
+    Define $j(\g,z)$ by
+    \[
+      j(\g,z) = (cz+d),
+    \]
+    for all $\g = \begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix} \in \GL_{2}^{+}(\Q)$ and $z \in \H$. There is a very useful property that $j(\g,z)$ satisfies. To state it, let $\g = \begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix} \in \G$ and $\g' = \begin{psmallmatrix} a' & b' \\ c' & d' \end{psmallmatrix} \in \G$. Then
     \[
       \g\g' = \begin{pmatrix} a & b \\ c & d \end{pmatrix}\begin{pmatrix} a' & b' \\ c' & d' \end{pmatrix} = \begin{pmatrix} a'a+b'c & a'b+b'b \\ c'a+d'c & c'b+d'd \end{pmatrix},
     \]
     and we have
     \begin{align*}
       j(\g',\g z)j(\g,z) &= \left(c'\frac{az+b}{cz+d}+d'\right)(cz+d) \\
-      &= \left(c'\frac{az+b}{cz+d}+d'\right)(cz+d) \\
       &= (c'(az+b)+d'(cz+d)) \\
       &= (c'a+d'c)z+c'b+d'd) \\
       &= j(\g'\g,z).
@@ -31,35 +20,57 @@
     \[
       j(\g'\g,z) =  j(\g',\g z)j(\g,z),
     \]
-    and this identity is called the \textbf{cocycle condition}\index{cocycle condition}. The cocycle condition immediately implies that the factor of modularity is determined by any set of generators for $\G$. This is a very useful fact to remember because it is often easier to verify modularity on a generating set of a congruence subgroup. Holomorphic forms also admit Fourier series. Let $\begin{psmallmatrix} 1 & t \\ 0 & 1 \end{psmallmatrix}$ be the smallest translation belonging to $\G$. Then modularity implies
+    and this is called the \textbf{cocycle condition}\index{cocycle condition} for $j(\g,z)$. The cocycle condition immediately implies that $j(\g,z)$ is determined by any set of generators for $\G$. For any integer $k \ge 1$ and any $\g \in \GL_{2}^{+}(\Q)$ we define the \textbf{slash operator}\index{slash operator} $|_{j,k}\g:C(\H) \to C(\H)$ to be the linear operator given by
     \[
-      f(z+t) = f\left(\begin{pmatrix} 1 & t \\ 0 & 1 \end{pmatrix}z\right) = f(z),
+      (f|_{j,k}\g)(z) = j(\g,z)^{-k}f(\g z).
     \]
-    so that $f$ is $t$-periodic. We can say more. Let $\s_{\mf{a}}$ be a scaling matrix for the $\mf{a}$ cusp. As $\G_{\mf{a}} = \s_{\mf{a}}\G_{\infty}\s_{\mf{a}}^{-1}$, or equivalently $\G_{\mf{a}}\s_{\mf{a}} = \s_{\mf{a}}\G_{\infty}$, the function $f(\s_{\mf{a}}z)$ is independent of the scaling matrix $\s_{\mf{a}}$. Moreover, by the same reasoning
+    If an operator commutes with the slash operators $|_{j,k}\g$ for every $\g \in \PSL_{2}(\Z)$, we say that it is \textbf{invariant}\index{invariant}. Now let $\G$ be a congruence subgroup of level $N$ that is reduced at infinity and let $\chi$ be a Dirichlet character of conductor $q \mid N$. Set $\chi(\g) = \chi(d)$ for all for all $\g = \begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix} \in \G$. We say that a function $f:\H \to \C$ is \textbf{holomorphic form}\index{holomorphic form} (or \textbf{modular form}\index{modular form}) on $\GH$ of \textbf{weight}\index{weight} $k$, \textbf{level}\index{level} $N$, and \textbf{character}\index{character} $\chi$, if the following properties are satisfied:
+    \begin{enumerate}[label=(\roman*)]
+      \item $f$ is holomorphic on $\H$.
+      \item $(f|_{j,k}\g)(z) = \chi(\g)f(z)$ for all $\g \in \G$.
+      \item $f(\a z) = O(1)$ as $\Im(z) \to \infty$ for all $\a \in \PSL_{2}(\Z)$.
+    \end{enumerate}
+    We say $f$ is a \textbf{(holomorphic) cusp form}\index{(holomorphic) cusp form} if the additional property is satisfied:
+    \begin{enumerate}[label=(\roman*)]
+      \setcounter{enumi}{3}
+      \item For all cusps $\mf{a}$,
+      \[
+        \int_{0}^{1}f(\s_{\mf{a}}(x+iy))\,dx = 0.
+      \]
+    \end{enumerate}
+    Property (ii) is called the \textbf{modularity condition}\index{modularity condition} and we say $f$ is \textbf{modular}\index{modular}. In particular, $f$ is a function on $\mc{F}_{\G}$. The modularity condition can equivalently be expressed as
     \[
-      f(\s_{\mf{a}}(z+t)) = f(\s_{\mf{a}}z).
+      f(\g z) = \chi(\g)j(\g,z)^{k}f(z).
     \]
-    Thus $f(\s_{\mf{a}}z)$ is $t$-periodic. Holomorphy at the cusps implies that $f(\s_{\mf{a}}z)$ remains bounded as $\Im(z) \to \infty$ and so we have a Fourier series
+    Property (iii) is called the \textbf{growth condition}\index{growth condition} and we say $f$ is \textbf{holomorphic at the cusps}\index{holomorphic at the cusps}. Holomorphic forms also admit Fourier series. Indeed, modularity implies
     \[
-      f(\s_{\mf{a}}z) = \sum_{n \ge 0}a_{\mf{a}}(n,y)e^{\frac{2\pi inx}{t}}.
+      f(z+1) = f\left(\begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}z\right) = f(z),
     \]
-    This Fourier series is independent of the scaling matrix because $f(\s_{\mf{a}}z)$ is. We can simplfy the Fourier coefficients $a_{\mf{a}}(n,y)$. To see this, since $f$ is holomorphic we know
+    so that $f$ is $1$-periodic. We can say more. Let $\s_{\mf{a}}$ be a scaling matrix for the $\mf{a}$ cusp. As $\G_{\mf{a}} = \s_{\mf{a}}\G_{\infty}\s_{\mf{a}}^{-1}$, or equivalently $\G_{\mf{a}}\s_{\mf{a}} = \s_{\mf{a}}\G_{\infty}$, the function $f(\s_{\mf{a}}z)$ is independent of the scaling matrix $\s_{\mf{a}}$. Moreover, by the same reasoning
     \[
-      \frac{\del f}{\del\conj{z}} = \frac{1}{2}\left(\frac{\del f}{\del x}+i\frac{\del f}{\del y}\right) = 0.
+      f(\s_{\mf{a}}(z+1)) = f(\s_{\mf{a}}z).
+    \]
+    Thus $f(\s_{\mf{a}}z)$ is $1$-periodic. Holomorphy at the cusps implies that $f(\s_{\mf{a}}z)$ remains bounded as $\Im(z) \to \infty$ and so we have a Fourier series
+    \[
+      f(\s_{\mf{a}}z) = \sum_{n \ge 0}a_{\mf{a}}(n,y)e^{2\pi inx}.
+    \]
+    This Fourier series is independent of the scaling matrix because $f(\s_{\mf{a}}z)$ is. We can simplfy the Fourier coefficients $a_{\mf{a}}(n,y)$. To see this, since $f$ is holomorphic it satisfies the first order Cauchy-Riemann equations so that
+    \[
+      \frac{1}{2}\left(\frac{\del f}{\del x}+i\frac{\del f}{\del y}\right) = 0.
     \]
     Substiuting in the Fourier series and equating coefficients we obtain the ODE
     \[
-      2\pi na_{\mf{a}}(n,y)+a_{\mf{a}}'(n,y) = 0,
+      2\pi na_{\mf{a}}(n,y)+a_{\mf{a},y}(n,y) = 0,
     \]
-    where the $'$ indicates differentiation with respect to $y$. Solving this ODE (by separation of variables) we see that there exists an $a_{\mf{a}}(n)$ such that
+    Solving this ODE by separation of variables, we see that there exists an $a_{\mf{a}}(n)$ such that
     \[
       a_{\mf{a}}(n,y) = a_{\mf{a}}(n)e^{-2\pi ny}.
     \]
     The coefficeints $a_{\mf{a}}(n)$ are the only part of the Fourier series depending on the implicit congruence subgroup $\G$. Using these coefficeints instead, $f$ admits a \textbf{Fourier series at the $\mf{a}$ cusp}\index{Fourier series at the $\mf{a}$ cusp}:
     \[
-      f(\s_{\mf{a}}z) = \sum_{n \ge 0}a_{\mf{a}}(n)e^{\frac{2\pi inz}{t}}.
+      f(\s_{\mf{a}}z) = \sum_{n \ge 0}a_{\mf{a}}(n)e^{2\pi inz}.
     \]
-    For ease of notation, if it is clear what cusp we are working at we will mention the Fourier series and its coefficients without mentioning the cusp. Moreover, by property (iv) $f$ is a cusp form if and only if $a_{\mf{a}}(n) = 0$ for every cusp $\mf{a}$. In particular, $f(\s_{\mf{a}}z)$ exhibits exponential decay for every cusp $\mf{a}$. Accordingly, we say that $f$ exhibits \textbf{exponential decay at the cusps}\index{exponential decay at the cusps} and note that $f(z)$ is bounded on $\H$. From now on, we will always assume that our congruence subgroups are reduced at infinity so that $t = 1$.
+    For ease of notation, if it is clear what cusp we are working at we will mention the Fourier series and its coefficients without mentioning the cusp. Moreover, property (iv) implies that $f$ is a cusp form if and only if $a_{\mf{a}}(n) = 0$ for every cusp $\mf{a}$. In particular, $f(\s_{\mf{a}}z)$ exhibits exponential decay for every cusp $\mf{a}$. Accordingly, we say that $f$ exhibits \textbf{exponential decay at the cusps}\index{exponential decay at the cusps} and note that $f(z)$ is bounded on $\H$.
   \section{Eisenstein \& Poincar\'e Series}
     Let $\G$ be a congruence subgroup of level $N$. We will introduce two important classes of holomorphic forms on $\GH$ namely the Eisenstein series and the Poincar\'e series. For any weight $k \ge 4$ and Dirichlet character $\chi$ with conductor $q \mid N$, we define the \textbf{(holomorphic) Eisenstein series}\index{(holomorphic) Eisenstein series} $E_{k,\chi}(z)$ of weight $k$ and character $\chi$ on $\GH$ by
     \[
@@ -91,11 +102,11 @@
     \begin{align*}
       E_{k,\chi}(\g z) &= \sum_{\g' \in \GG}\cchi(\g')j(\g',\g z)^{-k} \\
       &= \sum_{\g' \in \GG}\cchi(\g')\left(\frac{j(\g'\g,z)}{j(\g,z)}\right)^{-k} && \text{cocycle condition} \\
-      &= j(\g,z)\sum_{\g' \in \GG}\cchi(\g')j(\g'\g,z)^{-k} \\
-      &= \chi(\g)j(\g,z)\sum_{\g' \in \GG}\cchi(\g')\cchi(\g)j(\g'\g,z)^{-k} \\
-      &= \chi(\g)j(\g,z)\sum_{\g' \in \GG}\cchi(\g'\g)j(\g'\g,z)^{-k} \\
-      &= \chi(\g)j(\g,z)\sum_{\g' \in \GG}\cchi(\g')j(\g',z)^{-k} && \text{$\g' \to \g'\g^{-1}$ bijection on $\G$} \\
-      &= \chi(\g)j(\g,z)E_{k,\chi}(z).
+      &= j(\g,z)^{k}\sum_{\g' \in \GG}\cchi(\g')j(\g'\g,z)^{-k} \\
+      &= \chi(\g)j(\g,z)^{k}\sum_{\g' \in \GG}\cchi(\g')\cchi(\g)j(\g'\g,z)^{-k} \\
+      &= \chi(\g)j(\g,z)^{k}\sum_{\g' \in \GG}\cchi(\g'\g)j(\g'\g,z)^{-k} \\
+      &= \chi(\g)j(\g,z)^{k}\sum_{\g' \in \GG}\cchi(\g')j(\g',z)^{-k} && \text{$\g' \to \g'\g^{-1}$ bijection on $\G$} \\
+      &= \chi(\g)j(\g,z)^{k}E_{k,\chi}(z).
     \end{align*}
     To verify holomorphy at the cusps, we will need a technical lemma:
 
@@ -188,11 +199,11 @@
     \begin{align*}
       P_{m,k,\chi}(\g z) &= \sum_{\g' \in \GG}\cchi(\g')j(\g',\g z)^{-k}e^{2\pi im\g'\g z} \\
       &= \sum_{\g' \in \GG}\cchi(\g')\left(\frac{j(\g'\g,z)}{j(\g,z)}\right)^{-k}e^{2\pi im\g'\g z} && \text{cocycle condition} \\
-      &= j(\g,z)\sum_{\g' \in \GG}\cchi(\g')j(\g'\g,z)^{-k}e^{2\pi im\g'\g z} \\
-      &= \chi(\g)j(\g,z)\sum_{\g' \in \GG}\cchi(\g')\cchi(\g)j(\g'\g,z)^{-k}e^{2\pi im\g'\g z} \\
-      &= \chi(\g)j(\g,z)\sum_{\g' \in \GG}\cchi(\g'\g)j(\g'\g,z)^{-k}e^{2\pi im\g'\g z} \\
-      &= \chi(\g)j(\g,z)\sum_{\g' \in \GG}\cchi(\g')j(\g',z)^{-k}e^{2\pi im\g'z} && \text{$\g' \to \g'\g^{-1}$ bijection on $\G$} \\
-      &= \chi(\g)j(\g,z)P_{m,k,\chi}(z),
+      &= j(\g,z)^{k}\sum_{\g' \in \GG}\cchi(\g')j(\g'\g,z)^{-k}e^{2\pi im\g'\g z} \\
+      &= \chi(\g)j(\g,z)^{k}\sum_{\g' \in \GG}\cchi(\g')\cchi(\g)j(\g'\g,z)^{-k}e^{2\pi im\g'\g z} \\
+      &= \chi(\g)j(\g,z)^{k}\sum_{\g' \in \GG}\cchi(\g'\g)j(\g'\g,z)^{-k}e^{2\pi im\g'\g z} \\
+      &= \chi(\g)j(\g,z)^{k}\sum_{\g' \in \GG}\cchi(\g')j(\g',z)^{-k}e^{2\pi im\g'z} && \text{$\g' \to \g'\g^{-1}$ bijection on $\G$} \\
+      &= \chi(\g)j(\g,z)^{k}P_{m,k,\chi}(z),
     \end{align*}
     To verify holomorphy at the cusps, let $\s_{\mf{a}}$ be a scaling matrix for the cusp $\mf{a}$. First note that $|e^{2\pi im\g\s_{\mf{a}}z}| = e^{-2\pi m\Im(\g\s_{\mf{a}}z)} < 1$. Then
     \[
@@ -203,7 +214,7 @@
     \begin{theorem}
       Let $k \ge 4$ and $\chi$ be a Dirichlet character with conductor $q \mid N$. The Poincar\'e series
       \[
-        P_{m,k,\chi}(z) = \sum_{\g \in \GG}j(\g,z)^{-1}e^{2\pi im\g z},
+        P_{m,k,\chi}(z) = \sum_{\g \in \GG}j(\g,z)^{-k}e^{2\pi im\g z},
       \]
       is a weight $k$ holomorphic form with character $\chi$ on $\GH$.
     \end{theorem}
@@ -331,7 +342,7 @@
       Then observe $\H = \bigcup_{\g \in \G}\g\mc{F}_{\G}$ so that $\G'\backslash\H = \bigcup_{\g \in \G'\backslash\G}\g\mc{F}_{\G}$. The desired result follows. Of course, there is equality everywhere so we can also run the procedure in reverse.
     \end{method}
   \section{Double Coset Operators}
-    We are ready to introduce a class of general operators, depending upon double cosets, on a congruence subgroup $\G$ of level $N$. We will use these operators to define the diamond and Hecke operators. Recall that $j(\g,z) = (cz+d)$, where $\g = \begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix} \in \G$, is the factor of modularity. Actually, $j(\g,z)$ makes sense for any $\g \in \GL_{2}^{+}(\Q)$ and we extend it accordingly. Let $\G_{1}$ and $\G_{2}$ be two congruence subgroups (not necessarily of the same level). For $\a \in \GL_{2}^{+}(\Q)$ consider the double coset
+    We are ready to introduce a class of general operators, depending upon double cosets, on a congruence subgroup $\G$ of level $N$. We will use these operators to define the diamond and Hecke operators. For $\a \in \GL_{2}^{+}(\Q)$, consider the double coset
     \[
       \G_{1}\a\G_{2} = \{\g_{1}\a\g_{2}:\g_{1} \in \G_{1}, \g_{2} \in \G_{2}\}.
     \]
@@ -398,7 +409,7 @@
     \[
       (f[\a]_{k})(z) = \det(\a)^{k-1}j(\a,z)^{-k}f(\a z),
     \]
-    for any $f \in \mc{M}_{k}(\G)$. Moreover, $[\a]_{k}$ is multiplicative. Indeed, if $\a,\a' \in \GL_{2}^{+}(\Q)$, then
+    Moreover, $[\a]_{k}$ is multiplicative. Indeed, if $\a,\a' \in \GL_{2}^{+}(\Q)$, then
     \begin{align*}
       ((f[\a']_{k})[\a]_{k})(z) &= \det(\a)^{k-1}j(\a,z)^{-k}(f[\a']_{k})(\a z) \\
       &= \det(\a')^{k-1}\det(\a)^{k-1}j(\a',\a z)^{-k}j(\a,z)^{-k}f(\a'\a z) \\
@@ -413,7 +424,7 @@
     \[
       (f[\G_{1}\a\G_{2}]_{k})(z) = \sum_{j}(f[\b_{j}]_{k})(z) = \sum_{j}\det(\b_{j})^{k-1}j(\b_{j},z)^{-k}f(\b_{j}z),
     \]
-    for any $f \in \mc{M}_{k}(\G_{1})$. By \cref{prop:double_congruence_subgroup_coset_decomposition_is_finite} this sum is finite. It remains to check that $f[\G_{1}\a\G_{2}]_{k}$ is well-defined. Indeed, if $\b_{j}$ and $\b_{j}'$ belong to the same orbit, then $\b_{j}'\b_{j}^{-1} \in \G_{1}$. But then as $f \in \mc{M}_{k}(\G_{1})$, is it invariant under the $[\b_{j}'\b_{j}^{-1}]_{k}$ operator so that
+    By \cref{prop:double_congruence_subgroup_coset_decomposition_is_finite} this sum is finite. It remains to check that $f[\G_{1}\a\G_{2}]_{k}$ is well-defined. Indeed, if $\b_{j}$ and $\b_{j}'$ belong to the same orbit, then $\b_{j}'\b_{j}^{-1} \in \G_{1}$. But then as $f \in \mc{M}_{k}(\G_{1})$, is it invariant under the $[\b_{j}'\b_{j}^{-1}]_{k}$ operator so that
     \[
       (f[\b_{j}]_{k})(z) = ((f[\b_{j}'\b_{j}^{-1}]_{k})[\b_{j}]_{k})(z) = (f[\b_{j}']_{k})(z),
     \]
@@ -491,9 +502,7 @@
     \[
       \mc{M}_{k}(\G_{1}(N)) = \bigop_{\chi \tmod{N}}\mc{M}_{k}(\G_{0}(N),\chi),
     \]
-    and this decomposition respects the subspace of cusp forms. This fact clarifies why it is necessary to consider holomorphic forms with nontrivial characters.
-    
-    Now it is time to define the Hecke operators. For a prime $p$, we define the $p$-th \textbf{Hecke operator}\index{Hecke operator} $T_{p}:\mc{M}_{k}(\G_{1}(N)) \to \mc{M}_{k}(\G_{1}(N))$ to be the linear operator given by
+    and this decomposition respects the subspace of cusp forms. This fact clarifies why it is necessary to consider holomorphic forms with nontrivial characters. Now it is time to define the Hecke operators. For a prime $p$, we define the $p$-th \textbf{Hecke operator}\index{Hecke operator} $T_{p}:\mc{M}_{k}(\G_{1}(N)) \to \mc{M}_{k}(\G_{1}(N))$ to be the linear operator given by
     \[
       (T_{p}f)(z) = \left(\left[\G_{1}(N)\begin{pmatrix} 1 & 0 \\ 0 & p \end{pmatrix}\G_{1}(N)\right]_{k}f\right)(z).
     \]
@@ -807,7 +816,7 @@
       \[
         \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}\det(\a)^{k-1}j(\a,\a'z)^{-k}f(z)\conj{g(\a'z)}\Im(\a'z)^{k}\,d\mu.
       \]
-      Moreover, applying the cocycle relation and the identities $\Im(\a'z) = \det(\a')\frac{\Im(z)}{|j(\a',z)|^{2}}$, $j(\a\a',z) = \det(\a)$, and $\det(\a') = \det(a')$ together, we can further rewrite the integral as
+      Moreover, applying the cocycle condition and the identities $\Im(\a'z) = \det(\a')\frac{\Im(z)}{|j(\a',z)|^{2}}$, $j(\a\a',z) = \det(\a)$, and $\det(\a') = \det(a')$ together, we can further rewrite the integral as
       \[
         \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}\det(\a')^{k-1}\conj{j(\a',z)^{-k}}f(z)\conj{g(\a'z)}\Im(z)^{k}\,d\mu.
       \]

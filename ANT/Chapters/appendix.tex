@@ -408,9 +408,9 @@
     For the $J$-Bessel function there is also an important integral representation called the \textbf{Schl\"aflin integral representation}\index{Schl\"aflin integral representation}:
 
     \begin{proposition}[Schl\"aflin integral representation for the $J$-Bessel function]
-      For any $\nu \in \C$ and $\Re(z) > 0$,
+      For any $\nu \in \C$ and $\Re(x) > 0$,
       \[
-        J_{\nu}(z) = \frac{1}{2\pi i}\left(\frac{z}{2}\right)^{\nu}\int_{-\infty}^{(0^{+})}t^{-(\nu+1)}e^{t-\frac{z^{2}}{4t}}\,dt.
+        J_{\nu}(x) = \frac{1}{2\pi i}\left(\frac{x}{2}\right)^{\nu}\int_{-\infty}^{(0^{+})}t^{-(\nu+1)}e^{t-\frac{x^{2}}{4t}}\,dt.
       \]
     \end{proposition}
 
@@ -436,7 +436,7 @@
       where the integrals are understood to be complex integrals.
     \end{proposition}
 
-    From this integral representation we can show the following bound:
+    From this integral representation we can show the following asymptotic:
 
     \begin{lemma}\label{lem:exponential_growth_I-Bessel_function}
       For any $\nu \in \C$ and $\Re(x) > 0$,
@@ -467,7 +467,7 @@
       where the integral is understood to be a complex integral.
     \end{proposition}
 
-    From this integral representation it does not take much to show the following bound:
+    From this integral representation it does not take much to show the following asymptotic:
 
     \begin{lemma}\label{lem:moderate_decay_K-Bessel_function}
       For any $\nu \in \C$ and $\Re(x) > 0$,
@@ -475,6 +475,36 @@
         K_{\nu}(x) = o_{\nu}(e^{-x}).
       \]
     \end{lemma}
+  \section{Whittaker Functions}\label{append:Whittaker_Functions}
+    For $\k,\mu \in \C$, the \textbf{Whittaker equation}\index{Whittaker equation} is the ODE
+    \[
+      \frac{dw}{dz}+\left(\frac{1}{4}-\frac{\k}{z}-\frac{\frac{1}{4}-\mu^{2}}{z^{2}}\right)w = 0.
+    \]
+    There are two linearly independent solutions to this equation. If we additionally assume that $w(z) = o(e^{2\pi\Im(z)})$ as $\Im(z) \to \infty$, then there is only one linearily independent solution. This solution is the \textbf{Whittaker function}\index{Whittaker function} $W_{\k,\mu}(z)$. It can be expressed in the form
+    \[
+      W_{\k,\mu}(z) = e^{-\frac{z}{2}}z^{\mu+\frac{1}{2}}U\left(\mu-\k+\frac{1}{2},1+2\mu,z\right),
+    \]
+    where $U(\a,\b,z)$ is the \textbf{confluent hypergeometric function}\index{confluent hypergeometric function} initally defined by
+    \[
+      U(\a,\b,z) = \frac{1}{\G(\a)}\int_{0}^{\infty}e^{-zu}u^{\a-1}(1+u)^{\b-\a-1}\,du,
+    \]
+    for $\Re(\a) > 0$ and $\Re(z) > 0$ and then analytically continued to $\C^{3}$. From this integral representation we can show the following asymptotic:
+
+    \begin{lemma}\label{lem:Whittaker_function_asymptotic}
+      For any $\k,\mu \in \C$ and $\Re(z) > 0$,
+      \[
+        W_{\k,\mu}(z) \sim z^{\k}e^{-\frac{z}{2}}.
+      \]
+    \end{lemma}
+    
+    The Whittaker function has a simplified form in special cases:
+    
+    \begin{theorem}\label{thm:Whittaker_special_cases}
+      If $\nu,\a \in \C$ and $\Re(z) > 0$,
+      \[
+        W_{0,\nu}(z) = \left(\frac{z}{\pi}\right)^{\frac{1}{2}}K_{\nu}\left(\frac{z}{2}\right) \quad \text{and} \quad W_{\a,\a-\frac{1}{2}}(z) = z^{\a}e^{\frac{y}{2}}.
+      \]
+    \end{theorem}
   \section{Sums Over Lattices}
     Let $\mathbf{a} = (a_{1},a_{2},\ldots,a_{d}) \in \R^{d}$ and let $||\mathbf{a}|| = \sqrt{a_{1}^{2}+a_{2}^{2}+\cdots+a_{d}^{2}}$ be the usual norm. We are often interested in series that obtained by summing over the lattice $\Z^{d} \subset \R^{d}$. In particular, we have the following general result:
 

@@ -1,24 +1,56 @@
 \chapter{The Theory of Maass Forms}
-	Maass forms are the non-holomorphic analog to holomorphic forms. They are real-analytic, eigenfunctions with respect to the Laplace operator, invariant with respect to a subgroup of $\PSL_{2}(\Z)$, and satisfty a growth condition. We introduce both Maass forms and their general theory.
+	Maass forms are the non-holomorphic analog to holomorphic forms. They are real-analytic, eigenfunctions for a differential operator, invariant with respect to a subgroup of $\PSL_{2}(\Z)$, and satisfty a growth condition. We introduce both Maass forms and their general theory.
   \section{Maass Forms}
-    The \textbf{Laplace operator}\index{Laplace operator} $\D$ on $\H$ is the linear operator on $C^{2}$-functions on $\H$ given by
+    Define $\e(\g,z)$ by
     \[
-      \D = -y^{2}\left(\frac{\del^{2}}{\del x^{2}}+\frac{\del^{2}}{\del y^{2}}\right).
+      \e(\g,z) = \left(\frac{cz+d}{|cz+d|}\right),
     \]
-    This operator behaves well with respect to the $\PSL_{2}(\Z)$ action on $\H$ as the following proposition shows (see \cite{motohashi1997spectral} for a proof):
+    for all $\g = \begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix} \in \GL_{2}^{+}(\Q)$ and $z \in \H$. Note that $|\e(\g,z)| = 1$. Moreover, we have the relation
+    \[
+      \e(\g,z) = \left(\frac{j(\g,z)}{|j(\g,z)|}\right).
+    \]
+    As a consquence, the coycle condition for $j(\g,z)$ implies
+    \[
+      \e(\g'\g,z) =  \e(\g',\g z)\e(\g,z),
+    \]
+    and this is called the \textbf{cocycle condition}\index{cocycle condition} for $\e(\g,z)$. The cocycle condition immediately implies that $\e(\g,z)$ is determined by any set of generators for $\G$. For any $k \in \Z$ and any $\g \in \GL_{2}^{+}(\Q)$ we define the \textbf{slash operator}\index{slash operator} $|_{\e,k}:C(\H) \to C(\H)$ to be the linear operator given by
+    \[
+      (f|_{\e,k}\g)(z) = \e(\g,z)^{-k}f(\g z).
+    \]
+    Any operator that commutes with the slash operators $|_{\e,k}\g$ for every $\g \in \PSL_{2}(\Z)$ is said to be \textbf{invariant}\index{invariant}. We define differential operators $R_{k}:C^{\infty}(\H) \to C^{\infty}(\H)$ and $L_{k}:C^{\infty}(\H) \to C^{\infty}(\H)$ to be the linear operators given by
+    \begin{align*}
+      R_{k} = \frac{k}{2}+y\left(i\frac{\del}{\del x}+\frac{\del}{\del y}\right) \quad \text{and} \quad L_{k} = \frac{k}{2}+y\left(i\frac{\del}{\del x}-\frac{\del}{\del y}\right).
+    \end{align*}
+    We call these operators the \textbf{Maass differential operators}\index{Maass differential operators}. In particular, $R_{k}$ is the \textbf{Maass raising operator}\index{Maass raising operator} and $L_{k}$ is the \textbf{Mass lowering operator}\index{Maass lowering operator}. The \textbf{Laplace operator}\index{Laplace operator} $\D_{k}:C^{\infty}(\H) \to C^{\infty}(\H)$ is the linear operator given by
+    \[
+      \D_{k} = -y^{2}\left(\frac{\del^{2}}{\del x^{2}}+\frac{\del^{2}}{\del y^{2}}\right)+iky\frac{\del}{\del x}.
+    \]
+    When $k = 0$, we will write $\D_{0} = \D$ which is the usual Laplace operator on $\H$. Expanding the products $R_{k-2}L_{k}$ and $L_{k+2}R_{k}$ and invoking the Cauchy-Riemann equation
+    \[
+      \frac{\del}{\del y} = i\frac{\del}{\del x},
+    \]
+    we have the relations
+    \[
+      \D_{k} = -R_{k-2}L_{k}+\frac{k}{2}\left(1-\frac{k}{2}\right) \quad \text{and} \quad \D_{k} = -L_{k+2}R_{k}-\frac{k}{2}\left(1-\frac{k}{2}\right)
+    \]
+     The Mass differential operators and the Laplace operator satisfy important relations (see \cite{bumpautomorphic1997} for a proof):
 
     \begin{proposition}\label{prop:Laplace_is_invariant}
-      The Laplace operator $\D$ is $\PSL_{2}(\Z)$-invariant. That is, if $f$ is a $C^{2}$-function on $\H$ and $\g \in \PSL_{2}(\Z)$, then
+      The Laplace operator $\D_{k}$ is invariant. That is,
       \[
-        \D(f(\g z)) = (\D f)(\g z).
+        \D_{k}(f|_{\e,k}\g) = \D_{k}(f)|_{\e,k}\g,
+      \]
+      for all $f \in C^{\infty}(\H)$ and $\g \in \PSL_{2}(\Z)$. Moreover, the Maass differential operators $R_{k}$ and $L_{k}$ satisfy
+      \[
+        (R_{k}f)|_{\e,k+2}\g = R_{k}(f|_{\e,k}\g) \quad \text{and} \quad (R_{k}f)|_{\e,k-2}\g = L_{k}(f|_{\e,k}\g)
       \]
     \end{proposition}
 
-    Notice that \cref{prop:Laplace_is_invariant} implies the Laplace operator $\D$ is $\G$-invariant. Maass forms are essentially $\G$-invariant analogues to holomorphic forms. Let $\G$ be a congruence subgroup of level $N$ and let $\chi$ be a Dirichlet character of conductor $q \mid N$. Set $\chi(\g) = \chi(d)$ for all for all $\g = \begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix} \in \G$. We say that a function $f:\H \to \C$ is a \textbf{Maass form}\index{Maass form} on $\GH$ of \textbf{eigenvalue}\index{eigenvalue} $\l$, \textbf{level}\index{level} $N$, and \textbf{character}\index{character} $\chi$, if the following properties are satisfied:
+    Let $\G$ be a congruence subgroup of level $N$ that is reduced at infinity and let $\chi$ be a Dirichlet character of conductor $q \mid N$. Set $\chi(\g) = \chi(d)$ for all for all $\g = \begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix} \in \G$. We say that a function $f:\H \to \C$ is a \textbf{Maass form}\index{Maass form} on $\GH$ of \textbf{weight}\index{weight} $k$, \textbf{eigenvalue}\index{eigenvalue} $\l$, \textbf{level}\index{level} $N$, and \textbf{character}\index{character} $\chi$, if the following properties are satisfied:
     \begin{enumerate}[label=(\roman*)]
       \item $f$ is smooth on $\H$.
-      \item $f(\g z) = \chi(\g)f(z)$ for all $\g = \begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix} \in \G$.
-      \item $f$ is an eigenfunction for $\D$ with eigenvalue $\l$.
+      \item $(f|_{\e,k}\g)(z) = \chi(\g)f(z)$ for all $\g \in \G$.
+      \item $f$ is an eigenfunction for $\D_{k}$ with eigenvalue $\l$.
       \item $f(\a z) = o(e^{2\pi\Im(z)})$ as $\Im(z) \to \infty$ for all $\a \in \PSL_{2}(\Z)$.
     \end{enumerate}
     We say $f$ is a \textbf{(Maass) cusp form}\index{(Maass) cusp form} if the additional property is satisfied:
@@ -26,72 +58,80 @@
       \setcounter{enumi}{4}
       \item For all cusps $\mf{a}$,
       \[
-        \int_{0}^{t}f(\s_{\mf{a}}(x+iy))\,dx = 0.
+        \int_{0}^{1}f(\s_{\mf{a}}(x+iy))\,dx = 0.
       \]
     \end{enumerate}
-    Property (ii) is called the \textbf{automorphy condition}\index{automorphy condition} and we say that $f$ is \textbf{automorphic}\index{automorphic}. In particular, $f$ is a function on $\mc{F}_{\G}$. Property (iv) is called the \textbf{growth condition}\index{growth condition} for $f$ and we say $f$ is of \textbf{moderate growth at the cusps}\index{moderate growth at the cusps}. It turns turns out that Property (i) is implied by (iii). This is because $\D$ is an elliptic operator and any eigenfunction of an elliptic operator is automatically real-analytic and hence smooth (see \cite{evans2022partial} for a proof). 
+    Property (ii) is called the \textbf{automorphy condition}\index{automorphy condition} and we say that $f$ is \textbf{automorphic}\index{automorphic}. In particular, $f$ is a function on $\mc{F}_{\G}$. The automorphy condition can equivalently be expressed as
+    \[
+      f(\g z) = \chi(\g)\e(\g,z)^{k}f(z).
+    \]
+    In property (iii), we will often let $s \in \C$ be such that $\l = s(1-s)$. Accordingly, we will write $\l = \l(s)$ when we want to make this distinction clear. Property (iv) is called the \textbf{growth condition}\index{growth condition} for $f$ and we say $f$ is of \textbf{moderate growth at the cusps}\index{moderate growth at the cusps}. It turns turns out that Property (i) is implied by (iii). This is because $\D_{k}$ is an elliptic operator and any eigenfunction of an elliptic operator is automatically real-analytic and hence smooth (see \cite{evans2022partial} for a proof \todo{fix?}). 
 
-    \begin{remark}
-      Holomorphic forms are obtained by relaxing the automorphy condition (and imposing some additional mild conditions).
+    \begin{remark}\label{rem:holomorphic_embedds_into_Maass}
+      Holomorphic forms embedd into Maass forms. If $f(z)$ is a weight $k$ holomorphic form, then $F(z) = \Im(z)^{\frac{k}{2}}f(z)$ is a weight $k$ Maass form. This is because $\Im(\g z) = \frac{\Im(z)}{|j(\g,z)|^{2}}$ and $F(z)$ clearly has polynomial growth. Moreover, as $f(z)$ is holomorphic, it satisfies the Cauchy-Riemann equations so that
+      \[
+        L_{k}(F(z)) = \left(\frac{k}{2}+y\left(i\frac{\del}{\del x}-\frac{\del}{\del y}\right)\right)(F(z)) = \frac{k}{2}F(z)-\frac{k}{2}F(z) = 0.
+      \]
+      It follows from the identity
+      \[
+        \D_{k} = -R_{k-2}L_{k}+\frac{k}{2}\left(1-\frac{k}{2}\right),
+      \]
+      that $F(z)$ is an eigenfunction for $\D_{k}$ with eigenvalue $\l\left(\frac{k}{2}\right)$.
     \end{remark}
   
-    If $\begin{psmallmatrix} 1 & t \\ 0 & 1 \end{psmallmatrix}$ is the minimal translation belonging to $\G$, then any Maass form $f$ satisfies
+    Maass forms also admit Fourier series. Indeed, automorphy implies
     \[
-      f(z+t) = f\left(\begin{pmatrix} 1 & t \\ 0 & 1 \end{pmatrix}z\right) = f(z),
+      f(z+1) = f\left(\begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}z\right) = f(z),
     \]
-    and so is $t$-periodic. Let $\s_{\mf{a}}$ be a scaling matrix for the $\mf{a}$ cusp. As $\G_{\mf{a}} = \s_{\mf{a}}\G_{\infty}\s_{\mf{a}}^{-1}$, or equivalently $\G_{\mf{a}}\s_{\mf{a}} = \s_{\mf{a}}\G_{\infty}$, the function $f(\s_{\mf{a}}z)$ is independent of the scaling matrix $\s_{\mf{a}}$. Moreover, by the same reasoning
+    so that $f$ is $1$-periodic. Let $\s_{\mf{a}}$ be a scaling matrix for the $\mf{a}$ cusp. As $\G_{\mf{a}} = \s_{\mf{a}}\G_{\infty}\s_{\mf{a}}^{-1}$, or equivalently $\G_{\mf{a}}\s_{\mf{a}} = \s_{\mf{a}}\G_{\infty}$, the function $f(\s_{\mf{a}}z)$ is independent of the scaling matrix $\s_{\mf{a}}$. Moreover, by the same reasoning
     \[
-      f(\s_{\mf{a}}(z+t)) = f(\s_{\mf{a}}z).
+      f(\s_{\mf{a}}(z+1)) = f(\s_{\mf{a}}z).
     \]
-    Thus $f(\s_{\mf{a}}z)$ is $t$-periodic. Then $f(\s_{\mf{a}}z)$ has a Fourier series
+    Thus $f(\s_{\mf{a}}z)$ is $1$-periodic. Then $f(\s_{\mf{a}}z)$ has a Fourier series
     \[
-      f(\s_{\mf{a}}z) = \sum_{n \in \Z}a_{\mf{a}}(n,y)e^{\frac{2\pi inx}{t}}.
+      f(\s_{\mf{a}}z) = \sum_{n \in \Z}a_{\mf{a}}(n,y)e^{2\pi inx}.
     \]
-    This Fourier series is independent of the scaling matrix because $f(\s_{\mf{a}}z)$ is. Moreover, the sum is over all $n \in \Z$ since $f$ may be unbounded as $\Im(z) \to \infty$. The Fourier coefficients $a_{\mf{a}}(n,y)$ are mostly determined by $\D$. To see this, since $f$ is smooth we may differentiate the Fourier series of $f(\s_{\mf{a}}z)$ termwise. The fact that $f$ is an eigenfunction for $\D$ with eigenvalue $\l$ gives the ODE
+    This Fourier series is independent of the scaling matrix because $f(\s_{\mf{a}}z)$ is. Moreover, the sum is over all $n \in \Z$ since $f$ may be unbounded as $\Im(z) \to \infty$. The Fourier coefficients $a_{\mf{a}}(n,y)$ are mostly determined by $\D_{k}$. To see this, since $f$ is smooth we may differentiate the Fourier series of $f(\s_{\mf{a}}z)$ termwise. The fact that $f$ is an eigenfunction for $\D_{k}$ with eigenvalue $\l$ gives the ODE
     \[
-      -y^{2}a''_{\mf{a}}(n,y)+4\pi^{2}n^{2}y^{2}a_{\mf{a}}(n,y) = \l a_{\mf{a}}(n,y),
+      (4\pi^{2}n^{2}y^{2}-2\pi nky)a_{\mf{a}}(n,y)-y^{2}a_{\mf{a},yy}(n,y) = \l a_{\mf{a}}(n,y),
     \]
-    where the $'$ indicates differentiation with respect to $y$. If $n \neq 0$, this is a modified Bessel equation. To see this, first we put the ODE in homogeneous form
+    If $n \neq 0$, this is a Whittaker equation. To see this, first put the ODE in homogeneous form
     \[
-      y^{2}a''_{\mf{a}}(n,y)-(4\pi^{2}n^{2}y^{2}-\l)a_{\mf{a}}(n,y) = 0.
+      y^{2}a_{\mf{a},yy}(n,y)-(4\pi^{2}n^{2}y^{2}-2\pi nky-\l)a_{\mf{a}}(n,y) = 0.
     \]
-    Make the change of variables $y \to \frac{y}{2\pi n}$ with $a_{\mf{a}}(n,y) \to a_{\mf{a}}(n,2\pi ny)$ to get
+    Now make the change of variables $y \to \frac{y}{4\pi|n|}$ to get
     \[
-      y^{2}a''_{\mf{a}}(n,y)-(y^{2}-\l)a_{\mf{a}}(n,y) = 0.
+      y^{2}a_{\mf{a},yy}(n,4\pi|n|y)-\left(\frac{y^{2}}{4}-\sgn(n)\frac{k}{2}y-\l\right)a_{\mf{a}}(n,4\pi|n|y) = 0,
     \]
-    Again, change variables $a_{\mf{a}}(n,y) \to \sqrt{y}a_{\mf{a}}(n,y)$ and divide by $\sqrt{y}$ to obtain
+    where $\sgn(n) = \pm1$ if $n$ is positive or negative respectively. Diving by $y^{2}$ results in
     \[
-      y^{2}a''_{\mf{a}}(n,y)+ya'_{\mf{a}}(n,y)-\left(y^{2}-\left(\l-\frac{1}{4}\right)\right)a_{\mf{a}}(n,y) = 0.
+      a_{\mf{a},yy}(n,4\pi|n|y)+\left(\frac{1}{4}-\frac{\sgn(n)\frac{k}{2}}{y}-\frac{\l}{y^{2}}\right)a_{\mf{a}}(n,4\pi|n|y) = 0.
     \]
-    Upon setting $\nu = \sqrt{\l-\frac{1}{4}}$, the above equation becomes
+    Upon writing $\l = s(1-s)$, we see that $\l = \frac{1}{4}-(s-\frac{1}{2})^{2}$, and the above equation becomes
     \[
-      y^{2}a''_{\mf{a}}(n,y)+ya'_{\mf{a}}(n,y)-(y^{2}+(i\nu)^{2})a_{\mf{a}}(n,y) = 0,
+      a_{\mf{a},yy}(n,4\pi|n|y)+\left(\frac{1}{4}-\frac{\sgn(n)\frac{k}{2}}{y}-\frac{\frac{1}{4}-\left(s-\frac{1}{2}\right)^{2}}{y^{2}}\right)a_{\mf{a}}(n,4\pi|n|y) = 0.
     \]
-    which is a modified Bessel equation. Lastly, since
+    This is the Whittaker equation (see \cref{append:Whittaker_Functions}). Since $f$ has moderate growth at the cusps, the general solution is the Whittaker function $W_{\sgn(n)\frac{k}{2},s-\frac{1}{2}}(4\pi|n|y)$. Therefore
     \[
-      i\nu = \sqrt{\frac{1}{4}-\l} = \sqrt{\frac{1}{4}-s(1-s)} = \sqrt{s^{2}-s+\frac{1}{4}} = \sqrt{\left(s-\frac{1}{2}\right)^{2}} = s-\frac{1}{2},
+      a_{\mf{a}}(n,y) = a_{\mf{a}}(n)W_{\sgn(n)\frac{k}{2},s-\frac{1}{2}}(4\pi|n|y),
     \]
-    the general solution takes the form
+    for some coefficients $a_{\mf{a}}(n)$ and $b_{\mf{a}}(n)$ possibly depending upon $s$. If $n = 0$, then the differential equation is a second order linear ODE which in is
     \[
-      a_{\mf{a}}(n,y) = a_{\mf{a}}(n)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y)+b_{\mf{a}}(n)I_{s-\frac{1}{2}}(2\pi|n|y),
-    \]
-    for some coefficients $a_{\mf{a}}(n)$ and $b_{\mf{a}}(n)$ possibly depending upon $s$ (see \cref{append:Bessel_Functions}). But $I_{s-\frac{1}{2}}(2\pi|n|y)$ has exponential growth (see \cref{lem:exponential_growth_I-Bessel_function}) and since $f$ has moderate growth at the cusps we must have $b_{\mf{a}}(n) = 0$ for all $n \neq 0$. If $n = 0$, then the differential equation is a second order linear ODE which in homogeneous form is
-    \[
-      y^{2}a''_{\mf{a}}(0,y)+\l a_{\mf{a}}(0,y) = 0.
+      -y^{2}a_{\mf{a},yy}(0,y) = \l a_{\mf{a}}(0,y).
     \]
     This is a Cauchy-Euler equation, and since $s$ and $1-s$ are the two roots of $z^{2}-z+\l$, the general solution is
     \[
       a_{\mf{a}}(0,y) = a_{\mf{a}}(0)y^{s}+b_{\mf{a}}(0)y^{1-s},
     \]
-    for some coefficients $a_{\mf{a}}(0)$ and $b_{\mf{a}}(0)$ possibly depending upon $s$. Altogether, the Fourier series takes the form
+    for some coefficients $a_{\mf{a}}(0)$ and $b_{\mf{a}}(0)$ possibly depending upon $s$. The coefficients $a_{\mf{a}}(n)$, $a_{\mf{a}}(0)$, and $b_{\mf{a}}(0)$ are the only part of the Fourier series that actually depend on the implicit congruence subgroup $\G$. Using these coefficients, $f$ admits a \textbf{Fourier series at the $\mf{a}$ cusp}\index{Fourier series at the $\mf{a}$ cusp}:
     \[
-      f(\s_{\mf{a}}z) = a_{\mf{a}}(0)y^{s}+b_{\mf{a}}(0)y^{1-s}+\sum_{n \neq 0}a_{\mf{a}}(n)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y)e^{2\pi inx}.
+      f(\s_{\mf{a}}z) = a_{\mf{a}}(0)y^{s}+b_{\mf{a}}(0)y^{1-s}+\sum_{n \neq 0}a_{\mf{a}}(n)W_{\sgn(n)\frac{k}{2},s-\frac{1}{2}}(4\pi|n|y)e^{2\pi inx}.
     \]
-    The coefficients $a_{\mf{a}}(n)$, $a_{\mf{a}}(0)$, and $b_{\mf{a}}(0)$ are the only part of the Fourier series that actually depend on the implicit congruence subgroup $\G$. Using these coefficients, $f$ admits a \textbf{Fourier series at the $\mf{a}$ cusp}\index{Fourier series at the $\mf{a}$ cusp}:
+    For ease of notation, if it is clear what cusp we are working at we will mention the Fourier series and its coefficients without mentioning the cusp. Moreover, property (v) implies that $f$ is a cusp form if and only if $a_{\mf{a}}(0) = 0$ and $b_{\mf{a}}(0) = 0$ for every cusp $\mf{a}$. We can simplify this Fourier series in the weight zero case. Indeed, \cref{thm:Whittaker_special_cases} implies that the Fourier series at the $\mf{a}$ cusp takes the form
     \[
-      f(\s_{\mf{a}}z) = a_{\mf{a}}(0)y^{s}+b_{\mf{a}}(0)y^{1-s}+\sum_{n \neq 0}a_{\mf{a}}(n)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y)e^{\frac{2\pi inx}{t}}.
+      f(\s_{\mf{a}}z) = a_{\mf{a}}(0)y^{s}+b_{\mf{a}}(0)y^{1-s}+\sum_{n \neq 0}a_{\mf{a}}(n)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y)e^{2\pi inx},
     \]
-    For ease of notation, if it is clear what cusp we are working at we will mention the Fourier series and its coefficients without mentioning the cusp. Moreover, by property (v) $f$ is a cusp form if and only if $a_{\mf{a}}(0) = 0$ and $b_{\mf{a}}(0) = 0$ for every cusp $\mf{a}$. We can simplify this Fourier series in some cases. We say $f$ is \textbf{even}\index{even} if $f(-\conj{z}) = f(z)$ and is \textbf{odd}\index{odd} if $f(-\conj{z}) = -f(z)$. Since $-\conj{z} = -x+iy$, this means that $f$ is even or odd with respect to $\Re(z) = x$. Note that if $f$ is odd it must be a cusp form. As $e^{2\pi inx} = \cos(nx)+i\sin(nx)$, if $f$ has eigenvalue $\l = s(1-s)$, then the Fourier series of $f$ at the $\mf{a}$ cusp takes the form 
+    for some different Fourier coefficeints $a_{\mf{a}}(n)$. We can simplify the Fouier series further. We say $f$ is \textbf{even}\index{even} if $f(-\conj{z}) = f(z)$ and is \textbf{odd}\index{odd} if $f(-\conj{z}) = -f(z)$. Since $-\conj{z} = -x+iy$, this means that $f$ is even or odd with respect to $\Re(z) = x$. Note that if $f$ is odd it must be a cusp form. As $e^{2\pi inx} = \cos(nx)+i\sin(nx)$, if $f$ has eigenvalue $\l = s(1-s)$, then the Fourier series of $f$ at the $\mf{a}$ cusp takes the form 
     \[
       f(\s_{\mf{a}}z) = a_{\mf{a}}(0)y^{s}+b_{\mf{a}}(0)y^{1-s}+\sum_{n \neq 0}a_{\mf{a}}(n)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y)\cos\left(\frac{2\pi nx}{t}\right),
     \]
@@ -103,43 +143,49 @@
     \[
       f(\s_{\mf{a}}z) = a_{\mf{a}}(0)y^{s}+b_{\mf{a}}(0)y^{1-s}+\sum_{n \ge 1}a_{\mf{a}}(n)\sqrt{y}K_{s-\frac{1}{2}}(2\pi ny)\SC\left(\frac{2\pi nx}{t}\right),
     \]
-    for some different Fourier coefficeints $a_{\mf{a}}(n)$, $a_{\mf{a}}(0)$, and $b_{\mf{a}}(0)$ and where $\SC(x) = \cos(x)$ if $f$ is even and $\SC(x) = \sin(x)$ if $f$ is odd. As we have said, if $f$ is odd, or more generally a cusp form, then necessarily $a_{\mf{a}}(0) = 0$ and $b_{\mf{a}}(0) = 0$. From now on, if we are discussing an even or odd Maass form, we will always mean this Fourier series. For any cusp form, we can derive an important growth condition. Indeed, the Foruier series of $f$ at the $\mf{a}$ cusp is given by
+    for some different Fourier coefficeints $a_{\mf{a}}(n)$ and where $\SC(x) = \cos(x)$ if $f$ is even and $\SC(x) = \sin(x)$ if $f$ is odd. As we have said, if $f$ is odd, or more generally a cusp form, then necessarily $a_{\mf{a}}(0) = 0$ and $b_{\mf{a}}(0) = 0$. From now on, if we are discussing an even or odd Maass form, we will always mean this Fourier series (and so the implicit weight is zero). For cusp forms, we can derive an important growth condition. Indeed, the Foruier series of $f$ at the $\mf{a}$ cusp is given by
     \[
-      f(\s_{\mf{a}}z) = \sum_{n \neq 0}a_{\mf{a}}(n)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y)e^{\frac{2\pi inx}{t}}.
+      f(\s_{\mf{a}}z) = \sum_{n \neq 0}a_{\mf{a}}(n)W_{\sgn(n)\frac{k}{2},s-\frac{1}{2}}(4\pi|n|y)e^{2\pi inx}.
     \]
-    Now $K_{s-\frac{1}{2}}(2\pi|n|y) = o_{s}(e^{-2\pi|n|y})$ (see \cref{lem:moderate_decay_K-Bessel_function}), so that
+    Using \cref{lem:Whittaker_function_asymptotic}, we get the weaker asymptotic $W_{\sgn(n)\frac{k}{2},s-\frac{1}{2}}(4\pi|n|y) = O(y^{\frac{k}{2}}e^{-2\pi|n|y})$ which implies
     \[
-      f(\s_{\mf{a}}z) = o_{s}\left(\sqrt{y}\sum_{n \neq 0}e^{-2\pi|n|y}\right) = o_{s}\left(\sqrt{y}\sum_{n \in \Z}e^{-2\pi|n|y}\right) = o_{s}\left(\frac{2\sqrt{y}}{1-e^{-2\pi y}}\right) = o_{s}(e^{-2\pi y}).
+      f(\s_{\mf{a}}z) = O\left(y^{\frac{k}{2}}\sum_{n \neq 0}e^{-2\pi|n|y}\right) = O\left(y^{\frac{k}{2}}\sum_{n \in \Z}e^{-2\pi|n|y}\right) = O\left(\frac{2y^{\frac{k}{2}}}{1-e^{-2\pi y}}\right) = O(y^{\frac{k}{2}}e^{-2\pi y}).
     \]
-    Accordingly, we say that $f$ exhibits \textbf{moderate decay at the cusps}\index{moderate decay at the cusps}. In particular, $f$ is bounded on $\H$. From now on, we will always assume that our congruence subgroups are reduced at infinity so that $t = 1$.
-  \section{Eisenstein Series \& Poincar\'e Series with Test Functions}
-    We will be interested in studying a classes of Maass forms naturally defined on $\GH$. They are actually functions defined on a large space $\H \x \W$ for some domain $\W$ and hence are functions of two variables namely $z$ and $s$. These functions are Maass forms for every fixed $s \in \W$. For every cusp $\mf{a}$ of $\GH$, there is an associated Maass form. So let $\s_{\mf{a}}$ be a scaling matrix for the cusp $\mf{a}$. The Maass form $E_{\mf{a}}(z,s)$ we are interested in is called the \textbf{(real-analytic) Eisenstein series}\index{(real-analytic) Eisenstein series} on $\GH$ at the $\mf{a}$ cusp and is defined as
+    Accordingly, we say that $f$ exhibits \textbf{moderate decay at the cusps}\index{moderate decay at the cusps}. In particular, $f$ is bounded on $\H$.
+  \section{Eisenstein Series}
+    Let $\G$ be a congruence subgroup of level $N$ and fix a Dirichlet character $\chi$ with conductor $q \mid N$. We will be interested in studying a classes of Maass forms naturally defined on $\GH$. They are actually functions defined on a large space $\H \x \W$ for some domain $\W$ and hence are functions of two variables namely $z$ and $s$. These functions are Maass forms for every fixed $s \in \W$. For every cusp $\mf{a}$ of $\GH$, there is an associated Maass form. So let $\s_{\mf{a}}$ be a scaling matrix for the cusp $\mf{a}$. The Maass form $E_{k,\chi,\mf{a}}(z,s)$ we are interested in is called the \textbf{(Maass) Eisenstein series}\index{(Maass) Eisenstein series} of weight $k$ and character $\chi$ on $\GH$ at the $\mf{a}$ cusp and is defined as
     \[
-      E_{\mf{a}}(z,s) = \sum_{\g \in \G_{\mf{a}}\backslash\G}\Im(\s_{\mf{a}}^{-1}\g z)^{s}.
+      E_{k,\chi,\mf{a}}(z,s) = \sum_{\g \in \G_{\mf{a}}\backslash\G}\cchi(\g)\e(\s_{\mf{a}}^{-1}\g,z)^{-k}\Im(\s_{\mf{a}}^{-1}\g z)^{s}.
     \]
-    To see that $E_{\mf{a}}(z,s)$ is independent of the scaling matrix $\s_{\mf{a}}$, suppose $\s_{\mf{a}}'$ is another scaling matrix for the $\mf{a}$ cusp. Then $\s_{\mf{a}}' = \eta_{\mf{a}}\s_{\mf{a}}\eta_{\infty}$ for some $\eta_{\mf{a}} \in \G_{\mf{a}}$ and $\eta_{\infty} \in \G_{\infty}$. But then $(\s_{\mf{a}}')^{-1} = \eta_{\infty}^{-1}\s_{\mf{a}}^{-1}\eta_{\mf{a}}^{-1}$ and as $\eta_{\mf{a}}^{-1}\g$ is in the same equivalence class as $\g$ and the action of $\eta_{\infty}^{-1}$ does not affect the imaginary part (as it acts by translation), we conclude $\Im((\s_{\mf{a}}')^{-1}\g z) = \Im(\s_{\mf{a}}^{-1}\g z)$. Hence $E_{\mf{a}}(z,s)$ is independent of the scaling matrix used. We now show that this series is locally absolutely uniformly convergent for $z \in \H$ and $\Re(s) > 1$. To see this, applying the Bruhat decomposition to $\s_{\mf{a}}^{-1}\G_{\mf{a}}\backslash\G = \G_{\infty}\backslash\s_{\mf{a}}^{-1}\G$ yields
+    To see that $E_{k,\chi,\mf{a}}(z,s)$ is independent of the scaling matrix $\s_{\mf{a}}$, suppose $\s_{\mf{a}}'$ is another scaling matrix for the $\mf{a}$ cusp. Then $\s_{\mf{a}}' = \eta_{\mf{a}}\s_{\mf{a}}\eta_{\infty}$ for some $\eta_{\mf{a}} \in \G_{\mf{a}}$ and $\eta_{\infty} \in \G_{\infty}$. But then $(\s_{\mf{a}}')^{-1} = \eta_{\infty}^{-1}\s_{\mf{a}}^{-1}\eta_{\mf{a}}^{-1}$ and as $\eta_{\mf{a}}^{-1}\g$ is in the same equivalence class as $\g$ and the action of $\eta_{\infty}^{-1}$ does not affect the imaginary part (as it acts by translation), we conclude $\Im((\s_{\mf{a}}')^{-1}\g z) = \Im(\s_{\mf{a}}^{-1}\g z)$. Similarly, $\e((\s_{\mf{a}}')^{-1}\g,z) = \e(\eta_{\infty}^{-1}\s_{\mf{a}}^{-1}\g,z)$. But the coycle relation further implies $\e(\eta_{\infty}^{1}\s_{\mf{a}}^{-1}\g,z) = \e(\eta_{\infty}^{-1},\s_{\mf{a}}^{-1}\g z)\e(\s_{\mf{a}}^{-1}\g,z) = \e(\s_{\mf{a}}^{-1}\g,z)$. Thus $\e((\s_{\mf{a}}')^{-1}\g,z) = \e(\s_{\mf{a}}^{-1}\g,z)$. Altogether, this shows $E_{k,\chi,\mf{a}}(z,s)$ is independent of the scaling matrix used. We now show that this series is locally absolutely uniformly convergent for $z \in \H$ and $\Re(s) > 1$. To see this, applying the Bruhat decomposition to $\s_{\mf{a}}^{-1}\G_{\mf{a}}\backslash\G = \G_{\infty}\backslash\s_{\mf{a}}^{-1}\G$ yields
     \[
-      E_{\mf{a}}(z,s) \ll \sum_{(c,d) \in \Z^{2}-\{\mathbf{0}\}}\frac{\Im(z)^{s}}{|cz+d|^{2s}}.
+      E_{k,\chi,\mf{a}}(z,s) \ll \sum_{(c,d) \in \Z^{2}-\{\mathbf{0}\}}\frac{\Im(z)^{s}}{|cz+d|^{2s}}.
     \]
-    The latter series is locally absolutely uniformly convergent for $\Re(s) > 1$ and $z \in \H$ by \cref{prop:general_lattice_sum_convergence_for_two_variables}. Therefore $E_{\mf{a}}(z,s)$ does too. To see that it is automorphic on $\GH$, let $\g \in \G$. Then
+    The latter series is locally absolutely uniformly convergent for $\Re(s) > 1$ and $z \in \H$ by \cref{prop:general_lattice_sum_convergence_for_two_variables}. Therefore $E_{k,\chi,\mf{a}}(z,s)$ does too. To see that it is automorphic on $\GH$, let $\g \in \G$. Then we make a short computation:
+    \begin{align*}
+      E_{k,\chi,\mf{a}}(\g z,s) &= \sum_{\g' \in \G_{\mf{a}}\backslash\G}\cchi(\g')\e(\s_{\mf{a}}^{-1}\g',\g z)^{-k}\Im(\s_{\mf{a}}^{-1}\g'\g z)^{s} \\
+      &= \sum_{\g' \in \G_{\mf{a}}\backslash\G}\cchi(\g')\left(\frac{\e(\s_{\mf{a}}^{-1}\g'\g,z)}{\e(\g,z)}\right)^{-k}\Im(\s_{\mf{a}}^{-1}\g'\g z)^{s} && \text{cocycle condition} \\
+      &= \e(\g,z)^{k}\sum_{\g' \in \G_{\mf{a}}\backslash\G}\cchi(\g')\e(\s_{\mf{a}}^{-1}\g'\g,z)^{-k}\Im(\s_{\mf{a}}^{-1}\g'\g z)^{s} \\
+      &= \chi(\g)\e(\g,z)^{k}\sum_{\g' \in \G_{\mf{a}}\backslash\G}\cchi(\g')\cchi(\g)\e(\s_{\mf{a}}^{-1}\g'\g,z)^{-k}\Im(\s_{\mf{a}}^{-1}\g'\g z)^{s} \\
+      &= \chi(\g)\e(\g,z)^{k}\sum_{\g' \in \G_{\mf{a}}\backslash\G}\cchi(\g'\g)\e(\s_{\mf{a}}^{-1}\g'\g,z)^{-k}\Im(\s_{\mf{a}}^{-1}\g'\g z)^{s} \\
+      &= \chi(\g)\e(\g,z)^{k}\sum_{\g' \in \G_{\mf{a}}\backslash\G}\cchi(\g')\e(\s_{\mf{a}}^{-1}\g',z)^{-k}\Im(\s_{\mf{a}}^{-1}\g' z)^{s} && \text{$\g' \to \g'\g^{-1}$ bijection on $\G$} \\
+      &= \chi(\g)\e(\g,z)^{k}E_{k,\chi,\mf{a}}(z,s).
+    \end{align*}
+    Now we show that it is an eigenfunction for $\D_{k}$. Observe that
     \[
-      E_{\mf{a}}(\g z,s) = \sum_{\g' \in \G_{\mf{a}}\backslash\G}\Im(\s_{\mf{a}}^{-1}\g'\g z)^{s} = \sum_{\g' \in \G_{\mf{a}}\backslash\G}\Im(\s_{\mf{a}}^{-1}\g'z)^{s} = E_{\mf{a}}(z,s),
+      \D_{k}(y^{s}) = \left(-y^{2}\left(\frac{\del^{2}}{\del x^{2}}+\frac{\del^{2}}{\del y^{2}}\right)+iky\frac{\del}{\del x}\right)(y^{s}) = \l(s)y^{s}.
     \]
-    where the second equality follows because $\g' \to \g'\g^{-1}$ is a bijection on $\G$. Now we show that it is an eigenfunction for $\D$. Observe
+    Therefore $\Im(z)^{s} = y^{s}$ is an eigenfunction for $\D_{k}$ with eigenvalue $\l(s)$. Since $\D_{k}$ is invariant,
     \[
-      \D(y^{s}) = -y^{2}\left(\frac{\del^{2}}{\del x^{2}}+\frac{\del^{2}}{\del y^{2}}\right)(y^{s}) = s(1-s)y^{s}.
+      \D_{k}((\Im(\cdot)^{s}|_{\e,k}\g)(z)) = ((\D_{k}\Im(\cdot)^{s})|_{\e,k}\g)(z) = \l(s)(\Im(\cdot)^{s}|_{\e,k}\g)(z),
     \]
-    Therefore $\Im(z)^{s} = y^{s}$ is an eigenfunction for $\D$ with eigenvalue $s(1-s)$. Since $\D$ is $\G$-invariant,
+    and so $(\Im(\cdot)^{s}|_{\e,k}\g)(z) = \e(\g,z)^{-k}\Im(\g z)^{s}$ is also an eigenfunction for $\D_{k}$ with eigenvalue $\l(s)$ for all $\g \in \PSL_{2}(\Z)$. We immeditely conclude that
     \[
-      \D(\Im(\g z)^{s}) = (\D\Im(\cdot)^{s})(\g z) = s(1-s)\Im(\g z)^{s},
+      \D_{k}(E_{k,\chi,\mf{a}}(z,s)) = \l(s)E_{k,\chi,\mf{a}}(z,s),
     \]
-    so that $\Im(\g z)^{s}$ is also an eigenfunction for $\D$ with eigenvalue $s(1-s)$. It follows immediately that
+    which shows $E_{k,\chi,\mf{a}}(z,s)$ is also an eigenfunction for $\D_{k}$ with eigenvalue $\l(s)$. We now verify the growth condition for $E_{k,\chi,\mf{a}}(z,s)$. Let $\s_{\mf{b}}$ be a scaling matrix for the cusp $\mf{b}$ and write $\s_{\mf{b}} = \begin{psmallmatrix} a' & b' \\ c' & d' \end{psmallmatrix}$. Then
     \[
-      \D(E_{\mf{a}}(z,s)) = s(1-s)E_{\mf{a}}(z,s),
-    \]
-    which shows $E_{\mf{a}}(z,s)$ is also an eigenfunction for $\D$ with eigenvalue $s(1-s)$. We now verify the growth condition for $E_{\mf{a}}(z,s)$. Let $\s_{\mf{b}}$ be a scaling matrix for the cusp $\mf{b}$ and write $\s_{\mf{b}} = \begin{psmallmatrix} a' & b' \\ c' & d' \end{psmallmatrix}$. Then
-    \[
-      E_{\mf{a}}(\s_{\mf{b}}z,s) \ll \sum_{(c,d) \in \Z^{2}-\{\mathbf{0}\}}\frac{\Im(\s_{\mf{b}}z)^{s}}{|c\s_{\mf{b}}z+d|^{2s}} = \frac{\Im(z)^{s}}{|c'z+d'|^{2s}}\sum_{(c,d) \in \Z^{2}-\{\mathbf{0}\}}\frac{1}{|c\s_{\mf{b}}z+d|^{2s}}.
+      E_{k,\chi,\mf{a}}(\s_{\mf{b}}z,s) \ll \sum_{(c,d) \in \Z^{2}-\{\mathbf{0}\}}\frac{\Im(\s_{\mf{b}}z)^{s}}{|c\s_{\mf{b}}z+d|^{2s}} = \frac{\Im(z)^{s}}{|c'z+d'|^{2s}}\sum_{(c,d) \in \Z^{2}-\{\mathbf{0}\}}\frac{1}{|c\s_{\mf{b}}z+d|^{2s}}.
     \]
     Now decompose this last sum as
     \[
@@ -153,106 +199,47 @@
     \[
       E_{\mf{a}}(\s_{\mf{b}}z,s) \ll \Im(z)^{s} = o(e^{2\pi\Im(z)}),
     \]
-    provided $\Im(z) \ge 1$ and $\Re(s) > 1$. This verifies $E_{\mf{a}}(z,s)$ is of moderate growth at the cusps. We collect all of this work as a theorem:
+    provided $\Im(z) \ge 1$ and $\Re(s) > 1$. This verifies $E_{k,\chi,\mf{a}}(z,s)$ is of moderate growth at the cusps. We collect all of this work as a theorem:
 
     \begin{theorem}
       For $\Re(s) > 1$, the Eisenstein series
       \[
-          E_{\mf{a}}(z,s) = \sum_{\g \in \G_{\mf{a}}\backslash\G}\Im(\g z)^{s},
+          E_{k,\chi,\mf{a}}(z,s) = \sum_{\g \in \G_{\mf{a}}\backslash\G}\cchi(\g)\e(\s_{\mf{a}}^{-1}\g,z)^{-k}\Im(\s_{\mf{a}}^{-1}\g z)^{s},
       \]
-      is a Maass form on $\GH$ with eigenvalue $\l = s(1-s)$.
-    \end{theorem}
-
-    There is also an important class of automorphic functions on $\GH$. They are are the Poincar\'e series with test functions. To build these series we first need the notion of a test function. If $\psi:\R^{+} \to \C$ is a smooth function such that
-    \[
-      \psi(y) \ll y^{1+\e}
-    \]
-    for some $\e > 0$ as $y \to 0$. We call $\psi$ a \textbf{test function}\index{test function}. We will consider a Poincar\'e series modified by $\psi$. Let $\s_{\mf{a}}$ be a scaling matrix for the $\mf{a}$ cusp. Then the \textbf{(Maass) Poincar\'e series}\index{(Maass) Poincar\'e series} $P_{\mf{a},m}(z,\psi)$ at the $\mf{a}$ cusp with test function $\psi$ is defined by
-    \[
-      P_{\mf{a},m}(z,\psi) = \sum_{\g \in \G_{\mf{a}}\backslash\G}\psi(\Im(\s_{\mf{a}}^{-1}\g z))e^{2\pi im\s_{\mf{a}}^{-1}\g z}.
-    \]
-    We first show $P_{\mf{a},m}(z,\psi)$ is well-defined. To do this we need to check that $e^{2\pi im\s_{\mf{a}}^{-1}\g z}$ is independent of the representative $\g$ used. If $\g'$ represents the same element as $\g$ in $\G_{\mf{a}}\backslash\G$, then they differ on the left by an element of $\eta_{\mf{a}} \in \G_{\mf{a}}$. So suppose $\g' = \eta_{\mf{a}}\g$. As $\G_{\mf{a}} = \s_{\mf{a}}\G_{\infty}\s_{\mf{a}}^{-1}$, $\eta_{\mf{a}} = \s_{\mf{a}}\eta_{\infty}\s_{\mf{a}}^{-1}$ for some $\eta_{\infty} \in \G_{\infty}$ say with $\eta_{\infty} = \begin{psmallmatrix} 1 & n \\ 0 & 1 \end{psmallmatrix} \in \G_{\infty}$. Then
-    \[
-      e^{2\pi im\s_{\mf{a}}^{-1}\g' z} = e^{2\pi im\s_{\mf{a}}^{-1}\eta_{\mf{a}}\g z} = e^{2\pi im\eta_{\infty}\s_{\mf{a}}^{-1}\g z} = e^{2\pi im(\s_{\mf{a}}^{-1}\g z+n)} = e^{2\pi im\s_{\mf{a}}^{-1}\g z}e^{2\pi imnz} = e^{2\pi im\s_{\mf{a}}^{-1}\g z},
-    \]
-    and hence $P_{\mf{a},m}(z,\psi)$ is well-defined. We now show that $P_{\mf{a},m}(z,\psi)$ is also independent of the scaling matrix. To see this, first note that $\Im(\s_{\mf{a}}^{-1}\g z)$ is independent of the scaling matrix in exactly the same way as we showed for the Eisenstein series. It now suffices to show that $e^{2\pi im\s_{\mf{a}}^{-1}\g z}$ is independent of the scaling matrix too. So suppose $\s_{\mf{a}}'$ is another scaling matrix for the $\mf{a}$ cusp. Then $\s_{\mf{a}}' = \eta_{\mf{a}}\s_{\mf{a}}\eta_{\infty}$ for some $\eta_{\mf{a}} \in \G_{\mf{a}}$ and $\eta_{\infty} \in \G_{\infty}$ say with $\eta_{\infty} = \begin{psmallmatrix} 1 & n \\ 0 & 1 \end{psmallmatrix} \in \G_{\infty}$. But then $(\s_{\mf{a}}')^{-1} = \eta_{\infty}^{-1}\s_{\mf{a}}^{-1}\eta_{\mf{a}}^{-1}$ and as $\eta_{\infty}^{-1} = \begin{psmallmatrix} 1 & -n \\ 0 & 1 \end{psmallmatrix}$, we have
-    \[
-      e^{2\pi im(\s_{\mf{a}}')^{-1}\g z} = e^{2\pi im\eta_{\infty}^{-1}\s_{\mf{a}}^{-1}\eta_{\mf{a}}^{-1}\g z} = e^{2\pi im(\s_{\mf{a}}^{-1}\eta_{\mf{a}}^{-1}\g z-n)} = e^{2\pi im\s_{\mf{a}}^{-1}\eta_{\mf{a}}^{-1}\g z}e^{-2\pi imn} = e^{2\pi im\s_{\mf{a}}^{-1}\eta_{\mf{a}}^{-1}\g z} = e^{2\pi im\s_{\mf{a}}^{-1}\g z},
-    \]
-    where the last equality follows since $\eta_{\mf{a}}^{-1}\g$ is in the same equivalence class as $\g$ and that $e^{2\pi im\s_{\mf{a}}^{-1}\g z}$ is independent of the representative $\g$ used. It follows that $P_{\mf{a},m}(z,\psi)$ is independent of the scaling matrix. Moreover, $P_{\mf{a},m}(z,\psi)$ is locally absolutely uniformly convergent for $z \in \H$, but to see this we first require a technical lemma:
-
-    \begin{lemma}\label{lem:finitely_many_pairs_with_size_larger_than_one}
-      For any compact subset $K$ of $\H$, there are finitely many pairs $(c,d) \in \Z^{2}-\{\mathbf{0}\}$, with $c \neq 0$, for which
-      \[
-        \frac{\Im(z)}{|cz+d|^{2}} > 1,
-      \]
-      for all $z \in K$.
-      \end{lemma}
-      \begin{proof}
-      Let $\b = \sup_{z \in K}|z|$ . As $|cz+d| \ge |cz| > 0$ and $\Im(z) < |z|$, we have
-      \[
-        \frac{\Im(z)}{|cz+d|^{2}} \le \frac{1}{|c|^{2}|z|} \le \frac{1}{|c|^{2}\b}.
-      \]
-      So if $\frac{\Im(z)}{|cz+d|^{2}} > 1$, then $\frac{1}{|c|^{2}\b} > 1$ which is to say $|c| < \frac{1}{\sqrt{\b}}$ and therefore $|c|$ is bounded. On the other hand, $|cz+d| \ge |d| \ge 0$. Excluding the finitely many terms $(c,0)$, we may assume $|d| > 0$. In this case, similarly  
-      \[
-        \frac{\Im(z)}{|cz+d|^{2}} \le \frac{|z|}{|d|^{2}} \le \frac{\b}{|d|^{2}}.
-      \]
-      So if $\frac{\Im(z)}{|cz+d|^{2}} > 1$, then $\frac{\b}{|d|^{2}}> 1$ which is to say $|d| < \sqrt{\b}$. So $|d|$ is also bounded. Since both $|c|$ and $|d|$ are bounded, the claim follows.
-    \end{proof}
-    
-    Now we are ready to show that $P_{\mf{a},m}(z,\psi)$ is locally absolutely uniformly convergent. Let $K$ be a compact subset of $\H$. Then it suffices to show $P_{\mf{a},m}(z,\psi)$ is uniformly convergent on $K$. Applying the Bruhat decomposition to $\s_{\mf{a}}^{-1}\G_{\mf{a}}\backslash\G = \G_{\infty}\backslash\s_{\mf{a}}^{-1}\G$ gives
-    \[
-      P_{\mf{a},m}(z,\psi) \ll \psi(\Im(z))+\sum_{\substack{(c,d) \in \Z^{2}-\{\mathbf{0}\}}}\psi\left(\frac{\Im(z)}{|cz+d|^{2}}\right).
-    \]
-    It now further suffices to show that the series above is uniformly convergent on $K$. By \cref{lem:finitely_many_pairs_with_size_larger_than_one} there are all but finitely many terms in the sum with $\psi\left(\frac{\Im(z)}{|cz+d|^{2}}\right) \ll \left(\frac{\Im(z)}{|cz+d|^{2}}\right)^{1+\e}$. But the finitely many other terms are all uniformly bounded on $K$ because $\psi$ is continuous (as it is smooth). Therefore
-    \[
-      \sum_{\substack{(c,d) \in \Z^{2}-\{\mathbf{0}\} \\ d \tmod{c}}}\psi\left(\frac{\Im(z)}{|cz+d|^{2}}\right) \ll \sum_{\substack{(c,d) \in \Z^{2}-\{\mathbf{0}\} \\ d \tmod{c}}}\left(\frac{\Im(z)}{|cz+d|^{2}}\right)^{1+\e} \ll \sum_{(c,d) \in \Z^{2}-\{\mathbf{0}\}}\left(\frac{\Im(z)}{|cz+d|^{2}}\right)^{1+\e},
-    \]
-    and this last series is locally absolutely uniformly convergent for $z \in \H$ by \cref{prop:general_lattice_sum_convergence_for_two_variables}. It follows that $P_{\mf{a},m}(z,\psi)$ does too. We now show that $P_{\mf{a},m}(z,\psi)$ is automorphic on $\GH$. So letting $\g \in \G$, we have
-    \[
-      P_{\mf{a},m}(\g z,\psi) = \sum_{\g' \in \G_{\mf{a}}\backslash\G}\psi(\Im(\s_{\mf{a}}^{-1}\g'\g z))e^{2\pi im\s_{\mf{a}}^{-1}\g'\g z} = \sum_{\g' \in \G_{\mf{a}}\backslash\G}\psi(\Im(\s_{\mf{a}}^{-1}\g' z))e^{2\pi im\s_{\mf{a}}^{-1}\g' z} = P_{\mf{a},m}(z,\psi),
-    \]
-    where the second equality follows because $\g' \to \g'\g^{-1}$ is a bijection on $\G$. Therefore $P_{\mf{a},m}(z,\psi)$ is automorphic on $\GH$. We collect this work as a theorem:
-
-    \begin{theorem}
-      Let $\psi$ be a test function. The Poincar\'e series
-      \[
-        P_{\mf{a},m}(z,\psi) = \sum_{\g \in \G_{\mf{a}}\backslash\G}\psi(\Im(\s_{\mf{a}}^{-1}\g z))e^{2\pi im\s_{\mf{a}}^{-1}\g z},
-      \]
-      is an automorphic function on $\GH$.
+      is a weight $k$ Maass form with eigenvalue $\l(s)$ and character $\chi$ on $\GH$.
     \end{theorem}
   \section{\texorpdfstring{$L^{2}$}{L{2}}-integrable Automorphic Functions}
-    We will describe the space of automorphic functions and appropriate subspaces of interest. Let $\mc{A}(\G)$ denote the space of all automorphic functions on $\GH$. We will usually restrict our interest to the subspace
+    We will describe the space of automorphic functions and appropriate subspaces of interest. Let $\G$ be a congruence subgroup of level $N$ and let $\chi$ be a Dirichlet character of conductor $q \mid N$. We will let $\mc{A}_{k}(\G,\chi)$ denote the space of all automorphic functions of weight $k$ and character $\chi$ on $\GH$. We will usually restrict our interest to the subspace
     \[
-      \mc{L}(\G) = \{f \in \mc{A}(\G):||f|| < \infty\},
+      \mc{L}_{k}(\G,\chi) = \{f \in \mc{A}_{k}(\G,\chi):||f|| < \infty\},
     \]
-    of $L^{2}$-integrable automorphic functions over $\mc{F}_{\G}$, where the norm is given by
+    of the corresponding $L^{2}$-integrable automorphic functions over $\mc{F}_{\G}$, where the norm is given by
     \[
       ||f|| = \left(\frac{1}{V_{\G}}\int_{\mc{F}_{\G}}|f(z)|^{2}\,d\mu\right)^{\frac{1}{2}}.
     \]
-    Since $f$ is automorphic, the integral is independent of the choice of fundamental domain. Since this is an $L^{2}$-space, $\mc{L}(\G)$ is an induced inner product space (because the parallelogram law is satisfied). In particular, for any $f,g \in \mc{L}(\G)$ we define their \textbf{Petersson inner product}\index{Petersson inner product} to be
+    Since $f$ is automorphic, the integral $\G$-invariant and hence is independent of the choice of fundamental domain. Since this is an $L^{2}$-space, $\mc{L}_{k}(\G,\chi)$ is an induced inner product space (because the parallelogram law is satisfied). In particular, for any $f,g \in \mc{L}_{k}(\G,\chi)$ we define their \textbf{Petersson inner product}\index{Petersson inner product} to be
     \[
       \<f,g\>_{\G} = \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}f(z)\conj{g(z)}\,d\mu.
     \]
-    If the congruence subgroup is clear from context we will supress the dependence upon $\G$. The integral is absolutely bounded by the Cauchy–Schwarz inequality and that $f,g \in \mc{L}(\G)$. As $f$ and $g$ are automorphic, the integral is independent of the choice of fundamental domain. These two facts imply that the Petersson inner product is well-defined. We will continue to use this notion even if $f$ and $g$ do not belong to $\mc{L}(\G)$ provided the integral is absolutely bounded. Moreover, we have the following proposition:
+    If the congruence subgroup is clear from context we will supress the dependence upon $\G$. The integral is absolutely bounded by the Cauchy–Schwarz inequality and that $f,g \in \mc{L}_{k}(\G,\chi)$. As $f$ and $g$ are automorphic, the integral is independent of the choice of fundamental domain. These two facts imply that the Petersson inner product is well-defined. We will continue to use this notion even if $f$ and $g$ do not belong to $\mc{L}_{k}(\G,\chi)$ provided the integral is absolutely bounded. Moreover, we have the following proposition:
 
     \begin{proposition}
-      $\mc{L}(\G)$ is a Hilbert space with respect to the Petersson inner product.
+      $\mc{L}_{k}(\G,\chi)$ is a Hilbert space with respect to the Petersson inner product.
     \end{proposition}
     \begin{proof}
-      To show that the Petersson inner product is a Hermitian inner product on $\mc{L}(\G)$, just mimic the corresponding part of proof of \cref{prop:Petersson_inner_product_hermitian} with $k = 0$. We now show that $\mc{L}(\G)$ is complete. Let $(f_{n})_{n \ge 1}$ be a Cauchy sequence in $\mc{L}(\G)$. Then $||f_{n}-f_{m}|| \to 0$ as $n,m \to \infty$. But
+      To show that the Petersson inner product is a Hermitian inner product on $\mc{L}_{k}(\G,\chi)$, just mimic the corresponding part of proof of \cref{prop:Petersson_inner_product_hermitian} with $k = 0$. We now show that $\mc{L}_{k}(\G,\chi)$ is complete. Let $(f_{n})_{n \ge 1}$ be a Cauchy sequence in $\mc{L}_{k}(\G,\chi)$. Then $||f_{n}-f_{m}|| \to 0$ as $n,m \to \infty$. But
       \[
         ||f_{n}-f_{m}|| = \left(\frac{1}{V_{\G}}\int_{\mc{F}_{\G}}|f_{n}(z)-f_{m}(z)|^{2}\,d\mu\right)^{\frac{1}{2}},
       \]
       and this integral tends to zero if and only if $|f_{n}(z)-f_{m}(z)| \to 0$ as $n,m \to \infty$. Therefore $\lim_{n \to \infty}f_{n}(z)$ exists and we define the limiting function $f$ by $f(z) = \lim_{n \to \infty}f_{n}(z)$. We claim that $f$ is automorphic. Indeed, as the $f_{n}$ are automorphic, we have
       \[
-        f(\g z) = \lim_{n \to \infty}f_{n}(\g z) = \lim_{n \to \infty}f_{n}(z) = f(z),
+        f(\g z) = \lim_{n \to \infty}f_{n}(\g z) = \lim_{n \to \infty}\chi(\g)\e(\g,z)^{k}f_{n}(z) = \chi(\g)\e(\g,z)^{k}\lim_{n \to \infty}f_{n}(z) = \chi(\g)\e(\g,z)^{k}f(z),
       \]
       for any $\g \in \G$. Also, $||f|| < \infty$. To see this, since $(f_{n})_{n \ge 1}$ is Cauchy we know $(||f_{n}||)_{n \ge 1}$ converges. In particular, $\lim_{n \to \infty}||f_{n}|| < \infty$. But
       \[
         \lim_{n \to \infty}||f_{n}|| = \lim_{n \to \infty}\left(\frac{1}{V_{\G}}\int_{\mc{F}_{\G}}|f_{n}(z)|^{2}\,d\mu\right)^{\frac{1}{2}} = \left(\frac{1}{V_{\G}}\int_{\mc{F}_{\G}}\left|\lim_{n \to \infty}f_{n}(z)\right|^{2}\,d\mu\right)^{\frac{1}{2}} = \left(\frac{1}{V_{\G}}\int_{\mc{F}_{\G}}|f(z)|^{2}\,d\mu\right)^{\frac{1}{2}} = ||f||,
       \]
-      where the second equality holds by the dominated convergence theorem. Hence $||f|| < \infty$ as desired and so $f \in \mc{L}(\G)$. We now show that $f_{n} \to f$ in the $L^{2}$-norm. Indeed,
+      where the second equality holds by the dominated convergence theorem. Hence $||f|| < \infty$ as desired and so $f \in \mc{L}_{k}(\G,\chi)$. We now show that $f_{n} \to f$ in the $L^{2}$-norm. Indeed,
       \[
         ||f(z)-f_{n}(z)|| = \left(\frac{1}{V_{\G}}\int_{\mc{F}_{\G}}|f(z)-f_{n}(z)|^{2}\,d\mu\right)^{\frac{1}{2}},
       \]
@@ -261,107 +248,109 @@
 
     Now consider the subspaces
     \begin{gather*}
-      \mc{D}(\G) = \{f \in \mc{A}(\G):\text{$f$ and $\D f$ are smooth and bounded}\}, \\
-      \mc{B}(\G) = \{f \in \mc{A}(\G):\text{$f$ is smooth and bounded}\}.
+      \mc{D}_{k}(\G,\chi) = \{f \in \mc{A}_{k}(\G,\chi):\text{$f$ and $\D f$ are smooth and bounded}\}, \\
+      \mc{B}_{k}(\G,\chi) = \{f \in \mc{A}_{k}(\G,\chi):\text{$f$ is smooth and bounded}\}.
     \end{gather*}
     Since boundedness on $\H$ implies square-integrability over $\mc{F}_{\G}$, we have the following chain of inclusions:
     \[
-      \mc{D}(\G) \subseteq \mc{B}(\G) \subseteq \mc{L}(\G) \subseteq \mc{A}(\G).
+      \mc{D}_{k}(\G,\chi) \subseteq \mc{B}_{k}(\G,\chi) \subseteq \mc{L}_{k}(\G,\chi) \subseteq \mc{A}_{k}(\G,\chi).
     \]
-    Moreover, $\mc{D}(\G)$ is almost all of $\mc{L}(\G)$ as the following proposition shows:
+    For all of these spaces, if $\chi$ is the trivial character or if $k = 0$, we will surpress these dependences. Moreover, $\mc{D}_{k}(\G,\chi)$ is almost all of $\mc{L}_{k}(\G,\chi)$ as the following proposition shows:
 
     \begin{proposition}\label{prop:dense_subspace_of_square-integrable_modular_functions}
-      $\mc{D}(\G)$ is dense in $\mc{L}(\G)$.
+      $\mc{D}_{k}(\G,\chi)$ is dense in $\mc{L}_{k}(\G,\chi)$.
     \end{proposition}
     \begin{proof}
-      Note that $\mc{D}(\G)$ is an algebra of functions that vanish at infinity. We will show that $\mc{D}(\G)$ is nowhere vanishing, seperates points, and is self-adjoint. For nowhere vanishing, observe that for each $z \in \H$, $\mc{D}(\G)$ contains a smooth bump function $\vphi_{z}$ defined on some neighborhood $U_{z}$ of $z$. We now show $\mc{D}(\G)$ also seperates points. To see this consider two distinct points $z,w \in \H$. Let $U_{z,w}$ be a small neighborhood of $z$ not containing $w$. Then $\vphi_{z}\mid_{U_{z,w}}$ belongs to $\mc{D}(\G)$ with $\vphi_{z}\mid_{U_{z,w}}(z) = 1$ and $\vphi_{z}\mid_{U_{z,w}}(w) = 0$. To see why $\mc{D}(\G)$ is self-adjoint, recall that complex conjugation is smooth and commutes with partial derivatives so that if $f$ belongs to $\mc{D}(\G)$ then so does $\conj{f}$. Therefore the Stone–Weierstrass theorem for complex functions defined on locally compact Hausdorff spaces (as $\H$ is a locally compact Hausdorff space) implies that $\mc{D}(\G)$ is dense in $C_{0}(\H)$ with the supremum norm. Note that $\mc{L}(\G) \subseteq C_{0}(\H)$ on the level of sets. Now we show $\mc{D}(\G)$ is dense in $\mc{L}(\G)$. Let $f \in \mc{L}(\G)$. By what we have just show, there exists a sequence $(f_{n})_{n \ge 1}$ in $\mc{D}(\G)$ converging to $f$ in the supremum norm. But 
+      Note that $\mc{D}_{k}(\G,\chi)$ is an algebra of functions that vanish at infinity. We will show that $\mc{D}_{k}(\G,\chi)$ is nowhere vanishing, seperates points, and is self-adjoint. For nowhere vanishing fix a $z \in \H$. Let $\vphi_{z}$ be a bump function defined on some sufficiently small neighborhood $U_{z}$ of $z$. Then
+      \[
+        \Phi(v) = \sum_{\g \in \G_{\infty}\backslash\G}\cchi(\g)\e(\g,v)^{-k}\vphi_{z}(\g v),
+      \]
+      belongs to $\mc{D}_{k}(\G,\chi)$ and is nonzero at $z$ (the automorphy follows exactly as in the case of Eisenstein series). We now show $\mc{D}_{k}(\G,\chi)$ also seperates points. To see this consider two distinct points $z,w \in \H$. Let $U_{z,w}$ be a small neighborhood of $z$ not containing $w$. Then $\Phi_{z}\mid_{U_{z,w}}$ belongs to $\mc{D}_{k}(\G,\chi)$ with $\Phi_{z}\mid_{U_{z,w}}(z) \neq 0$ and $\vphi_{z}\mid_{U_{z,w}}(w) = 0$. To see why $\mc{D}_{k}(\G,\chi)$ is self-adjoint, recall that complex conjugation is smooth and commutes with partial derivatives so that if $f$ belongs to $\mc{D}_{k}(\G,\chi)$ then so does $\conj{f}$. Therefore the Stone–Weierstrass theorem for complex functions defined on locally compact Hausdorff spaces (as $\H$ is a locally compact Hausdorff space) implies that $\mc{D}_{k}(\G,\chi)$ is dense in $C_{0}(\H)$ with the supremum norm. Note that $\mc{L}_{k}(\G,\chi) \subseteq C_{0}(\H)$ on the level of sets. Now we show $\mc{D}_{k}(\G,\chi)$ is dense in $\mc{L}_{k}(\G,\chi)$. Let $f \in \mc{L}_{k}(\G,\chi)$. By what we have just show, there exists a sequence $(f_{n})_{n \ge 1}$ in $\mc{D}_{k}(\G,\chi)$ converging to $f$ in the supremum norm. But 
       \[
         ||f-f_{n}|| = \left(\frac{1}{V_{\G}}\int_{\mc{F}_{\G}}|f(z)-f_{n}(z)|^{2}\,d\mu\right)^{\frac{1}{2}} \le \left(\frac{1}{V_{\G}}\int_{\mc{F}_{\G}}\sup_{z \in \mc{F}_{\G}}|f(z)-f_{n}(z)|^{2}\,d\mu\right)^{\frac{1}{2}},
       \]
       and the last expression tends to zero as $n \to \infty$ because $f_{n} \to f$ in the supremum norm.
     \end{proof}
 
-    As $\mc{D}(\G) \subseteq \mc{B}(\G)$, \cref{prop:dense_subspace_of_square-integrable_modular_functions} implies that $\mc{B}(\G)$ is dense in $\mc{L}(\G)$ too. It can be shown that the Laplace operator $\D$ is positive and symmetric on $\mc{D}(\G)$ and hence admits a self-adjoint extension to $\mc{L}(\G)$ (see \cite{iwaniec2002spectral} for a proof):
+    As $\mc{D}_{k}(\G,\chi) \subseteq \mc{B}_{k}(\G,\chi)$, \cref{prop:dense_subspace_of_square-integrable_modular_functions} implies that $\mc{B}_{k}(\G,\chi)$ is dense in $\mc{L}_{k}(\G,\chi)$ too. It can be shown that the Laplace operator $\D_{k}$ is positive and symmetric on $\mc{D}_{k}(\G,\chi)$ and hence admits a self-adjoint extension to $\mc{L}_{k}(\G,\chi)$ (see \cite{iwaniec2002spectral} for a proof in the weight zero case):
 
     \begin{theorem}\label{thm:Laplace_semi-definite_self-adjoint}
-      On $\mc{L}(\G)$, the Laplace operator $\D$ is positive semi-definite and self-adjoint.
+      On $\mc{L}_{k}(\G,\chi)$, the Laplace operator $\D_{k}$ is positive semi-definite and self-adjoint.
     \end{theorem}
 
-    If we suppose $f \in \mc{L}(\G)$ is an eigenfunction for $\D$ with eigenvalue $\l$, then \cref{thm:Laplace_semi-definite_self-adjoint} implies $\l$ is real and positive. Writing $\l = s(1-s)$, we see that $s$ and $1-s$ are the roots of the polynomial $z^{2}-z+\l$. As $\l$ is real, these roots are either conjugate symmetric or real. In the former case, $s = 1-\conj{s}$ so that if $s = \s+it$, we find
+    If we suppose $f \in \mc{L}_{k}(\G,\chi)$ is an eigenfunction for $\D_{k}$ with eigenvalue $\l = \l(s)$, then \cref{thm:Laplace_semi-definite_self-adjoint} implies $\l(s)$ is real and positive. Moreover, $s$ and $1-s$ are roots of the polynomial $z^{2}-z+\l$. As $\l$ is real, these roots are either conjugate symmetric or real. In the former case, $s = 1-\conj{s}$ so that if $s = \s+it$, we find
     \[
       \s = 1-\s \quad \text{and} \quad t = t.
     \]
-    Therefore $s = \frac{1}{2}+it$. In the later case, $s$ is real and since $\l$ is positive we must have $s \in (0,1)$. It follows that in either case, we may write $\l = \frac{1}{4}+t^{2}$ with either $t \in \R$ or $it \in [0,\frac{1}{2})$. We refer to $t$ as the \textbf{spectral parameter} of $f$. Note that we can then write
+    Therefore $s = \frac{1}{2}+it$. In the later case, $s$ is real and since $\l(s)$ is positive we must have $s \in (0,1)$. It follows that in either case, we may write $\l = \frac{1}{4}+t^{2}$ with either $t \in \R$ or $it \in [0,\frac{1}{2})$. We refer to $t$ as the \textbf{spectral parameter} of $f$. Note that we can then write
     \[
       \l = s(1-s) = \frac{1}{4}+t^{2}.
     \]
-    Unfortunately the Eisenstein series $E_{\mf{a}}(z,s)$ are not $L^{2}$-integrable over $\mc{F}_{\G}$ and so do not belong to $\mc{L}(\G)$. To obtain integrable automorphic functions we will agument these Eisenstein series so that they have compact support. Let $\psi:\R^{+} \to \C$ be a smooth compactly supported function and $\s_{\mf{a}}$ be a scaling matrix for the $\mf{a}$ cusp. We define the \textbf{(incomplete) Eisenstein series}\index{(incomplete) Eisenstein series} $E_{\mf{a}}(z,\psi)$ at the $\mf{a}$ cusp with respect to $\psi$ by
+    Unfortunately the Eisenstein series $E_{k,\chi,\mf{a}}(z,s)$ are not $L^{2}$-integrable over $\mc{F}_{\G}$ and so do not belong to $\mc{L}_{k}(\G,\chi)$. To obtain integrable automorphic functions we will agument these Eisenstein series so that they have compact support. Let $\psi:\R^{+} \to \C$ be a smooth compactly supported function and $\s_{\mf{a}}$ be a scaling matrix for the $\mf{a}$ cusp. We define the \textbf{(incomplete) Eisenstein series}\index{(incomplete) Eisenstein series} $E_{k,\chi,\mf{a}}(z,\psi)$ of weight $k$ with character $\chi$ on $\GH$ at the $\mf{a}$ cusp and with respect to $\psi$ by
     \[
-      E_{\mf{a}}(z,\psi) = \sum_{\g \in \G_{\mf{a}}\backslash\G}\psi(\Im(\s_{\mf{a}}^{-1}\g z)).
+      E_{k,\chi,\mf{a}}(z,\psi) = \sum_{\g \in \G_{\mf{a}}\backslash\G}\cchi(\g)\e(\g,z)^{-k}\psi(\Im(\s_{\mf{a}}^{-1}\g z)).
     \]
-    This series is locally absolutely uniformly convergent since only finitely many of the terms are nonzero. Indeed, $\s_{\mf{a}}^{-1}\G$ is a Fushian group because it is a subset of the modular group. So using $\s_{\mf{a}}^{-1}\G_{\mf{a}}\backslash\G = \G_{\infty}\backslash\s_{\mf{a}}^{-1}\G$ we see that $\{\s_{\mf{a}}^{-1}\g z:\g \in \G_{\mf{a}}\backslash\G\}$ is discrete. Since $\Im(z)$ is an open map it takes discrete sets to discrete sets so that $\{\Im(\s_{\mf{a}}^{-1}\g z):\g \in \G_{\mf{a}}\backslash\G\}$ is also discerte. Now $\psi(\Im(\s_{\mf{a}}^{-1}\g z))$ is nonzero if and only if $\Im(\s_{\mf{a}}^{-1}\g z) \in \mathrm{Supp}(\psi)$ and $\{\Im(\s_{\mf{a}}^{-1}\g z):\g \in \G_{\mf{a}}\backslash\G\} \cap \mathrm{Supp}(\psi)$ is finite as it is a discrete subset of a compact set (since $\psi$ has compact support). Hence finitely many of the terms are nonzero. Now $E_{\mf{a}}(z,\psi)$ is also automorphic on $\GH$:
-    \[
-      E_{\mf{a}}(\g z,\psi) = \sum_{\g' \in \G_{\mf{a}}\backslash\G}\psi(\Im(\s_{\mf{a}}^{-1}\g'\g z)) = \sum_{\g' \in \G_{\mf{a}}\backslash\G}\psi(\Im(\s_{\mf{a}}^{-1}\g' z)) = E_{\mf{a}}(z,\psi),
-    \]
-    where the second equality follows because $\g' \to \g'\g^{-1}$ is a bijection on $\G$. Now the compact support of $\psi$ implies that $E_{\mf{a}}(z,\psi)$ is also compactly supported (since the function $\psi(\Im(\s_{\mf{a}}^{-1}\g z))$ is continuous and $\C$ is Hausdorff) and hence bounded on $\H$. As a consequence, $E_{\mf{a}}(z,\psi)$ is $L^{2}$-integrable and therefore belongs to $\mc{L}(\G)$. This is the advantage of these Eisenstein series. We collect this work as a theorem:
+    This series is locally absolutely uniformly convergent since only finitely many of the terms are nonzero. Indeed, $\s_{\mf{a}}^{-1}\G$ is a Fushian group because it is a subset of the modular group. So using $\s_{\mf{a}}^{-1}\G_{\mf{a}}\backslash\G = \G_{\infty}\backslash\s_{\mf{a}}^{-1}\G$ we see that $\{\s_{\mf{a}}^{-1}\g z:\g \in \G_{\mf{a}}\backslash\G\}$ is discrete. Since $\Im(z)$ is an open map it takes discrete sets to discrete sets so that $\{\Im(\s_{\mf{a}}^{-1}\g z):\g \in \G_{\mf{a}}\backslash\G\}$ is also discerte. Now $\psi(\Im(\s_{\mf{a}}^{-1}\g z))$ is nonzero if and only if $\Im(\s_{\mf{a}}^{-1}\g z) \in \mathrm{Supp}(\psi)$ and $\{\Im(\s_{\mf{a}}^{-1}\g z):\g \in \G_{\mf{a}}\backslash\G\} \cap \mathrm{Supp}(\psi)$ is finite as it is a discrete subset of a compact set (since $\psi$ has compact support). Hence finitely many of the terms are nonzero. Also, $E_{k,\chi,\mf{a}}(z,\psi)$ is automorphic on $\GH$ and the automorphy is proved in exactly the same way as for the Eisenstein series $E_{k,\chi,\mf{a}}(z,s)$. Moroever, the compact support of $\psi$ implies that $E_{k,\chi,\mf{a}}(z,\psi)$ is also compactly supported (since the function $\psi(\Im(\s_{\mf{a}}^{-1}\g z))$ is continuous and $\C$ is Hausdorff) and hence bounded on $\H$. As a consequence, $E_{k,\chi,\mf{a}}(z,\psi)$ is $L^{2}$-integrable and therefore belongs to $\mc{L}_{k}(\G,\chi)$. This is the advantage of these Eisenstein series. We collect this work as a theorem:
 
     \begin{theorem}
       For any smooth compactly supported function $\psi:\R^{+} \to \C$, the Eisenstein series
       \[
-        E_{\mf{a}}(z,\psi) = \sum_{\g \in \G_{\mf{a}}\backslash\G}\psi(\Im(\s_{\mf{a}}^{-1}\g z)),
+        E_{k,\chi,\mf{a}}(z,\psi) = \sum_{\g \in \G_{\mf{a}}\backslash\G}\cchi(\g)\e(\g,z)^{-k}\psi(\Im(\s_{\mf{a}}^{-1}\g z)),
       \]
-      is an automorphic function on $\GH$ and belongs to $\mc{L}(\G)$.
+      is an automorphic function on $\GH$ and belongs to $\mc{L}_{k}(\G,\chi)$.
     \end{theorem}
     
-    Unfortunately, the Eisenstein series $E_{\mf{a}}(z,\psi)$ fail to be Maass forms because they are not eigenfunctions for the Laplace operator. This is because compactly supported functions cannot be real-analytic (which as we have already mentioned is implied for any eigenfunction of the Laplace operator). However, there is an important interaction between incomplete Eisenstein series and Maass cusp forms. Let $\mc{E}(\G)$ and $\mc{C}(\G)$ denote the spaces generated by such forms respectively. Moreover, let $\mc{A}(\G)$ be the space of all Maass forms. Note that $\mc{E}(\G)$ and $\mc{C}(\G)$ are are subspaces of $\mc{B}(\G)$ but $\mc{A}(\G)$ need not be. Let $\mc{E}_{t}(\G)$, $\mc{C}_{t}(\G)$, $\mc{A}_{t}(\G)$, and $\mc{B}_{t}(\G)$ denote the corresponding subspaces of such forms whose eigenvalue is $\l = \frac{1}{4}+t^{2}$. For completeness, let $\mc{C}_{t}(\G,\chi)$, $\mc{A}_{t}(\G,\chi)$ denote the subspaces of such forms with character $\chi$. Moreover, if the character $\chi$ is the trivial character, we will surpress the dependence upon $\chi$. As we will now show, $\mc{E}(\G)$ and $\mc{C}(\G)$ constitute all of $\mc{B}(\G)$. Indeed, let $f \in \mc{B}(\G)$ with $E_{\mf{a}}(\cdot,\psi) \in \mc{E}(\G)$. We compute their inner product:
+    Unfortunately, the Eisenstein series $E_{k,\chi,\mf{a}}(z,\psi)$ fail to be Maass forms because they are not eigenfunctions for the Laplace operator. This is because compactly supported functions cannot be real-analytic (which as we have already mentioned is implied for any eigenfunction of the Laplace operator). However, there is an important interaction between incomplete Eisenstein series and Maass cusp forms. Let $\mc{E}_{k}(\G,\chi)$ and $\mc{C}_{k}(\G,\chi)$ denote the spaces generated by such forms respectively. Moreover, let $\mc{A}_{k}(\G,\chi)$ be the space of all Maass forms. Note that $\mc{E}_{k}(\G,\chi)$ and $\mc{C}_{k}(\G,\chi)$ are are subspaces of $\mc{B}_{k}(\G,\chi)$ but $\mc{A}_{k}(\G,\chi)$ need not be. Let $\mc{E}_{k,t}(\G,\chi)$, $\mc{C}_{k,t}(\G,\chi)$, $\mc{A}_{k,t}(\G,\chi)$, and $\mc{B}_{k,t}(\G,\chi)$ denote the corresponding subspaces of such forms whose eigenvalue is $\l = \frac{1}{4}+t^{2}$. For all of these spaces, if $\chi$ is the trivial character or if the weight $k$ is zero, we will surpress these dependences. As we will now show, $\mc{E}_{k}(\G,\chi)$ and $\mc{C}_{k}(\G,\chi)$ constitute all of $\mc{B}_{k}(\G,\chi)$. Indeed, let $f \in \mc{B}_{k}(\G,\chi)$ with $E_{k,\chi,\mf{a}}(\cdot,\psi) \in \mc{E}_{k}(\G,\chi)$. We compute their inner product:
     \begin{align*}
-      \<f,E_{\mf{a}}(\cdot,\psi)\> &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}f(z)\conj{E_{\mf{a}}(z,\psi)}\,d\mu \\
-      &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}f(z)\conj{\sum_{\g \in \GG}\psi(\Im(\s_{\mf{a}}^{-1}\g z))}\,d\mu \\
-      &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}f(z)\sum_{\g \in \GG}\conj{\psi(\Im(\s_{\mf{a}}^{-1}\g z))}\,d\mu \\
-      &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}f(\g^{-1}\s_{\mf{a}}z)\sum_{\g \in \GG}\conj{\psi(\Im(z))}\,d\mu && \text{$z \to \g^{-1}\s_{\mf{a}}z$} \\
+      \<f,E_{k,\chi,\mf{a}}(\cdot,\psi)\> &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}f(z)\conj{E_{k,\chi,\mf{a}}(z,\psi)}\,d\mu \\
+      &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}\sum_{\g \in \GG}\chi(\g)\conj{\e(\s_{\mf{a}}^{-1}\g,z)^{-k}}f(z)\conj{\psi(\Im(\s_{\mf{a}}^{-1}\g z))}\,d\mu \\
+      &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}\sum_{\g \in \GG}\chi(\g)\conj{\e(\s_{\mf{a}}^{-1}\g,\g^{-1}\s_{\mf{a}}z)^{-k}}f(\g^{-1}\s_{\mf{a}}z)\conj{\psi(\Im(z))}\,d\mu && \text{$z \to \g^{-1}\s_{\mf{a}}z$} \\
+      &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}\sum_{\g \in \GG}\chi(\g)\conj{\left(\frac{\e(I,z)}{\e(\g^{-1},\s_{\mf{a}}z)}\right)^{-k}}f(\g^{-1}\s_{\mf{a}}z)\conj{\psi(\Im(z))}\,d\mu && \text{cocylce condition} \\
+      &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}\sum_{\g \in \GG}\chi(\g)\e(\g^{-1},\s_{\mf{a}}z)^{-k}f(\g^{-1}\s_{\mf{a}}z)\conj{\psi(\Im(z))}\,d\mu && \text{$\conj{\e(\g,z)} = \e(\g,z)^{-1}$} \\
+      &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}\sum_{\g \in \GG}\chi(\g^{-1})^{-1}\e(\g^{-1},\s_{\mf{a}}z)^{-k}f(\g^{-1}\s_{\mf{a}}z)\conj{\psi(\Im(z))}\,d\mu && \text{$\chi(\g) = \chi(\g^{-1})^{-1}$} \\
       &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}f(\s_{\mf{a}}z)\sum_{\g \in \GG}\conj{\psi(\Im(z))}\,d\mu  && \text{automorphy} \\
       &= \int_{\G_{\infty}\backslash\H}f(\s_{\mf{a}}z)\conj{\psi(\Im(z))}\,d\mu && \text{unfolding} \\
       &= \int_{0}^{\infty}\int_{0}^{1}f(\s_{\mf{a}}(x+iy))\conj{\psi(y)}\,\frac{dx\,dy}{y^{2}} \\
       &= \int_{0}^{\infty}\left(\int_{0}^{1}f(\s_{\mf{a}}(x+iy))\,dx\right)\conj{\psi(y)}\,\frac{dy}{y^{2}}.
     \end{align*}
-    The inner integral is precisely the constant term in the Fourier series of $f$ at the $\mf{a}$ cusp. It follows that $f$ is orthogonal to $\mc{E}(\G)$ if and only if $f$ is a cusp form. By what we have just shown,
+    The inner integral is precisely the constant term in the Fourier series of $f$ at the $\mf{a}$ cusp. It follows that $f$ is orthogonal to $\mc{E}_{k}(\G,\chi)$ if and only if $f$ is a cusp form. By what we have just shown,
     \[
-      \mc{B}(\G) = \mc{E}(\G) \op \mc{C}(\G) \quad \text{and} \quad \mc{B}_{t}(\G) = \mc{E}_{t}(\G) \op \mc{C}_{t}(\G),
+      \mc{B}_{k}(\G,\chi) = \mc{E}_{k}(\G,\chi) \op \mc{C}_{k}(\G,\chi) \quad \text{and} \quad \mc{B}_{k,t}(\G,\chi) = \mc{E}_{k,t}(\G,\chi) \op \mc{C}_{k,t}(\G,\chi),
     \]
-    and since $\mc{B}(\G)$ is dense in $\mc{L}(\G)$ we have
+    and since $\mc{B}_{k}(\G,\chi)$ is dense in $\mc{L}_{k}(\G,\chi)$ we have
     \[
-      \mc{L}(\G) = \conj{\mc{E}(\G)} \op \conj{\mc{C}(\G)},
+      \mc{L}_{k}(\G,\chi) = \conj{\mc{E}_{k}(\G,\chi)} \op \conj{\mc{C}_{k}(\G,\chi)},
     \]
     where the closure is with respect to the topology induced by the $L^{2}$-norm.
   \section{Spectral Theory of the Laplace Operator}
-    We are now ready to discuss the spectral theory of the Laplace operator $\D$. What we want to do is to decompose $\mc{L}(\G)$ into subspaces invariant under $\D$ such that on each subspace $\D$ has either pure point spectrum, absolutely continuous spectrum, or residual spectrum. Although the proof is beyond the scope of this text, the spectral resolution of the Laplace operator on $\mc{C}(\G)$ is as follows (see \cite{iwaniec2002spectral} for a proof):
+    We are now ready to discuss the spectral theory of the Laplace operator $\D_{k}$. What we want to do is to decompose $\mc{L}_{k}(\G,\chi)$ into subspaces invariant under $\D_{k}$ such that on each subspace $\D_{k}$ has either pure point spectrum, absolutely continuous spectrum, or residual spectrum. Although the proof is beyond the scope of this text, the spectral resolution of the Laplace operator on $\mc{C}_{k}(\G,\chi)$ is as follows (see \cite{iwaniec2002spectral} for a proof in the weight zero case):
 
     \begin{theorem}\label{thm:cusp_form_spectrum}
-      The Laplace operator $\D$ has pure point spectrum on $\mc{C}(\G)$. The corresponding subspaces $\mc{C}_{t}(\G)$ have finite dimension and are mutually orthogonal. Letting $\{u_{j}\}$ be any orthonormal basis of cusp forms for $\mc{C}(\G)$, every $f \in \mc{C}(\G)$ admits a series of the form
+      The Laplace operator $\D_{k}$ has pure point spectrum on $\mc{C}_{k}(\G,\chi)$. The corresponding subspaces $\mc{C}_{k,t}(\G,\chi)$ have finite dimension and are mutually orthogonal. Letting $\{u_{j}\}$ be any orthonormal basis of cusp forms for $\mc{C}_{k}(\G,\chi)$, every $f \in \mc{C}_{k}(\G,\chi)$ admits a series of the form
       \[
         f(z) = \sum_{j}\<f,u_{j}\>u_{j}(z),
       \]
-      which is locally absolutely uniformly convergent if $f \in \mc{D}(\G)$ and converges in the $L^{2}$-norm otherwise.
+      which is locally absolutely uniformly convergent if $f \in \mc{D}_{k}(\G,\chi)$ and converges in the $L^{2}$-norm otherwise.
     \end{theorem}
 
-    We will now discuss the spectrum of the Laplace operator on $\mc{E}(\G)$. Essential is the meromorphic continuation of the Eisenstein series $E_{\mf{a}}(z,s)$ (see \cite{iwaniec2002spectral} for a proof):
+    We will now discuss the spectrum of the Laplace operator on $\mc{E}_{k}(\G,\chi)$. Essential is the meromorphic continuation of the Eisenstein series $E_{k,\chi,\mf{a}}(z,s)$ (see \cite{iwaniec2002spectral} for a proof in the weight zero case):
 
     \begin{theorem}\label{thm:meromorphic_continuation_of_Eisenstein_series}
-      Let $\mf{a}$ and $\mf{b}$ be cusps of $\GH$. The Eisenstein series $E_{\mf{a}}(z,s)$ admits meromorphic continuation to $\C$ in the $s$-plane, via a Fourier series at the $\mf{b}$ cusp given by
+      Let $\mf{a}$ and $\mf{b}$ be cusps of $\GH$. The Eisenstein series $E_{k,\chi,\mf{a}}(z,s)$ admits meromorphic continuation to $\C$ in the $s$-plane, via a Fourier series at the $\mf{b}$ cusp given by
       \[
-        E_{\mf{a}}(\s_{\mf{b}}z,s) = \d_{\mf{a},\mf{b}}y^{s}+\tau_{\mf{a},\mf{b}}(s)y^{1-s}+\sum_{n \neq 0}\tau_{\mf{a},\mf{b}}(n,s)\sqrt{y}K_{it}(2\pi|n|y)e^{2\pi inx},
+        E_{k,\chi,\mf{a}}(\s_{\mf{b}}z,s) = \d_{\mf{a},\mf{b}}y^{s}+\tau_{\mf{a},\mf{b}}(s)y^{1-s}+\sum_{n \neq 0}\tau_{\mf{a},\mf{b}}(n,s)W_{\sgn(n)\frac{k}{2},s-\frac{1}{2}}(4\pi|n|y)e^{2\pi inx},
       \]
       where $\tau_{\mf{a},\mf{b}}(s)$ and $\tau_{\mf{a},\mf{b}}(n,s)$ are meromorphic functions.
     \end{theorem}
 
-    The Eisenstein series $E_{\mf{a}}(z,s)$ also satisfty a functional equation. To state it we need some notation. Fix an ordering of the cusps $\mf{a}$ of $\GH$ and define
+    The Eisenstein series $E_{k,\chi,\mf{a}}(z,s)$ also satisfty a functional equation. To state it we need some notation. Fix an ordering of the cusps $\mf{a}$ of $\GH$ and define
     \[
-      \mc{E}(z,s) = (E_{\mf{a}}(z,s))_{\mf{a}}^{t} \quad \text{and} \quad \Phi(s) = (\tau_{\mf{a},\mf{b}}(s))_{\mf{a},\mf{b}}.
+      \mc{E}(z,s) = (E_{k,\chi,\mf{a}}(z,s))_{\mf{a}}^{t} \quad \text{and} \quad \Phi(s) = (\tau_{\mf{a},\mf{b}}(s))_{\mf{a},\mf{b}}.
     \]
-    In other words, $\mc{E}(z,s)$ is the column vector of the Eisenstein series and $\Phi(s)$ is the square matrix of meromorphic functions $\tau_{\mf{a},\mf{b}}(s)$ described in \cref{thm:meromorphic_continuation_of_Eisenstein_series}. Then we have the following (see \cite{iwaniec2002spectral} for a proof): 
+    In other words, $\mc{E}(z,s)$ is the column vector of the Eisenstein series and $\Phi(s)$ is the square matrix of meromorphic functions $\tau_{\mf{a},\mf{b}}(s)$ described in \cref{thm:meromorphic_continuation_of_Eisenstein_series}. Then we have the following (see \cite{iwaniec2002spectral} for a proof in the weight zero case): 
 
     \begin{theorem}\label{thm:functional_equation_of_Eisenstein_series}
-      The Eisenstein series $E_{\mf{a}}(z,s)$ on $\GH$ satisfty the functional equation 
+      The Eisenstein series $E_{k,\chi,\mf{a}}(z,s)$ of weight $k$ and character $\chi$ on $\GH$ satisfty the functional equation 
       \[
         \mc{E}(z,s) = \Phi(s)\mc{E}(z,1-s).
       \]
@@ -372,79 +361,79 @@
       is unitary on the line $\Re(s) = \frac{1}{2}$, and hermitian if $s$ is real.
     \end{theorem}
 
-    Understaning the poles of $\tau_{\mf{a},\mf{b}}$ are also important for understanding the poles of the Eisenstein series $E_{\mf{a}}(z,s)$ (see \cite{iwaniec2002spectral} for a proof):
+    Understaning the poles of $\tau_{\mf{a},\mf{b}}$ are also important for understanding the poles of the Eisenstein series $E_{k,\chi,\mf{a}}(z,s)$ (see \cite{iwaniec2002spectral} for a proof in the weight zero case):
 
     \begin{theorem}\label{thm:residues_of_Eisenstein_series}
-      The functions $\tau_{\mf{a},\mf{b}}(s)$ are meromorphic for $\Re(s) \ge \frac{1}{2}$ with a finite number of simple poles in the segment $(\frac{1}{2},1]$. A pole of $\tau_{\mf{a},\mf{b}}(s)$ is also a pole of $\tau_{\mf{a},\mf{a}}(s)$. Moreover, the poles of $E_{\mf{a}}(z,s)$ are among the poles of $\tau_{\mf{a},\mf{a}}(s)$, $E_{\mf{a}}(z,s)$ has no poles on the line $\Re(s) = \frac{1}{2}$, and the residues of $E_{\mf{a}}(z,s)$ are Maass forms in $\mc{E}(\G)$.
+      The functions $\tau_{\mf{a},\mf{b}}(s)$ are meromorphic for $\Re(s) \ge \frac{1}{2}$ with a finite number of simple poles in the segment $(\frac{1}{2},1]$. A pole of $\tau_{\mf{a},\mf{b}}(s)$ is also a pole of $\tau_{\mf{a},\mf{a}}(s)$. Moreover, the poles of $E_{k,\chi,\mf{a}}(z,s)$ are among the poles of $\tau_{\mf{a},\mf{a}}(s)$, $E_{k,\chi,\mf{a}}(z,s)$ has no poles on the line $\Re(s) = \frac{1}{2}$, and the residues of $E_{k,\chi,\mf{a}}(z,s)$ are Maass forms in $\mc{E}_{k}(\G,\chi)$.
     \end{theorem}
 
-    To begin decomposing the space $\mc{E}(\G)$, consider the subspace $C_{0}^{\infty}(\R^{+})$ of $\mc{L}^{2}(\R^{+})$ with the normalized standard inner product
+    To begin decomposing the space $\mc{E}_{k}(\G,\chi)$, consider the subspace $C_{0}^{\infty}(\R^{+})$ of $\mc{L}^{2}(\R^{+})$ with the normalized standard inner product
     \[
       \<f,g\> = \frac{1}{2\pi}\int_{0}^{\infty}f(r)\conj{g(r)}\,dr,
     \]
-    for any $f,g \in C_{0}^{\infty}(\R^{+})$. For each cups $\mf{a}$ of $\GH$ we associate the \textbf{Eisenstein transform}\index{Eisenstein transform} $E_{\mf{a}}:C_{0}^{\infty}(\R^{+}) \to \mc{A}(\G)$ defined by
+    for any $f,g \in C_{0}^{\infty}(\R^{+})$. For each cups $\mf{a}$ of $\GH$ we associate the \textbf{Eisenstein transform}\index{Eisenstein transform} $E_{k,\chi,\mf{a}}:C_{0}^{\infty}(\R^{+}) \to \mc{A}_{k}(\G,\chi)$ defined by
     \[
-      (E_{\mf{a}}f)(z) = \frac{1}{4\pi}\int_{0}^{\infty}f(r)E_{\mf{a}}\left(z,\frac{1}{2}+ir\right)\,dr.
+      (E_{k,\chi,\mf{a}}f)(z) = \frac{1}{4\pi}\int_{0}^{\infty}f(r)E_{k,\chi,\mf{a}}\left(z,\frac{1}{2}+ir\right)\,dr.
     \]
-    Clearly $E_{\mf{a}}f$ is automorphic because $E_{\mf{a}}(z,s)$ is. It is not too hard to show the following (see \cite{iwaniec2002spectral} for a proof):
+    Clearly $E_{k,\chi,\mf{a}}f$ is automorphic because $E_{k,\chi,\mf{a}}(z,s)$ is. It is not too hard to show the following (see \cite{iwaniec2002spectral} for a proof in the weight zero case):
 
     \begin{proposition}\label{prop:Eisenstein_transform_property}
-      If $f \in C_{0}^{\infty}(\R^{+})$, then $E_{\mf{a}}f$ is $L^{2}$-integrable over $\mc{F}_{\G}$. That is, $E_{\mf{a}}:C_{0}^{\infty}(\R^{+}) \to \mc{L}(\G)$. Moreover,
+      If $f \in C_{0}^{\infty}(\R^{+})$, then $E_{\mf{a}}f$ is $L^{2}$-integrable over $\mc{F}_{\G}$. That is, $E_{k,\chi,\mf{a}}:C_{0}^{\infty}(\R^{+}) \to \mc{L}_{k}(\G,\chi)$. Moreover,
       \[
-        \<E_{\mf{a}}f,E_{\mf{b}}g\> = \d_{\mf{a},\mf{b}}\<f,g\>,
+        \<E_{k,\chi,\mf{a}}f,E_{k,\chi,\mf{b}}g\> = \d_{\mf{a},\mf{b}}\<f,g\>,
       \]
       for any $f,g \in C_{0}^{\infty}(\R^{+})$ and any two cusps $\mf{a}$ and $\mf{b}$.
     \end{proposition}
 
-    We let $\mc{E}_{\mf{a}}(\G)$ denote the image of the Eisenstein transform $E_{\mf{a}}$ and call $\mc{E}_{\mf{a}}(\G)$ the \textbf{Eisenstein space}\index{Eisenstein space} of $E_{\mf{a}}(z,s)$. An immediate consequence of \cref{prop:Eisenstein_transform_property} is that the Eisenstein spaces for distinct cusps are orthogonal. Moreover, since $E_{\mf{a}}\left(z,\frac{1}{2}+ir\right)$ is an eigenfunction for the Laplace operator with eigenvalue $\l = \frac{1}{4}+r^{2}$ and $f$ and $E_{\mf{a}}\left(z,\frac{1}{2}+ir\right)$ are smooth, the Leibniz integral rule implies
+    We let $\mc{E}_{k,\mf{a}}(\G,\chi)$ denote the image of the Eisenstein transform $E_{k,\chi,\mf{a}}$. We call $\mc{E}_{k,\mf{a}}(\G,\chi)$ the \textbf{Eisenstein space}\index{Eisenstein space} of $E_{k,\chi,\mf{a}}(z,s)$. An immediate consequence of \cref{prop:Eisenstein_transform_property} is that the Eisenstein spaces for distinct cusps are orthogonal. Moreover, since $E_{k,\chi,\mf{a}}\left(z,\frac{1}{2}+ir\right)$ is an eigenfunction for the Laplace operator with eigenvalue $\l = \frac{1}{4}+r^{2}$, and $f$ and $E_{k,\chi,\mf{a}}\left(z,\frac{1}{2}+ir\right)$ are smooth, the Leibniz integral rule implies
     \[
-      \D E_{\mf{a}}= E_{\mf{a}}M,
+      \D E_{k,\chi,\mf{a}}= E_{k,\chi,\mf{a}}M,
     \]
     where $M:C_{0}^{\infty}(\R^{+}) \to C_{0}^{\infty}(\R^{+})$ is the multiplication operator given by
     \[
       (Mf)(r) = \left(\frac{1}{4}+r^{2}\right)f(r),
     \]
-    for all $f \in C_{0}^{\infty}(\R^{+})$. Therefore if $E_{\mf{a}}f$ belongs to $\mc{E}_{\mf{a}}(\G)$ then so does $E_{\mf{a}}(Mf)$. But as $f,Mf \in C_{0}^{\infty}(\R^{+})$, this means $\mc{E}_{\mf{a}}(\G)$ is invariant under the Laplace operator. While the Eisenstein spaces are invairant, they do not make up all of $\mc{E}(\G)$. By \cref{thm:residues_of_Eisenstein_series}, the residues of the Eisenstein series belong to $\mc{E}(\G)$. Let $\mc{R}(\G)$ denote the subspace spanned by the residues of all the Eisenstein series. We call any element of $\mc{R}(\G)$ a \textbf{(residual) Maass form}\index{(residual) Maass form} (by \cref{thm:residues_of_Eisenstein_series} they are Maass forms). Also let $\mc{R}_{s_{j}}(\G)$ denote the subspace spanned by those residues taken at $s = s_{j}$. Since there are finitely many cusps of $\GH$, each $\mc{R}_{s_{j}}(\G)$ is finite dimensional. As the number of residues in $(\frac{1}{2},1]$ is finite by \cref{thm:residues_of_Eisenstein_series}, it follows that $\mc{R}(\G)$ is finite dimensional too. So $\mc{R}(\G)$ decomposes as
+    for all $f \in C_{0}^{\infty}(\R^{+})$. Therefore if $E_{k,\chi,\mf{a}}f$ belongs to $\mc{E}_{k,\mf{a}}(\G,\chi)$ then so does $E_{k,\chi,\mf{a}}(Mf)$. But as $f,Mf \in C_{0}^{\infty}(\R^{+})$, this means $\mc{E}_{k,\mf{a}}(\G,\chi)$ is invariant under the Laplace operator. While the Eisenstein spaces are invairant, they do not make up all of $\mc{E}_{k}(\G,\chi)$. By \cref{thm:residues_of_Eisenstein_series}, the residues of the Eisenstein series belong to $\mc{E}_{k}(\G,\chi)$. Let $\mc{R}_{k}(\G,\chi)$ denote the subspace spanned by the residues of these Eisenstein series. We call any element of $\mc{R}_{k}(\G,\chi)$ a \textbf{(residual) Maass form}\index{(residual) Maass form} (by \cref{thm:residues_of_Eisenstein_series} they are Maass forms). Also let $\mc{R}_{k,s_{j}}(\G,\chi)$ denote the subspace spanned by those residues taken at $s = s_{j}$. Since there are finitely many cusps of $\GH$, each $\mc{R}_{k,s_{j}}(\G,\chi)$ is finite dimensional. As the number of residues in $(\frac{1}{2},1]$ is finite by \cref{thm:residues_of_Eisenstein_series}, it follows that $\mc{R}_{k}(\G,\chi)$ is finite dimensional too. So $\mc{R}_{k}(\G,\chi)$ decomposes as
     \[
-      \mc{R}(\G) = \bigoplus_{\frac{1}{2} < s_{j} \le 1}\mc{R}_{s_{j}}(\G).
+      \mc{R}_{k}(\G,\chi) = \bigoplus_{\frac{1}{2} < s_{j} \le 1}\mc{R}_{k,s_{j}}(\G,\chi).
     \]
-    This decomposition is orthogonal because the Maass forms belonging to distinct subspaces $\mc{R}_{s_{j}}(\G)$ have distinct eigenvalues and eigenfunctions of self-adjoint operators are orthogonal (recall that $\D$ is self-adjoint by \cref{thm:Laplace_semi-definite_self-adjoint}). Also, each subspace $\mc{R}_{s_{j}}(\G)$ is clearly invariant under the Laplace operator because its elements are Maass forms.
-    We are now ready for the spectral resolution. Although the proof is beyond the scope of this text, the spectral resolution of the Laplace operator on $\mc{E}(\G)$ is as follows (see \cite{iwaniec2002spectral} for a proof):
+    This decomposition is orthogonal because the Maass forms belonging to distinct subspaces $\mc{R}_{k,s_{j}}(\G,\chi)$ have distinct eigenvalues and eigenfunctions of self-adjoint operators are orthogonal (recall that $\D_{k}$ is self-adjoint by \cref{thm:Laplace_semi-definite_self-adjoint}). Also, each subspace $\mc{R}_{k,s_{j}}(\G,\chi)$ is clearly invariant under the Laplace operator because its elements are Maass forms.
+    We are now ready for the spectral resolution. Although the proof is beyond the scope of this text, the spectral resolution of the Laplace operator on $\mc{E}_{k}(\G,\chi)$ is as follows (see \cite{iwaniec2002spectral} for a proof in the weight zero case):
 
     \begin{theorem}\label{thm:incomplete_Eisenstein_series_spectrum}
-      $\mc{E}(\G)$ admits the orthogonal decomposition
+      $\mc{E}_{k}(\G,\chi)$ admits the orthogonal decomposition
       \[
-        \mc{E}(\G) = \mc{R}(\G) \bigop_{\mf{a}}\mc{E}(\G),
+        \mc{E}_{k}(\G,\chi) = \mc{R}_{k}(\G,\chi) \bigop_{\mf{a}}\mc{E}_{k}(\G,\chi),
       \]
-      where the direct sum is over the cusps of $\GH$. The Laplace operator $\D$ has discrete spectrum on $\mc{R}(\G)$ in the segment $[0,\frac{1}{4})$ and has pure continuous spectrum on each Eisenstein space $\mc{E}_{\mf{a}}(\G)$ covering the segment $\big[\frac{1}{4},\infty\big)$ uniformly with multiplicity $1$. Letting $\{u_{j}\}$ be any orthonormal basis residual Maass forms for $\mc{R}(\G)$, every $f \in \mc{E}_{\mf{a}}(\G)$ admits a decomposition of the form
+      where the direct sum is over the cusps of $\GH$. The Laplace operator $\D_{k}$ has discrete spectrum on $\mc{R}_{k}(\G,\chi)$ in the segment $[0,\frac{1}{4})$ and has pure continuous spectrum on each Eisenstein space $\mc{E}_{k,\mf{a}}(\G,\chi)$ covering the segment $\big[\frac{1}{4},\infty\big)$ uniformly with multiplicity $1$. Letting $\{u_{j}\}$ be any orthonormal basis residual Maass forms for $\mc{R}_{k}(\G,\chi)$, every $f \in \mc{E}_{k,\mf{a}}(\G,\chi)$ admits a decomposition of the form
       \[
-        f(z) = \sum_{j}\<f,u_{j}\>u_{j}(z)+\sum_{\mf{a}}\frac{1}{4\pi}\int_{-\infty}^{\infty}\left\<f,E_{\mf{a}}\left(\cdot,\frac{1}{2}+ir\right)\right\>E_{\mf{a}}\left(z,\frac{1}{2}+ir\right)\,dr,
+        f(z) = \sum_{j}\<f,u_{j}\>u_{j}(z)+\sum_{\mf{a}}\frac{1}{4\pi}\int_{-\infty}^{\infty}\left\<f,E_{k,\chi,\mf{a}}\left(\cdot,\frac{1}{2}+ir\right)\right\>E_{k,\chi,\mf{a}}\left(z,\frac{1}{2}+ir\right)\,dr.
       \]
-      where the sum is over the cusps of $\GH$. The series is locally absolutely uniformly convergent and the integrals are locally absolutely uniformly bounded if $f \in \mc{D}(\G)$ and converges in the $L^{2}$-norm otherwise.
+      The series is locally absolutely uniformly convergent and the integrals are locally absolutely uniformly bounded if $f \in \mc{D}_{k}(\G,\chi)$ and converges in the $L^{2}$-norm otherwise.
     \end{theorem}
 
-    Combining \cref{thm:cusp_form_spectrum,thm:incomplete_Eisenstein_series_spectrum} gives the full spectral resolution of $\mc{L}(\G)$.
+    Combining \cref{thm:cusp_form_spectrum,thm:incomplete_Eisenstein_series_spectrum} gives the full spectral resolution of $\mc{L}_{k}(\G,\chi)$:
 
     \begin{theorem}\label{thm:the_full_spectral_resolution}
-      $\mc{B}(\G)$ admits the orthogonal decomposition
+      $\mc{B}_{k}(\G,\chi)$ admits the orthogonal decomposition
       \[
-        \mc{B}(\G) = \mc{C}(\G) \op \mc{R}(\G) \bigop_{\mf{a}}\mc{E}(\G),
+        \mc{B}_{k}(\G,\chi) = \mc{C}_{k}(\G,\chi) \op \mc{R}_{k}(\G,\chi) \bigop_{\mf{a}}\mc{E}_{k}(\G,\chi),
       \]
-      where the sum is over all cusps of $\GH$. The Laplace operator has pure point spectrum on $\mc{C}(\G)$, discrete spectrum on $\mc{R}(\G)$, and absolutely continuous spectrum on $\mc{E}(\G)$. Letting $\{u_{j}\}$ be any orthonormal basis of Maass forms for $\mc{C}(\G) \op \mc{R}(\G)$, any $f \in \mc{L}(\G)$ has a series of the form
+      where the sum is over all cusps of $\GH$. The Laplace operator has pure point spectrum on $\mc{C}_{k}(\G,\chi)$, discrete spectrum on $\mc{R}_{k}(\G,\chi)$, and absolutely continuous spectrum on $\mc{E}_{k}(\G,\chi)$. Letting $\{u_{j}\}$ be any orthonormal basis of Maass forms for $\mc{C}_{k}(\G,\chi) \op \mc{R}_{k}(\G,\chi)$, any $f \in \mc{L}_{k}(\G,\chi)$ has a series of the form
       \[
-        f(z) = \sum_{j}\<f,u_{j}\>u_{j}(z)+\sum_{\mf{a}}\frac{1}{4\pi}\int_{-\infty}^{\infty}\left\<f,E_{\mf{a}}\left(\cdot,\frac{1}{2}+ir\right)\right\>E_{\mf{a}}\left(z,\frac{1}{2}+ir\right)\,dr,
+        f(z) = \sum_{j}\<f,u_{j}\>u_{j}(z)+\sum_{\mf{a}}\frac{1}{4\pi}\int_{-\infty}^{\infty}\left\<f,E_{k,\chi,\mf{a}}\left(\cdot,\frac{1}{2}+ir\right)\right\>E_{k,\chi,\mf{a}}\left(z,\frac{1}{2}+ir\right)\,dr,
       \]
-      which is locally absolutely uniformly convergent if $f \in \mc{D}(\G)$ and in the $L^{2}$-norm otherwise. Moreover,
+      which is locally absolutely uniformly convergent if $f \in \mc{D}_{k}(\G,\chi)$ and in the $L^{2}$-norm otherwise. Moreover,
       \[
-        \mc{L}(\G) = \conj{\mc{C}(\G)} \op  \conj{\mc{R}(\G)} \bigop_{\mf{a}}\conj{\mc{E}(\G)},
+        \mc{L}_{k}(\G,\chi) = \conj{\mc{C}_{k}(\G,\chi)} \op  \conj{\mc{R}_{k}(\G,\chi)} \bigop_{\mf{a}}\conj{\mc{E}_{k}(\G,\chi)},
       \]
       where the closure is with respect to the topology induced by the $L^{2}$-norm.
     \end{theorem}
     \begin{proof}
-      Combine \cref{thm:cusp_form_spectrum,thm:incomplete_Eisenstein_series_spectrum} and use the fact that $\mc{B}(\G) = \mc{E}(\G) \op \mc{C}(\G)$ for the first statement. The last statement holds because $\mc{B}(\G)$ is dense in $\mc{L}(\G)$.
+      Combine \cref{thm:cusp_form_spectrum,thm:incomplete_Eisenstein_series_spectrum} and use the fact that $\mc{B}_{k}(\G,\chi) = \mc{E}_{k}(\G,\chi) \op \mc{C}_{k}(\G,\chi)$ for the first statement. The last statement holds because $\mc{B}_{k}(\G,\chi)$ is dense in $\mc{L}_{k}(\G,\chi)$.
     \end{proof}
   \section{Double Coset Operators}
-    We can extend the theory of double coset operators to Maass forms just as we did for holomorphic forms. Indeed, for any $\a \in \GL_{2}^{+}(\Q)$, we define the operator $[\a]$ on $\mc{A}_{t}(\G)$ to be the linear operator given by
+    We can extend the theory of double coset operators to weight zero Maass form just as we did for holomorphic forms. Indeed, for any $\a \in \GL_{2}^{+}(\Q)$, we define the operator $[\a]$ on $\mc{A}_{t}(\G)$ to be the linear operator given by
     \[
       (f[\a])(z) = \det(\a)^{-\frac{1}{2}}f(\a z),
     \]
@@ -456,7 +445,7 @@
     \[
       (f[\G_{1}\a\G_{2}])(z) = \sum_{j}(f[\b_{j}])(z) = \sum_{j}\det(\b_{j})^{-\frac{1}{2}}f(\b_{j}z).
     \]
-    for any $f \in \mc{A}_{t}(\G_{1})$. As was the case for holomorphic forms, \cref{prop:double_congruence_subgroup_coset_decomposition_is_finite} implies that this sum is finite. Mimicing the same argument for $[\G_{1}\a\G_{2}]_{k}$, we see that $[\G_{1}\a\G_{2}]$ is also well-defined. There is also an analogous statement about the double coset operators for Maass forms:
+    As was the case for holomorphic forms, \cref{prop:double_congruence_subgroup_coset_decomposition_is_finite} implies that this sum is finite. Mimicing the same argument for $[\G_{1}\a\G_{2}]_{k}$, we see that $[\G_{1}\a\G_{2}]$ is also well-defined. There is also an analogous statement about the double coset operators for Maass forms:
 
     \begin{proposition}\label{prop:double_coset_operator_preserves_subspaces_Maass}
       For any two congruence subgroups $\G_{1}$ and $\G_{2}$, $[\G_{1}\a\G_{2}]$ maps $\mc{A}_{t}(\G_{1})$ into $\mc{A}_{t}(\G_{2})$. Moreover, $[\G_{1}\a\G_{2}]$ preserves the subspace of cusp forms.
@@ -469,7 +458,7 @@
       Thus $f[\G_{1}\a\G_{2}]$ is an eigenfunction for $\D$ with eigenvalue $\l$. This completes the proof.
     \end{proof}
   \section{Diamond \& Hecke Operators}
-    Extending the theory of diamond operators and Hecke operators to Maass forms is fairly straightforward. To see this, we have already shown that $\G_{1}(N)$ is normal in $\G_{0}(N)$ so
+    Extending the theory of diamond operators and Hecke operators to weight zero Maass form is fairly straightforward. To see this, we have already shown that $\G_{1}(N)$ is normal in $\G_{0}(N)$ so
     \[
       \left(f\left[\G_{1}(N)\a\G_{1}(N)\right]\right)(z) = \sum_{j}(f[\b_{j}])(z) = (f[\a])(z),
     \]
@@ -502,9 +491,7 @@
     \[
       \mc{A}_{t}(\G_{1}(N)) = \bigop_{\chi \tmod{N}}\mc{A}_{t}(\G_{0}(N),\chi),
     \]
-    and this decomposition respects the subspace of cusp forms. As for holomorphic forms, this decomposition helps clarify why we consider Maass forms with nontrivial characters.
-    
-    We define the Hecke operators in the same way as for holomorphic forms. For a prime $p$, we define the $p$-th \textbf{Hecke operator}\index{Hecke operator} $T_{p}:\mc{A}_{t}(\G_{1}(N)) \to \mc{A}_{t}(\G_{1}(N))$ to be the linear operator given by
+    and this decomposition respects the subspace of cusp forms. As for holomorphic forms, this decomposition helps clarify why we consider Maass forms with nontrivial characters. We define the Hecke operators in the same way as for holomorphic forms. For a prime $p$, we define the $p$-th \textbf{Hecke operator}\index{Hecke operator} $T_{p}:\mc{A}_{t}(\G_{1}(N)) \to \mc{A}_{t}(\G_{1}(N))$ to be the linear operator given by
     \[
       (T_{p}f)(z) = \left(f\left[\G_{1}(N)\begin{pmatrix} 1 & 0 \\ 0 & p \end{pmatrix}\G_{1}(N)\right]\right)(z).
     \]
@@ -566,7 +553,7 @@
     \[
       \<m\> = \begin{cases} \<m\> \text{ with $m$ taken modulo $N$} & \text{if $(m,N) = 1$,} \\ 0 & \text{if $(m,N) > 1$.} \end{cases}
     \]
-    For the Hecke operators, if $m = p_{1}^{r_{1}}p_{2}^{r_{2}} \cdots p_{k}^{r_{k}}$ is the prime decomposition of $m$, then the $m$-th \textbf{Hecke operator}\index{Hecke operator} $T_{m}:\mc{A}_{t}(\G) \to \mc{A}_{t}(\G)$ is the linear operator given by
+    For the Hecke operators, if $m = p_{1}^{r_{1}}p_{2}^{r_{2}} \cdots p_{k}^{r_{k}}$ is the prime decomposition of $m$, then the $m$-th \textbf{Hecke operator}\index{Hecke operator} $T_{m}:\mc{A}_{k,t}(\G,\chi) \to \mc{A}_{k,t}(\G,\chi)$ is the linear operator given by
     \[
       T_{m} = \prod_{1 \le i \le k}T_{p_{i}^{r_{i}}},
     \]
@@ -595,11 +582,11 @@
     \begin{proposition}\label{prop:Petersson_adjoint_Maass}
       Let $\G$ be a congruence subgroup and let $\a \in \GL_{2}^{+}(\Q)$. Then the following are true:
       \begin{enumerate}[label=(\roman*)]
-        \item If $\a^{-1}\G\a \subseteq \PSL_{2}(\Z)$, then for all $f \in \mc{C}_{t}(\G)$ and $g \in \mc{C}_{t}(\a^{-1}\G\a)$, we have
+        \item If $\a^{-1}\G\a \subseteq \PSL_{2}(\Z)$, then for all $f \in \mc{C}_{k,t}(\G,\chi)$ and $g \in \mc{C}_{t}(\a^{-1}\G\a)$, we have
         \[
           \<f[\a],g\>_{\a^{-1}\G\a} = \<f,g[\a^{-1}]\>_{\G}.
         \]
-        \item For all $f,g \in \mc{C}_{t}(\G)$, we have
+        \item For all $f,g \in \mc{C}_{k,t}(\G,\chi)$, we have
         \[
           \<f[\G\a\G],g\> = \<f,g[\G\a^{-1}\G]\>.
         \]
@@ -622,11 +609,11 @@
       Mimic the proof of \cref{prop:Hecke_operators_normal_holomorphic}.
     \end{proof}
 
-    When we are considering Maass forms on the full modular group, \cref{prop:Hecke_operators_normal_Maass} says that all of the diamond and Hecke operators are normal. Before we discuss the spectral theory, we need one last operator. Define $T_{-1}:\mc{A}_{t}(\G_{1}(N)) \to \mc{A}_{t}(\G_{1}(N))$ to be the linear operator given by
+    When we are considering Maass forms on the full modular group, \cref{prop:Hecke_operators_normal_Maass} says that all of the diamond and Hecke operators are normal. Before discussing the spectral theory, we need one last operator. Define $T_{-1}:\mc{A}_{t}(\G_{1}(N)) \to \mc{A}_{t}(\G_{1}(N))$ to be the linear operator given by
     \[
-      (T_{-1}f)(z) = f(-\conj{z}),    
+      (T_{-1}f)(z) = f(-\conj{z}).
     \]
-    for any $f \in \mc{A}_{t}(\G_{1}(N))$. Clearly $T_{-1}$ preserves the subspace of cusp forms. We also have the following proposition:
+    Clearly $T_{-1}$ preserves the subspace of cusp forms. Moreover, we also have the following proposition encompassing important properties of the $T_{-1}$ operator:
 
     \begin{proposition}\label{prop:sign_operator_commutes_with_Hecke_and_diamond_and_is_normal}
       \phantom{ }
@@ -685,7 +672,7 @@
 
     Just as for holomorphic forms, the identities in \cref{cor:Hecke_relations_operator_Maass} can also be established directly and the first identity can be used to show that the Hecke operators commute.
   \section{Atkin–Lehner Theory}
-    There is also an Atkin–Lehner theoy for Maass forms. As with holomorphic forms, we will only deal with congruence subgroups of the form $\G_{1}(N)$ and cusp forms on $\G_{1}(N)\backslash\H$. The trivial way to lift Maass forms from a smaller level to a larger level is via the natural inclusion $\mc{C}_{t}(\G_{1}(M)) \subseteq \mc{C}_{t}(\G_{1}(N))$ provided $M \mid N$ which follows from $\G_{1}(N) \le \G_{1}(M)$. Alternatively, for any $d \mid \frac{N}{M}$, let $\a_{d} = \begin{psmallmatrix} d & 0 \\ 0 & 1 \end{psmallmatrix}$. If $f \in \mc{C}_{t}(\G_{1}(M))$, then
+    There is also an Atkin–Lehner theoy for weight zero Maass form. As with holomorphic forms, we will only deal with congruence subgroups of the form $\G_{1}(N)$ and cusp forms on $\G_{1}(N)\backslash\H$. The trivial way to lift Maass forms from a smaller level to a larger level is via the natural inclusion $\mc{C}_{t}(\G_{1}(M)) \subseteq \mc{C}_{t}(\G_{1}(N))$ provided $M \mid N$ which follows from $\G_{1}(N) \le \G_{1}(M)$. Alternatively, for any $d \mid \frac{N}{M}$, let $\a_{d} = \begin{psmallmatrix} d & 0 \\ 0 & 1 \end{psmallmatrix}$. If $f \in \mc{C}_{t}(\G_{1}(M))$, then
     \[
       (f[\a_{d}])(z) = f(\a_{d} z) = f(dz).
     \]
@@ -792,7 +779,7 @@
       where $\conj{f} \in \mc{C}_{t}(N,\cchi)$ is a primitive Hecke-Maass eigenform and $\w_{N}(f) \in \C$ is nonzero with $|\w_{N}(f)| = 1$.
     \end{proposition}
   \section{The Ramanujan-Petersson Conjecture}
-    As for the size of the Fourier coefficients of Maass forms, much is currently unknown. But there is an analogous conjecture for Maass forms. To state it, suppose $f \in \mc{C}_{t}(N,\chi)$ is a primitive Hecke-Maass eigenform with Fourier coefficients $\l_{f}(n)$. For each prime $p$, consider the polynomial
+    As for the size of the Fourier coefficients of weight zero Maass form, much is currently unknown. But there is an analogous conjecture to the one for holomorphic forms. To state it, suppose $f \in \mc{C}_{t}(N,\chi)$ is a primitive Hecke-Maass eigenform with Fourier coefficients $\l_{f}(n)$. For each prime $p$, consider the polynomial
     \[
       1-\l_{f}(p)p^{-s}+\chi(p)p^{-2s}.
     \]
@@ -842,10 +829,10 @@
     \[
       \l_{f}(n) \ll n^{\frac{1}{2}}.
     \]
-    This bound is known as the \textbf{Hecke bound}\index{Hecke bound} for Maass forms. However, the Ramanujan-Petersson conjecture gives the bound $\l_{f}(n) \ll \s_{0}(n)n^{\frac{1}{2}} \ll n^{\frac{1}{2}+\e}$. It turns out that the Ramanujan-Petersson conjecture is tightly connected to another conjecture of Selberg about the smallest possible eigenvalue of Maass forms on $\GH$. Note that the possible eigenvalues are discrete by \cref{thm:the_full_spectral_resolution} and so there exists a smallest eigenvalue. To state it, recall that if $f$ is a Maass form with eigenvalue $\l$ on $\GH$, then $\l = \frac{1}{4}+t^{2}$ with either $t \in \R$ or $it \in [0,\frac{1}{2})$. \textbf{Selberg's eigenvalue conjecture}\index{Selberg's eigenvalue conjecture} claims that the second case never occurs:
+    This bound is known as the \textbf{Hecke bound}\index{Hecke bound} for Maass forms. However, the Ramanujan-Petersson conjecture gives the bound $\l_{f}(n) \ll \s_{0}(n)n^{\frac{1}{2}} \ll n^{\frac{1}{2}+\e}$. It turns out that the Ramanujan-Petersson conjecture is tightly connected to another conjecture of Selberg about the smallest possible eigenvalue of weight zero Maass form on $\GH$. Note that the possible eigenvalues are discrete by \cref{thm:the_full_spectral_resolution} and so there exists a smallest eigenvalue. To state it, recall that if $f$ is a Maass form with eigenvalue $\l$ on $\GH$, then $\l = \frac{1}{4}+t^{2}$ with either $t \in \R$ or $it \in [0,\frac{1}{2})$. \textbf{Selberg's eigenvalue conjecture}\index{Selberg's eigenvalue conjecture} claims that the second case never occurs in weight zero:
 
     \begin{conjecture}[Selberg's eigenvalue conjecture]
-      If $\l$ is the smallest eigenvalue for Maass forms on $\GH$, then
+      If $\l$ is the smallest eigenvalue for weight zero Maass forms on $\GH$, then
       \[
         \l \ge \frac{1}{4}.
       \]
@@ -854,7 +841,7 @@
     Selberg was able to achieve a remarkable lower bound using the analytic continuation of a certain Dirichlet series and the Weil bound for Kloosterman sums (see \cite{iwaniec2002spectral} for a proof):
 
     \begin{theorem}
-      If $\l$ is the smallest eigenvalue for Maass forms on $\GH$, then
+      If $\l$ is the smallest eigenvalue for weight zero Maass forms on $\GH$, then
       \[
         \l \ge \frac{3}{16}.
       \]
