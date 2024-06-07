@@ -5,7 +5,7 @@
     \[
       j(\g,z) = (cz+d),
     \]
-    for all $\g = \begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix} \in \GL_{2}^{+}(\Q)$ and $z \in \H$. There is a very useful property that $j(\g,z)$ satisfies. To state it, let $\g = \begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix} \in \G$ and $\g' = \begin{psmallmatrix} a' & b' \\ c' & d' \end{psmallmatrix} \in \G$. Then
+    for all $\g = \begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix} \in \GL_{2}^{+}(\Q)$ and $z \in \H$. There is a very useful property that $j(\g,z)$ satisfies. To state it, let $\g' = \begin{psmallmatrix} a' & b' \\ c' & d' \end{psmallmatrix} \in \GL_{2}^{+}(\Q)$. Then
     \[
       \g\g' = \begin{pmatrix} a & b \\ c & d \end{pmatrix}\begin{pmatrix} a' & b' \\ c' & d' \end{pmatrix} = \begin{pmatrix} a'a+b'c & a'b+b'b \\ c'a+d'c & c'b+d'd \end{pmatrix},
     \]
@@ -20,7 +20,7 @@
     \[
       j(\g'\g,z) =  j(\g',\g z)j(\g,z),
     \]
-    and this is called the \textbf{cocycle condition}\index{cocycle condition} for $j(\g,z)$. The cocycle condition immediately implies that $j(\g,z)$ is determined by any set of generators for $\G$. For any integer $k \ge 1$ and any $\g \in \GL_{2}^{+}(\Q)$ we define the \textbf{slash operator}\index{slash operator} $|_{j,k}\g:C(\H) \to C(\H)$ to be the linear operator given by
+    and this is called the \textbf{cocycle condition}\index{cocycle condition} for $j(\g,z)$. For any integer $k \ge 1$ and any $\g \in \GL_{2}^{+}(\Q)$ we define the \textbf{slash operator}\index{slash operator} $|_{j,k}\g:C(\H) \to C(\H)$ to be the linear operator given by
     \[
       (f|_{j,k}\g)(z) = j(\g,z)^{-k}f(\g z).
     \]
@@ -81,7 +81,15 @@
       The reason why we restrict to $k \ge 4$ is because for $k = 0,2$ the Eisenstein series do not converge (see \cref{prop:general_lattice_sum_convergence_for_two_variables}).
     \end{remark}
 
-    The Bruhat decomposition applied to $\GG$ implies
+    We first verify that $E_{k,\chi}(z)$ is well-defined. It suffices to show that $\cchi(\g)j(\g,z)$ is independent of the representative of $\g$. Indeed, if $\g'$ represents the same element as $\g$ in $\GG$, then they differ on the left by an element of $\eta_{\infty} \in \G_{\infty}$. So suppose $\g' = \eta_{\infty}\g$ with $\eta_{\infty} = \begin{psmallmatrix} 1 & n \\ 0 & 1 \end{psmallmatrix} \in \G_{\infty}$. Then
+    \[
+      \cchi(\g') = \cchi(\eta_{\infty}\g) = \cchi(\eta_{\infty})\cchi(\g) = \cchi(\g).
+    \]
+    This verifies that $\cchi(\g)$ is independent of the representative $\g$. Similarly, the cocycle relation implies
+    \[
+      j(\g',z) = j(\eta_{\infty}\g,z) = j(\eta_{\infty},\g z)j(\g,z) = j(\g,z),
+    \]
+    where the last equality follows because $j(\eta_{\infty},\g z) = 1$. This verfiies that $j(\g,z)$ is also independent of the representative $\g$. Therefore $E_{k,\chi}(z)$ is well-defined. The Bruhat decomposition applied to $\GG$ implies
     \[
       E_{k,\chi}(z) \ll \sum_{(c,d) \in \Z^{2}-\{\mathbf{0}\}}\frac{1}{|cz+d|^{k}},
     \]
@@ -173,11 +181,11 @@
     \[
       P_{m,k,\chi}(z) = \sum_{\g \in \GG}\cchi(\g)j(\g,z)^{-k}e^{2\pi im\g z}.
     \]
-    We first need to verify that $P_{m,k,\chi}(z)$ is actually well-defined. This amounts to checking $e^{2\pi im\g z}$ is independent of the representative $\g$. Indeed, if $\g'$ represents the same element as $\g$ in $\GG$, then they differ on the left by an element of $\eta_{\infty} \in \G_{\infty}$. So suppose $\g' = \eta_{\infty}\g$ with $\eta_{\infty} = \begin{psmallmatrix} 1 & n \\ 0 & 1 \end{psmallmatrix} \in \G_{\infty}$. Then
+    We first need to verify that $P_{m,k,\chi}(z)$ is actually well-defined. This amounts to checking $e^{2\pi im\g z}$ is independent of the representative $\g$ since we have already verified $\cchi(\g)j(\g,z)$ is when discussing $E_{k,\chi}(z)$. As before, suppose $\g' = \eta_{\infty}\g$ with $\eta_{\infty} = \begin{psmallmatrix} 1 & n \\ 0 & 1 \end{psmallmatrix} \in \G_{\infty}$. Then
     \[
       e^{2\pi im\g' z} = e^{2\pi im\eta_{\infty}\g z} = e^{2\pi im(\g z+n)} = e^{2\pi im\g z}e^{2\pi imnz} = e^{2\pi im\g z},
     \]
-    and hence $P_{m,k,\chi}(z)$ is well-defined. To see that $P_{m,k,\chi}(z)$ is holomorphic on $\H$, first note that $|e^{2\pi im\g z}| = e^{-2\pi m\Im(\g z)} < 1$ for all $\g \in \G$. Applying the Bruhat decomposition to $\GG$, we see that
+    and hence $e^{2\pi im\g' z}$ is independent of the representative $\g$ used. It follows that $P_{m,k,\chi}(z)$ is well-defined. To see that $P_{m,k,\chi}(z)$ is holomorphic on $\H$, first note that $|e^{2\pi im\g z}| = e^{-2\pi m\Im(\g z)} < 1$ for all $\g \in \G$. Applying the Bruhat decomposition to $\GG$, we see that
     \[
       P_{m,k,\chi}(z) \ll \sum_{(c,d) \in \Z^{2}-\{\mathbf{0}\}}\frac{1}{|cz+d|^{k}}.
     \]
@@ -195,17 +203,7 @@
       where $a$ and $b$ are chosen such that $\det\left(\begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix}\right) = 1$.
     \end{remark}
 
-    We now show that $P_{m,k,\chi}(z)$ is modular. This is just a computation:
-    \begin{align*}
-      P_{m,k,\chi}(\g z) &= \sum_{\g' \in \GG}\cchi(\g')j(\g',\g z)^{-k}e^{2\pi im\g'\g z} \\
-      &= \sum_{\g' \in \GG}\cchi(\g')\left(\frac{j(\g'\g,z)}{j(\g,z)}\right)^{-k}e^{2\pi im\g'\g z} && \text{cocycle condition} \\
-      &= j(\g,z)^{k}\sum_{\g' \in \GG}\cchi(\g')j(\g'\g,z)^{-k}e^{2\pi im\g'\g z} \\
-      &= \chi(\g)j(\g,z)^{k}\sum_{\g' \in \GG}\cchi(\g')\cchi(\g)j(\g'\g,z)^{-k}e^{2\pi im\g'\g z} \\
-      &= \chi(\g)j(\g,z)^{k}\sum_{\g' \in \GG}\cchi(\g'\g)j(\g'\g,z)^{-k}e^{2\pi im\g'\g z} \\
-      &= \chi(\g)j(\g,z)^{k}\sum_{\g' \in \GG}\cchi(\g')j(\g',z)^{-k}e^{2\pi im\g'z} && \text{$\g' \to \g'\g^{-1}$ bijection on $\G$} \\
-      &= \chi(\g)j(\g,z)^{k}P_{m,k,\chi}(z),
-    \end{align*}
-    To verify holomorphy at the cusps, let $\s_{\mf{a}}$ be a scaling matrix for the cusp $\mf{a}$. First note that $|e^{2\pi im\g\s_{\mf{a}}z}| = e^{-2\pi m\Im(\g\s_{\mf{a}}z)} < 1$. Then
+    Modularity for $P_{m,k,\chi}(z)$ is verified in exactly the same way as for $E_{k,\chi}(z)$. To verify holomorphy at the cusps, let $\s_{\mf{a}}$ be a scaling matrix for the cusp $\mf{a}$. First note that $|e^{2\pi im\g\s_{\mf{a}}z}| = e^{-2\pi m\Im(\g\s_{\mf{a}}z)} < 1$. Then
     \[
       P_{m,k,\chi}(\s_{\mf{a}}z) \ll \sum_{(c,d) \in \Z^{2}-\{\mathbf{0}\}}\frac{1}{|c\s_{\mf{a}}z+d|^{k}},
     \]
