@@ -292,7 +292,7 @@
     \begin{theorem}[Perron's formula, truncated version]
       Let $D(s)$ be a Dirichlet series with coefficient $a(n)$ and finite and nonnegative abscissa of absolute convergence $\s_{a}$. Then for any $c > \s_{a}$ and $T > 0$,
       \[
-        A'(X) = \frac{1}{2\pi i}\int_{c-iT}^{c+iT}D(s)X^{s}\,\frac{ds}{s}+O\left(X^{c}\sum_{\substack{n \ge 1 \\ n \neq X}}\frac{a(n)}{n^{c}}\min\left(1,\frac{1}{T\left|\log\left(\frac{X}{n}\right)\right|}\right)+\d_{X}\frac{c}{T}\right),
+        A'(X) = \frac{1}{2\pi i}\int_{c-iT}^{c+iT}D(s)X^{s}\,\frac{ds}{s}+O\left(X^{c}\sum_{\substack{n \ge 1 \\ n \neq X}}\frac{a(n)}{n^{c}}\min\left(1,\frac{1}{T\left|\log\left(\frac{X}{n}\right)\right|}\right)+\d_{X}a(X)\frac{c}{T}\right),
       \]
       where $\d_{X} = 1,0$ according to if $X$ is an integer or not.
     \end{theorem}
@@ -301,11 +301,11 @@
       \[
         A'(X) = \sum_{n \ge 1}a(n)\d\left(\frac{X}{n}\right).
       \]
-      Now using \cref{lem:delta_truncation_estimate}, we may replace $\d\left(\frac{X}{n}\right)$ to obtain
+      Using \cref{lem:delta_truncation_estimate}, we may replace $\d\left(\frac{X}{n}\right)$ and obtain
       \[
-        A'(X) = \sum_{n \ge 1}a(n)\frac{1}{2\pi i}\int_{c-iT}^{c+iT}\frac{X^{s}}{n^{s}}\,\frac{ds}{s}+\sum_{\substack{n \ge 1 \\ n \neq X}}a(n)\left[O\left(\frac{X^{c}}{n^{c}}\min\left(1,\frac{1}{T\left|\log\left(\frac{X}{n}\right)\right|}\right)+\d_{X}\frac{c}{T}\right)\right].
+        A'(X) = \sum_{n \ge 1}a(n)\frac{1}{2\pi i}\int_{c-iT}^{c+iT}\frac{X^{s}}{n^{s}}\,\frac{ds}{s}+\sum_{\substack{n \ge 1 \\ n \neq X}}a(n)O\left(\frac{X^{c}}{n^{c}}\min\left(1,\frac{1}{T\left|\log\left(\frac{X}{n}\right)\right|}\right)\right)+\d_{X}a(X)O\left(\frac{c}{T}\right).
       \]
-      Since $D(s)$ converges absolutely we may move the sum inside of the big $O$-estimate, and moreover, the dominated convergence theorem implies we may interchange the sum and the integral. The statement of the lemma follows.
+      Since $D(s)$ converges absolutely the sum may be moved inside of the first $O$-estimate. Then combine the two $O$-estimates. The dominated convergence theorem implies we may interchange the sum and the integral. The statement of the lemma follows.
     \end{proof}
 
     There is a slighly weaker variant of truncated Perron's formula that follows as a corollary:

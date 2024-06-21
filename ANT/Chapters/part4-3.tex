@@ -1,4 +1,31 @@
 \chapter{Explicit Formulas \& Prime Number Theorems}
+  Our main aim is to prove the prime number theorem and its variant for primes restricted to a certain residue class, the Siegel–Walfisz theorem, in the classical manner. These results will follow from explicit formulas for the Chebyshev function $\psi(x)$ and a sutiable generalization in the latter case. After deriving these results, we prove (for the second time) the prime number theorem and the Siegel–Walfisz theorem.
   \section{\todo{Explicit Formulas for Chebyshev Functions}}
+    \subsection*{The Explicit Formula for \texorpdfstring{$\psi(x)$}{$\psi(x)$}}
+      The explicit formula for $\psi(x)$ will be obtained by applying truncated Perron's formula. Since $\psi(x)$ is discontinuous when $x$ is a prime power, we need to work with $\psi_{0}(x)$ to apply the Mellin inversion formula. The \textbf{explicit formula}\index{explicit formula} for $\psi(x)$ is the following:
+
+      \begin{theorem}[Explicit formula for $\psi(x)$]
+        For $x \ge 2$,
+        \[
+          \psi_{0}(x) = x-\sum_{\rho}\frac{x^{\rho}}{\rho}-\frac{\z'}{\z}(0)-\frac{1}{2}\log(1-x^{-2}),
+        \]
+        where $\rho$ runs oover the nontrivial zeros of $\z(s)$ counted with multiplicity and ordered with respect to the size of the ordinate.
+      \end{theorem}
+
+      A few comments are in order before we prove the explicit formula for $\psi(x)$. First, since $\rho$ is conjectured to be of the form $\rho = \frac{1}{2}+i\g$ under the Riemann hypothesis, $x$ contributes the main term in the explicit formula. This is in agreement with the fact that $\psi(x) \sim x$ which is equivalent to the prime number theorem as we already showed. The value $\frac{\z'}{\z}(0)$ can be shown to be $\log(2\pi)$ (see \cite{davenport1980multiplicative} for a proof). Also, using the Taylor series of the logarithm, the last term can be expressed as
+      \[
+        \frac{1}{2}\log(1-x^{-2}) = \frac{1}{2}\sum_{k \ge 1}(-1)^{k-1}\frac{(-x^{-2})^{k}}{k} = \sum_{k \ge 1}(-1)^{2k-1}\frac{x^{-2k}}{2k} = -\sum_{\w}\frac{x^{\w}}{\w},
+      \]
+      where $\w$ runs over the trivial zeros of $\z(s)$. We will now prove the explicit formula for $\psi(x)$:
+
+      \begin{proof}[Proof of the explicit formula for $\psi(x)$]
+        Recalling \cref{equ:Drichlet_series_log_derivative_zeta} and that $\psi(x) = \sum_{n \le x}\L(n)$, applying truncated Perron's formula to $-\frac{\z'}{\z}(s)$ gives
+        \[
+          |\psi_{0}(x)-J(T,x)| \ll X^{c}\sum_{\substack{n \ge 1 \\ n \neq X}}\frac{\L(n)}{n^{c}}\min\left(1,\frac{1}{T\left|\log\left(\frac{x}{n}\right)\right|}\right)+\d_{x}\L(x)\frac{c}{T},
+        \]
+        where it is understood that $\d_{X} = 0$ unless $x$ is a prime power. \todo{xxx}
+      \end{proof}
+    \subsection*{The Explicit Formula for \texorpdfstring{$\psi(x,\chi)$}{$\psi(x,\chi)$}}
+      \todo{xxx}
   \section{\todo{The Prime Number Theorem (Reprise)}}
   \section{\todo{The Siegel–Walfisz Theorem}}
