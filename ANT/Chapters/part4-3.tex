@@ -27,9 +27,88 @@
         \[
           J(x,T) = \frac{1}{2\pi i}\int_{c-iT}^{c+iT}-\frac{\z'}{\z}(s)x^{s}\,\frac{ds}{s},
         \]
-        $c > 1$, and it is understood that $\d_{x} = 0$ unless $x$ is a prime power. We will take $T > 1$ and $c = 1+\log(x)^{-1}$ so that $x^{c} = ex$. The first step is to estimate the right-hand side of \cref{equ:explicit_formula_proof_1}. First, we deal with the terms corresponding to $n$ such that $n$ is boudned away from $x$. So suppose $n \le \frac{3}{4}x$ or $n \ge \frac{5}{4}x$. For these $n$, $1 \ll \log\left(\frac{x}{n}\right)$ so that their contribution is
+        $c > 1$, and it is understood that $\d_{x} = 0$ unless $x$ is a prime power. Take $T > 2$ not coinciding with the ordinate of a nontrivial zero and let $c = 1+\log(x)^{-1}$ so that $x^{c} = ex$. The first step is to estimate the right-hand side of \cref{equ:explicit_formula_proof_1}. First, we deal with the terms corresponding to $n$ such that $n$ is boudned away from $x$. So suppose $n \le \frac{3}{4}x$ or $n \ge \frac{5}{4}x$. For these $n$, $1 \ll \log\left(\frac{x}{n}\right)$ so that their contribution is
+        \begin{equation}\label{equ:explicit_formula_proof_2}
+          \ll \frac{x^{c}}{T}\sum_{n \ge 1}\frac{\L(n)}{n^{c}} \ll \frac{x^{c}}{T}\left(-\frac{\z'}{\z}(c)\right) \ll \frac{x\log(x)}{T},
+        \end{equation}
+        where the last estimate follows from \cref{equ:classical_zero-free_region_zeta_1} and our choice of $c$. Now we deal with the terms $n$ close to $x$. First consider those $n$ for which $\frac{3}{4}x < n < x$. Let $x_{1}$ be the largest prime power less than $x$. We may also suppose $\frac{3}{4}x < x_{1} < x$ since otherwise $\L(n) = 0$ and these terms do not contribute anything. For the term $n = x_{1}$, we have
         \[
-          \ll \todo{xxx}
+          \log\left(\frac{x}{n}\right) = -\log\left(1-\frac{x-x_{1}}{x}\right) \ge \frac{x-x_{1}}{x},
+        \]
+        where in the last estimate we have used the Taylor series of the logarithim and truncated after the first term. The contribution of this term is then
+        \begin{equation}\label{equ:explicit_formula_proof_3}
+          \ll \L(x_{1})\min\left(1,\frac{x}{T(x-x_{1})}\right) \ll \log(x)\min\left(1,\frac{x}{T(x-x_{1})}\right).
+        \end{equation}
+        For the other such $n$, we can write $n = x_{1}-v$, where $v$ is an integer satisfying $0 < v < \frac{1}{4}x$, so that
+        \[
+          \log\left(\frac{x}{n}\right) \ge \log\left(\frac{x_{1}}{n}\right) = -\log\left(1-\frac{v}{x_{1}}\right) \ge \frac{v}{x_{1}},
+        \]
+        where in the last estimate we have again used the Taylor series of the logarithim and truncated after the first term. The contribution for these $n$ is then
+        \begin{equation}\label{equ:explicit_formula_proof_4}
+          \ll \sum_{0 < v < \frac{1}{4}x}\L(x_{1}-v)\frac{x_{1}}{Tv} \ll \frac{x}{T}\sum_{0 < v < \frac{1}{4}x}\frac{\L(x_{1}-v)}{v} \ll \frac{x\log(x)}{T}\sum_{0 < v < \frac{1}{4}x}\frac{1}{v} \ll \frac{x\log(x)^{2}}{T}.
+        \end{equation}
+        The contribution for those $n$ for which $x < n < \frac{5}{4}x$ is handeled in exactly the same way with $x_{1}$ being the least prime power larger than $x$. Combining \cref{equ:explicit_formula_proof_3,equ:explicit_formula_proof_4}, the contribution for those $n$ with $\frac{3}{4}x < n < \frac{5}{4}x$ is
+        \begin{equation}\label{equ:explicit_formula_proof_5}
+          \ll \frac{x\log(x)^{2}}{T}+\log(x)\min\left(1,\frac{x}{T(x-x_{1})}\right).
+        \end{equation}
+        Putting \cref{equ:explicit_formula_proof_2,equ:explicit_formula_proof_5} together and noticing that the error in \cref{equ:explicit_formula_proof_2} is absorbed by the second error term in \cref{equ:explicit_formula_proof_5}, we obtain
+        \begin{equation}\label{equ:explicit_formula_proof_6}
+          |\psi_{0}(x)-J(x,T)| \ll \frac{x\log(x)^{2}}{T}+\log(x)\min\left(1,\frac{x}{T(x-x_{1})}\right).
+        \end{equation}
+        This is the first part of the proof. Now we estimate $J(x,T)$ by appealing to the residue theorem. Let $U \ge 1$ be an odd integer. Let $\W$ be the region enclosed by the contours $\eta_{1},\ldots,\eta_{4}$ in \cref{fig:explict_formula_contour} and set $\eta = \sum_{1 \le i \le 4}\eta_{i}$ so that $\eta = \del \W$.
+
+        \begin{figure}[ht]
+          \centering
+          \begin{tikzpicture}[scale=2]
+            \def\xmin{-3.5} \def\xmax{1.5}
+            \def\ymin{-2} \def\ymax{2}
+            \draw[thick] (\xmin,0) -- (\xmax,0);
+            \draw[thick] (0,\ymin) -- (0,\ymax);
+            \draw[dashed] (0.5,\ymin) -- (0.5,\ymax);
+
+            \draw[->-] (1,-1.5) -- (1,1.5);
+            \draw[->-] (1,1.5) -- (-3,1.5);
+            \draw[->-] (-3,1.5) -- (-3,-1.5);
+            \draw[->-] (-3,-1.5) -- (1,-1.5);
+
+            \node at (1,0) [below right] {\tiny{$\eta_{1}$}};
+            \node at (-1,1.5) [above] {\tiny{$\eta_{2}$}};
+            \node at (-3,0) [below left] {\tiny{$\eta_{3}$}};
+            \node at (-1,-1.5) [below] {\tiny{$\eta_{4}$}};
+
+            \node at (1,-1.5) [circle,fill,inner sep=1.5pt]{};
+            \node at (1,1.5) [circle,fill,inner sep=1.5pt]{};
+            \node at (0.5,1.5) [circle,fill,inner sep=1.5pt]{};
+            \node at (-3,1.5) [circle,fill,inner sep=1.5pt]{};
+            \node at (-3,-1.5) [circle,fill,inner sep=1.5pt]{};
+            \node at (0.5,-1.5) [circle,fill,inner sep=1.5pt]{};
+
+            \node at (1,-1.5) [below left] {\tiny{$c-iT$}};
+            \node at (1,1.5) [above] {\tiny{$c+iT$}};
+            \node at (0.5,1.5) [above left] {\tiny{$\frac{1}{2}+iT$}};
+            \node at (-3,1.5) [above] {\tiny{$-U+iT$}};
+            \node at (-3,-1.5) [below left] {\tiny{$-U-iT$}};
+            \node at (0.5,-1.5) [below left] {\tiny{$\frac{1}{2}-iT$}};
+          \end{tikzpicture}
+          \caption{Contour for the explict formula for $\psi(x)$}
+          \label{fig:explict_formula_contour}
+        \end{figure}
+
+        We may express $J(x,T)$ as
+        \[
+          J(x,T) = \frac{1}{2\pi i}\int_{\eta_{1}}-\frac{\z'}{\z}(s)x^{s}\,\frac{ds}{s}.
+        \]
+        The residue theorem together with the explicit formula for $\frac{\z'}{\z}(s)x^{s}$ and \cref{cor:logarithmic_derivative_of_gamma} imply
+        \[
+          J(x,T) = x-\sum_{|\g| < T}\frac{x^{\rho}}{\rho}-\sum_{0 < 2m < U}\frac{x^{-2m}}{2m}+\frac{1}{2\pi i}\int_{\eta_{1}+\eta_{2}+\eta_{3}}-\frac{\z'}{\z}(s)x^{s}\,\frac{ds}{s},
+        \]
+        where $\rho = \b+i\g$ is a nontrivial zeros of $\z$. Now we estimate this latter integral. By \cref{cor:Riemann_von_Mangoldt_corollary} (i), the number of nontrivial zeros satisfying $|\g-T| < 1$ is $O(\log(T))$. Among the ordinates of these zeros, there must be a gap of size $\gg \log(T)^{-1}$. Upon varrying $T$ by a bounded amount (we are varrying in the interval $[T-1,T+1]$) so that it belongs to this gap, we can additionally ensure
+        \[
+          |\g-T| \gg \log(T)^{-1},
+        \]
+        for all the nontrivial zeros of $\z(s)$. To estimate part of the horizontal integrals over $\eta_{2}$ and $\eta_{4}$, \cref{equ:Riemann_von_Mangoldt_14} with $s = \s+iT$ for $-1 \le \s \le 2$ gives
+        \[
+          \frac{\z'}{\z}(s) = \sum_{|\g-T| < 1}\frac{1}{s-\rho}+O(\log(T)) \todo{xxx}
         \]
       \end{proof}
     \subsection*{The Explicit Formula for \texorpdfstring{$\psi(x,\chi)$}{$\psi(x,\chi)$}}
