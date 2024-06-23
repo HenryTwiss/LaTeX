@@ -5,7 +5,7 @@
       The explicit formula for $\psi(x)$ will be obtained by applying truncated Perron's formula. Since $\psi(x)$ is discontinuous when $x$ is a prime power, we need to work with $\psi_{0}(x)$ to apply the Mellin inversion formula. The \textbf{explicit formula}\index{explicit formula} for $\psi(x)$ is the following:
 
       \begin{theorem}[Explicit formula for $\psi(x)$]
-        For $x \ge 3$,
+        For $x \ge 2$,
         \[
           \psi_{0}(x) = x-\sum_{\rho}\frac{x^{\rho}}{\rho}-\frac{\z'}{\z}(0)-\frac{1}{2}\log(1-x^{-2}),
         \]
@@ -27,7 +27,7 @@
         \[
           J(x,T) = \frac{1}{2\pi i}\int_{c-iT}^{c+iT}-\frac{\z'}{\z}(s)x^{s}\,\frac{ds}{s},
         \]
-        $c > 1$, and it is understood that $\d_{x} = 0$ unless $x$ is a prime power. Take $T > 2$ not coinciding with the ordinate of a nontrivial zero and let $c = 1+\log(x)^{-1}$ so that $x^{c} = ex$. The first step is to estimate the right-hand side of \cref{equ:explicit_formula_proof_1}. First, we deal with the terms corresponding to $n$ such that $n$ is boudned away from $x$. So suppose $n \le \frac{3}{4}x$ or $n \ge \frac{5}{4}x$. For these $n$, $1 \ll \log\left(\frac{x}{n}\right)$ so that their contribution is
+        $c > 1$, and it is understood that $\d_{x} = 0$ unless $x$ is a prime power. Take $T > 2$ not coinciding with the ordinate of a nontrivial zero and let $c = 1+\log(x^{2})^{-1}$ so that $x^{c} = \sqrt{e}x$. The first step is to estimate the right-hand side of \cref{equ:explicit_formula_proof_1}. First, we deal with the terms corresponding to $n$ such that $n$ is boudned away from $x$. So suppose $n \le \frac{3}{4}x$ or $n \ge \frac{5}{4}x$. For these $n$, $1 \ll \log\left(\frac{x}{n}\right)$ so that their contribution is
         \begin{equation}\label{equ:explicit_formula_proof_2}
           \ll \frac{x^{c}}{T}\sum_{n \ge 1}\frac{\L(n)}{n^{c}} \ll \frac{x^{c}}{T}\left(-\frac{\z'}{\z}(c)\right) \ll \frac{x\log(x)}{T},
         \end{equation}
@@ -35,7 +35,7 @@
         \[
           \log\left(\frac{x}{n}\right) = -\log\left(1-\frac{x-x_{1}}{x}\right) \ge \frac{x-x_{1}}{x},
         \]
-        where in the last estimate we have used the Taylor series of the logarithim and truncated after the first term. The contribution of this term is then
+        where we have obtained the inequality by using Taylor series of the logarithim truncated after the first term. The contribution of this term is then
         \begin{equation}\label{equ:explicit_formula_proof_3}
           \ll \L(x_{1})\min\left(1,\frac{x}{T(x-x_{1})}\right) \ll \log(x)\min\left(1,\frac{x}{T(x-x_{1})}\right).
         \end{equation}
@@ -43,7 +43,7 @@
         \[
           \log\left(\frac{x}{n}\right) \ge \log\left(\frac{x_{1}}{n}\right) = -\log\left(1-\frac{v}{x_{1}}\right) \ge \frac{v}{x_{1}},
         \]
-        where in the last estimate we have again used the Taylor series of the logarithim and truncated after the first term. The contribution for these $n$ is then
+        where we have obtained the inequality by using Taylor series of the logarithim truncated after the first term. The contribution for these $n$ is then
         \begin{equation}\label{equ:explicit_formula_proof_4}
           \ll \sum_{0 < v < \frac{1}{4}x}\L(x_{1}-v)\frac{x_{1}}{Tv} \ll \frac{x}{T}\sum_{0 < v < \frac{1}{4}x}\frac{\L(x_{1}-v)}{v} \ll \frac{x\log(x)}{T}\sum_{0 < v < \frac{1}{4}x}\frac{1}{v} \ll \frac{x\log(x)^{2}}{T}.
         \end{equation}
@@ -114,11 +114,23 @@
         \[
           \frac{\z'}{\z}(s) = O(\log(T)^{2}),
         \]
-        for $-1 \le \s \le 2$. It follows that the parts of the horizontal integrals over $\eta_{2}$ and $\eta_{4}$ with  $-1 \le \s \le c$ (as $x \ge 3$ our choice of $c$ ensures $c < 2$) contribute
+        for $-1 \le \s \le 2$. It follows that the parts of the horizontal integrals over $\eta_{2}$ and $\eta_{4}$ with  $-1 \le \s \le c$ (as $x \ge 2$ our choice of $c$ ensures $c < 2$) contribute
         \[
           \ll \frac{\log(T)^{2}}{T}\int_{-1}^{c}x^{\s}\,d\s \ll \frac{\log(T)^{2}}{T}\int_{-\infty}^{c}x^{\s}\,d\s \ll \frac{x\log(T)^{2}}{T\log(x)},
         \]
-        where in the first estimate we have used the fact that $s \sim T$ and in the last estiamte we have used the choice of $c$. To estimate the remainder of the horizontal integrals \todo{xxx}
+        where in the first estimate we have used the fact that $s \sim T$ and in the last estiamte we have used the choice of $c$. To estimate the remainder of the horizontal integrals, we need a bound for $\frac{\z'}{\z}(s)$ when $\s < -1$. To this end, write the functional equation for $\z(s)$ in the form
+        \[
+          \z(1-s) = \pi^{1-s}\frac{\G\left(\frac{s}{2}\right)}{\G\left(\frac{1-s}{2}\right)}\z(s),
+        \]
+        and take the logarithimic derivative to get
+        \[
+          \frac{\z'}{\z}(1-s) = -\log(\pi)+\frac{1}{2}\frac{\G'}{\G}\left(\frac{s}{2}\right)+\frac{1}{2}\frac{\G'}{\G}\left(\frac{1-s}{2}\right)+\frac{\z'}{\z}(s).
+        \]
+        Now let $s$ be such that $\s > 2$. The first term is contant and the four term is bounded by \cref{equ:Drichlet_series_log_derivative_zeta}. As for the digamma terms, \cref{equ:approximtion_for_digamma} implies $\frac{1}{2}\frac{\G'}{\G}\left(\frac{s}{2}\right) = O(\log|s|)$ and $\frac{1}{2}\frac{\G'}{\G}\left(\frac{1-s}{2}\right) = O(\log|2s|)$ \todo{??} where in the latter estimate we also make use of the fact that $1-s \sim s$. Putting these estimates together, we see that
+        \[
+          \frac{\z'}{\z}(s) \ll \log(1-s),
+        \]
+        for $\s < -1$.
       \end{proof}
     \subsection*{The Explicit Formula for \texorpdfstring{$\psi(x,\chi)$}{$\psi(x,\chi)$}}
       \todo{xxx}
