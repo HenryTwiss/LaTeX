@@ -21,7 +21,7 @@
       \begin{proof}[Proof of the explicit formula for $\psi(x)$]
         Recalling \cref{equ:Drichlet_series_log_derivative_zeta} and that $\psi(x) = \sum_{n \le x}\L(n)$, applying truncated Perron's formula to $-\frac{\z'}{\z}(s)$ gives
         \begin{equation}\label{equ:explicit_formula_proof_1}
-          |\psi_{0}(x)-J(x,T)| \ll x^{c}\sum_{\substack{n \ge 1 \\ n \neq x}}\frac{\L(n)}{n^{c}}\min\left(1,\frac{1}{T\left|\log\left(\frac{x}{n}\right)\right|}\right)+\d_{x}\L(x)\frac{c}{T},
+          \psi_{0}(x)-J(x,T) \ll x^{c}\sum_{\substack{n \ge 1 \\ n \neq x}}\frac{\L(n)}{n^{c}}\min\left(1,\frac{1}{T\left|\log\left(\frac{x}{n}\right)\right|}\right)+\d_{x}\L(x)\frac{c}{T},
         \end{equation}
         where
         \[
@@ -47,13 +47,13 @@
         \begin{equation}\label{equ:explicit_formula_proof_4}
           \ll \sum_{0 < v < \frac{1}{4}x}\L(x_{1}-v)\frac{x_{1}}{Tv} \ll \frac{x}{T}\sum_{0 < v < \frac{1}{4}x}\frac{\L(x_{1}-v)}{v} \ll \frac{x\log(x)}{T}\sum_{0 < v < \frac{1}{4}x}\frac{1}{v} \ll \frac{x\log(x)^{2}}{T}.
         \end{equation}
-        The contribution for those $n$ for which $x < n < \frac{5}{4}x$ is handeled in exactly the same way with $x_{1}$ being the least prime power larger than $x$. Combining \cref{equ:explicit_formula_proof_3,equ:explicit_formula_proof_4}, the contribution for those $n$ with $\frac{3}{4}x < n < \frac{5}{4}x$ is
+        The contribution for those $n$ for which $x < n < \frac{5}{4}x$ is handeled in exactly the same way with $x_{1}$ being the least prime power larger than $x$. Let $\<x\>$ be the distance between $x$ and the nearest prime power provided $x$ is itself not a prime power. Combining \cref{equ:explicit_formula_proof_3,equ:explicit_formula_proof_4} with our previous comment, the contribution for those $n$ with $\frac{3}{4}x < n < \frac{5}{4}x$ is
         \begin{equation}\label{equ:explicit_formula_proof_5}
-          \ll \frac{x\log(x)^{2}}{T}+\log(x)\min\left(1,\frac{x}{T(x-x_{1})}\right).
+          \ll \frac{x\log(x)^{2}}{T}+\log(x)\min\left(1,\frac{x}{T\<x\>}\right).
         \end{equation}
-        Putting \cref{equ:explicit_formula_proof_2,equ:explicit_formula_proof_5} together and noticing that the error in \cref{equ:explicit_formula_proof_2} is absorbed by the second error term in \cref{equ:explicit_formula_proof_5}, we obtain
+        Putting \cref{equ:explicit_formula_proof_2,equ:explicit_formula_proof_5} together and noticing that the error term in \cref{equ:explicit_formula_proof_2} is absorbed by the second error term in \cref{equ:explicit_formula_proof_5}, we obtain
         \begin{equation}\label{equ:explicit_formula_proof_6}
-          |\psi_{0}(x)-J(x,T)| \ll \frac{x\log(x)^{2}}{T}+\log(x)\min\left(1,\frac{x}{T(x-x_{1})}\right).
+          \psi_{0}(x)-J(x,T) \ll \frac{x\log(x)^{2}}{T}+\log(x)\min\left(1,\frac{x}{T\<x\>}\right).
         \end{equation}
         This is the first part of the proof. Now we estimate $J(x,T)$ by appealing to the residue theorem. Let $U \ge 1$ be an odd integer. Let $\W$ be the region enclosed by the contours $\eta_{1},\ldots,\eta_{4}$ in \cref{fig:explict_formula_contour} and set $\eta = \sum_{1 \le i \le 4}\eta_{i}$ so that $\eta = \del \W$.
 
@@ -99,10 +99,10 @@
           J(x,T) = \frac{1}{2\pi i}\int_{\eta_{1}}-\frac{\z'}{\z}(s)x^{s}\,\frac{ds}{s}.
         \]
         The residue theorem together with the explicit formula for $\frac{\z'}{\z}(s)x^{s}$ and \cref{cor:logarithmic_derivative_of_gamma} imply
-        \[
-          J(x,T) = x-\sum_{|\g| < T}\frac{x^{\rho}}{\rho}-\sum_{0 < 2m < U}\frac{x^{-2m}}{2m}+\frac{1}{2\pi i}\int_{\eta_{1}+\eta_{2}+\eta_{3}}-\frac{\z'}{\z}(s)x^{s}\,\frac{ds}{s},
-        \]
-        where $\rho = \b+i\g$ is a nontrivial zeros of $\z$. Now we estimate this latter integral. By \cref{cor:Riemann_von_Mangoldt_corollary} (i), the number of nontrivial zeros satisfying $|\g-T| < 1$ is $O(\log(T))$. Among the ordinates of these zeros, there must be a gap of size $\gg \log(T)^{-1}$. Upon varrying $T$ by a bounded amount (we are varrying in the interval $[T-1,T+1]$) so that it belongs to this gap, we can additionally ensure
+        \begin{equation}\label{equ:explicit_formula_proof_7}
+          J(x,T) = x-\sum_{|\g| < T}\frac{x^{\rho}}{\rho}-\frac{\z'}{\z}(0)-\sum_{0 < 2m < U}\frac{x^{-2m}}{2m}+\frac{1}{2\pi i}\int_{\eta_{1}+\eta_{2}+\eta_{3}}-\frac{\z'}{\z}(s)x^{s}\,\frac{ds}{s},
+        \end{equation}
+        where $\rho = \b+i\g$ is a nontrivial zeros of $\z$. We will estimate $J(x,T)$ by estimating the integral. By \cref{cor:Riemann_von_Mangoldt_corollary} (i), the number of nontrivial zeros satisfying $|\g-T| < 1$ is $O(\log(T))$. Among the ordinates of these zeros, there must be a gap of size $\gg \log(T)^{-1}$. Upon varrying $T$ by a bounded amount (we are varrying in the interval $[T-1,T+1]$) so that it belongs to this gap, we can additionally ensure
         \[
           |\g-T| \gg \log(T)^{-1},
         \]
@@ -115,22 +115,42 @@
           \frac{\z'}{\z}(s) = O(\log(T)^{2}),
         \]
         for $-1 \le \s \le 2$. It follows that the parts of the horizontal integrals over $\eta_{2}$ and $\eta_{4}$ with  $-1 \le \s \le c$ (as $x \ge 2$ our choice of $c$ ensures $c < 2$) contribute
-        \[
+        \begin{equation}\label{equ:explicit_formula_proof_8}
           \ll \frac{\log(T)^{2}}{T}\int_{-1}^{c}x^{\s}\,d\s \ll \frac{\log(T)^{2}}{T}\int_{-\infty}^{c}x^{\s}\,d\s \ll \frac{x\log(T)^{2}}{T\log(x)},
-        \]
-        where in the first estimate we have used the fact that $s \sim T$ and in the last estiamte we have used the choice of $c$. To estimate the remainder of the horizontal integrals, we need a bound for $\frac{\z'}{\z}(s)$ when $\s < -1$. To this end, write the functional equation for $\z(s)$ in the form
+        \end{equation}
+        where in the first estimate we have used the fact that $s \sim T$ and in the last estiamte we have used the choice of $c$. To estimate the remainder of the horizontal integrals, we need a bound for $\frac{\z'}{\z}(s)$ when $\s < -1$ and away from the trivial zeros. To this end, write the functional equation for $\z(s)$ in the form
         \[
-          \z(1-s) = \pi^{1-s}\frac{\G\left(\frac{s}{2}\right)}{\G\left(\frac{1-s}{2}\right)}\z(s),
+          \z(s) = \pi^{s-1}\frac{\G\left(\frac{1-s}{2}\right)}{\G\left(\frac{s}{2}\right)}\z(1-s),
         \]
         and take the logarithimic derivative to get
         \[
-          \frac{\z'}{\z}(1-s) = -\log(\pi)+\frac{1}{2}\frac{\G'}{\G}\left(\frac{s}{2}\right)+\frac{1}{2}\frac{\G'}{\G}\left(\frac{1-s}{2}\right)+\frac{\z'}{\z}(s).
+          \frac{\z'}{\z}(s) = \log(\pi)+\frac{1}{2}\frac{\G'}{\G}\left(\frac{1-s}{2}\right)-\frac{1}{2}\frac{\G'}{\G}\left(\frac{s}{2}\right)+\frac{\z'}{\z}(1-s).
         \]
-        Now let $s$ be such that $\s > 2$. The first term is contant and the four term is bounded by \cref{equ:Drichlet_series_log_derivative_zeta}. As for the digamma terms, \cref{equ:approximtion_for_digamma} implies $\frac{1}{2}\frac{\G'}{\G}\left(\frac{s}{2}\right) = O(\log|s|)$ and $\frac{1}{2}\frac{\G'}{\G}\left(\frac{1-s}{2}\right) = O(\log|2s|)$ \todo{??} where in the latter estimate we also make use of the fact that $1-s \sim s$. Putting these estimates together, we see that
+        Let $s$ be such that $\s < -1$ and suppose $s$ is say distance $\frac{1}{2}$ away from the trivial zeros. We will estiamte every term on the right-hand side. The first term is contant and the four term is bounded by \cref{equ:Drichlet_series_log_derivative_zeta}. As for the digamma terms, since $s$ is away from the trivial zeros, \cref{equ:approximtion_for_digamma} implies $\frac{1}{2}\frac{\G'}{\G}\left(\frac{1-s}{2}\right) = O(\log|1-s|)$ and $\frac{1}{2}\frac{\G'}{\G}\left(\frac{s}{2}\right) = O(\log|s|)$. However, as $\s > 2$, $s$ is bounded away from zero so that $\frac{1}{2}\frac{\G'}{\G}\left(\frac{1-s}{2}\right) = O(\log|s|)$. Putting these estimates together, we see that
+        \begin{equation}\label{equ:explicit_formula_proof_9}
+          \frac{\z'}{\z}(s) \ll \log(|s|),
+        \end{equation}
+        for $\s < -1$. Using \cref{equ:explicit_formula_proof_9}, the parts of the horizontal integrals over $\eta_{2}$ and $\eta_{4}$ with $-U \le \s \le -1$ contribute
+        \begin{equation}\label{equ:explicit_formula_proof_10}
+          \ll \frac{\log(T)}{T}\int_{-U}^{-1}x^{\s}\,d\s \ll \frac{\log(T)}{Tx\log(x)},
+        \end{equation}
+        where in the first estimate we have used the fact that $s \sim T$. Combining \cref{equ:explicit_formula_proof_8,equ:explicit_formula_proof_10} gives
+        \begin{equation}\label{equ:explicit_formula_proof_11}
+          \frac{1}{2\pi i}\int_{\eta_{2}+\eta_{4}}-\frac{\z'}{\z}(s)x^{s}\,\frac{ds}{s} \ll \frac{x\log(T)^{2}}{T\log(x)}+\frac{\log(T)}{Tx\log(x)} \ll \frac{x\log(T)^{2}}{T\log(x)}.
+        \end{equation}
+        To estimate the vertical integral, we use \cref{equ:explicit_formula_proof_9} again to conclude that
+        \begin{equation}\label{equ:explicit_formula_proof_12}
+          \frac{1}{2\pi i}\int_{\eta_{3}}-\frac{\z'}{\z}(s)x^{s}\,\frac{ds}{s} \ll \frac{\log(U)}{U}\int_{-T}^{T}x^{-U}\,dt \ll \frac{T\log(U)}{Ux^{U}},
+        \end{equation}
+        where in the first estimate we have used the fact that $s \sim U$. Combining \cref{equ:explicit_formula_proof_7,equ:explicit_formula_proof_11,equ:explicit_formula_proof_12} and taking the limit as $U \to \infty$, the error term in \cref{equ:explicit_formula_proof_12} vanishes and the sum over $m$ in \cref{equ:explicit_formula_proof_7} evaulates to $\frac{1}{2}\log(1-x^{-2})$ (as we have already mentioned) giving
+        \begin{equation}\label{equ:explicit_formula_proof_13}
+          J(x,T) = x-\sum_{|\g| < T}\frac{x^{\rho}}{\rho}-\frac{\z'}{\z}(0)-\frac{1}{2}\log(1-x^{-2})+\frac{x\log(T)^{2}}{T\log(x)}.
+        \end{equation}
+        Substiuting \cref{equ:explicit_formula_proof_13} into \cref{equ:explicit_formula_proof_6}, we at last obtain
         \[
-          \frac{\z'}{\z}(s) \ll \log(1-s),
+          \psi_{0}(x) = x-\sum_{|\g| < T}\frac{x^{\rho}}{\rho}-\frac{\z'}{\z}(0)-\frac{1}{2}\log(1-x^{-2})+\frac{x\log(xT)^{2}}{T}+\log(x)\min\left(1,\frac{x}{T\<x\>}\right),
         \]
-        for $\s < -1$.
+        where the second to last term on the right-hand side is obtained by combining error term in \cref{equ:explicit_formula_proof_11} with the first error term in \cref{equ:explicit_formula_proof_6}. The theorem following by taking the limit as $T \to \infty$.
       \end{proof}
     \subsection*{The Explicit Formula for \texorpdfstring{$\psi(x,\chi)$}{$\psi(x,\chi)$}}
       \todo{xxx}
