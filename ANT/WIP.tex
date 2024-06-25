@@ -1,0 +1,261 @@
+ \documentclass[12pt,oneside]{book}
+\usepackage{import}
+\input{preamble}
+
+%=================%
+%  Title & Index  %
+%=================%
+\title{Analytic Number Theory}
+\author{Henry Twiss}
+\date{2024}
+\makeindex
+
+\begin{document}
+\maketitle
+\pagestyle{empty}
+\addtocontents{toc}{\protect\thispagestyle{empty}}
+\tableofcontents
+\setcounter{page}{0}
+\pagestyle{fancy}
+ 
+ The proof we present uses \cref{thm:non-vanishing_of_zeta_on_Re(s)=1} and requires a few different preliminary results. Many of these results are somewhat disconnected, so we will prove them seperately and then prove the prime number theorem. However, we will outline the overall idea. Start with the \textbf{Chebychef functions}\index{Chebychef functions}:
+      \[
+        \t(x) = \sum_{p \le x}\log(p) \quad \text{and} \quad \psi(x) = \sum_{n \le x}\L(n),
+      \]
+      defined for a real $x$, where $m \ge 1$ is an integer, and where $\L(n)$ is the von Mangoldt function. Since $\frac{\log(p^{m})}{\log(p)} = m$ and $\frac{\log(x)}{\log(p)}$ is continuous, for $x > 0$ we may write
+      \begin{equation}\label{equ:alternative_form_for_Chebychef function}
+        \psi(x) = \sum_{n \le x}\L(n) = \sum_{p^{m} \le x}\log(p) = \sum_{p \le x}\left\lfloor\frac{\log(x)}{\log(p)}\right\rfloor\log(p).
+      \end{equation}
+      This is often a more useful representation. We will first reduce the asymptotis of $\pi(x)$ to that of the Chebychef functions, in particular, $\psi(x)$. We will then show $\psi(x) = O(x)$ which is a weaker statement than the prime number theorem. After, we introduce a technical result that will be needed in the proof of the prime number theorem. Once all of this is done we will be ready to prove the theorem itself. This will be acomplished by relating $\z(s)$ to $\psi(x)$ and using the technical theorem to deduce asymptotics for $\psi(x)$ which will complete the proof. Our first result, as we have mentioned, relates the asymptotics of $\pi(x)$, $\t(x)$, and $\psi(x)$. Actually, it is an equivalence:
+
+      \begin{lemma}\label{lem:prime_number_theorem_equivalence}
+        The following are equivalent:
+        \begin{enumerate}[label=(\roman*)]
+          \item $\pi(x) \sim \frac{x}{\log(x)}$.
+          \item $\t(x) \sim x$.
+          \item $\psi(x) \sim x$.
+        \end{enumerate}
+      \end{lemma}
+      \begin{proof}
+        Let $x > 0$. Then
+        \[
+          \t(x) = \sum_{p \le x}\log(p) \le \sum_{p \le x}\left\lfloor\frac{\log(x)}{\log(p)}\right\rfloor\log(p) \le \sum_{p \le x}\frac{\log(x)}{\log(p)}\log(p) \le \sum_{p \le x}\log(x) = \pi(x)\log(x).
+        \]
+        This chain of inequalities and \cref{equ:alternative_form_for_Chebychef function} together imply
+        \[
+          \frac{\t(x)}{x} \le \frac{\psi(x)}{x} \le \frac{x\log(x)}{x}.
+        \]
+        Therefore we have
+        \begin{equation}\label{equ:prime_number_theorem_equivalence_1}
+          \lim_{x \to \infty}\frac{\t(x)}{x} \le \lim_{x \to \infty}\frac{\psi(x)}{x} \le \lim_{x \to \infty}\frac{\pi(x)\log(x)}{x}.
+        \end{equation}
+        Now fix an $\a$ with $0 < \a < 1$ and let $x > 1$. Then
+        \[
+          \t(x) = \sum_{p \le x}\log(p) \ge \sum_{x^{\a} < p \le x}\log(p) \ge \sum_{x^{\a} < p \le x}\a\log(x) = \a\log(x)(\pi(x)-\pi(x^{\a})) > \a\log(x)(\pi(x)-x^{\a}),
+        \]
+        where the last inequality follows because $\pi(x) < x$ provided $x > 0$. This chain of inequalities implies
+        \[
+          \frac{\t(x)}{x} \ge \a\frac{\pi(x)\log(x)}{x}-\a x^{\a-1}\log(x).
+        \]
+        Note that $x^{\a-1}\log(x) \to 0$ as $x \to \infty$ because $0 < \a < 1$. Then
+        \[
+          \lim_{x \to \infty}\frac{\t(x)}{x} \ge \a\lim_{x \to \infty}\frac{\pi(x)\log(x)}{x},
+        \]
+        and letting $\a \to 1$ we conclude
+        \begin{equation}\label{equ:prime_number_theorem_equivalence_2}
+          \lim_{x \to \infty}\frac{\t(x)}{x} \ge \lim_{x \to \infty}\frac{\pi(x)\log(x)}{x}.
+        \end{equation}
+        So \cref{equ:prime_number_theorem_equivalence_1,equ:prime_number_theorem_equivalence_2} together give
+        \[
+          \lim_{x \to \infty}\frac{\pi(x)\log(x)}{x} \le \lim_{x \to \infty}\frac{\t(x)}{x} \le \lim_{x \to \infty}\frac{\psi(x)}{x} \le \lim_{x \to \infty}\frac{\pi(x)\log(x)}{x}.
+        \]
+        This completes the proof.
+      \end{proof}
+
+      We now prove the weaker asymptotic $\psi(x) = O(x)$:
+
+      \begin{proposition}\label{prop:second_Chebychef_is_big_Oh_of_x}
+        \phantom{ }
+        \[
+          \psi(x) = O(x).
+        \]
+      \end{proposition}
+      \begin{proof}
+        Let $m > 1$ be an integer and fix an $x > 0$ such that $2^{m} < x \le 2^{m+1}$. By \cref{equ:alternative_form_for_Chebychef function}
+        \[
+          \psi(x) = \sum_{p \le x}\left\lfloor\frac{\log(x)}{\log(p)}\right\rfloor\log(p).
+        \]
+        Then by our choice of $m$,
+        \begin{equation}\label{equ:second_Chebychef_is_big_Oh_of_x_1}
+          \begin{aligned}
+            \psi(x) &= \psi(x)+\psi(2^{m})-\psi(2^{m}) \\
+            &\le \psi(2^{m})+\psi(2^{m+1})-\psi(2^{m}) \\
+            &= \sum_{p \le 2^{m}}\left\lfloor\frac{\log(2^{m})}{\log(p)}\right\rfloor\log(p)+\sum_{2^{m} < p \le 2^{m+1}}\left\lfloor\frac{\log(2^{m+1})}{\log(p)}\right\rfloor\log(p).
+          \end{aligned}
+        \end{equation}
+        We will now discuss two general estimates and then return to the two sums in \cref{equ:second_Chebychef_is_big_Oh_of_x_1}. For the first estimate, if $n \ge 1$ is an integer and $p$ is a prime such that $n < p \le 2n$, then $p$ divides $\frac{(2n)!}{n!} = n!\binom{2n}{n}$. Since $p$ does not divide $n!$ it must divide $\binom{2n}{n}$ so that
+        \[
+          \prod_{n < p \le 2n}p \le \binom{2n}{n} < (1+1)^{2n} = 2^{2n},
+        \]
+        where the last inequality follows by the binomial theorem. In particular,
+        \[
+          \sum_{n < p \le 2n}\log(p) = \log\left(\prod_{n < p \le 2n}p\right) < \log(2^{2n}) = 2n\log(2).
+        \]
+        Therefore
+        \begin{equation}\label{equ:second_Chebychef_is_big_Oh_of_x_2}
+          \sum_{p \le 2^{m}}\log(p) = \sum_{1 \le k \le m}\left(\sum_{2^{k-1} < p \le 2^{k}}\log(p)\right) < \sum_{1 \le k \le m}2^{k}\log(2) < 2^{m+1}\log(2).
+        \end{equation}
+        For our second estimate, if $p \le x$ is a prime such that $\left\lfloor\frac{\log(x)}{\log(p)}\right\rfloor > 1$ then $\left\lfloor\frac{\log(x)}{\log(p)}\right\rfloor \ge 2$ so that $x \ge p^{2}$ and hence $\sqrt{x} \ge p$. So
+        \begin{equation}\label{equ:second_Chebychef_is_big_Oh_of_x_3}
+          \sum_{p \le \sqrt{x}}\left\lfloor\frac{\log(x)}{\log(p)}\right\rfloor\log(p) \le \sum_{p \le \sqrt{x}}\frac{\log(x)}{\log(p)}\log(p) = \log(x)\sum_{p \le \sqrt{x}}1 = \pi(\sqrt{x})\log(x).
+        \end{equation}
+        Returning to the first of our two sums in \cref{equ:second_Chebychef_is_big_Oh_of_x_1} and recalling that $2^{m} < x \le 2^{m+1}$, \cref{equ:second_Chebychef_is_big_Oh_of_x_2,equ:second_Chebychef_is_big_Oh_of_x_3} imply
+        \begin{equation}\label{equ:second_Chebychef_is_big_Oh_of_x_4}
+          \begin{aligned}
+            \sum_{p \le 2^{m}}\left\lfloor\frac{\log(2^{m})}{\log(p)}\right\rfloor\log(p) &= \sum_{p \le \sqrt{2^{m}}}\left\lfloor\frac{\log(2^{m})}{\log(p)}\right\rfloor\log(p)+\sum_{\sqrt{2^{m}} < p \le 2^{m}}\log(p) \\
+            &\le \sum_{p \le \sqrt{2^{m}}}\left\lfloor\frac{\log(2^{m})}{\log(p)}\right\rfloor\log(p)+\sum_{p \le 2^{m}}\log(p) \\
+            &< \pi(\sqrt{2^{m}})\log(2^{m})+2^{m+1}\log(2) \\
+            &= \pi(\sqrt{x})\log(x)+2^{m+1}\log(2).
+          \end{aligned}
+        \end{equation}
+        As for the second sum in \cref{equ:second_Chebychef_is_big_Oh_of_x_1}, $p > 2^{m}$ implies $p > \sqrt{2^{m+1}}$ because $m > 1$. Therefore $\left\lfloor\frac{\log(2^{m+1})}{\log(p)}\right\rfloor = 1$ so from \cref{equ:second_Chebychef_is_big_Oh_of_x_2}
+        \begin{equation}\label{equ:second_Chebychef_is_big_Oh_of_x_5}
+          \sum_{2^{m} < p \le 2^{m+1}}\left\lfloor\frac{\log(2^{m+1})}{\log(p)}\right\rfloor\log(p) = \sum_{2^{m} < p \le 2^{m+1}}\log(p) < 2^{m+1}\log(2).
+        \end{equation}
+        Altogether, \cref{equ:second_Chebychef_is_big_Oh_of_x_1,equ:second_Chebychef_is_big_Oh_of_x_4,equ:second_Chebychef_is_big_Oh_of_x_5} give the first inequality in the following chain:
+        \begin{align*}
+          \psi(x) &< \pi(\sqrt{x})\log(x)+2^{m+1}\log(2)+2^{m+1}\log(2) \\
+          &= \pi(\sqrt{x})\log(x)+4(2^{m})\log(2) \\
+          &< \pi(\sqrt{x})\log(x)+4x\log(2) \\
+          &< \sqrt{x}\log(x)+4x\log(2) \\
+          &= \left(\frac{1}{\sqrt{x}}\log(x)+4\log(2)\right)x.
+        \end{align*}
+        Since $\frac{1}{\sqrt{x}}\log(x) \to 0$ as $x \to \infty$, there is a positive $M$ such that $\left|\frac{1}{\sqrt{x}}\log(x)\right| < M$ for all $x \ge 0$. Hence
+        \[
+          \psi(x) < (M+4\log(2))x,
+        \]
+        for all $x \ge 0$. But this is to say that $\psi(x) = O(x)$.
+      \end{proof}
+
+      We now discuss our technical result. A \textbf{Tauberian theorem}\index{Tauberian theorem} is a theorem which gives conditions for when a series or integral converges at some part of the boundary of its domain of definition. Our technical theorem is of this kind and is due to Newman (see \cite{murty2015simple} for a proof):
+
+      \begin{theorem}\label{thm:Tauberian_theorem_for_the_prime_number_theorem}
+        Let $f(x)$ be bounded and locally integrable function on $[1,\infty)$. Moreover, suppose
+        \[
+          g(s) = \int_{1}^{\infty}f(x)x^{-(s+1)}\,dx,
+        \]
+        defines an analytic function for $\Re(s) > 0$ and admits analytic continuation to a neighborhood of $\Re(s) = 0$. Then $\int_{1}^{\infty}\frac{f(x)}{x}\,dx$ exists and
+        \[
+          \int_{1}^{\infty}\frac{f(x)}{x}\,dx = g(0).
+        \]
+      \end{theorem}
+
+      \cref{thm:Tauberian_theorem_for_the_prime_number_theorem} is interesting because the analytic continuation of $g(s)$ is not necessarily given by its defining integral, but this theorem guarantees that it is at $s = 0$. We need to make one last technical remark. Since $\psi(x)$ is discontinuous when $x$ is a prime power, we need to work with a slightly modified version in order to apply the Mellin inversion formula. Define $\psi_{0}(x)$ by
+      \[
+        \psi_{0}(x) = \begin{cases} \psi(x) & \text{if $x$ is not a prime power}, \\ \psi(x)-\frac{1}{2}\L(x) & \text{if $x$ is a prime power}. \end{cases}
+      \]
+      Equivalently, $\psi_{0}(x)$ is $\psi(x)$ except that its value is halfway between the limit values when $x$ is a prime power. Stated another way, if $x$ is a prime power the last term in the sum for $\psi_{0}(x)$ is multiplied by $\frac{1}{2}$.
+
+
+      \begin{proof}[Proof of the prime number theorem]
+        By \cref{lem:prime_number_theorem_equivalence} it suffices to show $\psi(x) \sim x$. This is clearly equivalent to showing $\psi_{0}(x) \sim x$ and this is what we will prove. Consider the integral
+        \[
+          s\int_{1}^{\infty}\psi_{0}(x)x^{-(s+1)}\,dx,
+        \]
+        as a function of a complex variable $s$. By \cref{prop:second_Chebychef_is_big_Oh_of_x}, $\psi_{0}(x) = O(x)$ and thus
+        \[
+          s\int_{1}^{\infty}\psi_{0}(x)x^{-(s+1)}\,dx = O\left(\int_{1}^{\infty}x^{-s}\,dx\right).
+        \]
+        For $\Re(s) > 1$, the integral in the right-hand side of the $O$-estimate above is locally absolutely uniformly bounded so that the left-hand side is too. Thus the left-hand side defines a holomorphic function for $\Re(s) > 1$. We now derive an alternaive description for this function. Recalling \cref{equ:Drichlet_series_log_derivative_zeta} and that $\psi(x) = \sum_{n \le x}\L(n)$, we can apply the Mellin inversion formula to Perron's formula (or follow the proof of Perron's formula) to obtain
+        \[
+          -\frac{\z'}{\z}(s) = s\int_{1}^{\infty}\psi_{0}(x)x^{-(s+1)}\,dx,
+        \]
+        for $\Re(s) > 1$. Now consider
+        \[
+          -\frac{\z'}{\z}(s)-\frac{1}{s-1} = s\int_{1}^{\infty}\psi_{0}(x)x^{-(s+1)}\,dx-\frac{1}{s-1}.
+        \]
+        We claim that $-\frac{\z'}{\z}(s)-\frac{1}{s-1}$ has analytic contunuation to a neighborhood of $\Re(s) = 1$. By the meromorphic continuation of $\z(s)$, $-\frac{\z'}{\z}(s)-\frac{1}{s-1}$ is holomorphic everywhere except possibly at the points where $\z(s)$ has zeros or at the pole $s = 1$. By \cref{thm:non-vanishing_of_zeta_on_Re(s)=1}, $\frac{1}{\z(s)}$ is defined on $\Re(s) = 1$ and hence is holomorphic in a neighborhood of $\Re(s) = 1$ since $\z(s)$ is. Therefore $-\frac{\z'}{\z}(s)-\frac{1}{s-1}$ is holomorphic except possibly at $s = 1$. In this case, the pole is simple so $\z(s) = (s-1)\z_{1}(s)$ where $\z_{1}(s)$ is holomorphic and such that $\z_{1}(1) \neq 0$ and hence is nonzero is a neighborhood of $1$. Upon taking the logarithmic derivative of $\z(s)$ we see that
+        \[
+          -\frac{\z'}{\z}(s)-\frac{1}{s-1} = \frac{\z_{1}'}{\z_{1}}(s).
+        \]
+        It follows that $-\frac{\z'}{\z}(s)-\frac{1}{s-1}$ is holomorphic at $s = 1$ too. Thus $-\frac{\z'}{\z}(s)-\frac{1}{s-1}$ is holomorphic on the line $\Re(s) = 1$ and therefore admits analytic continuation to a neighborhood of $\Re(s) = 1$. In particular,
+        \[
+          s\int_{1}^{\infty}\psi_{0}(x)x^{-(s+1)}\,dx-\frac{1}{s-1}.
+        \]
+        is analytic in a neighborhood of $\Re(s) = 1$. We will now use the Tauberian theorem. Observe that in a neighborhood of $\Re(s) = 1$ with $\Re(s) > 0$, we have
+        \begin{equation}\label{equ:prime_number_theorem_1}
+          \begin{aligned}
+            \int_{1}^{\infty}\left(\frac{\psi_{0}(x)-x}{x}\right)x^{-(s+1)}\,dx &= \int_{1}^{\infty}\left(\frac{\psi_{0}(x)}{x}-1\right)x^{-(s+1)}\,dx \\
+            &= \int_{1}^{\infty}\psi_{0}(x)x^{-(s+2)}\,dx-\int_{1}^{\infty}x^{-(s+1)}\,dx \\
+            &= \int_{1}^{\infty}\psi_{0}(x)x^{-(s+2)}\,dx-\frac{1}{s} \\
+            &= \frac{1}{s+1}(s+1)\int_{1}^{\infty}\psi_{0}(x)x^{-(s+2)}\,dx-\frac{1}{s} \\
+            &= \frac{1}{s+1}\left((s+1)\int_{1}^{\infty}\psi_{0}(x)x^{-(s+2)}\,dx-\frac{1}{s}-1\right),
+          \end{aligned}
+        \end{equation}
+        where the second line follows because $\Re(s) > 0$ and the last line follows because $\frac{1}{s+1}\left(\frac{1}{s}-1\right) = \frac{1}{s}$. But
+        \[
+          (s+1)\int_{1}^{\infty}\psi_{0}(x)x^{-(s+2)}\,dx-\frac{1}{s},
+        \]
+        admits anaytic continuation to a neighborhood of $\Re(s) = 0$ by what we have already shown and so the last expression in \cref{equ:prime_number_theorem_1} is also analytic in a neighborhood of $\Re(s) = 0$. Hence,
+        \[
+          \int_{1}^{\infty}\left(\frac{\psi_{0}(x)-x}{x}\right)x^{-(s+1)}\,dx,
+        \]
+        admits analytic continuation to a neighborhood of $\Re(s) = 0$. As we have shown $\psi_{0}(x) = O(x)$, it follows that $\frac{\psi_{0}(x)-x}{x}$ is bounded on $[1,\infty)$. Also, $\psi_{0}(x)$ has finitely many jump discontinuities so that it is locally integrable on $[1,\infty)$ and therefore $\frac{\psi_{0}(x)-x}{x}$ is too. So all of the assumptions of \cref{thm:Tauberian_theorem_for_the_prime_number_theorem} are satisfied and we conclude that
+        \[
+          \int_{1}^{\infty}\frac{\psi_{0}(x)-x}{x^{2}}\,dx,
+        \]
+        exists. The existance of this integral will imply $\psi_{0}(x) \sim x$ which finishes the proof. Indeed, if this asymptotic does not hold then $\lim_{x \to \infty}\left|\frac{\psi_{0}(x)}{x}\right| \neq 1$ so that either $\left|\frac{\psi_{0}(x)}{x}\right| > 1$ or $\left|\frac{\psi_{0}(x)}{x}\right| < 1$ for arbitrarily large values of $x$. As $x$ is positive and $\psi_{0}(x)$ is a positive function, either $\frac{\psi_{0}(x)}{x} > 1$ or $\frac{\psi_{0}(x)}{x} < 1$ for arbitrarily large values of $x$. In the first case, $\frac{\psi_{0}(x)}{x} > 1$ is equivalent to the existance of a positive $\l > 1$ such that $\psi_{0}(x) \ge \l x$. This inequality together with the fact that $\psi_{0}(x)$ is monotonic increasing together imply the inequality in the following chain:
+        \[
+          \int_{x}^{\l x}\frac{\psi_{0}(t)-t}{t^{2}}\,dt = \int_{x}^{\l x}\frac{\psi_{0}(t)-t}{t}\,\frac{dt}{t} \ge \int_{x}^{\l x}\frac{\l x-t}{t}\,\frac{dt}{t} = \int_{1}^{\l}\frac{\l x-tx}{tx}\,\frac{dt}{t} = \int_{1}^{\l}\frac{\l-t}{t^{2}}\,dt > 0,
+        \]
+        where in the second equality we have used the change of variables $t \to xt$. Since this lower bound is independent of $x$, $\int_{x}^{\l x}\frac{\psi_{0}(t)-t}{t^{2}}\,dt$ is bounded away from zero by a constant for arbitrarily large values of $x$. This gives a contradiction since the existance of $\int_{1}^{\infty}\frac{\psi_{0}(x)-x}{x^{2}}\,dx$ implies that $\int_{x}^{\l x}\frac{\psi_{0}(t)-t}{t^{2}}\,dt \to 0$ as $x \to \infty$. In the second case, $\frac{\psi_{0}(x)}{x} < 1$ is equivalent to the existance of a positive $\l < 1$ such that $\psi_{0}(x) \le \l x$. Analogous to the first case,
+        \[
+          \int_{\l x}^{x}\frac{\psi_{0}(t)-t}{t^{2}}\,dt = \int_{\l x}^{x}\frac{\psi_{0}(t)-t}{t}\,\frac{dt}{t} \le \int_{\l x}^{x}\frac{\l x-t}{t}\,\frac{dt}{t} = \int_{\l}^{1}\frac{\l x-tx}{tx}\,\frac{dt}{t} = \int_{\l}^{1}\frac{\l-t}{t^{2}}\,dt < 0.
+        \]
+        Since this upper bound is independent of $x$, $\int_{\l x}^{x}\frac{\psi_{0}(t)-t}{t^{2}}\,dt$ is bounded away from zero by a constant for arbitrarily large values of $x$. Again, this gives a contradiction since the existance of $\int_{1}^{\infty}\frac{\psi_{0}(x)-x}{x^{2}}\,dx$ implies that $\int_{\l x}^{x}\frac{\psi_{0}(t)-t}{t^{2}}\,dt \to 0$ as $x \to \infty$. So finally $\psi_{0}(x) \sim x$ and the theorem is proved.
+      \end{proof}
+
+      A more classical proof of the prime number theorem is observing, as we did, that $-\frac{\z'}{\z}(s) = \sum_{n \ge 1}\frac{\L(n)}{n^{s}}$ and $\psi(x) = \sum_{n \le x}\L(x)$ and then appealing to Perron's formula to write
+      \[
+        \psi_{0}(x) = \frac{1}{2\pi i}\int_{(c)}-\frac{\z'}{\z}(s)x^{s}\frac{ds}{s}.
+      \]
+      One then performs a very careful analysis of the latter integral to conclude $\psi(x) \sim x$. This involves making several estimates about the growth rate of $\frac{\z'}{\z}(s)$ as well as other convergence arguments. However, not much is needed beyond a good understanding of complex analysis. We have deviated from this style of proof for technical simplicity even though the underlying idea is, perhapse, more straightforward.
+
+      \begin{remark}
+        It's interesting to note that our use of non-vanishing results in the proofs of the prime number theorem and Dirichlet's theorem on primes in arithmetic progressions served different purposes. In the proof of the prime number theorem the non-vanishing result was used to establish analytic continuation of $\frac{\z'}{\z}(s)$. On the other hand, in the proof of Dirichlet's theorem on primes in arithmetic progressions the non-vanishing result was used to conclude that $\log L(s,\chi)$ was bounded provided the Dirichlet character $\chi$ was non-principal.
+      \end{remark}
+
+      We will introduce one last function before we are done discussing the prime number theorem. That function is the \textbf{logarithmic integral}\index{logarithmic integral} $\Li(x)$ defined by
+      \[
+        \Li(x) = \int_{2}^{x}\frac{dt}{\log(t)},
+      \]
+      for $x \ge 2$. Notice that $\Li(x) \sim \frac{x}{\log{x}}$ because
+      \[
+        \lim_{x \to \infty}\left|\frac{\Li(x)}{\frac{x}{\log{x}}}\right| = \lim_{x \to \infty}\left|\frac{\int_{2}^{x}\frac{dt}{\log(t)}}{\frac{x}{\log{x}}}\right| = \lim_{x \to \infty}\left|\frac{\frac{1}{\log(x)}}{\frac{\log(x)-1}{\log^{2}(x)}}\right| = \lim_{x \to \infty}\left|\frac{\log(x)}{\log(x)-1}\right| = 1.
+      \]
+      where in the second equality we have used  l'H\^opital's rule. So an equivalent version of the prime number theorem is the following:
+
+      \begin{theorem}[Prime number theorem]
+        \phantom{ }
+        \[
+          \pi(x) \sim \Li(x).
+        \]
+      \end{theorem}
+
+      The advantage of using $\Li(x)$ is that it is a better numerical approximation to $\pi(x)$ than $\frac{x}{\log(x)}$. To make this statment precise, first observe that we have yet another equivalent version of the prime number theorem:
+
+      \begin{theorem}[Prime number theorem]
+        \phantom{ }
+        \[
+          \pi(x) = \frac{x}{\log(x)}+o\left(\frac{x}{\log(x)}\right).
+        \]
+      \end{theorem}
+
+      So, in particular, the prime number theorem implies the weaker asymptotic
+      \[
+        \pi(x) = \frac{x}{\log(x)}+O\left(\frac{x}{\log(x)}\right),
+      \]
+      which says that the extact error between $\pi(x)$ and $\frac{x}{\log(x)}$ grows no faster than $\frac{x}{\log(x)}$. However, there is the following result of de la Vall\'ee Poussin (see \cite{poussin1899fonction}):
+
+
+\end{document}

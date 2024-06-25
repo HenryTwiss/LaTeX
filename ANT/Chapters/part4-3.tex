@@ -2,7 +2,19 @@
   Our main aim is to prove the prime number theorem and its variant for primes restricted to a certain residue class, the Siegel–Walfisz theorem, in the classical manner. These results will follow from explicit formulas for the Chebyshev function $\psi(x)$ and a sutiable generalization in the latter case. After deriving these results, we prove (for the second time) the prime number theorem and the Siegel–Walfisz theorem.
   \section{\todo{Explicit Formulas for Chebyshev Functions}}
     \subsection*{The Explicit Formula for \texorpdfstring{$\psi(x)$}{$\psi(x)$}}
-      The explicit formula for $\psi(x)$ will be obtained by applying truncated Perron's formula. Since $\psi(x)$ is discontinuous when $x$ is a prime power, we need to work with $\psi_{0}(x)$ to apply the Mellin inversion formula. The \textbf{explicit formula}\index{explicit formula} for $\psi(x)$ is the following:
+      The \textbf{Chebychef function}\index{Chebychef function} $\psi(x)$, for real $x > 1$, is defined by
+      \[
+        \psi(x) = \sum_{n \le x}\L(n),
+      \]
+      Since $\frac{\log(p^{m})}{\log(p)} = m$ and $\frac{\log(x)}{\log(p)}$ is continuous, for $x > 0$ we may write
+      \begin{equation}\label{equ:alternative_form_for_Chebychef function}
+        \psi(x) = \sum_{n \le x}\L(n) = \sum_{p^{m} \le x}\log(p) = \sum_{p \le x}\left\lfloor\frac{\log(x)}{\log(p)}\right\rfloor\log(p).
+      \end{equation}
+      The explicit formula for $\psi(x)$ will be obtained by applying truncated Perron's formula to the logarithimic derivative of $\z(s)$. Since $\psi(x)$ is discontinuous when $x$ is a prime power, we need to work with a slightly modified function to apply the Mellin inversion formula. Define $\psi_{0}(x)$ by
+      \[
+        \psi_{0}(x) = \begin{cases} \psi(x) & \text{if $x$ is not a prime power}, \\ \psi(x)-\frac{1}{2}\L(x) & \text{if $x$ is a prime power}. \end{cases}
+      \]
+      Equivalently, $\psi_{0}(x)$ is $\psi(x)$ except that its value is halfway between the limit values when $x$ is a prime power. Stated another way, if $x$ is a prime power the last term in the sum for $\psi_{0}(x)$ is multiplied by $\frac{1}{2}$. The \textbf{explicit formula}\index{explicit formula} for $\psi(x)$ is the following:
 
       \begin{theorem}[Explicit formula for $\psi(x)$]
         For $x \ge 2$,
@@ -152,8 +164,98 @@
         \]
         where the second to last term on the right-hand side is obtained by combining error term in \cref{equ:explicit_formula_proof_11} with the first error term in \cref{equ:explicit_formula_proof_6}. The theorem following by taking the limit as $T \to \infty$.
       \end{proof}
+
+      Note that the convergence of the right-hand side in the explicit formula for $\psi$ is uniform in any interval not containing a prime power since $\psi$ is continuous there. Moreover, we have an approximate formula for $\psi(x)$ as a corollary:
+
+      \begin{corollary}
+         For $x \ge 2$ and $T > 2$,
+        \[
+           \psi_{0}(x) = x-\sum_{|\g| < T}\frac{x^{\rho}}{\rho}-\frac{\z'}{\z}(0)-\frac{1}{2}\log(1-x^{-2})+\frac{x\log(xT)^{2}}{T}+\log(x)\min\left(1,\frac{x}{T\<x\>}\right),
+        \]
+        where $\rho$ runs over the nontrivial zeros of $\z(s)$ counted with multiplicity and ordered with respect to the size of the ordinate.
+      \end{corollary}
+      \begin{proof}
+        Don't take the limit as $T \to \infty$ in the proof of the explicit formula for $\psi(x)$.
+      \end{proof}
+
+
     \subsection*{The Explicit Formula for \texorpdfstring{$\psi(x,\chi)$}{$\psi(x,\chi)$}}
       \todo{xxx}
   \section{\todo{Prime Number Theorems}}
-    \subsection*{\todo{The Prime Number Theorem (Reprise)}}
+    \subsection*{\todo{The Prime Number Theorem}}
+      The \textbf{prime counting function}\index{prime counting function} $\pi(x)$ is defined by
+      \[
+        \pi(x) = \sum_{p \le x}1,
+      \]
+      for a real $x$. So $\pi(x)$ counts the number of primes that no larger than $x$. Euclid's infitude of the primes is equivalent to $\pi(x) \to \infty$ as $x \to \infty$. A more interesting question is to ask how the primes are distributed among the integers. The \textbf{(classical) prime number theorem}\index{(classical) prime number theorem} answers this question and the precise statement is the following:
+
+      \begin{theorem}[Prime number theorem, classical version]
+        \phantom{ }
+        \[
+          \pi(x) \sim \frac{x}{\log(x)}.
+        \]
+      \end{theorem}
+
+      We will delay the proof for the moment and give some intuition and historical context to the result. Intuitively, the prime number theorem is a result about how dense the primes are in the integers. To see this, notice that the result is equivalent to the asymptotic
+      \[
+        \frac{\pi(x)}{x} \sim \frac{1}{\log(x)}.
+      \]
+      Letting $x \ge 1$, the left-hand side is the probability that a radomly chosen positive integer no larger than $x$ is prime. Thus the asymptotic result says that for large enough $x$, the probability that a randomly chosen integer no larger than $x$ is prime is approximately $\frac{1}{\log(x)}$. We can also interpret this as saying that the average gap between primes no larger than $x$ is approximately $\frac{1}{\log(x)}$. As a consequence, a positive integer with at most $2n$ digits is about half as likely to be prime than a positive integer with at most $n$ digits. Indeed, there are $10^{n}-1$ numbers with at most $n$ digits, $10^{2n}-1$ with at most $2n$ digits, and $\log(10^{2n}-1)$ is approximately $2\log(10^{n})$. Note that the prime number theorem says nothing about the exact error $\pi(x)-\frac{x}{\log(x)}$ as $x \to \infty$. The theorem only says that the relative error tends to zero:
+      \[
+        \lim_{x \to \infty}\frac{\pi(x)-\frac{x}{\log(x)}}{\frac{x}{\log(x)}} = 0.
+      \]
+      Now for some hisotrical context. While Gauss was not the first to put forth a conjectural form of the prime number theorem, he was known for compiling extensive tables of primes and he suspected that the density of the primes up to $x$ was roughly $\frac{1}{\log(x)}$. How might one suspect this is the correct density? Well, let $d\d_{p}$ be the weighted point measure that assigns $\frac{1}{p}$ at the prime $p$ and zero everywhere else. Then
+      \[
+        \sum_{p \le x}\frac{1}{p} = \int_{1}^{x}\,d\d_{p}(u).
+      \]
+      We can interpret the integral as integrating the density $d\d_{p}$ over the volume $[1,x]$. Let's try and find a more explicit expression for the density $d\d_{p}$. Now Euler (see \cite{euler1744variae}), argued that
+      \[
+        \sum_{p \le x}\frac{1}{p} \sim \log\log(x).
+      \]
+      But notice that
+      \[
+        \log\log(x) = \int_{1}^{\log(x)}\frac{du}{u} = \int_{e}^{x}\frac{1}{u}\frac{du}{\log{u}},
+      \]
+      where in the second equality we have made the change of variables $u \to \log(u)$. So altogether,
+      \[
+        \sum_{p \le x}\frac{1}{p} \sim \int_{e}^{x}\frac{1}{u}\frac{du}{\log{u}}.
+      \]
+      This is an asymptotic formula that gives a more explicit representation of the density $d\d_{p}$. Notice that both sides of this asymptotic are weighted the same, the left-hand side by $\frac{1}{p}$, and the right-hand side by $\frac{1}{u}$. If we remove these weight (this is not strictly allowed), then we might hope
+      \[
+        \pi(x) = \sum_{p \le x}1 \sim \int_{e}^{x}\frac{1}{\log(u)}du.
+      \]
+      Interpreting the integral as an integral of density over volume, then for large $x$ the density of primes up to $x$ is approximately $\frac{1}{\log(x)}$ which is what the prime number theorem claims. Legendre was the first to put forth a conjectural form of the prime number theorem. In 1798 (see \cite{legendre1798essai}), he claimed that $\pi(x)$ was of the form
+      \[
+        \frac{x}{A\log(x)+B},
+      \]
+      for some constants $A$ and $B$. In 1808 (see \cite{legendre1808essai}) he refined his conjecture by claiming
+      \[
+        \frac{x}{\log(x)+A(x)},
+      \]
+      where $\lim_{x \to \infty}A(x) \approx 1.08366$. Also in 1808 (see \cite{legendre1808essai}), Legendre conjectured what is now known as Dirichlet's theorem on primes in arithmetic progressions. As we have seen, Dirichlet's idea used complex analytic methods to resolve an arithmetic question. A similar type of idea is essential in proving the prime number theorem, and so Dirichlet's ideas are certainly due credit. It was not until 1896 that the prime number theorem was proved independently by Hadamard and de la Vall\'ee Poussin (see \cite{hadamard1896distribution,poussin1897recherches}). Their proofs, as well as every proof thereon out until 1949, used complex analytic methods in an essential way (there are now elementary proofs due to Erd\"os and Selberg). We are now ready to prove the prime number theorem and our proof will very closely follow that of de la Vall\'ee Poussin. Explicitly, we prove the following:
+
+      \begin{proposition}[The prime number theorem, Poussin version]
+        For some $c > 0$,
+        \[
+          \pi(x) = \Li(x)+O\left(xe^{-c\sqrt{\log(x)}}\right),
+        \]
+      \end{proposition}
+      \begin{proof}
+        \todo{xxx}
+      \end{proof}
+      
+      Since $xe^{-c\sqrt{\log(x)}} \to 0$ as $x \to \infty$ and $\frac{x}{\log(x)} \to \infty$ as $x \to \infty$, $xe^{-c\sqrt{\log(x)}} < \frac{x}{\log(x)}$ for sufficiently large $x$. Therefore the extact error $\pi(x)-\Li(x)$ grows slower than $\pi(x)-\frac{x}{\log{x}}$ for sufficiently large $x$. This is what we mean when we say $\Li(x)$ is a better numerical approximation to $\pi(x)$ than $\frac{x}{\log(x)}$. There is also the following result due to Hardy and Littlewood (see \cite{hardy1916contributions}):
+
+      \begin{proposition}\label{thm:Littlewood_Li_approximation_theorem}
+        $\pi(x)-\Li(x)$ changes sign infinitely often as $x \to \infty$.
+      \end{proposition}
+
+      So in addition, \cref{thm:Littlewood_Li_approximation_theorem} implies that $\Li(x)$ never underestimates or overestimates $\pi(x)$ continuously. On the other hand, the exact error $\pi(x)-\frac{x}{\log(x)}$ is positive provided $x \ge 17$ (see \cite{rosser1962approximate}). Under the Riemann hypothesis, we can do better. In particular, Koch in 1901 showed that the Riemann hypothesis implies an asymptotic estimate for the exact error between $\pi(x)$ and $\Li(x)$ (see \cite{von1901distribution}):
+
+      \begin{proposition}
+        Under the assumption of the Riemann hypothesis,
+        \[
+          \pi(x) = \Li(x)+O(\sqrt{x}\log(x)).
+        \]
+      \end{proposition}
     \subsection*{\todo{The Siegel–Walfisz Theorem}}
