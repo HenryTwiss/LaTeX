@@ -248,10 +248,10 @@
       \[
         \frac{x}{\log(x)+A(x)},
       \]
-      where $\lim_{x \to \infty}A(x) \approx 1.08366$. Also in 1808 (see \cite{legendre1808essai}), Legendre conjectured what is now known as Dirichlet's theorem on primes in arithmetic progressions. As we have seen, Dirichlet's idea used complex analytic methods to resolve an arithmetic question. A similar type of idea is essential in proving the prime number theorem, and so Dirichlet's ideas are certainly due credit. It was not until 1896 that the prime number theorem was proved independently by Hadamard and de la Vall\'ee Poussin (see \cite{hadamard1896distribution,poussin1897recherches}). Their proofs, as well as every proof thereon out until 1949, used complex analytic methods in an essential way (there are now elementary proofs due to Erd\"os and Selberg). We are now ready to prove the prime number theorem. Strictly speaking, we will prove a slightly stronger version due to de la Vall\'ee Poussin:
+      where $\lim_{x \to \infty}A(x) \approx 1.08366$. Also in 1808 (see \cite{legendre1808essai}), Legendre conjectured what is now known as Dirichlet's theorem on primes in arithmetic progressions. As we have seen, Dirichlet's idea used complex analytic methods to resolve an arithmetic question. A similar type of idea is essential in proving the prime number theorem, and so Dirichlet's ideas are certainly due credit. It was not until 1896 that the prime number theorem was proved independently by Hadamard and de la Vall\'ee Poussin (see \cite{hadamard1896distribution,poussin1897recherches}). Their proofs, as well as every proof thereon out until 1949, used complex analytic methods in an essential way (there are now elementary proofs due to Erd\"os and Selberg). We are now ready to prove the prime number theorem. Strictly speaking, we will prove a slightly stronger version due to de la Vall\'ee Poussin that bounds the absolute error between $\pi(x)$ and $\Li(x)$:
 
-      \begin{proposition}[Prime number theorem, de la Vall\'ee Poussin version]
-        There exists a positive constant $c < 1$ such that
+      \begin{proposition}[Prime number theorem, absolute error version]
+        There exists a positive co\-nstant $c$ such that
         \[
           \pi(x) = \Li(x)+O\left(xe^{-c\sqrt{\log(x)}}\right).
         \]
@@ -261,7 +261,7 @@
         \begin{equation}\label{equ:prime_number_theorem_1}
           \psi(x) = x+O\left(xe^{-c\sqrt{\log(x)}}\right),
         \end{equation}
-        and then apply partial summation to prove the theorem. To prove \cref{equ:prime_number_theorem_1}, we estimate the sum over the nontrivial zeros of $\z(s)$ in \cref{cor:explicit_formula_zeta_corollary}. To this end, let $T > 2$ not coinciding with the ordinate of a nontrivial zero, and suppose $\rho = \b+i\g$ is a nontrivial zero with $|\g| < T$. By the classical version of the zero-free region for $\z(s)$, we know $\b < 1-\frac{c}{\log(T)}$ for some constant $c > 0$ (this $c$ is not necessiarly the same $c$ in the classical zero-free region for $\z(s)$ because we have replaced $\log(T+2)$ with $\log(T)$). It follows that
+        To achieve this, we estimate the sum over the nontrivial zeros of $\z(s)$ in \cref{cor:explicit_formula_zeta_corollary}. So let $T > 2$ not coinciding with the ordinate of a nontrivial zero, and suppose $\rho = \b+i\g$ is a nontrivial zero with $|\g| < T$. By the classical version of the zero-free region for $\z(s)$, we know $\b < 1-\frac{c}{\log(T)}$ for some constant $c > 0$ (this $c$ is not necessiarly the same $c$ in the classical zero-free region for $\z(s)$ because we have replaced $\log(T+2)$ with $\log(T)$). It follows that
         \begin{equation}\label{equ:prime_number_theorem_2}
           |x^{\rho}| = x^{\b} < x^{1-\frac{c}{\log(T)}} = xe^{-c\frac{\log(x)}{\log(T)}}.
         \end{equation}
@@ -299,7 +299,7 @@
         \[
           \pi_{1}(x) = \sum_{n \le x}\frac{\L(n)}{\log(n)}.
         \]
-        Then we can write $\pi_{1}(x)$ in terms of $\psi(x)$ as follows:
+        We can write $\pi_{1}(x)$ in terms of $\psi(x)$ as follows:
         \begin{align*}
           \pi_{1}(x) &= \sum_{n \le x}\frac{\L(n)}{\log(n)} \\
           &= \sum_{n \le x}\L(n)\int_{n}^{x}\frac{dt}{t\log^{2}(t)}+\frac{1}{\log(x)}\sum_{n \le x}\L(n) \\
@@ -307,8 +307,16 @@
           &= \int_{2}^{x}\frac{\psi(t)}{t\log^{2}(t)}\,dt+\frac{\psi(x)}{\log(x)}.
         \end{align*}
         Applying \cref{equ:prime_number_theorem_1} to the last expression yields
-        \[
+        \begin{equation}\label{equ:prime_number_theorem_6}
           \pi_{1}(x) = \int_{2}^{x}\frac{t}{t\log^{2}(t)}\,dt+\frac{x}{\log(x)}+O\left(\int_{2}^{x}\frac{e^{-c\sqrt{\log(t)}}}{\log^{2}(t)}\,dt+\frac{xe^{-c\sqrt{\log(x)}}}{\log(x)}\right).
+        \end{equation}
+        Upon applying integrating by parts to the main term in \cref{equ:prime_number_theorem_6}, we obtain
+        \begin{equation}\label{equ:prime_number_theorem_7}
+          \int_{2}^{x}\frac{t}{t\log^{2}(t)}\,dt+\frac{x}{\log(x)} = \int_{2}^{x}\frac{dt}{\log(t)}+\frac{2}{\log(2)} = \Li(x)+\frac{2}{\log(2)}.
+        \end{equation}
+        As for the error term in \cref{equ:prime_number_theorem_6}, $\log^{2}(t)$ and $\log(x)$ are both bounded away from zero so that
+        \[
+          \int_{2}^{x}\frac{e^{-c\sqrt{\log(t)}}}{\log^{2}(t)}\,dt+\frac{xe^{-c\sqrt{\log(x)}}}{\log(x)} \ll \int_{2}^{x}e^{-c\sqrt{\log(t)}}\,dt+xe^{-c\sqrt{\log(x)}}.
         \]
         \todo{xxx}
       \end{proof}
