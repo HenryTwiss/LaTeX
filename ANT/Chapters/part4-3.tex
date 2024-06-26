@@ -1,6 +1,6 @@
 \chapter{Explicit Formulas \& Prime Number Theorems}
-  Our main aim is to prove the prime number theorem and its variant for primes restricted to a certain residue class, the Siegel–Walfisz theorem, in the classical manner. These results will follow from explicit formulas for the Chebyshev function $\psi(x)$ and a sutiable generalization in the latter case. After deriving these results, we prove (for the second time) the prime number theorem and the Siegel–Walfisz theorem.
-  \section{\todo{Explicit Formulas for Chebyshev Functions}}
+  Our main aim is to prove the prime number theorem and its variant for primes restricted to a certain residue class, the Siegel–Walfisz theorem, in the classical manner. These results will follow from explicit formulas for Chebyshev functions. After deriving these results, we prove the prime number theorem and the Siegel–Walfisz theorem.
+  \section{Explicit Formulas for Chebyshev Functions}
     \subsection*{The Explicit Formula for \texorpdfstring{$\psi(x)$}{$\psi(x)$}}
       The \textbf{Chebychef function}\index{Chebychef function} $\psi(x)$, for real $x > 1$, is defined by
       \[
@@ -10,7 +10,7 @@
       \begin{equation}\label{equ:alternative_form_for_Chebychef function}
         \psi(x) = \sum_{n \le x}\L(n) = \sum_{p^{m} \le x}\log(p) = \sum_{p \le x}\left\lfloor\frac{\log(x)}{\log(p)}\right\rfloor\log(p).
       \end{equation}
-      The explicit formula for $\psi(x)$ will be obtained by applying truncated Perron's formula to the logarithimic derivative of $\z(s)$. Since $\psi(x)$ is discontinuous when $x$ is a prime power, we need to work with a slightly modified function to apply the Mellin inversion formula. Define $\psi_{0}(x)$ by
+      The explicit formula for $\psi(x)$ will be obtained by applying truncated Perron's formula to the logarithmic derivative of $\z(s)$. Since $\psi(x)$ is discontinuous when $x$ is a prime power, we need to work with a slightly modified function to apply the Mellin inversion formula. Define $\psi_{0}(x)$ by
       \[
         \psi_{0}(x) = \begin{cases} \psi(x) & \text{if $x$ is not a prime power}, \\ \psi(x)-\frac{1}{2}\L(x) & \text{if $x$ is a prime power}. \end{cases}
       \]
@@ -39,7 +39,7 @@
         \[
           J(x,T) = \frac{1}{2\pi i}\int_{c-iT}^{c+iT}-\frac{\z'}{\z}(s)x^{s}\,\frac{ds}{s},
         \]
-        $c > 1$, and it is understood that $\d_{x} = 0$ unless $x$ is a prime power. Take $T > 2$ not coinciding with the ordinate of a nontrivial zero and let $c = 1+\log(x^{2})^{-1}$ so that $x^{c} = \sqrt{e}x$. The first step is to estimate the right-hand side of \cref{equ:explicit_formula_proof_1}. First, we deal with the terms corresponding to $n$ such that $n$ is boudned away from $x$. So suppose $n \le \frac{3}{4}x$ or $n \ge \frac{5}{4}x$. For these $n$, $1 \ll \log\left(\frac{x}{n}\right)$ so that their contribution is
+        $c > 1$, and it is understood that $\d_{x} = 0$ unless $x$ is a prime power. Take $T > 2$ not coinciding with the ordinate of a nontrivial zero and let $c = 1+\log(x^{2})^{-1}$ so that $x^{c} = \sqrt{e}x$. The first step is to estimate the right-hand side of \cref{equ:explicit_formula_proof_1}. First, we deal with the terms corresponding to $n$ such that $n$ is boudned away from $x$. So suppose $n \le \frac{3}{4}x$ or $n \ge \frac{5}{4}x$. For these $n$, $\log\left(\frac{x}{n}\right)$ is bounded away from zero so that their contribution is
         \begin{equation}\label{equ:explicit_formula_proof_2}
           \ll \frac{x^{c}}{T}\sum_{n \ge 1}\frac{\L(n)}{n^{c}} \ll \frac{x^{c}}{T}\left(-\frac{\z'}{\z}(c)\right) \ll \frac{x\log(x)}{T},
         \end{equation}
@@ -57,15 +57,15 @@
         \]
         where we have obtained the inequality by using Taylor series of the logarithim truncated after the first term. The contribution for these $n$ is then
         \begin{equation}\label{equ:explicit_formula_proof_4}
-          \ll \sum_{0 < v < \frac{1}{4}x}\L(x_{1}-v)\frac{x_{1}}{Tv} \ll \frac{x}{T}\sum_{0 < v < \frac{1}{4}x}\frac{\L(x_{1}-v)}{v} \ll \frac{x\log(x)}{T}\sum_{0 < v < \frac{1}{4}x}\frac{1}{v} \ll \frac{x\log(x)^{2}}{T}.
+          \ll \sum_{0 < v < \frac{1}{4}x}\L(x_{1}-v)\frac{x_{1}}{Tv} \ll \frac{x}{T}\sum_{0 < v < \frac{1}{4}x}\frac{\L(x_{1}-v)}{v} \ll \frac{x\log(x)}{T}\sum_{0 < v < \frac{1}{4}x}\frac{1}{v} \ll \frac{x\log^{2}(x)}{T}.
         \end{equation}
-        The contribution for those $n$ for which $x < n < \frac{5}{4}x$ is handeled in exactly the same way with $x_{1}$ being the least prime power larger than $x$. Let $\<x\>$ be the distance between $x$ and the nearest prime power provided $x$ is itself not a prime power. Combining \cref{equ:explicit_formula_proof_3,equ:explicit_formula_proof_4} with our previous comment, the contribution for those $n$ with $\frac{3}{4}x < n < \frac{5}{4}x$ is
+        The contribution for those $n$ for which $x < n < \frac{5}{4}x$ is handeled in exactly the same way with $x_{1}$ being the least prime power larger than $x$. Let $\<x\>$ be the distance between $x$ and the nearest prime power other than $x$ if $x$ itself is a prime power. Combining \cref{equ:explicit_formula_proof_3,equ:explicit_formula_proof_4} with our previous comment, the contribution for those $n$ with $\frac{3}{4}x < n < \frac{5}{4}x$ is
         \begin{equation}\label{equ:explicit_formula_proof_5}
-          \ll \frac{x\log(x)^{2}}{T}+\log(x)\min\left(1,\frac{x}{T\<x\>}\right).
+          \ll \frac{x\log^{2}(x)}{T}+\log(x)\min\left(1,\frac{x}{T\<x\>}\right).
         \end{equation}
         Putting \cref{equ:explicit_formula_proof_2,equ:explicit_formula_proof_5} together and noticing that the error term in \cref{equ:explicit_formula_proof_2} is absorbed by the second error term in \cref{equ:explicit_formula_proof_5}, we obtain
         \begin{equation}\label{equ:explicit_formula_proof_6}
-          \psi_{0}(x)-J(x,T) \ll \frac{x\log(x)^{2}}{T}+\log(x)\min\left(1,\frac{x}{T\<x\>}\right).
+          \psi_{0}(x)-J(x,T) \ll \frac{x\log^{2}(x)}{T}+\log(x)\min\left(1,\frac{x}{T\<x\>}\right).
         \end{equation}
         This is the first part of the proof. Now we estimate $J(x,T)$ by appealing to the residue theorem. Let $U \ge 1$ be an odd integer. Let $\W$ be the region enclosed by the contours $\eta_{1},\ldots,\eta_{4}$ in \cref{fig:explict_formula_contour} and set $\eta = \sum_{1 \le i \le 4}\eta_{i}$ so that $\eta = \del \W$.
 
@@ -124,21 +124,21 @@
         \]
         By our choice of $T$, $|s-\rho| \ge |\g-T| \gg \log(T)^{-1}$ so that each term in the sum is $O(\log(T))$. There are at most $O(\log(T))$ such terms by \cref{cor:Riemann_von_Mangoldt_corollary} (i), so we find that
         \[
-          \frac{\z'}{\z}(s) = O(\log(T)^{2}),
+          \frac{\z'}{\z}(s) = O(\log^{2}(T)),
         \]
         for $-1 \le \s \le 2$. It follows that the parts of the horizontal integrals over $\eta_{2}$ and $\eta_{4}$ with  $-1 \le \s \le c$ (as $x \ge 2$ our choice of $c$ ensures $c < 2$) contribute
         \begin{equation}\label{equ:explicit_formula_proof_8}
-          \ll \frac{\log(T)^{2}}{T}\int_{-1}^{c}x^{\s}\,d\s \ll \frac{\log(T)^{2}}{T}\int_{-\infty}^{c}x^{\s}\,d\s \ll \frac{x\log(T)^{2}}{T\log(x)},
+          \ll \frac{\log^{2}(T)}{T}\int_{-1}^{c}x^{\s}\,d\s \ll \frac{\log^{2}(T)}{T}\int_{-\infty}^{c}x^{\s}\,d\s \ll \frac{x\log^{2}(T)}{T\log(x)},
         \end{equation}
         where in the first estimate we have used the fact that $s \sim T$ and in the last estiamte we have used the choice of $c$. To estimate the remainder of the horizontal integrals, we need a bound for $\frac{\z'}{\z}(s)$ when $\s < -1$ and away from the trivial zeros. To this end, write the functional equation for $\z(s)$ in the form
         \[
           \z(s) = \pi^{s-1}\frac{\G\left(\frac{1-s}{2}\right)}{\G\left(\frac{s}{2}\right)}\z(1-s),
         \]
-        and take the logarithimic derivative to get
+        and take the logarithmic derivative to get
         \[
           \frac{\z'}{\z}(s) = \log(\pi)+\frac{1}{2}\frac{\G'}{\G}\left(\frac{1-s}{2}\right)-\frac{1}{2}\frac{\G'}{\G}\left(\frac{s}{2}\right)+\frac{\z'}{\z}(1-s).
         \]
-        Let $s$ be such that $\s < -1$ and suppose $s$ is say distance $\frac{1}{2}$ away from the trivial zeros. We will estiamte every term on the right-hand side. The first term is contant and the four term is bounded by \cref{equ:Drichlet_series_log_derivative_zeta}. As for the digamma terms, since $s$ is away from the trivial zeros, \cref{equ:approximtion_for_digamma} implies $\frac{1}{2}\frac{\G'}{\G}\left(\frac{1-s}{2}\right) = O(\log|1-s|)$ and $\frac{1}{2}\frac{\G'}{\G}\left(\frac{s}{2}\right) = O(\log|s|)$. However, as $\s > 2$, $s$ is bounded away from zero so that $\frac{1}{2}\frac{\G'}{\G}\left(\frac{1-s}{2}\right) = O(\log|s|)$. Putting these estimates together, we see that
+        Let $s$ be such that $\s < -1$ and suppose $s$ is say distance $\frac{1}{2}$ away from the trivial zeros. We will estiamte every term on the right-hand side. The first term is contant and the four term is bounded by \cref{equ:Drichlet_series_log_derivative_zeta}. As for the digamma terms, since $s$ is away from the trivial zeros, \cref{equ:approximtion_for_digamma} implies $\frac{1}{2}\frac{\G'}{\G}\left(\frac{1-s}{2}\right) = O(\log|1-s|)$ and $\frac{1}{2}\frac{\G'}{\G}\left(\frac{s}{2}\right) = O(\log|s|)$. However, as $\s < -1$, $s$ and $1-s$ are bounded away from zero so that $\frac{1}{2}\frac{\G'}{\G}\left(\frac{1-s}{2}\right) = O(\log|s|)$. Putting these estimates together gives
         \begin{equation}\label{equ:explicit_formula_proof_9}
           \frac{\z'}{\z}(s) \ll \log(|s|),
         \end{equation}
@@ -148,7 +148,7 @@
         \end{equation}
         where in the first estimate we have used the fact that $s \sim T$. Combining \cref{equ:explicit_formula_proof_8,equ:explicit_formula_proof_10} gives
         \begin{equation}\label{equ:explicit_formula_proof_11}
-          \frac{1}{2\pi i}\int_{\eta_{2}+\eta_{4}}-\frac{\z'}{\z}(s)x^{s}\,\frac{ds}{s} \ll \frac{x\log(T)^{2}}{T\log(x)}+\frac{\log(T)}{Tx\log(x)} \ll \frac{x\log(T)^{2}}{T\log(x)}.
+          \frac{1}{2\pi i}\int_{\eta_{2}+\eta_{4}}-\frac{\z'}{\z}(s)x^{s}\,\frac{ds}{s} \ll \frac{x\log^{2}(T)}{T\log(x)}+\frac{\log(T)}{Tx\log(x)} \ll \frac{x\log^{2}(T)}{T\log(x)}.
         \end{equation}
         To estimate the vertical integral, we use \cref{equ:explicit_formula_proof_9} again to conclude that
         \begin{equation}\label{equ:explicit_formula_proof_12}
@@ -156,31 +156,32 @@
         \end{equation}
         where in the first estimate we have used the fact that $s \sim U$. Combining \cref{equ:explicit_formula_proof_7,equ:explicit_formula_proof_11,equ:explicit_formula_proof_12} and taking the limit as $U \to \infty$, the error term in \cref{equ:explicit_formula_proof_12} vanishes and the sum over $m$ in \cref{equ:explicit_formula_proof_7} evaulates to $\frac{1}{2}\log(1-x^{-2})$ (as we have already mentioned) giving
         \begin{equation}\label{equ:explicit_formula_proof_13}
-          J(x,T) = x-\sum_{|\g| < T}\frac{x^{\rho}}{\rho}-\frac{\z'}{\z}(0)-\frac{1}{2}\log(1-x^{-2})+\frac{x\log(T)^{2}}{T\log(x)}.
+          J(x,T) = x-\sum_{|\g| < T}\frac{x^{\rho}}{\rho}-\frac{\z'}{\z}(0)-\frac{1}{2}\log(1-x^{-2})+\frac{x\log^{2}(T)}{T\log(x)}.
         \end{equation}
         Substiuting \cref{equ:explicit_formula_proof_13} into \cref{equ:explicit_formula_proof_6}, we at last obtain
-        \[
-          \psi_{0}(x) = x-\sum_{|\g| < T}\frac{x^{\rho}}{\rho}-\frac{\z'}{\z}(0)-\frac{1}{2}\log(1-x^{-2})+\frac{x\log(xT)^{2}}{T}+\log(x)\min\left(1,\frac{x}{T\<x\>}\right),
-        \]
+        \begin{equation}\label{equ:explicit_formula_proof_14}
+          \psi_{0}(x) = x-\sum_{|\g| < T}\frac{x^{\rho}}{\rho}-\frac{\z'}{\z}(0)-\frac{1}{2}\log(1-x^{-2})+\frac{x\log^{2}(xT)}{T}+\log(x)\min\left(1,\frac{x}{T\<x\>}\right),
+        \end{equation}
         where the second to last term on the right-hand side is obtained by combining error term in \cref{equ:explicit_formula_proof_11} with the first error term in \cref{equ:explicit_formula_proof_6}. The theorem following by taking the limit as $T \to \infty$.
       \end{proof}
 
       Note that the convergence of the right-hand side in the explicit formula for $\psi$ is uniform in any interval not containing a prime power since $\psi$ is continuous there. Moreover, we have an approximate formula for $\psi(x)$ as a corollary:
 
-      \begin{corollary}
+      \begin{corollary}\label{cor:explicit_formula_zeta_corollary}
          For $x \ge 2$ and $T > 2$,
         \[
-           \psi_{0}(x) = x-\sum_{|\g| < T}\frac{x^{\rho}}{\rho}-\frac{\z'}{\z}(0)-\frac{1}{2}\log(1-x^{-2})+\frac{x\log(xT)^{2}}{T}+\log(x)\min\left(1,\frac{x}{T\<x\>}\right),
+           \psi_{0}(x) = x-\sum_{|\g| < T}\frac{x^{\rho}}{\rho}-\frac{\z'}{\z}(0)-\frac{1}{2}\log(1-x^{-2})+\frac{x\log^{2}(xT)}{T}+\log(x)\min\left(1,\frac{x}{T\<x\>}\right),
         \]
         where $\rho$ runs over the nontrivial zeros of $\z(s)$ counted with multiplicity and ordered with respect to the size of the ordinate.
       \end{corollary}
       \begin{proof}
-        Don't take the limit as $T \to \infty$ in the proof of the explicit formula for $\psi(x)$.
+        This is \cref{equ:explicit_formula_proof_14}.
       \end{proof}
 
 
+    \iffalse
     \subsection*{The Explicit Formula for \texorpdfstring{$\psi(x,\chi)$}{$\psi(x,\chi)$}}
-      \todo{xxx}
+    \fi
   \section{\todo{Prime Number Theorems}}
     \subsection*{\todo{The Prime Number Theorem}}
       The \textbf{prime counting function}\index{prime counting function} $\pi(x)$ is defined by
@@ -208,23 +209,38 @@
       \[
         \sum_{p \le x}\frac{1}{p} = \int_{1}^{x}\,d\d_{p}(u).
       \]
-      We can interpret the integral as integrating the density $d\d_{p}$ over the volume $[1,x]$. Let's try and find a more explicit expression for the density $d\d_{p}$. Now Euler (see \cite{euler1744variae}), argued that
+      We can interpret the integral as integrating the density $d\d_{p}$ over the volume $[1,x]$. Let's try and find a more explicit expression for the density $d\d_{p}$. Euler (see \cite{euler1744variae}), argued
       \[
         \sum_{p \le x}\frac{1}{p} \sim \log\log(x).
       \]
       But notice that
       \[
-        \log\log(x) = \int_{1}^{\log(x)}\frac{du}{u} = \int_{e}^{x}\frac{1}{u}\frac{du}{\log{u}},
+        \log\log(x) = \int_{1}^{\log(x)}\frac{du}{u} = \int_{e}^{x}\frac{1}{u}\,\frac{du}{\log{u}},
       \]
       where in the second equality we have made the change of variables $u \to \log(u)$. So altogether,
       \[
-        \sum_{p \le x}\frac{1}{p} \sim \int_{e}^{x}\frac{1}{u}\frac{du}{\log{u}}.
+        \sum_{p \le x}\frac{1}{p} \sim \int_{e}^{x}\frac{1}{u}\,\frac{du}{\log{u}}.
       \]
       This is an asymptotic formula that gives a more explicit representation of the density $d\d_{p}$. Notice that both sides of this asymptotic are weighted the same, the left-hand side by $\frac{1}{p}$, and the right-hand side by $\frac{1}{u}$. If we remove these weight (this is not strictly allowed), then we might hope
       \[
-        \pi(x) = \sum_{p \le x}1 \sim \int_{e}^{x}\frac{1}{\log(u)}du.
+        \pi(x) = \sum_{p \le x}1 \sim \int_{e}^{x}\frac{du}{\log(u)}.
       \]
-      Interpreting the integral as an integral of density over volume, then for large $x$ the density of primes up to $x$ is approximately $\frac{1}{\log(x)}$ which is what the prime number theorem claims. Legendre was the first to put forth a conjectural form of the prime number theorem. In 1798 (see \cite{legendre1798essai}), he claimed that $\pi(x)$ was of the form
+      Accordingly, we define the \textbf{logarithmic integral}\index{logarithmic integral} $\Li(x)$ by
+      \[
+        \Li(x) = \int_{2}^{x}\frac{dt}{\log(t)},
+      \]
+      for $x \ge 2$. Notice that $\Li(x) \sim \frac{x}{\log{x}}$ because
+      \[
+        \lim_{x \to \infty}\left|\frac{\Li(x)}{\frac{x}{\log{x}}}\right| = \lim_{x \to \infty}\left|\frac{\int_{2}^{x}\frac{dt}{\log(t)}}{\frac{x}{\log{x}}}\right| = \lim_{x \to \infty}\left|\frac{\frac{1}{\log(x)}}{\frac{\log(x)-1}{\log^{2}(x)}}\right| = \lim_{x \to \infty}\left|\frac{\log(x)}{\log(x)-1}\right| = 1.
+      \]
+      where in the second equality we have used  l'H\^opital's rule. So an equivalent version of the prime number theorem is the following:
+      \begin{theorem}[Prime number theorem, logarithmic integral version]
+        \phantom{ }
+        \[
+          \pi(x) \sim \Li(x).
+        \]
+      \end{theorem}
+      Interpreting the logarithmic integral as an integral of density over volume, then for large $x$ the density of primes up to $x$ is approximately $\frac{1}{\log(x)}$ which is what both versions of the prime number theorem claim. Legendre was the first to put forth a conjectural form of the prime number theorem. In 1798 (see \cite{legendre1798essai}), he claimed that $\pi(x)$ was of the form
       \[
         \frac{x}{A\log(x)+B},
       \]
@@ -232,15 +248,68 @@
       \[
         \frac{x}{\log(x)+A(x)},
       \]
-      where $\lim_{x \to \infty}A(x) \approx 1.08366$. Also in 1808 (see \cite{legendre1808essai}), Legendre conjectured what is now known as Dirichlet's theorem on primes in arithmetic progressions. As we have seen, Dirichlet's idea used complex analytic methods to resolve an arithmetic question. A similar type of idea is essential in proving the prime number theorem, and so Dirichlet's ideas are certainly due credit. It was not until 1896 that the prime number theorem was proved independently by Hadamard and de la Vall\'ee Poussin (see \cite{hadamard1896distribution,poussin1897recherches}). Their proofs, as well as every proof thereon out until 1949, used complex analytic methods in an essential way (there are now elementary proofs due to Erd\"os and Selberg). We are now ready to prove the prime number theorem and our proof will very closely follow that of de la Vall\'ee Poussin. Explicitly, we prove the following:
+      where $\lim_{x \to \infty}A(x) \approx 1.08366$. Also in 1808 (see \cite{legendre1808essai}), Legendre conjectured what is now known as Dirichlet's theorem on primes in arithmetic progressions. As we have seen, Dirichlet's idea used complex analytic methods to resolve an arithmetic question. A similar type of idea is essential in proving the prime number theorem, and so Dirichlet's ideas are certainly due credit. It was not until 1896 that the prime number theorem was proved independently by Hadamard and de la Vall\'ee Poussin (see \cite{hadamard1896distribution,poussin1897recherches}). Their proofs, as well as every proof thereon out until 1949, used complex analytic methods in an essential way (there are now elementary proofs due to Erd\"os and Selberg). We are now ready to prove the prime number theorem. Strictly speaking, we will prove a slightly stronger version due to de la Vall\'ee Poussin:
 
-      \begin{proposition}[The prime number theorem, Poussin version]
-        For some $c > 0$,
+      \begin{proposition}[Prime number theorem, de la Vall\'ee Poussin version]
+        There exists a positive constant $c < 1$ such that
         \[
-          \pi(x) = \Li(x)+O\left(xe^{-c\sqrt{\log(x)}}\right),
+          \pi(x) = \Li(x)+O\left(xe^{-c\sqrt{\log(x)}}\right).
         \]
       \end{proposition}
       \begin{proof}
+        We will first prove
+        \begin{equation}\label{equ:prime_number_theorem_1}
+          \psi(x) = x+O\left(xe^{-c\sqrt{\log(x)}}\right),
+        \end{equation}
+        and then apply partial summation to prove the theorem. To prove \cref{equ:prime_number_theorem_1}, we estimate the sum over the nontrivial zeros of $\z(s)$ in \cref{cor:explicit_formula_zeta_corollary}. To this end, let $T > 2$ not coinciding with the ordinate of a nontrivial zero, and suppose $\rho = \b+i\g$ is a nontrivial zero with $|\g| < T$. By the classical version of the zero-free region for $\z(s)$, we know $\b < 1-\frac{c}{\log(T)}$ for some constant $c > 0$ (this $c$ is not necessiarly the same $c$ in the classical zero-free region for $\z(s)$ because we have replaced $\log(T+2)$ with $\log(T)$). It follows that
+        \begin{equation}\label{equ:prime_number_theorem_2}
+          |x^{\rho}| = x^{\b} < x^{1-\frac{c}{\log(T)}} = xe^{-c\frac{\log(x)}{\log(T)}}.
+        \end{equation}
+        As $|\rho| > |\g|$, letting $\g_{1} > 0$ be the ordinate of the first nontrivial zero, applying integration by parts gives
+        \begin{equation}\label{equ:prime_number_theorem_3}
+          \sum_{|\g| < T}\frac{1}{\rho} \ll \sum_{\g_{1} \le \g < T}\frac{1}{\g} \ll \int_{\g_{1}}^{T}\frac{dN(t)}{t} = \frac{N(T)}{T}+\int_{\g_{1}}^{T}\frac{N(t)}{t^{2}}\,dt \ll \log^{2}(T).
+        \end{equation}
+        where in the last estimate we have used that $N(t) \ll t\log(t)$ which is implied by the Riemann-von Mangoldt formula for $\z(s)$. Putting \cref{equ:prime_number_theorem_2,equ:prime_number_theorem_3} together gives
+        \begin{equation}\label{equ:prime_number_theorem_4}
+          \sum_{|\g| < T}\frac{x^{\rho}}{\rho} \ll x\log^{2}(T)e^{-c\frac{\log(x)}{\log(T)}}.
+        \end{equation}
+        Let $x \ge 2$ be an integer. As $\psi(x) \sim \psi_{0}(x)$ and $\log(1-x^{-2}) \ll 1$ for $x \ge 2$, \cref{equ:prime_number_theorem_4} together with \cref{cor:explicit_formula_zeta_corollary} imply
+        \begin{equation}\label{equ:prime_number_theorem_5}
+          \psi(x)-x \ll \frac{x\log^{2}(xT)}{T}+x\log^{2}(T)e^{-c\frac{\log(x)}{\log(T)}},
+        \end{equation}
+        where the last term in \cref{cor:explicit_formula_zeta_corollary} does not appear becase $\<x\> \ge 1$ so that it is absorbed by the first error term in this estimate. We will now let $T$ be determined by
+        \[
+          \log^{2}(T) = \log(x),
+        \]
+        or equivalently,
+        \[
+          T = e^{\sqrt{\log(x)}}.
+        \]
+        With this choice of $T$ (note that if $x \ge 2$ then $T > 2$), \cref{equ:prime_number_theorem_5} becomes
+        \begin{align*}
+          \psi(x)-x &\ll x\left(\log^{2}(x)+\log(x)\right)e^{-\sqrt{\log(x)}}+x\log(x)e^{-c\sqrt{\log(x)}} \\
+          &\ll x\log^{2}(x)e^{-\sqrt{\log(x)}}+x\log(x)e^{-c\sqrt{\log(x)}} \\
+          &\ll x\log^{2}(x)e^{-\min(1,c)\sqrt{\log(x)}}.
+        \end{align*}
+        As $\log(x) \ll_{\e} e^{-\e\sqrt{\log(x)}}$ for any $\e > 0$, we conclude that
+        \[
+          \psi(x)-x \ll xe^{-c\sqrt{\log(x)}},
+        \]
+        for some smaller positive constant $c$ with $c < 1$. This is equivalent to \cref{equ:prime_number_theorem_1}. Now let
+        \[
+          \pi_{1}(x) = \sum_{n \le x}\frac{\L(n)}{\log(n)}.
+        \]
+        Then we can write $\pi_{1}(x)$ in terms of $\psi(x)$ as follows:
+        \begin{align*}
+          \pi_{1}(x) &= \sum_{n \le x}\frac{\L(n)}{\log(n)} \\
+          &= \sum_{n \le x}\L(n)\int_{n}^{x}\frac{dt}{t\log^{2}(t)}+\frac{1}{\log(x)}\sum_{n \le x}\L(n) \\
+          &= \int_{2}^{x}\sum_{n \le t}\L(n)\frac{dt}{t\log^{2}(t)}+\frac{1}{\log(x)}\sum_{n \le x}\L(n) \\
+          &= \int_{2}^{x}\frac{\psi(t)}{t\log^{2}(t)}\,dt+\frac{\psi(x)}{\log(x)}.
+        \end{align*}
+        Applying \cref{equ:prime_number_theorem_1} to the last expression yields
+        \[
+          \pi_{1}(x) = \int_{2}^{x}\frac{t}{t\log^{2}(t)}\,dt+\frac{x}{\log(x)}+O\left(\int_{2}^{x}\frac{e^{-c\sqrt{\log(t)}}}{\log^{2}(t)}\,dt+\frac{xe^{-c\sqrt{\log(x)}}}{\log(x)}\right).
+        \]
         \todo{xxx}
       \end{proof}
       
