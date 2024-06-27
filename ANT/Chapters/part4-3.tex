@@ -39,7 +39,7 @@
         \[
           J(x,T) = \frac{1}{2\pi i}\int_{c-iT}^{c+iT}-\frac{\z'}{\z}(s)x^{s}\,\frac{ds}{s},
         \]
-        $c > 1$, and it is understood that $\d_{x} = 0$ unless $x$ is a prime power. Take $T > 2$ not coinciding with the ordinate of a nontrivial zero and let $c = 1+\log(x^{2})^{-1}$ so that $x^{c} = \sqrt{e}x$. The first step is to estimate the right-hand side of \cref{equ:explicit_formula_proof_1}. First, we deal with the terms corresponding to $n$ such that $n$ is boudned away from $x$. So suppose $n \le \frac{3}{4}x$ or $n \ge \frac{5}{4}x$. For these $n$, $\log\left(\frac{x}{n}\right)$ is bounded away from zero so that their contribution is
+        $c > 1$, and it is understood that $\d_{x} = 0$ unless $x$ is a prime power. Take $T > 2$ not coinciding with the ordinate of a nontrivial zero and let $c = 1+\frac{1}{\log(x^{2})}$ so that $x^{c} = \sqrt{e}x$. The first step is to estimate the right-hand side of \cref{equ:explicit_formula_proof_1}. First, we deal with the terms corresponding to $n$ such that $n$ is boudned away from $x$. So suppose $n \le \frac{3}{4}x$ or $n \ge \frac{5}{4}x$. For these $n$, $\log\left(\frac{x}{n}\right)$ is bounded away from zero so that their contribution is
         \begin{equation}\label{equ:explicit_formula_proof_2}
           \ll \frac{x^{c}}{T}\sum_{n \ge 1}\frac{\L(n)}{n^{c}} \ll \frac{x^{c}}{T}\left(-\frac{\z'}{\z}(c)\right) \ll \frac{x\log(x)}{T},
         \end{equation}
@@ -114,15 +114,15 @@
         \begin{equation}\label{equ:explicit_formula_proof_7}
           J(x,T) = x-\sum_{|\g| < T}\frac{x^{\rho}}{\rho}-\frac{\z'}{\z}(0)-\sum_{0 < 2m < U}\frac{x^{-2m}}{2m}+\frac{1}{2\pi i}\int_{\eta_{1}+\eta_{2}+\eta_{3}}-\frac{\z'}{\z}(s)x^{s}\,\frac{ds}{s},
         \end{equation}
-        where $\rho = \b+i\g$ is a nontrivial zeros of $\z$. We will estimate $J(x,T)$ by estimating the integral. By \cref{cor:Riemann_von_Mangoldt_corollary} (i), the number of nontrivial zeros satisfying $|\g-T| < 1$ is $O(\log(T))$. Among the ordinates of these zeros, there must be a gap of size $\gg \log(T)^{-1}$. Upon varrying $T$ by a bounded amount (we are varrying in the interval $[T-1,T+1]$) so that it belongs to this gap, we can additionally ensure
+        where $\rho = \b+i\g$ is a nontrivial zeros of $\z$. We will estimate $J(x,T)$ by estimating the integral. By \cref{cor:Riemann_von_Mangoldt_corollary} (i), the number of nontrivial zeros satisfying $|\g-T| < 1$ is $O(\log(T))$. Among the ordinates of these zeros, there must be a gap of size $\gg \frac{1}{\log(T)}$. Upon varrying $T$ by a bounded amount (we are varrying in the interval $[T-1,T+1]$) so that it belongs to this gap, we can additionally ensure
         \[
-          |\g-T| \gg \log(T)^{-1},
+          |\g-T| \gg \frac{1}{\log(T)},
         \]
         for all the nontrivial zeros of $\z(s)$. To estimate part of the horizontal integrals over $\eta_{2}$ and $\eta_{4}$, \cref{equ:Riemann_von_Mangoldt_14} with $s = \s+iT$ for $-1 \le \s \le 2$ gives
         \[
           \frac{\z'}{\z}(s) = \sum_{|\g-T| < 1}\frac{1}{s-\rho}+O(\log(T)).
         \]
-        By our choice of $T$, $|s-\rho| \ge |\g-T| \gg \log(T)^{-1}$ so that each term in the sum is $O(\log(T))$. There are at most $O(\log(T))$ such terms by \cref{cor:Riemann_von_Mangoldt_corollary} (i), so we find that
+        By our choice of $T$, $|s-\rho| \ge |\g-T| \gg \frac{1}{\log(T)}$ so that each term in the sum is $O(\log(T))$. There are at most $O(\log(T))$ such terms by \cref{cor:Riemann_von_Mangoldt_corollary} (i), so we find that
         \[
           \frac{\z'}{\z}(s) = O(\log^{2}(T)),
         \]
@@ -177,13 +177,9 @@
       \begin{proof}
         This is \cref{equ:explicit_formula_proof_14}.
       \end{proof}
-
-
-    \iffalse
     \subsection*{The Explicit Formula for \texorpdfstring{$\psi(x,\chi)$}{$\psi(x,\chi)$}}
-    \fi
-  \section{\todo{Prime Number Theorems}}
-    \subsection*{\todo{The Prime Number Theorem}}
+  \section{Prime Number Theorems}
+    \subsection*{The Prime Number Theorem}
       The \textbf{prime counting function}\index{prime counting function} $\pi(x)$ is defined by
       \[
         \pi(x) = \sum_{p \le x}1,
@@ -295,7 +291,7 @@
         \[
           \psi(x)-x \ll xe^{-c\sqrt{\log(x)}},
         \]
-        for some smaller positive constant $c$ with $c < 1$. This is equivalent to \cref{equ:prime_number_theorem_1}. Now let
+        for some smaller $c$ with $c < 1$. This is equivalent to \cref{equ:prime_number_theorem_1}. Now let
         \[
           \pi_{1}(x) = \sum_{n \le x}\frac{\L(n)}{\log(n)}.
         \]
@@ -318,10 +314,48 @@
         \[
           \int_{2}^{x}\frac{e^{-c\sqrt{\log(t)}}}{\log^{2}(t)}\,dt+\frac{xe^{-c\sqrt{\log(x)}}}{\log(x)} \ll \int_{2}^{x}e^{-c\sqrt{\log(t)}}\,dt+xe^{-c\sqrt{\log(x)}}.
         \]
-        \todo{xxx}
+        For $t \le x^{\frac{1}{4}}$, we use the bound $e^{-c\sqrt{\log(t)}} < 1$ so that
+        \[
+          \int_{2}^{x^{\frac{1}{4}}}e^{-c\sqrt{\log(t)}}\,dt < \int_{2}^{x^{\frac{1}{4}}}\,dt \ll x^{\frac{1}{4}}.
+        \]
+        For $t > x^{\frac{1}{4}}$, $\sqrt{\log(t)} > \frac{1}{2}\sqrt{\log(x)}$ and thus
+        \[
+          \int_{2}^{x^{\frac{1}{4}}}e^{-c\sqrt{\log(t)}}\,dt \le e^{-c\frac{1}{2}\sqrt{\log(x)}}\int_{2}^{x^{\frac{1}{4}}}\,dt \ll x^{\frac{1}{4}}e^{-c\frac{1}{2}\sqrt{\log(x)}}. 
+        \]
+        All of these estimates together imply
+        \begin{equation}\label{equ:prime_number_theorem_8}
+          \int_{2}^{x}\frac{e^{-c\sqrt{\log(t)}}}{\log^{2}(t)}\,dt+\frac{xe^{-c\sqrt{\log(x)}}}{\log(x)} \ll xe^{-c\sqrt{\log(x)}},
+        \end{equation}
+        for some smaller $c$ (actually the new $c$ is $\frac{1}{2}$ of the old one). Combining \cref{equ:prime_number_theorem_6,equ:prime_number_theorem_7,equ:prime_number_theorem_8} yields
+        \begin{equation}\label{equ:prime_number_theorem_9}
+          \pi_{1}(x) = \Li(x)+O(xe^{-c\sqrt{\log(x)}}).
+        \end{equation}
+        where the constant in \cref{equ:prime_number_theorem_7} has been absorbed into the error term. We now pass from $\pi_{1}(x)$ to $\pi(x)$. If $p$ is a prime such that $p^{m} < x$ for some $m \ge 1$, then $p < x^{\frac{1}{2}} < x^{\frac{1}{3}} < \cdots < x^{\frac{1}{m}}$. Therefore
+        \begin{equation}\label{equ:prime_number_theorem_10}
+          \pi_{1}(x) = \sum_{n \le x}\frac{\L(n)}{\log(n)} = \sum_{p^{m} \le x}\frac{\log(p)}{m\log(p)} = \pi(x)+\frac{1}{2}\pi(x^{\frac{1}{2}})+\frac{1}{3}\pi(x^{\frac{1}{3}})+\cdots.
+        \end{equation}
+        Moreover, as $\pi(x^{\frac{1}{n}}) < x^{\frac{1}{n}}$ for any $n \ge 1$, we see that $\pi(x)-\pi_{1}(x) = O(x^{\frac{1}{2}})$. This estimate together with \cref{equ:prime_number_theorem_9,equ:prime_number_theorem_10} gives
+        \[
+          \pi(x) = \Li(x)+O(xe^{-c\sqrt{\log(x)}}),
+        \]
+        because $x^{\frac{1}{2}} \ll xe^{-c\sqrt{\log(x)}}$. This completes the proof.
+      \end{proof}
+
+      The proof of the logarithmic integral version of the prime number theorem is immediate:
+
+      \begin{proof}[Proof of prime number theorem, logarithmic integral version]
+        By the absolute error version of the prime number theorem,
+        \[
+          \pi(x) = \Li(x)\left(1+O\left(\frac{xe^{-c\sqrt{\log(x)}}}{\Li(x)}\right)\right).
+        \]
+        But we have shown $\Li(x) \sim \frac{x}{\log(x)}$ so that
+        \[
+          \frac{xe^{-c\sqrt{\log(x)}}}{\Li(x)} \sim \log(x)e^{-c\sqrt{\log(x)}} = o(1),
+        \]
+        where the equality holds since $\log(x) \ll_{\e} e^{-\e\sqrt{\log(x)}}$ for any $\e > 0$. The result follows.
       \end{proof}
       
-      Since $xe^{-c\sqrt{\log(x)}} \to 0$ as $x \to \infty$ and $\frac{x}{\log(x)} \to \infty$ as $x \to \infty$, $xe^{-c\sqrt{\log(x)}} < \frac{x}{\log(x)}$ for sufficiently large $x$. Therefore the extact error $\pi(x)-\Li(x)$ grows slower than $\pi(x)-\frac{x}{\log{x}}$ for sufficiently large $x$. This is what we mean when we say $\Li(x)$ is a better numerical approximation to $\pi(x)$ than $\frac{x}{\log(x)}$. There is also the following result due to Hardy and Littlewood (see \cite{hardy1916contributions}):
+      In the proof of the logarithmic integral version of the prime number theorem, we saw that $xe^{-c\sqrt{\log(x)}} < \frac{x}{\log(x)}$ for sufficiently large $x$. Therefore the extact error $\pi(x)-\Li(x)$ grows slower than $\pi(x)-\frac{x}{\log{x}}$ for sufficiently large $x$. This means that $\Li(x)$ is a better numerical approximation to $\pi(x)$ than $\frac{x}{\log(x)}$. There is also the following result due to Hardy and Littlewood (see \cite{hardy1916contributions}) which gives us more information:
 
       \begin{proposition}\label{thm:Littlewood_Li_approximation_theorem}
         $\pi(x)-\Li(x)$ changes sign infinitely often as $x \to \infty$.
@@ -330,9 +364,9 @@
       So in addition, \cref{thm:Littlewood_Li_approximation_theorem} implies that $\Li(x)$ never underestimates or overestimates $\pi(x)$ continuously. On the other hand, the exact error $\pi(x)-\frac{x}{\log(x)}$ is positive provided $x \ge 17$ (see \cite{rosser1962approximate}). Under the Riemann hypothesis, we can do better. In particular, Koch in 1901 showed that the Riemann hypothesis implies an asymptotic estimate for the exact error between $\pi(x)$ and $\Li(x)$ (see \cite{von1901distribution}):
 
       \begin{proposition}
-        Under the assumption of the Riemann hypothesis,
+        Under the Riemann hypothesis,
         \[
           \pi(x) = \Li(x)+O(\sqrt{x}\log(x)).
         \]
       \end{proposition}
-    \subsection*{\todo{The Siegel–Walfisz Theorem}}
+    \subsection*{The Siegel–Walfisz Theorem}
