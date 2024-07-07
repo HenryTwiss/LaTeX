@@ -205,11 +205,11 @@
       Here we provide proofs that the Riemann zeta function and Dirichlet $L$-functions do not vanish on the line $\Re(s) = 1$. The second of these two results can be regarded as a stronger version of \cref{thm:non-vanishing_of_Dirichlet_L-functions_at_s=1}. While both will play a role in understanding the zeros of these $L$-functions, the non-vanishing result for the Riemann zeta function is the key ingredient in the proof of the prime number theorem. We will proof the non-vanishing result for $\z(s)$ first, but we need a lemma that will be immensely useful in other investigations:
 
       \begin{lemma}\label{lem:zero-free_region_zeta_lemma}
-        For any nonzero real $t$, set
+        For any nonzero real $t$, define
         \[
-          \eta(s) = \z(s)^{3}\z(s+it)^{4}\z(s+2it). 
+          \eta(\s) = \z(\s)^{3}\z(\s+it)^{4}\z(\s+2it). 
         \]
-        Then for $s = \s > 1$,
+        Then for $\s > 1$,
         \[
           \Re\left(\frac{\eta'}{\eta}(\s)\right) = \Re\left(3\frac{\z'}{\z}(\s)+4\frac{\z'}{\z}(\s+it)+\frac{\z'}{\z}(\s+2it)\right) \le 0.
         \]
@@ -223,7 +223,7 @@
         \begin{equation}\label{equ:Drichlet_series_log_derivative_zeta}
           \frac{\z'}{\z}(s) = -\sum_{p}\frac{\log(p)p^{-s}}{1-p^{-s}} = -\sum_{p}\sum_{k \ge 1}\frac{\log(p)}{p^{ks}} = -\sum_{n \ge 1}\frac{\L(n)}{n^{s}}.
         \end{equation}
-        Now fix $s = \s+it$ with $\s > 1$ and observe
+        Now let $s = \s+it$ with $\s > 1$ and observe
         \begin{align*}
           \sum_{n \ge 1}\frac{\L(n)}{n^{s}} &= \sum_{n \ge 1}\frac{\L(n)}{n^{\s}n^{it}} \\
           &= \sum_{n \ge 1}\frac{\L(n)}{n^{\s}}e^{-it\log(n)} \\
@@ -237,11 +237,14 @@
         \begin{equation}\label{equ:cosine_inequality_for_analytic_number_theory}
           3+4\cos(\t)+\cos(2\t) = 2(1+\cos(\t))^{2} \ge 0,
         \end{equation}
-        provided $\t$ is real. As $\frac{\L(n)}{n^{\s}} \ge 0$ for all $n \ge 1$, so \cref{equ:cosine_inequality_for_analytic_number_theory} implies
-        \begin{equation}\label{equ:real_part_eta_zeta_inequality}
+        provided $\t$ is real. As $\frac{\L(n)}{n^{\s}} \ge 0$ for all $n \ge 1$, \cref{equ:cosine_inequality_for_analytic_number_theory} implies
+        \begin{equation}\label{equ:equ:non-vanishing_of_zeta_on_Re(s)=1_2}
           \sum_{n \ge 1}\frac{\L(n)}{n^{\s}}\bigg(3+4\cos(t\log(n))+\cos(2t\log(n))\bigg) \ge 0,
         \end{equation}
-        for any real $t$.
+        for any real $t$. Taking the real part of the logarithmic derivative of $\eta(\s)$, \cref{equ:non-vanishing_of_zeta_on_Re(s)=1_1,equ:equ:non-vanishing_of_zeta_on_Re(s)=1_2} together imply
+        \[
+           \Re\left(\frac{\eta'}{\eta}(\s)\right) = \Re\left(3\frac{\z'}{\z}(\s)+4\frac{\z'}{\z}(\s+it)+\frac{\z'}{\z}(\s+2it)\right) \le 0.
+        \]
       \end{proof}
 
       The non-vanishing result follows very easily from \cref{lem:zero-free_region_zeta_lemma}:
@@ -274,9 +277,9 @@
       \begin{lemma}\label{lem:zero-free_region_Dirichlet_lemma}
         For any non-principal Dirichlet character $\chi$ of conductor $q > 1$, and nonzero real $t$, set
         \[
-          \eta(s,\chi) = L(s,\chi_{q,0})^{3}L(s+it,\chi)^{4}L(s+2it,\chi^{2}).
+          \eta(\s,\chi) = L(s,\chi_{q,0})^{3}L(s+it,\chi)^{4}L(s+2it,\chi^{2}).
         \]
-        Then for $s = \s > 1$,
+        Then for $\s > 1$,
         \[
           \Re\left(\frac{\eta'}{\eta}(\s,\chi)\right) = \Re\left(3\frac{L'}{L}(\s,\chi_{q,0})+4\frac{L'}{L}(\s+it,\chi)+\frac{L'}{L}(\s+2it,\chi^{2})\right) \le 0.
         \]
@@ -290,7 +293,7 @@
         \begin{equation}\label{equ:Drichlet_series_log_derivative_Dirichlet}
           \frac{L'}{L}(s,\chi) = -\sum_{p}\frac{\chi(p)\log(p)p^{-s}}{1-\chi(p)p^{-s}} = -\sum_{p}\sum_{k \ge 1}\frac{\chi(p^{k})\log(p)}{p^{ks}} = -\sum_{n \ge 1}\frac{\chi(n)\L(n)}{n^{s}},
         \end{equation}
-        where $\L(n)$ is the von Mangoldt function. Setting $s = \s+it$ with $\s > 1$ and writing $\chi(n) = e^{i\vphi}$, we have
+        where $\L(n)$ is the von Mangoldt function. Letting $s = \s+it$ with $\s > 1$ and writing $\chi(n) = e^{i\vphi}$, we have
         \begin{align*}
           \sum_{n \ge 1}\frac{\chi(n)\L(n)}{n^{s}} &= \sum_{n \ge 1}\frac{\chi(n)\L(n)}{n^{\s}n^{it}} \\
           &= \sum_{n \ge 1}\frac{\L(n)}{n^{\s}}e^{i(\vphi-t\log(n))} \\
@@ -310,9 +313,9 @@
         \end{equation}
         Since $\frac{\L(n)}{n^{\s}} \ge 0$ for all $n \ge 1$, \cref{equ:cosine_inequality_for_analytic_number_theory} implies
         \begin{equation}\label{equ:zero-free_region_Dirichlet_lemma_4}
-          \sum_{n \ge 1}\frac{\L(n)}{n^{\s}}\bigg(3+4\cos(\vphi-t\log(n))+4\cos(2\vphi-2t\log(n))\bigg),
+          \sum_{n \ge 1}\frac{\L(n)}{n^{\s}}\bigg(3+4\cos(\vphi-t\log(n))+4\cos(2\vphi-2t\log(n))\bigg) \ge 0,
         \end{equation}
-        for any real $t$. Now for $s = \s$ with $\s > 1$, upon taking the logarithmic derivative of $\eta(\s,\chi)$, \cref{equ:zero-free_region_Dirichlet_lemma_1,equ:zero-free_region_Dirichlet_lemma_2,equ:zero-free_region_Dirichlet_lemma_3,equ:zero-free_region_Dirichlet_lemma_4} together imply
+        for any real $t$. Upon taking the real part of the logarithmic derivative of $\eta(\s,\chi)$, \cref{equ:zero-free_region_Dirichlet_lemma_1,equ:zero-free_region_Dirichlet_lemma_2,equ:zero-free_region_Dirichlet_lemma_3,equ:zero-free_region_Dirichlet_lemma_4} together imply
         \[
           \Re\left(\frac{\eta'}{\eta}(\s,\chi)\right) = \Re\left(3\frac{L'}{L}(\s,\chi_{q,0})+4\frac{L'}{L}(\s+it,\chi)+\frac{L'}{L}(\s+2it,\chi^{2})\right) \le 0.
         \]
