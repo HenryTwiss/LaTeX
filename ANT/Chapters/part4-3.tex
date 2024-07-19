@@ -2,14 +2,10 @@
   Our main aim is to prove the prime number theorem and its variant for primes restricted to a certain residue class, the Siegel–Walfisz theorem, in the classical manner. These results will follow from explicit formulas for Chebyshev functions. After deriving these results, we prove the prime number theorem and the Siegel–Walfisz theorem.
   \section{Explicit Formulas for Chebyshev Functions}
     \subsection*{The Explicit Formula for \texorpdfstring{$\psi(x)$}{$\psi(x)$}}
-      The \textbf{Chebychef function}\index{Chebychef function} $\psi(x)$, for real $x > 1$, is defined by
+      The \textbf{Chebychef function}\index{Chebychef function} $\psi(x)$, for $x > 1$, is defined by
       \[
-        \psi(x) = \sum_{n \le x}\L(n),
+        \psi(x) = \sum_{n \le x}\L(n).
       \]
-      Since $\frac{\log(p^{m})}{\log(p)} = m$ and $\frac{\log(x)}{\log(p)}$ is continuous, for $x > 0$ we may write
-      \begin{equation}\label{equ:alternative_form_for_Chebychef function}
-        \psi(x) = \sum_{n \le x}\L(n) = \sum_{p^{m} \le x}\log(p) = \sum_{p \le x}\left\lfloor\frac{\log(x)}{\log(p)}\right\rfloor\log(p).
-      \end{equation}
       The explicit formula for $\psi(x)$ will be obtained by applying truncated Perron's formula to the logarithmic derivative of $\z(s)$. Since $\psi(x)$ is discontinuous when $x$ is a prime power, we need to work with a slightly modified function to apply the Mellin inversion formula. Define $\psi_{0}(x)$ by
       \[
         \psi_{0}(x) = \begin{cases} \psi(x) & \text{if $x$ is not a prime power}, \\ \psi(x)-\frac{1}{2}\L(x) & \text{if $x$ is a prime power}. \end{cases}
@@ -112,7 +108,7 @@
         \]
         The residue theorem together with the explicit formula for $\frac{\z'}{\z}(s)x^{s}$ and \cref{cor:logarithmic_derivative_of_gamma} imply
         \begin{equation}\label{equ:explicit_formula_proof_7}
-          J(x,T) = x-\sum_{|\g| < T}\frac{x^{\rho}}{\rho}-\frac{\z'}{\z}(0)-\sum_{0 < 2m < U}\frac{x^{-2m}}{2m}+\frac{1}{2\pi i}\int_{\eta_{1}+\eta_{2}+\eta_{3}}-\frac{\z'}{\z}(s)x^{s}\,\frac{ds}{s},
+          J(x,T) = x-\sum_{|\g| < T}\frac{x^{\rho}}{\rho}-\frac{\z'}{\z}(0)+\sum_{0 < 2m < U}\frac{x^{-2m}}{2m}+\frac{1}{2\pi i}\int_{\eta_{1}+\eta_{2}+\eta_{3}}-\frac{\z'}{\z}(s)x^{s}\,\frac{ds}{s},
         \end{equation}
         where $\rho = \b+i\g$ is a nontrivial zeros of $\z$. We will estimate $J(x,T)$ by estimating the integral. By \cref{cor:Riemann_von_Mangoldt_corollary} (i), the number of nontrivial zeros satisfying $|\g-T| < 1$ is $O(\log(T))$. Among the ordinates of these zeros, there must be a gap of size $\gg \frac{1}{\log(T)}$. Upon varrying $T$ by a bounded amount (we are varrying in the interval $[T-1,T+1]$) so that it belongs to this gap, we can additionally ensure
         \[
@@ -178,6 +174,33 @@
         This is \cref{equ:explicit_formula_proof_14}.
       \end{proof}
     \subsection*{The Explicit Formula for \texorpdfstring{$\psi(x,\chi)$}{$\psi(x,\chi)$}}
+      Let $\chi$ be a Dirichlet character modulo $m > 1$. The \textbf{Dirichlet-Chebychef function} $\psi(x,\chi)$, for $x > 1$, is defined by
+      \[
+        \psi(x,\chi) = \sum_{n \le x}\chi(n)\L(n).
+      \]
+      This object plays the analogous role of $\psi(x)$ but for Dirichlet $L$-functions. Accordingly, we will derive an explicit formula for $\psi(x,\chi)$ in a similar manner to that of $\psi(x)$. Because $\psi(x,\chi)$ is discontinuous when $x$ is a prime power, we also introduce a slightly modified function. Define $\psi_{0}(x,\chi)$ by
+      \[
+        \psi_{0}(x,\chi) = \begin{cases} \psi(x,\chi) & \text{if $x$ is not a prime power}, \\ \psi(x,\chi)-\frac{1}{2}\chi(x)\L(x) & \text{if $x$ is a prime power}. \end{cases}
+      \]
+      Thus $\psi_{0}(x,\chi)$ is $\psi(x,\chi)$ except that its value is halfway between the limit values when $x$ is a prime power. The \textbf{explicit formula}\index{explicit formula} for $\psi(x,\chi)$ is the following:
+
+      \begin{theorem}[Explicit formula for $\psi(x,\chi)$]
+        Let $\chi$ be a Dirichlet character modulo $m > 1$. For $x \ge 2$,
+        \[
+          \psi_{0}(x,\chi) = -\sum_{\rho}\frac{x^{\rho}}{\rho}-\frac{L'}{L}(0,\chi)-\tanh^{-1}(x^{-1}),
+        \]
+        if $\chi$ is odd, and
+        \[
+          \psi_{0}(x,\chi) = -\sum_{\rho}\frac{x^{\rho}}{\rho}-\log(x)-b(\chi)-\frac{1}{2}\log(1-x^{-2}),
+        \]
+        if $\chi$ is even where $b(\chi)$ is the constant term in the Laurent series of $\frac{L'}{L}(s,\chi)$ near $0$. In both expressions, $\rho$ runs over the nontrivial zeros of $L(s,\chi)$ counted with multiplicity and ordered with respect to the size of the ordinate.
+      \end{theorem}
+
+      As for $psi(x)$, a few comments are first in order. \todo{xxx}
+
+      \begin{proof}[Proof of the explicit formula for $\psi(x,\chi)$]
+        \todo{xxx}
+      \end{proof}
   \section{Prime Number Theorems}
     \subsection*{The Prime Number Theorem}
       The \textbf{prime counting function}\index{prime counting function} $\pi(x)$ is defined by
