@@ -88,7 +88,7 @@
     \begin{gather*}
         \psi_{1}(m) = \begin{cases} 1 &\text{if $m \not\equiv 0 \tmod{2}$}, \\ 0 &\text{if $m \equiv 0 \tmod{2}$}, \end{cases} \quad \psi_{-1}(m) = \begin{cases} 1 &\text{if $m \equiv 1 \tmod{4}$}, \\ -1 &\text{if $m \equiv 3 \tmod{4}$}, \\ 0 &\text{if $m \equiv 0 \tmod{2}$}, \end{cases} \\ \psi_{2}(m) = \begin{cases} 1 &\text{if $m \equiv 1,7 \tmod{8}$}, \\ -1 &\text{if $m \equiv 3,5 \tmod{8}$}, \\ 0 &\text{if $m \equiv 0 \tmod{2}$}, \end{cases} \quad \psi_{-2}(m) = \begin{cases} 1 &\text{if $m \equiv 1,3 \tmod{8}$}, \\ -1 &\text{if $m \equiv 5,7 \tmod{8}$}, \\ 0 &\text{if $m \equiv 0 \tmod{2}$}. \end{cases}
     \end{gather*}
-    We can write $\psi_{-1}$ and $\psi_{2}$ in terms of Legendre symbols:
+    In general, we will denote these Hilbert characters by $\psi_{a}$ with $a \in \{\pm 1,\pm 2\}$. Now, we can write $\psi_{-1}$ and $\psi_{2}$ in terms of Legendre symbols:
     \[
         \psi_{-1}(m) = \legendre{-1}{m} \quad \text{and} \quad \psi_{2}(m) = \legendre{m}{2}.
     \]
@@ -114,6 +114,27 @@
     \]
     Note that the gamma factors depend upon the partiy of $\chi_{d}$. This the root cause of an important technical issue later when deriving functional equations for the quadratic double Dirichlet series.
 \section*{The Quadratic Double Dirichlet Series}
+    We will now define the quadratic double Dirichlet series $Z(s,w)$. For any integer $d \ge 1$, write $d = d_{0}d_{1}^{2}$ where $d_{0}$ is square-free. Equivalently, $d_{0}$ is the square-free part of $d$ and $\frac{d}{d_{0}}$ is a perfect square. The \textbf{quadratic double Dirichlet series} $Z(s,w)$ is defined as
+    \[
+        Z(s,w) = \sum_{\text{$d$ odd}}\frac{L^{(2)}(s,\chi_{d_{0}})Q_{d_{0}d_{1}^{2}}(s)}{d^{w}},
+    \]
+    where the superscript $(2)$ indicates that the local factor at $2$ has been removed, $Q_{d_{0}d_{1}^{2}}(s)$ is the \textbf{correction polynomial} defined by
+    \[
+        Q_{d_{0}d_{1}^{2}}(s) = \sum_{e_{1}e_{2} \mid d_{1}}\mu(e_{1})\chi_{d_{0}}(e_{1})e_{1}^{-s}e_{2}^{1-s} = \sum_{e_{1}e_{2}e_{3} = d_{1}}\mu(e_{1})\chi_{d_{0}}(e_{1})e_{1}^{-s}e_{2}^{1-s},
+    \]
+    and $\mu$ is the usual M\"obius function. For $\Re(s) > 1$, there is the trivial estimate
+    \[
+        Q_{d_{0}d_{1}^{2}}(s) \ll \sum_{e_{1}e_{2} \mid d_{1}}1 \ll \s_{0}(d_{1})^{2} \ll_{\e} |d_{1}^{2}|^{\e} \ll_{\e} |d|^{\e},
+    \]
+     for any $\e > 0$. As $L(s,\chi_{d_{0}}) \ll 1$ for $\Re(s) > 1$, $Z(s,w)$ is locally absolutely uniformly convergent in the region $\L = \{(s,w) \in \C^{2}:\Re(s) > 1, \Re(w) > 1\}$. It will also be necessary to consider quadratic double Dirichlet series twisted by a pair of Hilbert characters $\psi_{a_{1}}$ and $\psi_{a_{2}}$. The \textbf{quadratic double Dirichlet series} $Z_{a_{1},a_{2}}(s,w)$ twisted by $\psi_{a_{1}}$ and $\psi_{a_{2}}$ is defined as
+    \[
+        Z_{a_{1},a_{2}}(s,w) = \sum_{\text{$d$ odd}}\frac{L^{(2)}(s,\psi_{a_{1}}\chi_{d_{0}})\psi_{a_{2}}(d)Q_{d_{0}d_{1}^{2}}(s,\psi_{a_{1}})}{|d|^{w}},
+    \]
+    where $Q_{d_{0}d_{1}^{2}}(s,\psi_{a_{1}})$ is the \textbf{correction polynomial} twisted by $\psi_{a_{1}}$ defined by
+    \[
+        Q_{d_{0}d_{1}^{2}}(s,\psi_{a_{1}}) = \sum_{e_{1}e_{2} \mid d_{1}}\mu(e_{1})\psi_{a_{1}}(e_{1})\chi_{d_{0}}(e_{1})|e_{1}|^{-s}|e_{2}|^{1-2s} = \sum_{e_{1}e_{2}e_{3} = d_{1}}\mu(e_{1})\psi_{a_{1}}(e_{1})\chi_{d_{0}}(e_{1})|e_{1}|^{-s}|e_{2}|^{1-2s},
+    \]
+    and $\mu$ is the usual M\"obius function. By definition of the Hilbert characters, we have the analogous bound $Q_{d_{0}d_{1}^{2}}(s,\psi_{a_{1}}) \ll |d|_{\e}$ so that $Z_{a_{1},a_{2}}(s,w)$ converges locally absolutely uniformly in the same region as $Z(s,w)$ does. In particular, $Z(s,w) = Z_{1,1}(s,w)$.
 \section*{The Interchange}
 \section*{Weighting Terms}
 \section*{Functional Equations}
