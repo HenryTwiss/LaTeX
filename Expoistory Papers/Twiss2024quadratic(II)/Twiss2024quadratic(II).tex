@@ -132,10 +132,56 @@
     \]
     where $Q_{d_{0}d_{1}^{2}}(s,\psi_{a_{1}})$ is the \textbf{correction polynomial} twisted by $\psi_{a_{1}}$ defined by
     \[
-        Q_{d_{0}d_{1}^{2}}(s,\psi_{a_{1}}) = \sum_{e_{1}e_{2} \mid d_{1}}\mu(e_{1})\psi_{a_{1}}(e_{1})\chi_{d_{0}}(e_{1})|e_{1}|^{-s}|e_{2}|^{1-2s} = \sum_{e_{1}e_{2}e_{3} = d_{1}}\mu(e_{1})\psi_{a_{1}}(e_{1})\chi_{d_{0}}(e_{1})|e_{1}|^{-s}|e_{2}|^{1-2s},
+        Q_{d_{0}d_{1}^{2}}(s,\psi_{a_{1}}) = \sum_{e_{1}e_{2} \mid d_{1}}\mu(e_{1})(\psi_{a_{1}}\chi_{d_{0}})(e_{1})|e_{1}|^{-s}|e_{2}|^{1-2s} = \sum_{e_{1}e_{2}e_{3} = d_{1}}\mu(e_{1})(\psi_{a_{1}}\chi_{d_{0}})(e_{1})|e_{1}|^{-s}|e_{2}|^{1-2s},
     \]
     and $\mu$ is the usual M\"obius function. By definition of the Hilbert characters, we have the analogous bound $Q_{d_{0}d_{1}^{2}}(s,\psi_{a_{1}}) \ll |d|_{\e}$ so that $Z_{a_{1},a_{2}}(s,w)$ converges locally absolutely uniformly in the same region as $Z(s,w)$ does. In particular, $Z(s,w) = Z_{1,1}(s,w)$.
 \section*{The Interchange}
+    As defined, $Z_{a_{1},a_{2}}(s,w)$ is a sum of $L$-functions, and hence Euler products, in $s$. We will prove an interchange formula for $Z_{a_{1},a_{2}}(s,w)$ which will show that it can be expressed as a sum of $L$-functions in $w$. That is, we want the variables $s$ and $w$ to change places. Precisely:
+
+    \begin{theorem}[Interchange]
+        Wherever $Z_{a_{1},a_{2}}(s,w)$ converges locally absolutely uniformly,
+        \[
+            Z_{a_{1},a_{2}}(s,w) = \sum_{\text{$d$ odd}}\frac{L^{(2)}(s,\psi_{a_{1}}\chi_{d_{0}})\psi_{a_{2}}(d)Q_{d_{0}d_{1}^{2}}(s,\psi_{a_{1}})}{|d|^{w}} = \sum_{\text{$m$ odd}}\frac{L^{(2)}(w,\psi_{a_{2}}\chi_{m_{0}})\psi_{a_{1}}(d)Q_{m_{0}m_{1}^{2}}(w,\psi_{a_{2}})}{|m|^{s}}.
+        \]
+    \end{theorem}
+    \begin{proof}
+        Only the second equality needs to be proved. To do this, first expand the $L$-function $L^{(2)}(s,\psi_{a_{1}}\chi_{d_{0}})$ and polynomial $Q_{d_{0}d_{1}^{2}}(s,\psi_{a_{1}})$ to get
+        \begin{align*}
+            Z(s,w) &= \sum_{\text{$d$ odd}}\frac{L(s,\psi_{a_{1}}\chi_{d_{0}})\chi_{a_{2}}(d)Q_{d_{0}d_{1}^{2}}(s,\psi_{a_{1}})}{|d|^{w}} \\
+            &= \sum_{\text{$d$ odd}}\left(\sum_{\text{$m$ odd}}(\psi_{a_{1}}\chi_{d_{0}})(m)|m|^{-s}\right)\left(\sum_{e_{1}e_{2} \mid d_{1}}\mu(e_{1})(\psi_{a_{1}}\chi_{d_{0}})(e_{1})|e_{1}|^{-s}|e_{2}|^{1-2s}\right)\chi_{a_{2}}(d)|d|^{-w} \\
+            &= \sum_{\text{$m,d$ odd}}\sum_{e_{1}e_{2} \mid d_{1}}\mu(e_{1})\chi_{a_{2}}(d)(\psi_{a_{1}}\chi_{d_{0}})(me_{1})|e_{1}|^{-s}|e_{2}|^{1-2s}|m|^{-s}|d|^{-w}.
+        \end{align*}
+        Now $(\psi_{a_{1}}\chi_{d_{0}})(me_{1}) = 0$ unless $(d_{0},me_{1}) = 1$. We make this restriction on the sum giving
+        \[
+            \sum_{\text{$m,d$ odd}}\sum_{\substack{e_{1}e_{2} \mid d_{1} \\ (d_{0},me_{1}) = 1}}\mu(e_{1})\chi_{a_{2}}(d)(\psi_{a_{1}}\chi_{d_{0}})(me_{1})|e_{1}|^{-s}|e_{2}|^{1-2s}|m|^{-s}|d|^{-w}.
+        \]
+        Making the change of variables $me_{1} \to m$ yields
+        \[
+            \sum_{\text{$d$ odd}}\sum_{\substack{\text{$m$ odd} \\ e_{1} \mid m}}\sum_{\substack{e_{1}e_{2} \mid d_{1} \\ (d_{0},m) = 1}}\mu(e_{1})\chi_{a_{2}}(d)(\psi_{a_{1}}\chi_{d_{0}})(m)|e_{2}|^{1-2s}|m|^{-s}|d|^{-w}.
+        \]
+        For fixed $d = d_{0}d_{1}^{2}$ and $e_{2}$, the subsum over $m$ and $e_{1}$ is
+        \[
+            \sum_{\substack{\text{$m$ odd} \\ e_{1} \mid m}}\sum_{\substack{e_{1} \mid \frac{d_{1}}{e_{2}} \\ (d_{0},m) = 1}}\mu(e_{1})(\psi_{a_{1}}\chi_{d_{0}})(m)|m|^{-s} = \sum_{\substack{\text{$m$ odd} \\ (d_{0},m) = 1}}(\psi_{a_{1}}\chi_{d_{0}})(m)|m|^{-s}\left(\sum_{e_{1} \mid \left(\frac{d_{1}}{e_{2}},m\right)}\mu(e_{1})\right).
+        \]
+        The inner sum over $e_{1}$ of the M\"obius function vanishes unless $\left(\frac{d_{1}}{e_{2}},m\right) = 1$ in which case it is $1$. Therefore the triple sum above becomes
+        \[
+            \sum_{\text{$m,d$ odd}}\sum_{\substack{e_{2} \mid d_{1} \\ \left(\frac{d_{0}d_{1}}{e_{2}},m\right) = 1}}\chi_{a_{2}}(d)(\psi_{a_{1}}\chi_{d_{0}})(m)|e_{2}|^{1-2s}|m|^{-s}|d|^{-w}.
+        \]
+        Making the change of variables $d \to de_{2}^{2}$, the condition $\left(\frac{d_{0}d_{1}}{e_{2}},m\right) = 1$ becomes $(d_{0}d_{1},m) = 1$ which is equivalent to $(d,m) = 1$. Moreover, $\chi_{a_{2}}(de_{2}^{2}) = \chi_{a_{2}}(d)$. Altogether, we obtain
+        \[
+            \sum_{\substack{\text{$m,d$ odd} \\ (d,m) = 1}}\sum_{e_{2}}\chi_{a_{2}}(d)(\psi_{a_{1}}\chi_{d_{0}})(m)|e_{2}|^{1-2s-2w}|m|^{-s}|d|^{-w}.
+        \]
+        Writing $m = m_{0}m_{1}^{2}$ analogously as for $d$, \todo{quadratic reciprocity implies} $\chi_{d_{0}}(m) = \chi_{m}(d_{0}) = \chi_{m_{0}}(d)$ where the last equality holds because $(d,m) = 1$ and both $d_{0}$ and $m_{0}$ differ from $d$ and $m$ respectively by perfect squares. Therefore $\chi_{a_{2}}(d)(\psi_{a_{1}}\chi_{d_{0}})(m) = \chi_{a_{1}}(m)\chi_{a_{2}m_{0}}(d)$ and our expression becomes
+        \[
+            \sum_{\substack{\text{$m,d$ odd} \\ (d,m) = 1}}\sum_{e_{2}}\chi_{a_{1}}(m)\chi_{a_{2}m_{0}}(d)|e_{2}|^{1-2s-2w}|m|^{-s}|d|^{-w}.
+        \]
+        But now we can reverse the argument with the roles of $d$, $m$, $\chi_{a_{1}}$, and $\chi_{a_{2}}$ interchanged respectively to obtain
+        \[
+            Z(s,w) = \sum_{\text{$m$ odd}}\frac{L(w,\chi_{a_{2}m_{0}})Q_{d_{0}d_{1}^{2}}(w,\chi_{a_{1}})}{|m|^{w}}.
+        \]
+    \end{proof}
+
+
 \section*{Weighting Terms}
 \section*{Functional Equations}
 \section*{Meromorphic Continuation}
