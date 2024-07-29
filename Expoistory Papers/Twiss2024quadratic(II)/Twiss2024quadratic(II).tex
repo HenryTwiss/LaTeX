@@ -84,7 +84,15 @@
     \[
         \chi_{d}(m) = \begin{cases} \legendre{d}{m} & \text{if $d \equiv 1 \tmod{4}$}, \\ \legendre{4d}{m} & \text{if $d \equiv 2,3 \tmod{4}$}. \end{cases}
     \]
-    This quadratic Dirichlet character is attached to the quadratic extension $\Q(\sqrt{d})$. We extend $\chi_{d}$ multiplicatively in the denominator so that $\chi_{d}$ makes sense for any odd $d$. In particular, $\chi_{d}(m) = \pm1$ provided $d$ and $m$ are relatively prime and $\chi_{d}(m) = 0$ if $(m,d) > 1$. Quadratic reciprocity implies that $\chi_{d}$ is a Dirichlet character modulo $d$ if $d \equiv 1 \tmod{4}$ and is a Dirichlet character modulo $4d$ if $d \equiv 2,3 \tmod{4}$. Indeed, if $d \equiv 1 \tmod{4}$ then $d^{(2)} = d$ and the sign is always $1$. If $d \equiv 3 \tmod{4}$, then $d^{(2)} = d$ and the sign is $\tlegendre{-1}{m}$ which is a character modulo $4$. If $d \equiv 2 \tmod{4}$, then $d^{(2)} \equiv 1,3 \tmod{4}$ and we are reduced to one of the previous two cases. We now discuss the Hilbert characters. We will only need four of them: the quadratic Dirichlet characters modulo $8$. They are given as follows:
+    This quadratic Dirichlet character is attached to the quadratic extension $\Q(\sqrt{d})$. We extend $\chi_{d}$ multiplicatively in the denominator so that $\chi_{d}$ makes sense for any odd $d$. In particular, $\chi_{d}(m) = \pm1$ provided $d$ and $m$ are relatively prime and $\chi_{d}(m) = 0$ if $(m,d) > 1$. Quadratic reciprocity implies that $\chi_{d}$ is a Dirichlet character modulo $d$ if $d \equiv 1 \tmod{4}$ and is a Dirichlet character modulo $4d$ if $d \equiv 2,3 \tmod{4}$. Indeed, if $d \equiv 1 \tmod{4}$ then $d^{(2)} = d$ and the sign is always $1$. If $d \equiv 3 \tmod{4}$, then $d^{(2)} = d$ and the sign is $\tlegendre{-1}{m}$ which is a character modulo $4$. If $d \equiv 2 \tmod{4}$, then $d^{(2)} \equiv 1,3 \tmod{4}$ and we are reduced to one of the previous two cases. We will also require an associated character. For each $\chi_{d}$, we define $\wtilde{\chi}_{d}$ by
+    \[
+        \wtilde{\chi}_{d}(m) = (-1)^{\frac{d^{(2)}-1}{2}\frac{m^{(2)}-1}{2}}\chi_{d}(m).
+    \]
+    Equivalently, $\wtilde{\chi}_{d}(m)$ can be expressed as
+    \[
+        \wtilde{\chi}_{d}(m) = \begin{cases} \chi_{d}(m) & \text{if $d \equiv 1,2 \tmod{4}$}, \\ \chi_{-1}(m)\chi_{d}(m) & \text{if $d \equiv 3 \tmod{4}$}, \end{cases}
+    \]
+    and this implies $\wtilde{\chi}_{d}(m)$ is a quadratic Dirichlet character of the same modulus as $\chi_{d}$. We now discuss the Hilbert characters. We will only need four of them: the quadratic Dirichlet characters modulo $8$. They are given as follows:
     \begin{gather*}
         \chi_{1}(m) = \begin{cases} 1 &\text{if $m \not\equiv 0 \tmod{2}$}, \\ 0 &\text{if $m \equiv 0 \tmod{2}$}, \end{cases} \quad \chi_{-1}(m) = \begin{cases} 1 &\text{if $m \equiv 1 \tmod{4}$}, \\ -1 &\text{if $m \equiv 3 \tmod{4}$}, \\ 0 &\text{if $m \equiv 0 \tmod{2}$}, \end{cases} \\ \chi_{2}(m) = \begin{cases} 1 &\text{if $m \equiv 1,7 \tmod{8}$}, \\ -1 &\text{if $m \equiv 3,5 \tmod{8}$}, \\ 0 &\text{if $m \equiv 0 \tmod{2}$}, \end{cases} \quad \chi_{-2}(m) = \begin{cases} 1 &\text{if $m \equiv 1,3 \tmod{8}$}, \\ -1 &\text{if $m \equiv 5,7 \tmod{8}$}, \\ 0 &\text{if $m \equiv 0 \tmod{2}$}. \end{cases}
     \end{gather*}
@@ -141,7 +149,7 @@
     \begin{theorem}[Interchange]
         Wherever $Z_{a_{1},a_{2}}(s,w)$ converges locally absolutely uniformly,
         \[
-            Z_{a_{1},a_{2}}(s,w) = \sum_{\text{$d$ odd}}\frac{L^{(2)}(s,\chi_{a_{1}d_{0}})\chi_{a_{2}}(d)Q_{d_{0}d_{1}^{2}}(s,\chi_{a_{1}})}{|d|^{w}} = \sum_{\text{$m$ odd}}\frac{L^{(2)}(w,\chi_{a_{2}m_{0}})\chi_{-a_{1}}(m)Q_{m_{0}m_{1}^{2}}(w,\chi_{a_{2}})}{|m|^{s}}.
+            Z_{a_{1},a_{2}}(s,w) = \sum_{\text{$d$ odd}}\frac{L^{(2)}(s,\chi_{a_{1}d_{0}})\chi_{a_{2}}(d)Q_{d_{0}d_{1}^{2}}(s,\chi_{a_{1}})}{|d|^{w}} = \sum_{\text{$m$ odd}}\frac{L^{(2)}(w,\wtilde{\chi}_{a_{2}m_{0}})\chi_{a_{1}}(m)Q_{m_{0}m_{1}^{2}}(w,\chi_{a_{2}})}{|m|^{s}}.
         \]
     \end{theorem}
     \begin{proof}
@@ -171,39 +179,17 @@
         \[
             \sum_{\substack{\text{$m,d$ odd} \\ (d,m) = 1}}\sum_{e_{2}}\chi_{a_{2}}(d)\chi_{a_{1}d_{0}}(m)|e_{2}|^{1-2s-2w}|m|^{-s}|d|^{-w}.
         \]
-        We now decompose this sum into two pieces depending on if $d,m \equiv 3 \tmod{4}$ or not:
-        \begin{align*}
-            \sum_{\substack{\text{$m,d \not\equiv 3 \tmod{4}$} \\ (d,m) = 1}}\sum_{e_{2}}&\chi_{a_{2}}(d)\chi_{a_{1}d_{0}}(m)|e_{2}|^{1-2s-2w}|m|^{-s}|d|^{-w} \\
-            & +\sum_{\substack{\text{$m,d \equiv 3 \tmod{4}$} \\ (d,m) = 1}}\sum_{e_{2}}\chi_{a_{2}}(d)\chi_{a_{1}d_{0}}(m)|e_{2}|^{1-2s-2w}|m|^{-s}|d|^{-w}.
-        \end{align*}
-        Writing $m = m_{0}m_{1}^{2}$ analogously as for $d$, quadratic reciprocity implies
+        Writing $m = m_{0}m_{1}^{2}$ analogously as for $d$, quadratic reciprocity implies $\chi_{d_{0}}(m) = \wtilde{\chi}_{m}(d_{0}) = \wtilde{\chi}_{m_{0}}(d)$ where the last equality holds because $(d,m) = 1$ and both $d_{0}$ and $m_{0}$ differ from $d$ and $m$ respectively by perfect squares. This implies $\chi_{a_{2}}(d)\chi_{a_{1}d_{0}}(m) = \chi_{a_{1}}(m)\wtilde{\chi}_{a_{2}m_{0}}(d)$ and so our expression becomes
         \[
-            \chi_{d_{0}}(m) = \begin{cases} \chi_{m_{0}}(d) & \text{if $m,d \not\equiv 3 \tmod{4}$}, \\ \chi_{-1}(m)\chi_{m_{0}}(d) & \text{if $m,d \equiv 3 \tmod{4}$}, \end{cases}
+            \sum_{\substack{\text{$m,d$ monic} \\ (d,m) = 1}}\sum_{e_{2}}\chi_{a_{1}}(m)\wtilde{\chi}_{a_{2}m_{0}}(d)|e_{2}|^{1-2s-2w}|m|^{-s}|d|^{-w}.
         \]
-        where we have made use of the fact $\chi_{m}(d_{0}) = \chi_{m_{0}}(d)$ which holds because $(d,m) = 1$ and both $d_{0}$ and $m_{0}$ differ from $d$ and $m$ respectively by perfect squares. Therefore
-         \[
-            \chi_{a_{2}}(d)\chi_{a_{1}d_{0}}(m) = \begin{cases} \chi_{a_{1}}(m)\chi_{a_{2}m_{0}}(d) & \text{if $m,d \not\equiv 3 \tmod{4}$}, \\ \chi_{-a_{1}}(m)\chi_{a_{2}m_{0}}(d) & \text{if $m,d \equiv 3 \tmod{4}$}, \end{cases}
-        \]
-        and our expression becomes
-        \begin{align*}
-            \sum_{\substack{\text{$m,d \not\equiv 3 \tmod{4}$} \\ (d,m) = 1}}\sum_{e_{2}}&\chi_{a_{1}}(m)\chi_{a_{2}m_{0}}(d)|e_{2}|^{1-2s-2w}|m|^{-s}|d|^{-w} \\
-            & +\sum_{\substack{\text{$m,d \equiv 3 \tmod{4}$} \\ (d,m) = 1}}\sum_{e_{2}}\chi_{-a_{1}}(m)\chi_{a_{2}m_{0}}(d)|e_{2}|^{1-2s-2w}|m|^{-s}|d|^{-w}.
-        \end{align*}
-        But now we can reverse the argument with the roles of $d$, $m$, $\chi_{-a_{1}}$, and $\chi_{a_{2}}$ interchanged respectively to obtain
+        But now we can reverse the argument with the roles of $d$, $m$, $\chi_{a_{1}}$, and $\wtilde{\chi}_{a_{2}}$ interchanged respectively to obtain
         \[
-            Z(s,w) = \sum_{\text{$m$ odd}}\frac{L^{(2)}(w,\chi_{a_{2}m_{0}})\chi_{-a_{1}}(m)Q_{m_{0}m_{1}^{2}}(w,\chi_{a_{2}})}{|m|^{s}}.
+            Z(s,w) = \sum_{\text{$m$ monic}}\frac{L(w,\wtilde{\chi}_{a_{2}m_{0}})\chi_{a_{1}}(m)Q_{m_{0}m_{1}^{2}}(w,\chi_{a_{2}})}{|m|^{s}}.
         \]
     \end{proof}
 
-    Note that the interchange is not completely symmetric because of the character $\chi_{-a_{1}}$ in the second expression for $Z_{a_{1},a_{2}}(s,w)$. This is due to the fact that recipricty is not perfect. In even more general settings the correction polynomials in $w$ need not be equal to those in $s$.
-
-    \begin{remark}\label{rem:symmetry_of_Double_Dirichlet_series}
-        The interchange implies the following relation for twisted quadratic double Dirichlet series:
-        \[
-            Z_{a_{1},a_{2}}(s,w) = Z_{a_{2},-a_{1}}(w,s),
-        \]
-        where $a_{1},a_{2} \in \{\pm 1, \pm 2\}$.
-    \end{remark}
+    Note that the interchange is not completely symmetric because of the character $\wtilde{\chi}_{a_{2}m_{0}}$ in the second expression for $Z_{a_{1},a_{2}}(s,w)$. This is due to the fact that recipricty is not perfect. In even more general settings the correction polynomials in $w$ need not be equal to those in $s$.
 \section*{Weighting Terms}
 \section*{Functional Equations}
 \section*{Meromorphic Continuation}
