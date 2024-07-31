@@ -108,11 +108,11 @@
     \[
         \chi_{d}(m) = \begin{cases} \chi_{m}(d) & \text{if $d \equiv 1 \tmod{4}$}, \\ \chi_{-1}(m)\chi_{m}(d) & \text{if $d \equiv 3 \tmod{4}$}, \\ \chi_{2}(m)\chi_{m}\left(\frac{d}{2}\right) & \text{if $d \equiv 2 \tmod{8}$}, \\ \chi_{-2}(m)\chi_{m}\left(\frac{d}{2}\right) & \text{if $d \equiv 6 \tmod{8}$}. \end{cases}
     \]
-    With the Dirichlet and Hilbert characters introduced, we are ready to discuss the $L$-functions associated to quadratic Dirichlet characters. We define the $L$-function $L(s,\chi_{d})$ attached to $\chi_{d}$ by a Dirichlet series or Euler product:
+    With the Dirichlet and Hilbert characters introduced, we are ready to discuss the $L$-functions associated to quadratic Dirichlet characters. We define the $L$-function $L(s,\chi_{d})$ attached to $\chi_{d}$ for square-free $d$, by a Dirichlet series or Euler product:
     \[
         L(s,\chi_{d}) = \sum_{m \ge 1}\frac{\chi_{d}(m)}{|m|^{s}} = \prod_{p \text{ prime}}\left(1-\frac{\chi_{d}(P)}{|P|^{s}}\right)^{-1}.
     \]
-    By definition of the quadratic Dirichlet character, $L(s,\chi_{d}) \ll \z(s)$ for $\Re(s) > 1$ so that $L(s,\chi_{d})$ is locally absolutely uniformly convergent in this region. $L(s,\chi_{d})$ also admits meromorphic continuation to $\C$ with a simple pole at $s = 1$ if $d$ is a perfect square. For square-free $d$, the completed $L$-function is defined as
+    By definition of the quadratic Dirichlet character, $L(s,\chi_{d}) \ll \z(s)$ for $\Re(s) > 1$ so that $L(s,\chi_{d})$ is locally absolutely uniformly convergent in this region. $L(s,\chi_{d})$ also admits meromorphic continuation to $\C$ with a simple pole at $s = 1$ if $d$ is a perfect square. For square-free $d$, the completed $L$-function $L^{\ast}(s,\chi_{d})$ is defined as
     \[
         L^{\ast}(s,\chi_{d}) = \begin{cases} \pi^{-\frac{s}{2}}\G\left(\frac{s}{2}\right)L(s,\chi_{d}) & \text{if $\chi_{d}$ is even}, \\ \pi^{-\frac{s}{2}}\G\left(\frac{s+1}{2}\right)L(s,\chi_{d}) & \text{if $\chi_{d}$ is odd}, \end{cases}
     \]
@@ -121,6 +121,10 @@
         L^{\ast}(s,\chi_{d}) = \begin{cases} \e_{\chi}q^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{d}) & \text{if $\chi_{d}$ is even}, \\ -\e_{\chi}q^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{d}) & \text{if $\chi_{d}$ is odd}. \end{cases}
     \]
     Note that the gamma factors depend upon the partiy of $\chi_{d}$. This the root cause of an important technical issue later when deriving functional equations for the quadratic double Dirichlet series.
+
+    \begin{remark}
+        The definitions for $L(s,\chi_{d})$ and $L^{\ast}(s,\chi_{d})$ work perfectly well even when $d$ is not square-free (however the functional equations do not hold). We purposely do not define these $L$-functions, yet, for $d$ not necessarily square-free.
+    \end{remark}
 \section*{The Quadratic Double Dirichlet Series}
     We will now define the quadratic double Dirichlet series $Z(s,w)$. For any integer $d \ge 1$, write $d = d_{0}d_{1}^{2}$ where $d_{0}$ is square-free. Equivalently, $d_{0}$ is the square-free part of $d$ and $\frac{d}{d_{0}}$ is a perfect square. The \textbf{quadratic double Dirichlet series} $Z(s,w)$ is defined as
     \[
@@ -191,6 +195,68 @@
 
     Note that the interchange is not completely symmetric because of the character $\wtilde{\chi}_{a_{2}m_{0}}$ in the second expression for $Z_{a_{1},a_{2}}(s,w)$. This is due to the fact that recipricty is not perfect. In even more general settings the correction polynomials in $w$ need not be equal to those in $s$.
 \section*{Weighting Terms}
+    We will now study the coefficients of $Z_{a_{1},a_{2}}(s,w)$ expanded in $s$ and $w$. By expanding $L(s,\chi_{a_{1}d_{0}})Q_{d_{0}d_{1}^{2}}(s,\chi_{a_{1}})$ in the numerator of $Z_{a_{1},a_{2}}(s,w)$, we can write
+    \[
+        Z_{a_{1},a_{2}}(s,w) = \sum_{\text{$d$ monic}}\frac{L(s,\chi_{a_{1}d_{0}})\chi_{a_{2}}(d)Q_{d_{0}d_{1}^{2}}(s,\chi_{a_{1}})}{|d|^{w}} = \sum_{\text{$m,d$ monic}}\frac{\chi_{a_{1}d_{0}}(\what{m})\chi_{a_{2}}(d)a(m,d)}{|m|^{s}|d|^{w}},
+    \]
+    where $\what{m}$ is the part of $m$ relatively prime to $d_{0}$ and the \textbf{weighting coefficient} $a(m,d)$ is given by
+    \[
+        a(m,d) = \sum_{\substack{e_{1}e_{2}^{2}e_{3} = m \\ e_{1}e_{2} \mid d_{1} \\ (d_{0},e_{1}e_{3}) = 1}}\mu(e_{1})|e_{2}|.
+    \]
+    To see this, the coefficient of $|m|^{-s}|d|^{-w}$ in the definition of $Z_{a_{1},a_{2}}(s,w)$ is
+    \begin{align*}
+        \chi_{a_{2}}(d)\sum_{\substack{e_{1}e_{2}^{2}e_{3} = m \\ e_{1}e_{2} \mid d_{1}}}\mu(e_{1})\chi_{a_{1}d_{0}}(e_{1}e_{3})|e_{2}| &= \chi_{a_{2}}(d)\sum_{\substack{e_{1}e_{2}^{2}e_{3} = m \\ e_{1}e_{2} \mid d_{1} \\ (d_{0},e_{1}e_{3}) = 1}}\mu(e_{1})\chi_{a_{1}d_{0}}(e_{1}e_{3})|e_{2}| \\
+        &= \chi_{a_{1}d_{0}}(\what{m})\chi_{a_{2}}(d)\sum_{\substack{e_{1}e_{2}^{2}e_{3} = m \\ e_{1}e_{2} \mid d_{1} \\ (d_{0},e_{1}e_{3}) = 1}}\mu(e_{1})|e_{2}| \\
+        &= \chi_{a_{1}d_{0}}(\what{m})\chi_{a_{2}}(d)a(m,d),
+    \end{align*}
+    where the first equality holds because $\chi_{d_{0}}(e_{1}e_{3}) = 0$ unless $(d_{0},e_{1}e_{3}) = 1$ and the second equality holds because if $(d_{0},e_{1}e_{3}) = 1$, $\what{m}$ differs from $e_{1}e_{3}$ by a perfect square (the divisors of which belong to $(d_{0},e_{2})$) and so $\chi_{d_{0}}(e_{1}e_{3}) = \chi_{d_{0}}(\what{m})$. 
+    
+    \begin{remark}\label{rem:weighting_coefficient_remark}
+        Also, $a(m,d) = 0$ unless $m = e_{1}e_{2}^{2}e_{3}$ with $(d_{0},e_{1}e_{3}) = 1$ and $e_{1}e_{2}^{2} \mid d_{1}$.
+    \end{remark}
+
+    \todo{resume here}
+
+    We will let $L(s,\chi_{a_{1}d})$ be the Dirichlet series defined by
+    \[
+        L(s,\chi_{a_{1}d}) = L(s,\chi_{a_{1}d_{0}})Q_{d_{0}d_{1}^{2}}(s,\chi_{a_{1}}) = \sum_{\text{$m$ monic}}\frac{\chi_{a_{1}d_{0}}(\what{m})a(m,d)}{|m|^{s}},
+    \]
+    so that
+    \[
+        Z_{a_{1},a_{2}}(s,w) = \sum_{\text{$d$ monic}}\frac{\chi_{a_{2}}(d)L(s,\chi_{a_{1}d})}{|d|^{w}}.
+    \]
+     If we perform the same procedure to the interchange, then
+    \[
+        Z_{a_{1},a_{2}}(s,w) = \sum_{\text{$m$ monic}}\frac{L(w,\wtilde{\chi}_{a_{2}m_{0}})\chi_{a_{1}}(m)Q_{m_{0}m_{1}^{2}}(w,\chi_{a_{2}})}{|m|^{s}} = \sum_{\text{$m,d$ monic}}\frac{\wtilde{\chi}_{a_{2}m_{0}}(\what{d})\chi_{a_{1}}(m)a(d,m)}{|m|^{s}|d|^{w}},
+    \]
+    where $\what{d}$ is the part of $d$ relatively prime to $m_{0}$. Analogously, we define $L(w,\wtilde{\chi}_{a_{2}m})$ by
+    \[
+        L(w,\wtilde{\chi}_{a_{2}m}) = L(w,\wtilde{\chi}_{a_{2}m_{0}})Q_{m_{0}m_{1}^{2}}(w,\chi_{a_{2}}) = \sum_{\text{$d$ monic}}\frac{\wtilde{\chi}_{a_{2}m_{0}}(\what{d})a(d,m)}{|d|^{w}},
+    \]
+    so that
+    \[
+        Z_{a_{1},a_{2}}(s,w) = \sum_{\text{$m$ monic}}\frac{\chi_{a_{1}}(m)L(w,\what{\chi}_{a_{2}m})}{|m|^{s}}.
+    \]
+    We can now derive an important relationship for the weighting coefficients. Equating the coefficients of the two expansions for $Z_{a_{1},a_{2}}(s,w)$ gives
+    \[
+        \chi_{a_{1}d_{0}}(\what{m})\chi_{a_{2}}(d)a(m,d) = \chi_{a_{2}m_{0}}(\what{d})\chi_{a_{1}}(m)a(d,m)
+    \]
+    By applying quadratic reciprocity twice we have
+    \[
+        \chi_{d_{0}}(\what{m}) = \chi_{\what{m}}(d_{0}) = \chi_{\what{m_{0}}}(d_{0}) = \chi_{m_{0}}(\what{d_{0}}) = \chi_{m_{0}}(\what{d}),
+    \]
+    so upon setting $a_{1} = a_{2} = 1$ we have
+    \[
+        a(m,d) = a(d,m).
+    \]
+    In other words, the weighting coefficients are symmetric. The weighting coefficients also posess a multiplicativity property:
+
+    \begin{proposition}\label{prop:multiplicativity_of_weighting_coefficients}
+        We have $a(m,1) = a(1,d) = 1$ and
+        \[
+            a(m,d) = \prod_{\substack{P^{\a} \mid\mid m \\ P^{\beta} \mid\mid d}}a(P^{\a},P^{\b}).
+        \]
+    \end{proposition}
 \section*{Functional Equations}
 \section*{Meromorphic Continuation}
 \section*{Poles and Residues}

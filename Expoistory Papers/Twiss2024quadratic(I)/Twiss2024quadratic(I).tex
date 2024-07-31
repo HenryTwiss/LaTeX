@@ -31,7 +31,7 @@
     \[
         \z(s) = \sum_{n \ge 0}\frac{\text{\# of monic poly of deg $n$}}{q^{ns}} = \sum_{n \ge 1}\frac{1}{q^{n(1-s)}} = \frac{1}{1-q^{1-s}}.
     \]
-    The latter expression is meromorphic on $\C$ with a simple pole at $s = 1$ of residue $\frac{1}{\log(q)}$. Therefore $\z(s)$ admits meromorphic continuation to $\C$. The zeta function also satisfies a functional equation. Define the completed zeta function (this is also the zeta function attached to $\F_{q}(t)$) by
+    The latter expression is meromorphic on $\C$ with a simple pole at $s = 1$ of residue $\frac{1}{\log(q)}$. Therefore $\z(s)$ admits meromorphic continuation to $\C$. The zeta function also satisfies a functional equation. Define the completed zeta function $\z^{\ast}(s)$ (this is also the zeta function attached to $\F_{q}(t)$) by
     \[
         \z^{\ast}(s) = \frac{1}{1-q^{-s}}\z(s).
     \]
@@ -103,11 +103,11 @@
     \[
         \chi_{\t}(m) = (-1)^{\deg(m)}.
     \]
-    Note that $\conj{\chi_{\t}} = \chi_{\t}$. The other Hilbert character is the trivial Dirichlet character $\chi_{\t}^{2} = \chi_{\t\t} = \chi_{1}$. In general, we denote a Hilbert character by $\chi_{a}$ where $a \in \{1,\t\}$. More generally, we would also require Hilbert characters to keep track of the $(-1)^{\frac{q-1}{2}\deg(d)\deg(m)}$ factor in the statement of quadratic reciprocity but as we will assume $q \equiv 1 \tmod{4}$, we will not require this additional difficulty. With the Dirichlet and Hilbert characters introduced, we are ready to discuss the $L$-functions associated to quadratic Dirichlet characters. We define the $L$-function $L(s,\chi_{d})$ attached to $\chi_{d}$ by a Dirichlet series or Euler product:
+    Note that $\conj{\chi_{\t}} = \chi_{\t}$. The other Hilbert character is the trivial Dirichlet character $\chi_{\t}^{2} = \chi_{\t\t} = \chi_{1}$. In general, we denote a Hilbert character by $\chi_{a}$ where $a \in \{1,\t\}$. More generally, we would also require Hilbert characters to keep track of the $(-1)^{\frac{q-1}{2}\deg(d)\deg(m)}$ factor in the statement of quadratic reciprocity but as we will assume $q \equiv 1 \tmod{4}$, we will not require this additional difficulty. With the Dirichlet and Hilbert characters introduced, we are ready to discuss the $L$-functions associated to quadratic Dirichlet characters. We define the Dirichlet $L$-function $L(s,\chi_{d})$ attached to $\chi_{d}$ for square-free $d$, by a Dirichlet series or Euler product:
     \[
         L(s,\chi_{d}) = \sum_{\text{$m$ monic}}\frac{\chi_{d}(m)}{|m|^{s}} = \prod_{\text{$P$ monic irr}}\left(1-\frac{\chi_{d}(P)}{|P|^{s}}\right)^{-1}.
     \]
-    By definition of the quadratic Dirichlet character, $L(s,\chi_{d}) \ll \z(s)$ for $\Re(s) > 1$ so that $L(s,\chi_{d})$ is locally absolutely uniformly convergent in this region. $L(s,\chi_{d})$ also admits meromorphic continuation to $\C$ with a simple pole at $s = 1$ if $d$ is a perfect square and is analytic otherwise (see \cite{rosen2002number} for a proof). Moreover, $L(s,\chi_{d})$ is a polynomial in $q^{-s}$ of degree at most $\deg(d)-1$. For square-free $d$, the completed $L$-function is defined as
+    By definition of the quadratic Dirichlet character, $L(s,\chi_{d}) \ll \z(s)$ for $\Re(s) > 1$ so that $L(s,\chi_{d})$ is locally absolutely uniformly convergent in this region. $L(s,\chi_{d})$ also admits meromorphic continuation to $\C$ with a simple pole at $s = 1$ if $d$ is a perfect square and is analytic otherwise (see \cite{rosen2002number} for a proof). Moreover, $L(s,\chi_{d})$ is a polynomial in $q^{-s}$ of degree at most $\deg(d)-1$. The associated completed Dirichlet $L$-function $L^{\ast}(s,\chi_{d})$ is defined as
     \[
         L^{\ast}(s,\chi_{d}) = \begin{cases} \frac{1}{1-q^{-s}}L(s,\chi_{d}) & \text{if $\deg(d)$ is even}, \\ L(s,\chi_{d}) & \text{if $\deg(d)$ is odd}, \end{cases}
     \]
@@ -116,6 +116,10 @@
         L^{\ast}(s,\chi_{d}) = \begin{cases} q^{2s-1}|d|^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{d}) & \text{if $\deg(d)$ is even}, \\ q^{2s-1}(q|d|)^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{d}) & \text{if $\deg(d)$ is odd}. \end{cases}
     \]
     Note that in the case $\deg(d)$ is even, the conductor is $|d|$ and in the case $\deg(d)$ is odd, the conductor is $q|d|$. Moreover, the gamma factors depend upon the degree of $d$. This will cause a small but important technical issue later when we want to derive functional equations for the quadratic double Dirichlet series.
+
+    \begin{remark}
+        The definitions for $L(s,\chi_{d})$ and $L^{\ast}(s,\chi_{d})$ hold even when $d$ is not square-free (however the functional equations do not hold). We will make use of slightly modified defintions in this case and so we purposely do not define these $L$-functions yet.
+    \end{remark}
 \section{The Quadratic Double Dirichlet Series}
     From now on we assume $q \equiv 1 \tmod{4}$. This assumption is not strictly necessary to build the quadratic double Dirichlet series but it does allow for some technical simplifications as the statement of quadratic reciprocity is perfect. We are ready to define the quadratic double Dirichlet series $Z(s,w)$. For any monic $d \in \F_{q}[t]$, write $d = d_{0}d_{1}^{2}$ where $d_{0}$ is square-free. In other words, $d_{0}$ is the square-free part of $d$ so that $\frac{d}{d_{0}}$ is a perfect square. The \textbf{quadratic double Dirichlet series} $Z(s,w)$ is defined as
     \[
@@ -217,25 +221,25 @@
         Note that $a(m,d) = 0$ unless there is a decomposition $m = e_{1}e_{2}^{2}e_{3}$ of $m$ such that $(d_{0},e_{1}e_{3}) = 1$ and $e_{1}e_{2}^{2} \mid d_{1}$.
     \end{remark}
 
-    It will be useful to let $L(s,\what{\chi}_{a_{1}d})$ be the Dirichlet series defined by
+    We now let $L(s,\chi_{a_{1}d})$ be the Dirichlet series defined by
     \[
-        L(s,\what{\chi}_{a_{1}d}) = L(s,\chi_{a_{1}d_{0}})Q_{d_{0}d_{1}^{2}}(s,\chi_{a_{1}}) = \sum_{\text{$m$ monic}}\frac{\chi_{a_{1}d_{0}}(\what{m})a(m,d)}{|m|^{s}},
+        L(s,\chi_{a_{1}d}) = L(s,\chi_{a_{1}d_{0}})Q_{d_{0}d_{1}^{2}}(s,\chi_{a_{1}}) = \sum_{\text{$m$ monic}}\frac{\chi_{a_{1}d_{0}}(\what{m})a(m,d)}{|m|^{s}},
     \]
     so that
     \[
-        Z_{a_{1},a_{2}}(s,w) = \sum_{\text{$d$ monic}}\frac{\chi_{a_{2}}(d)L(s,\what{\chi}_{a_{1}d})}{|d|^{w}}.
+        Z_{a_{1},a_{2}}(s,w) = \sum_{\text{$d$ monic}}\frac{\chi_{a_{2}}(d)L(s,\chi_{a_{1}d})}{|d|^{w}}.
     \]
-     Now on the other hand, performing the same procedure to the interchange we see that
+    Note that now $L(s,\chi_{d})$ makes sense even when $d$ is not square-free and agrees with the previous definition when $d$ is square-free. Performing the same procedure to the interchange, we see that
     \[
         Z_{a_{1},a_{2}}(s,w) = \sum_{\text{$m$ monic}}\frac{L(w,\chi_{a_{2}m_{0}})\chi_{a_{1}}(m)Q_{m_{0}m_{1}^{2}}(w,\chi_{a_{2}})}{|m|^{s}} = \sum_{\text{$m,d$ monic}}\frac{\chi_{a_{2}m_{0}}(\what{d})\chi_{a_{1}}(m)a(d,m)}{|m|^{s}|d|^{w}},
     \]
-    where $\what{d}$ is the part of $d$ relatively prime to $m_{0}$. Analogously, we define $L(w,\what{\chi}_{a_{2}m})$ by
+    where $\what{d}$ is the part of $d$ relatively prime to $m_{0}$ and $L(w,\chi_{a_{2}m})$ is the Dirichlet series given by
     \[
-        L(w,\what{\chi}_{a_{2}m}) = L(w,\chi_{a_{2}m_{0}})Q_{m_{0}m_{1}^{2}}(w,\chi_{a_{2}}) = \sum_{\text{$d$ monic}}\frac{\chi_{m_{0}}(\what{d})a(d,m)}{|d|^{w}},
+        L(w,\chi_{a_{2}m}) = L(w,\chi_{a_{2}m_{0}})Q_{m_{0}m_{1}^{2}}(w,\chi_{a_{2}}) = \sum_{\text{$d$ monic}}\frac{\chi_{a_{2}m_{0}}(\what{d})a(d,m)}{|d|^{w}},
     \]
     so that
     \[
-        Z_{a_{1},a_{2}}(s,w) = \sum_{\text{$m$ monic}}\frac{\chi_{a_{1}}(m)L(w,\what{\chi}_{a_{2}m})}{|m|^{s}}.
+        Z_{a_{1},a_{2}}(s,w) = \sum_{\text{$m$ monic}}\frac{\chi_{a_{1}}(m)L(w,\chi_{a_{2}m})}{|m|^{s}}.
     \]
     We can now derive an important relationship for the weighting coefficients. Equating the coefficients of the two expansions for $Z_{a_{1},a_{2}}(s,w)$ gives
     \[
@@ -365,15 +369,15 @@
         \]
         is the Dirichlet series
         \[
-            \chi_{a_{2}}(d)L(s,\what{\chi}_{a_{1}d}) = \chi_{a_{2}}(d)L(s,\chi_{a_{1}d_{0}})Q_{d_{0}d_{1}^{2}d_{2}^{2}}(s,\chi_{a_{1}}) = \chi_{a_{2}}(d)\sum_{\text{$m$ monic}}\frac{\chi_{a_{1}d_{0}}(\what{m})a(m,d)}{|m|^{s}}.
+            \chi_{a_{2}}(d)L(s,\chi_{a_{1}d}) = \chi_{a_{2}}(d)L(s,\chi_{a_{1}d_{0}})Q_{d_{0}d_{1}^{2}d_{2}^{2}}(s,\chi_{a_{1}}) = \chi_{a_{2}}(d)\sum_{\text{$m$ monic}}\frac{\chi_{a_{1}d_{0}}(\what{m})a(m,d)}{|m|^{s}}.
         \]
-        By \cref{prop:multiplicativity_of_weighting_coefficients} the coefficients of $L(s,\what{\chi}_{a_{1}d})$ are multiplicative. Therefore $L(s,\what{\chi}_{a_{1}d})$ admits the Euler product
+        By \cref{prop:multiplicativity_of_weighting_coefficients} the coefficients of $L(s,\chi_{a_{1}d})$ are multiplicative. Therefore $L(s,\chi_{a_{1}d})$ admits the Euler product
         \[
-            L(s,\what{\chi}_{a_{1}d}) = \prod_{\text{$P$ monic irr}}\left(\sum_{k \ge 0}\frac{\chi_{a_{1}d_{0}}(\what{P^{k}})a(P^{k},d)}{|P|^{ks}}\right).
+            L(s,\chi_{a_{1}d}) = \prod_{\text{$P$ monic irr}}\left(\sum_{k \ge 0}\frac{\chi_{a_{1}d_{0}}(\what{P^{k}})a(P^{k},d)}{|P|^{ks}}\right).
         \]
         Decomposing the product according to irreducibles dividing $d = d_{0}d_{1}^{2}d_{2}^{2}$, we see that
         \begin{align*}
-            & L(s,\what{\chi}_{a_{1}d}) \\
+            & L(s,\chi_{a_{1}d}) \\
             &= \prod_{\text{$P$ monic irr}}\left(\sum_{k \ge 0}\frac{\chi_{a_{1}d_{0}}(\what{P^{k}})a(P^{k},d)}{|P|^{ks}}\right) \\
             &= \prod_{P \nmid d}\left(\sum_{k \ge 0}\frac{\chi_{a_{1}d_{0}}(\what{P^{k}})a(P^{k},1)}{|P|^{ks}}\right)\prod_{P^{\a} \mid\mid d_{1}}\left(\sum_{k \ge 0}\frac{\chi_{a_{1}d_{0}}(\what{P^{k}})a(P^{k},P^{2\a+1})}{|P|^{ks}}\right) \cdot \prod_{P^{\b} \mid\mid d_{2}}\left(\sum_{k \ge 0}\frac{\chi_{a_{1}d_{0}}(\what{P^{k}})a(P^{k},P^{\b})}{|P|^{ks}}\right) \\
             &= \prod_{P \nmid d}\left(\sum_{k \ge 0}\frac{\chi_{a_{1}d_{0}}(\what{P^{k}})}{|P|^{ks}}\right)\prod_{P^{\a} \mid\mid d_{1}}\left(\sum_{k \ge 0}\frac{\chi_{a_{1}d_{0}}(\what{P^{k}})a(P^{k},P^{2\a+1})}{|P|^{ks}}\right) \cdot \prod_{P^{\b} \mid\mid d_{2}}\left(\sum_{k \ge 0}\frac{\chi_{a_{1}d_{0}}(\what{P^{k}})a(P^{k},P^{\b})}{|P|^{ks}}\right) \\
@@ -389,14 +393,14 @@
         \]
         But then upon canceling the $\chi_{a_{2}}(d)$ term, we have
         \[
-            L(s,\what{\chi}_{a_{1}d}) = L(s,\chi_{a_{1}d_{0}})Q_{d_{0}d_{1}^{2}d_{2}^{2}}(s,\chi_{a_{1}}) = L(s,\chi_{a_{1}d_{0}}) \cdot \prod_{P^{\a} \mid\mid d_{1}}Q_{P^{2\a+1}}(s) \cdot \prod_{P^{\b} \mid\mid d_{2}}Q_{d_{0}P^{2\b}}(s,\chi_{a_{1}}),
+            L(s,\chi_{a_{1}d}) = L(s,\chi_{a_{1}d_{0}})Q_{d_{0}d_{1}^{2}d_{2}^{2}}(s,\chi_{a_{1}}) = L(s,\chi_{a_{1}d_{0}}) \cdot \prod_{P^{\a} \mid\mid d_{1}}Q_{P^{2\a+1}}(s) \cdot \prod_{P^{\b} \mid\mid d_{2}}Q_{d_{0}P^{2\b}}(s,\chi_{a_{1}}),
         \]
         and the proof is complete.
     \end{proof}
 
     It is worth noting that for $d = d_{0}d_{1}^{2}d_{2}^{2}$, the irreducible factors that divide $d_{1}d_{2}$ are exactly those factors that divide $d$ to power larger than $1$. In particular, from \cref{thm:correction_polynomial_Euler_product} we see that the Euler product for $Q_{d_{0}d_{1}^{2}d_{2}^{2}}(s,\chi_{a_{1}})$ is supported on exactly the primes dividing $d$ to order larger than $1$ but also depends upon the character $\chi_{a_{1}d_{0}}$. Also, \cref{thm:correction_polynomial_Euler_product} is typical of a larger reality. In more general settigns when the correction polynomials $P_{a_{2}m_{0}m_{1}^{2}}(w)$ on the other side of the interchange are not of the form $Q_{d_{0}d_{1}^{2}}(s,\chi_{a_{1}})$, the correction polynomials $P_{a_{2}m_{0}m_{1}^{2}}(w)$ still posess Euler products.
 \section{Functional Equations}
-    We are now ready to derive functional equations for $Z_{a_{1},a_{2}}(s,w)$. In order to do this we require a functional equation for $L(s,\what{\chi}_{a_{1}d})$ which amounts to having a functional equation for the correction polynomials $Q_{d_{0}d_{1}^{2}}(s,\chi_{a_{1}})$:
+    We are now ready to derive functional equations for $Z_{a_{1},a_{2}}(s,w)$. In order to do this we require a functional equation for $L(s,\chi_{a_{1}d})$ which amounts to having a functional equation for the correction polynomials $Q_{d_{0}d_{1}^{2}}(s,\chi_{a_{1}})$:
 
     \begin{theorem}\label{thm:functional_equation_correction_polynomials}
         $Q_{d_{0}d_{1}^{2}}(s,\chi_{a_{1}})$ admits the functional equation.
@@ -415,21 +419,22 @@
         \end{align*}
     \end{proof}
 
-    Define the completed $L$-function
+    Define the completed $L$-function $L^{\ast}(s,\chi_{a_{1}d})$ by
     \[
-        L^{\ast}(s,\what{\chi}_{a_{1}d}) = L^{\ast}(s,\chi_{a_{1}d_{0}})Q_{d_{0}d_{1}^{2}}(s,\chi_{a_{1}}).
+        L^{\ast}(s,\chi_{a_{1}d}) = L^{\ast}(s,\chi_{a_{1}d_{0}})Q_{d_{0}d_{1}^{2}}(s,\chi_{a_{1}}).
     \]
-    Combining \cref{thm:functional_equation_correction_polynomials}, the functional equation for $L^{\ast}(s,\chi_{a_{1}d_{0}})$, and that $\deg(d) \equiv \deg(d_{0}) \tmod{2}$, we obtain a functional equation for $L^{\ast}(s,\what{\chi}_{a_{1}d})$:
+    In particular, $L^{\ast}(s,\chi_{d})$ makes sense even when $d$ is not square-free and agrees with the previous definition when $d$ is square-free.
+    Combining \cref{thm:functional_equation_correction_polynomials}, the functional equation for $L^{\ast}(s,\chi_{a_{1}d_{0}})$, and that $\deg(d) \equiv \deg(d_{0}) \tmod{2}$, we obtain a functional equation for $L^{\ast}(s,\chi_{a_{1}d})$:
     \[
-        L^{\ast}(s,\what{\chi}_{a_{1}d}) = \begin{cases} q^{2s-1}|d|^{\frac{1}{2}-s}L^{\ast}(1-s,\what{\chi}_{a_{1}d}) & \text{if $\deg(d)$ is even}, \\ q^{s-\frac{1}{2}}|d|^{\frac{1}{2}-s}L^{\ast}(1-s,\what{\chi}_{a_{1}d}) & \text{if $\deg(d)$ is odd}. \end{cases}
+        L^{\ast}(s,\chi_{a_{1}d}) = \begin{cases} q^{2s-1}|d|^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{a_{1}d}) & \text{if $\deg(d)$ is even}, \\ q^{s-\frac{1}{2}}|d|^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{a_{1}d}) & \text{if $\deg(d)$ is odd}. \end{cases}
     \]
-    We would like the functional equation for $L^{\ast}(s,\what{\chi}_{a_{1}d})$ to induce a functional equation for $Z_{a_{1},a_{2}}(s,w)$ but there is one technical issue. The gamma factor for $L^{\ast}(s,\what{\chi}_{a_{1}d})$ depend upon the degree of $d$ and in order to obtain a functional equation we need the gamma factor to be constant. We will be able to move past this obstruction by exploiting the orthogonality for Dirichlet characters, in particular, the Hilbert characters. Define $Z_{a_{1},a_{2}}^{+}(s,w)$ and $Z_{a_{1},a_{2}}^{-}(s,w)$ by
+    We would like the functional equation for $L^{\ast}(s,\chi_{a_{1}d})$ to induce a functional equation for $Z_{a_{1},a_{2}}(s,w)$ but there is one technical issue. The gamma factor for $L^{\ast}(s,\chi_{a_{1}d})$ depend upon the degree of $d$ and in order to obtain a functional equation we need the gamma factor to be constant. We will be able to move past this obstruction by exploiting the orthogonality for Dirichlet characters, in particular, the Hilbert characters. Define $Z_{a_{1},a_{2}}^{+}(s,w)$ and $Z_{a_{1},a_{2}}^{-}(s,w)$ by
     \[
         Z_{a_{1},a_{2}}^{+}(s,w) = \frac{Z_{a_{1},a_{2}}(s,w)+Z_{a_{1},\t a_{2}}(s,w)}{2} \quad \text{and} \quad Z_{a_{1},a_{2}}^{-}(s,w) = \frac{Z_{a_{1},a_{2}}(s,w)-{Z_{a_{1},\t a_{2}}(s,w)}}{2}.
     \]
     In terms of the representation
     \[
-        Z_{a_{1},a_{2}}(s,w) = \sum_{\text{$d$ monic}}\frac{\chi_{a_{2}}(d)L(s,\what{\chi}_{a_{1}d})}{|d|^{w}},
+        Z_{a_{1},a_{2}}(s,w) = \sum_{\text{$d$ monic}}\frac{\chi_{a_{2}}(d)L(s,\chi_{a_{1}d})}{|d|^{w}},
     \]
     and the orthogonality relation (ii) for the Hilbert characters, we see that $Z_{a_{1},a_{2}}^{\pm}(s,w)$ is the subseries containing only those $d$ with $\chi_{\t}(d) = \pm 1$. Equivalently, $Z_{a_{1},a_{2}}^{+}(s,w)$ and $Z_{a_{1},a_{2}}^{-}(s,w)$ are the subseries consisting of only thos $d$ with even and odd degree respectively. But then $Z_{a_{1},a_{2}}^{+}(s,w)$ and $Z_{a_{1},a_{2}}^{-}(s,w)$ are sums of $L$-functions with a fixed gamma factor we can obtain functional equations for them. The fact that $Z_{a_{1},a_{2}}(s,w)$ is a linear combination of these series will induce a function equation for $Z_{a_{1},a_{2}}(s,w)$ in terms of other twisted quadratic double Dirichlet series:
 
@@ -544,13 +549,13 @@
         \end{tikzpicture}
     \end{center}
     
-     To meromorphically continue $Z(s,w)$ to all of the $(s,w)$-plane, we first need to analytically continue the quadratic double Dirichlet series $Z(s,w)$ and $Z_{1,\t}(s,w)$ to a slightly larger region than $\L$. This continuation will be achieved by the Phragm\'en-Lindel\"of convexity principal. Fix some small $\e > 0$. The functional equations for $L^{\ast}(s,\what{\chi}_{d_{0}})$ and $L^{\ast}(w,\what{\chi}_{m_{0}})$ provide the estimates
+     To meromorphically continue $Z(s,w)$ to all of the $(s,w)$-plane, we first need to analytically continue the quadratic double Dirichlet series $Z(s,w)$ and $Z_{1,\t}(s,w)$ to a slightly larger region than $\L$. This continuation will be achieved by the Phragm\'en-Lindel\"of convexity principal. Fix some small $\e > 0$. The functional equations for $L^{\ast}(s,\chi_{d})$ and $L^{\ast}(w,\chi_{m})$ provide the estimates
     \[
-        L(-\e,\what{\chi}_{d_{0}}) \ll |d|^{\frac{1}{2}+\e} \quad \text{and} \quad L(-\e,\what{\chi}_{m_{0}}) \ll |m|^{\frac{1}{2}+\e},
+        L(-\e,\chi_{d}) \ll |d|^{\frac{1}{2}+\e} \quad \text{and} \quad L(-\e,\chi_{m}) \ll |m|^{\frac{1}{2}+\e},
     \]
-    because $L(1+\e,\what{\chi}_{d_{0}}) \ll 1$ and $L(1+\e,\what{\chi}_{m_{0}}) \ll 1$. Since both of these $L$-functions at most have a simple pole at $s = 1$ and $w = 1$ respectively, the Phragm\'en-Lindel\"of convexity principal implies the weak estimates
+    because $L(1+\e,\chi_{d}) \ll 1$ and $L(1+\e,\chi_{m}) \ll 1$. Since both of these $L$-functions at most have a simple pole at $s = 1$ and $w = 1$ respectively, the Phragm\'en-Lindel\"of convexity principal implies the weak estimates
     \[
-        (s-1)L(s,\what{\chi}_{d_{0}}) \ll |d|^{\frac{1}{2}+\e} \quad \text{and} \quad (w-1)L(w,\what{\chi}_{m_{0}}) \ll |m|^{\frac{1}{2}+\e},
+        (s-1)L(s,\chi_{d}) \ll |d|^{\frac{1}{2}+\e} \quad \text{and} \quad (w-1)L(w,\chi_{m}) \ll |m|^{\frac{1}{2}+\e},
     \]
     for $\Re(s) > -\e$ and $\Re(w) > -\e$. But then from the interchange we see that $(s-1)(w-1)Z(s,w)$ and $(s-1)(w-1)Z_{1,\t}(s,w)$ are locally absolutely uniformly convergent on the region
     \[
@@ -754,24 +759,24 @@
 
     Now we show that $Z(s,w)$ is a rational function in $x = q^{-s}$ and $y = q^{-w}$. Throughout, we work in the region of local absolute uniform convergence for $Z(s,w)$. Consider the representation
     \[
-        Z(s,w) = \sum_{\text{$d$ monic}}\frac{L(s,\what{\chi}_{d_{0}})}{|d|^{w}} = \sum_{\text{$m,d$ monic}}\frac{\chi_{d_{0}}(\what{m})a(m,d)}{|m|^{s}|d|^{w}}.
+        Z(s,w) = \sum_{\text{$d$ monic}}\frac{L(s,\chi_{d})}{|d|^{w}} = \sum_{\text{$m,d$ monic}}\frac{\chi_{d_{0}}(\what{m})a(m,d)}{|m|^{s}|d|^{w}}.
     \]
     Since $L(s,\chi_{d})$ is a polynomial in $q^{-s}$ of degree at most $\deg(d)-1$ and correction polynomials $Q_{d_{0}d_{1}^{2}}(s)$ are Dirichlet polynomials, one of the two following cases occur:
     \begin{itemize}
         \item If $d$ is a perfect square, then $L(s,\chi_{d_{0}}) = \z(s)$ and
         \[
-            L(s,\what{\chi}_{d_{0}}) = \z(s)Q_{d_{1}^{2}}(s),
+            L(s,\chi_{d}) = \z(s)Q_{d_{1}^{2}}(s),
         \]
         where $Q_{d_{1}^{2}}(s)$ is a polynomial in $q^{-s}$ of degree $\deg(d)$.
         \item If $d$ is not a perfect square, then
         \[
-            L(s,\what{\chi}_{d_{0}}) = L(s,\chi_{d_{0}})Q_{d_{0}d_{1}^{2}}(s),
+            L(s,\chi_{d}) = L(s,\chi_{d_{0}})Q_{d_{0}d_{1}^{2}}(s),
         \]
         is a polynomial in $q^{-s}$ of degree at most $\deg(d)-1$.
     \end{itemize}
     So if $d$ is not a perfect square, then
     \[
-        L(s,\what{\chi}_{d_{0}}) = \sum_{\deg(m) \le \deg(d)-1}\frac{\chi_{d_{0}}(\what{m})a(m,d)}{|m|^{s}},
+        L(s,\chi_{d}) = \sum_{\deg(m) \le \deg(d)-1}\frac{\chi_{d_{0}}(\what{m})a(m,d)}{|m|^{s}},
     \]
     which is to say that
     \[
@@ -785,7 +790,7 @@
     \[
         Z_{0}(s,w) = \sum_{0 \le l \le k}\frac{1}{q^{ls}q^{kw}}\sum_{\substack{\text{$m,d$ monic} \\ \deg(m) = k \\ \deg(d) = l}}\chi_{d_{0}}(\what{m})a(m,d) \quad \text{and} \quad Z_{1}(s,w) = \sum_{k \ge 0}\frac{1}{q^{ks}q^{kw}}\sum_{\substack{\text{$m,d$ monic} \\ \deg(m) = k \\ \deg(d) = k}}\chi_{d_{0}}(\what{m})a(m,d).
     \]
-    We will now show that $Z_{0}(s,w)$ and $Z_{1}(s,w)$ are rational functions in $q^{-s}$ and $q^{-w}$ via a convolution procedure. For $Z_{0}(s,w)$, our remarks about $L(s,\what{\chi}_{d_{0}})$ imply the term in the inner sum of $Z_{0}(s,w)$ vanishes unless $d$ is a perfect square and in this case $\chi_{d_{0}}(\what{m}) = 1$. Therefore
+    We will now show that $Z_{0}(s,w)$ and $Z_{1}(s,w)$ are rational functions in $q^{-s}$ and $q^{-w}$ via a convolution procedure. For $Z_{0}(s,w)$, our remarks about $L(s,\chi_{d})$ imply the term in the inner sum of $Z_{0}(s,w)$ vanishes unless $d$ is a perfect square and in this case $\chi_{d_{0}}(\what{m}) = 1$. Therefore
     \[
         Z_{0}(s,w) = \sum_{0 \le l \le k}\frac{1}{q^{ls}q^{kw}}\sum_{\substack{\text{$m,d$ monic} \\ \text{$d$ a perfect square} \\ \deg(m) = l \\ \deg(d) = k}}a(m,d).
     \]
@@ -809,7 +814,7 @@
     \[
         Z_{0}(s,w) = \frac{1}{(1-q^{1-s})(1-q^{3-2s-2w})}.
     \]
-    For $Z_{1}(s,w)$, our remarks about $L(s,\what{\chi}_{d_{0}})$ similarly imply
+    For $Z_{1}(s,w)$, our remarks about $L(s,\chi_{d})$ similarly imply
     \[
         Z_{1}(s,w) = \sum_{k \ge 0}\frac{1}{q^{ks}q^{kw}}\sum_{\substack{\text{$m,d$ monic} \\ \text{$d$ a perfect square} \\ \deg(m) = k \\ \deg(d) = k}}a(m,d).
     \]
