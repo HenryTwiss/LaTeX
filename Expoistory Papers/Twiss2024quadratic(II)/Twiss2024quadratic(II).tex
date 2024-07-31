@@ -112,7 +112,7 @@
     \[
         L(s,\chi_{d}) = \sum_{m \ge 1}\frac{\chi_{d}(m)}{|m|^{s}} = \prod_{p \text{ prime}}\left(1-\frac{\chi_{d}(P)}{|P|^{s}}\right)^{-1}.
     \]
-    By definition of the quadratic Dirichlet character, $L(s,\chi_{d}) \ll \z(s)$ for $\Re(s) > 1$ so that $L(s,\chi_{d})$ is locally absolutely uniformly convergent in this region. $L(s,\chi_{d})$ also admits meromorphic continuation to $\C$ with a simple pole at $s = 1$ if $d$ is a perfect square. For square-free $d$, the completed $L$-function $L^{\ast}(s,\chi_{d})$ is defined as
+    By definition of the quadratic Dirichlet character, $L(s,\chi_{d}) \ll \z(s)$ for $\Re(s) > 1$ so that $L(s,\chi_{d})$ is locally absolutely uniformly convergent in this region. $L(s,\chi_{d})$ also admits analytic continuation to $\C$. The completed $L$-function $L^{\ast}(s,\chi_{d})$ is defined as
     \[
         L^{\ast}(s,\chi_{d}) = \begin{cases} \pi^{-\frac{s}{2}}\G\left(\frac{s}{2}\right)L(s,\chi_{d}) & \text{if $\chi_{d}$ is even}, \\ \pi^{-\frac{s}{2}}\G\left(\frac{s+1}{2}\right)L(s,\chi_{d}) & \text{if $\chi_{d}$ is odd}, \end{cases}
     \]
@@ -120,7 +120,18 @@
     \[
         L^{\ast}(s,\chi_{d}) = \begin{cases} \e_{\chi}q^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{d}) & \text{if $\chi_{d}$ is even}, \\ -\e_{\chi}q^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{d}) & \text{if $\chi_{d}$ is odd}. \end{cases}
     \]
-    Note that the gamma factors depend upon the partiy of $\chi_{d}$. This the root cause of an important technical issue later when deriving functional equations for the quadratic double Dirichlet series.
+    Note that the gamma factors depend upon the partiy of $\chi_{d}$. This the root cause of an important technical issue later when deriving functional equations for the quadratic double Dirichlet series. Analgously, the Dirichlet $L$-function $L(s,\wtilde{\chi}_{d})$ attached to $\wtilde{\chi}_{d}$ for square-free $d$ is defined by a Dirichlet series or Euler product:
+    \[
+        L(s,\wtilde{\chi}_{d}) = \sum_{m \ge 1}\frac{\wtilde{\chi}_{d}(m)}{|m|^{s}} = \prod_{p \text{ prime}}\left(1-\frac{\wtilde{\chi}_{d}(P)}{|P|^{s}}\right)^{-1}.
+    \]
+    As for $L(s,\chi_{d})$, $L(s,\wtilde{\chi}_{d}) \ll \z(s)$ for $\Re(s) > 1$ so that $L(s,\wtilde{\chi}_{d})$ is locally absolutely uniformly convergent in this region. Moreover, $L(s,\wtilde{\chi}_{d})$ admits analytic continuation to $\C$ and the completed $L$-function $L^{\ast}(s,\wtilde{\chi}_{d})$ is defined as
+    \[
+        L^{\ast}(s,\wtilde{\chi}_{d}) = \begin{cases} \pi^{-\frac{s}{2}}\G\left(\frac{s}{2}\right)L(s,\wtilde{\chi}_{d}) & \text{if $\wtilde{\chi}_{d}$ is even}, \\ \pi^{-\frac{s}{2}}\G\left(\frac{s+1}{2}\right)L(s,\wtilde{\chi}_{d}) & \text{if $\wtilde{\chi}_{d}$ is odd}, \end{cases}
+    \]
+    and satisfies the functional equation
+    \[
+        L^{\ast}(s,\wtilde{\chi}_{d}) = \begin{cases} \e_{\wtilde{\chi}}q^{\frac{1}{2}-s}L^{\ast}(1-s,\wtilde{\chi}_{d}) & \text{if $\wtilde{\chi}_{d}$ is even}, \\ -\e_{\wtilde{\chi}}q^{\frac{1}{2}-s}L^{\ast}(1-s,\wtilde{\chi}_{d}) & \text{if $\wtilde{\chi}_{d}$ is odd}. \end{cases}
+    \]
 
     \begin{remark}
         The definitions for $L(s,\chi_{d})$ and $L^{\ast}(s,\chi_{d})$ work perfectly well even when $d$ is not square-free (however the functional equations do not hold). We purposely do not define these $L$-functions, yet, for $d$ not necessarily square-free.
@@ -215,8 +226,6 @@
         Also, $a(m,d) = 0$ unless $m = e_{1}e_{2}^{2}e_{3}$ with $(d_{0},e_{1}e_{3}) = 1$ and $e_{1}e_{2}^{2} \mid d_{1}$.
     \end{remark}
 
-    \todo{resume here}
-
     We will define $L(s,\chi_{a_{1}d})$ to be the Dirichlet series given by
     \[
         L(s,\chi_{a_{1}d}) = L(s,\chi_{a_{1}d_{0}})Q_{d_{0}d_{1}^{2}}(s,\chi_{a_{1}}) = \sum_{\text{$m$ monic}}\frac{\chi_{a_{1}d_{0}}(\what{m})a(m,d)}{|m|^{s}}.
@@ -229,27 +238,15 @@
     \[
         Z_{a_{1},a_{2}}(s,w) = \sum_{\text{$m$ monic}}\frac{L(w,\wtilde{\chi}_{a_{2}m_{0}})\chi_{a_{1}}(m)Q_{m_{0}m_{1}^{2}}(w,\chi_{a_{2}})}{|m|^{s}} = \sum_{\text{$m,d$ monic}}\frac{\wtilde{\chi}_{a_{2}m_{0}}(\what{d})\chi_{a_{1}}(m)a(d,m)}{|m|^{s}|d|^{w}},
     \]
-    where $\what{d}$ is the part of $d$ relatively prime to $m_{0}$. Analogously, we define $L(w,\wtilde{\chi}_{a_{2}m})$ by
+    where $\what{d}$ is the part of $d$ relatively prime to $m_{0}$, and analgously we define $L(w,\wtilde{\chi}_{a_{2}m})$ by
     \[
         L(w,\wtilde{\chi}_{a_{2}m}) = L(w,\wtilde{\chi}_{a_{2}m_{0}})Q_{m_{0}m_{1}^{2}}(w,\chi_{a_{2}}) = \sum_{\text{$d$ monic}}\frac{\wtilde{\chi}_{a_{2}m_{0}}(\what{d})a(d,m)}{|d|^{w}},
     \]
     so that
     \[
-        Z_{a_{1},a_{2}}(s,w) = \sum_{\text{$m$ monic}}\frac{\chi_{a_{1}}(m)L(w,\what{\chi}_{a_{2}m})}{|m|^{s}}.
+        Z_{a_{1},a_{2}}(s,w) = \sum_{\text{$m$ monic}}\frac{\chi_{a_{1}}(m)L(w,\wtilde{\chi}_{a_{2}m})}{|m|^{s}}.
     \]
-    We can now derive an important relationship for the weighting coefficients. Equating the coefficients of the two expansions for $Z_{a_{1},a_{2}}(s,w)$ gives
-    \[
-        \chi_{a_{1}d_{0}}(\what{m})\chi_{a_{2}}(d)a(m,d) = \chi_{a_{2}m_{0}}(\what{d})\chi_{a_{1}}(m)a(d,m)
-    \]
-    By applying quadratic reciprocity twice we have
-    \[
-        \chi_{d_{0}}(\what{m}) = \chi_{\what{m}}(d_{0}) = \chi_{\what{m_{0}}}(d_{0}) = \chi_{m_{0}}(\what{d_{0}}) = \chi_{m_{0}}(\what{d}),
-    \]
-    so upon setting $a_{1} = a_{2} = 1$ we have
-    \[
-        a(m,d) = a(d,m).
-    \]
-    In other words, the weighting coefficients are symmetric. The weighting coefficients also posess a multiplicativity property:
+    We now investigate the structure of the weighting coefficients $a(m,d)$. They posess a multiplicativity property:
 
     \begin{proposition}\label{prop:multiplicativity_of_weighting_coefficients}
         We have $a(m,1) = a(1,d) = 1$ and
@@ -257,6 +254,9 @@
             a(m,d) = \prod_{\substack{P^{\a} \mid\mid m \\ P^{\beta} \mid\mid d}}a(P^{\a},P^{\b}).
         \]
     \end{proposition}
+    \begin{proof}
+        \todo{xxx}
+    \end{proof}
 \section*{Functional Equations}
 \section*{Meromorphic Continuation}
 \section*{Poles and Residues}

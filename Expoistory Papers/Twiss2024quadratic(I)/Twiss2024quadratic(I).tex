@@ -107,7 +107,7 @@
     \[
         L(s,\chi_{d}) = \sum_{\text{$m$ monic}}\frac{\chi_{d}(m)}{|m|^{s}} = \prod_{\text{$P$ monic irr}}\left(1-\frac{\chi_{d}(P)}{|P|^{s}}\right)^{-1}.
     \]
-    By definition of the quadratic Dirichlet character, $L(s,\chi_{d}) \ll \z(s)$ for $\Re(s) > 1$ so that $L(s,\chi_{d})$ is locally absolutely uniformly convergent in this region. $L(s,\chi_{d})$ also admits meromorphic continuation to $\C$ with a simple pole at $s = 1$ if $d$ is a perfect square and is analytic otherwise (see \cite{rosen2002number} for a proof). Moreover, $L(s,\chi_{d})$ is a polynomial in $q^{-s}$ of degree at most $\deg(d)-1$. The associated completed Dirichlet $L$-function $L^{\ast}(s,\chi_{d})$ is defined as
+    By definition of the quadratic Dirichlet character, $L(s,\chi_{d}) \ll \z(s)$ for $\Re(s) > 1$ so that $L(s,\chi_{d})$ is locally absolutely uniformly convergent in this region. $L(s,\chi_{d})$ also admits analytic continuation to $\C$ (see \cite{rosen2002number} for a proof). Moreover, $L(s,\chi_{d})$ is a polynomial in $q^{-s}$ of degree at most $\deg(d)-1$. The associated completed Dirichlet $L$-function $L^{\ast}(s,\chi_{d})$ is defined as
     \[
         L^{\ast}(s,\chi_{d}) = \begin{cases} \frac{1}{1-q^{-s}}L(s,\chi_{d}) & \text{if $\deg(d)$ is even}, \\ L(s,\chi_{d}) & \text{if $\deg(d)$ is odd}, \end{cases}
     \]
@@ -241,19 +241,7 @@
     \[
         Z_{a_{1},a_{2}}(s,w) = \sum_{\text{$m$ monic}}\frac{\chi_{a_{1}}(m)L(w,\chi_{a_{2}m})}{|m|^{s}}.
     \]
-    We can now derive an important relationship for the weighting coefficients. Equating the coefficients of the two expansions for $Z_{a_{1},a_{2}}(s,w)$ gives
-    \[
-        \chi_{a_{1}d_{0}}(\what{m})\chi_{a_{2}}(d)a(m,d) = \chi_{a_{2}m_{0}}(\what{d})\chi_{a_{1}}(m)a(d,m)
-    \]
-    By applying quadratic reciprocity twice we have
-    \[
-        \chi_{d_{0}}(\what{m}) = \chi_{\what{m}}(d_{0}) = \chi_{\what{m_{0}}}(d_{0}) = \chi_{m_{0}}(\what{d_{0}}) = \chi_{m_{0}}(\what{d}),
-    \]
-    so upon setting $a_{1} = a_{2} = 1$ we have
-    \[
-        a(m,d) = a(d,m).
-    \]
-    In other words, the weighting coefficients are symmetric. The weighting coefficients also posess a multiplicativity property:
+    We will now study the weighting coefficients $a(m,d)$. It turns out that they posess a multiplicativity property:
 
     \begin{proposition}\label{prop:multiplicativity_of_weighting_coefficients}
         We have $a(m,1) = a(1,d) = 1$ and
@@ -262,7 +250,7 @@
         \]
     \end{proposition}
     \begin{proof}
-        It is clear that $a(m,1) = a(1,d) = 1$ from the definition of the weighting coefficients. It suffices to prove the second statement at irreducibles. As $a(m,d)$ is symmetric, we only need to prove multiplicativity in $m$. So letting $m = m'P^{\a}$, we have to show
+        It is clear that $a(m,1) = a(1,d) = 1$ from the definition of the weighting coefficients. We first prove multiplicativity in $m$. So letting $m = m'P^{\a}$, we have to show
         \[
             a(m,d) = a(m',d)a(P^{\a},d).
         \]
@@ -273,7 +261,11 @@
             &= \left(\sum_{\substack{c_{1}c_{2}^{2}c_{3} = m' \\ c_{1}c_{2} \mid d_{1} \\ (d_{0},c_{1}c_{3}) = 1}}\mu(c_{1})|c_{2}|\right)\left(\sum_{\substack{d_{1}d_{2}^{2}d_{3} = P^{\a} \\ d_{1}d_{2} \mid d_{1} \\ (d_{0},d_{1}d_{3}) = 1}}\mu(d_{1})|d_{2}|\right) \\
             &= a(m',d)a(P^{\a},d),
         \end{align*}
-        as desired.
+        as desired. Now we prove multiplicativity in $d$. Since we have already shown multiplicativity in $m$, we may assume that $m = P^{\a}$. Letting $d = d'P^{\b}$, we have to show
+        \[
+            a(P^{\a},d) = a(P^{\a},P^{\b}).
+        \]
+        As $e_{1}e_{2}^{2}e_{3} = P^{\a}$, the $e_{i}$ are powers of $P$ for $1 \le i \le 3$. It follows that $e_{1}e_{2} \mid d_{1}$ is equivalent to $e_{1}e_{2} \mid P^{\b}$. Moreover, $(d_{0},e_{1}e_{2}) = 1$ is equivalent to $(1,e_{1}e_{2}) = 1$ or $(P,e_{1}e_{2}) = 1$ depending on of $\b$ is even or odd. These facts together imply the desired identity.
     \end{proof}
 
     There is a connection between the correction polynomials $Q_{d_{0}d_{1}^{2}}(s,\chi_{a_{1}})$ and weighting coefficients $a(m,d)$. It will turn out that $Q_{d_{0}d_{1}^{2}}(s,\chi_{a_{1}})$ is a Dirichlet polynomial whose coefficients are essentially given by the weighting coefficients. We first establish this relationship when $d$ is an odd irreducible power:
@@ -354,7 +346,7 @@
          \]
     \end{corollary}
     
-    Since the weighting coefficients are multiplicative, it will follow that $Q_{d_{0}d_{1}^{2}}(s,\chi_{a_{1}})$ admits an Euler product. To describe this Euler product explicitely, let $d = d_{0}d_{1}^{2}d_{2}^{2}$ with $d_{0}$ square-free and monic, $d_{2}$ relatively prime to $d_{0}d_{1}$, and such that every irreducible divisor of $d_{1}$ divides $d_{0}$. In other words, $d_{0}$ is the square-free part of $d$, $d_{1}$ is the square part of $d$ whose irreducible factors divide $d$ to odd power, and $d_{2}$ is the square part of $d$ whose irreducible factors divide $d$ to even power. Then we have the following Euler product:
+    In particular, \cref{cor:evaulation_of_weighting_coefficients_in_general} shows that $a(m,d)$ is symmetric in $m$ and $d$. Since the weighting coefficients are multiplicative, it will follow that $Q_{d_{0}d_{1}^{2}}(s,\chi_{a_{1}})$ admits an Euler product. To describe this Euler product explicitely, let $d = d_{0}d_{1}^{2}d_{2}^{2}$ with $d_{0}$ square-free and monic, $d_{2}$ relatively prime to $d_{0}d_{1}$, and such that every irreducible divisor of $d_{1}$ divides $d_{0}$. In other words, $d_{0}$ is the square-free part of $d$, $d_{1}$ is the square part of $d$ whose irreducible factors divide $d$ to odd power, and $d_{2}$ is the square part of $d$ whose irreducible factors divide $d$ to even power. Then we have the following Euler product:
 
     \begin{theorem}\label{thm:correction_polynomial_Euler_product}
         Let $d = d_{0}d_{1}^{2}d_{2}^{2}$ be the square decomposition of $d$ stratified by even and odd powers. Then for any $a_{1} \in \{1,\t\}$,
