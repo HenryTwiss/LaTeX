@@ -131,7 +131,7 @@
     \]
     and $\mu$ is the usual M\"obius function on $\F_{q}[t]$. For $\Re(s) > 1$, we have the trivial bound
     \[
-        Q_{d_{0}d_{1}^{2}}(s) \ll \sum_{e_{1}e_{2} \mid d_{1}}1 \ll \s_{0}(d_{1})^{2} \ll_{\e} |d_{1}^{2}|^{\e} \ll_{\e} |d|^{\e},
+        Q_{d_{0}d_{1}^{2}}(s) \ll \sum_{e_{1}e_{2} \mid d_{1}}1 \ll \s_{0}(d_{1})^{2} \ll_{\e} |d_{1}|^{2\e} \ll_{\e} |d|^{\e},
     \]
     for any $\e > 0$. Combining this estimate with the bound $L(s,\chi_{d_{0}}) \ll 1$ for $\Re(s) > 1$, we see that $Z(s,w)$ is locally absolutely uniformly convergent in the region $\L = \{(s,w) \in \C^{2}:\Re(s) > 1, \Re(w) > 1\}$. While $Z(s,w)$ is the double Dirchlet series we are after, it will be necessary to consider quadratic double Dirichlet series twisted by a pair of Hilbert characters $\chi_{a_{1}}$ and $\chi_{a_{2}}$. The \textbf{quadratic double Dirichlet series} $Z_{a_{1},a_{2}}(s,w)$ twisted by $\chi_{a_{1}}$ and $\chi_{a_{2}}$ is defined as
     \[
@@ -221,19 +221,19 @@
         Note that $a(m,d) = 0$ unless there is a decomposition $m = e_{1}e_{2}^{2}e_{3}$ of $m$ such that $(d_{0},e_{1}e_{3}) = 1$ and $e_{1}e_{2}^{2} \mid d_{1}$.
     \end{remark}
 
-    We now let $L(s,\chi_{a_{1}d})$ be the Dirichlet series defined by
+    We will define $L(s,\chi_{a_{1}d})$ to be the Dirichlet series given by
     \[
-        L(s,\chi_{a_{1}d}) = L(s,\chi_{a_{1}d_{0}})Q_{d_{0}d_{1}^{2}}(s,\chi_{a_{1}}) = \sum_{\text{$m$ monic}}\frac{\chi_{a_{1}d_{0}}(\what{m})a(m,d)}{|m|^{s}},
+        L(s,\chi_{a_{1}d}) = L(s,\chi_{a_{1}d_{0}})Q_{d_{0}d_{1}^{2}}(s,\chi_{a_{1}}) = \sum_{\text{$m$ monic}}\frac{\chi_{a_{1}d_{0}}(\what{m})a(m,d)}{|m|^{s}}.
     \]
-    so that
+    With this definition, $L(s,\chi_{d})$ makes sense even when $d$ is not square-free and agrees with the previous definition when $d$ is square-free. Moreover, we can write
     \[
         Z_{a_{1},a_{2}}(s,w) = \sum_{\text{$d$ monic}}\frac{\chi_{a_{2}}(d)L(s,\chi_{a_{1}d})}{|d|^{w}}.
     \]
-    Note that now $L(s,\chi_{d})$ makes sense even when $d$ is not square-free and agrees with the previous definition when $d$ is square-free. Performing the same procedure to the interchange, we see that
+    Performing the same procedure but with the interchange, we have
     \[
         Z_{a_{1},a_{2}}(s,w) = \sum_{\text{$m$ monic}}\frac{L(w,\chi_{a_{2}m_{0}})\chi_{a_{1}}(m)Q_{m_{0}m_{1}^{2}}(w,\chi_{a_{2}})}{|m|^{s}} = \sum_{\text{$m,d$ monic}}\frac{\chi_{a_{2}m_{0}}(\what{d})\chi_{a_{1}}(m)a(d,m)}{|m|^{s}|d|^{w}},
     \]
-    where $\what{d}$ is the part of $d$ relatively prime to $m_{0}$ and $L(w,\chi_{a_{2}m})$ is the Dirichlet series given by
+    where $\what{d}$ is the part of $d$ relatively prime to $m_{0}$. Again, we let $L(w,\chi_{a_{2}m})$ be the Dirichlet series given by
     \[
         L(w,\chi_{a_{2}m}) = L(w,\chi_{a_{2}m_{0}})Q_{m_{0}m_{1}^{2}}(w,\chi_{a_{2}}) = \sum_{\text{$d$ monic}}\frac{\chi_{a_{2}m_{0}}(\what{d})a(d,m)}{|d|^{w}},
     \]
@@ -241,12 +241,12 @@
     \[
         Z_{a_{1},a_{2}}(s,w) = \sum_{\text{$m$ monic}}\frac{\chi_{a_{1}}(m)L(w,\chi_{a_{2}m})}{|m|^{s}}.
     \]
-    We will now study the weighting coefficients $a(m,d)$. It turns out that they posess a multiplicativity property:
+    We will now turn our attention to studing the weighting coefficients $a(m,d)$. Their structure controls much of the information about both the double Dirichlet series and the correction polynomials. We first show that the weighting coefficients posess a multiplicativity property:
 
     \begin{proposition}\label{prop:multiplicativity_of_weighting_coefficients}
         We have $a(m,1) = a(1,d) = 1$ and
         \[
-            a(m,d) = \prod_{\substack{P^{\a} \mid\mid m \\ P^{\beta} \mid\mid d}}a(P^{\a},P^{\b}).
+            a(m,d) = \prod_{\substack{P^{\a} \mid\mid m \\ P^{\b} \mid\mid d}}a(P^{\a},P^{\b}).
         \]
     \end{proposition}
     \begin{proof}
@@ -296,7 +296,7 @@
         This completes the proof.
     \end{proof}
 
-    We have a similar statement if $d$ is an even power of an irreducible up to a square-free factor and relatively prime factor:
+    We have a similar statement if $d$ is an even irreducible power up to a square-free factor and relatively prime factor:
     
     \begin{lemma}\label{lem:prime_correction_even}
         For any square-free monic $d_{0}$, $a_{1} \in \{1,\t\}$, irreducible $P$ not dividing $d_{0}$, and $\b \ge 1$, we have
@@ -313,7 +313,7 @@
         \[
             b(P^{k},P^{2\b}) = \sum_{e_{1}e_{2}^{2} = P^{k}}\mu(e_{1})\chi_{a_{1}d_{0}}(e_{1})|e_{2}|.
         \]
-        It now suffices to show $b(P^{k},P^{2\b}) = \chi_{a_{1}d_{0}}(P^{k})\left(a(P^{k},P^{2\b})-a(P^{k-1},P^{2\b})\right)$. On the one hand, $\mu(e_{1}) = 0$ unless $e_{1} = 1,P$ in which case it is $\pm1$. So
+        It suffices to show $b(P^{k},P^{2\b}) = \chi_{a_{1}d_{0}}(P^{k})\left(a(P^{k},P^{2\b})-a(P^{k-1},P^{2\b})\right)$. On the one hand, $\mu(e_{1}) = 0$ unless $e_{1} = 1,P$ in which case $\mu(e_{1}) = \pm1$ accordingly. So
         \[
             b(P^{k},P^{2\b}) = \sum_{e_{1}e_{2}^{2} = P^{k}}\mu(e_{1})\chi_{a_{1}d_{0}}(e_{1})|e_{2}| = \begin{cases} \chi_{a_{1}d_{0}}(P^{k})|P|^{\frac{k}{2}} & \text{if $k$ is even}, \\ -\chi_{a_{1}d_{0}}(P^{k})|P|^{\frac{k-1}{2}} & \text{if $k$ is odd}, \end{cases}
         \]
