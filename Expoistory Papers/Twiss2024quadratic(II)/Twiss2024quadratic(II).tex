@@ -84,23 +84,27 @@
     \[
         \chi_{d}(m) = \begin{cases} \legendre{d}{m} & \text{if $d \equiv 1 \tmod{4}$}, \\ \legendre{4d}{m} & \text{if $d \equiv 2,3 \tmod{4}$}. \end{cases}
     \]
-    This quadratic Dirichlet character is attached to the quadratic extension $\Q(\sqrt{d})$. We extend $\chi_{d}$ multiplicatively in the denominator so that $\chi_{d}$ makes sense for any odd $d$. In particular, $\chi_{d}(m) = \pm1$ provided $d$ and $m$ are relatively prime and $\chi_{d}(m) = 0$ if $(m,d) > 1$. Quadratic reciprocity implies that $\chi_{d}$ is a Dirichlet character modulo $d$ if $d \equiv 1 \tmod{4}$ and is a Dirichlet character modulo $4d$ if $d \equiv 2,3 \tmod{4}$. Indeed, if $d \equiv 1 \tmod{4}$ then $d^{(2)} = d$ and the sign is always $1$. If $d \equiv 3 \tmod{4}$, then $d^{(2)} = d$ and the sign is $\tlegendre{-1}{m}$ which is a character modulo $4$. If $d \equiv 2 \tmod{4}$, then $d^{(2)} \equiv 1,3 \tmod{4}$ and we are reduced to one of the previous two cases. We will also require an associated character. For each $\chi_{d}$, we define $\wtilde{\chi}_{d}$ by
+    This quadratic Dirichlet character is attached to the quadratic extension $\Q(\sqrt{d})$. We extend $\chi_{d}$ multiplicatively in the denominator so that $\chi_{d}$ makes sense for any odd $d$. In particular, $\chi_{d}(m) = \pm1$ provided $d$ and $m$ are relatively prime and $\chi_{d}(m) = 0$ if $(m,d) > 1$. Quadratic reciprocity implies that $\chi_{d}$ is a Dirichlet character modulo $d$ if $d \equiv 1 \tmod{4}$ and is a Dirichlet character modulo $4d$ if $d \equiv 2,3 \tmod{4}$. Indeed, if $d \equiv 1 \tmod{4}$ then $d^{(2)} = d$ and the sign is always $1$. If $d \equiv 3 \tmod{4}$, then $d^{(2)} = d$ and the sign is $\tlegendre{-1}{m}$ which is a character modulo $4$. If $d \equiv 2 \tmod{4}$, then $d^{(2)} \equiv 1,3 \tmod{4}$ and we are reduced to one of the previous two cases. We will also set
     \[
-        \wtilde{\chi}_{d}(m) = (-1)^{\frac{d^{(2)}-1}{2}\frac{m^{(2)}-1}{2}}\chi_{d}(m).
+        q(d) = \begin{cases} d & \text{if $d \equiv 1 \tmod{4}$}, \\ 4d & \text{if $d \equiv 2,3 \tmod{4}$}, \end{cases} \quad \text{and} \quad \e_{\chi} = \frac{\tau(\chi_{d})}{\sqrt{q(d)}},
     \]
-    Equivalently, $\wtilde{\chi}_{d}(m)$ can be expressed as
+    where $\tau(\chi_{d})$ is the Gauss sum attached to $\chi_{d}$. We will also require an associated character. For each $\chi_{m}$ (here we are purposely interchanging the roles of $d$ and $m$ to keep consistency with the latter notation when discussing the double Dirichlet series), we define $\wtilde{\chi}_{m}$ by
     \[
-        \wtilde{\chi}_{d}(m) = \begin{cases} \chi_{d}(m) & \text{if $d \equiv 1,2 \tmod{4}$}, \\ \chi_{-1}(m)\chi_{d}(m) & \text{if $d \equiv 3 \tmod{4}$}, \end{cases}
+        \wtilde{\chi}_{m}(d) = (-1)^{\frac{m^{(2)}-1}{2}\frac{d^{(2)}-1}{2}}\chi_{m}(d).
     \]
-    and it follows that $\wtilde{\chi}_{d}(m)$ is a quadratic Dirichlet character of the same modulus as $\chi_{d}$. We now discuss the Hilbert characters. We will only need four of them: the quadratic Dirichlet characters modulo $8$. They are given as follows:
+    Equivalently, $\wtilde{\chi}_{m}(d)$ can be expressed as
+    \[
+        \wtilde{\chi}_{m}(d) = \begin{cases} \chi_{m}(d) & \text{if $m \equiv 1,2 \tmod{4}$}, \\ \chi_{-1}(d)\chi_{m}(d) & \text{if $m \equiv 3 \tmod{4}$}, \end{cases}
+    \]
+    and it follows that $\wtilde{\chi}_{m}(d)$ is a quadratic Dirichlet character of the same modulus as $\chi_{m}$. We now discuss the Hilbert characters. We will only need four of them: the quadratic Dirichlet characters modulo $8$. They are given as follows:
     \begin{gather*}
         \chi_{1}(m) = \begin{cases} 1 &\text{if $m \not\equiv 0 \tmod{2}$}, \\ 0 &\text{if $m \equiv 0 \tmod{2}$}, \end{cases} \quad \chi_{-1}(m) = \begin{cases} 1 &\text{if $m \equiv 1 \tmod{4}$}, \\ -1 &\text{if $m \equiv 3 \tmod{4}$}, \\ 0 &\text{if $m \equiv 0 \tmod{2}$}, \end{cases} \\ \chi_{2}(m) = \begin{cases} 1 &\text{if $m \equiv 1,7 \tmod{8}$}, \\ -1 &\text{if $m \equiv 3,5 \tmod{8}$}, \\ 0 &\text{if $m \equiv 0 \tmod{2}$}, \end{cases} \quad \chi_{-2}(m) = \begin{cases} 1 &\text{if $m \equiv 1,3 \tmod{8}$}, \\ -1 &\text{if $m \equiv 5,7 \tmod{8}$}, \\ 0 &\text{if $m \equiv 0 \tmod{2}$}. \end{cases}
     \end{gather*}
-    In general, we will denote a Hilbert character by $\chi_{a}$ with $a \in \{\pm 1,\pm 2\}$. Note that
+    In general, we will denote a Hilbert character by $\chi_{a}$ with $a \in \{\pm 1,\pm 2\}$. Morevoer, observe that $\chi_{a}(m) = \wtilde{\chi}_{a}(m)$ for all $a \in \{\pm 1,\pm 2\}$ and any $m \ge 1$. Also, can write
     \[
-        \chi_{-1}(m) = \legendre{-1}{m} \quad \text{and} \quad \chi_{2}(m) = \legendre{m}{2}.
+        \chi_{-1}(m) = \legendre{-1}{m} \quad \text{and} \quad \chi_{2}(m) = \legendre{m}{2},
     \]
-    Moreover, we have the relations
+    and have the relations
     \[
         \chi_{-2}(m) = \chi_{-1}(m)\chi_{2}(m), \quad \chi_{1}(m) = \chi_{-1}(m)\chi_{-1}(m), \quad \text{and} \quad \chi_{-1}(m) = \chi_{2}(m)\chi_{-2}(m).
     \]
@@ -118,23 +122,23 @@
     \]
     and satisfies the functional equation
     \[
-        L^{\ast}(s,\chi_{d}) = \begin{cases} \e_{\chi}q^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{d}) & \text{if $\chi_{d}$ is even}, \\ -\e_{\chi}q^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{d}) & \text{if $\chi_{d}$ is odd}. \end{cases}
+        L^{\ast}(s,\chi_{d}) = \begin{cases} \e_{\chi}q(d)^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{d}) & \text{if $\chi_{d}$ is even}, \\ -\e_{\chi}q(d)^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{d}) & \text{if $\chi_{d}$ is odd}. \end{cases}
     \]
-    Note that the gamma factors depend upon the partiy of $\chi_{d}$. This the root cause of an important technical issue later when deriving functional equations for the quadratic double Dirichlet series. Analogously, the Dirichlet $L$-function $L(s,\wtilde{\chi}_{d})$ attached to $\wtilde{\chi}_{d}$ for square-free $d$ is defined by a Dirichlet series or Euler product:
+    Note that the gamma factors depend upon the partiy of $\chi_{d}$. This the root cause of an important technical issue later when deriving functional equations for the quadratic double Dirichlet series. Analogously, the Dirichlet $L$-function $L(s,\wtilde{\chi}_{m})$ attached to $\wtilde{\chi}_{m}$ for square-free $m$ is defined by a Dirichlet series or Euler product:
     \[
-        L(s,\wtilde{\chi}_{d}) = \sum_{m \ge 1}\frac{\wtilde{\chi}_{d}(m)}{m^{s}} = \prod_{p \text{ prime}}\left(1-\frac{\wtilde{\chi}_{d}(p)}{p^{s}}\right)^{-1}.
+        L(s,\wtilde{\chi}_{m}) = \sum_{d \ge 1}\frac{\wtilde{\chi}_{m}(d)}{d^{s}} = \prod_{p \text{ prime}}\left(1-\frac{\wtilde{\chi}_{m}(p)}{p^{s}}\right)^{-1}.
     \]
-    As for $L(s,\chi_{d})$, $L(s,\wtilde{\chi}_{d}) \ll \z(s)$ for $\Re(s) > 1$ so that $L(s,\wtilde{\chi}_{d})$ is locally absolutely uniformly convergent in this region. Moreover, $L(s,\wtilde{\chi}_{d})$ admits analytic continuation to $\C$ and the completed $L$-function $L^{\ast}(s,\wtilde{\chi}_{d})$ is defined as
+    As for $L(s,\chi_{m})$, $L(s,\wtilde{\chi}_{m}) \ll \z(s)$ for $\Re(s) > 1$ so that $L(s,\wtilde{\chi}_{m})$ is locally absolutely uniformly convergent in this region. Moreover, $L(s,\wtilde{\chi}_{m})$ admits analytic continuation to $\C$ and the completed $L$-function $L^{\ast}(s,\wtilde{\chi}_{m})$ is defined as
     \[
-        L^{\ast}(s,\wtilde{\chi}_{d}) = \begin{cases} \pi^{-\frac{s}{2}}\G\left(\frac{s}{2}\right)L(s,\wtilde{\chi}_{d}) & \text{if $\wtilde{\chi}_{d}$ is even}, \\ \pi^{-\frac{s}{2}}\G\left(\frac{s+1}{2}\right)L(s,\wtilde{\chi}_{d}) & \text{if $\wtilde{\chi}_{d}$ is odd}, \end{cases}
+        L^{\ast}(s,\wtilde{\chi}_{m}) = \begin{cases} \pi^{-\frac{s}{2}}\G\left(\frac{s}{2}\right)L(s,\wtilde{\chi}_{m}) & \text{if $\wtilde{\chi}_{m}$ is even}, \\ \pi^{-\frac{s}{2}}\G\left(\frac{s+1}{2}\right)L(s,\wtilde{\chi}_{m}) & \text{if $\wtilde{\chi}_{m}$ is odd}, \end{cases}
     \]
     and satisfies the functional equation
     \[
-        L^{\ast}(s,\wtilde{\chi}_{d}) = \begin{cases} \e_{\wtilde{\chi}}q^{\frac{1}{2}-s}L^{\ast}(1-s,\wtilde{\chi}_{d}) & \text{if $\wtilde{\chi}_{d}$ is even}, \\ -\e_{\wtilde{\chi}}q^{\frac{1}{2}-s}L^{\ast}(1-s,\wtilde{\chi}_{d}) & \text{if $\wtilde{\chi}_{d}$ is odd}. \end{cases}
+        L^{\ast}(s,\wtilde{\chi}_{m}) = \begin{cases} \e_{\wtilde{\chi}}q(m)^{\frac{1}{2}-s}L^{\ast}(1-s,\wtilde{\chi}_{m}) & \text{if $\wtilde{\chi}_{m}$ is even}, \\ -\e_{\wtilde{\chi}}q(m)^{\frac{1}{2}-s}L^{\ast}(1-s,\wtilde{\chi}_{m}) & \text{if $\wtilde{\chi}_{m}$ is odd}. \end{cases}
     \]
 
     \begin{remark}
-        The definitions for $L(s,\chi_{d})$ and $L^{\ast}(s,\chi_{d})$ work perfectly well even when $d$ is not square-free (however the functional equations do not hold). We purposely do not define these $L$-functions, yet, for $d$ not necessarily square-free.
+        The definitions for $L(s,\chi_{d})$, $L^{\ast}(s,\chi_{d})$, $L(s,\wtilde{\chi}_{m})$, and $L^{\ast}(s,\wtilde{\chi}_{m})$ work perfectly well even when $d$ and $m$ are not square-free (however the functional equations do not hold). We purposely do not define these $L$-functions, yet, for $d$ and $m$ not necessarily square-free.
     \end{remark}
 \section*{The Quadratic Double Dirichlet Series}
     We will now define the quadratic double Dirichlet series $Z(s,w)$. For any integer $d \ge 1$, write $d = d_{0}d_{1}^{2}$ where $d_{0}$ is square-free. Equivalently, $d_{0}$ is the square-free part of $d$ and $\frac{d}{d_{0}}$ is a perfect square. The \textbf{quadratic double Dirichlet series} $Z(s,w)$ is defined as
@@ -164,7 +168,7 @@
     \begin{theorem}[Interchange]
         Wherever $Z_{a_{1},a_{2}}(s,w)$ converges locally absolutely uniformly,
         \[
-            Z_{a_{1},a_{2}}(s,w) = \sum_{\text{$d$ odd}}\frac{L^{(2)}(s,\chi_{a_{1}d_{0}})\chi_{a_{2}}(d)Q_{d_{0}d_{1}^{2}}(s,\chi_{a_{1}})}{d^{w}} = \sum_{\text{$m$ odd}}\frac{L^{(2)}(w,\wtilde{\chi}_{a_{2}m_{0}})\chi_{a_{1}}(m)Q_{m_{0}m_{1}^{2}}(w,\chi_{a_{2}})}{m^{s}}.
+            Z_{a_{1},a_{2}}(s,w) = \sum_{\text{$d$ odd}}\frac{L^{(2)}(s,\chi_{a_{1}d_{0}})\chi_{a_{2}}(d)Q_{d_{0}d_{1}^{2}}(s,\chi_{a_{1}})}{d^{w}} = \sum_{\text{$m$ odd}}\frac{L^{(2)}(w,\wtilde{\chi}_{a_{2}m_{0}})\wtilde{\chi}_{a_{1}}(m)Q_{m_{0}m_{1}^{2}}(w,\wtilde{\chi}_{a_{2}})}{m^{s}}.
         \]
     \end{theorem}
     \begin{proof}
@@ -194,17 +198,17 @@
         \[
             \sum_{\substack{\text{$m,d$ odd} \\ (d,m) = 1}}\sum_{e_{2}}\chi_{a_{2}}(d)\chi_{a_{1}d_{0}}(m)e_{2}^{1-2s-2w}m^{-s}d^{-w}.
         \]
-        Writing $m = m_{0}m_{1}^{2}$ analogously as for $d$, quadratic reciprocity implies $\chi_{d_{0}}(m) = \wtilde{\chi}_{m}(d_{0}) = \wtilde{\chi}_{m_{0}}(d)$ where the last equality holds because $(d,m) = 1$ and both $d_{0}$ and $m_{0}$ differ from $d$ and $m$ respectively by perfect squares. This implies $\chi_{a_{2}}(d)\chi_{a_{1}d_{0}}(m) = \chi_{a_{1}}(m)\wtilde{\chi}_{a_{2}m_{0}}(d)$ and so our expression becomes
+        Writing $m = m_{0}m_{1}^{2}$ analogously as for $d$, quadratic reciprocity implies $\chi_{d_{0}}(m) = \wtilde{\chi}_{m}(d_{0}) = \wtilde{\chi}_{m_{0}}(d)$ where the last equality holds because $(d,m) = 1$ and both $d_{0}$ and $m_{0}$ differ from $d$ and $m$ respectively by perfect squares. As $\chi_{a_{1}}(m) = \wtilde{\chi}_{a_{1}}(m)$ and $\chi_{a_{2}}(d) = \wtilde{\chi}_{a_{2}}(d)$, the previous fact implies $\chi_{a_{2}}(d)\chi_{a_{1}d_{0}}(m) = \wtilde{\chi}_{a_{1}}(m)\wtilde{\chi}_{a_{2}m_{0}}(d)$ and so our expression becomes
         \[
-            \sum_{\substack{d,m \ge 1 \\ (d,m) = 1}}\sum_{e_{2}}\chi_{a_{1}}(m)\wtilde{\chi}_{a_{2}m_{0}}(d)e_{2}^{1-2s-2w}m^{-s}d^{-w}.
+            \sum_{\substack{d,m \ge 1 \\ (d,m) = 1}}\sum_{e_{2}}\wtilde{\chi}_{a_{1}}(m)\wtilde{\chi}_{a_{2}m_{0}}(d)e_{2}^{1-2s-2w}m^{-s}d^{-w}.
         \]
-        But now we can reverse the argument with the roles of $d$, $m$, $\chi_{a_{1}}$, and $\wtilde{\chi}_{a_{2}}$ interchanged respectively to obtain
+        But now we can reverse the argument with the roles of $d$, $m$, $\chi_{a_{1}}$, and $\chi_{a_{2}}$ interchanged respectively, but with $\wtilde{\chi}_{a_{1}}$ and $\wtilde{\chi}_{a_{2}}$, to obtain
         \[
-            Z(s,w) = \sum_{m \ge 1}\frac{L(w,\wtilde{\chi}_{a_{2}m_{0}})\chi_{a_{1}}(m)Q_{m_{0}m_{1}^{2}}(w,\chi_{a_{2}})}{m^{s}}.
+            Z(s,w) = \sum_{m \ge 1}\frac{L(w,\wtilde{\chi}_{a_{2}m_{0}})\wtilde{\chi}_{a_{1}}(m)Q_{m_{0}m_{1}^{2}}(w,\wtilde{\chi}_{a_{2}})}{m^{s}}.
         \]
     \end{proof}
 
-    Note that the interchange is not completely symmetric because of the character $\wtilde{\chi}_{a_{2}m_{0}}$ in the second expression for $Z_{a_{1},a_{2}}(s,w)$. This is due to the fact that recipricty is not perfect. In even more general settings the correction polynomials in $w$ need not be equal to those in $s$.
+    Note that the interchange is not completely symmetric because of the characters $\wtilde{\chi}_{a_{2}m_{0}}$, $\wtilde{\chi}_{a_{1}}$, and $\wtilde{\chi}_{a_{2}}$ in the second expression for $Z_{a_{1},a_{2}}(s,w)$. This is due to the fact that recipricty is not perfect. In even more general settings the correction polynomials in $w$ need not be equal to those in $s$.
 \section*{Weighting Terms}
     We will now study the coefficients of $Z_{a_{1},a_{2}}(s,w)$ expanded in $s$ and $w$. By expanding $L(s,\chi_{a_{1}d_{0}})Q_{d_{0}d_{1}^{2}}(s,\chi_{a_{1}})$ in the numerator of $Z_{a_{1},a_{2}}(s,w)$, we can write
     \[
@@ -236,15 +240,15 @@
     \]
     If we perform the same procedure to the interchange, then
     \[
-        Z_{a_{1},a_{2}}(s,w) = \sum_{m \ge 1}\frac{L(w,\wtilde{\chi}_{a_{2}m_{0}})\chi_{a_{1}}(m)Q_{m_{0}m_{1}^{2}}(w,\chi_{a_{2}})}{m^{s}} = \sum_{d,m \ge 1}\frac{\wtilde{\chi}_{a_{2}m_{0}}(\what{d})\chi_{a_{1}}(m)a(d,m)}{m^{s}d^{w}},
+        Z_{a_{1},a_{2}}(s,w) = \sum_{m \ge 1}\frac{L(w,\wtilde{\chi}_{a_{2}m_{0}})\wtilde{\chi}_{a_{1}}(m)Q_{m_{0}m_{1}^{2}}(w,\wtilde{\chi}_{a_{2}})}{m^{s}} = \sum_{d,m \ge 1}\frac{\wtilde{\chi}_{a_{2}m_{0}}(\what{d})\wtilde{\chi}_{a_{1}}(m)a(d,m)}{m^{s}d^{w}},
     \]
     where $\what{d}$ is the part of $d$ relatively prime to $m_{0}$. Analogously, we define $L(w,\wtilde{\chi}_{a_{2}m})$ to be the Dirichlet series given by
     \[
-        L(w,\wtilde{\chi}_{a_{2}m}) = L(w,\wtilde{\chi}_{a_{2}m_{0}})Q_{m_{0}m_{1}^{2}}(w,\chi_{a_{2}}) = \sum_{d \ge 1}\frac{\wtilde{\chi}_{a_{2}m_{0}}(\what{d})a(d,m)}{d^{w}},
+        L(w,\wtilde{\chi}_{a_{2}m}) = L(w,\wtilde{\chi}_{a_{2}m_{0}})Q_{m_{0}m_{1}^{2}}(w,\wtilde{\chi}_{a_{2}}) = \sum_{d \ge 1}\frac{\wtilde{\chi}_{a_{2}m_{0}}(\what{d})a(d,m)}{d^{w}},
     \]
     so that
     \[
-        Z_{a_{1},a_{2}}(s,w) = \sum_{m \ge 1}\frac{\chi_{a_{1}}(m)L(w,\wtilde{\chi}_{a_{2}m})}{m^{s}}.
+        Z_{a_{1},a_{2}}(s,w) = \sum_{m \ge 1}\frac{\wtilde{\chi}_{a_{1}}(m)L(w,\wtilde{\chi}_{a_{2}m})}{m^{s}}.
     \]
     We now investigate the structure of the weighting coefficients $a(m,d)$. Their structure controls the majority of the information about both the double Dirichlet series and the correction polynomials. We first show that the weighting coefficients posess a multiplicativity property:
 
@@ -308,6 +312,7 @@
         \[
             Q_{d_{0}p^{2\b}}(s,\chi_{a_{1}}) = (1-\chi_{a_{1}d_{0}}(p)p^{-s})\sum_{k \le 2\b}\frac{\chi_{a_{1}d_{0}}(p^{k})a(p^{k},p^{2\b})}{p^{ks}}.
         \]
+        Moreover, the same holds if $\chi$ is replaced with $\wtilde{\chi}$.
     \end{lemma}
     \begin{proof}
         Expand the correction polynomial in $p^{-s}$ to get
@@ -330,7 +335,7 @@
         \[
             \chi_{a_{1}d_{0}}(p^{k})\left(a(p^{k},p^{2\b})-a(p^{k-1},p^{2\b})\right) = \begin{cases} \chi_{a_{1}d_{0}}(p^{k})p^{\frac{k}{2}} & \text{if $k$ is even}, \\ -\chi_{a_{1}d_{0}}(p^{k})p^{\frac{k-1}{2}} & \text{if $k$ is odd}, \end{cases}
         \]
-        which completes the proof.
+        which completes the proof as it is obvious that the same holds if $\chi$ is replaced with $\wtilde{\chi}$.
     \end{proof}
 
     \cref{lem:prime_correction_odd,lem:prime_correction_even} together show that $Q_{d_{0}d_{1}^{2}}(s,\chi_{a_{1}})$ is a Dirichlet polynomial whose coefficients are essentially given by the weighting coefficients $a(m,d)$ when $d$ is an prime power. The proof of these lemmas also give the value of $a(p^{k},p^{l})$ and we collect this as a corollary:
@@ -358,6 +363,7 @@
         \[
             Q_{d_{0}d_{1}^{2}d_{2}^{2}}(s,\chi_{a_{1}}) = \prod_{p^{\a} \mid\mid d_{1}}Q_{p^{2\a+1}}(s) \cdot \prod_{p^{\b} \mid\mid d_{2}}Q_{d_{0}p^{2\b}}(s,\chi_{a_{1}}).
         \]
+        Moreover, the same holds if $\chi$ is replaced with $\wtilde{\chi}$.
     \end{theorem}
     \begin{proof}
         Recall that
@@ -388,11 +394,49 @@
         \[
             L(s,\chi_{a_{1}d_{0}})Q_{d_{0}d_{1}^{2}d_{2}^{2}}(s,\chi_{a_{1}}) = L(s,\chi_{a_{1}d_{0}}) \cdot \prod_{p^{\a} \mid\mid d_{1}}Q_{p^{2\a+1}}(s) \cdot \prod_{p^{\b} \mid\mid d_{2}}Q_{d_{0}p^{2\b}}(s,\chi_{a_{1}}),
         \]
-        from which the proof is complete since $L(s,\chi_{a_{1}d_{0}}) \neq 0$ for $\Re(s) > 1$ (so that we may divide by $L(s,\chi_{a_{1}d_{0}})$).
+        from which the proof is complete since $L(s,\chi_{a_{1}d_{0}}) \neq 0$ for $\Re(s) > 1$ (so that we may divide by $L(s,\chi_{a_{1}d_{0}})$) and it is obvious that the same holds if we replace $\chi$ with $\wtilde{\chi}$.
     \end{proof}
 
     Observe that for $d = d_{0}d_{1}^{2}d_{2}^{2}$, the prime factors that divide $d_{1}d_{2}$ are exactly those factors that divide $d$ to power larger than $1$. Thus, from \cref{thm:correction_polynomial_Euler_product} the Euler product for $Q_{d_{0}d_{1}^{2}d_{2}^{2}}(s,\chi_{a_{1}})$ is supported on exactly the primes dividing $d$ to order larger than $1$ and also depends upon the character $\chi_{a_{1}d_{0}}$.
 \section*{Functional Equations}
+    We can now derive functional equations for $Z_{a_{1},a_{2}}(s,w)$. These functional equations will be induced from the functional equations for $L(s,\chi_{a_{1}d})$ and $L(s,\wtilde{\chi}_{a_{2}m})$. To prove these latter functional equations, we require a functional equation for the correction polynomials:
+
+    \begin{theorem}\label{thm:functional_equation_correction_polynomials}
+        $Q_{d_{0}d_{1}^{2}}(s,\chi_{a_{1}})$ admits the functional equation.
+        \[
+            Q_{d_{0}d_{1}^{2}}(s,\chi_{a_{1}}) = d_{1}^{1-2s}Q_{d_{0}d_{1}^{2}}(1-s,\chi_{a_{1}}).
+        \]
+        Moreover, the same holds if $\chi$ is replaced with $\wtilde{\chi}$.
+    \end{theorem}
+    \begin{proof}
+        The stragety is to interchange $e_{2}$ and $e_{3}$ in the sum defining $Q_{d_{0}d_{1}^{2}}(s,\chi_{a_{1}})$:
+        \begin{align*}
+            d_{1}^{1-2s}Q_{d_{0}d_{1}^{2}}(1-s) &= d_{1}^{1-2s}\sum_{e_{1}e_{2}e_{3} = d_{1}}\mu(e_{1})\chi_{a_{1}d_{0}}(e_{1})e_{1}^{s-1}e_{2}^{2s-1} \\
+            &= \sum_{e_{1}e_{2}e_{3} = d_{1}}\mu(e_{1})\chi_{a_{1}d_{0}}(e_{1})e_{1}^{s-1}\left(\frac{d_{1}}{e_{2}}\right)^{1-2s} \\
+            &= \sum_{e_{1}e_{2}e_{3} = d_{1}}\mu(e_{1})\chi_{a_{1}d_{0}}(e_{1})e_{1}^{s-1}(e_{1}e_{3})^{1-2s} \\
+            &= \sum_{e_{1}e_{2}e_{3} = d_{1}}\mu(e_{1})\chi_{a_{1}d_{0}}(e_{1})e_{1}^{-s}e_{3}^{1-2s} \\
+            &= Q_{d_{0}d_{1}^{2}}(s,\chi_{a_{1}}).
+        \end{align*}
+        Also, it is obvious that the same holds if $\chi$ is replaced with $\wtilde{\chi}$.
+    \end{proof}
+
+    We will define the completed $L$-function $L^{\ast}(s,\chi_{a_{1}d})$ by
+    \[
+        L^{\ast}(s,\chi_{a_{1}d}) = L^{\ast}(s,\chi_{a_{1}d_{0}})Q_{d_{0}d_{1}^{2}}(s,\chi_{a_{1}}).
+    \]
+    In particular, $L^{\ast}(s,\chi_{d})$ makes sense even when $d$ is not square-free and agrees with the previous definition when $d$ is square-free.
+    Combining \cref{thm:functional_equation_correction_polynomials}, the functional equation for $L^{\ast}(s,\chi_{a_{1}d_{0}})$, that $\deg(d) \equiv \deg(d_{0}) \tmod{2}$, and that $d \equiv d_{0} \tmod{4}$, we obtain a functional equation for $L^{\ast}(s,\chi_{a_{1}d})$:
+    \[
+        L^{\ast}(s,\chi_{a_{1}d}) = \begin{cases} q(d)^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{a_{1}d}) & \text{if $\deg(d)$ is even}, \\ q(d)^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{a_{1}d}) & \text{if $\deg(d)$ is odd}. \end{cases}
+    \]
+    Analogously, define the completed $L$-function $L^{\ast}(s,\wtilde{\chi}_{a_{2}m})$ by
+    \[
+        L^{\ast}(s,\wtilde{\chi}_{a_{2}m}) = L^{\ast}(s,\wtilde{\chi}_{a_{2}m_{0}})Q_{m_{0}m_{1}^{2}}(s,\wtilde{\chi}_{a_{2}}).
+    \]
+    Then, as before, we have a functional equation for $L^{\ast}(s,\wtilde{\chi}_{a_{2}m})$:
+    \[
+        L^{\ast}(s,\wtilde{\chi}_{a_{2}m}) = \begin{cases} q(m)^{\frac{1}{2}-s}L^{\ast}(1-s,\wtilde{\chi}_{a_{2}m}) & \text{if $\deg(m)$ is even}, \\ q(m)^{\frac{1}{2}-s}L^{\ast}(1-s,\wtilde{\chi}_{a_{2}m}) & \text{if $\deg(m)$ is odd}. \end{cases}
+    \]
 \section*{Meromorphic Continuation}
 \section*{Poles and Residues}
 
