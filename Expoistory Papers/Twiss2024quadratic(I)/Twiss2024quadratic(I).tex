@@ -115,10 +115,21 @@
     \[
         L^{\ast}(s,\chi_{d}) = \begin{cases} q^{2s-1}|d|^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{d}) & \text{if $\deg(d)$ is even}, \\ q^{2s-1}(q|d|)^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{d}) & \text{if $\deg(d)$ is odd}. \end{cases}
     \]
-    Note that in the case $\deg(d)$ is even, the conductor is $|d|$ and in the case $\deg(d)$ is odd, the conductor is $q|d|$. Moreover, the gamma factors depend upon the degree of $d$. This will cause a small but important technical issue later when we want to derive functional equations for the quadratic double Dirichlet series.
+    Note that in the case $\deg(d)$ is even, the conductor is $|d|$ and in the case $\deg(d)$ is odd, the conductor is $q|d|$. Moreover, the gamma factors depend upon the degree of $d$. This will cause a small but important technical issue later when we want to derive functional equations for the quadratic double Dirichlet series. Analogously (this is a superfluous definition but we are giving it to be consistent with notation for the double Dirichlet series later on), we define the Dirichlet $L$-function $L(w,\chi_{m})$ attached to $\chi_{m}$ for square-free $m$, by a Dirichlet series or Euler product:
+    \[
+        L(w,\chi_{m}) = \sum_{\text{$d$ monic}}\frac{\chi_{m}(d)}{|d|^{w}} = \prod_{\text{$P$ monic irr}}\left(1-\frac{\chi_{m}(P)}{|P|^{w}}\right)^{-1}.
+    \]
+    As for $L(s,\chi_{d})$, $L(w,\chi_{m}) \ll \z(w)$ for $\Re(w) > 1$ so that $L(w,\chi_{m})$ is locally absolutely uniformly convergent in this region. Morevoer, $L(w,\chi_{m})$ admits analytic continuation to $\C$ and is a polynomial in $q^{-w}$ of degree at most $\deg(m)-1$. The associated completed Dirichlet $L$-function $L^{\ast}(w,\chi_{m})$ is defined as
+    \[
+        L^{\ast}(w,\chi_{m}) = \begin{cases} \frac{1}{1-q^{-w}}L(w,\chi_{m}) & \text{if $\deg(m)$ is even}, \\ L(w,\chi_{m}) & \text{if $\deg(m)$ is odd}, \end{cases}
+    \]
+    and satisfies the functional equation
+    \[
+        L^{\ast}(w,\chi_{m}) = \begin{cases} q^{2w-1}|d|^{\frac{1}{2}-w}L^{\ast}(1-w,\chi_{m}) & \text{if $\deg(m)$ is even}, \\ q^{2w-1}(q|m|)^{\frac{1}{2}-w}L^{\ast}(1-w,\chi_{m}) & \text{if $\deg(m)$ is odd}. \end{cases}
+    \]
 
     \begin{remark}
-        The definitions for $L(s,\chi_{d})$ and $L^{\ast}(s,\chi_{d})$ hold even when $d$ is not square-free (however the functional equations do not hold). We will make use of slightly modified defintions in this case and so we purposely do not define these $L$-functions yet.
+        The definitions for $L(s,\chi_{d})$, $L^{\ast}(s,\chi_{d})$, $L(w,\chi_{m})$, and $L^{\ast}(w,\chi_{m})$ hold even when $d$ and $m$ are not square-free (however the functional equations do not hold). We will make use of slightly modified definitions in this case and so we purposely do not define these $L$-functions yet.
     \end{remark}
 \section{The Quadratic Double Dirichlet Series}
     From now on we assume $q \equiv 1 \tmod{4}$. This assumption is not strictly necessary to build the quadratic double Dirichlet series but it does allow for some technical simplifications as the statement of quadratic reciprocity is perfect. We are ready to define the quadratic double Dirichlet series $Z(s,w)$. For any monic $d \in \F_{q}[t]$, write $d = d_{0}d_{1}^{2}$ where $d_{0}$ is square-free. In other words, $d_{0}$ is the square-free part of $d$ so that $\frac{d}{d_{0}}$ is a perfect square. The \textbf{quadratic double Dirichlet series} $Z(s,w)$ is defined as
@@ -141,14 +152,22 @@
     \[
         Q_{d_{0}d_{1}^{2}}(s,\chi_{a_{1}}) = \sum_{e_{1}e_{2} \mid d_{1}}\mu(e_{1})\chi_{a_{1}d_{0}}(e_{1})|e_{1}|^{-s}|e_{2}|^{1-2s} = \sum_{e_{1}e_{2}e_{3} = d_{1}}\mu(e_{1})\chi_{a_{1}d_{0}}(e_{1})|e_{1}|^{-s}|e_{2}|^{1-2s},
     \]
-    and $\mu$ is the usual M\"obius function on $\F_{q}[t]$. As the Hilbert characters are given by quadratic Dirichlet characters, we have the analogous bound $Q_{d_{0}d_{1}^{2}}(s,\chi_{a_{1}}) \ll |d|_{\e}$ so that $Z_{a_{1},a_{2}}(s,w)$ converges locally absolutely uniformly in the same region as $Z(s,w)$ does. In this generalized setup, $Z(s,w) = Z_{1,1}(s,w)$.
+    and $\mu$ is the usual M\"obius function on $\F_{q}[t]$. As the Hilbert characters are given by quadratic Dirichlet characters, we have the analogous bound $Q_{d_{0}d_{1}^{2}}(s,\chi_{a_{1}}) \ll |d|_{\e}$ so that $Z_{a_{1},a_{2}}(s,w)$ converges locally absolutely uniformly in the same region as $Z(s,w)$ does. In this generalized setup, $Z(s,w) = Z_{1,1}(s,w)$. As one last comment, we will also need the correction polynomials $Q_{m_{0}m_{1}^{2}}(w)$ and $Q_{m_{0}m_{1}^{2}}(w,\chi_{a_{2}})$. They are defined by
+    \[
+        Q_{m_{0}m_{1}^{2}}(w) = \sum_{e_{1}e_{2} \mid m_{1}}\mu(e_{1})\chi_{m_{0}}(e_{1})e_{1}^{-w}e_{2}^{1-w} = \sum_{e_{1}e_{2}e_{3} = m_{1}}\mu(e_{1})\chi_{m_{0}}(e_{1})e_{1}^{-w}e_{2}^{1-w},
+    \]
+    and
+    \[
+        Q_{m_{0}m_{1}^{2}}(w,\chi_{a_{2}}) = \sum_{e_{1}e_{2} \mid m_{1}}\mu(e_{1})\chi_{a_{2}m_{0}}(e_{1})e_{1}^{-w}e_{2}^{1-2w} = \sum_{e_{1}e_{2}e_{3} = m_{1}}\mu(e_{1})\chi_{a_{2}m_{0}}(e_{1})e_{1}^{-w}e_{2}^{1-2w}.
+    \]
+    Clearly they satisfy analogous estimates. 
 \section{The Interchange}
     Since $L$-functions attached to quadratic Dirichlet characters admit Euler products, $Z_{a_{1},a_{2}}(s,w)$ is a sum of Euler products in $s$. We will now argue that $Z_{a_{1},a_{2}}(s,w)$ can be written as a sum of Euler products in $w$. In effect, we want the variable $s$ to appear in the denominator of $Z_{a_{1},a_{2}}(s,w)$ and the $L$-functions in the numerator to be in the variable $w$. To be precise, we will prove the following:
 
     \begin{theorem}[Interchange]
         Wherever $Z_{a_{1},a_{2}}(s,w)$ converges locally absolutely uniformly,
         \[
-            Z_{a_{1},a_{2}}(s,w) = \sum_{\text{$d$ monic}}\frac{L(s,\chi_{a_{1}d_{0}})\chi_{a_{2}}(d)Q_{d_{0}d_{1}^{2}}(s,\chi_{a_{1}})}{|d|^{w}} = \sum_{\text{$m$ monic}}\frac{L(w,\chi_{a_{2}m_{0}})\chi_{a_{1}}(m)Q_{m_{0}m_{1}^{2}}(w,\chi_{a_{2}})}{|m|^{s}},
+            Z_{a_{1},a_{2}}(s,w) = \sum_{\text{$d$ monic}}\frac{L(s,\chi_{a_{1}d_{0}})\chi_{a_{2}}(d)Q_{d_{0}d_{1}^{2}}(s,\chi_{a_{1}})}{|d|^{w}} = \sum_{\text{$m$ monic}}\frac{L(w,\chi_{a_{2}m_{0}})\chi_{a_{1}}(m)Q_{m_{0}m_{1}^{2}}(w,\chi_{a_{2}})}{|m|^{s}}.
         \]
     \end{theorem}
     \begin{proof}
@@ -233,7 +252,7 @@
     \[
         Z_{a_{1},a_{2}}(s,w) = \sum_{\text{$m$ monic}}\frac{L(w,\chi_{a_{2}m_{0}})\chi_{a_{1}}(m)Q_{m_{0}m_{1}^{2}}(w,\chi_{a_{2}})}{|m|^{s}} = \sum_{\text{$m,d$ monic}}\frac{\chi_{a_{2}m_{0}}(\what{d})\chi_{a_{1}}(m)a(d,m)}{|m|^{s}|d|^{w}},
     \]
-    where $\what{d}$ is the part of $d$ relatively prime to $m_{0}$. Again, we let $L(w,\chi_{a_{2}m})$ be the Dirichlet series given by
+    where $\what{d}$ is the part of $d$ relatively prime to $m_{0}$. Analogously, we let $L(w,\chi_{a_{2}m})$ be the Dirichlet series given by
     \[
         L(w,\chi_{a_{2}m}) = L(w,\chi_{a_{2}m_{0}})Q_{m_{0}m_{1}^{2}}(w,\chi_{a_{2}}) = \sum_{\text{$d$ monic}}\frac{\chi_{a_{2}m_{0}}(\what{d})a(d,m)}{|d|^{w}},
     \]
@@ -421,7 +440,15 @@
     \[
         L^{\ast}(s,\chi_{a_{1}d}) = \begin{cases} q^{2s-1}|d|^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{a_{1}d}) & \text{if $\deg(d)$ is even}, \\ q^{s-\frac{1}{2}}|d|^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{a_{1}d}) & \text{if $\deg(d)$ is odd}. \end{cases}
     \]
-    We would like the functional equation for $L^{\ast}(s,\chi_{a_{1}d})$ to induce a functional equation for $Z_{a_{1},a_{2}}(s,w)$ but there is one technical issue. The gamma factor for $L^{\ast}(s,\chi_{a_{1}d})$ depend upon the degree of $d$ and in order to obtain a functional equation we need the gamma factor to be constant. We will be able to move past this obstruction by exploiting the orthogonality for Dirichlet characters, in particular, the Hilbert characters. Define $Z_{a_{1},a_{2}}^{+}(s,w)$ and $Z_{a_{1},a_{2}}^{-}(s,w)$ by
+    Analogously, we define the completed $L$-function $L^{\ast}(w,\chi_{a_{2}m})$ by
+    \[
+        L^{\ast}(w,\chi_{a_{2}m}) = L^{\ast}(w,\chi_{a_{2}m_{0}})Q_{m_{0}m_{1}^{2}}(w,\chi_{a_{2}}),
+    \]
+    and have a corresponding functional equation:
+    \[
+        L^{\ast}(w,\chi_{a_{2}m}) = \begin{cases} q^{2s-1}|m|^{\frac{1}{2}-s}L^{\ast}(1-w,\chi_{a_{2}m}) & \text{if $\deg(m)$ is even}, \\ q^{s-\frac{1}{2}}|m|^{\frac{1}{2}-s}L^{\ast}(1-w,\chi_{a_{2}m}) & \text{if $\deg(m)$ is odd}. \end{cases}
+    \]
+    We would like the functional equations for $L^{\ast}(s,\chi_{a_{1}d})$ and $L^{\ast}(w,\chi_{a_{2}m})$ to induce functional equations for $Z_{a_{1},a_{2}}(s,w)$ but there is one technical issue. The gamma factor for $L^{\ast}(s,\chi_{a_{1}d})$ and $L^{\ast}(w,\chi_{a_{2}m})$ depend upon the degrees of $d$ and $m$ respectively. In order to obtain functional equations we need the gamma factors to be constant. We will be able to move past this obstruction by exploiting the orthogonality for Dirichlet characters, in particular, the Hilbert characters. Define $Z_{a_{1},a_{2}}^{+}(s,w)$ and $Z_{a_{1},a_{2}}^{-}(s,w)$ by
     \[
         Z_{a_{1},a_{2}}^{+}(s,w) = \frac{Z_{a_{1},a_{2}}(s,w)+Z_{a_{1},\t a_{2}}(s,w)}{2} \quad \text{and} \quad Z_{a_{1},a_{2}}^{-}(s,w) = \frac{Z_{a_{1},a_{2}}(s,w)-{Z_{a_{1},\t a_{2}}(s,w)}}{2}.
     \]
