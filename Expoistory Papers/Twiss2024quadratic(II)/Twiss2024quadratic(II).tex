@@ -50,57 +50,53 @@
         \end{enumerate}
     \end{theorem}
 
-    The Dirichlet characters that are of interest to us are those given by the quadratic residue symbol on $\Z$. First let us recall this symbol. For any odd prime $p$ and any $m \ge 1$, we define the quadratic residue symbol $\tlegendre{m}{p}$ by
+    The Dirichlet characters that are of interest to us are those given by the quadratic residue symbol on $\Z$. First let us recall this symbol. For any odd prime $p$ and any $d \in \Z$, we define the quadratic residue symbol $\tlegendre{d}{p}$ by
     \[
-        \legendre{m}{p} \equiv m^{\frac{p-1}{2}} \tmod{p} = \begin{cases} 1 & \text{if $x^{2} \equiv m \tmod{p}$ is solvable}, \\ -1 & \text{if $x^{2} \equiv m \tmod{p}$ is not solvable}, \\ 0 & \text{if $m \equiv 0 \tmod{p}$}. \end{cases}
+        \legendre{d}{p} \equiv d^{\frac{p-1}{2}} \tmod{p} = \begin{cases} 1 & \text{if $x^{2} \equiv d \tmod{p}$ is solvable}, \\ -1 & \text{if $x^{2} \equiv d \tmod{p}$ is not solvable}, \\ 0 & \text{if $d \equiv 0 \tmod{p}$}. \end{cases}
     \]
-    This symbol only depends upon $m$ modulo $p$ and is multiplicative in $m$. We can extend the quadratic residue symbol multiplicatively in the denominator. If $d = p_{1}^{e_{1}}p_{2}^{e_{2}} \cdots p_{k}^{e_{k}}$ is the prime factorization of $d$, then we define
+    This symbol only depends upon $d$ modulo $p$ and is multiplicative in $d$. We can extend the quadratic residue symbol multiplicatively in the denominator. First we define
     \[
-        \legendre{m}{d} = \prod_{1 \le i \le k}\legendre{m}{p_{i}}^{e_{i}}.
+        \legendre{d}{-1} = \begin{cases} 1 & \text{if $d \ge 0$}, \\ -1 & \text{if $d < 0$}, \end{cases} \quad \text{and} \quad \legendre{d}{2} = \begin{cases} 1 & \text{if $d \equiv 1,7 \tmod{8}$}, \\ -1 & \text{if $d \equiv 3,5 \tmod{8}$}, \\ 0 & \text{if $d \equiv 0 \tmod{2}$}. \end{cases}
     \]
-    So the quadratic residue symbol now makes sense for any odd $d \ge 1$. We can extend this symbol further and allow $d \ge 1$ to be even. To this end, we define
+    If $m = up_{1}^{e_{1}}p_{2}^{e_{2}} \cdots p_{k}^{e_{k}}$ is the prime factorization of $m$ (with $u = \pm 1$), then we define
     \[
-        \legendre{m}{2} = \begin{cases} 1 & \text{if $m \equiv 1,7 \tmod{8}$}, \\ -1 & \text{if $m \equiv 3,5 \tmod{8}$}, \\ 0 & \text{if $m \equiv 0 \tmod{2}$}, \end{cases}
+        \legendre{d}{m} = \legendre{d}{u}\prod_{1 \le i \le k}\legendre{d}{p_{i}}^{e_{i}}.
     \]
-    and extend $\tlegendre{m}{d}$ multiplatively in $d$ when $d$ is even. Now the quadratic residue symbol makes sense for any $m,d \ge 1$. Moreover, it is multiplicative in both $m$ and $d$ but no longer depends upon only $m$ modulo $d$ (it also depends upon $m$ modulo $8$). In particular,
+    The quadratic residue symbol now makes sense for any $m \in \Z$ and is multiplicative in both $d$ and $m$. Moreover, we have the additional relations
     \[
-        \legendre{-1}{d} = \begin{cases} 1 & \text{$d \equiv 1 \tmod{4}$}, \\ -1 & \text{$d \equiv 3 \tmod{4}$}, \\ 0 & \text{$d \equiv 0 \tmod{2}$}, \end{cases} \quad \text{and} \quad \legendre{2}{d} = \begin{cases} 1 & \text{$d \equiv 1,7 \tmod{8}$}, \\ -1 & \text{$d \equiv 3,5 \tmod{8}$}, \\ 0 & \text{$d \equiv 0 \tmod{2}$}, \end{cases}
+        \legendre{-1}{m} = \begin{cases} 1 & \text{$m \equiv 1 \tmod{4}$}, \\ -1 & \text{$m \equiv 3 \tmod{4}$}, \\ 0 & \text{$m \equiv 0 \tmod{2}$}, \end{cases} \quad \text{and} \quad \legendre{2}{m} = \begin{cases} 1 & \text{$m \equiv 1,7 \tmod{8}$}, \\ -1 & \text{$m \equiv 3,5 \tmod{8}$}, \\ 0 & \text{$m \equiv 0 \tmod{2}$}, \end{cases}
     \]
-    and if $d \not\equiv 0 \tmod{2}$, we can compactly write
+    and if $m \not\equiv 0 \tmod{2}$, we can compactly write
     \[
-        \legendre{-1}{d} = (-1)^{\frac{d-1}{2}} = \begin{cases} 1 & \text{$d \equiv 1 \tmod{4}$}, \\ -1 & \text{$d \equiv 3 \tmod{4}$}, \end{cases} \quad \text{and} \quad \legendre{2}{d} = (-1)^{\frac{d^{2}-1}{8}} = \begin{cases} 1 & \text{$d \equiv 1,7 \tmod{8}$}, \\ -1 & \text{$d \equiv 3,5 \tmod{8}$}. \end{cases}
+        \legendre{-1}{m} = (-1)^{\frac{m-1}{2}} = \begin{cases} 1 & \text{$m \equiv 1 \tmod{4}$}, \\ -1 & \text{$m \equiv 3 \tmod{4}$}, \end{cases} \quad \text{and} \quad \legendre{2}{m} = (-1)^{\frac{m^{2}-1}{8}} = \begin{cases} 1 & \text{$m \equiv 1,7 \tmod{8}$}, \\ -1 & \text{$m \equiv 3,5 \tmod{8}$}. \end{cases}
     \]
      The quadratic residue symbol also admits the following reciprocity law:
 
     \begin{theorem}[Quadratic reciprocity]
-        If $d,m \ge 1$, then
+        If $d,m \in \Z$, then
         \[
-            \legendre{d}{m} = (-1)^{\frac{d^{(2)}-1}{2}\frac{m^{(2)}-1}{2}}\legendre{m}{d},
+            \legendre{d}{m} = (-1)^{\frac{d^{(2)}-1}{2}\frac{m^{(2)}-1}{2}}\legendre{m}{|d|},
         \]
         where $d^{(2)}$ and $m^{(2)}$ are the parts of $d$ and $m$ relatively prime to $2$ respectively.
     \end{theorem}
 
-    We can now define the quadratic Dirichlet characters. For any odd square-free $d \in \Z$, define the quadratic Dirichlet character $\chi_{d}$ by the following quadratic residue symbol:
+    We can now define the quadratic Dirichlet characters. For any square-free $d \in \Z$, define the quadratic Dirichlet character $\chi_{d}$ by the following quadratic residue symbol:
     \[
         \chi_{d}(m) = \begin{cases} \legendre{d}{m} & \text{if $d \equiv 1 \tmod{4}$}, \\ \legendre{4d}{m} & \text{if $d \equiv 2,3 \tmod{4}$}. \end{cases}
     \]
-    This quadratic Dirichlet character is attached to the quadratic extension $\Q(\sqrt{d})$. We extend $\chi_{d}$ multiplicatively in the denominator so that $\chi_{d}$ makes sense for any odd $d$. In particular, $\chi_{d}(m) = \pm1$ provided $d$ and $m$ are relatively prime and $\chi_{d}(m) = 0$ if $(m,d) > 1$. Quadratic reciprocity implies that $\chi_{d}$ is a Dirichlet character modulo $d$ if $d \equiv 1 \tmod{4}$ and is a Dirichlet character modulo $4d$ if $d \equiv 2,3 \tmod{4}$. Indeed, if $d \equiv 1 \tmod{4}$ then $d^{(2)} = d$ and the sign is always $1$. If $d \equiv 3 \tmod{4}$, then $d^{(2)} = d$ and the sign is $\tlegendre{-1}{m}$ which is a character modulo $4$. If $d \equiv 2 \tmod{4}$, then $d^{(2)} \equiv 1,3 \tmod{4}$ and we are reduced to one of the previous two cases. We will also set
+    This quadratic Dirichlet character is attached to the quadratic extension $\Q(\sqrt{d})$. We extend $\chi_{d}$ multiplicatively in the denominator so that $\chi_{d}$ makes sense for any odd $d$. In particular, $\chi_{d}(m) = \pm1$ provided $d$ and $m$ are relatively prime and $\chi_{d}(m) = 0$ if $(m,d) > 1$. Quadratic reciprocity implies that $\chi_{d}$ is a Dirichlet character modulo $|d|$ if $d \equiv 1 \tmod{4}$ and is a Dirichlet character modulo $|4d|$ if $d \equiv 2,3 \tmod{4}$. Indeed, if $d \equiv 1 \tmod{4}$ then $d^{(2)} = d$ and the sign is always $1$. If $d \equiv 3 \tmod{4}$, then $d^{(2)} = d$ and the sign is $\tlegendre{-1}{m}$ which is a character modulo $4$. If $d \equiv 2 \tmod{4}$, then $d^{(2)} \equiv 1,3 \tmod{4}$ and we are reduced to one of the previous two cases. We will also set
     \[
-        q(d) = \begin{cases} d & \text{if $d \equiv 1 \tmod{4}$}, \\ 4d & \text{if $d \equiv 2,3 \tmod{4}$}, \end{cases} \quad \text{and} \quad \e_{\chi} = \frac{\tau(\chi_{d})}{\sqrt{q(d)}},
+        q(d) = \begin{cases} |d| & \text{if $d \equiv 1 \tmod{4}$}, \\ |4d| & \text{if $d \equiv 2,3 \tmod{4}$}, \end{cases} \quad \text{and} \quad \e_{\chi} = \frac{\tau(\chi_{d})}{\sqrt{q(d)}},
     \]
     where $\tau(\chi_{d})$ is the Gauss sum attached to $\chi_{d}$. We will also require an associated character. For each $\chi_{m}$ (here we are purposely interchanging the roles of $d$ and $m$ to keep consistency with the notation when discussing the double Dirichlet series later), we define $\wtilde{\chi}_{m}$ by
     \[
         \wtilde{\chi}_{m}(d) = (-1)^{\frac{m^{(2)}-1}{2}\frac{d^{(2)}-1}{2}}\chi_{m}(d).
     \]
-    Equivalently, $\wtilde{\chi}_{m}(d)$ can be expressed as
-    \[
-        \todo{\wtilde{\chi}_{m}(d) = \begin{cases} \chi_{m}(d) & \text{if $m \equiv 1 \tmod{4}$}, \\ \chi_{-1}(d^{(2)})\chi_{m}(d) & \text{if $m \equiv 2,3 \tmod{4}$}, \end{cases}}
-    \]
-    and it follows that $\wtilde{\chi}_{m}(d)$ is a quadratic Dirichlet character of the same modulus as $\chi_{m}$. \todo{Define multiplatively in the denominator...} We now discuss the Hilbert characters. We will only need four of them: the quadratic Dirichlet characters modulo $8$. They are given as follows:
+    By quadratic reciprocity, $\wtilde{\chi}_{m}$ is a quadratic Dirichlet character of the same modulus as $\chi_{m}$. We now discuss the Hilbert characters. We will only need four of them: the quadratic Dirichlet characters modulo $8$. They are given as follows:
     \begin{gather*}
         \chi_{1}(m) = \begin{cases} 1 &\text{if $m \not\equiv 0 \tmod{2}$}, \\ 0 &\text{if $m \equiv 0 \tmod{2}$}, \end{cases} \quad \chi_{-1}(m) = \begin{cases} 1 &\text{if $m \equiv 1 \tmod{4}$}, \\ -1 &\text{if $m \equiv 3 \tmod{4}$}, \\ 0 &\text{if $m \equiv 0 \tmod{2}$}, \end{cases} \\ \chi_{2}(m) = \begin{cases} 1 &\text{if $m \equiv 1,7 \tmod{8}$}, \\ -1 &\text{if $m \equiv 3,5 \tmod{8}$}, \\ 0 &\text{if $m \equiv 0 \tmod{2}$}, \end{cases} \quad \chi_{-2}(m) = \begin{cases} 1 &\text{if $m \equiv 1,3 \tmod{8}$}, \\ -1 &\text{if $m \equiv 5,7 \tmod{8}$}, \\ 0 &\text{if $m \equiv 0 \tmod{2}$}. \end{cases}
     \end{gather*}
-    In general, we will denote a Hilbert character by $\chi_{a}$ with $a \in \{\pm 1,\pm 2\}$. Morevoer, observe that $\chi_{a}(m) = \wtilde{\chi}_{a}(m)$ for all $a \in \{\pm 1,\pm 2\}$ and any $m \ge 1$. Also, can write
+    In general, we will denote a Hilbert character by $\chi_{a}$ with $a \in \{\pm 1,\pm 2\}$. Observe that $\chi_{a} = \wtilde{\chi}_{a}$ and $\wtilde{\chi}_{am} = \wtilde{\chi}_{a}\wtilde{\chi}_{m}$ for all $a \in \{\pm 1,\pm 2\}$ and any $m \in \Z$. Also, can write
     \[
         \chi_{-1}(m) = \legendre{-1}{m} \quad \text{and} \quad \chi_{2}(m) = \legendre{m}{2},
     \]
@@ -108,7 +104,7 @@
     \[
         \chi_{-2}(m) = \chi_{-1}(m)\chi_{2}(m), \quad \chi_{1}(m) = \chi_{-1}(m)\chi_{-1}(m), \quad \text{and} \quad \chi_{-1}(m) = \chi_{2}(m)\chi_{-2}(m).
     \]
-    Suppose $d$ is square-free. If $d \equiv 1,2,5 \tmod{8}$, then $d^{(2)} \equiv 1 \tmod{4}$ so that the sign in the statement of quadratic recipricty is $1$. If $d \equiv 3,6,7 \tmod{8}$, then $d^{(2)} \equiv 3 \tmod{4}$ and the sign is $(-1)^{\frac{m^{(2)}-1}{2}}$. This fact together with the relations for the quadratic characters modulo $8$ imply
+    We now return to $\chi_{d}$ for square-free $d$. If $d \equiv 1,2,5 \tmod{8}$, then $d^{(2)} \equiv 1 \tmod{4}$ so that the sign in the statement of quadratic reciprocity is $1$. If $d \equiv 3,6,7 \tmod{8}$, then $d^{(2)} \equiv 3 \tmod{4}$ and the sign is $(-1)^{\frac{m^{(2)}-1}{2}}$. This fact together with the relations for the quadratic characters modulo $8$ imply
     \[
         \chi_{d}(m) = \begin{cases} \chi_{m}(d) & \text{if $d \equiv 1 \tmod{4}$}, \\ \chi_{-1}(m)\chi_{m}(d) & \text{if $d \equiv 3 \tmod{4}$}, \\ \chi_{2}(m)\chi_{m}\left(\frac{d}{2}\right) & \text{if $d \equiv 2 \tmod{8}$}, \\ \chi_{-2}(m)\chi_{m}\left(\frac{d}{2}\right) & \text{if $d \equiv 6 \tmod{8}$}. \end{cases}
     \]
@@ -118,11 +114,11 @@
     \]
     By definition of the quadratic Dirichlet character, $L(s,\chi_{d}) \ll \z(s)$ for $\Re(s) > 1$ so that $L(s,\chi_{d})$ is locally absolutely uniformly convergent in this region. $L(s,\chi_{d})$ also admits analytic continuation to $\C$. The completed $L$-function $L^{\ast}(s,\chi_{d})$ is defined as
     \[
-        L^{\ast}(s,\chi_{d}) = \begin{cases} \pi^{-\frac{s}{2}}\G\left(\frac{s}{2}\right)L(s,\chi_{d}) & \todo{\text{if $d \equiv 1 \tmod{4}$}}, \\ \pi^{-\frac{s}{2}}\G\left(\frac{s+1}{2}\right)L(s,\chi_{d}) & \todo{\text{if $d \equiv 2,3 \tmod{4}$}}, \end{cases}
+        L^{\ast}(s,\chi_{d}) = \begin{cases} \pi^{-\frac{s}{2}}\G\left(\frac{s}{2}\right)L(s,\chi_{d}) & \text{if $\chi_{d}$ is even}, \\ \pi^{-\frac{s}{2}}\G\left(\frac{s+1}{2}\right)L(s,\chi_{d}) & \text{if $\chi_{d}$ is odd}, \end{cases}
     \]
-    \todo{and we have to check all of these cases for all of the $L$-functions were definining...} and satisfies the functional equation
+    and satisfies the functional equation
     \[
-        L^{\ast}(s,\chi_{d}) = \begin{cases} \e_{\chi}q(d)^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{d}) & \text{if $d \equiv 1 \tmod{4}$}, \\ -\e_{\chi}q(d)^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{d}) & \text{if $d \equiv 2,3 \tmod{4}$}. \end{cases}
+        L^{\ast}(s,\chi_{d}) = \begin{cases} \e_{\chi}q(d)^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{d}) & \text{if $\chi_{d}$ is even}, \\ -\e_{\chi}q(d)^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{d}) & \text{if $\chi_{d}$ is odd}. \end{cases}
     \]
     Note that the gamma factors depend upon the partiy of $\chi_{d}$. This the root cause of an important technical issue later when deriving functional equations for the quadratic double Dirichlet series. Analogously, the Dirichlet $L$-function $L(w,\wtilde{\chi}_{m})$ attached to $\wtilde{\chi}_{m}$ for square-free $m$ is defined by a Dirichlet series or Euler product:
     \[
@@ -130,11 +126,11 @@
     \]
     As for $L(s,\chi_{d})$, $L(w,\wtilde{\chi}_{m}) \ll \z(w)$ for $\Re(w) > 1$ so that $L(w,\wtilde{\chi}_{m})$ is locally absolutely uniformly convergent in this region. Moreover, $L(w,\wtilde{\chi}_{m})$ admits analytic continuation to $\C$ and the completed $L$-function $L^{\ast}(w,\wtilde{\chi}_{m})$ is defined as
     \[
-        L^{\ast}(w,\wtilde{\chi}_{m}) = \begin{cases} \pi^{-\frac{w}{2}}\G\left(\frac{w}{2}\right)L(w,\wtilde{\chi}_{m}) & \text{if $m \equiv 1 \tmod{4}$}, \\ \pi^{-\frac{w}{2}}\G\left(\frac{w+1}{2}\right)L(w,\wtilde{\chi}_{m}) & \text{if $m \equiv 2,3 \tmod{4}$}, \end{cases}
+        L^{\ast}(w,\wtilde{\chi}_{m}) = \begin{cases} \pi^{-\frac{w}{2}}\G\left(\frac{w}{2}\right)L(w,\wtilde{\chi}_{m}) & \text{if $\wtilde{\chi}_{m}$ is even}, \\ \pi^{-\frac{w}{2}}\G\left(\frac{w+1}{2}\right)L(w,\wtilde{\chi}_{m}) & \text{if $\wtilde{\chi}_{m}$ is odd}, \end{cases}
     \]
     and satisfies the functional equation
     \[
-        L^{\ast}(w,\wtilde{\chi}_{m}) = \begin{cases} \e_{\wtilde{\chi}}q(m)^{\frac{1}{2}-w}L^{\ast}(1-w,\wtilde{\chi}_{m}) & \text{if $m \equiv 1 \tmod{4}$}, \\ -\e_{\wtilde{\chi}}q(m)^{\frac{1}{2}-w}L^{\ast}(1-w,\wtilde{\chi}_{m}) & \text{if $m \equiv 2,3 \tmod{4}$}. \end{cases}
+        L^{\ast}(w,\wtilde{\chi}_{m}) = \begin{cases} \e_{\wtilde{\chi}}q(m)^{\frac{1}{2}-w}L^{\ast}(1-w,\wtilde{\chi}_{m}) & \text{if $\wtilde{\chi}_{m}$ is even}, \\ -\e_{\wtilde{\chi}}q(m)^{\frac{1}{2}-w}L^{\ast}(1-w,\wtilde{\chi}_{m}) & \text{if $\wtilde{\chi}_{m}$ is odd}. \end{cases}
     \]
 
     \begin{remark}
@@ -216,7 +212,7 @@
         \]
     \end{proof}
 
-    Note that the interchange is not completely symmetric because of the characters $\wtilde{\chi}_{a_{2}m_{0}}$, $\wtilde{\chi}_{a_{1}}$, and $\wtilde{\chi}_{a_{2}}$ in the second expression for $Z_{a_{1},a_{2}}(s,w)$. This is due to the fact that recipricty is not perfect. In even more general settings the correction polynomials in $w$ need not be equal to those in $s$.
+    Note that the interchange is not completely symmetric because of the characters $\wtilde{\chi}_{a_{2}m_{0}}$, $\wtilde{\chi}_{a_{1}}$, and $\wtilde{\chi}_{a_{2}}$ in the second expression for $Z_{a_{1},a_{2}}(s,w)$. This is due to the fact that reciprocity is not perfect. In even more general settings the correction polynomials in $w$ need not be equal to those in $s$.
 \section*{Weighting Terms}
     We will now study the coefficients of $Z_{a_{1},a_{2}}(s,w)$ expanded in $s$ and $w$. By expanding $L(s,\chi_{a_{1}d_{0}})Q_{d_{0}d_{1}^{2}}(s,\chi_{a_{1}})$ in the numerator of $Z_{a_{1},a_{2}}(s,w)$, we can write
     \[
@@ -437,7 +433,7 @@
     In particular, $L^{\ast}(s,\chi_{d})$ makes sense even when $d$ is not square-free and agrees with the previous definition when $d$ is square-free.
     Combining \cref{thm:functional_equation_correction_polynomials}, the functional equation for $L^{\ast}(s,\chi_{a_{1}d_{0}})$, and that $d \equiv d_{0} \tmod{4}$, we obtain a functional equation for $L^{\ast}(s,\chi_{a_{1}d})$:
     \[
-        L^{\ast}(s,\chi_{a_{1}d}) = \begin{cases} q(d)^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{a_{1}d}) & \text{if $d \equiv 1 \tmod{4}$}, \\ q(d)^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{a_{1}d}) & \text{if $d \equiv 2,3 \tmod{4}$}. \end{cases}
+        L^{\ast}(s,\chi_{a_{1}d}) = \begin{cases} q(d)^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{a_{1}d}) & \text{if $\chi_{a_{1}d}$ is even}, \\ q(d)^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{a_{1}d}) & \text{if $\chi_{a_{1}d}$ is odd}. \end{cases}
     \]
     Analogously, define the completed $L$-function $L^{\ast}(w,\wtilde{\chi}_{a_{2}m})$ by
     \[
@@ -445,7 +441,7 @@
     \]
     Then, as before, we have a functional equation for $L^{\ast}(w,\wtilde{\chi}_{a_{2}m})$:
     \[
-        L^{\ast}(w,\wtilde{\chi}_{a_{2}m}) = \begin{cases} q(m)^{\frac{1}{2}-w}L^{\ast}(1-w,\wtilde{\chi}_{a_{2}m}) & \text{if $m \equiv 1 \tmod{4}$}, \\ q(m)^{\frac{1}{2}-w}L^{\ast}(1-w,\wtilde{\chi}_{a_{2}m}) & \text{if $m \equiv 2,3 \tmod{4}$}. \end{cases}
+        L^{\ast}(w,\wtilde{\chi}_{a_{2}m}) = \begin{cases} q(m)^{\frac{1}{2}-w}L^{\ast}(1-w,\wtilde{\chi}_{a_{2}m}) & \text{if $\wtilde{\chi}_{a_{2}m}$ is even}, \\ q(m)^{\frac{1}{2}-w}L^{\ast}(1-w,\wtilde{\chi}_{a_{2}m}) & \text{if $\wtilde{\chi}_{a_{2}m}$ is odd}. \end{cases}
     \]
     The functional equations for $L^{\ast}(s,\chi_{a_{1}d})$ and $L^{\ast}(w,\wtilde{\chi}_{a_{2}m})$ will induce functional equations for $Z_{a_{1},a_{2}}(s,w)$. However, there is an obstruction caused by the gamma factors. Indeed, the gamma factor for $L^{\ast}(s,\chi_{a_{1}d})$ and $L^{\ast}(w,\wtilde{\chi}_{a_{2}m})$ depend upon the degrees of $d$ and $m$ respectively and to induce functional equations we need these gamma factors to be constant. Using the orthogonality for Dirichlet characters, in particular the Hilbert characters, will allow us to get past this issue.
 \section*{Meromorphic Continuation}
