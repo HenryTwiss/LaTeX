@@ -95,15 +95,15 @@
     \[
         \chi_{b}(m) = \legendre{b}{m} = \sgn(b)^{\deg(m)}.
     \]
-    We extend $\chi_{d}$ multiplicatively in the denominator so that $\chi_{d}$ makes sense for any nonzero $d \in \F_{q}[t]$. In particular, $\chi_{d}(m) = \pm1$ provided $d$ and $m$ are relatively prime and $\chi_{d}(m) = 0$ if $(m,d) > 1$. Quadratic reciprocity implies that $\chi_{d}$ is a Dirichlet character modulo $d$. Indeed, for any $m$ we can take $d$ modulo $m$ so that $\deg(d+m) = \deg(m)$ and $\sgn(d+m) = \sgn(m)$. Lastly, note that if $q \equiv 1 \tmod{4}$ and $d$ and $m$ are monic,
+    We extend $\chi_{d}$ multiplicatively in the denominator so that $\chi_{d}$ makes sense for any nonzero $d \in \F_{q}[t]$. In particular, $\chi_{d}(m) = \pm1$ provided $d$ and $m$ are relatively prime and $\chi_{d}(m) = 0$ if $(m,d) > 1$. Quadratic reciprocity implies that $\chi_{d}$ is a Dirichlet character modulo $d$. Indeed, for any $m$ we can take $d$ modulo $m$ so that $\deg(d+m) = \deg(m)$ and $\sgn(d+m) = \sgn(m)$. Lastly, note that if $q \equiv 1 \tmod{4}$ and $d$ and $m$ are monic, then
     \[
         \chi_{d}(m) = \chi_{m}(d),
     \]
-    is a reformulation of reciprocity being perfect. We now discuss the Hilbert characters. We will only need two of them: one nontrivial and one trivial. The nontrivial Hilbert character is $\chi_{\t}$ where $\t \in \F^{\x}-(\F^{\x})^{2}$:
+    which is a reformulation of reciprocity being perfect. We now discuss the Hilbert characters. We will only need two of them: one nontrivial and one trivial. The nontrivial Hilbert character is $\chi_{\t}$ where $\t \in \F^{\x}-(\F^{\x})^{2}$:
     \[
         \chi_{\t}(m) = (-1)^{\deg(m)}.
     \]
-    Note that $\conj{\chi_{\t}} = \chi_{\t}$. The other Hilbert character is the trivial Dirichlet character $\chi_{\t}^{2} = \chi_{\t\t} = \chi_{1}$. In general, we denote a Hilbert character by $\chi_{a}$ where $a \in \{1,\t\}$. More generally, we would also require Hilbert characters to keep track of the $(-1)^{\frac{q-1}{2}\deg(d)\deg(m)}$ factor in the statement of quadratic reciprocity but as we will assume $q \equiv 1 \tmod{4}$, we will not require this additional difficulty. With the Dirichlet and Hilbert characters introduced, we are ready to discuss the $L$-functions associated to quadratic Dirichlet characters. We define the Dirichlet $L$-function $L(s,\chi_{d})$ attached to $\chi_{d}$ for square-free $d$, by a Dirichlet series or Euler product:
+    Note that $\conj{\chi_{\t}} = \chi_{\t}$. The other Hilbert character is the trivial Dirichlet character $\chi_{\t}^{2} = \chi_{\t\t} = \chi_{1}$. In general, we denote a Hilbert character by $\chi_{a}$ where $a \in \{1,\t\}$. These characterrs can be viewed as characters on $\Z/2\Z$ via the homomorphism $\pi:\F_{q}[t] \to \Z/2\Z$ defined by $\pi(m) = \deg(m) \tmod{2}$. More generally, we would also require Hilbert characters to keep track of the $(-1)^{\frac{q-1}{2}\deg(d)\deg(m)}$ factor in the statement of quadratic reciprocity but as we will assume $q \equiv 1 \tmod{4}$, we will not require this additional difficulty. With the Dirichlet and Hilbert characters introduced, we are ready to discuss the $L$-functions associated to quadratic Dirichlet characters. We define the Dirichlet $L$-function $L(s,\chi_{d})$ attached to $\chi_{d}$ for square-free $d$, by a Dirichlet series or Euler product:
     \[
         L(s,\chi_{d}) = \sum_{\text{$m$ monic}}\frac{\chi_{d}(m)}{|m|^{s}} = \prod_{\text{$P$ monic irr}}\left(1-\frac{\chi_{d}(P)}{|P|^{s}}\right)^{-1}.
     \]
@@ -450,13 +450,17 @@
     \]
     We would like the functional equations for $L^{\ast}(s,\chi_{a_{1}d})$ and $L^{\ast}(w,\chi_{a_{2}m})$ to induce functional equations for $Z_{a_{1},a_{2}}(s,w)$ but there is one technical issue. The gamma factor for $L^{\ast}(s,\chi_{a_{1}d})$ and $L^{\ast}(w,\chi_{a_{2}m})$ depend upon the degrees of $d$ and $m$ respectively. In order to obtain functional equations we need the gamma factors to be constant. We will be able to move past this obstruction by exploiting the orthogonality for Dirichlet characters, in particular, the Hilbert characters. Define $Z_{a_{1},a_{2}}^{+}(s,w)$ and $Z_{a_{1},a_{2}}^{-}(s,w)$ by
     \[
-        Z_{a_{1},a_{2}}^{+}(s,w) = \frac{1}{2}\sum_{a = 1,\t}\chi_{a}(1)Z_{a_{1},aa_{2}}(s,w) \quad \text{and} \quad Z_{a_{1},a_{2}}^{-}(s,w) = \frac{1}{2}\sum_{a = 1,\t}\chi_{a}(-1)Z_{a_{1},aa_{2}}(s,w).
+        Z_{a_{1},a_{2}}^{+}(s,w) = \frac{1}{2}\sum_{a = 1,\t}\chi_{a}(1)Z_{a_{1},aa_{2}}(s,w) \quad \text{and} \quad Z_{a_{1},a_{2}}^{-}(s,w) = \frac{1}{2}\sum_{a = 1,\t}\chi_{a}(t)Z_{a_{1},aa_{2}}(s,w),
+    \]
+    which can equivalently be written as
+    \[
+        Z_{a_{1},a_{2}}^{+}(s,w) = \frac{Z_{a_{1},a_{2}}(s,w)+{Z_{a_{1},\t a_{2}}(s,w)}}{2} \quad \text{and} \quad Z_{a_{1},a_{2}}^{-}(s,w) = \frac{Z_{a_{1},a_{2}}(s,w)-{Z_{a_{1},\t a_{2}}(s,w)}}{2}.
     \]
     In terms of the representation
     \[
         Z_{a_{1},a_{2}}(s,w) = \sum_{\text{$d$ monic}}\frac{\chi_{a_{2}}(d)L(s,\chi_{a_{1}d})}{|d|^{w}},
     \]
-    and the orthogonality relation (ii) for the Hilbert characters (when $g = \pm1$ respectively), we see that $Z_{a_{1},a_{2}}^{\pm}(s,w)$ is the subseries containing only those $d$ with $\chi_{\t}(d) = \pm 1$. Equivalently, $Z_{a_{1},a_{2}}^{+}(s,w)$ and $Z_{a_{1},a_{2}}^{-}(s,w)$ are the subseries consisting of only thos $d$ with even and odd degree respectively. But then $Z_{a_{1},a_{2}}^{+}(s,w)$ and $Z_{a_{1},a_{2}}^{-}(s,w)$ are sums of $L$-functions with a fixed gamma factor we can obtain functional equations for them. The fact that $Z_{a_{1},a_{2}}(s,w)$ is a linear combination of these series will induce a function equation for $Z_{a_{1},a_{2}}(s,w)$ in terms of other twisted quadratic double Dirichlet series:
+    and the orthogonality relation (ii) for the Hilbert characters, we see that $Z_{a_{1},a_{2}}^{\pm}(s,w)$ is the subseries containing only those $d$ with $\chi_{\t}(d) = \pm 1$. Equivalently, $Z_{a_{1},a_{2}}^{+}(s,w)$ and $Z_{a_{1},a_{2}}^{-}(s,w)$ are the subseries consisting of only thos $d$ with even and odd degree respectively. But then $Z_{a_{1},a_{2}}^{+}(s,w)$ and $Z_{a_{1},a_{2}}^{-}(s,w)$ are sums of $L$-functions with a fixed gamma factor we can obtain functional equations for them. The fact that $Z_{a_{1},a_{2}}(s,w)$ is a linear combination of these series will induce a function equation for $Z_{a_{1},a_{2}}(s,w)$ in terms of other twisted quadratic double Dirichlet series:
 
     \begin{theorem}\label{thm:double_Dirichlet_series_functional_equation}
         $Z_{a_{1},a_{2}}(s,w)$ admits the functional equations
