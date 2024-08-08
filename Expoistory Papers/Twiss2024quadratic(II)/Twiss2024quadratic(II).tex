@@ -46,15 +46,7 @@
     \[
         \legendre{d}{m} = \legendre{d}{u}\prod_{1 \le i \le k}\legendre{d}{p_{i}}^{e_{i}}.
     \]
-    The quadratic residue symbol now makes sense for any $m \in \Z$ and is multiplicative in both $d$ and $m$. Moreover, we have the additional relations
-    \[
-        \legendre{-1}{m} = \begin{cases} 1 & \text{$m \equiv 1 \tmod{4}$}, \\ -1 & \text{$m \equiv 3 \tmod{4}$}, \\ 0 & \text{$m \equiv 0 \tmod{2}$}, \end{cases} \quad \text{and} \quad \legendre{2}{m} = \begin{cases} 1 & \text{$m \equiv 1,7 \tmod{8}$}, \\ -1 & \text{$m \equiv 3,5 \tmod{8}$}, \\ 0 & \text{$m \equiv 0 \tmod{2}$}, \end{cases}
-    \]
-    and if $m \not\equiv 0 \tmod{2}$, we can compactly write
-    \[
-        \legendre{-1}{m} = (-1)^{\frac{m-1}{2}} = \begin{cases} 1 & \text{$m \equiv 1 \tmod{4}$}, \\ -1 & \text{$m \equiv 3 \tmod{4}$}, \end{cases} \quad \text{and} \quad \legendre{2}{m} = (-1)^{\frac{m^{2}-1}{8}} = \begin{cases} 1 & \text{$m \equiv 1,7 \tmod{8}$}, \\ -1 & \text{$m \equiv 3,5 \tmod{8}$}. \end{cases}
-    \]
-     The quadratic residue symbol also admits the following reciprocity law:
+    The quadratic residue symbol now makes sense for any $m \in \Z$ and is multiplicative in both $d$ and $m$. The quadratic residue symbol also admits the following reciprocity law:
 
     \begin{theorem}[Quadratic reciprocity]
         If $d,m \in \Z$, then
@@ -63,6 +55,15 @@
         \]
         where $d^{(2)}$ and $m^{(2)}$ are the parts of $d$ and $m$ relatively prime to $2$ respectively.
     \end{theorem}
+
+    Moreover, we have the additional relations
+    \[
+        \legendre{-1}{m} = (-1)^{\frac{m^{(2)}-1}{2}} \quad \text{and} \quad \legendre{2}{m} = (-1)^{\frac{m^{2}-1}{8}},
+    \]
+    and if $m \not\equiv 0 \tmod{2}$, we can write
+    \[
+        \legendre{-1}{m} = (-1)^{\frac{m-1}{2}} = \begin{cases} 1 & \text{$m \equiv 1 \tmod{4}$}, \\ -1 & \text{$m \equiv 3 \tmod{4}$}, \end{cases} \quad \text{and} \quad \legendre{2}{m} = (-1)^{\frac{m^{2}-1}{8}} = \begin{cases} 1 & \text{$m \equiv 1,7 \tmod{8}$}, \\ -1 & \text{$m \equiv 3,5 \tmod{8}$}. \end{cases}
+    \]
 
     We can now define the quadratic Dirichlet characters. For any square-free $d \in \Z$, define the quadratic Dirichlet character $\chi_{d}$ by the following quadratic residue symbol:
     \[
@@ -91,7 +92,7 @@
 
     Also, we have the identities
     \[
-        \wtilde{\chi}_{a}(m) = \chi_{a}(m), \quad \chi_{-1}(m) = \legendre{-1}{m}, \quad \text{and} \quad \chi_{2}(m) = \legendre{m}{2},
+        \wtilde{\chi}_{a}(m) = \chi_{a}(m), \quad \chi_{-1}(m) = \legendre{-1}{m}, \quad \text{and} \quad \chi_{2}(m) = \legendre{2}{m},
     \]
     and the relations
     \[
@@ -107,11 +108,11 @@
     \]
     By definition of the quadratic Dirichlet character, $L(s,\chi_{d}) \ll \z(s)$ for $\Re(s) > 1$ so that $L(s,\chi_{d})$ is locally absolutely uniformly convergent in this region. $L(s,\chi_{d})$ also admits analytic continuation to $\C$. The completed $L$-function $L^{\ast}(s,\chi_{d})$ is defined as
     \[
-        L^{\ast}(s,\chi_{d}) = \begin{cases} \pi^{-\frac{s}{2}}\G\left(\frac{s}{2}\right)L(s,\chi_{d}) & \text{if $\chi_{d}$ is even}, \\ \pi^{-\frac{s}{2}}\G\left(\frac{s+1}{2}\right)L(s,\chi_{d}) & \text{if $\chi_{d}$ is odd}, \end{cases}
+        L^{\ast}(s,\chi_{d}) = \begin{cases} \pi^{-\frac{s}{2}}\G\left(\frac{s}{2}\right)L(s,\chi_{d}) & \text{if $d > 0$}, \\ \pi^{-\frac{s}{2}}\G\left(\frac{s+1}{2}\right)L(s,\chi_{d}) & \text{if $d < 0$}, \end{cases}
     \]
     and satisfies the functional equation
     \[
-        L^{\ast}(s,\chi_{d}) = \begin{cases} \e_{\chi}q(d)^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{d}) & \text{if $\chi_{d}$ is even}, \\ -\e_{\chi}q(d)^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{d}) & \text{if $\chi_{d}$ is odd}. \end{cases}
+        L^{\ast}(s,\chi_{d}) = \begin{cases} \e_{\chi}q(d)^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{d}) & \text{if $d > 0$}, \\ -\e_{\chi}q(d)^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{d}) & \text{if $d < 0$}. \end{cases}
     \]
     Note that the gamma factors depend upon the partiy of $\chi_{d}$. This the root cause of an important technical issue later when deriving functional equations for the quadratic double Dirichlet series. Analogously, the Dirichlet $L$-function $L(w,\wtilde{\chi}_{m})$ attached to $\wtilde{\chi}_{m}$ for square-free $m$ is defined by a Dirichlet series or Euler product:
     \[
@@ -119,11 +120,11 @@
     \]
     As for $L(s,\chi_{d})$, $L(w,\wtilde{\chi}_{m}) \ll \z(w)$ for $\Re(w) > 1$ so that $L(w,\wtilde{\chi}_{m})$ is locally absolutely uniformly convergent in this region. Moreover, $L(w,\wtilde{\chi}_{m})$ admits analytic continuation to $\C$ and the completed $L$-function $L^{\ast}(w,\wtilde{\chi}_{m})$ is defined as
     \[
-        L^{\ast}(w,\wtilde{\chi}_{m}) = \begin{cases} \pi^{-\frac{w}{2}}\G\left(\frac{w}{2}\right)L(w,\wtilde{\chi}_{m}) & \text{if $\wtilde{\chi}_{m}$ is even}, \\ \pi^{-\frac{w}{2}}\G\left(\frac{w+1}{2}\right)L(w,\wtilde{\chi}_{m}) & \text{if $\wtilde{\chi}_{m}$ is odd}, \end{cases}
+        L^{\ast}(w,\wtilde{\chi}_{m}) = \begin{cases} \pi^{-\frac{w}{2}}\G\left(\frac{w}{2}\right)L(w,\wtilde{\chi}_{m}) & \text{if $m \equiv 1,2,5 \tmod{8}$}, \\ \pi^{-\frac{w}{2}}\G\left(\frac{w+1}{2}\right)L(w,\wtilde{\chi}_{m}) & \text{if $m \equiv 3,6,7 \tmod{8}$}, \end{cases}
     \]
     and satisfies the functional equation
     \[
-        L^{\ast}(w,\wtilde{\chi}_{m}) = \begin{cases} \e_{\wtilde{\chi}}q(m)^{\frac{1}{2}-w}L^{\ast}(1-w,\wtilde{\chi}_{m}) & \text{if $\wtilde{\chi}_{m}$ is even}, \\ -\e_{\wtilde{\chi}}q(m)^{\frac{1}{2}-w}L^{\ast}(1-w,\wtilde{\chi}_{m}) & \text{if $\wtilde{\chi}_{m}$ is odd}. \end{cases}
+        L^{\ast}(w,\wtilde{\chi}_{m}) = \begin{cases} \e_{\wtilde{\chi}}q(m)^{\frac{1}{2}-w}L^{\ast}(1-w,\wtilde{\chi}_{m}) & \text{if $m \equiv 1,2,5 \tmod{8}$}, \\ -\e_{\wtilde{\chi}}q(m)^{\frac{1}{2}-w}L^{\ast}(1-w,\wtilde{\chi}_{m}) & \text{if $m \equiv 3,6,7 \tmod{8}$}. \end{cases}
     \]
 
     \begin{remark}
@@ -426,7 +427,7 @@
     In particular, $L^{\ast}(s,\chi_{d})$ makes sense even when $d$ is not square-free and agrees with the previous definition when $d$ is square-free.
     Combining \cref{thm:functional_equation_correction_polynomials}, the functional equation for $L^{\ast}(s,\chi_{a_{1}d_{0}})$, and that $d \equiv d_{0} \tmod{4}$, we obtain a functional equation for $L^{\ast}(s,\chi_{a_{1}d})$:
     \[
-        L^{\ast}(s,\chi_{a_{1}d}) = \begin{cases} q(d)^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{a_{1}d}) & \text{if $\chi_{a_{1}d}$ is even}, \\ q(d)^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{a_{1}d}) & \text{if $\chi_{a_{1}d}$ is odd}. \end{cases}
+        L^{\ast}(s,\chi_{a_{1}d}) = \begin{cases} q(d)^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{a_{1}d}) & \text{if $a_{1}d > 0$}, \\ q(d)^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{a_{1}d}) & \text{if $a_{1}d < 0$}. \end{cases}
     \]
     Analogously, define the completed $L$-function $L^{\ast}(w,\wtilde{\chi}_{a_{2}m})$ by
     \[
@@ -434,7 +435,7 @@
     \]
     Then, as before, we have a functional equation for $L^{\ast}(w,\wtilde{\chi}_{a_{2}m})$:
     \[
-        L^{\ast}(w,\wtilde{\chi}_{a_{2}m}) = \begin{cases} q(m)^{\frac{1}{2}-w}L^{\ast}(1-w,\wtilde{\chi}_{a_{2}m}) & \text{if $\wtilde{\chi}_{a_{2}m}$ is even}, \\ q(m)^{\frac{1}{2}-w}L^{\ast}(1-w,\wtilde{\chi}_{a_{2}m}) & \text{if $\wtilde{\chi}_{a_{2}m}$ is odd}. \end{cases}
+        L^{\ast}(w,\wtilde{\chi}_{a_{2}m}) = \begin{cases} q(m)^{\frac{1}{2}-w}L^{\ast}(1-w,\wtilde{\chi}_{a_{2}m}) & \text{if $a_{2}m \equiv 1,2,5 \tmod{8}$}, \\ q(m)^{\frac{1}{2}-w}L^{\ast}(1-w,\wtilde{\chi}_{a_{2}m}) & \text{if $a_{2}m \equiv 3,6,7 \tmod{8}$}. \end{cases}
     \]
     The functional equations for $L^{\ast}(s,\chi_{a_{1}d})$ and $L^{\ast}(w,\wtilde{\chi}_{a_{2}m})$ will induce functional equations for $Z_{a_{1},a_{2}}(s,w)$. However, there is an obstruction caused by the gamma factors. Indeed, the gamma factor for $L^{\ast}(s,\chi_{a_{1}d})$ and $L^{\ast}(w,\wtilde{\chi}_{a_{2}m})$ depend upon the degrees of $d$ and $m$ respectively and to induce functional equations we need these gamma factors to be constant. Orthogonality of the Hilbert characters will allow us to get past this issue. For $b \in \{1,3,5,7\}$, define $Z_{a_{1},a_{2}}^{b}(s,w)$ by
     \[
@@ -444,7 +445,7 @@
     \[
         Z_{a_{1},a_{2}}(s,w) = \sum_{\text{$d$ odd}}\frac{\chi_{a_{2}}(d)L(s,\chi_{a_{1}d})}{d^{w}},
     \]
-    and orthogonality of the Hilbert characters, $Z_{a_{1},a_{2}}^{b}(s,w)$ is the subseries containing only those $d$ with $d \equiv b \tmod{8}$. But then $Z_{a_{1},a_{2}}^{b}(s,w)$ is a sum of $L$-functions \todo{with a fixed gamma factor (check this with even and odd characters...)} and so we can obtain functional equation for it. The fact that $Z_{a_{1},a_{2}}(s,w)$ is a linear combination of these series will induce a function equation for $Z_{a_{1},a_{2}}(s,w)$ in terms of other twisted quadratic double Dirichlet series:
+    and orthogonality of the Hilbert characters, $Z_{a_{1},a_{2}}^{b}(s,w)$ is the subseries containing only those $d$ with $d \equiv b \tmod{8}$. But then $Z_{a_{1},a_{2}}^{b}(s,w)$ is a sum of $L$-functions with a fixed gamma factor and so we can obtain a functional equation for it. The fact that $Z_{a_{1},a_{2}}(s,w)$ is a linear combination of these series will induce a function equation for $Z_{a_{1},a_{2}}(s,w)$ in terms of other twisted quadratic double Dirichlet series:
 
 \section*{Meromorphic Continuation}
 \section*{Poles and Residues}
