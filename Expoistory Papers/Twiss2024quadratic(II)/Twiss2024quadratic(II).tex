@@ -112,7 +112,7 @@
     \]
     and satisfies the functional equation
     \[
-        L^{\ast}(s,\chi_{d}) = \begin{cases} \e_{\chi}q(d)^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{d}) & \text{if $d > 0$}, \\ -\e_{\chi}q(d)^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{d}) & \text{if $d < 0$}. \end{cases}
+        L^{\ast}(s,\chi_{d}) = \begin{cases} \e_{\chi_{d}}q(d)^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{d}) & \text{if $d > 0$}, \\ -\e_{\chi_{d}}q(d)^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{d}) & \text{if $d < 0$}. \end{cases}
     \]
     Note that the gamma factors depend upon the partiy of $\chi_{d}$. This the root cause of an important technical issue later when deriving functional equations for the quadratic double Dirichlet series. Analogously, the Dirichlet $L$-function $L(w,\wtilde{\chi}_{m})$ attached to $\wtilde{\chi}_{m}$ for square-free $m$ is defined by a Dirichlet series or Euler product:
     \[
@@ -124,7 +124,7 @@
     \]
     and satisfies the functional equation
     \[
-        L^{\ast}(w,\wtilde{\chi}_{m}) = \begin{cases} \e_{\wtilde{\chi}}q(m)^{\frac{1}{2}-w}L^{\ast}(1-w,\wtilde{\chi}_{m}) & \text{if $m \equiv 1,2,5 \tmod{8}$}, \\ -\e_{\wtilde{\chi}}q(m)^{\frac{1}{2}-w}L^{\ast}(1-w,\wtilde{\chi}_{m}) & \text{if $m \equiv 3,6,7 \tmod{8}$}. \end{cases}
+        L^{\ast}(w,\wtilde{\chi}_{m}) = \begin{cases} \e_{\wtilde{\chi}_{m}}q(m)^{\frac{1}{2}-w}L^{\ast}(1-w,\wtilde{\chi}_{m}) & \text{if $m \equiv 1,2,5 \tmod{8}$}, \\ -\e_{\wtilde{\chi}_{m}}q(m)^{\frac{1}{2}-w}L^{\ast}(1-w,\wtilde{\chi}_{m}) & \text{if $m \equiv 3,6,7 \tmod{8}$}. \end{cases}
     \]
 
     \begin{remark}
@@ -151,15 +151,23 @@
     \[
         Q_{d_{0}d_{1}^{2}}(s,\chi_{a_{1}}) = \sum_{e_{1}e_{2} \mid d_{1}}\mu(e_{1})\chi_{a_{1}d_{0}}(e_{1})e_{1}^{-s}e_{2}^{1-2s} = \sum_{e_{1}e_{2}e_{3} = d_{1}}\mu(e_{1})\chi_{a_{1}d_{0}}(e_{1})e_{1}^{-s}e_{2}^{1-2s},
     \]
-    and $\mu$ is the usual M\"obius function. By definition of the Hilbert characters, we have the analogous bound $Q_{d_{0}d_{1}^{2}}(s,\chi_{a_{1}}) \ll d_{\e}$ so that $Z_{a_{1},a_{2}}(s,w)$ converges locally absolutely uniformly in the same region as $Z(s,w)$ does. In particular, $Z(s,w) = Z_{1,1}(s,w)$. As a final comment, we will also need the correction polynomials $Q_{m_{0}m_{1}^{2}}(w)$ and $Q_{m_{0}m_{1}^{2}}(w,\wtilde{\chi}_{a_{2}})$. They are defined by
+    and $\mu$ is the usual M\"obius function. By definition of the Hilbert characters, we have the analogous bound $Q_{d_{0}d_{1}^{2}}(s,\chi_{a_{1}}) \ll d_{\e}$ so that $Z_{a_{1},a_{2}}(s,w)$ converges locally absolutely uniformly in the same region as $Z(s,w)$ does. In particular, $Z(s,w) = Z_{1,1}(s,w)$. We will also require quadratic double Dirichlet series correpsonding to the characters $\wtilde{\chi}_{m}$. Analogously writing $m = m_{0}m_{1}^{2}$, the \textbf{quadratic double Dirichlet series} $\wtilde{Z}(s,w)$ is defined as
+    \[
+        \wtilde{Z}(w,s) = \sum_{\text{$m$ odd}}\frac{L^{(2)}(w,\wtilde{\chi}_{m_{0}})Q_{m_{0}m_{1}^{2}}(w)}{m^{s}},
+    \]
+    where $Q_{d_{0}d_{1}^{2}}(w)$ is the \textbf{correction polynomial} defined by
     \[
         Q_{m_{0}m_{1}^{2}}(w) = \sum_{e_{1}e_{2} \mid m_{1}}\mu(e_{1})\chi_{m_{0}}(e_{1})e_{1}^{-w}e_{2}^{1-w} = \sum_{e_{1}e_{2}e_{3} = m_{1}}\mu(e_{1})\chi_{m_{0}}(e_{1})e_{1}^{-w}e_{2}^{1-w},
     \]
-    and
+    and $\mu$ is the usual M\"obius function. We have the analogous estimate $Q_{m_{0}m_{1}^{2}}(w) \ll_{\e} m^{\e}$ and as $L(w,\wtilde{\chi}_{m_{0}}) \ll 1$ for $\Re(s) > 1$, $\wtilde{Z}(w,s)$ is locally absolutely uniformly convergent in the same region as $Z(s,w)$. We also need to consider twists by a pair of Hilbert characters $\wtilde{\chi}_{a_{2}}$ and $\wtilde{\chi}_{a_{1}}$. The \textbf{quadratic double Dirichlet series} $\wtilde{Z}_{a_{2},a_{1}}(w,s)$ twisted by $\wtilde{\chi}_{a_{2}}$ and $\wtilde{\chi}_{a_{1}}$ is defined as
+    \[
+        \wtilde{Z}_{a_{2},a_{1}}(w,s) = \sum_{\text{$m$ odd}}\frac{L^{(2)}(w,\wtilde{\chi}_{a_{2}}m_{0})\wtilde{\chi}_{a_{1}}(m)Q_{m_{0}m_{1}}^{2}(w,\wtilde{\chi}_{a_{2}})}{m^{s}},
+    \]
+    where $Q_{m_{0}m_{1}^{2}}(w,\wtilde{\chi}_{a_{2}})$ is the \textbf{correction polynomial} twisted by $\wtilde{\chi}_{a_{2}}$ defined by
     \[
         Q_{m_{0}m_{1}^{2}}(w,\wtilde{\chi}_{a_{2}}) = \sum_{e_{1}e_{2} \mid m_{1}}\mu(e_{1})\wtilde{\chi}_{a_{2}m_{0}}(e_{1})e_{1}^{-w}e_{2}^{1-2w} = \sum_{e_{1}e_{2}e_{3} = m_{1}}\mu(e_{1})\wtilde{\chi}_{a_{2}m_{0}}(e_{1})e_{1}^{-w}e_{2}^{1-2w}.
     \]
-    Clearly they satisfy analogous estimates. 
+    and $\mu$ is the usual M\"obius function. By definition of the Hilbert characters, we have the analogous bound $Q_{m_{0}m_{1}^{2}}(w,\wtilde{\chi}_{a_{2}}) \ll_{\e} m^{\e}$ so that $\wtilde{Z}_{a_{2},a_{1}}(w,s)$ converges locally absolutely uniformly in the same region as $\wtilde{Z}(w,s)$ does. In particular, $\wtilde{Z}(w,s) = \wtilde{Z}_{1,1}(w,s)$.
 \section*{The Interchange}
     As defined, $Z_{a_{1},a_{2}}(s,w)$ is a sum of $L$-functions, and hence Euler products, in $s$. We will prove an interchange formula for $Z_{a_{1},a_{2}}(s,w)$ which will show that it can be expressed as a sum of $L$-functions in $w$. That is, we want the variables $s$ and $w$ to change places. Precisely:
 
@@ -207,6 +215,18 @@
     \end{proof}
 
     Note that the interchange is not completely symmetric because of the characters $\wtilde{\chi}_{a_{2}m_{0}}$, $\wtilde{\chi}_{a_{1}}$, and $\wtilde{\chi}_{a_{2}}$ in the second expression for $Z_{a_{1},a_{2}}(s,w)$. This is due to the fact that reciprocity is not perfect. In even more general settings the correction polynomials in $w$ need not be equal to those in $s$.
+
+    \begin{remark}\label{rem:symmetry_of_Double_Dirichlet_series}
+        When $a_{1} = a_{2} = 1$, the interchange implies
+        \[
+            Z(s,w) = \wtilde{Z}(w,s).
+        \]
+        More generally, the interchange implies the following relations for twisted quadratic double Dirichlet series:
+        \[
+            Z_{a_{1},a_{2}}(s,w) = \wtilde{Z}_{a_{2},a_{1}}(w,s),
+        \]
+        for $a_{1},a_{2} \in \{\pm1,\pm2\}$.
+    \end{remark}
 \section*{Weighting Terms}
     We will now study the coefficients of $Z_{a_{1},a_{2}}(s,w)$ expanded in $s$ and $w$. Expanding $L^{(2)}(s,\chi_{a_{1}d_{0}})Q_{d_{0}d_{1}^{2}}(s,\chi_{a_{1}})$ in the numerator of $Z_{a_{1},a_{2}}(s,w)$, we can write
     \[
@@ -236,9 +256,9 @@
     \[
         Z_{a_{1},a_{2}}(s,w) = \sum_{\text{$d$ odd}}\frac{\chi_{a_{2}}(d)L^{(2)}(s,\chi_{a_{1}d})}{d^{w}}.
     \]
-    If we perform the same procedure to the interchange, then
+    If we perform the same procedure but with the interchange, we get
     \[
-        Z_{a_{1},a_{2}}(s,w) = \sum_{\text{$m$ odd}}\frac{L^{(2)}(w,\wtilde{\chi}_{a_{2}m_{0}})\wtilde{\chi}_{a_{1}}(m)Q_{m_{0}m_{1}^{2}}(w,\wtilde{\chi}_{a_{2}})}{m^{s}} = \sum_{\text{$m,d$ odd}}\frac{\wtilde{\chi}_{a_{2}m_{0}}(\what{d})\wtilde{\chi}_{a_{1}}(m)a(d,m)}{m^{s}d^{w}},
+        \wtilde{Z}_{a_{2},a_{1}}(w,s) = \sum_{\text{$m$ odd}}\frac{L^{(2)}(w,\wtilde{\chi}_{a_{2}m_{0}})\wtilde{\chi}_{a_{1}}(m)Q_{m_{0}m_{1}^{2}}(w,\wtilde{\chi}_{a_{2}})}{m^{s}} = \sum_{\text{$m,d$ odd}}\frac{\wtilde{\chi}_{a_{2}m_{0}}(\what{d})\wtilde{\chi}_{a_{1}}(m)a(d,m)}{m^{s}d^{w}},
     \]
     where $\what{d}$ is the part of $d$ relatively prime to $m_{0}$. Analogously, we define $L(w,\wtilde{\chi}_{a_{2}m})$ to be the Dirichlet series given by
     \[
@@ -246,7 +266,7 @@
     \]
     so that
     \[
-        Z_{a_{1},a_{2}}(s,w) = \sum_{\text{$m$ odd}}\frac{\wtilde{\chi}_{a_{1}}(m)L^{(2)}(w,\wtilde{\chi}_{a_{2}m})}{m^{s}}.
+        \wtilde{Z}_{a_{2},a_{1}}(w,s) = \sum_{\text{$m$ odd}}\frac{\wtilde{\chi}_{a_{1}}(m)L^{(2)}(w,\wtilde{\chi}_{a_{2}m})}{m^{s}}.
     \]
     We now investigate the structure of the weighting coefficients $a(m,d)$. Their structure controls the majority of the information about both the quadratic double Dirichlet series and the correction polynomials. We first show that the weighting coefficients posess a multiplicativity property:
 
@@ -427,7 +447,7 @@
     In particular, $L^{\ast}(s,\chi_{d})$ makes sense even when $d$ is not square-free and agrees with the previous definition when $d$ is square-free.
     Combining \cref{thm:functional_equation_correction_polynomials}, the functional equation for $L^{\ast}(s,\chi_{a_{1}d_{0}})$, and that $d \equiv d_{0} \tmod{4}$, we obtain a functional equation for $L^{\ast}(s,\chi_{a_{1}d})$:
     \[
-        L^{\ast}(s,\chi_{a_{1}d}) = \begin{cases} q(d)^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{a_{1}d}) & \text{if $a_{1}d > 0$}, \\ q(d)^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{a_{1}d}) & \text{if $a_{1}d < 0$}. \end{cases}
+        L^{\ast}(s,\chi_{a_{1}d}) = \begin{cases} \e_{\chi_{a_{1}d_{0}}}q(d)^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{a_{1}d}) & \text{if $a_{1}d > 0$}, \\ -\e_{\chi_{a_{1}d_{0}}}q(d)^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{a_{1}d}) & \text{if $a_{1}d < 0$}. \end{cases}
     \]
     Analogously, define the completed $L$-function $L^{\ast}(w,\wtilde{\chi}_{a_{2}m})$ by
     \[
@@ -435,22 +455,29 @@
     \]
     Then, as before, we have a functional equation for $L^{\ast}(w,\wtilde{\chi}_{a_{2}m})$:
     \[
-        L^{\ast}(w,\wtilde{\chi}_{a_{2}m}) = \begin{cases} q(m)^{\frac{1}{2}-w}L^{\ast}(1-w,\wtilde{\chi}_{a_{2}m}) & \text{if $a_{2}m \equiv 1,2,5 \tmod{8}$}, \\ q(m)^{\frac{1}{2}-w}L^{\ast}(1-w,\wtilde{\chi}_{a_{2}m}) & \text{if $a_{2}m \equiv 3,6,7 \tmod{8}$}. \end{cases}
+        L^{\ast}(w,\wtilde{\chi}_{a_{2}m}) = \begin{cases} \e_{\wtilde{\chi}_{a_{2}m_{0}}}q(m)^{\frac{1}{2}-w}L^{\ast}(1-w,\wtilde{\chi}_{a_{2}m}) & \text{if $a_{2}m \equiv 1,2,5 \tmod{8}$}, \\ -\e_{\wtilde{\chi}_{a_{2}m_{0}}}q(m)^{\frac{1}{2}-w}L^{\ast}(1-w,\wtilde{\chi}_{a_{2}m}) & \text{if $a_{2}m \equiv 3,6,7 \tmod{8}$}. \end{cases}
     \]
-    The functional equations for $L^{\ast}(s,\chi_{a_{1}d})$ and $L^{\ast}(w,\wtilde{\chi}_{a_{2}m})$ will induce functional equations for $Z_{a_{1},a_{2}}(s,w)$. However, there is an obstruction caused by the gamma factors. Indeed, the gamma factor for $L^{\ast}(s,\chi_{a_{1}d})$ and $L^{\ast}(w,\wtilde{\chi}_{a_{2}m})$ depend upon the sign of $a_{1}d$ and $a_{2}m$ modulo $8$ respectively. To induce functional equations we need these gamma factors to be constant. Orthogonality of the Hilbert characters will allow us to get past this issue. The functional equation induced from $L^{\ast}(s,\chi_{a_{1}d})$ is easy since in terms of the representation 
+    The functional equations for $L^{\ast}(s,\chi_{a_{1}d})$ and $L^{\ast}(w,\wtilde{\chi}_{a_{2}m})$ will induce functional equations for $Z_{a_{1},a_{2}}(s,w)$. However, there is an obstruction caused by the gamma factors. Indeed, the gamma factors for $L^{\ast}(s,\chi_{a_{1}d})$ and $L^{\ast}(w,\wtilde{\chi}_{a_{2}m})$ depend upon $a_{1}d$ and $a_{2}m$ modulo $8$ respectively. To induce functional equations we need these gamma factors to be constant. Orthogonality of the Hilbert characters will allow us to get past this issue. For $b \in \{1,3,5,7\}$, define $Z_{a_{1},a_{2}}^{b_{1}}(s,w)$ and $\wtilde{Z}_{a_{2},a_{1}}^{b}(w,s)$ by
     \[
-        Z_{a_{1},a_{2}}(s,w) = \sum_{\text{$d$ odd}}\frac{\chi_{a_{2}}(d)L^{(2)}(s,\chi_{a_{1}d})}{d^{w}},
+        Z_{a_{1},a_{2}}^{b}(s,w) = \frac{1}{2}\sum_{a \in \{\pm1,\pm2\}}\chi_{a}(b)Z_{a_{1},aa_{2}}(s,w) \quad \text{and} \quad \wtilde{Z}_{a_{2},a_{1}}^{b}(w,s) = \frac{1}{2}\sum_{a \in \{\pm1,\pm2\}}\wtilde{\chi}_{a}(b)\wtilde{Z}_{a_{2},aa_{1}}(w,s).
     \]
-    the gamma factor only depends upon the sign of $a_{1}$ (as $d > 0$). For the functional equation induced from $L^{\ast}(w,\wtilde{\chi}_{a_{2}m})$, the situation is more subtle. For $b \in \{1,3,5,7\}$, define $Z_{a_{1},a_{2}}^{b}(s,w)$ by
+    In terms of the representations
     \[
-        Z_{a_{1},a_{2}}^{b}(s,w) = \frac{1}{2}\sum_{a \in \{\pm1,\pm2\}}\wtilde{\chi}_{a}(b)Z_{aa_{1},a_{2}}(s,w).
+        Z_{a_{1},a_{2}}(s,w) = \sum_{\text{$d$ odd}}\frac{\chi_{a_{2}}(d)L^{(2)}(s,\chi_{a_{1}d})}{d^{w}} \quad \text{and} \quad \wtilde{Z}_{a_{2},a_{1}}(w,s) = \sum_{\text{$m$ odd}}\frac{\wtilde{\chi}_{a_{1}}(m)L^{(2)}(w,\wtilde{\chi}_{a_{2}m})}{m^{s}},
     \]
-    In terms of the representation
-    \[
-        Z_{a_{1},a_{2}}(s,w) = \sum_{\text{$m$ odd}}\frac{\wtilde{\chi}_{a_{1}}(m)L^{(2)}(w,\wtilde{\chi}_{a_{2}m})}{m^{s}},
-    \]
-    and orthogonality of the Hilbert characters, $Z_{a_{1},a_{2}}^{b}(s,w)$ is the subseries containing only those $m$ with $d \equiv b \tmod{8}$. But then $Z_{a_{1},a_{2}}^{b}(s,w)$ is a sum of $L$-functions with a fixed gamma factor and so we can obtain a functional equation for it. The fact that $Z_{a_{1},a_{2}}(s,w)$ is a linear combination of these series will induce the other function equation for $Z_{a_{1},a_{2}}(s,w)$. Precisely, we have the following statement:
+    and orthogonality of the Hilbert characters, $Z_{a_{1},a_{2}}^{b_{1}}(s,w)$ and $\wtilde{Z}_{a_{2},a_{1}}^{b}(w,s)$ are subseries containing only those $d$ or $m$ equivalent to $b$ modulo $8$ respectively. But then $Z_{a_{1},a_{2}}^{b_{1}}(s,w)$ and $\wtilde{Z}_{a_{2},a_{1}}^{b}(w,s)$ are sums of $L$-functions with a fixed gamma factor and so we can obtain functional equations for them. The fact that $Z_{a_{1},a_{2}}(s,w)$ and $\wtilde{Z}_{a_{2},a_{1}}(w,s)$ are linear combination of these series respectively will induce function equations. Precisely, we have the following statement:
 
+    \begin{theorem}\label{thm:double_Dirichlet_series_functional_equation}
+        $Z_{a_{1},a_{2}}(s,w)$ admits the functional equations
+        \begin{align*}
+            \todo{Z_{a_{1},a_{2}}(s,w) = \e_{\chi_{a_{1}d_{0}}}\pi^{s-\frac{1}{2}}\frac{\G\left(\frac{1-s}{2}\right)}{\G\left(\frac{s}{2}\right)}\frac{(1-\chi_{a_{1}d}(2)2^{-(1-s)})^{-1}}{(1-\chi_{a_{1}d}(2)2^{-s})^{-1}}Z_{a_{1},a_{2}}\left(1-s,s+w-\frac{1}{2}\right),}
+        \end{align*}
+        and
+        \begin{align*}
+            \todo{xxx}
+        \end{align*}
+    \end{theorem}
+  
 \section*{Meromorphic Continuation}
 \section*{Poles and Residues}
 
