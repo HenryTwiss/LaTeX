@@ -112,9 +112,9 @@
     \]
     and satisfies the functional equation
     \[
-        L^{\ast}(s,\chi_{d}) = \begin{cases} q(d)^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{d}) & \text{if $d > 0$ and $d \equiv 1 \tmod{4}$}, \\ (1+i)q(d)^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{d}) & \text{if $d > 0$ and $d \equiv 2,3 \tmod{4}$}, \\ -q(d)^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{d}) & \text{if $d < 0$ and $d \equiv 1 \tmod{4}$} \\ (1+i)q(d)^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{d}) & \text{if $d < 0$ and $d \equiv 2,3 \tmod{4}$}. \end{cases}
+        L^{\ast}(s,\chi_{d}) = \begin{cases} q(d)^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{d}) & \text{if $d > 0$ and $d \equiv 1,5 \tmod{8}$}, \\ (1+i)q(d)^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{d}) & \text{if $d > 0$ and $d \equiv 2,3,6,7 \tmod{8}$}, \\ -iq(d)^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{d}) & \text{if $d < 0$ and $d \equiv 1,5 \tmod{8}$}, \\ (1-i)q(d)^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{d}) & \text{if $d < 0$ and $d \equiv 2,3,6,7 \tmod{8}$}. \end{cases}
     \]
-    Note that the gamma factors depend upon the partiy of $\chi_{d}$. This the root cause of an important technical issue later when deriving functional equations for the quadratic double Dirichlet series. Analogously, the Dirichlet $L$-function $L(w,\wtilde{\chi}_{m})$ attached to $\wtilde{\chi}_{m}$ for square-free $m$ is defined by a Dirichlet series or Euler product:
+    Note that the gamma factors depend upon the partiy of $\chi_{d}$ and $d$ modulo $4$. This the root cause of an important technical issue later when deriving functional equations for the quadratic double Dirichlet series. Analogously, the Dirichlet $L$-function $L(w,\wtilde{\chi}_{m})$ attached to $\wtilde{\chi}_{m}$ for square-free $m$ is defined by a Dirichlet series or Euler product:
     \[
         L(w,\wtilde{\chi}_{m}) = \sum_{d \ge 1}\frac{\wtilde{\chi}_{m}(d)}{d^{w}} = \prod_{p \text{ prime}}\left(1-\frac{\wtilde{\chi}_{m}(p)}{p^{w}}\right)^{-1}.
     \]
@@ -447,7 +447,7 @@
     In particular, $L^{\ast}(s,\chi_{d})$ makes sense even when $d$ is not square-free and agrees with the previous definition when $d$ is square-free.
     Combining \cref{thm:functional_equation_correction_polynomials}, the functional equation for $L^{\ast}(s,\chi_{a_{1}d_{0}})$, and that $d \equiv d_{0} \tmod{4}$, we obtain a functional equation for $L^{\ast}(s,\chi_{a_{1}d})$:
     \[
-        L^{\ast}(s,\chi_{a_{1}d}) = \begin{cases} \e_{\chi_{a_{1}d_{0}}}q(d)^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{a_{1}d}) & \text{if $a_{1}d > 0$}, \\ -\e_{\chi_{a_{1}d_{0}}}q(d)^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{a_{1}d}) & \text{if $a_{1}d < 0$}. \end{cases}
+        L^{\ast}(s,\chi_{a_{1}d}) = \begin{cases} q(d)^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{a_{1}d}) & \text{if $a_{1}d > 0$ and $a_{1}d \equiv 1,5 \tmod{8}$}, \\ (1+i)q(d)^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{a_{1}d}) & \text{if $a_{1}d > 0$ and $a_{1}d \equiv 2,3,6,7 \tmod{8}$}, \\ -iq(d)^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{a_{1}d}) & \text{if $a_{1}d < 0$ and $a_{1}d \equiv 1,5 \tmod{8}$}, \\ (1-i)q(d)^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{a_{1}d}) & \text{if $a_{1}d < 0$ and $a_{1}d \equiv 2,3,6,7 \tmod{8}$}. \end{cases}
     \]
     Analogously, define the completed $L$-function $L^{\ast}(w,\wtilde{\chi}_{a_{2}m})$ by
     \[
@@ -469,32 +469,16 @@
 
     \begin{theorem}\label{thm:double_Dirichlet_series_functional_equation}
         $Z_{a_{1},a_{2}}(s,w)$ and $\wtilde{Z}_{a_{2},a_{1}}(w,s)$ admit the functional equations
-        \[
-            Z_{a_{1},a_{2}}(s,w) = \chi_{a_{1}}(-1)\e_{\chi_{a_{1}d_{0}}}\pi^{s-\frac{1}{2}}\frac{\G\left(\frac{(1-s)+\d_{a_{1}}}{2}\right)}{\G\left(\frac{s+\d_{a_{1}}}{2}\right)}\frac{(1-\chi_{a_{1}d}(2)2^{-s})}{(1-\chi_{a_{1}d}(2)2^{-(1-s)})}Z_{a_{1},a_{2}}\left(1-s,s+w-\frac{1}{2}\right),
-        \]
-        where $\d_{\a_{1}} = \frac{\chi_{a_{1}}(1)-\chi_{a_{1}}(-1)}{2}$, and
         \begin{align*}
-            &\wtilde{Z}_{a_{2},a_{1}}(w,s) \\
-            &= \frac{1}{4}\left(\e_{\chi_{a_{2}m_{0}}}\pi^{w-\frac{1}{2}}\frac{\G\left(\frac{1-w}{2}\right)}{\G\left(\frac{w}{2}\right)}\frac{(1-\chi_{a_{2}m}(2)2^{-w})}{(1-\chi_{a_{2}m}(2)2^{-(1-w)})}\right)\sum_{\substack{a \in \{\pm1,\pm2\} \\ a_{2}b \equiv 1,2,5 \tmod{8}}}\wtilde{\chi}_{a}(b)\wtilde{Z}_{a_{2},aa_{1}}\left(1-w,s+w-\frac{1}{2}\right) \\
-            &- \frac{1}{4}\left(\e_{\chi_{a_{2}m_{0}}}\pi^{w-\frac{1}{2}}\frac{\G\left(\frac{(1-w)+1}{2}\right)}{\G\left(\frac{w+1}{2}\right)}\frac{(1-\chi_{a_{2}m}(2)2^{-w})}{(1-\chi_{a_{2}m}(2)2^{-(1-w)})}\right)\sum_{\substack{a \in \{\pm1,\pm2\} \\ a_{2}b \equiv 3,6,7 \tmod{8}}}\wtilde{\chi}_{a}(b)\wtilde{Z}_{a_{2},aa_{1}}\left(1-w,s+w-\frac{1}{2}\right).
+            Z_{a_{1},a_{2}}(s,w) &= \todo{xxx}
+        \end{align*}
+        and
+        \begin{align*}
+            \wtilde{Z}_{a_{2},a_{1}}(w,s) &= \todo{xxx}
         \end{align*}
     \end{theorem}
     \begin{proof}
-        The functional equation for $Z_{a_{1},a_{2}}(s,w)$ follows immeditely from the functional equation for the $L$-function attached to a quadratic Dirichlet character and that $a_{1}d > 0$ or $a_{1}d < 0$ according to if $a_{1} > 0$ or $a_{1} < 0$. For the functional equation for $\wtilde{Z}_{a_{2},a_{1}}(w,s)$, the functional equation for the $L$-function attached to a quadratic Dirichlet character implies
-        \[
-            \wtilde{Z}_{a_{2},a_{1}}^{b}(w,s) = \e_{\chi_{a_{2}m_{0}}}\pi^{w-\frac{1}{2}}\frac{\G\left(\frac{1-w}{2}\right)}{\G\left(\frac{w}{2}\right)}\frac{(1-\chi_{a_{2}m}(2)2^{-w})}{(1-\chi_{a_{2}m}(2)2^{-(1-w)})}\wtilde{Z}_{a_{2},a_{1}}^{b}\left(1-w,s+w-\frac{1}{2}\right),
-        \]
-        if $a_{2}b \equiv 1,2,5 \tmod{8}$, and
-        \[
-            \wtilde{Z}_{a_{2},a_{1}}^{b}(w,s) = -\e_{\chi_{a_{2}m_{0}}}\pi^{w-\frac{1}{2}}\frac{\G\left(\frac{(1-w)+1}{2}\right)}{\G\left(\frac{w+1}{2}\right)}\frac{(1-\chi_{a_{2}m}(2)2^{-w})}{(1-\chi_{a_{2}m}(2)2^{-(1-w)})}\wtilde{Z}_{a_{2},a_{1}}^{b}\left(1-w,s+w-\frac{1}{2}\right),
-        \]
-        if $a_{2}b \equiv 3,6,7 \tmod{8}$. Since $\wtilde{Z}_{a_{2},a_{1}}(w,s) = \sum_{b \in \{1,3,5,7\}}\wtilde{Z}_{a_{2},a_{1}}^{b}(w,s)$, the functional equations just stated imply
-        \begin{align*}
-            &\wtilde{Z}_{a_{2},a_{1}}(w,s) \\
-            &= \left(\e_{\chi_{a_{2}m_{0}}}\pi^{w-\frac{1}{2}}\frac{\G\left(\frac{1-w}{2}\right)}{\G\left(\frac{w}{2}\right)}\frac{(1-\chi_{a_{2}m}(2)2^{-w})}{(1-\chi_{a_{2}m}(2)2^{-(1-w)})}\right)\sum_{a_{2}b \equiv 1,2,5 \tmod{8}}\wtilde{Z}_{a_{2},a_{1}}^{b}\left(1-w,s+w-\frac{1}{2}\right) \\
-            &- \left(\e_{\chi_{a_{2}m_{0}}}\pi^{w-\frac{1}{2}}\frac{\G\left(\frac{(1-w)+1}{2}\right)}{\G\left(\frac{w+1}{2}\right)}\frac{(1-\chi_{a_{2}m}(2)2^{-w})}{(1-\chi_{a_{2}m}(2)2^{-(1-w)})}\right)\sum_{a_{2}b \equiv 3,6,7 \tmod{8}}\wtilde{Z}_{a_{2},a_{1}}^{b}\left(1-w,s+w-\frac{1}{2}\right).
-        \end{align*}
-        The desired functional equation for $\wtilde{Z}_{a_{2},a_{1}}(w,s)$ follows by expressing $\wtilde{Z}_{a_{2},a_{1}}^{b}(w,s)$ in terms of $\wtilde{Z}_{a_{2},aa_{1}}(w,s)$ for $a \in \{\pm1,\pm2\}$.
+        \todo{xxx}
     \end{proof}
 
     These functional equations are quite unruly and it is often far more simple to compactify them in terms of vectors. Define $\mathbf{Z}(s,w)$ and $\wtilde{\mathbf{Z}}(w,s)$ by
@@ -503,7 +487,7 @@
     \]
     with lexicographical ordering. Also set
     \[
-        \g^{a_{1}}(s) = \chi_{a_{1}}(-1)\e_{\chi_{a_{1}}},
+        \g^{a_{1}}(s) = \todo{xxx},
     \]
     and
     \[
