@@ -71,7 +71,7 @@
     \]
     This quadratic Dirichlet character is attached to the quadratic extension $\Q(\sqrt{d})$. We extend $\chi_{d}$ multiplicatively in the denominator so that $\chi_{d}$ makes sense for any odd $d$. In particular, $\chi_{d}(m) = \pm1$ provided $d$ and $m$ are relatively prime and $\chi_{d}(m) = 0$ if $(m,d) > 1$. Quadratic reciprocity implies that $\chi_{d}$ is a Dirichlet character modulo $|d|$ if $d \equiv 1 \tmod{4}$ and is a Dirichlet character modulo $|4d|$ if $d \equiv 2,3 \tmod{4}$. Indeed, if $d \equiv 1 \tmod{4}$ then $d^{(2)} = d$ and the sign is always $1$. If $d \equiv 3 \tmod{4}$, then $d^{(2)} = d$ and the sign is $\tlegendre{-1}{m}$ which is a character modulo $4$. If $d \equiv 2 \tmod{4}$, then $d^{(2)} \equiv 1,3 \tmod{4}$ and we are reduced to one of the previous two cases. We will also set
     \[
-        q(d) = \begin{cases} |d| & \text{if $d \equiv 1 \tmod{4}$}, \\ |4d| & \text{if $d \equiv 2,3 \tmod{4}$}, \end{cases} \quad \text{and} \quad \e_{\chi} = \frac{\tau(\chi_{d})}{\sqrt{q(d)}},
+        q(d) = \begin{cases} |d| & \text{if $d \equiv 1 \tmod{4}$}, \\ |4d| & \text{if $d \equiv 2,3 \tmod{4}$}, \end{cases} \quad \text{and} \quad \e_{\chi_{d}} = \frac{\tau(\chi_{d})}{\sqrt{q(d)}} = \begin{cases} 1 & \text{if $d \equiv 1 \tmod{4}$}, \\ \todo{xxx} \end{cases},
     \]
     where $\tau(\chi_{d})$ is the Gauss sum attached to $\chi_{d}$. We will also require an associated character. For each $\chi_{m}$ (here we are purposely interchanging the roles of $d$ and $m$ to keep consistency with the notation when discussing the quadratic double Dirichlet series later), we define $\wtilde{\chi}_{m}$ by
     \[
@@ -457,15 +457,15 @@
     \[
         L^{\ast}(w,\wtilde{\chi}_{a_{2}m}) = \begin{cases} \e_{\wtilde{\chi}_{a_{2}m_{0}}}q(m)^{\frac{1}{2}-w}L^{\ast}(1-w,\wtilde{\chi}_{a_{2}m}) & \text{if $a_{2}m \equiv 1,2,5 \tmod{8}$}, \\ -\e_{\wtilde{\chi}_{a_{2}m_{0}}}q(m)^{\frac{1}{2}-w}L^{\ast}(1-w,\wtilde{\chi}_{a_{2}m}) & \text{if $a_{2}m \equiv 3,6,7 \tmod{8}$}. \end{cases}
     \]
-    The functional equations for $L^{\ast}(s,\chi_{a_{1}d})$ and $L^{\ast}(w,\wtilde{\chi}_{a_{2}m})$ will induce functional equations for $Z_{a_{1},a_{2}}(s,w)$. However, there is an obstruction caused by the gamma factors. Indeed, the gamma factors for $L^{\ast}(s,\chi_{a_{1}d})$ and $L^{\ast}(w,\wtilde{\chi}_{a_{2}m})$ depend upon the sign of $a_{1}d$ and $a_{2}m$ modulo $8$ respectively. To induce functional equations we need these gamma factors to be constant. The situation is easy for  $L^{\ast}(s,\chi_{a_{1}d})$ because $d > 0$. As for $L^{\ast}(w,\wtilde{\chi}_{a_{2}m})$, orthogonality of the Hilbert characters will allow us to get past this issue. For $b \in \{1,3,5,7\}$, define $\wtilde{Z}_{a_{2},a_{1}}^{b}(w,s)$ by
+    The functional equations for $L^{\ast}(s,\chi_{a_{1}d})$ and $L^{\ast}(w,\wtilde{\chi}_{a_{2}m})$ will induce functional equations for $Z_{a_{1},a_{2}}(s,w)$. However, there is an obstruction caused by the gamma factors. Indeed, the gamma factors for $L^{\ast}(s,\chi_{a_{1}d})$ and $L^{\ast}(w,\wtilde{\chi}_{a_{2}m})$ depend $a_{1}d$ and $a_{2}m$ modulo $8$ respectively. To induce functional equations we need these gamma factors to be constant. Orthogonality of the Hilbert characters will allow us to get past this issue. For $b \in \{1,3,5,7\}$, define $Z_{a_{1},a_{2}}^{b}(s,w)$ and $\wtilde{Z}_{a_{2},a_{1}}^{b}(w,s)$ by
     \[
-        \wtilde{Z}_{a_{2},a_{1}}^{b}(w,s) = \frac{1}{4}\sum_{a \in \{\pm1,\pm2\}}\wtilde{\chi}_{a}(b)\wtilde{Z}_{a_{2},aa_{1}}(w,s).
+        Z_{a_{1},a_{2}}^{b}(s,w) = \frac{1}{4}\sum_{a \in \{\pm1,\pm2\}}\chi_{a}(b)Z_{a_{1},aa_{2}}(s,w) \quad \text{and} \quad \wtilde{Z}_{a_{2},a_{1}}^{b}(w,s) = \frac{1}{4}\sum_{a \in \{\pm1,\pm2\}}\wtilde{\chi}_{a}(b)\wtilde{Z}_{a_{2},aa_{1}}(w,s).
     \]
-    In terms of the representation
+    In terms of the representations
     \[
-        \wtilde{Z}_{a_{2},a_{1}}(w,s) = \sum_{\text{$m$ odd}}\frac{\wtilde{\chi}_{a_{1}}(m)L^{(2)}(w,\wtilde{\chi}_{a_{2}m})}{m^{s}},
+        Z_{a_{1},a_{2}}(s,w) = \sum_{\text{$d$ odd}}\frac{\chi_{a_{2}}(d)L^{(2)}(s,\chi_{a_{1}d})}{d^{w}} \quad \text{and} \quad \wtilde{Z}_{a_{2},a_{1}}(w,s) = \sum_{\text{$m$ odd}}\frac{\wtilde{\chi}_{a_{1}}(m)L^{(2)}(w,\wtilde{\chi}_{a_{2}m})}{m^{s}},
     \]
-    and orthogonality of the Hilbert characters, $\wtilde{Z}_{a_{2},a_{1}}^{b}(w,s)$ are subseries containing only those $m$ equivalent to $b$ modulo $8$. Then $\wtilde{Z}_{a_{2},a_{1}}^{b}(w,s)$ is a sum of $L$-functions with a fixed gamma factor and so we can obtain a functional equation. The fact that $\wtilde{Z}_{a_{2},a_{1}}(w,s)$ is a linear combination of these series will induce function equations. Precisely, we have the following statement:
+    and orthogonality of the Hilbert characters, $Z_{a_{1},a_{2}}^{b}(s,w)$ and $\wtilde{Z}_{a_{2},a_{1}}^{b}(w,s)$ are the subseries containing only those $d$ and $m$ equivalent to $b$ modulo $8$ respectively. Then $Z_{a_{1},a_{2}}^{b}(s,w)$ and $\wtilde{Z}_{a_{2},a_{1}}^{b}(w,s)$ are sums of $L$-functions with a fixed gamma factor and so we can obtain functional equations. The fact that $Z_{a_{1},a_{2}}(s,w)$ and $\wtilde{Z}_{a_{2},a_{1}}(w,s)$ are linear combinations of these series will induce function equations. Precisely, we have the following statement:
 
     \begin{theorem}\label{thm:double_Dirichlet_series_functional_equation}
         $Z_{a_{1},a_{2}}(s,w)$ and $\wtilde{Z}_{a_{2},a_{1}}(w,s)$ admit the functional equations
@@ -503,7 +503,7 @@
     \]
     with lexicographical ordering. Also set
     \[
-        \g^{a_{1}}(s) = \todo{xxx},
+        \g^{a_{1}}(s) = \chi_{a_{1}}(-1)\e_{\chi_{a_{1}}},
     \]
     and
     \[
