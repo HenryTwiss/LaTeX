@@ -108,15 +108,15 @@
     \]
     By definition of the quadratic Dirichlet character, $L(s,\chi_{d}) \ll \z(s)$ for $\Re(s) > 1$ so that $L(s,\chi_{d})$ is locally absolutely uniformly convergent in this region. $L(s,\chi_{d})$ also admits analytic continuation to $\C$. The completed $L$-function $L^{\ast}(s,\chi_{d})$ is defined as
     \[
-        L^{\ast}(s,\chi_{d}) = \pi^{-\frac{s}{2}}\G\left(\frac{s+\d_{d}}{2}\right)L(s,\chi_{d}),
+        L^{\ast}(s,\chi_{d}) = \begin{cases} \pi^{-\frac{s}{2}}\G\left(\frac{s}{2}\right)L(s,\chi_{d}) & \text{if $d > 0$}, \\ \pi^{-\frac{s}{2}}\G\left(\frac{s+1}{2}\right)L(s,\chi_{d}) & \text{if $d < 0$}. \end{cases}
     \]
-    where we have set $\d_{d} = \frac{1-\chi_{d}(-1)}{2} = 0,1$ according to if $d > 0$ or not. We have the functional equation
+    We have the functional equation
     \[
-        L^{\ast}(s,\chi_{d}) = (-i)^{\d_{d}}\e_{\chi_{d}}q(d)^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{d}),
+        L^{\ast}(s,\chi_{d}) = \e_{\chi_{d}}q(d)^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{d}),
     \]
     which can be equivalently expressed as
     \[
-        L^{\ast}(s,\chi_{d}) = \begin{cases} (-i)^{\d_{d}}|d|^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{d}) & \text{if $d \equiv 1,5 \tmod{8}$}, \\ (-i)^{\d_{d}}(1+i)|4d|^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{d}) & \text{if $d \equiv 2,3,6,7 \tmod{8}$}. \end{cases}
+        L^{\ast}(s,\chi_{d}) = \begin{cases} |d|^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{d}) & \text{if $d \equiv 1,5 \tmod{8}$}, \\ (1+i)|4d|^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{d}) & \text{if $d \equiv 2,3,6,7 \tmod{8}$}. \end{cases}
     \]
     Note that the gamma factor depends upon $d$ modulo $8$. This the root cause of an important technical issue later when deriving functional equations for the quadratic double Dirichlet series. Analogously, the Dirichlet $L$-function $L(w,\wtilde{\chi}_{m})$ attached to $\wtilde{\chi}_{m}$ for square-free $m$ is defined by a Dirichlet series or Euler product:
     \[
@@ -128,13 +128,13 @@
     \]
     We have the functional equation
     \[
-        L^{\ast}(w,\wtilde{\chi}_{m}) = \begin{cases} \e_{\wtilde{\chi}_{m}}q(m)^{\frac{1}{2}-w}L^{\ast}(1-w,\wtilde{\chi}_{m}) & \text{if $m \equiv 1,2,5 \tmod{8}$}, \\ -i\e_{\wtilde{\chi}_{m}}q(m)^{\frac{1}{2}-w}L^{\ast}(1-w,\wtilde{\chi}_{m}) & \text{if $m \equiv 3,6,7 \tmod{8}$}, \end{cases}
+        L^{\ast}(w,\wtilde{\chi}_{m}) = \e_{\wtilde{\chi}_{m}}q(m)^{\frac{1}{2}-w}L^{\ast}(1-w,\wtilde{\chi}_{m}),
     \]
     which can be equivalently expressed as
     \[
-        L^{\ast}(w,\wtilde{\chi}_{m}) = \begin{cases} |m|^{\frac{1}{2}-w}L^{\ast}(1-w,\wtilde{\chi}_{m}) & \text{if $m \equiv 1,5 \tmod{8}$}, \\ (-i)^{\d_{m,2}}(1+i)|4m|^{\frac{1}{2}-w}L^{\ast}(1-w,\wtilde{\chi}_{m}) & \text{if $m \equiv 2,3,6,7 \tmod{8}$}, \end{cases}
+        L^{\ast}(w,\wtilde{\chi}_{m}) = \begin{cases} |m|^{\frac{1}{2}-w}L^{\ast}(1-w,\wtilde{\chi}_{m}) & \text{if $m \equiv 1,5 \tmod{8}$}, \\ (1+i)|4m|^{\frac{1}{2}-w}L^{\ast}(1-w,\wtilde{\chi}_{m}) & \text{if $m \equiv 2,3,6,7 \tmod{8}$}, \end{cases}
     \]
-    where $\d_{m,2} = 0,1$ according to if $m \equiv 2 \tmod{8}$ or not. Analogously, note that the gamma factor depends upon $m$ modulo $8$.
+    Analogously, note that the gamma factor depends upon $m$ modulo $8$.
 
     \begin{remark}
         The definitions for $L(s,\chi_{d})$, $L^{\ast}(s,\chi_{d})$, $L(w,\wtilde{\chi}_{m})$, and $L^{\ast}(w,\wtilde{\chi}_{m})$ work perfectly well even when $d$ and $m$ are not square-free (however the functional equations do not hold). We purposely do not define these $L$-functions, yet, for $d$ and $m$ not necessarily square-free.
@@ -455,7 +455,7 @@
     \]
     In particular, $L^{\ast}(s,\chi_{d})$ makes sense even when $d$ is not square-free and agrees with the previous definition when $d$ is square-free. Combining \cref{thm:functional_equation_correction_polynomials}, the functional equation for $L^{\ast}(s,\chi_{a_{1}d_{0}})$, and that $d \equiv d_{0} \tmod{4}$, we obtain a functional equation for $L^{\ast}(s,\chi_{a_{1}d})$:
     \[
-        L^{\ast}(s,\chi_{a_{1}d}) = \begin{cases} (-i)^{\d_{a_{1}d}}|d|^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{a_{1}d}) & \text{if $a_{1}d \equiv 1,5 \tmod{8}$}, \\ (-i)^{\d_{a_{1}d}}(1+i)|8d|^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{a_{1}d}) & \text{if $a_{1}d \equiv 2,3,6,7 \tmod{8}$}. \end{cases}
+        L^{\ast}(s,\chi_{a_{1}d}) = \begin{cases} |d|^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{a_{1}d}) & \text{if $a_{1}d \equiv 1,5 \tmod{8}$}, \\ (1+i)|8d|^{\frac{1}{2}-s}L^{\ast}(1-s,\chi_{a_{1}d}) & \text{if $a_{1}d \equiv 2,3,6,7 \tmod{8}$}. \end{cases}
     \]
     Analogously, define the completed $L$-function $L^{\ast}(w,\wtilde{\chi}_{a_{2}m})$ by
     \[
@@ -463,7 +463,7 @@
     \]
     Then, as before, we have a functional equation for $L^{\ast}(w,\wtilde{\chi}_{a_{2}m})$:
     \[
-        L^{\ast}(w,\wtilde{\chi}_{a_{2}m}) = \begin{cases} |m|^{\frac{1}{2}-w}L^{\ast}(1-w,\wtilde{\chi}_{a_{2}m}) & \text{if $a_{2}m \equiv 1,5 \tmod{8}$}, \\ (-i)^{\d_{a_{2}m,2}}(1+i)|8m|^{\frac{1}{2}-w}L^{\ast}(1-w,\wtilde{\chi}_{a_{2}m}) & \text{if $a_{2}m \equiv 2,3,6,7 \tmod{8}$}. \end{cases}
+        L^{\ast}(w,\wtilde{\chi}_{a_{2}m}) = \begin{cases} |m|^{\frac{1}{2}-w}L^{\ast}(1-w,\wtilde{\chi}_{a_{2}m}) & \text{if $a_{2}m \equiv 1,5 \tmod{8}$}, \\ (1+i)|8m|^{\frac{1}{2}-w}L^{\ast}(1-w,\wtilde{\chi}_{a_{2}m}) & \text{if $a_{2}m \equiv 2,3,6,7 \tmod{8}$}. \end{cases}
     \]
     The functional equations for $L^{\ast}(s,\chi_{a_{1}d})$ and $L^{\ast}(w,\wtilde{\chi}_{a_{2}m})$ will induce functional equations for $Z_{a_{1},a_{2}}(s,w)$. However, there is an obstruction caused by the gamma factors. Indeed, the gamma factors for $L^{\ast}(s,\chi_{a_{1}d})$ and $L^{\ast}(w,\wtilde{\chi}_{a_{2}m})$ depend $a_{1}d$ and $a_{2}m$ modulo $8$ respectively. To induce functional equations we need the gamma factors to be constant. Orthogonality of the Hilbert characters will allow us to get past this issue. For $b \in \{1,3,5,7\}$, define $Z_{a_{1},a_{2}}^{b}(s,w)$ and $\wtilde{Z}_{a_{2},a_{1}}^{b}(w,s)$ by
     \[
