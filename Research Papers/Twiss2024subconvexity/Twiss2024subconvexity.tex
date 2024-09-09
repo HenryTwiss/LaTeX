@@ -1,0 +1,323 @@
+\documentclass[12pt,reqno,oneside]{amsart}
+\usepackage{import}
+\input{preamble}
+
+%=================%
+%  Title & Index  %
+%=================%
+\title{Subconvexity for $\GL_{2}$ $L$-functions via multiple Dirichlet series}
+\author{Henry Twiss}
+\date{\today}
+\makeindex
+
+\begin{document}
+
+\begin{abstract}
+  We use the amplification method and the analytic properties of shifted multiple Dirichlet series to obtain a subconvexity reuslt for twisted $\GL_{2}$ holomorphic cusp forms. This proves upon the subconvexity bound established in \cite{K}.
+\end{abstract}
+
+\maketitle
+
+\section*{Subconvexity}
+  Let $f$ be a weight $k$ holomorphic cusp form on $\G_{1}(q)\backslash\H$, for a prime $q$, and with trivial character. Let $\chi$ be a primitive Dirichlet character of conductor $p$. Suppose $(p,q) = 1$. Then it is a result of \cite{K} that
+  \[
+    L\left(\frac{1}{2},f \x \chi\right) \ll_{k,\e}(qp^{2})^{\frac{1}{4}+\e}(p^{-\frac{1}{4}}+q^{\frac{\t}{4}-\frac{1}{8}}),
+  \]
+  where $\t$ is the current best bound towards the Ramanujan-Petersson conjecture. We will improve upon this bound in the level $1$ case using Weyl group multiple Dirichlet series.
+\section{Background Setup}
+  Let $q \ge 1$ and let $\psi$ be a Dirichlet character modulo $q$. For $m \in \Z$, let
+  \[
+    c_{q}(m) = \sum_{a \tmod{q}}e^{\frac{2\pi ima}{q}} \quad \text{and} \quad c_{\psi}(m) = \sum_{a \tmod{q}}\psi(a)e^{\frac{2\pi ima}{q}},
+  \]
+  be the Ramanujan and Gauss sums respectively. In particular, for $\ell$ such that $(\ell,q) = 1$, we have
+  \[
+    c_{\psi}(\ell m) = \conj{\psi(\ell)}c_{\psi}(m),
+  \]
+  and moreover
+  \[
+    c_{\psi}(m) = \conj{\psi(m)}c_{\psi}(1),
+  \]
+  provided $\psi$ is primitive. Throughout we will let
+  \[
+    f(z) = \sum_{m \ge 1}a(m)e^{2\pi imz} = \sum_{m \ge 1}A(m)m^{\frac{k-1}{2}}e^{2\pi imz} \quad \text{and} \quad g(z) = \sum_{m \ge 1}b(m)e^{2\pi imz} = \sum_{m \ge 1}B(m)m^{\frac{k-1}{2}}e^{2\pi imz},
+  \]
+  be the Fourier expansions of two weight $k$ and level $1$ Hecke eigenforms $f$ and $g$. We define the $L$-function $L(s,f \x c_{\psi})$ by
+  \[
+    L(s,f \x c_{\psi}) = \sum_{m \ge 1}\frac{A(m)c_{\psi}(m)}{m^{s}}.
+  \]
+  When $\psi$ is primitive this is related to the $L$-function $L(s,f \x \psi)$ by
+  \[
+    L(s,f \x c_{\psi}) = \sqrt{q}L(s,f \x \psi).
+  \]
+  We will now define our primary object of interest:
+  \[
+    S_{f,g}(s_{1},s_{2};q) = \frac{1}{\vphi(q)}\sum_{\psi \tmod{q}}L(s_{1},f \x c_{\psi})L(s_{2},g \x \conj{c_{\psi}}).
+  \]
+  There are multiple Dirichlet series that are connected to these sums. Throughout we let $\{\mu_{j}\}$ represent an orthonormal basis of Maass forms with spectral parameter $t_{j}$ for $\mu_{j}$. Moreover, let $\ell_{1}$ and $\ell_{2}$ be fixed primes. Also set
+  \[
+    V_{f,g} = V_{f,g}(z;\ell_{1},\ell_{2}) = \conj{f(\ell_{1}z)}g(\ell_{2}z)\Im(z)^{k} \quad \text{and} \quad V_{f,v} = V_{f}(z;\ell_{1}) = \conj{f(\ell_{1}z)}E(z,s;k)\Im(z)^{\frac{k}{2}}.
+  \]
+
+  \subsection*{The Dirichlet Series \texorpdfstring{$D_{f,g}(s;h,\ell_{1},\ell_{2})$}{}}
+    Let $h \ge 1$. Our first multiple Dirichlet series $D_{f,g}(s;h,\ell_{1},\ell_{2})$ is given by
+    \[
+      D_{f,g}(s;h,\ell_{1},\ell_{2}) = \sum_{\ell_{1}m = \ell_{2}n+h}\frac{a(m)b(n)}{n^{s+k-1}}.
+    \]
+    This series is absolutely convergent for $\Re(s) > 1$ and admits meromorphic continuation to $\frac{1-k}{2}-C_{1} < \Re(s)$, for any $C_{1} > 0$, and in these two regions it satisfies the bounds
+    \[
+      D_{f,g}(s;h,\ell_{1},\ell_{2}) \ll_{\todo{\ell_{1},\ell_{2}}} h^{\frac{k-1}{2}+\e} \quad \text{and} \quad D_{f,g}(s;h,\ell_{1},\ell_{2}) \ll_{\todo{\ell_{1},\ell_{2}}} h^{k+2C_{1}+\e},
+    \]
+    respectively. In the region $\frac{1-k}{2}-C_{1} < \Re(s)$, the meromorphic continuation is given by the absolutely convergent spectral expansion
+    \[
+      D_{f,g}(s;h,\ell_{1},\ell_{2}) = \frac{\G(1-s)}{\G(s+k-1)}\sum_{j}\conj{\rho_{t_{j}}(-h)}h^{\frac{1}{2}-s}\frac{\G\left(s-\frac{1}{2}+it_{j}\right)\G\left(s-\frac{1}{2}-it_{j}\right)}{\G\left(\frac{1}{2}+it_{j}\right)\G\left(\frac{1}{2}-it_{j}\right)}\conj{\<V_{f,g},\mu_{j}\>}.
+    \]
+    These two representations for $D_{f,g}(s;h,\ell_{1},\ell_{2})$ give meromorphic continuation to $\C$ but we do not have a repsentation in the strip $\frac{1-k}{2} \le \Re(s) \le 1$.
+  \subsection*{The Dirichlet Series \texorpdfstring{$D_{f,v}(w;n,\ell_{1},\ell_{2})$}{}}
+    Let $n \ge 1$. Our second multiple Dirichlet series $D_{f,v}(w;n,\ell_{1},\ell_{2})$ is given by
+    \[
+      D_{f,v}(w;n,\ell_{1},\ell_{2}) = \sum_{\ell_{1}m = \ell_{2}n+h}\frac{a(m)\s_{1-2v}(h)h^{v-\frac{1}{2}}}{h^{w+\frac{k-1}{2}}}.
+    \]
+    Let $c > 0$ be such that if $v$ satisfies $\z(2v) \neq 0$, then $\Re(v)\ge \frac{1}{2}-\frac{8c}{\log(2+\Im(v))}$. For such a $c$, we set
+    \[
+      \d(s,v,u) = \frac{c}{\log(3+|\Im(s+u)|+|\Im(v)|)} \quad \text{and} \quad \d_{v} = \d(0,0,v).
+    \]
+    
+
+
+  The former series converges absolutely for $\Re(s) > 1$ while the latter does for $\Re(w) > \Re(v)+\frac{1}{2}$ and $\Re(v) > \frac{1}{2}$. In these regions, the series satisfy the estimates
+  \[
+    D_{f,g}(s;h,\ell_{1},\ell_{2}) \ll h^{\frac{k-1}{2}+\e} \quad \text{and} \quad D_{f,v}(w;n,\ell_{1},\ell_{2}) \ll n^{\frac{k-1}{2}+\e}.
+  \]
+  We define the associted multiple Dirichlet series
+  \[
+    Z_{f,g}(s,u,v;\ell_{1},\ell_{2}) = \sum_{\ell_{1}m = \ell_{2}n+h}\frac{a(m)b(n)\s_{1-2v}(h)}{n^{s+k-1}h^{u}}.
+  \]
+  This converges absolutely for $\Re(s) > 1$, $\Re(u) > \frac{k+1}{2}$, and $\Re(v) > \frac{1}{2}$. Moreover, in this region $Z_{f,g}$ can be expressed in terms of $D_{f,g}$ and $D_{f,v}$ as
+  \[
+    Z_{f,g}(s,u,v;\ell_{1},\ell_{2}) = \sum_{h \ge 1}\frac{D_{f,g}(s;h,\ell_{1},\ell_{2})\s_{1-2v}(h)}{h^{u}} = \sum_{n \ge 1}\frac{D_{f,v}\left(u+v-\frac{k}{2};n,\ell_{1},\ell_{2}\right)b(n)}{n^{s+k-1}},
+  \]
+  with both representations converging absolutely. The series $D_{f,g}$ and $D_{f,v}$ also admit spectral expansions. To state them, set
+  \[
+    V_{f,g} = V_{f,g}(z;\ell_{1},\ell_{2}) = \conj{f(\ell_{1}z)}g(\ell_{2}z)\Im(z)^{k} \quad \text{and} \quad V_{f,v} = V_{f}(z;\ell_{1}) = \conj{f(\ell_{1}z)}E(z,s;k)\Im(z)^{\frac{k}{2}}.
+  \]
+  From \cite{HHR}, $D_{f,g}$ admits the spectral expansion (modulo the continuous spectrum and up to constants)
+  \[
+    D_{f,g}(s;h,\ell_{1},\ell_{2}) = \frac{\G(1-s)}{\G(s+k-1)}\sum_{j}\conj{\rho_{t_{j}}(-h)}h^{\frac{1}{2}-s}\frac{\G\left(s-\frac{1}{2}+it_{j}\right)\G\left(s-\frac{1}{2}-it_{j}\right)}{\G\left(\frac{1}{2}+it_{j}\right)\G\left(\frac{1}{2}-it_{j}\right)}\conj{\<V_{f,g},\mu_{j}\>},
+  \]
+  which converges absolutely for $\Re(s) < \frac{1-k}{2}$ and at least $\e$ away from the poles. By analytic continuation, $D_{f,g}$ is meromorphic on $\C$. This induces a spectral expansion for $Z_{f,g}$ given by
+  \begin{align*}
+    Z_{f,g}(s,u,v;\ell_{1},\ell_{2}) = \frac{\G(1-s)}{\G(s+k-1)}&\sum_{j}\conj{\rho_{t_{j}}(-1)}h^{\frac{1}{2}-s}\frac{\G\left(s-\frac{1}{2}+it_{j}\right)\G\left(s-\frac{1}{2}-it_{j}\right)}{\G\left(\frac{1}{2}+it_{j}\right)\G\left(\frac{1}{2}-it_{j}\right)}\conj{\<V_{f,g},\mu_{j}\>} \\
+    &\cdot \frac{L\left(s+u-\frac{1}{2},\mu_{j}\right)L\left(s+u+2v-\frac{3}{2},\mu_{j}\right)}{\z(2s+2u+2v-2)},
+  \end{align*}
+  which converges absolutely for $\Re(s) < \frac{1-k}{2}$, $\Re(u) > \frac{k+1}{2}$, and $\Re(v) > \frac{1}{2}$. Similarily, $D_{f,v}$ admits the spectral expansion (modulo the continuous spectrum and up to constants)
+  \begin{align*}
+    D_{f,v}\left(w;n,\ell_{1},\ell_{2}\right) = \frac{\G(1-w)\G(w)}{\G\left(w+v+\frac{k}{2}-1\right)\G\left(w-v+\frac{k}{2}\right)}&\sum_{j}\conj{\rho_{t_{j}}(-\ell_{2}n)}(\ell_{2}n)^{\frac{1}{2}-w}\frac{\G\left(w-\frac{1}{2}+it_{j}\right)\G\left(w-\frac{1}{2}-it_{j}\right)}{\G\left(\frac{1}{2}+it_{j}\right)\G\left(\frac{1}{2}-it_{j}\right)} \\
+    &\cdot \conj{\<V_{f,v},\mu_{j}\>},
+  \end{align*}
+  which converges absolutely for $\Re(w) < \frac{1-k}{2}$. By analytic continuation, $D_{f,v}$ is meromorphic on $\C$. This induces another spectral expansion for $Z_{f,g}$ given by
+  \begin{align*}
+    Z_{f,g}(s,u,v;\ell_{1},\ell_{2}) &= \frac{\G\left(\frac{k}{2}+1-u-v\right)\G\left(u+v-\frac{k}{2}\right)}{\G(u+2v-1)\G(u)}\sum_{j}\conj{\rho_{t_{j}}(-1)}\frac{\G\left(u+v-\frac{k+1}{2}+it_{j}\right)\G\left(u+v-\frac{k+1}{2}-it_{j}\right)}{\G\left(\frac{1}{2}+it_{j}\right)\G\left(\frac{1}{2}-it_{j}\right)} \\
+    &\cdot \conj{\<V_{f,v},\mu_{j}\>}\ell_{2}^{\frac{k+1}{2}-u-v}\frac{L^{(\ell_{2})}(s+u+v-1,g \x \mu_{j})}{\z^{(\ell_{2})}(2s+2u+2v-2)}\sum_{\a \ge 0}\frac{b(\ell_{2}^{\a})\l_{f}(\ell_{2}^{\a+1})}{(\ell_{2}^{\a})^{s+u+v-1+\frac{k-1}{2}}},
+  \end{align*}
+  which converges absolutely for $\Re(s) > 1$, $\Re(u) < 1-2\Re(v)$ \todo{subtly from Jeff}, and $\Re(v) > \frac{1}{2}$ \todo{update subtly from Jeff}.
+\section{An Amplified Series}
+  Let $\ell$ be prime, fix a primitive Dirichlet character $\chi$ modulo $Q \gg 1$, and set
+  \[
+    S_{f}(s;q,L) = \frac{1}{\vphi(q)}\sum_{\psi \tmod{q}}|L(s,f \x c_{\psi})|^{2}\left|\sum_{\ell \sim L}\chi(\ell)\conj{\psi(\ell)}\right|^{2},
+  \]
+  where $\ell \sim L$ means $\ell \in [L,2L]$. We will primarily be interested in an average of $S_{f}(s;q,L)$ over $q$ in a short interval around $Q$. Accordingly, for any $\e > 0$ define
+  \[
+    S_{f}(s;Q,L) = \sum_{|q-Q| \ll Q^{\e}}S_{f}(s;q,L).
+  \]
+  Our desired result will follow from upper and lower bounds for this sum. The presence of the sum over $\ell \sim L$ in each $S_{f}(s;q,L)$ is to amplify the term attached to the character $\chi$ (note that this only happens when $q = Q$). For the lower bound, consider $S_{f}(s;Q,L)$. When $\psi = \chi$ the prime number theorem gives
+  \[
+    \left|\sum_{\ell \sim L}\chi(\ell)\cchi(\ell)\right|^{2} \sim \frac{L^{2}}{\log(L)^{2}}.
+  \]
+  So the contribution coming from the term corresponding to $\chi$ is
+  \[
+    \frac{L^{2}}{\vphi(Q)\log(L)^{2}}|L(s,f \x c_{\chi})|^{2} = \frac{QL^{2}}{\vphi(Q)\log(L)^{2}}|L(s,f \x \chi)|^{2}. 
+  \]
+  Since every term in $S_{f}(s;Q,L)$ is nonnegative, we can discard them and obtain a lower bound of the form
+  \[
+    \frac{QL^{2}}{\vphi(Q)\log(L)^{2}}|L(s,f \x \chi)|^{2} \ll S_{f}(s;q,L).
+  \]
+  Recalling that $\vphi(Q) \sim Q$ and discarding the other $S_{f}(s;q,L)$, we arrive at the associated lower bound
+  \[
+    \frac{L^{2}}{\log(L)^{2}}|L(s,f \x \chi)|^{2} \ll S_{f}(s;Q,L).
+  \]
+  The upper bound requires much more delicate treatment. We first expand all of the sums in $S_{f}(s;q,L)$:
+  \begin{align*}
+    S_{f}(s;q,L) &= \frac{1}{\vphi(q)}\sum_{\psi \tmod{q}}\sum_{m,n \ge 1}\frac{A(m)c_{\psi}(m)A(n)\conj{c_{\psi}(n)}}{(mn)^{s}}\sum_{\ell_{1},\ell_{2} \sim L}\chi(\ell_{1})\conj{\psi}(\ell_{1})\cchi(\ell_{2})\psi(\ell_{2}) \\
+    &= \frac{1}{\vphi(q)}\sum_{\psi \tmod{q}}\sum_{m,n \ge 1}\frac{A(m)A(n)}{(mn)^{s}}\sum_{\ell_{1},\ell_{2} \sim L}c_{\psi}(\ell_{1}m)\conj{c_{\psi}}(\ell_{2}n)\chi(\ell_{1})\cchi(\ell_{2}) \\
+    &= \frac{1}{\vphi(q)}\sum_{m,n \ge 1}\sum_{\ell_{1},\ell_{2} \sim L}\frac{A(m)A(n)}{(mn)^{s}}\sum_{\psi \tmod{q}}c_{\psi}(\ell_{1}m)\conj{c_{\psi}}(\ell_{2}n)\chi(\ell_{1})\cchi(\ell_{2}).
+  \end{align*}
+  Now
+  \[
+    \frac{1}{\vphi(q)}\sum_{\psi \tmod{q}}c_{\psi}(\ell_{1}m)\conj{c_{\psi}}(\ell_{2}n) = c_{q}(\ell_{1}m-\ell_{2}n),
+  \]
+  so that
+  \begin{align*}
+    S_{f}(s;q,L) &= \sum_{\ell_{1},\ell_{2} \sim L}\sum_{m,n \ge 1}\frac{A(m)A(n)}{(mn)^{s}}c_{q}(\ell_{1}m-\ell_{2}n)\chi(\ell_{1})\cchi(\ell_{2}) \\
+    &= \sum_{\ell_{1},\ell_{2} \sim L}\chi(\ell_{1})\cchi(\ell_{2})\sum_{m,n \ge 1}\frac{A(m)A(n)}{(mn)^{s}}c_{q}(\ell_{1}m-\ell_{2}n) \\
+    &= \sum_{\ell_{1},\ell_{2} \sim L}\chi(\ell_{1})\cchi(\ell_{2})S_{f}(s;q,\ell_{1},\ell_{2}),
+  \end{align*}
+  where we have set
+  \[
+    S_{f}(s;q,\ell_{1},\ell_{2}) = \sum_{m,n \ge 1}\frac{A(m)A(n)}{(mn)^{s}}c_{q}(\ell_{1}m-\ell_{2}n).
+  \]
+  Therefore
+  \[
+      S_{f}(s;Q,L) = \sum_{\ell_{1},\ell_{2} \sim L}\chi(\ell_{1})\cchi(\ell_{2})\sum_{|q-Q| \ll Q^{\e}}S_{f}(s;q,\ell_{1},\ell_{2}).
+  \]
+  In order to carefully estimate the sum over $q$ via Perron-type formulas, we need to understand the analytic properties of the Dirichlet series with coefficients $S_{f}(s;q,\ell_{1},\ell_{2})$. Thus, we define
+  \[
+    S_{f}(s,v;\ell_{1},\ell_{2}) = \sum_{q \ge 1}\frac{S_{f}(s;q,\ell_{1},\ell_{2})}{q^{2v}} = \sum_{m,n \ge 1}\frac{A(m)A(n)}{(mn)^{s}}\sum_{q \ge 1}\frac{c_{q}(\ell_{1}m-\ell_{2}n)}{q^{2v}}.
+  \]
+  The inner sum can be expressed as
+  \[
+    \sum_{q \ge 1}\frac{c_{q}(\ell_{1}m-\ell_{2}n)}{q^{2v}} = \begin{cases} \frac{\z(2v-1)}{\z(2v)} & \text{if $\ell_{1}m = \ell_{2}n$}, \\ \frac{\s_{1-2v}(\ell_{1}m-\ell_{2}n)}{\z(2v)} & \text{if $\ell_{1}m \neq \ell_{2}n$}. \end{cases}
+  \]
+  So if we write $\ell_{1}m = \ell_{2}n+h$ with $h \ge 1$, then $S_{f}(s,v;\ell_{1},\ell_{2})$ can be expressed as the sum of a diagional and an off-diagional contribution:
+  \[
+    S_{f}(s,v;\ell_{1},\ell_{2}) = \frac{\z(2v-1)}{\z(2v)}\sum_{\ell_{1}m = \ell_{2}n}\frac{A(m)A(n)}{(mn)^{s}}+\frac{2}{\z(2v)}\sum_{\ell_{1}m = \ell_{2}n+h}\frac{A(m)A(n)\s_{1-2v}(h)}{(mn)^{s}}.
+  \]
+\section{Perron-type Estimates}
+  We can now apply Perron-type formulas to upper bound
+  \[
+    S_{f}(s;Q,L) = \sum_{\ell_{1},\ell_{2} \sim L}\chi(\ell_{1})\cchi(\ell_{2})\sum_{|q-Q| \ll Q^{\e}}S_{f}(s;q,\ell_{1},\ell_{2}).
+  \]
+  Recall the inverse Mellin transform
+  \[
+    \frac{1}{2\pi i}\int_{(2)}\frac{e^{\frac{\pi v^{2}}{Q^{2}}}x^{2v}}{Q}\,dv = e^{-\frac{(y\log(x))^{2}}{\pi}}.
+  \]
+  An application of smoothed Perron's formula with this transform when $x = Q$, yields
+  \begin{align*}
+    \frac{1}{2\pi i}\int_{(2)}S_{f}(s,v;\ell_{1},\ell_{2})\frac{e^{\frac{\pi v^{2}}{Q^{2}}}Q^{2v}}{Q}\,dv &= \frac{1}{2\pi i}\int_{(2)}\sum_{q \ge 1}\frac{S_{f}(s;q,\ell_{1},\ell_{2})}{q^{2v}}\frac{e^{\frac{\pi v^{2}}{Q^{2}}}Q^{2v}}{Q}\,dv \\
+    &= \sum_{q \ge 1}S_{f}(s;q,\ell_{1},\ell_{2})\frac{1}{2\pi i}\int_{(2)}\frac{e^{\frac{\pi v^{2}}{Q^{2}}}\left(\frac{Q}{q}\right)^{2v}}{Q}\,dv \\
+    &= \sum_{|q-Q| \ll Q^{\e}}S_{f}(s;q,\ell_{1},\ell_{2})+O_{s}(Q^{-B}),
+  \end{align*}
+  with $B \gg 1$. We will now compute the Mellin transform in another way. We can decompose the integral into a diagional and an off-diagional term:
+  \begin{align*}
+    \frac{1}{2\pi i}\int_{(2)}S_{f}(s,v;\ell_{1},\ell_{2})\frac{e^{\frac{\pi v^{2}}{Q^{2}}}Q^{2v}}{Q}\,dv &= \frac{1}{2\pi i}\int_{(2)}\frac{\z(2v-1)}{\z(2v)}\sum_{\ell_{1}m = \ell_{2}n}\frac{A(m)A(n)}{(mn)^{s}}\frac{e^{\frac{\pi v^{2}}{Q^{2}}}Q^{2v}}{Q}\,dv \\
+    &+ \frac{1}{2\pi i}\int_{(2)}\frac{2}{\z(2)}\sum_{\ell_{1}m = \ell_{2}n+h}\frac{A(m)A(n)\s_{1-2v}(h)}{(mn)^{s}}\frac{e^{\frac{\pi v^{2}}{Q^{2}}}Q^{2v}}{Q}\,dv.
+  \end{align*}
+  For the diagional term, write
+  \[
+    \frac{\z(2v-1)}{\z(2v)} = \sum_{q \ge 1}\frac{\vphi(q)}{q^{2v}}.
+  \]
+  Then we compute
+  \begin{align*}
+    \frac{1}{2\pi i}\int_{(2)}\frac{\z(2v-1)}{\z(2v)}\sum_{\ell_{1}m = \ell_{2}n}\frac{A(m)A(n)}{(mn)^{s}}\frac{e^{\frac{\pi v^{2}}{Q^{2}}}Q^{2v}}{Q}\,dv &= \frac{1}{2\pi i}\int_{(2)}\sum_{q \ge 1}\frac{\vphi(q)}{q^{2v}}\sum_{\ell_{1}m = \ell_{2}n}\frac{A(m)A(n)}{(mn)^{s}}\frac{e^{\frac{\pi v^{2}}{Q^{2}}}Q^{2v}}{Q}\,dv \\
+    &= \sum_{q \ge 1}\vphi(q)\sum_{\ell_{1}m = \ell_{2}n}\frac{A(m)A(n)}{(mn)^{s}}\frac{1}{2\pi i}\int_{(2)}\frac{e^{\frac{\pi v^{2}}{Q^{2}}}\left(\frac{Q}{q}\right)^{2v}}{Q}\,dv \\
+    &= \sum_{|q-Q| \ll Q^{\e}}\vphi(q)\sum_{\ell_{1}m = \ell_{2}n}\frac{A(m)A(n)}{(mn)^{s}}+O_{s}(Q^{-B}).
+  \end{align*}
+  Therefore the diagional contribution has size
+  \[
+    \frac{1}{2\pi i}\int_{(2)}\frac{\z(2v-1)}{\z(2v)}\sum_{\ell_{1}m = \ell_{2}n}\frac{A(m)A(n)}{(mn)^{s}}\frac{e^{\frac{\pi v^{2}}{Q^{2}}}Q^{2v}}{Q}\,dv = \sum_{|q-Q| \ll Q^{\e}}\vphi(q)\sum_{\ell_{1}m = \ell_{2}n}\frac{A(m)A(n)}{(mn)^{s}}+O_{s}(Q^{-B}).
+  \]
+  To estimate the sum, writing $\ell_{1}m = \ell_{2}n = \ell_{1}\ell_{2}d$ and noting that $A(m),A(n) \ll 1$ gives
+  \[
+    \sum_{\ell_{1}m = \ell_{2}n}\frac{A(m)A(n)}{(mn)^{s}} \ll \sum_{d \ge 1}\frac{1}{(\ell_{1}\ell_{2})^{s}d^{2s}} = \frac{1}{(\ell_{1}\ell_{2})^{s}}\z(2s).
+  \]
+  Specializing $s = \frac{1}{2}+\e$, we find that the diagional contribution is
+  \[
+    \ll_{\e} \frac{Q^{1+\e}}{L^{1+2\e}},
+  \]
+  where we have again used that $\vphi(q) \sim q$. For the off-diagional term, first make the following computation:
+  \begin{align*}
+    \sum_{\ell_{1}m = \ell_{2}n+h}\frac{A(m)A(n)\s_{1-2v}(h)}{(mn)^{s}} &= \sum_{\ell_{1}m = \ell_{2}n+h}\frac{A(m)A(n)\s_{1-2v}(h)(\ell_{1}\ell_{2})^{s+\frac{k-1}{2}}}{(mn)^{s}(\ell_{1}\ell_{2})^{s+\frac{k-1}{2}}} \\
+    &= (\ell_{1}\ell_{2})^{s+\frac{k-1}{2}}\sum_{\ell_{1}m = \ell_{2}n+h}\frac{a(m)a(n)\s_{1-2v}(h)}{(\ell_{1}m)^{s+\frac{k-1}{2}}(\ell_{2}n)^{s+\frac{k-1}{2}}} \\
+    &= (\ell_{1}\ell_{2})^{s+\frac{k-1}{2}}\sum_{\ell_{1}m = \ell_{2}n+h}\frac{a(m)a(n)\s_{1-2v}(h)}{(\ell_{2}n+h)^{s+\frac{k-1}{2}}(\ell_{2}n)^{s+\frac{k-1}{2}}} \\
+    &= (\ell_{1}\ell_{2})^{s+\frac{k-1}{2}}\sum_{\ell_{1}m = \ell_{2}n+h}\frac{a(m)a(n)\s_{1-2v}(h)}{\left(1+\frac{h}{\ell_{2}n}\right)^{s+\frac{k-1}{2}}(\ell_{2}n)^{2s+k-1}}.
+  \end{align*}
+  Recall the identity
+  \[
+    \frac{1}{(1+t)^{\b}} = \frac{1}{2\pi i}\int_{(c)}\frac{\G(\b-u)\G(u)}{\G(\b)}t^{-u}\,du,
+  \]
+  for any $0 < c < \Re(\b)$. Applying this identity to our sum with $t = \frac{h}{\ell_{2}n}$ and $\b = s+\frac{k-1}{2}$ yields
+  \[
+    \frac{1}{2\pi i}\int_{(c)}(\ell_{1}\ell_{2})^{s+\frac{k-1}{2}}\sum_{\ell_{1}m = \ell_{2}n+h}\frac{a(m)a(n)\s_{1-2v}(h)}{(\ell_{2}n)^{2s-u+k-1}h^{u}}\frac{\G\left(s-u+\frac{k-1}{2}\right)\G(u)}{\G\left(s+\frac{k-1}{2}\right)}\,du.
+  \]
+  This integral can be expressed as
+  \[
+    \frac{1}{2\pi i}\int_{(c)}\ell_{1}^{s+\frac{k-1}{2}}\ell_{2}^{u-s-\frac{k-1}{2}}Z_{f}(2s-u,u,v;\ell_{1},\ell_{2})\frac{\G\left(s-u+\frac{k-1}{2}\right)\G(u)}{\G\left(s+\frac{k-1}{2}\right)}\,du.
+  \]
+  So the off-diagional contribution is
+  \[
+    \frac{1}{(2\pi i)^{2}}\int_{(2)}\int_{(c)}\frac{2}{\z(2v)}\ell_{1}^{s+\frac{k-1}{2}}\ell_{2}^{u-s-\frac{k-1}{2}}Z_{f}(2s-u,u,v;\ell_{1},\ell_{2})\frac{\G\left(s-u+\frac{k-1}{2}\right)\G(u)}{\G\left(s+\frac{k-1}{2}\right)}\frac{e^{\frac{\pi v^{2}}{Q^{2}}}Q^{2v}}{Q}\,du\,dv.
+  \]
+  Shifting the line in $v$ at $(2)$ to $\left(\frac{1}{2}+\e\right)$, we are still within the region of absolute convergence for $Z_{f}$ and do not pass over any poles of the integrand. This gives
+  \[
+    \frac{1}{(2\pi i)^{2}}\int_{\left(\frac{1}{2}+\e\right)}\int_{(c)}\frac{2}{\z(2v)}\ell_{1}^{s+\frac{k-1}{2}}\ell_{2}^{u-s-\frac{k-1}{2}}Z_{f}(2s-u,u,v;\ell_{1},\ell_{2})\frac{\G\left(s-u+\frac{k-1}{2}\right)\G(u)}{\G\left(s+\frac{k-1}{2}\right)}\frac{e^{\frac{\pi v^{2}}{Q^{2}}}Q^{2v}}{Q}\,du\,dv.
+  \]
+  Now we shift the line in $u$ at $(c)$ to $\left(\e-\frac{1}{2}\right)$. Here we pass over polar lines of $Z_{f}$. The off-diagional contribution then becomes
+  \[
+    \Res(s)+\frac{1}{(2\pi i)^{2}}\int_{\left(\frac{1}{2}+\e\right)}\int_{\left(\e-\frac{1}{2}\right)}\frac{2}{\z(2v)}\ell_{1}^{s+\frac{k-1}{2}}\ell_{2}^{u-s-\frac{k-1}{2}}Z_{f}(2s-u,u,v;\ell_{1},\ell_{2})\frac{\G\left(s-u+\frac{k-1}{2}\right)\G(u)}{\G\left(s+\frac{k-1}{2}\right)}\frac{e^{\frac{\pi v^{2}}{Q^{2}}}Q^{2v}}{Q}\,du\,dv,
+  \]
+  where
+  \[
+    \Res(s) = \todo{xxx}
+  \]
+  Ignoring the residue term for the moment, the second spectral expansion of $Z_{f}(s,u,v;\ell_{1},\ell_{2})$ along with an analgous result to one in \cite{HHR}, we have
+  \[
+    Z_{f}(s,u,v;\ell_{1},\ell_{2}) \ll \ell_{1}^{-\frac{k-1}{2}}\ell_{2}^{\frac{k+1}{2}-u-v}\todo{\text{polynomial in $s$}}.
+  \]
+  Therefore the integral is
+  \[
+    \ll \frac{1}{(2\pi i)^{2}}\int_{\left(\frac{1}{2}+\e\right)}\int_{\left(\e-\frac{1}{2}\right)}\frac{2}{\z(2v)}\ell_{1}^{s}\ell_{2}^{\frac{1}{2}-u-v}\todo{\text{polynomial in $s$}}\frac{\G\left(s-u+\frac{k-1}{2}\right)\G(u)}{\G\left(s+\frac{k-1}{2}\right)}\frac{e^{\frac{\pi v^{2}}{Q^{2}}}Q^{2v}}{Q}\,du\,dv,
+  \]
+  and from this we deduce that the off-diagional contribution at $s = \frac{1}{2}+\e$ is
+  \[
+    \ll_{\e} Q^{\e}L^{\frac{1}{2}+3\e}.
+  \]
+  Combining the diagional and off-diagional estimates, we have
+  \[
+    \sum_{|q-Q| \ll Q^{\e}}S_{f}\left(\frac{1}{2};q,\ell_{1},\ell_{2}\right) \ll_{\e} \frac{Q^{1+\e}}{L^{1+2\e}}+Q^{\e}L^{\frac{1}{2}+3\e}
+  \]
+  and summing over $\ell_{1}$ and $\ell_{2}$ yields
+  \[
+    S_{f}\left(\frac{1}{2},Q,L\right) \ll_{\e} \sum_{\ell_{1},\ell_{2} \sim L}\chi(\ell_{1})\cchi(\ell_{2})\left(\frac{Q^{1+\e}}{L^{1+2\e}}+Q^{\e}L^{\frac{1}{2}+3\e}\right) \ll Q^{1+\e}L^{1-2\e}+L^{\frac{5}{2}+3\e}Q^{\e}.
+  \]
+  Ignoring the $\e$ factors, setting $L = Q^{\frac{2}{3}}$ balances the error terms so that
+  \[
+    S_{f}\left(\frac{1}{2},Q,L\right) \ll_{\e} Q^{\frac{5}{3}}.
+  \]
+  This the desired upper bound. Combining with the lower bound and our choice of $L$ results in
+  \[
+      \frac{Q^{\frac{4}{3}}}{\log(Q^{\frac{2}{3}})^{2}}|L(s,f \x \chi)|^{2} \ll S_{f}\left(\frac{1}{2},Q,Q^{\frac{2}{3}}\right) \ll_{\e} Q^{\frac{5}{3}},
+  \]
+  which, ignoring logarithmic factors, implies
+  \[
+    |L(s,f \x \chi)| \ll_{\e} Q^{\frac{1}{6}}.
+  \]
+\section*{A Bound Analgous to Resnikov}
+  We will prove the bound
+  \[
+    \sum_{t_{j} \sim T}|\<V_{f,v},\mu_{j}\>|^{2}e^{\frac{\pi}{2}|t_{j}|} \ll \ell_{1}^{-k}T^{2k+\e}\log(T).
+  \]
+  To this end, we first estimate the inner product:
+  \begin{align*}
+    \<V_{f,v},\mu_{j}\> &= \frac{1}{\mc{V}(\ell_{1})}\int_{\mc{F}(\ell_{1})}\conj{f(\ell_{1}z)}E(z,s;k)\conj{\mu_{j}(z)}\Im(z)^{\frac{k}{2}}\,d\mu \\
+    &= \frac{1}{\mc{V}(\ell_{1})}\int_{\mc{F}(\ell_{1})}\conj{f(\ell_{1}z)}\conj{\mu_{j}(z)}\Im(z)^{\frac{k}{2}}\sum_{\g \in \G_{\infty}\backslash\G_{0}(1)}\left(\frac{j(\g,z)}{|j(\g,z)|}\right)^{-k}\Im(\g z)^{s}\,d\mu \\
+    &= \frac{1}{\mc{V}(\ell_{1})}\int_{\mc{F}(\ell_{1})}\sum_{\g \in \G_{\infty}\backslash\G_{0}(1)}\conj{f(\g\ell_{1} z)}\conj{\mu_{j}(\g z)}\left(\frac{\conj{j(\g,\ell_{1}z)}j(\g,z)}{|j(\g,z)|^{2}}\right)^{-k}\Im(\g z)^{s+\frac{k}{2}}\,d\mu.
+  \end{align*}
+  Writing $\mc{F}(\ell_{1}) = \bigcup_{\eta \in \G_{0}(\ell_{1})\backslash\G_{0}(1)}\eta\mc{F}$, we can express the integral as
+  \[
+    \frac{1}{\mc{V}(\ell_{1})}\sum_{\eta \in \G_{0}(\ell_{1})\backslash\G_{0}(1)}\int_{\eta\mc{F}(\ell_{1})}\sum_{\g \in \G_{\infty}\backslash\G_{0}(1)}\conj{f(\g\ell_{1} z)}\conj{\mu_{j}(\g z)}\left(\frac{\conj{j(\g,\ell_{1}z)}j(\g,z)}{|j(\g,z)|^{2}}\right)^{-k}\Im(\g z)^{s+\frac{k}{2}}\,d\mu,
+  \]
+  which is equivalent to
+  \[
+    \frac{1}{\mc{V}(\ell_{1})}\int_{\mc{F}}\sum_{\eta \in \G_{0}(\ell_{1})\backslash\G_{0}(1)}\sum_{\g \in \G_{\infty}\backslash\G_{0}(1)}\conj{f(\g\eta\ell_{1} z)}\conj{\mu_{j}(\g\eta z)}\left(\frac{\conj{j(\g,\eta \ell_{1}z)}j(\g,\eta z)}{|j(\g,\eta z)|^{2}}\right)^{-k}\Im(\g\eta z)^{s+\frac{k}{2}}\,d\mu
+  \]
+
+
+
+\begin{thebibliography}{99}
+  \bibitem{K}
+  Khan, Rizwanur. "Subconvexity bounds for twisted $L$-functions, II." Transactions of the American Mathematical Society 375.10 (2022): 6769-6796.
+
+  \bibitem{HHR}
+  Hoffstein, Jeff, Thomas A. Hulse, and Andre Reznikov. "Multiple Dirichlet series and shifted convolutions." Journal of Number Theory 161 (2016): 457-533.
+\end{thebibliography}
+
+\end{document}
