@@ -134,7 +134,7 @@
         \[
           \frac{\z'}{\z}(s) = \log(\pi)+\frac{1}{2}\frac{\G'}{\G}\left(\frac{1-s}{2}\right)-\frac{1}{2}\frac{\G'}{\G}\left(\frac{s}{2}\right)+\frac{\z'}{\z}(1-s).
         \]
-        Let $s$ be such that $\s < -1$ and suppose $s$ is say distance $\frac{1}{2}$ away from the trivial zeros. We will estimate every term on the right-hand side. The first term is contant and the four term is bounded by \cref{equ:Drichlet_series_log_derivative_zeta}. As for the digamma terms, since $s$ is away from the trivial zeros, \cref{equ:approximtion_for_digamma} implies $\frac{1}{2}\frac{\G'}{\G}\left(\frac{1-s}{2}\right) = O(\log|1-s|)$ and $\frac{1}{2}\frac{\G'}{\G}\left(\frac{s}{2}\right) = O(\log|s|)$. However, as $\s < -1$, $s$ and $1-s$ are bounded away from zero so that $\frac{1}{2}\frac{\G'}{\G}\left(\frac{1-s}{2}\right) = O(\log|s|)$. Putting these estimates together gives
+        Let $s$ be such that $\s < -1$ and suppose $s$ is distance $\frac{1}{2}$ away from the trivial zeros. We will estimate every term on the right-hand side of the previous identity. The first term is contant and the last term is bounded by \cref{equ:Drichlet_series_log_derivative_zeta}. As for the digamma terms, since $s$ is away from the trivial zeros, \cref{equ:approximtion_for_digamma} implies $\frac{1}{2}\frac{\G'}{\G}\left(\frac{1-s}{2}\right) = O(\log|1-s|)$ and $\frac{1}{2}\frac{\G'}{\G}\left(\frac{s}{2}\right) = O(\log|s|)$. However, as $\s < -1$ and $s$ is away from the trivial zeros, $s$ and $1-s$ are bounded away from zero so that $\frac{1}{2}\frac{\G'}{\G}\left(\frac{1-s}{2}\right) = O(\log|s|)$. Putting these estimates together gives
         \begin{equation}\label{equ:explicit_formula_zeta_proof_9}
           \frac{\z'}{\z}(s) \ll \log(|s|),
         \end{equation}
@@ -161,7 +161,7 @@
         where the second to last term on the right-hand side is obtained by combining error term in \cref{equ:explicit_formula_zeta_proof_11} with the first error term in \cref{equ:explicit_formula_zeta_proof_6}. The theorem follows by taking the limit as $T \to \infty$.
       \end{proof}
 
-      Note that the convergence of the right-hand side in the explicit formula for $\psi$ is uniform in any interval not containing a prime power since $\psi$ is continuous there. Moreover, we have an approximate formula for $\psi(x)$ as a corollary:
+      Note that the convergence of the right-hand side in the explicit formula for $\psi(x)$ is uniform in any interval not containing a prime power since $\psi(x)$ is continuous there. Moreover, we have an approximate formula for $\psi(x)$ as a corollary:
 
       \begin{corollary}\label{cor:explicit_formula_zeta_corollary}
          For $x \ge 2$ and $T > 2$,
@@ -185,7 +185,7 @@
       Thus $\psi_{0}(x,\chi)$ is $\psi(x,\chi)$ except that its value is halfway between the limit values when $x$ is a prime power. The \textbf{explicit formula}\index{explicit formula} for $\psi(x,\chi)$ is the following:
 
       \begin{theorem}[Explicit formula for $\psi(x,\chi)$]
-        Let $\chi$ be a Dirichlet character modulo $m > 1$. For $x \ge 2$,
+        Let $\chi$ be a primitive Dirichlet character of conductor $q > 1$. For $x \ge 2$,
         \[
           \psi_{0}(x,\chi) = -\sum_{\rho}\frac{x^{\rho}}{\rho}-\frac{L'}{L}(0,\chi)+\tanh^{-1}(x^{-1}),
         \]
@@ -203,7 +203,7 @@
       where $\w$ runs over the trivial zeros of $L(s,\chi)$. In the case $\chi$ is even, $\frac{1}{2}\log(1-x^{-2})$ accounts for the contribution of the trivial zeros just as for $\z(s)$. We will now prove the explicit formula for $\psi(x,\chi)$:
 
       \begin{proof}[Proof of the explicit formula for $\psi(x,\chi)$]
-        First suppose $\chi$ is primitive. Recalling \cref{equ:Drichlet_series_log_derivative_Dirichlet} and that $\psi(x,\chi) = \sum_{n \le x}\chi(n)\L(n)$, truncated Perron's formula applied to $-\frac{L'}{L}(s,\chi)$ gives
+        Recalling \cref{equ:Drichlet_series_log_derivative_Dirichlet} and that $\psi(x,\chi) = \sum_{n \le x}\chi(n)\L(n)$, truncated Perron's formula applied to $-\frac{L'}{L}(s,\chi)$ gives
         \begin{equation}\label{equ:explicit_formula_Dirichlet_proof_1}
           \psi_{0}(x,\chi)-J(x,T,\chi) \ll x^{c}\sum_{\substack{n \ge 1 \\ n \neq x}}\frac{\chi(n)\L(n)}{n^{c}}\min\left(1,\frac{1}{T\left|\log\left(\frac{x}{n}\right)\right|}\right)+\d_{x}\chi(x)\L(x)\frac{c}{T},
         \end{equation}
@@ -293,7 +293,7 @@
         \begin{equation}\label{equ:explicit_formula_Dirichlet_proof_7'}
           J(x,T,\chi) = -\sum_{|\g| < T}\frac{x^{\rho}}{\rho}-\log(x)-b(\chi)-\sum_{0 < 2m < U}\frac{x^{-2m}}{-2m}+\frac{1}{2\pi i}\int_{\eta_{2}+\eta_{3}+\eta_{4}}-\frac{L'}{L}(s,\chi)x^{s}\,\frac{ds}{s},
         \end{equation}
-        where $\rho = \b+i\g$ is a nontrivial zero of $L(s,\chi)$. We now estimate the remaining integrals in \cref{equ:explicit_formula_Dirichlet_proof_7,equ:explicit_formula_Dirichlet_proof_7'}. For this estimate, the parity of $\chi$ does not matter so we only assume $\chi$ is primitive. By \cref{cor:Riemann_von_Mangoldt_Dirichlet_L-functions_corollary} (i) and that $\log(q(T+2)) \sim \log(qT)$, the number of nontrivial zeros satisfying $|\g-T| < 1$ is $O(\log(qT))$. Among the ordinates of these zeros, there must be a gap of size $\gg \frac{1}{\log(qT)}$. Upon varrying $T$ by a bounded amount (we are varrying in the interval $[T-1,T+1]$) so that it belongs to this gap, we can additionally ensure
+        where $\rho = \b+i\g$ is a nontrivial zero of $L(s,\chi)$. We now estimate the remaining integrals in \cref{equ:explicit_formula_Dirichlet_proof_7,equ:explicit_formula_Dirichlet_proof_7'}. For this estimate, the parity of $\chi$ does not matter so we make no such restriction. By \cref{cor:Riemann_von_Mangoldt_Dirichlet_L-functions_corollary} (i) and that $\log(q(T+2)) \sim \log(qT)$, the number of nontrivial zeros satisfying $|\g-T| < 1$ is $O(\log(qT))$. Among the ordinates of these zeros, there must be a gap of size $\gg \frac{1}{\log(qT)}$. Upon varrying $T$ by a bounded amount (we are varrying in the interval $[T-1,T+1]$) so that it belongs to this gap, we can additionally ensure
         \[
           |\g-T| \gg \frac{1}{\log(qT)},
         \]
@@ -309,42 +309,65 @@
         \begin{equation}\label{equ:explicit_formula_Dirichlet_proof_8}
           \ll \frac{\log^{2}(qT)}{T}\int_{-1}^{c}x^{\s}\,d\s \ll \frac{\log^{2}(qT)}{T}\int_{-\infty}^{c}x^{\s}\,d\s \ll \frac{x\log^{2}(qT)}{T\log(x)},
         \end{equation}
-        where in the first estimate we have used the fact that $s \sim T$ and in the last estimate we have used the choice of $c$. \todo{xxx}
-        \iffalse
-        To estimate the remainder of the horizontal integrals, we require a bound for $\frac{L'}{L}(s,\chi)$ when $\s < -1$ and away from the trivial zeros. To find such a bound, write the functional equation for $L(s,\chi)$ in the form
+        where in the first estimate we have used the fact that $s \sim T$ and in the last estimate we have used the choice of $c$. To estimate the remainder of the horizontal integrals, we require a bound for $\frac{L'}{L}(s,\chi)$ when $\s < -1$ and away from the trivial zeros. To find such a bound, write the functional equation for $L(s,\chi)$ in the form
         \[
-          \z(s) = \pi^{s-1}\frac{\G\left(\frac{1-s}{2}\right)}{\G\left(\frac{s}{2}\right)}\z(1-s),
+          L(s,\chi) = \frac{\e_{\chi}}{i^{\mf{a}}}q^{\frac{1}{2}-s}\pi^{s-1}\frac{\G\left(\frac{(1-s)+\mf{a}}{2}\right)}{\G\left(\frac{s+\mf{a}}{2}\right)}L(1-s,\chi),
         \]
         and take the logarithmic derivative to get
         \[
-          \frac{\z'}{\z}(s) = \log(\pi)+\frac{1}{2}\frac{\G'}{\G}\left(\frac{1-s}{2}\right)-\frac{1}{2}\frac{\G'}{\G}\left(\frac{s}{2}\right)+\frac{\z'}{\z}(1-s).
+          \frac{L'}{L}(s,\chi) = -\log(q)+\log(\pi)+\frac{1}{2}\frac{\G'}{\G}\left(\frac{(1-s)+\mf{a}}{2}\right)-\frac{1}{2}\frac{\G'}{\G}\left(\frac{s+\mf{a}}{2}\right)+\frac{L'}{L}(1-s,\chi).
         \]
-        Let $s$ be such that $\s < -1$ and suppose $s$ is say distance $\frac{1}{2}$ away from the trivial zeros. We will estimate every term on the right-hand side. The first term is contant and the four term is bounded by \cref{equ:Drichlet_series_log_derivative_zeta}. As for the digamma terms, since $s$ is away from the trivial zeros, \cref{equ:approximtion_for_digamma} implies $\frac{1}{2}\frac{\G'}{\G}\left(\frac{1-s}{2}\right) = O(\log|1-s|)$ and $\frac{1}{2}\frac{\G'}{\G}\left(\frac{s}{2}\right) = O(\log|s|)$. However, as $\s < -1$, $s$ and $1-s$ are bounded away from zero so that $\frac{1}{2}\frac{\G'}{\G}\left(\frac{1-s}{2}\right) = O(\log|s|)$. Putting these estimates together gives
+        Now let $s$ be such that $\s < -1$ and suppose $s$ is distance $\frac{1}{2}$ away from the trivial zeros. We will estimate every term on the right-hand side of the identity above. The second term is contant and the last term is bounded by \cref{equ:Drichlet_series_log_derivative_Dirichlet}. For the digamma terms, $s$ is away from the trivial zeros so \cref{equ:approximtion_for_digamma} implies $\frac{1}{2}\frac{\G'}{\G}\left(\frac{(1-s)+\mf{a}}{2}\right) = O(\log|(1-s)+\mf{a}|)$ and $\frac{1}{2}\frac{\G'}{\G}\left(\frac{s+\mf{a}}{2}\right) = O(\log|s+\mf{a}|)$. However, as $\s < -1$ and $s$ is away from the trivial zeros, $s+\mf{a}$ and $(1-s)+\mf{a}$ are bounded away from zero so that $\frac{1}{2}\frac{\G'}{\G}\left(\frac{(1-s)+\mf{a}}{2}\right) = O(\log|s|)$ and $\frac{1}{2}\frac{\G'}{\G}\left(\frac{s+\mf{a}}{2}\right) = O(\log|s|)$. Putting these estimates together with the first term yields
         \begin{equation}\label{equ:explicit_formula_Dirichlet_proof_9}
-          \frac{\z'}{\z}(s) \ll \log(|s|),
+          \frac{L'}{L}(s,\chi) \ll \log(q|s|),
         \end{equation}
         for $\s < -1$. Using \cref{equ:explicit_formula_Dirichlet_proof_9}, the parts of the horizontal integrals over $\eta_{2}$ and $\eta_{4}$ with $-U \le \s \le -1$ contribute
         \begin{equation}\label{equ:explicit_formula_Dirichlet_proof_10}
-          \ll \frac{\log(T)}{T}\int_{-U}^{-1}x^{\s}\,d\s \ll \frac{\log(T)}{Tx\log(x)},
+          \ll \frac{\log(qT)}{T}\int_{-U}^{-1}x^{\s}\,d\s \ll \frac{\log(qT)}{Tx\log(x)},
         \end{equation}
         where in the first estimate we have used the fact that $s \sim T$. Combining \cref{equ:explicit_formula_Dirichlet_proof_8,equ:explicit_formula_Dirichlet_proof_10} gives
         \begin{equation}\label{equ:explicit_formula_Dirichlet_proof_11}
-          \frac{1}{2\pi i}\int_{\eta_{2}+\eta_{4}}-\frac{\z'}{\z}(s)x^{s}\,\frac{ds}{s} \ll \frac{x\log^{2}(T)}{T\log(x)}+\frac{\log(T)}{Tx\log(x)} \ll \frac{x\log^{2}(T)}{T\log(x)}.
+          \frac{1}{2\pi i}\int_{\eta_{2}+\eta_{4}}-\frac{L'}{L}(s)x^{s}\,\frac{ds}{s} \ll \frac{x\log^{2}(qT)}{T\log(x)}+\frac{\log(qT)}{Tx\log(x)} \ll \frac{x\log^{2}(qT)}{T\log(x)}.
         \end{equation}
         To estimate the vertical integral, we use \cref{equ:explicit_formula_Dirichlet_proof_9} again to conclude that
         \begin{equation}\label{equ:explicit_formula_Dirichlet_proof_12}
-          \frac{1}{2\pi i}\int_{\eta_{3}}-\frac{\z'}{\z}(s)x^{s}\,\frac{ds}{s} \ll \frac{\log(U)}{U}\int_{-T}^{T}x^{-U}\,dt \ll \frac{T\log(U)}{Ux^{U}},
+          \frac{1}{2\pi i}\int_{\eta_{3}}-\frac{L'}{L}(s,\chi)x^{s}\,\frac{ds}{s} \ll \frac{\log(qU)}{U}\int_{-T}^{T}x^{-U}\,dt \ll \frac{T\log(qU)}{Ux^{U}},
         \end{equation}
-        where in the first estimate we have used the fact that $s \sim U$. Combining \cref{equ:explicit_formula_Dirichlet_proof_7,equ:explicit_formula_Dirichlet_proof_11,equ:explicit_formula_Dirichlet_proof_12} and taking the limit as $U \to \infty$, the error term in \cref{equ:explicit_formula_Dirichlet_proof_12} vanishes and the sum over $m$ in \cref{equ:explicit_formula_Dirichlet_proof_7} evaulates to $\frac{1}{2}\log(1-x^{-2})$ (as we have already mentioned) giving
+        where in the first estimate we have used the fact that $s \sim U$. Combining \cref{equ:explicit_formula_Dirichlet_proof_7,equ:explicit_formula_Dirichlet_proof_11,equ:explicit_formula_Dirichlet_proof_12} and taking the limit as $U \to \infty$, the error term in \cref{equ:explicit_formula_Dirichlet_proof_12} vanishes and the sum over $m$ in \cref{equ:explicit_formula_Dirichlet_proof_7,equ:explicit_formula_Dirichlet_proof_7'} evaulates to $-\tanh^{-1}(x^{-1})$ or $\frac{1}{2}\log(1-x^{-2})$ respectively (as we have already mentioned) giving
         \begin{equation}\label{equ:explicit_formula_Dirichlet_proof_13}
-          J(x,T) = x-\sum_{|\g| < T}\frac{x^{\rho}}{\rho}-\frac{\z'}{\z}(0)-\frac{1}{2}\log(1-x^{-2})+\frac{x\log^{2}(T)}{T\log(x)}.
+          J(x,T,\chi) = -\sum_{|\g| < T}\frac{x^{\rho}}{\rho}-\frac{L'}{L}(0,\chi)+\tanh^{-1}(x^{-1})+\frac{x\log^{2}(qT)}{T\log(x)},
         \end{equation}
-        Substiuting \cref{equ:explicit_formula_Dirichlet_proof_13} into \cref{equ:explicit_formula_Dirichlet_proof_6}, we at last obtain
+        if $\chi$ is odd, and
+        \begin{equation}\label{equ:explicit_formula_Dirichlet_proof_13'}
+          J(x,T,\chi) = -\sum_{|\g| < T}\frac{x^{\rho}}{\rho}-\log(x)-b(\chi)-\frac{1}{2}\log(1-x^{-2})+\frac{x\log^{2}(qT)}{T\log(x)},
+        \end{equation}
+        if $\chi$ is even.
+        Substiuting \cref{equ:explicit_formula_Dirichlet_proof_13,equ:explicit_formula_Dirichlet_proof_13'} into \cref{equ:explicit_formula_Dirichlet_proof_6} in the respective cases, we obtain
         \begin{equation}\label{equ:explicit_formula_Dirichlet_proof_14}
-          \psi_{0}(x) = x-\sum_{|\g| < T}\frac{x^{\rho}}{\rho}-\frac{\z'}{\z}(0)-\frac{1}{2}\log(1-x^{-2})+\frac{x\log^{2}(xT)}{T}+\log(x)\min\left(1,\frac{x}{T\<x\>}\right),
+          \psi_{0}(x,\chi) = -\sum_{|\g| < T}\frac{x^{\rho}}{\rho}-\frac{L'}{L}(0,\chi)+\tanh^{-1}(x^{-1})+\frac{x\log^{2}(xqT)}{T}+\log(x)\min\left(1,\frac{x}{T\<x\>}\right),
         \end{equation}
-        where the second to last term on the right-hand side is obtained by combining error term in \cref{equ:explicit_formula_Dirichlet_proof_11} with the first error term in \cref{equ:explicit_formula_Dirichlet_proof_6}. The theorem follows by taking the limit as $T \to \infty$.
-        \fi
+        if $\chi$ is odd, and
+        \begin{equation}\label{equ:explicit_formula_Dirichlet_proof_14'}
+          \psi_{0}(x,\chi) = -\sum_{|\g| < T}\frac{x^{\rho}}{\rho}-\log(x)-b(\chi)-\frac{1}{2}\log(1-x^{-2})+\frac{x\log^{2}(xqT)}{T}+\log(x)\min\left(1,\frac{x}{T\<x\>}\right),
+        \end{equation}
+        if $\chi$ is even, and where the second to last term on the right-hand side in both equations are obtained by combining error term in \cref{equ:explicit_formula_Dirichlet_proof_11} with the first error term in \cref{equ:explicit_formula_Dirichlet_proof_6}. The theorem follows by taking the limit as $T \to \infty$.
+      \end{proof}
+
+      As was the case for $\psi(x)$, the convergence of the right-hand side in the explicit formula for $\psi(x,\chi)$ is uniform in any interval not containing a prime power since $\psi(x,\chi)$ is continuous there. Moreover, there is an approximate formula for $\psi(x,\chi)$ as a corollary:
+
+      \begin{corollary}\label{cor:explicit_formula_Dirichlet_corollary}
+         For $x \ge 2$ and $T > 2$,
+        \[
+          \psi_{0}(x,\chi) = -\sum_{|\g| < T}\frac{x^{\rho}}{\rho}-\frac{L'}{L}(0,\chi)+\tanh^{-1}(x^{-1})+\frac{x\log^{2}(xqT)}{T}+\log(x)\min\left(1,\frac{x}{T\<x\>}\right),
+        \]
+        if $\chi$ is odd, and
+        \[
+           \psi_{0}(x,\chi) = -\sum_{|\g| < T}\frac{x^{\rho}}{\rho}-\log(x)-b(\chi)-\frac{1}{2}\log(1-x^{-2})+\frac{x\log^{2}(xqT)}{T}+\log(x)\min\left(1,\frac{x}{T\<x\>}\right),
+        \]
+        if $\chi$ is even, and where in both formulas $\rho$ runs over the nontrivial zeros of $L(s,\chi)$ counted with multiplicity and ordered with respect to the size of the ordinate.
+      \end{corollary}
+      \begin{proof}
+        This is \cref{equ:explicit_formula_Dirichlet_proof_14,equ:explicit_formula_Dirichlet_proof_14'}.
       \end{proof}
   \section{Prime Number Theorems}
     \subsection*{The Prime Number Theorem}
