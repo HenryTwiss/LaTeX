@@ -46,9 +46,9 @@ for some complex numbers $\a_{i,d}(p)$ and $\b_{i,d}(p)$ and over all irreducibl
   Z(s_{1},\ldots,s_{5}) = \sum_{d}\frac{\prod_{p}\prod_{1 \le i \le 4}(1-\g_{i,d}(p)p^{-s_{i}})^{-1}P_{d}(s_{1},\ldots,s_{4};E_{1},E_{2})}{|d|^{s_{5}}},
 \]
 for some correction polynomials $P_{d}(s_{1},\ldots,s_{4};E_{1},E_{2})$, and where $\g_{i,d}(p) \in \{\a_{1,d}(p),\b_{1,d}(p),\a_{3,d}(p),\b_{3,d}(p)\}$. We have the specialization condition
-\[
+\begin{equation}\label{equ:specialization}
   Z(s_{1},s_{1},s_{3},s_{3},s_{5}) = Z(s_{1},s_{3},s_{5}), 
-\]
+\end{equation}
 and so we must continue $Z(s_{1},\ldots,s_{5})$ to a region containing $\left(\frac{1}{2},\frac{1}{2},\frac{1}{2},\frac{1}{2},1\right)$. It is this analytic continuation which can be acomplished. However, the continuation requires an extremely non-trivial argument. The continuation of $Z$ mimics that of the multiple Dirichlet series
 \[
   Z_{\chi}(s_{1},\ldots,s_{5}) = \sum_{d}\frac{\prod_{1 \le i \le 4}L(s_{i},\chi_{d})P_{d}(s_{1},\ldots,s_{4})}{|d|^{s_{5}}},
@@ -59,16 +59,23 @@ where $P_{d}(s_{1},\ldots,s_{4})$ are certain explicit correction polynomials. T
 \]
 where $F$ is a power series and $Z_{W}$ is a multiple Dirichlet series posessing functional equations isomorphic to $Z_{\chi}$ but is not amenable to the study of $L$-functions. The series $Z_{W}$ is known as the Chinta-Gunnells averge (see \todo{cite}) and the extra functional equation implies that $Z_{W}$ admits analytic continuation to the natural barrier. From the decomposition, so does $Z_{\chi}$.
 
-The above idea can be bootstrapped to analytically continue $Z$ which I now outline. In order to ensure $Z(s_{1},\ldots,s_{5})$ possesses functional equations isomorphic to the Weyl group of $\wtilde{D_{4}}$ and can be analytically continued to the natural barrier, we must find a formula which relates $Z$ to $Z_{\chi}$. Such a formula will necessarily depend upon the elliptic curves $E_{1}$ and $E_{2}$ because $Z_{\chi}$ does not see this data. To find such a formula, we fully expand $Z(s_{1},s_{3},s_{5})$ by reversing the argument presented in \todo{cite} to obtain:
+The above idea can be bootstrapped to analytically continue $Z$ which I now outline. In order to ensure $Z(s_{1},\ldots,s_{5})$ possesses functional equations isomorphic to the Weyl group of $\wtilde{D_{4}}$ and can be analytically continued to the natural barrier, we must find a formula which relates $Z$ to $Z_{\chi}$. Such a formula will necessarily depend upon the elliptic curves $E_{1}$ and $E_{2}$ because $Z_{\chi}$ does not see this data. To find such a formula, we first need to determine the correction polynomials $P_{d}(s_{1},\ldots,s_{4};E_{1},E_{2})$. In order to acomplish this, we adapt the argument in \todo{cite} to express $Z(s_{1},s_{3},s_{5})$ as:
 \[
-  Z(s_{1},s_{3},s_{5}) = \sum_{\substack{m_{1},m_{3},d \\ d = d_{0}d_{1}^{2}}}\frac{a_{1}(\what{m_{1}})a_{2}(\what{m_{3}})\chi_{d_{0}}(\what{m_{1}})\chi_{d_{0}}(\what{m_{3}})}{|m_{1}|^{s_{1}}|m_{3}|^{s_{3}}|d|^{s_{5}}}H(m_{1},m_{3},d).
+  Z(s_{1},s_{3},s_{5}) = \sum_{\substack{m_{1},m_{3} \\ m_{1}m_{3} = k_{0}k_{1}^{2}}}\frac{L(s_{5},\chi_{m_{1}m_{3}})P_{n_{0}n_{1}^{2}}(s_{5};E_{1},E_{2})}{|m_{1}|^{s_{1}}|m_{3}|^{s_{3}}},
 \]
-Here $a_{1}$ and $a_{2}$ are certain coefficeints containing data of the elliptic curves $E_{1}$ and $E_{2}$ and $\what{\,\,\,\,}$ represents a relatively prime condition. More importantly, the weighting coefficients $H$ are explicitly given
+where $P_{k_{0}k_{1}^{2}}(s_{5};E_{1},E_{2})$ is an explicit correction polynomial. Analgously, the same argument may be used to write
 \[
-  H(m_{1},m_{3},d) = \begin{cases} |(m_{1},m_{3},d)|^{\frac{1}{2}} & \text{if $(m_{1},m_{3},d)$ is a perfect square,} \\ 0 & \text{otherwise.} \end{cases}
+  Z(s_{1},s_{2},s_{3},s_{4},s_{5}) = \sum_{\substack{m_{1},m_{2},m_{3},m_{4} \\ m_{1}m_{2}m_{3},m_{4} = k_{0}k_{1}^{2}}}\frac{L(s_{5},\chi_{m_{1}m_{2}m_{3}m_{4}})P_{n_{0}n_{1}^{2}}(s_{5};E_{1},E_{2})}{|m_{1}|^{s_{1}}|m_{2}|^{s_{2}}|m_{3}|^{s_{3}}|m_{4}|^{s_{4}}},
 \]
-This series can be summed 
-
+where in this case, $P_{n_{0}n_{1}^{2}}(s_{5};E_{1},E_{2})$ is some yet to be determined correction polynomial. Miraculously, the specalization condition in \cref{equ:specialization} implies a recursive relation on the coefficients of these two series which can be written in the form
+\[
+  P_{n_{0}n_{1}^{2}}(s_{5};E_{1},E_{2}) = \frac{1}{L(s_{5},\chi_{m_{1}m_{2}m_{3}m_{4}})}\sum_{\substack{m_{1}m_{2}m_{3}m_{4} = m_{1}'m_{3}' \\ m_{1}'m_{3}' = k_{0}k_{1}^{2}}}L(s_{5},\chi_{m_{1}m_{3}})P_{k_{0}k_{1}^{2}}(s_{5};E_{1},E_{2}).
+\]
+Since the $P_{k_{0}k_{1}^{2}}(s_{5};E_{1},E_{2})$ are known correction polynomials, this recursive formula allows us to construct the $P_{n_{0}n_{1}^{2}}(s_{5};E_{1},E_{2})$. The interchange property, namely
+\[
+  \sum_{\substack{m_{1},m_{2},m_{3},m_{4} \\ m_{1}m_{2}m_{3},m_{4} = k_{0}k_{1}^{2}}}\frac{L(s_{5},\chi_{m_{1}m_{2}m_{3}m_{4}})P_{n_{0}n_{1}^{2}}(s_{5};E_{1},E_{2})}{|m_{1}|^{s_{1}}|m_{2}|^{s_{2}}|m_{3}|^{s_{3}}|m_{4}|^{s_{4}}} = \sum_{d}\frac{\prod_{p}\prod_{1 \le i \le 4}(1-\g_{i,d}(p)p^{-s_{i}})^{-1}P_{d}(s_{1},\ldots,s_{4};E_{1},E_{2})}{|d|^{s_{5}}},
+\]
+can then be used to determine the correction polynomials $P_{d}(s_{1},\ldots,s_{4};E_{1},E_{2})$ exactly. This furnishes the analytic continuation of $Z(s_{1},\ldots,s_{5})$ via its group of functional equations isomorphic to $\wtilde{D_{4}}$...
 
 \textbf{Broader Impacts}:
 
