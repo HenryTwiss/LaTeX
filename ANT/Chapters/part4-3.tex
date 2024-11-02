@@ -538,9 +538,9 @@
         because $x^{\frac{1}{2}} \ll xe^{-c\sqrt{\log(x)}}$. This completes the proof.
       \end{proof}
 
-      The proof of the logarithmic integral version of the prime number theorem is immediate:
+      The proof of the logarithmic integral and classical versions of the prime number theorem are immediate:
 
-      \begin{proof}[Proof of prime number theorem, logarithmic integral version]
+      \begin{proof}[Proof of prime number theorem, logarithmic integral and classical versions]
         By the absolute error version of the prime number theorem,
         \[
           \pi(x) = \Li(x)\left(1+O\left(\frac{xe^{-c\sqrt{\log(x)}}}{\Li(x)}\right)\right).
@@ -549,10 +549,10 @@
         \[
           \frac{xe^{-c\sqrt{\log(x)}}}{\Li(x)} \sim \log(x)e^{-c\sqrt{\log(x)}} = o(1),
         \]
-        where the equality holds since $\log(x) \ll_{\e} e^{-\e\sqrt{\log(x)}}$ for any $\e > 0$. The result follows.
+        where the equality holds since $\log(x) \ll_{\e} e^{-\e\sqrt{\log(x)}}$ for any $\e > 0$. The logarithim integral version follows. The classical version also holds using the asymptotic $\Li(x) \sim \frac{x}{\log(x)}$.
       \end{proof}
       
-      In the proof of the logarithmic integral version of the prime number theorem, we saw that $xe^{-c\sqrt{\log(x)}} < \frac{x}{\log(x)}$ for sufficiently large $x$. Therefore the extact error $\pi(x)-\Li(x)$ grows slower than $\pi(x)-\frac{x}{\log{x}}$ for sufficiently large $x$. This means that $\Li(x)$ is a better numerical approximation to $\pi(x)$ than $\frac{x}{\log(x)}$. There is also the following result due to Hardy and Littlewood (see \cite{hardy1916contributions}) which gives us more information:
+      In the proof of the logarithmic integral and classical versions of the prime number theorem, we saw that $xe^{-c\sqrt{\log(x)}} < \frac{x}{\log(x)}$ for sufficiently large $x$. Therefore the extact error $\pi(x)-\Li(x)$ grows slower than $\pi(x)-\frac{x}{\log{x}}$ for sufficiently large $x$. This means that $\Li(x)$ is a better numerical approximation to $\pi(x)$ than $\frac{x}{\log(x)}$. There is also the following result due to Hardy and Littlewood (see \cite{hardy1916contributions}) which gives us more information:
 
       \begin{proposition}\label{thm:Littlewood_Li_approximation_theorem}
         $\pi(x)-\Li(x)$ changes sign infinitely often as $x \to \infty$.
@@ -585,112 +585,35 @@
         \]
       \end{proof}
     \subsection*{The Siegel–Walfisz Theorem}
-      Let $q > 1$ and fix an integer $a$ with $(a,q) = 1$. The \textbf{prime counting function}\index{prime counting function} $\pi(x:a,q)$ is defined by
+      Let $m$ and $a$ be positive integers with $(a,m) = 1$. The \textbf{prime counting function}\index{prime counting function} $\pi(x:a,m)$ is defined by
       \[
-        \pi(x;a,q) = \sum_{\substack{p \le x \\ p \equiv a \tmod{q}}}1,
+        \pi(x;a,m) = \sum_{\substack{p \le x \\ p \equiv a \tmod{m}}}1,
       \]
-      for real $x$. Equivalently, $\pi(x;a,q)$ counts the number of primes that no larger than $x$ and are equivalent to $a$ modulo $q$. This is the analog of $\pi(x)$ that is naturally associated to Dirichlet characters modulo $q$. Accordingly, there is a version of the prime number theorem for $\pi(x;a,q)$. To prove it, we will require an auxiliary function. The \textbf{Chebychef function} $\psi(x;a,q)$, for $x \ge 1$, is defined by
+      for real $x$. Equivalently, $\pi(x;a,m)$ counts the number of primes that no larger than $x$ and are equivalent to $a$ modulo $m$. This is the analog of $\pi(x)$ that is naturally associated to Dirichlet characters modulo $m$. Accordingly, there is a version of the prime number theorem for $\pi(x;a,m)$. To prove it, we will require an auxiliary function. The \textbf{Chebychef function} $\psi(x;a,m)$, for $x \ge 1$, is defined by
       \[
-        \psi(x;a,q) = \sum_{\substack{n \le x \\ n \equiv a \tmod{q}}}\L(n).
+        \psi(x;a,m) = \sum_{\substack{n \le x \\ n \equiv a \tmod{m}}}\L(n).
       \]
-      This is just $\psi(x)$ restricted to only those terms equivalent to $a$ modulo $q$. It is related to $\psi(x,\chi)$ via the identity
+      This is just $\psi(x)$ restricted to only those terms equivalent to $a$ modulo $m$. It is related to $\psi(x,\chi)$ via the identity
       \[
-        \psi(x;a,q) = \frac{1}{\phi(q)}\sum_{\chi \tmod{q}}\cchi(a)\psi(x,\chi),
+        \psi(x;a,m) = \frac{1}{\phi(m)}\sum_{\chi \tmod{m}}\cchi(a)\psi(x,\chi),
       \]
       which holds by the orthogonality relations (\cref{prop:Dirichlet_orthogonality_relations} (ii)). The prime number theorem for $\pi(x;a,q)$ is known as the \textbf{Siegel–Walfisz theorem}\index{Siegel–Walfisz theorem}:
 
       \begin{theorem}[Siegel–Walfisz theorem]
-        Let $q > 1$, fix an integer $a$ with $(a,q) = 1$, and let $N \ge 1$. There exists a positive constant $c$ such that
+        Let $m$ and $a$ be positive integers with $(a,m) = 1$ and let $N \ge 1$. There exists a positive constant $c$ such that
         \[
-          \pi(x;a,q) = \frac{\Li(x)}{\phi(q)}+O\left(xe^{-c\sqrt{\log(x)}}\right),
+          \pi(x;a,m) = \frac{\Li(x)}{\phi(m)}+O\left(xe^{-c\sqrt{\log(x)}}\right),
         \]
-        provided $q \le \log^{N}(x)$.
-      \end{theorem}\iffalse
+        provided $m \le \log^{N}(x)$.
+      \end{theorem}
       \begin{proof}
-        We will first prove
-        \begin{equation}\label{equ:prime_number_theorem_Dirichlet_1}
-          \psi(x,\chi) = x+O\left(xe^{-c\sqrt{\log(x)}}\right),
-        \end{equation}
-        To achieve this, we estimate the sum over the nontrivial zeros of $\z(s)$ in \cref{cor:explicit_formula_zeta_corollary}. So let $T > 2$ not coinciding with the ordinate of a nontrivial zero, and suppose $\rho = \b+i\g$ is a nontrivial zero with $|\g| < T$. By the classical version of the zero-free region for $\z(s)$, we know $\b < 1-\frac{c}{\log(T)}$ for some constant $c > 0$ (this $c$ is not necessiarly the same $c$ in the classical zero-free region for $\z(s)$ because we have replaced $\log(T+2)$ with $\log(T)$). It follows that
-        \begin{equation}\label{equ:prime_number_theorem_Dirichlet_2}
-          |x^{\rho}| = x^{\b} < x^{1-\frac{c}{\log(T)}} = xe^{-c\frac{\log(x)}{\log(T)}}.
-        \end{equation}
-        As $|\rho| > |\g|$, letting $\g_{1} > 0$ be the ordinate of the first nontrivial zero, applying integration by parts gives
-        \begin{equation}\label{equ:prime_number_theorem_Dirichlet_3}
-          \sum_{|\g| < T}\frac{1}{\rho} \ll \sum_{\g_{1} \le \g < T}\frac{1}{\g} \ll \int_{\g_{1}}^{T}\frac{dN(t)}{t} = \frac{N(T)}{T}+\int_{\g_{1}}^{T}\frac{N(t)}{t^{2}}\,dt \ll \log^{2}(T).
-        \end{equation}
-        where in the last estimate we have used that $N(t) \ll t\log(t)$ which is implied by the Riemann-von Mangoldt formula for $\z(s)$. Putting \cref{equ:prime_number_theorem_Dirichlet_2,equ:prime_number_theorem_Dirichlet_3} together gives
-        \begin{equation}\label{equ:prime_number_theorem_Dirichlet_4}
-          \sum_{|\g| < T}\frac{x^{\rho}}{\rho} \ll x\log^{2}(T)e^{-c\frac{\log(x)}{\log(T)}}.
-        \end{equation}
-        Let $x \ge 2$ be an integer. As $\psi(x) \sim \psi_{0}(x)$ and $\log(1-x^{-2}) \ll 1$ for $x \ge 2$, \cref{equ:prime_number_theorem_Dirichlet_4} together with \cref{cor:explicit_formula_zeta_corollary} imply
-        \begin{equation}\label{equ:prime_number_theorem_Dirichlet_5}
-          \psi(x)-x \ll \frac{x\log^{2}(xT)}{T}+x\log^{2}(T)e^{-c\frac{\log(x)}{\log(T)}},
-        \end{equation}
-        where the last term in \cref{cor:explicit_formula_zeta_corollary} does not appear becase $\<x\> \ge 1$ so that it is absorbed by the first error term in this estimate. We will now let $T$ be determined by
+        We being with the identity
         \[
-          \log^{2}(T) = \log(x),
+          \psi(x;a,m) = \frac{1}{\phi(m)}\sum_{\chi \tmod{m}}\cchi(a)\psi(x,\chi).
         \]
-        or equivalently,
+        When $\chi = \chi_{m,0}$ we estimate
         \[
-          T = e^{\sqrt{\log(x)}}.
+          |\psi(x,\chi_{m,0})-\psi(x)| = \sum_{\substack{n \le x \\ (n,m) > 1}}\L(n) = \sum_{p \mid m}\sum_{\substack{v \ge 1 \\ p^{v} \le x}}\log(p) \ll \log(x)\sum_{p \mid m}\log(p) \ll \log(x)\log(m),
         \]
-        With this choice of $T$ (note that if $x \ge 2$ then $T > 2$), \cref{equ:prime_number_theorem_Dirichlet_5} becomes
-        \begin{align*}
-          \psi(x)-x &\ll x\left(\log^{2}(x)+\log(x)\right)e^{-\sqrt{\log(x)}}+x\log(x)e^{-c\sqrt{\log(x)}} \\
-          &\ll x\log^{2}(x)e^{-\sqrt{\log(x)}}+x\log(x)e^{-c\sqrt{\log(x)}} \\
-          &\ll x\log^{2}(x)e^{-\min(1,c)\sqrt{\log(x)}}.
-        \end{align*}
-        As $\log(x) \ll_{\e} e^{-\e\sqrt{\log(x)}}$ for any $\e > 0$, we conclude that
-        \[
-          \psi(x)-x \ll xe^{-c\sqrt{\log(x)}},
-        \]
-        for some smaller $c$ with $c < 1$. This is equivalent to \cref{equ:prime_number_theorem_Dirichlet_1}. Now let
-        \[
-          \pi_{1}(x) = \sum_{n \le x}\frac{\L(n)}{\log(n)}.
-        \]
-        We can write $\pi_{1}(x)$ in terms of $\psi(x)$ as follows:
-        \begin{align*}
-          \pi_{1}(x) &= \sum_{n \le x}\frac{\L(n)}{\log(n)} \\
-          &= \sum_{n \le x}\L(n)\int_{n}^{x}\frac{dt}{t\log^{2}(t)}+\frac{1}{\log(x)}\sum_{n \le x}\L(n) \\
-          &= \int_{2}^{x}\sum_{n \le t}\L(n)\frac{dt}{t\log^{2}(t)}+\frac{1}{\log(x)}\sum_{n \le x}\L(n) \\
-          &= \int_{2}^{x}\frac{\psi(t)}{t\log^{2}(t)}\,dt+\frac{\psi(x)}{\log(x)}.
-        \end{align*}
-        Applying \cref{equ:prime_number_theorem_Dirichlet_1} to the last expression yields
-        \begin{equation}\label{equ:prime_number_theorem_Dirichlet_6}
-          \pi_{1}(x) = \int_{2}^{x}\frac{t}{t\log^{2}(t)}\,dt+\frac{x}{\log(x)}+O\left(\int_{2}^{x}\frac{e^{-c\sqrt{\log(t)}}}{\log^{2}(t)}\,dt+\frac{xe^{-c\sqrt{\log(x)}}}{\log(x)}\right).
-        \end{equation}
-        Upon applying integrating by parts to the main term in \cref{equ:prime_number_theorem_Dirichlet_6}, we obtain
-        \begin{equation}\label{equ:prime_number_theorem_Dirichlet_7}
-          \int_{2}^{x}\frac{t}{t\log^{2}(t)}\,dt+\frac{x}{\log(x)} = \int_{2}^{x}\frac{dt}{\log(t)}+\frac{2}{\log(2)} = \Li(x)+\frac{2}{\log(2)}.
-        \end{equation}
-        As for the error term in \cref{equ:prime_number_theorem_Dirichlet_6}, $\log^{2}(t)$ and $\log(x)$ are both bounded away from zero so that
-        \[
-          \int_{2}^{x}\frac{e^{-c\sqrt{\log(t)}}}{\log^{2}(t)}\,dt+\frac{xe^{-c\sqrt{\log(x)}}}{\log(x)} \ll \int_{2}^{x}e^{-c\sqrt{\log(t)}}\,dt+xe^{-c\sqrt{\log(x)}}.
-        \]
-        For $t \le x^{\frac{1}{4}}$, we use the bound $e^{-c\sqrt{\log(t)}} < 1$ so that
-        \[
-          \int_{2}^{x^{\frac{1}{4}}}e^{-c\sqrt{\log(t)}}\,dt < \int_{2}^{x^{\frac{1}{4}}}\,dt \ll x^{\frac{1}{4}}.
-        \]
-        For $t > x^{\frac{1}{4}}$, $\sqrt{\log(t)} > \frac{1}{2}\sqrt{\log(x)}$ and thus
-        \[
-          \int_{2}^{x^{\frac{1}{4}}}e^{-c\sqrt{\log(t)}}\,dt \le e^{-c\frac{1}{2}\sqrt{\log(x)}}\int_{2}^{x^{\frac{1}{4}}}\,dt \ll x^{\frac{1}{4}}e^{-c\frac{1}{2}\sqrt{\log(x)}}. 
-        \]
-        All of these estimates together imply
-        \begin{equation}\label{equ:prime_number_theorem_Dirichlet_8}
-          \int_{2}^{x}\frac{e^{-c\sqrt{\log(t)}}}{\log^{2}(t)}\,dt+\frac{xe^{-c\sqrt{\log(x)}}}{\log(x)} \ll xe^{-c\sqrt{\log(x)}},
-        \end{equation}
-        for some smaller $c$ (actually the new $c$ is $\frac{1}{2}$ of the old one). Combining \cref{equ:prime_number_theorem_Dirichlet_6,equ:prime_number_theorem_Dirichlet_7,equ:prime_number_theorem_Dirichlet_8} yields
-        \begin{equation}\label{equ:prime_number_theorem_Dirichlet_9}
-          \pi_{1}(x) = \Li(x)+O(xe^{-c\sqrt{\log(x)}}),
-        \end{equation}
-        where the constant in \cref{equ:prime_number_theorem_Dirichlet_7} has been absorbed into the error term. We now pass from $\pi_{1}(x)$ to $\pi(x)$. If $p$ is a prime such that $p^{m} < x$ for some $m \ge 1$, then $p < x^{\frac{1}{2}} < x^{\frac{1}{3}} < \cdots < x^{\frac{1}{m}}$. Therefore
-        \begin{equation}\label{equ:prime_number_theorem_Dirichlet_10}
-          \pi_{1}(x) = \sum_{n \le x}\frac{\L(n)}{\log(n)} = \sum_{p^{m} \le x}\frac{\log(p)}{m\log(p)} = \pi(x)+\frac{1}{2}\pi(x^{\frac{1}{2}})+\frac{1}{3}\pi(x^{\frac{1}{3}})+\cdots.
-        \end{equation}
-        Moreover, as $\pi(x^{\frac{1}{n}}) < x^{\frac{1}{n}}$ for any $n \ge 1$, we see that $\pi(x)-\pi_{1}(x) = O(x^{\frac{1}{2}})$. This estimate together with \cref{equ:prime_number_theorem_Dirichlet_9,equ:prime_number_theorem_Dirichlet_10} gives
-        \[
-          \pi(x) = \Li(x)+O(xe^{-c\sqrt{\log(x)}}),
-        \]
-        because $x^{\frac{1}{2}} \ll xe^{-c\sqrt{\log(x)}}$. This completes the proof.
-      \end{proof}\fi
+        where the first estiamte holds because $p^{v} \le x$ implies $v \le \frac{\log(x)}{\log(p)}$ so that there are $O(\log(x))$ many terms in the inner sum and the second estimate holds since $\prod_{p \mid m}p \ll m$. \todo{xxx}
+      \end{proof}
