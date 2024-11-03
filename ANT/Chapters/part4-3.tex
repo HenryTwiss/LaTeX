@@ -593,11 +593,7 @@
       \[
         \psi(x;a,m) = \sum_{\substack{n \le x \\ n \equiv a \tmod{m}}}\L(n).
       \]
-      This is just $\psi(x)$ restricted to only those terms equivalent to $a$ modulo $m$. It is related to $\psi(x,\chi)$ via the identity
-      \[
-        \psi(x;a,m) = \frac{1}{\phi(m)}\sum_{\chi \tmod{m}}\cchi(a)\psi(x,\chi),
-      \]
-      which holds by the orthogonality relations (\cref{prop:Dirichlet_orthogonality_relations} (ii)). The prime number theorem for $\pi(x;a,q)$ is known as the \textbf{Siegel–Walfisz theorem}\index{Siegel–Walfisz theorem}:
+      This is just $\psi(x)$ restricted to only those terms equivalent to $a$ modulo $m$. The prime number theorem for $\pi(x;a,q)$ is known as the \textbf{Siegel–Walfisz theorem}\index{Siegel–Walfisz theorem}:
 
       \begin{theorem}[Siegel–Walfisz theorem]
         Let $m$ and $a$ be positive integers with $(a,m) = 1$ and let $N \ge 1$. There exists a positive constant $c$ such that
@@ -608,12 +604,23 @@
       \end{theorem}
       \begin{proof}
         We being with the identity
-        \[
-          \psi(x;a,m) = \frac{1}{\phi(m)}\sum_{\chi \tmod{m}}\cchi(a)\psi(x,\chi).
-        \]
-        When $\chi = \chi_{m,0}$, we estimate
+        \begin{equation}\label{equ:Siegel-Walfisz_1}
+          \psi(x;a,m) = \frac{1}{\phi(m)}\sum_{\chi \tmod{m}}\cchi(a)\psi(x,\chi),
+        \end{equation}
+        which holds by the orthogonality relations (\cref{prop:Dirichlet_orthogonality_relations} (ii)). When $\chi = \chi_{m,0}$, we estimate
         \[
           |\psi(x,\chi_{m,0})-\psi(x)| = \sum_{\substack{n \le x \\ (n,m) > 1}}\L(n) = \sum_{p \mid m}\sum_{\substack{v \ge 1 \\ p^{v} \le x}}\log(p) \ll \log(x)\sum_{p \mid m}\log(p) \ll \log(x)\log(m),
         \]
-        where the first estiamte holds because $p^{v} \le x$ implies $v \le \frac{\log(x)}{\log(p)}$ so that there are $O(\log(x))$ many terms in the inner sum and the second estimate holds since $\prod_{p \mid m}p \ll m$. \todo{xxx}
+        where the first estiamte holds because $p^{v} \le x$ implies $v \le \frac{\log(x)}{\log(p)}$ so that there are $O(\log(x))$ many terms in the inner sum and the second estimate holds since $\prod_{p \mid m}p \ll m$. This estimate is equivalent to
+        \begin{equation}\label{equ:Siegel-Walfisz_2}
+          \psi(x,\chi_{m,0}) = \psi(x)+O(\log(x)\log(m)).
+        \end{equation}
+        Substituting \cref{equ:prime_number_theorem_zeta_1} into \cref{equ:Siegel-Walfisz_2} gives
+        \begin{equation}\label{equ:Siegel-Walfisz_3}
+          \psi(x,\chi_{m,0}) = \psi(x)+O\left(xe^{-c\sqrt{\log(x)}}+\log(x)\log(m)\right),
+        \end{equation}
+        for some positive constant $c$. Upon combining \cref{equ:Siegel-Walfisz_1,equ:Siegel-Walfisz_3}, we obtain
+        \begin{equation}\label{equ:Siegel-Walfisz_4}
+          \psi(x;a,m) = \frac{x}{\phi(m)}+\frac{1}{\phi(m)}\sum_{\substack{\chi \tmod{m} \\ \chi \neq \chi_{m,0}}}\cchi(a)\psi(x,\chi)+O\left(\frac{1}{\phi(m)}\left(xe^{-c\sqrt{\log(x)}}+\log(x)\log(m)\right)\right).
+        \end{equation}
       \end{proof}
