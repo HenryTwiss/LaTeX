@@ -381,7 +381,7 @@
       \[
         \pi(x) = \sum_{p \le x}1,
       \]
-      for real $x$. Equivalently, $\pi(x)$ counts the number of primes that no larger than $x$. Euclid's infitude of the primes is equivalent to $\pi(x) \to \infty$ as $x \to \infty$. A more interesting question is to ask how the primes are distributed among the integers. The \textbf{(classical) prime number theorem}\index{(classical) prime number theorem} answers this question and the precise statement is the following:
+      for real $x > 1$. Equivalently, $\pi(x)$ counts the number of primes that no larger than $x$. Euclid's infitude of the primes is equivalent to $\pi(x) \to \infty$ as $x \to \infty$. A more interesting question is to ask how the primes are distributed among the integers. The \textbf{(classical) prime number theorem}\index{(classical) prime number theorem} answers this question and the precise statement is the following:
 
       \begin{theorem}[Prime number theorem, classical version]
         \phantom{ }
@@ -589,7 +589,7 @@
       \[
         \pi(x;a,m) = \sum_{\substack{p \le x \\ p \equiv a \tmod{m}}}1,
       \]
-      for real $x$. Equivalently, $\pi(x;a,m)$ counts the number of primes that no larger than $x$ and are equivalent to $a$ modulo $m$. This is the analog of $\pi(x)$ that is naturally associated to Dirichlet characters modulo $m$. Accordingly, there is a version of the prime number theorem for $\pi(x;a,m)$. To prove it, we will require an auxiliary function. The \textbf{Chebychef function} $\psi(x;a,m)$, for $x \ge 1$, is defined by
+      for real $x > 1$. Equivalently, $\pi(x;a,m)$ counts the number of primes that no larger than $x$ and are equivalent to $a$ modulo $m$. This is the analog of $\pi(x)$ that is naturally associated to Dirichlet characters modulo $m$. Accordingly, there is a version of the prime number theorem for $\pi(x;a,m)$. To prove it, we will require an auxiliary function. The \textbf{Chebychef function} $\psi(x;a,m)$, for $x \ge 1$, is defined by
       \[
         \psi(x;a,m) = \sum_{\substack{n \le x \\ n \equiv a \tmod{m}}}\L(n).
       \]
@@ -607,20 +607,21 @@
         \begin{equation}\label{equ:Siegel-Walfisz_1}
           \psi(x;a,m) = \frac{1}{\phi(m)}\sum_{\chi \tmod{m}}\cchi(a)\psi(x,\chi),
         \end{equation}
-        which holds by the orthogonality relations (\cref{prop:Dirichlet_orthogonality_relations} (ii)). When $\chi = \chi_{m,0}$, we estimate
-        \[
-          |\psi(x,\chi_{m,0})-\psi(x)| = \sum_{\substack{n \le x \\ (n,m) > 1}}\L(n) = \sum_{p \mid m}\sum_{\substack{v \ge 1 \\ p^{v} \le x}}\log(p) \ll \log(x)\sum_{p \mid m}\log(p) \ll \log(x)\log(m),
-        \]
-        where the first estiamte holds because $p^{v} \le x$ implies $v \le \frac{\log(x)}{\log(p)}$ so that there are $O(\log(x))$ many terms in the inner sum and the second estimate holds since $\prod_{p \mid m}p \ll m$. This estimate is equivalent to
+        which holds by the orthogonality relations (\cref{prop:Dirichlet_orthogonality_relations} (ii)). Letting $\wtilde{\chi}$ be the primitive character inducing $\chi$, we estimate
         \begin{equation}\label{equ:Siegel-Walfisz_2}
-          \psi(x,\chi_{m,0}) = \psi(x)+O(\log(x)\log(m)).
+          |\psi(x,\chi)-\psi(x,\wtilde{\chi})| \le \sum_{\substack{n \le x \\ (n,m) > 1}}\L(n) = \sum_{p \mid m}\sum_{\substack{v \ge 1 \\ p^{v} \le x}}\log(p) \ll \log(x)\sum_{p \mid m}\log(p) \ll \log(x)\log(m),
         \end{equation}
-        Substituting \cref{equ:prime_number_theorem_zeta_1} into \cref{equ:Siegel-Walfisz_2} gives
+        where the first bound holds because $p^{v} \le x$ implies $v \le \frac{\log(x)}{\log(p)}$ so that there are $O(\log(x))$ many terms in the inner sum and the second bound holds since $\prod_{p \mid m}p \ll m$. In particular, \cref{equ:Siegel-Walfisz_2} implies 
         \begin{equation}\label{equ:Siegel-Walfisz_3}
+          \psi(x,\chi) = \psi(x,\wtilde{\chi})+O(\log(x)\log(m)).
+        \end{equation}
+        When $\chi = \chi_{m,0}$, we have $\psi(x,\wtilde{\chi}) = \psi(x)$ so substiuting \cref{equ:prime_number_theorem_zeta_1} into \cref{equ:Siegel-Walfisz_3} gives
+        \begin{equation}\label{equ:Siegel-Walfisz_4}
           \psi(x,\chi_{m,0}) = \psi(x)+O\left(xe^{-c\sqrt{\log(x)}}+\log(x)\log(m)\right),
         \end{equation}
-        for some positive constant $c$. Upon combining \cref{equ:Siegel-Walfisz_1,equ:Siegel-Walfisz_3}, we obtain
-        \begin{equation}\label{equ:Siegel-Walfisz_4}
-          \psi(x;a,m) = \frac{x}{\phi(m)}+\frac{1}{\phi(m)}\sum_{\substack{\chi \tmod{m} \\ \chi \neq \chi_{m,0}}}\cchi(a)\psi(x,\chi)+O\left(\frac{1}{\phi(m)}\left(xe^{-c\sqrt{\log(x)}}+\log(x)\log(m)\right)\right).
+        for some positive constant $c$. Upon combining \cref{equ:Siegel-Walfisz_1,equ:Siegel-Walfisz_4}, we obtain
+        \begin{equation}\label{equ:Siegel-Walfisz_5}
+          \psi(x;a,m) = \frac{x}{\phi(m)}+\frac{1}{\phi(m)}\sum_{\substack{\chi \tmod{m} \\ \chi \neq \chi_{m,0}}}\cchi(a)\psi(x,\chi)+O\left(\frac{1}{\phi(m)}\left(xe^{-c\sqrt{\log(x)}}+\log^{2}(xm)\right)\right),
         \end{equation}
+        where we have used the simple estimates $\log(x) \ll \log(xm)$ and $\log(m) \ll \log(xm)$...
       \end{proof}
