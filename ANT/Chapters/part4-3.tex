@@ -355,7 +355,7 @@
 
       As was the case for $\psi(x)$, the convergence of the right-hand side in the explicit formula for $\psi(x,\chi)$ is uniform in any interval not containing a prime power since $\psi(x,\chi)$ is continuous there. Moreover, there is an approximate formula for $\psi(x,\chi)$ as a corollary:
 
-      \begin{corollary}\label{cor:explicit_formula_Dirichlet_corollary}
+      \begin{corollary}\label{cor:explicit_formula_Dirichlet_corollary_primitive}
          Let $\chi$ be a primitive Dirichlet character of conductor $q > 1$. Then for $x \ge 2$ and $T > 2$,
         \[
           \psi_{0}(x,\chi) = -\sum_{|\g| < T}\frac{x^{\rho}}{\rho}-\frac{L'}{L}(0,\chi)+\tanh^{-1}(x^{-1})+\frac{x\log^{2}(xqT)}{T}+\log(x)\min\left(1,\frac{x}{T\<x\>}\right),
@@ -368,6 +368,33 @@
       \end{corollary}
       \begin{proof}
         This is just \cref{equ:explicit_formula_Dirichlet_proof_14,equ:explicit_formula_Dirichlet_proof_14'}.
+      \end{proof}
+
+      It turns out that \cref{cor:explicit_formula_Dirichlet_corollary_primitive} holds for all $\chi$, not necessarily primitive, under a very mild restriction:
+
+      \begin{corollary}\label{cor:explicit_formula_Dirichlet_corollary}
+         Let $\chi$ be a Dirichlet character modulo $m > 1$. Then for $2 \le T \le x$,
+        \[
+          \psi_{0}(x,\chi) = -\sum_{|\g| < T}\frac{x^{\rho}}{\rho}-\frac{L'}{L}(0,\chi)+\tanh^{-1}(x^{-1})+\frac{x\log^{2}(xmT)}{T}+\log(x)\min\left(1,\frac{x}{T\<x\>}\right),
+        \]
+        if $\chi$ is odd, and
+        \[
+           \psi_{0}(x,\chi) = -\sum_{|\g| < T}\frac{x^{\rho}}{\rho}-\log(x)-b(\chi)-\frac{1}{2}\log(1-x^{-2})+\frac{x\log^{2}(xmT)}{T}+\log(x)\min\left(1,\frac{x}{T\<x\>}\right),
+        \]
+        if $\chi$ is even, and where in both formulas $\rho$ runs over the nontrivial zeros of $L(s,\chi)$ counted with multiplicity and ordered with respect to the size of the ordinate.
+      \end{corollary}
+      \begin{proof}
+        Let $\wtilde{\chi}$ be the primitive character inducing $\chi$ and denote its conductor by $q$. We estimate
+        \begin{equation}\label{equ:difference_between_Dirichlet-Chebychefs}
+          \begin{aligned}
+            |\psi(x,\chi)-\psi(x,\wtilde{\chi})| &\le \sum_{\substack{n \le x \\ (n,m) > 1}}\L(n) \\
+            &= \sum_{p \mid m}\sum_{\substack{v \ge 1 \\ p^{v} \le x}}\log(p) \\
+            &\ll \log(x)\sum_{p \mid m}\log(p) \\
+            &\ll \log(x)\log(m) \\
+            &\ll \log^{2}(xm),
+          \end{aligned}
+        \end{equation}
+        where the third line holds because $p^{v} \le x$ implies $v \le \frac{\log(x)}{\log(p)}$ so that there are $O(\log(x))$ many terms in the inner sum, the fourth line holds since $\prod_{p \mid m}p \ll m$, and in the last line we have used the simple estimates $\log(x) \ll \log(xm)$ and $\log(m) \ll \log(xm)$. Therefore the difference between $\psi(x,\chi)$ and $\psi(x,\wtilde{\chi})$ is $O(\log^{2}(xm))$. Now for $2 \le T \le x$, $\log^{2}(xm) \ll \frac{x\log^{2}(xmT)}{T}$. As $q \le m$, $\frac{x\log^{2}(xqT)}{T} \sim \frac{x\log^{2}(xmT)}{T}$ so that the difference is absorbed into the first error term. Moreover, $\psi(x,\chi) \sim \psi_{0}(x,\chi)$ for all $\chi$, so upon substituting these estimates into \cref{cor:explicit_formula_Dirichlet_corollary_primitive}, the proof is complete.
       \end{proof}
 
       There is one final comment we need to make. It appears from the explict formula for $\psi(x,\chi)$ that there is no main term unlike that for $\psi(x)$. This is true if $\chi$ is not quadratic, but the situation is more subtle otherwise. Indeed, if $\chi$ is quadratic then $L(s,\chi)$ may exhibit a Siegel zeros $\b_{1}$. Conjecturally, this zero should not exist and so there should be no main term, but if it does Siegel's theorem implies that $\b_{1}$ is very close to $1$. This means that the term in the explicit formula for $\psi(s,\chi)$ corresponding to the Siegel zeros acts like a main term. It is often useful for applications to make this apparent and write
@@ -454,7 +481,7 @@
         \begin{equation}\label{equ:prime_number_theorem_zeta_1}
           \psi(x) = x+O\left(xe^{-c\sqrt{\log(x)}}\right),
         \end{equation}
-        To achieve this, we estimate the sum over the nontrivial zeros of $\z(s)$ in \cref{cor:explicit_formula_zeta_corollary}. So let $T > 2$ not coinciding with the ordinate of a nontrivial zero, and suppose $\rho = \b+i\g$ is a nontrivial zero with $|\g| < T$. By the classical version of the zero-free region for $\z(s)$, we know $\b < 1-\frac{c}{\log(T)}$ for some constant $c > 0$ (this $c$ is not necessiarly the same $c$ in the classical zero-free region for $\z(s)$ because we have replaced $\log(T+2)$ with $\log(T)$). It follows that
+        To achieve this, we estimate the sum over the nontrivial zeros of $\z(s)$ in \cref{cor:explicit_formula_zeta_corollary}. So let $T > 2$ not coinciding with the ordinate of a nontrivial zero, and suppose $\rho = \b+i\g$ is a nontrivial zero with $|\g| < T$. By the classical version of the zero-free region for $\z(s)$, we know $\b < 1-\frac{c}{\log(T)}$ for some constant $c > 0$ (this $c$ is not necessarily the same $c$ in the classical zero-free region for $\z(s)$ because we have replaced $\log(T+2)$ with $\log(T)$). It follows that
         \begin{equation}\label{equ:prime_number_theorem_zeta_2}
           |x^{\rho}| = x^{\b} < x^{1-\frac{c}{\log(T)}} = xe^{-c\frac{\log(x)}{\log(T)}}.
         \end{equation}
@@ -607,21 +634,18 @@
         \begin{equation}\label{equ:Siegel-Walfisz_1}
           \psi(x;a,m) = \frac{1}{\phi(m)}\sum_{\chi \tmod{m}}\cchi(a)\psi(x,\chi),
         \end{equation}
-        which holds by the orthogonality relations (\cref{prop:Dirichlet_orthogonality_relations} (ii)). Letting $\wtilde{\chi}$ be the primitive character inducing $\chi$, we estimate
+        which holds by the orthogonality relations (\cref{prop:Dirichlet_orthogonality_relations} (ii)). Let $\wtilde{\chi}$ be the primitive character inducing $\chi$. Then \cref{equ:difference_between_Dirichlet-Chebychefs} implies
         \begin{equation}\label{equ:Siegel-Walfisz_2}
-          |\psi(x,\chi)-\psi(x,\wtilde{\chi})| \le \sum_{\substack{n \le x \\ (n,m) > 1}}\L(n) = \sum_{p \mid m}\sum_{\substack{v \ge 1 \\ p^{v} \le x}}\log(p) \ll \log(x)\sum_{p \mid m}\log(p) \ll \log(x)\log(m),
+          \psi(x,\chi) = \psi(x,\wtilde{\chi})+O(\log^{2}(xm)).
         \end{equation}
-        where the first bound holds because $p^{v} \le x$ implies $v \le \frac{\log(x)}{\log(p)}$ so that there are $O(\log(x))$ many terms in the inner sum and the second bound holds since $\prod_{p \mid m}p \ll m$. In particular, \cref{equ:Siegel-Walfisz_2} implies
+        When $\chi = \chi_{m,0}$ we have $\psi(x,\wtilde{\chi}) = \psi(x)$, and as $\psi(x,\chi) \sim \psi_{0}(x,\chi)$ for all $\chi$, substiuting \cref{equ:prime_number_theorem_zeta_1} into \cref{equ:Siegel-Walfisz_2} gives
         \begin{equation}\label{equ:Siegel-Walfisz_3}
-          \psi(x,\chi) = \psi(x,\wtilde{\chi})+O(\log(x)\log(m)).
+          \psi(x,\chi_{m,0}) = \psi(x)+O\left(xe^{-c\sqrt{\log(x)}}+\log^{2}(xm)\right),
         \end{equation}
-        When $\chi = \chi_{m,0}$, we have $\psi(x,\wtilde{\chi}) = \psi(x)$ and as $\psi(x,\chi) \sim \psi_{0}(x,\chi)$ for all $\chi$, substiuting \cref{equ:prime_number_theorem_zeta_1} into \cref{equ:Siegel-Walfisz_3} gives
+        for some positive constant $c$. Upon combining \cref{equ:Siegel-Walfisz_1,equ:Siegel-Walfisz_3}, we obtain
         \begin{equation}\label{equ:Siegel-Walfisz_4}
-          \psi(x,\chi_{m,0}) = \psi(x)+O\left(xe^{-c\sqrt{\log(x)}}+\log(x)\log(m)\right),
+          \psi(x;a,m) = \frac{x}{\phi(m)}+\frac{1}{\phi(m)}\sum_{\substack{\chi \tmod{m} \\ \chi \neq \chi_{m,0}}}\cchi(a)\psi(x,\chi)+O\left(\frac{1}{\phi(m)}\left(xe^{-c\sqrt{\log(x)}}+\log^{2}(xm)\right)\right).
         \end{equation}
-        for some positive constant $c$. Upon combining \cref{equ:Siegel-Walfisz_1,equ:Siegel-Walfisz_4}, we obtain
-        \begin{equation}\label{equ:Siegel-Walfisz_5}
-          \psi(x;a,m) = \frac{x}{\phi(m)}+\frac{1}{\phi(m)}\sum_{\substack{\chi \tmod{m} \\ \chi \neq \chi_{m,0}}}\cchi(a)\psi(x,\chi)+O\left(\frac{1}{\phi(m)}\left(xe^{-c\sqrt{\log(x)}}+\log^{2}(xm)\right)\right),
-        \end{equation}
-        where we have used the simple estimates $\log(x) \ll \log(xm)$ and $\log(m) \ll \log(xm)$. Appealing to \cref{cor:explicit_formula_Dirichlet_corollary}...
+        Now let $2 \le T \le x$...
+
       \end{proof}
