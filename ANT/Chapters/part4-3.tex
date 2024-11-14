@@ -189,7 +189,7 @@
       \[
         \psi_{0}(x,\chi) = \begin{cases} \psi(x,\chi) & \text{if $x$ is not a prime power}, \\ \psi(x,\chi)-\frac{1}{2}\chi(x)\L(x) & \text{if $x$ is a prime power}. \end{cases}
       \]
-      Thus $\psi_{0}(x,\chi)$ is $\psi(x,\chi)$ except that its value is halfway between the limit values when $x$ is a prime power. The \textbf{explicit formula}\index{explicit formula} for $\psi(x,\chi)$ is the following:
+      Thus $\psi_{0}(x,\chi)$ is $\psi(x,\chi)$ except that its value is halfway between the limit values when $x$ is a prime power. We will also need to define a particular constant that will come up. For a character $\chi$, define $b(\chi)$ to be $\frac{L'}{L}(0,\chi)$ if $\chi$ is odd and to be the constant term in the Laurent series of $\frac{L'}{L}(s,\chi)$ if $\chi$ is even (as in the even case $\frac{L'}{L}(s,\chi)$ has a pole at $s = 0$). The \textbf{explicit formula}\index{explicit formula} for $\psi(x,\chi)$ is the following:
 
       \begin{theorem}[Explicit formula for $\psi(x,\chi)$]
         Let $\chi$ be a primitive Dirichlet character of conductor $q > 1$. Then for $x \ge 2$,
@@ -200,7 +200,7 @@
         \[
           \psi_{0}(x,\chi) = -\sum_{\rho}\frac{x^{\rho}}{\rho}-\log(x)-b(\chi)-\frac{1}{2}\log(1-x^{-2}),
         \]
-        if $\chi$ is even, and where $b(\chi)$ is $\frac{L'}{L}(0,\chi)$ if $\chi$ is odd and is the constant term in the Laurent series of $\frac{L'}{L}(s,\chi)$ if $\chi$ is even. In both expressions, $\rho$ runs over the nontrivial zeros of $L(s,\chi)$ counted with multiplicity and ordered with respect to the size of the ordinate.
+        if $\chi$ is even, and where in both expressions, $\rho$ runs over the nontrivial zeros of $L(s,\chi)$ counted with multiplicity and ordered with respect to the size of the ordinate.
       \end{theorem}
 
       As for $\psi(x)$, a few comments are in order. Unlike the explicit formula for $\psi(x)$, there is no main term $x$ in the explicit formula for $\psi(x,\chi)$. This is because $L(s,\chi)$ does not have a pole at $s = 1$. The constant $b(\chi)$ can be expressed in terms of $B(\chi)$ (see \cite{davenport1980multiplicative} for a proof). Also, in the case $\chi$ is odd the Taylor series of the inverse hyperbolic tangent lets us write
@@ -388,7 +388,23 @@
         \begin{equation}\label{cor:explicit_formula_Dirichlet_corollary_1}
           0 = -\frac{L'}{L}(2,\chi)+B(\chi)-\frac{1}{2}\log\left(\frac{q}{\pi}\right)-\frac{1}{2}\frac{\G'}{\G}\left(\frac{2+\mf{a}}{2}\right)+\sum_{\rho}\left(\frac{1}{2-\rho}+\frac{1}{\rho}\right).
         \end{equation}
-        Subtracting \cref{cor:explicit_formula_Dirichlet_corollary_1} from the explicit formula for $\frac{L'}{L}(s,\chi)$ gives \todo{xxx}
+        Subtracting \cref{cor:explicit_formula_Dirichlet_corollary_1} from the explicit formula for $\frac{L'}{L}(s,\chi)$ gives
+        \[
+          \frac{L'}{L}(s,\chi) = \frac{L'}{L}(2,\chi)+\frac{1}{2}\frac{\G'}{\G}\left(\frac{2+\mf{a}}{2}\right)-\frac{1}{2}\frac{\G'}{\G}\left(\frac{s+\mf{a}}{2}\right)+\sum_{\rho}\left(\frac{1}{s-\rho}-\frac{1}{2-\rho}\right).
+        \]
+        As the first two terms are constant, we obtain a weaker estimate
+        \[
+          \frac{L'}{L}(s,\chi) = -\frac{1}{2}\frac{\G'}{\G}\left(\frac{s+\mf{a}}{2}\right)+\sum_{\rho}\left(\frac{1}{s-\rho}-\frac{1}{2-\rho}\right)+O(1).
+        \]
+        If $\chi$ is odd, we set $s = 0$ since $\frac{1}{2}\frac{\G'}{\G}\left(\frac{s+\mf{a}}{2}\right)$ does not have a pole there. If $\chi$ is even, we compare constant terms in the Laurent series using the Laurent series
+      \[
+        \frac{L'}{L}(s,\chi) = \frac{1}{s}+b(\chi)+\cdots \quad \text{and} \quad \frac{1}{2}\frac{\G'}{\G}\left(\frac{s+\mf{a}}{2}\right) = \frac{1}{s}+b+\cdots,
+      \]
+      for some constant $b$. In either case, we arrive at
+      \[
+        b(\chi) = -\sum_{\rho}\left(\frac{1}{\rho}+\frac{1}{2-\rho}\right)+O(1).
+      \]
+      \todo{xxx}
       \end{proof}
   \section{Prime Number Theorems}
     \subsection*{The Prime Number Theorem}
