@@ -33,7 +33,7 @@
       \]
       The constant $B$ requires slightly more work. We first claim that $\sum_{\rho}\frac{1}{\rho}$ converges provided we group the terms $\rho$ and $\conj{\rho}$ together. This is in accordance with the order of $\rho$ in the Hadamard factorization for $\xi(s)$. Letting $\rho = \b+i\g$, we have
       \begin{equation}\label{equ:B_computation_1}
-        \sum_{\rho}\frac{1}{\rho} = \asum_{\rho}\left(\frac{1}{\rho}+\frac{1}{\conj{\rho}}\right) = \sum_{\g \ge 0}\frac{2\b}{\b^{2}+\g^{2}},
+        \sum_{\rho}\frac{1}{\rho} = \asum_{\rho}\left(\frac{1}{\rho}+\frac{1}{\conj{\rho}}\right) = \asum_{\rho}\frac{2\b}{\b^{2}+\g^{2}},
       \end{equation}
       where the $\ast$ indicates that we are summing over $\rho$ and not $\conj{\rho}$. The last sum in \cref{equ:B_computation_1} is at most $2\sum_{\rho}\frac{1}{|\rho|^{2}}$ and this sum converges by the Hadamard factorizaton of $\xi(s)$ since the rank is $1$. Now \cref{equ:logarithmic_derivative_Riemann_xi_2} and the functional equation for $\xi(s)$ together give
       \begin{equation}\label{equ:B_computation_2}
@@ -41,7 +41,7 @@
       \end{equation}
       The terms corresponding to $s-\rho$ and $1-s-\rho$ cancel because if $\rho$ is a nontrivial zero so is $1-\rho$. Indeed, add $\sum_{p}\frac{1}{1-s-\rho}$ to both sides of \cref{equ:B_computation_2} and notice that $\frac{1}{1-s-\rho} = -\frac{1}{s-(1-\rho)}$. Using \cref{equ:B_computation_1} we can rewrite the result as
       \[
-        B = -\sum_{\rho}\frac{1}{\rho} = -\sum_{\g \ge 0}\frac{2\b}{\b^{2}+\g^{2}}.
+        B = -\sum_{\rho}\frac{1}{\rho} = -\asum_{\rho}\frac{2\b}{\b^{2}+\g^{2}}.
       \]
     \subsection*{The Explicit Formula for the Logarithmic Derivative of \texorpdfstring{$L(s,\chi)$}{L(s,\chi)}}
       Let $\chi$ be a primitive Dirichlet character with conductor $q > 1$. We will derive an analogous explicit formula for the logarithmic derivative of $L(s,\chi)$. To do this, define the \textbf{Dirichlet xi function}\index{Dirichlet xi function} $\xi(s,\chi)$ by
@@ -567,7 +567,7 @@
       \begin{lemma}\label{lem:Riemann_von_Mangoldt_lemma}
         Let $\rho = \b+i\g$ be a nontrivial zero of $\z(s)$. Then for $|t| > 2$,
         \[
-          \sum_{\g \ge 0}\frac{1}{1+(t-\g)^{2}} \ll \log|t|.
+          \sum_{\rho}\frac{1}{1+(t-\g)^{2}} \ll \log|t|.
         \]
       \end{lemma}
       \begin{proof}
@@ -575,13 +575,13 @@
         \[
           \sum_{\rho}\Re\left(\frac{1}{s-\rho}+\frac{1}{\rho}\right) \ll \log|t|,
         \]
-        As we have already mentioned (see the proof of the classical zero-free region for $\z(s)$) the terms in the sum are positive. Noting that $\Re\left(\frac{1}{s-\rho}\right) = \frac{\s-\b}{(\s-\b)^{2}+(t-\g)^{2}}$, discarding the terms corresponding to $\rho$ in the sum gives
+        As we have already mentioned (see the proof of the classical zero-free region for $\z(s)$) the terms in the sum are positive. Noting that $\Re\left(\frac{1}{s-\rho}\right) = \frac{\s-\b}{(\s-\b)^{2}+(t-\g)^{2}}$, discarding the constant terms in the sum gives
         \begin{equation}\label{equ:Riemann_von_Mangoldt_lemma_1}
-          \sum_{\g \ge 0}\frac{\s-\b}{(\s-\b)^{2}+(t-\g)^{2}} \ll \log|t|.
+          \sum_{\rho}\frac{\s-\b}{(\s-\b)^{2}+(t-\g)^{2}} \ll \log|t|.
         \end{equation}
         If we take $\s = 2$ in \cref{equ:Riemann_von_Mangoldt_lemma_1}, then
         \[
-          \sum_{\g \ge 0}\frac{1}{4+(t-\g)^{2}} \ll \log|t|,
+          \sum_{\rho}\frac{1}{4+(t-\g)^{2}} \ll \log|t|,
         \]
         because $1 < (\s-\b) < 2$. As $4+(t-\g)^{2} \ll 1+(t-\g)^{2}$, the desired estimate follows.
       \end{proof}
@@ -592,10 +592,10 @@
         Let $|t| > 2$. Then the following hold:
         \begin{enumerate}[label=(\roman*)]
           \item The number of nontrivial zeros of $\z(s)$ with ordinate in $[t-1,t+1]$ is $O(\log|t|)$.
-          \item 
+          \item For nontrivial zeros $\rho = \b+i\g$ of $\z(s)$,
           \[
             \sum_{|\g-t| > 1}\frac{1}{(t-\g)^{2}} = O(\log|t|).
-          \].
+          \]
         \end{enumerate}
       \end{corollary}
       \begin{proof}
@@ -800,7 +800,7 @@
       \begin{lemma}\label{lem:Riemann_von_Mangoldt_Dirichlet_L-functions_lemma}
         Let $\chi$ be a primitive Dirichlet character of conductor $q > 1$. Let $\rho = \b+i\g$ be a nontrivial zero of $L(s,\chi)$. Then for all $t$,
         \[
-          \sum_{\g \ge 0}\frac{1}{1+(t-\g)^{2}} \ll \scL.
+          \sum_{\rho}\frac{1}{1+(t-\g)^{2}} \ll \scL.
         \]
       \end{lemma}
       \begin{proof}
@@ -810,11 +810,11 @@
         \]
         As we have already mentioned (see the proof of the classical zero-free region for $L(s,\chi)$) the terms in the sum are positive. Since $\Re\left(\frac{1}{s-\rho}\right) = \frac{\s-\b}{(\s-\b)^{2}+(t-\g)^{2}}$, we immeditely have
         \begin{equation}\label{equ:Riemann_von_Mangoldt_Dirichlet_L-functions_lemma_1}
-          \sum_{\g \ge 0}\frac{\s-\b}{(\s-\b)^{2}+(t-\g)^{2}} \ll \scL.
+          \sum_{\rho}\frac{\s-\b}{(\s-\b)^{2}+(t-\g)^{2}} \ll \scL.
         \end{equation}
         Taking $\s = 2$ in \cref{equ:Riemann_von_Mangoldt_Dirichlet_L-functions_lemma_1} gives
         \[
-          \sum_{\g \ge 0}\frac{1}{4+(t-\g)^{2}} \ll \scL,
+          \sum_{\rho}\frac{1}{4+(t-\g)^{2}} \ll \scL,
         \]
         because $1 < (\s-\b) < 2$. Since $4+(t-\g)^{2} \ll 1+(t-\g)^{2}$, the desired estimate follows.
       \end{proof}
@@ -825,7 +825,7 @@
         Let $\chi$ be a primitive Dirichlet character of conductor $q > 1$. Then for all $t$, the following hold:
         \begin{enumerate}[label=(\roman*)]
           \item The number of nontrivial zeros of $L(s,\chi)$ with ordinate in $[t-1,t+1]$ is $O(\scL)$.
-          \item 
+          \item For nontrivial zeros $\rho = \b+i\g$ of $L(s,\chi)$,
           \[
             \sum_{|\g-t| > 1}\frac{1}{(t-\g)^{2}} = O(\scL).
           \].

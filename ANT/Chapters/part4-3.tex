@@ -370,6 +370,10 @@
         \]
         where $\rho$ runs over the nontrivial zeros of $L(s,\chi)$ counted with multiplicity and ordered with respect to the size of the ordinate, the $'$ in the sum indicates that we are excluding the terms corresponding to real zeros, the term corresponding to a Siegel zero $\b_{1}$ is present only if $L(s,\chi)$ admits a Siegel zero, and
         \[
+          R(x,T,\chi) \ll \frac{x\log^{2}(xm)}{T}+x^{\frac{1}{4}}\log(x)+\log(x)\min\left(1,\frac{x}{T\<x\>}\right),
+        \]
+        where $\<x\>$ is the distance between $x$ and the nearest prime power other than $x$ if $x$ itself is a prime power. Moreover, if $x$ is an integer, we have the simplified estimate
+        \[
           R(x,T,\chi) \ll \frac{x\log^{2}(xm)}{T}+x^{\frac{1}{4}}\log(x).
         \]
       \end{corollary}
@@ -401,8 +405,20 @@
         \frac{L'}{L}(s,\chi) = \frac{1}{s}+b(\chi)+\cdots \quad \text{and} \quad \frac{1}{2}\frac{\G'}{\G}\left(\frac{s+\mf{a}}{2}\right) = \frac{1}{s}+b+\cdots,
       \]
       for some constant $b$. In either case, we arrive at
-      \[
+      \begin{equation}\label{cor:explicit_formula_Dirichlet_corollary_2}
         b(\chi) = -\sum_{\rho}\left(\frac{1}{\rho}+\frac{1}{2-\rho}\right)+O(1).
+      \end{equation}
+      For the terms $\rho = \b+i\g$ with $|\g| > 1$, we estimate
+      \begin{equation}\label{cor:explicit_formula_Dirichlet_corollary_3}
+        \sum_{|\g| > 1}\left(\frac{1}{\rho}+\frac{1}{2-\rho}\right) \le \sum_{|\g| > 1}\left|\frac{1}{\rho}+\frac{1}{2-\rho}\right| = \sum_{|\g| > 1}\frac{2}{|\rho(2-\rho)|} \ll \sum_{|\g| > 1}\frac{1}{|2-\rho|^{2}} \ll \log(q),
+      \end{equation}
+      where the second to last estimate holds because $|\rho| \gg |2-\rho|$ (as $\b$ is bounded) and the last estimate holds by \cref{lem:Riemann_von_Mangoldt_Dirichlet_L-functions_lemma} (ii) since $|2-\rho| \ge |\g|$. For the terms $\rho = \b+i\g$, we have
+      \begin{equation}\label{cor:explicit_formula_Dirichlet_corollary_4}
+        \sum_{|\g| \le 1}\frac{1}{2-\rho} \le \sum_{|\g| \le 1}\frac{1}{|2-\rho|} \ll \sum_{|\g| \le 1}\frac{1}{|2-\rho|} \ll \log(q),
+      \end{equation}
+      where the second to last estimate holds because $|2-\rho| \gg |2-\rho|^{2}$ (as $\rho$ is bounded because both $\b$ and $\g$ are) and the last estimate holds by \cref{lem:Riemann_von_Mangoldt_Dirichlet_L-functions_lemma} (i). Combining \cref{cor:explicit_formula_Dirichlet_corollary_2,cor:explicit_formula_Dirichlet_corollary_3,cor:explicit_formula_Dirichlet_corollary_4} yields
+      \[
+        b(\chi) = -\sum_{|\g| < 1}\frac{1}{\rho}+O(\log(q)).
       \]
       \todo{xxx}
       \end{proof}
