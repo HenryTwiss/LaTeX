@@ -178,7 +178,7 @@
         \]
       \end{corollary}
       \begin{proof}
-        This follows from \cref{equ:explicit_formula_zeta_proof_14} since $\frac{1}{2}\log(1-x^{2})$ is bounded for $x \ge 2$ and $\frac{\z'}{\z}(0)$ is constant. If $x$ is an integer, then $\<x\> \ge 1$ so that $\log(x)\min\left(1,\frac{x}{T\<x\>}\right) \le \frac{x\log(x)}{T}$ and this term can be absorbed by $\frac{x\log^{2}(xT)}{T}$.
+        This follows from \cref{equ:explicit_formula_zeta_proof_14} since $\frac{\z'}{\z}(0)$ is constant and $\frac{1}{2}\log(1-x^{2})$ is bounded for $x \ge 2$. If $x$ is an integer, then $\<x\> \ge 1$ so that $\log(x)\min\left(1,\frac{x}{T\<x\>}\right) \le \frac{x\log(x)}{T}$ and this term can be absorbed by $\frac{x\log^{2}(xT)}{T}$.
       \end{proof}
     \subsection*{The Explicit Formula for \texorpdfstring{$\psi(x,\chi)$}{$\psi(x,\chi)$}}
       Let $\chi$ be a Dirichlet character modulo $m > 1$. The \textbf{Dirichlet-Chebychef function} $\psi(x,\chi)$, for $x > 1$, is defined by
@@ -370,11 +370,11 @@
         \]
         where $\rho$ runs over the nontrivial zeros of $L(s,\chi)$ counted with multiplicity and ordered with respect to the size of the ordinate, the $'$ in the sum indicates that we are excluding the terms corresponding to real zeros, the term corresponding to a Siegel zero $\b_{1}$ is present only if $L(s,\chi)$ admits a Siegel zero, and
         \[
-          R(x,T,\chi) \ll \frac{x\log^{2}(xm)}{T}+x^{\frac{1}{4}}\log(x)+\log(x)\min\left(1,\frac{x}{T\<x\>}\right),
+          R(x,T,\chi) \ll \frac{x\log^{2}(xmT)}{T}+x^{1-\b_{1}}\log(x)+\log(x)\min\left(1,\frac{x}{T\<x\>}\right),
         \]
         where $\<x\>$ is the distance between $x$ and the nearest prime power other than $x$ if $x$ itself is a prime power. Moreover, if $x$ is an integer, we have the simplified estimate
         \[
-          R(x,T,\chi) \ll \frac{x\log^{2}(xm)}{T}+x^{\frac{1}{4}}\log(x).
+          R(x,T,\chi) \ll \frac{x\log^{2}(xmT)}{T}+x^{1-\b_{1}}\log(x).
         \]
       \end{corollary}
       \begin{proof}
@@ -388,7 +388,7 @@
             &\ll \log^{2}(xm),
           \end{aligned}
         \end{equation}
-        where the third line holds because $p^{v} \le x$ implies $v \le \frac{\log(x)}{\log(p)}$ so that there are $O(\log(x))$ many terms in the inner sum, the fourth line holds since $\prod_{p \mid m}p \ll m$, and in the last line we have used the simple estimates $\log(x) \ll \log(xm)$ and $\log(m) \ll \log(xm)$. Therefore the difference between $\psi_{0}(x,\chi)$ and $\psi_{0}(x,\wtilde{\chi})$ is $O(\log^{2}(xm))$. Now for $2 \le T \le x$, we have $\log^{2}(xm) \ll \frac{x\log^{2}(xmT)}{T}$, which implies that the difference is absored by $\frac{x\log^{2}(xmT)}{T}$ which is the first term in the error for $R(x,T,\chi)$. As $R(x,T,\wtilde{\chi}) \ll R(x,T,\chi)$ because $q \le m$, it now suffices to assume that $\chi$ is primitive. The claim will follow from estimating terms in \cref{equ:explicit_formula_Dirichlet_proof_14,equ:explicit_formula_Dirichlet_proof_14'}. First note that $\tanh^{-1}(x^{-1})$ and $\frac{1}{2}\log(1-x^{-2})$ are both bounded for $x \ge 2$. We now estimate the constant $b(\chi)$. The explicit formula for $\frac{L'}{L}(s,\chi)$ at $s = 2$ implies
+        where the third line holds because $p^{v} \le x$ implies $v \le \frac{\log(x)}{\log(p)}$ so that there are $O(\log(x))$ many terms in the inner sum, the fourth line holds since $\prod_{p \mid m}p \ll m$, and in the last line we have used the simple estimates $\log(x) \ll \log(xm)$ and $\log(m) \ll \log(xm)$. Therefore the difference between $\psi_{0}(x,\chi)$ and $\psi_{0}(x,\wtilde{\chi})$ is $O(\log^{2}(xm))$. Now for $2 \le T \le x$, we have $\log^{2}(xm) \ll \frac{x\log^{2}(xmT)}{T}$, which implies that the difference is absored by $\frac{x\log^{2}(xmT)}{T}$ which is the first term in the error for $R(x,T,\chi)$. As $R(x,T,\wtilde{\chi}) \ll R(x,T,\chi)$ because $q \le m$, it now suffices to assume that $\chi$ is primitive. The claim will follow from estimating terms in \cref{equ:explicit_formula_Dirichlet_proof_14,equ:explicit_formula_Dirichlet_proof_14'}. We will estimate the constant $b(\chi)$ first. The explicit formula for $\frac{L'}{L}(s,\chi)$ at $s = 2$ implies
         \begin{equation}\label{cor:explicit_formula_Dirichlet_corollary_1}
           0 = -\frac{L'}{L}(2,\chi)+B(\chi)-\frac{1}{2}\log\left(\frac{q}{\pi}\right)-\frac{1}{2}\frac{\G'}{\G}\left(\frac{2+\mf{a}}{2}\right)+\sum_{\rho}\left(\frac{1}{2-\rho}+\frac{1}{\rho}\right).
         \end{equation}
@@ -401,26 +401,54 @@
           \frac{L'}{L}(s,\chi) = -\frac{1}{2}\frac{\G'}{\G}\left(\frac{s+\mf{a}}{2}\right)+\sum_{\rho}\left(\frac{1}{s-\rho}-\frac{1}{2-\rho}\right)+O(1).
         \]
         If $\chi$ is odd, we set $s = 0$ since $\frac{1}{2}\frac{\G'}{\G}\left(\frac{s+\mf{a}}{2}\right)$ does not have a pole there. If $\chi$ is even, we compare constant terms in the Laurent series using the Laurent series
-      \[
-        \frac{L'}{L}(s,\chi) = \frac{1}{s}+b(\chi)+\cdots \quad \text{and} \quad \frac{1}{2}\frac{\G'}{\G}\left(\frac{s+\mf{a}}{2}\right) = \frac{1}{s}+b+\cdots,
-      \]
-      for some constant $b$. In either case, we arrive at
-      \begin{equation}\label{cor:explicit_formula_Dirichlet_corollary_2}
-        b(\chi) = -\sum_{\rho}\left(\frac{1}{\rho}+\frac{1}{2-\rho}\right)+O(1).
-      \end{equation}
-      For the terms $\rho = \b+i\g$ with $|\g| > 1$, we estimate
-      \begin{equation}\label{cor:explicit_formula_Dirichlet_corollary_3}
-        \sum_{|\g| > 1}\left(\frac{1}{\rho}+\frac{1}{2-\rho}\right) \le \sum_{|\g| > 1}\left|\frac{1}{\rho}+\frac{1}{2-\rho}\right| = \sum_{|\g| > 1}\frac{2}{|\rho(2-\rho)|} \ll \sum_{|\g| > 1}\frac{1}{|2-\rho|^{2}} \ll \log(q),
-      \end{equation}
-      where the second to last estimate holds because $|\rho| \gg |2-\rho|$ (as $\b$ is bounded) and the last estimate holds by \cref{lem:Riemann_von_Mangoldt_Dirichlet_L-functions_lemma} (ii) since $|2-\rho| \ge |\g|$. For the terms $\rho = \b+i\g$, we have
-      \begin{equation}\label{cor:explicit_formula_Dirichlet_corollary_4}
-        \sum_{|\g| \le 1}\frac{1}{2-\rho} \le \sum_{|\g| \le 1}\frac{1}{|2-\rho|} \ll \sum_{|\g| \le 1}\frac{1}{|2-\rho|} \ll \log(q),
-      \end{equation}
-      where the second to last estimate holds because $|2-\rho| \gg |2-\rho|^{2}$ (as $\rho$ is bounded because both $\b$ and $\g$ are) and the last estimate holds by \cref{lem:Riemann_von_Mangoldt_Dirichlet_L-functions_lemma} (i). Combining \cref{cor:explicit_formula_Dirichlet_corollary_2,cor:explicit_formula_Dirichlet_corollary_3,cor:explicit_formula_Dirichlet_corollary_4} yields
-      \[
-        b(\chi) = -\sum_{|\g| < 1}\frac{1}{\rho}+O(\log(q)).
-      \]
-      \todo{xxx}
+        \[
+          \frac{L'}{L}(s,\chi) = \frac{1}{s}+b(\chi)+\cdots \quad \text{and} \quad \frac{1}{2}\frac{\G'}{\G}\left(\frac{s+\mf{a}}{2}\right) = \frac{1}{s}+b+\cdots,
+        \]
+        for some constant $b$. In either case, we arrive at
+        \begin{equation}\label{cor:explicit_formula_Dirichlet_corollary_2}
+          b(\chi) = -\sum_{\rho}\left(\frac{1}{\rho}+\frac{1}{2-\rho}\right)+O(1).
+        \end{equation}
+        Let $\rho = \b+i\g$. For all the terms with $|\g| > 1$, we estimate
+        \begin{equation}\label{cor:explicit_formula_Dirichlet_corollary_3}
+          \sum_{|\g| > 1}\left(\frac{1}{\rho}+\frac{1}{2-\rho}\right) \le \sum_{|\g| > 1}\left|\frac{1}{\rho}+\frac{1}{2-\rho}\right| = \sum_{|\g| > 1}\frac{2}{|\rho(2-\rho)|} \ll \sum_{|\g| > 1}\frac{1}{|2-\rho|^{2}} \ll \log(q),
+        \end{equation}
+        where the second to last estimate holds because $|\rho| \gg |2-\rho|$ as $\b$ is bounded and the last estimate holds by \cref{lem:Riemann_von_Mangoldt_Dirichlet_L-functions_lemma} (ii) since $|2-\rho| \ge |\g|$. For the terms corresponding to $2-\rho$ with $|\g| \le 1$, we have
+        \begin{equation}\label{cor:explicit_formula_Dirichlet_corollary_4}
+          \sum_{|\g| \le 1}\frac{1}{2-\rho} \le \sum_{|\g| \le 1}\frac{1}{|2-\rho|} \ll \sum_{|\g| \le 1}\frac{1}{|2-\rho|^{2}} \ll \log(q),
+        \end{equation}
+        where the second to last estimate holds because $|2-\rho| \gg |2-\rho|^{2}$ as $\rho$ is bounded (because both $\b$ and $\g$ are) and the last estimate holds by \cref{lem:Riemann_von_Mangoldt_Dirichlet_L-functions_lemma} (i). Combining \cref{cor:explicit_formula_Dirichlet_corollary_2,cor:explicit_formula_Dirichlet_corollary_3,cor:explicit_formula_Dirichlet_corollary_4} yields
+        \begin{equation}\label{cor:explicit_formula_Dirichlet_corollary_5}
+          b(\chi) = -\sum_{|\g| \le 1}\frac{1}{\rho}+O(\log(q)).
+        \end{equation}
+        Inserting \cref{cor:explicit_formula_Dirichlet_corollary_5} into \cref{equ:explicit_formula_Dirichlet_proof_14,equ:explicit_formula_Dirichlet_proof_14'} and noting that $\tanh^{-1}(x^{-1})$ and $\frac{1}{2}\log(1-x^{-2})$ are both bounded for $x \ge 2$ gives
+        \begin{equation}\label{cor:explicit_formula_Dirichlet_corollary_6}
+          \psi_{0}(x,\chi) = -\sum_{|\g| < T}\frac{x^{\rho}}{\rho}+\sum_{|\g| \le 1}\frac{1}{\rho}+R'(x,T,\chi),
+        \end{equation}
+        where
+        \[
+          R'(x,T,\chi) \ll \frac{x\log^{2}(xqT)}{T}+\log(x)\min\left(1,\frac{x}{T\<x\>}\right),
+        \]
+        and we have absorbed the error in \cref{cor:explicit_formula_Dirichlet_corollary_5} into $\frac{x\log^{2}(xqT)}{T}$ because $2 \le T \le x$. By the classical zero-free region for $L(s,\wtilde{\chi})$, all of the zeros $\rho$ with $|\g| < T$ (we have assume $T \ge 2$ so that this includes the zeros with $|\g| \le 1$) satisfy $\b \ll 1-\frac{1}{\log(qT)}$ (we have used $\scL \sim \log(qT)$) except for possibly a single real Siegel zero $\b_{1}$ if $\chi$ is quadratic. Since $\conj{\rho}$ is a zero if $\rho$ is, there will be another real zero $1-\b_{1}$. Extracting the terms corresponding to these two zeros in \cref{cor:explicit_formula_Dirichlet_corollary_6}, gives
+        \begin{equation}\label{cor:explicit_formula_Dirichlet_corollary_7}
+          \psi_{0}(x,\chi) = -\psum_{|\g| < T}\frac{x^{\rho}}{\rho}+\psum_{|\g| \le 1}\frac{1}{\rho}-\frac{x^{\b_{1}}-1}{\b_{1}}-\frac{x^{1-\b_{1}}-1}{1-\b_{1}}+R(x,T,\chi),
+        \end{equation}
+        where the $'$ on the sums indicates that we are excluding the terms corresponding to real zeros and the terms corresponding to $\b_{1}$ and $1-\b_{1}$ are present if and only if $L(s,\chi)$ admits a Siegel zero. We now estimate some of the terms in \cref{cor:explicit_formula_Dirichlet_corollary_7}. For the second sum, we have $\rho \gg \frac{1}{\log(q)}$ since $\g$ is bounded and these zeros satisfy $\b \ll 1-\frac{1}{\log(q)}$ (we have used $\scL \sim \log(q)$). Thus
+        \begin{equation}\label{cor:explicit_formula_Dirichlet_corollary_8}
+          \psum_{|\g| \le 1}\frac{1}{\rho} \ll \psum_{|\g| \le 1}\log(q) \ll \log^{2}(q),
+        \end{equation}
+        where the last estimate holds by \cref{lem:Riemann_von_Mangoldt_Dirichlet_L-functions_lemma} (i). Similarily,
+        \begin{equation}\label{cor:explicit_formula_Dirichlet_corollary_9}
+          \frac{x^{1-\b_{1}}-1}{1-\b_{1}} \ll x^{1-\b_{1}}\log(x),
+        \end{equation}
+        because $x^{1-\b_{1}}-1 \sim x^{1-\b_{1}}$ and $1-\b_{1} \gg \frac{1}{\log(q)} \gg \frac{1}{\log(x)}$. Substiuting \cref{cor:explicit_formula_Dirichlet_corollary_8,cor:explicit_formula_Dirichlet_corollary_9} into \cref{cor:explicit_formula_Dirichlet_corollary_7} and noting that $\b_{1}$ is bounded, yields
+        \begin{equation}\label{cor:explicit_formula_Dirichlet_corollary_10}
+          \psi_{0}(x,\chi) = -\frac{x^{\b_{1}}}{\b_{1}}-\psum_{|\g| < T}\frac{x^{\rho}}{\rho}+R(x,T,\chi),
+        \end{equation}
+        where
+        \[
+          R(x,T,\chi) \ll \frac{x\log^{2}(xqT)}{T}+x^{1-\b_{1}}\log(x)+\log(x)\min\left(1,\frac{x}{T\<x\>}\right)
+        \]
+        and we have absorbed the error in \cref{cor:explicit_formula_Dirichlet_corollary_8} into $\frac{x\log^{2}(xqT)}{T}$ because because $2 \le T \le x$. If $x$ is an integer, then $\<x\> \ge 1$ so that $\log(x)\min\left(1,\frac{x}{T\<x\>}\right) \le \frac{x\log(x)}{T}$ and this term can be absorbed by $\frac{x\log^{2}(xqT)}{T}$.
       \end{proof}
   \section{Prime Number Theorems}
     \subsection*{The Prime Number Theorem}
@@ -497,15 +525,15 @@
         \]
       \end{theorem}
       \begin{proof}
-        We will first prove
+        It suffices to assume $x$ is an integer, because $\pi(x)$ can only change value at integers and the other functions in the statement are continuous (and hence bounded on compact sets). We will first prove
         \begin{equation}\label{equ:prime_number_theorem_zeta_1}
           \psi(x) = x+O\left(xe^{-c\sqrt{\log(x)}}\right),
         \end{equation}
-        To achieve this, we estimate the sum over the nontrivial zeros of $\z(s)$ in \cref{cor:explicit_formula_zeta_corollary}. So let $T > 2$ not coinciding with the ordinate of a nontrivial zero, and suppose $\rho = \b+i\g$ is a nontrivial zero with $|\g| < T$. By the classical version of the zero-free region for $\z(s)$, we know $\b < 1-\frac{c}{\log(T)}$ for some constant $c > 0$. It follows that
+        To achieve this, we estimate the sum over the nontrivial zeros of $\z(s)$ in \cref{cor:explicit_formula_zeta_corollary}. So let $T > 2$ not coinciding with the ordinate of a nontrivial zero, and suppose $\rho = \b+i\g$ is a nontrivial zero with $|\g| < T$. By the classical version of the zero-free region for $\z(s)$, we know $\b < 1-\frac{c}{\log(T)}$ for some positive constant $c$. It follows that
         \begin{equation}\label{equ:prime_number_theorem_zeta_2}
           |x^{\rho}| = x^{\b} < x^{1-\frac{c}{\log(T)}} = xe^{-c\frac{\log(x)}{\log(T)}}.
         \end{equation}
-        As $|\rho| > |\g|$, letting $\g_{1} > 1$ (actually $\g_{1} > 14$ but we only need a constant bound away from zero) be the ordinate of the first nontrivial zero, applying integration by parts gives
+        As $|\rho| > |\g|$, letting $\g_{1} > 0$ (which is bounded away from zero since the zeros of $\z(s)$ are discrete and we know that there is no real nontrivial zero) be the ordinate of the first nontrivial zero, applying integration by parts gives
         \begin{equation}\label{equ:prime_number_theorem_zeta_3}
           \sum_{|\g| < T}\frac{1}{\rho} \ll \sum_{\g_{1} \le |\g| < T}\frac{1}{\g} \ll \int_{\g_{1}}^{T}\frac{dN(t)}{t} = \frac{N(T)}{T}+\int_{\g_{1}}^{T}\frac{N(t)}{t^{2}}\,dt \ll \log^{2}(T),
         \end{equation}
@@ -513,9 +541,9 @@
         \begin{equation}\label{equ:prime_number_theorem_zeta_4}
           \sum_{|\g| < T}\frac{x^{\rho}}{\rho} \ll x\log^{2}(T)e^{-c\frac{\log(x)}{\log(T)}}.
         \end{equation}
-        As $\psi(x) \sim \psi_{0}(x)$ and $\log(1-x^{-2}) \ll 1$ for $x \ge 2$, \cref{equ:prime_number_theorem_zeta_4} with \cref{cor:explicit_formula_zeta_corollary} together imply
+        As $\psi(x) \sim \psi_{0}(x)$ and $x$ is an integer, \cref{equ:prime_number_theorem_zeta_4} with \cref{cor:explicit_formula_zeta_corollary} together imply
         \begin{equation}\label{equ:prime_number_theorem_zeta_5}
-          \psi(x)-x \ll \frac{x\log^{2}(xT)}{T}+x\log^{2}(T)e^{-c\frac{\log(x)}{\log(T)}}.
+          \psi(x)-x \ll x\log^{2}(T)e^{-c\frac{\log(x)}{\log(T)}}+\frac{x\log^{2}(xT)}{T}.
         \end{equation}
         We will now let $T$ be determined by
         \[
@@ -527,8 +555,8 @@
         \]
         With this choice of $T$ (note that if $x \ge 2$ then $T > 2$), \cref{equ:prime_number_theorem_zeta_5} becomes
         \begin{align*}
-          \psi(x)-x &\ll x\left(\log^{2}(x)+\log(x)\right)e^{-\sqrt{\log(x)}}+x\log(x)e^{-c\sqrt{\log(x)}} \\
-          &\ll x\log^{2}(x)e^{-\sqrt{\log(x)}}+x\log(x)e^{-c\sqrt{\log(x)}} \\
+          \psi(x)-x &\ll x\log(x)e^{-c\sqrt{\log(x)}}+x\left(\log^{2}(x)+\log(x)\right)e^{-\sqrt{\log(x)}} \\
+          &\ll x\log(x)e^{-c\sqrt{\log(x)}}+x\log^{2}(x)e^{-\sqrt{\log(x)}} \\
           &\ll x\log^{2}(x)e^{-\min(1,c)\sqrt{\log(x)}}.
         \end{align*}
         As $\log(x) \ll_{\e} e^{-\e\sqrt{\log(x)}}$ for any $\e > 0$, we conclude that
@@ -650,7 +678,7 @@
         provided $m \le \log^{N}(x)$.
       \end{theorem}
       \begin{proof}
-        We being with the identity
+        It suffices to assume $x$ is an integer, because $\pi(x;a,m)$ can only change value at integers and the other functions in the statement are continuous (and hence bounded on compact sets). We being with the identity
         \begin{equation}\label{equ:Siegel-Walfisz_1}
           \psi(x;a,m) = \frac{1}{\phi(m)}\sum_{\chi \tmod{m}}\cchi(a)\psi(x,\chi),
         \end{equation}
@@ -666,25 +694,21 @@
         \begin{equation}\label{equ:Siegel-Walfisz_4}
           \psi(x;a,m) = \frac{x}{\phi(m)}+\frac{1}{\phi(m)}\sum_{\substack{\chi \tmod{m} \\ \chi \neq \chi_{m,0}}}\cchi(a)\psi(x,\chi)+O\left(\frac{1}{\phi(m)}\left(xe^{-c\sqrt{\log(x)}}+\log^{2}(xm)\right)\right).
         \end{equation}
-        Now fix a non-principal $\chi$ modulo $m$ and let $\wtilde{\chi}$ be the primitive character modulo $q$ inducing $\chi$. Let $2 \le T \le x$ not coinciding with the ordinate of a nontrivial zero and let $\rho = \b+i\g$ be a nontrivial zero of $L(s,\wtilde{\chi})$ with $|\g| < T$ and not a real zero (that is not a Siegel zero or its pair). By the classical zero-free region for $L(s,\wtilde{\chi})$, all of the zeros $\rho$ satisfy $\b < 1-\frac{c}{\log(qT)}$ for some possibly smaller constant $c$. It follows that
+        Now fix a non-principal $\chi$ modulo $m$ and let $\wtilde{\chi}$ be the primitive character modulo $q$ inducing $\chi$. Let $2 \le T \le x$ not coinciding with the ordinate of a nontrivial zero and let $\rho = \b+i\g$ be a nontrivial zero of $L(s,\wtilde{\chi})$ with $|\g| < T$ and not a real zero. By the classical zero-free region for $L(s,\wtilde{\chi})$, all of the zeros $\rho$ satisfy $\b < 1-\frac{c}{\log(qT)}$ for some possibly smaller constant $c$. It follows that
         \begin{equation}\label{equ:Siegel-Walfisz_5}
           |x^{\rho}| = x^{\b} < x^{1-\frac{c}{\log(qT)}} = xe^{-c\frac{\log(x)}{\log(qT)}} \ll xe^{-c\frac{\log(x)}{\log(xq)}},
         \end{equation}
-        where in the last estimate we have used that $T \le x$. As $|\rho| > |\g|$, for those zeros with $|\g| > 1$ (unlike the Riemann zeta function we do not have a positive lower bound for the first ordinate $\g_{1}$ of a nontrivial zero that is not real), applying integration by parts gives
+        where in the last estimate we have used that $T \le x$. As $|\rho| > |\g|$, for those zeros with $|\g| > 1$ (unlike the Riemann zeta function we do not have a positive lower bound for the first ordinate $\g_{1}$ of a nontrivial zero that is not real since Siegel zeros may exist), applying integration by parts gives
         \begin{equation}\label{equ:Siegel-Walfisz_6}
           \sum_{1 < |\g| < T}\frac{1}{\rho} \ll \sum_{1 < |\g| < T}\frac{1}{\g} \ll \int_{1}^{T}\frac{dN(t,\wtilde{\chi})}{t} = \frac{N(T,\wtilde{\chi})}{T}+\int_{1}^{T}\frac{N(t,\wtilde{\chi})}{t^{2}}\,dt \ll \log^{2}(qT) \ll \log^{2}(xq),
         \end{equation}
-        where in the second to last estimate we have used that $N(t,\wtilde{\chi}) \ll t\log(qt)$ which follows from \cref{cor:density_of_nontrivial_zeros_Dirichlet}. By \cref{cor:Riemann_von_Mangoldt_Dirichlet_L-functions_corollary}, the number of nontrivial zeros $\rho$ that are not real with $|\g| \le 1$ must be $O(\log(q)) = O(\log(q))$. Moroever, these zeros satisfy $|\rho| > \b \gg \frac{1}{\log(q)}$ by the classical zero free region for $L(s,\wtilde{\chi})$ so that
-        \begin{equation}\label{equ:Siegel-Walfisz_7}
-          \sum_{|\g| \le 1}\frac{1}{\rho} \ll \log^{2}(q) \ll \log^{2}(xq).
-        \end{equation}
-         Combining \cref{equ:Siegel-Walfisz_5,equ:Siegel-Walfisz_6,equ:Siegel-Walfisz_7} yields
+        where in the second to last estimate we have used that $N(t,\wtilde{\chi}) \ll t\log(qt)$ which follows from \cref{cor:density_of_nontrivial_zeros_Dirichlet}. For the remaining sum of zeros with $|\g| \le 1$ (that are not real), we use \cref{cor:explicit_formula_Dirichlet_corollary_8}. Combining \cref{cor:explicit_formula_Dirichlet_corollary_8,equ:Siegel-Walfisz_5,equ:Siegel-Walfisz_6} yields
         \begin{equation}\label{equ:Siegel-Walfisz_8}
           \psum_{|\g| < T}\frac{x^{\rho}}{\rho} \ll x\log^{2}(xq)e^{-c\frac{\log(x)}{\log(xq)}},
         \end{equation}
-        where the $'$ in the sum indicates that we are excluding the terms corresponding to real zeros. Inserting \cref{equ:Siegel-Walfisz_8} into \cref{cor:explicit_formula_Dirichlet_corollary}, using that $\psi(x,\chi) \sim \psi_{0}(x,\chi)$, and the estimates $\log(1-x^{-2}) \ll 1$ and $\tanh^{-1}(x^{-1}) \ll 1$ for $x \ge 2$, results in
+        where the $'$ in the sum indicates that we are excluding the terms corresponding to real zeros and the error in \cref{cor:explicit_formula_Dirichlet_corollary_8} has been absorbed by that in \cref{equ:Siegel-Walfisz_6}. As $\psi(x,\chi) \sim \psi_{0}(x,\chi)$ and $x$ is an integer, inserting \cref{equ:Siegel-Walfisz_8} into \cref{cor:explicit_formula_Dirichlet_corollary} results in
         \begin{equation}\label{equ:Siegel-Walfisz_9}
-          \psi(x,\chi)+\frac{x^{\b_{1}}}{\b_{1}} \ll \frac{x\log^{2}(xmT)}{T}+x^{\frac{1}{4}}\log(x)+x\log^{2}(xm)e^{-c\frac{\log(x)}{\log(xm)}},
+          \psi(x,\chi)+\frac{x^{\b_{1}}}{\b_{1}} \ll x\log^{2}(xm)e^{-c\frac{\log(x)}{\log(xm)}}+\frac{x\log^{2}(xmT)}{T}+x^{1-\b_{1}}\log(x),
         \end{equation}
-        where the term corresponding to the Seigel zero $\b_{1}$ is present if and only if $\wtilde{\chi}$ admits a Siegel zero. \todo{xxx}
+        where the terms corresponding to real zeros are present if and only if $L(s,\chi)$ admits a Siegel zero. \todo{xxx}
       \end{proof}

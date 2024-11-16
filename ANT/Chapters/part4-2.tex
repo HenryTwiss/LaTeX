@@ -212,7 +212,7 @@
       \begin{theorem}[Zero-free region for $L(s,\chi)$, classical version]
         There exists a positive constant $c$ such that for any non-principal Dirichlet character $\chi$ of conductor $q > 1$, $L(s,\chi)$ contains no zeros in the region
         \[
-          \left\{s = \s+it \in \C:\s > 1-\frac{c}{\scL}\right\},
+          \left\{s = \s+it \in \C:\s \ge 1-\frac{c}{\scL}\right\},
         \]
         unless $\chi$ is quadratic in which case $L(s,\chi)$ has at most one, necessarily real, zero in this region.
       \end{theorem}
@@ -322,7 +322,7 @@
 
       The classical zero-free region for Dirichlet $L$-functions is almost an exact analog to the classical zero-free region for the Riemann zeta function. In particular, the constant $c$ is effective. The strength of this zero-free region result rests in the fact that it only depends upon the conductor $q$ of the character. Unfortunately, the drawback is that when $\chi$ is quadratic there may very well be a single real zero $\b_{1}$ necessarily satisfying 
       \[
-        \b > 1-\frac{c}{\scL}.
+        \b_{1} \ge 1-\frac{c}{\scL}.
       \]
       Of course, the Riemann hypothesis for the Selberg class implies that such zeros do not exist. These hypothetical zeros are referred to as \textbf{Siegel zeros}\index{Siegel zeros} or \textbf{exceptional zeros}\index{exceptional zeros}. Note that if $\b_{1}$ is a Siegel zero of $L(s,\chi)$, then $1-\b_{1}$ is also a zero of $L(s,\chi)$ since the nontrivial zeros occur in pairs (or sets of four in some cases we have discussed). So far, no Siegel zero has been shown to exist or not exist. Now the effective constant $c$ is absolute and hence is independent of every quadratic character $\chi$. So for any fixed modulus, we can choose a smaller constant to make the region zero-free for all characters of that modulus. Also, some progress has been made towards showing that they are exceptionally rare (see \cite{montgomery2006multiplicative}):
 
@@ -349,7 +349,7 @@
       \begin{theorem}[Siegel's theorem, lower bound version]
         Let $\chi$ be a primitive quadratic Dirichlet character modulo $q$. Then for any $\e > 0$ there exists a positive constant $c_{1}(\e)$ such that
         \[
-          L(1,\chi) \ge c_{1}(\e)q^{-\e}.
+          L(1,\chi) \ge \frac{c_{1}(\e)}{q^{\e}}.
         \]
       \end{theorem}
 
@@ -358,7 +358,7 @@
       \begin{theorem}[Siegel's theorem, zero-free region version]
         Let $\chi$ be a primitive quadratic Dirichlet character modulo $q$. Then for any $\e > 0$ there exists a positive constant $c_{2}(\e)$ such that $L(s,\chi)$ has no real zero $\b$ with
         \[
-          1-\b \le c_{2}(\e)q^{-\e}.
+          \b \ge 1-\frac{c_{2}(\e)}{q^{\e}}.
         \]
       \end{theorem}
 
@@ -437,13 +437,13 @@
       We will now prove the zero-free region version of Sigel's theorem, assuming the lower bound version, and using \cref{lem:Siegels_theorem_second_version_lemma}:
 
       \begin{proof}[Proof of Siegel's theorem, zero-free region version]
-        We we will prove the theorem by contradiction. Let $\e > 0$. Clearly the result holds for a single $q$, and notice that the result also holds provided we bound $q$ from above by taking the maximum of all the $c_{2}(\e)$. Therefore we may suppose $q$ is arbitrarily large. In this case, if there was a real zero $\b$ with $1-\b \le c_{2}(\e)q^{-\e}$ then for large enough $q$ we have $0 \le 1-\b \le \frac{1}{\log(q)}$ so that $L'(\s,\chi) = O(\log^{2}(q))$ for $\b \le \s \le 1$ by \cref{lem:Siegels_theorem_second_version_lemma}. These two estimates and the mean value theorem together give
+        We we will prove the theorem by contradiction. Let $\e > 0$. Clearly the result holds for a single $q$, and notice that the result also holds provided we bound $q$ from above by taking the maximum of all the $c_{2}(\e)$. Therefore we may suppose $q$ is arbitrarily large. In this case, if there was a real zero $\b$ with $\b \ge 1-\frac{c_{2}(\e)}{q^{\e}}$, equivalently $1-\b \le \frac{c_{2}(\e)}{q^{\e}}$, then for large enough $q$ we have $0 \le 1-\b \le \frac{1}{\log(q)}$ so that $L'(\s,\chi) = O(\log^{2}(q))$ for $\b \le \s \le 1$ by \cref{lem:Siegels_theorem_second_version_lemma}. These two estimates and the mean value theorem together give
         \[
-          L(1,\chi) = L(1,\chi)-L(\b,\chi) = L'(\s,\chi)(1-\b) \ll \log^{2}(q)q^{-\e}.
+          L(1,\chi) = L(1,\chi)-L(\b,\chi) = L'(\s,\chi)(1-\b) \ll \frac{\log^{2}(q)}{q^{\e}}.
         \]
         Upon taking $\frac{\e}{2}$ in the lower bound version of Siegel's theorem, we obtain
         \[
-          q^{-\frac{\e}{2}} \ll L(1,\chi) \ll \log^{2}(q)q^{-\e},
+          \frac{1}{q^{\frac{\e}{2}}} \ll L(1,\chi) \ll \frac{\log^{2}(q)}{q^{\e}},
         \]
         which is a contradiction for large $q$.
       \end{proof}
@@ -533,7 +533,7 @@
         \end{equation}
         This is our desired lower bound for $F(s)$. Now let $\e > 0$ be given. We will choose the character $\chi_{1}$ depending upon $\e$. If there exists a Siegel zero $\b_{1}$ with $1-\frac{\e}{16} < \b_{1} < 1$, let $\chi_{1}$ be such a character correspoding to the Dirichlet $L$-function that admits this Siegel zero. Then $F(\b_{1}) = 0$ independent of the choice of $\chi_{2}$. If there is no such Siegel zero, choose $\chi_{1}$ to be any quadratic primitive character and $\b_{1}$ to be any number such that $1-\frac{\e}{16} < \b_{1} < 1$. Then $F(\b_{1}) < 0$ independent of the choice of $\chi_{2}$. Indeed, $\z(s)$ is negative in this segment (actually for $0 \le s < 1$) and each of the Dirichlet $L$-function defining $F(s)$ is positive at $s = 1$ (the Euler product implies Dirichlet $L$-function are positive for real $s > 1$ and they are in fact nonzero for $s = 1$ by \cref{thm:non-vanishing_of_Dirichlet_L-functions_at_s=1}) and do not admit a zero for $\b_{1} < s \le 1$ by our choice of $\b_{1}$. In either case, $F(\b_{1}) \le 0$ so isolating $\l$ and disregarding the constants in \cref{equ:Siegels_theorem_first_version_9} with $s = \b_{1}$ gives the weaker estimate
         \begin{equation}\label{equ:Siegels_theorem_first_version_10}
-          \l \gg (1-\b_{1})(q_{1}q_{2})^{-8(1-\b_{1})}.
+          \l \gg \frac{1-\b_{1}}{(q_{1}q_{2})^{8(1-\b_{1})}}.
         \end{equation}
         We will now choose $\chi_{2} = \chi$ and hence $q_{2} = q$ as in the statement of the theorem. Notice that, independent of any work we have done, the theorem holds for a single $q$. Moreover, the theorem holds provided we bound $q$ from above by taking the minimum of the $c_{1}(\e)$. Therefore we may assume $q$ is arbitrarily large and in particular that $q > q_{1}$. Using \cref{lem:Siegels_theorem_first_version_lemma} with $\s = 1$ applied to $L(s,\chi_{1})$ and $L(s,\chi_{1}\chi)$ and that Dirichlet $L$-function take positive real values at $s = 1$, we obtain
         \begin{equation}\label{equ:Siegels_theorem_first_version_11}
@@ -541,17 +541,17 @@
         \end{equation}
         Combining \cref{equ:Siegels_theorem_first_version_10,equ:Siegels_theorem_first_version_11} yields
         \[
-          (1-\b_{1})(q_{1}q)^{-8(1-\b_{1})} \ll \log(q_{1})\log(q_{1}q)L(1,\chi).
+          \frac{1-\b_{1}}{(q_{1}q)^{8(1-\b_{1})}} \ll \log(q_{1})\log(q_{1}q)L(1,\chi).
         \]
         As $\b_{1}$ and $q_{1}$ are fixed and $\log(q_{1}q) = O(\log(q))$, isolating $L(1,\chi)$ gives the weaker estimate
         \begin{equation}\label{equ:Siegels_theorem_first_version_12}
-          L(1,\chi) \gg q^{-8(1-\b_{1})}(\log(q))^{-1}.
+          L(1,\chi) \gg \frac{1}{q^{8(1-\b_{1})}\log(q)}.
         \end{equation}
         But $1-\frac{\e}{16} < \b_{1} < 1$ so that $0 < 8(1-\b_{1}) < \frac{\e}{2}$ which combined with \cref{equ:Siegels_theorem_first_version_12} yields
         \[
-          L(1,\chi) \gg q^{-\frac{\e}{2}}(\log(q))^{-1} \gg q^{-\e},
+          L(1,\chi) \gg \frac{1}{q^{\frac{\e}{2}}(\log(q))} \gg \frac{1}{q^{\e}},
         \]
-        where the last estimate follows because $\log(q) \ll q^{\frac{\e}{2}}$ and thus $(\log(q))^{-1} \gg q^{-\frac{\e}{2}}$ for sufficiently large $q$.
+        where the last estimate follows because $\log(q) \ll q^{\frac{\e}{2}}$ for sufficiently large $q$.
       \end{proof}
 
       The part of the proof of the lower bound version of Siegel's theorem which makes $c_{1}(\e)$ (and hence $c_{2}(\e)$) ineffective is the value of $\b_{1}$. The choice of $\b_{1}$ depends upon the existance of a Siegel zero near $1$ and relative to the given $\e > 0$ and since we don't know if Siegel zeros exist, this makes estimating $\b_{1}$ relative to $\e$ ineffective. Many results in analytic number theory make use of Siegel's theorem and hence are also ineffective. Many important problems investiage methods to get around using Siegele's theroem in favor of a weaker result that is effective.
