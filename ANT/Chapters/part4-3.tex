@@ -525,7 +525,7 @@
         \]
       \end{theorem}
       \begin{proof}
-        It suffices to assume $x$ is an integer, because $\pi(x)$ can only change value at integers and the other functions in the statement are continuous (and hence bounded on compact sets). We will first prove
+        It suffices to assume $x$ is an integer, because $\pi(x)$ can only change value at integers and the other functions in the statement are increasing. We will first prove
         \begin{equation}\label{equ:prime_number_theorem_zeta_1}
           \psi(x) = x+O\left(xe^{-c\sqrt{\log(x)}}\right),
         \end{equation}
@@ -600,15 +600,15 @@
         \end{equation}
         for some smaller $c$. Combining \cref{equ:prime_number_theorem_zeta_6,equ:prime_number_theorem_zeta_7,equ:prime_number_theorem_zeta_8} yields
         \begin{equation}\label{equ:prime_number_theorem_zeta_9}
-          \pi_{1}(x) = \Li(x)+O(xe^{-c\sqrt{\log(x)}}),
+          \pi_{1}(x) = \Li(x)+O\left(xe^{-c\sqrt{\log(x)}}\right),
         \end{equation}
         where the constant in \cref{equ:prime_number_theorem_zeta_7} has been absorbed into the error term. We now pass from $\pi_{1}(x)$ to $\pi(x)$. If $p$ is a prime such that $p^{m} < x$ for some $m \ge 1$, then $p < x^{\frac{1}{2}} < x^{\frac{1}{3}} < \cdots < x^{\frac{1}{m}}$. Therefore
         \begin{equation}\label{equ:prime_number_theorem_zeta_10}
-          \pi_{1}(x) = \sum_{n \le x}\frac{\L(n)}{\log(n)} = \sum_{p^{m} \le x}\frac{\log(p)}{m\log(p)} = \pi(x)+\frac{1}{2}\pi(x^{\frac{1}{2}})+\frac{1}{3}\pi(x^{\frac{1}{3}})+\cdots.
+          \pi_{1}(x) = \sum_{n \le x}\frac{\L(n)}{\log(n)} = \sum_{p^{m} \le x}\frac{\log(p)}{m\log(p)} = \pi(x)+\frac{1}{2}\pi(x^{\frac{1}{2}})+\cdots.
         \end{equation}
         Moreover, as $\pi(x^{\frac{1}{n}}) < x^{\frac{1}{n}}$ for any $n \ge 1$, we see that $\pi(x)-\pi_{1}(x) = O(x^{\frac{1}{2}})$. This estimate together with \cref{equ:prime_number_theorem_zeta_9,equ:prime_number_theorem_zeta_10} gives
         \[
-          \pi(x) = \Li(x)+O(xe^{-c\sqrt{\log(x)}}),
+          \pi(x) = \Li(x)+O\left(xe^{-c\sqrt{\log(x)}}\right),
         \]
         because $x^{\frac{1}{2}} \ll xe^{-c\sqrt{\log(x)}}$. This completes the proof.
       \end{proof}
@@ -660,7 +660,7 @@
         \]
       \end{proof}
     \subsection*{The Siegel–Walfisz Theorem}
-      Let $m$ and $a$ be positive integers with $(a,m) = 1$. The \textbf{prime counting function}\index{prime counting function} $\pi(x:a,m)$ is defined by
+      Let $a$ and $m$ be positive integers with $(a,m) = 1$. The \textbf{prime counting function}\index{prime counting function} $\pi(x:a,m)$ is defined by
       \[
         \pi(x;a,m) = \sum_{\substack{p \le x \\ p \equiv a \tmod{m}}}1,
       \]
@@ -671,14 +671,14 @@
       This is just $\psi(x)$ restricted to only those terms equivalent to $a$ modulo $m$. The prime number theorem for $\pi(x;a,m)$ is known as the \textbf{Siegel–Walfisz theorem}\index{Siegel–Walfisz theorem}:
 
       \begin{theorem}[Siegel–Walfisz theorem]
-        Let $m$ and $a$ be positive integers with $(a,m) = 1$ and let $N \ge 1$. For $x \ge 2$, there exists a positive constant $c$ such that
+        Let $a$ and $m$ be positive integers with $(a,m) = 1$ and let $N \ge 1$. For $x \ge 2$, there exists a positive constant $c$ such that
         \[
           \pi(x;a,m) = \frac{\Li(x)}{\phi(m)}+O\left(xe^{-c\sqrt{\log(x)}}\right),
         \]
         provided $m \le \log^{N}(x)$.
       \end{theorem}
       \begin{proof}
-        It suffices to assume $x$ is an integer, because $\pi(x;a,m)$ can only change value at integers and the other functions in the statement are continuous (and hence bounded on compact sets). We being with the identity
+        It suffices to assume $x$ is an integer, because $\pi(x;a,m)$ can only change value at integers and the other functions in the statement are increasing. We being with the identity
         \begin{equation}\label{equ:Siegel-Walfisz_1}
           \psi(x;a,m) = \frac{1}{\phi(m)}\sum_{\chi \tmod{m}}\cchi(a)\psi(x,\chi),
         \end{equation}
@@ -738,5 +738,76 @@
         \[
           \psi(x)+\frac{x^{\b_{1}}}{x} \ll xe^{-c\sqrt{\log(x)}},
         \]
-        for some smaller $c$ with $c < 1$. This is equivalent to \cref{equ:Siegel-Walfisz_5}.
+        for some smaller $c$ with $c < 1$. This is equivalent to \cref{equ:Siegel-Walfisz_5}. Substiuting \cref{equ:Siegel-Walfisz_5} into \cref{equ:Siegel-Walfisz_4} and noting that there is at most one Siegel zero for characters modulo $m$ by \cref{prop:at_most_one_Siegel_zero_per_modulus}, we arrive at
+        \begin{equation}\label{equ:Siegel-Walfisz_11}
+          \psi(x;a,m) = \frac{x}{\phi(m)}-\frac{\cchi_{1}(a)x^{\b_{1}}}{\phi(m)\b_{1}}+O\left(xe^{-c\sqrt{\log(x)}}\right),
+        \end{equation}
+        where $\chi_{1}$ is the single primitive character modulo $m$ such that $L(s,\chi_{1})$ admits a Siegel zero if it exists and we have absorbed the second term in the error in \cref{equ:Siegel-Walfisz_4} into the first since $\log(x) \ll_{\e} e^{-\e\sqrt{\log(x)}}$ for any $\e > 0$ and $m \ll \log^{N}(x)$. Taking $\e = \frac{1}{2N}$ in the zero-free region version of Siegel's theorem, $m^\frac{1}{2N} \ll \sqrt{\log(x)}$ so that $\b_{1} < 1-\frac{c}{\sqrt{\log(x)}}$ for some potentially smaller constant $c$. It follows that $m^{2N}$ Therefore
+        \begin{equation}\label{equ:Siegel-Walfisz_12}
+          x^{\b_{1}} < x^{1-\frac{c}{\sqrt{\log(x)}}} = xe^{-c\log(x)}.
+        \end{equation}
+        Combining \cref{equ:Siegel-Walfisz_11,equ:Siegel-Walfisz_12} gives the simplified estimate
+        \begin{equation}\label{equ:Siegel-Walfisz_13}
+          \psi(x;a,m) = \frac{x}{\phi(m)}+O\left(xe^{-c\sqrt{\log(x)}}\right),
+        \end{equation}
+        for some potentially smaller constant $c$. Now let
+        \[
+          \pi_{1}(x;a,m) = \sum_{\substack{n \le x \\ n \equiv a \tmod{m}}}\frac{\L(n)}{\log(n)}.
+        \]
+        We can write $\pi_{1}(x;a,m)$ in terms of $\psi(x;a,m)$ as follows:
+        \begin{align*}
+          \pi_{1}(x;a,m) &= \sum_{\substack{n \le x \\ n \equiv a \tmod{m}}}\frac{\L(n)}{\log(n)} \\
+          &= \sum_{\substack{n \le x \\ n \equiv a \tmod{m}}}\L(n)\int_{n}^{x}\frac{dt}{t\log^{2}(t)}+\frac{1}{\log(x)}\sum_{\substack{n \le x \\ n \equiv a \tmod{m}}}\L(n) \\
+          &= \int_{2}^{x}\sum_{\substack{n \le x \\ n \equiv a \tmod{m}}}\L(n)\frac{dt}{t\log^{2}(t)}+\frac{1}{\log(x)}\sum_{\substack{n \le x \\ n \equiv a \tmod{m}}}\L(n) \\
+          &= \int_{2}^{x}\frac{\psi(t;a,m)}{t\log^{2}(t)}\,dt+\frac{\psi(x;a,m)}{\log(x)}.
+        \end{align*}
+        Applying \cref{equ:Siegel-Walfisz_13} to the last expression yields
+        \begin{equation}\label{equ:Siegel-Walfisz_14}
+          \pi_{1}(x;a,m) = \int_{2}^{x}\frac{t}{\phi(m)t\log^{2}(t)}\,dt+\frac{x}{\phi(m)\log(x)}+O\left(\int_{2}^{x}\frac{e^{-c\sqrt{\log(t)}}}{\log^{2}(t)}\,dt+\frac{xe^{-c\sqrt{\log(x)}}}{\log(x)}\right),
+        \end{equation}
+        Applying integrating by parts to the main term in \cref{equ:Siegel-Walfisz_14}, we obtain
+        \begin{equation}\label{equ:Siegel-Walfisz_15}
+          \int_{2}^{x}\frac{t}{\phi(m)t\log^{2}(t)}\,dt+\frac{x}{\phi(m)\log(x)} = \int_{2}^{x}\frac{dt}{\phi(m)\log(t)}+\frac{2}{\phi(m)\log(2)} = \frac{\Li(x)}{\phi(m)}+\frac{2}{\phi(m)\log(2)}.
+        \end{equation}
+        As for the error term in \cref{equ:Siegel-Walfisz_14}, we use \cref{equ:prime_number_theorem_zeta_8}. Combining \cref{equ:prime_number_theorem_zeta_8,equ:Siegel-Walfisz_14,equ:Siegel-Walfisz_15} yields
+        \begin{equation}\label{equ:Siegel-Walfisz_16}
+          \pi_{1}(x;a,m) = \frac{\Li(x)}{\phi(m)}+O\left(xe^{-c\sqrt{\log(x)}}\right),
+        \end{equation}
+        for some smaller $c$ and where the constant in \cref{equ:Siegel-Walfisz_15} has been absorbed into the error term. As last we pass from $\pi_{1}(x;a,m)$ to $\pi(x;a,m)$. If $p$ is a prime such that $p^{m} < x$ for some $m \ge 1$, then $p < x^{\frac{1}{2}} < x^{\frac{1}{3}} < \cdots < x^{\frac{1}{m}}$. Therefore
+        \begin{equation}\label{equ:Siegel-Walfisz_17}
+          \pi_{1}(x;a,m) = \sum_{\substack{n \le x \\ n \equiv a \tmod{m}}}\frac{\L(n)}{\log(n)} = \sum_{\substack{p^{m} \le x \\ p^{m} \equiv a \tmod{m}}}\frac{\log(p)}{m\log(p)} = \pi(x;a,m)+\frac{1}{2}\pi(x^{\frac{1}{2}};a,m)+\cdots.
+        \end{equation}
+        Moreover, as $\pi(x^{\frac{1}{n}};a,m) < x^{\frac{1}{n}}$ for any $n \ge 1$, we see that $\pi(x;a,m)-\pi_{1}(x;a,m) = O(x^{\frac{1}{2}})$. This estimate together with \cref{equ:Siegel-Walfisz_16,equ:Siegel-Walfisz_17} gives
+        \[
+          \pi(x) = \frac{\Li(x)}{\phi(m)}+O\left(xe^{-c\sqrt{\log(x)}}\right),
+        \]
+        because $x^{\frac{1}{2}} \ll xe^{-c\sqrt{\log(x)}}$. This completes the proof.
+      \end{proof}
+
+      It is interesting to note that the constant $c$ in the Siegel-Walfisz theorem is ineffective because of the use of Siegel's theorem (it also depends upon $N$). This is unlike the prime number theorem, where the constant $c$ is effective. Also, we have an optimal error term, in a much larger range of $m$, assuming the Riemann hypothesis for Dirichlet $L$-functions:
+      
+      \begin{proposition}
+        Let $a$ and $m$ be positive integers with $(a,m) = 1$ and let $N \ge 1$. For $x \ge 2$, under the Riemann hypothesis for Dirichlet $L$-functions
+        \[
+          \pi(x;a,m) = \frac{\Li(x)}{\phi(m)}+O(\sqrt{x}\log(x)).
+        \]
+        provided $m \le x$.
+      \end{proposition}
+      \begin{proof}
+        Let $\chi$ be a Dirichlet character modulo $m$. If $\rho$ is a nontrivial zero of $L(s,\chi)$, the Riemann hypothesis for Dirichlet $L$-functions implies $|x^{\rho}| = \sqrt{x}$ and that Siegel zeros do not exist so we may merely assume $m \le x$. Therefore as in the proof of the Siegel-Walfisz theorem,
+        \[
+          \sum_{|\g| < T}\frac{x^{\rho}}{\rho} \ll \sqrt{x}\log^{2}(x),
+        \]
+        for $2 \le T \le x$ not coinciding with the ordinate of a nontrivial zero. Repeating the same argument with $T$ determined by $T = x$ for $2 \le x < 3$ and 
+        \[
+          T^{2} = x,
+        \]
+        for $x \ge 3$ gives
+        \[
+          \psi(x;a,m) = \frac{x}{\phi(m)}+O(\sqrt{x}\log^{2}(x)),
+        \]
+        and then trasnfering to $\pi_{1}(x)$ and finally $\pi(x)$ gives
+        \[
+          \pi(x;a,m) = \frac{x}{\phi(m)}+O(\sqrt{x}\log(x)).
+        \]
       \end{proof}
