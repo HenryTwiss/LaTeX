@@ -253,7 +253,7 @@
     \begin{theorem}[Perron's formula, classical version]
       Let $D(s)$ be a Dirichlet series with coefficient $a(n)$ and finite and nonnegative abscissa of absolute convergence $\s_{a}$. Then for any $c > \s_{a}$,
       \[
-        A'(X) = \frac{1}{2\pi i}\int_{(c)}D(s)X^{s}\,\frac{ds}{s}.
+        A'(X) = \frac{1}{2\pi i}\int_{\Re(s) = c}D(s)X^{s}\,\frac{ds}{s}.
       \]
     \end{theorem}
     \begin{proof}
@@ -270,7 +270,7 @@
 
     We would like to relate this sum to an integral involving the entire Dirichlet series $D(s)$. In particular, this integral is a type of inverse Mellin transform. Any formula that resembles Perron's formula is particularly useful because it allows one examine a sum of Dirichlet coefficients, a discrete object, by means of a complex integral where analytic techniques are at our disposal. There is also a truncated version of Perron's formula which is often more useful for estimates rather than abstract results. To state it, we need to setup some notation and will require a lemma. For any $c > 0$, consider the discontinuous integral (see \cite{davenport1980multiplicative})
     \[
-      \d(y) = \frac{1}{2\pi i}\int_{(c)}y^{s}\,\frac{ds}{s} = \begin{cases} 0 & \text{if $0 < y < 1$}, \\ \frac{1}{2} & \text{if $y = 1$}, \\ 1 & \text{if $y > 1$}. \end{cases}
+      \d(y) = \frac{1}{2\pi i}\int_{\Re(s) = c}y^{s}\,\frac{ds}{s} = \begin{cases} 0 & \text{if $0 < y < 1$}, \\ \frac{1}{2} & \text{if $y = 1$}, \\ 1 & \text{if $y > 1$}. \end{cases}
     \]
     Also, for any $T > 0$, let
     \[
@@ -380,7 +380,7 @@
     \begin{theorem}[Perron's formula, smoothed version]
       Let $D(s)$ be a Dirichlet series with coefficient $a(n)$ and finite and nonnegative abscissa of absolute convergence $\s_{a}$. Let $\psi:[0,\infty) \to [0,\infty)$ be a compactly supported smooth function. Then for any $c > \s_{a}$,
       \[
-        A_{\psi}(X) = \frac{1}{2\pi i}\int_{(c)}D(s)\Psi(s)X^{s}\,ds,
+        A_{\psi}(X) = \frac{1}{2\pi i}\int_{\Re(s) = c}D(s)\Psi(s)X^{s}\,ds,
       \]
       where $\Psi$ is the Mellin transform of $\psi$.
     \end{theorem}
@@ -388,9 +388,9 @@
       This is just a computation:
       \begin{align*}
         A_{\psi}(X) &= \sum_{n \ge 1}a(n)\psi\left(\frac{n}{X}\right) \\
-        &= \sum_{n \ge 1}\frac{a(n)}{2\pi i}\int_{(c)}\Psi(s)\left(\frac{n}{X}\right)^{-s}\,ds & \text{Mellin inversion formula} \\
-        &= \frac{1}{2\pi i}\int_{(\s)}\sum_{n \ge 1}a(n)\Psi(s)\left(\frac{n}{X}\right)^{-s}\,ds & \text{DCT} \\
-        &= \frac{1}{2\pi i}\int_{(c)}D(s)\Psi(s)X^{s}\,ds. \\
+        &= \sum_{n \ge 1}\frac{a(n)}{2\pi i}\int_{\Re(s) = c}\Psi(s)\left(\frac{n}{X}\right)^{-s}\,ds & \text{Mellin inversion formula} \\
+        &= \frac{1}{2\pi i}\int_{\Re(s) = \s}\sum_{n \ge 1}a(n)\Psi(s)\left(\frac{n}{X}\right)^{-s}\,ds & \text{DCT} \\
+        &= \frac{1}{2\pi i}\int_{\Re(s) = c}D(s)\Psi(s)X^{s}\,ds. \\
     \end{align*}
     \end{proof}
 
@@ -538,7 +538,7 @@
       \]
       where $V_{s}(y)$ is a smooth function defined by
       \[
-        V_{s}(y) = \frac{1}{2\pi i}\int_{(a)}\frac{\g(s+u,f)}{\g(s,f)}G(u)y^{-u}\frac{du}{u},
+        V_{s}(y) = \frac{1}{2\pi i}\int_{\Re(u) = a}\frac{\g(s+u,f)}{\g(s,f)}G(u)y^{-u}\frac{du}{u},
       \]
       and
       \[
@@ -552,11 +552,11 @@
     \begin{proof}
       Let
       \[
-        I(X,s,f) = \frac{1}{2\pi i}\int_{(a)}\L(s+u,f)G(u)X^{u}\,\frac{du}{u}.
+        I(X,s,f) = \frac{1}{2\pi i}\int_{\Re(u) = a}\L(s+u,f)G(u)X^{u}\,\frac{du}{u}.
       \]
       By our choice of $a$ and that $s$ is in the critical strip, $\Re(s+u) > 1$ so that $L(s+u) \ll 1$. Moreover, from \cref{equ:weaker_Stirling_formula} we see that $\g(s+u,f)$ has exponential decay. Since $G(u)$ is bounded, it follows that the integral is absolutely bounded by \cref{met:decay_compacta_integral}. By \cref{prop:L_function_bounded_in_vertical_strips} and \cref{equ:weaker_Stirling_formula}, the integrand also had exponential decay in a vertical strip containing $|\Re(u)| \le a$. Therefore we may shift the line of integration to $(-a)$. We pass by a simple pole at $u = 0$ and possible poles at $u = 1-s$ and $u = -s$, giving
       \[
-        I(X,s,f) = \frac{1}{2\pi i}\int_{(-a)}\L(s+u,f)G(u)X^{u}\,\frac{du}{u}+\L(s,f)+R.
+        I(X,s,f) = \frac{1}{2\pi i}\int_{\Re(u) = -a}\L(s+u,f)G(u)X^{u}\,\frac{du}{u}+\L(s,f)+R.
       \]
       Applying the functional equation to $\L(s+u,f)$ and performing the change of variables $u \to -u$, we obtain
       \[
@@ -568,11 +568,11 @@
       \]
       Since $\Re(s+u) > 1$, we can expand the $L$-function $L(s,f)$ inside of $I(X,s,f)$ as a Dirichlet series:
       \begin{align*}
-        I(X,s,f) &= \frac{1}{2\pi i}\int_{(a)}\L(s+u,f)G(u)X^{u}\,\frac{du}{u} \\
-        &= \frac{1}{2\pi i}\int_{(a)}q(f)^{\frac{s+u}{2}}\g(s+u,f)L(s+u,f)G(u)X^{u}\,\frac{du}{u} \\
-        &= \frac{1}{2\pi i}\int_{(a)}\sum_{n \ge 1}\frac{a_{f}(n)}{n^{s+u}}q(f)^{\frac{s+u}{2}}\g(s+u,f)G(u)X^{u}\,\frac{du}{u} \\
-        &= \sum_{n \ge 1}\frac{1}{2\pi i}\int_{(a)}\frac{a_{f}(n)}{n^{s+u}}q(f)^{\frac{s+u}{2}}\g(s+u,f)G(u)X^{u}\,\frac{du}{u} && \text{DCT} \\
-        &= q(f)^{\frac{s}{2}}\g(s,f)\sum_{n \ge 1}\frac{a_{f}(n)}{n^{s}}\frac{1}{2\pi i}\int_{(a)}\frac{\g(s+u,f)}{\g(s,f)}G(u)\left(\frac{\sqrt{q(f)}X}{n}\right)^{u}\,\frac{du}{u} \\
+        I(X,s,f) &= \frac{1}{2\pi i}\int_{\Re(u) = a}\L(s+u,f)G(u)X^{u}\,\frac{du}{u} \\
+        &= \frac{1}{2\pi i}\int_{\Re(u) = a}q(f)^{\frac{s+u}{2}}\g(s+u,f)L(s+u,f)G(u)X^{u}\,\frac{du}{u} \\
+        &= \frac{1}{2\pi i}\int_{\Re(u) = a}\sum_{n \ge 1}\frac{a_{f}(n)}{n^{s+u}}q(f)^{\frac{s+u}{2}}\g(s+u,f)G(u)X^{u}\,\frac{du}{u} \\
+        &= \sum_{n \ge 1}\frac{1}{2\pi i}\int_{\Re(u) = a}\frac{a_{f}(n)}{n^{s+u}}q(f)^{\frac{s+u}{2}}\g(s+u,f)G(u)X^{u}\,\frac{du}{u} && \text{DCT} \\
+        &= q(f)^{\frac{s}{2}}\g(s,f)\sum_{n \ge 1}\frac{a_{f}(n)}{n^{s}}\frac{1}{2\pi i}\int_{\Re(u) = a}\frac{\g(s+u,f)}{\g(s,f)}G(u)\left(\frac{\sqrt{q(f)}X}{n}\right)^{u}\,\frac{du}{u} \\
         &= q(f)^{\frac{s}{2}}\g(s,f)\sum_{n \ge 1}\frac{a_{f}(n)}{n^{s}}V_{s}\left(\frac{n}{\sqrt{q(f)}X}\right).
       \end{align*}
       Performing the same computation for $I(X^{-1},1-s,\conj{f})$ and substituting in the results, we arrive at
