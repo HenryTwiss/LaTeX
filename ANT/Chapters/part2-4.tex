@@ -1,11 +1,11 @@
 \chapter{Trace Formulas}
   There are various types of formulas that relate the Fourier coefficients of holomorphic and Maass forms to various other types of functions. One of the most important such formulas is the Petersson trace formula.
   \section{The Petersson Trace Formula}
-    From \cref{thm:newforms_characterization_holomorphic}, $\mc{S}_{k}(N,\chi)$ admits an orthonormal basis of Hecke eigenforms (note that generally not all of them are primitive Hecke eigenforms). Call this basis $\{u_{j}\}_{1 \le j \le r}$ where $r$ is the dimension of $\mc{S}_{k}(N,\chi)$. Each of these cusp forms admits a Fourier series
+    From \cref{thm:newforms_characterization_holomorphic}, $\mc{S}_{k}(N,\chi)$ admits an orthonormal basis of Hecke eigenforms (note that generally they are not Hecke normalized). Call this basis $\{u_{j}\}_{1 \le j \le r}$ where $r$ is the dimension of $\mc{S}_{k}(N,\chi)$. Each of these cusp forms admits a Fourier series
     \[
-      u_{j}(z) = \sum_{n \ge 1}\l_{j}(n)e^{2\pi inz}.
+      u_{j}(z) = \sum_{n \ge 1}a_{j}(n)e^{2\pi inz}.
     \]
-    The Petersson trace formula is an equation relating the Fourier coefficients $\l_{j}(n)$ of the basis $\{u_{j}\}_{1 \le j \le r}$ to a sum of $J$-Bessel functions and Sali\'e sums. To prove the Petersson trace formula we compute the inner product of two Poincar\'e series $P_{n,k,\chi}$ and $P_{m,k,\chi}$ in two different ways. One way is geometric in nature using the unfolding method and the other uses the spectral theory of $\mc{S}_{k}(N,\chi)$. Since \cref{equ:Petersson_inner_product_with_Poincare_series} says that $\<P_{n,k,\chi},P_{m,k,\chi}\>$ essentially extracts the $m$-th Fourier coefficient of $P_{n,k,\chi}$, the Petersson trace formula amounts to computing the $m$-th Fourier coefficient of $P_{n,k,\chi}$ in two different ways. We will begin with the geometric method first which utilizes \cref{equ:Petersson_inner_product_with_Poincare_series}. In order to make use of this equation we need to compute the Fourier series of $P_{n,k,\chi}$ and this is achieved by the Poisson summation formula. From \cref{rem:Bruhat_bijection}, we have
+    The Petersson trace formula is an equation relating the Fourier coefficients $a_{j}(n)$ of the basis $\{u_{j}\}_{1 \le j \le r}$ to a sum of $J$-Bessel functions and Sali\'e sums. To prove the Petersson trace formula we compute the inner product of two Poincar\'e series $P_{n,k,\chi}$ and $P_{m,k,\chi}$ in two different ways. One way is geometric in nature using the unfolding method and the other uses the spectral theory of $\mc{S}_{k}(N,\chi)$. Since \cref{equ:Petersson_inner_product_with_Poincare_series} says that $\<P_{n,k,\chi},P_{m,k,\chi}\>$ essentially extracts the $m$-th Fourier coefficient of $P_{n,k,\chi}$, the Petersson trace formula amounts to computing the $m$-th Fourier coefficient of $P_{n,k,\chi}$ in two different ways. We will begin with the geometric method first which utilizes \cref{equ:Petersson_inner_product_with_Poincare_series}. In order to make use of this equation we need to compute the Fourier series of $P_{n,k,\chi}$ and this is achieved by the Poisson summation formula. From \cref{rem:Bruhat_bijection}, we have
     \[
       P_{n,k,\chi}(z) = e^{2\pi inz}+\sum_{\substack{c \ge 1, d \in \Z \\ c \equiv 0 \tmod{N} \\ (c,d) = 1}}\cchi(d)\frac{e^{2\pi in\left(\frac{a}{c}-\frac{1}{c^{2}z+cd}\right)}}{(cz+d)^{k}},
     \]
@@ -46,13 +46,13 @@
     \]
     Now make the change of variables $z \to z-\frac{r}{c}-iy$ to obtain
     \[
-      e^{2\pi in\frac{a}{c}}e^{2\pi it\left(iy+\frac{r}{c}\right)}\int_{\Im(z) = y}\frac{e^{-\frac{2\pi in}{c^{2}z}}}{(cz)^{k}}e^{-2\pi itz}\,dz.
+      e^{2\pi in\frac{a}{c}+2\pi it\left(iy+\frac{r}{c}\right)}\int_{\Im(z) = y}\frac{e^{-\frac{2\pi in}{c^{2}z}}}{(cz)^{k}}e^{-2\pi itz}\,dz.
     \]
     The integrand is meromorphic with a pole only at $z = 0$. Therefore by shifting the line of integration we may take the limit as $\Im(z) \to \infty$ without picking up additional residues. However
     \[
       \left|e^{-\frac{2\pi in}{c^{2}z}}\right| = e^{2\pi n\left(\frac{\Im(z)}{|cz|^{2}}\right)} \quad \text{and} \quad \left|e^{-2\pi itz}\right| = e^{2\pi t\Im(z)}.
     \]
-    So as $\Im(z) \to \infty$, the first expression has exponential decay and the second expression does too if and only if $t < 0$. Moreover, when $t = 0$ the second expression is bounded. Altogether, this means that the integral vanishes if $t \le 0$. It remains to compute the integral for $t > 0$. To do this, make the change of variables $z \to - \frac{z}{2\pi it}$ to the last integral to obtain
+    So as $\Im(z) \to \infty$, the first expression has exponential decay and the second expression does too if and only if $t < 0$. Moreover, when $t = 0$ the second expression is bounded. Altogether, this means that the integral vanishes if $t \le 0$. It remains to compute the integral for $t > 0$. To do this, make the change of variables $z \to - \frac{z}{2\pi it}$ to the last integral to rewrite it as
     \begin{align*}
       -\frac{1}{2\pi it}\int_{(2\pi ty)}\frac{e^{-\frac{4\pi^{2}nt}{c^{2}z}}}{\left(-\frac{cz}{2\pi it}\right)^{k}}e^{z}\,dz &= -\frac{1}{2\pi it}\int_{(2\pi ty)}\left(-\frac{2\pi it}{cz}\right)^{k}e^{z-\frac{4\pi^{2}nt}{c^{2}z}}\,dz \\
       &= \frac{(-2\pi it)^{k-1}}{c^{k}}\int_{(2\pi ty)}z^{-k}e^{z-\frac{4\pi^{2}nt}{c^{2}z}}\,dz \\
@@ -61,7 +61,7 @@
     \end{align*}
     where in the second to last line we have homotoped the line of integration to a Hankel contour about the negative real axis and in the last line we have used the Schl\"aflin integral representation for the $J$-Bessel function (see \cref{append:Bessel_Functions}). So in total we obtain
     \[
-      \left(\frac{2\pi i^{-k}}{c}\left(\frac{\sqrt{t}}{\sqrt{n}}\right)^{k-1}J_{k-1}\left(\frac{4\pi\sqrt{nt}}{c}\right)e^{2\pi in\frac{a}{c}+2\pi it\frac{r}{c}}\right)e^{2\pi t(iy)},
+      \left(\frac{2\pi i^{-k}}{c}\left(\frac{\sqrt{t}}{\sqrt{n}}\right)^{k-1}J_{k-1}\left(\frac{4\pi\sqrt{nt}}{c}\right)e^{2\pi in\frac{a}{c}+2\pi it\frac{r}{c}}\right)e^{2\pi ity},
     \]
     when $t > 0$. By the Poisson summation formula and the identity theorem, we have
     \[
@@ -89,27 +89,27 @@
     \begin{align*}
       P_{n,k,\chi}(z) &= \sum_{1 \le j \le r}\<P_{n,k,\chi},u_{j}\>u_{j}(z) \\
       &= \sum_{1 \le j \le r}\conj{\<P_{n,k,\chi},u_{j}\>}u_{j}(z) \\
-      &= \frac{\G(k-1)}{V_{\G_{0}(N)}(4\pi m)^{k-1}}\sum_{1 \le j \le r}\l_{j}(n)u_{j}(z) \\
-      &= \frac{\G(k-1)}{V_{\G_{0}(N)}(4\pi m)^{k-1}}\sum_{1 \le j \le r}\l_{j}(n)\sum_{t \ge 1}\l_{j}(t)e^{2\pi itz} \\
-      &= \sum_{t \ge 1}\left(\frac{\G(k-1)}{V_{\G_{0}(N)}(4\pi m)^{k-1}}\sum_{1 \le j \le r}\conj{\l_{j}(n)}\l_{j}(t)\right)e^{2\pi itz}.
+      &= \frac{\G(k-1)}{V_{\G_{0}(N)}(4\pi m)^{k-1}}\sum_{1 \le j \le r}a_{j}(n)u_{j}(z) \\
+      &= \frac{\G(k-1)}{V_{\G_{0}(N)}(4\pi m)^{k-1}}\sum_{1 \le j \le r}a_{j}(n)\sum_{t \ge 1}a_{j}(t)e^{2\pi itz} \\
+      &= \sum_{t \ge 1}\left(\frac{\G(k-1)}{V_{\G_{0}(N)}(4\pi m)^{k-1}}\sum_{1 \le j \le r}\conj{a_{j}(n)}a_{j}(t)\right)e^{2\pi itz}.
     \end{align*}
     The last expression is an alternative representation of the Fourier series of $P_{n,k,\chi}$. Using \cref{equ:Petersson_inner_product_with_Poincare_series} again but applied to this representation, we obtain the second half of the Petersson trace formula
     \[
-      \<P_{n,k,\chi},P_{m,k,\chi}\> = \left(\frac{\G(k-1)}{V_{\G_{0}(N)}(4\pi m)^{k-1}}\right)^{2}\sum_{1 \le j \le r}\conj{\l_{j}(n)}\l_{j}(m).
+      \<P_{n,k,\chi},P_{m,k,\chi}\> = \left(\frac{\G(k-1)}{V_{\G_{0}(N)}(4\pi m)^{k-1}}\right)^{2}\sum_{1 \le j \le r}\conj{a_{j}(n)}a_{j}(m).
     \]
     Equating the first and second half and canceling the common $\frac{\G(k-1)}{V_{\G_{0}(N)}(4\pi m)^{k-1}}$ factor gives
     \[
-      \frac{\G(k-1)}{V_{\G_{0}(N)}(4\pi m)^{k-1}}\sum_{1 \le j \le r}\conj{\l_{j}(n)}\l_{j}(m) = \d_{n,m}+\left(\frac{\sqrt{m}}{\sqrt{n}}\right)^{k-1}\sum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N}}}\frac{2\pi i^{-k}}{c}J_{k-1}\left(\frac{4\pi\sqrt{nm}}{c}\right)S_{\chi}(n,m;c).
+      \frac{\G(k-1)}{V_{\G_{0}(N)}(4\pi m)^{k-1}}\sum_{1 \le j \le r}\conj{a_{j}(n)}a_{j}(m) = \d_{n,m}+\left(\frac{\sqrt{m}}{\sqrt{n}}\right)^{k-1}\sum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N}}}\frac{2\pi i^{-k}}{c}J_{k-1}\left(\frac{4\pi\sqrt{nm}}{c}\right)S_{\chi}(n,m;c).
     \]
     Now when $n = m$, $\left(\frac{\sqrt{m}}{\sqrt{n}}\right)^{k-1} = 1$ so we can factor this term out of the entire right-hand side and cancel it resulting in the \textbf{Petersson trace formula}\index{Petersson trace formula}:
     \[
-      \frac{\G(k-1)}{V_{\G_{0}(N)}(4\pi\sqrt{nm})^{k-1}}\sum_{1 \le j \le r}\conj{\l_{j}(n)}\l_{j}(m) = \d_{n,m}+\sum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N}}}\frac{2\pi i^{-k}}{c}J_{k-1}\left(\frac{4\pi\sqrt{nm}}{c}\right)S_{\chi}(n,m;c).
+      \frac{\G(k-1)}{V_{\G_{0}(N)}(4\pi\sqrt{nm})^{k-1}}\sum_{1 \le j \le r}\conj{a_{j}(n)}a_{j}(m) = \d_{n,m}+\sum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N}}}\frac{2\pi i^{-k}}{c}J_{k-1}\left(\frac{4\pi\sqrt{nm}}{c}\right)S_{\chi}(n,m;c).
     \]
     We refer to the left-hand side side as the \textbf{spectral side}\index{spectral side} and the right-hand side as the \textbf{geometric side}\index{geometric side}. We collect our work as a theorem:
 
     \begin{theorem}[Petersson trace formula]
-      Let $\{u_{j}\}_{1 \le j \le r}$ be an orthonormal basis of Hecke eigenforms for $\mc{S}_{k}(N,\chi)$ with Fourier coefficients $\l_{j}(n)$. Then for any positive integers $n,m \ge 1$, we have
+      Let $\{u_{j}\}_{1 \le j \le r}$ be an orthonormal basis of Hecke eigenforms for $\mc{S}_{k}(N,\chi)$ with Fourier coefficients $a_{j}(n)$. Then for any positive integers $n,m \ge 1$, we have
       \[
-        \frac{\G(k-1)}{V_{\G_{0}(N)}(4\pi\sqrt{nm})^{k-1}}\sum_{1 \le j \le r}\conj{\l_{j}(n)}\l_{j}(m) = \d_{n,m}+\sum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N}}}\frac{2\pi i^{-k}}{c}J_{k-1}\left(\frac{4\pi\sqrt{nm}}{c}\right)S_{\chi}(n,m;c).
+        \frac{\G(k-1)}{V_{\G_{0}(N)}(4\pi\sqrt{nm})^{k-1}}\sum_{1 \le j \le r}\conj{a_{j}(n)}a_{j}(m) = \d_{n,m}+\sum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N}}}\frac{2\pi i^{-k}}{c}J_{k-1}\left(\frac{4\pi\sqrt{nm}}{c}\right)S_{\chi}(n,m;c).
       \]
     \end{theorem}
