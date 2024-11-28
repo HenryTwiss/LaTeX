@@ -294,7 +294,7 @@
         where the last equality follows because $\chi(a) = 0$ unless $(a,m) = 1$. If $b = 1$ we will write $\tau(\chi)$ instead. That is, $\tau(\chi) = \tau(1,\chi)$. Gauss sums are interesting because the Dirichlet character is a multiplicative character while the exponential is an additive one. So the Gauss sums is a convolution between a multiplicative and additive character. This is the fundamental reason that makes them difficult to study as one needs to separate the additive and multiplicative structures. Observe that if $m = 1$ then $\chi$ is the trivial character and $\tau(b,\chi) = 1$. So the interesting cases are when $m \ge 2$. There are some basic properties of Gauss sums that are very useful:
 
         \begin{proposition}\label{prop:Gauss_sum_reduction}
-          Let $\chi$ and $\psi$ be Dirichlet characters modulo $m,n \ge 2$ respectively and let $b \in \Z$. Then the following hold:
+          Let $\chi$ and $\psi$ be nontrivial Dirichlet characters modulo $m$ and $n$ respectively and let $b \in \Z$. Then the following hold:
           \begin{enumerate}[label=(\roman*)]
             \item $\conj{\tau(b,\cchi)} = \chi(-1)\tau(b,\chi)$.
             \item If $(b,m) = 1$, then $\tau(b,\chi) = \cchi(b)\tau(\chi)$.
@@ -309,7 +309,7 @@
         \begin{proof}
           We will prove the statements separately.
           \begin{enumerate}[label=(\roman*)]
-            \item Observe that $a \to -a$ is an isomorphism of $\Z/m\Z$ since $(-1,m) = 1$. Thus
+            \item Observe that $a \to -a$ is an isomorphism of $\Z/m\Z$. Thus
             \begin{align*}
               \conj{\tau(b,\cchi)} &= \conj{\sum_{a \tmod{m}}\cchi(a)e^{\frac{2\pi iab}{m}}} \\
               &= \sum_{a \tmod{m}}\chi(a)e^{-\frac{2\pi iab}{m}} \\
@@ -365,13 +365,13 @@
         Notice that \cref{prop:Gauss_sum_reduction} reduces the evaluation of the Gauss sum $\tau(b,\chi)$ to that of $\tau(\chi)$ at least when $\chi$ is primitive. When $\chi$ is not primitive and $(b,m) > 1$ we need to appeal to evaluating $\tau(b,\chi)$ by more direct means. Evaluating $\tau(\chi)$ for general characters $\chi$ turns out to be a very difficult problem and is still open. However, it is not difficult to determine the modulus of $\tau(\chi)$ when $\chi$ is primitive:
 
         \begin{theorem}\label{thm:Gauss_sum_modulus}
-          Let $\chi$ be a primitive Dirichlet character modulo $m \ge 2$. Then
+          Let $\chi$ be a primitive Dirichlet character of conductor $m$. Then
           \[
             |\tau(\chi)| = \sqrt{m}.
           \]
         \end{theorem}
         \begin{proof}
-          This is just a computation:
+          If $\chi$ is the trivial character this is obvious since $\tau(\chi) = 1$. So we may assume $\chi$ is nontrivial. Now this is just a computation:
           \begin{align*}
             |\tau(\chi)|^{2} &= \tau(\chi)\conj{\tau(\chi)} \\
             &= \sum_{a \tmod{m}}\tau(\chi)\cchi(a)e^{-\frac{2\pi ia}{m}} \\
@@ -380,13 +380,13 @@
             &= \sum_{a,a' \tmod{m}}\chi(a')e^{\frac{2\pi ia(a'-1)}{m}} \\
             &= \sum_{a' \tmod{m}}\chi(a')\left(\sum_{a \tmod{m}}e^{\frac{2\pi ia(a'-1)}{m}}\right).
           \end{align*}
-          Let $S(a')$ denote the inner sum. For the $a'$ such that $a'-1 \equiv 0 \tmod{m}$, $S(a') = m$. Otherwise $a \to a\conj{(a'-1)}$ is a bijection on $\Z/m\Z$ (we assumed $m \neq 1$) so that $S(a') = 0$ because it is the sum of all $m$-th roots of unity. It follows that the double sum is $\chi(1)m = m$. So altogether $|\tau(\chi)|^{2} = m$ and hence $|\tau(\chi)| = \sqrt{m}$.
+          Let $S(a')$ denote the inner sum. For the $a'$ such that $a'-1 \equiv 0 \tmod{m}$, $S(a') = m$. Otherwise $a \to a\conj{(a'-1)}$ is a bijection on $\Z/m\Z$ ($m \neq 1$ because $\chi$ is nontrivial) so that $S(a') = 0$ because it is the sum of all $m$-th roots of unity. It follows that the double sum is $\chi(1)m = m$. So altogether $|\tau(\chi)|^{2} = m$ and hence $|\tau(\chi)| = \sqrt{m}$.
         \end{proof}
 
         As an almost immediate corollary to \cref{thm:Gauss_sum_modulus}, we deduce a useful expression for primitive Dirichlet characters modulo $m$ in terms of additive characters on $(\Z/m\Z)$:
 
         \begin{corollary}\label{cor:gauss_sum_primitive_formula}
-          Let $\chi$ be a primitive Dirichlet character modulo $m$. Then
+          Let $\chi$ be a primitive Dirichlet character of conductor $m$. Then
           \[
             \tau(n,\chi) = \cchi(n)\tau(\chi),
           \]
@@ -397,7 +397,7 @@
           for all $n \in \Z$.
         \end{corollary}
         \begin{proof}
-          If $(n,m) = 1$, then the first identity is \cref{prop:Gauss_sum_reduction} (ii). If $(n,m) > 1$, then the first identity follows from \cref{prop:Gauss_sum_reduction} (iii) and that $\cchi(n) = 0$. This proves the first identity in full. For the second identity, first note that $\tau(\chi) \neq 0$ by \cref{thm:Gauss_sum_modulus}. Replacing $\chi$ with $\cchi$, dividing the first identity by $\tau(\chi)$, and expanding the Gauss sum, gives the second identity.
+          If $\chi$ is the trivial character this is obvious since $\tau(n,\chi) = 1$. So assume $\chi$ is nontrivial. If $(n,m) = 1$, then the first identity is \cref{prop:Gauss_sum_reduction} (ii). If $(n,m) > 1$, then the first identity follows from \cref{prop:Gauss_sum_reduction} (iii) and that $\cchi(n) = 0$. This proves the first identity in full. For the second identity, first note that $\tau(\chi) \neq 0$ by \cref{thm:Gauss_sum_modulus}. Replacing $\chi$ with $\cchi$, dividing the first identity by $\tau(\chi)$, and expanding the Gauss sum, gives the second identity.
         \end{proof}
 
         In light of \cref{thm:Gauss_sum_modulus} we define the \textbf{epsilon factor}\index{epsilon factor} $\e_{\chi}$ for a Dirichlet character $\chi$ of modulus $m$ by
@@ -407,13 +407,13 @@
         \cref{thm:Gauss_sum_modulus} says that this value lies on the unit circle when $\chi$ is primitive and not the trivial character. In any case, the question of the evaluation of Gauss sums further boils down to determining what value the epsilon factor is. This is the real difficultly as the epsilon factor is very hard to calculate and its value is not known for general Dirichlet characters. When $\chi$ is primitive, there is a simple relationship between $\e_{\chi}$ and $\e_{\cchi}$:
 
         \begin{proposition}\label{prop:epsilon_factor_relationship}
-          Let $\chi$ be a primitive Dirichlet character modulo $m \ge 2$. Then
+          Let $\chi$ be a primitive Dirichlet character of conductor $m$. Then
           \[
             \e_{\chi}\e_{\cchi} = \chi(-1).
           \]
         \end{proposition}
         \begin{proof}
-          By \cref{prop:Gauss_sum_reduction} (iii) and that $\e_{\chi}$ lies on the unit circle,
+          If $\chi$ is trivial this is obvious since $\e_{\chi} = \e_{\cchi} = 1$. So assume $\chi$ is nontrivial. By \cref{prop:Gauss_sum_reduction} (iii) and that $\e_{\chi}$ lies on the unit circle,
           \[
             \e_{\chi} = \frac{\tau(\chi)}{\sqrt{m}} = \chi(-1)\conj{\frac{\tau(\chi)}{\sqrt{m}}} = \chi(-1)\e_{\cchi}^{-1},
           \]

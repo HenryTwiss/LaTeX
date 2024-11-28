@@ -42,7 +42,7 @@
     \[
       f(\g z) = \chi(\g)j(\g,z)^{k}f(z).
     \]
-    Property (iii) is called the \textbf{growth condition}\index{growth condition} and we say $f$ is \textbf{holomorphic at the cusps}\index{holomorphic at the cusps}. Holomorphic forms also admit Fourier series. Indeed, modularity implies
+    Property (iii) is called the \textbf{growth condition}\index{growth condition} and we say $f$ is \textbf{holomorphic at the cusps}\index{holomorphic at the cusps}. Clearly we only need to verify the growth condition on a set of scaling matrices for the cups. Holomorphic forms also admit Fourier series. Indeed, modularity implies
     \[
       f(z+1) = f\left(\begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}z\right) = f(z),
     \]
@@ -432,7 +432,7 @@
       For any two congruence subgroups $\G_{1}$ and $\G_{2}$, $[\G_{1}\a\G_{2}]_{k}$ maps $\mc{M}_{k}(\G_{1})$ into $\mc{M}_{k}(\G_{2})$. Moreover, $[\G_{1}\a\G_{2}]_{k}$ preserves the subspace of cusp forms.
     \end{proposition}
     \begin{proof}
-      Suppose $f \in \mc{M}_{k}(\G_{1})$ and $\g \in \G_{2}$. Then
+      Holomorphy is immediate since the sum in the definition of $f[\G_{1}\a\G_{2}]_{k}$ is finite by \cref{prop:double_congruence_subgroup_coset_decomposition_is_finite}. For modularity, let $\g \in \G_{2}$. Then
       \begin{align*}
         (f[\G_{1}\a\G_{2}]_{k})(\g z) &= \sum_{j}\det(\b_{j})^{k-1}j(\b_{j},\g z)^{-k}f(\b_{j}\g z) \\
         &= \sum_{j}\det(\b_{j}\g)^{k-1}j(\b_{j},\g z)^{-k}f(\b_{j}\g z) && \text{$\det(\g) = 1$} \\
@@ -440,17 +440,17 @@
         &= j(\g,z)^{k}\sum_{j}\det(\b_{j}\g)^{k-1}j(\b_{j}\g,z)^{-k}f(\b_{j}\g z) \\
         &= j(\g,z)^{k}\sum_{j}\det(\b_{j})^{k-1}j(\b_{j},z)^{-k}f(\b_{j}z) && \text{$\b_{j} \to \b_{j}\g^{-1}$ bijection on $\G_{1}\a\G_{2}$} \\
         &= j(\g,z)^{k}\sum_{j}(f[\b_{j}]_{k})(z) \\
-        &= j(\g,z)^{k}(f[\G_{1}\a\G_{2}]_{k})(z),
+        &= j(\g,z)^{k}(f[\G_{1}\a\G_{2}]_{k})(z).
       \end{align*}
-      So $f[\G_{1}\a\G_{2}]_{k}$ is modular. Holomorphy and the growth condition are immediate since the sum is finite by \cref{prop:double_congruence_subgroup_coset_decomposition_is_finite}. Therefore $f[\G_{1}\a\G_{2}]_{k} \in \mc{M}_{k}(\G_{2})$. To see that $[\G_{1}\a\G_{2}]_{k}$ preserves the subspace of cusp forms, let $\s_{\mf{a}}$ be a scaling matrix for the cusp $\mf{a}$ of $\G_{2}\backslash\H$ and let $f \in \mc{S}_{k}(\G_{1})$. For any orbit representative $\b_{j}$, $\b_{j}\s_{\mf{a}}$ takes $\infty$ to an element of $\Q \cup \{\infty\}$ since $\b_{j} \in \GL_{2}^{+}(\Q)$. In other words, $\b_{j}\s_{\mf{a}}\infty = \mf{b}$ for some cusp $\mf{b}$ of $\G_{1}\backslash\H$. Now choose an integer $r \ge 1$ such that $r\a \in \GL_{2}^{+}(\Z)$. As a consequence, there exist integers $n,m \ge 1$ such that $rj(\b_{j},\s_{\mf{a}}z) = |n\s_{\mf{a}}z+m|$. Then letting $\Im(z) > 1$ and $\d$ be as in \cref{lem:technical_Eisenstein_convergence_lemma}, we have
+      This proves $f[\G_{1}\a\G_{2}]_{k}$ is modular. For the growth condition, let $\s_{\mf{a}}$ be a scaling matrix for the cusp $\mf{a}$ of $\G_{2}\backslash\H$. For any orbit representative $\b_{j}$, $\b_{j}\s_{\mf{a}}$ takes $\infty$ to an element of $\Q \cup \{\infty\}$ since $\b_{j} \in \GL_{2}^{+}(\Q)$. In other words, $\b_{j}\s_{\mf{a}}\infty = \mf{b}$ for some cusp $\mf{b}$ of $\G_{1}\backslash\H$. Now choose an integer $r \ge 1$ such that $r\a \in \GL_{2}^{+}(\Z)$. As a consequence, there exist integers $n,m \ge 1$ such that $rj(\b_{j},\s_{\mf{a}}z) = |n\s_{\mf{a}}z+m|$. Then letting $\Im(z) > 1$ and $\d$ be as in \cref{lem:technical_Eisenstein_convergence_lemma}, we have
       \[
         j(\b_{j},\s_{\mf{a}}z) = \frac{|n\s_{\mf{a}}z+m|}{r} \ge \frac{\d|ni+m|}{r}.
       \]
       From this bound, we see that
       \[
-        (f[\G_{1}\a\G_{2}]_{k})(\s_{\mf{a}}z) \ll \left(\frac{\d|ni+m|}{r}\right)^{-k}\sum_{j}\det(\b_{j})^{k-1}f(\b_{j}\s_{\mf{a}} z).
+        (f[\G_{1}\a\G_{2}]_{k})(\s_{\mf{a}}z) \ll \left(\frac{\d|ni+m|}{r}\right)^{-k}\sum_{j}\det(\b_{j})^{k-1}f(\b_{j}\s_{\mf{a}} z),
       \]
-      As $f$ is a cusp form, it has exponential decay at the cusps so that the sum on the right-hand side tends to zero as $\Im(z) \to \infty$. Then $f[\G_{1}\a\G_{2}]_{k}$ is a cusp form too.
+      and the growth condition is satisfied. Therefore $f[\G_{1}\a\G_{2}]_{k} \in \mc{M}_{k}(\G_{2})$. To see that $[\G_{1}\a\G_{2}]_{k}$ preserves the subspace of cusp forms, just note that if $f$ is a cusp form it has exponential decay at the cusps so that the sum on the right-hand side tends to zero as $\Im(z) \to \infty$. Then $f[\G_{1}\a\G_{2}]_{k}$ is a cusp form too.
     \end{proof}
 
     The double coset operators are the most basic types of operators on holomorphic forms. They are the building blocks needed to define the more important diamond and Hecke operators.
@@ -616,7 +616,7 @@
       \[
         (T_{p}f)(z) = \sum_{n \ge 0}\left(a_{np}(f)+\chi(p)p^{k-1}a_{\frac{n}{p}}(f)\right)e^{2\pi inz},
       \]
-      is the Fourier series of $T_{p}f$ where it is understood that $a_{\frac{n}{p}}(f) = 0$ if $p \nmid n$.
+      where it is understood that $a_{\frac{n}{p}}(f) = 0$ if $p \nmid n$.
     \end{proposition}
     \begin{proof}
       In view of \cref{thm:diamond_operator_decomposition_holomorphic} and the linearity of the Hecke operators, it suffices to assume $f \in \mc{M}_{k}(N,\chi)$ and thus only the second formula needs to be verified. 
@@ -1069,11 +1069,66 @@
     \end{theorem}
 
     In the 1970's Deligne proved the Ramanujan-Petersson conjecture (see \cite{deligne1971formes} and \cite{deligne1974conjecture} for the full proof). The argument is significantly beyond the scope of this text, and in actuality follows from Deligne's work on the Weil conjectures (except in the case $k = 1$ which requires a modified argument). This requires understanding classical algebraic topology and $\ell$-acid cohomology in addition to the basic analytic number theory. As such, the proof of the Ramanujan-Petersson conjecture has been one of the biggest advances in analytic number theory in recent decades. Nevertheless, it is not difficult to get close to the Ramanujan conjecture without much effort. Indeed, suppose $f \in \mc{S}_{k}(N,\chi)$ be a primitive Hecke eigenform. Then $\left|f(z)\Im(z)^{\frac{k}{2}}\right|$ is $\G_{0}(N)$-invariant because $\Im(\g z)^{\frac{k}{2}} = \frac{\Im(z)^{\frac{k}{2}}}{|j(\g,z)|^{k}}$ and $|\chi(\g)| = 1$. Moreover, it is bounded on $\mc{F}_{\G_{0}(N)}$ because $f$ is a cusp form. Then $\G_{0}(N)$-invariance implies $\left|f(z)\Im(z)^{\frac{k}{2}}\right|$ is bounded on $\H$. From the definition of the Fourier coefficients, it follows that
+    \[
+      \l_{f}(n)y^{\frac{k}{2}} = \int_{0}^{1}f(x+iy)y^{\frac{k}{2}}e^{-2\pi in(x+iy)}\,dx \le e^{2\pi ny}\int_{0}^{1}\left|f(x+iy)y^{\frac{k}{2}}\right|\,dx \ll e^{2\pi ny}.
+    \]
+    Setting $y = \frac{1}{n}$ implies 
+    \[
+      \l_{f}(n) \ll n^{\frac{k}{2}}.
+    \]
+    This bound is known as the \textbf{Hecke bound}\index{Hecke bound} for holomorphic forms. However, the Ramanujan-Petersson conjecture gives the bound $\l_{f}(n) \ll \s_{0}(n)n^{\frac{k-1}{2}} \ll n^{\frac{k-1}{2}+\e}$.
+  \section{Twists of Holomorphic Forms}
+    We can also twist of holomorphic forms by Dirichlet characters. Let $f \in \mc{M}_{k}(N,\chi)$ with Fourier series
+    \[
+      f(z) = \sum_{n \ge 0}a(n)e^{2\pi inz},
+    \]
+    and let $\psi$ be a primitive Dirichlet character of conductor $M$. We define the \textbf{twisted holomorphic form}\index{twisted holomorphic form} $f \ox \psi$ of $f$ twisted by $\psi$ by the Fourier series
+    \[
+      (f \ox \psi)(z) = \sum_{n \ge 0}a(n)\psi(n)e^{2\pi inz}.
+    \]
+    In order for $f \ox \psi$ to be well-defined, we need to prove that it is a holomorphic form. The following proposition proves this and more:
+
+    \begin{proposition}\label{prop:twisted_holomorphic_forms}
+      If $f \in \mc{M}_{k}(N,\chi)$ and $\psi$ is a primitive Dirichlet character of conductor $M$, then $f \ox \psi \in \mc{M}_{k}(NM^{2},\chi\psi^{2})$. Moreover, if $f$ is a cusp form then so is $f \ox \psi$.
+    \end{proposition}
+    \begin{proof}
+      By \cref{cor:gauss_sum_primitive_formula}, we can write
+      \begin{align*}
+        (f \ox \psi)(z) &= \sum_{n \ge 0}a(n)\psi(n)e^{2\pi inz} \\
+        &= \sum_{n \ge 0}a(n)\left(\frac{1}{\tau(\conj{\psi})}\sum_{r \tmod{M}}\conj{\psi}(r)e^{\frac{2\pi irn}{M}}\right)e^{2\pi inz} \\
+        &= \frac{1}{\tau(\conj{\psi})}\sum_{r \tmod{M}}\conj{\psi}(r)\sum_{n \ge 0}a(n)e^{2\pi in\left(z+\frac{r}{M}\right)} \\
+        &= \frac{1}{\tau(\conj{\psi})}\sum_{r \tmod{M}}\conj{\psi}(r)f\left(z+\frac{r}{M}\right).
+      \end{align*}
+      From this last expression, holomorphy is immediate since the sum is finite. For modularity, let $\g = \begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix} \in \G_{1}(NM^{2})$ and set $\g_{r} = \begin{psmallmatrix} 1 & \frac{r}{M} \\ 0 & 1 \end{psmallmatrix}$ for every $r$ modulo $M$. Then for $r$ and $r'$ modulo $M$, we compute
       \[
-        \l_{f}(n)y^{\frac{k}{2}} = \int_{0}^{1}f(x+iy)y^{\frac{k}{2}}e^{-2\pi in(x+iy)}\,dx \le e^{2\pi ny}\int_{0}^{1}\left|f(x+iy)y^{\frac{k}{2}}\right|\,dx \ll e^{2\pi ny}.
+        \g_{r}\g\g_{r'}^{-1} = \begin{pmatrix} 1 & \frac{r}{M} \\ 0 & 1 \end{pmatrix}\begin{pmatrix} a & b \\ c & d \end{pmatrix}\begin{pmatrix} 1 & -\frac{r'}{M} \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} a+\frac{cr}{M} & b-\frac{ar'-dr}{M}-\frac{crr'}{M^{2}} \\ c & d-\frac{cr'}{M} \end{pmatrix}.
       \]
-      Setting $y = \frac{1}{n}$ implies 
+      Since $c \equiv 0 \tmod{NM^{2}}$ and $a,d \equiv 1 \tmod{NM^{2}}$, if we choose $r'$ (for each $r$) such that $ar' \equiv dr \tmod{M}$ then $\g_{r}\g\g_{r}^{-1} \in \G_{1}(N)$. Such a choice exists and is unique by Bezout's identity because $a$ and $d$ are relatively prime to $M$. Making this choice and setting $\eta_{r} = \g_{r}\g\g_{r'}^{-1}$, we compute
       \[
-        \l_{f}(n) \ll n^{\frac{k}{2}}.
+        f\left(\g z+\frac{r}{M}\right) = f(\g_{r}\g z) = f(\eta_{r}\g_{r'}z) = \chi(\eta_{r})j(\eta_{r},\g_{r'}z)^{k}f(\g_{r'} z) = \chi(\eta_{r})j(\eta_{r},\g_{r'}z)^{k}f\left(z+\frac{r'}{M}\right).
       \]
-      This bound is known as the \textbf{Hecke bound}\index{Hecke bound} for holomorphic forms. However, the Ramanujan-Petersson conjecture gives the bound $\l_{f}(n) \ll \s_{0}(n)n^{\frac{k-1}{2}} \ll n^{\frac{k-1}{2}+\e}$.
+      Moreover,
+      \[
+        \chi(\eta_{r})j(\eta_{r},\g_{r'}z) = \chi\left(d-\frac{cr'}{M}\right)\left(c\g_{r'}z+d-\frac{cr'}{M}\right) = \chi(d)(cz+d) = \chi(\g)j(\g,z).
+      \]
+      Together these two computations imply
+      \[
+        f\left(\g z+\frac{r}{M}\right) = \chi(\g)j(\g,z)^{k}f\left(z+\frac{r'}{M}\right).
+      \]
+      Now, as $ar' \equiv dr \tmod{M}$ and $ad \equiv 1 \tmod{M}$, we have
+      \[
+        \conj{\psi}(r) = \conj{\psi}(a\conj{d}r') = \psi^{2}(d)\conj{\psi}(r') = \psi^{2}(\g)\conj{\psi}(r').
+      \]
+      Putting everything together,
+      \begin{align*}
+        (f \ox \psi)(\g z) &= \frac{1}{\tau(\conj{\psi})}\sum_{r \tmod{M}}\conj{\psi}(r)f\left(\g z+\frac{r}{M}\right) \\
+        &= \chi(\g)j(\g,z)^{k}\frac{1}{\tau(\conj{\psi})}\sum_{r \tmod{M}}\conj{\psi}(r)f\left(z+\frac{r'}{M}\right) \\
+        &= \chi\psi^{2}(\g)j(\g,z)^{k}\frac{1}{\tau(\conj{\psi})}\sum_{r \tmod{M}}\conj{\psi}(r')f\left(z+\frac{r'}{M}\right) \\
+        &= \chi\psi^{2}(\g)j(\g,z)^{k}(f \ox \psi)(z).
+      \end{align*}
+      from which the modularity of $f \ox \psi$ follows. For the growth condition, let $\s_{\mf{a}}$ be a scaling matrix for the cusp $\mf{a}$ of $\G_{1}(NM^{2})$. As $\g_{r} \in \GL_{2}^{+}(\Q)$, $\g_{r}\s_{\mf{a}}$ takes $\infty$ to an element of $\Q \cup \{\infty\}$. Thus $\g_{r}\s_{\mf{\a}}\infty = \mf{b}$ for some cusp $\mf{b}$ of $\G_{1}(N)\backslash\H$. Then from
+      \[
+        (f \ox \psi)(\s_{\mf{a}}z) = \frac{1}{\tau(\conj{\psi})}\sum_{r \tmod{M}}\conj{\psi}(r)f(\g_{r}\s_{\mf{\a}}z),
+      \]
+      the growth condition for $f \ox \psi$ is satisfied. It is also clear that $f \ox \psi$ is a cusp form if $f$ is.
+    \end{proof}
