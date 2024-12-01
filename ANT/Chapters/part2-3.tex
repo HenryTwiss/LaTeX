@@ -553,7 +553,7 @@
       Mimic the proof of \cref{prop:diamond_Hecke_operators_commute_Maass}.
     \end{proof}
 
-    Exactly as for holomorphic forms, \cref{lem:cosets_for_Hecek_operators} will give an explicit description of the Hecke operator $T_{p}$:
+    Exactly as for holomorphic forms, \cref{lem:cosets_for_Hecke_operators} will give an explicit description of the Hecke operator $T_{p}$:
 
     \begin{proposition}\label{prop:explicit_description_of_Hecke_operators_Maass}
       Let $f \in \mc{A}_{t}(\G_{1}(N))$. Then the Hecke operator $T_{p}$ acts on $f$ as follows:
@@ -903,18 +903,52 @@
     \[
       f(z) = a(0)y^{s}+b(0)y^{1-s}+\sum_{n \ge 1}a(n)\sqrt{y}K_{it}(2\pi ny)\SC(2\pi nx).
     \]
-    and let $\psi$ be a primitive Dirichlet character of conductor $M$. We define the \textbf{twisted Maass form}\index{twisted Maass form} $f \ox \psi$ of $f$ twisted by $\psi$ by the Fourier series
+    and let $\psi$ be a primitive Dirichlet character modulo $M$. We define the \textbf{twisted Maass form}\index{twisted Maass form} $f \ox \psi$ of $f$ twisted by $\psi$ by the Fourier series
     \[
       (f \ox \psi)(z) = a(0)\psi(0)y^{s}+b(0)\psi(0)y^{1-s}+\sum_{n \ge 1}a(n)\psi(n)\sqrt{y}K_{it}(2\pi ny)\SC(2\pi nx).
     \]
-    In order for $f \ox \psi$ to be well-defined, we need to prove that it is a Maass form. The following proposition proves this and more:
+    In order for $f \ox \psi$ to be well-defined, we need to prove that it is a Maass form. The following proposition proves this and more when $\psi$ is primitive:
 
-    \begin{proposition}\label{prop:twisted_Maass_forms}
-      Suppose $f \in \mc{A}_{t}(N,\chi)$ and $\psi$ is a primitive Dirichlet character of conductor $M$. Then $f \ox \psi \in \mc{A}_{t}(NM^{2},\chi\psi^{2})$. Moreover, if $f$ is a cusp form then so is $f \ox \psi$.
+    \begin{proposition}\label{prop:twisted_Maass_forms_primitive}
+      Suppose $f \in \mc{A}_{t}(N,\chi)$ and $\psi$ is a primitive Dirichlet character of conductor $q$. Then $f \ox \psi \in \mc{A}_{t}(Nq^{2},\chi\psi^{2})$. Moreover, if $f$ is a cusp form then so is $f \ox \psi$.
     \end{proposition}
     \begin{proof}
       Mimicking the proof of \cref{prop:twisted_holomorphic_forms} with $k = 0$, smoothness replacing holomorphy, and the analogous growth condition for Maass forms, the only piece left to verify is that $f \ox \psi$ is an eigenfunction for $\D$ with eigenvalue $\l$ if $f$ is in the case $\psi$ is primitive. This is easy, since
       \[
-        \D(f \ox \chi)(z) = \frac{1}{\tau(\conj{\psi})}\sum_{r \tmod{M}}\conj{\psi}(r)\D(f)\left(z+\frac{r}{M}\right) =  \frac{\l}{\tau(\conj{\psi})}\sum_{r \tmod{M}}\conj{\psi}(r)f\left(z+\frac{r}{M}\right) = \l(f \ox \chi)(z).
+        \D(f \ox \chi)(z) = \frac{1}{\tau(\conj{\psi})}\sum_{r \tmod{q}}\conj{\psi}(r)\D(f)\left(z+\frac{r}{q}\right) =  \frac{\l}{\tau(\conj{\psi})}\sum_{r \tmod{q}}\conj{\psi}(r)f\left(z+\frac{r}{q}\right) = \l(f \ox \chi)(z).
       \]
+    \end{proof}
+
+    The generalization of \cref{prop:twisted_Maass_forms_primitive} to all characters is slightly more involved. Define operators $U_{p}$ and $V_{p}$ on $\mc{A}_{t}(\G_{1}(N))$ to be the linear operators given by
+    \[
+      (U_{p}f)(z) = a(0)y^{s}+b(0)y^{1-s}+\sum_{n \ge 1}a(np)\psi(n)\sqrt{y}K_{it}(2\pi ny)\SC(2\pi nx)
+    \]
+    and
+    \[
+      (V_{p}f)(z) = a(0)(py)^{s}+b(0)(py)^{1-s}+\sum_{n \ge 1}a(n)\psi(n)\sqrt{y}K_{it}(2\pi npy)\SC(2\pi npx)
+    \]
+    if $f$ has Fourier series
+    \[
+      f(z) = a(0)y^{s}+b(0)y^{1-s}+\sum_{n \ge 1}a(n)\sqrt{y}K_{it}(2\pi ny)\SC(2\pi nx).
+    \]
+    We will show that both $U_{p}$ and $V_{p}$ send forms on $\G_{1}(N)\backslash\H$ to forms on $\G_{1}(Np)\backslash\H$:
+
+    \begin{lemma}\label{lem:twisted_Maass_lemma}
+      For any prime $p$, $U_{p}$ and $V_{p}$ map $\mc{A}_{t}(\G_{1}(N))$ into $\mc{A}_{t}(\G_{1}(Np))$. In particular, $U_{p}$ and $V_{p}$ map $\mc{A}_{t}(N,\chi)$ to $\mc{A}_{t}(Np,\chi\chi_{p,0})$. Moreover, $U_{p}$ and $V_{p}$ preserve the subspace of cusp forms.
+    \end{lemma}
+    \begin{proof}
+      Mimic the proof of \cref{thm:diamond_operator_decomposition_holomorphic}.
+    \end{proof}
+
+    We can now generalize \cref{prop:twisted_Maass_forms_primitive} to all characters:
+
+    \begin{proposition}\label{prop:twisted_Maass_forms}
+      Suppose $f \in \mc{A}_{t}(N,\chi)$ and $\psi$ is a Dirichlet character modulo $M$. Then $f \ox \psi \in \mc{A}_{t}(NM^{2},\chi\psi^{2})$. Moreover, if $f$ is a cusp form then so is $f \ox \psi$.
+    \end{proposition}
+    \begin{proof}
+      Mimicking the proof of \cref{prop:twisted_holomorphic_forms}, it remains to show that $f \ox \psi_{p,0}$ is an eigenfunction with eigenvalue $\l$ if $f$ is. As $U_{p} = T_{p}$ for the $p$-th Hecke operator on $\mc{A}_{t}(\G_{1}(Np))$, $U_{p}$ commutes with $\D$. It is also clear that $V_{p}$ commutes with $\D$. These facts together with
+      \[
+        f \ox \psi_{p,0} = f-V_{p}U_{p}f,
+      \]
+      shows that $f \ox \psi_{p,0}$ is an eigenfunction with eigenvalue $\l$ if $f$ is.
     \end{proof}
