@@ -379,48 +379,44 @@
     \subsection*{The Definition \& Euler Product of \texorpdfstring{$L(s,f)$}{L(s,f)}}
       We will investigate the $L$-functions of holomorphic cusp forms. Let $f \in \mc{S}_{k}(N,\chi)$ and denote its Fourier series by
       \[
-        f(z) = \sum_{n \ge 1}a_{f}(n)e^{2\pi inz}.
+        f(z) = \sum_{n \ge 1}a_{f}(n)n^{\frac{k-1}{2}}e^{2\pi inz}.
       \]
       The \textbf{Hecke $L$-function}\index{Hecke $L$-function} $L(s,f)$ of $f$ is defined as an $L$-series:
       \[
-        L(s,f) = \sum_{n \ge 1}\frac{A_{f}(n)}{n^{s}} = \sum_{n \ge 1}\frac{a_{f}(n)}{n^{s+\frac{k-1}{2}}},
+        L(s,f) = \sum_{n \ge 1}\frac{a_{f}(n)}{n^{s}}.
       \]
-      where $A_{f}(n) = a_{f}(n)n^{-\frac{k-1}{2}}$. We will see that $L(s,f)$ is a Selberg class $L$-function if $f$ is a primitive Hecke eigenforms. From now on, we make this assumption about $f$ and denote its Fourier series by
-      \[
-        f(z) = \sum_{n \ge 1}\l_{f}(n)e^{2\pi inz},
-      \]
-      where $\l_{f}(n)$ are the Hecke eigenvalues of $f$. By the Ramanujan-Petersson conjecture, $A_{f}(n) \ll n^{\e}$. So $L(s,f)$ is locally absolutely uniformly convergent for $\Re(s) > 1+\e$ and hence locally absolutely uniformly convergent for $\Re(s) > 1$. The $L$-function will also have an Euler product. Indeed, the Hecke relations imply that the coefficients $A_{f}(n)$ are multiplicative and satisfy
+      We will see that $L(s,f)$ is a Selberg class $L$-function if $f$ is a primitive Hecke eigenform. From now on, we make this assumption about $f$. By the Ramanujan-Petersson conjecture, $a_{f}(n) \ll n^{\e}$. So $L(s,f)$ is locally absolutely uniformly convergent for $\Re(s) > 1+\e$ and hence locally absolutely uniformly convergent for $\Re(s) > 1$. The $L$-function will also have an Euler product. Indeed, the Hecke relations imply that the coefficients $a_{f}(n)$ are multiplicative and satisfy
       \begin{equation}\label{equ:primitive_Hecke_eigenform_recurrence_for_coefficients_of_modular_L-function}
-        A_{f}(p^{n}) = \begin{cases} A_{f}(p^{n-1})A_{f}(p)-\chi(p)A_{f}(p^{n-2}) & \text{if $p \nmid N$}, \\ (A_{f}(p))^{n} & \text{if $p \mid N$}, \end{cases}
+        a_{f}(p^{n}) = \begin{cases} a_{f}(p^{n-1})a_{f}(p)-\chi(p)a_{f}(p^{n-2}) & \text{if $p \nmid N$}, \\ (a_{f}(p))^{n} & \text{if $p \mid N$}, \end{cases}
       \end{equation}
       for all primes $p$ and $n \ge 2$. Because $L(s,f)$ converges absolutely in the region $\Re(s) > 1$, multiplicativity of the Hecke eigenvalues implies
       \[
-        L(s,f) = \prod_{p}\left(\sum_{n \ge 0}\frac{A_{f}(p^{n})}{p^{ns}}\right),
+        L(s,f) = \prod_{p}\left(\sum_{n \ge 0}\frac{a_{f}(p^{n})}{p^{ns}}\right),
       \]
       in this region. We now simplify the factor inside the product using this \cref{equ:primitive_Hecke_eigenform_recurrence_for_coefficients_of_modular_L-function}. On the one hand, if $p \nmid N$:
       \begin{align*}
-        \sum_{n \ge 0}\frac{A_{f}(p^{n})}{p^{ns}} &= 1+\frac{A_{f}(p)}{p^{s}}+\sum_{n \ge 2}\frac{A_{f}(p^{n})}{p^{ns}} \\
-        &= 1+\frac{A_{f}(p)}{p^{s}}+\sum_{n \ge 2}\frac{A_{f}(p^{n-1})A_{f}(p)-\chi(p)A_{f}(p^{n-2})}{p^{ns}} \\
-        &= 1+\frac{A_{f}(p)}{p^{s}}+\frac{A_{f}(p)}{p^{s}}\sum_{n \ge 1}\frac{A_{f}(p^{n})}{p^{ns}}-\frac{\chi(p)}{p^{2s}}\sum_{n \ge 0}\frac{A_{f}(p^{n})}{p^{ns}} \\
-        &= 1+\left(\frac{A_{f}(p)}{p^{s}}-\frac{\chi(p)}{p^{2s}}\right)\sum_{n \ge 0}\frac{A_{f}(p^{n})}{p^{ns}}.
+        \sum_{n \ge 0}\frac{a_{f}(p^{n})}{p^{ns}} &= 1+\frac{a_{f}(p)}{p^{s}}+\sum_{n \ge 2}\frac{a_{f}(p^{n})}{p^{ns}} \\
+        &= 1+\frac{a_{f}(p)}{p^{s}}+\sum_{n \ge 2}\frac{a_{f}(p^{n-1})a_{f}(p)-\chi(p)a_{f}(p^{n-2})}{p^{ns}} \\
+        &= 1+\frac{a_{f}(p)}{p^{s}}+\frac{a_{f}(p)}{p^{s}}\sum_{n \ge 1}\frac{a_{f}(p^{n})}{p^{ns}}-\frac{\chi(p)}{p^{2s}}\sum_{n \ge 0}\frac{a_{f}(p^{n})}{p^{ns}} \\
+        &= 1+\left(\frac{a_{f}(p)}{p^{s}}-\frac{\chi(p)}{p^{2s}}\right)\sum_{n \ge 0}\frac{a_{f}(p^{n})}{p^{ns}}.
       \end{align*}
       By isolating the sum we find
       \[
-        \sum_{n \ge 0}\frac{A_{f}(p^{n})}{p^{ns}} = \left(1-\frac{A_{f}(p)}{p^{s}}+\frac{\chi(p)}{p^{2s}}\right)^{-1}.
+        \sum_{n \ge 0}\frac{a_{f}(p^{n})}{p^{ns}} = \left(1-\frac{a_{f}(p)}{p^{s}}+\frac{\chi(p)}{p^{2s}}\right)^{-1}.
       \]
       On the other hand, if $p \mid N$ we have
       \[
-        \sum_{n \ge 0}\frac{A_{f}(p^{n})}{p^{ns}} = \sum_{n \ge 0}\frac{(A_{f}(p))^{n}}{p^{ns}} = \left(1-A_{f}(p)p^{-s}\right)^{-1}.
+        \sum_{n \ge 0}\frac{a_{f}(p^{n})}{p^{ns}} = \sum_{n \ge 0}\frac{(a_{f}(p))^{n}}{p^{ns}} = \left(1-a_{f}(p)p^{-s}\right)^{-1}.
       \]
       Therefore
       \[
-        L(s,f) = \prod_{p \nmid N}(1-A_{f}(p)p^{-s}+\chi(p)p^{-2s})^{-1}\prod_{p \mid N}(1-A_{f}(p)p^{-s})^{-1}.
+        L(s,f) = \prod_{p \nmid N}(1-a_{f}(p)p^{-s}+\chi(p)p^{-2s})^{-1}\prod_{p \mid N}(1-a_{f}(p)p^{-s})^{-1}.
       \]
-      If $p \nmid N$, let $\a_{1}(p)$ and $\a_{2}(p)$ be the roots of $1-A_{f}(p)p^{-s}+\chi(p)p^{-2s}$. That is,
+      If $p \nmid N$, let $\a_{1}(p)$ and $\a_{2}(p)$ be the roots of $1-a_{f}(p)p^{-s}+\chi(p)p^{-2s}$. That is,
       \[
-        (1-\a_{1}(p)p^{-s})(1-\a_{2}(p)p^{-s}) = (1-A_{f}(p)p^{-s}+\chi(p)p^{-2s}).
+        (1-\a_{1}(p)p^{-s})(1-\a_{2}(p)p^{-s}) = (1-a_{f}(p)p^{-s}+\chi(p)p^{-2s}).
       \]
-      If $p \mid N$, let $\a_{1}(p) = A_{f}(p)$ and $\a_{2}(p) = 0$. We can then express $L(s,f)$ as a degree $2$ Euler product:
+      If $p \mid N$, let $\a_{1}(p) = a_{f}(p)$ and $\a_{2}(p) = 0$. We can then express $L(s,f)$ as a degree $2$ Euler product:
       \[
         L(s,f) = \prod_{p}(1-\a_{1}(p)p^{-s})^{-1}(1-\a_{2}(p)p^{-s})^{-1}.
       \]
@@ -430,7 +426,7 @@
       \]
       Expanding both sides as series in $p^{-s}$, and comparing coefficients gives
       \begin{equation}\label{equ:Hecke_L_function_coefficient_formula}
-        A_{f}(p^{n}) = \frac{\a_{1}(p)^{n+1}-\a_{2}(p)^{n+1}}{\a_{1}(p)-\a_{2}(p)}.
+        a_{f}(p^{n}) = \frac{\a_{1}(p)^{n+1}-\a_{2}(p)^{n+1}}{\a_{1}(p)-\a_{2}(p)}.
       \end{equation}
     \subsection*{The Integral Representation of \texorpdfstring{$L(s,f)$}{L(s,f)}}
       We now want to find an integral representation for $L(s,f)$. Consider the following Mellin transform:
@@ -439,10 +435,10 @@
       \]
       We don't yet know that this integral defines an analytic function for $\Re(s) > 1$. In any case, we compute
       \begin{align*}
-        \int_{0}^{\infty}f(iy)y^{s+\frac{k-1}{2}}\,\frac{dy}{y} &= \int_{0}^{\infty}\sum_{n \ge 1}\l_{f}(n)e^{-2\pi ny}y^{s+\frac{k-1}{2}}\,\frac{dy}{y} \\
-        &= \sum_{n \ge 1}\l_{f}(n)\int_{0}^{\infty}e^{-2\pi ny}y^{s+\frac{k-1}{2}}\,\frac{dy}{y} &&\text{DCT} \\
-        &= \sum_{n \ge 1}\frac{\l_{f}(n)}{(2\pi n)^{s+\frac{k-1}{2}}}\int_{0}^{\infty}e^{-y}y^{s+\frac{k-1}{2}}\,\frac{dy}{y} &&\text{$y \to \frac{y}{2\pi n}$} \\
-        &= \frac{\G\left(s+\frac{k-1}{2}\right)}{(2\pi)^{s+\frac{k-1}{2}}}\sum_{n \ge 1}\frac{\l_{f}(n)}{n^{s+\frac{k-1}{2}}} \\
+        \int_{0}^{\infty}f(iy)y^{s+\frac{k-1}{2}}\,\frac{dy}{y} &= \int_{0}^{\infty}\sum_{n \ge 1}a_{f}(n)n^{\frac{k-1}{2}}e^{-2\pi ny}y^{s+\frac{k-1}{2}}\,\frac{dy}{y} \\
+        &= \sum_{n \ge 1}a_{f}(n)n^{\frac{k-1}{2}}\int_{0}^{\infty}e^{-2\pi ny}y^{s+\frac{k-1}{2}}\,\frac{dy}{y} &&\text{DCT} \\
+        &= \sum_{n \ge 1}\frac{a_{f}(n)}{(2\pi)^{s+\frac{k-1}{2}}n^{s}}\int_{0}^{\infty}e^{-y}y^{s+\frac{k-1}{2}}\,\frac{dy}{y} &&\text{$y \to \frac{y}{2\pi n}$} \\
+        &= \frac{\G\left(s+\frac{k-1}{2}\right)}{(2\pi)^{s+\frac{k-1}{2}}}\sum_{n \ge 1}\frac{a_{f}(n)}{n^{s}} \\
         &= \frac{\G\left(s+\frac{k-1}{2}\right)}{(2\pi)^{s+\frac{k-1}{2}}}L(s,f).
       \end{align*}
       As this last expression is analytic function for $\Re(s) > 1$, the integral is too. Rewriting, we have an integral representation
@@ -505,7 +501,7 @@
       \begin{theorem}\label{thm:primitive_Hecke_Selberg}
         For any primitive Hecke eigenform $f \in \mc{S}_{k}(N,\chi)$, $L(s,f)$ is a Selberg class $L$-function. For $\Re(s) > 1$, it has a locally absolutely uniformly convergent degree $2$ Euler product given by 
         \[
-          L(s,f) = \prod_{p \nmid N}(1-A_{f}(p)p^{-s}+\chi(p)p^{-2s})^{-1}\prod_{p \mid N}(1-A_{f}(p)p^{-s})^{-1} = \prod_{p}(1-\a_{1}(p)p^{-s})^{-1}(1-\a_{2}(p)p^{-s})^{-1}.
+          L(s,f) = \prod_{p \nmid N}(1-a_{f}(p)p^{-s}+\chi(p)p^{-2s})^{-1}\prod_{p \mid N}(1-a_{f}(p)p^{-s})^{-1} = \prod_{p}(1-\a_{1}(p)p^{-s})^{-1}(1-\a_{2}(p)p^{-s})^{-1}.
         \]
         Moreover, it admits analytic continuation to $\C$ via the integral representation
         \[
@@ -537,21 +533,17 @@
       \]
       The \textbf{Hecke-Maass $L$-function}\index{Hecke-Maass $L$-function} $L(s,f)$ of $f$ is defined as an $L$-series:
       \[
-        L(s,f) = \sum_{n \ge 1}\frac{A_{f}(n)}{n^{s}} = \sum_{n \ge 1}\frac{a_{f}(n)}{n^{s}},
+        L(s,f) = \sum_{n \ge 1}\frac{a_{f}(n)}{n^{s}}.
       \]
-      where $A_{f}(n) = a_{f}(n)$. We will see that $L(s,f)$ is a Selberg class $L$-function if $f$ is a primitive Hecke-Maass eigenforms under the Ramanujan-Petersson conjecture. From now on, we make this assumption about $f$ and denote its Fourier series by
+      We will see that $L(s,f)$ is a Selberg class $L$-function if $f$ is a primitive Hecke-Maass eigenform. From now on, we make this assumption about $f$. In this case, the Ramanujan-Petersson conjecture is not know so $L(s,f)$ has not been proven to be a Selberg class $L$-function. Although, it is conjectured to be, so throughout we will make this additional assumption. By the Ramanujan-Petersson conjecture, $a_{f}(n) \ll n^{\e}$. So $L(s,f)$ is locally absolutely uniformly convergent for $\Re(s) > 1+\e$ and hence locally absolutely uniformly convergent for $\Re(s) > 1$. The $L$-function will have an Euler product. Indeed, the Hecke relations imply that the coefficients $a_{f}(n)$ are multiplicative and satisfy \cref{equ:primitive_Hecke_eigenform_recurrence_for_coefficients_of_modular_L-function}. Mimicking the argument exactly as for Hecke $L$-functions, 
       \[
-        f(z) = \sum_{n \ge 1}\l_{f}(n)\sqrt{y}K_{it}(2\pi ny)\SC(2\pi nx).
+        L(s,f) = \prod_{p \nmid N}(1-a_{f}(p)p^{-s}+\chi(p)p^{-2s})^{-1}\prod_{p \mid N}(1-a_{f}(p)p^{-s})^{-1}.
       \]
-      where $\l_{f}(n)$ are the Hecke eigenvalues of $f$. In this case, the Ramanujan-Petersson conjecture is not know so $L(s,f)$ has not been proven to be a Selberg class $L$-function. Although, it is conjectured to be, so throughout we will make this additional assumption. By the Ramanujan-Petersson conjecture, $A_{f}(n) \ll n^{\e}$. So $L(s,f)$ is locally absolutely uniformly convergent for $\Re(s) > 1+\e$ and hence locally absolutely uniformly convergent for $\Re(s) > 1$. The $L$-function will have an Euler product. Indeed, the Hecke relations imply that the coefficients $A_{f}(n)$ are multiplicative and satisfy \cref{equ:primitive_Hecke_eigenform_recurrence_for_coefficients_of_modular_L-function}. Mimicking the argument exactly as for Hecke $L$-functions, 
+      If $p \nmid N$, let $\a_{1}(p)$ and $\a_{2}(p)$ be the roots of $1-a_{f}(p)p^{-s}+\chi(p)p^{-2s}$. That is,
       \[
-        L(s,f) = \prod_{p \nmid N}(1-A_{f}(p)p^{-s}+\chi(p)p^{-2s})^{-1}\prod_{p \mid N}(1-A_{f}(p)p^{-s})^{-1}.
+        (1-\a_{1}(p)p^{-s})(1-\a_{2}(p)p^{-s}) = (1-a_{f}(p)p^{-s}+\chi(p)p^{-2s}).
       \]
-      If $p \nmid N$, let $\a_{1}(p)$ and $\a_{2}(p)$ be the roots of $1-A_{f}(p)p^{-s}+\chi(p)p^{-2s}$. That is,
-      \[
-        (1-\a_{1}(p)p^{-s})(1-\a_{2}(p)p^{-s}) = (1-A_{f}(p)p^{-s}+\chi(p)p^{-2s}).
-      \]
-      If $p \mid N$, let $\a_{1}(p) = A_{f}(p)$ and $\a_{2}(p) = 0$. We can then express $L(s,f)$ as a degree $2$ Euler product:
+      If $p \mid N$, let $\a_{1}(p) = a_{f}(p)$ and $\a_{2}(p) = 0$. We can then express $L(s,f)$ as a degree $2$ Euler product:
       \[
         L(s,f) = \prod_{p}(1-\a_{1}(p)p^{-s})^{-1}(1-\a_{2}(p)p^{-s})^{-1}.
       \]
@@ -559,7 +551,7 @@
     \subsection*{The Integral Representation of \texorpdfstring{$L(s,f)$}{L(s,f)}}
       We want to find an integral representation for $L(s,f)$. Recall that $f$ is an eigenfunction for $T_{-1}$ with eigenvalue $\pm 1$. Equivalently, $f$ is even if the eigenvalue is $1$ and odd if the eigenvalue is $-1$. The integral representation will depend upon this parity. To handle both cases simultaneously, let $\mf{a} = 0,1$ according to whether $f$ is even or odd. In other words,
       \[
-        \mf{a} = \frac{1-\l_{f}(-1)}{2}.
+        \mf{a} = \frac{1-a_{f}(-1)}{2}.
       \]
       Now consider the following Mellin transform:
       \[
@@ -567,14 +559,14 @@
       \]
       The derivative operator is present because if $f$ is odd, $\SC(x) = \sin(x)$. In any case, the smoothness of $f$ implies that we may differentiate its Fourier series termwise to obtain
       \[
-        \left(\frac{\del}{\del x}^{\mf{a}}f\right)(z) = \sum_{n \ge 1}\l_{f}(n)(2\pi n)^{\mf{a}}\sqrt{y}K_{it}(2\pi ny)\cos(2\pi nx).
+        \left(\frac{\del}{\del x}^{\mf{a}}f\right)(z) = \sum_{n \ge 1}a_{f}(n)(2\pi n)^{\mf{a}}\sqrt{y}K_{it}(2\pi ny)\cos(2\pi nx).
       \]
       Therefore regardless if $f$ is even or odd, the Fourier series of $\left(\frac{\del}{\del x}^{\mf{a}}f\right)(z)$ has $\SC(x) = \cos(x)$ and the integral does not vanish identically. Similar to Hecke $L$-functions, we don't yet know that this integral defines an analytic function for $\Re(s) > 1$. Nevertheless, we compute
       \begin{align*}
-        \int_{0}^{\infty}\left(\frac{\del}{\del x}^{\mf{a}}f\right)(iy)y^{s-\frac{1}{2}+\mf{a}}\,\frac{dy}{y} &= \int_{0}^{\infty}\sum_{n \ge 1}\l_{f}(n)(2\pi n)^{\mf{a}}K_{it}(2\pi ny)y^{s+\mf{a}}\,\frac{dy}{y} \\
-        &= \sum_{n \ge 1}\l_{f}(n)(2\pi n)^{\mf{a}}\int_{0}^{\infty}K_{it}(2\pi ny)y^{s+\mf{a}}\,\frac{dy}{y} &&\text{DCT} \\
-        &= \sum_{n \ge 1}\frac{\l_{f}(n)}{(2\pi n)^{s}}\int_{0}^{\infty}K_{it}(y)y^{s+\mf{a}}\,\frac{dy}{y} &&\text{$y \to \frac{y}{2\pi n}$} \\
-        &= \frac{\G\left(\frac{s+\mf{a}+it}{2}\right)\G\left(\frac{s+\mf{a}-it}{2}\right)}{2^{2-\mf{a}}\pi^{s}}\sum_{n \ge 1}\frac{\l_{f}(n)}{n^{s}} && \text{\cref{append:Special_Integrals}} \\
+        \int_{0}^{\infty}\left(\frac{\del}{\del x}^{\mf{a}}f\right)(iy)y^{s-\frac{1}{2}+\mf{a}}\,\frac{dy}{y} &= \int_{0}^{\infty}\sum_{n \ge 1}a_{f}(n)(2\pi n)^{\mf{a}}K_{it}(2\pi ny)y^{s+\mf{a}}\,\frac{dy}{y} \\
+        &= \sum_{n \ge 1}a_{f}(n)(2\pi n)^{\mf{a}}\int_{0}^{\infty}K_{it}(2\pi ny)y^{s+\mf{a}}\,\frac{dy}{y} &&\text{DCT} \\
+        &= \sum_{n \ge 1}\frac{a_{f}(n)}{(2\pi n)^{s}}\int_{0}^{\infty}K_{it}(y)y^{s+\mf{a}}\,\frac{dy}{y} &&\text{$y \to \frac{y}{2\pi n}$} \\
+        &= \frac{\G\left(\frac{s+\mf{a}+it}{2}\right)\G\left(\frac{s+\mf{a}-it}{2}\right)}{2^{2-\mf{a}}\pi^{s}}\sum_{n \ge 1}\frac{a_{f}(n)}{n^{s}} && \text{\cref{append:Special_Integrals}} \\
         &= \frac{\G\left(\frac{s+\mf{a}+it}{2}\right)\G\left(\frac{s+\mf{a}-it}{2}\right)}{2^{2-\mf{a}}\pi^{s}}L(s,f).
       \end{align*}
       This last expression is analytic function for $\Re(s) > 1$ and so the integral is too. Rewriting, we have an integral representation
@@ -592,8 +584,8 @@
       We will rewrite this in terms of the Atkin–Lehner involution. But first we require an identity that relates $\frac{\del}{\del x}^{\mf{a}}$ with the Atkin-Lehner involution $\w_{N}$. By the identity theorem it suffices to verify this on a set containing a limit point. So let $z \in \H$ be such that $|z|$ is fixed. Observe that $-\frac{1}{Nz} = \frac{-x}{N|z|^{2}}+\frac{iy}{N|z|^{2}}$. Now differentiate termwise to see that
       \begin{align*}
         \left(\frac{\del}{\del x}^{\mf{a}}\w_{N}f\right)(z) &= \left(\frac{\del}{\del x}^{\mf{a}}\right)f\left(-\frac{1}{Nz}\right) \\
-         &= \left(\frac{\del}{\del x}^{\mf{a}}\right)\sum_{n \ge 1}\l_{f}(n)\sqrt{\frac{y}{N|z|^{2}}}K_{it}(2\pi ny)\SC\left(-2\pi n\frac{x}{N|z|^{2}}\right) \\
-        &= (-N|z|^{2})^{-\mf{a}}\sum_{n \ge 1}\l_{f}(n)(2\pi n)^{\mf{a}}\sqrt{\frac{y}{N|z|^{2}}}K_{it}\left(2\pi n\frac{y}{N|z|^{2}}\right)\cos\left(-2\pi n\frac{x}{N|z|^{2}}\right) \\
+         &= \left(\frac{\del}{\del x}^{\mf{a}}\right)\sum_{n \ge 1}a_{f}(n)\sqrt{\frac{y}{N|z|^{2}}}K_{it}(2\pi ny)\SC\left(-2\pi n\frac{x}{N|z|^{2}}\right) \\
+        &= (-N|z|^{2})^{-\mf{a}}\sum_{n \ge 1}a_{f}(n)(2\pi n)^{\mf{a}}\sqrt{\frac{y}{N|z|^{2}}}K_{it}\left(2\pi n\frac{y}{N|z|^{2}}\right)\cos\left(-2\pi n\frac{x}{N|z|^{2}}\right) \\
         &= (-N|z|^{2})^{-\mf{a}}\left(\frac{\del}{\del x}^{\mf{a}}f\right)\left(-\frac{1}{Nz}\right).
       \end{align*}
       So by the identity theorem,
@@ -643,7 +635,7 @@
       \begin{theorem}\label{equ:thm:primitive_Hecke-Maass_Selberg}
         For any even or odd primitive Hecke-Maass eigenform $f \in \mc{C}_{t}(N,\chi)$, $L(s,f)$ is a Selberg class $L$-function provided the Ramanujan-Petersson conjecture holds. For $\Re(s) > 1$, it has a locally absolutely uniformly convergent degree $2$ Euler product given by 
         \[
-          L(s,f) = \prod_{p \nmid N}(1-A_{f}(p)p^{-s}+\chi(p)p^{-2s})^{-1}\prod_{p \mid N}(1-A_{f}(p)p^{-s})^{-1} = \prod_{p}(1-\a_{1}(p)p^{-s})^{-1}(1-\a_{2}(p)p^{-s})^{-1}.
+          L(s,f) = \prod_{p \nmid N}(1-a_{f}(p)p^{-s}+\chi(p)p^{-2s})^{-1}\prod_{p \mid N}(1-a_{f}(p)p^{-s})^{-1} = \prod_{p}(1-\a_{1}(p)p^{-s})^{-1}(1-\a_{2}(p)p^{-s})^{-1}.
         \]
         Moreover, it admits analytic continuation to $\C$ via the integral representation
         \begin{align*}
@@ -668,25 +660,25 @@
     \subsection*{The Definition \& Euler Product of \texorpdfstring{$L(s,f \ox g)$}{L(s,f \ox g)}}
       The Rankin-Selberg method is a process by which we can construct new $L$-functions from old ones. Instead of giving the general definition outright, we first provide a full discussion of the method only in the simplest case. Many technical difficulties arise in the fully general setting. Let $f,g \in \mc{S}_{k}(\PSL_{2}(\Z))$ be primitive Hecke eigenforms with Fourier series
       \[
-        f(z) = \sum_{n \ge 1}\l_{f}(n)e^{2\pi inz} \quad \text{and} \quad g(z) = \sum_{n \ge 1}\l_{g}(n)e^{2\pi inz}.
+        f(z) = \sum_{n \ge 1}a_{f}(n)n^{\frac{k-1}{2}}e^{2\pi inz} \quad \text{and} \quad g(z) = \sum_{n \ge 1}a_{g}(n)n^{\frac{k-1}{2}}e^{2\pi inz}.
       \]
-      The $L$-function $L(s,f \x g)$ of $f$ and $g$ is give by the $L$-series
+      The $L$-function $L(s,f \x g)$ of $f$ and $g$ is given by the $L$-series
       \[
-        L(s,f \x g) = \sum_{n \ge 1}\frac{A_{f \x g}(n)}{n^{s}} = \sum_{n \ge 1}\frac{A_{f}(n)\conj{A_{g}(n)}}{n^{s}} = \sum_{n \ge 1}\frac{\l_{f}(n)\conj{\l_{g}(n)}}{n^{s+k-1}},
+        L(s,f \x g) = \sum_{n \ge 1}\frac{a_{f \x g}(n)}{n^{s}} = \sum_{n \ge 1}\frac{a_{f}(n)\conj{a_{g}(n)}}{n^{s}} = \sum_{n \ge 1}\frac{a_{f}(n)\conj{a_{g}(n)}}{n^{s}},
       \]
       The \textbf{Rankin-Selberg convolution}\index{Rankin-Selberg convolution} $L(s,f \ox g)$ of $f$ and $g$ is defined as an $L$-series:
       \[
-        L(s,f \ox g) = \sum_{n \ge 1}\frac{A_{f \ox g}(n)}{n^{s}} = \z(2s)L(s,f \x g),
+        L(s,f \ox g) = \sum_{n \ge 1}\frac{a_{f \ox g}(n)}{n^{s}} = \z(2s)L(s,f \x g),
       \]
-      where $A_{f \ox g}(n) = \sum_{n = m\ell^{2}}A_{f}(m)\conj{A_{g}(m)}$. Since $A_{f}(n) \ll n^{\e}$ and $A_{g}(n) \ll n^{\e}$ by the Ramanujan-Petersson conjecture, $A_{f \x g}(n) \ll n^{\e}$ as well. Hence $L(s,f \x g)$ is locally absolutely uniformly convergent for $\Re(s) > 1+\e$ and hence locally absolutely uniformly convergent for $\Re(s) > 1$. Since $\z(2s)$ is also locally absolutely uniformly convergent in this region, the same follows for $L(s,f \x g)$ too. The $L$-function $L(s,f \x g)$ will also have an Euler product. To see this, let $\a_{i}(p)$ and $\b_{j}(p)$ for $1 \le i,j \le 2$ be the local roots at $p$ of $L(s,f)$ and $L(s,g)$ respectively. Since $L(s,f \ox g)$ converges absolutely in the region $\Re(s) > 1$, for $s$ in this region, multiplicativity of the Hecke eigenvalues implies
+      where $a_{f \ox g}(n) = \sum_{n = m\ell^{2}}a_{f}(m)\conj{a_{g}(m)}$. Since $a_{f}(n) \ll n^{\e}$ and $a_{g}(n) \ll n^{\e}$ by the Ramanujan-Petersson conjecture, $a_{f \x g}(n) \ll n^{\e}$ as well. Hence $L(s,f \x g)$ is locally absolutely uniformly convergent for $\Re(s) > 1+\e$ and hence locally absolutely uniformly convergent for $\Re(s) > 1$. Since $\z(2s)$ is also locally absolutely uniformly convergent in this region, the same follows for $L(s,f \x g)$ too. The $L$-function $L(s,f \x g)$ will also have an Euler product. To see this, let $\a_{i}(p)$ and $\b_{j}(p)$ for $1 \le i,j \le 2$ be the local roots at $p$ of $L(s,f)$ and $L(s,g)$ respectively. Since $L(s,f \ox g)$ converges absolutely in the region $\Re(s) > 1$, for $s$ in this region, multiplicativity of the Hecke eigenvalues implies
       \[
-        L(s,f \ox g) = \z(2s)L(s,f \x g) = \prod_{p \nmid NM}(1-p^{-2s})^{-1}\prod_{p}\left(\sum_{n \ge 0}\frac{A_{f}(p^{n})\conj{A_{g}(p^{n})}}{p^{ns}}\right).
+        L(s,f \ox g) = \z(2s)L(s,f \x g) = \prod_{p \nmid NM}(1-p^{-2s})^{-1}\prod_{p}\left(\sum_{n \ge 0}\frac{a_{f}(p^{n})\conj{a_{g}(p^{n})}}{p^{ns}}\right).
       \]
       We now simplify the factor inside the latter product using \cref{equ:Hecke_L_function_coefficient_formula}:
       \begingroup
       \allowdisplaybreaks
           \begin{align*}
-            \sum_{n \ge 0}\frac{A_{f}(p^{n})\conj{A_{g}(p^{n})}}{p^{ns}} &= \sum_{n \ge 0}\left(\frac{\a_{1}(p)^{n+1}-\a_{2}(p)^{n+1}}{\a_{1}(p)-\a_{2}(p)}\right)\left(\frac{(\conj{\b_{1}(p)})^{n+1}-(\conj{\b_{2}(p)})^{n+1}}{\conj{\b_{1}(p)}-\conj{\b_{2}(p)}}\right)p^{-ns} \\
+            \sum_{n \ge 0}\frac{a_{f}(p^{n})\conj{a_{g}(p^{n})}}{p^{ns}} &= \sum_{n \ge 0}\left(\frac{\a_{1}(p)^{n+1}-\a_{2}(p)^{n+1}}{\a_{1}(p)-\a_{2}(p)}\right)\left(\frac{(\conj{\b_{1}(p)})^{n+1}-(\conj{\b_{2}(p)})^{n+1}}{\conj{\b_{1}(p)}-\conj{\b_{2}(p)}}\right)p^{-ns} \\
             &= (\a_{1}(p)-\a_{2}(p))^{-1}\left(\conj{\b_{1}(p)}-\conj{\b_{2}(p)}\right)^{-1} \\
             &\cdot \bigg[\sum_{n \ge 1}\frac{\a_{1}(p)^{n}(\conj{\b_{1}(p)})^{n}}{p^{(n-1)s}}+\frac{\a_{2}(p)^{n}(\conj{\b_{2}(p)})^{n}}{p^{(n-1)s}}-\frac{\a_{1}(p)^{n}(\conj{\b_{2}(p)})^{n}}{p^{(n-1)s}}-\frac{\a_{2}(p)^{n}(\conj{\b_{1}(p)})^{n}}{p^{(n-1)s}}\bigg] \\
             &= (\a_{1}(p)-\a_{2}(p))^{-1}\left(\conj{\b_{1}(p)}-\conj{\b_{2}(p)}\right)^{-1}\bigg[\a_{1}(p)\conj{\b_{1}(p)}\left(1-\a_{1}(p)\conj{\b_{1}(p)}p^{-s}\right)^{-1} \\
@@ -706,7 +698,7 @@
       \]
       because all of the other terms are killed by symmetry in $\a_{1}(p)$, $\a_{2}(p)$, $\conj{\b_{1}(p)}$, and $\conj{\b_{2}(p)}$. The Ramanujan-Petersson conjecture implies $\a_{1}(p)\a_{2}(p)\conj{\b_{1}(p)}\conj{\b_{2}(p)} = 1$. Therefore the corresponding factor above is $(1-p^{-2s})$. This factor cancels the local factor at $p$ in the Euler product of $\z(2s)$, so that
       \[
-        \sum_{n \ge 0}\frac{A_{f}(p^{n})\conj{A_{g}(p^{n})}}{p^{ns}} = \prod_{1 \le i,j \le 2}\left(1-\a_{i}(p)\conj{\b_{j}(p)}p^{-s}\right)^{-1}.
+        \sum_{n \ge 0}\frac{a_{f}(p^{n})\conj{a_{g}(p^{n})}}{p^{ns}} = \prod_{1 \le i,j \le 2}\left(1-\a_{i}(p)\conj{\b_{j}(p)}p^{-s}\right)^{-1}.
       \]
       So in total we have a degree $4$ Euler product,
       \[
@@ -725,15 +717,15 @@
       intersects infinitely many fundamental domains for $\G$. In any case, we have
       \begin{align*}
         \int_{\G_{\infty}\backslash\H}f(z)\conj{g(z)}\Im(z)^{s+k}\,d\mu &= \int_{0}^{\infty}\int_{0}^{1}f(x+iy)\conj{g(x+iy)}y^{s+k}\,\frac{dx\,dy}{y^{2}} \\
-        &= \int_{0}^{\infty}\int_{0}^{1}\sum_{n,m \ge 1}a(n)\conj{b(m)}e^{2\pi i(n-m)x}e^{-2\pi(n+m)y}y^{s+k}\,\frac{dx\,dy}{y^{2}} \\
-        &= \int_{0}^{\infty}\sum_{n,m \ge 1}\int_{0}^{1}a(n)\conj{b(m)}e^{2\pi i(n-m)x}e^{-2\pi(n+m)y}y^{s+k}\,\frac{dx\,dy}{y^{2}} && \text{DCT} \\
-        &= \int_{0}^{\infty}\sum_{n \ge 1}a(n)\conj{b(n)}e^{-4\pi ny}y^{s+k}\,\frac{dy}{y^{2}},
+        &= \int_{0}^{\infty}\int_{0}^{1}\sum_{n,m \ge 1}a_{f}(n)\conj{a_{g}(m)}(nm)^{\frac{k-1}{2}}e^{2\pi i(n-m)x}e^{-2\pi(n+m)y}y^{s+k}\,\frac{dx\,dy}{y^{2}} \\
+        &= \int_{0}^{\infty}\sum_{n,m \ge 1}\int_{0}^{1}a_{f}(n)\conj{a_{g}(m)}(nm)^{\frac{k-1}{2}}e^{2\pi i(n-m)x}e^{-2\pi(n+m)y}y^{s+k}\,\frac{dx\,dy}{y^{2}} && \text{DCT} \\
+        &= \int_{0}^{\infty}\sum_{n \ge 1}a_{f}(n)\conj{a_{g}(n)}n^{k-1}e^{-4\pi ny}y^{s+k}\,\frac{dy}{y^{2}},
       \end{align*}
       where the last line follows by \cref{equ:Dirac_integral_representation}. Notice that the last integral is a Mellin transform. The rest is a computation:
       \begin{align*}
-        \int_{0}^{\infty}\sum_{n \ge 1}a(n)\conj{b(n)}e^{-4\pi ny}y^{s+k}\,\frac{dy}{y^{2}} &= \sum_{n \ge 1}a(n)\conj{b(n)}\int_{0}^{\infty}e^{-4\pi ny}y^{s+k}\,\frac{dy}{y^{2}} &&\text{DCT} \\
-        &= \sum_{n \ge 1}\frac{a(n)\conj{b(n)}}{(4\pi n)^{s+k-1}}\int_{0}^{\infty}e^{-y}y^{s+k-1}\,\frac{dy}{y} &&\text{$y \to \frac{y}{4\pi n}$} \\
-        &= \frac{\G\left(s+k-1\right)}{(4\pi)^{s+k-1}}\sum_{n \ge 1}\frac{a(n)\conj{b(n)}}{n^{s+k-1}} \\
+        \int_{0}^{\infty}\sum_{n \ge 1}a_{f}(n)\conj{a_{g}(n)}n^{k-1}e^{-4\pi ny}y^{s+k}\,\frac{dy}{y^{2}} &= \sum_{n \ge 1}a_{f}(n)\conj{a_{g}(n)}n^{k-1}\int_{0}^{\infty}e^{-4\pi ny}y^{s+k}\,\frac{dy}{y^{2}} &&\text{DCT} \\
+        &= \sum_{n \ge 1}\frac{a_{f}(n)\conj{a_{g}(n)}}{(4\pi)^{s+k-1}n^{s}}\int_{0}^{\infty}e^{-y}y^{s+k-1}\,\frac{dy}{y} &&\text{$y \to \frac{y}{4\pi n}$} \\
+        &= \frac{\G\left(s+k-1\right)}{(4\pi)^{s+k-1}}\sum_{n \ge 1}\frac{a_{f}(n)\conj{a_{g}(n)}}{n^{s}} \\
         &= \frac{\G\left(s+k-1\right)}{(4\pi)^{s+k-1}}L(s,f \x g).
       \end{align*}
       This last expression is locally absolutely uniformly convergent for $\Re(s) > 1$ because the $L$-function is and the gamma factor is holomorphic in this region. Therefore the original integral is locally absolutely uniformly bounded. At this point we have an integral representation
@@ -985,16 +977,16 @@
         and if $f = g$ there is simple pole at $s = 1$ of residue $\frac{4^{k}\pi^{k+1}V}{2\G(k)}\<f,g\>$.
       \end{theorem}
     \subsection*{The Rankin-Selberg Method}
-      The Rankin-Selberg method is much more complicated in general, but the argument is essentially the same. Let $f$ and $g$ both be primitive Hecke or Heck-Maass eigenforms with Hecke eigenvalues $\l_{f}(n)$ and $\l_{g}(n)$ respectively. We suppose $f$ has weight $k$/eigenvalue $\l$, level $N$, and character $\chi$, and $g$ has weight $\ell$/eigenvalue $\nu$, level $M$, and character $\psi$. 
-      The $L$-function $L(s,f \x g)$ of $f$ and $g$ is give by the $L$-series
+      The Rankin-Selberg method is much more complicated in general, but the argument is essentially the same. Let $f$ and $g$ both be primitive Hecke or Heck-Maass eigenforms with Fourier coefficients $a_{f}(n)$ and $a_{g}(n)$ respectively. We suppose $f$ has weight $k$/eigenvalue $\l$, level $N$, and character $\chi$, and $g$ has weight $\ell$/eigenvalue $\nu$, level $M$, and character $\psi$. 
+      The $L$-function $L(s,f \x g)$ of $f$ and $g$ is given by the $L$-series
       \[
-        L(s,f \x g) = \sum_{n \ge 1}\frac{A_{f \x g}(n)}{n^{s}} = \sum_{n \ge 1}\frac{A_{f}(n)\conj{A_{g}(n)}}{n^{s}}.
+        L(s,f \x g) = \sum_{n \ge 1}\frac{a_{f \x g}(n)}{n^{s}} = \sum_{n \ge 1}\frac{a_{f}(n)\conj{a_{g}(n)}}{n^{s}}.
       \]
       The \textbf{Rankin-Selberg convolution}\index{Rankin-Selberg convolution} $L(s,f \ox g)$ of $f$ and $g$ is defined as an $L$-series:
       \[
-        L(s,f \ox g) = \sum_{n \ge 1}\frac{A_{f \ox g}(n)}{n^{s}} = L(2s,\chi\conj{\psi})L(s,f \x g),
+        L(s,f \ox g) = \sum_{n \ge 1}\frac{a_{f \ox g}(n)}{n^{s}} = L(2s,\chi\conj{\psi})L(s,f \x g),
       \]
-      where $A_{f \ox g}(n) = \sum_{n = m\ell^{2}}(\chi\conj{\psi})(\ell^{2})A_{f}(m)\conj{A_{g}(m)}$. The following argument is the \textbf{Rankin-Selberg method}\index{Rankin-Selberg method}:
+      where $a_{f \ox g}(n) = \sum_{n = m\ell^{2}}(\chi\conj{\psi})(\ell^{2})a_{f}(m)\conj{a_{g}(m)}$. The following argument is the \textbf{Rankin-Selberg method}\index{Rankin-Selberg method}:
 
       \begin{method}[Rankin-Selberg method]
         Let $f$ and $b$ both be primitive Hecke or Heck-Maass eigenforms. Also suppose the following: 
@@ -1009,46 +1001,46 @@
       We make a few remarks about the Rankin-Selberg method. Local absolute uniform convergence for $\Re(s) > 1$ (we must assume the Ramanujan-Petersson conjecture in the Maass form case) are proved in the exactly the same way as we have described. The argument for the Euler product is also similar. However, if either $N > 1$ or $M > 1$, the computation becomes more difficult to compute since the local $p$ factors for $p \mid NM$ change. Moreover, the situation is increasingly complicated if $(N,M) > 1$ since conductor dropping can occur. The integral representation has a similar argument, but if the weights/eigenvalues are distinct the resulting Eisenstein series becomes more complicated. In particular, it is on $\G_{0}(NM)\backslash\H$ and if $NM > 1$, then there is more than just the cusp at $\infty$. Therefore the functional equation of the Eisenstein series at the $\infty$ cusp then reflects into a linear combination of Eisenstein series at the other cusps. This results in the requirement to compute the Fourier coefficients of all of these Eisenstein series. Moreover, this procedure can be generalized to remove the primitive Hecke and/or primitive Hecke-Maass eigenform conditions by taking linear combinations, but we won't attempt discussing this further. 
   \section{Applications of the Rankin-Selberg Method}
     \subsection*{The Ramanujan-Petersson Conjecture on Average}
-      Let $f$ be a Hecke or Hecke-Maass eigenform. Using Rankin-Selberg convolutions, it is possible to show the weaker result that $A_{f}(n) \ll n^{\e}$ holds on average, for any $\e > 0$, without assuming the Ramanujan-Petersson conjecture:
+      Let $f$ be a Hecke or Hecke-Maass eigenform. Using Rankin-Selberg convolutions, it is possible to show the weaker result that $a_{f}(n) \ll n^{\e}$ holds on average, for any $\e > 0$, without assuming the Ramanujan-Petersson conjecture:
       
       \begin{proposition}\label{prop:Ramanujan_Petersson_average}
         Let $f$ be a primitive Hecke or Hecke-Maass eigenform. Then for any $X > 1$, we have
         \[
-        \sum_{n \le X}A_{f}(n) \ll_{\e} X^{1+\e},
+        \sum_{n \le X}a_{f}(n) \ll_{\e} X^{1+\e},
         \]
       \end{proposition}
       \begin{proof}
         By Cauchy-Schwarz,
         \begin{equation}\label{equ:Ramanujan_conjecture_on_average_1}
-          \left(\sum_{n \le X}A_{f}(n)\right)^{2} \le X\sum_{n \le X}|A_{f}(n)|^{2},
+          \left(\sum_{n \le X}a_{f}(n)\right)^{2} \le X\sum_{n \le X}|a_{f}(n)|^{2},
         \end{equation}
         The Rankin-Selberg square $L(s,f \ox f)$ is locally absolutely uniformly convergent for $\Re(s) > \frac{3}{2}$. Therefore it still admits meromorphic continuation to $\C$ with a simple pole at $s = 1$. By Landau's theorem, the abscissa of absolute convergence of $L(s,f \ox f)$, and hence $L(s,f \x f)$ too, is $1$ so by \cref{prop:Dirichlet_series_coefficient_size_on_average} we have
         \[
-          \sum_{n \le X}|A_{f}(n)|^{2} \ll_{\e} X^{1+\e},
+          \sum_{n \le X}|a_{f}(n)|^{2} \ll_{\e} X^{1+\e},
         \]
         for any $\e > 0$. Substituting this bound into \cref{equ:Ramanujan_conjecture_on_average_1}, we obtain
         \[
-          \left(\sum_{n \le X}A_{f}(n)\right)^{2} \ll_{\e} X^{2+\e},
+          \left(\sum_{n \le X}a_{f}(n)\right)^{2} \ll_{\e} X^{2+\e},
         \]
         and taking the square root yields
         \[
-          \sum_{n \le X}A_{f}(n) \ll_{\e} X^{1+\e}.
+          \sum_{n \le X}a_{f}(n) \ll_{\e} X^{1+\e}.
         \]
       \end{proof}
       
-      The bound in \cref{prop:Ramanujan_Petersson_average} should be compared with the implication $A_{f}(n) \ll n^{\e}$ that follows from the Ramanujan-Petersson conjecture. While \cref{prop:Ramanujan_Petersson_average} is not useful in the holomorphic form case, it is in the Maass form case. Indeed, recall that if $f$ is a primitive Hecke-Maass eigenform we needed to assume the Ramanujan-Petersson conjecture to ensure $A_{f}(n) \ll n^{\e}$ so that $L(s,f)$ was locally absolutely uniformly convergent for $\Re(s) > 1$. However, \cref{prop:Dirichlet_series_convergence_polynomial_bound,prop:Ramanujan_Petersson_average} together imply that $L(s,f)$ is locally absolutely uniformly convergent for $\Re(s) > 1+\e$ and hence for $\Re(s) > 1$. This method avoids assuming the Ramanujan-Petersson conjecture. Therefore we may remove this assumption in \cref{equ:thm:primitive_Hecke-Maass_Selberg}.
+      The bound in \cref{prop:Ramanujan_Petersson_average} should be compared with the implication $a_{f}(n) \ll n^{\e}$ that follows from the Ramanujan-Petersson conjecture. While \cref{prop:Ramanujan_Petersson_average} is not useful in the holomorphic form case, it is in the Maass form case. Indeed, recall that if $f$ is a primitive Hecke-Maass eigenform we needed to assume the Ramanujan-Petersson conjecture to ensure $a_{f}(n) \ll n^{\e}$ so that $L(s,f)$ was locally absolutely uniformly convergent for $\Re(s) > 1$. However, \cref{prop:Dirichlet_series_convergence_polynomial_bound,prop:Ramanujan_Petersson_average} together imply that $L(s,f)$ is locally absolutely uniformly convergent for $\Re(s) > 1+\e$ and hence for $\Re(s) > 1$. This method avoids assuming the Ramanujan-Petersson conjecture. Therefore we may remove this assumption in \cref{equ:thm:primitive_Hecke-Maass_Selberg}.
     \subsection*{Strong Multiplicity One}
       Let $f$ be a primitive Hecke or Hecke-Maass eigenform. Then $f$ is determined by Hecke eigenvalues at primes for fixed weight/eigenvalue and level. Using Rankin-Selberg convolutions, we can prove \textbf{strong multiplicity one}\index{strong multiplicity one} for holomorphic or Maass forms which says that $f$ is determined by Hecke eigenvalues at all but finitely many primes for fixed weight/eigenvalue, level, and character:
 
       \begin{theorem}[Strong multiplicity one, holomorphic and Maass versions]
-        Let $f$ and $g$ both be primitive Hecke or Hecke-Maass eigenforms of the same weight/eigenvalue, level, and character. Denote the Hecke eigenvalues by $\l_{f}(n)$ and $\l_{g}(n)$ respectively. If $\l_{f}(p) = \l_{g}(p)$ for all but finitely many primes $p$, then $f = g$.
+        Let $f$ and $g$ both be primitive Hecke or Hecke-Maass eigenforms of the same weight/eigenvalue, level, and character. Denote the Hecke eigenvalues by $a_{f}(n)$ and $a_{g}(n)$ respectively. If $a_{f}(p) = a_{g}(p)$ for all but finitely many primes $p$, then $f = g$.
       \end{theorem}
       \begin{proof}
-        Let $S$ be the set the primes for which $\l_{f}(p) \neq \l_{g}(p)$ including the primes that ramify for $L(s,f)$ and $L(s,g)$. By assumption, $S$ is finite. As the local factors of $L(s,f \ox g)$ are holomorphic and nonzero at $s = 1$, the order of the pole of $L(s,f \ox g)$ is the same as the order of the pole of
+        Let $S$ be the set the primes for which $a_{f}(p) \neq a_{g}(p)$ including the primes that ramify for $L(s,f)$ and $L(s,g)$. By assumption, $S$ is finite. As the local factors of $L(s,f \ox g)$ are holomorphic and nonzero at $s = 1$, the order of the pole of $L(s,f \ox g)$ is the same as the order of the pole of
         \[
           L(s,f \ox g)\prod_{p \in S}L_{p}(s,f \ox g)^{-1} = \prod_{p \notin S}L_{p}(s,f \ox g).
         \]
-        But as $f$ and $g$ have the same the weight/eigenvalue, level, and character, and $\l_{f}(p) = \l_{g}(p)$ for all $p \notin S$, we have
+        But as $f$ and $g$ have the same the weight/eigenvalue, level, and character, and $a_{f}(p) = a_{g}(p)$ for all $p \notin S$, we have
         \[
           \prod_{p \notin S}L_{p}(s,f \ox g) = \prod_{p \notin S}L_{p}(s,f \ox f).
         \]
