@@ -52,7 +52,7 @@
     \[
       \left|e^{-\frac{2\pi in}{c^{2}z}}\right| = e^{2\pi n\left(\frac{\Im(z)}{|cz|^{2}}\right)} \quad \text{and} \quad \left|e^{-2\pi itz}\right| = e^{2\pi t\Im(z)}.
     \]
-    So as $\Im(z) \to \infty$, the first expression has exponential decay and the second expression does too if and only if $t < 0$. Moreover, when $t = 0$ the second expression is bounded. Altogether, this means that the integral vanishes if $t \le 0$. It remains to compute the integral for $t > 0$. To do this, make the change of variables $z \to - \frac{z}{2\pi it}$ to the last integral to rewrite it as
+    So as $\Im(z) \to \infty$, the first expression has exponential decay and the second expression does too if and only if $t < 0$. Moreover, when $t = 0$ the second expression is bounded. Altogether, this means that the integral vanishes if $t \le 0$. It remains to compute the integral for $t \ge 1$. To do this, make the change of variables $z \to - \frac{z}{2\pi it}$ to the last integral to rewrite it as
     \begin{align*}
       -\frac{1}{2\pi it}\int_{(2\pi ty)}\frac{e^{-\frac{4\pi^{2}nt}{c^{2}z}}}{\left(-\frac{cz}{2\pi it}\right)^{k}}e^{z}\,dz &= -\frac{1}{2\pi it}\int_{(2\pi ty)}\left(-\frac{2\pi it}{cz}\right)^{k}e^{z-\frac{4\pi^{2}nt}{c^{2}z}}\,dz \\
       &= \frac{(-2\pi it)^{k-1}}{c^{k}}\int_{(2\pi ty)}z^{-k}e^{z-\frac{4\pi^{2}nt}{c^{2}z}}\,dz \\
@@ -63,15 +63,15 @@
     \[
       \left(\frac{2\pi i^{-k}}{c}\left(\frac{\sqrt{t}}{\sqrt{n}}\right)^{k-1}J_{k-1}\left(\frac{4\pi\sqrt{nt}}{c}\right)e^{2\pi in\frac{a}{c}+2\pi it\frac{r}{c}}\right)e^{2\pi ity},
     \]
-    when $t > 0$. By the Poisson summation formula and the identity theorem, we have
+    when $t \ge 1$. By the Poisson summation formula and the identity theorem, we have
     \[
-      I_{c,r}(z) = \sum_{t > 0}\left(\frac{2\pi i^{-k}}{c}\left(\frac{\sqrt{t}}{\sqrt{n}}\right)^{k-1}J_{k-1}\left(\frac{4\pi\sqrt{nt}}{c}\right)e^{2\pi in\frac{a}{c}+2\pi it\frac{r}{c}}\right)e^{2\pi itz},
+      I_{c,r}(z) = \sum_{t \ge 1}\left(\frac{2\pi i^{-k}}{c}\left(\frac{\sqrt{t}}{\sqrt{n}}\right)^{k-1}J_{k-1}\left(\frac{4\pi\sqrt{nt}}{c}\right)e^{2\pi in\frac{a}{c}+2\pi it\frac{r}{c}}\right)e^{2\pi itz},
     \]
     for all $z \in \H$. Plugging this back into the Poincar\'e series gives a form of the Fourier series
     \begin{align*}
-      P_{n,k,\chi}(z) &= e^{2\pi inz}+\psum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N} \\ r \tmod{c}}}\cchi(r)\sum_{t > 0}\left(\frac{2\pi i^{-k}}{c}\left(\frac{\sqrt{t}}{\sqrt{n}}\right)^{k-1}J_{k-1}\left(\frac{4\pi\sqrt{nt}}{c}\right)e^{2\pi in\frac{a}{c}+2\pi it\frac{r}{c}}\right)e^{2\pi inz} \\
-      &= \sum_{t > 0}\left(\d_{n,t}+\left(\frac{\sqrt{t}}{\sqrt{n}}\right)^{k-1}\psum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N} \\ r \tmod{c}}}\cchi(r)\frac{2\pi i^{-k}}{c}J_{k-1}\left(\frac{4\pi\sqrt{nt}}{c}\right)e^{2\pi in\frac{a}{c}+2\pi it\frac{r}{c}}\right)e^{2\pi itz} \\
-      &= \sum_{t > 0}\left(\d_{n,t}+\left(\frac{\sqrt{t}}{\sqrt{n}}\right)^{k-1}\sum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N}}}\frac{2\pi i^{-k}}{c}J_{k-1}\left(\frac{4\pi\sqrt{nt}}{c}\right)\psum_{r \tmod{c}}\cchi(r)e^{2\pi in\frac{a}{c}+2\pi it\frac{r}{c}}\right)e^{2\pi itz}.
+      P_{n,k,\chi}(z) &= e^{2\pi inz}+\psum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N} \\ r \tmod{c}}}\cchi(r)\sum_{t \ge 1}\left(\frac{2\pi i^{-k}}{c}\left(\frac{\sqrt{t}}{\sqrt{n}}\right)^{k-1}J_{k-1}\left(\frac{4\pi\sqrt{nt}}{c}\right)e^{2\pi in\frac{a}{c}+2\pi it\frac{r}{c}}\right)e^{2\pi inz} \\
+      &= \sum_{t \ge 1}\left(\d_{n,t}+\left(\frac{\sqrt{t}}{\sqrt{n}}\right)^{k-1}\psum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N} \\ r \tmod{c}}}\cchi(r)\frac{2\pi i^{-k}}{c}J_{k-1}\left(\frac{4\pi\sqrt{nt}}{c}\right)e^{2\pi in\frac{a}{c}+2\pi it\frac{r}{c}}\right)e^{2\pi itz} \\
+      &= \sum_{t \ge 1}\left(\d_{n,t}+\left(\frac{\sqrt{t}}{\sqrt{n}}\right)^{k-1}\sum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N}}}\frac{2\pi i^{-k}}{c}J_{k-1}\left(\frac{4\pi\sqrt{nt}}{c}\right)\psum_{r \tmod{c}}\cchi(r)e^{2\pi in\frac{a}{c}+2\pi it\frac{r}{c}}\right)e^{2\pi itz}.
     \end{align*}
     We will simplify the innermost sum. Since $a$ is the inverse for $r$ modulo $c$, the innermost sum above becomes
     \[
@@ -79,7 +79,7 @@
     \]
     So at last, we obtain our desired Fourier series
     \[
-      P_{n,k,\chi}(z) = \sum_{t > 0}\left(\d_{n,t}+\left(\frac{\sqrt{t}}{\sqrt{n}}\right)^{k-1}\sum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N}}}\frac{2\pi i^{-k}}{c}J_{k-1}\left(\frac{4\pi\sqrt{nt}}{c}\right)S_{\chi}(n,t;c)\right)e^{2\pi itz}.
+      P_{n,k,\chi}(z) = \sum_{t \ge 1}\left(\d_{n,t}+\left(\frac{\sqrt{t}}{\sqrt{n}}\right)^{k-1}\sum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N}}}\frac{2\pi i^{-k}}{c}J_{k-1}\left(\frac{4\pi\sqrt{nt}}{c}\right)S_{\chi}(n,t;c)\right)e^{2\pi itz}.
     \]
     We can now derive the first half of the Petersson trace formula. Using \cref{equ:Petersson_inner_product_with_Poincare_series} we obtain
     \[
