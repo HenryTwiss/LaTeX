@@ -57,7 +57,7 @@
       The first inequality is trivial since absolute convergence implies convergence. For the second inequality, let $\e > 0$. Since $D(s)$ converges at $\s_{c}+\e$, the terms $a(n)n^{-(\s_{c}+\e)}$ tend to zero as $n \to \infty$. Therefore $a(n) \ll_{\e} n^{\s_{c}+\e}$ where the implicit constant is independent of $n$. But then $a(n)n^{-(\s_{c}+\e)} \ll_{\e} 1$ which implies $\sum_{n \ge 1}a(n)n^{-(\s_{c}+1+2\e)}$ is absolutely convergent by the comparison test with respect to $\sum_{n \ge 1}n^{-(1+\e)}$. In terms of $D(s)$, this means $\s_{a} \le \s_{c}+1+2\e$ and taking $\e \to 0$ gives the second inequality.
     \end{proof}
 
-    We will now introduce several convergence theorems for Dirichlet series. It will be useful to setup some notation first. If $D(s)$ is a Dirichlet series with coefficients $a(n)$, then for any $X > 1$, we set
+    We will now introduce several convergence theorems for Dirichlet series. It will be useful to setup some notation first. If $D(s)$ is a Dirichlet series with coefficients $a(n)$, then for $X > 1$, we set
     \[
       A(X) = \sum_{n \le X}a(n).
     \]
@@ -244,7 +244,7 @@
       D^{(N)}s = D(s)\prod_{p \mid N}(1-\a_{1}(p)p^{-s})(1-\a_{2}(p)p^{-s}) \cdots (1-\a_{d}(p)p^{-s}).
     \]
   \section{Perron Formulas}
-    With the Mellin inversion formula, it is not hard to prove a very useful integral expression for the sum of coefficients of a Dirichlet series. First, we setup some general notation. If $D(s)$ is a Dirichlet series with coefficients $a(n)$, then for any real $X$, we set
+    With the Mellin inversion formula, it is not hard to prove a very useful integral expression for the sum of coefficients of a Dirichlet series. First, we setup some general notation. If $D(s)$ is a Dirichlet series with coefficients $a(n)$, then for $X > 1$, we set
     \[
       A'(X) = \psum_{n \le X}a(n),
     \]
@@ -322,17 +322,17 @@
       The statement now follows from truncated Perron's formula.
     \end{proof}
 
-    There is also a version of Perron's formula where we add a smoothing function. For any real $X$, we set
+    There is also a version of Perron's formula where we add a smoothing function. For any $X > 1$, we set
     \[
       A_{\psi}(X) = \sum_{n \ge 1}a(n)\psi\left(\frac{n}{X}\right),
     \]
-    where $\psi:[0,\infty) \to [0,\infty)$ is a compactly supported smooth function. This is most useful in two cases. The first is when we choose $\psi(x)$ to be a smooth bump function. In this setting, the bump function has applies weight $1$ or $0$ to the Dirichlet coefficients $a(n)$ and we can estimate sums like
+    where $\psi:[0,\infty) \to [0,\infty)$ is a bump function. This is most useful in two cases. The first is when we choose $\psi(x)$ to be a bump function. In this setting, the bump function applies weight $1$ or $0$ to the Dirichlet coefficients $a(n)$ and we can estimate sums like
     \[
       \sum_{\frac{X}{2} \le n < X}a(n) \quad \text{or} \quad \sum_{X \le n < X+Y}a(n),
     \]
-    for some $X$ and $Y$ with $Y < X$. Sums of this type are called \textbf{unweighted}\index{unweighted}. As an example of an unweighted sum, let $\psi:[0,\infty) \to [0,\infty)$ be a smooth bump function that is identically $1$ on $[0,1]$ and vanishes in the interval $\left[1,\frac{X+1}{X}\right]$. Explicitly,
+    for some $X$ and $Y$ with $Y < X$. Sums of this type are called \textbf{unweighted}\index{unweighted}. As an example of an unweighted sum, let $\psi:[0,\infty) \to [0,\infty)$ be a bump function that is identically $1$ on $[0,1]$ and vanishes within the interval $\left(1,\frac{X+1}{X}\right]$. Explicitly,
     \[
-      \psi(t) = \begin{cases} 1 & \text{if $0 \le t \le 1$}, \\ e^{-\frac{1-t}{\frac{X+1}{X}-t}} & \text{if $1 < t \le \frac{X+1}{X}$}, \\ 0 & \text{if $t \ge \frac{X+1}{X}$}. \end{cases}
+      \psi(t) = \begin{cases} 1 & \text{if $0 \le t \le 1$}, \\ e^{-\frac{1-t}{\frac{X+1}{X}-t}} & \text{if $1 \le t < \frac{X+1}{X}$}, \\ 0 & \text{if $t \ge \frac{X+1}{X}$}. \end{cases}
     \]
     Then 
     \[
@@ -345,11 +345,11 @@
     Therefore $\Psi(s)$ is locally absolutely bounded for $\Re(s) > 0$. In particular, the Mellin inversion formula implies that $\psi(x)$ is the Mellin inverse of $\Psi(s)$. As for nice properties, $\Psi(s)$ does not grow too fast in vertical strips:
 
     \begin{proposition}\label{prop:smoothing_function_Mellin_inverse_vertical_strips}
-      Let $\psi:[0,\infty) \to [0,\infty)$ to be a compactly supported smooth function and let $\Psi(s)$ denote its Mellin transform. Then for any $N \ge 1$,
+      Let $\psi:[0,\infty) \to [0,\infty)$ be a bump function and let $\Psi(s)$ denote its Mellin transform. Then for any $N \ge 1$,
       \[
         \Psi(s) \ll s^{-N},
       \]
-      provided $s$ is contained in the vertical strip $a < \Re(s) < b$, for any $a$ and $b$ with $0 < a < b$.
+      provided $s$ is contained in the vertical strip $a < \Re(s) < b$ for any $a$ and $b$ with $0 < a < b$.
     \end{proposition}
     \begin{proof}
       Fix $a$ and $b$ with $a < b$. Also, let the support of $\psi(x)$ is contained in $[0,C]$. Now consider
@@ -378,7 +378,7 @@
     The following theorem is \textbf{(smoothed) Perron's formula}\index{(smoothed) Perron's formula}:
 
     \begin{theorem}[Perron's formula, smoothed version]
-      Let $D(s)$ be a Dirichlet series with coefficient $a(n)$ and finite and nonnegative abscissa of absolute convergence $\s_{a}$. Let $\psi:[0,\infty) \to [0,\infty)$ be a compactly supported smooth function. Then for any $c > \s_{a}$,
+      Let $D(s)$ be a Dirichlet series with coefficient $a(n)$ and finite and nonnegative abscissa of absolute convergence $\s_{a}$. Let $\psi:[0,\infty) \to [0,\infty)$ be a bump function. Then for any $c > \s_{a}$,
       \[
         A_{\psi}(X) = \frac{1}{2\pi i}\int_{(c)}D(s)\Psi(s)X^{s}\,ds,
       \]
@@ -532,13 +532,13 @@
     \cref{prop:L_function_bounded_in_vertical_strips} is a very important property that $L$-functions possess. It is usually used to estimate Perron type formulas. We can also use it to deduce the \textbf{approximate function equation}\index{approximate function equation}:
 
     \begin{theorem}[Approximate functional equation]
-      Let $L(s,f)$ be an $L$-function and let $G(u)$ be an even holomorphic function bounded on the strip $|\Re(u)| < a$, for any $a > 1$, and such that $g(0) = 1$. Let $X > 0$. Then for $s$ in the critical strip,
+      Let $L(s,f)$ be an $L$-function and let $g(u)$ be an even holomorphic function bounded on the strip $|\Re(u)| < a$, for any $a > 1$, and such that $g(0) = 1$. Let $X > 0$. Then for $s$ in the critical strip,
       \[
-        L(s,f) = \sum_{n \ge 1}\frac{a_{f}(n)}{n^{s}}V_{s}\left(\frac{n}{\sqrt{q(f)}X}\right)+\e(s,f)\sum_{n \ge 1}\frac{\conj{a_{f}(n)}}{n^{1-s}}V_{1-s}\left(\frac{nX}{\sqrt{q(f)}}\right)-\frac{R}{q^{\frac{s}{2}}\g(s,f)},
+        L(s,f) = \sum_{n \ge 1}\frac{a_{f}(n)}{n^{s}}V_{s}\left(\frac{n}{\sqrt{q(f)}X}\right)+\e(s,f)\sum_{n \ge 1}\frac{\conj{a_{f}(n)}}{n^{1-s}}V_{1-s}\left(\frac{nX}{\sqrt{q(f)}}\right)-\frac{R}{q(f)^{\frac{s}{2}}\g(s,f)},
       \]
       where $V_{s}(y)$ is a smooth function defined by
       \[
-        V_{s}(y) = \frac{1}{2\pi i}\int_{(a)}\frac{\g(s+u,f)}{\g(s,f)}G(u)y^{-u}\frac{du}{u},
+        V_{s}(y) = \frac{1}{2\pi i}\int_{(a)}\frac{\g(s+u,f)}{\g(s,f)}g(u)y^{-u}\frac{du}{u},
       \]
       and
       \[
@@ -546,50 +546,50 @@
       \]
       Moreover, the remainder $R$ is zero if $\L(s,f)$ is entire and otherwise
       \[
-        R = \left(\Res_{u = 1-s}+\Res_{u = -s}\right)\frac{\L(s+u,f)G(u)X^{u}}{u}.
+        R = \left(\Res_{u = 1-s}+\Res_{u = -s}\right)\frac{\L(s+u,f)g(u)X^{u}}{u}.
       \]
     \end{theorem}
     \begin{proof}
       Let
       \[
-        I(X,s,f) = \frac{1}{2\pi i}\int_{(a)}\L(s+u,f)G(u)X^{u}\,\frac{du}{u}.
+        I(X,s,f) = \frac{1}{2\pi i}\int_{(a)}\L(s+u,f)g(u)X^{u}\,\frac{du}{u}.
       \]
-      By our choice of $a$ and that $s$ is in the critical strip, $\Re(s+u) > 1$ so that $L(s+u) \ll 1$. Moreover, from \cref{equ:weaker_Stirling_formula} we see that $\g(s+u,f)$ has exponential decay. Since $G(u)$ is bounded, it follows that the integral is absolutely bounded by \cref{met:decay_compacta_integral}. By \cref{prop:L_function_bounded_in_vertical_strips} and \cref{equ:weaker_Stirling_formula}, the integrand also had exponential decay in a vertical strip containing $|\Re(u)| \le a$. Therefore we may shift the line of integration to $(-a)$. We pass by a simple pole at $u = 0$ and possible poles at $u = 1-s$ and $u = -s$, giving
+      By our choice of $a$ and that $s$ is in the critical strip, $\Re(s+u) > 1$ so that $L(s+u) \ll 1$. Moreover, from \cref{equ:weaker_Stirling_formula} we see that $\g(s+u,f)$ has exponential decay. Since $g(u)$ is bounded, it follows that the integral is absolutely bounded by \cref{met:decay_compacta_integral}. By \cref{prop:L_function_bounded_in_vertical_strips} and \cref{equ:weaker_Stirling_formula}, the integrand also had exponential decay in a vertical strip containing $|\Re(u)| \le a$. Therefore we may shift the line of integration to $(-a)$. We pass by a simple pole at $u = 0$ and possible poles at $u = 1-s$ and $u = -s$, giving
       \[
-        I(X,s,f) = \frac{1}{2\pi i}\int_{(-a)}\L(s+u,f)G(u)X^{u}\,\frac{du}{u}+\L(s,f)+R.
+        I(X,s,f) = \frac{1}{2\pi i}\int_{(-a)}\L(s+u,f)g(u)X^{u}\,\frac{du}{u}+\L(s,f)+R.
       \]
       Applying the functional equation to $\L(s+u,f)$ and performing the change of variables $u \to -u$, we obtain
       \[
         I(X,s,f) = -\e(f)I(X^{-1},1-s,\conj{f})+\L(s,f)+R,
       \]
-      since $G(u)$ is even. This equation is equivalent to
+      since $g(u)$ is even. This equation is equivalent to
       \[
         \L(s,f) = I(X,s,f)+\e(f)I(X^{-1},1-s,\conj{f})-R.
       \]
       Since $\Re(s+u) > 1$, we can expand the $L$-function $L(s,f)$ inside of $I(X,s,f)$ as a Dirichlet series:
       \begin{align*}
-        I(X,s,f) &= \frac{1}{2\pi i}\int_{(a)}\L(s+u,f)G(u)X^{u}\,\frac{du}{u} \\
-        &= \frac{1}{2\pi i}\int_{(a)}q(f)^{\frac{s+u}{2}}\g(s+u,f)L(s+u,f)G(u)X^{u}\,\frac{du}{u} \\
-        &= \frac{1}{2\pi i}\int_{(a)}\sum_{n \ge 1}\frac{a_{f}(n)}{n^{s+u}}q(f)^{\frac{s+u}{2}}\g(s+u,f)G(u)X^{u}\,\frac{du}{u} \\
-        &= \sum_{n \ge 1}\frac{1}{2\pi i}\int_{(a)}\frac{a_{f}(n)}{n^{s+u}}q(f)^{\frac{s+u}{2}}\g(s+u,f)G(u)X^{u}\,\frac{du}{u} && \text{DCT} \\
-        &= q(f)^{\frac{s}{2}}\g(s,f)\sum_{n \ge 1}\frac{a_{f}(n)}{n^{s}}\frac{1}{2\pi i}\int_{(a)}\frac{\g(s+u,f)}{\g(s,f)}G(u)\left(\frac{\sqrt{q(f)}X}{n}\right)^{u}\,\frac{du}{u} \\
+        I(X,s,f) &= \frac{1}{2\pi i}\int_{(a)}\L(s+u,f)g(u)X^{u}\,\frac{du}{u} \\
+        &= \frac{1}{2\pi i}\int_{(a)}q(f)^{\frac{s+u}{2}}\g(s+u,f)L(s+u,f)g(u)X^{u}\,\frac{du}{u} \\
+        &= \frac{1}{2\pi i}\int_{(a)}\sum_{n \ge 1}\frac{a_{f}(n)}{n^{s+u}}q(f)^{\frac{s+u}{2}}\g(s+u,f)g(u)X^{u}\,\frac{du}{u} \\
+        &= \sum_{n \ge 1}\frac{1}{2\pi i}\int_{(a)}\frac{a_{f}(n)}{n^{s+u}}q(f)^{\frac{s+u}{2}}\g(s+u,f)g(u)X^{u}\,\frac{du}{u} && \text{DCT} \\
+        &= q(f)^{\frac{s}{2}}\g(s,f)\sum_{n \ge 1}\frac{a_{f}(n)}{n^{s}}\frac{1}{2\pi i}\int_{(a)}\frac{\g(s+u,f)}{\g(s,f)}g(u)\left(\frac{\sqrt{q(f)}X}{n}\right)^{u}\,\frac{du}{u} \\
         &= q(f)^{\frac{s}{2}}\g(s,f)\sum_{n \ge 1}\frac{a_{f}(n)}{n^{s}}V_{s}\left(\frac{n}{\sqrt{q(f)}X}\right).
       \end{align*}
       Performing the same computation for $I(X^{-1},1-s,\conj{f})$ and substituting in the results, we arrive at
       \[
         \L(s,f) = q(f)^{\frac{s}{2}}\g(s,f)\sum_{n \ge 1}\frac{a_{f}(n)}{n^{s}}V_{s}\left(\frac{n}{\sqrt{q(f)}X}\right)+\e(f)q(f)^{\frac{1-s}{2}}\g(1-s,f)\sum_{n \ge 1}\frac{a_{f}(n)}{n^{1-s}}V_{1-s}\left(\frac{nX}{\sqrt{q(f)}}\right)-R.
       \]
-      Diving by $q^{\frac{s}{2}}\g(s,f)$ completes the proof.
+      Diving by $q(f)^{\frac{s}{2}}\g(s,f)$ completes the proof.
     \end{proof}
 
     The idea of the approximate functional equation was developed by Hardy and Littlewood in the series \cite{hardyzeros1921,hardyapproximate1923,hardyapproximate1929}.
 
     \begin{remark}\label{rem:effect_of_V_in_approximate_functional_equation}
-      The function $V_{s}\left(y\right)$ has the effect of smoothing out the two sums in the right-hand side of the approximate functional equation. Indeed, this function restricts the sums to $n \ll \sqrt{q(f)}$ up to some error. For if $\frac{n}{\sqrt{q(f)}X} \ll 1$ we see that
+      The function $V_{s}\left(y\right)$ has the effect of smoothing out the two sums in the right-hand side of the approximate functional equation. For simplicity take $X = 1$. Indeed, this function restricts the sums to $n \ll \sqrt{q(f)}$ up to some bounded error. For if $\frac{n}{\sqrt{q(f)}} \ll 1$ we see that
       \[
-        V_{s}\left(\frac{n}{\sqrt{q(f)}X}\right) \ll 1,
+        V_{s}\left(\frac{n}{\sqrt{q(f)}}\right) \ll 1,
       \]
-      for this range of $n$. For $n \gg \sqrt{q(f)}$, the integrand of $V_{s}\left(\frac{n}{\sqrt{q(f)}X}\right)$ has exponential decay coming from the $\left(\frac{n}{\sqrt{q(f)}X}\right)^{-u}$ factor as the ratio of gamma factors has polynomial growth by \cref{equ:simplified_gamma_estimates} and $G(u)$ is bounded by assumption. As $s$ is in the critical strip, the exact same estimates hold for $V_{1-s}\left(\frac{n}{\sqrt{q(f)}X}\right)$.
+      for this range of $n$. For if $n \gg \sqrt{q(f)}$, the integrand of $V_{s}\left(\frac{n}{\sqrt{q(f)}}\right)$ has exponential decay coming from the $\left(\frac{n}{\sqrt{q(f)}}\right)^{-u}$ factor as the ratio of gamma factors has polynomial growth by \cref{equ:simplified_gamma_estimates} and $g(u)$ is bounded by assumption. As $s$ is in the critical strip, the exact same estimates hold for $V_{1-s}\left(\frac{n}{\sqrt{q(f)}}\right)$.
     \end{remark}
   \section{The Riemann Hypothesis \& Nontrivial Zeros}
     The zeros of $L$-functions $L(s,f)$ are closely tied to important arithmetic data of $f$. Let $L(s,f)$ be a degree $d$ $L$-function so that
@@ -665,4 +665,32 @@
       \]
     \end{conjecture}
 
-    For any $L$-function $L(s,f)$, any improvement upon the exponent in the convexity bound in any aspect of the analytic conductor is called \textbf{breaking convexity}\index{breaking convexity} (or a \textbf{convexity breaking bound}\index{convexity breaking bound}). Any argument used to do so is called a \textbf{subconvexity argument}\index{subconvexity argument}.
+    Any improvement upon the exponent in the convexity bound in any aspect of the analytic conductor is called a \textbf{subconvexity estimate}\index{subconvexity estimate} (or a \textbf{convexity breaking bound}\index{convexity breaking bound}). Any argument used to do so is called a \textbf{subconvexity argument}\index{subconvexity argument}.
+  \section{Estimating the Central Value}
+    The Lindel\"of hypothesis is concerned with the growth of the $L$-function $L(s,f)$ along the critical line. Sometimes we are only concerned with the size of $L(s,f)$ when $s = \frac{1}{2}$. The point $s = \frac{1}{2}$ is called the \textbf{central value}\index{central value} of $L(s,f)$ since it is exactly the midpoint on the critical line. Many important properties about $L(s,f)$ can be connected to its size at the central value. Any argument used to estimate an $L$-function at the central value is called a \textbf{central value estimate}\index{central value estimate}. We will state a result which gives a very useful upper bound for the size of an $L$-function at the central value in the $q(f)$-aspect. To state it, let $\psi:[0,\infty) \to [0,\infty]$ be a bump function with compact support in $[1,2]$. Explicitly,
+    \[
+      \psi(t) = \begin{cases} e^{-\frac{1}{1-(2x-3)^{2}}} & \text{if $|2x-3| < 1$}, \\ 0 & \text{if $|2x-3| \ge 1$}. \end{cases}
+    \]
+    The theorem is the following:
+
+    \begin{theorem}
+      Let $L(s,f)$ be an $L$-function and let $\psi:[0,\infty) \to [0,\infty]$ be a bump function with compact support in $[1,2]$. Then for any $\e > 0$, we have
+      \[
+        L\left(\frac{1}{2},f\right) \ll_{\e} \max_{X \ll q(f)^{\frac{1}{2}+\e}}\frac{A_{\psi}(X)}{q(f)^{\frac{1}{4}}}+\frac{S}{q(f)^{\frac{1}{4}}},
+      \]
+      where $S$ is zero if $\L(s,f)$ is entire and otherwise
+      \[
+        S = \left(\Res_{u = \frac{1}{2}}+\Res_{u = -\frac{1}{2}}\right)\L\left(\frac{1}{2}+u,f\right).
+      \]
+    \end{theorem}
+    \begin{proof}
+      Taking $s = \frac{1}{2}$ and $X = 1$ in the approximate functional equation, we have
+      \[
+        L\left(\frac{1}{2},f\right) = \sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right)+\e(f)\sum_{n \ge 1}\frac{\conj{a_{f}(n)}}{\sqrt{n}}V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right)-\frac{R}{q(f)^{\frac{1}{4}}\g\left(\frac{1}{2},f\right)}.
+      \]
+      \cref{rem:effect_of_V_in_approximate_functional_equation} then gives the bound
+      \[
+        L\left(\frac{1}{2},f\right) \ll \sum_{n \ll \sqrt{q(f)}}\frac{a_{f}(n)}{\sqrt{n}}+\frac{S}{q(f)^{\frac{1}{4}}}.
+      \]
+      \todo{xxx}
+    \end{proof}
