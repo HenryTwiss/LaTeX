@@ -57,7 +57,7 @@
       The first inequality is trivial since absolute convergence implies convergence. For the second inequality, let $\e > 0$. Since $D(s)$ converges at $\s_{c}+\e$, the terms $a(n)n^{-(\s_{c}+\e)}$ tend to zero as $n \to \infty$. Therefore $a(n) \ll_{\e} n^{\s_{c}+\e}$ where the implicit constant is independent of $n$. But then $a(n)n^{-(\s_{c}+\e)} \ll_{\e} 1$ which implies $\sum_{n \ge 1}a(n)n^{-(\s_{c}+1+2\e)}$ is absolutely convergent by the comparison test with respect to $\sum_{n \ge 1}n^{-(1+\e)}$. In terms of $D(s)$, this means $\s_{a} \le \s_{c}+1+2\e$ and taking $\e \to 0$ gives the second inequality.
     \end{proof}
 
-    We will now introduce several convergence theorems for Dirichlet series. It will be useful to setup some notation first. If $D(s)$ is a Dirichlet series with coefficients $a(n)$, then for $X > 1$, we set
+    We will now introduce several convergence theorems for Dirichlet series. It will be useful to setup some notation first. If $D(s)$ is a Dirichlet series with coefficients $a(n)$, then for $X > 0$, we set
     \[
       A(X) = \sum_{n \le X}a(n).
     \]
@@ -244,7 +244,7 @@
       D^{(N)}s = D(s)\prod_{p \mid N}(1-\a_{1}(p)p^{-s})(1-\a_{2}(p)p^{-s}) \cdots (1-\a_{d}(p)p^{-s}).
     \]
   \section{Perron Formulas}
-    With the Mellin inversion formula, it is not hard to prove a very useful integral expression for the sum of coefficients of a Dirichlet series. First, we setup some general notation. If $D(s)$ is a Dirichlet series with coefficients $a(n)$, then for $X > 1$, we set
+    With the Mellin inversion formula, it is not hard to prove a very useful integral expression for the sum of coefficients of a Dirichlet series. First, we setup some general notation. If $D(s)$ is a Dirichlet series with coefficients $a(n)$, then for $X > 0$, we set
     \[
       A'(X) = \psum_{n \le X}a(n),
     \]
@@ -322,7 +322,7 @@
       The statement now follows from truncated Perron's formula.
     \end{proof}
 
-    There is also a version of Perron's formula where we add a smoothing function. For any $X > 1$, we set
+    There is also a version of Perron's formula where we add a smoothing function. For any $X > 0$, we set
     \[
       A_{\psi}(X) = \sum_{n \ge 1}a(n)\psi\left(\frac{n}{X}\right),
     \]
@@ -532,13 +532,13 @@
     \cref{prop:L_function_bounded_in_vertical_strips} is a very important property that $L$-functions possess. It is usually used to estimate Perron type formulas. We can also use it to deduce the \textbf{approximate function equation}\index{approximate function equation}:
 
     \begin{theorem}[Approximate functional equation]
-      Let $L(s,f)$ be an $L$-function and let $g(u)$ be an even holomorphic function bounded on the strip $|\Re(u)| < a$, for any $a > 1$, and such that $g(0) = 1$. Let $X > 0$. Then for $s$ in the critical strip,
+      Let $L(s,f)$ be an $L$-function and let $\Phi(u)$ be an even holomorphic function bounded in the strip $|\Re(u)| < a+1$, for any $a > 1$, and such that $\Phi(0) = 1$. Let $X > 0$. Then for $s$ in the critical strip,
       \[
         L(s,f) = \sum_{n \ge 1}\frac{a_{f}(n)}{n^{s}}V_{s}\left(\frac{n}{\sqrt{q(f)}X}\right)+\e(s,f)\sum_{n \ge 1}\frac{\conj{a_{f}(n)}}{n^{1-s}}V_{1-s}\left(\frac{nX}{\sqrt{q(f)}}\right)-\frac{R}{q(f)^{\frac{s}{2}}\g(s,f)},
       \]
       where $V_{s}(y)$ is a smooth function defined by
       \[
-        V_{s}(y) = \frac{1}{2\pi i}\int_{(a)}\frac{\g(s+u,f)}{\g(s,f)}g(u)y^{-u}\frac{du}{u},
+        V_{s}(y) = \frac{1}{2\pi i}\int_{(a)}\frac{\g(s+u,f)}{\g(s,f)}\Phi(u)y^{-u}\frac{du}{u},
       \]
       and
       \[
@@ -546,33 +546,33 @@
       \]
       Moreover, the remainder $R$ is zero if $\L(s,f)$ is entire and otherwise
       \[
-        R = \left(\Res_{u = 1-s}+\Res_{u = -s}\right)\frac{\L(s+u,f)g(u)X^{u}}{u}.
+        R = \left(\Res_{u = 1-s}+\Res_{u = -s}\right)\frac{\L(s+u,f)\Phi(u)X^{u}}{u}.
       \]
     \end{theorem}
     \begin{proof}
       Let
       \[
-        I(X,s,f) = \frac{1}{2\pi i}\int_{(a)}\L(s+u,f)g(u)X^{u}\,\frac{du}{u}.
+        I(X,s,f) = \frac{1}{2\pi i}\int_{(a)}\L(s+u,f)\Phi(u)X^{u}\,\frac{du}{u}.
       \]
-      By our choice of $a$ and that $s$ is in the critical strip, $\Re(s+u) > 1$ so that $L(s+u) \ll 1$. Moreover, from \cref{equ:weaker_Stirling_formula} we see that $\g(s+u,f)$ has exponential decay. Since $g(u)$ is bounded, it follows that the integral is absolutely bounded by \cref{met:decay_compacta_integral}. By \cref{prop:L_function_bounded_in_vertical_strips} and \cref{equ:weaker_Stirling_formula}, the integrand also had exponential decay in a vertical strip containing $|\Re(u)| \le a$. Therefore we may shift the line of integration to $(-a)$. We pass by a simple pole at $u = 0$ and possible poles at $u = 1-s$ and $u = -s$, giving
+      By our choice of $a$ and that $s$ is in the critical strip, $\Re(s+u) > 1$ so that $L(s+u) \ll 1$. Moreover, from \cref{equ:weaker_Stirling_formula} we see that $\g(s+u,f)$ has exponential decay. Since $\Phi(u)$ is bounded, it follows that the integral is absolutely bounded by \cref{met:decay_compacta_integral}. By \cref{prop:L_function_bounded_in_vertical_strips} and \cref{equ:weaker_Stirling_formula}, the integrand also had exponential decay in a vertical strip containing $|\Re(u)| \le a$. Therefore we may shift the line of integration to $(-a)$. We pass by a simple pole at $u = 0$ and possible poles at $u = 1-s$ and $u = -s$, giving
       \[
-        I(X,s,f) = \frac{1}{2\pi i}\int_{(-a)}\L(s+u,f)g(u)X^{u}\,\frac{du}{u}+\L(s,f)+R.
+        I(X,s,f) = \frac{1}{2\pi i}\int_{(-a)}\L(s+u,f)\Phi(u)X^{u}\,\frac{du}{u}+\L(s,f)+R.
       \]
       Applying the functional equation to $\L(s+u,f)$ and performing the change of variables $u \to -u$, we obtain
       \[
         I(X,s,f) = -\e(f)I(X^{-1},1-s,\conj{f})+\L(s,f)+R,
       \]
-      since $g(u)$ is even. This equation is equivalent to
+      since $\Phi(u)$ is even. This equation is equivalent to
       \[
         \L(s,f) = I(X,s,f)+\e(f)I(X^{-1},1-s,\conj{f})-R.
       \]
       Since $\Re(s+u) > 1$, we can expand the $L$-function $L(s,f)$ inside of $I(X,s,f)$ as a Dirichlet series:
       \begin{align*}
-        I(X,s,f) &= \frac{1}{2\pi i}\int_{(a)}\L(s+u,f)g(u)X^{u}\,\frac{du}{u} \\
-        &= \frac{1}{2\pi i}\int_{(a)}q(f)^{\frac{s+u}{2}}\g(s+u,f)L(s+u,f)g(u)X^{u}\,\frac{du}{u} \\
-        &= \frac{1}{2\pi i}\int_{(a)}\sum_{n \ge 1}\frac{a_{f}(n)}{n^{s+u}}q(f)^{\frac{s+u}{2}}\g(s+u,f)g(u)X^{u}\,\frac{du}{u} \\
-        &= \sum_{n \ge 1}\frac{1}{2\pi i}\int_{(a)}\frac{a_{f}(n)}{n^{s+u}}q(f)^{\frac{s+u}{2}}\g(s+u,f)g(u)X^{u}\,\frac{du}{u} && \text{DCT} \\
-        &= q(f)^{\frac{s}{2}}\g(s,f)\sum_{n \ge 1}\frac{a_{f}(n)}{n^{s}}\frac{1}{2\pi i}\int_{(a)}\frac{\g(s+u,f)}{\g(s,f)}g(u)\left(\frac{\sqrt{q(f)}X}{n}\right)^{u}\,\frac{du}{u} \\
+        I(X,s,f) &= \frac{1}{2\pi i}\int_{(a)}\L(s+u,f)\Phi(u)X^{u}\,\frac{du}{u} \\
+        &= \frac{1}{2\pi i}\int_{(a)}q(f)^{\frac{s+u}{2}}\g(s+u,f)L(s+u,f)\Phi(u)X^{u}\,\frac{du}{u} \\
+        &= \frac{1}{2\pi i}\int_{(a)}\sum_{n \ge 1}\frac{a_{f}(n)}{n^{s+u}}q(f)^{\frac{s+u}{2}}\g(s+u,f)\Phi(u)X^{u}\,\frac{du}{u} \\
+        &= \sum_{n \ge 1}\frac{1}{2\pi i}\int_{(a)}\frac{a_{f}(n)}{n^{s+u}}q(f)^{\frac{s+u}{2}}\g(s+u,f)\Phi(u)X^{u}\,\frac{du}{u} && \text{DCT} \\
+        &= q(f)^{\frac{s}{2}}\g(s,f)\sum_{n \ge 1}\frac{a_{f}(n)}{n^{s}}\frac{1}{2\pi i}\int_{(a)}\frac{\g(s+u,f)}{\g(s,f)}\Phi(u)\left(\frac{\sqrt{q(f)}X}{n}\right)^{u}\,\frac{du}{u} \\
         &= q(f)^{\frac{s}{2}}\g(s,f)\sum_{n \ge 1}\frac{a_{f}(n)}{n^{s}}V_{s}\left(\frac{n}{\sqrt{q(f)}X}\right).
       \end{align*}
       Performing the same computation for $I(X^{-1},1-s,\conj{f})$ and substituting in the results, we arrive at
@@ -667,14 +667,14 @@
 
     Any improvement upon the exponent in the convexity bound in any aspect of the analytic conductor is called a \textbf{subconvexity estimate}\index{subconvexity estimate} (or a \textbf{convexity breaking bound}\index{convexity breaking bound}). Any argument used to do so is called a \textbf{subconvexity argument}\index{subconvexity argument}.
   \section{Estimating the Central Value}
-    The Lindel\"of hypothesis is concerned with the growth of the $L$-function $L(s,f)$ along the critical line. Sometimes we are only concerned with the size of $L(s,f)$ when $s = \frac{1}{2}$. The point $s = \frac{1}{2}$ is called the \textbf{central value}\index{central value} of $L(s,f)$ since it is exactly the midpoint on the critical line. Many important properties about $L(s,f)$ can be connected to its size at the central value. Any argument used to estimate an $L$-function at the central value is called a \textbf{central value estimate}\index{central value estimate}. We will state a result which gives a very useful upper bound for the size of an $L$-function at the central value in the $q(f)$-aspect. To state it, let $\psi:[0,\infty) \to [0,\infty]$ be a bump function with compact support in $[1,2]$. Explicitly,
+    The Lindel\"of hypothesis is concerned with the growth of the $L$-function $L(s,f)$ along the critical line. Sometimes we are only concerned with the size of $L(s,f)$ when $s = \frac{1}{2}$. The point $s = \frac{1}{2}$ is called the \textbf{central value}\index{central value} of $L(s,f)$ since it is exactly the midpoint on the critical line. Many important properties about $L(s,f)$ can be connected to its size at the central value. Any argument used to estimate an $L$-function at the central value is called a \textbf{central value estimate}\index{central value estimate}. We will state a result which gives a very useful upper bound for the size of an $L$-function at the central value in the $q(f)$-aspect. To state it, let $\psi:[0,\infty) \to [0,\infty]$ be a bump function with compact support in $\left[\frac{1}{2},2\right]$. Explicitly,
     \[
-      \psi(t) = \begin{cases} e^{-\frac{1}{1-(2x-3)^{2}}} & \text{if $|2x-3| < 1$}, \\ 0 & \text{if $|2x-3| \ge 1$}. \end{cases}
+      \psi(t) = \begin{cases} e^{-\frac{1}{9-(4x-5)^{2}}} & \text{if $|4x-5| < 3$}, \\ 0 & \text{if $|4x-5| \ge 3$}. \end{cases}
     \]
     The theorem is the following:
 
     \begin{theorem}
-      Let $L(s,f)$ be an $L$-function and let $\psi:[0,\infty) \to [0,\infty]$ be a bump function with compact support in $[1,2]$. Then for any $\e > 0$, we have
+      Let $L(s,f)$ be an $L$-function and let $\psi:[0,\infty) \to [0,\infty]$ be a bump function with compact support in $\left[\frac{1}{2},2\right]$. Then for any $\e > 0$, we have
       \[
         L\left(\frac{1}{2},f\right) \ll_{\e} \max_{X \ll q(f)^{\frac{1}{2}+\e}}\frac{A_{\psi}(X)}{q(f)^{\frac{1}{4}}}+\frac{S}{q(f)^{\frac{1}{4}}},
       \]
@@ -688,9 +688,38 @@
       \[
         L\left(\frac{1}{2},f\right) = \sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right)+\e(f)\sum_{n \ge 1}\frac{\conj{a_{f}(n)}}{\sqrt{n}}V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right)-\frac{R}{q(f)^{\frac{1}{4}}\g\left(\frac{1}{2},f\right)}.
       \]
-      \cref{rem:effect_of_V_in_approximate_functional_equation} then gives the bound
+      This implies the bound
       \[
-        L\left(\frac{1}{2},f\right) \ll \sum_{n \ll \sqrt{q(f)}}\frac{a_{f}(n)}{\sqrt{n}}+\frac{S}{q(f)^{\frac{1}{4}}}.
+        L\left(\frac{1}{2},f\right) \ll \sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right)+\frac{S}{q(f)^{\frac{1}{4}}}.
       \]
-      \todo{xxx}
+      Now consider the set of functions $\left\{\psi\left(\frac{x}{2^{k}}\right)\right\}_{k \ge 0}$. Since $\psi\left(\frac{x}{2^{k}}\right)$ has support in $[2^{k-1},2^{k+1}]$, the sum $\s(x) = \sum_{k \ge 0}\psi\left(\frac{x}{2^{k}}\right)$, defined for $x \ge 1$, is finite since at most finitely many terms are nonzero. It is also bounded away from zero since for any $x \ge 1$ there is some $k \ge 0$ for which $2^{k} \le x \le 3 \cdot 2^{k-1}$ so that $\frac{x}{2^{k}}$ is at least distance $\frac{1}{2}$ from the endpoints of $\left[\frac{1}{2},2\right]$. Defining $\psi_{k}(x) = \psi\left(\frac{x}{2^{k}}\right)\s(x)^{-1}$, it follows that $\left\{\psi_{k}(x)\right\}_{k \ge 0}$ satisfies
+      \[
+        \sum_{k \ge 0}\psi_{k}(x) = 1,
+      \]
+      for any $x \in [1,\infty)$. Then we compute
+      \begin{align*}
+        \sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right) &=  \sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right)\sum_{k \ge 0}\psi_{k}(n) \\
+        &= \sum_{k \ge 0}\sum_{2^{k-1} \le n \le 2^{k+1}}\frac{a_{f}(n)}{\sqrt{n}}V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right)\psi_{k}(n) \\
+         &= \sum_{k \ge 0}\sum_{n \asymp 2^{k}}\frac{a_{f}(n)}{\sqrt{n}}V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right)\psi_{k}(n) \\
+        &\ll \sum_{k \ll \frac{\log\left(\sqrt{q(f)}\right)}{\log(2)}}\sum_{n \asymp 2^{k}}\frac{a_{f}(n)}{\sqrt{n}}\psi_{k}(n) && \text{\cref{rem:effect_of_V_in_approximate_functional_equation}} \\
+        &\ll \sum_{k \ll \frac{\log\left(\sqrt{q(f)}\right)}{\log(2)}}\sum_{n \asymp 2^{k}}\frac{a_{f}(n)}{\sqrt{n}}\psi\left(\frac{n}{2^{k}}\right) && \text{$\s(x)$ is bounded away from zero} \\
+        &\ll_{\e} q(f)^{\frac{\e}{2}}\max_{X \ll q(f)^{\frac{1}{2}+\e}}\sum_{n \asymp X}\frac{a_{f}(n)}{\sqrt{n}}\psi\left(\frac{n}{X}\right),
+      \end{align*}
+      where in the last line we have used that $\sum_{k \ll \frac{\log\left(\sqrt{q(f)}\right)}{\log(2)}} \ll_{\e} q(f)^{\frac{\e}{2}}$ for any $\e > 0$ because $\log{x} \ll_{\e} x^{\e}$ and if $n \asymp 2^{k}$ then $n \asymp X$ for $X \ll q(f)^{\frac{1}{2}+\e}$ (here $X$ has a different role than in the approximate functional equation). Writing $\frac{X}{2} \ll n \ll 2X$ for $n \asymp X$, Abel's summation formula (see \cref{{append:Summation_Formulas}}) gives
+      \[
+        \sum_{n \asymp X}\frac{a_{f}(n)}{\sqrt{n}}\psi\left(\frac{n}{X}\right) = \frac{A_{\psi}(2X)}{\sqrt{2X}}-\frac{A_{\psi}\left(\frac{X}{2}\right)}{\sqrt{\frac{X}{2}}}+\frac{1}{2}\int_{\frac{X}{2}}^{2X}A_{\psi}(u)u^{-\frac{3}{2}}\,du.
+      \]
+      But as
+      \[
+        \frac{1}{2}\int_{\frac{X}{2}}^{2X}A_{\psi}(u)u^{-\frac{3}{2}}\,du \ll X\max_{u \asymp X}A_{\psi}(u)u^{-\frac{3}{2}} \ll \frac{A_{\psi}(X)}{\sqrt{X}},
+      \]
+      where the last estimate holds since $u \asymp X$ means $u$ is restricted to a compact set, we obtain the bound
+      \[
+        \sum_{n \asymp X}\frac{a_{f}(n)}{\sqrt{n}}\psi\left(\frac{n}{X}\right) \ll \frac{A_{\psi}(X)}{\sqrt{X}},
+      \]
+      Putting everything together gives
+      \[
+        \sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right) \ll_{\e} q(f)^{\frac{\e}{2}}\max_{X \ll q(f)^{\frac{1}{2}+\e}}\frac{A_{\psi}(X)}{\sqrt{X}} \ll_{\e} \max_{X \ll q(f)^{\frac{1}{2}+\e}}\frac{A_{\psi}(X)}{q(f)^{\frac{1}{4}}},
+      \]
+      where in the last estimate we may replace $X$ with $q(f)^{\frac{1}{2}+\e}$ because $X \ll q(f)^{\frac{1}{2}+\e}$ implies that $X$ is restricted to a compact set. This finishes the proof.
     \end{proof}
