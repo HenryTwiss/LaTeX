@@ -8,7 +8,7 @@
     with $a(n) \in \C$. We exclude the case $a(n) = 0$ for all $n \ge 1$ so that $D(s)$ is not identically zero. We would first like to understand where this series converges. It does not take much for $D(s)$ to converge uniformly in a sector:
 
     \begin{theorem}\label{thm:convergence_of_Dirichlet_series}
-      Suppose $D(s)$ is a Dirichlet series with coefficient $a(n)$ and that $D(s)$ converges at $s_{0} = \s_{0}+it_{0}$. Then for any $H > 0$, $D(s)$ converges uniformly in the sector
+      Suppose $D(s)$ is a Dirichlet series that converges at $s_{0} = \s_{0}+it_{0}$. Then for any $H > 0$, $D(s)$ converges uniformly in the sector
       \[
         \{s = \s+it \in \C:\s \ge \s_{0}, |t-t_{0}| \le H(\s-\s_{0})\}.
       \]
@@ -59,21 +59,21 @@
 
     We will now introduce several convergence theorems for Dirichlet series. It will be useful to setup some notation first. If $D(s)$ is a Dirichlet series with coefficients $a(n)$, then for $X > 0$, we set
     \[
-      A(X) = \sum_{n \le X}a(n).
+      A(X) = \sum_{n \le X}a(n) \quad \text{and} \quad A^{\ast}(X) = \sum_{n \le X}|a(n)|.
     \]
-    This is the partial sum of the coefficients $a(n)$ up to $X$. Our first convergence theorem relates boundedness of $A(X)$ to the value of $\s_{c}$: 
+    These are the partial sums of the coefficients $a(n)$ and $|a(n)|$ up to $X$ respectively. Our first convergence theorem relates boundedness of $A(X)$ to the value of $\s_{c}$: 
     
     \begin{proposition}\label{prop:Dirichlet_series_convergence_bounded_coefficient_sum}
       Suppose $D(s)$ is a Dirichlet series and that $A(X) \ll 1$. Then $\s_{c} \le 0$.
     \end{proposition}
     \begin{proof}
-      Fix $s$ be such that $\Re(s) > 0$. Since $A(X) \ll 1$, $A(X)X^{s} \to 0$ as $X \to \infty$. Abel's summation formula (see \cref{append:Summation_Formulas}) then implies
+      Fix $s$ such that $\Re(s) > 0$. Since $A(X) \ll 1$, $A(X)X^{-s} \to 0$ as $X \to \infty$. Abel's summation formula (see \cref{append:Summation_Formulas}) then implies
       \[
         D(s) = s\int_{1}^{\infty}A(u)u^{-(s+1)}\,du.
       \]
       But because $A(u) \ll 1$, we have
       \[
-        s\int_{1}^{\infty}A(u)u^{-(s+1)}\,du \ll s\int_{1}^{\infty}u^{-(s+1)}\,du = -u^{-s}\big|_{1}^{\infty} = 1.
+        s\int_{1}^{\infty}A(u)u^{-(s+1)}\,du \ll s\int_{1}^{\infty}u^{-(\Re(s)+1)}\,du = -\frac{s}{\Re(s)}u^{-\Re(s)}\big|_{1}^{\infty} = \frac{s}{\Re(s)}.
       \]
       Therefore the integral converges for $\Re(s) > 0$ and hence $D(s)$ does too. It follows that $\s_{c} \le 0$.
     \end{proof}
@@ -81,12 +81,12 @@
     Our next theorem states that if the coefficients of $D(s)$ are polynomially bounded, we can obtain an upper bound for the abscissa of absolute convergence:
 
     \begin{proposition}\label{prop:Dirichlet_series_convergence_polynomial_bound}
-      Suppose $D(s)$ is a Dirichlet series whose coefficients $a(n)$ satisfy $|a(n)| \ll n^{\a}$ for some real $\a$. Then the abscissa of absolute convergence satisfies $\s_{a} \le 1+\a$.
+      Suppose $D(s)$ is a Dirichlet series whose coefficients satisfy $a(n) \ll n^{\a}$ for some real $\a$. Then the abscissa of absolute convergence satisfies $\s_{a} \le 1+\a$.
     \end{proposition}
     \begin{proof}
       It suffices to show that $D(s)$ is absolutely convergent in the region $\Re(s) > 1+\a$. For $s$ is in this region, the polynomial bound gives
       \[
-        |D(s)| \le \sum_{n \ge 1}\left|\frac{a(n)}{n^{s}}\right| \ll \sum_{n \ge 1}\frac{1}{n^{s-\a}}.
+        D(s) \ll \sum_{n \ge 1}\left|\frac{a(n)}{n^{s}}\right| \ll \sum_{n \ge 1}\frac{1}{n^{\Re(s)-\a}}.
       \]
       The latter series converges by the integral test because $\Re(s)-\a > 1$. Therefore $D(s)$ is absolutely convergent.
     \end{proof}
@@ -94,7 +94,7 @@
     Obtaining polynomial bounds on coefficients of Dirichlet series are, in most cases, not hard to establish. So the assumption in \cref{prop:Dirichlet_series_convergence_polynomial_bound} is mild. Actually, there is a partial converse to \cref{prop:Dirichlet_series_convergence_polynomial_bound} which gives an approximate size to $A(X)$:
 
     \begin{proposition}\label{prop:Dirichlet_series_coefficient_size_on_average}
-      Suppose $D(s)$ is a Dirichlet series with coefficients $a(n)$ and finite and nonnegative abscissa of absolute convergence $\s_{a}$. Then for any $\e > 0$,
+      Suppose $D(s)$ is a Dirichlet series with finite and nonnegative abscissa of absolute convergence $\s_{a}$. Then for any $\e > 0$,
       \[
         A(X) \ll_{\e} X^{\s_{a}+\e}.
       \]
@@ -134,10 +134,10 @@
     A way to think about \cref{prop:Dirichlet_series_coefficient_size_on_average} is that if the abscissa of absolute convergence is $\s_{a} \ge 0$ then the size of the coefficients $a(n)$ is at most $n^{\s_{a}+\e}$ on average for any $\e > 0$. Of corse, if $a(n) \ll n^{\a}$ then \cref{prop:Dirichlet_series_convergence_polynomial_bound} implies that $\s_{a} \le 1+\a$ and so \cref{prop:Dirichlet_series_coefficient_size_on_average} gives the significantly weaker estimate $A(X) \ll_{\e} X^{1+\a+\e}$. However, if we only have a bound of the form $A(X) \ll X^{\a}$ we can still obtain an upper estimate for the abscissa of absolute convergence:
 
     \begin{proposition}\label{prop:Dirichlet_series_convergence_polynomial_bound_average}
-      Suppose $D(s)$ is a Dirichlet series with coefficients $a(n)$ such that $A(X) \ll X^{\a}$ for some real $\a \ge 0$. Then the abscissa of absolute convergence satisfies $\s_{a} \le \a$.
+      Suppose $D(s)$ is a Dirichlet series such that $A^{\ast}(X) \ll X^{\a}$ for some real $\a \ge 0$. Then the abscissa of absolute convergence satisfies $\s_{a} \le \a$.
     \end{proposition}
     \begin{proof}
-      It suffices to show that $D(s)$ is absolutely convergent in the region $\Re(s) > \a$. Let $s$ be in this region and set $\Re(s) = \b$. Note that $\b > \a$. Then
+      It suffices to show that $D(s)$ is absolutely convergent in the region $\Re(s) > \a+1$. Let $s$ be in this region and set $\Re(s) = \b$. Note that $\b > \a$. Then
       \[
         |D(s)| \le \sum_{n \ge 1}\left|\frac{a(n)}{n^{s}}\right| = \sum_{n \ge 1}\frac{|a(n)|}{n^{\b}}.
       \]
@@ -145,11 +145,11 @@
       \[
         \sum_{n \le N}|a(n)|n^{-\b} = |a(N)|N^{-\b}-|a(1)|+\b\int_{1}^{N}A^{\ast}(u)u^{-(\b+1)}\,du,
       \]
-      where $A^{\ast}(u) = \sum_{n \le u}|a(n)|$. Now $A(u) \ll u^{\a}$, which is to say that $A^{\ast}(u) \ll u^{\a}$. Therefore there is some $N'$ such that $A^{\ast}(N) \ll N^{\a}$ for all $N \ge N'$. In particular $a(N) \ll N^{\a}$. So for such $N$, we estimate as follows:
+      By assumption $A^{\ast}(u) \ll u^{\a}$. Therefore there is some $N'$ such that $A^{\ast}(N) \ll N^{\a}$ for all $N \ge N'$. In particular $a(N) \ll N^{\a}$. So for such $N$, we estimate as follows:
       \begin{align*}
         \sum_{n \le N}|a(n)|n^{-\b} &= |a(N)|N^{-\b}-|a(1)|+\b\int_{1}^{N}A^{\ast}(u)u^{-(\b+1)}\,du \\
         &= |a(N)|N^{-\b}-|a(1)|+\b\int_{1}^{N'}A^{\ast}(u)u^{-(\b+1)}\,du+\b\int_{N'}^{N}A^{\ast}(u)u^{-(\b+1)}\,du \\
-        &\ll |a(N)|N^{-\b}-|a(1)|+\b\int_{1}^{N'}A^{\ast}(u)u^{-(\b+1)}\,du+\b\int_{N'}^{N}u^{\a-(\b+1)}\,du.
+        &\ll |a(N)|N^{-\b}+|a(1)|+\b\int_{1}^{N'}|A^{\ast}(u)|u^{-(\b+1)}\,du+\b\int_{N'}^{N}u^{\a-(\b+1)}\,du.
       \end{align*}
       As $N \to \infty$, the left-hand side tends towards $\sum_{n \ge 1}\frac{|a(n)|}{n^{\b}}$. As for the right-hand side, the first term tends to zero since $\b > \a$. The second and third terms remain bounded as they are independent of $N$. For the last term, we compute
       \[
@@ -158,7 +158,7 @@
       But $\b > \a$ so this term is also bounded as $N \to \infty$. This finishes the proof.
     \end{proof}
 
-    Do not be fooled; \cref{prop:Dirichlet_series_convergence_polynomial_bound_average} is in general weaker than \cref{prop:Dirichlet_series_convergence_polynomial_bound}. For example, from our comments following \cref{prop:Dirichlet_series_coefficient_size_on_average}, if $D(s)$ is a Dirichlet series with coefficients $a(n)$ and we have the estimate $A(X) \ll_{\e} X^{\b}$ for some real $\b$ then \cref{prop:Dirichlet_series_convergence_polynomial_bound_average} only says that $\s_{a} \le \b$. If $\a$ is very small compared to $\b$, this is a significantly worse upper bound for the abscissa of absolute convergence than what \cref{prop:Dirichlet_series_convergence_polynomial_bound} would imply if $a(n) \ll n^{\a}$. Actually, the question of sharp polynomial bounds for Dirichlet coefficients can be very deep. However, if the coefficients $a(n)$ are always nonnegative, then \textbf{Landau's theorem}\index{Landau's theorem} provides a way of obtaining a lower bound for their growth as well as describing a singularity of $D(s)$:
+    Do not be fooled; \cref{prop:Dirichlet_series_convergence_polynomial_bound_average} is in general weaker than \cref{prop:Dirichlet_series_convergence_polynomial_bound}. For example, from our comments following \cref{prop:Dirichlet_series_coefficient_size_on_average}, if $D(s)$ is a Dirichlet series with coefficients $a(n)$ and we have the estimate $A^{\ast}(X) \ll_{\e} X^{\b}$ for some real $\b$ then \cref{prop:Dirichlet_series_convergence_polynomial_bound_average} only says that $\s_{a} \le \b$. If $\a$ is very small compared to $\b$, this is a significantly worse upper bound for the abscissa of absolute convergence than what \cref{prop:Dirichlet_series_convergence_polynomial_bound} would imply if $a(n) \ll n^{\a}$. Actually, the question of sharp polynomial bounds for Dirichlet coefficients can be very deep. However, if the coefficients $a(n)$ are always nonnegative, then \textbf{Landau's theorem}\index{Landau's theorem} provides a way of obtaining a lower bound for their growth as well as describing a singularity of $D(s)$:
 
     \begin{theorem}[Landau's theorem]
       Suppose $D(s)$ is a Dirichlet series with nonnegative coefficients $a(n)$ and finite abscissa of absolute convergence $\s_{a}$. Then $\s_{a}$ is a singularity of $D(s)$.
@@ -187,10 +187,10 @@
       for $-\d' < s < 1$. As $\d' > 0$, this implies that $D(s)$ converges absolutely (since $a(n) \ge 0$) for some $s$ with $\Re(s) < 0$ (say $s = -\frac{\d'}{2}$) which contradicts $\s_{a} = 0$.
     \end{proof}
 
-    Landau's theorem is very useful as it implies that if $D(s)$ is a Dirichlet series with nonnegative coefficients then $a(n) \not\ll n^{\s_{a}-(1+\e)}$ for any $\e > 0$ because otherwise \cref{prop:Dirichlet_series_convergence_polynomial_bound} implies $\s_{a} \le \s_{a}-\e$. Actually, Landau's theorem also implies $A(X) \not\ll X^{\s_{a}-\e}$ for otherwise \cref{prop:Dirichlet_series_convergence_polynomial_bound_average} would similarly imply $\s_{a} \le \s_{\a}-\e$. When we come across Dirichlet series whose coefficients are polynomially bounded or polynomially bounded on average, we will invoke these results without mention, except for Landau's theorem, as this is also common practice in the literature. Generally speaking, if the coefficients $a(n)$ are chosen at random, $D(s)$ will not possess any good properties outside of convergence in some region (it might not even possess that). However, the Dirichlet series we will encounter, and most of interest in the wild, will have multiplicative coefficients. In this case, the Dirichlet series admits an infinite product expression:
+    Landau's theorem is very useful as it implies that if $D(s)$ is a Dirichlet series with nonnegative coefficients then $a(n) \not\ll n^{\s_{a}-(1+\e)}$ for any $\e > 0$ because otherwise \cref{prop:Dirichlet_series_convergence_polynomial_bound} implies $\s_{a} \le \s_{a}-\e$. Actually, Landau's theorem also implies $A^{\ast}(X) \not\ll X^{\s_{a}-\e}$ for otherwise \cref{prop:Dirichlet_series_convergence_polynomial_bound_average} would similarly imply $\s_{a} \le \s_{\a}-\e$. When we come across Dirichlet series whose coefficients are polynomially bounded or polynomially bounded on average, we will invoke these results without mention, except for Landau's theorem, as this is also common practice in the literature. Generally speaking, if the coefficients $a(n)$ are chosen at random, $D(s)$ will not possess any good properties outside of convergence in some region (it might not even possess that). However, the Dirichlet series we will encounter, and most of interest in the wild, will have multiplicative coefficients. In this case, the Dirichlet series admits an infinite product expression:
 
     \begin{proposition}\label{prop:Dirichlet_series_Euler_product}
-        Suppose the coefficients $a(n)$ of a Dirichlet series $D(s)$ are multiplicative and satisfy $|a(n)| \ll n^{\a}$ for some real $\a \ge 0$. Then
+        Suppose the coefficients $a(n)$ of a Dirichlet series $D(s)$ are multiplicative and satisfy $a(n) \ll n^{\a}$ for some real $\a \ge 0$. Then
         \[
           D(s) = \prod_{p}\left(\sum_{k \ge 0}\frac{a(p^{k})}{p^{ks}}\right),
         \]
@@ -205,7 +205,7 @@
         for $\Re(s) > 1+\a$.
     \end{proposition}
     \begin{proof}
-        Since $|a(n)| \ll n^{\a}$, \cref{prop:Dirichlet_series_convergence_polynomial_bound} implies that $D(s)$ converges absolutely for $\Re(s) > 1+\a$. Let $s$ be such that $\Re(s) > 1+\a$. Since
+        Since $a(n) \ll n^{\a}$, \cref{prop:Dirichlet_series_convergence_polynomial_bound} implies that $D(s)$ converges absolutely for $\Re(s) > 1+\a$. Let $s$ be such that $\Re(s) > 1+\a$. Since
         \[
           \sum_{k \ge 0}\left|\frac{a(p^{k})}{p^{ks}}\right| < \sum_{n \ge 1}\left|\frac{a(n)}{n^{s}}\right|,
         \]
@@ -227,7 +227,7 @@
         \]
         and the second sum is part of its tail. So the first sum must convergence hence defining an absolutely convergent Dirichlet series in $\Re(s) > 1+\a$, and the second sum must tend to zero. Lastly, if the $a(n)$ are completely multiplicative, then since $\Re(s) > 1+\a$, we have
         \[
-          \left|\frac{a(p)}{p^{s}}\right| \ll \left|\frac{1}{p^{s-\a}}\right| < \left|\frac{1}{p}\right| < 1.
+          \frac{a(p)}{p^{s}} \ll \frac{1}{p^{\Re(s)-\a}} < \frac{1}{p} < 1.
         \]
         So the formula for a geometric series gives
         \[
@@ -261,13 +261,14 @@
       \[
         \sum_{n \ge 1}\frac{a(n)}{n^{s}} = \lim_{Y \to \infty}A'(Y)Y^{-s}+s\int_{1}^{\infty}A'(u)u^{-(s+1)}\,du.
       \]
-      Now $A'(Y) \le A(Y)$ and $A(Y) \ll_{\e} Y^{\s_{a}+\e}$ for any $\e > 0$ by \cref{prop:Dirichlet_series_coefficient_size_on_average}. So that $A'(Y)Y^{-s} \ll Y^{\s_{a}+\e-\Re(s)}$. Choosing $\e < \Re(s)-\s_{a}$, this latter term tends to zero as $Y \to \infty$, which implies that $A'(Y)Y^{-s}$ also tends to zero as $Y \to \infty$. Therefore we can write the equation above as
+      Now $A'(Y) \le A(Y)$ and $A(Y) \ll_{\e} Y^{\s_{a}+\e}$ for any $\e > 0$ by \cref{prop:Dirichlet_series_coefficient_size_on_average} so that $A'(Y)Y^{-s} \ll Y^{\s_{a}+\e-\Re(s)}$. Choosing $\e < \Re(s)-\s_{a}$, this latter term tends to zero as $Y \to \infty$, which implies that $A'(Y)Y^{-s} \to 0$ as $Y \to \infty$. Therefore we can write the equation above as
       \[
         D(s)s^{-1} = \int_{1}^{\infty}A'(u)u^{-(s+1)}\,du = \int_{0}^{\infty}A'(u)u^{-(s+1)}\,du,
       \]
       where the second equality follows because $A(u) = 0$ in the interval $[0,1)$. The Mellin inversion formula immediately gives the result.
     \end{proof}
 
+    \todo{RESUME HERE}
     We would like to relate this sum to an integral involving the entire Dirichlet series $D(s)$. In particular, this integral is a type of inverse Mellin transform. Any formula that resembles Perron's formula is particularly useful because it allows one examine a sum of Dirichlet coefficients, a discrete object, by means of a complex integral where analytic techniques are at our disposal. There is also a truncated version of Perron's formula which is often more useful for estimates rather than abstract results. To state it, we need to setup some notation and will require a lemma. For any $c > 0$, consider the discontinuous integral (see \cite{davenport1980multiplicative})
     \[
       \d(y) = \frac{1}{2\pi i}\int_{(c)}y^{s}\,\frac{ds}{s} = \begin{cases} 0 & \text{if $0 < y < 1$}, \\ \frac{1}{2} & \text{if $y = 1$}, \\ 1 & \text{if $y > 1$}. \end{cases}
