@@ -6,13 +6,13 @@
       \[
         \z(s) = \sum_{n \ge 1}\frac{1}{n^{s}}.
       \]
-      This is the prototypical example of a Dirichlet series as all the coefficients are $1$. We will see that $\z(s)$ is a Selberg class $L$-function. As the coefficients are trivially polynomially bounded, $\z(s)$ is locally absolutely uniformly convergent for $\Re(s) > 1$. Also note that $\z(s)$ is necessarily nonzero in this region. Determining the Euler product is also an easy matter. As the coefficients are obviously completely multiplicative, we have the degree $1$ Euler product
+      This is the prototypical example of a Dirichlet series as all the coefficients are $1$. We will see that $\z(s)$ is a Selberg class $L$-function. As the coefficients are trivially polynomially bounded, $\z(s)$ is locally absolutely uniformly convergent for $\s > 1$. Also note that $\z(s)$ is necessarily nonzero in this region. Determining the Euler product is also an easy matter. As the coefficients are obviously completely multiplicative, we have the degree $1$ Euler product
       \[
         \z(s) = \prod_{p}(1-p^{-s})^{-1},
       \]
       in this region as well. The local factor at $p$ is $\z_{p}(s) = (1-p^{-s})^{-1}$ with local root $1$.
     \subsection*{The Integral Representation of \texorpdfstring{$\z(s)$}{\z(s)}: Part I}
-      Riemann's ingenious insight was to analytically continue $\z(s)$. By this, he sought to find a representation of $\z(s)$ defined on a larger region than $\Re(s) > 1$. This is the approach we will take, and the argument follows the same line of reasoning as that of Riemann. We consider the gamma function $\G\left(\frac{s}{2}\right)$:
+      Riemann's ingenious insight was to analytically continue $\z(s)$. By this, he sought to find a representation of $\z(s)$ defined on a larger region than $\s > 1$. This is the approach we will take, and the argument follows the same line of reasoning as that of Riemann. We consider the gamma function $\G\left(\frac{s}{2}\right)$:
       \[
         \G\left(\frac{s}{2}\right) = \int_{0}^{\infty}e^{-x}x^{\frac{s}{2}}\,\frac{dx}{x}.
       \]
@@ -25,7 +25,7 @@
       \begin{equation}\label{equ:gamma_integral_substitution}
         \G\left(\frac{s}{2}\right) = \pi^{\frac{s}{2}} n^{s}\int_{0}^{\infty}e^{-\pi n^{2}x}x^{\frac{s}{2}}\,\frac{dx}{x}.
       \end{equation}
-      Dividing by $\pi^{\frac{s}{2}}n^{s}$ and summing over $n \ge 1$, we see that for $\Re(s) > 1$,
+      Let $\s > 1$. Dividing by $\pi^{\frac{s}{2}}n^{s}$ and summing over $n \ge 1$, we see that
       \begin{align*}
         \pi^{-\frac{s}{2}}\G\left(\frac{s}{2}\right)\z(s) &= \sum_{n \ge 1}\int_{0}^{\infty}e^{-\pi n^{2}x}x^{\frac{s}{2}}\,\frac{dx}{x} \\
         &= \int_{0}^{\infty}\sum_{n \ge 1}e^{-\pi n^{2}x}x^{\frac{s}{2}}\,\frac{dx}{x} && \text{DCT} \\
@@ -41,7 +41,7 @@
       \end{equation}
       This was essentially Riemann's insight: rewrite the Riemann zeta function in terms of a Mellin transform. Unfortunately, we cannot proceed until we understand $\w(x)$. So we will make a slight detour and come back to the integral representation after.
     \subsection*{Jacobi's Theta Function \texorpdfstring{$\vt(s)$}{\vt(s)}}
-      \textbf{Jacobi's theta function}\index{Jacobi's theta function} $\vt(s)$ is defined for $\Re(s) > 0$ by
+      \textbf{Jacobi's theta function}\index{Jacobi's theta function} $\vt(s)$ is defined for $\s > 0$ by
       \[
         \vt(s) = \sum_{n \in \Z}e^{-\pi n^{2}s} = 1+2\sum_{n \ge 1}e^{-\pi n^{2}s}.
       \]
@@ -52,7 +52,7 @@
       The essential fact about Jacobi's theta function we will need is the \textbf{functional equation for Jacobi's theta function}\index{functional equation for Jacobi's theta function} that was known to Riemann:
 
       \begin{theorem}[Functional equation for Jacobi's theta function]
-        For $\Re(s) > 0$,
+        For $\s > 0$,
         \[
           \vt(s) = \frac{1}{\sqrt{s}}\vt\left(\frac{1}{s}\right).
         \]
@@ -87,7 +87,7 @@
       \begin{equation}\label{equ:symmetric_integral_zeta_split}
         \int_{0}^{\infty}\w(x)x^{\frac{s}{2}}\,\frac{dx}{x} = \int_{0}^{1}\w(x)x^{\frac{s}{2}}\,\frac{dx}{x}+\int_{1}^{\infty}\w(x)x^{\frac{s}{2}}\,\frac{dx}{x}.
       \end{equation}
-      Since $\w(x)$ has exponential decay, the second piece is locally absolutely uniformly bounded for $\Re(s) > 1$ by \cref{met:decay_compacta_integral}. Hence it is analytic there. The idea now is to rewrite the first piece in the same form and symmetrize the result as much as possible. We being by performing a change of variables $x \to \frac{1}{x}$ to the first piece to obtain
+      Since $\w(x)$ has exponential decay, the second piece is locally absolutely uniformly bounded for $\s > 1$ by \cref{met:decay_compacta_integral}. Hence it is analytic there. The idea now is to rewrite the first piece in the same form and symmetrize the result as much as possible. We being by performing a change of variables $x \to \frac{1}{x}$ to the first piece to obtain
       \[
         \int_{1}^{\infty}\w\left(\frac{1}{x}\right)x^{-\frac{s}{2}}\,\frac{dx}{x}
       \]
@@ -140,20 +140,20 @@
         \]
       \end{proposition}
       \begin{proof}
-        The only term in the integral representation of $\z(s)$ contributing to the pole is $-\frac{1}{\g(s,\z)}\frac{1}{s(1-s)}$. Observe
+        The only term in the integral representation of $\z(s)$ contributing to the pole is $-\frac{\pi^{\frac{s}{2}}}{\G\left(\frac{s}{2}\right)}\frac{1}{s(1-s)}$. Observe
         \[
-          \lim_{s \to 1}\frac{1}{\g(s,\z)} = \lim_{s \to 1}\frac{\pi^{\frac{s}{2}}}{\G\left(\frac{s}{2}\right)} = 1,
+          \lim_{s \to 1}\frac{\pi^{\frac{s}{2}}}{\G\left(\frac{s}{2}\right)} = 1,
         \]
         because $\G\left(\frac{1}{2}\right) = \sqrt{\pi}$. Therefore
         \[
-          \Res_{s = 1}\z(s) = \Res_{s = 1}-\frac{1}{\g(s,\z)}\frac{1}{s(1-s)} = \Res_{s = 1}-\frac{1}{s(1-s)} = \lim_{s \to 1}-\frac{(s-1)}{s(1-s)} = 1.
+          \Res_{s = 1}\z(s) = \Res_{s = 1}-\frac{\pi^{\frac{s}{2}}}{\G\left(\frac{s}{2}\right)}\frac{1}{s(1-s)} = \Res_{s = 1}-\frac{1}{s(1-s)} = \lim_{s \to 1}-\frac{(s-1)}{s(1-s)} = 1.
         \]
       \end{proof}
 
       We summarize all of our work into the following theorem:
 
       \begin{theorem}\label{thm:zeta_Selberg}
-        $\z(s)$ is a Selberg class $L$-function. For $\Re(s) > 1$, it has a locally absolutely uniformly convergent degree $1$ Euler product given by
+        $\z(s)$ is a Selberg class $L$-function. For $\s > 1$, it has a locally absolutely uniformly convergent degree $1$ Euler product given by
         \[
           \z(s) = \prod_{p}(1-p^{-s})^{-1}.
         \]
@@ -168,7 +168,7 @@
         and there is a simple pole at $s = 1$ of residue $1$.
       \end{theorem}
 
-      Lastly, we note that by virtue of the functional equation we can also compute $\z(0)$ as well. Indeed, since $\Res_{s = 1}\z(s) = 1$, we have
+      Lastly, we note that by virtue of the functional equation we can also compute $\z(0)$. Indeed, since $\Res_{s = 1}\z(s) = 1$, we have
       \[
         \lim_{s \to 1}(s-1)\L(s,\z) = \Res_{s = 1}\z(s)\lim_{s \to 1}\pi^{-\frac{s}{2}}\G\left(\frac{s}{2}\right) = 1.
       \]
@@ -183,7 +183,7 @@
       \[
         L(s,\chi) = \sum_{n \ge 1}\frac{\chi(n)}{n^{s}}.
       \]
-      Since $\chi(n) = 0$ if $(n,m) > 1$, the above sum can be restricted to all positive integers relatively prime to $m$. We will see that $L(s,\chi)$ is a Selberg class $L$-function if $\chi$ is primitive and of conductor $q > 1$ (in the case $q = 1$, $L(s,\chi) = \z(s)$). From now we make this assumption about $\chi$. As $|\chi(n)| \ll 1$, $L(s,\chi)$ is locally absolutely uniformly convergent for $\Re(s) > 1$. Because $\chi$ is completely multiplicative we also have the degree $1$ Euler product,
+      Since $\chi(n) = 0$ if $(n,m) > 1$, the above sum can be restricted to all positive integers relatively prime to $m$. We will see that $L(s,\chi)$ is a Selberg class $L$-function if $\chi$ is primitive and of conductor $q > 1$ (in the case $q = 1$, $L(s,\chi) = \z(s)$). From now we make this assumption about $\chi$. As $|\chi(n)| \ll 1$, $L(s,\chi)$ is locally absolutely uniformly convergent for $\s > 1$. Because $\chi$ is completely multiplicative we also have the degree $1$ Euler product,
       \[
         L(s,\chi) = \prod_{p}(1-\chi(p)p^{-s})^{-1} = \prod_{p \nmid m}(1-\chi(p)p^{-s})^{-1},
       \]
@@ -197,7 +197,7 @@
       \[
         \chi(n)\G\left(\frac{s+\mf{a}}{2}\right) = \pi^{\frac{s+\mf{a}}{2}} n^{s}\int_{0}^{\infty}\chi(n)n^{\mf{a}}e^{-\pi n^{2}x}x^{\frac{s+\mf{a}}{2}}\,\frac{dx}{x},
       \]
-      after moving the $n^{\mf{a}}$ on the inside of the integral. Dividing by $\pi^{\frac{s+\mf{a}}{2}}n^{s}$ and summing over $n \ge 1$, we see that for $\Re(s) > 1$,
+      after moving the $n^{\mf{a}}$ on the inside of the integral. Let $\s > 1$. Dividing by $\pi^{\frac{s+\mf{a}}{2}}n^{s}$ and summing over $n \ge 1$, we see that
       \begin{align*}
         \pi^{-\frac{s+\mf{a}}{2}}\G\left(\frac{s+\mf{a}}{2}\right)L(s,\chi) &= \sum_{n \ge 1}\int_{0}^{\infty}\chi(n)n^{\mf{a}}e^{-\pi n^{2}x}x^{\frac{s+\mf{a}}{2}}\,\frac{dx}{x} \\
         &= \int_{0}^{\infty}\sum_{n \ge 1}\chi(n)n^{\mf{a}}e^{-\pi n^{2}x}x^{\frac{s+\mf{a}}{2}}\,\frac{dx}{x} && \text{DCT} \\
@@ -213,7 +213,7 @@
       \end{equation}
       and just like $\z(s)$ we need to find a functional equation for $\w_{\chi}(x)$ before we can proceed.
     \subsection*{Dirichlet's Theta Function \texorpdfstring{$\vt_{\chi}(s)$}{\vt_{\chi}(s)}}
-      \textbf{Dirichlet's theta function}\index{Dirichlet's theta function} $\vt_{\chi}(s)$ attached to the character $\chi$, is defined for $\Re(s) > 0$ by
+      \textbf{Dirichlet's theta function}\index{Dirichlet's theta function} $\vt_{\chi}(s)$ attached to the character $\chi$, is defined for $\s > 0$ by
       \[
         \vt_{\chi}(s) = \sum_{n \in \Z}\chi(n)n^{\mf{a}}e^{-\pi n^{2}s} = 2\sum_{n \ge 1}\chi(n)n^{\mf{a}}e^{-\pi n^{2}s}.
       \]
@@ -229,7 +229,7 @@
       The essential fact we will need is the \textbf{functional equation for Dirichlet's theta function}\index{functional equation for Dirichlet's theta function}:
 
       \begin{theorem}[Functional equation for Dirichlet's theta function]
-        Let $\chi$ be a primitive Dirichlet character of conductor $q > 1$. For $\Re(s) > 0$,
+        Let $\chi$ be a primitive Dirichlet character of conductor $q > 1$. For $\s > 0$,
         \[
           \vt_{\chi}(s) = \frac{\e_{\chi}}{i^{\mf{a}}(qs)^{\frac{1}{2}+\mf{a}}}\vt_{\cchi}\left(\frac{1}{q^{2}s}\right).
         \]
@@ -282,7 +282,7 @@
           &= \frac{1}{i^{\mf{a}}q^{1+\mf{a}}s^{\frac{1}{2}+\mf{a}}}\sum_{t \in \Z}t^{\mf{a}}e^{-\frac{\pi t^{2}}{q^{2}s}}\sum_{a \tmod{q}}\chi(a)e^{\frac{2\pi i at}{q}} \\
           &= \frac{1}{i^{\mf{a}}q^{1+\mf{a}}s^{\frac{1}{2}+\mf{a}}}\sum_{t \in \Z}t^{\mf{a}}e^{-\frac{\pi t^{2}}{q^{2}s}}\tau(t,\chi) && \text{definition of $\tau(t,\chi)$},
         \end{align*}
-        and this holds for all $\Re(s) > 0$ by the identity theorem. Since $\chi$ is primitive, $\tau(t,\chi) = \cchi(t)\tau(\chi)$ for all $t \in \Z$ by \cref{cor:gauss_sum_primitive_formula}. Therefore we have
+        and this holds for all $\s > 0$ by the identity theorem. Since $\chi$ is primitive, $\tau(t,\chi) = \cchi(t)\tau(\chi)$ for all $t \in \Z$ by \cref{cor:gauss_sum_primitive_formula}. Therefore we have
         \[
           \frac{1}{i^{\mf{a}}q^{1+\mf{a}}s^{\frac{1}{2}+\mf{a}}}\sum_{t \in \Z}t^{\mf{a}}e^{-\frac{\pi t^{2}}{q^{2}s}}\tau(t,\chi) = \frac{\tau(\chi)}{i^{\mf{a}}q^{1+\mf{a}}s^{\frac{1}{2}+\mf{a}}}\sum_{t \in \Z}\cchi(t)t^{\mf{a}}e^{-\frac{\pi t^{2}}{q^{2}s}} = \frac{\tau(\chi)}{i^{\mf{a}}q^{1+\mf{a}}s^{\frac{1}{2}+\mf{a}}}\vt_{\cchi}\left(\frac{1}{q^{2}s}\right).
         \]
@@ -297,7 +297,7 @@
       \begin{equation}\label{equ:symmetric_integral_Dirichlet_L-functions_split}
         \int_{0}^{\infty}\w_{\chi}(x)x^{\frac{s+\mf{a}}{2}}\,\frac{dx}{x} = \int_{0}^{\frac{1}{q}}\w_{\chi}(x)x^{\frac{s+\mf{a}}{2}}\,\frac{dx}{x}+\int_{\frac{1}{q}}^{\infty}\w_{\chi}(x)x^{\frac{s+\mf{a}}{2}}\,\frac{dx}{x}.
       \end{equation}
-      Since $\w_{\chi}(x)$ has exponential decay, the second piece is locally absolutely uniformly bounded for $\Re(s) > 1$ by \cref{met:decay_compacta_integral}. Hence it is an analytic function. We now rewrite the first piece in the same form and symmetrize the result as much as possible. Start by performing a change of variables $x \to \frac{1}{q^{2}x}$ to the first piece to obtain
+      Since $\w_{\chi}(x)$ has exponential decay, the second piece is locally absolutely uniformly bounded for $\s > 1$ by \cref{met:decay_compacta_integral}. Hence it is an analytic function. We now rewrite the first piece in the same form and symmetrize the result as much as possible. Start by performing a change of variables $x \to \frac{1}{q^{2}x}$ to the first piece to obtain
       \[
         q^{-(s+\mf{a})}\int_{\frac{1}{q}}^{\infty}\w_{\chi}\left(\frac{1}{q^{2}x}\right)x^{-\frac{s+\mf{a}}{2}}\,\frac{dx}{x}.
       \]
@@ -349,7 +349,7 @@
       So $L(s,\chi)$ is of order $1$. We summarize all of our work into the following theorem:
 
       \begin{theorem}\label{thm:primitive_Dirichlet_Selberg}
-        For any primitive Dirichlet character $\chi$ of conductor $q > 1$, $L(s,\chi)$ is a Selberg class $L$-function. For $\Re(s) > 1$, it has a locally absolutely uniformly convergent degree $1$ Euler product given by
+        For any primitive Dirichlet character $\chi$ of conductor $q > 1$, $L(s,\chi)$ is a Selberg class $L$-function. For $\s > 1$, it has a locally absolutely uniformly convergent degree $1$ Euler product given by
         \[
           L(s,\chi) = \prod_{p}(1-\chi(p)p^{-s})^{-1} = \prod_{p \nmid q}(1-\chi(p)p^{-s})^{-1}.
         \]
@@ -385,11 +385,11 @@
       \[
         L(s,f) = \sum_{n \ge 1}\frac{a_{f}(n)}{n^{s}}.
       \]
-      We will see that $L(s,f)$ is a Selberg class $L$-function if $f$ is a primitive Hecke eigenform. From now on, we make this assumption about $f$. By the Ramanujan-Petersson conjecture, $a_{f}(n) \ll n^{\e}$. So $L(s,f)$ is locally absolutely uniformly convergent for $\Re(s) > 1+\e$ and hence locally absolutely uniformly convergent for $\Re(s) > 1$. The $L$-function will also have an Euler product. Indeed, the Hecke relations imply that the coefficients $a_{f}(n)$ are multiplicative and satisfy
+      We will see that $L(s,f)$ is a Selberg class $L$-function if $f$ is a primitive Hecke eigenform. From now on, we make this assumption about $f$. By the Ramanujan-Petersson conjecture, $a_{f}(n) \ll n^{\e}$. So $L(s,f)$ is locally absolutely uniformly convergent for $\s > 1+\e$ and hence locally absolutely uniformly convergent for $\s > 1$. The $L$-function will also have an Euler product. Indeed, the Hecke relations imply that the coefficients $a_{f}(n)$ are multiplicative and satisfy
       \begin{equation}\label{equ:primitive_Hecke_eigenform_recurrence_for_coefficients_of_modular_L-function}
         a_{f}(p^{n}) = \begin{cases} a_{f}(p^{n-1})a_{f}(p)-\chi(p)a_{f}(p^{n-2}) & \text{if $p \nmid N$}, \\ (a_{f}(p))^{n} & \text{if $p \mid N$}, \end{cases}
       \end{equation}
-      for all primes $p$ and $n \ge 2$. Because $L(s,f)$ converges absolutely in the region $\Re(s) > 1$, multiplicativity of the Hecke eigenvalues implies
+      for all primes $p$ and $n \ge 2$. Because $L(s,f)$ converges absolutely in the region $\s > 1$, multiplicativity of the Hecke eigenvalues implies
       \[
         L(s,f) = \prod_{p}\left(\sum_{n \ge 0}\frac{a_{f}(p^{n})}{p^{ns}}\right),
       \]
@@ -433,7 +433,7 @@
       \[
         \int_{0}^{\infty}f(iy)y^{s+\frac{k-1}{2}}\,\frac{dy}{y}.
       \]
-      We don't yet know that this integral defines an analytic function for $\Re(s) > 1$. In any case, we compute
+      We don't yet know that this integral defines an analytic function for $\s > 1$. In any case, we compute
       \begin{align*}
         \int_{0}^{\infty}f(iy)y^{s+\frac{k-1}{2}}\,\frac{dy}{y} &= \int_{0}^{\infty}\sum_{n \ge 1}a_{f}(n)n^{\frac{k-1}{2}}e^{-2\pi ny}y^{s+\frac{k-1}{2}}\,\frac{dy}{y} \\
         &= \sum_{n \ge 1}a_{f}(n)n^{\frac{k-1}{2}}\int_{0}^{\infty}e^{-2\pi ny}y^{s+\frac{k-1}{2}}\,\frac{dy}{y} &&\text{DCT} \\
@@ -441,7 +441,7 @@
         &= \frac{\G\left(s+\frac{k-1}{2}\right)}{(2\pi)^{s+\frac{k-1}{2}}}\sum_{n \ge 1}\frac{a_{f}(n)}{n^{s}} \\
         &= \frac{\G\left(s+\frac{k-1}{2}\right)}{(2\pi)^{s+\frac{k-1}{2}}}L(s,f).
       \end{align*}
-      As this last expression is analytic function for $\Re(s) > 1$, the integral is too. Rewriting, we have an integral representation
+      As this last expression is analytic function for $\s > 1$, the integral is too. Rewriting, we have an integral representation
       \begin{equation}\label{equ:integral_representation_holomorphic_1}
         L(s,f) = \frac{(2\pi)^{s+\frac{k-1}{2}}}{\G\left(s+\frac{k-1}{2}\right)}\int_{0}^{\infty}f(iy)y^{s+\frac{k-1}{2}}\,\frac{dy}{y}.
       \end{equation}
@@ -449,7 +449,7 @@
       \begin{equation}\label{equ:symmetric_integral_holomorphic_split}
         \int_{0}^{\infty}f(iy)y^{s+\frac{k-1}{2}}\,\frac{dy}{y} = \int_{0}^{\frac{1}{\sqrt{N}}}f(iy)y^{s+\frac{k-1}{2}}\,\frac{dy}{y}+\int_{\frac{1}{\sqrt{N}}}^{\infty}f(iy)y^{s+\frac{k-1}{2}}\,\frac{dy}{y}.
       \end{equation}
-      Since $f(iy)$ has exponential decay, the second piece is locally absolutely uniformly bounded for $\Re(s) > 1$ by \cref{met:decay_compacta_integral}. Hence it is an analytic there. Now we will rewrite the first piece in the same form and symmetrize the result as much as possible. Begin by performing the change of variables $y \to \frac{1}{Ny}$ to the first piece to obtain
+      Since $f(iy)$ has exponential decay, the second piece is locally absolutely uniformly bounded for $\s > 1$ by \cref{met:decay_compacta_integral}. Hence it is an analytic there. Now we will rewrite the first piece in the same form and symmetrize the result as much as possible. Begin by performing the change of variables $y \to \frac{1}{Ny}$ to the first piece to obtain
       \[
         \int_{\frac{1}{\sqrt{N}}}^{\infty}f\left(\frac{i}{Ny}\right)(Ny)^{-s-\frac{k-1}{2}}\,\frac{dy}{y}.
       \]
@@ -499,7 +499,7 @@
       So $L(s,f)$ is of order $1$. We summarize all of our work into the following theorem:
 
       \begin{theorem}\label{thm:primitive_Hecke_Selberg}
-        For any primitive Hecke eigenform $f \in \mc{S}_{k}(N,\chi)$, $L(s,f)$ is a Selberg class $L$-function. For $\Re(s) > 1$, it has a locally absolutely uniformly convergent degree $2$ Euler product given by 
+        For any primitive Hecke eigenform $f \in \mc{S}_{k}(N,\chi)$, $L(s,f)$ is a Selberg class $L$-function. For $\s > 1$, it has a locally absolutely uniformly convergent degree $2$ Euler product given by 
         \[
           L(s,f) = \prod_{p \nmid N}(1-a_{f}(p)p^{-s}+\chi(p)p^{-2s})^{-1}\prod_{p \mid N}(1-a_{f}(p)p^{-s})^{-1} = \prod_{p}(1-\a_{1}(p)p^{-s})^{-1}(1-\a_{2}(p)p^{-s})^{-1}.
         \]
@@ -535,7 +535,7 @@
       \[
         L(s,f) = \sum_{n \ge 1}\frac{a_{f}(n)}{n^{s}}.
       \]
-      We will see that $L(s,f)$ is a Selberg class $L$-function if $f$ is a primitive Hecke-Maass eigenform. From now on, we make this assumption about $f$. In this case, the Ramanujan-Petersson conjecture is not know so $L(s,f)$ has not been proven to be a Selberg class $L$-function. Although, it is conjectured to be, so throughout we will make this additional assumption. By the Ramanujan-Petersson conjecture, $a_{f}(n) \ll n^{\e}$. So $L(s,f)$ is locally absolutely uniformly convergent for $\Re(s) > 1+\e$ and hence locally absolutely uniformly convergent for $\Re(s) > 1$. The $L$-function will have an Euler product. Indeed, the Hecke relations imply that the coefficients $a_{f}(n)$ are multiplicative and satisfy \cref{equ:primitive_Hecke_eigenform_recurrence_for_coefficients_of_modular_L-function}. Mimicking the argument exactly as for Hecke $L$-functions, 
+      We will see that $L(s,f)$ is a Selberg class $L$-function if $f$ is a primitive Hecke-Maass eigenform. From now on, we make this assumption about $f$. In this case, the Ramanujan-Petersson conjecture is not know so $L(s,f)$ has not been proven to be a Selberg class $L$-function. Although, it is conjectured to be, so throughout we will make this additional assumption. By the Ramanujan-Petersson conjecture, $a_{f}(n) \ll n^{\e}$. So $L(s,f)$ is locally absolutely uniformly convergent for $\s > 1+\e$ and hence locally absolutely uniformly convergent for $\s > 1$. The $L$-function will have an Euler product. Indeed, the Hecke relations imply that the coefficients $a_{f}(n)$ are multiplicative and satisfy \cref{equ:primitive_Hecke_eigenform_recurrence_for_coefficients_of_modular_L-function}. Mimicking the argument exactly as for Hecke $L$-functions, 
       \[
         L(s,f) = \prod_{p \nmid N}(1-a_{f}(p)p^{-s}+\chi(p)p^{-2s})^{-1}\prod_{p \mid N}(1-a_{f}(p)p^{-s})^{-1}.
       \]
@@ -561,7 +561,7 @@
       \[
         \left(\frac{\del}{\del x}^{\mf{a}}f\right)(z) = \sum_{n \ge 1}a_{f}(n)(2\pi n)^{\mf{a}}\sqrt{y}K_{it}(2\pi ny)\cos(2\pi nx).
       \]
-      Therefore regardless if $f$ is even or odd, the Fourier series of $\left(\frac{\del}{\del x}^{\mf{a}}f\right)(z)$ has $\SC(x) = \cos(x)$ and the integral does not vanish identically. Similar to Hecke $L$-functions, we don't yet know that this integral defines an analytic function for $\Re(s) > 1$. Nevertheless, we compute
+      Therefore regardless if $f$ is even or odd, the Fourier series of $\left(\frac{\del}{\del x}^{\mf{a}}f\right)(z)$ has $\SC(x) = \cos(x)$ and the integral does not vanish identically. Similar to Hecke $L$-functions, we don't yet know that this integral defines an analytic function for $\s > 1$. Nevertheless, we compute
       \begin{align*}
         \int_{0}^{\infty}\left(\frac{\del}{\del x}^{\mf{a}}f\right)(iy)y^{s-\frac{1}{2}+\mf{a}}\,\frac{dy}{y} &= \int_{0}^{\infty}\sum_{n \ge 1}a_{f}(n)(2\pi n)^{\mf{a}}K_{it}(2\pi ny)y^{s+\mf{a}}\,\frac{dy}{y} \\
         &= \sum_{n \ge 1}a_{f}(n)(2\pi n)^{\mf{a}}\int_{0}^{\infty}K_{it}(2\pi ny)y^{s+\mf{a}}\,\frac{dy}{y} &&\text{DCT} \\
@@ -569,7 +569,7 @@
         &= \frac{\G\left(\frac{s+\mf{a}+it}{2}\right)\G\left(\frac{s+\mf{a}-it}{2}\right)}{2^{2-\mf{a}}\pi^{s}}\sum_{n \ge 1}\frac{a_{f}(n)}{n^{s}} && \text{\cref{append:Special_Integrals}} \\
         &= \frac{\G\left(\frac{s+\mf{a}+it}{2}\right)\G\left(\frac{s+\mf{a}-it}{2}\right)}{2^{2-\mf{a}}\pi^{s}}L(s,f).
       \end{align*}
-      This last expression is analytic function for $\Re(s) > 1$ and so the integral is too. Rewriting, we have an integral representation
+      This last expression is analytic function for $\s > 1$ and so the integral is too. Rewriting, we have an integral representation
       \begin{equation}\label{equ:integral_representation_Maass_1}
         L(s,f) = \frac{2^{2-\mf{a}}\pi^{s}}{\G\left(\frac{s+\mf{a}+it}{2}\right)\G\left(\frac{s+\mf{a}-it}{2}\right)}\int_{0}^{\infty}\left(\frac{\del}{\del x}^{\mf{a}}f\right)(iy)y^{s-\frac{1}{2}+\mf{a}}\,\frac{dy}{y}.
       \end{equation}
@@ -577,7 +577,7 @@
       \begin{equation}\label{equ:symmetric_integral_Maass_split}
         \int_{0}^{\infty}\left(\frac{\del}{\del x}^{\mf{a}}f\right)(iy)y^{s-\frac{1}{2}+\mf{a}}\,\frac{dy}{y} = \int_{0}^{\frac{1}{\sqrt{N}}}\left(\frac{\del}{\del x}^{\mf{a}}f\right)(iy)y^{s-\frac{1}{2}+\mf{a}}\,\frac{dy}{y}+\int_{\frac{1}{\sqrt{N}}}^{\infty}\left(\frac{\del}{\del x}^{\mf{a}}f\right)(iy)y^{s-\frac{1}{2}+\mf{a}}\,\frac{dy}{y}.
       \end{equation}
-      Since $\left(\frac{\del}{\del x}^{\mf{a}}f\right)(iy)$ has moderate decay as $y \to \infty$ because $f(iy)$ does, the second piece is locally absolutely uniformly bounded for $\Re(s) > 1$ by \cref{met:decay_compacta_integral}. Hence it is analytic there. Now we will rewrite the first piece in the same form and symmetrize the result as much as possible. Performing the change of variables $y \to \frac{1}{Ny}$ to the first piece to obtain
+      Since $\left(\frac{\del}{\del x}^{\mf{a}}f\right)(iy)$ has moderate decay as $y \to \infty$ because $f(iy)$ does, the second piece is locally absolutely uniformly bounded for $\s > 1$ by \cref{met:decay_compacta_integral}. Hence it is analytic there. Now we will rewrite the first piece in the same form and symmetrize the result as much as possible. Performing the change of variables $y \to \frac{1}{Ny}$ to the first piece to obtain
       \[
         \int_{\frac{1}{\sqrt{N}}}^{\infty}\left(\frac{\del}{\del x}^{\mf{a}}f\right)\left(\frac{i}{Ny}\right)(Ny)^{-s+\frac{1}{2}-\mf{a}}\,\frac{dy}{y}.
       \]
@@ -633,7 +633,7 @@
       So $L(s,f)$ is of order $1$. We summarize all of our work into the following theorem:
 
       \begin{theorem}\label{equ:thm:primitive_Hecke-Maass_Selberg}
-        For any even or odd primitive Hecke-Maass eigenform $f \in \mc{C}_{t}(N,\chi)$, $L(s,f)$ is a Selberg class $L$-function provided the Ramanujan-Petersson conjecture holds. For $\Re(s) > 1$, it has a locally absolutely uniformly convergent degree $2$ Euler product given by 
+        For any even or odd primitive Hecke-Maass eigenform $f \in \mc{C}_{t}(N,\chi)$, $L(s,f)$ is a Selberg class $L$-function provided the Ramanujan-Petersson conjecture holds. For $\s > 1$, it has a locally absolutely uniformly convergent degree $2$ Euler product given by 
         \[
           L(s,f) = \prod_{p \nmid N}(1-a_{f}(p)p^{-s}+\chi(p)p^{-2s})^{-1}\prod_{p \mid N}(1-a_{f}(p)p^{-s})^{-1} = \prod_{p}(1-\a_{1}(p)p^{-s})^{-1}(1-\a_{2}(p)p^{-s})^{-1}.
         \]
@@ -658,7 +658,7 @@
       \end{proof}
   \section{The Rankin-Selberg Method}
     \subsection*{The Definition \& Euler Product of \texorpdfstring{$L(s,f \ox g)$}{L(s,f \ox g)}}
-      The Rankin-Selberg method is a process by which we can construct new $L$-functions from old ones. Instead of giving the general definition outright, we first provide a full discussion of the method only in the simplest case. Many technical difficulties arise in the fully general setting. Let $f,g \in \mc{S}_{k}(\PSL_{2}(\Z))$ be primitive Hecke eigenforms with Fourier series
+      The Rankin-Selberg method is a process by which we can construct new $L$-functions from old ones. Instead of giving the general definition outright, we first provide a full discussion of the method only in the simplest case. Many technical difficulties arise in the fully general setting. Let $f,g \in \mc{S}_{k}(1)$ be primitive Hecke eigenforms with Fourier series
       \[
         f(z) = \sum_{n \ge 1}a_{f}(n)n^{\frac{k-1}{2}}e^{2\pi inz} \quad \text{and} \quad g(z) = \sum_{n \ge 1}a_{g}(n)n^{\frac{k-1}{2}}e^{2\pi inz}.
       \]
@@ -670,11 +670,11 @@
       \[
         L(s,f \ox g) = \sum_{n \ge 1}\frac{a_{f \ox g}(n)}{n^{s}} = \z(2s)L(s,f \x g),
       \]
-      where $a_{f \ox g}(n) = \sum_{n = m\ell^{2}}a_{f}(m)\conj{a_{g}(m)}$. Since $a_{f}(n) \ll n^{\e}$ and $a_{g}(n) \ll n^{\e}$ by the Ramanujan-Petersson conjecture, $a_{f \x g}(n) \ll n^{\e}$ as well. Hence $L(s,f \x g)$ is locally absolutely uniformly convergent for $\Re(s) > 1+\e$ and hence locally absolutely uniformly convergent for $\Re(s) > 1$. Since $\z(2s)$ is also locally absolutely uniformly convergent in this region, the same follows for $L(s,f \x g)$ too. The $L$-function $L(s,f \x g)$ will also have an Euler product. To see this, let $\a_{i}(p)$ and $\b_{j}(p)$ for $1 \le i,j \le 2$ be the local roots at $p$ of $L(s,f)$ and $L(s,g)$ respectively. Since $L(s,f \ox g)$ converges absolutely in the region $\Re(s) > 1$, for $s$ in this region, multiplicativity of the Hecke eigenvalues implies
+      where $a_{f \ox g}(n) = \sum_{n = m\ell^{2}}a_{f}(m)\conj{a_{g}(m)}$. Since $a_{f}(n) \ll n^{\e}$ and $a_{g}(n) \ll n^{\e}$ by the Ramanujan-Petersson conjecture, $a_{f \x g}(n) \ll n^{\e}$ as well. Hence $L(s,f \x g)$ is locally absolutely uniformly convergent for $\s > 1+\e$ and hence locally absolutely uniformly convergent for $\s > 1$. Since $\z(2s)$ is also locally absolutely uniformly convergent in this region, the same follows for $L(s,f \x g)$ too. The $L$-function $L(s,f \x g)$ will also have an Euler product. To see this, let $\a_{i}(p)$ and $\b_{j}(p)$ for $1 \le i,j \le 2$ be the local roots at $p$ of $L(s,f)$ and $L(s,g)$ respectively. Since $L(s,f \ox g)$ converges absolutely in the region $\s > 1$, multiplicativity of the Hecke eigenvalues implies
       \[
-        L(s,f \ox g) = \z(2s)L(s,f \x g) = \prod_{p \nmid NM}(1-p^{-2s})^{-1}\prod_{p}\left(\sum_{n \ge 0}\frac{a_{f}(p^{n})\conj{a_{g}(p^{n})}}{p^{ns}}\right).
+        L(s,f \ox g) = \z(2s)L(s,f \x g) = \prod_{p \nmid NM}(1-p^{-2s})^{-1}\prod_{p}\left(\sum_{n \ge 0}\frac{a_{f}(p^{n})\conj{a_{g}(p^{n})}}{p^{ns}}\right),
       \]
-      We now simplify the factor inside the latter product using \cref{equ:Hecke_L_function_coefficient_formula}:
+      in this region. We now simplify the factor inside the latter product using \cref{equ:Hecke_L_function_coefficient_formula}:
       \begingroup
       \allowdisplaybreaks
           \begin{align*}
@@ -728,7 +728,7 @@
         &= \frac{\G\left(s+k-1\right)}{(4\pi)^{s+k-1}}\sum_{n \ge 1}\frac{a_{f}(n)\conj{a_{g}(n)}}{n^{s}} \\
         &= \frac{\G\left(s+k-1\right)}{(4\pi)^{s+k-1}}L(s,f \x g).
       \end{align*}
-      This last expression is locally absolutely uniformly convergent for $\Re(s) > 1$ because the $L$-function is and the gamma factor is holomorphic in this region. Therefore the original integral is locally absolutely uniformly bounded. At this point we have an integral representation
+      This last expression is locally absolutely uniformly convergent for $\s > 1$ because the $L$-function is and the gamma factor is holomorphic in this region. Therefore the original integral is locally absolutely uniformly bounded. At this point we have an integral representation
       \[
         L(s,f \x g) = \frac{(4\pi)^{s+k-1}}{\G(s+k-1)}\int_{\G_{\infty}\backslash\H}f(z)\conj{g(z)}\Im(z)^{s+k}\,d\mu.
       \]
@@ -740,11 +740,11 @@
         &= \int_{\mc{F}}f(z)\conj{g(z)}\Im(z)^{k}\sum_{\g \in \GG}\Im(\g z)^{s}\,d\mu \\
         &= \int_{\mc{F}}f(z)\conj{g(z)}\Im(z)^{k}E_{\infty}(z,s)\,d\mu.
       \end{align*}
-      Note that $E_{\infty}(z,s)$ is the Eisenstein series on $\PSL_{2}(\Z)\backslash\H$ at the $\infty$ cusp. Altogether, this gives the integral representation
+      Note that $E_{\infty}(z,s)$ is the Eisenstein series on $\G_{0}(1)\backslash\H$ at the $\infty$ cusp. Altogether, this gives the integral representation
       \begin{equation}\label{equ:Rankin-Selberg_integral-reresentation}
         L(s,f \x g) =  \frac{(4\pi)^{s+k-1}}{\G(s+k-1)}\int_{\mc{F}}f(z)\conj{g(z)}\Im(z)^{k}E_{\infty}(z,s)\,d\mu,
       \end{equation}
-      which is valid for $\Re(s) > 1$. We cannot investigate the integral any further until we understand the Fourier series of $E_{\infty}(z,s)$ and have a functional equation as $s \to 1-s$. Therefore we will take a necessary detour and return to the integral after.
+      which is valid for $\s > 1$. We cannot investigate the integral any further until we understand the Fourier series of $E_{\infty}(z,s)$ and have a functional equation as $s \to 1-s$. Therefore we will take a necessary detour and return to the integral after.
     \subsection*{The Fourier Series and Functional Equation of \texorpdfstring{$E_{\infty}(z,s)$}{E_{\infty}(z,s)}}
       Let
       \[
@@ -753,14 +753,14 @@
       be the Fourier series of $E_{\infty}(z,s)$. Our first goal is to compute these coefficients. To do this we will need the following technical lemma:
 
       \begin{lemma}\label{lem:Ramanujan_zeta_relation}
-        Let $M \ge 1$ be square-free. Then for $\Re(s) > 1$ and $b \in \Z$,
+        Let $M \ge 1$ be square-free. Then for $\s > 1$ and $b \in \Z$,
         \[
           \sum_{m \ge 1}\frac{r(b;m)}{m^{2s}} = \begin{cases} \frac{\z(2s-1)}{\z(2s)} & \text{if $b = 0$}, \\ \frac{\s_{1-2s}(|b|)}{\z(2s)} & \text{if $b \neq 0$}, \end{cases}
         \]
         where $\s_{s}(b)$ is the generalized sum of divisors function.
       \end{lemma}
       \begin{proof}
-        If $\Re(s) > 1$ then the desired evaluation of the sum is locally absolutely uniformly convergent because the Riemann zeta function is in that region. Hence the sum will be too provided we prove the identity. Suppose $b = 0$. Then $r(0;m) = \vphi(m)$. Since $\vphi(m)$ is multiplicative we have
+        If $\s > 1$ then the desired evaluation of the sum is locally absolutely uniformly convergent because the Riemann zeta function is in that region. Hence the sum will be too provided we prove the identity. Suppose $b = 0$. Then $r(0;m) = \vphi(m)$. Since $\vphi(m)$ is multiplicative we have
         \begin{equation}\label{equ:Ramanujan_zeta_relation_1}
           \sum_{m \ge 1}\frac{\vphi(m)}{m^{2s}} = \prod_{p}\left(\sum_{k \ge 0}\frac{\vphi(p^{k})}{p^{k(2s)}}\right).
         \end{equation}
@@ -829,7 +829,7 @@
         Appealing to \cref{append:Special_Integrals} for this last integral and substituting the result back into \cref{equ:real-analytic_Eisenstein_fourier_coefficient_definition} finishes the proof.
       \end{proof}
 
-      Having computed the Fourier coefficients, we would like to obtain a functional equation for $E_{\infty}(z,s)$ as $s \to 1-s$ (this follows from \cref{thm:functional_equation_of_Eisenstein_series} but we will demonstrate a full proof for the single Eisenstein series on $\PSL_{2}(\Z)\backslash\H$). To this end, we define the \textbf{completed real-analytic Eisenstein series}\index{completed real-analytic Eisenstein series} $E^{\ast}(z,s)$ by
+      Having computed the Fourier coefficients, we would like to obtain a functional equation for $E_{\infty}(z,s)$ as $s \to 1-s$ (this follows from \cref{thm:functional_equation_of_Eisenstein_series} but we will demonstrate a full proof for the single Eisenstein series on $\G_{0}(1)\backslash\H$). To this end, we define the \textbf{completed real-analytic Eisenstein series}\index{completed real-analytic Eisenstein series} $E^{\ast}(z,s)$ by
       \[
         E^{\ast}(z,s) = \L(2s,\z)E_{\infty}(z,s) = \pi^{-s}\G(s)\z(2s)E_{\infty}(z,s).
       \]
@@ -849,7 +849,7 @@
       \[
         E^{\ast}(z,s) = E^{\ast}(z,1-s).
       \]
-      We already knew $E_{\infty}(z,s)$ possessed a functional equation as $s \to 1-s$ from \cref{thm:functional_equation_of_Eisenstein_series} but we needed an explicit version in order to understand $L(s,f \ox g)$. We can now obtain meromorphic continuation of $E^{\ast}(z,s)$ in $s$ to all of $\C$. By the functional equation, $E^{\ast}(z,s)$ admits analytic continuous to $\C$ outside of the critical strip. Therefore we may assume $\left|\Re(s)-\frac{1}{2}\right| \le \frac{1}{2}$. We first write $E^{\ast}(z,s)$ as a Fourier series using \cref{equ:Fourier_coefficients_for_completed_real-analytic_Eisenstein_series}:
+      We already knew $E_{\infty}(z,s)$ possessed a functional equation as $s \to 1-s$ from \cref{thm:functional_equation_of_Eisenstein_series} but we needed an explicit version in order to understand $L(s,f \ox g)$. We can now obtain meromorphic continuation of $E^{\ast}(z,s)$ in $s$ to all of $\C$. By the functional equation, $E^{\ast}(z,s)$ admits analytic continuous to $\C$ outside of the critical strip. Therefore we may assume $\left|\s-\frac{1}{2}\right| \le \frac{1}{2}$. We first write $E^{\ast}(z,s)$ as a Fourier series using \cref{equ:Fourier_coefficients_for_completed_real-analytic_Eisenstein_series}:
       \[
         E^{\ast}(z,s) = y^{s}\L(2s,\z)+y^{1-s}\L(2(1-s),\z)+\sum_{n \neq 0}2|n|^{s-\frac{1}{2}}\s_{1-2s}(|n|)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y)e^{2\pi inx}.
       \]
@@ -861,7 +861,7 @@
       \[
         \s_{1-2s}(|n|) = \sum_{d \mid n}d^{1-2s} < \s_{0}(|n|)|n|^{1-2s} \ll_{\e}|n|^{1-2s+\e}.
       \]
-      For the second estimate, \cref{lem:moderate_decay_K-Bessel_function} and the fact that $\Re(s)$ is bounded together give
+      For the second estimate, \cref{lem:moderate_decay_K-Bessel_function} and the fact that $\s$ is bounded together give
       \[
         K_{s-\frac{1}{2}}(2\pi|n|y) \ll e^{-2\pi|n|y}.
       \]
@@ -899,7 +899,7 @@
       \[
         L(s,f \ox g) = \frac{(4\pi)^{s+k-1}\pi^{s}}{\G(s+k-1)\G(s)}\int_{\mc{F}}f(z)\conj{g(z)}\Im(z)^{k}E^{\ast}(z,s)\,d\mu.
       \]
-      This integral representation will give analytic continuation. To see this, note that the gamma factors are analytic for $\Re(s) < 0$. By the functional equation for $E^{\ast}(z,s)$, the integral is invariant as $s \to 1-s$. These two facts together give analytic continuation to $\C$ outside of the critical strip. The continuation inside of the critical strip will be meromorphic because of the poles of $E^{\ast}(z,s)$. To see this, taking the integral representation and substituting the Fourier series for $E^{\ast}(z,s)$ gives
+      This integral representation will give analytic continuation. To see this, note that the gamma factors are analytic for $\s < 0$. By the functional equation for $E^{\ast}(z,s)$, the integral is invariant as $s \to 1-s$. These two facts together give analytic continuation to $\C$ outside of the critical strip. The continuation inside of the critical strip will be meromorphic because of the poles of $E^{\ast}(z,s)$. To see this, taking the integral representation and substituting the Fourier series for $E^{\ast}(z,s)$ gives
       \begin{equation}\label{equ:integral_representation_Rankin_Selberg}
         \begin{aligned}
           L(s,f \ox g) &= \frac{(4\pi)^{s+k-1}\pi^{s}}{\G(s+k-1)\G(s)}\bigg[\int_{\mc{F}}f(x+iy)\conj{g(x+iy)}y^{k}(y^{s}\L(2s,\z)+y^{1-s}\L(2(1-s),\z))\,\frac{dx\,dy}{y^{2}} \\
@@ -946,7 +946,7 @@
       Thus $(s-1)L(s,f \ox g)$ is of order $1$, and so $L(s,f \ox g)$ is as well after removing the polar divisor. At last, we compute the residue of $L(s,f \ox g)$ at $s = 1$:
 
       \begin{proposition}
-        Let $f,g \in \mc{S}_{k}(\PSL_{2}(\Z))$ be primitive Hecke eigenforms. Then
+        Let $f,g \in \mc{S}_{k}(1)$ be primitive Hecke eigenforms. Then
         \[
           \Res_{s = 1}L(s,f \ox g) = \frac{4^{k}\pi^{k+1}V}{2\G(k)}\<f,g\>,
         \]
@@ -962,7 +962,7 @@
       Notice that if $g = f$, then $\<f,f\> \neq 0$ and therefore the residue at $s = 1$ is not zero and hence not a removable singularity. Actually, this is the only instance in which there is a pole since \cref{thm:newforms_characterization_holomorphic} implies that the primitive Hecke eigenforms are orthogonal so that $\<f,g\> = 0$ unless $f = g$. We summarize all of our work into the following theorem:
 
       \begin{theorem}
-        For any two primitive Hecke eigenforms $f,g \in \mc{S}_{k}(\PSL_{2}(\Z))$, $L(s,f \ox g)$ is a Selberg class $L$-function. For $\Re(s) > 1$, it has locally absolutely uniformly convergent degree $4$ Euler product given by
+        For any two primitive Hecke eigenforms $f,g \in \mc{S}_{k}(1)$, $L(s,f \ox g)$ is a Selberg class $L$-function. For $\s > 1$, it has locally absolutely uniformly convergent degree $4$ Euler product given by
         \[
           L(s,f \ox g) = \prod_{p}\prod_{1 \le i,j \le 2}\left(1-\a_{i}(p)\conj{\b_{j}(p)}p^{-s}\right)^{-1}.
         \]
@@ -998,7 +998,7 @@
         Then the Rankin-Selberg convolution $L(s,f \ox g)$ is a Selberg class $L$-function.
       \end{method}
 
-      We make a few remarks about the Rankin-Selberg method. Local absolute uniform convergence for $\Re(s) > 1$ (we must assume the Ramanujan-Petersson conjecture in the Maass form case) are proved in the exactly the same way as we have described. The argument for the Euler product is also similar. However, if either $N > 1$ or $M > 1$, the computation becomes more difficult to compute since the local $p$ factors for $p \mid NM$ change. Moreover, the situation is increasingly complicated if $(N,M) > 1$ since conductor dropping can occur. The integral representation has a similar argument, but if the weights/eigenvalues are distinct the resulting Eisenstein series becomes more complicated. In particular, it is on $\G_{0}(NM)\backslash\H$ and if $NM > 1$, then there is more than just the cusp at $\infty$. Therefore the functional equation of the Eisenstein series at the $\infty$ cusp then reflects into a linear combination of Eisenstein series at the other cusps. This results in the requirement to compute the Fourier coefficients of all of these Eisenstein series. Moreover, this procedure can be generalized to remove the primitive Hecke and/or primitive Hecke-Maass eigenform conditions by taking linear combinations, but we won't attempt discussing this further. 
+      We make a few remarks about the Rankin-Selberg method. Local absolute uniform convergence for $\s > 1$ (we must assume the Ramanujan-Petersson conjecture in the Maass form case) are proved in the exactly the same way as we have described. The argument for the Euler product is also similar. However, if either $N > 1$ or $M > 1$, the computation becomes more difficult to compute since the local $p$ factors for $p \mid NM$ change. Moreover, the situation is increasingly complicated if $(N,M) > 1$ since conductor dropping can occur. The integral representation has a similar argument, but if the weights/eigenvalues are distinct the resulting Eisenstein series becomes more complicated. In particular, it is on $\G_{0}(NM)\backslash\H$ and if $NM > 1$, then there is more than just the cusp at $\infty$. Therefore the functional equation of the Eisenstein series at the $\infty$ cusp then reflects into a linear combination of Eisenstein series at the other cusps. This results in the requirement to compute the Fourier coefficients of all of these Eisenstein series. Moreover, this procedure can be generalized to remove the primitive Hecke and/or primitive Hecke-Maass eigenform conditions by taking linear combinations, but we won't attempt discussing this further. 
   \section{Applications of the Rankin-Selberg Method}
     \subsection*{The Ramanujan-Petersson Conjecture on Average}
       Let $f$ be a Hecke or Hecke-Maass eigenform. Using Rankin-Selberg convolutions, it is possible to show the weaker result that $a_{f}(n) \ll n^{\e}$ holds on average, for any $\e > 0$, without assuming the Ramanujan-Petersson conjecture:
@@ -1014,7 +1014,7 @@
         \begin{equation}\label{equ:Ramanujan_conjecture_on_average_1}
           \left(\sum_{n \le X}|a_{f}(n)|\right)^{2} \le X\sum_{n \le X}|a_{f}(n)|^{2},
         \end{equation}
-        The Rankin-Selberg square $L(s,f \ox f)$ is locally absolutely uniformly convergent for $\Re(s) > \frac{3}{2}$. Therefore it still admits meromorphic continuation to $\C$ with a simple pole at $s = 1$. By Landau's theorem, the abscissa of absolute convergence of $L(s,f \ox f)$, and hence $L(s,f \x f)$ too, is $1$ so by \cref{prop:Dirichlet_series_coefficient_size_on_average} we have
+        The Rankin-Selberg square $L(s,f \ox f)$ is locally absolutely uniformly convergent for $\s > \frac{3}{2}$. Therefore it still admits meromorphic continuation to $\C$ with a simple pole at $s = 1$. By Landau's theorem, the abscissa of absolute convergence of $L(s,f \ox f)$, and hence $L(s,f \x f)$ too, is $1$ so by \cref{prop:Dirichlet_series_coefficient_size_on_average} we have
         \[
           \sum_{n \le X}|a_{f}(n)|^{2} \ll_{\e} X^{1+\e},
         \]
@@ -1028,7 +1028,7 @@
         \]
       \end{proof}
       
-      The bound in \cref{prop:Ramanujan_Petersson_average} should be compared with the implication $a_{f}(n) \ll n^{\e}$ that follows from the Ramanujan-Petersson conjecture. While \cref{prop:Ramanujan_Petersson_average} is not useful in the holomorphic form case, it is in the Maass form case. Indeed, recall that if $f$ is a primitive Hecke-Maass eigenform we needed to assume the Ramanujan-Petersson conjecture to ensure $a_{f}(n) \ll n^{\e}$ so that $L(s,f)$ was locally absolutely uniformly convergent for $\Re(s) > 1$. However, \cref{prop:Dirichlet_series_convergence_polynomial_bound_average,prop:Ramanujan_Petersson_average} together imply that $L(s,f)$ is locally absolutely uniformly convergent for $\Re(s) > 1+\e$ and hence for $\Re(s) > 1$. This method avoids assuming the Ramanujan-Petersson conjecture. Therefore we may remove this assumption in \cref{equ:thm:primitive_Hecke-Maass_Selberg}.
+      The bound in \cref{prop:Ramanujan_Petersson_average} should be compared with the implication $a_{f}(n) \ll n^{\e}$ that follows from the Ramanujan-Petersson conjecture. While \cref{prop:Ramanujan_Petersson_average} is not useful in the holomorphic form case, it is in the Maass form case. Indeed, recall that if $f$ is a primitive Hecke-Maass eigenform we needed to assume the Ramanujan-Petersson conjecture to ensure $a_{f}(n) \ll n^{\e}$ so that $L(s,f)$ was locally absolutely uniformly convergent for $\s > 1$. However, \cref{prop:Dirichlet_series_convergence_polynomial_bound_average,prop:Ramanujan_Petersson_average} together imply that $L(s,f)$ is locally absolutely uniformly convergent for $\s > 1+\e$ and hence for $\s > 1$. This method avoids assuming the Ramanujan-Petersson conjecture. Therefore we may remove this assumption in \cref{equ:thm:primitive_Hecke-Maass_Selberg}.
     \subsection*{Strong Multiplicity One}
       Let $f$ be a primitive Hecke or Hecke-Maass eigenform. Then $f$ is determined by Hecke eigenvalues at primes for fixed weight/eigenvalue and level. Using Rankin-Selberg convolutions, we can prove \textbf{strong multiplicity one}\index{strong multiplicity one} for holomorphic or Maass forms which says that $f$ is determined by Hecke eigenvalues at all but finitely many primes for fixed weight/eigenvalue, level, and character:
 
