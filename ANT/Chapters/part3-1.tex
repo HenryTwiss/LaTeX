@@ -494,24 +494,32 @@
         \G(s) \sim \sqrt{2\pi}t^{\s-\frac{1}{2}}e^{-\frac{\pi}{2}|t|}.
     \]
     This gives the weaker estimates
-    \begin{equation}\label{equ:simplified_gamma_estimates}
+    \[
       \G(s) \ll t^{\s-\frac{1}{2}}e^{-\frac{\pi}{2}|t|} \quad \text{and} \quad \frac{1}{\G(s)} \ll t^{\frac{1}{2}-\s}e^{\frac{\pi}{2}|t|} .
-    \end{equation}
+    \]
     It is not hard to obtain estimates that holds in vertical strips. Suppose $s$ is in the vertical strip $a < \s < b$ and is distance $\e$ away from the poles of $\G(s)$. For $|t| > 1$, \cref{equ:simplified_gamma_estimates} is satisfied. Moreover $\G(s)$ is bounded on the compact region $a \le \s \le b$ with $|t| \le 1$ provided $s$ is distance $\e$ away from the poles. As the bounds in \cref{equ:simplified_gamma_estimates} are zero when $t = 0$, the estimates
-    \begin{equation}\label{equ:modified_gamma_estimates}
-      \G(s) \ll_{a,b} (|t|+1)^{\s-\frac{1}{2}}e^{-\frac{\pi}{2}|t|} \quad \text{and} \quad \frac{1}{\G(s)} \ll_{a,b} (|t|+1)^{\frac{1}{2}-\s}e^{\frac{\pi}{2}|t|},
+    \[
+      \G(s) \ll_{a,b,\e} (|t|+1)^{\s-\frac{1}{2}}e^{-\frac{\pi}{2}|t|} \quad \text{and} \quad \frac{1}{\G(s)} \ll_{a,b,\e} (|t|+1)^{\frac{1}{2}-\s}e^{\frac{\pi}{2}|t|},
+    \]
+    are valid in the vertical strip $a < \s < b$ and distance $\e$ away from the poles of $\G(s)$ in the first estimate. As $1-s \sim s$, we immediately have the useful estimate
+    \[
+      \frac{\G(1-s)}{\G(s)} \ll_{a,b,\e} (|t|+1)^{1-2\s},
+    \]
+    valid in the is in the vertical strip $a < \s < b$ and distance $\e$ away from the poles of $\G(1-s)$. It easily follows from the definition of $\g(s,f)$ that
+    \begin{equation}\label{equ:gamma_factor_analytic_conductor_estimate}
+      \frac{\g(1-s,f)}{\g(s,f)} \ll_{a,b,\e} q(s,f)^{\frac{1-2\s}{2}},
     \end{equation}
-    are valid in the vertical strip $a < \s < b$ provided $s$ is distance $\e$ away from the poles. We can use these estimates to show that $L(s,f)$ is has polynomial growth in the $t$-aspect in vertical strips:
+    is valid in the is in the vertical strip $a < \s < b$ and is distance $\e$ away from the poles of $\g(1-s,f)$. We can use this last estimate to show that $L(s,f)$ is has polynomial growth in the $t$-aspect in vertical strips:
 
     \begin{proposition}\label{prop:L_function_bounded_in_vertical_strips}
       If $L(s,f)$ is an $L$-function, then $L(s,f)$ is of polynomial growth in the $t$-aspect in vertical strips $a \le \s \le b$ with $|t| \ge 1$ for any $a < b$.
     \end{proposition}
     \begin{proof}
-      For $\s > 1$ we have $L(\s,f) \ll_{\s} 1$. Now by the functional equation
+      On the one hand, for $\s > \max(1,b)$ we have $L(s,f) \ll_{\s} 1$ on the line $\s = 1$ with $t \ge 1$. On the other hand, the functional equation and \cref{equ:gamma_factor_analytic_conductor_estimate} together imply
       \[
-        L(s,f) \ll \frac{\g(1-s,f)}{\g(s,f)}L(1-s,f).
+        L(s,f) \ll_{\s} q(s,f)^{\frac{1-2\s}{2}}L(1-s,f).
       \]
-      Using \cref{equ:simplified_gamma_estimates} and the definition of $\g(s,f)$, it follows that $\frac{\g(1-s,f)}{\g(s,f)}$ is of polynomial growth in the $t$-aspect. Thus for $\s < 0$, we see that $L(s,f)$ is also of polynomial growth in the $t$-aspect. As $L(s,f)$ is holomorphic for $|t| > 1$ and of order $1$, we can apply the Phragm\'en-Lindel\"of convexity principle (see \cref{append:The_Phragmen_Lindelof_Convexity_principle}) so that $L(s,f)$ is of polynomial growth in the $t$-aspect in any vertical strip with $|t| > 1$.
+      Clearly $q(s,f)^{\frac{1-2\s}{2}}$ is of polynomial growth in the $t$-aspect provided $\s$ is bounded. Thus for bounded $\s < \min(0,a)$, we see that $L(s,f)$ is also of polynomial growth in the $t$-aspect. As $L(s,f)$ is holomorphic for $|t| \ge 1$ and of order $1$, we can apply the Phragm\'en-Lindel\"of convexity principle in this region (see \cref{append:The_Phragmen_Lindelof_Convexity_principle}) so that $L(s,f)$ is of polynomial growth in the $t$-aspect in the vertical strip $a \le \s \le b$ with $|t| \ge 1$.
     \end{proof}
 
     \cref{prop:L_function_bounded_in_vertical_strips} is a very important property that $L$-functions possess. It is usually used to estimate Perron type formulas. We can also use it to deduce the \textbf{approximate function equation}\index{approximate function equation}:
@@ -613,19 +621,15 @@
     \[
       p_{r}(1+\e+it)L(1+\e+it,f) \ll_{\e} 1.
     \]
-    The left edge is only slightly more difficult. The functional equation implies
+    The left edge is only slightly more difficult. The functional equation and \cref{equ:gamma_factor_analytic_conductor_estimate} together imply
     \[
-      p_{r}(s)L(s,f) \ll \frac{\g(1-s,f)}{\g(s,f)}p_{r}(s)L(1-s,f),
+      p_{r}(s)L(s,f) \ll p_{r}(s)q(s,f)^{\frac{1-2\s}{2}}L(1-s,f),
     \]
-    and from \cref{equ:modified_gamma_estimates} we estimate the ratio of gamma factors as
-    \[
-      \frac{\g(1-s,f)}{\g(s,f)} \ll_{\e} q(s,f)^{\frac{1-2\s}{2}},
-    \]
-    for $s$ in any vertical strip with distance $\e$ away from the poles of $\g(1-s,f)$ and where we have used that $\left(\left|\frac{t+\Im(\k_{i})}{2}\right|+1\right) \asymp (|s+\k_{i}|+3)$ and $1-s \sim s$. In particular, setting $\s = -\e$, our previous two bounds combine to give
+    for $s$ in any vertical strip with distance $\e$ away from the poles of $\g(1-s,f)$. Setting $\s = -\e$, we obtain
     \[
       p_{r}(-\e+it)L(-\e+it,f) \ll_{\e} q(s,f)^{\frac{1}{2}+\e}.
     \]
-    The Phragm\'en-Lindel\"of convexity principle and that $p_{r}(s) \sim 1$ together give
+    As $p_{r}(s)L(s,f)$ is holomorphic in a region containing the vertical strip $-\e \le \s \le 1+\e$, the Phragm\'en-Lindel\"of convexity principle gives
     \[
       L(s,f) \ll_{\e} q(s,f)^{\frac{1+\e-\s}{2}},
     \]
