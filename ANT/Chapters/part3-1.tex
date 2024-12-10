@@ -10,7 +10,7 @@
     \begin{theorem}\label{thm:convergence_of_Dirichlet_series}
       Suppose $D(s)$ is a Dirichlet series that converges at $s_{0} = \s_{0}+it_{0}$. Then for any $H > 0$, $D(s)$ converges uniformly in the sector
       \[
-        \{s = \s+it \in \C:\s \ge \s_{0}, |t-t_{0}| \le H(\s-\s_{0})\}.
+        \{s \in \C:\s \ge \s_{0}, |t-t_{0}| \le H(\s-\s_{0})\}.
       \]
     \end{theorem}
     \begin{proof}
@@ -324,55 +324,55 @@
 
     There is also a version of Perron's formula where we add a smoothing function. For any $X > 0$, we set
     \[
-      A_{\psi}(X) = \sum_{n \ge 1}a(n)\psi\left(\frac{n}{X}\right),
+      A_{\psi}(X) = \sum_{n \ge 1}a(n)g\left(\frac{n}{X}\right),
     \]
-    where $\psi:[0,\infty) \to [0,\infty)$ is a bump function. This is most useful in two cases. The first is when we choose $\psi(x)$ to be a bump function. In this setting, the bump function applies weight $1$ or $0$ to the Dirichlet coefficients $a(n)$ and we can estimate sums like
+    where $\psi:[0,\infty) \to [0,\infty)$ is smooth function such that $\psi(y) \to 0$ as $y \to \infty$. This is most useful in two cases. The first is when we choose $\psi(y)$ to be a bump function. In this setting, the bump function applies weight $1$ or $0$ to the Dirichlet coefficients $a(n)$ and we can estimate sums like
     \[
       \sum_{\frac{X}{2} \le n < X}a(n) \quad \text{or} \quad \sum_{X \le n < X+Y}a(n),
     \]
     for some $X$ and $Y$ with $Y < X$. Sums of this type are called \textbf{unweighted}\index{unweighted}. As an example of an unweighted sum, let $\psi:[0,\infty) \to [0,\infty)$ be a bump function that is identically $1$ on $[0,1]$ and has compact support within the interval $\left[1,\frac{X+1}{X}\right]$. Explicitly,
     \[
-      \psi(x) = \begin{cases} 1 & \text{if $0 \le x \le 1$}, \\ e^{-\frac{1-x}{\frac{X+1}{X}-x}} & \text{if $1 \le x < \frac{X+1}{X}$}, \\ 0 & \text{if $x \ge \frac{X+1}{X}$}. \end{cases}
+      \psi(y) = \begin{cases} 1 & \text{if $0 \le y \le 1$}, \\ e^{-\frac{1-y}{\frac{X+1}{X}-y}} & \text{if $1 \le y < \frac{X+1}{X}$}, \\ 0 & \text{if $y \ge \frac{X+1}{X}$}. \end{cases}
     \]
     Then 
     \[
       A_{\psi}(X) = \sum_{n \ge 1}a(n)\psi\left(\frac{n}{X}\right) = \sum_{n \le X}a(n).
     \]
-    In the second case, we want $\psi$ to dampen the $a(n)$ with a weight other than $1$ or $0$. Sums of this type are called \textbf{weighted}\index{weighted}. In any case, suppose the support of $\psi(x)$ is contained in $[0,C]$. These conditions will force the Mellin transform $\Psi(s)$ of $\psi(x)$ to exist and have nice properties. To see that $\Psi(s)$ exists, let $K$ be a compact set in the region $\s > 0$ and let $\b = \min_{s \in K}\{\s\}$. Note that $\psi(x)$ is bounded because it is compactly supported. Then for $s \in K$,
+    In the second case, we want $\psi$ to dampen the $a(n)$ with a weight other than $1$ or $0$. Sums of this type are called \textbf{weighted}\index{weighted}. In any case, suppose the support of $\psi(y)$ is contained in $[0,C]$. These conditions will force the Mellin transform $\Psi(s)$ of $\psi(y)$ to exist and have nice properties. To see that $\Psi(s)$ exists, let $K$ be a compact set in the region $\s > 0$ and let $\b = \min_{s \in K}\{\s\}$. Note that $\psi(y)$ is bounded because it is compactly supported. Then for $s \in K$,
     \[
-      \Psi(s) = \int_{0}^{\infty}\psi(x)x^{s}\,\frac{dx}{x} \ll \int_{0}^{C}x^{\s-1}\,dx = \frac{x^{\s}}{\s}\bigg|_{0}^{C} \le \frac{C^{\s}}{\b}.
+      \Psi(s) = \int_{0}^{\infty}\psi(y)y^{s}\,\frac{dy}{y} \ll \int_{0}^{C}y^{\s-1}\,dy = \frac{y^{\s}}{\s}\bigg|_{0}^{C} \le \frac{C^{\s}}{\b}.
     \]
-    Therefore $\Psi(s)$ is locally absolutely bounded for $\s > 0$. In particular, the Mellin inversion formula implies that $\psi(x)$ is the Mellin inverse of $\Psi(s)$. As for nice properties, $\Psi(s)$ does not grow too fast in vertical strips:
+    Therefore $\Psi(s)$ is locally absolutely bounded for $\s > 0$. In particular, the Mellin inversion formula implies that $\psi(y)$ is the Mellin inverse of $\Psi(s)$. As for nice properties, $\Psi(s)$ does not grow too fast in vertical strips:
 
     \begin{proposition}\label{prop:smoothing_function_Mellin_inverse_vertical_strips}
       Let $\psi:[0,\infty) \to [0,\infty)$ be a bump function and let $\Psi(s)$ denote its Mellin transform. Then for any $N \ge 1$,
       \[
-        \Psi(s) \ll s^{-N},
+        \Psi(s) \ll (|s|+1)^{-N},
       \]
       provided $s$ is contained in the vertical strip $a < \s < b$ for any $a$ and $b$ with $0 < a < b$.
     \end{proposition}
     \begin{proof}
-      Fix $a$ and $b$ with $a < b$. Also, let the support of $\psi(x)$ is contained in $[0,C]$. Now consider
+      Fix $a$ and $b$ with $a < b$. Also, let the support of $\psi(y)$ is contained in $[0,C]$. Now consider
       \[
-        \Psi(s) = \int_{0}^{\infty}\psi(x)x^{s}\,\frac{dx}{x}.
+        \Psi(s) = \int_{0}^{\infty}\psi(y)y^{s}\,\frac{dy}{y}.
       \]
-      Since $\psi(x)$ is compactly supported, integrating by parts yields
+      Since $\psi(y)$ is compactly supported, integrating by parts yields
       \[
-        \Psi(s) = \frac{1}{s}\int_{0}^{\infty}\psi'(x)x^{s+1}\,\frac{dx}{x}.
+        \Psi(s) = \frac{1}{s}\int_{0}^{\infty}\psi'(y)y^{s+1}\,\frac{dy}{y}.
       \]
       Repeatedly integrating by parts $N \ge 1$ times, we arrive at
       \[
-        \Psi(s) = \frac{1}{s(s+1) \cdots (s+N-1)}\int_{0}^{\infty}\psi^{(N)}(x)x^{s+N}\,\frac{dx}{x}.
+        \Psi(s) = \frac{1}{s(s+1) \cdots (s+N-1)}\int_{0}^{\infty}\psi^{(N)}(y)y^{s+N}\,\frac{dy}{y}.
       \]
-      As $s+k-1 \sim s$ for $1 \le k \le N$, we have
+      As $s+k-1 \sim |s|+1$ for $1 \le k \le N$, we have
       \[
-        \Psi(s) \ll s^{-N}\int_{0}^{\infty}\psi^{(N)}(x)x^{\s+N}\,\frac{dx}{x}.
+        \Psi(s) \ll (|s|+1)^{-N}\int_{0}^{\infty}\psi^{(N)}(y)y^{\s+N}\,\frac{dy}{y}.
       \]
-      The claim will follow if we can show that the integral is bounded by a constant. Since $\psi(x)$ is compactly supported so is $\psi^{(N)}(x)$. In particular, this implies $\psi^{(N)}(x)$ is bounded. Therefore
+      The claim will follow if we can show that the integral is bounded. Since $\psi(y)$ is compactly supported so is $\psi^{(N)}(y)$. In particular, this implies $\psi^{(N)}(y)$ is bounded. Therefore
       \[
-        \int_{0}^{\infty}\psi^{(N)}(x)x^{\s+N}\,\frac{dx}{x} \ll \int_{0}^{C}x^{\s+N}\,\frac{dx}{x} = \frac{x^{\s+N}}{\s+N}\bigg|_{0}^{C} = \frac{C^{\s+N}}{\s+N} \ll \frac{C^{b+N}}{N} \ll 1,
+        \int_{0}^{\infty}\psi^{(N)}(y)y^{\s+N}\,\frac{dy}{y} \ll \int_{0}^{C}y^{\s+N}\,\frac{dy}{y} = \frac{y^{\s+N}}{\s+N}\bigg|_{0}^{C} = \frac{C^{\s+N}}{\s+N} \ll \frac{C^{b+N}}{N} \ll 1,
       \]
-      where the second to last estimate follows because $a < \s < b$ with $0 < a < b$. So the integral is bounded by a constant and the claim follows.
+      where the second to last estimate follows because $a < \s < b$ with $0 < a < b$. So the integral is bounded and the claim follows.
     \end{proof}
     
     The following theorem is \textbf{(smoothed) Perron's formula}\index{(smoothed) Perron's formula}:
@@ -462,7 +462,7 @@
     \end{itemize}
     A few additional comments are in order for $L$-functions in general. The \textbf{critical strip}\index{critical strip} is the strip
     \[
-      \left\{s = \s+it \in \C:\left|\s-\frac{1}{2}\right| \le \frac{1}{2}\right\}.
+      \left\{s \in \C:\left|\s-\frac{1}{2}\right| \le \frac{1}{2}\right\}.
     \]
     This is precisely the region where we cannot determine the value of an $L$-function from its representation as a Dirichlet series using the functional equation. It turns out that much of the important information about $L$-functions are contained inside of the critical strip. The \textbf{critical line}\index{critical line} is the vertical line that bisects the critical strip. So the critical line is $\s = \frac{1}{2}$ as displayed in \cref{fig:critical_strip}.
 
@@ -489,15 +489,23 @@
       \label{fig:critical_strip}
     \end{figure}
   \section{The Approximate Functional Equation}
-    If $L(s,f)$ is an $L$-function, then there is a formula which acts as a compromise between the functional equation for $L(s,f)$ and expressing $L(s,f)$ as a Dirichlet series. This formula is known as the approximate functional equation and it is important because it is valid inside of the critical strip and therefore can be used to obtain data about $L(s,f)$. First, we need to state an important asymptotic about the ratio of gamma factors that we will use later on. Let $s = \s+it$, $\s$ is bounded, and $|t| > 1$. This guarantees that $s$ is bounded away from zero. Recall
+    If $L(s,f)$ is an $L$-function, then there is a formula which acts as a compromise between the functional equation for $L(s,f)$ and expressing $L(s,f)$ as a Dirichlet series. This formula is known as the approximate functional equation and it is important because it is valid inside of the critical strip and therefore can be used to obtain data about $L(s,f)$. First, we need to state an important asymptotic about the ratio of gamma factors that we will use later on. First suppose $|t| > 1$. This guarantees that $s$ is bounded away from zero so by \cref{equ:weaker_Stirling_formula}, we have
     \[
-        \G(s) \sim \sqrt{2\pi}t^{\s-\frac{1}{2}}e^{-\frac{\pi}{2}|t|},
+        \G(s) \sim \sqrt{2\pi}t^{\s-\frac{1}{2}}e^{-\frac{\pi}{2}|t|}.
     \]
-    which comes from \cref{equ:weaker_Stirling_formula}. This gives the weaker estimates
+    This gives the weaker estimates
     \begin{equation}\label{equ:simplified_gamma_estimates}
       \G(s) \ll t^{\s-\frac{1}{2}}e^{-\frac{\pi}{2}|t|} \quad \text{and} \quad \frac{1}{\G(s)} \ll t^{\frac{1}{2}-\s}e^{\frac{\pi}{2}|t|} .
     \end{equation}
-    We can use these estimates to that $L(s,f)$ is has polynomial growth in the $t$-aspect in vertical strips:
+    It is not hard to obtain estimates that holds in vertical strips. Suppose $s$ is in the strip $a < \s < b$ and is distance $\e$ away from the poles of $\G(s)$. For $|t| > 1$, \cref{equ:simplified_gamma_estimates} is satisfied. Moreover $\G(s)$ is bounded on the compact region
+    \[
+      \{s \in \C:a \le \s \le b,|t| \le 1\},
+    \]
+    and distance $\e$ away from the poles. As the bounds in \cref{equ:simplified_gamma_estimates} are zero when $t = 0$, the estimates
+    \begin{equation}\label{equ:modified_gamma_estimates}
+      \G(s) \ll_{a,b} (|t|+1)^{\s-\frac{1}{2}}e^{-\frac{\pi}{2}|t|} \quad \text{and} \quad \frac{1}{\G(s)} \ll_{a,b} (|t|+1)^{\frac{1}{2}-\s}e^{\frac{\pi}{2}|t|},
+    \end{equation}
+    are valid in the strip $a < \s < b$ provided we are distance $\e$ away from the poles. We can use these estimates to show that $L(s,f)$ is has polynomial growth in the $t$-aspect in vertical strips:
 
     \begin{proposition}\label{prop:L_function_bounded_in_vertical_strips}
       If $L(s,f)$ is an $L$-function, then for any real $a$ and $b$ with $a < b$ there is a real $\a$ such that
@@ -506,27 +514,15 @@
       \]
       in the vertical strip
       \[
-        \{s = \s+it \in \C:a \le \s \le b, |t| > 1\}.
+        \{s \in \C:a \le \s \le b, |t| > 1\}.
       \]
     \end{proposition}
     \begin{proof}
-      If $|t| > 1$ we are away from the possible poles of $L(s,f)$, so by the functional equation
+      For $\s > 1$ we have $L(\s,f) \ll_{\s} 1$. Now by the functional equation
       \[
         L(s,f) \ll \frac{\g(1-s,f)}{\g(s,f)}L(1-s,f).
       \]
-      Using \cref{equ:simplified_gamma_estimates} and the definition of $\g(s,f)$, it follows that
-      \[
-        \frac{\g(1-s,f)}{\g(s,f)} \ll t^{\a(\s)},
-      \]
-      where $\a(\s)$ is a real-valued continuous function. Letting $\s < 0$ and noting that $L(1-s) \ll_{\s} 1$, we have
-      \[
-        L(s,f) \ll_{\s} t^{\a(\s)},
-      \]
-      where $\a(\s)$ is real and depends upon $\s$. As $L(s,f)$ is holomorphic for $|t| > 1$ and of order $1$, we can apply the Phragm\'en-Lindel\"of convexity principle (see \cref{append:The_Phragmen_Lindelof_Convexity_principle}) so that the estimate
-      \[
-        L(s,f) \ll_{\s} t^{\a(\s)},
-      \]
-      holds for all $s$ with $|t| > 1$. Restricting $a < \s < b$, $\a(\s)$ takes a maximum value on the compact set $[a,b]$ and the implicit constant becomes dependent upon $a$ and $b$ which completes the proof. 
+      Using \cref{equ:simplified_gamma_estimates} and the definition of $\g(s,f)$, it follows that $\frac{\g(1-s,f)}{\g(s,f)}$ is polynomially bounded in $t$. Thus for $\s < 0$, we see that $L(s,f)$ is also polynomially bounded in $t$. As $L(s,f)$ is holomorphic for $|t| > 1$ and of order $1$, we can apply the Phragm\'en-Lindel\"of convexity principle (see \cref{append:The_Phragmen_Lindelof_Convexity_principle}) so that $L(s,f)$ is polynomially bounded in $t$ in any vertical strip with $|t| > 1$.
     \end{proof}
 
     \cref{prop:L_function_bounded_in_vertical_strips} is a very important property that $L$-functions possess. It is usually used to estimate Perron type formulas. We can also use it to deduce the \textbf{approximate function equation}\index{approximate function equation}:
@@ -536,9 +532,9 @@
       \[
         L(s,f) = \sum_{n \ge 1}\frac{a_{f}(n)}{n^{s}}V_{s}\left(\frac{n}{\sqrt{q(f)}X}\right)+\e(s,f)\sum_{n \ge 1}\frac{\conj{a_{f}(n)}}{n^{1-s}}V_{1-s}\left(\frac{nX}{\sqrt{q(f)}}\right)-\frac{R}{q(f)^{\frac{s}{2}}\g(s,f)},
       \]
-      where $V_{s}(x):(0,\infty) \to \C$ is the smooth function defined by
+      where $V_{s}(y):(0,\infty) \to \C$ is the smooth function defined by
       \[
-        V_{s}(x) = \frac{1}{2\pi i}\int_{(a)}\frac{\g(s+u,f)}{\g(s,f)}\Phi(u)x^{-u}\frac{du}{u},
+        V_{s}(y) = \frac{1}{2\pi i}\int_{(a)}\frac{\g(s+u,f)}{\g(s,f)}\Phi(u)y^{-u}\frac{du}{u},
       \]
       and
       \[
@@ -554,7 +550,7 @@
       \[
         I(X,s,f) = \frac{1}{2\pi i}\int_{(a)}\L(s+u,f)\Phi(u)X^{u}\,\frac{du}{u}.
       \]
-      By our choice of $a$ and that $s$ is in the critical strip, $\Re(s+u) > 1$ so that $L(s+u) \ll_{a} 1$. Moreover, from \cref{equ:weaker_Stirling_formula} we see that $\g(s+u,f)$ has exponential decay in $\Im(u)$. Since $\Phi(u)$ is bounded, it follows that the integral is absolutely bounded by \cref{met:decay_compacta_integral}. By \cref{prop:L_function_bounded_in_vertical_strips} and \cref{equ:weaker_Stirling_formula}, the integrand also had exponential decay in a vertical strip containing $|\Re(u)| \le a$. Therefore we may shift the line of integration to $(-a)$. In doing so, we pass by a simple pole at $u = 0$ and possible poles at $u = 1-s$ and $u = -s$, giving
+      By our choice of $a$ and $s$, $L(s+u) \ll_{a} 1$. Moreover, from \cref{equ:modified_gamma_estimates} we see that $\g(s+u,f)$ has exponential decay in $\Im(u)$. Since $\Phi(u)$ is bounded, it follows that the integral is absolutely bounded by \cref{met:decay_compacta_integral}. By \cref{prop:L_function_bounded_in_vertical_strips} and \cref{equ:simplified_gamma_estimates}, the integrand also had exponential decay in a vertical strip containing $|\Re(u)| \le a$. Therefore we may shift the line of integration to $(-a)$. In doing so, we pass by a simple pole at $u = 0$ and possible poles at $u = 1-s$ and $u = -s$, giving
       \[
         I(X,s,f) = \frac{1}{2\pi i}\int_{(-a)}\L(s+u,f)\Phi(u)X^{u}\,\frac{du}{u}+\L(s,f)+R.
       \]
@@ -585,7 +581,7 @@
     The idea of the approximate functional equation was developed by Hardy and Littlewood in the series \cite{hardyzeros1921,hardyapproximate1923,hardyapproximate1929}.
 
     \begin{remark}\label{rem:effect_of_V_in_approximate_functional_equation}
-      The function $V_{s}(x)$ has the effect of smoothing out the two sums in the right-hand side of the approximate functional equation. For simplicity take $X = 1$. Indeed, this function restricts the sums to $n \ll q(f)^{\frac{1}{2}+\e}$, for any $\e > 0$, up to some bounded error. \todo{xxx}
+      The function $V_{s}(y)$ has the effect of smoothing out the two sums in the right-hand side of the approximate functional equation. For simplicity take $X = 1$. Indeed, this function restricts the sums to $n \ll q(f)^{\frac{1}{2}+\e}$, for any $\e > 0$, up to some bounded error. \todo{xxx}
     \end{remark}
   \section{The Riemann Hypothesis \& Nontrivial Zeros}
     The zeros of $L$-functions $L(s,f)$ are closely tied to important arithmetic data of $f$. Let $L(s,f)$ be a degree $d$ $L$-function so that
@@ -620,31 +616,23 @@
     \[
       p_{r}(s) = \left(\frac{s-1}{s+1}\right)^{r}.
     \]
-    Note that $p_{r}(s) \sim 1$. The first step is to guarantee the Phragm\'en-Lindel\"of convexity principle for $p_{r}(s)L(s,f)$ in a region containing the critical strip. As $L(s,f)$ is of order $1$, this is assured (see \cref{append:The_Phragmen_Lindelof_Convexity_principle}). Therefore, we are reduced to estimating the growth of $p_{r}(s)L(s,f)$ for $\s$ to the left of $0$ and to the right of $1$. That is, just outside the edges of the critical strip. So we will assume $-\e \le \s \le 1+\e$ for some $\e > 0$. The right edge is easily estimated by setting $\s = 1+\e$ so that
-    \begin{equation}\label{equ:convexity_bound_1}
+    Note that $p_{r}(s) \sim 1$. The first step is to guarantee the Phragm\'en-Lindel\"of convexity principle for $p_{r}(s)L(s,f)$ in a region containing the critical strip. As $L(s,f)$ is of order $1$, this is assured (see \cref{append:The_Phragmen_Lindelof_Convexity_principle}). Therefore, we are reduced to estimating the growth of $p_{r}(s)L(s,f)$ for $\s$ to the left of $0$ and to the right of $1$. That is, just outside the edges of the critical strip. Let $\e > 0$. The right edge is easily estimated by setting $\s = 1+\e$ so that
+    \[
       p_{r}(1+\e+it)L(1+\e+it,f) \ll_{\e} 1.
-    \end{equation}
+    \]
     The left edge is only slightly more difficult. The functional equation implies
-    \begin{equation}\label{equ:convexity_bound_left_edge}
-      p_{r}(s)L(s,f) \ll \frac{\g(1-s,f)}{\g(s,f)}p_{r}(s)L(1-s,f).
-    \end{equation}
-    From \cref{equ:simplified_gamma_estimates}, the definition of $\g(s,f)$, and that $L(s,f)$ has $d$ gamma functions in its gamma factor, it follows that
     \[
-      \frac{\g(1-s,f)}{\g(s,f)} \ll (q(f)t^{d})^{\frac{1-2\s}{2}},
+      p_{r}(s)L(s,f) \ll \frac{\g(1-s,f)}{\g(s,f)}p_{r}(s)L(1-s,f),
     \]
-    for $-\e \le \s \le 1+\e$ with $|t| > 1$. Since the region
+    and from \cref{equ:modified_gamma_estimates} we estimate the ratio of gamma factors as
     \[
-      \{s = \s+it \in \C:-\e \le \s \le 1+\e,|t| \le 1\},
+      \frac{\g(1-s,f)}{\g(s,f)} \ll_{\e} q(s,f)^{\frac{1-2\s}{2}},
     \]
-    is compact and $q\left(s,f\right) \sim q(f)t^{d}$ for $-\e \le \s \le 1+\e$, we have the estimate
-    \begin{equation}\label{equ:ratio_gamma_factor_explicit}
-      \frac{\g(1-s,f)}{\g(s,f)} \ll q(s,f)^{\frac{1-2\s}{2}},
-    \end{equation}
-    for $-\e \le \s \le 1+\e$. Setting $\s = -\e$ and combining \cref{equ:convexity_bound_1,equ:convexity_bound_left_edge,equ:ratio_gamma_factor_explicit} gives
-    \begin{equation}\label{equ:convexity_bound_2}
+    for $s$ in any vertical strip and distance $\e$ away from the poles of $\g(1-s,f)$ and where we have used that $\left(\left|\frac{t+\Im(k_{i})}{2}\right|+1\right) \asymp (|s+k_{i}|+3)$. In particular, setting $\s = -\e$, our previous two bounds combine to give
+    \[
       p_{r}(-\e+it)L(-\e+it,f) \ll_{\e} q(s,f)^{\frac{1}{2}+\e}.
-    \end{equation}
-    By the Phragm\'en-Lindel\"of convexity principle, \cref{equ:convexity_bound_1,equ:convexity_bound_2}, and that $p_{r}(s) \sim 1$, we obtain
+    \]
+    The Phragm\'en-Lindel\"of convexity principle and that $p_{r}(s) \sim 1$ together give
     \[
       L(s,f) \ll_{\e} q(s,f)^{\frac{1+\e-\s}{2}},
     \]
@@ -665,7 +653,7 @@
   \section{Estimating the Central Value}
     The Lindel\"of hypothesis is concerned with the growth of the $L$-function $L(s,f)$ along the critical line. Sometimes we are only concerned with the size of $L(s,f)$ when $s = \frac{1}{2}$. The point $s = \frac{1}{2}$ is called the \textbf{central value}\index{central value} of $L(s,f)$ since it is exactly the midpoint on the critical line. Many important properties about $L(s,f)$ can be connected to its size at the central value. Any argument used to estimate an $L$-function at the central value is called a \textbf{central value estimate}\index{central value estimate}. We will state a result which gives a very useful upper bound for the size of an $L$-function at the central value in the $q(f)$-aspect. To state it, let $\psi:[0,\infty) \to [0,\infty]$ be a bump function with compact support in $\left[\frac{1}{2},2\right]$. Explicitly,
     \[
-      \psi(x) = \begin{cases} e^{-\frac{1}{9-(4x-5)^{2}}} & \text{if $|4x-5| < 3$}, \\ 0 & \text{if $|4x-5| \ge 3$}. \end{cases}
+      \psi(y) = \begin{cases} e^{-\frac{1}{9-(4y-5)^{2}}} & \text{if $|4y-5| < 3$}, \\ 0 & \text{if $|4y-5| \ge 3$}. \end{cases}
     \]
     The theorem is the following:
 
@@ -688,30 +676,30 @@
       \[
         L\left(\frac{1}{2},f\right) \ll \sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right)+\frac{S}{q(f)^{\frac{1}{4}}}.
       \]
-      Now consider the set of functions $\left\{\psi\left(\frac{x}{2^{k}}\right)\right\}_{k \in \Z}$. Since $\psi\left(\frac{x}{2^{k}}\right)$ has support in $[2^{k-1},2^{k+1}]$, the sum $\s(x) = \sum_{k \in \Z}\psi\left(\frac{x}{2^{k}}\right)$, defined for $x \ge 0$, is finite since at most finitely many terms are nonzero for every $x$. It is also bounded away from zero since for any $x > 0$ there is some $k \in \Z$ for which $2^{k} \le x \le 3 \cdot 2^{k-1}$ so that $\frac{x}{2^{k}}$ is at least distance $\frac{1}{2}$ from the endpoints of $\left[\frac{1}{2},2\right]$. Defining $\psi_{k}(x) = \psi\left(\frac{x}{2^{k}}\right)\s(x)^{-1}$, it follows that $\left\{\psi_{k}(x)\right\}_{k \in \Z}$ satisfies
+      Now consider the set of functions $\left\{\psi\left(\frac{y}{2^{k}}\right)\right\}_{k \in \Z}$. Since $\psi\left(\frac{y}{2^{k}}\right)$ has support in $[2^{k-1},2^{k+1}]$, the sum $\s(y) = \sum_{k \in \Z}\psi\left(\frac{y}{2^{k}}\right)$, defined for $y \ge 0$, is finite since at most finitely many terms are nonzero for every $y$. It is also bounded away from zero since for any $x > 0$ there is some $k \in \Z$ for which $2^{k} \le y \le 3 \cdot 2^{k-1}$ so that $\frac{y}{2^{k}}$ is at least distance $\frac{1}{2}$ from the endpoints of $\left[\frac{1}{2},2\right]$. Defining $\psi_{k}(y) = \psi\left(\frac{y}{2^{k}}\right)\s(y)^{-1}$, it follows that $\left\{\psi_{k}(y)\right\}_{k \in \Z}$ satisfies
       \[
-        \sum_{k \in \Z}\psi_{k}(x) = 1,
+        \sum_{k \in \Z}\psi_{k}(y) = 1,
       \]
-      for any $x \in (0,\infty)$. Then we can write
+      for any $y \in (0,\infty)$. Then we can write
       \begin{align*}
-        V_{s}(x) &= \frac{1}{2\pi i}\int_{(a)}\frac{\g(s+u,f)}{\g(s,f)}\Phi(u)x^{-u}\frac{du}{u} \\
-        &= \frac{1}{2\pi i}\int_{(a)}\sum_{k \in \Z}\frac{\g(s+u,f)}{\g(s,f)}\Phi(u)x^{-u}\psi_{k}(x)\frac{du}{u} \\
-        &= \sum_{k \in \Z}\frac{1}{2\pi i}\int_{(a)}\frac{\g(s+u,f)}{\g(s,f)}\Phi(u)x^{-u}\psi_{k}(x)\frac{du}{u} && \text{DCT} \\
-        &= \sum_{k \in \Z}V_{s,k}(x),
+        V_{s}(y) &= \frac{1}{2\pi i}\int_{(a)}\frac{\g(s+u,f)}{\g(s,f)}\Phi(u)y^{-u}\frac{du}{u} \\
+        &= \frac{1}{2\pi i}\int_{(a)}\sum_{k \in \Z}\frac{\g(s+u,f)}{\g(s,f)}\Phi(u)y^{-u}\psi_{k}(y)\frac{du}{u} \\
+        &= \sum_{k \in \Z}\frac{1}{2\pi i}\int_{(a)}\frac{\g(s+u,f)}{\g(s,f)}\Phi(u)y^{-u}\psi_{k}(y)\frac{du}{u} && \text{DCT} \\
+        &= \sum_{k \in \Z}V_{s,k}(y),
       \end{align*}
       where we have set
       \[
-        V_{s,k}(x) = \frac{1}{2\pi i}\int_{(a)}\frac{\g(s+u,f)}{\g(s,f)}\Phi(u)x^{-u}\psi_{k}(x)\frac{du}{u}.
+        V_{s,k}(y) = \frac{1}{2\pi i}\int_{(a)}\frac{\g(s+u,f)}{\g(s,f)}\Phi(u)y^{-u}\psi_{k}(y)\frac{du}{u}.
       \]
-      Note that $V_{s,k}(x)$ is compactly supported on $[2^{k-1},2^{k}]$ because $\psi_{k}(x)$ is compactly supported there. Moreover, \cref{rem:effect_of_V_in_approximate_functional_equation} implies that $V_{s,k}(x)$ also exhibits exponential decay for $n \gg q(f)^{\frac{1}{2}+\e}$ for any $\e > 0$. It follows that
+      Note that $V_{s,k}(y)$ is compactly supported on $[2^{k-1},2^{k}]$ because $\psi_{k}(y)$ is compactly supported there. Moreover, \cref{rem:effect_of_V_in_approximate_functional_equation} implies that $V_{s,k}(y)$ also exhibits exponential decay for $n \gg q(f)^{\frac{1}{2}+\e}$ for any $\e > 0$. It follows that
       \[
         \sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right) = \sum_{k \in \Z}\sum_{2^{k-1} \le n \le 2^{k+1}}\frac{a_{f}(n)}{\sqrt{n}}V_{\frac{1}{2},k}\left(\frac{n}{\sqrt{q(f)}}\right).
       \]
-      Using the exponential decay of $V_{\frac{1}{2},k}(x)$ to crudely bound those terms for which $n \gg q(f)^{\frac{1}{2}+\e}$ gives the estimate
+      Using the exponential decay of $V_{\frac{1}{2},k}(y)$ to crudely bound those terms for which $n \gg q(f)^{\frac{1}{2}+\e}$ gives the estimate
       \[
         \sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right) \ll \sum_{k \ll q(f)^{\e}}\sum_{\substack{2^{k-1} \le n \le 2^{k+1} \\ n \ll q(f)^{\frac{1}{2}+\e}}}\frac{a_{f}(n)}{\sqrt{n}}V_{\frac{1}{2},k}\left(\frac{n}{\sqrt{q(f)}}\right),
       \]
-      where in the first sum we have used that $\log(x) \ll_{\e} x^{\e}$. Now since $\s(x)$ is bounded away from zero, and $V_{\frac{1}{2},k}(x)$ and $\psi(x)$ are compactly supported on the same interval (so their nonzero values differ by a bounded amount), we have the weaker estimate
+      where in the first sum we have used that $\log(y) \ll_{\e} y^{\e}$. Now since $\s(y)$ is bounded away from zero, and $V_{\frac{1}{2},k}(y)$ and $\psi(y)$ are compactly supported on the same interval (so their nonzero values differ by a bounded amount), we have the weaker estimate
       \[
         \sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right) \ll_{\e} q(f)^{\e}\max_{X \ll q(f)^{\frac{1}{2}+\e}}\sum_{\frac{X}{2} \le n \le 2X}\frac{a_{f}(n)}{\sqrt{n}}\psi\left(\frac{n}{\sqrt{q(f)}}\right).
       \]

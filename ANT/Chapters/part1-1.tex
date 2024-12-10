@@ -810,7 +810,7 @@
       \begin{theorem}[Stirling's formula]
       \phantom{}
         \[
-          \G(z) \sim \sqrt{2\pi}z^{z-\frac{1}{2}}e^{-z},
+          \G(z) \sim_{\e,\d} \sqrt{2\pi}z^{z-\frac{1}{2}}e^{-z},
         \]
         provided $|\arg(z)| < \pi-\e$ and $|z| > \d$ for some $\e,\d > 0$.
       \end{theorem}
@@ -820,17 +820,17 @@
       \begin{corollary}\label{equ:weaker_Stirling_formula}
       Let $|\arg(z)| < \pi-\e$ and $|z| > \d$ for some $\e,\d > 0$. Then if $\Re(z)$ is bounded, letting $z = x+iy$, we have
         \[
-          \G(z) \sim \sqrt{2\pi}y^{x-\frac{1}{2}}e^{-\frac{\pi}{2}|y|}.
+          \G(z) \sim_{\e,\d} \sqrt{2\pi}y^{x-\frac{1}{2}}e^{-\frac{\pi}{2}|y|}.
         \]
       \end{corollary}
       \begin{proof}
         Stirling's formula can be equivalently expressed as
         \[
-          \G(z) \sim \sqrt{2\pi}(x+iy)^{x-\frac{1}{2}+iy}e^{-x-iy}.
+          \G(z) \sim_{\e,\d} \sqrt{2\pi}(x+iy)^{x-\frac{1}{2}+iy}e^{-x-iy}.
         \]
         Since $\Re(z)$ is bounded, $e^{-x-iy} \sim 1$ and $x+iy \sim iy$. This gives the simplified asymptotic
         \[
-          \G(z) \sim \sqrt{2\pi}(iy)^{x-\frac{1}{2}+iy}.
+          \G(z) \sim_{\e,\d} \sqrt{2\pi}(iy)^{x-\frac{1}{2}+iy}.
         \]
         As $\Re(z)$ is bounded, $i^{x-\frac{1}{2}} \ll 1$. Moreover, we compute
         \[
@@ -838,17 +838,17 @@
         \]
         where we have used the fact that $\log(i) = i\frac{\pi}{2}$. Together, we obtain the further simplified asymptotic
         \[
-          \G(z) \sim \sqrt{2\pi}y^{x-\frac{1}{2}}e^{-\frac{\pi}{2}|y|},
+          \G(z) \sim_{\e,\d} \sqrt{2\pi}y^{x-\frac{1}{2}}e^{-\frac{\pi}{2}|y|},
         \]
         which is the desired result
       \end{proof}
-      From our earlier discussion on asymptotics, directly weaker than the asymptotic equivalence in Stirling's formula is the estimate
+      Strictly weaker than the asymptotic equivalence in Stirling's formula is the estimate
       \begin{equation}
-          \G(z) = \sqrt{2\pi}z^{z-\frac{1}{2}}e^{-z}(1+O(1)).
+          \G(z) = \sqrt{2\pi}z^{z-\frac{1}{2}}e^{-z}(1+O_{\e,\d}(1)).
       \end{equation}
       Taking the logarithm (since $|\arg(z)| < \pi-\e$ the logarithm is defined) of this estimate gives
       \begin{equation}\label{equ:log_gamma_estimate}
-        \log\G(z) = \frac{1}{2}\log(2\pi)+\left(z-\frac{1}{2}\right)\log(z)-z+O\left(1\right),
+        \log\G(z) = \frac{1}{2}\log(2\pi)+\left(z-\frac{1}{2}\right)\log(z)-z+O_{\e,\d}\left(1\right),
       \end{equation}
       which will be useful. Using \cref{equ:log_gamma_estimate} we can obtain a useful asymptotic formula for the digamma function:
 
@@ -861,19 +861,19 @@
       \begin{proof}
         Since $z-\frac{1}{2} \sim z$, \cref{equ:log_gamma_estimate} give the simplified asymptotic
         \[
-          \log\G(z) = \frac{1}{2}\log(2\pi)+z\log(z)-z+O(1).
+          \log\G(z) = \frac{1}{2}\log(2\pi)+z\log(z)-z+O_{\e,\d}(1).
         \]
-        Set $g(z) = \frac{1}{2}\log(2\pi)+z\log(z)-z$ so that $\log\G(z) = g(z)+O(1)$. Then $\log\G(z)-g(z) = O(1)$, and by Cauchy's integral formula, we have
+        Set $g(z) = \frac{1}{2}\log(2\pi)+z\log(z)-z$ so that $\log\G(z) = g(z)+O_{\e,\d}(1)$. Then $\log\G(z)-g(z) = O_{\e,\d}(1)$, and by Cauchy's integral formula, we have
         \begin{align*}
-          \frac{\G'}{\G}(z) &= \frac{d}{dz}\left(g(z)+O(1)\right) \\
+          \frac{\G'}{\G}(z) &= \frac{d}{dz}\left(g(z)+O_{\e,\d}(1)\right) \\
           &= g'(z)+\frac{d}{dz}(\log\G(z)-g(z)) \\
           &= \log(z)+\frac{1}{2\pi i}\int_{|w-z| = r}\frac{\log\G(w)-g(w)}{(w-z)^{2}}\,dw,
         \end{align*}
-        for some sufficiently small radius $r > 0$. Therefore
+        for some sufficiently small radius $r > 0$ depending upon $\e$ and $\d$. Therefore
         \[
-          \left|\frac{\G'}{\G}(z)-\log(z)\right| \le \frac{1}{2\pi}\int_{|w-z| = r}\frac{|\log\G(w)-g(w)|}{r^{2}}\,|dw| \ll 1,
+          \left|\frac{\G'}{\G}(z)-\log(z)\right| \le \frac{1}{2\pi}\int_{|w-z| = r}\frac{|\log\G(w)-g(w)|}{r^{2}}\,|dw| \ll_{\e,d} 1,
         \]
-        where the last equality follows because $\log\G(z)-g(z) = O(1)$.
+        where the last estimate follows because $\log\G(z)-g(z) = O_{\e,d}(1)$.
       \end{proof}
 
       The last result we will need is an explicit representation for $\log\G(z)$ known as \textbf{Binet's log gamma formula}\index{Binet's log gamma formula}:
