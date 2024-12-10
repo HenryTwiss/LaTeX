@@ -78,7 +78,7 @@
       Therefore the integral converges for $\s > 0$ and hence $D(s)$ does too. It follows that $\s_{c} \le 0$.
     \end{proof}
 
-    Our next theorem states that if the coefficients of $D(s)$ are polynomially bounded, we can obtain an upper bound for the abscissa of absolute convergence:
+    Our next theorem states that if the coefficients of $D(s)$ are of polynomial growth, we can obtain an upper bound for the abscissa of absolute convergence:
 
     \begin{proposition}\label{prop:Dirichlet_series_convergence_polynomial_bound}
       Suppose $D(s)$ is a Dirichlet series whose coefficients satisfy $a(n) \ll n^{\a}$ for some real $\a$. Then the abscissa of absolute convergence satisfies $\s_{a} \le 1+\a$.
@@ -187,7 +187,7 @@
       for $-\d' < s < 1$. As $\d' > 0$, this implies that $D(s)$ converges absolutely (since $a(n)$ is nonnegative) for some $s < 0$ (say $s = -\frac{\d'}{2}$) which contradicts $\s_{a} = 0$.
     \end{proof}
 
-    Landau's theorem is very useful as it implies that if $D(s)$ is a Dirichlet series with nonnegative coefficients then $a(n) \not\ll n^{\s_{a}-(1+\e)}$ for any $\e > 0$ because otherwise \cref{prop:Dirichlet_series_convergence_polynomial_bound} implies $\s_{a} \le \s_{a}-\e$. Actually, Landau's theorem also implies $A^{\ast}(X) \not\ll X^{\s_{a}-\e}$ for otherwise \cref{prop:Dirichlet_series_convergence_polynomial_bound_average} would similarly imply $\s_{a} \le \s_{\a}-\e$. When we come across Dirichlet series whose coefficients are polynomially bounded or polynomially bounded on average, we will invoke these results without mention, except for Landau's theorem, as this is also common practice in the literature. Generally speaking, if the coefficients $a(n)$ are chosen at random, $D(s)$ will not possess any good properties outside of convergence in some region (it might not even possess that). However, the Dirichlet series we will encounter, and most of interest in the wild, will have multiplicative coefficients. In this case, the Dirichlet series admits an infinite product expression:
+    Landau's theorem is very useful as it implies that if $D(s)$ is a Dirichlet series with nonnegative coefficients then $a(n) \not\ll n^{\s_{a}-(1+\e)}$ for any $\e > 0$ because otherwise \cref{prop:Dirichlet_series_convergence_polynomial_bound} implies $\s_{a} \le \s_{a}-\e$. Actually, Landau's theorem also implies $A^{\ast}(X) \not\ll X^{\s_{a}-\e}$ for otherwise \cref{prop:Dirichlet_series_convergence_polynomial_bound_average} would similarly imply $\s_{a} \le \s_{\a}-\e$. When we come across Dirichlet series whose coefficients are of polynomial growth or of polynomial growth on average, we will invoke these results without mention, except for Landau's theorem, as this is also common practice in the literature. Generally speaking, if the coefficients $a(n)$ are chosen at random, $D(s)$ will not possess any good properties outside of convergence in some region (it might not even possess that). However, the Dirichlet series we will encounter, and most of interest in the wild, will have multiplicative coefficients. In this case, the Dirichlet series admits an infinite product expression:
 
     \begin{proposition}\label{prop:Dirichlet_series_Euler_product}
         Suppose the coefficients $a(n)$ of a Dirichlet series $D(s)$ are multiplicative and satisfy $a(n) \ll n^{\a}$ for some real $\a \ge 0$. Then
@@ -326,11 +326,11 @@
     \[
       A_{\psi}(X) = \sum_{n \ge 1}a(n)g\left(\frac{n}{X}\right),
     \]
-    where $\psi:[0,\infty) \to [0,\infty)$ is smooth function such that $\psi(y) \to 0$ as $y \to \infty$. This is most useful in two cases. The first is when we choose $\psi(y)$ to be a bump function. In this setting, the bump function applies weight $1$ or $0$ to the Dirichlet coefficients $a(n)$ and we can estimate sums like
+    where $\psi:\R_{\ge 0} \to \R_{\ge 0}$ is smooth function such that $\psi(y) \to 0$ as $y \to \infty$. This is most useful in two cases. The first is when we choose $\psi(y)$ to be a bump function. In this setting, the bump function applies weight $1$ or $0$ to the Dirichlet coefficients $a(n)$ and we can estimate sums like
     \[
       \sum_{\frac{X}{2} \le n < X}a(n) \quad \text{or} \quad \sum_{X \le n < X+Y}a(n),
     \]
-    for some $X$ and $Y$ with $Y < X$. Sums of this type are called \textbf{unweighted}\index{unweighted}. As an example of an unweighted sum, let $\psi:[0,\infty) \to [0,\infty)$ be a bump function that is identically $1$ on $[0,1]$ and has compact support within the interval $\left[1,\frac{X+1}{X}\right]$. Explicitly,
+    for some $X$ and $Y$ with $Y < X$. Sums of this type are called \textbf{unweighted}\index{unweighted}. As an example of an unweighted sum, let $\psi:\R_{\ge 0} \to \R_{\ge 0}$ be a bump function that is identically $1$ on $[0,1]$ and has compact support within the interval $\left[1,\frac{X+1}{X}\right]$. Explicitly,
     \[
       \psi(y) = \begin{cases} 1 & \text{if $0 \le y \le 1$}, \\ e^{-\frac{1-y}{\frac{X+1}{X}-y}} & \text{if $1 \le y < \frac{X+1}{X}$}, \\ 0 & \text{if $y \ge \frac{X+1}{X}$}. \end{cases}
     \]
@@ -345,7 +345,7 @@
     Therefore $\Psi(s)$ is locally absolutely bounded for $\s > 0$. In particular, the Mellin inversion formula implies that $\psi(y)$ is the Mellin inverse of $\Psi(s)$. As for nice properties, $\Psi(s)$ does not grow too fast in vertical strips:
 
     \begin{proposition}\label{prop:smoothing_function_Mellin_inverse_vertical_strips}
-      Let $\psi:[0,\infty) \to [0,\infty)$ be a bump function and let $\Psi(s)$ denote its Mellin transform. Then for any $N \ge 1$,
+      Suppose $\psi:\R_{\ge 0} \to \R_{\ge 0}$ is a bump function and let $\Psi(s)$ denote its Mellin transform. Then for any $N \ge 1$,
       \[
         \Psi(s) \ll (|s|+1)^{-N},
       \]
@@ -378,7 +378,7 @@
     The following theorem is \textbf{(smoothed) Perron's formula}\index{(smoothed) Perron's formula}:
 
     \begin{theorem}[Perron's formula, smoothed version]
-      Let $D(s)$ be a Dirichlet series with coefficient $a(n)$ and finite and nonnegative abscissa of absolute convergence $\s_{a}$. Let $\psi:[0,\infty) \to [0,\infty)$ be a bump function. Then for any $c > \s_{a}$,
+      Let $D(s)$ be a Dirichlet series with coefficient $a(n)$ and finite and nonnegative abscissa of absolute convergence $\s_{a}$. Let $\psi:\R_{\ge 0} \to \R_{\ge 0}$ be a bump function. Then for any $c > \s_{a}$,
       \[
         A_{\psi}(X) = \frac{1}{2\pi i}\int_{(c)}D(s)\Psi(s)X^{s}\,ds,
       \]
@@ -497,42 +497,31 @@
     \begin{equation}\label{equ:simplified_gamma_estimates}
       \G(s) \ll t^{\s-\frac{1}{2}}e^{-\frac{\pi}{2}|t|} \quad \text{and} \quad \frac{1}{\G(s)} \ll t^{\frac{1}{2}-\s}e^{\frac{\pi}{2}|t|} .
     \end{equation}
-    It is not hard to obtain estimates that holds in vertical strips. Suppose $s$ is in the strip $a < \s < b$ and is distance $\e$ away from the poles of $\G(s)$. For $|t| > 1$, \cref{equ:simplified_gamma_estimates} is satisfied. Moreover $\G(s)$ is bounded on the compact region
-    \[
-      \{s \in \C:a \le \s \le b,|t| \le 1\},
-    \]
-    and distance $\e$ away from the poles. As the bounds in \cref{equ:simplified_gamma_estimates} are zero when $t = 0$, the estimates
+    It is not hard to obtain estimates that holds in vertical strips. Suppose $s$ is in the vertical strip $a < \s < b$ and is distance $\e$ away from the poles of $\G(s)$. For $|t| > 1$, \cref{equ:simplified_gamma_estimates} is satisfied. Moreover $\G(s)$ is bounded on the compact region $a \le \s \le b$ with $|t| \le 1$ provided $s$ is distance $\e$ away from the poles. As the bounds in \cref{equ:simplified_gamma_estimates} are zero when $t = 0$, the estimates
     \begin{equation}\label{equ:modified_gamma_estimates}
       \G(s) \ll_{a,b} (|t|+1)^{\s-\frac{1}{2}}e^{-\frac{\pi}{2}|t|} \quad \text{and} \quad \frac{1}{\G(s)} \ll_{a,b} (|t|+1)^{\frac{1}{2}-\s}e^{\frac{\pi}{2}|t|},
     \end{equation}
-    are valid in the strip $a < \s < b$ provided we are distance $\e$ away from the poles. We can use these estimates to show that $L(s,f)$ is has polynomial growth in the $t$-aspect in vertical strips:
+    are valid in the vertical strip $a < \s < b$ provided $s$ is distance $\e$ away from the poles. We can use these estimates to show that $L(s,f)$ is has polynomial growth in the $t$-aspect in vertical strips:
 
     \begin{proposition}\label{prop:L_function_bounded_in_vertical_strips}
-      If $L(s,f)$ is an $L$-function, then for any real $a$ and $b$ with $a < b$ there is a real $\a$ such that
-      \[
-        L(s,f) \ll_{a,b} t^{\a},
-      \]
-      in the vertical strip
-      \[
-        \{s \in \C:a \le \s \le b, |t| > 1\}.
-      \]
+      If $L(s,f)$ is an $L$-function, then $L(s,f)$ is of polynomial growth in the $t$-aspect in vertical strips $a \le \s \le b$ with $|t| \ge 1$ for any $a < b$.
     \end{proposition}
     \begin{proof}
       For $\s > 1$ we have $L(\s,f) \ll_{\s} 1$. Now by the functional equation
       \[
         L(s,f) \ll \frac{\g(1-s,f)}{\g(s,f)}L(1-s,f).
       \]
-      Using \cref{equ:simplified_gamma_estimates} and the definition of $\g(s,f)$, it follows that $\frac{\g(1-s,f)}{\g(s,f)}$ is polynomially bounded in $t$. Thus for $\s < 0$, we see that $L(s,f)$ is also polynomially bounded in $t$. As $L(s,f)$ is holomorphic for $|t| > 1$ and of order $1$, we can apply the Phragm\'en-Lindel\"of convexity principle (see \cref{append:The_Phragmen_Lindelof_Convexity_principle}) so that $L(s,f)$ is polynomially bounded in $t$ in any vertical strip with $|t| > 1$.
+      Using \cref{equ:simplified_gamma_estimates} and the definition of $\g(s,f)$, it follows that $\frac{\g(1-s,f)}{\g(s,f)}$ is of polynomial growth in the $t$-aspect. Thus for $\s < 0$, we see that $L(s,f)$ is also of polynomial growth in the $t$-aspect. As $L(s,f)$ is holomorphic for $|t| > 1$ and of order $1$, we can apply the Phragm\'en-Lindel\"of convexity principle (see \cref{append:The_Phragmen_Lindelof_Convexity_principle}) so that $L(s,f)$ is of polynomial growth in the $t$-aspect in any vertical strip with $|t| > 1$.
     \end{proof}
 
     \cref{prop:L_function_bounded_in_vertical_strips} is a very important property that $L$-functions possess. It is usually used to estimate Perron type formulas. We can also use it to deduce the \textbf{approximate function equation}\index{approximate function equation}:
 
     \begin{theorem}[Approximate functional equation]
-      Let $L(s,f)$ be an $L$-function and let $\Phi(u)$ be an even holomorphic function bounded in the strip $|\Re(u)| < a+1$, for any $a > 1$, and such that $\Phi(0) = 1$. Let $X > 0$. Then for $s$ in the critical strip,
+      Let $L(s,f)$ be an $L$-function and let $\Phi(u)$ be an even holomorphic function bounded in the vertical strip $|\Re(u)| < a+1$ for any $a > 1$, such that $\Phi(0) = 1$, and let $X > 0$. Then for $s$ in the critical strip,
       \[
-        L(s,f) = \sum_{n \ge 1}\frac{a_{f}(n)}{n^{s}}V_{s}\left(\frac{n}{\sqrt{q(f)}X}\right)+\e(s,f)\sum_{n \ge 1}\frac{\conj{a_{f}(n)}}{n^{1-s}}V_{1-s}\left(\frac{nX}{\sqrt{q(f)}}\right)-\frac{R}{q(f)^{\frac{s}{2}}\g(s,f)},
+        L(s,f) = \sum_{n \ge 1}\frac{a_{f}(n)}{n^{s}}V_{s}\left(\frac{n}{\sqrt{q(f)}X}\right)+\e(s,f)\sum_{n \ge 1}\frac{\conj{a_{f}(n)}}{n^{1-s}}V_{1-s}\left(\frac{nX}{\sqrt{q(f)}}\right)+\frac{R}{q(f)^{\frac{s}{2}}\g(s,f)},
       \]
-      where $V_{s}(y):(0,\infty) \to \C$ is the smooth function defined by
+      where $V_{s}(y):\R_{> 0} \to \C$ is the smooth function defined by
       \[
         V_{s}(y) = \frac{1}{2\pi i}\int_{(a)}\frac{\g(s+u,f)}{\g(s,f)}\Phi(u)y^{-u}\frac{du}{u},
       \]
@@ -556,11 +545,11 @@
       \]
       Applying the functional equation to $\L(s+u,f)$ and performing the change of variables $u \to -u$, we obtain
       \[
-        I(X,s,f) = -\e(f)I(X^{-1},1-s,\conj{f})+\L(s,f)+R,
+        I(X,s,f) = -\e(f)I(X^{-1},1-s,\conj{f})+\L(s,f)-R,
       \]
       since $\Phi(u)$ is even. This equation is equivalent to
       \[
-        \L(s,f) = I(X,s,f)+\e(f)I(X^{-1},1-s,\conj{f})-R.
+        \L(s,f) = I(X,s,f)+\e(f)I(X^{-1},1-s,\conj{f})+R.
       \]
       Since $\Re(s+u) > 1$, we can expand the $L$-function $L(s,f)$ inside of $I(X,s,f)$ as a Dirichlet series:
       \begin{align*}
@@ -573,7 +562,7 @@
       \end{align*}
       Performing the same computation for $I(X^{-1},1-s,\conj{f})$ and substituting in the results, we arrive at
       \[
-        \L(s,f) = q(f)^{\frac{s}{2}}\g(s,f)\sum_{n \ge 1}\frac{a_{f}(n)}{n^{s}}V_{s}\left(\frac{n}{\sqrt{q(f)}X}\right)+\e(f)q(f)^{\frac{1-s}{2}}\g(1-s,f)\sum_{n \ge 1}\frac{a_{f}(n)}{n^{1-s}}V_{1-s}\left(\frac{nX}{\sqrt{q(f)}}\right)-R.
+        \L(s,f) = q(f)^{\frac{s}{2}}\g(s,f)\sum_{n \ge 1}\frac{a_{f}(n)}{n^{s}}V_{s}\left(\frac{n}{\sqrt{q(f)}X}\right)+\e(f)q(f)^{\frac{1-s}{2}}\g(1-s,f)\sum_{n \ge 1}\frac{a_{f}(n)}{n^{1-s}}V_{1-s}\left(\frac{nX}{\sqrt{q(f)}}\right)+R.
       \]
       Diving by $q(f)^{\frac{s}{2}}\g(s,f)$ completes the proof.
     \end{proof}
@@ -628,7 +617,7 @@
     \[
       \frac{\g(1-s,f)}{\g(s,f)} \ll_{\e} q(s,f)^{\frac{1-2\s}{2}},
     \]
-    for $s$ in any vertical strip and distance $\e$ away from the poles of $\g(1-s,f)$ and where we have used that $\left(\left|\frac{t+\Im(k_{i})}{2}\right|+1\right) \asymp (|s+k_{i}|+3)$. In particular, setting $\s = -\e$, our previous two bounds combine to give
+    for $s$ in any vertical strip with distance $\e$ away from the poles of $\g(1-s,f)$ and where we have used that $\left(\left|\frac{t+\Im(k_{i})}{2}\right|+1\right) \asymp (|s+k_{i}|+3)$. In particular, setting $\s = -\e$, our previous two bounds combine to give
     \[
       p_{r}(-\e+it)L(-\e+it,f) \ll_{\e} q(s,f)^{\frac{1}{2}+\e}.
     \]
@@ -651,14 +640,14 @@
 
     Any improvement upon the exponent in the convexity bound in any aspect of the analytic conductor is called a \textbf{subconvexity estimate}\index{subconvexity estimate} (or a \textbf{convexity breaking bound}\index{convexity breaking bound}). Any argument used to do so is called a \textbf{subconvexity argument}\index{subconvexity argument}.
   \section{Estimating the Central Value}
-    The Lindel\"of hypothesis is concerned with the growth of the $L$-function $L(s,f)$ along the critical line. Sometimes we are only concerned with the size of $L(s,f)$ when $s = \frac{1}{2}$. The point $s = \frac{1}{2}$ is called the \textbf{central value}\index{central value} of $L(s,f)$ since it is exactly the midpoint on the critical line. Many important properties about $L(s,f)$ can be connected to its size at the central value. Any argument used to estimate an $L$-function at the central value is called a \textbf{central value estimate}\index{central value estimate}. We will state a result which gives a very useful upper bound for the size of an $L$-function at the central value in the $q(f)$-aspect. To state it, let $\psi:[0,\infty) \to [0,\infty]$ be a bump function with compact support in $\left[\frac{1}{2},2\right]$. Explicitly,
+    The Lindel\"of hypothesis is concerned with the growth of the $L$-function $L(s,f)$ along the critical line. Sometimes we are only concerned with the size of $L(s,f)$ when $s = \frac{1}{2}$. The point $s = \frac{1}{2}$ is called the \textbf{central value}\index{central value} of $L(s,f)$ since it is exactly the midpoint on the critical line. Many important properties about $L(s,f)$ can be connected to its size at the central value. Any argument used to estimate an $L$-function at the central value is called a \textbf{central value estimate}\index{central value estimate}. We will state a result which gives a very useful upper bound for the size of an $L$-function at the central value in the $q(f)$-aspect. To state it, let $\psi:\R_{\ge 0} \to \R_{\ge 0}$ be a bump function with compact support in $\left[\frac{1}{2},2\right]$. Explicitly,
     \[
       \psi(y) = \begin{cases} e^{-\frac{1}{9-(4y-5)^{2}}} & \text{if $|4y-5| < 3$}, \\ 0 & \text{if $|4y-5| \ge 3$}. \end{cases}
     \]
     The theorem is the following:
 
     \begin{theorem}
-      Let $L(s,f)$ be an $L$-function and let $\psi:[0,\infty) \to [0,\infty]$ be a bump function with compact support in $\left[\frac{1}{2},2\right]$. Then for any $\e > 0$, we have
+      Let $L(s,f)$ be an $L$-function and let $\psi:\R_{\ge 0} \to \R_{\ge 0}$ be a bump function with compact support in $\left[\frac{1}{2},2\right]$. Then for any $\e > 0$, we have
       \[
         L\left(\frac{1}{2},f\right) \ll_{\e} \max_{X \ll q(f)^{\frac{1}{2}+\e}}\frac{A_{\psi}(X)}{q(f)^{\frac{1}{4}}}+\frac{S}{q(f)^{\frac{1}{4}}},
       \]
@@ -670,7 +659,7 @@
     \begin{proof}
       Taking $s = \frac{1}{2}$ and $X = 1$ in the approximate functional equation gives
       \[
-        L\left(\frac{1}{2},f\right) = \sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right)+\e(f)\sum_{n \ge 1}\frac{\conj{a_{f}(n)}}{\sqrt{n}}V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right)-\frac{R}{q(f)^{\frac{1}{4}}\g\left(\frac{1}{2},f\right)}.
+        L\left(\frac{1}{2},f\right) = \sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right)+\e(f)\sum_{n \ge 1}\frac{\conj{a_{f}(n)}}{\sqrt{n}}V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right)+\frac{R}{q(f)^{\frac{1}{4}}\g\left(\frac{1}{2},f\right)}.
       \]
       This implies the bound
       \[
@@ -680,7 +669,7 @@
       \[
         \sum_{k \in \Z}\psi_{k}(y) = 1,
       \]
-      for any $y \in (0,\infty)$. Then we can write
+      for any $y \in \R_{> 0}$. Then we can write
       \begin{align*}
         V_{s}(y) &= \frac{1}{2\pi i}\int_{(a)}\frac{\g(s+u,f)}{\g(s,f)}\Phi(u)y^{-u}\frac{du}{u} \\
         &= \frac{1}{2\pi i}\int_{(a)}\sum_{k \in \Z}\frac{\g(s+u,f)}{\g(s,f)}\Phi(u)y^{-u}\psi_{k}(y)\frac{du}{u} \\
