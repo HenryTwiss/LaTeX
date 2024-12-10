@@ -86,7 +86,7 @@
     \begin{proof}
       It suffices to show that $D(s)$ is absolutely convergent in the region $\s > 1+\a$. For $s$ is in this region, the polynomial bound gives
       \[
-        D(s) \ll \sum_{n \ge 1}\left|\frac{a(n)}{n^{s}}\right| \ll \sum_{n \ge 1}\frac{1}{n^{\s-\a}}.
+        D(s) \ll \sum_{n \ge 1}\left|\frac{a(n)}{n^{s}}\right| \ll_{\a} \sum_{n \ge 1}\frac{1}{n^{\s-\a}}.
       \]
       The latter series converges by the integral test because $\s-\a > 1$. Therefore $D(s)$ is absolutely convergent.
     \end{proof}
@@ -145,11 +145,11 @@
       \[
         \sum_{n \le N}\frac{|a(n)|}{n^{\s}} = |a(N)|N^{-\s}-|a(1)|+\s\int_{1}^{N}A^{\ast}(u)u^{-(\s+1)}\,du,
       \]
-      By assumption $A^{\ast}(u) \ll u^{\a}$. Therefore there is some $N'$ such that $A^{\ast}(N) \ll N^{\a}$ for all $N \ge N'$. In particular $a(N) \ll_{\a} N^{\a}$. So for such $N$, we estimate as follows:
+      By assumption $A^{\ast}(u) \ll_{\a} u^{\a}$ so that there is some $N'$ such that $A^{\ast}(N) \ll_{\a} N^{\a}$ for all $N \ge N'$. In particular $a(N) \ll_{\a} N^{\a}$. So for such $N$, we estimate as follows:
       \begin{align*}
         \sum_{n \le N}\frac{|a(n)|}{n^{\s}} &= |a(N)|N^{-\s}-|a(1)|+\s\int_{1}^{N}A^{\ast}(u)u^{-(\s+1)}\,du \\
         &= |a(N)|N^{-\s}-|a(1)|+\s\int_{1}^{N'}A^{\ast}(u)u^{-(\s+1)}\,du+\s\int_{N'}^{N}A^{\ast}(u)u^{-(\s+1)}\,du \\
-        &\ll |a(N)|N^{-\s}+|a(1)|+\s\int_{1}^{N'}|A^{\ast}(u)|u^{-(\s+1)}\,du+\s\int_{N'}^{N}u^{\a-(\s+1)}\,du.
+        &\ll_{\a} |a(N)|N^{-\s}+|a(1)|+\s\int_{1}^{N'}|A^{\ast}(u)|u^{-(\s+1)}\,du+\s\int_{N'}^{N}u^{\a-(\s+1)}\,du.
       \end{align*}
       As $N \to \infty$, the left-hand side tends towards $\sum_{n \ge 1}\frac{|a(n)|}{n^{\s}}$. As for the right-hand side, the first term tends to zero since $\s > \a$. The second and third terms remain bounded as they are independent of $N$. For the last term, we compute
       \[
@@ -187,7 +187,7 @@
       for $-\d' < s < 1$. As $\d' > 0$, this implies that $D(s)$ converges absolutely (since $a(n)$ is nonnegative) for some $s < 0$ (say $s = -\frac{\d'}{2}$) which contradicts $\s_{a} = 0$.
     \end{proof}
 
-    Landau's theorem is very useful as it implies that if $D(s)$ is a Dirichlet series with nonnegative coefficients then $a(n) \not\ll n^{\s_{a}-(1+\e)}$ for any $\e > 0$ because otherwise \cref{prop:Dirichlet_series_convergence_polynomial_bound} implies $\s_{a} \le \s_{a}-\e$. Actually, Landau's theorem also implies $A^{\ast}(X) \not\ll X^{\s_{a}-\e}$ for otherwise \cref{prop:Dirichlet_series_convergence_polynomial_bound_average} would similarly imply $\s_{a} \le \s_{\a}-\e$. When we come across Dirichlet series whose coefficients are of polynomial growth or of polynomial growth on average, we will invoke these results without mention, except for Landau's theorem, as this is also common practice in the literature. Generally speaking, if the coefficients $a(n)$ are chosen at random, $D(s)$ will not possess any good properties outside of convergence in some region (it might not even possess that). However, the Dirichlet series we will encounter, and most of interest in the wild, will have multiplicative coefficients. In this case, the Dirichlet series admits an infinite product expression:
+    Landau's theorem is very useful as it implies that if $D(s)$ is a Dirichlet series with nonnegative coefficients then $a(n) \not\ll_{\e} n^{\s_{a}-(1+\e)}$ for any $\e > 0$ because otherwise \cref{prop:Dirichlet_series_convergence_polynomial_bound} implies $\s_{a} \le \s_{a}-\e$. Actually, Landau's theorem also implies $A^{\ast}(X) \not\ll_{\e} X^{\s_{a}-\e}$ for otherwise \cref{prop:Dirichlet_series_convergence_polynomial_bound_average} would similarly imply $\s_{a} \le \s_{\a}-\e$. When we come across Dirichlet series whose coefficients are of polynomial growth or of polynomial growth on average, we will invoke these results without mention, except for Landau's theorem, as this is also common practice in the literature. Generally speaking, if the coefficients $a(n)$ are chosen at random, $D(s)$ will not possess any good properties outside of convergence in some region (it might not even possess that). However, the Dirichlet series we will encounter, and most of interest in the wild, will have multiplicative coefficients. In this case, the Dirichlet series admits an infinite product expression:
 
     \begin{proposition}\label{prop:Dirichlet_series_Euler_product}
         Suppose the coefficients $a(n)$ of a Dirichlet series $D(s)$ are multiplicative and satisfy $a(n) \ll_{\a} n^{\a}$ for some real $\a \ge 0$. Then
@@ -225,11 +225,7 @@
         \[
           \sum_{n \ge 1}\left|\frac{a(n)}{n^{s}}\right|,
         \]
-        and the second sum is part of its tail. So the first sum must convergence hence defining an absolutely convergent Dirichlet series in $\s > 1+\a$, and the second sum must tend to zero. Lastly, if the $a(n)$ are completely multiplicative, then since $\s > 1+\a$, we have
-        \[
-          \frac{a(p)}{p^{s}} \ll \frac{1}{p^{\s-\a}} < \frac{1}{p} < 1.
-        \]
-        So the formula for a geometric series gives
+        and the second sum is part of its tail. So the first sum must convergence hence defining an absolutely convergent Dirichlet series in $\s > 1+\a$, and the second sum must tend to zero. Lastly, if the $a(n)$ are completely multiplicative the formula for a geometric series gives
         \[
           \prod_{p}\left(\sum_{k \ge 0}\frac{a(p^{k})}{p^{ks}}\right) = \prod_{p}\left(\sum_{k \ge 0}\left(\frac{a(p)}{p^{s}}\right)^{k}\right) = \prod_{p}(1-a(p)p^{-s})^{-1}.
         \]
@@ -261,7 +257,7 @@
       \[
         \sum_{n \ge 1}\frac{a(n)}{n^{s}} = \lim_{Y \to \infty}A'(Y)Y^{-s}+s\int_{1}^{\infty}A'(u)u^{-(s+1)}\,du.
       \]
-      Now $A'(Y) \le A(Y)$ and $A(Y) \ll_{\e} Y^{\s_{a}+\e}$ for any $\e > 0$ by \cref{prop:Dirichlet_series_coefficient_size_on_average} so that $A'(Y)Y^{-s} \ll Y^{\s_{a}+\e-\s}$. Choosing $\e < \s-\s_{a}$, this latter term tends to zero as $Y \to \infty$, which implies that $A'(Y)Y^{-s} \to 0$ as $Y \to \infty$. Therefore we can write the equation above as
+      Now $A'(Y) \le A(Y)$ and $A(Y) \ll_{\e} Y^{\s_{a}+\e}$ for any $\e > 0$ by \cref{prop:Dirichlet_series_coefficient_size_on_average} so that $A'(Y)Y^{-s} \ll_{\e} Y^{\s_{a}+\e-\s}$. Choosing $\e < \s-\s_{a}$, this latter term tends to zero as $Y \to \infty$, which implies that $A'(Y)Y^{-s} \to 0$ as $Y \to \infty$. Therefore we can write the equation above as
       \[
         \frac{D(s)}{s} = \int_{1}^{\infty}A'(u)u^{-(s+1)}\,du = \int_{0}^{\infty}A'(u)u^{-(s+1)}\,du,
       \]
@@ -311,13 +307,13 @@
     \begin{corollary}
       Let $D(s)$ be a Dirichlet series with coefficient $a(n)$ and finite and nonnegative abscissa of absolute convergence $\s_{a}$. Then for any $c > \s_{a}$ and $T > 0$,
       \[
-        A'(X) = \frac{1}{2\pi i}\int_{c-iT}^{c+iT}D(s)X^{s}\,\frac{ds}{s}+O_{c}\left(\frac{X^{c}}{T}\right),
+        A'(X) = \frac{1}{2\pi i}\int_{c-iT}^{c+iT}D(s)X^{s}\,\frac{ds}{s}+O\left(\frac{X^{c}}{T}\right),
       \]
     \end{corollary}
     \begin{proof}
       For sufficiently large $X$, we have
       \[
-        \min\left(1,\frac{1}{T\left|\log\left(\frac{X}{n}\right)\right|}\right) \ll_{c} \frac{X^{c}}{T}.
+        \min\left(1,\frac{1}{T\left|\log\left(\frac{X}{n}\right)\right|}\right) \ll \frac{X^{c}}{T}.
       \]
       The statement now follows from truncated Perron's formula.
     \end{proof}
@@ -497,17 +493,17 @@
     \[
       \G(s) \ll t^{\s-\frac{1}{2}}e^{-\frac{\pi}{2}|t|} \quad \text{and} \quad \frac{1}{\G(s)} \ll t^{\frac{1}{2}-\s}e^{\frac{\pi}{2}|t|} .
     \]
-    It is not hard to obtain estimates that holds in vertical strips. Suppose $s$ is in the vertical strip $a < \s < b$ and is distance $\e$ away from the poles of $\G(s)$. For $|t| > 1$, \cref{equ:simplified_gamma_estimates} is satisfied. Moreover $\G(s)$ is bounded on the compact region $a \le \s \le b$ with $|t| \le 1$ provided $s$ is distance $\e$ away from the poles. As the bounds in \cref{equ:simplified_gamma_estimates} are zero when $t = 0$, the estimates
+    It is not hard to obtain estimates that holds in vertical strips. Suppose $s$ is in the vertical strip $a < \s < b$ and is distance $\e$ away from the poles of $\G(s)$. For $|t| > 1$, the estimates above are satisfied. As these estimates are zero when $t = 0$ and $\G(s)$ is bounded on the compact region $a \le \s \le b$ with $|t| \le 1$ provided $s$ is distance $\e$ away from the poles, the estimates
     \[
-      \G(s) \ll_{a,b,\e} (|t|+1)^{\s-\frac{1}{2}}e^{-\frac{\pi}{2}|t|} \quad \text{and} \quad \frac{1}{\G(s)} \ll_{a,b,\e} (|t|+1)^{\frac{1}{2}-\s}e^{\frac{\pi}{2}|t|},
+      \G(s) \ll_{\e} (|t|+1)^{\s-\frac{1}{2}}e^{-\frac{\pi}{2}|t|} \quad \text{and} \quad \frac{1}{\G(s)} \ll_{\e} (|t|+1)^{\frac{1}{2}-\s}e^{\frac{\pi}{2}|t|},
     \]
     are valid in the vertical strip $a < \s < b$ and distance $\e$ away from the poles of $\G(s)$ in the first estimate. As $1-s \sim s$, we immediately have the useful estimate
     \[
-      \frac{\G(1-s)}{\G(s)} \ll_{a,b,\e} (|t|+1)^{1-2\s},
+      \frac{\G(1-s)}{\G(s)} \ll_{\e} (|t|+1)^{1-2\s},
     \]
     valid in the is in the vertical strip $a < \s < b$ and distance $\e$ away from the poles of $\G(1-s)$. It easily follows from the definition of $\g(s,f)$ that
     \begin{equation}\label{equ:gamma_factor_analytic_conductor_estimate}
-      \frac{\g(1-s,f)}{\g(s,f)} \ll_{a,b,\e} q(s,f)^{\frac{1-2\s}{2}},
+      \frac{\g(1-s,f)}{\g(s,f)} \ll_{\e} q(s,f)^{\frac{1-2\s}{2}},
     \end{equation}
     is valid in the is in the vertical strip $a < \s < b$ and is distance $\e$ away from the poles of $\g(1-s,f)$. We can use this last estimate to show that $L(s,f)$ is has polynomial growth in the $t$-aspect in vertical strips:
 
@@ -519,7 +515,7 @@
       \[
         L(s,f) \ll_{\s} q(s,f)^{\frac{1-2\s}{2}}L(1-s,f).
       \]
-      Clearly $q(s,f)^{\frac{1-2\s}{2}}$ is of polynomial growth in the $t$-aspect provided $\s$ is bounded. Thus for bounded $\s < \min(0,a)$, we see that $L(s,f)$ is also of polynomial growth in the $t$-aspect. As $L(s,f)$ is holomorphic for $|t| \ge 1$ and of order $1$, we can apply the Phragm\'en-Lindel\"of convexity principle in this region (see \cref{append:The_Phragmen_Lindelof_Convexity_principle}) so that $L(s,f)$ is of polynomial growth in the $t$-aspect in the vertical strip $a \le \s \le b$ with $|t| \ge 1$.
+      Clearly $q(s,f)^{\frac{1-2\s}{2}}$ is of polynomial growth in the $t$-aspect provided $\s$ is bounded. Thus for bounded $\s < \min(0,a)$, we see that $L(s,f)$ is also of polynomial growth in the $t$-aspect for $|t| \ge 1$. Moreover, $L(s,f)$ is clearly bounded on the line $t = 1$ by this estimate provided $\s$ is bounded. As $L(s,f)$ is holomorphic for $|t| \ge 1$ and of order $1$, we can apply the Phragm\'en-Lindel\"of convexity principle in this region (see \cref{append:The_Phragmen_Lindelof_Convexity_principle}) so that $L(s,f)$ is of polynomial growth in the $t$-aspect in the vertical strip $a \le \s \le b$ with $|t| \ge 1$.
     \end{proof}
 
     \cref{prop:L_function_bounded_in_vertical_strips} is a very important property that $L$-functions possess. It is usually used to estimate Perron type formulas. We can also use it to deduce the \textbf{approximate function equation}\index{approximate function equation}:
