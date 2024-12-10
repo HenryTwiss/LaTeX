@@ -81,7 +81,7 @@
     Our next theorem states that if the coefficients of $D(s)$ are of polynomial growth, we can obtain an upper bound for the abscissa of absolute convergence:
 
     \begin{proposition}\label{prop:Dirichlet_series_convergence_polynomial_bound}
-      Suppose $D(s)$ is a Dirichlet series whose coefficients satisfy $a(n) \ll n^{\a}$ for some real $\a$. Then the abscissa of absolute convergence satisfies $\s_{a} \le 1+\a$.
+      Suppose $D(s)$ is a Dirichlet series whose coefficients satisfy $a(n) \ll_{\a} n^{\a}$ for some real $\a$. Then the abscissa of absolute convergence satisfies $\s_{a} \le 1+\a$.
     \end{proposition}
     \begin{proof}
       It suffices to show that $D(s)$ is absolutely convergent in the region $\s > 1+\a$. For $s$ is in this region, the polynomial bound gives
@@ -131,10 +131,10 @@
       which is equivalent to the desired estimate.
     \end{proof}
 
-    A way to think about \cref{prop:Dirichlet_series_coefficient_size_on_average} is that if the abscissa of absolute convergence is $\s_{a} \ge 0$ then the size of the coefficients $a(n)$ is at most $n^{\s_{a}+\e}$ on average for any $\e > 0$. Of corse, if $a(n) \ll n^{\a}$ then \cref{prop:Dirichlet_series_convergence_polynomial_bound} implies that $\s_{a} \le 1+\a$ and so \cref{prop:Dirichlet_series_coefficient_size_on_average} gives the significantly weaker estimate $A(X) \ll_{\e} X^{1+\a+\e}$. However, if we only have a bound of the form $A(X) \ll X^{\a}$ we can still obtain an upper estimate for the abscissa of absolute convergence:
+    A way to think about \cref{prop:Dirichlet_series_coefficient_size_on_average} is that if the abscissa of absolute convergence is $\s_{a} \ge 0$ then the size of the coefficients $a(n)$ is at most $n^{\s_{a}+\e}$ on average for any $\e > 0$. Of corse, if $a(n) \ll_{\a} n^{\a}$ then \cref{prop:Dirichlet_series_convergence_polynomial_bound} implies that $\s_{a} \le 1+\a$ and so \cref{prop:Dirichlet_series_coefficient_size_on_average} gives the significantly weaker estimate $A(X) \ll_{\e} X^{1+\a+\e}$. However, if we have a bound of the form $A^{\ast}(X) \ll_{\a} X^{\a}$ we can still obtain an upper estimate for the abscissa of absolute convergence:
 
     \begin{proposition}\label{prop:Dirichlet_series_convergence_polynomial_bound_average}
-      Suppose $D(s)$ is a Dirichlet series such that $A^{\ast}(X) \ll X^{\a}$ for some real $\a \ge 0$. Then the abscissa of absolute convergence satisfies $\s_{a} \le \a$.
+      Suppose $D(s)$ is a Dirichlet series such that $A^{\ast}(X) \ll_{\a} X^{\a}$ for some real $\a \ge 0$. Then the abscissa of absolute convergence satisfies $\s_{a} \le \a$.
     \end{proposition}
     \begin{proof}
       It suffices to show that $D(s)$ is absolutely convergent in the region $\s > \a$. Let $s$ be in this region. Then
@@ -145,7 +145,7 @@
       \[
         \sum_{n \le N}\frac{|a(n)|}{n^{\s}} = |a(N)|N^{-\s}-|a(1)|+\s\int_{1}^{N}A^{\ast}(u)u^{-(\s+1)}\,du,
       \]
-      By assumption $A^{\ast}(u) \ll u^{\a}$. Therefore there is some $N'$ such that $A^{\ast}(N) \ll N^{\a}$ for all $N \ge N'$. In particular $a(N) \ll N^{\a}$. So for such $N$, we estimate as follows:
+      By assumption $A^{\ast}(u) \ll u^{\a}$. Therefore there is some $N'$ such that $A^{\ast}(N) \ll N^{\a}$ for all $N \ge N'$. In particular $a(N) \ll_{\a} N^{\a}$. So for such $N$, we estimate as follows:
       \begin{align*}
         \sum_{n \le N}\frac{|a(n)|}{n^{\s}} &= |a(N)|N^{-\s}-|a(1)|+\s\int_{1}^{N}A^{\ast}(u)u^{-(\s+1)}\,du \\
         &= |a(N)|N^{-\s}-|a(1)|+\s\int_{1}^{N'}A^{\ast}(u)u^{-(\s+1)}\,du+\s\int_{N'}^{N}A^{\ast}(u)u^{-(\s+1)}\,du \\
@@ -158,7 +158,7 @@
       But $\s > \a$ so this term is also bounded as $N \to \infty$. This finishes the proof.
     \end{proof}
 
-    Do not be fooled; \cref{prop:Dirichlet_series_convergence_polynomial_bound_average} is in general weaker than \cref{prop:Dirichlet_series_convergence_polynomial_bound}. For example, from our comments following \cref{prop:Dirichlet_series_coefficient_size_on_average}, if $D(s)$ is a Dirichlet series with coefficients $a(n)$ and we have the estimate $A^{\ast}(X) \ll_{\e} X^{\b}$ for some real $\b$ then \cref{prop:Dirichlet_series_convergence_polynomial_bound_average} only says that $\s_{a} \le \b$. If $\a$ is very small compared to $\b$, this is a significantly worse upper bound for the abscissa of absolute convergence than what \cref{prop:Dirichlet_series_convergence_polynomial_bound} would imply if $a(n) \ll n^{\a}$. Actually, the question of sharp polynomial bounds for Dirichlet coefficients can be very deep. However, if the coefficients $a(n)$ are always nonnegative, then \textbf{Landau's theorem}\index{Landau's theorem} provides a way of obtaining a lower bound for their growth as well as describing a singularity of $D(s)$:
+    Do not be fooled; \cref{prop:Dirichlet_series_convergence_polynomial_bound_average} is in general weaker than \cref{prop:Dirichlet_series_convergence_polynomial_bound}. For example, from our comments following \cref{prop:Dirichlet_series_coefficient_size_on_average}, if $D(s)$ is a Dirichlet series with coefficients $a(n)$ and we have the estimate $A^{\ast}(X) \ll_{\b} X^{\b}$ for some real $\b$ then \cref{prop:Dirichlet_series_convergence_polynomial_bound_average} only says that $\s_{a} \le \b$. If $\a$ is very small compared to $\b$, this is a significantly worse upper bound for the abscissa of absolute convergence than what \cref{prop:Dirichlet_series_convergence_polynomial_bound} would imply if $a(n) \ll_{\a} n^{\a}$. Actually, the question of sharp polynomial bounds for Dirichlet coefficients can be very deep. However, if the coefficients $a(n)$ are always nonnegative, then \textbf{Landau's theorem}\index{Landau's theorem} provides a way of obtaining a lower bound for their growth as well as describing a singularity of $D(s)$:
 
     \begin{theorem}[Landau's theorem]
       Suppose $D(s)$ is a Dirichlet series with nonnegative coefficients $a(n)$ and finite abscissa of absolute convergence $\s_{a}$. Then $\s_{a}$ is a singularity of $D(s)$.
@@ -190,7 +190,7 @@
     Landau's theorem is very useful as it implies that if $D(s)$ is a Dirichlet series with nonnegative coefficients then $a(n) \not\ll n^{\s_{a}-(1+\e)}$ for any $\e > 0$ because otherwise \cref{prop:Dirichlet_series_convergence_polynomial_bound} implies $\s_{a} \le \s_{a}-\e$. Actually, Landau's theorem also implies $A^{\ast}(X) \not\ll X^{\s_{a}-\e}$ for otherwise \cref{prop:Dirichlet_series_convergence_polynomial_bound_average} would similarly imply $\s_{a} \le \s_{\a}-\e$. When we come across Dirichlet series whose coefficients are of polynomial growth or of polynomial growth on average, we will invoke these results without mention, except for Landau's theorem, as this is also common practice in the literature. Generally speaking, if the coefficients $a(n)$ are chosen at random, $D(s)$ will not possess any good properties outside of convergence in some region (it might not even possess that). However, the Dirichlet series we will encounter, and most of interest in the wild, will have multiplicative coefficients. In this case, the Dirichlet series admits an infinite product expression:
 
     \begin{proposition}\label{prop:Dirichlet_series_Euler_product}
-        Suppose the coefficients $a(n)$ of a Dirichlet series $D(s)$ are multiplicative and satisfy $a(n) \ll n^{\a}$ for some real $\a \ge 0$. Then
+        Suppose the coefficients $a(n)$ of a Dirichlet series $D(s)$ are multiplicative and satisfy $a(n) \ll_{\a} n^{\a}$ for some real $\a \ge 0$. Then
         \[
           D(s) = \prod_{p}\left(\sum_{k \ge 0}\frac{a(p^{k})}{p^{ks}}\right),
         \]
@@ -205,7 +205,7 @@
         for $\s > 1+\a$.
     \end{proposition}
     \begin{proof}
-        Since $a(n) \ll n^{\a}$, \cref{prop:Dirichlet_series_convergence_polynomial_bound} implies that $D(s)$ converges absolutely for $\s > 1+\a$. Let $s$ be such that $\s > 1+\a$. Since
+        Since $a(n) \ll_{\a} n^{\a}$, \cref{prop:Dirichlet_series_convergence_polynomial_bound} implies that $D(s)$ converges absolutely for $\s > 1+\a$. Let $s$ be such that $\s > 1+\a$. Since
         \[
           \sum_{k \ge 0}\left|\frac{a(p^{k})}{p^{ks}}\right| < \sum_{n \ge 1}\left|\frac{a(n)}{n^{s}}\right|,
         \]
