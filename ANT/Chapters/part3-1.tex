@@ -414,11 +414,11 @@
       with $\k_{i} \in \C$ that are either real or appear in conjugate pairs. We also require $\Re(\k_{i}) \ge -1$. The $\k_{i}$ are called the \textbf{local roots}\index{local roots} (or \textbf{local parameters}\index{local parameters}) at infinity.
       \item There exists an integer $q(f) \ge 1$ called the \textbf{conductor}\index{conductor} such that $\a_{i}(p) \neq 0$ for all prime $p$ such that $p \nmid q(f)$. If $p \mid q(f)$, then we say $p$ is \textbf{ramified}\index{ramified} and is \textbf{unramified}\index{unramified} otherwise. The \textbf{analytic conductor}\index{analytic conductor} $q(s,f)$ is defined to be
       \[
-        q(s,f) = q(f)q_{\infty}(s),
+        q(s,f) = q(f)q_{\infty}(s,f),
       \]
       where we set
       \[
-        q_{\infty}(s) = \prod_{1 \le i \le d}(|s+\k_{i}|+3).
+        q_{\infty}(s,f) = \prod_{1 \le i \le d}(|s+\k_{i}|+3).
       \]
       \item The \textbf{completed $L$-function}\index{completed $L$-function}
       \[
@@ -503,9 +503,9 @@
     \]
     valid in the is in the vertical strip $a < \s < b$ and distance $\e$ away from the poles of $\G(1-s)$. It easily follows from the definition of $\g(s,f)$ that
     \begin{equation}\label{equ:gamma_factor_analytic_conductor_estimate}
-      \frac{\g(1-s,f)}{\g(s,f)} \ll_{\e} q(s,f)^{\frac{1-2\s}{2}},
+      \frac{\g(1-s,f)}{\g(s,f)} \ll_{\e} q_{\infty}(s,f)^{\frac{1-2\s}{2}} \quad \text{and} \quad q(f)^{\frac{s}{2}}\frac{\g(1-s,f)}{\g(s,f)} \ll_{\e} q(s,f)^{\frac{1-2\s}{2}},
     \end{equation}
-    is valid in the is in the vertical strip $a < \s < b$ and is distance $\e$ away from the poles of $\g(1-s,f)$. We can use this last estimate to show that $L(s,f)$ is has polynomial growth in the $t$-aspect in vertical strips:
+    are valid in the is in the vertical strip $a < \s < b$ and is distance $\e$ away from the poles of $\g(1-s,f)$. We can use this last estimate to show that $L(s,f)$ is has polynomial growth in the $t$-aspect in vertical strips:
 
     \begin{proposition}\label{prop:L_function_bounded_in_vertical_strips}
       For any $L$-function $L(s,f)$ and $a < b$, $L(s,f)$ is of polynomial growth in the $t$-aspect in the vertical half-strip $a \le \s \le b$ with $|t| \ge 1$.
@@ -543,7 +543,7 @@
       \[
         I(X,s,f) = \frac{1}{2\pi i}\int_{(a)}\L(s+u,f)\Phi(u)X^{u}\,\frac{du}{u}.
       \]
-      $L(s,f)$ has polynomial growth in the $t$-aspect by \cref{prop:L_function_bounded_in_vertical_strips}. From \cref{equ:modified_gamma_estimates} we see that $\g(s+u,f)$ has exponential decay as $\Im(u) \to \infty$. Since $\Phi(u)$ is bounded, it follows that the integral has exponential decay in a vertical strip containing $|\Re(u)| \le a$. Therefore the integral is absolutely bounded by \cref{met:decay_compacta_integral}. Moreover, we may shift the line of integration to $(-a)$. In doing so, we pass by a simple pole at $u = 0$ and possible poles at $u = 1-s$ and $u = -s$, giving
+      $L(s,f)$ has polynomial growth in the $t$-aspect by \cref{prop:L_function_bounded_in_vertical_strips}. From \cref{equ:modified_gamma_estimates} we see that $\g(s+u,f)$ has exponential decay. Since $\Phi(u)$ is bounded, it follows that the integrand has exponential decay in a vertical strip containing $|\Re(u)| \le a$. Therefore the integral is absolutely bounded by \cref{met:decay_compacta_integral}. Moreover, we may shift the line of integration to $(-a)$. In doing so, we pass by a simple pole at $u = 0$ and possible poles at $u = 1-s$ and $u = -s$, giving
       \[
         I(X,s,f) = \frac{1}{2\pi i}\int_{(-a)}\L(s+u,f)\Phi(u)X^{u}\,\frac{du}{u}+\L(s,f)+R.
       \]
@@ -571,14 +571,40 @@
       Diving by $q(f)^{\frac{s}{2}}\g(s,f)$ completes the proof.
     \end{proof}
 
-    The idea of the approximate functional equation was developed by Hardy and Littlewood in the series \cite{hardyzeros1921,hardyapproximate1923,hardyapproximate1929}.
+    The approximate functional equation was first developed by Hardy and Littlewood in the series \cite{hardyzeros1921,hardyapproximate1923,hardyapproximate1929}. The function $V_{s}(y)$ has the effect of smoothing out the two sums on the right-hand side of the approximate functional equation. To see this, we need  the following proposition:
 
-    \begin{remark}\label{rem:effect_of_V_in_approximate_functional_equation}
-      The function $V_{s}(y)$ has the effect of smoothing out the two sums in the right-hand side of the approximate functional equation. For simplicity take $X = 1$ and let $u = \tau+ir$. From \cref{equ:modified_gamma_estimates}, and that $s$ is fixed,
+    \begin{proposition}\label{prop:V_function_decay}
+      Let $L(s,f)$ be an $L$-function and $\Phi(u)$ be an even holomorphic function bounded in the vertical strip $|\Re(u)| < a+1$ for any $a > 1$ such that $\Phi(0) = 1$. Let $V_{s}(y):\R_{> 0} \to \C$ be the smooth function defined by
       \[
-        \frac{\g(s+u,f)}{\g(s,f)} \ll \todo{xxx}
+        V_{s}(y) = \frac{1}{2\pi i}\int_{(a)}\frac{\g(s+u,f)}{\g(s,f)}\Phi(u)y^{-u}\frac{du}{u}.
       \]
-    \end{remark}
+      For $s$ in the critical strip, $V_{s}(y)$ satisfies the estimate
+      \[
+        V_{s}(y) \ll \left(1+\frac{y}{\sqrt{q_{\infty}(s,f)}}\right)^{-a}.
+      \]
+    \end{proposition}
+    \begin{proof}
+      Let $u = \tau+ir$. From \cref{equ:modified_gamma_estimates}, we deduce that
+      \[
+        \frac{\G(s+u)}{\G(s)} \ll \frac{(|t+r|+1)^{\s+\tau-\frac{1}{2}}}{(|t|+1)^{\s-\frac{1}{2}}}e^{\frac{\pi}{2}(|t|-|t+r|)} \ll (|r|+1)^{\s+\tau-\frac{1}{2}}e^{-\frac{\pi}{2}|r|},
+      \]
+      where the last estimate follows because $s$ is fixed and so $t+r \sim r$. From the definition of the analytic conductor, we have the estimate
+      \[
+        \frac{\g(s+u,f)}{\g(s)} \ll q_{\infty}(s,f)^{\frac{\tau}{2}}e^{-\frac{\pi}{2}d|r|},
+      \]
+      where we have made use of the fact that for $s$ in the critical strip, $\frac{\s-1}{2} \le 0$ so $(|r|+1)^{\frac{\s+\tau-1}{2}} \ll (|r|+1)^{\tau}$. The fact tht $\Phi(u)$ is bounded, $u$ is bounded away from zero, and the estimate for the ratio of gamma factors gives the first estimate in the following chain:
+      \begin{align*}
+        V_{s}(y) &= \frac{1}{2\pi i}\int_{(a)}\frac{\g(s+u,f)}{\g(s,f)}\Phi(u)y^{-u}\frac{du}{u} \\
+        &\ll \int_{-\infty}^{\infty}q_{\infty}(s,f)^{\frac{a}{2}}e^{-\frac{\pi}{2}d|r|}y^{-a}\,dr \\
+        &\ll \int_{-\infty}^{\infty}q_{\infty}(s,f)^{\frac{a}{2}}e^{-\frac{\pi}{2}d|r|}(1+y)^{-a}\,dr \\
+        &\ll \int_{-\infty}^{\infty}e^{-\frac{\pi}{2}d|r|}\left(1+\frac{y}{\sqrt{q_{\infty}(s,f)}}\right)^{-a}\,dr \\
+        &\ll \left(1+\frac{y}{\sqrt{q_{\infty}(s,f)}}\right)^{-a}\int_{-\infty}^{\infty}e^{-\frac{\pi}{2}d|r|}\,dr \\
+        &\ll \left(1+\frac{y}{\sqrt{q_{\infty}(s,f)}}\right)^{-a},
+      \end{align*}
+      where in the third and fourth lines we have used that $cy \ll (1+cy)$ for all $y \in \R_{> 0}$ and any $c$ and the last line holds by \cref{met:decay_compacta_integral} since $e^{-\frac{\pi}{2}d|r|}$ has exponential decay. This completes the proof.
+    \end{proof}
+
+    From \cref{prop:V_function_decay} we see that $V_{s}(f)$ is bounded for $y \ll q_{\infty}(s,f)^{\frac{1}{2}+\e}$ and then starts to exhibit polynomial decay.
   \section{The Riemann Hypothesis \& Nontrivial Zeros}
     The zeros of $L$-functions $L(s,f)$ are closely tied to important arithmetic data of $f$. Let $L(s,f)$ be a degree $d$ $L$-function so that
     \[
@@ -683,11 +709,11 @@
       \[
         V_{s,k}(y) = \frac{1}{2\pi i}\int_{(a)}\frac{\g(s+u,f)}{\g(s,f)}\Phi(u)y^{-u}\psi_{k}(y)\frac{du}{u}.
       \]
-      Note that $V_{s,k}(y)$ is compactly supported on $[2^{k-1},2^{k}]$ because $\psi_{k}(y)$ is compactly supported there. Moreover, \cref{rem:effect_of_V_in_approximate_functional_equation} implies that $V_{s,k}(y)$ also exhibits exponential decay for $n \gg q(f)^{\frac{1}{2}+\e}$. It follows that
+      Note that $V_{s,k}(y)$ is compactly supported on $[2^{k-1},2^{k}]$ because $\psi_{k}(y)$ is compactly supported there. Moreover, \cref{prop:V_function_decay} implies that $V_{s,k}(y)$ also exhibits polynomial decay for $y \gg q_{\infty}(s,f)^{\frac{1}{2}+\e}$. It follows that
       \[
         \sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right) = \sum_{k \in \Z}\sum_{2^{k-1} \le n \le 2^{k+1}}\frac{a_{f}(n)}{\sqrt{n}}V_{\frac{1}{2},k}\left(\frac{n}{\sqrt{q(f)}}\right).
       \]
-      Using the exponential decay of $V_{\frac{1}{2},k}(y)$ to crudely bound those terms for which $n \gg q(f)^{\frac{1}{2}+\e}$ gives the estimate
+      Using the polynomial decay of $V_{\frac{1}{2},k}(y)$ to crudely bound those terms for which $n \gg q\left(\frac{1}{2},f\right)^{\frac{1}{2}+\e} \gg q(f)^{\frac{1}{2}+\e}$ gives the estimate
       \[
         \sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right) \ll \sum_{k \ll q(f)^{\e}}\sum_{\substack{2^{k-1} \le n \le 2^{k+1} \\ n \ll q(f)^{\frac{1}{2}+\e}}}\frac{a_{f}(n)}{\sqrt{n}}V_{\frac{1}{2},k}\left(\frac{n}{\sqrt{q(f)}}\right),
       \]
