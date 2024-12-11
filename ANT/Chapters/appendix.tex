@@ -1,7 +1,7 @@
 \appendix
 \chapter{Number Theory}
   \section{Arithmetic Functions}\label{append:Arithmetic_Functions}
-    An arithmetic function $f$ is a function $f:\N \to \C$. That is, it takes the positive integers into the complex numbers. We say that $f$ is \textbf{additive}\index{additive} if $f(nm) = f(n)+f(m)$ for all positive integers $n$ and $m$ such that $(n,m) = 1$. If this condition simply holds for all $n$ and $m$ then we say $f$ is \textbf{completely additive}\index{completely additive}. Similarly, we say that $f$ is \textbf{multiplicative}\index{multiplicative} if $f(nm) = f(n)f(m)$ for all positive integers $n$ and $m$ such that $(n,m) = 1$. If this condition simply holds for all $n$ and $m$ then we say $f$ is \textbf{completely multiplicative}\index{completely multiplicative}. Many important arithmetic functions are either additive, completely additive, multiplicative, or completely multiplicative. Note that if a $f$ is additive or multiplicative then $f$ is uniquely determined by its values on prime powers and if $f$ is completely additive or completely multiplicative then it is uniquely determined by its values on primes. Moreover, if $f$ is additive or completely additive then $f(1) = 0$ and if $f$ is multiplicative or completely multiplicative then $f(1) = 1$.
+    An arithmetic function $f(n)$ is a function $f:\N \to \C$. That is, it takes the positive integers into the complex numbers. We say that $f(n)$ is \textbf{additive}\index{additive} if $f(nm) = f(n)+f(m)$ for all positive integers $n$ and $m$ such that $(n,m) = 1$. If this condition simply holds for all $n$ and $m$ then we say $f(n)$ is \textbf{completely additive}\index{completely additive}. Similarly, we say that $f(n)$ is \textbf{multiplicative}\index{multiplicative} if $f(nm) = f(n)f(m)$ for all positive integers $n$ and $m$ such that $(n,m) = 1$. If this condition simply holds for all $n$ and $m$ then we say $f(n)$ is \textbf{completely multiplicative}\index{completely multiplicative}. Many important arithmetic functions are either additive, completely additive, multiplicative, or completely multiplicative. Note that if a $f(n)$ is additive or multiplicative then $f(n)$ is uniquely determined by its values on prime powers and if $f(n)$ is completely additive or completely multiplicative then it is uniquely determined by its values on primes. Moreover, if $f(n)$ is additive or completely additive then $f(1) = 0$ and if $f(n)$ is multiplicative or completely multiplicative then $f(1) = 1$.
 
     Below is a list defining the most important arithmetic functions. Some of these functions are restrictions of common functions but we define them here as arithmetic functions because their domain being $\N$ is important.
     \begin{enumerate}[label=(\roman*)]
@@ -76,7 +76,7 @@
     From this property, the important \textbf{M\"obius inversion formula}\index{M\"obius inversion formula} can be derived:
 
     \begin{theorem}[M\"obius inversion formula]
-      Suppose $f$ and $g$ are arithmetic functions. Then
+      Suppose $f(n)$ and $g(n)$ are arithmetic functions. Then
       \[
         g(n) = \sum_{d \mid n}f(d),
       \]
@@ -99,7 +99,7 @@
     There is also an important similar statement to the M\"obius inversion formula that we will need:
 
     \begin{theorem}\label{thm:specially_multiplicative_functions}
-      Let $f$ be an arithmetic function and $B$ be the completely multiplicative function defined on primes $p$ by
+      Let $f(n)$ be an arithmetic function and $B$ be the completely multiplicative function defined on primes $p$ by
       \[
         B(p) = f(p)^{2}-f(p^{2}).
       \]
@@ -114,7 +114,7 @@
       for all $n,m \ge 1$.
     \end{theorem}
 
-    Any function $f$ satisfying the conditions of \cref{thm:specially_multiplicative_functions} is said to be \textbf{specially multiplicative}\index{specially multiplicative}.
+    Any function $f(n)$ satisfying the conditions of \cref{thm:specially_multiplicative_functions} is said to be \textbf{specially multiplicative}\index{specially multiplicative}.
   \section{The Generalized Sum of Divisors Function}
     Recall that the generalized sum of divisor function $\s_{s}(n)$ defined by
     \[
@@ -254,11 +254,11 @@
     Often, we would like to interchange a limit and a integral. This process is not always allowed, but in many instances it is. The \textbf{dominated convergence theorem}\index{dominated convergence theorem} (DCT) covers the most well-known sufficient condition:
 
     \begin{theorem}[Dominated convergence theorem]
-      Let $(f_{n}(z))_{n \ge 1}$ be a sequence of continuous real or complex integrable functions on some region $\W$. Suppose that that the sequence converges pointwise to a function $f$, and that there is some integrable function $g$ on $\W$ such that
+      Let $(f_{n}(z))_{n \ge 1}$ be a sequence of continuous real or complex integrable functions on some region $\W$. Suppose that that the sequence converges pointwise to a function $f(z)$, and that there is some integrable function $g$ on $\W$ such that
       \[
         |f_{n}(z)| \le g(z)
       \]
-      for all $n \ge 1$ and all $z \in \W$. Then $f$ is integrable on $\W$ and
+      for all $n \ge 1$ and all $z \in \W$. Then $f(z)$ is integrable on $\W$ and
       \[
         \lim_{n \to \infty}\int_{\W}f_{n}(z)\,dz = \int_{\W}f(z)\,dz.
       \]
@@ -333,21 +333,21 @@
       \]
     \end{corollary}
   \section{Fourier Series}\label{append:Fourier_Series}
-    Let $N \ge 1$ be an integer. If $f:\R \to \C$ is $N$-periodic and integrable on $[0,N]$, then we define the $n$-th \textbf{Fourier coefficient}\index{Fourier coefficient} $\hat{f}(n)$ of $f$ to be
+    Let $N \ge 1$ be an integer. If $f(x)$ is $N$-periodic and integrable on $[0,N]$, then we define the $n$-th \textbf{Fourier coefficient}\index{Fourier coefficient} $\hat{f}(n)$ of $f(x)$ to be
     \[
       \hat{f}(n) = \int_{0}^{N}f(x)e^{-\frac{2\pi inx}{N}}\,dx.
     \]
-    The \textbf{Fourier series}\index{Fourier series} of $f$ is defined by the series
+    The \textbf{Fourier series}\index{Fourier series} of $f(x)$ is defined by the series
     \[
       \sum_{n \in \Z}\hat{f}(n)e^{\frac{2\pi inx}{N}}.
     \]
-    There is the question of whether the Fourier series of $f$ converges at all and if so does it even converge to $f$ itself. Under reasonable conditions the answer is yes as is seen in the following proposition:
+    There is the question of whether the Fourier series of $f(x)$ converges at all and if so does it even converge to $f(x)$ itself. Under reasonable conditions the answer is yes as is seen in the following proposition:
 
     \begin{proposition}
-      If $f$ is smooth and $N$-periodic it converges uniformly to its Fourier series everywhere.
+      If $f(x)$ is smooth and $N$-periodic it converges uniformly to its Fourier series everywhere.
     \end{proposition}
 
-    In particular, all holomorphic $N$-periodic functions $f$ converge uniformly to their Fourier series everywhere because for fixed $x$ or $y$ in $z = x+iy$, $f$ restricts to an $N$-periodic smooth function on $\R$ that's integrable on $[0,N]$. Actually we can do a little better. If $f$ is $N$-periodic and meromorphic on $\C$, then after clearing polar divisors we will have a holomorphic function on $\C$ and hence it will have a Fourier series converging uniformly everywhere. Therefore $f$ will have such a Fourier series with meromorphic Fourier coefficients. In either situation, the case $N = 1$ is the most commonly seen. So for meromorphic (or holomorphic) $1$-periodic functions $f$,
+    In particular, all holomorphic $N$-periodic functions $f(z)$ converge uniformly to their Fourier series everywhere because for fixed $y$, $f(z)$ restricts to an $N$-periodic smooth function on $\R$ that's integrable on $[0,N]$. Actually we can do a little better. If $f(z)$ is $N$-periodic and meromorphic on $\C$, then after clearing polar divisors we will have a holomorphic function on $\C$ and hence it will have a Fourier series converging uniformly everywhere. Therefore $f(z)$ will have such a Fourier series with meromorphic Fourier coefficients. In either situation, the case $N = 1$ is the most commonly seen. So for meromorphic (or holomorphic) $1$-periodic functions $f(z)$,
     \[
       f(z) = \sum_{n \in \Z}\hat{f}(n)e^{2\pi inz},
     \]
@@ -357,27 +357,27 @@
     \[
       E_{n}(z) = \begin{cases} 1-z & \text{if } n = 0, \\ (1-z)e^{z+\frac{z^{2}}{2}+\cdots+\frac{z^{n}}{n}} & \text{if } n \neq 0. \end{cases}
     \]
-    If $f$ is an entire function, then it admits a factorization in terms of its zeros and the elementary factors. This is called the \textbf{Weierstrass factorization}\index{Weierstrass factorization} of $f$:
+    If $f(z)$ is an entire function, then it admits a factorization in terms of its zeros and the elementary factors. This is called the \textbf{Weierstrass factorization}\index{Weierstrass factorization} of $f(z)$:
 
     \begin{theorem}[Weierstrass factorization]
-      Let $f$ be an entire function with $\{a_{n}\}_{n \ge 1}$ the nonzero zeros of $f$ counted with multiplicity. Also suppose that $f$ has a zero of order $m$ at $z = 0$ where it is understood that if $m = 0$ we mean $f(0) \neq 0$ and if $m < 0$ we mean $f$ has a pole of order $|m|$ at $z = 0$. Then there exists an entire function $g$ and sequence of nonnegative integers $(p_{n})_{n \ge 1}$ such that
+      Let $f(z)$ be an entire function with $\{a_{n}\}_{n \ge 1}$ the nonzero zeros of $f(z)$ counted with multiplicity. Also suppose that $f(z)$ has a zero of order $m$ at $z = 0$ where it is understood that if $m = 0$ we mean $f(0) \neq 0$ and if $m < 0$ we mean $f(z)$ has a pole of order $|m|$ at $z = 0$. Then there exists an entire function $g(z)$ and sequence of nonnegative integers $(p_{n})_{n \ge 1}$ such that
       \[
         f(z) = z^{m}e^{g(z)}\prod_{n \ge 1}E_{p_{n}}\left(\frac{z}{a_{n}}\right).
       \]
     \end{theorem}
 
-    The Weierstrass factorization of $f$ can be strengthened if $f$ does not grow too fast. We say $f$ is of \textbf{finite order}\index{finite order} if there exists a $\rho_{0} > 0$ such that
+    The Weierstrass factorization of $f(z)$ can be strengthened if $f(z)$ does not grow too fast. We say $f(z)$ is of \textbf{finite order}\index{finite order} if there exists a $\rho_{0} > 0$ such that
     \[
       f(z) \ll e^{|z|^{\rho_{0}}},
     \]
-    for all $z \in \C$. The \textbf{order}\index{order} $\rho$ of $f$ is the infimum of the $\rho_{0}$. Let $q = \lf \rho \rf$. If there is no such $\rho_{0}$, $f$ is said to be of \textbf{infinite order}\index{infinite order} and we set $\rho = q = \infty$. Let $\{a_{n}\}_{n \ge 1}$ be the nonzero zeros of $f$ that are not zero and ordered such that $a_{n} \to \infty$ as $n \to \infty$ if there are infinitely many zeros. Then we define the \textbf{rank}\index{rank} of $f$ to be the smallest positive integer $p$ such that the series
+    for all $z \in \C$. The \textbf{order}\index{order} $\rho$ of $f(z)$ is the infimum of the $\rho_{0}$. Let $q = \lf \rho \rf$. If there is no such $\rho_{0}$, $f(z)$ is said to be of \textbf{infinite order}\index{infinite order} and we set $\rho = q = \infty$. Let $\{a_{n}\}_{n \ge 1}$ be the nonzero zeros of $f(z)$ that are not zero and ordered such that $a_{n} \to \infty$ as $n \to \infty$ if there are infinitely many zeros. Then we define the \textbf{rank}\index{rank} of $f(z)$ to be the smallest positive integer $p$ such that the series
     \[
       \sum_{n \ge 1}\frac{1}{|a_{n}|^{p+1}},
     \]
-    converges. If there is no such integer we set $p = \infty$ and if there are finitely many zeros we set $p = 0$. We set $g = \max\{p,q\}$ and call $g$ the \textbf{genus}\index{genus} of $f$. We can now state the \textbf{Hadamard factorization}\index{Hadamard factorization} of $f$:
+    converges. If there is no such integer we set $p = \infty$ and if there are finitely many zeros we set $p = 0$. We set $g = \max\{p,q\}$ and call $g$ the \textbf{genus}\index{genus} of $f(z)$. We can now state the \textbf{Hadamard factorization}\index{Hadamard factorization} of $f(z)$:
 
     \begin{theorem}[Hadamard factorization]
-      Let $f$ be an entire function of finite order $\rho$. If $p$ is the rank and $g$ is the genus, then $g \le \rho$. Moreover, let $\{a_{n}\}_{n \ge 1}$ be the nonzero zeros of $f$ counted with multiplicity and suppose that $f$ has a zero of order $m$ at $z = 0$ where it is understood that if $m = 0$ we mean $f(0) \neq 0$ and if $m < 0$ we mean $f$ has a pole of order $|m|$ at $z = 0$. Then there exists a polynomial $Q(z)$ of degree at most $q$ such that
+      Let $f(z)$ be an entire function of finite order $\rho$. If $p$ is the rank and $g$ is the genus, then $g \le \rho$. Moreover, let $\{a_{n}\}_{n \ge 1}$ be the nonzero zeros of $f(z)$ counted with multiplicity and suppose that $f(z)$ has a zero of order $m$ at $z = 0$ where it is understood that if $m = 0$ we mean $f(0) \neq 0$ and if $m < 0$ we mean $f(z)$ has a pole of order $|m|$ at $z = 0$. Then there exists a polynomial $Q(z)$ of degree at most $q$ such that
       \[
         f(z) = z^{m}e^{Q(z)}\prod_{n \ge 1}E_{p}\left(\frac{z}{a_{n}}\right).
       \]
@@ -386,7 +386,7 @@
     The \textbf{Phragm\'en-Lindel\"of convexity principle}\index{Phragm\'en-Lindel\"of convexity principle} is a generic name for extending the maximum modulus principle to unbounded regions. The \textbf{Phragm\'en-Lindel\"of Convexity principle for a strip}\index{Phragm\'en-Lindel\"of Convexity principle for a strip} is the case when the unbounded region is the vertical strip $a < \s < b$:
 
     \begin{theorem}[Phragm\'en-Lindel\"of Convexity principle for a strip]\label{thm:Phragmen-Lindelof_convexity_principle}
-      Suppose $f$ is a holomorphic functions on an open neighborhood of the vertical strip $a < \s < b$ such that $f(s) \ll e^{|s|^{A}}$ for some $A \ge 0$. Then the following hold:
+      Let $f(s)$ be a holomorphic function on an open neighborhood of the vertical strip $a < \s < b$ such that $f(s) \ll e^{|s|^{A}}$ for some $A \ge 0$. Then the following hold:
       \begin{enumerate}[label=(\roman*)]
         \item If $|f(s)| \le M$ for $\s = a,b$, that is on the boundary edges of the strip, then $|f(s)| \le M$ for all $s$ in the strip.
         \item Assume that there is a continuous function $g(t):\R \to \R$ such that
@@ -404,7 +404,7 @@
     We will also need a variant. The \textbf{Phragm\'en-Lindel\"of Convexity principle for a half-strip}\index{Phragm\'en-Lindel\"of Convexity principle for a half-strip} is the case when the unbounded region is the vertical strip $a < \s < b$ with $t > c$:
 
     \begin{theorem}[Phragm\'en-Lindel\"of Convexity principle for a half-strip]\label{thm:Phragmen-Lindelof_convexity_principle_half-strip}
-      Suppose $f$ is a holomorphic functions on an open neighborhood of the vertical strip $a < \s < b$ with $t > c$ such that $f(s) \ll e^{|s|^{A}}$ for some $A \ge 0$. Then the following hold:
+      Let $f(s)$ be a holomorphic function on an open neighborhood of the vertical strip $a < \s < b$ with $t > c$ such that $f(s) \ll e^{|s|^{A}}$ for some $A \ge 0$. Then the following hold:
       \begin{enumerate}[label=(\roman*)]
         \item If $|f(s)| \le M$ for $\s = a,b$ with $t \ge c$ and $t = c$ with $a \le \s \le b$, that is on the boundary edges of the half-strip, then $|f(s)| \le M$ for all $s$ in the strip.
         \item Assume that there is a continuous function $g(t):\R_{\ge c} \to \R$ such that
