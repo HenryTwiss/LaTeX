@@ -12,6 +12,7 @@
       Here we make some notational conventions throughout the rest of the text unless specified otherwise:
       \begin{itemize}
         \item For the complex variable $s$, we will denote $s = \s+it$ so that $\s$ and $t$ are the real and imaginary parts of $s$ respectively.
+        \item The symbol $\e$ denotes a small positive constant ($\e > 0$) that is not necessarily the same from line to line.
         \item If $a \in (\Z/m\Z)^{\ast}$, we will always let $\conj{a}$ denote the multiplicative inverse. That is, $a\conj{a} \equiv 1 \tmod{m}$.  
         \item For a sum $\sum$ over integers satisfying a congruence condition, $\sum^{'}$ will denote the sum restricted to relatively prime integers satisfying the same congruence.
         \item We will write $\int_{(a)}$ for the complex integral over the vertical line whose real part is $a$ and with positive orientation.
@@ -41,7 +42,7 @@
       Implicit in all of these estimates is some limiting process $z \to z_{0}$ where $z_{0}$ is some complex number or $\infty$ (and $\pm \infty$ for the real case respectively). If $z_{0}$ is finite, then it is understood that the estimate is assumed to hold for all $z$ such that $|z-z_{0}| < \d$ for some real $\d > 0$. If $z_{0}$ is infinite, then the estimate is assumed to hold for all sufficiently large values of $z$. That is, $|z| > z_{0}$ for some $z_{0}$ (and $z > z_{0}$ or $z < z_{0}$ in the real case for $\pm \infty$ respectively). If the limiting process is not explicitly mentioned, it is assumed to be as $z \to \infty$ (or as $+\infty$ or $-\infty$ for the real case depending upon the context and even then we may exclude the sign for brevity).
 
       \begin{remark}
-        Suppose $f,g:\Z_{\ge 0} \to \C$. Extending $f$ and $g$ by making them piecewise linear so that $f,g:\R_{\ge 0} \to \C$ is piecewise continuous, we can consider estimates with $n$ in place of $z$. All of the following theory still holds. Moreover, if we further take $f$ or $g$ to be a constant function, the following theory will still hold.
+        Suppose $f,g:\Z_{\ge 0} \to \C$. Extending $f(x)$ and $g(x)$ by making them piecewise linear so that $f,g:\R_{\ge 0} \to \C$ is piecewise continuous, we can consider estimates with $n$ in place of $z$. All of the following theory still holds. Moreover, if we further take $f(x)$ or $g(x)$ to be a constant function, the following theory will still hold.
       \end{remark}
       \subsection*{\texorpdfstring{$O$}{O}-estimates \& Symbols}
         We say $f(z)$ \textbf{is of order}\index{is of order} $g(z)$ or $f(z)$ is $O(g(z))$ as $z \to z_{0}$ and write $f(z) = O(g(z))$
@@ -55,7 +56,7 @@
           Many authors assume that $g(z)$ is a nonnegative function so that the absolute values on $g(z)$ can be dropped. As we require other forms of asymptotic notation that will be used more generally, we do not make this assumption since one could very well replace $O(g(z))$ with $O(|g(z)|)$. In practice this deviation causes no issue.
         \end{remark}
         
-        As a symbol, let $O(g(z))$ stand for a function $f(z)$ that is $O(g(z))$. Then we may use the $O$-estimates in algebraic equations. Note that this extends the definition of the symbol because $f(z) = O(g(z))$ means $f(z)$ is $O(g(z))$. The $O$-estimate says that for $z$ close to $z_{0}$, the size of $f(z)$ grows like $g(z)$. The constant $c$ is not unique as any $c' > c$ also works. Any such constant is called the \textbf{implicit constant}\index{implicit constant} of the $O$-estimate. The implicit constant may depend on one or more parameters, $\e$, $\s$, etc. If so, we use subscripts $O_{\e}$, $O_{\s}$, $O_{\e,\s}$, etc. to indicate the dependence of the implicit constant on these parameters. If it is possible to choose the implicit constant independent of a certain parameter then we say that the estimate is \textbf{uniform}\index{uniform} with respect to that parameter. Moreover, we say that an implicit constant is \textbf{effective}\index{effective} if the constant is numerically computable and \textbf{ineffective}\index{ineffective} otherwise. Moreover, if we are interested in the dependence of the estimate on a certain parameter, say $p$, we will refer to the \textbf{$p$-aspect}\index{$p$-aspect} to mean the part of the estimate that is dependent upon $p$.
+        As a symbol, let $O(g(z))$ stand for a function $f(z)$ that is $O(g(z))$. Then we may use the $O$-estimates in algebraic equations. Note that this extends the definition of the symbol because $f(z) = O(g(z))$ means $f(z)$ is $O(g(z))$. The $O$-estimate says that for $z$ close to $z_{0}$, the size of $f(z)$ grows like $g(z)$. The constant $c$ is not unique as any $c' > c$ also works. Any such constant is called the \textbf{implicit constant}\index{implicit constant} of the $O$-estimate. The implicit constant may depend on one or more parameters, $\e$, $\s$, etc. If we wish to make these dependences known, we use subscripts $O_{\e}$, $O_{\s}$, $O_{\e,\s}$, etc. If it is possible to choose the implicit constant independent of a certain parameter then we say that the estimate is \textbf{uniform}\index{uniform} with respect to that parameter. Moreover, we say that an implicit constant is \textbf{effective}\index{effective} if the constant is numerically computable and \textbf{ineffective}\index{ineffective} otherwise. Moreover, if we are interested in the dependence of the estimate on a certain parameter, say $p$, we will refer to the \textbf{$p$-aspect}\index{$p$-aspect} to mean the part of the estimate that is dependent upon $p$.
 
         The symbol $\ll$ is known as \textbf{Vinogradov's symbol}\index{Vinogradov's symbol} is an alternative way to express $O$-estimates. We write $f(z) \ll g(z)$ as $z \to z_{0}$ if $f(z) = O(g(z))$ as $z \to z_{0}$. We also write $f(z) \gg g(z)$ as $z \to z_{0}$ to mean $g(z) \ll f(z)$ as $z \to z_{0}$. If there is a dependence of the implicit constant on parameters, we use subscripts to denote dependence on these parameters. If both $f(z) \ll g(z)$ and $g(z) \ll f(z)$ as $z \to z_{0}$, then we say $f(z)$ and $g(z)$ have the \textbf{same order of magnitude}\index{same order of magnitude} and write $f(z) \asymp g(z)$ as $z \to z_{0}$. This is different from the $O$-estimate in the respect that for $z$ close to $z_{0}$, $f(z)$ grows like $g(z)$ and conversely $g(z)$ grows like $f(z)$. In other words, $f(z)$ and $g(z)$ grow the same. If there is a dependence of the implicit constant on parameters, we use subscripts to denote dependence on these parameters. From the definition of the $O$-estimate, this is equivalent to the existence of positive constants $c_{1}$ and $c_{2}$ such that
         \[
@@ -660,14 +661,14 @@
 
         A particular application of interest is when the integral in question is real and over the entire real line, the integrand is entire as a complex function, and one is trying to shift the line of integration of the complexified integral to $\Im(z) = a$. In this case, shifting the line of integration amounts to making the change of variables $x \to x-ia$ without affecting the initial line of integration.
       \subsection*{The Fourier Transform}
-        The first type of integral transform we will need is the Fourier transform. Suppose $f:\R \to \C$ is absolutely integrable. The \textbf{Fourier transform}\index{Fourier transform} $\hat{f}:\R \to \C$ of $f$ is defined by
+        The first type of integral transform we will need is the Fourier transform. Suppose $f(x)$ is absolutely integrable. The \textbf{Fourier transform}\index{Fourier transform} $\hat{f}(t)$ of $f(x)$ is defined by
         \[
           \hat{f}(t) = \int_{-\infty}^{\infty}f(x)e^{-2\pi itx}\,dx.
         \]
-        This integral is absolutely convergent precisely because $f$ is absolutely integrable. As a first application of \cref{met:decay_compacta_integral}, if $f$ is analytic and has exponential decay then its Fourier transform exists. In practical settings however, we usually restrict $f$ to be a \textbf{Schwarz function}\index{Schwarz function} which means that $f$ is smooth and $f^{(n)}(x) = o(x^{c})$ for all $c \in \R$. In other words, $f$ is a smooth function such that it and all of its derivatives have exponential decay. In this case, we say that $f$ is of \textbf{rapid decay}\index{rapid decay}. For example, $e^{-x^{2}}$ is a Schwarz function. Schwarz functions are very important because they are functions for which the \textbf{Poisson summation formula}\index{Poisson summation formula} applies:
+        This integral is absolutely convergent precisely because $f(x)$ is absolutely integrable. As a first application of \cref{met:decay_compacta_integral}, if $f(x)$ is analytic and has exponential decay then its Fourier transform exists. In practical settings however, we usually restrict $f(x)$ to be a \textbf{Schwarz function}\index{Schwarz function} which means that $f(x)$ is smooth and $f^{(n)}(x) = o(x^{c})$ for all $c \in \R$. In other words, $f(x)$ is a smooth function such that it and all of its derivatives have exponential decay. In this case, we say that $f(x)$ is of \textbf{rapid decay}\index{rapid decay}. For example, $e^{-x^{2}}$ is a Schwarz function. Schwarz functions are very important because they are functions for which the \textbf{Poisson summation formula}\index{Poisson summation formula} applies:
 
         \begin{theorem}[Poisson summation formula]
-          Suppose $f$ is a Schwarz function. Then
+          Suppose $f(x)$ is a Schwarz function. Then
           \[
             \sum_{n \in \Z}f(n) = \sum_{t \in \Z}\hat{f}(t).
           \]
@@ -677,7 +678,7 @@
           \[
             F(x) = \sum_{n \in \Z}f(x+n).
           \]
-          Since $f$ has exponential decay, $F$ is locally absolutely uniformly convergent by the Weierstrass $M$-test. Actually since $f$ is Schwarz, $F$ and all of its derivatives are locally absolutely uniformly convergent. By the uniform limit theorem $F$ is smooth. Since $F$ is also $1$-periodic it admits a Fourier series (see \cref{append:Fourier_Series}). The $t$-th Fourier coefficient of $F$ is
+          Since $f(x)$ has exponential decay, $F(x)$ is locally absolutely uniformly convergent by the Weierstrass $M$-test. Actually since $f(x)$ is Schwarz, $F(x)$ and all of its derivatives are locally absolutely uniformly convergent. By the uniform limit theorem $F(x)$ is smooth. Since $F(x)$ is also $1$-periodic it admits a Fourier series (see \cref{append:Fourier_Series}). The $t$-th Fourier coefficient of $F(x)$ is
           \begin{align*}
             \hat{F}(t) &= \int_{0}^{1}F(x)e^{-2\pi itx}\,dx \\
             &= \int_{0}^{1}\sum_{n \in \Z}f(x+n)e^{-2\pi itx}\,dx \\
@@ -686,7 +687,7 @@
             &= \int_{-\infty}^{\infty}f(x)e^{-2\pi itx}\,dx && \text{DCT} \\
             &= \hat{f}(t).
           \end{align*}
-          Therefore the Fourier series of $F$ is
+          Therefore the Fourier series of $F(x)$ is
           \[
             F(x) = \sum_{t \in \Z}\hat{f}(t)e^{2\pi itx}.
           \]
@@ -695,29 +696,29 @@
 
         The Poisson summation formula is immensely useful (this cannot be overstated). It's sort of like a train in that it takes one where one wants to got to and back when one is done. Our primary application is that the Poisson summation formula will allow us to derive very striking transformation laws which are the key ingredient for analytically continuing many important objects.
       \subsection*{The Mellin Transform}
-        Like the Fourier transform, the Mellin transform is another type of integral transform. If $f:(0,\infty) \to \R$ is some continuous function, then the \textbf{Mellin transform}\index{Mellin transform} $\{\mc{M}f\}(s)$ of $f(x)$ is given by
+        Like the Fourier transform, the Mellin transform is another type of integral transform. If $f(x)$ is a continuous function, then the \textbf{Mellin transform}\index{Mellin transform} $F(s)$ of $f(x)$ is given by
         \[
-          \{\mc{M}f\}(s) = \int_{0}^{\infty}f(x)x^{s}\,\frac{dx}{x}.
+          F(s) = \int_{0}^{\infty}f(x)x^{s}\,\frac{dx}{x}.
         \]
-        If $f(x)$ is a sufficiently nice function then the integral will be bounded in some half-plane in $s$. For example, this happens if $f(x)$ has exponential decay and remains bounded as $x \to 0$. In this case, the integral is absolutely uniformly bounded for $\s > 0$. The classical example is when $f(x) = e^{-x}$ so that $\{\mc{M}e^{-x}\}(s) = \G(s)$. If the Mellin transform $g(s)$ is sufficiently nice, then the initial function can be recovered via means of the \textbf{inverse Mellin transform}\index{inverse Mellin transform} $\{\mc{M}^{-1}g\}(x)$:
+        If $f(x)$ is a sufficiently nice function then the integral will be bounded in some half-plane in $s$. For example, this happens if $f(x)$ has exponential decay and remains bounded as $x \to 0$. In this case, the integral is locally absolutely uniformly bounded for $\s > 0$. If the Mellin transform $F(s)$ is sufficiently nice, then the initial function can be recovered via means of the \textbf{inverse Mellin transform}\index{inverse Mellin transform} $(\mc{M}^{-1}F)(x)$:
         \[
-          \{\mc{M}^{-1}g\}(x) = \frac{1}{2\pi i}\int_{(c)}g(s)x^{-s}\,ds.
+          (\mc{M}^{-1}F)(x) = \frac{1}{2\pi i}\int_{(c)}F(s)x^{-s}\,ds.
         \]
-        It is not immediately clear that this integral converges or is independent of $c$. The following theorem makes precise what properties $g(s)$ needs to satisfy and for which $c$ the inverse Mellin transform recovers the original function $f(x)$ (see \cite{debnath2002integral} for a proof):
+        It is not immediately clear that this integral converges or is independent of $c$. The following theorem makes precise what properties $F(s)$ needs to satisfy and for which $c$ the inverse Mellin transform recovers the original function $f(x)$ (see \cite{debnath2002integral} for a proof):
 
         \begin{theorem}[Mellin inversion formula]
-          Let $a$ and $b$ be reals such that $a < b$. Suppose $g(s)$ is analytic in the strip $a < \s < b$, tends to zero uniformly as $\Im(s) \to \infty$ along any line $\s = c$ for $a < c < b$, and that the integral of $g(s)$ along this line is locally absolutely uniformly bounded. Then if
+          Let $a$ and $b$ be reals such that $a < b$. Suppose $F(s)$ is analytic in the strip vertical $a < \s < b$, tends to zero uniformly as $t \to \infty$ along any line $\s = c$ for $a < c < b$, and that the integral of $F(s)$ along this line is locally absolutely uniformly bounded. Then if
           \[
-            f(x) = \frac{1}{2\pi i}\int_{(c)}g(s)x^{-s}\,ds,
+            f(x) = \frac{1}{2\pi i}\int_{(c)}F(s)x^{-s}\,ds,
           \]
-          this integral is independent of $c$ and moreover $g(s) = \{\mc{M}f\}(s)$. Conversely, suppose $f(x):(0,\infty) \to \R$ is piecewise continuous and such that its value is halfway between the limit values at any jump discontinuity and
+          this integral is independent of $c$ and moreover $F(s) = (\mc{M}f)(s)$. Conversely, suppose $f(x)$ is piecewise continuous such that its value is halfway between the limit values at any jump discontinuity and
           \[
-            g(s) = \int_{0}^{\infty}f(x)x^{s}\,\frac{dx}{x},
+            F(s) = \int_{0}^{\infty}f(x)x^{s}\,\frac{dx}{x},
           \]
-          is absolutely bounded for $a < \s < b$. Then $f(x) = \{\mc{M}^{-1}g\}(x)$.
+          is absolutely bounded in the vertical strip $a < \s < b$. Then $f(x) = (\mc{M}^{-1}F)(x)$.
         \end{theorem}
     \section{The Gamma Function}
-      The gamma function is ubiquitous in analytic number theory and the better one understands it the better one will be at seeing the forest for the trees in any problem involving analytic number theory. The \textbf{gamma function}\index{gamma function} $\G(z)$ is defined by the integral
+      The gamma function is ubiquitous in analytic number theory and the better one understands it the better one will be at seeing the forest for the trees in any problem involving analytic number theory. The \textbf{gamma function}\index{gamma function} $\G(z)$ is defined to be the Mellin transform of $e^{-x}$:
       \[
         \G(z) = \int_{0}^{\infty}e^{-x}x^{z-1}\,dx,
       \]
