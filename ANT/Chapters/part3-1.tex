@@ -525,7 +525,7 @@
       \[
         L(s,f) = \sum_{n \ge 1}\frac{a_{f}(n)}{n^{s}}V_{s}\left(\frac{n}{\sqrt{q(f)}X}\right)+\e(s,f)\sum_{n \ge 1}\frac{\conj{a_{f}(n)}}{n^{1-s}}V_{1-s}\left(\frac{nX}{\sqrt{q(f)}}\right)+\frac{R}{q(f)^{\frac{s}{2}}\g(s,f)},
       \]
-      where $V_{s}(y):\R_{> 0} \to \C$ is the smooth function defined by
+      where $V_{s}(y):\R_{> 0} \to \C$ is defined by
       \[
         V_{s}(y) = \frac{1}{2\pi i}\int_{(a)}\frac{\g(s+u,f)}{\g(s,f)}\Phi(u)y^{-u}\frac{du}{u},
       \]
@@ -571,40 +571,52 @@
       Diving by $q(f)^{\frac{s}{2}}\g(s,f)$ completes the proof.
     \end{proof}
 
-    The approximate functional equation was first developed by Hardy and Littlewood in the series \cite{hardyzeros1921,hardyapproximate1923,hardyapproximate1929}. The function $V_{s}(y)$ has the effect of smoothing out the two sums on the right-hand side of the approximate functional equation. To see this, we need  the following proposition:
+    The approximate functional equation was first developed by Hardy and Littlewood in the series \cite{hardyzeros1921,hardyapproximate1923,hardyapproximate1929}. The function $V_{s}(y)$ has the effect of smoothing out the two sums on the right-hand side of the approximate functional equation. In most cases, we will take
+    \[
+      \Phi(u) = \cos^{-4dM}\left(\frac{\pi u}{4M}\right),
+    \]
+    for an integer $M \ge 1$. Clearly $\Phi(u)$ holomorphic in the vertical strip $|\Re(u)| < (2M-2)+1$, even, and satisfies $\Phi(0) = 1$. To see that it is bounded in this vertical strip, we write
+    \begin{equation}\label{equ:choice_for_V_decay_estimate}
+     \cos^{-4dM}\left(\frac{\pi u}{4M}\right) = \left(\frac{e^{i\frac{\pi u}{4M}}+e^{-i\frac{\pi u}{4M}}}{2}\right)^{-4dM} \ll e^{-d\pi|u|},
+    \end{equation}
+    where in the estimate we have used the reverse triangle equality. It follows that $\Phi(u)$ has exponential decay. With this choice of $ \Phi(u)$, we can prove useful bounds for $V_{s}(y)$:
 
     \begin{proposition}\label{prop:V_function_decay}
-      Let $L(s,f)$ be an $L$-function and $\Phi(u)$ be an even holomorphic function bounded in the vertical strip $|\Re(u)| < a+1$ for any $a > 1$ such that $\Phi(0) = 1$. Let $V_{s}(y):\R_{> 0} \to \C$ be the smooth function defined by
+      Let $L(s,f)$ be an $L$-function, set $\Phi(u) = \cos^{-4dM}\left(\frac{\pi u}{4M}\right)$ for some integer $M \ge 1$, and let $V_{s}(y):\R_{> 0} \to \C$ be the defined by
       \[
-        V_{s}(y) = \frac{1}{2\pi i}\int_{(a)}\frac{\g(s+u,f)}{\g(s,f)}\Phi(u)y^{-u}\frac{du}{u}.
+        V_{s}(y) = \frac{1}{2\pi i}\int_{(2M-2)}\frac{\g(s+u,f)}{\g(s,f)}\Phi(u)y^{-u}\frac{du}{u}.
       \]
-      For $s$ in the critical strip, $V_{s}(y)$ satisfies the estimate
+      Then for $s$ in the critical strip, $V_{s}(y)$ satisfies the estimate
       \[
-        V_{s}(y) \ll \left(1+\frac{y}{\sqrt{q_{\infty}(s,f)}}\right)^{-a}.
+        V_{s}(y) \ll \left(1+\frac{y}{\sqrt{q_{\infty}(s,f)}}\right)^{-M}.
       \]
     \end{proposition}
     \begin{proof}
-      Let $u = \tau+ir$ and suppose $0 \le \s \le \frac{1}{2}$ so that $\s-\frac{1}{2} \le 0$. Then from \cref{equ:modified_gamma_estimates} and the reverse triangle inequality (in the form $|t+r| \ge ||r|-|t||$), we deduce that
+      Let $u = \tau+ir$ and suppose $0 \le \s \le \frac{1}{2}$ so that $\s-\frac{1}{2} \le 0$. Then from \cref{equ:modified_gamma_estimates} and the reverse triangle inequality, we deduce that
       \[
-        \frac{\G(s+u)}{\G(s)} \ll \frac{(|t+r|+1)^{\s+\tau-\frac{1}{2}}}{(|t|+1)^{\s-\frac{1}{2}}}e^{\frac{\pi}{2}(|t|-|t+r|)} \ll (|t+r|+1)^{\tau}e^{-\frac{\pi}{2}|r|}.
+        \frac{\G(s+u)}{\G(s)} \ll \frac{(|t+r|+1)^{\s+\tau-\frac{1}{2}}}{(|t|+1)^{\s-\frac{1}{2}}}e^{\frac{\pi}{2}(|t|-|t+r|)} \ll (|t+r|+1)^{\tau}e^{\frac{\pi}{2}|r|}.
       \]
       From the definition of the analytic conductor, the above estimate implies
       \[
-        \frac{\g(s+u,f)}{\g(s,f)} \ll q_{\infty}(s,f)^{\frac{\tau}{2}}e^{-\frac{\pi}{2}d|r|},
+        \frac{\g(s+u,f)}{\g(s,f)} \ll q_{\infty}(s,f)^{\frac{\tau}{2}}e^{\frac{\pi}{2}d|r|},
       \]
-      for $s$ in the critical strip. The fact tht $\Phi(u)$ is bounded, $u$ is bounded away from zero, and the estimate for the ratio of gamma factors gives the first estimate in the following chain:
+      for $s$ in the critical strip. By \cref{equ:choice_for_V_decay_estimate}, the integral defining $V_{s}(y)$ is absolutely bounded and we may shift the line of integration to $(M)$. In doing so, we pass by no poles and obtain
+      \[
+        V_{s}(y) = \frac{1}{2\pi i}\int_{(M)}\frac{\g(s+u,f)}{\g(s,f)}\Phi(u)y^{-u}\frac{du}{u} \\
+      \]
+      The fact that $u$ is bounded away from zero, \cref{equ:choice_for_V_decay_estimate}, and the estimate for the ratio of gamma factors gives the first estimate in the following chain:
       \begin{align*}
-        V_{s}(y) &= \frac{1}{2\pi i}\int_{(a)}\frac{\g(s+u,f)}{\g(s,f)}\Phi(u)y^{-u}\frac{du}{u} \\
-        &\ll \int_{-\infty}^{\infty}q_{\infty}(s,f)^{\frac{a}{2}}e^{-\frac{\pi}{2}d|r|}y^{-a}\,dr \\
-        &\ll \int_{-\infty}^{\infty}q_{\infty}(s,f)^{\frac{a}{2}}e^{-\frac{\pi}{2}d|r|}(1+y)^{-a}\,dr \\
-        &\ll \int_{-\infty}^{\infty}e^{-\frac{\pi}{2}d|r|}\left(1+\frac{y}{\sqrt{q_{\infty}(s,f)}}\right)^{-a}\,dr \\
-        &\ll \left(1+\frac{y}{\sqrt{q_{\infty}(s,f)}}\right)^{-a}\int_{-\infty}^{\infty}e^{-\frac{\pi}{2}d|r|}\,dr \\
-        &\ll \left(1+\frac{y}{\sqrt{q_{\infty}(s,f)}}\right)^{-a},
+        V_{s}(y) &= \frac{1}{2\pi i}\int_{(M)}\frac{\g(s+u,f)}{\g(s,f)}\Phi(u)y^{-u}\frac{du}{u} \\
+        &\ll \int_{-\infty}^{\infty}q_{\infty}(s,f)^{\frac{M}{2}}e^{-\frac{\pi}{2}d|r|}y^{-M}\,dr \\
+        &\ll \int_{-\infty}^{\infty}q_{\infty}(s,f)^{\frac{M}{2}}e^{-\frac{\pi}{2}d|r|}(1+y)^{-M}\,dr \\
+        &\ll \int_{-\infty}^{\infty}e^{-\frac{\pi}{2}d|r|}\left(1+\frac{y}{\sqrt{q_{\infty}(s,f)}}\right)^{-M}\,dr \\
+        &\ll \left(1+\frac{y}{\sqrt{q_{\infty}(s,f)}}\right)^{-M}\int_{-\infty}^{\infty}e^{-\frac{\pi}{2}d|r|}\,dr \\
+        &\ll \left(1+\frac{y}{\sqrt{q_{\infty}(s,f)}}\right)^{-M},
       \end{align*}
       where in the third and fourth lines we have used that $cy \ll (1+cy)$ for all $y \ge 0$ and any $c$ and the last line holds by \cref{met:decay_compacta_integral} since $e^{-\frac{\pi}{2}d|r|}$ has exponential decay. This completes the proof.
     \end{proof}
 
-    From \cref{prop:V_function_decay} we see that $V_{s}(f)$ is bounded for $y \ll_{\e} q_{\infty}(s,f)^{\frac{1}{2}+\e}$ and then starts to exhibit polynomial decay.
+    From \cref{prop:V_function_decay} we see that $V_{s}(f)$ is bounded for $y \ll_{\e} q_{\infty}(s,f)^{\frac{1}{2}+\e}$ and then starts to exhibit polynomial decay that can be taken arbitrarily large.
   \section{The Riemann Hypothesis \& Nontrivial Zeros}
     The zeros of $L$-functions $L(s,f)$ are closely tied to important arithmetic data of $f$. Let $L(s,f)$ be a degree $d$ $L$-function so that
     \[
@@ -686,7 +698,7 @@
       \]
     \end{theorem}
     \begin{proof}
-      Taking $s = \frac{1}{2}$ and $X = 1$ in the approximate functional equation gives
+      Taking $s = \frac{1}{2}$, $X = 1$, and $\Phi(u) = \cos^{-4dM}\left(\frac{\pi u}{4M}\right)$ with $M \gg 1$ in the approximate functional equation gives
       \[
         L\left(\frac{1}{2},f\right) = \sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right)+\e(f)\sum_{n \ge 1}\frac{\conj{a_{f}(n)}}{\sqrt{n}}V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right)+\frac{R}{q(f)^{\frac{1}{4}}\g\left(\frac{1}{2},f\right)}.
       \]
