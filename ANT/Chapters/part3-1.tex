@@ -326,7 +326,7 @@
     \[
       \sum_{\frac{X}{2} \le n < X}a(n) \quad \text{or} \quad \sum_{X \le n < X+Y}a(n),
     \]
-    for some $X$ and $Y$ with $Y < X$. Sums of this type are called \textbf{unweighted}\index{unweighted}. As an example of an unweighted sum, let $\psi:\R_{\ge 0} \to \R_{\ge 0}$ be a bump function that is identically $1$ on $[0,1]$ and has compact support within the interval $\left[1,\frac{X+1}{X}\right]$. Explicitly,
+    for some $X$ and $Y$ with $Y < X$. Sums of this type are called \textbf{unweighted}\index{unweighted}. As an example of an unweighted sum, let $\psi:\R_{\ge 0} \to \R_{\ge 0}$ be a bump function that is identically $1$ on $[0,1]$ and has compact support within the interval $\left[1,\frac{X+1}{X}\right]$. For example,
     \[
       \psi(y) = \begin{cases} 1 & \text{if $0 \le y \le 1$}, \\ e^{-\frac{1-y}{\frac{X+1}{X}-y}} & \text{if $1 \le y < \frac{X+1}{X}$}, \\ 0 & \text{if $y \ge \frac{X+1}{X}$}. \end{cases}
     \]
@@ -601,10 +601,10 @@
         &\ll \left(1+\frac{y}{\sqrt{q_{\infty}(s,f)}}\right)^{-a}\int_{-\infty}^{\infty}e^{-\frac{\pi}{2}d|r|}\,dr \\
         &\ll \left(1+\frac{y}{\sqrt{q_{\infty}(s,f)}}\right)^{-a},
       \end{align*}
-      where in the third and fourth lines we have used that $cy \ll (1+cy)$ for all $y \in \R_{> 0}$ and any $c$ and the last line holds by \cref{met:decay_compacta_integral} since $e^{-\frac{\pi}{2}d|r|}$ has exponential decay. This completes the proof.
+      where in the third and fourth lines we have used that $cy \ll (1+cy)$ for all $y \ge 0$ and any $c$ and the last line holds by \cref{met:decay_compacta_integral} since $e^{-\frac{\pi}{2}d|r|}$ has exponential decay. This completes the proof.
     \end{proof}
 
-    From \cref{prop:V_function_decay} we see that $V_{s}(f)$ is bounded for $y \ll q_{\infty}(s,f)^{\frac{1}{2}+\e}$ and then starts to exhibit polynomial decay.
+    From \cref{prop:V_function_decay} we see that $V_{s}(f)$ is bounded for $y \ll_{\e} q_{\infty}(s,f)^{\frac{1}{2}+\e}$ and then starts to exhibit polynomial decay.
   \section{The Riemann Hypothesis \& Nontrivial Zeros}
     The zeros of $L$-functions $L(s,f)$ are closely tied to important arithmetic data of $f$. Let $L(s,f)$ be a degree $d$ $L$-function so that
     \[
@@ -669,7 +669,7 @@
 
     Any improvement upon the exponent in the convexity bound in any aspect of the analytic conductor is called a \textbf{subconvexity estimate}\index{subconvexity estimate} (or a \textbf{convexity breaking bound}\index{convexity breaking bound}). Any argument used to do so is called a \textbf{subconvexity argument}\index{subconvexity argument}.
   \section{Estimating the Central Value}
-    The Lindel\"of hypothesis is concerned with the growth of the $L$-function $L(s,f)$ along the critical line. Sometimes we are only concerned with the size of $L(s,f)$ when $s = \frac{1}{2}$. The point $s = \frac{1}{2}$ is called the \textbf{central value}\index{central value} of $L(s,f)$ since it is exactly the midpoint on the critical line. Many important properties about $L(s,f)$ can be connected to its size at the central value. Any argument used to estimate an $L$-function at the central value is called a \textbf{central value estimate}\index{central value estimate}. We will state a result which gives a very useful upper bound for the size of an $L$-function at the central value in the $q(f)$-aspect. To state it, let $\psi:\R_{\ge 0} \to \R_{\ge 0}$ be a bump function with compact support in $\left[\frac{1}{2},2\right]$. Explicitly,
+    The Lindel\"of hypothesis is concerned with the growth of the $L$-function $L(s,f)$ along the critical line. Sometimes we are only concerned with the size of $L(s,f)$ when $s = \frac{1}{2}$. The point $s = \frac{1}{2}$ is called the \textbf{central value}\index{central value} of $L(s,f)$ since it is exactly the midpoint on the critical line. Many important properties about $L(s,f)$ can be connected to its size at the central value. Any argument used to estimate an $L$-function at the central value is called a \textbf{central value estimate}\index{central value estimate}. We will state a result which gives a very useful upper bound for the size of an $L$-function at the central value in the $q(f)$-aspect. To state it, let $\psi:\R_{\ge 0} \to \R_{\ge 0}$ be a bump function with compact support in $\left[\frac{1}{2},2\right]$. For example,
     \[
       \psi(y) = \begin{cases} e^{-\frac{1}{9-(4y-5)^{2}}} & \text{if $|4y-5| < 3$}, \\ 0 & \text{if $|4y-5| \ge 3$}. \end{cases}
     \]
@@ -694,32 +694,24 @@
       \[
         L\left(\frac{1}{2},f\right) \ll \sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right)+\frac{S}{q(f)^{\frac{1}{4}}}.
       \]
-      Now consider the set of functions $\left\{\psi\left(\frac{y}{2^{k}}\right)\right\}_{k \in \Z}$. Since $\psi\left(\frac{y}{2^{k}}\right)$ has support in $[2^{k-1},2^{k+1}]$, the sum $\s(y) = \sum_{k \in \Z}\psi\left(\frac{y}{2^{k}}\right)$, defined for $y \ge 0$, is finite since at most finitely many terms are nonzero for every $y$. It is also bounded away from zero since for any $x > 0$ there is some $k \in \Z$ for which $2^{k} \le y \le 3 \cdot 2^{k-1}$ so that $\frac{y}{2^{k}}$ is at least distance $\frac{1}{2}$ from the endpoints of $\left[\frac{1}{2},2\right]$. Defining $\psi_{k}(y) = \psi\left(\frac{y}{2^{k}}\right)\s(y)^{-1}$, it follows that $\left\{\psi_{k}(y)\right\}_{k \in \Z}$ satisfies
+      Now consider the set of functions $\left\{\psi\left(\frac{y}{2^{k}}\right)\right\}_{k \in \Z}$. Since $\psi\left(\frac{y}{2^{k}}\right)$ has support in $[2^{k-1},2^{k+1}]$, the sum $\s(y) = \sum_{k \in \Z}\psi\left(\frac{y}{2^{k}}\right)$, defined for $y > 0$, is finite since at most finitely many terms are nonzero for every $y$. It is also bounded away from zero since for any $y > 0$ there is some $k \in \Z$ for which $2^{k} \le y \le 3 \cdot 2^{k-1}$ so that $\frac{y}{2^{k}}$ is at least distance $\frac{1}{2}$ from the endpoints of $\left[\frac{1}{2},2\right]$. Defining $\psi_{k}(y) = \psi\left(\frac{y}{2^{k}}\right)\s(y)^{-1}$, it follows that $\left\{\psi_{k}(y)\right\}_{k \in \Z}$ satisfies
       \[
         \sum_{k \in \Z}\psi_{k}(y) = 1,
       \]
-      for any $y \in \R_{> 0}$. Then we can write
+      for any $y > 0$. Then we can write
+      \[
+        V_{s}(y) = \sum_{k \in \Z}\psi_{k}(y)V_{s}(y).
+      \]
+      It follows that
       \begin{align*}
-        V_{s}(y) &= \frac{1}{2\pi i}\int_{(a)}\frac{\g(s+u,f)}{\g(s,f)}\Phi(u)y^{-u}\frac{du}{u} \\
-        &= \frac{1}{2\pi i}\int_{(a)}\sum_{k \in \Z}\frac{\g(s+u,f)}{\g(s,f)}\Phi(u)y^{-u}\psi_{k}(y)\frac{du}{u} \\
-        &= \sum_{k \in \Z}\frac{1}{2\pi i}\int_{(a)}\frac{\g(s+u,f)}{\g(s,f)}\Phi(u)y^{-u}\psi_{k}(y)\frac{du}{u} && \text{DCT} \\
-        &= \sum_{k \in \Z}V_{s,k}(y),
+        \sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right) &= \sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}\sum_{k \in \Z}\psi_{k}\left(\frac{n}{\sqrt{q(f)}}\right)V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right) \\
+        &= \sum_{k \in \Z}\sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}\psi_{k}\left(\frac{n}{\sqrt{q(f)}}\right)V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right) && \text{DCT} \\
+        &\ll_{\e} \sum_{k \in \Z}\left|\sum_{\substack{n \ll q(f)^{\frac{1}{2}+\e} \\ 2^{k-1}\sqrt{q(f)} \le n \le 2^{k+1}\sqrt{q(f)}}}\frac{a_{f}(n)}{\sqrt{n}}\psi_{k}\left(\frac{n}{\sqrt{q(f)}}\right)\right| \\
+        &\ll_{\e} \sum_{k \ll \log(q(f)^{\frac{\e}{2}})}\left|\sum_{\substack{n \ll q(f)^{\frac{1}{2}+\e} \\ 2^{k-1}\sqrt{q(f)} \le n \le 2^{k+1}\sqrt{q(f)}}}\frac{a_{f}(n)}{\sqrt{n}}\psi_{k}\left(\frac{n}{\sqrt{q(f)}}\right)\right|,
       \end{align*}
-      where we have set
+      where in the second to last line we have used that $V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right)$ is bounded for $n \ll_{\e} q\left(\frac{1}{2},f\right)^{\e} \ll_{\e} q(f)^{\frac{1}{2}+\e}$ and then exhibits polynomial decay thereafter by \cref{prop:V_function_decay} and in the last line we have used that $\psi_{k}(y)$ has compact support in $[2^{k-1},2^{k+1}]$ (recall $k \in \Z$). Since $\s(y)$ is bounded away from zero and $\log(y) \ll y$, we obtain the crude bound
       \[
-        V_{s,k}(y) = \frac{1}{2\pi i}\int_{(a)}\frac{\g(s+u,f)}{\g(s,f)}\Phi(u)y^{-u}\psi_{k}(y)\frac{du}{u}.
-      \]
-      Note that $V_{s,k}(y)$ is compactly supported on $[2^{k-1},2^{k}]$ because $\psi_{k}(y)$ is compactly supported there. Moreover, \cref{prop:V_function_decay} implies that $V_{s,k}(y)$ also exhibits polynomial decay for $y \gg q_{\infty}(s,f)^{\frac{1}{2}+\e}$. It follows that
-      \[
-        \sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right) = \sum_{k \in \Z}\sum_{2^{k-1} \le n \le 2^{k+1}}\frac{a_{f}(n)}{\sqrt{n}}V_{\frac{1}{2},k}\left(\frac{n}{\sqrt{q(f)}}\right).
-      \]
-      Using the polynomial decay of $V_{\frac{1}{2},k}(y)$ to bound those terms for which $n \gg q\left(\frac{1}{2},f\right)^{\frac{1}{2}+\e} \gg q(f)^{\frac{1}{2}+\e}$ gives the estimate
-      \[
-        \sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right) \ll \sum_{k \ll q(f)^{\e}}\sum_{\substack{2^{k-1} \le n \le 2^{k+1} \\ n \ll q(f)^{\frac{1}{2}+\e}}}\frac{a_{f}(n)}{\sqrt{n}}V_{\frac{1}{2},k}\left(\frac{n}{\sqrt{q(f)}}\right),
-      \]
-      where in the first sum we have used that $\log(y) \ll_{\e} y^{\e}$. Now since $\s(y)$ is bounded away from zero and $V_{\frac{1}{2},k}(y)$ and $\psi(y)$ are compactly supported on the same interval (so their nonzero values differ by a bounded amount), we have the weaker estimate
-      \[
-        \sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right) \ll_{\e} q(f)^{\e}\max_{X \ll q(f)^{\frac{1}{2}+\e}}\sum_{\frac{X}{2} \le n \le 2X}\frac{a_{f}(n)}{\sqrt{n}}\psi\left(\frac{n}{\sqrt{q(f)}}\right).
+        \sum_{k \ll \log(q(f)^{\frac{\e}{2}})}\left|\sum_{\substack{n \ll q(f)^{\frac{1}{2}+\e} \\ 2^{k-1}\sqrt{q(f)} \le n \le 2^{k+1}\sqrt{q(f)}}}\frac{a_{f}(n)}{\sqrt{n}}\psi_{k}\left(\frac{n}{\sqrt{q(f)}}\right)\right| \ll_{\e} q(f)^{\frac{\e}{2}}\max_{X \ll q(f)^{\frac{1}{2}+\e}}\left|\sum_{\frac{X}{2} \le n \le 2X}\frac{a_{f}(n)}{\sqrt{n}}\psi\left(\frac{n}{X}\right)\right|
       \]
       We will estimate this latter sum. Abel's summation formula (see \cref{{append:Summation_Formulas}}) gives
       \[
