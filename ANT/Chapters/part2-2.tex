@@ -28,7 +28,7 @@
     \begin{enumerate}[label=(\roman*)]
       \item $f$ is holomorphic on $\H$.
       \item $(f|_{j,k}\g)(z) = \chi(\g)f(z)$ for all $\g \in \G$.
-      \item $f(\a z) = O(1)$ as $\Im(z) \to \infty$ for all $\a \in \PSL_{2}(\Z)$.
+      \item $f(\a z) = O(1)$ for all $\a \in \PSL_{2}(\Z)$.
     \end{enumerate}
     We say $f$ is a \textbf{(holomorphic) cusp form}\index{(holomorphic) cusp form} if the additional property is satisfied:
     \begin{enumerate}[label=(\roman*)]
@@ -46,15 +46,15 @@
     \[
       f(z+1) = f\left(\begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}z\right) = f(z),
     \]
-    so that $f$ is $1$-periodic. We can say more. Let $\s_{\mf{a}}$ be a scaling matrix for the $\mf{a}$ cusp. As $\G_{\mf{a}} = \s_{\mf{a}}\G_{\infty}\s_{\mf{a}}^{-1}$, or equivalently $\G_{\mf{a}}\s_{\mf{a}} = \s_{\mf{a}}\G_{\infty}$, the function $f(\s_{\mf{a}}z)$ is independent of the scaling matrix $\s_{\mf{a}}$. Moreover, by the same reasoning
+    so that $f$ is $1$-periodic. Let $\s_{\mf{a}}$ be a scaling matrix for the $\mf{a}$ cusp. As $\G_{\mf{a}} = \s_{\mf{a}}\G_{\infty}\s_{\mf{a}}^{-1}$, or equivalently $\G_{\mf{a}}\s_{\mf{a}} = \s_{\mf{a}}\G_{\infty}$, the function $f(\s_{\mf{a}}z)$ is independent of the scaling matrix $\s_{\mf{a}}$. Moreover, by the same reasoning
     \[
       f(\s_{\mf{a}}(z+1)) = f(\s_{\mf{a}}z).
     \]
-    Thus $f(\s_{\mf{a}}z)$ is $1$-periodic. Holomorphy at the cusps implies that $f(\s_{\mf{a}}z)$ remains bounded as $\Im(z) \to \infty$ and so we have a Fourier series
+    Thus $f(\s_{\mf{a}}z)$ is $1$-periodic. Note that this means we only need to verify the growth condition as $y \to \infty$. As $f$ is holomorphic, $f(\s_{\mf{a}}z)$ has a Fourier series
     \[
-      f(\s_{\mf{a}}z) = \sum_{n \ge 0}a_{\mf{a}}(n,y)e^{2\pi inx}.
+      f(\s_{\mf{a}}z) = \sum_{n \ge 0}a_{\mf{a}}(n,y)e^{2\pi inx},
     \]
-    This Fourier series is independent of the scaling matrix because $f(\s_{\mf{a}}z)$ is. We can simplify the Fourier coefficients $a_{\mf{a}}(n,y)$. To see this, since $f$ is holomorphic it satisfies the first order Cauchy-Riemann equations so that
+    where the sum is only over $n \ge 0$ because holomorphy at the cusps implies that $f(\s_{\mf{a}}z)$ is bounded. This Fourier series is independent of the scaling matrix because $f(\s_{\mf{a}}z)$ is. We can simplify the Fourier coefficients $a_{\mf{a}}(n,y)$. To see this, since $f$ is holomorphic it satisfies the first order Cauchy-Riemann equations so that
     \[
       \frac{1}{2}\left(\frac{\del f}{\del x}+i\frac{\del f}{\del y}\right) = 0.
     \]
@@ -121,7 +121,7 @@
     \begin{lemma}\label{lem:technical_Eisenstein_convergence_lemma}
       Let $a,b > 0$ be reals and consider the half-strip
       \[
-        S_{a,b} = \{z \in \H:|\Re(z)| \le a, \Im(z) \ge b\}.
+        S_{a,b} = \{z \in \H:|x| \le a, y \ge b\}.
       \]
       Then there is a $\d \in (0,1)$ such that
       \[
@@ -136,21 +136,21 @@
       \]
       So consider the function
       \[
-        f(z,u) = \left|\frac{z+u}{i+u}\right|,
+        f(z,r) = \left|\frac{z+r}{i+r}\right|,
       \]
-      for $z \in S_{a,b}$ and $u \in \R$. It suffices to show $f(z,u) \ge \d$. As $z \in \H$, $z-u \neq 0$ so that $f(z,u)$ is continuous and $f(z,u) > 0$ for all $z$ and $u$. Now let $Y > b$ and consider the region
+      for $z \in S_{a,b}$ and $r \in \R$. It suffices to show $f(z,r) \ge \d$. As $z \in \H$, $z-r \neq 0$ so that $f(z,r)$ is continuous and positive for all $z$ and $u$. Now let $Y > b$ and consider the region
       \[
-        S_{a,b}^{Y} = \{z \in \H:|\Re(z)| \le a, b \le \Im(z) \le Y\}.
+        S_{a,b}^{Y} = \{z \in \H:|x| \le a, b \le y \le Y\}.
       \]
-      We claim that there exists a $Y$ such that if $\Im(z) > Y$ and $|x| > Y$ then $f(z,u)^{2} > \frac{1}{4}$. Indeed, we compute
+      We claim that there exists a $Y$ such that if $y > Y$ and $|x| > Y$ then $f(z,r)^{2} > \frac{1}{4}$. Indeed, we compute
       \[
-        f(z,u)^{2} = \frac{(z+u)(\conj{z}+u)}{(i+u)(-i+u)} = \frac{|z|^{2}+2\Re(z)u+u^{2}}{1+u^{2}} \ge \frac{\Im(z)+u^{2}}{1+u^{2}},
+        f(z,r)^{2} = \frac{(z+r)(\conj{z}+r)}{(i+r)(-i+r)} = \frac{|z|^{2}+2xr+r^{2}}{1+r^{2}} \ge \frac{y+r^{2}}{1+r^{2}},
       \]
-      where in the inequality we have used that $|z|^{2} \ge \Im(z)$ and $\Re(z)$ is bounded. Now $\frac{u^{2}}{1+u^{2}} \to 1$ as $u \to \pm\infty$ so choosing $Y$ such that $|u| > Y$ implies $\frac{u^{2}}{1+u^{2}} \ge \frac{1}{4}$ yields
+      where in the inequality we have used that $|z|^{2} \ge y$ and $x$ is bounded. Now $\frac{r^{2}}{1+r^{2}} \to 1$ as $r \to \pm\infty$ so choosing $Y$ such that $|r| > Y$ implies $\frac{r^{2}}{1+r^{2}} \ge \frac{1}{4}$ yields
       \[
-        \frac{\Im(z)+u^{2}}{1+u^{2}} \ge \frac{\Im(z)}{1+u^{2}}+\frac{u^{2}}{1+u^{2}} \ge \frac{\Im(z)}{1+u^{2}}+\frac{1}{4} > \frac{1}{4}.
+        \frac{y+r^{2}}{1+r^{2}} \ge \frac{y}{1+r^{2}}+\frac{r^{2}}{1+r^{2}} \ge \frac{y}{1+r^{2}}+\frac{1}{4} > \frac{1}{4}.
       \]
-      It follows that $f(z,u) > \frac{1}{2}$ outside of $S_{a,b}^{Y} \x [-Y,Y]$. But this latter region is compact and so $f(z,u)$ obtains a minimum $\d'$ on it. Then set $\d = \min\{\frac{1}{2},\d'\}$ and we are done.
+      It follows that $f(z,r) > \frac{1}{2}$ outside of $S_{a,b}^{Y} \x [-Y,Y]$. But this latter region is compact and so $f(z,r)$ obtains a minimum $\d'$ on it. Then set $\d = \min\{\frac{1}{2},\d'\}$ and we are done.
     \end{proof}
 
     We can now show that $E_{k,\chi}(z)$ is holomorphic at the cusps. Let $\s_{\mf{a}}$ be a scaling matrix for the cusp $\mf{a}$. Then
@@ -161,13 +161,13 @@
     \[
       \sum_{(c,d) \in \Z^{2}-\{\mathbf{0}\}}\frac{1}{|c\s_{\mf{a}}z+d|^{k}} = \sum_{d \neq 0}\frac{1}{d^{k}}+\sum_{c \neq 0}\sum_{d \in \Z}\frac{1}{|c\s_{\mf{a}}z+d|^{k}} = 2\sum_{d \ge 1}\frac{1}{d^{k}}+2\sum_{c \ge 1}\sum_{d \in \Z}\frac{1}{|c\s_{\mf{a}}z+d|^{k}}.
     \]
-    Since the first sum is bounded, it suffices to show that the double sum is bounded as $\Im(z) \to \infty$. To see this, let $\Im(z) \ge 1$ and $\d$ be as in \cref{lem:technical_Eisenstein_convergence_lemma}. Then for any integer $N \ge 1$ we can write
+    Since the first sum is bounded, it suffices to show that the double sum is bounded. To see this, let $y \ge 1$ and $\d$ be as in \cref{lem:technical_Eisenstein_convergence_lemma}. Then for any integer $N \ge 1$ we can write
     \begin{align*}
       \sum_{c \ge 1}\sum_{d \in \Z}\frac{1}{|c\s_{\mf{a}}z+d|^{k}} &= \sum_{c+|d| \le N}\frac{1}{|c\s_{\mf{a}}z+d|^{k}}+\sum_{c+|d| > N}\frac{1}{|c\s_{\mf{a}}z+d|^{k}} \\
       &\le \sum_{c+|d| \le N}\frac{1}{|c\s_{\mf{a}}z+d|^{k}}+\sum_{c+|d| > N}\frac{1}{(\d|ci+d|)^{k}} \\
       &\le \sum_{c+|d| \le N}\frac{1}{|c\s_{\mf{a}}z+d|^{k}}+\frac{1}{\d^{k}}\sum_{c+|d| > N}\frac{1}{|ci+d|^{k}}.
     \end{align*}
-    Since $\sum_{c \ge 1}\sum_{d \in \Z}\frac{1}{|ci+d|^{k}}$ converges by \cref{prop:general_lattice_sum_convergence_for_two_variables}, the second sum tends to zero as $N \to \infty$. As for the first sum, it is finite and each term tends to a finite value as $\Im(z) \to \infty$. Holomorphy at $\mf{a}$ follows. We collect all of this work as a theorem:
+    Since $\sum_{c \ge 1}\sum_{d \in \Z}\frac{1}{|ci+d|^{k}}$ converges by \cref{prop:general_lattice_sum_convergence_for_two_variables}, the second sum tends to zero as $N \to \infty$. As for the first sum, it is finite and each term is bounded. Holomorphy at $\mf{a}$ follows. We collect all of this work as a theorem:
 
     \begin{theorem}
       Let $k \ge 4$ and $\chi$ be Dirichlet character with conductor $q \mid N$. The Eisenstein series
@@ -442,7 +442,7 @@
         &= j(\g,z)^{k}\sum_{j}(f[\b_{j}]_{k})(z) \\
         &= j(\g,z)^{k}(f[\G_{1}\a\G_{2}]_{k})(z).
       \end{align*}
-      This proves $f[\G_{1}\a\G_{2}]_{k}$ is modular. For the growth condition, let $\s_{\mf{a}}$ be a scaling matrix for the cusp $\mf{a}$ of $\G_{2}\backslash\H$. For any orbit representative $\b_{j}$, $\b_{j}\s_{\mf{a}}$ takes $\infty$ to an element of $\Q \cup \{\infty\}$ since $\b_{j} \in \GL_{2}^{+}(\Q)$. In other words, $\b_{j}\s_{\mf{a}}\infty = \mf{b}$ for some cusp $\mf{b}$ of $\G_{1}\backslash\H$. Now choose an integer $r \ge 1$ such that $r\a \in \GL_{2}^{+}(\Z)$. As a consequence, there exist integers $n,m \ge 1$ such that $rj(\b_{j},\s_{\mf{a}}z) = |n\s_{\mf{a}}z+m|$. Then letting $\Im(z) > 1$ and $\d$ be as in \cref{lem:technical_Eisenstein_convergence_lemma}, we have
+      This proves $f[\G_{1}\a\G_{2}]_{k}$ is modular. For the growth condition, let $\s_{\mf{a}}$ be a scaling matrix for the cusp $\mf{a}$ of $\G_{2}\backslash\H$. For any orbit representative $\b_{j}$, $\b_{j}\s_{\mf{a}}$ takes $\infty$ to an element of $\Q \cup \{\infty\}$ since $\b_{j} \in \GL_{2}^{+}(\Q)$. In other words, $\b_{j}\s_{\mf{a}}\infty = \mf{b}$ for some cusp $\mf{b}$ of $\G_{1}\backslash\H$. Now choose an integer $r \ge 1$ such that $r\a \in \GL_{2}^{+}(\Z)$. As a consequence, there exist integers $n,m \ge 1$ such that $rj(\b_{j},\s_{\mf{a}}z) = |n\s_{\mf{a}}z+m|$. Then letting $y \ge 1$ and $\d$ be as in \cref{lem:technical_Eisenstein_convergence_lemma}, we have
       \[
         j(\b_{j},\s_{\mf{a}}z) = \frac{|n\s_{\mf{a}}z+m|}{r} \ge \frac{\d|ni+m|}{r}.
       \]
@@ -450,7 +450,7 @@
       \[
         (f[\G_{1}\a\G_{2}]_{k})(\s_{\mf{a}}z) \ll \left(\frac{\d|ni+m|}{r}\right)^{-k}\sum_{j}\det(\b_{j})^{k-1}|f(\b_{j}\s_{\mf{a}} z)|,
       \]
-      and the growth condition is satisfied. Therefore $f[\G_{1}\a\G_{2}]_{k} \in \mc{M}_{k}(\G_{2})$. To see that $[\G_{1}\a\G_{2}]_{k}$ preserves the subspace of cusp forms, just note that if $f$ is a cusp form it has exponential decay at the cusps so that the sum on the right-hand side tends to zero as $\Im(z) \to \infty$. Then $f[\G_{1}\a\G_{2}]_{k}$ is a cusp form too.
+      and the growth condition is satisfied. Therefore $f[\G_{1}\a\G_{2}]_{k} \in \mc{M}_{k}(\G_{2})$. To see that $[\G_{1}\a\G_{2}]_{k}$ preserves the subspace of cusp forms, just note that if $f$ is a cusp form it has exponential decay at the cusps so that the sum on the right-hand side does too. Then $f[\G_{1}\a\G_{2}]_{k}$ is a cusp form too.
     \end{proof}
 
     The double coset operators are the most basic types of operators on holomorphic forms. They are the building blocks needed to define the more important diamond and Hecke operators.
