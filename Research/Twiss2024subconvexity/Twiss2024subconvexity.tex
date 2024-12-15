@@ -1,0 +1,477 @@
+\documentclass[12pt,reqno,oneside]{amsart}
+\usepackage{import}
+\input{preamble}
+
+%=================%
+%  Title & Index  %
+%=================%
+\title{Subconvexity for $\GL_{2}$ $L$-functions Computations}
+\author{Henry Twiss}
+\date{\today}
+\makeindex
+
+\begin{document}
+
+\maketitle
+
+\section{Setup: Sums \& Forms}
+  Let $q \ge 1$ and let $\psi$ be a Dirichlet character modulo $q$. For $m \in \Z$, let
+  \[
+    c_{q}(m) = \sum_{a \tmod{q}}e^{\frac{2\pi ima}{q}} \quad \text{and} \quad c_{\psi}(m) = \sum_{a \tmod{q}}\psi(a)e^{\frac{2\pi ima}{q}},
+  \]
+  be the Ramanujan and Gauss sums respectively. For $\ell$ such that $(\ell,q) = 1$, we have
+  \[
+    c_{\psi}(\ell m) = \conj{\psi(\ell)}c_{\psi}(m),
+  \]
+  and moreover
+  \[
+    c_{\psi}(m) = \conj{\psi(m)}c_{\psi}(1),
+  \]
+  provided $\psi$ is primitive. Throughout we will let $f$ and $g$ be two weight $k$ and level $1$ holomorphic cusp forms. The admit Fourier series
+  \[
+    f(z) = \sum_{m \ge 1}a(m)e^{2\pi imz} = \sum_{m \ge 1}A(m)m^{\frac{k-1}{2}}e^{2\pi imz} \quad \text{and} \quad g(z) = \sum_{m \ge 1}b(m)e^{2\pi imz} = \sum_{m \ge 1}B(m)m^{\frac{k-1}{2}}e^{2\pi imz},
+  \]
+  and are normalzied so that
+  \[
+    a(1) = b(1) = 1.
+  \]
+  In particular, $a(m)$ and $b(m)$ are the $m$-th Hecke eigenvalues of $f$ and $g$ respectively. We define the $L$-functions
+  \[
+    L(s,f \ox \psi) = \sum_{m \ge 1}\frac{A(m)\psi(m)}{m^{s}} \quad \text{and} \quad L(s,f \x c_{\psi}) = \sum_{m \ge 1}\frac{A(m)c_{\psi}(m)}{m^{s}}.
+  \]
+  These two $L$-functions are most related when $\psi$ is primitive since we have the asymptotic
+  \[
+    L(s,f \x c_{\psi}) \sim \sqrt{q}L(s,f \ox \conj{\psi}).
+  \]
+  They are least related when $\psi = \psi_{q,0}$ is the trivial character modulo $q$ as
+  \[
+    L(s,f \x c_{\psi}) = L^{(q)}(s,f).
+  \]
+  Morally, one should think of $L(s,f \x c_{\psi})$ as an arithmetically smoothed version of $L(s,f \ox \psi)$. This will allow for some additional saving when studying the second moment of $L(s,f \x c_{\psi})$. We will also require Maass cusp forms so let $\{\mu_{j}\}$ represent an orthonormal basis of Maass cusp forms on $\G_{0}(\ell_{1}\ell_{2})\backslash\H$ with spectral parameter $t_{j}$ for $\mu_{j}$. They admit Fourier series
+  \[
+    \mu_{j}(z) = \sum_{m \neq 0}\rho_{j}(m)\sqrt{y}K_{it_{j}}(2\pi|m|y)e^{2\pi inx},
+  \]
+  and the Fourier coefficients are normalized so that
+  \[
+    \rho_{j}(m) = \rho_{j}(\sgn(m))\l_{j}(|m|),
+  \]
+  where $\l_{j}(m)$ is the $m$-th Hecke eigenvalue of $\mu_{j}$. We will also need the Petersson inner product on $\G_{0}(\ell_{1}\ell_{2})\backslash\H$, defined by
+  \[
+    \<F,G\> = \frac{1}{\mc{V}}\int_{\G_{0}(\ell_{1}\ell_{2})\backslash\H}F(z)\conj{G(z)}\,d\mu,
+  \]
+  where
+  \[
+    \mc{V} = \mathrm{vol}(\G_{0}(\ell_{1}\ell_{2})\backslash\H) = \frac{\pi}{3}\ell_{1}\ell_{2}\prod_{p \mid \ell_{1}\ell_{2}}(1+p^{-1}).
+  \]
+  Also, define the functions
+  \[
+    V_{f,g}^{\ell_{1},\ell_{2}} = V_{f,g}^{\ell_{1},\ell_{2}}(z) = \conj{f(\ell_{1}z)}g(\ell_{2}z)\Im(z)^{k} \quad \text{and} \quad V_{f,v}^{\ell_{1}} = V_{f,v}^{\ell_{1}}(z) = \conj{f(\ell_{1}z)}E(z,\todo{s};k)\Im(z)^{\frac{k}{2}}.
+  \]
+\section{Shifted Dirichlet Series}
+  \subsection*{The Dirichlet Series \texorpdfstring{$D_{f,g}(s;h,\ell_{1},\ell_{2})$}{}}
+    Let $h \ge 1$. Our first Dirichlet series $D_{f,g}(s;h,\ell_{1},\ell_{2})$ is given by
+    \[
+      D_{f,g}(s;h,\ell_{1},\ell_{2}) = \sum_{\ell_{1}m = \ell_{2}n+h}\frac{a(m)b(n)}{(n\ell_{2})^{s+k-1}}.
+    \]
+    This series is absolutely convergent for $\Re(s) > 1$ and admits meromorphic continuation to $\frac{1-k}{2}-C_{1} < \Re(s)$, for any $C_{1} > 0$, and in these two regions it satisfies the bounds
+    \[
+      D_{f,g}(s;h,\ell_{1},\ell_{2}) \ll_{\todo{\ell_{1},\ell_{2}}} h^{\frac{k-1}{2}+\e} \quad \text{and} \quad D_{f,g}(s;h,\ell_{1},\ell_{2}) \ll_{\todo{\ell_{1},\ell_{2}}} h^{k+2C_{1}+\e},
+    \]
+    respectively. In the region $\Re(s) < \frac{1-k}{2}$ and $\e$ away from the poles, the meromorphic continuation is given by the absolutely convergent spectral expansion
+    \[
+      D_{f,g}(s;h,\ell_{1},\ell_{2}) = \sum_{t_{j}}\conj{\rho_{j}(-h)\<V_{f,g}^{\ell_{1},\ell_{2}},\mu_{j}\>}h^{\frac{1}{2}-s}\frac{\G\left(s-\frac{1}{2}+it_{j}\right)\G\left(s-\frac{1}{2}-it_{j}\right)\G(1-s)}{\G\left(\frac{1}{2}+it_{j}\right)\G\left(\frac{1}{2}-it_{j}\right)\G(s+k-1)}.
+    \]
+    In short, $D_{f,g}(s;h,\ell_{1},\ell_{2})$ has meromorphic continuation to $\C$ but we do not have a repsentation in the strip $\frac{1-k}{2} \le \Re(s) \le 1$. The poles occur at $s = \frac{1}{2}-\ell+it_{j}$ for $\ell \ge 0$ and the residue at this pole is
+    \begin{align*}
+      \Res_{s = \frac{1}{2}-\ell+it_{j}}D_{f,g}(s;h,\ell_{1},\ell_{2}) &= \conj{\rho_{j}(-h)\<V_{f,g}^{\ell_{1},\ell_{2}},\mu_{j}\>}h^{\ell-it_{j}}\frac{(-1)^{\ell}}{\ell!}\frac{\G\left(-\ell+2it_{j}\right)\G\left(\frac{1}{2}+\ell-it_{j}\right)}{\G\left(\frac{1}{2}+it_{j}\right)\G\left(\frac{1}{2}-it_{j}\right)\G\left(k-\ell-\frac{1}{2}+it_{j}\right)} \\
+      &\cdot .
+    \end{align*}
+  \subsection*{The Dirichlet Series \texorpdfstring{$D_{f,v}(w;n,\ell_{1},\ell_{2})$}{}}
+    Let $n \ge 1$. Our second Dirichlet series $D_{f,v}(w;n,\ell_{1},\ell_{2})$ is given by
+    \[
+      D_{f,v}(w;n,\ell_{1},\ell_{2}) = \sum_{\ell_{1}m = \ell_{2}n+h}\frac{a(m)\s_{1-2v}(h)h^{v-\frac{1}{2}}}{h^{w+\frac{k-1}{2}}}.
+    \]
+    This series is absolutely convergent for $\Re(w) > \frac{1}{2}+\Re(v)$ and admits meromorphic continuation. To state the meromorphic continuation, let $c > 0$ be such that if $v$ satisfies $\z(2v) \neq 0$, then $\Re(v)\ge \frac{1}{2}-\frac{8c}{\log(2+\Im(v))}$. For such a $c$, we set
+    \[
+      \d(s,v,u) = \frac{c}{\log(3+|\Im(s+u)|+|\Im(v)|)} \quad \text{and} \quad \d_{v} = \d(0,0,v).
+    \]
+    Then we have meromorphic continuation to $\Re(v) \ge \frac{1}{2}-\d(w,v,u)$ with $\Re(w) > 1-\frac{k}{2}-\Re(v)-C_{2}$, for any $C_{2} > 0$, and in these two regions satisfies the bounds
+    \[
+      \todo{xxx}
+    \]
+    In the region $\Re(w) < \frac{1-k}{2}$ and $\e$ away from the poles, the meromorphic continuation is given by the absolutely convergent spectral expansion
+    \begin{align*}
+      D_{f,v}\left(w;n,\ell_{1},\ell_{2}\right) &= \sum_{t_{j}}\conj{\rho_{j}(-\ell_{2}n)\<V_{f,v}^{\ell_{1}},\mu_{j}\>}(\ell_{2}n)^{\frac{1}{2}-w}\frac{\G\left(w-\frac{1}{2}+it_{j}\right)\G\left(w-\frac{1}{2}-it_{j}\right)}{\G\left(\frac{1}{2}+it_{j}\right)\G\left(\frac{1}{2}-it_{j}\right)} \\
+      &\cdot \frac{\G(1-w)\G(w)}{\G\left(w+v+\frac{k}{2}-1\right)\G\left(w-v+\frac{k}{2}\right)},
+    \end{align*}
+    In short, $D_{f,v}\left(w;n,\ell_{1},\ell_{2}\right)$ admits meromorphic continuation to $\C$ but we do not have a representation in the strip $\frac{1-k}{2} \le \Re(w) \le \frac{1}{2}+\Re(v)$. The poles occur at $w = \frac{1}{2}-\ell+it_{j}$ for $\ell \ge 0$ and the residue at this pole is
+    \begin{align*}
+      \Res_{w = \frac{1}{2}-\ell+it_{j}}D_{f,v}\left(w;n,\ell_{1},\ell_{2}\right) &= \conj{\rho_{j}(-\ell_{2}n)\<V_{f,v}^{\ell_{1}},\mu_{j}\>}(\ell_{2}n)^{\ell-it_{j}}\frac{(-1)^{\ell}}{\ell!}\frac{\G\left(\frac{1}{2}+\ell-it_{j}\right)\G\left(\frac{1}{2}-\ell+it_{j}\right)}{\G\left(\frac{k-1}{2}-\ell+v+it_{j}\right)\G\left(\frac{k+1}{2}-\ell-v+it_{j}\right)} \\
+      &\cdot \frac{\G\left(-\ell+2it_{j}\right)}{\G\left(\frac{1}{2}+it_{j}\right)\G\left(\frac{1}{2}-it_{j}\right)}.
+    \end{align*}
+  \subsection*{The Multiple Dirichlet Series \texorpdfstring{$Z_{f,g}(s,v,u,\ell_{1},\ell_{2})$}{}}
+    We now wish to construct a multiple Dirichlet series from $D_{f,g}(s;h,\ell_{1},\ell_{2})$ and $D_{f,v}(w;n,\ell_{1},\ell_{2})$. To do this we will suppose 
+    \[
+      \Re(s) > 1, \quad \Re(w) > \frac{1}{2}+\Re(v), \quad \text{and} \quad \Re(v) \ge \frac{1}{2}-\d(s,v,u).
+    \]
+    Letting $\e$ be such that $\Re(w) > \frac{1}{2}+\Re(v)+\e$, both Dirichlet series $D_{f,g}(s;h,\ell_{1},\ell_{2})$ and $D_{f,v}(w;n,\ell_{1},\ell_{2})$ converge absolutely and satisfy the estimates
+    \[
+      D_{f,g}(s;h,\ell_{1},\ell_{2}) \ll_{\ell_{1},\ell_{2}} h^{\frac{k-1}{2}+\e} \quad \text{and} \quad D_{f,v}(w;n,\ell_{1},\ell_{2}) \ll_{\ell_{1},\ell_{2}} n^{\frac{k-1}{2}+\e}.
+    \]
+    Thus for
+    \[
+      \Re(s) > 1, \quad \Re(u) > \frac{k+1}{2}, \quad \text{and} \quad \Re(v) \ge \frac{1}{2}-\d(s,v,u),
+    \]
+    we may define the multiple Dirichlet series $Z_{f,g}(s,v,u;\ell_{1},\ell_{2})$ by
+    \[
+      Z_{f,g}(s,v,u;\ell_{1},\ell_{2}) = (\ell_{1}\ell_{2})^{\frac{k-1}{2}}\sum_{\ell_{1}m = \ell_{2}n+h}\frac{a(m)b(n)\s_{1-2v}(h)}{(\ell_{2}n)^{s+k-1}h^{u}}.
+    \]
+    It is absolutely convergent in this region. Moreover, $Z_{f,g}(s,v,u;\ell_{1},\ell_{2})$ satisfies the interchange
+    \[
+      Z_{f,g}(s,v,u;\ell_{1},\ell_{2}) = \sum_{h \ge 1}\frac{D_{f,g}(s;h,\ell_{1},\ell_{2})\s_{1-2v}(h)}{h^{u}} = \sum_{n \ge 1}\frac{D_{f,v}\left(u+v-\frac{k}{2};n,\ell_{1},\ell_{2}\right)b(n)}{(\ell_{2}n)^{s+k-1}},
+    \]
+    where both representations converge absolutely. In the region where $D_{f,g}(s;h,\ell_{1},\ell_{2})$ admits a spectral expansion, we have an absolutely convergent spectral expansion for $Z_{f,g}(s,v,u;\ell_{1},\ell_{2})$ given by
+    \begin{align*}
+      Z_{f,g}(s,v,u;\ell_{1},\ell_{2}) &= \sum_{t_{j}}\conj{\rho_{j}(-1)\<V_{f,g}^{\ell_{1},\ell_{2}},\mu_{j}\>}(\ell_{1}\ell_{2})^{\frac{k-1}{2}}\frac{\G\left(s-\frac{1}{2}+it_{j}\right)\G\left(s-\frac{1}{2}-it_{j}\right)\G(1-s)}{\G\left(\frac{1}{2}+it_{j}\right)\G\left(\frac{1}{2}-it_{j}\right)\G(s+k-1)} \\
+      &\cdot \frac{L\left(s+u-\frac{1}{2},\mu_{j}\right)L\left(s+u+2v-\frac{3}{2},\mu_{j}\right)}{\z(2s+2u+2v-2)}.
+    \end{align*}
+    Similarily, in the region where $D_{f,v}\left(u+v-\frac{k}{2};n,\ell_{1},\ell_{2}\right)$ admits a spectral expansion, we have an absolutely convergent spectral expansion for $Z_{f,g}(s,v,u;\ell_{1},\ell_{2})$ given by
+    \begin{align*}
+      Z_{f,g}(s,v,u;\ell_{1},\ell_{2}) &= \sum_{t_{j}}\conj{\rho_{j}(-1)\<V_{f,v}^{\ell_{1}},\mu_{j}\>}\ell_{1}^{\frac{k-1}{2}}\ell_{2}^{1-s-v-u}\frac{\G\left(u+v-\frac{k+1}{2}+it_{j}\right)\G\left(u+v-\frac{k+1}{2}-it_{j}\right)}{\G\left(\frac{1}{2}+it_{j}\right)\G\left(\frac{1}{2}-it_{j}\right)} \\
+      &\cdot \frac{\G\left(\frac{k}{2}+1-u-v\right)\G\left(u+v-\frac{k}{2}\right)}{\G(u+2v-1)\G(u)}\frac{L^{(\ell_{2})}(s+u+v-1,g \ox \mu_{j})}{\z^{(\ell_{2})}(2s+2u+2v-2)}\sum_{\a \ge 0}\frac{b(\ell_{2}^{\a})\l_{j}(\ell_{2}^{\a+1})}{(\ell_{2}^{\a})^{s+u+v-1+\frac{k-1}{2}}}.
+    \end{align*}
+    The poles of $Z_{f,g}(s,v,u;\ell_{1},\ell_{2})$ are inherited from the poles of $D_{f,g}(s;h,\ell_{1},\ell_{2})$ of $D_{f,v}\left(u+v-\frac{k}{2};n,\ell_{1},\ell_{2}\right)$ with corresponding residues.
+\section{Subconvexity}
+  \subsection*{Setup}
+    Let $G(x)$ be a smooth function with compact support in the interval $[1,2]$ and let $g(s)$ be the Mellin transform.
+    For a Dirichlet character $\chi$ modulo $Q$, we define
+    \[
+      B_{\chi}(x) = \sum_{m \ge 1}A(m)\chi(m)G\left(\frac{m}{x}\right) \quad \text{and} \quad B_{c_{\chi}}(x) = \sum_{m \ge 1}A(m)\conj{c_{\chi}}(m)G\left(\frac{m}{x}\right).
+    \]
+    Using a smooth dyadic parition of unity and summation by parts, we we have the bounds
+    \[
+      L\left(\frac{1}{2},f \ox \chi \right) \ll Q^{-\frac{1}{2}}\max_{x \ll Q^{1+\e}}B_{\chi}(x) \quad \text{and} \quad L\left(\frac{1}{2},f \ox c_{\chi} \right) \ll Q^{-\frac{1}{2}}\max_{x \ll Q^{1+\e}}B_{c_{\chi}}(x).
+    \]
+    Since $L\left(s,f \ox \chi\right) \ll Q^{-\frac{1}{2}}L(s,f \ox c_{\chi})$, we have
+    \[
+      \left|L\left(\frac{1}{2},f \ox \chi \right)\right|^{2} \ll Q^{-2}\max_{x \ll Q^{1+\e}}|B_{c_{\chi}}(x)|^{2}.
+    \]
+    So to obtain a subconvexity estimate for $L(s,f \ox \chi)$ at $s = \frac{1}{2}$, it suffices to estimate $B_{c_{\chi}}(x)$ for $x \ll Q^{1+\e}$. Now let $q \ge 1$ and $\psi$ be a Dirichlet character modulo $q$. We define
+    \[
+      S_{\chi}(x,q) = \frac{1}{\vphi(q)}\sum_{\psi \tmod{q}}|B_{c_{\psi}}(x)|^{2}\left|\sum_{\ell \sim L}\chi(\ell)\conj{\psi}(\ell)\right|^{2},
+    \]
+    where $\ell \sim L$ means that $\ell \in [L,2L]$ and is prime. As all of the terms in the sum are nonnegative, retaining only the term corresponding to $\psi = \chi$, the prime number theorem gives the lower bound
+    \[
+      \frac{L^{2}}{Q\log^{2}(L)}|B_{c_{\chi}}(x)|^{2} \ll S_{\chi}(x,q).
+    \]
+    It follows that
+    \[
+      \frac{L^{2}Q}{\log^{2}(L)}\left|L\left(\frac{1}{2},f \ox \chi \right)\right|^{2} \ll \frac{L^{2}}{Q\log^{2}(L)}\max_{x \ll Q^{1+\e}}|B_{c_{\chi}}(x)|^{2} \ll \max_{x \ll Q^{1+\e}}\sum_{|q-Q| \ll Q^{\e}}S_{\chi}(x,q),
+    \]
+    Hence
+    \[
+      \left|L\left(\frac{1}{2},f \ox \chi \right)\right|^{2} \ll \frac{1}{L^{2+\e}Q}\max_{x \ll Q^{1+\e}}\sum_{|q-Q| \ll Q^{\e}}S_{\chi}(x,q).
+    \]
+    Now recall the Mellin inverse
+    \[
+      \frac{1}{2\pi i}\int_{(2)}\frac{e^{\frac{\pi v^{2}}{y^{2}}}Q^{2v}}{y}\,dv = e^{-\frac{y^{2}\log^{2}(Q)}{\pi}} \ll \begin{cases} 1 & \text{if $|q-Q| \ll \frac{Q^{1+e}}{y}$}, \\ Q^{-A} & \text{if $|q-Q| \gg \frac{Q^{1+\e}}{y}$}, \end{cases}
+    \]
+    for any $A \gg 1$. From this integral transform, we conclude that
+    \[
+      \sum_{|q-Q| \ll Q^{\e}}S_{\chi}(x,q) \ll \frac{1}{2\pi i}\int_{(2)}\sum_{q \ge 1}\frac{S_{\chi}(x,q)}{q^{2v}}\frac{e^{\frac{\pi v^{2}}{Q^{2}}}Q^{2v}}{Q}\,dv.
+    \]
+    To estimate the right-hand side, we will rewrite the Dirichlet series over $q$. To do this, we first expand $S_{\chi}(x,q)$:
+    \begin{align*}
+      S_{\chi}(x,q) &= \frac{1}{\vphi(q)}\sum_{\psi \tmod{q}}|B_{c_{\psi}}(x)|^{2}\left|\sum_{\ell \sim L}\chi(\ell)\conj{\psi}(\ell)\right|^{2} \\
+      &= \frac{1}{\vphi(q)}\sum_{\ell_{1},\ell_{2} \sim L}\sum_{\psi \tmod{q}}\sum_{m,n \ge 1}A(m)A(n)G\left(\frac{m}{x}\right)G\left(\frac{n}{x}\right)c_{\psi}(m)c_{\conj{\psi}}(n)\chi(\ell_{1})\conj{\psi}(\ell_{1})\cchi(\ell_{2})\psi(\ell_{2}) \\
+      &= \frac{1}{\vphi(q)}\sum_{\ell_{1},\ell_{2} \sim L}\sum_{\psi \tmod{q}}\sum_{m,n \ge 1}A(m)A(n)G\left(\frac{m}{x}\right)G\left(\frac{n}{x}\right)c_{\psi}(\ell_{1}m)c_{\conj{\psi}}(\ell_{2}n)\chi(\ell_{1})\cchi(\ell_{2}) \\
+      &= \sum_{\ell_{1},\ell_{2} \sim L}\sum_{m,n \ge 1}A(m)A(n)G\left(\frac{m}{x}\right)G\left(\frac{n}{x}\right)c_{q}(\ell_{1}m-\ell_{2}n)\chi(\ell_{1})\cchi(\ell_{2}),
+    \end{align*}
+    where in the last line we have used the identity
+    \[
+      \frac{1}{\vphi(q)}\sum_{\psi \tmod{q}}c_{\psi}(\ell_{1}m)c_{\conj{\psi}}(\ell_{2}n) = c_{q}(\ell_{1}m-\ell_{2}n).
+    \]
+    Using the relation
+    \[
+      \sum_{q \ge 1}\frac{c_{q}(\ell_{1}m-\ell_{2}n)}{q^{2v}} = \begin{cases} \frac{\z(2v-1)}{\z(2v)} & \text{if $\ell_{1}m = \ell_{2}n$}, \\ \frac{\s_{1-2v}(h)}{\z^{2v}} & \text{if $\ell_{1}m = \ell_{2}n+h$}, \end{cases}
+    \]
+    we can express the Dirichlet series over $q$ as a diagonal and off-diagonal term:
+    \begin{align*}
+      \sum_{q \ge 1}\frac{S_{\chi}(x,q)}{q^{2v}} &= \sum_{\ell_{1},\ell_{2} \sim L}\sum_{\ell_{1}m = \ell_{2}n}\frac{\z(2v-1)}{\z(2v)}A(m)A(n)G\left(\frac{m}{x}\right)G\left(\frac{n}{x}\right)\chi(\ell_{1})\cchi(\ell_{2}) \\
+      &+\sum_{\ell_{1},\ell_{2} \sim L}\sum_{\ell_{1}m = \ell_{2}n+h}\frac{\s_{1-2v}(h)}{\z(2v)}A(m)A(n)G\left(\frac{m}{x}\right)G\left(\frac{n}{x}\right)\chi(\ell_{1})\cchi(\ell_{2})
+    \end{align*}
+    Thus
+    \begin{align*}
+      &\frac{1}{2\pi i}\int_{(2)}\sum_{q \ge 1}\frac{S_{\chi}(x,q)}{q^{2v}}\frac{e^{\frac{\pi v^{2}}{Q^{2}}}Q^{2v}}{Q}\,dv \\
+      &= \frac{1}{2\pi i}\int_{(2)}\sum_{\ell_{1},\ell_{2} \sim L}\sum_{\ell_{1}m = \ell_{2}n}\frac{\z(2v-1)}{\z(2v)}A(m)A(n)G\left(\frac{m}{x}\right)G\left(\frac{n}{x}\right)\chi(\ell_{1})\cchi(\ell_{2})\frac{e^{\frac{\pi v^{2}}{Q^{2}}}Q^{2v}}{Q}\,dv \\
+      &+\frac{1}{2\pi i}\int_{(2)}\sum_{\ell_{1},\ell_{2} \sim L}\sum_{\ell_{1}m = \ell_{2}n+h}\frac{\s_{1-2v}(h)}{\z(2v)}A(m)A(n)G\left(\frac{m}{x}\right)G\left(\frac{n}{x}\right)\chi(\ell_{1})\cchi(\ell_{2})\frac{e^{\frac{\pi v^{2}}{Q^{2}}}Q^{2v}}{Q}\,dv.
+    \end{align*}
+  \subsection*{The Diagonal Contribution}
+    We will estimate
+    \[
+      \frac{1}{2\pi i}\int_{(2)}\sum_{\ell_{1},\ell_{2} \sim L}\sum_{\ell_{1}m = \ell_{2}n}\frac{\z(2v-1)}{\z(2v)}A(m)A(n)G\left(\frac{m}{x}\right)G\left(\frac{n}{x}\right)\chi(\ell_{1})\cchi(\ell_{2})\frac{e^{\frac{\pi v^{2}}{Q^{2}}}Q^{2v}}{Q}\,dv.
+    \]
+    The integral over $v$ is
+    \[
+      \frac{1}{2\pi i}\int_{(2)}\frac{\z(2v-1)}{\z(2v)}\frac{e^{\frac{\pi v^{2}}{Q^{2}}}Q^{2v}}{Q}\,dv \ll \sum_{|q-Q| \ll Q^{\e}}\vphi(q) \ll Q^{1+\e}.
+    \]
+    Therefore the diagonal contribution is
+    \begin{align*}
+      &\ll Q^{1+\e}\sum_{\ell_{1},\ell_{2} \sim L}\sum_{\ell_{1}m = \ell_{2}n}A(m)A(n)G\left(\frac{m}{x}\right)G\left(\frac{n}{x}\right)\chi(\ell_{1})\cchi(\ell_{2}) \\
+      &\ll Q^{1+\e}\sum_{\ell_{1},\ell_{2} \sim L}\sum_{\substack{\ell_{1}m = \ell_{2}n \\ m,n \ll Q^{1+\e}}}A(m)A(n)\chi(\ell_{1})\cchi(\ell_{2}) \\
+      &\ll Q^{1+\e}\sum_{\ell_{1},\ell_{2} \sim L}\sum_{\substack{d \ge 1 \\ d \ll \frac{Q^{1+\e}}{L}}}A(\ell_{1}\ell_{2}d)A(\ell_{1}\ell_{2}d)\chi(\ell_{1})\cchi(\ell_{2}) \\
+      &\ll LQ^{2+\e}.
+    \end{align*}
+  \subsection*{The Off-diagonal Contribution}
+    We will estimate
+    \[
+      \frac{1}{2\pi i}\int_{(2)}\sum_{\ell_{1},\ell_{2} \sim L}\sum_{\ell_{1}m = \ell_{2}n+h}\frac{\s_{1-2v}(h)}{\z(2v)}A(m)A(n)G\left(\frac{m}{x}\right)G\left(\frac{n}{x}\right)\chi(\ell_{1})\cchi(\ell_{2})\frac{e^{\frac{\pi v^{2}}{Q^{2}}}Q^{2v}}{Q}\,dv.
+    \]
+    Applying the Mellin inversion formula to $G\left(\frac{m}{x}\right)$ and $G\left(\frac{n}{x}\right)$, we can express the off-diagonal contribution as
+    \begin{align*}
+      \sum_{\ell_{1},\ell_{2} \sim L}\chi(\ell_{1})\cchi(\ell_{2})\left(\frac{1}{2\pi i}\right)^{3}\int_{(2)}\int_{(\s_{s_{2}})}&\int_{(\s_{s_{1}})}\frac{1}{\z(2v)}\sum_{\ell_{1}m = \ell_{2}n+h}\frac{a(m)a(n)\s_{1-2v}(h)}{m^{s_{1}+\frac{k-1}{2}}n^{s_{2}+\frac{k-1}{2}}} \\
+      &\cdot g(s_{1})g(s_{2})x^{s_{1}+s_{2}}\frac{e^{\frac{\pi v^{2}}{Q^{2}}}Q^{2v}}{Q}\,ds_{1}\,ds_{2}\,dv,
+    \end{align*}
+    with $\s_{s_{1}},\s_{s_{2}} \gg 1$. Now make the following computation:
+    \begin{align*}
+      \sum_{\ell_{1}m = \ell_{2}n+h}\frac{a(m)a(n)\s_{1-2v}(h)}{m^{s_{1}+\frac{k-1}{2}}n^{s_{2}+\frac{k-1}{2}}} &= \ell_{1}^{s_{1}}\ell_{2}^{s_{2}}(\ell_{1}\ell_{2})^{\frac{k-1}{2}}\sum_{\ell_{1}m = \ell_{2}n+h}\frac{a(m)a(n)\s_{1-2v}(h)}{(\ell_{1}m)^{s_{1}+\frac{k-1}{2}}(\ell_{2}n)^{s_{2}+\frac{k-1}{2}}} \\
+      &= \ell_{1}^{s_{1}}\ell_{2}^{s_{2}}(\ell_{1}\ell_{2})^{\frac{k-1}{2}}\sum_{\ell_{1}m = \ell_{2}n+h}\frac{a(m)a(n)\s_{1-2v}(h)}{(\ell_{2}n+h)^{s_{1}+\frac{k-1}{2}}(\ell_{2}n)^{s_{2}+\frac{k-1}{2}}} \\
+      &= \ell_{1}^{s_{1}}\ell_{2}^{s_{2}}(\ell_{1}\ell_{2})^{\frac{k-1}{2}}\sum_{\ell_{1}m = \ell_{2}n+h}\frac{a(m)a(n)\s_{1-2v}(h)}{\left(1+\frac{h}{\ell_{2}n}\right)^{s_{1}+\frac{k-1}{2}}(\ell_{2}n)^{s_{1}+s_{2}+k-1}}.
+    \end{align*}
+    Recall the Mellin inversion formula
+    \[
+      \frac{1}{(1+t)^{\b}} = \frac{1}{2\pi i}\int_{(\s_{u})}\frac{\G(\b-u)\G(u)}{\G(\b)}t^{-u}\,du,
+    \]
+    with $0 < \s_{u} < \Re(\b)$. Applying this formula with $t = \frac{h}{\ell_{2}n}$ and $\b = s_{1}+\frac{k-1}{2}$, we have
+    \[
+      \sum_{\ell_{1}m = \ell_{2}n+h}\frac{a(m)a(n)\s_{1-2v}(h)}{m^{s_{1}+\frac{k-1}{2}}n^{s_{2}+\frac{k-1}{2}}} = \frac{1}{2\pi i}\int_{(\s_{u})}\ell_{1}^{s_{1}}\ell_{2}^{s_{2}}Z_{f}(s_{1}+s_{2}-u,v,u;\ell_{1},\ell_{2})\frac{\G\left(s_{1}-u+\frac{k-1}{2}\right)\G(u)}{\G\left(s_{1}+\frac{k-1}{2}\right)}\,du.
+    \]
+    Therefore the off-diagonal contribution can be expressed as
+    \begin{align*}
+      \sum_{\ell_{1},\ell_{2} \sim L}\chi(\ell_{1})\cchi(\ell_{2})\left(\frac{1}{2\pi i}\right)^{4}\int_{(2)}\int_{(\s_{u})}\int_{(\s_{s_{2}})}&\int_{(\s_{s_{1}})}\frac{1}{\z(2v)}\ell_{1}^{s_{1}}\ell_{2}^{s_{2}}Z_{f}(s_{1}+s_{2}-u,v,u;\ell_{1},\ell_{2}) \\
+      &\cdot \frac{\G\left(s_{1}-u+\frac{k-1}{2}\right)\G(u)}{\G\left(s_{1}+\frac{k-1}{2}\right)}g(s_{1})g(s_{2})x^{s_{1}+s_{2}}\frac{e^{\frac{\pi v^{2}}{Q^{2}}}Q^{2v}}{Q}\,ds_{1}\,ds_{2}\,du\,dv.
+    \end{align*}
+    Since $\s_{s_{1}},\s_{\s_{2}} \gg 1$ and $0 < \s_{u} < \s_{s_{1}}+\frac{k-1}{2}$, we may assume
+    \[
+      \s_{s_{1}}+\s_{s_{2}}-\s_{u} > 1, \quad \s_{u} > \frac{k+1}{2}, \quad \text{and} \quad 2 \ge \frac{1}{2}-\d(s,v,u).
+    \]
+    This ensures that $Z_{f}(s_{1}+s_{2}-u,v,u;\ell_{1},\ell_{2})$ is absolutely convergent. Let us take
+    \[
+      \s_{s_{1}} = 1+\e_{1}, \quad \s_{s_{2}} = \frac{k+1}{2}+\e_{2}, \quad \text{and} \quad \s_{u} = \frac{k+1}{2}+\e_{3},
+    \]
+    with $\e_{1}+\e_{2}-\e_{3} > 0$. The analytic continuation of $Z_{f}(s_{1}+s_{2}-u,v,u;\ell_{1},\ell_{2})$ exhibits no poles in the region
+    \[
+      \s_{s_{1}}+\s_{s_{2}}-\s_{u} > \frac{1}{2} \quad \text{and} \quad \s_{u} > 0.
+    \]
+    Therefore, we may shift the integral in $u$ to $\s_{u} = \e_{4}$ without crossing over any poles. Then, we may shift the integrals in $s_{1}$ and $s_{2}$ to $\s_{s_{1}}+\s_{s_{2}} = \frac{1}{2}+\e_{5}$ provided $\e_{5} > \e_{4}$ without crossing over any poles. Now we shift the integral in $u$ so that
+    \[
+      \s_{s_{1}}+\s_{s_{2}}-\s_{u} < \frac{1-k}{2}-\e_{6} \quad \text{while} \quad \s_{1}-\s_{u}+\frac{k-1}{2} > 0.
+    \]
+    This is possible by moving the integral in $u$ to $\s_{u} = \frac{k}{2}+\e_{5}+\e_{6}$ and choosing $\s_{1} = \frac{1}{2}+2\e_{5}$ and $\s_{2} = -\e_{5}$ with $\e_{5} > \e_{6}$. In doing so, we pass over simple poles of $Z_{f}(s_{1}+s_{2}-u,v,u;\ell_{1},\ell_{2})$ occuring at $u = s_{1}+s_{2}-\frac{1}{2}+\ell-it_{j}$ for $0 \le \ell \le \frac{k}{2}$. We do not pass over any simple poles of gamma functions. since $\s_{u} > 0$ and $\s_{1}-\s_{u}+\frac{k-1}{2} > 0$ throughout. Then the off-diagonal contribution can be expressed as
+    \begin{align*}
+      &\sum_{\ell_{1},\ell_{2} \sim L}\chi(\ell_{1})\cchi(\ell_{2})\left(\frac{1}{2\pi i}\right)^{4}\int_{(2)}\int_{(\s_{u})}\int_{(\s_{s_{2}})}\int_{(\s_{s_{1}})}\frac{1}{\z(2v)}\ell_{1}^{s_{1}}\ell_{2}^{s_{2}}(\ell_{1}\ell_{2})^{\frac{k-1}{2}}Z_{f}(s_{1}+s_{2}-u,v,u;\ell_{1},\ell_{2}) \\
+      &\cdot \frac{\G\left(s_{1}-u+\frac{k-1}{2}\right)\G(u)}{\G\left(s_{1}+\frac{k-1}{2}\right)}g(s_{1})g(s_{2})x^{s_{1}+s_{2}}\frac{e^{\frac{\pi v^{2}}{Q^{2}}}Q^{2v}}{Q}\,ds_{1}\,ds_{2}\,du\,dv \\
+      &+ \sum_{\ell_{1},\ell_{2} \sim L}\chi(\ell_{1})\cchi(\ell_{2})\left(\frac{1}{2\pi i}\right)^{3}\int_{(2)}\int_{(\s_{s_{2}})}\int_{(\s_{s_{1}})}\sum_{t_{j}}\frac{1}{\z(2v)}\ell_{1}^{s_{1}}\ell_{2}^{s_{2}}(\ell_{1}\ell_{2})^{\frac{k-1}{2}}\Res_{u = s_{1}+s_{2}-\frac{1}{2}+\ell-it_{j}} \\
+      &\cdot \left[Z_{f}(s_{1}+s_{2}-u,v,u;\ell_{1},\ell_{2})\frac{\G\left(s_{1}-u+\frac{k-1}{2}\right)\G(u)}{\G\left(s_{1}+\frac{k-1}{2}\right)}\right]g(s_{1})g(s_{2})x^{s_{1}+s_{2}}\frac{e^{\frac{\pi v^{2}}{Q^{2}}}Q^{2v}}{Q}\,ds_{1}\,ds_{2}\,dv.
+    \end{align*}
+    Let us concern ourselves with the first term only. Here the first spectral expansion of $Z_{f}(s_{1}+s_{2}-u,v,u;\ell_{1},\ell_{2})$ is valid. The integral over $v$ is
+    \[
+      \frac{1}{2\pi i}\int_{(2)}\frac{L\left(s_{1}+s_{2}+2v-\frac{3}{2}\right)}{\z(2v)\z(2s_{1}+2s_{2}+2v-2)}\frac{e^{\frac{\pi v^{2}}{Q^{2}}}Q^{2v}}{Q}\,dv \ll \sum_{\substack{q = q_{1}q_{2}q_{3} \\ |q-Q| \ll Q^{\e}}}\mu(q_{1}q_{2})q_{2}^{1-2\e_{5}}q_{3}^{1-s_{5}}\l_{j}(q_{3}) \ll Q^{1+\t+\e}.
+    \]
+    Moreover $x \ll Q^{1+\e}$ so that
+    \[
+      x^{s_{1}+s_{2}} \ll Q^{\frac{1}{2}+\e}
+    \]
+    The contribution of $L$ is
+    \[
+      \ll \sum_{\ell_{1},\ell_{2} \sim L}\chi(\ell_{1})\cchi(\ell_{2})\sum_{|t_{j}| \sim 1}\conj{\rho_{j}(-1)\<V_{f,g}^{\ell_{1},\ell_{2}},\mu_{j}\>}\ell_{1}^{s_{1}}\ell_{2}^{s_{2}}(\ell_{1}\ell_{2})^{\frac{k-1}{2}} \ll L^{\frac{5}{2}}.
+    \]
+    In total, the off-diagonal contribution is
+    \[
+      \ll L^{\frac{5}{2}}Q^{\frac{3}{2}+\t+\e}.
+    \]
+  \subsection*{Balancing}
+    We have the diagonal and off-diagonal estimates
+    \[
+      \ll LQ^{2+\e} \quad \text{and} \quad \ll L^{\frac{5}{2}}Q^{\frac{3}{2}+\t+\e}.
+    \]
+    This implies
+    \[
+      \left|L\left(\frac{1}{2},f \ox \chi \right)\right|^{2} \ll \frac{1}{L^{2+\e}Q}\max_{x \ll Q^{1+\e}}\sum_{|q-Q| \ll Q^{\e}}S_{\chi}(x,q) \ll \frac{Q^{1+\e}}{L^{1+\e}}+L^{\frac{1}{2}-\e}Q^{\frac{1}{2}+\t+\e}.
+    \]
+    The terms are balanced when $L = Q^{\frac{1-2\t}{3}}$. We then have
+    \[
+      \left|L\left(\frac{1}{2},f \ox \chi \right)\right|^{2} \ll Q^{\frac{2}{3}+\frac{2\t}{3}+\e},
+    \]
+    and it follows that
+    \[
+      \left|L\left(\frac{1}{2},f \ox \chi \right)\right| \ll Q^{\frac{1}{3}+\frac{\t}{3}+\e}.
+    \]
+\section{Hybrid Subconvexity}
+  \subsection*{Setup}
+    Let $G(x)$ be a smooth function with compact support in the interval $[1,2]$ and let $g(s)$ be the Mellin transform.
+    For a Dirichlet character $\chi$ modulo $Q$ and $|t| \le T$, we define
+    \[
+      B_{\chi}(x,t) = \sum_{m \ge 1}A(m)\chi(m)m^{-it}G\left(\frac{m}{x}\right) \quad \text{and} \quad B_{c_{\chi}}(x,t) = \sum_{m \ge 1}A(m)m^{-it}\conj{c_{\chi}}(m)G\left(\frac{m}{x}\right).
+    \]
+    Using a smooth dyadic parition of unity and summation by parts, we we have the bounds
+    \[
+      L\left(\frac{1}{2}+it,f \ox \chi \right) \ll (QT)^{-\frac{1}{2}}\max_{x \ll (QT)^{1+\e}}B_{\chi}(x,t) \quad \text{and} \quad L\left(\frac{1}{2}+it,f \ox c_{\chi} \right) \ll (QT)^{-\frac{1}{2}}\max_{x \ll (QT)^{1+\e}}B_{c_{\chi}}(x,t).
+    \]
+    Since $L\left(s,f \ox \chi\right) \ll Q^{-\frac{1}{2}}L(s,f \ox c_{\chi})$, we have
+    \[
+      \left|L\left(\frac{1}{2}+it,f \ox \chi \right)\right|^{2} \ll Q^{-2}T^{-1}\max_{x \ll (QT)^{1+\e}}|B_{c_{\chi}}(x,t)|^{2}.
+    \]
+    So to obtain a subconvexity estimate for $L(s,f \ox \chi)$ at $s = \frac{1}{2}$, it suffices to estimate $B_{c_{\chi}}(x,t)$ for $x \ll (QT)^{1+\e}$. Now let $q \ge 1$ and $\psi$ be a Dirichlet character modulo $q$. We define
+    \[
+      S_{\chi}(x,q,t) = \frac{1}{\vphi(q)}\sum_{\psi \tmod{q}}|B_{c_{\psi}}(x,t)|^{2}\left|\sum_{\ell \sim L}\chi(\ell)\conj{\psi}(\ell)\right|^{2},
+    \]
+    where $\ell \sim L$ means that $\ell \in [L,2L]$ and is prime. As all of the terms in the sum are nonnegative, retaining only the term corresponding to $\psi = \chi$, the prime number theorem gives the lower bound
+    \[
+      \frac{L^{2}}{Q\log^{2}(L)}|B_{c_{\chi}}(x,t)|^{2} \ll S_{\chi}(x,q,t).
+    \]
+    It follows that
+    \[
+      \frac{L^{2}Q}{\log^{2}(L)}\left|L\left(\frac{1}{2}+it,f \ox \chi \right)\right|^{2} \ll \frac{L^{2}}{QT\log^{2}(L)}\max_{x \ll (QT)^{1+\e}}|B_{c_{\chi}}(x;t)|^{2} \ll \frac{1}{T}\max_{x \ll (QT)^{1+\e}}\sum_{|q-Q| \ll Q^{\e}}S_{\chi}(x,q,t).
+    \]
+    Hence
+    \[
+      \left|L\left(\frac{1}{2}+it,f \ox \chi \right)\right|^{2} \ll \frac{1}{L^{2+\e}QT}\max_{x \ll (QT)^{1+\e}}\sum_{|q-Q| \ll Q^{\e}}S_{\chi}(x,q,t).
+    \]
+    Now recall the Mellin inverse
+    \[
+      \frac{1}{2\pi i}\int_{(2)}\frac{e^{\frac{\pi v^{2}}{y^{2}}}Q^{2v}}{y}\,dv = e^{-\frac{y^{2}\log^{2}(Q)}{\pi}} \ll \begin{cases} 1 & \text{if $|q-Q| \ll \frac{Q^{1+e}}{y}$}, \\ Q^{-A} & \text{if $|q-Q| \gg \frac{Q^{1+\e}}{y}$}, \end{cases}
+    \]
+    for any $A \gg 1$. From this integral transform, we conclude that
+    \[
+      \sum_{|q-Q| \ll Q^{\e}}S_{\chi}(x,q,t) \ll \frac{1}{2\pi i}\int_{(2)}\sum_{q \ge 1}\frac{S_{\chi}(x,q,t)}{q^{2v}}\frac{e^{\frac{\pi v^{2}}{Q^{2}}}Q^{2v}}{Q}\,dv.
+    \]
+    To estimate the right-hand side, we will rewrite the Dirichlet series over $q$. To do this, we first expand $S_{\chi}(x,q,t)$:
+    \begin{align*}
+      S_{\chi}(x,q,t) &= \frac{1}{\vphi(q)}\sum_{\psi \tmod{q}}|B_{c_{\psi}}(x,t)|^{2}\left|\sum_{\ell \sim L}\chi(\ell)\conj{\psi}(\ell)\right|^{2} \\
+      &= \frac{1}{\vphi(q)}\sum_{\ell_{1},\ell_{2} \sim L}\sum_{\psi \tmod{q}}\sum_{m,n \ge 1}A(m)A(n)m^{-it}n^{-it}G\left(\frac{m}{x}\right)G\left(\frac{n}{x}\right)c_{\psi}(m)c_{\conj{\psi}}(n)\chi(\ell_{1})\conj{\psi}(\ell_{1})\cchi(\ell_{2})\psi(\ell_{2}) \\
+      &= \frac{1}{\vphi(q)}\sum_{\ell_{1},\ell_{2} \sim L}\sum_{\psi \tmod{q}}\sum_{m,n \ge 1}A(m)A(n)m^{-it}n^{-it}G\left(\frac{m}{x}\right)G\left(\frac{n}{x}\right)c_{\psi}(\ell_{1}m)c_{\conj{\psi}}(\ell_{2}n)\chi(\ell_{1})\cchi(\ell_{2}) \\
+      &= \sum_{\ell_{1},\ell_{2} \sim L}\sum_{m,n \ge 1}A(m)A(n)m^{-it}n^{-it}G\left(\frac{m}{x}\right)G\left(\frac{n}{x}\right)c_{q}(\ell_{1}m-\ell_{2}n)\chi(\ell_{1})\cchi(\ell_{2}),
+    \end{align*}
+    where in the last line we have used the identity
+    \[
+      \frac{1}{\vphi(q)}\sum_{\psi \tmod{q}}c_{\psi}(\ell_{1}m)c_{\conj{\psi}}(\ell_{2}n) = c_{q}(\ell_{1}m-\ell_{2}n).
+    \]
+    Using the relation
+    \[
+      \sum_{q \ge 1}\frac{c_{q}(\ell_{1}m-\ell_{2}n)}{q^{2v}} = \begin{cases} \frac{\z(2v-1)}{\z(2v)} & \text{if $\ell_{1}m = \ell_{2}n$}, \\ \frac{\s_{1-2v}(h)}{\z^{2v}} & \text{if $\ell_{1}m = \ell_{2}n+h$}, \end{cases}
+    \]
+    we can express the Dirichlet series over $q$ as a diagonal and off-diagonal term:
+    \begin{align*}
+      \sum_{q \ge 1}\frac{S_{\chi}(x,q,t)}{q^{2v}} &= \sum_{\ell_{1},\ell_{2} \sim L}\sum_{\ell_{1}m = \ell_{2}n}\frac{\z(2v-1)}{\z(2v)}A(m)A(n)m^{-it}n^{-it}G\left(\frac{m}{x}\right)G\left(\frac{n}{x}\right)\chi(\ell_{1})\cchi(\ell_{2}) \\
+      &+\sum_{\ell_{1},\ell_{2} \sim L}\sum_{\ell_{1}m = \ell_{2}n+h}\frac{\s_{1-2v}(h)}{\z(2v)}A(m)A(n)m^{-it}n^{-it}G\left(\frac{m}{x}\right)G\left(\frac{n}{x}\right)\chi(\ell_{1})\cchi(\ell_{2})
+    \end{align*}
+    Thus
+    \begin{align*}
+      &\frac{1}{2\pi i}\int_{(2)}\sum_{q \ge 1}\frac{S_{\chi}(x,q,t)}{q^{2v}}\frac{e^{\frac{\pi v^{2}}{Q^{2}}}Q^{2v}}{Q}\,dv \\
+      &= \frac{1}{2\pi i}\int_{(2)}\sum_{\ell_{1},\ell_{2} \sim L}\sum_{\ell_{1}m = \ell_{2}n}\frac{\z(2v-1)}{\z(2v)}A(m)A(n)m^{-it}n^{-it}G\left(\frac{m}{x}\right)G\left(\frac{n}{x}\right)\chi(\ell_{1})\cchi(\ell_{2})\frac{e^{\frac{\pi v^{2}}{Q^{2}}}Q^{2v}}{Q}\,dv \\
+      &+\frac{1}{2\pi i}\int_{(2)}\sum_{\ell_{1},\ell_{2} \sim L}\sum_{\ell_{1}m = \ell_{2}n+h}\frac{\s_{1-2v}(h)}{\z(2v)}A(m)A(n)m^{-it}n^{-it}G\left(\frac{m}{x}\right)G\left(\frac{n}{x}\right)\chi(\ell_{1})\cchi(\ell_{2})\frac{e^{\frac{\pi v^{2}}{Q^{2}}}Q^{2v}}{Q}\,dv.
+    \end{align*}
+  \subsection*{The Diagonal Contribution}
+    We will estimate
+    \[
+      \frac{1}{2\pi i}\int_{(2)}\sum_{\ell_{1},\ell_{2} \sim L}\sum_{\ell_{1}m = \ell_{2}n}\frac{\z(2v-1)}{\z(2v)}A(m)A(n)m^{-it}n^{-it}G\left(\frac{m}{x}\right)G\left(\frac{n}{x}\right)\chi(\ell_{1})\cchi(\ell_{2})\frac{e^{\frac{\pi v^{2}}{Q^{2}}}Q^{2v}}{Q}\,dv.
+    \]
+    The integral over $v$ is
+    \[
+      \frac{1}{2\pi i}\int_{(2)}\frac{\z(2v-1)}{\z(2v)}\frac{e^{\frac{\pi v^{2}}{Q^{2}}}Q^{2v}}{Q}\,dv \ll \sum_{|q-Q| \ll Q^{\e}}\vphi(q) \ll Q^{1+\e},
+    \]
+    Therefore the diagonal contribution is
+    \begin{align*}
+      &\ll Q^{1+\e}\sum_{\ell_{1},\ell_{2} \sim L}\sum_{\ell_{1}m = \ell_{2}n}A(m)A(n)m^{-it}n^{-it}G\left(\frac{m}{x}\right)G\left(\frac{n}{x}\right)\chi(\ell_{1})\cchi(\ell_{2}) \\
+      &\ll Q^{1+\e}\sum_{\ell_{1},\ell_{2} \sim L}\sum_{\substack{\ell_{1}m = \ell_{2}n \\ m,n \ll (QT)^{1+\e}}}A(m)A(n)m^{-it}n^{-it}\chi(\ell_{1})\cchi(\ell_{2}) \\
+      &\ll Q^{1+\e}\sum_{\ell_{1},\ell_{2} \sim L}\sum_{\substack{d \ge 1 \\ d \ll \frac{(QT)^{1+\e}}{L}}}A(\ell_{1}\ell_{2}d)A(\ell_{1}\ell_{2}d)\chi(\ell_{1})\cchi(\ell_{2}) \\
+      &\ll LQ^{2+\e}T^{1+\e}.
+    \end{align*}
+  \subsection*{The Off-diagonal Contribution}
+    We will estimate
+    \[
+      \frac{1}{2\pi i}\int_{(2)}\sum_{\ell_{1},\ell_{2} \sim L}\sum_{\ell_{1}m = \ell_{2}n+h}\frac{\s_{1-2v}(h)}{\z(2v)}A(m)A(n))m^{-it}n^{-it}G\left(\frac{m}{x}\right)G\left(\frac{n}{x}\right)\chi(\ell_{1})\cchi(\ell_{2})\frac{e^{\frac{\pi v^{2}}{Q^{2}}}Q^{2v}}{Q}\,dv.
+    \]
+    Applying the Mellin inversion formula to $G\left(\frac{m}{x}\right)$ and $G\left(\frac{n}{x}\right)$, we can express the off-diagonal contribution as
+    \begin{align*}
+      \sum_{\ell_{1},\ell_{2} \sim L}\chi(\ell_{1})\cchi(\ell_{2})\left(\frac{1}{2\pi i}\right)^{3}\int_{(2)}\int_{(\s_{s_{2}})}&\int_{(\s_{s_{1}})}\frac{1}{\z(2v)}\sum_{\ell_{1}m = \ell_{2}n+h}\frac{a(m)a(n)\s_{1-2v}(h)}{m^{s_{1}+\frac{k-1}{2}+it}n^{s_{2}+\frac{k-1}{2}}+it} \\
+      &\cdot g(s_{1})g(s_{2})x^{s_{1}+s_{2}}\frac{e^{\frac{\pi v^{2}}{Q^{2}}}Q^{2v}}{Q}\,ds_{1}\,ds_{2}\,dv,
+    \end{align*}
+    with $\s_{s_{1}},\s_{s_{2}} \gg 1$. Now make the following computation:
+    \begin{align*}
+      \sum_{\ell_{1}m = \ell_{2}n+h}\frac{a(m)a(n)\s_{1-2v}(h)}{m^{s_{1}+\frac{k-1}{2}+it}n^{s_{2}+\frac{k-1}{2}+it}} &= \ell_{1}^{s_{1}+it}\ell_{2}^{s_{2}+it}(\ell_{1}\ell_{2})^{\frac{k-1}{2}}\sum_{\ell_{1}m = \ell_{2}n+h}\frac{a(m)a(n)\s_{1-2v}(h)}{(\ell_{1}m)^{s_{1}+\frac{k-1}{2}+it}(\ell_{2}n)^{s_{2}+\frac{k-1}{2}+it}} \\
+      &= \ell_{1}^{s_{1}+it}\ell_{2}^{s_{2}+it}(\ell_{1}\ell_{2})^{\frac{k-1}{2}}\sum_{\ell_{1}m = \ell_{2}n+h}\frac{a(m)a(n)\s_{1-2v}(h)}{(\ell_{2}n+h)^{s_{1}+\frac{k-1}{2}+it}(\ell_{2}n)^{s_{2}+\frac{k-1}{2}+it}} \\
+      &= \ell_{1}^{s_{1}+it}\ell_{2}^{s_{2}+it}(\ell_{1}\ell_{2})^{\frac{k-1}{2}}\sum_{\ell_{1}m = \ell_{2}n+h}\frac{a(m)a(n)\s_{1-2v}(h)}{\left(1+\frac{h}{\ell_{2}n}\right)^{s_{1}+\frac{k-1}{2}+it}(\ell_{2}n)^{s_{1}+s_{2}+k-1+2it}}.
+    \end{align*}
+    Recall the Mellin inversion formula
+    \[
+      \frac{1}{(1+t)^{\b}} = \frac{1}{2\pi i}\int_{(\s_{u})}\frac{\G(\b-u)\G(u)}{\G(\b)}t^{-u}\,du,
+    \]
+    with $0 < \s_{u} < \Re(\b)$. Applying this formula with $t = \frac{h}{\ell_{2}n}$ and $\b = s_{1}+\frac{k-1}{2}+it$, we have
+    \begin{align*}
+      \sum_{\ell_{1}m = \ell_{2}n+h}\frac{a(m)a(n)\s_{1-2v}(h)}{m^{s_{1}+\frac{k-1}{2}+it}n^{s_{2}+\frac{k-1}{2}+it}} = \frac{1}{2\pi i}&\int_{(\s_{u})}\ell_{1}^{s_{1}+it}\ell_{2}^{s_{2}+it}Z_{f}(s_{1}+s_{2}-u+2it,v,u;\ell_{1},\ell_{2}) \\
+      &\cdot \frac{\G\left(s_{1}-u+\frac{k-1}{2}+2it\right)\G(u)}{\G\left(s_{1}+\frac{k-1}{2}+2it\right)}\,du.
+    \end{align*}
+    Therefore the off-diagonal contribution can be expressed as
+    \begin{align*}
+      \sum_{\ell_{1},\ell_{2} \sim L}\chi(\ell_{1})\cchi(\ell_{2})\left(\frac{1}{2\pi i}\right)^{4}\int_{(2)}\int_{(\s_{u})}\int_{(\s_{s_{2}})}&\int_{(\s_{s_{1}})}\frac{1}{\z(2v)}\ell_{1}^{s_{1}+it}\ell_{2}^{s_{2}+it}Z_{f}(s_{1}+s_{2}-u+2it,v,u;\ell_{1},\ell_{2}) \\
+      &\cdot \frac{\G\left(s_{1}-u+\frac{k-1}{2}+2it\right)\G(u)}{\G\left(s_{1}+\frac{k-1}{2}+2it\right)}g(s_{1})g(s_{2})x^{s_{1}+s_{2}}\frac{e^{\frac{\pi v^{2}}{Q^{2}}}Q^{2v}}{Q}\,ds_{1}\,ds_{2}\,du\,dv.
+    \end{align*}
+    Since $\s_{s_{1}},\s_{\s_{2}} \gg 1$ and $0 < \s_{u} < \s_{s_{1}}+\frac{k-1}{2}$, we may assume
+    \[
+      \s_{s_{1}}+\s_{s_{2}}-\s_{u} > 1, \quad \s_{u} > \frac{k+1}{2}, \quad \text{and} \quad 2 \ge \frac{1}{2}-\d(s,v,u).
+    \]
+    This ensures that $Z_{f}(s_{1}+s_{2}-u+2it,v,u;\ell_{1},\ell_{2})$ is absolutely convergent. Let us take
+    \[
+      \s_{s_{1}} = 1+\e_{1}, \quad \s_{s_{2}} = \frac{k+1}{2}+\e_{2}, \quad \text{and} \quad \s_{u} = \frac{k+1}{2}+\e_{3},
+    \]
+    with $\e_{1}+\e_{2}-\e_{3} > 0$. The analytic continuation of $Z_{f}(s_{1}+s_{2}-u+2it,v,u;\ell_{1},\ell_{2})$ exhibits no poles in the region
+    \[
+      \s_{s_{1}}+\s_{s_{2}}-\s_{u} > \frac{1}{2} \quad \text{and} \quad \s_{u} > 0.
+    \]
+    Therefore, we may shift the integral in $u$ to $\s_{u} = \e_{4}$ without crossing over any poles. Then, we may shift the integrals in $s_{1}$ and $s_{2}$ to $\s_{s_{1}}+\s_{s_{2}} = \frac{1}{2}+\e_{5}$ provided $\e_{5} > \e_{4}$ without crossing over any poles. Now we shift the integral in $u$ so that
+    \[
+      \s_{s_{1}}+\s_{s_{2}}-\s_{u} < \frac{1-k}{2}-\e_{6} \quad \text{while} \quad \s_{1}-\s_{u}+\frac{k-1}{2} > 0.
+    \]
+    This is possible by moving the integral in $u$ to $\s_{u} = \frac{k}{2}+\e_{5}+\e_{6}$ and choosing $\s_{1} = \frac{1}{2}+2\e_{5}$ and $\s_{2} = -\e_{5}$ with $\e_{5} > \e_{6}$. In doing so, we pass over simple poles of $Z_{f}(s_{1}+s_{2}-u,v,u;\ell_{1},\ell_{2})$ occuring at $u = s_{1}+s_{2}+2it-\frac{1}{2}+\ell-it_{j}$ for $0 \le \ell \le \frac{k}{2}$. We do not pass over any simple poles of gamma functions. since $\s_{u} > 0$ and $\s_{1}-\s_{u}+\frac{k-1}{2} > 0$ throughout. Then the off-diagonal contribution can be expressed as
+    \begin{align*}
+      &\sum_{\ell_{1},\ell_{2} \sim L}\chi(\ell_{1})\cchi(\ell_{2})\left(\frac{1}{2\pi i}\right)^{4}\int_{(2)}\int_{(\s_{u})}\int_{(\s_{s_{2}})}\int_{(\s_{s_{1}})}\frac{1}{\z(2v)}\ell_{1}^{s_{1}+it}\ell_{2}^{s_{2}+it}(\ell_{1}\ell_{2})^{\frac{k-1}{2}}Z_{f}(s_{1}+s_{2}-u+2it,v,u;\ell_{1},\ell_{2}) \\
+      &\cdot \frac{\G\left(s_{1}-u+\frac{k-1}{2}+2it\right)\G(u)}{\G\left(s_{1}+\frac{k-1}{2}+2it\right)}g(s_{1})g(s_{2})x^{s_{1}+s_{2}}\frac{e^{\frac{\pi v^{2}}{Q^{2}}}Q^{2v}}{Q}\,ds_{1}\,ds_{2}\,du\,dv \\
+      &+ \sum_{\ell_{1},\ell_{2} \sim L}\chi(\ell_{1})\cchi(\ell_{2})\left(\frac{1}{2\pi i}\right)^{3}\int_{(2)}\int_{(\s_{s_{2}})}\int_{(\s_{s_{1}})}\sum_{t_{j}}\frac{1}{\z(2v)}\ell_{1}^{s_{1}+it}\ell_{2}^{s_{2}+it}(\ell_{1}\ell_{2})^{\frac{k-1}{2}}\Res_{u = s_{1}+s_{2}+2it-\frac{1}{2}+\ell-it_{j}} \\
+      &\cdot \left[Z_{f}(s_{1}+s_{2}-u+2it,v,u;\ell_{1},\ell_{2})\frac{\G\left(s_{1}-u+\frac{k-1}{2}+2it\right)\G(u)}{\G\left(s_{1}+\frac{k-1}{2}+2it\right)}\right]g(s_{1})g(s_{2})x^{s_{1}+s_{2}}\frac{e^{\frac{\pi v^{2}}{Q^{2}}}Q^{2v}}{Q}\,ds_{1}\,ds_{2}\,dv.
+    \end{align*}
+    Let us concern ourselves with the first term only. Here the first spectral expansion of $Z_{f}(s_{1}+s_{2}-u+2it,v,u;\ell_{1},\ell_{2})$ is valid. The integral over $v$ is
+    \[
+      \frac{1}{2\pi i}\int_{(2)}\frac{L\left(s_{1}+s_{2}+2v-\frac{3}{2}+2it\right)}{\z(2v)\z(2s_{1}+2s_{2}+2v-2+4it)}\frac{e^{\frac{\pi v^{2}}{Q^{2}}}Q^{2v}}{Q}\,dv \ll \sum_{\substack{q = q_{1}q_{2}q_{3} \\ |q-Q| \ll Q^{\e}}}\mu(q_{1}q_{2})q_{2}^{1-2\e_{5}}q_{3}^{1-s_{5}}\l_{j}(q_{3}) \ll Q^{1+\t+\e}.
+    \]
+    Moreover $x \ll (QT)^{1+\e}$ so that
+    \[
+      x^{s_{1}+s_{2}} \ll (QT)^{\frac{1}{2}+\e}
+    \]
+    The contribution of $L$ is
+    \[
+      \ll \sum_{\ell_{1},\ell_{2} \sim L}\chi(\ell_{1})\cchi(\ell_{2})\sum_{|t_{j}| \sim 1}\conj{\rho_{j}(-1)\<V_{f,g}^{\ell_{1},\ell_{2}},\mu_{j}\>}\ell_{1}^{s_{1}+it}\ell_{2}^{s_{2}+it}(\ell_{1}\ell_{2})^{\frac{k-1}{2}} \ll L^{\frac{5}{2}}.
+    \]
+    In total, the off-diagonal contribution is
+    \[
+      \ll L^{\frac{5}{2}}Q^{\frac{3}{2}+\t+\e}T^{\frac{1}{2}+\e}.
+    \]
+  \subsection*{Balancing}
+    We have the diagonal and off-diagonal estimates
+    \[
+      \ll LQ^{2+\e}T^{1+\e} \quad \text{and} \quad \ll L^{\frac{5}{2}}Q^{\frac{3}{2}+\t+\e}T^{\frac{1}{2}+\e}.
+    \]
+    This implies
+    \[
+      \left|L\left(\frac{1}{2},f \ox \chi \right)\right|^{2} \ll \frac{1}{L^{2+\e}QT}\max_{x \ll (QT)^{1+\e}}\sum_{|q-Q| \ll Q^{\e}}S_{\chi}(x,q) \ll \frac{Q^{1+\e}T^{\e}}{L^{1+\e}}+\frac{L^{\frac{1}{2}-\e}Q^{\frac{1}{2}+\t+\e}}{T^{\frac{1}{2}-\e}}.
+    \]
+    The terms are balanced when $L = Q^{\frac{1-2\t}{3}}$. We then have
+    \[
+      \left|L\left(\frac{1}{2},f \ox \chi \right)\right|^{2} \ll Q^{\frac{2}{3}+\frac{2\t}{3}+\e},
+    \]
+    and it follows that
+    \[
+      \left|L\left(\frac{1}{2},f \ox \chi \right)\right| \ll Q^{\frac{1}{3}+\frac{\t}{3}+\e}.
+    \]
+ \end{document}
