@@ -1,41 +1,21 @@
-\chapter{Zero-free Regions \& Zero Counting of \texorpdfstring{$L$}{L}-functions}
+\chapter{Zero-free Regions \& Zero Counting for Degree \texorpdfstring{$1$}{1} \texorpdfstring{$L$}{L}-functions}
   We expand our discussion about the zeros of $L$-functions. We prove the classical zero-free regions for the Riemann zeta function and Dirichlet $L$-functions. In the latter case, we introduce the infamous Siegel zeros. After the zero-free regions, we discuss zero counting up the critical strip. The main result we prove is the Riemann–von Mangoldt formula for the Riemann zeta function and Dirichlet $L$-functions.
-  \section{The Explicit Formula for Logarithmic Derivatives}
-    Information about the distribution of primes is ultimately contained in the information about the zeros of the $L$-functions $\z(s)$ and $L(s,\chi)$. In order to extract this information we will require more flexible tools than the $L$-functions alone. These tools are explicit formulas for logarithmic derivatives of $L$-functions. Essentially, explicit formulas are partial fraction decomposition analogs to analytic functions. 
-    \subsection*{The Explicit Formula for the Logarithmic Derivative of \texorpdfstring{$\z(s)$}{\z(s)}}
-      Define the \textbf{Riemann xi function}\index{Riemann xi function} $\xi(s)$ by
-      \[
-        \xi(s) = \frac{1}{2}s(s-1)\pi^{-\frac{s}{2}}\G\left(\frac{s}{2}\right)\z(s).
-      \]
-      Note that $\xi(s)$ is holomorphic on $\C$ since at $s = 1$ the pole of $\z(s)$ is canceled by the zero from the $s(s-1)$ term and the poles coming from the gamma function are canceled by the trivial zeros of $\z(s)$ or by $s$ in the case $s = 0$. By the functional equation for $\z(s)$,
-      \[
-        \xi(s) = \xi(1-s),
-      \]
-      which is the functional equation for $\xi(s)$. Moreover, $\xi(s)$ is of order $1$. To see this, by the functional equation for $\xi(s)$ it suffices to show $\xi(s)$ is of order $1$ for $\s \ge \frac{1}{2}$. This follows since $\z(s)$ is of order $1$, being an $L$-function, and $\G\left(\frac{s}{2}\right)$ is of order $1$ for $\s > 0$. By the Hadamard factorization theorem (see \cref{append:Factorizations_and_Finite_Order}),
-      \begin{equation}\label{equ:Hadamard_product_for_Riemann_xi}
-        \xi(s) = e^{A+Bs}\prod_{\rho}\left(1-\frac{s}{\rho}\right)e^{\frac{s}{\rho}},
+  \section{Zero-free Regions, Siegel Zeros \& Siegel's Theorem}
+    While the Riemann hypothesis, and its generalization, are currently out of reach, some progress has still be made regarding the location of the zeros of $L$-functions. In particular, we want to establish regions inside the critical strip where $L$-functions do not vanish. These regions are commonly known as \textbf{zero-free regions}\index{zero-free regions}.
+    \subsection*{The Classical Zero-free Region for \texorpdfstring{$\z(s)$}{\z(s)}}
+      Before stating and proving the classical zero-free region for $\z(s)$, we collect some information on the explicit formula for the logarithmic derivative of $\z(s)$. Namely, \cref{prop:explicit_formula_log_derivative} gives
+      \begin{equation}\label{equ:explicit_log_derivative_zeta}
+        -\frac{\z'}{\z}(s) = \frac{1}{s-1}-\frac{1}{2}\log(\pi)+\frac{1}{2}\frac{\G'}{\G}\left(\frac{s}{2}+1\right)-B-\sum_{\rho}\left(\frac{1}{s-\rho}+\frac{1}{\rho}\right).
       \end{equation}
-      where $A$ and $B$ are constants and $\rho$ runs over the nontrivial zeros of $\z(s)$ counted with multiplicity and ordered with respect to the size of the ordinate. That is, if $\rho = \b+i\g$, the product is ordered by $|\g|$. \cref{equ:Hadamard_product_for_Riemann_xi} is an infinite product expression for $\xi(s)$ and we will use it to obtain the explicit formula for logarithmic derivative of $\z(s)$. To do this we tak the logarithmic derivative of $\xi(s)$ in two ways. First, observe that we can write $\xi(s) = (s-1)\pi^{-\frac{s}{2}}\G\left(\frac{s}{2}+1\right)\z(s)$. The logarithm derivative of this expression gives
-      \begin{equation}\label{equ:logarithmic_derivative_Riemann_xi_1}
-        \frac{\xi'}{\xi}(s) = \frac{1}{s-1}+\frac{1}{2}\log(\pi)+\frac{1}{2}\frac{\G'}{\G}\left(\frac{s}{2}+1\right)+\frac{\z'}{\z}(s).
-      \end{equation}
-      On the other hand, we can take the logarithmic derivative \cref{equ:Hadamard_product_for_Riemann_xi} to obtain
-      \begin{equation}\label{equ:logarithmic_derivative_Riemann_xi_2}
-        \frac{\xi'}{\xi}(s) = B+\sum_{\rho}\left(\frac{1}{s-\rho}+\frac{1}{\rho}\right).
-      \end{equation}
-      Upon combining \cref{equ:logarithmic_derivative_Riemann_xi_1,equ:logarithmic_derivative_Riemann_xi_2} yields the \textbf{explicit formula}\index{explicit formula} for $\frac{\z'}{\z}(s)$:
-      \[
-        \frac{\z'}{\z}(s) = B-\frac{1}{s-1}-\frac{1}{2}\log(\pi)-\frac{1}{2}\frac{\G'}{\G}\left(\frac{s}{2}+1\right)+\sum_{\rho}\left(\frac{1}{s-\rho}+\frac{1}{\rho}\right).
-      \]
-      The explicit formula for $\frac{\z'}{\z}(s)$ is quite important for analytic investigations. Notice that the second term contains information about the pole of $\z(s)$ while the last term contains all the information about the nontrivial zeros. The digamma function term contains the information about the trivial zeros as can be seen from \cref{cor:logarithmic_derivative_of_gamma}. The constants $A$ and $B$ in \cref{equ:Hadamard_product_for_Riemann_xi} can be computed. To compute $A$, \cref{equ:Hadamard_product_for_Riemann_xi} implies $A = \log(\xi(0))$. Now $\z(s)$ has residue $1$ at $s = 1$ so that $\lim_{s \to 1}(s-1)\z(s) = 1$. This fact along with $\G\left(\frac{1}{2}\right) = \sqrt{\pi}$ together imply $\xi(1) = \frac{1}{2}$. By the functional equation for $\xi(s)$, we find that
-      \[
-        A = \log\left(\frac{1}{2}\right).
-      \]
-      The constant $B$ requires slightly more work. We first claim that $\sum_{\rho}\frac{1}{\rho}$ converges provided we group the terms $\rho$ and $\conj{\rho}$ together. This is in accordance with the order of $\rho$ in the Hadamard factorization for $\xi(s)$. Letting $\rho = \b+i\g$, we have
+      The constant $B$ can be computed. We first claim that $\sum_{\rho}\frac{1}{\rho}$ converges provided we group the terms $\rho$ and $\conj{\rho}$ together. Letting $\rho = \b+i\g$, we have
       \begin{equation}\label{equ:B_computation_1}
         \sum_{\rho}\frac{1}{\rho} = \asum_{\rho}\left(\frac{1}{\rho}+\frac{1}{\conj{\rho}}\right) = \asum_{\rho}\frac{2\b}{\b^{2}+\g^{2}},
       \end{equation}
-      where the $\ast$ indicates that we are summing over $\rho$ and not $\conj{\rho}$. The last sum in \cref{equ:B_computation_1} is at most $2\sum_{\rho}\frac{1}{|\rho|^{2}}$ and this sum converges by the Hadamard factorization of $\xi(s)$ since the rank is $1$. Now \cref{equ:logarithmic_derivative_Riemann_xi_2} and the functional equation for $\xi(s)$ together give
+      where the $\ast$ indicates that we are summing over $\rho$ and not $\conj{\rho}$. The last sum in \cref{equ:B_computation_1} is at most $2\sum_{\rho}\frac{1}{|\rho|^{2}}$ and this sum converges by \cref{prop:explicit_formula_log_derivative} since the rank of $\xi(s)$ must be $1$ (see \cref{append:Factorizations_and_Finite_Order}). Since
+      \[
+        \frac{\xi'}{\xi}(s) = B+\sum_{\rho}\left(\frac{1}{s-\rho}+\frac{1}{\rho}\right),
+      \]
+      the functional equation gives
       \begin{equation}\label{equ:B_computation_2}
         B+\sum_{\rho}\left(\frac{1}{s-\rho}+\frac{1}{\rho}\right) = -B-\sum_{\rho}\left(\frac{1}{1-s-\rho}+\frac{1}{\rho}\right).
       \end{equation}
@@ -43,56 +23,7 @@
       \[
         B = -\sum_{\rho}\frac{1}{\rho} = -\asum_{\rho}\frac{2\b}{\b^{2}+\g^{2}}.
       \]
-    \subsection*{The Explicit Formula for the Logarithmic Derivative of \texorpdfstring{$L(s,\chi)$}{L(s,\chi)}}
-      Let $\chi$ be a primitive Dirichlet character with conductor $q > 1$. We will derive an analogous explicit formula for the logarithmic derivative of $L(s,\chi)$. To do this, define the \textbf{Dirichlet xi function}\index{Dirichlet xi function} $\xi(s,\chi)$ by
-      \[
-        \xi(s,\chi) = \left(\frac{q}{\pi}\right)^{\frac{s+\mf{a}}{2}}\G\left(\frac{s+\mf{a}}{2}\right)L(s,\chi).
-      \]
-      We claim $\xi(s,\chi)$ is holomorphic on $\C$. Indeed, $L(s,\chi)$ is holomorphic on $\C$ and the poles coming from the gamma factor are canceled by the trivial zeros of $L(s,\chi)$. Moreover, the functional equation for $L(s,\chi)$ implies
-      \[
-        \xi(s,\chi) = \frac{\e_{\chi}}{i^{\mf{a}}}\xi(1-s,\cchi),
-      \]
-      which is the functional equation for $\xi(s,\chi)$. It is also not hard to show that $\xi(s,\chi)$ is of order $1$. Indeed, by the functional equation for $\xi(s,\chi)$ it suffices to show $\xi(s,\chi)$ is of order $1$ for $\s \ge \frac{1}{2}$. This holds since $L(s,\chi)$ is of order $1$, being an $L$-function, and $\G\left(\frac{s+\mf{a}}{2}\right)$ is of order $1$ for $\s > 0$. By the Hadamard factorization theorem (see \cref{append:Factorizations_and_Finite_Order}),
-      \begin{equation}\label{equ:Hadamard_product_for_Dirichlet_xi}
-        \xi(s,\chi) = e^{A(\chi)+B(\chi)s}\prod_{\rho}\left(1-\frac{s}{\rho}\right)e^{\frac{s}{\rho}},
-      \end{equation}
-      where $A(\chi)$ and $B(\chi)$ are constants and $\rho$ runs over the nontrivial zeros of $L(s,\chi)$ counted with multiplicity and ordered with respect to the size of the ordinate. In other words, if $\rho = \b+i\g$, the product is ordered by $|\g|$. Just like for $\z(s)$, we can use \cref{equ:Hadamard_product_for_Dirichlet_xi} to prove the explicit formula for $\frac{L'}{L}(s,\chi)$ by taking the logarithmic derivative of $\xi(s,\chi)$ in two ways. First, taking the logarithmic derivative of $\xi(s,\chi)$ directly gives
-      \begin{equation}\label{equ:logarithmic_derivative_Dirichlet_xi_1}
-        \frac{\xi'}{\xi}(s,\chi) = \frac{1}{2}\log\left(\frac{q}{\pi}\right)+\frac{1}{2}\frac{\G'}{\G}\left(\frac{s+\mf{a}}{2}\right)+\frac{L'}{L}(s,\chi).
-      \end{equation}
-      On the other hand, we can take the logarithmic derivative using \cref{equ:Hadamard_product_for_Dirichlet_xi} to obtain
-      \begin{equation}\label{equ:logarithmic_derivative_Dirichlet_xi_2}
-        \frac{\xi'}{\xi}(s,\chi) = B(\chi)+\sum_{\rho}\left(\frac{1}{s-\rho}+\frac{1}{\rho}\right).
-      \end{equation}
-      Combining \cref{equ:logarithmic_derivative_Dirichlet_xi_1,equ:logarithmic_derivative_Dirichlet_xi_2} we obtain the \textbf{explicit formula}\index{explicit formula} for $\frac{L'}{L}(s,\chi)$:
-      \[
-        \frac{L'}{L}(s,\chi) = B(\chi)-\frac{1}{2}\log\left(\frac{q}{\pi}\right)-\frac{1}{2}\frac{\G'}{\G}\left(\frac{s+\mf{a}}{2}\right)+\sum_{\rho}\left(\frac{1}{s-\rho}+\frac{1}{\rho}\right).
-      \]
-
-      The constants $A(\chi)$ can be computed. Indeed, \cref{equ:Hadamard_product_for_Dirichlet_xi} implies $A(\chi) = \log(\xi(0,\chi))$. Now $\xi(1,\cchi) = \left(\frac{q}{\pi}\right)^{\frac{1+\mf{a}}{2}}\G\left(\frac{1+\mf{a}}{2}\right)L(1,\cchi)$ so the functional equation for $\xi(s,\chi)$ implies
-      \[
-        A(\chi) = \log\left(\frac{\e_{\chi}}{i^{\mf{a}}}\left(\frac{q}{\pi}\right)^{\frac{1+\mf{a}}{2}}\G\left(\frac{1+\mf{a}}{2}\right)L(1,\cchi)\right).
-      \]
-      The constant $B(\chi)$ is significantly more difficult to compute and there are currently no good estimates in terms of the conductor $q$ alone. However, we do have a useful expression for the real part of $B(\chi)$ in terms of the real parts of the nontrivial zeros. To obtain this expression, note that \cref{equ:B_computation_1} holds for the nontrivial zeros of $L(s,\chi)$ and the sum converges because $\xi(1,\chi)$ has rank $1$. Taking \cref{equ:logarithmic_derivative_Dirichlet_xi_2} at $s = 0$ gives $B(\chi) = \frac{\xi'}{\xi}(0,\chi)$. The functional equation for $\xi(s,\chi)$ implies $\frac{\xi'}{\xi}(0,\chi) = -\frac{\xi'}{\xi}(1,\cchi)$ so using \cref{equ:logarithmic_derivative_Dirichlet_xi_2} at $s = 1$, we have
-      \begin{equation}\label{equ:B_chi_computation_1}
-        B(\chi) = -B(\cchi)-\sum_{\conj{\rho}}\left(\frac{1}{1-\conj{\rho}}+\frac{1}{\conj{\rho}}\right).
-      \end{equation}
-      We claim $B(\cchi) = \conj{B(\chi)}$. To see this, since $\conj{L(s,\chi)} = L(\conj{s},\cchi)$ we have $\conj{\xi(s,\chi)} = \xi(\conj{s},\cchi)$. But then
-      \[
-        \conj{B(\chi)} = \conj{\frac{\xi'}{\xi}(0,\chi)} = \frac{\xi'}{\xi}(0,\cchi) = B(\cchi).
-      \]
-      Then the fact that $B(\cchi) = \conj{B(\chi)}$ and \cref{equ:B_chi_computation_1} together imply
-      \begin{equation}\label{equ:B_chi_computation_2}
-        \Re(B(\chi)) = -\frac{1}{2}\sum_{\rho}\Re\left(\frac{1}{1-\conj{\rho}}+\frac{1}{\conj{\rho}}\right).
-      \end{equation}
-      Now if $\rho = \b+i\g$, we have $\Re\left(\frac{1}{1-\conj{\rho}}\right) = \frac{1-\b}{(1-\b)^{2}+\g^{2}} > 0$ and $\Re\left(\frac{1}{\rho}\right) = \frac{\b}{\b^{2}+\g^{2}} > 0$. Recalling that $1-\conj{\rho}$ is a nontrivial zero if $\rho$ is, we may replace $1-\conj{\rho}$ with $\rho$ in \cref{equ:B_chi_computation_2} since the terms correspond to these zeros are positive as we have just shown. We can rewrite the result as follows:
-      \begin{equation}\label{equ:B_chi_computation_3}
-        B(\chi) = -\frac{1}{2}\sum_{\rho}\Re\left(\frac{1}{\rho}+\frac{1}{\conj{\rho}}\right) = -\sum_{\rho}\Re\left(\frac{1}{\rho}\right).
-      \end{equation}
-  \section{Zero-free Regions, Siegel Zeros \& Siegel's Theorem}
-    While the Riemann hypothesis, and its generalization, are currently out of reach, some progress has still be made regarding the location of the zeros of $L$-functions. In particular, we want to establish regions inside the critical strip where $L$-functions do not vanish. These regions are commonly known as \textbf{zero-free regions}\index{zero-free regions}.
-    \subsection*{The Classical Zero-free Region for \texorpdfstring{$\z(s)$}{\z(s)}}
-      The \textbf{classical zero-free region for $\z(s)$}\index{classical zero-free region for $\z(s)$} describes a region slightly to the left of the line $\s = 1$ inside of the critical strip where $\z(s)$ cannot exhibit a zero:
+       Now onto the zero-free region. The \textbf{classical zero-free region for $\z(s)$}\index{classical zero-free region for $\z(s)$} describes a region slightly to the left of the line $\s = 1$ inside of the critical strip where $\z(s)$ cannot exhibit a zero:
 
       \begin{theorem}[Zero-free region for $\z(s)$, classical version]
         There exists a positive constant $c$ such that $\z(s)$ contains no zeros in the region
@@ -105,7 +36,7 @@
         \begin{equation}\label{equ:classical_zero-free_region_zeta_1}
           -\frac{\z'}{\z}(\s) < A+\frac{1}{\s-1},
         \end{equation}
-        for some positive constant $A$. For the last term, since $|t| > 2$, $s$ is bounded away from zero. In particular, $\frac{1}{s-1}$ is bounded. Moreover, from \cref{equ:approximtion_for_digamma} we also deduce $\frac{\G'}{\G}\left(\frac{s}{2}+1\right) = O(\log|t|)$ because $\s$ is bounded. These two estimates along with the explicit formula for $\frac{\z'}{\z}(s)$ imply
+        for some positive constant $A$. For the last term, since $|t| > 2$, $s$ is bounded away from zero. In particular, $\frac{1}{s-1}$ is bounded. Moreover, from \cref{equ:approximtion_for_digamma} we also deduce $\frac{\G'}{\G}\left(\frac{s}{2}+1\right) = O(\log|t|)$ because $\s$ is bounded. These two estimates along with \cref{equ:explicit_log_derivative_zeta} imply
         \begin{equation}\label{equ:classical_zero-free_region_zeta_2}
           -\Re\left(\frac{\z'}{\z}(s)\right) < A\log|t|-\sum_{\rho}\Re\left(\frac{1}{s-\rho}+\frac{1}{\rho}\right),
         \end{equation}
@@ -203,7 +134,31 @@
       \]
       Therefore $\z(s)$ cannot admit a zero for $0 < s < 1$ because then $\eta(s)$ would be zero too. Actually, since $1-2^{1-s} < 0$ in this segment we also know $\z(s) < 0$ in this segment as well. As for the height of the first zero, it occurs on the critical line (as predicted by the Riemann hypothesis) at height $t \approx 14.134$. In particular, this gives a slight improvement to the classical zero-free region in \cref{fig:classical_zero-free_region}. Actually, the first $15$ zeros were computed by Gram in 1903 (see \cite{gram1903note}). Since then, billions of zeros have been computed and have all been verified to lie on the critical line.
     \subsection*{The Classical Zero-free Region for \texorpdfstring{$L(s,\chi)$}{L(s,\chi)} \& Siegel Zeros}
-      For a fixed primitive Dirichlet character $\chi$ of conductor $q > 1$, it is not difficult to obtain a zero-free region result for $L(s,\chi)$ analogous to the classical zero-free region for $\z(s)$. However, it is more useful to have zero-free regions in terms of $q$ alone so that the character $\chi$ can vary. Unfortunately, an additional obstruction arises in the case that the character is quadratic. This is due to the possible existence of an additional real zero. Throughout, we will only be interested in non-principal characters. For convenience we use the standard notation
+      As with the Riemann zeta function, we first collect some information on the explicit formula for the logarithmic derivative of $L(s,\chi)$ for a primitive Dirichlet character $\chi$ of conductor $q > 1$. Namely, \cref{prop:explicit_formula_log_derivative} gives
+      \begin{equation}\label{equ:explicit_log_derivative_Dirichlet}
+        -\frac{L'}{L}(s,\chi) = \frac{1}{2}\log(q)-\frac{1}{2}\log(\pi)+\frac{1}{2}\frac{\G'}{\G}\left(\frac{s+\mf{a}}{2}\right)-B(\chi)-\sum_{\rho}\left(\frac{1}{s-\rho}+\frac{1}{\rho}\right).
+      \end{equation}
+      The constant $B(\chi)$ is very difficult to compute and there are currently no good estimates in terms of the conductor $q$ alone. However, we do have a useful expression for the real part of $B(\chi)$ in terms of the real parts of the nontrivial zeros. To obtain this expression, note that \cref{equ:B_computation_1} holds for the nontrivial zeros of $L(s,\chi)$ and the sum converges because $\xi(1,\chi)$ has rank $1$ by \cref{prop:explicit_formula_log_derivative} (see \cref{append:Factorizations_and_Finite_Order}). Since
+      \[
+        \frac{\xi'}{\xi}(s) = B(\chi)+\sum_{\rho}\left(\frac{1}{s-\rho}+\frac{1}{\rho}\right),
+      \]
+      setting $s = 0$ gives $B(\chi) = \frac{\xi'}{\xi}(0,\chi)$. Then the functional equation implies
+      \begin{equation}\label{equ:B_chi_computation_1}
+        B(\chi) = -B(\cchi)-\sum_{\conj{\rho}}\left(\frac{1}{1-\conj{\rho}}+\frac{1}{\conj{\rho}}\right).
+      \end{equation}
+      We claim $B(\cchi) = \conj{B(\chi)}$. To see this, since $\conj{L(s,\chi)} = L(\conj{s},\cchi)$ we have $\conj{\xi(s,\chi)} = \xi(\conj{s},\cchi)$. But then
+      \[
+        \conj{B(\chi)} = \conj{\frac{\xi'}{\xi}(0,\chi)} = \frac{\xi'}{\xi}(0,\cchi) = B(\cchi),
+      \]
+      as desired. Using this fact and \cref{equ:B_chi_computation_1} together imply
+      \begin{equation}\label{equ:B_chi_computation_2}
+        \Re(B(\chi)) = -\frac{1}{2}\sum_{\rho}\Re\left(\frac{1}{1-\conj{\rho}}+\frac{1}{\conj{\rho}}\right).
+      \end{equation}
+      Now if $\rho = \b+i\g$, we have $\Re\left(\frac{1}{1-\conj{\rho}}\right) = \frac{1-\b}{(1-\b)^{2}+\g^{2}} > 0$ and $\Re\left(\frac{1}{\rho}\right) = \frac{\b}{\b^{2}+\g^{2}} > 0$. Recalling that $1-\conj{\rho}$ is a nontrivial zero if $\rho$ is, we may replace $1-\conj{\rho}$ with $\rho$ in \cref{equ:B_chi_computation_2} since the terms correspond to these zeros are positive as we have just shown. We can rewrite the result as follows:
+      \begin{equation}\label{equ:B_chi_computation_3}
+        B(\chi) = -\frac{1}{2}\sum_{\rho}\Re\left(\frac{1}{\rho}+\frac{1}{\conj{\rho}}\right) = -\sum_{\rho}\Re\left(\frac{1}{\rho}\right).
+      \end{equation}
+      Now onto the zero-free region. For a fixed primitive Dirichlet character $\chi$ of conductor $q > 1$, it is not difficult to obtain a zero-free region result for $L(s,\chi)$ analogous to the classical zero-free region for $\z(s)$. However, it is more useful to have zero-free regions in terms of $q$ alone so that the character $\chi$ can vary. Unfortunately, an additional obstruction arises in the case that the character is quadratic. This is due to the possible existence of an additional real zero. Throughout, we will only be interested in non-principal characters. For convenience we use the standard notation
       \[
         \mathscr{L} = \log(q(|t|+2)),
       \]
@@ -221,7 +176,7 @@
         \begin{equation}\label{equ:classical_zero-free_region_Dirichlet_1}
           -\frac{L'}{L}(\s,\chi_{q,0}) < A+\frac{1}{\s-1},
         \end{equation}
-        for some positive constant $A$. For the middle term, \cref{equ:approximtion_for_digamma} implies $\frac{\G'}{\G}\left(\frac{s+\mf{a}}{2}\right) = O(\log(|t|+2))$ because $\s$ is bounded. This estimate and explicit formula for $\frac{L'}{L}(s,\chi)$ together give
+        for some positive constant $A$. For the middle term, \cref{equ:approximtion_for_digamma} implies $\frac{\G'}{\G}\left(\frac{s+\mf{a}}{2}\right) = O(\log(|t|+2))$ because $\s$ is bounded. This estimate and explicit formula the logarithmic derivative of $L(s,\chi)$ together give
         \begin{equation}\label{equ:classical_zero-free_region_Dirichlet_2}
           -\Re\left(\frac{L'}{L}(s,\chi)\right) < A\scL-\Re(B(\chi))-\sum_{\rho}\Re\left(\frac{1}{s-\rho}+\frac{1}{\rho}\right),
         \end{equation}
@@ -269,11 +224,11 @@
         \begin{equation}\label{equ:zero-free_region_estimate_Dirichlet_sigma_bound}
           \s \ge 1-\frac{c}{\scL},
         \end{equation}
-        for all $\s$ and $t$. This finishes the proof in the case that $\chi$ is primitive and complex. Actually, the assumption that $\chi$ is primitive can be dropped since if $\wtilde{\chi}$ is the primitive character inducing $\chi$, \cref{equ:non-primitive_primitive_Dirichlet_L-series_relation} implies that there zeros can only differ on the line $\s = 0$ which is not in the region we are considering. Therefore our zero-free region holds for all complex $\chi$. We now suppose $\chi$ is primitive quadratic. The only part of the argument that needs adjustment is upper bound for the last term. \cref{equ:classical_zero-free_region_Dirichlet_4,equ:classical_zero-free_region_Dirichlet_5} still hold but since $\chi^{2} = \chi_{q,0}$, the primitive character inducing $\chi^{2}$ is the trivial character so $L(s,\wtilde{\chi}) = \z(s)$ and hence \cref{equ:classical_zero-free_region_Dirichlet_3} with $\wtilde{\chi}$ in place of $\chi$ no longer applies. Instead, we use the explicit formula for $\frac{\z'}{\z}(s)$. \cref{equ:approximtion_for_digamma} implies $\frac{\G'}{\G}\left(\frac{s}{2}+1\right) = O(\log(|t|+2))$ because $\s$ is bounded. This estimate, the explicit formula for $\frac{\z'}{\z}(s)$, and discarding the sum over nontrivial zeros (because this is a sum of nonpositive terms), together give
+        for all $\s$ and $t$. This finishes the proof in the case that $\chi$ is primitive and complex. Actually, the assumption that $\chi$ is primitive can be dropped since if $\wtilde{\chi}$ is the primitive character inducing $\chi$, \cref{equ:non-primitive_primitive_Dirichlet_L-series_relation} implies that there zeros can only differ on the line $\s = 0$ which is not in the region we are considering. Therefore our zero-free region holds for all complex $\chi$. We now suppose $\chi$ is primitive quadratic. The only part of the argument that needs adjustment is upper bound for the last term. \cref{equ:classical_zero-free_region_Dirichlet_4,equ:classical_zero-free_region_Dirichlet_5} still hold but since $\chi^{2} = \chi_{q,0}$, the primitive character inducing $\chi^{2}$ is the trivial character so $L(s,\wtilde{\chi}) = \z(s)$ and hence \cref{equ:classical_zero-free_region_Dirichlet_3} with $\wtilde{\chi}$ in place of $\chi$ no longer applies. Instead, we use \cref{equ:explicit_log_derivative_zeta}. Note that \cref{equ:approximtion_for_digamma} implies $\frac{\G'}{\G}\left(\frac{s}{2}+1\right) = O(\log(|t|+2))$ because $\s$ is bounded. This estimate, \cref{equ:explicit_log_derivative_zeta}, and discarding the sum over nontrivial zeros (because this is a sum of nonpositive terms), together give
         \begin{equation}\label{equ:classical_zero-free_region_Dirichlet_10}
           -\Re\left(\frac{\z'}{\z}(s)\right) < \Re\left(\frac{1}{s-1}\right)+A\log(|t|+2),
         \end{equation}
-        for some possibly larger constant $A$. Observe that the term corresponding to $\frac{1}{s-1}$ in the explicit formula for $\frac{\z'}{\z}(s)$ is present in \cref{equ:classical_zero-free_region_Dirichlet_10} because $t$ may very well be small and so this term is not necessarily bounded from above. Replaying $s$ with $\s+2it$, and combining \cref{equ:classical_zero-free_region_Dirichlet_5,equ:classical_zero-free_region_Dirichlet_10} (recall $L(s,\wtilde{\chi}) = \z(s)$) yields
+        for some possibly larger constant $A$. Observe that the term corresponding to $\frac{1}{s-1}$ in \cref{equ:explicit_log_derivative_zeta} is present in \cref{equ:classical_zero-free_region_Dirichlet_10} because $t$ may very well be small and so this term is not necessarily bounded from above. Replaying $s$ with $\s+2it$, and combining \cref{equ:classical_zero-free_region_Dirichlet_5,equ:classical_zero-free_region_Dirichlet_10} (recall $L(s,\wtilde{\chi}) = \z(s)$) yields
         \begin{equation}\label{equ:classical_zero-free_region_Dirichlet_11}
           -\Re\left(\frac{L'}{L}(\s+2it,\chi^{2})\right) < \Re\left(\frac{1}{\s-1+2it}\right)+A\scL,
         \end{equation}
@@ -720,7 +675,7 @@
         \begin{equation}\label{equ:Riemann_von_Mangoldt_2}
           \frac{1}{2\pi i}\int_{\eta}\frac{\xi'}{\xi}(s)\,ds = \frac{1}{2\pi i}\int_{\eta}\frac{d}{ds}\log|\xi(s)|\,ds+\frac{1}{2\pi }\int_{\eta}\frac{d}{ds}\arg(\xi(s))\,ds = \frac{1}{2\pi}\D_{\eta}\arg(\xi(s)),
         \end{equation}
-        where the last equality follows because $\eta$ is closed. Since $\xi(s)$ is real for real $s > 0$, the functional equation implies $\xi(s)$ is real for all real $s$. Then $\conj{\xi(s)} = \xi(\conj{s})$ holds for all $s$ by the identity theorem. This implies that there is no change in the argument along $\eta_{1}$ and $\eta_{6}$. Moreover, the functional equation for $\xi(s)$ and that $-\arg(s) = \arg(\conj{s})$ together imply
+        where the last equality follows because $\eta$ is closed. Since $\xi(s)$ is real for real $s > 0$, the functional equation implies $\xi(s)$ is real for all real $s$. Then $\conj{\xi(s)} = \xi(\conj{s})$ holds for all $s$ by the identity theorem. This implies that there is no change in the argument along $\eta_{1}$ and $\eta_{6}$. Moreover, the functional equation and that $-\arg(s) = \arg(\conj{s})$ together imply
         \begin{align*}
           \D_{\eta_{L}}\arg(\xi(s)) &= \D_{\eta_{L}}\arg(\xi(1-s)) \\
           &= \D_{-\conj{\eta_{R}}}\arg(\xi(s)) \\
@@ -778,11 +733,11 @@
             &= \frac{1}{\pi}\int_{2+iT}^{\frac{1}{2}+iT}\Im\left(\frac{\z'}{\z}(s)\right)\,ds+O(1),
           \end{aligned}
         \end{equation}
-        where the last line follows because $\frac{\z'}{\z}(s)$ is bounded for $\s > 1$ by \cref{equ:Drichlet_series_log_derivative_zeta}. It's now necessary to estimate $\frac{\z'}{\z}(s)$. The explicit formula for $\frac{\z'}{\z}(s)$ at $s = 2+it$ with $t > 0$ implies
+        where the last line follows because $\frac{\z'}{\z}(s)$ is bounded for $\s > 1$ by \cref{equ:Drichlet_series_log_derivative_zeta}. It's now necessary to estimate $\frac{\z'}{\z}(s)$. \cref{equ:explicit_log_derivative_zeta} at $s = 2+it$ implies
         \begin{equation}\label{equ:Riemann_von_Mangoldt_10}
-          0 = -\frac{\z'}{\z}(2+it)+B-\frac{1}{1+it}-\frac{1}{2}\log(\pi)-\frac{1}{2}\frac{\G'}{\G}\left(2+i\frac{t}{2}\right)+\sum_{\rho}\left(\frac{1}{2+it-\rho}+\frac{1}{\rho}\right).
+          0 = -\frac{\z'}{\z}(2+it)+B-\frac{1}{1+it}+\frac{1}{2}\log(\pi)-\frac{1}{2}\frac{\G'}{\G}\left(2+i\frac{t}{2}\right)+\sum_{\rho}\left(\frac{1}{2+it-\rho}+\frac{1}{\rho}\right).
         \end{equation}
-        Subtracting \cref{equ:Riemann_von_Mangoldt_10} from the explicit formula for $\frac{\z'}{\z}(s)$ gives
+        Subtracting \cref{equ:explicit_log_derivative_zeta} from \cref{equ:Riemann_von_Mangoldt_10} gives
         \[
           \frac{\z'}{\z}(s) = \frac{\z'}{\z}(2+it)+\frac{1}{1+it}-\frac{1}{s-1}+\frac{1}{2}\frac{\G'}{\G}\left(2+i\frac{t}{2}\right)-\frac{1}{2}\frac{\G'}{\G}\left(\frac{s}{2}+1\right)+\sum_{\rho}\left(\frac{1}{s-\rho}-\frac{1}{2+it-\rho}\right).
         \]
@@ -953,7 +908,7 @@
         \begin{equation}\label{equ:Riemann_von_Mangoldt_Dirichlet_L-functions_2}
           \frac{1}{2\pi i}\int_{\eta}\frac{\xi'}{\xi}(s,\chi)\,ds = \frac{1}{2\pi i}\int_{\eta}\frac{d}{ds}\log|\xi(s,\chi)|\,ds+\frac{1}{2\pi }\int_{\eta}\frac{d}{ds}\arg(\xi(s,\chi))\,ds = \frac{1}{2\pi}\D_{\eta}\arg(\xi(s,\chi)),
         \end{equation}
-        where the last equality holds because $\eta$ is closed. Recall that we have already shown $\conj{(\xi(s,\chi))} = \xi(\conj{s},\cchi)$. This fact along with the functional equation for $\xi(s,\chi)$ and that $-\arg(s) = \arg(\conj{s})$ together imply
+        where the last equality holds because $\eta$ is closed. Recall that we have already shown $\conj{(\xi(s,\chi))} = \xi(\conj{s},\cchi)$. This fact along with the functional equation and that $-\arg(s) = \arg(\conj{s})$ together imply
         \begin{align*}
           \D_{\eta_{L}}\arg(\xi(s,\chi)) &= \D_{\eta_{L}}\arg\left(\frac{\e_{\chi}}{i^{\mf{a}}}\xi(1-s,\cchi)\right) \\
           &= \D_{-\conj{\eta_{R}}}\arg\left(\frac{\e_{\chi}}{i^{\mf{a}}}\xi(s,\cchi)\right) \\
@@ -1017,11 +972,11 @@
             &= \frac{1}{\pi}\int_{\frac{5}{2}+iT}^{-\frac{3}{2}+iT}\Im\left(\frac{L'}{L}(s,\chi)\right)\,ds+O(1),
           \end{aligned}
         \end{equation}
-        where the last line holds because $\frac{L'}{L}(s,\chi)$ is bounded for $\s > 1$ by \cref{equ:Drichlet_series_log_derivative_Dirichlet}. Now we estimate $\frac{L'}{L}(s,\chi)$. The explicit formula for $\frac{L'}{L}(s,\chi)$ at $s = 2+it$ with $t > 0$ implies
+        where the last line holds because $\frac{L'}{L}(s,\chi)$ is bounded for $\s > 1$ by \cref{equ:Drichlet_series_log_derivative_Dirichlet}. Now we estimate $\frac{L'}{L}(s,\chi)$. \cref{equ:explicit_log_derivative_Dirichlet} at $s = 2+it$ with $t > 0$ implies
         \begin{equation}\label{equ:Riemann_von_Mangoldt_Dirichlet_L-functions_9}
           0 = -\frac{L'}{L}(2+it,\chi)+B(\chi)-\frac{1}{2}\log\left(\frac{q}{\pi}\right)-\frac{1}{2}\frac{\G'}{\G}\left(1+\frac{\mf{a}}{2}+i\frac{t}{2}\right)+\sum_{\rho}\left(\frac{1}{2+it-\rho}+\frac{1}{\rho}\right).
         \end{equation}
-        Subtracting \cref{equ:Riemann_von_Mangoldt_Dirichlet_L-functions_9} from the explicit formula for $\frac{L'}{L}(s,\chi)$ gives
+        Subtracting \cref{equ:Riemann_von_Mangoldt_Dirichlet_L-functions_9} from \cref{equ:explicit_log_derivative_Dirichlet} gives
         \[
           \frac{L'}{L}(s,\chi) = \frac{L'}{L}(2+it)+\frac{1}{2}\frac{\G'}{\G}\left(1+\frac{\mf{a}}{2}+i\frac{t}{2}\right)-\frac{1}{2}\frac{\G'}{\G}\left(\frac{s+\mf{a}}{2}\right)+\sum_{\rho}\left(\frac{1}{s-\rho}-\frac{1}{2+it-\rho}\right).
         \]
