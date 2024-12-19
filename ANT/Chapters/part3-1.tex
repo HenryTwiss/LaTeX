@@ -806,7 +806,7 @@
         \[
           2\Re(B(f)) = B(f)+B(\conj{f}) = -\sum_{\rho \neq 0,1}\left(\frac{1}{s-\rho}+\frac{1}{1-s-\conj{\rho}}+\frac{1}{\rho}+\frac{1}{\conj{\rho}}\right),
         \]
-        where we have made use of the fact that the nontrivial zeros occur is pairs $\rho$ and $1-\conj{\rho}$ where the latter nontrivial zero is also a nontrivial zero of $L(1-s,\conj{f})$. Now fix $s$ such that it does not coincide with the ordinate of a nontrivial zero. Then $s$ is bounded away from all of the nontrivial zeros and it follows that $(s-\rho)^{-1}+(1-s-\conj{\rho})^{-1} \ll \rho^{-2}$ and $\rho^{-1}+\conj{\rho}^{-1} \ll \rho^{-2}$. Therefore the sums
+        where we have made use of the fact that the nontrivial zeros occur is pairs $\rho$ and $1-\conj{\rho}$ where the latter is also a nontrivial zero of $L(1-s,\conj{f})$. Now fix $s$ such that it does not coincide with the ordinate of a nontrivial zero. Then $s$ is bounded away from all of the nontrivial zeros and it follows that $(s-\rho)^{-1}+(1-s-\conj{\rho})^{-1} \ll \rho^{-2}$ and $\rho^{-1}+\conj{\rho}^{-1} \ll \rho^{-2}$. Therefore the sums
         \[
           \sum_{\rho \neq 0,1}\left(\frac{1}{s-\rho}+\frac{1}{1-s-\conj{\rho}}\right) \quad \text{and} \quad \sum_{\rho \neq 0,1}\left(\frac{1}{\rho}+\frac{1}{\conj{\rho}}\right),
         \]
@@ -864,13 +864,73 @@
       \end{enumerate}
     \end{proof}
 
-    With \cref{lem:powerful_L-function_approximation_lemma} in hand, we can deduce a result which estimates the number of nontrivial zeros in a box:
+    With \cref{lem:powerful_L-function_approximation_lemma} in hand, we can deduce a result which estimates the number of nontrivial zeros in a box. Accordingly, for any $T \ge 0$ we define
+    \[
+      N(T,f) = \left|\{\rho = \b+i\g \in \C:L(\rho,f) = 0 \text{ with } 0 \le \b \le 1 \text{ and } |\g| \le T\}\right|.
+    \]
+    In other words, $N(T,f)$ is the number of nontrivial zeros of $L(s,f)$ with ordinate in $[-T,T]$. We will prove the following:
 
     \begin{theorem}
-      \todo{xxx}
+      For any $L$-function $L(s,f)$ and $T \ge 1$,
+      \[
+        N(T,f) = \frac{T}{\pi}\log\left(\frac{q(f)T^{d_{f}}}{(2\pi e)^{d_{f}}}\right)+O(\log{q(iT,f)}).
+      \]
     \end{theorem}
     \begin{proof}
-      \todo{xxx}
+      Let $T \ge 1$ and set
+      \[
+      N'(T,f) = \left|\{\rho = \b+i\g \in \C:L(\rho,f) = 0 \text{ with } 0 \le \b \le 1 \text{ and } 0 < \g \le T\}\right|.
+    \]
+    As the nontrivial zeros occur in pairs $\rho$ and $1-\conj{\rho}$ where the latter is also a nontrivial zero of $L(s,\conj{f})$, it follows that
+    \[
+      N(T,f) = N'(T,f)+N'(T,\conj{f})+O(\log{q(f)}),
+    \]
+    where $O(\log{q(f)})$ accounts for the possible nontrivial real zeros. There are finitely many such nontrivial zeros because the line segment $0 \le s \le 1$ is compact. Moreover, we may assume that $L(s,f)$ does not vanish on the line $t = T$ by varying $T$ by a sufficiently small constant if necessary and observing that $N(T,f)$ is modified by a quantity of size $O(\log{q}(iT,f))$ by \cref{lem:powerful_L-function_approximation_lemma} (i) which is the size of the error term in the statement of the theorem. Since the nontrivial zeros are isolated, let $\d > 0$ be small enough such that $\L(s,f) \neq 0$ for $-\d \le t < 0$. Then by the argument principal,
+    \[
+      N(T,f) = \frac{1}{2\pi i}\int_{\eta}\frac{\L'}{\L}(s,f)\,ds+O(\log{q}(iT,f)),
+    \]
+    where $\eta = \sum_{1 \le i \le 6}\eta_{i}$ is the contour in \cref{fig:zero_counting_contour}.
+
+    \begin{figure}[ht]
+          \centering
+          \begin{tikzpicture}[scale=2.75]
+            \def\xmin{-1.5} \def\xmax{2.5}
+            \def\ymin{-0.5} \def\ymax{2}
+            \draw[thick] (\xmin,0) -- (\xmax,0);
+            \draw[thick] (0,\ymin) -- (0,\ymax);
+            \draw[dashed] (0.5,\ymin) -- (0.5,\ymax);
+
+            \draw[->-] (0.5,-0.1) -- (2,-0.1);
+            \draw[->-] (2,-0.1) -- (2,1.5);
+            \draw[->-] (2,1.5) -- (0.5,1.5);
+            \draw[->-] (0.5,1.5) -- (-1,1.5);
+            \draw[->-] (-1,1.5) -- (-1,-0.1);
+            \draw[->-] (-1,-0.1) -- (0.5,-0.1);
+
+            \node at (1.25,-0.1) [below] {\tiny{$\eta_{1}$}};
+            \node at (2,0.7) [right] {\tiny{$\eta_{2}$}};
+            \node at (1.25,1.5) [above] {\tiny{$\eta_{3}$}};
+            \node at (-0.25,1.5) [above] {\tiny{$\eta_{4}$}};
+            \node at (-1,0.7) [left] {\tiny{$\eta_{5}$}};
+            \node at (-0.25,-0.1) [below] {\tiny{$\eta_{6}$}};
+
+            \node at (2,-0.1) [circle,fill,inner sep=1.5pt]{};
+            \node at (2,1.5) [circle,fill,inner sep=1.5pt]{};
+            \node at (0.5,1.5) [circle,fill,inner sep=1.5pt]{};
+            \node at (-1,1.5) [circle,fill,inner sep=1.5pt]{};
+            \node at (-1,-0.1) [circle,fill,inner sep=1.5pt]{};
+            \node at (0.5,-0.1) [circle,fill,inner sep=1.5pt]{};
+
+            \node at (2,-0.1) [below] {\tiny{$3-\d i$}};
+            \node at (2,1.5) [above] {\tiny{$3+iT$}};
+            \node at (0.5,1.5) [above left] {\tiny{$\frac{1}{2}+iT$}};
+            \node at (-1,1.5) [above] {\tiny{$-2+iT$}};
+            \node at (-1,-0.1) [below] {\tiny{$-2-\d i$}};
+            \node at (0.5,-0.1) [below left] {\tiny{$\frac{1}{2}-\d i$}};
+          \end{tikzpicture}
+          \caption{A zero counting contour}
+          \label{fig:zero_counting_contour}
+        \end{figure}
     \end{proof}
   \section{\todo{A Zero-free Region}}
     Although the Riemann hypothesis remains out of reach, some progress has been made to understand regions inside of the critical strip for which $L$-functions cannot admit zeros. Such regions are known as \textbf{zero-free regions}\index{zero-free regions} and there is great interest in improving the breadth of such regions. We will derive a standard zero-free region for any $L$-function under some mild assumptions on certain Rankin-Selberg convolutions. First, we require a useful lemma:
