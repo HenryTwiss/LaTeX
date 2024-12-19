@@ -784,17 +784,17 @@
   \section{\todo{Zero Density}}
     The deepest subject of the theory of $L$-functions is arguably the distribution of the zeros of $L$-functions. Here we introduce a method of counting zeros of $L$-functions and gaining a very simple understanding of their density as a result. We first require an immensely useful lemma:
 
-    \begin{lemma}
+    \begin{lemma}\label{lem:powerful_L-function_approximation_lemma}
       Let $L(s,f)$ be an $L$-function. The following statements hold:
       \begin{enumerate}[label=(\roman*)]
         \item The constant $B(f)$ satisfies
         \[
           \Re(B(f)) = -\sum_{\rho \neq 0,1}\Re\left(\frac{1}{\rho}\right).
         \]
-        \item For any $T \ge 2$, the number of zeros $\rho = \b+i\g$ with $\rho \neq 0,1$ and such that $|T-\g| \le 1$ is $O(\log{q(iT,f)})$.
+        \item For any $T > 0$, the number of zeros $\rho = \b+i\g$ with $\rho \neq 0,1$ and such that $|T-\g| \le 1$ is $O(\log{q(iT,f)})$.
         \item We have
         \[
-          -\frac{L'}{L}(s,f)+\frac{r_{f}}{s}+\frac{r_{f}}{s-1}-\sum_{|s+\k_{i}| < 1}\frac{1}{s+\k_{i}}-\sum_{\substack{|s-\rho| < 1 \\ \rho \neq 0,1}}\frac{1}{s-\rho} \ll q(s,f),
+          \frac{L'}{L}(s,f)+\frac{r_{f}}{s}+\frac{r_{f}}{s-1}-\sum_{|s+\k_{i}| < 1}\frac{1}{s+\k_{i}}-\sum_{\substack{|s-\rho| < 1 \\ \rho \neq 0,1}}\frac{1}{s-\rho} \ll q(s,f),
         \]
         for any $s$ in the vertical strip $-\frac{1}{2} \le \s \le 2$.
       \end{enumerate}
@@ -815,15 +815,15 @@
           2\Re(B(f)) = \sum_{\rho \neq 0,1}\left(\frac{1}{\rho}+\frac{1}{\conj{\rho}}\right) = -\sum_{\rho \neq 0,1}\Re\left(\frac{1}{\rho}\right),
         \]
         which gives (i).
-      \item For (ii), we first bound a few important quantities when $\s > 2$. For the first quantity, the definition of $\L_{f}(n)$ implies the weak bound $|\L_{f}(n)| \le d_{f}n\log(n)$. Then
+      \item For (ii), we first bound two important quantities. For the first quantity, the definition of $\L_{f}(n)$ implies the weak bound $|\L_{f}(n)| \le d_{f}n\log(n)$. Then
       \begin{equation}\label{equ:log_derivative_bound_conductor}
-        \frac{L'}{L}(s,f) \ll d_{f}\z'(s-1) \ll \log{q(f)}.
+        \frac{L'}{L}(s,f) \ll d_{f}\z'(s-1) \ll \log{q(f)},
       \end{equation}
-      For the second quantity, \cref{equ:approximtion_for_digamma} provides the estimate $\frac{\G'}{\G}(s) \ll \log(|s|+1)$ and from the definition of $\g(s,f)$ it follows that $\frac{\g'}{\g}(s,f) \ll \log{q_{\infty}(s,f)}$. Thus
+      provided $\s > 2$. For the second quantity, \cref{equ:approximtion_for_digamma} provides the estimate $\frac{\G'}{\G}(s) \ll \log(|s|+1)$, given $\s > 0$, and from the definition of $\g(s,f)$ it follows that $\frac{\g'}{\g}(s,f) \ll \log{q_{\infty}(s,f)}$. Thus
       \begin{equation}\label{equ:log_conductor_gamma_factor_bound_analytic_conductor}
-        \frac{1}{2}\log{q(f)}+\frac{\g'}{\g}(s,f) \ll \log{q(s,f)}.
+        \frac{1}{2}\log{q(f)}+\frac{\g'}{\g}(s,f) \ll \log{q(s,f)},
       \end{equation}
-      Now fix $T > 0$ and let $s = 3+iT$. Then taking the real part of the explicit formula for the logarithmic derivative and combining \cref{equ:log_derivative_bound_conductor,equ:log_conductor_gamma_factor_bound_analytic_conductor} with (i), results in
+      for $\s > 0$. Now fix $T > 0$ and let $s = 3+iT$. Then taking the real part of the explicit formula for the logarithmic derivative and combining \cref{equ:log_derivative_bound_conductor,equ:log_conductor_gamma_factor_bound_analytic_conductor} with (i), results in
       \[
         \sum_{\rho \neq 0,1}\Re\left(\frac{1}{s-\rho}\right) \ll \log{q(iT,f)}.
       \]
@@ -832,20 +832,45 @@
         \frac{2}{9+(T-\g)^{2}} \le \Re\left(\frac{1}{s-\rho}\right) \le \frac{3}{4+(T-\g)^{2}},
       \]
       we obtain
-      \[
+      \begin{equation}\label{equ_sum_of_nontrival_zeros_log_analytic_conductor_bound}
         \sum_{\rho \neq 0,1}\frac{1}{1+(T-\g)^{2}} \ll \log{q(iT,f)},
-      \]
+      \end{equation}
       which is stronger than (ii) since all of the terms in the sum are positive.
-      \item For (iii), let $s$ belong to the vertical strip $-\frac{1}{2} \le \s \le 2$. Using that $\log{q(f)} \ll \log{q(s,f)}$ and \cref{equ:log_derivative_bound_conductor}, we can write
+      \item To deduce (iii), let $s$ belong to the vertical strip $-\frac{1}{2} \le \s \le 2$. Using that $\log{q(f)} \ll \log{q(s,f)}$ and \cref{equ:log_derivative_bound_conductor}, we can write
       \[
         -\frac{L'}{L}(s,f) = -\frac{L'}{L}(s,f)+\frac{L'}{L}(3+it,f)+O(\log{q(s,f)}).
       \]
-      Applying the explicit formula for the logarithmic derivative to the two terms on the right hand side and using again that $\frac{\g'}{\g}(s,f) \ll \log{q_{\infty}(s,f)}$, we get
+      Applying the explicit formula for the logarithmic derivative to the two terms on the right hand side and again using the estimate $\log{q(f)} \ll \log{q(s,f)}$ and $\frac{\g'}{\g}(s,f) \ll \log{q_{\infty}(s,f)}$, we get
       \[
         -\frac{L'}{L}(s,f) = \frac{\g'}{\g}(s,f)+\frac{r_{f}}{s}+\frac{r_{f}}{s-1}-\sum_{\rho \neq 0,1}\left(\frac{1}{s-\rho}-\frac{1}{3+it-\rho}\right)+O(\log{q(s,f)}).
       \]
-      \todo{XXX}
+      We now estimate the remaining sum. Retain the terms for which $|s-\rho| < 1$. For those terms with $|s-\rho| \ge 1$, we have
+      \[
+        \left|\frac{1}{s-\rho}-\frac{1}{3+it-\rho}\right| \le \left|\frac{3-\s}{(3-\b)^{2}+(t-\g)^{2}}\right| \le \frac{3}{1+(t-\g)^{2}}.
+      \]
+      Therefore from \cref{equ_sum_of_nontrival_zeros_log_analytic_conductor_bound} (with $t = T$) and that $\log{q(it,f)} \ll \log{q(s,f)}$, the contribution of these terms is $O(\log{q(s,f)})$. It follows that
+      \[
+        -\frac{L'}{L}(s,f) = \frac{\g'}{\g}(s,f)+\frac{r_{f}}{s}+\frac{r_{f}}{s-1}-\sum_{\substack{|s-\rho| < 1 \\ \rho \neq 0,1}}\left(\frac{1}{s-\rho}-\frac{1}{3+it-\rho}\right)+O(\log{q(s,f)}).
+      \]
+      Lastly, from the definition of $\g(s,f)$ and that $\G(s) = s^{-1}\G(s+1)$, we have
+      \[
+        \frac{\g'}{\g}(s,f) = -\frac{d_{f}}{2}\log(\pi)-\sum_{1 \le i \le d_{j}}\frac{1}{s+\k_{i}}+\sum_{1 \le i \le d_{f}}\frac{1}{2}\frac{\G'}{\G}\left(1+\frac{s+\k_{i}}{2}\right) = -\sum_{|s+\k_{i}| < 1}\frac{1}{s+\k_{i}}+O(\log{q_{\infty}(s,f)}),
+      \]
+      where in the last line we have made use of the estimate $\frac{\G'}{\G}(s) \ll \log(|s|+1)$ provided by \cref{equ:approximtion_for_digamma} given $\s > 0$. With the estimate $q_{\infty}(s,f) \ll q(s,f)$, it follows that
+      \[
+        -\frac{L'}{L}(s,f) = \frac{r_{f}}{s}+\frac{r_{f}}{s-1}-\sum_{|s+\k_{i}| < 1}\frac{1}{s+\k_{i}}-\sum_{\substack{|s-\rho| < 1 \\ \rho \neq 0,1}}\left(\frac{1}{s-\rho}-\frac{1}{3+it-\rho}\right)+O(\log{q(s,f)}).
+      \]
+      This is equivalent to (iii).
       \end{enumerate}
+    \end{proof}
+
+    With \cref{lem:powerful_L-function_approximation_lemma} in hand, we can deduce a result which estimates the number of nontrivial zeros in a box:
+
+    \begin{theorem}
+      \todo{xxx}
+    \end{theorem}
+    \begin{proof}
+      \todo{xxx}
     \end{proof}
   \section{\todo{A Zero-free Region}}
     Although the Riemann hypothesis remains out of reach, some progress has been made to understand regions inside of the critical strip for which $L$-functions cannot admit zeros. Such regions are known as \textbf{zero-free regions}\index{zero-free regions} and there is great interest in improving the breadth of such regions. We will derive a standard zero-free region for any $L$-function under some mild assumptions on certain Rankin-Selberg convolutions. First, we require a useful lemma:
