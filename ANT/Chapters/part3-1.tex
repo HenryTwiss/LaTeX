@@ -870,7 +870,7 @@
     \]
     In other words, $N(T,f)$ is the number of nontrivial zeros of $L(s,f)$ with ordinate in $[-T,T]$. We will prove the following:
 
-    \begin{theorem}
+    \begin{theorem}\label{thm:zero_counting}
       For any $L$-function $L(s,f)$ and $T \ge 1$,
       \[
         N(T,f) = \frac{T}{\pi}\log\left(\frac{q(f)T^{d_{f}}}{(2\pi e)^{d_{f}}}\right)+O(\log{q(iT,f)}).
@@ -921,12 +921,12 @@
           \node at (-1,-0.1) [circle,fill,inner sep=1.5pt]{};
           \node at (0.5,-0.1) [circle,fill,inner sep=1.5pt]{};
 
-          \node at (2,-0.1) [below] {\tiny{$3-\d i$}};
+          \node at (2,-0.1) [below] {\tiny{$3-i\d$}};
           \node at (2,1.5) [above] {\tiny{$3+iT$}};
           \node at (0.5,1.5) [above left] {\tiny{$\frac{1}{2}+iT$}};
           \node at (-1,1.5) [above] {\tiny{$-2+iT$}};
-          \node at (-1,-0.1) [below] {\tiny{$-2-\d i$}};
-          \node at (0.5,-0.1) [below left] {\tiny{$\frac{1}{2}-\d i$}};
+          \node at (-1,-0.1) [below] {\tiny{$-2-i\d$}};
+          \node at (0.5,-0.1) [below left] {\tiny{$\frac{1}{2}-i\d$}};
         \end{tikzpicture}
         \caption{A zero counting contour}
         \label{fig:zero_counting_contour}
@@ -953,6 +953,26 @@
       \[
         \xi(s,f) = (s(1-s))^{r_{f}}q(f)^{\frac{s}{2}}\pi^{-\frac{d_{f}s}{2}}\prod_{1 \le i \le d_{f}}\G\left(\frac{s+\k_{i}}{2}\right)L(s,f).
       \]
+      For the factor $(s(1-s))^{r_{f}}$, we first have
+      \[
+        \D_{\eta_{L}}\arg(s) = \arg(s)\bigg|_{\frac{1}{2}-i\d}^{\frac{1}{2}+iT} = \arg\left(\frac{1}{2}+iT\right)-\arg\left(\frac{1}{2}-i\d\right) = O\left(\frac{1}{T}\right),
+      \]
+      and
+      \[
+        \D_{\eta_{L}}\arg(1-s) = \arg(1-s)\bigg|_{\frac{1}{2}-i\d}^{\frac{1}{2}+iT} = \arg\left(\frac{1}{2}-iT\right)-\arg\left(\frac{1}{2}+i\d\right) = O\left(\frac{1}{T}\right),
+      \]
+      where in both computations we have used $\arg(s) = \tan^{-1}\left(\frac{t}{\s}\right) = \frac{\pi}{2}+O\left(\frac{1}{t}\right)$, provided $\s > 0$, which holds by the Laurent series of the inverse tangent. Combining these two bounds, we obtain
+      \begin{equation}\label{equ:zero_counting_1}
+        \D_{\eta_{L}}(s(1-s))^{r_{f}} = O\left(\frac{1}{T}\right).
+      \end{equation}
+      For the factor $q(f)^{\frac{s}{2}}$, we use that $\arg(s) = \Im(\log(s))$ and compute
+      \begin{equation}\label{equ:zero_counting_2}
+       \D_{\eta_{L}}\arg{q(f)^{\frac{s}{2}}} = \Im(\log{q(f)^{\frac{s}{2}}})\bigg|_{\frac{1}{2}-i\d}^{\frac{1}{2}+iT} = \log{q(f)}\left(\frac{T}{2}+\frac{\d}{2}\right) = O(T\log{q(f)}).
+      \end{equation}
+      For the factor $\pi^{-\frac{d_{f}s}{2}}$, we compute
+      \begin{equation}\label{equ:zero_counting_3}
+       \D_{\eta_{L}}\arg(\pi^{-\frac{d_{f}s}{2}}) = \Im(\log(\pi^{-\frac{d_{f}s}{2}}))\bigg|_{\frac{1}{2}-i\d}^{\frac{1}{2}+iT} = \log\left(\frac{1}{\pi^{d_{f}}}\right)\left(\frac{T}{2}+\frac{\d}{2}\right) = O\left(T\log\left(\frac{1}{\pi^{d_{f}}}\right)\right).
+      \end{equation}
       \todo{xxx}
     \end{proof}
   \section{\todo{A Zero-free Region}}
