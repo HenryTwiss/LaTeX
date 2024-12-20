@@ -880,57 +880,80 @@
       Let $T \ge 1$ and set
       \[
       N'(T,f) = \left|\{\rho = \b+i\g \in \C:L(\rho,f) = 0 \text{ with } 0 \le \b \le 1 \text{ and } 0 < \g \le T\}\right|.
-    \]
-    As the nontrivial zeros occur in pairs $\rho$ and $1-\conj{\rho}$ where the latter is also a nontrivial zero of $L(s,\conj{f})$, it follows that
-    \[
-      N(T,f) = N'(T,f)+N'(T,\conj{f})+O(\log{q(f)}),
-    \]
-    where $O(\log{q(f)})$ accounts for the possible nontrivial real zeros. There are finitely many such nontrivial zeros because the line segment $0 \le s \le 1$ is compact. Moreover, we may assume that $L(s,f)$ does not vanish on the line $t = T$ by varying $T$ by a sufficiently small constant if necessary and observing that $N(T,f)$ is modified by a quantity of size $O(\log{q}(iT,f))$ by \cref{lem:powerful_L-function_approximation_lemma} (i) which is the size of the error term in the statement of the theorem. Since the nontrivial zeros are isolated, let $\d > 0$ be small enough such that $\L(s,f) \neq 0$ for $-\d \le t < 0$. Then by our previous comments and the argument principal,
-    \[
-      N(T,f) = \frac{1}{2\pi i}\int_{\eta}\frac{\L'}{\L}(s,f)\,ds+O(\log{q}(iT,f)),
-    \]
-    where $\eta = \sum_{1 \le i \le 6}\eta_{i}$ is the contour in \cref{fig:zero_counting_contour}.
+      \]
+      As the nontrivial zeros occur in pairs $\rho$ and $1-\conj{\rho}$ where the latter is also a nontrivial zero of $L(s,\conj{f})$, it follows that
+      \[
+        N(T,f) = N'(T,f)+N'(T,\conj{f})+O(\log{q(f)}),
+      \]
+      where $O(\log{q(f)})$ accounts for the possible nontrivial real zeros. There are finitely many such nontrivial zeros because the line segment $0 \le s \le 1$ is compact. Moreover, we may assume that $L(s,f)$ does not vanish on the line $t = T$ by varying $T$ by a sufficiently small constant if necessary and observing that $N(T,f)$ is modified by a quantity of size $O(\log{q}(iT,f))$ by \cref{lem:powerful_L-function_approximation_lemma} (i) which is the size of the error term in the statement of the theorem. Since the nontrivial zeros are isolated, let $\d > 0$ be small enough such that $\L(s,f) \neq 0$ for $-\d \le t < 0$. Then by our previous comments and the argument principle,
+      \[
+        N(T,f) = \frac{1}{2\pi i}\int_{\eta}\frac{\xi'}{\xi}(s,f)\,ds+O(\log{q}(iT,f)),
+      \]
+      where $\eta = \sum_{1 \le i \le 6}\eta_{i}$ is the contour in \cref{fig:zero_counting_contour}.
 
-    \begin{figure}[ht]
-          \centering
-          \begin{tikzpicture}[scale=2.75]
-            \def\xmin{-1.5} \def\xmax{2.5}
-            \def\ymin{-0.5} \def\ymax{2}
-            \draw[thick] (\xmin,0) -- (\xmax,0);
-            \draw[thick] (0,\ymin) -- (0,\ymax);
-            \draw[dashed] (0.5,\ymin) -- (0.5,\ymax);
+      \begin{figure}[ht]
+        \centering
+        \begin{tikzpicture}[scale=3]
+          \def\xmin{-1.5} \def\xmax{2.5}
+          \def\ymin{-0.5} \def\ymax{2}
+          \draw[thick] (\xmin,0) -- (\xmax,0);
+          \draw[thick] (0,\ymin) -- (0,\ymax);
+          \draw[dashed] (0.5,\ymin) -- (0.5,\ymax);
 
-            \draw[->-] (0.5,-0.1) -- (2,-0.1);
-            \draw[->-] (2,-0.1) -- (2,1.5);
-            \draw[->-] (2,1.5) -- (0.5,1.5);
-            \draw[->-] (0.5,1.5) -- (-1,1.5);
-            \draw[->-] (-1,1.5) -- (-1,-0.1);
-            \draw[->-] (-1,-0.1) -- (0.5,-0.1);
+          \draw[->-] (0.5,-0.1) -- (2,-0.1);
+          \draw[->-] (2,-0.1) -- (2,1.5);
+          \draw[->-] (2,1.5) -- (0.5,1.5);
+          \draw[->-] (0.5,1.5) -- (-1,1.5);
+          \draw[->-] (-1,1.5) -- (-1,-0.1);
+          \draw[->-] (-1,-0.1) -- (0.5,-0.1);
 
-            \node at (1.25,-0.1) [below] {\tiny{$\eta_{1}$}};
-            \node at (2,0.7) [right] {\tiny{$\eta_{2}$}};
-            \node at (1.25,1.5) [above] {\tiny{$\eta_{3}$}};
-            \node at (-0.25,1.5) [above] {\tiny{$\eta_{4}$}};
-            \node at (-1,0.7) [left] {\tiny{$\eta_{5}$}};
-            \node at (-0.25,-0.1) [below] {\tiny{$\eta_{6}$}};
+          \node at (1.25,-0.1) [below] {\tiny{$\eta_{1}$}};
+          \node at (2,0.7) [right] {\tiny{$\eta_{2}$}};
+          \node at (1.25,1.5) [above] {\tiny{$\eta_{3}$}};
+          \node at (-0.25,1.5) [above] {\tiny{$\eta_{4}$}};
+          \node at (-1,0.7) [left] {\tiny{$\eta_{5}$}};
+          \node at (-0.25,-0.1) [below] {\tiny{$\eta_{6}$}};
 
-            \node at (2,-0.1) [circle,fill,inner sep=1.5pt]{};
-            \node at (2,1.5) [circle,fill,inner sep=1.5pt]{};
-            \node at (0.5,1.5) [circle,fill,inner sep=1.5pt]{};
-            \node at (-1,1.5) [circle,fill,inner sep=1.5pt]{};
-            \node at (-1,-0.1) [circle,fill,inner sep=1.5pt]{};
-            \node at (0.5,-0.1) [circle,fill,inner sep=1.5pt]{};
+          \node at (2,-0.1) [circle,fill,inner sep=1.5pt]{};
+          \node at (2,1.5) [circle,fill,inner sep=1.5pt]{};
+          \node at (0.5,1.5) [circle,fill,inner sep=1.5pt]{};
+          \node at (-1,1.5) [circle,fill,inner sep=1.5pt]{};
+          \node at (-1,-0.1) [circle,fill,inner sep=1.5pt]{};
+          \node at (0.5,-0.1) [circle,fill,inner sep=1.5pt]{};
 
-            \node at (2,-0.1) [below] {\tiny{$3-\d i$}};
-            \node at (2,1.5) [above] {\tiny{$3+iT$}};
-            \node at (0.5,1.5) [above left] {\tiny{$\frac{1}{2}+iT$}};
-            \node at (-1,1.5) [above] {\tiny{$-2+iT$}};
-            \node at (-1,-0.1) [below] {\tiny{$-2-\d i$}};
-            \node at (0.5,-0.1) [below left] {\tiny{$\frac{1}{2}-\d i$}};
-          \end{tikzpicture}
-          \caption{A zero counting contour}
-          \label{fig:zero_counting_contour}
-        \end{figure}
+          \node at (2,-0.1) [below] {\tiny{$3-\d i$}};
+          \node at (2,1.5) [above] {\tiny{$3+iT$}};
+          \node at (0.5,1.5) [above left] {\tiny{$\frac{1}{2}+iT$}};
+          \node at (-1,1.5) [above] {\tiny{$-2+iT$}};
+          \node at (-1,-0.1) [below] {\tiny{$-2-\d i$}};
+          \node at (0.5,-0.1) [below left] {\tiny{$\frac{1}{2}-\d i$}};
+        \end{tikzpicture}
+        \caption{A zero counting contour}
+        \label{fig:zero_counting_contour}
+      \end{figure}
+
+      Since $\log(s) = \log|s|+i\arg(s)$, we have
+      \[
+        \frac{1}{2\pi i}\int_{\eta}\frac{\xi'}{\xi}(s,f)\,ds = \frac{1}{2\pi i}\int_{\eta}\frac{d}{ds}\log|\xi(s,f)|\,ds+\frac{1}{2\pi }\int_{\eta}\frac{d}{ds}\arg\xi(s,f)\,ds = \frac{1}{2\pi}\D_{\eta}\arg(\xi(s,f)),
+      \]
+      where the last equality holds by parameterizing the curve $\eta$ and noting that $\eta$ is closed so that the first integral vanishes. For convenience, set $\eta_{L} = \eta_{1}+\eta_{2}+\eta_{3}$ and $\eta_{R} = \eta_{4}+\eta_{5}+\eta_{6}$. Recall that we have already shown $\xi(\conj{s},\conj{f}) = \conj{(\xi(s,f))}$. Using this fact along with the functional equation and that $-\arg(s) = \arg(\conj{s})$, we compute
+      \begin{align*}
+        \D_{\eta_{L}}\arg(\xi(s,f)) &= \D_{\eta_{L}}\arg\left(\e(f)\xi(1-s,\conj{f})\right) \\
+        &= -\D_{\conj{\eta_{R}}}\arg\left(\e(f)\xi(s,\conj{f})\right) \\
+        &= \D_{\conj{\eta_{R}}}\arg\left(\conj{\e(f)}\xi(\conj{s},f)\right) \\
+        &= \D_{\eta_{R}}\arg\left(\conj{\e(f)}\xi(s,f)\right) \\
+        &= \D_{\eta_{R}}\arg\left(\conj{\e(f)}\right)+\D_{\eta_{R}}\arg(\xi(s,f)) \\
+        &= \D_{\eta_{R}}\arg(\xi(s,f)).
+      \end{align*}
+      In other words, the change in argument along $\eta_{L}$ is equal to the change in argument along $\eta_{R}$ and so
+      \[
+        \frac{1}{2\pi i}\int_{\eta}\frac{\xi'}{\xi}(s,f)\,ds = \frac{1}{\pi}\D_{\eta_{L}}\arg\xi(s,f).
+      \]
+      Thus to estimate the integral, we will now estimate the change in argument along $\eta_{L}$ of each factor in
+      \[
+        \xi(s,f) = (s(1-s))^{r_{f}}q(f)^{\frac{s}{2}}\pi^{-\frac{d_{f}s}{2}}\prod_{1 \le i \le d_{f}}\G\left(\frac{s+\k_{i}}{2}\right)L(s,f).
+      \]
+      \todo{xxx}
     \end{proof}
   \section{\todo{A Zero-free Region}}
     Although the Riemann hypothesis remains out of reach, some progress has been made to understand regions inside of the critical strip for which $L$-functions cannot admit zeros. Such regions are known as \textbf{zero-free regions}\index{zero-free regions} and there is great interest in improving the breadth of such regions. We will derive a standard zero-free region for any $L$-function under some mild assumptions on certain Rankin-Selberg convolutions. First, we require a useful lemma:
