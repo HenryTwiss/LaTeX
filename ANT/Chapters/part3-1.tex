@@ -237,7 +237,11 @@
     \]
     We call this product the \textbf{Euler product}\index{Euler product} of $D(s)$, and it is said to be of \textbf{degree}\index{degree} $d$. In \cref{prop:Dirichlet_series_Euler_product}, complete multiplicativity of the coefficients is enough to guarantee that $D(s)$ has an Euler product of degree $1$, but in general $D(s)$ will admit an Euler product of degree $d > 1$ if the coefficients are only multiplicative but satisfy additional properties like a recurrence relation. When we come across Dirichlet series whose coefficients are multiplicative or we are given an Euler product we will use \cref{prop:Dirichlet_series_Euler_product} without mention as this is common practice in the literature. Lastly, if $D(s)$ has an Euler product then for any $N \ge 1$ we let $D^{(N)}(s)$ denote the Dirichlet series with the factors $p \mid N$ in the Euler product removed. That is,
     \[
-      D^{(N)}s = D(s)\prod_{p \mid N}(1-\a_{1}(p)p^{-s})(1-\a_{2}(p)p^{-s}) \cdots (1-\a_{d}(p)p^{-s}).
+      D^{(N)}(s) = D(s)\prod_{p \mid N}(1-\a_{1}(p)p^{-s})(1-\a_{2}(p)p^{-s}) \cdots (1-\a_{d}(p)p^{-s}).
+    \]
+    Dually, for any $N \ge 1$ we let $D_{N}(s)$ denote the Dirichlet series only consisting of the factors $p \mid N$ in the Euler product. That is,
+    \[
+      D_{N}(s) = \prod_{p \mid N}(1-\a_{1}(p)p^{-s})^{-1}(1-\a_{2}(p)p^{-s})^{-1} \cdots (1-\a_{d}(p)p^{-s})^{-1}.
     \]
   \section{Perron Formulas}
     With the Mellin inversion formula, it is not hard to prove a very useful integral expression for the sum of coefficients of a Dirichlet series. First, we setup some general notation. If $D(s)$ is a Dirichlet series with coefficients $a(n)$, then for $X > 0$, we set
@@ -719,6 +723,69 @@
     \end{conjecture}
 
     Any improvement upon the exponent in the convexity bound in any aspect of the analytic conductor is called a \textbf{subconvexity estimate}\index{subconvexity estimate} (or a \textbf{convexity breaking bound}\index{convexity breaking bound}). Any argument used to do so is called a \textbf{subconvexity argument}\index{subconvexity argument}.
+  \section{Estimating the Central Value}
+    The Lindel\"of hypothesis is concerned with the growth of the $L$-function $L(s,f)$ along the critical line. Sometimes we are only concerned with the size of $L(s,f)$ when $s = \frac{1}{2}$. The point $s = \frac{1}{2}$ is called the \textbf{central point}\index{central point} and the value of $L(s,f)$ at the central point is called the \textbf{central value}\index{central value} of $L(s,f)$. Many important properties about $L(s,f)$ can be connected to its central value. Any argument used to estimate the central value of an $L$-function is called a \textbf{central value estimate}\index{central value estimate}. We will prove a result which gives a very useful upper bound for the central value in the $q(f)$-aspect. To state it, let $\psi:\R_{\ge 0} \to \R_{\ge 0}$ be a bump function with compact support in $\left[\frac{1}{2},2\right]$. For example,
+    \[
+      \psi(y) = \begin{cases} e^{-\frac{1}{9-(4y-5)^{2}}} & \text{if $|4y-5| < 3$}, \\ 0 & \text{if $|4y-5| \ge 3$}. \end{cases}
+    \]
+    The theorem is the following:
+
+    \begin{theorem}
+      Let $L(s,f)$ be an $L$-function and let $\psi:\R_{\ge 0} \to \R_{\ge 0}$ be a bump function with compact support in $\left[\frac{1}{2},2\right]$. Then we have
+      \[
+        L\left(\frac{1}{2},f\right) \ll_{\e} \max_{X \ll q(f)^{\frac{1}{2}+\e}}\frac{A_{\psi}(X)}{q(f)^{\frac{1}{4}}}+\frac{S}{q(f)^{\frac{1}{4}}},
+      \]
+      where $S$ is zero if $\L(s,f)$ is entire, and otherwise
+      \[
+        S = \left(\Res_{u = \frac{1}{2}}+\Res_{u = -\frac{1}{2}}\right)\L\left(\frac{1}{2}+u,f\right).
+      \]
+    \end{theorem}
+    \begin{proof}
+      Taking $s = \frac{1}{2}$, $X = 1$, and $\Phi(u) = \cos^{-4dM}\left(\frac{\pi u}{4M}\right)$ with $M \gg 1$ in the approximate functional equation gives
+      \[
+        L\left(\frac{1}{2},f\right) = \sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right)+\e(f)\sum_{n \ge 1}\frac{\conj{a_{f}(n)}}{\sqrt{n}}V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right)+\frac{R}{q(f)^{\frac{1}{4}}\g\left(\frac{1}{2},f\right)}.
+      \]
+      This implies the bound
+      \[
+        L\left(\frac{1}{2},f\right) \ll \sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right)+\frac{S}{q(f)^{\frac{1}{4}}}.
+      \]
+      Now consider the set of functions $\left\{\psi\left(\frac{y}{2^{k}}\right)\right\}_{k \in \Z}$. Since $\psi\left(\frac{y}{2^{k}}\right)$ has support in $[2^{k-1},2^{k+1}]$, the sum $\s(y) = \sum_{k \in \Z}\psi\left(\frac{y}{2^{k}}\right)$, defined for $y > 0$, is finite since at most finitely many terms are nonzero for every $y$. It is also bounded away from zero since for any $y > 0$ there is some $k \in \Z$ for which $2^{k} \le y \le 3 \cdot 2^{k-1}$ so that $\frac{y}{2^{k}}$ is at least distance $\frac{1}{2}$ from the endpoints of $\left[\frac{1}{2},2\right]$. Defining $\psi_{k}(y) = \psi\left(\frac{y}{2^{k}}\right)\s(y)^{-1}$, it follows that $\left\{\psi_{k}(y)\right\}_{k \in \Z}$ satisfies
+      \[
+        \sum_{k \in \Z}\psi_{k}(y) = 1,
+      \]
+      for any $y > 0$. Then we can write
+      \[
+        V_{s}(y) = \sum_{k \in \Z}\psi_{k}(y)V_{s}(y).
+      \]
+      It follows that
+      \begin{align*}
+        \sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right) &= \sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}\sum_{k \in \Z}\psi_{k}\left(\frac{n}{\sqrt{q(f)}}\right)V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right) \\
+        &= \sum_{k \in \Z}\sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}\psi_{k}\left(\frac{n}{\sqrt{q(f)}}\right)V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right) && \text{DCT} \\
+        &\ll_{\e} \sum_{k \in \Z}\left|\sum_{\substack{n \ll q(f)^{\frac{1}{2}+\e} \\ 2^{k-1}\sqrt{q(f)} \le n \le 2^{k+1}\sqrt{q(f)}}}\frac{a_{f}(n)}{\sqrt{n}}\psi_{k}\left(\frac{n}{\sqrt{q(f)}}\right)\right| \\
+        &\ll_{\e} \sum_{k \ll \log(q(f)^{\frac{\e}{2}})}\left|\sum_{\substack{n \ll q(f)^{\frac{1}{2}+\e} \\ 2^{k-1}\sqrt{q(f)} \le n \le 2^{k+1}\sqrt{q(f)}}}\frac{a_{f}(n)}{\sqrt{n}}\psi_{k}\left(\frac{n}{\sqrt{q(f)}}\right)\right|,
+      \end{align*}
+      where in the second to last line we have used that $V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right)$ is bounded for $n \ll_{\e} q\left(\frac{1}{2},f\right)^{\e} \ll_{\e} q(f)^{\frac{1}{2}+\e}$ and then exhibits polynomial decay thereafter by \cref{prop:V_function_decay} and in the last line we have used that $\psi_{k}(y)$ has compact support in $[2^{k-1},2^{k+1}]$ (recall $k \in \Z$). Since $\s(y)$ is bounded away from zero and $\log(y) \ll y$, we obtain the crude bound
+      \[
+        \sum_{k \ll \log(q(f)^{\frac{\e}{2}})}\left|\sum_{\substack{n \ll q(f)^{\frac{1}{2}+\e} \\ 2^{k-1}\sqrt{q(f)} \le n \le 2^{k+1}\sqrt{q(f)}}}\frac{a_{f}(n)}{\sqrt{n}}\psi_{k}\left(\frac{n}{\sqrt{q(f)}}\right)\right| \ll_{\e} q(f)^{\frac{\e}{2}}\max_{X \ll q(f)^{\frac{1}{2}+\e}}\left|\sum_{\frac{X}{2} \le n \le 2X}\frac{a_{f}(n)}{\sqrt{n}}\psi\left(\frac{n}{X}\right)\right|.
+      \]
+      We will estimate this latter sum. Abel's summation formula (see \cref{{append:Summation_Formulas}}) gives
+      \[
+        \sum_{\frac{X}{2} \le n \le 2X}\frac{a_{f}(n)}{\sqrt{n}}\psi\left(\frac{n}{X}\right) = \frac{A_{\psi}(2X)}{\sqrt{2X}}-\frac{A_{\psi}\left(\frac{X}{2}\right)}{\sqrt{\frac{X}{2}}}+\frac{1}{2}\int_{\frac{X}{2}}^{2X}A_{\psi}(u)u^{-\frac{3}{2}}\,du.
+      \]
+      But as
+      \[
+        \frac{1}{2}\int_{\frac{X}{2}}^{2X}A_{\psi}(u)u^{-\frac{3}{2}}\,du \ll X\max_{\frac{X}{2} \le u \le 2X}A_{\psi}(u)u^{-\frac{3}{2}} \ll \max_{\frac{X}{2} \le u \le 2X}\frac{A_{\psi}(u)}{\sqrt{u}},
+      \]
+      we obtain the bound
+      \[
+        \max_{X \ll q(f)^{\frac{1}{2}+\e}}\sum_{\frac{X}{2} \le n \le 2X}\frac{a_{f}(n)}{\sqrt{n}}\psi\left(\frac{n}{X}\right) \ll \max_{X \ll q(f)^{\frac{1}{2}+\e}}\frac{A_{\psi}(X)}{\sqrt{X}}.
+      \]
+      Putting everything together gives
+      \[
+        \sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right) \ll_{\e} q(f)^{\frac{\e}{2}}\max_{X \ll q(f)^{\frac{1}{2}+\e}}\frac{A_{\psi}(X)}{\sqrt{X}} \ll_{\e} \max_{X \ll q(f)^{\frac{1}{2}+\e}}\frac{A_{\psi}(X)}{q(f)^{\frac{1}{4}}},
+      \]
+      where in the last estimate we may replace $X$ with $q(f)^{\frac{1}{2}+\e}$ because $X \ge 1$ so that $X$ is bounded away from zero.
+    \end{proof}
   \section{The Explicit Formula for the Logarithmic Derivative}
     There is an incredibly useful formula for the logarithmic derivative of any $L$-function which is often the starting point for deeper analytic investigations. To deduce it, we will need a more complete understanding of $\L(s,f)$. First observe that the zeros $\rho$ of $\L(s,f)$ are contained inside of the critical strip. Indeed, we have already remarked that $L(s,f)$ has no zeros for $\s > 0$ and clearly $\g(s,f)$ does not have zeros in this region as well. Therefore $\L(s,f)$ is non-zero for $\s > 1$. By the functional equation, $\L(s,f)$ is also nonzero for $\s < 0$ too. In other words, the zeros of $\L(s,f)$ are the nontrivial zeros of $L(s,f)$. Before we state our result, we setup some notation. For an $L$-function $L(s,f)$ we define
     \[
@@ -769,16 +836,16 @@
       e^{A(\conj{f})+B(\conj{f})s} = \frac{\xi'}{\xi}(0,\conj{f}) = \conj{\frac{\xi'}{\xi}(0,f)} = e^{\conj{A(f)}+\conj{B(f)}s},
     \]
     and the claim follows. Our second comment concerns the negative logarithmic derivative of $L(s,f)$. In general, this function attracts much attention for analytic investigations. As $L(s,f)$ is holomorphic for $\s > 1$ and admits an Euler product there, we can take the logarithm of the Euler product (turning it into a sum) and differentiate termwise to obtain
-    \[
-      -\frac{L'}{L}(s,f) = \sum_{p}\sum_{1 \le i \le d_{j}}\log(1-\a_{i}(p)p^{-s}).
-    \]
-    From the Taylor series of the logarithm, it follows that $-\frac{L'}{L}(s,f)$ is a locally absolutely uniformly convergent Dirichlet series of the form
+    \begin{equation}\label{equ:log_derivaive_direct_computation}
+      -\frac{L'}{L}(s,f) = -\sum_{p}\sum_{1 \le i \le d_{j}}\frac{d}{ds}\log(1-\a_{i}(p)p^{-s}) = \sum_{p}\sum_{1 \le i \le d_{j}}\frac{\a_{i}(p)\log(p)}{(1-\a_{i}(p)p^{-s})p^{s}}.
+    \end{equation}
+    From the Taylor series of $\frac{1}{1-s}$, it follows that $-\frac{L'}{L}(s,f)$ is a locally absolutely uniformly convergent Dirichlet series of the form
     \[
        -\frac{L'}{L}(s,f) = \sum_{n \ge 1}\frac{\L_{f}(n)}{n^{s}},
     \]
     for $\s > 1$, where
     \[
-      \L_{f}(n) = \begin{cases} \sum_{1 \le i \le d_{f}}\a_{j}(p)^{k}\log(p) & \text{if $n = p^{k}$ for some $k \ge 1$}, \\ 0 & \text{otherwise}. \end{cases}
+      \L_{f}(n) = \begin{cases} \sum_{1 \le i \le d_{f}}\a_{i}(p)^{k}\log(p) & \text{if $n = p^{k}$ for some $k \ge 1$}, \\ 0 & \text{otherwise}. \end{cases}
     \]
     It is worth noting that $\L_{\conj{f}}(n) = \conj{\L_{f}(n)}$.
   \section{Zero Density}
@@ -815,7 +882,7 @@
           2\Re(B(f)) = \sum_{\rho \neq 0,1}\left(\frac{1}{\rho}+\frac{1}{\conj{\rho}}\right) = -\sum_{\rho \neq 0,1}\Re\left(\frac{1}{\rho}\right),
         \]
         which gives (i).
-        \item For (ii), we first bound two important quantities. For the first quantity, the definition of $\L_{f}(n)$ implies the weak bound $|\L_{f}(n)| \le d_{f}n\log(n)$. Then
+        \item For (ii), we first bound two important quantities. For the first quantity, the definition of $\L_{f}(n)$ and that $|\a_{i}(p)| \le p$ together imply the weak bound $|\L_{f}(n)| \le d_{f}n\log(n)$. Then
         \begin{equation}\label{equ:log_derivative_bound_conductor}
           \frac{L'}{L}(s,f) \ll d_{f}\z'(s-1) \ll \log{q(f)},
         \end{equation}
@@ -885,7 +952,7 @@
       \[
         N(T,f) = N'(T,f)+N'(T,\conj{f})+O(\log{q(f)}),
       \]
-      where $O(\log{q(f)})$ accounts for the possible nontrivial real zeros. There are finitely many such nontrivial zeros because the line segment $0 \le s \le 1$ is compact. We will estimate $N'(T,f)$ and in doing so we may assume $L(s,f)$ does not vanish on the line $t = T$ by varying $T$ by a sufficiently small constant if necessary and observing that $N(T,f)$ is modified by a quantity of size $O(\log{q}(iT,f))$ by \cref{lem:powerful_L-function_approximation_lemma} (i). Since the nontrivial zeros are isolated, let $\d > 0$ be small enough such that $\L(s,f) \neq 0$ for $-\d \le t < 0$. Then by our previous comments and the argument principle,
+      where $O(\log{q(f)})$ accounts for the possible real nontrivial zeros. There are finitely many such nontrivial zeros because the line segment $0 \le s \le 1$ is compact. We will estimate $N'(T,f)$ and in doing so we may assume $L(s,f)$ does not vanish on the line $t = T$ by varying $T$ by a sufficiently small constant if necessary and observing that $N(T,f)$ is modified by a quantity of size $O(\log{q}(iT,f))$ by \cref{lem:powerful_L-function_approximation_lemma} (i). Since the nontrivial zeros are isolated, let $\d > 0$ be small enough such that $\L(s,f) \neq 0$ for $-\d \le t < 0$. Then by our previous comments and the argument principle,
       \[
         N'(T,f) = \frac{1}{2\pi i}\int_{\eta}\frac{\xi'}{\xi}(s,f)\,ds+O(\log{q}(iT,f)),
       \]
@@ -1006,7 +1073,7 @@
     It is worth noting that the main term in the proof of \cref{thm:zero_counting} comes from the change in argument of $q(f)^{\frac{s}{2}}\g(s,f)$ along the vertical segment $\eta_{3}$ (equivalently $\eta_{4}$). Moreover, the contribution from $L(s,f)$ is only to the error term. This is a good example of how analytic information of an $L$-function is intrinsically connected to its gamma factor. Also, with \cref{thm:zero_counting} we can now derive our zero density estimate:
 
     \begin{corollary}\label{cor:zero_density}
-      For $T \ge 1$,
+      For and $L$-function $L(s,f)$ and $T \ge 1$,
       \[
         \frac{N(T,f)}{T} \sim \frac{1}{\pi}\log\left(\frac{T^{d_{f}}}{(2\pi e)^{d_{f}}}\right).
       \]
@@ -1022,7 +1089,7 @@
     \cref{cor:zero_density} can be interpreted as saying that for large $T$ the density of $N(T,f)$ is approximately $\frac{1}{\pi}\log\left(\frac{T^{d_{f}}}{(2\pi e)^{d_{f}}}\right)$. Since this grows as $T \to \infty$, we see that the nontrivial zeros tend to accumulate farther up the critical strip with logarithmic growth.
 
   \section{\todo{A Zero-free Region}}
-    Although the Riemann hypothesis remains out of reach, some progress has been made to understand regions inside of the critical strip for which $L$-functions cannot admit zeros. Such regions are known as \textbf{zero-free regions}\index{zero-free regions} and there is great interest in improving the breadth of such regions. We will derive a standard zero-free region for any $L$-function under some mild assumptions on certain Rankin-Selberg convolutions. First, we require a useful lemma:
+    Although the Riemann hypothesis remains out of reach, some progress has been made to understand regions inside of the critical strip for which $L$-functions do not have zeros. Such regions are known as \textbf{zero-free regions}\index{zero-free regions} and there is great interest in improving the breadth of such regions. We will derive a standard zero-free region for any $L$-function under some mild assumptions on certain Rankin-Selberg convolutions. First, we require a useful lemma:
 
     \begin{lemma}
       Let $L(s,f)$ be an $L$-function such that $\Re(\l_{f}(n)) \ge 0$ provided $(n,q(f)) = 1$. Also suppose that $|\a_{i}(p)| \le \frac{p}{2}$ for ramified primes $p$. Then $L(1,f) \neq 0$. Moreover, if $r_{f} \ge 0$ then there exists a constant $c > 0$ such that $L(s,f)$ has at most $r$ real zeros in the interval
@@ -1031,69 +1098,25 @@
       \]
     \end{lemma}
     \begin{proof}
-      \todo{xxx}
+      First observe that for $\s > 1$ and any nontrivial zero $\rho$, we have
+      \[
+        \Re\left(\frac{1}{s-\rho}\right) = \frac{\s-\b}{(\s-\b)^{2}+(t-
+        g)^{2}} > 0.
+      \]
+      So upon taking the real part of the bound in \cref{lem:powerful_L-function_approximation_lemma} (iii), we may disregard any of the nontrivial zeros in the second sum provided $1 < \s < 2$. Now let $\b_{j}$ be a real nontrivial zero with $\frac{1}{2} \le \b_{j} \le 1$. Letting $1 < \s < \frac{3}{2}$, and disregarding all but the nontrivial zeros $\b_{j}$ in the real part of of the bound in \cref{lem:powerful_L-function_approximation_lemma} (iii) (with $s = \s$), we obtain the inequality
+      \[
+        \sum_{j}\frac{1}{\s-\b_{j}} < \Re\left(\frac{L'}{L}(s,f)\right)+\frac{r_{f}}{s-1}+O(q(f)).
+      \]
+      To estimate $\Re\left(\frac{L'}{L}(s,f)\right)$, we first note that as $\Re(\l_{f}(n)) \ge 0$ provided $(n,q(f)) = 1$, the Dirichlet series of $\frac{L'^{(q(f))}}{L^{(q(f))}}(s,f)$ shows that
+      \[
+        \Re\left(\frac{L^{(q(f))'}}{L^{(q(f))}}(\s,f)\right) \le 0.
+      \]
+      This gives an estimate for the local factors of $L(s,f)$ corresponding to unramified primes. For the local factors corresponding to ramified primes, we use \cref{equ:log_derivaive_direct_computation} to compute
+      \[
+        \Re\left(\frac{L'_{q(f)}}{L_{q(f)}}(\s,f)\right) \le \left|\frac{L'_{q(f)}}{L_{q(f)}}(\s,f)\right| = \left|\sum_{p \mid q(f)}\sum_{1 \le i \le d_{j}}\frac{\a_{i}(p)\log(p)}{(1-\a_{i}(p)p^{-\s})p^{\s}}\right| \le d_{f}\sum_{p \mid q(f)}\log(p) \le d_{f}\log(q(f)),
+      \]
+      where in the second inequality we have used \todo{xxx}.
+      
+      
     \end{proof}
   \section{\todo{The Explicit Formula}}
-  \section{Estimating the Central Value}
-    The Lindel\"of hypothesis is concerned with the growth of the $L$-function $L(s,f)$ along the critical line. Sometimes we are only concerned with the size of $L(s,f)$ when $s = \frac{1}{2}$. The point $s = \frac{1}{2}$ is called the \textbf{central point}\index{central point} and the value of $L(s,f)$ at the central point is called the \textbf{central value}\index{central value} of $L(s,f)$. Many important properties about $L(s,f)$ can be connected to its central value. Any argument used to estimate the central value of an $L$-function is called a \textbf{central value estimate}\index{central value estimate}. We will prove a result which gives a very useful upper bound for the central value in the $q(f)$-aspect. To state it, let $\psi:\R_{\ge 0} \to \R_{\ge 0}$ be a bump function with compact support in $\left[\frac{1}{2},2\right]$. For example,
-    \[
-      \psi(y) = \begin{cases} e^{-\frac{1}{9-(4y-5)^{2}}} & \text{if $|4y-5| < 3$}, \\ 0 & \text{if $|4y-5| \ge 3$}. \end{cases}
-    \]
-    The theorem is the following:
-
-    \begin{theorem}
-      Let $L(s,f)$ be an $L$-function and let $\psi:\R_{\ge 0} \to \R_{\ge 0}$ be a bump function with compact support in $\left[\frac{1}{2},2\right]$. Then we have
-      \[
-        L\left(\frac{1}{2},f\right) \ll_{\e} \max_{X \ll q(f)^{\frac{1}{2}+\e}}\frac{A_{\psi}(X)}{q(f)^{\frac{1}{4}}}+\frac{S}{q(f)^{\frac{1}{4}}},
-      \]
-      where $S$ is zero if $\L(s,f)$ is entire, and otherwise
-      \[
-        S = \left(\Res_{u = \frac{1}{2}}+\Res_{u = -\frac{1}{2}}\right)\L\left(\frac{1}{2}+u,f\right).
-      \]
-    \end{theorem}
-    \begin{proof}
-      Taking $s = \frac{1}{2}$, $X = 1$, and $\Phi(u) = \cos^{-4dM}\left(\frac{\pi u}{4M}\right)$ with $M \gg 1$ in the approximate functional equation gives
-      \[
-        L\left(\frac{1}{2},f\right) = \sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right)+\e(f)\sum_{n \ge 1}\frac{\conj{a_{f}(n)}}{\sqrt{n}}V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right)+\frac{R}{q(f)^{\frac{1}{4}}\g\left(\frac{1}{2},f\right)}.
-      \]
-      This implies the bound
-      \[
-        L\left(\frac{1}{2},f\right) \ll \sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right)+\frac{S}{q(f)^{\frac{1}{4}}}.
-      \]
-      Now consider the set of functions $\left\{\psi\left(\frac{y}{2^{k}}\right)\right\}_{k \in \Z}$. Since $\psi\left(\frac{y}{2^{k}}\right)$ has support in $[2^{k-1},2^{k+1}]$, the sum $\s(y) = \sum_{k \in \Z}\psi\left(\frac{y}{2^{k}}\right)$, defined for $y > 0$, is finite since at most finitely many terms are nonzero for every $y$. It is also bounded away from zero since for any $y > 0$ there is some $k \in \Z$ for which $2^{k} \le y \le 3 \cdot 2^{k-1}$ so that $\frac{y}{2^{k}}$ is at least distance $\frac{1}{2}$ from the endpoints of $\left[\frac{1}{2},2\right]$. Defining $\psi_{k}(y) = \psi\left(\frac{y}{2^{k}}\right)\s(y)^{-1}$, it follows that $\left\{\psi_{k}(y)\right\}_{k \in \Z}$ satisfies
-      \[
-        \sum_{k \in \Z}\psi_{k}(y) = 1,
-      \]
-      for any $y > 0$. Then we can write
-      \[
-        V_{s}(y) = \sum_{k \in \Z}\psi_{k}(y)V_{s}(y).
-      \]
-      It follows that
-      \begin{align*}
-        \sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right) &= \sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}\sum_{k \in \Z}\psi_{k}\left(\frac{n}{\sqrt{q(f)}}\right)V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right) \\
-        &= \sum_{k \in \Z}\sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}\psi_{k}\left(\frac{n}{\sqrt{q(f)}}\right)V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right) && \text{DCT} \\
-        &\ll_{\e} \sum_{k \in \Z}\left|\sum_{\substack{n \ll q(f)^{\frac{1}{2}+\e} \\ 2^{k-1}\sqrt{q(f)} \le n \le 2^{k+1}\sqrt{q(f)}}}\frac{a_{f}(n)}{\sqrt{n}}\psi_{k}\left(\frac{n}{\sqrt{q(f)}}\right)\right| \\
-        &\ll_{\e} \sum_{k \ll \log(q(f)^{\frac{\e}{2}})}\left|\sum_{\substack{n \ll q(f)^{\frac{1}{2}+\e} \\ 2^{k-1}\sqrt{q(f)} \le n \le 2^{k+1}\sqrt{q(f)}}}\frac{a_{f}(n)}{\sqrt{n}}\psi_{k}\left(\frac{n}{\sqrt{q(f)}}\right)\right|,
-      \end{align*}
-      where in the second to last line we have used that $V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right)$ is bounded for $n \ll_{\e} q\left(\frac{1}{2},f\right)^{\e} \ll_{\e} q(f)^{\frac{1}{2}+\e}$ and then exhibits polynomial decay thereafter by \cref{prop:V_function_decay} and in the last line we have used that $\psi_{k}(y)$ has compact support in $[2^{k-1},2^{k+1}]$ (recall $k \in \Z$). Since $\s(y)$ is bounded away from zero and $\log(y) \ll y$, we obtain the crude bound
-      \[
-        \sum_{k \ll \log(q(f)^{\frac{\e}{2}})}\left|\sum_{\substack{n \ll q(f)^{\frac{1}{2}+\e} \\ 2^{k-1}\sqrt{q(f)} \le n \le 2^{k+1}\sqrt{q(f)}}}\frac{a_{f}(n)}{\sqrt{n}}\psi_{k}\left(\frac{n}{\sqrt{q(f)}}\right)\right| \ll_{\e} q(f)^{\frac{\e}{2}}\max_{X \ll q(f)^{\frac{1}{2}+\e}}\left|\sum_{\frac{X}{2} \le n \le 2X}\frac{a_{f}(n)}{\sqrt{n}}\psi\left(\frac{n}{X}\right)\right|
-      \]
-      We will estimate this latter sum. Abel's summation formula (see \cref{{append:Summation_Formulas}}) gives
-      \[
-        \sum_{\frac{X}{2} \le n \le 2X}\frac{a_{f}(n)}{\sqrt{n}}\psi\left(\frac{n}{X}\right) = \frac{A_{\psi}(2X)}{\sqrt{2X}}-\frac{A_{\psi}\left(\frac{X}{2}\right)}{\sqrt{\frac{X}{2}}}+\frac{1}{2}\int_{\frac{X}{2}}^{2X}A_{\psi}(u)u^{-\frac{3}{2}}\,du.
-      \]
-      But as
-      \[
-        \frac{1}{2}\int_{\frac{X}{2}}^{2X}A_{\psi}(u)u^{-\frac{3}{2}}\,du \ll X\max_{\frac{X}{2} \le u \le 2X}A_{\psi}(u)u^{-\frac{3}{2}} \ll \max_{\frac{X}{2} \le u \le 2X}\frac{A_{\psi}(u)}{\sqrt{u}},
-      \]
-      we obtain the bound
-      \[
-        \max_{X \ll q(f)^{\frac{1}{2}+\e}}\sum_{\frac{X}{2} \le n \le 2X}\frac{a_{f}(n)}{\sqrt{n}}\psi\left(\frac{n}{X}\right) \ll \max_{X \ll q(f)^{\frac{1}{2}+\e}}\frac{A_{\psi}(X)}{\sqrt{X}}.
-      \]
-      Putting everything together gives
-      \[
-        \sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right) \ll_{\e} q(f)^{\frac{\e}{2}}\max_{X \ll q(f)^{\frac{1}{2}+\e}}\frac{A_{\psi}(X)}{\sqrt{X}} \ll_{\e} \max_{X \ll q(f)^{\frac{1}{2}+\e}}\frac{A_{\psi}(X)}{q(f)^{\frac{1}{4}}},
-      \]
-      where in the last estimate we may replace $X$ with $q(f)^{\frac{1}{2}+\e}$ because $X \ge 1$ so that $X$ is bounded away from zero.
-    \end{proof}
