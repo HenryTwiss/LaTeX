@@ -946,7 +946,7 @@
       \[
         N(T,f) = N'(T,f)+N'(T,\conj{f})+O(\log{q(f)}),
       \]
-      where $O(\log{q(f)})$ accounts for the possible real nontrivial zeros. There are finitely many such nontrivial zeros because the line segment $0 \le s \le 1$ is compact. We will estimate $N'(T,f)$ and in doing so we may assume $L(s,f)$ does not vanish on the line $t = T$ by varying $T$ by a sufficiently small constant if necessary and observing that $N(T,f)$ is modified by a quantity of size $O(\log{q}(iT,f))$ by \cref{lem:powerful_L-function_approximation_lemma} (i). Since the nontrivial zeros are isolated, let $\d > 0$ be small enough such that $\L(s,f) \neq 0$ for $-\d \le t < 0$. Then by our previous comments and the argument principle,
+      where $O(\log{q(f)})$ accounts for the possible real nontrivial zeros. There are finitely many such nontrivial zeros because the interval $0 \le s \le 1$ is compact. We will estimate $N'(T,f)$ and in doing so we may assume $L(s,f)$ does not vanish on the line $t = T$ by varying $T$ by a sufficiently small constant, if necessary, and observing that $N(T,f)$ is modified by a quantity of size $O(\log{q}(iT,f))$ by \cref{lem:powerful_L-function_approximation_lemma} (i). Since the nontrivial zeros are isolated, let $\d > 0$ be small enough such that $\L(s,f) \neq 0$ for $-\d \le t < 0$. Then by our previous comments and the argument principle,
       \[
         N'(T,f) = \frac{1}{2\pi i}\int_{\eta}\frac{\xi'}{\xi}(s,f)\,ds+O(\log{q}(iT,f)),
       \]
@@ -1086,7 +1086,7 @@
     Although the Riemann hypothesis remains out of reach, some progress has been made to understand regions inside of the critical strip for which $L$-functions are nonzero. Such regions are known as \textbf{zero-free regions}\index{zero-free regions} and there is great interest in improving the breadth of such regions. We will derive a standard zero-free region for any $L$-function under some mild assumptions on certain Rankin-Selberg convolutions. First, we require a useful lemma:
 
     \begin{lemma}
-      Let $L(s,f)$ be an $L$-function such that $\Re(\l_{f}(n)) \ge 0$ provided $(n,q(f)) = 1$. Also suppose that $|\a_{i}(p)| \le \frac{p}{2}$ for ramified primes. Then $L(1,f) \neq 0$. Moreover, if $r_{f} \ge 0$ then there exists a constant $c > 0$ such that $L(s,f)$ has at most $r$ real zeros in the interval
+      Let $L(s,f)$ be an $L$-function such that $\Re(\l_{f}(n)) \ge 0$ provided $(n,q(f)) = 1$. Also suppose that $|\a_{i}(p)| \le \frac{p}{2}$ for ramified primes. Then $L(1,f) \neq 0$ and hence $r_{f} \ge 0$. Moreover, there exists a constant $c > 0$ such that $L(s,f)$ has at most $r_{f}$ real zeros in the interval
       \[
         \s \ge 1-\frac{c}{d_{f}(r_{f}+1)\log{q(f)}}.
       \]
@@ -1097,9 +1097,9 @@
         \Re\left(\frac{1}{s-\rho}\right) = \frac{\s-\b}{(\s-\b)^{2}+(t-
         g)^{2}} > 0.
       \]
-      So upon taking the real part of the bound in \cref{lem:powerful_L-function_approximation_lemma} (iii), we may disregard any of the nontrivial zeros in the second sum provided $1 < \s < 2$. Now let $\b_{j}$ be a real nontrivial zero with $\frac{1}{2} \le \b_{j} \le 1$. Letting $1 < \s < \frac{3}{2}$, and disregarding all but the nontrivial zeros $\b_{j}$ in the real part of of the bound in \cref{lem:powerful_L-function_approximation_lemma} (iii) (with $s = \s$), we obtain the inequality
+      So upon taking the real part of the bound in \cref{lem:powerful_L-function_approximation_lemma} (iii), we may disregard any of the nontrivial zeros in the second sum provided $1 < \s < 2$. Now let $\b_{j}$ be a real nontrivial zero with $\frac{1}{2} \le \b_{j} \le 1$. There are finitely many $\b_{j}$ since they belong to the compact interval $\frac{1}{2} \le s \le 1$ so we have $1 \le j \le n$ for some $n \ge 1$. Letting $1 < \s < \frac{3}{2}$, and disregarding all but the nontrivial zeros $\b_{j}$ in the real part of of the bound in \cref{lem:powerful_L-function_approximation_lemma} (iii) (with $s = \s$), we obtain the inequality
       \[
-        \sum_{j}\frac{1}{\s-\b_{j}} < \frac{r_{f}}{\s-1}+\Re\left(\frac{L'}{L}(\s,f)\right)+O(\log{q(f)}).
+        \sum_{1 \le j \le n}\frac{1}{\s-\b_{j}} < \frac{r_{f}}{\s-1}+\Re\left(\frac{L'}{L}(\s,f)\right)+O(\log{q(f)}).
       \]
       To estimate $\Re\left(\frac{L'}{L}(\s,f)\right)$, we first note that as $\Re(\l_{f}(n)) \ge 0$ provided $(n,q(f)) = 1$ by assumption, the Dirichlet series of $\frac{L'^{(q(f))}}{L^{(q(f))}}(s,f)$ shows that
       \[
@@ -1109,6 +1109,26 @@
       \[
         \Re\left(\frac{L'_{q(f)}}{L_{q(f)}}(\s,f)\right) \le \left|\frac{L'_{q(f)}}{L_{q(f)}}(\s,f)\right| = \left|\sum_{p \mid q(f)}\sum_{1 \le i \le d_{j}}\frac{\a_{i}(p)\log(p)}{(1-\a_{i}(p)p^{-\s})p^{\s}}\right| \le d_{f}\sum_{p \mid q(f)}\log(p) \le d_{f}\log(q(f)),
       \]
-      where in the second inequality we have made use of the assumption $|\a_{i}(p)| \le \frac{p}{2}$ for ramified primes to conclude that $\left|\frac{\a_{i}(p)}{(1-\a_{i}(p)p^{-\s})p^{\s}}\right| \le 1$. \todo{xxx}
+      where in the second inequality we have made use of the assumption $|\a_{i}(p)| \le \frac{p}{2}$ for ramified primes to conclude that $\left|\frac{\a_{i}(p)}{(1-\a_{i}(p)p^{-\s})p^{\s}}\right| \le 1$. These estimates together imply
+      \[
+        \sum_{1 \le j \le n}\frac{1}{\s-\b_{j}} < \frac{r_{f}}{\s-1}+O(\log{d_{f}q(f)}).
+      \]
+      From this inequality we see that $\b_{j} \neq 1$. For if $\b_{j} = 1$ for some $j$, $r_{f} < 0$ and the right hand side is negative for $\s$ sufficiently close to $1$ contradicting the positivity of the left-hand side. Thus $L(1,f) \neq 0$ and hence $r_{f} \ge 0$. As there are finitely many $\b_{j}$, there exists a $c > 0$ such that the $\b_{j}$ satisfy
+      \[
+        \b_{j} \ge 1-\frac{c}{d_{f}(r_{f}+1)\log{q(f)}}.
+      \]
+      Setting $\s = 1+\frac{2c}{d_{f}\log{q(f)}}$ and choosing $c$ smaller, if necessary, we guarantee $1 < \s < \frac{3}{2}$. Then the two inequalities above together imply
+      \[
+        \frac{nd_{f}\log{q(f)}}{2c+\frac{c}{(r_{f}+1)}} < \left(\frac{r_{f}}{2c}+O(1)\right)d_{f}\log{q(f)}.
+      \]
+      Isolating $n$, we see that
+      \[
+        n < r_{f}+\frac{r_{f}}{2(r_{f}+1)}+O(c),
+      \]
+      and taking $c$ smaller, if necessary, we have that $n \le r_{f}$. As $L(s,f)$ is nonzero for $\s > 1$, it follows that there are at most $r_{f}$ real zeros satisfying
+      \[
+        \s \ge 1-\frac{c}{d_{f}(r_{f}+1)\log{q(f)}}.
+      \]
+      This completes the proof.
     \end{proof}
   \section{\todo{The Explicit Formula}}
