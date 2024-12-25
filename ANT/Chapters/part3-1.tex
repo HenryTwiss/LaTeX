@@ -324,7 +324,7 @@
 
     There is also a version of Perron's formula where we add a smoothing function. For any $X > 0$, we set
     \[
-      A_{\psi}(X) = \sum_{n \ge 1}a(n)g\left(\frac{n}{X}\right),
+      A_{\psi}(X) = \sum_{n \ge 1}a(n)\psi\left(\frac{n}{X}\right),
     \]
     where $\psi(y)$ is smooth function such that $\psi(y) \to 0$ as $y \to \infty$. This is most useful in two cases. The first is when we choose $\psi(y)$ to be a bump function. In this setting, the bump function can be chosen such that it assigns weight $1$ or $0$ to the Dirichlet coefficients $a(n)$ and we can estimate sums like
     \[
@@ -382,15 +382,20 @@
       \[
         A_{\psi}(X) = \frac{1}{2\pi i}\int_{(c)}D(s)\Psi(s)X^{s}\,ds.
       \]
+      In particular,
+      \[
+        \sum_{n \ge 1}a(n)\psi(n) = \frac{1}{2\pi i}\int_{(c)}D(s)\Psi(s)\,ds.
+      \]
     \end{theorem}
     \begin{proof}
-      This is just a computation:
+      The first statement is just a computation:
       \begin{align*}
         A_{\psi}(X) &= \sum_{n \ge 1}a(n)\psi\left(\frac{n}{X}\right) \\
         &= \sum_{n \ge 1}\frac{a(n)}{2\pi i}\int_{(c)}\Psi(s)\left(\frac{n}{X}\right)^{-s}\,ds & \text{Mellin inversion formula} \\
         &= \frac{1}{2\pi i}\int_{(c)}\sum_{n \ge 1}a(n)\Psi(s)\left(\frac{n}{X}\right)^{-s}\,ds & \text{DCT} \\
         &= \frac{1}{2\pi i}\int_{(c)}D(s)\Psi(s)X^{s}\,ds. \\
       \end{align*}
+      This proves the first statement. For the second statement, take $X = 1$.
     \end{proof}
 
     Smoothed Perron's formula is useful because it is often more versatile as the convergence of the integral is improved if $\psi(y)$ is chosen appropriately.
@@ -945,7 +950,7 @@
       \[
         N(T,f) = N'(T,f)+N'(T,\conj{f})+O(\log{\mathfrak{q}(f)}),
       \]
-      where $O(\log{\mathfrak{q}(f)})$ accounts for the possible real nontrivial zeros. There are finitely many such nontrivial zeros because the interval $0 \le s \le 1$ is compact. We will estimate $N'(T,f)$ and in doing so we may assume $L(s,f)$ does not vanish on the line $t = T$ by varying $T$ by a sufficiently small constant, if necessary, and observing that $N(T,f)$ is modified by a quantity of size $O(\log{\mathfrak{q}(iT,f)})$ by \cref{lem:powerful_L-function_approximation_lemma} (i). Since the nontrivial zeros are isolated, let $\d > 0$ be small enough such that $\L(s,f) \neq 0$ for $-\d \le t < 0$. Then by our previous comments and the argument principle,
+      where $O(\log{\mathfrak{q}(f)})$ accounts for the possible real nontrivial zeros. There are finitely many such nontrivial zeros because the interval $0 \le s \le 1$ is compact. We will estimate $N'(T,f)$ and in doing so we may assume $L(s,f)$ does not vanish on the line $t = T$ by varying $T$ by a sufficiently small constant, if necessary, and observing that $N(T,f)$ is modified by a quantity of size $O(\log{\mathfrak{q}(iT,f)})$ by \cref{lem:powerful_L-function_approximation_lemma} (i). Since the nontrivial zeros are isolated, let $\d > 0$ be small enough such that $\L(s,f)$ has no nontrivial zeros for $-\d \le t < 0$. Then by our previous comments and the argument principle,
       \[
         N'(T,f) = \frac{1}{2\pi i}\int_{\eta}\frac{\xi'}{\xi}(s,f)\,ds+O(\log{\mathfrak{q}(iT,f)}),
       \]
@@ -1176,5 +1181,9 @@
       \end{align*}
     \end{theorem}
     \begin{proof}
-      By the smoothed version of Perron's formula, \todo{xxx}
+      By smoothed Perron's formula, we have
+      \[
+        \sum_{n \ge 1}\L_{f}(n)\psi(n) = \frac{1}{2\pi i}\int_{(c)}-\frac{L'}{L}(s,f)\Phi(s)\,ds,
+      \]
+      for any $c > $. Since the trivial zeros are isolated, let $\d > 0$ be such that there are no trivial zeros in the vertical strip $-\d \le \s < 0$. \todo{xxx}
     \end{proof}
