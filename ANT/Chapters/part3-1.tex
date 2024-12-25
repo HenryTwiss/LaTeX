@@ -166,7 +166,7 @@
     \begin{proof}
       If we replace $a(n)$ by $a(n)n^{-\s_{a}}$ then we may assume $\s_{a} = 0$. Now suppose to the contrary that $D(s)$ was holomorphic at $s = 0$. Therefore for some $\d > 0$, $D(s)$ is holomorphic in the domain
       \[
-        \mc{D} = \{s:\s_{a} > 0\} \cup \{|s| < \d\}.
+        \mc{D} = \{s \in \C:\s_{a} > 0\} \cup \{s \in \C:|s| < \d\}.
       \]
       Write $D(s)$ as a power series at $s = 1$:
       \[
@@ -326,11 +326,11 @@
     \[
       A_{\psi}(X) = \sum_{n \ge 1}a(n)g\left(\frac{n}{X}\right),
     \]
-    where $\psi:\R_{\ge 0} \to \R_{\ge 0}$ is smooth function such that $\psi(y) \to 0$ as $y \to \infty$. This is most useful in two cases. The first is when we choose $\psi(y)$ to be a bump function. In this setting, the bump function applies weight $1$ or $0$ to the Dirichlet coefficients $a(n)$ and we can estimate sums like
+    where $\psi(y)$ is smooth function such that $\psi(y) \to 0$ as $y \to \infty$. This is most useful in two cases. The first is when we choose $\psi(y)$ to be a bump function. In this setting, the bump function can be chosen such that it assigns weight $1$ or $0$ to the Dirichlet coefficients $a(n)$ and we can estimate sums like
     \[
       \sum_{\frac{X}{2} \le n < X}a(n) \quad \text{or} \quad \sum_{X \le n < X+Y}a(n),
     \]
-    for some $X$ and $Y$ with $Y < X$. Sums of this type are called \textbf{unweighted}\index{unweighted}. As an example of an unweighted sum, let $\psi:\R_{\ge 0} \to \R_{\ge 0}$ be a bump function that is identically $1$ on $[0,1]$ and has compact support within the interval $\left[1,\frac{X+1}{X}\right]$. For example,
+    for some $X$ and $Y$ with $Y < X$. Sums of this type are called \textbf{unweighted}\index{unweighted}. As an example of an unweighted sum, let $\psi(y)$ be a bump function that is identically $1$ on $[0,1]$ and has compact support within the interval $\left[1,\frac{X+1}{X}\right]$. For example,
     \[
       \psi(y) = \begin{cases} 1 & \text{if $0 \le y \le 1$}, \\ e^{-\frac{1-y}{\frac{X+1}{X}-y}} & \text{if $1 \le y < \frac{X+1}{X}$}, \\ 0 & \text{if $y \ge \frac{X+1}{X}$}. \end{cases}
     \]
@@ -338,14 +338,14 @@
     \[
       A_{\psi}(X) = \sum_{n \ge 1}a(n)\psi\left(\frac{n}{X}\right) = \sum_{n \le X}a(n).
     \]
-    In the second case, we want $\psi$ to dampen the $a(n)$ with a weight other than $1$ or $0$. Sums of this type are called \textbf{weighted}\index{weighted}. In any case, suppose the support of $\psi(y)$ is contained in $[0,M]$. These conditions will force the Mellin transform $\Psi(s)$ of $\psi(y)$ to exist and have nice properties. To see that $\Psi(s)$ exists, let $K$ be a compact set in the region $\s > 0$ and let $\b = \min_{s \in K}\{\s\}$. Note that $\psi(y)$ is bounded because it is compactly supported. Then for $s \in K$,
+    In the second case, we want $\psi(y)$ to dampen the $a(n)$ with a weight other than $1$ or $0$. Sums of this type are called \textbf{weighted}\index{weighted}. In any case, suppose the support of $\psi(y)$ is contained in $[0,M]$. These conditions will force the Mellin transform $\Psi(s)$ of $\psi(y)$ to exist and have nice properties. To see that $\Psi(s)$ exists, let $K$ be a compact set in the region $\s > 0$ and let $\b = \min_{s \in K}\{\s\}$. Note that $\psi(y)$ is bounded because it is compactly supported. Then for $s \in K$,
     \[
       \Psi(s) = \int_{0}^{\infty}\psi(y)y^{s}\,\frac{dy}{y} \ll \int_{0}^{M}y^{\s-1}\,dy = \frac{y^{\s}}{\s}\bigg|_{0}^{M} \le \frac{M^{\s}}{\b}.
     \]
     Therefore $\Psi(s)$ is locally absolutely uniformly bounded for $\s > 0$. In particular, the Mellin inversion formula implies that $\psi(y)$ is the Mellin inverse of $\Psi(s)$. As for nice properties, $\Psi(s)$ does not grow too fast in vertical strips:
 
     \begin{proposition}\label{prop:smoothing_function_Mellin_inverse_vertical_strips}
-      Suppose $\psi:\R_{\ge 0} \to \R_{\ge 0}$ is a bump function and let $\Psi:\C_{\s > 0} \to \C$ denote its Mellin transform. Then for any $N \ge 1$,
+      Suppose $\psi(y)$ is a bump function and let $\Psi(s)$ denote its Mellin transform. Then for any $N \ge 1$,
       \[
         \Psi(s) \ll (|s|+1)^{-N},
       \]
@@ -378,11 +378,10 @@
     The following theorem is \textbf{(smoothed) Perron's formula}\index{(smoothed) Perron's formula}:
 
     \begin{theorem}[Perron's formula, smoothed version]
-      Let $D(s)$ be a Dirichlet series with coefficient $a(n)$ and finite and nonnegative abscissa of absolute convergence $\s_{a}$. Let $\psi:\R_{\ge 0} \to \R_{\ge 0}$ be a bump function. Then for any $c > \s_{a}$,
+      Let $D(s)$ be a Dirichlet series with coefficient $a(n)$ and finite and nonnegative abscissa of absolute convergence $\s_{a}$. Let $\psi(y)$ be a bump function and denote its Mellin transform by $\Psi(s)$. Then for any $c > \s_{a}$,
       \[
-        A_{\psi}(X) = \frac{1}{2\pi i}\int_{(c)}D(s)\Psi(s)X^{s}\,ds,
+        A_{\psi}(X) = \frac{1}{2\pi i}\int_{(c)}D(s)\Psi(s)X^{s}\,ds.
       \]
-      where $\Psi$ is the Mellin transform of $\psi$.
     \end{theorem}
     \begin{proof}
       This is just a computation:
@@ -394,7 +393,7 @@
       \end{align*}
     \end{proof}
 
-    Smoothed Perron's formula is useful because it is often more versatile as the convergence of the integral is improved if $\psi$ is chosen appropriately.
+    Smoothed Perron's formula is useful because it is often more versatile as the convergence of the integral is improved if $\psi(y)$ is chosen appropriately.
   \section{Analytic Data of \texorpdfstring{$L$}{L}-functions}
     We are now ready to discuss $L$-functions in some generality. In the following, we will denote an $L$-functions by $L(s,f)$, and for the moment, $f$ will carry no formal meaning. It is only used to suggest that the $L$-function is attached to some interesting arithmetic object $f$. When we discuss specific $L$-functions, $f$ will carry a formal meaning. An \textbf{$L$-series}\index{$L$-series} $L(s,f)$ is a Dirichlet series
     \[
@@ -530,7 +529,7 @@
       \[
         L(s,f) = \sum_{n \ge 1}\frac{a_{f}(n)}{n^{s}}V_{s}\left(\frac{n}{\sqrt{q(f)}X}\right)+\e(s,f)\sum_{n \ge 1}\frac{\conj{a_{f}(n)}}{n^{1-s}}V_{1-s}\left(\frac{nX}{\sqrt{q(f)}}\right)+\frac{R}{q(f)^{\frac{s}{2}}\g(s,f)},
       \]
-      where $V_{s}:\R_{> 0} \to \C$ is the inverse Mellin transform defined by
+      where $V_{s}(y)$ is the inverse Mellin transform defined by
       \[
         V_{s}(y) = \frac{1}{2\pi i}\int_{(a)}\frac{\g(s+u,f)}{\g(s,f)}\Phi(u)y^{-u}\frac{du}{u},
       \]
@@ -587,7 +586,7 @@
     where in the estimate we have used the reverse triangle equality. It follows that $\Phi(u)$ has exponential decay. With this choice of $ \Phi(u)$, we can prove a useful bound for $V_{s}(y)$:
 
     \begin{proposition}\label{prop:V_function_decay}
-      Let $L(s,f)$ be an $L$-function, set $\Phi(u) = \cos^{-4d_{f}M}\left(\frac{\pi u}{4M}\right)$ for some integer $M \ge 1$, and let $V_{s}:\R_{> 0} \to \C$ be the inverse Mellin transform defined by
+      Let $L(s,f)$ be an $L$-function, set $\Phi(u) = \cos^{-4d_{f}M}\left(\frac{\pi u}{4M}\right)$ for some integer $M \ge 1$, and let $V_{s}(y)$ be the inverse Mellin transform defined by
       \[
         V_{s}(y) = \frac{1}{2\pi i}\int_{(2M-2)}\frac{\g(s+u,f)}{\g(s,f)}\Phi(u)y^{-u}\frac{du}{u}.
       \]
@@ -624,11 +623,11 @@
     From \cref{prop:V_function_decay} we see that $V_{s}(f)$ is bounded for $y \ll_{\e} \mathfrak{q}_{\infty}(s,f)^{\frac{1}{2}+\e}$ and then starts to exhibit polynomial decay that can be taken arbitrarily large. In a similar spirit to the approximate functional equation, a useful summation formula can be derived from the functional equation of each $L$-function:
 
     \begin{theorem}
-      Let $\psi(s)$ be a bump function and let $\Psi:\C_{\s > 0} \to \C$ denote its Mellin transform. Then for any $L$-functions $L(s,f)$, we have
+      Let $\psi(y)$ be a bump function and let $\Psi(s)$ denote its Mellin transform. Then for any $L$-functions $L(s,f)$, we have
       \[
         \sum_{n \ge 1}a_{f}(n)\psi(n) = \frac{\e(f)}{\sqrt{q(f)}}\sum_{n \ge 1}a_{\conj{f}}(n)\phi(n)+R\Psi(1),
       \]
-      where $\phi:\R_{> 0} \to \C$ is the inverse Mellin transform defined by
+      where $\phi(y)$ is the inverse Mellin transform defined by
       \[
         \phi(y) = \frac{1}{2\pi i}\int_{(a)}\Psi(1-s)q(f)^{s}\frac{\g(s,f)}{\g(1-s,f)}y^{-s}\,ds,
       \]
@@ -718,16 +717,16 @@
 
     Any improvement upon the exponent in the convexity bound in any aspect of the analytic conductor is called a \textbf{subconvexity estimate}\index{subconvexity estimate} (or a \textbf{convexity breaking bound}\index{convexity breaking bound}). Any argument used to do so is called a \textbf{subconvexity argument}\index{subconvexity argument}.
   \section{Estimating the Central Value}
-    The Lindel\"of hypothesis is concerned with the growth of the $L$-function $L(s,f)$ along the critical line. Sometimes we are only concerned with the size of $L(s,f)$ when $s = \frac{1}{2}$. The point $s = \frac{1}{2}$ is called the \textbf{central point}\index{central point} and the value of $L(s,f)$ at the central point is called the \textbf{central value}\index{central value} of $L(s,f)$. Many important properties about $L(s,f)$ can be connected to its central value. Any argument used to estimate the central value of an $L$-function is called a \textbf{central value estimate}\index{central value estimate}. We will prove a result which gives a very useful upper bound for the central value in the $q(f)$-aspect. To state it, let $\psi:\R_{\ge 0} \to \R_{\ge 0}$ be a bump function with compact support in $\left[\frac{1}{2},2\right]$. For example,
+    The Lindel\"of hypothesis is concerned with the growth of the $L$-function $L(s,f)$ along the critical line. Sometimes we are only concerned with the size of $L(s,f)$ when $s = \frac{1}{2}$. The point $s = \frac{1}{2}$ is called the \textbf{central point}\index{central point} and the value of $L(s,f)$ at the central point is called the \textbf{central value}\index{central value} of $L(s,f)$. Many important properties about $L(s,f)$ can be connected to its central value. Any argument used to estimate the central value of an $L$-function is called a \textbf{central value estimate}\index{central value estimate}. We will prove a result which gives a very useful upper bound for the central value in the $q(f)$-aspect. To state it, let $\psi(y)$ be a bump function with compact support in $\left[\frac{1}{2},2\right]$. For example,
     \[
       \psi(y) = \begin{cases} e^{-\frac{1}{9-(4y-5)^{2}}} & \text{if $|4y-5| < 3$}, \\ 0 & \text{if $|4y-5| \ge 3$}. \end{cases}
     \]
     The theorem is the following:
 
     \begin{theorem}
-      Let $L(s,f)$ be an $L$-function and let $\psi:\R_{\ge 0} \to \R_{\ge 0}$ be a bump function with compact support in $\left[\frac{1}{2},2\right]$. Then we have
+      Let $L(s,f)$ be an $L$-function and let $\psi(y)$ be a bump function with compact support in $\left[\frac{1}{2},2\right]$. Then we have
       \[
-        L\left(\frac{1}{2},f\right) \ll_{\e} \max_{X \ll \mathfrak{q}(f)^{\frac{1}{2}+\e}}\frac{A_{\psi}(X)}{q(f)^{\frac{1}{4}}}+\frac{S}{q(f)^{\frac{1}{4}}},
+        L\left(\frac{1}{2},f\right) \ll_{\e} \left|\max_{X \ll \mathfrak{q}(f)^{\frac{1}{2}+\e}}\frac{A_{\psi}(X)}{q(f)^{\frac{1}{4}}}\right|+\left|\frac{S}{q(f)^{\frac{1}{4}}}\right|,
       \]
       where $S$ is zero if $\L(s,f)$ is entire, and otherwise
       \[
@@ -741,7 +740,7 @@
       \]
       This implies the bound
       \[
-        L\left(\frac{1}{2},f\right) \ll \sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right)+\frac{S}{q(f)^{\frac{1}{4}}}.
+        L\left(\frac{1}{2},f\right) \ll \left|\sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right)\right|+\left|\frac{S}{q(f)^{\frac{1}{4}}}\right|.
       \]
       Now consider the set of functions $\left\{\psi\left(\frac{y}{2^{k}}\right)\right\}_{k \in \Z}$. Since $\psi\left(\frac{y}{2^{k}}\right)$ has support in $[2^{k-1},2^{k+1}]$, the sum $\s(y) = \sum_{k \in \Z}\psi\left(\frac{y}{2^{k}}\right)$, defined for $y > 0$, is finite since at most finitely many terms are nonzero for every $y$. It is also bounded away from zero since for any $y > 0$ there is some $k \in \Z$ for which $2^{k} \le y \le 3 \cdot 2^{k-1}$ so that $\frac{y}{2^{k}}$ is at least distance $\frac{1}{2}$ from the endpoints of $\left[\frac{1}{2},2\right]$. Defining $\psi_{k}(y) = \psi\left(\frac{y}{2^{k}}\right)\s(y)^{-1}$, it follows that $\left\{\psi_{k}(y)\right\}_{k \in \Z}$ satisfies
       \[
@@ -1170,12 +1169,12 @@
     A formula somewhat analogous to the approximate functional equation can be derived for the negative logarithmic derivative of any $L$-function. This formula is called the the \textbf{explicit formula}\index{explicit formula}:
 
     \begin{theorem}[Explict Formula]
-      Let $\psi:\R_{> 0} \to \C$ be a bump function with compact support and let $\Psi_{s}:\C_{\s > 0} \to \C$ denote its Mellin transform. Set $\phi(y) = y^{-1}\phi(y^{-1})$ so that its Mellin transform satisfies $\Phi(s) = \Psi(1-s)$ and both functions have the same domain as $\psi$ and $\Psi$ respectively. Then for any $L$-function $L(s,f)$, we have
+      Let $\psi(y)$ be a bump function with compact support and let $\Psi(s)$ denote its Mellin transform. Set $\phi(y) = y^{-1}\phi(y^{-1})$ so that its Mellin transform satisfies $\Phi(s) = \Psi(1-s)$. Then for any $L$-function $L(s,f)$, we have
       \begin{align*}
         \sum_{n \ge 1}\left(\L_{f}(n)\psi(n)+\L_{\conj{f}}(n)\phi(n)\right) &= \psi(1)\log{q(f)}+r_{f}\int_{0}^{\infty}\psi(y)\,dy \\
         &+ \frac{1}{2\pi i}\int_{\left(\frac{1}{2}\right)}\left(\frac{\g'}{\g}(s,f)+\frac{\g'}{\g}(1-s,\conj{f})\right)\Psi(s)\,ds-\sum_{\rho}\Psi(\rho).
       \end{align*}
     \end{theorem}
     \begin{proof}
-      \todo{xxx}
+      By the smoothed version of Perron's formula, \todo{xxx}
     \end{proof}
