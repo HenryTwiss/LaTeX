@@ -1,3 +1,166 @@
-\chapter{\todo{Classical Applications}}
-  \section{\todo{Dirichlet's Theorem on Primes and Arithmetic Progressions}}
+\chapter{Classical Applications}
+  \section{Dirichlet's Theorem on Primes in Arithmetic Progressions}
+    One of the more well-known arithmetic results proved using $L$-functions is \textbf{Dirichlet's theorem on primes in arithmetic progressions}\index{Dirichlet's theorem on primes in arithmetic progressions}:
+
+    \begin{theorem}[Dirichlet's theorem on primes in arithmetic progressions]\label{thm:Dirichlet's_theorem_on_primes_in_arithmetic_progressions}
+      Let $a$ and $m$ be positive integers such that $(a,m) = 1$. Then the arithmetic progression $\{a+km \mid k \in \N\}$ contain infinitely many primes.
+    \end{theorem}
+
+    We will delay the proof for the moment, for it is well-worth understanding the some of the motivation behind why this theorem is interesting and how exactly Dirichlet used the analytic techniques of $L$-functions to attack this purely arithmetic statement. We being by recalling Euclid's famous theorem on the infinitude of the primes. Euclid's proof is completely elementary and arithmetic in nature. He argues that if there were finitely many primes $p_{1},p_{2},\ldots,p_{k}$ then a short consideration of $(p_{1}p_{2} \cdots p_{k})+1$ shows that this number must either be divisible by a prime not in our list or must be prime itself. As primes are the multiplicative building blocks of arithmetic, Euclid assures us that we have an ample amount of primes to work with. Now there is a slightly stronger result due to Euler (see \cite{euler1744variae}) requiring analytic techniques:
+
+    \begin{theorem}\label{thm:reciprocial_sum_of_primes_diverges}
+      The series
+      \[
+        \sum_{p}\frac{1}{p},
+      \]
+      diverges.
+    \end{theorem}
+    \begin{proof}
+      For $\s > 1$, taking the logarithm of the Euler product for $\z(s)$, we get
+      \[
+        \log\z(s) = -\sum_{p}\log(1-p^{-s}).
+      \]
+      The Taylor series of the logarithm gives
+      \[
+        \log(1-p^{-s}) = \sum_{k \ge 1}(-1)^{k-1}\frac{(-p^{-s})^{k}}{k} = \sum_{k \ge 1}(-1)^{2k-1}\frac{1}{kp^{ks}},
+      \]
+      so that
+      \[
+        \log\z(s) = \sum_{p}\sum_{k \ge 1}\frac{1}{kp^{ks}}.
+      \]
+      The double sum restricted to $k \ge 2$ is uniformly bounded for $\s > 1$. To see this, first observe
+      \[
+        \sum_{k \ge 2}\frac{1}{kp^{ks}} \ll \sum_{k \ge 2}\frac{1}{p^{k}} = \frac{1}{p^{2}}\sum_{k \ge 0}\frac{1}{p^{k}} = \frac{1}{p^{2}}(1-p^{-1})^{-1} \le \frac{2}{p^{2}},
+      \]
+      where the last inequality follows because $p \ge 2$. Then
+      \[
+       \sum_{p}\sum_{k \ge 2}\frac{1}{kp^{ks}} \ll 2\sum_{p}\frac{1}{p^{2}} < 2\sum_{n \ge 1}\frac{1}{n^{2}} = 2\z(2).
+      \]
+      Therefore
+      \[
+        \log\z(s)-\sum_{p}\frac{1}{p^{s}} = \sum_{p}\sum_{k \ge 2}\frac{1}{kp^{ks}},
+      \]
+      and remains bounded as $s \to 1$. The claim now follows since $\z(s)$ has a simple pole at $s = 1$.
+    \end{proof}
+
+    \cref{thm:reciprocial_sum_of_primes_diverges} tells us that there are infinitely many primes but also that the primes are not too ``sparse'' in the integers for otherwise the series would converge. The idea Dirichlet used to prove his result on primes in arithmetic progressions was in a very similar spirit. He sought out to prove the divergence of the series
+    \[
+      \sum_{p \equiv a \tmod{m}}\frac{1}{p},
+    \]
+    for positive integers $a$ and $m$ with $(a,m) = 1$ as the divergence immediately implies there are infinitely many primes $p$ of the form $p \equiv a \tmod{m}$. In the case $a = 1$ and $m = 2$ we recover \cref{thm:reciprocial_sum_of_primes_diverges} exactly since every prime is odd. Dirichlet's proof proceeds in a similar way to that of \cref{thm:reciprocial_sum_of_primes_diverges} and this is where Dirichlet used what are now known as Dirichlet characters and Dirichlet $L$-functions. The proof can be broken into three steps. The first is to proceed as Euler did, but with the Dirichlet $L$-function $L(s,\chi)$ where $\chi$ has modulus $m$. That is, write $L(s,\chi)$ as a sum over primes and a bounded term as $s \to 1$. The next step is to use the orthogonality relations of the characters to sieve out the correct sum. The last step is to show the non-vanishing result $L(1,\chi) \neq 0$ for all non-principal characters $\chi$. This is the essential part of the proof as it is what assures us that the sum diverges. We now prove Dirichlet's theorem on primes in arithmetic progressions:
+
+    \begin{proof}[Proof of Dirichlet's theorem on primes in arithmetic progressions]
+        Let $\chi$ be a Dirichlet character modulo $m$. Then for $\s > 1$, taking the logarithm of the Euler product for $L(s,\chi)$ gives
+        \[
+          \log L(s,\chi) = -\sum_{p}\log(1-\chi(p)p^{-s}).
+        \]
+        The Taylor series of the logarithm implies
+        \[
+          \log(1-\chi(p)p^{-s}) = \sum_{k \ge 1}(-1)^{k-1}\frac{(-\chi(p)p^{-s})^{k}}{k} = \sum_{k \ge 1}(-1)^{2k-1}\frac{\chi(p^{k})}{kp^{ks}},
+        \]
+        so that
+        \[
+          \log L(s,\chi) = \sum_{p}\sum_{k \ge 1}\frac{\chi(p^{k})}{kp^{ks}}.
+        \]
+        The double sum restricted to $k \ge 2$ is uniformly bounded for $\s > 1$. Indeed, first observe
+        \[
+          \left|\sum_{k \ge 2}\frac{\chi(p^{k})}{kp^{ks}}\right| \ll \sum_{k \ge 2}\frac{1}{p^{k}} = \frac{1}{p^{2}}\sum_{k \ge 0}\frac{1}{p^{k}} = \frac{1}{p^{2}}(1-p^{-1})^{-1} \le \frac{2}{p^{2}},
+        \]
+        where the last inequality follows because $p > 2$. Then
+        \[
+          \left|\sum_{p}\sum_{k \ge 2}\frac{\chi(p^{k})}{kp^{ks}}\right| \le 2\sum_{p}\frac{1}{p^{2}} < 2\sum_{n \ge 1}\frac{1}{n^{2}} = 2\z(2),
+        \]
+        as desired. Now write
+        \[
+          \sum_{\chi \tmod{m}}\conj{\chi(a)}\log L(s,\chi) = \sum_{\chi \tmod{m}}\sum_{p}\frac{\conj{\chi(a)}\chi(p)}{p^{s}}+\sum_{\chi \tmod{m}}\conj{\chi(a)}\sum_{p}\sum_{k \ge 2}\frac{\chi(p^{k})}{kp^{ks}}.
+        \]
+        By the orthogonality relations (\cref{prop:Dirichlet_orthogonality_relations} (ii)), we find that
+        \[
+          \sum_{\chi \tmod{m}}\sum_{p}\frac{\conj{\chi(a)}\chi(p)}{p^{s}} = \sum_{p}\frac1{p^{s}}\sum_{\chi \tmod{m}}\conj{\chi(a)}\chi(p) = \vphi(m)\sum_{p \equiv{a} \tmod{m}}\frac{1}{p^{s}},
+        \]
+        and so
+        \[
+          \sum_{\chi \tmod{m}}\conj{\chi(a)}\log L(s,\chi)-\sum_{\chi \tmod{m}}\conj{\chi(a)}\sum_{p}\sum_{k \ge 2}\frac{\chi(p^{k})}{kp^{ks}} = \vphi(m)\sum_{p \equiv{a} \tmod{m}}\frac{1}{p^{s}}.
+        \]
+        The triple sum is uniformly bounded for $\s > 1$ because the inner double sum is and there are finitely many Dirichlet characters modulo $m$. Therefore it suffices to show that the first sum on the left-hand side diverges as $s \to 1$. For $\chi = \chi_{m,0}$,
+        \[
+          L(s,\chi_{m,0}) = \z(s)\prod_{p \mid m}(1-p^{-s}),
+        \]
+        so the corresponding term in the sum is
+        \[
+          \conj{\chi_{m,0}}(a)\log L(s,\chi_{m,0}) = \log\z(s)+\sum_{p \mid m}\log(1-p^{-s}),
+        \]
+        which diverges as $s \to 1$ because $\z(s)$ has a simple pole at $s = 1$. We will be done if $\log L(s,\chi)$ remains bounded as $s \to 1$ for all $\chi \neq \chi_{m,0}$. So assume $\chi$ is not principal. Then if $\wtilde{\chi}$ is the character inducing $\chi$, we have
+        \[
+          L(s,\chi) = L(s,\wtilde{\chi})\prod_{p \mid m}(1-\wtilde{\chi}(p)p^{-s}),
+        \]
+        where $L(s,\wtilde{\chi})$ is holomorphic. Therefore $L(s,\chi)$ is holomorphic too so it further suffices to show $L(1,\chi) \neq 0$. This follows from applying \cref{lem:non-vanshing_at_1_lemma} to the $L$-function $\z(s)L(s,\wtilde{\chi})$ and noting that $L(s,\wtilde{\chi})$ is holomorphic.
+    \end{proof}
+
+    For primitive $\chi$ of conductor $q > 1$, we know from \cref{lem:non-vanshing_at_1_lemma} applied to $\z(s)L(s,\chi)$ that $L(1,\chi)$ is finite. It is interesting to know whether or not this value is computable in general. Indeed it is. The computation is fairly straightforward and only requires some basic properties of Gauss sums that we have already developed. The idea is to rewrite the character values $\chi(n)$ so that we can collapse the infinite series into a Taylor series. Our result is the following:
+    
+    \begin{theorem}\label{thm:Value_of_Dirichlet_L-functions_at_s=1}
+      Let $\chi$ be a primitive Dirichlet character with conductor $q > 1$. Then
+      \[
+        L(1,\chi) = -\frac{\chi(-1)\tau(\chi)}{q}\psum_{a \tmod{q}}\chi(a)\log\left(\sin\left(\frac{\pi a}{q}\right)\right) \quad \text{or} \quad L(1,\chi) = -\frac{\chi(-1)\tau(\chi)\pi i}{q^{2}}\psum_{a \tmod{q}}\chi(a)a,
+      \]
+      according to whether $\chi$ is even or odd.
+    \end{theorem}
+    \begin{proof}
+      Make the following computation:
+      \begin{align*}
+        \chi(n) &= \frac{1}{\conj{\tau(\chi)}}\conj{\tau(n,\chi)} && \text{\cref{cor:gauss_sum_primitive_formula}} \\
+        &= \frac{1}{\tau(\cchi)}\tau(n,\chi) && \text{\cref{prop:Gauss_sum_reduction} (i)} \\
+        &= \frac{\tau(\chi)}{\tau(\chi)\tau(\cchi)}\tau(n,\chi) \\
+        &= \frac{\chi(-1)\tau(\chi)}{q}\tau(n,\chi) && \text{\cref{thm:Gauss_sum_modulus,prop:epsilon_factor_relationship}} \\
+        &= \frac{\chi(-1)\tau(\chi)}{q}\psum_{a \tmod{q}}\chi(a)e^{\frac{2\pi ian}{q}}.
+      \end{align*}
+      Substituting this result into the definition of $L(1,\chi)$, we find that
+      \begin{equation}\label{equ:value_of_Dirichlet_L-functions_at_s=1_1}
+        \begin{aligned}
+          L(1,\chi) &= \sum_{n \ge 1}\frac{1}{n}\left(\frac{\chi(-1)\tau(\chi)}{q}\psum_{a \tmod{q}}\chi(a)e^{\frac{2\pi ian}{q}}\right) \\
+          &= \frac{\chi(-1)\tau(\chi)}{q}\psum_{a \tmod{q}}\chi(a)\sum_{n \ge 1}\frac{e^{\frac{2\pi ian}{q}}}{n} \\
+          &= \frac{\chi(-1)\tau(\chi)}{q}\psum_{a \tmod{q}}\chi(a)\log\left(\left(1-e^{\frac{2\pi ia}{q}}\right)^{-1}\right),
+        \end{aligned}
+      \end{equation}
+      where in the last line we have used the Taylor series of the logarithm (notice $a \neq q$ so that $e^{\frac{2\pi ia}{q}} \neq 1$ and hence the logarithm is defined). We have now expressed $L(1,\chi)$ as a finite sum. In order to simplify the last expression in \cref{equ:value_of_Dirichlet_L-functions_at_s=1_1}, we deal with the logarithm. Since $\sin(\t) = \frac{e^{i\t}-e^{-i\t}}{2i}$, we have
+      \[
+        1-e^{\frac{2\pi ia}{q}} = -2ie^{\frac{\pi ia}{q}}\left(\frac{e^{\frac{\pi ia}{q}}-e^{-\frac{\pi ia}{q}}}{2i}\right) = -2ie^{\frac{\pi ia}{q}}\sin\left(\frac{\pi a}{q}\right).
+      \]
+      Therefore the last expression in \cref{equ:value_of_Dirichlet_L-functions_at_s=1_1} becomes
+      \[
+        \frac{\chi(-1)\tau(\chi)}{q}\psum_{a \tmod{q}}\chi(a)\log\left(\left(-2ie^{\frac{\pi ia}{q}}\sin\left(\frac{\pi a}{q}\right)\right)^{-1}\right).
+      \]
+      As $0< a < q$, we have $0 < \frac{\pi a}{q} < \pi$ so that $\sin\left(\frac{\pi a}{q}\right)$ is never negative. Therefore we can split up the logarithm term and obtain
+      \[
+        -\frac{\chi(-1)\tau(\chi)}{q}\left(\log(-2i)\psum_{a \tmod{q}}\chi(a)+\frac{\pi i}{q}\psum_{a \tmod{q}}\chi(a)a+\psum_{a \tmod{q}}\chi(a)\log\left(\sin\left(\frac{\pi a}{q}\right)\right)\right).
+      \]
+      By the orthogonality relations (\cref{cor:Dirichlet_orthogonality_relations} (i)), the first sum above vanishes. Therefore
+      \begin{equation}\label{equ:value_of_Dirichlet_L-functions_at_s=1_2}
+        L(1,\chi) = -\frac{\chi(-1)\tau(\chi)}{q}\left(\frac{\pi i}{q}\psum_{a \tmod{q}}\chi(a)a+\psum_{a \tmod{q}}\chi(a)\log\left(\sin\left(\frac{\pi a}{q}\right)\right)\right).
+      \end{equation}
+      \cref{equ:value_of_Dirichlet_L-functions_at_s=1_2} simplifies in that one of the two sums vanish depending on if $\chi$ is even or odd. For the first sum in \cref{equ:value_of_Dirichlet_L-functions_at_s=1_2}, observe that
+      \[
+        \frac{\pi i}{q}\psum_{a \tmod{q}}\chi(a)a = -\frac{\chi(-1)\pi i}{q}\psum_{a \tmod{q}}\chi(-a)(-a),
+      \]
+      which vanishes if $\chi$ is even. For the second sum in \cref{equ:value_of_Dirichlet_L-functions_at_s=1_2}, we have an analogous relation of the form
+      \[
+        \psum_{a \tmod{q}}\chi(a)\log\left(\sin\left(\frac{\pi a}{q}\right)\right) = \chi(-1)\psum_{a \tmod{q}}\chi(-a)\log\left(\sin\left(\frac{\pi a}{q}\right)\right),
+      \]
+      which vanishes if $\chi$ is odd. This finishes the proof.
+    \end{proof}
+
+    \cref{thm:Value_of_Dirichlet_L-functions_at_s=1} encodes some interesting identities. For example, if $\chi$ is the non-principal Dirichlet character modulo $4$, then $\chi$ is uniquely defined by $\chi(1) = 1$ and $\chi(3) = \chi(-1) = -1$. In particular, $\chi$ is odd and its conductor is $4$. Now
+    \[
+      \tau(\chi) = \psum_{a \tmod{4}}\chi(a)e^{\frac{2\pi ia}{4}} = e^{\frac{2\pi i}{4}}-e^{\frac{6\pi i}{4}} = i-(-i) = 2i,
+    \]
+    so by \cref{thm:Value_of_Dirichlet_L-functions_at_s=1} we get
+    \[
+      L(1,\chi) = -\frac{\chi(-1)\tau(\chi)\pi i}{16}(1-3) = \frac{\pi}{4}.
+    \]
+    Expanding out $L(1,\chi)$ gives
+    \[
+      1-\frac{1}{3}+\frac{1}{5}-\frac{1}{7}+\cdots = \frac{\pi}{4},
+    \]
+    which is the famous \textbf{Madhava–Leibniz formula}\index{Madhava–Leibniz formula} for $\pi$.
   \section{\todo{Prime Number Theorems}}
