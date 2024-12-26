@@ -723,94 +723,94 @@
           is locally absolutely uniformly bounded in the vertical strip $a < \s < b$. Then $f(x) = (\mc{M}^{-1}F)(x)$.
         \end{theorem}
     \section{The Gamma Function}
-      The gamma function is ubiquitous in analytic number theory and the better one understands it the better one will be at seeing the forest for the trees in any problem involving analytic number theory. The \textbf{gamma function}\index{gamma function} $\G(z)$ is defined to be the Mellin transform of $e^{-x}$:
+      The gamma function is ubiquitous in analytic number theory and the better one understands it the better one will be at seeing the forest for the trees in any problem involving analytic number theory. The \textbf{gamma function}\index{gamma function} $\G(s)$ is defined to be the Mellin transform of $e^{-x}$:
       \[
-        \G(z) = \int_{0}^{\infty}e^{-x}x^{z-1}\,dx,
+        \G(s) = \int_{0}^{\infty}e^{-x}x^{s-1}\,dx,
       \]
-      for $\Re(z) > 0$. The integral is locally absolutely uniformly bounded in this region. Indeed, if $K$ is a compact subset in the region $\Re(z) > 0$, then upon splitting the integral we have
+      for $\s > 0$. The integral is locally absolutely uniformly bounded in this region. Indeed, if $K$ is a compact subset in the region $\s > 0$, then upon splitting the integral we have
       \begin{equation}\label{equ:Gamma_integral_bounded_1}
-        \G(z) = \int_{0}^{1}e^{-x}x^{z-1}\,dx+\int_{1}^{\infty}e^{-x}x^{z-1}\,dx.
+        \G(s) = \int_{0}^{1}e^{-x}x^{s-1}\,dx+\int_{1}^{\infty}e^{-x}x^{s-1}\,dx.
       \end{equation}
-      By \cref{met:decay_compacta_integral}, the second integral in \cref{equ:Gamma_integral_bounded_1} is locally absolutely uniformly bounded in this region. As for the first integral, let $K$ be a compact set in the region $\Re(z) > 0$. Set $\b = \min_{z \in K}\{\Re(z)\}$. Then
+      By \cref{met:decay_compacta_integral}, the second integral in \cref{equ:Gamma_integral_bounded_1} is locally absolutely uniformly bounded in this region. As for the first integral, let $\b = \min_{s \in K}\{\s\}$. Then
       \begin{equation}\label{equ:Gamma_integral_bounded_2}
-        \int_{0}^{1}|e^{-x}x^{z-1}|\,dx \le \int_{0}^{1}x^{\Re(z)-1}\,dx = \frac{x^{\Re(z)}}{\Re(z)}\bigg|_{0}^{1} \le \frac{1}{\b}.
+        \int_{0}^{1}|e^{-x}x^{s-1}|\,dx \le \int_{0}^{1}x^{\s-1}\,dx \ll_{\b} 1.
       \end{equation}
-      \cref{equ:Gamma_integral_bounded_2} implies that the first integral in \cref{equ:Gamma_integral_bounded_1} is locally absolutely uniformly bounded too. Altogether, this means $\G(z)$ is as well. Also note that for $z > 0$, $\G(z)$ is real. The most basic properties of $\G(z)$ are the following:
+      \cref{equ:Gamma_integral_bounded_2} implies that the first integral in \cref{equ:Gamma_integral_bounded_1} is locally absolutely uniformly bounded too. Altogether, this means $\G(s)$ is as well. Also note that for $s >0$, $\G(s)$ is real. The most basic properties of $\G(s)$ are the following:
 
       \begin{proposition}\label{prop:Factorial_properties_of_gamma_function}
-        $\G(z)$ satisfies the following properties:
+        $\G(s)$ satisfies the following properties:
         \begin{enumerate}[label=(\roman*)]
           \item $\G(1) = 1$.
-          \item $\G(z+1) = z\G(z)$.
-          \item $\G(\conj{z}) = \conj{\G(z)}$.
+          \item $\G(s+1) = s\G(s)$.
+          \item $\G(\conj{s}) = \conj{\G(s)}$.
         \end{enumerate}
       \end{proposition}
       \begin{proof}
         We obtain (i) by direct computation:
         \[
-          \G(1) = \int_{0}^{\infty}e^{-x}\,dx = (-e^{-x})\bigg|_{0}^{\infty} = 1.
+          \G(1) = \int_{0}^{\infty}e^{-x}\,dx = -e^{-x}\bigg|_{0}^{\infty} = 1.
         \]
         An application of integration by parts gives (ii):
         \[
-          \G(z+1) = \int_{0}^{\infty}e^{-x}x^{z}\,dx = (-e^{-x}x^{z})\bigg|_{0}^{\infty}+z\int_{0}^{\infty}e^{-x}x^{z-1}\,dx = z\int_{0}^{\infty}e^{-x}x^{z-1}\,dx = z\G(z).
+          \G(s+1) = \int_{0}^{\infty}e^{-x}x^{s}\,dx = -e^{-x}x^{s}\bigg|_{0}^{\infty}+s\int_{0}^{\infty}e^{-x}x^{s-1}\,dx = s\int_{0}^{\infty}e^{-x}x^{s-1}\,dx = s\G(s).
         \]
-        For (iii), since $\G(z)$ is real for $z > 0$ we have $\G(\conj{z}) = \conj{\G(z)}$ on this half-line and then the identity theorem implies that this holds on the entire domain of $\G(z)$.
+        For (iii), since $\G(s)$ is real for $s >0$ we have $\G(\conj{s}) = \conj{\G(s)}$ on this half-line and then the identity theorem implies that this holds on the entire domain of $\G(s)$.
       \end{proof}
 
-      From \cref{prop:Factorial_properties_of_gamma_function} we see that for $z = n$ a positive integer, $\G(n) = (n-1)!$. So $\G(z)$ can be thought of as a holomorphic extension of the factorial function. We can use property (ii) of \cref{prop:Factorial_properties_of_gamma_function} to extended $\G(z)$ to a meromorphic function on all of $\C$:
+      From \cref{prop:Factorial_properties_of_gamma_function} we see that for $s = n$ a positive integer, $\G(n) = (n-1)!$. So $\G(s)$ can be thought of as a holomorphic extension of the factorial function. We can use property (ii) of \cref{prop:Factorial_properties_of_gamma_function} to extended $\G(s)$ to a meromorphic function on all of $\C$:
 
       \begin{theorem}\label{thm:continuation_of_gamma_function}
-        $\G(z)$ admits meromorphic continuation to $\C$ with poles at $z = -n$ for $n \ge 0$. All of these poles are simple and with residue $\frac{(-1)^{n}}{n!}$ at $z = -n$.
+        $\G(s)$ admits meromorphic continuation to $\C$ with poles at $s = -n$ for $n \ge 0$. All of these poles are simple and with residue $\frac{(-1)^{n}}{n!}$ at $s = -n$.
       \end{theorem}
       \begin{proof}
         Using \cref{prop:Factorial_properties_of_gamma_function}, (ii) repeatedly, for any integer $n \ge 0$ we have
         \[
-          \G(z) = \frac{\G(z+1+n)}{z(z+1) \cdots (z+n)}.
+          \G(s) = \frac{\G(s+1+n)}{s(s+1) \cdots (s+n)}.
         \]
-        The right-hand side defines an meromorphic function in the region $\Re(z) > -n$ and away from the points $0,-1,\ldots,-n$. Letting $n$ be arbitrary, we see that $\G(z)$ has meromorphic continuation to $\C$ with poles at $0,-1,-2,\ldots$. We now compute the residue at $z = -n$. Around this point $\G(z)$ admits meromorphic continuation with representation
+        The right-hand side defines an meromorphic function in the region $\s > -n$ and away from the points $0,-1,\ldots,-n$. Letting $n$ be arbitrary, we see that $\G(s)$ has meromorphic continuation to $\C$ with poles at $0,-1,-2,\ldots$. We now compute the residue at $s = -n$. Around this point $\G(s)$ admits meromorphic continuation with representation
         \[
-          \frac{\G(z+1+n)}{z(z+1) \cdots (z+n)},
+          \frac{\G(s+1+n)}{s(s+1) \cdots (s+n)},
         \]
-        where all of the factors except for $z+n$ are holomorphic at $z = -n$. Thus the pole is simple, and
+        where all of the factors except for $s+n$ are holomorphic at $s = -n$. Thus the pole is simple, and
         \[
-          \Res_{z = -n}\G(z) = \lim_{z \to -n}\frac{\G(z+1+n)(z+n)}{z(z+1) \cdots (z+n)} = \frac{\G(1)}{(-n)(1-n) \cdots (-1)} = \frac{(-1)^{n}}{n!}.
+          \Res_{s = -n}\G(s) = \lim_{z \to -n}\frac{\G(s+1+n)(s+n)}{s(s+1) \cdots (s+n)} = \frac{\G(1)}{(-n)(1-n) \cdots (-1)} = \frac{(-1)^{n}}{n!}.
         \]
       \end{proof}
 
-      In particular, \cref{thm:continuation_of_gamma_function} implies $\Res_{z = 0}\G(z) = 1$ and $\Res_{z = 1}\G(z) = -1$. There are a few other properties of the gamma function that are famous and which we will use frequently. The first of which is the \textbf{Legendre duplication formula}\index{Legendre duplication formula} (see \cite{remmert1998classical} for a proof):
+      In particular, \cref{thm:continuation_of_gamma_function} implies $\Res_{s = 0}\G(s) = 1$ and $\Res_{s = 1}\G(s) = -1$. There are a few other properties of the gamma function that are famous and which we will use frequently. The first of which is the \textbf{Legendre duplication formula}\index{Legendre duplication formula} (see \cite{remmert1998classical} for a proof):
 
       \begin{theorem}[Legendre duplication formula]
-        For any $z \in \C-\{0,-1,-2,\ldots\}$,
+        For any $s \in \C-\{0,-1,-2,\ldots\}$,
         \[
-          \G(z)\G\left(z+\frac{1}{2}\right) = 2^{1-2z}\sqrt{\pi}\G(2z).
+          \G(s)\G\left(s+\frac{1}{2}\right) = 2^{1-2s}\sqrt{\pi}\G(2s).
         \]
       \end{theorem}
 
-      As a first application, we can use this formula to compute $\G\left(\frac{1}{2}\right)$. Letting $z = \frac{1}{2}$ in the Legendre duplication formula and recalling $\G(1) = 1$, we see that $\G\left(\frac{1}{2}\right) = \sqrt{\pi}$. There is also the important Hadamard factorization of the reciprocal of $\G(z)$ (see \cite{stein2003complex} for a proof):
+      As a first application, we can use this formula to compute $\G\left(\frac{1}{2}\right)$. Letting $z = \frac{1}{2}$ in the Legendre duplication formula and recalling $\G(1) = 1$, we see that $\G\left(\frac{1}{2}\right) = \sqrt{\pi}$. There is also the important Hadamard factorization of the reciprocal of $\G(s)$ (see \cite{stein2003complex} for a proof):
 
       \begin{proposition}\label{prop:Hadamard_factorization_for_reciprocial_of_gamma}
-        For all $z \in \C$,
+        For all $s \in \C$,
         \[
-          \frac{1}{\G(z)} = ze^{\g z}\prod_{n \ge 1}\left(1+\frac{z}{n}\right)e^{-\frac{z}{n}},
+          \frac{1}{\G(s)} = se^{\g s}\prod_{n \ge 1}\left(1+\frac{s}{n}\right)e^{-\frac{s}{n}},
         \]
         where $\g$ is the Euler-Mascheroni constant.
       \end{proposition}
 
-      In particular, $\frac{1}{\G(z)}$ is entire so that $\G(z)$ is nowhere vanishing on $\C$. Also, $\frac{1}{\G(z)}$ is of order $1$ (see \cref{append:Factorizations_and_Finite_Order}). In particular, this means that $\G(z)$ is also order $1$ for $\Re(z) > 0$. We call $\frac{\G'}{\G}(z)$ the \textbf{digamma function}\index{digamma function}. Equivalently, the digamma function is the logarithmic derivative of the gamma function. If we take the logarithmic derivative of the Hadamard factorization for $\frac{1}{z\G(z)}$, we obtain a useful expression for the digamma function:
+      In particular, $\frac{1}{\G(s)}$ is entire so that $\G(s)$ is nowhere vanishing on $\C$. Also, $\frac{1}{\G(s)}$ is of order $1$ (see \cref{append:Factorizations_and_Finite_Order}). In particular, this means that $\G(s)$ is also order $1$ for $\s > 0$. We call $\frac{\G'}{\G}(s)$ the \textbf{digamma function}\index{digamma function}. Equivalently, the digamma function is the logarithmic derivative of the gamma function. If we take the logarithmic derivative of the Hadamard factorization for $\frac{1}{s\G(s)}$, we obtain a useful expression for the digamma function:
 
       \begin{corollary}\label{cor:logarithmic_derivative_of_gamma}
-        For all $z \in$,
+        For all $s \in \C$,
         \[
-          \frac{\G'}{\G}(z+1) = -\g+\sum_{n \ge 1}\left(\frac{1}{n}-\frac{1}{z+n}\right),
+          \frac{\G'}{\G}(s+1) = -\g+\sum_{n \ge 1}\left(\frac{1}{n}-\frac{1}{s+n}\right),
         \]
         where $\g$ is the Euler-Mascheroni constant. In particular, the digamma function has simple poles of residue $-1$ at the poles of the gamma function.
       \end{corollary}
       \begin{proof}
-        By \cref{prop:Factorial_properties_of_gamma_function} (ii), $\frac{1}{\G(z+1)} = \frac{1}{z\G(z)}$. Taking the logarithmic derivative using \cref{prop:Hadamard_factorization_for_reciprocial_of_gamma} we obtain
+        By \cref{prop:Factorial_properties_of_gamma_function} (ii), $\frac{1}{\G(s+1)} = \frac{1}{s\G(s)}$. Taking the logarithmic derivative using \cref{prop:Hadamard_factorization_for_reciprocial_of_gamma} we obtain
         \[
-          -\frac{\G'}{\G}(z+1) = \g+\sum_{n \ge 1}\left(\frac{1}{z+n}-\frac{1}{n}\right),
+          -\frac{\G'}{\G}(s+1) = \g+\sum_{n \ge 1}\left(\frac{1}{s+n}-\frac{1}{n}\right),
         \]
-        provided $z$ is away from the poles of $\G(z)$. This is the desired formula and the statement regarding the poles follows immediately.
+        provided $s$ is distance $\e$ away from the poles of $\G(s)$. This is the desired formula and the statement regarding the poles follows immediately.
       \end{proof}
       
       We will also require a well-known approximation for the gamma function known as \textbf{Stirling's formula}\index{Stirling's formula} (see \cite{remmert1998classical} for a proof):
@@ -818,77 +818,77 @@
       \begin{theorem}[Stirling's formula]
       \phantom{}
         \[
-          \G(z) \sim_{\e,\d} \sqrt{2\pi}z^{z-\frac{1}{2}}e^{-z},
+          \G(s) \sim_{\e,\d} \sqrt{2\pi}s^{s-\frac{1}{2}}e^{-s},
         \]
-        provided $|\arg(z)| < \pi-\e$ and $|z| > \d$ for some $\e,\d > 0$.
+        provided $|\arg(s)| < \pi-\e$ and $|s| > \d$ for some $\e,\d > 0$.
       \end{theorem}
 
-      If the real part of $z$ lies inside some compact set then Stirling's formula gives a useful estimate showing that $\G(z)$ exhibits exponential decay as $z \to \infty$:
+      If $\s$ lies inside some compact set then Stirling's formula gives a useful estimate showing that $\G(s)$ exhibits exponential decay as $s \to \infty$:
       
       \begin{corollary}\label{equ:weaker_Stirling_formula}
-      Let $|\arg(z)| < \pi-\e$ and $|z| > \d$ for some $\e,\d > 0$. Then if $x$ is bounded, we have
+      Let $|\arg(s)| < \pi-\e$ and $|s| > \d$ for some $\e,\d > 0$. Then if $\s$ is bounded, we have
         \[
-          \G(z) \sim_{\e,\d} \sqrt{2\pi}y^{x-\frac{1}{2}}e^{-\frac{\pi}{2}|y|}.
+          \G(s) \sim_{\e,\d} \sqrt{2\pi}t^{\s-\frac{1}{2}}e^{-\frac{\pi}{2}|t|}.
         \]
       \end{corollary}
       \begin{proof}
         Stirling's formula can be equivalently expressed as
         \[
-          \G(z) \sim_{\e,\d} \sqrt{2\pi}(x+iy)^{x-\frac{1}{2}+iy}e^{-x-iy}.
+          \G(s) \sim_{\e,\d} \sqrt{2\pi}(\s+it)^{\s-\frac{1}{2}+it}e^{-\s-it}.
         \]
-        Since $x$ is bounded, $e^{-x-iy} \ll 1$ and we obtain the the simplified asymptotic
+        Since $\s$ is bounded, $e^{-\s-it} \ll 1$ and we obtain the the simplified asymptotic
         \[
-          \G(z) \sim_{\e,\d} \sqrt{2\pi}(iy)^{x-\frac{1}{2}+iy}.
+          \G(s) \sim_{\e,\d} \sqrt{2\pi}(it)^{\s-\frac{1}{2}+it}.
         \]
-        Similarly, $x$ being bounded implies $i^{x-\frac{1}{2}} \ll 1$ and we compute
+        Similarly, $x$ being bounded implies $i^{\s-\frac{1}{2}} \ll 1$ and we compute
         \[
-          (iy)^{iy} = e^{i|y|\log(i|y|)} = e^{i|y|(\log(i)+\log(|y|))} = e^{-\frac{\pi}{2}|y|+i|y|\log(|y|)} \sim e^{-\frac{\pi}{2}|y|},
+          (it)^{it} = e^{i|t|\log(i|t|)} = e^{i|t|(\log(i)+\log(|t|))} = e^{-\frac{\pi}{2}|t|+i|t|\log(|t|)} \sim e^{-\frac{\pi}{2}|t|},
         \]
         where we have used the fact that $\log(i) = i\frac{\pi}{2}$. Together, we obtain the further simplified asymptotic
         \[
-          \G(z) \sim_{\e,\d} \sqrt{2\pi}y^{x-\frac{1}{2}}e^{-\frac{\pi}{2}|y|},
+          \G(s) \sim_{\e,\d} \sqrt{2\pi}t^{\s-\frac{1}{2}}e^{-\frac{\pi}{2}|t|},
         \]
         which is the desired result
       \end{proof}
       Strictly weaker than the asymptotic equivalence in Stirling's formula is the estimate
       \begin{equation}
-          \G(z) = \sqrt{2\pi}z^{z-\frac{1}{2}}e^{-z}(1+O_{\e,\d}(1)).
+          \G(s) = \sqrt{2\pi}s^{s-\frac{1}{2}}e^{-s}(1+O_{\e,\d}(1)).
       \end{equation}
-      Taking the logarithm (since $|\arg(z)| < \pi-\e$ the logarithm is defined) of this estimate gives
+      Taking the logarithm (since $|\arg(s)| < \pi-\e$ the logarithm is defined) of this estimate gives
       \begin{equation}\label{equ:log_gamma_estimate}
-        \log\G(z) = \frac{1}{2}\log(2\pi)+\left(z-\frac{1}{2}\right)\log(z)-z+O_{\e,\d}\left(1\right),
+        \log\G(s) = \frac{1}{2}\log(2\pi)+\left(s-\frac{1}{2}\right)\log(s)-s+O_{\e,\d}\left(1\right),
       \end{equation}
       which will be useful. Using \cref{equ:log_gamma_estimate} we can obtain a useful asymptotic formula for the digamma function:
 
       \begin{proposition}\label{equ:approximtion_for_digamma}
       \[
-        \frac{\G'}{\G}(z) = \log(z)+O_{\e,\d}(1),
+        \frac{\G'}{\G}(s) = \log(s)+O_{\e,\d}(1),
       \]
-      provided $|\arg(z)| < \pi-\e$ and $|z| > \d$ for some $\e,\d > 0$.
+      provided $|\arg(s)| < \pi-\e$ and $|s| > \d$ for some $\e,\d > 0$.
       \end{proposition}
       \begin{proof}
         \cref{equ:log_gamma_estimate} give the simplified asymptotic
         \[
-          \log\G(z) = \frac{1}{2}\log(2\pi)+z\log(z)-z+O_{\e,\d}(1).
+          \log\G(s) = \frac{1}{2}\log(2\pi)+s\log(s)-s+O_{\e,\d}(1).
         \]
-        Set $g(z) = \frac{1}{2}\log(2\pi)+z\log(z)-z$ so that $\log\G(z) = g(z)+O_{\e,\d}(1)$. Then $\log\G(z)-g(z) = O_{\e,\d}(1)$, and by Cauchy's integral formula, we have
+        Set $g(s) = \frac{1}{2}\log(2\pi)+s\log(s)-s$ so that $\log\G(s) = g(s)+O_{\e,\d}(1)$. Then $\log\G(s)-g(s) = O_{\e,\d}(1)$, and by Cauchy's integral formula, we have
         \begin{align*}
-          \frac{\G'}{\G}(z) &= \frac{d}{dz}\left(g(z)+O_{\e,\d}(1)\right) \\
-          &= g'(z)+\frac{d}{dz}(\log\G(z)-g(z)) \\
-          &= \log(z)+\frac{1}{2\pi i}\int_{|w-z| = r}\frac{\log\G(w)-g(w)}{(w-z)^{2}}\,dw,
+          \frac{\G'}{\G}(s) &= \frac{d}{ds}\left(g(s)+O_{\e,\d}(1)\right) \\
+          &= g'(s)+\frac{d}{ds}(\log\G(s)-g(s)) \\
+          &= \log(s)+\frac{1}{2\pi i}\int_{|u-s| = \eta}\frac{\log\G(u)-g(u)}{(u-s)^{2}}\,du,
         \end{align*}
-        for some sufficiently small radius $r > 0$ depending upon $\e$ and $\d$. Therefore
+        for some sufficiently small radius $\eta > 0$ depending upon $\e$ and $\d$. Therefore
         \[
-          \left|\frac{\G'}{\G}(z)-\log(z)\right| \le \frac{1}{2\pi}\int_{|w-z| = r}\frac{|\log\G(w)-g(w)|}{r^{2}}\,|dw| \ll_{\e,d} 1,
+          \left|\frac{\G'}{\G}(s)-\log(s)\right| \le \frac{1}{2\pi}\int_{|u-s| = \eta}\frac{|\log\G(u)-g(u)|}{\eta^{2}}\,|du| \ll_{\e,d} 1,
         \]
-        where the last estimate follows because $\log\G(z)-g(z) = O_{\e,d}(1)$.
+        where the last estimate follows because $\log\G(s)-g(s) = O_{\e,d}(1)$.
       \end{proof}
 
-      The last result we will need is an explicit representation for $\log\G(z)$ known as \textbf{Binet's log gamma formula}\index{Binet's log gamma formula}:
+      The last result we will need is an explicit representation for $\log\G(s)$ known as \textbf{Binet's log gamma formula}\index{Binet's log gamma formula}:
 
       \begin{proposition}[Binet's log gamma formula]
         \phantom{ }
         \[
-          \log\G(z) = \left(z-\frac{1}{2}\right)\G(z)-z+\frac{1}{2}\log(2\pi)+2\int_{0}^{\infty}\frac{\tan^{-1}\left(\frac{x}{z}\right)}{e^{2\pi x}-1}\,dx.
+          \log\G(s) = \left(s-\frac{1}{2}\right)\G(s)-s+\frac{1}{2}\log(2\pi)+2\int_{0}^{\infty}\frac{\tan^{-1}\left(\frac{x}{s}\right)}{e^{2\pi x}-1}\,dx.
         \]
       \end{proposition}

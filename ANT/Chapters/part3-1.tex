@@ -338,11 +338,11 @@
     \[
       A_{\psi}(X) = \sum_{n \ge 1}a(n)\psi\left(\frac{n}{X}\right) = \sum_{n \le X}a(n).
     \]
-    In the second case, we want $\psi(y)$ to dampen the $a(n)$ with a weight other than $1$ or $0$. Sums of this type are called \textbf{weighted}\index{weighted}. In any case, suppose the support of $\psi(y)$ is contained in $[0,M]$. These conditions will force the Mellin transform $\Psi(s)$ of $\psi(y)$ to exist and have nice properties. To see that $\Psi(s)$ exists, let $K$ be a compact set in the region $\s > 0$ and let $\b = \min_{s \in K}\{\s\}$. Note that $\psi(y)$ is bounded because it is compactly supported. Then for $s \in K$,
+    In the second case, we want $\psi(y)$ to dampen the $a(n)$ with a weight other than $1$ or $0$. Sums of this type are called \textbf{weighted}\index{weighted}. In any case, suppose the support of $\psi(y)$ is contained in $[0,M]$. These conditions will force the Mellin transform $\Psi(s)$ of $\psi(y)$ to exist and have nice properties. To see that $\Psi(s)$ exists, let $K$ be a compact set in $\C$ and let $\a = \min_{s \in K}\{\s\}$ and $\b = \min_{s \in K}\{\s\}$. Note that $\psi(y)$ is bounded because it is compactly supported. Then for $s \in K$,
     \[
-      \Psi(s) = \int_{0}^{\infty}\psi(y)y^{s}\,\frac{dy}{y} \ll \int_{0}^{M}y^{\s-1}\,dy = \frac{y^{\s}}{\s}\bigg|_{0}^{M} \le \frac{M^{\s}}{\b}.
+      \Psi(s) = \int_{0}^{\infty}\psi(y)y^{s}\,\frac{dy}{y} \ll \int_{0}^{M}y^{\s-1}\,dy \ll_{\a,\b} 1.
     \]
-    Therefore $\Psi(s)$ is locally absolutely uniformly bounded for $\s > 0$. In particular, the Mellin inversion formula implies that $\psi(y)$ is the Mellin inverse of $\Psi(s)$. As for nice properties, $\Psi(s)$ does not grow too fast in vertical strips:
+    Therefore $\Psi(s)$ is locally absolutely uniformly bounded for $s \in \C$. In particular, the Mellin inversion formula implies that $\psi(y)$ is the Mellin inverse of $\Psi(s)$. As for nice properties, $\Psi(s)$ does not grow too fast in vertical strips:
 
     \begin{proposition}\label{prop:smoothing_function_Mellin_inverse_vertical_strips}
       Suppose $\psi(y)$ is a bump function and let $\Psi(s)$ denote its Mellin transform. Then for any $N \ge 1$,
@@ -609,7 +609,7 @@
       \[
         \frac{\g(s+u,f)}{\g(s,f)} \ll \mathfrak{q}_{\infty}(s,f)^{\frac{\tau}{2}}e^{d_{f}\frac{\pi}{2}|r|},
       \]
-      for $s$ in the critical strip. By \cref{equ:choice_for_V_decay_estimate}, the integral defining $V_{s}(y)$ is locally absolutely uniformly bounded and we may shift the line of integration to $(M)$. In doing so, we pass by no poles and obtain
+      for $s$ in the critical strip. By \cref{equ:choice_for_V_decay_estimate}, the integral defining $V_{s}(y)$ is locally absolutely uniformly bounded and we may shift the line of integration to $(M)$. In doing so, we do not pass by any poles and obtain
       \[
         V_{s}(y) = \frac{1}{2\pi i}\int_{(M)}\frac{\g(s+u,f)}{\g(s,f)}\Phi(u)y^{-u}\frac{du}{u} \\
       \]
@@ -634,7 +634,7 @@
       \]
       where $\phi(y)$ is the inverse Mellin transform defined by
       \[
-        \phi(y) = \frac{1}{2\pi i}\int_{(a)}\Psi(1-s)q(f)^{s}\frac{\g(s,f)}{\g(1-s,f)}y^{-s}\,ds,
+        \phi(y) = \frac{1}{2\pi i}\int_{(a)}q(f)^{s}\frac{\g(s,f)}{\g(1-s,f)}y^{-s}\Psi(1-s)\,ds,
       \]
       for any $a > 1$. Moreover, $R$ is zero if $L(s,f)$ is entire, and otherwise
       \[
@@ -642,25 +642,21 @@
       \]
     \end{theorem}
     \begin{proof}
-      By the Mellin inversion formula,
+      By smoothed Perron's formula,
       \[
-        \psi(n) = \frac{1}{2\pi i}\int_{(a)}\Psi(s)n^{-s}\,ds.
+        \sum_{n \ge 1}a_{f}(n)\psi(n) = \frac{1}{2\pi i}\int_{(a)}L(s,f)\Psi(s)\,ds.
       \]
-      Summing over all $n \ge 1$, the dominated convergence theorem implies
+      By \cref{prop:smoothing_function_Mellin_inverse_vertical_strips,prop:L_function_bounded_in_vertical_strips}, the integrand has polynomial decay and therefore is locally absolutely uniformly bounded by \cref{met:decay_compacta_integral}. Shifting the line of integration to $(1-a)$, we pass by a potential pole at $s = 1$ from $L(s,f)$ and obtain
       \[
-        \sum_{n \ge 1}a_{f}(n)\psi(n) = \frac{1}{2\pi i}\int_{(a)}\Psi(s)L(s,f)\,ds.
-      \]
-      By \cref{prop:smoothing_function_Mellin_inverse_vertical_strips,prop:L_function_bounded_in_vertical_strips} the integrand has polynomial decay and therefore is locally absolutely uniformly bounded by \cref{met:decay_compacta_integral}. Shifting the line of integration to $(1-a)$, we pass by a potential pole at $s = 1$ from $L(s,f)$ and obtain
-      \[
-        \sum_{n \ge 1}a_{f}(n)\psi(n) = \frac{1}{2\pi i}\int_{(1-a)}\Psi(s)L(s,f)\,ds+R\Psi(1).
+        \sum_{n \ge 1}a_{f}(n)\psi(n) = \frac{1}{2\pi i}\int_{(1-a)}L(s,f)\Psi(s)\,ds+R\Psi(1).
       \]
       Applying the functional equation, we further have
       \[
-        \sum_{n \ge 1}a_{f}(n)\psi(n) = \frac{1}{2\pi i}\int_{(1-a)}\Psi(s)\e(f)q(f)^{\frac{1}{2}-s}\frac{\g(1-s,f)}{\g(s,f)}L(1-s,\conj{f})\,ds+R\Psi(1).
+        \sum_{n \ge 1}a_{f}(n)\psi(n) = \frac{1}{2\pi i}\int_{(1-a)}\e(f)q(f)^{\frac{1}{2}-s}\frac{\g(1-s,f)}{\g(s,f)}L(1-s,\conj{f})\Psi(s)\,ds+R\Psi(1).
       \]
       Performing the change of variables $s \to 1-s$ in this latter integral gives
       \[
-        \sum_{n \ge 1}a_{f}(n)\psi(n) = \frac{1}{2\pi i}\int_{(a)}\Psi(1-s)\e(f)q(f)^{s-\frac{1}{2}}\frac{\g(s,f)}{\g(1-s,f)}L(s,\conj{f})\,ds+R\Psi(1).
+        \sum_{n \ge 1}a_{f}(n)\psi(n) = \frac{1}{2\pi i}\int_{(a)}\e(f)q(f)^{s-\frac{1}{2}}\frac{\g(s,f)}{\g(1-s,f)}L(s,\conj{f})\Psi(1-s)\,ds+R\Psi(1).
       \]
       The proof is complete upon interchanging the sum over the Dirichlet series and the integral by the dominated convergence theorem and factoring out $\frac{\e(f)}{\sqrt{q(f)}}$.
     \end{proof}
@@ -1185,5 +1181,8 @@
       \[
         \sum_{n \ge 1}\L_{f}(n)\psi(n) = \frac{1}{2\pi i}\int_{(c)}-\frac{L'}{L}(s,f)\Phi(s)\,ds,
       \]
-      for any $c > $. Since the trivial zeros are isolated, let $\d > 0$ be such that there are no trivial zeros in the vertical strip $-\d \le \s < 0$. \todo{xxx}
+      for any $c > 1$. Since the trivial zeros are isolated, let $\d > 0$ be such that there are no trivial zeros in the vertical strip $-2\d \le \s < 0$. By \cref{prop:smoothing_function_Mellin_inverse_vertical_strips,prop:L_function_bounded_in_vertical_strips}, the integrand has polynomial decay and therefore is locally absolutely uniformly bounded by \cref{met:decay_compacta_integral}. Shifting the line of integration to $(-\d)$, we pass by simple poles at $s = 1$ and $s = \rho$ for every nontrivial zero $\rho$ and obtain
+      \[
+        \sum_{n \ge 1}\L_{f}(n)\psi(n) = \todo{xxx}
+      \]
     \end{proof}
