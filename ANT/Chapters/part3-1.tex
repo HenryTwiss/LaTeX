@@ -469,7 +469,7 @@
     \[
       \left\{s \in \C:\left|\s-\frac{1}{2}\right| \le \frac{1}{2}\right\}.
     \]
-    This is precisely the region where we cannot determine the value of an $L$-function from its representation as a Dirichlet series using the functional equation. It turns out that much of the important information about $L$-functions are contained inside of the critical strip. The \textbf{critical line}\index{critical line} is the line that bisects the critical strip vertically. So the critical line is $\s = \frac{1}{2}$ as displayed in \cref{fig:critical_strip}.
+    This is precisely the region where we cannot determine the value of an $L$-function from its representation as a Dirichlet series using the functional equation. It turns out that much of the important information about $L$-functions are contained inside of the critical strip. The \textbf{critical line}\index{critical line} is the line that bisects the critical strip vertically. So the critical line is $\s = \frac{1}{2}$ as displayed in \cref{fig:critical_strip}:
 
     \begin{figure}[ht]
       \centering
@@ -482,8 +482,11 @@
         \draw[dashed] (1,\ymin) -- (1,\ymax);
 
         \node at (0,0) [below left] {\tiny{$0$}};
+        \node at (0,0) [circle,fill,inner sep=1pt]{};
         \node at (1,0) [below left] {\tiny{$\frac{1}{2}$}};
+        \node at (1,0) [circle,fill,inner sep=1pt]{};
         \node at (2,0) [below left] {\tiny{$1$}};
+        \node at (2,0) [circle,fill,inner sep=1pt]{};
 
         \begin{scope}
           \path[clip] (0,\ymin) -- (0,\ymax) -- (2,\ymax) -- (2,\ymin) -- cycle;
@@ -673,10 +676,39 @@
     \[
       \rho \quad \text{and} \quad 1-\conj{\rho}.
     \]
-    We can sometimes say more. If $L(s,f)$ takes real values for $s > 1$, the Schwarz reflection principle implies $L(\conj{s},f) = \conj{L(s,f)}$ and that $L(s,f)$ takes real values on the entire real axis save for the possible poles at $s = 0$ and $ s = 1$. We find that $\conj{\rho}$ and $1-\conj{\rho}$ are nontrivial zeros too and therefore the nontrivial zeros of $L(s,f)$ come in sets of four:
+    We can sometimes say more. If $L(s,f)$ takes real values for $s > 1$, the Schwarz reflection principle implies $L(\conj{s},f) = \conj{L(s,f)}$ and that $L(s,f)$ takes real values on the entire real axis save for the possible poles at $s = 0$ and $ s = 1$. We find that $\conj{\rho}$ and $1-\conj{\rho}$ are nontrivial zeros too and therefore the nontrivial zeros of $L(s,f)$ come in sets of four and are displayed in \cref{fig:symmetric_nontrivial_zeros}:
     \[
       \rho, \quad \conj{\rho}, \quad 1-\rho, \quad \text{and} \quad 1-\conj{\rho}.
     \]
+
+    \begin{figure}[h]
+      \centering
+      \begin{tikzpicture}[scale=3]
+        \def\xmin{-0.5} \def\xmax{2.5}
+        \def\ymin{-1} \def\ymax{1}
+        \draw[thick] (\xmin,0) -- (\xmax,0);
+        \draw[very thick] (0,\ymin) -- (0,\ymax);
+        \draw[very thick] (2,\ymin) -- (2,\ymax);
+        \draw[dashed] (1,\ymin) -- (1,\ymax);
+
+        \node at (1.5,0.5) [circle,fill,inner sep=1pt]{};
+        \node at (1.5,0.5) [below] {\tiny{$\rho$}};
+        \node at (0.5,0.5) [circle,fill,inner sep=1pt]{};
+        \node at (0.5,0.5) [below] {\tiny{$1-\conj{\rho}$}};
+        \node at (1.5,-0.5) [circle,fill,inner sep=1pt]{};
+        \node at (1.5,-0.5) [below] {\tiny{$\conj{\rho}$}};
+        \node at (0.5,-0.5) [circle,fill,inner sep=1pt]{};
+        \node at (0.5,-0.5) [below] {\tiny{$1-\rho$}};
+
+        \begin{scope}
+          \path[clip] (0,\ymin) -- (0,\ymax) -- (2,\ymax) -- (2,\ymin) -- cycle;
+          \fill[gray,opacity=0.3] (0,\ymin) rectangle (2,\ymax);
+        \end{scope}
+        \end{tikzpicture}
+      \caption{Symmetric nontrivial zeros.}
+      \label{fig:symmetric_nontrivial_zeros}
+    \end{figure}
+
     The \textbf{(Selberg class) Riemann hypothesis}\index{(Selberg class) Riemann hypothesis} says that this symmetry should be as simple as possible:
 
     \begin{conjecture}[Riemann hypothesis, Selberg class version]
@@ -950,27 +982,16 @@
       \[
         N'(T,f) = \frac{1}{2\pi i}\int_{\eta}\frac{\xi'}{\xi}(s,f)\,ds+O(\log{\mathfrak{q}(iT,f)}),
       \]
-      where $\eta = \sum_{1 \le i \le 6}\eta_{i}$ is the contour in \cref{fig:zero_counting_contour}. Since $\log(s) = \log|s|+i\arg(s)$, we have
-      \[
-        \frac{1}{2\pi i}\int_{\eta}\frac{\xi'}{\xi}(s,f)\,ds = \frac{1}{2\pi i}\int_{\eta}\frac{d}{ds}\log|\xi(s,f)|\,ds+\frac{1}{2\pi }\int_{\eta}\frac{d}{ds}\arg\xi(s,f)\,ds = \frac{1}{2\pi}\D_{\eta}\arg(\xi(s,f)),
-      \]
-      where the last equality holds by parameterizing the curve $\eta$ and noting that $\eta$ is closed so that the first integral vanishes. For convenience, set $\eta_{L} = \eta_{1}+\eta_{2}+\eta_{3}$ and $\eta_{R} = \eta_{4}+\eta_{5}+\eta_{6}$. Recall that we have already shown $\xi(\conj{s},\conj{f}) = \conj{(\xi(s,f))}$. Using this fact along with the functional equation and that $-\arg(s) = \arg(\conj{s})$, we compute
-      \begin{align*}
-        \D_{\eta_{L}}\arg(\xi(s,f)) &= \D_{\eta_{L}}\arg\left(\e(f)\xi(1-s,\conj{f})\right) \\
-        &= -\D_{\conj{\eta_{R}}}\arg\left(\e(f)\xi(s,\conj{f})\right) \\
-        &= \D_{\conj{\eta_{R}}}\arg\left(\conj{\e(f)}\xi(\conj{s},f)\right) \\
-        &= \D_{\eta_{R}}\arg\left(\conj{\e(f)}\xi(s,f)\right) \\
-        &= \D_{\eta_{R}}\arg\left(\conj{\e(f)}\right)+\D_{\eta_{R}}\arg(\xi(s,f)) \\
-        &= \D_{\eta_{R}}\arg(\xi(s,f)).
-      \end{align*}
-
+      where $\eta = \sum_{1 \le i \le 6}\eta_{i}$ is the contour in \cref{fig:zero_counting_contour}:
+      
       \begin{figure}[h]
         \centering
         \begin{tikzpicture}[scale=3]
           \def\xmin{-1.5} \def\xmax{2.5}
           \def\ymin{-0.5} \def\ymax{2}
           \draw[thick] (\xmin,0) -- (\xmax,0);
-          \draw[thick] (0,\ymin) -- (0,\ymax);
+          \draw[very thick] (0,\ymin) -- (0,\ymax);
+          \draw[very thick] (1,\ymin) -- (1,\ymax);
           \draw[dashed] (0.5,\ymin) -- (0.5,\ymax);
 
           \draw[->-] (0.5,-0.1) -- (2,-0.1);
@@ -987,12 +1008,12 @@
           \node at (-1,0.7) [left] {\tiny{$\eta_{5}$}};
           \node at (-0.25,-0.1) [below] {\tiny{$\eta_{6}$}};
 
-          \node at (2,-0.1) [circle,fill,inner sep=1.5pt]{};
-          \node at (2,1.5) [circle,fill,inner sep=1.5pt]{};
-          \node at (0.5,1.5) [circle,fill,inner sep=1.5pt]{};
-          \node at (-1,1.5) [circle,fill,inner sep=1.5pt]{};
-          \node at (-1,-0.1) [circle,fill,inner sep=1.5pt]{};
-          \node at (0.5,-0.1) [circle,fill,inner sep=1.5pt]{};
+          \node at (2,-0.1) [circle,fill,inner sep=1pt]{};
+          \node at (2,1.5) [circle,fill,inner sep=1pt]{};
+          \node at (0.5,1.5) [circle,fill,inner sep=1pt]{};
+          \node at (-1,1.5) [circle,fill,inner sep=1pt]{};
+          \node at (-1,-0.1) [circle,fill,inner sep=1pt]{};
+          \node at (0.5,-0.1) [circle,fill,inner sep=1pt]{};
 
           \node at (2,-0.1) [below] {\tiny{$3-i\d$}};
           \node at (2,1.5) [above] {\tiny{$3+iT$}};
@@ -1001,9 +1022,23 @@
           \node at (-1,-0.1) [below] {\tiny{$-2-i\d$}};
           \node at (0.5,-0.1) [below left] {\tiny{$\frac{1}{2}-i\d$}};
         \end{tikzpicture}
-        \caption{A zero counting contour}
+        \caption{A zero counting contour.}
         \label{fig:zero_counting_contour}
       \end{figure}
+      
+      Since $\log(s) = \log|s|+i\arg(s)$, we have
+      \[
+        \frac{1}{2\pi i}\int_{\eta}\frac{\xi'}{\xi}(s,f)\,ds = \frac{1}{2\pi i}\int_{\eta}\frac{d}{ds}\log|\xi(s,f)|\,ds+\frac{1}{2\pi }\int_{\eta}\frac{d}{ds}\arg\xi(s,f)\,ds = \frac{1}{2\pi}\D_{\eta}\arg(\xi(s,f)),
+      \]
+      where the last equality holds by parameterizing the curve $\eta$ and noting that $\eta$ is closed so that the first integral vanishes. For convenience, set $\eta_{L} = \eta_{1}+\eta_{2}+\eta_{3}$ and $\eta_{R} = \eta_{4}+\eta_{5}+\eta_{6}$. Recall that we have already shown $\xi(\conj{s},\conj{f}) = \conj{(\xi(s,f))}$. Using this fact along with the functional equation and that $-\arg(s) = \arg(\conj{s})$, we compute
+      \begin{align*}
+        \D_{\eta_{L}}\arg(\xi(s,f)) &= \D_{\eta_{L}}\arg\left(\e(f)\xi(1-s,\conj{f})\right) \\
+        &= -\D_{\conj{\eta_{R}}}\arg\left(\e(f)\xi(s,\conj{f})\right) \\
+        &= \D_{\conj{\eta_{R}}}\arg\left(\conj{\e(f)}\xi(\conj{s},f)\right) \\
+        &= \D_{\eta_{R}}\arg\left(\conj{\e(f)}\xi(s,f)\right) \\
+        &= \D_{\eta_{R}}\arg\left(\conj{\e(f)}\right)+\D_{\eta_{R}}\arg(\xi(s,f)) \\
+        &= \D_{\eta_{R}}\arg(\xi(s,f)).
+      \end{align*}
 
       In other words, the change in argument along $\eta_{L}$ is equal to the change in argument along $\eta_{R}$ and so
       \[
@@ -1164,8 +1199,46 @@
   
       Take $c = \frac{c'}{1792}$. Now let $\b$ be a real nontrivial zero of $L(s,f)$. Since $\Re(\L_{f}(n)) \ge 0$ and $L(s,f)$ has a simple pole at $s = 1$, \cref{lem:non-vanshing_at_1_lemma} implies, upon shrinking $c$ if necessary, that there is at most one simple real zero $\b_{f}$ in the desired region. Note that $\b_{f} < 1$ since $L(s,f)$ is nonzero for $\s > 1$ and has a simple pole at $s = 1$. This completes the proof.
     \end{proof}
+    
+    \begin{figure}[h]
+      \centering
+      \begin{tikzpicture}[scale=3]
+        \def\xmin{-0.5} \def\xmax{2.5}
+        \def\ymin{-1} \def\ymax{1}
+        \draw[thick] (\xmin,0) -- (\xmax,0);
+        \draw[very thick] (0,\ymin) -- (0,\ymax);
+        \draw[very thick] (2,\ymin) -- (2,\ymax);
+        \draw[dashed] (1,\ymin) -- (1,\ymax);
 
-    Some comments are in order. The possible zero $b_{f}$ in \cref{thm:zero_free_region_generic} is referred to as a \text{Siegel zero}\index{Siegel zero} (or \textbf{exceptional zero}\index{exceptional zero}). Such zeros are conjectured to not exist. In full generality, \cref{thm:zero_free_region_generic} is the best result that one can hope for. It is possible to obtain better zero-free regions in certain cases but this heavily depends upon the particular $L$-function of interest and hence the arithmetic object $f$ attached to $L(s,f)$. In particular, in many cases it is possible to augment the proof of \cref{thm:zero_free_region_generic} to make the constant $c$ effective and such results have important applications. Lastly, in the case that $L(s,f)$ is of Selberg class, the conclusion of \cref{thm:zero_free_region_generic} is expected to hold without the possibly of a Siegel zero since $L(s,f)$ is expected to satisfy the (Selberg class) Riemann hypothesis. Nevertheless, we can often satisfy the assumptions of \cref{thm:zero_free_region_generic}. Indeed, if $\a_{i}(p) \ge 0$ then the assumptions are satisfied immediately. If not, since $|\a_{i}(p)| \le 1$ the assumptions will hold for $\z(s)L(s,f)$ provided $L(s,f)$ does not have a pole at $s = 1$. This is often possible to prove in practice since $L(s,f)$ is expected to be entire unless $\a_{i}(p) \ge 0$.
+        \node at (1.7,0) [circle,fill,inner sep=1pt]{};
+        \node at (1.7,0) [below] {\tiny{$\b_{f}$}};
+        \node at (0.3,0) [circle,fill,inner sep=1pt]{};
+        \node at (0.3,0) [below] {\tiny{$1-\b_{f}$}};
+
+        \draw[domain=-1:1,variable=\y] plot({1.5-((0.3)/ln(3+abs(\y)))},\y);
+        \draw[domain=-1:1,variable=\y] plot({0.5+((0.3)/ln(3+abs(\y)))},\y);
+
+        \fill [gray,opacity=0.3,domain=-1:1,variable=\y]
+        (1.5,1)
+        -- (2,1) 
+        -- (2,-1)
+        -- (1.5,-1)
+        -- plot({1.5-((0.3)/ln(3+abs(\y)))},\y)
+        -- cycle;
+
+        \fill [gray,opacity=0.3,domain=-1:1,variable=\y]
+        (0.5, 1)
+        -- (0,1) 
+        -- (0,-1)
+        -- (0,-1)
+        -- plot({0.5+((0.3)/ln(3+abs(\y)))},\y)
+        -- cycle;
+        \end{tikzpicture}
+      \caption{The symmetric zero-free region in \cref{thm:zero_free_region_generic}.}
+      \label{fig:symmetric_zero_free_region}
+    \end{figure}
+    
+    Some comments are in order. Since the zeros of $L(s,f)$ occur in pairs $\rho$ and $1-\conj{\rho}$, the zero-free region in \cref{thm:zero_free_region_generic} implies a symmetric zero-free region about the critical line with at most one real zero in each half as displayed in \cref{fig:symmetric_zero_free_region}. The possible simple zero $b_{f}$ in \cref{thm:zero_free_region_generic} is referred to as a \textbf{Siegel zero}\index{Siegel zero} (or \textbf{exceptional zero}\index{exceptional zero}). Such zeros are conjectured to not exist. In full generality, \cref{thm:zero_free_region_generic} is the best result that one can hope for. It is possible to obtain better zero-free regions in certain cases but this heavily depends upon the particular $L$-function of interest and hence the arithmetic object $f$ attached to $L(s,f)$. In many cases it is possible to augment the proof of \cref{thm:zero_free_region_generic} to make the constant $c$ effective and such results have important applications. If $L(s,f)$ is of Selberg class, the conclusion of \cref{thm:zero_free_region_generic} is expected to hold without the possibly of a Siegel zero since $L(s,f)$ is expected to satisfy the (Selberg class) Riemann hypothesis. Nevertheless, we can often satisfy the assumptions of \cref{thm:zero_free_region_generic}. Indeed, if $\a_{i}(p) \ge 0$ then the assumptions are satisfied immediately. If not, since $|\a_{i}(p)| \le 1$ the assumptions will hold for $\z(s)L(s,f)$ provided $L(s,f)$ does not have a pole at $s = 1$. This is often possible to prove in practice since $L(s,f)$ is expected to be entire unless $\a_{i}(p) \ge 0$. 
   \section{The Explicit Formula}
     A formula somewhat analogous to the approximate functional equation can be derived for the negative logarithmic derivative of any $L$-function. This formula is called the the \textbf{explicit formula}\index{explicit formula}:
 
