@@ -885,12 +885,16 @@
           \Re(B(f)) = -\sum_{\rho \neq 0,1}\Re\left(\frac{1}{\rho}\right),
         \]
         where the sum is counted with multiplicity and ordered with respect to the size of the ordinate.
-        \item For any $T > 0$, the number of nontrivial zeros $\rho = \b+i\g$ with $\rho \neq 0,1$ and such that $|T-\g| \le 1$ is $O(\log{\mathfrak{q}(iT,f)})$.
+        \item For any $T \ge 0$, the number of nontrivial zeros $\rho = \b+i\g$ with $\rho \neq 0,1$ and such that $|T-\g| \le 1$ is $O(\log{\mathfrak{q}(iT,f)})$.
+        \item For $\s > 1$, we have
+        \[
+          \Re\left(\frac{1}{s-\rho}\right) > 0 \quad \text{and} \quad \Re\left(\frac{1}{s+\k_{j}}\right) > 0.
+        \]
         \item We have
         \[
-          \frac{L'}{L}(s,f)+\frac{r_{f}}{s}+\frac{r_{f}}{s-1}-\sum_{|s+\k_{j}| < 1}\frac{1}{s+\k_{j}}-\sum_{\substack{|s-\rho| < 1 \\ \rho \neq 0,1}}\frac{1}{s-\rho} \ll \log{\mathfrak{q}(s,f)},
+          -\frac{L'}{L}(s,f) = \frac{r_{f}}{s}+\frac{r_{f}}{s-1}-\sum_{|s+\k_{j}| < 1}\frac{1}{s+\k_{j}}-\sum_{\substack{|s-\rho| < 1 \\ \rho \neq 0,1}}\frac{1}{s-\rho}+O(\log{\mathfrak{q}(s,f)}),
         \]
-        for any $s$ in the vertical strip $-\frac{1}{2} \le \s \le 2$.
+        for any $s$ in the vertical strip $-\frac{1}{2} \le \s \le 2$. Moreover, upon taking the real part of this estimate, we may discard any of the terms in either sum.
       \end{enumerate}
     \end{lemma}
     \begin{proof}
@@ -917,7 +921,7 @@
         \begin{equation}\label{equ:log_conductor_gamma_factor_bound_analytic_conductor}
           \frac{1}{2}\log{q(f)}+\frac{\g'}{\g}(s,f) \ll \log{\mathfrak{q}(s,f)},
         \end{equation}
-        for $\s > 0$. Now fix $T > 0$ and let $s = 3+iT$. Then taking the real part of the formula for the negative logarithmic derivative in \cref{prop:explicit_formula_log_derivative} and combining \cref{equ:log_derivative_bound_conductor,equ:log_conductor_gamma_factor_bound_analytic_conductor} with (i), results in
+        for $\s > 0$. Now fix $T \ge 0$ and let $s = 3+iT$. Taking the real part of the formula for the negative logarithmic derivative in \cref{prop:explicit_formula_log_derivative} and combining \cref{equ:log_derivative_bound_conductor,equ:log_conductor_gamma_factor_bound_analytic_conductor} with (i) results in
         \[
           \sum_{\rho \neq 0,1}\Re\left(\frac{1}{s-\rho}\right) \ll \log{\mathfrak{q}(iT,f)}.
         \]
@@ -929,32 +933,38 @@
         \begin{equation}\label{equ_sum_of_nontrivial_zeros_log_analytic_conductor_bound}
           \sum_{\rho \neq 0,1}\frac{1}{1+(T-\g)^{2}} \ll \log{\mathfrak{q}(iT,f)},
         \end{equation}
-        which is stronger than (ii) since all of the terms in the sum are positive.
-        \item To deduce (iii), let $s$ belong to the vertical strip $-\frac{1}{2} \le \s \le 2$. Using that \cref{equ:log_derivative_bound_conductor}, we can write
+        which is stronger than the first statement of (ii) since all of the terms in the sum are positive. The second statement is also clear.
+        \item For (iii), just observe that
+        \[
+          \Re\left(\frac{1}{s-\rho}\right) = \frac{\s-\b}{(\s-\b)^{2}+(t-
+          g)^{2}} > 0 \quad \text{and} \quad \Re\left(\frac{1}{s+\k_{j}}\right) = \frac{\s+\Re(\k_{j})}{(\s+\Re(\k_{j}))^{2}+(t+\Im(\k_{j}))^{2}} > 0,
+        \]
+        where the first bound holds because $\b < 1$ and the second bound holds because $\Re(\k_{j}) > -1$.
+        \item To deduce (iv), let $s$ belong to the vertical strip $-\frac{1}{2} \le \s \le 2$. Using that \cref{equ:log_derivative_bound_conductor}, we can write
         \[
           -\frac{L'}{L}(s,f) = -\frac{L'}{L}(s,f)+\frac{L'}{L}(3+it,f)+O(\log{\mathfrak{q}(s,f)}).
         \]
-        Applying the formula for the negative logarithmic derivative in \cref{prop:explicit_formula_log_derivative} to the two terms on the right hand side and using that $\frac{\g'}{\g}(s,f) \ll \log{\mathfrak{q}_{\infty}(s,f)}$, we get
+        Applying the formula for the negative logarithmic derivative in \cref{prop:explicit_formula_log_derivative} to the two terms on the right-hand side and using that $\frac{\g'}{\g}(s,f) \ll \log{\mathfrak{q}_{\infty}(s,f)}$ given $\s > 0$, we get
         \[
-          -\frac{L'}{L}(s,f) = \frac{\g'}{\g}(s,f)+\frac{r_{f}}{s}+\frac{r_{f}}{s-1}-\sum_{\rho \neq 0,1}\left(\frac{1}{s-\rho}-\frac{1}{3+it-\rho}\right)+O(\log{\mathfrak{q}(s,f)}).
+          -\frac{L'}{L}(s,f) = \frac{r_{f}}{s}+\frac{r_{f}}{s-1}+\frac{\g'}{\g}(s,f)-\sum_{\rho \neq 0,1}\left(\frac{1}{s-\rho}-\frac{1}{3+it-\rho}\right)+O(\log{\mathfrak{q}(s,f)}).
         \]
-        We now estimate the remaining sum. Retain the terms for which $|s-\rho| < 1$. For those terms with $|s-\rho| \ge 1$, we have
+        We now estimate the remaining sum. Retain the first part of the terms for which $|s-\rho| < 1$. The contribution from the second part of these terms is $O(\log{\mathfrak{q}(it,f)})$ by (ii). For those terms with $|s-\rho| \ge 1$, we have
         \[
           \left|\frac{1}{s-\rho}-\frac{1}{3+it-\rho}\right| \le \frac{3-\s}{(3-\b)^{2}+(t-\g)^{2}} \le \frac{3}{1+(t-\g)^{2}}.
         \]
-        Therefore from \cref{equ_sum_of_nontrivial_zeros_log_analytic_conductor_bound} (with $t = T$), the contribution of these terms is $O(\log{\mathfrak{q}(s,f)})$. It follows that
+        Therefore from \cref{equ_sum_of_nontrivial_zeros_log_analytic_conductor_bound}, the contribution of these terms is $O(\log{\mathfrak{q}(it,f)})$ too. It follows that
         \[
-          -\frac{L'}{L}(s,f) = \frac{\g'}{\g}(s,f)+\frac{r_{f}}{s}+\frac{r_{f}}{s-1}-\sum_{\substack{|s-\rho| < 1 \\ \rho \neq 0,1}}\left(\frac{1}{s-\rho}-\frac{1}{3+it-\rho}\right)+O(\log{\mathfrak{q}(s,f)}).
+          -\frac{L'}{L}(s,f) = \frac{r_{f}}{s}+\frac{r_{f}}{s-1}+\frac{\g'}{\g}(s,f)-\sum_{\substack{|s-\rho| < 1 \\ \rho \neq 0,1}}\frac{1}{s-\rho}+O(\log{\mathfrak{q}(s,f)}).
         \]
         Lastly, from the definition of $\g(s,f)$ and that $\G(s) = s^{-1}\G(s+1)$, we have
         \[
           \frac{\g'}{\g}(s,f) = -\frac{d_{f}}{2}\log(\pi)-\sum_{1 \le j \le d_{f}}\frac{1}{s+\k_{j}}+\sum_{1 \le j \le d_{f}}\frac{1}{2}\frac{\G'}{\G}\left(1+\frac{s+\k_{j}}{2}\right) = -\sum_{|s+\k_{j}| < 1}\frac{1}{s+\k_{j}}+O(\log{\mathfrak{q}_{\infty}(s,f)}),
         \]
-        where in the last line we have made use of the estimate $\frac{\G'}{\G}(s) \ll \log(|s|+1)$ provided by \cref{equ:approximtion_for_digamma} given $\s > 0$. It follows that
+        where in the last line we have made use of the estimate $\frac{\G'}{\G}(s) \ll \log(|s|+1)$ provided by \cref{equ:approximtion_for_digamma} given $\s > 0$. Then
         \[
-          -\frac{L'}{L}(s,f) = \frac{r_{f}}{s}+\frac{r_{f}}{s-1}-\sum_{|s+\k_{j}| < 1}\frac{1}{s+\k_{j}}-\sum_{\substack{|s-\rho| < 1 \\ \rho \neq 0,1}}\left(\frac{1}{s-\rho}-\frac{1}{3+it-\rho}\right)+O(\log{\mathfrak{q}(s,f)}).
+          -\frac{L'}{L}(s,f) = \frac{r_{f}}{s}+\frac{r_{f}}{s-1}-\sum_{|s+\k_{j}| < 1}\frac{1}{s+\k_{j}}-\sum_{\substack{|s-\rho| < 1 \\ \rho \neq 0,1}}\frac{1}{s-\rho}+O(\log{\mathfrak{q}(s,f)}),
         \]
-        This is equivalent to (iii).
+        which is the first statement of (iv). The second statement follows immediately from (iii).
       \end{enumerate}
     \end{proof}
 
@@ -985,7 +995,21 @@
       \]
       where $\eta = \sum_{1 \le i \le 6}\eta_{i}$ is the contour in \cref{fig:zero_counting_contour}:
       
-      \begin{figure}[h]
+      Since $\log(s) = \log|s|+i\arg(s)$, we have
+      \[
+        \frac{1}{2\pi i}\int_{\eta}\frac{\xi'}{\xi}(s,f)\,ds = \frac{1}{2\pi i}\int_{\eta}\frac{d}{ds}\log|\xi(s,f)|\,ds+\frac{1}{2\pi }\int_{\eta}\frac{d}{ds}\arg\xi(s,f)\,ds = \frac{1}{2\pi}\D_{\eta}\arg(\xi(s,f)),
+      \]
+      where the last equality holds by parameterizing the curve $\eta$ and noting that $\eta$ is closed so that the first integral vanishes. For convenience, set $\eta_{L} = \eta_{1}+\eta_{2}+\eta_{3}$ and $\eta_{R} = \eta_{4}+\eta_{5}+\eta_{6}$. Recall that we have already shown $\xi(\conj{s},\conj{f}) = \conj{(\xi(s,f))}$. Using this fact along with the functional equation and that $-\arg(s) = \arg(\conj{s})$, we compute
+      \begin{align*}
+        \D_{\eta_{L}}\arg(\xi(s,f)) &= \D_{\eta_{L}}\arg\left(\e(f)\xi(1-s,\conj{f})\right) \\
+        &= -\D_{\conj{\eta_{R}}}\arg\left(\e(f)\xi(s,\conj{f})\right) \\
+        &= \D_{\conj{\eta_{R}}}\arg\left(\conj{\e(f)}\xi(\conj{s},f)\right) \\
+        &= \D_{\eta_{R}}\arg\left(\conj{\e(f)}\xi(s,f)\right) \\
+        &= \D_{\eta_{R}}\arg\left(\conj{\e(f)}\right)+\D_{\eta_{R}}\arg(\xi(s,f)) \\
+        &= \D_{\eta_{R}}\arg(\xi(s,f)).
+      \end{align*}
+
+      \begin{figure}[ht]
         \centering
         \begin{tikzpicture}[scale=3]
           \def\xmin{-1.5} \def\xmax{2.5}
@@ -1026,20 +1050,6 @@
         \caption{A zero counting contour.}
         \label{fig:zero_counting_contour}
       \end{figure}
-      
-      Since $\log(s) = \log|s|+i\arg(s)$, we have
-      \[
-        \frac{1}{2\pi i}\int_{\eta}\frac{\xi'}{\xi}(s,f)\,ds = \frac{1}{2\pi i}\int_{\eta}\frac{d}{ds}\log|\xi(s,f)|\,ds+\frac{1}{2\pi }\int_{\eta}\frac{d}{ds}\arg\xi(s,f)\,ds = \frac{1}{2\pi}\D_{\eta}\arg(\xi(s,f)),
-      \]
-      where the last equality holds by parameterizing the curve $\eta$ and noting that $\eta$ is closed so that the first integral vanishes. For convenience, set $\eta_{L} = \eta_{1}+\eta_{2}+\eta_{3}$ and $\eta_{R} = \eta_{4}+\eta_{5}+\eta_{6}$. Recall that we have already shown $\xi(\conj{s},\conj{f}) = \conj{(\xi(s,f))}$. Using this fact along with the functional equation and that $-\arg(s) = \arg(\conj{s})$, we compute
-      \begin{align*}
-        \D_{\eta_{L}}\arg(\xi(s,f)) &= \D_{\eta_{L}}\arg\left(\e(f)\xi(1-s,\conj{f})\right) \\
-        &= -\D_{\conj{\eta_{R}}}\arg\left(\e(f)\xi(s,\conj{f})\right) \\
-        &= \D_{\conj{\eta_{R}}}\arg\left(\conj{\e(f)}\xi(\conj{s},f)\right) \\
-        &= \D_{\eta_{R}}\arg\left(\conj{\e(f)}\xi(s,f)\right) \\
-        &= \D_{\eta_{R}}\arg\left(\conj{\e(f)}\right)+\D_{\eta_{R}}\arg(\xi(s,f)) \\
-        &= \D_{\eta_{R}}\arg(\xi(s,f)).
-      \end{align*}
 
       In other words, the change in argument along $\eta_{L}$ is equal to the change in argument along $\eta_{R}$ and so
       \[
@@ -1072,7 +1082,7 @@
       For the factor $\prod_{1 \le j \le d_{f}}\G\left(\frac{s+\k_{j}}{2}\right)$, we first use \cref{equ:log_gamma_estimate}, valid since $T \ge 1$, and that $\arg(s) = \Im(\log(s))$ to obtain
       \begin{align*}
         \D_{\eta_{L}}\arg\G(s) &= \Im(\log\G(s))\bigg|_{\frac{1}{2}-i\d}^{\frac{1}{2}+iT} \\
-        &= T\log\left|\frac{1}{2}+iT\right|-T+\d\log\left|\frac{1}{2}+i\d\right|-\d+O(1) \\
+        &= T\log\left|\frac{1}{2}+iT\right|-T+\d\log\left|\frac{1}{2}+i\d\right|-\d+O(1) \\Lemma 6.9.1 (iii)
         &= T\log(T)-T+O(1) \\
         &= T\log\left(\frac{T}{e}\right)+O(1).
       \end{align*}
@@ -1084,7 +1094,7 @@
       \[
         \D_{\eta_{L}}\arg(L(s,f)) = \Im(\log{L(s,f)})\bigg|_{\frac{1}{2}-i\d}^{\frac{1}{2}+iT} = \Im\left(\int_{\eta_{L}}\frac{L'}{L}(s,f)\,ds\right).
       \]
-      By \cref{equ:log_derivative_bound_conductor}, the integral is $O(\log{q(f)})$ on $\eta_{2}$. On $\eta_{1}$ and $\eta_{3}$, \cref{lem:powerful_L-function_approximation_lemma} (ii) and (iii) together imply that the integral is $O(\log{\mathfrak{q}(iT,f)})$. It follows that
+      By \cref{equ:log_derivative_bound_conductor}, the integral is $O(\log{q(f)})$ on $\eta_{2}$. On $\eta_{1}$ and $\eta_{3}$, \cref{lem:powerful_L-function_approximation_lemma} (ii) and (iv) together imply that the integral is $O(\log{\mathfrak{q}(iT,f)})$. It follows that
       \begin{equation}\label{equ:zero_counting_5}
         \D_{\eta_{L}}\arg(L(s,f)) = O(\log{\mathfrak{q}(iT,f)}).
       \end{equation}
@@ -1127,12 +1137,7 @@
       \]
     \end{lemma}
     \begin{proof}
-      First observe that for $\s > 1$ and any nontrivial zero $\rho$, we have
-      \[
-        \Re\left(\frac{1}{s-\rho}\right) = \frac{\s-\b}{(\s-\b)^{2}+(t-
-        g)^{2}} > 0.
-      \]
-      So upon taking the real part of the bound in \cref{lem:powerful_L-function_approximation_lemma} (iii), we may disregard any of the nontrivial zeros in the second sum provided $1 < \s < 2$. Now let $\b_{j}$ be a real nontrivial zero with $\frac{1}{2} \le \b_{j} \le 1$. There are finitely many $\b_{j}$ since they belong to the compact interval $\frac{1}{2} \le s \le 1$ so we have $1 \le j \le n$ for some $n \ge 1$. Letting $1 < \s < \frac{3}{2}$, and disregarding all but the nontrivial zeros $\b_{j}$ in the real part of of the bound in \cref{lem:powerful_L-function_approximation_lemma} (iii) (with $s = \s$), we obtain the inequality
+      Let $\b_{j}$ be a real nontrivial zero with $\frac{1}{2} \le \b_{j} \le 1$. There are finitely many $\b_{j}$ since they belong to the compact interval $\frac{1}{2} \le s \le 1$ so we have $1 \le j \le n$ for some $n \ge 1$. Letting $1 < \s \le 2$, and applying \cref{lem:powerful_L-function_approximation_lemma} (iv) while discarding all the terms except those corresponding to the nontrivial zeros $\b_{j}$, we obtain the inequality
       \[
         \sum_{1 \le j \le n}\frac{1}{\s-\b_{j}} < \frac{r_{f}}{\s-1}+\Re\left(\frac{L'}{L}(\s,f)\right)+O(\log{\mathfrak{q}(f)}).
       \]
@@ -1148,11 +1153,11 @@
       \[
         \sum_{1 \le j \le n}\frac{1}{\s-\b_{j}} < \frac{r_{f}}{\s-1}+O(\log{d_{f}\mathfrak{q}(f)}).
       \]
-      From this inequality we see that $\b_{j} \neq 1$. For if some $\b_{j} = 1$, $r_{f} < 0$ and the right hand side is negative for $\s$ sufficiently close to $1$ contradicting the positivity of the left-hand side. Thus $L(1,f) \neq 0$ and hence $r_{f} \ge 0$. As there are finitely many $\b_{j}$, there exists a $c > 0$ such that the $\b_{j}$ satisfy
+      From this inequality we see that $\b_{j} \neq 1$. For if some $\b_{j} = 1$, $r_{f} < 0$ and the right-hand side is negative for $\s$ sufficiently close to $1$ contradicting the positivity of the left-hand side. Thus $L(1,f) \neq 0$ and hence $r_{f} \ge 0$. As there are finitely many $\b_{j}$, there exists a $c > 0$ such that the $\b_{j}$ satisfy
       \[
         \b_{j} \ge 1-\frac{c}{d_{f}(r_{f}+1)\log{\mathfrak{q}(f)}}.
       \]
-      Setting $\s = 1+\frac{2c}{d_{f}\log{\mathfrak{q}(f)}}$ and choosing $c$ smaller, if necessary, we guarantee $1 < \s < \frac{3}{2}$. Then the two inequalities above together imply
+      Setting $\s = 1+\frac{2c}{d_{f}\log{\mathfrak{q}(f)}}$ and choosing $c$ smaller, if necessary, we guarantee $1 < \s \le 2$. Then the two inequalities above together imply
       \[
         \frac{nd_{f}\log{\mathfrak{q}(f)}}{2c+\frac{c}{(r_{f}+1)}} < \left(\frac{r_{f}}{2c}+O(1)\right)d_{f}\log{\mathfrak{q}(f)}.
       \]
