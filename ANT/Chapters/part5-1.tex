@@ -1,5 +1,189 @@
 \chapter{Moments}
-  \section{\todo{Probabilistic Interpretation of \texorpdfstring{$L$}{L}-functions}}
-  \section{\todo{Families of \texorpdfstring{$L$}{L}-functions}}
-  \section{\todo{Random Matrix Theory Conjectures}}
+  \section{The Katz-Sarnak Philosophy}
+    The \textbf{Katz-Sarnak philosophy}\index{Katz-Sarnak philosophy} is the idea that statistics of various kinds of $L$-functions should, in the limit, match statistics for random matrices coming from some particular classical compact group. One starts with some class of nontrivial zeros to look at and then normalizes these zeros. It is these rescaled nontrivial zeros that one works with when estimating the statistics. Then some class of test functions are introduced in order to carry out the statistical calculations which reveals the similarity to statistics for some class of random matrices.
+    \subsection*{The Work of Montgomery \& Dyson}
+      Historically, the beginning of the connection between random matrix theory and analytic number theory was at Princeton in the 1970s via discussions between H.L. Montgomery and F.J. Dyson. In particular, they discovered that there were similarities between statistical information about the distribution of the zeros of the Riemann zeta function and calculations in random matrix theory about unitary matrices (see \todo{cite}). For starters, if $\rho = \b+i\g$ is a nontrivial zero of an $L$-function $L(s,f)$, then we define the \textbf{unfolded zero}\index{unfolded zero} $\w$ to be
+      \[
+        \w = \b+i\frac{\g}{\pi}\log\left(\frac{q(f)|\g|^{d_{f}}}{(2\pi e)^{d_{f}}}\right),
+      \]
+      and write $\w = \b+i\eta$ for simplicity. For any $W > 0$, define
+      \[
+        M(W,f) = |\{\w = \b+i\eta \in \C:L(\rho,f) = 0 \text{ with } 0 \le \b \le 1 \text{ and } |\eta| \le W\}|.
+      \]
+      Then we have the following density result:
+
+      \begin{theorem}\label{thm:unfolded_zeros_are_unit_dense}
+      For and $L$-function $L(s,f)$ and $W \ge 1$,
+      \[
+        \frac{M(W,f)}{W} \sim 1.
+      \]
+      \end{theorem}
+      \begin{proof}
+        If $|\eta| \le W$, then we obtain the weaker estimate
+        \[
+          |\g| \le \frac{\pi W}{\log\left(\frac{q(f)}{(2\pi e)^{d_{f}}}\right)}.
+        \]
+        By \cref{cor:zero_density} with $T = \frac{\pi W}{\log\left(\frac{q(f)}{(2\pi e)^{d_{f}}}\right)}$, it follows that
+        \[
+          \frac{M(W)}{W} = \frac{N(T)}{W} \sim \frac{1}{\pi}\log\left(\frac{T^{d_{f}}}{(2\pi e)^{d_{f}}}\right).
+        \]
+      \end{proof}
+
+      We interpret \cref{thm:zeros_of_zeta_are_log_dense} as saying that the zeros of $\z(s)$ are logarithmically dense on the critial line. That is, they tend to accumulate as one moves up the crtitical line. The purpose of using the unfolding the zeros is to dispense with this clustering. The effect is that the unfolded zeros have unit spacing between each other on average since the limit in the theorem is $1$. Now we can consider the \textbf{two-point correlation function}\index{two-point correlation function}
+      \[
+        F_{\z}(\a,\b;W) = \frac{1}{W}\#\{w_{n},w_{m} \le W: w_{n}-w_{m} \in [\a,\b]\},
+      \]
+      for any real $\a < \b$ and $W > 0$. What this function measures is the probability of how close pairs of zeros tend to be with respect to some fixed distance ($\b-\a$) be up to some height ($W$). That is, the correlation be distances of zeros. We want to understand if the limiting distribution
+      \[
+        F_{\z}(\a,\b;) = \lim_{W \to \infty}F_{\z}(\a,\b;W),
+      \]
+      exists and what we can say about it. Now Montgomery conjectured the following (see \todo{cite}):
+
+      \begin{theorem}\label{conj:Montgomery_distribution_of_zeros_of_zeta}
+      $F_{\z}(\a,\b;)$ exists and moreover,
+      \[
+        F_{\z}(\a,\b;) = \int_{\a}^{\b}1-\left(\frac{\sin(\pi x)}{\pi x}\right)^{2}+\d(x)\,dx,
+      \]
+      where $\d(x)$ is the Dirac delta distribution. 
+      \end{theorem}        
+        Suprisingly, \cref{conj:Montgomery_distribution_of_zeros_of_zeta} mimics a similar situation in random matrix theory. One can consider and $N \x N$ unitary matrix $A \in U(N)$ with eigenvalues $e^{i\t_{n}}$ for $1 \le n \le N$ on the unit circle. The average density is cleary $\frac{N}{2\pi}$, but we can construct a two-point correlation function with resct to the eigenphases $\t_{n}$:
+      \[
+        F_{U}(\a,\b;A,N) = \frac{1}{N}\#\{\t_{n},\t_{m}:\a \le \t_{n}-t_{m} \le \b\}.
+      \]
+      Since $U(N)$ has a natrual Haar measure $dA$ we can compute the average of $F(\a,\b;A,N)$ over the group:
+      \[
+        F_{U}(\a,\b;N) = \int_{U(N)}F(\a,\b;A,N)\,dA.
+      \]
+      If we take the limit as $N \to \infty$, F.J. Dyson showed the following:
+
+      \begin{theorem}\label{thm:Dyson_unitary_distribution}
+      \phantom{ }
+      \[
+        F_{U}(\a,b) = \int_{\a}^{\b}1-\left(\frac{\sin(\pi x)}{\pi x}\right)^{2}+\d(x)\,dx.
+      \]
+      \end{theorem}
+
+      The right-hand side of \cref{thm:Dyson_unitary_distribution} is exactly Montgomery's prediction in \cref{conj:Montgomery_distribution_of_zeros_of_zeta} for the two-point correlation function for $\z(s)$. We can think of this as follows: the two-point correlation of the zeros of $\z(s)$ in the limit as we move up the critical line exactly match the two-point correlation of the eigenphases of unitary matrices in the limit of the size of the matrices. In short, statistical information about $\z(s)$ agrees with statistical information about the eigenvalues of unitary matrices.
+    \subsection*{Families of \texorpdfstring{$L$}{L}-functions}
+      Katz and Sarnak generalized the connection between statistical information of the zeros of $\z(s)$ and random unitary matrices to other $L$-functions. Moreover, they established a connection between specific families of similar $L$-functions and other compact matrix groups. The following expands upon this relationship.
+
+      To each family of $L$-functions, yet to be explained, there is an associated \textbf{symmetry type}\index{symmetry type} coming from a compact group (or compact quotient) of matrices. In this setting, these groups (not the quotients) are refered to as \textbf{matrix ensembles}\index{matrix ensembles}:
+      \begin{center}
+        \begin{stabular}[1.5]{|c|c|c|}
+          \hline
+          Symmetry Type & Matrix Ensemble \\
+          \hline
+          $\U$ Unitary & $\U(N)$ the group of $N \x N$ unitary matrices \\
+          \hline
+          $\SO$ Orthgonal & $\SO(N)$ the group of $N \x N$ special orthogonal matrices \\
+          \hline
+          $\mathrm{USp}$ Symplectic & $\mathrm{USp}(2N)$ the group of $2N \x 2N$ unitary symplectic matrices \\
+          \hline
+          $\mathrm{COE}$ Circular Orthgonal Ensemble & $\U(N)/\O(N)$ \\
+          \hline
+          $\mathrm{CSE}$ Circular Symplectic Ensemble & $\U(2N)/\mathrm{USp}(2N)$ \\
+          \hline
+        \end{stabular}
+      \end{center}
+      Now let $G(N)$ be any of the ensembles. Let $dA$ denote the Haar measure and for any $A \in G(N)$ lable the eigenphases as $\t_{n}$ for $1 \le n \le N$ in increasing order. One of the statistics that Katz and Sarnak investigated was the \textbf{$k$-th consecutive spacing}\index{$k$-th consecutive spacing}:
+      \[
+        \mu_{k}(A)[a,b] = \frac{1}{N}\#\left\{1 \le j \le N:\frac{N}{2\pi}(\t_{j+k}-\t_{j}) \in [a,b]\right\},
+      \]
+      for any $a < b$. They were able the prove the following result (see \todo{cite}):
+
+      \begin{theorem}
+        For any $a < b$ and $k \ge 1$,
+        \[
+          \lim_{N \to \infty}\int_{G(N)}\mu_{k}(A)[a,b]\,dA = \mu_{k}[a,b].
+        \]
+      \end{theorem}
+
+      That is, the average of $\mu_{k}(A)[a,b]$ for any of the matrix ensembles, in the limit of the size of the matrices, is independent of the particular ensemble chosen. On the other hand, there are statistics that depend on the particular ensemble chosen. For example we can define the distribution of the $k$-th eigenphase over $G(N)$ as follows:
+      \[
+        \nu_{k}(G(N))[a,b] = dA\left(\left\{A \in G(N):\frac{\t_{k}(A)N}{2\pi} \in [a,b]\right\}\right),
+      \]
+      where $\t_{k}(A)$ is the $k$-th eigenphase of $A$. Katz and Sarnak showed that 
+      \[
+        \nu_{k}(G)[a,b] = \lim_{N \to \infty}\nu_{k}(G(N))[a,b],
+      \]
+      exists for all $a < b$ but that $\nu_{k}$ depends upon the particular ensemble chosen (see \todo{cite}).
+
+      Heuristically, the statistic $\mu_{k}(A)[a,b]$ is a generalization of the two-point correlation function and so should mimic statistics about the distribution of the zeros of a single $L$-function lying high up on the critial line. That is, the statistics of \textbf{high zeros}\index{high zeros}. On the other hand, the statistic $\nu_{k}(G(N))[a,b]$ is modeling the distribution of a single zero of a family of related $L$-functions. That is, the statistics of \textbf{low zeros}\index{low zeros}. Katz and Sarnak then proposed that statistics regarding the distribution of high zeros of and single $L$-function should mimic those of $U(N)$, while statistics regarding the distribution of low zeros for a family of $L$-functions should mimic one of the matrix ensembles. For example, below are some well-studied families and their symmetry type:
+      \iffalse
+      \begin{center}
+        \begin{stabular}[1.5]{|c|c|c|}
+          \hline
+          Symmetry Type & Family \\
+          \hline
+          \multirow{2}{*}{$\U$ Unitary} & $\{L(s+iy):y \ge 0\}$ ordered by $y$ where $L(s)$ is any Selberg class $L$-function \\& $\{L(s,\chi):\chi\}$ ordered by $q$ where $\chi$ is a Dirichlet character modulo $q \ge 1$ \\
+          \hline
+          \multirow{2}{*}{$\SO$ Orthgonal} & $\{L(s,f):f \in \mc{S}_{k}(\G_{0}(N)), k \ge 4\}$ ordered by $k$ where $N \ge 1$ is fixed \\& $\{L(s,f):f \in \mc{S}_{k}(\G_{0}(N)), N \ge 1\}$ ordered by $N$ where $k \ge 4$ is fixed \\
+          \hline
+          \multirow{2}{*}{$\mathrm{USp}$ Symplectic} & $\{L(s,\chi_{d}):\text{$d$ a fundamental discriminant}\}$ ordered by $|d|$ where $\chi_{d}(n) = \legendre{d}{n}$ \\& $\{L(s,\mathrm{sym}^{2}f):f \in \mc{S}_{k}(\G_{0}(1))\}$ ordered by $k \ge 4$ \\
+          \hline
+        \end{stabular}
+      \end{center}
+      \fi
+      The following two questions we need to address:
+      \begin{enumerate}[label=(\arabic{enumi})]
+        \item What is the precisely meant by a family of $L$-functions?
+        \item Given a family how do we determine its symmetry type?
+      \end{enumerate}
+      The first question has an unfortunate answer. There is not yet a precise definition of a family of $L$-functions. Families are determined by if interesting statistical data arises from their study. However, it is generally believed that the family should be indexed by either a real parameter, such as $y > 0$ for the unitary family $\{L(s+iy):y \ge 0\}$, or partially ordered by the conductor of the $L$-function as is the case for every other family in the table above. 
+      
+      As for the second question, the symmetry type can be determined but it is, in general, a difficult question. The method used by Katz and Sarnak is that for some families, one can define an analgous family over finite fields. The $L$-functions here are polynomials (in $q^{-s}$ with $q$ the order of the field), and the Grothendieck-Lefschetz trace formula implies that the $L$-functions are characteristic polynomials of matrices in the monodromy group of the family (see \todo{cite}). By the function field number field analogy, the symmetry type of this monodromy group is then assumed to by the symmetry type of the original family.
+    \subsection*{Modeling \texorpdfstring{$L$}{L}-functions by Characteristic Polynomials of Unitary Matrices}
+      Another example of important statistical information about $\z(s)$ is the following: at a given height $t$ up the critical line, how are the the real and imaginary parts of $\log\z(\frac{1}{2}+it)$ distributed? In the limit as we move up the critical line, this question is famously answered by \textbf{Selberg's central limit theorem}\index{Selberg's central limit theorem} (see \todo{cite}):
+
+      \begin{theorem}[Selberg's central limit theorem]
+        For any rectangle $B \in \C$,
+        \[
+          \lim_{T \to \infty}\frac{1}{T}\mc{L}\left(\left\{t:t \in [T,2T],\frac{\log\z(\frac{1}{2}+it)}{\sqrt{\frac{1}{2}\log\log(T)}} \in B\right\}\right) = \frac{1}{2\pi}\iint_{B}e^{-\frac{1}{2}(x^{2}+y^{2})}\,dx\,dy.
+        \]
+      \end{theorem}
+
+      We interpret the left-hand side in Selberg's central limit theorem as the limiting value distribution, and the right-hand side as two independent Gaussian distributions with unit variance and zero mean. So as we move up the critical line, the real and imagnary parts of $\frac{\log\z(\frac{1}{2}+it)}{\sqrt{\frac{1}{2}\log\log(T)}}$ both independently tend to normal distributions. Interestingly, numerical computations show that when $T \sim t_{10^{20}}$ the computed values are still quite far from the Gaussian distributions. So the convergence in Selberg's central limit theorem is very slow. This does, however, beg the question of how $\log\z(\frac{1}{2}+it)$ should be modeled by random matrices when $t$ is large but finite. The answer is quite natural. Since the zeros (unfolded) of $\z(s)$ are distributed like the eigenvalues (eigenphases) of a random unitary matrix, we might expect that $\z(s)$ is modeled by a function whose zeros are those eigenvalues. That is, $\z(s)$ should be modeled by the characteristic polynomial of a unitary matrix (see \todo{cite} for details). This should work for any single $L$-function since they all exhibit the same distribution of zeros in the limit as we move up the critical line.
+
+      As a first insight to the model, the characteristic polynomial of unitary matrices have strikingly similar resemblance to $L$-functions. If $A \in U(N)$, then $A$ is diagionalizable with eigenvalues $e^{i\t_{n}}$ and eigenphases $\t_{n}$ for $1 \le n \le N$. Let
+      \[
+        \L_{A}(s) = \det(I-sA) = \prod_{n \le N}(1-se^{i\t_{n}}),
+      \]
+      be the characteristic polynomial of $A$. It turns out that $\L_{A}(s)$ has strikingly similar properties to an $L$-function. Indeed, if we exapand the product expression, we obtain
+      \[
+        \L_{A}(s) = 1+\sum_{n \le N}a_{n}s^{n},
+      \]
+      for some coefficients $a_{n}$. This is the analogue to a the Dirichlet series representation of an $L$-function. Of course, as $\L_{A}(s)$ is a polynomial it admits analytic continuation to $\C$. It also has a functional equation of shape $s \to \frac{1}{s}$. To see this, first observe
+      \[
+        \L_{A}(s) = (-1)^{N}\det(A)s^{N}\det(I-s^{-1}A^{-1}).
+      \]
+      But since $A$ is unitary, $\L_{A^{-1}}(s) = \L_{A^{\ast}}(s) = \conj{\L_{A}(s)}$. So the above equation can be expressed as
+      \[
+        \L_{A}(s) = (-1)^{N}\det(A)s^{N}\conj{\L_{A}\left(\frac{1}{s}\right)}.
+      \]
+      This is the functional equation for $\L_{A}(s)$ and it is of shape $s \to \frac{1}{s}$. We identify the root number as $(-1)^{n}\det(A)$ and the gamma factor as $s^{N}$. The invariant subspace is the unit circle and this plays the role of the critial line for $\L_{A}(s)$ with the critial value being the symmetric point under $s \to \frac{1}{s}$ which is $s = 1$. In fact, under the change of variables $s \to \frac{1}{s+1}$ the functional equation is of shape $s \to 1-s$, the unit circle is sent to the critical line, and $s = 1$ is sent to $s = \frac{1}{2}$. Viewing the conductor the absolute value of the derivative of gamma factor evaulated at the critial value $s = 1$, we see that it is $N$. We also have an approxiate functional equation. By substiuting the polynomial representation of $\L_{A}(s)$ into the functional equation, we obtain
+      \[
+        \sum_{0 \le n \le N}a_{n}s^{n} = (-1)^{N}\det(A)s^{N}\sum_{0 \le n \le N}\conj{a_{n}}s^{-n} = (-1)^{N}\det(A)\sum_{0 \le n \le N}\conj{a_{n}}s^{N-n}.
+      \]
+      Upon comparing coefficients we find
+      \[
+        a_{n} = (-1)^{N}\det(A)\conj{a_{N-n}}.
+      \]
+      So that for odd $N$,
+      \[
+        \L_{A}(s) = \sum_{0 \le n \le \frac{N-1}{2}}a_{n}s^{n}+(-1)^{N}\det(A)s^{N}\sum_{0 \le n \le \frac{N-1}{2}}\conj{a_{n}}s^{-n},
+      \]
+      and for even $N$,
+      \[
+        \L_{A}(s) = a_{\frac{N}{2}}s^{\frac{N}{2}}+\sum_{0 \le n \le \frac{N}{2}-1}a_{n}s^{n}+(-1)^{N}\det(A)s^{N}\sum_{0 \le n \le \frac{N}{2}-1}\conj{a_{n}}s^{-n}.
+      \]
+      These are the approximate functional equations for $\L_{A}(s)$.
+
+      All of this is suggestive of the fact that characteristic polynomials of unitary matrices model $L$-functions at a theoritical level. As for statistical modeling, we state one last result. This is due to Keating and Sanith and it's an analgous version of Selberg's central limit theorem for $\L_{A}(s)$ (see \todo{cite} for a proof):
+
+      \begin{theorem}
+        Let $|s| = 1$. For any rectangle $B \in \C$,
+        \[
+          \lim_{N \to \infty}\frac{1}{T}dA\left(\left\{A:A \in U(N),\frac{\log\L_{A}(s)}{\sqrt{\frac{1}{2}\log(N)}} \in B\right\}\right) = \frac{1}{2\pi}\iint_{B}e^{-\frac{1}{2}(x^{2}+y^{2})}\,dx\,dy.
+        \]
+      \end{theorem}
   \section{\todo{Moments Results}}
