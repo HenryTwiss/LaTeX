@@ -681,7 +681,7 @@
       \rho, \quad \conj{\rho}, \quad 1-\rho, \quad \text{and} \quad 1-\conj{\rho}.
     \]
 
-    \begin{figure}[h]
+    \begin{figure}[ht]
       \centering
       \begin{tikzpicture}[scale=3]
         \def\xmin{-0.5} \def\xmax{2.5}
@@ -894,7 +894,11 @@
         \[
           -\frac{L'}{L}(s,f) = \frac{r_{f}}{s}+\frac{r_{f}}{s-1}-\sum_{|s+\k_{j}| < 1}\frac{1}{s+\k_{j}}-\sum_{\substack{|s-\rho| < 1 \\ \rho \neq 0,1}}\frac{1}{s-\rho}+O(\log{\mathfrak{q}(s,f)}),
         \]
-        for any $s$ in the vertical strip $-\frac{1}{2} \le \s \le 2$. Moreover, upon taking the real part of this estimate, we may discard any of the terms in either sum.
+        for any $s$ in the vertical strip $-\frac{1}{2} \le \s \le 2$. Moreover,
+        \[
+          \Re\left(-\frac{L'}{L}(s,f)\right) \le \Re\left(\frac{r_{f}}{s}\right)+\Re\left(\frac{r_{f}}{s-1}\right)-\sum_{|s+\k_{j}| < 1}\Re\left(\frac{1}{s+\k_{j}}\right)-\sum_{\substack{|s-\rho| < 1 \\ \rho \neq 0,1}}\Re\left(\frac{1}{s-\rho}\right)+O(\log{\mathfrak{q}(s,f)}),
+        \]
+        and we may disregard any term in either sum provided $1 < \s \le 2$.
       \end{enumerate}
     \end{lemma}
     \begin{proof}
@@ -964,7 +968,11 @@
         \[
           -\frac{L'}{L}(s,f) = \frac{r_{f}}{s}+\frac{r_{f}}{s-1}-\sum_{|s+\k_{j}| < 1}\frac{1}{s+\k_{j}}-\sum_{\substack{|s-\rho| < 1 \\ \rho \neq 0,1}}\frac{1}{s-\rho}+O(\log{\mathfrak{q}(s,f)}),
         \]
-        which is the first statement of (iv). The second statement follows immediately from (iii).
+        which is the first statement of (iv). For second statement, take the real part of this estimate and rewrite it in the weaker form
+        \[
+          \sum_{|s+\k_{j}| < 1}\Re\left(\frac{1}{s+\k_{j}}\right)+\sum_{\substack{|s-\rho| < 1 \\ \rho \neq 0,1}}\Re\left(\frac{1}{s-\rho}\right) \le \Re\left(-\frac{L'}{L}(s,f)\right)+\Re\left(\frac{r_{f}}{s}\right)+\Re\left(\frac{r_{f}}{s-1}\right)+O(\log{\mathfrak{q}(s,f)}).
+        \]
+        We can disregard any of the terms in either sum provided $1 < \s \le 2$ by (iii).
       \end{enumerate}
     \end{proof}
 
@@ -1206,7 +1214,9 @@
       Take $c = \frac{c'}{1792}$. Now let $\b$ be a real nontrivial zero of $L(s,f)$. Since $\Re(\L_{f}(n)) \ge 0$ and $L(s,f)$ has a simple pole at $s = 1$, \cref{lem:non-vanshing_at_1_lemma} implies, upon shrinking $c$ if necessary, that there is at most one simple real zero $\b_{f}$ in the desired region. Note that $\b_{f} < 1$ since $L(s,f)$ is nonzero for $\s > 1$ and has a simple pole at $s = 1$. This completes the proof.
     \end{proof}
     
-    \begin{figure}[h]
+    Some comments are in order. Since the zeros of $L(s,f)$ occur in pairs $\rho$ and $1-\conj{\rho}$, the zero-free region in \cref{thm:zero_free_region_generic} implies a symmetric zero-free region about the critical line with at most one real zero in each half as displayed in \cref{fig:symmetric_zero_free_region}. The possible simple zero $b_{f}$ in \cref{thm:zero_free_region_generic} is referred to as a \textbf{Siegel zero}\index{Siegel zero} (or \textbf{exceptional zero}\index{exceptional zero}). If $\b_{f}$ is a Siegel zero of $L(s,\chi)$, then $1-\b_{f}$ is also a real nontrivial zero of $L(s,\chi)$ since the nontrivial zeros occur in pairs (or sets of four in some cases we have discussed). This immediately implies that $\b_{f} > \frac{1}{2}$ for we cannot have $\b_{f} = \frac{1}{2}$ since the zero is simple and either $\b_{f}$ or $1-\b_{f}$ must be at least $\frac{1}{2}$. Such zeros are conjectured to not exist. In full generality, \cref{thm:zero_free_region_generic} is the best result that one can hope for. It is possible to obtain better zero-free regions in certain cases but this heavily depends upon the particular $L$-function of interest and hence the arithmetic object $f$ attached to $L(s,f)$. In many cases it is possible to augment the proof of \cref{thm:zero_free_region_generic} to make the constant $c$ effective and such results have important applications. If $L(s,f)$ is of Selberg class, the conclusion of \cref{thm:zero_free_region_generic} is expected to hold without the possibly of a Siegel zero since $L(s,f)$ is expected to satisfy the (Selberg class) Riemann hypothesis. Nevertheless, we can often satisfy the assumptions of \cref{thm:zero_free_region_generic}. Indeed, if $\a_{i}(p) \ge 0$ then the assumptions are satisfied immediately. If not, since $|\a_{i}(p)| \le 1$ the assumptions will hold for $\z(s)L(s,f)$ provided $L(s,f)$ does not have a pole at $s = 1$. This is often possible to prove in practice since $L(s,f)$ is expected to be entire unless $\a_{i}(p) \ge 0$.
+
+    \begin{figure}[ht]
       \centering
       \begin{tikzpicture}[scale=3]
         \def\xmin{-0.5} \def\xmax{2.5}
@@ -1243,8 +1253,6 @@
       \caption{The symmetric zero-free region in \cref{thm:zero_free_region_generic}.}
       \label{fig:symmetric_zero_free_region}
     \end{figure}
-    
-    Some comments are in order. Since the zeros of $L(s,f)$ occur in pairs $\rho$ and $1-\conj{\rho}$, the zero-free region in \cref{thm:zero_free_region_generic} implies a symmetric zero-free region about the critical line with at most one real zero in each half as displayed in \cref{fig:symmetric_zero_free_region}. The possible simple zero $b_{f}$ in \cref{thm:zero_free_region_generic} is referred to as a \textbf{Siegel zero}\index{Siegel zero} (or \textbf{exceptional zero}\index{exceptional zero}). If $\b_{f}$ is a Siegel zero of $L(s,\chi)$, then $1-\b_{f}$ is also a real nontrivial zero of $L(s,\chi)$ since the nontrivial zeros occur in pairs (or sets of four in some cases we have discussed). This immediately implies that $\b_{f} > \frac{1}{2}$ for we cannot have $\b_{f} = \frac{1}{2}$ since the zero is simple and either $\b_{f}$ or $1-\b_{f}$ must be at least $\frac{1}{2}$. Such zeros are conjectured to not exist. In full generality, \cref{thm:zero_free_region_generic} is the best result that one can hope for. It is possible to obtain better zero-free regions in certain cases but this heavily depends upon the particular $L$-function of interest and hence the arithmetic object $f$ attached to $L(s,f)$. In many cases it is possible to augment the proof of \cref{thm:zero_free_region_generic} to make the constant $c$ effective and such results have important applications. If $L(s,f)$ is of Selberg class, the conclusion of \cref{thm:zero_free_region_generic} is expected to hold without the possibly of a Siegel zero since $L(s,f)$ is expected to satisfy the (Selberg class) Riemann hypothesis. Nevertheless, we can often satisfy the assumptions of \cref{thm:zero_free_region_generic}. Indeed, if $\a_{i}(p) \ge 0$ then the assumptions are satisfied immediately. If not, since $|\a_{i}(p)| \le 1$ the assumptions will hold for $\z(s)L(s,f)$ provided $L(s,f)$ does not have a pole at $s = 1$. This is often possible to prove in practice since $L(s,f)$ is expected to be entire unless $\a_{i}(p) \ge 0$. 
   \section{The Explicit Formula}
     A formula somewhat analogous to the approximate functional equation can be derived for the negative logarithmic derivative of any $L$-function. This formula is called the the \textbf{explicit formula}\index{explicit formula}:
 
