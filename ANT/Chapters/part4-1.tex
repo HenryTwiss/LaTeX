@@ -891,7 +891,7 @@
   \section{The Siegel-Walfisz Theorem}
     Let $\chi$ be a Dirichlet character modulo $m > 1$. The function $\psi(x,\chi)$ is defined by
     \[
-      \psi(x,\chi) = \sum_{n \le x}\L_{\chi}(n),
+      \psi(x,\chi) = \sum_{n \le x}\chi(n)\L(n),
     \]
     for $x > 0$. This function plays the analogous role of $\psi(x)$ but for Dirichlet $L$-functions. Accordingly, we will derive an explicit formula for $\psi(x,\chi)$ in a similar manner to that of $\psi(x)$. Because $\psi(x,\chi)$ is discontinuous when $x$ is a prime power, we also introduce a slightly modified function. Define $\psi_{0}(x,\chi)$ by
     \[
@@ -920,7 +920,7 @@
     \begin{proof}[Proof of the explicit formula for $\psi(x,\chi)$]
       By truncated Perron's formula applied to $-\frac{L'}{L}(s,\chi)$, we get
       \begin{equation}\label{equ:explicit_formula_Dirichlet_proof_1}
-        \psi_{0}(x,\chi)-J(x,T,\chi) \ll x^{c}\sum_{\substack{n \ge 1 \\ n \neq x}}\frac{\L_{\chi}(n)}{n^{c}}\min\left(1,\frac{1}{T\left|\log\left(\frac{x}{n}\right)\right|}\right)+\d_{x}\chi(x)\L(x)\frac{c}{T},
+        \psi_{0}(x,\chi)-J(x,T,\chi) \ll x^{c}\sum_{\substack{n \ge 1 \\ n \neq x}}\frac{\chi(n)\L(n)}{n^{c}}\min\left(1,\frac{1}{T\left|\log\left(\frac{x}{n}\right)\right|}\right)+\d_{x}\chi(x)\L(x)\frac{c}{T},
       \end{equation}
       where
       \[
@@ -928,7 +928,7 @@
       \]
       $c > 1$, and it is understood that $\d_{x} = 0$ unless $x$ is a prime power. Take $T > 2$ not coinciding with the ordinate of a nontrivial zero and let $c = 1+\frac{1}{\log(x^{2})}$ so that $x^{c} = \sqrt{e}x$. We will estimate the right-hand side of \cref{equ:explicit_formula_Dirichlet_proof_1}. First, we estimate the terms corresponding to $n$ such that $n$ is bounded away from $x$. So suppose $n \le \frac{3}{4}x$ or $n \ge \frac{5}{4}x$. For these $n$, $\log\left(\frac{x}{n}\right)$ is bounded away from zero so that their contribution is
       \begin{equation}\label{equ:explicit_formula_Dirichlet_proof_2}
-        \ll \frac{x^{c}}{T}\sum_{n \ge 1}\frac{\L_{\chi}(n)}{n^{c}} \ll \frac{x^{c}}{T}\left(-\frac{L'}{L}(c,\chi)\right) \ll \frac{x\log(x)}{T},
+        \ll \frac{x^{c}}{T}\sum_{n \ge 1}\frac{\chi(n)\L(n)}{n^{c}} \ll \frac{x^{c}}{T}\left(-\frac{L'}{L}(c,\chi)\right) \ll \frac{x\log(x)}{T},
       \end{equation}
       where the last estimate follows from \cref{lem:powerful_L-function_approximation_lemma} (iv) applied to $L(s,\chi)$ while discarding all of the terms in both sums and our choice of $c$ (in particular $\log(c) \ll \log(x)$). Now we estimate the terms $n$ close to $x$. So consider those $n$ for which $\frac{3}{4}x < n < x$ and let $x_{1}$ be the largest prime power less than $x$. We may also assume $\frac{3}{4}x < x_{1} < x$ since otherwise $\L(n) = 0$ and these terms do not contribute anything. Moreover, $\frac{x^{c}}{n^{c}} \ll 1$. For the term $n = x_{1}$, we have the estimate
       \[
@@ -936,7 +936,7 @@
       \]
       where we have obtained the inequality by using Taylor series of the logarithm truncated after the first term. The contribution of this term is
       \begin{equation}\label{equ:explicit_formula_Dirichlet_proof_3}
-        \ll \L_{\chi}(x_{1})\min\left(1,\frac{x}{T(x-x_{1})}\right) \ll \log(x)\min\left(1,\frac{x}{T(x-x_{1})}\right).
+        \ll \chi(x_{1})\L(x_{1})\min\left(1,\frac{x}{T(x-x_{1})}\right) \ll \log(x)\min\left(1,\frac{x}{T(x-x_{1})}\right).
       \end{equation}
       For the other $n$, we write $n = x_{1}-v$, where $v$ is an integer satisfying $0 < v < \frac{1}{4}x$, so that
       \[
@@ -944,7 +944,7 @@
       \]
       where we have obtained the latter inequality by using Taylor series of the logarithm truncated after the first term. The contribution for these $n$ is
       \begin{equation}\label{equ:explicit_formula_Dirichlet_proof_4}
-        \ll \sum_{0 < v < \frac{1}{4}x}\L_{\chi}(x_{1}-v)\frac{x_{1}}{Tv} \ll \frac{x}{T}\sum_{0 < v < \frac{1}{4}x}\frac{\L(x_{1}-v)}{v} \ll \frac{x\log(x)}{T}\sum_{0 < v < \frac{1}{4}x}\frac{1}{v} \ll \frac{x\log^{2}(x)}{T}.
+        \ll \sum_{0 < v < \frac{1}{4}x}\chi(x_{1}-v)\L(x_{1}-v)\frac{x_{1}}{Tv} \ll \frac{x}{T}\sum_{0 < v < \frac{1}{4}x}\frac{\L(x_{1}-v)}{v} \ll \frac{x\log(x)}{T}\sum_{0 < v < \frac{1}{4}x}\frac{1}{v} \ll \frac{x\log^{2}(x)}{T}.
       \end{equation}
       The contribution for those $n$ for which $x < n < \frac{5}{4}x$ is handled in exactly the same way with $x_{1}$ being the least prime power larger than $x$. Let $\<x\>$ be the distance between $x$ and the nearest prime power other than $x$ if $x$ itself is a prime power. Combining \cref{equ:explicit_formula_Dirichlet_proof_3,equ:explicit_formula_Dirichlet_proof_4} with our previous comment, the contribution for those $n$ with $\frac{3}{4}x < n < \frac{5}{4}x$ is
       \begin{equation}\label{equ:explicit_formula_Dirichlet_proof_5}
