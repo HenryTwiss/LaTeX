@@ -624,26 +624,24 @@
       \subsection*{Integral Methods}
         Complex integrals are a core backbone of analytic number theory and all too often the domain we are integrating over is unbounded. Accordingly, the functions we would like to work with should be integrable over these domains. One way to accomplish this would be to require that our functions are bounded:
 
-        \begin{method}\label{met:decay_compacta_integral}
-          Suppose $f(z,x)$ is analytic on $\W \x D$ for some region $\W$ and we are given an integral
+        \begin{proposition}\label{prop:decay_compacta_integral}
+          Suppose $f(z,x)$ is analytic on $\W \x D$ for some regions $\W$ and $D$ with $D$ unbounded and of finite volume with respect to a measure $d\mu$. Also suppose that for any $z \in \W$, $f(z,x)$ is bounded on $D$. Then the integral
           \[
             \int_{D}f(z,x)\,d\mu,
           \]
-          where $D$ is an unbounded domain, $d\mu$ is a measure on $D$, and such that the following hold:
-          \begin{enumerate}[label=(\roman*)]
-            \item For any $z \in \W$, $f(z,x)$ is bounded on $D$.
-            \item $D$ has finite volume with respect to $d\mu$.
-          \end{enumerate}
-          Then the integral is holomorphic in $z$. By \cref{thm:analytic_integral}, it suffices to show that the integral is locally absolutely uniformly bounded. Let $K$ be a compact subset of $\W$. As $f(z,x)$ is bounded on $D$ for any $z$, $f(z,x)$ is locally absolutely uniformly bounded on $K \x D$. Then
+          is locally absolutely uniformly bounded for any $z \in W$. In particular, is holomorphic in $z$.
+        \end{proposition}
+        \begin{proof}
+          The second statement follows from \cref{thm:analytic_integral}. So it suffices to show that the integral is locally absolutely uniformly bounded. Let $K$ be a compact subset of $\W$. As $f(z,x)$ is bounded on $D$ for any $z$, $f(z,x)$ is locally absolutely uniformly bounded on $K \x D$. Then for $z \in K$, we have
           \[
             \int_{D}f(z,x)\,d\mu \ll \int_{D}\,d\mu \ll 1, 
           \]
-          because $D$ has finite volume with respect to $d\mu$. Therefore the integral is  locally absolutely uniformly bounded. 
-        \end{method}
+          because $D$ has finite volume with respect to $d\mu$. Therefore the integral is locally absolutely uniformly bounded. 
+        \end{proof}
 
-        In particular, \cref{met:decay_compacta_integral} holds if $f(z,x)$ admits any type of decay on $D$ for any $z \in \W$. There is also another useful analytic technique called \textbf{shifting the line of integration}\index{shifting the line of integration}:
+        In particular, \cref{prop:decay_compacta_integral} holds if $f(z,x)$ admits any type of decay on $D$ for any $z \in \W$. There is also another useful analytic technique called \textbf{shifting the line of integration}\index{shifting the line of integration}:
 
-        \begin{method}[Shifting the line of integration]
+        \begin{theorem}[Shifting the line of integration]
           Suppose we are given an integral
           \[
             \int_{\Re(z) = a}f(z)\,dz \quad \text{or} \quad \int_{\Im(z) = a}f(z)\,dz,
@@ -654,15 +652,22 @@
             \item $f(z)$ is holomorphic about the lines $\Re(z) = a,b$ or $\Im(z) = a,b$ respectively.
             \item $f(z) \to 0$ as $y \to \infty$ or $x \to \infty$ respectively.
           \end{enumerate}
-          To collect these cases, let $(a)$ stand for the line $\Re(z) = a$ or $\Im(z) = a$ respectively with positive orientation. Then the line of integration $(a)$ can be shifted to the line of integration $(b)$ with the possible addition of residues. Take a rectangle $R_{T}$ given positive orientation and with its edges on $(a)$ and $(b)$ respectively and consider
+          Then
+          \[
+            \int_{(a)}f(z)\,dz = \int_{(b)}f(z)\,dz+2\pi i\sum_{\rho \in P}\Res_{z = \rho}f(z),
+          \]
+          where $P$ is the set of poles inside of the strip containing the lines $\Re(z) = a,b$ or $\Im(z) = a,b$ respectively.
+        \end{theorem}
+        \begin{proof}
+          To collect these cases, let $(a)$ stand for the line $\Re(z) = a$ or $\Im(z) = a$ respectively with positive orientation. Let $R_{T}$ be a rectangle, of height or width $T$ respectively, given positive orientation, and with its edges on $(a)$ and $(b)$ respectively. Consider the limit
           \[
             \lim_{T \to \infty}\int_{R_{T}}f(z)\,dz.
           \]
-          On the one hand, the residue theorem implies the integral is a sum of a $2\pi i$ multiple of the residues $r_{i}$ in the rectangle $R_{T}$ and hence the limit is a sum of a $2\pi i$ multiple of the residues in the strip bounded by $(a)$ and $(b)$. Denote the corresponding set of poles inside this strip by $P$. On the other hand, the integral can be decomposed into a sum of four integrals along the edges of $R_{T}$ and by taking the limit the edges other than $(a)$ and $(b)$ will tend to zero because of the assumptions on $f(z)$. The remaining two pieces is the difference between the integral along $(a)$ and $(b)$. So in total,
+          On the one hand, the residue theorem implies the integral is a sum of a $2\pi i$ multiple of the residues $r_{i}$ in the rectangle $R_{T}$ and hence the limit is a $2\pi i$ multiple of the sum of the residues in the strip bounded by $(a)$ and $(b)$. On the other hand, the integral can be decomposed into a sum of four integrals along the edges of $R_{T}$ and by taking the limit, the edges other than $(a)$ and $(b)$ will tend to zero because $f(z) \to 0$ as $y \to \infty$ or $x \to \infty$ respectively. What remains in the limit is the difference between the integral along $(a)$ and $(b)$. So in total,
           \[
             \int_{(a)}f(z)\,dz = \int_{(b)}f(z)\,dz+2\pi i\sum_{\rho \in P}\Res_{z = \rho}f(z).
           \]
-        \end{method}
+        \end{proof}
 
         A particular application of interest is when the integral in question is real and over the entire real line, the integrand is entire as a complex function, and one is trying to shift the line of integration of the complexified integral to $\Im(z) = a$. In this case, shifting the line of integration amounts to making the change of variables $x \to x-ia$ without affecting the initial line of integration.
       \subsection*{The Fourier Transform}
@@ -670,7 +675,7 @@
         \[
           \hat{f}(t) = \int_{-\infty}^{\infty}f(x)e^{-2\pi itx}\,dx.
         \]
-        This integral is absolutely convergent precisely because $f(x)$ is absolutely integrable. As a first application of \cref{met:decay_compacta_integral}, if $f(x)$ is analytic and has exponential decay then its Fourier transform exists. In practical settings however, we usually restrict $f(x)$ to be a \textbf{Schwarz function}\index{Schwarz function} which means that $f(x)$ is smooth and $f^{(n)}(x) = o(x^{c})$ for all $c \in \R$. In other words, $f(x)$ is a smooth function such that it and all of its derivatives have exponential decay. In this case, we say that $f(x)$ is of \textbf{rapid decay}\index{rapid decay}. For example, $e^{-x^{2}}$ is a Schwarz function. Schwarz functions are very important because they are functions for which the \textbf{Poisson summation formula}\index{Poisson summation formula} applies:
+        This integral is absolutely convergent precisely because $f(x)$ is absolutely integrable. As a first application of \cref{prop:decay_compacta_integral}, if $f(x)$ is analytic and has exponential decay then its Fourier transform exists. In practical settings however, we usually restrict $f(x)$ to be a \textbf{Schwarz function}\index{Schwarz function} which means that $f(x)$ is smooth and $f^{(n)}(x) = o(x^{c})$ for all $c \in \R$. In other words, $f(x)$ is a smooth function such that it and all of its derivatives have exponential decay. In this case, we say that $f(x)$ is of \textbf{rapid decay}\index{rapid decay}. For example, $e^{-x^{2}}$ is a Schwarz function. Schwarz functions are very important because they are functions for which the \textbf{Poisson summation formula}\index{Poisson summation formula} applies:
 
         \begin{theorem}[Poisson summation formula]
           Suppose $f(x)$ is a Schwarz function. Then
@@ -731,7 +736,7 @@
       \begin{equation}\label{equ:Gamma_integral_bounded_1}
         \G(s) = \int_{0}^{1}e^{-x}x^{s-1}\,dx+\int_{1}^{\infty}e^{-x}x^{s-1}\,dx.
       \end{equation}
-      By \cref{met:decay_compacta_integral}, the second integral in \cref{equ:Gamma_integral_bounded_1} is locally absolutely uniformly bounded in this region. As for the first integral, let $\b = \min_{s \in K}\{\s\}$. Then
+      By \cref{prop:decay_compacta_integral}, the second integral in \cref{equ:Gamma_integral_bounded_1} is locally absolutely uniformly bounded in this region. As for the first integral, let $\b = \min_{s \in K}\{\s\}$. Then
       \begin{equation}\label{equ:Gamma_integral_bounded_2}
         \int_{0}^{1}e^{-x}x^{s-1}\,dx \ll \int_{0}^{1}x^{\s-1}\,dx \ll_{\b} 1.
       \end{equation}
