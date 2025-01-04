@@ -1,24 +1,22 @@
 \appendix
 \chapter{Number Theory}
   \section{Arithmetic Functions}\label{append:Arithmetic_Functions}
-    An arithmetic function $f(n)$ is a function $f:\N \to \C$. That is, it takes the positive integers into the complex numbers. We say that $f(n)$ is \textbf{additive}\index{additive} if $f(nm) = f(n)+f(m)$ for all positive integers $n$ and $m$ such that $(n,m) = 1$. If this condition simply holds for all $n$ and $m$ then we say $f(n)$ is \textbf{completely additive}\index{completely additive}. Similarly, we say that $f(n)$ is \textbf{multiplicative}\index{multiplicative} if $f(nm) = f(n)f(m)$ for all positive integers $n$ and $m$ such that $(n,m) = 1$. If this condition simply holds for all $n$ and $m$ then we say $f(n)$ is \textbf{completely multiplicative}\index{completely multiplicative}. Many important arithmetic functions are either additive, completely additive, multiplicative, or completely multiplicative. Note that if a $f(n)$ is additive or multiplicative then $f(n)$ is uniquely determined by its values on prime powers and if $f(n)$ is completely additive or completely multiplicative then it is uniquely determined by its values on primes. Moreover, if $f(n)$ is additive or completely additive then $f(1) = 0$ and if $f(n)$ is multiplicative or completely multiplicative then $f(1) = 1$.
-
-    Below is a list defining the most important arithmetic functions. Some of these functions are restrictions of common functions but we define them here as arithmetic functions because their domain being $\N$ is important.
+    An arithmetic function $f$ is a function $f:\N \to \C$. That is, it takes the positive integers into the complex numbers. We say that $f$ is \textbf{additive}\index{additive} if $f(nm) = f(n)+f(m)$ for all positive integers $n$ and $m$ such that $(n,m) = 1$. If this condition simply holds for all $n$ and $m$ then we say $f$ is \textbf{completely additive}\index{completely additive}. Similarly, we say that $f$ is \textbf{multiplicative}\index{multiplicative} if $f(nm) = f(n)f(m)$ for all positive integers $n$ and $m$ such that $(n,m) = 1$. If this condition simply holds for all $n$ and $m$ then we say $f$ is \textbf{completely multiplicative}\index{completely multiplicative}. Many important arithmetic functions are either additive, completely additive, multiplicative, or completely multiplicative. Note that if a $f$ is additive or multiplicative then $f$ is uniquely determined by its values on prime powers and if $f$ is completely additive or completely multiplicative then it is uniquely determined by its values on primes. Moreover, if $f$ is additive or completely additive then $f(1) = 0$ and if $f$ is multiplicative or completely multiplicative then $f(1) = 1$. Below is a list defining the most important arithmetic functions (some of these functions are restrictions of common functions but we define them here as arithmetic functions because their domain being $\N$ is important):
     \begin{enumerate}[label=(\roman*)]
-      \item The \textbf{constant function}\index{constant function}: The function $\mathbf{1}(n)$ defined by $\mathbf{1}(n) = 1$ for all $n \ge 1$. This function is neither additive or multiplicative.
+      \item The \textbf{constant function}\index{constant function}: The function $\mathbf{1}(n)$ restricted to all $n \ge 1$. This function is neither additive or multiplicative.
       \item The \textbf{unit function}\index{unit function}: The function $e(n)$ defined by
       \[
         e(n) = \begin{cases} 1 & \text{if $n = 1$}, \\ 0 & \text{if $n \ge 2$}. \end{cases}
       \]
       This function is completely multiplicative.
-      \item The \textbf{identity function}\index{identity function}: The identity function $\id(n)$ restricted to all $n \ge 1$. This function is completely multiplicative.
+      \item The \textbf{identity function}\index{identity function}: The function $\id(n)$ restricted to all $n \ge 1$. This function is completely multiplicative.
       \item The \textbf{logarithm}\index{logarithm function}: The function $\log(n)$ restricted to all $n \ge 1$. This function is completely additive.
       \item The \textbf{M\"obius function}\index{M\"obius function}: The function $\mu(n)$ defined by
       \[
         \mu(n) = \begin{cases} 1 & \text{if $n$ is square-free with an even number of prime factors}, \\ -1 & \text{if $n$ is square-free with an odd number of prime factors}, \\ 0 & \text{if $n$ is not square-free}, \end{cases}
       \]
       for all $n \ge 1$. This function is multiplicative.
-      \item The \textbf{characteristic function of square-free integers}\index{characteristic function of square-free integers}: The square of the M\"obius function $\mu^{2}(n)$ or $|\mu(n)|$ for all $n \ge 1$. This function is multiplicative.
+      \item The \textbf{characteristic function of square-free integers}\index{characteristic function of square-free integers}: The square of the M\"obius function $\mu^{2}(n)$ for all $n \ge 1$. This function is multiplicative.
       \item \textbf{Liouville's function}\index{Liouville's function}: The function $\l(n)$ defined by
       \[
         \l(n) = \begin{cases} 1 & \text{if $n = 1$}, \\ (-1)^{k} & \text{if $n$ is composed of $k$ not necessarily distinct prime factors}, \end{cases}
@@ -60,6 +58,15 @@
       \]
       for all $n \ge 1$. This function is neither additive or multiplicative.
     \end{enumerate}
+    If $f$ and $g$ are two arithmetic functions, then we can define a new arithmetic function $f \ast g$ called the \textbf{Dirichlet convolution}\index{Dirichlet convolution} of $f$ and $g$ defined by
+    \[
+      (f \ast g)(n) = \sum_{d \mid n}f(d)g\left(\frac{n}{d}\right),
+    \]
+    for all $n \ge 1$. This is especially useful when $f$ and $g$ are multiplicative:
+
+    \begin{proposition}
+      If $f$ and $g$ are multiplicative arithmetic functions, then so is their Dirichlet convolution $f \ast g$.
+    \end{proposition}
   \section{The M\"obius Function}\label{append:The_Mobius_Function}
     Recall that the M\"obius function is the arithmetic function $\mu$ defined by
     \[
@@ -76,7 +83,7 @@
     From this property, the important \textbf{M\"obius inversion formula}\index{M\"obius inversion formula} can be derived:
 
     \begin{theorem}[M\"obius inversion formula]
-      Suppose $f(n)$ and $g(n)$ are arithmetic functions. Then
+      Suppose $f$ and $g$ are arithmetic functions. Then
       \[
         g(n) = \sum_{d \mid n}f(d),
       \]
@@ -87,7 +94,7 @@
       for all $n \ge 1$.
     \end{theorem}
 
-    Using M\"obius inversion, the following useful formula can also be derived:
+    In terms of Dirichlet convolution, the M\"obius inversion formula is equivalent to stating that $g = f \ast \mathbf{1}$ if and only if $f = \mu \ast g$. Using M\"obius inversion, the following useful formula can also be derived:
 
     \begin{proposition}\label{prop:Dirichlet_Mobius_is_zeta_inverse}
       For $\s > 1$,
@@ -99,7 +106,7 @@
     There is also an important similar statement to the M\"obius inversion formula that we will need:
 
     \begin{theorem}\label{thm:specially_multiplicative_functions}
-      Let $f(n)$ be an arithmetic function and $B$ be the completely multiplicative function defined on primes $p$ by
+      Let $f$ be an arithmetic function and let $B$ be the completely multiplicative function defined on primes $p$ by
       \[
         B(p) = f(p)^{2}-f(p^{2}).
       \]
@@ -114,7 +121,7 @@
       for all $n,m \ge 1$.
     \end{theorem}
 
-    Any function $f(n)$ satisfying the conditions of \cref{thm:specially_multiplicative_functions} is said to be \textbf{specially multiplicative}\index{specially multiplicative}.
+    Any arithmetic function $f$ satisfying the conditions of \cref{thm:specially_multiplicative_functions} is said to be \textbf{specially multiplicative}\index{specially multiplicative}.
   \section{The Generalized Sum of Divisors Function}
     Recall that the generalized sum of divisor function $\s_{s}(n)$ defined by
     \[
@@ -124,7 +131,7 @@
     \[
       \s_{s}(n)  = \s_{s}(-n) = \s_{s}(|n|).
     \]
-    More importantly, $\s_{s}(n)$ has a remarkable property: it can be written as a product. Recalling that $\ord_{p}(n)$ is the positive integer satisfying $p^{\ord_{p}(n)} \mid\mid n$, we have the following statement:
+    More importantly, $\s_{s}(n)$ has the remarkable property that it can be written as a product. To state it, recall that $\ord_{p}(n)$ is the positive integer satisfying $p^{\ord_{p}(n)} \mid\mid n$. Then we have the following statement:
 
     \begin{proposition}\label{prop:generalized_sum_of_divisors_as_product}
       For $s \neq 0$,
