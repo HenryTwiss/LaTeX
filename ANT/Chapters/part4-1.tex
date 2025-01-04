@@ -17,7 +17,7 @@
     \[
       S(x,z) = \sum_{d \mid P(z)}\mu(d)S_{d}(x).
     \]
-    The usefulness of sieves comes from replacing the M\"obius function with weighted values. In particular, we replace $\mu(d)$ with a weighting factor $\l_{d}$ coming from a real sequence $\L = (\l_{d})_{d \ge 1}$ satisfying $\l_{d} = 0$ unless $d \le D$ for some $D \ge 1$. We will also let $\l$ represent the arithmetic function $\l(d) = \l_{d}$. We call $\L$ the \textbf{sieve}\index{sieve}, $\l_{d}$ a \textbf{sieve weight}\index{sieve weight}, and $D$ the \textbf{sieve level}\index{sieve level}. We also define the \textbf{sifting variable}\index{sifting variable} $s$ to be
+    The usefulness of sieves comes from replacing the M\"obius function with weighted values. In particular, we replace $\mu(d)$ with a weighting factor $\l_{d}$ coming from a real sequence $\L = (\l_{d})_{d \ge 1}$ satisfying $\l_{d} = 0$ unless $d$ is square-free and $d \le D$ for some $D \ge 1$. We will also let $\l$ represent the arithmetic function $\l(d) = \l_{d}$. We call $\L$ the \textbf{sieve}\index{sieve}, $\l_{d}$ a \textbf{sieve weight}\index{sieve weight}, and $D$ the \textbf{sieve level}\index{sieve level}. We also define the \textbf{sifting variable}\index{sifting variable} $s$ to be
     \[
       s = \frac{\log(D)}{\log(z)}.
     \]
@@ -50,7 +50,7 @@
       \t_{n}^{-} \le \t_{n}^{0} \le \t_{n}^{+}.
     \]
   \section{\todo{Estimating the Sifting Function}}
-    Ultimately our aim is to estimate the sifting function in terms of upper or lower sieving functions. In order to achieve this, we require an additional assumption about the sums $S_{d}(x)$. In particular, we assume that there exists a multiplicative function $g$ with $g(1) = 1$, $0 \le g(p) < 1$ for all primes $p$ with $g(p) = 0$ if $p \notin \mc{P}$, satisfies
+    Ultimately our aim is to estimate the sifting function in terms of upper or lower sieving functions. In order to achieve this, we require an additional assumption about the sums $S_{d}(x)$. In particular, we assume that there exists a multiplicative function $g$ with $g(1) = 1$, $0 \le g(d) < 1$ for all $d > 1$ where $g(d) = 0$ unless $d$ is square-free and the primes dividing $d$ belong to ${P}$, satisfies
     \begin{equation}\label{equ:prod_assumption_density_function_1}
       \prod_{w \le p < z}(1-g(p))^{-1} \le K\left(\frac{\log(z)}{\log(w)}\right)^{\k},
     \end{equation}
@@ -100,7 +100,22 @@
     \]
     In order to obtain estimates for $V^{\L}(x)$, we express it in a more useful form. For this, we define multiplicative arithmetic functions $h$ and $j$ defined on primes $p$ by
     \[
-      h(p) = \frac{g(p)}{1-g(p)} \quad \text{and} \quad j(p) = 1+h(p).
+      h(p) = g(p)(1-g(p))^{-1} \quad \text{and} \quad j(p) = (1-g(p))^{-1}.
     \]
-    In particular, $j = h \ast \mathbf{1}$. Now as $\t = \l \ast \mathbf{1}$, the M\"obius inversion formula (see \cref{append:The_Mobius_Function}) implies $\l = \t \ast \mu$ so that \todo{xxx}
+    Moreover, these two formulas imply
+    \[
+      j(p) = \frac{h(p)}{g(p)} = 1+h(p).
+    \]
+    We call $h$ the \textbf{relative density function}\index{relative density function}. In particular, $j = h \ast \mathbf{1}$. Now as $\t = \l \ast \mathbf{1}$, the M\"obius inversion formula (see \cref{append:The_Mobius_Function}) implies $\l = \t \ast \mu$ so that
+    \[
+      V^{\L}(z) = \sum_{d \mid P(z)}\sum_{e \mid d}\t_{e}\mu\left(\frac{d}{e}\right)g(d).
+    \]
+    Making the change of variables $d \to ed$, we compute
+    \begin{align*}
+      V^{\L}(z) &= \sum_{de \mid P(z)}\t_{e}\mu(d)g(de) \\
+      &= \sum_{\substack{de \mid P(z) \\ (d,e) = 1}}\t_{e}\mu(d)g(de) \\
+      &= \sum_{\substack{de \mid P(z) \\ (d,e) = 1}}\t_{e}g(e)\prod_{p \mid d}(1-g(p)) \\
+      &= \sum_{e \mid P(z)}\t_{e}g(e)\sum_{\substack{d \mid P(z) \\ (d,e) = 1}}\prod_{p \mid d}(1-g(p)),
+    \end{align*}
+    where the second line holds because $g(de) = 0$ unless $(d,e) = 1$ and the third line holds by the multiplicativity of $g$ and definition of the M\"obius function.
   \section{\todo{Composition of Sieves}}
