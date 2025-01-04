@@ -1,5 +1,102 @@
 \chapter{The Theory of Sieves}
-  \section{\todo{The Data of Sieves}}
+  Sieves are an important tool in analytic number theory because they allow for the estimation of the size of of a sifted sequence of numbers from some initial sequence. In practice, one is usually sifting out only those indices relatively prime to some fixed integer and up to some prescribed size. In the following, we introduce sieves in some generality.
+  \section{The Language of Sieves}
+    Let $(a_{n})_{n \ge 1}$ be a sequence of nonnegative numbers called the \textbf{sifting sequence}\index{sifting sequence}. We call a finite subset $\mc{P}$ of primes the \textbf{sifting range}\index{sifting range} and we define $P(z)$ by
+    \[
+      P(z) = \prod_{\substack{p \in \mc{P} \\ p < z}}p,
+    \]
+    for $z \ge 2$. We call $z$ the \textbf{sifting level}\index{sifting level}. In other words, $P(z)$ is the product of the primes in the sifting range up to $z$. We define the corresponding \textbf{sifting function}\index{sifting function} $S(x,z)$ to be
+    \[
+      S(x,z) = \sum_{\substack{n \le x \\ (n,P(z)) = 1}}a_{n},
+    \]
+    for $x > 0$ and $z \ge 2$. Equivalently, $S(x,z)$ is the sum of integers in the sifting sequence up to $x$ that are relatively prime to $P(z)$. For any $d \ge 1$, we define the associated function $S_{d}(x)$ to be
+    \[
+      S_{d}(x) = \sum_{\substack{n \le x \\ d \mid n}}a_{n},
+    \]
+    for $x > 0$. Applying \cref{prop:Mobius_dirac_delta} to the sifting function, we obtain \textbf{Legendre's identity}\index{Legendre's identity}:
+    \[
+      S(x,z) = \sum_{d \mid P(z)}\mu(d)S_{d}(x).
+    \]
+    The usefulness of sieves comes from replacing the M\"obius function with weighted values. In particular, we replace $\mu(d)$ with a weighting factor $\l_{d}$ coming from a real sequence $\L = (\l_{d})_{d \ge 1}$ satisfying $\l_{d} = 0$ unless $d \le D$ for some $D \ge 1$. We call $\L$ the \textbf{sieve}\index{sieve}, $\l_{d}$ a \textbf{sieve weight}\index{sieve weight}, and $D$ the \textbf{sieve level}\index{sieve level}. We also define the \textbf{sifting variable}\index{sifting variable} $s$ to be
+    \[
+      s = \frac{\log(D)}{\log(z)}.
+    \]
+    That is, $s$ measures the size of the sieve level relative to the sifting level on a logarithmic scale. We then define the \textbf{sieving function}\index{sieving function} $S^{\L}(x,z)$ by
+    \[
+      S^{\L}(x,z) = \sum_{d \mid P(z)}\l_{d}S_{d}(x),
+    \]
+    for $x > 0$ and $z \ge 2$. Expanding $S_{d}(x)$, we can write
+    \[
+      S^{\L}(x,z) = \sum_{n \le x}a_{n}\sum_{d \mid (n,P(z))}\l_{d}.
+    \]
+    Now set
+    \[
+      \t_{n}^{0} = \sum_{d \mid (n,P(z))}\mu(d) \quad \text{and} \quad \t_{n} = \sum_{d \mid (n,P(z))}\l_{d}.
+    \]
+    Note that $\t_{n}^{0}$ and $\t_{n}$ both depend on the sifting level $z$, but we suppress this dependence from the notation. In any case, we then have
+    \[
+      S^{\L}(x,z) = \sum_{n \le x}a_{n}\t_{n}. 
+    \]
+     We say that $\L$ is an \textbf{upper sieve}\index{upper sieve} if the sieving function $S^{\L}(x,z)$ is an upper bound for the sifting function $S(x,z)$. From the definition of the sifting function, $\L$ will be an upper sieve if and only if $\t_{n} \ge \t_{n}^{0}$. Analogously, we say that $\L$ is a \textbf{lower sieve}\index{lower sieve} if the sieving function $S^{\L}(x,z)$ is a lower bound for the sifting function $S(x,z)$. Similarly, $\L$ will be a lower sieve if and only if $\t_{n} \le \t_{n}^{0}$. We will often optimize the choice of sieve weights such that the lower or upper bound is as tight as possible. When we wish to distinguish these cases, we denote upper and lower sieves by $\L^{\pm} = (\l_{d}^{\pm})_{d \ge 1}$ respectively. Moreover, we write
+     \[
+        S^{\pm}(x,z) = \sum_{d \mid P(z)}\l_{d}^{\pm}S_{d}(x) \quad \text{and} \quad \t_{n}^{\pm} = \sum_{d \mid (n,P(z))}\l_{d}^{\pm},
+     \]
+     respectively. Then we have the upper and lower bounds
+    \[
+      S^{-}(x,z) \le S(x,z) \le S^{+}(x,z),
+    \]
+    provided
+    \[
+      \t_{n}^{-} \le \t_{n}^{0} \le \t_{n}^{+}.
+    \]
   \section{\todo{Estimating the Sifting Function}}
-  \section{\todo{The Fundamental Lemma of Sieve Theory}}
-  \section{\todo{Choice of Sieve Weights}}
+    Ultimately our aim is to estimate the sifting function in terms of upper or lower sieving functions. In order to achieve this, we require an additional assumption about the sums $S_{d}(x)$. In particular, we assume that there exists a multiplicative function $g(d)$ with $g(1) = 1$, $0 \le g(p) < 1$ for all primes $p$ with $g(p) = 0$ if $p \notin \mc{P}$, satisfies
+    \begin{equation}\label{equ:prod_assumption_density_function_1}
+      \prod_{w \le p < z}(1-g(p))^{-1} \le K\left(\frac{\log(z)}{\log(w)}\right)^{\k},
+    \end{equation}
+    for constants $K > 1$ and $\k \ge 0$ and all $w$ and $z$ with $z > w \ge 2$, and such that  
+    \begin{equation}\label{equ:d_multiple_sifting_function}
+      S_{d}(x) = g(d)M(x)+r_{d}(x),
+    \end{equation}
+    for some smooth functions $M(x)$ and $r_{d}(x)$ defined for $x > 0$. We call the function $g(d)$ a \textbf{density function}\index{density function} and the constant $\k$ as the \textbf{sieve dimension}\index{sieve dimension}. Using Legendre's identity, we can write
+    \[
+      S(x,z) = M(x)\sum_{d \mid P(z)}\mu(d)g(d)+\sum_{d \mid P(z)}\mu(d)r_{d}(x).
+    \]
+    Moreover, if we define functions $V(z)$ and $R(x,z)$ by
+    \[
+      V(z) = \sum_{d \mid P(z)}\mu(d)g(d) \quad \text{and} \quad R(x,z) = \sum_{d \mid P(z)}\mu(d)r_{d}(x,z),
+    \]
+    for $x > 0$ and $z \ge 2$, then we can further write
+    \[
+      S(x,z) = M(x)V(z)+R(x,z).
+    \]
+    Note that as $g(d)$ is multiplicative, the definition of the M\"obius function allows us to express $V(z)$ as a product:
+    \[
+      V(z) = \prod_{p \mid P(z)}(1-g(p)).
+    \]
+    In particular, since $g(p) = 0$ if $p \notin \mc{P}$, \cref{equ:prod_assumption_density_function_1} can be expressed in the form
+    \begin{equation}\label{equ:prod_assumption_density_function_2}
+      \frac{V(w)}{V(z)} \le K\left(\frac{\log(w)}{\log(z)}\right)^{\k}.
+    \end{equation}
+    Since the M\"obius function changes sign often, it is difficult to estimate $R(x,z)$ beyond trivial bounds. We can do much better with a sieve $\L$. In this case, the definition of the sieving function gives
+    \[
+      S_{d}^{\L}(x,z) = M(x)\sum_{d \mid P(z)}\l_{d}g(d)+\sum_{d \mid P(z)}\l_{d}r_{d}(x,z).
+    \]
+    Defining functions $V^{\L}(z)$ and $R^{\L}(x,z)$ by
+     \[
+      V^{\L}(z) = \sum_{d \mid P(z)}\l_{d}g(d) \quad \text{and} \quad R^{\L}(x,z) = \sum_{d \mid P(z)}\l_{d}r_{d}(x,z),
+    \]
+    for $x > 0$ and $z \ge 2$, we can further write
+    \[
+      S^{\L}(x,z) = M(x)V^{\L}(z)+R^{\L}(x,z).
+    \]
+    For upper or lower sieves $\L^{\pm}$, we instead write
+     \[
+      V^{\pm}(z) = \sum_{d \mid P(z)}\l_{d}^{\pm}g(d) \quad \text{and} \quad R^{\pm}(x,z) = \sum_{d \mid P(z)}\l_{d}^{\pm}r_{d}(x,z),
+    \]
+    respectively. Therefore, estimates for the sieving function $S^{\L}(x,z)$ reduce to estimates for $M(x)$, $V^{\L}(z)$, and $R^{\L}(x,z)$. In order for \cref{equ:d_multiple_sifting_function} to be useful, the functions $M(x)$ and $r_{d}(x)$ should be such that we know the order of magnitude of $M(x)$ and that $r_{d}(x)$ is of smaller order of magnitude. In this case, it suffices to estimate $V^{\L}(z)$, and $R^{\L}(x,z)$. For $R^{\L}(x,z)$, we will usually discard possible cancellation from the individual terms $\l_{d}r_{d}(x,z)$ and use the trivial bound
+    \[
+      R^{\l}(x,z) \le \sum_{d \mid P(z)}|\l_{d}r_{d}(x,z)|.
+    \]
+    Estimates for $V^{\L}(x)$ are more involved. \todo{xxx}
+  \section{\todo{Composition of Sieves}}

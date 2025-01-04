@@ -59,7 +59,7 @@
 
     We will now introduce several convergence theorems for Dirichlet series. It will be useful to setup some notation first. If $D(s)$ is a Dirichlet series with coefficients $a(n)$, then for $X > 0$, we set
     \[
-      A(X) = \sum_{n \le X}a(n) \quad \text{and} \quad A^{\ast}(X) = \sum_{n \le X}|a(n)|.
+      A(X) = \sum_{n \le X}a(n) \quad \text{and} \quad |A|(X) = \sum_{n \le X}|a(n)|.
     \]
     These are the partial sums of the coefficients $a(n)$ and $|a(n)|$ up to $X$ respectively. Our first convergence theorem relates boundedness of $A(X)$ to the value of $\s_{c}$: 
     
@@ -131,10 +131,10 @@
       which is equivalent to the desired estimate.
     \end{proof}
 
-    A way to think about \cref{prop:Dirichlet_series_coefficient_size_on_average} is that if the abscissa of absolute convergence is $\s_{a} \ge 0$ then the size of the coefficients $a(n)$ is at most $n^{\s_{a}+\e}$ on average. Of corse, if $a(n) \ll_{\a} n^{\a}$ then \cref{prop:Dirichlet_series_convergence_polynomial_bound} implies that $\s_{a} \le 1+\a$ and so \cref{prop:Dirichlet_series_coefficient_size_on_average} gives the significantly weaker estimate $A(X) \ll_{\e} X^{1+\a+\e}$. However, if we have a bound of the form $A^{\ast}(X) \ll_{\a} X^{\a}$ we can still obtain an upper estimate for the abscissa of absolute convergence:
+    A way to think about \cref{prop:Dirichlet_series_coefficient_size_on_average} is that if the abscissa of absolute convergence is $\s_{a} \ge 0$ then the size of the coefficients $a(n)$ is at most $n^{\s_{a}+\e}$ on average. Of corse, if $a(n) \ll_{\a} n^{\a}$ then \cref{prop:Dirichlet_series_convergence_polynomial_bound} implies that $\s_{a} \le 1+\a$ and so \cref{prop:Dirichlet_series_coefficient_size_on_average} gives the significantly weaker estimate $A(X) \ll_{\e} X^{1+\a+\e}$. However, if we have a bound of the form $|A|(X) \ll_{\a} X^{\a}$ we can still obtain an upper estimate for the abscissa of absolute convergence:
 
     \begin{proposition}\label{prop:Dirichlet_series_convergence_polynomial_bound_average}
-      Suppose $D(s)$ is a Dirichlet series such that $A^{\ast}(X) \ll_{\a} X^{\a}$ for some real $\a \ge 0$. Then the abscissa of absolute convergence satisfies $\s_{a} \le \a$.
+      Suppose $D(s)$ is a Dirichlet series such that $|A|(X) \ll_{\a} X^{\a}$ for some real $\a \ge 0$. Then the abscissa of absolute convergence satisfies $\s_{a} \le \a$.
     \end{proposition}
     \begin{proof}
       It suffices to show that $D(s)$ is absolutely convergent in the region $\s > \a$. Let $s$ be in this region. Then
@@ -143,22 +143,20 @@
       \]
       By Abel's summation formula (see \cref{append:Summation_Formulas}),
       \[
-        \sum_{n \le N}\frac{|a(n)|}{n^{\s}} = |a(N)|N^{-\s}-|a(1)|+\s\int_{1}^{N}A^{\ast}(u)u^{-(\s+1)}\,du,
+        \sum_{n \le N}\frac{|a(n)|}{n^{\s}} = |a(N)|N^{-\s}-|a(1)|+\s\int_{1}^{N}|A|(u)u^{-(\s+1)}\,du,
       \]
-      By assumption $A^{\ast}(u) \ll_{\a} u^{\a}$ so that there is some $N'$ such that $A^{\ast}(N) \ll_{\a} N^{\a}$ for all $N \ge N'$. In particular $a(N) \ll_{\a} N^{\a}$. So for such $N$, we estimate as follows:
-      \begin{align*}
-        \sum_{n \le N}\frac{|a(n)|}{n^{\s}} &= |a(N)|N^{-\s}-|a(1)|+\s\int_{1}^{N}A^{\ast}(u)u^{-(\s+1)}\,du \\
-        &= |a(N)|N^{-\s}-|a(1)|+\s\int_{1}^{N'}A^{\ast}(u)u^{-(\s+1)}\,du+\s\int_{N'}^{N}A^{\ast}(u)u^{-(\s+1)}\,du \\
-        &\ll_{\a} |a(N)|N^{-\s}+|a(1)|+\s\int_{1}^{N'}|A^{\ast}(u)|u^{-(\s+1)}\,du+\s\int_{N'}^{N}u^{\a-(\s+1)}\,du.
-      \end{align*}
-      As $N \to \infty$, the left-hand side tends towards $\sum_{n \ge 1}\frac{|a(n)|}{n^{\s}}$. As for the right-hand side, the first term tends to zero since $\s > \a$. The second and third terms remain bounded as they are independent of $N$. For the last term, we compute
+      By assumption $|A|(u) \ll_{\a} u^{\a}$ and so $a(N) \ll_{\a} N^{\a}$. We then estimate as follows:
       \[
-        \int_{N'}^{N}u^{\a-(\s+1)}\,du = \frac{u^{\a-\s}}{\a-\s}\bigg|_{N'}^{N} = \frac{N^{\a-\s}}{\a-\s}-\frac{(N')^{\a-\s}}{\a-\s}.
+        \sum_{n \le N}\frac{|a(n)|}{n^{\s}} = |a(N)|N^{-\s}-|a(1)|+\s\int_{1}^{N}|A|(u)u^{-(\s+1)}\,du \ll_{\a} |a(N)|N^{-\s}+|a(1)|+\s\int_{1}^{N}u^{\a-(\s+1)}\,du.
       \]
-      But $\s > \a$ so this term is also bounded as $N \to \infty$. This finishes the proof.
+      As $N \to \infty$, the left-hand side tends towards $\sum_{n \ge 1}\frac{|a(n)|}{n^{\s}}$. As for the right-hand side, the first term tends to zero since $\s > \a$ and the second term remains bounded as they are independent of $N$. For the third term, we compute
+      \[
+        \int_{1}^{N}u^{\a-(\s+1)}\,du = \frac{u^{\a-\s}}{\a-\s}\bigg|_{1}^{N} = \frac{N^{\a-\s}}{\a-\s}-\frac{1}{\a-\s},
+      \]
+      which is also bounded as $N \to \infty$. This finishes the proof.
     \end{proof}
 
-    Do not be fooled; \cref{prop:Dirichlet_series_convergence_polynomial_bound_average} is in general weaker than \cref{prop:Dirichlet_series_convergence_polynomial_bound}. For example, from our comments following \cref{prop:Dirichlet_series_coefficient_size_on_average}, if $D(s)$ is a Dirichlet series with coefficients $a(n)$ and we have the estimate $A^{\ast}(X) \ll_{\b} X^{\b}$ for some real $\b$ then \cref{prop:Dirichlet_series_convergence_polynomial_bound_average} only says that $\s_{a} \le \b$. If $\a$ is very small compared to $\b$, this is a significantly worse upper bound for the abscissa of absolute convergence than what \cref{prop:Dirichlet_series_convergence_polynomial_bound} would imply if $a(n) \ll_{\a} n^{\a}$. Actually, the question of sharp polynomial bounds for these coefficients can be very deep. However, if the coefficients $a(n)$ are always nonnegative, then \textbf{Landau's theorem}\index{Landau's theorem} provides a way of obtaining a lower bound for their growth as well as describing a singularity of $D(s)$:
+    Do not be fooled; \cref{prop:Dirichlet_series_convergence_polynomial_bound_average} is in general weaker than \cref{prop:Dirichlet_series_convergence_polynomial_bound}. For example, from our comments following \cref{prop:Dirichlet_series_coefficient_size_on_average}, if $D(s)$ is a Dirichlet series with coefficients $a(n)$ and we have the estimate $|A|(X) \ll_{\b} X^{\b}$ for some real $\b$ then \cref{prop:Dirichlet_series_convergence_polynomial_bound_average} only says that $\s_{a} \le \b$. If $\a$ is very small compared to $\b$, this is a significantly worse upper bound for the abscissa of absolute convergence than what \cref{prop:Dirichlet_series_convergence_polynomial_bound} would imply if $a(n) \ll_{\a} n^{\a}$. Actually, the question of sharp polynomial bounds for these coefficients can be very deep. However, if the coefficients $a(n)$ are always nonnegative, then \textbf{Landau's theorem}\index{Landau's theorem} provides a way of obtaining a lower bound for their growth as well as describing a singularity of $D(s)$:
 
     \begin{theorem}[Landau's theorem]
       Suppose $D(s)$ is a Dirichlet series with nonnegative coefficients $a(n)$ and finite abscissa of absolute convergence $\s_{a}$. Then $\s_{a}$ is a singularity of $D(s)$.
@@ -187,7 +185,7 @@
       for $-\d' < s < 1$. As $\d' > 0$, this implies that $D(s)$ converges absolutely (since $a(n)$ is nonnegative) for some $s < 0$ (say $s = -\frac{\d'}{2}$) which contradicts $\s_{a} = 0$.
     \end{proof}
 
-    Landau's theorem is very useful as it implies that if $D(s)$ is a Dirichlet series with nonnegative coefficients then $a(n) \not\ll_{\e} n^{\s_{a}-(1+\e)}$ because otherwise \cref{prop:Dirichlet_series_convergence_polynomial_bound} implies $\s_{a} \le \s_{a}-\e$. Actually, Landau's theorem also implies $A^{\ast}(X) \not\ll_{\e} X^{\s_{a}-\e}$ for otherwise \cref{prop:Dirichlet_series_convergence_polynomial_bound_average} would similarly imply $\s_{a} \le \s_{\a}-\e$. When we come across Dirichlet series whose coefficients are of polynomial growth or of polynomial growth on average, we will invoke these results without mention, except for Landau's theorem, as this is also common practice in the literature. Generally speaking, if the coefficients $a(n)$ are chosen at random, $D(s)$ will not possess any good properties outside of convergence in some region (it might not even possess that). However, the Dirichlet series we will encounter, and most of interest in the wild, will have multiplicative coefficients. In this case, the Dirichlet series admits an infinite product expression:
+    Landau's theorem is very useful as it implies that if $D(s)$ is a Dirichlet series with nonnegative coefficients then $a(n) \not\ll_{\e} n^{\s_{a}-(1+\e)}$ because otherwise \cref{prop:Dirichlet_series_convergence_polynomial_bound} implies $\s_{a} \le \s_{a}-\e$. Actually, Landau's theorem also implies $|A|(X) \not\ll_{\e} X^{\s_{a}-\e}$ for otherwise \cref{prop:Dirichlet_series_convergence_polynomial_bound_average} would similarly imply $\s_{a} \le \s_{\a}-\e$. When we come across Dirichlet series whose coefficients are of polynomial growth or of polynomial growth on average, we will invoke these results without mention, except for Landau's theorem, as this is also common practice in the literature. Generally speaking, if the coefficients $a(n)$ are chosen at random, $D(s)$ will not possess any good properties outside of convergence in some region (it might not even possess that). However, the Dirichlet series we will encounter, and most of interest in the wild, will have multiplicative coefficients. In this case, the Dirichlet series admits an infinite product expression:
 
     \begin{proposition}\label{prop:Dirichlet_series_Euler_product}
         Suppose the coefficients $a(n)$ of a Dirichlet series $D(s)$ are multiplicative and satisfy $a(n) \ll_{\a} n^{\a}$ for some real $\a \ge 0$. Then
