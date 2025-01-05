@@ -71,9 +71,9 @@
       S(x,z) = M(x)V(z)+R(x,z).
     \]
     Note that as $g$ is multiplicative, the definition of the M\"obius function allows us to express $V(z)$ as a product:
-    \[
+    \begin{equation}\label{equ:V_product_formula}
       V(z) = \prod_{p \mid P(z)}(1-g(p)).
-    \]
+    \end{equation}
     In particular, since $g(p) = 0$ if $p \notin \mc{P}$, \cref{equ:prod_assumption_density_function_1} can be expressed in the form
     \begin{equation}\label{equ:prod_assumption_density_function_2}
       \frac{V(w)}{V(z)} \le K\left(\frac{\log(w)}{\log(z)}\right)^{\k}.
@@ -100,7 +100,7 @@
     \]
     In order to obtain estimates for $V^{\L}(x)$, we express it in a more useful form. For this, we define multiplicative arithmetic functions $h$ and $j$ defined by
     \[
-      h(p^{r}) = g(p^{r})(1-g(p^{r}))^{-1} \quad \text{and} \quad j(p^{r}) = (1-g(p^{r}))^{-1},
+      h(p^{r}) = \frac{g(p^{r})}{(1-g(p^{r}))} \quad \text{and} \quad j(p^{r}) = \frac{1}{(1-g(p^{r}))},
     \]
     for all primes $p$ and $r \ge 2$. Moreover, these two formulas imply
     \[
@@ -115,8 +115,14 @@
       V^{\L}(z) &= \sum_{de \mid P(z)}\t_{e}\mu(d)g(de) \\
       &= \sum_{\substack{de \mid P(z) \\ (d,e) = 1}}\t_{e}\mu(d)g(de) \\
       &= \sum_{\substack{de \mid P(z) \\ (d,e) = 1}}\t_{e}g(e)\prod_{p \mid d}(1-g(p)) \\
-      &= \sum_{de \mid P(z)}\t_{e}h(e)\prod_{p \mid d}(1-g(p)) \\
-      &= \sum_{e \mid P(z)}\t_{e}h(e)\prod_{p \mid P(z)}(1-g(p))
+      &= \todo{xxx}, \\
     \end{align*}
-    where the second line holds because $g(de) = 0$ unless $(d,e) = 1$ and the third line holds by the multiplicativity of $g$ and definition of the M\"obius function.
+    where the second line holds because $g(de) = 0$ unless $(d,e) = 1$ and the third line holds by the multiplicativity of $g$ and the definition of the M\"obius function. Define the function $G^{\L}(z)$ by
+    \[
+      G^{\L}(z) = \sum_{d \mid P(z)}\t_{d}g(d),
+    \]
+    for $z \ge 2$. Then by \cref{equ:V_product_formula} we can write
+    \[
+      V^{\L}(z) = G^{\L}(z)V(z).
+    \]
   \section{\todo{Composition of Sieves}}
