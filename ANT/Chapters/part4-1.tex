@@ -76,7 +76,7 @@
     \end{equation}
     In particular, since $g(p) = 0$ if $p \notin \mc{P}$, \cref{equ:prod_assumption_density_function_1} can be expressed in the form
     \begin{equation}\label{equ:prod_assumption_density_function_2}
-      \frac{V(w)}{V(z)} \le K\left(\frac{\log(w)}{\log(z)}\right)^{\k}.
+      \frac{V(w)}{V(z)} \le K\left(\frac{\log(z)}{\log(w)}\right)^{\k}.
     \end{equation}
     Since the M\"obius function changes sign often, it is difficult to estimate $R(x,z)$ beyond trivial bounds. We can do much better with a sieve $\L$. In this case, the definition of the sieving function gives
     \[
@@ -110,19 +110,19 @@
     \[
       V^{\L}(z) = \sum_{d \mid P(z)}\sum_{e \mid d}\t_{e}\mu\left(\frac{d}{e}\right)g(d).
     \]
-    Making the change of variables $d \to ed$, we compute
+    Making the change of variables $d \to ed$ and noting that $(d,e) = 1$ because $P(z)$ is square-free, we compute
     \begin{align*}
       V^{\L}(z) &= \sum_{de \mid P(z)}\t_{e}\mu(d)g(de) \\
-      &= \sum_{\substack{de \mid P(z) \\ (d,e) = 1}}\t_{e}\mu(d)g(de) \\
-      &= \sum_{\substack{de \mid P(z) \\ (d,e) = 1}}\t_{e}g(e)\prod_{p \mid d}(1-g(p)) \\
-      &= \todo{xxx}, \\
+      &= \sum_{e \mid P(z)}\t_{e}g(e)\prod_{p \mid \frac{P(z)}{e}}(1-g(p)) \\
+      &= \sum_{e \mid P(z)}\t_{e}h(e)\prod_{p \mid P(z)}(1-g(p)),
     \end{align*}
-    where the second line holds because $g(de) = 0$ unless $(d,e) = 1$ and the third line holds by the multiplicativity of $g$ and the definition of the M\"obius function. Define the function $G^{\L}(z)$ by
+    where the second line holds by the multiplicativity of $g$ and the definition of the M\"obius function. Defining the function $G^{\L}(z)$ by
     \[
       G^{\L}(z) = \sum_{d \mid P(z)}\t_{d}g(d),
     \]
-    for $z \ge 2$. Then by \cref{equ:V_product_formula} we can write
+    for $z \ge 2$, \cref{equ:V_product_formula} further implies that
     \[
       V^{\L}(z) = G^{\L}(z)V(z).
     \]
+    Therefore estimates for $V^{\L}(z)$ reduce to estimates for $G^{\L}(z)$ and $V(z)$.
   \section{\todo{Composition of Sieves}}
