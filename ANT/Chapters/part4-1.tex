@@ -1,19 +1,27 @@
 \chapter{The Theory of Sieves}
   Sieves are an important tool in analytic number theory because they allow for the estimation of the size of of a sifted sequence of numbers from some initial sequence. In practice, one is usually sifting out only those indices relatively prime to some fixed integer and up to some prescribed size. In the following, we introduce sieves in some generality.
   \section{The Language of Sieves}
-    Let $(a_{n})_{n \ge 1}$ be a sequence of nonnegative numbers called the \textbf{sifting sequence}\index{sifting sequence}. We call a finite subset $\mc{P}$ of primes the \textbf{sifting range}\index{sifting range} and we define $P(z)$ by
+    Let $(a_{n})_{n \ge 1}$ be a nonnegative sequence called the \textbf{sifting sequence}\index{sifting sequence}. Define the sum $S(x)$ by
+    \[
+      S(x) = \sum_{\substack{n \le x}}a_{n},
+    \]
+    for $x > 0$. For any $d \ge 1$, we define the associated function $S_{d}(x)$ by
+    \[
+      S_{d}(x) = \sum_{\substack{n \le x \\ d \mid n}}a_{n},
+    \]
+    for $x > 0$.We call a finite subset $\mc{P}$ of primes the \textbf{sifting range}\index{sifting range} and we define $P(z)$ by
     \[
       P(z) = \prod_{\substack{p \in \mc{P} \\ p < z}}p,
     \]
     for $z \ge 2$. We call $z$ the \textbf{sifting level}\index{sifting level}. In other words, $P(z)$ is the product of the primes in the sifting range up to $z$. We define the corresponding \textbf{sifting function}\index{sifting function} $S(x,z)$ to be
     \[
-      S(x,z) = \sum_{\substack{n \le x \\ (n,P(z)) = 1}}a_{n},
+      S(x,z) = \sum_{\substack{n \le x \\ (n,P(z)) = 1}}a_{n}.
     \]
-    for $x > 0$ and $z \ge 2$. Equivalently, $S(x,z)$ is the sum of integers in the sifting sequence up to $x$ that are relatively prime to $P(z)$. For any $d \ge 1$, we define the associated function $S_{d}(x)$ to be
+    Equivalently, $S(x,z)$ is $S(x)$ except those terms $a_{n}$ with $(n,P(z)) > 1$ have been removed. This last condition can also be expressed as removing those terms $a_{n}$ with $n \equiv 0 \tmod{p}$ for $p \mid P(z)$. So $S(x,z)$ can be thought of as removing terms whose indices correspond to certain residue classes from $S(x)$. We can now obtain two very useful relations for the sifting function $S(x,z)$. For the first relation, recalling that $S(x,z)$ is $S(x)$ with those terms $a_{n}$ such that $n \equiv 0 \tmod{p}$ for some $p \mid P(z)$ removed, we immediately obtain \textbf{Buchstab's formula}\index{Buchstab's formula}:
     \[
-      S_{d}(x) = \sum_{\substack{n \le x \\ d \mid n}}a_{n},
+      S(x,z) = S(x)-\sum_{p \mid P(z)}S_{p}(x).
     \]
-    for $x > 0$. Applying \cref{prop:Mobius_dirac_delta} to the sifting function, we obtain \textbf{Legendre's identity}\index{Legendre's identity}:
+    As for the second relation, applying \cref{prop:Mobius_dirac_delta} to  we obtain \textbf{Legendre's identity}\index{Legendre's identity}:
     \[
       S(x,z) = \sum_{d \mid P(z)}\mu(d)S_{d}(x).
     \]
@@ -49,7 +57,7 @@
     \begin{equation}\label{equ:upper_lower_sieve_theta_relation}
       \t_{n}^{-} \le \t_{n}^{0} \le \t_{n}^{+}.
     \end{equation}
-    We can also compose sieves to form new sieves from old ones. To explain the construction, let $\L' = (\l'_{d})_{d \ge 1}$ and $\L'' = (\l''_{d})_{d \ge 1}$ be two sieves of levels $D'$ and $D''$ respectively. Also let $\t' = \l' \ast \mathbf{1}$ and $\t'' = \l'' \ast \mathbf{1}$. Then we define the \textbf{composition sieve}\index{composition sieve} $\L = (\l_{d})_{d \ge 1}$ of $\L'$ and $\L''$ by
+    We can also compose sieves to form new sieves from old ones. To explain the construction, let $\L' = (\l'_{d})_{d \ge 1}$ and $\L'' = (\l''_{d})_{d \ge 1}$ be two sieves of levels $D'$ and $D''$ respectively. Also let $\t' = \l' \ast \mathbf{1}$ and $\t'' = \l'' \ast \mathbf{1}$. Then we define the \textbf{composite sieve}\index{composite sieve} $\L = \L'\L''$ of $\L'$ and $\L''$ by
     \[
       \l_{d} = \sum_{\substack{ d_{1},d_{2} \mid d \\ [d_{1},d_{2}] = d}}\l'_{d_{1}}\l''_{d_{2}},
     \]
