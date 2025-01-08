@@ -759,12 +759,12 @@
       \begin{lemma}\label{lem:Ramanujan_zeta_relation}
         Let $M \ge 1$ be square-free. Then for $\s > 1$ and $b \in \Z$,
         \[
-          \sum_{m \ge 1}\frac{r(b;m)}{m^{2s}} = \begin{cases} \frac{\z(2s-1)}{\z(2s)} & \text{if $b = 0$}, \\ \frac{\s_{1-2s}(|b|)}{\z(2s)} & \text{if $b \neq 0$}, \end{cases}
+          \sum_{m \ge 1}\frac{r(b,m)}{m^{2s}} = \begin{cases} \frac{\z(2s-1)}{\z(2s)} & \text{if $b = 0$}, \\ \frac{\s_{1-2s}(|b|)}{\z(2s)} & \text{if $b \neq 0$}, \end{cases}
         \]
         where $\s_{s}(b)$ is the generalized sum of divisors function.
       \end{lemma}
       \begin{proof}
-        If $\s > 1$ then the desired evaluation of the sum is locally absolutely uniformly convergent because the Riemann zeta function is in that region. Hence the sum will be too provided we prove the identity. Suppose $b = 0$. Then $r(0;m) = \vphi(m)$. Since $\vphi(m)$ is multiplicative we have
+        If $\s > 1$ then the desired evaluation of the sum is locally absolutely uniformly convergent because the Riemann zeta function is in that region. Hence the sum will be too provided we prove the identity. Suppose $b = 0$. Then $r(0,m) = \vphi(m)$. Since $\vphi(m)$ is multiplicative we have
         \begin{equation}\label{equ:Ramanujan_zeta_relation_1}
           \sum_{m \ge 1}\frac{\vphi(m)}{m^{2s}} = \prod_{p}\left(\sum_{k \ge 0}\frac{\vphi(p^{k})}{p^{k(2s)}}\right).
         \end{equation}
@@ -784,7 +784,7 @@
         \]
         Now suppose $b \neq 0$, \cref{prop:Ramanujan_sum_evaluation} gives the first equality in the following chain:
         \begin{align*}
-          \sum_{m \ge 1}\frac{r(b;m)}{m^{2s}} &= \sum_{m \ge 1}m^{-2s}\sum_{\ell \mid (b,m)}\ell\mu\left(\frac{m}{\ell}\right) \\
+          \sum_{m \ge 1}\frac{r(b,m)}{m^{2s}} &= \sum_{m \ge 1}m^{-2s}\sum_{\ell \mid (b,m)}\ell\mu\left(\frac{m}{\ell}\right) \\
           &= \sum_{\ell \mid b}\ell\sum_{m \ge 1}\frac{\mu(m)}{(m\ell)^{2s}} \\
           &= \left(\sum_{\ell \mid b}\ell^{1-2s}\right)\left(\sum_{m \ge 1}\frac{\mu(m)}{m^{2s}}\right) \\
           &= \s_{1-2s}(b)\sum_{m \ge 1}\frac{\mu(m)}{m^{2s}} \\
@@ -823,8 +823,8 @@
           &= \sum_{(c,\ell,r)}\frac{1}{c^{2s}}\int_{\ell}^{\ell+1}\frac{y^{s}}{\left|x+\frac{r}{c}+iy\right|^{2s}}e^{-2\pi inx}\,dx &&\text{$x \to x-\ell$} \\
           &= \psum_{\substack{c \ge 1 \\ r \tmod{c}}}\frac{1}{c^{2s}}\int_{-\infty}^{\infty}\frac{y^{s}}{\left|x+\frac{r}{c}+iy\right|^{2s}}e^{-2\pi inx}\,dx &&\text{DCT} \\
           &= \sum_{c \ge 1}\frac{1}{c^{2s}}\psum_{r \tmod{c}}e^{\frac{2\pi inr}{c}}\int_{-\infty}^{\infty}\frac{y^{s}}{(x^{2}+y^{2})^{s}}e^{-2\pi inx}\,dx &&\text{$x \to x-\frac{r}{c}$} \\
-          &= \sum_{c \ge 1}\frac{r(n;c)}{c^{2s}}\int_{-\infty}^{\infty}\frac{y^{s}}{(x^{2}+y^{2})^{s}}e^{-2\pi inx}\,dx \\
-          &= \sum_{c \ge 1}\frac{r(n;c)}{c^{2s}}y^{1-s}\int_{-\infty}^{\infty}\frac{1}{(x^{2}+1)^{s}}e^{-2\pi inxy}\,dx && \text{$x \to xy$},
+          &= \sum_{c \ge 1}\frac{r(n,c)}{c^{2s}}\int_{-\infty}^{\infty}\frac{y^{s}}{(x^{2}+y^{2})^{s}}e^{-2\pi inx}\,dx \\
+          &= \sum_{c \ge 1}\frac{r(n,c)}{c^{2s}}y^{1-s}\int_{-\infty}^{\infty}\frac{1}{(x^{2}+1)^{s}}e^{-2\pi inxy}\,dx && \text{$x \to xy$},
         \end{align*}
         where on the right-hand side it is understood we are summing over all triples $(c,\ell,r)$ with the prescribed properties. Using \cref{lem:Ramanujan_zeta_relation} yields
         \[

@@ -272,22 +272,22 @@
     \section{Special Sums}
       Analytic number theory does not come without its class of special sums that appear naturally. They play the role of discrete counterparts to continuous objects (there is a rich underpinning here). Without a sufficient understanding of these sums, they would cause a discrete obstruction to an analytic problem that we wish to solve.
       \subsection*{Ramanujan \& Gauss Sums}
-        Let's begin with the Ramanujan sum. For a positive integer $m$ and any integer $b$, the \textbf{Ramanujan sum}\index{Ramanujan sum} $r(b;m)$ is defined by
+        Let's begin with the Ramanujan sum. For a positive integer $m$ and any integer $b$, the \textbf{Ramanujan sum}\index{Ramanujan sum} $r(b,m)$ is defined by
         \[
-          r(b;m) = \psum_{a \tmod{m}}e^{\frac{2\pi iab}{m}}.
+          r(b,m) = \psum_{a \tmod{m}}e^{\frac{2\pi iab}{m}}.
         \]
-        Note that the Ramanujan sum is a finite sum of $m$-th roots of unity on the unit circle. Clearly $r(0;m) = \vphi(m)$. Ramanujan sums can be computed explicitly by means of the M\"obius function (see \cref{append:Arithmetic_Functions}):
+        Note that the Ramanujan sum is a finite sum of $m$-th roots of unity on the unit circle. Clearly $r(0,m) = \vphi(m)$. Ramanujan sums can be computed explicitly by means of the M\"obius function (see \cref{append:Arithmetic_Functions}):
 
         \begin{proposition}\label{prop:Ramanujan_sum_evaluation}
           For any positive integer $m$ and any nonzero $b \in \Z$,
           \[
-            r(b;m) = \sum_{\ell \mid (b,m)}\ell\mu\left(\frac{m}{\ell}\right).
+            r(b,m) = \sum_{\ell \mid (b,m)}\ell\mu\left(\frac{m}{\ell}\right).
           \]
         \end{proposition}
         \begin{proof}
           This is a computation:
           \begin{align*}
-            r(b;m) &= \psum_{a \tmod{m}}e^{\frac{2\pi iab}{m}} \\
+            r(b,m) &= \psum_{a \tmod{m}}e^{\frac{2\pi iab}{m}} \\
             &= \sum_{a \tmod{m}}e^{\frac{2\pi iab}{m}}\sum_{d \mid (a,m)}\mu(d) && \text{\cref{prop:Mobius_dirac_delta}} \\
             &= \sum_{d \mid m}\mu(d)\sum_{\substack{a \tmod{m} \\ d \mid a}}e^{\frac{2\pi iab}{m}} \\
             &= \sum_{d \mid m}\mu(d)\sum_{kd \tmod{m}}e^{\frac{2\pi ikdb}{m}} && \text{$a \to kd$.} \\
@@ -371,7 +371,7 @@
           \[
             \tau(\chi) = \tau(\wtilde{\chi}\chi_{\frac{m}{q},0}) = \wtilde{\chi}\left(\frac{m}{q}\right)\chi_{\frac{m}{q},0}(q)\tau(\wtilde{\chi})\tau(\chi_{\frac{m}{q},0}) = \tau(\chi_{\frac{m}{q},0})\wtilde{\chi}\left(\frac{m}{q}\right)\tau(\wtilde{\chi}).
           \]
-          Now observe that $\tau(\chi_{\frac{m}{q},0}) = r\left(1;\frac{m}{q}\right)$. By \cref{prop:Ramanujan_sum_evaluation} we see that $r\left(1;\frac{m}{q}\right) = \mu\left(\frac{m}{q}\right)$ and (v) follows.
+          Now observe that $\tau(\chi_{\frac{m}{q},0}) = r\left(1,\frac{m}{q}\right)$. By \cref{prop:Ramanujan_sum_evaluation} we see that $r\left(1,\frac{m}{q}\right) = \mu\left(\frac{m}{q}\right)$ and (v) follows.
         \end{proof}
 
         Notice that \cref{prop:Gauss_sum_reduction} reduces the evaluation of the Ramanujan sum $\tau(b,\chi)$ to that of the Gauss sum $\tau(\chi)$ at least when $\chi$ is primitive. When $\chi$ is not primitive and $(b,m) > 1$ we need to appeal to evaluating $\tau(b,\chi)$ by more direct means. Evaluating $\tau(\chi)$ for general characters $\chi$ turns out to be a very difficult problem and is still open. However, it is not difficult to determine the modulus of $\tau(\chi)$ when $\chi$ is primitive:
@@ -509,7 +509,7 @@
             \[
               \psum_{a \tmod{p^{r}}}e^{\frac{2\pi ia^{2}b}{p^{r}}},
             \]
-            is zero. This sum is exactly $r(b;p^{r})$ so by \cref{prop:Ramanujan_sum_evaluation}, and that $(b,p) = 1$, we conclude
+            is zero. This sum is exactly $r(b,p^{r})$ so by \cref{prop:Ramanujan_sum_evaluation}, and that $(b,p) = 1$, we conclude
             \[
               \psum_{a \tmod{p^{r}}}e^{\frac{2\pi ia^{2}b}{p^{r}}} = \mu(p^{r}) = 0,
             \]
@@ -600,23 +600,23 @@
           The statement follows immediately from \cref{thm:Gauss's_evaluation,prop:Gauss_sum_equivalence_for_primes}.
         \end{proof}
       \subsection*{Kloosterman \& Sali\'e Sums}
-        Our last class of sums generalize both types of Ramanujan sums. For a positive integer $c$ and any integers $n$ and $m$, the \textbf{Kloosterman sum}\index{Kloosterman sum} $K(n,m;c)$ is defined by
+        Our last class of sums generalize both types of Ramanujan sums. For a positive integer $c$ and any integers $n$ and $m$, the \textbf{Kloosterman sum}\index{Kloosterman sum} $K(n,m,c)$ is defined by
         \[
-          K(n,m;c) = \sum_{\substack{a \tmod{c} \\ (a,c) = 1}}e^{\frac{2\pi i(an+\conj{a}m)}{c}} = \psum_{a \tmod{c}}e^{\frac{2\pi i(an+\conj{a}m)}{c}}.
+          K(n,m,c) = \sum_{\substack{a \tmod{c} \\ (a,c) = 1}}e^{\frac{2\pi i(an+\conj{a}m)}{c}} = \psum_{a \tmod{c}}e^{\frac{2\pi i(an+\conj{a}m)}{c}}.
         \]
         Notice that if either $n = 0$ or $m = 0$ then the Kloosterman sum reduces to a Ramanujan sum. Kloosterman sums have similar properties to those of Ramanujan sums, but we will not need them. The only result we will need is a famous bound, often called the \textbf{Weil bound}\index{Weil bound} for Kloosterman sums, proved by Weil (see \cite{weil1948some} for a proof):
 
         \begin{theorem}[Weil bound]
           Let $c$ be a positive integer and $n$ and $m$ be integers. Then
           \[
-            |K(n,m;c)| \le \s_{0}(c)\sqrt{(n,m,c)}\sqrt{c},
+            |K(n,m,c)| \le \s_{0}(c)\sqrt{(n,m,c)}\sqrt{c},
           \]
           where $\s_{0}(c)$ is the divisor function.
         \end{theorem}
 
-        Lastly, Sali\'e sums are Kloosterman sums with Dirichlet characters. To be precise, for a positive integer $c$, any integers $n$ and $m$, and a Dirichlet character $\chi$ with conductor $q \mid c$, the \textbf{Sali\'e sum}\index{Sali\'e sum} $S_{\chi}(n,m;c)$ is defined by
+        Lastly, Sali\'e sums are Kloosterman sums with Dirichlet characters. To be precise, for a positive integer $c$, any integers $n$ and $m$, and a Dirichlet character $\chi$ with conductor $q \mid c$, the \textbf{Sali\'e sum}\index{Sali\'e sum} $S_{\chi}(n,m,c)$ is defined by
         \[
-          S_{\chi}(n,m;c) = \sum_{\substack{a \tmod{c} \\ (a,c) = 1}}\chi(a)e^{\frac{2\pi i(an+\conj{a}m)}{c}} = \psum_{a \tmod{c}}\chi(a)e^{\frac{2\pi i(an+\conj{a}m)}{c}}.
+          S_{\chi}(n,m,c) = \sum_{\substack{a \tmod{c} \\ (a,c) = 1}}\chi(a)e^{\frac{2\pi i(an+\conj{a}m)}{c}} = \psum_{a \tmod{c}}\chi(a)e^{\frac{2\pi i(an+\conj{a}m)}{c}}.
         \]
         If either $n = 0$ or $m = 0$ then the Sali\'e sum reduces to the Ramanujan sum associated to $\chi$.
     \section{Integration Techniques \& Transforms}
