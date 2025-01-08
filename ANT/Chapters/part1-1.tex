@@ -271,7 +271,7 @@
       In light of \cref{thm:Dirichlet_character_conductor_existance}, we define \textbf{conductor}\index{conductor} $q$ of a Dirichlet character $\chi$ modulo $m$ to be the period of the unique primitive character $\wtilde{\chi}$ that induces $\chi$. This is the most important data of a Dirichlet character since it tells us how $\chi$ is built. Note that $\chi$ is primitive if and only if its conductor and modulus are equal. Also observe that if $\chi$ has conductor $q$, then $\chi$ is $q$-periodic (necessarily $q \mid m$), and the nonzero values of $\chi$ are all $q$-th roots of unity because those are the nonzero values of $\wtilde{\chi}$. Moreover, $\chi = \wtilde{\chi}\chi_{\frac{m}{q},0}$ by the definition of induced Dirichlet characters. We would also like to distinguish Dirichlet characters whose nonzero values are real or imaginary. We say $\chi$ is \textbf{real}\index{real} if it is real-valued. Hence the nonzero values of $\chi$ are $1$ or $-1$ since they must be roots of unity. We say $\chi$ is an \textbf{complex}\index{complex} if it is not real. More commonly, we distinguish Dirichlet characters modulo $m$ by their order as an element of $(\Z/m\Z)^{\ast}$. If $\chi$ is of order $2$, $3$, etc in $(\Z/m\Z)^{\ast}$ then we say it is \textbf{quadratic}\index{quadratic}, \textbf{cubic}\index{cubic}, etc. In particular, a Dirichlet character is quadratic if and only if it is real. For example, if $m$ is odd then the Jacobi symbol $\tlegendre{\cdot}{m}$ is a quadratic Dirichlet character. We will often let $\chi_{m}$ denote this quadratic Dirichlet character but we will always mention this explicitly when we do so. For any Dirichlet character $\chi$, $\chi(-1) = \pm 1$ because $\chi(-1)^{2} = 1$. We would like to distinguish this parity. Accordingly, we say $\chi$ is \textbf{even}\index{even} if $\chi(-1) = 1$ and \textbf{odd}\index{odd} if $\chi(-1) = -1$. Clearly even Dirichlet characters are even functions and odd Dirichlet characters are odd functions. Moreover, $\chi$ and $\cchi$ have the same parity and any lift of $\chi$ has the same parity as $\chi$.
     \section{Special Sums}
       Analytic number theory does not come without its class of special sums that appear naturally. They play the role of discrete counterparts to continuous objects (there is a rich underpinning here). Without a sufficient understanding of these sums, they would cause a discrete obstruction to an analytic problem that we wish to solve.
-      \subsection*{Ramanujan Sums}
+      \subsection*{Ramanujan \& Gauss Sums}
         Let's begin with the Ramanujan sum. For a positive integer $m$ and any integer $b$, the \textbf{Ramanujan sum}\index{Ramanujan sum} $r(b;m)$ is defined by
         \[
           r(b;m) = \psum_{a \tmod{m}}e^{\frac{2\pi iab}{m}}.
@@ -299,12 +299,11 @@
           \]
           upon performing the change of variables $\frac{m}{d} \to \ell$.
         \end{proof}
-      \subsection*{Gauss Sums}
-        When we take a Ramanujan sum and introduce a Dirichlet character we get a Gauss sums. Let $\chi$ be a Dirichlet character modulo $m$. For any $b \in \Z$, the \textbf{Gauss sum}\index{Gauss sum} $\tau(b,\chi)$ attached to $\chi$ is given by
+        We can also define a Ramanujan sum associated to Dirichlet characters. Let $\chi$ be a Dirichlet character modulo $m$. For any $b \in \Z$, the \textbf{Ramanujan sum}\index{Ramanujan sum} $\tau(b,\chi)$ associated to $\chi$ is given by
         \[
           \tau(b,\chi) = \sum_{a \tmod{m}}\chi(a)e^{\frac{2\pi iab}{m}} = \psum_{a \tmod{m}}\chi(a)e^{\frac{2\pi iab}{m}},
         \]
-        where the last equality follows because $\chi(a) = 0$ unless $(a,m) = 1$. If $b = 1$ we will write $\tau(\chi)$ instead. That is, $\tau(\chi) = \tau(1,\chi)$. Gauss sums are interesting because the Dirichlet character is a multiplicative character while the exponential is an additive one. So the Gauss sums is a convolution between a multiplicative and additive character. This is the fundamental reason that makes them difficult to study as one needs to separate the additive and multiplicative structures. Observe that if $m = 1$ then $\chi$ is the trivial character and $\tau(b,\chi) = 1$. So the interesting cases are when $m \ge 2$. There are some basic properties of Gauss sums that are very useful:
+        where the last equality follows because $\chi(a) = 0$ unless $(a,m) = 1$. If $b = 1$ we will write $\tau(\chi)$ instead. That is, $\tau(\chi) = \tau(1,\chi)$. We call $\tau(\chi)$ the \textbf{Gauss sum}\index{Gauss sum} associated to $chi$. Ramanujan and Gauss sums associated to Dirichlet characters are interesting because the Dirichlet character is a multiplicative character while the exponential is an additive one. So these sums are a convolution between a multiplicative and additive character. This is the fundamental reason that makes them difficult to study as one needs to separate the additive and multiplicative structures. Observe that if $m = 1$ then $\chi$ is the trivial character and $\tau(b,\chi) = 1$. So the interesting cases are when $m \ge 2$. There are some basic properties of these sums which are very useful:
 
         \begin{proposition}\label{prop:Gauss_sum_reduction}
           Let $\chi$ and $\psi$ be nontrivial Dirichlet characters modulo $m$ and $n$ respectively and let $b \in \Z$. Then the following hold:
@@ -375,7 +374,7 @@
           Now observe that $\tau(\chi_{\frac{m}{q},0}) = r\left(1;\frac{m}{q}\right)$. By \cref{prop:Ramanujan_sum_evaluation} we see that $r\left(1;\frac{m}{q}\right) = \mu\left(\frac{m}{q}\right)$ and (v) follows.
         \end{proof}
 
-        Notice that \cref{prop:Gauss_sum_reduction} reduces the evaluation of the Gauss sum $\tau(b,\chi)$ to that of $\tau(\chi)$ at least when $\chi$ is primitive. When $\chi$ is not primitive and $(b,m) > 1$ we need to appeal to evaluating $\tau(b,\chi)$ by more direct means. Evaluating $\tau(\chi)$ for general characters $\chi$ turns out to be a very difficult problem and is still open. However, it is not difficult to determine the modulus of $\tau(\chi)$ when $\chi$ is primitive:
+        Notice that \cref{prop:Gauss_sum_reduction} reduces the evaluation of the Ramanujan sum $\tau(b,\chi)$ to that of the Gauss sum $\tau(\chi)$ at least when $\chi$ is primitive. When $\chi$ is not primitive and $(b,m) > 1$ we need to appeal to evaluating $\tau(b,\chi)$ by more direct means. Evaluating $\tau(\chi)$ for general characters $\chi$ turns out to be a very difficult problem and is still open. However, it is not difficult to determine the modulus of $\tau(\chi)$ when $\chi$ is primitive:
 
         \begin{theorem}\label{thm:Gauss_sum_modulus}
           Let $\chi$ be a primitive Dirichlet character of conductor $q$. Then
@@ -410,7 +409,7 @@
           for all $n \in \Z$.
         \end{corollary}
         \begin{proof}
-          If $\chi$ is the trivial character this is obvious since $\tau(n,\chi) = 1$. So assume $\chi$ is nontrivial. If $(n,q) = 1$, then the first identity is \cref{prop:Gauss_sum_reduction} (ii). If $(n,q) > 1$, then the first identity follows from \cref{prop:Gauss_sum_reduction} (iii) and that $\cchi(n) = 0$. This proves the first identity in full. For the second identity, first note that $\tau(\chi) \neq 0$ by \cref{thm:Gauss_sum_modulus}. Replacing $\chi$ with $\cchi$, dividing the first identity by $\tau(\chi)$, and expanding the Gauss sum, gives the second identity.
+          If $\chi$ is the trivial character this is obvious since $\tau(n,\chi) = 1$. So assume $\chi$ is nontrivial. If $(n,q) = 1$, then the first identity is \cref{prop:Gauss_sum_reduction} (ii). If $(n,q) > 1$, then the first identity follows from \cref{prop:Gauss_sum_reduction} (iii) and that $\cchi(n) = 0$. This proves the first identity in full. For the second identity, first note that $\tau(\chi) \neq 0$ by \cref{thm:Gauss_sum_modulus}. Replacing $\chi$ with $\cchi$, dividing the first identity by $\tau(\chi)$, and expanding the Ramanujan sum, gives the second identity.
         \end{proof}
 
         In light of \cref{thm:Gauss_sum_modulus} we define the \textbf{epsilon factor}\index{epsilon factor} $\e_{\chi}$ for a Dirichlet character $\chi$ modulo $m$ by
@@ -433,11 +432,11 @@
           from whence the statement follows.
         \end{proof}
       \subsection*{Quadratic Gauss Sums}
-        Another class of sums is a generalization of the Gauss sum in the case where the Dirichlet character is quadratic and given by the Jacobi symbol. For a positive integer $m$ and any $b \in \Z$, the \textbf{quadratic Gauss sum}\index{quadratic Gauss sum} $g(b,m)$ is defined by
+        Another important sum is the quadratic Gauss sum. For a positive integer $m$ and any $b \in \Z$, the \textbf{quadratic Gauss sum}\index{quadratic Gauss sum} $g(b,m)$ is defined by
         \[
           g(b,m) = \sum_{a \tmod{m}}e^{\frac{2\pi ia^{2}b}{m}}.
         \]
-        If $b = 1$ we write $g(m)$ instead. That is, $g(m) = g(1,m)$. Our language is somewhat abusive since if $\chi_{m}$ is the quadratic Dirichlet character given by the Jacobi symbol, then we have the two quadratic Gauss sums $\tau(b,\chi_{m})$ and $g(b,m)$. It turns out that $\tau(b,\chi_{m}) = g(b,m)$ if $m$ is square-free. This will take a little work to prove. We first reduce to the case when $(b,m) = 1$:
+        If $b = 1$ we write $g(m)$ instead. That is, $g(m) = g(1,m)$. It turns out that if $\chi_{m}$ is the quadratic Dirichlet character given by the Jacobi symbol, then $\tau(b,\chi_{m}) = g(b,m)$ provided $m$ is square-free. This will take a little work to prove. We first reduce to the case when $(b,m) = 1$:
 
         \begin{proposition}\label{prop:quadratic_Gauss_sum_relatively_prime_reduction}
           Let $m$ be a positive odd integer and let $b \in \Z$. Then
@@ -457,7 +456,7 @@
           where the last line follows because $\left(2a''a'\frac{m}{(b,m)}+\left(a'\frac{m}{(b,m)}\right)^{2}\right) \equiv 0 \tmod{\frac{m}{(b,m)}}$ and thus the second sum is $(b,m)$. The remaining sum is $g\left(\frac{b}{(b,m)},\frac{m}{(b,m)}\right)$ which finishes the proof.
         \end{proof}
 
-        As a consequence of \cref{prop:quadratic_Gauss_sum_relatively_prime_reduction}, we may always assume $(b,m) = 1$. Now we give an equivalent formulation of the Gauss sum attached to quadratic characters given by Jacobi symbols and show that in the case $m = p$ an odd prime, our two notions of quadratic Gauss sums agree:
+        As a consequence of \cref{prop:quadratic_Gauss_sum_relatively_prime_reduction}, we may always assume $(b,m) = 1$. Now we give an equivalent formulation of the Ramanujan sum associated to quadratic characters given by Jacobi symbols and show that in the case $m = p$ an odd prime, the Ramanujan and quadratic Gauss sums agree:
 
         \begin{proposition}\label{prop:Gauss_sum_equivalence_for_primes}
           Let $m$ be a positive odd integer and let $b \in \Z$ such that $(b,m) = 1$. Also let $\chi_{m}$ be the quadratic Dirichlet character given by the Jacobi symbol. Then
@@ -485,7 +484,7 @@
           but this last sum counts every quadratic residue twice because $(-a)^{2} = a^{2}$. Hence the two previous sums are equal.
         \end{proof}
 
-        \cref{prop:Gauss_sum_equivalence_for_primes} gives an equivalence between our two notions of quadratic Gauss sums, but we would like a similar result when $m$ is square-free. In this direction, a series of reduction properties will be helpful:
+        We would like to generalize the second statement in \cref{prop:Gauss_sum_equivalence_for_primes} to when $m$ is square-free. In this direction, a series of reduction properties will be helpful:
 
         \begin{proposition}\label{prop:quadratic_Gauss_sum_reduction}
           Let $m$ and $n$ be positive integers, $p$ be an odd prime, and let $b \in \Z$. Then the following hold:
@@ -541,7 +540,7 @@
           \end{enumerate}
         \end{proof}
 
-        At last we can prove when our two notions of quadratic Gauss sums agree:
+        At last we can prove that our Ramanujan and quadratic Gauss sums agree for square-free $m$:
 
         \begin{theorem}
           Suppose $m$ is a positive square-free odd integer and let $\chi_{m}$ be the quadratic Dirichlet character given by the Jacobi symbol. Let $b \in \mathbb{Z}$ such that $(b,m) = 1$. Then
@@ -601,11 +600,11 @@
           The statement follows immediately from \cref{thm:Gauss's_evaluation,prop:Gauss_sum_equivalence_for_primes}.
         \end{proof}
       \subsection*{Kloosterman \& Sali\'e Sums}
-        Our last class of sums generalize Ramanujan and Gauss sums. For a positive integer $c$ and any integers $n$ and $m$, the \textbf{Kloosterman sum}\index{Kloosterman sum} $K(n,m;c)$ is defined by
+        Our last class of sums generalize both types of Ramanujan sums. For a positive integer $c$ and any integers $n$ and $m$, the \textbf{Kloosterman sum}\index{Kloosterman sum} $K(n,m;c)$ is defined by
         \[
           K(n,m;c) = \sum_{\substack{a \tmod{c} \\ (a,c) = 1}}e^{\frac{2\pi i(an+\conj{a}m)}{c}} = \psum_{a \tmod{c}}e^{\frac{2\pi i(an+\conj{a}m)}{c}}.
         \]
-        Notice that if either $n = 0$ or $m = 0$ then the Kloosterman sum reduces to a Ramanujan sum. Kloosterman sums have similar properties to those of Ramanujan and Gauss sums, but we will not need them. The only result we will need is a famous bound, often called the \textbf{Weil bound}\index{Weil bound} for Kloosterman sums, proved by Weil (see \cite{weil1948some} for a proof):
+        Notice that if either $n = 0$ or $m = 0$ then the Kloosterman sum reduces to a Ramanujan sum. Kloosterman sums have similar properties to those of Ramanujan sums, but we will not need them. The only result we will need is a famous bound, often called the \textbf{Weil bound}\index{Weil bound} for Kloosterman sums, proved by Weil (see \cite{weil1948some} for a proof):
 
         \begin{theorem}[Weil bound]
           Let $c$ be a positive integer and $n$ and $m$ be integers. Then
@@ -619,7 +618,7 @@
         \[
           S_{\chi}(n,m;c) = \sum_{\substack{a \tmod{c} \\ (a,c) = 1}}\chi(a)e^{\frac{2\pi i(an+\conj{a}m)}{c}} = \psum_{a \tmod{c}}\chi(a)e^{\frac{2\pi i(an+\conj{a}m)}{c}}.
         \]
-        If either $n = 0$ or $m = 0$ then the Sali\'e sum reduces to a Gauss sum.
+        If either $n = 0$ or $m = 0$ then the Sali\'e sum reduces to the Ramanujan sum associated to $\chi$.
     \section{Integration Techniques \& Transforms}
       \subsection*{Integration Techniques}
         Complex integrals are a core backbone of analytic number theory and all too often the domain we are integrating over is unbounded. Accordingly, the functions we would like to work with should be integrable over these domains. One way to accomplish this would be to require that our functions are bounded:
