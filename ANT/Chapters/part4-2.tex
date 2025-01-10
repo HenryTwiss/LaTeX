@@ -2,19 +2,24 @@
   \section{\todo{Combinatorial Sieves}}
     The idea behind the combinatorial sieve is to choose sieve weights such that the sieving function is a truncation of the inclusion-exclusion principle applied to the sifting function. To motivate this choice, we being by iteratively applying Buchstab's identity $r \ge 1$ times to obtain
     \[
-      S(\mc{A},\mc{P},z) = \sum_{\substack{d \mid P(z) \\ \w(d) < r}}\mu(d)S(\mc{A}_{d})+(-1)^{r}\sum_{\substack{d \mid P(z) \\ \w(d) = r}}S(\mc{A}_{d},\mc{P},p_{d}),
+      S(x,z;\mc{A},\mc{P}) = \sum_{\substack{d \mid P(z) \\ \w(d) < r}}\mu(d)S(x;\mc{A}_{d})+(-1)^{r}\sum_{\substack{d \mid P(z) \\ \w(d) = r}}S(x,p_{d};\mc{A}_{d},\mc{P}),
     \]
-    where $p_{d}$ is the smallest prime divisor of $d$. This identity can be thought of as an inclusion-exclusion principle for the sifting function. As $S(\mc{A}_{d},\mc{P},p_{d})$ is nonnegative, we obtain the upper bound
+    where $p_{d}$ is the smallest prime divisor of $d$. This identity can be thought of as an inclusion-exclusion principle for the sifting function. As $S(x,p_{d};\mc{A}_{d},\mc{P})$ is nonnegative, we obtain the upper bound
     \[
-      S(\mc{A},\mc{P},z) \le \sum_{\substack{d \mid P(z) \\ \w(d) < r}}\mu(d)S(\mc{A}_{d}),
+      S(x,z;\mc{A},\mc{P}) \le \sum_{\substack{d \mid P(z) \\ \w(d) < r}}\mu(d)S(x;\mc{A}_{d}),
     \]
     if $r$ is odd, and the lower bound
     \[
-      S(\mc{A},\mc{P},z) \ge \sum_{\substack{d \mid P(z) \\ \w(d) < r}}\mu(d)S(\mc{A}_{d}),
+      S(x,z;\mc{A},\mc{P}) \ge \sum_{\substack{d \mid P(z) \\ \w(d) < r}}\mu(d)S(x;\mc{A}_{d}),
     \]
-    is $r$ is even. We now wish to consider sieves whose sieving functions replace these upper and lower bounds with sums that are closer approximations to the sifting function. Precisely, we will replace the condition $\w(d) < r$ with $d \in \mc{D}$ for set of positive integers $\mc{D}$ with a small amount of small prime divisors. A \textbf{combinatorial sieve}\index{combinatorial sieve} $\L = (\l_{d})_{d \ge 1}$ is a sieve for which $\l_{d} = \mu(d)$ or $\l_{d} = 0$ with the former case occurring only for those $d$ belonging to the set
+    is $r$ is even. We now wish to consider sieves whose sieving functions replace these upper and lower bounds with sums that are closer approximations to the sifting function. Precisely, we will replace the condition $\w(d) < r$ with $d \in \mc{D}$ for set of positive integers $\mc{D}$ with a small amount of small prime divisors. A \textbf{combinatorial sieve}\index{combinatorial sieve} $\L = (\l_{d})_{d \ge 1}$ is a sieve for which $\l_{d} = \mu(d)$ or $\l_{d} = 0$. We will be concerned with upper and lower combinatorial sieves $\L^{+} = (\l_{d}^{+})_{d \ge 1}$ and $\L^{-} = (\l_{d}^{+})_{d \ge 1}$ where $\l_{d}^{\pm} = \mu(d)$ only for $d$ belonging to the sets
     \[
-      \mc{D} = \todo{xxx}
+      \mc{D}^{+} = \{d = p_{1}p_{2} \cdots p_{r}:\text{$d < D$, $p_{r} < p_{r-1} < \cdots < p_{1}$, and $p_{m} < y_{m}$ for $m$ odd}\},
     \]
+    and
+    \[
+      \mc{D}^{-} = \{d = p_{1}p_{2} \cdots p_{r}:\text{$d < D$, $p_{r} < p_{r-1} < \cdots < p_{1} < y$, and $p_{m} < y_{m}$ for $m$ even}\},
+    \]
+    respectively and for some choice of integer $D \ge 1$ and parameters $y_{m} > 0$ for all $m \ge 1$. Clearly $D$ is the level of $\L^{\pm}$.
   \section{\todo{\texorpdfstring{$\L^{2}$}{L2} Sieves}}
   \section{\todo{The Large Sieve}}
