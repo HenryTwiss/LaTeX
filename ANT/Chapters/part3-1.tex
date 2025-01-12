@@ -1148,8 +1148,35 @@
       Since $O\left(\frac{1}{T}\right) = o(1)$, the result follows.
     \end{proof}
 
-    \cref{cor:zero_density} can be interpreted as saying that for large $T$ the density of $N(T,f)$ is approximately $\frac{1}{\pi}\log\left(\frac{q(f)T^{d_{f}}}{(2\pi e)^{d_{f}}}\right)$. Since this grows as $T \to \infty$, we see that the nontrivial zeros tend to accumulate farther up the critical strip with logarithmic growth.
+    \cref{cor:zero_density} can be interpreted as saying that for large $T$ the density of $N(T,f)$ is approximately $\frac{1}{\pi}\log\left(\frac{q(f)T^{d_{f}}}{(2\pi e)^{d_{f}}}\right)$. Since this grows as $T \to \infty$, we see that the nontrivial zeros tend to accumulate farther up the critical strip with logarithmic growth. We can dispense with this accumulation. If $\rho = \b+i\g$ is a nontrivial zero of $L(s,f)$, then we call $\rho_{\text{unf}} = \b+i\w$ the \textbf{unfolded nontrivial zero}\index{unfolded nontrivial zero} corresponding to $\rho$ where
+    \[
+      \w = \frac{\g}{\pi}\log\left(\frac{q(f)|\g|^{d_{f}}}{(2\pi e)^{d_{f}}}\right).
+    \]
+    Now for any $W \ge 0$, define
+    \[
+      N_{\text{unf}}(W,f) = |\{\rho_{\text{unf}} = \b+i\w \in \C:\text{$L(\rho,f) = 0$ with $0 \le \b \le 1$ and $|\w| \le W$}\}|.
+    \]
+    In other words, $N_{\text{unf}}(T,f)$ is the number of unfolded nontrivial zeros of $L(s,f)$ with ordinate in $[-W,W]$. We then have the following well-known result:
 
+    \begin{proposition}\label{prop:unfolded_zeros_are_evenly_spaced}
+    For any $L$-function $L(s,f)$ and $W \ge \frac{1}{\pi}\log\left(\frac{q(f)}{(2\pi e)^{d_{f}}}\right)$,
+    \[
+      \frac{N_{\text{unf}}(W,f)}{W} \sim 1.
+    \]
+    \end{proposition}
+    \begin{proof}
+      Consider the function $f(t)$ defined by
+      \[
+        f(t) = \frac{t}{\pi}\log\left(\frac{q(f)|t|^{d_{f}}}{(2\pi e)^{d_{f}}}\right),
+      \]
+      for $t \in \R$. Sine $f(t)$ is a strictly increasing continuous function, it has an inverse $g(w)$ for $w \in \R$. It follows that $|\w| \le W$ if and only if $|\rho| \le g(W)$ and so $N_{\text{unf}}(W,f) = N(g(W),f)$. But by \cref{cor:zero_density} and that $g(w)$ is the inverse of $f(t)$, we have $N(g(W),f) \sim W$. It follows that
+      \[
+        N_{\text{unf}}(W,f) \sim W,
+      \]
+      which is equivalent to the claim.
+    \end{proof}
+
+    We interpret \cref{prop:unfolded_zeros_are_evenly_spaced} as saying that the unfolded nontrivial zeros are evenly spaced opposed to \cref{cor:zero_density} which says that they tend to accumulate up the critical strip.
   \section{A Zero-free Region}
     Although the Riemann hypothesis remains out of reach, some progress has been made to understand regions inside of the critical strip for which $L$-functions are nonzero except for possibly one real exception. Such regions are known as \textbf{zero-free regions}\index{zero-free regions} and there is great interest in improving the breadth of such regions. We will derive a standard zero-free region for any $L$-function under some mild assumptions. First a useful lemma:
 

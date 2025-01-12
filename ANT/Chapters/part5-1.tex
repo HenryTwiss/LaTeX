@@ -3,57 +3,28 @@
   \section{\todo{Continuous Moments}}
   \section{\todo{Discrete Moments}}
   \section{\todo{The Katz-Sarnak Philosophy}}
-    The \textbf{Katz-Sarnak philosophy}\index{Katz-Sarnak philosophy} is the idea that statistics of various kinds of $L$-functions should, in the limit, match statistics for random matrices coming from some particular compact group of matrices. One starts with some class of zeros to look at, say zeros of an individual $L$-function very high up the critical strip or zeros of for some collection of $L$-functions very low down on the critical strip. Next, one normalizes the nontrivial zeros being inspected so that they are evenly spaced on average. It is these rescaled zeros that one works with when investigating the statistics. Then some class of test functions are introduced to carry out the statistical calculations in order to reveal the similarity with some class of matrices. In the following, we give a loose introduction to the Katz-Sarnak philosophy.
+    The \textbf{Katz-Sarnak philosophy}\index{Katz-Sarnak philosophy} is the idea that statistics of various kinds of $L$-functions should, in the limit, match statistics for random matrices coming from some particular compact group of matrices. One starts with some class of zeros to look at, say zeros of an individual $L$-function very high up the critical strip or zeros of for some collection of $L$-functions very low down on the critical strip. Actually, we work with the corresponding unfolded nontrivial zeros since they are evenly spaced on average. Then some class of test functions are introduced to carry out the statistical calculations in order to reveal the similarity with some class of matrices. In the following, we give a loose introduction to the Katz-Sarnak philosophy.
     \subsection*{The Work of Montgomery \& Dyson}
-      The beginning of the connection between random matrix theory and analytic number theory was at Princeton in the 1907s via discussions between Montgomery and Dyson. They found similarities between statistical information about the nontrivial distribution of the zeros of the Riemann zeta function (any more generally other $L$-functions) and calculations in random matrix theory about unitary matrices. However, the nontrivial zeros must first be normalized. More precisely, if $\rho = \b+i\g$ is a nontrivial zero of some $L$-function $L(s,f)$, then we call $\rho_{\text{unf}} = \b+i\w$ the \textbf{unfolded nontrivial zero}\index{unfolded nontrivial zero} corresponding to $\rho$ where
+      The beginning of the connection between random matrix theory and analytic number theory was at Princeton in the 1907s via discussions between Montgomery and Dyson (see \todo{cite}). They found similarities between statistical information about the nontrivial distribution of the zeros of the Riemann zeta function and calculations in random matrix theory about unitary matrices. To do this, they considered the unfolded nontrivial zeros $\rho_{\text{unf}} = \b+i\w$ of $\z(s)$ with positive ordinate, that is $\w > 0$, and indexed them according to the size of ordinate. So let $(\w_{n})_{n \ge 1}$ denote the increasing sequence of positive ordinates of the unfolded nontrivial zeros of $\z(s)$. Montgomery and Dyson considered the \textbf{two-point correlation function}\index{two-point correlation function}
       \[
-        \w = \frac{\g}{\pi}\log\left(\frac{q(f)|\g|^{d_{f}}}{(2\pi e)^{d_{f}}}\right).
+        F_{\z}(\a,\b;W) = \frac{1}{W}|\{\w_{n},\w_{m} \le W: \w_{n}-\w_{m} \in [\a,\b]\}|,
       \]
-      Now for any $W \ge 0$, define
+      for any real $\a$ and $\b$ with $\a < \b$ and $W > 0$. What this function measures is the probability of how close pairs of zeros tend to be with respect to some fixed distance and up to some fixed height. In other words, the correlation between distances of zeros. They wanted to understand if the limiting distribution
       \[
-        N_{\text{unf}}(W,f) = |\{\rho_{\text{unf}} = \b+i\w \in \C:\text{$L(\rho,f) = 0$ with $0 \le \b \le 1$ and $|\w| \le W$}\}|.
+        F_{\z}(\a,\b) = \lim_{W \to \infty}F_{\z}(\a,\b;W),
       \]
-      In other words, $N_{\text{unf}}(T,f)$ is the number of unfolded nontrivial zeros of $L(s,f)$ with ordinate in $[-W,W]$. We then have the following well-known result:
-
-      \begin{proposition}\label{prop:unfolded_zeros_are_evenly_spaced}
-      For any $L$-function $L(s,f)$ and $W \ge \frac{1}{\pi}\log\left(\frac{q(f)}{(2\pi e)^{d_{f}}}\right)$,
-      \[
-        \frac{N_{\text{unf}}(W,f)}{W} \sim 1.
-      \]
-      \end{proposition}
-      \begin{proof}
-        Consider the function $f(t)$ defined by
-        \[
-          f(t) = \frac{t}{\pi}\log\left(\frac{q(f)|t|^{d_{f}}}{(2\pi e)^{d_{f}}}\right),
-        \]
-        for $t \in \R$. Sine $f(t)$ is a strictly increasing continuous function, it has an inverse $g(w)$ for $w \in \R$. It follows that $|\w| \le W$ if and only if $|\rho| \le g(W)$ and so $N_{\text{unf}}(W,f) = N(g(W),f)$. But by \cref{cor:zero_density} and that $g(w)$ is the inverse of $f(t)$, we have $N(g(W),f) \sim W$. It follows that
-        \[
-          N_{\text{unf}}(W,f) \sim W,
-        \]
-        which is equivalent to the claim.
-      \end{proof}
-
-      We interpret \cref{prop:unfolded_zeros_are_evenly_spaced} as saying that the unfolded nontrivial zeros are evenly spaced opposed to \cref{cor:zero_density} which says that they tend to accumulate up the critical strip. The purpose of unfolding the nontrivial zeros is to dispense with this clustering.
-      
-      \iffalse
-      For the following discussion of Montgomery and Dyson's work, let us consider the Riemann zeta function only. We consider the \textbf{two-point correlation function}\index{two-point correlation function}
-      \[
-        F_{\z}(\a,\b;W) = \frac{1}{W}\#\{w_{n},w_{m} \le W: w_{n}-w_{m} \in [\a,\b]\},
-      \]
-      for any real $\a < \b$ and $W > 0$. What this function measures is the probability of how close pairs of zeros tend to be with respect to some fixed distance ($\b-\a$) be up to some height ($W$). That is, the correlation be distances of zeros. We want to understand if the limiting distribution
-      \[
-        F_{\z}(\a,\b;) = \lim_{W \to \infty}F_{\z}(\a,\b;W),
-      \]
-      exists and what we can say about it. Now Montgomery conjectured the following (see \todo{cite}):
+      exists and what can be said about it. Montgomery conjectured the following (see \todo{cite}):
 
       \begin{conjecture}\label{conj:Montgomery_distribution_of_zeros_of_zeta}
-      $F_{\z}(\a,\b;)$ exists and moreover,
+      $F_{\z}(\a,\b)$ exists and moreover,
       \[
-        F_{\z}(\a,\b;) = \int_{\a}^{\b}1-\left(\frac{\sin(\pi x)}{\pi x}\right)^{2}+\d(x)\,dx,
+        F_{\z}(\a,\b) = \int_{\a}^{\b}\left(1-\left(\frac{\sin(\pi x)}{\pi x}\right)^{2}+\d(x)\right)\,dx,
       \]
       where $\d(x)$ is the Dirac delta distribution. 
-      \end{conjecture}        
-        Surprisingly, \cref{conj:Montgomery_distribution_of_zeros_of_zeta} mimics a similar situation in random matrix theory. One can consider and $N \x N$ unitary matrix $A \in U(N)$ with eigenvalues $e^{i\t_{n}}$ for $1 \le n \le N$ on the unit circle. The average density is clearly $\frac{N}{2\pi}$, but we can construct a two-point correlation function with respect to the eigenphases $\t_{n}$:
+      \end{conjecture}      
+
+      \iffalse  
+      Surprisingly, \cref{conj:Montgomery_distribution_of_zeros_of_zeta} mimics a similar situation in random matrix theory. One can consider and $N \x N$ unitary matrix $A \in U(N)$ with eigenvalues $e^{i\t_{n}}$ for $1 \le n \le N$ on the unit circle. The average density is clearly $\frac{N}{2\pi}$, but we can construct a two-point correlation function with respect to the eigenphases $\t_{n}$:
       \[
         F_{U}(\a,\b;A,N) = \frac{1}{N}\#\{\t_{n},\t_{m}:\a \le \t_{n}-t_{m} \le \b\}.
       \]
