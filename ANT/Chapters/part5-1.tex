@@ -3,49 +3,52 @@
   \section{\todo{Continuous Moments}}
   \section{\todo{Discrete Moments}}
   \section{\todo{The Katz-Sarnak Philosophy}}
-    The \textbf{Katz-Sarnak philosophy}\index{Katz-Sarnak philosophy} is the idea that statistics of various kinds of $L$-functions should, in the limit, match statistics for random matrices coming from some particular compact group of matrices. One starts with some class of zeros to look at, say zeros of an individual $L$-function very high up the critical strip or zeros of for some collection of $L$-functions very low down on the critical strip. Actually, we work with the corresponding unfolded nontrivial zeros since they are evenly spaced on average. Then some class of test functions are introduced to carry out the statistical calculations in order to reveal the similarity with some class of matrices. In the following, we give a loose introduction to the Katz-Sarnak philosophy.
+    The \textbf{Katz-Sarnak philosophy}\index{Katz-Sarnak philosophy} is the idea that statistics of various kinds of $L$-functions should, in the limit, match statistics for random matrices coming from some particular compact matrix group. One starts with some class of zeros to look at, say zeros of an individual $L$-function very high up the critical strip or zeros of for some collection of $L$-functions very low down on the critical strip. Actually, we work with the corresponding unfolded nontrivial zeros since they are evenly spaced on average. Then some class of test functions are introduced to carry out the statistical calculations in order to reveal the similarity with some class of matrices. In the following, we give a loose introduction to the Katz-Sarnak philosophy.
     \subsection*{The Work of Montgomery \& Dyson}
-      The beginning of the connection between random matrix theory and analytic number theory was at Princeton in the 1907s via discussions between Montgomery and Dyson (see \todo{cite}). They found similarities between statistical information about the nontrivial distribution of the zeros of the Riemann zeta function and calculations in random matrix theory about unitary matrices. To do this, they considered the unfolded nontrivial zeros $\rho_{\text{unf}} = \b+i\w$ of $\z(s)$ with positive ordinate, that is $\w > 0$, and indexed them according to the size of ordinate. So let $(\w_{n})_{n \ge 1}$ denote the increasing sequence of positive ordinates of the unfolded nontrivial zeros of $\z(s)$. Montgomery and Dyson considered the \textbf{two-point correlation function}\index{two-point correlation function}
+      The beginning of the connection between random matrix theory and analytic number theory was at Princeton in the 1907s via discussions between Montgomery and Dyson (see \todo{cite}). They found similarities between statistical information about the nontrivial distribution of the zeros of the Riemann zeta function and calculations in random matrix theory about unitary matrices. To do this, they considered the unfolded nontrivial zeros $\rho_{\text{unf}} = \b+i\w$ of $\z(s)$ with positive ordinate, that is $\w > 0$, and indexed them according to the size of ordinate. So let $\W = (\w_{n})_{n \ge 1}$ denote the increasing sequence of positive ordinates of the unfolded nontrivial zeros of $\z(s)$. Montgomery and Dyson considered the \textbf{two-point correlation function}\index{two-point correlation function} $F_{\z}(\a,\b;W)$ for $\z(s)$ defined by
       \[
-        F_{\z}(\a,\b;W) = \frac{1}{W}|\{\w_{n},\w_{m} \le W: \w_{n}-\w_{m} \in [\a,\b]\}|,
+        F_{\z}(\a,\b;W) = \frac{1}{W}|\{(\w_{n},\w_{m}) \in \W^{2}:\text{$\w_{n},\w_{m} \le W$ and $\w_{n}-\w_{m} \in [\a,\b]$}\}|,
       \]
       for any real $\a$ and $\b$ with $\a < \b$ and $W > 0$. What this function measures is the probability of how close pairs of zeros tend to be with respect to some fixed distance and up to some fixed height. In other words, the correlation between distances of zeros. They wanted to understand if the limiting distribution
       \[
         F_{\z}(\a,\b) = \lim_{W \to \infty}F_{\z}(\a,\b;W),
       \]
-      exists and what can be said about it. Montgomery conjectured the following (see \todo{cite}):
+      exists and what can be said about it. Montgomery conjectured the following (see \todo{cite} for a proof):
 
       \begin{conjecture}\label{conj:Montgomery_distribution_of_zeros_of_zeta}
-      $F_{\z}(\a,\b)$ exists and moreover,
-      \[
-        F_{\z}(\a,\b) = \int_{\a}^{\b}\left(1-\left(\frac{\sin(\pi x)}{\pi x}\right)^{2}+\d(x)\right)\,dx,
-      \]
-      where $\d(x)$ is the Dirac delta distribution. 
+        For any real $\a$ and $\b$ with $\a < \b$, $F_{\z}(\a,\b)$ exists. Moreover
+        \[
+          F_{\z}(\a,\b) = \int_{\a}^{\b}\left(1-\left(\frac{\sin(\pi x)}{\pi x}\right)^{2}+\d(x)\right)\,dx,
+        \]
+        where $\d(x)$ is the Dirac delta function.
       \end{conjecture}      
 
-      \iffalse  
-      Surprisingly, \cref{conj:Montgomery_distribution_of_zeros_of_zeta} mimics a similar situation in random matrix theory. One can consider and $N \x N$ unitary matrix $A \in U(N)$ with eigenvalues $e^{i\t_{n}}$ for $1 \le n \le N$ on the unit circle. The average density is clearly $\frac{N}{2\pi}$, but we can construct a two-point correlation function with respect to the eigenphases $\t_{n}$:
+ 
+      Dyson noticed that \cref{conj:Montgomery_distribution_of_zeros_of_zeta} mimics a similar situation in random matrix theory. Consider an $N \x N$ unitary matrix $A \in U(N)$ with eigenvalue $e^{i\t}$ and corresponding eigenphase $\t$. Let $\Theta = (\t_{n})_{1 \le n \le N}$ denote the increasing sequence of eigenphases of $A$. Clearly the average density of the eigenphases in the interval $[0,2\pi)$ is $\frac{N}{2\pi}$. We consider the \textbf{two-point correlation function}\index{two-point correlation function} $F_{U}(\a,\b;A,N)$ for $A$ defined by
       \[
-        F_{U}(\a,\b;A,N) = \frac{1}{N}\#\{\t_{n},\t_{m}:\a \le \t_{n}-t_{m} \le \b\}.
+        F_{U}(\a,\b;A,N) = \frac{1}{N}|\{(\t_{n},\t_{m}) \in \Theta^{2}: \t_{n}-\t_{m} \in [\a,\b]\}|,
       \]
-      Since $U(N)$ has a natural Haar measure $dA$ we can compute the average of $F(\a,\b;A,N)$ over the group:
+      for any real $\a$ and $\b$ with $\a < \b$. Since $U(N)$ has a Haar measure $dA$, we can compute the average of $F(\a,\b;A,N)$ over $U(N)$:
       \[
         F_{U}(\a,\b;N) = \int_{U(N)}F(\a,\b;A,N)\,dA.
       \]
-      If we take the limit as $N \to \infty$, F.J. Dyson showed the following:
-
-      \begin{theorem}\label{thm:Dyson_unitary_distribution}
-      \phantom{ }
+      Analogously, we want to understand if the limiting distribution
       \[
-        F_{U}(\a,b) = \int_{\a}^{\b}1-\left(\frac{\sin(\pi x)}{\pi x}\right)^{2}+\d(x)\,dx.
+        F_{U}(\a,\b) = \lim_{N \to \infty}F_{U}(\a,\b;N),
       \]
-      \end{theorem}
+      exists and what can be said about it. Dyson showed the following (see \todo{cite} for a proof):
 
-      The right-hand side of \cref{thm:Dyson_unitary_distribution} is exactly Montgomery's prediction in \cref{conj:Montgomery_distribution_of_zeros_of_zeta} for the two-point correlation function for $\z(s)$. We can think of this as follows: the two-point correlation of the zeros of $\z(s)$ in the limit as we move up the critical line exactly match the two-point correlation of the eigenphases of unitary matrices in the limit of the size of the matrices. In short, statistical information about $\z(s)$ agrees with statistical information about the eigenvalues of unitary matrices.
+      \begin{proposition}\label{prop:Dyson_unitary_distribution}
+        For any real $\a$ and $\b$ with $\a < \b$, $F_{U}(\a,\b)$ exists. Moreover
+        \[
+          F_{U}(\a,\b) = \int_{\a}^{\b}\left(1-\left(\frac{\sin(\pi x)}{\pi x}\right)^{2}+\d(x)\right)\,dx,
+        \]
+        where $\d(x)$ is the Dirac delta function.
+      \end{proposition}
+
+      The right-hand side of \cref{prop:Dyson_unitary_distribution} is exactly Montgomery's prediction in \cref{conj:Montgomery_distribution_of_zeros_of_zeta} for the two-point correlation function for $\z(s)$. In other words, if \cref{conj:Montgomery_distribution_of_zeros_of_zeta} is true then the two-point correlation of the unfolded nontrivial zeros of the Riemann zeta function in the limit as we move up the critical line exactly match the two-point correlation of the eigenphases of unitary matrices in the limit as the size of the matrices increase. In short, statistical information about the Riemann zeta function agrees with statistical information about the eigenvalues of unitary matrices. This is the origin of the Katz-Sarnak philosophy.
     \subsection*{Families of \texorpdfstring{$L$}{L}-functions}
-      Katz and Sarnak generalized the connection between statistical information of the zeros of $\z(s)$ and random unitary matrices to other $L$-functions. Moreover, they established a connection between specific families of similar $L$-functions and other compact matrix groups. The following expands upon this relationship.
-
-      To each family of $L$-functions, yet to be explained, there is an associated \textbf{symmetry type}\index{symmetry type} coming from a compact group (or compact quotient) of matrices. In this setting, these groups (not the quotients) are referred to as \textbf{matrix ensembles}\index{matrix ensembles}:
+      Katz and Sarnak generalized the work of Montgomery and Dyson by establishing a connection between collections of $L$-functions and other compact matrix groups. For the ease of categorization, Katz and Sarnak associated a \textbf{symmetry type}\index{symmetry type} to each compact matrix group that they studied. The underlying groups are referred to as \textbf{matrix ensembles}\index{matrix ensembles}. We table these pairings as follows:
       \begin{center}
         \begin{stabular}[1.5]{|c|c|c|}
           \hline
@@ -63,20 +66,25 @@
           \hline
         \end{stabular}
       \end{center}
-      Now let $G(N)$ be any of the ensembles. Let $dA$ denote the Haar measure and for any $A \in G(N)$ label the eigenphases as $\t_{n}$ for $1 \le n \le N$ in increasing order. One of the statistics that Katz and Sarnak investigated was the \textbf{$k$-th consecutive spacing}\index{$k$-th consecutive spacing}:
+
+      Let $G(N)$ be a matrix ensemble and let $dA$ denote the Haar measure. For any $A \in G(N)$, let $\Theta = (\t_{n})_{1 \le n \le N}$ denote the increasing sequence of eigenphases of $A$. One of the statistics that Katz and Sarnak investigated was the \textbf{$k$-th consecutive spacing function}\index{$k$-th consecutive spacing function} for $A$:
       \[
-        \mu_{k}(A)[a,b] = \frac{1}{N}\#\left\{1 \le j \le N:\frac{N}{2\pi}(\t_{j+k}-\t_{j}) \in [a,b]\right\},
+        \mu_{k}(\a,\b;A,G(N)) = \frac{1}{N}|\{(\t_{j+k},\t_{j}) \in \Theta^{2}:\text{$1 \le j \le N$ and $\t_{j+k}-\t_{j} \in [\a,\b]$}\}|,
       \]
-      for any $a < b$. They were able the prove the following result (see \todo{cite}):
+      for any real $\a$ and $\b$ with $\a < \b$. They were able the prove the following result (see \todo{cite} for a proof):
 
-      \begin{theorem}
-        For any $a < b$ and $k \ge 1$,
+      \begin{proposition}\label{prop:Katz_Sarnak_limit_distribution_independent}
+        For any real $\a$ and $\b$ with $\a < \b$ and $k \ge 1$, the limit
         \[
-          \lim_{N \to \infty}\int_{G(N)}\mu_{k}(A)[a,b]\,dA = \mu_{k}[a,b].
+           \lim_{N \to \infty}\int_{G(N)}\mu_{k}(\a,\b;A,G(N))\,dA,
         \]
-      \end{theorem}
+        exists and is independent of the ensemble $G(N)$.
+      \end{proposition}
 
-      That is, the average of $\mu_{k}(A)[a,b]$ for any of the matrix ensembles, in the limit of the size of the matrices, is independent of the particular ensemble chosen. On the other hand, there are statistics that depend on the particular ensemble chosen. For example we can define the distribution of the $k$-th eigenphase over $G(N)$ as follows:
+      In other words, \cref{prop:Katz_Sarnak_limit_distribution_independent} says that the average value of $\mu_{k}(\a,\b;A,G(N))$, in the limit of the size of the matrices, is independent of the particular ensemble chosen. This is an example of a statistic that is independent of the particular ensemble. On the other hand, there are statistics that depend upon the particular ensemble. 
+      
+      \iffalse
+      For example, we can define the distribution of the $k$-th eigenphase over $G(N)$ as follows:
       \[
         \nu_{k}(G(N))[a,b] = dA\left(\left\{A \in G(N):\frac{\t_{k}(A)N}{2\pi} \in [a,b]\right\}\right),
       \]
