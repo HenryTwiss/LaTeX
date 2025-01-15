@@ -3,9 +3,9 @@
   \section{\todo{Continuous Moments}}
   \section{\todo{Discrete Moments}}
   \section{\todo{The Katz-Sarnak Philosophy}}
-    The \textbf{Katz-Sarnak philosophy}\index{Katz-Sarnak philosophy} is the idea that statistics of various kinds of $L$-functions should, in the limit, match statistics for random matrices coming from some particular compact matrix group. One starts with some class of zeros to look at, say zeros of an individual $L$-function very high up the critical strip or zeros of for some collection of $L$-functions very low down on the critical strip. Actually, we work with the corresponding unfolded nontrivial zeros since they are evenly spaced on average. Then some class of test functions are introduced to carry out the statistical calculations in order to reveal the similarity with some class of matrices. In the following, we give a loose introduction to the Katz-Sarnak philosophy.
+    The Katz-Sarnak philosophy is an idea that certain statistics about families of $L$-functions should match statistics for random matrices coming from some particular compact matrix group. One starts with some class of zeros to look at, say zeros of an individual $L$-function very high up the critical strip or zeros of for some collection of $L$-functions very low down on the critical strip. Actually, one works with the corresponding unfolded nontrivial zeros since they are evenly spaced on average. Then some class of test functions are introduced to carry out the statistical calculations in order to reveal the similarity with some class of matrices. In the following, we give a loose introduction to the Katz-Sarnak philosophy.
     \subsection*{The Work of Montgomery \& Dyson}
-      The beginning of the connection between random matrix theory and analytic number theory was at Princeton in the 1907s via discussions between Montgomery and Dyson (see \todo{cite}). They found similarities between statistical information about the nontrivial distribution of the zeros of the Riemann zeta function and calculations in random matrix theory about unitary matrices. To do this, they considered the unfolded nontrivial zeros $\rho_{\text{unf}} = \b+i\w$ of $\z(s)$ with positive ordinate, that is $\w > 0$, and indexed them according to the size of ordinate. So let $\W = (\w_{n})_{n \ge 1}$ denote the increasing sequence of positive ordinates of the unfolded nontrivial zeros of $\z(s)$. Montgomery and Dyson considered the \textbf{two-point correlation function}\index{two-point correlation function} $F_{\z}(\a,\b;W)$ for $\z(s)$ defined by
+      The beginning of the connection between random matrix theory and analytic number theory was at Princeton in the 1970s via discussions between Montgomery and Dyson (see \todo{cite}). They found similarities between statistical information about the nontrivial distribution of the zeros of the Riemann zeta function and calculations in random matrix theory about unitary matrices. To do this, they considered the unfolded nontrivial zeros $\rho_{\text{unf}} = \b+i\w$ of $\z(s)$ with positive ordinate, that is $\w > 0$, and indexed them according to the size of ordinate. So let $\W = (\w_{n})_{n \ge 1}$ denote the increasing sequence of positive ordinates of the unfolded nontrivial zeros of $\z(s)$. Montgomery and Dyson considered the \textbf{two-point correlation function}\index{two-point correlation function} $F_{\z}(\a,\b;W)$ for $\z(s)$ defined by
       \[
         F_{\z}(\a,\b;W) = \frac{1}{W}|\{(\w_{n},\w_{m}) \in \W^{2}:\text{$\w_{n},\w_{m} \le W$ and $\w_{n}-\w_{m} \in [\a,\b]$}\}|,
       \]
@@ -13,20 +13,23 @@
       \[
         F_{\z}(\a,\b) = \lim_{W \to \infty}F_{\z}(\a,\b;W),
       \]
-      exists and what can be said about it. Montgomery conjectured the following (see \todo{cite} for a proof):
+      exists and what can be said about it. The following conjecture made by Montgomery, known as Montgomery's pair correlation conjecture, answers this:
 
-      \begin{conjecture}\label{conj:Montgomery_distribution_of_zeros_of_zeta}
-        For any real $\a$ and $\b$ with $\a < \b$, $F_{\z}(\a,\b)$ exists. Moreover
+      \begin{conjecture}[Montgomery's pair correlation conjecture]
+        For any $\a$ and $\b$ with $\a < \b$, $F_{\z}(\a,\b)$ exists provided the Riemann hypothesis for the Riemann zeta function holds. Moreover,
         \[
           F_{\z}(\a,\b) = \int_{\a}^{\b}\left(1-\left(\frac{\sin(\pi x)}{\pi x}\right)^{2}+\d(x)\right)\,dx,
         \]
         where $\d(x)$ is the Dirac delta function.
       \end{conjecture}      
 
- 
-      Dyson noticed that \cref{conj:Montgomery_distribution_of_zeros_of_zeta} mimics a similar situation in random matrix theory. Consider an $N \x N$ unitary matrix $A \in U(N)$. Let $\Theta = (\t_{n})_{1 \le n \le N}$ denote the increasing sequence of eigenphases of $A$. Clearly the average density of the eigenphases in the interval $[0,2\pi)$ is $\frac{N}{2\pi}$. We consider the \textbf{two-point correlation function}\index{two-point correlation function} $F_{U}(\a,\b;A,N)$ for $A$ defined by
+      Montgomery's pair correlation conjecture still remains out of reach, but there is very good numerical evidence supporting it from the work of Odlyzko (see \todo{cite}). Dyson recognized that Montgomery's pair correlation conjecture mimics a similar situation in random matrix theory that he had investigated earlier. Consider an $N \x N$ unitary matrix $A \in U(N)$ with eigenphases $\t_{n}$ for $1 \le n \le N$ denoted in increasing order. Clearly the average density of the eigenphases of $A$ in $[0,2\pi)$ is $\frac{N}{2\pi}$. For any eigenphase $\t$, let $\phi$ be the \textbf{unfolded eigenphase}\index{unfolded eigenphase} corresponding to $\t$ be defined by
+      \[ 
+        \phi = \frac{N}{2\pi}\frac{\t}.
+      \]
+      Then the average density of the unfolded eigenphases of $A$ in $[0,N)$ is $1$. Let $\Phi = (\phi_{n})_{1 \le n \le N}$ denote the increasing sequence of unfolded eigenphases of $A$. We consider the \textbf{two-point correlation function}\index{two-point correlation function} $F_{U}(\a,\b;A,N)$ for $A$ defined by
       \[
-        F_{U}(\a,\b;A,N) = \frac{1}{N}|\{(\t_{n},\t_{m}) \in \Theta^{2}: \t_{n}-\t_{m} \in [\a,\b]\}|,
+        F_{U}(\a,\b;A,N) = \frac{1}{N}|\{(\phi_{n},\phi_{m}) \in \Theta^{2}:\phi_{n}-\phi_{m} \in [\a,\b]\}|,
       \]
       for any real $\a$ and $\b$ with $\a < \b$. Since $U(N)$ has a Haar measure $dA$, we can compute the average of $F(\a,\b;A,N)$ over $U(N)$:
       \[
@@ -39,16 +42,16 @@
       exists and what can be said about it. Dyson showed the following (see \todo{cite} for a proof):
 
       \begin{proposition}\label{prop:Dyson_unitary_distribution}
-        For any real $\a$ and $\b$ with $\a < \b$, $F_{U}(\a,\b)$ exists. Moreover
+        For any real $\a$ and $\b$ with $\a < \b$, $F_{U}(\a,\b)$ exists. Moreover,
         \[
           F_{U}(\a,\b) = \int_{\a}^{\b}\left(1-\left(\frac{\sin(\pi x)}{\pi x}\right)^{2}+\d(x)\right)\,dx,
         \]
         where $\d(x)$ is the Dirac delta function.
       \end{proposition}
 
-      The right-hand side of \cref{prop:Dyson_unitary_distribution} is exactly Montgomery's prediction in \cref{conj:Montgomery_distribution_of_zeros_of_zeta} for the two-point correlation function for $\z(s)$. In other words, if \cref{conj:Montgomery_distribution_of_zeros_of_zeta} is true then the two-point correlation of the unfolded nontrivial zeros of the Riemann zeta function in the limit as we move up the critical line exactly match the two-point correlation of the eigenphases of unitary matrices in the limit as the size of the matrices increase. In short, statistical information about the Riemann zeta function agrees with statistical information about the eigenvalues of unitary matrices. This is the origin of the Katz-Sarnak philosophy.
+      The right-hand side of \cref{prop:Dyson_unitary_distribution} is exactly the same formula given in Montgomery's pair correlation conjecture. In other words, if Montgomery's pair correlation conjecture is true then the two-point correlation of the unfolded nontrivial zeros of the Riemann zeta function in the limit as we move up the critical line exactly match the two-point correlation of the unfolded eigenphases of unitary matrices in the limit as the size of the matrices increase. In short, statistical information about the Riemann zeta function agrees with statistical information about the eigenvalues of unitary matrices. This is the origin of the Katz-Sarnak philosophy.
     \subsection*{Families of \texorpdfstring{$L$}{L}-functions}
-      Katz and Sarnak generalized the work of Montgomery and Dyson by establishing a connection between collections of $L$-functions and other compact matrix groups. For the ease of categorization, Katz and Sarnak associated a \textbf{symmetry type}\index{symmetry type} to each compact matrix group that they studied. The underlying groups are referred to as \textbf{matrix ensembles}\index{matrix ensembles}. We table these pairings as follows:
+      Katz and Sarnak generalized the work of Montgomery and Dyson by establishing a connection between families of $L$-functions and other compact matrix groups. For the ease of categorization, Katz and Sarnak associated a \textbf{symmetry type}\index{symmetry type} to each compact matrix group that they studied. The underlying groups for the symmetry types are referred to as \textbf{matrix ensembles}\index{matrix ensembles}. We table these pairings as follows:
       \begin{center}
         \begin{stabular}[1.5]{|c|c|c|}
           \hline
