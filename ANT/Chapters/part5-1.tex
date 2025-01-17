@@ -70,21 +70,21 @@
         \end{stabular}
       \end{center}
 
-      Let $G(N)$ be a matrix ensemble and let $dA$ denote the Haar measure. For any $A \in G(N)$, let $\Theta = (\t_{n})_{1 \le n \le N}$ denote the increasing sequence of eigenphases of $A$. One of the statistics that Katz and Sarnak investigated was the \textbf{$k$-th consecutive spacing function}\index{$k$-th consecutive spacing function} for $A$:
+      Let $G(N)$ be a matrix ensemble and let $dA$ denote the Haar measure. For any $A \in G(N)$, let $\Phi = (\phi_{n})_{1 \le n \le N}$ denote the increasing sequence of unfolded eigenphases of $A$. One of the statistics that Katz and Sarnak investigated was the \textbf{$k$-th consecutive spacing function}\index{$k$-th consecutive spacing function} for $A$:
       \[
-        \mu_{k}(\a,\b;A,G(N)) = \frac{1}{N}|\{(\t_{j+k},\t_{j}) \in \Theta^{2}:\text{$1 \le j \le N$ and $\t_{j+k}-\t_{j} \in [\a,\b]$}\}|,
+        \mu_{k}(\a,\b;A,G(N)) = \frac{1}{N}|\{(\t_{j+k},\t_{j}) \in \Phi^{2}:\text{$1 \le j \le N$ and $\t_{j+k}-\t_{j} \in [\a,\b]$}\}|,
       \]
       for any real $\a$ and $\b$ with $\a < \b$. They were able the prove the following result (see \todo{cite} for a proof):
 
       \begin{proposition}\label{prop:Katz_Sarnak_limit_distribution_independent}
-        For any real $\a$ and $\b$ with $\a < \b$ and $k \ge 1$, the limit
+        Let $G(N)$ be a matrix ensemble of type CUE, SOE, or SpE. For any real $\a$ and $\b$ with $\a < \b$ and $k \ge 1$, the limit
         \[
            \lim_{N \to \infty}\int_{G(N)}\mu_{k}(\a,\b;A,G(N))\,dA,
         \]
-        exists and is independent of the ensemble $G(N)$.
+        exists and is independent of the matrix ensemble $G(N)$.
       \end{proposition}
 
-      In other words, \cref{prop:Katz_Sarnak_limit_distribution_independent} says that the average value of $\mu_{k}(\a,\b;A,G(N))$, in the limit of the size of the matrices, is independent of the particular ensemble chosen. This is an example of a statistic that is independent of the particular ensemble. However, there are statistics that depend upon the particular ensemble as well.
+      In other words, \cref{prop:Katz_Sarnak_limit_distribution_independent} says that the average value of $\mu_{k}(\a,\b;A,G(N))$, in the limit of the size of the matrices, is independent of the particular matrix ensemble chosen. This is an example of a statistic that is independent of the particular matrix ensemble. However, there are statistics that depend upon the particular matrix ensemble as well.
       
       \iffalse
       For example, we can define the distribution of the $k$-th eigenphase over $G(N)$ as follows:
@@ -98,21 +98,19 @@
       exists for all $a < b$ but that $\nu_{k}$ depends upon the particular ensemble chosen (see \todo{cite}).
 
       Heuristically, the statistic $\mu_{k}(A)[a,b]$ is a generalization of the two-point correlation function and so should mimic statistics about the distribution of the zeros of a single $L$-function lying high up on the critical line. That is, the statistics of \textbf{high zeros}\index{high zeros}. On the other hand, the statistic $\nu_{k}(G(N))[a,b]$ is modeling the distribution of a single zero of a family of related $L$-functions. That is, the statistics of \textbf{low zeros}\index{low zeros}. Katz and Sarnak then proposed that statistics regarding the distribution of high zeros of and single $L$-function should mimic those of $U(N)$, while statistics regarding the distribution of low zeros for a family of $L$-functions should mimic one of the matrix ensembles. For example, below are some well-studied families and their symmetry type:
-      \iffalse
       \begin{center}
         \begin{stabular}[1.5]{|c|c|c|}
           \hline
           Symmetry Type & Family \\
           \hline
-          \multirow{2}{*}{$\U$ Unitary} & $\{L(s+iy):y \ge 0\}$ ordered by $y$ where $L(s)$ is any Selberg class $L$-function \\& $\{L(s,\chi):\chi\}$ ordered by $q$ where $\chi$ is a Dirichlet character modulo $q \ge 1$ \\
+          \multirow{2}{*}{$\mathrm{CUE}$} & $\{L\left(\frac{1}{2}+it,f\right):t \ge 0\}$ ordered by $t$ \\& $\{L(s,\chi):\text{$\chi \tmod{q}$ with $q \ge 1$}\}$ ordered by $q$ where $\chi$ is a Dirichlet character modulo $q \ge 1$ \\
           \hline
-          \multirow{2}{*}{$\SO$ Orthgonal} & $\{L(s,f):f \in \mc{S}_{k}(\G_{0}(N)), k \ge 4\}$ ordered by $k$ where $N \ge 1$ is fixed \\& $\{L(s,f):f \in \mc{S}_{k}(\G_{0}(N)), N \ge 1\}$ ordered by $N$ where $k \ge 4$ is fixed \\
+          \multirow{2}{*}{$\mathrm{SOE}$} & $\{L(s,f):f \in \mc{S}_{k}(\G_{0}(N)), k \ge 4\}$ ordered by $k$ where $N \ge 1$ is fixed \\& $\{L(s,f):f \in \mc{S}_{k}(\G_{0}(N)), N \ge 1\}$ ordered by $N$ where $k \ge 4$ is fixed \\
           \hline
-          \multirow{2}{*}{$\mathrm{USp}$ Symplectic} & $\{L(s,\chi_{d}):\text{$d$ a fundamental discriminant}\}$ ordered by $|d|$ where $\chi_{d}(n) = \legendre{d}{n}$ \\& $\{L(s,\mathrm{sym}^{2}f):f \in \mc{S}_{k}(\G_{0}(1))\}$ ordered by $k \ge 4$ \\
+          \multirow{2}{*}{$\mathrm{SpE}$} & $\{L(s,\chi_{d}):\text{$d$ a fundamental discriminant}\}$ ordered by $|d|$ where $\chi_{d}(n) = \legendre{d}{n}$ \\& $\{L(s,\mathrm{sym}^{2}f):f \in \mc{S}_{k}(\G_{0}(1))\}$ ordered by $k \ge 4$ \\
           \hline
         \end{stabular}
       \end{center}
-      \fi
       The following two questions we need to address:
       \begin{enumerate}[label=(\arabic{enumi})]
         \item What is the precisely meant by a family of $L$-functions?
