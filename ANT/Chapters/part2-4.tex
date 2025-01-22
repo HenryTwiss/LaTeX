@@ -1,11 +1,11 @@
 \chapter{Trace Formulas}
-  There are various types of formulas that relate the Fourier coefficients of holomorphic and Maass forms to various other types of functions. One of the most important such formulas is the Petersson trace formula.
+  There are various types of formulas that relate the Fourier coefficients of holomorphic and Maass forms to various other types of functions. Two of the most important such formulas are the Petersson trace formula and Kuznetsov trace formula.
   \section{The Petersson Trace Formula}
-    From \cref{thm:newforms_characterization_holomorphic}, $\mc{S}_{k}(N,\chi)$ admits an orthonormal basis of Hecke eigenforms (note that generally they are not Hecke normalized). Call this basis $\{u_{j}\}_{1 \le j \le r}$ where $r$ is the dimension of $\mc{S}_{k}(N,\chi)$. Each of these cusp forms admits a Fourier series
+    From \cref{thm:newforms_characterization_holomorphic}, $\mc{S}_{k}(N,\chi)$ admits an orthonormal basis of Hecke eigenforms (note that generally they are not Hecke normalized). Denote this basis by $\{u_{j}\}_{1 \le j \le r}$ where $r$ is the dimension of $\mc{S}_{k}(N,\chi)$. Each of these forms admits a Fourier series
     \[
       u_{j}(z) = \sum_{n \ge 1}a_{j}(n)e^{2\pi inz}.
     \]
-    The Petersson trace formula is an equation relating the Fourier coefficients $a_{j}(n)$ of the basis $\{u_{j}\}_{1 \le j \le r}$ to a sum of $J$-Bessel functions and Sali\'e sums. To prove the Petersson trace formula we compute the inner product of two Poincar\'e series $P_{n,k,\chi}$ and $P_{m,k,\chi}$ in two different ways. One way is geometric in nature using the unfolding method and the other uses the spectral theory of $\mc{S}_{k}(N,\chi)$. Since \cref{equ:Petersson_inner_product_with_Poincare_series} says that $\<P_{n,k,\chi},P_{m,k,\chi}\>$ essentially extracts the $m$-th Fourier coefficient of $P_{n,k,\chi}$, the Petersson trace formula amounts to computing the $m$-th Fourier coefficient of $P_{n,k,\chi}$ in two different ways. We will begin with the geometric method first which utilizes \cref{equ:Petersson_inner_product_with_Poincare_series}. In order to make use of this equation we need to compute the Fourier series of $P_{n,k,\chi}$ and this is achieved by the Poisson summation formula. From \cref{rem:Bruhat_bijection}, we have
+    The Petersson trace formula is an equation relating the Fourier coefficients $a_{j}(n)$ of the basis $\{u_{j}\}_{1 \le j \le r}$ to a sum of $J$-Bessel functions and Sali\'e sums. To prove the Petersson trace formula we compute the inner product of two Poincar\'e series $P_{n,k,\chi}(z)$ and $P_{m,k,\chi}(z)$ in two different ways. One way is geometric in nature using the unfolding method and the other uses the spectral theory of $\mc{S}_{k}(N,\chi)$. Since \cref{equ:Petersson_inner_product_with_Poincare_series} says that $\<P_{n,k,\chi},P_{m,k,\chi}\>$ essentially extracts the $m$-th Fourier coefficient of $P_{n,k,\chi}(z)$, the Petersson trace formula amounts to computing the $m$-th Fourier coefficient of $P_{n,k,\chi}(z)$ in two different ways. We will begin with the geometric method first which utilizes \cref{equ:Petersson_inner_product_with_Poincare_series}. In order to make use of this equation we need to compute the Fourier series of $P_{n,k,\chi}(z)$ and this is achieved by the Poisson summation formula. From \cref{rem:Bruhat_bijection}, we have
     \[
       P_{n,k,\chi}(z) = e^{2\pi inz}+\sum_{\substack{c \ge 1, d \in \Z \\ c \equiv 0 \tmod{N} \\ (c,d) = 1}}\cchi(d)\frac{e^{2\pi in\left(\frac{a}{c}-\frac{1}{c^{2}z+cd}\right)}}{(cz+d)^{k}},
     \]
@@ -93,7 +93,7 @@
       &= \frac{\G(k-1)}{V_{\G_{0}(N)}(4\pi n)^{k-1}}\sum_{1 \le j \le r}a_{j}(n)\sum_{t \ge 1}a_{j}(t)e^{2\pi itz} \\
       &= \sum_{t \ge 1}\left(\frac{\G(k-1)}{V_{\G_{0}(N)}(4\pi n)^{k-1}}\sum_{1 \le j \le r}\conj{a_{j}(n)}a_{j}(t)\right)e^{2\pi itz}.
     \end{align*}
-    The last expression is an alternative representation of the Fourier series of $P_{n,k,\chi}$. Using \cref{equ:Petersson_inner_product_with_Poincare_series} again but applied to this representation, we obtain the second half of the Petersson trace formula
+    The last expression is an alternative representation of the Fourier series of $P_{n,k,\chi}(z)$. Using \cref{equ:Petersson_inner_product_with_Poincare_series} again but applied to this representation, we obtain the second half of the Petersson trace formula
     \[
       \<P_{n,k,\chi},P_{m,k,\chi}\> = \left(\frac{\G(k-1)}{V_{\G_{0}(N)}(4\pi \sqrt{nm})^{k-1}}\right)^{2}\sum_{1 \le j \le r}\conj{a_{j}(n)}a_{j}(m).
     \]
@@ -113,3 +113,9 @@
         \frac{\G(k-1)}{V_{\G_{0}(N)}(4\pi\sqrt{nm})^{k-1}}\sum_{1 \le j \le r}\conj{a_{j}(n)}a_{j}(m) = \d_{n,m}+\sum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N}}}\frac{2\pi i^{-k}}{c}J_{k-1}\left(\frac{4\pi\sqrt{nm}}{c}\right)S_{\chi}(n,m,c).
       \]
     \end{theorem}
+  \section{\todo{The Kuznetsov Trace Formula}}
+    The Kuznetsov trace formula is an analog of the Petersson trace formula for weight zero Maass forms. From \cref{thm:the_full_spectral_resolution}, $\mc{L}_{k}(\G_{0}(N),\chi)$ admits an orthonormal basis of Maass forms for the point spectrum (these forms are generally not Hecke-Maass eigenforms because they need not be Hecke normalized or even cuspidal in the case of the discrete spectrum). However, by \cref{prop:residual_forms_weight_zero} and \cref{thm:newforms_characterization_Maass} we make take this orthonormal basis to consist of Hecke-Maass eigenforms and the constant function. Denote this basis by $\{\mu_{j}\}_{j \ge 1}$ and the corresponding types by $\nu_{j}$. Each of these non-constant forms admits a Fourier series
+    \[
+      u_{j}(z) = \sum_{n \neq 0}a_{j}(n)\sqrt{4|n|y}K_{\nu_{j}}(2\pi ny)e^{2\pi inx}.
+    \]
+    The Kuznetsov trace formula is an equation relating the Fourier coefficients $a_{j}(n)$ of the basis $\{u_{j}\}_{1 \le j \le r}$ to a sum of $J$-Bessel functions and Sali\'e sums. Similar to the Petersson trace formula, we will compute the inner product of two automorphic Poincar\'e series $P_{n,\chi}(z,\psi)$ and $P_{m,\chi}(z,\vphi)$ in two different ways. The first will be geometric in nature while the second will be spectral. We first compute the Fourier series of $P_{n,\chi}(z,\psi)$. \todo{xxx}

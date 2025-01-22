@@ -742,19 +742,19 @@
         &= \int_{\mc{F}}\sum_{\g \in \GG}j(\g,z)^{k}\conj{j(\g,z)^{k}}f(z)\conj{g(z)}\Im(\g z)^{s+k}\,d\mu && \text{modularity} \\
         &= \int_{\mc{F}}f(z)\conj{g(z)}\sum_{\g \in \GG}|j(\g,z)|^{2k}\Im(\g z)^{s+k}\,d\mu \\
         &= \int_{\mc{F}}f(z)\conj{g(z)}\Im(z)^{k}\sum_{\g \in \GG}\Im(\g z)^{s}\,d\mu \\
-        &= \int_{\mc{F}}f(z)\conj{g(z)}\Im(z)^{k}E_{\infty}(z,s)\,d\mu.
+        &= \int_{\mc{F}}f(z)\conj{g(z)}\Im(z)^{k}E(z,s)\,d\mu.
       \end{align*}
-      Note that $E_{\infty}(z,s)$ is the Eisenstein series on $\G_{0}(1)\backslash\H$ at the $\infty$ cusp. Altogether, this gives the integral representation
+      Note that $E(z,s)$ is the weight zero Eisenstein series on $\G_{0}(1)\backslash\H$ at the $\infty$ cusp. Altogether, this gives the integral representation
       \begin{equation}\label{equ:Rankin-Selberg_integral-reresentation}
-        L(s,f \x g) =  \frac{(4\pi)^{s+k-1}}{\G(s+k-1)}\int_{\mc{F}}f(z)\conj{g(z)}\Im(z)^{k}E_{\infty}(z,s)\,d\mu,
+        L(s,f \x g) =  \frac{(4\pi)^{s+k-1}}{\G(s+k-1)}\int_{\mc{F}}f(z)\conj{g(z)}\Im(z)^{k}E(z,s)\,d\mu,
       \end{equation}
-      which is valid for $\s > 1$. We cannot investigate the integral any further until we understand the Fourier series of $E_{\infty}(z,s)$ and have a functional equation as $s \to 1-s$. Therefore we will take a necessary detour and return to the integral after.
-    \subsection*{The Fourier Series and Functional Equation of \texorpdfstring{$E_{\infty}(z,s)$}{E_{\infty}(z,s)}}
+      which is valid for $\s > 1$. We cannot investigate the integral any further until we understand the Fourier series of $E(z,s)$ and have a functional equation as $s \to 1-s$. Therefore we will take a necessary detour and return to the integral after.
+    \subsection*{The Fourier Series and Functional Equation of \texorpdfstring{$E(z,s)$}{E(z,s)}}
       Let
       \[
-        E_{\infty}(z,s) = \sum_{n \in \Z}a(n,y,s)e^{2\pi inx}.
+        E(z,s) = \sum_{n \in \Z}a(n,y,s)e^{2\pi inx}.
       \]
-      be the Fourier series of $E_{\infty}(z,s)$. Our first goal is to compute these coefficients. To do this we will need the following technical lemma:
+      be the Fourier series of $E(z,s)$. Our first goal is to compute these coefficients. To do this we will need the following technical lemma:
 
       \begin{lemma}\label{lem:Ramanujan_zeta_relation}
         Let $M \ge 1$ be square-free. Then for $\s > 1$ and $b \in \Z$,
@@ -804,7 +804,7 @@
       \begin{proof}
         By \cref{rem:Bruhat_bijection}, we have
         \[
-          E_{\infty}(z,s) = y^{s}+\sum_{\substack{c \ge 1, d \in \Z \\ (c,d) = 1}}\frac{y^{s}}{|cx+icy+d|^{2s}}.
+          E(z,s) = y^{s}+\sum_{\substack{c \ge 1, d \in \Z \\ (c,d) = 1}}\frac{y^{s}}{|cx+icy+d|^{2s}}.
         \]
         The definition of the Fourier coefficients gives
         \begin{equation}\label{equ:real-analytic_Eisenstein_fourier_coefficient_definition}
@@ -833,9 +833,9 @@
         Appealing to \cref{append:Special_Integrals} for this last integral and substituting the result back into \cref{equ:real-analytic_Eisenstein_fourier_coefficient_definition} finishes the proof.
       \end{proof}
 
-      Having computed the Fourier coefficients, we would like to obtain a functional equation for $E_{\infty}(z,s)$ as $s \to 1-s$ (this follows from \cref{thm:functional_equation_of_Eisenstein_series} but we will demonstrate a full proof for the single Eisenstein series on $\G_{0}(1)\backslash\H$). To this end, we define the \textbf{completed real-analytic Eisenstein series}\index{completed real-analytic Eisenstein series} $E^{\ast}(z,s)$ by
+      Having computed the Fourier coefficients, we would like to obtain a functional equation for $E(z,s)$ as $s \to 1-s$ (this follows from \cref{thm:functional_equation_of_Eisenstein_series} but we will demonstrate a full proof for the single Eisenstein series on $\G_{0}(1)\backslash\H$). To this end, we define the \textbf{completed real-analytic Eisenstein series}\index{completed real-analytic Eisenstein series} $E^{\ast}(z,s)$ by
       \[
-        E^{\ast}(z,s) = \L(2s,\z)E_{\infty}(z,s) = \pi^{-s}\G(s)\z(2s)E_{\infty}(z,s).
+        E^{\ast}(z,s) = \L(2s,\z)E(z,s) = \pi^{-s}\G(s)\z(2s)E(z,s).
       \]
       From \cref{prop:Fourier_coefficients_of_real-analytic_Eisenstein_series}, the Fourier coefficients $a^{\ast}(n,y,s)$ of $E^{\ast}(z,s)$ are given by
       \[
@@ -853,7 +853,7 @@
       \[
         E^{\ast}(z,s) = E^{\ast}(z,1-s).
       \]
-      We already knew $E_{\infty}(z,s)$ possessed a functional equation as $s \to 1-s$ from \cref{thm:functional_equation_of_Eisenstein_series} but we needed an explicit version in order to understand $L(s,f \ox g)$. We can now obtain meromorphic continuation of $E^{\ast}(z,s)$ in $s$ to all of $\C$. By the functional equation, $E^{\ast}(z,s)$ admits analytic continuous to $\C$ outside of the critical strip. Therefore we may assume $\left|\s-\frac{1}{2}\right| \le \frac{1}{2}$. We first write $E^{\ast}(z,s)$ as a Fourier series using \cref{equ:Fourier_coefficients_for_completed_real-analytic_Eisenstein_series}:
+      We already knew $E(z,s)$ possessed a functional equation as $s \to 1-s$ from \cref{thm:functional_equation_of_Eisenstein_series} but we needed an explicit version in order to understand $L(s,f \ox g)$. We can now obtain meromorphic continuation of $E^{\ast}(z,s)$ in $s$ to all of $\C$. By the functional equation, $E^{\ast}(z,s)$ admits analytic continuous to $\C$ outside of the critical strip. Therefore we may assume $\left|\s-\frac{1}{2}\right| \le \frac{1}{2}$. We first write $E^{\ast}(z,s)$ as a Fourier series using \cref{equ:Fourier_coefficients_for_completed_real-analytic_Eisenstein_series}:
       \[
         E^{\ast}(z,s) = y^{s}\L(2s,\z)+y^{1-s}\L(2(1-s),\z)+\sum_{n \neq 0}2|n|^{s-\frac{1}{2}}\s_{1-2s}(|n|)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y)e^{2\pi inx}.
       \]
@@ -897,7 +897,7 @@
         \]
       \end{proof}
 
-      This completes our study of the real-analytic Eisenstein series $E_{\infty}(z,s)$.
+      This completes our study of the real-analytic Eisenstein series $E(z,s)$.
     \subsection*{The Integral Representation of \texorpdfstring{$L(s,f \ox g)$}{L(s,f \ox g)}: Part II}
       We can now continue with the Rankin-Selberg convolution $L(s,f \ox g)$. Writing \cref{equ:Rankin-Selberg_integral-reresentation} in terms of $E^{\ast}(z,s)$ and $L(s,f \ox g)$ results in the integral representation
       \[
