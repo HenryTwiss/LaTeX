@@ -88,9 +88,9 @@
     To obtain the second half of the Petersson trace formula, we use the fact that $\{u_{j}\}_{1 \le j \le r}$ is an orthonormal basis and \cref{equ:Petersson_inner_product_with_Poincare_series} to write
     \begin{align*}
       P_{n,k,\chi}(z) &= \sum_{1 \le j \le r}\<P_{n,k,\chi},u_{j}\>u_{j}(z) \\
-      &= \sum_{1 \le j \le r}\conj{\<P_{n,k,\chi},u_{j}\>}u_{j}(z) \\
-      &= \frac{\G(k-1)}{V_{\G_{0}(N)}(4\pi n)^{k-1}}\sum_{1 \le j \le r}a_{j}(n)u_{j}(z) \\
-      &= \frac{\G(k-1)}{V_{\G_{0}(N)}(4\pi n)^{k-1}}\sum_{1 \le j \le r}a_{j}(n)\sum_{t \ge 1}a_{j}(t)e^{2\pi itz} \\
+      &= \sum_{1 \le j \le r}\conj{\<u_{j},P_{n,k,\chi}\>}u_{j}(z) \\
+      &= \frac{\G(k-1)}{V_{\G_{0}(N)}(4\pi n)^{k-1}}\sum_{1 \le j \le r}\conj{a_{j}(n)}u_{j}(z) \\
+      &= \frac{\G(k-1)}{V_{\G_{0}(N)}(4\pi n)^{k-1}}\sum_{1 \le j \le r}\conj{a_{j}(n)}\sum_{t \ge 1}a_{j}(t)e^{2\pi itz} \\
       &= \sum_{t \ge 1}\left(\frac{\G(k-1)}{V_{\G_{0}(N)}(4\pi n)^{k-1}}\sum_{1 \le j \le r}\conj{a_{j}(n)}a_{j}(t)\right)e^{2\pi itz}.
     \end{align*}
     The last expression is an alternative representation of the Fourier series of $P_{n,k,\chi}(z)$. Using \cref{equ:Petersson_inner_product_with_Poincare_series} again but applied to this representation, we obtain the second half of the Petersson trace formula
@@ -197,10 +197,9 @@
     \[
       P_{n,k,\chi}(z) = \sum_{t \ge 1}\left(\d_{n,t}\psi(y)+\sum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N}}}\frac{1}{c}F(y,n,t,c;\psi)S_{\chi}(n,t,c)\right)e^{2\pi itz}.
     \]
-    We can now derive the first half of the Petersson trace formula by computing the inner product between $P_{n,\chi}(z,\psi)$ and $P_{m,\chi}(z,\vphi)$: 
+    We can now derive the first half of the Petersson trace formula by computing the inner product between $P_{n,\chi}(\cdot,\psi)$ and $P_{m,\chi}(\cdot,\vphi)$: 
     \begin{align*}
       \<P_{n,\chi}(\cdot,\psi),P_{m,\chi}(\cdot,\vphi)\> &= \frac{1}{V_{\G_{0}(N)}}\int_{\mc{F}_{\G}}P_{n,\chi}(z,\psi)\conj{P_{m,\chi}(z,\vphi)}\,d\mu \\
-      &= \frac{1}{V_{\G_{0}(N)}}\int_{\mc{F}_{\G}}P_{n,\chi}(z,\psi)\sum_{\g \in \G\backslash\G_{0}(N)}\chi(\g)\conj{\vphi(\Im(\g z))}e^{-2\pi im\conj{\g z}}\,d\mu \\
       &= \frac{1}{V_{\G_{0}(N)}}\int_{\mc{F}_{\G}}\sum_{\g \in \G\backslash\G_{0}(N)}\chi(\g)P_{n,\chi}(z,\psi)\conj{\vphi(\Im(\g z))}e^{-2\pi im\conj{\g z}}\,d\mu \\
       &= \frac{1}{V_{\G_{0}(N)}}\int_{\mc{F}_{\G}}\sum_{\g \in \G\backslash\G_{0}(N)}P_{n,\chi}(\g z,\psi)\conj{\vphi(\Im(\g z))}e^{-2\pi im\conj{\g z}}\,d\mu && \text{automorphy} \\
       &= \frac{1}{V_{\G_{0}(N)}}\int_{\G_{\infty}\backslash\H}P_{n,\chi}(z,\psi)\conj{\vphi(\Im(z))}e^{-2\pi im\conj{z}}\,d\mu && \text{unfolding}.
@@ -244,15 +243,27 @@
     \end{align*}
     Now we must simplify the remaining inner products. Let $f \in \mc{L}(N,\chi)$ with Fourier series
     \[
-      f(z) = a^{+}(0)y^{\frac{1}{2}+\nu}+a^{-}(0)y^{\frac{1}{2}-\nu}+\sum_{n \neq 0}a(n)\sqrt{y}K_{\nu}(2\pi|n|y)e^{2\pi inx}.
+      f(z) = a^{+}(0)y^{\frac{1}{2}+\nu}+a^{-}(0)y^{\frac{1}{2}-\nu}+\sum_{t \neq 0}a(t)\sqrt{y}K_{\nu}(2\pi|t|y)e^{2\pi itx}.
     \]
-    By unfolding the integral in the Petersson inner product and cutting off everything except the diagonal using \cref{equ:Dirac_integral_representation} exactly as in the case for $\<P_{n,\chi}(\cdot,\psi),P_{m,\chi}(\cdot,\vphi)\>$, we see that
+    We compute the inner product between $f$ and $P_{m,\chi}(\cdot,\psi)$:
+    \begin{align*}
+      \<f,P_{m,\chi}(\cdot,\vphi)\> &= \frac{1}{V_{\G_{0}(N)}}\int_{\mc{F}_{\G}}f(z)\conj{P_{m,\chi}(z,\vphi)}\,d\mu \\
+      &= \frac{1}{V_{\G_{0}(N)}}\int_{\mc{F}_{\G}}\sum_{\g \in \G\backslash\G_{0}(N)}\chi(\g)f(z)\conj{\vphi(\Im(\g z))}e^{-2\pi im\conj{\g z}}\,d\mu \\
+      &= \frac{1}{V_{\G_{0}(N)}}\int_{\mc{F}_{\G}}\sum_{\g \in \G\backslash\G_{0}(N)}f(\g z)\conj{\vphi(\Im(\g z))}e^{-2\pi im\conj{\g z}}\,d\mu && \text{automorphy} \\
+      &= \frac{1}{V_{\G_{0}(N)}}\int_{\G_{\infty}\backslash\H}f(z)\conj{\vphi(\Im(z))}e^{-2\pi im\conj{z}}\,d\mu && \text{unfolding} \\
+      &= \frac{1}{V_{\G_{0}(N)}}\int_{0}^{\infty}\int_{0}^{1}f(x+iy)\conj{\vphi(y)}e^{-2\pi im(x-iy)}\,\frac{dx\,dy}{y^{2}}.
+    \end{align*}
+    Substituting in the Fourier series for $f$, the remaining integral becomes
     \[
-      \<P_{n,\chi}(\cdot,\psi),f\> = \frac{1}{V_{\G}}\int_{0}^{\infty}\conj{a(n)\sqrt{y}K_{\nu}(2\pi ny)}\psi(y)e^{-4\pi my}\frac{dy}{y^{2}}.
+      \frac{1}{V_{\G_{0}(N)}}\int_{0}^{\infty}\int_{0}^{1}\left(a^{+}(0)y^{\frac{1}{2}+\nu}+a^{-}(0)y^{\frac{1}{2}-\nu}+\sum_{t \neq 0}a(t)\sqrt{y}K_{\nu}(2\pi|t|y)e^{2\pi itx}\right)\conj{\vphi(y)}e^{-2\pi im(x-iy)}\,\frac{dx\,dy}{y^{2}},
+    \]
+    By \cref{equ:Dirac_integral_representation}, the inner integral cuts off the first two terms in the integrand and every term in the sum except the diagonal term $t = m$. Therefore
+    \[
+      \<f,P_{n,\chi}(\cdot,\psi),\> = \frac{1}{V_{\G_{0}(N)}}\int_{0}^{\infty}a(n)\sqrt{y}K_{\nu}(2\pi ny)\conj{\psi(y)}e^{-2\pi ny}\frac{dy}{y^{2}}.
     \]
     Now set
     \[
-      \w_{\nu}(n,\psi) = \frac{1}{V_{\G}}\int_{0}^{\infty}\sqrt{y}K_{\nu}(2\pi|n|y)\conj{\psi(y)}e^{-4\pi my}\frac{dy}{y^{2}}.
+      \w_{\nu}(n,\psi) = \frac{1}{V_{\G_{0}(N)}}\int_{0}^{\infty}\sqrt{y}K_{\nu}(2\pi|n|y)\conj{\psi(y)}e^{-4\pi my}\frac{dy}{y^{2}}.
     \]
     Then it follows from the Fourier series of cusp forms and Eisenstein series that
     \[
@@ -262,7 +273,7 @@
     \[
       \left\<P_{n,\chi}(\cdot,\psi),E_{\mf{a}}\left(\cdot,\frac{1}{2}+ir\right)\right\> = \conj{\tau_{\mf{a}}\left(n,\frac{1}{2}+ir\right)\w_{ir}(n,\psi)}.
     \]
-    In particular, $\<P_{n,\chi}(\cdot,\psi),u_{0}\> = 0$. So we obtain
+    Moreover, $\<P_{n,\chi}(\cdot,\psi),u_{0}\> = 0$. Putting everything together, we arrive at
     \begin{align*}
       \<P_{n,\chi}(\cdot,\psi),P_{m,\chi}(\cdot,\vphi)\> &= \sum_{j \ge 1}\conj{a_{j}(n)}a_{j}(m)\conj{\w(n,\psi)}\w(m,\vphi) \\
       &+\sum_{\mf{a}}\frac{1}{4\pi}\int_{-\infty}^{\infty}\conj{\tau_{\mf{a}}\left(n,\frac{1}{2}+ir\right)}\tau_{\mf{a}}\left(m,\frac{1}{2}+ir\right)\conj{\w(n,\psi)}\w(m,\vphi)\,dr.
