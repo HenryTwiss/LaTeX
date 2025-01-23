@@ -157,7 +157,7 @@
     \[
       E_{k,\chi,\mf{a}}(z,s) = \sum_{\g \in \G_{\mf{a}}\backslash\G}\cchi(\g)\e(\s_{\mf{a}}^{-1}\g,z)^{-k}\Im(\s_{\mf{a}}^{-1}\g z)^{s}.
     \]
-    We first show that $E_{k,\chi,\mf{a}}(z,s)$ is well-defined. To see that $\cchi(\g)$ is independent of $\g$, recall $\G_{\mf{a}} = \s_{\mf{a}}\G_{\infty}\s_{\mf{a}}^{-1}$ and let $\g' = \s_{\mf{a}}\eta_{\infty}\s_{\mf{a}}^{-1}\g$ with $\eta_{\infty} = \begin{psmallmatrix} 1 & n \\ 0 & 1 \end{psmallmatrix} \in \G_{\infty}$. Then
+    If $k = 0$, $\chi$ is the trivial character, or $\mf{a} = \infty$, we will drop these dependences accordingly. We first show that $E_{k,\chi,\mf{a}}(z,s)$ is well-defined. To see that $\cchi(\g)$ is independent of $\g$, recall $\G_{\mf{a}} = \s_{\mf{a}}\G_{\infty}\s_{\mf{a}}^{-1}$ and let $\g' = \s_{\mf{a}}\eta_{\infty}\s_{\mf{a}}^{-1}\g$ with $\eta_{\infty} = \begin{psmallmatrix} 1 & n \\ 0 & 1 \end{psmallmatrix} \in \G_{\infty}$. Then
     \[
       \chi(\g') = \chi(\s_{\mf{a}}\eta_{\infty}\s_{\mf{a}}^{-1}\g) = \chi(\s_{\mf{a}})\chi(\eta_{\infty})\chi(\s_{\mf{a}})^{-1}\chi(\g) = \chi(\g).
     \]
@@ -165,7 +165,7 @@
     \[
       \e((\s_{\mf{a}}')^{-1}\g,z) = \e(\eta_{\infty}\s_{\mf{a}}^{-1}\g,z) = \e(\eta_{\infty},\s_{\mf{a}}^{-1}\g z)\e(\s_{\mf{a}}^{-1}\g,z) = \e(\s_{\mf{a}}^{-1}\g,z),
     \]
-    where the last equality follows because $\e(\eta_{\infty},\s_{\mf{a}}^{-1}\g z) = 1$ (as $j(\eta_{\infty},\s_{\mf{a}}^{-1}\g z) = 1$). Thus $\e(\s_{\mf{a}}^{-1}\g,z)$ is also independent of the scaling matrix used. Altogether, this shows $E_{k,\chi,\mf{a}}(z,s)$ is independent of the scaling matrix used and thus is well-defined. We now show that this series is locally absolutely uniformly convergent for $z \in \H$ and $\Re(s) > 1$. To see this, applying the Bruhat decomposition to $\s_{\mf{a}}^{-1}\G_{\mf{a}}\backslash\G = \G_{\infty}\backslash\s_{\mf{a}}^{-1}\G$ yields
+    where the last equality follows because $\e(\eta_{\infty},\s_{\mf{a}}^{-1}\g z) = 1$ (as $j(\eta_{\infty},\s_{\mf{a}}^{-1}\g z) = 1$). Thus $\e(\s_{\mf{a}}^{-1}\g,z)$ is also independent of the scaling matrix used. Altogether, this shows $E_{k,\chi,\mf{a}}(z,s)$ is independent of the scaling matrix used and thus is well-defined. We now show $E_{k,\chi,\mf{a}}(z,s)$ is locally absolutely uniformly convergent for $z \in \H$ and $\Re(s) > 1$. To see this, applying the Bruhat decomposition to $\s_{\mf{a}}^{-1}\G_{\mf{a}}\backslash\G = \G_{\infty}\backslash\s_{\mf{a}}^{-1}\G$ yields
     \[
       E_{k,\chi,\mf{a}}(z,s) \ll \sum_{(c,d) \in \Z^{2}-\{\mathbf{0}\}}\frac{\Im(z)^{\s}}{|cz+d|^{2\s}}.
     \]
@@ -179,7 +179,7 @@
       &= \chi(\g)\e(\g,z)^{k}\sum_{\g' \in \G_{\mf{a}}\backslash\G}\cchi(\g')\e(\s_{\mf{a}}^{-1}\g',z)^{-k}\Im(\s_{\mf{a}}^{-1}\g' z)^{s} && \text{$\g' \to \g'\g^{-1}$ bijection on $\G$} \\
       &= \chi(\g)\e(\g,z)^{k}E_{k,\chi,\mf{a}}(z,s).
     \end{align*}
-    Now we show that it is an eigenfunction for $\D_{k}$. Observe that
+    Now we show that $E_{k,\chi,\mf{a}}(z,s)$ is an eigenfunction for $\D_{k}$. Observe that
     \[
       \D_{k}(y^{s}) = \left(-y^{2}\left(\frac{\del^{2}}{\del x^{2}}+\frac{\del^{2}}{\del y^{2}}\right)+iky\frac{\del}{\del x}\right)(y^{s}) = \l(s)y^{s}.
     \]
@@ -210,59 +210,34 @@
     provided $\Im(z) \ge 1$ and $\s > 1$. This verifies $E_{k,\chi,\mf{a}}(z,s)$ is of moderate growth at the cusps. We collect all of this work as a theorem:
 
     \begin{theorem}
-      For $\Re(s) > 1$, the Eisenstein series
+      Let $k \ge 0$, $\chi$ be a Dirichlet character with conductor $q \mid N$, and $\mf{a}$ be a cusp of $\GH$. For $\Re(s) > 1$, the Eisenstein series
       \[
-          E_{k,\chi,\mf{a}}(z,s) = \sum_{\g \in \G_{\mf{a}}\backslash\G}\cchi(\g)\e(\s_{\mf{a}}^{-1}\g,z)^{-k}\Im(\s_{\mf{a}}^{-1}\g z)^{s},
+        E_{k,\chi,\mf{a}}(z,s) = \sum_{\g \in \G_{\mf{a}}\backslash\G}\cchi(\g)\e(\s_{\mf{a}}^{-1}\g,z)^{-k}\Im(\s_{\mf{a}}^{-1}\g z)^{s},
       \]
       is a weight $k$ Maass form with eigenvalue $\l(s)$ and character $\chi$ on $\GH$.
     \end{theorem}
 
-    It is now time to discuss the Poincar\'e series. Unlike in the holomorphic case, the Poincar\'e series are not genuine Maass forms. However, they are still automorphic functions. Let $\psi(y)$ be a smooth function such that $\psi(y) \ll_{\e} y^{1+\e}$ as $y \to 0$, $\s_{\mf{a}}$ be a scaling matrix for the $\mf{a}$ cusp, and $m \ge 1$. Then the $m$-th \textbf{(automorphic) Poincar\'e series}\index{(automorphic) Poincar\'e series} $P_{m,k,\chi,\mf{a}}(z,\psi)$ of weight $k$ and character $\chi$ on $\GH$ at the $\mf{a}$ cusp and with respect to $\psi(y)$ is defined by
+    Now we will discuss the Poincar\'e series. Unlike the Eisenstein series, they are not Maass forms but are still automorphic functions. Let $\s_{\mf{a}}$ be a scaling matrix for the $\mf{a}$ cusp and let $m \ge 1$. Then the $m$-th \textbf{(automorphic) Poincar\'e series}\index{(automorphic) Poincar\'e series} $P_{m,k,\chi,\mf{a}}(z,s)$ of weight $k$ and character $\chi$ on $\GH$ at the $\mf{a}$ cusp is defined by
     \[
-      P_{m,k,\chi,\mf{a}}(z,\psi) = \sum_{\g \in \G_{\mf{a}}\backslash\G}\cchi(\g)\e(\s_{\mf{a}}^{-1}\g,z)^{-k}\psi(\Im(\s_{\mf{a}}^{-1}\g z))e^{2\pi im\s_{\mf{a}}^{-1}\g z}.
+      P_{m,k,\chi,\mf{a}}(z,s) = \sum_{\g \in \G_{\mf{a}}\backslash\G}\cchi(\g)\e(\s_{\mf{a}}^{-1}\g,z)^{-k}\Im(\s_{\mf{a}}^{-1}\g z)^{s}e^{2\pi im\s_{\mf{a}}^{-1}\g z}.
     \]
-    If $k = 0$, $\chi$ is the trivial character, or $\mf{a} = \infty$, we will drop these dependences accordingly. We first show $P_{m,k,\chi,\mf{a}}(z,\psi)$ is well-defined. We have already showed that $\cchi(\g)$ is independent of the representative $\g$ and $\e(\s_{\mf{a}}^{-1}\g,z)^{-k}$ and $\Im(\s_{\mf{a}}^{-1}\g z)$ are independent of the scaling matrix used when discussing $E_{k,\chi,\mf{a}}(z,s)$. So it suffices to show that $e^{2\pi im\s_{\mf{a}}^{-1}\g z}$ is independent of the scaling matrix too. As before, suppose $\s_{\mf{a}}' = \eta_{\mf{a}}^{-1}\s_{\mf{a}}$ with $\eta_{\mf{a}} = \s_{\mf{a}}\eta_{\infty}\s_{\mf{a}}^{-1}$ and $\eta_{\infty} = \begin{psmallmatrix} 1 & n \\ 0 & 1 \end{psmallmatrix} \in \G_{\infty}$. Then $(\s_{\mf{a}}')^{-1} = \eta_{\infty}\s_{\mf{a}}^{-1}$, and we have
+    If $k = 0$, $\chi$ is the trivial character, or $\mf{a} = \infty$, we will drop these dependences accordingly. We first show $P_{m,k,\chi,\mf{a}}(z,s)$ is well-defined. We have already showed that $\cchi(\g)$ is independent of the representative $\g$ and $\e(\s_{\mf{a}}^{-1}\g,z)^{-k}$ and $\Im(\s_{\mf{a}}^{-1}\g z)$ are independent of the scaling matrix used when discussing $E_{k,\chi,\mf{a}}(z,s)$. So it suffices to show that $e^{2\pi im\s_{\mf{a}}^{-1}\g z}$ is independent of the scaling matrix too. As before, suppose $\s_{\mf{a}}' = \eta_{\mf{a}}^{-1}\s_{\mf{a}}$ with $\eta_{\mf{a}} = \s_{\mf{a}}\eta_{\infty}\s_{\mf{a}}^{-1}$ and $\eta_{\infty} = \begin{psmallmatrix} 1 & n \\ 0 & 1 \end{psmallmatrix} \in \G_{\infty}$. Then $(\s_{\mf{a}}')^{-1} = \eta_{\infty}\s_{\mf{a}}^{-1}$, and we have
     \[
       e^{2\pi im(\s_{\mf{a}}')^{-1}\g z} = e^{2\pi im\eta_{\infty}\s_{\mf{a}}^{-1}\g z} = e^{2\pi im(\s_{\mf{a}}^{-1}\g z+n)} = e^{2\pi im\s_{\mf{a}}^{-1}\g}e^{2\pi imnz} = e^{2\pi im\s_{\mf{a}}^{-1}\g},
     \]
-    and hence $e^{2\pi im\s_{\mf{a}}^{-1}\g z}$ is independent of the representative $\g$ used. It follows that $P_{m,k,\chi,\mf{a}}(z,\psi)$ is well-defined. Moreover, $P_{m,k,\chi,\mf{a}}(z,\psi)$ is locally absolutely uniformly convergent for $z \in \H$, but to see this we first require a technical lemma:
-
-    \begin{lemma}\label{lem:finitely_many_pairs_with_size_larger_than_one}
-      For any compact subset $K$ of $\H$, there are finitely many pairs $(c,d) \in \Z^{2}-\{\mathbf{0}\}$, with $c \neq 0$, for which
-      \[
-        \frac{\Im(z)}{|cz+d|^{2}} > 1,
-      \]
-      for all $z \in K$.
-      \end{lemma}
-      \begin{proof}
-      Let $\b = \sup_{z \in K}|z|$ . As $|cz+d| \ge |cz| > 0$ and $\Im(z) < |z|$, we have
-      \[
-        \frac{\Im(z)}{|cz+d|^{2}} \le \frac{1}{|c|^{2}|z|} \le \frac{1}{|c|^{2}\b}.
-      \]
-      So if $\frac{\Im(z)}{|cz+d|^{2}} > 1$, then $\frac{1}{|c|^{2}\b} > 1$ which is to say $|c| < \frac{1}{\sqrt{\b}}$ and therefore $|c|$ is bounded. On the other hand, $|cz+d| \ge |d| \ge 0$. Excluding the finitely many terms $(c,0)$, we may assume $|d| > 0$. In this case, similarly  
-      \[
-        \frac{\Im(z)}{|cz+d|^{2}} \le \frac{|z|}{|d|^{2}} \le \frac{\b}{|d|^{2}}.
-      \]
-      So if $\frac{\Im(z)}{|cz+d|^{2}} > 1$, then $\frac{\b}{|d|^{2}}> 1$ which is to say $|d| < \sqrt{\b}$. So $|d|$ is also bounded. Since both $|c|$ and $|d|$ are bounded, the claim follows.
-    \end{proof}
-    
-    Now we are ready to show that $P_{m,k,\chi,\mf{a}}(z,\psi)$ is locally absolutely uniformly convergent. Let $K$ be a compact subset of $\H$. It suffices to show $P_{m,k,\chi,\mf{a}}(z,\psi)$ is uniformly convergent on $K$. Applying the Bruhat decomposition to $\s_{\mf{a}}^{-1}\G_{\mf{a}}\backslash\G = \G_{\infty}\backslash\s_{\mf{a}}^{-1}\G$ gives
+    and hence $e^{2\pi im\s_{\mf{a}}^{-1}\g z}$ is independent of the representative $\g$ used. It follows that $P_{m,k,\chi,\mf{a}}(z,s)$ is well-defined. We claim $P_{m,k,\chi,\mf{a}}(z,s)$ is also locally absolutely uniformly convergent for $z \in \H$ and $\Re(s) > 1$. To see this, first observe that $|e^{2\pi im\g\s_{\mf{a}}^{-1}z}| = e^{-2\pi m\Im(\g\s_{\mf{a}}^{-1}z)} < 1$ for all $\g \in \G$. Then applying the Bruhat decomposition to $\s_{\mf{a}}^{-1}\G_{\mf{a}}\backslash\G = \G_{\infty}\backslash\s_{\mf{a}}^{-1}\G$ yields
     \[
-      P_{m,k,\chi,\mf{a}}(z,\psi) \ll |\psi(\Im(z))|+\sum_{\substack{(c,d) \in \Z^{2}-\{\mathbf{0}\}}}\left|\psi\left(\frac{\Im(z)}{|cz+d|^{2}}\right)\right|.
+      P_{k,\chi,\mf{a}}(z,s) \ll \sum_{(c,d) \in \Z^{2}-\{\mathbf{0}\}}\frac{\Im(z)^{\s}}{|cz+d|^{2\s}},
     \]
-    It now further suffices to show that the series above is uniformly convergent on $K$. By \cref{lem:finitely_many_pairs_with_size_larger_than_one} there are all but finitely many terms in the sum with $\psi\left(\frac{\Im(z)}{|cz+d|^{2}}\right) \ll \left(\frac{\Im(z)}{|cz+d|^{2}}\right)^{1+\e}$. But the finitely many other terms are all uniformly bounded on $K$ because $\psi(y)$ is continuous (as it is smooth). Therefore
-    \[
-      \sum_{(c,d) \in \Z^{2}-\{\mathbf{0}\}}\left|\psi\left(\frac{\Im(z)}{|cz+d|^{2}}\right)\right| \ll_{\e} \sum_{(c,d) \in \Z^{2}-\{\mathbf{0}\}}\left(\frac{\Im(z)}{|cz+d|^{2}}\right)^{1+\e},
-    \]
-    and this last series is locally absolutely uniformly convergent for $z \in \H$ by \cref{prop:general_lattice_sum_convergence_for_two_variables}. It follows that $P_{m,k,\chi,\mf{a}}(z,\psi)$ is too. Automorphy for $P_{m,k,\chi,\mf{a}}(z,\psi)$ is verified in exactly the same way as for $E_{k,\chi,\mf{a}}(z,s)$. We collect this work as a theorem:
+    and this latter series is locally absolutely uniformly convergent for $\s > 1$ and $z \in \H$ by \cref{prop:general_lattice_sum_convergence_for_two_variables}. Hence the same holds for $P_{m,k,\chi,\mf{a}}(z,s)$. Moreover, automorphy for $P_{m,k,\chi,\mf{a}}(z,s)$ is verified in exactly the same way as for $E_{k,\chi,\mf{a}}(z,s)$. We collect this work as a theorem:
 
     \begin{theorem}
-      Let $\psi(y)$ be a smooth function such that $\psi(y) \ll_{\e} y^{1+\e}$ as $y \to 0$. The Poincar\'e series
+      Let $m \ge 1$, $k \ge 0$, $\chi$ be a Dirichlet character with conductor $q \mid N$, and $\mf{a}$ be a cusp of $\GH$. For $\Re(s) > 1$, the Poincar\'e series
       \[
-        P_{m,k,\chi,\mf{a}}(z,\psi) = \sum_{\g \in \G_{\mf{a}}\backslash\G}\cchi(\g)\e(\s_{\mf{a}}^{-1}\g,z)^{-k}\psi(\Im(\s_{\mf{a}}^{-1}\g z))e^{2\pi im\s_{\mf{a}}^{-1}\g z},
+        P_{m,k,\chi,\mf{a}}(z,s) = \sum_{\g \in \G_{\mf{a}}\backslash\G}\cchi(\g)\e(\s_{\mf{a}}^{-1}\g,z)^{-k}\Im(\s_{\mf{a}}^{-1}\g z)^{s}e^{2\pi im\s_{\mf{a}}^{-1}\g z},
       \]
-      is a holomorphic automorphic function on $\GH$.
-    \end{theorem}
+      is a smooth automorphic function on $\GH$.
+    \end{theorem} 
   \section{\texorpdfstring{$L^{2}$}{L{2}}-integrable Automorphic Functions}
     We will describe the space of automorphic functions and appropriate subspaces of interest. Let $\G$ be a congruence subgroup of level $N$ and let $\chi$ be a Dirichlet character of conductor $q \mid N$. We will let $\mc{A}_{k}(\G,\chi)$ denote the space of all automorphic functions of weight $k$ and character $\chi$ on $\GH$. Let $\mc{L}_{k}(\G,\chi)$ be the subspace of $\mc{A}_{k}(\G,\chi)$ consisting of those functions with bounded norm where the norm is given by
     \[
@@ -332,21 +307,35 @@
     \[
       \l = s(1-s) = \frac{1}{4}-\nu^{2} = \frac{1}{4}+r^{2}.
     \]
-    Unfortunately the Eisenstein series $E_{k,\chi,\mf{a}}(z,s)$ are not $L^{2}$-integrable over $\mc{F}_{\G}$ and so do not belong to $\mc{L}_{k}(\G,\chi)$. To obtain integrable automorphic functions we will argument these Eisenstein series so that they have compact support. Let $\psi(y)$ be a bump function and let $\s_{\mf{a}}$ be a scaling matrix for the $\mf{a}$ cusp. We define the \textbf{(incomplete) Eisenstein series}\index{(incomplete) Eisenstein series} $E_{k,\chi,\mf{a}}(z,\psi)$ of weight $k$ and character $\chi$ on $\GH$ at the $\mf{a}$ cusp and with respect to $\psi(y)$ by
+    We now introduce variations of the Eisenstein and Poincar\'e series. The Eisenstein series $E_{k,\chi,\mf{a}}(z,s)$ are not $L^{2}$-integrable over $\mc{F}_{\G}$ and so do not belong to $\mc{L}_{k}(\G,\chi)$. To obtain integrable automorphic functions we will argument these Eisenstein series so that they have compact support. Let $\psi(y)$ be a bump function and let $\s_{\mf{a}}$ be a scaling matrix for the $\mf{a}$ cusp. We define the \textbf{(incomplete) Eisenstein series}\index{(incomplete) Eisenstein series} $E_{k,\chi,\mf{a}}(z,\psi)$ of weight $k$ and character $\chi$ on $\GH$ at the $\mf{a}$ cusp and with respect to $\psi(y)$ by
     \[
-      E_{k,\chi,\mf{a}}(z,\psi) = \sum_{\g \in \G_{\mf{a}}\backslash\G}\cchi(\g)\e(\g,z)^{-k}\psi(\Im(\s_{\mf{a}}^{-1}\g z)).
+      E_{k,\chi,\mf{a}}(z,\psi) = \sum_{\g \in \G_{\mf{a}}\backslash\G}\cchi(\g)\e(\s_{\mf{a}}^{-1}\g,z)^{-k}\psi(\Im(\s_{\mf{a}}^{-1}\g z)).
     \]
-    If $k = 0$, $\chi$ is the trivial character, or $\mf{a} = \infty$, we will drop these dependences accordingly. This series is locally absolutely uniformly convergent since only finitely many of the terms are nonzero. Indeed, $\s_{\mf{a}}^{-1}\G$ is a Fuchsian group because it is a subset of the modular group. So using $\s_{\mf{a}}^{-1}\G_{\mf{a}}\backslash\G = \G_{\infty}\backslash\s_{\mf{a}}^{-1}\G$ we see that $\{\s_{\mf{a}}^{-1}\g z:\g \in \G_{\mf{a}}\backslash\G\}$ is discrete. Since $\Im(z)$ is an open map it takes discrete sets to discrete sets so that $\{\Im(\s_{\mf{a}}^{-1}\g z):\g \in \G_{\mf{a}}\backslash\G\}$ is also discrete. Now $\psi(\Im(\s_{\mf{a}}^{-1}\g z))$ is nonzero if and only if $\Im(\s_{\mf{a}}^{-1}\g z) \in \mathrm{Supp}(\psi)$ and $\{\Im(\s_{\mf{a}}^{-1}\g z):\g \in \G_{\mf{a}}\backslash\G\} \cap \mathrm{Supp}(\psi)$ is finite as it is a discrete subset of a compact set (since $\psi(y)$ has compact support). Hence finitely many of the terms are nonzero. Also, $E_{k,\chi,\mf{a}}(z,\psi)$ is automorphic on $\GH$ and the automorphy is proved in exactly the same way as for the Eisenstein series $E_{k,\chi,\mf{a}}(z,s)$. Moreover, the compact support of $\psi(y)$ implies that $E_{k,\chi,\mf{a}}(z,\psi)$ is also compactly supported (since the function $\psi(\Im(\s_{\mf{a}}^{-1}\g z))$ is continuous and $\C$ is Hausdorff) and hence bounded on $\H$. As a consequence, $E_{k,\chi,\mf{a}}(z,\psi)$ is $L^{2}$-integrable and therefore belongs to $\mc{L}_{k}(\G,\chi)$. This is the advantage of these Eisenstein series. We collect this work as a theorem:
+    If $k = 0$, $\chi$ is the trivial character, or $\mf{a} = \infty$, we will drop these dependences accordingly. We first show $E_{k,\chi,\mf{a}}(z,\psi)$ is well-defined. We have already showed that $\cchi(\g)$ is independent of the representative $\g$ and $\e(\s_{\mf{a}}^{-1}\g,z)^{-k}$ and $\Im(\s_{\mf{a}}^{-1}\g z)$ are independent of the scaling matrix used when discussing $E_{k,\chi,\mf{a}}(z,s)$. Thus $E_{k,\chi,\mf{a}}(z,\psi)$ is well-defined. We claim $E_{k,\chi,\mf{a}}(z,\psi)$ is also locally absolutely uniformly convergent since only finitely many of the terms are nonzero. Indeed, $\s_{\mf{a}}^{-1}\G$ is a Fuchsian group because it is a subset of the modular group. So using $\s_{\mf{a}}^{-1}\G_{\mf{a}}\backslash\G = \G_{\infty}\backslash\s_{\mf{a}}^{-1}\G$ we see that $\{\s_{\mf{a}}^{-1}\g z:\g \in \G_{\mf{a}}\backslash\G\}$ is discrete. Since $\Im(z)$ is an open map it takes discrete sets to discrete sets so that $\{\Im(\s_{\mf{a}}^{-1}\g z):\g \in \G_{\mf{a}}\backslash\G\}$ is also discrete. Now $\psi(\Im(\s_{\mf{a}}^{-1}\g z))$ is nonzero if and only if $\Im(\s_{\mf{a}}^{-1}\g z) \in \mathrm{Supp}(\psi)$ and $\{\Im(\s_{\mf{a}}^{-1}\g z):\g \in \G_{\mf{a}}\backslash\G\} \cap \mathrm{Supp}(\psi)$ is finite as it is a discrete subset of a compact set (since $\psi(y)$ has compact support). Hence finitely many of the terms are nonzero. Also, $E_{k,\chi,\mf{a}}(z,\psi)$ is automorphic on $\GH$ and the automorphy is proved in exactly the same way as for the Eisenstein series $E_{k,\chi,\mf{a}}(z,s)$. Moreover, the compact support of $\psi(y)$ implies that $E_{k,\chi,\mf{a}}(z,\psi)$ is also compactly supported (since the function $\psi(\Im(\s_{\mf{a}}^{-1}\g z))$ is continuous and $\C$ is Hausdorff) and hence bounded on $\H$. As a consequence, $E_{k,\chi,\mf{a}}(z,\psi)$ is $L^{2}$-integrable and therefore belongs to $\mc{L}_{k}(\G,\chi)$. This is the advantage of these Eisenstein series. We collect this work as a theorem:
 
     \begin{theorem}
-      For any bump function $\psi(y)$, the Eisenstein series
+      Let $k \ge 0$, $\chi$ be a Dirichlet character with conductor $q \mid N$, $\mf{a}$ be a cusp of $\GH$, and $\psi(y)$ be a bump function. The Eisenstein series
       \[
-        E_{k,\chi,\mf{a}}(z,\psi) = \sum_{\g \in \G_{\mf{a}}\backslash\G}\cchi(\g)\e(\g,z)^{-k}\psi(\Im(\s_{\mf{a}}^{-1}\g z)),
+        E_{k,\chi,\mf{a}}(z,\psi) = \sum_{\g \in \G_{\mf{a}}\backslash\G}\cchi(\g)\e(\s_{\mf{a}}^{-1}\g,z)^{-k}\psi(\Im(\s_{\mf{a}}^{-1}\g z)),
       \]
-      is an automorphic function on $\GH$ and belongs to $\mc{L}_{k}(\G,\chi)$.
+      is a smooth automorphic function on $\GH$ and belongs to $\mc{L}_{k}(\G,\chi)$.
     \end{theorem}
     
-    Unfortunately, the Eisenstein series $E_{k,\chi,\mf{a}}(z,\psi)$ fail to be Maass forms because they are not eigenfunctions for the Laplace operator. This is because compactly supported functions cannot be real-analytic (which as we have already mentioned is implied for any eigenfunction of the Laplace operator). However, there is an important interaction between incomplete Eisenstein series and Maass cusp forms. Let $\mc{E}_{k}(\G,\chi)$ and $\mc{C}_{k}(\G,\chi)$ denote the subspaces of $\mc{A}_{k}(\G,\chi)$ generated by such forms respectively. If $\chi$ is the trivial character or if the weight $k$ is zero, we will suppress these dependences. Note that they are also subspaces of $\mc{B}_{k}(\G,\chi)$. Moreover, let $\mc{C}_{k,\nu}(\G,\chi)$ and $\mc{A}_{k,\nu}(\G,\chi)$ denote the corresponding subspaces of $\mc{C}_{k}(\G,\chi)$ and $\mc{A}_{k}(\G,\chi)$ whose type is $\nu$. For all of these spaces, if $\chi$ is the trivial character or if the weight $k$ is zero, we will suppress these dependences. As we will now show, $\mc{E}_{k}(\G,\chi)$ and $\mc{C}_{k}(\G,\chi)$ constitute all of $\mc{B}_{k}(\G,\chi)$. Indeed, let $f \in \mc{B}_{k}(\G,\chi)$ with $E_{k,\chi,\mf{a}}(\cdot,\psi) \in \mc{E}_{k}(\G,\chi)$. We compute their inner product:
+    Unfortunately, the Eisenstein series $E_{k,\chi,\mf{a}}(z,\psi)$ fail to be Maass forms because they are not eigenfunctions for the Laplace operator. This is because compactly supported functions cannot be real-analytic (which as we have already mentioned is implied for any eigenfunction of the Laplace operator). Now for the Poincar\'e series. Let $\psi(y)$ be a bump function, $\s_{\mf{a}}$ be a scaling matrix for the $\mf{a}$ cusp, and $m \ge 1$. Then the $m$-th \textbf{(incomplete) Poincar\'e series}\index{(incomplete) Poincar\'e series} $P_{m,k,\chi,\mf{a}}(z,\psi)$ of weight $k$ and character $\chi$ on $\GH$ at the $\mf{a}$ cusp and with respect to $\psi(y)$ is defined by
+    \[
+      P_{m,k,\chi,\mf{a}}(z,\psi) = \sum_{\g \in \G_{\mf{a}}\backslash\G}\cchi(\g)\e(\s_{\mf{a}}^{-1}\g,z)^{-k}\psi(\Im(\s_{\mf{a}}^{-1}\g z))e^{2\pi im\s_{\mf{a}}^{-1}\g z}.
+    \]
+    If $k = 0$, $\chi$ is the trivial character, or $\mf{a} = \infty$, we will drop these dependences accordingly. We claim that $P_{m,k,\chi,\mf{a}}(z,\psi)$ is well-defined. This is easy to see as we have already showed $\cchi(\g)$ is independent of the representative $\g$ and the functions $\e(\s_{\mf{a}}^{-1}\g,z)^{-k}$, $\Im(\s_{\mf{a}}^{-1}\g z)$, and $e^{2\pi im\s_{\mf{a}}^{-1}\g z}$ are all independent of the scaling matrix used. Now $P_{m,k,\chi,\mf{a}}(z,\psi)$ is locally absolutely uniformly convergent since only finitely many of the terms are nonzero. This is shown in exactly the same way as for $E_{k,\chi,\mf{a}}(z,\psi)$. Moreover, automorphy for $P_{m,k,\chi,\mf{a}}(z,\psi)$ is verified in exactly the same way as for $E_{k,\chi,\mf{a}}(z,s)$. Lastly, the compact support of $\psi(y)$ implies that $P_{m,k,\chi,\mf{a}}(z,\psi)$ is also compactly supported (since the function $\psi(\Im(\s_{\mf{a}}^{-1}\g z))$ is continuous and $\C$ is Hausdorff) and hence bounded on $\H$. Thus $P_{m,k,\chi,\mf{a}}(z,\psi)$ is $L^{2}$-integrable and therefore belongs to $\mc{L}_{k}(\G,\chi)$. We collect this work as a theorem:
+
+    \begin{theorem}
+      Let $m \ge 1$, $k \ge 0$, $\chi$ be a Dirichlet character with conductor $q \mid N$, $\mf{a}$ be a cusp of $\GH$, and $\psi(y)$ be a bump function. The Poincar\'e series
+      \[
+        P_{m,k,\chi,\mf{a}}(z,\psi) = \sum_{\g \in \G_{\mf{a}}\backslash\G}\cchi(\g)\e(\s_{\mf{a}}^{-1}\g,z)^{-k}\psi(\Im(\s_{\mf{a}}^{-1}\g z))e^{2\pi im\s_{\mf{a}}^{-1}\g z},
+      \]
+      is a smooth automorphic function on $\GH$ and belongs to $\mc{L}_{k}(\G,\chi)$.
+    \end{theorem}
+    
+    Returning to the Eisenstein series, there is an important interaction between incomplete Eisenstein series and Maass cusp forms. Let $\mc{E}_{k}(\G,\chi)$ and $\mc{C}_{k}(\G,\chi)$ denote the subspaces of $\mc{A}_{k}(\G,\chi)$ generated by such forms respectively. If $\chi$ is the trivial character or if the weight $k$ is zero, we will suppress these dependences. Note that they are also subspaces of $\mc{B}_{k}(\G,\chi)$. Moreover, let $\mc{C}_{k,\nu}(\G,\chi)$ and $\mc{A}_{k,\nu}(\G,\chi)$ denote the corresponding subspaces of $\mc{C}_{k}(\G,\chi)$ and $\mc{A}_{k}(\G,\chi)$ whose type is $\nu$. For all of these spaces, if $\chi$ is the trivial character or if the weight $k$ is zero, we will suppress these dependences. As we will now show, $\mc{E}_{k}(\G,\chi)$ and $\mc{C}_{k}(\G,\chi)$ constitute all of $\mc{B}_{k}(\G,\chi)$. Indeed, let $f \in \mc{B}_{k}(\G,\chi)$ with $E_{k,\chi,\mf{a}}(\cdot,\psi) \in \mc{E}_{k}(\G,\chi)$. We compute their inner product:
     \begin{align*}
       \<f,E_{k,\chi,\mf{a}}(\cdot,\psi)\> &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}f(z)\conj{E_{k,\chi,\mf{a}}(z,\psi)}\,d\mu \\
       &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}\sum_{\g \in \GG}\chi(\g)\conj{\e(\s_{\mf{a}}^{-1}\g,z)^{-k}}f(z)\conj{\psi(\Im(\s_{\mf{a}}^{-1}\g z))}\,d\mu \\
