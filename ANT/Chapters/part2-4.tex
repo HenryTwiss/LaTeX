@@ -197,4 +197,36 @@
     \[
       P_{n,k,\chi}(z) = \sum_{t \ge 1}\left(\d_{n,t}\psi(y)+\sum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N}}}\frac{1}{c}F_{c}(y,n,t;\psi)S_{\chi}(n,t,c)\right)e^{2\pi itz}.
     \]
-    We can now derive the first half of the Petersson trace formula. \todo{xxx}
+    We can now derive the first half of the Petersson trace formula by computing the inner product between $P_{n,\chi}(z,\psi),P_{m,\chi}(z,\vphi)$: 
+    \begin{align*}
+      \<P_{n,\chi}(\cdot,\psi),P_{m,\chi}(\cdot,\vphi)\> &= \frac{1}{V_{\G_{0}(N)}}\int_{\mc{F}_{\G}}P_{n,\chi}(z,\psi)\conj{P_{m,\chi}(z,\vphi)}\,d\mu \\
+      &= \frac{1}{V_{\G_{0}(N)}}\int_{\mc{F}_{\G}}P_{n,\chi}(z,\psi)\sum_{\g \in \G\backslash\G_{0}(N)}\chi(\g)\conj{\vphi(\Im(\g z))}e^{-2\pi im\conj{\g z}}\,d\mu \\
+      &= \frac{1}{V_{\G_{0}(N)}}\int_{\mc{F}_{\G}}\sum_{\g \in \G\backslash\G_{0}(N)}\chi(\g)P_{n,\chi}(z,\psi)\conj{\vphi(\Im(\g z))}e^{-2\pi im\conj{\g z}}\,d\mu \\
+      &= \frac{1}{V_{\G_{0}(N)}}\int_{\mc{F}_{\G}}\sum_{\g \in \G\backslash\G_{0}(N)}P_{n,\chi}(\g z,\psi)\conj{\vphi(\Im(\g z))}e^{-2\pi im\conj{\g z}}\,d\mu && \text{automorphy} \\
+      &= \frac{1}{V_{\G_{0}(N)}}\int_{\G_{\infty}\backslash\H}P_{n,\chi}(z,\psi)\conj{\vphi(\Im(z))}e^{-2\pi im\conj{z}}\,d\mu && \text{unfolding}.
+    \end{align*}
+      Now substitute in the Fourier series of $P_{n,\chi}(z,\psi)$ to obtain
+      \[
+        \frac{1}{V_{\G_{0}(N)}}\int_{\G_{\infty}\backslash\H}\sum_{t \ge 1}\left(\d_{n,t}\psi(y)+\sum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N}}}\frac{1}{c}F_{c}(y,n,t;\psi)S_{\chi}(n,t,c)\right)\conj{\vphi(\Im(z))}e^{2\pi itz-2\pi im\conj{z}}\,d\mu,
+      \]
+      which is equivalent to
+      \[
+        \frac{1}{V_{\G_{0}(N)}}\int_{0}^{\infty}\int_{0}^{1}\sum_{t \ge 1}\left(\d_{n,t}\psi(y)+\sum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N}}}\frac{1}{c}F_{c}(y,n,t;\psi)S_{\chi}(n,t,c)\right)\conj{\vphi(y)}e^{2\pi i(t-m)x}e^{-2\pi i(t+m)y}\,\frac{dx\,dy}{y^{2}}.
+      \]
+      The inner integral cuts off everything except the $t = m$ term by \cref{equ:Dirac_integral_representation}. This leaves
+      \[
+        \frac{1}{V_{\G_{0}(N)}}\int_{0}^{\infty}\left(\d_{n,m}\psi(y)+\sum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N}}}\frac{1}{c}F_{c}(y,n,m;\psi)S_{\chi}(n,m,c)\right)\conj{\vphi(y)}e^{-4\pi imy}\,\frac{dy}{y^{2}}.
+      \]
+      Interchanging the integral and sum, we write this expression as
+      \[
+        \d_{m,n}(\psi,\vphi)+\sum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N}}}\frac{1}{c}K(n,m,c)V_{\psi,\vphi}\left(\frac{4\pi\sqrt{nm}}{c}\right),
+      \]
+      where we set
+      \[
+        (\psi,\vphi) = \frac{1}{V_{\G_{0}(N)}}\int_{0}^{\infty}\psi(y)\conj{\vphi(y)}e^{-4\pi imy}\,\frac{dy}{y^{2}},
+      \]
+      and
+      \[
+        V_{\psi,\vphi}\left(\frac{4\pi\sqrt{nm}}{c}\right) = \frac{1}{V_{\G_{0}(N)}}\int_{0}^{\infty}F_{c}(y,n,m)\psi(y)\conj{\vphi(y)}e^{-4\pi imy}\frac{dy}{y^{2}}.
+      \]
+      \todo{xxx}
