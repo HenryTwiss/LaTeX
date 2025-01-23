@@ -97,7 +97,7 @@
     \[
       \<P_{n,k,\chi},P_{m,k,\chi}\> = \left(\frac{\G(k-1)}{V_{\G_{0}(N)}(4\pi \sqrt{nm})^{k-1}}\right)^{2}\sum_{1 \le j \le r}\conj{a_{j}(n)}a_{j}(m).
     \]
-    Equating the first and second half and canceling the common $\frac{\G(k-1)}{V_{\G_{0}(N)}(4\pi m)^{k-1}}$ factor gives
+    Equating the first and second halves and canceling the common $\frac{\G(k-1)}{V_{\G_{0}(N)}(4\pi m)^{k-1}}$ factor gives
     \[
       \frac{\G(k-1)}{V_{\G_{0}(N)}(4\pi n)^{k-1}}\sum_{1 \le j \le r}\conj{a_{j}(n)}a_{j}(m) = \d_{n,m}+\left(\frac{\sqrt{m}}{\sqrt{n}}\right)^{k-1}\sum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N}}}\frac{2\pi i^{-k}}{c}J_{k-1}\left(\frac{4\pi\sqrt{nm}}{c}\right)S_{\chi}(n,m,c).
     \]
@@ -113,15 +113,14 @@
         \frac{\G(k-1)}{V_{\G_{0}(N)}(4\pi\sqrt{nm})^{k-1}}\sum_{1 \le j \le r}\conj{a_{j}(n)}a_{j}(m) = \d_{n,m}+\sum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N}}}\frac{2\pi i^{-k}}{c}J_{k-1}\left(\frac{4\pi\sqrt{nm}}{c}\right)S_{\chi}(n,m,c).
       \]
     \end{theorem}
-  \section{\todo{The Kuznetsov Trace Formula}}
-    \iffalse
-    The Kuznetsov trace formula is an analog of the Petersson trace formula for weight zero Maass forms. From \cref{thm:the_full_spectral_resolution}, $\mc{L}_{k}(\G_{0}(N),\chi)$ admits an orthonormal basis of Maass forms for the point spectrum (these forms are generally not Hecke-Maass eigenforms because they need not be Hecke normalized or even cuspidal in the case of the discrete spectrum). However, by \cref{prop:residual_forms_weight_zero} and \cref{thm:newforms_characterization_Maass} we make take this orthonormal basis to consist of Hecke-Maass eigenforms and the constant function. Denote this basis by $\{\mu_{j}\}_{j \ge 0}$ with $\mu_{0}(z) = 1$ and let $\mu_{j}$ be of type $\nu_{j}$ for $j \ge 1$. In particular, $\{\mu_{j}\}_{j \ge 1}$ is an orthonormal basis of Hecke-Maass eigenforms and each such form admits a Fourier series
+  \section{The Kuznetsov Trace Formula}
+    The Kuznetsov trace formula is an analog of the Petersson trace formula for weight zero Maass forms. From \cref{thm:the_full_spectral_resolution}, $\mc{L}(N,\chi)$ admits an orthonormal basis of Maass forms for the point spectrum (these forms are generally not Hecke-Maass eigenforms because they need not be Hecke normalized or even cuspidal in the case of the discrete spectrum). However, by \cref{prop:residual_forms_weight_zero} and \cref{thm:newforms_characterization_Maass} we make take this orthonormal basis to consist of Hecke-Maass eigenforms and the constant function. Denote this basis by $\{u_{j}\}_{j \ge 0}$ with $u_{0}(z) = 1$ and let $u_{j}$ be of type $\nu_{j}$ for $j \ge 1$. In particular, $\{u_{j}\}_{j \ge 1}$ is an orthonormal basis of Hecke-Maass eigenforms and each such form admits a Fourier series
     \[
       u_{j}(z) = \sum_{n \neq 0}a_{j}(n)\sqrt{y}K_{\nu_{j}}(2\pi ny)e^{2\pi inx}.
     \]
-    The Kuznetsov trace formula is an equation relating the Fourier coefficients $a_{j}(n)$ of the basis $\{u_{j}\}_{1 \le j \le r}$ to a sum of $J$-Bessel functions and Sali\'e sums. Similar to the Petersson trace formula, we will compute the inner product of two automorphic Poincar\'e series $P_{n,\chi}(z,s)$ and $P_{m,\chi}(z,s)$ in two different ways. The first will be geometric in nature while the second will be spectral. We first compute the Fourier series of $P_{n,\chi}(z,s)$. From \cref{rem:Bruhat_bijection}, we have
+    The Kuznetsov trace formula is an equation relating the Fourier coefficients $a_{j}(n)$ of the basis $\{u_{j}\}_{1 \le j \le r}$ to a sum of $J$-Bessel functions and Sali\'e sums. Similar to the Petersson trace formula, we will compute the inner product of two Poincar\'e series $P_{n,\chi}(z,\psi)$ and $P_{m,\chi}(z,\vphi)$ in two different ways. The first will be geometric in nature while the second will be spectral. We first compute the Fourier series of $P_{n,\chi}(z,\psi)$. From \cref{rem:Bruhat_bijection}, we have
     \[
-      P_{n,\chi}(z,s) = e^{2\pi inz}+\sum_{\substack{c \ge 1, d \in \Z \\ c \equiv 0 \tmod{N} \\ (c,d) = 1}}\cchi(d)\left(\frac{\Im(z)}{|cz+d|^{2}}\right)^{s}e^{2\pi in\left(\frac{a}{c}-\frac{1}{c^{2}z+cd}\right)},
+      P_{n,\chi}(z,\psi) = e^{2\pi inz}+\sum_{\substack{c \ge 1, d \in \Z \\ c \equiv 0 \tmod{N} \\ (c,d) = 1}}\cchi(d)\psi\left(\frac{\Im(z)}{|cz+d|^{2}}\right)e^{2\pi in\left(\frac{a}{c}-\frac{1}{c^{2}z+cd}\right)},
     \]
     where $a$ and $b$ are chosen such that $\det\left(\begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix}\right) = 1$ and we have used the fact that
     \[
@@ -129,65 +128,66 @@
     \]
     Now summing over all pairs $(c,d)$ with $c \ge 1$, $d \in \Z$, $c \equiv 0 \tmod{N}$, and $(c,d) = 1$ is the same as summing over all triples $(c,\ell,r)$ with $c \ge 1$, $\ell \in \Z$, $r \tmod{c}$, with $c \equiv 0 \tmod{N}$ and $(r,c) = 1$. Indeed, this is seen by writing $d = c\ell+r$. Moreover, since $ad-bc = 1$ we have $a(c\ell+r)-bc = 1$ which further implies that $ar \equiv 1 \tmod{c}$. So we may take $a$ to be the inverse for $r$ modulo $c$. Then
     \begin{align*}
-      \sum_{\substack{c \ge 1,d \in \Z \\ (c,d) = 1 \\ c \equiv 0 \tmod{N}}}\cchi(d)\left(\frac{\Im(z)}{|cz+d|^{2}}\right)^{s}e^{2\pi in\left(\frac{a}{c}-\frac{1}{c^{2}z+cd}\right)} &= \sum_{(c,\ell,r)}\cchi(c\ell+r)\left(\frac{\Im(z)}{|cz+c\ell+r|^{2}}\right)^{s}e^{2\pi in\left(\frac{a}{c}-\frac{1}{c^{2}z+c^{2}\ell+cr}\right)} \\
-      &= \sum_{(c,\ell,r)}\cchi(r)\left(\frac{\Im(z)}{|cz+c\ell+r|^{2}}\right)^{s}e^{2\pi in\left(\frac{a}{c}-\frac{1}{c^{2}z+c^{2}\ell+cr}\right)} \\
-      &= \psum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N} \\ r \tmod{c}}}\sum_{\ell \in \Z}\cchi(r)\left(\frac{\Im(z)}{|cz+c\ell+r|^{2}}\right)^{s}e^{2\pi in\left(\frac{a}{c}-\frac{1}{c^{2}z+c^{2}\ell+cr}\right)} \\
-      &= \psum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N} \\ r \tmod{c}}}\cchi(r)\sum_{\ell \in \Z}\left(\frac{\Im(z)}{|cz+c\ell+r|^{2}}\right)^{s}e^{2\pi in\left(\frac{a}{c}-\frac{1}{c^{2}z+c^{2}\ell+cr}\right)},
+      \sum_{\substack{c \ge 1,d \in \Z \\ (c,d) = 1 \\ c \equiv 0 \tmod{N}}}\cchi(d)\psi\left(\frac{\Im(z)}{|cz+d|^{2}}\right)e^{2\pi in\left(\frac{a}{c}-\frac{1}{c^{2}z+cd}\right)} &= \sum_{(c,\ell,r)}\cchi(c\ell+r)\psi\left(\frac{\Im(z)}{|cz+c\ell+r|^{2}}\right)e^{2\pi in\left(\frac{a}{c}-\frac{1}{c^{2}z+c^{2}\ell+cr}\right)} \\
+      &= \sum_{(c,\ell,r)}\cchi(r)\psi\left(\frac{\Im(z)}{|cz+c\ell+r|^{2}}\right)e^{2\pi in\left(\frac{a}{c}-\frac{1}{c^{2}z+c^{2}\ell+cr}\right)} \\
+      &= \psum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N} \\ r \tmod{c}}}\sum_{\ell \in \Z}\cchi(r)\psi\left(\frac{\Im(z)}{|cz+c\ell+r|^{2}}\right)e^{2\pi in\left(\frac{a}{c}-\frac{1}{c^{2}z+c^{2}\ell+cr}\right)} \\
+      &= \psum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N} \\ r \tmod{c}}}\cchi(r)\sum_{\ell \in \Z}\psi\left(\frac{\Im(z)}{|cz+c\ell+r|^{2}}\right)e^{2\pi in\left(\frac{a}{c}-\frac{1}{c^{2}z+c^{2}\ell+cr}\right)},
     \end{align*}
     where the second line holds since $\chi$ has conductor $q \mid N$ and $c \equiv 0 \tmod{N}$. We will now apply the Poisson summation formula to the innermost sum. Set
     \[
-      I_{c,r}(z) = \sum_{\ell \in \Z}\left(\frac{\Im(z)}{|cz+c\ell+r|^{2}}\right)^{s}e^{2\pi in\left(\frac{a}{c}-\frac{1}{c^{2}z+c^{2}\ell+cr}\right)}.
+      I_{c,r}(z) = \sum_{\ell \in \Z}\psi\left(\frac{\Im(z)}{|cz+c\ell+r|^{2}}\right)e^{2\pi in\left(\frac{a}{c}-\frac{1}{c^{2}z+c^{2}\ell+cr}\right)}.
     \]
     We will prove a transformation law for $I_{c,r}(z)$. Note that this function is holomorphic on $\H$ because $P_{n,\chi}(z;\psi)$ is holomorphic on $\H$. So by the identity theorem we may verify a transformation law on a set containing a limit point. Accordingly, set $z = iy$ for $y > 1$ and define
     \[
-      f(x) = \left(\frac{y}{|cx+r+icy|^{2}}\right)^{s}e^{2\pi in\left(\frac{a}{c}-\frac{1}{c^{2}x+cr+ic^{2}y}\right)}.
+      f(x) = \psi\left(\frac{y}{|cx+r+icy|^{2}}\right)e^{2\pi in\left(\frac{a}{c}-\frac{1}{c^{2}x+cr+ic^{2}y}\right)}.
     \]
-    To see that $f(x)$ is Schwarz first observe that $\left(\frac{y}{|cx+r+icy|^{2}}\right)^{s}$ remains bounded as $x \to \pm \infty$ since $\Re(s) > 1$. Just as with the Petersson trace formula, we have
+    To see that $f(x)$ is Schwarz, first observe that $\psi\left(\frac{y}{|cx+r+icy|^{2}}\right)$ is bounded because $\psi(y)$ is compactly supported. Just as with the Petersson trace formula, we have
     \[
       \Im\left(\frac{a}{c}-\frac{1}{c^{2}x+cr+ic^{2}y}\right) = \Im\left(-\frac{1}{c^{2}x+cr+ic^{2}y}\right) = \Im\left(\frac{c^{2}x+cr-ic^{2}y}{|c^{2}x+cr+ic^{2}y|}\right) = \frac{c^{2}y}{|c^{2}x+cr+ic^{2}y|},
     \]
     and so $\Im\left(\frac{a}{c}-\frac{1}{c^{2}x+cr+ic^{2}y}\right)$ tends to zero as $x \to \pm\infty$. Thus
     \[
-      f(x) \ll \left(\frac{y}{|cx+r+icy|^{2}}\right)^{\s}e^{-2\pi n\Im\left(\frac{a}{c}-\frac{1}{c^{2}x+cr+ic^{2}y}\right)},
+      f(x) \ll \psi\left(\frac{y}{|cx+r+icy|^{2}}\right)e^{-2\pi n\Im\left(\frac{a}{c}-\frac{1}{c^{2}x+cr+ic^{2}y}\right)},
     \]
     as $x \to \pm\infty$. Since the right-hand side of this estimate has exponential decay, $f(x)$ is Schwarz. We now compute the Fourier transform:
     \[
-      \hat{f}(t) = \int_{-\infty}^{\infty}f(x)e^{-2\pi itx}\,dx = \int_{-\infty}^{\infty}\left(\frac{y}{|cx+r+icy|^{2}}\right)^{s}e^{2\pi in\left(\frac{a}{c}-\frac{1}{c^{2}x+cr+ic^{2}y}\right)}e^{-2\pi itx}\,dx.
+      \hat{f}(t) = \int_{-\infty}^{\infty}f(x)e^{-2\pi itx}\,dx = \int_{-\infty}^{\infty}\psi\left(\frac{y}{|cx+r+icy|^{2}}\right)e^{2\pi in\left(\frac{a}{c}-\frac{1}{c^{2}x+cr+ic^{2}y}\right)}e^{-2\pi itx}\,dx.
     \]
     Complexify the integral to get
     \[
-      \int_{\Im(z) = 0}\left(\frac{y}{|cz+r+icy|^{2}}\right)^{s}e^{2\pi in\left(\frac{a}{c}-\frac{1}{c^{2}z+cr+ic^{2}y}\right)}e^{-2\pi itz}\,dz.
+      \int_{\Im(z) = 0}\psi\left(\frac{y}{|cz+r+icy|^{2}}\right)e^{2\pi in\left(\frac{a}{c}-\frac{1}{c^{2}z+cr+ic^{2}y}\right)}e^{-2\pi itz}\,dz.
     \]
     Now make the change of variables $z \to z-\frac{r}{c}-iy$ to obtain
     \[
-      e^{2\pi in\frac{a}{c}+2\pi it\left(iy+\frac{r}{c}\right)}\int_{\Im(z) = y}\left(\frac{y}{|cz|^{2}}\right)^{s}e^{-\frac{2\pi in}{c^{2}z}}e^{-2\pi itz}\,dz.
+      e^{2\pi in\frac{a}{c}+2\pi it\left(iy+\frac{r}{c}\right)}\int_{\Im(z) = y}\psi\left(\frac{y}{|cz|^{2}}\right)e^{-\frac{2\pi in}{c^{2}z}}e^{-2\pi itz}\,dz.
     \]
     The integrand is meromorphic with a pole only at $z = 0$. Therefore, by shifting the line of integration we may take the limit as $y \to \infty$ without picking up additional residues. However, we have
     \[
-      \left(\frac{y}{|cz|^{2}}\right)^{s} \ll \left(\frac{y}{|cz|^{2}}\right)^{\s}, \quad \left|e^{-\frac{2\pi in}{c^{2}z}}\right| = e^{2\pi n\left(\frac{y}{|cz|^{2}}\right)}, \quad \text{and} \quad \left|e^{-2\pi itz}\right| = e^{2\pi ty}.
+      \left|e^{-\frac{2\pi in}{c^{2}z}}\right| = e^{2\pi n\left(\frac{y}{|cz|^{2}}\right)} \quad \text{and} \quad \left|e^{-2\pi itz}\right| = e^{2\pi ty}.
     \]
-    The first expression has polynomial decay, the second expression has exponential decay, and the third expression has exponential decay if and only if $t < 0$. Moreover, when $t = 0$ the third expression is bounded. Altogether, this implies that the integral vanishes if $t \le 0$. It remains to compute the integral for $t \ge 1$. To do this, make the change of variables $z \to - \frac{z}{2\pi it}$ to the last integral to rewrite it as
+    The first expression has exponential decay while the second expression has exponential decay if and only if $t < 0$. Moreover, when $t = 0$ the second expression is bounded. As $\psi\left(\frac{y}{|cz|^{2}}\right)$ is bounded, it follows that the integral vanishes if $t \le 0$. It remains to compute the integral for $t \ge 1$. To do this, make the change of variables $z \to - \frac{z}{2\pi it}$ to the last integral to rewrite it as
     \begin{align*}
-      -\frac{1}{2\pi it}\int_{(2\pi ty)}\left(\frac{4\pi^{2}t^{2}y}{|cz|^{2}}\right)^{s}e^{-\frac{4\pi^{2}nt}{c^{2}z}}e^{z}\,dz &= -\frac{1}{2\pi it}\int_{(2\pi ty)}\left(\frac{4\pi^{2}t^{2}y}{|cz|^{2}}\right)^{s}e^{z-\frac{4\pi^{2}nt}{c^{2}z}}\,dz \\
-      &= -\frac{1}{2\pi it}\int_{(2\pi ty)}\left(\frac{4\pi^{2}t^{2}y}{|cz|^{2}}\right)^{s}e^{z-\frac{4\pi^{2}nt}{c^{2}z}}\,dz \\
+      -\frac{1}{2\pi it}\int_{(2\pi ty)}\psi\left(\frac{4\pi^{2}t^{2}y}{|cz|^{2}}\right)e^{-\frac{4\pi^{2}nt}{c^{2}z}}e^{z}\,dz &= -\frac{1}{2\pi it}\int_{(2\pi ty)}\psi\left(\frac{4\pi^{2}t^{2}y}{|cz|^{2}}\right)e^{z-\frac{4\pi^{2}nt}{c^{2}z}}\,dz \\
+      &= -\frac{1}{2\pi it}\int_{-\infty}^{(0^{+})}\psi\left(\frac{4\pi^{2}t^{2}y}{|cz|^{2}}\right)e^{z-\frac{4\pi^{2}nt}{c^{2}z}}\,dz \\
+      &= \frac{1}{c}F(y,n,t,c;\psi),
     \end{align*}
-    where in the last line we have homotoped the line of integration to a Hankel contour about the negative real axis. Now set
+    where in the second to last line we have homotoped the line of integration to a Hankel contour about the negative real axis and in the last line we have set
     \[
-      F_{c}(y,n,t;\psi) = -\frac{c}{2\pi it}\int_{-\infty}^{0^{+}}\left(\frac{4\pi^{2}t^{2}y}{|cz|^{2}}\right)^{s}e^{z-\frac{4\pi^{2}nt}{c^{2}z}}\,dz.
+      F(y,n,t,c;\psi) = -\frac{c}{2\pi it}\int_{-\infty}^{0^{+}}\psi\left(\frac{4\pi^{2}t^{2}y}{|cz|^{2}}\right)e^{z-\frac{4\pi^{2}nt}{c^{2}z}}\,dz.
     \]
     Then we obtain
     \[
-      \left(\frac{1}{c}F_{c}(y,n,t;\psi)e^{2\pi in\frac{a}{c}+2\pi it\left(iy+\frac{r}{c}\right)}\right)e^{-2\pi ty},
+      \left(\frac{1}{c}F(y,n,t,c;\psi)e^{2\pi in\frac{a}{c}+2\pi it\left(iy+\frac{r}{c}\right)}\right)e^{-2\pi ty},
     \]
     when $t \ge 1$. By the Poisson summation formula and the identity theorem, we have
     \[
-      I_{c,r}(z) = \sum_{t \ge 1}\left(\frac{1}{c}F_{c}(y,n,t;\psi)e^{2\pi in\frac{a}{c}+2\pi it\left(iy+\frac{r}{c}\right)}\right)e^{2\pi itz},
+      I_{c,r}(z) = \sum_{t \ge 1}\left(\frac{1}{c}F(y,n,t,c;\psi)e^{2\pi in\frac{a}{c}+2\pi it\left(iy+\frac{r}{c}\right)}\right)e^{2\pi itz},
     \]
     for all $z \in \H$. Plugging this back into the Poincar\'e series gives a form of the Fourier series:
     \begin{align*}
-      P_{n,k,\chi}(z) &= \psi(y)e^{2\pi inz}+\psum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N} \\ r \tmod{c}}}\cchi(r)\sum_{t \ge 1}\left(\frac{1}{c}F_{c}(y,n,t;\psi)e^{2\pi in\frac{a}{c}+2\pi it\left(iy+\frac{r}{c}\right)}\right)e^{2\pi itz} \\
-      &= \sum_{t \ge 1}\left(\d_{n,t}\psi(y)+\psum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N} \\ r \tmod{c}}}\cchi(r)\frac{1}{c}F_{c}(y,n,t;\psi)e^{2\pi in\frac{a}{c}+2\pi it\left(iy+\frac{r}{c}\right)}\right)e^{2\pi itz} \\
-      &= \sum_{t \ge 1}\left(\d_{n,t}\psi(y)+\sum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N}}}\frac{1}{c}F_{c}(y,n,t;\psi)\psum_{r \tmod{c}}\cchi(r)e^{2\pi in\frac{a}{c}+2\pi it\frac{r}{c}}\right)e^{2\pi itz}.
+      P_{n,k,\chi}(z) &= \psi(y)e^{2\pi inz}+\psum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N} \\ r \tmod{c}}}\cchi(r)\sum_{t \ge 1}\left(\frac{1}{c}F(y,n,t,c;\psi)e^{2\pi in\frac{a}{c}+2\pi it\left(iy+\frac{r}{c}\right)}\right)e^{2\pi itz} \\
+      &= \sum_{t \ge 1}\left(\d_{n,t}\psi(y)+\psum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N} \\ r \tmod{c}}}\cchi(r)\frac{1}{c}F(y,n,t,c;\psi)e^{2\pi in\frac{a}{c}+2\pi it\left(iy+\frac{r}{c}\right)}\right)e^{2\pi itz} \\
+      &= \sum_{t \ge 1}\left(\d_{n,t}\psi(y)+\sum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N}}}\frac{1}{c}F(y,n,t,c;\psi)\psum_{r \tmod{c}}\cchi(r)e^{2\pi in\frac{a}{c}+2\pi it\frac{r}{c}}\right)e^{2\pi itz}.
     \end{align*}
     We will simplify the innermost sum. This is exactly the same as for the Petersson trace formula. Since $a$ is the inverse for $r$ modulo $c$, the innermost sum above becomes
     \[
@@ -195,9 +195,9 @@
     \]
     So at last, we obtain our desired Fourier series
     \[
-      P_{n,k,\chi}(z) = \sum_{t \ge 1}\left(\d_{n,t}\psi(y)+\sum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N}}}\frac{1}{c}F_{c}(y,n,t;\psi)S_{\chi}(n,t,c)\right)e^{2\pi itz}.
+      P_{n,k,\chi}(z) = \sum_{t \ge 1}\left(\d_{n,t}\psi(y)+\sum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N}}}\frac{1}{c}F(y,n,t,c;\psi)S_{\chi}(n,t,c)\right)e^{2\pi itz}.
     \]
-    We can now derive the first half of the Petersson trace formula by computing the inner product between $P_{n,\chi}(z,\psi),P_{m,\chi}(z,\vphi)$: 
+    We can now derive the first half of the Petersson trace formula by computing the inner product between $P_{n,\chi}(z,\psi)$ and $P_{m,\chi}(z,\vphi)$: 
     \begin{align*}
       \<P_{n,\chi}(\cdot,\psi),P_{m,\chi}(\cdot,\vphi)\> &= \frac{1}{V_{\G_{0}(N)}}\int_{\mc{F}_{\G}}P_{n,\chi}(z,\psi)\conj{P_{m,\chi}(z,\vphi)}\,d\mu \\
       &= \frac{1}{V_{\G_{0}(N)}}\int_{\mc{F}_{\G}}P_{n,\chi}(z,\psi)\sum_{\g \in \G\backslash\G_{0}(N)}\chi(\g)\conj{\vphi(\Im(\g z))}e^{-2\pi im\conj{\g z}}\,d\mu \\
@@ -205,28 +205,79 @@
       &= \frac{1}{V_{\G_{0}(N)}}\int_{\mc{F}_{\G}}\sum_{\g \in \G\backslash\G_{0}(N)}P_{n,\chi}(\g z,\psi)\conj{\vphi(\Im(\g z))}e^{-2\pi im\conj{\g z}}\,d\mu && \text{automorphy} \\
       &= \frac{1}{V_{\G_{0}(N)}}\int_{\G_{\infty}\backslash\H}P_{n,\chi}(z,\psi)\conj{\vphi(\Im(z))}e^{-2\pi im\conj{z}}\,d\mu && \text{unfolding}.
     \end{align*}
-      Now substitute in the Fourier series of $P_{n,\chi}(z,\psi)$ to obtain
-      \[
-        \frac{1}{V_{\G_{0}(N)}}\int_{\G_{\infty}\backslash\H}\sum_{t \ge 1}\left(\d_{n,t}\psi(y)+\sum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N}}}\frac{1}{c}F_{c}(y,n,t;\psi)S_{\chi}(n,t,c)\right)\conj{\vphi(\Im(z))}e^{2\pi itz-2\pi im\conj{z}}\,d\mu,
-      \]
-      which is equivalent to
-      \[
-        \frac{1}{V_{\G_{0}(N)}}\int_{0}^{\infty}\int_{0}^{1}\sum_{t \ge 1}\left(\d_{n,t}\psi(y)+\sum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N}}}\frac{1}{c}F_{c}(y,n,t;\psi)S_{\chi}(n,t,c)\right)\conj{\vphi(y)}e^{2\pi i(t-m)x}e^{-2\pi i(t+m)y}\,\frac{dx\,dy}{y^{2}}.
-      \]
-      The inner integral cuts off everything except the $t = m$ term by \cref{equ:Dirac_integral_representation}. This leaves
-      \[
-        \frac{1}{V_{\G_{0}(N)}}\int_{0}^{\infty}\left(\d_{n,m}\psi(y)+\sum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N}}}\frac{1}{c}F_{c}(y,n,m;\psi)S_{\chi}(n,m,c)\right)\conj{\vphi(y)}e^{-4\pi imy}\,\frac{dy}{y^{2}}.
-      \]
-      Interchanging the integral and sum, we write this expression as
-      \[
-        \d_{m,n}(\psi,\vphi)+\sum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N}}}\frac{1}{c}K(n,m,c)V_{\psi,\vphi}\left(\frac{4\pi\sqrt{nm}}{c}\right),
-      \]
-      where we set
-      \[
-        (\psi,\vphi) = \frac{1}{V_{\G_{0}(N)}}\int_{0}^{\infty}\psi(y)\conj{\vphi(y)}e^{-4\pi imy}\,\frac{dy}{y^{2}},
-      \]
-      and
-      \[
-        V_{\psi,\vphi}\left(\frac{4\pi\sqrt{nm}}{c}\right) = \frac{1}{V_{\G_{0}(N)}}\int_{0}^{\infty}F_{c}(y,n,m)\psi(y)\conj{\vphi(y)}e^{-4\pi imy}\frac{dy}{y^{2}}.
-      \]
-      \todo{xxx} \fi
+    Now substitute in the Fourier series of $P_{n,\chi}(z,\psi)$ to obtain
+    \[
+      \frac{1}{V_{\G_{0}(N)}}\int_{\G_{\infty}\backslash\H}\sum_{t \ge 1}\left(\d_{n,t}\psi(y)+\sum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N}}}\frac{1}{c}F(y,n,t,c;\psi)S_{\chi}(n,t,c)\right)\conj{\vphi(\Im(z))}e^{2\pi itz-2\pi im\conj{z}}\,d\mu,
+    \]
+    which is equivalent to
+    \[
+      \frac{1}{V_{\G_{0}(N)}}\int_{0}^{\infty}\int_{0}^{1}\sum_{t \ge 1}\left(\d_{n,t}\psi(y)+\sum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N}}}\frac{1}{c}F(y,n,t,c;\psi)S_{\chi}(n,t,c)\right)\conj{\vphi(y)}e^{2\pi i(t-m)x}e^{-2\pi(t+m)y}\,\frac{dx\,dy}{y^{2}}.
+    \]
+    The inner integral cuts off everything except the $t = m$ term by \cref{equ:Dirac_integral_representation}. This leaves
+    \[
+      \frac{1}{V_{\G_{0}(N)}}\int_{0}^{\infty}\left(\d_{n,m}\psi(y)+\sum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N}}}\frac{1}{c}F(y,n,m,c;\psi)S_{\chi}(n,m,c)\right)\conj{\vphi(y)}e^{-4\pi my}\,\frac{dy}{y^{2}}.
+    \]
+    Interchanging the integral and sum by the dominated convergence theorem, we write this expression as
+    \[
+      \<P_{n,\chi}(\cdot,\psi),P_{m,\chi}(\cdot,\vphi)\> = \d_{n,m}(\psi,\vphi)+\sum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N}}}\frac{1}{c}S_{\chi}(n,m,c)V(n,m,c,\psi,\vphi),
+    \]
+    where we have set
+    \[
+      (\psi,\vphi) = \frac{1}{V_{\G_{0}(N)}}\int_{0}^{\infty}\psi(y)\conj{\vphi(y)}e^{-4\pi my}\,\frac{dy}{y^{2}},
+    \]
+    and
+    \[
+      V(n,m,c;\psi,\vphi) = \frac{1}{V_{\G_{0}(N)}}\int_{0}^{\infty}F_{c}(y,n,m)\conj{\vphi(y)}e^{-4\pi my}\frac{dy}{y^{2}}.
+    \]
+    This is the first half of the Kuznetsov trace formula. For the second half, \cref{thm:the_full_spectral_resolution} gives
+    \[
+      P_{n,\chi}(\cdot,\psi) = \sum_{j \ge 0}\<P_{n,\chi}(\cdot,\psi),u_{j}\>u_{j}(z)+\sum_{\mf{a}}\frac{1}{4\pi}\int_{-\infty}^{\infty}\left\<P_{n,\chi}(\cdot,\psi),E_{\mf{a}}\left(\cdot,\frac{1}{2}+ir\right)\right\>E_{\mf{a}}\left(z,\frac{1}{2}+ir\right)\,dr,
+    \]
+    and
+    \[
+      P_{m,\chi}(\cdot,\vphi) = \sum_{j \ge 0}\<P_{m,\chi}(\cdot,\vphi),u_{j}\>u_{j}(z)+\sum_{\mf{a}}\frac{1}{4\pi}\int_{-\infty}^{\infty}\left\<P_{m,\chi}(\cdot,\vphi),E_{\mf{a}}\left(\cdot,\frac{1}{2}+ir\right)\right\>E_{\mf{a}}\left(z,\frac{1}{2}+ir\right)\,dr.
+    \]
+    By orthonormality, it follows that
+    \begin{align*}
+      \<P_{n,\chi}(\cdot,\psi),P_{m,\chi}(\cdot,\vphi)\> &= \sum_{j}\<P_{n,\chi}(\cdot,\psi),u_{j}\>\conj{\<P_{m,\chi}(\cdot,\vphi),u_{j}\>} \\
+      &+\sum_{\mf{a}}\frac{1}{4\pi}\int_{-\infty}^{\infty}\left\<P_{n,\chi}(\cdot,\psi),E_{\mf{a}}\left(\cdot,\frac{1}{2}+ir\right)\right\>\conj{\left\<P_{m,\chi}(\cdot,\vphi),E_{\mf{a}}\left(\cdot,\frac{1}{2}+ir\right)\right\>}\,dr.
+    \end{align*}
+    Now we must simplify the remaining inner products. Let $f \in \mc{L}(N,\chi)$ with Fourier series
+    \[
+      f(z) = a^{+}(0)y^{\frac{1}{2}+\nu}+a^{-}(0)y^{\frac{1}{2}-\nu}+\sum_{n \neq 0}a(n)\sqrt{y}K_{\nu}(2\pi|n|y)e^{2\pi inx}.
+    \]
+    By unfolding the integral in the Petersson inner product and cutting off everything except the diagonal using \cref{equ:Dirac_integral_representation} exactly as in the case for $\<P_{n,\chi}(\cdot,\psi),P_{m,\chi}(\cdot,\vphi)\>$, we see that
+    \[
+      \<P_{n,\chi}(\cdot,\psi),f\> = \frac{1}{V_{\G}}\int_{0}^{\infty}\conj{a(n)\sqrt{y}K_{\nu}(2\pi ny)}\psi(y)e^{-4\pi my}\frac{dy}{y^{2}}.
+    \]
+    Now set
+    \[
+      \w_{\nu}(n,\psi) = \frac{1}{V_{\G}}\int_{0}^{\infty}\sqrt{y}K_{\nu}(2\pi|n|y)\conj{\psi(y)}e^{-4\pi my}\frac{dy}{y^{2}}.
+    \]
+    Then it follows from the Fourier series of cusp forms and Eisenstein series that
+    \[
+      \<P_{n,\chi}(\cdot,\psi),u_{j}\> = \conj{a_{j}(n)\w_{\nu_{j}}(n,\psi)},
+    \]
+    for $j \ge 1$ and
+    \[
+      \left\<P_{n,\chi}(\cdot,\psi),E_{\mf{a}}\left(\cdot,\frac{1}{2}+ir\right)\right\> = \conj{\tau_{\mf{a}}\left(n,\frac{1}{2}+ir\right)\w_{ir}(n,\psi)}.
+    \]
+    In particular, $\<P_{n,\chi}(\cdot,\psi),u_{0}\> = 0$. So we obtain
+    \begin{align*}
+      \<P_{n,\chi}(\cdot,\psi),P_{m,\chi}(\cdot,\vphi)\> &= \sum_{j \ge 1}\conj{a_{j}(n)}a_{j}(m)\conj{\w(n,\psi)}\w(m,\vphi) \\
+      &+\sum_{\mf{a}}\frac{1}{4\pi}\int_{-\infty}^{\infty}\conj{\tau_{\mf{a}}\left(n,\frac{1}{2}+ir\right)}\tau_{\mf{a}}\left(m,\frac{1}{2}+ir\right)\conj{\w(n,\psi)}\w(m,\vphi)\,dr.
+    \end{align*}
+    This is the second half of the Kuznetsov trace formula. Equating the first and second halves we get the \textbf{Kuznetsov trace formula}\index{Kuznetsov trace formula}:
+    \begin{align*}
+      \d_{n,m}(\psi,\vphi)+\sum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N}}}\frac{1}{c}S_{\chi}(n,m,c)&V(n,m,c,\psi,\vphi) = \sum_{j \ge 1}\conj{a_{j}(n)}a_{j}(m)\conj{\w(n,\psi)}\w(m,\vphi) \\
+      &+\sum_{\mf{a}}\frac{1}{4\pi}\int_{-\infty}^{\infty}\conj{\tau_{\mf{a}}\left(n,\frac{1}{2}+ir\right)}\tau_{\mf{a}}\left(m,\frac{1}{2}+ir\right)\conj{\w(n,\psi)}\w(m,\vphi)\,dr.
+    \end{align*}
+    The left-hand side is called the \textbf{geometric side}\index{geometric side} and the right-hand side is called the \textbf{spectral side}\index{spectral side}. We collect our work as a theorem:
+
+    \begin{theorem}[Kuznetsov trace formula]
+      Let $\{u_{j}\}_{j \ge 1}$ be an orthonormal basis of Hecke-Maass \\ eigenforms for $\mc{L}(N,\chi)$ of types $\nu_{j}$ with Fourier coefficients $a_{j}(n)$. Then for any positive integers $n,m \ge 1$, we have
+      \begin{align*}
+        \d_{n,m}(\psi,\vphi)+\sum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N}}}\frac{1}{c}S_{\chi}(n,m,c)&V(n,m,c,\psi,\vphi) = \sum_{j \ge 1}\conj{a_{j}(n)}a_{j}(m)\conj{\w(n,\psi)}\w(m,\vphi) \\
+        &+\sum_{\mf{a}}\frac{1}{4\pi}\int_{-\infty}^{\infty}\conj{\tau_{\mf{a}}\left(n,\frac{1}{2}+ir\right)}\tau_{\mf{a}}\left(m,\frac{1}{2}+ir\right)\conj{\w(n,\psi)}\w(m,\vphi)\,dr.
+      \end{align*}
+    \end{theorem}
