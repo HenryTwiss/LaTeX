@@ -268,24 +268,14 @@
     \begin{align*}
       \<f,P_{m,k,\chi}\> &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}f(z)\conj{P_{m,k,\chi}(z)}\Im(z)^{k}\,d\mu \\
       &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}\sum_{\g \in \GG}\chi(\g)\conj{j(\g,z)^{-k}}f(z)e^{-2\pi im\conj{\g z}}\Im(z)^{k}\,d\mu \\
-      &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}\sum_{\g \in \GG}\frac{\chi(\g)j(\g,z)^{k}}{|j(\g,z)|^{2k}}f(z)e^{-2\pi im\conj{\g z}}\Im(z)^{k}\,d\mu \\
-      &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}\sum_{\g \in \GG}\frac{1}{|j(\g,z)^{k}|^{2k}}f(\g z)e^{-2\pi im\conj{\g z}}\Im(z)^{k}\,d\mu && \text{modularity} \\
-      &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}\sum_{\g \in \GG}f(\g z)e^{-2\pi im\conj{\g z}}\Im(\g z)^{k}\,d\mu && \text{$\Im(\g z)^{k} = \frac{\Im(z)^{k}}{|j(\g,z)|^{2k}}$.}
+      &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}\sum_{\g \in \GG}|j(\g,z)|^{-2k}f(\g z)e^{-2\pi im\conj{\g z}}\Im(z)^{k}\,d\mu && \text{modularity} \\
+      &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}\sum_{\g \in \GG}f(\g z)e^{-2\pi im\conj{\g z}}\Im(\g z)^{k}\,d\mu && \text{$\Im(\g z)^{k} = \frac{\Im(z)^{k}}{|j(\g,z)|^{2k}}$} \\
+      &= \frac{1}{V_{\G}}\int_{\G_{\infty}\backslash\H}f(z)e^{-2\pi im\conj{z}}\Im(z)^{k}\,d\mu && \text{unfolding} \\
+      &= \frac{1}{V_{\G}}\int_{0}^{\infty}\int_{0}^{1}f(x+iy)e^{-2\pi im(x-iy)}y^{k}\,\frac{dx\,dy}{y^{2}}.
     \end{align*}
-    We put this last integral into a different form. The idea is to rewrite the integral over the fundamental domain $\mc{F}_{\G}$ as an integral over the strip $\G_{\infty}\backslash\H$. First, observe
+    Now we can substitute in the Fourier series of $f$ and finish the computation
     \begin{align*}
-      \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}\sum_{\g \in \GG}f(\g z)e^{-2\pi im\conj{\g z}}\Im(\g z)^{k}\,d\mu &= \frac{1}{V_{\G}}\sum_{\g \in \GG}\int_{\mc{F}_{\G}}f(\g z)e^{-2\pi im\conj{\g z}}\Im(\g z)^{k}\,d\mu && \text{DCT} \\
-      &= \frac{1}{V_{\G}}\sum_{\g \in \GG}\int_{\g\mc{F}_{\G}}f(z)e^{-2\pi im\conj{z}}\Im(z)^{k}\,d\mu && \text{$z \to \g^{-1}z$.}
-    \end{align*}
-    Now $\H = \bigcup_{\g \in \G}\g\mc{F}_{\G}$ so that $\G_{\infty}\backslash\H = \bigcup_{\g \in \GG}\g\mc{F}_{\G}$. Therefore we can write
-    \[
-      \frac{1}{V_{\G}}\sum_{\g \in \GG}\int_{\g\mc{F}_{\G}}f(z)e^{-2\pi im\conj{z}}\Im(z)^{k}\,d\mu = \frac{1}{V_{\G}}\int_{\G_{\infty}\backslash\H}f(z)e^{-2\pi im\conj{z}}\Im(z)^{k}\,d\mu.
-    \]
-    The rest is a computation:
-    \begin{align*}
-      \frac{1}{V_{\G}}\sum_{\g \in \GG}\int_{\g\mc{F}_{\G}}f(z)e^{-2\pi im\conj{z}}\Im(z)^{k}\,d\mu &= \frac{1}{V_{\G}}\int_{\G_{\infty}\backslash\H}f(z)e^{-2\pi im\conj{z}}\Im(z)^{k}\,d\mu \\
-      &= \frac{1}{V_{\G}}\int_{0}^{\infty}\int_{0}^{1}f(x+iy)e^{-2\pi im(x-iy)}y^{k}\,\frac{dx\,dy}{y^{2}} \\
-      &= \frac{1}{V_{\G}}\int_{0}^{\infty}\int_{0}^{1}\sum_{n \ge 1}a_{n}(f)e^{2\pi i(n-m)x}e^{-2\pi(n+m)y}y^{k}\,\frac{dx\,dy}{y^{2}} \\
+      \frac{1}{V_{\G}}\int_{0}^{\infty}\int_{0}^{1}f(x+iy)e^{-2\pi im(x-iy)}y^{k}\,\frac{dx\,dy}{y^{2}} &= \frac{1}{V_{\G}}\int_{0}^{\infty}\int_{0}^{1}\sum_{n \ge 1}a_{n}(f)e^{2\pi i(n-m)x}e^{-2\pi(n+m)y}y^{k}\,\frac{dx\,dy}{y^{2}} \\
       &= \frac{1}{V_{\G}}\int_{0}^{\infty}\sum_{n \ge 1}\int_{0}^{1}a_{n}(f)e^{2\pi i(n-m)x}e^{-2\pi(n+m)y}y^{k}\,\frac{dx\,dy}{y^{2}} && \text{DCT} \\
       &= \frac{1}{V_{\G}}\int_{0}^{\infty}a_{m}(f)e^{-4\pi my}y^{k}\,\frac{dy}{y^{2}},
     \end{align*}
@@ -293,7 +283,7 @@
     \begin{equation}\label{equ:Dirac_integral_representation}
       \int_{0}^{1}e^{2\pi i(n-m)x}\,dx = \d_{n-m,0},
     \end{equation}
-    so that the inner integral cuts off all the terms except for the $n = m$ term. Then
+    so that the inner integral cuts off all the terms except for the diagonal $n = m$. Then
     \begin{align*}
       \frac{1}{V_{\G}}\int_{0}^{\infty}a_{m}(f)e^{-4\pi my}y^{k}\,\frac{dy}{y^{2}} &= \frac{a_{m}(f)}{V_{\G}}\int_{0}^{\infty}e^{-4\pi my}y^{k-1}\,\frac{dy}{y} \\
       &= \frac{a_{m}(f)}{V_{\G}}\int_{0}^{\infty}e^{-4\pi my}y^{k-1}\,\frac{dy}{y} && \text{$y \to \frac{y}{4\pi m}$} \\
@@ -320,24 +310,6 @@
     \begin{proof}
       Let $f \in \mc{S}_{k}(\G)$ with Fourier coefficients $a_{n}(f)$. Since $\G(k-1) \neq 0$, \cref{equ:Petersson_inner_product_with_Poincare_series} implies $\<f,P_{m,k,\chi}\> = 0$ if and only if $a_{m}(f) = 0$. So $f$ is orthogonal to all the Poincar\'e series if and only if every Fourier coefficient $a_{m}(f)$ is zero. But this happens if and only if $f$ is identically zero.
     \end{proof}
-
-    Let's return to the previous computation for a brief moment. The procedure of changing an integral over a fundamental domain $\mc{F}_{\G}$ into an integral over the strip $\G_{\infty}\backslash\H$, or vice versa, works in a more general setting and is called \textbf{unfolding the integral}\index{unfolding the integral} or \textbf{folding the integral}\index{folding the integral} respectively:
-
-    \begin{method}[Unfolding/folding the integral]
-      Suppose $\G$ is any congruence subgroup with fundamental domain $\mc{F}_{\G}$, and we are given an absolutely convergent integral of the form
-      \[
-        \int_{\mc{F}_{\G}}\sum_{\g \in \G'\backslash\G}f(\g z)\,d\mu,
-      \]
-      where $\G' \le \G$ is a subgroup. Then the above integral can be written in the form
-      \[
-        \int_{\G'\backslash\H}f(z)\,d\mu.
-      \]
-      To do this use DCT to interchange the sum and integral and then make the change of variables $z \to \g^{-1}z$ to put the integral in the form
-      \[
-        \sum_{\g \in \G'\backslash\G}\int_{\g\mc{F}_{\G}}f(z)\,d\mu.
-      \]
-      Then observe $\H = \bigcup_{\g \in \G}\g\mc{F}_{\G}$ so that $\G'\backslash\H = \bigcup_{\g \in \G'\backslash\G}\g\mc{F}_{\G}$. The desired result follows. Of course, there is equality everywhere so we can also run the procedure in reverse.
-    \end{method}
   \section{Double Coset Operators}
     We are ready to introduce a class of general operators, depending upon double cosets, on a congruence subgroup $\G$ of level $N$. We will use these operators to define the diamond and Hecke operators. For $\a \in \GL_{2}^{+}(\Q)$, consider the double coset
     \[
