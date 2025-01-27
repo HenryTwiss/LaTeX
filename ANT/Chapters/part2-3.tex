@@ -521,7 +521,7 @@
       For any two congruence subgroups $\G_{1}$ and $\G_{2}$, $[\G_{1}\a\G_{2}]$ maps $\mc{A}_{\nu}(\G_{1})$ into $\mc{A}_{\nu}(\G_{2})$. Moreover, $[\G_{1}\a\G_{2}]$ preserves the subspace of cusp forms.
     \end{proposition}
     \begin{proof}
-      Mimicking the proof of \cref{prop:double_coset_operator_preserves_subspaces_holomorphic} with $k = 0$ (except $k = \frac{1}{2}$ for the power of the determinant), smoothness replacing holomorphy, and the analogous growth condition for Maass forms, the only piece left to verify is that $f[\G_{1}\a\G_{2}]$ is an eigenfunction for $\D$ with eigenvalue $\l$ if $f$ is. This is easy, since
+      Mimicking the proof of \cref{prop:double_coset_operator_preserves_subspaces_holomorphic} with $k = 0$ (except $k = \frac{1}{2}$ for the power of the determinant), smoothness replacing holomorphy, automorphy replacing modularity, and the analogous growth condition for Maass forms, the only piece left to verify is that $f[\G_{1}\a\G_{2}]$ is an eigenfunction for $\D$ with eigenvalue $\l$ if $f$ is. This is easy since
       \[
         \D(f[\G_{1}\a\G_{2}])(z) = \sum_{j}\D(f[\b_{j}])(z) = \l\sum_{j}\det(\b_{j})^{-\frac{1}{2}}f(\b_{j}z) = \l(f[\G_{1}\a\G_{2}])(z). 
       \]
@@ -757,7 +757,7 @@
       Let $M$ and $N$ be positive integers such that $M \mid N$. For any $d \mid \frac{N}{M}$, $[\a_{d}]$ maps $\mc{C}_{\nu}(\G_{1}(M))$ into $\mc{C}_{\nu}(\G_{1}(N))$.
     \end{proposition}
     \begin{proof}
-      Mimicking the proof of \cref{equ:lifting_operator_holomorphic} with $k = 0$, smoothness replacing holomorphy, and the analogous growth condition for Maass forms, the only piece left to verify is that $f[\a_{d}]$ is an eigenfunction for $\D$ with eigenvalue $\l$ if $f$ is. This is easy, for
+      Mimicking the proof of \cref{equ:lifting_operator_holomorphic} with $k = 0$, smoothness replacing holomorphy, automorphy replacing modularity, and the analogous growth condition for Maass forms, the only piece left to verify is that $f[\a_{d}]$ is an eigenfunction for $\D$ with eigenvalue $\l$ if $f$ is. This is easy since
       \[
         \D(f[\a_{d}])(z) = (\D f)(dz) = \l f(dz) = \l(f[\a_{d}])(z).
       \]
@@ -828,19 +828,24 @@
     \[
       W_{N} = \begin{pmatrix} 0 & -1 \\ N & 0 \end{pmatrix},
     \]
-    with $\det(W_{N}) = N$. We define the \textbf{Atkin–Lehner involution}\index{Atkin–Lehner involution} $\w_{N}:\mc{C}_{\nu}(\G_{1}(N)) \to \mc{C}_{\nu}(\G_{1}(N))$ to be the linear operator given by
+    with $\det(W_{N}) = N$. We define the \textbf{Atkin–Lehner involution}\index{Atkin–Lehner involution} $\w_{N}$ to be the linear operator on $\mc{C}_{\nu}(\G_{1}(N))$ given by
     \[
       (\w_{N}f)(z) = f\left(W_{N}z\right) = f\left(-\frac{1}{Nz}\right).
     \]
-    To see that $\w_{N}$ is well-defined, first note that smoothness and the growth condition are obvious. For automorphy, recall that for $\g = \begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix} \in \G_{1}(N)$, we have
-    \[
-      W_{N}\g = \begin{pmatrix} 0 & -1 \\ N & 0 \end{pmatrix}\begin{pmatrix} a & b \\ c & d \end{pmatrix} = \begin{pmatrix} -c & -d \\ Na & Nb \\ \end{pmatrix} = \begin{pmatrix} d & -N^{-1}c \\ -Nb & a \end{pmatrix}\begin{pmatrix} 0 & -1 \\ N & 0 \end{pmatrix} = \g'W_{N},
-    \]
-    with $\g' = \begin{psmallmatrix} d & -N^{-1}c \\ -Nb & a \end{psmallmatrix} \in \G_{1}(N)$. Then
-    \[
-      (\w_{N}f)(\g z) = f(W_{N}\g z) = f(\g'W_{N}z) = f\left(-\frac{1}{Nz}\right) = (\w_{N}f)(z).
-    \]
-    This verifies automorphy for $\w_{N}f$. Also, it is clear that $\w_{N}f$ is a cusp form because $f$ is. Hence $\w_{N}f$ is well-defined. Moreover, it is an involution because $\w_{N}^{2}f = f$ and so its only possible eigenvalues are $\pm 1$. The crucial fact we need is how $\w_{N}$ acts on $\mc{C}_{\nu}(N,\chi)$. To state the result, for $f \in \mc{C}_{\nu}(N,\chi)$ define
+    It is not too difficult to see that $\w_{N}$ is an involution on $\mc{C}_{\nu}(\G_{1}(N))$:
+
+    \begin{proposition}\label{prop:Atkin_Lehner_Maass}
+      $\w_{N}$ is an involution on $\mc{C}_{\nu}(\G_{1}(N))$.
+    \end{proposition}
+    \begin{proof}
+      Mimicking the proof of \cref{prop:Atkin_Lehner_holomorphic} with $k = 0$, smoothness replacing holomorphy, automorphy replacing modularity, and the analogous growth condition for Maass forms, the only piece left to verify is that $\w_{N}f$ is an eigenfunction for $\D$ with eigenvalue $\l$ if $f$ is. This is easy since
+      \[
+        \D(\w_{N}f)(z) = \l f\left(W_{N}z\right) = \l(\w_{N}f)(z).
+      \]
+      Thus $\w_{N}f$ is an eigenfunction for $\D$ with eigenvalue $\l$. This completes the proof.
+    \end{proof}
+
+    As $\w_{N}f$ is an involution its only possible eigenvalues are $\pm 1$. The crucial fact we need is how $\w_{N}$ acts on $\mc{C}_{\nu}(N,\chi)$. To state the result, for $f \in \mc{C}_{\nu}(N,\chi)$ define
     \[
       \conj{f}(z) = \conj{f(-z)}.
     \]
@@ -941,7 +946,7 @@
       Suppose $f \in \mc{A}_{\nu}(N,\chi)$ and $\psi$ is a primitive Dirichlet character of conductor $q$. Then $f \ox \psi \in \mc{A}_{\nu}(Nq^{2},\chi\psi^{2})$. Moreover, if $f$ is a cusp form then so is $f \ox \psi$.
     \end{proposition}
     \begin{proof}
-      Mimicking the proof of \cref{prop:twisted_holomorphic_forms} with $k = 0$, smoothness replacing holomorphy, and the analogous growth condition for Maass forms, the only piece left to verify is that $f \ox \psi$ is an eigenfunction for $\D$ with eigenvalue $\l$ if $f$ is in the case $\psi$ is primitive. This is easy, since
+      Mimicking the proof of \cref{prop:twisted_holomorphic_forms} with $k = 0$, smoothness replacing holomorphy, automorphy replacing modularity, and the analogous growth condition for Maass forms, the only piece left to verify is that $f \ox \psi$ is an eigenfunction for $\D$ with eigenvalue $\l$ if $f$ is in the case $\psi$ is primitive. This is easy since
       \[
         \D(f \ox \chi)(z) = \frac{1}{\tau(\conj{\psi})}\sum_{r \tmod{q}}\conj{\psi}(r)\D(f)\left(z+\frac{r}{q}\right) =  \frac{\l}{\tau(\conj{\psi})}\sum_{r \tmod{q}}\conj{\psi}(r)f\left(z+\frac{r}{q}\right) = \l(f \ox \chi)(z).
       \]
