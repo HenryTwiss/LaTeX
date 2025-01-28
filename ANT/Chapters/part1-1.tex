@@ -155,7 +155,7 @@
       \subsection*{Growth \& Decay of Functions}
         We will also be interested in the growth rate of functions. We can compactly express these types of growth using asymptotics. There are many types of growth rates, but we will only recall the ones that will be of use to us. Throughout let $c \ge 1$. First suppose $z \to z_{0}$. If $f(z) = O(\log^{c}(z))$, we say that $f(z)$ is of at most \textbf{logarithmic growth}\index{logarithmic growth}. If $f(z) = O(z^{c})$, we say that $f(z)$ is of at most \textbf{polynomial growth}\index{polynomial growth}. If $f(z) = o(e^{cz})$, we say that $f(z)$ is of at most \textbf{moderate growth}\index{moderate growth}. If $f(z) = O(e^{cz})$, we say that $f(z)$ is of at most \textbf{exponential growth}\index{exponential growth}. Now suppose $z \to \infty$ (or $z \to \pm\infty$ in the real case). If $f(z) = O(\log^{-c}(z))$, for some $c \ge 1$, we say that $f(z)$ is of \textbf{logarithmic decay}\index{logarithmic decay}. If $f(z) = O(x^{-c})$ for some $c \ge 1$, we say that $f(z)$ is of \textbf{polynomial decay}\index{polynomial decay}. If $f(z) = O(e^{-cz})$, we say that $f(z)$ is of \textbf{moderate decay}\index{moderate decay}. If $f(z) = o(e^{-cz})$, we say that $f(z)$ is of \textbf{exponential decay}\index{exponential decay}. In all of these cases, we refer to the constant $c$ as the \textbf{order}\index{order} of growth or decay respectively.
     \section{Dirichlet Characters}
-      The most important multiplicative periodic functions for an analytic number theorist are the Dirichlet characters. A \textbf{Dirichlet character}\index{Dirichlet character} $\chi$ modulo $m \ge 1$ (or of modulus $m \ge 1$) is an $m$-periodic completely multiplicative function $\chi:\Z \to \C$ such that $\chi(a) = 0$ if and only if $(a,m) > 1$. Sometimes we will also write $\chi_{m}$ to denote a Dirichlet character modulo $m$ if we need to express the dependence upon the modulus. For any $m$, there is always the \textbf{principal Dirichlet character}\index{principal Dirichlet character} modulo $m$ which we denote by $\chi_{m,0}$ (sometimes also seen as $\chi_{0,m}$ or the ever more confusing $\chi_{0}$) and is defined by
+      The most important multiplicative periodic functions for an analytic number theorist are the Dirichlet characters. A \textbf{Dirichlet character}\index{Dirichlet character} $\chi$ modulo $m \ge 1$ (or of modulus $m \ge 1$) is an $m$-periodic completely multiplicative function $\chi:\Z \to \C$ such that $\chi(a) = 0$ if and only if $(a,m) > 1$. Sometimes we will also write $\chi_{m}$ to denote a Dirichlet character modulo $m$ if we need to express the dependence upon the modulus. For any $m \ge 1$, there is always the \textbf{principal Dirichlet character}\index{principal Dirichlet character} modulo $m$ which we denote by $\chi_{m,0}$ (sometimes also seen as $\chi_{0,m}$ or the ever more confusing $\chi_{0}$) and is defined by
       \[
         \chi_{m,0}(a) = \begin{cases} 1 & (a,m) = 1, \\ 0 & (a,m) > 1. \end{cases}
       \]
@@ -272,14 +272,14 @@
     \section{Special Sums}
       Analytic number theory does not come without its class of special sums that appear naturally. They play the role of discrete counterparts to continuous objects (there is a rich underpinning here). Without a sufficient understanding of these sums, they would cause a discrete obstruction to an analytic problem that we wish to solve.
       \subsection*{Ramanujan \& Gauss Sums}
-        Let's begin with the Ramanujan sum. For a positive integer $m$ and any integer $b$, the \textbf{Ramanujan sum}\index{Ramanujan sum} $r(b,m)$ is defined by
+        Let's begin with the Ramanujan sum. For $m \ge 1$ and $b \in \Z$, the \textbf{Ramanujan sum}\index{Ramanujan sum} $r(b,m)$ is defined by
         \[
           r(b,m) = \psum_{a \tmod{m}}e^{\frac{2\pi iab}{m}}.
         \]
         Note that the Ramanujan sum is a finite sum of $m$-th roots of unity on the unit circle. Clearly $r(0,m) = \vphi(m)$. Ramanujan sums can be computed explicitly by means of the M\"obius function (see \cref{append:Arithmetic_Functions}):
 
         \begin{proposition}\label{prop:Ramanujan_sum_evaluation}
-          For any positive integer $m$ and any nonzero $b \in \Z$,
+          For any $m \ge 1$ and any nonzero $b \in \Z$,
           \[
             r(b,m) = \sum_{\ell \mid (b,m)}\ell\mu\left(\frac{m}{\ell}\right).
           \]
@@ -340,9 +340,6 @@
               \chi(c)\tau(b,\chi) = \sum_{a \tmod{m}}\chi(ac)e^{\frac{2\pi iab}{m}} = \sum_{a \tmod{m}}\chi(a)e^{\frac{2\pi iab\conj{c}}{m}}.
             \]
             As $e^{\frac{2\pi ib}{m}}$ is a $d$-th root of unity, and $\conj{c} \equiv 1 \tmod{d}$ (because $c$ is and $d \mid m$) we have $e^{\frac{2\pi iab\conj{c}}{m}} = e^{\frac{2\pi iab}{m}}$. Thus the last sum above is $\tau(b,\chi)$. So altogether $\chi(c)\tau(b,\chi) = \tau(b,\chi)$. Since $\chi(c) \neq 1$, we conclude $\tau(b,\chi) = 0$ proving (iii).
-
-            There exists some integer $c$ with $(c,m) = 1$ such that $\chi(c) \neq 1$, for if not $\chi$ would be principal modulo $m \ge 2$ and therefore not primitive.
-
             \item Since $(m,n) = 1$, the Chinese remainder theorem implies that $(\Z/m\Z) \x (\Z/n\Z) \cong (\Z/mn\Z)$ via the isomorphism $(a,b) \to an+a'm$ with $a$ taken modulo $m$ and $a'$ taken modulo $n$. Therefore
             \begin{align*}
               \tau(b,\chi\psi) &= \sum_{an+a'm \tmod{mn}}\chi\psi(an+a'm)e^{\frac{2\pi i(an+a'm)b}{mn}} \\
@@ -432,14 +429,14 @@
           from whence the statement follows.
         \end{proof}
       \subsection*{Quadratic Gauss Sums}
-        Another important sum is the quadratic Gauss sum. For a positive integer $m$ and any $b \in \Z$, the \textbf{quadratic Gauss sum}\index{quadratic Gauss sum} $g(b,m)$ is defined by
+        Another important sum is the quadratic Gauss sum. For any $m \ge 1$ and any $b \in \Z$, the \textbf{quadratic Gauss sum}\index{quadratic Gauss sum} $g(b,m)$ is defined by
         \[
           g(b,m) = \sum_{a \tmod{m}}e^{\frac{2\pi ia^{2}b}{m}}.
         \]
         If $b = 1$ we write $g(m)$ instead. That is, $g(m) = g(1,m)$. It turns out that if $\chi_{m}$ is the quadratic Dirichlet character given by the Jacobi symbol, then $\tau(b,\chi_{m}) = g(b,m)$ provided $m$ is square-free. This will take a little work to prove. We first reduce to the case when $(b,m) = 1$:
 
         \begin{proposition}\label{prop:quadratic_Gauss_sum_relatively_prime_reduction}
-          Let $m$ be a positive odd integer and let $b \in \Z$. Then
+          Let $m \ge 1$ be odd and let $b \in \Z$. Then
           \[
             g(b,m) = (b,m)g\left(\frac{b}{(b,m)},\frac{m}{(b,m)}\right).
           \]
@@ -459,7 +456,7 @@
         As a consequence of \cref{prop:quadratic_Gauss_sum_relatively_prime_reduction}, we may always assume $(b,m) = 1$. Now we give an equivalent formulation of the Ramanujan sum associated to quadratic characters given by Jacobi symbols and show that in the case $m = p$ an odd prime, the Ramanujan and quadratic Gauss sums agree:
 
         \begin{proposition}\label{prop:Gauss_sum_equivalence_for_primes}
-          Let $m$ be a positive odd integer and let $b \in \Z$ such that $(b,m) = 1$. Also let $\chi_{m}$ be the quadratic Dirichlet character given by the Jacobi symbol. Then
+          Let $m \ge 1$ and $b \in \Z$ be such that $(b,m) = 1$. Also let $\chi_{m}$ be the quadratic Dirichlet character given by the Jacobi symbol. Then
           \[
             \tau(b,\chi_{m}) = \sum_{a \tmod{m}}\left(1+\legendre{a}{m}\right)e^{\frac{2\pi iab}{m}}.
           \]
@@ -487,7 +484,7 @@
         We would like to generalize the second statement in \cref{prop:Gauss_sum_equivalence_for_primes} to when $m$ is square-free. In this direction, a series of reduction properties will be helpful:
 
         \begin{proposition}\label{prop:quadratic_Gauss_sum_reduction}
-          Let $m$ and $n$ be positive integers, $p$ be an odd prime, and let $b \in \Z$. Then the following hold:
+          Let $m,n \ge 1$, $p$ be an odd prime, and $b \in \Z$. Then the following hold:
           \begin{enumerate}[label=(\roman*)]
             \item If $(b,p) = 1$, then $g(b,p^{r}) = pg(b,p^{r-2})$ for all $r \in \Z$ with $r \ge 2$.
             \item If $(m,n) = 1$ and $(b,mn) = 1$, then $g(b,mn) = g(bn,m)g(bm,n)$.
@@ -543,7 +540,7 @@
         At last we can prove that our Ramanujan and quadratic Gauss sums agree for square-free $m$:
 
         \begin{theorem}
-          Suppose $m$ is a positive square-free odd integer and let $\chi_{m}$ be the quadratic Dirichlet character given by the Jacobi symbol. Let $b \in \mathbb{Z}$ such that $(b,m) = 1$. Then
+          Suppose $m \ge 1$ be square-free and odd and let $\chi_{m}$ be the quadratic Dirichlet character given by the Jacobi symbol. Let $b \in \mathbb{Z}$ such that $(b,m) = 1$. Then
           \[
             \tau(b,\chi_{m}) = g(b,m).
           \]
@@ -562,7 +559,7 @@
         Now let's turn to \cref{prop:quadratic_Gauss_sum_reduction} and the evaluation of the quadratic Gauss sum. \cref{prop:quadratic_Gauss_sum_reduction} (ii) and (iii) reduce the evaluation of $g(b,m)$ for odd $m$ and $(b,m) = 1$ to computing $g(p)$ for $p$ an odd prime. As with the Gauss sum, it is not difficult to compute the modulus of the quadratic Gauss sum:
 
         \begin{theorem}\label{thm:quadratic_Gauss_sum_modulus}
-          Let $m$ be a positive odd integer. Then
+          Let $m \ge 1$ be odd. Then
           \[
             |g(m)| = \sqrt{m}.
           \]
@@ -575,14 +572,14 @@
           If $r' = 0$, then $2n = r$ so that $p^{2n} = p^{r}$. Thus $|g(p^{r})| = \sqrt{p^{r}}$. If $r' = 1$, then \cref{thm:Gauss_sum_modulus,prop:Gauss_sum_equivalence_for_primes} together imply $|g(p^{r'})|^{2} = p$ so that the right-hand side above is $p^{2n+1} = p^{r}$ and again we have $|g(p^{r})| = \sqrt{p^{r}}$.
         \end{proof}
 
-        Accordingly, we define the \textbf{epsilon factor}\index{epsilon factor} $\e_{m}$ for a positive integer $m$ by
+        Accordingly, we define the \textbf{epsilon factor}\index{epsilon factor} $\e_{m}$ for any $m \ge 1$ by
         \[
           \e_{m} = \frac{g(m)}{\sqrt{m}}.
         \]
         \cref{thm:quadratic_Gauss_sum_modulus} says that this value lies on the unit circle when $m$ is odd. Thus the question of the evaluation of quadratic Gauss sums reduces to determining what the epsilon factor is. This was completely resolved and the original proof is due to Gauss in 1808 (see \cite{Gauss1808summatio}). He actually treated the case $m$ is even as well. We have avoided discussing this because we will not need it in the following and many of the previous proofs need to be augmented when $m$ is even (see \cite{lang1994algebraic} for a treatment of the even case). As for the evaluation, one of the cleanest proofs uses analytic techniques (see \cite{lang1994algebraic}) and the precise statement is the following:
 
         \begin{theorem}\label{thm:Gauss's_evaluation}
-          Let $m$ be a positive integer. Then
+          Let $m \ge 1$. Then
           \[
             \e_{m} = \begin{cases} (1+i) & \text{if $m \equiv 0 \tmod{4}$}, \\ 1 & \text{if $m \equiv 1 \tmod{4}$}, \\ 0 & \text{if $m \equiv 2 \tmod{4}$}, \\ i & \text{if $m \equiv 3 \tmod{4}$}. \end{cases}
           \]
@@ -600,20 +597,20 @@
           The statement follows immediately from \cref{thm:Gauss's_evaluation,prop:Gauss_sum_equivalence_for_primes}.
         \end{proof}
       \subsection*{Kloosterman \& Sali\'e Sums}
-        Our last class of sums generalize both types of Ramanujan sums. For a positive integer $c$ and any integers $n$ and $m$, the \textbf{Kloosterman sum}\index{Kloosterman sum} $K(n,m,c)$ is defined by
+        Our last class of sums generalize both types of Ramanujan sums. For any $c \ge 1$ and $n,m \in \Z$, the \textbf{Kloosterman sum}\index{Kloosterman sum} $K(n,m,c)$ is defined by
         \[
           K(n,m,c) = \sum_{\substack{a \tmod{c} \\ (a,c) = 1}}e^{\frac{2\pi i(an+\conj{a}m)}{c}} = \psum_{a \tmod{c}}e^{\frac{2\pi i(an+\conj{a}m)}{c}}.
         \]
         Notice that if either $n = 0$ or $m = 0$ then the Kloosterman sum reduces to a Ramanujan sum. Kloosterman sums have similar properties to those of Ramanujan sums, but we will not need them. The only result we will need is a famous bound, often called the \textbf{Weil bound}\index{Weil bound} for Kloosterman sums, proved by Weil (see \cite{weil1948some} for a proof):
 
         \begin{theorem}[Weil bound]
-          Let $c$ be a positive integer and $n$ and $m$ be integers. Then
+          Let $c \ge 1$ and $n,m \in \Z$. Then
           \[
             |K(n,m,c)| \le \s_{0}(c)\sqrt{(n,m,c)}\sqrt{c}.
           \]
         \end{theorem}
 
-        Lastly, Sali\'e sums are Kloosterman sums with Dirichlet characters. To be precise, for a positive integer $c$, any integers $n$ and $m$, and a Dirichlet character $\chi$ with conductor $q \mid c$, the \textbf{Sali\'e sum}\index{Sali\'e sum} $S_{\chi}(n,m,c)$ is defined by
+        Lastly, Sali\'e sums are Kloosterman sums with Dirichlet characters. To be precise, for any $c \ge 1$, $n,m \in \Z$, and a Dirichlet character $\chi$ with conductor $q \mid c$, the \textbf{Sali\'e sum}\index{Sali\'e sum} $S_{\chi}(n,m,c)$ is defined by
         \[
           S_{\chi}(n,m,c) = \sum_{\substack{a \tmod{c} \\ (a,c) = 1}}\chi(a)e^{\frac{2\pi i(an+\conj{a}m)}{c}} = \psum_{a \tmod{c}}\chi(a)e^{\frac{2\pi i(an+\conj{a}m)}{c}}.
         \]
