@@ -75,17 +75,18 @@
       f(\s_{\mf{a}}z) = \sum_{n \ge 0}a_{\mf{a}}(n)e^{2\pi inz}.
     \]
     For ease of notation, if it is clear what cusp we are working at we will mention the Fourier series and its coefficients without mentioning the cusp. Moreover, property (iv) implies that $f$ is a cusp form if and only if $a_{\mf{a}}(n) = 0$ for every cusp $\mf{a}$. In particular, $f(\s_{\mf{a}}z)$ exhibits exponential decay for every cusp $\mf{a}$. Accordingly, we say that $f$ exhibits \textbf{exponential decay at the cusps}\index{exponential decay at the cusps}. Observe that $f(z)$ is then bounded on $\H$.
-  \section{Eisenstein \& Poincar\'e Series}
-    Let $\G$ be a congruence subgroup of level $N$. We will introduce two important classes of holomorphic forms on $\GH$ namely the Eisenstein series and the Poincar\'e series. For any $k \ge 4$ and Dirichlet character $\chi$ with conductor $q \mid N$, we define the \textbf{(holomorphic) Eisenstein series}\index{(holomorphic) Eisenstein series} $E_{k,\chi}(z)$ of weight $k$ and character $\chi$ on $\GH$ by
+  \section{Poincar\'e \& Eisenstein Series}
+    Let $\G$ be a congruence subgroup of level $N$. We will introduce two important classes of holomorphic forms on $\GH$ namely the Poincar\'e and Eisenstein series. Let $m \ge 0$, $k \ge 4$, and $\chi$ be a Dirichlet character with conductor $q \mid N$. We define the $m$-th \textbf{(holomorphic) Poincar\'e series}\index{(holomorphic) Poincar\'e series} $P_{m,k,\chi}(z)$ of weight $k$ with character $\chi$ on $\GH$ by
     \[
-      E_{k,\chi}(z) = \sum_{\g \in \GG}\cchi(\g)j(\g,z)^{-k}.
+      P_{m,k,\chi}(z) = \sum_{\g \in \GG}\cchi(\g)j(\g,z)^{-k}e^{2\pi im\g z}.
     \]
+    We call $m$ the \textbf{index}\index{index} of $P_{m,k,\chi}(z)$. If $k = 0$ or $\chi$ is the trivial character, we will drop these dependences accordingly. 
 
     \begin{remark}
-      The reason why we restrict to $k \ge 4$ is because for $k = 0,2$ the Eisenstein series do not converge (see \cref{prop:general_lattice_sum_convergence_for_two_variables}).
+      The reason why we restrict to $k \ge 4$ is because for $k = 0,2$ the Poincar\'e series need not converge (see \cref{prop:general_lattice_sum_convergence_for_two_variables}).
     \end{remark}
 
-    We first verify that $E_{k,\chi}(z)$ is well-defined. It suffices to show that $\cchi(\g)j(\g,z)$ is independent of the representative of $\g$. Indeed, if $\g'$ represents the same element as $\g$ in $\GG$, then they differ on the left by an element of $\eta_{\infty} \in \G_{\infty}$. So suppose $\g' = \eta_{\infty}\g$ with $\eta_{\infty} = \begin{psmallmatrix} 1 & n \\ 0 & 1 \end{psmallmatrix} \in \G_{\infty}$. Then
+    We first verify that $P_{m,k,\chi}(z)$ is well-defined. It suffices to show that the summands are independent of the representative of $\g$. Indeed, if $\g'$ represents the same element as $\g$ in $\GG$, then they differ on the left by an element of $\eta_{\infty} \in \G_{\infty}$. So suppose $\g' = \eta_{\infty}\g$ with $\eta_{\infty} = \begin{psmallmatrix} 1 & n \\ 0 & 1 \end{psmallmatrix} \in \G_{\infty}$. Then
     \[
       \cchi(\g') = \cchi(\eta_{\infty}\g) = \cchi(\eta_{\infty})\cchi(\g) = \cchi(\g).
     \]
@@ -93,34 +94,25 @@
     \[
       j(\g',z) = j(\eta_{\infty}\g,z) = j(\eta_{\infty},\g z)j(\g,z) = j(\g,z),
     \]
-    where the last equality follows because $j(\eta_{\infty},\g z) = 1$. This verifies that $j(\g,z)$ is also independent of the representative $\g$. Therefore $E_{k,\chi}(z)$ is well-defined. The Bruhat decomposition applied to $\GG$ implies
+    where the last equality follows because $j(\eta_{\infty},\g z) = 1$. This verifies that $j(\g,z)$ is also independent of the representative $\g$. Moreover, we have
     \[
-      E_{k,\chi}(z) \ll \sum_{(c,d) \in \Z^{2}-\{\mathbf{0}\}}\frac{1}{|cz+d|^{k}},
+      e^{2\pi im\g' z} = e^{2\pi im\eta_{\infty}\g z} = e^{2\pi im(\g z+n)} = e^{2\pi im\g z}e^{2\pi imnz} = e^{2\pi im\g z},
     \]
-    and as $k \ge 4$, this latter series is locally absolutely uniformly convergent for $z \in \H$ by \cref{prop:general_lattice_sum_convergence_for_two_variables}. Hence $E_{k,\chi}(z)$ does too and so it is holomorphic on $\H$.
-
-    \begin{remark}\label{rem:Eisenstein_series_on_modular_group}
-      In the case of the modular group, the Bruhat decomposition implies that a set of representatives for the quotient $\GG$ is
-      \[
-        \left\{\begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}\right\} \cup \left\{\begin{pmatrix} \ast & \ast \\ c & d \end{pmatrix}:\text{$c \ge 1$, $d \in \Z$, and $(c,d) = 1$}\right\}.
-      \]
-      Then $E_{k,\chi}(z)$ is given by
-      \[
-        E_{k,\chi}(z) = 1+\sum_{\substack{c \ge 1, d \in \Z \\ (c,d) = 1}}\frac{\cchi(d)}{(cz+d)^{k}}.
-      \]
-    \end{remark}
-
-    We now show that $E_{k,\chi}(z)$ is modular. This is just a computation:
+    which verifies that $e^{2\pi im\g z}$ is independent of the representative $\g$ as well. Therefore $P_{m,k,\chi}(z)$ is well-defined. To see that $P_{m,k,\chi}(z)$ is holomorphic on $\H$, first note that $|e^{2\pi im\g z}| = e^{-2\pi m\Im(\g z)} < 1$. Then the Bruhat decomposition applied to $\GG$ gives
+    \[
+      P_{m,k,\chi}(z) \ll \sum_{(c,d) \in \Z^{2}-\{\mathbf{0}\}}\frac{1}{|cz+d|^{k}}.
+    \]
+    As $k \ge 4$, this latter series is locally absolutely uniformly convergent for $z \in \H$ by \cref{prop:general_lattice_sum_convergence_for_two_variables}. Hence $P_{m,k,\chi}(z)$ does too and so it is holomorphic on $\H$. We now show that $P_{m,k,\chi}(z)$ is modular. This is just a computation:
     \begin{align*}
-      E_{k,\chi}(\g z) &= \sum_{\g' \in \GG}\cchi(\g')j(\g',\g z)^{-k} \\
-      &= \sum_{\g' \in \GG}\cchi(\g')\left(\frac{j(\g'\g,z)}{j(\g,z)}\right)^{-k} && \text{cocycle condition} \\
-      &= j(\g,z)^{k}\sum_{\g' \in \GG}\cchi(\g')j(\g'\g,z)^{-k} \\
-      &= \chi(\g)j(\g,z)^{k}\sum_{\g' \in \GG}\cchi(\g')\cchi(\g)j(\g'\g,z)^{-k} \\
-      &= \chi(\g)j(\g,z)^{k}\sum_{\g' \in \GG}\cchi(\g'\g)j(\g'\g,z)^{-k} \\
-      &= \chi(\g)j(\g,z)^{k}\sum_{\g' \in \GG}\cchi(\g')j(\g',z)^{-k} && \text{$\g' \to \g'\g^{-1}$ bijection on $\G$} \\
-      &= \chi(\g)j(\g,z)^{k}E_{k,\chi}(z).
+      P_{m,k,\chi}(\g z) &= \sum_{\g' \in \GG}\cchi(\g')j(\g',\g z)^{-k}e^{2\pi im\g'\g z} \\
+      &= \sum_{\g' \in \GG}\cchi(\g')\left(\frac{j(\g'\g,z)}{j(\g,z)}\right)^{-k}e^{2\pi im\g'\g z} \\
+      &= j(\g,z)^{k}\sum_{\g' \in \GG}\cchi(\g')j(\g'\g,z)^{-k}e^{2\pi im\g'\g z} \\
+      &= \chi(\g)j(\g,z)^{k}\sum_{\g' \in \GG}\cchi(\g')\cchi(\g)j(\g'\g,z)^{-k}e^{2\pi im\g'\g z} \\
+      &= \chi(\g)j(\g,z)^{k}\sum_{\g' \in \GG}\cchi(\g'\g)j(\g'\g,z)^{-k}e^{2\pi im\g'\g z} \\
+      &= \chi(\g)j(\g,z)^{k}\sum_{\g' \in \GG}\cchi(\g')j(\g',z)^{-k}e^{2\pi im\g' z} \\
+      &= \chi(\g)j(\g,z)^{k}P_{m,k,\chi}(z),
     \end{align*}
-    To verify the growth condition, we will need a technical lemma:
+    where in the second line we have used the cocycle condition and in the second to last line we have used that $\g' \to \g'\g^{-1}$ is a bijection on $\G$. To verify the growth condition, we will need a technical lemma:
 
     \begin{lemma}\label{lem:technical_Eisenstein_convergence_lemma}
       Let $a,b > 0$ be reals and consider the half-strip
@@ -157,66 +149,40 @@
       It follows that $f(z,r) > \frac{1}{2}$ outside of $S_{a,b}^{Y} \x [-Y,Y]$. But this latter region is compact and so $f(z,r)$ obtains a minimum $\d'$ on it. Setting $\d = \min\{\frac{1}{2},\d'\}$ completes the proof.
     \end{proof}
 
-    We can now show that $E_{k,\chi}(z)$ is holomorphic at the cusps. Let $\s_{\mf{a}}$ be a scaling matrix for the cusp $\mf{a}$. Then the cocycle condition and the Bruhat decomposition applied to $\GG\s_{\mf{a}}$ together give
+    We can now verify the growth condition for $P_{m,k,\chi}(z)$. Let $\s_{\mf{a}}$ be a scaling matrix for the cusp $\mf{a}$. Then the bound $|e^{2\pi im\g z}| = e^{-2\pi m\Im(\g z)} < 1$, cocycle condition, and the Bruhat decomposition applied to $\GG\s_{\mf{a}}$ together give
     \[
-      j(\s_{\mf{a}},z)^{-k}E_{k,\chi}(\s_{\mf{a}}z) \ll \sum_{(c,d) \in \Z^{2}-\{\mathbf{0}\}}\frac{1}{|cz+d|^{k}}.
+      j(\s_{\mf{a}},z)^{-k}P_{m,k,\chi}(\s_{\mf{a}}z) \ll \sum_{(c,d) \in \Z^{2}-\{\mathbf{0}\}}\frac{1}{|cz+d|^{k}}.
     \]
     Now decompose this last sum as
     \[
       \sum_{(c,d) \in \Z^{2}-\{\mathbf{0}\}}\frac{1}{|cz+d|^{k}} = \sum_{d \neq 0}\frac{1}{d^{k}}+\sum_{c \neq 0}\sum_{d \in \Z}\frac{1}{|cz+d|^{k}} = 2\sum_{d \ge 1}\frac{1}{d^{k}}+2\sum_{c \ge 1}\sum_{d \in \Z}\frac{1}{|cz+d|^{k}}.
     \]
-    Since the first sum converges, it suffices to show that the double sum converges too. To see this, let $y \ge 1$ and $\d$ be as in \cref{lem:technical_Eisenstein_convergence_lemma}. Then for any integer $N \ge 1$ we can write
+    Since the first sum is absolutely uniformly bounded, it suffices to show that the double sum is too. To see this, let $y \ge 1$ and $\d$ be as in \cref{lem:technical_Eisenstein_convergence_lemma}. Then for any integer $N \ge 1$ we can write
     \begin{align*}
       \sum_{c \ge 1}\sum_{d \in \Z}\frac{1}{|cz+d|^{k}} &= \sum_{c+|d| \le N}\frac{1}{|cz+d|^{k}}+\sum_{c+|d| > N}\frac{1}{|cz+d|^{k}} \\
       &\le \sum_{c+|d| \le N}\frac{1}{|cz+d|^{k}}+\sum_{c+|d| > N}\frac{1}{(\d|ci+d|)^{k}} \\
       &\le \sum_{c+|d| \le N}\frac{1}{|cz+d|^{k}}+\frac{1}{\d^{k}}\sum_{c+|d| > N}\frac{1}{|ci+d|^{k}}.
     \end{align*}
-    Since $\sum_{c \ge 1}\sum_{d \in \Z}\frac{1}{|ci+d|^{k}}$ converges by \cref{prop:general_lattice_sum_convergence_for_two_variables}, the second sum tends to zero as $N \to \infty$. As for the first sum, it is finite and each term is bounded. Holomorphy at $\mf{a}$ follows. We collect this work as a theorem:
+    As $\sum_{c \ge 1}\sum_{d \in \Z}\frac{1}{|ci+d|^{k}}$ converges by \cref{prop:general_lattice_sum_convergence_for_two_variables}, the second sum tends to zero as $N \to \infty$. As for the first sum, it is finite and each term is bounded. Thus the double sum is absolutely uniformly bounded. This verifies the growth condition. We collect this work as a theorem:
+
+    \begin{theorem}
+      Let $m \ge 0$, $k \ge 4$, and $\chi$ be a Dirichlet character with conductor $q \mid N$. The Poincar\'e series
+      \[
+        P_{m,k,\chi}(z) = \sum_{\g \in \GG}j(\g,z)^{-k}e^{2\pi im\g z},
+      \]
+      is a weight $k$ holomorphic form with character $\chi$ on $\GH$.
+    \end{theorem}
+    
+    For $m = 0$, we write $E_{k,\chi}(z) = P_{0,k,\chi}(z)$ and call $E_{k,\chi}(z)$ the \textbf{(holomorphic) Eisenstein series}\index{(holomorphic) Eisenstein series} of weight $k$ and character $\chi$ on $\GH$. It is defined by
+    \[
+      E_{k,\chi}(z) = \sum_{\g \in \GG}\cchi(\g)j(\g,z)^{-k}.
+    \]
+    If $k = 0$ or $\chi$ is the trivial character, we will drop these dependences accordingly. In particular, we have already verified the following theorem:
 
     \begin{theorem}
       Let $k \ge 4$ and $\chi$ be Dirichlet character with conductor $q \mid N$. The Eisenstein series
       \[
         E_{k,\chi}(z) = \sum_{\g \in \GG}\cchi(\g)j(\g,z)^{-k},
-      \]
-      is a weight $k$ holomorphic form with character $\chi$ on $\GH$.
-    \end{theorem}
-
-    Now we will discuss our second class of holomorphic forms. For every $m \ge 1$, $k \ge 4$, and Dirichlet character $\chi$ with conductor $q \mid N$, we define the $m$-th \textbf{(holomorphic) Poincar\'e series}\index{(holomorphic) Poincar\'e series} $P_{m,k,\chi}(z)$ of weight $k$ with character $\chi$ on $\GH$ by
-    \[
-      P_{m,k,\chi}(z) = \sum_{\g \in \GG}\cchi(\g)j(\g,z)^{-k}e^{2\pi im\g z}.
-    \]
-    We first need to verify that $P_{m,k,\chi}(z)$ is actually well-defined. This amounts to checking $e^{2\pi im\g z}$ is independent of the representative $\g$ since we have already verified $\cchi(\g)j(\g,z)$ is when discussing $E_{k,\chi}(z)$. As before, suppose $\g' = \eta_{\infty}\g$ with $\eta_{\infty} = \begin{psmallmatrix} 1 & n \\ 0 & 1 \end{psmallmatrix} \in \G_{\infty}$. Then
-    \[
-      e^{2\pi im\g' z} = e^{2\pi im\eta_{\infty}\g z} = e^{2\pi im(\g z+n)} = e^{2\pi im\g z}e^{2\pi imnz} = e^{2\pi im\g z},
-    \]
-    and hence $e^{2\pi im\g' z}$ is independent of the representative $\g$ used. It follows that $P_{m,k,\chi}(z)$ is well-defined. To see that $P_{m,k,\chi}(z)$ is holomorphic on $\H$, first note that $|e^{2\pi im\g z}| = e^{-2\pi m\Im(\g z)} < 1$. Then the Bruhat decomposition applied to $\GG$ gives
-    \[
-      P_{m,k,\chi}(z) \ll \sum_{(c,d) \in \Z^{2}-\{\mathbf{0}\}}\frac{1}{|cz+d|^{k}}.
-    \]
-    As $k \ge 4$, this latter series is locally absolutely uniformly convergent for $z \in \H$ by \cref{prop:general_lattice_sum_convergence_for_two_variables}. Hence $P_{m,k,\chi}(z)$ does too and so it is holomorphic on $\H$.
-
-    \begin{remark}
-      In the case of the modular group, the Bruhat decomposition implies that a set of representatives for the quotient $\GG$ is
-      \[
-        \left\{\begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}\right\} \cup \left\{\begin{pmatrix} \ast & \ast \\ c & d \end{pmatrix}:\text{$c \ge 1$, $d \in \Z$, and $(c,d) = 1$}\right\}.
-      \]
-      as in \cref{rem:Eisenstein_series_on_modular_group}. Then $P_{m,k,\chi}(z)$ is given by
-      \[
-        P_{m,k,\chi}(z) = e^{2\pi imz}+\sum_{\substack{c \ge 1, d \in \Z \\ (c,d) = 1}}\cchi(d)\frac{e^{2\pi im\left(\frac{az+b}{cz+d}\right)}}{(cz+d)^{k}},
-      \]
-      where $a$ and $b$ are chosen such that $\det\left(\begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix}\right) = 1$.
-    \end{remark}
-
-    Modularity for $P_{m,k,\chi}(z)$ is verified in exactly the same way as for $E_{k,\chi}(z)$. To verify the growth condition, let $\s_{\mf{a}}$ be a scaling matrix for the cusp $\mf{a}$. The bound $|e^{2\pi im\g\s_{\mf{a}}z}| = e^{-2\pi m\Im(\g\s_{\mf{a}}z)} < 1$, cocycle condition, and the Bruhat decomposition applied to $\GG\s_{\mf{a}}$ together give
-    \[
-      j(\s_{\mf{a}},z)^{-k}P_{m,k,\chi}(\s_{\mf{a}}z) \ll \sum_{(c,d) \in \Z^{2}-\{\mathbf{0}\}}\frac{1}{|cz+d|^{k}},
-    \]
-    and we can proceed in exactly the same way as for $E_{k,\chi}(z)$. We collect this work as a theorem:
-
-    \begin{theorem}
-      Let $m \ge 1$, $k \ge 4$, and $\chi$ be a Dirichlet character with conductor $q \mid N$. The Poincar\'e series
-      \[
-        P_{m,k,\chi}(z) = \sum_{\g \in \GG}j(\g,z)^{-k}e^{2\pi im\g z},
       \]
       is a weight $k$ holomorphic form with character $\chi$ on $\GH$.
     \end{theorem}
@@ -306,13 +272,13 @@
     \[
       \<f,\wtilde{P}_{m,k,\chi}-v_{m,k}\> = 0.
     \]
-    By \cref{rem:non-degeneracy_of_Petersson_inner_product} the Petersson inner product is non-degenerate so we conclude $v_{m,k}(z) = \wtilde{P}_{m,k,\chi}(z)$. In particular, this shows that the Poincar\'e series $P_{m,k,\chi}(z)$ are cusp forms. We usually work with the Poincar\'e series $P_{m,k,\chi}(z)$ instead of their normalized counterparts $\wtilde{P}_{m,k,\chi}(z)$. In any case, with \cref{equ:Petersson_inner_product_with_Poincare_series} in hand we can prove the following result:
+    By \cref{rem:non-degeneracy_of_Petersson_inner_product} the Petersson inner product is non-degenerate so we conclude $v_{m,k}(z) = \wtilde{P}_{m,k,\chi}(z)$. In particular, this shows that the Poincar\'e series $P_{m,k,\chi}(z)$ of positive index are cusp forms. We usually work with the Poincar\'e series $P_{m,k,\chi}(z)$ instead of their normalized counterparts $\wtilde{P}_{m,k,\chi}(z)$. In any case, with \cref{equ:Petersson_inner_product_with_Poincare_series} in hand we can prove the following result:
 
     \begin{theorem}
-      The Poincar\'e series span $\mc{S}_{k}(\G)$.
+      The Poincar\'e series of positive index span $\mc{S}_{k}(\G)$.
     \end{theorem}
     \begin{proof}
-      Let $f \in \mc{S}_{k}(\G)$ with Fourier coefficients $a_{n}(f)$. Since $\G(k-1) \neq 0$, \cref{equ:Petersson_inner_product_with_Poincare_series} implies $\<f,P_{m,k,\chi}\> = 0$ if and only if $a_{m}(f) = 0$. So $f$ is orthogonal to all the Poincar\'e series if and only if every Fourier coefficient $a_{m}(f)$ is zero. But this happens if and only if $f$ is identically zero.
+      Let $f \in \mc{S}_{k}(\G)$ with Fourier coefficients $a_{n}(f)$. Since $\G(k-1) \neq 0$, \cref{equ:Petersson_inner_product_with_Poincare_series} implies $\<f,P_{m,k,\chi}\> = 0$ if and only if $a_{m}(f) = 0$. So $f$ is orthogonal to all the Poincar\'e series of positive index if and only if every Fourier coefficient $a_{m}(f)$ is zero. But this happens if and only if $f$ is identically zero.
     \end{proof}
   \section{Double Coset Operators}
     We are ready to introduce a class of general operators, depending upon double cosets, on a congruence subgroup $\G$ of level $N$. We will use these operators to define the diamond and Hecke operators. For $\a \in \GL_{2}^{+}(\Q)$, consider the double coset
