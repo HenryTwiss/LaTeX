@@ -45,11 +45,15 @@
       \[
         \vt(s) = \sum_{n \in \Z}e^{-\pi n^{2}s} = 1+2\sum_{n \ge 1}e^{-\pi n^{2}s}.
       \]
-      It is locally absolutely uniformly convergent in this region by the ratio test. It's relation to $\w(s)$ is the identity
+      It is locally absolutely uniformly convergent in this region by the ratio test. Its relation to $\w(s)$ is given by the identity
       \begin{equation}\label{equ:omega_theta_relationship_for_zeta}
         \w(s) = \frac{\vt(s)-1}{2}.
       \end{equation}
-      The essential fact about Jacobi's theta function we will need is the \textbf{functional equation for Jacobi's theta function}\index{functional equation for Jacobi's theta function} that was known to Riemann:
+      We see from the Taylor series of $\frac{1}{1-e^{\s}}$, that
+      \[
+        \w(s) = O\left(\sum_{n \ge 1}e^{-\pi n^{2}\s}\right) = O\left(\sum_{n \ge 1}e^{-\pi n\s}\right) = O\left(\frac{1}{1-e^{-\pi\s}}\right) = O(e^{-\pi\s}),
+      \]
+      and so $\w(s)$ exhibits rapid decay. The essential fact about Jacobi's theta function we will need is the \textbf{functional equation for Jacobi's theta function}\index{functional equation for Jacobi's theta function} that was known to Riemann:
 
       \begin{theorem}[Functional equation for Jacobi's theta function]
         For $\s > 0$,
@@ -87,7 +91,7 @@
       \begin{equation}\label{equ:symmetric_integral_zeta_split}
         \int_{0}^{\infty}\w(x)x^{\frac{s}{2}}\,\frac{dx}{x} = \int_{0}^{1}\w(x)x^{\frac{s}{2}}\,\frac{dx}{x}+\int_{1}^{\infty}\w(x)x^{\frac{s}{2}}\,\frac{dx}{x}.
       \end{equation}
-      Since $\w(x)$ has exponential decay, the second piece is locally absolutely uniformly bounded for $\s > 1$ by \cref{prop:decay_unbounded_inteval_integral}. Hence it is analytic there. The idea now is to rewrite the first piece in the same form and symmetrize the result as much as possible. We being by performing a change of variables $x \to \frac{1}{x}$ to the first piece to obtain
+      Since $\w(x)$ has rapid decay, the second piece is locally absolutely uniformly bounded for $\s > 1$ by \cref{prop:decay_unbounded_inteval_integral}. Hence it is analytic there. The idea now is to rewrite the first piece in the same form and symmetrize the result as much as possible. We being by performing a change of variables $x \to \frac{1}{x}$ to the first piece to obtain
       \[
         \int_{1}^{\infty}\w\left(\frac{1}{x}\right)x^{-\frac{s}{2}}\,\frac{dx}{x}
       \]
@@ -226,7 +230,11 @@
         \cref{equ:twisted_omega_theta_relationship_for_Dirichlet_L-functions} is a slightly less complex relationship than \cref{equ:omega_theta_relationship_for_zeta}. This is because assuming $q > 1$ means $\chi(0) = 0$.
       \end{remark}
 
-      The essential fact we will need is the \textbf{functional equation for Dirichlet's theta function}\index{functional equation for Dirichlet's theta function}:
+      We see from the Taylor series of $\frac{1}{1-e^{\s}}$ and its derivative, that
+      \[
+        \w_{\chi}(s) = O\left(\sum_{n \ge 1}ne^{-\pi n^{2}\s}\right) = O\left(\sum_{n \ge 1}ne^{-\pi n\s}\right) = O\left(\frac{e^{-\pi \s}}{(1-e^{-\pi\s})^{2}}\right) = O(e^{-\pi\s}),
+      \]
+      and so $\w(s)$ exhibits rapid decay. The essential fact we will need is the \textbf{functional equation for Dirichlet's theta function}\index{functional equation for Dirichlet's theta function}:
 
       \begin{theorem}[Functional equation for Dirichlet's theta function]
         Let $\chi$ be a primitive Dirichlet character of conductor $q > 1$. For $\s > 0$,
@@ -297,7 +305,7 @@
       \begin{equation}\label{equ:symmetric_integral_Dirichlet_L-functions_split}
         \int_{0}^{\infty}\w_{\chi}(x)x^{\frac{s+\mf{a}}{2}}\,\frac{dx}{x} = \int_{0}^{\frac{1}{q}}\w_{\chi}(x)x^{\frac{s+\mf{a}}{2}}\,\frac{dx}{x}+\int_{\frac{1}{q}}^{\infty}\w_{\chi}(x)x^{\frac{s+\mf{a}}{2}}\,\frac{dx}{x}.
       \end{equation}
-      Since $\w_{\chi}(x)$ has exponential decay, the second piece is locally absolutely uniformly bounded for $\s > 1$ by \cref{prop:decay_unbounded_inteval_integral}. Hence it is an analytic function. We now rewrite the first piece in the same form and symmetrize the result as much as possible. Start by performing a change of variables $x \to \frac{1}{q^{2}x}$ to the first piece to obtain
+      Since $\w_{\chi}(x)$ exhibits rapid decay, the second piece is locally absolutely uniformly bounded for $\s > 1$ by \cref{prop:decay_unbounded_inteval_integral}. Hence it is an analytic function. We now rewrite the first piece in the same form and symmetrize the result as much as possible. Start by performing a change of variables $x \to \frac{1}{q^{2}x}$ to the first piece to obtain
       \[
         q^{-(s+\mf{a})}\int_{\frac{1}{q}}^{\infty}\w_{\chi}\left(\frac{1}{q^{2}x}\right)x^{-\frac{s+\mf{a}}{2}}\,\frac{dx}{x}.
       \]
@@ -449,7 +457,7 @@
       \begin{equation}\label{equ:symmetric_integral_holomorphic_split}
         \int_{0}^{\infty}f(iy)y^{s+\frac{k-1}{2}}\,\frac{dy}{y} = \int_{0}^{\frac{1}{\sqrt{N}}}f(iy)y^{s+\frac{k-1}{2}}\,\frac{dy}{y}+\int_{\frac{1}{\sqrt{N}}}^{\infty}f(iy)y^{s+\frac{k-1}{2}}\,\frac{dy}{y}.
       \end{equation}
-      Since $f(iy)$ has exponential decay, the second piece is locally absolutely uniformly bounded for $\s > 1$ by \cref{prop:decay_unbounded_inteval_integral}. Hence it is an analytic there. Now we will rewrite the first piece in the same form and symmetrize the result as much as possible. Begin by performing the change of variables $y \to \frac{1}{Ny}$ to the first piece to obtain
+      Since $f(iy)$ exhibits rapid decay, the second piece is locally absolutely uniformly bounded for $\s > 1$ by \cref{prop:decay_unbounded_inteval_integral}. Hence it is an analytic there. Now we will rewrite the first piece in the same form and symmetrize the result as much as possible. Begin by performing the change of variables $y \to \frac{1}{Ny}$ to the first piece to obtain
       \[
         \int_{\frac{1}{\sqrt{N}}}^{\infty}f\left(\frac{i}{Ny}\right)(Ny)^{-s-\frac{k-1}{2}}\,\frac{dy}{y}.
       \]
@@ -750,11 +758,15 @@
       \end{equation}
       which is valid for $\s > 1$. We cannot investigate the integral any further until we understand the Fourier series of $E(z,s)$ and have a functional equation as $s \to 1-s$. Therefore we will take a necessary detour and return to the integral after.
     \subsection*{The Fourier Series and Functional Equation of \texorpdfstring{$E(z,s)$}{E(z,s)}}
-      Let
+      Recall that $E(z,s)$ has a Fourier series of the form
       \[
-        E(z,s) = \sum_{n \in \Z}a(n,y,s)e^{2\pi inx}.
+        E(z,s) = a^{+}(0,s)y^{s}+a^{-}(0,s)y^{1-s}+\sum_{n \neq 0}a(n,s)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y)e^{2\pi inx}.
       \]
-      be the Fourier series of $E(z,s)$. Our first goal is to compute these coefficients. To do this we will need the following technical lemma:
+      Writing the Fourier series in the more compressed form
+      \[
+        E(z,s) = a(0,y,s)+\sum_{n \neq 0}a(n,y,s)e^{2\pi inx},
+      \]
+      we will compute these latter Fourier coefficients. To do this we will need the following technical lemma:
 
       \begin{lemma}\label{lem:Ramanujan_zeta_relation}
         Let $M \ge 1$ be square-free. Then for $\s > 1$ and $b \in \Z$,
@@ -793,10 +805,14 @@
         \end{align*}
       \end{proof}
 
-      We can now compute the Fourier coefficients $a(n,y,s)$:
+      We can now compute the Fourier coefficients of $E(z,s)$:
 
       \begin{proposition}\label{prop:Fourier_coefficients_of_real-analytic_Eisenstein_series}
-        The Fourier coefficients $a(n,y,s)$ are given by
+        The Fourier series of $E(z,s)$ is given by
+        \[
+        E(z,s) = a(0,y,s)+\sum_{n \neq 0}a(n,y,s)e^{2\pi inx},
+        \]
+        where
         \[
           a(n,y,s) = \begin{cases} y^{s}+y^{1-s}\frac{\sqrt{\pi}\G\left(s-\frac{1}{2}\right)\z(2s-1)}{\G(s)\z(2s)} & \text{if $n = 0$}, \\ 2\pi^{s}\frac{|n|^{s-\frac{1}{2}}\s_{1-2s}(|n|)}{\G(s)\z(2s)}\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y) & \text{if $n \neq 0$}. \end{cases}
         \]
@@ -806,7 +822,7 @@
         \[
           E(z,s) = y^{s}+\sum_{\substack{c \ge 1, d \in \Z \\ (c,d) = 1}}\frac{y^{s}}{|cx+icy+d|^{2s}}.
         \]
-        The definition of the Fourier coefficients gives
+        The definition of the Fourier series gives
         \begin{equation}\label{equ:real-analytic_Eisenstein_fourier_coefficient_definition}
           a(n,y,s) = \int_{0}^{1}E(x+iy,s)e^{-2\pi inx}\,dx = y^{s}\d_{n,0}+\int_{0}^{1}\sum_{\substack{c \ge 1, d \in \Z \\ (c,d) = 1}}\frac{y^{s}}{|cx+icy+d|^{2s}}e^{-2\pi inx}\,dx,
         \end{equation}
@@ -814,7 +830,7 @@
         \[
           I(z,s) = \int_{0}^{1}\sum_{\substack{c \ge 1, d \in \Z \\ (c,d) = 1}}\frac{y^{s}}{|cx+icy+d|^{2s}}e^{-2\pi inx}\,dx.
         \]
-        Make the following observation: summing over all pairs $(c,d)$ with $c \ge 1$, $d \in \Z$, $c \equiv 0 \tmod{NM}$, and $(c,d) = 1$ is the same as summing over all triples $(c,\ell,r)$ with $c \ge 1$, $\ell \in \Z$, $r \tmod{c}$, with $c \equiv 0 \tmod{NM}$ and $(r,c) = 1$. This is seen by writing $d = c\ell+r$. Therefore
+        Observe that summing over all pairs $(c,d)$ with $c \ge 1$ and $d \in \Z$ is the same as summing over all triples $(c,\ell,r)$ with $c \ge 1$, $\ell \in \Z$, and $r \tmod{c}$ with $(r,c) = 1$. This is seen by writing $d = c\ell+r$. Therefore
         \begin{align*}
           I(z,s) &= \int_{0}^{1}\sum_{\substack{c \ge 1, d \in \Z \\ (c,d) = 1}}\frac{y^{s}}{|cx+icy+d|^{2s}}e^{-2\pi inx}\,dx \\
           &= \int_{0}^{1}\sum_{(c,\ell,r)}\frac{y^{s}}{|c(x+\ell)+r+icy|^{2s}}e^{-2\pi inx}\,dx \\
@@ -830,7 +846,10 @@
         \[
           I(z,s) = \begin{cases} \frac{\z(2s-1)}{\z(2s)}y^{1-s}\int_{-\infty}^{\infty}\frac{1}{(x^{2}+1)^{s}}\,dx & \text{if $n = 0$}, \\ \frac{\s_{1-2s}(|n|)}{\z(2s)}y^{1-s}\int_{-\infty}^{\infty}\frac{1}{(x^{2}+1)^{s}}e^{-2\pi inxy}\,dx & \text{if $n \neq 0$}. \end{cases}
         \]
-        Appealing to \cref{append:Special_Integrals} for this last integral and substituting the result back into \cref{equ:real-analytic_Eisenstein_fourier_coefficient_definition} finishes the proof.
+        Appealing to \cref{append:Special_Integrals} for this last integral and substituting the result back into \cref{equ:real-analytic_Eisenstein_fourier_coefficient_definition} gives
+        \[
+          a(n,y,s) = \begin{cases} y^{s}+y^{1-s}\frac{\sqrt{\pi}\G\left(s-\frac{1}{2}\right)\z(2s-1)}{\G(s)\z(2s)} & \text{if $n = 0$}, \\ \pi^{s}\frac{|n|^{s-\frac{1}{2}}\s_{1-2s}(|n|)}{\G(s)\z(2s)}\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y) & \text{if $n \neq 0$}. \end{cases}
+        \]
       \end{proof}
 
       Having computed the Fourier coefficients, we would like to obtain a functional equation for $E(z,s)$ as $s \to 1-s$ (this follows from \cref{thm:functional_equation_of_Eisenstein_series} but we will demonstrate a full proof for the single Eisenstein series on $\G_{0}(1)\backslash\H$). To this end, we define $E^{\ast}(z,s)$ by
