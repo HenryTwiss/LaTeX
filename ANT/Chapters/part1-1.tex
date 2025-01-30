@@ -698,14 +698,18 @@
 
         In the unfolding/folding method, we refer to the going from the left-hand side to right-hand as \textbf{unfolding}\index{unfolding} and going from the right-hand to left-hand side as \textbf{folding}\index{folding}.
       \subsection*{The Fourier Transform}
-        The first type of integral transform we will need is the Fourier transform. Suppose $f(x)$ is absolutely integrable. The \textbf{Fourier transform}\index{Fourier transform} $\hat{f}(t)$ of $f(x)$ is defined by
+        The first type of integral transform we will need is the Fourier transform. Suppose $f(x)$ is absolutely integrable on $\R$. The \textbf{Fourier transform}\index{Fourier transform} $\hat{f}(t)$ of $f(x)$ is defined by
         \[
           \hat{f}(t) = \int_{-\infty}^{\infty}f(x)e^{-2\pi itx}\,dx.
         \]
-        This integral is absolutely convergent precisely because $f(x)$ is absolutely integrable. In practical settings however, we usually restrict $f(x)$ to be a \textbf{Schwarz function}\index{Schwarz function} which means that $f \in C^{\infty}(\R)$ and $f$ along with all of its derivative have rapid decay. For example, $e^{-x^{2}}$ is a Schwarz function. Schwarz functions are very important because they are functions for which the \textbf{Poisson summation formula}\index{Poisson summation formula} applies:
+        This integral is absolutely convergent precisely because $f(x)$ is absolutely integrable on $\R$. Under some mild conditions on $f(x)$ the \textbf{Poisson summation formula}\index{Poisson summation formula} applies:
 
         \begin{theorem}[Poisson summation formula]
-          Suppose $f(x)$ is a Schwarz function. Then
+          Suppose $f(x)$ is absolutely integrable on $\R$ and the function $\sum_{n \in \Z}f(x+n)$ is locally absolutely uniformly convergent and smooth. Then
+          \[
+            \sum_{n \in \Z}f(x+n) = \sum_{t \in \Z}\hat{f}(t)e^{2\pi itx}.
+          \]
+          In particular,
           \[
             \sum_{n \in \Z}f(n) = \sum_{t \in \Z}\hat{f}(t).
           \]
@@ -715,7 +719,7 @@
           \[
             F(x) = \sum_{n \in \Z}f(x+n).
           \]
-          Since $f(x)$ exhibits rapid decay, $F(x)$ is locally absolutely uniformly convergent by the Weierstrass $M$-test. Actually since $f(x)$ is Schwarz, $F(x)$ and all of its derivatives are locally absolutely uniformly convergent. By the uniform limit theorem $F(x)$ is smooth. Since $F(x)$ is also $1$-periodic it admits a Fourier series (see \cref{append:Fourier_Series}). The $t$-th Fourier coefficient of $F(x)$ is
+          Then $F(x)$ is smooth by assumption and clearly $1$-periodic. Therefore it admits a Fourier series (see \cref{append:Fourier_Series}). We compute the $t$-th Fourier coefficient of $F(x)$ as follows:
           \begin{align*}
             \hat{F}(t) &= \int_{0}^{1}F(x)e^{-2\pi itx}\,dx \\
             &= \int_{0}^{1}\sum_{n \in \Z}f(x+n)e^{-2\pi itx}\,dx \\
@@ -726,12 +730,12 @@
           \end{align*}
           Therefore the Fourier series of $F(x)$ is
           \[
-            F(x) = \sum_{t \in \Z}\hat{f}(t)e^{2\pi itx}.
+            F(x) = \sum_{t \in \Z}\hat{f}(t)e^{2\pi itx},
           \]
-          Setting $x = 0$ gives the desired identity.
+          and the first statement follows by the definition of $F(x)$. Setting $x = 0$ proves the second statement.
         \end{proof}
 
-        Our primary application of the Poisson summation formula will be to derive very striking transformation laws which are the key ingredient in analytically continuing many important functions.
+        There are two practical settings of interest. The first is when $f(x)$ is of \textbf{Schwarz class}\index{Schwarz class} which means that $f \in C^{\infty}(\R)$ and $f$ along with all of its derivative have rapid decay. For example, $e^{-x^{2}}$ is of Schwarz class. For if $f(x)$ is of Schwarz class, the rapid decay implies that $f(x)$ is absolutely integrable over $\R$. Moreover, this also implies that $F(x)$ and all of its derivatives are locally absolutely uniformly convergent by the Weierstrass $M$-test. The uniform limit theorem then shows that $F(x)$ is smooth and thus the conditions of the Poisson summation formula are satisfied. The second application is when $f(z)$ is some holomorphic function that has at least polynomial decay of order $c > 1$ for any fixed $y$. Then $f(z)$ is absolutely integrable over $\R$ for any fixed $y$. Moreover, $F(z)$ is holomorphic. Then the conditions of the Poisson summation formula are satisfied for $z = iy$ with $y > 0$ and the identity theorem shows that this holds for all $z$. Our primary use of the Poisson summation formula will be to derive very striking transformation laws which are the key ingredient in analytically continuing many important functions.
       \subsection*{The Mellin Transform}
         Like the Fourier transform, the Mellin transform is another type of integral transform. If $f(x)$ is a continuous function, then the \textbf{Mellin transform}\index{Mellin transform} $F(s)$ of $f(x)$ is given by
         \[
@@ -786,7 +790,7 @@
         \[
           \G(s+1) = \int_{0}^{\infty}e^{-x}x^{s}\,dx = -e^{-x}x^{s}\bigg|_{0}^{\infty}+s\int_{0}^{\infty}e^{-x}x^{s-1}\,dx = s\int_{0}^{\infty}e^{-x}x^{s-1}\,dx = s\G(s).
         \]
-        For (iii), since $\G(s)$ is real for $s >0$ we have $\G(\conj{s}) = \conj{\G(s)}$ on this half-line and then the identity theorem implies that this holds on the entire domain of $\G(s)$.
+        For (iii), since $\G(s)$ is real for $s >0$ we have $\G(\conj{s}) = \conj{\G(s)}$ on this half-line and then the identity theorem implies that this holds everywhere.
       \end{proof}
 
       From \cref{prop:Factorial_properties_of_gamma_function} we see that for $s = n$ a positive integer, $\G(n) = (n-1)!$. So $\G(s)$ can be thought of as a holomorphic extension of the factorial function. We can use property (ii) of \cref{prop:Factorial_properties_of_gamma_function} to extended $\G(s)$ to a meromorphic function on all of $\C$:
