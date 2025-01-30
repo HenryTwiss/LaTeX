@@ -56,9 +56,9 @@
     We say $f$ is a \textbf{(Maass) cusp form}\index{(Maass) cusp form} if the additional property is satisfied:
     \begin{enumerate}[label=(\roman*)]
       \setcounter{enumi}{4}
-      \item For all cusps $\mf{a}$,
+      \item For all cusps $\mf{a}$ and any $y > 0$, we have
       \[
-        \int_{0}^{1}f(\s_{\mf{a}}(x+iy))\,dx = 0.
+        \int_{iy}^{1+iy}f(\s_{\mf{a}}z)\,dz = 0.
       \]
     \end{enumerate}
     Property (ii) is called the \textbf{automorphy condition}\index{automorphy condition} and we say that $f$ is \textbf{automorphic}\index{automorphic}. In particular, $f$ admits a Fourier series and is a function on $\mc{F}_{\G}$. The automorphy condition can equivalently be expressed as
@@ -163,15 +163,11 @@
     \[
       f(\s_{\mf{a}}z) = O\left(y^{\frac{k}{2}}\sum_{n \neq 0}|n|^{\frac{k+1}{2}}e^{-2\pi|n|y}\right) = O\left(y^{\frac{k}{2}}\sum_{n \ge 1}n^{k}e^{-2\pi ny}\right) = O\left(\frac{y^{\frac{k}{2}}e^{-2\pi y}}{(1-e^{-2\pi y})^{2}}\right) = O(y^{\frac{k}{2}}e^{-2\pi y}).
     \]
-    Observe that $f(\s_{\mf{a}}z)$ is then bounded on $\H$ and, in particular, $f$ is bounded on $\H$. While this Fourier series holds for all weights, it is somewhat deceiving since the Whittaker function has polynomial growth in $n$ by \cref{thm:Whittaker_special_cases}. Therefore it will be more useful to work with slightly modified versions depending on the weight $k$. If $k \ge 1$, then \cref{thm:Whittaker_special_cases} implies that $f$ admits a \textbf{Fourier series at the $\mf{a}$ cusp}\index{Fourier series at the $\mf{a}$ cusp} given by
-    \[
-      f(\s_{\mf{a}}z) = a_{\mf{a}}^{+}(0,s)y^{s}+a_{\mf{a}}^{-}(0,s)y^{1-s}+\sum_{n \neq 0}a_{\mf{a}}(n,s)y^{\sgn(n)\frac{k}{2}}e^{-2\pi|n|y}e^{2\pi inx},
-    \]
-    for some different Fourier coefficients $a_{\mf{a}}(n,s)$. Similarly, if $k = 0$, then \cref{thm:Whittaker_special_cases} implies that $f$ admits a \textbf{Fourier series at the $\mf{a}$ cusp}\index{Fourier series at the $\mf{a}$ cusp} given by
+    Observe that $f(\s_{\mf{a}}z)$ is then bounded on $\H$ and, in particular, $f$ is bounded on $\H$. It is useful to have alternative Fourier series in the case of weight zero Maass forms that specify the Whittaker function explicitly. When $k = 0$, \cref{thm:Whittaker_special_cases} implies that $f$ admits a \textbf{Fourier series at the $\mf{a}$ cusp}\index{Fourier series at the $\mf{a}$ cusp} given by
     \[
       f(\s_{\mf{a}}z) = a_{\mf{a}}^{+}(0,s)y^{s}+a_{\mf{a}}^{-}(0,s)y^{1-s}+\sum_{n \neq 0}a_{\mf{a}}(n,s)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y)e^{2\pi inx},
     \]
-    for again some different Fourier coefficients $a_{\mf{a}}(n,s)$. If $\mf{a} = \infty$ or $s$ is fixed, we will drop these dependencies accordingly. From now on, we will always use this latter Fourier series for weight zero Maass forms unless specified otherwise. Moreover, we can simplify the Fourier series further in the weight zero setting. We say $f$ is \textbf{even}\index{even} if $f(-\conj{z}) = f(z)$ and is \textbf{odd}\index{odd} if $f(-\conj{z}) = -f(z)$. Since $-\conj{z} = -x+iy$, this means that $f$ is even or odd with respect to $x$. Note that if $f$ is odd it must be a cusp form. As $e^{2\pi inx} = \cos(nx)+i\sin(nx)$, if $f$ has eigenvalue $\l = s(1-s)$, then the Fourier series of $f$ at the $\mf{a}$ cusp takes the form
+    for some different Fourier coefficients $a_{\mf{a}}(n,s)$ (they are $\sqrt{4|n|}$ multiples). If $\mf{a} = \infty$ or $s$ is fixed, we will drop these dependencies accordingly. The Fourier series can be further simplified. We say $f$ is \textbf{even}\index{even} if $f(-\conj{z}) = f(z)$ and is \textbf{odd}\index{odd} if $f(-\conj{z}) = -f(z)$. Since $-\conj{z} = -x+iy$, this means that $f$ is even or odd with respect to $x$. Note that if $f$ is odd it must be a cusp form. As $e^{2\pi inx} = \cos(nx)+i\sin(nx)$, if $f$ has eigenvalue $\l = s(1-s)$, then the Fourier series of $f$ at the $\mf{a}$ cusp takes the form
     \[
       f(\s_{\mf{a}}z) = a_{\mf{a}}^{+}(0,s)y^{s}+a_{\mf{a}}^{-}(0,s)y^{1-s}+\sum_{n \neq 0}a_{\mf{a}}(n,s)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y)\cos\left(\frac{2\pi nx}{t}\right),
     \]
@@ -183,7 +179,7 @@
     \[
       f(\s_{\mf{a}}z) = a_{\mf{a}}^{+}(0,s)y^{s}+a_{\mf{a}}^{-}(0,s)y^{1-s}+\sum_{n \ge 1}a_{\mf{a}}(n,s)\sqrt{y}K_{s-\frac{1}{2}}(2\pi ny)\SC\left(\frac{2\pi nx}{t}\right),
     \]
-    for some potentially different Fourier coefficients $a_{\mf{a}}(n,s)$ (an $i$ multiple in the case $f$ is odd) and where $\SC(x) = \cos(x)$ if $f$ is even and $\SC(x) = \sin(x)$ if $f$ is odd. As we have said, if $f$ is odd or more generally a cusp form, then necessarily $a_{\mf{a}}^{+}(0,s) = 0$ and $a_{\mf{a}}^{-}(0,s) = 0$. From now on, if we are discussing an even or odd Maass form we will always mean this last Fourier series (and so the implicit weight is zero).
+    for some potentially different Fourier coefficients $a_{\mf{a}}(n,s)$ (they are $i$ multiples in the case $f$ is odd) and where $\SC(x) = \cos(x)$ if $f$ is even and $\SC(x) = \sin(x)$ if $f$ is odd. As we have said, if $f$ is odd or more generally a cusp form, then necessarily $a_{\mf{a}}^{+}(0,s) = 0$ and $a_{\mf{a}}^{-}(0,s) = 0$. From now on, if we are discussing an even or odd Maass form we will always mean this last Fourier series (and so the implicit weight is zero).
   \section{Poincar\'e \& Eisenstein Series}
     Throughout, let $\G$ be a congruence subgroup of level $N$ and let $\chi$ be a Dirichlet character with conductor $q \mid N$. We will first introduce a class of automorphic functions on $\GH$. A special case of these will be Maass forms. The automorphic functions are actually defined on a large space $\H \x \C$ and hence are functions of two variables namely $z$ and $s$. The special case functions will be Maass forms for fixed $s$. Let $m \ge 0$, $k \ge 0$, $\chi$ be a Dirichlet character with conductor $q \mid N$, and $\s_{\mf{a}}$ be a scaling matrix for the $\mf{a}$ cusp. Then the $m$-th \textbf{(automorphic) Poincar\'e series}\index{(automorphic) Poincar\'e series} $P_{m,k,\chi,\mf{a}}(z,s)$ of weight $k$ and character $\chi$ on $\GH$ at the $\mf{a}$ cusp is defined by
     \[
