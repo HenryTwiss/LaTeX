@@ -82,10 +82,18 @@
         \[
           \frac{e^{-\frac{\pi t^{2}}{s}}}{\sqrt{s}}\int_{-\infty}^{\infty}e^{-\pi\left(x+\frac{it}{\sqrt{s}}\right)^{2}}\,dx = \frac{e^{-\frac{\pi t^{2}}{s}}}{\sqrt{s}}\int_{-\infty}^{\infty}e^{-\pi x^{2}}\,dx = \frac{e^{-\frac{\pi t^{2}}{s}}}{\sqrt{s}},
         \]
-        where the last equality follows because the last integral above is $1$ since it is the Gaussian integral (see \cref{append:Special_Integrals}). The Poisson summation formula and the identity theorem together finish the proof.
+        where the last equality follows because the last integral above is $1$ since it is the Gaussian integral (see \cref{append:Special_Integrals}). Thus
+        \[
+          \hat{f}(t) = \frac{e^{-\frac{\pi t^{2}}{s}}}{\sqrt{s}}.
+        \]
+        By the Poisson summation formula, we have
+        \[
+          \vt(s) = \sum_{t \in \Z}\frac{e^{-\frac{\pi t^{2}}{s}}}{\sqrt{s}} = \frac{1}{\sqrt{s}}\sum_{t \in \Z}e^{-\frac{\pi t^{2}}{s}} = \frac{1}{\sqrt{s}}\vt\left(\frac{1}{s}\right),
+        \]
+        and the identity theorem finishes the proof.
       \end{proof}
 
-      This completes our interest in Jacobi's theta function.
+      We will use this functional equation to analytically continue $\z(s)$.
     \subsection*{The Integral Representation of \texorpdfstring{$\z(s)$}{\z(s)}: Part II}
       Returning to the Riemann zeta function, we split the integral in \cref{equ:integral_representation_zeta_1} into two pieces
       \begin{equation}\label{equ:symmetric_integral_zeta_split}
@@ -279,27 +287,23 @@
         \begin{equation}\label{transformation_law_for_twisted_Jacobi's_theta_function_2}
           \frac{e^{\frac{2\pi iat}{q}-\frac{\pi t^{2}}{q^{2}s}}}{qs^{\frac{1+\mf{a}}{2}}}\int_{-\infty}^{\infty}\left(\frac{t}{iq\sqrt{s}}\right)e^{-\pi x^{2}}\,dx = \frac{e^{\frac{2\pi iat}{q}-\frac{\pi t^{2}}{q^{2}s}}}{qs^{\frac{1+\mf{a}}{2}}}\left(\frac{t}{iq\sqrt{s}}\right)\int_{-\infty}^{\infty}e^{-\pi x^{2}}\,dx = \frac{e^{\frac{2\pi iat}{q}-\frac{\pi t^{2}}{q^{2}s}}}{qs^{\frac{1+\mf{a}}{2}}}\left(\frac{t}{iq\sqrt{s}}\right),
         \end{equation}
-        where the last equality follows because the last integral is the Gaussian integral again. Since $\left(\frac{t}{iq\sqrt{s}}\right)^{\mf{a}} = 1$ if $\mf{a} = 0$, we can compactly express the right-hand sides of \cref{transformation_law_for_twisted_Jacobi's_theta_function_1,transformation_law_for_twisted_Jacobi's_theta_function_2} in the form
+        where the last equality follows because the last integral is the Gaussian integral again. Since $\left(\frac{t}{iq\sqrt{s}}\right)^{\mf{a}} = 1$ if $\mf{a} = 0$, \cref{transformation_law_for_twisted_Jacobi's_theta_function_1,transformation_law_for_twisted_Jacobi's_theta_function_2} together imply
         \[
-          \frac{e^{\frac{2\pi iat}{q}-\frac{\pi t^{2}}{q^{2}s}}}{qs^{\frac{1+\mf{a}}{2}}}\left(\frac{t}{iq\sqrt{s}}\right)^{\mf{a}}.
+          \hat{f}(t) = \frac{e^{\frac{2\pi iat}{q}-\frac{\pi t^{2}}{q^{2}s}}}{qs^{\frac{1+\mf{a}}{2}}}\left(\frac{t}{iq\sqrt{s}}\right)^{\mf{a}}.
         \]
-        The Poisson summation formula then implies
+        By the Poisson summation formula, we have
         \begin{align*}
           \vt_{\chi}(s) &= \sum_{a \tmod{q}}\chi(a)\sum_{t \in \Z}\frac{e^{\frac{2\pi iat}{q}-\frac{\pi t^{2}}{q^{2}s}}}{qs^{\frac{1+\mf{a}}{2}}}\left(\frac{t}{iq\sqrt{s}}\right)^{\mf{a}} \\
           &= \frac{1}{i^{\mf{a}}q^{1+\mf{a}}s^{\frac{1}{2}+\mf{a}}}\sum_{a \tmod{q}}\chi(a)\sum_{t \in \Z}t^{\mf{a}}e^{\frac{2\pi iat}{q}-\frac{\pi t^{2}}{q^{2}s}} \\
           &= \frac{1}{i^{\mf{a}}q^{1+\mf{a}}s^{\frac{1}{2}+\mf{a}}}\sum_{t \in \Z}t^{\mf{a}}e^{-\frac{\pi t^{2}}{q^{2}s}}\sum_{a \tmod{q}}\chi(a)e^{\frac{2\pi i at}{q}} \\
-          &= \frac{1}{i^{\mf{a}}q^{1+\mf{a}}s^{\frac{1}{2}+\mf{a}}}\sum_{t \in \Z}t^{\mf{a}}e^{-\frac{\pi t^{2}}{q^{2}s}}\tau(t,\chi) && \text{definition of $\tau(t,\chi)$},
+          &= \frac{1}{i^{\mf{a}}q^{1+\mf{a}}s^{\frac{1}{2}+\mf{a}}}\sum_{t \in \Z}t^{\mf{a}}e^{-\frac{\pi t^{2}}{q^{2}s}}\tau(t,\chi) && \text{definition of $\tau(t,\chi)$} \\
+          &= \frac{\tau(\chi)}{i^{\mf{a}}q^{1+\mf{a}}s^{\frac{1}{2}+\mf{a}}}\sum_{t \in \Z}\cchi(t)t^{\mf{a}}e^{-\frac{\pi t^{2}}{q^{2}s}} && \text{\cref{cor:gauss_sum_primitive_formula}} \\
+          &= \frac{\e_{\chi}}{i^{\mf{a}}(qs)^{\frac{1}{2}+\mf{a}}}\sum_{t \in \Z}\cchi(t)t^{\mf{a}}e^{-\frac{\pi t^{2}}{q^{2}s}} && \text{$\e_{\chi} = \frac{\tau(\chi)}{\sqrt{q}}$} \\
+          &=  \frac{\e_{\chi}}{i^{\mf{a}}(qs)^{\frac{1}{2}+\mf{a}}}\vt_{\cchi}\left(\frac{1}{q^{2}s}\right),
         \end{align*}
-        and this holds for all $\s > 0$ by the identity theorem. Since $\chi$ is primitive, $\tau(t,\chi) = \cchi(t)\tau(\chi)$ for all $t \in \Z$ by \cref{cor:gauss_sum_primitive_formula}. Therefore we have
-        \[
-          \frac{1}{i^{\mf{a}}q^{1+\mf{a}}s^{\frac{1}{2}+\mf{a}}}\sum_{t \in \Z}t^{\mf{a}}e^{-\frac{\pi t^{2}}{q^{2}s}}\tau(t,\chi) = \frac{\tau(\chi)}{i^{\mf{a}}q^{1+\mf{a}}s^{\frac{1}{2}+\mf{a}}}\sum_{t \in \Z}\cchi(t)t^{\mf{a}}e^{-\frac{\pi t^{2}}{q^{2}s}} = \frac{\tau(\chi)}{i^{\mf{a}}q^{1+\mf{a}}s^{\frac{1}{2}+\mf{a}}}\vt_{\cchi}\left(\frac{1}{q^{2}s}\right).
-        \]
-        Recalling that $\e_{\chi} = \frac{\tau(\chi)}{\sqrt{q}}$, we conclude
-        \[
-          \vt_{\chi}(s) = \frac{\e_{\chi}}{i^{\mf{a}}(qs)^{\frac{1}{2}+\mf{a}}}\vt_{\cchi}\left(\frac{1}{q^{2}s}\right).
-        \]
+        and the identity theorem finishes the proof.
       \end{proof}
-      The most striking property about this functional equation is that it relates $\vt_{\chi}(s)$ and $\vt_{\cchi}(s)$. Regardless, we can now exploit it to analytically continue $L(s,\chi)$.
+      Notice that the functional equation relates $\vt_{\chi}(s)$ to $\vt_{\cchi}(s)$. Regardless, we will use this functional equation to analytically continue $L(s,\chi)$.
     \subsection*{The Integral Representation of \texorpdfstring{$L(s,\chi)$}{L(s,\chi)}: Part II}
       Returning to $L(s,\chi)$, split the integral in \cref{equ:integral_representation_Dirichlet_L-functions_1} into two pieces
       \begin{equation}\label{equ:symmetric_integral_Dirichlet_L-functions_split}
