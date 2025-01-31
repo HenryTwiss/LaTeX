@@ -58,7 +58,7 @@
     \[
       f(\s_{\mf{a}}z) = \sum_{n \ge 0}a_{\mf{a}}(n,y)e^{2\pi inx},
     \]
-    where the sum is only over $n \ge 0$ because holomorphy at the cusps implies that $f(\s_{\mf{a}}z)$ is bounded. Note that any Fourier series for $f$ is independent of the scaling matrix because $f(\s_{\mf{a}}z)$ is. We can simplify the Fourier coefficients $a_{\mf{a}}(n,y)$. To see this, since $f$ is holomorphic it satisfies the first order Cauchy-Riemann equations so that
+    where the sum is only over $n \ge 0$ because holomorphy at the cusps implies that $f(\s_{\mf{a}}z)$ is bounded. We can simplify the Fourier coefficients $a_{\mf{a}}(n,y)$. To see this, since $f$ is holomorphic it satisfies the first order Cauchy-Riemann equations so that
     \[
       \frac{1}{2}\left(\frac{\del f}{\del x}+i\frac{\del f}{\del y}\right) = 0.
     \]
@@ -92,7 +92,7 @@
     \[
       P_{m,k,\chi}(z) = \sum_{\g \in \GG}\cchi(\g)j(\g,z)^{-k}e^{2\pi im\g z}.
     \]
-    We call $m$ the \textbf{index}\index{index} of $P_{m,k,\chi}(z)$. If $k = 0$ or $\chi$ is the trivial character, we will drop these dependencies accordingly. 
+    We call $m$ the \textbf{index}\index{index} of $P_{m,k,\chi}(z)$. If $\chi$ is the trivial character, we will drop this dependence. 
 
     \begin{remark}
       The reason why we restrict to $k \ge 4$ is because for $k = 0,2$ the Poincar\'e series need not converge (see \cref{prop:general_lattice_sum_convergence_for_two_variables}).
@@ -110,7 +110,7 @@
     \[
       e^{2\pi im\g' z} = e^{2\pi im\eta_{\infty}\g z} = e^{2\pi im(\g z+n)} = e^{2\pi im\g z}e^{2\pi imnz} = e^{2\pi im\g z},
     \]
-    which verifies that $e^{2\pi im\g z}$ is independent of the representative $\g$ as well. Therefore $P_{m,k,\chi}(z)$ is well-defined. To see that $P_{m,k,\chi}(z)$ is holomorphic on $\H$, first note that $|e^{2\pi im\g z}| = e^{-2\pi m\Im(\g z)} < 1$. Then the Bruhat decomposition applied to $\GG$ gives
+    which verifies that $e^{2\pi im\g z}$ is independent of the representative $\g$ as well. Therefore $P_{m,k,\chi}(z)$ is well-defined. To see that $P_{m,k,\chi}(z)$ is holomorphic on $\H$, first note that $|e^{2\pi im\g z}| = e^{-2\pi m\Im(\g z)} < 1$. Then the Bruhat decomposition for $\G$ gives
     \[
       P_{m,k,\chi}(z) \ll \sum_{(c,d) \in \Z^{2}-\{\mathbf{0}\}}\frac{1}{|cz+d|^{k}}.
     \]
@@ -161,7 +161,7 @@
       It follows that $f(z,r) > \frac{1}{2}$ outside of $S_{a,b}^{Y} \x [-Y,Y]$. But this latter region is compact and so $f(z,r)$ obtains a minimum $\d'$ on it. Setting $\d = \min\{\frac{1}{2},\d'\}$ completes the proof.
     \end{proof}
 
-    We can now verify the growth condition for $P_{m,k,\chi}(z)$. Let $\s_{\mf{a}}$ be a scaling matrix for the cusp $\mf{a}$. Then the bound $|e^{2\pi im\g z}| = e^{-2\pi m\Im(\g z)} < 1$, cocycle condition, and the Bruhat decomposition applied to $\GG\s_{\mf{a}}$ together give
+    We can now verify the growth condition for $P_{m,k,\chi}(z)$. Let $\s_{\mf{a}}$ be a scaling matrix for the cusp $\mf{a}$. Then the bound $|e^{2\pi im\g z}| = e^{-2\pi m\Im(\g z)} < 1$, cocycle condition, and the Bruhat decomposition for $\G\s_{\mf{a}}$ together give
     \[
       j(\s_{\mf{a}},z)^{-k}P_{m,k,\chi}(\s_{\mf{a}}z) \ll \sum_{(c,d) \in \Z^{2}-\{\mathbf{0}\}}\frac{1}{|cz+d|^{k}}.
     \]
@@ -189,7 +189,7 @@
     \[
       E_{k,\chi}(z) = \sum_{\g \in \GG}\cchi(\g)j(\g,z)^{-k}.
     \]
-    If $k = 0$ or $\chi$ is the trivial character, we will drop these dependencies accordingly. In particular, we have already verified the following theorem:
+    If $\chi$ is the trivial character, we will drop this dependence. In particular, we have already verified the following theorem:
 
     \begin{theorem}
       Let $k \ge 4$ and $\chi$ be Dirichlet character with conductor $q \mid N$. The Eisenstein series
@@ -198,6 +198,87 @@
       \]
       is a weight $k$ holomorphic form with character $\chi$ on $\GH$.
     \end{theorem}
+
+    We will now compute the Fourier series of the Poincar\'e series on the Hecke congruence subgroups: \todo{GENERALIZE TO ALL CUSPS}
+
+     \begin{proposition}\label{prop:Fourier_series_holomorphic}
+      The Fourier series of $P_{m,k,\chi}(z)$ with $m \ge 1$ on $\G_{0}(N)\backslash\H$ is given by
+      \[
+        P_{m,k,\chi}(z) = \sum_{t > 0}\left(\d_{m,t}+\left(\frac{\sqrt{t}}{\sqrt{m}}\right)^{k-1}\sum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N}}}\frac{2\pi i^{-k}}{c}J_{k-1}\left(\frac{4\pi\sqrt{mt}}{c}\right)S_{\chi}(m,t,c)\right)e^{2\pi itz}.
+      \]
+    \end{proposition}
+    \begin{proof}
+      From \cref{rem:Bruhat_bijection}, we have
+      \[
+        P_{m,k,\chi}(\s_{\mf{a}}z) = e^{2\pi imz}+\sum_{\substack{c \ge 1, d \in \Z \\ c \equiv 0 \tmod{N} \\ (c,d) = 1}}\cchi(d)\frac{e^{2\pi im\left(\frac{a}{c}-\frac{1}{c^{2}z+cd}\right)}}{(cz+d)^{k}},
+      \]
+      where $a$ and $b$ are chosen such that $\det\left(\begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix}\right) = 1$ and we have used the fact that
+      \[
+        \frac{a}{c}-\frac{1}{c^{2}z+cd} = \frac{az+b}{cz+d}.
+      \]
+      Summing over all pairs $(c,d)$ with $c \ge 1$, $d \in \Z$, $c \equiv 0 \tmod{N}$, and $(c,d) = 1$ is the same as summing over all triples $(c,\ell,r)$ with $c \ge 1$, $\ell \in \Z$, $r \tmod{c}$, with $c \equiv 0 \tmod{N}$ and $(r,c) = 1$. Indeed, this is seen by writing $d = c\ell+r$. Moreover, since $ad-bc = 1$ we have $a(c\ell+r)-bc = 1$ which further implies that $ar \equiv 1 \tmod{c}$. So we may take $a$ to be the inverse for $r$ modulo $c$. Then
+      \begin{align*}
+        \sum_{\substack{c \ge 1,d \in \Z \\ (c,d) = 1 \\ c \equiv 0 \tmod{N}}}\cchi(d)\frac{e^{2\pi im\left(\frac{a}{c}-\frac{1}{c^{2}z+cd}\right)}}{(cz+d)^{k}} &= \sum_{(c,\ell,r)}\cchi(c\ell+r)\frac{e^{2\pi im\left(\frac{a}{c}-\frac{1}{c^{2}z+c^{2}\ell+cr}\right)}}{(cz+c\ell+r)^{k}} \\
+        &= \sum_{(c,\ell,r)}\cchi(r)\frac{e^{2\pi im\left(\frac{a}{c}-\frac{1}{c^{2}z+c^{2}\ell+cr}\right)}}{(cz+c\ell+r)^{k}} \\
+        &= \psum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N} \\ r \tmod{c}}}\sum_{\ell \in \Z}\cchi(r)\frac{e^{2\pi im\left(\frac{a}{c}-\frac{1}{c^{2}z+c^{2}\ell+cr}\right)}}{(cz+c\ell+r)^{k}} \\
+        &= \psum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N} \\ r \tmod{c}}}\cchi(r)\sum_{\ell \in \Z}\frac{e^{2\pi im\left(\frac{a}{c}-\frac{1}{c^{2}z+c^{2}\ell+cr}\right)}}{(cz+c\ell+r)^{k}},
+      \end{align*}
+      where the second line holds since $\chi$ has conductor $q \mid N$ and $c \equiv 0 \tmod{N}$. Now let
+      \[
+        I_{c,r}(z) = \sum_{\ell \in \Z}\frac{e^{2\pi im\left(\frac{a}{c}-\frac{1}{c^{2}z+c^{2}\ell+cr}\right)}}{(cz+c\ell+r)^{k}}.
+      \]
+      We will apply the Poisson summation formula to $I_{c,r}(z)$. This is possible since the summands are absolutely integrable by \cref{prop:decay_unbounded_inteval_integral} because they exhibit polynomial decay of order $k$ and $I_{c,r}(z)$ is holomorphic because $P_{m,k,\chi}(z)$ is. By the identity theorem it suffices to apply the Poisson summation formula for $z = iy$ with $y > 0$. Accordingly, let $f(x)$ be given by
+      \[
+        f(x) = \frac{e^{2\pi im\left(\frac{a}{c}-\frac{1}{c^{2}x+cr+ic^{2}y}\right)}}{(cx+r+icy)^{k}}.
+      \]
+      Then as we have just noted, $f(x)$ is absolutely integrable on $\R$. We compute the Fourier transform:
+      \[
+        \hat{f}(t) = \int_{-\infty}^{\infty}f(x)e^{-2\pi itx}\,dx = \int_{-\infty}^{\infty}\frac{e^{2\pi im\left(\frac{a}{c}-\frac{1}{c^{2}x+cr+ic^{2}y}\right)}}{(cx+r+icy)^{k}}e^{-2\pi itx}\,dx.
+      \]
+      Complexify the integral to get
+      \[
+        \int_{\Im(z) = 0}\frac{e^{2\pi im\left(\frac{a}{c}-\frac{1}{c^{2}z+cr+ic^{2}y}\right)}}{(cz+r+icy)^{k}}e^{-2\pi itz}\,dz.
+      \]
+      Now make the change of variables $z \to z-\frac{r}{c}-icy$ to obtain
+      \[
+        e^{2\pi im\frac{a}{c}+2\pi it\frac{r}{c}-2\pi ty}\int_{\Im(z) = y}\frac{e^{-\frac{2\pi im}{c^{2}z}}}{(cz)^{k}}e^{-2\pi itz}\,dz.
+      \]
+      The integrand is meromorphic with a pole at $z = 0$. Moreover, we have
+      \[
+        \frac{1}{(cz)^{k}} \ll \frac{1}{|cz|^{k}}, \quad e^{-\frac{2\pi im}{c^{2}z}} \ll e^{-\frac{2\pi m\Im(z)}{|cz|^{2}}}, \quad \text{and} \quad e^{-2\pi itz} \ll e^{2\pi t\Im(z)}.
+      \]
+      The first expression has polynomial decay, the second expression is bounded, and the third expression exhibits rapid decay if and only if $t < 0$ and when $t = 0$ it is bounded. So when $t \le 0$ we may take the limit as $\Im(z) \to \infty$  by shifting the line of integration and conclude that the integral vanishes. It remains to compute the integral for $t \ge 1$. To do this, make the change of variables $z \to -\frac{z}{2\pi it}$ to the last integral to rewrite it as
+      \begin{align*}
+        -\frac{1}{2\pi it}\int_{(2\pi ty)}\frac{e^{-\frac{4\pi^{2}mt}{c^{2}z}}}{\left(-\frac{cz}{2\pi it}\right)^{k}}e^{z}\,dz &= -\frac{1}{2\pi it}\int_{(2\pi ty)}\left(-\frac{2\pi it}{cz}\right)^{k}e^{z-\frac{4\pi^{2}mt}{c^{2}z}}\,dz \\
+        &= \frac{(-2\pi it)^{k-1}}{c^{k}}\int_{(2\pi ty)}z^{-k}e^{z-\frac{4\pi^{2}mt}{c^{2}z}}\,dz \\
+        &= \frac{(-2\pi it)^{k-1}}{c^{k}}\int_{-\infty}^{(0^{+})}z^{-k}e^{z-\frac{4\pi^{2}mt}{c^{2}z}}\,dz \\
+        &= \frac{2\pi i^{-k}}{c}\left(\frac{\sqrt{t}}{\sqrt{m}}\right)^{k-1}J_{k-1}\left(\frac{4\pi\sqrt{mt}}{c}\right),
+      \end{align*}
+      where in the second to last line we have homotoped the line of integration to a Hankel contour about the negative real axis and in the last line we have used the Schl\"aflin integral representation for the $J$-Bessel function (see \cref{append:Bessel_Functions}). So in total we obtain
+      \[
+        \hat{f}(t) = \begin{cases} \left(\frac{2\pi i^{-k}}{c}\left(\frac{\sqrt{t}}{\sqrt{m}}\right)^{k-1}J_{k-1}\left(\frac{4\pi\sqrt{mt}}{c}\right)e^{2\pi im\frac{a}{c}+2\pi it\frac{r}{c}}\right)e^{-2\pi ty} & t \ge 1, \\ 0 & t \le 0. \end{cases}
+      \]
+      By the Poisson summation formula and the identity theorem, we have
+      \[
+        I_{c,r}(z) = \sum_{t \ge 1}\left(\frac{2\pi i^{-k}}{c}\left(\frac{\sqrt{t}}{\sqrt{m}}\right)^{k-1}J_{k-1}\left(\frac{4\pi\sqrt{mt}}{c}\right)e^{2\pi im\frac{a}{c}+2\pi it\frac{r}{c}}\right)e^{2\pi itz},
+      \]
+      for all $z \in \H$. Plugging this back into the Poincar\'e series gives a form of the Fourier series:
+      \begin{align*}
+        P_{m,k,\chi}(z) &= e^{2\pi imz}+\psum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N} \\ r \tmod{c}}}\cchi(r)\sum_{t \ge 1}\left(\frac{2\pi i^{-k}}{c}\left(\frac{\sqrt{t}}{\sqrt{m}}\right)^{k-1}J_{k-1}\left(\frac{4\pi\sqrt{mt}}{c}\right)e^{2\pi im\frac{a}{c}+2\pi it\frac{r}{c}}\right)e^{2\pi imz} \\
+        &= \sum_{t \ge 1}\left(\d_{m,t}+\left(\frac{\sqrt{t}}{\sqrt{m}}\right)^{k-1}\psum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N} \\ r \tmod{c}}}\cchi(r)\frac{2\pi i^{-k}}{c}J_{k-1}\left(\frac{4\pi\sqrt{mt}}{c}\right)e^{2\pi im\frac{a}{c}+2\pi it\frac{r}{c}}\right)e^{2\pi itz} \\
+        &= \sum_{t \ge 1}\left(\d_{m,t}+\left(\frac{\sqrt{t}}{\sqrt{m}}\right)^{k-1}\sum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N}}}\frac{2\pi i^{-k}}{c}J_{k-1}\left(\frac{4\pi\sqrt{mt}}{c}\right)\psum_{r \tmod{c}}\cchi(r)e^{2\pi im\frac{a}{c}+2\pi it\frac{r}{c}}\right)e^{2\pi itz}.
+      \end{align*}
+      We will simplify the innermost sum. Since $a$ is the inverse for $r$ modulo $c$, the innermost sum above becomes
+      \[
+        \psum_{r \tmod{c}}\cchi(r)e^{2\pi im\frac{a}{c}+2\pi it\frac{r}{c}} = \psum_{r \tmod{c}}\cchi(\conj{a})e^{2\pi im\frac{a}{c}+2\pi it\frac{\conj{a}}{c}} = \psum_{a \tmod{c}}\chi(a)e^{\frac{2\pi i(an+\conj{a}t)}{c}} = S_{\chi}(n,t,c).
+      \]
+      So at last, we obtain our desired Fourier series:
+      \[
+        P_{m,k,\chi}(z) = \sum_{t \ge 1}\left(\d_{m,t}+\left(\frac{\sqrt{t}}{\sqrt{m}}\right)^{k-1}\sum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N}}}\frac{2\pi i^{-k}}{c}J_{k-1}\left(\frac{4\pi\sqrt{mt}}{c}\right)S_{\chi}(n,t,c)\right)e^{2\pi itz}.
+      \]
+    \end{proof}
+
+    An immediate consequence of \cref{prop:Fourier_series_holomorphic} is that the Poincar\'e series $P_{m,k,\chi}(z)$ with positive index are cusp forms on Hecke congruence subgroups.
   \section{Spaces of Holomorphic Forms}
     Let $\G$ be a congruence subgroup of level $N$. Let $\mc{M}_{k}(\G,\chi)$ denote the space of all weight $k$ holomorphic forms on $\GH$ with character $\chi$. Let $\mc{S}_{k}(\G,\chi)$ denote the associated subspace of cusp forms. Moreover, if the character $\chi$ is the trivial character, we will suppress the dependence upon $\chi$. If $\G_{1}$ and $\G_{2}$ are two congruence subgroups such that $\G_{1} \le \G_{2}$, then we have the inclusion
     \[
@@ -238,7 +319,8 @@
       As a consequence of \cref{prop:Petersson_inner_product_hermitian}, the Petersson inner product is also non-degenerate on $\mc{S}_{k}(\G)$. Actually, for the exact same reasoning this holds on $\mc{S}_{k}(\G) \x \mc{M}_{k}(\G)$ wherever the Petersson inner product is defined.
     \end{remark}
 
-    Now suppose $f \in \mc{S}_{k}(\G)$ with Fourier coefficients $a_{n}(f)$. Define linear functionals $\phi_{m,k}:\mc{S}_{k}(\G) \to \C$, for every $m \ge 1$, by
+    \todo{GENERALIZE TO ALL CUSPS}
+    Now suppose $f \in \mc{S}_{k}(\G)$ with Fourier coefficients $a_{n}(f)$. Define linear functionals $\phi_{m,k}:\mc{S}_{k}(\G) \to \C$, for every $m \ge 1$, by 
     \[
       \phi_{m,k}(f) = a_{m}(f).
     \]
@@ -284,7 +366,7 @@
     \[
       \<f,\wtilde{P}_{m,k,\chi}-v_{m,k}\> = 0.
     \]
-    By \cref{rem:non-degeneracy_of_Petersson_inner_product} the Petersson inner product is non-degenerate so we conclude $v_{m,k}(z) = \wtilde{P}_{m,k,\chi}(z)$. In particular, this shows that the Poincar\'e series $P_{m,k,\chi}(z)$ of positive index are cusp forms. We usually work with the Poincar\'e series $P_{m,k,\chi}(z)$ instead of their normalized counterparts $\wtilde{P}_{m,k,\chi}(z)$. In any case, with \cref{equ:Petersson_inner_product_with_Poincare_series} in hand we can prove the following result:
+    By \cref{rem:non-degeneracy_of_Petersson_inner_product} the Petersson inner product is non-degenerate so we conclude $v_{m,k}(z) = \wtilde{P}_{m,k,\chi}(z)$. In particular, this shows that the Poincar\'e series $P_{m,k,\chi}(z)$ of positive index are cusp forms (this was already shown in the case of Hecke congruence subgroups). We usually work with the Poincar\'e series $P_{m,k,\chi}(z)$ instead of their normalized counterparts $\wtilde{P}_{m,k,\chi}(z)$. In any case, with \cref{equ:Petersson_inner_product_with_Poincare_series} in hand we can prove the following result:
 
     \begin{theorem}
       The Poincar\'e series of positive index span $\mc{S}_{k}(\G)$.
