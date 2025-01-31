@@ -818,21 +818,21 @@
         \]
       \end{proposition}
       \begin{proof}
-        By \cref{rem:Bruhat_bijection}, we have
+        By the Bruhat decomposition for $\G_{0}(1)$, we have
         \[
-          E(z,s) = y^{s}+\sum_{\substack{c \ge 1, d \in \Z \\ (c,d) = 1}}\frac{y^{s}}{|cx+icy+d|^{2s}}.
+          E(z,s) = y^{s}+\sum_{\substack{c \ge 1, d \in \Z \\ d \equiv 1 \tmod{c}}}\frac{y^{s}}{|cx+icy+d|^{2s}}.
         \]
         The definition of Fourier series gives
         \begin{equation}\label{equ:real-analytic_Eisenstein_fourier_coefficient_definition}
-          a(n,y,s) = \int_{iy}^{1+iy}E(z,s)e^{-2\pi in\Re(z)}\,dz = y^{s}\d_{n,0}+\int_{0}^{1}\sum_{\substack{c \ge 1, d \in \Z \\ (c,d) = 1}}\frac{y^{s}}{|cx+icy+d|^{2s}}e^{-2\pi inx}\,dx,
+          a(n,y,s) = \int_{iy}^{1+iy}E(z,s)e^{-2\pi in\Re(z)}\,dz = y^{s}\d_{n,0}+\int_{0}^{1}\sum_{\substack{c \ge 1, d \in \Z \\ d \equiv 1 \tmod{c}}}\frac{y^{s}}{|cx+icy+d|^{2s}}e^{-2\pi inx}\,dx,
         \end{equation}
         where we have used \cref{equ:Dirac_integral_representation}. We are now reduced to computing
         \[
-          I(z,s) = \int_{0}^{1}\sum_{\substack{c \ge 1, d \in \Z \\ (c,d) = 1}}\frac{y^{s}}{|cx+icy+d|^{2s}}e^{-2\pi inx}\,dx.
+          I(z,s) = \int_{0}^{1}\sum_{\substack{c \ge 1, d \in \Z \\ d \equiv 1 \tmod{c}}}\frac{y^{s}}{|cx+icy+d|^{2s}}e^{-2\pi inx}\,dx.
         \]
-        Observe that summing over all pairs $(c,d)$ with $c \ge 1$ and $d \in \Z$ is the same as summing over all triples $(c,\ell,r)$ with $c \ge 1$, $\ell \in \Z$, and $r \tmod{c}$ with $(r,c) = 1$. This is seen by writing $d = c\ell+r$. Therefore
+        Observe that summing over all pairs $(c,d) \in \Z^{2}-\{\mathbf{0}\}$ with $c \ge 1$, $d \in \Z$, and $(c,d) = 1$ is the same as summing over all triples $(c,\ell,r)$ with $c \ge 1$, $\ell \in \Z$, $r$ taken modulo $c$, and $(r,c) = 1$. This is seen by writing $d = c\ell+r$. Therefore
         \begin{align*}
-          I(z,s) &= \int_{0}^{1}\sum_{\substack{c \ge 1, d \in \Z \\ (c,d) = 1}}\frac{y^{s}}{|cx+icy+d|^{2s}}e^{-2\pi inx}\,dx \\
+          I(z,s) &= \int_{0}^{1}\sum_{\substack{c \ge 1, d \in \Z \\ d \equiv 1 \tmod{c}}}\frac{y^{s}}{|cx+icy+d|^{2s}}e^{-2\pi inx}\,dx \\
           &= \int_{0}^{1}\sum_{(c,\ell,r)}\frac{y^{s}}{|c(x+\ell)+r+icy|^{2s}}e^{-2\pi inx}\,dx \\
           &= \sum_{(c,\ell,r)}\int_{0}^{1}\frac{y^{s}}{|c(x+\ell)+r+icy|^{2s}}e^{-2\pi inx}\,dx &&\text{DCT} \\
           &= \sum_{(c,\ell,r)}\frac{1}{c^{2s}}\int_{0}^{1}\frac{y^{s}}{\left|x+\ell+\frac{r}{c}+iy\right|^{2s}}e^{-2\pi inx}\,dx \\

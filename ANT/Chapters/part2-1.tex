@@ -182,61 +182,43 @@
       \begin{theorem}[Bruhat decomposition]
         Let $\G$ be any congruence subgroup and let $\mf{a}$ and $\mf{b}$ be cusps of $\GH$ with scaling matrices $\s_{\mf{a}}$ and $\s_{\mf{b}}$ respectively. Then we have the disjoint decomposition
         \[
-          \s_{\mf{a}}^{-1}\G\s_{\mf{b}} = \d_{\mf{a},\mf{b}}\W_{\infty}\cup\bigcup_{\substack{c \ge 1 \\ d \tmod{c}}}\W_{d/c},
+          \s_{\mf{a}}^{-1}\G\s_{\mf{b}} = \d_{\mf{a},\mf{b}}\W_{\infty}\bigcup_{\substack{c \ge 1 \\ d \tmod{c}}}\W_{d/c},
         \]
         where
         \[
-          \W_{\infty} = \left\{\begin{pmatrix} \ast & b \\ 0 & \ast \end{pmatrix} \in \PSL_{2}(\Z):\begin{pmatrix} \ast & b \\ 0 & \ast \end{pmatrix} \in \s_{\mf{a}}^{-1}\G\s_{\mf{b}}\right\},
+          \W_{\infty} = \G_{\infty}\w_{\infty} = \w_{\infty}\G_{\infty} = \G_{\infty}\w_{\infty}\G_{\infty} \quad \text{and} \quad \W_{d/c} = \G_{\infty}\w_{d/c}\G_{\infty},
         \]
-        and
-        \[
-          \W_{d/c} = \G_{\infty}\w_{d/c}\G_{\infty},
-        \]
-        for some $\w_{d/c} = \begin{psmallmatrix} \ast & \ast \\ c & d \end{psmallmatrix} \in \s_{\mf{a}}^{-1}\G\s_{\mf{b}}$ with $c \ge 1$ if such a matrix exists otherwise $\W_{d/c}$ is empty.
+        for some $\w_{\infty} = \begin{psmallmatrix} \ast & b \\ 0 & \ast \end{psmallmatrix} \in \s_{\mf{a}}^{-1}\G\s_{\mf{b}}$ and $\w_{d/c} = \begin{psmallmatrix} \ast & \ast \\ c & d \end{psmallmatrix} \in \s_{\mf{a}}^{-1}\G\s_{\mf{b}}$ with $c \ge 1$ if such a matrix exists otherwise $\W_{d/c}$ is empty.
       \end{theorem}
       \begin{proof}
-        We first show that $\W_{\infty}$ is nonempty if and only if $\mf{a} = \mf{b}$. Indeed, if $\w_{\infty} \in \W_{\infty}$ then $\w_{\infty} = \s_{\mf{a}}^{-1}\g\s_{\mf{b}}$ for some $\g \in \G$. Then
+        We first show that $\W_{\infty}$ is nonempty if and only if $\mf{a} = \mf{b}$. Indeed, if $\w \in \W_{\infty}$ then $\w = \s_{\mf{a}}^{-1}\g\s_{\mf{b}}$ for some $\g \in \G$. Then
         \[
-          \g\mf{b} = \s_{\mf{a}}\w_{\infty}\s_{\mf{b}}^{-1}\mf{b} = \s_{\mf{a}}\w_{\infty}\infty = \s_{\mf{a}}\infty = \mf{a}.
+          \g\mf{b} = \s_{\mf{a}}\w\s_{\mf{b}}^{-1}\mf{b} = \s_{\mf{a}}\w\infty = \s_{\mf{a}}\infty = \mf{a}.
         \]
-        This shows that $\mf{a} = \mf{b}$. Conversely, suppose $\mf{a} = \mf{b}$. Then $\s_{\mf{a}}^{-1}\G\s_{\mf{b}}$ contains $\s_{\mf{a}}^{-1}\G_{\mf{a}}\s_{\mf{a}} = \G_{\infty}$ so that $\W_{\infty}$ is nonempty. So $\W_{\infty}$ is nonempty if and only if $\mf{a} = \mf{b}$. In this case, for any two elements $\w_{\infty} = \s_{\mf{a}}^{-1}\g\s_{\mf{a}}$ and $\w'_{\infty} = \s_{\mf{a}}^{-1}\g'\s_{\mf{a}}$ of $\W_{\infty}$, we have
+        This shows that $\mf{a} = \mf{b}$. Conversely, suppose $\mf{a} = \mf{b}$. Then $\s_{\mf{a}}^{-1}\G\s_{\mf{b}}$ contains $\s_{\mf{a}}^{-1}\G_{\mf{a}}\s_{\mf{a}} = \G_{\infty}$ so that $\W_{\infty}$ is nonempty. So $\W_{\infty}$ is nonempty if and only if $\mf{a} = \mf{b}$. In this case, for any two elements $\w = \s_{\mf{a}}^{-1}\g\s_{\mf{a}}$ and $\w' = \s_{\mf{a}}^{-1}\g'\s_{\mf{a}}$ of $\W_{\infty}$, we have
         \[
-          \g'\g^{-1}\mf{a} = \s_{\mf{a}}\w'_{\infty}w_{\infty}^{-1}\s_{\mf{a}}^{-1}\mf{a} = \s_{\mf{a}}\w'_{\infty}w_{\infty}^{-1}\infty = \s_{\mf{a}}\mf{a}.
+          \g'\g^{-1}\mf{a} = \s_{\mf{a}}\w'\w^{-1}\s_{\mf{a}}^{-1}\mf{a} = \s_{\mf{a}}\w'\w^{-1}\infty = \s_{\mf{a}}\mf{a}.
         \]
-        Hence $\g'\g^{-1} \in \G_{\mf{a}}$ which implies $\w'_{\infty}w_{\infty}^{-1} = \s_{\mf{a}}^{-1}\g'\g^{-1}\s_{\mf{a}} \in \s_{\mf{a}}^{-1}\G_{\mf{a}}\s_{\mf{a}} = \G_{\infty}$. Therefore
+        Hence $\g'\g^{-1} \in \G_{\mf{a}}$ which implies $\w'\w^{-1} = \s_{\mf{a}}^{-1}\g'\g^{-1}\s_{\mf{a}} \in \s_{\mf{a}}^{-1}\G_{\mf{a}}\s_{\mf{a}} = \G_{\infty}$. Therefore
         \[
-          \W_{\infty} = \G_{\infty}w_{\infty} = w_{\infty}\G_{\infty} = \G_{\infty}w_{\infty}\G_{\infty},
+          \W_{\infty} = \G_{\infty}\w = \w\G_{\infty} = \G_{\infty}\w\G_{\infty},
         \]
-        where the latter two equalities hold because $w_{\infty}$ is a translation and translations commute. Every other element of $\s_{\mf{a}}^{-1}\g\s_{\mf{b}}$ belongs to one of the double cosets $\W_{d/c}$ with $c \ge 1$ (since we are working in $\PSL_{2}(\Z)$). The relation
+        where the latter two equalities hold because $\w$ is a translation and translations commute. Every other element of $\s_{\mf{a}}^{-1}\G\s_{\mf{b}}$ belongs to one of the double cosets $\W_{d/c}$ with $c \ge 1$ (since we are working in $\PSL_{2}(\Z)$). The relation
         \[
           \begin{pmatrix} 1 & n \\ 0 & 1 \end{pmatrix}\begin{pmatrix} \ast & \ast \\ c & d \end{pmatrix}\begin{pmatrix} 1 & m \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} \ast & \ast \\ c & cm+d \end{pmatrix},
         \]
         shows that $\W_{d/c}$ is determined uniquely by $c$ and $d \tmod{c}$. This completes the proof of the theorem.
       \end{proof}
 
-      As a first application, take $\mf{a} = \mf{b} = \infty$ and $\s_{\mf{a}} = \s_{\mf{b}} = I$. Then the Bruhat decomposition implies
+      Notice that the Bruhat decomposition for $\s_{\mf{a}}^{-1}\G\s_{\mf{b}}$ implies
       \[
-        \GG \cong I\cup\bigcup_{\substack{c \ge 1 \\ d \tmod{c}}}\w_{d/c}\G_{\infty},
+        \G_{\infty}\backslash\s_{\mf{a}}^{-1}\G\s_{\mf{b}} = \d_{\mf{a},\mf{b}}\w_{\infty}\bigcup_{\substack{c \ge 1 \\ d \tmod{c}}}\w_{d/c}\G_{\infty},
       \]
-      since $\G_{\infty}\backslash\W_{\infty} = \G_{\infty}\backslash\G_{\infty} \cong I$. This shows that every element of $\GG$ corresponds to a unique $(c,d) \in \Z^{2}-\{\mathbf{0}\}$ with $c \ge 0$ and $d$ determined only modulo $c$ except when $c = 0$ in which case $d = 1$ (the pair $(1,0)$ corresponds to $I$). Of course, this correspondence might not be surjective since the double coset $\W_{d/c}$ may be empty if there is no $\w_{d/c} \in \s_{\mf{a}}^{-1}\G\s_{\mf{b}}$. For example, if $\G$ is of level $N$ then every $\g = \begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix} \in \G$ satisfies $c \equiv 0 \tmod{N}$ so that
+      where it is understood that the coset $\w_{d/c}\G_{\infty}$ is empty if the double coset $\W_{d/c}$ is too. This shows that every element of $\G_{\infty}\backslash\s_{\mf{a}}^{-1}\G\s_{\mf{b}}$ corresponds to a unique $(c,d) \in \Z^{2}-\{\mathbf{0}\}$ with $c \ge 1$, $d \in \Z$, and $(c,d) = 1$, and additionally the pair $(0,1)$ if and only if $\mf{a} = \mf{b}$ (this pair corresponds to $\w_{\infty}$). Of course, this correspondence need not be surjective since many of the double cosets $\W_{d/c}$ may be empty. To track such $c$ for which $\W_{d/c}$ is nonempty, define the set $\mc{C}_{\mf{a},\mf{b}}$ to by
       \[
-        \GG = I\cup\bigcup_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N} \\ d \tmod{c}}}\w_{d/c}\G_{\infty}.
+        \mc{C}_{\mf{a},\mf{b}} = \left\{c \ge 1: \begin{pmatrix} \ast & \ast \\ c & \ast \end{pmatrix} \in \s_{\mf{a}}^{-1}\G\s_{\mf{b}}\right\}.
       \]
-      However, we still may have other cosets which are empty since $\G$ being of level $N$ only guarantees that $c \equiv 0 \tmod{N}$.
-      
-      \begin{remark}\label{rem:Bruhat_bijection}
-        An exceptionally important case is for the Hecke congruence subgroups $\G_{0}(N)$. Suppose $c \ge 1$ with $c \equiv 0 \tmod{N}$ and $d \tmod{c}$. By B\'ezout's identity there exists integers $a$ and $b$ with $ad-bc = 1$ so that $\g = \begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix} \in \G_{0}(N)$ if and only if $(c,d) = 1$. So we must have $d \equiv 1 \tmod{c}$. Then the correspondence in
-        \[
-          \G_{\infty}\backslash\G_{0}(N) = I\cup\bigcup_{\substack{c \ge 1, d \in \Z \\ c \equiv 0 \tmod{N} \\ (c,d) = 1}}\w_{d/c}\G_{\infty},
-        \]
-        implied by the Bruhat decomposition for $\G_{0}(N)$ is a bijection.
-      \end{remark}
-
-      We will also we need to introduce Kloosterman and Sali\'e sums relative to cusps. Let $\mf{a}$ and $\mf{b}$ be cusps of $\GH$. Define the set $\mc{C}_{\mf{a},\mf{b}}$ to be
-      \[
-        \mc{C}_{\mf{a},\mf{b}} \left\{c \ge 1: \begin{pmatrix} \ast & \ast \\ c & \ast \end{pmatrix} \in \s_{\mf{a}}^{-1}\G\s_{\mf{b}}\right\}.
-      \]
-      We will now introduce the Kloosterman sums. Let $\s_{\mf{a}}$ and $\s_{\mf{b}}$ be scaling matrices for the cusps $\mf{a}$ and $\mf{b}$ respectively. Then for any $c \in \mc{C}_{\mf{a},\mf{b}}$ and $n,m \in \Z$, the \textbf{generalized Kloosterman sum}\index{generalized Kloosterman sum} $K_{\mf{a},\mf{b}}(n,m,c)$ relative to $\mf{a}$ and $\mf{b}$ is defined by
+      Then $\mc{C}_{\mf{a},\mf{b}}$ is precisely the set of $c$ necessary for $\W_{d/c}$ to be nonempty. This is in general not sufficient since $\W_{d/c}$ may be empty for some $d$ modulo $c$. We will now introduce Kloosterman \& Sali\'e sums associated to cusps. We being with the Kloosterman sums. Let $\s_{\mf{a}}$ and $\s_{\mf{b}}$ be scaling matrices for the cusps $\mf{a}$ and $\mf{b}$ respectively. Then for any $c \in \mc{C}_{\mf{a},\mf{b}}$ and $n,m \in \Z$, the \textbf{generalized Kloosterman sum}\index{generalized Kloosterman sum} $K_{\mf{a},\mf{b}}(n,m,c)$ relative to $\mf{a}$ and $\mf{b}$ is defined by
       \[
         K_{\mf{a},\mf{b}}(n,m,c) = \sum_{\substack{\g \in \G_{\infty}\backslash\s_{\mf{a}}^{-1}\G\s_{\mf{b}}/\G_{\infty} \\ \g = \begin{psmallmatrix} a & \ast \\ c & d \end{psmallmatrix}}}e^{\frac{2\pi i(an+\conj{a}m)}{c}}.
       \]
@@ -244,19 +226,19 @@
       \[
         K_{\mf{a},\mf{b}}(0,0,c) = \left|\left\{d \tmod{c}:\begin{pmatrix} \ast & \ast \\ c & d \end{pmatrix} \in \s_{\mf{a}}^{-1}\G\s_{\mf{b}}\right\}\right|,
       \]
-      which is independent of the scaling matrices $\s_{\mf{a}}$ and $\s_{\mf{b}}$. Moreover, when $\G = \G_{0}(1)$ is the full modular group, $\mf{a} = \mf{b} = \infty$ and \cref{rem:Bruhat_bijection} implies
+      which is independent of the scaling matrices $\s_{\mf{a}}$ and $\s_{\mf{b}}$. Moreover, for $\G = \G_{0}(1)$ we have $\mf{a} = \mf{b} = \infty$ and the Bruhat decomposition for $\G_{0}(1)$ implies
       \[
-        K_{\infty,\infty}(0,0,c) = K(n,m,c),
+        K_{\infty,\infty}(n,m,c) = K(n,m,c),
       \]
-      is the usual Kloosterman sum. Therefore if $\mf{a} = \infty$ or $\mf{b} = \infty$, we will suppress these dependencies accordingly. The Sali\'e sums are defined in a similar manner. Let $\s_{\mf{a}}$ and $\s_{\mf{b}}$ be scaling matrices for the cusps $\mf{a}$ and $\mf{b}$ respectively. Then for any $c \in \mc{C}_{\mf{a},\mf{b}}$, and $n,m \in \Z$, and Dirichlet character $\chi$ with conductor $q \mid c$, the \textbf{generalized Sali\'e sum}\index{generalized Sali\'e sum} $S_{\chi,\mf{a},\mf{b}}(n,m,c)$ relative to $\mf{a}$ and $\mf{b}$ is defined by
+      is the usual Kloosterman sum. Therefore if $\mf{a} = \mf{b} = \infty$, we will suppress these dependencies accordingly. The Sali\'e sums are defined in a similar manner. Let $\s_{\mf{a}}$ and $\s_{\mf{b}}$ be scaling matrices for the cusps $\mf{a}$ and $\mf{b}$ respectively. Then for any $c \in \mc{C}_{\mf{a},\mf{b}}$, and $n,m \in \Z$, and Dirichlet character $\chi$ with conductor $q \mid c$, the \textbf{generalized Sali\'e sum}\index{generalized Sali\'e sum} $S_{\chi,\mf{a},\mf{b}}(n,m,c)$ relative to $\mf{a}$ and $\mf{b}$ is defined by
       \[
         S_{\chi,\mf{a},\mf{b}}(n,m,c) = \sum_{\substack{\g \in \G_{\infty}\backslash\s_{\mf{a}}^{-1}\G\s_{\mf{b}}/\G_{\infty} \\ \g = \begin{psmallmatrix} a & \ast \\ c & d \end{psmallmatrix}}}\chi(a)e^{\frac{2\pi i(an+\conj{a}m)}{c}}.
       \]
-      Like the generalized Kloosterman sum, $S_{\mf{a},\mf{b}}(n,m,c)$ need not independent of the scaling matrices $\s_{\mf{a}}$ and $\s_{\mf{b}}$. Moreover, when $\G = \G_{0}(1)$ is the full modular group, $\mf{a} = \mf{b} = \infty$ and \cref{rem:Bruhat_bijection} implies
+      By the Bruhat decomposition, the sum is over all $\w_{d/c}$ with $c$ fixed. Like the generalized Kloosterman sum, $S_{\mf{a},\mf{b}}(n,m,c)$ need not independent of the scaling matrices $\s_{\mf{a}}$ and $\s_{\mf{b}}$. Moreover, for $\G = \G_{0}(1)$ we have $\mf{a} = \mf{b} = \infty$ and the Bruhat decomposition for $\G_{0}(1)$ implies
       \[
         S_{\chi,\infty,\infty}(n,m,c) = S_{\chi}(n,m,c),
       \]
-      is the usual Sali\'e sum. Therefore if $\mf{a} = \infty$ or $\mf{b} = \infty$, we will suppress these dependencies accordingly.
+      is the usual Sali\'e sum. Therefore if $\mf{a} = \mf{b} = \infty$, we will suppress these dependencies accordingly.
     \section{The Hyperbolic Measure}
       We will also need to integrate over $\GH$. In order to do this, we require a measure on $\H$. Our choice of measure will be the \textbf{hyperbolic measure}\index{hyperbolic measure} $d\mu$ given by
       \[

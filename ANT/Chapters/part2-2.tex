@@ -199,35 +199,35 @@
       is a weight $k$ holomorphic form with character $\chi$ on $\GH$.
     \end{theorem}
 
-    We will now compute the Fourier series of the Poincar\'e series on the Hecke congruence subgroups: \todo{GENERALIZE TO ALL CUSPS}
+    We will now compute the Fourier series of the Poincar\'e series:
 
      \begin{proposition}\label{prop:Fourier_series_holomorphic}
-      The Fourier series of $P_{m,k,\chi}(z)$ with $m \ge 1$ on $\G_{0}(N)\backslash\H$ is given by
+      The Fourier series of $P_{m,k,\chi}(z)$ with $m \ge 1$ on $\GH$ is given by
       \[
-        P_{m,k,\chi}(z) = \sum_{t > 0}\left(\d_{m,t}+\left(\frac{\sqrt{t}}{\sqrt{m}}\right)^{k-1}\sum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N}}}\frac{2\pi i^{-k}}{c}J_{k-1}\left(\frac{4\pi\sqrt{mt}}{c}\right)S_{\chi}(m,t,c)\right)e^{2\pi itz}.
+        P_{m,k,\chi}(\s_{\mf{a}}z) = \sum_{t \ge 1}\left(\d_{\infty,\mf{a}}\d_{m,t}+\left(\frac{\sqrt{t}}{\sqrt{m}}\right)^{k-1}\sum_{\w_{d/c}}\frac{2\pi i^{-k}}{c}J_{k-1}\left(\frac{4\pi\sqrt{mt}}{c}\right)S_{\chi,\infty,\mf{a}}(n,t,c)\right)e^{2\pi itz}.
       \]
     \end{proposition}
     \begin{proof}
-      From \cref{rem:Bruhat_bijection}, we have
+      From the Bruhat decomposition for $\G\s_{\mf{a}}$, we have
       \[
-        P_{m,k,\chi}(\s_{\mf{a}}z) = e^{2\pi imz}+\sum_{\substack{c \ge 1, d \in \Z \\ c \equiv 0 \tmod{N} \\ (c,d) = 1}}\cchi(d)\frac{e^{2\pi im\left(\frac{a}{c}-\frac{1}{c^{2}z+cd}\right)}}{(cz+d)^{k}},
+        P_{m,k,\chi}(\s_{\mf{a}}z) = \d_{\infty,\mf{a}}e^{2\pi imz}+\sum_{\todo{xxx}}\cchi(d)\frac{e^{2\pi im\left(\frac{a}{c}-\frac{1}{c^{2}z+cd}\right)}}{(cz+d)^{k}},
       \]
       where $a$ and $b$ are chosen such that $\det\left(\begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix}\right) = 1$ and we have used the fact that
       \[
         \frac{a}{c}-\frac{1}{c^{2}z+cd} = \frac{az+b}{cz+d}.
       \]
-      Summing over all pairs $(c,d)$ with $c \ge 1$, $d \in \Z$, $c \equiv 0 \tmod{N}$, and $(c,d) = 1$ is the same as summing over all triples $(c,\ell,r)$ with $c \ge 1$, $\ell \in \Z$, $r \tmod{c}$, with $c \equiv 0 \tmod{N}$ and $(r,c) = 1$. Indeed, this is seen by writing $d = c\ell+r$. Moreover, since $ad-bc = 1$ we have $a(c\ell+r)-bc = 1$ which further implies that $ar \equiv 1 \tmod{c}$. So we may take $a$ to be the inverse for $r$ modulo $c$. Then
+      Summing over all pairs $(c,d) \in \Z^{2}-\{\mathbf{0}\}$ with $c \in \mc{C}_{\infty,\mf{a}}$, $d \in \Z$, and $(c,d) = 1$ is the same as summing over all triples $(c,\ell,r)$ with $c \in \mc{C}_{\infty,\mf{a}}$, $\ell \in \Z$, $r$ taken modulo $c$, and $(r,c) = 1$. Indeed, this is seen by writing $d = c\ell+r$. Moreover, since $ad-bc = 1$ we have $a(c\ell+r)-bc = 1$ which further implies that $ar \equiv 1 \tmod{c}$. So we may take $a$ to be the inverse for $r$ modulo $c$. Then
       \begin{align*}
-        \sum_{\substack{c \ge 1,d \in \Z \\ (c,d) = 1 \\ c \equiv 0 \tmod{N}}}\cchi(d)\frac{e^{2\pi im\left(\frac{a}{c}-\frac{1}{c^{2}z+cd}\right)}}{(cz+d)^{k}} &= \sum_{(c,\ell,r)}\cchi(c\ell+r)\frac{e^{2\pi im\left(\frac{a}{c}-\frac{1}{c^{2}z+c^{2}\ell+cr}\right)}}{(cz+c\ell+r)^{k}} \\
+        \sum_{\substack{c \in \mc{C}_{\infty,\mf{a}}, d \in \Z \\ (c,d) = 1}}\cchi(d)\frac{e^{2\pi im\left(\frac{a}{c}-\frac{1}{c^{2}z+cd}\right)}}{(cz+d)^{k}} &= \sum_{(c,\ell,r)}\cchi(c\ell+r)\frac{e^{2\pi im\left(\frac{a}{c}-\frac{1}{c^{2}z+c^{2}\ell+cr}\right)}}{(cz+c\ell+r)^{k}} \\
         &= \sum_{(c,\ell,r)}\cchi(r)\frac{e^{2\pi im\left(\frac{a}{c}-\frac{1}{c^{2}z+c^{2}\ell+cr}\right)}}{(cz+c\ell+r)^{k}} \\
-        &= \psum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N} \\ r \tmod{c}}}\sum_{\ell \in \Z}\cchi(r)\frac{e^{2\pi im\left(\frac{a}{c}-\frac{1}{c^{2}z+c^{2}\ell+cr}\right)}}{(cz+c\ell+r)^{k}} \\
-        &= \psum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N} \\ r \tmod{c}}}\cchi(r)\sum_{\ell \in \Z}\frac{e^{2\pi im\left(\frac{a}{c}-\frac{1}{c^{2}z+c^{2}\ell+cr}\right)}}{(cz+c\ell+r)^{k}},
+        &= \psum_{\substack{c \in \mc{C}_{\infty,\mf{a}} \\ r \tmod{c}}}\sum_{\ell \in \Z}\cchi(r)\frac{e^{2\pi im\left(\frac{a}{c}-\frac{1}{c^{2}z+c^{2}\ell+cr}\right)}}{(cz+c\ell+r)^{k}} \\
+        &= \psum_{\substack{c \in \mc{C}_{\infty,\mf{a}} \\ r \tmod{c}}}\cchi(r)\sum_{\ell \in \Z}\frac{e^{2\pi im\left(\frac{a}{c}-\frac{1}{c^{2}z+c^{2}\ell+cr}\right)}}{(cz+c\ell+r)^{k}},
       \end{align*}
-      where the second line holds since $\chi$ has conductor $q \mid N$ and $c \equiv 0 \tmod{N}$. Now let
+      where on the right-hand side it is understood that we are summing over all triples $(c,\ell,r)$ with the prescribed properties and the second line holds since $\chi$ has conductor $q \mid N$ and $c \equiv 0 \tmod{N}$. Now let
       \[
         I_{c,r}(z) = \sum_{\ell \in \Z}\frac{e^{2\pi im\left(\frac{a}{c}-\frac{1}{c^{2}z+c^{2}\ell+cr}\right)}}{(cz+c\ell+r)^{k}}.
       \]
-      We will apply the Poisson summation formula to $I_{c,r}(z)$. This is possible since the summands are absolutely integrable by \cref{prop:decay_unbounded_inteval_integral} because they exhibit polynomial decay of order $k$ and $I_{c,r}(z)$ is holomorphic because $P_{m,k,\chi}(z)$ is. By the identity theorem it suffices to apply the Poisson summation formula for $z = iy$ with $y > 0$. Accordingly, let $f(x)$ be given by
+      We will apply the Poisson summation formula to $I_{c,r}(z)$. This is possible since the summands are absolutely integrable by \cref{prop:decay_unbounded_inteval_integral} because they exhibit polynomial decay of order $k$ and $I_{c,r}(z)$ is holomorphic because $P_{m,k,\chi}(\s_{\mf{a}}z)$ is. By the identity theorem it suffices to apply the Poisson summation formula for $z = iy$ with $y > 0$. Accordingly, let $f(x)$ be given by
       \[
         f(x) = \frac{e^{2\pi im\left(\frac{a}{c}-\frac{1}{c^{2}x+cr+ic^{2}y}\right)}}{(cx+r+icy)^{k}}.
       \]
@@ -264,9 +264,9 @@
       \]
       for all $z \in \H$. Plugging this back into the Poincar\'e series gives a form of the Fourier series:
       \begin{align*}
-        P_{m,k,\chi}(z) &= e^{2\pi imz}+\psum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N} \\ r \tmod{c}}}\cchi(r)\sum_{t \ge 1}\left(\frac{2\pi i^{-k}}{c}\left(\frac{\sqrt{t}}{\sqrt{m}}\right)^{k-1}J_{k-1}\left(\frac{4\pi\sqrt{mt}}{c}\right)e^{2\pi im\frac{a}{c}+2\pi it\frac{r}{c}}\right)e^{2\pi imz} \\
-        &= \sum_{t \ge 1}\left(\d_{m,t}+\left(\frac{\sqrt{t}}{\sqrt{m}}\right)^{k-1}\psum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N} \\ r \tmod{c}}}\cchi(r)\frac{2\pi i^{-k}}{c}J_{k-1}\left(\frac{4\pi\sqrt{mt}}{c}\right)e^{2\pi im\frac{a}{c}+2\pi it\frac{r}{c}}\right)e^{2\pi itz} \\
-        &= \sum_{t \ge 1}\left(\d_{m,t}+\left(\frac{\sqrt{t}}{\sqrt{m}}\right)^{k-1}\sum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N}}}\frac{2\pi i^{-k}}{c}J_{k-1}\left(\frac{4\pi\sqrt{mt}}{c}\right)\psum_{r \tmod{c}}\cchi(r)e^{2\pi im\frac{a}{c}+2\pi it\frac{r}{c}}\right)e^{2\pi itz}.
+        P_{m,k,\chi}(\s_{\mf{a}}z) &= \d_{\infty,\mf{a}}e^{2\pi imz}+\psum_{\substack{c \in \mc{C}_{\infty,\mf{a}} \\ r \tmod{c}}}\cchi(r)\sum_{t \ge 1}\left(\frac{2\pi i^{-k}}{c}\left(\frac{\sqrt{t}}{\sqrt{m}}\right)^{k-1}J_{k-1}\left(\frac{4\pi\sqrt{mt}}{c}\right)e^{2\pi im\frac{a}{c}+2\pi it\frac{r}{c}}\right)e^{2\pi imz} \\
+        &= \sum_{t \ge 1}\left(\d_{\infty,\mf{a}}\d_{m,t}+\left(\frac{\sqrt{t}}{\sqrt{m}}\right)^{k-1}\psum_{\substack{c \in \mc{C}_{\infty,\mf{a}} \\ r \tmod{c}}}\cchi(r)\frac{2\pi i^{-k}}{c}J_{k-1}\left(\frac{4\pi\sqrt{mt}}{c}\right)e^{2\pi im\frac{a}{c}+2\pi it\frac{r}{c}}\right)e^{2\pi itz} \\
+        &= \sum_{t \ge 1}\left(\d_{\infty,\mf{a}}\d_{m,t}+\left(\frac{\sqrt{t}}{\sqrt{m}}\right)^{k-1}\sum_{\substack{c \in \mc{C}_{\infty,\mf{a}}}}\frac{2\pi i^{-k}}{c}J_{k-1}\left(\frac{4\pi\sqrt{mt}}{c}\right)\psum_{r \tmod{c}}\cchi(r)e^{2\pi im\frac{a}{c}+2\pi it\frac{r}{c}}\right)e^{2\pi itz}.
       \end{align*}
       We will simplify the innermost sum. Since $a$ is the inverse for $r$ modulo $c$, the innermost sum above becomes
       \[
@@ -274,7 +274,7 @@
       \]
       So at last, we obtain our desired Fourier series:
       \[
-        P_{m,k,\chi}(z) = \sum_{t \ge 1}\left(\d_{m,t}+\left(\frac{\sqrt{t}}{\sqrt{m}}\right)^{k-1}\sum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N}}}\frac{2\pi i^{-k}}{c}J_{k-1}\left(\frac{4\pi\sqrt{mt}}{c}\right)S_{\chi}(n,t,c)\right)e^{2\pi itz}.
+        P_{m,k,\chi}(\s_{\mf{a}}z) = \sum_{t \ge 1}\left(\d_{\infty,\mf{a}}\d_{m,t}+\left(\frac{\sqrt{t}}{\sqrt{m}}\right)^{k-1}\sum_{\substack{c \in \mc{C}_{\infty,\mf{a}}}}\frac{2\pi i^{-k}}{c}J_{k-1}\left(\frac{4\pi\sqrt{mt}}{c}\right)S_{\chi}(n,t,c)\right)e^{2\pi itz}.
       \]
     \end{proof}
 
