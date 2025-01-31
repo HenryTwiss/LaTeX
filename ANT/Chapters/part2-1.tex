@@ -45,7 +45,28 @@
       \[
         \G_{0}(N) = \left\{\begin{pmatrix} a & b \\ c & d \end{pmatrix} \in \PSL_{2}(\Z):\begin{pmatrix} a & b \\ c & d \end{pmatrix} \equiv \begin{pmatrix} \ast & \ast \\ 0 & \ast \end{pmatrix} \tmod{N}\right\},
       \]
-      are particularly important and are congruence subgroups of level $N$. The latter subgroup is called the \textbf{Hecke congruence subgroup}\index{Hecke congruence subgroup} of level $N$. Note that $\G(N) \le \G_{1}(N) \le \G_{0}(N)$. If $\G$ is a general congruence subgroup, it is useful to find a generating set for $\G$ in order to reduce results about $\G$ to that of the generators. This is usually achieved by performing some sort of Euclidean division argument on the entries of a matrix $\g \in \G$ using the supposed generating set to construct the inverse for $\g$. For example, this was the proof strategy employed in \cref{prop:PSL_generator}.
+      are particularly important and are congruence subgroups of level $N$. The latter subgroup is called the \textbf{Hecke congruence subgroup}\index{Hecke congruence subgroup} of level $N$. Note that $\G(N) \le \G_{1}(N) \le \G_{0}(N)$. If $\G$ is a general congruence subgroup, it is useful to find a generating set for $\G$ in order to reduce results about $\G$ to that of the generators. This is usually achieved by performing some sort of Euclidean division argument on the entries of a matrix $\g \in \G$ using the supposed generating set to construct the inverse for $\g$. We will also require a useful lemma which says that congruence subgroups are preserved under conjugation by elements of $\GL_{2}^{+}(\Q)$ provided we restrict to those elements in $\PSL_{2}(\Z)$:
+
+    \begin{lemma}\label{lem:coset_lemma_1}
+      Let $\G$ be a congruence subgroup and let $\a \in \GL_{2}^{+}(\Q)$. Then $\a^{-1}\G\a \cap \PSL_{2}(\Z)$ is a congruence subgroup.
+    \end{lemma}
+    \begin{proof}
+      Recall that if $\G$ is of level $M$, then $\G(kM) \le \G$ for every $k \ge 1$. Thus there is an integer $\wtilde{N}$ such that $\G(\wtilde{N}) \le \G$, $\wtilde{N}\a \in \GL_{2}^{+}(\Z)$, and $\wtilde{N}\a \in \GL_{2}^{+}(\Z)$. Now let $N = \wtilde{N}^{3}$ and notice that any $\g \in \G(N)$ is of the form
+      \[
+        \g = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}+N\begin{pmatrix} k_{1} & k_{2} \\ k_{3} & k_{4} \end{pmatrix},
+      \]
+      for $k_{1},\ldots,k_{4} \in \Z$. Therefore $\G(N) \subseteq I+N\Mat_{2}(\Z)$. Thus
+      \[
+        \a\G(N)\a^{-1} \le \a(I+N\Mat_{2}(\Z))\a^{-1} = I+\wtilde{N}\Mat_{2}(\Z).
+      \]
+      As every matrix in $\a\G(N)\a^{-1}$ has determinant $1$ and $\G(\wtilde{N}) \subseteq I+\wtilde{N}\Mat_{2}(\Z)$, it follows that $\a\G(N)\a^{-1} \le \G(\wtilde{N})$. As $\G(\wtilde{N}) \le \G$, we conclude
+      \[
+        \G(N) \le \a^{-1}\G\a,
+      \]
+      and intersecting with $\PSL_{2}(\Z)$ completes the proof.
+    \end{proof}
+
+    Note that by \cref{lem:coset_lemma_1}, if $\a^{-1}\G\a \subset \PSL_{2}(\Z)$ then $\a^{-1}\G\a$ is a congruence subgroup if $\G$ is. Moreover, since congruence subgroups are closed under intersection, \cref{lem:coset_lemma_1} further implies that $\a^{-1}\G_{1}\a \cap \G_{2}$ is a congruence subgroup for and two congruence subgroups $\G_{1}$ and $\G_{2}$ any any $\a \in \GL_{2}^{+}(\Q)$.
     \section{Modular Curves}
       Recall that $\GL_{2}^{+}(\Q)$ naturally acts on the Riemann sphere $\hat{\C}$ by M\"obius transformations. Explicitly, any $\g = \begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix} \in \GL_{2}^{+}(\Q)$ acts on $z \in \hat{\C}$ by
       \[
@@ -188,7 +209,7 @@
         \[
           \W_{\infty} = \G_{\infty}\w_{\infty} = \w_{\infty}\G_{\infty} = \G_{\infty}\w_{\infty}\G_{\infty} \quad \text{and} \quad \W_{d/c} = \G_{\infty}\w_{d/c}\G_{\infty},
         \]
-        for some $\w_{\infty} = \begin{psmallmatrix} \ast & b \\ 0 & \ast \end{psmallmatrix} \in \s_{\mf{a}}^{-1}\G\s_{\mf{b}}$ and $\w_{d/c} = \begin{psmallmatrix} \ast & \ast \\ c & d \end{psmallmatrix} \in \s_{\mf{a}}^{-1}\G\s_{\mf{b}}$ with $c \ge 1$ if such a matrix exists otherwise $\W_{d/c}$ is empty.
+        for some $\w_{\infty} = \begin{psmallmatrix} 1 & \ast \\ 0 & 1 \end{psmallmatrix} \in \s_{\mf{a}}^{-1}\G\s_{\mf{b}}$ and $\w_{d/c} = \begin{psmallmatrix} a & \ast \\ c & d \end{psmallmatrix} \in \s_{\mf{a}}^{-1}\G\s_{\mf{b}}$ with $c \ge 1$ if such a matrix exists otherwise $\W_{d/c}$ is empty. Moreover, the entries $a$ and $d$ of $\w_{d/c}$ are determined modulo $c$.
       \end{theorem}
       \begin{proof}
         We first show that $\W_{\infty}$ is nonempty if and only if $\mf{a} = \mf{b}$. Indeed, if $\w \in \W_{\infty}$ then $\w = \s_{\mf{a}}^{-1}\g\s_{\mf{b}}$ for some $\g \in \G$. Then
@@ -205,24 +226,34 @@
         \]
         where the latter two equalities hold because $\w$ is a translation and translations commute. Every other element of $\s_{\mf{a}}^{-1}\G\s_{\mf{b}}$ belongs to one of the double cosets $\W_{d/c}$ with $c \ge 1$ (since we are working in $\PSL_{2}(\Z)$). The relation
         \[
-          \begin{pmatrix} 1 & n \\ 0 & 1 \end{pmatrix}\begin{pmatrix} \ast & \ast \\ c & d \end{pmatrix}\begin{pmatrix} 1 & m \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} \ast & \ast \\ c & cm+d \end{pmatrix},
+          \begin{pmatrix} 1 & n \\ 0 & 1 \end{pmatrix}\begin{pmatrix} a & \ast \\ c & d \end{pmatrix}\begin{pmatrix} 1 & m \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} a+cn & \ast \\ c & d+cm \end{pmatrix},
         \]
-        shows that $\W_{d/c}$ is determined uniquely by $c$ and $d \tmod{c}$. This completes the proof of the theorem.
+        shows that $\W_{d/c}$ is determined uniquely by $c$ and $d \tmod{c}$. Moreover, this relation shows that $a$ and $d$ are determined modulo $c$. This completes the proof of the theorem.
       \end{proof}
 
       Notice that the Bruhat decomposition for $\s_{\mf{a}}^{-1}\G\s_{\mf{b}}$ implies
       \[
         \G_{\infty}\backslash\s_{\mf{a}}^{-1}\G\s_{\mf{b}} = \d_{\mf{a},\mf{b}}\w_{\infty}\bigcup_{\substack{c \ge 1 \\ d \tmod{c}}}\w_{d/c}\G_{\infty},
       \]
-      where it is understood that the coset $\w_{d/c}\G_{\infty}$ is empty if the double coset $\W_{d/c}$ is too. This shows that every element of $\G_{\infty}\backslash\s_{\mf{a}}^{-1}\G\s_{\mf{b}}$ corresponds to a unique $(c,d) \in \Z^{2}-\{\mathbf{0}\}$ with $c \ge 1$, $d \in \Z$, and $(c,d) = 1$, and additionally the pair $(0,1)$ if and only if $\mf{a} = \mf{b}$ (this pair corresponds to $\w_{\infty}$). Of course, this correspondence need not be surjective since many of the double cosets $\W_{d/c}$ may be empty. To track such $c$ for which $\W_{d/c}$ is nonempty, define the set $\mc{C}_{\mf{a},\mf{b}}$ to by
+      where it is understood that the coset $\w_{d/c}\G_{\infty}$ is empty if the double coset $\W_{d/c}$ is too. This shows that every element of $\G_{\infty}\backslash\s_{\mf{a}}^{-1}\G\s_{\mf{b}}$ corresponds to a unique $(c,d) \in \Z^{2}-\{\mathbf{0}\}$ with $c \ge 1$, $d \in \Z$, and $(c,d) = 1$, and additionally the pair $(0,1)$ if and only if $\mf{a} = \mf{b}$ (this pair corresponds to $\w_{\infty}$). Of course, this correspondence need not be surjective since many of the double cosets $\W_{d/c}$ may be empty. To track such $c$ and $d$ for which $\W_{d/c}$ is nonempty, let $\mc{C}_{\mf{a},\mf{b}}$ and $\mc{D}_{\mf{a},\mf{b}}(c)$ be the sets given by
       \[
-        \mc{C}_{\mf{a},\mf{b}} = \left\{c \ge 1: \begin{pmatrix} \ast & \ast \\ c & \ast \end{pmatrix} \in \s_{\mf{a}}^{-1}\G\s_{\mf{b}}\right\}.
+        \mc{C}_{\mf{a},\mf{b}} = \left\{c \ge 1: \begin{pmatrix} \ast & \ast \\ c & \ast \end{pmatrix} \in \s_{\mf{a}}^{-1}\G\s_{\mf{b}}\right\} \quad \text{and} \quad \mc{D}_{\mf{a},\mf{b}}(c) = \left\{d \tmod{c}: \begin{pmatrix} \ast & \ast \\ c & d \end{pmatrix} \in \s_{\mf{a}}^{-1}\G\s_{\mf{b}}\right\}.
       \]
-      Then $\mc{C}_{\mf{a},\mf{b}}$ is precisely the set of $c$ necessary for $\W_{d/c}$ to be nonempty. This is in general not sufficient since $\W_{d/c}$ may be empty for some $d$ modulo $c$. We will now introduce Kloosterman \& Sali\'e sums associated to cusps. We being with the Kloosterman sums. Let $\s_{\mf{a}}$ and $\s_{\mf{b}}$ be scaling matrices for the cusps $\mf{a}$ and $\mf{b}$ respectively. Then for any $c \in \mc{C}_{\mf{a},\mf{b}}$ and $n,m \in \Z$, the \textbf{generalized Kloosterman sum}\index{generalized Kloosterman sum} $K_{\mf{a},\mf{b}}(n,m,c)$ relative to $\mf{a}$ and $\mf{b}$ is defined by
+      Then $\mc{C}_{\mf{a},\mf{b}}$ and $\mc{D}_{\mf{a},\mf{b}}(c)$ are precisely the sets of $c$ and $d$ take modulo $c$ such that $\W_{d/c}$ is nonempty.
+
+      \begin{remark}\label{rem:Bruhat_modulo_infity_exact}
+        The Bruhat decomposition for $\s_{\mf{a}}^{-1}\G\s_{\mf{b}}$ implies
+        \[
+          \G_{\infty}\backslash\s_{\mf{a}}^{-1}\G\s_{\mf{b}} = \d_{\mf{a},\mf{b}}\w_{\infty}\bigcup_{\substack{c \in \mc{C}_{\mf{a},\mf{b}} \\ d \in \mc{D}_{\mf{a},\mf{b}}(c)}}\w_{d/c}\G_{\infty},
+        \]
+        where none of the cosets $\w_{d/c}\G_{\infty}$ are empty. In particular, $\g = \begin{psmallmatrix} \ast & \ast \\ c & d \end{psmallmatrix} \in \G_{\infty}\backslash\s_{\mf{a}}^{-1}\G\s_{\mf{b}}$ if and only if $(c,d)$ is a pair with $c \in \mc{C}_{\mf{a},\mf{b}}$, $d \in \Z$, and $d \tmod{c} \in \mc{D}_{\mf{a},\mf{b}}(c)$, or additionally $(0,1)$ if $\mf{a} = \mf{b}$.
+      \end{remark}
+      
+      We will now introduce Kloosterman \& Sali\'e sums associated to cusps. We being with the Kloosterman sums. Let $\s_{\mf{a}}$ and $\s_{\mf{b}}$ be scaling matrices for the cusps $\mf{a}$ and $\mf{b}$ respectively. Then for any $c \in \mc{C}_{\mf{a},\mf{b}}$ and $n,m \in \Z$, the \textbf{generalized Kloosterman sum}\index{generalized Kloosterman sum} $K_{\mf{a},\mf{b}}(n,m,c)$ relative to $\mf{a}$ and $\mf{b}$ is defined by
       \[
-        K_{\mf{a},\mf{b}}(n,m,c) = \sum_{\substack{\g \in \G_{\infty}\backslash\s_{\mf{a}}^{-1}\G\s_{\mf{b}}/\G_{\infty} \\ \g = \begin{psmallmatrix} a & \ast \\ c & d \end{psmallmatrix}}}e^{\frac{2\pi i(an+\conj{a}m)}{c}}.
+        K_{\mf{a},\mf{b}}(n,m,c) = \sum_{d \in \mc{D}_{\mf{a},\mf{b}}(c)}e^{\frac{2\pi i(an+\conj{a}m)}{c}},
       \]
-      By the Bruhat decomposition, the sum is over all $\w_{d/c}$ with $c$ fixed. In general, $K_{\mf{a},\mf{b}}(n,m,c)$ is not independent of the scaling matrices $\s_{\mf{a}}$ and $\s_{\mf{b}}$. However, if $n = m = 0$ we trivially see by the Bruhat decomposition for $\G$ that
+      where $a$ has been determined by $ad-bc = 1$. This sum is well-defined by the Bruhat decomposition because $a$ is determined modulo $c$. In general, $K_{\mf{a},\mf{b}}(n,m,c)$ is not independent of the scaling matrices $\s_{\mf{a}}$ and $\s_{\mf{b}}$. However, if $n = m = 0$ we trivially see by the Bruhat decomposition for $\G$ that
       \[
         K_{\mf{a},\mf{b}}(0,0,c) = \left|\left\{d \tmod{c}:\begin{pmatrix} \ast & \ast \\ c & d \end{pmatrix} \in \s_{\mf{a}}^{-1}\G\s_{\mf{b}}\right\}\right|,
       \]
@@ -232,9 +263,9 @@
       \]
       is the usual Kloosterman sum. Therefore if $\mf{a} = \mf{b} = \infty$, we will suppress these dependencies accordingly. The Sali\'e sums are defined in a similar manner. Let $\s_{\mf{a}}$ and $\s_{\mf{b}}$ be scaling matrices for the cusps $\mf{a}$ and $\mf{b}$ respectively. Then for any $c \in \mc{C}_{\mf{a},\mf{b}}$, and $n,m \in \Z$, and Dirichlet character $\chi$ with conductor $q \mid c$, the \textbf{generalized Sali\'e sum}\index{generalized Sali\'e sum} $S_{\chi,\mf{a},\mf{b}}(n,m,c)$ relative to $\mf{a}$ and $\mf{b}$ is defined by
       \[
-        S_{\chi,\mf{a},\mf{b}}(n,m,c) = \sum_{\substack{\g \in \G_{\infty}\backslash\s_{\mf{a}}^{-1}\G\s_{\mf{b}}/\G_{\infty} \\ \g = \begin{psmallmatrix} a & \ast \\ c & d \end{psmallmatrix}}}\chi(a)e^{\frac{2\pi i(an+\conj{a}m)}{c}}.
+        S_{\chi,\mf{a},\mf{b}}(n,m,c) = \sum_{d \in \mc{D}_{\mf{a},\mf{b}}(c)}\chi(a)e^{\frac{2\pi i(an+\conj{a}m)}{c}},
       \]
-      By the Bruhat decomposition, the sum is over all $\w_{d/c}$ with $c$ fixed. Like the generalized Kloosterman sum, $S_{\mf{a},\mf{b}}(n,m,c)$ need not independent of the scaling matrices $\s_{\mf{a}}$ and $\s_{\mf{b}}$. Moreover, for $\G = \G_{0}(1)$ we have $\mf{a} = \mf{b} = \infty$ and the Bruhat decomposition for $\G_{0}(1)$ implies
+      where $a$ has been determined by $ad-bc = 1$. This sum is well-defined by the Bruhat decomposition because $a$ is determined modulo $c$. Like the generalized Kloosterman sum, $S_{\mf{a},\mf{b}}(n,m,c)$ need not independent of the scaling matrices $\s_{\mf{a}}$ and $\s_{\mf{b}}$. Moreover, for $\G = \G_{0}(1)$ we have $\mf{a} = \mf{b} = \infty$ and the Bruhat decomposition for $\G_{0}(1)$ implies
       \[
         S_{\chi,\infty,\infty}(n,m,c) = S_{\chi}(n,m,c),
       \]
@@ -258,16 +289,33 @@
       \[
         V_{\G} = \int_{\mc{F}_{\G}}\,d\mu,
       \]
-      and call $V_{\G}$ the \textbf{volume}\index{volume} of $\GH$. Also, if $\mc{F}_{\G} = \mc{F}$ we write $V_{\G} = V$. In other words, $V$ is the volume of $\PSL_{2}(\Z)\backslash\H$. Since the integrand is $\G$-invariant, $V_{\G}$ is independent of the choice of fundamental domain. There is also a simple relation between $V_{\G}$ and the index of $\G$ in $\PSL_{2}(\Z)$:
-      \begin{equation}\label{equ:Petersson_volume_relation}
-        V_{\G} = [\PSL_{2}(\Z):\G]V,
-      \end{equation}
-      which follows immediately from \cref{prop:fundamental_domain_congruence_subgroup}. Using \cref{prop:fundamental_domain_modular_group},
+      and call $V_{\G}$ the \textbf{volume}\index{volume} of $\GH$. Also, if $\mc{F}_{\G} = \mc{F}$ we write $V_{\G} = V$. In other words, $V$ is the volume of $\PSL_{2}(\Z)\backslash\H$. Since the integrand is $\G$-invariant, $V_{\G}$ is independent of the choice of fundamental domain. Using \cref{prop:fundamental_domain_modular_group}, we have
       \[
         V = \int_{\mc{F}}\,d\mu = \int_{-\frac{1}{2}}^{\frac{1}{2}}\int_{\sqrt{1-x^{2}}}^{\infty}\frac{1}{y^{2}}\,dy\,dx = \int_{-\frac{1}{2}}^{\frac{1}{2}}\frac{1}{\sqrt{1-x^{2}}}\,dx = \arcsin(x)\bigg|_{-\frac{1}{2}}^{\frac{1}{2}} = \frac{\pi}{3}.
       \]
-      Therefore $V$ is finite. Furthermore so is $V_{\G}$ for every congruence subgroup $\G$ by \cref{equ:Petersson_volume_relation} and that congruence subgroups have finite index in the modular group. A particularly nice application of this fact is that is any integral of the form
+      Therefore $V$ is finite. There is also a simple relation between $V_{\G}$ and the index of $\G$ in $\PSL_{2}(\Z)$:
+      \begin{equation}\label{equ:Petersson_volume_relation}
+        V_{\G} = [\PSL_{2}(\Z):\G]V,
+      \end{equation}
+      which follows immediately from \cref{prop:fundamental_domain_congruence_subgroup}. Moreover, $V_{\G}$ is finite for every congruence subgroup $\G$ by \cref{equ:Petersson_volume_relation} and that congruence subgroups have finite index in the modular group. Moreover, we have a useful lemma:
+
+      \begin{lemma}\label{lem:invariance_of_volume}
+        Let $\G$ be a congruence subgroup and let $\a \in \GL_{2}^{+}(\Q)$. If $\a^{-1}\G\a \subseteq \PSL_{2}(\Z)$, then $V_{\a^{-1}\G\a} = V_{\G}$ and $[\PSL_{2}(\Z):\a^{-1}\G\a] = [\PSL_{2}(\Z):\G]$.
+      \end{lemma}
+      \begin{proof}
+        We claim
+        \[
+          V_{\a^{-1}\G\a} = \int_{\mc{F}_{\a^{-1}\G\a}}\,d\mu = \int_{\mc{F}_{\G}}\,d\mu = V_{\G},
+        \]
+        where the second equality is justified by first making the change of variables $z \to \a z$ and then noting that $\a$ acts as an automorphism on $\H$ so that $\mc{F}_{\G\a} = \mc{F}_{\G}$. The second statement now follows from \cref{equ:Petersson_volume_relation}.
+      \end{proof}
+      
+      A particularly nice application of \cref{lem:invariance_of_volume} is that if $\a \in \PSL_{2}(\Z)$, then any integral of the form
       \[
-        \int_{\mc{F}_{\G}}|f(z)|^{2}\,d\mu,
+        \int_{\mc{F}_{\a^{-1}\G\a}}|f(z)|^{2}\,d\mu,
       \]
-      for some holomorphic function $f(z)$, is bounded provided $f(z)$ is bounded by \cref{prop:decay_finite_volume_integral}. That is, bounded functions are $L^{2}$-integrable over $\mc{F}_{\G}$ with respect to $d\mu$.
+      is bounded by \cref{prop:decay_finite_volume_integral} provided $f(z)$ is holomorphic and bounded. That is, bounded functions are $L^{2}$-integrable over $\mc{F}_{\a^{-1}\G\a}$ with respect to $d\mu$. 
+
+
+      
+      

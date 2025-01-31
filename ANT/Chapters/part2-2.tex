@@ -50,7 +50,7 @@
     \[
       f(z+1) = f\left(\begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}z\right) = f(z),
     \]
-    so that $f$ is $1$-periodic. Let $\s_{\mf{a}}$ be a scaling matrix for the $\mf{a}$ cusp. As $\G_{\mf{a}} = \s_{\mf{a}}\G_{\infty}\s_{\mf{a}}^{-1}$, or equivalently $\G_{\mf{a}}\s_{\mf{a}} = \s_{\mf{a}}\G_{\infty}$, the function $f(\s_{\mf{a}}z)$ is independent of the scaling matrix $\s_{\mf{a}}$. Moreover, by the same reasoning we see that $f(\s_{\mf{a}}z)$ is modular with respect to $\s_{\mf{a}}^{-1}\G\s_{\mf{a}}$. In particular,
+    so that $f$ is $1$-periodic. Let $\s_{\mf{a}}$ be a scaling matrix for the $\mf{a}$ cusp. As $\G_{\mf{a}} = \s_{\mf{a}}\G_{\infty}\s_{\mf{a}}^{-1}$, or equivalently $\G_{\mf{a}}\s_{\mf{a}} = \s_{\mf{a}}\G_{\infty}$, the function $f(\s_{\mf{a}}z)$ is independent of the scaling matrix $\s_{\mf{a}}$. Moreover, \cref{lem:coset_lemma_1} implies $\s_{\mf{a}}^{-1}\G\s_{\mf{a}}$ is a congruence subgroup and it follows that $f(\s_{\mf{a}}z)$ is a holomorphic form on $\s_{\mf{a}}^{-1}\G\s_{\mf{a}}\backslash\H$ of the same weight, level, and character as $f$. In particular,
     \[
       f(\s_{\mf{a}}(z+1)) = f(\s_{\mf{a}}z).
     \]
@@ -199,7 +199,7 @@
       is a weight $k$ holomorphic form with character $\chi$ on $\GH$.
     \end{theorem}
 
-    We will now compute the Fourier series of the Poincar\'e series:
+    We will now compute the Fourier series of the Poincar\'e series with positive index:
 
      \begin{proposition}\label{prop:Fourier_series_holomorphic}
       The Fourier series of $P_{m,k,\chi}(z)$ with $m \ge 1$ on $\GH$ is given by
@@ -208,20 +208,20 @@
       \]
     \end{proposition}
     \begin{proof}
-      From the Bruhat decomposition for $\G\s_{\mf{a}}$, we have
+      From the Bruhat decomposition for $\G\s_{\mf{a}}$ and \cref{rem:Bruhat_modulo_infity_exact}, we have
       \[
-        P_{m,k,\chi}(\s_{\mf{a}}z) = \d_{\infty,\mf{a}}e^{2\pi imz}+\sum_{\todo{xxx}}\cchi(d)\frac{e^{2\pi im\left(\frac{a}{c}-\frac{1}{c^{2}z+cd}\right)}}{(cz+d)^{k}},
+        P_{m,k,\chi}(\s_{\mf{a}}z) = \d_{\infty,\mf{a}}e^{2\pi imz}+\sum_{\substack{c \in \mc{C}_{\infty,\mf{a}}, d \in \Z \\ d \tmod{c} \in \mc{D}_{\infty,\mf{a}}(c)}}\cchi(d)\frac{e^{2\pi im\left(\frac{a}{c}-\frac{1}{c^{2}z+cd}\right)}}{(cz+d)^{k}},
       \]
-      where $a$ and $b$ are chosen such that $\det\left(\begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix}\right) = 1$ and we have used the fact that
+      where $a$ has been determined modulo $c$ by $ad-bc = 1$ and we have used the fact that
       \[
         \frac{a}{c}-\frac{1}{c^{2}z+cd} = \frac{az+b}{cz+d}.
       \]
-      Summing over all pairs $(c,d) \in \Z^{2}-\{\mathbf{0}\}$ with $c \in \mc{C}_{\infty,\mf{a}}$, $d \in \Z$, and $(c,d) = 1$ is the same as summing over all triples $(c,\ell,r)$ with $c \in \mc{C}_{\infty,\mf{a}}$, $\ell \in \Z$, $r$ taken modulo $c$, and $(r,c) = 1$. Indeed, this is seen by writing $d = c\ell+r$. Moreover, since $ad-bc = 1$ we have $a(c\ell+r)-bc = 1$ which further implies that $ar \equiv 1 \tmod{c}$. So we may take $a$ to be the inverse for $r$ modulo $c$. Then
+      Summing over all pairs $(c,d)$ with $c \in \mc{C}_{\infty,\mf{a}}$, $d \in \Z$, and $d \in \mc{D}_{\infty,\mf{a}}(c)$ is the same as summing over all triples $(c,\ell,r)$ with $c \in \mc{C}_{\infty,\mf{a}}$, $\ell \in \Z$, and $r$ taken modulo $c$ with $r \in \mc{D}_{\infty,\mf{a}}(c)$. Indeed, this is seen by writing $d = c\ell+r$. Moreover, since $ad-bc = 1$ we have $a(c\ell+r)-bc = 1$ which further implies that $ar \equiv 1 \tmod{c}$. So we may take $a$ to be the inverse for $r$ modulo $c$. Then
       \begin{align*}
-        \sum_{\substack{c \in \mc{C}_{\infty,\mf{a}}, d \in \Z \\ (c,d) = 1}}\cchi(d)\frac{e^{2\pi im\left(\frac{a}{c}-\frac{1}{c^{2}z+cd}\right)}}{(cz+d)^{k}} &= \sum_{(c,\ell,r)}\cchi(c\ell+r)\frac{e^{2\pi im\left(\frac{a}{c}-\frac{1}{c^{2}z+c^{2}\ell+cr}\right)}}{(cz+c\ell+r)^{k}} \\
+        \sum_{\substack{c \in \mc{C}_{\infty,\mf{a}}, d \in \Z \\ d \tmod{c} \in \mc{D}_{\infty,\mf{a}}(c)}}\cchi(d)\frac{e^{2\pi im\left(\frac{a}{c}-\frac{1}{c^{2}z+cd}\right)}}{(cz+d)^{k}} &= \sum_{(c,\ell,r)}\cchi(c\ell+r)\frac{e^{2\pi im\left(\frac{a}{c}-\frac{1}{c^{2}z+c^{2}\ell+cr}\right)}}{(cz+c\ell+r)^{k}} \\
         &= \sum_{(c,\ell,r)}\cchi(r)\frac{e^{2\pi im\left(\frac{a}{c}-\frac{1}{c^{2}z+c^{2}\ell+cr}\right)}}{(cz+c\ell+r)^{k}} \\
-        &= \psum_{\substack{c \in \mc{C}_{\infty,\mf{a}} \\ r \tmod{c}}}\sum_{\ell \in \Z}\cchi(r)\frac{e^{2\pi im\left(\frac{a}{c}-\frac{1}{c^{2}z+c^{2}\ell+cr}\right)}}{(cz+c\ell+r)^{k}} \\
-        &= \psum_{\substack{c \in \mc{C}_{\infty,\mf{a}} \\ r \tmod{c}}}\cchi(r)\sum_{\ell \in \Z}\frac{e^{2\pi im\left(\frac{a}{c}-\frac{1}{c^{2}z+c^{2}\ell+cr}\right)}}{(cz+c\ell+r)^{k}},
+        &= \sum_{\substack{c \in \mc{C}_{\infty,\mf{a}} \\ r \in \mc{D}_{\infty,\mf{a}}(c)}}\sum_{\ell \in \Z}\cchi(r)\frac{e^{2\pi im\left(\frac{a}{c}-\frac{1}{c^{2}z+c^{2}\ell+cr}\right)}}{(cz+c\ell+r)^{k}} \\
+        &= \sum_{\substack{c \in \mc{C}_{\infty,\mf{a}} \\ r \in \mc{D}_{\infty,\mf{a}}(c)}}\cchi(r)\sum_{\ell \in \Z}\frac{e^{2\pi im\left(\frac{a}{c}-\frac{1}{c^{2}z+c^{2}\ell+cr}\right)}}{(cz+c\ell+r)^{k}},
       \end{align*}
       where on the right-hand side it is understood that we are summing over all triples $(c,\ell,r)$ with the prescribed properties and the second line holds since $\chi$ has conductor $q \mid N$ and $c \equiv 0 \tmod{N}$. Now let
       \[
@@ -264,43 +264,43 @@
       \]
       for all $z \in \H$. Plugging this back into the Poincar\'e series gives a form of the Fourier series:
       \begin{align*}
-        P_{m,k,\chi}(\s_{\mf{a}}z) &= \d_{\infty,\mf{a}}e^{2\pi imz}+\psum_{\substack{c \in \mc{C}_{\infty,\mf{a}} \\ r \tmod{c}}}\cchi(r)\sum_{t \ge 1}\left(\frac{2\pi i^{-k}}{c}\left(\frac{\sqrt{t}}{\sqrt{m}}\right)^{k-1}J_{k-1}\left(\frac{4\pi\sqrt{mt}}{c}\right)e^{2\pi im\frac{a}{c}+2\pi it\frac{r}{c}}\right)e^{2\pi imz} \\
-        &= \sum_{t \ge 1}\left(\d_{\infty,\mf{a}}\d_{m,t}+\left(\frac{\sqrt{t}}{\sqrt{m}}\right)^{k-1}\psum_{\substack{c \in \mc{C}_{\infty,\mf{a}} \\ r \tmod{c}}}\cchi(r)\frac{2\pi i^{-k}}{c}J_{k-1}\left(\frac{4\pi\sqrt{mt}}{c}\right)e^{2\pi im\frac{a}{c}+2\pi it\frac{r}{c}}\right)e^{2\pi itz} \\
-        &= \sum_{t \ge 1}\left(\d_{\infty,\mf{a}}\d_{m,t}+\left(\frac{\sqrt{t}}{\sqrt{m}}\right)^{k-1}\sum_{\substack{c \in \mc{C}_{\infty,\mf{a}}}}\frac{2\pi i^{-k}}{c}J_{k-1}\left(\frac{4\pi\sqrt{mt}}{c}\right)\psum_{r \tmod{c}}\cchi(r)e^{2\pi im\frac{a}{c}+2\pi it\frac{r}{c}}\right)e^{2\pi itz}.
+        P_{m,k,\chi}(\s_{\mf{a}}z) &= \d_{\infty,\mf{a}}e^{2\pi imz}+\sum_{\substack{c \in \mc{C}_{\infty,\mf{a}} \\ r \in \mc{D}_{\infty,\mf{a}}}}\cchi(r)\sum_{t \ge 1}\left(\frac{2\pi i^{-k}}{c}\left(\frac{\sqrt{t}}{\sqrt{m}}\right)^{k-1}J_{k-1}\left(\frac{4\pi\sqrt{mt}}{c}\right)e^{2\pi im\frac{a}{c}+2\pi it\frac{r}{c}}\right)e^{2\pi imz} \\
+        &= \sum_{t \ge 1}\left(\d_{\infty,\mf{a}}\d_{m,t}+\left(\frac{\sqrt{t}}{\sqrt{m}}\right)^{k-1}\sum_{\substack{c \in \mc{C}_{\infty,\mf{a}} \\ r \in \mc{D}_{\infty,\mf{a}}}}\cchi(r)\frac{2\pi i^{-k}}{c}J_{k-1}\left(\frac{4\pi\sqrt{mt}}{c}\right)e^{2\pi im\frac{a}{c}+2\pi it\frac{r}{c}}\right)e^{2\pi itz} \\
+        &= \sum_{t \ge 1}\left(\d_{\infty,\mf{a}}\d_{m,t}+\left(\frac{\sqrt{t}}{\sqrt{m}}\right)^{k-1}\sum_{\substack{c \in \mc{C}_{\infty,\mf{a}}}}\frac{2\pi i^{-k}}{c}J_{k-1}\left(\frac{4\pi\sqrt{mt}}{c}\right)\sum_{r \in \mc{D}_{\infty,\mf{a}}}\cchi(r)e^{2\pi im\frac{a}{c}+2\pi it\frac{r}{c}}\right)e^{2\pi itz}.
       \end{align*}
       We will simplify the innermost sum. Since $a$ is the inverse for $r$ modulo $c$, the innermost sum above becomes
       \[
-        \psum_{r \tmod{c}}\cchi(r)e^{2\pi im\frac{a}{c}+2\pi it\frac{r}{c}} = \psum_{r \tmod{c}}\cchi(\conj{a})e^{2\pi im\frac{a}{c}+2\pi it\frac{\conj{a}}{c}} = \psum_{a \tmod{c}}\chi(a)e^{\frac{2\pi i(an+\conj{a}t)}{c}} = S_{\chi}(n,t,c).
+        \sum_{r \in \mc{D}_{\infty,\mf{a}}}\cchi(r)e^{2\pi im\frac{a}{c}+2\pi it\frac{r}{c}} = \sum_{r \in \mc{D}_{\infty,\mf{a}}}\cchi(\conj{a})e^{2\pi im\frac{a}{c}+2\pi it\frac{\conj{a}}{c}} = \sum_{r \in \mc{D}_{\infty,\mf{a}}}\chi(a)e^{\frac{2\pi i(an+\conj{a}t)}{c}} = S_{\chi,\infty,\mf{a}}(n,t,c).
       \]
       So at last, we obtain our desired Fourier series:
       \[
-        P_{m,k,\chi}(\s_{\mf{a}}z) = \sum_{t \ge 1}\left(\d_{\infty,\mf{a}}\d_{m,t}+\left(\frac{\sqrt{t}}{\sqrt{m}}\right)^{k-1}\sum_{\substack{c \in \mc{C}_{\infty,\mf{a}}}}\frac{2\pi i^{-k}}{c}J_{k-1}\left(\frac{4\pi\sqrt{mt}}{c}\right)S_{\chi}(n,t,c)\right)e^{2\pi itz}.
+        P_{m,k,\chi}(\s_{\mf{a}}z) = \sum_{t \ge 1}\left(\d_{\infty,\mf{a}}\d_{m,t}+\left(\frac{\sqrt{t}}{\sqrt{m}}\right)^{k-1}\sum_{\substack{c \in \mc{C}_{\infty,\mf{a}}}}\frac{2\pi i^{-k}}{c}J_{k-1}\left(\frac{4\pi\sqrt{mt}}{c}\right)S_{\chi,\infty,\mf{a}}(n,t,c)\right)e^{2\pi itz}.
       \]
     \end{proof}
 
-    An immediate consequence of \cref{prop:Fourier_series_holomorphic} is that the Poincar\'e series $P_{m,k,\chi}(z)$ with positive index are cusp forms on Hecke congruence subgroups.
+    An immediate consequence of \cref{prop:Fourier_series_holomorphic} is that the Poincar\'e series $P_{m,k,\chi}(z)$ with positive index are cusp forms.
   \section{Spaces of Holomorphic Forms}
     Let $\G$ be a congruence subgroup of level $N$. Let $\mc{M}_{k}(\G,\chi)$ denote the space of all weight $k$ holomorphic forms on $\GH$ with character $\chi$. Let $\mc{S}_{k}(\G,\chi)$ denote the associated subspace of cusp forms. Moreover, if the character $\chi$ is the trivial character, we will suppress the dependence upon $\chi$. If $\G_{1}$ and $\G_{2}$ are two congruence subgroups such that $\G_{1} \le \G_{2}$, then we have the inclusion
     \[
-      \mc{M}_{k}(\G_{2}) \subseteq \mc{M}_{k}(\G_{1}).
+      \mc{M}_{k}(\G_{2},\chi) \subseteq \mc{M}_{k}(\G_{1},\chi).
     \]
-    So in general, the smaller the congruence subgroup the more holomorphic forms there are. We will need a dimensionality result regarding the space of holomorphic forms of a fixed weight. However, it will suffice to only require the result for forms with trivial character. The result is that $\mc{M}_{k}(\G)$ is never too large (see \cite{diamond2005first} for a proof):
+    So in general, the smaller the congruence subgroup the more holomorphic forms there are. We will need a dimensionality result regarding the space of holomorphic forms of a fixed weight. However, it will suffice to only require the result for forms with trivial character. The result is that $\mc{M}_{k}(\G,\chi)$ is never too large (see \cite{diamond2005first} for a proof):
 
     \begin{theorem}\label{thm:modular_forms_space_classification}
-      Then $\mc{M}_{k}(\G)$ is finite dimensional.
+      $\mc{M}_{k}(\G,\chi)$ is finite dimensional.
     \end{theorem}
 
-    Since $\mc{S}_{k}(\G)$ is a subspace of $\mc{M}_{k}(\G)$, \cref{thm:modular_forms_space_classification} implies that $\mc{S}_{k}(\G)$ is also finite dimensional. It turns out that $\mc{S}_{k}(\G)$ is naturally an inner product space. For $f,g \in \mc{S}_{k}(\G)$, define their \textbf{Petersson inner product}\index{Petersson inner product} by
+    Since $\mc{S}_{k}(\G,\chi)$ is a subspace of $\mc{M}_{k}(\G,\chi)$, \cref{thm:modular_forms_space_classification} implies that $\mc{S}_{k}(\G,\chi)$ is also finite dimensional. It turns out that $\mc{S}_{k}(\G,\chi)$ is naturally an inner product space. For $f,g \in \mc{S}_{k}(\G,\chi)$, define their \textbf{Petersson inner product}\index{Petersson inner product} by
     \[
       \<f,g\>_{\G} = \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}f(z)\conj{g(z)}\Im(z)^{k}\,d\mu.
     \]
-    If the congruence subgroup is clear from context we will suppress the dependence upon $\G$. Since $f$ and $g$ have rapid decay at the cusps, the integral is locally absolutely uniformly bounded by \cref{prop:decay_finite_volume_integral}. The integrand is also $\G$-invariant so that the integral independent of the choice of fundamental domain. These two facts together imply that the Petersson inner product is well-defined. We will continue to use this notion even if $f$ and $g$ do not belong to $\mc{S}_{k}(\G)$ provided the integral is locally absolutely uniformly bounded. Moreover, we have the following proposition:
+    If the congruence subgroup is clear from context we will suppress the dependence upon $\G$. Since $f$ and $g$ have rapid decay at the cusps, the integral is locally absolutely uniformly bounded by \cref{prop:decay_finite_volume_integral}. The integrand is also $\G$-invariant so that the integral independent of the choice of fundamental domain. These two facts together imply that the Petersson inner product is well-defined. We will continue to use this notation even if $f$ and $g$ do not belong to $\mc{S}_{k}(\G,\chi)$ provided the integral is locally absolutely uniformly bounded. Moreover, we have the following proposition:
 
     \begin{proposition}\label{prop:Petersson_inner_product_hermitian}
-      $\mc{S}_{k}(\G)$ is a Hilbert space with respect to Petersson inner product.
+      $\mc{S}_{k}(\G,\chi)$ is a Hilbert space with respect to Petersson inner product.
     \end{proposition}
     \begin{proof}
-      Let $f,g \in \mc{S}_{k}(\G)$. Linearity of the integral immediately implies that the Petersson inner product is linear on $\mc{S}_{k}(\G)$. It is also positive definite since
+      Let $f,g \in \mc{S}_{k}(\G,\chi)$. Linearity of the integral immediately implies that the Petersson inner product is linear on $\mc{S}_{k}(\G,\chi)$. It is also positive definite since
       \[
         \<f,f\> = \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}f(z)\conj{f(z)}\Im(z)^{k}\,d\mu = \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}|f(z)|^{2}\Im(z)^{k}\,d\mu \ge 0,
       \]
@@ -312,36 +312,32 @@
         &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}f(z)\conj{g(z)}\Im(z)^{k}\,d\mu \\
         &= \<f,g\>.
       \end{align*}
-      So the Petersson inner product is a Hermitian inner product on $\mc{S}_{k}(\G)$. Since $\mc{S}_{k}(\G)$ is finite dimensional by \cref{thm:modular_forms_space_classification}, it follows immediately that $\mc{S}_{k}(\G)$ is a Hilbert space.
+      So the Petersson inner product is a Hermitian inner product on $\mc{S}_{k}(\G,\chi)$. Since $\mc{S}_{k}(\G,\chi)$ is finite dimensional by \cref{thm:modular_forms_space_classification}, it follows immediately that $\mc{S}_{k}(\G,\chi)$ is a Hilbert space.
     \end{proof}
 
     \begin{remark}\label{rem:non-degeneracy_of_Petersson_inner_product}
-      As a consequence of \cref{prop:Petersson_inner_product_hermitian}, the Petersson inner product is also non-degenerate on $\mc{S}_{k}(\G)$. Actually, for the exact same reasoning this holds on $\mc{S}_{k}(\G) \x \mc{M}_{k}(\G)$ wherever the Petersson inner product is defined.
+      As a consequence of \cref{prop:Petersson_inner_product_hermitian}, the Petersson inner product is also non-degenerate on $\mc{S}_{k}(\G,\chi)$. Actually, for the exact same reasoning this holds on $\mc{S}_{k}(\G,\chi) \x \mc{M}_{k}(\G,\chi)$ wherever the Petersson inner product is defined.
     \end{remark}
 
-    \todo{GENERALIZE TO ALL CUSPS}
-    Now suppose $f \in \mc{S}_{k}(\G)$ with Fourier coefficients $a_{n}(f)$. Define linear functionals $\phi_{m,k}:\mc{S}_{k}(\G) \to \C$, for every $m \ge 1$, by 
+    Now suppose $f \in \mc{S}_{k}(\G,\chi)$ with Fourier coefficients $a_{n,\mf{a}}(f)$ at the $\mf{a}$ cusp and let $\s_{\mf{a}}$ be a scaling matrix for this cusp. Define linear functionals $\phi_{m,k,\chi,\mf{a}}:\mc{S}_{k}(\G,\chi) \to \C$ by 
     \[
-      \phi_{m,k}(f) = a_{m}(f).
+      \phi_{m,k,\chi,\mf{a}}(f) = a_{m,\mf{a}}(f).
     \]
-    Since $\mc{S}_{k}(\G)$ is a finite dimensional Hilbert space, the Riesz representation theorem implies that there exists a unique $v_{m,k} \in \mc{S}_{k}(\G)$ such that
+    Since $f(\s_{\mf{a}}z)$ is a holomorphic form on $\s_{\mf{a}}^{-1}\G\s_{\mf{a}}\backslash\H$ of the same weight, level, and character as $f$, and $\mc{S}_{k}(\s_{\mf{a}}^{-1}\G\s_{\mf{a}},\chi)$ is a finite dimensional Hilbert space, the Riesz representation theorem implies that there exists unique $v_{m,k}(\s_{\mf{a}}z) \in \mc{S}_{k}(\s_{\mf{a}}^{-1}\G\s_{\mf{a}},\chi)$ such that
     \[
-      \<f,v_{m,k}\> = \phi_{m,k}(f) = a_{m}(f).
+      \<f(\s_{\mf{a}}\cdot),v_{m,k}(\s_{\mf{a}}\cdot)\> = \phi_{m,k,\mf{a}}(f) = a_{m,\mf{a}}(f),
     \]
-    We would like to know what these cusp forms are. It turns out that $v_{m,k}(z)$ will be the Poincar\'e series $P_{m,k,\chi}(z)$ up to a normalization factor. To see this, we compute the inner product:
+    for any scaling matrix $\s_{\mf{a}}$. We would like to know what these cusp forms are. It turns out that $v_{m,k}(z)$ will be the Poincar\'e series $P_{m,k,\chi}(z)$ up to a normalization factor. To see this, we compute the following inner product:
     \begin{align*}
-      \<f,P_{m,k,\chi}\> &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}f(z)\conj{P_{m,k,\chi}(z)}\Im(z)^{k}\,d\mu \\
-      &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}\sum_{\g \in \GG}\chi(\g)\conj{j(\g,z)^{-k}}f(z)e^{-2\pi im\conj{\g z}}\Im(z)^{k}\,d\mu \\
-      &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}\sum_{\g \in \GG}|j(\g,z)|^{-2k}f(\g z)e^{-2\pi im\conj{\g z}}\Im(z)^{k}\,d\mu && \text{modularity} \\
-      &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}\sum_{\g \in \GG}f(\g z)e^{-2\pi im\conj{\g z}}\Im(\g z)^{k}\,d\mu && \text{$\Im(\g z)^{k} = \frac{\Im(z)^{k}}{|j(\g,z)|^{2k}}$} \\
-      &= \frac{1}{V_{\G}}\int_{\G_{\infty}\backslash\H}f(z)e^{-2\pi im\conj{z}}\Im(z)^{k}\,d\mu && \text{unfolding} \\
-      &= \frac{1}{V_{\G}}\int_{0}^{\infty}\int_{0}^{1}f(x+iy)e^{-2\pi im(x-iy)}y^{k}\,\frac{dx\,dy}{y^{2}}.
+      \<f(\s_{\mf{a}}\cdot),P_{m,k,\chi}(\s_{\mf{a}}\cdot)\>_{\s_{\mf{a}}^{-1}\G\s_{\mf{a}}} &= \frac{1}{V_{\s_{\mf{a}}^{-1}\G\s_{\mf{a}}}}\int_{\mc{F}_{\s_{\mf{a}}^{-1}\G\s_{\mf{a}}}}f(\s_{\mf{a}}z)\conj{P_{m,k,\chi}(\s_{\mf{a}}z)}\Im(z)^{k}\,d\mu \\
+      &= \frac{1}{V_{\G}}\int_{\mc{F}_{\s_{\mf{a}}^{-1}\G\s_{\mf{a}}}}f(\s_{\mf{a}}z)\conj{P_{m,k,\chi}(\s_{\mf{a}}z)}\Im(z)^{k}\,d\mu && \text{\cref{lem:invariance_of_volume}} \\
+      &= \todo{XXX}.
     \end{align*}
-    Now we can substitute in the Fourier series of $f$ and finish the computation
+    Now we can substitute in the Fourier series of $f$ at the $\mf{a}$ cusp and finish the computation:
     \begin{align*}
-      \frac{1}{V_{\G}}\int_{0}^{\infty}\int_{0}^{1}f(x+iy)e^{-2\pi im(x-iy)}y^{k}\,\frac{dx\,dy}{y^{2}} &= \frac{1}{V_{\G}}\int_{0}^{\infty}\int_{0}^{1}\sum_{n \ge 1}a_{n}(f)e^{2\pi i(n-m)x}e^{-2\pi(n+m)y}y^{k}\,\frac{dx\,dy}{y^{2}} \\
-      &= \frac{1}{V_{\G}}\int_{0}^{\infty}\sum_{n \ge 1}\int_{0}^{1}a_{n}(f)e^{2\pi i(n-m)x}e^{-2\pi(n+m)y}y^{k}\,\frac{dx\,dy}{y^{2}} && \text{DCT} \\
-      &= \frac{1}{V_{\G}}\int_{0}^{\infty}a_{m}(f)e^{-4\pi my}y^{k}\,\frac{dy}{y^{2}},
+      \frac{1}{V_{\G}}\int_{0}^{\infty}\int_{0}^{1}f(\s_{\mf{a}}(x+iy))e^{-2\pi im(x-iy)}y^{k}\,\frac{dx\,dy}{y^{2}} &= \frac{1}{V_{\G}}\int_{0}^{\infty}\int_{0}^{1}\sum_{n \ge 1}a_{n,\mf{a}}(f)e^{2\pi i(n-m)x}e^{-2\pi(n+m)y}y^{k}\,\frac{dx\,dy}{y^{2}} \\
+      &= \frac{1}{V_{\G}}\int_{0}^{\infty}\sum_{n \ge 1}\int_{0}^{1}a_{n,\mf{a}}(f)e^{2\pi i(n-m)x}e^{-2\pi(n+m)y}y^{k}\,\frac{dx\,dy}{y^{2}} && \text{DCT} \\
+      &= \frac{1}{V_{\G}}\int_{0}^{\infty}a_{m,\mf{a}}(f)e^{-4\pi my}y^{k}\,\frac{dy}{y^{2}},
     \end{align*}
     where the last line follows because
     \begin{equation}\label{equ:Dirac_integral_representation}
@@ -349,30 +345,26 @@
     \end{equation}
     so that the inner integral cuts off all the terms except for the diagonal $n = m$. Then
     \begin{align*}
-      \frac{1}{V_{\G}}\int_{0}^{\infty}a_{m}(f)e^{-4\pi my}y^{k}\,\frac{dy}{y^{2}} &= \frac{a_{m}(f)}{V_{\G}}\int_{0}^{\infty}e^{-4\pi my}y^{k-1}\,\frac{dy}{y} \\
-      &= \frac{a_{m}(f)}{V_{\G}}\int_{0}^{\infty}e^{-4\pi my}y^{k-1}\,\frac{dy}{y} && \text{$y \to \frac{y}{4\pi m}$} \\
-      &= \frac{a_{m}(f)}{V_{\G}(4\pi m)^{k-1}}\int_{0}^{\infty}e^{-y}y^{k-1}\,\frac{dy}{y} \\
-      &= \frac{\G(k-1)}{V_{\G}(4\pi m)^{k-1}}a_{m}(f) && \text{definition of $\G(k-1)$.}
+      \frac{1}{V_{\G}}\int_{0}^{\infty}a_{m,\mf{a}}(f)e^{-4\pi my}y^{k}\,\frac{dy}{y^{2}} &= \frac{a_{m,\mf{a}}(f)}{V_{\G}}\int_{0}^{\infty}e^{-4\pi my}y^{k-1}\,\frac{dy}{y} \\
+      &= \frac{a_{m,\mf{a}}(f)}{V_{\G}}\int_{0}^{\infty}e^{-4\pi my}y^{k-1}\,\frac{dy}{y} && \text{$y \to \frac{y}{4\pi m}$} \\
+      &= \frac{a_{m,\mf{a}}(f)}{V_{\G}(4\pi m)^{k-1}}\int_{0}^{\infty}e^{-y}y^{k-1}\,\frac{dy}{y} \\
+      &= \frac{\G(k-1)}{V_{\G}(4\pi m)^{k-1}}a_{m,\mf{a}}(f) && \text{definition of $\G(k-1)$.}
     \end{align*}
     In conclusion,
     \begin{equation}\label{equ:Petersson_inner_product_with_Poincare_series}
-      \<f,P_{m,k,\chi}\> = \frac{\G(k-1)}{V_{\G}(4\pi m)^{k-1}}a_{m}(f).
+      \<f(\s_{\mf{a}}\cdot),P_{m,k,\chi}(\s_{\mf{a}}\cdot)\> = \frac{\G(k-1)}{V_{\G}(4\pi m)^{k-1}}a_{m,\mf{a}}(f),
     \end{equation}
-    Now set
+    and it follows that
     \[
-      \wtilde{P}_{m,k,\chi}(z) = \frac{V_{\G}(4\pi m)^{k-1}}{\G(k-1)}P_{m,k,\chi}(z).
+      v_{m,k,\chi}(z) = \frac{V_{\G}(4\pi m)^{k-1}}{\G(k-1)}P_{m,k,\chi}(z).
     \]
-    For all cusp forms $f$ (actually any holomorphic form where the Petersson inner product is defined),
-    \[
-      \<f,\wtilde{P}_{m,k,\chi}-v_{m,k}\> = 0.
-    \]
-    By \cref{rem:non-degeneracy_of_Petersson_inner_product} the Petersson inner product is non-degenerate so we conclude $v_{m,k}(z) = \wtilde{P}_{m,k,\chi}(z)$. In particular, this shows that the Poincar\'e series $P_{m,k,\chi}(z)$ of positive index are cusp forms (this was already shown in the case of Hecke congruence subgroups). We usually work with the Poincar\'e series $P_{m,k,\chi}(z)$ instead of their normalized counterparts $\wtilde{P}_{m,k,\chi}(z)$. In any case, with \cref{equ:Petersson_inner_product_with_Poincare_series} in hand we can prove the following result:
+    We will work with the Poincar\'e series $P_{m,k,\chi}(z)$ instead of their normalized counterparts $v_{m,k,\chi}(z)$. In any case, with \cref{equ:Petersson_inner_product_with_Poincare_series} in hand we can prove the following result:
 
     \begin{theorem}
-      The Poincar\'e series of positive index span $\mc{S}_{k}(\G)$.
+      The Poincar\'e series of positive index span $\mc{S}_{k}(\G,\chi)$.
     \end{theorem}
     \begin{proof}
-      Let $f \in \mc{S}_{k}(\G)$ with Fourier coefficients $a_{n}(f)$. Since $\G(k-1) \neq 0$, \cref{equ:Petersson_inner_product_with_Poincare_series} implies $\<f,P_{m,k,\chi}\> = 0$ if and only if $a_{m}(f) = 0$. So $f$ is orthogonal to all the Poincar\'e series of positive index if and only if every Fourier coefficient $a_{m}(f)$ is zero. But this happens if and only if $f$ is identically zero.
+      Let $f \in \mc{S}_{k}(\G,\chi)$ with Fourier coefficients $a_{n,\mf{a}}(f)$ at the $\mf{a}$ cusp. Since $\G(k-1) \neq 0$, \cref{equ:Petersson_inner_product_with_Poincare_series} implies $\<f(\s_{\mf{a}}\cdot),P_{m,k,\chi}(\s_{\mf{a}}\cdot)\> = 0$ if and only if $a_{m,\mf{a}}(f) = 0$. So $f(\s_{\mf{a}}z)$ is orthogonal to all the Poincar\'e series $P_{m,k,\chi}(\s_{\mf{a}}z)$ of positive index if and only if every Fourier coefficient $a_{m,\mf{a}}(f)$ is zero. But this happens if and only if $f$ is identically zero.
     \end{proof}
   \section{Double Coset Operators}
     We are ready to introduce a class of general operators, depending upon double cosets, on a congruence subgroup $\G$ of level $N$. We will use these operators to define the diamond and Hecke operators. For $\a \in \GL_{2}^{+}(\Q)$, consider the double coset
@@ -383,28 +375,7 @@
     \[
       \G_{1}\a\G_{2} = \bigcup_{\b \in \G_{1}\backslash\G_{1}\a\G_{2}}\G_{1}\b,
     \]
-    where the sum is over the orbit representatives $\b$. However, in order for these operators to be well-defined it is necessary that the orbit decomposition above is a finite union. This is indeed the case and we will require two lemmas. The first is that congruence subgroups are preserved under conjugation by elements of $\GL_{2}^{+}(\Q)$ provided we restrict to those elements in $\PSL_{2}(\Z)$:
-
-    \begin{lemma}\label{lem:coset_lemma_1}
-      Let $\G$ be a congruence subgroup and let $\a \in \GL_{2}^{+}(\Q)$. Then $\a^{-1}\G\a \cap \PSL_{2}(\Z)$ is a congruence subgroup.
-    \end{lemma}
-    \begin{proof}
-      Recall that if $\G$ is of level $M$, then $\G(kM) \le \G$ for every $k \ge 1$. Thus there is an integer $\wtilde{N}$ such that $\G(\wtilde{N}) \le \G$, $\wtilde{N}\a \in \GL_{2}^{+}(\Z)$, and $\wtilde{N}\a \in \GL_{2}^{+}(\Z)$. Now let $N = \wtilde{N}^{3}$ and notice that any $\g \in \G(N)$ is of the form
-      \[
-        \g = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}+N\begin{pmatrix} k_{1} & k_{2} \\ k_{3} & k_{4} \end{pmatrix},
-      \]
-      for $k_{1},\ldots,k_{4} \in \Z$. Therefore $\G(N) \subseteq I+N\Mat_{2}(\Z)$. Thus
-      \[
-        \a\G(N)\a^{-1} \le \a(I+N\Mat_{2}(\Z))\a^{-1} = I+\wtilde{N}\Mat_{2}(\Z).
-      \]
-      As every matrix in $\a\G(N)\a^{-1}$ has determinant $1$ and $\G(\wtilde{N}) \subseteq I+\wtilde{N}\Mat_{2}(\Z)$, it follows that $\a\G(N)\a^{-1} \le \G(\wtilde{N})$. As $\G(\wtilde{N}) \le \G$, we conclude
-      \[
-        \G(N) \le \a^{-1}\G\a,
-      \]
-      and intersecting with $\PSL_{2}(\Z)$ completes the proof.
-    \end{proof}
-
-    Note that by \cref{lem:coset_lemma_1}, if $\a^{-1}\G\a \subset \PSL_{2}(\Z)$ then $\a^{-1}\G\a$ is a congruence subgroup of $\G$ is. Moreover, since congruence subgroups are closed under intersection, \cref{lem:coset_lemma_1} further implies that $\a^{-1}\G_{1}\a \cap \G_{2}$ is a congruence subgroup for and two congruence subgroups $\G_{1}$ and $\G_{2}$ any any $\a \in \GL_{2}^{+}(\Q)$. Our second lemma gives a way to describe the orbit representatives for $\G_{1}\a\G_{2}$ in terms of coset representatives:
+    where the sum is over the orbit representatives $\b$. However, in order for these operators to be well-defined it is necessary that the orbit decomposition above is a finite union. This is indeed the case and we will require a lemma which gives a way to describe the orbit representatives for $\G_{1}\a\G_{2}$ in terms of coset representatives:
 
     \begin{lemma}\label{lem:coset_lemma_2}
       Let $\G_{1}$ and $\G_{2}$ be congruence subgroups and let let $\a \in \GL_{2}^{+}(\Q)$. Set $\G_{3} = \a^{-1}\G_{1}\a \cap \G_{2}$. Then left multiplication map
@@ -425,7 +396,7 @@
       which shows that the induced map is also an injection.
     \end{proof}
 
-    With these lemmas in hand, we can prove that the orbit decomposition of $\G_{1}\a\G_{2}$ is finite:
+    With this lemma in hand, we can prove that the orbit decomposition of $\G_{1}\a\G_{2}$ is finite:
 
     \begin{proposition}\label{prop:double_congruence_subgroup_coset_decomposition_is_finite}
       Let $\a \in \GL_{2}^{+}(\Q)$. Then the orbit decomposition
@@ -777,22 +748,14 @@
 
     The diamond and Hecke operators turn out to be normal with respect to the Petersson inner product on the subspace of cusp forms. To prove this fact, we will require a lemma:
 
-    \begin{lemma}\label{lem:Petersson_normality_lemma}
-      Let $\G$ be a congruence subgroup and let $\a \in \GL_{2}^{+}(\Q)$. Then the following are true:
-      \begin{enumerate}[label=(\roman*)]
-        \item If $\a^{-1}\G\a \subseteq \PSL_{2}(\Z)$, then $V_{\a^{-1}\G\a} = V_{\G}$ and $[\PSL_{2}(\Z):\a^{-1}\G\a] = [\PSL_{2}(\Z):\G]$.
-        \item There exist $\b_{1},\ldots,\b_{n} \in \GL_{2}^{+}(\Q)$, where $n = [\G:\a^{-1}\G\a \cap \G] = [\G:\a\G\a^{-1} \cap \G]$, and such that
-        \[
-          \G\a\G = \bigcup_{j}\G\b_{j} = \bigcup_{j}\b_{j}\G.
-        \]
-      \end{enumerate}
+    \begin{lemma}\label{lem:adjoint_lemma}
+      Let $\G$ be a congruence subgroup and let $\a \in \GL_{2}^{+}(\Q)$. Then there exist $\b_{1},\ldots,\b_{n} \in \GL_{2}^{+}(\Q)$, where $n = [\G:\a^{-1}\G\a \cap \G] = [\G:\a\G\a^{-1} \cap \G]$, and such that
+      \[
+        \G\a\G = \bigcup_{j}\G\b_{j} = \bigcup_{j}\b_{j}\G.
+      \]
     \end{lemma}
     \begin{proof}
-      For (i), we claim
-      \[
-        V_{\a^{-1}\G\a} = \int_{\mc{F}_{\a^{-1}\G\a}}\,d\mu = \int_{\mc{F}_{\G}}\,d\mu = V_{\G},
-      \]
-      where the second equality is justified by first making the change of variables $z \to \a z$ and then noting that $\a$ acts as an automorphism on $\H$ so that $\mc{F}_{\G\a} = \mc{F}_{\G}$. The second statement now follows from \cref{equ:Petersson_volume_relation}. For (ii), apply (i) with the congruence subgroup $\a\G\a^{-1} \cap \G$ in place of $\G$ to get
+      Apply \cref{lem:invariance_of_volume} with the congruence subgroup $\a\G\a^{-1} \cap \G$ in place of $\G$ to get
       \[
         [\PSL_{2}(\Z):\a^{-1}\G\a \cap \G] = [\PSL_{2}(\Z):\a\G\a^{-1} \cap \G].
       \]
@@ -818,7 +781,7 @@
       \] 
     \end{proof}
 
-    We can use \cref{lem:Petersson_normality_lemma} to compute adjoints:
+    We can use \cref{lem:adjoint_lemma} to compute adjoints:
 
     \begin{proposition}\label{prop:Petersson_adjoint_holomorphic}
       Let $\G$ be a congruence subgroup and let $\a \in \GL_{2}^{+}(\Q)$. Set $\a' = \det(\a)\a^{-1}$. Then the following are true:
@@ -839,9 +802,9 @@
       \begin{align*}
         \<f[\a]_{k},g\>_{\a^{-1}\G\a} &= \frac{1}{V_{\a^{-1}\G\a}}\int_{\mc{F}_{\a^{-1}\G\a}}(f[\a]_{k})(z)\conj{g(z)}\Im(z)^{k}\,d\mu \\
         &= \frac{1}{V_{\a^{-1}\G\a}}\int_{\mc{F}_{\a^{-1}\G\a}}\det(\a)^{k-1}j(\a,z)^{-k}f(\a z)\conj{g(z)}\Im(z)^{k}\,d\mu \\
-        &= \frac{1}{V_{\G}}\int_{\mc{F}_{\a^{-1}\G\a}}\det(\a)^{k-1}j(\a,z)^{-k}f(\a z)\conj{g(z)}\Im(z)^{k}\,d\mu && \text{\cref{lem:Petersson_normality_lemma} (i)}.
+        &= \frac{1}{V_{\G}}\int_{\mc{F}_{\a^{-1}\G\a}}\det(\a)^{k-1}j(\a,z)^{-k}f(\a z)\conj{g(z)}\Im(z)^{k}\,d\mu && \text{\cref{lem:invariance_of_volume}}.
       \end{align*}
-      Making the change of variables $z \to \a'z$, using the fact $\mc{F}_{\a'\a^{-1}\G\a} = \mc{F}_{\G\a'} = \mc{F}_{\G}$ (because $\a'\a^{-1}$ lies in the center of $\PSL_{2}(\Z)$ and $\a'$ acts as an automorphism on $\H$), and that $\a'$ acts as $\a^{-1}$ on $\H$ (because they differ by a scalar) together give
+      \todo{Making the change of variables $z \to \a'z$ and using the fact that $\mc{F}_{\a'\a^{-1}\G\a} = \mc{F}_{\G\a'} = \mc{F}_{\G}$}, we obtain
       \[
         \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}\det(\a)^{k-1}j(\a,\a'z)^{-k}f(z)\conj{g(\a'z)}\Im(\a'z)^{k}\,d\mu.
       \]
@@ -853,7 +816,7 @@
       \[
         \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}\det(\a')^{k-1}\conj{j(\a',z)^{-k}}f(z)\conj{g(\a'z)}\Im(z)^{k}\,d\mu = \<f,g[\a']_{k}\>_{\G},
       \]
-      which completes the proof of (i). To prove (ii), the coset decomposition $\G\a\G = \bigcup_{j}\G\b_{j}$ from \cref{lem:Petersson_normality_lemma} (ii) implies we can use the $\b_{j}$ as representatives in the definition of the $[\G\a\G]_{k}$ operator. As the $\b_{j}$ also satisfy $\G\a\G = \bigcup_{j}\b_{j}\G$, upon inverting $\b_{j}$ and noting that $\b_{j} \in \G\a$, we obtain $\G\a^{-1}\G = \bigcup_{j}\G\b_{j}^{-1}$. Since scalar multiplication commutes with matrices and the matrices in $\G$ have determinant $1$, we conclude that $\G\a'\G = \bigcup_{j}\G\b_{j}'$ where $\b_{j}' = \det(\b_{j})\b_{j}^{-1}$ (also $\det(\b_{j}) = \det(\a)$). So we can use the $\b_{j}'$ as representatives in the definition of the $[\G\a'\G]_{k}$ operator. The statement now follows from (i). The last statement is now obvious.
+      which completes the proof of (i). To prove (ii), the coset decomposition $\G\a\G = \bigcup_{j}\G\b_{j}$ from \cref{lem:adjoint_lemma} implies that we can use the $\b_{j}$ as representatives in the definition of the $[\G\a\G]_{k}$ operator. As the $\b_{j}$ also satisfy $\G\a\G = \bigcup_{j}\b_{j}\G$, upon inverting $\b_{j}$ and noting that $\b_{j} \in \G\a$, we obtain $\G\a^{-1}\G = \bigcup_{j}\G\b_{j}^{-1}$. Since scalar multiplication commutes with matrices and the matrices in $\G$ have determinant $1$, we conclude that $\G\a'\G = \bigcup_{j}\G\b_{j}'$ where $\b_{j}' = \det(\b_{j})\b_{j}^{-1}$ (also $\det(\b_{j}) = \det(\a)$). So we can use the $\b_{j}'$ as representatives in the definition of the $[\G\a'\G]_{k}$ operator. The statement now follows from (i). The last statement is now obvious.
     \end{proof}
 
     We can now prove that the diamond and Hecke operators are normal:
