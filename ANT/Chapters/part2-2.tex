@@ -24,7 +24,7 @@
     \[
       (f|_{j,k}\g)(z) = j(\g,z)^{-k}f(\g z).
     \]
-    If an operator commutes with the slash operators $|_{j,k}\g$ for every $\g \in \PSL_{2}(\Z)$, we say that it is \textbf{invariant}\index{invariant}. Now let $\G$ be a congruence subgroup of level $N$ that is reduced at infinity and let $\chi$ be a Dirichlet character of conductor $q \mid N$. Set $\chi(\g) = \chi(d)$ for all for all $\g = \begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix} \in \G$. We say that a function $f:\H \to \C$ is \textbf{holomorphic form}\index{holomorphic form} (or \textbf{modular form}\index{modular form}) on $\GH$ of \textbf{weight}\index{weight} $k$, \textbf{level}\index{level} $N$, and \textbf{character}\index{character} $\chi$, if the following properties are satisfied:
+    If $j$ and $k$ are clear from content we will suppress this dependencies accordingly. If an operator commutes with the slash operators $|_{j,k}\g$ for every $\g \in \PSL_{2}(\Z)$, we say that it is \textbf{invariant}\index{invariant}. Now let $\G$ be a congruence subgroup of level $N$ that is reduced at infinity and let $\chi$ be a Dirichlet character of conductor $q \mid N$. Set $\chi(\g) = \chi(d)$ for all for all $\g = \begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix} \in \G$. We say that a function $f:\H \to \C$ is \textbf{holomorphic form}\index{holomorphic form} (or \textbf{modular form}\index{modular form}) on $\GH$ of \textbf{weight}\index{weight} $k$, \textbf{level}\index{level} $N$, and \textbf{character}\index{character} $\chi$, if the following properties are satisfied:
     \begin{enumerate}[label=(\roman*)]
       \item $f$ is holomorphic on $\H$.
       \item $(f|_{j,k}\g)(z) = \chi(\g)f(z)$ for all $\g \in \G$.
@@ -50,17 +50,13 @@
     \[
       f(z+1) = f\left(\begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}z\right) = f(z),
     \]
-    so that $f$ is $1$-periodic. Let $\s_{\mf{a}}$ be a scaling matrix for the $\mf{a}$ cusp. As $\G_{\mf{a}} = \s_{\mf{a}}\G_{\infty}\s_{\mf{a}}^{-1}$, or equivalently $\G_{\mf{a}}\s_{\mf{a}} = \s_{\mf{a}}\G_{\infty}$, the function $f(\s_{\mf{a}}z)$ is independent of the scaling matrix $\s_{\mf{a}}$. Moreover, \cref{lem:coset_lemma_1} implies $\s_{\mf{a}}^{-1}\G\s_{\mf{a}}$ is a congruence subgroup and it follows that $f(\s_{\mf{a}}z)$ is a holomorphic form on $\s_{\mf{a}}^{-1}\G\s_{\mf{a}}\backslash\H$ of the same weight, level, and character as $f$. In particular,
+    so that $f$ is $1$-periodic. Let $\s_{\mf{a}}$ be a scaling matrix for the $\mf{a}$ cusp. As $\G_{\mf{a}} = \s_{\mf{a}}\G_{\infty}\s_{\mf{a}}^{-1}$, or equivalently $\G_{\mf{a}}\s_{\mf{a}} = \s_{\mf{a}}\G_{\infty}$, the function $f(\s_{\mf{a}}z)$ is independent of the scaling matrix $\s_{\mf{a}}$. Moreover, \cref{lem:coset_lemma_1} implies $\s_{\mf{a}}^{-1}\G\s_{\mf{a}}$ is a congruence subgroup and it follows by the cocycle condition that $f|\s_{\mf{a}}$ is a holomorphic form on $\s_{\mf{a}}^{-1}\G\s_{\mf{a}}\backslash\H$ of the same weight and character as $f$. In particular, $f(\s_{\mf{a}}z)$ is $1$-periodic. Note that this means we only need to verify the growth condition as $y \to \infty$. Moreover, as $f|\s_{\mf{a}}$ is holomorphic it has a Fourier series
     \[
-      f(\s_{\mf{a}}(z+1)) = f(\s_{\mf{a}}z).
+      (f|\s_{\mf{a}})(z) = \sum_{n \ge 0}a_{\mf{a}}(n,y)e^{2\pi inx},
     \]
-    Thus $f(\s_{\mf{a}}z)$ is $1$-periodic. Note that this means we only need to verify the growth condition as $y \to \infty$. As $f$ is holomorphic, $f(\s_{\mf{a}}z)$ has a Fourier series
+    where the sum is only over $n \ge 0$ because holomorphy at the cusps implies that $f|\s_{\mf{a}}$ is bounded. We can simplify the Fourier coefficients $a_{\mf{a}}(n,y)$. To see this, since $f|\s_{\mf{a}}$ is holomorphic it satisfies the first order Cauchy-Riemann equations so that
     \[
-      f(\s_{\mf{a}}z) = \sum_{n \ge 0}a_{\mf{a}}(n,y)e^{2\pi inx},
-    \]
-    where the sum is only over $n \ge 0$ because holomorphy at the cusps implies that $f(\s_{\mf{a}}z)$ is bounded. We can simplify the Fourier coefficients $a_{\mf{a}}(n,y)$. To see this, since $f$ is holomorphic it satisfies the first order Cauchy-Riemann equations so that
-    \[
-      \frac{1}{2}\left(\frac{\del f}{\del x}+i\frac{\del f}{\del y}\right) = 0.
+      \frac{1}{2}\left(\frac{\del f|\s_{\mf{a}}}{\del x}+i\frac{\del f|\s_{\mf{a}}}{\del y}\right) = 0.
     \]
     Substituting in the Fourier series and equating coefficients we obtain the ODE
     \[
@@ -72,57 +68,56 @@
     \]
     The coefficients $a_{\mf{a}}(n)$ are the only part of the Fourier series depending on the implicit congruence subgroup $\G$. Using these coefficients instead, $f$ admits a \textbf{Fourier series at the $\mf{a}$ cusp}\index{Fourier series at the $\mf{a}$ cusp}:
     \[
-      f(\s_{\mf{a}}z) = \sum_{n \ge 0}a_{\mf{a}}(n)e^{2\pi inz}.
+      (f|\s_{\mf{a}})(z) = \sum_{n \ge 0}a_{\mf{a}}(n)e^{2\pi inz}.
     \]
-    If $\mf{a} = \infty$, we will drop this dependence. Moreover, property (iv) implies that $f$ is a cusp form if and only if $a_{\mf{a}}(n) = 0$ for every cusp $\mf{a}$. We can also easily derive a bound for the size of the Fourier coefficients of cusp forms. To see this, note that $\left|f(\s_{\mf{a}}z)\Im(\s_{\mf{a}}z)^{\frac{k}{2}}\right|$ is $\s_{\mf{a}}^{-1}\G\s_{\mf{a}}$-invariant by the modularity of $f$, that $\Im(\g z)^{\frac{k}{2}} = \frac{\Im(z)^{\frac{k}{2}}}{|j(\g,z)|^{k}}$, and that $|\chi(\g)| = 1$. Moreover, this function is bounded on $\s_{\mf{a}}^{-1}\mc{F}_{\G}$ because $f$ is a cusp form. Then $\s_{\mf{a}}^{-1}\G\s_{\mf{a}}$-invariance implies $\left|f(\s_{\mf{a}}z)\Im(\s_{\mf{a}}z)^{\frac{k}{2}}\right|$ is bounded on $\H$. From the definition of Fourier series, it follows that
+    If $\mf{a} = \infty$, we will drop this dependence and in this case $f|\s_{\mf{a}} = f$. Moreover, property (iv) implies that $f$ is a cusp form if and only if $a_{\mf{a}}(n) = 0$ for every cusp $\mf{a}$. We can also easily derive a bound for the size of the Fourier coefficients of cusp forms. To see this, note that $\left|(f|\s_{\mf{a}})(z)\Im(\s_{\mf{a}}z)^{\frac{k}{2}}\right|$ is $\s_{\mf{a}}^{-1}\G\s_{\mf{a}}$-invariant by the modularity of $f|\s_{\mf{a}}$, the cocycle condition, the identity $\Im(\g\s_{\mf{a}}z)^{\frac{k}{2}} = \frac{\Im(z)^{\frac{k}{2}}}{|j(\g\s_{\mf{a}},z)|^{k}}$, and that $|\chi(\g)| = 1$. Moreover, this function is bounded on $\mc{F}_{\s_{\mf{a}}^{-1}\G\s_{\mf{a}}}$ because $f$ is a cusp form. Then $\s_{\mf{a}}^{-1}\G\s_{\mf{a}}$-invariance implies $\left|(f|\s_{\mf{a}})(z)\Im(\s_{\mf{a}}z)^{\frac{k}{2}}\right|$ is bounded on $\H$. From the definition of Fourier series, it follows that
     \[
-      a_{\mf{a}}(n)\Im(\s_{\mf{a}}z)^{\frac{k}{2}} = \int_{i\Im(\s_{\mf{a}}z)}^{1+i\Im(\s_{\mf{a}}z)}f(\s_{\mf{a}}z)\Im(\s_{\mf{a}}z)^{\frac{k}{2}}e^{-2\pi inz}\,dz \ll \int_{0}^{1}e^{2\pi ny}\,dx \ll e^{2\pi ny}.
+      a_{\mf{a}}(n)\Im(\s_{\mf{a}}z)^{\frac{k}{2}} = \int_{i\Im(\s_{\mf{a}}z)}^{1+i\Im(\s_{\mf{a}}z)}(f|\s_{\mf{a}})(z)\Im(\s_{\mf{a}}z)^{\frac{k}{2}}e^{-2\pi inz}\,dz \ll \int_{0}^{1}e^{2\pi ny}\,dx \ll e^{2\pi ny}.
     \]
-    Upon setting $\Im(\s_{\mf{a}}z) = \frac{1}{n}$, the right-hand side is absolutely bounded and we obtain
+    Upon setting $\Im(\s_{\mf{a}}z) = \frac{1}{n}$, the last expression is absolutely bounded and we obtain
     \[
       a_{\mf{a}}(n) \ll n^{\frac{k}{2}}.
     \]
     This bound is known as the \textbf{Hecke bound}\index{Hecke bound} for holomorphic forms. It follows from the Hecke bound and the Taylor series of $\frac{1}{1-e^{y}}$ along with its derivatives, that
     \[
-      f(\s_{\mf{a}}z) = O\left(\sum_{n \ge 1}n^{\frac{k}{2}}e^{-2\pi ny}\right) = O\left(\sum_{n \ge 1}n^{k}e^{-2\pi ny}\right) = O\left(\frac{e^{-2\pi y}}{(1-e^{-2\pi y})^{2}}\right) = O(e^{-2\pi y}).
+      (f|\s_{\mf{a}})(z) = O\left(\sum_{n \ge 1}n^{\frac{k}{2}}e^{-2\pi ny}\right) = O\left(\sum_{n \ge 1}n^{k}e^{-2\pi ny}\right) = O\left(\frac{e^{-2\pi y}}{(1-e^{-2\pi y})^{2}}\right) = O(e^{-2\pi y}).
     \]
-    This implies $f(\s_{\mf{a}}z)$ exhibits rapid decay. Accordingly, we say that $f$ exhibits \textbf{rapid decay at the cusps}\index{rapid decay at the cusps}. Observe that $f(\s_{\mf{a}}z)$ is then bounded on $\H$ and, in particular, $f$ is bounded on $\H$.
+    This implies $(f|\s_{\mf{a}})(z)$ exhibits rapid decay. Accordingly, we say that $f$ exhibits \textbf{rapid decay at the cusps}\index{rapid decay at the cusps}. Observe that $(f|\s_{\mf{a}})$ is then bounded on $\H$ and, in particular, $f$ is bounded on $\H$.
   \section{Poincar\'e \& Eisenstein Series}
-    Let $\G$ be a congruence subgroup of level $N$. We will introduce two important classes of holomorphic forms on $\GH$ namely the Poincar\'e and Eisenstein series. Let $m \ge 0$, $k \ge 4$, and $\chi$ be a Dirichlet character with conductor $q \mid N$. We define the $m$-th \textbf{(holomorphic) Poincar\'e series}\index{(holomorphic) Poincar\'e series} $P_{m,k,\chi}(z)$ of weight $k$ with character $\chi$ on $\GH$ by
+    Let $\G$ be a congruence subgroup of level $N$. We will introduce two important classes of holomorphic forms on $\GH$ namely the Poincar\'e and Eisenstein series. Let $m \ge 0$, $k \ge 4$, $\chi$ be a Dirichlet character with conductor $q \mid N$, and $\s_{\mf{a}}$ be a scaling matrix for the $\mf{a}$ cusp. We define the $m$-th \textbf{(holomorphic) Poincar\'e series}\index{(holomorphic) Poincar\'e series} $P_{m,k,\chi,\mf{a}}(z)$ of weight $k$ with character $\chi$ on $\GH$ at the $\mf{a}$ cusp by
     \[
-      P_{m,k,\chi}(z) = \sum_{\g \in \GG}\cchi(\g)j(\g,z)^{-k}e^{2\pi im\g z}.
+      P_{m,k,\chi,\mf{a}}(z) = \sum_{\g \in \G_{\mf{a}}\backslash\G}\cchi(\g)j(\s_{\mf{a}}^{-1}\g,z)^{-k}e^{2\pi im\s_{\mf{a}}^{-1}\g z}.
     \]
-    We call $m$ the \textbf{index}\index{index} of $P_{m,k,\chi}(z)$. If $\chi$ is the trivial character, we will drop this dependence. 
+    We call $m$ the \textbf{index}\index{index} of $P_{m,k,\chi,\mf{a}}(z)$. If $\chi$ is the trivial character or $\mf{a} = \infty$, we will drop these dependencies accordingly. 
 
     \begin{remark}
       The reason why we restrict to $k \ge 4$ is because for $k = 0,2$ the Poincar\'e series need not converge (see \cref{prop:general_lattice_sum_convergence_for_two_variables}).
     \end{remark}
 
-    We first verify that $P_{m,k,\chi}(z)$ is well-defined. It suffices to show that the summands are independent of the representative of $\g$. Indeed, if $\g'$ represents the same element as $\g$ in $\GG$, then they differ on the left by an element of $\eta_{\infty} \in \G_{\infty}$. So suppose $\g' = \eta_{\infty}\g$ with $\eta_{\infty} = \begin{psmallmatrix} 1 & n \\ 0 & 1 \end{psmallmatrix} \in \G_{\infty}$. Then
+    We first verify that $P_{m,k,\chi,\mf{a}}(z)$ is well-defined. It suffices to show that the summands are independent of the representatives $\g$ and $\s_{\mf{a}}$. To see that $\cchi(\g)$ is independent of $\g$, recall that $\G_{\mf{a}} = \s_{\mf{a}}\G_{\infty}\s_{\mf{a}}^{-1}$ and let $\g' = \s_{\mf{a}}\eta_{\infty}\s_{\mf{a}}^{-1}\g$ with $\eta_{\infty} = \begin{psmallmatrix} 1 & n \\ 0 & 1 \end{psmallmatrix} \in \G_{\infty}$. Then
     \[
-      \cchi(\g') = \cchi(\eta_{\infty}\g) = \cchi(\eta_{\infty})\cchi(\g) = \cchi(\g).
+      \cchi(\g') = \cchi(\s_{\mf{a}}\eta_{\infty}\s_{\mf{a}}^{-1}\g) = \cchi(\s_{\mf{a}})\chi(\eta_{\infty})\cchi(\s_{\mf{a}})^{-1}\cchi(\g) = \cchi(\g),
     \]
-    This verifies that $\cchi(\g)$ is independent of the representative $\g$. Similarly, the cocycle condition implies
+    verifying that $\cchi(\g)$ is independent of the representative $\g$. As the set of representatives for the scaling matrix $\s_{\mf{a}}$ is $\s_{\mf{a}}\G_{\infty}$ and the set of representatives for $\g$ is $\G_{\mf{a}}\g$, the set of representatives for $\s_{\mf{a}}^{-1}\g$ is $\G_{\infty}\s_{\mf{a}}^{-1}\G_{\mf{a}}\g$. But as $\G_{\mf{a}} = \s_{\mf{a}}\G_{\infty}\s_{\mf{a}}^{-1}$, this set of representatives is $\G_{\infty}\s_{\mf{a}}^{-1}\g$ and therefore it remains to verify independence from multiplication on the left by an element of $\G_{\infty}$ namely $\eta_{\infty}$. The cocycle relation gives
     \[
-      j(\g',z) = j(\eta_{\infty}\g,z) = j(\eta_{\infty},\g z)j(\g,z) = j(\g,z),
+      j(\eta_{\infty}\s_{\mf{a}}^{-1}\g,z) = j(\eta_{\infty},\s_{\mf{a}}^{-1}\g z)j(\s_{\mf{a}}^{-1}\g,z) = j(\s_{\mf{a}}^{-1}\g,z),
     \]
-    where the last equality follows because $j(\eta_{\infty},\g z) = 1$. This verifies that $j(\g,z)$ is also independent of the representative $\g$. Moreover, we have
+    where the last equality follows because $j(\eta_{\infty},\s_{\mf{a}}^{-1}\g z) = 1$. This verifies that $j(\s_{\mf{a}}^{-1}\g,z)$ is independent of the representatives $\g$ and $\s_{\mf{a}}$. Moreover, we have
     \[
-      e^{2\pi im\g' z} = e^{2\pi im\eta_{\infty}\g z} = e^{2\pi im(\g z+n)} = e^{2\pi im\g z}e^{2\pi imnz} = e^{2\pi im\g z},
+      e^{2\pi im\eta_{\infty}\s_{\mf{a}}^{-1}\g z} = e^{2\pi im(\s_{\mf{a}}^{-1}\g z+n)} = e^{2\pi im\s_{\mf{a}}^{-1}\g}e^{2\pi imnz} = e^{2\pi im\s_{\mf{a}}^{-1}\g},
     \]
-    which verifies that $e^{2\pi im\g z}$ is independent of the representative $\g$ as well. Therefore $P_{m,k,\chi}(z)$ is well-defined. To see that $P_{m,k,\chi}(z)$ is holomorphic on $\H$, first note that $|e^{2\pi im\g z}| = e^{-2\pi m\Im(\g z)} < 1$. Then the Bruhat decomposition for $\G$ gives
+    which verifies that $e^{2\pi im\s_{\mf{a}}^{-1}\g z}$ is independent of the representatives $\g$ and $\s_{\mf{a}}$. Therefore $P_{m,k,\chi,\mf{a}}(z)$ is well-defined. To see that $P_{m,k,\chi,\mf{a}}(z)$ is holomorphic on $\H$, first note that $|e^{2\pi im\s_{\mf{a}}^{-1}\g z}| = e^{-2\pi m\Im(\mf{a}^{-1}\g z)} < 1$. Then the Bruhat decomposition for $\s_{\mf{a}}^{-1}\G$ gives
     \[
-      P_{m,k,\chi}(z) \ll \sum_{(c,d) \in \Z^{2}-\{\mathbf{0}\}}\frac{1}{|cz+d|^{k}}.
+      P_{m,k,\chi,\mf{a}}(z) \ll \sum_{(c,d) \in \Z^{2}-\{\mathbf{0}\}}\frac{1}{|cz+d|^{k}}.
     \]
-    As $k \ge 4$, this latter series is locally absolutely uniformly convergent for $z \in \H$ by \cref{prop:general_lattice_sum_convergence_for_two_variables}. Hence $P_{m,k,\chi}(z)$ does too and so it is holomorphic on $\H$. We now show that $P_{m,k,\chi}(z)$ is modular. This is just a computation:
+    As $k \ge 4$, this latter series is locally absolutely uniformly convergent for $z \in \H$ by \cref{prop:general_lattice_sum_convergence_for_two_variables}. Hence $P_{m,k,\chi,\mf{a}}(z)$ does too and so it is holomorphic on $\H$. We now verify modularity for $P_{m,k,\chi,\mf{a}}(z)$. This is just a computation:
     \begin{align*}
-      P_{m,k,\chi}(\g z) &= \sum_{\g' \in \GG}\cchi(\g')j(\g',\g z)^{-k}e^{2\pi im\g'\g z} \\
-      &= \sum_{\g' \in \GG}\cchi(\g')\left(\frac{j(\g'\g,z)}{j(\g,z)}\right)^{-k}e^{2\pi im\g'\g z} \\
-      &= j(\g,z)^{k}\sum_{\g' \in \GG}\cchi(\g')j(\g'\g,z)^{-k}e^{2\pi im\g'\g z} \\
-      &= \chi(\g)j(\g,z)^{k}\sum_{\g' \in \GG}\cchi(\g')\cchi(\g)j(\g'\g,z)^{-k}e^{2\pi im\g'\g z} \\
-      &= \chi(\g)j(\g,z)^{k}\sum_{\g' \in \GG}\cchi(\g'\g)j(\g'\g,z)^{-k}e^{2\pi im\g'\g z} \\
-      &= \chi(\g)j(\g,z)^{k}\sum_{\g' \in \GG}\cchi(\g')j(\g',z)^{-k}e^{2\pi im\g' z} \\
-      &= \chi(\g)j(\g,z)^{k}P_{m,k,\chi}(z),
+      P_{m,k,\chi,\mf{a}}(\g z) &= \sum_{\g' \in \G_{\mf{a}}\backslash\G}\cchi(\g')j(\s_{\mf{a}}^{-1}\g',\g z)^{-k}j(\g,z)^{-k}e^{2\pi im\s_{\mf{a}}^{-1}\g'\g z} \\
+      &= \sum_{\g' \in \G_{\mf{a}}\backslash\G}\cchi(\g')\left(\frac{j(\s_{\mf{a}}^{-1}\g'\g,z)}{j(\g,z)}\right)^{-k}j(\g,z)^{-k}e^{2\pi im\s_{\mf{a}}^{-1}\g'\g z} \\
+      &= j(\g,z)^{k}\sum_{\g' \in \G_{\mf{a}}\backslash\G}\cchi(\g')j(\s_{\mf{a}}^{-1}\g'\g,z)^{-k}e^{2\pi im\s_{\mf{a}}^{-1}\g'\g z} \\
+      &= \chi(\g)j(\g,z)^{k}\sum_{\g' \in \G_{\mf{a}}\backslash\G}\cchi(\g'\g)j(\s_{\mf{a}}^{-1}\g'\g,z)^{-k}e^{2\pi im\s_{\mf{a}}^{-1}\g'\g z} \\
+      &= \chi(\g)j(\g,z)^{k}\sum_{\g' \in \G_{\mf{a}}\backslash\G}\cchi(\g')j(\s_{\mf{a}}^{-1}\g',z)^{-k}e^{2\pi im\s_{\mf{a}}^{-1}\g' z} \\
+      &= \chi(\g)P_{m,k,\chi,\mf{a}}(z),
     \end{align*}
     where in the second line we have used the cocycle condition and in the second to last line we have used that $\g' \to \g'\g^{-1}$ is a bijection on $\G$. To verify the growth condition, we will need a technical lemma:
 
@@ -161,9 +156,9 @@
       It follows that $f(z,r) > \frac{1}{2}$ outside of $S_{a,b}^{Y} \x [-Y,Y]$. But this latter region is compact and so $f(z,r)$ obtains a minimum $\d'$ on it. Setting $\d = \min\{\frac{1}{2},\d'\}$ completes the proof.
     \end{proof}
 
-    We can now verify the growth condition for $P_{m,k,\chi}(z)$. Let $\s_{\mf{a}}$ be a scaling matrix for the cusp $\mf{a}$. Then the bound $|e^{2\pi im\g z}| = e^{-2\pi m\Im(\g z)} < 1$, cocycle condition, and the Bruhat decomposition for $\G\s_{\mf{a}}$ together give
+    We can now verify the growth condition for $P_{m,k,\chi,\mf{a}}(z)$. Let $\s_{\mf{b}}$ be a scaling matrix for the cusp $\mf{b}$. Then the bound $|e^{2\pi im\s_{\mf{a}}^{-1}\g\s_{\mf{b}}z}| = e^{-2\pi m\Im(\s_{\mf{a}}^{-1}\g\s_{\mf{b}}z)} < 1$, cocycle condition, and Bruhat decomposition for $\s_{\mf{a}}^{-1}\G\s_{\mf{b}}$ together give
     \[
-      j(\s_{\mf{a}},z)^{-k}P_{m,k,\chi}(\s_{\mf{a}}z) \ll \sum_{(c,d) \in \Z^{2}-\{\mathbf{0}\}}\frac{1}{|cz+d|^{k}}.
+      j(\s_{\mf{b}},z)^{-k}P_{m,k,\chi,\mf{a}}(\s_{\mf{b}}z) \ll \sum_{(c,d) \in \Z^{2}-\{\mathbf{0}\}}\frac{1}{|cz+d|^{k}}.
     \]
     Now decompose this last sum as
     \[
@@ -178,23 +173,23 @@
     As $\sum_{c \ge 1}\sum_{d \in \Z}\frac{1}{|ci+d|^{k}}$ converges by \cref{prop:general_lattice_sum_convergence_for_two_variables}, the second sum tends to zero as $N \to \infty$. As for the first sum, it is finite and each term is bounded. Thus the double sum is absolutely uniformly bounded. This verifies the growth condition. We collect this work as a theorem:
 
     \begin{theorem}
-      Let $m \ge 0$, $k \ge 4$, and $\chi$ be a Dirichlet character with conductor $q \mid N$. The Poincar\'e series
+      Let $m \ge 0$, $k \ge 4$, $\chi$ be a Dirichlet character with conductor $q \mid N$, and $\s_{\mf{a}}$ be a scaling matrix for the $\mf{a}$ cusp. The Poincar\'e series
       \[
-        P_{m,k,\chi}(z) = \sum_{\g \in \GG}j(\g,z)^{-k}e^{2\pi im\g z},
+        P_{m,k,\chi,\mf{a}}(z) = \sum_{\g \in \G_{\mf{a}}\backslash\G}j(\s_{\mf{a}}^{-1}\g,z)^{-k}e^{2\pi im\s_{\mf{a}}^{-1}\g z},
       \]
       is a weight $k$ holomorphic form with character $\chi$ on $\GH$.
     \end{theorem}
     
-    For $m = 0$, we write $E_{k,\chi}(z) = P_{0,k,\chi}(z)$ and call $E_{k,\chi}(z)$ the \textbf{(holomorphic) Eisenstein series}\index{(holomorphic) Eisenstein series} of weight $k$ and character $\chi$ on $\GH$. It is defined by
+    For $m = 0$, we write $E_{k,\chi,\mf{a}}(z) = P_{0,k,\chi,\mf{a}}(z)$ and call $E_{k,\chi,\mf{a}}(z)$ the \textbf{(holomorphic) Eisenstein series}\index{(holomorphic) Eisenstein series} of weight $k$ and character $\chi$ on $\GH$ at the $\mf{a}$ cusp. It is defined by
     \[
-      E_{k,\chi}(z) = \sum_{\g \in \GG}\cchi(\g)j(\g,z)^{-k}.
+      E_{k,\chi,\mf{a}}(z) = \sum_{\g \in \G_{\mf{a}}\backslash\G}\cchi(\g)j(\s_{\mf{a}}^{-1}\g,z)^{-k}.
     \]
-    If $\chi$ is the trivial character, we will drop this dependence. In particular, we have already verified the following theorem:
+    If $\chi$ is the trivial character or $\mf{a} = \infty$, we will drop these dependencies accordingly. In particular, we have already verified the following theorem:
 
     \begin{theorem}
-      Let $k \ge 4$ and $\chi$ be Dirichlet character with conductor $q \mid N$. The Eisenstein series
+      Let $k \ge 4$, $\chi$ be Dirichlet character with conductor $q \mid N$, and $\s_{\mf{a}}$ be a scaling matrix for the $\mf{a}$ cusp. The Eisenstein series
       \[
-        E_{k,\chi}(z) = \sum_{\g \in \GG}\cchi(\g)j(\g,z)^{-k},
+        E_{k,\chi,\mf{a}}(z) = \sum_{\g \in \G_{\mf{a}}\backslash\G}\cchi(\g)j(\s_{\mf{a}}^{-1}\g,z)^{-k},
       \]
       is a weight $k$ holomorphic form with character $\chi$ on $\GH$.
     \end{theorem}
@@ -202,32 +197,32 @@
     We will now compute the Fourier series of the Poincar\'e series with positive index:
 
      \begin{proposition}\label{prop:Fourier_series_holomorphic}
-      The Fourier series of $P_{m,k,\chi}(z)$ with $m \ge 1$ on $\GH$ is given by
+      The Fourier series of $P_{m,k,\chi,\mf{a}}(z)$ with $m \ge 1$ on $\GH$ at the $\mf{b}$ cusp is given by
       \[
-        P_{m,k,\chi}(\s_{\mf{a}}z) = \sum_{t \ge 1}\left(\d_{\infty,\mf{a}}\d_{m,t}+\left(\frac{\sqrt{t}}{\sqrt{m}}\right)^{k-1}\sum_{\w_{d/c}}\frac{2\pi i^{-k}}{c}J_{k-1}\left(\frac{4\pi\sqrt{mt}}{c}\right)S_{\chi,\infty,\mf{a}}(n,t,c)\right)e^{2\pi itz}.
+        (P_{m,k,\chi,\mf{a}}|\s_{\mf{b}})(z) = \sum_{t \ge 1}\left(\d_{\mf{a},\mf{b}}\d_{m,t}+\left(\frac{\sqrt{t}}{\sqrt{m}}\right)^{k-1}\sum_{c \in \mc{C}_{\mf{a},\mf{b}}}\frac{2\pi i^{-k}}{c}J_{k-1}\left(\frac{4\pi\sqrt{mt}}{c}\right)S_{\chi,\mf{a},\mf{b}}(m,t,c)\right)e^{2\pi itz}.
       \]
     \end{proposition}
     \begin{proof}
-      From the Bruhat decomposition for $\G\s_{\mf{a}}$ and \cref{rem:Bruhat_modulo_infity_exact}, we have
+      From the cocycle condition and the Bruhat decomposition for $\s_{\mf{a}}^{-1}\G\s_{\mf{b}}$ and \cref{rem:Bruhat_modulo_infity_exact}, we have
       \[
-        P_{m,k,\chi}(\s_{\mf{a}}z) = \d_{\infty,\mf{a}}e^{2\pi imz}+\sum_{\substack{c \in \mc{C}_{\infty,\mf{a}}, d \in \Z \\ d \tmod{c} \in \mc{D}_{\infty,\mf{a}}(c)}}\cchi(d)\frac{e^{2\pi im\left(\frac{a}{c}-\frac{1}{c^{2}z+cd}\right)}}{(cz+d)^{k}},
+        (P_{m,k,\chi,\mf{a}}|\s_{\mf{b}})(z) = \d_{\mf{a},\mf{b}}e^{2\pi imz}+\sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}}, d \in \Z \\ d \tmod{c} \in \mc{D}_{\mf{a},\mf{b}}(c)}}\cchi(d)\frac{e^{2\pi im\left(\frac{a}{c}-\frac{1}{c^{2}z+cd}\right)}}{(cz+d)^{k}},
       \]
       where $a$ has been determined modulo $c$ by $ad-bc = 1$ and we have used the fact that
       \[
         \frac{a}{c}-\frac{1}{c^{2}z+cd} = \frac{az+b}{cz+d}.
       \]
-      Summing over all pairs $(c,d)$ with $c \in \mc{C}_{\infty,\mf{a}}$, $d \in \Z$, and $d \in \mc{D}_{\infty,\mf{a}}(c)$ is the same as summing over all triples $(c,\ell,r)$ with $c \in \mc{C}_{\infty,\mf{a}}$, $\ell \in \Z$, and $r$ taken modulo $c$ with $r \in \mc{D}_{\infty,\mf{a}}(c)$. Indeed, this is seen by writing $d = c\ell+r$. Moreover, since $ad-bc = 1$ we have $a(c\ell+r)-bc = 1$ which further implies that $ar \equiv 1 \tmod{c}$. So we may take $a$ to be the inverse for $r$ modulo $c$. Then
+      Summing over all pairs $(c,d)$ with $c \in \mc{C}_{\mf{a},\mf{b}}$, $d \in \Z$, and $d \in \mc{D}_{\mf{a},\mf{b}}(c)$ is the same as summing over all triples $(c,\ell,r)$ with $c \in \mc{C}_{\mf{a},\mf{b}}$, $\ell \in \Z$, and $r$ taken modulo $c$ with $r \in \mc{D}_{\mf{a},\mf{b}}(c)$. Indeed, this is seen by writing $d = c\ell+r$. Moreover, since $ad-bc = 1$ we have $a(c\ell+r)-bc = 1$ which further implies that $ar \equiv 1 \tmod{c}$. So we may take $a$ to be the inverse for $r$ modulo $c$. Then
       \begin{align*}
-        \sum_{\substack{c \in \mc{C}_{\infty,\mf{a}}, d \in \Z \\ d \tmod{c} \in \mc{D}_{\infty,\mf{a}}(c)}}\cchi(d)\frac{e^{2\pi im\left(\frac{a}{c}-\frac{1}{c^{2}z+cd}\right)}}{(cz+d)^{k}} &= \sum_{(c,\ell,r)}\cchi(c\ell+r)\frac{e^{2\pi im\left(\frac{a}{c}-\frac{1}{c^{2}z+c^{2}\ell+cr}\right)}}{(cz+c\ell+r)^{k}} \\
+        \sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}}, d \in \Z \\ d \tmod{c} \in \mc{D}_{\mf{a},\mf{b}}(c)}}\cchi(d)\frac{e^{2\pi im\left(\frac{a}{c}-\frac{1}{c^{2}z+cd}\right)}}{(cz+d)^{k}} &= \sum_{(c,\ell,r)}\cchi(c\ell+r)\frac{e^{2\pi im\left(\frac{a}{c}-\frac{1}{c^{2}z+c^{2}\ell+cr}\right)}}{(cz+c\ell+r)^{k}} \\
         &= \sum_{(c,\ell,r)}\cchi(r)\frac{e^{2\pi im\left(\frac{a}{c}-\frac{1}{c^{2}z+c^{2}\ell+cr}\right)}}{(cz+c\ell+r)^{k}} \\
-        &= \sum_{\substack{c \in \mc{C}_{\infty,\mf{a}} \\ r \in \mc{D}_{\infty,\mf{a}}(c)}}\sum_{\ell \in \Z}\cchi(r)\frac{e^{2\pi im\left(\frac{a}{c}-\frac{1}{c^{2}z+c^{2}\ell+cr}\right)}}{(cz+c\ell+r)^{k}} \\
-        &= \sum_{\substack{c \in \mc{C}_{\infty,\mf{a}} \\ r \in \mc{D}_{\infty,\mf{a}}(c)}}\cchi(r)\sum_{\ell \in \Z}\frac{e^{2\pi im\left(\frac{a}{c}-\frac{1}{c^{2}z+c^{2}\ell+cr}\right)}}{(cz+c\ell+r)^{k}},
+        &= \sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}} \\ r \in \mc{D}_{\mf{a},\mf{b}}(c)}}\sum_{\ell \in \Z}\cchi(r)\frac{e^{2\pi im\left(\frac{a}{c}-\frac{1}{c^{2}z+c^{2}\ell+cr}\right)}}{(cz+c\ell+r)^{k}} \\
+        &= \sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}} \\ r \in \mc{D}_{\mf{a},\mf{b}}(c)}}\cchi(r)\sum_{\ell \in \Z}\frac{e^{2\pi im\left(\frac{a}{c}-\frac{1}{c^{2}z+c^{2}\ell+cr}\right)}}{(cz+c\ell+r)^{k}},
       \end{align*}
       where on the right-hand side it is understood that we are summing over all triples $(c,\ell,r)$ with the prescribed properties and the second line holds since $\chi$ has conductor $q \mid N$ and $c \equiv 0 \tmod{N}$. Now let
       \[
         I_{c,r}(z) = \sum_{\ell \in \Z}\frac{e^{2\pi im\left(\frac{a}{c}-\frac{1}{c^{2}z+c^{2}\ell+cr}\right)}}{(cz+c\ell+r)^{k}}.
       \]
-      We will apply the Poisson summation formula to $I_{c,r}(z)$. This is possible since the summands are absolutely integrable by \cref{prop:decay_unbounded_inteval_integral} because they exhibit polynomial decay of order $k$ and $I_{c,r}(z)$ is holomorphic because $P_{m,k,\chi}(\s_{\mf{a}}z)$ is. By the identity theorem it suffices to apply the Poisson summation formula for $z = iy$ with $y > 0$. Accordingly, let $f(x)$ be given by
+      We will apply the Poisson summation formula to $I_{c,r}(z)$. This is possible since the summands are absolutely integrable by \cref{prop:decay_unbounded_inteval_integral} because they exhibit polynomial decay of order $k$ and $I_{c,r}(z)$ is holomorphic because $(P_{m,k,\chi,\mf{a}}|\s_{\mf{b}})(z)$ is. By the identity theorem it suffices to apply the Poisson summation formula for $z = iy$ with $y > 0$. Accordingly, let $f(x)$ be given by
       \[
         f(x) = \frac{e^{2\pi im\left(\frac{a}{c}-\frac{1}{c^{2}x+cr+ic^{2}y}\right)}}{(cx+r+icy)^{k}}.
       \]
@@ -264,17 +259,17 @@
       \]
       for all $z \in \H$. Plugging this back into the Poincar\'e series gives a form of the Fourier series:
       \begin{align*}
-        P_{m,k,\chi}(\s_{\mf{a}}z) &= \d_{\infty,\mf{a}}e^{2\pi imz}+\sum_{\substack{c \in \mc{C}_{\infty,\mf{a}} \\ r \in \mc{D}_{\infty,\mf{a}}}}\cchi(r)\sum_{t \ge 1}\left(\frac{2\pi i^{-k}}{c}\left(\frac{\sqrt{t}}{\sqrt{m}}\right)^{k-1}J_{k-1}\left(\frac{4\pi\sqrt{mt}}{c}\right)e^{2\pi im\frac{a}{c}+2\pi it\frac{r}{c}}\right)e^{2\pi imz} \\
-        &= \sum_{t \ge 1}\left(\d_{\infty,\mf{a}}\d_{m,t}+\left(\frac{\sqrt{t}}{\sqrt{m}}\right)^{k-1}\sum_{\substack{c \in \mc{C}_{\infty,\mf{a}} \\ r \in \mc{D}_{\infty,\mf{a}}}}\cchi(r)\frac{2\pi i^{-k}}{c}J_{k-1}\left(\frac{4\pi\sqrt{mt}}{c}\right)e^{2\pi im\frac{a}{c}+2\pi it\frac{r}{c}}\right)e^{2\pi itz} \\
-        &= \sum_{t \ge 1}\left(\d_{\infty,\mf{a}}\d_{m,t}+\left(\frac{\sqrt{t}}{\sqrt{m}}\right)^{k-1}\sum_{\substack{c \in \mc{C}_{\infty,\mf{a}}}}\frac{2\pi i^{-k}}{c}J_{k-1}\left(\frac{4\pi\sqrt{mt}}{c}\right)\sum_{r \in \mc{D}_{\infty,\mf{a}}}\cchi(r)e^{2\pi im\frac{a}{c}+2\pi it\frac{r}{c}}\right)e^{2\pi itz}.
+        (P_{m,k,\chi,\mf{a}}|\s_{\mf{b}})(z) &= \d_{\mf{a},\mf{b}}e^{2\pi imz}+\sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}} \\ r \in \mc{D}_{\mf{a},\mf{b}}}}\cchi(r)\sum_{t \ge 1}\left(\frac{2\pi i^{-k}}{c}\left(\frac{\sqrt{t}}{\sqrt{m}}\right)^{k-1}J_{k-1}\left(\frac{4\pi\sqrt{mt}}{c}\right)e^{2\pi im\frac{a}{c}+2\pi it\frac{r}{c}}\right)e^{2\pi imz} \\
+        &= \sum_{t \ge 1}\left(\d_{\mf{a},\mf{b}}\d_{m,t}+\left(\frac{\sqrt{t}}{\sqrt{m}}\right)^{k-1}\sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}} \\ r \in \mc{D}_{\mf{a},\mf{b}}}}\cchi(r)\frac{2\pi i^{-k}}{c}J_{k-1}\left(\frac{4\pi\sqrt{mt}}{c}\right)e^{2\pi im\frac{a}{c}+2\pi it\frac{r}{c}}\right)e^{2\pi itz} \\
+        &= \sum_{t \ge 1}\left(\d_{\mf{a},\mf{b}}\d_{m,t}+\left(\frac{\sqrt{t}}{\sqrt{m}}\right)^{k-1}\sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}}}}\frac{2\pi i^{-k}}{c}J_{k-1}\left(\frac{4\pi\sqrt{mt}}{c}\right)\sum_{r \in \mc{D}_{\mf{a},\mf{b}}}\cchi(r)e^{2\pi im\frac{a}{c}+2\pi it\frac{r}{c}}\right)e^{2\pi itz}.
       \end{align*}
       We will simplify the innermost sum. Since $a$ is the inverse for $r$ modulo $c$, the innermost sum above becomes
       \[
-        \sum_{r \in \mc{D}_{\infty,\mf{a}}}\cchi(r)e^{2\pi im\frac{a}{c}+2\pi it\frac{r}{c}} = \sum_{r \in \mc{D}_{\infty,\mf{a}}}\cchi(\conj{a})e^{2\pi im\frac{a}{c}+2\pi it\frac{\conj{a}}{c}} = \sum_{r \in \mc{D}_{\infty,\mf{a}}}\chi(a)e^{\frac{2\pi i(an+\conj{a}t)}{c}} = S_{\chi,\infty,\mf{a}}(n,t,c).
+        \sum_{r \in \mc{D}_{\mf{a},\mf{b}}}\cchi(r)e^{2\pi im\frac{a}{c}+2\pi it\frac{r}{c}} = \sum_{r \in \mc{D}_{\mf{a},\mf{b}}}\cchi(\conj{a})e^{2\pi im\frac{a}{c}+2\pi it\frac{\conj{a}}{c}} = \sum_{r \in \mc{D}_{\mf{a},\mf{b}}}\chi(a)e^{\frac{2\pi i(am+\conj{a}t)}{c}} = S_{\chi,\mf{a},\mf{b}}(m,t,c).
       \]
       So at last, we obtain our desired Fourier series:
       \[
-        P_{m,k,\chi}(\s_{\mf{a}}z) = \sum_{t \ge 1}\left(\d_{\infty,\mf{a}}\d_{m,t}+\left(\frac{\sqrt{t}}{\sqrt{m}}\right)^{k-1}\sum_{\substack{c \in \mc{C}_{\infty,\mf{a}}}}\frac{2\pi i^{-k}}{c}J_{k-1}\left(\frac{4\pi\sqrt{mt}}{c}\right)S_{\chi,\infty,\mf{a}}(n,t,c)\right)e^{2\pi itz}.
+        (P_{m,k,\chi,\mf{a}}|\s_{\mf{b}})(z) = \sum_{t \ge 1}\left(\d_{\mf{a},\mf{b}}\d_{m,t}+\left(\frac{\sqrt{t}}{\sqrt{m}}\right)^{k-1}\sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}}}}\frac{2\pi i^{-k}}{c}J_{k-1}\left(\frac{4\pi\sqrt{mt}}{c}\right)S_{\chi,\mf{a},\mf{b}}(m,t,c)\right)e^{2\pi itz}.
       \]
     \end{proof}
 
@@ -319,23 +314,29 @@
       As a consequence of \cref{prop:Petersson_inner_product_hermitian}, the Petersson inner product is also non-degenerate on $\mc{S}_{k}(\G,\chi)$. Actually, for the exact same reasoning this holds on $\mc{S}_{k}(\G,\chi) \x \mc{M}_{k}(\G,\chi)$ wherever the Petersson inner product is defined.
     \end{remark}
 
-    Now suppose $f \in \mc{S}_{k}(\G,\chi)$ with Fourier coefficients $a_{n,\mf{a}}(f)$ at the $\mf{a}$ cusp and let $\s_{\mf{a}}$ be a scaling matrix for this cusp. Define linear functionals $\phi_{m,k,\chi,\mf{a}}:\mc{S}_{k}(\G,\chi) \to \C$ by 
+    Now suppose $f \in \mc{S}_{k}(\G,\chi)$ with Fourier coefficients $a_{n,\mf{a}}(f)$ at the $\mf{a}$ cusp. Define linear functionals $\phi_{m,k,\chi,\mf{a}}:\mc{S}_{k}(\G,\chi) \to \C$ by 
     \[
       \phi_{m,k,\chi,\mf{a}}(f) = a_{m,\mf{a}}(f).
     \]
-    Since $f(\s_{\mf{a}}z)$ is a holomorphic form on $\s_{\mf{a}}^{-1}\G\s_{\mf{a}}\backslash\H$ of the same weight, level, and character as $f$, and $\mc{S}_{k}(\s_{\mf{a}}^{-1}\G\s_{\mf{a}},\chi)$ is a finite dimensional Hilbert space, the Riesz representation theorem implies that there exists unique $v_{m,k}(\s_{\mf{a}}z) \in \mc{S}_{k}(\s_{\mf{a}}^{-1}\G\s_{\mf{a}},\chi)$ such that
+    Since $\mc{S}_{k}(\G,\chi)$ is a finite dimensional Hilbert space, the Riesz representation theorem implies that there exists unique $v_{m,k,\chi,\mf{a}}(z) \in \mc{S}_{k}(\G,\chi)$ such that
     \[
-      \<f(\s_{\mf{a}}\cdot),v_{m,k}(\s_{\mf{a}}\cdot)\> = \phi_{m,k,\mf{a}}(f) = a_{m,\mf{a}}(f),
+      \<f,v_{m,k,\chi,\mf{a}}\> = \phi_{m,k,\chi,\mf{a}}(f) = a_{m,\mf{a}}(f),
     \]
-    for any scaling matrix $\s_{\mf{a}}$. We would like to know what these cusp forms are. It turns out that $v_{m,k}(z)$ will be the Poincar\'e series $P_{m,k,\chi}(z)$ up to a normalization factor. To see this, we compute the following inner product:
+    We would like to know what these cusp forms are. It turns out that $v_{m,k,\chi,\mf{a}}(z)$ will be the Poincar\'e series $P_{m,k,\chi,\mf{a}}(z)$ of positive index up to a normalization factor. To see this, we compute the following inner product:
     \begin{align*}
-      \<f(\s_{\mf{a}}\cdot),P_{m,k,\chi}(\s_{\mf{a}}\cdot)\>_{\s_{\mf{a}}^{-1}\G\s_{\mf{a}}} &= \frac{1}{V_{\s_{\mf{a}}^{-1}\G\s_{\mf{a}}}}\int_{\mc{F}_{\s_{\mf{a}}^{-1}\G\s_{\mf{a}}}}f(\s_{\mf{a}}z)\conj{P_{m,k,\chi}(\s_{\mf{a}}z)}\Im(z)^{k}\,d\mu \\
-      &= \frac{1}{V_{\G}}\int_{\mc{F}_{\s_{\mf{a}}^{-1}\G\s_{\mf{a}}}}f(\s_{\mf{a}}z)\conj{P_{m,k,\chi}(\s_{\mf{a}}z)}\Im(z)^{k}\,d\mu && \text{\cref{lem:invariance_of_volume}} \\
-      &= \todo{XXX}.
+      \<f,P_{m,k,\chi,\mf{a}}\> &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}f(z)\conj{P_{m,k,\chi,\mf{a}}(z)}\Im(z)^{k}\,d\mu \\
+      &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}\sum_{\g \in \G_{\a}\backslash\G}\chi(\g)\conj{j(\s_{\mf{a}}^{-1}\g,z)^{-k}}f(z)e^{2\pi m\conj{\s_{\mf{a}}^{-1}\g z}}\Im(z)^{k}\,d\mu \\
+      &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}\sum_{\g \in \G_{\a}\backslash\G}\chi(\g)j(\s_{\mf{a}}^{-1}\g,z)^{k}f(z)e^{2\pi m\conj{\s_{\mf{a}}^{-1}\g z}}\Im(\s_{\mf{a}}^{-1}\g z)^{k}\,d\mu \\
+      &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}\sum_{\g \in \G_{\a}\backslash\G}\left(\frac{j(\s_{\mf{a}}^{-1}\g,z)}{j(\g,z)}\right)^{k}f(\g z)e^{2\pi m\conj{\s_{\mf{a}}^{-1}\g z}}\Im(\s_{\mf{a}}^{-1}\g z)^{k}\,d\mu && \text{modularity} \\
+      &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}\sum_{\g \in \G_{\a}\backslash\G}j(\s_{\mf{a}},\s_{\mf{a}}^{-1}\g z)^{k}f(\g z)e^{2\pi m\conj{\s_{\mf{a}}^{-1}\g z}}\Im(\s_{\mf{a}}^{-1}\g z)^{k}\,d\mu && \text{cocycle condition} \\
+      &= \frac{1}{V_{\G}}\int_{\mc{F}_{\s_{\mf{a}}^{-1}\G\s_{\mf{a}}}}\sum_{\g \in \G_{\a}\backslash\G}j(\s_{\mf{a}},\s_{\mf{a}}^{-1}\g\s_{\mf{a}}z)^{k}f(\g\s_{\mf{a}}z)e^{2\pi m\conj{\s_{\mf{a}}^{-1}\g\s_{\mf{a}}z}}\Im(\s_{\mf{a}}^{-1}\g\s_{\mf{a}}z)^{k}\,d\mu && \text{$z \to \s_{\mf{a}}z$} \\
+      &= \frac{1}{V_{\G}}\int_{\mc{F}_{\s_{\mf{a}}^{-1}\G\s_{\mf{a}}}}\sum_{\g \in \G_{\infty}\backslash\s_{\mf{a}}^{-1}\G\s_{\mf{a}}}j(\s_{\mf{a}},\g z)^{k}f(\s_{\mf{a}}\g z)e^{2\pi m\conj{\g z}}\Im(\g z)^{k}\,d\mu && \text{$\g \to \s_{\mf{a}}\g\s_{\mf{a}}^{-1}$} \\
+      &= \frac{1}{V_{\G}}\int_{\mc{F}_{\s_{\mf{a}}^{-1}\G\s_{\mf{a}}}}\sum_{\g \in \G_{\infty}\backslash\s_{\mf{a}}^{-1}\G\s_{\mf{a}}}(f|\s_{\mf{a}})(\g z)e^{2\pi m\conj{\g z}}\Im(\g z)^{k}\,d\mu && \\
+      &= \frac{1}{V_{\G}}\int_{\G_{\infty}\backslash\H}(f|\s_{\mf{a}})(z)e^{2\pi m\conj{z}}\Im(z)^{k}\,d\mu && \text{unfolding.}
     \end{align*}
-    Now we can substitute in the Fourier series of $f$ at the $\mf{a}$ cusp and finish the computation:
+    Substituting in the Fourier series of $f$ at the $\mf{a}$ cusp, we can finish the computation:
     \begin{align*}
-      \frac{1}{V_{\G}}\int_{0}^{\infty}\int_{0}^{1}f(\s_{\mf{a}}(x+iy))e^{-2\pi im(x-iy)}y^{k}\,\frac{dx\,dy}{y^{2}} &= \frac{1}{V_{\G}}\int_{0}^{\infty}\int_{0}^{1}\sum_{n \ge 1}a_{n,\mf{a}}(f)e^{2\pi i(n-m)x}e^{-2\pi(n+m)y}y^{k}\,\frac{dx\,dy}{y^{2}} \\
+       \frac{1}{V_{\G}}\int_{\G_{\infty}\backslash\H}(f|\s_{\mf{a}})(z)e^{2\pi m\conj{z}}\Im(z)^{k}\,d\mu &= \frac{1}{V_{\G}}\int_{0}^{\infty}\int_{0}^{1}\sum_{n \ge 1}a_{n,\mf{a}}(f)e^{2\pi i(n-m)x}e^{-2\pi(n+m)y}y^{k}\,\frac{dx\,dy}{y^{2}} \\
       &= \frac{1}{V_{\G}}\int_{0}^{\infty}\sum_{n \ge 1}\int_{0}^{1}a_{n,\mf{a}}(f)e^{2\pi i(n-m)x}e^{-2\pi(n+m)y}y^{k}\,\frac{dx\,dy}{y^{2}} && \text{DCT} \\
       &= \frac{1}{V_{\G}}\int_{0}^{\infty}a_{m,\mf{a}}(f)e^{-4\pi my}y^{k}\,\frac{dy}{y^{2}},
     \end{align*}
@@ -352,7 +353,7 @@
     \end{align*}
     In conclusion,
     \begin{equation}\label{equ:Petersson_inner_product_with_Poincare_series}
-      \<f(\s_{\mf{a}}\cdot),P_{m,k,\chi}(\s_{\mf{a}}\cdot)\> = \frac{\G(k-1)}{V_{\G}(4\pi m)^{k-1}}a_{m,\mf{a}}(f),
+      \<f,P_{m,k,\chi,\mf{a}}\> = \frac{\G(k-1)}{V_{\G}(4\pi m)^{k-1}}a_{m,\mf{a}}(f),
     \end{equation}
     and it follows that
     \[
@@ -364,7 +365,7 @@
       The Poincar\'e series of positive index span $\mc{S}_{k}(\G,\chi)$.
     \end{theorem}
     \begin{proof}
-      Let $f \in \mc{S}_{k}(\G,\chi)$ with Fourier coefficients $a_{n,\mf{a}}(f)$ at the $\mf{a}$ cusp. Since $\G(k-1) \neq 0$, \cref{equ:Petersson_inner_product_with_Poincare_series} implies $\<f(\s_{\mf{a}}\cdot),P_{m,k,\chi}(\s_{\mf{a}}\cdot)\> = 0$ if and only if $a_{m,\mf{a}}(f) = 0$. So $f(\s_{\mf{a}}z)$ is orthogonal to all the Poincar\'e series $P_{m,k,\chi}(\s_{\mf{a}}z)$ of positive index if and only if every Fourier coefficient $a_{m,\mf{a}}(f)$ is zero. But this happens if and only if $f$ is identically zero.
+      Let $f \in \mc{S}_{k}(\G,\chi)$ with Fourier coefficients $a_{n,\mf{a}}(f)$ at the $\mf{a}$ cusp. Since $\G(k-1) \neq 0$, \cref{equ:Petersson_inner_product_with_Poincare_series} implies $\<f,P_{m,k,\chi,\mf{a}}\> = 0$ if and only if $a_{m,\mf{a}}(f) = 0$. So $f$ is orthogonal to all the Poincar\'e series $P_{m,k,\chi,\mf{a}}$ of positive index if and only if every Fourier coefficient $a_{m,\mf{a}}(f)$ is zero. But this happens if and only if $f$ is identically zero.
     \end{proof}
   \section{Double Coset Operators}
     We are ready to introduce a class of general operators, depending upon double cosets, on a congruence subgroup $\G$ of level $N$. We will use these operators to define the diamond and Hecke operators. For $\a \in \GL_{2}^{+}(\Q)$, consider the double coset
@@ -444,11 +445,11 @@
         &= \sum_{j}\det(\b_{j}\g)^{k-1}j(\b_{j},\g z)^{-k}f(\b_{j}\g z) && \text{$\det(\g) = 1$} \\
         &= \sum_{j}\det(\b_{j}\g)^{k-1}\left(\frac{j(\g,z)}{j(\b_{j}\g,z)}\right)^{k}f(\b_{j}\g z) && \text{cocycle condition} \\
         &= j(\g,z)^{k}\sum_{j}\det(\b_{j}\g)^{k-1}j(\b_{j}\g,z)^{-k}f(\b_{j}\g z) \\
-        &= j(\g,z)^{k}\sum_{j}\det(\b_{j})^{k-1}j(\b_{j},z)^{-k}f(\b_{j}z) && \text{$\b_{j} \to \b_{j}\g^{-1}$ bijection on $\G_{1}\a\G_{2}$} \\
+        &= j(\g,z)^{k}\sum_{j}\det(\b_{j})^{k-1}j(\b_{j},z)^{-k}f(\b_{j}z) && \text{$\b_{j} \to \b_{j}\g^{-1}$} \\
         &= j(\g,z)^{k}\sum_{j}(f[\b_{j}]_{k})(z) \\
         &= j(\g,z)^{k}(f[\G_{1}\a\G_{2}]_{k})(z).
       \end{align*}
-      This proves $f[\G_{1}\a\G_{2}]_{k}$ is modular. For the growth condition, let $\s_{\mf{a}}$ be a scaling matrix for the cusp $\mf{a}$ of $\G_{2}\backslash\H$. For any orbit representative $\b_{j}$, $\b_{j}\s_{\mf{a}}$ takes $\infty$ to an element of $\Q \cup \{\infty\}$ since $\b_{j} \in \GL_{2}^{+}(\Q)$. In other words, $\b_{j}\s_{\mf{a}}\infty = \mf{b}$ for some cusp $\mf{b}$ of $\G_{1}\backslash\H$. Then by the cocycle condition, we have
+      This proves the modularity of $f[\G_{1}\a\G_{2}]_{k}$. For the growth condition, let $\s_{\mf{a}}$ be a scaling matrix for the cusp $\mf{a}$ of $\G_{2}\backslash\H$. For any orbit representative $\b_{j}$, $\b_{j}\s_{\mf{a}}$ takes $\infty$ to an element of $\Q \cup \{\infty\}$ since $\b_{j} \in \GL_{2}^{+}(\Q)$. In other words, $\b_{j}\s_{\mf{a}}\infty = \mf{b}$ for some cusp $\mf{b}$ of $\G_{1}\backslash\H$. Then by the cocycle condition, we have
       \[
         j(\s_{\mf{a}},z)^{-k}(f[\G_{1}\a\G_{2}]_{k})(\s_{\mf{a}}z) = \sum_{j}\det(\b_{j})^{k-1}j(\b_{j}\s_{\mf{a}},z)^{-k}f(\b_{j}\s_{\mf{a}}z),
       \]
@@ -578,31 +579,31 @@
       \]
       where $\g = \begin{psmallmatrix} a & k \\ pc & d \end{psmallmatrix}$. As $\begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix} \in \G_{1}(N)$ we conclude $\g \in \G_{1}(N)$ as well. Now let
       \[
-        \g_{j} = \begin{pmatrix} 1 & j \\ 0 & 1 \end{pmatrix} \quad \text{and} \quad \g_{\infty} = \begin{pmatrix} pm & n \\ N & 1 \end{pmatrix},
+        \a_{j} = \begin{pmatrix} 1 & j \\ 0 & 1 \end{pmatrix} \quad \text{and} \quad \a_{\infty} = \begin{pmatrix} pm & n \\ N & 1 \end{pmatrix},
       \]
-      for $j$ taken modulo $p$ and where $m$ and $n$ are as before. Clearly $\g_{j} \in \G_{1}(N)$ for all $j$. As $pm-Nn = 1$, we have $pm \equiv 1 \tmod{N}$ so that $\g_{\infty} \in \G_{1}(N)$ as well. We claim that $\{\g_{1},\ldots,\g_{p-1}\}$ and $\{\g_{1},\ldots,\b_{p-1},\g_{\infty}\}$ are sets of coset representatives for $\G_{3}\backslash\G_{1}(N)$ depending on if $p \nmid N$ or not. Let $\g = \begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix} \in \G_{1}(N)$ and consider
+      for $j$ taken modulo $p$ and where $m$ and $n$ are as before. Clearly $\a_{j} \in \G_{1}(N)$ for all $j$. As $pm-Nn = 1$, we have $pm \equiv 1 \tmod{N}$ so that $\a_{\infty} \in \G_{1}(N)$ as well. We claim that $\{\a_{1},\ldots,\a_{p-1}\}$ and $\{\a_{1},\ldots,\a_{p-1},\a_{\infty}\}$ are sets of coset representatives for $\G_{3}\backslash\G_{1}(N)$ depending on if $p \nmid N$ or not. Let $\g = \begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix} \in \G_{1}(N)$ and consider
       \[
-        \g\g_{j}^{-1} = \begin{pmatrix} a & b \\ c & d \end{pmatrix}\begin{pmatrix} 1 & -j \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} a & b-aj \\ c & d-cj \end{pmatrix}.
+        \g\a_{j}^{-1} = \begin{pmatrix} a & b \\ c & d \end{pmatrix}\begin{pmatrix} 1 & -j \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} a & b-aj \\ c & d-cj \end{pmatrix}.
       \]
-      As $\g\g_{j}^{-1} \in \G_{1}(N)$ because both $\g$ and $\g_{i}$ are, $\g\g_{j}^{-1} \in \G_{3} = \G_{1}^{0}(N,p)$ for some $i$ if and only if
+      As $\g\a_{j}^{-1} \in \G_{1}(N)$ because both $\g$ and $\g_{i}$ are, $\g\a_{j}^{-1} \in \G_{3} = \G_{1}^{0}(N,p)$ for some $i$ if and only if
       \[
         b \equiv aj \tmod{p}.
       \]
       First suppose $p \nmid a$. Then $a$ is invertible modulo $p$ so we may take $j = \conj{a}b \tmod{p}$. Now suppose $p \mid a$. If there is some $i$ satisfying $b \equiv ai \tmod{p}$, then we also have $p \mid b$. But as $ad-bc = 1$, this is impossible and so no such $i$ exists. As $a \equiv 1 \tmod{N}$, $p \mid a$ if and only if $p \nmid N$. In this case consider instead
       \[
-        \g\g_{\infty}^{-1} = \begin{pmatrix} a & b \\ c & d \end{pmatrix}\begin{pmatrix} 1 & -n \\ -N & pm \end{pmatrix} = \begin{pmatrix} a-Nb & pmb-na \\ c-Nd & pmd-nc \end{pmatrix}.
+        \g\a_{\infty}^{-1} = \begin{pmatrix} a & b \\ c & d \end{pmatrix}\begin{pmatrix} 1 & -n \\ -N & pm \end{pmatrix} = \begin{pmatrix} a-Nb & pmb-na \\ c-Nd & pmd-nc \end{pmatrix}.
       \]
-      Since $p \mid a$, we have $pmb-na \equiv 0 \mod{p}$ so that $\g\g_{\infty}^{-1} \in \G_{3} = \G_{1}^{0}(N,p)$. Altogether, we have shown that $\{\g_{1},\ldots,\g_{p-1}\}$ and $\{\g_{1},\ldots,\b_{p-1},\g_{\infty}\}$ are sets of coset representatives for $\G_{3}\backslash\G_{1}(N)$ depending on if $p \nmid N$ or not. To show they are complete sets, we need to show that no two representatives belong to the same coset. To this end, suppose $j$ and $j'$ are distinct, taken modulo $p$, and consider
+      Since $p \mid a$, we have $pmb-na \equiv 0 \mod{p}$ so that $\g\a_{\infty}^{-1} \in \G_{3} = \G_{1}^{0}(N,p)$. Altogether, we have shown that $\{\a_{1},\ldots,\a_{p-1}\}$ and $\{\a_{1},\ldots,\a_{p-1},\a_{\infty}\}$ are sets of coset representatives for $\G_{3}\backslash\G_{1}(N)$ depending on if $p \nmid N$ or not. To show they are complete sets, we need to show that no two representatives belong to the same coset. To this end, suppose $j$ and $j'$ are distinct, taken modulo $p$, and consider
       \[
-        \g_{j}\g_{j'}^{-1} = \begin{pmatrix} 1 & j \\ 0 & 1 \end{pmatrix}\begin{pmatrix} 1 & j' \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} 1 & j-j' \\ 0 & 1 \end{pmatrix}.
+        \a_{j}\a_{j'}^{-1} = \begin{pmatrix} 1 & j \\ 0 & 1 \end{pmatrix}\begin{pmatrix} 1 & j' \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} 1 & j-j' \\ 0 & 1 \end{pmatrix}.
       \]
-      Then $\g_{j}\g_{j'}^{-1} \in \G_{3} = \G_{1}^{0}(N,p)$ if and only if $j-j' \equiv 0 \tmod{p}$. This is impossible since $j$ and $j'$ are distinct. Hence $\g_{j}$ and $\g_{j'}$ represent distinct cosets. Now consider
+      Then $\a_{j}\a_{j'}^{-1} \in \G_{3} = \G_{1}^{0}(N,p)$ if and only if $j-j' \equiv 0 \tmod{p}$. This is impossible since $j$ and $j'$ are distinct. Hence $\a_{j}$ and $\a_{j'}$ represent distinct cosets. Now consider
       \[
-        \g_{j}\g_{\infty}^{-1} = \begin{pmatrix} 1 & j \\ 0 & 1 \end{pmatrix}\begin{pmatrix} 1 & -n \\ -N & pm \end{pmatrix} = \begin{pmatrix} 1-Nj & pmj-n \\ -N & pm \end{pmatrix}.
+        \a_{j}\a_{\infty}^{-1} = \begin{pmatrix} 1 & j \\ 0 & 1 \end{pmatrix}\begin{pmatrix} 1 & -n \\ -N & pm \end{pmatrix} = \begin{pmatrix} 1-Nj & pmj-n \\ -N & pm \end{pmatrix}.
       \]
-      Now $\g_{j}\g_{\infty}^{-1} \in  \G_{3} = \G_{1}^{0}(N,p)$ if and only if $pmj-n \equiv 0 \tmod{p}$. This is impossible since $pm-Nn = 1$ implies $p \nmid n$. Therefore $\g_{j}$ and $\g_{\infty}$ represent distinct cosets. It follows that $\{\g_{1},\ldots,\g_{p-1}\}$ and $\{\g_{1},\ldots,\b_{p-1},\g_{\infty}\}$ are complete sets of coset representatives completing the proof. As
+      Now $\a_{j}\a_{\infty}^{-1} \in  \G_{3} = \G_{1}^{0}(N,p)$ if and only if $pmj-n \equiv 0 \tmod{p}$. This is impossible since $pm-Nn = 1$ implies $p \nmid n$. Therefore $\a_{j}$ and $\a_{\infty}$ represent distinct cosets. It follows that $\{\a_{1},\ldots,\a_{p-1}\}$ and $\{\a_{1},\ldots,\a_{p-1},\a_{\infty}\}$ are complete sets of coset representatives completing the proof. As
       \[
-        \a\g_{j} = \begin{pmatrix} 1 & 0 \\ 0 & p \end{pmatrix}\begin{pmatrix} 1 & j \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} 1 & j \\ 0 & p \end{pmatrix} = \b_{j} \quad \text{and} \quad \a\g_{\infty} = \begin{pmatrix} 1 & 0 \\ 0 & p \end{pmatrix}\begin{pmatrix} pm & n \\ N & 1 \end{pmatrix} = \begin{pmatrix} pm & n \\ Np & p \end{pmatrix} = \b_{\infty},
+        \a\a_{j} = \begin{pmatrix} 1 & 0 \\ 0 & p \end{pmatrix}\begin{pmatrix} 1 & j \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} 1 & j \\ 0 & p \end{pmatrix} = \b_{j} \quad \text{and} \quad \a\a_{\infty} = \begin{pmatrix} 1 & 0 \\ 0 & p \end{pmatrix}\begin{pmatrix} pm & n \\ N & 1 \end{pmatrix} = \begin{pmatrix} pm & n \\ Np & p \end{pmatrix} = \b_{\infty},
       \]
       \cref{lem:coset_lemma_2} finishes the proof.
     \end{proof}
@@ -802,9 +803,10 @@
       \begin{align*}
         \<f[\a]_{k},g\>_{\a^{-1}\G\a} &= \frac{1}{V_{\a^{-1}\G\a}}\int_{\mc{F}_{\a^{-1}\G\a}}(f[\a]_{k})(z)\conj{g(z)}\Im(z)^{k}\,d\mu \\
         &= \frac{1}{V_{\a^{-1}\G\a}}\int_{\mc{F}_{\a^{-1}\G\a}}\det(\a)^{k-1}j(\a,z)^{-k}f(\a z)\conj{g(z)}\Im(z)^{k}\,d\mu \\
-        &= \frac{1}{V_{\G}}\int_{\mc{F}_{\a^{-1}\G\a}}\det(\a)^{k-1}j(\a,z)^{-k}f(\a z)\conj{g(z)}\Im(z)^{k}\,d\mu && \text{\cref{lem:invariance_of_volume}}.
+        &= \frac{1}{V_{\G}}\int_{\mc{F}_{\a^{-1}\G\a}}\det(\a)^{k-1}j(\a,z)^{-k}f(\a z)\conj{g(z)}\Im(z)^{k}\,d\mu && \text{\cref{lem:invariance_of_volume}} \\
+        &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}\det(\a)^{k-1}j(\a,\a^{-1}z)^{-k}f(z)\conj{g(\a^{-1}z)}\Im(\a^{-1}z)^{k}\,d\mu && \text{$z \to \a^{-1}z$.}
       \end{align*}
-      \todo{Making the change of variables $z \to \a'z$ and using the fact that $\mc{F}_{\a'\a^{-1}\G\a} = \mc{F}_{\G\a'} = \mc{F}_{\G}$}, we obtain
+      As $\a'$ acts as $\a^{-1}$ on $\H$, this latter integral is equivalent to
       \[
         \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}\det(\a)^{k-1}j(\a,\a'z)^{-k}f(z)\conj{g(\a'z)}\Im(\a'z)^{k}\,d\mu.
       \]
@@ -906,12 +908,12 @@
       \begin{align*}
         (f[\a_{d}]_{k})(\g z) &= d^{k-1}f(d \g z) \\
         &= d^{k-1}f(d\a_{d}^{-1}\g'\a_{d}z) \\
-        &= d^{k-1}f\left(\g'\a_{d}z\right) && \text{$d\a_{d}^{-1}z = z$}\\
+        &= d^{k-1}f\left(\g'\a_{d}z\right) && \text{$d\a_{d}^{-1}z = z$} \\
         &= j(\g',\a_{d}z)d^{k-1}f(\a_{d}z) \\
         &= j(\g,z)d^{k-1}f(dz) && \text{$j(\g',\a_{d}z) = j(\g,z)$ and $\a_{d}z = dz$} \\
         &= j(\g,z)(f[\a_{d}]_{k})(z).
       \end{align*}
-      This verifies $f[\a_{d}]_{k}$ is modular. For the growth condition, let $\s_{\mf{a}}$ be a scaling matrix for the cusp $\mf{a}$ of $\G_{1}(M)\backslash\H$. Then $\a_{d}\s_{\mf{a}}$ takes $\infty$ to an element of $\Q \cup \{\infty\}$ since $\a_{d} \in \GL_{2}^{+}(\Q)$. In other words, $\a_{d}\s_{\mf{a}}\infty = \mf{b}$ for some cusp $\mf{b}$ of $\G_{1}(N)\backslash\H$. Then the cocycle condition implies
+      This verifies the modularity of $f[\a_{d}]_{k}$. For the growth condition, let $\s_{\mf{a}}$ be a scaling matrix for the cusp $\mf{a}$ of $\G_{1}(M)\backslash\H$. Then $\a_{d}\s_{\mf{a}}$ takes $\infty$ to an element of $\Q \cup \{\infty\}$ since $\a_{d} \in \GL_{2}^{+}(\Q)$. In other words, $\a_{d}\s_{\mf{a}}\infty = \mf{b}$ for some cusp $\mf{b}$ of $\G_{1}(N)\backslash\H$. Then the cocycle condition implies
       \[
         j(\s_{\mf{a}},z)^{-k}(f[\a_{d}]_{k})(\s_{\mf{a}}z) = \det(\a_{d})^{k-1}j(\a_{d}\s_{\mf{a}},z)^{-k}f(\a_{d}\s_{\mf{a}}z),
       \]
@@ -1024,7 +1026,7 @@
         &= (cz+d)^{k}(\sqrt{N}z)^{-k}f\left(-\frac{1}{Nz}\right) \\
         &= j(\g,z)^{k}(\w_{N}f)(z).
       \end{align*}
-      This verifies modularity for $\w_{N}f$. As for the growth condition, let $\s_{\mf{a}}$ be a scaling matrix for the cusp $\mf{a}$. Then $W_{N}\s_{\mf{a}}$ takes $\infty$ to an element of $\Q \cup \{\infty\}$ since $W_{N} \in \GL_{2}^{+}(\Q)$. In other words, $W_{N}\s_{\mf{a}}\infty = \mf{b}$ for some cusp $\mf{b}$. Then the cocycle condition implies
+      This verifies modularity of $\w_{N}f$. As for the growth condition, let $\s_{\mf{a}}$ be a scaling matrix for the cusp $\mf{a}$. Then $W_{N}\s_{\mf{a}}$ takes $\infty$ to an element of $\Q \cup \{\infty\}$ since $W_{N} \in \GL_{2}^{+}(\Q)$. In other words, $W_{N}\s_{\mf{a}}\infty = \mf{b}$ for some cusp $\mf{b}$. Then the cocycle condition implies
       \[
         j(\s_{\mf{a}},z)^{-k}(\w_{N}f)(\s_{\mf{a}}z) = N^{\frac{k}{2}}j(W_{n}\s_{\mf{a}},z)^{-k}f(W_{n}\s_{\mf{a}}z),
       \]

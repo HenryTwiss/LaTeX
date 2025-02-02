@@ -198,7 +198,11 @@
         If $\G$ is of level $N$, then $N$ is the smallest positive integer such that $\G(N) \le \G$ so that $\begin{psmallmatrix} 1 & N \\ 0 & 1 \end{psmallmatrix}$ is the minimal translation guaranteed to belong to $\G$. However, there may be smaller translations so in general $t \le N$.
       \end{remark}
       
-      Actually, for any cusp $\mf{a}$, $\G_{\mf{a}}$ is also an infinite cyclic group. To see this, if $\mf{a} = \frac{a}{c}$ with $(a,c) = 1$ is a cusp of $\GH$ not equivalent to $\infty$, then there exists an $\s_{\mf{a}} \in \PSL_{2}(\Z)$ such that $\s_{\mf{a}}\infty = \mf{a}$. Indeed, there exists integers $d$ and $b$ such that $ad-bc = 1$ by B\'ezout's identity and then $\s_{\mf{a}} = \begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix}$ is such a matrix. It follows that $\G_{\mf{a}} = \s_{\mf{a}}\G_{\infty}\s_{\mf{a}}^{-1}$ and since $\G_{\infty}$ is infinite cyclic so is $\G_{\mf{a}}$. We call any matrix $\s_{\mf{a}} \in \PSL_{2}(\Z)$ such that $\s_{\mf{a}}\infty = \mf{a}$ a \textbf{scaling matrix}\index{scaling matrix} for the cusp $\mf{a}$. Note that $\s_{\mf{a}}$ is determined up to composition on the right by an element of $\G_{\infty}$ or composition on the left by an element of $\G_{\mf{a}}$. Scaling matrices are useful because they allow us to transfer information at the cusp $\mf{a}$ to the cusp at $\infty$. Let $\mf{a}$ and $\mf{b}$ be cusps of $\GH$ with scaling matrices $\s_{\mf{a}}$ and $\s_{\mf{b}}$ respectively. When investigating holomorphic forms, it will be useful to have a double coset decomposition for sets of the form $\s_{\mf{a}}^{-1}\G\s_{\mf{b}}$. This is referred to as the \textbf{Bruhat decomposition}\index{Bruhat decomposition} for $\G$:
+      Moreover, for any cusp $\mf{a}$ we have that $\G_{\mf{a}}$ is also an infinite cyclic group and we denote its generator by $\g_{\mf{a}}$. To see this, if $\mf{a} = \frac{a}{c}$ with $(a,c) = 1$ is a cusp of $\GH$ not equivalent to $\infty$, then there exists an $\s_{\mf{a}} \in \PSL_{2}(\Z)$ such that $\s_{\mf{a}}\infty = \mf{a}$. Indeed, there exists integers $d$ and $b$ such that $ad-bc = 1$ by B\'ezout's identity and then $\s_{\mf{a}} = \begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix}$ is such a matrix. It follows that $\G_{\mf{a}} = \s_{\mf{a}}\G_{\infty}\s_{\mf{a}}^{-1}$ and since $\G_{\infty}$ is infinite cyclic so is $\G_{\mf{a}}$. We call any matrix $\s_{\mf{a}} \in \PSL_{2}(\Z)$ satisfying 
+      \[
+        \s_{\mf{a}}\infty = \mf{a} \quad \text{and} \quad \s_{\mf{a}}^{-1}\g_{\mf{a}}\s_{\mf{a}} = \begin{pmatrix} 1 & t \\ 0 & 1 \end{pmatrix},
+      \]
+      a \textbf{scaling matrix}\index{scaling matrix} for the cusp $\mf{a}$. Note that $\s_{\mf{a}}$ is determined up to composition on the right by an element of $\G_{\infty}$. Scaling matrices are useful because they allow us to transfer information at the cusp $\mf{a}$ to the cusp at $\infty$. Let $\mf{a}$ and $\mf{b}$ be cusps of $\GH$ with scaling matrices $\s_{\mf{a}}$ and $\s_{\mf{b}}$ respectively. When investigating holomorphic forms, it will be useful to have a double coset decomposition for sets of the form $\s_{\mf{a}}^{-1}\G\s_{\mf{b}}$. This is referred to as the \textbf{Bruhat decomposition}\index{Bruhat decomposition} for $\G$:
 
       \begin{theorem}[Bruhat decomposition]
         Let $\G$ be any congruence subgroup and let $\mf{a}$ and $\mf{b}$ be cusps of $\GH$ with scaling matrices $\s_{\mf{a}}$ and $\s_{\mf{b}}$ respectively. Then we have the disjoint decomposition
@@ -285,7 +289,11 @@
       \[
         \int_{\mc{F}_{\G}}\sum_{\g \in \GG}f(\g z)\,d\mu = \int_{\G_{\infty}\backslash\H}f(z)\,d\mu,
       \]
-      provided one of the two sides converges absolutely. Now let us discuss the volume of $\GH$. We let
+      provided the sum and or integral on either side are absolutely convergent and absolutely bounded. It is also worth highlighting another fact. Any $\a \in \GL_{2}^{+}(\Q)$ acts as an automorphism of $\H$ which implies that it induces a bijection between $\a^{-1}\G\a\backslash\H$ and $\G\backslash\H$ and hence between the fundamental domains $\mc{F}_{\a^{-1}\G\a}$ and $\mc{F}_{\G}$. Thus the change of variables $z \to \a z$ transforms the fundamental domain $\mc{F}_{\G}$ into $\mc{F}_{\a^{-1}\G\a}$. Therefore
+      \[
+        \int_{\mc{F}_{\G}}f(z)\,d\mu = \int_{\mc{F}_{\a^{-1}\G\a}}f(\a z)\,d\mu,
+      \]
+      provided either side is bounded. Now let us discuss the volume of $\GH$. We let
       \[
         V_{\G} = \int_{\mc{F}_{\G}}\,d\mu,
       \]
@@ -297,25 +305,19 @@
       \begin{equation}\label{equ:Petersson_volume_relation}
         V_{\G} = [\PSL_{2}(\Z):\G]V,
       \end{equation}
-      which follows immediately from \cref{prop:fundamental_domain_congruence_subgroup}. Moreover, $V_{\G}$ is finite for every congruence subgroup $\G$ by \cref{equ:Petersson_volume_relation} and that congruence subgroups have finite index in the modular group. Moreover, we have a useful lemma:
+      which follows immediately from \cref{prop:fundamental_domain_congruence_subgroup}. Moreover, $V_{\G}$ is finite for every congruence subgroup $\G$ by \cref{equ:Petersson_volume_relation} and that congruence subgroups have finite index in the modular group. A particularly nice application of this fact is that any integral of the form
+      \[
+        \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}f(z)\,d\mu,
+      \]
+      is bounded by \cref{prop:decay_finite_volume_integral} provided $f(z)$ is holomorphic and bounded. That is, bounded functions are absolutely convergent over $\mc{F}_{\G}$ with respect to $d\mu$. Moreover, we have a useful lemma:
 
       \begin{lemma}\label{lem:invariance_of_volume}
-        Let $\G$ be a congruence subgroup and let $\a \in \GL_{2}^{+}(\Q)$. If $\a^{-1}\G\a \subseteq \PSL_{2}(\Z)$, then $V_{\a^{-1}\G\a} = V_{\G}$ and $[\PSL_{2}(\Z):\a^{-1}\G\a] = [\PSL_{2}(\Z):\G]$.
+        Let $\G$ be a congruence subgroup and $\a \in \GL_{2}^{+}(\Q)$. If $\a^{-1}\G\a \subseteq \PSL_{2}(\Z)$, then $V_{\a^{-1}\G\a} = V_{\G}$ and $[\PSL_{2}(\Z):\a^{-1}\G\a] = [\PSL_{2}(\Z):\G]$.
       \end{lemma}
       \begin{proof}
-        We claim
+        The first statement follows from the chain
         \[
           V_{\a^{-1}\G\a} = \int_{\mc{F}_{\a^{-1}\G\a}}\,d\mu = \int_{\mc{F}_{\G}}\,d\mu = V_{\G},
         \]
-        where the second equality is justified by first making the change of variables $z \to \a z$ and then noting that $\a$ acts as an automorphism on $\H$ so that $\mc{F}_{\G\a} = \mc{F}_{\G}$. The second statement now follows from \cref{equ:Petersson_volume_relation}.
+        where the middle equality is justified by making the change of variables $z \to \a^{-1}z$. The second statement is now immediate from \cref{equ:Petersson_volume_relation}.
       \end{proof}
-      
-      A particularly nice application of \cref{lem:invariance_of_volume} is that if $\a \in \PSL_{2}(\Z)$, then any integral of the form
-      \[
-        \int_{\mc{F}_{\a^{-1}\G\a}}|f(z)|^{2}\,d\mu,
-      \]
-      is bounded by \cref{prop:decay_finite_volume_integral} provided $f(z)$ is holomorphic and bounded. That is, bounded functions are $L^{2}$-integrable over $\mc{F}_{\a^{-1}\G\a}$ with respect to $d\mu$. 
-
-
-      
-      
