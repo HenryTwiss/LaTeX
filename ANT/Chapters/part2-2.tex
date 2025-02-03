@@ -196,7 +196,7 @@
 
     We will now compute the Fourier series of the Poincar\'e series with positive index:
 
-     \begin{proposition}\label{prop:Fourier_series_holomorphic}
+     \begin{proposition}\label{prop:Fourier_series_Poincare_holomorphic}
       Let $m \ge 1$, $k \ge 4$, $\chi$ be Dirichlet character with conductor dividing the level, and $\mf{a}$ and $\mf{b}$ be cusps of $\GH$. The Fourier series of $P_{m,k,\chi,\mf{a}}(z)$ on $\GH$ at the $\mf{b}$ cusp is given by
       \[
         (P_{m,k,\chi,\mf{a}}|\s_{\mf{b}})(z) = \sum_{t \ge 1}\left(\d_{\mf{a},\mf{b}}\d_{m,t}+\left(\frac{\sqrt{t}}{\sqrt{m}}\right)^{k-1}\sum_{c \in \mc{C}_{\mf{a},\mf{b}}}\frac{2\pi i^{-k}}{c}J_{k-1}\left(\frac{4\pi\sqrt{mt}}{c}\right)S_{\chi,\mf{a},\mf{b}}(m,t,c)\right)e^{2\pi itz}.
@@ -218,7 +218,7 @@
         &= \sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}} \\ r \in \mc{D}_{\mf{a},\mf{b}}(c)}}\sum_{\ell \in \Z}\cchi(r)\frac{e^{2\pi im\left(\frac{a}{c}-\frac{1}{c^{2}z+c^{2}\ell+cr}\right)}}{(cz+c\ell+r)^{k}} \\
         &= \sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}} \\ r \in \mc{D}_{\mf{a},\mf{b}}(c)}}\cchi(r)\sum_{\ell \in \Z}\frac{e^{2\pi im\left(\frac{a}{c}-\frac{1}{c^{2}z+c^{2}\ell+cr}\right)}}{(cz+c\ell+r)^{k}},
       \end{align*}
-      where on the right-hand side it is understood that we are summing over all triples $(c,\ell,r)$ with the prescribed properties and the second line holds since $\chi$ has conductor $q \mid N$ and $c \equiv 0 \tmod{N}$. Now let
+      where on the right-hand side it is understood that we are summing over all triples $(c,\ell,r)$ with the prescribed properties and the second line holds since $\chi$ has conductor diving the level and $d \in \mc{D}_{\mf{a},\mf{b}}(c)$ is determined modulo $c$. Now let
       \[
         I_{c,r}(z) = \sum_{\ell \in \Z}\frac{e^{2\pi im\left(\frac{a}{c}-\frac{1}{c^{2}z+c^{2}\ell+cr}\right)}}{(cz+c\ell+r)^{k}}.
       \]
@@ -240,9 +240,9 @@
       \]
       The integrand is meromorphic with a pole at $z = 0$. Moreover, we have
       \[
-        \frac{1}{(cz)^{k}} \ll \frac{1}{|cz|^{k}}, \quad e^{-\frac{2\pi im}{c^{2}z}} \ll e^{-\frac{2\pi m\Im(z)}{|cz|^{2}}}, \quad \text{and} \quad e^{-2\pi itz} \ll e^{2\pi t\Im(z)}.
+        \frac{1}{(cz)^{k}} \ll \frac{1}{|cz|^{k}}, \quad e^{-\frac{2\pi im}{c^{2}z}} \ll e^{-\frac{2\pi m\Im(z)}{|cz|^{2}}}, \quad \text{and} \quad e^{-2\pi itz} \ll e^{2\pi ty}.
       \]
-      The first expression has polynomial decay, the second expression is bounded, and the third expression exhibits rapid decay if and only if $t < 0$ and when $t = 0$ it is bounded. So when $t \le 0$ we may take the limit as $\Im(z) \to \infty$  by shifting the line of integration and conclude that the integral vanishes. It remains to compute the integral for $t \ge 1$. To do this, make the change of variables $z \to -\frac{z}{2\pi it}$ to the last integral to rewrite it as
+      The first expression has polynomial decay, the second expression is bounded, and the third expression exhibits rapid decay if and only if $t < 0$ and when $t = 0$ it is bounded. So when $t \le 0$ we may take the limit as $y \to \infty$ by shifting the line of integration and conclude that the integral vanishes. It remains to compute the integral for $t \ge 1$. To do this, make the change of variables $z \to -\frac{z}{2\pi it}$ to the last integral to rewrite it as
       \begin{align*}
         -\frac{1}{2\pi it}\int_{(2\pi ty)}\frac{e^{-\frac{4\pi^{2}mt}{c^{2}z}}}{\left(-\frac{cz}{2\pi it}\right)^{k}}e^{z}\,dz &= -\frac{1}{2\pi it}\int_{(2\pi ty)}\left(-\frac{2\pi it}{cz}\right)^{k}e^{z-\frac{4\pi^{2}mt}{c^{2}z}}\,dz \\
         &= \frac{(-2\pi it)^{k-1}}{c^{k}}\int_{(2\pi ty)}z^{-k}e^{z-\frac{4\pi^{2}mt}{c^{2}z}}\,dz \\
@@ -273,7 +273,95 @@
       \]
     \end{proof}
 
-    An immediate consequence of \cref{prop:Fourier_series_holomorphic} is that the Poincar\'e series $P_{m,k,\chi,\mf{a}}(z)$ with positive index are cusp forms.
+    An immediate consequence of \cref{prop:Fourier_series_Poincare_holomorphic} is that the Poincar\'e series $P_{m,k,\chi,\mf{a}}(z)$ with positive index are cusp forms. In a similar manner, we can obtain the Fourier expansion of the Eisenstein series too:
+    
+    \begin{proposition}\label{prop:Fourier_series_Eisenstein_holomorphic}
+      Let $k \ge 4$, $\chi$ be Dirichlet character with conductor dividing the level, and $\mf{a}$ and $\mf{b}$ be cusps of $\GH$. The Fourier series of $E_{k,\chi,\mf{a}}(z)$ on $\GH$ at the $\mf{b}$ cusp is given by
+      \[
+        (E_{k,\chi,\mf{a}}|\s_{\mf{b}})(z) = \sum_{t \ge 0}\left(\d_{\mf{a},\mf{b}}+\sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}}}}\frac{(-2\pi it)^{k}}{(k-1)!c^{k}}S_{\chi,\mf{a},\mf{b}}(0,t,c)\right)e^{2\pi itz}.
+      \]
+    \end{proposition}
+    \begin{proof}
+      From the cocycle condition and the Bruhat decomposition for $\s_{\mf{a}}^{-1}\G\s_{\mf{b}}$ and \cref{rem:Bruhat_modulo_infity_exact}, we have
+      \[
+        (E_{k,\chi,\mf{a}}|\s_{\mf{b}})(z) = \d_{\mf{a},\mf{b}}+\sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}}, d \in \Z \\ d \tmod{c} \in \mc{D}_{\mf{a},\mf{b}}(c)}}\cchi(d)\frac{1}{(cz+d)^{k}},
+      \]
+      where $a$ has been determined modulo $c$ by $ad-bc = 1$ and we have used the fact that
+      \[
+        \frac{a}{c}-\frac{1}{c^{2}z+cd} = \frac{az+b}{cz+d}.
+      \]
+      Summing over all pairs $(c,d)$ with $c \in \mc{C}_{\mf{a},\mf{b}}$, $d \in \Z$, and $d \in \mc{D}_{\mf{a},\mf{b}}(c)$ is the same as summing over all triples $(c,\ell,r)$ with $c \in \mc{C}_{\mf{a},\mf{b}}$, $\ell \in \Z$, and $r$ taken modulo $c$ with $r \in \mc{D}_{\mf{a},\mf{b}}(c)$. Indeed, this is seen by writing $d = c\ell+r$. Moreover, since $ad-bc = 1$ we have $a(c\ell+r)-bc = 1$ which further implies that $ar \equiv 1 \tmod{c}$. So we may take $a$ to be the inverse for $r$ modulo $c$. Then
+      \begin{align*}
+        \sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}}, d \in \Z \\ d \tmod{c} \in \mc{D}_{\mf{a},\mf{b}}(c)}}\cchi(d)\frac{1}{(cz+d)^{k}} &= \sum_{(c,\ell,r)}\cchi(c\ell+r)\frac{1}{(cz+c\ell+r)^{k}} \\
+        &= \sum_{(c,\ell,r)}\cchi(r)\frac{1}{(cz+c\ell+r)^{k}} \\
+        &= \sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}} \\ r \in \mc{D}_{\mf{a},\mf{b}}(c)}}\sum_{\ell \in \Z}\cchi(r)\frac{1}{(cz+c\ell+r)^{k}} \\
+        &= \sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}} \\ r \in \mc{D}_{\mf{a},\mf{b}}(c)}}\cchi(r)\sum_{\ell \in \Z}\frac{1}{(cz+c\ell+r)^{k}},
+      \end{align*}
+      where on the right-hand side it is understood that we are summing over all triples $(c,\ell,r)$ with the prescribed properties and the second line holds since $\chi$ has conductor diving the level and $d \in \mc{D}_{\mf{a},\mf{b}}(c)$ is determined modulo $c$. Now let
+      \[
+        I_{c,r}(z) = \sum_{\ell \in \Z}\frac{1}{(cz+c\ell+r)^{k}}.
+      \]
+      We apply the Poisson summation formula to $I_{c,r}(z)$. This is allows since the summands are absolutely integrable by \cref{prop:decay_unbounded_inteval_integral}, as they exhibit polynomial decay of order $k$, and $I_{c,r}(z)$ is holomorphic because $(E_{k,\chi,\mf{a}}|\s_{\mf{b}})(z)$ is. By the identity theorem it suffices to apply the Poisson summation formula for $z = iy$ with $y > 0$. So let $f(x)$ be given by
+      \[
+        f(x) = \frac{1}{(cx+r+icy)^{k}}.
+      \]
+      As we have just noted, $f(x)$ is absolutely integrable on $\R$. We compute the Fourier transform:
+      \[
+        \hat{f}(t) = \int_{-\infty}^{\infty}f(x)e^{-2\pi itx}\,dx = \int_{-\infty}^{\infty}\frac{e^{-2\pi itx}}{(cx+r+icy)^{k}}\,dx.
+      \]
+      Complexify the integral to get
+      \[
+        \int_{\Im(z) = 0}\frac{e^{-2\pi itz}}{(cz+r+icy)^{k}}\,dz.
+      \]
+      Now make the change of variables $z \to z-\frac{r}{c}-icy$ to obtain
+      \[
+        e^{2\pi it\frac{r}{c}-2\pi ty}\int_{\Im(z) = y}\frac{e^{-2\pi itz}}{(cz)^{k}}\,dz.
+      \]
+      The integrand is meromorphic with a pole at $z = 0$. Moreover, we have
+      \[
+        \frac{1}{(cz)^{k}} \ll \frac{1}{|cz|^{k}} \quad \text{and} \quad e^{-2\pi itz} \ll e^{2\pi ty}.
+      \]
+      The first expression has polynomial decay while the expression exhibits rapid decay if and only if $t < 0$ and when $t = 0$ it is bounded. So when $t \le 0$ we may take the limit as $y \to \infty$ by shifting the line of integration and conclude that the integral vanishes. It remains to compute the integral for $t \ge 1$. To do this, make the change of variables $z \to -\frac{z}{2\pi it}$ to the last integral to rewrite it as
+      \[
+        -\frac{1}{2\pi it}\int_{(2\pi ty)}\frac{e^{z}}{\left(-\frac{cz}{2\pi it}\right)^{k}}\,dz = -\frac{1}{2\pi it}\int_{(2\pi ty)}\left(-\frac{2\pi it}{cz}\right)^{k}e^{z}\,dz = \frac{(-2\pi it)^{k-1}}{c^{k}}\int_{(2\pi ty)}\frac{e^{z}}{z^{k}}\,dz.
+      \]
+      The integrand of the last integral has a pole of order $k$ at $z = 0$. To find the residue, the Laurent series of $\frac{e^{z}}{z^{k}}$ is
+      \[
+        \frac{e^{z}}{z^{k}} = \sum_{n \ge 0}\frac{z^{n-k}}{n!},
+      \]
+      and thus the residue of the integrand is $\frac{1}{(k-1)!}$. In shifting the line of integration to $(-x)$, for some $x > 0$, we pass by this pole and obtain
+      \[
+        \frac{(-2\pi it)^{k}}{(k-1)!c^{k}}+\int_{(-x)}\frac{e^{z}}{z^{k}}\,dz.
+      \]
+      Moreover, we have
+      \[
+        \frac{1}{z^{k}} \ll \frac{1}{|z|^{k}} \quad \text{and} \quad e^{z} \ll e^{x}.
+      \]
+      The first expression has polynomial decay while the second expression exhibits rapid decay provided $x < 0$. Therefore we make take the limit as $x \to \infty$ by shifting the line of integration again and conclude that the latter integral vanishes. Altogether, we have show that
+      \[
+        \hat{f}(t) = \begin{cases} \left(\frac{(-2\pi it)^{k}}{(k-1)!c^{k}}e^{2\pi it\frac{r}{c}}\right)e^{-2\pi ty} & t \ge 1, \\ 0 & t \le 0. \end{cases}
+      \]
+      By the Poisson summation formula and the identity theorem, we have
+      \[
+        I_{c,r}(z) = \sum_{t \ge 1}\left(\frac{(-2\pi it)^{k}}{(k-1)!c^{k}}e^{2\pi it\frac{r}{c}}\right)e^{2\pi itz},
+      \]
+      for all $z \in \H$. Substituting this back into the Eisenstein series gives a form of the Fourier series:
+      \begin{align*}
+        (E_{k,\chi,\mf{a}}|\s_{\mf{b}})(z) &= \d_{\mf{a},\mf{b}}+\sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}} \\ r \in \mc{D}_{\mf{a},\mf{b}}}}\cchi(r)\sum_{t \ge 1}\left(\frac{(-2\pi it)^{k}}{(k-1)!c^{k}}e^{2\pi it\frac{r}{c}}\right)e^{2\pi imz} \\
+        &= \sum_{t \ge 0}\left(\d_{\mf{a},\mf{b}}+\sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}} \\ r \in \mc{D}_{\mf{a},\mf{b}}}}\cchi(r)\frac{(-2\pi it)^{k}}{(k-1)!c^{k}}e^{2\pi it\frac{r}{c}}\right)e^{2\pi itz} \\
+        &= \sum_{t \ge 0}\left(\d_{\mf{a},\mf{b}}+\sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}}}}\frac{(-2\pi it)^{k}}{(k-1)!c^{k}}\sum_{r \in \mc{D}_{\mf{a},\mf{b}}}\cchi(r)e^{2\pi it\frac{r}{c}}\right)e^{2\pi itz}.
+      \end{align*}
+      We will simplify the innermost sum. Since $a$ is the inverse for $r$ modulo $c$, the innermost sum above becomes
+      \[
+        \sum_{r \in \mc{D}_{\mf{a},\mf{b}}}\cchi(r)e^{2\pi it\frac{r}{c}} = \sum_{r \in \mc{D}_{\mf{a},\mf{b}}}\cchi(\conj{a})e^{2\pi it\frac{\conj{a}}{c}} = \sum_{r \in \mc{D}_{\mf{a},\mf{b}}}\chi(a)e^{\frac{2\pi i\conj{a}t}{c}} = S_{\chi,\mf{a},\mf{b}}(0,t,c).
+      \]
+      So at last, we obtain our desired Fourier series:
+      \[
+        (E_{k,\chi,\mf{a}}|\s_{\mf{b}})(z) = \sum_{t \ge 0}\left(\d_{\mf{a},\mf{b}}+\sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}}}}\frac{(-2\pi it)^{k}}{(k-1)!c^{k}}S_{\chi,\mf{a},\mf{b}}(0,t,c)\right)e^{2\pi itz}.
+      \]
+    \end{proof}
+
+    An interesting observation from \cref{prop:Fourier_series_Eisenstein_holomorphic} is that $E_{k,\chi,\mf{a}}|\s_{\mf{b}}$ is necessarily a cusp form unless $\mf{a} = \mf{b}$.
   \section{Spaces of Holomorphic Forms}
     Let $\G$ be a congruence subgroup of level $N$. Let $\mc{M}_{k}(\G,\chi)$ denote the space of all weight $k$ holomorphic forms on $\GH$ with character $\chi$. Let $\mc{S}_{k}(\G,\chi)$ denote the associated subspace of cusp forms. Moreover, if the character $\chi$ is the trivial character, we will suppress the dependence upon $\chi$. If $\G_{1}$ and $\G_{2}$ are two congruence subgroups such that $\G_{1} \le \G_{2}$, then we have the inclusion
     \[
