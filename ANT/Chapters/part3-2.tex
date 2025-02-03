@@ -769,7 +769,7 @@
       We will compute the Fourier coefficients $a(n,y,s)$. To do this we will need the following technical lemma:
 
       \begin{lemma}\label{lem:Ramanujan_zeta_relation}
-        Let $M \ge 1$ be square-free. Then for $\s > 1$ and $b \in \Z$,
+        For $\s > 1$ and $b \in \Z$,
         \[
           \sum_{m \ge 1}\frac{r(b,m)}{m^{2s}} = \begin{cases} \frac{\z(2s-1)}{\z(2s)} & \text{if $b = 0$}, \\ \frac{\s_{1-2s}(|b|)}{\z(2s)} & \text{if $b \neq 0$}, \end{cases}
         \]
@@ -820,19 +820,19 @@
       \begin{proof}
         By the Bruhat decomposition for $\G_{0}(1)$ and \cref{rem:Bruhat_modulo_infity_exact}, we have
         \[
-          E(z,s) = y^{s}+\sum_{\substack{c \ge 1, d \in \Z \\ d \equiv 1 \tmod{c}}}\frac{y^{s}}{|cx+icy+d|^{2s}}.
+          E(z,s) = y^{s}+\sum_{\substack{c \ge 1, d \in \Z \\ (c,d) = 1}}\frac{y^{s}}{|cx+icy+d|^{2s}}.
         \]
         The definition of Fourier series gives
         \begin{equation}\label{equ:real-analytic_Eisenstein_fourier_coefficient_definition}
-          a(n,y,s) = \int_{iy}^{1+iy}E(z,s)e^{-2\pi in\Re(z)}\,dz = y^{s}\d_{n,0}+\int_{0}^{1}\sum_{\substack{c \ge 1, d \in \Z \\ d \equiv 1 \tmod{c}}}\frac{y^{s}}{|cx+icy+d|^{2s}}e^{-2\pi inx}\,dx,
+          a(n,y,s) = \int_{iy}^{1+iy}E(z,s)e^{-2\pi in\Re(z)}\,dz = y^{s}\d_{n,0}+\int_{0}^{1}\sum_{\substack{c \ge 1, d \in \Z \\ (c,d) = 1}}\frac{y^{s}}{|cx+icy+d|^{2s}}e^{-2\pi inx}\,dx,
         \end{equation}
         where we have used \cref{equ:Dirac_integral_representation}. We are now reduced to computing
         \[
-          I(z,s) = \int_{0}^{1}\sum_{\substack{c \ge 1, d \in \Z \\ d \equiv 1 \tmod{c}}}\frac{y^{s}}{|cx+icy+d|^{2s}}e^{-2\pi inx}\,dx.
+          I(z,s) = \int_{0}^{1}\sum_{\substack{c \ge 1, d \in \Z \\ (c,d) = 1}}\frac{y^{s}}{|cx+icy+d|^{2s}}e^{-2\pi inx}\,dx.
         \]
         Observe that summing over all pairs $(c,d) \in \Z^{2}-\{\mathbf{0}\}$ with $c \ge 1$, $d \in \Z$, and $(c,d) = 1$ is the same as summing over all triples $(c,\ell,r)$ with $c \ge 1$, $\ell \in \Z$, $r$ taken modulo $c$, and $(r,c) = 1$. This is seen by writing $d = c\ell+r$. Therefore
         \begin{align*}
-          I(z,s) &= \int_{0}^{1}\sum_{\substack{c \ge 1, d \in \Z \\ d \equiv 1 \tmod{c}}}\frac{y^{s}}{|cx+icy+d|^{2s}}e^{-2\pi inx}\,dx \\
+          I(z,s) &= \int_{0}^{1}\sum_{\substack{c \ge 1, d \in \Z \\ (c,d) = 1}}\frac{y^{s}}{|cx+icy+d|^{2s}}e^{-2\pi inx}\,dx \\
           &= \int_{0}^{1}\sum_{(c,\ell,r)}\frac{y^{s}}{|c(x+\ell)+r+icy|^{2s}}e^{-2\pi inx}\,dx \\
           &= \sum_{(c,\ell,r)}\int_{0}^{1}\frac{y^{s}}{|c(x+\ell)+r+icy|^{2s}}e^{-2\pi inx}\,dx &&\text{DCT} \\
           &= \sum_{(c,\ell,r)}\frac{1}{c^{2s}}\int_{0}^{1}\frac{y^{s}}{\left|x+\ell+\frac{r}{c}+iy\right|^{2s}}e^{-2\pi inx}\,dx \\
@@ -872,19 +872,19 @@
       \[
         E^{\ast}(z,s) = E^{\ast}(z,1-s).
       \]
-      We already knew $E(z,s)$ possessed a functional equation as $s \to 1-s$ from \cref{thm:functional_equation_of_Eisenstein_series} but we needed an explicit version in order to understand $L(s,f \ox g)$. We can now obtain meromorphic continuation of $E^{\ast}(z,s)$ in $s$ to all of $\C$. By the functional equation, $E^{\ast}(z,s)$ admits analytic continuous to $\C$ outside of the critical strip. Therefore we may assume $\left|\s-\frac{1}{2}\right| \le \frac{1}{2}$. We first write $E^{\ast}(z,s)$ as a Fourier series using \cref{equ:Fourier_coefficients_for_completed_real-analytic_Eisenstein_series}:
+      We already knew $E(z,s)$ possessed a functional equation as $s \to 1-s$ from \cref{thm:functional_equation_of_Eisenstein_series} but we needed an explicit version in order to understand $L(s,f \ox g)$. We can now obtain meromorphic continuation of $E^{\ast}(z,s)$ in $s$ to all of $\C$ for any $z \in \H$. We first write $E^{\ast}(z,s)$ as a Fourier series using \cref{equ:Fourier_coefficients_for_completed_real-analytic_Eisenstein_series}:
       \[
         E^{\ast}(z,s) = y^{s}\L(2s,\z)+y^{1-s}\L(2(1-s),\z)+\sum_{n \neq 0}2|n|^{s-\frac{1}{2}}\s_{1-2s}(|n|)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y)e^{2\pi inx}.
       \]
-      Since $\L(2s,\z)$ is meromorphic on the critical strip, the constant term of $E^{\ast}(z,s)$ is as well. To finish the meromorphic continuation of $E^{\ast}(z,s)$ it now suffices to show
+      Since $\L(2s,\z)$ is meromorphic on $\C$, the constant term of $E^{\ast}(z,s)$ is as well. To finish the meromorphic continuation of $E^{\ast}(z,s)$ it now suffices to show
       \[
         \sum_{n \neq 0}2|n|^{s-\frac{1}{2}}\s_{1-2s}(|n|)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y)e^{2\pi inx},
       \]
-      is meromorphic on the critical strip. We will actually prove it is locally absolutely uniformly convergent on this region. To achieve this we need two bounds, one for $\s_{1-2s}(|n|)$ and one for $K_{s-\frac{1}{2}}(2\pi|n|y)$. For the first bound, we use the estimate $\s_{0}(|n|) \ll_{\e} |n|^{\e}$ (recall \cref{prop:sum_of_divisors_growth_rate}). Therefore we have the crude bound
+      is meromorphic on $\C$. We will actually prove it is locally absolutely uniformly convergent on this region. So let $K$ be a compact subset of $\C$. Then we have to show $E^{\ast}(z,s)$ is absolutely convergent on $K$ for any $z \in \H$. To achieve this we need two bounds, one for $\s_{1-2s}(|n|)$ and one for $K_{s-\frac{1}{2}}(2\pi|n|y)$. For the first bound, we use the estimate $\s_{0}(|n|) \ll_{\e} |n|^{\e}$ (recall \cref{prop:sum_of_divisors_growth_rate}). Therefore we have the crude bound
       \[
         \s_{1-2s}(|n|) = \sum_{d \mid n}d^{1-2s} < \s_{0}(|n|)|n|^{1-2s} \ll_{\e}|n|^{1-2s+\e}.
       \]
-      For the second estimate, \cref{lem:moderate_decay_K-Bessel_function} and the fact that $\s$ is bounded together give
+      For the second estimate, \cref{lem:moderate_decay_K-Bessel_function} gives
       \[
         K_{s-\frac{1}{2}}(2\pi|n|y) \ll e^{-2\pi|n|y}.
       \]
@@ -892,7 +892,7 @@
       \begin{equation}\label{equ:non-constant_Fourier_coefficient_bound_non-holomorphic_Eisenstein_series}
         \sum_{n \neq 0}2|n|^{s-\frac{1}{2}}\s_{1-2s}(|n|)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y)e^{2\pi inx} \ll_{\e} \sum_{n \ge 1}4n^{\frac{1}{2}-s+\e}\sqrt{y}e^{-2\pi ny}.
       \end{equation}
-      This latter series is locally absolutely uniformly convergent by the ratio test. The meromorphic continuation of $E^{\ast}(z,s)$ to $\C$ in $s$ follows. It remains to investigate the poles and residues. We will accomplish this from direct inspection of the Fourier coefficients:
+      This latter series is absolutely uniformly convergent on $K$ by the ratio test. Therefore $E^{\ast}(z,s)$ is absolutely convergent on $K$ for any $z \in \H$ and the meromorphic continuation to $\C$ follows. It remains to investigate the poles and residues. We will accomplish this from direct inspection of the Fourier coefficients:
 
       \begin{proposition}\label{equ:completed_real-analytic_Eisenstein_series_residues}
         $E^{\ast}(z,s)$ has simple poles at $s = 0$ and $s = 1$, and
