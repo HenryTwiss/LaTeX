@@ -762,11 +762,7 @@
       \end{equation}
       which is valid for $\s > 1$. We cannot investigate the integral any further until we understand the Fourier series of $E(z,s)$ and have a functional equation as $s \to 1-s$. Therefore we will take a necessary detour and return to the integral after.
     \subsection*{The Fourier Series and Functional Equation of \texorpdfstring{$E(z,s)$}{E(z,s)}}
-      Recall that $E(z,s)$ admits a Fourier series
-      \[
-        E(z,s) = \sum_{n \in \Z}a(n,y,s)e^{2\pi inx}.
-      \]
-      We will compute the Fourier coefficients $a(n,y,s)$. To do this we will need the following technical lemma:
+      We will compute the Fourier series of $E(z,s)$. To do this we will need the following technical lemma:
 
       \begin{lemma}\label{lem:Ramanujan_zeta_relation}
         For $\s > 1$ and $b \in \Z$,
@@ -805,62 +801,73 @@
         \end{align*}
       \end{proof}
 
-      We can now compute the Fourier coefficients of $E(z,s)$:
+      We can now compute the Fourier series of $E(z,s)$:
 
       \begin{proposition}\label{prop:Fourier_coefficients_of_real-analytic_Eisenstein_series}
         The Fourier series of $E(z,s)$ is given by
         \[
-          E(z,s) = a(0,y,s)+\sum_{n \neq 0}a(n,y,s)e^{2\pi inx},
-        \]
-        where
-        \[
-          a(n,y,s) = \begin{cases} y^{s}+y^{1-s}\frac{\sqrt{\pi}\G\left(s-\frac{1}{2}\right)\z(2s-1)}{\G(s)\z(2s)} & \text{if $n = 0$}, \\ 2\pi^{s}\frac{|n|^{s-\frac{1}{2}}\s_{1-2s}(|n|)}{\G(s)\z(2s)}\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y) & \text{if $n \neq 0$}. \end{cases}
+          E(z,s) = y^{s}+y^{1-s}\frac{\sqrt{\pi}\G\left(s-\frac{1}{2}\right)\z(2s-1)}{\G(s)\z(2s)}+\sum_{t \ge 1}\left(\frac{2\pi^{s}|t|^{s-\frac{1}{2}\s_{1-2s}(|t|)}}{\G(s)\z(2s)}\sqrt{y}K_{s-\frac{1}{2}}(2\pi|t|y)\right)e^{2\pi itx}.
         \]
       \end{proposition}
       \begin{proof}
-        By the Bruhat decomposition for $\G_{0}(1)$ and \cref{rem:Bruhat_modulo_infity_exact}, we have
+        Fix $s$ with $\s > 1$. By the Bruhat decomposition for $\G_{0}(1)$ and \cref{rem:Bruhat_modulo_infity_exact}, we have
         \[
-          E(z,s) = y^{s}+\sum_{\substack{c \ge 1, d \in \Z \\ (c,d) = 1}}\frac{y^{s}}{|cx+icy+d|^{2s}}.
+          E(z,s) = \Im(z)^{s}+\sum_{\substack{c \ge 1, d \in \Z \\ (c,d) = 1}}\frac{\Im(z)^{s}}{|cz+d|^{2s}}.
         \]
-        The definition of Fourier series gives
-        \begin{equation}\label{equ:real-analytic_Eisenstein_fourier_coefficient_definition}
-          a(n,y,s) = \int_{iy}^{1+iy}E(z,s)e^{-2\pi in\Re(z)}\,dz = y^{s}\d_{n,0}+\int_{0}^{1}\sum_{\substack{c \ge 1, d \in \Z \\ (c,d) = 1}}\frac{y^{s}}{|cx+icy+d|^{2s}}e^{-2\pi inx}\,dx,
-        \end{equation}
-        where we have used \cref{equ:Dirac_integral_representation}. We are now reduced to computing
+        Summing over all pairs $(c,d) \in \Z^{2}-\{\mathbf{0}\}$ with $c \ge 1$, $d \in \Z$, and $(c,d) = 1$ is the same as summing over all triples $(c,\ell,r)$ with $c \ge 1$, $\ell \in \Z$, $r$ taken modulo $c$, and $(r,c) = 1$. This is seen by writing $d = c\ell+r$. Therefore
         \[
-          I(z,s) = \int_{0}^{1}\sum_{\substack{c \ge 1, d \in \Z \\ (c,d) = 1}}\frac{y^{s}}{|cx+icy+d|^{2s}}e^{-2\pi inx}\,dx.
+          \sum_{\substack{c \ge 1, d \in \Z \\ (c,d) = 1}}\frac{\Im(z)^{s}}{|cx+icy+d|^{2s}} = \sum_{(c,\ell,r)}\frac{\Im(z)^{s}}{|cz+c\ell+r|^{2s}} = \psum_{\substack{c \ge 1 \\ r \tmod{c}}}\sum_{\ell \in \Z}\frac{\Im(z)^{s}}{|cz+c\ell+r|^{2s}}.
         \]
-        Observe that summing over all pairs $(c,d) \in \Z^{2}-\{\mathbf{0}\}$ with $c \ge 1$, $d \in \Z$, and $(c,d) = 1$ is the same as summing over all triples $(c,\ell,r)$ with $c \ge 1$, $\ell \in \Z$, $r$ taken modulo $c$, and $(r,c) = 1$. This is seen by writing $d = c\ell+r$. Therefore
+         where on the right-hand side it is understood that we are summing over all triples $(c,\ell,r)$ with the prescribed properties. Now let
+        \[
+          I_{c,r}(z,s) = \sum_{\ell \in \Z}\frac{\Im(z)^{s}}{|cz+c\ell+r|^{2s}}.
+        \]
+        We apply the Poisson summation formula to $I_{c,r}(z)$. This is allowed since the summands are absolutely integrable by \cref{prop:decay_unbounded_inteval_integral}, as they exhibit polynomial decay of order $2\s > 1$, and $I_{c,r}(z)$ is holomorphic because $E(z,s)$ is. By the identity theorem it suffices to apply the Poisson summation formula for $z = iy$ with $y > 0$. So let $f(x)$ be given by
+        \[
+          f(x) = \frac{y^{s}}{|cz+r+icy|^{2s}}.
+        \]
+        Then $f(x)$ is absolutely integrable on $\R$ as we have just mentioned. We compute the Fourier transform:
         \begin{align*}
-          I(z,s) &= \int_{0}^{1}\sum_{\substack{c \ge 1, d \in \Z \\ (c,d) = 1}}\frac{y^{s}}{|cx+icy+d|^{2s}}e^{-2\pi inx}\,dx \\
-          &= \int_{0}^{1}\sum_{(c,\ell,r)}\frac{y^{s}}{|c(x+\ell)+r+icy|^{2s}}e^{-2\pi inx}\,dx \\
-          &= \sum_{(c,\ell,r)}\int_{0}^{1}\frac{y^{s}}{|c(x+\ell)+r+icy|^{2s}}e^{-2\pi inx}\,dx &&\text{DCT} \\
-          &= \sum_{(c,\ell,r)}\frac{1}{c^{2s}}\int_{0}^{1}\frac{y^{s}}{\left|x+\ell+\frac{r}{c}+iy\right|^{2s}}e^{-2\pi inx}\,dx \\
-          &= \sum_{(c,\ell,r)}\frac{1}{c^{2s}}\int_{\ell}^{\ell+1}\frac{y^{s}}{\left|x+\frac{r}{c}+iy\right|^{2s}}e^{-2\pi inx}\,dx &&\text{$x \to x-\ell$} \\
-          &= \psum_{\substack{c \ge 1 \\ r \tmod{c}}}\frac{1}{c^{2s}}\int_{-\infty}^{\infty}\frac{y^{s}}{\left|x+\frac{r}{c}+iy\right|^{2s}}e^{-2\pi inx}\,dx &&\text{DCT} \\
-          &= \sum_{c \ge 1}\frac{1}{c^{2s}}\psum_{r \tmod{c}}e^{\frac{2\pi inr}{c}}\int_{-\infty}^{\infty}\frac{y^{s}}{(x^{2}+y^{2})^{s}}e^{-2\pi inx}\,dx &&\text{$x \to x-\frac{r}{c}$} \\
-          &= \sum_{c \ge 1}\frac{r(n,c)}{c^{2s}}\int_{-\infty}^{\infty}\frac{y^{s}}{(x^{2}+y^{2})^{s}}e^{-2\pi inx}\,dx \\
-          &= \sum_{c \ge 1}\frac{r(n,c)}{c^{2s}}y^{1-s}\int_{-\infty}^{\infty}\frac{1}{(x^{2}+1)^{s}}e^{-2\pi inxy}\,dx && \text{$x \to xy$},
+          \hat{f}(t) = \int_{-\infty}^{\infty}f(x)e^{-2\pi itx}\,dx &= \int_{-\infty}^{\infty}\frac{y^{s}}{|cz+r+icy|^{2s}}e^{-2\pi itx}\,dx \\
+          &= \int_{-\infty}^{\infty}\frac{y^{s}}{((cx+r)^{2}+(cy)^{2})^{s}}e^{-2\pi itx}\,dx \\
+          &= e^{2\pi it\frac{r}{c}}\int_{-\infty}^{\infty}\frac{y^{s}}{((cx)^{2}+(cy)^{2})^{s}}e^{-2\pi itx}\,dx && \text{$x \to x-\frac{r}{c}$} \\
+          &= \frac{e^{2\pi it\frac{r}{c}}}{c^{2s}}\int_{-\infty}^{\infty}\frac{y^{s}}{(x^{2}+y^{2})^{s}}e^{-2\pi itx}\,dx \\
+          &= \frac{e^{2\pi it\frac{r}{c}}}{c^{2s}}\int_{-\infty}^{\infty}\frac{y^{s+1}}{((xy)^{2}+y^{2})^{s}}e^{-2\pi itxy}\,dx && \text{$x \to xy$} \\
+          &= \frac{e^{2\pi it\frac{r}{c}}}{c^{2s}}\int_{-\infty}^{\infty}\frac{y^{1-s}}{(x^{2}+1)^{s}}e^{-2\pi itxy}\,dx.
         \end{align*}
-        where on the right-hand side it is understood we are summing over all triples $(c,\ell,r)$ with the prescribed properties. Using \cref{lem:Ramanujan_zeta_relation} yields
+        Appealing to \cref{append:Special_Integrals} to compute this latter integral, we see that
         \[
-          I(z,s) = \begin{cases} \frac{\z(2s-1)}{\z(2s)}y^{1-s}\int_{-\infty}^{\infty}\frac{1}{(x^{2}+1)^{s}}\,dx & \text{if $n = 0$}, \\ \frac{\s_{1-2s}(|n|)}{\z(2s)}y^{1-s}\int_{-\infty}^{\infty}\frac{1}{(x^{2}+1)^{s}}e^{-2\pi inxy}\,dx & \text{if $n \neq 0$}. \end{cases}
+          \hat{f}(t) = \begin{cases} \frac{y^{1-s}}{c^{2s}}\frac{\sqrt{\pi}\G\left(s-\frac{1}{2}\right)}{\G(s)} & \text{if $t = 0$}, \\ \frac{e^{2\pi it\frac{r}{c}}}{c^{2s}}\frac{2\pi^{s}|t|^{s-\frac{1}{2}}}{\G(s)}\sqrt{y}K_{s-\frac{1}{2}}(2\pi|t|y) & \text{if $t \neq 0$}. \end{cases}
         \]
-        Appealing to \cref{append:Special_Integrals} for this last integral and substituting the result back into \cref{equ:real-analytic_Eisenstein_fourier_coefficient_definition} gives
+        By the Poisson summation formula and the identity theorem, we have
         \[
-          a(n,y,s) = \begin{cases} y^{s}+y^{1-s}\frac{\sqrt{\pi}\G\left(s-\frac{1}{2}\right)\z(2s-1)}{\G(s)\z(2s)} & \text{if $n = 0$}, \\ \pi^{s}\frac{|n|^{s-\frac{1}{2}}\s_{1-2s}(|n|)}{\G(s)\z(2s)}\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y) & \text{if $n \neq 0$}. \end{cases}
+          I_{c,r}(z,s) = \frac{y^{1-s}}{c^{2s}}\frac{\sqrt{\pi}\G\left(s-\frac{1}{2}\right)}{\G(s)}+\sum_{t \neq 0}\left(\frac{e^{2\pi it\frac{r}{c}}}{c^{2s}}\frac{2\pi^{s}|t|^{s-\frac{1}{2}}}{\G(s)}\sqrt{y}K_{s-\frac{1}{2}}(2\pi|t|y)\right)e^{2\pi itx},
         \]
+        for all $z \in \H$. Substituting this back into the Eisenstein series gives a form of the Fourier series:
+      \begin{align*}
+        E_(z,s) &= y^{s}+\psum_{\substack{c \ge 1 \\ r \tmod{c}}}\left(\frac{y^{1-s}}{c^{2s}}\frac{\sqrt{\pi}\G\left(s-\frac{1}{2}\right)}{\G(s)}+\sum_{t \ge 1}\left(\frac{e^{2\pi it\frac{r}{c}}}{c^{2s}}\frac{2\pi^{s}|t|^{s-\frac{1}{2}}}{\G(s)}\sqrt{y}K_{s-\frac{1}{2}}(2\pi|t|y)\right)e^{2\pi itx}\right) \\
+        &= y^{s}+y^{1-s}\psum_{\substack{c \ge 1 \\ r \tmod{c}}}\frac{1}{c^{2s}}\frac{\sqrt{\pi}\G\left(s-\frac{1}{2}\right)}{\G(s)}+\sum_{t \ge 1}\left(\psum_{\substack{c \ge 1 \\ r \tmod{c}}}\frac{e^{2\pi it\frac{r}{c}}}{c^{2s}}\frac{2\pi^{s}|t|^{s-\frac{1}{2}}}{\G(s)}\sqrt{y}K_{s-\frac{1}{2}}(2\pi|t|y)\right)e^{2\pi itx} \\
+        &= y^{s}+y^{1-s}\sum_{c \ge 1}\frac{r(0,c)}{c^{2s}}\frac{\sqrt{\pi}\G\left(s-\frac{1}{2}\right)}{\G(s)}+\sum_{t \ge 1}\left(\sum_{c \ge 1}\frac{r(t,c)}{c^{2s}}\frac{2\pi^{s}|t|^{s-\frac{1}{2}}}{\G(s)}\sqrt{y}K_{s-\frac{1}{2}}(2\pi|t|y)\right)e^{2\pi itx}.
+      \end{align*}
+      By applying \cref{lem:Ramanujan_zeta_relation} to compute the Dirichlet series of Ramanujan sums, we obtain the desired Fourier series:
+      \[
+        E(z,s) = y^{s}+y^{1-s}\frac{\sqrt{\pi}\G\left(s-\frac{1}{2}\right)\z(2s-1)}{\G(s)\z(2s)}+\sum_{t \ge 1}\left(\frac{2\pi^{s}|t|^{s-\frac{1}{2}\s_{1-2s}(|t|)}}{\G(s)\z(2s)}\sqrt{y}K_{s-\frac{1}{2}}(2\pi|t|y)\right)e^{2\pi itx}.
+      \]
       \end{proof}
 
-      Having computed the Fourier coefficients, we would like to obtain a functional equation for $E(z,s)$ as $s \to 1-s$ (this follows from \cref{thm:functional_equation_of_Eisenstein_series} but we will demonstrate a full proof for the single Eisenstein series on $\G_{0}(1)\backslash\H$). To this end, we define $E^{\ast}(z,s)$ by
+      Having computed the Fourier series, we would like to obtain a functional equation for $E(z,s)$ as $s \to 1-s$ (this follows from \cref{thm:functional_equation_of_Eisenstein_series} but we will demonstrate a full proof for the single Eisenstein series on $\G_{0}(1)\backslash\H$). To this end, we define $E^{\ast}(z,s)$ by
       \[
         E^{\ast}(z,s) = \L(2s,\z)E(z,s) = \pi^{-s}\G(s)\z(2s)E(z,s).
       \]
-      From \cref{prop:Fourier_coefficients_of_real-analytic_Eisenstein_series}, the Fourier coefficients $a^{\ast}(n,y,s)$ of $E^{\ast}(z,s)$ are given by
+      From \cref{prop:Fourier_coefficients_of_real-analytic_Eisenstein_series}, the Fourier coefficients $a^{\ast}(n,y,s)$ of $E^{\ast}(z,s)$ in the Fourier series
+      \[
+        E^{\ast}(z,s) = a^{\ast}(0,y,s)+\sum_{n \neq 0}a^{\ast}(n,y,s)e^{2\pi inx},
+      \]
+       are given by
       \[
         a^{\ast}(n,y,s) = \begin{cases} y^{s}\pi^{-s}\G(s)\z(2s)+y^{1-s}\pi^{-\left(s-\frac{1}{2}\right)}\G(s-\frac{1}{2})\z(2s-1) & \text{if $n = 0$}, \\ 2|n|^{s-\frac{1}{2}}\s_{1-2s}(|n|)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y) & \text{if $n \neq 0$}. \end{cases}
       \]
-      We can derive a functional equation for $E^{\ast}(z,s)$. Using the definition and functional equation for $\L(2s-1,\z)$, we can rewrite the second term in the constant coefficient to get
+      We can now derive a functional equation for $E^{\ast}(z,s)$. Using the definition and functional equation for $\L(2s-1,\z)$, we can rewrite the second term in the constant coefficient to get
       \begin{equation}\label{equ:Fourier_coefficients_for_completed_real-analytic_Eisenstein_series}
         a^{\ast}(n,y,s) = \begin{cases} y^{s}\L(2s,\z)+y^{1-s}\L(2(1-s),\z) & \text{if $n = 0$}, \\ 2|n|^{s-\frac{1}{2}}\s_{1-2s}(|n|)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y) & \text{if $n \neq 0$}. \end{cases}
       \end{equation}
