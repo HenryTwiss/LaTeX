@@ -58,7 +58,7 @@
       \setcounter{enumi}{4}
       \item For all cusps $\mf{a}$ and any $y > 0$, we have
       \[
-        \int_{iy}^{1+iy}(f|\s_{\mf{a}})(z)\,dz = 0.
+        \int_{0}^{1}(f|\s_{\mf{a}})(z)\,dx = 0.
       \]
     \end{enumerate}
     Property (ii) is called the \textbf{automorphy condition}\index{automorphy condition} and we say that $f$ is \textbf{automorphic}\index{automorphic}. In particular, $f$ admits a Fourier series and is a function on $\mc{F}_{\G}$. The automorphy condition can equivalently be expressed as
@@ -127,11 +127,27 @@
     \[
       (f|\s_{\mf{a}})(z) = a_{\mf{a}}^{+}(0,s)y^{s}+a_{\mf{a}}^{-}(0,s)y^{1-s}+\sum_{n \neq 0}a_{\mf{a}}(n,s)W_{\sgn(n)\frac{k}{2},s-\frac{1}{2}}(4\pi|n|y)e^{2\pi inx}.
     \]
-    If $\mf{a} = \infty$ or $s$ is fixed, we will drop these dependencies accordingly. Moreover, property (v) implies that $f$ is a cusp form if and only if $a_{\mf{a}}^{+}(0,s) = 0$ and $a_{\mf{a}}^{-}(0,s) = 0$ for every cusp $\mf{a}$. We can also easily derive a bound for the size of the Fourier coefficients of cusp forms. Fix some $Y > 0$ and consider
+    If $\mf{a} = \infty$ or $s$ is fixed, we will drop these dependencies accordingly. Moreover, property (v) implies that $f$ is a cusp form if and only if $a_{\mf{a}}^{+}(0,s) = 0$ and $a_{\mf{a}}^{-}(0,s) = 0$ for every cusp $\mf{a}$. Now observe that $-\conj{z} = -x+iy$. We say $f$ is \textbf{even}\index{even} with respect to $\mf{a}$ if $(f|\s_{\mf{a}})(-\conj{z}) = (f|\s_{\mf{a}})(z)$ and is \textbf{odd}\index{odd} with respect to $\mf{a}$ if $(f|\s_{\mf{a}})(-\conj{z}) = -(f|\s_{\mf{a}})(z)$. Equivalently, $f$ is even or odd with respect to $\mf{a}$ if and only if $(f|\s_{\mf{a}})$ is even or odd with respect to $x$. If $\mf{a} = \infty$, we will drop this dependence. Note that if $f$ is odd with respect to $\mf{a}$ then $a_{\mf{a}}^{\pm}(0,s) = 0$. As $e^{2\pi inx} = \cos(nx)+i\sin(nx)$, the Fourier series of $f$ at the $\mf{a}$ cusp takes the form
+    \[
+      (f|\s_{\mf{a}})(z) = a_{\mf{a}}^{+}(0,s)y^{s}+a_{\mf{a}}^{-}(0,s)y^{1-s}+\sum_{n \neq 0}a_{\mf{a}}(n,s)W_{\sgn(n)\frac{k}{2},s-\frac{1}{2}}(4\pi|n|y)\cos(2\pi nx),
+    \]
+    if $f$ is even, and
+    \[
+      f(z) = \sum_{n \neq 0}a_{\mf{a}}(n,s)iW_{\sgn(n)\frac{k}{2},s-\frac{1}{2}}(4\pi|n|y)\sin(2\pi nx),
+    \]
+    if $f$ is odd. Then
+    \[
+      a_{\mf{a}}(-n,s)W_{\sgn(-n)\frac{k}{2},s-\frac{1}{2}}(4\pi|n|y) = \pm a_{\mf{a}}(n,s)W_{\sgn(n)\frac{k}{2},s-\frac{1}{2}}(4\pi|n|y),
+    \]
+    for all $n \ge 1$ and with $\pm$ according to if $f$ is even or odd with respect to $\mf{a}$ respectively. All in all, $f$ admits a \textbf{Fourier series at the $\mf{a}$ cusp}\index{Fourier series at the $\mf{a}$ cusp} given by
+    \[
+      (f|\s_{\mf{a}})(z) = a_{\mf{a}}^{+}(0,s)y^{s}+a_{\mf{a}}^{-}(0,s)y^{1-s}+\sum_{n \ge 1}a_{\mf{a}}(n,s)W_{\sgn(n)\frac{k}{2},s-\frac{1}{2}}(4\pi|n|y)\SC(2\pi nx),
+    \]
+    for some different Fourier coefficients $a_{\mf{a}}(n,s)$ (they are either $2$ or $2i$ multiples depending on if $f$ is even or odd) and where $\SC(x) = \cos(x)$ if $f$ is even and $\SC(x) = \sin(x)$ if $f$ is odd. If $\mf{a} = \infty$ or $s$ is fixed, we will drop these dependencies accordingly. From now on, if we are discussing an even or odd Maass form we will always mean this last Fourier series. We can also easily derive a bound for the size of the Fourier coefficients of cusp forms. Fix some $Y > 0$ and consider
     \[
       \int_{\G_{\infty}\backslash\H_{Y}}|(f|\s_{\mf{a}})(z)|^{2}\,d\mu,
     \]
-    where $\H_{Y}$ is the half-plane defined by $Y \le \Im(z) \le 2Y$. Since $\G_{\infty}\backslash\H_{Y}$ is compact, this integral is absolutely bounded. Substituting in the Fourier series of $f$ at the $\mf{a}$ cusp, this integral can be expressed as
+    where $\H_{Y}$ is the half-plane defined by $Y \le \Im(z) \le 2Y$. This integral exists since $\G_{\infty}\backslash\H_{Y}$ is compact. Substituting in the Fourier series of $f$ at the $\mf{a}$ cusp, this integral can be expressed as
     \[
       \int_{Y}^{2Y}\int_{0}^{1}\sum_{n,m \ge 1}a_{\mf{a}}(n,s)\conj{a_{\mf{a}}(m,s)}W_{\sgn(n)\frac{k}{2},s-\frac{1}{2}}(4\pi|n|y)\conj{W_{\sgn(m)\frac{k}{2},s-\frac{1}{2}}(4\pi|m|y)}e^{2\pi i(n-m)x}\,\frac{dy}{y^{2}}.
     \]
@@ -153,9 +169,9 @@
     \]
     Taking $Y = \frac{1}{|n|}$ and making the change of variables $y \to \frac{y}{|n|}$, we obtain
     \[
-      |a_{\mf{a}}(n,s)| \ll 1.
+      a_{\mf{a}}(n,s) \ll 1.
     \]
-    This bound is known as the \textbf{Hecke bound}\index{Hecke bound} for Maass forms. Using \cref{lem:Whittaker_function_asymptotic} again, we have the estimate $W_{\sgn(n)\frac{k}{2},s-\frac{1}{2}}(4\pi|n|y) = O((|n|y)^{\frac{k}{2}}e^{-2\pi|n|y})$. This estimate together with the Hecke bound and the Taylor series of $\frac{1}{1-e^{y}}$ along with its derivatives, it follows that
+    This bound is known as the \textbf{Hecke bound}\index{Hecke bound} for Maass forms. Using \cref{lem:Whittaker_function_asymptotic}, we have the estimate $W_{\sgn(n)\frac{k}{2},s-\frac{1}{2}}(4\pi|n|y) = O((|n|y)^{\frac{k}{2}}e^{-2\pi|n|y})$. This estimate together with the Hecke bound and the Taylor series of $\frac{1}{1-e^{y}}$ along with its derivatives, it follows that
     \[
       (f|\s_{\mf{a}})(z) = O\left(y^{\frac{k}{2}}\sum_{n \neq 0}|n|^{\frac{k+1}{2}}e^{-2\pi|n|y}\right) = O\left(y^{\frac{k}{2}}\sum_{n \ge 1}n^{k}e^{-2\pi ny}\right) = O\left(\frac{y^{\frac{k}{2}}e^{-2\pi y}}{(1-e^{-2\pi y})^{2}}\right) = O(y^{\frac{k}{2}}e^{-2\pi y}).
     \]
@@ -163,19 +179,11 @@
     \[
       (f|\s_{\mf{a}})(z) = a_{\mf{a}}^{+}(0,s)y^{s}+a_{\mf{a}}^{-}(0,s)y^{1-s}+\sum_{n \neq 0}a_{\mf{a}}(n,s)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y)e^{2\pi inx},
     \]
-    for some different Fourier coefficients $a_{\mf{a}}(n,s)$ (they are $\sqrt{4|n|}$ multiples). If $\mf{a} = \infty$ or $s$ is fixed, we will drop these dependencies accordingly. The Fourier series can be further simplified. We say $f$ is \textbf{even}\index{even} if $f(-\conj{z}) = f(z)$ and is \textbf{odd}\index{odd} if $f(-\conj{z}) = -f(z)$. Since $-\conj{z} = -x+iy$, this means that $f$ is even or odd with respect to $x$. Note that if $f$ is odd it must be a cusp form. As $e^{2\pi inx} = \cos(nx)+i\sin(nx)$, if $f$ has eigenvalue $\l = s(1-s)$, then the Fourier series of $f$ at the $\mf{a}$ cusp takes the form
-    \[
-      (f|\s_{\mf{a}})(z) = a_{\mf{a}}^{+}(0,s)y^{s}+a_{\mf{a}}^{-}(0,s)y^{1-s}+\sum_{n \neq 0}a_{\mf{a}}(n,s)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y)\cos\left(\frac{2\pi nx}{t}\right),
-    \]
-    if $f$ is even, and
-    \[
-      f(z) = \sum_{n \neq 0}a_{\mf{a}}(n,s)i\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y)\sin\left(\frac{2\pi nx}{t}\right),
-    \]
-    if $f$ is odd. Therefore, in even case $a_{\mf{a}}(-n,s) = a_{\mf{a}}(n,s)$ and in the odd case $-a_{\mf{a}}(-n,s) = a_{\mf{a}}(n,s)$ for all $n \ge 1$. Either way, $f$ admits a \textbf{Fourier series at the $\mf{a}$ cusp}\index{Fourier series at the $\mf{a}$ cusp} given by
+    for some different Fourier coefficients $a_{\mf{a}}(n,s)$ (they are $\sqrt{4|n|}$ multiples). If $\mf{a} = \infty$ or $s$ is fixed, we will drop these dependencies accordingly. Moreover, if $f$ is even or odd then $f$ admits a \textbf{Fourier series at the $\mf{a}$ cusp}\index{Fourier series at the $\mf{a}$ cusp} given by
     \[
       (f|\s_{\mf{a}})(z) = a_{\mf{a}}^{+}(0,s)y^{s}+a_{\mf{a}}^{-}(0,s)y^{1-s}+\sum_{n \ge 1}a_{\mf{a}}(n,s)\sqrt{y}K_{s-\frac{1}{2}}(2\pi ny)\SC\left(\frac{2\pi nx}{t}\right),
     \]
-    for some potentially different Fourier coefficients $a_{\mf{a}}(n,s)$ (they are $i$ multiples in the case $f$ is odd) and where $\SC(x) = \cos(x)$ if $f$ is even and $\SC(x) = \sin(x)$ if $f$ is odd. As we have said, if $f$ is odd or more generally a cusp form, then necessarily $a_{\mf{a}}^{+}(0,s) = 0$ and $a_{\mf{a}}^{-}(0,s) = 0$. From now on, if we are discussing an even or odd Maass form we will always mean this last Fourier series (and so the implicit weight is zero).
+    for some different Fourier coefficients $a_{\mf{a}}(n,s)$ (they are either $\sqrt{16|n|}$ or $\sqrt{16|n|}i$ multiples depending on if $f$ is even or odd respectively) and where $\SC(x) = \cos(x)$ if $f$ is even and $\SC(x) = \sin(x)$ if $f$ is odd. If $\mf{a} = \infty$ or $s$ is fixed, we will drop these dependencies accordingly. From now on, if we are discussing an even or odd weight zero Maass form we will always mean this last Fourier series.
   \section{Poincar\'e \& Eisenstein Series}
     Throughout, let $\G$ be a congruence subgroup of level $N$. We will introduce two classes of automorphic functions on $\GH$. The latter such functions will be Maass forms. Actually, all of these automorphic functions are defined on a large space $\H \x \{s \in \C:\s > 1\}$ and hence are functions of two variables. The special case functions will be Maass forms for fixed $s$. Let $m \ge 0$, $k \ge 0$, $\chi$ be a Dirichlet character with conductor $q \mid N$, and $\mf{a}$ be a cusp of $\GH$. Then the $m$-th \textbf{(automorphic) Poincar\'e series}\index{(automorphic) Poincar\'e series} $P_{m,k,\chi,\mf{a}}(z,s)$ of weight $k$ and character $\chi$ on $\GH$ at the $\mf{a}$ cusp is defined by
     \[
@@ -438,7 +446,7 @@
     We will now discuss the spectrum of the Laplace operator on $\mc{E}_{k}(\G,\chi)$. Essential is the meromorphic continuation of the Eisenstein series $E_{k,\chi,\mf{a}}(z,s)$ (see \cite{iwaniec2002spectral} for a proof in the weight zero case and \cite{cohenmodular2017} for notes on the general case):
 
     \begin{theorem}\label{thm:meromorphic_continuation_of_Eisenstein_series}
-      Let $\mf{a}$ and $\mf{b}$ be cusps of $\GH$. The Eisenstein series $E_{k,\chi,\mf{a}}(z,s)$ admits meromorphic continuation to $\C$ in the $s$-plane, via a Fourier series at the $\mf{b}$ cusp given by
+      Let $\mf{a}$ and $\mf{b}$ be cusps of $\GH$. The Eisenstein series $E_{k,\chi,\mf{a}}(z,s)$ admits meromorphic continuation to $\C$, via a Fourier series at the $\mf{b}$ cusp given by
       \[
         E_{k,\chi,\mf{a}}(\s_{\mf{b}}z,s) = \d_{\mf{a},\mf{b}}y^{s}+\tau_{\mf{a},\mf{b}}(0,s)y^{1-s}+\sum_{n \neq 0}\tau_{\mf{a},\mf{b}}(n,s)W_{\sgn(n)\frac{k}{2},s-\frac{1}{2}}(4\pi|n|y)e^{2\pi inx},
       \]
@@ -917,7 +925,7 @@
       \]
     \end{conjecture}
 
-    The Ramanujan-Petersson conjecture has not yet been proved, but there has been partial progress toward the conjecture. The current best bound is $|\l_{f}(p)| \le 2p^{\frac{7}{64}-\frac{1}{2}}$ due to Kim and Sarnak (see \cite{kim2003functoriality} for the proof). Under the Ramanujan-Petersson conjecture, the Hecke relations give the improved bound $\l_{f}(n) \ll \s_{0}(n)n^{-1} \ll_{\e} n^{\e-1}$ (recall \cref{prop:sum_of_divisors_growth_rate}). It turns out that the Ramanujan-Petersson conjecture is tightly connected to another conjecture of Selberg about the smallest possible eigenvalue of Maass form on $\GH$. Note that the possible eigenvalues are discrete by \cref{thm:the_full_spectral_resolution} and so there exists a smallest eigenvalue. To state it, recall that if $f$ is a Maass form with eigenvalue $\l$ and spectral parameter $r$ on $\GH$, then $\l = \frac{1}{4}+r^{2}$ with either $r \in \R$ or $ir \in [0,\frac{1}{2})$. The \textbf{Selberg conjecture}\index{Selberg conjecture} claims that the second case never occurs in weight zero:
+    The Ramanujan-Petersson conjecture has not yet been proved, but there has been partial progress toward the conjecture. The current best bound is $|\l_{f}(p)| \le 2p^{\frac{7}{64}-\frac{1}{2}}$ due to Kim and Sarnak (see \cite{kim2003functoriality} for the proof). Under the Ramanujan-Petersson conjecture, the Hecke relations give the improved bound $\l_{f}(n) \ll \s_{0}(n)n^{-\frac{1}{2}} \ll_{\e} n^{\e-\frac{1}{2}}$ (recall \cref{prop:sum_of_divisors_growth_rate}). It turns out that the Ramanujan-Petersson conjecture is tightly connected to another conjecture of Selberg about the smallest possible eigenvalue of Maass form on $\GH$. Note that the possible eigenvalues are discrete by \cref{thm:the_full_spectral_resolution} and so there exists a smallest eigenvalue. To state it, recall that if $f$ is a Maass form with eigenvalue $\l$ and spectral parameter $r$ on $\GH$, then $\l = \frac{1}{4}+r^{2}$ with either $r \in \R$ or $ir \in [0,\frac{1}{2})$. The \textbf{Selberg conjecture}\index{Selberg conjecture} claims that the second case never occurs:
 
     \begin{conjecture}[Selberg conjecture]
       If $\l$ is the smallest eigenvalue for Maass forms on $\GH$, then
@@ -984,7 +992,7 @@
       Suppose $f \in \mc{A}_{k,\nu}(N,\chi)$ and $\psi$ is a Dirichlet character modulo $M$. Then $f \ox \psi \in \mc{A}_{k,\nu}(NM^{2},\chi\psi^{2})$. Moreover, if $f$ is a cusp form then so is $f \ox \psi$.
     \end{proposition}
     \begin{proof}
-      Mimicking the proof of \cref{prop:twisted_holomorphic_forms}, it remains to show that $f \ox \psi_{p,0}$ is an eigenfunction with eigenvalue $\l$ if $f$ is. As $U_{p} = T_{p}$ for the $p$-th Hecke operator on $\mc{A}_{k,\nu}(\G_{1}(Np))$, $U_{p}$ commutes with $\D$. It is also clear that $V_{p}$ commutes with $\D$. These facts together with
+      Mimicking the proof of \cref{prop:twisted_holomorphic_forms}, it remains to show that $f \ox \psi_{p,0}$ is an eigenfunction with eigenvalue $\l$ if $f$ is. As $U_{p} = T_{p}$ is the $p$-th Hecke operator on $\mc{A}_{k,\nu}(\G_{1}(Np))$, $U_{p}$ commutes with $\D$. It is also clear that $V_{p}$ commutes with $\D$. These facts together with
       \[
         f \ox \psi_{p,0} = f-V_{p}U_{p}f,
       \]

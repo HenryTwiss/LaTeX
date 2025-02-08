@@ -435,104 +435,107 @@
   \section{Bessel Functions}\label{append:Bessel_Functions}
     For any $\nu \in \C$, the \textbf{Bessel equation}\index{Bessel equation} is the ODE
     \[
-      x^{2}\frac{d^{2}y}{dx^{2}}+x\frac{dy}{dx}+(x^{2}-\nu^{2})y = 0.
+      z^{2}\frac{d^{2}w}{dz^{2}}+z\frac{dw}{dz}+(z^{2}-\nu^{2})w = 0.
     \]
-    There are two linearly independent solutions to this equation. One solution is the \textbf{Bessel function of the first kind}\index{Bessel function of the first kind} $J_{\nu}(x)$ defined by
+    There are two linearly independent solutions to this equation. One solution is the \textbf{Bessel function of the first kind}\index{Bessel function of the first kind} $J_{\nu}(z)$ defined by
     \[
-      J_{\nu}(x) = \sum_{n \ge 0}\frac{(-1)^{n}}{n!\G(n+\nu+1)}\left(\frac{x}{2}\right)^{2n+\nu}.
+      J_{\nu}(z) = \sum_{n \ge 0}\frac{(-1)^{n}}{n!\G(n+\nu+1)}\left(\frac{z}{2}\right)^{2n+\nu}.
     \]
-    For integers $n$, $J_{n}(x)$ is entire and we have
+    For integers $n$, $J_{n}(z)$ is entire and we have
     \[
-      J_{n}(x) = (-1)^{n}J_{-n}(x).
+      J_{n}(z) = (-1)^{n}J_{-n}(z).
     \]
-    Otherwise, $J_{\nu}(x)$ has a pole at $x = 0$ and $J_{\nu}(x)$ and $J_{-\nu}(x)$ are linearly independent solutions to the Bessel equation. The other solution is the \textbf{Bessel function of the second kind}\index{Bessel function of the second kind} $Y_{\nu}(x)$ defined by
+    Otherwise, $J_{\nu}(z)$ has a pole at $z = 0$ and $J_{\nu}(z)$ and $J_{-\nu}(z)$ are linearly independent solutions to the Bessel equation. The other solution is the \textbf{Bessel function of the second kind}\index{Bessel function of the second kind} $Y_{\nu}(z)$ defined by
     \[
-      Y_{\nu}(x) = \frac{J_{\nu}(x)\cos(\nu\pi)-J_{-\nu}(x)}{\sin(\nu\pi)},
+      Y_{\nu}(z) = \frac{J_{\nu}(z)\cos(\nu\pi)-J_{-\nu}(z)}{\sin(\nu\pi)},
     \]
     for non-integers $\nu$, and for integers $n$ is
     \[
-      Y_{n}(x) = \lim_{\nu \to n}Y_{\nu}(x).
+      Y_{n}(z) = \lim_{\nu \to n}Y_{\nu}(z).
     \]
     For any integer $n$, we also have
     \[
-      Y_{n}(x) = (-1)^{n}Y_{-n}(x).
+      Y_{n}(z) = (-1)^{n}Y_{-n}(z).
     \]
     For the $J$-Bessel function there is also an important integral representation called the \textbf{Schl\"aflin integral representation}\index{Schl\"aflin integral representation}:
 
     \begin{proposition}[Schl\"aflin integral representation for the $J$-Bessel function]
-      For any $\nu \in \C$ and $\Re(x) > 0$,
+      For any $\nu \in \C$,
       \[
-        J_{\nu}(x) = \frac{1}{2\pi i}\left(\frac{x}{2}\right)^{\nu}\int_{-\infty}^{(0^{+})}t^{-(\nu+1)}e^{t-\frac{x^{2}}{4t}}\,dt.
+        J_{\nu}(z) = \frac{1}{2\pi i}\left(\frac{z}{2}\right)^{\nu}\int_{-\infty}^{(0^{+})}t^{-(\nu+1)}e^{t-\frac{z^{2}}{4t}}\,dt,
       \]
+      provided $|\arg(z)| < \frac{\pi}{2}$ and where the contour is the Hankel contour about the negative real axis.
     \end{proposition}
 
     The \textbf{modified Bessel equation}\index{modified Bessel equation} is the ODE
     \[
-      x^{2}\frac{d^{2}y}{dx^{2}}+x\frac{dy}{dx}-(x^{2}+\nu^{2})y = 0.
+      z^{2}\frac{d^{2}w}{dz^{2}}+z\frac{dw}{dz}-(z^{2}+\nu^{2})w = 0.
     \]
     Like the Bessel equation, there are two linearly independent solutions. One solution is the \textbf{modified Bessel function of the first kind}\index{Bessel function of the first kind} $I_{\nu}(x)$ given by
     \[
-      I_{\nu}(x) = i^{-\nu}J_{\nu}(ix) = \sum_{n \ge 0}\frac{1}{n!\G(n+\nu+1)}\left(\frac{x}{2}\right)^{2n+\nu}.
+      I_{\nu}(z) = i^{-\nu}J_{\nu}(iz) = \sum_{n \ge 0}\frac{1}{n!\G(n+\nu+1)}\left(\frac{z}{2}\right)^{2n+\nu}.
     \]
     For integers $n$, this solution is symmetric in $n$. That is,
     \[
-      I_{n}(x) = I_{-n}(x).
+      I_{n}(z) = I_{-n}(z).
     \]
     We also have a useful integral representation in a half-plane:
 
     \begin{proposition}\label{prop:integral_representation_I-Bessel_function}
-      For any $\nu \in \C$ and $\Re(x) > 0$,
+      For any $\nu \in \C$,
       \[
-        I_{\nu}(x) = \frac{1}{\pi}\int_{0}^{\pi}e^{x\cos(t)}\cos(\nu t)\,dt-\frac{\sin(\nu\pi)}{\pi}\int_{0}^{\infty}e^{-x\cosh(t)-\nu t}\,dt,
+        I_{\nu}(z) = \frac{1}{\pi}\int_{0}^{\pi}e^{z\cos(t)}\cos(\nu t)\,dt-\frac{\sin(\nu\pi)}{\pi}\int_{0}^{\infty}e^{-z\cosh(t)-\nu t}\,dt,
       \]
-      where the integrals are understood to be complex integrals.
+      provided $|\arg(z)| < \frac{\pi}{2}$.
     \end{proposition}
 
     From this integral representation we can show the following asymptotic:
 
-    \begin{lemma}\label{lem:exponential_growth_I-Bessel_function}
-      For any $\nu \in \C$ and $\Re(x) > 0$,
+    \begin{lemma}\label{lem:I_Bessel_function_asymptotic}
+      For any $\nu \in \C$,
       \[
-        I_{\nu}(x) = O(e^{x}).
+        I_{\nu}(z) \sim_{\e} \sqrt{\frac{1}{2\pi z}}e^{z},
       \]
+      provided $|\arg(z)| \le \frac{\pi}{2}-\e$ for some $\e > 0$.
     \end{lemma}
 
-    The other solution is the \textbf{modified Bessel function of the second kind}\index{modified Bessel function of the second kind} $K_{\nu}(x)$ defined by
+    The other solution is the \textbf{modified Bessel function of the second kind}\index{modified Bessel function of the second kind} $K_{\nu}(z)$ defined by
     \[
-      K_{\nu}(x) = \frac{\pi}{2}\frac{I_{-\nu}(x)-I_{\nu}(x)}{\sin(\nu\pi)},
+      K_{\nu}(z) = \frac{\pi}{2}\frac{I_{-\nu}(z)-I_{\nu}(z)}{\sin(\nu\pi)},
     \]
     for non-integers $\nu$, and for integers $n$ is
     \[
-      K_{n}(x)= \lim_{\nu \to n}K_{\nu}(x).
+      K_{n}(z)= \lim_{\nu \to n}K_{\nu}(z).
     \]
     This is one of the more important types of Bessel functions as they appear in the Fourier coefficients of certain Eisenstein series. This function is symmetric in $\nu$ even when $\nu$ is an integer. That is,
     \[
-      K_{\nu}(x) = K_{-\nu}(x),
+      K_{\nu}(z) = K_{-\nu}(z),
     \]
     for all $\nu$. We also have a very useful integral representation in a half-plane:
 
     \begin{proposition}\label{prop:integral_representation_K-Bessel_function}
-      For any $\nu \in \C$ and $\Re(x) > 0$,
+      For any $\nu \in \C$,
       \[
-        K_{\nu}(x) = \int_{0}^{\infty}e^{-x\cosh(t)}\cosh(\nu t)\,dt,
+        K_{\nu}(z) = \int_{0}^{\infty}e^{-z\cosh(t)}\cosh(\nu t)\,dt,
       \]
-      where the integral is understood to be a complex integral. In particular, $K_{\nu}(x)$ is real provided $x$ is positive.
+      provided $|\arg(z)| < \frac{\pi}{2}$.
     \end{proposition}
 
     From this integral representation it does not take much to show the following asymptotic:
 
-    \begin{lemma}\label{lem:moderate_decay_K-Bessel_function}
-      For any $\nu \in \C$ and $\Re(x) > 0$,
+    \begin{lemma}\label{lem:K_Bessel_function_asymptotic}
+      For any $\nu \in \C$,
       \[
-        K_{\nu}(x) = o(e^{-x}).
+        K_{\nu}(z) \sim_{\e} \sqrt{\frac{\pi}{2z}}e^{-z},
       \]
+      provided $|\arg(z)| \le \frac{\pi}{2}-\e$ for some $\e > 0$.
     \end{lemma}
   \section{Whittaker Functions}\label{append:Whittaker_Functions}
     For $\k,\mu \in \C$, the \textbf{Whittaker equation}\index{Whittaker equation} is the ODE
     \[
       \frac{dw}{dz}+\left(\frac{1}{4}-\frac{\k}{z}-\frac{\frac{1}{4}-\mu^{2}}{z^{2}}\right)w = 0.
     \]
-    Throughout we assume $-2\mu \notin \Z_{\ge 1}$. There are two linearly independent solutions to this equation. If we additionally assume that $w(z) = o(e^{2\pi\Im(z)})$ as $\Im(z) \to \infty$, then there is only one linearly independent solution. This solution is the \textbf{Whittaker function}\index{Whittaker function} $W_{\k,\mu}(z)$. It can be expressed in the form
+    There are two linearly independent solutions to this equation provided $-2\mu \notin \Z_{\ge 1}$. If we additionally assume that $w(z) = o(e^{2\pi y})$ as $y \to \infty$, then there is only one linearly independent solution. This solution is the \textbf{Whittaker function}\index{Whittaker function} $W_{\k,\mu}(z)$. It can be expressed in the form
     \[
       W_{\k,\mu}(z) = z^{\mu+\frac{1}{2}}e^{-\frac{z}{2}}U\left(\mu-\k+\frac{1}{2},1+2\mu,z\right),
     \]
@@ -540,19 +543,24 @@
     \[
       U(\a,\b,z) = \frac{1}{\G(\a)}\int_{0}^{\infty}e^{-zu}u^{\a-1}(1+u)^{\b-\a-1}\,du,
     \]
-    for $\Re(\a) > 0$ and $\Re(z) > 0$ and then analytically continued to $\C^{3}$. From this integral representation we can show the following asymptotic:
+    for $\Re(\a) > 0$ and $x > 0$ and then analytically continued to $\C^{3}$. From this integral representation we can show the following asymptotic:
 
     \begin{lemma}\label{lem:Whittaker_function_asymptotic}
-      Let $\k,\mu \in \C$ with $-2\mu \notin \Z_{\ge 1}$ and $-2(\mu-\k) \notin \Z_{\ge 1}$. Then for $\Re(z) > 0$,
+      For any $\k,\mu \in \C$ with $-2\mu \notin \Z_{\ge 1}$,
       \[
-        W_{\k,\mu}(z) \sim z^{\k}e^{-\frac{z}{2}}.
+        W_{\k,\mu}(z) \sim_{\e} z^{\k}e^{-\frac{z}{2}},
       \]
+      provided $|\arg(z)| \le \frac{\pi}{2}-\e$ for some $\e > 0$.
     \end{lemma}
-    
-    The Whittaker function has a simplified form in special cases:
+
+    The Whittaker function also satisfies the important symmetry properties
+    \[
+      W_{\k,\mu}(z) = W_{\k,-\mu}(z) \quad \text{and} \quad \conj{W_{\k,\mu}(z)} = W_{\k,-\mu}(\conj{z}).
+    \]
+    In particular, $W_{\k,\mu}(z)$ is conjugate symmetric if $z$ is real. The Whittaker function also has a simplified form in special cases:
     
     \begin{theorem}\label{thm:Whittaker_special_cases}
-      Let $\nu,\a \in \C$ with $-2\nu \notin \Z_{\ge 1}$. Then for $\Re(z) > 0$,
+      For any $\nu,\a \in \C$ with $-2\nu \notin \Z_{\ge 1}$,
       \[
         W_{0,\nu}(z) = \left(\frac{z}{\pi}\right)^{\frac{1}{2}}K_{\nu}\left(\frac{z}{2}\right) \quad \text{and} \quad W_{\a,\a-\frac{1}{2}}(z) = z^{\a}e^{-\frac{z}{2}}.
       \]
