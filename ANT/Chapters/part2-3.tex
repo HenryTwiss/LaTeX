@@ -83,7 +83,7 @@
       This means $F(z)$ is an eigenfunction for $\D_{k}$ with eigenvalue $\l\left(\frac{k}{2}\right)$.
     \end{remark}
 
-    One might expect that the Maass raising and lowering operators $R_{k}$ and $L_{k}$ act by changing the weight of a Maass form by $\pm 2$ respectively. This is indeed the case (see \cite{bumpautomorphic1997} for a proof):
+    One might expect that the Maass raising and lowering operators $R_{k}$ and $L_{k}$ act by changing the weight of a Maass form by $\pm 2$ respectively. This is indeed the case:
 
     \begin{proposition}\label{prop:raisin_lowering_presrves_Maass_forms}
       If $f$ is a weight $k$ Maass form on $\GH$, then $R_{k}f$ and $L_{k}f$ are Maass forms on $\GH$ of weight $k+2$ and $k-2$ respectively and of the same eigenvalue, level, and character as $f$.
@@ -288,7 +288,19 @@
       $\mc{L}_{k}(\G,\chi)$ is a Hilbert space with respect to the Petersson inner product.
     \end{proposition}
     \begin{proof}
-      Mimicking the computation in \cref{prop:Petersson_inner_product_hermitian}, we see that the Petersson inner product is a Hermitian inner product on $\mc{L}_{k}(\G,\chi)$. We now show that $\mc{L}_{k}(\G,\chi)$ is complete. Let $(f_{n})_{n \ge 1}$ be a Cauchy sequence in $\mc{L}_{k}(\G,\chi)$. Then $||f_{n}-f_{m}|| \to 0$ as $n,m \to \infty$. But
+      Let $f,g \in \mc{L}_{k}(\G,\chi)$. Linearity of the integral immediately implies that the Petersson inner product is linear on $\mc{L}_{k}(\G,\chi)$. It is also positive definite since
+      \[
+        \<f,f\> = \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}f(z)\conj{f(z)}\,d\mu = \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}|f(z)|^{2}\,d\mu \ge 0,
+      \]
+      with equality if and only if $f$ is identically zero. To see that it is conjugate symmetric, observe
+      \begin{align*}
+        \conj{\<g,f\>} &= \conj{\frac{1}{V_{\G}}\int_{\mc{F}_{\G}}g(z)\conj{f(z)}\,d\mu} \\
+        &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}\conj{g(z)}f(z)\,\conj{d\mu} \\
+        &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}\conj{g(z)}f(z)\,d\mu && \text{$d\mu = \frac{dx\,dy}{y^{2}}$} \\
+        &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}f(z)\conj{g(z)}\,d\mu \\
+        &= \<f,g\>.
+      \end{align*}
+      Thus the Petersson inner product is a Hermitian inner product on $\mc{L}_{k}(\G,\chi)$. We now show that $\mc{L}_{k}(\G,\chi)$ is complete. Let $(f_{n})_{n \ge 1}$ be a Cauchy sequence in $\mc{L}_{k}(\G,\chi)$. Then $||f_{n}-f_{m}|| \to 0$ as $n,m \to \infty$. But
       \[
         ||f_{n}-f_{m}|| = \left(\frac{1}{V_{\G}}\int_{\mc{F}_{\G}}|f_{n}(z)-f_{m}(z)|^{2}\,d\mu\right)^{\frac{1}{2}},
       \]
@@ -369,7 +381,7 @@
 
     Now we are ready to show that $P_{m,k,\chi,\mf{a}}(z,\psi)$ is locally absolutely uniformly convergent for $z \in \H$. Let $K$ be a compact subset of $\H$. Then it suffices to show $P_{m,k,\chi,\mf{a}}(z,\psi)$ is uniformly convergent on $K$. The bound $|e^{2\pi im\s_{\mf{a}}^{-1}\g z}| = e^{-2\pi m\Im(\s_{\mf{a}}^{-1}\g z)} < 1$ and the Bruhat decomposition applied to $\s_{\mf{a}}^{-1}\G$ together give
     \[
-      P_{k,\chi,\mf{a}}(z,\psi) \ll \psi(\Im(z))+\sum_{\substack{(c,d) \in \Z^{2}-\{\mathbf{0}\}}}\psi\left(\frac{\Im(z)}{|cz+d|^{2}}\right).
+      P_{m,k,\chi,\mf{a}}(z,\psi) \ll \psi(\Im(z))+\sum_{\substack{(c,d) \in \Z^{2}-\{\mathbf{0}\}}}\psi\left(\frac{\Im(z)}{|cz+d|^{2}}\right).
     \]
     It now further suffices to show that the latter series above is uniformly convergent on $K$. By \cref{lem:finitely_many_pairs_with_size_larger_than_one}, there are all but finitely many terms in the sum with $\psi\left(\frac{\Im(z)}{|cz+d|^{2}}\right) \ll_{\e} \left(\frac{\Im(z)}{|cz+d|^{2}}\right)^{1+\e}$. But the finitely many other terms are all uniformly bounded on $K$ because $\psi(y)$ is continuous (as it is smooth). Therefore
     \[
