@@ -82,8 +82,17 @@
       \]
       This means $F(z)$ is an eigenfunction for $\D_{k}$ with eigenvalue $\l\left(\frac{k}{2}\right)$.
     \end{remark}
+
+    One might expect that the Maass raising and lowering operators $R_{k}$ and $L_{k}$ act by changing the weight of a Maass form by $\pm 2$ respectively. This is indeed the case (see \cite{bumpautomorphic1997} for a proof):
+
+    \begin{proposition}\label{prop:raisin_lowering_presrves_Maass_forms}
+      If $f$ is a weight $k$ Maass form on $\GH$, then $R_{k}f$ and $L_{k}f$ are Maass forms on $\GH$ of weight $k+2$ and $k-2$ respectively and of the same eigenvalue, level, and character as $f$.
+    \end{proposition}
+    \begin{proof}
+      This is immediate from the definition of Maass forms and \cref{prop:Laplace_is_invariant}.
+    \end{proof}
   
-    Maass forms also admit Fourier series. Indeed, automorphy implies
+    As a consequence of \cref{prop:raisin_lowering_presrves_Maass_forms}, it suffices to study Maass forms of weights zero and one. We will be primarily concerned with the weight zero case. Regardless, all Maass forms also admit Fourier series. Indeed, automorphy implies
     \[
       f(z+1) = f\left(\begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}z\right) = f(z),
     \]
@@ -127,12 +136,7 @@
     \[
       (f|\s_{\mf{a}})(z) = a_{\mf{a}}^{+}(0,s)y^{s}+a_{\mf{a}}^{-}(0,s)y^{1-s}+\sum_{n \neq 0}a_{\mf{a}}(n,s)W_{\sgn(n)\frac{k}{2},s-\frac{1}{2}}(4\pi|n|y)e^{2\pi inx}.
     \]
-    If $\mf{a} = \infty$ or $s$ is fixed, we will drop these dependencies accordingly. Moreover, property (v) implies that $f$ is a cusp form if and only if $a_{\mf{a}}^{+}(0,s) = 0$ and $a_{\mf{a}}^{-}(0,s) = 0$ for every cusp $\mf{a}$. We also have a notion of parity for Maass forms. We say that $f$ is \textbf{even}\index{even} with respect to the $\mf{a}$ cusp if $(f|\s_{\mf{a}})(-\conj{z}) = (f|\s_{\mf{a}})(z)$ and is \textbf{odd}\index{odd} with respect to the $\mf{a}$ cusp if $(f|\s_{\mf{a}})(-\conj{z}) = -(f|\s_{\mf{a}})(z)$. If $\mf{a} = \infty$, we suppress this dependence. Since $-\conj{z} = -x+iy$, $f$ is even or odd with respect to the $\mf{a}$ cusp if and only if $(f|\s_{\mf{a}})$ is even or odd with respect to $x$. Moreover, As $e^{ix} = \cos(x)+i\sin(x)$, $f$ admits \textbf{Fourier series at the $\mf{a}$ cusp}\index{Fourier series at the $\mf{a}$ cusp} given by
-    \begin{align*}
-      (f|\s_{\mf{a}})(z) = a_{\mf{a}}^{+}(0,s)y^{s}&+a_{\mf{a}}^{-}(0,s)y^{1-s} \\
-      &+ \sum_{n \ge 1}\left(a_{\mf{a}}(n,s)W_{\sgn(n)\frac{k}{2},s-\frac{1}{2}}(4\pi|n|y)+a_{\mf{a}}(-n,s)W_{\sgn(-n)\frac{k}{2},s-\frac{1}{2}}(4\pi|n|y)\right)\SC(2\pi nx),
-    \end{align*}
-    for some potentially different Fourier coefficients $a_{\mf{a}}(n,s)$ and $a_{\mf{a}}^{\pm}(0,s)$ (the $a_{\mf{a}}(n,s)$ are $i$ multiples and the $a_{\mf{a}}^{\pm}(0,s)$ are zero if $f$ is odd) and where $\SC(x) = \cos(x)$ if $f$ is even and $\SC(x) = \sin(x)$ if $f$ is odd. From now on, if we are talking about even or odd Maass forms we will always mean this latter Fourier series. We can also easily derive a bound for the size of the Fourier coefficients of cusp forms. Fix some $Y > 0$ and consider
+    If $\mf{a} = \infty$ or $s$ is fixed, we will drop these dependencies accordingly. Moreover, property (v) implies that $f$ is a cusp form if and only if $a_{\mf{a}}^{+}(0,s) = 0$ and $a_{\mf{a}}^{-}(0,s) = 0$ for every cusp $\mf{a}$. We can also easily derive a bound for the size of the Fourier coefficients of cusp forms. Fix some $Y > 0$ and consider
     \[
       \int_{\G_{\infty}\backslash\H_{Y}}|(f|\s_{\mf{a}})(z)|^{2}\,d\mu,
     \]
@@ -168,7 +172,7 @@
     \[
       (f|\s_{\mf{a}})(z) = a_{\mf{a}}^{+}(0,s)y^{s}+a_{\mf{a}}^{-}(0,s)y^{1-s}+\sum_{n \neq 0}a_{\mf{a}}(n,s)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y)e^{2\pi inx},
     \]
-    for some different Fourier coefficients $a_{\mf{a}}(n,s)$ (they are $\sqrt{4|n|}$ multiples). If $\mf{a} = \infty$ or $s$ is fixed, we will drop these dependencies accordingly. Moreover, if $f$ is even or odd at the $\mf{a}$ cusp, then $f$ admits a \textbf{Fourier series at the $\mf{a}$ cusp}\index{Fourier series at the $\mf{a}$ cusp} given by
+    for some different Fourier coefficients $a_{\mf{a}}(n,s)$ (they are $\sqrt{4|n|}$ multiples). If $\mf{a} = \infty$ or $s$ is fixed, we will drop these dependencies accordingly. We also have a notion of parity for weight zero Maass forms. We say that $f$ is \textbf{even}\index{even} with respect to the $\mf{a}$ cusp if $(f|\s_{\mf{a}})(-\conj{z}) = (f|\s_{\mf{a}})(z)$ and is \textbf{odd}\index{odd} with respect to the $\mf{a}$ cusp if $(f|\s_{\mf{a}})(-\conj{z}) = -(f|\s_{\mf{a}})(z)$. If $\mf{a} = \infty$, we suppress this dependence. Since $-\conj{z} = -x+iy$, $f$ is even or odd with respect to the $\mf{a}$ cusp if and only if $(f|\s_{\mf{a}})$ is even or odd with respect to $x$. Moreover, As $e^{ix} = \cos(x)+i\sin(x)$, $f$ admits a \textbf{Fourier series at the $\mf{a}$ cusp}\index{Fourier series at the $\mf{a}$ cusp} given by
     \[
       (f|\s_{\mf{a}})(z) = a_{\mf{a}}^{+}(0,s)y^{s}+a_{\mf{a}}^{-}(0,s)y^{1-s}+\sum_{n \ge 1}a_{\mf{a}}(n,s)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y)\SC(2\pi nx),
     \]
