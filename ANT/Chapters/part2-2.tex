@@ -719,7 +719,7 @@
     This explicit definition of $T_{p}$ can be used to compute how the Hecke operators act on the Fourier coefficients of a holomorphic form:
 
     \begin{proposition}\label{prop:prime_Hecke_operators_acting_on_Fourier_coefficients_holomorphic}
-      Let $f \in \mc{M}_{k}(\G_{1}(N))$ with Fourier coefficients $a_{n}(f)$. Then for primes $p$ with $(p,N) = 1$,
+      Let $f \in \mc{M}_{k}(\G_{1}(N))$ with Fourier coefficients $a_{n}(f)$. Then for all primes $p$,
       \[
         (T_{p}f)(z) = \sum_{n \ge 0}\left(a_{np}(f)+\chi_{N,0}(p)p^{k-1}a_{\frac{n}{p}}(\<p\>f)\right)e^{2\pi inz},
       \]
@@ -733,13 +733,13 @@
       In view of \cref{thm:diamond_operator_decomposition_holomorphic} and the linearity of the Hecke operators, it suffices to assume $f \in \mc{M}_{k}(N,\chi)$ and thus only the second formula needs to be verified. 
       Observe that
       \[
-        \left(f\left[\begin{pmatrix} 1 & j \\ 0 & p \end{pmatrix}\right]_{k}\right)(z) = \frac{1}{p}f\left(\frac{z+j}{p}\right) = \frac{1}{p}\sum_{n \ge 0}a_{n}(f)e^{\frac{2\pi in(z+j)}{p}}.
+        \left(f\left[\begin{pmatrix} 1 & j \\ 0 & p \end{pmatrix}\right]_{k}\right)(z) = \frac{1}{p}\sum_{n \ge 0}a_{n}(f)e^{\frac{2\pi in(z+j)}{p}}.
       \]
       Summing over all $j$ modulo $p$ gives
       \[
-        \sum_{j \tmod{p}}\left(f\left[\begin{pmatrix} 1 & j \\ 0 & p \end{pmatrix}\right]_{k}\right)(z) = \sum_{j \tmod{p}}\frac{1}{p}\sum_{n \ge 0}a_{n}(f)e^{\frac{2\pi in(z+j)}{p}} = \sum_{n \ge 0}a_{n}(f)e^{\frac{2\pi inz}{p}}\frac{1}{p}\sum_{j \tmod{p}}e^{\frac{2\pi nij}{p}}.
+        \sum_{j \tmod{p}}\left(f\left[\begin{pmatrix} 1 & j \\ 0 & p \end{pmatrix}\right]_{k}\right)(z) = \sum_{n \ge 0}a_{n}(f)e^{\frac{2\pi inz}{p}}\frac{1}{p}\sum_{j \tmod{p}}e^{\frac{2\pi nij}{p}}.
       \]
-      If $p \nmid N$ then the inner sum vanishes because it is the sum over all $p$-th roots of unity. If $p \mid N$ then the sum is $p$. Therefore
+      If $p \nmid N$ then the inner sum vanishes because it is the sum over all $p$-th roots of unity unless $n = 0$ in which case it is $p$. If $p \mid N$ then the sum is also $p$. Therefore
       \[
         \sum_{j \tmod{p}}\left(f\left[\begin{pmatrix} 1 & j \\ 0 & p \end{pmatrix}\right]_{k}\right)(z) = \sum_{n \ge 0}a_{np}(f)e^{2\pi inz}.
       \]
@@ -1169,19 +1169,19 @@
   \section{The Ramanujan-Petersson Conjecture}
     We will now discuss a famous conjecture about the size of the Hecke eigenvalues of primitive Hecke eigenforms. Historically the conjecture was born from conjectures made about the \textbf{modular discriminant}\index{modular discriminant} $\D$ given by
     \[
-      \Delta = \frac{1}{1728}(E_{4}^{3}-E_{6}^{2}),
+      \D = \frac{1}{1728}(E_{4}^{3}-E_{6}^{2}),
     \]
     which is a weight $12$ primitive Hecke eigenform on $\G_{1}(1)\backslash\H$ (see \cite{diamond2005first}). Therefore it is natural to begin our discussion here. It can be shown that the Fourier series of the modular discriminant is
     \[
-      \Delta(z) = \sum_{n \ge 1}\tau(n)e^{2\pi i nz},
+      \D(z) = \sum_{n \ge 1}\tau(n)e^{2\pi i nz},
     \]
-    where the $\tau(n)$ are integers with $\tau(1) = 1$ and $\tau(2) = -24$ (see \cite{apostol1976introduction} for a proof). The function $\tau:\N \to \Z$ is called \textbf{Ramanujan's $\tau$ function}\index{Ramanujan's $\tau$ function}. Ramanujan himself studied this function in his 1916 paper (see \cite{ramanujan1916certain}), and computed $\tau(n)$ for $1 \le n \le 30$. From these computations he conjectured the following three properties $\tau$ should satisfy:
+    where the $\tau(n)$ are integers with $\tau(1) = 1$ and $\tau(2) = -24$ (see \cite{apostol1976introduction} for a proof). The function $\tau:\N \to \Z$ is called \textbf{Ramanujan's $\tau$ function}\index{Ramanujan's $\tau$ function}. Ramanujan himself studied this function in his 1916 paper (see \cite{ramanujan1916certain}), and computed $\tau(n)$ for $1 \le n \le 30$. From these computations he conjectured that $\tau$ should satisfy the following three properties:
     \begin{enumerate}[label=(\roman*)]
       \item If $(n,m) = 1$, then $\tau(nm) = \tau(n)\tau(m)$.
       \item $\tau(p^{n}) = \tau(p^{n-1})\tau(p)-p^{11}\tau(p^{n-2})$ for all prime $p$.
       \item $|\tau(p)| \le 2p^{\frac{11}{2}}$ for all prime $p$.
     \end{enumerate}
-    Note that (i) and (ii) are strikingly similar to the properties satisfied by the Hecke operators. In fact, (i) and (ii) are special cases of the properties of Hecke operators. This ends our commentary on properties (i) and (ii). Property (iii) turned out to be drastically more difficult to prove and is known as the classical \textbf{Ramanujan-Petersson conjecture}\index{Ramanujan-Petersson conjecture}. To state the Ramanujan-Petersson conjecture for holomorphic forms, suppose $f \in \mc{S}_{k}(N,\chi)$ is a primitive Hecke eigenform with Hecke eigenvalues $\l_{f}(n)$. For each prime $p$, consider the polynomial
+    Note that (i) means $\tau$ is multiplicative. Moreover, (i) and (ii) are strikingly similar to the properties satisfied by the Hecke operators. In fact, (i) and (ii) are follow from the fact that $\D$ is a Hecke eigenform. Property (iii) turned out to be drastically more difficult to prove and is known as the classical \textbf{Ramanujan-Petersson conjecture}\index{Ramanujan-Petersson conjecture}. To state the Ramanujan-Petersson conjecture for holomorphic forms, suppose $f \in \mc{S}_{k}(N,\chi)$ is a primitive Hecke eigenform with Hecke eigenvalues $\l_{f}(n)$. For each prime $p$, consider the polynomial
     \[
       1-\l_{f}(p)p^{-\frac{k-1}{2}}p^{-s}+\chi(p)p^{-2s}.
     \]
@@ -1189,7 +1189,7 @@
     \[
       \a_{1}(p)+\a_{2}(p) = \l_{f}(p)p^{-\frac{k-1}{2}} \quad \text{and} \quad \a_{1}(p)\a_{2}(p) = \chi(p).
     \]
-    The more general \textbf{Ramanujan-Petersson conjecture}\index{Ramanujan-Petersson conjecture} for holomorphic forms is following statement:
+    Then the more general \textbf{Ramanujan-Petersson conjecture}\index{Ramanujan-Petersson conjecture} for holomorphic forms is following statement:
 
     \begin{theorem}[Ramanujan-Petersson conjecture, holomorphic version]
       Suppose $f \in \mc{S}_{k}(N,\chi)$ is a primitive Hecke eigenform with Hecke eigenvalues $\l_{f}(n)$. Let $\a_{1}(p)$ and $\a_{2}(p)$ be the roots of the $p$-th Hecke polynomial. Then for all primes $p$,

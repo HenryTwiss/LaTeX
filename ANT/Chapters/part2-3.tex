@@ -552,7 +552,14 @@
     \[
       (f[\a]_{k})(z) = \det(\a)^{-1}\e(\a,z)^{-k}f(\a z),
     \]
-    Moreover, $[\a]_{k}$ is multiplicative by mimicking the same argument as for holomorphic forms. Also, if $\g \in \G$ and we choose the representative with positive determinant, then the chain of equalities
+    Moreover, $[\a]_{k}$ is multiplicative. Indeed, if $\a,\a' \in \GL_{2}^{+}(\Q)$, then
+    \begin{align*}
+      ((f[\a']_{k})[\a]_{k})(z) &= \det(\a)^{-1}\e(\a,z)^{-k}(f[\a']_{k})(\a z) \\
+      &= \det(\a')^{-1}\det(\a)^{-1}\e(\a',\a z)^{-k}\e(\a,z)^{-k}f(\a'\a z) \\
+      &= \det(\a'\a)^{-1}\e(\a'\a,z)^{-k}f(\a'\a z) && \text{cocycle condition} \\
+      &= (f[\a'\a]_{k})(z).
+    \end{align*}
+    Also, if $\g \in \G$ and we choose the representative with positive determinant, then the chain of equalities
     \[
       (f[\g]_{k})(z) = \e(\g,z)^{-k}f(\g z) = \chi(\g)f(z),
     \]
@@ -560,13 +567,17 @@
     \[
       (f[\G_{1}\a\G_{2}]_{k})(z) = \sum_{j}(f[\b_{j}]_{k})(z) = \sum_{j}\det(\b_{j})^{-1}\e(\b_{j},z)^{-k}f(\b_{j}z).
     \]
-    As was the case for holomorphic forms, \cref{prop:double_congruence_subgroup_coset_decomposition_is_finite} implies that this sum is finite. Mimicking the same argument for $[\G_{1}\a\G_{2}]_{k}$, we see that $[\G_{1}\a\G_{2}]$ is also well-defined. There is also an analogous statement about the double coset operators for Maass forms:
+    As was the case for holomorphic forms, \cref{prop:double_congruence_subgroup_coset_decomposition_is_finite} implies that this sum is finite. It remains to check that $f[\G_{1}\a\G_{2}]_{k}$ is well-defined. Indeed, if $\b_{j}$ and $\b_{j}'$ belong to the same orbit, then $\b_{j}'\b_{j}^{-1} \in \G_{1}$. But then as $f \in \mc{A}_{k,\nu}(\G_{1})$, is it invariant under the $[\b_{j}'\b_{j}^{-1}]_{k}$ operator so that
+    \[
+      (f[\b_{j}]_{k})(z) = ((f[\b_{j}'\b_{j}^{-1}]_{k})[\b_{j}]_{k})(z) = (f[\b_{j}']_{k})(z),
+    \]
+    and therefore the $[\G_{1}\a\G_{2}]_{k}$ operator is well-defined. There is also an analogous statement about the double coset operators for Maass forms:
 
     \begin{proposition}\label{prop:double_coset_operator_preserves_subspaces_Maass}
       For any two congruence subgroups $\G_{1}$ and $\G_{2}$, $[\G_{1}\a\G_{2}]_{k}$ maps $\mc{A}_{k,\nu}(\G_{1})$ into $\mc{A}_{k,\nu}(\G_{2})$. Moreover, $[\G_{1}\a\G_{2}]_{k}$ preserves the subspace of cusp forms.
     \end{proposition}
     \begin{proof}
-      Mimicking the proof of \cref{prop:double_coset_operator_preserves_subspaces_holomorphic} with smoothness replacing holomorphy, automorphy replacing modularity, and the analogous growth condition for Maass forms, the only piece left to verify is that $f[\G_{1}\a\G_{2}]_{k}$ is an eigenfunction for $\D$ with eigenvalue $\l$ if $f$ is. This is easy since the invariance of $\D$ implies
+      Arguing as in the proof of \cref{prop:double_coset_operator_preserves_subspaces_holomorphic} with smoothness replacing holomorphy, automorphy replacing modularity, and the analogous growth condition for Maass forms, the only piece left to verify is that $f[\G_{1}\a\G_{2}]_{k}$ is an eigenfunction for $\D$ with eigenvalue $\l$ if $f$ is. This is easy since the invariance of $\D$ implies
       \[
         \D(f[\G_{1}\a\G_{2}]_{k})(z) = \sum_{j}\D(f[\b_{j}]_{k})(z) = \l\sum_{j}\det(\b_{j})^{-1}\e(\b_{j},z)^{-k}f(\b_{j}z) = \l(f[\G_{1}\a\G_{2}]_{k})(z). 
       \]
@@ -595,7 +606,7 @@
       Moreover, this decomposition respects the subspace of cusp forms.
     \end{proposition}
     \begin{proof}
-      Mimic the proof of \cref{thm:diamond_operator_decomposition_holomorphic}.
+      The argument used in the proof of \cref{thm:diamond_operator_decomposition_holomorphic} holds verbatim.
     \end{proof}
 
     If $\g = \begin{psmallmatrix} \ast & \ast \\ \ast & d \end{psmallmatrix} \in \G_{0}(N)$ and we choose the representative with positive determinant, then $\chi(\g) = \chi(d)$ and the chain of equalities
@@ -619,7 +630,7 @@
       \]
     \end{proposition}
     \begin{proof}
-      Mimic the proof of \cref{prop:diamond_Hecke_operators_commute_Maass}.
+      The argument used in the proof of \cref{prop:diamond_Hecke_operators_commute_holomorphic} holds verbatim.
     \end{proof}
 
     Exactly as for holomorphic forms, \cref{lem:cosets_for_Hecke_operators} will give an explicit description of the Hecke operator $T_{p}$:
@@ -632,26 +643,26 @@
       where $m$ and $n$ are chosen such that $\det\left(\begin{psmallmatrix} m & n \\ N & p \end{psmallmatrix}\right) = 1$.
     \end{proposition}
     \begin{proof}
-      Mimic the proof of \cref{prop:explicit_description_of_Hecke_operators_holomorphic}.
+      The argument used in the proof of \cref{prop:explicit_description_of_Hecke_operators_holomorphic} holds verbatim.
     \end{proof}
 
     We use \cref{prop:explicit_description_of_Hecke_operators_Maass} to understand how the Hecke operators act on the Fourier coefficients of Maass forms:
 
     \begin{proposition}\label{prop:prime_Hecke_operators_acting_on_Fourier_coefficients_Maass}
-      Let $f \in \mc{A}_{k,\nu}(\G_{1}(N))$ Fourier coefficients $a_{n}(f)$ and $a_{0}^{\pm}(f)$. Then for primes $p$ with $(p,N) = 1$,
+      Let $f \in \mc{A}_{k,\nu}(\G_{1}(N))$ Fourier coefficients $a_{n}(f)$ and $a_{0}^{\pm}(f)$. Then for all primes $p$,
       \begin{align*}
-        (T_{p}f)(z) = (a_{0}^{+}(f)+\chi_{N,0}(p)p^{-1}a_{0}^{+}(\<p\>f))y^{\frac{1}{2}+\nu}&+(a_{0}^{-}(f)+\chi_{N,0}(p)p^{-1}a_{0}^{-}(\<p\>f))y^{\frac{1}{2}-\nu} \\
+        (T_{p}f)(z) = (p^{-\frac{1}{2}-\nu}a_{0}^{+}(f)+\chi_{N,0}(p)p^{\nu-\frac{1}{2}}&a_{0}^{+}(\<p\>f))y^{\frac{1}{2}+\nu}+(p^{\nu-\frac{1}{2}}a_{0}^{-}(f)+\chi_{N,0}(p)p^{-\frac{1}{2}-\nu}a_{0}^{-}(\<p\>f))y^{\frac{1}{2}-\nu} \\
         &+ \sum_{n \neq 0}\left(a_{np}(f)+\chi_{N,0}(p)p^{-1}a_{\frac{n}{p}}(\<p\>f)\right)W_{\sgn(n)\frac{k}{2},\nu}(4\pi|n|y)e^{2\pi inx},
       \end{align*}
       is the Fourier series of $T_{p}f$ where it is understood that $a_{\frac{n}{p}}(f) = 0$ if $p \nmid |n|$. Moreover, if $f \in \mc{A}_{k,\nu}(N,\chi)$, then $T_{p}f \in \mc{A}_{k,\nu}(N,\chi)$ and
       \begin{align*}
-        (T_{p}f)(z) = (a_{0}^{+}(f)+\chi(p)p^{-1}a_{0}^{+}(f))y^{\frac{1}{2}+\nu}&+(a_{0}^{-}(f)+\chi(p)p^{-1}a_{0}^{-}(f))y^{\frac{1}{2}-\nu} \\
+        (T_{p}f)(z) = (p^{-\frac{1}{2}-\nu}a_{0}^{+}(f)+\chi(p)p^{\nu-\frac{1}{2}}&a_{0}^{+}(f))y^{\frac{1}{2}+\nu}+(p^{\nu-\frac{1}{2}}a_{0}^{-}(f)+\chi(p)p^{-\frac{1}{2}-\nu}a_{0}^{-}(f))y^{\frac{1}{2}-\nu} \\
         &+ \sum_{n \neq 0}\left(a_{np}(f)+\chi(p)p^{-1}a_{\frac{n}{p}}(f)\right)W_{\sgn(n)\frac{k}{2},\nu}(4\pi|n|y)e^{2\pi inx},
       \end{align*}
       where it is understood that $a_{\frac{n}{p}}(f) = 0$ if $p \nmid |n|$.
     \end{proposition}
     \begin{proof}
-      Mimic the proof of \cref{prop:prime_Hecke_operators_acting_on_Fourier_coefficients_holomorphic}.
+      Argue as in the proof of \cref{prop:prime_Hecke_operators_acting_on_Fourier_coefficients_holomorphic}.
     \end{proof}
 
     As for holomorphic forms, the Hecke operators form a simultaneously commuting family with the diamond operators:
@@ -663,7 +674,7 @@
       \]
     \end{proposition}
     \begin{proof}
-      Mimic the proof of \cref{prop:Hecke_operators_commute_holomorphic}.
+      Argue as in the proof of \cref{prop:Hecke_operators_commute_holomorphic}.
     \end{proof}
 
     We use \cref{prop:Hecke_operators_commute_Maass} to construct diamond operators $\<m\>$ and Hecke operators $T_{m}$ for all $m \ge 1$ exactly as for holomorphic forms. Explicitly, the \textbf{diamond operator}\index{diamond operator} $\<m\>:\mc{A}_{k,\nu}(\G_{1}(N)) \to \mc{A}_{k,\nu}(\G_{1}(N))$ is defined to be the linear operator given by
@@ -683,17 +694,17 @@
     \begin{proposition}\label{prop:general_Hecke_operators_acting_on_Fourier_coefficients_Maass}
       Let $f \in \mc{A}_{k,\nu}(\G_{1}(N))$ with Fourier coefficients $a_{n}(f)$ and $a_{0}^{\pm}(f)$. Then for $m \ge 1$ with $(m,N) = 1$,
       \begin{align*}
-        (T_{m}f)(z) = \left(\sum_{d \mid m}d^{-1}a_{0}^{+}(\<d\>f)\right)y^{\frac{1}{2}+\nu}&+\left(\sum_{d \mid m}d^{-1}a_{0}^{-}(\<d\>f)\right)y^{\frac{1}{2}-\nu} \\
+        (T_{m}f)(z) = (m^{-\frac{1}{2}-\nu}a_{0}^{+}(f)+m^{\nu-\frac{1}{2}}a_{0}^{+}(\<m\>f))&y^{\frac{1}{2}+\nu}+(m^{\nu-\frac{1}{2}}a_{0}^{-}(f)+m^{-\frac{1}{2}-\nu}a_{0}^{-}(\<m\>f))y^{\frac{1}{2}-\nu} \\
         &+ \sum_{n \neq 0}\left(\sum_{d \mid (|n|,m)}d^{-1}a_{\frac{nm}{d^{2}}}(\<d\>f)\right)W_{\sgn(n)\frac{k}{2},\nu}(4\pi|n|y)e^{2\pi inx},
       \end{align*}
       is the Fourier series of $T_{m}f$. Moreover, if $f \in \mc{A}_{k,\nu}(N,\chi)$, then
       \begin{align*}
-        (T_{m}f)(z) = \left(\sum_{d \mid m}\chi(d)d^{-1}a_{0}^{+}(f)\right)y^{\frac{1}{2}+\nu}&+\left(\sum_{d \mid m}\chi(d)d^{-1}a_{0}^{-}(f)\right)y^{\frac{1}{2}-\nu} \\
+        (T_{m}f)(z) = (m^{-\frac{1}{2}-\nu}a_{0}^{+}(f)+\chi(m)m^{\nu-\frac{1}{2}}a_{0}^{+}(f))&y^{\frac{1}{2}+\nu}+(m^{\nu-\frac{1}{2}}a_{0}^{-}(f)+\chi(m)m^{-\frac{1}{2}-\nu}a_{0}^{-}(f))y^{\frac{1}{2}-\nu} \\
         &+ \sum_{n \neq 0}\left(\sum_{d \mid (|n|,m)}\chi(d)d^{-1}a_{\frac{nm}{d^{2}}}(f)\right)W_{\sgn(n)\frac{k}{2},\nu}(4\pi|n|y)e^{2\pi inx}.
       \end{align*}
     \end{proposition}
     \begin{proof}
-      Mimic the proof of \cref{prop:general_Hecke_operators_acting_on_Fourier_coefficients_holomorphic}.
+      Argue as in the proof of \cref{prop:general_Hecke_operators_acting_on_Fourier_coefficients_holomorphic}.
     \end{proof}
 
     The diamond and Hecke operators turn out to be normal with respect to the Petersson inner product on the subspace of cusp forms. Just as with holomorphic forms, we can use \cref{lem:adjoint_lemma} to compute adjoints:
@@ -713,7 +724,7 @@
       In particular, if $\a^{-1}\G\a = \G$ then $[\a]_{k}^{\ast} = [\a^{-1}]_{k}$ and $[\G\a\G]_{k}^{\ast} = [\G\a^{-1}\G]_{k}$. 
     \end{proposition}
     \begin{proof}
-      Mimic the proof of \cref{prop:Petersson_adjoint_holomorphic}.
+      Argue as in the proof of \cref{prop:Petersson_adjoint_holomorphic}.
     \end{proof}
 
     We can now prove that the diamond and Hecke operators are normal:
@@ -725,7 +736,7 @@
       \]
     \end{proposition}
     \begin{proof}
-      Mimic the proof of \cref{prop:Hecke_operators_normal_holomorphic}.
+      The argument used in the proof of \cref{prop:Hecke_operators_normal_holomorphic} holds verbatim.
     \end{proof}
 
     When we are considering Maass forms on the full modular group, \cref{prop:Hecke_operators_normal_Maass} says that all of the diamond and Hecke operators are normal. Before discussing the spectral theory, we need one last operator. Let $X:\mc{A}_{k,\nu}(\G_{1}(N)) \to \mc{A}_{k,\nu}(\G_{1}(N))$ be the linear operator defined by
@@ -811,7 +822,7 @@
       for all $p \mid N$ and $r \ge 2$.
     \end{proposition}
     \begin{proof}
-      Mimic the proof of the Hecke relations for holomorphic forms.
+      The argument used in the proof of the Hecke relations for holomorphic forms holds verbatim.
     \end{proof}
     
     As an immediate consequence of the Hecke relations, the Hecke operators satisfy analogous relations:
@@ -824,7 +835,7 @@
       for all $n,m \ge 1$ with $(nm,N) = 1$.
     \end{corollary}
     \begin{proof}
-      Mimic the proof of \cref{cor:Hecke_relations_operator_holomorphic}.
+      The argument used in the proof of \cref{cor:Hecke_relations_operator_holomorphic} holds verbatim.
     \end{proof}
 
     Just as for holomorphic forms, the identities in \cref{cor:Hecke_relations_operator_Maass} can also be established directly and the first identity can be used to show that the Hecke operators commute.
@@ -839,7 +850,7 @@
       Let $M$ and $N$ be positive integers such that $M \mid N$. For any $d \mid \frac{N}{M}$, $[\a_{d}]_{k}$ maps $\mc{C}_{k,\nu}(\G_{1}(M))$ into $\mc{C}_{k,\nu}(\G_{1}(N))$.
     \end{proposition}
     \begin{proof}
-      Mimicking the proof of \cref{equ:lifting_operator_holomorphic} with smoothness replacing holomorphy, automorphy replacing modularity, and the analogous growth condition for Maass forms, the only piece left to verify is that $f[\a_{d}]$ is an eigenfunction for $\D$ with eigenvalue $\l$ if $f$ is. This is easy since the invariance of $\D$ implies
+      Arguing as in the proof of \cref{equ:lifting_operator_holomorphic} with smoothness replacing holomorphy, automorphy replacing modularity, and the analogous growth condition for Maass forms, the only piece left to verify is that $f[\a_{d}]$ is an eigenfunction for $\D$ with eigenvalue $\l$ if $f$ is. This is easy since the invariance of $\D$ implies
       \[
         \D(f[\a_{d}]_{k})(z) = \l d^{-1}f(dz) = \l(f[\a_{d}]_{k})(z).
       \]
@@ -858,7 +869,7 @@
     \[
       \mc{C}_{k,\nu}(\G_{1}(N))^{\mathrm{new}} = \left(\mc{C}_{k,\nu}(\G_{1}(N))^{\mathrm{old}} \right)^{\perp},
     \]
-    where the orthogonal complement is taken with respect to the Petersson inner product. The elements of such subspaces are called \textbf{oldforms}\index{oldforms} and \textbf{newforms}\index{newforms} respectively. Both subspaces are invariant under the diamond and Hecke operators (mimic the proof of \cref{prop:old/new_subspaces_are_invariant_holomorphic} given in \cite{diamond2005first}):
+    where the orthogonal complement is taken with respect to the Petersson inner product. The elements of such subspaces are called \textbf{oldforms}\index{oldforms} and \textbf{newforms}\index{newforms} respectively. Both subspaces are invariant under the diamond and Hecke operators (argue as in the proof of \cref{prop:old/new_subspaces_are_invariant_holomorphic} given in \cite{diamond2005first}):
 
     \begin{proposition}\label{prop:old/new_subspaces_are_invariant_Maass}
       The spaces $\mc{C}_{k,\nu}(\G_{1}(N))^{\mathrm{old}}$ and $\mc{C}_{k,\nu}(\G_{1}(N))^{\mathrm{new}}$ are invariant under the diamond operators $\<m\>$ and Hecke operators $T_{m}$ for all $m \ge 1$ and the parity operator $T_{-1}$.
@@ -873,7 +884,7 @@
       This follows immediately from \cref{thm:eigenforms_forms_spectral_theory_Maass,prop:old/new_subspaces_are_invariant_Maass}
     \end{proof}
 
-    We can remove the condition $(m,N) = 1$ for eigenforms in a basis of $\mc{C}_{k,\nu}(\G_{1}(N))^{\mathrm{new}}$ so that the eigenforms are eigenfunctions for all of the diamond and Hecke operators. As for holomorphic forms, we need a preliminary result (mimic the proof of \cref{lem:the_main_lemma_for_newforms_holomorphic} as given in \cite{diamond2005first}):
+    We can remove the condition $(m,N) = 1$ for eigenforms in a basis of $\mc{C}_{k,\nu}(\G_{1}(N))^{\mathrm{new}}$ so that the eigenforms are eigenfunctions for all of the diamond and Hecke operators. As for holomorphic forms, we need a preliminary result (argue as in the proof of \cref{lem:the_main_lemma_for_newforms_holomorphic} as given in \cite{diamond2005first}):
 
     \begin{lemma}\label{lem:the_main_lemma_for_newforms_Maass}
       If $f \in \mc{C}_{k,\nu}(\G_{1}(N))$ with Fourier coefficients $a_{n}(f)$ and such that $a_{n}(f) = 0$ whenever $(n,N) = 1$, then
@@ -894,7 +905,7 @@
       Moreover, the primitive Hecke-Maass eigenforms in $\mc{C}_{k,\nu}(\G_{1}(N))^{\mathrm{new}}$ form an orthogonal basis with respect to the Petersson inner product and each such primitive Hecke-Maass eigenform $f$ lies in an eigenspace $\mc{C}_{k,\nu}(N,\chi)$.
     \end{theorem}
     \begin{proof}
-      Mimic the proof of \cref{thm:newforms_characterization_holomorphic}.
+      The argument used in the proof of \cref{thm:newforms_characterization_holomorphic} holds verbatim.
     \end{proof}
 
     Statement (i) in \cref{thm:newforms_characterization_Maass} implies that primitive Hecke-Maass eigenforms satisfy the Hecke relations for all $n,m \ge 1$. Statement (ii) in \cref{thm:newforms_characterization_Maass} is referred to as the \textbf{multiplicity one theorem}\index{multiplicity one theorem} for Maass forms. So as is the case for holomorphic forms, $\mc{C}_{k,\nu}(\G_{1}(N))^{\mathrm{new}}$ contains one element per ``eigenvalue'' where we mean a set of eigenvalues one for each Hecke operator $T_{m}$. Since the Fourier coefficients are multiplicative, the Hecke relations imply that $f$ is actually determined by its Fourier coefficients at primes. 
@@ -903,7 +914,7 @@
       Let $f$ and $g$ be primitive Hecke-Maass eigenforms of the same eigenvalue and level. Denote the Hecke eigenvalues by $\l_{f}(n)$ and $\l_{g}(n)$ respectively. If $\l_{f}(p) = \l_{g}(p)$ for all primes $p$, then $f = g$.
     \end{theorem}
     \begin{proof}
-      Mimic the proof of multiplicity one for holomorphic forms.
+      The argument used in the proof of multiplicity one for holomorphic forms holds verbatim.
     \end{proof}
 
     Interestingly, unlike holomorphic forms it is unknown if the Fourier coefficients of Maass forms are real or even algebraic in general. We require one last piece of machinery. As for holomorphic forms, we have an involution on the space $\mc{C}_{k,\nu}(N,\chi)$. Recall the matrix
@@ -920,7 +931,7 @@
       $\w_{N}$ is an involution on $\mc{C}_{k,\nu}(\G_{1}(N))$.
     \end{proposition}
     \begin{proof}
-      Mimicking the proof of \cref{prop:Atkin_Lehner_holomorphic} with smoothness replacing holomorphy, automorphy replacing modularity, and the analogous growth condition for Maass forms, the only piece left to verify is that $\w_{N}f$ is an eigenfunction for $\D$ with eigenvalue $\l$ if $f$ is. This is easy since the invariance of $\D$ implies
+      Arguing as in the proof of \cref{prop:Atkin_Lehner_holomorphic} with smoothness replacing holomorphy, automorphy replacing modularity, and the analogous growth condition for Maass forms, the only piece left to verify is that $\w_{N}f$ is an eigenfunction for $\D$ with eigenvalue $\l$ if $f$ is. This is easy since the invariance of $\D$ implies
       \[
         \D(\w_{N}f)(z) = \l \left(\frac{\sqrt{N}z}{|z|}\right)^{-k}f\left(W_{N}z\right) = \l(\w_{N}f)(z).
       \]
@@ -931,7 +942,7 @@
     \[
       \conj{f}(z) = \conj{f(-z)}.
     \]
-    Then we have the following (mimic the proof for holomorphic forms given in \cite{cohenmodular2017}):
+    Then we have the following (argue as in the proof for holomorphic forms given in \cite{cohenmodular2017}):
 
     \begin{proposition}\label{prop:Atkin_Lehner_conjugation_Maass}
       If $f \in \mc{C}_{k,\nu}(N,\chi)$ is a primitive Hecke-Maass eigenform, then
@@ -996,7 +1007,7 @@
       Suppose $f \in \mc{A}_{k,\nu}(N,\chi)$ and $\psi$ is a primitive Dirichlet character of conductor $q$. Then $f \ox \psi \in \mc{A}_{k,\nu}(Nq^{2},\chi\psi^{2})$. Moreover, if $f$ is a cusp form then so is $f \ox \psi$.
     \end{proposition}
     \begin{proof}
-      Mimicking the proof of \cref{prop:twisted_holomorphic_forms} with smoothness replacing holomorphy, automorphy replacing modularity, and the analogous growth condition for Maass forms, the only piece left to verify is that $f \ox \psi$ is an eigenfunction for $\D$ with eigenvalue $\l$ if $f$ is in the case $\psi$ is primitive. This is easy since the invariance of $\D$ implies
+      Arguing as in the proof of \cref{prop:twisted_holomorphic_forms} with smoothness replacing holomorphy, automorphy replacing modularity, and the analogous growth condition for Maass forms, the only piece left to verify is that $f \ox \psi$ is an eigenfunction for $\D$ with eigenvalue $\l$ if $f$ is in the case $\psi$ is primitive. This is easy since the invariance of $\D$ implies
       \[
         \D(f \ox \chi)(z) = \frac{1}{\tau(\conj{\psi})}\sum_{r \tmod{q}}\conj{\psi}(r)\D(f)\left(z+\frac{r}{q}\right) =  \frac{\l}{\tau(\conj{\psi})}\sum_{r \tmod{q}}\conj{\psi}(r)f\left(z+\frac{r}{q}\right) = \l(f \ox \chi)(z).
       \]
@@ -1020,7 +1031,7 @@
       For any prime $p$, $U_{p}$ and $V_{p}$ map $\mc{A}_{k,\nu}(\G_{1}(N))$ into $\mc{A}_{k,\nu}(\G_{1}(Np))$. In particular, $U_{p}$ and $V_{p}$ map $\mc{A}_{k,\nu}(N,\chi)$ into $\mc{A}_{k,\nu}(Np,\chi\chi_{p,0})$. Moreover, $U_{p}$ and $V_{p}$ preserve the subspace of cusp forms.
     \end{lemma}
     \begin{proof}
-      Mimic the proof of \cref{thm:diamond_operator_decomposition_holomorphic}.
+      The argument used in the proof of \cref{thm:diamond_operator_decomposition_holomorphic} holds verbatim.
     \end{proof}
 
     We can now generalize \cref{prop:twisted_Maass_forms_primitive} to all characters:
@@ -1029,7 +1040,7 @@
       Suppose $f \in \mc{A}_{k,\nu}(N,\chi)$ and $\psi$ is a Dirichlet character modulo $M$. Then $f \ox \psi \in \mc{A}_{k,\nu}(NM^{2},\chi\psi^{2})$. Moreover, if $f$ is a cusp form then so is $f \ox \psi$.
     \end{proposition}
     \begin{proof}
-      Mimicking the proof of \cref{prop:twisted_holomorphic_forms}, it remains to show that $f \ox \psi_{p,0}$ is an eigenfunction with eigenvalue $\l$ if $f$ is. As $U_{p} = T_{p}$ is the $p$-th Hecke operator on $\mc{A}_{k,\nu}(\G_{1}(Np))$, $U_{p}$ commutes with $\D$. It is also clear that $V_{p}$ commutes with $\D$. These facts together with
+      Arguing as in the proof of \cref{prop:twisted_holomorphic_forms}, it remains to show that $f \ox \psi_{p,0}$ is an eigenfunction with eigenvalue $\l$ if $f$ is. As $U_{p} = T_{p}$ is the $p$-th Hecke operator on $\mc{A}_{k,\nu}(\G_{1}(Np))$, $U_{p}$ commutes with $\D$. It is also clear that $V_{p}$ commutes with $\D$. These facts together with
       \[
         f \ox \psi_{p,0} = f-V_{p}U_{p}f,
       \]
