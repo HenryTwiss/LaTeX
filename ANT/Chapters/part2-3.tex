@@ -170,9 +170,9 @@
     \]
     Observe that $f|\s_{\mf{a}}$ is then bounded on $\H$ and, in particular, $f$ is bounded on $\H$. It is useful to have an alternative Fourier series in the case of weight zero Maass forms that specify the Whittaker function explicitly. When $k = 0$, \cref{thm:Whittaker_special_cases} implies that $f$ admits a \textbf{Fourier series at the $\mf{a}$ cusp}\index{Fourier series at the $\mf{a}$ cusp} given by
     \[
-      (f|\s_{\mf{a}})(z) = a_{\mf{a}}^{+}(0,s)y^{s}+a_{\mf{a}}^{-}(0,s)y^{1-s}+\sum_{n \neq 0}a_{\mf{a}}(n,s)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y)e^{2\pi inx},
+      (f|\s_{\mf{a}})(z) = a_{\mf{a}}^{+}(0,s)y^{s}+a_{\mf{a}}^{-}(0,s)y^{1-s}+\sum_{n \neq 0}a_{\mf{a}}(n,s)\sqrt{4|n|y}K_{s-\frac{1}{2}}(2\pi|n|y)e^{2\pi inx},
     \]
-    for some different Fourier coefficients $a_{\mf{a}}(n,s)$ (they are $\sqrt{4|n|}$ multiples). From now on, if we are talking about weight zero Maass forms we will always mean this latter Fourier series.
+    From now on, if we are talking about weight zero Maass forms we will always mean this latter Fourier series unless specified otherwise.
   \section{Poincar\'e \& Eisenstein Series}
     Throughout, let $\G$ be a congruence subgroup of level $N$. We will introduce two classes of automorphic functions on $\GH$. The latter such functions will be Maass forms. Actually, all of these automorphic functions are defined on a large space $\H \x \{s \in \C:\s > 1\}$ and hence are functions of two variables. The special case functions will be Maass forms for fixed $s$. Let $m \ge 0$, $k \ge 0$, $\chi$ be a Dirichlet character with conductor $q \mid N$, and $\mf{a}$ be a cusp of $\GH$. Then the $m$-th \textbf{(automorphic) Poincar\'e series}\index{(automorphic) Poincar\'e series} $P_{m,k,\chi,\mf{a}}(z,s)$ of weight $k$ and character $\chi$ on $\GH$ at the $\mf{a}$ cusp is defined by
     \[
@@ -293,7 +293,7 @@
         &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}f(z)\conj{g(z)}\,d\mu \\
         &= \<f,g\>.
       \end{align*}
-      So the Petersson inner product is a Hermitian inner product on $\mc{L}_{k}(\G,\chi)$. To show that the Petersson inner product is a Hermitian inner product on $\mc{L}_{k}(\G,\chi)$, just mimic the corresponding part of proof of \cref{prop:Petersson_inner_product_hermitian} with $k = 0$. We now show that $\mc{L}_{k}(\G,\chi)$ is complete. Let $(f_{n})_{n \ge 1}$ be a Cauchy sequence in $\mc{L}_{k}(\G,\chi)$. Then $||f_{n}-f_{m}|| \to 0$ as $n,m \to \infty$. But
+      So the Petersson inner product is a Hermitian inner product on $\mc{L}_{k}(\G,\chi)$. We now show that $\mc{L}_{k}(\G,\chi)$ is complete. Let $(f_{n})_{n \ge 1}$ be a Cauchy sequence in $\mc{L}_{k}(\G,\chi)$. Then $||f_{n}-f_{m}|| \to 0$ as $n,m \to \infty$. But
       \[
         ||f_{n}-f_{m}|| = \left(\frac{1}{V_{\G}}\int_{\mc{F}_{\G}}|f_{n}(z)-f_{m}(z)|^{2}\,d\mu\right)^{\frac{1}{2}},
       \]
@@ -641,13 +641,13 @@
     \begin{proposition}\label{prop:prime_Hecke_operators_acting_on_Fourier_coefficients_Maass}
       Let $f \in \mc{A}_{k,\nu}(\G_{1}(N))$ Fourier coefficients $a_{n}(f)$ and $a_{0}^{\pm}(f)$. Then for primes $p$ with $(p,N) = 1$,
       \begin{align*}
-        (T_{p}f)(z) = (a_{0}^{+}(f)+\chi_{N,0}(p)a_{0}^{+}(\<p\>f))y^{\frac{1}{2}+\nu}&+(a_{0}^{-}(f)+\chi_{N,0}(p)a_{0}^{-}(\<p\>f))y^{\frac{1}{2}-\nu} \\
-        &+ \sum_{n \neq 0}\left(a_{np}(f)+\chi_{N,0}(p)a_{\frac{n}{p}}(\<p\>f)\right)W_{\sgn(n)\frac{k}{2},\nu}(4\pi|n|y)e^{2\pi inx},
+        (T_{p}f)(z) = (a_{0}^{+}(f)+\chi_{N,0}(p)p^{-1}a_{0}^{+}(\<p\>f))y^{\frac{1}{2}+\nu}&+(a_{0}^{-}(f)+\chi_{N,0}(p)p^{-1}a_{0}^{-}(\<p\>f))y^{\frac{1}{2}-\nu} \\
+        &+ \sum_{n \neq 0}\left(a_{np}(f)+\chi_{N,0}(p)p^{-1}a_{\frac{n}{p}}(\<p\>f)\right)W_{\sgn(n)\frac{k}{2},\nu}(4\pi|n|y)e^{2\pi inx},
       \end{align*}
       is the Fourier series of $T_{p}f$ where it is understood that $a_{\frac{n}{p}}(f) = 0$ if $p \nmid |n|$. Moreover, if $f \in \mc{A}_{k,\nu}(N,\chi)$, then $T_{p}f \in \mc{A}_{k,\nu}(N,\chi)$ and
       \begin{align*}
-        (T_{p}f)(z) = (a_{0}^{+}(f)+\chi(p)a_{0}^{+}(f))y^{\frac{1}{2}+\nu}&+(a_{0}^{-}(f)+\chi(p)a_{0}^{-}(f))y^{\frac{1}{2}-\nu} \\
-        &+ \sum_{n \neq 0}\left(a_{np}(f)+\chi(p)a_{\frac{n}{p}}(f)\right)W_{\sgn(n)\frac{k}{2},\nu}(4\pi|n|y)e^{2\pi inx},
+        (T_{p}f)(z) = (a_{0}^{+}(f)+\chi(p)p^{-1}a_{0}^{+}(f))y^{\frac{1}{2}+\nu}&+(a_{0}^{-}(f)+\chi(p)p^{-1}a_{0}^{-}(f))y^{\frac{1}{2}-\nu} \\
+        &+ \sum_{n \neq 0}\left(a_{np}(f)+\chi(p)p^{-1}a_{\frac{n}{p}}(f)\right)W_{\sgn(n)\frac{k}{2},\nu}(4\pi|n|y)e^{2\pi inx},
       \end{align*}
       where it is understood that $a_{\frac{n}{p}}(f) = 0$ if $p \nmid |n|$.
     \end{proposition}
@@ -677,20 +677,20 @@
     \]
     where $T_{p^{r}}$ is defined inductively by
     \[
-      T_{p^{r}} = \begin{cases} T_{p}T_{p^{r-1}}-\<p\>T_{p^{r-2}} & \text{if $p \nmid N$}, \\ T_{p}^{r} & \text{if $p \mid N$}, \end{cases}
+      T_{p^{r}} = \begin{cases} T_{p}T_{p^{r-1}}-p^{-1}\<p\>T_{p^{r-2}} & \text{if $p \nmid N$}, \\ T_{p}^{r} & \text{if $p \mid N$}, \end{cases}
     \]
     for all $r \ge 2$. By \cref{prop:Hecke_operators_commute_Maass}, the Hecke operators $T_{m}$ are multiplicative but not completely multiplicative in $m$ and they commute with the diamond operators $\<m\>$. Moreover, a more general formula for how the Hecke operators $T_{m}$ act on the Fourier coefficients can be derived:
 
     \begin{proposition}\label{prop:general_Hecke_operators_acting_on_Fourier_coefficients_Maass}
       Let $f \in \mc{A}_{k,\nu}(\G_{1}(N))$ with Fourier coefficients $a_{n}(f)$ and $a_{0}^{\pm}(f)$. Then for $m \ge 1$ with $(m,N) = 1$,
       \begin{align*}
-        (T_{m}f)(z) = \left(\sum_{d \mid m}a_{0}^{+}(\<d\>f)\right)y^{\frac{1}{2}+\nu}&+\left(\sum_{d \mid m}a_{0}^{-}(\<d\>f)\right)y^{\frac{1}{2}-\nu} \\
-        &+ \sum_{n \neq 0}\left(\sum_{d \mid (|n|,m)}a_{\frac{nm}{d^{2}}}(\<d\>f)\right)W_{\sgn(n)\frac{k}{2},\nu}(4\pi|n|y)e^{2\pi inx},
+        (T_{m}f)(z) = \left(\sum_{d \mid m}d^{-1}a_{0}^{+}(\<d\>f)\right)y^{\frac{1}{2}+\nu}&+\left(\sum_{d \mid m}d^{-1}a_{0}^{-}(\<d\>f)\right)y^{\frac{1}{2}-\nu} \\
+        &+ \sum_{n \neq 0}\left(\sum_{d \mid (|n|,m)}d^{-1}a_{\frac{nm}{d^{2}}}(\<d\>f)\right)W_{\sgn(n)\frac{k}{2},\nu}(4\pi|n|y)e^{2\pi inx},
       \end{align*}
       is the Fourier series of $T_{m}f$. Moreover, if $f \in \mc{A}_{k,\nu}(N,\chi)$, then
       \begin{align*}
-        (T_{m}f)(z) = \left(\sum_{d \mid m}\chi(d)a_{0}^{+}(f)\right)y^{\frac{1}{2}+\nu}&+\left(\sum_{d \mid m}\chi(d)a_{0}^{-}(f)\right)y^{\frac{1}{2}-\nu} \\
-        &+ \sum_{n \neq 0}\left(\sum_{d \mid (|n|,m)}\chi(d)a_{\frac{nm}{d^{2}}}(f)\right)W_{\sgn(n)\frac{k}{2},\nu}(4\pi|n|y)e^{2\pi inx}.
+        (T_{m}f)(z) = \left(\sum_{d \mid m}\chi(d)d^{-1}a_{0}^{+}(f)\right)y^{\frac{1}{2}+\nu}&+\left(\sum_{d \mid m}\chi(d)d^{-1}a_{0}^{-}(f)\right)y^{\frac{1}{2}-\nu} \\
+        &+ \sum_{n \neq 0}\left(\sum_{d \mid (|n|,m)}\chi(d)d^{-1}a_{\frac{nm}{d^{2}}}(f)\right)W_{\sgn(n)\frac{k}{2},\nu}(4\pi|n|y)e^{2\pi inx}.
       \end{align*}
     \end{proposition}
     \begin{proof}
@@ -747,7 +747,7 @@
       $T_{-1}$ is an involution on $\mc{A}_{k,\nu}(\G_{1}(N))$. Moreover, it preserves the subspace of cusp forms. If $f \in \mc{A}_{k,\nu}(\G_{1}(N))$ has Fourier coefficients $a_{n}(f)$ and $a_{0}^{\pm}(f)$, then
       \begin{align*}
         (T_{-1}f)(z) = a_{0}^{+}y^{\frac{1}{2}+\nu}&+a_{0}^{-}y^{\frac{1}{2}-\nu} \\
-        &+\sum_{n \ge 1}a_{-n}(f)\d(\nu,k)W_{\frac{k}{2},\nu}(4\pi |n|y)e^{2\pi inx}+\sum_{n \ge 1}a_{n}(f)\d(\nu,k)^{-1}W_{-\frac{k}{2},\nu}(4\pi |n|y)e^{-2\pi inx},
+        &+\sum_{n \ge 1}a_{-n}(f)\d(\nu,k)W_{\frac{k}{2},\nu}(4\pi |n|y)e^{2\pi inx}+a_{n}(f)\d(\nu,k)^{-1}W_{-\frac{k}{2},\nu}(4\pi |n|y)e^{-2\pi inx},
       \end{align*}
       is the Fourier series of $T_{-1}f$.
     \end{proposition}
@@ -757,22 +757,39 @@
     \begin{proposition}\label{prop:sign_operator_commutes_with_Hecke_and_diamond_and_is_normal}
       \phantom{ }
       \begin{enumerate}
-          \item On $\mc{A}_{k,\nu}(\G_{1}(N))$, the parity operator $T_{-1}$ commutes with the diamond operators $\<m\>$ and Hecke operators $T_{m}$ for all $m \ge 1$.
-          \item On $\mc{C}_{k,\nu}(\G_{1}(N))$ the parity operator $T_{-1}$ is self-adjoint with respect to the Petersson inner product and the adjoint is given by
-          \[
-            T_{-1}^{\ast} = -T_{-1}.
-          \]
+        \item On $\mc{A}_{k,\nu}(\G_{1}(N))$, the parity operator $T_{-1}$ commutes with the diamond operators $\<m\>$ and Hecke operators $T_{m}$ for all $m \ge 1$.
+        \item On $\mc{C}_{k,\nu}(\G_{1}(N))$ the parity operator $T_{-1}$ is self-adjoint with respect to the Petersson inner product and the adjoint is given by
+        \[
+          T_{-1}^{\ast} = -T_{-1}.
+        \]
       \end{enumerate}
     \end{proposition}
     \begin{proof}
       To prove (i), by linearity it suffices to assume $f \in \mc{A}_{k,\nu}(N,\chi)$. Then commutativity with the diamond operators $\<m\>$ is immediate from the definition. As for the Hecke operators $T_{m}$, commutativity follows from \cref{prop:general_Hecke_operators_acting_on_Fourier_coefficients_Maass,prop:parity_operator_Fourier_series}. Similarly (ii), follows from the Fourier series in \cref{prop:parity_operator_Fourier_series}
     \end{proof}
 
-    Let $f \in \mc{C}_{k,\nu}(\G_{1}(N))$. As $T_{-1}$ is an involution, the only possible eigenvalues are $\pm 1$. Accordingly, we say that $f \in \mc{C}_{k,\nu}(\G_{1}(N))$ is \textbf{even}\index{even} if $T_{-1}f = f$ and is \textbf{odd}\index{odd} if $T_{-1}f = -f$. Then by \cref{prop:parity_operator_Fourier_series},
+    Let $f \in \mc{A}_{k,\nu}(\G_{1}(N))$. As $T_{-1}$ is an involution, the only possible eigenvalues are $\pm 1$. Accordingly, we say that $f \in \mc{A}_{k,\nu}(\G_{1}(N))$ is \textbf{even}\index{even} if $T_{-1}f = f$ and is \textbf{odd}\index{odd} if $T_{-1}f = -f$. Then by \cref{prop:parity_operator_Fourier_series},
     \[
       a_{-n}(f) = \pm a_{n}(f)\frac{\G\left(\nu+\frac{1+k}{2}\right)}{\G\left(\nu+\frac{1-k}{2}\right)},
     \]
-    for all $n \ge 1$ according to if $f$ is even or odd. Now suppose $f$ is a non-constant Maass cusp form with Fourier coefficients $a_{n}(f)$. Let the eigenvalue of $T_{m}$ for $f$ be $\l_{f}(m)$. We say that the $\l_{f}(m)$ are the \textbf{Hecke eigenvalues}\index{Hecke eigenvalues} of $f$. Similar to the case for holomorphic forms, if $f$ is a Maass form on $\G_{1}(N)\backslash\H$ that is a simultaneous eigenfunction for the parity operator $T_{-1}$ and all diamond operators $\<m\>$ and Hecke operators $T_{m}$ with $(m,N) = 1$, we call $f$ an \textbf{eigenform}\index{eigenform}. Necessarily, $f$ is even or odd because $T_{-1}^{2}f = f$ so that the only possible eigenvalues are $\pm 1$. If the condition $(m,N) = 1$ can be dropped, so that $f$ is a simultaneous eigenfunction for all diamond and Hecke operators, then we say $f$ is a \textbf{Hecke-Maass eigenform}\index{Hecke-Maass eigenform}. In particular, on $\G_{1}(1)\backslash\H$ all eigenforms are Hecke-Maass eigenforms. As for holomorphic forms, if $f$ an eigenform \cref{prop:general_Hecke_operators_acting_on_Fourier_coefficients_Maass} implies that the first Fourier coefficient of $T_{m}f$ is $a_{m}(f)$ and so $a_{m}(f) = \l_{f}(m)a_{1}(f)$ for all $m \ge 1$ with $(m,N) = 1$. Therefore we cannot have $a_{1}(f) = 0$ and so we can normalize $f$ by dividing by $a_{1}(f)$ which guarantees that the Fourier series has constant term $1$. Then the $m$-th Fourier coefficient of $f$, when $(m,N) = 1$, is precisely the Hecke eigenvalue $\l_{f}(m)$. This normalization is called the \textbf{Hecke normalization}\index{Hecke normalization} of $f$. The \textbf{Petersson normalization}\index{Petersson normalization} of $f$ is where we normalize so that $\<f,f\> = 1$. From the spectral theorem we have an analogous corollary as for holomorphic forms:
+    for all $n \ge 1$ and with $\pm$ according to if $f$ is even or odd. Moreover, $a_{0}^{\pm}(f) = 0$ if $f$ is odd. Thus the fourier series of $F$ takes the form
+    \begin{align*}
+      (T_{-1}f)(z) = a_{0}^{+}y^{\frac{1}{2}+\nu}&+a_{0}^{-}y^{\frac{1}{2}-\nu} \\
+      &+\sum_{n \ge 1}a_{n}(f)\left(W_{\frac{k}{2},\nu}(4\pi |n|y)e^{2\pi inx}\pm\frac{\G\left(\nu+\frac{1+k}{2}\right)}{\G\left(\nu+\frac{1-k}{2}\right)}W_{-\frac{k}{2},\nu}(4\pi |n|y)e^{-2\pi inx}\right),
+    \end{align*}
+    with $\pm$ according to if $f$ is even or odd and for some potentially different Fourier coefficients $a_{0}^{\pm}(f)$ (they are zero if $f$ is odd). From now on, if we are talking about even or odd Maass forms we will always mean this latter Fourier series unless specified otherwise. If the weight is zero, the Fourier series drastically simplifies via, \cref{thm:Whittaker_special_cases}, that $\d(\nu,0) = 1$, and the exponential identities for sine and cosine, so that we obtain
+    \[
+      (T_{-1}f)(z) = a_{0}^{+}y^{\frac{1}{2}+\nu}+a_{0}^{-}y^{\frac{1}{2}-\nu}+\sum_{n \ge 1}a_{n}(f)\sqrt{4|n|y}K_{\nu}(2\pi |n|y)\SC(2\pi nx),
+    \]
+    for some different Fourier coefficient $a_{n}(f)$ and $a_{0}^{\pm}(f)$ (the $a_{n}(f)$ are either $2$ or $2i$ multiples according to if $f$ is even or odd and the $a_{0}^{\pm}(f)$ are zero if $f$ is odd) and where $\SC(x) = \cos(x)$ if $f$ is even and $\SC(x) = \sin(x)$ if $f$ is odd. From now on, if we are talking about even or odd weight zero Maass forms we will always mean this latter Fourier series unless specified otherwise. The benefit of working with even and odd Maass forms is that it suffices to determine the Fourier coefficients for $n \ge 0$ instead of $n \in \Z$. Now suppose $f$ is a non-constant Maass cusp form. Let the eigenvalue of $T_{m}$ for $f$ be $\l_{f}(m)$. We say that the $\l_{f}(m)$ are the \textbf{Hecke eigenvalues}\index{Hecke eigenvalues} of $f$. Similar to the case for holomorphic forms, if $f$ is a Maass form on $\G_{1}(N)\backslash\H$ that is a simultaneous eigenfunction for all diamond operators $\<m\>$ and Hecke operators $T_{m}$ with $(m,N) = 1$ and the parity operator $T_{-1}$, we call $f$ an \textbf{eigenform}\index{eigenform}. Necessarily, $f$ is even or odd because $T_{-1}^{2}f = f$ so that the only possible eigenvalues are $\pm 1$. If the condition $(m,N) = 1$ can be dropped, so that $f$ is a simultaneous eigenfunction for all diamond and Hecke operators, then we say $f$ is a \textbf{Hecke-Maass eigenform}\index{Hecke-Maass eigenform}. In particular, on $\G_{1}(1)\backslash\H$ all eigenforms are Hecke-Maass eigenforms. Now let $f$ have Fourier coefficient $a_{n}(f)$. As for holomorphic forms, if $f$ an eigenform \cref{prop:general_Hecke_operators_acting_on_Fourier_coefficients_Maass} immediately implies that the first Fourier coefficient of $T_{m}f$ is $a_{m}(f)$ and so
+    \[
+      a_{m}(f) = \l_{f}(m)a_{1}(f),
+    \]
+    for all $m \ge 1$ with $(m,N) = 1$. Therefore we cannot have $a_{1}(f) = 0$ for this would mean $f$ is constant. So we can normalize $f$ by dividing by $a_{1}(f)$ which guarantees that this Fourier coefficient is $1$. It follows that
+    \[
+      a_{m}(f) = \l_{f}(m),
+    \]
+    for all $m \ge 1$ with $(m,N) = 1$. This normalization is called the \textbf{Hecke normalization}\index{Hecke normalization} of $f$. The \textbf{Petersson normalization}\index{Petersson normalization} of $f$ is where we normalize so that $\<f,f\> = 1$. From the spectral theorem we have an analogous corollary as for holomorphic forms:
 
     \begin{theorem}\label{thm:eigenforms_forms_spectral_theory_Maass}
       $\mc{C}_{k,\nu}(\G_{1}(N))$ admits an orthonormal basis of eigenforms.
@@ -781,14 +798,18 @@
       By \cref{thm:cusp_form_spectrum}, $\mc{C}_{k,\nu}(\G_{1}(N))$ is finite dimensional. The claim then follows from the spectral theorem along with \cref{prop:Hecke_operators_commute_Maass,prop:Hecke_operators_normal_Maass,prop:sign_operator_commutes_with_Hecke_and_diamond_and_is_normal}.
     \end{proof}
 
-    In particular, \cref{thm:eigenforms_forms_spectral_theory_Maass} implies that the orthonormal basis in \cref{thm:cusp_form_spectrum} can be taken to be an orthonormal basis of eigenforms since it is clear that the parity operator $T_{-1}$, diamond operators $\<m\>$, and Hecke operators $T_{m}$ all commute with $\D$. Also, just as in the holomorphic setting, we have \textbf{Hecke relations}\index{Hecke relations} for Maass forms:
+    In particular, \cref{thm:eigenforms_forms_spectral_theory_Maass} implies that the orthonormal basis in \cref{thm:cusp_form_spectrum} can be taken to be an orthonormal basis of eigenforms. Also, just as in the holomorphic setting, we have \textbf{Hecke relations}\index{Hecke relations} for Maass forms:
 
     \begin{proposition}[Hecke relations, Maass version]
-      Let $f \in \mc{C}_{k,\nu}(N,\chi)$ be a Hecke-Maass eigenform with Fourier coefficients $\l_{f}(n)$. Then the Fourier coefficients are multiplicative and satisfy
+      Let $f \in \mc{C}_{k,\nu}(N,\chi)$ be a Hecke-Maass eigenform with Hecke eigenvalues $\l_{f}(n)$. Then the Hecke eigenvalues are multiplicative and satisfy
       \[
-        \l_{f}(n)\l_{f}(m) = \sum_{d \mid (n,m)}\chi(d)\l_{f}\left(\frac{nm}{d^{2}}\right) \quad \text{and} \quad \l_{f}(nm) = \sum_{d \mid (n,m)}\mu(d)\chi(d)\l_{f}\left(\frac{n}{d}\right)\l_{f}\left(\frac{m}{d}\right),
+        \l_{f}(n)\l_{f}(m) = \sum_{d \mid (n,m)}\chi(d)d^{-1}\l_{f}\left(\frac{nm}{d^{2}}\right) \quad \text{and} \quad \l_{f}(nm) = \sum_{d \mid (n,m)}\mu(d)\chi(d)d^{-1}\l_{f}\left(\frac{n}{d}\right)\l_{f}\left(\frac{m}{d}\right),
       \]
-      for all $n,m \ge 1$ with $(nm,N) = 1$.
+      for all $n,m \ge 1$ with $(nm,N) = 1$. Moreover,
+      \[
+        \l_{f}(p^{r}) = \l_{f}(p)^{r},
+      \]
+      for all $p \mid N$ and $r \ge 2$.
     \end{proposition}
     \begin{proof}
       Mimic the proof of the Hecke relations for holomorphic forms.
@@ -799,7 +820,7 @@
     \begin{corollary}\label{cor:Hecke_relations_operator_Maass}
       The Hecke operators are multiplicative and satisfy
       \[
-        T_{n}T_{m} = \sum_{d \mid (n,m)}\chi(d)T_{\frac{nm}{d^{2}}} \quad \text{and} \quad T_{nm} = \sum_{d \mid (n,m)}\mu(d)\chi(d)T_{\frac{n}{d}}T_{\frac{m}{d}},
+        T_{n}T_{m} = \sum_{d \mid (n,m)}\chi(d)d^{-1}T_{\frac{nm}{d^{2}}} \quad \text{and} \quad T_{nm} = \sum_{d \mid (n,m)}\mu(d)\chi(d)d^{-1}T_{\frac{n}{d}}T_{\frac{m}{d}},
       \]
       for all $n,m \ge 1$ with $(nm,N) = 1$.
     \end{corollary}
@@ -841,7 +862,7 @@
     where the orthogonal complement is taken with respect to the Petersson inner product. The elements of such subspaces are called \textbf{oldforms}\index{oldforms} and \textbf{newforms}\index{newforms} respectively. Both subspaces are invariant under the diamond and Hecke operators (mimic the proof of \cref{prop:old/new_subspaces_are_invariant_holomorphic} given in \cite{diamond2005first}):
 
     \begin{proposition}\label{prop:old/new_subspaces_are_invariant_Maass}
-      The spaces $\mc{C}_{k,\nu}(\G_{1}(N))^{\mathrm{old}}$ and $\mc{C}_{k,\nu}(\G_{1}(N))^{\mathrm{new}}$ are invariant under the parity operator $T_{-1}$ and the diamond operators $\<m\>$ and Hecke operators $T_{m}$ for all $m \ge 1$.
+      The spaces $\mc{C}_{k,\nu}(\G_{1}(N))^{\mathrm{old}}$ and $\mc{C}_{k,\nu}(\G_{1}(N))^{\mathrm{new}}$ are invariant under the diamond operators $\<m\>$ and Hecke operators $T_{m}$ for all $m \ge 1$ and the parity operator $T_{-1}$.
     \end{proposition}
 
     As a corollary, these subspaces admit orthogonal bases of eigenforms:
@@ -858,7 +879,7 @@
     \begin{lemma}\label{lem:the_main_lemma_for_newforms_Maass}
       If $f \in \mc{C}_{k,\nu}(\G_{1}(N))$ with Fourier coefficients $a_{n}(f)$ and such that $a_{n}(f) = 0$ whenever $(n,N) = 1$, then
       \[
-        f = \sum_{p \mid N}f_{p}[\a_{p}]_{k},
+        f = \sum_{p \mid N}p^{-1}f_{p}[\a_{p}]_{k},
       \]
       for some $f_{p} \in \mc{C}_{k,\nu}\left(\G_{1}\left(\frac{N}{p}\right)\right)$.
     \end{lemma}
@@ -976,7 +997,7 @@
       Suppose $f \in \mc{A}_{k,\nu}(N,\chi)$ and $\psi$ is a primitive Dirichlet character of conductor $q$. Then $f \ox \psi \in \mc{A}_{k,\nu}(Nq^{2},\chi\psi^{2})$. Moreover, if $f$ is a cusp form then so is $f \ox \psi$.
     \end{proposition}
     \begin{proof}
-      Mimicking the proof of \cref{prop:twisted_holomorphic_forms} with $k = 0$, smoothness replacing holomorphy, automorphy replacing modularity, and the analogous growth condition for Maass forms, the only piece left to verify is that $f \ox \psi$ is an eigenfunction for $\D$ with eigenvalue $\l$ if $f$ is in the case $\psi$ is primitive. This is easy since the invariance of $\D$ implies
+      Mimicking the proof of \cref{prop:twisted_holomorphic_forms} with smoothness replacing holomorphy, automorphy replacing modularity, and the analogous growth condition for Maass forms, the only piece left to verify is that $f \ox \psi$ is an eigenfunction for $\D$ with eigenvalue $\l$ if $f$ is in the case $\psi$ is primitive. This is easy since the invariance of $\D$ implies
       \[
         \D(f \ox \chi)(z) = \frac{1}{\tau(\conj{\psi})}\sum_{r \tmod{q}}\conj{\psi}(r)\D(f)\left(z+\frac{r}{q}\right) =  \frac{\l}{\tau(\conj{\psi})}\sum_{r \tmod{q}}\conj{\psi}(r)f\left(z+\frac{r}{q}\right) = \l(f \ox \chi)(z).
       \]
