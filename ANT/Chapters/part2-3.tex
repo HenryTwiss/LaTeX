@@ -51,7 +51,7 @@
       \item $f$ is smooth on $\H$.
       \item $(f|_{\e,k}\g)(z) = \chi(\g)f(z)$ for all $\g \in \G$.
       \item $f$ is an eigenfunction for $\D_{k}$ with eigenvalue $\l$.
-      \item $(f|_{\e,k}\a)(z) = o(e^{2\pi y})$ for all $\a \in \PSL_{2}(\Z)$ (or equivalently $\a \in \GL_{2}^{+}(\Q)$).
+      \item $(f|_{\e,k}\a)(z) = O(y^{n})$ for some $n \ge 1$ and all $\a \in \PSL_{2}(\Z)$ (or equivalently $\a \in \GL_{2}^{+}(\Q)$).
     \end{enumerate}
     We say $f$ is a \textbf{(Maass) cusp form}\index{(Maass) cusp form} if the additional property is satisfied:
     \begin{enumerate}[label=(\roman*)]
@@ -168,7 +168,7 @@
     \[
       (f|\s_{\mf{a}})(z) = O\left(y^{\frac{k}{2}}\sum_{n \neq 0}|n|^{\frac{k+1}{2}}e^{-2\pi|n|y}\right) = O\left(y^{\frac{k}{2}}\sum_{n \ge 1}n^{k}e^{-2\pi ny}\right) = O\left(\frac{y^{\frac{k}{2}}e^{-2\pi y}}{(1-e^{-2\pi y})^{2}}\right) = O(y^{\frac{k}{2}}e^{-2\pi y}).
     \]
-    Observe that $f|\s_{\mf{a}}$ is then bounded on $\H$ and, in particular, $f$ is bounded on $\H$. It is useful to have an alternative Fourier series in the case of weight zero Maass forms that specify the Whittaker function explicitly. When $k = 0$, \cref{thm:Whittaker_special_cases} implies that $f$ admits a \textbf{Fourier series at the $\mf{a}$ cusp}\index{Fourier series at the $\mf{a}$ cusp} given by
+    This implies $(f|\s_{\mf{a}})(z)$ exhibits decay although it is not necessarily rapid. Accordingly, we say that $f$ exhibits \textbf{moderate decay at the cusps}\index{moderate decay at the cusps}. Observe that $f|\s_{\mf{a}}$ is then bounded on $\H$ and, in particular, $f$ is bounded on $\H$. It is useful to have an alternative Fourier series in the case of weight zero Maass forms that specify the Whittaker function explicitly. When $k = 0$, \cref{thm:Whittaker_special_cases} implies that $f$ admits a \textbf{Fourier series at the $\mf{a}$ cusp}\index{Fourier series at the $\mf{a}$ cusp} given by
     \[
       (f|\s_{\mf{a}})(z) = a_{\mf{a}}^{+}(0,s)y^{s}+a_{\mf{a}}^{-}(0,s)y^{1-s}+\sum_{n \neq 0}a_{\mf{a}}(n,s)\sqrt{4|n|y}K_{s-\frac{1}{2}}(2\pi|n|y)e^{2\pi inx}.
     \]
@@ -209,7 +209,7 @@
     \]
     Notice that the first sum is absolutely uniformly bounded provided $\s > 1$. Moreover, the exact same argument as for holomorphic Eisenstein series shows that the second sum is too. So for all $\Im(z) \ge 1$ and $\s > 1$, we have
     \[
-      \e(\s_{\mf{b}},z)^{-k}E_{k,\chi,\mf{a}}(\s_{\mf{b}}z,s) \ll \Im(z)^{\s} = o(e^{2\pi\Im(z)}),
+      \e(\s_{\mf{b}},z)^{-k}E_{k,\chi,\mf{a}}(\s_{\mf{b}}z,s) = O(\Im(z)^{\s}),
     \]
     provided $\Im(z) \ge 1$ and $\s > 1$. This verifies the growth condition. The only thing left to verify is that $E_{k,\chi,\mf{a}}(z,s)$ is an eigenfunction for $\D_{k}$. To see this, first observe that
     \[
@@ -233,21 +233,15 @@
       is a weight $k$ Maass form with eigenvalue $\l(s)$ and character $\chi$ on $\GH$.
     \end{theorem}
   \section{The Petersson Inner Product}
-    Let $\G$ be a congruence subgroup of level $N$. Let $\mc{M}_{k}(\G,\chi)$ denote the space of all weight $k$ Maass forms with character $\chi$ on $\GH$. Let $\mc{C}_{k}(\G,\chi)$ denote the associated subspace of cusp forms. Moreover, let $\mc{M}_{k,\l}(\G,\chi)$ and $\mc{C}_{k,\l}(\G,\chi)$ denote the associated subspaces whose eigenvalue is $\l$. In any of these spaces, if $k = 0$ or $\chi$ is the trivial character, we will suppress these dependencies. If $\G_{1}$ and $\G_{2}$ are two congruence subgroups such that $\G_{1} \le \G_{2}$, then we have the inclusion
+    Let $\mc{M}_{k}(\G,\chi)$ denote the space of all weight $k$ Maass forms with character $\chi$ on $\GH$ and let $\mc{C}_{k}(\G,\chi)$ denote the associated subspace of cusp forms. Moreover, let $\mc{M}_{k,\l}(\G,\chi)$ and $\mc{C}_{k,\l}(\G,\chi)$ denote the associated subspaces whose eigenvalue is $\l$. Moreover, if $k = 0$ or $\chi$ is the trivial character, we will suppress these dependencies. If $\G_{1}$ and $\G_{2}$ are two congruence subgroups such that $\G_{1} \le \G_{2}$, then we have the inclusion
     \[
       \mc{M}_{k,\l}(\G_{2},\chi) \subseteq \mc{M}_{k,\l}(\G_{1},\chi),
     \]
-    and this respects the subspace of cusp forms. So in general, the smaller the congruence subgroup the more Maass forms there are. We will need a dimensionality result regarding the space of Maass forms of a fixed weight and type. The result is that $\mc{M}_{k}(\G,\chi)$ is finite dimensional (see \cite{iwaniec2002spectral} for a proof in the case $\chi$ is trivial):
-
-    \begin{theorem}\label{thm:Maass_forms_finite_dimensional}
-      $\mc{M}_{k,\l}(\G,\chi)$ is finite dimensional.
-    \end{theorem}
-
-    Since $\mc{C}_{k,\l}(\G,\chi)$ is a subspace of $\mc{M}_{k,\l}(\G,\chi)$, \cref{thm:Maass_forms_finite_dimensional} implies that $\mc{C}_{k,\l}(\G,\chi)$ is finite dimensional as well. Just as for holomorphic forms, we can turn $\mc{C}_{k,\l}(\G,\chi)$ into an inner product space. For $f,g \in \mc{C}_{k,\l}(\G,\chi)$, define their \textbf{Petersson inner product}\index{Petersson inner product} by
+    and this respects the subspace of cusp forms. So in general, the smaller the congruence subgroup the more Maass forms there are. Our goal is to turn $\mc{C}_{k,\nu}(\G,\chi)$ into a Hilbert space to which we can apply a linear theory. To this end, for $f,g \in \mc{C}_{k,\l}(\G,\chi)$ define their \textbf{Petersson inner product}\index{Petersson inner product} by
     \[
       \<f,g\>_{\G} = \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}f(z)\conj{g(z)}\,d\mu.
     \]
-    If the congruence subgroup is clear from context we will suppress the dependence upon $\G$. Since $f$ and $g$ are bounded on $\H$ as they are cusp forms, the integral is locally absolutely uniformly convergent by \cref{prop:decay_finite_volume_integral}. The integrand is also $\G$-invariant so that the integral independent of the choice of fundamental domain. These two facts together imply that the Petersson inner product is well-defined. We will continue to use this notation even if $f$ and $g$ do not belong to $\mc{C}_{k,\l}(\G,\chi)$ provided the integral is locally absolutely uniformly convergent. A basic property of the Petersson inner product is that it is invariant with respect to the slash operator:
+    If the congruence subgroup is clear from context we will suppress the dependence upon $\G$. Since $f$ and $g$ exhibit moderate decay at the cusps, the integral is locally absolutely uniformly convergent by \cref{prop:decay_finite_volume_integral}. The integrand is also $\G$-invariant so that the integral independent of the choice of fundamental domain. These two facts together imply that the Petersson inner product is well-defined. We will continue to use this notation even if $f$ and $g$ do not belong to $\mc{C}_{k,\l}(\G,\chi)$ provided the integral is locally absolutely uniformly convergent. A basic property of the Petersson inner product is that it is invariant with respect to the slash operator:
 
     \begin{proposition}\label{prop:Petersson_slash_invariance_Maass}
       For any $f,g \in \mc{C}_{k,\l}(\G,\chi)$ and $\a \in \PSL_{2}(\Z)$, we have
@@ -258,23 +252,14 @@
     \begin{proof}
       The argument used in the proof of \cref{prop:Petersson_slash_invariance_holomorphic} holds verbatim.
     \end{proof}
-
-    More importantly, the Petersson inner product turns $\mc{C}_{k,\l}(\G,\chi)$ into a Hilbert space:
-
-    \begin{proposition}\label{prop:Petersson_inner_product_hermitian_Maass}
-      $\mc{C}_{k,\l}(\G,\chi)$ is a Hilbert space with respect to Petersson inner product.
-    \end{proposition}
-    \begin{proof}
-      The argument used in the proof of \cref{prop:Petersson_inner_product_hermitian_holomorphic} holds verbatim.
-    \end{proof}
-
-     It can be shown that the Laplace operator $\D_{k}$ is positive and symmetric on $\mc{C}_{k,\l}(\G,\chi)$ (see \cite{iwaniec2002spectral} for a proof in the weight zero case and \cite{duke2002subconvexity} for notes on the general case):
+    
+    It can be shown that the Laplace operator $\D_{k}$ is positive and symmetric on $\mc{C}_{k,\l}(\G,\chi)$ (see \cite{iwaniec2002spectral} for a proof in the weight zero case and \cite{duke2002subconvexity} for notes on the general case):
 
     \begin{theorem}\label{thm:Laplace_semi-definite_self-adjoint}
       On $\mc{C}_{k,\l}(\G,\chi)$, the Laplace operator $\D_{k}$ is positive semi-definite and self-adjoint.
     \end{theorem}
 
-    If we suppose $f \in \mc{C}_{k,\l}(\G,\chi)$ has eigenvalue $\l$, then \cref{thm:Laplace_semi-definite_self-adjoint} implies $\l$ is real and positive. Since $\l = s(1-s)$ and $\l$ is real, $s$ and $1-s$ are either conjugates or real. In the former case, $s = 1-\conj{s}$ and we find that
+    So if $f \in \mc{C}_{k,\l}(\G,\chi)$, \cref{thm:Laplace_semi-definite_self-adjoint} implies $\l$ is real and positive. Since $\l = s(1-s)$ and $\l$ is real, $s$ and $1-s$ are either conjugates or real. In the former case, $s = 1-\conj{s}$ and we find that
     \[
       \s = 1-\s \quad \text{and} \quad t = t.
     \]
@@ -282,7 +267,20 @@
     \[
       \l = s(1-s) = \frac{1}{4}-\nu^{2} = \frac{1}{4}+r^{2}.
     \]
-    Therefore to specify $\l$ it suffices to specify either the spectral parameter $r$ or type $\nu$. Accordingly, we write $\mc{M}_{k,r}(\G,\chi)$ and $\mc{M}_{k,\nu}(\G,\chi)$ for the space $\mc{M}_{k,\l}(\G,\chi)$ and write $\mc{C}_{k,r}(\G,\chi)$ and $\mc{C}_{k,\nu}(\G,\chi)$ for the space $\mc{C}_{k,\l}(\G,\chi)$.
+    So to specify $\l$ it suffices to specify either $s$, the spectral parameter $r$, or the type $\nu$. Accordingly, we write $\mc{M}_{k,s}(\G,\chi)$, $\mc{M}_{k,r}(\G,\chi)$, or $\mc{M}_{k,\nu}(\G,\chi)$ for the space $\mc{M}_{k,\l}(\G,\chi)$ and $\mc{C}_{k,s}(\G,\chi)$, $\mc{C}_{k,r}(\G,\chi)$, or $\mc{C}_{k,\nu}(\G,\chi)$ for the space $\mc{C}_{k,\l}(\G,\chi)$. We will now need a dimensionality result regarding $\mc{C}_{k,\l}(\G,\chi)$ (see \cite{iwaniec2002spectral} for a proof in the case $\chi$ is trivial):
+
+    \begin{theorem}\label{thm:Maass_forms_finite_dimensional}
+      $\mc{C}_{k,\l}(\G,\chi)$ is finite dimensional.
+    \end{theorem}
+
+     Just as for holomorphic forms, the Petersson inner product turns $\mc{C}_{k,\l}(\G,\chi)$ into a Hilbert space:
+
+    \begin{proposition}\label{prop:Petersson_inner_product_hermitian_Maass}
+      $\mc{C}_{k,\l}(\G,\chi)$ is a Hilbert space with respect to Petersson inner product.
+    \end{proposition}
+    \begin{proof}
+      The argument used in the proof of \cref{prop:Petersson_inner_product_hermitian_holomorphic} holds verbatim.
+    \end{proof}
   \section{Double Coset Operators}
     We can extend the theory of double coset operators to Maass form just as we did for holomorphic forms. Indeed, for any $\a \in \GL_{2}^{+}(\Q)$, we define the operator $[\a]_{k}$ on $\mc{C}_{k,\nu}(\G)$ to be the linear operator given by
     \[
