@@ -561,7 +561,7 @@
       \[
         j(\s_{\mf{a}},z)^{-k}(f[\G_{1}\a\G_{2}]_{k})(\s_{\mf{a}}z) = \sum_{j}\det(\b_{j})^{k-1}j(\b_{j}\s_{\mf{a}},z)^{-k}f(\b_{j}\s_{\mf{a}}z),
       \]
-      and the growth condition follows from that of $f$. Therefore $f[\G_{1}\a\G_{2}]_{k} \in \mc{M}_{k}(\G_{2})$. Lastly, it is clear that $f[\G_{1}\a\G_{2}]_{k}$ is a cusp form if $f$ is. Therefore $[\G_{1}\a\G_{2}]_{k}$ preserves the subspace of cusp forms.
+      and the growth condition follows from that of $f$. In particular, $f[\G_{1}\a\G_{2}]_{k}$ is a cusp form if $f$ is. This completes the proof.
     \end{proof}
 
     The double coset operators are the most basic types of operators on holomorphic forms. They are the building blocks needed to define the more important diamond and Hecke operators.
@@ -1009,12 +1009,12 @@
     \end{proof}
 
     The identities in \cref{cor:Hecke_relations_operator_holomorphic} can also be established directly. Moreover, the first identity is symmetric in $n$ and $m$ so it can be used to show that the Hecke operators commute.
-  \section{Atkin–Lehner Theory}
-    So far, our entire theory of holomorphic forms has started with a fixed congruence subgroup of some level. Atkin–Lehner theory, or the theory of oldforms \& newforms, allows us to discuss holomorphic forms in the context of moving between levels. In this setting, we will only deal with congruence subgroups of the form $\G_{1}(N)$ and cusp forms on $\G_{1}(N)\backslash\H$. The easiest way lift a holomorphic form from a smaller level to a larger level is to observe that if $M \mid N$, then $\G_{1}(N) \le \G_{1}(M)$ so there is a natural inclusion $\mc{S}_{k}(\G_{1}(M)) \subseteq \mc{S}_{k}(\G_{1}(N))$. There is a less trivial way of lifting from $\mc{S}_{k}(\G_{1}(M))$ to $\mc{S}_{k}(\G_{1}(N))$. For any $d \mid \frac{N}{M}$, let $\a_{d} = \begin{psmallmatrix} d & 0 \\ 0 & 1 \end{psmallmatrix}$. If $f \in \mc{S}_{k}(\G_{1}(M))$, we consider
+  \section{Atkin-Lehner Theory}
+    So far, our entire theory of holomorphic forms has started with a fixed congruence subgroup of some level. Atkin-Lehner theory, or the theory of oldforms \& newforms, allows us to discuss holomorphic forms in the context of moving between levels. In this setting, we will only deal with congruence subgroups of the form $\G_{1}(N)$ or $\G_{0}(N)$ and cusp forms on the corresponding modular curves. The easiest way lift a holomorphic form from a smaller level to a larger level is to observe that if $M \mid N$, then $\G_{1}(N) \le \G_{1}(M)$ so there is a natural inclusion $\mc{S}_{k}(\G_{1}(M)) \subseteq \mc{S}_{k}(\G_{1}(N))$. There is a less trivial way of lifting from $\mc{S}_{k}(\G_{1}(M))$ to $\mc{S}_{k}(\G_{1}(N))$. For any $d \mid \frac{N}{M}$, let $\a_{d} = \begin{psmallmatrix} d & 0 \\ 0 & 1 \end{psmallmatrix}$. If $f \in \mc{S}_{k}(\G_{1}(M))$, we consider
     \[
         (f[\a_{d}]_{k})(z) = \det(\a_{d})^{k-1}j(\a_{d},z)^{-k}f(\a_{d}z) = d^{k-1}f(dz).
     \]
-    It turns out that, $[\a_{d}]_{k}$ maps $\mc{S}_{k}(\G_{1}(M))$ into $\mc{S}_{k}(\G_{1}(N))$ and preserves the subspace of cusp forms:
+    It turns out that, $[\a_{d}]_{k}$ maps $\mc{S}_{k}(\G_{1}(M))$ into $\mc{S}_{k}(\G_{1}(N))$:
     
     \begin{proposition}\label{equ:lifting_operator_holomorphic}
       Let $M$ and $N$ be positive integers such that $M \mid N$. For any $d \mid \frac{N}{M}$, $[\a_{d}]_{k}$ maps $\mc{S}_{k}(\G_{1}(M))$ into $\mc{S}_{k}(\G_{1}(N))$.
@@ -1037,7 +1037,7 @@
       \[
         j(\s_{\mf{a}},z)^{-k}(f[\a_{d}]_{k})(\s_{\mf{a}}z) = \det(\a_{d})^{k-1}j(\a_{d}\s_{\mf{a}},z)^{-k}f(\a_{d}\s_{\mf{a}}z),
       \]
-      and the growth condition follows from that of $f$. Lastly, it is also clear that $f[\a_{d}]_{k}$ is a cusp form if $f$ is and so $f[\a_{d}]_{k} \in \mc{S}_{k}(\G_{1}(N))$.
+      and the growth condition follows from that of $f$. In particular, $f[\a_{d}]_{k}$ is a cusp form if $f$ is. This completes the proof.
     \end{proof}
 
     We can now define oldforms and newforms. For each divisor $d$ of $N$, set
@@ -1107,57 +1107,70 @@
     Statement (i) in \cref{thm:newforms_characterization_holomorphic} implies that primitive Hecke eigenforms satisfy the Hecke relations for all $n,m \ge 1$. Statement (ii) can be interpreted as saying that a basis of newforms for $\mc{S}_{k}(\G_{1}(N))^{\mathrm{new}}$ contains one element per ``eigenvalue'' where we mean a set of eigenvalues one for each Hecke operator $T_{m}$. Actually, we can obtain a slightly better result called \textbf{multiplicity one}\index{multiplicity one} for holomorphic forms:
 
     \begin{theorem}[Multiplicity one, holomorphic version]
-      Let $f$ and $g$ be primitive Hecke eigenforms of the same eigenvalue and level. Denote the Hecke eigenvalues by $\l_{f}(n)$ and $\l_{g}(n)$ respectively. If $\l_{f}(p) = \l_{g}(p)$ for all primes $p$, then $f = g$.
+      Let $f$ and $g$ be primitive Hecke eigenforms of the same weight and level. Denote the Hecke eigenvalues by $\l_{f}(n)$ and $\l_{g}(n)$ respectively. If $\l_{f}(p) = \l_{g}(p)$ for all primes $p$ not diving the level, then $f = g$.
     \end{theorem}
     \begin{proof}
-      The Hecke relations imply that $\l_{f}(n) = \l_{g}(n)$ for all $n \ge 1$. By \cref{thm:newforms_characterization_holomorphic} (ii), $f = g$.
+      The Hecke relations imply that $\l_{f}(n) = \l_{g}(n)$ for all $n$ relatively prime to the level. By \cref{lem:the_main_lemma_for_newforms_holomorphic}, $f-g$ is an oldform. But as the oldforms and newforms are orthogonal, $f-g = 0$ and hence $f = g$.
+    \end{proof}
+
+    We now require one last linear operator. Before introducing this operator, let us discuss conjugate holomorphic cusp forms. For any $f \in \mc{S}_{k}(N,\chi)$, we define the \textbf{conjugate}\index{conjugate} $\conj{f}$ of $f$ by
+    \[
+      \conj{f}(z) = \conj{f(-\conj{z})}.
+    \]
+    Note that if $f$ has Fourier coefficients $a_{n}(f)$, then $\conj{f}$ has Fourier coefficients $\conj{a_{n}(f)}$. Moreover, it is generally not true that $\conj{f}(z)$ and $\conj{f(z)}$ are equal. However, it turns out that $\conj{f}$ is indeed a holomorphic cusp form:
+
+    \begin{proposition}\label{cref:conjugate_cusp_form_holomorphic}
+      If $f \in \mc{S}_{k}(N,\chi)$, then $\conj{f} \in \mc{S}_{k}(N,\cchi)$.
+    \end{proposition}
+    \begin{proof}
+      Holomorphy is clear so we need next need to verify the modularity. For this, let $\g = \begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix} \in \G_{0}(N)$ and note that $\g = \begin{psmallmatrix} a & -b \\ -c & d \end{psmallmatrix} \in \G_{0}(N)$. Then we compute
+      \begin{align*}
+        \conj{f}(\g z) &= \conj{f(-\conj{\g z})} \\
+        &= \conj{f(\g'(-\conj{z}))} \\
+        &= \conj{\chi(\g)j(\g',-\conj{z})^{k}f(-\conj{z})} \\
+        &= \conj{\chi(\g)j(\g,z)^{k}f(-\conj{z})} \\
+        &= \cchi(\g)j(\g,z)^{k}\conj{f(-\conj{z})} \\
+        &= \cchi(\g)j(\g,z)^{k}\conj{f}(z),
+      \end{align*}
+      and modularity follows. The growth condition follows immediately from that of $f$ and thus $\conj{f}$ is a cusp form if $f$. This completes the proof.
     \end{proof}
     
-    With a stronger version of multiplicity one, one can prove that the Fourier coefficients of primitive Hecke eigenforms are real. This result takes a lot of work to show (see \cite{diamond2005first} for a note and appropriate references) and while we will not need it in the following, we state it for convenience:
-
-    \begin{theorem}
-      The Fourier coefficients of primitive Hecke eigenforms are real.
-    \end{theorem}
-
-    We now require one last linear operator. Let
+    Now we are ready to introduce the linear operator. Let
     \[
       W_{N} = \begin{pmatrix} 0 & -1 \\ N & 0 \end{pmatrix},
     \]
-    and note that $\det(W_{N}) = N$. We define the \textbf{Atkin–Lehner involution}\index{Atkin–Lehner involution} $\w_{N}$ to be the linear operator on $\mc{S}_{k}(\G_{1}(N))$ given by
+    and note that $\det(W_{N}) = N$. We define the \textbf{Atkin-Lehner operator}\index{Atkin-Lehner operator} $\w_{N}$ to be the linear operator on $\mc{S}_{k}(N,\chi)$ given by
     \[
       (\w_{N}f)(z) = N^{\frac{k}{2}}j(W_{n},z)^{-k}f(W_{n}z) = (\sqrt{N}z)^{-k}f\left(-\frac{1}{Nz}\right).
     \]
-    It is not too difficult to see that $\w_{N}$ is an involution on $\mc{S}_{k}(\G_{1}(N))$:
+    The crucial information we need is how $\w_{N}$ acts on $\mc{S}_{k}(N,\chi)$ and on primitive Hecke eigenforms:
 
     \begin{proposition}\label{prop:Atkin_Lehner_holomorphic}
-      $\w_{N}$ is an involution on $\mc{S}_{k}(\G_{1}(N))$.
+      $\w_{N}$ maps $\mc{S}_{k}(N,\chi)$ into $\mc{S}_{k}(N,\cchi)$.
     \end{proposition}
     \begin{proof}
-      We first need to show that $\w_{N}$ maps $\mc{S}_{k}(\G_{1}(N))$ into itself. Holomorphy is obvious. For modularity, note that for $\g = \begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix} \in \G_{1}(N)$, we have
+      Holomorphy is obvious. For modularity, note that for $\g = \begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix} \in \G_{0}(N)$, we have
       \[
         W_{N}\g = \begin{pmatrix} 0 & -1 \\ N & 0 \end{pmatrix}\begin{pmatrix} a & b \\ c & d \end{pmatrix} = \begin{pmatrix} -c & -d \\ Na & Nb \\ \end{pmatrix} = \begin{pmatrix} d & -N^{-1}c \\ -Nb & a \end{pmatrix}\begin{pmatrix} 0 & -1 \\ N & 0 \end{pmatrix} = \g'W_{N},
       \]
-      where $\g' = \begin{psmallmatrix} d & -N^{-1}c \\ -Nb & a \end{psmallmatrix} \in \G_{1}(N)$. It follows that
+      where $\g' = \begin{psmallmatrix} d & -N^{-1}c \\ -Nb & a \end{psmallmatrix} \in \G_{0}(N)$. It follows that
       \begin{align*}
         (\w_{N}f)(\g z) &= (\sqrt{N}\g z)^{-k}f(W_{N}\g z) \\
         &= (\sqrt{N}\g z)^{-k}f(\g'W_{N}z) \\
-        &= \left(\sqrt{N}\frac{az+b}{cz+d}\right)^{-k}\left(\frac{b}{z}+a\right)^{k}f\left(-\frac{1}{Nz}\right) \\
-        &= \left(\sqrt{N}\frac{az+b}{cz+d}\right)^{-k}\left(\frac{z}{az+b}\right)^{-k}f\left(-\frac{1}{Nz}\right) \\
-        &= (cz+d)^{k}(\sqrt{N}z)^{-k}f\left(-\frac{1}{Nz}\right) \\
-        &= j(\g,z)^{k}(\w_{N}f)(z).
+        &= \chi(\g')\left(\sqrt{N}\frac{az+b}{cz+d}\right)^{-k}\left(\frac{b}{z}+a\right)^{k}f\left(-\frac{1}{Nz}\right) && \text{modularity} \\
+        &= \chi(\g')\left(\sqrt{N}\frac{az+b}{cz+d}\right)^{-k}\left(\frac{z}{az+b}\right)^{-k}f\left(-\frac{1}{Nz}\right) \\
+        &= \chi(\g')j(\g,z)^{k}(\sqrt{N}z)^{-k}f\left(-\frac{1}{Nz}\right) \\
+        &= \cchi(\g)j(\g,z)^{k}(\sqrt{N}z)^{-k}f\left(-\frac{1}{Nz}\right) && \text{$ad \equiv 1 \tmod{N}$} \\
+        &= \cchi(\g)j(\g,z)^{k}(\w_{N}f)(z).
       \end{align*}
       This verifies modularity of $\w_{N}f$. As for the growth condition, let $\s_{\mf{a}}$ be a scaling matrix for the cusp $\mf{a}$. Then $W_{N}\s_{\mf{a}}$ takes $\infty$ to an element of $\Q \cup \{\infty\}$ since $W_{N} \in \GL_{2}^{+}(\Q)$. In other words, $W_{N}\s_{\mf{a}}\infty = \mf{b}$ for some cusp $\mf{b}$. Then the cocycle condition implies
       \[
         j(\s_{\mf{a}},z)^{-k}(\w_{N}f)(\s_{\mf{a}}z) = N^{\frac{k}{2}}j(W_{n}\s_{\mf{a}},z)^{-k}f(W_{n}\s_{\mf{a}}z),
       \]
-      and the growth condition follows from that of $f$. It is also clear that $\w_{N}f$ is a cusp form because $f$ is. Altogether, this shows $\w_{N}f \in \mc{S}_{k}(\G_{1}(N))$. Moreover, $\w_{N}$ is also an involution because $\w_{N}^{2}f = f$. 
+      and the growth condition follows from that of $f$. In particular, $\w_{N}f$ is a cusp form because $f$ is. This completes the proof.
     \end{proof}
 
-    The crucial fact we need is how $\w_{N}$ acts on $\mc{S}_{k}(N,\chi)$. To state the result, for $f \in \mc{S}_{k}(N,\chi)$ define
-    \[
-      \conj{f}(z) = \conj{f(-z)}.
-    \]
-    Then we have the following (see \cite{cohenmodular2017} for a proof):
+    The crucial fact we need is how $\w_{N}$ acts on primitive Hecke eigenforms (see \cite{cohenmodular2017} for a proof):
 
     \begin{proposition}\label{prop:Atkin_Lehner_conjugation_holomorphic}
       If $f \in \mc{S}_{k}(N,\chi)$ is a primitive Hecke eigenform, then
@@ -1256,7 +1269,7 @@
       \[
         j(\s_{\mf{a}},z)^{-k}(f \ox \psi)(\s_{\mf{a}}z) = \frac{1}{\tau(\conj{\psi})}\sum_{r \tmod{q}}\conj{\psi}(r)j(\g_{r}\s_{\mf{a}},z)^{-k}f(\g_{r}\s_{\mf{a}}z),
       \]
-      and the growth condition follows from that of $f$. It is also clear that $f \ox \psi$ is a cusp form if $f$ is. This proves the claim.
+      and the growth condition follows from that of $f$. Thus $f \ox \psi$ is a cusp form if $f$ is. This proves the claim.
     \end{proof}
 
     The generalization of \cref{prop:twisted_holomorphic_forms_primitive} to all characters is slightly more involved. To this end, define operators $U_{p}$ and $V_{p}$ on $\mc{M}_{k}(\G_{1}(N))$ to be the linear operators given by

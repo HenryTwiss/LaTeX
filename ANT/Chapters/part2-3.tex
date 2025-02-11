@@ -520,7 +520,7 @@
       \[
         \mc{E}_{k}(\G,\chi) = \mc{R}_{k}(\G,\chi) \bigop_{\mf{a}}\mc{E}_{k,\mf{a}}(\G,\chi),
       \]
-      where the direct sum is over the cusps of $\GH$. The Laplace operator $\D_{k}$ has discrete spectrum on $\mc{R}_{k}(\G,\chi)$ in the segment $[0,\frac{1}{4})$ and has pure continuous spectrum on each Eisenstein space $\mc{E}_{k,\mf{a}}(\G,\chi)$ covering the segment $\big[\frac{1}{4},\infty\big)$ uniformly with multiplicity $1$. Letting $\{u_{j}\}_{j \ge 1}$ be an orthonormal basis residual Maass forms for $\mc{R}_{k}(\G,\chi)$, every $f \in \mc{E}_{k,\mf{a}}(\G,\chi)$ admits a decomposition of the form
+      where the direct sum is over the cusps of $\GH$. The Laplace operator $\D_{k}$ has discrete spectrum on $\mc{R}_{k}(\G,\chi)$ in the segment $[0,\frac{1}{4})$ and has pure continuous spectrum on each Eisenstein space $\mc{E}_{k,\mf{a}}(\G,\chi)$ covering the segment $\big[\frac{1}{4},\infty\big)$ uniformly with multiplicity one. Letting $\{u_{j}\}_{j \ge 1}$ be an orthonormal basis residual Maass forms for $\mc{R}_{k}(\G,\chi)$, every $f \in \mc{E}_{k,\mf{a}}(\G,\chi)$ admits a decomposition of the form
       \[
         f(z) = \sum_{j \ge 1}\<f,u_{j}\>u_{j}(z)+\sum_{\mf{a}}\frac{1}{4\pi}\int_{-\infty}^{\infty}\left\<f,E_{k,\chi,\mf{a}}\left(\cdot,\frac{1}{2}+\nu\right)\right\>E_{k,\chi,\mf{a}}\left(z,\frac{1}{2}+ir\right)\,dr.
       \]
@@ -839,8 +839,8 @@
     \end{proof}
 
     Just as for holomorphic forms, the identities in \cref{cor:Hecke_relations_operator_Maass} can also be established directly and the first identity can be used to show that the Hecke operators commute.
-  \section{Atkin–Lehner Theory}
-    There is also an Atkin–Lehner theory for Maass form. As with holomorphic forms, we will only deal with congruence subgroups of the form $\G_{1}(N)$ and cusp forms on $\G_{1}(N)\backslash\H$. The trivial way to lift Maass forms from a smaller level to a larger level is via the natural inclusion $\mc{C}_{k,\nu}(\G_{1}(M)) \subseteq \mc{C}_{k,\nu}(\G_{1}(N))$ provided $M \mid N$ which follows from $\G_{1}(N) \le \G_{1}(M)$. Alternatively, for any $d \mid \frac{N}{M}$, let $\a_{d} = \begin{psmallmatrix} d & 0 \\ 0 & 1 \end{psmallmatrix}$. If $f \in \mc{C}_{k,\nu}(\G_{1}(M))$, then
+  \section{Atkin-Lehner Theory}
+    There is also an Atkin-Lehner theory for Maass form. As with holomorphic forms, we will only deal with congruence subgroups of the form $\G_{1}(N)$ or $\G_{0}(N)$ and cusp forms on the corresponding modular curves. The trivial way to lift Maass forms from a smaller level to a larger level is via the natural inclusion $\mc{C}_{k,\nu}(\G_{1}(M)) \subseteq \mc{C}_{k,\nu}(\G_{1}(N))$ provided $M \mid N$ which follows from $\G_{1}(N) \le \G_{1}(M)$. Alternatively, for any $d \mid \frac{N}{M}$, let $\a_{d} = \begin{psmallmatrix} d & 0 \\ 0 & 1 \end{psmallmatrix}$. If $f \in \mc{C}_{k,\nu}(\G_{1}(M))$, then
     \[
       (f[\a_{d}]_{k})(z) = d^{-1}\e(\a_{d},z)^{-k}f(\a_{d} z) = d^{-1}f(dz).
     \]
@@ -908,27 +908,40 @@
       The argument used in the proof of \cref{thm:newforms_characterization_holomorphic} holds verbatim.
     \end{proof}
 
-    Statement (i) in \cref{thm:newforms_characterization_Maass} implies that primitive Hecke-Maass eigenforms satisfy the Hecke relations for all $n,m \ge 1$. Statement (ii) in \cref{thm:newforms_characterization_Maass} is referred to as the \textbf{multiplicity one theorem}\index{multiplicity one theorem} for Maass forms. So as is the case for holomorphic forms, $\mc{C}_{k,\nu}(\G_{1}(N))^{\mathrm{new}}$ contains one element per ``eigenvalue'' where we mean a set of eigenvalues one for each Hecke operator $T_{m}$. Since the Fourier coefficients are multiplicative, the Hecke relations imply that $f$ is actually determined by its Fourier coefficients at primes. 
+    Statement (i) in \cref{thm:newforms_characterization_Maass} implies that primitive Hecke-Maass eigenforms satisfy the Hecke relations for all $n,m \ge 1$. Statement (ii) in \cref{thm:newforms_characterization_Maass} is referred to as the \textbf{multiplicity one}\index{multiplicity one} for Maass forms. So as is the case for holomorphic forms, $\mc{C}_{k,\nu}(\G_{1}(N))^{\mathrm{new}}$ contains one element per ``eigenvalue'' where we mean a set of eigenvalues one for each Hecke operator $T_{m}$. Since the Fourier coefficients are multiplicative, the Hecke relations imply that $f$ is actually determined by its Fourier coefficients at primes. 
     
     \begin{theorem}[Multiplicity one, Maass version]
-      Let $f$ and $g$ be primitive Hecke-Maass eigenforms of the same eigenvalue and level. Denote the Hecke eigenvalues by $\l_{f}(n)$ and $\l_{g}(n)$ respectively. If $\l_{f}(p) = \l_{g}(p)$ for all primes $p$, then $f = g$.
+      Let $f$ and $g$ be primitive Hecke-Maass eigenforms of the same weight, eigenvalue, and level. Denote the Hecke eigenvalues by $\l_{f}(n)$ and $\l_{g}(n)$ respectively. If $\l_{f}(p) = \l_{g}(p)$ for all primes $p$ not dividing the level, then $f = g$.
     \end{theorem}
     \begin{proof}
       The argument used in the proof of multiplicity one for holomorphic forms holds verbatim.
     \end{proof}
 
-    Interestingly, unlike holomorphic forms it is unknown if the Fourier coefficients of Maass forms are real or even algebraic in general. We require one last piece of machinery. As for holomorphic forms, we have an involution on the space $\mc{C}_{k,\nu}(N,\chi)$. Recall the matrix
+    We now require one last linear operator. Before introducing this operator, let us discuss conjugate Maass cusp forms. For any cusp form $f \in \mc{C}_{k,\nu}(N,\chi)$, we define the \textbf{conjugate}\index{conjugate} $\conj{f}$ of $f$ by
+    \[
+      \conj{f}(z) = \conj{f(-\conj{z})}.
+    \]
+    Note that if $f$ has Fourier coefficients $a_{n}(f)$, then $\conj{f}$ has Fourier coefficients $\conj{a_{n}(f)}$ by the conjugate symmetry of the Whittaker function (see \cref{append:Whittaker_Functions}). Moreover, it is generally not true that $\conj{f}(z)$ and $\conj{f(z)}$ are equal. However, it turns out that $\conj{f}$ is indeed a Maass cup form:
+
+    \begin{proposition}\label{cref:conjugate_cusp_form_Maass}
+      If $f \in \mc{C}_{k,\nu}(N,\chi)$, then $\conj{f} \in \mc{C}_{k,\nu}(N,\cchi)$.
+    \end{proposition}
+    \begin{proof}
+      Argue as in the proof of \cref{cref:conjugate_cusp_form_holomorphic}.
+    \end{proof}
+  
+    Now we are ready to introduce the linear operator. Recall the matrix
     \[
       W_{N} = \begin{pmatrix} 0 & -1 \\ N & 0 \end{pmatrix},
     \]
-    with $\det(W_{N}) = N$. We define the \textbf{Atkin–Lehner involution}\index{Atkin–Lehner involution} $\w_{N}$ to be the linear operator on $\mc{C}_{k,\nu}(\G_{1}(N))$ given by
+    with $\det(W_{N}) = N$. We define the \textbf{Atkin-Lehner operator}\index{Atkin-Lehner operator} $\w_{N}$ to be the linear operator on $\mc{C}_{k,\nu}(\G_{1}(N))$ given by
     \[
       (\w_{N}f)(z) = N^{\frac{k}{2}}\e(W_{N},z)^{-k}f\left(W_{N}z\right) = \left(\frac{\sqrt{N}z}{|z|}\right)^{-k}f\left(-\frac{1}{Nz}\right).
     \]
-    It is not too difficult to see that $\w_{N}$ is an involution on $\mc{C}_{k,\nu}(\G_{1}(N))$:
+    It is not too difficult to see that $\w_{N}$ acts on $\mc{C}_{k,\nu}(\G_{1}(N))$:
 
     \begin{proposition}\label{prop:Atkin_Lehner_Maass}
-      $\w_{N}$ is an involution on $\mc{C}_{k,\nu}(\G_{1}(N))$.
+      $\w_{N}$ maps $\mc{C}_{k,\nu}(N,\chi)$ into $\mc{C}_{k,\nu}(N,\cchi)$.
     \end{proposition}
     \begin{proof}
       Arguing as in the proof of \cref{prop:Atkin_Lehner_holomorphic} with smoothness replacing holomorphy, automorphy replacing modularity, and the analogous growth condition for Maass forms, the only piece left to verify is that $\w_{N}f$ is an eigenfunction for $\D$ with eigenvalue $\l$ if $f$ is. This is easy since the invariance of $\D$ implies
@@ -938,11 +951,7 @@
       Thus $\w_{N}f$ is an eigenfunction for $\D$ with eigenvalue $\l$. This completes the proof.
     \end{proof}
 
-    The crucial fact we need is how $\w_{N}$ acts on $\mc{C}_{k,\nu}(N,\chi)$. To state the result, for $f \in \mc{C}_{k,\nu}(N,\chi)$ define
-    \[
-      \conj{f}(z) = \conj{f(-z)}.
-    \]
-    Then we have the following (argue as in the proof for holomorphic forms given in \cite{cohenmodular2017}):
+    The crucial fact we need is how $\w_{N}$ acts on primitive Hecke-Maass eigenforms (argue as in the proof of \cref{prop:Atkin_Lehner_conjugation_holomorphic} given in \cite{cohenmodular2017}):
 
     \begin{proposition}\label{prop:Atkin_Lehner_conjugation_Maass}
       If $f \in \mc{C}_{k,\nu}(N,\chi)$ is a primitive Hecke-Maass eigenform, then
