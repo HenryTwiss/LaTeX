@@ -418,58 +418,69 @@
       So the Petersson inner product is a Hermitian inner product on $\mc{S}_{k}(\G,\chi)$. Since $\mc{S}_{k}(\G,\chi)$ is finite dimensional by \cref{thm:modular_forms_finite_dimensional}, it follows immediately that $\mc{S}_{k}(\G,\chi)$ is a Hilbert space.
     \end{proof}
 
-    Now suppose $f \in \mc{S}_{k}(\G,\chi)$ with Fourier coefficients $a_{n,\mf{a}}(f)$ at the $\mf{a}$ cusp. Define linear functionals $\phi_{m,k,\chi,\mf{a}}:\mc{S}_{k}(\G,\chi) \to \C$ by 
+    Now suppose $f \in \mc{S}_{k}(\G,\chi)$ with Fourier coefficients $a_{\mf{a}}(n)$ at the $\mf{a}$ cusp. Define linear functionals $\phi_{m,k,\chi,\mf{a}}:\mc{S}_{k}(\G,\chi) \to \C$ by 
     \[
-      \phi_{m,k,\chi,\mf{a}}(f) = a_{m,\mf{a}}(f).
+      \phi_{m,k,\chi,\mf{a}}(f) = a_{\mf{a}}(m).
     \]
-    Since $\mc{S}_{k}(\G,\chi)$ is a finite dimensional Hilbert space, the Riesz representation theorem implies that there exists unique $v_{m,k,\chi,\mf{a}}(z) \in \mc{S}_{k}(\G,\chi)$ such that
+    Since $\mc{S}_{k}(\G,\chi)$ is a finite dimensional Hilbert space, the Riesz representation theorem implies that there exists unique $v_{m,k,\chi,\mf{a}} \in \mc{S}_{k}(\G,\chi)$ such that
     \[
-      \<f,v_{m,k,\chi,\mf{a}}\> = \phi_{m,k,\chi,\mf{a}}(f) = a_{m,\mf{a}}(f),
+      \<f,v_{m,k,\chi,\mf{a}}\> = \phi_{m,k,\chi,\mf{a}}(f) = a_{\mf{a}}(m).
     \]
-    We would like to know what these cusp forms are. It turns out that $v_{m,k,\chi,\mf{a}}(z)$ will be the Poincar\'e series $P_{m,k,\chi,\mf{a}}(z)$ of positive index up to a normalization factor. To see this, we compute the following inner product:
-    \begin{align*}
-      \<f,P_{m,k,\chi,\mf{a}}\> &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}f(z)\conj{P_{m,k,\chi,\mf{a}}(z)}\Im(z)^{k}\,d\mu \\
-      &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}\sum_{\g \in \G_{\a}\backslash\G}\chi(\g)\conj{j(\s_{\mf{a}}^{-1}\g,z)^{-k}}f(z)e^{-2\pi im\conj{\s_{\mf{a}}^{-1}\g z}}\Im(z)^{k}\,d\mu \\
-      &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}\sum_{\g \in \G_{\a}\backslash\G}\chi(\g)j(\s_{\mf{a}}^{-1}\g,z)^{k}f(z)e^{-2\pi im\conj{\s_{\mf{a}}^{-1}\g z}}\Im(\s_{\mf{a}}^{-1}\g z)^{k}\,d\mu \\
-      &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}\sum_{\g \in \G_{\a}\backslash\G}\left(\frac{j(\s_{\mf{a}}^{-1}\g,z)}{j(\g,z)}\right)^{k}f(\g z)e^{-2\pi im\conj{\s_{\mf{a}}^{-1}\g z}}\Im(\s_{\mf{a}}^{-1}\g z)^{k}\,d\mu && \text{modularity} \\
-      &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}\sum_{\g \in \G_{\a}\backslash\G}j(\s_{\mf{a}},\s_{\mf{a}}^{-1}\g z)^{-k}f(\g z)e^{-2\pi im\conj{\s_{\mf{a}}^{-1}\g z}}\Im(\s_{\mf{a}}^{-1}\g z)^{k}\,d\mu && \text{cocycle condition} \\
-      &= \frac{1}{V_{\G}}\int_{\mc{F}_{\s_{\mf{a}}^{-1}\G\s_{\mf{a}}}}\sum_{\g \in \G_{\a}\backslash\G}j(\s_{\mf{a}},\s_{\mf{a}}^{-1}\g\s_{\mf{a}}z)^{-k}f(\g\s_{\mf{a}}z)e^{-2\pi im\conj{\s_{\mf{a}}^{-1}\g\s_{\mf{a}}z}}\Im(\s_{\mf{a}}^{-1}\g\s_{\mf{a}}z)^{k}\,d\mu && \text{$z \to \s_{\mf{a}}z$} \\
-      &= \frac{1}{V_{\G}}\int_{\mc{F}_{\s_{\mf{a}}^{-1}\G\s_{\mf{a}}}}\sum_{\g \in \G_{\infty}\backslash\s_{\mf{a}}^{-1}\G\s_{\mf{a}}}j(\s_{\mf{a}},\g z)^{-k}f(\s_{\mf{a}}\g z)e^{-2\pi im\conj{\g z}}\Im(\g z)^{k}\,d\mu && \text{$\g \to \s_{\mf{a}}\g\s_{\mf{a}}^{-1}$} \\
-      &= \frac{1}{V_{\G}}\int_{\mc{F}_{\s_{\mf{a}}^{-1}\G\s_{\mf{a}}}}\sum_{\g \in \G_{\infty}\backslash\s_{\mf{a}}^{-1}\G\s_{\mf{a}}}(f|\s_{\mf{a}})(\g z)e^{-2\pi im\conj{\g z}}\Im(\g z)^{k}\,d\mu && \\
-      &= \frac{1}{V_{\G}}\int_{\G_{\infty}\backslash\H}(f|\s_{\mf{a}})(z)e^{-2\pi im\conj{z}}\Im(z)^{k}\,d\mu && \text{unfolding.}
-    \end{align*}
-    Substituting in the Fourier series of $f$ at the $\mf{a}$ cusp, we can finish the computation:
-    \begin{align*}
-       \frac{1}{V_{\G}}\int_{\G_{\infty}\backslash\H}(f|\s_{\mf{a}})(z)e^{-2\pi im\conj{z}}\Im(z)^{k}\,d\mu &= \frac{1}{V_{\G}}\int_{0}^{\infty}\int_{0}^{1}\sum_{n \ge 1}a_{n,\mf{a}}(f)e^{2\pi i(n-m)x}e^{-2\pi(n+m)y}y^{k}\,\frac{dx\,dy}{y^{2}} \\
-      &= \frac{1}{V_{\G}}\int_{0}^{\infty}\sum_{n \ge 1}\int_{0}^{1}a_{n,\mf{a}}(f)e^{2\pi i(n-m)x}e^{-2\pi(n+m)y}y^{k}\,\frac{dx\,dy}{y^{2}} && \text{DCT} \\
-      &= \frac{1}{V_{\G}}\int_{0}^{\infty}a_{m,\mf{a}}(f)e^{-4\pi my}y^{k}\,\frac{dy}{y^{2}},
-    \end{align*}
-    where the last line follows because
+    We would like to know what these cusp forms are. It turns out that $v_{m,k,\chi,\mf{a}}(z)$ will be the Poincar\'e series $P_{m,k,\chi,\mf{a}}(z)$ of positive index up to a constant. To deduce this, we will need the very useful identity
+
     \begin{equation}\label{equ:Dirac_integral_representation}
       \int_{0}^{1}e^{2\pi i(n-m)x}\,dx = \d_{n-m,0},
     \end{equation}
-    so that the inner integral cuts off all the terms except the diagonal $n = m$. Then
-    \begin{align*}
-      \frac{1}{V_{\G}}\int_{0}^{\infty}a_{m,\mf{a}}(f)e^{-4\pi my}y^{k}\,\frac{dy}{y^{2}} &= \frac{a_{m,\mf{a}}(f)}{V_{\G}}\int_{0}^{\infty}e^{-4\pi my}y^{k-1}\,\frac{dy}{y} \\
-      &= \frac{a_{m,\mf{a}}(f)}{V_{\G}}\int_{0}^{\infty}e^{-4\pi my}y^{k-1}\,\frac{dy}{y} && \text{$y \to \frac{y}{4\pi m}$} \\
-      &= \frac{a_{m,\mf{a}}(f)}{V_{\G}(4\pi m)^{k-1}}\int_{0}^{\infty}e^{-y}y^{k-1}\,\frac{dy}{y} \\
-      &= \frac{\G(k-1)}{V_{\G}(4\pi m)^{k-1}}a_{m,\mf{a}}(f) && \text{definition of $\G(k-1)$.}
-    \end{align*}
-    In conclusion,
-    \begin{equation}\label{equ:Petersson_inner_product_with_Poincare_series}
-      \<f,P_{m,k,\chi,\mf{a}}\> = \frac{\G(k-1)}{V_{\G}(4\pi m)^{k-1}}a_{m,\mf{a}}(f),
-    \end{equation}
-    and it follows that
+
+    where $n,m \in \Z$. We will prove the following theorem:
+
+    \begin{theorem}\label{thm:Petersson_inner_product_with_Poincare_series}
+      Let $f \in \mc{S}_{k}(\G,\chi)$ with Fourier coefficients $a_{\mf{a}}(n)$ at the $\mf{a}$ cusp of $\GH$. Then 
+      \[
+        \<f,P_{m,k,\chi,\mf{a}}\> = \frac{\G(k-1)}{V_{\G}(4\pi m)^{k-1}}a_{\mf{a}}(m),
+      \]
+      for all $m \ge 1$.
+    \end{theorem}
+    \begin{proof}
+      We compute the inner product as follows:
+      \begin{align*}
+        \<f,P_{m,k,\chi,\mf{a}}\> &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}f(z)\conj{P_{m,k,\chi,\mf{a}}(z)}\Im(z)^{k}\,d\mu \\
+        &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}\sum_{\g \in \G_{\a}\backslash\G}\chi(\g)\conj{j(\s_{\mf{a}}^{-1}\g,z)^{-k}}f(z)e^{-2\pi im\conj{\s_{\mf{a}}^{-1}\g z}}\Im(z)^{k}\,d\mu \\
+        &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}\sum_{\g \in \G_{\a}\backslash\G}\chi(\g)j(\s_{\mf{a}}^{-1}\g,z)^{k}f(z)e^{-2\pi im\conj{\s_{\mf{a}}^{-1}\g z}}\Im(\s_{\mf{a}}^{-1}\g z)^{k}\,d\mu \\
+        &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}\sum_{\g \in \G_{\a}\backslash\G}\left(\frac{j(\s_{\mf{a}}^{-1}\g,z)}{j(\g,z)}\right)^{k}f(\g z)e^{-2\pi im\conj{\s_{\mf{a}}^{-1}\g z}}\Im(\s_{\mf{a}}^{-1}\g z)^{k}\,d\mu && \text{modularity} \\
+        &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}\sum_{\g \in \G_{\a}\backslash\G}j(\s_{\mf{a}},\s_{\mf{a}}^{-1}\g z)^{-k}f(\g z)e^{-2\pi im\conj{\s_{\mf{a}}^{-1}\g z}}\Im(\s_{\mf{a}}^{-1}\g z)^{k}\,d\mu && \text{cocycle condition} \\
+        &= \frac{1}{V_{\G}}\int_{\mc{F}_{\s_{\mf{a}}^{-1}\G\s_{\mf{a}}}}\sum_{\g \in \G_{\a}\backslash\G}j(\s_{\mf{a}},\s_{\mf{a}}^{-1}\g\s_{\mf{a}}z)^{-k}f(\g\s_{\mf{a}}z)e^{-2\pi im\conj{\s_{\mf{a}}^{-1}\g\s_{\mf{a}}z}}\Im(\s_{\mf{a}}^{-1}\g\s_{\mf{a}}z)^{k}\,d\mu && \text{$z \to \s_{\mf{a}}z$} \\
+        &= \frac{1}{V_{\G}}\int_{\mc{F}_{\s_{\mf{a}}^{-1}\G\s_{\mf{a}}}}\sum_{\g \in \G_{\infty}\backslash\s_{\mf{a}}^{-1}\G\s_{\mf{a}}}j(\s_{\mf{a}},\g z)^{-k}f(\s_{\mf{a}}\g z)e^{-2\pi im\conj{\g z}}\Im(\g z)^{k}\,d\mu && \text{$\g \to \s_{\mf{a}}\g\s_{\mf{a}}^{-1}$} \\
+        &= \frac{1}{V_{\G}}\int_{\mc{F}_{\s_{\mf{a}}^{-1}\G\s_{\mf{a}}}}\sum_{\g \in \G_{\infty}\backslash\s_{\mf{a}}^{-1}\G\s_{\mf{a}}}(f|\s_{\mf{a}})(\g z)e^{-2\pi im\conj{\g z}}\Im(\g z)^{k}\,d\mu && \\
+        &= \frac{1}{V_{\G}}\int_{\G_{\infty}\backslash\H}(f|\s_{\mf{a}})(z)e^{-2\pi im\conj{z}}\Im(z)^{k}\,d\mu && \text{unfolding.}
+      \end{align*}
+      Substituting in the Fourier series of $f$ at the $\mf{a}$ cusp, we can finish the computation:
+      \begin{align*}
+        \frac{1}{V_{\G}}\int_{\G_{\infty}\backslash\H}(f|\s_{\mf{a}})(z)e^{-2\pi im\conj{z}}\Im(z)^{k}\,d\mu &= \frac{1}{V_{\G}}\int_{0}^{\infty}\int_{0}^{1}\sum_{n \ge 1}a_{\mf{a}}(n)e^{2\pi i(n-m)x}e^{-2\pi(n+m)y}y^{k}\,\frac{dx\,dy}{y^{2}} \\
+        &= \frac{1}{V_{\G}}\int_{0}^{\infty}\sum_{n \ge 1}\int_{0}^{1}a_{\mf{a}}(n)e^{2\pi i(n-m)x}e^{-2\pi(n+m)y}y^{k}\,\frac{dx\,dy}{y^{2}} && \text{DCT} \\
+        &= \frac{1}{V_{\G}}\int_{0}^{\infty}a_{\mf{a}}(m)e^{-4\pi my}y^{k}\,\frac{dy}{y^{2}},
+      \end{align*}
+      where the last line follows because \cref{equ:Dirac_integral_representation} implies that the inner integral cuts off all the terms except the diagonal $n = m$. Then
+      \begin{align*}
+        \frac{1}{V_{\G}}\int_{0}^{\infty}a_{\mf{a}}(m)e^{-4\pi my}y^{k}\,\frac{dy}{y^{2}} &= \frac{a_{\mf{a}}(m)}{V_{\G}}\int_{0}^{\infty}e^{-4\pi my}y^{k-1}\,\frac{dy}{y} \\
+        &= \frac{a_{\mf{a}}(m)}{V_{\G}}\int_{0}^{\infty}e^{-4\pi my}y^{k-1}\,\frac{dy}{y} && \text{$y \to \frac{y}{4\pi m}$} \\
+        &= \frac{a_{\mf{a}}(m)}{V_{\G}(4\pi m)^{k-1}}\int_{0}^{\infty}e^{-y}y^{k-1}\,\frac{dy}{y} \\
+        &= \frac{\G(k-1)}{V_{\G}(4\pi m)^{k-1}}a_{\mf{a}}(m) && \text{definition of $\G(k-1)$.}
+      \end{align*}
+      This completes the proof.
+    \end{proof}
+
+    It follows immediately from \cref{thm:Petersson_inner_product_with_Poincare_series} that
     \[
       v_{m,k,\chi,\mf{a}}(z) = \frac{V_{\G}(4\pi m)^{k-1}}{\G(k-1)}P_{m,k,\chi,\mf{a}}(z).
     \]
-    We will work with the Poincar\'e series $P_{m,k,\chi,\mf{a}}(z)$ instead of their normalized counterparts $v_{m,k,\chi,\mf{a}}(z)$. In any case, with \cref{equ:Petersson_inner_product_with_Poincare_series} in hand we can prove the following result:
+    Thus the Poincar\'e series $P_{m,k,\chi,\mf{a}}(z)$ of positive index extract the Fourier coefficients of $f$ at different cusps up to a constant. With \cref{thm:Petersson_inner_product_with_Poincare_series} in hand we can prove the following result:
 
     \begin{theorem}
       The Poincar\'e series of positive index span $\mc{S}_{k}(\G,\chi)$.
     \end{theorem}
     \begin{proof}
-      Let $f \in \mc{S}_{k}(\G,\chi)$ with Fourier coefficients $a_{n,\mf{a}}(f)$ at the $\mf{a}$ cusp. Since $\G(k-1) \neq 0$, \cref{equ:Petersson_inner_product_with_Poincare_series} implies $\<f,P_{m,k,\chi,\mf{a}}\> = 0$ if and only if $a_{m,\mf{a}}(f) = 0$. So $f$ is orthogonal to all the Poincar\'e series $P_{m,k,\chi,\mf{a}}$ of positive index if and only if every Fourier coefficient $a_{m,\mf{a}}(f)$ is zero. But this happens if and only if $f$ is identically zero.
+      Let $f \in \mc{S}_{k}(\G,\chi)$ with Fourier coefficients $a_{\mf{a}}(n)$ at the $\mf{a}$ cusp. Since $\G(k-1) \neq 0$, \cref{thm:Petersson_inner_product_with_Poincare_series} implies $\<f,P_{m,k,\chi,\mf{a}}\> = 0$ if and only if $a_{\mf{a}}(m) = 0$. So $f$ is orthogonal to all the Poincar\'e series $P_{m,k,\chi,\mf{a}}$ of positive index if and only if every Fourier coefficient $a_{\mf{a}}(m)$ is zero. But this happens if and only if $f$ is identically zero.
     \end{proof}
   \section{Double Coset Operators}
     We are ready to introduce a class of general operators, depending upon double cosets, on a congruence subgroup $\G$ of level $N$. We will use these operators to define the diamond and Hecke operators. For $\a \in \GL_{2}^{+}(\Q)$, consider the double coset
