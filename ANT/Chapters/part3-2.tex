@@ -12,48 +12,41 @@
       \]
       in this region as well. The local factor at $p$ is $\z_{p}(s) = (1-p^{-s})^{-1}$ with local root $1$.
     \subsection*{The Integral Representation of \texorpdfstring{$\z(s)$}{\z(s)}: Part I}
-      Riemann's ingenious insight was to analytically continue $\z(s)$. By this, he sought to find a representation of $\z(s)$ defined on a larger region than $\s > 1$. This is the approach we will take, and the argument follows the same line of reasoning as that of Riemann. We consider the gamma function $\G\left(\frac{s}{2}\right)$:
+      We want to find an integral representation for $\z(s)$. To do this, consider the function
       \[
-        \G\left(\frac{s}{2}\right) = \int_{0}^{\infty}e^{-x}x^{\frac{s}{2}}\,\frac{dx}{x}.
+        \w(s) = \sum_{n \ge 1}e^{-\pi n^{2}s},
       \]
-
-      \begin{remark}
-        We have chosen to express the gamma function in terms of the measure $\frac{dx}{x}$ instead of $dx$. This is a tactical change for two reasons. The first is that $\frac{dx}{x}$ is invariant under the change of variables $x \to Cx$ for any constant $C$. The second is that under the change of variables $x \to \frac{1}{x}$ we have $\frac{dx}{x} \to -\frac{dx}{x}$ but the bounds of integration are also flipped. So we may leave the measure invariant provided we don't flip the bounds of integration. These types of change of variables are essential in the study of $L$-functions which motivates the use of this measure.
-      \end{remark}
-
-      Performing the change of variables $x \to \pi n^{2}x$ for fixed $n \ge 1$ yields
-      \begin{equation}\label{equ:gamma_integral_substitution}
-        \G\left(\frac{s}{2}\right) = \pi^{\frac{s}{2}} n^{s}\int_{0}^{\infty}e^{-\pi n^{2}x}x^{\frac{s}{2}}\,\frac{dx}{x}.
-      \end{equation}
-      Let $\s > 1$. Dividing by $\pi^{\frac{s}{2}}n^{s}$ and summing over $n \ge 1$, we see that
+      defined for $\s > 0$. It is locally absolutely uniformly convergent in this region by the ratio test. Moreover, from the Taylor series of $\frac{1}{1-e^{-\s}}$ we see that
+      \[
+        \w(s) = O\left(\sum_{n \ge 1}e^{-\pi n^{2}\s}\right) = O\left(\sum_{n \ge 1}e^{-\pi n\s}\right) = O\left(\frac{1}{1-e^{-\pi\s}}\right) = O(e^{-\pi\s}),
+      \]
+      and so $\w$ exhibits rapid decay. Now consider the following Mellin transform:
+      \[
+        \int_{0}^{\infty}\w(x)x^{\frac{s}{2}}\,\frac{dx}{x}.
+      \]
+      By the rapid decay of $\w$, this integral exists and defines an analytic function for $\s > 1$. Then we compute
       \begin{align*}
-        \pi^{-\frac{s}{2}}\G\left(\frac{s}{2}\right)\z(s) &= \sum_{n \ge 1}\int_{0}^{\infty}e^{-\pi n^{2}x}x^{\frac{s}{2}}\,\frac{dx}{x} \\
-        &= \int_{0}^{\infty}\sum_{n \ge 1}e^{-\pi n^{2}x}x^{\frac{s}{2}}\,\frac{dx}{x} && \text{DCT} \\
-        &= \int_{0}^{\infty}\w(x)x^{\frac{s}{2}}\,\frac{dx}{x},
+        \int_{0}^{\infty}\w(x)x^{\frac{s}{2}}\,\frac{dx}{x} &= \int_{0}^{\infty}\sum_{n \ge 1}e^{-\pi n^{2}x}x^{\frac{s}{2}}\,\frac{dx}{x} \\
+        &= \sum_{n \ge 1}\int_{0}^{\infty}e^{-\pi n^{2}x}x^{\frac{s}{2}}\,\frac{dx}{x} && \text{DCT} \\
+        &= \sum_{n \ge 1}\frac{1}{\pi^{\frac{s}{2}}n^{s}}\int_{0}^{\infty}e^{-x}x^{\frac{s}{2}}\,\frac{dx}{x} && \text{$x \to \frac{x}{\pi n^{2}}$} \\
+        &= \frac{\G\left(\frac{s}{2}\right)}{\pi^{\frac{s}{2}}}\sum_{n \ge 1}\frac{1}{n^{s}} \\
+        &= \frac{\G\left(\frac{s}{2}\right)}{\pi^{\frac{s}{2}}}\z(s).
       \end{align*}
-      where we set
-      \[
-        \w(x) = \sum_{n \ge 1}e^{-\pi n^{2}x}.
-      \]
       Therefore we have an integral representation
       \begin{equation}\label{equ:integral_representation_zeta_1}
         \z(s) = \frac{\pi^{\frac{s}{2}}}{\G\left(\frac{s}{2}\right)}\int_{0}^{\infty}\w(x)x^{\frac{s}{2}}\,\frac{dx}{x}.
       \end{equation}
-      This was essentially Riemann's insight: rewrite the Riemann zeta function in terms of a Mellin transform. Unfortunately, we cannot proceed until we understand $\w(x)$. So we will make a slight detour and come back to the integral representation after.
+      Unfortunately, we cannot proceed until we understand $\w(x)$. So we will make a slight detour and come back to the integral representation after.
     \subsection*{Jacobi's Theta Function \texorpdfstring{$\vt(s)$}{\vt(s)}}
-      \textbf{Jacobi's theta function}\index{Jacobi's theta function} $\vt(s)$ is defined for $\s > 0$ by
+      \textbf{Jacobi's theta function}\index{Jacobi's theta function} $\vt(s)$ is defined by
       \[
-        \vt(s) = \sum_{n \in \Z}e^{-\pi n^{2}s} = 1+2\sum_{n \ge 1}e^{-\pi n^{2}s}.
+        \vt(s) = \sum_{n \in \Z}e^{-\pi n^{2}s} = 1+2\sum_{n \ge 1}e^{-\pi n^{2}s},
       \]
-      It is locally absolutely uniformly convergent in this region by the ratio test. Its relation to $\w(s)$ is given by the identity
+      for $\s > 0$. Its relation to $\w$ is given by the identity
       \begin{equation}\label{equ:omega_theta_relationship_for_zeta}
-        \w(s) = \frac{\vt(s)-1}{2}.
+        \w(s) = \frac{\vt(s)-1}{2},
       \end{equation}
-      We see from the Taylor series of $\frac{1}{1-e^{\s}}$, that
-      \[
-        \w(s) = O\left(\sum_{n \ge 1}e^{-\pi n^{2}\s}\right) = O\left(\sum_{n \ge 1}e^{-\pi n\s}\right) = O\left(\frac{1}{1-e^{-\pi\s}}\right) = O(e^{-\pi\s}),
-      \]
-      and so $\w(s)$ exhibits rapid decay. The essential fact about Jacobi's theta function we will need is the \textbf{functional equation for Jacobi's theta function}\index{functional equation for Jacobi's theta function} that was known to Riemann:
+      and so $\vt$ is locally absolutely uniformly convergent in this region and exhibits rapid decay. The essential we will need is the \textbf{functional equation for Jacobi's theta function}\index{functional equation for Jacobi's theta function}:
 
       \begin{theorem}[Functional equation for Jacobi's theta function]
         For $\s > 0$,
@@ -99,7 +92,7 @@
       \begin{equation}\label{equ:symmetric_integral_zeta_split}
         \int_{0}^{\infty}\w(x)x^{\frac{s}{2}}\,\frac{dx}{x} = \int_{0}^{1}\w(x)x^{\frac{s}{2}}\,\frac{dx}{x}+\int_{1}^{\infty}\w(x)x^{\frac{s}{2}}\,\frac{dx}{x}.
       \end{equation}
-      Since $\w(x)$ has rapid decay, the second piece is locally absolutely uniformly convergent for $\s > 1$ by \cref{prop:decay_unbounded_inteval_integral}. Hence it is analytic there. The idea now is to rewrite the first piece in the same form and symmetrize the result as much as possible. We being by performing a change of variables $x \to \frac{1}{x}$ to the first piece to obtain
+      The idea now is to rewrite the first piece in the same form and symmetrize the result as much as possible. We being by performing a change of variables $x \to \frac{1}{x}$ to the first piece to obtain
       \[
         \int_{1}^{\infty}\w\left(\frac{1}{x}\right)x^{-\frac{s}{2}}\,\frac{dx}{x}
       \]
@@ -205,44 +198,47 @@
       \[
         \mf{a} = \frac{\chi(1)-\chi(-1)}{2}.
       \]
-      We also have $\chi(-1) = (-1)^{\mf{a}}$. Note that $\mf{a}$ takes the same value for both $\chi$ and $\cchi$. Making the substitution $s \to s+\mf{a}$ in \cref{equ:gamma_integral_substitution} and multiplying by $\chi(n)$ yields
+      We also have $\chi(-1) = (-1)^{\mf{a}}$. Note that $\mf{a}$ takes the same value for both $\chi$ and $\cchi$. To find an integral representation for $L(s,\chi)$, consider the function
       \[
-        \chi(n)\G\left(\frac{s+\mf{a}}{2}\right) = \pi^{\frac{s+\mf{a}}{2}} n^{s}\int_{0}^{\infty}\chi(n)n^{\mf{a}}e^{-\pi n^{2}x}x^{\frac{s+\mf{a}}{2}}\,\frac{dx}{x},
+        \w_{\chi}(x) = \sum_{n \ge 1}\chi(n)n^{\mf{a}}e^{-\pi n^{2}x},
       \]
-      after moving the $n^{\mf{a}}$ on the inside of the integral. Let $\s > 1$. Dividing by $\pi^{\frac{s+\mf{a}}{2}}n^{s}$ and summing over $n \ge 1$, we see that
+      defined for $\s > 0$. It is locally absolutely uniformly convergent in this region by the ratio test. From the Taylor series of $\frac{1}{1-e^{\s}}$ and its derivative, we have
+      \[
+        \w_{\chi}(s) = O\left(\sum_{n \ge 1}ne^{-\pi n^{2}\s}\right) = O\left(\sum_{n \ge 1}ne^{-\pi n\s}\right) = O\left(\frac{e^{-\pi \s}}{(1-e^{-\pi\s})^{2}}\right) = O(e^{-\pi\s}),
+      \]
+      and thus $\w_{\chi}$ exhibits rapid decay. Now consider the following Mellin transform:
+      \[
+        \int_{0}^{\infty}\w_{\chi}(x)x^{\frac{s+\mf{a}}{2}}\,\frac{dx}{x}.
+      \]
+      By the rapid decay of $w_{\chi}$, this integral exists and defines an analytic function for $\s > 1$. Then we compute
       \begin{align*}
-        \pi^{-\frac{s+\mf{a}}{2}}\G\left(\frac{s+\mf{a}}{2}\right)L(s,\chi) &= \sum_{n \ge 1}\int_{0}^{\infty}\chi(n)n^{\mf{a}}e^{-\pi n^{2}x}x^{\frac{s+\mf{a}}{2}}\,\frac{dx}{x} \\
-        &= \int_{0}^{\infty}\sum_{n \ge 1}\chi(n)n^{\mf{a}}e^{-\pi n^{2}x}x^{\frac{s+\mf{a}}{2}}\,\frac{dx}{x} && \text{DCT} \\
-        &= \int_{0}^{\infty}\w_{\chi}(x)x^{\frac{s+\mf{a}}{2}}\,\frac{dx}{x},
+        \int_{0}^{\infty}w_{\chi}(x)x^{\frac{s+\mf{a}}{2}}\,\frac{dx}{x} &= \int_{0}^{\infty}\sum_{n \ge 1}\chi(n)n^{\mf{a}}e^{-\pi n^{2}x}x^{\frac{s+\mf{a}}{2}}\,\frac{dx}{x} \\
+        &= \sum_{n \ge 1}\int_{0}^{\infty}\chi(n)n^{\mf{a}}e^{-\pi n^{2}x}x^{\frac{s+\mf{a}}{2}}\,\frac{dx}{x} && \text{DCT} \\
+        &= \sum_{n \ge 1}\frac{\chi(n)}{\pi^{\frac{s+\mf{a}}{2}}n^{s}}\int_{0}^{\infty}e^{-x}x^{\frac{s+\mf{a}}{2}}\,\frac{dx}{x} && \text{$x \to \frac{x}{\pi n^{2}}$} \\
+        &= \frac{\G\left(\frac{s+\mf{a}}{2}\right)}{\pi^{\frac{s+\mf{a}}{2}}}\sum_{n \ge 1}\frac{\chi(n)}{n^{s}} \\
+        &= \frac{\G\left(\frac{s+\mf{a}}{2}\right)}{\pi^{\frac{s+\mf{a}}{2}}}L(s,\chi).
       \end{align*}
-      where we set
-      \[
-        \w_{\chi}(x) = \sum_{n \ge 1}\chi(n)n^{\mf{a}}e^{-\pi n^{2}x}.
-      \]
       Therefore we have an integral representation
       \begin{equation}\label{equ:integral_representation_Dirichlet_L-functions_1}
         L(s,\chi) = \frac{\pi^{\frac{s+\mf{a}}{2}}}{\G\left(\frac{s+\mf{a}}{2}\right)}\int_{0}^{\infty}\w_{\chi}(x)x^{\frac{s+\mf{a}}{2}}\,\frac{dx}{x},
       \end{equation}
-      and just like $\z(s)$ we need to find a functional equation for $\w_{\chi}(x)$ before we can proceed.
+      and just as for the Riemann zeta function, we need to find a functional equation for $\w_{\chi}(x)$ before we can proceed.
     \subsection*{Dirichlet's Theta Function \texorpdfstring{$\vt_{\chi}(s)$}{\vt_{\chi}(s)}}
-      \textbf{Dirichlet's theta function}\index{Dirichlet's theta function} $\vt_{\chi}(s)$ attached to the character $\chi$, is defined for $\s > 0$ by
+      \textbf{Dirichlet's theta function}\index{Dirichlet's theta function} $\vt_{\chi}(s)$ attached to the character $\chi$, is defined by
       \[
-        \vt_{\chi}(s) = \sum_{n \in \Z}\chi(n)n^{\mf{a}}e^{-\pi n^{2}s} = 2\sum_{n \ge 1}\chi(n)n^{\mf{a}}e^{-\pi n^{2}s}.
+        \vt_{\chi}(s) = \sum_{n \in \Z}\chi(n)n^{\mf{a}}e^{-\pi n^{2}s} = 2\sum_{n \ge 1}\chi(n)n^{\mf{a}}e^{-\pi n^{2}s},
       \]
-      It is locally absolutely uniformly convergent in this region by the ratio test. Notice that the term corresponding to $n = 0$ vanishes because $\chi(0) = 0$, and $\chi(n)n^{\mf{a}} = \chi(-n)(-n)^{\mf{a}}$ so that the $n$ and $-n$ terms agree. Therefore the relationship between the twisted theta function and $\w_{\chi}(s)$ is
+      for $\s > 0$. The relationship to $\w_{\chi}(s)$ is
       \begin{equation}\label{equ:twisted_omega_theta_relationship_for_Dirichlet_L-functions}
-        \w_{\chi}(s) = \frac{\vt_{\chi}(s)}{2}.
+        \w_{\chi}(s) = \frac{\vt_{\chi}(s)}{2},
       \end{equation}
+      and so $\vt_{\chi}$ is locally absolutely uniformly convergent in this region and exhibits rapid decay.
 
       \begin{remark}
         \cref{equ:twisted_omega_theta_relationship_for_Dirichlet_L-functions} is a slightly less complex relationship than \cref{equ:omega_theta_relationship_for_zeta}. This is because assuming $q > 1$ means $\chi(0) = 0$.
       \end{remark}
 
-      We see from the Taylor series of $\frac{1}{1-e^{\s}}$ and its derivative, that
-      \[
-        \w_{\chi}(s) = O\left(\sum_{n \ge 1}ne^{-\pi n^{2}\s}\right) = O\left(\sum_{n \ge 1}ne^{-\pi n\s}\right) = O\left(\frac{e^{-\pi \s}}{(1-e^{-\pi\s})^{2}}\right) = O(e^{-\pi\s}),
-      \]
-      and so $\w(s)$ exhibits rapid decay. The essential fact we will need is the \textbf{functional equation for Dirichlet's theta function}\index{functional equation for Dirichlet's theta function}:
+      The essential fact we will need is the \textbf{functional equation for Dirichlet's theta function}\index{functional equation for Dirichlet's theta function}:
 
       \begin{theorem}[Functional equation for Dirichlet's theta function]
         Let $\chi$ be a primitive Dirichlet character of conductor $q > 1$. For $\s > 0$,
@@ -303,13 +299,13 @@
         \end{align*}
         and the identity theorem finishes the proof.
       \end{proof}
-      Notice that the functional equation relates $\vt_{\chi}(s)$ to $\vt_{\cchi}(s)$. Regardless, we will use this functional equation to analytically continue $L(s,\chi)$.
+      Notice that the functional equation relates $\vt_{\chi}$ to $\vt_{\cchi}$. Regardless, we will use this functional equation to analytically continue $L(s,\chi)$.
     \subsection*{The Integral Representation of \texorpdfstring{$L(s,\chi)$}{L(s,\chi)}: Part II}
       Returning to $L(s,\chi)$, split the integral in \cref{equ:integral_representation_Dirichlet_L-functions_1} into two pieces
       \begin{equation}\label{equ:symmetric_integral_Dirichlet_L-functions_split}
         \int_{0}^{\infty}\w_{\chi}(x)x^{\frac{s+\mf{a}}{2}}\,\frac{dx}{x} = \int_{0}^{\frac{1}{q}}\w_{\chi}(x)x^{\frac{s+\mf{a}}{2}}\,\frac{dx}{x}+\int_{\frac{1}{q}}^{\infty}\w_{\chi}(x)x^{\frac{s+\mf{a}}{2}}\,\frac{dx}{x}.
       \end{equation}
-      Since $\w_{\chi}(x)$ exhibits rapid decay, the second piece is locally absolutely uniformly convergent for $\s > 1$ by \cref{prop:decay_unbounded_inteval_integral}. Hence it is an analytic function. We now rewrite the first piece in the same form and symmetrize the result as much as possible. Start by performing a change of variables $x \to \frac{1}{q^{2}x}$ to the first piece to obtain
+      We now rewrite the first piece in the same form and symmetrize the result as much as possible. Start by performing a change of variables $x \to \frac{1}{q^{2}x}$ to the first piece to obtain
       \[
         q^{-(s+\mf{a})}\int_{\frac{1}{q}}^{\infty}\w_{\chi}\left(\frac{1}{q^{2}x}\right)x^{-\frac{s+\mf{a}}{2}}\,\frac{dx}{x}.
       \]
@@ -445,7 +441,7 @@
       \[
         \int_{0}^{\infty}f(iy)y^{s+\frac{k-1}{2}}\,\frac{dy}{y}.
       \]
-      We don't yet know that this integral defines an analytic function for $\s > 1$. In any case, we compute
+      As $f$ has rapid decay at the cusps, this integral exists and defines an analytic function for $\s > 1$. In any case, we compute
       \begin{align*}
         \int_{0}^{\infty}f(iy)y^{s+\frac{k-1}{2}}\,\frac{dy}{y} &= \int_{0}^{\infty}\sum_{n \ge 1}a_{f}(n)n^{\frac{k-1}{2}}e^{-2\pi ny}y^{s+\frac{k-1}{2}}\,\frac{dy}{y} \\
         &= \sum_{n \ge 1}a_{f}(n)n^{\frac{k-1}{2}}\int_{0}^{\infty}e^{-2\pi ny}y^{s+\frac{k-1}{2}}\,\frac{dy}{y} &&\text{DCT} \\
@@ -453,7 +449,7 @@
         &= \frac{\G\left(s+\frac{k-1}{2}\right)}{(2\pi)^{s+\frac{k-1}{2}}}\sum_{n \ge 1}\frac{a_{f}(n)}{n^{s}} \\
         &= \frac{\G\left(s+\frac{k-1}{2}\right)}{(2\pi)^{s+\frac{k-1}{2}}}L(s,f).
       \end{align*}
-      As this last expression is analytic function for $\s > 1$, the integral is too. Rewriting, we have an integral representation
+      Rewriting, we have an integral representation
       \begin{equation}\label{equ:integral_representation_holomorphic_1}
         L(s,f) = \frac{(2\pi)^{s+\frac{k-1}{2}}}{\G\left(s+\frac{k-1}{2}\right)}\int_{0}^{\infty}f(iy)y^{s+\frac{k-1}{2}}\,\frac{dy}{y}.
       \end{equation}
@@ -461,7 +457,7 @@
       \begin{equation}\label{equ:symmetric_integral_holomorphic_split}
         \int_{0}^{\infty}f(iy)y^{s+\frac{k-1}{2}}\,\frac{dy}{y} = \int_{0}^{\frac{1}{\sqrt{N}}}f(iy)y^{s+\frac{k-1}{2}}\,\frac{dy}{y}+\int_{\frac{1}{\sqrt{N}}}^{\infty}f(iy)y^{s+\frac{k-1}{2}}\,\frac{dy}{y}.
       \end{equation}
-      Since $f(iy)$ exhibits rapid decay, the second piece is locally absolutely uniformly convergent for $\s > 1$ by \cref{prop:decay_unbounded_inteval_integral}. Hence it is an analytic there. Now we will rewrite the first piece in the same form and symmetrize the result as much as possible. Begin by performing the change of variables $y \to \frac{1}{Ny}$ to the first piece to obtain
+      Now we will rewrite the first piece in the same form and symmetrize the result as much as possible. Begin by performing the change of variables $y \to \frac{1}{Ny}$ to the first piece to obtain
       \[
         \int_{\frac{1}{\sqrt{N}}}^{\infty}f\left(\frac{i}{Ny}\right)(Ny)^{-s-\frac{k-1}{2}}\,\frac{dy}{y}.
       \]
@@ -603,11 +599,11 @@
       \[
         \int_{0}^{\infty}\left(\frac{\del}{\del x}^{\mf{a}}f\right)(iy)y^{s-\frac{1}{2}+\mf{a}}\,\frac{dy}{y}.
       \]
-      The derivative operator is present because if $f$ is odd, $\SC(x) = i\sin(x)$. In any case, the smoothness of $f$ implies that we may differentiate its Fourier series termwise to obtain
+      As $f$ has moderate decay at the cusps, this integral exists and defines an analytic function for $\s > 1$. The derivative operator is present because if $f$ is odd, $\SC(x) = i\sin(x)$. In any case, the smoothness of $f$ implies that we may differentiate its Fourier series termwise to obtain
       \[
         \left(\frac{\del}{\del x}^{\mf{a}}f\right)(z) = \sum_{n \ge 1}a_{f}(n)(2\pi in)^{\mf{a}}\sqrt{y}K_{\nu}(2\pi ny)\cos(2\pi nx).
       \]
-      Therefore regardless if $f$ is even or odd, the Fourier series of $\left(\frac{\del}{\del x}^{\mf{a}}f\right)(z)$ has $\SC(x) = \cos(x)$ and the integral does not vanish identically. Similar to Hecke $L$-functions, we don't yet know that this integral defines an analytic function for $\s > 1$. Nevertheless, we compute
+      Therefore regardless if $f$ is even or odd, the Fourier series of $\left(\frac{\del}{\del x}^{\mf{a}}f\right)(z)$ has $\SC(x) = \cos(x)$ and the integral does not vanish identically. We compute
       \begin{align*}
         \int_{0}^{\infty}\left(\frac{\del}{\del x}^{\mf{a}}f\right)(iy)y^{s-\frac{1}{2}+\mf{a}}\,\frac{dy}{y} &= \int_{0}^{\infty}\sum_{n \ge 1}a_{f}(n)(2\pi in)^{\mf{a}}K_{\nu}(2\pi ny)y^{s+\mf{a}}\,\frac{dy}{y} \\
         &= \sum_{n \ge 1}a_{f}(n)(2\pi in)^{\mf{a}}\int_{0}^{\infty}K_{\nu}(2\pi ny)y^{s+\mf{a}}\,\frac{dy}{y} &&\text{DCT} \\
@@ -623,7 +619,7 @@
       \begin{equation}\label{equ:symmetric_integral_Maass_split}
         \int_{0}^{\infty}\left(\frac{\del}{\del x}^{\mf{a}}f\right)(iy)y^{s-\frac{1}{2}+\mf{a}}\,\frac{dy}{y} = \int_{0}^{\frac{1}{\sqrt{N}}}\left(\frac{\del}{\del x}^{\mf{a}}f\right)(iy)y^{s-\frac{1}{2}+\mf{a}}\,\frac{dy}{y}+\int_{\frac{1}{\sqrt{N}}}^{\infty}\left(\frac{\del}{\del x}^{\mf{a}}f\right)(iy)y^{s-\frac{1}{2}+\mf{a}}\,\frac{dy}{y}.
       \end{equation}
-      Since $\left(\frac{\del}{\del x}^{\mf{a}}f\right)(iy)$ has moderate decay as $y \to \infty$ because $f(iy)$ does, the second piece is locally absolutely uniformly convergent for $\s > 1$ by \cref{prop:decay_unbounded_inteval_integral}. Hence it is analytic there. Now we will rewrite the first piece in the same form and symmetrize the result as much as possible. Performing the change of variables $y \to \frac{1}{Ny}$ to the first piece to obtain
+      Now we will rewrite the first piece in the same form and symmetrize the result as much as possible. Performing the change of variables $y \to \frac{1}{Ny}$ to the first piece to obtain
       \[
         \int_{\frac{1}{\sqrt{N}}}^{\infty}\left(\frac{\del}{\del x}^{\mf{a}}f\right)\left(\frac{i}{Ny}\right)(Ny)^{-s+\frac{1}{2}-\mf{a}}\,\frac{dy}{y}.
       \]
@@ -760,21 +756,21 @@
       \[
         \int_{\G_{\infty}\backslash\H}f(z)\conj{g(z)}\Im(z)^{s+k}\,d\mu.
       \]
-      This will turn out to be a Mellin transform as we will soon see. The existence of this integral is not immediately clear because we cannot appeal to \cref{prop:decay_finite_volume_integral} or \cref{prop:decay_unbounded_inteval_integral} directly. In any case, we have
+      This will turn out to be a Mellin transform as we will soon see. Since $f$ and $g$ have rapid decay, this integral exists and defines an analytic function for $\s > 1$. We have
       \begin{align*}
         \int_{\G_{\infty}\backslash\H}f(z)\conj{g(z)}\Im(z)^{s+k}\,d\mu &= \int_{0}^{\infty}\int_{0}^{1}f(x+iy)\conj{g(x+iy)}y^{s+k}\,\frac{dx\,dy}{y^{2}} \\
         &= \int_{0}^{\infty}\int_{0}^{1}\sum_{n,m \ge 1}a_{f}(n)\conj{a_{g}(m)}(nm)^{\frac{k-1}{2}}e^{2\pi i(n-m)x}e^{-2\pi(n+m)y}y^{s+k}\,\frac{dx\,dy}{y^{2}} \\
         &= \int_{0}^{\infty}\sum_{n,m \ge 1}\int_{0}^{1}a_{f}(n)\conj{a_{g}(m)}(nm)^{\frac{k-1}{2}}e^{2\pi i(n-m)x}e^{-2\pi(n+m)y}y^{s+k}\,\frac{dx\,dy}{y^{2}} && \text{DCT} \\
         &= \int_{0}^{\infty}\sum_{n \ge 1}a_{f}(n)\conj{a_{g}(n)}n^{k-1}e^{-4\pi ny}y^{s+k}\,\frac{dy}{y^{2}},
       \end{align*}
-      where the last line follows by \cref{equ:Dirac_integral_representation}. The rest is a computation:
+      where the last line follows by \cref{equ:Dirac_integral_representation}. Observe that this last integral is a Mellin transform. The rest is a computation:
       \begin{align*}
         \int_{0}^{\infty}\sum_{n \ge 1}a_{f}(n)\conj{a_{g}(n)}n^{k-1}e^{-4\pi ny}y^{s+k}\,\frac{dy}{y^{2}} &= \sum_{n \ge 1}a_{f}(n)\conj{a_{g}(n)}n^{k-1}\int_{0}^{\infty}e^{-4\pi ny}y^{s+k}\,\frac{dy}{y^{2}} &&\text{DCT} \\
         &= \sum_{n \ge 1}\frac{a_{f}(n)\conj{a_{g}(n)}}{(4\pi)^{s+k-1}n^{s}}\int_{0}^{\infty}e^{-y}y^{s+k-1}\,\frac{dy}{y} &&\text{$y \to \frac{y}{4\pi n}$} \\
         &= \frac{\G\left(s+k-1\right)}{(4\pi)^{s+k-1}}\sum_{n \ge 1}\frac{a_{f}(n)\conj{a_{g}(n)}}{n^{s}} \\
         &= \frac{\G\left(s+k-1\right)}{(4\pi)^{s+k-1}}L(s,f \x g).
       \end{align*}
-      This last expression is locally absolutely uniformly convergent for $\s > 1$ because the $L$-function is and the gamma factor is holomorphic in this region. Therefore the original integral is locally absolutely uniformly convergent in this region as well. At this point we have an integral representation
+      Rewriting, we have an integral representation
       \[
         L(s,f \x g) = \frac{(4\pi)^{s+k-1}}{\G(s+k-1)}\int_{\G_{\infty}\backslash\H}f(z)\conj{g(z)}\Im(z)^{s+k}\,d\mu.
       \]
@@ -788,9 +784,9 @@
       \end{align*}
       Note that $E(z,s)$ is the weight zero Eisenstein series on $\G_{0}(1)\backslash\H$ at the $\infty$ cusp. Altogether, this gives the integral representation
       \begin{equation}\label{equ:Rankin-Selberg_integral-reresentation}
-        L(s,f \x g) =  \frac{(4\pi)^{s+k-1}}{\G(s+k-1)}\int_{\mc{F}}f(z)\conj{g(z)}\Im(z)^{k}E(z,s)\,d\mu,
+        L(s,f \x g) =  \frac{(4\pi)^{s+k-1}}{\G(s+k-1)}\int_{\mc{F}}f(z)\conj{g(z)}\Im(z)^{k}E(z,s)\,d\mu.
       \end{equation}
-      which is valid for $\s > 1$. We cannot investigate the integral any further until we understand the Fourier series of $E(z,s)$ and have a functional equation as $s \to 1-s$. Therefore we will take a necessary detour and return to the integral after.
+      We cannot investigate the integral any further until we understand the Fourier series of $E(z,s)$ and have a functional equation as $s \to 1-s$. Therefore we will take a necessary detour and return to the integral after.
     \subsection*{The Fourier Series and Functional Equation of \texorpdfstring{$E(z,s)$}{E(z,s)}}
       We will compute the Fourier series of $E(z,s)$. To do this we will need the following technical lemma:
 
