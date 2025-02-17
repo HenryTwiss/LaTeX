@@ -621,14 +621,61 @@
     \[
       (T_{p}f)(z) = \left(\left[\G_{1}(N)\begin{pmatrix} 1 & 0 \\ 0 & p \end{pmatrix}\G_{1}(N)\right]_{k}f\right)(z).
     \]
-    We will start discussing properties of the diamond and Hecke operators, but we first state an important lemma that will be used throughout (see \cite{diamond2005first} for a proof):
+    We will start discussing properties of the diamond and Hecke operators, but first we prove an important lemma classifying the double coset $\G_{1}(N)\begin{psmallmatrix} 1 & 0 \\ 0 & p \end{psmallmatrix}\G_{1}(N)$:
 
     \begin{lemma}\label{lem:cosets_for_Hecke_operators}
-      Let $p$ be a prime. As sets,
+      Let $p$ be a prime. Then
       \[
         \G_{1}(N)\begin{pmatrix} 1 & 0 \\ 0 & p \end{pmatrix}\G_{1}(N) = \left\{\g \in \Mat_{2}(\Z):\text{$\g \equiv \begin{pmatrix} 1 & \ast \\ 0 & p \end{pmatrix} \tmod{N}$ and $\det(\g) = p$}\right\}.
       \]
     \end{lemma}
+    \begin{proof}
+      For the forward containment, it is clear that any element of $\G_{1}(N)\begin{psmallmatrix} 1 & 0 \\ 0 & p \end{psmallmatrix}\G_{1}(N)$ has determinant $p$ and that
+      \[
+        \begin{pmatrix} 1 & \ast \\ 0 & 1 \end{pmatrix}\begin{pmatrix} 1 & 0 \\ 0 & p \end{pmatrix}\begin{pmatrix} 1 & \ast \\ 0 & 1 \end{pmatrix} \equiv \begin{pmatrix} 1 & 0 \\ 0 & p \end{pmatrix} \tmod{N},
+      \]
+      so the forward containment holds. For the reverse containment, let $L$ be the set of $2 \x 1$ colum vectors with entries in $\Z$, in particular $L \cong \Z^{2}$, and set
+      \[
+        L_{0} = \left\{\begin{pmatrix} x \\ y \end{pmatrix} \in L: y \equiv 0 \tmod{N} \right\}.
+      \]
+      Then $\Mat_{2}(\Z)$ acts on $L_{0}$ on the left by matrix multiplication. Now suppose $\g \in \Mat_{2}(\Z)$ is such that $\g \equiv \begin{psmallmatrix} 1 & \ast \\ 0 & p \end{psmallmatrix} \tmod{N}$ and $\det(\g) = p$. Clearly $L_{0}$ has index $N$ in $L$. As the action of $\g$ on $L_{0}$ multiplies the lower entry by $p$, $\g L_{0}$ has index $p$ in $L_{0}$. These two facts together imply
+      \[
+        [L:\g L_{0}] = [L:L_{0}][L_{0};\g L_{0}] = Np.
+      \]
+      As $\g L_{0}$ is a finitely generated abelian group ($L$ is a rank $2$ free module over $\Z$ and $\g L_{0}$ is a subgroup), there exists a basis $\{u,v\}$ of $L$ with $\det(u,v) = 1$, so that $L = u\Z \oplus v\Z$, and positive integers $m$ and $n$ with $m \mid n$, $mn = Np$, and such that $\g L_{0} = mu\Z \oplus nv\Z$. Moreover, as $m \mid n$ any element of $\g L_{0}$ is zero modulo $m$. Now $\begin{psmallmatrix} 1 \\ 0 \end{psmallmatrix} \in L_{0}$ and by our choice of $\g$, we have $\begin{psmallmatrix} 1 \\ 0 \end{psmallmatrix} \in \g L_{0}$ as well. Thus $\begin{psmallmatrix} 1 \\ 0 \end{psmallmatrix} \equiv \begin{psmallmatrix} 0 \\ 0 \end{psmallmatrix} \tmod{m}$. This forces $m = 1$ and $n = Np$ so that $\g L_{0} = u\Z \oplus Npv\Z$. As there are unique subgroups of index $N$ and $p$ between $\Z$ and $Np\Z$, namely $N\Z$ and $p\Z$ respectively, we have
+      \[
+        L_{0} = u\Z \oplus Nv\Z, \quad \g L = u\Z \oplus pv\Z, \quad \text{and} \quad \g L_{0} = u\Z \oplus Npv\Z.
+      \]
+      Now let $\g_{1} = (u,v)$. Since $u \in L_{0}$, we have that $\g_{1} \in \G_{0}(N)$. Now set $\g_{2} = \left(\g_{1}\begin{psmallmatrix} 1 & 0 \\ 0 & p\end{psmallmatrix}\right)^{-1}\g$. Then $\g \in \GL_{2}^{+}(\Q)$ with $\det(\g_{2}) = 1$. It follows that
+      \[
+        \g = \g_{1}\begin{pmatrix} 1 & 0 \\ 0 & p\end{pmatrix}\g_{2}.
+      \]
+      Let $e_{1}$ and $e_{2}$ be the standard basis vectors of $L$. Then $\g e_{1} \in \g L_{0}$ implies that $\g e_{1} = au+pcv$ with $a,c \in \Z$ and $N \mid c$. Similarly, $\g e_{2} \in \g L$ implies that $\g e_{2} = bu+pdv$ with $b,d \in \Z$. Letting $u = \begin{psmallmatrix} u_{1} \\ u_{2} \end{psmallmatrix}$ and $v = \begin{psmallmatrix} v_{1} \\ v_{2} \end{psmallmatrix}$, these facts together imply that $\g_{2} = \begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix}$ and the above identity can be written in the form
+      \[
+        \g = \begin{pmatrix} au_{1}+pcv_{1} & bu_{1}+pdv_{1} \\ au_{2}+pcv_{2} & bu_{2}+pdv_{2} \end{pmatrix} = \begin{pmatrix} u_{1} & v_{1} \\ u_{2} & v_{2}\end{pmatrix}\begin{pmatrix} 1 & 0 \\ 0 & p\end{pmatrix}\begin{pmatrix} a & b \\ c & d\end{pmatrix}.
+      \]
+      As $\det(\g_{2}) = 1$ and $N \mid c$, we conclude that $\g_{2} \in \G_{0}(N)$. Hence $\g \in \G_{0}(N)\begin{psmallmatrix} 1 & 0 \\ 0 & p \end{psmallmatrix}\G_{0}(N)$. Moreover, as $\g_{1},\g_{2} \in \G_{0}(N)$ it follows that they belong to $\G_{1}(N)$ if $u_{1}$ or $a$ is equivalent to $1$ modulo $N$ respectively. But as $\g \equiv \begin{psmallmatrix} 1 & \ast \\ 0 & p \end{psmallmatrix} \tmod{N}$ and $N \mid c$, we have $au_{1} \equiv 1 \tmod{N}$. Thus if $\g_{1}$ or $\g_{2}$ belongs to $\G_{1}(N)$ then they both do. So to complete the reverse inclusion it suffices to show
+      \[
+        \G_{0}(N)\begin{pmatrix} 1 & 0 \\ 0 & p \end{pmatrix}\G_{0}(N) = \G_{1}(N)\begin{pmatrix} 1 & 0 \\ 0 & p \end{pmatrix}\G_{0}(N).
+      \]
+      The reverse inclusion in this double coset equality is clear since $\G_{1}(N) \subseteq \G_{0}(N)$. For the forward inclusion, let $\g = \begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix} \in \G_{0}(N)$. Then we need to show that there exists a matrix $\d \in \G_{1}(N)$ such that
+      \[
+        \g\begin{pmatrix} 1 & 0 \\ 0 & p \end{pmatrix}\G_{0}(N) = \d\begin{pmatrix} 1 & 0 \\ 0 & p \end{pmatrix}\G_{0}(N).
+      \]
+      Equivalently, there exists a matrix $\d' \in \G_{1}(N)$ (that is the inverse of $\d$) such that
+      \[
+        \begin{pmatrix} 1 & 0 \\ 0 & p^{-1} \end{pmatrix}\d'\g\begin{pmatrix} 1 & 0 \\ 0 & p \end{pmatrix} \in \G_{0}(N).
+      \]
+      If $p \mid N$, taking $\d' = \begin{psmallmatrix} cd+1 & -1 \\ -cd & 1 \end{psmallmatrix} \in \G_{1}(N)$ gives
+      \[
+        \begin{pmatrix} 1 & 0 \\ 0 & p^{-1} \end{pmatrix}\d'\g\begin{pmatrix} 1 & 0 \\ 0 & p \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & p^{-1} \end{pmatrix}\begin{pmatrix} cd+1 & -1 \\ -cd & 1 \end{pmatrix}\begin{pmatrix} a & b \\ c & d \end{pmatrix}\begin{pmatrix} 1 & 0 \\ 0 & p \end{pmatrix} = \begin{pmatrix} \ast & \ast \\ p^{-1}c(1-ad) & \ast \end{pmatrix},
+      \]
+      which belongs to $\G_{0}(N)$ because $p \mid N$, $N \mid c$, and $N \mid 1-ad$ (as $ad-bc = 1$). If $p \nmid N$, then the Chinese remainder theorem implies that there exists a $d' \in \Z$ with $d' \equiv 1 \tmod{N}$ and $d' \equiv -a \tmod{p}$. Necessarily $(c,d') = 1$ because $N \mid c$. Thus there exists $\d'$ of the form $\d' = \begin{psmallmatrix} a' & b' \\ c & d' \end{psmallmatrix} \in \G_{1}(N)$, and we have
+      \[
+        \begin{pmatrix} 1 & 0 \\ 0 & p^{-1} \end{pmatrix}\d'\g\begin{pmatrix} 1 & 0 \\ 0 & p \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & p^{-1} \end{pmatrix}\begin{pmatrix} a' & b' \\ c & d' \end{pmatrix}\begin{pmatrix} a & b \\ c & d \end{pmatrix}\begin{pmatrix} 1 & 0 \\ 0 & p \end{pmatrix} = \begin{pmatrix} \ast & \ast \\ p^{-1}c(a+d') & \ast \end{pmatrix},
+      \]
+      which again belongs to $\G_{0}(N)$ because $p \mid d'+a$ and $N \mid c$. This prove the forward inclusion, and hence the original reverse inclusion, thus completing the proof.
+    \end{proof}
     
     With \cref{lem:cosets_for_Hecke_operators}, it is not too hard to see that the diamond and Hecke operators commute:
 
