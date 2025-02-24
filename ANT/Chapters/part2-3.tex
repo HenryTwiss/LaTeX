@@ -673,7 +673,7 @@
     We use \cref{prop:explicit_description_of_Hecke_operators_Maass} to understand how the Hecke operators act on the Fourier coefficients of Maass forms:
 
     \begin{proposition}\label{prop:prime_Hecke_operators_acting_on_Fourier_coefficients_Maass}
-      Let $f \in \mc{C}_{k,\nu}(\G_{1}(N))$ Fourier coefficients $a_{n}(f)$ and $a^{\pm}(f)$. Then for all primes $p$,
+      Let $f \in \mc{C}_{k,\nu}(\G_{1}(N))$ Fourier coefficients $a_{n}(f)$. Then for all primes $p$,
       \[
         (T_{p}f)(z) = \sum_{n \neq 0}\left(a_{np}(f)+\chi_{N,0}(p)p^{-1}a_{\frac{n}{p}}(\<p\>f)\right)W_{\sgn(n)\frac{k}{2},\nu}(4\pi|n|y)e^{2\pi inx},
       \]
@@ -714,7 +714,7 @@
     for all $r \ge 2$. Note that when $m = 1$, the product is empty and so $T_{1}$ is the identity operator. By \cref{prop:Hecke_operators_commute_Maass}, the Hecke operators $T_{m}$ are multiplicative but not completely multiplicative in $m$ and they commute with the diamond operators $\<m\>$. Moreover, a more general formula for how the Hecke operators $T_{m}$ act on the Fourier coefficients can be derived:
 
     \begin{proposition}\label{prop:general_Hecke_operators_acting_on_Fourier_coefficients_Maass}
-      Let $f \in \mc{C}_{k,\nu}(\G_{1}(N))$ with Fourier coefficients $a_{n}(f)$ and $a^{\pm}(f)$. Then for $m \ge 1$ with $(m,N) = 1$,
+      Let $f \in \mc{C}_{k,\nu}(\G_{1}(N))$ with Fourier coefficients $a_{n}(f)$. Then for $m \ge 1$ with $(m,N) = 1$,
       \[
         (T_{m}f)(z) = \sum_{n \neq 0}\left(\sum_{d \mid (|n|,m)}d^{-1}a_{\frac{nm}{d^{2}}}(\<d\>f)\right)W_{\sgn(n)\frac{k}{2},\nu}(4\pi|n|y)e^{2\pi inx},
       \]
@@ -776,9 +776,9 @@
     \begin{proposition}\label{prop:parity_operator_properties}
       $T_{-1}$ is an involution on $\mc{C}_{k,\nu}(\G_{1}(N))$. In particular, $T_{-1}$ is an involution on $\mc{C}_{k,\nu}(N,\chi)$ as well. If $f \in \mc{C}_{k,\nu}(\G_{1}(N))$ has Fourier coefficients $a_{n}(f)$, then
       \[
-        (T_{-1}f)(z) = \sum_{n \ge 1}a_{-n}(f)\d(\nu,k)W_{\frac{k}{2},\nu}(4\pi |n|y)e^{2\pi inx}+a_{n}(f)\d(\nu,k)^{-1}W_{-\frac{k}{2},\nu}(4\pi |n|y)e^{-2\pi inx},
+        (T_{-1}f)(z) = \sum_{n \ge 1}a_{n}(f)\d(\nu,k)^{-1}W_{-\frac{k}{2},\nu}(4\pi |n|y)e^{-2\pi inx}+a_{-n}(f)\d(\nu,k)W_{\frac{k}{2},\nu}(4\pi |n|y)e^{2\pi inx},
       \]
-      is the Fourier series of $T_{-1}f$. Moreover, $T_{-1}$ commutes with the diamond operators $\<m\>$ and Hecke operators $T_{m}$ for all $m \ge 1$, is normal, and its adjoint is given by
+      is the Fourier series of $T_{-1}f$. Moreover, $T_{-1}$ commutes with the diamond operators $\<m\>$ and Hecke operators $T_{m}$ for all $m \ge 1$ with $(m,N) = 1$, is normal, and its adjoint is given by
       \[
         T_{-1}^{\ast} = -T_{-1}.
       \]
@@ -786,14 +786,13 @@
 
     Let $f \in \mc{C}_{k,\nu}(\G_{1}(N))$. As $T_{-1}$ is an involution, the only possible eigenvalues are $\pm 1$. Accordingly, we say that $f \in \mc{C}_{k,\nu}(\G_{1}(N))$ is \textbf{even}\index{even} if $T_{-1}f = f$ and is \textbf{odd}\index{odd} if $T_{-1}f = -f$. Then by \cref{prop:parity_operator_properties},
     \[
-      a_{-n}(f) = \pm a_{n}(f)\frac{\G\left(\nu+\frac{1+k}{2}\right)}{\G\left(\nu+\frac{1-k}{2}\right)},
+      a_{-n}(f) = \pm a_{n}(f)\d(\nu,k)^{-1} = \pm a_{n}(f)\frac{\G\left(\nu+\frac{1+k}{2}\right)}{\G\left(\nu+\frac{1-k}{2}\right)},
     \]
-    for all $n \ge 1$ and with $\pm$ according to if $f$ is even or odd. Moreover, $a^{\pm}(f) = 0$ if $f$ is odd. Thus the fourier series of $f$ takes the form
-    \begin{align*}
-      f(z) = a^{+}y^{\frac{1}{2}+\nu}&+a^{-}y^{\frac{1}{2}-\nu} \\
-      &+\sum_{n \ge 1}a_{n}(f)\left(W_{\frac{k}{2},\nu}(4\pi |n|y)e^{2\pi inx}\pm\frac{\G\left(\nu+\frac{1+k}{2}\right)}{\G\left(\nu+\frac{1-k}{2}\right)}W_{-\frac{k}{2},\nu}(4\pi |n|y)e^{-2\pi inx}\right),
-    \end{align*}
-    with $\pm$ according to if $f$ is even or odd and for some potentially different Fourier coefficients $a^{\pm}(f)$ (they are zero if $f$ is odd). If the weight is zero, the Fourier series drastically simplifies via, \cref{thm:Whittaker_special_cases}, that $\d(\nu,0) = 1$, and the exponential identities for sine and cosine, so that we obtain
+    for all $n \ge 1$ and with $\pm$ according to if $f$ is even or odd. Thus the fourier series of $f$ takes the form
+    \[
+      f(z) = \sum_{n \ge 1}a_{n}(f)\left(\d(\nu,k)^{-1}W_{-\frac{k}{2},\nu}(4\pi |n|y)e^{-2\pi inx}\pm W_{\frac{k}{2},\nu}(4\pi |n|y)e^{2\pi inx}\right),
+    \]
+    with $\pm$ according to if $f$ is even or odd. If the weight is zero, the Fourier series drastically simplifies via, \cref{thm:Whittaker_special_cases}, the identity $\d(\nu,0) = 1$, and the exponential identities for sine and cosine, so that we obtain
     \[
       f(z) = a^{+}y^{\frac{1}{2}+\nu}+a^{-}y^{\frac{1}{2}-\nu}+\sum_{n \ge 1}a_{n}(f)\sqrt{4|n|y}K_{\nu}(2\pi |n|y)\SC(2\pi nx),
     \]
@@ -904,7 +903,7 @@
     \begin{proposition}\label{prop:Atkin_Lehner_adjoint_diamond_Hecke_Maass}
       For all $m \ge 1$ with $(m,N) = 1$, the diamond operators $\<m\>$ and Hecke operators $T_{m}$ satisfy the following relations:
       \[
-        \w_{N}\<m\>\w_{N}^{-1} = \<m\>^{\ast} \quad \text{and} \quad \w_{N}T_{m}\w_{N}^{-1} = T_{m}^{\ast}.
+        \<m\>^{\ast} = \w_{N}\<m\>\w_{N}^{-1} \quad \text{and} \quad T_{m}^{\ast} = \w_{N}T_{m}\w_{N}^{-1}.
       \]
     \end{proposition}
     \begin{proof}
@@ -914,7 +913,7 @@
     It turns out that the spaces of oldforms and newforms are invariant under the diamond and Hecke operators (argue as in the proof of \cref{prop:old/new_subspaces_are_invariant_holomorphic} given in \cite{diamond2005first}):
 
     \begin{proposition}\label{prop:old/new_subspaces_are_invariant_Maass}
-      The spaces $\mc{C}_{k,\nu}^{\mathrm{old}}(\G_{1}(N))$ and $\mc{C}_{k,\nu}^{\mathrm{new}}(\G_{1}(N))$ are invariant under the diamond operators $\<m\>$ and Hecke operators $T_{m}$ for all $m \ge 1$ with $(m,N) = 1$.
+      The spaces $\mc{C}_{k,\nu}^{\mathrm{old}}(\G_{1}(N))$ and $\mc{C}_{k,\nu}^{\mathrm{new}}(\G_{1}(N))$ are invariant under the diamond operators $\<m\>$ and Hecke operators $T_{m}$ for all $m \ge 1$ with $(m,N) = 1$ and parity Hecke operator $T_{-1}$.
     \end{proposition}
 
     As a corollary, these subspaces admit orthogonal bases of eigenforms:
@@ -936,7 +935,7 @@
       for some $f_{p} \in \mc{C}_{k,\nu}\left(\G_{1}\left(\frac{N}{p}\right)\right)$.
     \end{lemma}
 
-    As was the case for holomorphic forms, we observe from \cref{lem:the_main_lemma_for_newforms_Maass} that if $f \in \mc{C}_{k,\nu}(\G_{1}(N))$ is such that its $n$-th Fourier coefficients vanish when $n$ is relatively prime to the level, then $f$ must be an oldform. The main theorem about $\mc{C}_{k,\nu}^{\mathrm{new}}(\G_{1}(N))$ can now be proved. We say that $f$ is a \textbf{primitive Hecke-Maass eigenform}\index{primitive Hecke-Maass eigenform} if it is a nonzero Hecke normalized Hecke-Maass eigenform in $\mc{C}_{k,\nu}^{\mathrm{new}}(\G_{1}(N))$. We can now prove the main result about newforms which is that Hecke-Maass eigenforms exist:
+    As was the case for holomorphic forms, we observe from \cref{lem:the_main_lemma_for_newforms_Maass} that if $f \in \mc{C}_{k,\nu}(\G_{1}(N))$ is such that its positive $n$-th Fourier coefficients vanish when $n$ is relatively prime to the level, then $f$ must be an oldform. The main theorem about $\mc{C}_{k,\nu}^{\mathrm{new}}(\G_{1}(N))$ can now be proved. We say that $f$ is a \textbf{primitive Hecke-Maass eigenform}\index{primitive Hecke-Maass eigenform} if it is a nonzero Hecke normalized Hecke-Maass eigenform in $\mc{C}_{k,\nu}^{\mathrm{new}}(\G_{1}(N))$. We can now prove the main result about newforms which is that Hecke-Maass eigenforms exist:
 
     \begin{theorem}\label{thm:newforms_characterization_Maass}
       Let $f \in \mc{C}_{k,\nu}^{\mathrm{new}}(\G_{1}(N))$ be an eigenform. Then the following hold:
@@ -956,11 +955,11 @@
       If $f \in \mc{C}_{k,\nu}(N,\chi)$ is a primitive Hecke-Maass eigenform, then $f$ is either even or odd.
     \end{proposition}
     \begin{proof}
-      By \cref{prop:parity_operator_properties}, the parity Hecke operator $T_{-1}$ commutes with all Hecke operators and is an involution on $\mc{C}_{k,\nu}(N,\chi)$. Therefore if $f \in \mc{C}_{k,\nu}(N,\chi)$ is a primitive Hecke-Maass eigenform then $T_{-1}f$ is too by multiplicity one. In particular,
+      By \cref{prop:parity_operator_properties}, the parity Hecke operator $T_{-1}$ commutes with all the Hecke operators $T_{m}$ for $m \ge 1$ with $(m,N) = 1$. Therefore if $f \in \mc{C}_{k,\nu}(N,\chi)$ is a primitive Hecke-Maass eigenform with Hecke eigenvalues $\l_{f}(m)$, then $T_{-1}f$ is an eigenform with the same Hecke eigenvalues. By \cref{prop:old/new_subspaces_are_invariant_Maass}, $T_{1}f$ is a newform and so multiplicity one gives
       \[
         T_{-1}f = cf,
       \]
-      for some nonzero $c \in \C$. But as $T_{-1}$ is an involution we must have $c = \pm 1$.
+      for some nonzero $c \in \C$. But as $T_{-1}$ is an involution by \cref{prop:parity_operator_properties}, we must have $c = \pm 1$.
     \end{proof}
     
     We now discuss conjugate cusp forms. For any cusp form $f \in \mc{C}_{k,\nu}(N,\chi)$, we define the \textbf{conjugate}\index{conjugate} $\conj{f}$ of $f$ by
