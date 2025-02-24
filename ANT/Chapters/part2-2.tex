@@ -24,7 +24,14 @@
     \[
       (f|_{j,k}\g)(z) = j(\g,z)^{-k}f(\g z).
     \]
-    If $j$ and $k$ are clear from content we will suppress this dependencies accordingly. If an operator commutes with the slash operators $|_{j,k}\g$ for every $\g \in \PSL_{2}(\Z)$, we say that it is \textbf{invariant}\index{invariant}. We will now introduce holomorphic forms. Let $\G$ be a congruence subgroup of level $N$ and let $\chi$ be a Dirichlet character of conductor $q \mid N$, and set $\chi(\g) = \chi(d)$ for all for all $\g = \begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix} \in \G$. We say that a function $f:\H \to \C$ is \textbf{holomorphic form}\index{holomorphic form} (or \textbf{modular form}\index{modular form}) on $\GH$ of \textbf{weight}\index{weight} $k$, \textbf{level}\index{level} $N$, and \textbf{character}\index{character} $\chi$ if the following properties are satisfied:
+    If $j$ and $k$ are clear from content we will suppress this dependencies accordingly. The cocycle condition implies that the slash operator is multiplicative. Indeed, if $\g,\g' \in \GL_{2}^{+}(\Q)$, then
+    \begin{align*}
+      ((f|_{j,k}\g')|_{j,k}\g)(z) &= j(\g,z)^{-k}(f|_{j,k}\g')(\g z) \\
+      &= j(\g',\g z)^{-k}j(\g,z)^{-k}f(\g'\g z) \\
+      &= j(\g'\g,z)^{-k}f(\g'\g z) && \text{cocycle condition} \\
+      &= (f|_{j,k}\g'\g)(z).
+    \end{align*}
+    If an operator commutes with the slash operators $|_{j,k}\g$ for every $\g \in \PSL_{2}(\Z)$, we say that it is \textbf{invariant}\index{invariant}. We will now introduce holomorphic forms. Let $\G$ be a congruence subgroup of level $N$ and let $\chi$ be a Dirichlet character of conductor $q \mid N$, and set $\chi(\g) = \chi(d)$ for all for all $\g = \begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix} \in \G$. We say that a function $f:\H \to \C$ is \textbf{holomorphic form}\index{holomorphic form} (or \textbf{modular form}\index{modular form}) on $\GH$ of \textbf{weight}\index{weight} $k$, \textbf{level}\index{level} $N$, and \textbf{character}\index{character} $\chi$ if the following properties are satisfied:
     \begin{enumerate}[label=(\roman*)]
       \item $f$ is holomorphic on $\H$.
       \item $(f|_{j,k}\g)(z) = \chi(\g)f(z)$ for all $\g \in \G$.
@@ -400,7 +407,7 @@
     We can now show that the Petersson inner product turns $\mc{S}_{k}(\G,\chi)$ into a Hilbert space:
 
     \begin{proposition}\label{prop:Petersson_inner_product_hermitian_holomorphic}
-      $\mc{S}_{k}(\G,\chi)$ is a Hilbert space with respect to Petersson inner product.
+      $\mc{S}_{k}(\G,\chi)$ is a Hilbert space with respect to the Petersson inner product.
     \end{proposition}
     \begin{proof}
       Let $f,g \in \mc{S}_{k}(\G,\chi)$. Linearity of the integral immediately implies that the Petersson inner product is linear on $\mc{S}_{k}(\G,\chi)$. It is also positive definite since
@@ -527,16 +534,9 @@
 
     In light of \cref{prop:double_congruence_subgroup_coset_decomposition_is_finite}, we will denote the orbit representatives by $\b_{j}$ to make it clear that there are finitely many. We can now introduce our operators. Fix some congruence subgroup $\G$ and consider $\mc{S}_{k}(\G)$. Then for $\a \in \GL_{2}^{+}(\Q)$, we define the operator $[\a]_{k}$ on $\mc{S}_{k}(\G)$ to be the linear operator given by
     \[
-      (f[\a]_{k})(z) = \det(\a)^{k-1}j(\a,z)^{-k}f(\a z),
+      (f[\a]_{k})(z) = \det(\a)^{k-1}(f|_{j,k}\a)(z) = \det(\a)^{k-1}j(\a,z)^{-k}f(\a z).
     \]
-    Moreover, $[\a]_{k}$ is multiplicative. Indeed, if $\a,\a' \in \GL_{2}^{+}(\Q)$, then
-    \begin{align*}
-      ((f[\a']_{k})[\a]_{k})(z) &= \det(\a)^{k-1}j(\a,z)^{-k}(f[\a']_{k})(\a z) \\
-      &= \det(\a')^{k-1}\det(\a)^{k-1}j(\a',\a z)^{-k}j(\a,z)^{-k}f(\a'\a z) \\
-      &= \det(\a'\a)^{k-1}j(\a'\a,z)^{-k}f(\a'\a z) && \text{cocycle condition} \\
-      &= (f[\a'\a]_{k})(z).
-    \end{align*}
-    Also, if $\g \in \G$ and we choose the representative with $\det(\g) = 1$, then the chain of equalities
+    Moreover, $[\a]_{k}$ is multiplicative because the determinant and slash operator both are. Also, if $\g \in \G$ and we choose the representative with $\det(\g) = 1$, then the chain of equalities
     \[
       (f[\g]_{k})(z) = j(\g,z)^{-k}f(\g z) = \chi(\g)f(z),
     \]
@@ -554,7 +554,7 @@
       For any two congruence subgroups $\G_{1}$ and $\G_{2}$, $[\G_{1}\a\G_{2}]_{k}$ maps $\mc{S}_{k}(\G_{1})$ into $\mc{S}_{k}(\G_{2})$.
     \end{proposition}
     \begin{proof}
-      Holomorphy is immediate since the sum in the definition of $f[\G_{1}\a\G_{2}]_{k}$ is finite by \cref{prop:double_congruence_subgroup_coset_decomposition_is_finite}. For modularity, let $\g \in \G_{2}$. Then
+      Holomorphy is immediate since the sum in $f[\G_{1}\a\G_{2}]_{k}$ is finite by \cref{prop:double_congruence_subgroup_coset_decomposition_is_finite}. For modularity, let $\g \in \G_{2}$. Then
       \begin{align*}
         (f[\G_{1}\a\G_{2}]_{k})(\g z) &= \sum_{j}\det(\b_{j})^{k-1}j(\b_{j},\g z)^{-k}f(\b_{j}\g z) \\
         &= \sum_{j}\det(\b_{j}\g)^{k-1}j(\b_{j},\g z)^{-k}f(\b_{j}\g z) && \text{$\det(\g) = 1$} \\
@@ -680,7 +680,7 @@
     With \cref{lem:cosets_for_Hecke_operators}, it is not too hard to see that the diamond and Hecke operators commute:
 
     \begin{proposition}\label{prop:diamond_Hecke_operators_commute_holomorphic}
-      For every $d \in (\Z/N\Z)^{\ast}$ and prime $p$, the diamond operator $\<d\>$ and the Hecke operator $T_{p}$ on $\mc{S}_{k}(\G_{1}(N))$ commute:
+      For every $d \in (\Z/N\Z)^{\ast}$ and prime $p$, the diamond operators $\<d\>$ and Hecke operators $T_{p}$ on $\mc{S}_{k}(\G_{1}(N))$ commute:
       \[
         \<d\>T_{p} = T_{p}\<d\>
       \]
@@ -722,7 +722,7 @@
       \[
         \b_{j} = \begin{pmatrix} 1 & j \\ 0 & p \end{pmatrix} \quad \text{and} \quad \b_{\infty} = \begin{pmatrix} m & n \\ N & p \end{pmatrix}\begin{pmatrix} p & 0 \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} pm & n \\ Np & p \end{pmatrix},
       \]
-      for $j$ taken modulo $p$ and where where $m$ and $n$ are chosen such that $\det\left(\begin{psmallmatrix} m & n \\ N & p \end{psmallmatrix}\right) = 1$. It suffices to show $\{\b_{1},\ldots,\b_{p-1}\}$ and $\{\b_{1},\ldots,\b_{p-1},\b_{\infty}\}$ are complete sets of orbit representatives for $\G_{1}(N)\backslash\G_{1}(N)\a\G_{1}(N)$ depending on if $p \nmid N$ or not. To accomplish this, we will find a complete set of coset representatives for $\G_{3}\backslash\G_{1}(N)$ and then use \cref{lem:coset_lemma_2}. First we require an explicit description of $\G_{3}$. Let
+      for $j$ taken modulo $p$ and where $m$ and $n$ are chosen such that $\det\left(\begin{psmallmatrix} m & n \\ N & p \end{psmallmatrix}\right) = 1$. It suffices to show $\{\b_{1},\ldots,\b_{p-1}\}$ and $\{\b_{1},\ldots,\b_{p-1},\b_{\infty}\}$ are complete sets of orbit representatives for $\G_{1}(N)\backslash\G_{1}(N)\a\G_{1}(N)$ depending on if $p \mid N$ or not. To accomplish this, we will find a complete set of coset representatives for $\G_{3}\backslash\G_{1}(N)$ and then use \cref{lem:coset_lemma_2}. First we require an explicit description of $\G_{3}$. Let
       \[
         \G^{0}(p) = \left\{\begin{pmatrix} a & b \\ c & d \end{pmatrix} \in \PSL_{2}(\Z):\begin{pmatrix} a & b \\ c & d \end{pmatrix} \equiv \begin{pmatrix} \ast & 0 \\ \ast & \ast \end{pmatrix} \tmod{p}\right\},
       \]
@@ -742,7 +742,7 @@
       \[
         \a_{j} = \begin{pmatrix} 1 & j \\ 0 & 1 \end{pmatrix} \quad \text{and} \quad \a_{\infty} = \begin{pmatrix} pm & n \\ N & 1 \end{pmatrix},
       \]
-      for $j$ taken modulo $p$ and where $m$ and $n$ are as before. Clearly $\a_{j} \in \G_{1}(N)$ for all $j$. As $pm-Nn = 1$, we have $pm \equiv 1 \tmod{N}$ so that $\a_{\infty} \in \G_{1}(N)$ as well. We claim that $\{\a_{1},\ldots,\a_{p-1}\}$ and $\{\a_{1},\ldots,\a_{p-1},\a_{\infty}\}$ are sets of coset representatives for $\G_{3}\backslash\G_{1}(N)$ depending on if $p \nmid N$ or not. Let $\g = \begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix} \in \G_{1}(N)$ and consider
+      for $j$ taken modulo $p$ and where $m$ and $n$ are as before. Clearly $\a_{j} \in \G_{1}(N)$ for all $j$. As $pm-Nn = 1$, we have $pm \equiv 1 \tmod{N}$ so that $\a_{\infty} \in \G_{1}(N)$ as well. We claim that $\{\a_{1},\ldots,\a_{p-1}\}$ and $\{\a_{1},\ldots,\a_{p-1},\a_{\infty}\}$ are sets of coset representatives for $\G_{3}\backslash\G_{1}(N)$ depending on if $p \mid N$ or not. Let $\g = \begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix} \in \G_{1}(N)$ and consider
       \[
         \g\a_{j}^{-1} = \begin{pmatrix} a & b \\ c & d \end{pmatrix}\begin{pmatrix} 1 & -j \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} a & b-aj \\ c & d-cj \end{pmatrix}.
       \]
@@ -754,7 +754,7 @@
       \[
         \g\a_{\infty}^{-1} = \begin{pmatrix} a & b \\ c & d \end{pmatrix}\begin{pmatrix} 1 & -n \\ -N & pm \end{pmatrix} = \begin{pmatrix} a-Nb & pmb-na \\ c-Nd & pmd-nc \end{pmatrix}.
       \]
-      Since $p \mid a$, we have $pmb-na \equiv 0 \mod{p}$ so that $\g\a_{\infty}^{-1} \in \G_{3} = \G_{1}^{0}(N,p)$. Altogether, we have shown that $\{\a_{1},\ldots,\a_{p-1}\}$ and $\{\a_{1},\ldots,\a_{p-1},\a_{\infty}\}$ are sets of coset representatives for $\G_{3}\backslash\G_{1}(N)$ depending on if $p \nmid N$ or not. To show they are complete sets, we need to show that no two representatives belong to the same coset. To this end, suppose $j$ and $j'$ are distinct, taken modulo $p$, and consider
+      Since $p \mid a$, we have $pmb-na \equiv 0 \mod{p}$ so that $\g\a_{\infty}^{-1} \in \G_{3} = \G_{1}^{0}(N,p)$. Altogether, we have shown that $\{\a_{1},\ldots,\a_{p-1}\}$ and $\{\a_{1},\ldots,\a_{p-1},\a_{\infty}\}$ are sets of coset representatives for $\G_{3}\backslash\G_{1}(N)$ depending on if $p \mid N$ or not. To show they are complete sets, we need to show that no two representatives belong to the same coset. To this end, suppose $j$ and $j'$ are distinct, taken modulo $p$, and consider
       \[
         \a_{j}\a_{j'}^{-1} = \begin{pmatrix} 1 & j \\ 0 & 1 \end{pmatrix}\begin{pmatrix} 1 & j' \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} 1 & j-j' \\ 0 & 1 \end{pmatrix}.
       \]
@@ -783,8 +783,7 @@
       where it is understood that $a_{\frac{n}{p}}(f) = 0$ if $p \nmid n$.
     \end{proposition}
     \begin{proof}
-      In view of \cref{thm:diamond_operator_decomposition_holomorphic} and the linearity of the Hecke operators, it suffices to assume $f \in \mc{S}_{k}(N,\chi)$ and thus only the second formula needs to be verified. 
-      Observe that
+      In view of \cref{thm:diamond_operator_decomposition_holomorphic} and the linearity of the Hecke operators, it suffices to assume $f \in \mc{S}_{k}(N,\chi)$. By \cref{prop:diamond_Hecke_operators_commute_holomorphic}, $T_{p}f \in \mc{S}_{k}(N,\chi)$. It remains to verify the second formula. Observe that
       \[
         \left(f\left[\begin{pmatrix} 1 & j \\ 0 & p \end{pmatrix}\right]_{k}\right)(z) = \frac{1}{p}\sum_{n \ge 1}a_{n}(f)e^{\frac{2\pi in(z+j)}{p}}.
       \]
@@ -800,7 +799,7 @@
       \begin{equation}\label{equ:Hecke_operator_when_p_divides_holomorphic}
         (T_{p}f)(z) = \sum_{n \ge 1}a_{np}(f)e^{2\pi inz},
       \end{equation}
-      which is the claimed Fourier series of $T_{p}f$. $p \nmid N$, then we have the additional term
+      which is the claimed Fourier series of $T_{p}f$. If $p \nmid N$, then we have the additional term
       \begin{align*}
         \left(f\left[\begin{pmatrix} m & n \\ N & p \end{pmatrix}\begin{pmatrix} p & 0 \\ 0 & 1 \end{pmatrix}\right]_{k}\right)(z) &= \left(\<p\>f\left[\begin{pmatrix} p & 0 \\ 0 & 1 \end{pmatrix}\right]_{k}\right)(z) \\
         &= p^{k-1}(\<p\>f)(pz) \\
@@ -858,7 +857,7 @@
     \[
       T_{p^{r}} = \begin{cases} T_{p}T_{p^{r-1}}-p^{k-1}\<p\>T_{p^{r-2}} & \text{if $p \nmid N$}, \\ T_{p}^{r} & \text{if $p \mid N$}, \end{cases}
     \]
-    for all $r \ge 2$. Then by \cref{prop:Hecke_operators_commute_holomorphic}, the Hecke operators $T_{m}$ are multiplicative but not completely multiplicative in $m$. Moreover, they commute with the diamond operators $\<m\>$. Using these definitions, \cref{prop:prime_Hecke_operators_acting_on_Fourier_coefficients_holomorphic,prop:Hecke_operators_commute_holomorphic}, a more general formula for how the Hecke operators $T_{m}$ act on Fourier coefficients can be derived:
+    for all $r \ge 2$. Note that when $m = 1$, the product is empty and so $T_{1}$ is the identity operator. By \cref{prop:Hecke_operators_commute_holomorphic}, the Hecke operators $T_{m}$ are multiplicative but not completely multiplicative in $m$. Moreover, they commute with the diamond operators $\<m\>$. Using these definitions, \cref{prop:prime_Hecke_operators_acting_on_Fourier_coefficients_holomorphic,prop:Hecke_operators_commute_holomorphic}, a more general formula for how the Hecke operators $T_{m}$ act on Fourier coefficients can be derived:
 
     \begin{proposition}\label{prop:general_Hecke_operators_acting_on_Fourier_coefficients_holomorphic}
       Let $f \in \mc{S}_{k}(\G_{1}(N))$ with Fourier coefficients $a_{n}(f)$. Then for $m \ge 1$ with $(m,N) = 1$,
@@ -908,7 +907,7 @@
       This completes the proof.
     \end{proof}
 
-    The diamond and Hecke operators turn out to be normal with respect to the Petersson inner product on the subspace of cusp forms. To prove this fact, we will require a lemma:
+    The diamond and Hecke operators turn out to be normal on the subspace of cusp forms. To prove this fact, we will require a lemma:
 
     \begin{lemma}\label{lem:adjoint_lemma}
       Let $\G$ be a congruence subgroup and let $\a \in \GL_{2}^{+}(\Q)$. Then there exist $\b_{1},\ldots,\b_{n} \in \GL_{2}^{+}(\Q)$, where $n = [\G:\a^{-1}\G\a \cap \G] = [\G:\a\G\a^{-1} \cap \G]$, and such that
@@ -979,46 +978,46 @@
       \[
         \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}\det(\a')^{k-1}\conj{j(\a',z)^{-k}}f(z)\conj{g(\a'z)}\Im(z)^{k}\,d\mu = \<f,g[\a']_{k}\>_{\G},
       \]
-      which completes the proof of (i). To prove (ii), the coset decomposition $\G\a\G = \bigcup_{j}\G\b_{j}$ from \cref{lem:adjoint_lemma} implies that we can use the $\b_{j}$ as representatives in the definition of the $[\G\a\G]_{k}$ operator. As the $\b_{j}$ also satisfy $\G\a\G = \bigcup_{j}\b_{j}\G$, upon inverting $\b_{j}$ and noting that $\b_{j} \in \G\a$, we obtain $\G\a^{-1}\G = \bigcup_{j}\G\b_{j}^{-1}$. Since scalar multiplication commutes with matrices and the matrices in $\G$ have determinant $1$, we conclude that $\G\a'\G = \bigcup_{j}\G\b_{j}'$ where $\b_{j}' = \det(\b_{j})\b_{j}^{-1}$ (also $\det(\b_{j}) = \det(\a)$). So we can use the $\b_{j}'$ as representatives in the definition of the $[\G\a'\G]_{k}$ operator. The statement now follows from (i). The last statement is now obvious.
+      which completes the proof of (i). To prove (ii), \cref{lem:adjoint_lemma} implies the coset decomposition $\G\a\G = \bigcup_{j}\G\b_{j}$ so that we can use the $\b_{j}$ as representatives for the $[\G\a\G]_{k}$ operator. As the $\b_{j}$ also satisfy $\G\a\G = \bigcup_{j}\b_{j}\G$, upon inverting $\b_{j}$ and noting that $\b_{j} \in \G\a$, we obtain $\G\a^{-1}\G = \bigcup_{j}\G\b_{j}^{-1}$. Since scalar multiplication commutes with matrices and the matrices in $\G$ have determinant $1$, we conclude that $\G\a'\G = \bigcup_{j}\G\b_{j}'$ where $\b_{j}' = \det(\b_{j})\b_{j}^{-1}$ (also $\det(\b_{j}) = \det(\a)$). So we can use the $\b_{j}'$ as representatives in the $[\G\a'\G]_{k}$ operator. The statement now follows from (i). The last statement is obvious.
     \end{proof}
 
     We can now prove that the diamond and Hecke operators are normal:
 
     \begin{proposition}\label{prop:Hecke_operators_normal_holomorphic}
-      On $\mc{S}_{k}(\G_{1}(N))$, the diamond operators $\<m\>$ and Hecke operators $T_{m}$ are normal with respect to the Petersson inner product for all $m \ge 1$ with $(m,N) = 1$. Moreover, their adjoints are given by
+      On $\mc{S}_{k}(\G_{1}(N))$, the diamond operators $\<m\>$ and Hecke operators $T_{m}$ are normal for all $m \ge 1$ with $(m,N) = 1$. Moreover, their adjoints are given by
       \[
         \<m\>^{\ast} = \<\conj{m}\> \quad \text{and} \quad T_{p}^{\ast} = \<\conj{p}\>T_{p}.
       \]
     \end{proposition}
     \begin{proof}
-      As taking the adjoint is a linear operator, the definition of the diamond and Hecke operators and \cref{prop:Hecke_operators_commute_holomorphic} imply that it suffices to prove the two adjoint formulas for the when $m = p$ is prime. We will first prove the adjoint formula for $\<p\>$. Let $\a = \begin{psmallmatrix} * & * \\ * & p \end{psmallmatrix} \in \G_{0}(N)$. As $\G_{1}(N)$ is normal in $\G_{0}(N)$ and $\det(\a) = 1$, \cref{prop:Petersson_adjoint_holomorphic} gives
+      By multiplicativity and commutativity (recall \cref{prop:Hecke_operators_commute_holomorphic}) of the diamond and Hecke operators, it suffices to prove the two formulas when $m = p$ for a prime $p \nmid N$. We will prove the adjoint formula for diamond operators first. Let $\a = \begin{psmallmatrix} \conj{p} & \ast \\ \ast & p \end{psmallmatrix} \in \G_{0}(N)$ and $\a' = \det(\a)\a^{-1} = \begin{psmallmatrix} p & \ast \\ \ast & \conj{p} \end{psmallmatrix} \in \G_{0}(N)$. Then \cref{prop:Petersson_adjoint_holomorphic} gives
       \[
-        \<p\>^{\ast} = [\a]_{k}^{\ast} = [\a']_{k} = [\a^{-1}]_{k} = \<\conj{p}\>.
+        \<p\>^{\ast} = [\a']_{k} = \<\conj{p}\>.
       \]
-      This proves the adjoint formula for the diamond operators and normality follows from multiplicativity. For the Hecke operator $T_{p}$, let $\a = \begin{psmallmatrix} 1 & 0 \\ 0 & p \end{psmallmatrix}$ and note that $\a' = \begin{psmallmatrix} p & 0 \\ 0 & 1 \end{psmallmatrix}$. Now \cref{prop:Petersson_adjoint_holomorphic} implies
+      This proves the adjoint formula for the diamond operators and normality follows from multiplicativity. For the Hecke operators, let $\b_{j} = \begin{psmallmatrix} 1 & j \\ 0 & p \end{psmallmatrix}$ and $\b_{\infty} = \begin{psmallmatrix} pm & n \\ Np & p \end{psmallmatrix}$ for $j$ taken modulo $p$ and where $m$ and $n$ are chosen such that $\det\left(\begin{psmallmatrix} m & n \\ N & p \end{psmallmatrix}\right) = 1$. By \cref{prop:explicit_description_of_Hecke_operators_holomorphic}, $\{\b_{1},\ldots,\b_{p-1},\b_{\infty}\}$ is a complete set of orbit representatives for $T_{p}$. Now set $\a = \begin{psmallmatrix} 1 & 0 \\ 0 & p \end{psmallmatrix}$ and $\a' = \det(\a)\a^{-1} = \begin{psmallmatrix} p & 0 \\ 0 & 1 \end{psmallmatrix}$. Observe that
       \[
-        T_{p}^{\ast} = [\G_{1}(N)\a\G_{1}(N)]_{k}^{\ast} = [\G_{1}(N)\a'\G_{1}(N)]_{k}.
+        \begin{pmatrix} 1 & n \\ N & pm \end{pmatrix}^{-1}\a\begin{pmatrix} p & n \\ N & m \end{pmatrix} = \begin{pmatrix} mp & -n \\ -N & 1 \end{pmatrix}\begin{pmatrix} 1 & 0 \\ 0 & p \end{pmatrix}\begin{pmatrix} p & n \\ N & m \end{pmatrix} = \a'.
       \]
-      Let $m$ and $n$ be such that $pm-Nn = 1$. Then
-      \[
-        \begin{pmatrix} 1 & n \\ N & pm \end{pmatrix}\a' = \begin{pmatrix} 1 & n \\ N & pm \end{pmatrix}\begin{pmatrix} p & 0 \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} p & n \\ Np & pm \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & p \end{pmatrix}\begin{pmatrix} p & n \\ N & m \end{pmatrix} = \a\begin{pmatrix} p & n \\ N & m \end{pmatrix},
-      \]
-      which implies that $\a' = \begin{psmallmatrix} 1 & n \\ N & pm \end{psmallmatrix}^{-1}\a\begin{psmallmatrix} p & n \\ N & m \end{psmallmatrix}$. As $\begin{psmallmatrix} 1 & n \\ N & pm \end{psmallmatrix} \in \G_{1}(N)$ (note that $pm \equiv 1 \tmod{N}$ since $pm-Nn = 1$) and $\begin{psmallmatrix} p & n \\ N & m \end{psmallmatrix} \in \G_{0}(N)$, substituting the triple product expression for $\a'$ into $[\G_{1}(N)\a'\G_{1}(N)]_{k}$ and noting that $\G_{1}(N)$ is normal in $\G_{0}(N)$ yields
+      As $\begin{psmallmatrix} 1 & n \\ N & pm \end{psmallmatrix} \in \G_{1}(N)$ (note that $pm \equiv 1 \tmod{N}$ since $pm-Nn = 1$) and $\begin{psmallmatrix} p & n \\ N & m \end{psmallmatrix} \in \G_{0}(N)$, the fact that $\G_{1}(N)$ is normal in $\G_{0}(N)$ yields
       \[
         \G_{1}(N)\a'\G_{1}(N) = \G_{1}(N)\a\G_{1}(N)\begin{pmatrix} p & n \\ N & m \end{pmatrix}.
       \]
-      Now if the $\b_{j}$ are representatives for $[\G_{1}\a\G_{1}(N)]_{k}$, then $\G_{1}\a\G_{1}(N) = \bigcup_{j}\G_{1}(N)\b_{j}$. Therefore the formula above implies $\G_{1}\a'\G_{1}(N) = \bigcup_{j}\G_{1}(N)\b_{j}\begin{psmallmatrix} p & n \\ N & m \end{psmallmatrix}$ and so the $\b_{j}\begin{psmallmatrix} p & n \\ N & m \end{psmallmatrix}$ can be used as representatives for $[\G_{1}\a'\G_{1}(N)]_{k}$. As $pm-Nn = 1$, $m \equiv \conj{p} \tmod{N}$ and so \cref{prop:Hecke_operators_commute_holomorphic} implies that $T_{p}^{\ast} = \<\conj{p}\>T_{p}$. This proves the adjoint formula for the Hecke operators and normality follows from multiplicativity.
+      As $m \equiv \conj{p} \tmod{N}$, the above identity and \cref{prop:Petersson_adjoint_holomorphic} together give
+      \[
+        T_{p}^{\ast} = [\G_{1}(N)\a'\G_{1}(N)]_{k} = \<\conj{p}\>T_{p}.
+      \]
+      This proves the adjoint formula for the Hecke operators and normality follows from multiplicativity.
     \end{proof}
 
-    Now suppose $f$ is a non-constant cusp form. Let the eigenvalue of $T_{m}$ for $f$ be $\l_{f}(m)$. We say that the $\l_{f}(m)$ are the \textbf{Hecke eigenvalues}\index{Hecke eigenvalues} of $f$. If $f$ is a simultaneous eigenfunction for all diamond operators $\<m\>$ and Hecke operators $T_{m}$ with $(m,N) = 1$, we call $f$ an \textbf{eigenform}\index{eigenform}. If the condition $(m,N) = 1$ can be dropped, so that $f$ is a simultaneous eigenfunction for all diamond and Hecke operators, then we say $f$ is a \textbf{Hecke eigenform}\index{Hecke eigenform}. In particular, on $\G_{1}(1)\backslash\H$ all eigenforms are Hecke eigenforms. Now let $f$ have Fourier coefficient $a_{n}(f)$. If $f$ is an eigenform, then \cref{prop:general_Hecke_operators_acting_on_Fourier_coefficients_holomorphic} immediately implies that the first Fourier coefficient of $T_{m}f$ is $a_{m}(f)$ and so
+    Now suppose $f$ is a non-constant cusp form. Let the eigenvalue of $T_{m}$ for $f$ be $\l_{f}(m)$. We say that the $\l_{f}(m)$ are the \textbf{Hecke eigenvalues}\index{Hecke eigenvalues} of $f$. If $f$ is a simultaneous eigenfunction for all diamond operators $\<m\>$ and Hecke operators $T_{m}$ with $(m,N) = 1$, we call $f$ an \textbf{eigenform}\index{eigenform}. If the condition $(m,N) = 1$ can be dropped, so that $f$ is a simultaneous eigenfunction for all diamond and Hecke operators, we say $f$ is a \textbf{Hecke eigenform}\index{Hecke eigenform}. In particular, on $\G_{1}(1)\backslash\H$ all eigenforms are Hecke eigenforms. Now let $f$ have Fourier coefficient $a_{n}(f)$. If $f$ is a Hecke eigenform, then \cref{prop:general_Hecke_operators_acting_on_Fourier_coefficients_holomorphic} immediately implies that the first Fourier coefficient of $T_{m}f$ is $a_{m}(f)$ and so
     \[
       a_{m}(f) = \l_{f}(m)a_{1}(f),
     \]
-    for all $m \ge 1$ with $(m,N) = 1$. Therefore we cannot have $a_{1}(f) = 0$ for this would mean $f$ is constant. So we can normalize $f$ by dividing by $a_{1}(f)$ which guarantees that this Fourier coefficient is $1$. It follows that
+    for all $m \ge 1$. Therefore we cannot have $a_{1}(f) = 0$ for this would mean $f$ is constant. So we can normalize $f$ by dividing by $a_{1}(f)$ which guarantees that this Fourier coefficient is $1$. It follows that
     \[
       a_{m}(f) = \l_{f}(m),
     \]
-    for all $m \ge 1$ with $(m,N) = 1$. This normalization is called the \textbf{Hecke normalization}\index{Hecke normalization} of $f$. The \textbf{Petersson normalization}\index{Petersson normalization} of $f$ is where we normalize so that $\<f,f\> = 1$. From the spectral theorem we derive an important corollary:
+    for all $m \ge 1$. This normalization is called the \textbf{Hecke normalization}\index{Hecke normalization} of $f$. The \textbf{Petersson normalization}\index{Petersson normalization} of $f$ is where we normalize so that $\<f,f\> = 1$. From the spectral theorem we derive an important corollary:
 
     \begin{theorem}\label{thm:eigenforms_forms_spectral_theory_holomorphic}
       $\mc{S}_{k}(\G_{1}(N))$ admits an orthonormal basis of eigenforms.
@@ -1027,10 +1026,10 @@
       By \cref{thm:modular_forms_finite_dimensional}, $\mc{S}_{k}(\G_{1}(N))$ is finite dimensional. The claim then follows from the spectral theorem along with \cref{prop:Hecke_operators_commute_holomorphic,prop:Hecke_operators_normal_holomorphic}.
     \end{proof}
 
-    As a near immediate consequence of \cref{thm:eigenforms_forms_spectral_theory_holomorphic}, we can show that Hecke eigenvalues of eigenforms satisfy certain relations known as the \textbf{Hecke relations}\index{Hecke relations} for holomorphic forms:
+    The Hecke eigenvalues of Hecke eigenforms satisfy certain relations known as the \textbf{Hecke relations}\index{Hecke relations} for holomorphic forms:
 
     \begin{proposition}[Hecke relations, holomorphic version]
-    Let $f \in \mc{S}_{k}(N,\chi)$ be a Hecke eigenform with Hecke eigenvalues $\l_{f}(n)$. Then the Hecke eigenvalues are multiplicative and satisfy
+    Let $f \in \mc{S}_{k}(N,\chi)$ be a Hecke eigenform with Hecke eigenvalues $\l_{f}(m)$. Then the Hecke eigenvalues are multiplicative and satisfy
     \[
       \l_{f}(n)\l_{f}(m) = \sum_{d \mid (n,m)}\chi(d)d^{k-1}\l_{f}\left(\frac{nm}{d^{2}}\right) \quad \text{and} \quad \l_{f}(nm) = \sum_{d \mid (n,m)}\mu(d)\chi(d)d^{k-1}\l_{f}\left(\frac{n}{d}\right)\l_{f}\left(\frac{m}{d}\right),
     \]
@@ -1041,7 +1040,7 @@
     for all $p \mid N$ and $r \ge 2$.
     \end{proposition}
     \begin{proof}
-      By \cref{thm:eigenforms_forms_spectral_theory_holomorphic} it suffices to verify this when $f$ is a Hecke eigenform. We may also assume $f$ is Hecke normalized without any harm. The multiplicativity of the Hecke eigenvalues now follows from the multiplicity of the Hecke operators. The first identity follows from computing the $n$-th Fourier coefficient of $T_{m}f$ in two different ways. On the one hand, use that $f$ is a Hecke eigenform to get $\l_{f}(n)\l_{f}(m)$. On the other hand, use \cref{prop:general_Hecke_operators_acting_on_Fourier_coefficients_holomorphic} to obtain $\sum_{d \mid (n,m)}\chi(d)d^{k-1}\l_{f}\left(\frac{nm}{d^{2}}\right)$. For the second identity, computing the $p$-th Fourier coefficient of $T_{p}$ in two different ways just as before, we have
+      If necessary, Hecke normalize $f$. The multiplicativity of the Hecke eigenvalues now follows from the multiplicity of the Hecke operators. The first identity follows from computing the $n$-th Fourier coefficient of $T_{m}f$ in two different ways. On the one hand, use that $f$ is a Hecke eigenform to get $\l_{f}(n)\l_{f}(m)$. On the other hand, use \cref{prop:general_Hecke_operators_acting_on_Fourier_coefficients_holomorphic} to obtain $\sum_{d \mid (n,m)}\chi(d)d^{k-1}\l_{f}\left(\frac{nm}{d^{2}}\right)$. For the second identity, computing the $p$-th Fourier coefficient of $T_{p}$ in two different ways just as before, we have
       \[
         \chi(p)p^{k-1} = \l_{f}(p)^{2}-\l_{f}(p^{2}),
       \]
@@ -1061,11 +1060,11 @@
       This is immediate from \cref{thm:eigenforms_forms_spectral_theory_holomorphic} and the Hecke relations.
     \end{proof}
 
-    The identities in \cref{cor:Hecke_relations_operator_holomorphic} can also be established directly. Moreover, the first identity is symmetric in $n$ and $m$ so it can be used to show that the Hecke operators commute.
+    The identities in \cref{cor:Hecke_relations_operator_holomorphic} can also be established directly. Moreover, the first identity is symmetric in $n$ and $m$ so it can be used to show that the Hecke operators commute. 
   \section{Atkin-Lehner Theory}
     So far, our entire theory of holomorphic forms has started with a fixed congruence subgroup of some level. Atkin-Lehner theory, or the theory of oldforms \& newforms, allows us to discuss holomorphic forms in the context of moving between levels. In this setting, we will only deal with congruence subgroups of the form $\G_{1}(N)$ and $\G_{0}(N)$. The easiest way lift a holomorphic form from a smaller level to a larger level is to observe that if $M \mid N$, then $\G_{1}(N) \le \G_{1}(M)$ so there is a natural inclusion $\mc{S}_{k}(\G_{1}(M)) \subseteq \mc{S}_{k}(\G_{1}(N))$. There is a less trivial way of lifting from $\mc{S}_{k}(\G_{1}(M))$ to $\mc{S}_{k}(\G_{1}(N))$. For any $d \mid \frac{N}{M}$, let $\a_{d} = \begin{psmallmatrix} d & 0 \\ 0 & 1 \end{psmallmatrix}$. If $f \in \mc{S}_{k}(\G_{1}(M))$, we consider
     \[
-        (f[\a_{d}]_{k})(z) = \det(\a_{d})^{k-1}j(\a_{d},z)^{-k}f(\a_{d}z) = d^{k-1}f(dz).
+      (f[\a_{d}]_{k})(z) = \det(\a_{d})^{k-1}j(\a_{d},z)^{-k}f(\a_{d}z) = d^{k-1}f(dz).
     \]
     It turns out that, $[\a_{d}]_{k}$ maps $\mc{S}_{k}(\G_{1}(M))$ into $\mc{S}_{k}(\G_{1}(N))$:
     
@@ -1099,114 +1098,34 @@
     \]
     This map is well-defined by \cref{equ:lifting_operator_holomorphic}. The subspace of \textbf{oldforms of level $N$}\index{oldforms of level $N$} is
     \[
-      \mc{S}_{k}(\G_{1}(N))^{\mathrm{old}} = \bigop_{p \mid N}\Im(i_{p}),
+      \mc{S}_{k}^{\mathrm{old}}(\G_{1}(N)) = \bigop_{p \mid N}\Im(i_{p}),
     \]
     and the subspace of \textbf{newforms of level $N$}\index{newforms of level $N$} is
     \[
-      \mc{S}_{k}(\G_{1}(N))^{\mathrm{new}} = \left(\mc{S}_{k}(\G_{1}(N))^{\mathrm{old}} \right)^{\perp},
+      \mc{S}_{k}^{\mathrm{new}}(\G_{1}(N)) = \mc{S}_{k}^{\mathrm{old}}(\G_{1}(N))^{\perp}.
     \]
-    where the orthogonal complement is taken with respect to the Petersson inner product. The elements of such subspaces are called \textbf{oldforms}\index{oldforms} and \textbf{newforms}\index{newforms} respectively. Both subspaces are invariant under the diamond and Hecke operators (see \cite{diamond2005first} for a proof):
-
-    \begin{proposition}\label{prop:old/new_subspaces_are_invariant_holomorphic}
-      The spaces $\mc{S}_{k}(\G_{1}(N))^{\mathrm{old}}$ and $\mc{S}_{k}(\G_{1}(N))^{\mathrm{new}}$ are invariant under the diamond operators $\<m\>$ and Hecke operators $T_{m}$ for all $m \ge 1$.
-    \end{proposition}
-
-    As a corollary, we deduce that these subspaces admit orthogonal bases of eigenforms:
-
-    \begin{corollary}\label{cor:old/new_eigenbasis_holomorphic}
-      $\mc{S}_{k}(\G_{1}(N))^{\mathrm{old}}$ and $\mc{S}_{k}(\G_{1}(N))^{\mathrm{new}}$ admit orthonormal bases of eigenforms.
-    \end{corollary}
-    \begin{proof}
-      This follows immediately from \cref{thm:eigenforms_forms_spectral_theory_holomorphic,prop:old/new_subspaces_are_invariant_holomorphic}
-    \end{proof}
-
-    Something quite amazing happens for the subspace in $\mc{S}_{k}(\G_{1}(N))^{\mathrm{new}}$; the condition $(m,N) = 1$ for eigenforms in a base can be removed. Therefore the eigenforms are actually eigenfunctions for all of the diamond and Hecke operators. We require a preliminary result whose proof is quite involved but it is not beyond the scope of this text (see \cite{diamond2005first} for a proof):
-
-    \begin{lemma}\label{lem:the_main_lemma_for_newforms_holomorphic}
-      If $f \in \mc{S}_{k}(\G_{1}(N))$ with Fourier coefficients $a_{n}(f)$ and such that $a_{n}(f) = 0$ whenever $(n,N) = 1$, then
-      \[
-        f = \sum_{p \mid N}p^{k-1}f_{p}[\a_{p}],
-      \]
-      for some $f_{p} \in \mc{S}_{k}\left(\G_{1}\left(\frac{N}{p}\right)\right)$.
-    \end{lemma}
-
-    The important observation to make about \cref{lem:the_main_lemma_for_newforms_holomorphic} is that if $f \in \mc{S}_{k}(\G_{1}(N))$ is such that its $n$-th Fourier coefficients vanish when $n$ is relatively prime to the level, then $f$ must be an oldform. With this lemma we can prove the main theorem about $\mc{S}_{k}(\G_{1}(N))^{\mathrm{new}}$. The introduction of some language will be useful for the statement and its proof. We say that $f$ is a \textbf{primitive Hecke eigenform}\index{primitive Hecke eigenform} if it is a nonzero Hecke normalized Hecke eigenform in $\mc{S}_{k}(\G_{1}(N))^{\mathrm{new}}$. We can now prove the main result about newforms:
-
-    \begin{theorem}\label{thm:newforms_characterization_holomorphic}
-      Let $f \in \mc{S}_{k}(\G_{1}(N))^{\mathrm{new}}$ be an eigenform. Then the following hold:
-      \begin{enumerate}[label=(\roman*)]
-        \item $f$ is a Hecke eigenform.
-        \item If $\wtilde{f}$ satisfies the same conditions as $f$ and has the same eigenvalues for the Hecke operators, then $\wtilde{f} = cf$ for some nonzero constant $c$.
-      \end{enumerate}
-      Moreover, the primitive Hecke eigenforms in $\mc{S}_{k}(\G_{1}(N))^{\mathrm{new}}$ form an orthogonal basis with respect to the Petersson inner product and each such primitive Hecke eigenforms $f$ lies in an eigenspace $\mc{S}_{k}(N,\chi)$.
-    \end{theorem}
-    \begin{proof}
-      First suppose $f \in \mc{S}_{k}(\G_{1}(N))$ is an eigenform with Fourier coefficients $a_{n}(f)$. For $m \ge 1$ with $(m,N) = 1$, there exists $\l_{f}(m),\mu_{f}(m) \in \C$ such that $T_{m}f = \l_{f}(m)f$ and $\<m\>f = \mu_{f}(m)f$. Actually, $\<m\>f = \mu_{f}(m)f$ holds for all $m \ge 1$ because $\<m\>$ is the zero operator if $(m,N) > 1$ and in this case we can take $\mu_{f}(m) = 0$. If we set $\chi(n) = \mu_{f}(m)$, then $\chi$ is a Dirichlet character modulo $N$. This follows because multiplicativity of $\<m\>$ implies the same for $\chi$ and $\chi$ is $N$-periodic since $\<m\>$ is $N$-periodic ($\<m\>$ is defined by $m$ taken modulo $N$). But then $\<m\>f = \chi(m)f$ so that $f \in \mc{S}_{k}(N,\chi)$. As $f$ is an eigenform, we also have $a_{m}(f) = \l_{f}(m)a_{1}(f)$ provided $(m,N) = 1$. So if $a_{1}(f) = 0$, \cref{lem:the_main_lemma_for_newforms_holomorphic} implies $f \in \mc{S}_{k}(\G_{1}(N))^{\mathrm{old}}$. With this fact in hand, we can prove the statements.
-      \begin{enumerate}[label=(\roman*)]
-        \item The claim is trivial if $f$ is zero, so assume otherwise. If $f \in \mc{S}_{k}(\G_{1}(N))^{\mathrm{new}}$, then $f \notin \mc{S}_{k}(\G_{1}(N))^{\mathrm{old}}$ and so by what we have shown $a_{1}(f) \neq 0$. Therefore we may Hecke normalize $f$ so that $a_{1}(f) = 1$ and $a_{m}(f) = \l_{f}(m)$. Now set $g_{m} = T_{m}f-\l_{f}(m)f$ for any $m \ge 1$. By \cref{prop:old/new_subspaces_are_invariant_holomorphic}, $g_{m} \in \mc{S}_{k}(\G_{1}(N))^{\mathrm{new}}$. Moreover, $g_{m}$ is an eigenform and its first Fourier coefficient is zero. But then $g_{m} \in \mc{S}_{k}(\G_{1}(N))^{\mathrm{old}}$ too and so $g_{m} = 0$ because $\mc{S}_{k}(\G_{1}(N))^{\mathrm{new}}$ and $\mc{S}_{k}(\G_{1}(N))^{\mathrm{old}}$ are orthogonal subspaces. This means $T_{m}f = \l_{f}(m)f$ for any $m \ge 1$. Therefore $f$ is a primitive Hecke eigenform and so is a Hecke eigenform before Hecke normalization.
-        \item Suppose $\wtilde{f}$ satisfies the same conditions as $f$ with the same eigenvalues for the Hecke operators. By (i), $f$ and $\wtilde{f}$ are Hecke eigenforms. After Hecke normalization, $f$ and $\wtilde{f}$ have the same Fourier coefficients and so are identical. It follows that before Hecke normalization $f = c\wtilde{f}$ for some nonzero constant $c$.
-      \end{enumerate}
-      Note that our initial remarks together with (i) show that each primitive Hecke eigenform $f$ belongs to some eigenspace $\mc{S}_{k}(N,\chi)$. By \cref{cor:old/new_eigenbasis_holomorphic}, $\mc{S}_{k}(\G_{1}(N))^{\mathrm{new}}$ admits an orthogonal basis of eigenforms which by (i) are Hecke eigenforms. As $\mc{S}_{k}(\G_{1}(N))^{\mathrm{new}}$ is finite dimensional (because $\mc{S}_{k}(\G_{1}(N))$ is), it follows that all of the primitive Hecke eigenforms form an orthogonal basis for $\mc{S}_{k}(\G_{1}(N))^{\mathrm{new}}$ if we can show that they are linearly independent. So suppose, to the contrary, that we have a nontrivial linear relation
-      \[
-        \sum_{1 \le i \le r}c_{i}f_{i} = 0,
-      \]
-      for some primitive Hecke eigenforms $f_{i}$, nonzero constants $c_{i}$, and with $r$ minimal. Note that $r \ge 2$ for else we do not have a nontrivial linear relation. Letting $m \ge 1$ applying the operator $T_{m}-\l_{f_{1}}(m)$ to our nontrivial linear relation gives
-      \[
-        \sum_{2 \le i \le r}c_{i}(\l_{f_{i}}(m)-\l_{f_{1}}(m))f_{i} = 0,
-      \]
-      which has one less term. Since $r$ was chosen to be minimal, this implies $\l_{f_{i}}(m)-\l_{f_{1}}(m)$ for all $i$. But $m$ was arbitrary, so $f_{i} = f_{1}$ for all $i$ by (ii). Hence $r = 1$ which is a contradiction.
-    \end{proof}
-
-    Statement (i) in \cref{thm:newforms_characterization_holomorphic} implies that primitive Hecke eigenforms satisfy the Hecke relations for all $n,m \ge 1$. Statement (ii) can be interpreted as saying that a basis of newforms for $\mc{S}_{k}(\G_{1}(N))^{\mathrm{new}}$ contains one element per ``eigenvalue'' where we mean a set of eigenvalues one for each Hecke operator $T_{m}$. Actually, we can obtain a slightly better result called \textbf{multiplicity one}\index{multiplicity one} for holomorphic forms:
-
-    \begin{theorem}[Multiplicity one, holomorphic version]
-      Let $f$ and $g$ be primitive Hecke eigenforms of the same weight and level. Denote the Hecke eigenvalues by $\l_{f}(n)$ and $\l_{g}(n)$ respectively. If $\l_{f}(p) = \l_{g}(p)$ for all primes $p$ not diving the level, then $f = g$.
-    \end{theorem}
-    \begin{proof}
-      The Hecke relations imply that $\l_{f}(n) = \l_{g}(n)$ for all $n$ relatively prime to the level. By \cref{lem:the_main_lemma_for_newforms_holomorphic}, $f-g$ is an oldform. But as the oldforms and newforms are orthogonal, $f-g = 0$ and hence $f = g$.
-    \end{proof}
-
-    We now require one last linear operator. Before introducing this operator, let us define conjugate cusp forms. For any $f \in \mc{S}_{k}(N,\chi)$, we define the \textbf{conjugate}\index{conjugate} $\conj{f}$ of $f$ by
-    \[
-      \conj{f}(z) = \conj{f(-\conj{z})}.
-    \]
-    Note that if $f$ has Fourier coefficients $a_{n}(f)$, then $\conj{f}$ has Fourier coefficients $\conj{a_{n}(f)}$. Moreover, it is generally not true that $\conj{f}(z)$ and $\conj{f(z)}$ are equal. However, it turns out that $\conj{f}$ is indeed a holomorphic cusp form:
-
-    \begin{proposition}\label{cref:conjugate_cusp_form_holomorphic}
-      If $f \in \mc{S}_{k}(N,\chi)$, then $\conj{f} \in \mc{S}_{k}(N,\cchi)$.
-    \end{proposition}
-    \begin{proof}
-      Holomorphy is clear so we need next need to verify the modularity. For this, let $\g = \begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix} \in \G_{0}(N)$ and note that $\g = \begin{psmallmatrix} a & -b \\ -c & d \end{psmallmatrix} \in \G_{0}(N)$. Then we compute
-      \begin{align*}
-        \conj{f}(\g z) &= \conj{f(-\conj{\g z})} \\
-        &= \conj{f(\g'(-\conj{z}))} \\
-        &= \conj{\chi(\g)j(\g',-\conj{z})^{k}f(-\conj{z})} \\
-        &= \conj{\chi(\g)j(\g,z)^{k}f(-\conj{z})} \\
-        &= \cchi(\g)j(\g,z)^{k}\conj{f(-\conj{z})} \\
-        &= \cchi(\g)j(\g,z)^{k}\conj{f}(z),
-      \end{align*}
-      and modularity follows. The growth condition follows immediately from that of $f$ and thus $\conj{f}$ is a cusp form since $f$ is.
-    \end{proof}
-    
-    Now we are ready to introduce the linear operator. Let
+    The elements of such subspaces are called \textbf{oldforms}\index{oldforms} and \textbf{newforms}\index{newforms} respectively. We will need a useful operator for the study of oldforms and newforms. Let
     \[
       W_{N} = \begin{pmatrix} 0 & -1 \\ N & 0 \end{pmatrix},
     \]
-    and note that $\det(W_{N}) = N$. We define the \textbf{Atkin-Lehner operator}\index{Atkin-Lehner operator} $\w_{N}$ to be the linear operator on $\mc{S}_{k}(N,\chi)$ given by
+    and note that $\det(W_{N}) = N$. We define the \textbf{Atkin-Lehner operator}\index{Atkin-Lehner operator} $\w_{N}$ to be the linear operator on $\mc{S}_{k}(\G_{1}(N))$ given by
     \[
-      (\w_{N}f)(z) = N^{\frac{k}{2}}j(W_{n},z)^{-k}f(W_{n}z) = (\sqrt{N}z)^{-k}f\left(-\frac{1}{Nz}\right).
+      (\w_{N}f)(z) = N^{1-\frac{k}{2}}(f[W_{N}]_{k})(z) = N^{\frac{k}{2}}j(W_{N},z)^{-k}f(W_{N}z) = (\sqrt{N}z)^{-k}f\left(-\frac{1}{Nz}\right).
     \]
-    The crucial information we need is how $\w_{N}$ acts on $\mc{S}_{k}(N,\chi)$ and on primitive Hecke eigenforms:
+    As $W_{N}$ is invertible, so is the Atkin-Lehner operator $\w_{N}$. It is not difficult to see how $\w_{N}$ acts on $\mc{S}_{k}(\G_{1}(N))$:
 
     \begin{proposition}\label{prop:Atkin_Lehner_holomorphic}
-      $\w_{N}$ maps $\mc{S}_{k}(N,\chi)$ into $\mc{S}_{k}(N,\cchi)$.
+      $\w_{N}$ maps $\mc{S}_{k}(\G_{1}(N))$ into itself. In particular, $\w_{N}$ takes $\mc{S}_{k}(N,\chi)$ into $\mc{S}_{k}(N,\cchi)$ and preserves the subspaces of oldforms and newforms. Moreover, $\w_{N}$ is self-adjoint and
+      \[
+        \w_{N}^{2}f = (-1)^{k}f.
+      \]
     \end{proposition}
     \begin{proof}
-      Holomorphy is obvious. For modularity, note that for $\g = \begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix} \in \G_{0}(N)$, we have
+      In light of \cref{thm:diamond_operator_decomposition_holomorphic}, the first statement is a consequence of the latter ones. Therefore we may assume $f \in \mc{S}_{k}(N,\chi)$. Holomorphy is obvious. For modularity, note that for $\g = \begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix} \in \G_{0}(N)$, we have
       \[
-        W_{N}\g = \begin{pmatrix} 0 & -1 \\ N & 0 \end{pmatrix}\begin{pmatrix} a & b \\ c & d \end{pmatrix} = \begin{pmatrix} -c & -d \\ Na & Nb \\ \end{pmatrix} = \begin{pmatrix} d & -N^{-1}c \\ -Nb & a \end{pmatrix}\begin{pmatrix} 0 & -1 \\ N & 0 \end{pmatrix} = \g'W_{N},
+        W_{N}\g W_{N}^{-1} = \begin{pmatrix} 0 & -1 \\ N & 0 \end{pmatrix}\begin{pmatrix} a & b \\ c & d \end{pmatrix}\begin{pmatrix} 0 & N^{-1} \\ -1 & 0 \end{pmatrix} = \begin{pmatrix} d & -N^{-1}c \\ -Nb & a \end{pmatrix} = \g',
       \]
-      where $\g' = \begin{psmallmatrix} d & -N^{-1}c \\ -Nb & a \end{psmallmatrix} \in \G_{0}(N)$. It follows that
+      where $\g' = \begin{psmallmatrix} d & -N^{-1}c \\ -Nb & a \end{psmallmatrix} \in \G_{0}(N)$. Thus $W_{N}\g = \g'W_{N}$ and it follows that
       \begin{align*}
         (\w_{N}f)(\g z) &= (\sqrt{N}\g z)^{-k}f(W_{N}\g z) \\
         &= (\sqrt{N}\g z)^{-k}f(\g'W_{N}z) \\
@@ -1218,12 +1137,142 @@
       \end{align*}
       This verifies modularity of $\w_{N}f$. As for the growth condition, let $\s_{\mf{a}}$ be a scaling matrix for the cusp $\mf{a}$. Then $W_{N}\s_{\mf{a}}$ takes $\infty$ to an element of $\Q \cup \{\infty\}$ since $W_{N} \in \GL_{2}^{+}(\Q)$. In other words, $W_{N}\s_{\mf{a}}\infty = \mf{b}$ for some cusp $\mf{b}$. Then the cocycle condition implies
       \[
-        j(\s_{\mf{a}},z)^{-k}(\w_{N}f)(\s_{\mf{a}}z) = N^{\frac{k}{2}}j(W_{n}\s_{\mf{a}},z)^{-k}f(W_{n}\s_{\mf{a}}z),
+        j(\s_{\mf{a}},z)^{-k}(\w_{N}f)(\s_{\mf{a}}z) = N^{\frac{k}{2}}j(W_{N}\s_{\mf{a}},z)^{-k}f(W_{N}\s_{\mf{a}}z),
       \]
-      and the growth condition follows from that of $f$. In particular, $\w_{N}f$ is a cusp form because $f$ is.
+      and the growth condition follows from that of $f$. In particular, $\w_{N}f$ is a cusp form because $f$ is. It follows that $\w_{N}f \in \mc{S}_{k}(N,\cchi)$. We now show that $\w_{N}$ is self-adjoint. Indeed, since $\w_{N}' = \det(W_{N})\w_{N}^{-1} = \w_{N}$ (recall we are working in $\PSL_{2}(\Z)$) \cref{prop:Petersson_adjoint_holomorphic} implies
+      \[
+        \w_{N}^{\ast} = N^{1-\frac{k}{2}}[W_{N}']_{k} = \w_{N}.
+      \]
+      Thus $\w_{N}$ is self-adjoint.
+      We now show that $\w_{N}$ preserves the subspaces of oldforms and newforms. To show that $\w_{N}$ preserves $\mc{S}_{k}^{\text{old}}(\G_{1}(N))$, let $h = f+g[\a_{p}]_{k}$ be in the image of $i_{p}$, with $p \mid N$, so that $i_{p}(f,g) = h$. Then it suffices to show
+      \[
+        \w_{N}i_{p}(f,g) = i_{p}(\w_{\frac{N}{p}}p^{\frac{3k}{2}-1}g,\w_{\frac{N}{p}}p^{1-\frac{k}{2}}f).
+      \]
+      This is equivalent to showing that
+      \[
+        \w_{N}f = (\w_{\frac{N}{p}}p^{1-\frac{k}{2}}f)[\a_{p}]_{k} \quad \text{and} \quad \w_{N}(g[\a_{p}]_{k}) = \w_{\frac{N}{p}}p^{\frac{3k}{2}-1}g,
+      \]
+      and both formulas follow immediately from the identities
+      \[
+        W_{N} = W_{\frac{N}{p}}\a_{p} \quad \text{and} \quad \a_{p}W_{N} = pW_{\frac{N}{p}}.
+      \]
+      Thus $\w_{N}$ preserves the subspace of oldforms. To see that $\w_{N}$ preserves the subspace of newforms as well, let $f$ and $g$ be a newform and an oldform respectively. The fact that $\w_{N}$ is self-adjoint and preserves the subspace of oldforms gives
+      \[
+        \<\w_{N}f,g\> = \<f,\w_{N}g\> = 0.
+      \]
+      Hence $\w_{N}f$ must also be a newform and so $\w_{N}$ preserves the subspace of newforms. It remains to prove the formula. For this, observe $W_{N}^{2}z = z$ and $j(W_{N}^{2},z) = (-N)^{k}$ so that
+      \[
+        (\w_{N}^{2}f)(z) = N^{2-k}(f[W_{N}^{2}]_{k})(z) = N^{k}j(W_{N}^{2},z)f(W_{N}^{2}z) = (-1)^{k}f(z).
+      \]
     \end{proof}
 
-    The crucial fact we need is how $\w_{N}$ acts on primitive Hecke eigenforms (see \cite{cohenmodular2017} for a proof):
+    \cref{prop:Atkin_Lehner_holomorphic} shows that $\w_{N}$ is an involution if $k$ is even and is at most of order $4$. We now need to understand how the Atkin-Lehner operator interacts with the diamond and Hecke operators:
+
+    \begin{proposition}\label{prop:Atkin_Lehner_adjoint_diamond_Hecke_holomorphic}
+      For all $m \ge 1$ with $(m,N) = 1$, the diamond operators $\<m\>$ and Hecke operators $T_{m}$ satisfy the following adjoint formulas:
+      \[
+        \<m\>^{\ast} = \w_{N}\<m\>\w_{N}^{-1} \quad \text{and} \quad T_{m}^{\ast} = \w_{N}T_{m}\w_{N}^{-1}.
+      \]
+    \end{proposition}
+    \begin{proof}
+      By multiplicativity and commutativity (recall \cref{prop:Hecke_operators_commute_holomorphic}) of the diamond and Hecke operators, it suffices to prove the two adjoint formulas when $m = p$ for a prime $p \nmid N$. We will prove the adjoint formula for the diamond operators first. Let $\g = \begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix} \in \G_{1}(N)$. Then
+      \[
+        W_{N}\g W_{N}^{-1} = \begin{pmatrix} 0 & -1 \\ N & 0 \end{pmatrix}\begin{pmatrix} a & b \\ c & d \end{pmatrix}\begin{pmatrix} 0 & N^{-1} \\ -1 & 0 \end{pmatrix} = \begin{pmatrix} d & -N^{-1}c \\ -Nb & a \end{pmatrix} = \g',
+      \]
+      where $\g' = \begin{psmallmatrix} d & -N^{-1}c \\ -Nb & a \end{psmallmatrix} \in \G_{1}(N)$. In other words, $W_{N}$ normalizes $\G_{1}(N)$ so that $W_{N}\G_{1}(N)W_{N}^{-1} = \G_{1}(N)$. As $\G_{0}(N) \le \G_{1}(N)$, the same holds for $\G_{0}(N)$ as well. For the diamond operators, set $\a = \begin{psmallmatrix} \conj{p} & \ast \\ \ast & p \end{psmallmatrix} \in \G_{0}(N)$ and $\a' = \det(\a)\a^{-1} = \begin{psmallmatrix} p & \ast \\ \ast & \conj{p} \end{psmallmatrix} \in \G_{0}(N)$. As $W_{N}\a W_{N}^{-1} = \a'$, \cref{prop:Petersson_adjoint_holomorphic} gives
+      \[
+        \<p\>^{\ast} = [\a']_{k} = \w_{N}\<p\>\w_{N}^{-1}.
+      \]
+      This is the desired adjoint formula for the diamond operators. For the Hecke operators, let $\b_{j} = \begin{psmallmatrix} 1 & j \\ 0 & p \end{psmallmatrix}$ and $\b_{\infty} = \begin{psmallmatrix} pm & n \\ Np & p \end{psmallmatrix}$ for $j$ taken modulo $p$ and where $m$ and $n$ are chosen such that $\det\left(\begin{psmallmatrix} m & n \\ N & p \end{psmallmatrix}\right) = 1$. By \cref{prop:explicit_description_of_Hecke_operators_holomorphic}, $\{\b_{1},\ldots,\b_{p-1},\b_{\infty}\}$ is a complete set of orbit representatives for $T_{p}$. Now let $\a = \begin{psmallmatrix}1 & 0 \\ 0 & p\end{psmallmatrix}$ and set $\a' = \det(\a)\a^{-1} = \begin{psmallmatrix} p & 0 \\ 0 & 1\end{psmallmatrix}$. Then $W_{N}\a W_{N}^{-1} = \a'$, and as $W_{N}$ normalizes $\G_{1}(N)$, \cref{prop:Petersson_adjoint_holomorphic} gives
+      \[
+        T_{p}^{\ast} = [\G_{1}(N)\a'\G_{1}(N)]_{k} = \w_{N}T_{p}\w_{N}^{-1}.
+      \]
+      This is the desired adjoint formula for the Hecke operators.
+    \end{proof}
+    
+    It turns out that the spaces of oldforms and newforms are invariant under the diamond and Hecke operators (see \cite{diamond2005first} for a proof):
+
+    \begin{proposition}\label{prop:old/new_subspaces_are_invariant_holomorphic}
+      The spaces $\mc{S}_{k}^{\mathrm{old}}(\G_{1}(N))$ and $\mc{S}_{k}^{\mathrm{new}}(\G_{1}(N))$ are invariant under the diamond operators $\<m\>$ and Hecke operators $T_{m}$ for all $m \ge 1$ with $(m,N) = 1$.
+    \end{proposition}
+
+    As a corollary, we deduce that these subspaces admit orthogonal bases of eigenforms:
+
+    \begin{corollary}\label{cor:old/new_eigenbasis_holomorphic}
+      $\mc{S}_{k}^{\mathrm{old}}(\G_{1}(N))$ and $\mc{S}_{k}^{\mathrm{new}}(\G_{1}(N))$ admit orthonormal bases of eigenforms.
+    \end{corollary}
+    \begin{proof}
+      This follows immediately from \cref{thm:eigenforms_forms_spectral_theory_holomorphic,prop:old/new_subspaces_are_invariant_holomorphic}
+    \end{proof}
+
+    Something quite amazing happens for the subspace in $\mc{S}_{k}^{\mathrm{new}}(\G_{1}(N))$; the condition $(m,N) = 1$ for eigenforms in a base can be removed. Therefore the eigenforms are actually eigenfunctions for all of the diamond and Hecke operators. We require a preliminary result whose proof is quite involved but it is not beyond the scope of this text (see \cite{diamond2005first} for a proof):
+
+    \begin{lemma}\label{lem:the_main_lemma_for_newforms_holomorphic}
+      If $f \in \mc{S}_{k}(\G_{1}(N))$ with Fourier coefficients $a_{n}(f)$ and such that $a_{n}(f) = 0$ for all $n \ge 1$ whenever $(n,N) = 1$, then
+      \[
+        f = \sum_{p \mid N}p^{k-1}f_{p}[\a_{p}]_{k},
+      \]
+      for some $f_{p} \in \mc{S}_{k}\left(\G_{1}\left(\frac{N}{p}\right)\right)$.
+    \end{lemma}
+
+    The important observation to make about \cref{lem:the_main_lemma_for_newforms_holomorphic} is that if $f \in \mc{S}_{k}(\G_{1}(N))$ is such that its $n$-th Fourier coefficients vanish when $n$ is relatively prime to the level, then $f$ must be an oldform. With this lemma we can prove the main theorem about $\mc{S}_{k}^{\mathrm{new}}(\G_{1}(N))$. The introduction of some language will be useful for the statement and its proof. We say that $f$ is a \textbf{primitive Hecke eigenform}\index{primitive Hecke eigenform} if it is a nonzero Hecke normalized Hecke eigenform in $\mc{S}_{k}^{\mathrm{new}}(\G_{1}(N))$. We can now prove the main result about newforms which is that Hecke eigenforms exist:
+
+    \begin{theorem}\label{thm:newforms_characterization_holomorphic}
+      Let $f \in \mc{S}_{k}^{\mathrm{new}}(\G_{1}(N))$ be an eigenform. Then the following hold:
+      \begin{enumerate}[label=(\roman*)]
+        \item $f$ is a Hecke eigenform.
+        \item If $g \in \mc{S}_{k}^{\mathrm{new}}(\G_{1}(N))$ is of the same weight, level, and character as $f$, and has the same Hecke eigenvalues, then $g = cf$ for some nonzero $c \in \C$.
+      \end{enumerate}
+      Moreover, the primitive Hecke eigenforms in $\mc{S}_{k}^{\mathrm{new}}(\G_{1}(N))$ form an orthogonal basis and each such eigenform lies in an eigenspace $\mc{S}_{k}(N,\chi)$.
+    \end{theorem}
+    \begin{proof}
+      First suppose $f \in \mc{S}_{k}(\G_{1}(N))$ is an eigenform with Fourier coefficients $a_{n}(f)$. For $m \ge 1$ with $(m,N) = 1$, there exists $\l_{f}(m),\mu_{f}(m) \in \C$ such that $T_{m}f = \l_{f}(m)f$ and $\<m\>f = \mu_{f}(m)f$. Actually, $\<m\>f = \mu_{f}(m)f$ holds for all $m \ge 1$ because $\<m\>$ is the zero operator if $(m,N) > 1$ and in this case we can take $\mu_{f}(m) = 0$. If we set $\chi(n) = \mu_{f}(m)$, then $\chi$ is a Dirichlet character modulo $N$. This follows because multiplicativity of $\<m\>$ implies the same for $\chi$ and $\chi$ is $N$-periodic since $\<m\>$ is $N$-periodic ($\<m\>$ is defined by $m$ taken modulo $N$). But then $\<m\>f = \chi(m)f$ so that $f \in \mc{S}_{k}(N,\chi)$. As $f$ is an eigenform, we also have $a_{m}(f) = \l_{f}(m)a_{1}(f)$ provided $(m,N) = 1$. So if $a_{1}(f) = 0$, \cref{lem:the_main_lemma_for_newforms_holomorphic} implies $f \in \mc{S}_{k}^{\mathrm{old}}(\G_{1}(N))$. With this fact in hand, we can prove the statements.
+      \begin{enumerate}[label=(\roman*)]
+        \item The claim is trivial if $f$ is zero, so assume otherwise. If $f \in \mc{S}_{k}^{\mathrm{new}}(\G_{1}(N))$, then $f \notin \mc{S}_{k}^{\mathrm{old}}(\G_{1}(N))$ and so by what we have shown $a_{1}(f) \neq 0$. Therefore we may Hecke normalize $f$ so that $a_{1}(f) = 1$ and $a_{m}(f) = \l_{f}(m)$. Now set $g_{m} = T_{m}f-\l_{f}(m)f$ for any $m \ge 1$. By \cref{prop:old/new_subspaces_are_invariant_holomorphic}, $g_{m} \in \mc{S}_{k}^{\mathrm{new}}(\G_{1}(N))$. Moreover, $g_{m}$ is an eigenform and its first Fourier coefficient is zero. But then $g_{m} \in \mc{S}_{k}^{\mathrm{old}}(\G_{1}(N))$ too and so $g_{m} = 0$ because $\mc{S}_{k}^{\mathrm{new}}(\G_{1}(N))$ and $\mc{S}_{k}^{\mathrm{old}}(\G_{1}(N))$ are orthogonal subspaces. This means $T_{m}f = \l_{f}(m)f$ for any $m \ge 1$. Therefore $f$ is a primitive Hecke eigenform and so is a Hecke eigenform before Hecke normalization.
+        \item Suppose $g \in \mc{S}_{k}^{\mathrm{new}}(\G_{1}(N))$ is of the same weight, level, and character as $f$ and with the same Hecke eigenvalues. By (i), $f$ and $g$ are Hecke eigenforms. After Hecke normalization, $f$ and $g$ have the same Fourier coefficients and so are identical. It follows that before Hecke normalization $f = cg$ for some nonzero $c \in \C$.
+      \end{enumerate}
+      Note that our initial remarks together with (i) show that each primitive Hecke eigenform $f$ belongs to some eigenspace $\mc{S}_{k}(N,\chi)$. By \cref{cor:old/new_eigenbasis_holomorphic}, $\mc{S}_{k}^{\mathrm{new}}(\G_{1}(N))$ admits an orthogonal basis of eigenforms which by (i) are Hecke eigenforms. As $\mc{S}_{k}^{\mathrm{new}}(\G_{1}(N))$ is finite dimensional (because $\mc{S}_{k}(\G_{1}(N))$ is), it follows that all of the primitive Hecke eigenforms form an orthogonal basis for $\mc{S}_{k}^{\mathrm{new}}(\G_{1}(N))$ if we can show that they are linearly independent. So suppose to the contrary that we have a nontrivial linear relation
+      \[
+        \sum_{1 \le i \le r}c_{i}f_{i} = 0,
+      \]
+      for some primitive Hecke eigenforms $f_{i}$, nonzero constants $c_{i}$, and with $r$ minimal. Note that $r \ge 2$ for else we do not have a nontrivial linear relation. Letting $m \ge 1$ applying the operator $T_{m}-\l_{f_{1}}(m)$ to our nontrivial linear relation gives
+      \[
+        \sum_{2 \le i \le r}c_{i}(\l_{f_{i}}(m)-\l_{f_{1}}(m))f_{i} = 0,
+      \]
+      which has one less term. Since $r$ was chosen to be minimal, this implies $\l_{f_{i}}(m)-\l_{f_{1}}(m)$ for all $i$. But $m$ was arbitrary, so $f_{i} = f_{1}$ for all $i$ by (ii). Hence $r = 1$ which is a contradiction.
+    \end{proof}
+
+    Statement (i) in \cref{thm:newforms_characterization_holomorphic} implies that primitive Hecke eigenforms satisfy the Hecke relations for all $n,m \ge 1$. Statement (ii) is known as \textbf{multiplicity one}\index{multiplicity one} for holomorphic forms and can be interpreted as saying that a basis of newforms for $\mc{S}_{k}^{\mathrm{new}}(\G_{1}(N))$ contains one element per ``eigenvalue'' where we mean a set of eigenvalues one for each Hecke operator $T_{m}$. We will now discuss conjugate cusp forms. For any $f \in \mc{S}_{k}(N,\chi)$, we define the \textbf{conjugate}\index{conjugate} $\conj{f}$ of $f$ by
+    \[
+      \conj{f}(z) = \conj{f(-\conj{z})}.
+    \]
+    Note that if $f$ has Fourier coefficients $a_{n}(f)$, then $\conj{f}$ has Fourier coefficients $\conj{a_{n}(f)}$. It turns out that $\conj{f}$ is indeed a holomorphic cusp form and behaves well with respect to the Hecke operators:
+
+    \begin{proposition}\label{cref:conjugate_cusp_form_holomorphic}
+      If $f \in \mc{S}_{k}(N,\chi)$, then $\conj{f} \in \mc{S}_{k}(N,\cchi)$. Moreover,
+      \[
+        T_{m}\conj{f} = \conj{T_{m}f},
+      \]
+      for all $m \ge 1$ with $(m,N) = 1$. In particular, if $f$ is an eigenform with Hecke eigenvalues $\l_{f}(m)$ then $f$ is too but with Hecke eigenvalues $\conj{\l_{f}(m)}$.
+    \end{proposition}
+    \begin{proof}
+      Holomorphy is clear so we need next need to verify the modularity. For this, let $\g = \begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix} \in \G_{0}(N)$ and note that $\g = \begin{psmallmatrix} a & -b \\ -c & d \end{psmallmatrix} \in \G_{0}(N)$. Then we compute
+      \begin{align*}
+        \conj{f}(\g z) &= \conj{f(-\conj{\g z})} \\
+        &= \conj{f(\g'(-\conj{z}))} \\
+        &= \conj{\chi(\g)j(\g',-\conj{z})^{k}f(-\conj{z})} \\
+        &= \conj{\chi(\g)j(\g,z)^{k}f(-\conj{z})} \\
+        &= \cchi(\g)j(\g,z)^{k}\conj{f(-\conj{z})} \\
+        &= \cchi(\g)j(\g,z)^{k}\conj{f}(z),
+      \end{align*}
+      which proves modularity. The growth condition follows immediately from that of $f$ and thus $\conj{f}$ is a cusp form since $f$ is. This proves the first statement. The second statement is immediate from \cref{prop:general_Hecke_operators_acting_on_Fourier_coefficients_holomorphic}. For the last statement, suppose $f \in \mc{S}_{k}(N,\chi)$ is an eigenform with Hecke eigenvalues $\l_{f}(m)$. Then by what we have already shown,
+      \[
+        (T_{m}\conj{f})(z) = (\conj{T_{m}f})(z) = \conj{T_{m}f(-\conj{z})} = \conj{\l_{f}(m)f(-\conj{z})} = \conj{\l_{f}(m)f}(z),
+      \]
+      which completes the proof.
+    \end{proof}
+    
+    In conjunction with \cref{thm:newforms_characterization_holomorphic}, \cref{cref:conjugate_cusp_form_holomorphic} implies that the primitive Hecke eigenforms in $\mc{S}_{k}^{\mathrm{new}}(\G_{1}(N))$ are conjugate invariant and if $f \in \mc{S}_{k}(N,\chi)$ is such an eigenform then $\conj{f} \in \mc{S}_{k}(N,\cchi)$ is as well. The crucial fact we need is how $\w_{N}f$ is related to $\conj{f}$ when $f$ is a primitive Hecke eigenform:
 
     \begin{proposition}\label{prop:Atkin_Lehner_conjugation_holomorphic}
       If $f \in \mc{S}_{k}(N,\chi)$ is a primitive Hecke eigenform, then
@@ -1232,6 +1281,17 @@
       \]
       where $\conj{f} \in \mc{S}_{k}(N,\cchi)$ is a primitive Hecke eigenform and $\w_{N}(f) \in \C$ is nonzero with $|\w_{N}(f)| = 1$.
     \end{proposition}
+    \begin{proof}
+      Let $f$ have Hecke eigenvalues $\l_{f}(m)$. On the one hand, \cref{thm:newforms_characterization_holomorphic,cref:conjugate_cusp_form_holomorphic} together imply that $\conj{f}$ is a primitive Hecke eigenform with Hecke eigenvalues $\conj{\l_{f}(m)}$. One the other hand, \cref{prop:Atkin_Lehner_adjoint_diamond_Hecke_holomorphic} implies $\w_{N}T_{m} = T_{m}^{\ast}\w_{N}$ for $m \ge 1$ with $(m,N) = 1$. Then
+      \[
+        \<T_{m}\w_{N}f,\w_{N}f\> = \<\w_{N}f,T_{m}^{\ast}\w_{N}f\> = \<\w_{N}f,\w_{N}T_{m}f\> = \<\w_{N}f,\l_{m}(f)\w_{N}f\> = \conj{\l_{f}(m)}\<\w_{N}f,\w_{N}f\>,
+      \]
+      and it follows that $T_{m}\w_{N}f = \conj{\l_{f}(m)}\w_{N}f$. In other words, $\w_{N}f$ is an eigenform with Hecke eigenvalues $\conj{\l_{f}(m)}$. By \cref{prop:Atkin_Lehner_holomorphic}, $\w_{N}f$ is a newform and hence \cref{thm:newforms_characterization_holomorphic} (i) further implies that $\w_{N}f$ is a Hecke eigenform. Then multiplicity one gives
+      \[
+        \w_{N}f = \w_{N}(f)\conj{f},
+      \]
+      for some nonzero $\w_{N}(f) \in \C$. Actually, by \cref{prop:Atkin_Lehner_holomorphic} we see that $\w_{N}$ is at most of order $4$ so necessarily $|\w_{N}(f)| = 1$.
+    \end{proof} 
   \section{The Ramanujan-Petersson Conjecture}
     We will now discuss a famous conjecture about the size of the Hecke eigenvalues of primitive Hecke eigenforms. Historically the conjecture was born from conjectures made about the \textbf{modular discriminant}\index{modular discriminant} $\D$ given by
     \[
@@ -1247,7 +1307,7 @@
       \item $\tau(p^{n}) = \tau(p^{n-1})\tau(p)-p^{11}\tau(p^{n-2})$ for all prime $p$.
       \item $|\tau(p)| \le 2p^{\frac{11}{2}}$ for all prime $p$.
     \end{enumerate}
-    Note that (i) means $\tau$ is multiplicative. Moreover, (i) and (ii) are strikingly similar to the properties satisfied by the Hecke operators. In fact, (i) and (ii) are follow from the fact that $\D$ is a Hecke eigenform. Property (iii) turned out to be drastically more difficult to prove and is known as the classical \textbf{Ramanujan-Petersson conjecture}\index{Ramanujan-Petersson conjecture}. To state the Ramanujan-Petersson conjecture for holomorphic forms, suppose $f \in \mc{S}_{k}(N,\chi)$ is a primitive Hecke eigenform with Hecke eigenvalues $\l_{f}(n)$. For each prime $p$, consider the polynomial
+    Note that (i) means $\tau$ is multiplicative. Moreover, (i) and (ii) are strikingly similar to the properties satisfied by the Hecke operators. In fact, (i) and (ii) are follow from the fact that $\D$ is a Hecke eigenform. Property (iii) turned out to be drastically more difficult to prove and is known as the classical \textbf{Ramanujan-Petersson conjecture}\index{Ramanujan-Petersson conjecture}. To state the Ramanujan-Petersson conjecture for holomorphic forms, suppose $f \in \mc{S}_{k}(N,\chi)$ is a primitive Hecke eigenform with Hecke eigenvalues $\l_{f}(m)$. For each prime $p$, consider the polynomial
     \[
       1-\l_{f}(p)p^{-\frac{k-1}{2}}p^{-s}+\chi(p)p^{-2s}.
     \]
@@ -1258,7 +1318,7 @@
     Then the more general \textbf{Ramanujan-Petersson conjecture}\index{Ramanujan-Petersson conjecture} for holomorphic forms is following statement:
 
     \begin{theorem}[Ramanujan-Petersson conjecture, holomorphic version]
-      Suppose $f \in \mc{S}_{k}(N,\chi)$ is a primitive Hecke eigenform with Hecke eigenvalues $\l_{f}(n)$. Let $\a_{1}(p)$ and $\a_{2}(p)$ be the roots of the $p$-th Hecke polynomial. Then for all primes $p$,
+      Suppose $f \in \mc{S}_{k}(N,\chi)$ is a primitive Hecke eigenform with Hecke eigenvalues $\l_{f}(m)$. Let $\a_{1}(p)$ and $\a_{2}(p)$ be the roots of the $p$-th Hecke polynomial. Then for all primes $p$,
       \[
         |\l_{f}(p)| \le 2p^{\frac{k-1}{2}}.
       \]
@@ -1268,7 +1328,7 @@
       \]
     \end{theorem}
 
-    In the 1970's Deligne proved the Ramanujan-Petersson conjecture (see \cite{deligne1971formes} and \cite{deligne1974conjecture} for the full proof). The argument is significantly beyond the scope of this text, and in actuality follows from Deligne's work on the Weil conjectures (except in the case $k = 1$ which requires a modified argument). This requires understanding classical algebraic topology and $\ell$-acid cohomology in addition to the basic analytic number theory. As such, the proof of the Ramanujan-Petersson conjecture has been one of the biggest advances in analytic number theory in recent decades. Note that the Ramanujan-Petersson conjecture and the Hecke relations together give the bound $\l_{f}(n) \ll \s_{0}(n)n^{\frac{k-1}{2}} \ll_{\e} n^{\frac{k-1}{2}+\e}$ (recall \cref{prop:sum_of_divisors_growth_rate}).
+    In the 1970's Deligne proved the Ramanujan-Petersson conjecture (see \cite{deligne1971formes} and \cite{deligne1974conjecture} for the full proof). The argument is significantly beyond the scope of this text, and in actuality follows from Deligne's work on the Weil conjectures (except in the case $k = 1$ which requires a modified argument). This requires understanding classical algebraic topology and $\ell$-acid cohomology in addition to the basic analytic number theory. As such, the proof of the Ramanujan-Petersson conjecture has been one of the biggest advances in analytic number theory in recent decades. Note that the Ramanujan-Petersson conjecture and the Hecke relations together give the bound $\l_{f}(m) \ll \s_{0}(m)m^{\frac{k-1}{2}} \ll_{\e} m^{\frac{k-1}{2}+\e}$ (recall \cref{prop:sum_of_divisors_growth_rate}).
   \section{Twists of Holomorphic Forms}
     We can also twist of holomorphic forms by Dirichlet characters. Let $f \in \mc{S}_{k}(N,\chi)$ with Fourier series
     \[
