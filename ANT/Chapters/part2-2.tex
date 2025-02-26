@@ -1066,24 +1066,25 @@
     \[
       (f[\a_{d}]_{k})(z) = \det(\a_{d})^{k-1}j(\a_{d},z)^{-k}f(\a_{d}z) = d^{k-1}f(dz).
     \]
-    It turns out that, $[\a_{d}]_{k}$ maps $\mc{S}_{k}(\G_{1}(M))$ into $\mc{S}_{k}(\G_{1}(N))$:
+    It turns out that, $[\a_{d}]_{k}$ maps $\mc{S}_{k}(\G_{1}(M))$ into $\mc{S}_{k}(\G_{1}(N))$ and more:
     
     \begin{proposition}\label{equ:lifting_operator_holomorphic}
-      Let $M$ and $N$ be positive integers such that $M \mid N$. For any $d \mid \frac{N}{M}$, $[\a_{d}]_{k}$ maps $\mc{S}_{k}(\G_{1}(M))$ into $\mc{S}_{k}(\G_{1}(N))$.
+      Let $M$ and $N$ be positive integers such that $M \mid N$. For any $d \mid \frac{N}{M}$, $[\a_{d}]_{k}$ maps $\mc{S}_{k}(\G_{1}(M))$ into $\mc{S}_{k}(\G_{1}(N))$. In particular, $[\a_{d}]_{k}$ takes $\mc{S}_{k}(M,\chi)$ into $\mc{S}_{k}(N,\chi)$.
     \end{proposition}
     \begin{proof}
-      It is clear that holomorphy is satisfied for $f[\a_{d}]_{k}$. To verify modularity, let $\g = \begin{psmallmatrix} a & b \\ c & d' \end{psmallmatrix} \in \G_{1}(N)$. Then
+      By \cref{thm:diamond_operator_decomposition_holomorphic}, it suffices to verify only the latter statement so we may assume $f \in \mc{S}_{k}(M,\chi)$. It is clear that holomorphy is satisfied for $f[\a_{d}]_{k}$. To verify modularity, let $\g = \begin{psmallmatrix} a & b \\ c & d' \end{psmallmatrix} \in \G_{1}(N)$. Then
       \[
         \a_{d}\g\a_{d}^{-1} = \begin{pmatrix} d & 0 \\ 0 & 1 \end{pmatrix}\begin{pmatrix} a & b \\ c & d' \end{pmatrix}\begin{pmatrix} d^{-1} & 0 \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} a & bd \\ d^{-1}c & d' \end{pmatrix} = \g',
       \]
-      where $\g' = \begin{psmallmatrix} a & bd \\ d^{-1}c & d' \end{psmallmatrix}$. Since $c \equiv 0 \tmod{N}$ and $d \mid \frac{N}{M}$, we deduce that $d^{-1}c \equiv 0 \tmod{M}$. So $\g' \in \G_{1}(M)$ and therefore $\a_{d}\G_{1}(N)\a_{d}^{-1} \subseteq \G_{1}(M)$, or equivalently, $\G_{1}(N) \subseteq \a_{d}^{-1}\G_{1}(M)\a_{d}$. Writing $\g = \a_{d}^{-1}\g'\a_{d}$, we see that $j(\g',\a_{d}z) = j(\g,z)$ and 
+      where $\g' = \begin{psmallmatrix} a & bd \\ d^{-1}c & d' \end{psmallmatrix}$. Since $c \equiv 0 \tmod{N}$ and $d \mid \frac{N}{M}$, we deduce that $d^{-1}c \equiv 0 \tmod{M}$. So $\g' \in \G_{1}(M)$ and therefore $\a_{d}\G_{1}(N)\a_{d}^{-1} \subseteq \G_{1}(M)$, or equivalently, $\G_{1}(N) \subseteq \a_{d}^{-1}\G_{1}(M)\a_{d}$. Writing $\g = \a_{d}^{-1}\g'\a_{d}$, we see that $\chi(\g') = \chi(\g)$ and $j(\g',\a_{d}z) = j(\g,z)$ and so
       \begin{align*}
         (f[\a_{d}]_{k})(\g z) &= d^{k-1}f(d \g z) \\
         &= d^{k-1}f(d\a_{d}^{-1}\g'\a_{d}z) \\
-        &= d^{k-1}f\left(\g'\a_{d}z\right) && \text{$d\a_{d}^{-1}z = z$} \\
-        &= j(\g',\a_{d}z)d^{k-1}f(\a_{d}z) \\
-        &= j(\g,z)d^{k-1}f(dz) && \text{$j(\g',\a_{d}z) = j(\g,z)$ and $\a_{d}z = dz$} \\
-        &= j(\g,z)(f[\a_{d}]_{k})(z).
+        &= d^{k-1}f\left(\g'\a_{d}z\right) \\
+        &= \chi(\g')j(\g',\a_{d}z)d^{k-1}f(\a_{d}z) && \text{modularity} \\
+        &= \chi(\g)j(\g,z)d^{k-1}f(\a_{d}z) \\
+        &= \chi(\g)j(\g,z)d^{k-1}f(dz) \\
+        &= \chi(\g)j(\g,z)(f[\a_{d}]_{k})(z).
       \end{align*}
       This verifies the modularity of $f[\a_{d}]_{k}$. For the growth condition, let $\s_{\mf{a}}$ be a scaling matrix for the cusp $\mf{a}$ of $\G_{1}(M)\backslash\H$. Then $\a_{d}\s_{\mf{a}}$ takes $\infty$ to an element of $\Q \cup \{\infty\}$ since $\a_{d} \in \GL_{2}^{+}(\Q)$. In other words, $\a_{d}\s_{\mf{a}}\infty = \mf{b}$ for some cusp $\mf{b}$ of $\G_{1}(N)\backslash\H$. Then the cocycle condition implies
       \[
@@ -1096,15 +1097,15 @@
     \[
       i_{d}:\mc{S}_{k}\left(\G_{1}\left(\frac{N}{d}\right)\right)\x\mc{S}_{k}\left(\G_{1}\left(\frac{N}{d}\right)\right) \to \mc{S}_{k}(\G_{1}(N)) \qquad (f,g) \mapsto f+g[\a_{d}]_{k}.
     \]
-    This map is well-defined by \cref{equ:lifting_operator_holomorphic}. The subspace of \textbf{oldforms of level $N$}\index{oldforms of level $N$} is
+    This map is well-defined by \cref{equ:lifting_operator_holomorphic}. The subspace of \textbf{oldforms}\index{oldforms} of level $N$ is
     \[
       \mc{S}_{k}^{\mathrm{old}}(\G_{1}(N)) = \bigop_{p \mid N}\Im(i_{p}),
     \]
-    and the subspace of \textbf{newforms of level $N$}\index{newforms of level $N$} is
+    and the subspace of \textbf{newforms}\index{newforms} of level $N$ is
     \[
       \mc{S}_{k}^{\mathrm{new}}(\G_{1}(N)) = \mc{S}_{k}^{\mathrm{old}}(\G_{1}(N))^{\perp}.
     \]
-    The elements of such subspaces are called \textbf{oldforms}\index{oldforms} and \textbf{newforms}\index{newforms} respectively. We will need a useful operator for the study of oldforms and newforms. Let
+    An element of these subspaces is called an \textbf{oldform}\index{oldform} or \textbf{newform}\index{newform} respectively. Note that there are no oldforms of level $1$. We will need a useful operator for the study of oldforms and newforms. Let
     \[
       W_{N} = \begin{pmatrix} 0 & -1 \\ N & 0 \end{pmatrix},
     \]
@@ -1146,13 +1147,13 @@
       Thus $\w_{N}$ is self-adjoint.
       We now show that $\w_{N}$ preserves the subspaces of oldforms and newforms. To show that $\w_{N}$ preserves $\mc{S}_{k}^{\text{old}}(\G_{1}(N))$, let $h = f+g[\a_{p}]_{k}$ be in the image of $i_{p}$, with $p \mid N$, so that $i_{p}(f,g) = h$. Then it suffices to show
       \[
-        \w_{N}i_{p}(f,g) = i_{p}(\w_{\frac{N}{p}}p^{\frac{3k}{2}-1}g,\w_{\frac{N}{p}}p^{1-\frac{k}{2}}f).
+        \w_{N}i_{p}(f,g) = i_{p}(\w_{\frac{N}{p}}p^{\frac{3k}{2}-1}g,\w_{\frac{N}{p}}p^{1-\frac{k}{2}}f),
       \]
-      This is equivalent to showing that
+      which will follow from the formulas
       \[
-        \w_{N}f = (\w_{\frac{N}{p}}p^{1-\frac{k}{2}}f)[\a_{p}]_{k} \quad \text{and} \quad \w_{N}(g[\a_{p}]_{k}) = \w_{\frac{N}{p}}p^{\frac{3k}{2}-1}g,
+        \w_{N}f = (\w_{\frac{N}{p}}p^{1-\frac{k}{2}}f)[\a_{p}]_{k} \quad \text{and} \quad \w_{N}(g[\a_{p}]_{k}) = \w_{\frac{N}{p}}p^{\frac{3k}{2}-1}g.
       \]
-      and both formulas follow immediately from the identities
+      Both formulas follow immediately from the identities
       \[
         W_{N} = W_{\frac{N}{p}}\a_{p} \quad \text{and} \quad \a_{p}W_{N} = pW_{\frac{N}{p}}.
       \]
@@ -1169,32 +1170,75 @@
     \cref{prop:Atkin_Lehner_holomorphic} shows that $\w_{N}$ is an involution if $k$ is even and is at most of order $4$. We now need to understand how the Atkin-Lehner operator interacts with the diamond and Hecke operators:
 
     \begin{proposition}\label{prop:Atkin_Lehner_adjoint_diamond_Hecke_holomorphic}
-      For all $m \ge 1$ with $(m,N) = 1$, the diamond operators $\<m\>$ and Hecke operators $T_{m}$ satisfy the following adjoint formulas:
+      On $\mc{S}_{k}(\G_{1}(N))$, the diamond operators $\<m\>$ and Hecke operators $T_{m}$ satisfy the following adjoint formulas for all $m \ge 1$:
       \[
         \<m\>^{\ast} = \w_{N}\<m\>\w_{N}^{-1} \quad \text{and} \quad T_{m}^{\ast} = \w_{N}T_{m}\w_{N}^{-1}.
       \]
     \end{proposition}
     \begin{proof}
-      By multiplicativity of the diamond and Hecke operators (recall \cref{prop:Hecke_operators_commute_holomorphic}), it suffices to prove the two adjoint formulas when $m = p$ for a prime $p \nmid N$. We will prove the adjoint formula for the diamond operators first. Let $\g = \begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix} \in \G_{1}(N)$. Then
+      By multiplicativity of the diamond and Hecke operators (recall \cref{prop:Hecke_operators_commute_holomorphic}), it suffices to prove the two adjoint formulas when $m = p$ for a prime $p$. Let $\g = \begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix} \in \G_{1}(N)$. Then
       \[
         W_{N}\g W_{N}^{-1} = \begin{pmatrix} 0 & -1 \\ N & 0 \end{pmatrix}\begin{pmatrix} a & b \\ c & d \end{pmatrix}\begin{pmatrix} 0 & N^{-1} \\ -1 & 0 \end{pmatrix} = \begin{pmatrix} d & -N^{-1}c \\ -Nb & a \end{pmatrix} = \g',
       \]
-      where $\g' = \begin{psmallmatrix} d & -N^{-1}c \\ -Nb & a \end{psmallmatrix} \in \G_{1}(N)$. In other words, $W_{N}$ normalizes $\G_{1}(N)$ so that $W_{N}\G_{1}(N)W_{N}^{-1} = \G_{1}(N)$. As $\G_{0}(N) \le \G_{1}(N)$, the same holds for $\G_{0}(N)$ as well. For the diamond operators, set $\a = \begin{psmallmatrix} \conj{p} & \ast \\ \ast & p \end{psmallmatrix} \in \G_{0}(N)$ and $\a' = \det(\a)\a^{-1} = \begin{psmallmatrix} p & \ast \\ \ast & \conj{p} \end{psmallmatrix} \in \G_{0}(N)$. As $W_{N}\a W_{N}^{-1} = \a'$, \cref{prop:Petersson_adjoint_holomorphic} gives
+      where $\g' = \begin{psmallmatrix} d & -N^{-1}c \\ -Nb & a \end{psmallmatrix} \in \G_{1}(N)$. In other words, $W_{N}$ normalizes $\G_{1}(N)$ so that $W_{N}\G_{1}(N)W_{N}^{-1} = \G_{1}(N)$. As $\G_{0}(N) \le \G_{1}(N)$, the same holds for $\G_{0}(N)$ as well. For the diamond operators, the formula is obvious when $p \mid N$ since $\<p\>$ is the zero operator. So suppose $p \nmid N$ and let $\a = \begin{psmallmatrix} \conj{p} & \ast \\ \ast & p \end{psmallmatrix} \in \G_{0}(N)$ and $\a' = \det(\a)\a^{-1} = \begin{psmallmatrix} p & \ast \\ \ast & \conj{p} \end{psmallmatrix} \in \G_{0}(N)$. As $W_{N}\a W_{N}^{-1} = \a'$, \cref{prop:Petersson_adjoint_holomorphic} gives
       \[
         \<p\>^{\ast} = [\a']_{k} = \w_{N}\<p\>\w_{N}^{-1}.
       \]
-      This is the desired adjoint formula for the diamond operators. For the Hecke operators, let $\b_{j} = \begin{psmallmatrix} 1 & j \\ 0 & p \end{psmallmatrix}$ and $\b_{\infty} = \begin{psmallmatrix} pm & n \\ Np & p \end{psmallmatrix}$ for $j$ taken modulo $p$ and where $m$ and $n$ are chosen such that $\det\left(\begin{psmallmatrix} m & n \\ N & p \end{psmallmatrix}\right) = 1$. By \cref{prop:explicit_description_of_Hecke_operators_holomorphic}, $\{\b_{1},\ldots,\b_{p-1},\b_{\infty}\}$ is a complete set of orbit representatives for $T_{p}$. Now let $\a = \begin{psmallmatrix}1 & 0 \\ 0 & p\end{psmallmatrix}$ and set $\a' = \det(\a)\a^{-1} = \begin{psmallmatrix} p & 0 \\ 0 & 1\end{psmallmatrix}$. Then $W_{N}\a W_{N}^{-1} = \a'$, and as $W_{N}$ normalizes $\G_{1}(N)$, \cref{prop:Petersson_adjoint_holomorphic} gives
+      This is the desired adjoint formula for the diamond operators when $p \mid N$. Thus the adjoint formula holds for all the diamond operators. For the Hecke operators, let $\a = \begin{psmallmatrix}1 & 0 \\ 0 & p\end{psmallmatrix}$ and set $\a' = \det(\a)\a^{-1} = \begin{psmallmatrix} p & 0 \\ 0 & 1\end{psmallmatrix}$. Then $W_{N}\a W_{N}^{-1} = \a'$, and as $W_{N}$ normalizes $\G_{1}(N)$, \cref{prop:Petersson_adjoint_holomorphic} gives
       \[
         T_{p}^{\ast} = [\G_{1}(N)\a'\G_{1}(N)]_{k} = \w_{N}T_{p}\w_{N}^{-1}.
       \]
       This is the desired adjoint formula for the Hecke operators.
     \end{proof}
     
-    It turns out that the spaces of oldforms and newforms are invariant under the diamond and Hecke operators (see \cite{diamond2005first} for a proof):
+    It turns out that the spaces of oldforms and newforms are invariant under the diamond and Hecke operators:
 
     \begin{proposition}\label{prop:old/new_subspaces_are_invariant_holomorphic}
-      The spaces $\mc{S}_{k}^{\mathrm{old}}(\G_{1}(N))$ and $\mc{S}_{k}^{\mathrm{new}}(\G_{1}(N))$ are invariant under the diamond operators $\<m\>$ and Hecke operators $T_{m}$ for all $m \ge 1$.
+      On $\mc{S}_{k}(\G_{1}(N))$, the diamond operators $\<m\>$ and Hecke operators $T_{m}$ preserve the subspaces of oldforms and newforms for all $m \ge 1$.
     \end{proposition}
+    \begin{proof}
+      By multiplicativity of the diamond and Hecke operators (recall \cref{prop:Hecke_operators_commute_holomorphic}), it suffices to prove this when $m$ is prime. Moreover, if $N = 1$ the result is trivial because there are no oldforms. Therefore we may assume $N > 1$ and hence consider a prime $p$ with $p \mid N$. We will first show that the diamond and Hecke operators preserve $\mc{S}_{k}^{\mathrm{old}}(\G_{1}(N))$. Let $h = f+g[\a_{p}]_{k}$ be in the image of $i_{p}$ so that $i_{p}(f,g) = h$ and let $q$ be a prime. For the diamond operators, it suffices to show
+      \[
+        \<q\>i_{p}(f,g) = i_{p}(\<q\>f,\<q\>g),
+      \]
+      which will follow from the formulas
+      \[
+        \<q\>f = \<q\>f \quad \text{and} \quad \<q\>(g[\a_{p}]_{k}) = (\<q\>g)[\a_{p}]_{k}.
+      \]
+      In both of these formulas, the diamond operators on the left-hand sides and right-hand sides are on levels $N$ and $\frac{N}{p}$ respectively. Both formulas are trivial if $q \mid N$ because then $\<q\>$ is the zero operator. So suppose $q \nmid N$. If $\a = \begin{psmallmatrix} \ast & \ast \\ \ast & q \end{psmallmatrix} \in \G_{0}(N)$, then $\a \in \G_{0}\left(\frac{N}{p}\right)$ and the first formula follows. The second formula follows from the identity
+      \[
+        \begin{pmatrix} \ast & \ast \\ \ast & q \end{pmatrix}\begin{pmatrix} p & 0 \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} p & 0 \\ 0 & 1 \end{pmatrix}\begin{pmatrix} \ast & \ast \\ \ast & q \end{pmatrix}.
+      \]
+      Therefore the diamond operators preserve $\mc{S}_{k}^{\mathrm{old}}(\G_{1}(N))$. The case for the Hecke operators is slightly more involved. Now consider the Hecke operator $T_{q}$ and suppose $q \neq p$. For this Hecke operator, it suffices to show
+      \[
+        T_{q}i_{p}(f,g) = i_{p}(T_{q}f,T_{q}g),
+      \]
+      which will follow from the formulas
+      \[
+        T_{q}f = T_{q}f \quad \text{and} \quad T_{q}(g[\a_{p}]_{k}) = (T_{q}g)[\a_{p}]_{k}.
+      \]
+      In both of these formulas, the Hecke operators on the left-hand sides and right-hand sides are on levels $N$ and $\frac{N}{p}$ respectively. The first formula follows immediately from \cref{prop:prime_Hecke_operators_acting_on_Fourier_coefficients_holomorphic} since this shows that the action of the Hecke operators on the Fourier coefficients is identical. For the second formula, by \cref{thm:diamond_operator_decomposition_holomorphic} we may assume that $g \in \mc{S}\left(\frac{N}{p},\chi\right)$. Then $g[\a_{p}]_{k} \in \mc{S}_{k}(N,\chi)$ (recall \cref{equ:lifting_operator_holomorphic}) and the second formula follows by comparing Fourier coefficients using \cref{prop:prime_Hecke_operators_acting_on_Fourier_coefficients_holomorphic}. Thus the Hecke operators $T_{q}$, save for $q = p$, preserve $\mc{S}_{k}^{\mathrm{old}}(\G_{1}(N))$. Lastly, we consider the Hecke operator $T_{p}$. For this Hecke operator, it suffices to show
+      \[
+        T_{p}i_{p}(f,g) = i_{p}(T_{p}f+p^{k-1}g,-\<p\>f),
+      \]
+      which will follow from the formulas
+      \[
+        T_{p}f = T_{p}f-(\<p\>f)[\a_{p}]_{k} \quad \text{and} \quad T_{p}(g[\a_{p}]_{k}) = p^{k-1}g.
+      \]
+      In both of these formulas, the diamond and Hecke operators on the left-hand sides and right-hand sides are on levels $N$ and $\frac{N}{p}$ respectively. Since $p \mid N$, \cref{prop:explicit_description_of_Hecke_operators_holomorphic} gives
+      \[
+        T_{p}f = \sum_{j \tmod{p}}f\left[\begin{pmatrix} 1 & j \\ 0 & p \end{pmatrix}\right]_{k} = T_{p}f-(\<p\>f)[\a_{p}]_{k},
+      \]
+      where the second equality follows regardless of whether $p \mid \frac{N}{p}$ or not because either $\<p\>$ is the zero operator on level $\frac{N}{p}$ (in the case $p \mid \frac{N}{p}$) or it kills the extra term in the Hecke operator $T_{p}$ on level $\frac{N}{p}$ (in the case $p \nmid \frac{N}{p}$). Therefore the first formula holds. Similarly, since $p \mid N$, \cref{prop:explicit_description_of_Hecke_operators_holomorphic} gives
+      \[
+        T_{p}(g[\a_{p}]_{k})(z) = \sum_{j \tmod{p}}g\left[\begin{pmatrix} p & 0 \\ 0 & 1 \end{pmatrix}\begin{pmatrix} 1 & j \\ 0 & p \end{pmatrix}\right]_{k} = \sum_{j \tmod{p}}g\left[\begin{pmatrix} p & pj \\ 0 & p \end{pmatrix}\right]_{k} = p^{k-1}g,
+      \]
+      where the last equality follows because $g$ is $1$-periodic. This shows that the second formula holds. Thus the Hecke operator $T_{p}$ preserves $\mc{S}_{k}^{\mathrm{old}}(\G_{1}(N))$. We have now shown that all of the diamond and Hecke operators preserve $\mc{S}_{k}^{\mathrm{old}}(\G_{1}(N))$. To show that they also preserve $\mc{S}_{k}^{\mathrm{new}}(\G_{1}(N))$, let $f$ and $g$ be a newform and an oldform respectively. Then for any $m \ge 1$, \cref{prop:Atkin_Lehner_adjoint_diamond_Hecke_holomorphic} gives
+      \[
+        \<\<m\>f,g\> = \<f,\w_{N}\<m\>\w_{N}^{-1}g\> = 0 \quad \text{and} \quad \<T_{m}f,g\> = \<f,\w_{N}T_{m}\w_{N}^{-1}g\> = 0,
+      \]
+      where the second equality in either identity holds because the diamond and Hecke operators preserve $\mc{S}_{k}^{\mathrm{old}}(\G_{1}(N))$ and so does the Atkin-Lehner operator $\w_{N}$ (and hence its inverse as well) by \cref{prop:Atkin_Lehner_holomorphic}. It follows that the diamond and Hecke operators preserve $\mc{S}_{k}^{\mathrm{new}}(\G_{1}(N))$ and this completes the proof.
+    \end{proof}
 
     As a corollary, we deduce that these subspaces admit orthogonal bases of eigenforms:
 
