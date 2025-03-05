@@ -15,13 +15,17 @@
     \]
     and this is called the \textbf{cocycle condition}\index{cocycle condition} for $\e(\g,z)$. For any $k \in \Z$ and any $\g \in \GL_{2}^{+}(\Q)$ we define the \textbf{slash operator}\index{slash operator} $|_{\e,k}:C(\H) \to C(\H)$ to be the linear operator given by
     \[
+      (f|_{\e,k}\g)(z) = \det(\g)^{-1}\e(\g,z)^{-k}f(\g z).
+    \]
+    If $\e$ is clear from content we will suppress this dependence accordingly. Note that if $\g \in \PSL_{2}(\Z)$, the slash operator takes the simpler form
+    \[
       (f|_{\e,k}\g)(z) = \e(\g,z)^{-k}f(\g z).
     \]
-    If $\e$ and $k$ are clear from content we will suppress this dependencies accordingly. The cocycle condition implies that the slash operator is multiplicative. Indeed, if $\g,\g' \in \GL_{2}^{+}(\Q)$, then
+    The cocycle condition implies that the slash operator is multiplicative. Indeed, if $\g,\g' \in \GL_{2}^{+}(\Q)$, then
     \begin{align*}
-      ((f|_{\e,k}\g')|_{\e,k}\g)(z) &= \e(\g,z)^{-k}(f|_{\e,k}\g')(\g z) \\
-      &= \e(\g',\g z)^{-k}\e(\g,z)^{-k}f(\g'\g z) \\
-      &= \e(\g'\g,z)^{-k}f(\g'\g z) && \text{cocycle condition} \\
+      ((f|_{\e,k}\g')|_{\e,k}\g)(z) &= \det(\g)^{-1}\e(\g,z)^{-k}(f|_{\e,k}\g')(\g z) \\
+      &= \det(\g'\g)^{-1}\e(\g',\g z)^{-k}\e(\g,z)^{-k}f(\g'\g z) \\
+      &= \det(\g'\g)^{-1}\e(\g'\g,z)^{-k}f(\g'\g z) && \text{cocycle condition} \\
       &= (f|_{\e,k}\g'\g)(z).
     \end{align*}
     Any operator that commutes with the slash operators $|_{\e,k}\g$ for every $\g \in \GL_{2}^{+}(\Q)$ is said to be \textbf{invariant}\index{invariant}. We define differential operators $R_{k}:C^{\infty}(\H) \to C^{\infty}(\H)$ and $L_{k}:C^{\infty}(\H) \to C^{\infty}(\H)$ to be the linear operators given by
@@ -65,21 +69,21 @@
     \[
       f(z+1) = f\left(\begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}z\right) = f(z),
     \]
-    so that $f$ is $1$-periodic. Let $\s_{\mf{a}}$ be a scaling matrix for the $\mf{a}$ cusp. As \cref{lem:coset_lemma_1} implies $\s_{\mf{a}}^{-1}\G\s_{\mf{a}}$ is a congruence subgroup, it follows by the cocycle condition that $f|\s_{\mf{a}}$ is an automorphic function on $\s_{\mf{a}}^{-1}\G\s_{\mf{a}}\backslash\H$ of the same weight and character as $f$. In particular, $f|\s_{\mf{a}}$ is $1$-periodic. Thus $f$ admits a \textbf{Fourier series}\index{Fourier series} at the $\mf{a}$ cusp given by
+    so that $f$ is $1$-periodic. Let $\s_{\mf{a}}$ be a scaling matrix for the $\mf{a}$ cusp. As \cref{lem:coset_lemma_1} implies $\s_{\mf{a}}^{-1}\G\s_{\mf{a}}$ is a congruence subgroup, it follows by the cocycle condition that $f|_{k}\s_{\mf{a}}$ is an automorphic function on $\s_{\mf{a}}^{-1}\G\s_{\mf{a}}\backslash\H$ of the same weight and character as $f$. In particular, $f|_{k}\s_{\mf{a}}$ is $1$-periodic. Thus $f$ admits a \textbf{Fourier series}\index{Fourier series} at the $\mf{a}$ cusp given by
     \[
-      (f|\s_{\mf{a}})(z) = \sum_{n \in \Z}a_{\mf{a}}(n,y)e^{2\pi inx},
+      (f|_{k}\s_{\mf{a}})(z) = \sum_{n \in \Z}a_{\mf{a}}(n,y)e^{2\pi inx},
     \]
-    with \textbf{Fourier coefficients}\index{Fourier coefficients} $a_{\mf{a}}(n,y)$. Observe that the sum is over all $n \in \Z$ since $f$ may be unbounded as $z \to \infty$. If $\mf{a} = \infty$, we will drop this dependence and in this case $(f|\s_{\mf{a}}) = f$. Unlike holomorphic forms, this Fourier series need not converge pointwise anywhere. Next up are the automorphic forms. We say that a function $f:\H \to \C$ is an \textbf{automorphic form}\index{automorphic form} of \textbf{weight}\index{weight} $k$, \textbf{eigenvalue}\index{eigenvalue} $\l$, \textbf{level}\index{level} $N$, and \textbf{character}\index{character} $\chi$ if following properties are satisfied:
+    with \textbf{Fourier coefficients}\index{Fourier coefficients} $a_{\mf{a}}(n,y)$. Observe that the sum is over all $n \in \Z$ since $f$ may be unbounded as $z \to \infty$. If $\mf{a} = \infty$, we will drop this dependence and in this case $(f|_{k}\s_{\mf{a}}) = f$. Unlike holomorphic forms, this Fourier series need not converge pointwise anywhere. Next up are the automorphic forms. We say that a function $f:\H \to \C$ is an \textbf{automorphic form}\index{automorphic form} of \textbf{weight}\index{weight} $k$, \textbf{eigenvalue}\index{eigenvalue} $\l$, \textbf{level}\index{level} $N$, and \textbf{character}\index{character} $\chi$ if following properties are satisfied:
     \begin{enumerate}[label=(\roman*)]
       \item $f$ is smooth on $\H$.
       \item $(f|_{\e,k}\g)(z) = \chi(\g)f(z)$ for all $\g \in \G$.
       \item $f$ is an eigenfunction for $\D_{k}$ with eigenvalue $\l$.
     \end{enumerate}
-    In property (iii), we will often let $s \in \C$ be such that $\l = s(1-s)$ and write $\l = \l(s)$ so that the eigenvalue can be determined by $s$. It turns turns out that Property (i) is implied by (iii). This is because $\D_{k}$ is an elliptic operator and any eigenfunction of an elliptic operator is automatically real-analytic and hence smooth (see \cite{evans2022partial} for a proof in the weight zero case and \cite{duke2002subconvexity} for notes on the general case). Let $\s_{\mf{a}}$ be a scaling matrix for the $\mf{a}$ cusp. As automorphic forms are automorphic functions, it follows by \cref{prop:Laplace_is_invariant} that $f|\s_{\mf{a}}$ is an automorphic form on $\s_{\mf{a}}^{-1}\G\s_{\mf{a}}\backslash\H$ of the same weight, eigenvalue, and character as $f$. Moreover, $f|\s_{\mf{a}}$ is also $1$-periodic and so $f$ admits a \textbf{Fourier series}\index{Fourier series} at the $\mf{a}$ cusp given by
+    In property (iii), we will often let $s \in \C$ be such that $\l = s(1-s)$ and write $\l = \l(s)$ so that the eigenvalue can be determined by $s$. It turns turns out that Property (i) is implied by (iii). This is because $\D_{k}$ is an elliptic operator and any eigenfunction of an elliptic operator is automatically real-analytic and hence smooth (see \cite{evans2022partial} for a proof in the weight zero case and \cite{duke2002subconvexity} for notes on the general case). Let $\s_{\mf{a}}$ be a scaling matrix for the $\mf{a}$ cusp. As automorphic forms are automorphic functions, it follows by \cref{prop:Laplace_is_invariant} that $f|_{k}\s_{\mf{a}}$ is an automorphic form on $\s_{\mf{a}}^{-1}\G\s_{\mf{a}}\backslash\H$ of the same weight, eigenvalue, and character as $f$. Moreover, $f|_{k}\s_{\mf{a}}$ is also $1$-periodic and so $f$ admits a \textbf{Fourier series}\index{Fourier series} at the $\mf{a}$ cusp given by
     \[
-      (f|\s_{\mf{a}})(z) = \sum_{n \in \Z}a_{\mf{a}}(n,y,s)e^{2\pi inx},
+      (f|_{k}\s_{\mf{a}})(z) = \sum_{n \in \Z}a_{\mf{a}}(n,y,s)e^{2\pi inx},
     \]
-    with \textbf{Fourier coefficients}\index{Fourier coefficients} $a_{\mf{a}}(n,y,s)$. If $\mf{a} = \infty$ or $s$ is fixed, we will drop these dependencies accordingly and in this case $f|\s_{\mf{a}} = f$. As $f$ (and hence $f|\s_{\mf{a}}$ too) is smooth, it converges uniformly to its Fourier series everywhere. The Fourier coefficients $a_{\mf{a}}(n,y,s)$ are mostly determined by $\D_{k}$. To see this, since $f|\s_{\mf{a}}$ is smooth we may differentiate the Fourier series of $f|\s_{\mf{a}}$ termwise. The fact that $f|\s_{\mf{a}}$ is an eigenfunction for $\D_{k}$ with eigenvalue $\l(s)$ gives the ODE
+    with \textbf{Fourier coefficients}\index{Fourier coefficients} $a_{\mf{a}}(n,y,s)$. If $\mf{a} = \infty$ or $s$ is fixed, we will drop these dependencies accordingly and in this case $f|_{k}\s_{\mf{a}} = f$. As $f$ (and hence $f|_{k}\s_{\mf{a}}$ too) is smooth, it converges uniformly to its Fourier series everywhere. The Fourier coefficients $a_{\mf{a}}(n,y,s)$ are mostly determined by $\D_{k}$. To see this, since $f|_{k}\s_{\mf{a}}$ is smooth we may differentiate the Fourier series of $f|_{k}\s_{\mf{a}}$ termwise. The fact that $f|_{k}\s_{\mf{a}}$ is an eigenfunction for $\D_{k}$ with eigenvalue $\l(s)$ gives the ODE
     \[
       (4\pi^{2}n^{2}y^{2}-2\pi nky)a_{\mf{a}}(n,y,s)-y^{2}a_{\mf{a},yy}(n,y,s) = \l(s)a_{\mf{a}}(n,y,s).
     \]
@@ -113,9 +117,9 @@
     \]
     The coefficients $a_{\mf{a}}(n,s)$ and $a_{\mf{a}}^{\pm}(s)$ are the only part of the Fourier series that actually depend on the implicit congruence subgroup $\G$. Using these coefficients, $f$ admits \textbf{Fourier-Whittaker series}\index{Fourier-Whittaker series} at the $\mf{a}$ cusp given by
     \[
-      (f|\s_{\mf{a}})(z) = a_{\mf{a}}^{+}(s)y^{s}+a_{\mf{a}}^{-}(s)y^{1-s}+\sum_{n \neq 0}a_{\mf{a}}(n,s)W_{\sgn(n)\frac{k}{2},s-\frac{1}{2}}(4\pi|n|y)e^{2\pi inx},
+      (f|_{k}\s_{\mf{a}})(z) = a_{\mf{a}}^{+}(s)y^{s}+a_{\mf{a}}^{-}(s)y^{1-s}+\sum_{n \neq 0}a_{\mf{a}}(n,s)W_{\sgn(n)\frac{k}{2},s-\frac{1}{2}}(4\pi|n|y)e^{2\pi inx},
     \]
-    with \textbf{Fourier-Whittaker coefficients}\index{Fourier-Whittaker coefficients} $a_{\mf{a}}^{\pm}(s)$ and $a_{\mf{a}}(n,s)$. If $\mf{a} = \infty$ or $s$ is fixed, we will drop these dependencies accordingly and in this case $f|\s_{\mf{a}} = f$. As $f$ (and hence $f|\s_{\mf{a}}$ too) is smooth, it converges uniformly to its Fourier-Whittaker series everywhere. Last up are the Maass forms. We say that a function $f:\H \to \C$ is a \textbf{Maass form}\index{Maass form} on $\GH$ of \textbf{weight}\index{weight} $k$, \textbf{eigenvalue}\index{eigenvalue} $\l$, \textbf{level}\index{level} $N$, and \textbf{character}\index{character} $\chi$ if the following properties are satisfied:
+    with \textbf{Fourier-Whittaker coefficients}\index{Fourier-Whittaker coefficients} $a_{\mf{a}}^{\pm}(s)$ and $a_{\mf{a}}(n,s)$. If $\mf{a} = \infty$ or $s$ is fixed, we will drop these dependencies accordingly and in this case $f|_{k}\s_{\mf{a}} = f$. As $f$ (and hence $f|_{k}\s_{\mf{a}}$ too) is smooth, it converges uniformly to its Fourier-Whittaker series everywhere. Last up are the Maass forms. We say that a function $f:\H \to \C$ is a \textbf{Maass form}\index{Maass form} on $\GH$ of \textbf{weight}\index{weight} $k$, \textbf{eigenvalue}\index{eigenvalue} $\l$, \textbf{level}\index{level} $N$, and \textbf{character}\index{character} $\chi$ if the following properties are satisfied:
     \begin{enumerate}[label=(\roman*)]
       \item $f$ is smooth on $\H$.
       \item $(f|_{\e,k}\g)(z) = \chi(\g)f(z)$ for all $\g \in \G$.
@@ -127,7 +131,7 @@
       \setcounter{enumi}{4}
       \item For all cusps $\mf{a}$ and any $y > 0$, we have
       \[
-        \int_{0}^{1}(f|\s_{\mf{a}})(z)\,dx = 0.
+        \int_{0}^{1}(f|_{k}\s_{\mf{a}})(z)\,dx = 0.
       \]
     \end{enumerate}
     Property (iv) is called the \textbf{growth condition}\index{growth condition} for Maass forms and we say $f$ has \textbf{moderate growth at the cusps}\index{moderate growth at the cusps}. Clearly we only need to verify the growth condition on a set of scaling matrices for the cusps. Moreover, the equivalence in the growth condition follows exactly in the same way as for holomorphic forms. Indeed, the decomposition $\a = \g\eta$ for any $\a \in \GL_{2}^{+}(\Q)$ with $\g \in \PSL_{2}(\Z)$ and $\eta \in \GL_{2}^{+}(\Q)$ of the form $\eta = \begin{psmallmatrix} \ast & \ast \\ 0 & \ast \end{psmallmatrix}$ along with the cocycle condition together imply
@@ -157,17 +161,17 @@
       This is immediate from the definition of Maass forms and \cref{prop:Laplace_is_invariant}.
     \end{proof}
   
-    As a consequence of \cref{prop:raisin_lowering_presrves_Maass_forms}, it suffices to study Maass forms of weights zero and one although imposing this additional restriction is usually unnecessary. Let $\s_{\mf{a}}$ be a scaling matrix for the $\mf{a}$ cusp. As Maass forms are automorphic forms, it follows by \cref{prop:Laplace_is_invariant} that $f|\s_{\mf{a}}$ is an automorphic form on $\s_{\mf{a}}^{-1}\G\s_{\mf{a}}\backslash\H$ of the same weight, eigenvalue, and character as $f$. Moreover, $f|\s_{\mf{a}}$ is also $1$-periodic. Note that this means we only need to verify the growth condition as $y \to \infty$. As $f|\s_{\mf{a}}$ is $1$-periodic, $f$ admits a \textbf{Fourier-Whittaker series}\index{Fourier-Whittaker series} at the $\mf{a}$ cusp given by
+    As a consequence of \cref{prop:raisin_lowering_presrves_Maass_forms}, it suffices to study Maass forms of weights zero and one although imposing this additional restriction is usually unnecessary. Let $\s_{\mf{a}}$ be a scaling matrix for the $\mf{a}$ cusp. As Maass forms are automorphic forms, it follows by \cref{prop:Laplace_is_invariant} that $f|_{k}\s_{\mf{a}}$ is an automorphic form on $\s_{\mf{a}}^{-1}\G\s_{\mf{a}}\backslash\H$ of the same weight, eigenvalue, and character as $f$. Moreover, $f|_{k}\s_{\mf{a}}$ is also $1$-periodic. Note that this means we only need to verify the growth condition as $y \to \infty$. As $f|_{k}\s_{\mf{a}}$ is $1$-periodic, $f$ admits a \textbf{Fourier-Whittaker series}\index{Fourier-Whittaker series} at the $\mf{a}$ cusp given by
     \[
-      (f|\s_{\mf{a}})(z) = a_{\mf{a}}^{+}(s)y^{s}+a_{\mf{a}}^{-}(s)y^{1-s}+\sum_{n \neq 0}a_{\mf{a}}(n,s)W_{\sgn(n)\frac{k}{2},s-\frac{1}{2}}(4\pi|n|y)e^{2\pi inx},
+      (f|_{k}\s_{\mf{a}})(z) = a_{\mf{a}}^{+}(s)y^{s}+a_{\mf{a}}^{-}(s)y^{1-s}+\sum_{n \neq 0}a_{\mf{a}}(n,s)W_{\sgn(n)\frac{k}{2},s-\frac{1}{2}}(4\pi|n|y)e^{2\pi inx},
     \]
-    with \textbf{Fourier-Whittaker coefficients}\index{Fourier-Whittaker coefficients} $a_{\mf{a}}^{\pm}(s)$ and $a_{\mf{a}}(n,s)$. As $f$ (and hence $f|\s_{\mf{a}}$ too) is smooth, it converges uniformly to its Fourier-Whittaker series everywhere. Moreover, property (v) implies that $f$ is a cusp form if and only if $a_{\mf{a}}^{\pm}(s) = 0$ for every cusp $\mf{a}$. It is useful to specify the Whittaker function in the case of weight zero Maass forms. When $k = 0$, \cref{thm:Whittaker_special_cases} implies that the Fourier-Whittaker series of $f$ at the $\mf{a}$ cusp takes the form
+    with \textbf{Fourier-Whittaker coefficients}\index{Fourier-Whittaker coefficients} $a_{\mf{a}}^{\pm}(s)$ and $a_{\mf{a}}(n,s)$. As $f$ (and hence $f|_{k}\s_{\mf{a}}$ too) is smooth, it converges uniformly to its Fourier-Whittaker series everywhere. Moreover, property (v) implies that $f$ is a cusp form if and only if $a_{\mf{a}}^{\pm}(s) = 0$ for every cusp $\mf{a}$. It is useful to specify the Whittaker function in the case of weight zero Maass forms. When $k = 0$, \cref{thm:Whittaker_special_cases} implies that the Fourier-Whittaker series of $f$ at the $\mf{a}$ cusp takes the form
     \[
-      (f|\s_{\mf{a}})(z) = a_{\mf{a}}^{+}(s)y^{s}+a_{\mf{a}}^{-}(s)y^{1-s}+\sum_{n \neq 0}a_{\mf{a}}(n,s)\sqrt{4|n|y}K_{s-\frac{1}{2}}(2\pi|n|y)e^{2\pi inx}.
+      (f|_{k}\s_{\mf{a}})(z) = a_{\mf{a}}^{+}(s)y^{s}+a_{\mf{a}}^{-}(s)y^{1-s}+\sum_{n \neq 0}a_{\mf{a}}(n,s)\sqrt{4|n|y}K_{s-\frac{1}{2}}(2\pi|n|y)e^{2\pi inx}.
     \]
     In any case, we can also easily derive a bound for the size of the Fourier-Whittaker coefficients of cusp forms. Fix some $Y > 0$ and consider
     \[
-      \int_{\G_{\infty}\backslash\H_{Y}}|(f|\s_{\mf{a}})(z)|^{2}\,d\mu,
+      \int_{\G_{\infty}\backslash\H_{Y}}|(f|_{k}\s_{\mf{a}})(z)|^{2}\,d\mu,
     \]
     where $\H_{Y}$ is the half-plane defined by $Y \le \Im(z) \le 2Y$. This integral exists since $\G_{\infty}\backslash\H_{Y}$ is compact. Substituting in the Fourier-Whittaker series of $f$ at the $\mf{a}$ cusp, this integral can be expressed as
     \[
@@ -179,11 +183,11 @@
     \]
     In particular, we see that this is a sum of nonnegative terms. Retaining only a single term in the sum, we have
     \[
-      |a_{\mf{a}}(n,s)|^{2}\int_{Y}^{2Y}|W_{\sgn(n)\frac{k}{2},s-\frac{1}{2}}(4\pi|n|y)|^{2}\,\frac{dy}{y^{2}} \ll \int_{\G_{\infty}\backslash\H_{Y}}|(f|\s_{\mf{a}})(z)|^{2}\,d\mu.
+      |a_{\mf{a}}(n,s)|^{2}\int_{Y}^{2Y}|W_{\sgn(n)\frac{k}{2},s-\frac{1}{2}}(4\pi|n|y)|^{2}\,\frac{dy}{y^{2}} \ll \int_{\G_{\infty}\backslash\H_{Y}}|(f|_{k}\s_{\mf{a}})(z)|^{2}\,d\mu.
     \]
-    Moreover, $|(f|\s_{\mf{a}})(z)|^{2}$ is bounded on $\G_{\infty}\backslash\H_{Y}$ because this space is compact, so that
+    Moreover, $|(f|_{k}\s_{\mf{a}})(z)|^{2}$ is bounded on $\G_{\infty}\backslash\H_{Y}$ because this space is compact, so that
     \[
-      \int_{\G_{\infty}\backslash\H_{Y}}|(f|\s_{\mf{a}})(z)|^{2}\,d\mu \ll \int_{Y}^{2Y}\int_{0}^{1}\frac{dx\,dy}{y^{2}} \ll \frac{1}{Y}.
+      \int_{\G_{\infty}\backslash\H_{Y}}|(f|_{k}\s_{\mf{a}})(z)|^{2}\,d\mu \ll \int_{Y}^{2Y}\int_{0}^{1}\frac{dx\,dy}{y^{2}} \ll \frac{1}{Y}.
     \]
     Putting these two estimates together gives
     \[
@@ -195,9 +199,9 @@
     \]
     This bound is known as the \textbf{Hecke bound}\index{Hecke bound} for Maass forms. Using \cref{lem:Whittaker_function_asymptotic}, we have the estimate $W_{\sgn(n)\frac{k}{2},s-\frac{1}{2}}(4\pi|n|y) = O((|n|y)^{\frac{k}{2}}e^{-2\pi|n|y})$. This estimate together with the Hecke bound and the Taylor series of $\frac{1}{1-e^{y}}$ along with its derivatives, it follows that
     \[
-      (f|\s_{\mf{a}})(z) = O\left(y^{\frac{k}{2}}\sum_{n \neq 0}|n|^{\frac{k+1}{2}}e^{-2\pi|n|y}\right) = O\left(y^{\frac{k}{2}}\sum_{n \ge 1}n^{k}e^{-2\pi ny}\right) = O\left(\frac{y^{\frac{k}{2}}e^{-2\pi y}}{(1-e^{-2\pi y})^{2}}\right) = O(y^{\frac{k}{2}}e^{-2\pi y}).
+      (f|_{k}\s_{\mf{a}})(z) = O\left(y^{\frac{k}{2}}\sum_{n \neq 0}|n|^{\frac{k+1}{2}}e^{-2\pi|n|y}\right) = O\left(y^{\frac{k}{2}}\sum_{n \ge 1}n^{k}e^{-2\pi ny}\right) = O\left(\frac{y^{\frac{k}{2}}e^{-2\pi y}}{(1-e^{-2\pi y})^{2}}\right) = O(y^{\frac{k}{2}}e^{-2\pi y}).
     \]
-    This implies $(f|\s_{\mf{a}})(z)$ exhibits decay although it is not necessarily rapid. Accordingly, we say that $f$ exhibits \textbf{moderate decay at the cusps}\index{moderate decay at the cusps}. Observe that $f|\s_{\mf{a}}$ is then bounded on $\H$ and, in particular, $f$ is bounded on $\H$.
+    This implies $(f|_{k}\s_{\mf{a}})(z)$ exhibits decay although it is not necessarily rapid. Accordingly, we say that $f$ exhibits \textbf{moderate decay at the cusps}\index{moderate decay at the cusps}. Observe that $f|_{k}\s_{\mf{a}}$ is then bounded on $\H$ and, in particular, $f$ is bounded on $\H$.
   \section{Poincar\'e \& Eisenstein Series}
     Let $\G$ be a congruence subgroup of level $N$. We will introduce two important classes of automorphic functions on $\GH$ namely the Poincar\'e and Eisenstein series. The Eisenstein series will be Maass forms while the Poincar\'e series will only be automorphic functions. Both of these classes are defined on a larger space $\H \x \{s \in \C:\s > 1\}$ and hence are functions of two variables. Let $m \ge 0$, $k \ge 0$, $\chi$ be a Dirichlet character with conductor $q \mid N$, and $\mf{a}$ be a cusp of $\GH$. Then the $m$-th \textbf{(automorphic) Poincar\'e series}\index{(automorphic) Poincar\'e series} $P_{m,k,\chi,\mf{a}}(z,s)$ of weight $k$ and character $\chi$ on $\GH$ at the $\mf{a}$ cusp is defined by
     \[
@@ -290,7 +294,7 @@
     \begin{proposition}\label{prop:Petersson_slash_invariance_Maass}
       For any $f,g \in \mc{L}_{k}(\G,\chi)$ and $\a \in \PSL_{2}(\Z)$, we have
       \[
-        \<f|\a,g|\a\>_{\a^{-1}\G\a} = \<f,g\>_{\G}.
+        \<f|_{k}\a,g|_{k}\a\>_{\a^{-1}\G\a} = \<f,g\>_{\G}.
       \]
     \end{proposition}
     \begin{proof}
@@ -445,8 +449,8 @@
       &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}\sum_{\g \in \G_{\a}\backslash\G}\e(\s_{\mf{a}},\s_{\mf{a}}^{-1}\g z)^{-k}f(\g z)\conj{\psi(\Im(\s_{\mf{a}}^{-1}\g z))}\,d\mu && \text{cocycle condition} \\
       &= \frac{1}{V_{\G}}\int_{\mc{F}_{\s_{\mf{a}}^{-1}\G\s_{\mf{a}}}}\sum_{\g \in \G_{\a}\backslash\G}\e(\s_{\mf{a}},\s_{\mf{a}}^{-1}\g\s_{\mf{a}}z)^{-k}f(\g\s_{\mf{a}}z)\conj{\psi(\Im(\s_{\mf{a}}^{-1}\g\s_{\mf{a}}z))}\,d\mu && \text{$z \to \s_{\mf{a}}z$} \\
       &= \frac{1}{V_{\G}}\int_{\mc{F}_{\s_{\mf{a}}^{-1}\G\s_{\mf{a}}}}\sum_{\g \in \G_{\infty}\backslash\s_{\mf{a}}^{-1}\G\s_{\mf{a}}}\e(\s_{\mf{a}},\g z)^{-k}f(\s_{\mf{a}}\g z)\conj{\psi(\Im(\g z))}\,d\mu && \text{$\g \to \s_{\mf{a}}\g\s_{\mf{a}}^{-1}$} \\
-      &= \frac{1}{V_{\G}}\int_{\mc{F}_{\s_{\mf{a}}^{-1}\G\s_{\mf{a}}}}\sum_{\g \in \G_{\infty}\backslash\s_{\mf{a}}^{-1}\G\s_{\mf{a}}}(f|\s_{\mf{a}})(\g z)\conj{\psi(\Im(\g z))}\,d\mu && \\
-      &= \frac{1}{V_{\G}}\int_{\G_{\infty}\backslash\H}(f|\s_{\mf{a}})(z)\conj{\psi(\Im(z))}\,d\mu && \text{unfolding.}
+      &= \frac{1}{V_{\G}}\int_{\mc{F}_{\s_{\mf{a}}^{-1}\G\s_{\mf{a}}}}\sum_{\g \in \G_{\infty}\backslash\s_{\mf{a}}^{-1}\G\s_{\mf{a}}}(f|_{k}\s_{\mf{a}})(\g z)\conj{\psi(\Im(\g z))}\,d\mu && \\
+      &= \frac{1}{V_{\G}}\int_{\G_{\infty}\backslash\H}(f|_{k}\s_{\mf{a}})(z)\conj{\psi(\Im(z))}\,d\mu && \text{unfolding.}
     \end{align*}
     Substituting in the Fourier series of $f$ at the $\mf{a}$ cusp, we obtain
     \begin{align*}
@@ -581,21 +585,13 @@
       Combine \cref{thm:cusp_form_spectrum,thm:incomplete_Eisenstein_series_spectrum} and use the fact that $\mc{B}_{k}(\G,\chi) = \mc{E}_{k}(\G,\chi) \op \mc{C}_{k}(\G,\chi)$ for the first statement. The last statement holds because $\mc{B}_{k}(\G,\chi)$ is dense in $\mc{L}_{k}(\G,\chi)$.
     \end{proof}
   \section{Double Coset Operators}
-    We can extend the theory of double coset operators to Maass form just as we did for holomorphic forms. Indeed, for any $\a \in \GL_{2}^{+}(\Q)$, we define the operator $[\a]_{k}$ on $\mc{C}_{k,\nu}(\G)$ to be the linear operator given by
+    We can extend the theory of double coset operators to Maass form just as we did for holomorphic forms. For any two congruence subgroups $\G_{1}$ and $\G_{2}$ (not necessarily of the same level) and any $\a \in \GL_{2}^{+}(\Q)$, we define the \textbf{double coset operator}\index{double coset operator} $[\G_{1}\a\G_{2}]_{k}$ to be the linear operator on $\mc{C}_{k,\nu}(\G_{1})$ given by
     \[
-      (f[\a]_{k})(z) = \det(\a)^{-1}(f|_{\e,k}\a)(z) = \det(\a)^{-1}\e(\a,z)^{-k}f(\a z),
+      (f[\G_{1}\a\G_{2}]_{k})(z) = \sum_{j}(f|_{k}\b_{j})(z) = \sum_{j}\det(\b_{j})^{-1}\e(\b_{j},z)^{-k}f(\b_{j}z).
     \]
-    Moreover, $[\a]_{k}$ is multiplicative because the determinant and slash operator both are. Also, if $\g \in \G$ and we choose the representative with positive determinant, then the chain of equalities
+    As was the case for holomorphic forms, \cref{prop:double_congruence_subgroup_coset_decomposition_is_finite} implies that this sum is finite. It remains to check that $f[\G_{1}\a\G_{2}]_{k}$ is well-defined. Indeed, if $\b_{j}$ and $\b_{j}'$ belong to the same orbit, then $\b_{j}'\b_{j}^{-1} \in \G_{1}$. But then as $f \in \mc{C}_{k,\nu}(\G_{1})$, is it invariant under the $|_{k}\b_{j}'\b_{j}^{-1}$ operator so that
     \[
-      (f[\g]_{k})(z) = \e(\g,z)^{-k}f(\g z) = \chi(\g)f(z),
-    \]
-    is equivalent to the automorphy of $f$ on $\GH$ with character $\chi$. For any two congruence subgroups $\G_{1}$ and $\G_{2}$ (not necessarily of the same level) and any $\a \in \GL_{2}^{+}(\Q)$, we define the \textbf{double coset operator}\index{double coset operator} $[\G_{1}\a\G_{2}]_{k}$ to be the linear operator on $\mc{C}_{k,\nu}(\G_{1})$ given by
-    \[
-      (f[\G_{1}\a\G_{2}]_{k})(z) = \sum_{j}(f[\b_{j}]_{k})(z) = \sum_{j}\det(\b_{j})^{-1}\e(\b_{j},z)^{-k}f(\b_{j}z).
-    \]
-    As was the case for holomorphic forms, \cref{prop:double_congruence_subgroup_coset_decomposition_is_finite} implies that this sum is finite. It remains to check that $f[\G_{1}\a\G_{2}]_{k}$ is well-defined. Indeed, if $\b_{j}$ and $\b_{j}'$ belong to the same orbit, then $\b_{j}'\b_{j}^{-1} \in \G_{1}$. But then as $f \in \mc{C}_{k,\nu}(\G_{1})$, is it invariant under the $[\b_{j}'\b_{j}^{-1}]_{k}$ operator so that
-    \[
-      (f[\b_{j}]_{k})(z) = ((f[\b_{j}'\b_{j}^{-1}]_{k})[\b_{j}]_{k})(z) = (f[\b_{j}']_{k})(z),
+      (f|_{k}\b_{j})(z) = ((f|_{k}\b_{j}'\b_{j}^{-1})|_{k}\b_{j})(z) = (f|_{k}\b_{j}')(z),
     \]
     and therefore the $[\G_{1}\a\G_{2}]_{k}$ operator is well-defined. There is also an analogous statement about the double coset operators for Maass forms:
 
@@ -605,18 +601,18 @@
     \begin{proof}
       Arguing as in the proof of \cref{prop:double_coset_operator_preserves_subspaces_holomorphic} with smoothness replacing holomorphy, automorphy replacing modularity, and the analogous growth condition for Maass forms, the only piece left to verify is that $f[\G_{1}\a\G_{2}]_{k}$ is an eigenfunction for $\D$ with eigenvalue $\l$ if $f$ is. This is easy since the invariance of $\D$ implies
       \[
-        \D(f[\G_{1}\a\G_{2}]_{k})(z) = \sum_{j}\D(f[\b_{j}]_{k})(z) = \l\sum_{j}\det(\b_{j})^{-1}\e(\b_{j},z)^{-k}f(\b_{j}z) = \l(f[\G_{1}\a\G_{2}]_{k})(z). 
+        \D(f[\G_{1}\a\G_{2}]_{k})(z) = \sum_{j}\D(f|_{k}\b_{j})(z) = \l\sum_{j}\det(\b_{j})^{-1}\e(\b_{j},z)^{-k}f(\b_{j}z) = \l(f[\G_{1}\a\G_{2}]_{k})(z). 
       \]
       Thus $f[\G_{1}\a\G_{2}]_{k}$ is an eigenfunction for $\D$ with eigenvalue $\l$. This completes the proof.
     \end{proof}
   \section{Diamond \& Hecke Operators}
-    Extending the theory of diamond operators and Hecke operators is also fairly straightforward. To see this, we have already shown that $\G_{1}(N)$ is normal in $\G_{0}(N)$ so
+    Extending the theory of diamond operators and Hecke operators is also fairly straightforward. To see this, we have already shown that $\G_{1}(N)$ is normal in $\G_{0}(N)$ so that
     \[
-      \left(f\left[\G_{1}(N)\a\G_{1}(N)\right]_{k}\right)(z) = \sum_{j}(f[\b_{j}]_{k})(z) = (f[\a]_{k})(z),
+      \left(f\left[\G_{1}(N)\a\G_{1}(N)\right]_{k}\right)(z) = (f|_{k}\a)(z),
     \]
     for any $\a = \begin{psmallmatrix} \ast & \ast \\ \ast & d \end{psmallmatrix} \in \G_{0}(N)$. Therefore, for any $d$ taken modulo $N$, we define the \textbf{diamond operator} $\<d\>:\mc{C}_{k,\nu}(\G_{1}(N)) \to \mc{C}_{k,\nu}(\G_{1}(N))$ to be the linear operative given by
     \[
-      (\<d\>f)(z) = (f[\a]_{k})(z),
+      (\<d\>f)(z) = (f|_{k}\a)(z),
     \]
     for any $\a = \begin{psmallmatrix} \ast & \ast \\ \ast & d \end{psmallmatrix} \in \G_{0}(N)$. As for holomorphic forms, the diamond operators are multiplicative and invertible. They also decompose $\mc{C}_{k,\nu}(\G_{1}(N))$ into eigenspaces. For any Dirichlet character modulo $N$, let
     \[
@@ -636,9 +632,9 @@
 
     If $\g = \begin{psmallmatrix} \ast & \ast \\ \ast & d \end{psmallmatrix} \in \G_{0}(N)$ and we choose the representative with positive determinant, then $\chi(\g) = \chi(d)$ and the chain of equalities
     \[
-      (\<d\>f)(z) = (f[\g]_{k})(z) = f(\g z) = \chi(d)f(z),
+      (\<d\>f)(z) = (f|_{k}\g)(z) = f(\g z) = \chi(d)f(z),
     \]
-    is equivalent to the automorphy of $f$ with character $\chi$ on $\G_{0}(N)\backslash\H$. So $f$ is a Maass form with character $\chi$ on $\G_{0}(N)\backslash\H$ if and only if $f[\g]_{k} = \chi(\g)f$ for all $\g \in \G_{0}(N)$ where $\g$ is chosen to be the representative with positive determinant. It follows that the diamond operators sieve Maass forms on $\G_{1}(N)\backslash\H$ with trivial character in terms of Maass forms on $\G_{0}(N)\backslash\H$ with nontrivial characters. Precisely, $\mc{C}_{k,\nu}(N,\chi) = \mc{C}_{k,\nu}(\G_{0}(N),\chi)$ and $\mc{C}_{k,\nu}(N,\chi) = \mc{C}_{k,\nu}(\G_{0}(N),\chi)$. So by \cref{thm:diamond_operator_decomposition_Maass}, we have
+    is equivalent to the automorphy of $f$ with character $\chi$ on $\G_{0}(N)\backslash\H$. So $f$ is a Maass form with character $\chi$ on $\G_{0}(N)\backslash\H$ if and only if $f|_{k}\g = \chi(\g)f$ for all $\g \in \G_{0}(N)$ where $\g$ is chosen to be the representative with positive determinant. It follows that the diamond operators sieve Maass forms on $\G_{1}(N)\backslash\H$ with trivial character in terms of Maass forms on $\G_{0}(N)\backslash\H$ with nontrivial characters. Precisely, $\mc{C}_{k,\nu}(N,\chi) = \mc{C}_{k,\nu}(\G_{0}(N),\chi)$ and $\mc{C}_{k,\nu}(N,\chi) = \mc{C}_{k,\nu}(\G_{0}(N),\chi)$. So by \cref{thm:diamond_operator_decomposition_Maass}, we have
     \[
       \mc{C}_{k,\nu}(\G_{1}(N)) = \bigop_{\chi \tmod{N}}\mc{C}_{k,\nu}(\G_{0}(N),\chi).
     \]
@@ -663,7 +659,7 @@
     \begin{proposition}\label{prop:explicit_description_of_Hecke_operators_Maass}
       Let $f \in \mc{C}_{k,\nu}(\G_{1}(N))$. Then the Hecke operator $T_{p}$ acts on $f$ as follows:
       \[
-        (T_{p}f)(z) = \begin{cases} \displaystyle{\sum_{j \tmod{p}}}\left(f\left[\begin{pmatrix} 1 & j \\ 0 & p \end{pmatrix}\right]_{k}\right)(z)+\left(f\left[\begin{pmatrix} m & n \\ N & p \end{pmatrix}\begin{pmatrix} p & 0 \\ 0 & 1 \end{pmatrix}\right]_{k}\right)(z) & \text{if $p \nmid N$}, \\ \displaystyle{\sum_{j \tmod{p}}}\left(f\left[\begin{pmatrix} 1 & j \\ 0 & p \end{pmatrix}\right]_{k}\right)(z) & \text{if $p \mid N$}, \end{cases}
+        (T_{p}f)(z) = \begin{cases} \displaystyle{\sum_{j \tmod{p}}}\left(f\bigg|_{k}\begin{pmatrix} 1 & j \\ 0 & p \end{pmatrix}\right)(z)+\left(f\bigg|_{k}\begin{pmatrix} m & n \\ N & p \end{pmatrix}\begin{pmatrix} p & 0 \\ 0 & 1 \end{pmatrix}\right)(z) & \text{if $p \nmid N$}, \\ \displaystyle{\sum_{j \tmod{p}}}\left(f\bigg|_{k}\begin{pmatrix} 1 & j \\ 0 & p \end{pmatrix}\right)(z) & \text{if $p \mid N$}, \end{cases}
       \]
       where $m$ and $n$ are chosen such that $\det\left(\begin{psmallmatrix} m & n \\ N & p \end{psmallmatrix}\right) = 1$.
     \end{proposition}
@@ -731,18 +727,18 @@
     The diamond and Hecke operators turn out to be normal on the subspace of cusp forms. Just as with holomorphic forms, we can use \cref{lem:adjoint_lemma} to compute adjoints:
 
     \begin{proposition}\label{prop:Petersson_adjoint_Maass}
-      Let $\G$ be a congruence subgroup and let $\a \in \GL_{2}^{+}(\Q)$. Then the following are true:
+      Let $\G$ be a congruence subgroup and let $\a \in \GL_{2}^{+}(\Q)$. Set $\a' = \det(\a)\a^{-1}$. Then the following are true:
       \begin{enumerate}[label=(\roman*)]
         \item If $\a^{-1}\G\a \subseteq \PSL_{2}(\Z)$, then for all $f \in \mc{C}_{k,\nu}(\G,\chi)$ and $g \in \mc{C}_{k,\nu}(\a^{-1}\G\a)$, we have
         \[
-          \<f[\a]_{k},g\>_{\a^{-1}\G\a} = \<f,g[\a^{-1}]_{k}\>_{\G}.
+          \<f|_{k}\a,g\>_{\a^{-1}\G\a} = \<f,g|_{k}\a'\>_{\G}.
         \]
         \item For all $f,g \in \mc{C}_{k,\nu}(\G,\chi)$, we have
         \[
-          \<f[\G\a\G]_{k},g\> = \<f,g[\G\a^{-1}\G]_{k}\>.
+          \<f[\G\a\G]_{k},g\> = \<f,g[\G\a'\G]_{k}\>.
         \]
       \end{enumerate}
-      In particular, if $\a^{-1}\G\a = \G$ then $[\a]_{k}^{\ast} = [\a^{-1}]_{k}$ and $[\G\a\G]_{k}^{\ast} = [\G\a^{-1}\G]_{k}$. 
+      In particular, if $\a^{-1}\G\a = \G$ then $|_{k}\a^{\ast} = |_{k}\a'$ and $[\G\a\G]_{k}^{\ast} = [\G\a'\G]_{k}$ as operators. 
     \end{proposition}
     \begin{proof}
       Argue as in the proof of \cref{prop:Petersson_adjoint_holomorphic}.
@@ -848,24 +844,24 @@
   \section{Atkin-Lehner Theory}
     There is also an Atkin-Lehner theory for Maass form. As with holomorphic forms, we will only deal with congruence subgroups of the form $\G_{1}(N)$ or $\G_{0}(N)$ and cusp forms on the corresponding modular curves. The trivial way to lift Maass forms from a smaller level to a larger level is via the natural inclusion $\mc{C}_{k,\nu}(\G_{1}(M)) \subseteq \mc{C}_{k,\nu}(\G_{1}(N))$ provided $M \mid N$ which follows from $\G_{1}(N) \le \G_{1}(M)$. Alternatively, for any $d \mid \frac{N}{M}$, let $\a_{d} = \begin{psmallmatrix} d & 0 \\ 0 & 1 \end{psmallmatrix}$. If $f \in \mc{C}_{k,\nu}(\G_{1}(M))$, then
     \[
-      (f[\a_{d}]_{k})(z) = d^{-1}\e(\a_{d},z)^{-k}f(\a_{d} z) = d^{-1}f(dz).
+      (f|_{k}\a_{d})(z) = d^{-1}\e(\a_{d},z)^{-k}f(\a_{d} z) = d^{-1}f(dz).
     \]
-    Similar to holomorphic forms, $[\a_{d}]_{k}$ maps $\mc{C}_{k,\nu}(\G_{1}(M))$ into $\mc{C}_{k,\nu}(\G_{1}(N))$ and more:
+    Similar to holomorphic forms, $|_{k}\a_{d}$ maps $\mc{C}_{k,\nu}(\G_{1}(M))$ into $\mc{C}_{k,\nu}(\G_{1}(N))$ and more:
     
     \begin{proposition}\label{equ:lifting_operator_Maass}
-      Let $M$ and $N$ be positive integers such that $M \mid N$. For any $d \mid \frac{N}{M}$, $[\a_{d}]_{k}$ maps $\mc{C}_{k,\nu}(\G_{1}(M))$ into $\mc{C}_{k,\nu}(\G_{1}(N))$. In particular, $[\a_{d}]_{k}$ takes $\mc{C}_{k,\nu}(M,\chi)$ into $\mc{C}_{k,\nu}(N,\chi)$.
+      Let $M$ and $N$ be positive integers such that $M \mid N$. For any $d \mid \frac{N}{M}$, $|_{k}\a_{d}$ maps $\mc{C}_{k,\nu}(\G_{1}(M))$ into $\mc{C}_{k,\nu}(\G_{1}(N))$. In particular, $|_{k}\a_{d}$ takes $\mc{C}_{k,\nu}(M,\chi)$ into $\mc{C}_{k,\nu}(N,\chi)$.
     \end{proposition}
     \begin{proof}
       Arguing as in the proof of \cref{equ:lifting_operator_holomorphic} with smoothness replacing holomorphy, automorphy replacing modularity, and the analogous growth condition for Maass forms, the only piece left to verify is that $f[\a_{d}]$ is an eigenfunction for $\D$ with eigenvalue $\l$ if $f$ is. This is easy since the invariance of $\D$ implies
       \[
-        \D(f[\a_{d}]_{k})(z) = \l d^{-1}f(dz) = \l(f[\a_{d}]_{k})(z).
+        \D(f|_{k}\a_{d})(z) = \l d^{-1}f(dz) = \l(f|_{k}\a_{d})(z).
       \]
-      Therefore $f[\a_{d}]_{k}$ is an eigenfunction for $\D$ with eigenvalue $\l$. This completes the proof.
+      Therefore $f|_{k}\a_{d}$ is an eigenfunction for $\D$ with eigenvalue $\l$. This completes the proof.
     \end{proof}
 
     We can now define oldforms and newforms. For each divisor $d$ of $N$, set
     \[
-      i_{d}:\mc{C}_{k,\nu}\left(\G_{1}\left(\frac{N}{d}\right)\right)\x\mc{C}_{k,\nu}\left(\G_{1}\left(\frac{N}{d}\right)\right) \to \mc{C}_{k,\nu}(\G_{1}(N)) \qquad (f,g) \mapsto f+g[\a_{d}]_{k}.
+      i_{d}:\mc{C}_{k,\nu}\left(\G_{1}\left(\frac{N}{d}\right)\right)\x\mc{C}_{k,\nu}\left(\G_{1}\left(\frac{N}{d}\right)\right) \to \mc{C}_{k,\nu}(\G_{1}(N)) \qquad (f,g) \mapsto f+g|_{k}\a_{d}.
     \]
     This map is well-defined by \cref{equ:lifting_operator_Maass}. The subspace of \textbf{oldforms}\index{oldforms} of level $N$ is
     \[
@@ -881,7 +877,7 @@
     \]
     with $\det(W_{N}) = N$. We define the \textbf{Atkin-Lehner operator}\index{Atkin-Lehner operator} $\w_{N}$ to be the linear operator on $\mc{C}_{k,\nu}(\G_{1}(N))$ given by
     \[
-      (\w_{N}f)(z) = N(f[W_{N}]_{k})(z) = \e(W_{N},z)^{-k}f\left(W_{N}z\right) = \left(\frac{z}{|z|}\right)^{-k}f\left(-\frac{1}{Nz}\right).
+      (\w_{N}f)(z) = N(f|_{k}W_{N})(z) = \e(W_{N},z)^{-k}f\left(W_{N}z\right) = \left(\frac{z}{|z|}\right)^{-k}f\left(-\frac{1}{Nz}\right).
     \]
     It is not too difficult to see how $\w_{N}$ acts on $\mc{C}_{k,\nu}(\G_{1}(N))$:
 
@@ -934,7 +930,7 @@
     \begin{lemma}\label{lem:the_main_lemma_for_newforms_Maass}
       If $f \in \mc{C}_{k,\nu}(\G_{1}(N))$ has Fourier-Whittaker coefficients $a_{n}(f)$ and is such that $a_{n}(f) = 0$ for all $n \ge 1$ whenever $(n,N) = 1$, then
       \[
-        f = \sum_{p \mid N}p^{-1}f_{p}[\a_{p}]_{k},
+        f = \sum_{p \mid N}p^{-1}f_{p}|_{k}\a_{p},
       \]
       for some $f_{p} \in \mc{C}_{k,\nu}\left(\G_{1}\left(\frac{N}{p}\right)\right)$.
     \end{lemma}

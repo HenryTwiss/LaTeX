@@ -22,13 +22,17 @@
     \]
     and this is called the \textbf{cocycle condition}\index{cocycle condition} for $j(\g,z)$. For any integer $k \ge 1$ and any $\g \in \GL_{2}^{+}(\Q)$ we define the \textbf{slash operator}\index{slash operator} $|_{j,k}\g:C(\H) \to C(\H)$ to be the linear operator given by
     \[
+      (f|_{j,k}\g)(z) = \deg(\g)^{k-1}j(\g,z)^{-k}f(\g z).
+    \]
+    If $j$ is clear from content we will suppress this dependence accordingly. Note that if $\g \in \PSL_{2}(\Z)$, the slash operator takes the simpler form
+    \[
       (f|_{j,k}\g)(z) = j(\g,z)^{-k}f(\g z).
     \]
-    If $j$ and $k$ are clear from content we will suppress this dependencies accordingly. The cocycle condition implies that the slash operator is multiplicative. Indeed, if $\g,\g' \in \GL_{2}^{+}(\Q)$, then
+    The cocycle condition implies that the slash operator is multiplicative. Indeed, if $\g,\g' \in \GL_{2}^{+}(\Q)$, then
     \begin{align*}
-      ((f|_{j,k}\g')|_{j,k}\g)(z) &= j(\g,z)^{-k}(f|_{j,k}\g')(\g z) \\
-      &= j(\g',\g z)^{-k}j(\g,z)^{-k}f(\g'\g z) \\
-      &= j(\g'\g,z)^{-k}f(\g'\g z) && \text{cocycle condition} \\
+      ((f|_{j,k}\g')|_{j,k}\g)(z) &= \deg(\g)^{k-1}j(\g,z)^{-k}(f|_{j,k}\g')(\g z) \\
+      &= \deg(\g'\g)^{k-1}j(\g',\g z)^{-k}j(\g,z)^{-k}f(\g'\g z) \\
+      &= \deg(\g'\g)^{k-1}j(\g'\g,z)^{-k}f(\g'\g z) && \text{cocycle condition} \\
       &= (f|_{j,k}\g'\g)(z).
     \end{align*}
     If an operator commutes with the slash operators $|_{j,k}\g$ for every $\g \in \PSL_{2}(\Z)$, we say that it is \textbf{invariant}\index{invariant}. We will now introduce holomorphic forms. Let $\G$ be a congruence subgroup of level $N$ and let $\chi$ be a Dirichlet character of conductor $q \mid N$, and set $\chi(\g) = \chi(d)$ for all for all $\g = \begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix} \in \G$. We say that a function $f:\H \to \C$ is \textbf{holomorphic form}\index{holomorphic form} (or \textbf{modular form}\index{modular form}) on $\GH$ of \textbf{weight}\index{weight} $k$, \textbf{level}\index{level} $N$, and \textbf{character}\index{character} $\chi$ if the following properties are satisfied:
@@ -42,14 +46,14 @@
       \setcounter{enumi}{3}
       \item For all cusps $\mf{a}$ and any $y > 0$, we have
       \[
-        \int_{0}^{1}(f|\s_{\mf{a}})(z)\,dx = 0.
+        \int_{0}^{1}(f|_{k}\s_{\mf{a}})(z)\,dx = 0.
       \]
     \end{enumerate}
     Property (ii) is called the \textbf{modularity condition}\index{modularity condition} and we say $f$ is \textbf{modular}\index{modular}. In particular, $f$ is a function on $\mc{F}_{\G}$. The modularity condition can equivalently be expressed as
     \[
       f(\g z) = \chi(\g)j(\g,z)^{k}f(z).
     \]
-    Property (iii) is called the \textbf{growth condition}\index{growth condition} for holomorphic forms and we say $f$ is \textbf{holomorphic at the cusps}\index{holomorphic at the cusps}. Clearly we only need to verify the growth condition on a set of scaling matrices for the cusps. To see the equivalence in the growth condition, every $\a \in \GL_{2}^{+}(\Q)$ is of the form $\a = \g\eta$ for some $\g \in \PSL_{2}(\Z)$ and $\eta \in \GL_{2}^{+}(\Q)$ of the form $\eta = \begin{psmallmatrix} \ast & \ast \\ 0 & \ast \end{psmallmatrix}$. To see this, if $c = 0$ the claim is obvious. For $c \neq 0$, let $r \ge 1$ be such that $r\a = \begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix} \in \GL_{2}^{+}(\Z)$ and set $a' = \frac{a}{(a,c)}$ and $c' = \frac{c'}{(a,c)}$ so that $a',c' \in \Z$ with $(a',c') = 1$. Then there exists $\g \in \PSL_{2}(\Z)$ with $\g^{-1} = \begin{psmallmatrix} \ast & \ast \\ -c' & a' \end{psmallmatrix}$. Moreover, $\g^{-1}r\a = \begin{psmallmatrix} \ast & \ast \\ 0 & \ast \end{psmallmatrix} \in \GL_{2}^{+}(\Z)$. Upon setting $\eta = \g^{-1}\a$, the claim is complete. From the decomposition $\a = \g\eta$, the cocycle condition gives
+    Property (iii) is called the \textbf{growth condition}\index{growth condition} for holomorphic forms and we say $f$ is \textbf{holomorphic at the cusps}\index{holomorphic at the cusps}. Clearly we only need to verify the growth condition on a set of scaling matrices for the cusps. To see the equivalence in the growth condition, we claim that every $\a \in \GL_{2}^{+}(\Q)$ is of the form $\a = \g\eta$ for some $\g \in \PSL_{2}(\Z)$ and $\eta \in \GL_{2}^{+}(\Q)$ of the form $\eta = \begin{psmallmatrix} \ast & \ast \\ 0 & \ast \end{psmallmatrix}$. To see this, if $c = 0$ the claim is obvious. For $c \neq 0$, let $r \ge 1$ be such that $r\a = \begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix} \in \GL_{2}^{+}(\Z)$ and set $a' = \frac{a}{(a,c)}$ and $c' = \frac{c'}{(a,c)}$ so that $a',c' \in \Z$ with $(a',c') = 1$. Then there exists $\g \in \PSL_{2}(\Z)$ with $\g^{-1} = \begin{psmallmatrix} \ast & \ast \\ -c' & a' \end{psmallmatrix}$. Moreover, $\g^{-1}r\a = \begin{psmallmatrix} \ast & \ast \\ 0 & \ast \end{psmallmatrix} \in \GL_{2}^{+}(\Z)$. Upon setting $\eta = \g^{-1}\a$, the claim is complete. From the decomposition $\a = \g\eta$, the cocycle condition gives
     \[
       j(\a,z) = j(\g,\eta z),
     \]
@@ -57,13 +61,13 @@
     \[
       f(z+1) = f\left(\begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}z\right) = f(z),
     \]
-    so that $f$ is $1$-periodic. Let $\s_{\mf{a}}$ be a scaling matrix for the $\mf{a}$ cusp. As \cref{lem:coset_lemma_1} implies $\s_{\mf{a}}^{-1}\G\s_{\mf{a}}$ is a congruence subgroup, it follows by the cocycle condition that $f|\s_{\mf{a}}$ is a holomorphic form on $\s_{\mf{a}}^{-1}\G\s_{\mf{a}}\backslash\H$ of the same weight and character as $f$. In particular, $f|\s_{\mf{a}}$ is $1$-periodic. Note that this means we only need to verify the growth condition as $y \to \infty$. As $f|\s_{\mf{a}}$ is $1$-periodic it admits a Fourier series given by
+    so that $f$ is $1$-periodic. Let $\s_{\mf{a}}$ be a scaling matrix for the $\mf{a}$ cusp. As \cref{lem:coset_lemma_1} implies $\s_{\mf{a}}^{-1}\G\s_{\mf{a}}$ is a congruence subgroup, it follows by the cocycle condition that $f|_{k}\s_{\mf{a}}$ is a holomorphic form on $\s_{\mf{a}}^{-1}\G\s_{\mf{a}}\backslash\H$ of the same weight and character as $f$. In particular, $f|_{k}\s_{\mf{a}}$ is $1$-periodic. Note that this means we only need to verify the growth condition as $y \to \infty$. As $f|_{k}\s_{\mf{a}}$ is $1$-periodic it admits a Fourier series given by
     \[
-      (f|\s_{\mf{a}})(z) = \sum_{n \ge 0}a_{\mf{a}}(n,y)e^{2\pi inx},
+      (f|_{k}\s_{\mf{a}})(z) = \sum_{n \ge 0}a_{\mf{a}}(n,y)e^{2\pi inx},
     \]
-    where the sum is only over $n \ge 0$ because holomorphy at the cusps implies that $f|\s_{\mf{a}}$ is bounded. As $f$ is smooth (since it is holomorphic), it converges uniformly to its Fourier series everywhere. We can simplify the Fourier coefficients $a_{\mf{a}}(n,y)$. To see this, since $f|\s_{\mf{a}}$ is holomorphic it satisfies the first order Cauchy-Riemann equations so that
+    where the sum is only over $n \ge 0$ because holomorphy at the cusps implies that $f|_{k}\s_{\mf{a}}$ is bounded. As $f$ is smooth (since it is holomorphic), it converges uniformly to its Fourier series everywhere. We can simplify the Fourier coefficients $a_{\mf{a}}(n,y)$. To see this, since $f|_{k}\s_{\mf{a}}$ is holomorphic it satisfies the first order Cauchy-Riemann equations so that
     \[
-      \frac{1}{2}\left(\frac{\del f|\s_{\mf{a}}}{\del x}+i\frac{\del f|\s_{\mf{a}}}{\del y}\right) = 0.
+      \frac{1}{2}\left(\frac{\del f|_{k}\s_{\mf{a}}}{\del x}+i\frac{\del f|_{k}\s_{\mf{a}}}{\del y}\right) = 0.
     \]
     Substituting in the Fourier series and equating coefficients we obtain the ODE
     \[
@@ -75,11 +79,11 @@
     \]
     The coefficients $a_{\mf{a}}(n)$ are the only part of the Fourier series depending on the implicit congruence subgroup $\G$. Using these coefficients instead, $f$ admits a \textbf{Fourier series}\index{Fourier series} at the $\mf{a}$ cusp given by
     \[
-      (f|\s_{\mf{a}})(z) = \sum_{n \ge 0}a_{\mf{a}}(n)e^{2\pi inz},
+      (f|_{k}\s_{\mf{a}})(z) = \sum_{n \ge 0}a_{\mf{a}}(n)e^{2\pi inz},
     \]
-    with \textbf{Fourier coefficients}\index{Fourier coefficients} $a_{\mf{a}}(n)$. If $\mf{a} = \infty$, we will drop this dependence and in this case $f|\s_{\mf{a}} = f$. Moreover, property (iv) implies that $f$ is a cusp form if and only if $a_{\mf{a}}(n) = 0$ for every cusp $\mf{a}$. We can also easily derive a bound for the size of the Fourier coefficients of cusp forms. To see this, note that $\left|(f|\s_{\mf{a}})(z)\Im(z)^{\frac{k}{2}}\right|$ is $\s_{\mf{a}}^{-1}\G\s_{\mf{a}}$-invariant by the modularity of $f|\s_{\mf{a}}$, the cocycle condition, the identity $\Im(\s_{\mf{a}}^{-1}\g\s_{\mf{a}}z)^{\frac{k}{2}} = \frac{\Im(z)^{\frac{k}{2}}}{|j(\s_{\mf{a}}^{-1}\g\s_{\mf{a}},z)|^{k}}$, and that $|\chi(\g)| = 1$. Moreover, this function is bounded on $\mc{F}_{\s_{\mf{a}}^{-1}\G\s_{\mf{a}}}$ because $f$ is a cusp form. Then $\s_{\mf{a}}^{-1}\G\s_{\mf{a}}$-invariance implies $\left|(f|\s_{\mf{a}})(z)\Im(z)^{\frac{k}{2}}\right|$ is bounded on $\H$. From the definition of Fourier series, it follows that
+    with \textbf{Fourier coefficients}\index{Fourier coefficients} $a_{\mf{a}}(n)$. If $\mf{a} = \infty$, we will drop this dependence and in this case $f|_{k}\s_{\mf{a}} = f$. Moreover, property (iv) implies that $f$ is a cusp form if and only if $a_{\mf{a}}(n) = 0$ for every cusp $\mf{a}$. We can also easily derive a bound for the size of the Fourier coefficients of cusp forms. To see this, note that $\left|(f|_{k}\s_{\mf{a}})(z)\Im(z)^{\frac{k}{2}}\right|$ is $\s_{\mf{a}}^{-1}\G\s_{\mf{a}}$-invariant by the modularity of $f|_{k}\s_{\mf{a}}$, the cocycle condition, the identity $\Im(\s_{\mf{a}}^{-1}\g\s_{\mf{a}}z)^{\frac{k}{2}} = \frac{\Im(z)^{\frac{k}{2}}}{|j(\s_{\mf{a}}^{-1}\g\s_{\mf{a}},z)|^{k}}$, and that $|\chi(\g)| = 1$. Moreover, this function is bounded on $\mc{F}_{\s_{\mf{a}}^{-1}\G\s_{\mf{a}}}$ because $f$ is a cusp form. Then $\s_{\mf{a}}^{-1}\G\s_{\mf{a}}$-invariance implies $\left|(f|_{k}\s_{\mf{a}})(z)\Im(z)^{\frac{k}{2}}\right|$ is bounded on $\H$. From the definition of Fourier series, it follows that
     \[
-      a_{\mf{a}}(n)\Im(z)^{\frac{k}{2}} = \int_{0}^{1}(f|\s_{\mf{a}})(z)\Im(z)^{\frac{k}{2}}e^{-2\pi inz}\,dx \ll \int_{0}^{1}e^{2\pi ny}\,dx \ll e^{2\pi ny}.
+      a_{\mf{a}}(n)\Im(z)^{\frac{k}{2}} = \int_{0}^{1}(f|_{k}\s_{\mf{a}})(z)\Im(z)^{\frac{k}{2}}e^{-2\pi inz}\,dx \ll \int_{0}^{1}e^{2\pi ny}\,dx \ll e^{2\pi ny}.
     \]
     Upon setting $y = \frac{1}{n}$, the last expression is absolutely bounded and we obtain
     \[
@@ -87,9 +91,9 @@
     \]
     This bound is known as the \textbf{Hecke bound}\index{Hecke bound} for holomorphic forms. It follows from the Hecke bound and the Taylor series of $\frac{1}{1-e^{y}}$ along with its derivatives, that
     \[
-      (f|\s_{\mf{a}})(z) = O\left(\sum_{n \ge 1}n^{\frac{k}{2}}e^{-2\pi ny}\right) = O\left(\sum_{n \ge 1}n^{k}e^{-2\pi ny}\right) = O\left(\frac{e^{-2\pi y}}{(1-e^{-2\pi y})^{2}}\right) = O(e^{-2\pi y}).
+      (f|_{k}\s_{\mf{a}})(z) = O\left(\sum_{n \ge 1}n^{\frac{k}{2}}e^{-2\pi ny}\right) = O\left(\sum_{n \ge 1}n^{k}e^{-2\pi ny}\right) = O\left(\frac{e^{-2\pi y}}{(1-e^{-2\pi y})^{2}}\right) = O(e^{-2\pi y}).
     \]
-    This implies $(f|\s_{\mf{a}})(z)$ exhibits rapid decay. Accordingly, we say that $f$ exhibits \textbf{rapid decay at the cusps}\index{rapid decay at the cusps}. Observe that $(f|\s_{\mf{a}})$ is then bounded on $\H$ and, in particular, $f$ is bounded on $\H$.
+    This implies $(f|_{k}\s_{\mf{a}})(z)$ exhibits rapid decay. Accordingly, we say that $f$ exhibits \textbf{rapid decay at the cusps}\index{rapid decay at the cusps}. Observe that $(f|_{k}\s_{\mf{a}})$ is then bounded on $\H$ and, in particular, $f$ is bounded on $\H$.
   \section{Poincar\'e \& Eisenstein Series}
     Let $\G$ be a congruence subgroup of level $N$. We will introduce two important classes of holomorphic forms on $\GH$ namely the Poincar\'e and Eisenstein series. Let $m \ge 0$, $k \ge 4$, $\chi$ be a Dirichlet character with conductor $q \mid N$, and $\mf{a}$ be a cusp of $\GH$. We define the $m$-th \textbf{(holomorphic) Poincar\'e series}\index{(holomorphic) Poincar\'e series} $P_{m,k,\chi,\mf{a}}(z)$ of weight $k$ with character $\chi$ on $\GH$ at the $\mf{a}$ cusp by
     \[
@@ -383,14 +387,14 @@
     \begin{proposition}\label{prop:Petersson_slash_invariance_holomorphic}
       For any $f,g \in \mc{S}_{k}(\G,\chi)$ and $\a \in \PSL_{2}(\Z)$, we have
       \[
-        \<f|\a,g|\a\>_{\a^{-1}\G\a} = \<f,g\>_{\G}.
+        \<f|_{k}\a,g|_{k}\a\>_{\a^{-1}\G\a} = \<f,g\>_{\G}.
       \]
     \end{proposition}
     \begin{proof}
       This is just a computation:
       \begin{align*}
-        \<f|\a,g|\a\>_{\a^{-1}\G\a} &= \frac{1}{V_{\a^{-1}\G\a}}\int_{\mc{F}_{\a^{-1}\G\a}}(f|\a)(z)\conj{(g|\a)(z)}\Im(z)^{k}\,d\mu \\
-        &= \frac{1}{V_{\G}}\int_{\mc{F}_{\a^{-1}\G\a}}(f|\a)(z)\conj{(g|\a)(z)}\Im(z)^{k}\,d\mu && \text{\cref{lem:invariance_of_volume}} \\
+        \<f|_{k}\a,g|_{k}\a\>_{\a^{-1}\G\a} &= \frac{1}{V_{\a^{-1}\G\a}}\int_{\mc{F}_{\a^{-1}\G\a}}(f|_{k}\a)(z)\conj{(g|_{k}\a)(z)}\Im(z)^{k}\,d\mu \\
+        &= \frac{1}{V_{\G}}\int_{\mc{F}_{\a^{-1}\G\a}}(f|_{k}\a)(z)\conj{(g|_{k}\a)(z)}\Im(z)^{k}\,d\mu && \text{\cref{lem:invariance_of_volume}} \\
         &= \frac{1}{V_{\G}}\int_{\mc{F}_{\a^{-1}\G\a}}|j(\a,z)|^{-2k}f(\a z)\conj{g(\a z)}\Im(z)^{k}\,d\mu \\
         &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}|j(\a,z)|^{-2k}f(z)\conj{g(z)}\Im(\a z)^{k}\,d\mu && \text{$z \to \a^{-1}z$} \\
         &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}f(z)\conj{g(z)}\Im(z)^{k}\,d\mu \\
@@ -458,12 +462,12 @@
         &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}\sum_{\g \in \G_{\a}\backslash\G}j(\s_{\mf{a}},\s_{\mf{a}}^{-1}\g z)^{-k}f(\g z)e^{-2\pi im\conj{\s_{\mf{a}}^{-1}\g z}}\Im(\s_{\mf{a}}^{-1}\g z)^{k}\,d\mu && \text{cocycle condition} \\
         &= \frac{1}{V_{\G}}\int_{\mc{F}_{\s_{\mf{a}}^{-1}\G\s_{\mf{a}}}}\sum_{\g \in \G_{\a}\backslash\G}j(\s_{\mf{a}},\s_{\mf{a}}^{-1}\g\s_{\mf{a}}z)^{-k}f(\g\s_{\mf{a}}z)e^{-2\pi im\conj{\s_{\mf{a}}^{-1}\g\s_{\mf{a}}z}}\Im(\s_{\mf{a}}^{-1}\g\s_{\mf{a}}z)^{k}\,d\mu && \text{$z \to \s_{\mf{a}}z$} \\
         &= \frac{1}{V_{\G}}\int_{\mc{F}_{\s_{\mf{a}}^{-1}\G\s_{\mf{a}}}}\sum_{\g \in \G_{\infty}\backslash\s_{\mf{a}}^{-1}\G\s_{\mf{a}}}j(\s_{\mf{a}},\g z)^{-k}f(\s_{\mf{a}}\g z)e^{-2\pi im\conj{\g z}}\Im(\g z)^{k}\,d\mu && \text{$\g \to \s_{\mf{a}}\g\s_{\mf{a}}^{-1}$} \\
-        &= \frac{1}{V_{\G}}\int_{\mc{F}_{\s_{\mf{a}}^{-1}\G\s_{\mf{a}}}}\sum_{\g \in \G_{\infty}\backslash\s_{\mf{a}}^{-1}\G\s_{\mf{a}}}(f|\s_{\mf{a}})(\g z)e^{-2\pi im\conj{\g z}}\Im(\g z)^{k}\,d\mu && \\
-        &= \frac{1}{V_{\G}}\int_{\G_{\infty}\backslash\H}(f|\s_{\mf{a}})(z)e^{-2\pi im\conj{z}}\Im(z)^{k}\,d\mu && \text{unfolding.}
+        &= \frac{1}{V_{\G}}\int_{\mc{F}_{\s_{\mf{a}}^{-1}\G\s_{\mf{a}}}}\sum_{\g \in \G_{\infty}\backslash\s_{\mf{a}}^{-1}\G\s_{\mf{a}}}(f|_{k}\s_{\mf{a}})(\g z)e^{-2\pi im\conj{\g z}}\Im(\g z)^{k}\,d\mu && \\
+        &= \frac{1}{V_{\G}}\int_{\G_{\infty}\backslash\H}(f|_{k}\s_{\mf{a}})(z)e^{-2\pi im\conj{z}}\Im(z)^{k}\,d\mu && \text{unfolding.}
       \end{align*}
       Substituting in the Fourier series of $f$ at the $\mf{a}$ cusp, we can finish the computation:
       \begin{align*}
-        \frac{1}{V_{\G}}\int_{\G_{\infty}\backslash\H}(f|\s_{\mf{a}})(z)e^{-2\pi im\conj{z}}\Im(z)^{k}\,d\mu &= \frac{1}{V_{\G}}\int_{0}^{\infty}\int_{0}^{1}\sum_{n \ge 1}a_{\mf{a}}(n)e^{2\pi i(n-m)x}e^{-2\pi(n+m)y}y^{k}\,\frac{dx\,dy}{y^{2}} \\
+        \frac{1}{V_{\G}}\int_{\G_{\infty}\backslash\H}(f|_{k}\s_{\mf{a}})(z)e^{-2\pi im\conj{z}}\Im(z)^{k}\,d\mu &= \frac{1}{V_{\G}}\int_{0}^{\infty}\int_{0}^{1}\sum_{n \ge 1}a_{\mf{a}}(n)e^{2\pi i(n-m)x}e^{-2\pi(n+m)y}y^{k}\,\frac{dx\,dy}{y^{2}} \\
         &= \frac{1}{V_{\G}}\int_{0}^{\infty}\sum_{n \ge 1}\int_{0}^{1}a_{\mf{a}}(n)e^{2\pi i(n-m)x}e^{-2\pi(n+m)y}y^{k}\,\frac{dx\,dy}{y^{2}} && \text{DCT} \\
         &= \frac{1}{V_{\G}}\int_{0}^{\infty}a_{\mf{a}}(m)e^{-4\pi my}y^{k}\,\frac{dy}{y^{2}},
       \end{align*}
@@ -532,21 +536,13 @@
       Let $\G_{3} = \a\G_{1}\a^{-1} \cap \G_{2}$. Then $\G_{3}$ acts on $\G_{2}$ by left multiplication. By \cref{lem:coset_lemma_2}, the number of orbits of $\G_{1}\backslash\G_{1}\a\G_{2}$ is the same as the number of cosets of $\G_{3}\backslash\G_{2}$ which is $[\G_{2}:\G_{3}]$. By \cref{lem:coset_lemma_1}, $\a^{-1}\G_{1}\a \cap \PSL_{2}(\Z)$ is a congruence subgroup and hence $[\PSL_{2}(\Z):\a^{-1}\G_{1}\a \cap \PSL_{2}(\Z)]$ is finite. As $\G_{2} = \PSL_{2}(\Z) \cap \G_{2}$ and $\G_{3} = \a^{-1}\G_{1}\a \cap \PSL_{2}(\Z) \cap \G_{2}$, it follows that $[\G_{2}:\G_{3}] \le [\PSL_{2}(\Z):\a^{-1}\G_{1}\a \cap \PSL_{2}(\Z)]$ completing the proof.
     \end{proof}
 
-    In light of \cref{prop:double_congruence_subgroup_coset_decomposition_is_finite}, we will denote the orbit representatives by $\b_{j}$ to make it clear that there are finitely many. We can now introduce our operators. Fix some congruence subgroup $\G$ and consider $\mc{S}_{k}(\G)$. Then for $\a \in \GL_{2}^{+}(\Q)$, we define the operator $[\a]_{k}$ on $\mc{S}_{k}(\G)$ to be the linear operator given by
+    In light of \cref{prop:double_congruence_subgroup_coset_decomposition_is_finite}, we will denote the orbit representatives by $\b_{j}$ to make it clear that there are finitely many. We can now introduce our double coset operators. Let $\G_{1}$ and $\G_{2}$ be two congruence subgroups and let $\a \in \GL_{2}^{+}(\Q)$. We define the \textbf{double coset operator}\index{double coset operator} $[\G_{1}\a\G_{2}]_{k}$ on $\mc{S}_{k}(\G_{1})$ to be the linear operator given by
     \[
-      (f[\a]_{k})(z) = \det(\a)^{k-1}(f|_{j,k}\a)(z) = \det(\a)^{k-1}j(\a,z)^{-k}f(\a z).
+      (f[\G_{1}\a\G_{2}]_{k})(z) = \sum_{j}(f|_{k}\b_{j})(z) = \sum_{j}\det(\b_{j})^{k-1}j(\b_{j},z)^{-k}f(\b_{j}z),
     \]
-    Moreover, $[\a]_{k}$ is multiplicative because the determinant and slash operator both are. Also, if $\g \in \G$ and we choose the representative with $\det(\g) = 1$, then the chain of equalities
+    By \cref{prop:double_congruence_subgroup_coset_decomposition_is_finite} this sum is finite. It remains to check that $f[\G_{1}\a\G_{2}]_{k}$ is well-defined. Indeed, if $\b_{j}$ and $\b_{j}'$ belong to the same orbit, then $\b_{j}'\b_{j}^{-1} \in \G_{1}$. But then as $f \in \mc{S}_{k}(\G_{1})$, is it invariant under the $|_{k}\b_{j}'\b_{j}^{-1}$ operator so that
     \[
-      (f[\g]_{k})(z) = j(\g,z)^{-k}f(\g z) = \chi(\g)f(z),
-    \]
-    is equivalent to the modularity of $f$ with character $\chi$ on $\GH$. Thus $f$ is holomorphic form with trivial character on $\GH$ if and only if $f[\g]_{k} = f$ for all $\g \in \G$ where $\g$ is chosen to be the representative with positive determinant. Now let $\G_{1}$ and $\G_{2}$ be two congruence subgroups and let $\a \in \GL_{2}^{+}(\Q)$. We define the \textbf{double coset operator}\index{double coset operator} $[\G_{1}\a\G_{2}]_{k}$ on $\mc{S}_{k}(\G_{1})$ to be the linear operator given by
-    \[
-      (f[\G_{1}\a\G_{2}]_{k})(z) = \sum_{j}(f[\b_{j}]_{k})(z) = \sum_{j}\det(\b_{j})^{k-1}j(\b_{j},z)^{-k}f(\b_{j}z),
-    \]
-    By \cref{prop:double_congruence_subgroup_coset_decomposition_is_finite} this sum is finite. It remains to check that $f[\G_{1}\a\G_{2}]_{k}$ is well-defined. Indeed, if $\b_{j}$ and $\b_{j}'$ belong to the same orbit, then $\b_{j}'\b_{j}^{-1} \in \G_{1}$. But then as $f \in \mc{S}_{k}(\G_{1})$, is it invariant under the $[\b_{j}'\b_{j}^{-1}]_{k}$ operator so that
-    \[
-      (f[\b_{j}]_{k})(z) = ((f[\b_{j}'\b_{j}^{-1}]_{k})[\b_{j}]_{k})(z) = (f[\b_{j}']_{k})(z),
+      (f|_{k}\b_{j})(z) = ((f|_{k}\b_{j}'\b_{j}^{-1})|_{k}\b_{j})(z) = (f|_{k}\b_{j}')(z),
     \]
     and therefore the $[\G_{1}\a\G_{2}]_{k}$ operator is well-defined. Actually, the map $[\G_{1}\a\G_{2}]_{k}$ preserves holomorphic forms:
 
@@ -561,7 +557,7 @@
         &= \sum_{j}\det(\b_{j}\g)^{k-1}\left(\frac{j(\g,z)}{j(\b_{j}\g,z)}\right)^{k}f(\b_{j}\g z) && \text{cocycle condition} \\
         &= j(\g,z)^{k}\sum_{j}\det(\b_{j}\g)^{k-1}j(\b_{j}\g,z)^{-k}f(\b_{j}\g z) \\
         &= j(\g,z)^{k}\sum_{j}\det(\b_{j})^{k-1}j(\b_{j},z)^{-k}f(\b_{j}z) && \text{$\b_{j} \to \b_{j}\g^{-1}$} \\
-        &= j(\g,z)^{k}\sum_{j}(f[\b_{j}]_{k})(z) \\
+        &= j(\g,z)^{k}\sum_{j}(f|_{k}\b_{j})(z) \\
         &= j(\g,z)^{k}(f[\G_{1}\a\G_{2}]_{k})(z).
       \end{align*}
       This proves the modularity of $f[\G_{1}\a\G_{2}]_{k}$. For the growth condition, let $\s_{\mf{a}}$ be a scaling matrix for the cusp $\mf{a}$ of $\G_{2}\backslash\H$. For any orbit representative $\b_{j}$, $\b_{j}\s_{\mf{a}}$ takes $\infty$ to an element of $\Q \cup \{\infty\}$ since $\b_{j} \in \GL_{2}^{+}(\Q)$. In other words, $\b_{j}\s_{\mf{a}}\infty = \mf{b}$ for some cusp $\mf{b}$ of $\G_{1}\backslash\H$. Then by the cocycle condition, we have
@@ -579,13 +575,13 @@
     \]
     ($d$ is invertible modulo $N$ since $c \equiv 0 \tmod{N}$ and $ad-bc = 1$). This is a surjective homomorphism and its kernel is exactly $\G_{1}(N)$ so that $\G_{1}(N)$ is a normal subgroup of $\G_{0}(N)$ and $\G_{0}(N)/\G_{1}(N) \cong (\Z/N\Z)^{\ast}$. Letting $\a = \begin{psmallmatrix} \ast & \ast \\ \ast & d \end{psmallmatrix} \in \G_{0}(N)$ and $f \in \mc{S}_{k}(\G_{1})$, consider $\left(f\left[\G_{1}(N)\a\G_{1}(N)\right]_{k}\right)(z)$. This is only dependent upon the lower-right entry $d$ of $\a$ taken modulo $N$. To see this, since $\G_{1}(N)$ is normal in $\G_{0}(N)$, $\G_{1}(N)\a = \a\G_{1}(N)$ so that $\G_{1}(N)\a\G_{1}(N) = \a\G_{1}(N)$ and hence there is only one representative for the orbit decomposition. Therefore
     \[
-      \left(f\left[\G_{1}(N)\a\G_{1}(N)\right]_{k}\right)(z) = \sum_{j}(f[\b]_{k})(z) = (f[\a]_{k})(z).
+      \left(f\left[\G_{1}(N)\a\G_{1}(N)\right]_{k}\right)(z) = (f|_{k}\a)(z).
     \]
     This induces an action of $\G_{0}(N)$ on $\mc{S}_{k}(\G_{1})$ and since $\G_{1}(N)$ acts trivially, this is really an action of $\G_{0}(N)/\G_{1}(N) \cong (\Z/N\Z)^{\ast}$. In other words, we have an induced action that depends only upon the lower-right entry $d$ of $\a$ taken modulo $N$. So for any $d$ modulo $N$, we define the \textbf{diamond operator}\index{diamond operator} $\<d\>:\mc{S}_{k}(\G_{1}(N)) \to \mc{S}_{k}(\G_{1}(N))$ to be the linear operator given by
     \[
-      (\<d\>f)(z) = (f[\a]_{k})(z),
+      (\<d\>f)(z) = (f|_{k}\a)(z),
     \]
-    for any $\a = \begin{psmallmatrix} \ast & \ast \\ \ast & d \end{psmallmatrix} \in \G_{0}(N)$. Our discussion above has already shown that the diamond operators $\<d\>$ are well-defined. Moreover, the diamond operators are also invertible with $\<\conj{d}\>$ serving as an inverse and $\a^{-1}$ as a representative for the definition. Also, since the operator $[\a]_{k}$ is multiplicative and
+    for any $\a = \begin{psmallmatrix} \ast & \ast \\ \ast & d \end{psmallmatrix} \in \G_{0}(N)$. Our discussion above has already shown that the diamond operators $\<d\>$ are well-defined. Moreover, the diamond operators are also invertible with $\<\conj{d}\>$ serving as an inverse and $\a^{-1}$ as a representative for the definition. Also, since the operator $|_{k}\a$ is multiplicative and
     \[
       \begin{pmatrix} \ast & \ast \\ 0 & d \end{pmatrix}\begin{pmatrix} \ast & \ast \\ 0 & e \end{pmatrix} \equiv \begin{pmatrix} \ast & \ast \\ 0 & de \end{pmatrix} \tmod{N},
     \]
@@ -609,11 +605,7 @@
       But any representation of a finite abelian group over $\C$ is completely reducible with respect to the characters of the group and every irreducible subrepresentation is $1$-dimensional (see \cref{thm:finite_abelian_representation_is_completely_reducible}). Since the characters of $(\Z/N\Z)^{\ast}$ are given by Dirichlet characters, the decomposition as a direct sum follows.
     \end{proof}
     
-    If $\g = \begin{psmallmatrix} \ast & \ast \\ \ast & d \end{psmallmatrix} \in \G_{0}(N)$ and we choose the representative with positive determinant, then $\chi(\g) = \chi(d)$ and the chain of equalities
-    \[
-      (\<d\>f)(z) = (f[\g]_{k})(z) = j(\g,z)^{-k}f(\g z) = \chi(d)f(z),
-    \]
-    is equivalent to the modularity of $f$ with character $\chi$ on $\G_{0}(N)\backslash\H$. Thus $f$ is a holomorphic form with character $\chi$ on $\G_{0}(N)\backslash\H$ if and only if $f[\g]_{k} = \chi(\g)f$ for all $\g \in \G_{0}(N)$ where $\g$ is chosen to be the representative with positive determinant. It follows that the diamond operators sieve holomorphic forms on $\G_{1}(N)\backslash\H$ with trivial character in terms of holomorphic forms on $\G_{0}(N)\backslash\H$ with nontrivial characters. In particular, $\mc{S}_{k}(N,\chi) = \mc{S}_{k}(\G_{0}(N),\chi)$. So by \cref{thm:diamond_operator_decomposition_holomorphic}, we have
+    \cref{thm:diamond_operator_decomposition_holomorphic} shows that the diamond operators sieve holomorphic forms on $\G_{1}(N)\backslash\H$ with trivial character in terms of holomorphic forms on $\G_{0}(N)\backslash\H$ with nontrivial characters. In particular, $\mc{S}_{k}(N,\chi) = \mc{S}_{k}(\G_{0}(N),\chi)$. So by \cref{thm:diamond_operator_decomposition_holomorphic}, we have
     \[
       \mc{S}_{k}(\G_{1}(N)) = \bigop_{\chi \tmod{N}}\mc{S}_{k}(\G_{0}(N),\chi),
     \]
@@ -704,7 +696,7 @@
       \]
       Now let $f \in \mc{S}_{k}(\G_{1}(N))$. Then this equivalence of unions implies
       \[
-      \<d\>T_{p}f = \sum_{j}f[\b_{j}\g]_{k} = \sum_{j}f[\g\b_{j}]_{k} = T_{p}\<d\>f.
+      \<d\>T_{p}f = \sum_{j}f|_{k}\b_{j}\g = \sum_{j}f|_{k}\g\b_{j} = T_{p}\<d\>f.
       \]
     \end{proof}
     
@@ -713,7 +705,7 @@
     \begin{proposition}\label{prop:explicit_description_of_Hecke_operators_holomorphic}
       Let $f \in \mc{S}_{k}(\G_{1}(N))$. Then the Hecke operator $T_{p}$ acts on $f$ as follows:
       \[
-        (T_{p}f)(z) = \begin{cases} \displaystyle{\sum_{j \tmod{p}}}\left(f\left[\begin{pmatrix} 1 & j \\ 0 & p \end{pmatrix}\right]_{k}\right)(z)+\left(f\left[\begin{pmatrix} m & n \\ N & p \end{pmatrix}\begin{pmatrix} p & 0 \\ 0 & 1 \end{pmatrix}\right]_{k}\right)(z) & \text{if $p \nmid N$}, \\ \displaystyle{\sum_{j \tmod{p}}}\left(f\left[\begin{pmatrix} 1 & j \\ 0 & p \end{pmatrix}\right]_{k}\right)(z) & \text{if $p \mid N$}, \end{cases}
+        (T_{p}f)(z) = \begin{cases} \displaystyle{\sum_{j \tmod{p}}}\left(f\bigg|_{k}\begin{pmatrix} 1 & j \\ 0 & p \end{pmatrix}\right)(z)+\left(f\bigg|_{k}\begin{pmatrix} m & n \\ N & p \end{pmatrix}\begin{pmatrix} p & 0 \\ 0 & 1 \end{pmatrix}\right)(z) & \text{if $p \nmid N$}, \\ \displaystyle{\sum_{j \tmod{p}}}\left(f\bigg|_{k}\begin{pmatrix} 1 & j \\ 0 & p \end{pmatrix}\right)(z) & \text{if $p \mid N$}, \end{cases}
       \]
       where $m$ and $n$ are chosen such that $\det\left(\begin{psmallmatrix} m & n \\ N & p \end{psmallmatrix}\right) = 1$.
     \end{proposition}
@@ -785,15 +777,15 @@
     \begin{proof}
       In view of \cref{thm:diamond_operator_decomposition_holomorphic} and the linearity of the Hecke operators, it suffices to assume $f \in \mc{S}_{k}(N,\chi)$. By \cref{prop:diamond_Hecke_operators_commute_holomorphic}, $T_{p}f \in \mc{S}_{k}(N,\chi)$. It remains to verify the second formula. Observe that
       \[
-        \left(f\left[\begin{pmatrix} 1 & j \\ 0 & p \end{pmatrix}\right]_{k}\right)(z) = \frac{1}{p}\sum_{n \ge 1}a_{n}(f)e^{\frac{2\pi in(z+j)}{p}}.
+        \left(f\bigg|_{k}\begin{pmatrix} 1 & j \\ 0 & p \end{pmatrix}\right)(z) = \frac{1}{p}\sum_{n \ge 1}a_{n}(f)e^{\frac{2\pi in(z+j)}{p}}.
       \]
       Summing over all $j$ modulo $p$ gives
       \[
-        \sum_{j \tmod{p}}\left(f\left[\begin{pmatrix} 1 & j \\ 0 & p \end{pmatrix}\right]_{k}\right)(z) = \sum_{n \ge 1}a_{n}(f)e^{\frac{2\pi inz}{p}}\frac{1}{p}\sum_{j \tmod{p}}e^{\frac{2\pi nij}{p}}.
+        \sum_{j \tmod{p}}\left(f\bigg|_{k}\begin{pmatrix} 1 & j \\ 0 & p \end{pmatrix}\right)(z) = \sum_{n \ge 1}a_{n}(f)e^{\frac{2\pi inz}{p}}\frac{1}{p}\sum_{j \tmod{p}}e^{\frac{2\pi nij}{p}}.
       \]
       If $p \nmid N$ then the inner sum vanishes because it is the sum over all $p$-th roots of unity. If $p \mid N$ then the sum is also $p$. Therefore
       \[
-        \sum_{j \tmod{p}}\left(f\left[\begin{pmatrix} 1 & j \\ 0 & p \end{pmatrix}\right]_{k}\right)(z) = \sum_{n \ge 1}a_{np}(f)e^{2\pi inz}.
+        \sum_{j \tmod{p}}\left(f\bigg|_{k}\begin{pmatrix} 1 & j \\ 0 & p \end{pmatrix}\right)(z) = \sum_{n \ge 1}a_{np}(f)e^{2\pi inz}.
       \]
       If $p \mid N$, then \cref{prop:explicit_description_of_Hecke_operators_holomorphic} implies
       \begin{equation}\label{equ:Hecke_operator_when_p_divides_holomorphic}
@@ -801,7 +793,7 @@
       \end{equation}
       which is the claimed Fourier series of $T_{p}f$. If $p \nmid N$, then we have the additional term
       \begin{align*}
-        \left(f\left[\begin{pmatrix} m & n \\ N & p \end{pmatrix}\begin{pmatrix} p & 0 \\ 0 & 1 \end{pmatrix}\right]_{k}\right)(z) &= \left(\<p\>f\left[\begin{pmatrix} p & 0 \\ 0 & 1 \end{pmatrix}\right]_{k}\right)(z) \\
+        \left(f\bigg|_{k}\begin{pmatrix} m & n \\ N & p \end{pmatrix}\begin{pmatrix} p & 0 \\ 0 & 1 \end{pmatrix}\right)(z) &= \left(\<p\>f\bigg|_{k}\begin{pmatrix} p & 0 \\ 0 & 1 \end{pmatrix}\right)(z) \\
         &= p^{k-1}(\<p\>f)(pz) \\
         &= \sum_{n \ge 1}p^{k-1}a_{n}(\<p\>f)e^{2\pi inpz} \\
         &= \sum_{n \ge 1}\chi(p)p^{k-1}a_{n}(f)e^{2\pi inpz},
@@ -829,9 +821,9 @@
       \[
         \g\eta \equiv \begin{pmatrix} \ast & \ast \\ 0 & de \end{pmatrix} \equiv \begin{pmatrix} \ast & \ast \\ 0 & ed \end{pmatrix} \equiv \eta\g \tmod{N}.
       \]
-      Therefore $[\g\eta]_{k} = [\eta\g]_{k}$ and so for any $f \in \mc{S}_{k}(\G_{1}(N))$, we have
+      Therefore $\g\eta|_{k} = \eta\g|_{k}$ as operators and so for any $f \in \mc{S}_{k}(\G_{1}(N))$, we have
       \[
-        \<d\>\<e\>f = f[\g\eta]_{k} = f[\eta\g]_{k} = \<e\>\<d\>f.
+        \<d\>\<e\>f = f|_{k}\g\eta_{k} = f|_{k}\eta\g_{k} = \<e\>\<d\>f.
       \]
       We now show that the Hecke operators commute. In view of \cref{thm:diamond_operator_decomposition_holomorphic} and linearity of the Hecke operators, it suffices to prove this for $f \in \mc{S}_{k}(N,\chi)$. Applying \cref{prop:prime_Hecke_operators_acting_on_Fourier_coefficients_holomorphic} twice, for any $n \ge 1$ we compute
       \begin{align*}
@@ -949,19 +941,19 @@
       \begin{enumerate}[label=(\roman*)]
         \item If $\a^{-1}\G\a \subseteq \PSL_{2}(\Z)$, then for all $f \in \mc{S}_{k}(\G)$ and $g \in \mc{S}_{k}(\a^{-1}\G\a)$, we have
         \[
-          \<f[\a]_{k},g\>_{\a^{-1}\G\a} = \<f,g[\a']_{k}\>_{\G}.
+          \<f|_{k}\a,g\>_{\a^{-1}\G\a} = \<f,g|_{k}\a'\>_{\G}.
         \]
         \item For all $f,g \in \mc{S}_{k}(\G)$, we have
         \[
           \<f[\G\a\G]_{k},g\> = \<f,g[\G\a'\G]_{k}\>.
         \]
       \end{enumerate}
-      In particular, if $\a^{-1}\G\a = \G$ then $[\a]_{k}^{\ast} = [\a']_{k}$ and $[\G\a\G]_{k}^{\ast} = [\G\a'\G]_{k}$.   
+      In particular, if $\a^{-1}\G\a = \G$ then $|_{k}\a^{\ast} = |_{k}\a'$ and $[\G\a\G]_{k}^{\ast} = [\G\a'\G]_{k}$ as operators.   
     \end{proposition}
     \begin{proof}
       To prove (i) we first compute
       \begin{align*}
-        \<f[\a]_{k},g\>_{\a^{-1}\G\a} &= \frac{1}{V_{\a^{-1}\G\a}}\int_{\mc{F}_{\a^{-1}\G\a}}(f[\a]_{k})(z)\conj{g(z)}\Im(z)^{k}\,d\mu \\
+        \<f|_{k}\a,g\>_{\a^{-1}\G\a} &= \frac{1}{V_{\a^{-1}\G\a}}\int_{\mc{F}_{\a^{-1}\G\a}}(f|_{k}\a)(z)\conj{g(z)}\Im(z)^{k}\,d\mu \\
         &= \frac{1}{V_{\a^{-1}\G\a}}\int_{\mc{F}_{\a^{-1}\G\a}}\det(\a)^{k-1}j(\a,z)^{-k}f(\a z)\conj{g(z)}\Im(z)^{k}\,d\mu \\
         &= \frac{1}{V_{\G}}\int_{\mc{F}_{\a^{-1}\G\a}}\det(\a)^{k-1}j(\a,z)^{-k}f(\a z)\conj{g(z)}\Im(z)^{k}\,d\mu && \text{\cref{lem:invariance_of_volume}} \\
         &= \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}\det(\a)^{k-1}j(\a,\a^{-1}z)^{-k}f(z)\conj{g(\a^{-1}z)}\Im(\a^{-1}z)^{k}\,d\mu && \text{$z \to \a^{-1}z$.}
@@ -976,7 +968,7 @@
       \]
       Reversing the first computation in the start of the proof but applied to this integral shows that that
       \[
-        \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}\det(\a')^{k-1}\conj{j(\a',z)^{-k}}f(z)\conj{g(\a'z)}\Im(z)^{k}\,d\mu = \<f,g[\a']_{k}\>_{\G},
+        \frac{1}{V_{\G}}\int_{\mc{F}_{\G}}\det(\a')^{k-1}\conj{j(\a',z)^{-k}}f(z)\conj{g(\a'z)}\Im(z)^{k}\,d\mu = \<f,g|_{k}\a'\>_{\G},
       \]
       which completes the proof of (i). To prove (ii), \cref{lem:adjoint_lemma} implies the coset decomposition $\G\a\G = \bigcup_{j}\G\b_{j}$ so that we can use the $\b_{j}$ as representatives for the $[\G\a\G]_{k}$ operator. As the $\b_{j}$ also satisfy $\G\a\G = \bigcup_{j}\b_{j}\G$, upon inverting $\b_{j}$ and noting that $\b_{j} \in \G\a$, we obtain $\G\a^{-1}\G = \bigcup_{j}\G\b_{j}^{-1}$. Since scalar multiplication commutes with matrices and the matrices in $\G$ have determinant $1$, we conclude that $\G\a'\G = \bigcup_{j}\G\b_{j}'$ where $\b_{j}' = \det(\b_{j})\b_{j}^{-1}$ (also $\det(\b_{j}) = \det(\a)$). So we can use the $\b_{j}'$ as representatives in the $[\G\a'\G]_{k}$ operator. The statement now follows from (i). The last statement is obvious.
     \end{proof}
@@ -992,7 +984,7 @@
     \begin{proof}
       By multiplicativity of the diamond and Hecke operators, it suffices to prove the two formulas when $m = p$ for a prime $p \nmid N$. We will prove the adjoint formula for diamond operators first. Let $\a = \begin{psmallmatrix} \conj{p} & \ast \\ \ast & p \end{psmallmatrix} \in \G_{0}(N)$ and $\a' = \det(\a)\a^{-1} = \begin{psmallmatrix} p & \ast \\ \ast & \conj{p} \end{psmallmatrix} \in \G_{0}(N)$. Then \cref{prop:Petersson_adjoint_holomorphic} gives
       \[
-        \<p\>^{\ast} = [\a']_{k} = \<\conj{p}\>.
+        \<p\>^{\ast} = |_{k}\a' = \<\conj{p}\>.
       \]
       This proves the adjoint formula for the diamond operators and normality follows from multiplicativity. For the Hecke operators, let $\b_{j} = \begin{psmallmatrix} 1 & j \\ 0 & p \end{psmallmatrix}$ and $\b_{\infty} = \begin{psmallmatrix} pm & n \\ Np & p \end{psmallmatrix}$ for $j$ taken modulo $p$ and where $m$ and $n$ are chosen such that $\det\left(\begin{psmallmatrix} m & n \\ N & p \end{psmallmatrix}\right) = 1$. By \cref{prop:explicit_description_of_Hecke_operators_holomorphic}, $\{\b_{1},\ldots,\b_{p-1},\b_{\infty}\}$ is a complete set of orbit representatives for $T_{p}$. Now set $\a = \begin{psmallmatrix} 1 & 0 \\ 0 & p \end{psmallmatrix}$ and $\a' = \det(\a)\a^{-1} = \begin{psmallmatrix} p & 0 \\ 0 & 1 \end{psmallmatrix}$. Observe that
       \[
@@ -1064,38 +1056,38 @@
   \section{Atkin-Lehner Theory}
     So far, our entire theory of holomorphic forms has started with a fixed congruence subgroup of some level. Atkin-Lehner theory, or the theory of oldforms \& newforms, allows us to discuss holomorphic forms in the context of moving between levels. In this setting, we will only deal with congruence subgroups of the form $\G_{1}(N)$ and $\G_{0}(N)$. The easiest way lift a holomorphic form from a smaller level to a larger level is to observe that if $M \mid N$, then $\G_{1}(N) \le \G_{1}(M)$ so there is a natural inclusion $\mc{S}_{k}(\G_{1}(M)) \subseteq \mc{S}_{k}(\G_{1}(N))$. There is a less trivial way of lifting from $\mc{S}_{k}(\G_{1}(M))$ to $\mc{S}_{k}(\G_{1}(N))$. For any $d \mid \frac{N}{M}$, let $\a_{d} = \begin{psmallmatrix} d & 0 \\ 0 & 1 \end{psmallmatrix}$. If $f \in \mc{S}_{k}(\G_{1}(M))$, we consider
     \[
-      (f[\a_{d}]_{k})(z) = \det(\a_{d})^{k-1}j(\a_{d},z)^{-k}f(\a_{d}z) = d^{k-1}f(dz).
+      (f|_{k}\a_{d})(z) = \det(\a_{d})^{k-1}j(\a_{d},z)^{-k}f(\a_{d}z) = d^{k-1}f(dz).
     \]
-    It turns out that, $[\a_{d}]_{k}$ maps $\mc{S}_{k}(\G_{1}(M))$ into $\mc{S}_{k}(\G_{1}(N))$ and more:
+    It turns out that $|_{k}\a_{d}$ maps $\mc{S}_{k}(\G_{1}(M))$ into $\mc{S}_{k}(\G_{1}(N))$ and more:
     
     \begin{proposition}\label{equ:lifting_operator_holomorphic}
-      Let $M$ and $N$ be positive integers such that $M \mid N$. For any $d \mid \frac{N}{M}$, $[\a_{d}]_{k}$ maps $\mc{S}_{k}(\G_{1}(M))$ into $\mc{S}_{k}(\G_{1}(N))$. In particular, $[\a_{d}]_{k}$ takes $\mc{S}_{k}(M,\chi)$ into $\mc{S}_{k}(N,\chi)$.
+      Let $M$ and $N$ be positive integers such that $M \mid N$. For any $d \mid \frac{N}{M}$, $|_{k}\a_{d}$ maps $\mc{S}_{k}(\G_{1}(M))$ into $\mc{S}_{k}(\G_{1}(N))$. In particular, $|_{k}\a_{d}$ takes $\mc{S}_{k}(M,\chi)$ into $\mc{S}_{k}(N,\chi)$.
     \end{proposition}
     \begin{proof}
-      By \cref{thm:diamond_operator_decomposition_holomorphic}, it suffices to verify only the latter statement so we may assume $f \in \mc{S}_{k}(M,\chi)$. It is clear that holomorphy is satisfied for $f[\a_{d}]_{k}$. To verify modularity, let $\g = \begin{psmallmatrix} a & b \\ c & d' \end{psmallmatrix} \in \G_{1}(N)$. Then
+      By \cref{thm:diamond_operator_decomposition_holomorphic}, it suffices to verify only the latter statement so we may assume $f \in \mc{S}_{k}(M,\chi)$. It is clear that holomorphy is satisfied for $f|_{k}\a_{d}$. To verify modularity, let $\g = \begin{psmallmatrix} a & b \\ c & d' \end{psmallmatrix} \in \G_{1}(N)$. Then
       \[
         \a_{d}\g\a_{d}^{-1} = \begin{pmatrix} d & 0 \\ 0 & 1 \end{pmatrix}\begin{pmatrix} a & b \\ c & d' \end{pmatrix}\begin{pmatrix} d^{-1} & 0 \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} a & bd \\ d^{-1}c & d' \end{pmatrix} = \g',
       \]
       where $\g' = \begin{psmallmatrix} a & bd \\ d^{-1}c & d' \end{psmallmatrix}$. Since $c \equiv 0 \tmod{N}$ and $d \mid \frac{N}{M}$, we deduce that $d^{-1}c \equiv 0 \tmod{M}$. So $\g' \in \G_{1}(M)$ and therefore $\a_{d}\G_{1}(N)\a_{d}^{-1} \subseteq \G_{1}(M)$, or equivalently, $\G_{1}(N) \subseteq \a_{d}^{-1}\G_{1}(M)\a_{d}$. Writing $\g = \a_{d}^{-1}\g'\a_{d}$, we see that $\chi(\g') = \chi(\g)$ and $j(\g',\a_{d}z) = j(\g,z)$ and so
       \begin{align*}
-        (f[\a_{d}]_{k})(\g z) &= d^{k-1}f(d \g z) \\
+        (f|_{k}\a_{d})(\g z) &= d^{k-1}f(d \g z) \\
         &= d^{k-1}f(d\a_{d}^{-1}\g'\a_{d}z) \\
         &= d^{k-1}f\left(\g'\a_{d}z\right) \\
         &= \chi(\g')j(\g',\a_{d}z)d^{k-1}f(\a_{d}z) && \text{modularity} \\
         &= \chi(\g)j(\g,z)d^{k-1}f(\a_{d}z) \\
         &= \chi(\g)j(\g,z)d^{k-1}f(dz) \\
-        &= \chi(\g)j(\g,z)(f[\a_{d}]_{k})(z).
+        &= \chi(\g)j(\g,z)(f|_{k}\a_{d})(z).
       \end{align*}
-      This verifies the modularity of $f[\a_{d}]_{k}$. For the growth condition, let $\s_{\mf{a}}$ be a scaling matrix for the cusp $\mf{a}$ of $\G_{1}(M)\backslash\H$. Then $\a_{d}\s_{\mf{a}}$ takes $\infty$ to an element of $\Q \cup \{\infty\}$ since $\a_{d} \in \GL_{2}^{+}(\Q)$. In other words, $\a_{d}\s_{\mf{a}}\infty = \mf{b}$ for some cusp $\mf{b}$ of $\G_{1}(N)\backslash\H$. Then the cocycle condition implies
+      This verifies the modularity of $f|_{k}\a_{d}$. For the growth condition, let $\s_{\mf{a}}$ be a scaling matrix for the cusp $\mf{a}$ of $\G_{1}(M)\backslash\H$. Then $\a_{d}\s_{\mf{a}}$ takes $\infty$ to an element of $\Q \cup \{\infty\}$ since $\a_{d} \in \GL_{2}^{+}(\Q)$. In other words, $\a_{d}\s_{\mf{a}}\infty = \mf{b}$ for some cusp $\mf{b}$ of $\G_{1}(N)\backslash\H$. Then the cocycle condition implies
       \[
-        j(\s_{\mf{a}},z)^{-k}(f[\a_{d}]_{k})(\s_{\mf{a}}z) = \det(\a_{d})^{k-1}j(\a_{d}\s_{\mf{a}},z)^{-k}f(\a_{d}\s_{\mf{a}}z),
+        j(\s_{\mf{a}},z)^{-k}(f|_{k}\a_{d})(\s_{\mf{a}}z) = \det(\a_{d})^{k-1}j(\a_{d}\s_{\mf{a}},z)^{-k}f(\a_{d}\s_{\mf{a}}z),
       \]
-      and the growth condition follows from that of $f$. In particular, $f[\a_{d}]_{k}$ is a cusp form since $f$ is.
+      and the growth condition follows from that of $f$. In particular, $f|_{k}\a_{d}$ is a cusp form since $f$ is.
     \end{proof}
 
     We can now define oldforms and newforms. For each divisor $d$ of $N$, set
     \[
-      i_{d}:\mc{S}_{k}\left(\G_{1}\left(\frac{N}{d}\right)\right)\x\mc{S}_{k}\left(\G_{1}\left(\frac{N}{d}\right)\right) \to \mc{S}_{k}(\G_{1}(N)) \qquad (f,g) \mapsto f+g[\a_{d}]_{k}.
+      i_{d}:\mc{S}_{k}\left(\G_{1}\left(\frac{N}{d}\right)\right)\x\mc{S}_{k}\left(\G_{1}\left(\frac{N}{d}\right)\right) \to \mc{S}_{k}(\G_{1}(N)) \qquad (f,g) \mapsto f+g|_{k}\a_{d}.
     \]
     This map is well-defined by \cref{equ:lifting_operator_holomorphic}. The subspace of \textbf{oldforms}\index{oldforms} of level $N$ is
     \[
@@ -1111,7 +1103,7 @@
     \]
     and note that $\det(W_{N}) = N$. We define the \textbf{Atkin-Lehner operator}\index{Atkin-Lehner operator} $\w_{N}$ to be the linear operator on $\mc{S}_{k}(\G_{1}(N))$ given by
     \[
-      (\w_{N}f)(z) = N^{1-\frac{k}{2}}(f[W_{N}]_{k})(z) = N^{\frac{k}{2}}j(W_{N},z)^{-k}f(W_{N}z) = (\sqrt{N}z)^{-k}f\left(-\frac{1}{Nz}\right).
+      (\w_{N}f)(z) = N^{1-\frac{k}{2}}(f|_{k}W_{N})(z) = N^{\frac{k}{2}}j(W_{N},z)^{-k}f(W_{N}z) = (\sqrt{N}z)^{-k}f\left(-\frac{1}{Nz}\right).
     \]
     As $W_{N}$ is invertible, so is the Atkin-Lehner operator $\w_{N}$. It is not difficult to see how $\w_{N}$ acts on $\mc{S}_{k}(\G_{1}(N))$:
 
@@ -1142,16 +1134,16 @@
       \]
       and the growth condition follows from that of $f$. In particular, $\w_{N}f$ is a cusp form because $f$ is. It follows that $\w_{N}f \in \mc{S}_{k}(N,\cchi)$. We now show that $\w_{N}$ is self-adjoint. Indeed, since $\w_{N}' = \det(W_{N})\w_{N}^{-1} = \w_{N}$ (recall we are working in $\PSL_{2}(\Z)$) \cref{prop:Petersson_adjoint_holomorphic} implies
       \[
-        \w_{N}^{\ast} = N^{1-\frac{k}{2}}[W_{N}']_{k} = \w_{N}.
+        \w_{N}^{\ast} = N^{1-\frac{k}{2}}|_{k}W_{N}' = \w_{N}.
       \]
       Thus $\w_{N}$ is self-adjoint.
-      We now show that $\w_{N}$ preserves the subspaces of oldforms and newforms. To show that $\w_{N}$ preserves $\mc{S}_{k}^{\text{old}}(\G_{1}(N))$, let $h = f+g[\a_{p}]_{k}$ be in the image of $i_{p}$, with $p \mid N$, so that $i_{p}(f,g) = h$. Then it suffices to show
+      We now show that $\w_{N}$ preserves the subspaces of oldforms and newforms. To show that $\w_{N}$ preserves $\mc{S}_{k}^{\text{old}}(\G_{1}(N))$, let $h = f+g|_{k}\a_{p}$ be in the image of $i_{p}$, with $p \mid N$, so that $i_{p}(f,g) = h$. Then it suffices to show
       \[
         \w_{N}i_{p}(f,g) = i_{p}(\w_{\frac{N}{p}}p^{\frac{3k}{2}-1}g,\w_{\frac{N}{p}}p^{1-\frac{k}{2}}f),
       \]
       which will follow from the formulas
       \[
-        \w_{N}f = (\w_{\frac{N}{p}}p^{1-\frac{k}{2}}f)[\a_{p}]_{k} \quad \text{and} \quad \w_{N}(g[\a_{p}]_{k}) = \w_{\frac{N}{p}}p^{\frac{3k}{2}-1}g.
+        \w_{N}f = (\w_{\frac{N}{p}}p^{1-\frac{k}{2}}f)|_{k}\a_{p} \quad \text{and} \quad \w_{N}(g|_{k}\a_{p}) = \w_{\frac{N}{p}}p^{\frac{3k}{2}-1}g.
       \]
       Both formulas follow immediately from the identities
       \[
@@ -1163,7 +1155,7 @@
       \]
       Hence $\w_{N}f$ must also be a newform and so $\w_{N}$ preserves the subspace of newforms. It remains to prove the formula. For this, observe $W_{N}^{2}z = z$ and $j(W_{N}^{2},z) = (-N)^{k}$ so that
       \[
-        (\w_{N}^{2}f)(z) = N^{2-k}(f[W_{N}^{2}]_{k})(z) = N^{k}j(W_{N}^{2},z)f(W_{N}^{2}z) = (-1)^{k}f(z).
+        (\w_{N}^{2}f)(z) = N^{2-k}(f|_{k}W_{N}^{2})(z) = N^{k}j(W_{N}^{2},z)f(W_{N}^{2}z) = (-1)^{k}f(z).
       \]
     \end{proof}
 
@@ -1182,7 +1174,7 @@
       \]
       where $\g' = \begin{psmallmatrix} d & -N^{-1}c \\ -Nb & a \end{psmallmatrix} \in \G_{1}(N)$. In other words, $W_{N}$ normalizes $\G_{1}(N)$ so that $W_{N}\G_{1}(N)W_{N}^{-1} = \G_{1}(N)$. As $\G_{0}(N) \le \G_{1}(N)$, the same holds for $\G_{0}(N)$ as well. For the diamond operators, the formula is obvious when $p \mid N$ since $\<p\>$ is the zero operator. So suppose $p \nmid N$ and let $\a = \begin{psmallmatrix} \conj{p} & \ast \\ \ast & p \end{psmallmatrix} \in \G_{0}(N)$ and $\a' = \det(\a)\a^{-1} = \begin{psmallmatrix} p & \ast \\ \ast & \conj{p} \end{psmallmatrix} \in \G_{0}(N)$. As $W_{N}\a W_{N}^{-1} = \a'$, \cref{prop:Petersson_adjoint_holomorphic} gives
       \[
-        \<p\>^{\ast} = [\a']_{k} = \w_{N}\<p\>\w_{N}^{-1}.
+        \<p\>^{\ast} = |_{k}\a' = \w_{N}\<p\>\w_{N}^{-1}.
       \]
       This is the desired adjoint formula for the diamond operators when $p \mid N$. Thus the adjoint formula holds for all the diamond operators. For the Hecke operators, let $\a = \begin{psmallmatrix}1 & 0 \\ 0 & p\end{psmallmatrix}$ and set $\a' = \det(\a)\a^{-1} = \begin{psmallmatrix} p & 0 \\ 0 & 1\end{psmallmatrix}$. Then $W_{N}\a W_{N}^{-1} = \a'$, and as $W_{N}$ normalizes $\G_{1}(N)$, \cref{prop:Petersson_adjoint_holomorphic} gives
       \[
@@ -1197,13 +1189,13 @@
       On $\mc{S}_{k}(\G_{1}(N))$, the diamond operators $\<m\>$ and Hecke operators $T_{m}$ preserve the subspaces of oldforms and newforms for all $m \ge 1$.
     \end{proposition}
     \begin{proof}
-      By multiplicativity of the diamond and Hecke operators, it suffices to prove this when $m$ is prime. Moreover, if $N = 1$ the result is trivial because there are no oldforms. Therefore we may assume $N > 1$ and hence consider a prime $p$ with $p \mid N$. We will first show that the diamond and Hecke operators preserve $\mc{S}_{k}^{\mathrm{old}}(\G_{1}(N))$. Let $h = f+g[\a_{p}]_{k}$ be in the image of $i_{p}$ so that $i_{p}(f,g) = h$ and let $q$ be a prime. For the diamond operators, it suffices to show
+      By multiplicativity of the diamond and Hecke operators, it suffices to prove this when $m$ is prime. Moreover, if $N = 1$ the result is trivial because there are no oldforms. Therefore we may assume $N > 1$ and hence consider a prime $p$ with $p \mid N$. We will first show that the diamond and Hecke operators preserve $\mc{S}_{k}^{\mathrm{old}}(\G_{1}(N))$. Let $h = f+g|_{k}\a_{p}$ be in the image of $i_{p}$ so that $i_{p}(f,g) = h$ and let $q$ be a prime. For the diamond operators, it suffices to show
       \[
         \<q\>i_{p}(f,g) = i_{p}(\<q\>f,\<q\>g),
       \]
       which will follow from the formulas
       \[
-        \<q\>f = \<q\>f \quad \text{and} \quad \<q\>(g[\a_{p}]_{k}) = (\<q\>g)[\a_{p}]_{k}.
+        \<q\>f = \<q\>f \quad \text{and} \quad \<q\>(g|_{k}\a_{p}) = (\<q\>g)|_{k}\a_{p}.
       \]
       In both of these formulas, the diamond operators on the left-hand sides and right-hand sides are on levels $N$ and $\frac{N}{p}$ respectively. Both formulas are trivial if $q \mid N$ because then $\<q\>$ is the zero operator. So suppose $q \nmid N$. If $\a = \begin{psmallmatrix} \ast & \ast \\ \ast & q \end{psmallmatrix} \in \G_{0}(N)$, then $\a \in \G_{0}\left(\frac{N}{p}\right)$ and the first formula follows. The second formula follows from the identity
       \[
@@ -1215,23 +1207,23 @@
       \]
       which will follow from the formulas
       \[
-        T_{q}f = T_{q}f \quad \text{and} \quad T_{q}(g[\a_{p}]_{k}) = (T_{q}g)[\a_{p}]_{k}.
+        T_{q}f = T_{q}f \quad \text{and} \quad T_{q}(g|_{k}\a_{p}) = (T_{q}g)|_{k}\a_{p}.
       \]
-      In both of these formulas, the Hecke operators on the left-hand sides and right-hand sides are on levels $N$ and $\frac{N}{p}$ respectively. The first formula follows immediately from \cref{prop:prime_Hecke_operators_acting_on_Fourier_coefficients_holomorphic} since this shows that the action of the Hecke operators on the Fourier coefficients is identical. For the second formula, by \cref{thm:diamond_operator_decomposition_holomorphic} we may assume that $g \in \mc{S}\left(\frac{N}{p},\chi\right)$. Then $g[\a_{p}]_{k} \in \mc{S}_{k}(N,\chi)$ (recall \cref{equ:lifting_operator_holomorphic}) and the second formula follows by comparing Fourier coefficients using \cref{prop:prime_Hecke_operators_acting_on_Fourier_coefficients_holomorphic}. Thus the Hecke operators $T_{q}$, save for $q = p$, preserve $\mc{S}_{k}^{\mathrm{old}}(\G_{1}(N))$. Lastly, we consider the Hecke operator $T_{p}$. For this Hecke operator, it suffices to show
+      In both of these formulas, the Hecke operators on the left-hand sides and right-hand sides are on levels $N$ and $\frac{N}{p}$ respectively. The first formula follows immediately from \cref{prop:prime_Hecke_operators_acting_on_Fourier_coefficients_holomorphic} since this shows that the action of the Hecke operators on the Fourier coefficients is identical. For the second formula, by \cref{thm:diamond_operator_decomposition_holomorphic} we may assume that $g \in \mc{S}\left(\frac{N}{p},\chi\right)$. Then $g|_{k}\a_{p} \in \mc{S}_{k}(N,\chi)$ (recall \cref{equ:lifting_operator_holomorphic}) and the second formula follows by comparing Fourier coefficients using \cref{prop:prime_Hecke_operators_acting_on_Fourier_coefficients_holomorphic}. Thus the Hecke operators $T_{q}$, save for $q = p$, preserve $\mc{S}_{k}^{\mathrm{old}}(\G_{1}(N))$. Lastly, we consider the Hecke operator $T_{p}$. For this Hecke operator, it suffices to show
       \[
         T_{p}i_{p}(f,g) = i_{p}(T_{p}f+p^{k-1}g,-\<p\>f),
       \]
       which will follow from the formulas
       \[
-        T_{p}f = T_{p}f-(\<p\>f)[\a_{p}]_{k} \quad \text{and} \quad T_{p}(g[\a_{p}]_{k}) = p^{k-1}g.
+        T_{p}f = T_{p}f-(\<p\>f)|_{k}\a_{p} \quad \text{and} \quad T_{p}(g|_{k}\a_{p}) = p^{k-1}g.
       \]
       In both of these formulas, the diamond and Hecke operators on the left-hand sides and right-hand sides are on levels $N$ and $\frac{N}{p}$ respectively. Since $p \mid N$, \cref{prop:explicit_description_of_Hecke_operators_holomorphic} gives
       \[
-        T_{p}f = \sum_{j \tmod{p}}f\left[\begin{pmatrix} 1 & j \\ 0 & p \end{pmatrix}\right]_{k} = T_{p}f-(\<p\>f)[\a_{p}]_{k},
+        T_{p}f = \sum_{j \tmod{p}}f\bigg|_{k}\begin{pmatrix} 1 & j \\ 0 & p \end{pmatrix} = T_{p}f-(\<p\>f)|_{k}\a_{p},
       \]
       where the second equality follows regardless of whether $p \mid \frac{N}{p}$ or not because either $\<p\>$ is the zero operator on level $\frac{N}{p}$ (in the case $p \mid \frac{N}{p}$) or it kills the extra term in the Hecke operator $T_{p}$ on level $\frac{N}{p}$ (in the case $p \nmid \frac{N}{p}$). Therefore the first formula holds. Similarly, since $p \mid N$, \cref{prop:explicit_description_of_Hecke_operators_holomorphic} gives
       \[
-        T_{p}(g[\a_{p}]_{k})(z) = \sum_{j \tmod{p}}g\left[\begin{pmatrix} p & 0 \\ 0 & 1 \end{pmatrix}\begin{pmatrix} 1 & j \\ 0 & p \end{pmatrix}\right]_{k} = \sum_{j \tmod{p}}g\left[\begin{pmatrix} p & pj \\ 0 & p \end{pmatrix}\right]_{k} = p^{k-1}g,
+        T_{p}(g|_{k}\a_{p})(z) = \sum_{j \tmod{p}}g\bigg|_{k}\begin{pmatrix} p & 0 \\ 0 & 1 \end{pmatrix}\begin{pmatrix} 1 & j \\ 0 & p \end{pmatrix} = \sum_{j \tmod{p}}g\bigg|_{k}\begin{pmatrix} p & pj \\ 0 & p \end{pmatrix} = p^{k-1}g,
       \]
       where the last equality follows because $g$ is $1$-periodic. This shows that the second formula holds. Thus the Hecke operator $T_{p}$ preserves $\mc{S}_{k}^{\mathrm{old}}(\G_{1}(N))$. We have now shown that all of the diamond and Hecke operators preserve $\mc{S}_{k}^{\mathrm{old}}(\G_{1}(N))$. To show that they also preserve $\mc{S}_{k}^{\mathrm{new}}(\G_{1}(N))$, let $f$ and $g$ be a newform and an oldform respectively. Then for any $m \ge 1$, \cref{prop:Atkin_Lehner_adjoint_diamond_Hecke_holomorphic} gives
       \[
@@ -1254,7 +1246,7 @@
     \begin{lemma}\label{lem:the_main_lemma_for_newforms_holomorphic}
       If $f \in \mc{S}_{k}(\G_{1}(N))$ has Fourier coefficients $a_{n}(f)$ and is such that $a_{n}(f) = 0$ for all $n \ge 1$ whenever $(n,N) = 1$, then
       \[
-        f = \sum_{p \mid N}p^{k-1}f_{p}[\a_{p}]_{k},
+        f = \sum_{p \mid N}p^{k-1}f_{p}|_{k}\a_{p},
       \]
       for some $f_{p} \in \mc{S}_{k}\left(\G_{1}\left(\frac{N}{p}\right)\right)$.
     \end{lemma}
