@@ -141,15 +141,15 @@
       \]
     \end{proposition}
   \section{Quadratic Symbols}
-    Let $p$ be an odd prime. We are often interested in when the equation $x^{2} = a \tmod{p}$ is solvable for some $a \in \Z$. The \textbf{Legendre symbol}\index{Legendre symbol} $\tlegendre{a}{p}$ keeps track of this:
+    Let $p$ be an odd prime. We are often interested in when the equation $x^{2} = m \tmod{p}$ is solvable for some $m \in \Z$. The \textbf{Legendre symbol}\index{Legendre symbol} $\tlegendre{m}{p}$ keeps track of this:
     \[
-      \legendre{a}{q} = \begin{cases} 1 & \text{if $x^{2} \equiv a \tmod{p}$ is solvable}, \\ -1 & \text{if $x^{2} \equiv a \tmod{p}$ is not solvable}, \\ 0 & \text{if $a \equiv 0 \tmod{p}$}. \end{cases}
+      \legendre{m}{p} = \begin{cases} 1 & \text{if $x^{2} \equiv m \tmod{p}$ is solvable}, \\ -1 & \text{if $x^{2} \equiv m \tmod{p}$ is not solvable}, \\ 0 & \text{if $m \equiv 0 \tmod{p}$}. \end{cases}
     \]
-    \textbf{Euler's criterion}\index{Euler's criterion} gives an alternative expression for Legendre symbol when $a$ is coprime to $p$:
+    \textbf{Euler's criterion}\index{Euler's criterion} gives an alternative expression for Legendre symbol when $m$ is coprime to $p$:
     \begin{proposition}[Euler's criterion]
-      Let $p$ be an odd prime and suppose $(a,p) = 1$. Then
+      Let $p$ be an odd prime and suppose $m \in \Z$ with $(m,p) = 1$. Then
       \[
-        \legendre{a}{p} = a^{\frac{p-1}{2}} \tmod{p}.
+        \legendre{m}{p} = m^{\frac{p-1}{2}} \tmod{p}.
       \]
     \end{proposition}
     From the definition and Euler's criterion is it not difficult to show that the Legendre symbol satisfies the following properties:
@@ -162,7 +162,7 @@
     \end{proposition}
     From \cref{prop:Legendre_symbol_properties}, to compute the Legendre symbol in general it suffices to know how to compute $\tlegendre{-1}{p}$, $\tlegendre{2}{p}$, and $\tlegendre{q}{p}$ where $q$ is another odd prime. The \textbf{supplemental laws of quadratic reciprocity}\index{supplemental laws of quadratic reciprocity} are formulas for the first two symbols:
     \begin{proposition}[Supplemental laws of quadratic reciprocity]
-      Let $p$ be an odd prime.
+      Let $p$ be an odd prime. Then the following formulas hold:
       \begin{enumerate}[label=(\roman*)]
         \item
         \[
@@ -181,9 +181,9 @@
         \legendre{p}{q}\legendre{q}{p} = (-1)^{\frac{p-1}{2}\frac{q-1}{2}} = \begin{cases} 1 & \text{if $p \equiv 1 \tmod{4}$ or $q \equiv 1 \tmod{4}$}, \\ -1 & \text{if $p \equiv 3 \tmod{4}$ and $q \equiv 3 \tmod{4}$}. \end{cases}
       \]
     \end{theorem}
-    We can generalize the Jacobi symbol further by making it multiplicative in the denominator. Let $n$ be a positive odd integer with prime factorization $n = p_{1}^{r_{1}}p_{2}^{r_{2}} \cdots p_{k}^{r_{k}}$ and let $a \in \Z$. The \textbf{Jacobi symbol}\index{Jacobi symbol} $\tlegendre{a}{n}$ is defined by
+    We can generalize the Jacobi symbol further by making it multiplicative in the denominator. Let $n$ be a positive odd integer with prime factorization $n = p_{1}^{r_{1}}p_{2}^{r_{2}} \cdots p_{k}^{r_{k}}$ and let $m \in \Z$. The \textbf{Jacobi symbol}\index{Jacobi symbol} $\tlegendre{m}{n}$ is defined by
     \[
-      \legendre{a}{n} = \prod_{1 \le i \le k}\legendre{a}{p_{i}}^{r_{i}}.
+      \legendre{m}{n} = \prod_{1 \le i \le k}\legendre{m}{p_{i}}^{r_{i}}.
     \]
     When $n = p$ is prime, the Jacobi symbol reduces to the Legendre symbol and the Jacobi symbol is precisely the unique multiplicative extension of the Legendre symbol to all positive odd integers. Accordingly, the Jacobi symbol has the following properties:
     \begin{proposition}
@@ -196,26 +196,26 @@
     \end{proposition}
     There is also an associated reciprocity law:
     \begin{proposition}
-      Let $m$ and $n$ be distinct positive odd integers. Then
+      Let $m$ and $n$ be positive odd integers with $(m,n) = 1$. Then
       \[
         \legendre{m}{n}\legendre{n}{m} = (-1)^{\frac{m-1}{2}\frac{n-1}{2}} = \begin{cases} 1 & \text{if $m \equiv 1 \tmod{4}$ or $n \equiv 1 \tmod{4}$}, \\ -1 & \text{if $m \equiv 3 \tmod{4}$ and $n \equiv 3 \tmod{4}$}. \end{cases}
       \]
     \end{proposition}
-    We can further generalize the Jacobi symbol so that it is valid for all integers. Let $a,n \in \Z$ where $n = up_{1}^{r_{1}}p_{2}^{r_{2}} \cdots p_{k}^{r_{k}}$ is the prime factorization of $n$ with $u = \pm1$. The \textbf{Kronecker symbol}\index{Kronecker symbol} $\tlegendre{a}{n}$ is defined by
+    We can further generalize the Jacobi symbol so that it is valid for all integers. Let $m,n \in \Z$ where $n = up_{1}^{r_{1}}p_{2}^{r_{2}} \cdots p_{k}^{r_{k}}$ is the prime factorization of $n$ with $u = \pm1$. The \textbf{Kronecker symbol}\index{Kronecker symbol} $\tlegendre{m}{n}$ is defined by
     \[
-      \legendre{a}{n} = \legendre{a}{u}\prod_{1 \le i \le k}\legendre{a}{p_{i}}^{r_{i}},
+      \legendre{m}{n} = \legendre{m}{u}\prod_{1 \le i \le k}\legendre{m}{p_{i}}^{r_{i}},
     \]
     where we set
     \[
-      \legendre{a}{1} = 1, \quad \legendre{a}{-1} = \begin{cases} 1 & \text{if $a \ge 0$}, \\ -1 & \text{if $a < 0$}, \end{cases} \quad \legendre{a}{0} = \begin{cases} 1 & \text{if $a = \pm 1$}, \\ 0 & \text{otherwise}, \end{cases}
+      \legendre{m}{1} = 1, \quad \legendre{m}{-1} = \begin{cases} 1 & \text{if $m \ge 0$}, \\ -1 & \text{if $m < 0$}, \end{cases} \quad \legendre{m}{0} = \begin{cases} 1 & \text{if $m = \pm 1$}, \\ 0 & \text{if $m \neq \pm 1$}, \end{cases}
     \]
     and
     \[
-      \legendre{a}{2} = \begin{cases} 1 & \text{if $a \equiv 1,7 \tmod{8}$}, \\ -1 & \text{if $a \equiv 3,5 \tmod{8}$}, \\ 0 & \text{if $a \equiv 0 \tmod{2}$}. \end{cases}
+      \legendre{m}{2} = \begin{cases} 1 & \text{if $m \equiv 1,7 \tmod{8}$}, \\ -1 & \text{if $m \equiv 3,5 \tmod{8}$}, \\ 0 & \text{if $m \equiv 0 \tmod{2}$}. \end{cases}
     \]
     When $n$ is a positive odd integer, the Kronecker symbol reduces to the Jacobi symbol. The Kronecker symbol also satisfies a reciprocity law:
     \begin{proposition}
-      Let $m,n \in \Z$. Then
+      Let $m,n \in \Z$ with $(m,n) = 1$. Then
       \[
         \legendre{m}{n}\legendre{n}{|m|} = (-1)^{\frac{m^{(2)}-1}{2}\frac{n^{(2)}-1}{2}}.
       \]
