@@ -286,7 +286,23 @@
       \[
         \chi_{d}(m) = \begin{cases} \legendre{d}{m} & \text{if $d \equiv 1 \tmod{4}$}, \\ \legendre{4d}{m} & \text{if $d \equiv 2,3 \tmod{4}$}. \end{cases}
       \]
-      Quadratic reciprocity for the Kronecker symbol (see \cref{append:Quadratic_Symbols}) implies that $\chi_{d}$ is a quadratic Dirichlet character modulo $|d|$ if $d \equiv 1 \tmod{4}$ and is a quadratic Dirichlet character modulo $|4d|$ if $d \equiv 2,3 \tmod{4}$. Indeed, if $d \equiv 1 \tmod{4}$ then $d$ is odd and the sign in quadratic reciprocity is always $1$. If $d \equiv 3 \tmod{4}$, then $d$ is again odd and the sign in quadratic reciprocity is $\tlegendre{-1}{m}$ which is a quadratic Dirichlet character modulo $4$. If $d \equiv 2 \tmod{4}$, then as the sign in quadratic reciprocity only depends upon the part of $d$ relatively prime to $2$, namely $\frac{d}{2}$, we are reduced to one of the previous two cases. More generally, we say that $D \in \Z$ is a \textbf{fundamental discriminant}\index{fundamental discriminant} if $D$ is square-free and
+      Quadratic reciprocity for the Kronecker symbol (see \cref{append:Quadratic_Symbols}) implies that $\chi_{d}$ is a quadratic Dirichlet character modulo $|d|$ if $d \equiv 1 \tmod{4}$ and is a quadratic Dirichlet character modulo $|4d|$ if $d \equiv 2,3 \tmod{4}$. Indeed, if $d \equiv 1 \tmod{4}$ then $d$ is odd and the sign in quadratic reciprocity is always $1$ so that
+      \[
+        \chi_{d}(m) = \legendre{m}{|d|},
+      \]
+      and hence is a quadratic Dirichlet character modulo $|d|$. If $d \equiv 3 \tmod{4}$, then $d$ is again odd and the sign in quadratic reciprocity is $\tlegendre{-1}{m}$ which is the primitive quadratic Dirichlet character modulo $4$ (there are only two Dirichlet characters modulo $4$ since $|(\Z/4\Z)^{\ast}| = 2$ and clearly $\legendre{-1}{m}$ is not principal) so that
+      \[
+        \chi_{d}(m) = \legendre{-1}{m}\legendre{m}{|d|},
+      \]
+      and hence is a Dirichlet character modulo $|4d|$. If $d \equiv 2 \tmod{4}$, first we observe that $\tlegendre{4d}{m} = \tlegendre{8}{m}\tlegendre{\frac{d}{2}}{m}$ where $\tlegendre{8}{m}$ is one of the two primitive quadratic Dirichlet character modulo $8$ (the other is $\tlegendre{-8}{m}$ as there are four Dirichlet character modulo $8$ because $|(\Z/8\Z)^{\ast}| = 4$ and the other two are the principal Dirichlet character and the Dirichlet character induced from $\legendre{-1}{m}$). Now observe that the sign in quadratic reciprocity for $\tlegendre{\frac{d}{2}}{m}$ is either $1$ or $\tlegendre{-1}{m}$ according to if $\frac{d}{2} \equiv 1,3 \tmod{4}$ respectively. Thus
+      \[
+        \chi_{d}(m) = \legendre{8}{m}\legendre{m}{|\frac{d}{2}|} \quad \text{or} \quad \chi_{d}(m) = \legendre{-8}{m}\legendre{m}{|\frac{d}{2}|},
+      \]
+      according to if $\frac{d}{2} \equiv 1,3 \tmod{4}$ respectively, and hence is a quadratic Dirichlet character modulo $|4d|$. We can compactly express all of these cases as follows:
+      \[
+        \chi_{d}(m) = \begin{cases} \legendre{m}{|d|} & \text{if $d \equiv 1,5 \tmod{8}$}, \\ \legendre{-1}{m}\legendre{m}{|d|} & \text{if $d \equiv 3,7 \tmod{8}$}, \\ \legendre{8}{m}\legendre{m}{|\frac{d}{2}|} & \text{if $d \equiv 2 \tmod{8}$}, \\ \legendre{-8}{m}\legendre{m}{|\frac{d}{2}|} & \text{if $d \equiv 6 \tmod{8}$}. \end{cases}
+      \]
+      From this we also see that $\chi_{d}$ is primitive. Indeed, we have already mentioned that the characters $\tlegendre{-1}{m}$, $\tlegendre{8}{m}$, and $\tlegendre{-8}{m}$ are all primitive. Therefore, since $d$ is square-free, it suffices to show by \cref{prop:primitive_characters_multiplicative_relatively_prime} that $\chi_{p}$ is primitive for all primes $p$ with $p \neq 2$. This is immediate since $p$ is prime and clearly $\chi_{p}$ is not principal. To combine all of this work succinctly, we say that $D \in \Z$ is a \textbf{fundamental discriminant}\index{fundamental discriminant} if $D$ is square-free and
       \[
         D = \begin{cases} d & \text{if $D \equiv 1 \tmod{4}$}, \\ 4d & \text{if $D \equiv 8,12 \tmod{16}$}, \end{cases}
       \]
@@ -294,7 +310,7 @@
       \[
         \chi_{D}(m) = \legendre{D}{m}.
       \]
-      By what we have just showed, $\chi_{D}$ is a quadratic Dirichlet character modulo $|D|$.
+      By what we have just showed, $\chi_{D}$ is a primitive quadratic Dirichlet character modulo $|D|$.
     \section{Special Sums}
       Analytic number theory does not come without its class of special sums that appear naturally. They play the role of discrete counterparts to continuous objects (there is a rich underpinning here). Without a sufficient understanding of these sums, they would cause a discrete obstruction to an analytic problem that we wish to solve.
       \subsection*{Ramanujan \& Gauss Sums}

@@ -69,7 +69,23 @@
     \[
         \chi_{d}(m) = \begin{cases} \legendre{d}{m} & \text{if $d \equiv 1 \tmod{4}$}, \\ \legendre{4d}{m} & \text{if $d \equiv 2,3 \tmod{4}$}. \end{cases}
     \]
-    This quadratic Dirichlet character is attached to the quadratic extension $\Q(\sqrt{d})$. We extend $\chi_{d}$ multiplicatively in the denominator so that $\chi_{d}$ makes sense for any odd $d$. In particular, $\chi_{d}(m) = \pm1$ provided $d$ and $m$ are relatively prime and $\chi_{d}(m) = 0$ if $(m,d) > 1$. Quadratic reciprocity implies that $\chi_{d}$ is a Dirichlet character modulo $|d|$ if $d \equiv 1 \tmod{4}$ and is a Dirichlet character modulo $|4d|$ if $d \equiv 2,3 \tmod{4}$. Indeed, if $d \equiv 1 \tmod{4}$ then $d^{(2)} = d$ and the sign is always $1$. If $d \equiv 3 \tmod{4}$, then $d^{(2)} = d$ and the sign is $\tlegendre{-1}{m}$ which is a character modulo $4$. If $d \equiv 2 \tmod{4}$, then $d^{(2)} \equiv 1,3 \tmod{4}$ and we are reduced to one of the previous two cases. We will also set
+    This quadratic Dirichlet character is attached to the quadratic extension $\Q(\sqrt{d})$. We extend $\chi_{d}$ multiplicatively in the denominator so that $\chi_{d}$ makes sense for any odd $d$. In particular, $\chi_{d}(m) = \pm1$ provided $d$ and $m$ are relatively prime and $\chi_{d}(m) = 0$ if $(m,d) > 1$. Quadratic reciprocity implies that $\chi_{d}$ is a Dirichlet character modulo $|d|$ if $d \equiv 1 \tmod{4}$ and is a Dirichlet character modulo $|4d|$ if $d \equiv 2,3 \tmod{4}$. Indeed, if $d \equiv 1 \tmod{4}$ then $d$ is odd and the sign in quadratic reciprocity is always $1$ so that
+    \[
+        \chi_{d}(m) = \legendre{m}{|d|},
+    \]
+    and hence is a quadratic Dirichlet character modulo $|d|$. If $d \equiv 3 \tmod{4}$, then $d$ is again odd and the sign in quadratic reciprocity is $\tlegendre{-1}{m}$ which is a quadratic Dirichlet character modulo $4$ so that
+    \[
+        \chi_{d}(m) = \legendre{-1}{m}\legendre{m}{|d|},
+    \]
+    and hence is a Dirichlet character modulo $|4d|$. If $d \equiv 2 \tmod{4}$, first we observe that $\tlegendre{4d}{m} = \tlegendre{8}{m}\tlegendre{\frac{d}{2}}{m}$ where $\tlegendre{8}{m}$ is one of the two primitive quadratic Dirichlet character modulo $8$. Now observe that the sign in quadratic reciprocity for $\tlegendre{\frac{d}{2}}{m}$ is either $1$ or $\tlegendre{-1}{m}$ according to if $\frac{d}{2} \equiv 1,3 \tmod{4}$ respectively. Thus
+    \[
+        \chi_{d}(m) = \legendre{8}{m}\legendre{m}{|\frac{d}{2}|} \quad \text{or} \quad \chi_{d}(m) = \legendre{-8}{m}\legendre{m}{|\frac{d}{2}|},
+    \]
+    according to if $\frac{d}{2} \equiv 1,3 \tmod{4}$ respectively, and hence is a quadratic Dirichlet character modulo $|4d|$. We can compactly express all of these cases as follows:
+    \[
+        \chi_{d}(m) = \begin{cases} \legendre{m}{|d|} & \text{if $d \equiv 1,5 \tmod{8}$}, \\ \legendre{-1}{m}\legendre{m}{|d|} & \text{if $d \equiv 3,7 \tmod{8}$}, \\ \legendre{8}{m}\legendre{m}{|\frac{d}{2}|} & \text{if $d \equiv 2 \tmod{8}$}, \\ \legendre{-8}{m}\legendre{m}{|\frac{d}{2}|} & \text{if $d \equiv 6 \tmod{8}$}. \end{cases}
+    \]
+    We will also set
     \[
         q(d) = \begin{cases} |d| & \text{if $d \equiv 1 \tmod{4}$}, \\ |4d| & \text{if $d \equiv 2,3 \tmod{4}$}, \end{cases} \quad \text{and} \quad \e_{\chi_{d}} = \frac{\tau(\chi_{d})}{\sqrt{q(d)}} = \begin{cases} 1 & \text{if $d \equiv 1 \tmod{4}$}, \\ 1+i & \text{if $d \equiv 2,3 \tmod{4}$}, \end{cases}
     \]
