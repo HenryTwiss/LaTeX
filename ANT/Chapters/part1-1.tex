@@ -278,39 +278,52 @@
       \[
         \frac{\chi(1)-\chi(-1)}{2} = \begin{cases} 0 & \text{if $\chi$ is even}, \\ 1 & \text{if $\chi$ is odd}. \end{cases}
       \]
-      Lastly, we would like to mention two special cases of quadratic Dirichlet characters. The first are Dirichlet characters given by Jacobi symbols. If $m \ge 1$ is odd, consider
+      Lastly, we would like to discuss quadratic Dirichlet characters. We can construct quadratic Dirichlet characters using Jacobi symbols. If $m \ge 1$ is odd, consider
       \[
         \chi_{m}(n) = \tlegendre{n}{m}.
       \]
-      Clearly $\chi_{m}$ a quadratic Dirichlet character modulo $m$ because the Jacobi symbol is determined modulo $m$. The second are Dirichlet characters given by Kronecker symbols. If $d \in \Z$ is square-free, consider
+      Clearly $\chi_{m}$ a quadratic Dirichlet character modulo $m$ because the Jacobi symbol is multiplicative, nonzero if and only if $(n,m) = 1$, and determined modulo $m$. However, quadratic characters given by Jacobi symbols do not exhaust all possible quadratic Dirichlet characters. For this, we need to use Kronecker symbols. We say that $D \in \Z$ is a \textbf{fundamental discriminant}\index{fundamental discriminant} if $D$ is square-free and
       \[
-        \chi_{d}(m) = \begin{cases} \legendre{d}{m} & \text{if $d \equiv 1 \tmod{4}$}, \\ \legendre{4d}{m} & \text{if $d \equiv 2,3 \tmod{4}$}. \end{cases}
+        D = \begin{cases} d & \text{if $D \equiv 1 \tmod{4}$}, \\ 4d & \text{if $\frac{D}{4} \equiv 2,3 \tmod{4}$}, \end{cases}
       \]
-      Quadratic reciprocity for the Kronecker symbol (see \cref{append:Quadratic_Symbols}) implies that $\chi_{d}$ is a quadratic Dirichlet character modulo $|d|$ if $d \equiv 1 \tmod{4}$ and is a quadratic Dirichlet character modulo $|4d|$ if $d \equiv 2,3 \tmod{4}$. Indeed, if $d \equiv 1 \tmod{4}$ then $d$ is odd and the sign in quadratic reciprocity is always $1$ so that
-      \[
-        \chi_{d}(m) = \legendre{m}{|d|},
-      \]
-      and hence is a quadratic Dirichlet character modulo $|d|$. If $d \equiv 3 \tmod{4}$, then $d$ is again odd and the sign in quadratic reciprocity is $\tlegendre{-1}{m}$ which is the primitive quadratic Dirichlet character modulo $4$ (there are only two Dirichlet characters modulo $4$ since $|(\Z/4\Z)^{\ast}| = 2$ and clearly $\legendre{-1}{m}$ is not principal) so that
-      \[
-        \chi_{d}(m) = \legendre{-1}{m}\legendre{m}{|d|},
-      \]
-      and hence is a Dirichlet character modulo $|4d|$. If $d \equiv 2 \tmod{4}$, first we observe that $\tlegendre{4d}{m} = \tlegendre{8}{m}\tlegendre{\frac{d}{2}}{m}$ where $\tlegendre{8}{m}$ is one of the two primitive quadratic Dirichlet character modulo $8$ (the other is $\tlegendre{-8}{m}$ as there are four Dirichlet character modulo $8$ because $|(\Z/8\Z)^{\ast}| = 4$ and the other two are the principal Dirichlet character and the Dirichlet character induced from $\legendre{-1}{m}$). Now observe that the sign in quadratic reciprocity for $\tlegendre{\frac{d}{2}}{m}$ is either $1$ or $\tlegendre{-1}{m}$ according to if $\frac{d}{2} \equiv 1,3 \tmod{4}$ respectively. Thus
-      \[
-        \chi_{d}(m) = \legendre{8}{m}\legendre{m}{|\frac{d}{2}|} \quad \text{or} \quad \chi_{d}(m) = \legendre{-8}{m}\legendre{m}{|\frac{d}{2}|},
-      \]
-      according to if $\frac{d}{2} \equiv 1,3 \tmod{4}$ respectively, and hence is a quadratic Dirichlet character modulo $|4d|$. We can compactly express all of these cases as follows:
-      \[
-        \chi_{d}(m) = \begin{cases} \legendre{m}{|d|} & \text{if $d \equiv 1,5 \tmod{8}$}, \\ \legendre{-1}{m}\legendre{m}{|d|} & \text{if $d \equiv 3,7 \tmod{8}$}, \\ \legendre{8}{m}\legendre{m}{|\frac{d}{2}|} & \text{if $d \equiv 2 \tmod{8}$}, \\ \legendre{-8}{m}\legendre{m}{|\frac{d}{2}|} & \text{if $d \equiv 6 \tmod{8}$}. \end{cases}
-      \]
-      From this we also see that $\chi_{d}$ is primitive. Indeed, we have already mentioned that the characters $\tlegendre{-1}{m}$, $\tlegendre{8}{m}$, and $\tlegendre{-8}{m}$ are all primitive. Therefore, since $d$ is square-free, it suffices to show by \cref{prop:primitive_characters_multiplicative_relatively_prime} that $\chi_{p}$ is primitive for all primes $p$ with $p \neq 2$. This is immediate since $p$ is prime and clearly $\chi_{p}$ is not principal. To combine all of this work succinctly, we say that $D \in \Z$ is a \textbf{fundamental discriminant}\index{fundamental discriminant} if $D$ is square-free and
-      \[
-        D = \begin{cases} d & \text{if $D \equiv 1 \tmod{4}$}, \\ 4d & \text{if $D \equiv 8,12 \tmod{16}$}, \end{cases}
-      \]
-      for some square-free $d \in \Z$. Necessarily $d \equiv 1 \tmod{4}$ or $d \equiv 2,3 \tmod{4}$ respectively. With this notation, we define the \textbf{quadratic Dirichlet character} $\chi_{D}$ associated to the fundamental discriminant $D$ by
+      for some square-free $d \in \Z$. Necessarily $d \equiv 1 \tmod{4}$ or $d \equiv 2,3 \tmod{4}$ respectively. We define the \textbf{quadratic Dirichlet character} $\chi_{D}$ associated to the fundamental discriminant $D$ by
       \[
         \chi_{D}(m) = \legendre{D}{m}.
       \]
-      By what we have just showed, $\chi_{D}$ is a primitive quadratic Dirichlet character modulo $|D|$.
+      It turns out that $\chi_{D}$ defines a primitive quadratic Dirichlet character, and exhausts all primitive quadratic Dirichlet characters, as the following theorem shows:
+
+      \begin{theorem}\label{thm:fundamental_discriminant_character_primitive}
+        If $D$ is a fundamental discriminant, then $\chi_{D}$ is a primitive quadratic Dirichlet character of conductor $|D|$. Moreover, all primitive quadratic Dirichlet characters are of this form.
+      \end{theorem}
+      \begin{proof}
+        We first show that $\chi_{D}$ is a quadratic Dirichlet character of conductor $|D|$. If $D \equiv 1 \tmod{4}$, the sign in quadratic reciprocity is always $1$ so that
+        \[
+          \chi_{D}(m) = \legendre{m}{|D|},
+        \]
+        and hence is a quadratic Dirichlet character modulo $|D|$ because it is given by the Jacobi symbol. If $\frac{D}{4} \equiv 3 \tmod{4}$, the sign in quadratic reciprocity is $\tlegendre{-1}{m}$ which is the primitive quadratic Dirichlet character modulo $4$ (there are only two Dirichlet characters modulo $4$ since $\vphi(4) = 2$ and clearly $\legendre{-1}{m}$ is not principal) so that
+        \[
+          \chi_{D}(m) = \legendre{-1}{m}\legendre{m}{\left|\frac{D}{4}\right|},
+        \]
+        and hence is a Dirichlet character modulo $|D|$. If $\frac{D}{4} \equiv 2 \tmod{16}$, first observe that $\tlegendre{D}{m} = \tlegendre{8}{m}\tlegendre{\frac{D}{8}}{m}$ where $\tlegendre{8}{m}$ is one of the two primitive quadratic Dirichlet character modulo $8$ (the other is $\tlegendre{-8}{m}$ as there are four Dirichlet character modulo $8$ because $\vphi(8) = 4$ and the other two are the principal Dirichlet character and the Dirichlet character induced from $\legendre{-1}{m}$ as mentioned previously). As $\frac{D}{8} \equiv 1,3 \tmod{4}$, the sign in quadratic reciprocity is either $1$ or $\tlegendre{-1}{m}$ according to these two cases. Thus
+        \[
+          \chi_{D}(m) = \legendre{8}{m}\legendre{m}{\left|\frac{D}{8}\right|} \quad \text{or} \quad \chi_{D}(m) = \legendre{-8}{m}\legendre{m}{\left|\frac{D}{8}\right|},
+        \]
+        according to if $\frac{D}{8} \equiv 1,3 \tmod{4}$ respectively, and hence is a quadratic Dirichlet character modulo $|D|$. We can compactly express all of these cases as follows:
+        \[
+          \chi_{D}(m) = \begin{cases} \legendre{m}{|D|} & \text{if $D \equiv 1 \tmod{4}$}, \\ \legendre{-1}{m}\legendre{m}{\left|\frac{D}{4}\right|} & \text{if $\frac{D}{4} \equiv 3 \tmod{4}$}, \\ \legendre{8}{m}\legendre{m}{\left|\frac{D}{8}\right|} & \text{if $\frac{D}{8} \equiv 1 \tmod{4}$}, \\ \legendre{-8}{m}\legendre{m}{\left|\frac{D}{8}\right|} & \text{if $\frac{D}{8} \equiv 3 \tmod{4}$}. \end{cases}
+        \]
+        This shows that $\chi_{D}$ is a quadratic Dirichlet characters modulo $|D|$. It easily follows from the above that $\chi_{D}$ is primitive. Indeed, we have already mentioned that the characters $\tlegendre{-1}{m}$, $\tlegendre{8}{m}$, and $\tlegendre{-8}{m}$ are all primitive. Therefore, since $D$ is square-free, it suffices to show by \cref{prop:primitive_characters_multiplicative_relatively_prime} that $\chi_{p}$ is primitive for all primes $p$ with $p \neq 2$. This is immediate since $p$ is prime and clearly $\chi_{p}$ is not principal. We now show that every primitive quadratic Dirichlet character is of the form $\chi_{D}$ for some fundamental discriminant $D$. By \cref{prop:primitive_characters_multiplicative_relatively_prime}, it suffices to consider primitive quadratic Dirichlet character modulo $q = p^{m}$ for some prime $p$ and $m \ge 1$. First suppose that $p \neq 2$. Then $(\Z/q\Z)^{\ast}$ is cyclic and so every $n \in (\Z/p^{m}\Z)^{\ast}$ is of the form $n = v^{\nu}$ for some $\nu \in (\Z/\vphi(p^{m})\Z)$ and where $v$ is a generator of $(\Z/p^{m}\Z)^{\ast}$. Then every Dirichlet character $\chi$ modulo $p^{m}$ is of the form
+        \[
+          \chi(n) = e^{\frac{2\pi ik\nu}{\vphi(p^{m})}},
+        \]
+        where $0 \le k \le \vphi(q)$. Indeed, this is a unique Dirichlet character for every such $k$ and there are $\vphi(p^{m})$ Dirichlet characters modulo $p^{m}$ as well as the same amount of choices for $k$. Moreover, $\chi$ is primitive if and only if $p \nmid k$ for otherwise $\chi$ is a Dirichlet character modulo $p^{m-1}$. Similarly, $\chi$ is quadratic if and only if $\frac{k}{\vphi(p^{m})}$ has at most $2$ in its denominator which is equivalent to $k \equiv \frac{\vphi(p^{m})}{2} \tmod{\vphi(p^{m})}$ and hence such a $k$ exists and is unique because $p \neq 2$. We also see that in the case $\chi$ is quadratic, is not primitive unless $m = 1$ for then $\vphi(p) = p-1$ is not a multiple of $p$. All of this is to say that there is a unique quadratic Dirichlet character modulo $q$ and it is primitive if and only if $q = p$. Necessarily, this unique primitive quadratic Dirichlet character modulo $p$ is given by $\chi_{D}$ for the fundamental discriminant $D = p$ if $p \equiv 1 \tmod{4}$ and $D = -p$ if $p \equiv 3 \tmod{4}$. Now suppose $p = 2$ so that $q = 2^{m}$ for some $m \ge 1$. If $m = 1$, $\vphi(2) = 1$ and there are no primitive quadratic Dirichlet characters as the only Dirichlet character is principal. If $m = 2$, $\vphi(4) = 2$ so that there are two Dirichlet characters. They are both quadratic but only one is primitive, namely the principal Dirichlet character as well as the aforementioned primitive quadratic character $\tlegendre{-1}{m}$. For $m \ge 3$, $(\Z/2^{m}\Z)^{\ast} \cong C_{2} \otimes C_{2^{m-2}}$ where $C_{2}$ and $C_{2^{m-2}}$ are the cyclic groups of order $2$ and $2^{m-2}$ respectively. Therefore every $n \in (\Z/2^{m}\Z)^{\ast}$ is of the form $n = (-1)^{\mu}5^{\nu}$ for $\mu \in \Z/2\Z$ and $\nu \in \Z/2^{m-2}\Z$. Then every Dirichlet character $\chi$ modulo $2^{m}$ is of the form
+        \[
+          \chi(n) = e^{\frac{2\pi ij\mu}{2}}e^{\frac{2\pi ik\nu}{2^{m-2}}},
+        \]
+        where $0 \le j \le 1$ and $0 \le k \le 2^{m-2}-1$. Similarly to the case for $p \neq 2$, $\chi$ is primitive if and only if $2^{m-2} \nmid k$, or equivalently, $k$ is odd. Moreover, $\chi$ is quadratic if and only if $\frac{k}{2^{m-2}}$ has at most $2$ in its denominator which is to say that $2^{m-3} \mid k$. Therefore for a primitive quadratic Dirichlet to exist we must have $k$ odd and $2^{m-3} \mid k$ which can happen if and only if $m = 3$. Then $\phi(8) = 4$, so that there are four Dirichlet characters. They are all quadratic but only two are primitive, namely the principal Dirichlet character, the Dirichlet character induced from $\tlegendre{-1}{m}$, and the two aforementioned primitive quadratic Dirichlet characters given by $\tlegendre{8}{m}$ and $\tlegendre{-8}{m}$. These three primitive quadratic Dirichlet characters are given by $\chi_{D}$ for the fundamental discriminants $D = -4$, $D = 8$, and $D = -8$ respectively. We have now shown that all primitive quadratic Dirichlet characters of prime power modulus are given by $\chi_{D}$ for some fundamental discriminant $D$ and thus the same follows for all primitive quadratic Dirichlet characters by \cref{prop:primitive_characters_multiplicative_relatively_prime}. This completes the proof.
+      \end{proof}
+
+      It follows from \cref{thm:fundamental_discriminant_character_primitive} that all quadratic Dirichlet characters are induced from some $\chi_{D}$. In particular, so too are the quadratic characters given by Jacobi symbols.
     \section{Special Sums}
       Analytic number theory does not come without its class of special sums that appear naturally. They play the role of discrete counterparts to continuous objects (there is a rich underpinning here). Without a sufficient understanding of these sums, they would cause a discrete obstruction to an analytic problem that we wish to solve.
       \subsection*{Ramanujan \& Gauss Sums}
