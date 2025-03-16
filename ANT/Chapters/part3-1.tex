@@ -260,10 +260,22 @@
         \sum_{n \ge 1}\frac{a(n)}{n^{s}} = \lim_{Y \to \infty}A'(Y)Y^{-s}+s\int_{1}^{\infty}A'(u)u^{-(s+1)}\,du.
       \]
       Now $A'(Y) \le A(Y)$ and $A(Y) \ll_{\e} Y^{\s_{a}+\e}$ by \cref{prop:Dirichlet_series_coefficient_size_on_average} so that $A'(Y)Y^{-s} \ll_{\e} Y^{\s_{a}+\e-\s}$. Choosing $\e < \s-\s_{a}$, this latter term tends to zero as $Y \to \infty$, which implies that $A'(Y)Y^{-s} \to 0$ as $Y \to \infty$. Therefore we can write the equation above as
-      \[
-        \frac{D(s)}{s} = \int_{1}^{\infty}A'(u)u^{-(s+1)}\,du = \int_{0}^{\infty}A'(u)u^{-(s+1)}\,du,
-      \]
+      \begin{equation}\label{equ:integral_rep_for_Dirichlet_series}
+         \frac{D(s)}{s} = \int_{1}^{\infty}A'(u)u^{-(s+1)}\,du = \int_{0}^{\infty}A'(u)u^{-(s+1)}\,du,
+      \end{equation}
       where the second equality follows because $A(u) = 0$ in the interval $[0,1)$. The Mellin inversion formula immediately gives the result.
+    \end{proof}
+
+    As a corollary, we obtain an important integral representation for Dirichlet series:
+
+    \begin{corollary}\label{cor:integral_rep_for_Dirichlet_series}
+      Let $D(s)$ be a Dirichlet series with coefficient $a(n)$ and finite and nonnegative abscissa of absolute convergence $\s_{a}$. Then for $\s > \s_{a}$,
+      \[
+        D(s) = s\int_{1}^{\infty}A'(u)u^{-(s+1)}\,du.
+      \]
+    \end{corollary}
+    \begin{proof}
+      The identity is an equivalent form of the first equality in \cref{equ:integral_rep_for_Dirichlet_series}.
     \end{proof}
 
     We would like to relate this sum to an integral involving the entire Dirichlet series $D(s)$. In particular, this integral is a type of inverse Mellin transform. Any formula that resembles Perron's formula is particularly useful because it allows one examine a sum of coefficients of a Dirichlet series, a discrete object, by means of a complex integral where analytic techniques are at our disposal. There is also a truncated version of Perron's formula which is often more useful for estimates rather than abstract results. To state it, we need to setup some notation and will require a lemma. For any $c > 0$, consider the discontinuous integral (see \cite{davenport1980multiplicative})
