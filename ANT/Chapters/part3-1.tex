@@ -732,8 +732,8 @@
     \end{conjecture}
 
     So far, the Riemann hypothesis remains completely out of reach for any $L$-function and thus the grand Riemann hypothesis does as well.
-  \section{The Lindel\"of Hypothesis \& Convexity}
-    Instead of asking about the zeros of an $L$-function $L(s,f)$ on the critical line, we can ask about the growth of $L(s,f)$ on the critical line. We will derive a bound by using the Phragm\'en-Lindel\"of convexity principle. The following argument is essentially a refinement of the proof of \cref{prop:L_function_bounded_in_vertical_strips}. Let
+  \section{The Lindel\"of Hypothesis \& Convexity Bounds}
+    Instead of asking about the zeros of an $L$-function $L(s,f)$ on the critical line, we can ask about the growth of $L(s,f)$, and more generally its derivatives, on the critical line. More precisely, we want to derive an upper asymptotic bound for $L(s,f)$, or one of its derivatives, on the critical line using the Phragm\'en-Lindel\"of convexity principle. The argument we will describe for $L(s,f)$ is essentially a refinement of the proof of \cref{prop:L_function_bounded_in_vertical_strips}. Let
     \[
       p_{r_{f}}(s) = \left(\frac{s-1}{s+1}\right)^{r_{f}}.
     \]
@@ -741,19 +741,23 @@
     \[
       p_{r_{f}}(1+\e+it)L(1+\e+it,f) \ll_{\e} 1,
     \]
-    which holds since $L(s,f)$ is defined by a locally absolutely uniformly convergent Dirichlet series for $\s > 1$. The left edge is only slightly more difficult. The functional equation and \cref{equ:gamma_factor_analytic_conductor_estimate} together imply
+    which holds since $L(s,f)$ is defined by a locally absolutely uniformly convergent Dirichlet series for $\s > 1$. The left edge is only slightly more difficult. Upon isolating $L(s,f)$ in the functional equation, we have
     \[
-      p_{r_{f}}(s)L(s,f) \ll_{\e} p_{r_{f}}(s)\mf{q}(s,f)^{\frac{1}{2}-\s}L(1-s,f),
+      L(s,f) = \e(f)q(f)^{\frac{1}{2}-s}\frac{\g(1-s,f)}{\g(s,f)}L(1-s,f).
     \]
-    for $s$ in any vertical strip with distance $\e$ away from the poles of $\g(1-s,f)$. Setting $\s = -\e$, we obtain
+    Applying \cref{equ:gamma_factor_analytic_conductor_estimate} result in the bound
     \[
-      p_{r_{f}}(-\e+it)L(-\e+it,f) \ll_{\e} \mf{q}(s,f)^{\frac{1}{2}+\e}.
+      L(s,f) \ll_{\e} \mf{q}(s,f)^{\frac{1}{2}-\s}L(1-s,f),
     \]
-    As $p_{r_{f}}(s)L(s,f)$ is holomorphic in a region containing the vertical strip $-\e \le \s \le 1+\e$, the Phragm\'en-Lindel\"of convexity principle gives
+    for $s$ in any vertical strip with distance $\e$ away from the poles of $\g(1-s,f)$. Multiplying both sides by $p_{r_{f}}(s)$ and taking $\s = -\e$, it follows that
+    \[
+      p_{r_{f}}(-\e+it)L(-\e+it,f) \ll_{\e} \mf{q}(s,f)^{\frac{1}{2}+\e},
+    \]
+    which holds since $L(1-s,f)$ is defined by a locally absolutely uniformly convergent Dirichlet series for $\s < 0$. As $p_{r_{f}}(s)L(s,f)$ is holomorphic in a region containing the vertical strip $-\e \le \s \le 1+\e$ and $p_{r_{f}}(s) \sim 1$, the Phragm\'en-Lindel\"of convexity principle gives
     \[
       L(s,f) \ll_{\e} \mf{q}(s,f)^{\frac{1-\s}{2}+\e},
     \]
-    in the vertical strip $-\e \le \s \le 1+\e$. At the critical line, we have the \textbf{convexity bound}\index{convexity bound}:
+    in the vertical strip $-\e \le \s \le 1+\e$. At the critical line we obtain the following \textbf{convexity bound}\index{convexity bound}:
     \begin{equation}\label{equ:convexity_bound_L_function}
       L\left(\frac{1}{2}+it,f\right) \ll_{\e} \mf{q}\left(\frac{1}{2}+it,f\right)^{\frac{1}{4}+\e}.
     \end{equation}
@@ -775,11 +779,43 @@
       \]
     \end{conjecture}
 
-    Like the Riemann hypothesis, we have been unable to prove the Lindel\"of hypothesis for any $L$-function. However, the Lindel\"of hypothesis seems to be much more tractable. Generally speaking, any improvement upon the exponent in the convexity bound in any aspect of the analytic conductor is called a \textbf{subconvexity estimate}\index{subconvexity estimate} (or a \textbf{convexity breaking bound}\index{convexity breaking bound}). Any argument used to do so is called a \textbf{subconvexity argument}\index{subconvexity argument}. In the best possible case, we'd expect a bound of shape 
+    Like the Riemann hypothesis, we have been unable to prove the Lindel\"of hypothesis for any $L$-function. However, the Lindel\"of hypothesis seems to be much more tractable. Generally speaking, any improvement upon the exponent in the convexity bound in any aspect of the analytic conductor is called a \textbf{subconvexity estimate}\index{subconvexity estimate} (or a \textbf{convexity breaking bound}\index{convexity breaking bound}). In other words, we would want a bound of the form
     \[
       L\left(\frac{1}{2}+it,f\right) \ll_{\e} \mf{q}\left(\frac{1}{2}+it,f\right)^{\d+\e},
     \]
-    for some $\d \ge 0$. The convexity bound says that we may take $\d = \frac{1}{4}$ while the Lindel\"of hypothesis for $L(s,f)$ implies that we may take $\d = 0$.
+    for some $0 \le \d \le \frac{1}{4}$. The convexity bound says that we may take $\d = \frac{1}{4}$ while the Lindel\"of hypothesis for $L(s,f)$ implies that we may take $\d = 0$.
+
+    \begin{remark}
+      Some subconvexity bounds are deserving of names. The case $\d = \frac{3}{16}$ is referred to as the \textbf{Burgess bound}\index{Burgess bound} and the case $\d = \frac{1}{6}$ is referred to as the \textbf{Weyl bound}\index{Weyl bound}.
+    \end{remark}
+    
+    With a little more work, we can obtain a convexity bound for $L'(s,f)$. Indeed, since $L(s,f)$ is of order $1$ so is $L'(s,f)$ and thus we may apply the Lindel\"of convexity principle to $p_{r_{f}}(s)^{2}L'(s,f)$ (the order of the possible pole at $s = 1$ may increase by one). We now estimate the growth of $p_{r_{f}}(s)^{2}L(s,f)$ for $\s$ to the left of $0$ and to the right of $1$. For the right edge, set $\s = 1+\e$ so that
+    \[
+      p_{r_{f}}(1+\e+it)^{2}L'(1+\e+it,f) \ll_{\e} 1,
+    \]
+    which holds because $L'(s,f)$ is defined by a locally absolutely uniformly convergent Dirichlet series for $\s > 1$ (since we may differentiate $L(s,f)$ termwise). For the left edge, isolating $L(s,f)$ in the functional equation and differentiating gives
+    \begin{align*}
+      L'(s,f) &= -\e(f)\log(q(f))q(f)^{\frac{1}{2}-s}\frac{\g(1-s,f)}{\g(s,f)}L(1-s,f) \\
+      &- \e(f)q(f)^{\frac{1}{2}-s}\frac{\g(1-s,f)}{\g(s,f)}\left(\frac{\g'}{\g}(1-s,f)-\frac{\g'}{\g}(s,f)\right)L(1-s,f) \\
+      &+ \e(f)q(f)^{\frac{1}{2}-s}\frac{\g(1-s,f)}{\g(s,f)}L'(1-s,f).
+    \end{align*}
+    Now \cref{equ:approximtion_for_digamma} gives the estimate $\frac{\G'}{\G}(s) \ll \log(|s|+1)$ provided $\s > 0$. It follows that $\frac{\g'}{\g}(1-s,f) \ll_{\e} \log{\mf{q}_{\infty}(1-s,f)}$ for $s$ with $\s < 0$ and distance $\e$ away from the poles of $\g(1-s,f)$. Using the formula $\frac{\G'}{\G}(s+1) = \frac{\G'}{\G}(s)+\frac{1}{s}$, we have that $\frac{\g'}{\g}(s,f) \ll_{\e} \log{\mf{q}_{\infty}(s,f)}$ for $s$ with $\s < 0$ and distance $\e$ away from the poles of $\g(s,f)$. Applying these bounds and \cref{equ:gamma_factor_analytic_conductor_estimate}, we obtain
+    \[
+      L'(s,f) \ll_{\e} \mf{q}(s,f)^{\frac{1}{2}-\s}\left(\log\mf{q}(s,f)L(1-s,f)+L'(1-s,f)\right),
+    \]
+    for $s$ in any vertical strip with distance $\e$ away from the poles of both $\g(s,f)$ and $\g(1-s,f)$. Multiplying both sides by $p_{r_{f}}(s)^{2}$ and taking $\s = -\e$, it follows that
+    \[
+      p_{r_{f}}(-\e+it)^{2}L(-\e+it,f) \ll_{\e} \mf{q}(s,f)^{\frac{1}{2}+\e}\log\mf{q}(s,f),
+    \]
+    which holds since both $L(1-s,f)$ and $L'(1-s,f)$ are defined by locally absolutely uniformly convergent Dirichlet series for $\s < 0$. As $p_{r_{f}}(s)^{2}L'(s,f)$ is holomorphic in a region containing the vertical strip $-\e \le \s \le 1+\e$ and $p_{r_{f}}(s) \sim 1$, the Phragm\'en-Lindel\"of convexity principle gives
+    \[
+      L'(s,f) \ll_{\e} \mf{q}(s,f)^{\frac{1-\s}{2}+\e}\log\mf{q}(s,f),
+    \]
+    in the vertical strip $-\e \le \s \le 1+\e$. At the critical line we obtain the following \textbf{convexity bound}\index{convexity bound}:
+    \[
+      L'\left(\frac{1}{2}+it,f\right) \ll_{\e} \mf{q}\left(\frac{1}{2}+it,f\right)^{\frac{1}{4}+\e}\log\mf{q}(s,f).
+    \]
+    Note that the convexity bounds for $L(s,f)$ and $L'(s,f)$ only differ by a logarithm of the analytic conductor. This is typical of a large reality when dealing with derivatives of $L$-functions.
   \section{Estimating the Central Value}
     The Lindel\"of hypothesis is concerned with the growth of the $L$-function $L(s,f)$ along the critical line, but sometimes we are only concerned with the size of $L(s,f)$ at the central point. The value of $L(s,f)$ at the central point is called the \textbf{central value}\index{central value} of $L(s,f)$. Many important properties about $L(s,f)$ can be connected to its central value. Any argument used to estimate the central value of an $L$-function is called a \textbf{central value estimate}\index{central value estimate}. We will prove central value estimate which gives a very useful upper bound in the $q(f)$-aspect. To state it, let $\psi(y)$ be a bump function with compact support in $\left[\frac{1}{2},2\right]$. For example,
     \[
@@ -952,7 +988,7 @@
         \begin{equation}\label{equ:log_derivative_bound_conductor}
           \frac{L'}{L}(s,f) \ll d_{f}\z'(s-1) \ll \log{\mf{q}(f)},
         \end{equation}
-        provided $\s > 2$. For the second quantity, \cref{equ:approximtion_for_digamma} provides the estimate $\frac{\G'}{\G}(s) \ll \log(|s|+1)$, given $\s > 0$, and from the definition of $\g(s,f)$ it follows that $\frac{\g'}{\g}(s,f) \ll \log{\mf{q}_{\infty}(s,f)}$. Thus
+        provided $\s > 2$. For the second quantity, \cref{equ:approximtion_for_digamma} gives the estimate $\frac{\G'}{\G}(s) \ll \log(|s|+1)$ provided $\s > 0$. It follows that $\frac{\g'}{\g}(s,f) \ll \log{\mf{q}_{\infty}(s,f)}$. Thus
         \begin{equation}\label{equ:log_conductor_gamma_factor_bound_analytic_conductor}
           \frac{1}{2}\log{q(f)}+\frac{\g'}{\g}(s,f) \ll \log{\mf{q}(s,f)},
         \end{equation}
@@ -979,7 +1015,7 @@
         \[
           -\frac{L'}{L}(s,f) = -\frac{L'}{L}(s,f)+\frac{L'}{L}(3+it,f)+O(\log{\mf{q}(s,f)}).
         \]
-        Applying the formula for the negative logarithmic derivative in \cref{prop:explicit_formula_log_derivative} to the two terms on the right-hand side and using that $\frac{\g'}{\g}(s,f) \ll \log{\mf{q}_{\infty}(s,f)}$ (given $\s > 0$), we get
+        Applying the formula for the negative logarithmic derivative in \cref{prop:explicit_formula_log_derivative} to the two terms on the right-hand side and using that established bound $\frac{\g'}{\g}(s,f) \ll \log{\mf{q}_{\infty}(s,f)}$ provided $\s > 0$, we get
         \[
           -\frac{L'}{L}(s,f) = \frac{r_{f}}{s}+\frac{r_{f}}{s-1}+\frac{\g'}{\g}(s,f)-\sum_{\rho \neq 0,1}\left(\frac{1}{s-\rho}-\frac{1}{3+it-\rho}\right)+O(\log{\mf{q}(s,f)}).
         \]
@@ -991,11 +1027,11 @@
         \[
           -\frac{L'}{L}(s,f) = \frac{r_{f}}{s}+\frac{r_{f}}{s-1}+\frac{\g'}{\g}(s,f)-\sum_{\substack{|s-\rho| < 1 \\ \rho \neq 0,1}}\frac{1}{s-\rho}+O(\log{\mf{q}(s,f)}).
         \]
-        Lastly, from the definition of $\g(s,f)$ and that $\G(s) = s^{-1}\G(s+1)$, we have
+        Lastly, from the definition of $\g(s,f)$ and that $\frac{\G'}{\G}(s+1) = \frac{\G'}{\G}(s)+\frac{1}{s}$, we have
         \[
           \frac{\g'}{\g}(s,f) = -\frac{d_{f}}{2}\log(\pi)-\sum_{1 \le j \le d_{f}}\frac{1}{s+\k_{j}}+\sum_{1 \le j \le d_{f}}\frac{1}{2}\frac{\G'}{\G}\left(1+\frac{s+\k_{j}}{2}\right) = -\sum_{|s+\k_{j}| < 1}\frac{1}{s+\k_{j}}+O(\log{\mf{q}_{\infty}(s,f)}),
         \]
-        where in the last line we have made use of the estimate $\frac{\G'}{\G}(s) \ll \log(|s|+1)$ provided by \cref{equ:approximtion_for_digamma} given $\s > 0$. Then
+        where in the last line we have made use of the estimate $\frac{\G'}{\G}(s) \ll \log(|s|+1)$ from \cref{equ:approximtion_for_digamma} provided $\s > 0$. Then
         \[
           -\frac{L'}{L}(s,f) = \frac{r_{f}}{s}+\frac{r_{f}}{s-1}-\sum_{|s+\k_{j}| < 1}\frac{1}{s+\k_{j}}-\sum_{\substack{|s-\rho| < 1 \\ \rho \neq 0,1}}\frac{1}{s-\rho}+O(\log{\mf{q}(s,f)}),
         \]
