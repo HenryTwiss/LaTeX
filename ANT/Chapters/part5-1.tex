@@ -215,7 +215,7 @@
     for any $T > 1$. We are primarily interested in the asymptotic behaviors of $M_{2k}(T,f)$ as $T \to \infty$ for all $k \ge 1$. Indeed, arbitrarily small polynomial growth of $M_{2k}(T,f)$ in $T$ for all $k \ge 1$ is equivalent to the Lindel\"of hypothesis as the following proposition shows:
 
     \begin{proposition}
-      Let $L(s,f)$ be a Selberg class $L$-function. The Lindel\"of hypothesis for $L(s,f)$ is equivalent to the asymptotic
+      Let $L(s,f)$ be an $L$-function. The Lindel\"of hypothesis for $L(s,f)$ is equivalent to the asymptotic
       \[
         M_{2k}(T,f) \ll_{\e} T^{\e},
       \]
@@ -226,10 +226,30 @@
       \[
         M_{2k}(T,f) \ll \frac{1}{T}\int_{1}^{T}t^{\e}\,dt \ll T^{\e},
       \]
-      as desired. Now suppose that $M_{2k}(T,f) \ll_{\e} T^{\e}$ for all $k \ge 1$. If the Lindel\"of hypothesis for $L(s,f)$ is false, then there is some $\l > 0$ and positive unbounded real sequence $(t_{n})_{n \ge 1}$ such that
+      as desired. Now suppose that $M_{2k}(T,f) \ll_{\e} T^{\e}$ for all $k \ge 1$. If the Lindel\"of hypothesis for $L(s,f)$ is false, then there is some $0 < \l < 1$ and positive unbounded real sequence $(t_{n})_{n \ge 1}$ such that
       \[
-        L\left(\frac{1}{2}+it_{n},f\right) > C\mf{q}\left(\frac{1}{2}+it_{n},f\right)^{\l+\e},
+        \left|L\left(\frac{1}{2}+it_{n},f\right)\right| > C\mf{q}\left(\frac{1}{2}+it_{n},f\right)^{\l},
       \]
-      for any $C > 0$. \todo{xxx}
+      for any $C > 0$. In particular,
+       \[
+        \left|L\left(\frac{1}{2}+it,f\right)\right| > Ct_{n}^{d_{f}\l}.
+      \]
+      Now the convexity bound for $L'(s,f)$ implies that $L\left(\frac{1}{2}+it\right) \le C't^{d_{f}}$ for some $C' > 0$ and $t$ bounded away from zero. Then
+      \[
+        \left|L\left(\frac{1}{2}+it,f\right)-L\left(\frac{1}{2}+it_{n},f\right)\right| = \left|\int_{t_{n}}^{t}L\left(\frac{1}{2}+ir,f\right)\,dr\right| < C't_{n}^{d_{f}}|t-t_{n}| < \frac{C}{2}t_{n}^{d_{f}\l},
+      \]
+      where the last inequality holds provided $|t-t_{n}| \le t_{n}^{d_{f}(\l-1)}$ and sufficiently large $n$ (hence $t_{n}$ and $t$ are bounded away from zero). Then for such $n$, the previous two bounds together imply
+      \[
+        \left|L\left(\frac{1}{2}+it,f\right)\right| > \frac{C}{2}t_{n}^{d_{f}\l},
+      \]
+      for $|t-t_{n}| \le t_{n}^{d_{f}(\l-1)}$. Now take $T = \frac{4}{3}t_{n}$ so that the interval $(t_{n}-t_{n}^{d_{f}(\l-1)},t_{n}+t_{n}^{d_{f}(\l-1)})$ is contained in $\left(\frac{T}{2},T\right)$ for sufficiently large $n$. Then
+      \[
+        \int_{\frac{T}{2}}^{T}\left|L\left(\frac{1}{2}+it,f\right)\right|^{2k}\,dt > \int_{t_{n}-t_{n}^{d_{f}(\l-1)}}^{t_{n}+t_{n}^{d_{f}(\l-1)}}\left|L\left(\frac{1}{2}+it,f\right)\right|^{2k}\,dt > 2\left(\frac{C}{2}\right)^{2k}t_{n}^{(2k+1)d_{f}\l-d_{f}},
+      \]
+      and it follows that
+      \[
+        M_{2k}(T,f) = \frac{1}{T}\int_{1}^{T}\left|L\left(\frac{1}{2}+it,f\right)\right|^{2k}\,dt > 2\left(\frac{C}{2}\right)^{2k}\left(\frac{3}{4}\right)^{(2k+1)d_{f}\l-d_{f}}T^{(2k+1)d_{f}\l-d_{f}-1},
+      \]
+      which is a contradiction for sufficiently large $k$. This completes the proof.
       \end{proof}
   \section{\todo{The CFKRS Conjectures}}
