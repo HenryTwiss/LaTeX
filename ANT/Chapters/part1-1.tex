@@ -1,7 +1,7 @@
   \chapter{Preliminaries}\label{ch:Preliminaries}
     There is quite a bit of knowledge that most authors assume one is fluent in when writing any text on analytic number theory that is not necessarily standard material every reader knowns. A good selection is the following:
     \begin{itemize}
-      \item Asymptotics,
+      \item Estimates,
       \item Dirichlet Characters,
       \item Special Sums,
       \item Integration Techniques \& Transforms,
@@ -25,12 +25,12 @@
         \item We will write $\int_{(a)}$ for the complex integral over the line whose real part is $a$ and with positive orientation.
         \item $\d_{a,b}$ will denote the indicator function for $a = b$. That is, $\d_{a,b} = 1,0$ according to if $a = b$ or not.
       \end{itemize}
-    \section{Asymptotics}
-      Much of the language of analytic number theory is given in terms of asymptotics as it allows us to discuss approximate growth and dispense with superfluous constants. For this reason, asymptotics will be the first material that we will present. The asymptotics that we will cover are listed in the following table:
+    \section{Estimates}
+      Much of the language of analytic number theory is given in terms of estimates as they allows us to discuss approximate growth and dispense with superfluous constants. For this reason, estimates will be the first material that we will present. The estimates that we will cover are listed in the following table:
       \begin{center}
         \begin{stabular}[1.5]{|c|c|c|}
           \hline
-          Asymptotic & Notation \\
+          Estimates & Notation \\
           \hline
           Big O & $f(z) = O(g(z))$ \\
           \hline
@@ -46,7 +46,7 @@
           \hline
         \end{stabular}
       \end{center}
-      Implicit in all of these asymptotics is some limiting process $z \to z_{0}$ where $z_{0}$ is some complex number or $\infty$ (and $\pm \infty$ for the real case respectively). If $z_{0}$ is finite, then it is understood that the asymptotic is assumed to hold for all $z$ such that $|z-z_{0}| < \d$ for some real $\d > 0$. If $z_{0}$ is infinite, then the asymptotic is assumed to hold for all sufficiently large $z$. That is, $|z| > z_{0}$ for some $z_{0}$ (and $z > z_{0}$ or $z < z_{0}$ in the real case for $\pm \infty$ respectively). If the limiting process is not explicitly mentioned, it is assumed to be as $z \to \infty$ (or as $z \to \pm\infty$ for the real case). Often times, the asymptotics will hold for all admissible values of $z$ and this will be clear from context although we still might suppress the specific limiting process.
+      Implicit in all of these estimates is some limiting process $z \to z_{0}$ where $z_{0}$ is some complex number or $\infty$ (and $\pm \infty$ for the real case respectively). If $z_{0}$ is finite, then it is understood that the estimate is assumed to hold for all $z$ such that $|z-z_{0}| < \d$ for some real $\d > 0$. If $z_{0}$ is infinite, then the estimate is assumed to hold for all sufficiently large $z$. That is, $|z| > z_{0}$ for some $z_{0}$ (and $z > z_{0}$ or $z < z_{0}$ in the real case for $\pm \infty$ respectively). If the limiting process is not explicitly mentioned, it is assumed to be as $z \to \infty$ (or as $z \to \pm\infty$ for the real case). Often times, estimates will hold for all admissible values of $z$ and this will be clear from context although we still might suppress the specific limiting process.
 
       \begin{remark}
         Suppose $f,g:\Z_{\ge 0} \to \C$. Extending $f(x)$ and $g(x)$ by making them piecewise linear so that they are piecewise continuous, we can consider estimates with $n$ in place of $z$. All of the following theory still holds. Moreover, if we further take $f(x)$ or $g(x)$ to be a constant function, the following theory will still hold.
@@ -57,10 +57,10 @@
         \[
           |f(z)| \le c|g(z)|,
         \]
-        holds as $z \to z_{0}$. We call this a \textbf{$O$-estimate}\index{$O$-estimate}. We also say $f(z)$ has \textbf{growth at most}\index{growth at most} $g(z)$. The $O$-estimate says that for $z$ close to $z_{0}$, the size of $f(z)$ grows like $g(z)$.
+        holds as $z \to z_{0}$. We call this an \textbf{$O$-estimate}\index{$O$-estimate} and say that $f(z)$ has \textbf{growth at most}\index{growth at most} $g(z)$. The $O$-estimate says that for $z$ close to $z_{0}$, the size of $f(z)$ grows like $g(z)$.
         
         \begin{remark}
-          Many authors assume that $g(z)$ is a nonnegative function so that the absolute values on $g(z)$ can be dropped. As we require asymptotics that will be used more generally, we do not make this assumption since one could very well replace $O(g(z))$ with $O(|g(z)|)$. In practice this deviation causes no issue.
+          Many authors assume that $g(z)$ is a nonnegative function so that the absolute values on $g(z)$ can be dropped. As we require estimates that will be used more generally, we do not make this assumption since one could very well replace $O(g(z))$ with $O(|g(z)|)$. In practice this deviation causes no issue.
         \end{remark}
         
         As a symbol, let $O(g(z))$ stand for a function $f(z)$ that is $O(g(z))$. Then we may use the $O$-estimates in algebraic equations and inequalities. Note that this extends the definition of the symbol because $f(z) = O(g(z))$ means $f(z)$ is $O(g(z))$. The constant $c$ is not unique as any $c' > c$ also works. Any such constant is called the \textbf{implicit constant}\index{implicit constant} of the $O$-estimate. The implicit constant may depend on one or more parameters, $\e$, $\s$, etc. If we wish to make these dependences known, we use subscripts $O_{\e}$, $O_{\s}$, $O_{\e,\s}$, etc. If it is possible to choose the implicit constant independent of a certain parameter then we say that the estimate is \textbf{uniform}\index{uniform} with respect to that parameter. Moreover, we say that an implicit constant is \textbf{effective}\index{effective} if the constant is numerically computable and \textbf{ineffective}\index{ineffective} otherwise. Moreover, if we are interested in the dependence of the estimate on a certain parameter, say $p$, we will refer to the \textbf{$p$-aspect}\index{$p$-aspect} to mean the part of the estimate that is dependent upon $p$. Lastly, in algebraic equations and inequalities involving $O$-estimates, it is often customary to refer to such an $O$-estimate as an \textbf{error term}\index{error term}. The symbol $\ll$ is known as \textbf{Vinogradov's symbol}\index{Vinogradov's symbol} and it is an alternative way to express $O$-estimates. We write $f(z) \ll g(z)$ as $z \to z_{0}$ if $f(z) = O(g(z))$ as $z \to z_{0}$. We also write $f(z) \gg g(z)$ as $z \to z_{0}$ to mean $g(z) \ll f(z)$ as $z \to z_{0}$. If there is a dependence of the implicit constant on parameters, we use subscripts to denote dependence on these parameters. If both $f(z) \ll g(z)$ and $g(z) \ll f(z)$ as $z \to z_{0}$, then we say $f(z)$ and $g(z)$ have the \textbf{same order of magnitude}\index{same order of magnitude} and write $f(z) \asymp g(z)$ as $z \to z_{0}$. We also say $f(z)$ has \textbf{growth}\index{growth} $g(z)$. If there is a dependence of the implicit constant on parameters, we use subscripts to denote dependence on these parameters. From the definition of the $O$-estimate, this is equivalent to the existence of positive constants $c_{1}$ and $c_{2}$ such that
@@ -73,19 +73,17 @@
         \[
           \lim_{z \to z_{0}}\left|\frac{f(z)}{g(z)}\right| = 0,
         \]
-        provided $g(z) \neq 0$ for all $z$ sufficiently close to $z_{0}$. We call this a \textbf{$o$-estimate}\index{$o$-estimate}. The $o$-estimate says that for $z$ close to $z_{0}$, $g(z)$ dominates $f(z)$. If $f(z) = o(g(z))$ as $z \to z_{0}$, then $f(z) = O(g(z))$ as $z \to z_{0}$ where the implicit constant can be taken arbitrarily small by definition of the $o$-estimate. Therefore, $o$-estimates are stronger than $O$-estimates. As a symbol, let $o(g(z))$ stand for a function $f(z)$ that is $o(g(z))$. Then we may use the $o$-estimates in algebraic equations and inequalities. Note that this extends the definition of the symbol because $f(z) = o(g(z))$ means $f(z)$ is $o(g(z))$.
-
-        We say $f(z)$ \textbf{is asymptotic to}\index{is asymptotic to} $g(z)$ or $f(z)$ and $g(z)$ are \textbf{asymptotically equivalent}\index{asymptotically equivalent} as $z \to z_{0}$ and write $f(z) \sim g(z)$ if
+        provided $g(z) \neq 0$ for all $z$ sufficiently close to $z_{0}$. We call this an \textbf{$o$-estimate}\index{$o$-estimate} and say that $f(z)$ has \textbf{growth less than}\index{growth less than} $g(z)$. The $o$-estimate says that for $z$ close to $z_{0}$, $g(z)$ dominates $f(z)$. If $f(z) = o(g(z))$ as $z \to z_{0}$, then $f(z) = O(g(z))$ as $z \to z_{0}$ where the implicit constant can be taken arbitrarily small by definition of the $o$-estimate. Therefore, $o$-estimates are stronger than $O$-estimates. As a symbol, let $o(g(z))$ stand for a function $f(z)$ that is $o(g(z))$. Then we may use the $o$-estimates in algebraic equations and inequalities. Note that this extends the definition of the symbol because $f(z) = o(g(z))$ means $f(z)$ is $o(g(z))$. We say $f(z)$ \textbf{is asymptotic to}\index{is asymptotic to} $g(z)$ as $z \to z_{0}$ and write $f(z) \sim g(z)$ if
         \[
           \lim_{z \to z_{0}}\left|\frac{f(z)}{g(z)}\right| = 1,
         \]
-        provided $g(z) \neq 0$ for all $z$ sufficiently close to $z_{0}$. It is useful to think of asymptotic equivalence as $f(z)$ and $g(z)$ being the same size in the limit as $z \to z_{0}$. Immediately from the definition, we see that this is an equivalence relation on functions. In particular, if $f(z) \sim g(z)$ and $g(z) \sim h(z)$ then $f(z) \sim h(z)$. Also, if $f(z) \sim g(z)$ as $z \to z_{0}$, then $f(z) \asymp g(z)$ as $z \to z_{0}$ with $c_{1} \le 1 \le c_{2}$. So asymptotic equivalence is stronger than being of the same order of magnitude. Also note that $f(x) \sim g(x)$ is equivalent to $f(x) = g(x)(1+o(1))$ and hence implies $f(x) = g(x)(1+O(1))$. We write $f(z) = \W(g(z))$ as $z \to z_{0}$ if
+        provided $g(z) \neq 0$ for all $z$ sufficiently close to $z_{0}$. We call this an \textbf{asymptotic}\index{asymptotic} and say that $f(z)$ and $g(z)$ are \textbf{asymptotically equivalent}\index{asymptotically equivalent}. It is useful to think of asymptotic equivalence as $f(z)$ and $g(z)$ being the same size in the limit as $z \to z_{0}$. Immediately from the definition, we see that this is an equivalence relation on functions. In particular, if $f(z) \sim g(z)$ and $g(z) \sim h(z)$ then $f(z) \sim h(z)$. Also, if $f(z) \sim g(z)$ as $z \to z_{0}$, then $f(z) \asymp g(z)$ as $z \to z_{0}$ with $c_{1} \le 1 \le c_{2}$. So asymptotic equivalence is stronger than being of the same order of magnitude. Also note that $f(x) \sim g(x)$ is equivalent to $f(x) = g(x)(1+o(1))$ and hence implies $f(x) = g(x)(1+O(1))$. We say $f(z)$ \textbf{is of larger order than}\index{is of larger order than} $g(z)$ or $f(z)$ is $\W(g(z))$ as $z \to z_{0}$ and write $f(z) = \W(g(z))$ if
         \[
           \limsup_{z \to z_{0}}\left|\frac{f(z)}{g(z)}\right| > 0.
         \]
-        We also say $f(z)$ has \textbf{growth at least}\index{growth at least} $g(z)$. Observe that $f(z) = \W(g(z))$ is precisely the negation of $f(z) = o(g(z))$, so that $f(z) = \W(g(z))$ means $f(z) = o(g(z))$ is false. This is weaker than $f(z) \gg g(z)$ because $f(z) = \W(g(z))$ means $|f(z)| \ge c|g(z)|$ for values of $z$ arbitrarily close to $z_{0}$ whereas $f(z) \gg g(z)$ means $|f(z)| \ge c|g(z)|$ for all values of $z$ sufficiently close to $z_{0}$.
+        provided $g(z) \neq 0$ for all $z$ sufficiently close to $z_{0}$. We call this an \textbf{$\W$-estimate}\index{$\W$-estimate} and say that $f(z)$ has \textbf{growth at least}\index{growth at least} $g(z)$. Observe that $f(z) = \W(g(z))$ is precisely the negation of $f(z) = o(g(z))$, so that $f(z) = \W(g(z))$ means $f(z) = o(g(z))$ is false. This is weaker than $f(z) \gg g(z)$ because $f(z) = \W(g(z))$ means $|f(z)| \ge c|g(z)|$ for some values of $z$ arbitrarily close to $z_{0}$ whereas $f(z) \gg g(z)$ means $|f(z)| \ge c|g(z)|$ for all values of $z$ sufficiently close to $z_{0}$.
       \subsection*{Algebraic Manipulation for \texorpdfstring{$O$}{O}-estimates and \texorpdfstring{$o$}{o}-estimates}
-        Asymptotic estimates become increasingly more useful when we can use them in equations to represent approximations. We catalogue some of the most useful algebraic manipulations for $O$-estimates and $o$-estimates. Most importantly, if an algebraic equation involves a $O$-estimate or $o$-estimate then it is understood that the equation is not symmetric and is interpreted to be read from left to right. That is, any function of the form satisfying the estimate on the left-hand side also satisfies the estimate on the right-hand side too. We begin with $O$-estimates. The trivial algebraic manipulations are collected in the proposition below:
+        Estimates become increasingly more useful when we can use them in equations to represent approximations. We catalogue some of the most useful algebraic manipulations for $O$-estimates and $o$-estimates. Most importantly, if an algebraic equation involves a $O$-estimate or $o$-estimate then it is understood that the equation is not symmetric and is interpreted to be read from left to right. That is, any function of the form satisfying the estimate on the left-hand side also satisfies the estimate on the right-hand side too. We begin with $O$-estimates. The trivial algebraic manipulations are collected in the proposition below:
 
         \begin{proposition}\label{prop:Big_Oh_manipulations}
             The following $O$-estimates hold as $z \to z_{0}$:
@@ -153,7 +151,7 @@
           Statements (i)-(iii) and (v) follow immediately from the definition of the $o$-estimate. Statement (iv) follows from the definition and that $\sum_{1 \le i \le n}|g_{i}(z)| \ge |g_{i}(z)|$.
         \end{proof}
       \subsection*{Growth \& Decay of Functions}
-        We will also be interested in the growth rate of functions. We can compactly express these types of growth using asymptotics. There are many types of growth rates, but we will only recall the ones that are standard. Throughout let $c \ge 1$. First suppose $z \to z_{0}$. If $f(z) \asymp \log^{c}(z)$, we say that $f(z)$ is of \textbf{logarithmic growth}\index{logarithmic growth}. If $f(z) \asymp z^{c}$, we say that $f(z)$ is of \textbf{polynomial growth}\index{polynomial growth}. If $f(z) \asymp e^{cz}$, we say that $f(z)$ is of \textbf{exponential growth}\index{exponential growth}. Now suppose $z \to \infty$ or $z \to \pm\infty$ in the real case. If $f(z) \asymp \log^{-c}(z)$, we say that $f(z)$ is of \textbf{logarithmic decay}\index{logarithmic decay}. If $f(z) \asymp x^{-c}$ for some $c \ge 1$, we say that $f(z)$ is of \textbf{polynomial decay}\index{polynomial decay}. If $f(z) \asymp e^{-cz}$, we say that $f(z)$ is of \textbf{exponential decay}\index{exponential decay}. In all of these cases, we refer to the constant $c$ as the \textbf{order}\index{order} of growth or decay respectively. Our last two growth rates will be the most common ones we will use. Suppose $z \to \infty$ or $z \to \pm\infty$ in the real case. If $f(z) = \W(z^{n})$ for all $n \ge 0$, then we say $f(z)$ is of \textbf{rapid growth}\index{rapid growth}. Alternatively, if $f(z) = o(z^{-n})$ for all $n \ge 0$, then we say $f(z)$ is of \textbf{rapid decay}\index{rapid decay}.
+        We will also be interested in the growth rate of functions. There are many types of growth rates, but we will only recall the ones that are standard. Throughout let $c \ge 1$. First suppose $z \to z_{0}$. If $f(z) \asymp \log^{c}(z)$, we say that $f(z)$ is of \textbf{logarithmic growth}\index{logarithmic growth}. If $f(z) \asymp z^{c}$, we say that $f(z)$ is of \textbf{polynomial growth}\index{polynomial growth}. If $f(z) \asymp e^{cz}$, we say that $f(z)$ is of \textbf{exponential growth}\index{exponential growth}. Now suppose $z \to \infty$ or $z \to \pm\infty$ in the real case. If $f(z) \asymp \log^{-c}(z)$, we say that $f(z)$ is of \textbf{logarithmic decay}\index{logarithmic decay}. If $f(z) \asymp x^{-c}$ for some $c \ge 1$, we say that $f(z)$ is of \textbf{polynomial decay}\index{polynomial decay}. If $f(z) \asymp e^{-cz}$, we say that $f(z)$ is of \textbf{exponential decay}\index{exponential decay}. In all of these cases, we refer to the constant $c$ as the \textbf{order}\index{order} of growth or decay respectively. Our last two growth rates will be the most common ones we will use. Suppose $z \to \infty$ or $z \to \pm\infty$ in the real case. If $f(z) = \W(z^{n})$ for all $n \ge 0$, then we say $f(z)$ is of \textbf{rapid growth}\index{rapid growth}. Alternatively, if $f(z) = o(z^{-n})$ for all $n \ge 0$, then we say $f(z)$ is of \textbf{rapid decay}\index{rapid decay}.
     \section{Dirichlet Characters}
       The most important multiplicative periodic functions for an analytic number theorist are the Dirichlet characters. A \textbf{Dirichlet character}\index{Dirichlet character} $\chi$ modulo $m \ge 1$ is an $m$-periodic completely multiplicative function $\chi:\Z \to \C$ such that $\chi(a) = 0$ if and only if $(a,m) > 1$. We call $m$ the \textbf{modulus}\index{modulus} of $\chi$. Sometimes we will also write $\chi_{m}$ to denote a Dirichlet character modulo $m$ if we need to express the dependence upon the modulus. For any $m \ge 1$, there is always the \textbf{principal Dirichlet character}\index{principal Dirichlet character} modulo $m$ which we denote by $\chi_{m,0}$ (sometimes also seen as $\chi_{0,m}$ or the ever more confusing $\chi_{0}$) and is defined by
       \[
@@ -945,7 +943,7 @@
         \]
         which is the desired result
       \end{proof}
-      Strictly weaker than the asymptotic equivalence in Stirling's formula is the estimate
+      Strictly weaker than the asymptotic in Stirling's formula is the estimate
       \begin{equation}
           \G(s) = \sqrt{2\pi}s^{s-\frac{1}{2}}e^{-s}(1+O_{\e,\d}(1)).
       \end{equation}
@@ -953,7 +951,7 @@
       \begin{equation}\label{equ:log_gamma_estimate}
         \log\G(s) = \frac{1}{2}\log(2\pi)+\left(s-\frac{1}{2}\right)\log(s)-s+O_{\e,\d}\left(1\right),
       \end{equation}
-      which will be useful. Using \cref{equ:log_gamma_estimate} we can obtain a useful asymptotic formula for the digamma function:
+      which will be useful. Using \cref{equ:log_gamma_estimate} we can obtain a useful estimate formula for the digamma function:
 
       \begin{proposition}\label{equ:approximtion_for_digamma}
       \[
@@ -962,7 +960,7 @@
       provided $|\arg(s)| < \pi-\e$ and $|s| > \d$ for some $\e,\d > 0$.
       \end{proposition}
       \begin{proof}
-        \cref{equ:log_gamma_estimate} give the simplified asymptotic
+        \cref{equ:log_gamma_estimate} give the simplified estimate
         \[
           \log\G(s) = \frac{1}{2}\log(2\pi)+s\log(s)-s+O_{\e,\d}(1).
         \]
