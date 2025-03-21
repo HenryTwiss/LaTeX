@@ -1,7 +1,7 @@
   \chapter{Preliminaries}\label{ch:Preliminaries}
     There is quite a bit of knowledge that most authors assume one is fluent in when writing any text on analytic number theory that is not necessarily standard material every reader knowns. A good selection is the following:
     \begin{itemize}
-      \item Estimates,
+      \item Asymptotics,
       \item Dirichlet Characters,
       \item Special Sums,
       \item Integration Techniques \& Transforms,
@@ -25,12 +25,12 @@
         \item We will write $\int_{(a)}$ for the complex integral over the line whose real part is $a$ and with positive orientation.
         \item $\d_{a,b}$ will denote the indicator function for $a = b$. That is, $\d_{a,b} = 1,0$ according to if $a = b$ or not.
       \end{itemize}
-    \section{Estimates}
-      Much of the language of analytic number theory is given in terms of estimates as they allows us to discuss approximate growth and dispense with superfluous constants. For this reason, estimates will be the first material that we will present. The estimates that we will cover are listed in the following table:
+    \section{Asymptotics}
+      Much of the language of analytic number theory is given in terms of asymptotics (or estimates or bounds) as they allows us to discuss approximate growth and dispense with superfluous constants. For this reason, asymptotics will be the first material that we will present. The asymptotics that we will cover are listed in the following table:
       \begin{center}
         \begin{stabular}[1.5]{|c|c|c|}
           \hline
-          Estimates & Notation \\
+          Asymptotics & Notation \\
           \hline
           Big O & $f(z) = O(g(z))$ \\
           \hline
@@ -46,11 +46,13 @@
           \hline
         \end{stabular}
       \end{center}
-      Implicit in all of these estimates is some limiting process $z \to z_{0}$ where $z_{0}$ is some complex number or $\infty$ (and $\pm \infty$ for the real case respectively). If $z_{0}$ is finite, then it is understood that the estimate is assumed to hold for all $z$ such that $|z-z_{0}| < \d$ for some real $\d > 0$. If $z_{0}$ is infinite, then the estimate is assumed to hold for all sufficiently large $z$. That is, $|z| > z_{0}$ for some $z_{0}$ (and $z > z_{0}$ or $z < z_{0}$ in the real case for $\pm \infty$ respectively). If the limiting process is not explicitly mentioned, it is assumed to be as $z \to \infty$ (or as $z \to \pm\infty$ for the real case). Often times, estimates will hold for all admissible values of $z$ and this will be clear from context although we still might suppress the specific limiting process.
+      Implicit in all of these asymptotics is some limiting process $z \to z_{0}$ where $z_{0}$ is some complex number or $\infty$ (and $\pm \infty$ for the real case respectively). If $z_{0}$ is finite, then it is understood that the asymptotic is assumed to hold for all $z$ such that $|z-z_{0}| < \d$ for some real $\d > 0$. If $z_{0}$ is infinite, then the asymptotic is assumed to hold for all sufficiently large $z$. That is, $|z| > z_{0}$ for some $z_{0}$ (and $z > z_{0}$ or $z < z_{0}$ in the real case for $\pm \infty$ respectively). If the limiting process is not explicitly mentioned, it is assumed to be as $z \to \infty$ (or as $z \to \pm\infty$ for the real case). Often times, asymptotics will hold for all admissible values of $z$ and this will be clear from context although we still might suppress the specific limiting process.
 
       \begin{remark}
-        Suppose $f,g:\Z_{\ge 0} \to \C$. Extending $f(x)$ and $g(x)$ by making them piecewise linear so that they are piecewise continuous, we can consider estimates with $n$ in place of $z$. All of the following theory still holds. Moreover, if we further take $f(x)$ or $g(x)$ to be a constant function, the following theory will still hold.
+        Suppose $f,g:\Z_{\ge 0} \to \C$. Extending $f(x)$ and $g(x)$ by making them piecewise linear so that they are piecewise continuous, we can consider asymptotics with $n$ in place of $z$. All of the following theory still holds. Moreover, if we further take $f(x)$ or $g(x)$ to be a constant function, the following theory will still hold.
       \end{remark}
+
+      Implicit in some asymptotics will there be a constant (such constants are in general not unique and any sufficiently large constant will do). Any such constant is called the \textbf{implicit constant}\index{implicit constant} of the asymptotic. The implicit constant may depend on one or more parameters, $\e$, $\s$, etc. If we wish to make these dependencies known, we use subscripts. If it is possible to choose the implicit constant independent of a certain parameter then we say that the asymptotic is \textbf{uniform}\index{uniform} with respect to that parameter. Moreover, we say that an implicit constant is \textbf{effective}\index{effective} if the constant is numerically computable and \textbf{ineffective}\index{ineffective} otherwise. Moreover, if we are interested in the dependence of an asymptotic on a certain parameter, say $p$, we will refer to the \textbf{$p$-aspect}\index{$p$-aspect} to mean the part of the asymptotic that is dependent upon $p$.
       \subsection*{\texorpdfstring{$O$}{O}-estimates \& Symbols}
         We say $f(z)$ \textbf{is of order}\index{is of order} $g(z)$ or $f(z)$ is $O(g(z))$ as $z \to z_{0}$ and write $f(z) = O(g(z))$
         if there is some positive constant $c$ such that
@@ -60,10 +62,10 @@
         holds as $z \to z_{0}$. We call this an \textbf{$O$-estimate}\index{$O$-estimate} and say that $f(z)$ has \textbf{growth at most}\index{growth at most} $g(z)$. The $O$-estimate says that for $z$ close to $z_{0}$, the size of $f(z)$ grows like $g(z)$.
         
         \begin{remark}
-          Many authors assume that $g(z)$ is a nonnegative function so that the absolute values on $g(z)$ can be dropped. As we require estimates that will be used more generally, we do not make this assumption since one could very well replace $O(g(z))$ with $O(|g(z)|)$. In practice this deviation causes no issue.
+          Many authors assume that $g(z)$ is a nonnegative function so that the absolute values on $g(z)$ can be dropped. As we require asymptotics that will be used more generally, we do not make this assumption since one could very well replace $O(g(z))$ with $O(|g(z)|)$. In practice this deviation causes no issue.
         \end{remark}
         
-        As a symbol, let $O(g(z))$ stand for a function $f(z)$ that is $O(g(z))$. Then we may use the $O$-estimates in algebraic equations and inequalities. Note that this extends the definition of the symbol because $f(z) = O(g(z))$ means $f(z)$ is $O(g(z))$. The constant $c$ is not unique as any $c' > c$ also works. Any such constant is called the \textbf{implicit constant}\index{implicit constant} of the $O$-estimate. The implicit constant may depend on one or more parameters, $\e$, $\s$, etc. If we wish to make these dependences known, we use subscripts $O_{\e}$, $O_{\s}$, $O_{\e,\s}$, etc. If it is possible to choose the implicit constant independent of a certain parameter then we say that the estimate is \textbf{uniform}\index{uniform} with respect to that parameter. Moreover, we say that an implicit constant is \textbf{effective}\index{effective} if the constant is numerically computable and \textbf{ineffective}\index{ineffective} otherwise. Moreover, if we are interested in the dependence of the estimate on a certain parameter, say $p$, we will refer to the \textbf{$p$-aspect}\index{$p$-aspect} to mean the part of the estimate that is dependent upon $p$. Lastly, in algebraic equations and inequalities involving $O$-estimates, it is often customary to refer to such an $O$-estimate as an \textbf{error term}\index{error term}. The symbol $\ll$ is known as \textbf{Vinogradov's symbol}\index{Vinogradov's symbol} and it is an alternative way to express $O$-estimates. We write $f(z) \ll g(z)$ as $z \to z_{0}$ if $f(z) = O(g(z))$ as $z \to z_{0}$. We also write $f(z) \gg g(z)$ as $z \to z_{0}$ to mean $g(z) \ll f(z)$ as $z \to z_{0}$. If there is a dependence of the implicit constant on parameters, we use subscripts to denote dependence on these parameters. If both $f(z) \ll g(z)$ and $g(z) \ll f(z)$ as $z \to z_{0}$, then we say $f(z)$ and $g(z)$ have the \textbf{same order of magnitude}\index{same order of magnitude} and write $f(z) \asymp g(z)$ as $z \to z_{0}$. We also say $f(z)$ has \textbf{growth}\index{growth} $g(z)$. If there is a dependence of the implicit constant on parameters, we use subscripts to denote dependence on these parameters. From the definition of the $O$-estimate, this is equivalent to the existence of positive constants $c_{1}$ and $c_{2}$ such that
+        As a symbol, let $O(g(z))$ stand for a function $f(z)$ that is $O(g(z))$. Then we may use the $O$-estimates in algebraic equations and inequalities. Note that this extends the definition of the symbol because $f(z) = O(g(z))$ means $f(z)$ is $O(g(z))$. Moreover, in algebraic equations and inequalities involving $O$-estimates it is often customary to refer to such an $O$-estimate as an \textbf{error term}\index{error term}. The symbol $\ll$ is known as \textbf{Vinogradov's symbol}\index{Vinogradov's symbol} and it is an alternative way to express $O$-estimates. We write $f(z) \ll g(z)$ as $z \to z_{0}$ if $f(z) = O(g(z))$ as $z \to z_{0}$. We also write $f(z) \gg g(z)$ as $z \to z_{0}$ to mean $g(z) \ll f(z)$ as $z \to z_{0}$. If there is a dependence of the implicit constant on parameters, we use subscripts to denote dependence on these parameters. If both $f(z) \ll g(z)$ and $g(z) \ll f(z)$ as $z \to z_{0}$, then we say $f(z)$ and $g(z)$ have the \textbf{same order of magnitude}\index{same order of magnitude} and write $f(z) \asymp g(z)$ as $z \to z_{0}$. We also say $f(z)$ has \textbf{growth}\index{growth} $g(z)$. If there is a dependence of the implicit constant on parameters, we use subscripts to denote dependence on these parameters. From the definition of the $O$-estimate, this is equivalent to the existence of positive constants $c_{1}$ and $c_{2}$ such that
         \[
           c_{1}|g(z)| \le |f(z)| \le c_{2}|g(z)|.
         \]
@@ -83,7 +85,7 @@
         \]
         provided $g(z) \neq 0$ for all $z$ sufficiently close to $z_{0}$. We call this an \textbf{$\W$-estimate}\index{$\W$-estimate} and say that $f(z)$ has \textbf{growth at least}\index{growth at least} $g(z)$. Observe that $f(z) = \W(g(z))$ is precisely the negation of $f(z) = o(g(z))$, so that $f(z) = \W(g(z))$ means $f(z) = o(g(z))$ is false. This is weaker than $f(z) \gg g(z)$ because $f(z) = \W(g(z))$ means $|f(z)| \ge c|g(z)|$ for some values of $z$ arbitrarily close to $z_{0}$ whereas $f(z) \gg g(z)$ means $|f(z)| \ge c|g(z)|$ for all values of $z$ sufficiently close to $z_{0}$.
       \subsection*{Algebraic Manipulation for \texorpdfstring{$O$}{O}-estimates and \texorpdfstring{$o$}{o}-estimates}
-        Estimates become increasingly more useful when we can use them in equations to represent approximations. We catalogue some of the most useful algebraic manipulations for $O$-estimates and $o$-estimates. Most importantly, if an algebraic equation involves a $O$-estimate or $o$-estimate then it is understood that the equation is not symmetric and is interpreted to be read from left to right. That is, any function of the form satisfying the estimate on the left-hand side also satisfies the estimate on the right-hand side too. We begin with $O$-estimates. The trivial algebraic manipulations are collected in the proposition below:
+        Asymptotics become increasingly more useful when we can use them in equations to represent approximations. We catalogue some of the most useful algebraic manipulations for $O$-estimates and $o$-estimates. Most importantly, if an algebraic equation involves a $O$-estimate or $o$-estimate then it is understood that the equation is not symmetric and is interpreted to be read from left to right. That is, any function of the form satisfying the estimate on the left-hand side also satisfies the estimate on the right-hand side too. We begin with $O$-estimates. The trivial algebraic manipulations are collected in the proposition below:
 
         \begin{proposition}\label{prop:Big_Oh_manipulations}
             The following $O$-estimates hold as $z \to z_{0}$:
@@ -132,7 +134,7 @@
             \item $\log(1+z) = O(z)$.
             \item $e^{z} = 1+O(z)$.
           \end{enumerate}
-          Now apply \cref{prop:Big_Oh_manipulations} (v) to each of these estimates, and use \cref{prop:Big_Oh_manipulations} (i).
+          Now apply \cref{prop:Big_Oh_manipulations} (v) to each of these $O$-estimates, and use \cref{prop:Big_Oh_manipulations} (i).
         \end{proof}
 
         For $o$-estimates, the following properties are useful:
@@ -356,7 +358,7 @@
         \[
           \tau(b,\chi) = \sum_{a \tmod{m}}\chi(a)e^{\frac{2\pi iab}{m}} = \psum_{a \tmod{m}}\chi(a)e^{\frac{2\pi iab}{m}},
         \]
-        where the last equality follows because $\chi(a) = 0$ unless $(a,m) = 1$. If $b = 1$ we will write $\tau(\chi)$ instead. That is, $\tau(\chi) = \tau(1,\chi)$. We call $\tau(\chi)$ the \textbf{Gauss sum}\index{Gauss sum} associated to $chi$. Ramanujan and Gauss sums associated to Dirichlet characters are interesting because the Dirichlet character is a multiplicative character while the exponential is an additive one. So these sums are a convolution between a multiplicative and additive character. This is the fundamental reason that makes them difficult to study as one needs to separate the additive and multiplicative structures. Observe that if $m = 1$ then $\chi$ is the trivial character and $\tau(b,\chi) = 1$. So the interesting cases are when $m \ge 2$. There are some basic properties of these sums which are very useful:
+        where the last equality follows because $\chi(a) = 0$ unless $(a,m) = 1$. If $b = 1$ we will write $\tau(\chi)$ instead. That is, $\tau(\chi) = \tau(1,\chi)$. We call $\tau(\chi)$ the \textbf{Gauss sum}\index{Gauss sum} associated to $chi$. Observe that if $m = 1$ then $\chi$ is the trivial character and $\tau(b,\chi) = 1$. So the interesting cases are when $m \ge 2$. There are some basic properties of these sums which are very useful:
 
         \begin{proposition}\label{prop:Gauss_sum_reduction}
           Let $\chi$ and $\psi$ be nontrivial Dirichlet characters modulo $m$ and $n$ respectively and let $b \in \Z$. Then the following hold:
@@ -445,7 +447,7 @@
           Let $S(a')$ denote the inner sum. For the $a'$ such that $a'-1 \equiv 0 \tmod{q}$, $S(a') = q$. Otherwise $a \to a\conj{(a'-1)}$ is a bijection on $\Z/q\Z$ ($q \neq 1$ because $\chi$ is nontrivial) so that $S(a') = 0$ because it is the sum of all $q$-th roots of unity. It follows that the double sum is $\chi(1)q = q$. So altogether $|\tau(\chi)|^{2} = q$ and hence $|\tau(\chi)| = \sqrt{q}$.
         \end{proof}
 
-        As an almost immediate corollary to \cref{thm:Gauss_sum_modulus}, we deduce a useful expression for primitive Dirichlet characters of conductor $q$ in terms of additive characters on $(\Z/q\Z)$:
+        As an almost immediate corollary to \cref{thm:Gauss_sum_modulus}, we deduce a useful expression for primitive Dirichlet characters of conductor $q$:
 
         \begin{corollary}\label{cor:gauss_sum_primitive_formula}
           Let $\chi$ be a primitive Dirichlet character of conductor $q$. Then
@@ -916,7 +918,7 @@
         provided $|\arg(s)| < \pi-\e$ and $|s| > \d$ for some $\e,\d > 0$.
       \end{theorem}
 
-      If $\s$ is bounded, Stirling's formula gives a useful estimate showing that $\G(s)$ decays as $s \to \infty$:
+      If $\s$ is bounded, Stirling's formula gives a useful asymptotic showing that $\G(s)$ decays as $s \to \infty$:
       
       \begin{corollary}\label{equ:weaker_Stirling_formula}
       Let $|\arg(s)| < \pi-\e$ and $|s| > \d$ for some $\e,\d > 0$. Then if $\s$ is bounded, we have
@@ -943,15 +945,15 @@
         \]
         which is the desired result
       \end{proof}
-      Strictly weaker than the asymptotic in Stirling's formula is the estimate
+      Strictly weaker than the asymptotic in Stirling's formula is the asymptotic
       \begin{equation}
           \G(s) = \sqrt{2\pi}s^{s-\frac{1}{2}}e^{-s}(1+O_{\e,\d}(1)).
       \end{equation}
-      Taking the logarithm (since $|\arg(s)| < \pi-\e$ the logarithm is defined) of this estimate gives
+      Taking the logarithm (since $|\arg(s)| < \pi-\e$ the logarithm is defined) of this asymptotic gives
       \begin{equation}\label{equ:log_gamma_estimate}
         \log\G(s) = \frac{1}{2}\log(2\pi)+\left(s-\frac{1}{2}\right)\log(s)-s+O_{\e,\d}\left(1\right),
       \end{equation}
-      which will be useful. Using \cref{equ:log_gamma_estimate} we can obtain a useful estimate formula for the digamma function:
+      which will be useful. In fact, from \cref{equ:log_gamma_estimate} we can obtain another useful estimate formula for the digamma function:
 
       \begin{proposition}\label{equ:approximtion_for_digamma}
       \[
