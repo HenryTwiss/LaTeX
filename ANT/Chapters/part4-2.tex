@@ -1,25 +1,50 @@
 \chapter{Types of Sieves}
-  \section{\todo{Combinatorial Sieves}}
-    The idea behind the combinatorial sieve is to choose sieve weights such that the sieving function is a truncation of the inclusion-exclusion principle applied to the sifting function. To motivate this choice, we being by iteratively applying Buchstab's identity $r \ge 1$ times to obtain
-    \[
-      S(x,z;\mc{A},\mc{P}) = \sum_{\substack{d \mid P(z) \\ \w(d) < r}}\mu(d)S(x;\mc{A}_{d})+(-1)^{r}\sum_{\substack{d \mid P(z) \\ \w(d) = r}}S(x,p_{d};\mc{A}_{d},\mc{P}),
-    \]
-    where $p_{d}$ is the smallest prime divisor of $d$. This identity can be thought of as an inclusion-exclusion principle for the sifting function. As $S(x,p_{d};\mc{A}_{d},\mc{P})$ is nonnegative, we obtain the upper bound
-    \[
+  \section{\todo{Brun's Pure Sieve}}
+    The modern development of sieves began with Brun (see \cite{brun1915uber}) in 1915. His idea was to apply a truncation of the inclusion-exclusion principle to the sifting function. To motivate this idea, we being by iteratively applying Buchstab's identity $r \ge 1$ times to obtain
+    \begin{equation}\label{equ:iterative_Buchstab}
+      S(x,z;\mc{A},\mc{P}) = \sum_{\substack{d \mid P(z) \\ \w(d) < r}}\mu(d)S(x;\mc{A}_{d})+(-1)^{r}\sum_{\substack{d \mid P(z) \\ \w(d) = r}}S(x,p(d);\mc{A}_{d},\mc{P}),
+    \end{equation}
+    where $p(d)$ is the smallest prime divisor of $d$. This identity can be thought of as an inclusion-exclusion principle for the sifting function. As $S(x,p(d);\mc{A}_{d},\mc{P})$ is nonnegative, \cref{equ:iterative_Buchstab} produces the upper bound
+    \begin{equation}\label{equ:iterative_Buchstab_odd}
       S(x,z;\mc{A},\mc{P}) \le \sum_{\substack{d \mid P(z) \\ \w(d) < r}}\mu(d)S(x;\mc{A}_{d}),
-    \]
+    \end{equation}
     if $r$ is odd, and the lower bound
-    \[
+    \begin{equation}\label{equ:iterative_Buchstab_even}
       S(x,z;\mc{A},\mc{P}) \ge \sum_{\substack{d \mid P(z) \\ \w(d) < r}}\mu(d)S(x;\mc{A}_{d}),
-    \]
-    is $r$ is even. We now wish to consider sieves whose sieving functions replace these upper and lower bounds with sums that are closer approximations to the sifting function. Precisely, we will replace the condition $\w(d) < r$ with $d \in \mc{D}$ for set of positive integers $\mc{D}$ with a small amount of small prime divisors. A \textbf{combinatorial sieve}\index{combinatorial sieve} $\L = (\l_{d})_{d \ge 1}$ is a sieve for which $\l_{d} = \mu(d)$ or $\l_{d} = 0$. We will be concerned with upper and lower combinatorial sieves $\L^{+} = (\l_{d}^{+})_{d \ge 1}$ and $\L^{-} = (\l_{d}^{+})_{d \ge 1}$ where $\l_{d}^{\pm} = \mu(d)$ only for $d$ belonging to the sets
+    \end{equation}
+    is $r$ is even. Thus \cref{equ:iterative_Buchstab} gives upper and lower bounds for hte sifting function depending on the parity of $r$. Then for a fixed $r \ge 1$, \textbf{Brun's pure sieve}\index{Brun's pure sieve} $\L = (\l_{d})_{d \ge 1}$ is given by
     \[
-      \mc{D}^{+} = \{d = p_{1}p_{2} \cdots p_{r}:\text{$d < D$, $p_{r} < p_{r-1} < \cdots < p_{1}$, and $p_{m} < y_{m}$ for $m$ odd}\},
+      \l_{d} = \begin{cases} \mu(d) & \text{if $\w(d) < r$ and $d \mid P(z)$}, \\ 0 & \text{if $\w(d) \ge r$ or $d \nmid P(z)$}. \end{cases}
+    \]
+    Clearly the sieve level is $D = P(z)$. Moreover, \cref{equ:iterative_Buchstab_odd,equ:iterative_Buchstab_even} immediately give
+    \[
+      S(x,z;\mc{A},\mc{P}) \le S^{\L}(x,z;\mc{A},\mc{P}) \quad \text{or} \quad S(x,z;\mc{A},\mc{P}) \ge S^{\L}(x,z;\mc{A},\mc{P}),
+    \]
+    according to if $r$ is odd or even. So Brun's pure sieve is an upper sieve if $r$ is odd and a lower sieve if $r$ is even. If we assume that there exists a density function $g$ for the sums $S(x;\mc{A}_{d})$, then similar inequalities hold for $V(z;P)$. Indeed, upon expanding \cref{equ:V_product_formula} and grouping the terms according to the smallest prime that divides $g(d)$, we see that
+    \[
+      V(z;P) = 1-\sum_{d \mid P(z)}g(d)V(p(d);\mc{P}).
+    \]
+    \todo{xxx}
+  \section{\todo{Beta Sieves}}
+    We now wish to general Brun's pure sieve by replacing the associated sieving function with one that better approximates the sifting function. Precisely, we will replace the condition $\w(d) < r$ and $p \mid P(z)$ with the condition $d \in \mc{D}$ for set of square-free positive integers $\mc{D}$ with a small amount of small prime divisors coming from the sifting range $\mc{P}$. We will be concerned with upper and lower sieves $\L^{+} = (\l_{d}^{+})_{d \ge 1}$ and $\L^{-} = (\l_{d}^{+})_{d \ge 1}$ where $\l_{d}^{\pm} = \mu(d)$ only for $d$ belonging to the sets
+    \[
+      \mc{D}^{+} = \{d = p_{1}p_{2} \cdots p_{r} < D:\text{$p_{1},\ldots,p_{r} \mid P(z)$, $p_{r} < p_{r-1} < \cdots < p_{1}$, and $p_{m} < y_{m}$ for $m$ odd}\},
     \]
     and
     \[
-      \mc{D}^{-} = \{d = p_{1}p_{2} \cdots p_{r}:\text{$d < D$, $p_{r} < p_{r-1} < \cdots < p_{1} < y$, and $p_{m} < y_{m}$ for $m$ even}\},
+      \mc{D}^{-} = \{d = p_{1}p_{2} \cdots p_{r} < D:\text{$p_{1},\ldots,p_{r} \mid P(z)$, $p_{r} < p_{r-1} < \cdots < p_{1}$, and $p_{m} < y_{m}$ for $m$ even}\},
     \]
-    respectively, with $1 \in \mc{D}^{\pm}$, and for some choice of integer $D \ge 1$ and parameters $y_{m} > 0$ for all $m \ge 1$. Clearly $D$ is the level of $\L^{\pm}$.
+    respectively, with $1 \in \mc{D}^{\pm}$, and for integer $D \ge 1$ and parameters $y_{m} > 0$ for all $m \ge 1$. The parameters $y_{m}$ are chosen to optimize the particular sifting sequence $\mc{A}$. For $\mc{D}^{\pm}$, the \textbf{beta sieve}\index{beta sieve} $\L^{\pm} = (\l_{d}^{\pm})_{d \ge 1}$ is defined by
+    \[
+      \l_{d}^{\pm} = \begin{cases} \mu(d) & \text{if $d \in \mc{D}^{\pm}$}, \\ 0 & \text{if $d \notin \mc{D}^{\pm}$}. \end{cases}
+    \]
+    Clearly the sieve level is $D$. \todo{xxx}
+    
+    \iffalse For a fixed $z$, index the sifting primes diving $P(z)$ as $q_{1} > q_{2} > \cdots > q_{m}$. Then we define the parameters $y_{m}$ by
+    \[
+      y_{m} = \left(\frac{D}{q_{1}q_{2} \cdots q_{m}}\right)^{\frac{1}{\b}},
+    \]
+    for some $\b \ge 1$. Thus if $d = p_{1}p_{2} \cdots p_{r} \in \mc{D}^{\pm}$ we have that $r \le m$. Moreover, $q_{1}\cdots q_{m}p_{m}^{\b} < D$ for $m$ odd or $m$ even depending on if $d \in \mc{D}^{+}$ or $d \in \mc{D}^{-}$ respectively.
+    \fi
   \section{\todo{\texorpdfstring{$\L^{2}$}{L2} Sieves}}
   \section{\todo{The Large Sieve}}

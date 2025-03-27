@@ -5,15 +5,15 @@
     \[
       S(x;\mc{A}) = \sum_{\substack{n \le x}}a_{n},
     \]
-    for $x \ge 0$. We call a finite subset $\mc{P}$ of primes the \textbf{sifting range}\index{sifting range} and we define $P(z)$ by
+    for $x \ge 0$. We call a finite subset $\mc{P}$ of primes the \textbf{sifting range}\index{sifting range} and any $p \in \mc{P}$ a \textbf{sifting prime}\index{sifting prime}. Moreover, we define $P(z)$ by
     \[
       P(z) = \prod_{\substack{p \in \mc{P} \\ p < z}}p,
     \]
-    for $z \ge 2$. We call $z$ the \textbf{sifting level}\index{sifting level}. In other words, $P(z)$ is the product of the primes in the sifting range up to $z$. We define the corresponding \textbf{sifting function}\index{sifting function} $S(x,z;\mc{A},\mc{P})$ by
+    for $z \ge 2$ and call $z$ the \textbf{sifting level}\index{sifting level}. In other words, $P(z)$ is the product of the sifting primes in the sifting range up to $z$ and so $P(z)$ can be thought of as a measure of all of the primes that we want to sift out. We define the corresponding \textbf{sifting function}\index{sifting function} $S(x,z;\mc{A},\mc{P})$ by
     \[
       S(x,z;\mc{A},\mc{P}) = \sum_{\substack{n \le x \\ (n,P(z)) = 1}}a_{n},
     \]
-    for $x \ge 0$ and $z \ge 2$. Moreover, $S(x,z;\mc{A},\mc{P})$ is $S(x;\mc{A})$ except those terms $a_{n}$ with $(n,P(z)) > 1$ have been removed. This last condition can also be expressed as removing those terms $a_{n}$ with $n \equiv 0 \tmod{p}$ for $p \mid P(z)$. So $S(x,z;\mc{A},\mc{P})$ is obtained from $S(x;\mc{A})$ by removing terms whose indices correspond to certain residue classes. From this we immediately arrive at \textbf{Buchstab's identity}\index{Buchstab's identity}:
+    for $x \ge 0$ and $z \ge 2$. Equivalently, $S(x,z;\mc{A},\mc{P})$ consists of only those terms $a_{n}$ in $S(x;\mc{A})$ whose indices $n$ are not divisible by any sifting prime. Thus we have removed those terms $a_{n}$ with $n \equiv 0 \tmod{p}$ for some sifting prime $p$ up to $z$ (this is equivalent to $p \mid P(z)$). Removing those terms $a_{n}$ according to the smallest sifting prime $p$ that divides $n$, we immediately arrive at \textbf{Buchstab's identity}\index{Buchstab's identity}:
     \[
       S(x,z;\mc{A},\mc{P}) = S(x;\mc{A})-\sum_{p \mid P(z)}S(x,p;\mc{A}_{p},\mc{P}).
     \]
@@ -23,17 +23,17 @@
     \]
     and upon interchanging the two sums we obtain \textbf{Legendre's identity}\index{Legendre's identity}:
     \[
-      S(x,z;\mc{A},\mc{P}) = \sum_{d \mid P(z)}\mu(d)S(x,\mc{A}_{d}).
+      S(x,z;\mc{A},\mc{P}) = \sum_{d \mid P(z)}\mu(d)S(x;\mc{A}_{d}).
     \]
-    The usefulness of sieves comes from replacing the M\"obius function with weights that essentially serve as a truncation of the M\"obius function. In particular, we replace $\mu(d)$ with a weighting factor $\l_{d}$ coming from a real sequence $\L = (\l_{d})_{d \ge 1}$ satisfying $\l_{d} = 0$ unless $d$ is square-free, $d \mid P(z)$, and $d < D$ for some $D \ge 1$. We will also let $\l$ represent the arithmetic function $\l(d) = \l_{d}$. We call $\L$ a \textbf{sieve}\index{sieve}, $\l_{d}$ a \textbf{sieve weight}\index{sieve weight}, and the minimal such $D$ the \textbf{sieve level}\index{sieve level} of $\L$. We also define the \textbf{sifting variable}\index{sifting variable} $s$ by
+    In terms of Legendre's identity, the usefulness of sieves comes from replacing the M\"obius function with weights that essentially serve as a truncation of the M\"obius function. More precisely, we replace $\mu(d)$ with a weighting factor $\l_{d}$ coming from a real sequence $\L = (\l_{d})_{d \ge 1}$ satisfying $\l_{d} = 0$ unless $d$ is square-free, $d \mid P(z)$, and $d < D$ for some $D \ge 1$. We will also let $\l$ represent the arithmetic function $\l(d) = \l_{d}$. We call $\L$ a \textbf{sieve}\index{sieve}, $\l_{d}$ a \textbf{sieve weight}\index{sieve weight}, and the minimal such $D$ the \textbf{sieve level}\index{sieve level} of $\L$. We also define the \textbf{sifting variable}\index{sifting variable} $s$ by
     \[
       s = \frac{\log(D)}{\log(z)}.
     \]
     That is, $s$ measures the size of the sieve level relative to the sifting level on a logarithmic scale. We then define the \textbf{sieving function}\index{sieving function} $S^{\L}(x,z;\mc{A},\mc{P})$ by
     \[
-      S^{\L}(x,z;\mc{A},\mc{P}) = \sum_{d \mid P(z)}\l_{d}S(x,\mc{A}_{d}),
+      S^{\L}(x,z;\mc{A},\mc{P}) = \sum_{d \mid P(z)}\l_{d}S(x;\mc{A}_{d}),
     \]
-    for $x > 0$ and $z \ge 2$. The sieving function $S^{\L}(x,z;\mc{A},\mc{P})$ is finite because $\l_{d} = 0$ if $d \ge D$. Expanding $S(x,\mc{A}_{d})$, we can write
+    for $x > 0$ and $z \ge 2$. Expanding $S(x;\mc{A}_{d})$, we can write
     \[
       S^{\L}(x,z;\mc{A},\mc{P}) = \sum_{n \le x}a_{n}\sum_{d \mid (n,P(z))}\l_{d}.
     \]
@@ -41,13 +41,13 @@
     \[
       \t_{n}^{0} = \sum_{d \mid (n,P(z))}\mu(d) \quad \text{and} \quad \t_{n} = \sum_{d \mid (n,P(z))}\l_{d}.
     \]
-    We will also let $\t^{0}$ and $\t$ represent the arithmetic functions $\t^{0}(n) = \t_{n}^{0}$ and $\t(n) = \t_{n}$ respectively. Equivalently, we can express $\t_{n}^{0}$ and $\t_{n}$ in terms of the Dirichlet convolutions (see \cref{append:Arithmetic_Functions}) $\t^{0} = \mu \ast \mathbf{1}$ and $\t = \l \ast \mathbf{1}$ respectively. In particular, $\t_{n}^{0}$ and $\t_{n}$ (and hence $\t^{0}$ and $\t$ as well) both depend on the sifting level $z$, but we suppress this dependence from the notation. In any case, we have
+    We will also let $\t^{0}$ and $\t$ represent the arithmetic functions $\t^{0}(n) = \t_{n}^{0}$ and $\t(n) = \t_{n}$ respectively. Equivalently, we can express $\t_{n}^{0}$ and $\t_{n}$ in terms of the Dirichlet convolutions (see \cref{append:Arithmetic_Functions}) $\t^{0} = \mu \ast \mathbf{1}$ and $\t = \l \ast \mathbf{1}$ respectively. Note that $\t_{n}^{0}$ and $\t_{n}$ (and hence $\t^{0}$ and $\t$ as well) both depend on the sifting level $z$, but we suppress this dependence from the notation. In any case, we have
     \[
       S^{\L}(x,z;\mc{A},\mc{P}) = \sum_{n \le x}a_{n}\t_{n}. 
     \]
-    We say that $\L$ is an \textbf{upper sieve}\index{upper sieve} if the sieving function $S^{\L}(x,z;\mc{A},\mc{P})$ is an upper bound for the sifting function $S(x,z;\mc{A},\mc{P})$. From the definition of the sifting function, $\L$ will be an upper sieve if and only if $\t_{n} \ge \t_{n}^{0}$. Analogously, we say that $\L$ is a \textbf{lower sieve}\index{lower sieve} if the sieving function $S^{\L}(x,z;\mc{A},\mc{P})$ is a lower bound for the sifting function $S(x,z;\mc{A},\mc{P})$. Similarly, $\L$ will be a lower sieve if and only if $\t_{n} \le \t_{n}^{0}$. We will often optimize the choice of sieve weights such that the lower or upper bound is as tight as possible. When we wish to distinguish these cases, we denote upper and lower sieves by $\L^{\pm} = (\l_{d}^{\pm})_{d \ge 1}$ respectively. Moreover, we write
+    We say that $\L$ is an \textbf{upper sieve}\index{upper sieve} if the sieving function $S^{\L}(x,z;\mc{A},\mc{P})$ is an upper bound for the sifting function $S(x,z;\mc{A},\mc{P})$. From the definition of the sifting function, $\L$ will be an upper sieve if and only if $\t_{n} \ge \t_{n}^{0}$. Analogously, we say that $\L$ is a \textbf{lower sieve}\index{lower sieve} if the sieving function $S^{\L}(x,z;\mc{A},\mc{P})$ is a lower bound for the sifting function $S(x,z;\mc{A},\mc{P})$. Similarly, $\L$ will be a lower sieve if and only if $\t_{n} \le \t_{n}^{0}$. We will often optimize the choice of sieve weights such that the lower or upper bound is as tight as possible. When we wish to distinguish upper and lower sieves, we denote them by $\L^{\pm} = (\l_{d}^{\pm})_{d \ge 1}$ respectively. Moreover, we write
     \[
-      S^{\pm}(x,z;\mc{A},\mc{P}) = \sum_{d \mid P(z)}\l_{d}^{\pm}S(x,\mc{A}_{d}) \quad \text{and} \quad \t_{n}^{\pm} = \sum_{d \mid (n,P(z))}\l_{d}^{\pm},
+      S^{\pm}(x,z;\mc{A},\mc{P}) = \sum_{d \mid P(z)}\l_{d}^{\pm}S(x;\mc{A}_{d}) \quad \text{and} \quad \t_{n}^{\pm} = \sum_{d \mid (n,P(z))}\l_{d}^{\pm},
     \]
     respectively. Then we have the upper and lower bounds
     \[
@@ -67,15 +67,15 @@
     \]
     From this chain and \cref{equ:upper_lower_sieve_theta_relation} it follows that the composition of an upper and lower sieve is a lower sieve while the composition of two upper or two lower sieves is an upper sieve.
   \section{Estimating the Sifting Function}
-    Ultimately our aim is to estimate the sifting function in terms of upper or lower sieving functions. In order to achieve this, we require an additional assumption about the sums $S(x,\mc{A}_{d})$. In particular, we assume that there exists a multiplicative arithmetic function $g$ with $g(1) = 1$, $0 \le g(d) < 1$ for all $d > 1$ where $g(d) = 0$ unless $d$ is square-free and the primes dividing $d$ belong to $\mc{P}$, satisfies
+    Ultimately, our aim is to estimate the sifting function in terms of upper or lower sieving functions. In order to achieve this, we require an additional assumption about the sums $S(x;\mc{A}_{d})$. In particular, we assume that there exists a multiplicative arithmetic function $g$ with $g(1) = 1$, $0 \le g(d) < 1$ for all $d > 1$ where $g(d) = 0$ unless $d$ is square-free and the primes dividing $d$ belong to $\mc{P}$, satisfies
     \begin{equation}\label{equ:prod_assumption_density_function_1}
       \prod_{w \le p < z}(1-g(p))^{-1} \le K\left(\frac{\log(z)}{\log(w)}\right)^{\k},
     \end{equation}
     for constants $K > 1$ and $\k \ge 0$ and all $w$ and $z$ with $z > w \ge 2$, and such that  
     \begin{equation}\label{equ:d_multiple_sifting_function}
-      S(x,\mc{A}_{d}) = g(d)M(x;\mc{A})+r_{d}(x;\mc{A}),
+      S(x;\mc{A}_{d}) = g(d)M(x;\mc{A})+r_{d}(x;\mc{A}),
     \end{equation}
-    for some smooth functions $M(x;\mc{A})$ and $r_{d}(x;\mc{A})$. We call the function $g$ a \textbf{density function}\index{density function} and the constant $\k$ as the \textbf{sieve dimension}\index{sieve dimension}. Using Legendre's identity, we can write
+    for some smooth functions $M(x;\mc{A})$ and $r_{d}(x;\mc{A})$. We call the function $g$ a \textbf{density function}\index{density function} and the constant $\k$ the \textbf{sieve dimension}\index{sieve dimension}. Using Legendre's identity, we can write
     \[
       S(x,z;\mc{A},\mc{P}) = M(x;\mc{A})\sum_{d \mid P(z)}\mu(d)g(d)+\sum_{d \mid P(z)}\mu(d)r_{d}(x;\mc{A}).
     \]
