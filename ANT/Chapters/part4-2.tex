@@ -1,6 +1,10 @@
 \chapter{Types of Sieves}
   \section{\todo{Brun's Pure Sieve}}
-    The modern development of sieves began with Brun (see \cite{brun1915uber}) in 1915. His idea was to apply a truncation of the inclusion-exclusion principle to the sifting function. To motivate this idea, we being by iteratively applying Buchstab's identity $r \ge 1$ times to obtain
+    The modern development of sieves began with Brun (see \cite{brun1915uber}) in 1915. His idea was to apply a truncation of the inclusion-exclusion principle to the sifting function. To motivate this idea, recall that the sifting function $S(x,z;\mc{A},\mc{P})$ is obtained from $S(x;\mc{A})$ by removing the terms $a_{n}$ for which a sifting prime $p$ divides $n$ (maybe more than one). Removing those terms $a_{n}$ according to the smallest sifting prime $p$ that divides $n$, we immediately arrive at \textbf{Buchstab's identity}\index{Buchstab's identity}:
+    \[
+      S(x,z;\mc{A},\mc{P}) = S(x;\mc{A})-\sum_{p \mid P(z)}S(x,p;\mc{A}_{p},\mc{P}).
+    \]
+    Since $S(x,1;\mc{A},\mc{P}) = S(x;\mc{A})$, we may apply this formula iteratively and after $r$ iterations we obtain
     \begin{equation}\label{equ:iterative_Buchstab}
       S(x,z;\mc{A},\mc{P}) = \sum_{\substack{d \mid P(z) \\ \w(d) < r}}\mu(d)S(x;\mc{A}_{d})+(-1)^{r}\sum_{\substack{d \mid P(z) \\ \w(d) = r}}S(x,p(d);\mc{A}_{d},\mc{P}),
     \end{equation}
@@ -12,17 +16,21 @@
     \begin{equation}\label{equ:iterative_Buchstab_even}
       S(x,z;\mc{A},\mc{P}) \ge \sum_{\substack{d \mid P(z) \\ \w(d) < r}}\mu(d)S(x;\mc{A}_{d}),
     \end{equation}
-    is $r$ is even. Thus \cref{equ:iterative_Buchstab} gives upper and lower bounds for hte sifting function depending on the parity of $r$. Then for a fixed $r \ge 1$, \textbf{Brun's pure sieve}\index{Brun's pure sieve} $\L = (\l_{d})_{d \ge 1}$ is given by
+    is $r$ is even. Thus \cref{equ:iterative_Buchstab} gives upper and lower bounds for the sifting function depending on the parity of $r$. Accordingly, for a fixed $r \ge 1$, \textbf{Brun's pure sieve}\index{Brun's pure sieve} $\L = (\l_{d})_{d \ge 1}$ is given by
     \[
       \l_{d} = \begin{cases} \mu(d) & \text{if $\w(d) < r$ and $d \mid P(z)$}, \\ 0 & \text{if $\w(d) \ge r$ or $d \nmid P(z)$}. \end{cases}
     \]
-    Clearly the sieve level is $D = P(z)$. Moreover, \cref{equ:iterative_Buchstab_odd,equ:iterative_Buchstab_even} immediately give
+    Clearly the sieve level is $D = P(z)$. Moreover, \cref{equ:iterative_Buchstab_odd,equ:iterative_Buchstab_even} together imply
     \[
       S(x,z;\mc{A},\mc{P}) \le S^{\L}(x,z;\mc{A},\mc{P}) \quad \text{or} \quad S(x,z;\mc{A},\mc{P}) \ge S^{\L}(x,z;\mc{A},\mc{P}),
     \]
     according to if $r$ is odd or even. So Brun's pure sieve is an upper sieve if $r$ is odd and a lower sieve if $r$ is even. If we assume that there exists a density function $g$ for the sums $S(x;\mc{A}_{d})$, then similar inequalities hold for $V(z;P)$. Indeed, upon expanding \cref{equ:V_product_formula} and grouping the terms according to the smallest prime that divides $g(d)$, we see that
     \[
-      V(z;P) = 1-\sum_{d \mid P(z)}g(d)V(p(d);\mc{P}).
+      V(z;\mc{P}) = 1-\sum_{d \mid P(z)}g(d)V(p(d);\mc{P}).
+    \]
+    Since $V(1;\mc{P}) = 1$, we may apply this formula iteratively and after $r$ iterations we obtain
+    \[
+      V(z;\mc{P}) = \sum_{\substack{d \mid P(z) \\ \w(d) < r}}\mu(d)g(d)+(-1)^{r}\sum_{\substack{d \mid P(z) \\ \w(d) = r}}g(d)V(p(d);\mc{P}).
     \]
     \todo{xxx}
   \section{\todo{Beta Sieves}}
