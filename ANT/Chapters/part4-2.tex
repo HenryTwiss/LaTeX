@@ -1,20 +1,20 @@
 \chapter{Types of Sieves}
   \section{\todo{Brun's Sieve}}
-    The modern development of sieves began with Brun (see \cite{brun1915uber}) in 1915. His idea was to apply a truncation of the inclusion-exclusion principle to the sifting function. To motivate this idea, recall that the sifting function $S(x,z;\mc{A},\mc{P})$ is obtained from $S(x;\mc{A})$ by removing the terms $a_{n}$ for which a sifting prime $p$ divides $n$ (maybe more than one). Removing those terms $a_{n}$ according to the smallest sifting prime $p$ that divides $n$, we immediately arrive at \textbf{Buchstab's identity}\index{Buchstab's identity}:
+    The modern development of sieves began with Brun (see \cite{brun1915uber}) in 1915. His idea was to apply a truncation of the inclusion-exclusion principle to the sifting function. To motivate this idea, recall that the sifting function $S(x,z;\mc{A})$ is obtained from $S(x;\mc{A})$ by removing the terms $a_{n}$ for which a sifting prime $p$ divides $n$ (maybe more than one). Removing those terms $a_{n}$ according to the smallest sifting prime $p$ that divides $n$, we immediately arrive at \textbf{Buchstab's identity}\index{Buchstab's identity}:
     \[
-      S(x,z;\mc{A},\mc{P}) = S(x;\mc{A})-\sum_{p \mid P(z)}S(x,p;\mc{A}_{p},\mc{P}).
+      S(x,z;\mc{A}) = S(x;\mc{A})-\sum_{p \mid P(z)}S(x,p;\mc{A}_{p}).
     \]
-    Since $S(x,1;\mc{A},\mc{P}) = S(x;\mc{A})$, we may apply this formula iteratively and after $r$ iterations we obtain
+    Since $S(x,2;\mc{A}) = S(x;\mc{A})$, we may apply this formula iteratively $r$ times to obtain
     \begin{equation}\label{equ:iterative_Buchstab}
-      S(x,z;\mc{A},\mc{P}) = \sum_{\substack{d \mid P(z) \\ \w(d) < r}}\mu(d)S(x;\mc{A}_{d})+(-1)^{r}\sum_{\substack{d \mid P(z) \\ \w(d) = r}}S(x,p(d);\mc{A}_{d},\mc{P}),
+      S(x,z;\mc{A}) = \sum_{\substack{d \mid P(z) \\ \w(d) < r}}\mu(d)S(x;\mc{A}_{d})+(-1)^{r}\sum_{\substack{d \mid P(z) \\ \w(d) = r}}S(x,p(d);\mc{A}_{d}),
     \end{equation}
-    where $p(d)$ is the smallest prime divisor of $d$. This identity can be thought of as an inclusion-exclusion principle for the sifting function. As $S(x,p(d);\mc{A}_{d},\mc{P})$ is nonnegative, \cref{equ:iterative_Buchstab} produces the upper bound
+    where $p(d)$ is the smallest prime divisor of $d$. This identity can be thought of as an inclusion-exclusion principle for the sifting function. As $S(x,p(d);\mc{A}_{d})$ is nonnegative, \cref{equ:iterative_Buchstab} produces the upper bound
     \begin{equation}\label{equ:iterative_Buchstab_odd}
-      S(x,z;\mc{A},\mc{P}) \le \sum_{\substack{d \mid P(z) \\ \w(d) < r}}\mu(d)S(x;\mc{A}_{d}),
+      S(x,z;\mc{A}) \le \sum_{\substack{d \mid P(z) \\ \w(d) < r}}\mu(d)S(x;\mc{A}_{d}),
     \end{equation}
     if $r$ is odd, and the lower bound
     \begin{equation}\label{equ:iterative_Buchstab_even}
-      S(x,z;\mc{A},\mc{P}) \ge \sum_{\substack{d \mid P(z) \\ \w(d) < r}}\mu(d)S(x;\mc{A}_{d}),
+      S(x,z;\mc{A}) \ge \sum_{\substack{d \mid P(z) \\ \w(d) < r}}\mu(d)S(x;\mc{A}_{d}),
     \end{equation}
     is $r$ is even. Thus \cref{equ:iterative_Buchstab} gives upper and lower bounds for the sifting function depending on the parity of $r$. Accordingly, for a fixed $r \ge 1$, \textbf{Brun's sieve}\index{Brun's sieve} $\L = (\l_{d})_{d \ge 1}$ is given by
     \[
@@ -22,17 +22,33 @@
     \]
     Clearly the sieve level is $D = P(z)$. Moreover, \cref{equ:iterative_Buchstab_odd,equ:iterative_Buchstab_even} together imply
     \[
-      S(x,z;\mc{A},\mc{P}) \le S^{\L}(x,z;\mc{A},\mc{P}) \quad \text{or} \quad S(x,z;\mc{A},\mc{P}) \ge S^{\L}(x,z;\mc{A},\mc{P}),
+      S(x,z;\mc{A}) \le S^{\L}(x,z;\mc{A}) \quad \text{or} \quad S(x,z;\mc{A}) \ge S^{\L}(x,z;\mc{A}),
     \]
     according to if $r$ is odd or even. So Brun's sieve is an upper sieve if $r$ is odd and a lower sieve if $r$ is even. If we assume that there exists a density function $g$ for the sums $S(x;\mc{A}_{d})$, then similar inequalities hold for $V(z;P)$. Indeed, expanding \cref{equ:V_product_formula} and grouping terms according to the largest sifting prime $p$ such that $g(p)$ divides them, we arrive at the formula
     \[
-      V(z;\mc{P}) = 1-\sum_{p \mid P(z)}g(p)V(p;\mc{P}),
+      V(z) = 1-\sum_{p \mid P(z)}g(p)V(p),
     \]
-    which is clearly an analog to Buchstab's identity. Since $V(1;\mc{P}) = 1$, we may apply this formula iteratively and after $r$ iterations we obtain
+    which is clearly an analog to Buchstab's identity. Since $V(2) = 1$, we may apply this formula iteratively $r$ times and obtain
     \[
-      V(z;\mc{P}) = \sum_{\substack{d \mid P(z) \\ \w(d) < r}}\mu(d)g(d)+(-1)^{r}\sum_{\substack{d \mid P(z) \\ \w(d) = r}}g(d)V(p(d);\mc{P}).
+      V(z) = \sum_{\substack{d \mid P(z) \\ \w(d) < r}}\mu(d)g(d)+(-1)^{r}\sum_{\substack{d \mid P(z) \\ \w(d) = r}}g(d)V(p(d)).
     \]
-    \todo{xxx}
+    Since we assumed there exists a density function $g$, \cref{equ:d_multiple_sifting_function_estimate} holds and inserting this into \cref{equ:iterative_Buchstab} gives
+    \[
+      S(x,z;\mc{A}) = M(x;\mc{A})\sum_{\substack{d \mid P(z) \\ \w(d) < r}}\mu(d)g(d)+\sum_{\substack{d \mid P(z) \\ \w(d) < r}}\mu(d)r_{d}(x;\mc{A})+(-1)^{r}\sum_{\substack{d \mid P(z) \\ \w(d) = r}}S(x,p(d);\mc{A}_{d}).
+    \]
+    As the first sum on the right-hand side of the previous two identities are the same, we may combine them to obtain
+    \[
+      S(x,z;\mc{A}) = M(x;\mc{A})V(z)+(-1)^{r}\sum_{\substack{d \mid P(z) \\ \w(d) = r}}S(x,p(d);\mc{A}_{d})-g(d)V(p(d))+\sum_{\substack{d \mid P(z) \\ \w(d) < r}}\mu(d)r_{d}(x;\mc{A}).
+    \]
+    Recognize that the last term on the right-hand side is exactly $R^{\L}(x,z;\mc{A})$. Leaving the first term alone and applying the estimates
+    \[
+      0 \le S(x,p(d);\mc{A}_{d}) \le g(d)M(x;\mc{A})+r_{d}(x;\mc{A}) \quad \text{and} \quad 0 < V(p(d)) \le 1,
+    \]
+    to the second term, with the first following from \cref{equ:d_multiple_sifting_function_estimate}, we arrive at
+    \[
+      S(x,z;\mc{A}) = M(x;\mc{A})V(z)+ \t M(x;\mc{A})G^{\L}(z)+\t|R^{\L}|(x,z;\mc{A}),
+    \]
+    \todo{for some real $\t$ with $|\t| \le 1$}.
   \section{\todo{Beta Sieves}}
     We now wish to general Brun's sieve by replacing the associated sieving function with one that better approximates the sifting function. Precisely, we will replace the condition $\w(d) < r$ and $p \mid P(z)$ with the condition $d \in \mc{D}$ for set of square-free positive integers $\mc{D}$ with a small amount of small prime divisors coming from the sifting range $\mc{P}$. We will be concerned with upper and lower sieves $\L^{+} = (\l_{d}^{+})_{d \ge 1}$ and $\L^{-} = (\l_{d}^{+})_{d \ge 1}$ where $\l_{d}^{\pm} = \mu(d)$ only for $d$ belonging to the sets
     \[
