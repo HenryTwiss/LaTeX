@@ -24,7 +24,11 @@
     \[
       S(x,z;\mc{A}) \le S^{\L}(x,z;\mc{A}) \quad \text{or} \quad S(x,z;\mc{A}) \ge S^{\L}(x,z;\mc{A}),
     \]
-    according to if $r$ is odd or even. So Brun's sieve is an upper sieve if $r$ is odd and a lower sieve if $r$ is even. If we assume that there exists a density function $g$ for the sums $S(x;\mc{A}_{d})$, then similar inequalities hold for $V(z;P)$. Indeed, expanding \cref{equ:V_product_formula} and grouping terms according to the largest sifting prime $p$ such that $g(p)$ divides them, we arrive at the formula
+    according to if $r$ is odd or even. So Brun's sieve is an upper sieve if $r$ is odd and a lower sieve if $r$ is even. If we assume that there exists a density function $g$ for the sums $S(x;\mc{A}_{d})$, then
+    \[
+      V^{\L}(z) = \sum_{\substack{d \mid P(z) \\ \w(d) < r}}\mu(d)g(d) \quad \text{and} \quad R^{\L}(x,z;\mc{A}) = \sum_{\substack{d \mid P(z) \\ \w(d) < r}}\mu(d)r_{d}(x;\mc{A}).
+    \]
+    To see the relationship between $V(z)$ and $V^{\L}(z)$, we will derive an analog of Buchstab's identity. Expanding \cref{equ:V_product_formula} and grouping terms according to the largest sifting prime $p$ such that $g(p)$ divides them, we arrive at the formula
     \[
       V(z) = 1-\sum_{p \mid P(z)}g(p)V(p),
     \]
@@ -32,15 +36,15 @@
     \[
       V(z) = \sum_{\substack{d \mid P(z) \\ \w(d) < r}}\mu(d)g(d)+(-1)^{r}\sum_{\substack{d \mid P(z) \\ \w(d) = r}}g(d)V(p(d)).
     \]
-    Since we assumed there exists a density function $g$, \cref{equ:d_multiple_sifting_function_estimate} holds and inserting this into \cref{equ:iterative_Buchstab} gives
+    Note that the first sum on the right-hand side is exactly $V^{\L}(z)$ and so the difference between $V^{\L}(z)$ and $V(z)$ is exactly the second sum which alternates in sign according to the parity of $r$. As \cref{prop:preliminary_sieve_estimate} holds, we aim to estimate $G^{\L}(z)$. To this end, let
     \[
-      S(x,z;\mc{A}) = M(x;\mc{A})\sum_{\substack{d \mid P(z) \\ \w(d) < r}}\mu(d)g(d)+\sum_{\substack{d \mid P(z) \\ \w(d) < r}}\mu(d)r_{d}(x;\mc{A})+(-1)^{r}\sum_{\substack{d \mid P(z) \\ \w(d) = r}}S(x,p(d);\mc{A}_{d}).
+      G(z) = \sum_{p \mid P(z)}g(p).
     \]
-    As the first sum on the right-hand side of the previous two identities are the same, we may combine them to obtain
+    Then $G(z) = -G^{\L}(z)$ when $r = 1$. Moreover,
     \[
-      S(x,z;\mc{A}) = M(x;\mc{A})V(z)+(-1)^{r}\sum_{\substack{d \mid P(z) \\ \w(d) = r}}S(x,p(d);\mc{A}_{d})-g(d)V(p(d))+\sum_{\substack{d \mid P(z) \\ \w(d) < r}}\mu(d)r_{d}(x;\mc{A}).
+      G(z) \le \sum_{p \mid P(z)}-\log(1-g(p)) -\log(V(z)).
     \]
-    \todo{xxx}
+    Upon expanding the product $G(z)^{r}$, it is also clear that $G(z)^{r} \ge \frac{G^{\L}(z)}{r!}$ for any $r \ge 1$. \todo{xxx}
   \section{\todo{Beta Sieves}}
     We now wish to general Brun's sieve by replacing the associated sieving function with one that better approximates the sifting function. Precisely, we will replace the condition $\w(d) < r$ and $p \mid P(z)$ with the condition $d \in \mc{D}$ for set of square-free positive integers $\mc{D}$ with a small amount of small prime divisors coming from the sifting range $\mc{P}$. We will be concerned with upper and lower sieves $\L^{+} = (\l_{d}^{+})_{d \ge 1}$ and $\L^{-} = (\l_{d}^{+})_{d \ge 1}$ where $\l_{d}^{\pm} = \mu(d)$ only for $d$ belonging to the sets
     \[
