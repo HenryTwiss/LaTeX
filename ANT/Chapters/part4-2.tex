@@ -36,18 +36,35 @@
     \[
       V(z) = \sum_{\substack{d \mid P(z) \\ \w(d) < r}}\mu(d)g(d)+(-1)^{r}\sum_{\substack{d \mid P(z) \\ \w(d) = r}}g(d)V(p(d)).
     \]
-    Note that the first sum on the right-hand side is exactly $V^{\L}(z)$ and so the difference between $V^{\L}(z)$ and $V(z)$ is exactly the second sum which alternates in sign according to the parity of $r$. As \cref{prop:preliminary_sieve_estimate} holds, we aim to estimate $G^{\L}(z)$. To this end, let
+    Note that the first sum on the right-hand side is exactly $V^{\L}(z)$ and so the difference between $V^{\L}(z)$ and $V(z)$ is exactly the second sum which alternates in sign according to the parity of $r$. We now aim to estimate $G^{\L}(z)$. To this end, let
     \[
       G(z) = \sum_{p \mid P(z)}g(p).
     \]
     Then $G(z) = -G^{\L}(z)$ when $r = 1$. Moreover, the Taylor series of the logarithm gives
     \[
-      G(z) \le \sum_{p \mid P(z)}-\log(1-g(p)) = -\log V(z).,
+      G(z) \le \sum_{p \mid P(z)}-\log(1-g(p)) = -\log V(z).
     \]
     Upon expanding the product $G(z)^{r}$, it is also clear that $G^{\L}(z) \le \frac{G(z)^{r}}{r!}$ for any $r \ge 1$. These facts with the inequality $r! \ge e\left(\frac{r}{e}\right)^{r}$ (which easily follows by induction), and the identity $-\log V(z) = |\log V(z)|$, together imply
-    \[
+    \begin{equation}\label{equ:Bruns_sieve_G_bound_1}
       G^{\L}(z) \le \frac{G(z)^{r}}{r!} \le \frac{1}{e}\left(\frac{eG(z)}{r}\right)^{r} \le \frac{1}{e}\left(\frac{e|\log V(z)|}{r}\right)^{r}.
+    \end{equation}
+    We now choose $r$ in order to make this last expression small. Clearly we at least need $r \ge c|\log V(z)|$, for some $c > e$, so that $\frac{e|\log V(z)|}{r} < 1$. To this end, let $c$ be the unique constant satisfying
+    \[
+      \left(\frac{c}{e}\right)^{c} = e.
     \]
+    Note that $c > e$ because $e > 1$. Moreover, for any $b \ge c$ we have the inequality $b^{b} \ge e^{2b-c+1}$. Indeed, taking the logarithm and isolating $b$ gives $b(\log(b)-2) \ge 1-c$ which is equality when $b = c$ and the left-hand side is an increasing function of $b$. Letting $r \ge c|\log V(z)|$ and $b = \frac{r}{|\log V(z)|}$, the aforementioned inequality is equivalent to
+    \begin{equation}\label{equ:Bruns_sieve_G_bound_2}
+      \left(\frac{|\log V(z)|}{r}\right)^{r} \ge e^{-2r}V(z)^{1-c}.
+    \end{equation}
+    Combining \cref{equ:Bruns_sieve_G_bound_1,equ:Bruns_sieve_G_bound_2} results in the bound
+    \[
+      G^{\L}(z) \le e^{-(r+1)}V(z)^{1-c}.
+    \]
+    We choose $r$ to depend on the sifting variable $s$ by setting $r = \lfloor s \rfloor$ provided $s \ge 1-c\log V(z)$ (recall $-\log V(z) = |\log V(z)|$ so that $s \ge c|\log V(z)|$). Then our bound for $G^{\L}(z)$ becomes
+    \[
+      G^{\L}(z) \le e^{-s}V(z)^{1-c}.
+    \]
+    We now establish a relationship between the sifting function $S(x,z;\mc{A})$ and the sieving function $S^{\L}(x,z;\mc{A})$ that will allow us to make use of these estimates. \todo{xxx}
   \section{\todo{Beta Sieves}}
     We now wish to general Brun's sieve by replacing the associated sieving function with one that better approximates the sifting function. Precisely, we will replace the condition $\w(d) < r$ and $p \mid P(z)$ with the condition $d \in \mc{D}$ for set of square-free positive integers $\mc{D}$ with a small amount of small prime divisors coming from the sifting range $\mc{P}$. We will be concerned with upper and lower sieves $\L^{+} = (\l_{d}^{+})_{d \ge 1}$ and $\L^{-} = (\l_{d}^{+})_{d \ge 1}$ where $\l_{d}^{\pm} = \mu(d)$ only for $d$ belonging to the sets
     \[
