@@ -174,4 +174,239 @@
       \end{align*}
     \end{theorem}
 
+\chapter{The Theory of Sieves}
+  Sieves are an important tool in analytic number theory because they allow for the estimation of the size of of a sifted sequence of numbers from some initial sequence. In practice, one is usually sifting out only those indices relatively prime to some fixed integer and up to some prescribed size. In the following, we introduce sieves in some generality.
+  \section{The Language of Sieves}
+    Let $\mc{A} = (a_{n})_{n \ge 1}$ be a nonnegative sequence and $\mc{P}$ be a set of primes. We call $\mc{A}$ the \textbf{sifting sequence}\index{sifting sequence}, $\mc{P}$ the \textbf{sifting range}\index{sifting range}, and any $p \in \mc{P}$ a \textbf{sifting prime}\index{sifting prime}. For any integer $d \ge 1$, let $\mc{A}_{d}$ be the subsequence consisting of those terms $a_{n}$ with $n \equiv 0 \tmod{d}$. Define the sum $S(x;\mc{A})$ by
+    \[
+      S(x;\mc{A}) = \sum_{\substack{n \le x}}a_{n},
+    \]
+    for $x \ge 0$.  Moreover, we define the function $P(z)$ by
+    \[
+      P(z) = \prod_{\substack{p \in \mc{P} \\ p < z}}p,
+    \]
+    for $z \ge 2$ and call $z$ the \textbf{sifting level}\index{sifting level}. In other words, $P(z)$ is the product of the sifting primes in the sifting range up to $z$. We define the corresponding \textbf{sifting function}\index{sifting function} $S(x,z;\mc{A})$ by
+    \[
+      S(x,z;\mc{A}) = \sum_{\substack{n \le x \\ (n,P(z)) = 1}}a_{n},
+    \]
+    for $x \ge 0$ and $z \ge 2$. Equivalently, $S(x,z;\mc{A})$ consists of only those terms $a_{n}$ in $S(x;\mc{A})$ whose indices $n$ are not divisible by any sifting prime. Thus we have removed those terms $a_{n}$ with $n \equiv 0 \tmod{p}$ for some sifting prime $p$ up to $z$ (this is equivalent to $p \mid P(z)$). The objective of any particular sieve is to produce upper or lower bounds for the sifting function $S(x,z;\mc{A})$. That is, we want to estimate the sum of elements $a_{n}$ of the sifting sequence $\mc{A}$ whose indices $n$ are relatively prime to all sifting primes in the sifting range $\mc{P}$ up to the sifting level $z$. We being by deriving a useful relation for the sifting function that will motivate the construction of sieves. Applying \cref{prop:Mobius_dirac_delta} to $S(x,z;\mc{A})$ to remove the condition $(n,P(z)) = 1$ gives
+    \[
+      S(x,z;\mc{A}) = \sum_{n \le x}\sum_{d \mid (n,P(z))}\mu(d)a_{n},
+    \]
+    and upon interchanging the two sums we obtain \textbf{Legendre's identity}\index{Legendre's identity}:
+    \[
+      S(x,z;\mc{A}) = \sum_{d \mid P(z)}\mu(d)S(x;\mc{A}_{d}).
+    \]
+    In terms of Legendre's identity, the usefulness of sieves comes from replacing the M\"obius function with weights that essentially serve as a truncation of the M\"obius function. More precisely, we replace $\mu(d)$ with a weighting factor $\l_{d}$ coming from a real sequence $\L = (\l_{d})_{d \ge 1}$ satisfying $\l_{d} = 0$ unless $d$ is square-free, $d \mid P(z)$, and $d < D$ for some $D \ge 1$. We will also let $\l$ represent the arithmetic function $\l(d) = \l_{d}$. We call $\L$ a \textbf{sieve}\index{sieve}, $\l_{d}$ a \textbf{sieve weight}\index{sieve weight}, and the minimal such $D$ the \textbf{sieve level}\index{sieve level} of $\L$. We also define the \textbf{sifting variable}\index{sifting variable} $s$ by
+    \[
+      s = \frac{\log(D)}{\log(z)}.
+    \]
+    That is, the sifting variable measures the size of the sieve level relative to the sifting level on a logarithmic scale. Note that the sifting level, sifting variable, and sieve level satisfy the equivalent identity
+    \[
+      D = z^{s}.
+    \]
+    We define the \textbf{sieving function}\index{sieving function} $S^{\L}(x,z;\mc{A})$ by
+    \[
+      S^{\L}(x,z;\mc{A}) = \sum_{d \mid P(z)}\l_{d}S(x;\mc{A}_{d}),
+    \]
+    for $x > 0$ and $z \ge 2$. Expanding $S(x;\mc{A}_{d})$, we can write
+    \[
+      S^{\L}(x,z;\mc{A}) = \sum_{n \le x}a_{n}\sum_{d \mid (n,P(z))}\l_{d}.
+    \]
+    Now set
+    \[
+      \t_{n}^{0} = \sum_{d \mid (n,P(z))}\mu(d) \quad \text{and} \quad \t_{n} = \sum_{d \mid (n,P(z))}\l_{d}.
+    \]
+    We will also let $\t^{0}$ and $\t$ represent the arithmetic functions $\t^{0}(n) = \t_{n}^{0}$ and $\t(n) = \t_{n}$ respectively. Equivalently, we can express $\t_{n}^{0}$ and $\t_{n}$ in terms of the Dirichlet convolutions (see \cref{append:Arithmetic_Functions}) $\t^{0} = \mu \ast \mathbf{1}$ and $\t = \l \ast \mathbf{1}$ respectively. Note that $\t_{n}^{0}$ and $\t_{n}$ (and hence $\t^{0}$ and $\t$ as well) both depend on the sifting level $z$, but we suppress this dependence from the notation. In any case, we have
+    \[
+      S^{\L}(x,z;\mc{A}) = \sum_{n \le x}a_{n}\t_{n}. 
+    \]
+    We say that $\L$ is an \textbf{upper sieve}\index{upper sieve} if the sieving function $S^{\L}(x,z;\mc{A})$ is an upper bound for the sifting function $S(x,z;\mc{A})$. From the definition of the sifting function, $\L$ will be an upper sieve if and only if $\t_{n} \ge \t_{n}^{0}$. Analogously, we say that $\L$ is a \textbf{lower sieve}\index{lower sieve} if the sieving function $S^{\L}(x,z;\mc{A})$ is a lower bound for the sifting function $S(x,z;\mc{A})$. Similarly, $\L$ will be a lower sieve if and only if $\t_{n} \le \t_{n}^{0}$. We will often optimize the choice of sieve weights such that the lower or upper bound is as tight as possible. When we wish to distinguish upper and lower sieves, we denote them by $\L^{\pm} = (\l_{d}^{\pm})_{d \ge 1}$ respectively and write $\pm$ in place of $\L$ when denoting dependences upon the sieves. Then we have the upper and lower bounds
+    \[
+      S^{-}(x,z;\mc{A}) \le S(x,z;\mc{A}) \le S^{+}(x,z;\mc{A}),
+    \]
+    provided
+    \begin{equation}\label{equ:upper_lower_sieve_theta_relation}
+      \t_{n}^{-} \le \t_{n}^{0} \le \t_{n}^{+}.
+    \end{equation}
+    We can also compose sieves to form new sieves from old ones. To explain the construction, let $\L' = (\l'_{d})_{d \ge 1}$ and $\L'' = (\l''_{d})_{d \ge 1}$ be two sieves of levels $D'$ and $D''$ respectively. Also let $\t' = \l' \ast \mathbf{1}$ and $\t'' = \l'' \ast \mathbf{1}$. Then we define the \textbf{composite sieve}\index{composite sieve} $\L = \L'\L''$ of $\L'$ and $\L''$ by
+    \[
+      \l_{d} = \sum_{\substack{ d_{1},d_{2} \mid d \\ [d_{1},d_{2}] = d}}\l'_{d_{1}}\l''_{d_{2}},
+    \]
+    for $d \ge 1$. Clearly $\L$ is a sieve of level $D'D''$. Moreover, summing over pairs $(d_{1},d_{2})$ of divisors of $n$ is the same as summing over triples $(d_{1},d_{2},d)$ of divisors of $n$ with $[d_{1},d_{2}] = d$, we see that
+    \[
+      \t = \l \ast \mathbf{1} = (\l' \ast \mathbf{1})(\l'' \ast \mathbf{1}) = \t'\t''.
+    \]
+    From this chain and \cref{equ:upper_lower_sieve_theta_relation} it follows that the composition of an upper and lower sieve is a lower sieve while the composition of two upper or two lower sieves is an upper sieve.
+  \section{Estimating the Sifting Function}
+    Ultimately, our aim is to estimate the sifting function in terms of upper or lower sieving functions. In order to achieve this, we require an additional assumption about the sums $S(x;\mc{A}_{d})$. In particular, we assume that there exists a multiplicative arithmetic function $g$ with $g(1) = 1$, $0 \le g(d) < 1$ for all $d > 1$ where $g(d) = 0$ unless $d$ is square-free and the primes dividing $d$ belong to $\mc{P}$, satisfies
+    \begin{equation}\label{equ:prod_assumption_density_function_1}
+      \prod_{w \le p < z}(1-g(p))^{-1} \le K\left(\frac{\log(z)}{\log(w)}\right)^{\k},
+    \end{equation}
+    for constants $K > 1$ and $\k \ge 0$ and all $w$ and $z$ with $z > w \ge 2$, and such that  
+    \begin{equation}\label{equ:d_multiple_sifting_function_estimate}
+      S(x;\mc{A}_{d}) = g(d)M(x;\mc{A})+r_{d}(x;\mc{A}),
+    \end{equation}
+    for some smooth functions $M(x;\mc{A})$ and $r_{d}(x;\mc{A})$ with $M(x;\mc{A})$ nonnegative. We call the function $g$ a \textbf{density function}\index{density function} and the constant $\k$ the \textbf{sieve dimension}\index{sieve dimension}. Using Legendre's identity, we can write
+    \[
+      S(x,z;\mc{A}) = M(x;\mc{A})\sum_{d \mid P(z)}\mu(d)g(d)+\sum_{d \mid P(z)}\mu(d)r_{d}(x;\mc{A}).
+    \]
+    Moreover, if we define functions $V(z)$ and $R(x,z;\mc{A})$ by
+    \[
+      V(z) = \sum_{d \mid P(z)}\mu(d)g(d) \quad \text{and} \quad R(x,z;\mc{A}) = \sum_{d \mid P(z)}\mu(d)r_{d}(x;\mc{A}),
+    \]
+    for $x > 0$ and $z \ge 2$, then we can further write
+    \[
+      S(x,z;\mc{A}) = M(x;\mc{A})V(z)+R(x,z;\mc{A}).
+    \]
+    As $g$ is multiplicative, the definition of the M\"obius function allows us to express $V(z)$ as a product:
+    \begin{equation}\label{equ:V_product_formula}
+      V(z) = \prod_{p \mid P(z)}(1-g(p)).
+    \end{equation}
+    In particular, since $g(p) = 0$ if $p \notin \mc{P}$, \cref{equ:prod_assumption_density_function_1} can be expressed in the form
+    \begin{equation}\label{equ:prod_assumption_density_function_2}
+      \frac{V(w)}{V(z)} \le K\left(\frac{\log(z)}{\log(w)}\right)^{\k}.
+    \end{equation}
+    Since the M\"obius function changes sign, it is difficult to estimate $R(x,z;\mc{A})$ beyond trivial bounds. We can do much better with a sieve $\L$. In this case, the definition of the sieving function gives
+    \[
+      S_{d}^{\L}(x,z;\mc{A}) = M(x;\mc{A})\sum_{d \mid P(z)}\l_{d}g(d)+\sum_{d \mid P(z)}\l_{d}r_{d}(x;\mc{A}).
+    \]
+    Defining functions $V^{\L}(z)$ and $R^{\L}(x,z;\mc{A})$ by
+     \[
+      V^{\L}(z) = \sum_{d \mid P(z)}\l_{d}g(d) \quad \text{and} \quad R^{\L}(x,z;\mc{A}) = \sum_{d \mid P(z)}\l_{d}r_{d}(x;\mc{A}),
+    \]
+    for $x > 0$ and $z \ge 2$, we can further write
+    \begin{equation}\label{equ:estimate_for_sieving_function}
+      S^{\L}(x,z;\mc{A}) = M(x;\mc{A})V^{\L}(z)+R^{\L}(x,z;\mc{A}).
+    \end{equation}
+    Therefore, estimates for the sieving function $S^{\L}(x,z;\mc{A})$ reduce to estimates for $M(x;\mc{A})$, $V^{\L}(z)$, and $R^{\L}(x,z;\mc{A})$. In order for \cref{equ:d_multiple_sifting_function_estimate} to be useful, the functions $M(x;\mc{A})$ and $r_{d}(x;\mc{A})$ should be such that we know the order of magnitude of $M(x;\mc{A})$ and that $r_{d}(x;\mc{A})$ is of smaller order of magnitude. In this case, it suffices to estimate $V^{\L}(z)$, and $R^{\L}(x,z;\mc{A})$. For $R^{\L}(x,z;\mc{A})$, we will usually discard possible cancellation from the individual terms $\l_{d}r_{d}(x;\mc{A})$ and use the trivial bound
+    \[
+      R^{\L}(x,z;\mc{A}) \le |R^{\L}|(x,z;\mc{A}),
+    \]
+    where
+    \[
+      |R^{\L}|(x,z;\mc{A}) = \sum_{d \mid P(z)}|\l_{d}r_{d}(x;\mc{A})|.
+    \]
+    In order to obtain estimates for $V^{\L}(z)$, we express it in a more useful form that involves $V(z)$. For this, we define multiplicative arithmetic functions $h$ and $j$ defined by
+    \[
+      h(p^{r}) = \frac{g(p^{r})}{(1-g(p^{r}))} \quad \text{and} \quad j(p^{r}) = \frac{1}{(1-g(p^{r}))},
+    \]
+    for all primes $p$ and $r \ge 0$. Moreover, these two formulas imply
+    \[
+      j(p^{r}) = \frac{h(p^{r})}{g(p^{r})} = 1+h(p^{r}).
+    \]
+    We call $h$ the \textbf{relative density function}\index{relative density function}. In particular, $j = h \ast \mathbf{1}$. Now as $\t = \l \ast \mathbf{1}$, the M\"obius inversion formula (see \cref{append:The_Mobius_Function}) implies $\l = \t \ast \mu$ so that
+    \[
+      V^{\L}(z) = \sum_{d \mid P(z)}\sum_{e \mid d}\t_{e}\mu\left(\frac{d}{e}\right)g(d).
+    \]
+    Making the change of variables $d \to ed$ and noting that $(d,e) = 1$ because $P(z)$ is square-free, we compute
+    \begin{align*}
+      V^{\L}(z) &= \sum_{de \mid P(z)}\t_{e}\mu(d)g(de) \\
+      &= \sum_{e \mid P(z)}\t_{e}g(e)\prod_{p \mid \frac{P(z)}{e}}(1-g(p)) \\
+      &= \sum_{e \mid P(z)}\t_{e}h(e)\prod_{p \mid P(z)}(1-g(p)),
+    \end{align*}
+    where the second line holds by the multiplicativity of $g$ and the definition of the M\"obius function. Defining the function $G^{\L}(z)$ by
+    \[
+      G^{\L}(z) = \sum_{d \mid P(z)}\t_{d}g(d),
+    \]
+    for $z \ge 2$, \cref{equ:V_product_formula} further implies that
+    \begin{equation}\label{equ:estimate_for_V_function}
+      V^{\L}(z) = V(z)G^{\L}(z).
+    \end{equation}
+    Therefore estimates for $V^{\L}(z)$ reduce to estimates for $G^{\L}(z)$ and $V(z)$. In particular, \cref{equ:estimate_for_sieving_function,equ:estimate_for_V_function} together give the identity
+    \[
+      S^{\L}(x,z;\mc{A}) = M(x;\mc{A})V(z)G^{\L}(z)+R^{\L}(x,z;\mc{A}).
+    \]
+
+\chapter{Types of Sieves}
+  \section{\todo{Brun's Sieve}}
+    The modern development of sieves began with Brun (see \cite{brun1915uber}) in 1915. His idea was to apply a truncation of the inclusion-exclusion principle to the sifting function. To motivate this idea, recall that the sifting function $S(x,z;\mc{A})$ is obtained from $S(x;\mc{A})$ by removing the terms $a_{n}$ for which a sifting prime $p$ divides $n$ (maybe more than one). Removing those terms $a_{n}$ according to the smallest sifting prime $p$ that divides $n$, we immediately arrive at \textbf{Buchstab's identity}\index{Buchstab's identity}:
+    \[
+      S(x,z;\mc{A}) = S(x;\mc{A})-\sum_{p \mid P(z)}S(x,p;\mc{A}_{p}).
+    \]
+    Since $S(x,2;\mc{A}) = S(x;\mc{A})$, we may apply this formula iteratively $r$ times to obtain
+    \begin{equation}\label{equ:iterative_Buchstab}
+      S(x,z;\mc{A}) = \sum_{\substack{d \mid P(z) \\ \w(d) < r}}\mu(d)S(x;\mc{A}_{d})+(-1)^{r}\sum_{\substack{d \mid P(z) \\ \w(d) = r}}S(x,p(d);\mc{A}_{d}),
+    \end{equation}
+    where $p(d)$ is the smallest prime divisor of $d$. This identity can be thought of as an inclusion-exclusion principle for the sifting function. As $S(x,p(d);\mc{A}_{d})$ is nonnegative, \cref{equ:iterative_Buchstab} produces the upper bound
+    \begin{equation}\label{equ:iterative_Buchstab_odd}
+      S(x,z;\mc{A}) \le \sum_{\substack{d \mid P(z) \\ \w(d) < r}}\mu(d)S(x;\mc{A}_{d}),
+    \end{equation}
+    if $r$ is odd, and the lower bound
+    \begin{equation}\label{equ:iterative_Buchstab_even}
+      S(x,z;\mc{A}) \ge \sum_{\substack{d \mid P(z) \\ \w(d) < r}}\mu(d)S(x;\mc{A}_{d}),
+    \end{equation}
+    is $r$ is even. Thus \cref{equ:iterative_Buchstab} gives upper and lower bounds for the sifting function depending on the parity of $r$. Accordingly, for a fixed $r \ge 1$, \textbf{Brun's sieve}\index{Brun's sieve} $\L = (\l_{d})_{d \ge 1}$ is given by
+    \[
+      \l_{d} = \begin{cases} \mu(d) & \text{if $\w(d) < r$ and $d \mid P(z)$}, \\ 0 & \text{if $\w(d) \ge r$ or $d \nmid P(z)$}. \end{cases}
+    \]
+    Clearly the sieve level is $D = P(z)$. Moreover, \cref{equ:iterative_Buchstab_odd,equ:iterative_Buchstab_even} together imply
+    \[
+      S(x,z;\mc{A}) \le S^{\L}(x,z;\mc{A}) \quad \text{or} \quad S(x,z;\mc{A}) \ge S^{\L}(x,z;\mc{A}),
+    \]
+    according to if $r$ is odd or even. So Brun's sieve is an upper sieve if $r$ is odd and a lower sieve if $r$ is even. If we assume that there exists a density function $g$ for the sums $S(x;\mc{A}_{d})$, then
+    \[
+      V^{\L}(z) = \sum_{\substack{d \mid P(z) \\ \w(d) < r}}\mu(d)g(d) \quad \text{and} \quad R^{\L}(x,z;\mc{A}) = \sum_{\substack{d \mid P(z) \\ \w(d) < r}}\mu(d)r_{d}(x;\mc{A}).
+    \]
+    To see the relationship between $V(z)$ and $V^{\L}(z)$, we will derive an analog of Buchstab's identity. Expanding \cref{equ:V_product_formula} and grouping terms according to the largest sifting prime $p$ such that $g(p)$ divides them, we arrive at the formula
+    \[
+      V(z) = 1-\sum_{p \mid P(z)}g(p)V(p),
+    \]
+    which is clearly an analog to Buchstab's identity. Since $V(2) = 1$, we may apply this formula iteratively $r$ times and obtain
+    \[
+      V(z) = \sum_{\substack{d \mid P(z) \\ \w(d) < r}}\mu(d)g(d)+(-1)^{r}\sum_{\substack{d \mid P(z) \\ \w(d) = r}}g(d)V(p(d)).
+    \]
+    Note that the first sum on the right-hand side is exactly $V^{\L}(z)$ and so the difference between $V^{\L}(z)$ and $V(z)$ is exactly the second sum which alternates in sign according to the parity of $r$. We now aim to estimate $G^{\L}(z)$. To this end, let
+    \[
+      G(z) = \sum_{p \mid P(z)}g(p).
+    \]
+    Then $G(z) = -G^{\L}(z)$ when $r = 1$. Moreover, the Taylor series of the logarithm gives
+    \[
+      G(z) \le \sum_{p \mid P(z)}-\log(1-g(p)) = -\log V(z).
+    \]
+    Upon expanding the product $G(z)^{r}$, it is also clear that $G^{\L}(z) \le \frac{G(z)^{r}}{r!}$ for any $r \ge 1$. These facts with the inequality $r! \ge e\left(\frac{r}{e}\right)^{r}$ (which easily follows by induction), and the identity $-\log V(z) = |\log V(z)|$, together imply
+    \begin{equation}\label{equ:Bruns_sieve_G_bound_1}
+      G^{\L}(z) \le \frac{G(z)^{r}}{r!} \le \frac{1}{e}\left(\frac{eG(z)}{r}\right)^{r} \le \frac{1}{e}\left(\frac{e|\log V(z)|}{r}\right)^{r}.
+    \end{equation}
+    We now choose $r$ in order to make this last expression small. Clearly we at least need $r \ge c|\log V(z)|$, for some $c > e$, so that $\frac{e|\log V(z)|}{r} < 1$. To this end, let $c$ be the unique constant satisfying
+    \[
+      \left(\frac{c}{e}\right)^{c} = e.
+    \]
+    Note that $c > e$ because $e > 1$. Moreover, for any $b \ge c$ we have the inequality $b^{b} \ge e^{2b-c+1}$. Indeed, taking the logarithm and isolating $b$ gives $b(\log(b)-2) \ge 1-c$ which is equality when $b = c$ and the left-hand side is an increasing function of $b$. Letting $r \ge c|\log V(z)|$ and $b = \frac{r}{|\log V(z)|}$, the aforementioned inequality is equivalent to
+    \begin{equation}\label{equ:Bruns_sieve_G_bound_2}
+      \left(\frac{|\log V(z)|}{r}\right)^{r} \ge e^{-2r}V(z)^{1-c}.
+    \end{equation}
+    Combining \cref{equ:Bruns_sieve_G_bound_1,equ:Bruns_sieve_G_bound_2} results in the bound
+    \[
+      G^{\L}(z) \le e^{-(r+1)}V(z)^{1-c}.
+    \]
+    We choose $r$ to depend on the sifting variable $s$ by setting $r = \lfloor s \rfloor$ provided $s \ge 1-c\log V(z)$ (recall $-\log V(z) = |\log V(z)|$ so that $s \ge c|\log V(z)|$). Then our bound for $G^{\L}(z)$ becomes
+    \[
+      G^{\L}(z) \le e^{-s}V(z)^{1-c}.
+    \]
+    We now establish a relationship between the sifting function $S(x,z;\mc{A})$ and the sieving function $S^{\L}(x,z;\mc{A})$ that will allow us to make use of these estimates. \todo{xxx}
+  \section{\todo{Beta Sieves}}
+    We now wish to general Brun's sieve by replacing the associated sieving function with one that better approximates the sifting function. Precisely, we will replace the condition $\w(d) < r$ and $p \mid P(z)$ with the condition $d \in \mc{D}$ for set of square-free positive integers $\mc{D}$ with a small amount of small prime divisors coming from the sifting range $\mc{P}$. We will be concerned with upper and lower sieves $\L^{+} = (\l_{d}^{+})_{d \ge 1}$ and $\L^{-} = (\l_{d}^{+})_{d \ge 1}$ where $\l_{d}^{\pm} = \mu(d)$ only for $d$ belonging to the sets
+    \[
+      \mc{D}^{+} = \{d = p_{1}p_{2} \cdots p_{r} < D:\text{$p_{1},\ldots,p_{r} \mid P(z)$, $p_{r} < p_{r-1} < \cdots < p_{1}$, and $p_{m} < y_{m}$ for $m$ odd}\},
+    \]
+    and
+    \[
+      \mc{D}^{-} = \{d = p_{1}p_{2} \cdots p_{r} < D:\text{$p_{1},\ldots,p_{r} \mid P(z)$, $p_{r} < p_{r-1} < \cdots < p_{1}$, and $p_{m} < y_{m}$ for $m$ even}\},
+    \]
+    respectively, with $1 \in \mc{D}^{\pm}$, and for integer $D \ge 1$ and parameters $y_{m} > 0$ for all $m \ge 1$. The parameters $y_{m}$ are chosen to optimize the particular sifting sequence $\mc{A}$. For $\mc{D}^{\pm}$, the \textbf{beta sieve}\index{beta sieve} $\L^{\pm} = (\l_{d}^{\pm})_{d \ge 1}$ is defined by
+    \[
+      \l_{d}^{\pm} = \begin{cases} \mu(d) & \text{if $d \in \mc{D}^{\pm}$}, \\ 0 & \text{if $d \notin \mc{D}^{\pm}$}. \end{cases}
+    \]
+    Clearly the sieve level is $D$. \todo{xxx}
+    
+    \iffalse For a fixed $z$, index the sifting primes diving $P(z)$ as $q_{1} > q_{2} > \cdots > q_{m}$. Then we define the parameters $y_{m}$ by
+    \[
+      y_{m} = \left(\frac{D}{q_{1}q_{2} \cdots q_{m}}\right)^{\frac{1}{\b}},
+    \]
+    for some $\b \ge 1$. Thus if $d = p_{1}p_{2} \cdots p_{r} \in \mc{D}^{\pm}$ we have that $r \le m$. Moreover, $q_{1}\cdots q_{m}p_{m}^{\b} < D$ for $m$ odd or $m$ even depending on if $d \in \mc{D}^{+}$ or $d \in \mc{D}^{-}$ respectively.
+    \fi
+  \section{\todo{\texorpdfstring{$\L^{2}$}{L2} Sieves}}
+  \section{\todo{The Large Sieve}}
+
 \end{document}
