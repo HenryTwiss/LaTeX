@@ -233,9 +233,9 @@
     \[
       D(s) = \prod_{p}(1-\a_{1}(p)p^{-s})^{-1}(1-\a_{2}(p)p^{-s})^{-1} \cdots (1-\a_{d}(p)p^{-s})^{-1}.
     \]
-    We call this product the \textbf{Euler product}\index{Euler product} of $D(s)$, and it is said to be of \textbf{degree}\index{degree} $d$. In \cref{prop:Dirichlet_series_Euler_product}, complete multiplicativity of the coefficients is enough to guarantee that $D(s)$ has an Euler product of degree $1$, but in general $D(s)$ will admit an Euler product of degree $d > 1$ if the coefficients are only multiplicative but satisfy additional properties like a recurrence relation. When we come across Dirichlet series whose coefficients are multiplicative or we are given an Euler product we will use \cref{prop:Dirichlet_series_Euler_product} without mention as this is common practice in the literature. Lastly, if $D(s)$ has an Euler product then for any $N \ge 1$ we let $D^{(N)}(s)$ denote the Dirichlet series with the factors $p \mid N$ in the Euler product removed. That is,
+    We call this product the \textbf{Euler product}\index{Euler product} of $D(s)$, and it is said to be of \textbf{degree}\index{degree} $d$. In \cref{prop:Dirichlet_series_Euler_product}, complete multiplicativity of the coefficients is enough to guarantee that $D(s)$ has an Euler product of degree $1$, but in general $D(s)$ will admit an Euler product of degree $d > 1$ if the coefficients are only multiplicative but satisfy additional properties like a recurrence relation. When we come across Dirichlet series whose coefficients are multiplicative or we are given an Euler product we will use \cref{prop:Dirichlet_series_Euler_product} without mention as this is common practice in the literature. Lastly, if $D(s)$ has an Euler product then for any $N \ge 1$ we let $D_{(N)}(s)$ denote the Dirichlet series with the factors $p \mid N$ in the Euler product removed. That is,
     \[
-      D^{(N)}(s) = D(s)\prod_{p \mid N}(1-\a_{1}(p)p^{-s})(1-\a_{2}(p)p^{-s}) \cdots (1-\a_{d}(p)p^{-s}).
+      D_{(N)}(s) = D(s)\prod_{p \mid N}(1-\a_{1}(p)p^{-s})(1-\a_{2}(p)p^{-s}) \cdots (1-\a_{d}(p)p^{-s}).
     \]
     Dually, for any $N \ge 1$ we let $D_{N}(s)$ denote the Dirichlet series only consisting of the factors $p \mid N$ in the Euler product. That is,
     \[
@@ -818,33 +818,15 @@
       Some subconvexity bounds are deserving of names. The cases $\d = \frac{3}{16}$ and $\d = \frac{1}{6}$ are referred to as the \textbf{Burgess bound}\index{Burgess bound} and \textbf{Weyl bound}\index{Weyl bound} respectively.
     \end{remark}
     
-    With a little more work, we can obtain a convexity bound for $L'(s,f)$. Indeed, since $L(s,f)$ is of order $1$ so is $L'(s,f)$ and thus we may apply the Lindel\"of convexity principle to $p_{r_{f}}(s)^{2}L'(s,f)$ (the order of the possible pole at $s = 1$ may increase by one). We now estimate the growth of $p_{r_{f}}(s)^{2}L(s,f)$ for $\s$ to the left of $0$ and to the right of $1$. For the right edge, set $\s = 1+\e$ so that
+    With a little more work, we can obtain a a similar bound for $L^{(n)}(s,f)$ for all $n \ge 1$. Indeed, Cauchy's integral formula implies
     \[
-      p_{r_{f}}(1+\e+it)^{2}L'(1+\e+it,f) \ll_{\e} 1,
+      L^{(n)}\left(\frac{1}{2}+it,f\right) = \frac{n!}{2\pi i}\oint_{C}\frac{L(s,f)}{(s-\frac{1}{2}-it)^{n+1}}\,ds \ll_{n,\e} \frac{1}{2\pi i}\oint_{C}\frac{L(s,f)}{s-\frac{1}{2}-it}\,ds = L\left(\frac{1}{2}+it,f\right),
     \]
-    which holds because $L'(s,f)$ is defined by a locally absolutely uniformly convergent Dirichlet series for $\s > 1$ (since we may differentiate $L(s,f)$ termwise). For the left edge, isolating $L(s,f)$ in the functional equation and differentiating gives
-    \begin{align*}
-      L'(s,f) &= -\e(f)\log(q(f))q(f)^{\frac{1}{2}-s}\frac{\g(1-s,f)}{\g(s,f)}L(1-s,f) \\
-      &- \e(f)q(f)^{\frac{1}{2}-s}\frac{\g(1-s,f)}{\g(s,f)}\left(\frac{\g'}{\g}(1-s,f)-\frac{\g'}{\g}(s,f)\right)L(1-s,f) \\
-      &+ \e(f)q(f)^{\frac{1}{2}-s}\frac{\g(1-s,f)}{\g(s,f)}L'(1-s,f).
-    \end{align*}
-    Applying \cref{equ:gamma_factor_analytic_conductor_estimate} and \cref{equ:digamma_gamma_factor_analytic_conductor_estimate}, we obtain
+    where $C$ is a circle about $\frac{1}{2}+it$ of radius $\e$. The convexity bound for $L(s,f)$ then gives
     \[
-      L'(s,f) \ll_{\e} \mf{q}(s,f)^{\frac{1}{2}-\s}\left(\log\mf{q}(s,f)L(1-s,f)+L'(1-s,f)\right),
+      L^{(n)}\left(\frac{1}{2}+it,f\right) \ll_{n,\e} \mf{q}\left(\frac{1}{2}+it,f\right)^{\frac{1}{4}+\e},
     \]
-    for $s$ in any vertical strip with distance $\e$ away from the poles of both $\g(s,f)$ and $\g(1-s,f)$. Multiplying both sides by $p_{r_{f}}(s)^{2}$ and taking $\s = -\e$, it follows that
-    \[
-      p_{r_{f}}(-\e+it)^{2}L(-\e+it,f) \ll_{\e} \mf{q}(s,f)^{\frac{1}{2}+\e}\log\mf{q}(s,f),
-    \]
-    which holds since both $L(1-s,f)$ and $L'(1-s,f)$ are defined by locally absolutely uniformly convergent Dirichlet series for $\s < 0$. As $p_{r_{f}}(s)^{2}L'(s,f)$ is holomorphic in a region containing the vertical strip $-\e \le \s \le 1+\e$ and $p_{r_{f}}(s) \sim 1$, the Phragm\'en-Lindel\"of convexity principle gives
-    \[
-      L'(s,f) \ll_{\e} \mf{q}(s,f)^{\frac{1-\s}{2}+\e}\log\mf{q}(s,f),
-    \]
-    in the vertical strip $-\e \le \s \le 1+\e$. At the critical line we obtain the following \textbf{convexity bound}\index{convexity bound}:
-    \[
-      L'\left(\frac{1}{2}+it,f\right) \ll_{\e} \mf{q}\left(\frac{1}{2}+it,f\right)^{\frac{1}{4}+\e}\log\mf{q}\left(\frac{1}{2}+it,f\right).
-    \]
-    Note that the convexity bounds for $L(s,f)$ and $L'(s,f)$ only differ by a logarithm of the analytic conductor. This is typical of a large reality when dealing with derivatives of $L$-functions.
+    for any $n \ge 1$, which is the \textbf{convexity bound}\index{convexity bound} for $L^{(n)}(s,f)$.
   \section{Estimating the Central Value}
     The Lindel\"of hypothesis is concerned with the growth of the $L$-function $L(s,f)$ along the critical line, but sometimes we are only concerned with the size of $L(s,f)$ at the central point. The value of $L(s,f)$ at the central point is called the \textbf{central value}\index{central value} of $L(s,f)$. Many important properties about $L(s,f)$ can be connected to its central value. Any argument used to estimate the central value of an $L$-function is called a \textbf{central value estimate}\index{central value estimate}. We will prove central value estimate which gives a very useful upper bound in the $q(f)$-aspect. To state it, let $\psi(y)$ be a bump function with compact support in $\left[\frac{1}{2},2\right]$. For example,
     \[
