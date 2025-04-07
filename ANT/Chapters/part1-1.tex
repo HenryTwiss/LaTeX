@@ -1,5 +1,5 @@
   \chapter{Preliminaries}\label{ch:Preliminaries}
-    There is quite a bit of knowledge that most authors assume one is fluent in when writing any text on analytic number theory that is not necessarily standard material every reader knowns. A good selection is the following:
+    There is quite a bit of knowledge that most authors assume one is fluent in when writing any text on number theory that is not necessarily standard material every reader knowns. A good selection is the following:
     \begin{itemize}
       \item Asymptotics,
       \item Dirichlet Characters,
@@ -7,10 +7,12 @@
       \item Integration Techniques \& Transforms,
       \item The Gamma Function.
     \end{itemize}
-    This is not an extensive list (depending on whom is writing), but it is a decent one for sure. In the interest of keeping this text mostly self-contained, this chapter is dedicated to the basics of these topics as they are the gadgets that will take center stage in our later investigations. A well-versed reader is encouraged to skim these sections for completeness. On the other hand, readers who are not completely comfortable these topics are encouraged to read this chapter in full and accept the material mentioned without proof as black box. The mathematics presented in this chapter belongs to an analytic number theorist's tool box rather than being pure analytic number theory. In order to improve the readability of the remainder of the text we will use the results presented here without reference unless it is a matter of clarity. As for standard knowledge, we assume familiarity with basic number theory, complex analysis, real analysis, functional analysis, topology, and algebra. We have also outsourced specific subtopics to the appendix and we will reference them when necessary.
+    This is not an extensive list (depending on whom is writing), but it is a decent one for sure. In the interest of keeping this text mostly self-contained, this chapter is dedicated to the basics of these topics as they are the gadgets that will take center stage in our later investigations. A well-versed reader is encouraged to skim these sections for completeness. On the other hand, readers who are not completely comfortable these topics are encouraged to read this chapter in full and accept the material mentioned without proof as black box. The mathematics presented in this chapter belongs to a number theorist's tool box rather than being pure number theory. In order to improve the readability of the remainder of the text we will use the results presented here without reference unless it is a matter of clarity. As for standard knowledge, we assume familiarity with basic number theory, complex analysis, real analysis, functional analysis, topology, and algebra. We have also outsourced specific subtopics to the appendix and we will reference them when necessary.
     \section{Notational Conventions}
       Here we make some notational conventions throughout the rest of the text unless specified otherwise:
       \begin{itemize}
+        \item The symbols $\subset$ and $\supset$ denote strict containment.
+        \item Any ring is understood to be a commutative ring with $1$.
         \item The symbol $\e$ denotes a small positive constant ($\e > 0$) that is not necessarily the same from line to line.
         \item If $a \in (\Z/m\Z)^{\ast}$, we will always let $\conj{a}$ denote the multiplicative inverse. That is, $a\conj{a} \equiv 1 \tmod{m}$.  
         \item For the complex variables $z$, $s$, and $u$, we write
@@ -26,7 +28,7 @@
         \item $\d_{a,b}$ will denote the indicator function for $a = b$. That is, $\d_{a,b} = 1,0$ according to if $a = b$ or not.
       \end{itemize}
     \section{Asymptotics}
-      Much of the language of analytic number theory is given in terms of asymptotics (or estimates or bounds) as they allows us to discuss approximate growth and dispense with superfluous constants. For this reason, asymptotics will be the first material that we will present. The asymptotics that we will cover are listed in the following table:
+      Much of the language of number theory is given in terms of asymptotics (or estimates or bounds) as they allows us to discuss approximate growth and dispense with superfluous constants. For this reason, asymptotics will be the first material that we will present. The asymptotics that we will cover are listed in the following table:
       \begin{center}
         \begin{stabular}[1.5]{|c|c|c|}
           \hline
@@ -221,25 +223,7 @@
         For (i), take $\psi = \chi_{m,0}$ in \cref{prop:Dirichlet_orthogonality_relations} (i). For (ii), take $b \equiv 1 \tmod{m}$ in \cref{prop:Dirichlet_orthogonality_relations} (ii).
       \end{proof}
 
-      Now that we understand the basics of Dirichlet characters, we might be interested in computing them. This is not hard to do by hand for small $m$. For example, the table below gives the Dirichlet characters modulo $5$ where $i$ in $\chi_{5,i}$ is an indexing variable:
-
-      \begin{center}
-        \begin{stabular}[1.5]{|c|c|c|c|c|c|}
-          \hline
-          & $0$ & $1$ & $2$ & $3$ & $4$ \\
-          \hline
-          $\chi_{5,0}$ & $0$ & $1$ & $1$ & $1$ & $1$ \\
-          \hline
-          $\chi_{5,1}$ & $0$ & $1$ & $i$ & $-i$ & $-1$ \\
-          \hline
-          $\chi_{5,2}$ & $0$ & $1$ & $-i$ & $i$ & $-1$ \\
-          \hline
-          $\chi_{5,3}$ & $0$ & $1$ & $-1$ & $-1$ & $1$ \\
-          \hline
-        \end{stabular}
-      \end{center}
-
-      If the modulus is large this is of course more difficult. However, there is a way to build Dirichlet characters modulo $m_{2}$ from those modulo $m_{1}$. Let $\chi_{m_{1}}$ be a Dirichlet character modulo $m_{1}$. If $m_{1} \mid m_{2}$ then $(a,m_{2}) = 1$ implies $(a,m_{1}) = 1$. Therefore we can define a Dirichlet character $\chi_{m_{2}}$ by
+      Now that we understand the basics of Dirichlet characters, we might be interested in computing them. This is not hard to do by hand for small $m$. If the modulus is large this is of course more difficult. However, there is a way to build Dirichlet characters modulo $m_{2}$ from those modulo $m_{1}$. Let $\chi_{m_{1}}$ be a Dirichlet character modulo $m_{1}$. If $m_{1} \mid m_{2}$ then $(a,m_{2}) = 1$ implies $(a,m_{1}) = 1$. Therefore we can define a Dirichlet character $\chi_{m_{2}}$ by
       \[
         \chi_{m_{2}}(a) = \begin{cases} \chi_{m_{1}}(a) & \text{if $(a,m_{2}) = 1$}, \\ 0 & \text{if $(a,m_{2}) > 1$}. \end{cases}
       \]
@@ -325,7 +309,7 @@
 
       It follows from \cref{thm:fundamental_discriminant_character_primitive} that all quadratic Dirichlet characters are induced from some $\chi_{D}$. In particular, so too are the quadratic characters given by Jacobi symbols.
     \section{Special Sums}
-      Analytic number theory does not come without its class of special sums that appear naturally. They play the role of discrete counterparts to continuous objects (there is a rich underpinning here). Without a sufficient understanding of these sums, they would cause a discrete obstruction to an analytic problem that we wish to solve.
+      Number theory does not come without its class of special sums that appear naturally. They play the role of discrete counterparts to continuous objects (there is a rich underpinning here). Without a sufficient understanding of these sums, they would cause a discrete obstruction to an analytic problem that we wish to solve.
       \subsection*{Ramanujan \& Gauss Sums}
         Let's begin with the Ramanujan sum. For $m \ge 1$ and $b \in \Z$, the \textbf{Ramanujan sum}\index{Ramanujan sum} $r(b,m)$ is defined by
         \[
@@ -672,7 +656,7 @@
         If either $n = 0$ or $m = 0$ then the Sali\'e sum reduces to the Ramanujan sum associated to $\chi$.
     \section{Integration Techniques \& Transforms}
       \subsection*{Integration Techniques}
-        Complex integrals are a core backbone of analytic number theory and all too often the domain we are integrating over is unbounded. Accordingly, the functions we would like to work with should be integrable over these domains. One way to accomplish this would be to require that our functions are bounded and our domains be of finite volume:
+        Complex integrals are a core backbone of many number theory techniques and all too often the domain we are integrating over is unbounded. Accordingly, the functions we would like to work with should be integrable over these domains. One way to accomplish this would be to require that our functions are bounded and our domains be of finite volume:
 
         \begin{proposition}\label{prop:decay_finite_volume_integral}
           Suppose $f(z,w)$ is analytic on $\W \x D$ for some regions $\W$ and $D$ with $D$ of finite volume with respect to a measure $d\mu$. Also suppose that for any $z \in \W$, $f(z,w)$ is bounded on $D$. Then the integral
@@ -814,7 +798,7 @@
           is locally absolutely uniformly convergent in the vertical strip $a < \s < b$. Then $f(x) = (\mc{M}^{-1}F)(x)$.
         \end{theorem}
     \section{The Gamma Function}
-      The gamma function is ubiquitous in analytic number theory and the better one understands it the better one will be at seeing the forest for the trees in any problem involving analytic number theory. The \textbf{gamma function}\index{gamma function} $\G(s)$ is defined to be the Mellin transform of $e^{-x}$:
+      The gamma function is ubiquitous in number theory and the more one understands it the better one will be at seeing the forest for the trees in number theory problems. The \textbf{gamma function}\index{gamma function} $\G(s)$ is defined to be the Mellin transform of $e^{-x}$:
       \[
         \G(s) = \int_{0}^{\infty}e^{-x}x^{s-1}\,dx,
       \]

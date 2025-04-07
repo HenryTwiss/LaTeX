@@ -1,204 +1,143 @@
-\chapter{The Katz-Sarnak Philosophy}
-  The Katz-Sarnak philosophy is an idea that certain statistics about families of $L$-functions should match statistics for random matrices coming from some particular compact matrix group. One starts with some class of zeros to look at, say zeros of an individual $L$-function high up the critical strip or zeros of for some collection of $L$-functions low down on the critical strip. Actually, one works with the corresponding unfolded nontrivial zeros since they are evenly spaced on average. Then some class of test functions are introduced to carry out the statistical calculations in order to reveal the similarity with some class of matrices. In the following, we give a loose introduction to the Katz-Sarnak philosophy.
-  \section{The Work of Montgomery \& Dyson}
-    The beginning of the connection between random matrix theory and analytic number theory was at Princeton in the 1970s via discussions between Montgomery and Dyson. They found similarities between statistical information about the nontrivial distribution of the zeros of the Riemann zeta function and calculations in random matrix theory about unitary matrices. To do this, they considered the unfolded nontrivial zeros $\rho_{\text{unf}} = \b+i\w$ of $\z(s)$ with positive ordinate, that is $\w > 0$, and indexed them according to the size of ordinate. So let $\W = (\w_{n})_{n \ge 1}$ denote the increasing sequence of positive ordinates of the unfolded nontrivial zeros of $\z(s)$. Montgomery and Dyson considered the \textbf{two-point correlation function}\index{two-point correlation function} $F(\a,\b;\z,W)$ for $\z(s)$, defined by
+\chapter{The Theory of Sieves}
+  Sieves are an important tool in number theory because they allow for the estimation of the size of of a sifted sequence of numbers from some initial sequence. In practice, one is usually sifting out only those indices relatively prime to some fixed integer and up to some prescribed size. In the following, we introduce sieves in some generality.
+  \section{The Language of Sieves}
+    Let $\mc{A} = (a_{n})_{n \ge 1}$ be a nonnegative sequence and $\mc{P}$ be a set of primes. We call $\mc{A}$ the \textbf{sifting sequence}\index{sifting sequence}, $\mc{P}$ the \textbf{sifting range}\index{sifting range}, and any $p \in \mc{P}$ a \textbf{sifting prime}\index{sifting prime}. For any integer $d \ge 1$, let $\mc{A}_{d}$ be the subsequence consisting of those terms $a_{n}$ with $n \equiv 0 \tmod{d}$. Define the sum $S(x;\mc{A})$ by
     \[
-      F(\a,\b;\z,W) = \frac{1}{W}|\{(\w_{n},\w_{m}) \in \W^{2}:\text{$\w_{n},\w_{m} \le W$ and $\w_{n}-\w_{m} \in [\a,\b]$}\}|,
+      S(x;\mc{A}) = \sum_{\substack{n \le x}}a_{n},
     \]
-    for any real $\a$ and $\b$ with $\a < \b$ and $W > 0$. What this function measures is the probability of how close pairs of zeros tend to be with respect to some fixed distance and up to some fixed height. In other words, the correlation between distances of zeros. They wanted to understand if the limiting distribution
+    for $x \ge 0$.  Moreover, we define the function $P(z)$ by
     \[
-      F(\a,\b;\z) = \lim_{W \to \infty}F(\a,\b;\z,W),
+      P(z) = \prod_{\substack{p \in \mc{P} \\ p < z}}p,
     \]
-    exists and what can be said about it. The following conjecture made by Montgomery, known as Montgomery's pair correlation conjecture, answers this:
-
-    \begin{conjecture}[Montgomery's pair correlation conjecture]
-      For any $\a$ and $\b$ with $\a < \b$, $F(\a,\b;\z)$ exists provided the Riemann hypothesis for the Riemann zeta function holds. Moreover,
-      \[
-        F(\a,\b;\z) = \int_{\a}^{\b}\left(1-\left(\frac{\sin(\pi x)}{\pi x}\right)^{2}+\d(x)\right)\,dx,
-      \]
-      where $\d(x)$ is the Dirac delta function.
-    \end{conjecture}      
-
-    Montgomery's pair correlation conjecture still remains out of reach, but there is very good numerical evidence supporting it from some unpublished work of Odlyzko (see \cite{odlyzko19921020}). Dyson recognized that Montgomery's pair correlation conjecture models a similar situation in random matrix theory that he had investigated earlier. Consider an $N \x N$ unitary matrix $A \in U(N)$ with eigenphases $\t_{n}$ for $1 \le n \le N$ denoted in increasing order. Clearly the average density of the eigenphases of $A$ in $[0,2\pi)$ is $\frac{N}{2\pi}$. For any eigenphase $\t$, let $\phi$ be the \textbf{unfolded eigenphase}\index{unfolded eigenphase} corresponding to $\t$ be defined by
-    \[ 
-      \phi = \frac{N}{2\pi}\t.
-    \]
-    It follows that the average density of the unfolded eigenphases of $A$ in $[0,N)$ is $1$. Let $\Phi = (\phi_{n})_{1 \le n \le N}$ denote the increasing sequence of unfolded eigenphases of $A$. We consider the \textbf{two-point correlation function}\index{two-point correlation function} $F(\a,\b;A,U(N))$ for $A$, defined by
+    for $z \ge 2$ and call $z$ the \textbf{sifting level}\index{sifting level}. In other words, $P(z)$ is the product of the sifting primes in the sifting range up to $z$. We define the corresponding \textbf{sifting function}\index{sifting function} $S(x,z;\mc{A})$ by
     \[
-      F(\a,\b;A,U(N)) = \frac{1}{N}|\{(\phi_{n},\phi_{m}) \in \Phi^{2}:\phi_{n}-\phi_{m} \in [\a,\b]\}|,
+      S(x,z;\mc{A}) = \sum_{\substack{n \le x \\ (n,P(z)) = 1}}a_{n},
     \]
-    for any real $\a$ and $\b$ with $\a < \b$. Since $U(N)$ has a Haar measure $dA$, we can compute the global distribution of $F(\a,\b;A,U(N))$ over $U(N)$, namely $F(\a,\b;U(N))$, defined by
+    for $x \ge 0$ and $z \ge 2$. Equivalently, $S(x,z;\mc{A})$ consists of only those terms $a_{n}$ in $S(x;\mc{A})$ whose indices $n$ are not divisible by any sifting prime. Thus we have removed those terms $a_{n}$ whose indices $n$ are in the reside class $n \equiv 0 \tmod{p}$ for some sifting prime $p$ up to $z$ (this is equivalent to $p \mid P(z)$). The objective of any particular sieve is to produce upper or lower bounds for the sifting function $S(x,z;\mc{A})$. That is, the purpose of a sieve is to estimate the sum of elements $a_{n}$ of the sifting sequence $\mc{A}$ whose indices $n$ do not belong to the zero residue class modulo any sifting primes $p$ in the sifting range $\mc{P}$ up to the sifting level $z$. Thus the sifting level $z$ is a measure of how fine a particular sieve is. The larger the sifting level, the more fine the sieve which is to say that the sifting function $S(x,z;\mc{A})$ retains fewer in the sifting sequence $\mc{A}$. We being by deriving a useful relation for the sifting function that will motivate the construction of sieves. Applying \cref{prop:Mobius_dirac_delta} to $S(x,z;\mc{A})$ to remove the condition $(n,P(z)) = 1$ gives
     \[
-      F(\a,\b;U(N)) = \int_{U(N)}F(\a,\b;A,U(N))\,dA.
+      S(x,z;\mc{A}) = \sum_{n \le x}\sum_{d \mid (n,P(z))}\mu(d)a_{n},
     \]
-    Analogously, we want to understand if the limiting distribution
+    and upon interchanging the two sums we obtain \textbf{Legendre's identity}\index{Legendre's identity}:
     \[
-      F(\a,\b;U) = \lim_{N \to \infty}F(\a,\b;U(N)),
+      S(x,z;\mc{A}) = \sum_{d \mid P(z)}\mu(d)S(x;\mc{A}_{d}).
     \]
-    exists and what can be said about it. Dyson showed the following (see \cite{dyson1962statistical} for a proof):
-
-    \begin{proposition}\label{prop:Dyson_unitary_distribution}
-      For any real $\a$ and $\b$ with $\a < \b$, $F(\a,\b;U)$ exists. Moreover,
-      \[
-        F(\a,\b;U) = \int_{\a}^{\b}\left(1-\left(\frac{\sin(\pi x)}{\pi x}\right)^{2}+\d(x)\right)\,dx,
-      \]
-      where $\d(x)$ is the Dirac delta function.
-    \end{proposition}
-
-    The right-hand side of \cref{prop:Dyson_unitary_distribution} is exactly the same formula given in Montgomery's pair correlation conjecture. In other words, if Montgomery's pair correlation conjecture is true then the two-point correlation of the unfolded nontrivial zeros of the Riemann zeta function in the limit as we move up the critical line exactly match the two-point correlation of the unfolded eigenphases of unitary matrices in the limit as the size of the matrices increase. In short, statistical information about the Riemann zeta function agrees with statistical information about the eigenvalues of unitary matrices. This is the origin of the Katz-Sarnak philosophy.
-  \section{The Work of Katz \& Sarnak}
-    Katz and Sarnak generalized the work of Montgomery and Dyson by establishing a connection between families of $L$-functions and other compact matrix groups. For the ease of categorization, Katz and Sarnak associated a \textbf{symmetry type}\index{symmetry type} to each compact matrix group that they studied. The underlying compact matrix group associated to each symmetric type is called a \textbf{matrix ensemble}\index{matrix ensemble}. The symmetry types and associated matrix ensembles are described in the following table:
-    \begin{center}
-      \begin{stabular}[1.5]{|c|c|c|}
-        \hline
-        Symmetry Type & Matrix Ensemble \\
-        \hline
-        Unitary ($\mathrm{U}$) & $\U(N)$ \\
-        \hline
-        Orthogonal ($\mathrm{O^{+}}$) & $\SO(2N)$ \\ 
-        \hline
-        Orthogonal ($\mathrm{O^{-}}$) & $\SO(2N+1)$ \\ 
-        \hline
-        Symplectic ($\mathrm{Sp}$) & $\mathrm{USp}(2N)$ \\
-        \hline
-      \end{stabular}
-    \end{center}
-
-    Let $G(N)$ be a matrix ensemble, where $G$ denotes the symmetry type, and let $dA$ denote the Haar measure. For any $A \in G(N)$, let $\Phi = (\phi_{n})_{1 \le n \le N}$ denote the increasing sequence of unfolded eigenphases of $A$. Katz and Sarnak considered two local spacing distributions between the unfolded eigenphases of $A$. The first was the \textbf{two-point correlation function}\index{two-point correlation function} $F(\a,\b;A,G(N))$ for $A$, defined by
+    In terms of Legendre's identity, the usefulness of sieves comes from replacing the M\"obius function with weights that have finite support and essentially serve as a truncation of the M\"obius function. More precisely, we replace $\mu(d)$ with a weighting factor $\l_{d}$ coming from a real sequence $\L = (\l_{d})_{d \ge 1}$ satisfying $\l_{d} = 0$ unless $d$ is square-free, $d \mid P(z)$, and $d \le D$ for some $D \ge 1$. We will also let $\l$ represent the arithmetic function $\l(d) = \l_{d}$. We call $\L$ a \textbf{sieve}\index{sieve}, $\l_{d}$ a \textbf{sieve weight}\index{sieve weight}, and the minimal such $D$ the \textbf{sieve level}\index{sieve level} of $\L$. We also define the \textbf{sifting variable}\index{sifting variable} $s$ by
     \[
-      F(\a,\b;A,G(N)) = \frac{1}{N}|\{(\phi_{n},\phi_{m}) \in \Phi^{2}:\phi_{n}-\phi_{m} \in [\a,\b]\}|,
+      s = \frac{\log(D)}{\log(z)}.
     \]
-    for any real $\a$ and $\b$ with $\a < \b$. They computed the global distribution of $F(\a,\b;A,G(N))$ over $G(N)$, namely $F(\a,\b;G(N))$, defined by
+    That is, the sifting variable measures the size of the sieve level relative to the sifting level on a logarithmic scale. Note that if $P(z) \le D$, then the condition $d \mid P(z)$ implies $d \le D$. Thus the sieve level is only a restriction when $D < P(z)$. In other words, we aim for $s$ to not be too small. In particular, note that if the sifting level $z$ is large relative to the sieve level $D$ then $s < 1$. Moreover, the sifting level, sifting variable, and sieve level satisfy the equivalent identity
     \[
-      F(\a,\b;G(N)) = \int_{G(N)}F(\a,\b;A,G(N))\,dA,
+      D = z^{s}.
     \]
-    and sought to understand if the limiting distribution
+    We define the \textbf{sieving function}\index{sieving function} $S^{\L}(x,z;\mc{A})$ by
     \[
-      F(\a,\b;G) = \lim_{N \to \infty}F(\a,\b;G(N)),
+      S^{\L}(x,z;\mc{A}) = \sum_{d \mid P(z)}\l_{d}S(x;\mc{A}_{d}),
     \]
-    exists and what can be said about it. Note that in the case $G(N) = U(N)$, this is exactly the two-point correlation function considered by Dyson. Katz and Sarnak succeeded in generalizing Dyson's work (see \cite{katz2023random} for a proof):
-
-    \begin{proposition}\label{prop:Katz_Sarnak_limit_distribution_two_point}
-      For symmetry type $G$ and any real $\a$ and $\b$ with $\a < \b$, $F(\a,\b;G)$ exists. Moreover,
-      \[
-        F(\a,\b;G) = \int_{\a}^{\b}\left(1-\left(\frac{\sin(\pi x)}{\pi x}\right)^{2}+\d(x)\right)\,dx,
-      \]
-      where $\d(x)$ is the Dirac delta function.
-    \end{proposition}
-
-    The second local spacing distribution was the \textbf{$k$-th consecutive spacing function}\index{$k$-th consecutive spacing function} for $A$, defined by
+    for $x > 0$ and $z \ge 2$. Expanding $S(x;\mc{A}_{d})$, we can write
     \[
-      \mu_{k}(\a,\b;A,G(N)) = \frac{1}{N}|\{1 \le j \le N:\text{$(\phi_{j+k},\phi_{j}) \in \Phi^{2}$ and $\phi_{j+k}-\phi_{j} \in [\a,\b]$}\}|,
+      S^{\L}(x,z;\mc{A}) = \sum_{n \le x}a_{n}\sum_{d \mid (n,P(z))}\l_{d}.
     \]
-    for any real $\a$ and $\b$ with $\a < \b$ and $k \ge 1$. Again, they proceeded to compute the global distribution over $G(N)$, namely $\mu_{k}(\a,\b;G(N))$, defined by
+    Now set
     \[
-      \mu_{k}(\a,\b;G(N)) = \int_{G(N)}\mu_{k}(\a,\b;A,G(N))\,dA,
+      \t_{n}^{0} = \sum_{d \mid (n,P(z))}\mu(d) \quad \text{and} \quad \t_{n} = \sum_{d \mid (n,P(z))}\l_{d}.
     \]
-    and asked if the limiting distribution
+    We will also let $\t^{0}$ and $\t$ represent the arithmetic functions $\t^{0}(n) = \t_{n}^{0}$ and $\t(n) = \t_{n}$ respectively. Equivalently, we can express $\t_{n}^{0}$ and $\t_{n}$ in terms of the Dirichlet convolutions (see \cref{append:Arithmetic_Functions}) $\t^{0} = \mu \ast \mathbf{1}$ and $\t = \l \ast \mathbf{1}$ respectively. Note that $\t_{n}^{0}$ and $\t_{n}$ (and hence $\t^{0}$ and $\t$ as well) both depend on the sifting level $z$, but we suppress this dependence from the notation. In any case, we have
     \[
-      \mu_{k}(\a,\b;G) = \lim_{N \to \infty}\mu_{k}(\a,\b;G(N)),
+      S^{\L}(x,z;\mc{A}) = \sum_{n \le x}a_{n}\t_{n}. 
     \]
-    exists and what can be said about it. They were able the show the following (see \cite{katz2023random} for a proof):
-
-    \begin{proposition}\label{prop:Katz_Sarnak_limit_distribution_k_spacing}
-      For any symmetry type $G$ and any real $\a$ and $\b$ with $\a < \b$ and $k \ge 1$, $\mu_{k}(\a,\b;G)$ exists. Moreover, it is independent of the particular symmetry type $G$.
-    \end{proposition}
-
-    In particular, \cref{prop:Katz_Sarnak_limit_distribution_two_point,prop:Katz_Sarnak_limit_distribution_k_spacing} show that the limiting distributions $F(\a,\b;G)$ and $\mu_{k}(\a,\b;G)$ are both independent of the symmetry type $G$. However, this symmetry independence is not true for all limiting distributions. Katz and Sarnak also considered a local and global distributions associated to single eigenphases. The local distribution they considered, associated to a single eigenphase, was the \textbf{one-level density function}\index{one-level density function} $\D(\a,\b;A,G(N))$ for $A$, defined by
+    We say that $\L$ is an \textbf{upper sieve}\index{upper sieve} if the sieving function $S^{\L}(x,z;\mc{A})$ is an upper bound for the sifting function $S(x,z;\mc{A})$. From the definition of the sifting function, $\L$ will be an upper sieve if and only if $\t_{n} \ge \t_{n}^{0}$. Analogously, we say that $\L$ is a \textbf{lower sieve}\index{lower sieve} if the sieving function $S^{\L}(x,z;\mc{A})$ is a lower bound for the sifting function $S(x,z;\mc{A})$. Similarly, $\L$ will be a lower sieve if and only if $\t_{n} \le \t_{n}^{0}$. We will often optimize the choice of sieve weights such that the lower or upper bound is as tight as possible. When we wish to distinguish upper and lower sieves, we denote them by $\L^{\pm} = (\l_{d}^{\pm})_{d \ge 1}$ respectively and write $\pm$ in place of $\L$ when denoting dependences upon the sieves. Then we have the upper and lower bounds
     \[
-      \D(\a,\b;A,G(N)) = |\{\phi \in \Phi:\phi \in [\a,\b]\}|.
+      S^{-}(x,z;\mc{A}) \le S(x,z;\mc{A}) \le S^{+}(x,z;\mc{A}),
     \]
-    They computed the global distribution, namely $\D(\a,\b;G(N))$, defined by
+    provided
+    \begin{equation}\label{equ:upper_lower_sieve_theta_relation}
+      \t_{n}^{-} \le \t_{n}^{0} \le \t_{n}^{+}.
+    \end{equation}
+    We can also compose sieves to form new sieves from old ones. To explain the construction, let $\L' = (\l'_{d})_{d \ge 1}$ and $\L'' = (\l''_{d})_{d \ge 1}$ be two sieves of levels $D'$ and $D''$ respectively. Also let $\t' = \l' \ast \mathbf{1}$ and $\t'' = \l'' \ast \mathbf{1}$. Then we define the \textbf{composite sieve}\index{composite sieve} $\L = \L'\L''$ of $\L'$ and $\L''$ by
     \[
-      \D(\a,\b;G(N)) = \int_{G(N)}\D(\a,\b;A,G(N))\,dA,
+      \l_{d} = \sum_{\substack{ d_{1},d_{2} \mid d \\ [d_{1},d_{2}] = d}}\l'_{d_{1}}\l''_{d_{2}},
     \]
-    and asked if the limiting distribution
+    for $d \ge 1$. Clearly $\L$ is a sieve of level $D'D''$. Moreover, summing over pairs $(d_{1},d_{2})$ of divisors of $n$ is the same as summing over triples $(d_{1},d_{2},d)$ of divisors of $n$ with $[d_{1},d_{2}] = d$, we see that
     \[
-      \D(\a,\b;G) = \lim_{N \to \infty}\D(\a,\b;G(N)),
+      \t = \l \ast \mathbf{1} = (\l' \ast \mathbf{1})(\l'' \ast \mathbf{1}) = \t'\t''.
     \]
-    exists and what can be said about it. Precisely, they proved the following (see \cite{katz2023random} for a proof):
-
-    \begin{proposition}\label{prop:Katz_Sarnak_limit_distribution_one-level_density}
-      For any symmetry type $G$ and any real $\a$ and $\b$ with $\a < \b$ and $k \ge 1$, $\D(\a,\b;G)$ exists. Moreover, it depends upon the particular symmetry type $G$.
-    \end{proposition}
-    
-    The global distribution they considered, associated to a single eigenphase, was the \textbf{$k$-th eigenphase function}\index{$k$-th eigenphase function} $\nu_{k}(\a,\b,G(N))$ for $G(N)$, defined by
+    From this chain and \cref{equ:upper_lower_sieve_theta_relation} it follows that the composition of an upper and lower sieve is a lower sieve while the composition of two upper or two lower sieves is an upper sieve.
+  \section{Estimating the Sifting Function}
+    Ultimately, our aim is to estimate the sifting function in terms of upper or lower sieving functions. In order to achieve this, we require an additional assumption about the sums $S(x;\mc{A}_{d})$. In particular, we assume that there exists a multiplicative arithmetic function $g$ with $g(1) = 1$, $0 \le g(d) < 1$ for all $d > 1$ where $g(d) = 0$ unless $d$ is square-free and the primes dividing $d$ belong to $\mc{P}$, satisfies
+    \begin{equation}\label{equ:prod_assumption_density_function_1}
+      \prod_{w \le p < z}(1-g(p))^{-1} \le K\left(\frac{\log(z)}{\log(w)}\right)^{\k},
+    \end{equation}
+    for constants $K > 1$ and $\k \ge 0$ and all $w$ and $z$ with $z > w \ge 2$, and such that  
+    \begin{equation}\label{equ:d_multiple_sifting_function_estimate}
+      S(x;\mc{A}_{d}) = g(d)M(x;\mc{A})+r_{d}(x;\mc{A}),
+    \end{equation}
+    for some smooth functions $M(x;\mc{A})$ and $r_{d}(x;\mc{A})$ with $M(x;\mc{A})$ nonnegative. We call the function $g$ a \textbf{density function}\index{density function} and the constant $\k$ the \textbf{sieve dimension}\index{sieve dimension}. Using Legendre's identity, we can write
     \[
-      \nu_{k}(\a,\b;G(N)) = dA\left(\left\{A \in G(N):\phi_{k} \in [\a,\b]\right\}\right),
+      S(x,z;\mc{A}) = M(x;\mc{A})\sum_{d \mid P(z)}\mu(d)g(d)+\sum_{d \mid P(z)}\mu(d)r_{d}(x;\mc{A}).
     \]
-    for any real $\a$ and $\b$ with $\a < \b$ and $k \ge 1$. Again, they asked if the limiting distribution
+    Moreover, if we define functions $V(z)$ and $R(x,z;\mc{A})$ by
     \[
-      \nu_{k}(\a,\b;G) = \lim_{N \to \infty}\nu_{k}(\a,\b;G(N)),
+      V(z) = \sum_{d \mid P(z)}\mu(d)g(d) \quad \text{and} \quad R(x,z;\mc{A}) = \sum_{d \mid P(z)}\mu(d)r_{d}(x;\mc{A}),
     \]
-    exists and what can be said about it. They were able to show the following (see \cite{katz2023random} for a proof):
-
-    \begin{proposition}\label{prop:Katz_Sarnak_limit_distribution_k_eigenphase}
-      For any symmetry type $G$ and any real $\a$ and $\b$ with $\a < \b$ and $k \ge 1$, $\nu_{k}(\a,\b;G)$ exists. Moreover, it depends upon the particular symmetry type $G$.
-    \end{proposition}
-
-    In short, Katz and Sarnak studied four limiting distributions $F(\a,\b;G)$, $\mu_{k}(\a,\b;G)$, $\D(\a,\b;G)$, and $\nu_{k}(\a,\b;G)$. The former two are distributions about collections of eigenphases of unitary matrices and are independent of the symmetry type $G$ while the latter two are distributions about single eigenphases of unitary matrices and depend upon the symmetry type $G$. Analogous distributions can be defined for families of $L$-functions. We say that a collection of $L$-functions $\mc{F} = (L(s_{\a},f_{\a}))_{\a \in I}$, for some infinite indexing set $I \subset \R_{\ge 0}$, is a \textbf{family}\index{family} if it is an ordered set with respect to the analytic conductor and if $\mf{q}(s_{\a},f_{\a}) \to \infty$ as $\a \to \infty$. We say that the family $\mc{F}$ is \textbf{continuous}\index{continuous} if $f_{\a} = f_{\b}$ for all $\a,\b \in I$ and $s_{\a} = \s+it_{\a}$ where $t_{\a}$ is a continuous function of $\a$. Necessarily, $t_{\a} \to \infty$ as $\a \to \infty$ and $I$ is a half-open ray. We say that a family $\mc{F}$ is \textbf{discrete}\index{discrete} if $f_{\a} \neq f_{\b}$ for all distinct $\a,\b \in I$ and $I$ is discrete. Necessarily, $q(f_{\a}) \to \infty$ as $\a \to \infty$ and, reindexing if necessary, $I \subseteq \Z_{\ge 0}$. Katz and Sarnak arrived at a heuristical conjecture known as the \textbf{Katz-Sarnak philosophy}\index{Katz-Sarnak philosophy} in terms of families of $L$-functions:
-
-    \begin{conjecture}[Katz-Sarnak Philosophy]
-      \phantom{ }
-      \begin{enumerate}[label=(\roman*)]
-        \item The statistics about collections of eigenphases of a random matrix belonging to a matrix ensemble of symmetry type $G$, in the limit as the size of the matrix tends to infinity, should model statistics about the nontrivial zeros of a continuous family of $L$-functions as the heights of the nontrivial zeros tends to infinity.
-        \item The statistics about a single eigenphase of a random matrix belonging to a matrix ensemble of symmetry type $G$, in the limit as the size of the matrix tends to infinity, should model statistics about a discrete family of $L$-functions as the size of the conductor tends to infinity.
-      \end{enumerate}
-    \end{conjecture}
-
-    Determining the symmetry type of a family is generally a difficult task. Below are some well-studied families and their symmetry types (see \cite{conrey2005integral} for a determination of the symmetry type):
-    \begin{center}
-      \begin{stabular}[1.5]{|c|c|c|}
-        \hline
-        Symmetry Type & Family \\
-        \hline
-        \multirow{2}{*}{Unitary} & $\{L\left(\s+it,f\right):\text{$L(s,f)$ is of Selberg class}\}$ ordered by $t$ \\& $\{L(s,\chi):\text{$\chi$ is a primitive character modulo $q$}\}$ ordered by $q$ \\
-        \hline
-        \multirow{2}{*}{Orthogonal} & $\{L(s,f):\text{$f \in \mc{S}_{k}(N,\chi)$ is a primitive Hecke newform}\}$ ordered by $k$ \\& $\{L(s,f):\text{$f \in \mc{S}_{k}(N,\chi)$ is a primitive Hecke newform}\}$ ordered by $N$ \\
-        \hline
-        Symplectic & $\{L(s,\chi_{D}):\text{$D$ is a fundamental discriminant}\}$ ordered by $|D|$ \\
-        \hline
-      \end{stabular}
-    \end{center}
-  \section{Characteristic Polynomials of Unitary Matrices}
-    The Katz-Sarnak philosophy conjectures that the statistics about nontrivial zeros of $L$-functions are modeled by the statistics of eigenphases of random unitary matrices. However, there is a striking surface level connection between $L$-functions and the characteristic polynomials of unitary matrices which we now describe. For $A \in U(N)$, let
+    for $x > 0$ and $z \ge 2$, then we can further write
     \[
-      L(s,A) = \det(I-sA) = \prod_{1 \le n \le N}(1-se^{i\t_{n}}),
+      S(x,z;\mc{A}) = M(x;\mc{A})V(z)+R(x,z;\mc{A}).
     \]
-    be the characteristic polynomial of $A$. It will turn out that $L(s,A)$ has strikingly similar properties to an $L$-function. The product expression for $L(s,A)$ is clearly analogous to the Euler product expression for an $L$-function. Upon expanding the product, we obtain
+    As $g$ is multiplicative, the definition of the M\"obius function allows us to express $V(z)$ as a product:
+    \begin{equation}\label{equ:V_product_formula}
+      V(z) = \prod_{p \mid P(z)}(1-g(p)).
+    \end{equation}
+    In particular, since $g(p) = 0$ if $p \notin \mc{P}$, \cref{equ:prod_assumption_density_function_1} can be expressed in the form
+    \begin{equation}\label{equ:prod_assumption_density_function_2}
+      \frac{V(w)}{V(z)} \le K\left(\frac{\log(z)}{\log(w)}\right)^{\k}.
+    \end{equation}
+    Since the M\"obius function changes sign, it is difficult to estimate $R(x,z;\mc{A})$ beyond trivial bounds. We can do much better with a sieve $\L$. In this case, the definition of the sieving function gives
     \[
-      L(s,A) = \sum_{0 \le n \le N}a_{n}s^{n},
+      S_{d}^{\L}(x,z;\mc{A}) = M(x;\mc{A})\sum_{d \mid P(z)}\l_{d}g(d)+\sum_{d \mid P(z)}\l_{d}r_{d}(x;\mc{A}).
     \]
-    for some coefficients $a_{n}$. This expression is the analogue to the Dirichlet series representation for an $L$-function. Of course, as $L(s,A)$ is a polynomial it is analytic on $\C$. Moreover, $L(s,A)$ possesses a functional equation of shape $s \to \frac{1}{s}$. To see this, first observe that multiplicativity of the determinant gives
+    Defining functions $V^{\L}(z)$ and $R^{\L}(x,z;\mc{A})$ by
+     \[
+      V^{\L}(z) = \sum_{d \mid P(z)}\l_{d}g(d) \quad \text{and} \quad R^{\L}(x,z;\mc{A}) = \sum_{d \mid P(z)}\l_{d}r_{d}(x;\mc{A}),
+    \]
+    for $x > 0$ and $z \ge 2$, we can further write
+    \begin{equation}\label{equ:estimate_for_sieving_function}
+      S^{\L}(x,z;\mc{A}) = M(x;\mc{A})V^{\L}(z)+R^{\L}(x,z;\mc{A}).
+    \end{equation}
+    Therefore, estimates for the sieving function $S^{\L}(x,z;\mc{A})$ reduce to estimates for $M(x;\mc{A})$, $V^{\L}(z)$, and $R^{\L}(x,z;\mc{A})$. In order for \cref{equ:d_multiple_sifting_function_estimate} to be useful, the functions $M(x;\mc{A})$ and $r_{d}(x;\mc{A})$ should be such that we know the order of magnitude of $M(x;\mc{A})$ and that $r_{d}(x;\mc{A})$ is of smaller order of magnitude. In this case, it suffices to estimate $V^{\L}(z)$, and $R^{\L}(x,z;\mc{A})$. For $R^{\L}(x,z;\mc{A})$, we will usually discard possible cancellation from the individual terms $\l_{d}r_{d}(x;\mc{A})$ and use the trivial bound
     \[
-      L(s,A) = (-1)^{N}\det(A)s^{N}\det(I-s^{-1}A^{-1}).
+      R^{\L}(x,z;\mc{A}) \le |R^{\L}|(x,z;\mc{A}),
     \]
-    As $A$ is unitary, $L(s,A^{-1}) = L(s,A^{\ast}) = L(s,\conj{A})$. So the above equation can be expressed as
+    where
     \[
-      L(s,A) = (-1)^{N}\det(A)s^{N}L\left(\frac{1}{s},\conj{A}\right).
+      |R^{\L}|(x,z;\mc{A}) = \sum_{d \mid P(z)}|\l_{d}r_{d}(x;\mc{A})|.
     \]
-    This is the analogue of the functional equation for $L(s,A)$ and it is of shape $s \to \frac{1}{s}$. We identify the analogues of the gamma factor and conductor as $1$ and $N$ respectively. Letting $\L(s,A)$ be defined by
+    In order to obtain estimates for $V^{\L}(z)$, we express it in a more useful form that involves $V(z)$. For this, we define multiplicative arithmetic functions $h$ and $j$ defined by
     \[
-      \L(s,A) = s^{-\frac{N}{2}}L(s,A),
+      h(p^{r}) = \frac{g(p^{r})}{(1-g(p^{r}))} \quad \text{and} \quad j(p^{r}) = \frac{1}{(1-g(p^{r}))},
     \]
-    the functional equation can be expressed as
+    for all primes $p$ and $r \ge 0$. Moreover, these two formulas imply
     \[
-        \L(s,A) = (-1)^{N}\det(A) \L\left(\frac{1}{s},\conj{A}\right).
+      j(p^{r}) = \frac{h(p^{r})}{g(p^{r})} = 1+h(p^{r}).
     \]
-    From it, the analogue of root number is seen to be $(-1)^{N}\det(A)$ and $L(s,A)$ has dual $L(s,\conj{A})$. As the transformation $s \to \frac{1}{s}$ leaves the unit circle invariant, the unit circle is the analogue of the critical line. The fixed point of the transformation $s \to \frac{1}{s}$ is $s = 1$ which is the analogue of the central point. Moreover, as the zeros of $L(s,A)$ are precisely the eigenvalues of $A$ which lie on the unit circle, because $A$ is unitary, the analogue of the Riemann hypothesis is true for $L(s,A)$. We also have an analogue of the approximate functional equation. By substituting the polynomial representation of $L(s,A)$ into the functional equation, we obtain
+    We call $h$ the \textbf{relative density function}\index{relative density function}. In particular, $j = h \ast \mathbf{1}$. Now as $\t = \l \ast \mathbf{1}$, the M\"obius inversion formula (see \cref{append:The_Mobius_Function}) implies $\l = \t \ast \mu$ so that
     \[
-      \sum_{0 \le n \le N}a_{n}s^{n} = (-1)^{N}\det(A)s^{N}\sum_{0 \le n \le N}\conj{a_{n}}s^{-n} = (-1)^{N}\det(A)\sum_{0 \le n \le N}\conj{a_{n}}s^{N-n}.
+      V^{\L}(z) = \sum_{d \mid P(z)}\sum_{e \mid d}\t_{e}\mu\left(\frac{d}{e}\right)g(d).
     \]
-    Upon comparing coefficients, we find that
+    Making the change of variables $d \to ed$ and noting that $(d,e) = 1$ because $P(z)$ is square-free, we compute
+    \begin{align*}
+      V^{\L}(z) &= \sum_{de \mid P(z)}\t_{e}\mu(d)g(de) \\
+      &= \sum_{e \mid P(z)}\t_{e}g(e)\prod_{p \mid \frac{P(z)}{e}}(1-g(p)) \\
+      &= \sum_{e \mid P(z)}\t_{e}h(e)\prod_{p \mid P(z)}(1-g(p)),
+    \end{align*}
+    where the second line holds by the multiplicativity of $g$ and the definition of the M\"obius function. Defining the function $G^{\L}(z)$ by
     \[
-      a_{n} = (-1)^{N}\det(A)\conj{a_{N-n}},
+      G^{\L}(z) = \sum_{d \mid P(z)}\t_{d}g(d),
     \]
-    for $0 \le n \le N$. So for odd $N$,
+    for $z \ge 2$, \cref{equ:V_product_formula} further implies that
+    \begin{equation}\label{equ:estimate_for_V_function}
+      V^{\L}(z) = V(z)G^{\L}(z).
+    \end{equation}
+    Therefore estimates for $V^{\L}(z)$ reduce to estimates for $G^{\L}(z)$ and $V(z)$. In particular, \cref{equ:estimate_for_sieving_function,equ:estimate_for_V_function} together give the identity
     \[
-      L(s,A) = \sum_{0 \le n \le \frac{N-1}{2}}a_{n}s^{n}+(-1)^{N}\det(A)s^{N}\sum_{0 \le n \le \frac{N-1}{2}}\conj{a_{n}}s^{-n},
+      S^{\L}(x,z;\mc{A}) = M(x;\mc{A})V(z)G^{\L}(z)+R^{\L}(x,z;\mc{A}).
     \]
-    and for even $N$,
-    \[
-      L(s,A) = a_{\frac{N}{2}}s^{\frac{N}{2}}+\sum_{0 \le n \le \frac{N}{2}-1}a_{n}s^{n}+(-1)^{N}\det(A)s^{N}\sum_{0 \le n \le \frac{N}{2}-1}\conj{a_{n}}s^{-n}.
-    \]
-    These equations together are the analogue of the approximate functional equation. This similarity between $L$-functions and the characteristic polynomials of unitary matrices was heavily exploited by Conrey, Farmer, Keating, Rubinstein, and Snaith to make phenomenal conjectures about the  moments of $L$-functions.
