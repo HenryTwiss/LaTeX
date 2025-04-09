@@ -54,7 +54,7 @@
       \]
       where $a_{i}' = a_{i}a^{n-1-i}$ for $0 \le i \le n-1$, and so $a\k$ is the root of a monic polynomial with coefficients in $\Z$. Then $a\k \in \mc{O}_{K}$ and so $a\k = \a$ for some $\a \in \mc{O}_{K}$ which is equivalent to $\k = \frac{\a}{a}$. As $\Z \subseteq \mc{O}_{K}$, this also implies that $K$ is the field of fractions of $\mc{O}_{K}$. For the last statement, suppose $\k \in K$. If the minimal polynomial of $\k$ has integer coefficients then $\k$ is automatically an algebraic integer (since the minimal polynomial is monic). So suppose $\k$ is an algebraic integer so that $\k$ is a root of a monic polynomial $f(x) \in \Z[x]$. If $p_{\k}(x) \in \Q[x]$ is the minimal polynomial of $\k$, then $p_{\k}(x)$ divides $f(x)$ and thus all of the roots of $p_{\k}(x)$ algebraic integers too. By Vieta's formulas, the coefficients of $p_{\k}(x)$ algebraic integers as well. But then $p_{\k}(x) \in \Z[x]$. This completes the proof.
     \end{proof}
-
+  \section{Trace \& Norm}
     We will now require norms and traces of extensions of algebraic number fields. Let $L/K$ be a degree $n$ extension of algebraic number fields. In particular, $L$ is an $n$-dimensional vector space over $K$. The \textbf{trace}\index{trace} and \textbf{norm}\index{norm} of $L/K$, denoted $\Trace_{L/K}$ and $\Norm_{L/K}$ respectively, are defined by
     \[
       \Trace_{L/K}(\l) = \tr(T_{\l}) \quad \text{and} \quad \Norm_{L/K}(\l) = \det(T_{\l}),
@@ -83,7 +83,7 @@
     \[
       \Trace_{L/K}:L \to K \quad \text{and} \quad \Norm_{L/K}:L^{\ast} \to K^{\ast}.
     \]
-    We will now derive alternative descriptions of the trace and norm. To do this, we need to work in the algebraic closure $\conj{K}$ of $K$. As $L/K$ is degree $n$ and $K$ is a finite extension of $\Q$, there are exactly $n$ distinct $K$-embeddings of $L$ into $\conj{K}$ (each given by letting $\t$ be a primitive element for $L$ so that $L = K[\t]$ and sending $\t$ to one of its conjugate roots in the minimal polynomial $p_{\t}(x)$ of $\t$). We can now prove the following proposition:
+    We will now derive alternative descriptions of the trace and norm. To do this, we need to work in the algebraic closure $\conj{K}$ of $K$. As $L/K$ is degree $n$ and $K$ is a finite extension of $\Q$, there are exactly $n$ distinct $K$-embeddings $\s_{1},\ldots,\s_{n}$ of $L$ into $\conj{K}$ (each given by letting $\t$ be a primitive element for $L$ so that $L = K[\t]$ and sending $\t$ to one of its conjugate roots in the minimal polynomial $p_{\t}(x)$ of $\t$). Clearly $\s_{1},\ldots,\s_{n}$ send $\mc{O}_{L}$ to itself and fix $\mc{O}_{K}$ pointwise. Moreover, we prove the following proposition:
 
     \begin{proposition}\label{prop:formulas_for_trace_and_norm}
       Let $L/K$ be a degree $n$ extension of algebraic number fields and let $\s_{1},\ldots,\s_{n}$ denote the $K$-embeddings of $L$ in $\conj{K}$. For any $\l \in L$, the characteristic polynomial $f_{\l}(t)$ of $T_{\l}$ is a power of the minimal polynomial of $\l$ and satisfies
@@ -114,7 +114,7 @@
       \]
       the matrix of $T_{\l}$ is block diagonal with $d$ blocks each of the form
       \[
-        \begin{pmatrix} & 1 & & & \\ & & 1 & & \\ & & & \ddots & \\ & & & & 1 \\ -\k_{0} & -\k_{1} & -\k_{2} & \cdots & -\k_{m-1} \\ \end{pmatrix}.
+        \begin{pmatrix} & 1 & & \\ & & \ddots & \\ & & & 1 \\ -\k_{0} & -\k_{1} & \cdots & -\k_{m-1} \\ \end{pmatrix}.
       \]
       This is the companion matrix to $p_{\l}(t)$ and hence the characteristic polynomial is $p_{\l}(t)$ as well. Our claim follows since the matrix of $T_{\l}$ is block diagonal. Since $\l$ is algebraic over $K$ of degree $m$, $K(\l)$ is the splitting field of $p_{\l}(t)$ and there are $m$ distinct $K$-embeddings of $K(\l)$ into $\conj{L}$. Denote these $m$ embeddings by $\tau_{1},\ldots,\tau_{m}$. Then the embeddings $\s_{1},\ldots,\s_{n}$ are partitioned into $m$ many equivalence classes each of size $d$ (because $L/K(\l)$ is degree $d$) where $\s_{i}$ and $\s_{j}$ are in the same class if and only if $\s_{i}(\l) = \s_{j}(\l)$. In particular, a complete set of representatives is $\{\tau_{1},\ldots,\tau_{m}\}$. But then
       \[
@@ -493,7 +493,7 @@
       This shows $\phi$ is surjective completing the proof.
     \end{proof}
 
-    Now we can show that the norm of an integral ideal is multiplicative:
+    Now we can show that the norm of an integral ideal is completely multiplicative:
 
     \begin{proposition}\label{prop:ideal_norm_is_multiplicative}
       Let $K$ be an algebraic number field and let $\mf{a}$ and $\mf{b}$ be integral ideals. Then
@@ -529,7 +529,29 @@
     \[
       \Norm:I_{K} \to \Q^{\ast} \qquad \mf{f} \mapsto \Norm(\mf{f}).
     \]
-  \section{\todo{Ramification}}
+  \section{Ramification}
+    We now discuss the splitting of prime integral ideals in algebraic number fields. First, we need to introduce the concept of prime integral ideals above other prime integral ideals. Let $L/K$ be an extension of algebraic number fields and let $\mf{P}$ be a prime integral ideal of $L$. Then $\mf{P} \cap \mc{O}_{K}$ is a prime integral ideal of $K$. Indeed, it is clear that $\mf{P} \cap \mc{O}_{K}$ is an ideal of $\mc{O}_{K}$. It is proper because $1 \notin \mf{P} \cap \mc{O}_{K}$ as $\mf{P}$ does not contain units. It is nonzero because $\mc{O}_{L}/\mf{P}$ is a finite field by \cref{prop:prime_integral_ideals_are_maximal} and thus has characteristic dividing $\Norm(\mf{P})$ by definition of the norm so that $\Norm(\mf{P}) \in \mf{P}$. But as $\Norm(\mf{P})$ is also a positive integer, $\Norm(\mf{P}) \in \mf{P} \cap \Z$. To show that $\mf{P} \cap \mc{O}_{K}$ is prime, suppose $\a,\b \in \mc{O}_{K}$ are such that $\a\b \in \mf{P} \cap \mc{O}_{K}$. Then $\a\b \in \mf{P}$ and since $\mf{P}$ is prime either $\a \in \mf{P}$ or $\b \in \mf{P}$. But as $\a$ and $\b$ are both in $\mc{O}_{K}$, either $\a \in \mf{P} \cap \mc{O}_{K}$ or $\b \in \mf{P} \cap \mc{O}_{K}$ as desired. We have now shown that $\mf{P} \cap \mc{O}_{K}$ is a prime integral ideal of $K$. Hence
+    \[
+      \mf{P} \cap \mc{O}_{K} = \mf{p},
+    \]
+    for some prime integral ideal $\mf{p}$ of $K$. Accordingly, we say that $\mf{P}$ is \textbf{above}\index{above} $\mf{p}$, or equivalently, $\mf{p}$ is \textbf{below}\index{below} $\mf{P}$. Moreover, if $\mf{P}$ is above $\mf{p}$, then $\mf{P}$ must be a prime factor of $\mf{p}\mc{O}_{L}$. Indeed, $\mf{p} \subseteq \mf{P}$ so that $\mf{p}\mc{O}_{L} \subseteq \mf{P}$ and then the fact $\mf{P}$ is prime implies that some prime factor of $\mf{p}\mc{O}_{L}$ is contained in $\mf{P}$. Since prime integral ideals are maximal by \cref{prop:prime_integral_ideals_are_maximal}, this prime factor must be $\mf{P}$ itself. For the extension $K/\Q$, we see that every prime integral ideal $\mf{p}$ of $K$ lies above $p\Z$ of $\Z$ for a prime $p$ since these are exactly the prime integral ideals of $\Q$. That is,
+    \[
+      \mf{p} \cap \Z = p\Z.
+    \]
+    In this case, we say $\mf{p}$ is \textbf{above}\index{above} $p$, or equivalently, $p$ is \textbf{below}\index{below} $\mf{p}$. In particular, there is a unique prime $p$ for which $p \in \mf{p}$ and necessarily $\mf{p}$ is above $p$. Moreover, if we have a tower $L/K/\Q$ with $\mf{P}$ above $\mf{p}$ and $\mf{p}$ above $p$, then $\mf{P}$ is above $p$. This follows from the chain
+    \[
+      \mf{P} \cap \Z = \mf{P} \cap \mc{O}_{K} \cap \Z = \mf{p} \cap \Z = p\Z.
+    \]
+    Looking at the tower $L/K/\Q$, we illustrate these relations by the extension
+
+    \begin{center}
+      \begin{tikzcd}
+        \mf{P} \subset \mc{O}_{L} \subset L \arrow[dash]{d} \\
+        \mf{p} \subset \mc{O}_{K} \subset K \arrow[dash]{d} \\
+        p\Z \subset \Z \subset \Q
+      \end{tikzcd}
+    \end{center}
+
     Let $K$ be an algebraic number field of degree $n$. Then as we have already noted, there are exactly $n$ distinct $\Q$-embeddings into its algebraic closure $\conj{K}$. Let $r_{1}$ and $2r_{2}$ denote the number of real and complex embeddings respectively (the complex embeddings come in pairs because if $\s$ is a complex embedding then so is its conjugate $\conj{\s}$). We call the pair $(r_{1},r_{2})$ the \textbf{signature}\index{signature} of $K$. Let $\s_{1},\ldots,\s_{n}$ denote these distinct embeddings and let $\{\a_{1},\ldots,\a_{n}\}$ be an integral basis for $K$. Consider the matrix 
     \[
       M(\a_{1},\ldots,\a_{n}) = (\s_{i}(\a_{j}))_{i,j}. 
@@ -595,22 +617,11 @@
       linearity of the trace implies that these $r$ equations are equivalent to the fact that $\Trace(\a_{i}\l) = 0$ for all $i$. As $\{\a_{1},\ldots,\a_{n}\}$ is a basis for $K$, it follows that $\l \in K$ is a nonzero element for which $\Trace(\k\l) = 0$ for all $\k \in K$. But this is impossible by \cref{lem:trace_is_nondegenerate}. Hence $\D_{K} \neq 0$.
     \end{proof}
 
-    Now let $\mf{p}$ be a prime integral ideal. Then $\mf{p} \cap \Z$ is a prime ideal of $\Z$. Indeed, it is clear that $\mf{p} \cap \Z$ is an ideal of $\Z$. It is proper because $1 \notin \mf{p} \cap \Z$ as $\mf{p}$ does not contain units. It is nonzero because $\mc{O}_{K}/\mf{p}$ is a finite field by \cref{prop:prime_integral_ideals_are_maximal} and thus has characteristic dividing $\Norm(\mf{p})$ by definition of the norm so that $\Norm(\mf{p}) \in \mf{p}$. But as $\Norm(\mf{p})$ is also a positive integer, $\Norm(\mf{p}) \in \mf{p} \cap \Z$. To show that $\mf{p} \cap \Z$ is prime, suppose $a$ and $b$ are integers such that $ab \in \mf{p} \cap \Z$. Then $ab \in \mf{p}$ and since $\mf{p}$ is prime either $a \in \mf{p}$ or $b \in \mf{p}$. But as $a$ and $b$ are both integers, either $a \in \mf{p} \cap \Z$ or $b \in \mf{p} \cap \Z$ as desired. We have now shown that $\mf{p} \cap \Z$ is a prime ideal of $\Z$. As all prime ideals of $\Z$ are of the form $p\Z$ for some prime $p$, we have that
-    \[
-      \mf{p} \cap \Z = p\Z,
-    \]
-    for a unique prime $p$. Accordingly, we say that $\mf{p}$ is \textbf{above}\index{above} $p\Z$, or equivalently, $p\Z$ is \textbf{below}\index{below} $\mf{p}$. Moreover, if $\mf{p}$ is above $p\Z$, then $\mf{p}$ must be a prime factor of $p\mc{O}_{K}$. Indeed, $p\Z \subseteq \mf{p}$ so that $p\mc{O}_{K} \subseteq \mf{p}$ and then the fact $\mf{p}$ is prime implies that some prime factor of $p\mc{O}_{K}$ is contained in $\mf{p}$. Since prime integral ideals are maximal by \cref{prop:prime_integral_ideals_are_maximal}, this prime factor must be $\mf{p}$ itself. We illustrate this relation by the extension
-    \begin{center}
-      \begin{tikzcd}
-        \mf{p} \subset \mc{O}_{K} \subset K \arrow[dash]{d} \\
-        p\Z \subset \Z \subset \Q
-      \end{tikzcd}
-    \end{center}
     Since $\mf{p}$ and $p\Z$ are maximal in $\mc{O}_{K}$ and $\Z$ respectively (by \cref{prop:prime_integral_ideals_are_maximal}), we have the residue fields $\mc{O}_{K}/\mf{p}$ and $\Z/p\Z$. In particular, $\Z/p\Z \cong \F_{p}$ is the finite field with $p$ elements. It turns out that $\mc{O}_{K}/\mf{p}$ is a finite dimensional vector space over $\F_{p}$. To see this, consider the homomorphism
     \[
       \phi:\Z \to \mc{O}_{K}/\mf{p} \qquad a \to a \tmod{\mf{p}}.
     \]
-    Note that $\ker\phi = \mf{p} \cap \Z$ and hence $\ker\phi = p\Z$ since $\mf{p}$ is above $p\Z$. By the isomorphism theorems, $\phi$ induces an injection $\phi:\Z/p\Z \to \mc{O}_{K}/\mf{p}$. By \cref{prop:residue_of_integral_ideal_is_finite}, $\mc{O}_{K}/\mf{p}$ is finite and thus a finite field containing $\Z/p\Z$. Necessarily $\mc{O}_{K}/\mf{p}$ is a finite dimensional vector space over $\F_{p}$. Accordingly, for a prime integral ideal $\mf{p}$ we define the \textbf{inertia degree}\index{inertia degree} $f_{\mf{p}}$ of $\mf{p}$ by
+    Note that $\ker\phi = \mf{p} \cap \Z$ and hence $\ker\phi = p\Z$ since $\mf{p}$ is above $p$. By the isomorphism theorems, $\phi$ induces an injection $\phi:\Z/p\Z \to \mc{O}_{K}/\mf{p}$. By \cref{prop:residue_of_integral_ideal_is_finite}, $\mc{O}_{K}/\mf{p}$ is finite and thus a finite field containing $\Z/p\Z$. Necessarily $\mc{O}_{K}/\mf{p}$ is a finite dimensional vector space over $\F_{p}$. Accordingly, for a prime integral ideal $\mf{p}$ we define the \textbf{inertia degree}\index{inertia degree} $f_{\mf{p}}$ of $\mf{p}$ by
     \[
       f_{\mf{p}} = [\mc{O}_{K}/\mf{p}:\F_{p}].
     \]
@@ -618,7 +629,7 @@
     \[
       \Norm(\mf{p}) = |\mc{O}_{K}/\mf{p}| = |\F_{p}^{f_{\mf{p}}}| = p^{f_{\mf{p}}}.
     \]
-    Now suppose $\mf{p}$ is above $p\Z$ for the prime $p$. Then, as we have noted, $\mf{p}$ is a prime factor of $p\mc{O}_{K}$. The \textbf{ramification index}\index{ramification index} $e_{\mf{p}}$ of $\mf{p}$ is the positive integer such that $p\mc{O}_{K}\mf{p}^{-e_{\mf{p}}}$ is relatively prime to $\mf{p}$. If $p\mc{O}_{K}$ has prime factors $\mf{p}_{1},\ldots,\mf{p}_{r}$, then the prime factorization of $p\mc{O}_{K}$ is
+    Now suppose $\mf{p}$ is above $p$ for a prime $p$. Then, as we have noted, $\mf{p}$ is a prime factor of $p\mc{O}_{K}$. The \textbf{ramification index}\index{ramification index} $e_{\mf{p}}$ of $\mf{p}$ is the positive integer such that $p\mc{O}_{K}\mf{p}^{-e_{\mf{p}}}$ is relatively prime to $\mf{p}$. If $p\mc{O}_{K}$ has prime factors $\mf{p}_{1},\ldots,\mf{p}_{r}$, then the prime factorization of $p\mc{O}_{K}$ is
     \[
       p\mc{O}_{K} = \mf{p}_{1}^{e_{\mf{p}_{1}}} \cdots \mf{p}_{r}^{e_{\mf{p}_{r}}}.
     \]
@@ -626,6 +637,78 @@
     \[
       p\mc{O}_{K} = \mf{p}_{1} \cdots \mf{p}_{r},
     \]
-    if and only if $p$ is unramified.
+    if and only if $p$ is unramified. Moreover, we say $p$ is \textbf{totally ramified}\index{totally ramified} if $r = 1$ and is \textbf{inert}\index{inert} if $p\mc{O}_{K}$ is prime. In particular, $p$ is totally ramified if and only if $p\mc{O}_{K}$ is a power of a prime integral ideal $\mf{p}$ and necessarily $\mf{p}$ is the only prime integral ideal above $p$. The degree of an algebraic number field is connected to the inertia degree and ramification index via the following proposition:
+
+    \begin{proposition}
+      Let $K$ be an algebraic number field of degree $n$ and let $p$ be a prime. Suppose $p\mc{O}_{K}$ has prime factorization
+      \[
+        p\mc{O}_{K} = \mf{p}_{1}^{e_{\mf{p}_{1}}} \cdots \mf{p}_{r}^{e_{\mf{p}_{r}}}.
+      \]
+      Then
+      \[
+        n = \sum_{1 \le i \le r}e_{\mf{p}_{i}}f_{\mf{p}_{i}}.
+      \]
+    \end{proposition}
+    \begin{proof}
+      Since $p$ is an integer and $K$ is of degree $n$, on the one hand
+      \[
+        \Norm(p\mc{O}_{K}) = \Norm(p) = p^{n}.
+      \]
+      On the other hand, complete multiplicativity of the norm by \cref{prop:ideal_norm_is_multiplicative} implies
+      \[
+        \Norm(p\mc{O}_{K}) = \Norm(\mf{p}_{1})^{e_{\mf{p}_{1}}} \cdots \Norm(\mf{p}_{r})^{e_{\mf{p}_{r}}} = p^{e_{\mf{p}_{1}}f_{\mf{p}_{1}}} \cdots p^{e_{\mf{p}_{r}}f_{\mf{p}_{r}}}.
+      \]
+      Thus
+      \[
+        p^{n} = p^{e_{\mf{p}_{1}}f_{\mf{p}_{1}}} \cdots p^{e_{\mf{p}_{r}}f_{\mf{p}_{r}}},
+      \]
+      and the claim follows upon comparing exponents.
+    \end{proof}
+
+    Ramification of primes is intimately connected to the discriminant of an algebraic number field. We will show that if $p$ is ramified then $p$ divides the discriminant $\D_{K}$:
+
+    \begin{theorem}\label{thm:ramification_implies_division}
+      Let $K$ be an algebraic number field. Then if $p$ is ramified, $p$ divides $\D_{K}$.
+    \end{theorem}
+    \begin{proof}
+      Suppose $p$ is a ramified prime. Then there exists a prime integral ideal $\mf{p}$ such that
+      \[
+        p\mc{O}_{K} = \mf{p}\mf{a},
+      \]
+      where $\mf{p}$ is a prime factor of $\mf{a}$. In particular, the prime factors of $\mf{a}$ are the same as the prime factors of $p\mc{O}_{K}$. Now let $\{\a_{1},\ldots,\a_{n}\}$ be an integral basis for $K$. By uniqueness of the prime factorization of integral ideals, there exists a nonzero $\a \in \mf{a}-p\mc{O}_{K}$. Then
+      \[
+        \a = a_{1}\a_{1}+\cdots+a_{n}\a_{n},
+      \]
+      with $a_{i} \in \Z$ not all zero for $1 \le i \le n$. Moreover, as $\a \notin p\mc{O}_{K}$, there is some $a_{i}$ that is not divisible by $p$. Without loss of generality, we may assume that $a_{1}$ is not divisible by $p$. Recall that
+      \[
+        \D_{K} = \det\left(\begin{pmatrix} \s_{1}(\a_{1}) & \cdots & \s_{1}(\a_{n}) \\ \vdots & & \vdots \\ \s_{n}(\a_{1}) & \cdots & \s_{n}(\a_{n}) \end{pmatrix}\right)^{2},
+      \]
+      where $\s_{1},\ldots,\s_{n}$ are the $n$ distinct $\Q$-embeddings of $K$ into $\conj{K}$. Replacing $\a_{1}$ by $\a$, set
+      \[
+        D = \det\left(\begin{pmatrix} \s_{1}(\a) & \s_{1}(\a_{2}) & \cdots & \s_{1}(\a_{n}) \\ \vdots & \vdots & & \vdots \\ \s_{n}(\a) & \s_{n}(\a_{2}) & \cdots & \s_{n}(\a_{n}) \end{pmatrix}\right)^{2}.
+      \]
+      The the identity
+      \[
+        \begin{pmatrix} \s_{1}(\a) & \s_{1}(\a_{2}) & \cdots & \s_{1}(\a_{n}) \\ \vdots & \vdots & & \vdots \\ \s_{n}(\a) & \s_{n}(\a_{2}) & \cdots & \s_{n}(\a_{n}) \end{pmatrix} = \begin{pmatrix} \s_{1}(\a_{1}) & \cdots & \s_{1}(\a_{n}) \\ \vdots & & \vdots \\ \s_{n}(\a_{1}) & \cdots & \s_{n}(\a_{n}) \end{pmatrix}\begin{pmatrix} a_{1} & & & \\ a_{2} & 1 & & \\ \vdots & & \ddots & & \\ a_{n} & & & 1 \end{pmatrix},
+      \]
+      and that $\s_{1},\ldots,\s_{n}$ are embeddings together imply
+      \[
+        D = \D_{K}\a_{1}^{2}.
+      \]
+      In particular, $D$ is a positive integer. Since $p \nmid \a_{1}$, it suffices to show that $p \mid D$. To accomplish this, let $L$ be the Galois closure of $K/\Q$. Then $L/K$ is a finite extension so that $L$ is an algebraic number field and $\s_{1},\ldots,\s_{n} \in \Gal(L/\Q)$. Moreover, as $\a \in \mf{a}$ and the prime factors of $\mf{a}$ are the same as the prime factors of $p\mc{O}_{K}$, $\a \in \mf{p}$ for all prime integral ideals $\mf{p}$ above $p$ (recall $p\mc{O}_{K} \subseteq \mf{p}$ if $\mf{p}$ is above $p$). As $\a \in L$ (because $L$ is an extension of $K$), we claim that $\a$ belongs to all of the prime integral ideals $\mf{P}$ above such $\mf{p}$ as well. For if $\mf{P}$ is above $\mf{p}$, then $\mf{p} \subseteq \mf{P}$ and hence $\a \in \mf{P}$ because $\a \in \mf{p}$. In particular, $\a$ is an element of $\mf{P}$ for all $\mf{P}$ over $p$. Now let $\s \in \Gal(L/\Q)$. As $\s$ is an automorphism of $L$, $\s(\mf{P})$ is a prime integral ideal. Since $\s$ fixes $\Q$ pointwise and $\mf{P}$ is above $p$, we have that $\s(p) = p$ and $p \in \s(\mf{P})$. This means $\s(\mf{P})$ is above $p$ and so $\a \in \s(\mf{P})$. Since $\s$ was arbitrary, it follows that $\s(\a) \in \mf{P}$ for all $\s \in \Gal(L/\Q)$. In particular, $\s_{i}(\a) \in \mf{P}$ for all $i$ and so the first column of the matrix
+      \[
+        \begin{pmatrix} \s_{1}(\a) & \s_{1}(\a_{2}) & \cdots & \s_{1}(\a_{n}) \\ \vdots & \vdots & & \vdots \\ \s_{n}(\a) & \s_{n}(\a_{2}) & \cdots & \s_{n}(\a_{n}) \end{pmatrix},
+      \]
+      is an element of $\mf{P}$. Thus $D \in \mf{B}$. But as $D$ is an integer, $D \in \mf{P} \cap \Z = p\Z$ and hence $p \mid D$. This completes the proof.
+    \end{proof}
+
+    As an immediate corollary, we see that only finitely many primes can ramify:
+
+    \begin{corollary}
+      Let $K$ be an algebraic number field. Then finitely many primes ramify in $K$.
+    \end{corollary}
+    \begin{proof}
+      There are only finitely many prime divisors of $\D_{K}$. Hence finitely many primes ramify by \cref{thm:ramification_implies_division}. 
+    \end{proof}
   \section{\todo{The Ideal Class Group}}
   \section{\todo{Dirichlet's Unit Theorem}}
