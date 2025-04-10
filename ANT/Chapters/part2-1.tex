@@ -19,7 +19,7 @@
       \[
         g(\k) = r(\k) = a_{n-1}\k^{n-1}+\cdots+a_{1}\k+a_{0}.
       \]
-      As $g(x)$ was arbitrary, we see that $\{1,\k,\ldots,\k^{n-1}\}$ is a generating set for $\Z[\k]$ as a $\Z$-module. Now suppose $\k_{1},\ldots,\k_{n} \in K$ are all algebraic integers. We will prove that $\Z[\k_{1},\ldots,\k_{n}]$ is finitely generated as an $\Z$-module by induction. Our previous work implies the base case. So assume by induction that $R = \Z[\k_{1},\ldots,\k_{n-1}]$ is a finitely generated $\Z$-module. Then $R[\k_{n}] = A[\k_{1},\ldots,\k_{n}]$ is a finitely generated $R$-module and hence a finitely generated $\Z$-module as well by our induction hypothesis. Now suppose $A[\k_{1},\ldots,\k_{n}]$ is a finitely generated $\Z$-module. Let $\{\w_{1},\ldots,\w_{r}\}$ be a set of generators. Then for any $\k \in A[\k_{1},\ldots,\k_{n}]$, we have
+      As $g(x)$ was arbitrary, we see that $\{1,\k,\ldots,\k^{n-1}\}$ is a generating set for $\Z[\k]$ as a $\Z$-module. Now suppose $\k_{1},\ldots,\k_{n} \in K$ are all algebraic integers. We will prove that $\Z[\k_{1},\ldots,\k_{n}]$ is finitely generated as an $\Z$-module by induction. Our previous work implies the base case. So assume by induction that $R = \Z[\k_{1},\ldots,\k_{n-1}]$ is a finitely generated $\Z$-module. Then $R[\k_{n}] = A[\k_{1},\ldots,\k_{n}]$ is a finitely generated $R$-module and hence a finitely generated $\Z$-module as well by our induction hypothesis. Now suppose $A[\k_{1},\ldots,\k_{n}]$ is a finitely generated $\Z$-module. Let $\{\w_{1},\ldots,\w_{r}\}$ be a basis for $A[\k_{1},\ldots,\k_{n}]$. Then for any $\k \in A[\k_{1},\ldots,\k_{n}]$, we have
       \[
         \k\w_{i} = \sum_{1 \le j \le r}a_{i,j}\w_{j},
       \]
@@ -50,43 +50,47 @@
       \]
       with $a_{i} \in \Z$ for $0 \le i \le n-1$ and $a \neq 0$. We claim that $a\k$ is an algebraic integer. Indeed, multiplying the previous identity by $a^{n-1}$ yields
       \[
-        (a\k)^{n}+a_{n-1}'(a\k)^{n-1}+\cdots+a_{0}' = 0,
+        (a\k)^{n}+a'_{n-1}(a\k)^{n-1}+\cdots+a'_{0} = 0,
       \]
-      where $a_{i}' = a_{i}a^{n-1-i}$ for $0 \le i \le n-1$, and so $a\k$ is the root of a monic polynomial with coefficients in $\Z$. Then $a\k \in \mc{O}_{K}$ and so $a\k = \a$ for some $\a \in \mc{O}_{K}$ which is equivalent to $\k = \frac{\a}{a}$. As $\Z \subseteq \mc{O}_{K}$, this also implies that $K$ is the field of fractions of $\mc{O}_{K}$. For the last statement, suppose $\k \in K$. If the minimal polynomial of $\k$ has integer coefficients then $\k$ is automatically an algebraic integer (since the minimal polynomial is monic). So suppose $\k$ is an algebraic integer so that $\k$ is a root of a monic polynomial $f(x) \in \Z[x]$. If $p_{\k}(x) \in \Q[x]$ is the minimal polynomial of $\k$, then $p_{\k}(x)$ divides $f(x)$ and thus all of the roots of $p_{\k}(x)$ algebraic integers too. By Vieta's formulas, the coefficients of $p_{\k}(x)$ algebraic integers as well. But then $p_{\k}(x) \in \Z[x]$. This completes the proof.
+      where $a'_{i} = a_{i}a^{n-1-i}$ for $0 \le i \le n-1$, and so $a\k$ is the root of a monic polynomial with coefficients in $\Z$. Then $a\k \in \mc{O}_{K}$ and so $a\k = \a$ for some $\a \in \mc{O}_{K}$ which is equivalent to $\k = \frac{\a}{a}$. As $\Z \subseteq \mc{O}_{K}$, this also implies that $K$ is the field of fractions of $\mc{O}_{K}$. For the last statement, suppose $\k \in K$. If the minimal polynomial of $\k$ has integer coefficients then $\k$ is automatically an algebraic integer (since the minimal polynomial is monic). So suppose $\k$ is an algebraic integer so that $\k$ is a root of a monic polynomial $f(x) \in \Z[x]$. If $p_{\k}(x) \in \Q[x]$ is the minimal polynomial of $\k$, then $p_{\k}(x)$ divides $f(x)$ and thus all of the roots of $p_{\k}(x)$ algebraic integers too. By Vieta's formulas, the coefficients of $p_{\k}(x)$ algebraic integers as well. But then $p_{\k}(x) \in \Z[x]$. This completes the proof.
     \end{proof}
-  \section{Trace \& Norm}
-    We will now require norms and traces of extensions of algebraic number fields. Let $L/K$ be a degree $n$ extension of algebraic number fields. In particular, $L$ is an $n$-dimensional vector space over $K$. The \textbf{trace}\index{trace} and \textbf{norm}\index{norm} of $L/K$, denoted $\Trace_{L/K}$ and $\Norm_{L/K}$ respectively, are defined by
+  \section{Traces \& Norms}
+    We will now require norms and traces of extensions of fields. Let $L/K$ be a degree $n$ field extension (not necessarily of algebraic number fields). In particular, $L$ is an $n$-dimensional vector space over $K$. Let $R \subseteq L$ be a free $K$-algebra of rank $m$. Then the \textbf{trace}\index{trace} and \textbf{norm}\index{norm} of $R$, denoted $\Trace_{R/K}$ and $\Norm_{R/K}$ respectively, are defined by
     \[
-      \Trace_{L/K}(\l) = \tr(T_{\l}) \quad \text{and} \quad \Norm_{L/K}(\l) = \det(T_{\l}),
+      \Trace_{R/K}(\rho) = \tr(T_{\rho}) \quad \text{and} \quad \Norm_{R/K}(\rho) = \det(T_{\rho}),
     \]
-    for any $\l \in L$, where $T_{\l}:L \to L$ is the linear operator defined by
+    for any $\rho \in R$, where $T_{\rho}:R \to R$ is the linear operator defined by
     \[
-      T_{\l}(x) = \l x,
+      T_{\rho}(x) = \rho x,
     \]
-    for all $x \in L$. That is, $T_{\l}$ is the multiplication by $\l$ map. In the case of the extension $K/\Q$, we write $\Trace = \Trace_{K/\Q}$ and $\Norm = \Norm_{K/\Q}$. Moreover, for any $\k \in K$ we call $\Trace(\k)$ and $\Norm(\k)$ the \textbf{trace}\index{trace} and \textbf{norm}\index{norm} of $\k$ respectively. Letting $f_{\l}(t)$ denote the characteristic polynomial of $T_{\l}$, we have
+    for all $x \in R$. That is, $T_{\rho}$ is the multiplication by $\rho$ map. Letting $f_{\rho}(t)$ denote the characteristic polynomial of $T_{\rho}$, we have
     \[
-      f_{\l}(t) = \det(tI-T_{\l}) = t^{n}-\k_{n-1}t^{n-1}+\cdots+(-1)^{n}\k_{0},
+      f_{\rho}(t) = \det(tI-T_{\rho}) = t^{n}-\k_{n-1}t^{n-1}+\cdots+(-1)^{n}\k_{0},
     \]
     with $\k_{i} \in K$ for $0 \le i \le n-1$. Then the trace and the norm are given by
     \begin{equation}\label{equ:trace_and_norm_characteristic_polynomial}
-      \Trace_{L/K}(\l) = \k_{n-1} \quad \text{and} \quad \Norm_{L/K}(\l) = \k_{0},
+      \Trace_{R/K}(\rho) = \k_{n-1} \quad \text{and} \quad \Norm_{R/K}(\rho) = \k_{0},
     \end{equation}
     and therefore take values in $K$. Moreover, we have
     \[
-      \Trace_{L/K}(\k\l) = \k\Trace_{L/K}(\l) \quad \text{and} \quad \Norm_{L/K}(\k\l) = \k^{n}\Norm_{L/K}(\l),
+      \Trace_{R/K}(\k\rho) = \k\Trace_{R/K}(\rho) \quad \text{and} \quad \Norm_{R/K}(\k\rho) = \k^{m}\Norm_{R/K}(\rho),
     \]
     for all $\k \in K$ because $T_{\k\l} = \k T_{\l}$. In particular, $T_{1} = I$ implies
     \[
-      \Trace_{L/K}(1) = n \quad \text{and} \quad \Norm_{L/K}(1) = 1.
+      \Trace_{R/K}(1) = m \quad \text{and} \quad \Norm_{R/K}(1) = 1.
     \]
-    We also see that $\Norm_{L/K}(\l) = 0$ if and only if $\l = 0$ (if $\l \neq 0$ then $\l$ is invertible and hence $T_{\l}$ is too and so has nonzero determinant). As $T_{\l+\nu} = T_{\l}+T_{\nu}$ and $T_{\l \nu} = T_{\l}T_{\nu}$, we obtain homomorphisms 
+    As $T_{\l+\nu} = T_{\l}+T_{\nu}$ and $T_{\l \nu} = T_{\l}T_{\nu}$, we obtain homomorphisms
+    \[
+      \Trace_{R/K}:R \to K \quad \text{and} \quad \Norm_{R/K}:R \to K.
+    \]
+    In the case $R = L$, we call $\Trace_{L/K}$ and $\Norm_{L/K}$ the \textbf{trace}\index{trace} and \textbf{norm}\index{norm} of $L/K$. Moreover, $\Norm(\l) = 0$ if and only if $\l = 0$ because otherwise $T_{\l}$ has inverse $T_{\l^{-1}}$ and hence nonzero determinant. Therefore we obtain homomorphisms
     \[
       \Trace_{L/K}:L \to K \quad \text{and} \quad \Norm_{L/K}:L^{\ast} \to K^{\ast}.
     \]
-    We will now derive alternative descriptions of the trace and norm. To do this, we need to work in the algebraic closure $\conj{K}$ of $K$. As $L/K$ is degree $n$ and $K$ is a finite extension of $\Q$, there are exactly $n$ distinct $K$-embeddings $\s_{1},\ldots,\s_{n}$ of $L$ into $\conj{K}$ (each given by letting $\t$ be a primitive element for $L$ so that $L = K[\t]$ and sending $\t$ to one of its conjugate roots in the minimal polynomial $p_{\t}(x)$ of $\t$). Clearly $\s_{1},\ldots,\s_{n}$ send $\mc{O}_{L}$ to itself and fix $\mc{O}_{K}$ pointwise. Moreover, we prove the following proposition:
+    In the specialized setting $K/\Q$ for an algebraic number field $K$, we write $\Trace = \Trace_{K/\Q}$ and $\Norm = \Norm_{K/\Q}$. Moreover, for any $\k \in K$ we call $\Trace(\k)$ and $\Norm(\k)$ the \textbf{trace}\index{trace} and \textbf{norm}\index{norm} of $\k$ respectively. More generally, when $L/K$ is separable, we can derive alternative descriptions of the trace and norm of $L/K$. This additional assumption is weak because the only situations we will be interested in are finite extensions of $\Q$ and $\Z/p\Z$ which are always separable (because both $\Q$ and $\Z/p\Z$ are perfect). In any case, to do this we need to work in the algebraic closure $\conj{K}$ of $K$. As $L/K$ is a degree $n$ separable extension, there are exactly $n$ distinct $K$-embeddings $\s_{1},\ldots,\s_{n}$ of $L$ into $\conj{K}$ (each given by letting $\t$ be a primitive element for $L$ so that $L = K[\t]$ and sending $\t$ to one of its conjugate roots in the minimal polynomial $p_{\t}(x)$ of $\t$). Clearly $\s_{1},\ldots,\s_{n}$ send $\mc{O}_{K}$ to itself and fix $\mc{O}_{K}$ pointwise. Moreover, we prove the following proposition:
 
     \begin{proposition}\label{prop:formulas_for_trace_and_norm}
-      Let $L/K$ be a degree $n$ extension of algebraic number fields and let $\s_{1},\ldots,\s_{n}$ denote the $K$-embeddings of $L$ in $\conj{K}$. For any $\l \in L$, the characteristic polynomial $f_{\l}(t)$ of $T_{\l}$ is a power of the minimal polynomial of $\l$ and satisfies
+      Let $L/K$ be a degree $n$ separable extension and let $\s_{1},\ldots,\s_{n}$ denote the $K$-embeddings of $L$ in $\conj{K}$. For any $\l \in L$, the characteristic polynomial $f_{\l}(t)$ of $T_{\l}$ is a power of the minimal polynomial of $\l$ and satisfies
       \[
         f_{\l}(t) = \prod_{1 \le i \le n}(t-\s_{i}(\l)).
       \]
@@ -194,6 +198,134 @@
       \]
       and hence $\mc{O}_{K}[\k]$ is a finitely generated $\Z$-module because $\mc{O}_{K}$ is by \cref{thm:ring_of_integers_finitely_generated}. As $\Z[\k] \subseteq \mc{O}_{K}[\k]$, $\Z[\k]$ is also a finitely generated $\Z$-module. Hence $\k$ is an algebraic integer by \cref{prop:algebraic_integer_if_finitely_generated}.
     \end{proof}
+  \section{Discriminants}
+    Let $L/K$ be a degree $n$ separable extension and $R \subseteq L$ be a free $K$-algebra of rank $m$. If $\{\rho_{1},\ldots,\rho_{m}\}$ is a basis for $R$, we set
+    \[
+      \disc_{R/K}(\rho_{1},\ldots,\rho_{m}) = \det((\Trace_{R/K}(\rho_{i}\rho_{j}))_{i,j}).
+    \]
+    In particular, $\disc_{R/K}(\rho_{1},\ldots,\rho_{m})$ is an element of $K$. It is also independent of the choice of basis up to elements of $(K^{\ast})^{2}$. Indeed, if $\{\rho'_{1},\ldots,\rho'_{m}\}$ is another basis then we have
+    \[
+      \rho'_{i} = \sum_{1 \le j \le m}\k_{i,j}\rho_{j},
+    \]
+    with $\k_{i,j} \in K$ for $1 \le i,j \le m$. Then $(\k_{i,j})_{i,j}$ is the base change matrix from $\{\rho_{1},\ldots,\rho_{m}\}$ to $\{\rho'_{1},\ldots,\rho'_{m}\}$ and so it has nonzero determinant. Thus $\det((\k_{i,j})_{i,j}) \in K^{\ast}$. Moreover, we have
+    \[
+      (\Trace_{R/K}(\rho'_{i}\rho'_{j}))_{i,j} = (\k_{i,j})_{i,j}(\Trace_{R/K}(\rho_{i}\rho_{j}))_{i,j}(\k_{i,j})_{i,j}^{t},
+    \]
+    which, upon taking the determinant, shows that
+    \begin{equation}\label{equ:discriminant_base_change}
+      \disc_{R/K}(\rho'_{1},\ldots,\rho'_{m}) = \det((\k_{i,j})_{i,j})^{2}\disc_{R/K}(\rho_{1},\ldots,\rho_{m}),
+    \end{equation}
+    as claimed. We define the \textbf{discriminant}\index{discriminant} $\disc_{K}(R)$ of $R$ by
+    \[
+      \disc_{K}(R) = \disc_{R/K}(\rho_{1},\ldots,\rho_{m}) \pmod{(K^{\ast})^{2}}.
+    \]
+    for any basis $\{\rho_{1},\ldots,\rho_{m}\}$ of $R$. By what we have shown, $\disc_{K}(R)$ is well-defined. The discriminant is also multiplicative with respect to direct sums:
+
+    \begin{proposition}\label{prop:discriminant_and_direct_sums}
+      Let $L/K$ be a finite separable extension $R \subseteq L$ be a free $K$-algebra of rank $m$. Suppose we have a direct sum decomposition
+      \[
+        R = R_{1} \op R_{2},
+      \]
+      for free $K$-algebras $R_{1}$ and $R_{2}$ of ranks $m_{1}$ and $m_{2}$ respectively with $m = m_{1}+m_{2}$. Let $\{\eta_{1},\ldots,\eta_{m_{1}}\}$ and $\{\g_{1},\ldots,\g_{m_{2}}\}$ be bases of $R_{1}$ and $R_{2}$ respectively. Then
+      \[
+        \disc_{R/K}(\eta_{1},\ldots,\eta_{m_{1}},\g_{1},\ldots,\g_{m_{2}}) = \disc_{R/K}(\eta_{1},\ldots,\eta_{m_{1}})\disc_{R}(\g_{1},\ldots,\g_{m_{2}}).
+      \]
+      In particular,
+      \[
+        \disc_{K}(R) = \disc_{K}(R_{1})\disc_{K}(R_{2}).
+      \]
+    \end{proposition}
+    \begin{proof}
+      The second statement follows immediately from the first. To prove the first statement, write
+      \[
+        \disc_{R/K}(\eta_{1},\ldots,\eta_{m_{1}}) = \det((\Trace_{R/K}(\eta_{i}\eta_{j}))_{i,j}) \quad \text{and} \quad \disc_{R}(\g_{1},\ldots,\g_{m_{2}}) = \det((\Trace_{R/K}(\g_{k}\g_{\ell}))_{k,\ell}).
+      \]
+      As $R$ is the direct product of $R_{1}$ and $R_{2}$, we have $\eta_{i}\g_{k} = 0$ for all $1 \le i \le m_{1}$ and $1 \le k \le m_{2}$. It follows that $\disc_{R/K}(\eta_{1},\ldots,\eta_{m_{1}},\g_{1},\ldots,\g_{m_{2}})$ is the determinant of the block diagonal matrix
+      \[
+        \begin{pmatrix} (\Trace_{R/K}(\eta_{i}\eta_{j}))_{i,j} & 0 \\ 0 & (\Trace_{R/K}(\g_{k}\g_{\ell}))_{k,\ell} \end{pmatrix}.
+      \]
+      Moreover, we have
+      \[
+        \Trace_{R/K}(\rho_{1}) = \Trace_{R_{1}/K}(\rho_{1}) \quad \text{and} \quad \Trace_{R/K}(\rho_{2}) = \Trace_{R_{2}/K}(\rho_{2})
+      \]
+      for any $\rho_{1} \in R_{1}$ and $\rho_{2} \in R_{2}$. Indeed, multiplication by $\rho_{1}$ and $\rho_{2}$ annihilate $R_{2}$ and $R_{1}$ respectively. But then
+      \[
+        \begin{pmatrix} (\Trace_{R/K}(\eta_{i}\eta_{j}))_{i,j} & 0 \\ 0 & (\Trace_{R/K}(\g_{k}\g_{\ell}))_{k,\ell} \end{pmatrix} = \begin{pmatrix} (\Trace_{R_{1}/K}(\eta_{i}\eta_{j}))_{i,j} & 0 \\ 0 & (\Trace_{R_{2}/K}(\g_{k}\g_{\ell}))_{k,\ell} \end{pmatrix}.
+      \]
+      The determine of the matrix on right-hand side is $\disc_{R/K}(\eta_{1},\ldots,\eta_{m_{1}})\disc_{R}(\g_{1},\ldots,\g_{m_{2}})$. This completes the proof.
+    \end{proof}
+    
+    In the case $R = L$, let $\{\l_{1},\ldots,\l_{n}\}$ be a basis for $L$ and let $\s_{1},\ldots,\s_{n}$ be the $n$ distinct $K$-embeddings of $L$ into $\conj{K}$. We can write $\disc_{L/K}(\l_{1},\ldots,\l_{n})$ in a more useful form. For this, consider the matrix 
+    \[
+      M(\l_{1},\ldots,\l_{n}) = (\s_{i}(\l_{j}))_{i,j}. 
+    \]
+    Recalling that the $(i,j)$-entry of $M(\l_{1},\ldots,\l_{n})^{t}M(\l_{1},\ldots,\l_{n})$ is the dot product of the $i$-th and $j$-th columns of $M(\l_{1},\ldots,\l_{n})$, we have
+    \begin{align*}
+      \det(M(\l_{1},\ldots,\l_{n}))^{2} &= \det(M(\l_{1},\ldots,\l_{n})^{t}M(\l_{1},\ldots,\l_{n})) \\
+      &= \det\left(\left(\sum_{1 \le k \le n}\s_{k}(\l_{i})\s_{k}(\l_{j})\right)_{i,j}\right) \\
+      &= \det\left(\left(\sum_{1 \le k \le n}\s_{k}(\l_{i}\l_{j})\right)_{i,j}\right) \\
+      &= \det((\Trace_{L/K}(\l_{i}\l_{j}))_{i,j}) \\
+      &= \disc_{L/K}(\l_{1},\ldots,\l_{n}),
+    \end{align*}
+    where the last equality follows by \cref{prop:formulas_for_trace_and_norm}. Hence
+    \[
+      \disc_{K}(\l_{1},\ldots,\l_{n}) =  \det(M(\l_{1},\ldots,\l_{n}))^{2}.
+    \]
+    In the special case $L = K[\l]$, for some $\l \in L$, a basis for $L$ is $\{1,\l,\ldots,\l^{n-1}\}$. For this basis we obtain the Vandermonde matrix
+    \[
+      M(1,\l,\ldots,\l^{n-1}) = \begin{pmatrix} 1 & \s_{1}(\l) & \cdots & \s_{1}(\l)^{n-1} \\ \vdots & \vdots & & \vdots \\  1 & \s_{n}(\l) & \cdots & \s_{n}(\l)^{n-1} \end{pmatrix}.
+    \]
+    Its determinant is given by
+    \[
+      \det(M(1,\l,\ldots,\l^{n-1})) = \prod_{1 \le i < j \le n}(\s_{i}(\l)-\s_{j}(\l)),
+    \]
+    and thus is nonzero since the $K$-embeddings $\s_{1},\ldots,\s_{n}$ are distinct. Hence
+    \begin{equation}\label{equ:simple_discriminant}
+      \disc_{K}(1,\l,\ldots,\l^{n-1}) = \prod_{1 \le i < j \le n}(\s_{i}(\l)-\s_{j}(\l))^{2},
+    \end{equation}
+    and is nonzero. It turns out that $\disc_{K}(\l_{1},\ldots,\l_{n})$ is always nonzero for any separable extension $L/K$. To see this, we require a lemma:
+
+    \begin{lemma}\label{lem:trace_is_nondegenerate}
+      Let $L/K$ be a finite separable extension. Then the map
+      \[
+        L \x L \to K \qquad (\l,\eta) \to \Trace_{L/K}(\l\eta),
+      \]
+      is a nondegenerate symmetric bilinear form.
+    \end{lemma}
+    \begin{proof}
+      From the definition of the trace, it is clear that the map is a symmetric bilinear form. To see that is is nondegenerate, suppose $L/K$ is degree $n$. Then for any nonzero $\l \in L$, we have
+      \[
+        \Trace_{L/K}(\l\l^{-1}) = \Trace_{L/K}(1) = n.
+      \]
+      Hence the symmetric bilinear form is nondegenerate.
+    \end{proof}
+
+    We can now show that $\disc_{K}(\l_{1},\ldots,\l_{n})$ is never zero:
+
+    \begin{proposition}\label{prop:discriminant_not_zero}
+      Let $L/K$ be a degree $n$ separable extension and let $\{\l_{1},\ldots,\l_{n}\}$ be a basis for $L$. Then $\disc_{K}(\l_{1},\ldots,\l_{n}) \neq 0$.
+    \end{proposition}
+    \begin{proof}
+      Suppose to the contrary that $\disc_{K}(\l_{1},\ldots,\l_{n}) = 0$. Then the matrix $(\Trace_{L/K}(\l_{i}\l_{j}))_{i,j}$ is not invertible. Hence there exists a nonzero column vector $(\k_{1},\ldots,\k_{n})^{t}$ with $\k_{i} \in K$ for $1 \le i \le n$ such that
+      \[
+        (\Trace_{L/K}(\l_{i}\l_{j}))_{i,j}(\k_{1},\ldots,\k_{n})^{t} = \mathbf{0}.
+      \]
+      This is equivalent to the $n$ equations
+      \[
+        \sum_{1 \le j \le n}\k_{j}\Trace_{L/K}(\l_{i}\l_{j}) = 0,
+      \]
+      for all $i$. Setting
+      \[
+        \l = \sum_{1 \le j \le n}\k_{j}\l_{j},
+      \]
+      linearity of the trace implies that these $n$ equations are equivalent to the fact that $\Trace_{L/K}(\l\l_{i}) = 0$ for all $i$. As $\{\l_{1},\ldots,\l_{n}\}$ is a basis for $L$, it follows that $\l \in L$ is a nonzero element for which $\Trace_{L/K}(\l\eta) = 0$ for all $\eta \in L$. This is impossible by \cref{lem:trace_is_nondegenerate}. Hence $\disc_{K}(\l_{1},\ldots,\l_{n}) \neq 0$.
+    \end{proof}
+
+    In the specialized case $K/\Q$ for an algebraic number field $K$, we define the \textbf{discriminant}\index{discriminant} $\D_{K}$ of $K$ by
+    \[
+      \D_{K} = \disc_{K}(\a_{1},\ldots,\a_{n}),
+    \]
+    for any integral basis $\{\a_{1},\ldots,\a_{n}\}$. We do not define $\D_{K}$ modulo $(K^{\ast})^{2}$ because $\D_{K}$ is independent of the choice of integral basis and hence well-defined. Indeed, if $\{\a'_{1},\ldots,\a'_{n}\}$ is another integral basis then the base change matrix, as well as its inverse, both have integer entries (because integral bases are bases for $\mc{O}_{K}$ as a $\Z$-module). This implies that the determinant of the base change matrix is $\pm 1$ and so \cref{equ:discriminant_base_change} shows that $\D_{K}$ is independent of the choice of integral basis. Moreover, $\D_{K}$ is nonzero by \cref{prop:discriminant_not_zero}.
   \section{Integral \& Fractional Ideals}
     For the algebraic number field $\Q$, its ring of integers $\Z$ is a unique factorization domain. Indeed, this is just a restatement of the fundamental theorem of arithmetic. Unfortunately, for a general algebraic number field $K$ its ring of integers $\mc{O}_{K}$ need not be a unique factorization domain. However, the ideals of $\mc{O}_{K}$ do factor into a unique product of prime ideals (this is trivial for a unique factorization domain). Our main goal is to prove this. We first introduce some notation. Any nonzero ideal $\mf{a}$ of $\mc{O}_{K}$ is said to be an \textbf{integral ideal}\index{integral ideal} of $K$. We first show that the quotient ring by an integral ideal is always finite:
 
@@ -441,7 +573,7 @@
       \[
         \mf{a} = \mf{p}_{1}^{e_{1}} \cdots \mf{p}_{r}^{e_{r}},
       \]
-      with $e_{i} \ge 0$ for $1 \le i \le r$. By uniqueness of the prime factorization of integral ideals, $\mf{p}_{i}^{e_{i}+1} \subset \mf{p}_{i}^{e_{i}}$ for all $i$. Thus, there exists nonzero $\b_{i} \in \mf{p}_{i}^{e_{i}}-\mf{p}_{i}^{e_{i}+1}$ for all $i$. Since $\mf{p}_{1}^{e_{1}+1},\ldots,\mf{p}_{r}^{e_{r}+1}$ are pairwise relatively prime, the Chinese remainder theorem implies that there exists $\b \in \mc{O}_{K}$ with 
+      with $e_{i} \ge 0$ for $1 \le i \le r$. By uniqueness of the prime factorization of integral ideals, $\mf{p}_{i}^{e_{i}+1} \subset \mf{p}_{i}^{e_{i}}$ for all $i$. Thus there exist nonzero $\b_{i} \in \mf{p}_{i}^{e_{i}}-\mf{p}_{i}^{e_{i}+1}$ for all $i$. Since $\mf{p}_{1}^{e_{1}+1},\ldots,\mf{p}_{r}^{e_{r}+1}$ are pairwise relatively prime, the Chinese remainder theorem implies that there exists $\b \in \mc{O}_{K}$ with 
       \[
         b \equiv \b_{i} \tmod{\mf{p}_{i}^{e_{i}+1}},
       \]
@@ -530,104 +662,30 @@
       \Norm:I_{K} \to \Q^{\ast} \qquad \mf{f} \mapsto \Norm(\mf{f}).
     \]
   \section{Ramification}
-    We now discuss the splitting of prime integral ideals in algebraic number fields. First, we need to introduce the concept of prime integral ideals above other prime integral ideals. Let $L/K$ be an extension of algebraic number fields and let $\mf{P}$ be a prime integral ideal of $L$. Then $\mf{P} \cap \mc{O}_{K}$ is a prime integral ideal of $K$. Indeed, it is clear that $\mf{P} \cap \mc{O}_{K}$ is an ideal of $\mc{O}_{K}$. It is proper because $1 \notin \mf{P} \cap \mc{O}_{K}$ as $\mf{P}$ does not contain units. It is nonzero because $\mc{O}_{L}/\mf{P}$ is a finite field by \cref{prop:prime_integral_ideals_are_maximal} and thus has characteristic dividing $\Norm(\mf{P})$ by definition of the norm so that $\Norm(\mf{P}) \in \mf{P}$. But as $\Norm(\mf{P})$ is also a positive integer, $\Norm(\mf{P}) \in \mf{P} \cap \Z$. To show that $\mf{P} \cap \mc{O}_{K}$ is prime, suppose $\a,\b \in \mc{O}_{K}$ are such that $\a\b \in \mf{P} \cap \mc{O}_{K}$. Then $\a\b \in \mf{P}$ and since $\mf{P}$ is prime either $\a \in \mf{P}$ or $\b \in \mf{P}$. But as $\a$ and $\b$ are both in $\mc{O}_{K}$, either $\a \in \mf{P} \cap \mc{O}_{K}$ or $\b \in \mf{P} \cap \mc{O}_{K}$ as desired. We have now shown that $\mf{P} \cap \mc{O}_{K}$ is a prime integral ideal of $K$. Hence
+    We now discuss the splitting of prime integral ideals in algebraic number fields. First, we need to introduce the concept of prime integral ideals above primes. Let $K$ be an algebraic number field and let $\mf{p}$ be a prime integral ideal. Then $\mf{p} \cap \Z$ is a prime integral ideal of $\Q$. Indeed, it is clear that $\mf{p} \cap \Z$ is an integral ideal of $\Q$. It is proper because $1 \notin \mf{p} \cap \Z$ as $\mf{p}$ does not contain units. It is nonzero because $\mc{O}_{K}/\mf{p}$ is a finite field by \cref{prop:prime_integral_ideals_are_maximal} and thus has characteristic dividing $\Norm(\mf{p})$ by definition of the norm so that $\Norm(\mf{p}) \in \mf{p}$. But as $\Norm(\mf{p})$ is also a positive integer, $\Norm(\mf{p}) \in \mf{p} \cap \Z$. To show that $\mf{p} \cap \Z$ is prime, suppose $a$ and $b$ are integers such that $ab \in \mf{p} \cap \Z$. Then $ab \in \mf{p}$ and since $\mf{p}$ is prime either $a \in \mf{p}$ or $b \in \mf{p}$. But then $a \in \mf{p} \cap \Z$ or $b \in \mf{p} \cap \Z$ as desired. We have now shown that $\mf{p} \cap \Z$ is a prime integral ideal of $\Q$. Hence
     \[
-      \mf{P} \cap \mc{O}_{K} = \mf{p},
+      \mf{p} \cap \Z = p\Z,
     \]
-    for some prime integral ideal $\mf{p}$ of $K$. Accordingly, we say that $\mf{P}$ is \textbf{above}\index{above} $\mf{p}$, or equivalently, $\mf{p}$ is \textbf{below}\index{below} $\mf{P}$. Moreover, if $\mf{P}$ is above $\mf{p}$, then $\mf{P}$ must be a prime factor of $\mf{p}\mc{O}_{L}$. Indeed, $\mf{p} \subseteq \mf{P}$ so that $\mf{p}\mc{O}_{L} \subseteq \mf{P}$ and then the fact $\mf{P}$ is prime implies that some prime factor of $\mf{p}\mc{O}_{L}$ is contained in $\mf{P}$. Since prime integral ideals are maximal by \cref{prop:prime_integral_ideals_are_maximal}, this prime factor must be $\mf{P}$ itself. For the extension $K/\Q$, we see that every prime integral ideal $\mf{p}$ of $K$ lies above $p\Z$ of $\Z$ for a prime $p$ since these are exactly the prime integral ideals of $\Q$. That is,
-    \[
-      \mf{p} \cap \Z = p\Z.
-    \]
-    In this case, we say $\mf{p}$ is \textbf{above}\index{above} $p$, or equivalently, $p$ is \textbf{below}\index{below} $\mf{p}$. In particular, there is a unique prime $p$ for which $p \in \mf{p}$ and necessarily $\mf{p}$ is above $p$. Moreover, if we have a tower $L/K/\Q$ with $\mf{P}$ above $\mf{p}$ and $\mf{p}$ above $p$, then $\mf{P}$ is above $p$. This follows from the chain
-    \[
-      \mf{P} \cap \Z = \mf{P} \cap \mc{O}_{K} \cap \Z = \mf{p} \cap \Z = p\Z.
-    \]
-    Looking at the tower $L/K/\Q$, we illustrate these relations by the extension
+    for some prime integer $p$. Accordingly, we say that $\mf{p}$ is \textbf{above}\index{above} $p$, or equivalently, $p$ is \textbf{below}\index{below} $\mf{p}$. Moreover, if $\mf{p}$ is above $p$, then $\mf{p}$ must be a prime factor of $p\mc{O}_{K}$. Indeed, $p\Z \subseteq \mf{p}$ so that $p\mc{O}_{K} \subseteq \mf{p}$ and then the fact $\mf{p}$ is prime implies that some prime factor of $p\mc{O}_{K}$ is contained in $\mf{p}$. Since prime integral ideals are maximal by \cref{prop:prime_integral_ideals_are_maximal}, this prime factor must be $\mf{p}$ itself. We illustrate these relations by the extension
 
     \begin{center}
       \begin{tikzcd}
-        \mf{P} \subset \mc{O}_{L} \subset L \arrow[dash]{d} \\
         \mf{p} \subset \mc{O}_{K} \subset K \arrow[dash]{d} \\
         p\Z \subset \Z \subset \Q
       \end{tikzcd}
     \end{center}
 
-    Let $K$ be an algebraic number field of degree $n$. Then as we have already noted, there are exactly $n$ distinct $\Q$-embeddings into its algebraic closure $\conj{K}$. Let $r_{1}$ and $2r_{2}$ denote the number of real and complex embeddings respectively (the complex embeddings come in pairs because if $\s$ is a complex embedding then so is its conjugate $\conj{\s}$). We call the pair $(r_{1},r_{2})$ the \textbf{signature}\index{signature} of $K$. Let $\s_{1},\ldots,\s_{n}$ denote these distinct embeddings and let $\{\a_{1},\ldots,\a_{n}\}$ be an integral basis for $K$. Consider the matrix 
-    \[
-      M(\a_{1},\ldots,\a_{n}) = (\s_{i}(\a_{j}))_{i,j}. 
-    \]
-    As the image of the $\Q$-embeddings of $K$ live in $\conj{K}$, the determinant of $M(\a_{1},\ldots,\a_{n})$ need not be an integer or even an element of $K$. To correct for this, we instead consider the square of the determinant of $M(\a_{1},\ldots,\a_{n})$. Recalling that the $(i,j)$-entry of $M(\a_{1},\ldots,\a_{n})^{t}M(\a_{1},\ldots,\a_{n})$ is the dot product of the $i$-th and $j$-th columns $M(\a_{1},\ldots,\a_{n})$, we have
-    \begin{align*}
-      \det(M(\a_{1},\ldots,\a_{n}))^{2} &= \det(M(\a_{1},\ldots,\a_{n})^{t}M(\a_{1},\ldots,\a_{n})) \\
-      &= \det\left(\left(\sum_{1 \le k \le n}\s_{k}(\a_{i})\s_{k}(\a_{j})\right)_{i,j}\right) \\
-      &= \det\left(\left(\sum_{1 \le k \le n}\s_{k}(\a_{i}\a_{j})\right)_{i,j}\right) \\
-      &= \det((\Trace(\a_{i}\a_{j}))_{i,j}),
-    \end{align*}
-    where the last equality follows by \cref{prop:formulas_for_trace_and_norm}. This last expression is necessarily an integer by \cref{cor:norm_and_trace_of_algebraic_integers}. It is also independent of the choice of integer basis. Indeed, if $\{\a_{1}',\ldots,\a_{n}'\}$ is another integral basis then we have
-    \[
-      \a_{i}' = \sum_{1 \le j \le n}a_{i,j}\a_{j},
-    \]
-    with $a_{i,j} \in \Z$ for $1 \le i,j \le n$. Set $A = (a_{i,j})_{i,j}$. Then
-    \[
-      M(\a_{1}',\ldots,\a_{n}') = AM(\a_{1},\ldots,\a_{n}).
-    \]
-    Moreover, $A$ as well as its inverse has integer entries because an integral basis generates $\mc{O}_{K}$ as a $\Z$-module. But this means $\det(A)$ and $\det(A)^{-1}$ are both integers and hence $\det(A) = \pm 1$. Then
-    \[
-      \det(M(\a_{1}',\ldots,\a_{n}'))^{2} = \det(AM(\a_{1},\ldots,\a_{n}))^{2} = \det(M(\a_{1},\ldots,\a_{n}))^{2},
-    \]
-    as desired. Accordingly, for an integral basis $\{\a_{1},\ldots,\a_{n}\}$ we define the \textbf{discriminant}\index{discriminant} $\D_{K}$ of $K$ by
-    \[
-      \D_{K} = \det((\Trace(\a_{i}\a_{j}))_{i,j}).
-    \]
-    Then $\D_{K}$ is an integer and is independent of the particular integral basis. The discriminant $\D_{K}$ is also never zero. To see this, we require a lemma:
-
-    \begin{lemma}\label{lem:trace_is_nondegenerate}
-      Let $K$ be an algebraic number field. Then the map
-      \[
-        K \x K \to \Q \qquad (\k,\l) \to \Trace(\k\l),
-      \]
-      is a nondegenerate symmetric bilinear form.
-    \end{lemma}
-    \begin{proof}
-      From the definition of the trace, it is clear that the map is a symmetric bilinear form. To see that is is nondegenerate, suppose $n$ is the degree of $K$. Then
-      \[
-        \Trace(\k\k^{-1}) = \Trace(1) = n.
-      \]
-      Hence the symmetric bilinear form is nondegenerate.
-    \end{proof}
-
-    We can now show that the discriminant of an algebraic number field is never zero:
-
-    \begin{proposition}
-      Let $K$ be an algebraic number field. Then $\D_{K} \neq 0$.
-    \end{proposition}
-    \begin{proof}
-      Now let $\{\a_{1},\ldots,\a_{n}\}$ be an integral basis for $K$. Suppose to the contrary that $\D_{K} = 0$. Then the matrix $(\Trace(\a_{i}\a_{j}))_{i,j}$ is not invertible. Hence there exists a nonzero column vector $(q_{1},\ldots,q_{n})^{t}$ with $q_{i} \in \Q$ for $1 \le i \le n$ such that
-      \[
-        (\Trace(\a_{i}\a_{j}))_{i,j}(q_{1},\ldots,q_{n})^{t} = \mathbf{0}.
-      \]
-      This is equivalent to the $n$ equations
-      \[
-        \sum_{1 \le j \le n}q_{j}\Trace(\a_{i}\a_{j}) = 0,
-      \]
-      for all $i$. Setting
-      \[
-        \l = \sum_{1 \le j \le n}q_{j}\a_{j},
-      \]
-      linearity of the trace implies that these $r$ equations are equivalent to the fact that $\Trace(\a_{i}\l) = 0$ for all $i$. As $\{\a_{1},\ldots,\a_{n}\}$ is a basis for $K$, it follows that $\l \in K$ is a nonzero element for which $\Trace(\k\l) = 0$ for all $\k \in K$. But this is impossible by \cref{lem:trace_is_nondegenerate}. Hence $\D_{K} \neq 0$.
-    \end{proof}
-
-    Since $\mf{p}$ and $p\Z$ are maximal in $\mc{O}_{K}$ and $\Z$ respectively (by \cref{prop:prime_integral_ideals_are_maximal}), we have the residue fields $\mc{O}_{K}/\mf{p}$ and $\Z/p\Z$. In particular, $\Z/p\Z \cong \F_{p}$ is the finite field with $p$ elements. It turns out that $\mc{O}_{K}/\mf{p}$ is a finite dimensional vector space over $\F_{p}$. To see this, consider the homomorphism
+    Since $\mf{p}$ and $p\Z$ are maximal in $\mc{O}_{K}$ and $\Z$ respectively (by \cref{prop:prime_integral_ideals_are_maximal}), we have the residue fields $\mc{O}_{K}/\mf{p}$ and $\Z/p\Z$. In particular, $\Z/p\Z$ is the finite field with $p$ elements. It turns out that $\mc{O}_{K}/\mf{p}$ is a finite dimensional vector space over $\Z/p\Z$. To see this, consider the homomorphism
     \[
       \phi:\Z \to \mc{O}_{K}/\mf{p} \qquad a \to a \tmod{\mf{p}}.
     \]
-    Note that $\ker\phi = \mf{p} \cap \Z$ and hence $\ker\phi = p\Z$ since $\mf{p}$ is above $p$. By the isomorphism theorems, $\phi$ induces an injection $\phi:\Z/p\Z \to \mc{O}_{K}/\mf{p}$. By \cref{prop:residue_of_integral_ideal_is_finite}, $\mc{O}_{K}/\mf{p}$ is finite and thus a finite field containing $\Z/p\Z$. Necessarily $\mc{O}_{K}/\mf{p}$ is a finite dimensional vector space over $\F_{p}$. Accordingly, for a prime integral ideal $\mf{p}$ we define the \textbf{inertia degree}\index{inertia degree} $f_{\mf{p}}$ of $\mf{p}$ by
+    Note that $\ker\phi = \mf{p} \cap \Z$ and hence $\ker\phi = p\Z$ since $\mf{p}$ is above $p$. By the isomorphism theorems, $\phi$ induces an injection $\phi:\Z/p\Z \to \mc{O}_{K}/\mf{p}$. By \cref{prop:residue_of_integral_ideal_is_finite}, $\mc{O}_{K}/\mf{p}$ is finite and thus a finite field containing $\Z/p\Z$. Necessarily $\mc{O}_{K}/\mf{p}$ is a finite dimensional vector space over $\Z/p\Z$. Accordingly, for a prime integral ideal $\mf{p}$ we define the \textbf{inertia degree}\index{inertia degree} $f_{\mf{p}}$ of $\mf{p}$ by
     \[
-      f_{\mf{p}} = [\mc{O}_{K}/\mf{p}:\F_{p}].
+      f_{\mf{p}} = [\mc{O}_{K}/\mf{p}:\Z/p\Z].
     \]
-    That is, $f_{\mf{p}}$ is the dimension of the residue field $\mc{O}_{K}/\mf{p}$ as a vector space over $\F_{p}$. Then we have
+    That is, $f_{\mf{p}}$ is the dimension of the residue field $\mc{O}_{K}/\mf{p}$ as a vector space over $\Z/p\Z$. Then we have
     \[
-      \Norm(\mf{p}) = |\mc{O}_{K}/\mf{p}| = |\F_{p}^{f_{\mf{p}}}| = p^{f_{\mf{p}}}.
+      \Norm(\mf{p}) = |\mc{O}_{K}/\mf{p}| = |(\Z/p\Z)|^{f_{\mf{p}}} = p^{f_{\mf{p}}}.
     \]
     Now suppose $\mf{p}$ is above $p$ for a prime $p$. Then, as we have noted, $\mf{p}$ is a prime factor of $p\mc{O}_{K}$. The \textbf{ramification index}\index{ramification index} $e_{\mf{p}}$ of $\mf{p}$ is the positive integer such that $p\mc{O}_{K}\mf{p}^{-e_{\mf{p}}}$ is relatively prime to $\mf{p}$. If $p\mc{O}_{K}$ has prime factors $\mf{p}_{1},\ldots,\mf{p}_{r}$, then the prime factorization of $p\mc{O}_{K}$ is
     \[
@@ -665,41 +723,37 @@
       and the claim follows upon comparing exponents.
     \end{proof}
 
-    Ramification of primes is intimately connected to the discriminant of an algebraic number field. We will show that if $p$ is ramified then $p$ divides the discriminant $\D_{K}$:
+    Ramification of primes is intimately connected to the discriminant of an algebraic number field as the following theorem shows:
 
     \begin{theorem}\label{thm:ramification_implies_division}
-      Let $K$ be an algebraic number field. Then if $p$ is ramified, $p$ divides $\D_{K}$.
+      Let $K$ be an algebraic number field. Then $p$ is ramified if and only if $p$ divides $\D_{K}$.
     \end{theorem}
     \begin{proof}
-      Suppose $p$ is a ramified prime. Then there exists a prime integral ideal $\mf{p}$ such that
+      Let $p$ be a prime and suppose $p\mc{O}_{K}$ has prime factorization
       \[
-        p\mc{O}_{K} = \mf{p}\mf{a},
+        p\mc{O}_{K} = \mf{p}_{1}^{e_{\mf{p}_{1}}} \cdots \mf{p}_{r}^{e_{\mf{p}_{r}}},
       \]
-      where $\mf{p}$ is a prime factor of $\mf{a}$. In particular, the prime factors of $\mf{a}$ are the same as the prime factors of $p\mc{O}_{K}$. Now let $\{\a_{1},\ldots,\a_{n}\}$ be an integral basis for $K$. By uniqueness of the prime factorization of integral ideals, there exists a nonzero $\a \in \mf{a}-p\mc{O}_{K}$. Then
+      Now let $\{\a_{1},\ldots,\a_{n}\}$ be an integral basis for $K$ and let $\conj{\a} \in \mc{O}_{K}/p\mc{O}_{K}$ denote the reduction of $\a \in \mc{O}_{K}$ modulo $p$. Then $\{\conj{\a_{1}},\ldots,\conj{\a_{n}}\}$ is a basis for $\mc{O}_{K}/p\mc{O}_{K}$ as a vector space over $\Z/p\Z$. Moreover, the matrix for $T_{\conj{\a}}$ is obtained from $T_{\a}$ by reducing the coefficients modulo $p$. These two facts together give
       \[
-        \a = a_{1}\a_{1}+\cdots+a_{n}\a_{n},
+        \D_{K} = \disc_{K/\Q}(\a_{1},\ldots,\a_{n}) \equiv \disc_{(\mc{O}_{K}/p\Z)/(\Z/p\Z)}(\conj{\a_{1}},\ldots,\conj{\a_{n}}) \pmod{p}.
       \]
-      with $a_{i} \in \Z$ not all zero for $1 \le i \le n$. Moreover, as $\a \notin p\mc{O}_{K}$, there is some $a_{i}$ that is not divisible by $p$. Without loss of generality, we may assume that $a_{1}$ is not divisible by $p$. Recall that
+      Recall that $\disc_{(\mc{O}_{K}/p\Z)/(\Z/p\Z)}(\conj{\a_{1}},\ldots,\conj{\a_{n}})$ is an element of in $\Z/p\Z$. Then as $\disc_{\Z/p\Z}(\mc{O}_{K}/p\mc{O}_{K})$ is equal to $\disc_{(\mc{O}_{K}/p\Z)/(\Z/p\Z)}(\conj{\a_{1}},\ldots,\conj{\a_{n}})$ up to elements of $((\Z/p\Z)^{\ast})^{2}$, we find that $p$ divides $\D_{K}$ if and only if $\disc_{\Z/p\Z}(\mc{O}_{K}/p\mc{O}_{K}) = 0$. By the Chinese remainder theorem,
       \[
-        \D_{K} = \det\left(\begin{pmatrix} \s_{1}(\a_{1}) & \cdots & \s_{1}(\a_{n}) \\ \vdots & & \vdots \\ \s_{n}(\a_{1}) & \cdots & \s_{n}(\a_{n}) \end{pmatrix}\right)^{2},
+        \mc{O}_{K}/p\mc{O}_{K} \cong \bigop_{1 \le i \le r}\mc{O}_{K}/\mf{p}_{i}^{e_{i}},
       \]
-      where $\s_{1},\ldots,\s_{n}$ are the $n$ distinct $\Q$-embeddings of $K$ into $\conj{K}$. Replacing $\a_{1}$ by $\a$, set
+      and so \cref{prop:discriminant_and_direct_sums} further implies
       \[
-        D = \det\left(\begin{pmatrix} \s_{1}(\a) & \s_{1}(\a_{2}) & \cdots & \s_{1}(\a_{n}) \\ \vdots & \vdots & & \vdots \\ \s_{n}(\a) & \s_{n}(\a_{2}) & \cdots & \s_{n}(\a_{n}) \end{pmatrix}\right)^{2}.
+         \D_{K} = \prod_{1 \le i \le r}\disc_{\Z/p\Z}(\mc{O}_{K}/\mf{p}_{i}^{e_{i}}).
       \]
-      The the identity
+      Hence $p$ divides $D_{K}$ if and only if $\disc_{\Z/p\Z}(\mc{O}_{K}/\mf{p}_{i}^{e_{i}}) = 0$ for some $i$. It now suffices to show that $\disc_{\Z/p\Z}(\mc{O}_{K}/\mf{p}^{e}) = 0$ for any prime integral ideal $\mf{p}$ above $p$ if and only if $e \ge 2$. First suppose $e \ge 2$. We will prove $\disc_{\Z/p\Z}(\mc{O}_{K}/\mf{p}^{e}) = 0$. By the uniqueness of the factorization of integral ideals, there exists a nonzero $\a_{1} \in \mf{p}^{e-1}-\mf{p}^{e}$. Then $\a_{1}^{2} \in \mf{p}^{2(e-1)} \subseteq \mf{p}^{e}$ because $e \ge 2$. By construction, $\conj{\a_{1}} \in \mc{O}_{K}/\mf{p}^{e}$ is nonzero and such that $\conj{\a_{1}}^{2} = 0$. Since $\mc{O}_{K}/\mf{p}^{e}$ is an $n$ dimensional vector space over $\Z/p\Z$, there exists a basis of the form $\{\conj{\a_{1}},\ldots,\conj{\a_{m}}\}$. Now
       \[
-        \begin{pmatrix} \s_{1}(\a) & \s_{1}(\a_{2}) & \cdots & \s_{1}(\a_{n}) \\ \vdots & \vdots & & \vdots \\ \s_{n}(\a) & \s_{n}(\a_{2}) & \cdots & \s_{n}(\a_{n}) \end{pmatrix} = \begin{pmatrix} \s_{1}(\a_{1}) & \cdots & \s_{1}(\a_{n}) \\ \vdots & & \vdots \\ \s_{n}(\a_{1}) & \cdots & \s_{n}(\a_{n}) \end{pmatrix}\begin{pmatrix} a_{1} & & & \\ a_{2} & 1 & & \\ \vdots & & \ddots & & \\ a_{n} & & & 1 \end{pmatrix},
+        \Trace_{(\mc{O}_{K}/\mf{p}^{e})/(\Z/p\Z)}(\conj{\a_{1}}\conj{\a_{j}}) = 0,
       \]
-      and that $\s_{1},\ldots,\s_{n}$ are embeddings together imply
+      for $1 \le j \le n$ because $T_{\conj{\a_{1}}\conj{\a_{i}}}^{2}$ is the zero operator (as $\conj{\a_{1}}^{2} = 0$) and hence all of its eigenvalues are zero. But then the first row of $(\Trace_{(\mc{O}_{K}/\mf{p}^{e})/(\Z/p\Z)}(\conj{\a_{i}}\conj{\a_{j}}))_{i,j}$ is zero and hence $\disc_{\Z/p\Z}(\mc{O}_{K}/\mf{p}^{e}) = 0$. Now suppose $e = 1$. We will prove $\disc_{\Z/p\Z}(\mc{O}_{K}/\mf{p}) \neq 0$. Recall that $\mc{O}_{K}/\mf{p}$ is a field and a vector space over $\Z/p\Z$ of dimension $f_{\mf{p}}$. Thus $(\mc{O}_{K}/\mf{p})/(\Z/p\Z)$ it is a finite separable extension. By the primitive element theorem, there exists an element $\conj{\a} \in \mc{O}_{K}/\mf{p}$ such that $\mc{O}_{K}/\mf{p} = (\Z/p\Z)[\conj{\a}]$ and so $\{1,\conj{\a},\ldots,\conj{\a}^{f_{\mf{p}}-1}\}$ is a basis for $\mc{O}_{K}/\mf{p}$. Letting $\s_{1},\ldots,\s_{f_{\mf{p}}}$ be the $f_{\mf{p}}$ distinct $(\Z/p\Z)$-embeddings of $\mc{O}_{K}/\mf{p}$ into $\conj{\Z/p\Z}$, \cref{equ:simple_discriminant} implies
       \[
-        D = \D_{K}\a_{1}^{2}.
+        \disc_{(\mc{O}_{K}/\mf{p})/(\Z/p\Z)}(1,\a,\ldots,\a^{f_{\mf{p}}-1}) = \prod_{1 \le i < j \le f_{\mf{p}}}(\s_{i}(\conj{\a})-\s_{j}(\conj{\a}))^{2},
       \]
-      In particular, $D$ is a positive integer. Since $p \nmid \a_{1}$, it suffices to show that $p \mid D$. To accomplish this, let $L$ be the Galois closure of $K/\Q$. Then $L/K$ is a finite extension so that $L$ is an algebraic number field and $\s_{1},\ldots,\s_{n} \in \Gal(L/\Q)$. Moreover, as $\a \in \mf{a}$ and the prime factors of $\mf{a}$ are the same as the prime factors of $p\mc{O}_{K}$, $\a \in \mf{p}$ for all prime integral ideals $\mf{p}$ above $p$ (recall $p\mc{O}_{K} \subseteq \mf{p}$ if $\mf{p}$ is above $p$). As $\a \in L$ (because $L$ is an extension of $K$), we claim that $\a$ belongs to all of the prime integral ideals $\mf{P}$ above such $\mf{p}$ as well. For if $\mf{P}$ is above $\mf{p}$, then $\mf{p} \subseteq \mf{P}$ and hence $\a \in \mf{P}$ because $\a \in \mf{p}$. In particular, $\a$ is an element of $\mf{P}$ for all $\mf{P}$ over $p$. Now let $\s \in \Gal(L/\Q)$. As $\s$ is an automorphism of $L$, $\s(\mf{P})$ is a prime integral ideal. Since $\s$ fixes $\Q$ pointwise and $\mf{P}$ is above $p$, we have that $\s(p) = p$ and $p \in \s(\mf{P})$. This means $\s(\mf{P})$ is above $p$ and so $\a \in \s(\mf{P})$. Since $\s$ was arbitrary, it follows that $\s(\a) \in \mf{P}$ for all $\s \in \Gal(L/\Q)$. In particular, $\s_{i}(\a) \in \mf{P}$ for all $i$ and so the first column of the matrix
-      \[
-        \begin{pmatrix} \s_{1}(\a) & \s_{1}(\a_{2}) & \cdots & \s_{1}(\a_{n}) \\ \vdots & \vdots & & \vdots \\ \s_{n}(\a) & \s_{n}(\a_{2}) & \cdots & \s_{n}(\a_{n}) \end{pmatrix},
-      \]
-      is an element of $\mf{P}$. Thus $D \in \mf{B}$. But as $D$ is an integer, $D \in \mf{P} \cap \Z = p\Z$ and hence $p \mid D$. This completes the proof.
+      and thus is nonzero. Hence $\disc_{\Z/p\Z}(\mc{O}_{K}/\mf{p})$ is nonzero as well. We have now shown that $\disc_{\Z/p\Z}(\mc{O}_{K}/\mf{p}^{e}) = 0$ if and only if $e \ge 2$ completing the proof.
     \end{proof}
 
     As an immediate corollary, we see that only finitely many primes can ramify:
