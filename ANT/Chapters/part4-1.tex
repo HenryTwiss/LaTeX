@@ -348,7 +348,7 @@
     \[
       A_{\psi}(X) = \sum_{n \ge 1}a(n)\psi\left(\frac{n}{X}\right) = \sum_{n \le X}a(n).
     \]
-    In the second case, we want $\psi(y)$ to dampen the $a(n)$ with a weight other than $1$ or $0$. Sums of this type are called \textbf{weighted}\index{weighted}. In any case, suppose the support of $\psi(y)$ is contained in $[0,M]$. These conditions will force the Mellin transform $\Psi(s)$ of $\psi(y)$ to exist and have nice properties. To see that $\Psi(s)$ exists, let $K$ be a compact set in $\C$ and let $\a = \max_{s \in K}\{\s\}$ and $\b = \min_{s \in K}\{\s\}$. Note that $\psi(y)$ is bounded because it is compactly supported. Then for $s \in K$,
+    In the second case, we want $\psi(y)$ to dampen the $a(n)$ with a weight other than $1$ or $0$. Sums of this type are called \textbf{weighted}\index{weighted}. In any case, suppose the support of $\psi(y)$ is contained in $[0,M]$. These conditions will force the Mellin transform $\Psi(s)$ of $\psi(y)$ to exist and have nice properties. To see that $\Psi(s)$ exists, let $K$ be a compact set in $\C$ and let $\a = \max_{s \in K}(\s)$ and $\b = \min_{s \in K}\{\s\}$. Note that $\psi(y)$ is bounded because it is compactly supported. Then for $s \in K$,
     \[
       \Psi(s) = \int_{0}^{\infty}\psi(y)y^{s}\,\frac{dy}{y} \ll \int_{0}^{M}y^{\s-1}\,dy \ll_{\a,\b} 1.
     \]
@@ -840,7 +840,7 @@
     \begin{theorem}
       Let $L(s,f)$ be an $L$-function and let $\psi(y)$ be a bump function with compact support in $\left[\frac{1}{2},2\right]$. Then we have
       \[
-        L\left(\frac{1}{2},f\right) \ll_{\e} \left|\max_{X \ll \mf{q}(f)^{\frac{1}{2}+\e}}\frac{A_{\psi}(X)}{q(f)^{\frac{1}{4}}}\right|+\left|\frac{S}{q(f)^{\frac{1}{4}}}\right|,
+        L\left(\frac{1}{2},f\right) \ll_{\e} \left|\max_{X \ll \mf{q}(f)^{\frac{1}{2}+\e}}\left(\frac{A_{\psi}(X)}{q(f)^{\frac{1}{4}}}\right)\right|+\left|\frac{S}{q(f)^{\frac{1}{4}}}\right|,
       \]
       where $S$ is zero if $\L(s,f)$ is entire, and otherwise
       \[
@@ -873,7 +873,7 @@
       \end{align*}
       where in the second to last line we have used that $V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right)$ is bounded for $n \ll_{\e} \mf{q}\left(\frac{1}{2},f\right)^{\frac{1}{2}+\e} \ll_{\e} \mf{q}(f)^{\frac{1}{2}+\e}$ and then exhibits polynomial decay thereafter by \cref{prop:V_function_decay} and in the last line we have used that $\psi_{k}(y)$ has compact support in $[2^{k-1},2^{k+1}]$ (recall $k \in \Z$). Since $\s(y)$ is bounded away from zero and $\log(y) \ll y$, we obtain the crude bound
       \[
-        \sum_{k \ll \log(q(f)^{\frac{\e}{2}})}\left|\sum_{\substack{n \ll \mf{q}(f)^{\frac{1}{2}+\e} \\ 2^{k-1}\sqrt{q(f)} \le n \le 2^{k+1}\sqrt{q(f)}}}\frac{a_{f}(n)}{\sqrt{n}}\psi_{k}\left(\frac{n}{\sqrt{q(f)}}\right)\right| \ll_{\e} q(f)^{\frac{\e}{2}}\max_{X \ll \mf{q}(f)^{\frac{1}{2}+\e}}\left|\sum_{\frac{X}{2} \le n \le 2X}\frac{a_{f}(n)}{\sqrt{n}}\psi\left(\frac{n}{X}\right)\right|.
+        \sum_{k \ll \log(q(f)^{\frac{\e}{2}})}\left|\sum_{\substack{n \ll \mf{q}(f)^{\frac{1}{2}+\e} \\ 2^{k-1}\sqrt{q(f)} \le n \le 2^{k+1}\sqrt{q(f)}}}\frac{a_{f}(n)}{\sqrt{n}}\psi_{k}\left(\frac{n}{\sqrt{q(f)}}\right)\right| \ll_{\e} q(f)^{\frac{\e}{2}}\max_{X \ll \mf{q}(f)^{\frac{1}{2}+\e}}\left(\left|\sum_{\frac{X}{2} \le n \le 2X}\frac{a_{f}(n)}{\sqrt{n}}\psi\left(\frac{n}{X}\right)\right|\right).
       \]
       We will estimate this latter sum. Abel's summation formula (see \cref{{append:Summation_Formulas}}) gives
       \[
@@ -881,15 +881,15 @@
       \]
       But as
       \[
-        \frac{1}{2}\int_{\frac{X}{2}}^{2X}A_{\psi}(u)u^{-\frac{3}{2}}\,du \ll X\max_{\frac{X}{2} \le u \le 2X}A_{\psi}(u)u^{-\frac{3}{2}} \ll \max_{\frac{X}{2} \le u \le 2X}\frac{A_{\psi}(u)}{\sqrt{u}},
+        \frac{1}{2}\int_{\frac{X}{2}}^{2X}A_{\psi}(u)u^{-\frac{3}{2}}\,du \ll X\max_{\frac{X}{2} \le u \le 2X}\left(A_{\psi}(u)u^{-\frac{3}{2}}\right) \ll \max_{\frac{X}{2} \le u \le 2X}\left(\frac{A_{\psi}(u)}{\sqrt{u}}\right),
       \]
       we obtain the bound
       \[
-        \max_{X \ll \mf{q}(f)^{\frac{1}{2}+\e}}\sum_{\frac{X}{2} \le n \le 2X}\frac{a_{f}(n)}{\sqrt{n}}\psi\left(\frac{n}{X}\right) \ll \max_{X \ll \mf{q}(f)^{\frac{1}{2}+\e}}\frac{A_{\psi}(X)}{\sqrt{X}}.
+        \max_{X \ll \mf{q}(f)^{\frac{1}{2}+\e}}\left(\sum_{\frac{X}{2} \le n \le 2X}\frac{a_{f}(n)}{\sqrt{n}}\psi\left(\frac{n}{X}\right)\right) \ll \max_{X \ll \mf{q}(f)^{\frac{1}{2}+\e}}\left(\frac{A_{\psi}(X)}{\sqrt{X}}\right).
       \]
       Putting everything together gives
       \[
-        \sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right) \ll_{\e} q(f)^{\frac{\e}{2}}\max_{X \ll \mf{q}(f)^{\frac{1}{2}+\e}}\frac{A_{\psi}(X)}{\sqrt{X}} \ll_{\e} \max_{X \ll \mf{q}(f)^{\frac{1}{2}+\e}}\frac{A_{\psi}(X)}{q(f)^{\frac{1}{4}}},
+        \sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right) \ll_{\e} q(f)^{\frac{\e}{2}}\max_{X \ll \mf{q}(f)^{\frac{1}{2}+\e}}\left(\frac{A_{\psi}(X)}{\sqrt{X}}\right) \ll_{\e} \max_{X \ll \mf{q}(f)^{\frac{1}{2}+\e}}\left(\frac{A_{\psi}(X)}{q(f)^{\frac{1}{4}}}\right),
       \]
       where in the last estimate we may replace $X$ with $q(f)^{\frac{1}{2}+\e}$ because $X \ge 1$ so that $X$ is bounded away from zero.
     \end{proof}

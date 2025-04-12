@@ -268,9 +268,9 @@
       &= \disc_{L/K}(\l_{1},\ldots,\l_{n}),
     \end{align*}
     where the last equality follows by \cref{prop:formulas_for_trace_and_norm}. Hence
-    \[
+    \begin{equation}\label{equ:discriminant_square_when_seperable}
       \disc_{K}(\l_{1},\ldots,\l_{n}) =  \det(M(\l_{1},\ldots,\l_{n}))^{2}.
-    \]
+    \end{equation}
     In the special case $L = K[\l]$, for some $\l \in L$, a basis for $L$ is $\{1,\l,\ldots,\l^{n-1}\}$. For this basis we obtain the Vandermonde matrix
     \[
       M(1,\l,\ldots,\l^{n-1}) = \begin{pmatrix} 1 & \s_{1}(\l) & \cdots & \s_{1}(\l)^{n-1} \\ \vdots & \vdots & & \vdots \\  1 & \s_{n}(\l) & \cdots & \s_{n}(\l)^{n-1} \end{pmatrix}.
@@ -325,7 +325,11 @@
     \[
       \D_{K} = \disc_{K}(\a_{1},\ldots,\a_{n}),
     \]
-    for any integral basis $\{\a_{1},\ldots,\a_{n}\}$. We do not define $\D_{K}$ modulo $(K^{\ast})^{2}$ because $\D_{K}$ is independent of the choice of integral basis and hence well-defined. Indeed, if $\{\a'_{1},\ldots,\a'_{n}\}$ is another integral basis then the base change matrix, as well as its inverse, both have integer entries (because integral bases are bases for $\mc{O}_{K}$ as a $\Z$-module). This implies that the determinant of the base change matrix is $\pm 1$ and so \cref{equ:discriminant_base_change} shows that $\D_{K}$ is independent of the choice of integral basis. Moreover, $\D_{K}$ is nonzero by \cref{prop:discriminant_not_zero}.
+    for any integral basis $\{\a_{1},\ldots,\a_{n}\}$. In particular, by \cref{equ:discriminant_square_when_seperable} we can also write
+    \[
+      \D_{K} = \det(M(\a_{1},\ldots,\a_{n}))^{2}.
+    \]
+    As $\D_{K}$ is not taken modulo $(K^{\ast})^{2}$, we need to show that $\D_{K}$ is independent of the choice of integral basis and hence well-defined. Indeed, if $\{\a'_{1},\ldots,\a'_{n}\}$ is another integral basis then the base change matrix, as well as its inverse, both have integer entries (because integral bases are bases for $\mc{O}_{K}$ as a $\Z$-module). This implies that the determinant of the base change matrix is $\pm 1$ and so \cref{equ:discriminant_base_change} shows that $\D_{K}$ is independent of the choice of integral basis. Moreover, $\D_{K}$ is nonzero by \cref{prop:discriminant_not_zero}.
   \section{Integral \& Fractional Ideals}
     For the number field $\Q$, its ring of integers $\Z$ is a unique factorization domain. Indeed, this is just a restatement of the fundamental theorem of arithmetic. Unfortunately, for a general number field $K$ its ring of integers $\mc{O}_{K}$ need not be a unique factorization domain. However, the ideals of $\mc{O}_{K}$ do factor into a unique product of prime ideals (this is trivial for a unique factorization domain). Our main goal is to prove this. We first introduce some notation. Any nonzero ideal $\mf{a}$ of $\mc{O}_{K}$ is said to be an \textbf{integral ideal}\index{integral ideal} of $K$. We first show that the quotient ring by an integral ideal is always finite:
 
@@ -337,7 +341,7 @@
       Moreover, $\mc{O}_{K}/\mf{a}$ is finite for any integral ideal $\mf{a}$.
     \end{proposition}
     \begin{proof}
-      Let the degree of $K$ be $n$ and $\{\a_{1},\ldots,\a_{n}\}$ be an integral basis for $K$. Then $\{\a\a_{1},\ldots,\a\a_{n}\}$ is linearly independent and hence $\a\mc{O}_{K}$ is a rank $n$ free abelian group. Letting
+      Let the degree of $K$ be $n$ and $\{\a_{1},\ldots,\a_{n}\}$ be an integral basis for $K$. Then $\{\a\a_{1},\ldots,\a\a_{n}\}$ is linearly independent and hence $\a\mc{O}_{K}$ is a free abelian group of rank $n$. Letting
       \[
         \a = \sum_{1 \le i \le n}a_{i}\a_{i},
       \]
@@ -768,40 +772,68 @@
     \begin{proof}
       There are only finitely many prime divisors of $\D_{K}$. Hence finitely many primes ramify by \cref{thm:ramification_implies_division}. 
     \end{proof}
-  \section{\todo{The Ideal Class Group}}
-    Let $K$ be a number field. Recall that the ideal group $I_{K}$ is the group of fractional ideals of $K$. We let $P_{K}$ denote the subgroup of $I_{K}$ of principal ideals $\a\mc{O}_{K}$ for nonzero $\a \in K$. Since $I_{K}$ is abelian, $P_{K}$ is normal. The \textbf{ideal class group}\index{ideal class group} $\Cl(K)$ of $K$ is defined to be the quotient group
+  \section{Lattices}
+    Before we can continue with the study of number fields, we need to make a detour and discuss some geometry of lattices. This is essential because it will provide us with a geometric interpretation for how the ring of integers $\mc{O}_{K}$ sits inside the number field $K$. We say that $\L \subset \R^{n}$ is a \textbf{lattice}\index{lattice} if it is a free abelian group of rank $n$. In particular, any lattice $\L$ is of the form
     \[
-      \Cl(K) = I_{K}/P_{K},
+      \L = \Z v_{1}+\cdots+\Z v_{n},
     \]
-    of fractional ideals modulo principal ideals. The \textbf{class number}\index{class number} $h_{K}$ of $K$ is defined by
+    for some basis $\{v_{1},\ldots,v_{n}\}$. Notice that $\L$ acts on $\R^{n}$ by automorphisms given by translation. That is, we have a group action
     \[
-      h_{K} = |\Cl(K)|.
+      \L \x \R^{n} \to \R^{n} \qquad (\l,x) \to \l+x.
     \]
-    That is, the class number is the size of the ideal class group. The class number is a measure of how much the ring of integers $\mc{O}_{K}$ fails to be a principal ideal domain. Indeed, if $\mc{O}_{K}$ is a principal ideal domain then every integral ideal is principal and hence every fractional ideal is too (because every fractional ideal $\mf{f}$ is of the form $\frac{1}{\a}\mf{a}$ for some integral ideal $\mf{a}$ and nonzero $\a \in \mc{O}_{K}$). But then $\Cl(K)$ is the trivial group an hence $h_{K} = 1$. Conversely, if $h_{K} = 1$ then every fractional ideal is principal and hence every integral ideal is too so that $\mc{O}_{K}$ is a principal ideal domain. In short, $\mc{O}_{K}$ is a principal ideal domain if and only if $h_{K} = 1$. Our primary goal is to show that the class number is always finite. For this, we require a geometric lemma:
+    Moreover, $\L$ acts properly discontinuously on $\R^{n}$ (see \cref{append:Fundamental_Domains}). To see this, let $x \in \R^{n}$ and let $\d_{x}$ be such that $0 < \d_{x} < \min_{1 \le i \le n}(x-v_{i})$. Then taking $U_{x}$ to be the ball of radius $\d_{x}$ about $x$, the intersection $\l+U_{x} \cap U_{x}$ is empty unless $\l = 0$. As $\L$ is also discrete, it follows by \cref{prop:quotient_by_discrete_property_discontinuously} that $\R^{n}/\L$ is also connected Hausdorff (recall that $\R^{n}$ is connected Hausdorff). In particular, $\R^{n}/\L$ admits a fundamental domain
+    \[
+      \mc{P} = \{t_{1}v_{1}+\cdots+t_{n}v_{n} \in \R^{n}:\text{$0 \le t_{i} \le 1$ for $1 \le i \le n$}\}.
+    \]
+    Indeed, since $\L$ acts by translations, it is obvious that $\mc{P}$ is a fundamental domain for $\R^{n}/\L$. Moreover, any translation of $\mc{P}$ by an element of $\L$ is also a fundamental domain. Recall that the volume $\Vol(X)$ of a measurable subset $X \subseteq \R^{n}$ is defined as
+    \[
+      \Vol(X) = \int_{X}\,dx_{1} \cdots dx_{n}.
+    \]
+    Then we define the \textbf{volume}\index{volume} $V_{\L}$ of $\L$ by
+    \[
+      V_{\L} = \mathrm{Vol}(\mc{P}).
+    \]
+    That is, the volume of $\L$ is the volume of the fundamental domain $\mc{P}$. Since the measures $dx_{i}$ for $1 \le i \le n$ are translation invariant, $V_{\L}$ is independent of the choice of fundamental domain. The volume is also given by the absolute value of a determinant. If $\L$ is given by the basis $\{v_{1},\ldots,v_{n}\}$, we write
+    \[
+      v_{i} = \sum_{1 \le i \le n}v_{i,j}e_{j},
+    \]
+    where the $e_{i}$ are the standard basis vectors, and define the \textbf{generator matrix}\index{generator matrix} $P$ of $\L$ by
+    \[
+      P = \begin{pmatrix} v_{1,1} & \cdots & v_{1,n} \\ \vdots & & \vdots \\ v_{n,1} & \cdots & v_{n,n} \end{pmatrix}.
+    \]
+    Now consider $V_{\L}$. Making the change of variables $x_{i} \to t_{i}$ for $1 \le e \le n$ where
+    \[
+      x_{1}e_{1}+\cdots+x_{n}e_{n} = t_{1}v_{1}+\cdots+t_{n}v_{n},
+    \]
+    the corresponding Jacobian matrix is $P$ because this is the base change matrix from the standard basis to the basis $\{v_{1},\ldots,v_{n}\}$. Then
+    \[
+      V_{\L} = \int_{\mc{P}}\,dx_{1} \cdots dx_{n} = |\det(P)|\int_{[0,1]^{n}}\,dt_{1} \cdots dt_{n} = |\det(P)|,
+    \]
+    which shows that the volume of $\L$ is given by the absolute value of the determinant of the generator matrix $P$. We will now require a useful geometric lemma which states that, under some mild conditions, a set of sufficiently large volume contains a nonzero point of $\L$:
 
     \begin{lemma}
-      Let $\L$ be a lattice in $\R^{n}$ and let $\Vol(\cdot)$ be the volume function with respect to the Lebesgue measure. Suppose $X \subset \R^{n}$ is a compact convex set that is symmetric with respect to $0$. If
+      Let $\L$ be a lattice in $\R^{n}$. Suppose $X \subset \R^{n}$ is a compact convex set that is symmetric with respect to $0$. If
       \[
-        \Vol(X) \ge 2^{n}\Vol(\R^{n}/\L),
+        \Vol(X) \ge 2^{n}V_{\L},
       \]
       then there exists a nonzero $\l \in L$ with $\l \in X$ 
     \end{lemma}
     \begin{proof}
-      We will prove the claim depending on if the inequality is strict or not. First suppose $\Vol(X) > 2^{n}\Vol(\R^{n}/\L)$. Consider the linear map
+      We will prove the claim depending on if the inequality is strict or not. First suppose $\Vol(X) > 2^{n}V_{\L}$. Consider the linear map
       \[
         \phi:\frac{1}{2}X \to \R^{n}/\L \qquad \frac{1}{2}x \mapsto \frac{1}{2}x \pmod{\L}.
       \]
       If $\phi$ were injective, then
       \[
-        \Vol\left(\frac{1}{2}X\right) = \frac{1}{2^{n}}\Vol(X) \le \Vol(\R^{n}/\L), 
+        \Vol\left(\frac{1}{2}X\right) = \frac{1}{2^{n}}\Vol(X) \le V_{\L}, 
       \]
-      so that $\Vol(X) \le  2^{n}\Vol(\R^{n}/\L)$. This is a contradiction, so $\phi$ cannot be injective. Hence there exists distinct $x_{1},x_{2} \in \frac{1}{2}X$ such that $\phi(x_{1}) = \phi(x_{2})$. Thus $2x_{1},2x_{2} \in X$. In particular, since $X$ is symmetric with respect to $0$ we must have $-2x_{2} \in X$. But then the fact that $X$ is convex implies that
+      so that $\Vol(X) \le  2^{n}V_{\L}$. This is a contradiction, so $\phi$ cannot be injective. Hence there exists distinct $x_{1},x_{2} \in \frac{1}{2}X$ such that $\phi(x_{1}) = \phi(x_{2})$. Thus $2x_{1},2x_{2} \in X$. In particular, since $X$ is symmetric with respect to $0$ we must have $-2x_{2} \in X$. But then the fact that $X$ is convex implies that
       \[
         \left(1-\frac{1}{2}\right)2x_{1}+\frac{1}{2}(-2x_{2}) = x_{1}-x_{2} \in X.
       \]
-      Note that $x_{1}-x_{2} \in \L$ because $\phi(x_{1}) = \phi(x_{2})$ and $\phi$ is linear. Then $\l = x_{1}-x_{2}$ is a nonzero element of $\L$ with $\l \in X$. Now suppose $\Vol(X) = 2^{n}\Vol(\R^{n}/\L)$. Then for any $\e > 0$, we have
+      Note that $x_{1}-x_{2} \in \L$ because $\phi(x_{1}) = \phi(x_{2})$ and $\phi$ is linear. Then $\l = x_{1}-x_{2}$ is a nonzero element of $\L$ with $\l \in X$. Now suppose $\Vol(X) = 2^{n}V_{\L}$. Then for any $\e > 0$, we have
       \[
-        \Vol((1+\e)X) = (1+\e)^{n}\Vol(X) = (1+\e)^{n}2^{n}\Vol(\R^{n}/\L) > 2^{n}\Vol(\R^{n}/\L).
+        \Vol((1+\e)X) = (1+\e)^{n}\Vol(X) = (1+\e)^{n}2^{n}V_{\L} > 2^{n}V_{\L}.
       \]
       So what we have just proved shows that there exists a nonzero $\l_{\e} \in \L$ with $\l_{\e} \in (1+\e)X$. In particular, if $\e \le 1$ then $\l_{\e} \in 2X \cap \L$. The set $2X \cap \L$ is compact and discrete, because $X$ is compact and $\L$ is discrete, and therefore is finite. But as this holds for all $\e \le 1$, the sequence $(\l_{\frac{1}{n}})_{n \ge 1}$ belongs to the finite set $2X \cap \L$ and so must converge to a point $\l$. Since $\L$ is discrete and the $\l_{\frac{1}{n}}$ are nonzero so too is $\l$. As
       \[
@@ -809,13 +841,60 @@
       \]
       and $X$ is closed, $\l \in X$ as well. Thus we have found a nonzero $\l \in L$ with $\l \in X$. This completes the proof.
     \end{proof}
-
-    We need to develop a little more theory before proving that the class number is finite. Let $K$ be degree $n$ and let $\s_{1},\ldots,\s_{n}$ be the $n$ distinct $\Q$-embeddings of $K$ into $\conj{Q}$. In particular, these embeddings are $\Q$-embeddings of $K$ into $\C$. Let $r_{1}$ and $2r_{2}$ be the number of real and complex embeddings respectively (the complex embeddings occur in pairs of two because if $\s$ is a complex embedding then so is its conjugate $\conj{\s}$). We call the pair $(r_{1},r_{2})$ the \textbf{signature}\index{signature} of $K$. In particular,
+  \section{\todo{The Ideal Class Group}}
+    Let $K$ be a number field. Recall that the ideal group $I_{K}$ is the group of fractional ideals of $K$. We let $P_{K}$ denote the subgroup of $I_{K}$ of principal ideals $\a\mc{O}_{K}$ for nonzero $\a \in K$. Since $I_{K}$ is abelian, $P_{K}$ is normal. The \textbf{ideal class group}\index{ideal class group} $\Cl(K)$ of $K$ is defined to be the quotient group
+    \[
+      \Cl(K) = I_{K}/P_{K},
+    \]
+    of fractional ideals modulo principal ideals. We call an element of $\Cl(K)$ an \textbf{ideal class}\index{ideal class} of $K$. The \textbf{class number}\index{class number} $h_{K}$ of $K$ is defined by
+    \[
+      h_{K} = |\Cl(K)|.
+    \]
+    That is, the class number is the size of the ideal class group. The class number is a measure of how much the ring of integers $\mc{O}_{K}$ fails to be a principal ideal domain. Indeed, if $\mc{O}_{K}$ is a principal ideal domain then every integral ideal is principal and hence every fractional ideal is too (because every fractional ideal $\mf{f}$ is of the form $\frac{1}{\a}\mf{a}$ for some integral ideal $\mf{a}$ and nonzero $\a \in \mc{O}_{K}$). But then $\Cl(K)$ is the trivial group an hence $h_{K} = 1$. Conversely, if $h_{K} = 1$ then every fractional ideal is principal and hence every integral ideal is too so that $\mc{O}_{K}$ is a principal ideal domain. In short, $\mc{O}_{K}$ is a principal ideal domain if and only if $h_{K} = 1$. Our primary goal is to show that the class number is finite. 
+    
+    \begin{remark}
+      Explicit computation of the class number for a general algebraic number field $K$ is a very difficult problem except in simple cases.
+    \end{remark}
+    
+    Suppose the degree of $K$ is $n$ and let $\s_{1},\ldots,\s_{n}$ be the $n$ distinct $\Q$-embeddings of $K$ into $\conj{\Q}$. In particular, these embeddings are $\Q$-embeddings of $K$ into $\C$. Let $r_{1}$ and $2r_{2}$ be the number of real and complex embeddings respectively (the complex embeddings occur in pairs of two because if $\s$ is a complex embedding then so is its conjugate $\conj{\s}$). We call the pair $(r_{1},r_{2})$ the \textbf{signature}\index{signature} of $K$. In particular,
     \[
       n = r_{1}+2r_{2}.
     \]
     Choose one representative for each pair of complex embeddings and fix and ordering of $r_{1}+r_{2}$ distinct $\Q$-embedding where $\s_{1},\ldots,\s_{r_{1}+r_{2}}$ is such that $\s_{1},\ldots,\s_{r_{1}}$ are the real embeddings and $\s_{r_{1}+1},\ldots,\s_{r_{2}}$ are the representative complex embeddings. We define the \textbf{canonical embedding}\index{canonical embedding} $\s$ of $K$ with resect to $\s_{1},\ldots,\s_{r_{1}+r_{2}}$ by
     \[
-      \s:K \to \R^{r_{1}}\op\C^{r_{2}} \qquad \k \to (\s_{1}(\k),\ldots,\s_{r_{1}+r_{2}}(\k)).
+      \s:K \to \R^{n} \qquad \k \to (\s_{1}(\k),\ldots,\s_{r_{1}}(\k),\Re(\s_{r_{1}+1}(\k)),\Im(\s_{r_{1}+1}(\k)),\ldots,\Re(\s_{r_{1}+r_{2}}(\k)),\Im(\s_{r_{1}+r_{2}}(\k))).
     \]
+    Since $\mc{O}_{K}$ is a free abelian group of rank $n$ by \cref{thm:ring_of_integers_finitely_generated}, so is $\s(\mc{O}_{K})$. Moreover, as $\mc{O}_{K}$ contains a basis for $K$, namely an integral basis, we see that $\s(\mc{O}_{K})$ also contains a basis of $\R^{n}$. It follows that $\s(\mc{O}_{K})$ is a lattice in $\R^{n}$. Letting $\{\a_{1},\ldots,\a_{n}\}$ be an integral basis for $\mc{O}_{K}$, the generator matrix for $\s(\mc{O}_{K})$ is
+    \[
+      P = \begin{pmatrix} \s_{1}(\a_{1}) & \cdots & \s_{r_{1}}(\a_{1}) & \Re(\s_{r_{1}+1}(\a_{1})) & \Im(\s_{r_{1}+1}(\a_{1})) & \cdots & \Re(\s_{r_{1}+r_{2}}(\a_{1})) & \Im(\s_{r_{1}+r_{2}}(\a_{1})) \\ \vdots & & \vdots & \vdots & \vdots & & \vdots & \vdots \\ \s_{1}(\a_{n}) & \cdots & \s_{r_{1}}(\a_{n}) & \Re(\s_{r_{1}+1}(\a_{n})) & \Im(\s_{r_{1}+1}(\a_{n})) & \cdots & \Re(\s_{r_{1}+r_{2}}(\a_{n})) & \Im(\s_{r_{1}+r_{2}}(\a_{n})) \end{pmatrix}.
+    \]
+    To compute this determinant, first add an $i$ multiple of the imaginary columns to their corresponding real columns and then apply the identity $\Im(z) = \frac{z-\conj{z}}{2i}$ to the imaginary columns to obtain
+    \[
+      P' = \begin{pmatrix} \s_{1}(\a_{1}) & \cdots & \s_{r_{1}}(\a_{1}) & \s_{r_{1}+1}(\a_{1}) & \frac{\s_{r_{1}+1}(\a_{1})-\conj{\s_{r_{1}+1}(\a_{1})}}{2i} & \cdots & \s_{r_{1}+r_{2}}(\a_{1}) & \frac{\s_{r_{1}+r_{2}}(\a_{1})-\conj{\s_{r_{1}+r_{2}}(\a_{1})}}{2i} \\ \vdots & & \vdots & \vdots & \vdots & & \vdots & \vdots \\ \s_{1}(\a_{n}) & \cdots & \s_{r_{1}}(\a_{n}) & \s_{r_{1}+1}(\a_{n}) & \frac{\s_{r_{1}+1}(\a_{n})-\conj{\s_{r_{1}+1}(\a_{n})}}{2i} & \cdots & \s_{r_{1}+r_{2}}(\a_{n}) & \frac{\s_{r_{1}+r_{2}}(\a_{n})-\conj{\s_{r_{1}+r_{2}}(\a_{n})}}{2i} \end{pmatrix}.
+    \]
+    Since $P'$ differs from $P$ by column addition, their determinants are the same. Now multiply the imaginary columns of $P'$ by $-2i$ and then adding the corresponding columns to annihilate the negative terms, we get
+    \[
+      P'' = \begin{pmatrix} \s_{1}(\a_{1}) & \cdots & \s_{r_{1}}(\a_{1}) & \s_{r_{1}+1}(\a_{1}) &\conj{\s_{r_{1}+1}(\a_{1})} & \cdots & \s_{r_{1}+r_{2}}(\a_{1}) & \conj{\s_{r_{1}+r_{2}}(\a_{1})} \\ \vdots & & \vdots & \vdots & \vdots & & \vdots & \vdots \\ \s_{1}(\a_{n}) & \cdots & \s_{r_{1}}(\a_{n}) & \s_{r_{1}+1}(\a_{n}) & \conj{\s_{r_{1}+1}(\a_{n})} & \cdots & \s_{r_{1}+r_{2}}(\a_{n}) & \conj{\s_{r_{1}+r_{2}}(\a_{n})} \end{pmatrix}.
+    \]
+    As $P''$ differs from $P'$ by column addition and column scaling of which there were $r_{2}$ many of factor $-2i$, the determinant of $P''$ is $(-2i)^{-r_{2}}$ that of $P'$. Altogether, we have
+    \[
+      |\det(P)| = |\det(P')| = |(-2i)^{-r_{2}}\det(P'')| = 2^{-r_{2}}|\det(P'')|.
+    \]
+    Since the complex embeddings occur in conjugate pairs, $P'' = M(\a_{1},\ldots,\a_{n})$ and hence $|\det(P'')| = \sqrt{\D_{K}}$. Since the absolute value of $P$ is the volume of $\s(\mc{O}_{K})$, we conclude that
+    \[
+      V_{\s(\mc{O}_{K})} = \frac{\sqrt{\D_{K}}}{2^{r_{2}}}.
+    \]
+    We can now prove that the class number is finite. Actually, we prove this and more:
+
+    \begin{theorem}
+      Let $K$ be a number field. Then there exists a constant $C > 0$ such that every ideal class contains an integral ideal $\mf{a}$ such that
+      \[
+        \Norm(\mf{a}) \le C\sqrt{|\D_{K}|}.
+      \]
+      Moreover, the ideal class group $\Cl(K)$ is finite so that the class number $h_{K}$ is too.
+    \end{theorem}
+    \begin{proof}
+      \todo{xxx}
+    \end{proof}
+
   \section{\todo{Quadratic Number Fields}}
