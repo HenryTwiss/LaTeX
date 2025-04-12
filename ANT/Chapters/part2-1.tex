@@ -773,7 +773,7 @@
       There are only finitely many prime divisors of $\D_{K}$. Hence finitely many primes ramify by \cref{thm:ramification_implies_division}. 
     \end{proof}
   \section{Lattices}
-    Before we can continue with the study of number fields, we need to make a detour and discuss some geometry of lattices. This is essential because it will provide us with a geometric interpretation for how the ring of integers $\mc{O}_{K}$ sits inside the number field $K$. We say that $\L \subset \R^{n}$ is a \textbf{lattice}\index{lattice} if it is a free abelian group of rank $n$. In particular, any lattice $\L$ is of the form
+    Before we can continue with the study of number fields, we need to make a detour and discuss some geometry of lattices. This is essential because it will provide us with a geometric interpretation for how the ring of integers $\mc{O}_{K}$ sits inside the number field $K$. We say that $\L \subset \R^{n}$ is a \textbf{lattice}\index{lattice} if $\L$ is a free abelian group of rank $n$. In particular, any lattice $\L$ is of the form
     \[
       \L = \Z v_{1}+\cdots+\Z v_{n},
     \]
@@ -801,7 +801,7 @@
     \[
       P = \begin{pmatrix} v_{1,1} & \cdots & v_{1,n} \\ \vdots & & \vdots \\ v_{n,1} & \cdots & v_{n,n} \end{pmatrix}.
     \]
-    Now consider $V_{\L}$. Making the change of variables $x_{i} \to t_{i}$ for $1 \le e \le n$ where
+    Now consider $V_{\L}$. Making the change of variables $x_{i} \to t_{i}$ for $1 \le i \le n$ where
     \[
       x_{1}e_{1}+\cdots+x_{n}e_{n} = t_{1}v_{1}+\cdots+t_{n}v_{n},
     \]
@@ -809,7 +809,7 @@
     \[
       V_{\L} = \int_{\mc{P}}\,dx_{1} \cdots dx_{n} = |\det(P)|\int_{[0,1]^{n}}\,dt_{1} \cdots dt_{n} = |\det(P)|,
     \]
-    which shows that the volume of $\L$ is given by the absolute value of the determinant of the generator matrix $P$. We will now require a useful geometric lemma which states that, under some mild conditions, a set of sufficiently large volume contains a nonzero point of $\L$:
+    which shows that the volume of $\L$ is given by the absolute value of the determinant of the generator matrix $P$. We will now prove a useful lemma which states that, under some mild conditions, a set of sufficiently large volume contains a nonzero point of a lattice:
 
     \begin{lemma}
       Let $\L$ be a lattice in $\R^{n}$. Suppose $X \subset \R^{n}$ is a compact convex set that is symmetric with respect to $0$. If
@@ -841,22 +841,8 @@
       \]
       and $X$ is closed, $\l \in X$ as well. Thus we have found a nonzero $\l \in L$ with $\l \in X$. This completes the proof.
     \end{proof}
-  \section{\todo{The Ideal Class Group}}
-    Let $K$ be a number field. Recall that the ideal group $I_{K}$ is the group of fractional ideals of $K$. We let $P_{K}$ denote the subgroup of $I_{K}$ of principal ideals $\a\mc{O}_{K}$ for nonzero $\a \in K$. Since $I_{K}$ is abelian, $P_{K}$ is normal. The \textbf{ideal class group}\index{ideal class group} $\Cl(K)$ of $K$ is defined to be the quotient group
-    \[
-      \Cl(K) = I_{K}/P_{K},
-    \]
-    of fractional ideals modulo principal ideals. We call an element of $\Cl(K)$ an \textbf{ideal class}\index{ideal class} of $K$. The \textbf{class number}\index{class number} $h_{K}$ of $K$ is defined by
-    \[
-      h_{K} = |\Cl(K)|.
-    \]
-    That is, the class number is the size of the ideal class group. The class number is a measure of how much the ring of integers $\mc{O}_{K}$ fails to be a principal ideal domain. Indeed, if $\mc{O}_{K}$ is a principal ideal domain then every integral ideal is principal and hence every fractional ideal is too (because every fractional ideal $\mf{f}$ is of the form $\frac{1}{\a}\mf{a}$ for some integral ideal $\mf{a}$ and nonzero $\a \in \mc{O}_{K}$). But then $\Cl(K)$ is the trivial group an hence $h_{K} = 1$. Conversely, if $h_{K} = 1$ then every fractional ideal is principal and hence every integral ideal is too so that $\mc{O}_{K}$ is a principal ideal domain. In short, $\mc{O}_{K}$ is a principal ideal domain if and only if $h_{K} = 1$. Our primary goal is to show that the class number is finite. 
-    
-    \begin{remark}
-      Explicit computation of the class number for a general algebraic number field $K$ is a very difficult problem except in simple cases.
-    \end{remark}
-    
-    Suppose the degree of $K$ is $n$ and let $\s_{1},\ldots,\s_{n}$ be the $n$ distinct $\Q$-embeddings of $K$ into $\conj{\Q}$. In particular, these embeddings are $\Q$-embeddings of $K$ into $\C$. Let $r_{1}$ and $2r_{2}$ be the number of real and complex embeddings respectively (the complex embeddings occur in pairs of two because if $\s$ is a complex embedding then so is its conjugate $\conj{\s}$). We call the pair $(r_{1},r_{2})$ the \textbf{signature}\index{signature} of $K$. In particular,
+
+    We will now work in the setting of number fields. Let $K$ be number field of degree $n$ and let $\s_{1},\ldots,\s_{n}$ be the $n$ distinct $\Q$-embeddings of $K$ into $\conj{\Q}$. In particular, these embeddings are $\Q$-embeddings of $K$ into $\C$. Let $r_{1}$ and $2r_{2}$ be the number of real and complex embeddings respectively (the complex embeddings occur in pairs of two because if $\s$ is a complex embedding then so is its conjugate $\conj{\s}$). We call the pair $(r_{1},r_{2})$ the \textbf{signature}\index{signature} of $K$. In particular,
     \[
       n = r_{1}+2r_{2}.
     \]
@@ -864,7 +850,7 @@
     \[
       \s:K \to \R^{n} \qquad \k \to (\s_{1}(\k),\ldots,\s_{r_{1}}(\k),\Re(\s_{r_{1}+1}(\k)),\Im(\s_{r_{1}+1}(\k)),\ldots,\Re(\s_{r_{1}+r_{2}}(\k)),\Im(\s_{r_{1}+r_{2}}(\k))).
     \]
-    Since $\mc{O}_{K}$ is a free abelian group of rank $n$ by \cref{thm:ring_of_integers_finitely_generated}, so is $\s(\mc{O}_{K})$. Moreover, as $\mc{O}_{K}$ contains a basis for $K$, namely an integral basis, we see that $\s(\mc{O}_{K})$ also contains a basis of $\R^{n}$. It follows that $\s(\mc{O}_{K})$ is a lattice in $\R^{n}$. Letting $\{\a_{1},\ldots,\a_{n}\}$ be an integral basis for $\mc{O}_{K}$, the generator matrix for $\s(\mc{O}_{K})$ is
+    Since $\mc{O}_{K}$ is a free abelian group of rank $n$ by \cref{thm:ring_of_integers_finitely_generated}, so is $\s(\mc{O}_{K})$. Moreover, as $\mc{O}_{K}$ contains a basis for $K$, namely an integral basis, we see that $\s(\mc{O}_{K})$ also contains a basis of $\R^{n}$. It follows that $\s(\mc{O}_{K})$ is a lattice in $\R^{n}$. Actually, this holds for any fractional ideal $\mf{f}$. As $\mf{f}$ is a finitely generated $\mc{O}_{K}$-submodule of $K$ and $\mc{O}_{K}$ is a free abelian group of rank $n$, it follows that $\mf{f}$ is a free abelian group of rank $n$ as well. Letting $\a \in \mf{f}$ be nonzero, $\a\mc{O}_{K} \subseteq \mf{f}$ and hence $\mf{f}$ contains a basis for $K$ (since $\mc{O}_{K}$ admits an integral basis). Therefore $\s(\mf{f})$ also contains a basis for $\R^{n}$ and hence $\s(\mf{f})$ is a lattice in $\R^{n}$. Let us now compute the volume of $\s(\mc{O}_{K})$. Letting $\{\a_{1},\ldots,\a_{n}\}$ be an integral basis for $\mc{O}_{K}$, the generator matrix for $\s(\mc{O}_{K})$ is
     \[
       P = \begin{pmatrix} \s_{1}(\a_{1}) & \cdots & \s_{r_{1}}(\a_{1}) & \Re(\s_{r_{1}+1}(\a_{1})) & \Im(\s_{r_{1}+1}(\a_{1})) & \cdots & \Re(\s_{r_{1}+r_{2}}(\a_{1})) & \Im(\s_{r_{1}+r_{2}}(\a_{1})) \\ \vdots & & \vdots & \vdots & \vdots & & \vdots & \vdots \\ \s_{1}(\a_{n}) & \cdots & \s_{r_{1}}(\a_{n}) & \Re(\s_{r_{1}+1}(\a_{n})) & \Im(\s_{r_{1}+1}(\a_{n})) & \cdots & \Re(\s_{r_{1}+r_{2}}(\a_{n})) & \Im(\s_{r_{1}+r_{2}}(\a_{n})) \end{pmatrix}.
     \]
@@ -880,14 +866,23 @@
     \[
       |\det(P)| = |\det(P')| = |(-2i)^{-r_{2}}\det(P'')| = 2^{-r_{2}}|\det(P'')|.
     \]
-    Since the complex embeddings occur in conjugate pairs, $P'' = M(\a_{1},\ldots,\a_{n})$ and hence $|\det(P'')| = \sqrt{\D_{K}}$. Since the absolute value of $P$ is the volume of $\s(\mc{O}_{K})$, we conclude that
+    Since the complex embeddings occur in conjugate pairs, $P'' = M(\a_{1},\ldots,\a_{n})$ and hence $|\det(P'')| = \sqrt{\D_{K}}$. As the absolute value of $P$ is the volume of $\s(\mc{O}_{K})$, we conclude that
     \[
       V_{\s(\mc{O}_{K})} = \frac{\sqrt{\D_{K}}}{2^{r_{2}}}.
     \]
-    We can now prove that the class number is finite. Actually, we prove this and more:
+  \section{\todo{The Ideal Class Group}}
+    Let $K$ be a number field. Recall that the ideal group $I_{K}$ is the group of fractional ideals of $K$. We let $P_{K}$ denote the subgroup of $I_{K}$ of principal ideals $\a\mc{O}_{K}$ for nonzero $\a \in K$. Since $I_{K}$ is abelian, $P_{K}$ is normal. The \textbf{ideal class group}\index{ideal class group} $\Cl(K)$ of $K$ is defined to be the quotient group
+    \[
+      \Cl(K) = I_{K}/P_{K},
+    \]
+    of fractional ideals modulo principal ideals. We call an element of $\Cl(K)$ an \textbf{ideal class}\index{ideal class} of $K$. The \textbf{class number}\index{class number} $h_{K}$ of $K$ is defined by
+    \[
+      h_{K} = |\Cl(K)|.
+    \]
+    That is, the class number is the size of the ideal class group. The class number is a measure of how much the ring of integers $\mc{O}_{K}$ fails to be a principal ideal domain. Indeed, if $\mc{O}_{K}$ is a principal ideal domain then every integral ideal is principal and hence every fractional ideal is too (because every fractional ideal $\mf{f}$ is of the form $\frac{1}{\a}\mf{a}$ for some integral ideal $\mf{a}$ and nonzero $\a \in \mc{O}_{K}$). But then $\Cl(K)$ is the trivial group an hence $h_{K} = 1$. Conversely, if $h_{K} = 1$ then every fractional ideal is principal and hence every integral ideal is too so that $\mc{O}_{K}$ is a principal ideal domain. In short, $\mc{O}_{K}$ is a principal ideal domain if and only if $h_{K} = 1$. Our goal is to show that the class number is finite:
 
     \begin{theorem}
-      Let $K$ be a number field. Then there exists a constant $C > 0$ such that every ideal class contains an integral ideal $\mf{a}$ such that
+      Let $K$ be a number field. Then there exists a constant $C > 0$ such that every ideal class contains an integral ideal $\mf{a}$ satisfying
       \[
         \Norm(\mf{a}) \le C\sqrt{|\D_{K}|}.
       \]
