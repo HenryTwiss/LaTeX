@@ -75,11 +75,7 @@
     \[
       \Trace_{R/K}(\k\rho) = \k\Trace_{R/K}(\rho) \quad \text{and} \quad \Norm_{R/K}(\k\rho) = \k^{m}\Norm_{R/K}(\rho),
     \]
-    for all $\k \in K$ because $T_{\k\l} = \k T_{\l}$. In particular, $T_{1} = I$ implies
-    \[
-      \Trace_{R/K}(1) = m \quad \text{and} \quad \Norm_{R/K}(1) = 1.
-    \]
-    As $T_{\l+\nu} = T_{\l}+T_{\nu}$ and $T_{\l \nu} = T_{\l}T_{\nu}$, we obtain homomorphisms
+    for all $\k \in K$ because $T_{\k\l} = \k T_{\l}$. As $T_{\l+\nu} = T_{\l}+T_{\nu}$ and $T_{\l \nu} = T_{\l}T_{\nu}$, we obtain homomorphisms
     \[
       \Trace_{R/K}:R \to K \quad \text{and} \quad \Norm_{R/K}:R \to K.
     \]
@@ -127,7 +123,11 @@
       This proves the first statement. The formulas for the trace and norm follow from Vieta's formulas and \cref{equ:trace_and_norm_characteristic_polynomial}.
     \end{proof}
 
-    As a corollary, we can show how the trace and norm act on algebraic integers for the extension $K/\Q$:
+    In particular, for a separable extension $L/K$ \cref{prop:formulas_for_trace_and_norm} implies that
+    \[
+      \Trace_{R/K}(1) = n \quad \text{and} \quad \Norm_{R/K}(1) = 1.
+    \]
+    As a corollary of \cref{prop:formulas_for_trace_and_norm}, we can show how the trace and norm act on algebraic integers for the extension $K/\Q$:
 
     \begin{corollary}\label{cor:norm_and_trace_of_algebraic_integers}
       Let $K$ be a number field. If $\k \in K$ is an algebraic integer, then the trace and norm of $\k$ are integers.
@@ -255,35 +255,7 @@
       The determine of the matrix on right-hand side is $\disc_{R/K}(\eta_{1},\ldots,\eta_{m_{1}})\disc_{R}(\g_{1},\ldots,\g_{m_{2}})$. This completes the proof.
     \end{proof}
     
-    In the case $R = L$, let $\{\l_{1},\ldots,\l_{n}\}$ be a basis for $L$ and let $\s_{1},\ldots,\s_{n}$ be the $n$ distinct $K$-embeddings of $L$ into $\conj{K}$. We can write $\disc_{L/K}(\l_{1},\ldots,\l_{n})$ in a more useful form. For this, consider the matrix 
-    \[
-      M(\l_{1},\ldots,\l_{n}) = (\s_{i}(\l_{j}))_{i,j}. 
-    \]
-    Recalling that the $(i,j)$-entry of $M(\l_{1},\ldots,\l_{n})^{t}M(\l_{1},\ldots,\l_{n})$ is the dot product of the $i$-th and $j$-th columns of $M(\l_{1},\ldots,\l_{n})$, we have
-    \begin{align*}
-      \det(M(\l_{1},\ldots,\l_{n}))^{2} &= \det(M(\l_{1},\ldots,\l_{n})^{t}M(\l_{1},\ldots,\l_{n})) \\
-      &= \det\left(\left(\sum_{1 \le k \le n}\s_{k}(\l_{i})\s_{k}(\l_{j})\right)_{i,j}\right) \\
-      &= \det\left(\left(\sum_{1 \le k \le n}\s_{k}(\l_{i}\l_{j})\right)_{i,j}\right) \\
-      &= \det((\Trace_{L/K}(\l_{i}\l_{j}))_{i,j}) \\
-      &= \disc_{L/K}(\l_{1},\ldots,\l_{n}),
-    \end{align*}
-    where the last equality follows by \cref{prop:formulas_for_trace_and_norm}. Hence
-    \begin{equation}\label{equ:discriminant_square_when_seperable}
-      \disc_{K}(\l_{1},\ldots,\l_{n}) =  \det(M(\l_{1},\ldots,\l_{n}))^{2}.
-    \end{equation}
-    In the special case $L = K[\l]$, for some $\l \in L$, a basis for $L$ is $\{1,\l,\ldots,\l^{n-1}\}$. For this basis we obtain the Vandermonde matrix
-    \[
-      M(1,\l,\ldots,\l^{n-1}) = \begin{pmatrix} 1 & \s_{1}(\l) & \cdots & \s_{1}(\l)^{n-1} \\ \vdots & \vdots & & \vdots \\  1 & \s_{n}(\l) & \cdots & \s_{n}(\l)^{n-1} \end{pmatrix}.
-    \]
-    Its determinant is given by
-    \[
-      \det(M(1,\l,\ldots,\l^{n-1})) = \prod_{1 \le i < j \le n}(\s_{i}(\l)-\s_{j}(\l)),
-    \]
-    and thus is nonzero since the $K$-embeddings $\s_{1},\ldots,\s_{n}$ are distinct. Hence
-    \begin{equation}\label{equ:simple_discriminant}
-      \disc_{K}(1,\l,\ldots,\l^{n-1}) = \prod_{1 \le i < j \le n}(\s_{i}(\l)-\s_{j}(\l))^{2},
-    \end{equation}
-    and is nonzero. It turns out that $\disc_{K}(\l_{1},\ldots,\l_{n})$ is always nonzero for any separable extension $L/K$. To see this, we require a lemma:
+    It turns out that $\disc_{K}(\l_{1},\ldots,\l_{n})$ is nonzero if $L/K$ is separable. To see this, we require a lemma:
 
     \begin{lemma}\label{lem:trace_is_nondegenerate}
       Let $L/K$ be a finite separable extension. Then the map
@@ -293,7 +265,7 @@
       is a nondegenerate symmetric bilinear form.
     \end{lemma}
     \begin{proof}
-      From the definition of the trace, it is clear that the map is a symmetric bilinear form. To see that is is nondegenerate, suppose $L/K$ is degree $n$. Then for any nonzero $\l \in L$, we have
+      From the definition of the trace, it is clear that the map is a symmetric bilinear form. To see that is is nondegenerate, suppose $L/K$ is degree $n$. Then for any nonzero $\l \in L$, \cref{prop:formulas_for_trace_and_norm} implies that
       \[
         \Trace_{L/K}(\l\l^{-1}) = \Trace_{L/K}(1) = n.
       \]
@@ -303,10 +275,10 @@
     We can now show that $\disc_{K}(\l_{1},\ldots,\l_{n})$ is never zero:
 
     \begin{proposition}\label{prop:discriminant_not_zero}
-      Let $L/K$ be a degree $n$ separable extension and let $\{\l_{1},\ldots,\l_{n}\}$ be a basis for $L$. Then $\disc_{K}(\l_{1},\ldots,\l_{n}) \neq 0$.
+      Let $L/K$ be a degree $n$ separable extension and let $\{\l_{1},\ldots,\l_{n}\}$ be a basis for $L$. Then we have that $\disc_{K}(\l_{1},\ldots,\l_{n}) \neq 0$. In particular, $\disc_{K}(L) \neq 0$.
     \end{proposition}
     \begin{proof}
-      Suppose to the contrary that $\disc_{K}(\l_{1},\ldots,\l_{n}) = 0$. Then the matrix $(\Trace_{L/K}(\l_{i}\l_{j}))_{i,j}$ is not invertible. Hence there exists a nonzero column vector $(\k_{1},\ldots,\k_{n})^{t}$ with $\k_{i} \in K$ for $1 \le i \le n$ such that
+      The second statement follows immediately from the first. To prove the first statement, suppose to the contrary that $\disc_{K}(\l_{1},\ldots,\l_{n}) = 0$. Then the matrix $(\Trace_{L/K}(\l_{i}\l_{j}))_{i,j}$ is not invertible. Hence there exists a nonzero column vector $(\k_{1},\ldots,\k_{n})^{t}$ with $\k_{i} \in K$ for $1 \le i \le n$ such that
       \[
         (\Trace_{L/K}(\l_{i}\l_{j}))_{i,j}(\k_{1},\ldots,\k_{n})^{t} = \mathbf{0}.
       \]
@@ -321,17 +293,41 @@
       linearity of the trace implies that these $n$ equations are equivalent to the fact that $\Trace_{L/K}(\l\l_{i}) = 0$ for all $i$. As $\{\l_{1},\ldots,\l_{n}\}$ is a basis for $L$, it follows that $\l \in L$ is a nonzero element for which $\Trace_{L/K}(\l\eta) = 0$ for all $\eta \in L$. This is impossible by \cref{lem:trace_is_nondegenerate}. Hence $\disc_{K}(\l_{1},\ldots,\l_{n}) \neq 0$.
     \end{proof}
 
+    Continue to assume that $L/K$ is separable. We can write $\disc_{K}(\l_{1},\ldots,\l_{n})$ in a much more useful form. To do this, we define an \textbf{embedding matrix}\index{embedding matrix} $M(\l_{1},\ldots,\l_{n})$ by
+    \[
+      M(\l_{1},\ldots,\l_{n}) = (\s_{i}(\l_{j}))_{i,j},
+    \]
+    for any basis $\{\l_{1},\ldots,\l_{n}\}$ of $L$. Then we have the following result:
+
+    \begin{proposition}\label{disc_as_square_of_embedding_matrix}
+      Let $L/K$ be a degree $n$ separable extension. Then for any basis $\{\l_{1},\ldots,\l_{n}\}$ of $L$, we have
+      \[
+        \disc_{K}(\l_{1},\ldots,\l_{n}) = \det(M(\l_{1},\ldots,\l_{n}))^{2}.
+      \]
+    \end{proposition}
+    \begin{proof}
+      Recalling that the $(i,j)$-entry of $M(\l_{1},\ldots,\l_{n})^{t}M(\l_{1},\ldots,\l_{n})$ is the dot product of the $i$-th and $j$-th columns of $M(\l_{1},\ldots,\l_{n})$, we have
+    \begin{align*}
+      \det(M(\l_{1},\ldots,\l_{n}))^{2} &= \det(M(\l_{1},\ldots,\l_{n})^{t}M(\l{1},\ldots,\l_{n})) \\
+      &= \det\left(\left(\sum_{1 \le k \le n}\s_{k}(\l_{i})\s_{k}(\l_{j})\right)_{i,j}\right) \\
+      &= \det\left(\left(\sum_{1 \le k \le n}\s_{k}(\l_{i}\l_{j})\right)_{i,j}\right) \\
+      &= \det((\Trace_{L/K}(\l_{i}\l_{j}))_{i,j}) \\
+      &= \disc_{L/K}(\l_{1},\ldots,\l_{n}),
+    \end{align*}
+    where the second to last equality follows by \cref{prop:formulas_for_trace_and_norm}. This completes the proof.
+    \end{proof}
+
     In the specialized case $K/\Q$ for a number field $K$, we define the \textbf{discriminant}\index{discriminant} $\D_{K}$ of $K$ by
     \[
       \D_{K} = \disc_{K}(\a_{1},\ldots,\a_{n}),
     \]
-    for any integral basis $\{\a_{1},\ldots,\a_{n}\}$. In particular, by \cref{equ:discriminant_square_when_seperable} we can also write
+    for any integral basis $\{\a_{1},\ldots,\a_{n}\}$. As $\D_{K}$ is not taken modulo $(K^{\ast})^{2}$, we need to show that $\D_{K}$ is independent of the choice of integral basis and hence well-defined. Indeed, if $\{\a'_{1},\ldots,\a'_{n}\}$ is another integral basis then the base change matrix, as well as its inverse, both have integer entries (because integral bases are bases for $\mc{O}_{K}$ as a $\Z$-module). This implies that the determinant of the base change matrix is $\pm 1$ and so \cref{equ:discriminant_base_change} shows that $\D_{K}$ is independent of the choice of integral basis. Moreover, $\D_{K}$ is nonzero by \cref{prop:discriminant_not_zero} and
     \[
-      \D_{K} = \det(M(\a_{1},\ldots,\a_{n}))^{2}.
+      \D_{K} = \det(M(\a_{1},\ldots,\a_{n}))^{2},
     \]
-    As $\D_{K}$ is not taken modulo $(K^{\ast})^{2}$, we need to show that $\D_{K}$ is independent of the choice of integral basis and hence well-defined. Indeed, if $\{\a'_{1},\ldots,\a'_{n}\}$ is another integral basis then the base change matrix, as well as its inverse, both have integer entries (because integral bases are bases for $\mc{O}_{K}$ as a $\Z$-module). This implies that the determinant of the base change matrix is $\pm 1$ and so \cref{equ:discriminant_base_change} shows that $\D_{K}$ is independent of the choice of integral basis. Moreover, $\D_{K}$ is nonzero by \cref{prop:discriminant_not_zero}.
+    by \cref{disc_as_square_of_embedding_matrix}.
   \section{Integral \& Fractional Ideals}
-    For the number field $\Q$, its ring of integers $\Z$ is a unique factorization domain. Indeed, this is just a restatement of the fundamental theorem of arithmetic. Unfortunately, for a general number field $K$ its ring of integers $\mc{O}_{K}$ need not be a unique factorization domain. However, the ideals of $\mc{O}_{K}$ do factor into a unique product of prime ideals (this is trivial for a unique factorization domain). Our main goal is to prove this. We first introduce some notation. Any nonzero ideal $\mf{a}$ of $\mc{O}_{K}$ is said to be an \textbf{integral ideal}\index{integral ideal} of $K$. We first show that the quotient ring by an integral ideal is always finite:
+    For the number field $\Q$, its ring of integers $\Z$ is a unique factorization domain. Indeed, this is just a restatement of the fundamental theorem of arithmetic. Unfortunately, for a general number field $K$ its ring of integers $\mc{O}_{K}$ need not be a unique factorization domain. However, the ideals of $\mc{O}_{K}$ do factor into a unique product of prime ideals (this is trivial for a unique factorization domain). Our main goal is to prove this. We first introduce some notation. Any nonzero ideal $\mf{a}$ of $\mc{O}_{K}$ is said to be an \textbf{integral ideal}\index{integral ideal} of $K$. We first show that the quotient ring by an integral ideal is finite:
 
     \begin{proposition}\label{prop:residue_of_integral_ideal_is_finite}
       Let $K$ be a number field. For any $\a \in \mc{O}_{K}$, $\mc{O}_{K}/\a\mc{O}_{K}$ is finite and
@@ -757,11 +753,7 @@
       \[
         \Trace_{(\mc{O}_{K}/\mf{p}^{e})/(\Z/p\Z)}(\conj{\a_{1}}\conj{\a_{j}}) = 0,
       \]
-      for $1 \le j \le n$ because $T_{\conj{\a_{1}}\conj{\a_{i}}}^{2}$ is the zero operator (as $\conj{\a_{1}}^{2} = 0$) and hence all of its eigenvalues are zero. But then the first row of $(\Trace_{(\mc{O}_{K}/\mf{p}^{e})/(\Z/p\Z)}(\conj{\a_{i}}\conj{\a_{j}}))_{i,j}$ is zero and hence $\disc_{\Z/p\Z}(\mc{O}_{K}/\mf{p}^{e}) = 0$. Now suppose $e = 1$. We will prove $\disc_{\Z/p\Z}(\mc{O}_{K}/\mf{p}) \neq 0$. Recall that $\mc{O}_{K}/\mf{p}$ is a field and a vector space over $\Z/p\Z$ of dimension $f_{\mf{p}}$. Thus $(\mc{O}_{K}/\mf{p})/(\Z/p\Z)$ it is a finite separable extension. By the primitive element theorem, there exists an element $\conj{\a} \in \mc{O}_{K}/\mf{p}$ such that $\mc{O}_{K}/\mf{p} = (\Z/p\Z)[\conj{\a}]$ and so $\{1,\conj{\a},\ldots,\conj{\a}^{f_{\mf{p}}-1}\}$ is a basis for $\mc{O}_{K}/\mf{p}$. Letting $\s_{1},\ldots,\s_{f_{\mf{p}}}$ be the $f_{\mf{p}}$ distinct $(\Z/p\Z)$-embeddings of $\mc{O}_{K}/\mf{p}$ into $\conj{\Z/p\Z}$, \cref{equ:simple_discriminant} implies
-      \[
-        \disc_{(\mc{O}_{K}/\mf{p})/(\Z/p\Z)}(1,\a,\ldots,\a^{f_{\mf{p}}-1}) = \prod_{1 \le i < j \le f_{\mf{p}}}(\s_{i}(\conj{\a})-\s_{j}(\conj{\a}))^{2},
-      \]
-      and thus is nonzero. Hence $\disc_{\Z/p\Z}(\mc{O}_{K}/\mf{p})$ is nonzero as well. We have now shown that $\disc_{\Z/p\Z}(\mc{O}_{K}/\mf{p}^{e}) = 0$ if and only if $e \ge 2$ completing the proof.
+      for $1 \le j \le n$ because $T_{\conj{\a_{1}}\conj{\a_{i}}}^{2}$ is the zero operator (as $\conj{\a_{1}}^{2} = 0$) and hence all of its eigenvalues are zero. But then the first row of $(\Trace_{(\mc{O}_{K}/\mf{p}^{e})/(\Z/p\Z)}(\conj{\a_{i}}\conj{\a_{j}}))_{i,j}$ is zero and hence $\disc_{\Z/p\Z}(\mc{O}_{K}/\mf{p}^{e}) = 0$. Now suppose $e = 1$. We will prove $\disc_{\Z/p\Z}(\mc{O}_{K}/\mf{p}) \neq 0$. Recall that $\mc{O}_{K}/\mf{p}$ is a field and a vector space over $\Z/p\Z$ of dimension $f_{\mf{p}}$. Thus $(\mc{O}_{K}/\mf{p})/(\Z/p\Z)$ it is a finite separable extension. Hence $\disc_{\Z/p\Z}(\mc{O}_{K}/\mf{p})$ is nonzero by \cref{prop:discriminant_not_zero}. We have now shown that $\disc_{\Z/p\Z}(\mc{O}_{K}/\mf{p}^{e}) = 0$ if and only if $e \ge 2$ which completes the proof.
     \end{proof}
 
     As an immediate corollary, we see that only finitely many primes can ramify:
@@ -793,7 +785,7 @@
     \[
       V_{\L} = \mathrm{Vol}(\mc{P}).
     \]
-    That is, the volume of $\L$ is the volume of the fundamental domain $\mc{P}$. Since the measures $dx_{i}$ for $1 \le i \le n$ are translation invariant, $V_{\L}$ is independent of the choice of fundamental domain. The volume is also given by the absolute value of a determinant. If $\L$ is given by the basis $\{v_{1},\ldots,v_{n}\}$, we write
+    That is, the volume of $\L$ is the volume of the fundamental domain $\mc{P}$. Since the measures $dx_{i}$ for $1 \le i \le n$ are translation invariant, $V_{\L}$ is independent of the choice of fundamental domain. If $\L$ is given by the basis $\{v_{1},\ldots,v_{n}\}$, we write
     \[
       v_{i} = \sum_{1 \le i \le n}v_{i,j}e_{j},
     \]
@@ -801,23 +793,35 @@
     \[
       P = \begin{pmatrix} v_{1,1} & \cdots & v_{1,n} \\ \vdots & & \vdots \\ v_{n,1} & \cdots & v_{n,n} \end{pmatrix}.
     \]
-    Now consider $V_{\L}$. Making the change of variables $x_{i} \to t_{i}$ for $1 \le i \le n$ where
-    \[
-      x_{1}e_{1}+\cdots+x_{n}e_{n} = t_{1}v_{1}+\cdots+t_{n}v_{n},
-    \]
-    the corresponding Jacobian matrix is $P$ because this is the base change matrix from the standard basis to the basis $\{v_{1},\ldots,v_{n}\}$. Then
-    \[
-      V_{\L} = \int_{\mc{P}}\,dx_{1} \cdots dx_{n} = |\det(P)|\int_{[0,1]^{n}}\,dt_{1} \cdots dt_{n} = |\det(P)|,
-    \]
-    which shows that the volume of $\L$ is given by the absolute value of the determinant of the generator matrix $P$. We will now prove a useful lemma which states that, under some mild conditions, a set of sufficiently large volume contains a nonzero point of a lattice:
+    The following proposition shows that the volume of $\L$ is essentially given by the determinant of the generator matrix:
 
-    \begin{lemma}
+    \begin{proposition}\label{prop:lattice_volume_generator_matrix}
+      Let $\L$ be a lattice in $\R^{n}$ and $P$ be its generator matrix. Then
+      \[
+        V_{\L} = |\det(P)|.
+      \]
+    \end{proposition}
+    \begin{proof}
+      Making the change of variables $x_{i} \to t_{i}$ for $1 \le i \le n$ where
+      \[
+        x_{1}e_{1}+\cdots+x_{n}e_{n} = t_{1}v_{1}+\cdots+t_{n}v_{n},
+      \]
+      the corresponding Jacobian matrix is $P$ because this is the base change matrix from the standard basis to the basis $\{v_{1},\ldots,v_{n}\}$. Then
+      \[
+        V_{\L} = \int_{\mc{P}}\,dx_{1} \cdots dx_{n} = |\det(P)|\int_{[0,1]^{n}}\,dt_{1} \cdots dt_{n} = |\det(P)|,
+      \]
+      which completes the proof.
+    \end{proof}
+
+     We will now prove a useful result which states that, under some mild conditions, a set of sufficiently large volume contains a nonzero point of a lattice:
+
+    \begin{theorem}\label{thm:lattice_point_theorem}
       Let $\L$ be a lattice in $\R^{n}$. Suppose $X \subset \R^{n}$ is a compact convex set that is symmetric with respect to $0$. If
       \[
         \Vol(X) \ge 2^{n}V_{\L},
       \]
       then there exists a nonzero $\l \in L$ with $\l \in X$ 
-    \end{lemma}
+    \end{theorem}
     \begin{proof}
       We will prove the claim depending on if the inequality is strict or not. First suppose $\Vol(X) > 2^{n}V_{\L}$. Consider the linear map
       \[
@@ -850,26 +854,41 @@
     \[
       \s:K \to \R^{n} \qquad \k \to (\s_{1}(\k),\ldots,\s_{r_{1}}(\k),\Re(\s_{r_{1}+1}(\k)),\Im(\s_{r_{1}+1}(\k)),\ldots,\Re(\s_{r_{1}+r_{2}}(\k)),\Im(\s_{r_{1}+r_{2}}(\k))).
     \]
-    Since $\mc{O}_{K}$ is a free abelian group of rank $n$ by \cref{thm:ring_of_integers_finitely_generated}, so is $\s(\mc{O}_{K})$. Moreover, as $\mc{O}_{K}$ contains a basis for $K$, namely an integral basis, we see that $\s(\mc{O}_{K})$ also contains a basis of $\R^{n}$. It follows that $\s(\mc{O}_{K})$ is a lattice in $\R^{n}$. Actually, this holds for any fractional ideal $\mf{f}$. As $\mf{f}$ is a finitely generated $\mc{O}_{K}$-submodule of $K$ and $\mc{O}_{K}$ is a free abelian group of rank $n$, it follows that $\mf{f}$ is a free abelian group of rank $n$ as well. Letting $\a \in \mf{f}$ be nonzero, $\a\mc{O}_{K} \subseteq \mf{f}$ and hence $\mf{f}$ contains a basis for $K$ (since $\mc{O}_{K}$ admits an integral basis). Therefore $\s(\mf{f})$ also contains a basis for $\R^{n}$ and hence $\s(\mf{f})$ is a lattice in $\R^{n}$. Let us now compute the volume of $\s(\mc{O}_{K})$. Letting $\{\a_{1},\ldots,\a_{n}\}$ be an integral basis for $\mc{O}_{K}$, the generator matrix for $\s(\mc{O}_{K})$ is
-    \[
-      P = \begin{pmatrix} \s_{1}(\a_{1}) & \cdots & \s_{r_{1}}(\a_{1}) & \Re(\s_{r_{1}+1}(\a_{1})) & \Im(\s_{r_{1}+1}(\a_{1})) & \cdots & \Re(\s_{r_{1}+r_{2}}(\a_{1})) & \Im(\s_{r_{1}+r_{2}}(\a_{1})) \\ \vdots & & \vdots & \vdots & \vdots & & \vdots & \vdots \\ \s_{1}(\a_{n}) & \cdots & \s_{r_{1}}(\a_{n}) & \Re(\s_{r_{1}+1}(\a_{n})) & \Im(\s_{r_{1}+1}(\a_{n})) & \cdots & \Re(\s_{r_{1}+r_{2}}(\a_{n})) & \Im(\s_{r_{1}+r_{2}}(\a_{n})) \end{pmatrix}.
-    \]
-    To compute this determinant, first add an $i$ multiple of the imaginary columns to their corresponding real columns and then apply the identity $\Im(z) = \frac{z-\conj{z}}{2i}$ to the imaginary columns to obtain
-    \[
-      P' = \begin{pmatrix} \s_{1}(\a_{1}) & \cdots & \s_{r_{1}}(\a_{1}) & \s_{r_{1}+1}(\a_{1}) & \frac{\s_{r_{1}+1}(\a_{1})-\conj{\s_{r_{1}+1}(\a_{1})}}{2i} & \cdots & \s_{r_{1}+r_{2}}(\a_{1}) & \frac{\s_{r_{1}+r_{2}}(\a_{1})-\conj{\s_{r_{1}+r_{2}}(\a_{1})}}{2i} \\ \vdots & & \vdots & \vdots & \vdots & & \vdots & \vdots \\ \s_{1}(\a_{n}) & \cdots & \s_{r_{1}}(\a_{n}) & \s_{r_{1}+1}(\a_{n}) & \frac{\s_{r_{1}+1}(\a_{n})-\conj{\s_{r_{1}+1}(\a_{n})}}{2i} & \cdots & \s_{r_{1}+r_{2}}(\a_{n}) & \frac{\s_{r_{1}+r_{2}}(\a_{n})-\conj{\s_{r_{1}+r_{2}}(\a_{n})}}{2i} \end{pmatrix}.
-    \]
-    Since $P'$ differs from $P$ by column addition, their determinants are the same. Now multiply the imaginary columns of $P'$ by $-2i$ and then adding the corresponding columns to annihilate the negative terms, we get
-    \[
-      P'' = \begin{pmatrix} \s_{1}(\a_{1}) & \cdots & \s_{r_{1}}(\a_{1}) & \s_{r_{1}+1}(\a_{1}) &\conj{\s_{r_{1}+1}(\a_{1})} & \cdots & \s_{r_{1}+r_{2}}(\a_{1}) & \conj{\s_{r_{1}+r_{2}}(\a_{1})} \\ \vdots & & \vdots & \vdots & \vdots & & \vdots & \vdots \\ \s_{1}(\a_{n}) & \cdots & \s_{r_{1}}(\a_{n}) & \s_{r_{1}+1}(\a_{n}) & \conj{\s_{r_{1}+1}(\a_{n})} & \cdots & \s_{r_{1}+r_{2}}(\a_{n}) & \conj{\s_{r_{1}+r_{2}}(\a_{n})} \end{pmatrix}.
-    \]
-    As $P''$ differs from $P'$ by column addition and column scaling of which there were $r_{2}$ many of factor $-2i$, the determinant of $P''$ is $(-2i)^{-r_{2}}$ that of $P'$. Altogether, we have
-    \[
-      |\det(P)| = |\det(P')| = |(-2i)^{-r_{2}}\det(P'')| = 2^{-r_{2}}|\det(P'')|.
-    \]
-    Since the complex embeddings occur in conjugate pairs, $P'' = M(\a_{1},\ldots,\a_{n})$ and hence $|\det(P'')| = \sqrt{\D_{K}}$. As the absolute value of $P$ is the volume of $\s(\mc{O}_{K})$, we conclude that
-    \[
-      V_{\s(\mc{O}_{K})} = \frac{\sqrt{\D_{K}}}{2^{r_{2}}}.
-    \]
+    Since $\mc{O}_{K}$ is a free abelian group of rank $n$ by \cref{thm:ring_of_integers_finitely_generated}, so is $\s(\mc{O}_{K})$. Moreover, as $\mc{O}_{K}$ contains a basis for $K$, namely an integral basis, we see that $\s(\mc{O}_{K})$ also contains a basis of $\R^{n}$. It follows that $\s(\mc{O}_{K})$ is a lattice in $\R^{n}$. Actually, this holds for any fractional ideal $\mf{f}$. As $\mf{f}$ is a finitely generated $\mc{O}_{K}$-submodule of $K$ and $\mc{O}_{K}$ is a free abelian group of rank $n$, it follows that $\mf{f}$ is a free abelian group of rank $n$ as well. Letting $\a \in \mf{f}$ be nonzero, $\a\mc{O}_{K} \subseteq \mf{f}$ and hence $\mf{f}$ contains a basis for $K$ (since $\mc{O}_{K}$ admits an integral basis). Therefore $\s(\mf{f})$ also contains a basis for $\R^{n}$ and hence $\s(\mf{f})$ is a lattice in $\R^{n}$. We now determine the volume of $\s(\mf{f})$ for any fractional ideal $\mf{f}$: 
+    
+    \begin{proposition}
+      Let $K$ be a number field with signature $(r_{1},r_{2})$ and canonical embedding $\s$. Then
+      \[
+        V_{\s(\mc{O}_{K})} = \frac{\sqrt{\D_{K}}}{2^{r_{2}}}.
+      \]
+      Moreover, for any fractional ideal $\mf{f}$ we have
+      \[
+        V_{\s(\mf{f})} = \Norm(\mf{f})\frac{\sqrt{\D_{K}}}{2^{r_{2}}}.
+      \]
+    \end{proposition}
+    \begin{proof}
+      Letting $\{\a_{1},\ldots,\a_{n}\}$ be an integral basis for $\mc{O}_{K}$, the generator matrix $P$ for $\s(\mc{O}_{K})$ is
+      \[
+        P = \begin{pmatrix} \s_{1}(\a_{1}) & \cdots & \s_{r_{1}}(\a_{1}) & \Re(\s_{r_{1}+1}(\a_{1})) & \Im(\s_{r_{1}+1}(\a_{1})) & \cdots & \Re(\s_{r_{1}+r_{2}}(\a_{1})) & \Im(\s_{r_{1}+r_{2}}(\a_{1})) \\ \vdots & & \vdots & \vdots & \vdots & & \vdots & \vdots \\ \s_{1}(\a_{n}) & \cdots & \s_{r_{1}}(\a_{n}) & \Re(\s_{r_{1}+1}(\a_{n})) & \Im(\s_{r_{1}+1}(\a_{n})) & \cdots & \Re(\s_{r_{1}+r_{2}}(\a_{n})) & \Im(\s_{r_{1}+r_{2}}(\a_{n})) \end{pmatrix}.
+      \]
+      To compute this determinant, first add an $i$ multiple of the imaginary columns to their corresponding real columns and then apply the identity $\Im(z) = \frac{z-\conj{z}}{2i}$ to the imaginary columns to obtain
+      \[
+        P' = \begin{pmatrix} \s_{1}(\a_{1}) & \cdots & \s_{r_{1}}(\a_{1}) & \s_{r_{1}+1}(\a_{1}) & \frac{\s_{r_{1}+1}(\a_{1})-\conj{\s_{r_{1}+1}(\a_{1})}}{2i} & \cdots & \s_{r_{1}+r_{2}}(\a_{1}) & \frac{\s_{r_{1}+r_{2}}(\a_{1})-\conj{\s_{r_{1}+r_{2}}(\a_{1})}}{2i} \\ \vdots & & \vdots & \vdots & \vdots & & \vdots & \vdots \\ \s_{1}(\a_{n}) & \cdots & \s_{r_{1}}(\a_{n}) & \s_{r_{1}+1}(\a_{n}) & \frac{\s_{r_{1}+1}(\a_{n})-\conj{\s_{r_{1}+1}(\a_{n})}}{2i} & \cdots & \s_{r_{1}+r_{2}}(\a_{n}) & \frac{\s_{r_{1}+r_{2}}(\a_{n})-\conj{\s_{r_{1}+r_{2}}(\a_{n})}}{2i} \end{pmatrix}.
+      \]
+      Since $P'$ differs from $P$ by column addition, their determinants are the same. Now multiply the imaginary columns of $P'$ by $-2i$ and then adding the corresponding columns to annihilate the negative terms, we get
+      \[
+        P'' = \begin{pmatrix} \s_{1}(\a_{1}) & \cdots & \s_{r_{1}}(\a_{1}) & \s_{r_{1}+1}(\a_{1}) &\conj{\s_{r_{1}+1}(\a_{1})} & \cdots & \s_{r_{1}+r_{2}}(\a_{1}) & \conj{\s_{r_{1}+r_{2}}(\a_{1})} \\ \vdots & & \vdots & \vdots & \vdots & & \vdots & \vdots \\ \s_{1}(\a_{n}) & \cdots & \s_{r_{1}}(\a_{n}) & \s_{r_{1}+1}(\a_{n}) & \conj{\s_{r_{1}+1}(\a_{n})} & \cdots & \s_{r_{1}+r_{2}}(\a_{n}) & \conj{\s_{r_{1}+r_{2}}(\a_{n})} \end{pmatrix}.
+      \]
+      As $P''$ differs from $P'$ by column addition and column scaling of which there were $r_{2}$ many of factor $-2i$, the determinant of $P''$ is $(-2i)^{-r_{2}}$ that of $P'$. Altogether, we have
+      \[
+        |\det(P)| = |\det(P')| = |(-2i)^{-r_{2}}\det(P'')| = 2^{-r_{2}}|\det(P'')|.
+      \]
+      Since the complex embeddings occur in conjugate pairs, $P'' = M(\a_{1},\ldots,\a_{n})$ is the embedding matrix of the integral basis and hence $|\det(P'')| = \sqrt{\D_{K}}$. By \cref{prop:lattice_volume_generator_matrix}, we conclude that
+      \[
+        V_{\s(\mc{O}_{K})} = \frac{\sqrt{\D_{K}}}{2^{r_{2}}}.
+      \]
+      This proves the first statement. Now suppose $\mf{a}$ is an integral ideal. \todo{XXX}
+    \end{proof}
   \section{\todo{The Ideal Class Group}}
     Let $K$ be a number field. Recall that the ideal group $I_{K}$ is the group of fractional ideals of $K$. We let $P_{K}$ denote the subgroup of $I_{K}$ of principal ideals $\a\mc{O}_{K}$ for nonzero $\a \in K$. Since $I_{K}$ is abelian, $P_{K}$ is normal. The \textbf{ideal class group}\index{ideal class group} $\Cl(K)$ of $K$ is defined to be the quotient group
     \[
