@@ -55,7 +55,7 @@
       where $a'_{i} = a_{i}a^{n-1-i}$ for $0 \le i \le n-1$, and so $a\k$ is the root of a monic polynomial with coefficients in $\Z$. Then $a\k \in \mc{O}_{K}$ and so $a\k = \a$ for some $\a \in \mc{O}_{K}$ which is equivalent to $\k = \frac{\a}{a}$. As $\Z \subseteq \mc{O}_{K}$, this also implies that $K$ is the field of fractions of $\mc{O}_{K}$. For the last statement, suppose $\k \in K$. If the minimal polynomial of $\k$ has integer coefficients then $\k$ is automatically an algebraic integer (since the minimal polynomial is monic). So suppose $\k$ is an algebraic integer so that $\k$ is a root of a monic polynomial $f(x) \in \Z[x]$. If $p_{\k}(x) \in \Q[x]$ is the minimal polynomial of $\k$, then $p_{\k}(x)$ divides $f(x)$ and thus all of the roots of $p_{\k}(x)$ algebraic integers too. By Vieta's formulas, the coefficients of $p_{\k}(x)$ algebraic integers as well. But then $p_{\k}(x) \in \Z[x]$. This completes the proof.
     \end{proof}
   \section{Traces \& Norms}
-    We will now require norms and traces of extensions of fields. Let $L/K$ be a degree $n$ field extension. In particular, $L$ is an $n$-dimensional vector space over $K$. Let $R \subseteq L$ be a free $K$-algebra of rank $m$. Then the \textbf{trace}\index{trace} and \textbf{norm}\index{norm} of $R$, denoted $\Trace_{R/K}$ and $\Norm_{R/K}$ respectively, are defined by
+    We will now require norms and traces of free modules over fields. Let $K$ be a field and let $R$ be a free $K$-module of rank $n$. Then the \textbf{trace}\index{trace} and \textbf{norm}\index{norm} of $R$, denoted $\Trace_{R/K}$ and $\Norm_{R/K}$ respectively, are defined by
     \[
       \Trace_{R/K}(\rho) = \tr(T_{\rho}) \quad \text{and} \quad \Norm_{R/K}(\rho) = \det(T_{\rho}),
     \]
@@ -79,7 +79,7 @@
     \[
       \Trace_{R/K}:R \to K \quad \text{and} \quad \Norm_{R/K}:R \to K.
     \]
-    In the case $R = L$, we call $\Trace_{L/K}$ and $\Norm_{L/K}$ the \textbf{trace}\index{trace} and \textbf{norm}\index{norm} of $L/K$. Moreover, $\Norm(\l) = 0$ if and only if $\l = 0$ because otherwise $T_{\l}$ has inverse $T_{\l^{-1}}$ and hence nonzero determinant. Therefore we obtain homomorphisms
+    In the case of a degree $n$ extension $L/K$, we call $\Trace_{L/K}$ and $\Norm_{L/K}$ the \textbf{trace}\index{trace} and \textbf{norm}\index{norm} of $L/K$. Moreover, $\Norm(\l) = 0$ if and only if $\l = 0$ because otherwise $T_{\l}$ has inverse $T_{\l^{-1}}$ and hence nonzero determinant. Therefore we obtain homomorphisms
     \[
       \Trace_{L/K}:L \to K \quad \text{and} \quad \Norm_{L/K}:L^{\ast} \to K^{\ast}.
     \]
@@ -123,10 +123,6 @@
       This proves the first statement. The formulas for the trace and norm follow from Vieta's formulas and \cref{equ:trace_and_norm_characteristic_polynomial}.
     \end{proof}
 
-    In particular, for a separable extension $L/K$ \cref{prop:formulas_for_trace_and_norm} implies that
-    \[
-      \Trace_{R/K}(1) = n \quad \text{and} \quad \Norm_{R/K}(1) = 1.
-    \]
     As a corollary of \cref{prop:formulas_for_trace_and_norm}, we can show how the trace and norm act on algebraic integers for the extension $K/\Q$:
 
     \begin{corollary}\label{cor:norm_and_trace_of_algebraic_integers}
@@ -199,36 +195,48 @@
       and hence $\mc{O}_{K}[\k]$ is a finitely generated $\Z$-module because $\mc{O}_{K}$ is by \cref{thm:ring_of_integers_finitely_generated}. As $\Z[\k] \subseteq \mc{O}_{K}[\k]$, we see that $\Z[\k]$ must also be a finitely generated $\Z$-module. Hence $\k$ is an algebraic integer by \cref{prop:algebraic_integer_if_finitely_generated}.
     \end{proof}
   \section{Discriminants}
-    Let $L/K$ be a degree $n$ separable extension and $R \subseteq L$ be a free $K$-algebra of rank $m$. If $\{\rho_{1},\ldots,\rho_{m}\}$ is a basis for $R$, we set
+    We will now discuss discriminants of free modules over fields. Let $K$ be a field and $R$ be a free $K$-module of rank $n$. If $\{\rho_{1},\ldots,\rho_{n}\}$ is a basis for $R$, we set
     \[
-      \disc_{R/K}(\rho_{1},\ldots,\rho_{m}) = \det((\Trace_{R/K}(\rho_{i}\rho_{j}))_{i,j}).
+      \disc_{R/K}(\rho_{1},\ldots,\rho_{n}) = \det((\Trace_{R/K}(\rho_{i}\rho_{j}))_{i,j}).
     \]
-    In particular, $\disc_{R/K}(\rho_{1},\ldots,\rho_{m})$ is an element of $K$. It is also independent of the choice of basis up to elements of $(K^{\ast})^{2}$. Indeed, if $\{\rho'_{1},\ldots,\rho'_{m}\}$ is another basis then we have
+    In particular, $\disc_{R/K}(\rho_{1},\ldots,\rho_{n})$ is an element of $K$. It is also independent of the choice of basis up to elements of $(K^{\ast})^{2}$. Indeed, if $\{\rho'_{1},\ldots,\rho'_{n}\}$ is another basis then we have
     \[
       \rho'_{i} = \sum_{1 \le j \le m}\k_{i,j}\rho_{j},
     \]
-    with $\k_{i,j} \in K$ for $1 \le i,j \le m$. Then $(\k_{i,j})_{i,j}$ is the base change matrix from $\{\rho_{1},\ldots,\rho_{m}\}$ to $\{\rho'_{1},\ldots,\rho'_{m}\}$ and so it has nonzero determinant. Thus $\det((\k_{i,j})_{i,j}) \in K^{\ast}$. Moreover, we have
+    with $\k_{i,j} \in K$ for $1 \le i,j \le n$. Then $(\k_{i,j})_{i,j}$ is the base change matrix from $\{\rho_{1},\ldots,\rho_{n}\}$ to $\{\rho'_{1},\ldots,\rho'_{n}\}$ and so it has nonzero determinant. Thus $\det((\k_{i,j})_{i,j}) \in K^{\ast}$. Moreover, we have
     \[
       (\Trace_{R/K}(\rho'_{i}\rho'_{j}))_{i,j} = (\k_{i,j})_{i,j}(\Trace_{R/K}(\rho_{i}\rho_{j}))_{i,j}(\k_{i,j})_{i,j}^{t},
     \]
     which, upon taking the determinant, shows that
     \begin{equation}\label{equ:discriminant_base_change}
-      \disc_{R/K}(\rho'_{1},\ldots,\rho'_{m}) = \det((\k_{i,j})_{i,j})^{2}\disc_{R/K}(\rho_{1},\ldots,\rho_{m}),
+      \disc_{R/K}(\rho'_{1},\ldots,\rho'_{n}) = \det((\k_{i,j})_{i,j})^{2}\disc_{R/K}(\rho_{1},\ldots,\rho_{n}),
     \end{equation}
     as claimed. We define the \textbf{discriminant}\index{discriminant} $\disc_{K}(R)$ of $R$ by
     \[
-      \disc_{K}(R) = \disc_{R/K}(\rho_{1},\ldots,\rho_{m}) \pmod{(K^{\ast})^{2}}.
+      \disc_{K}(R) = \disc_{R/K}(\rho_{1},\ldots,\rho_{n}) \pmod{(K^{\ast})^{2}}.
     \]
-    for any basis $\{\rho_{1},\ldots,\rho_{m}\}$ of $R$. By what we have shown, $\disc_{K}(R)$ is well-defined. The discriminant is also multiplicative with respect to direct sums:
+    for any basis $\{\rho_{1},\ldots,\rho_{n}\}$ of $R$. By what we have shown, $\disc_{K}(R)$ is well-defined. The discriminant also behaves well with respect to submodules:
+
+    \begin{proposition}
+      Let $K$ be a field and $R$ be a free $K$-module of rank $n$ with basis $\{\rho_{1},\ldots,\rho_{n}\}$. If $R' \subseteq R$ is a free $K$-submodule of rank $n$ with basis $\{\rho'_{1},\ldots,\rho'_{n}\}$, then
+      \[
+        \disc_{R'/K}(\rho'_{1},\ldots,\rho'_{n}) = |R/R'|\disc_{R/K}(\rho_{1},\ldots,\rho_{n}).
+      \]
+    \end{proposition}
+    \begin{proof}
+      \todo{xxx}
+    \end{proof}
+  
+    The discriminant is also multiplicative with respect to direct sums:
 
     \begin{proposition}\label{prop:discriminant_and_direct_sums}
-      Let $L/K$ be a finite separable extension $R \subseteq L$ be a free $K$-algebra of rank $m$. Suppose we have a direct sum decomposition
+      Let $K$ be a field and $R$ be a free $K$-module of rank $n$. Suppose we have a direct sum decomposition
       \[
         R = R_{1} \op R_{2},
       \]
-      for free $K$-algebras $R_{1}$ and $R_{2}$ of ranks $m_{1}$ and $m_{2}$ respectively with $m = m_{1}+m_{2}$. Let $\{\eta_{1},\ldots,\eta_{m_{1}}\}$ and $\{\g_{1},\ldots,\g_{m_{2}}\}$ be bases of $R_{1}$ and $R_{2}$ respectively. Then
+      for free $K$-modules $R_{1}$ and $R_{2}$ of ranks $n_{1}$ and $n_{2}$ respectively. Also let $\{\eta_{1},\ldots,\eta_{n_{1}}\}$ and $\{\g_{1},\ldots,\g_{n_{2}}\}$ be bases of $R_{1}$ and $R_{2}$ respectively. Then
       \[
-        \disc_{R/K}(\eta_{1},\ldots,\eta_{m_{1}},\g_{1},\ldots,\g_{m_{2}}) = \disc_{R/K}(\eta_{1},\ldots,\eta_{m_{1}})\disc_{R}(\g_{1},\ldots,\g_{m_{2}}).
+        \disc_{R/K}(\eta_{1},\ldots,\eta_{n_{1}},\g_{1},\ldots,\g_{n_{2}}) = \disc_{R/K}(\eta_{1},\ldots,\eta_{n_{1}})\disc_{R}(\g_{1},\ldots,\g_{n_{2}}).
       \]
       In particular,
       \[
@@ -238,9 +246,9 @@
     \begin{proof}
       The second statement follows immediately from the first. To prove the first statement, write
       \[
-        \disc_{R/K}(\eta_{1},\ldots,\eta_{m_{1}}) = \det((\Trace_{R/K}(\eta_{i}\eta_{j}))_{i,j}) \quad \text{and} \quad \disc_{R}(\g_{1},\ldots,\g_{m_{2}}) = \det((\Trace_{R/K}(\g_{k}\g_{\ell}))_{k,\ell}).
+        \disc_{R/K}(\eta_{1},\ldots,\eta_{n_{1}}) = \det((\Trace_{R/K}(\eta_{i}\eta_{j}))_{i,j}) \quad \text{and} \quad \disc_{R}(\g_{1},\ldots,\g_{n_{2}}) = \det((\Trace_{R/K}(\g_{k}\g_{\ell}))_{k,\ell}).
       \]
-      As $R$ is the direct product of $R_{1}$ and $R_{2}$, we have $\eta_{i}\g_{k} = 0$ for all $1 \le i \le m_{1}$ and $1 \le k \le m_{2}$. It follows that $\disc_{R/K}(\eta_{1},\ldots,\eta_{m_{1}},\g_{1},\ldots,\g_{m_{2}})$ is the determinant of the block diagonal matrix
+      As $R$ is the direct sum of $R_{1}$ and $R_{2}$ as $K$-subalgebras, we have $\eta_{i}\g_{k} = 0$ for all $1 \le i \le n_{1}$ and $1 \le k \le n_{2}$. It follows that $\disc_{R/K}(\eta_{1},\ldots,\eta_{n_{1}},\g_{1},\ldots,\g_{n_{2}})$ is the determinant of the block diagonal matrix
       \[
         \begin{pmatrix} (\Trace_{R/K}(\eta_{i}\eta_{j}))_{i,j} & \\ & (\Trace_{R/K}(\g_{k}\g_{\ell}))_{k,\ell} \end{pmatrix}.
       \]
@@ -252,10 +260,10 @@
       \[
         \begin{pmatrix} (\Trace_{R/K}(\eta_{i}\eta_{j}))_{i,j} & \\ & (\Trace_{R/K}(\g_{k}\g_{\ell}))_{k,\ell} \end{pmatrix} = \begin{pmatrix} (\Trace_{R_{1}/K}(\eta_{i}\eta_{j}))_{i,j} & \\ & (\Trace_{R_{2}/K}(\g_{k}\g_{\ell}))_{k,\ell} \end{pmatrix}.
       \]
-      The determine of the matrix on right-hand side is $\disc_{R/K}(\eta_{1},\ldots,\eta_{m_{1}})\disc_{R}(\g_{1},\ldots,\g_{m_{2}})$. This completes the proof.
+      The determine of the matrix on right-hand side is $\disc_{R/K}(\eta_{1},\ldots,\eta_{n_{1}})\disc_{R}(\g_{1},\ldots,\g_{n_{2}})$. This completes the proof.
     \end{proof}
     
-    It turns out that $\disc_{K}(\l_{1},\ldots,\l_{n})$ is nonzero if $L/K$ is separable. To see this, we require a lemma:
+    We now specialize to the setting of a degree $n$ separable extension $L/K$. It turns out that the discriminant is nonzero. To see this, we require a lemma:
 
     \begin{lemma}\label{lem:trace_is_nondegenerate}
       Let $L/K$ be a finite separable extension. Then the map
@@ -272,7 +280,7 @@
       Hence the symmetric bilinear form is nondegenerate.
     \end{proof}
 
-    We can now show that $\disc_{K}(\l_{1},\ldots,\l_{n})$ is never zero:
+    We can now show that the discriminant is never zero:
 
     \begin{proposition}\label{prop:discriminant_not_zero}
       Let $L/K$ be a degree $n$ separable extension and let $\{\l_{1},\ldots,\l_{n}\}$ be a basis for $L$. Then we have that $\disc_{K}(\l_{1},\ldots,\l_{n}) \neq 0$. In particular, $\disc_{K}(L) \neq 0$.
@@ -293,11 +301,11 @@
       linearity of the trace implies that these $n$ equations are equivalent to the fact that $\Trace_{L/K}(\l\l_{i}) = 0$ for all $i$. As $\{\l_{1},\ldots,\l_{n}\}$ is a basis for $L$, it follows that $\l \in L$ is a nonzero element for which $\Trace_{L/K}(\l\eta) = 0$ for all $\eta \in L$. This is impossible by \cref{lem:trace_is_nondegenerate}. Hence $\disc_{K}(\l_{1},\ldots,\l_{n}) \neq 0$.
     \end{proof}
 
-    Continue to assume that $L/K$ is separable. We can write $\disc_{K}(\l_{1},\ldots,\l_{n})$ in a much more useful form. To do this, we define an \textbf{embedding matrix}\index{embedding matrix} $M(\l_{1},\ldots,\l_{n})$ by
+    In addition to $\disc_{K}(\l_{1},\ldots,\l_{n})$ never vanishing, we can also write it in an alternative form. To do this, for any basis $\{\l_{1},\ldots,\l_{n}\}$ of $L$ we define the associated \textbf{embedding matrix}\index{embedding matrix} $M(\l_{1},\ldots,\l_{n})$ by
     \[
-      M(\l_{1},\ldots,\l_{n}) = (\s_{i}(\l_{j}))_{i,j},
+      M(\l_{1},\ldots,\l_{n}) = (\s_{i}(\l_{j}))_{i,j}.
     \]
-    for any basis $\{\l_{1},\ldots,\l_{n}\}$ of $L$. Then we have the following result:
+    Then we have the following result:
 
     \begin{proposition}\label{disc_as_square_of_embedding_matrix}
       Let $L/K$ be a degree $n$ separable extension. Then for any basis $\{\l_{1},\ldots,\l_{n}\}$ of $L$, we have
