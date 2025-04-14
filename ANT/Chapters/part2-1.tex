@@ -917,17 +917,17 @@
     \[
       h_{K} = |\Cl(K)|.
     \]
-    That is, the class number is the size of the ideal class group. The class number is a measure of how much the ring of integers $\mc{O}_{K}$ fails to be a principal ideal domain. Indeed, if $\mc{O}_{K}$ is a principal ideal domain then every integral ideal is principal and hence every fractional ideal is too (because every fractional ideal $\mf{f}$ is of the form $\frac{1}{\a}\mf{a}$ for some integral ideal $\mf{a}$ and nonzero $\a \in \mc{O}_{K}$). But then $\Cl(K)$ is the trivial group an hence $h_{K} = 1$. Conversely, if $h_{K} = 1$ then every fractional ideal is principal and hence every integral ideal is too so that $\mc{O}_{K}$ is a principal ideal domain. In short, $\mc{O}_{K}$ is a principal ideal domain if and only if $h_{K} = 1$. Our goal is to show that the class number is finite:
+    That is, the class number is the size of the ideal class group. The class number is a measure of how much the ring of integers $\mc{O}_{K}$ fails to be a principal ideal domain. Indeed, if $\mc{O}_{K}$ is a principal ideal domain then every integral ideal is principal and hence every fractional ideal is too (because every fractional ideal $\mf{f}$ is of the form $\frac{1}{\a}\mf{a}$ for some integral ideal $\mf{a}$ and nonzero $\a \in \mc{O}_{K}$). But then $\Cl(K)$ is the trivial group an hence $h_{K} = 1$. Conversely, if $h_{K} = 1$ then every fractional ideal is principal and hence every integral ideal is too so that $\mc{O}_{K}$ is a principal ideal domain. In short, $\mc{O}_{K}$ is a principal ideal domain if and only if $h_{K} = 1$. Our primary goal is to show that the class number is finite:
 
     \begin{theorem}
-      Let $K$ be a number field. Then there exists a constant $C > 0$ such that every ideal class contains an integral ideal $\mf{a}$ satisfying
+      Let $K$ be a number field of degree $n$ and signature $(r_{1},r_{2})$. Let $X \subseteq \R^{n}$ be a compact convex symmetric set and set $M = \max_{x \in X}\left(\prod_{1 \le i \le n}|x_{i}|\right)$ where $x = (x_{1},\ldots,x_{n})$. Then every ideal class contains an integral ideal $\mf{a}$ satisfying
       \[
-        \Norm(\mf{a}) \le C\sqrt{|\D_{K}|}.
+        \Norm(\mf{a}) \le \frac{2^{r_{1}+r_{2}}M}{\Vol(X)}\sqrt{|\D_{K}|}.
       \]
       Moreover, the ideal class group $\Cl(K)$ is finite so that the class number $h_{K}$ is too.
     \end{theorem}
     \begin{proof}
-      Let $K$ be degree $n$ and with signature $(r_{1},r_{2})$. Now let $\mf{f}$ be a fractional ideal, let $X$ be a compact convex symmetric subset of $\R^{n}$, and set
+      Let $\mf{f}$ be a fractional ideal, and set
       \[
         \l^{n} = 2^{n}\frac{V_{\s(\mf{f}^{-1})}}{\Vol(X)}.
       \]
@@ -935,18 +935,14 @@
       \[
         \Vol(\l X) = \l^{n}\Vol(X) = 2^{n}V_{\s(\mf{f}^{-1})}.
       \]
-      By Minkowski's lattice point theorem, there exists a nonzero $\a \in \mf{f}^{-1}$ such that $\s(\a) \in \s(\mf{f}^{-1})$ and $\s(\a) \in \l X$. Since $\a \in \mf{f}^{-1}$, $\a\mf{f} \subseteq \mc{O}_{K}$ so that $\a\mf{f}$ is an integral ideal in the same ideal class as $\mf{f}$. As $X$ is compact, set
-      \[
-        M = \max_{x \in X}\left(\prod_{1 \le i \le n}|x_{i}|\right),
-      \]
-      where $x = (x_{1},\ldots,x_{n})$. Now let $\s_{1},\ldots,\s_{n}$ be the $n$ distinct $\Q$-embeddings of $K$ into $\conj{K}$. Since the norm is completely multiplicative by \cref{prop:ideal_norm_is_multiplicative}, we have
+      By Minkowski's lattice point theorem, there exists a nonzero $\a \in \mf{f}^{-1}$ such that $\s(\a) \in \s(\mf{f}^{-1})$ and $\s(\a) \in \l X$. Since $\a \in \mf{f}^{-1}$, $\a\mf{f} \subseteq \mc{O}_{K}$ so that $\a\mf{f}$ is an integral ideal in the same ideal class as $\mf{f}$. Now let $\s_{1},\ldots,\s_{n}$ be the $n$ distinct $\Q$-embeddings of $K$ into $\conj{K}$. Since the norm is completely multiplicative by \cref{prop:ideal_norm_is_multiplicative}, we have
       \[
         \Norm(\a\mf{f}) = |\Norm(\a)|\Norm(\mf{f}) = \left|\prod_{1 \le i \le n}\s_{i}(\a)\right|\Norm(\mf{f}) \le \l^{n}M\Norm(\mf{f}),
       \]
       where in the first equality we have applied \cref{prop:residue_of_integral_ideal_is_finite}, in the second we have used \cref{prop:formulas_for_trace_and_norm}, and the inequality follows since $\s(\a) \in \l X$. This inequality, our choice of $\l^{n}$, and \cref{prop:volume_of_fractional_ideal_under_canonical_embedding} together give
       \[
-        \Norm(\a\mf{f}) \le \l^{n}M\Norm(\mf{f}) = 2^{n}MN(\mf{f})\frac{V_{\s(\mf{f}^{-1})}}{\Vol(X)} = 2^{n}M\frac{\sqrt{|\D_{K}|}}{2^{r_{2}}\Vol(X)} = \frac{2^{r_{1}+r_{2}}M}{\Vol(X)}\sqrt{|\D_{K}|}.
+        \Norm(\a\mf{f}) \le \l^{n}M\Norm(\mf{f}) = 2^{n}MN(\mf{f})\frac{V_{\s(\mf{f}^{-1})}}{\Vol(X)} = 2^{n}M\frac{\sqrt{|\D_{K}|}}{2^{r_{2}}\Vol(X)} = \frac{2^{r_{1}+r_{2}}M}{\Vol(X)}\sqrt{|\D_{K}|},
       \]
-      Taking $C = \frac{2^{r_{1}+r_{2}}M}{\Vol(X)}$ proves the first statement since the fractional ideal $\mf{f}$ was arbitrary. We now prove that the class group is finite. By what we have just proved, we can find a complete set of representatives of $\Cl(K)$ consisting of integral ideals of norm bounded by $C\sqrt{|\D_{K}|}$. Since the norm is multiplicative by \cref{prop:ideal_norm_is_multiplicative}, the prime factors of these representatives have their norms bounded by $C\sqrt{|\D_{K}|}$ too. As we have seen, the norm of a prime integral ideal is exactly the prime $p$ below it. Thus the norms of these prime factors are a prime $p$ with $p \le C\sqrt{|\D_{K}|}$. As there are finitely many prime integral ideals above any prime $p$ (because $p\mc{O}_{K}$ factors into a product of prime integral ideals and these are exactly the prime integral ideals above $p$), it follows that these representatives have finitely many prime factors. Altogether this means that there are finitely many representatives. Hence $\Cl(K)$ is finite and so the class number $h_{K}$ is too.
+      which proves the first statement since the fractional ideal $\mf{f}$ was arbitrary. We now prove that the class group is finite. By what we have just proved, we can find a complete set of representatives of $\Cl(K)$ consisting of integral ideals of norm bounded by $C\sqrt{|\D_{K}|}$. Since the norm is multiplicative by \cref{prop:ideal_norm_is_multiplicative}, the prime factors of these representatives have their norms bounded by $C\sqrt{|\D_{K}|}$ too. As we have seen, the norm of a prime integral ideal is exactly the prime $p$ below it. Thus the norms of these prime factors are a prime $p$ with $p \le C\sqrt{|\D_{K}|}$. As there are finitely many prime integral ideals above any prime $p$ (because $p\mc{O}_{K}$ factors into a product of prime integral ideals and these are exactly the prime integral ideals above $p$), it follows that these representatives have finitely many prime factors. Altogether this means that there are finitely many representatives. Hence $\Cl(K)$ is finite and so the class number $h_{K}$ is too.
     \end{proof}
   \section{\todo{Quadratic Number Fields}}
