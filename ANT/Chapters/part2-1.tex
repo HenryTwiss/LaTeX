@@ -919,7 +919,7 @@
     \]
     That is, the class number is the size of the ideal class group. The class number is a measure of how much the ring of integers $\mc{O}_{K}$ fails to be a principal ideal domain. Indeed, if $\mc{O}_{K}$ is a principal ideal domain then every integral ideal is principal and hence every fractional ideal is too (because every fractional ideal $\mf{f}$ is of the form $\frac{1}{\a}\mf{a}$ for some integral ideal $\mf{a}$ and nonzero $\a \in \mc{O}_{K}$). But then $\Cl(K)$ is the trivial group an hence $h_{K} = 1$. Conversely, if $h_{K} = 1$ then every fractional ideal is principal and hence every integral ideal is too so that $\mc{O}_{K}$ is a principal ideal domain. In short, $\mc{O}_{K}$ is a principal ideal domain if and only if $h_{K} = 1$. Our primary goal is to show that the class number is finite:
 
-    \begin{theorem}
+    \begin{theorem}\label{equ:finitness_of_class_number}
       Let $K$ be a number field of degree $n$ and signature $(r_{1},r_{2})$. Let $X \subseteq \R^{n}$ be a compact convex symmetric set and set $M = \max_{x \in X}\left(\prod_{1 \le i \le n}|x_{i}|\right)$ where $x = (x_{1},\ldots,x_{n})$. Then every ideal class contains an integral ideal $\mf{a}$ satisfying
       \[
         \Norm(\mf{a}) \le \frac{2^{r_{1}+r_{2}}M}{\Vol(X)}\sqrt{|\D_{K}|}.
@@ -944,5 +944,117 @@
         \Norm(\a\mf{f}) \le \l^{n}M\Norm(\mf{f}) = 2^{n}MN(\mf{f})\frac{V_{\s(\mf{f}^{-1})}}{\Vol(X)} = 2^{n}M\frac{\sqrt{|\D_{K}|}}{2^{r_{2}}\Vol(X)} = \frac{2^{r_{1}+r_{2}}M}{\Vol(X)}\sqrt{|\D_{K}|},
       \]
       which proves the first statement since the fractional ideal $\mf{f}$ was arbitrary. We now prove that the class group is finite. By what we have just proved, we can find a complete set of representatives of $\Cl(K)$ consisting of integral ideals of bounded norm. Since the norm is multiplicative by \cref{prop:ideal_norm_is_multiplicative}, the prime factors of these representatives have bounded norm as well. As we have seen, the norm of a prime integral ideal is exactly the prime $p$ below it. Thus the norms of these prime factors are bounded primes $p$. As there are finitely many prime integral ideals above any prime $p$ (because $p\mc{O}_{K}$ factors into a product of prime integral ideals and these are exactly the prime integral ideals above $p$), it follows that these representatives have finitely many prime factors. Altogether this means that there are finitely many representatives. Hence $\Cl(K)$ is finite and so the class number $h_{K}$ is too.
+    \end{proof}
+
+    We would like to obtain an explicit bound in \cref{equ:finitness_of_class_number} by making a choice for the set $X$. To obtain a bound that is not too large, we need to ensure that the volume of $X$ is large while the constant $M$ is small. The following lemma dictates our choice of $X$ and computes its volume:
+
+    \begin{lemma}\label{lem:Minkowski_bound_lemma}
+      Suppose $n$ is a positive integer and write $n = r_{1}+2r_{2}$ for some nonnegative integers $r_{1}$ and $r_{2}$. Let $X \subset \R^{n}$ to be the compact convex symmetric set given by
+      \[
+        X = \left\{x \in \R^{n}:\sum_{1 \le i \le r_{1}}|x_{i}|+2\sum_{\substack{1 \le j \le r_{2} \\ j \equiv 1 \tmod{2}}}\sqrt{x_{r_{1}+j}^{2}+x_{r_{1}+j+1}^{2}} \le n\right\}.
+      \]
+      Then
+      \[
+        \Vol(X) = \frac{n^{n}}{n!}2^{r_{1}}\left(\frac{\pi}{2}\right)^{r_{2}}.
+      \]
+    \end{lemma}
+    \begin{proof}
+      Making the change of variables $x_{r_{1}+j} \to u_{j}\sin(\t_{j})$ and $x_{r_{1}+j+1} \to u_{j}\cos(\t_{j})$ for all $j$ gives
+      \[
+        \Vol(X) = \int_{X'}u_{1} \cdots u_{r_{2}}\,dx_{1} \cdots dx_{r_{1}}\,du_{1}\t_{1} \cdots du_{r_{2}}\t_{r_{2}},
+      \]
+      where $X'$ is the region
+      \[
+        X' = \left\{(x_{1},\ldots,x_{r_{1}},u_{1},\t_{1},\ldots,u_{r_{2}},\t_{r_{2}}):\sum_{1 \le i \le r_{1}}|x_{i}|+2\sum_{1 \le j \le r_{2}}u_{j} \le n\right\}.
+      \]
+      Since the integrand is independent of the $\t_{j}$, we have
+      \[
+        \Vol(X) = (2\pi)^{r_{2}}\int_{X'}u_{1} \cdots u_{r_{2}}\,dx_{1} \cdots dx_{r_{1}}\,du_{1} \cdots du_{r_{2}}.
+      \]
+      Making the change of variables $u_{j} \to \frac{u_{j}}{2}$ for all $j$ and using the fact that the integrand is symmetric in the $x_{i}$ for all $i$ gives
+      \begin{equation}\label{equ:Minkowski_bound_lemma_1}
+        \Vol(X) = 2^{r_{1}}\left(\frac{\pi}{2}\right)^{r_{2}}\int_{X''}u_{1} \cdots u_{r_{2}}\,dx_{1} \cdots dx_{r_{1}}\,du_{1} \cdots du_{r_{2}},
+      \end{equation}
+      where $X''$ is the region
+      \[
+        X'' = \left\{(x_{1},\ldots,x_{r_{1}},u_{1},\ldots,u_{r_{2}}):\sum_{1 \le i \le r_{1}}x_{i}+\sum_{1 \le j \le r_{2}}u_{j} \le n\right\}.
+      \]
+      To compute the remaining integral, for nonnegative integers $\ell$ and $k$ and $t \ge 0$, we let
+      \[
+        X''_{\ell,k}(t) = \left\{(x_{1},\ldots,x_{\ell},u_{1},\ldots,u_{k}):\sum_{1 \le i \le \ell}x_{i}+\sum_{1 \le j \le k}u_{j} \le t\right\},
+      \]
+      and set 
+      \[
+        I_{\ell,k}(t) = \int_{X''_{\ell,k}(t)}u_{1} \cdots u_{\ell}\,dx_{1} \cdots dx_{n}\,du_{1} \cdots du_{k}.
+      \]
+      Then we have to compute $I_{r_{1},r_{2}}(n)$. To this end, the change of variables $x_{i} \to tx_{i}$ and $u_{j} \to tu_{j}$ for all $i$ and $j$ gives
+      \begin{equation}\label{equ:Minkowski_bound_lemma_2}
+        I_{\ell,k}(t) = t^{\ell+2k}I_{\ell,k}(1).
+      \end{equation}
+      Now note that the condition
+      \[
+        \sum_{1 \le i \le \ell}x_{i}+\sum_{1 \le j \le k}u_{j} \le t,
+      \]
+      is equivalent to
+      \[
+        \sum_{1 \le i \le \ell-1}x_{i}+\sum_{1 \le j \le k}u_{j} \le t-x_{i}.
+      \]
+      This fact together with the dominated convergence theorem and \cref{equ:Minkowski_bound_lemma_2} gives
+      \[
+        I_{\ell,k}(1) = \int_{0}^{1}I_{\ell-1,k}(1-x_{\ell})\,dx_{\ell} = \int_{0}^{1}(1-x_{\ell})^{\ell-1+2k}I_{\ell-1,k}(1)\,dx_{\ell} = \frac{1}{\ell+2k}I_{\ell-1,k}(1).
+      \]
+      Repeating this procedure $\ell-1$ times results in
+      \begin{equation}\label{equ:Minkowski_bound_lemma_3}
+        I_{\ell,k}(1) = \frac{1}{(\ell+2k) \cdots (2k+1)}I_{0,k}(1).
+      \end{equation}
+      Similarly, the condition
+      \[
+        \sum_{1 \le j \le k}u_{j} \le t,
+      \]
+      is equivalent to
+      \[
+        \sum_{1 \le j \le k-1}u_{j} \le t-u_{k}.
+      \]
+      This fact together with the dominated convergence theorem, \cref{equ:Minkowski_bound_lemma_2}, and \cref{prop:integral_reprepsentation_for_beta_function} gives
+      \[
+        I_{0,k}(1) = \int_{0}^{1}u_{k}I_{0,k-1}(1-u_{k})\,du_{k} = \int_{0}^{1}u_{k}(1-u_{k})^{2k-2}I_{0,k-1}(1)\,du_{k} = B(1,2k-1)I_{0,k-1}(1) = \frac{1}{2k}I_{0,k-1}(1).
+      \]
+      Repeating this procedure $k-1$ times results in
+      \begin{equation}\label{equ:Minkowski_bound_lemma_4}
+        I_{0,k}(1) = \frac{1}{k!},
+      \end{equation}
+      since $I_{0,0}(1) = 1$. Combining \cref{equ:Minkowski_bound_lemma_2,equ:Minkowski_bound_lemma_3,equ:Minkowski_bound_lemma_4} we find that
+      \[
+        I_{\ell,k}(t) = t^{\ell+2k}\frac{1}{(\ell+2k)!}.
+      \]
+      In particular, $I_{r_{1},r_{2}}(n) = \frac{n^{n}}{n!}$ and from \cref{equ:Minkowski_bound_lemma_1} we obtain
+      \[
+        \Vol(X) = \frac{n^{n}}{n!}2^{r_{1}}\left(\frac{\pi}{2}\right)^{r_{2}},
+      \]
+      as desired.
+    \end{proof}
+
+    We can now obtain an explicit bound in \cref{equ:finitness_of_class_number} known as \textbf{Minkowski's bound}\index{Minkowski's bound}:
+
+    \begin{theorem}[Minkowski's bound]
+      Let $K$ be a number field of degree $n$ and signature $(r_{1},r_{2})$. Then every ideal class contains an integral ideal $\mf{a}$ satisfying
+      \[
+        \Norm(\mf{a}) \le \left(\frac{4}{\pi}\right)^{r_{2}}\frac{n!}{n^{n}}\sqrt{|\D_{K}|}.
+      \]
+    \end{theorem}
+    \begin{proof}
+      Choose $X$ in \cref{equ:finitness_of_class_number} to be
+      \[
+        X = \left\{x \in \R^{n}:\sum_{1 \le i \le r_{1}}|x_{i}|+2\sum_{\substack{1 \le j \le r_{2} \\ j \equiv 1 \tmod{2}}}\sqrt{x_{r_{1}+j}^{2}+x_{r_{1}+j+1}^{2}} \le n\right\},
+      \]
+      where $x = (x_{1},\ldots,x_{n})$. Then \cref{lem:Minkowski_bound_lemma} gives
+      \[
+        \Norm(\mf{a}) \le M\left(\frac{4}{\pi}\right)^{r_{2}}\frac{n!}{n^{n}}\sqrt{|\D_{K}|},
+      \]
+      where $M = \max_{x \in X}\left(\prod_{1 \le \ell \le n}|x_{\ell}|\right)$. But for all $x \in X$, the arithmetic geometric inequality gives
+      \[
+        \left(\prod_{1 \le \ell \le n}|x_{\ell}|\right)^{\frac{1}{n}} \le \frac{1}{n}\sum_{1 \le \ell \le n}|x_{\ell}| \le 1,
+      \]
+      where the second inequality holds by the definition of $X$. Hence $M \le 1$ and this completes the proof.
     \end{proof}
   \section{\todo{Quadratic Number Fields}}

@@ -803,15 +803,15 @@
       \[
         \G(s) = \int_{0}^{\infty}e^{-x}x^{s-1}\,dx,
       \]
-      for $\s > 0$. The integral is locally absolutely uniformly convergent in this region. Indeed, if $K$ is a compact subset in the region $\s > 0$, then upon splitting the integral we have
-      \begin{equation}\label{equ:Gamma_integral_bounded_1}
+      for $\s > 0$. The integral is locally absolutely uniformly convergent in this region. Indeed, let $K$ is a compact subset in this region and set $\a = \min_{s \in K}(\s)$. Then we have to show that $\G(s)$ is absolutely uniformly convergent on $K$. Now split the integral by writing
+      \[
         \G(s) = \int_{0}^{1}e^{-x}x^{s-1}\,dx+\int_{1}^{\infty}e^{-x}x^{s-1}\,dx.
-      \end{equation}
-      By \cref{prop:decay_unbounded_inteval_integral}, the second integral in \cref{equ:Gamma_integral_bounded_1} is locally absolutely uniformly convergent in this region. As for the first integral, let $\b = \min_{s \in K}(\s)$. Then
-      \begin{equation}\label{equ:Gamma_integral_bounded_2}
-        \int_{0}^{1}e^{-x}x^{s-1}\,dx \ll \int_{0}^{1}x^{\s-1}\,dx \ll_{\b} 1.
-      \end{equation}
-      \cref{equ:Gamma_integral_bounded_2} implies that the first integral in \cref{equ:Gamma_integral_bounded_1} is locally absolutely uniformly convergent too. Altogether, this means $\G(s)$ is as well. Also note that for $s >0$, $\G(s)$ is real. The most basic properties of $\G(s)$ are the following:
+      \]
+      By \cref{prop:decay_unbounded_inteval_integral}, the second integral is absolutely uniformly convergent on $K$. As for the first integral, we have
+      \[
+        \int_{0}^{1}e^{-x}x^{s-1}\,dx \ll \int_{0}^{1}x^{\s-1}\,dx \ll_{\a} 1,
+      \]
+      so that this integral is absolutely uniformly convergent on $K$ too. Thus $\G(s)$ is absolutely uniformly convergent on $K$. Also note that $\G(s)$ is real for $s > 0$. The most basic properties of $\G(s)$ are the following:
 
       \begin{proposition}\label{prop:Factorial_properties_of_gamma_function}
         $\G(s)$ satisfies the following properties:
@@ -964,11 +964,21 @@
         where the last estimate follows because $\log\G(s)-g(s) = O_{\e,d}(1)$.
       \end{proof}
 
-      The last result we will need is an explicit representation for $\log\G(s)$ known as \textbf{Binet's log gamma formula}\index{Binet's log gamma formula}:
-
-      \begin{proposition}[Binet's log gamma formula]
-        \phantom{ }
+      Lastly, we introduce a useful function related to the Gamma function. We define the \textbf{beta function}\index{beta function} $B(s,u)$ by
+      \[
+          B(s,u) = \int_{0}^{1}t^{s-1}(1-t)^{u-1}\,dt,
+      \]
+      for $\s > 0$ and $\tau > 0$. The integral is locally absolutely uniformly convergent in this region. Indeed, let $K \x L$ be a compact subset in this region and set $\a = \min_{s \in K}(\s)$ and $\b = \min_{u \in L}(\tau)$. Then
+      \[
+        \int_{0}^{1}t^{s-1}(1-t)^{u-1}\,dt \ll \int_{0}^{1}t^{\a-1}(1-t)^{\b-1}\,dt \ll_{\a,\b} 1,
+      \]
+      so that this integral is absolutely uniformly convergent on $K$ too. Thus $B(s,u)$ is absolutely uniformly convergent on $K \x L$. Most importantly, the beta function is related to the gamma function in this region (see \cite{remmert1998classical} for a proof):
+      
+      \begin{proposition}\label{prop:integral_reprepsentation_for_beta_function}
+        For $\Re(s) > 0$ and $\Re(u) > 0$,
         \[
-          \log\G(s) = \left(s-\frac{1}{2}\right)\G(s)-s+\frac{1}{2}\log(2\pi)+2\int_{0}^{\infty}\frac{\tan^{-1}\left(\frac{x}{s}\right)}{e^{2\pi x}-1}\,dx.
+          B(s,u) = \int_{0}^{1}t^{s-1}(1-t)^{u-1}\,dt.
         \]
       \end{proposition}
+
+      In particular, \cref{prop:integral_reprepsentation_for_beta_function} shows that $B(s,u)$ has meromorphic continuation to $\C^{2}$ since the gamma function does by \cref{thm:continuation_of_gamma_function}.
