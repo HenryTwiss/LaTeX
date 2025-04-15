@@ -1,5 +1,5 @@
 \chapter{The Theory of Number Fields}
-  Introductory number theory is done over $\Q$. The associated set of integers $\Z$ is a ring inside $\Q$. Moreover, the fundamental theorem of arithmetic tells us that prime factorization exists in $\Z$. That is, every integer is uniquely a product of primes (up to reordering of the factors). The purpose of algebraic number theory is to consider number fields which are finite extensions of $\Q$ where there might no longer be prime factorization. In the following, we discuss the structure of number fields, their associated ring of integers, and the properties of prime factorization.
+  Introductory number theory is done over $\Q$. The associated set of integers $\Z$ is a ring inside $\Q$. Moreover, the fundamental theorem of arithmetic tells us that prime factorization exists in $\Z$. That is, every integer is uniquely a product of primes (up to reordering of the factors). The study of number fields is concerned with finite extensions of $\Q$ where there might no longer be prime factorization. In the following, we discuss the structure of number fields, their associated ring of integers, and the properties of prime factorization.
   \section{Numbers Fields \& Algebraic Integers}
     An \textbf{number field}\index{number field} $K$ is a finite extension of $\Q$. That is, $K$ is a finite dimensional vector space over $\Q$. In particular, $K/\Q$ is a finite separable extension, so that the primitive element theorem applies, and is Galois if and only if $K/\Q$ is normal. We say that the \textbf{degree}\index{degree} of $K$ is $[K:\Q]$ which is the dimension of this vector space. If $K$ is of degree $2$, $3$, etc. then we say it is \textbf{quadratic}\index{quadratic}, \textbf{cubic}\index{cubic}, etc. Any $\k \in K$ is called an \textbf{algebraic number}\index{algebraic number}. Moreover, we say that $\k$ is an \textbf{algebraic integer}\index{algebraic integer} if it is the root of a monic polynomial $f(x) \in \Z[x]$. If $K = \Q$, it is clear that any integer is an algebraic integer ($n$ is the root of $x-n$.). Moreover, any rational root of a monic polynomial must be an integer by the rational root theorem. In other words, if $f(x) \in \Z[x]$ is monic and $q \in \Q$ is a root of $f(x)$ then $q \in \Z$. Therefore for the number field $\Q$, the algebraic integers are exactly the integers $\Z$. Our first goal in studying number fields is to discuss the algebraic integers. Accordingly, we define the \textbf{ring of integers}\index{ring of integers} $\mc{O}_{K}$ of $K$ by
     \[
@@ -732,8 +732,8 @@
     \]
     If $e_{\mf{p}} = 1$, so that $p$ does not ramify, we say $p$ is \textbf{inert}\index{inert} and so $f_{\mf{p}} = n$ by \cref{prop:inertia_ramification_relation}. Thus $p$ is inert if and only if $p\mc{O}_{K}$ is prime. If $e_{\mf{p}} \ge 2$, then $p$ ramifies and we say $p$ is \textbf{totally ramified}\index{totally ramified} if $e_{\mf{p}} = n$ so that $f_{\mf{p}} = 1$ by \cref{prop:inertia_ramification_relation}. Equivalently, $p$ is totally ramified if and only if it is the power of a prime integral ideal with power equal to the degree of $K$. The ramification of primes is intimately connected to the discriminant of a number field as the following theorem shows:
 
-    \begin{theorem}\label{thm:ramification_implies_division}
-      Let $K$ be a number field. Then $p$ is ramified if and only if $p$ divides $\D_{K}$.
+    \begin{theorem}\label{thm:ramification_division_equivalence}
+      Let $K$ be a number field. Then $p$ is ramified if and only if $p$ divides $|\D_{K}|$.
     \end{theorem}
     \begin{proof}
       Let $p$ be a prime and suppose $p\mc{O}_{K}$ has prime factorization
@@ -744,7 +744,7 @@
       \[
         \D_{K} = \disc_{K/\Q}(\a_{1},\ldots,\a_{n}) \equiv \disc_{(\mc{O}_{K}/p\Z)/(\Z/p\Z)}(\conj{\a_{1}},\ldots,\conj{\a_{n}}) \pmod{p}.
       \]
-      Recall that $\disc_{(\mc{O}_{K}/p\Z)/(\Z/p\Z)}(\conj{\a_{1}},\ldots,\conj{\a_{n}})$ is an element of in $\Z/p\Z$. Then as $\disc_{\Z/p\Z}(\mc{O}_{K}/p\mc{O}_{K})$ is equal to $\disc_{(\mc{O}_{K}/p\Z)/(\Z/p\Z)}(\conj{\a_{1}},\ldots,\conj{\a_{n}})$ up to elements of $((\Z/p\Z)^{\ast})^{2}$, we find that $p$ divides $\D_{K}$ if and only if $\disc_{\Z/p\Z}(\mc{O}_{K}/p\mc{O}_{K}) = 0$. By the Chinese remainder theorem,
+      Recall that $\disc_{(\mc{O}_{K}/p\Z)/(\Z/p\Z)}(\conj{\a_{1}},\ldots,\conj{\a_{n}})$ is an element of in $\Z/p\Z$. Then as $\disc_{\Z/p\Z}(\mc{O}_{K}/p\mc{O}_{K})$ is equal to $\disc_{(\mc{O}_{K}/p\Z)/(\Z/p\Z)}(\conj{\a_{1}},\ldots,\conj{\a_{n}})$ up to elements of $((\Z/p\Z)^{\ast})^{2}$, we find that $p$ divides $|\D_{K}|$ if and only if $\disc_{\Z/p\Z}(\mc{O}_{K}/p\mc{O}_{K}) = 0$. By the Chinese remainder theorem,
       \[
         \mc{O}_{K}/p\mc{O}_{K} \cong \bigop_{1 \le i \le r}\mc{O}_{K}/\mf{p}_{i}^{e_{i}},
       \]
@@ -752,7 +752,7 @@
       \[
          \D_{K} = \prod_{1 \le i \le r}\disc_{\Z/p\Z}(\mc{O}_{K}/\mf{p}_{i}^{e_{i}}).
       \]
-      Hence $p$ divides $D_{K}$ if and only if $\disc_{\Z/p\Z}(\mc{O}_{K}/\mf{p}_{i}^{e_{i}}) = 0$ for some $i$. It now suffices to show that $\disc_{\Z/p\Z}(\mc{O}_{K}/\mf{p}^{e}) = 0$ for any prime integral ideal $\mf{p}$ above $p$ if and only if $e \ge 2$. First suppose $e \ge 2$. We will prove $\disc_{\Z/p\Z}(\mc{O}_{K}/\mf{p}^{e}) = 0$. By the uniqueness of the factorization of integral ideals, there exists a nonzero $\a_{1} \in \mf{p}^{e-1}-\mf{p}^{e}$. Then $\a_{1}^{2} \in \mf{p}^{2(e-1)} \subseteq \mf{p}^{e}$ because $e \ge 2$. By construction, $\conj{\a_{1}} \in \mc{O}_{K}/\mf{p}^{e}$ is nonzero and such that $\conj{\a_{1}}^{2} = 0$. Since $\mc{O}_{K}/\mf{p}^{e}$ is an $n$ dimensional vector space over $\Z/p\Z$, there exists a basis of the form $\{\conj{\a_{1}},\ldots,\conj{\a_{m}}\}$. Now
+      Hence $p$ divides $|\D_{K}|$ if and only if $\disc_{\Z/p\Z}(\mc{O}_{K}/\mf{p}_{i}^{e_{i}}) = 0$ for some $i$. It now suffices to show that $\disc_{\Z/p\Z}(\mc{O}_{K}/\mf{p}^{e}) = 0$ for any prime integral ideal $\mf{p}$ above $p$ if and only if $e \ge 2$. First suppose $e \ge 2$. We will prove $\disc_{\Z/p\Z}(\mc{O}_{K}/\mf{p}^{e}) = 0$. By the uniqueness of the factorization of integral ideals, there exists a nonzero $\a_{1} \in \mf{p}^{e-1}-\mf{p}^{e}$. Then $\a_{1}^{2} \in \mf{p}^{2(e-1)} \subseteq \mf{p}^{e}$ because $e \ge 2$. By construction, $\conj{\a_{1}} \in \mc{O}_{K}/\mf{p}^{e}$ is nonzero and such that $\conj{\a_{1}}^{2} = 0$. Since $\mc{O}_{K}/\mf{p}^{e}$ is an $n$ dimensional vector space over $\Z/p\Z$, there exists a basis of the form $\{\conj{\a_{1}},\ldots,\conj{\a_{m}}\}$. Now
       \[
         \Trace_{(\mc{O}_{K}/\mf{p}^{e})/(\Z/p\Z)}(\conj{\a_{1}}\conj{\a_{j}}) = 0,
       \]
@@ -765,7 +765,7 @@
       Let $K$ be a number field. Then finitely many primes ramify in $K$.
     \end{corollary}
     \begin{proof}
-      There are only finitely many prime divisors of $\D_{K}$. Hence finitely many primes ramify by \cref{thm:ramification_implies_division}. 
+      There are only finitely many prime divisors of $|\D_{K}|$. Hence finitely many primes ramify by \cref{thm:ramification_division_equivalence}. 
     \end{proof}
   \section{Lattices}
     Before we can continue with the study of number fields, we need to make a detour and discuss some geometry of lattices. This is essential because it will provide us with a geometric interpretation for how the ring of integers $\mc{O}_{K}$ sits inside the number field $K$. We say that $\L \subset \R^{n}$ is a \textbf{lattice}\index{lattice} if $\L$ is a free abelian group of rank $n$. In particular, any lattice $\L$ is of the form
@@ -1034,9 +1034,9 @@
       as desired.
     \end{proof}
 
-    We can now obtain an explicit bound in \cref{equ:finitness_of_class_number} known as \textbf{Minkowski's bound}\index{Minkowski's bound}:
+    We can now obtain an explicit bound in \cref{equ:finitness_of_class_number} known as the \textbf{Minkowski bound}\index{Minkowski bound}:
 
-    \begin{theorem}[Minkowski's bound]
+    \begin{theorem}[Minkowski bound]
       Let $K$ be a number field of degree $n$ and signature $(r_{1},r_{2})$. Then every ideal class contains an integral ideal $\mf{a}$ satisfying
       \[
         \Norm(\mf{a}) \le \left(\frac{4}{\pi}\right)^{r_{2}}\frac{n!}{n^{n}}\sqrt{|\D_{K}|}.
@@ -1057,4 +1057,53 @@
       \]
       where the second inequality holds by the definition of $X$. Hence $M \le 1$ and this completes the proof.
     \end{proof}
+
+    As a corollary we can obtain a lower bound for the discriminant of a number field and show that every number field other than $\Q$ has a ramified prime:
+
+    \begin{corollary}
+      Let $K$ be a number field of degree $n$. Then
+      \[
+        |\D_{K}| \ge \left(\frac{\pi}{4}\right)^{\frac{n}{2}}\frac{n^{n}}{n!}.
+      \]
+      In particular, every number field of degree at least $2$ contains at least one ramified prime.
+    \end{corollary}
+    \begin{proof}
+      Since the norm of every integral ideal is at least $1$, $\pi < 4$, and $r_{2}$ is at most $n$, the desired inequality follows immediately from Minkowski's bound. Now suppose $n \ge 2$. In the case $n = 2$, the lower bound is larger than $1$ so that $|\D_{K}|$ is at least $2$ for every quadratic number field. As $n^{n} \ge n!$ for all $n \ge 1$ (which easily follows by induction), $\left(\frac{\pi}{4}\right)^{\frac{n}{2}}\frac{n^{n}}{n!}$ is an increasing function in $n$. Therefore $|\D_{K}| \ge 2$ for all $n \ge 2$ so that $|\D_{K}|$ has a prime divisor. Then \cref{thm:ramification_division_equivalence} implies that at least one prime is ramified in $K$.
+    \end{proof}
   \section{\todo{Quadratic Number Fields}}
+    We will now classify and discuss the structure of quadratic number fields. We first show that quadratic number fields are exactly those where we adjoint the square-root of a fundamental discriminant:
+
+    \begin{proposition}\label{prop:classification_of_quadratic_number_fields}
+      Every quadratic number field $K$ is of the form $K = \Q(\sqrt{d})$ for some square-free integer $d$ other than $0$ or $1$.
+    \end{proposition}
+    \begin{proof}
+      Suppose $K$ is a quadratic number field. In particular, $K/\Q$ is separable so by the primitive element theorem there exists $\t \in K$ such that $K = \Q(\t)$. The minimal polynomial $p_{\t}(x)$ of $\t$ is of the form
+      \[
+        p_{\t}(x) = x^{2}+q_{1}x+q_{0},
+      \]
+      for $q_{0},q_{1} \in \Q$. Then the quadratic formula gives
+      \[
+        \t = -\frac{q_{1}}{2}\pm\frac{\sqrt{q}}{2},
+      \]
+      where $q = q_{1}^{2}-4q_{0} \in \Q$. Clearly $q \neq 0$ and $q \neq 1$ for otherwise $\t \in \Q$. It follows that $K = \Q(\sqrt{q})$. Write $q = \frac{a}{b}$ for relatively prime $a,b \in \Z$ and set $d = b^{2}q = ab \in \Z$. Then $d$ is square-free, $d \neq 0$, and $d \neq 1$. Moreover, $\sqrt{d} = b\sqrt{q}$ so that $K = \Q(\sqrt{d})$. 
+    \end{proof}
+
+    In light of \cref{prop:classification_of_quadratic_number_fields}, we say that a quadratic number field $\Q(\sqrt{d})$ is \textbf{real}\index{real} if $d > 0$ and \textbf{imaginary}\index{imaginary} if $d < 0$. On the one hand, if $\Q(\sqrt{d})$ is real then the minimal polynomial has roots $\pm\sqrt{d}$ so that the $\Q$-embeddings of $\Q(\sqrt{d})$ into $\C$ are induced by
+    \[
+      \sqrt{d} \to \sqrt{d} \quad \text{and} \quad \sqrt{d} \to -\sqrt{d},
+    \]
+    so that the signature of $\Q(\sqrt{d})$ is $(2,0)$. On the other hand, if $\Q(\sqrt{d})$ is imaginary then the minimal polynomial has roots $\sqrt{d}$ and $\conj{\sqrt{d}}$ so that the $\Q$-embeddings of $\Q(\sqrt{d})$ into $\C$ are induced by
+    \[
+      \sqrt{d} \to \sqrt{d} \quad \text{and} \quad \sqrt{d} \to \conj{\sqrt{d}},
+    \]
+    so that the signature of $\Q(\sqrt{d})$ is $(0,1)$. We now show that the ring of integers of a quadratic number field $\Q(\sqrt{d})$ has a particularly simple description depending upon the congruence condition of $d$ modulo $4$:
+
+    \begin{proposition}
+      Let $\Q(\sqrt{d})$ be a quadratic number field. Then
+      \[
+        \mc{O}_{\Q(\sqrt{d})} = \begin{cases} \Z\left[\frac{1+\sqrt{d}}{2}\right] & \text{if $d \equiv 1 \tmod{4}$}, \\ \Z[\sqrt{d}] & \text{if $d \equiv 2,3 \tmod{4}$}. \end{cases}
+      \]
+    \end{proposition}
+    \begin{proof}
+      \todo{xxx}
+    \end{proof}
