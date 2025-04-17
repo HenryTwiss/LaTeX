@@ -777,7 +777,7 @@
       \]
       with $\conj{m_{i}}(x) \in \F_{p}[x]$ and $e_{i} \ge 0$, be the prime factorization of $\conj{m_{\a}}(x)$ in $\F_{p}[x]$. Let $m_{i}(x) \in \Z[x]$ be any lift of $\conj{m_{i}}(x)$ and set
       \[
-        \mf{p}_{i} = p\mc{O}_{K}+m_{i}(\a)\mc{O}_{K}
+        \mf{p}_{i} = p\mc{O}_{K}+m_{i}(\a)\mc{O}_{K},
       \]
       for all $i$. Then $\mf{p}_{i}$ is a prime integral ideal for all $i$ and
       \[
@@ -814,7 +814,7 @@
       \[
         p\mc{O}_{K} = \pi^{-1}(0) \supseteq \mf{p}_{1}^{e_{1}} \cdots \mf{p}_{r}^{e_{r}}.
       \]
-      Since the $\mf{p}_{i}$ are prime, we have $e_{\mf{p}_{i}} \le e_{i}$ for all $i$. By \cref{prop:inertia_ramification_relation}, we have
+      Since the $\mf{p}_{i}$ are prime, we have $e_{\mf{p}_{i}} \le e_{i}$ for all $i$. By \cref{prop:inertia_ramification_relation} then gives
       \[
         n = \sum_{1 \le i \le r}e_{\mf{p}_{i}}f_{\mf{p}_{i}} \le \sum_{1 \le i \le r}e_{i}f_{\mf{p}_{i}} \le \sum_{1 \le i \le r}e_{i}\deg(\conj{m_{i}}(x)) \le n,
       \]
@@ -1149,12 +1149,12 @@
     \[
       \Trace(\k) = 2a \quad \text{and} \quad \Norm(\k) = a^{2}-b^{2}d.
     \]
-    We now show that the ring of integers of a quadratic number field $\Q(\sqrt{d})$ is monogenic:
-
+    We will now begin describing the ring of integers, discriminant, and the splitting of primes in $\Q(\sqrt{d})$. For simplicity, we write $\mc{O}_{d} = \mc{O}_{\Q(\sqrt{d})}$ and $\D_{d} = \D_{\Q(\sqrt{d})}$. The ring of integers has a particularly simple description since it is monogenic as the following proposition shows:
+    
     \begin{proposition}\label{prop:ring_of_integers_quadratic}
       Let $\Q(\sqrt{d})$ be a quadratic number field. Then $\Q(\sqrt{d})$ is monogenic and
       \[
-        \mc{O}_{\Q(\sqrt{d})} = \begin{cases} \Z\left[\frac{1+\sqrt{d}}{2}\right] & \text{if $d \equiv 1 \tmod{4}$}, \\ \Z[\sqrt{d}] & \text{if $d \equiv 2,3 \tmod{4}$}. \end{cases}
+        \mc{O}_{d} = \begin{cases} \Z\left[\frac{1+\sqrt{d}}{2}\right] & \text{if $d \equiv 1 \tmod{4}$}, \\ \Z[\sqrt{d}] & \text{if $d \equiv 2,3 \tmod{4}$}. \end{cases}
       \]
     \end{proposition}
     \begin{proof}
@@ -1170,7 +1170,7 @@
       \[
         a^{2}-b^{2}d = \left(\frac{n+1}{2}\right)^{2}-\left(\frac{m+1}{2}\right)^{2}d = \frac{n^{2}+2n+1-d(m^{2}+2m+1)}{4},
       \]
-      and since the right-hand side must be an integer the numerator must be divisible by $4$. As $n$ and $m$ are even, this is equivalent to $d \equiv 1 \tmod{4}$. So we have shown $2a$ or $2b$ is odd if and only if $d \equiv 1 \tmod{4}$. Thus if $d \equiv 1 \tmod{4}$, we have $a = \frac{a'}{2}$ and $b = \frac{b'}{2}$ for some $a',b' \in \Z$ and hence $\a \in \Z\left[\frac{1+\sqrt{d}}{2}\right]$. Otherwise, $d \equiv 2,3 \tmod{4}$ (because $d$ is square-free) so that $2a$ and $2b$ are both even, $a,b \in \Z$, and therefore $\a \in \Z[\sqrt{d}]$. We have now shown that $\mc{O}_{\Q(\sqrt{d})} \subseteq \Z\left[\frac{1+\sqrt{d}}{2}\right]$ and $\mc{O}_{\Q(\sqrt{d})} \subseteq \Z[\sqrt{d}]$ according to if $d \equiv 1 \tmod{4}$ or $d \equiv 2,3 \tmod{4}$ respectively. For the reverse containment, just note that $\sqrt{d}$ is an algebraic integer since its minimal polynomial $m_{\sqrt{d}}(x)$ is
+      and since the right-hand side must be an integer the numerator must be divisible by $4$. As $n$ and $m$ are even, this is equivalent to $d \equiv 1 \tmod{4}$. So we have shown $2a$ or $2b$ is odd if and only if $d \equiv 1 \tmod{4}$. Thus if $d \equiv 1 \tmod{4}$, we have $a = \frac{a'}{2}$ and $b = \frac{b'}{2}$ for some $a',b' \in \Z$ and hence $\a \in \Z\left[\frac{1+\sqrt{d}}{2}\right]$. Otherwise, $d \equiv 2,3 \tmod{4}$ (because $d$ is square-free) so that $2a$ and $2b$ are both even, $a,b \in \Z$, and therefore $\a \in \Z[\sqrt{d}]$. We have now shown that $\mc{O}_{d} \subseteq \Z\left[\frac{1+\sqrt{d}}{2}\right]$ and $\mc{O}_{d} \subseteq \Z[\sqrt{d}]$ according to if $d \equiv 1 \tmod{4}$ or $d \equiv 2,3 \tmod{4}$ respectively. For the reverse containment, just note that $\sqrt{d}$ is an algebraic integer since its minimal polynomial $m_{\sqrt{d}}(x)$ is
       \[
         m_{\sqrt{d}}(x) = x^{2}\pm d,
       \]
@@ -1181,23 +1181,48 @@
     \[
       \left\{1,\frac{1+\sqrt{d}}{2}\right\} \quad \text{and} \quad \{1,\sqrt{d}\},
     \]
-    are integral bases for $\mc{O}_{\Q(\sqrt{d})}$ according to if $d \equiv 1 \tmod{4}$ or $d \equiv 2,3 \tmod{4}$ respectively. Let us now show that the discriminants quadratic number fields are exactly the fundamental discriminants $D$ other than $1$:
+    are integral bases for $\mc{O}_{d}$ according to if $d \equiv 1 \tmod{4}$ or $d \equiv 2,3 \tmod{4}$ respectively. Let us now show that the discriminants quadratic number fields are exactly the fundamental discriminants $D$ other than $1$:
 
     \begin{proposition}
       Let $\Q(\sqrt{d})$ be a quadratic number field. Then
       \[
-        \D_{\Q(\sqrt{d})} = \begin{cases} d & \text{if $d \equiv 1 \tmod{4}$}, \\ 4d & \text{if $d \equiv 2,3 \tmod{4}$}. \end{cases}
+        \D_{d} = \begin{cases} d & \text{if $d \equiv 1 \tmod{4}$}, \\ 4d & \text{if $d \equiv 2,3 \tmod{4}$}. \end{cases}
       \]
       In particular, the discriminants quadratic number fields are exactly the fundamental discriminants other than $1$.
     \end{proposition}
     \begin{proof}
-      Let $\s_{1}$ and $\s_{2}$ be the two $\Q$-embeddings of $\Q(\sqrt{d})$ into $\C$ where $\s_{1}$ is the identity and $\s_{2}$ is given by sending $\sqrt{d}$ to its conjugate. If $d \equiv 1 \tmod{4}$, an integral basis for $\mc{O}_{\Q(\sqrt{d})}$ is $\left\{1,\frac{1+\sqrt{d}}{2}\right\}$. In this case, the embedding matrix is
+      Let $\s_{1}$ and $\s_{2}$ be the two $\Q$-embeddings of $\Q(\sqrt{d})$ into $\C$ where $\s_{1}$ is the identity and $\s_{2}$ is given by sending $\sqrt{d}$ to its conjugate. If $d \equiv 1 \tmod{4}$, an integral basis for $\mc{O}_{d}$ is $\left\{1,\frac{1+\sqrt{d}}{2}\right\}$. In this case, the embedding matrix is
       \[
         M\left(1,\frac{1+\sqrt{d}}{2}\right) = \begin{pmatrix} 1 & \frac{1+\sqrt{d}}{2} \\ 1 & \frac{1-\sqrt{d}}{2} \end{pmatrix},
       \]
-      and thus $\D_{\Q(\sqrt{d})} = d$. If $d \equiv 2,3 \tmod{4}$, an integral basis for $\mc{O}_{\Q(\sqrt{d})}$ is $\left\{1,\sqrt{d}\right\}$. In this case, the embedding matrix is
+      and thus $\D_{d} = d$. If $d \equiv 2,3 \tmod{4}$, an integral basis for $\mc{O}_{d}$ is $\left\{1,\sqrt{d}\right\}$. In this case, the embedding matrix is
       \[
         M(1,\sqrt{d}) = \begin{pmatrix} 1 & \sqrt{d} \\ 1 & -\sqrt{d} \end{pmatrix},
       \]
-      and thus $\D_{\Q(\sqrt{d})} = 4d$. This proves the first statement and the second statement is clear since $d$ is square-free and not $0$ or $1$.
+      and thus $\D_{d} = 4d$. This proves the first statement and the second statement is clear since $d$ is square-free and not $0$ or $1$.
+    \end{proof}
+
+    We will now discuss the splitting of a prime $p$ in a quadratic number field $\Q(\sqrt{d})$. Since $\Q(\sqrt{d})$ is a degree $2$ extension, \cref{prop:inertia_ramification_relation} implies that $p$ is ramified if and only if it is totally ramified and if $p$ is split but not ramified then it is totally split. In other words, there are three possible cases for how $p\mc{O}_{d}$ factors:
+    \[
+      p\mc{O}_{d} = \mf{p}, \quad p\mc{O}_{d} = \mf{p}^{2}, \quad \text{and} \quad p\mc{O}_{d} = \mf{p}\mf{q},
+    \]
+    according to if $p$ is inert, totally ramified, or totally split. Since $\Q(\sqrt{d})$ is monogenic by \cref{prop:ring_of_integers_quadratic}, we can describe the factorization explicitly by using the Dedekind-Kummer theorem:
+
+    \begin{proposition}
+      Let $\Q(\sqrt{d})$ be a quadratic number field and let $p$ be a prime. If $p$ is ramified,
+      \[
+        p\mc{O}_{d} = (p\mc{O}_{d}+\sqrt{d}\mc{O}_{d})^{2}.
+      \]
+      If $p$ is split, $p$ is a quadratic residue modulo $\D_{\mc{O}_{d}}$ and
+      \[
+        p\mc{O}_{d} = (p\mc{O}_{d}+(m+\sqrt{d})\mc{O}_{d})(p\mc{O}_{d}+(m-\sqrt{d})\mc{O}_{d}),
+      \]
+      where $m$ is such that $p \equiv m^{2} \tmod{\D_{d}}$.
+    \end{proposition}
+    \begin{proof}
+      First suppose $d \equiv 1 \tmod{4}$ so that $\mc{O}_{d} = \Z\left[\frac{1+\sqrt{d}}{2}\right]$ by \cref{prop:ring_of_integers_quadratic}. The minimal polynomial for $\frac{1+\sqrt{d}}{2}$ is
+      \[
+        m_{\frac{1+\sqrt{d}}{2}}(x) = x^{2}-x+\frac{1-d}{4},
+      \]
+      where $\frac{1-d}{4} \in \Z$ because $d \equiv 1 \tmod{4}$. \todo{xxx}
     \end{proof}
