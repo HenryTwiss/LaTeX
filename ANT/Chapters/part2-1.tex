@@ -1183,7 +1183,7 @@
     \]
     are integral bases for $\mc{O}_{d}$ according to if $d \equiv 1 \tmod{4}$ or $d \equiv 2,3 \tmod{4}$ respectively. Let us now show that the discriminants quadratic number fields are exactly the fundamental discriminants $D$ other than $1$:
 
-    \begin{proposition}
+    \begin{proposition}\label{prop:discriminant_quadratic}
       Let $\Q(\sqrt{d})$ be a quadratic number field. Then
       \[
         \D_{d} = \begin{cases} d & \text{if $d \equiv 1 \tmod{4}$}, \\ 4d & \text{if $d \equiv 2,3 \tmod{4}$}. \end{cases}
@@ -1206,23 +1206,22 @@
     \[
       p\mc{O}_{d} = \mf{p}, \quad p\mc{O}_{d} = \mf{p}^{2}, \quad \text{and} \quad p\mc{O}_{d} = \mf{p}\mf{q},
     \]
-    according to if $p$ is inert, totally ramified, or totally split. Since $\Q(\sqrt{d})$ is monogenic by \cref{prop:ring_of_integers_quadratic}, we can describe the factorization explicitly by using the Dedekind-Kummer theorem:
+    according to if $p$ is inert, totally ramified, or totally split. Since $\Q(\sqrt{d})$ is monogenic by \cref{prop:ring_of_integers_quadratic}, we can describe the factorization using the Dedekind-Kummer theorem and connect it to the quadratic character $\chi_{\D_{d}}$ given by the fundamental discriminant $\D_{d}$:
 
     \begin{proposition}
-      Let $\Q(\sqrt{d})$ be a quadratic number field and let $p$ be a prime. If $p$ is ramified,
+      Let $\Q(\sqrt{d})$ be a quadratic number field and let $\chi_{\D_{d}}$ be the quadratic character given by the fundamental discriminant $\D_{d}$. Then for any prime $p$, we have
       \[
-        p\mc{O}_{d} = (p\mc{O}_{d}+\sqrt{d}\mc{O}_{d})^{2}.
+        \chi_{\D_{d}}(p) = \begin{cases} 1 & \text{if $p$ is split}, \\ -1 & \text{if $p$ is inert}, \\ 0 & \text{if $p$ is ramified}. \end{cases}
       \]
-      If $p$ is split, $p$ is a quadratic residue modulo $\D_{\mc{O}_{d}}$ and
-      \[
-        p\mc{O}_{d} = (p\mc{O}_{d}+(m+\sqrt{d})\mc{O}_{d})(p\mc{O}_{d}+(m-\sqrt{d})\mc{O}_{d}),
-      \]
-      where $m$ is such that $p \equiv m^{2} \tmod{\D_{d}}$.
     \end{proposition}
     \begin{proof}
-      First suppose $d \equiv 1 \tmod{4}$ so that $\mc{O}_{d} = \Z\left[\frac{1+\sqrt{d}}{2}\right]$ by \cref{prop:ring_of_integers_quadratic}. The minimal polynomial for $\frac{1+\sqrt{d}}{2}$ is
+      By \cref{thm:ramification_division_equivalence}, $p$ is ramified if and only if $p$ divides $|\D_{d}|$ but this is exactly when $\chi_{\D_{d}}(p) = 0$. Therefore it suffices to prove the cases for when $p$ is split and inert. First suppose $d \equiv 1 \tmod{4}$ so that $\mc{O}_{d} = \Z\left[\frac{1+\sqrt{d}}{2}\right]$ and $\D_{d} = d$ by \cref{prop:ring_of_integers_quadratic,prop:discriminant_quadratic}. The minimal polynomial $m_{\frac{1+\sqrt{d}}{2}}(x)$ for $\frac{1+\sqrt{d}}{2}$ is
       \[
         m_{\frac{1+\sqrt{d}}{2}}(x) = x^{2}-x+\frac{1-d}{4},
       \]
-      where $\frac{1-d}{4} \in \Z$ because $d \equiv 1 \tmod{4}$. \todo{xxx}
+      where $\frac{1-d}{4} \in \Z$ because $d \equiv 1 \tmod{4}$. \todo{xxx} Now assume $d \equiv 2,3 \tmod{4}$ so that $\mc{O}_{d} = \Z[\sqrt{d}]$ and $\D_{d} = 4d$ by \cref{prop:ring_of_integers_quadratic,prop:discriminant_quadratic}. The minimal polynomial $m_{\sqrt{d}}(x)$ for $\sqrt{d}$ is
+      \[
+        m_{\frac{1+\sqrt{d}}{2}}(x) = x^{2}-d.
+      \]
+      As $\D_{d} = 4d$, we see that $2$ is ramified and therefore we may assume $p \neq 2$. \todo{xxx}
     \end{proof}
