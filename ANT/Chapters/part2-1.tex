@@ -317,7 +317,7 @@
     \[
       \D_{K} = \disc_{K}(\a_{1},\ldots,\a_{n}),
     \]
-    for any integral basis $\{\a_{1},\ldots,\a_{n}\}$. As $\D_{K}$ is not taken modulo $(K^{\ast})^{2}$, we need to show that $\D_{K}$ is independent of the choice of integral basis and hence well-defined. Indeed, if $\{\a'_{1},\ldots,\a'_{n}\}$ is another integral basis then the base change matrix, as well as its inverse, both have integer entries (because integral bases are bases for $\mc{O}_{K}$ as a $\Z$-module). This implies that the determinant of the base change matrix is $\pm 1$ and so \cref{equ:discriminant_base_change} shows that $\D_{K}$ is independent of the choice of integral basis. Moreover, $\D_{K}$ is nonzero by \cref{prop:discriminant_not_zero} and
+    for any integral basis $\{\a_{1},\ldots,\a_{n}\}$. As $\D_{K}$ is not defined modulo $(K^{\ast})^{2}$, we need to show that $\D_{K}$ is independent of the choice of integral basis and hence well-defined. Indeed, if $\{\a'_{1},\ldots,\a'_{n}\}$ is another integral basis then the base change matrix, as well as its inverse, both have integer entries (because integral bases are bases for $\mc{O}_{K}$ as a $\Z$-module). This implies that the determinant of the base change matrix is $\pm 1$ and so \cref{equ:discriminant_base_change} shows that $\D_{K}$ is independent of the choice of integral basis. Moreover, $\D_{K}$ is nonzero by \cref{prop:discriminant_not_zero} and
     \[
       \D_{K} = \det(M(\a_{1},\ldots,\a_{n}))^{2},
     \]
@@ -768,16 +768,16 @@
       There are only finitely many prime divisors of $|\D_{K}|$. Hence finitely many primes ramify by \cref{thm:ramification_division_equivalence}. 
     \end{proof}
 
-    There is no general way to see how a prime $p$ factors for an arbitrary number field $K$. However, in the case that the ring of integers is monogenic we can describe the factorization explicitly:
+    There is no general way to see how a prime $p$ factors for an arbitrary number field $K$. However, in the case that the ring of integers is monogenic we can describe the factorization explicitly via the \textbf{Dedekind-Kummer theorem}\index{Dedekind-Kummer theorem}:
 
-    \begin{theorem}
+    \begin{theorem}[Dedekind-Kummer theorem]
       Let $K$ be a monogenic number field where $\mc{O}_{K} = \Z[\a]$ for $\a \in \mc{O}_{K}$ and let $p$ be a prime. Let $m_{\a}(x)$ be the minimal polynomial for $\a$ and let $\conj{m_{\a}}(x)$ be its reduction modulo $p$. Also let
       \[
-        \conj{m_{\a}}(x) = \prod_{1 \le i \le r}\conj{m_{i}}(x)^{e_{i}},
+        \conj{m_{\a}}(x) = \conj{m_{r}}(x)^{e_{r}} \cdots \conj{m_{r}}(x)^{e_{r}}
       \]
-      with $\conj{m_{i}}(x) \in \F_{p}[x]$ and $e_{i} \ge 0$, be the prime factorization of $\conj{m_{\a}}(x)$ in $\F_{p}[x]$. Let $m_{i}(x) \in \Z[x]$ be such that $m_{i}(x) \equiv \conj{m_{i}}(x) \tmod{p}$ and set
+      with $\conj{m_{i}}(x) \in \F_{p}[x]$ and $e_{i} \ge 0$, be the prime factorization of $\conj{m_{\a}}(x)$ in $\F_{p}[x]$. Let $m_{i}(x) \in \Z[x]$ be any lift of $\conj{m_{i}}(x)$ and set
       \[
-        \mf{p}_{i} = (p,m_{i}(\a)),
+        \mf{p}_{i} = p\mc{O}_{K}+m_{i}(\a)\mc{O}_{K}
       \]
       for all $i$. Then $\mf{p}_{i}$ is a prime integral ideal for all $i$ and
       \[
@@ -786,15 +786,39 @@
       is the prime factorization of $p\mc{O}_{K}$.
     \end{theorem}
     \begin{proof}
-      Since $m_{\a}(x)$ is the minimal polynomial for $\a$, we have an isomorphism $\Z[\a] \cong \Z[x]/(m_{\a}(x))$. Then we have the chain of isomorphism
+      Since $m_{\a}(x)$ is the minimal polynomial for $\a$, we have an isomorphism $\Z[\a] \cong \Z[x]/m_{\a}(x)\Z[x]$ where the inverse isomorphism is given by evaluation at $\a$. Then we have the chain of isomorphism
       \[
-        \mc{O}_{K}/p\mc{O}_{K} \cong (\Z[x]/(m_{\a}(x)))/(p\Z[x]/(m_{\a}(x))) \cong \Z[x]/(p,m_{\a}(x)) \cong \F_{p}[x]/(\conj{m_{\a}(x)}),
+        \mc{O}_{K}/p\mc{O}_{K} \cong (\Z[x]/m_{\a}(x)\Z[x])/(p(\Z[x]/m_{\a}(x)\Z[x])) \cong \Z[x]/(p\Z[x]+m_{\a}(x)\Z[x]) \cong \F_{p}[x]/\conj{m_{\a}}(x)\F_{p}[x],
       \]
-      where the second and third isomorphisms follow by taking $\Z[x]/(p,m_{\a}(x))$ and first reducing $\Z[x]$ modulo $m_{\a}(x)$ or $p$ respectively. Now set $A = \F_{p}[x]/(\conj{m_{\a}(x)})$. Then the Chinese remainder theorem gives an isomorphism
+      where the second and third isomorphisms follow by taking $\Z[x]/(p\Z[x]+m_{\a}(x)\Z[x])$ and reducing $\Z[x]$ modulo $m_{\a}(x)$ or $p$ respectively. Therefore the inverse isomorphism is given by sending any representative $\conj{f}(x)$ of a class in $\F_{p}[x]/\conj{m_{\a}}(x)\F_{p}[x]$ to a lift $f(x) \in \Z[x]$ and then to $\conj{f(\a)}$ where $\conj{f(\a)}$ is $f(\a)$ modulo $p\mc{O}_{K}$. Now set $A = \F_{p}[x]/\conj{m_{\a}}(x)\F_{p}[x]$. Then the Chinese remainder theorem gives an isomorphism
       \[
-        A \cong \bigop_{1 \le i \le r}\F_{p}/(\conj{m_{i}}(x)^{e_{i}}).
+        A \cong \bigop_{1 \le i \le r}\F_{p}[x]/\conj{m_{i}}(x)^{e_{i}}\F_{p}[x].
       \]
-      \todo{xxx}
+      As $\conj{m_{i}}(x)$ is irreducible, $\conj{m_{i}}(x)\F_{p}[x]$ is maximal and hence $\F_{p}[x]/\conj{m_{i}}(x)\F_{p}[x]$ is a field. By the third isomorphism theorem, $\conj{m_{i}}(x)\F_{p}[x]/\conj{m_{i}}(x)^{e_{i}}\F_{p}[x]$ is a maximal ideal of $\F_{p}[x]/\conj{m_{i}}(x)^{e_{i}}\F_{p}[x]$. It follows that the maximal ideals of $A$ are precisely $\conj{m_{i}}(x)A$ and we have an isomorphism
+      \[
+        A/\conj{m_{i}}(x)A \cong \F_{p}[x]/\conj{m_{i}}(x)\F_{p}[x],
+      \]
+      for all $i$. Via the isomorphism $\mc{O}_{K}/p\mc{O}_{K} \cong A$ described above, the maximal ideals of $\mc{O}_{K}/p\mc{O}_{K}$ are exactly $\conj{m_{i}(\a)}(\mc{O}_{K}/p\mc{O}_{K})$. We now show that the $\mf{p}_{i}$ are prime. To see this, consider the surjective homomorphism
+      \[
+        \pi:\mc{O}_{K} \to \mc{O}_{K}/p\mc{O}_{K} \qquad \a \to \a \pmod{p\mc{O}_{K}}.
+      \]
+      Then the image of $\mf{p}_{i}$ under $\pi$ is $\conj{m_{i}(\a)}(\mc{O}_{K}/p\mc{O}_{K})$. As this ideal is maximal and hence prime, the preimage $\mf{p}_{i}$ is prime too. Moreover, the $\mf{p}_{i}$ are all distinct since the $\conj{m_{i}(\a)}\mc{O}_{K}/p\mc{O}_{K}$ are which are all distinct because the $\conj{m_{i}}(x)A$ are (using the isomorphism $\mc{O}_{K}/p\mc{O}_{K} \cong A$). In particular, they are also relatively prime. By construction, $\mf{p}_{i} \subseteq p\mc{O}_{K}$ so that the $\mf{p}_{i}$ are prime factors of $p\mc{O}_{K}$. These are the only prime factors of $p\mc{O}_{K}$ because the image of any prime integral ideal under $\pi$ and contained in $p\mc{O}_{K}$ must be a maximal ideal of $\mc{O}_{K}/p\mc{O}_{K}$, by \cref{prop:prime_integral_ideals_are_maximal} and the fourth isomorphism theorem, and every maximal ideal is one of the $\conj{m_{i}(\a)}(\mc{O}_{K}/p\mc{O}_{K})$. Together, all of this means that $p\mc{O}_{K}$ admits the prime factorization
+      \[
+        p\mc{O}_{K} = \mf{p}_{1}^{e_{\mf{p}_{1}}} \cdots \mf{p}_{r}^{e_{\mf{p}_{r}}},
+      \]
+      for some ramification indices $e_{\mf{p}_{i}}$ for all $i$. We will be done if we can show that the ramification indices satisfy $e_{\mf{p}_{i}} = e_{i}$. To accomplish this, observe that we have an isomorphism
+      \[
+        \mc{O}_{K}/\mf{p}_{i} \cong (\mc{O}_{K}/p\mc{O}_{K})/(\conj{m_{i}(\a)}(\mc{O}_{K}/p\mc{O}_{K})) \cong \F_{p}[x]/\conj{m_{i}}(x)\F_{p}[x],
+      \]
+      where the first isomorphism follow by taking $\mc{O}_{K}/\mf{p}_{i}$ and reducing $\mc{O}_{K}$ modulo $p$ and the second isomorphism follows from $\mc{O}_{K}/p\mc{O}_{K} \cong A$ and that the image of the maximal ideal $\conj{m_{i}(\a)}(\mc{O}_{K}/p\mc{O}_{K})$ under this isomorphisms is $\conj{m_{i}}(x)A$. Now $\F_{p}[x]/\conj{m_{i}}(x)\F_{p}[x]$ is a vector space over $\F_{p}$ (as it contains $\F_{p}$) of degree $\deg(\conj{m_{i}}(x))$. Hence the inertia degree $f_{\mf{p}_{i}}$ of $\mf{p}_{i}$ satisfies $f_{\mf{p}_{i}} = \deg(\conj{m_{i}}(x))$. The ideal $\conj{m_{i}}(x)^{e_{i}}A$ under the isomorphism $A \cong \mc{O}_{K}/p\mc{O}_{K}$ is the ideal $\conj{m_{i}(\a)}^{e_{i}}(\mc{O}_{K}/p\mc{O}_{K})$. As the image of $\mf{p}_{i}$ under $\pi$ is $\conj{m_{i}(\a)}(\mc{O}_{K}/p\mc{O}_{K})$, we have that $\mf{p}_{i}^{e_{i}}$ is contained in the preimage of $\conj{m_{i}(\a)}^{e_{i}}(\mc{O}_{K}/p\mc{O}_{K})$ under $\pi$. As $\conj{m_{\a}(\a)}(\mc{O}_{K}/p\mc{O}_{K}) = 0$ is the zero ideal, it follows that
+      \[
+        p\mc{O}_{K} = \pi^{-1}(0) \supseteq \mf{p}_{1}^{e_{1}} \cdots \mf{p}_{r}^{e_{r}}.
+      \]
+      Since the $\mf{p}_{i}$ are prime, we have $e_{\mf{p}_{i}} \le e_{i}$ for all $i$. By \cref{prop:inertia_ramification_relation}, we have
+      \[
+        n = \sum_{1 \le i \le r}e_{\mf{p}_{i}}f_{\mf{p}_{i}} \le \sum_{1 \le i \le r}e_{i}f_{\mf{p}_{i}} \le \sum_{1 \le i \le r}e_{i}\deg(\conj{m_{i}}(x)) \le n,
+      \]
+      where the last equality follows by the prime factorization of $\conj{m_{\a}}(x)$ and that $\deg(\conj{m_{\a}}(x)) = \deg(m_{\a}(x))$ because $m_{\a}(x)$ is monic. This shows that $e_{\mf{p}_{i}} = e_{i}$ for all $i$ which completes the proof.
     \end{proof}
   \section{Lattices}
     Before we can continue with the study of number fields, we need to make a detour and discuss some geometry of lattices. This is essential because it will provide us with a geometric interpretation for how the ring of integers $\mc{O}_{K}$ sits inside the number field $K$. We say that $\L \subset \R^{n}$ is a \textbf{lattice}\index{lattice} if $\L$ is a free abelian group of rank $n$. In particular, any lattice $\L$ is of the form
