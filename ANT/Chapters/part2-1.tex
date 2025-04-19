@@ -1,0 +1,1241 @@
+\chapter{The Theory of Number Fields}
+  Introductory number theory is done over $\Q$. The associated set of integers $\Z$ is a ring inside $\Q$. Moreover, the fundamental theorem of arithmetic tells us that prime factorization exists in $\Z$. That is, every integer is uniquely a product of primes (up to reordering of the factors). The study of number fields is concerned with finite extensions of $\Q$ where there might no longer be prime factorization. In the following, we discuss the structure of number fields, their associated ring of integers, and the properties of prime factorization.
+  \section{Numbers Fields \& Algebraic Integers}
+    An \textbf{number field}\index{number field} $K$ is a finite extension of $\Q$. That is, $K$ is a finite dimensional vector space over $\Q$. In particular, $K/\Q$ is a finite separable extension, so that the primitive element theorem applies, and is Galois if and only if $K/\Q$ is normal. We say that the \textbf{degree}\index{degree} of $K$ is $[K:\Q]$ which is the dimension of this vector space. If $K$ is of degree $2$, $3$, etc. then we say it is \textbf{quadratic}\index{quadratic}, \textbf{cubic}\index{cubic}, etc. Any $\k \in K$ is called an \textbf{algebraic number}\index{algebraic number}. Moreover, we say that $\k$ is an \textbf{algebraic integer}\index{algebraic integer} if it is the root of a monic polynomial $f(x) \in \Z[x]$. If $K = \Q$, it is clear that any integer is an algebraic integer ($n$ is the root of $x-n$.). Moreover, any rational root of a monic polynomial must be an integer by the rational root theorem. In other words, if $f(x) \in \Z[x]$ is monic and $q \in \Q$ is a root of $f(x)$ then $q \in \Z$. Therefore for the number field $\Q$, the algebraic integers are exactly the integers $\Z$. Our first goal in studying number fields is to discuss the algebraic integers. Accordingly, we define the \textbf{ring of integers}\index{ring of integers} $\mc{O}_{K}$ of $K$ by
+    \[
+      \mc{O}_{K} = \{\k \in K:\text{$\k$ is an algebraic integer}\}.
+    \]
+    From what we have just shown above, $\Z \subseteq \mc{O}_{K}$. For a general number field $K$, $\mc{O}_{K}$ can be strictly larger than $\Z$. The ring of integers $\mc{O}_{K}$ is the analog of $\Z$ in $\Q$ but for $K$. Our primarily goals will be to show that $\mc{O}_{K}$ is a ring and more precisely a free abelian group of rank equal to the degree of $K$. The following proposition shows that $\mc{O}_{K}$ is indeed a ring:
+
+    \begin{proposition}\label{prop:algebraic_integer_if_finitely_generated}
+      Let $K$ be a number field. Then the finitely many elements $\k_{1},\ldots,\k_{n} \in B$ are all algebraic integers if and only if $\Z[\k_{1},\ldots,\k_{n}]$ is a finitely generated $\Z$-module. In particular, $\mc{O}_{K}$ is a ring.
+    \end{proposition}
+    \begin{proof}
+      First suppose $\k \in K$ is an algebraic integer. Then there exists a monic polynomial $f(x) \in \Z[x]$, of say degree $n \ge 1$, such that $f(\k) = 0$. Now for any $g(x) \in \Z[x]$, Euclidean division implies
+      \[
+        g(x) = q(x)f(x)+r(x),
+      \]
+      with $q(x),r(x) \in \Z[x]$ and $\deg(r(x)) < n$. Letting $r(x) = a_{n-1}x^{n-1}+\cdots+a_{1}x+a_{0}$ with $a_{i} \in \Z$ for $0 \le i \le n-1$, it follows that
+      \[
+        g(\k) = r(\k) = a_{n-1}\k^{n-1}+\cdots+a_{1}\k+a_{0}.
+      \]
+      As $g(x)$ was arbitrary, we see that $\{1,\k,\ldots,\k^{n-1}\}$ is a generating set for $\Z[\k]$ as a $\Z$-module. Now suppose $\k_{1},\ldots,\k_{n} \in K$ are all algebraic integers. We will prove that $\Z[\k_{1},\ldots,\k_{n}]$ is finitely generated as an $\Z$-module by induction. Our previous work implies the base case. So assume by induction that $R = \Z[\k_{1},\ldots,\k_{n-1}]$ is a finitely generated $\Z$-module. Then $R[\k_{n}] = A[\k_{1},\ldots,\k_{n}]$ is a finitely generated $R$-module and hence a finitely generated $\Z$-module as well by our induction hypothesis. Now suppose $A[\k_{1},\ldots,\k_{n}]$ is a finitely generated $\Z$-module. Let $\{\w_{1},\ldots,\w_{r}\}$ be a basis for $A[\k_{1},\ldots,\k_{n}]$. Then for any $\k \in A[\k_{1},\ldots,\k_{n}]$, we have
+      \[
+        \k\w_{i} = \sum_{1 \le j \le r}a_{i,j}\w_{j},
+      \]
+      with $a_{i,j} \in \Z$ for $1 \le i,j \le r$.We can rewrite this as,
+      \[
+        (\k-a_{i,i})\w_{i}-\sum_{\substack{1 \le j \le r \\ j \neq i}}a_{i,j}\w_{j} = 0,
+      \]
+      for all $i$. These $r$ equations are equivalent to the identity
+      \[
+        \begin{pmatrix} k-a_{1,1} & a_{1,2} & \cdots & -a_{1,r} \\ -a_{2,1} & \k-a_{2,2} & & \\ \vdots & & \ddots & \\ -a_{r,1} & & & \k-a_{r,r} \end{pmatrix}\begin{pmatrix} \w_{1} \\ \w_{2} \\ \vdots \\ \w_{r} \end{pmatrix} = \mathbf{0}.
+      \]
+      Thus the determinant of the matrix on the left-hand side must be zero. This shows that $\k$ is the root of the characteristic polynomial $\det(xI-(a_{i,j}))$ which is a monic polynomial with coefficients in $\Z$. Hence $\k$ is an algebraic integer. As $\k$ was arbitrary, this shows that the elements $\k_{1},\ldots,\k_{n}$ are all algebraic integers and that the sum and product of algebraic integers are algebraic integers. It follows that $\mc{O}_{K}$ is a ring.
+    \end{proof}
+
+    We can also show that $K$ is the field of fractions of $\mc{O}_{K}$. Actually, the following proposition proves this and more:
+
+    \begin{proposition}\label{prop:field_of_fractions_of_ring_of_integers}
+      Let $K$ be a number field. Then every $\k \in K$ is of the form
+      \[
+        \k = \frac{\a}{a},
+      \]
+      for some $\a \in \mc{O}_{K}$ and nonzero $a \in \Z$. In particular, $K$ is the field of fractions of $\mc{O}_{K}$. Moreover, $\k \in K$ is an algebraic integer if and only if the minimal polynomial of $\k$ has coefficients in $\Z$.
+    \end{proposition}
+    \begin{proof}
+      As $K/\Q$ is finite, it is necessarily algebraic so that any $\k \in K$ satisfies
+      \[
+        a\k^{n}+a_{n-1}\k^{n-1}+\cdots+a_{0} = 0,
+      \]
+      with $a_{i} \in \Z$ for $0 \le i \le n-1$ and $a \neq 0$. We claim that $a\k$ is an algebraic integer. Indeed, multiplying the previous identity by $a^{n-1}$ yields
+      \[
+        (a\k)^{n}+a'_{n-1}(a\k)^{n-1}+\cdots+a'_{0} = 0,
+      \]
+      where $a'_{i} = a_{i}a^{n-1-i}$ for $0 \le i \le n-1$, and so $a\k$ is the root of a monic polynomial with coefficients in $\Z$. Then $a\k \in \mc{O}_{K}$ and so $a\k = \a$ for some $\a \in \mc{O}_{K}$ which is equivalent to $\k = \frac{\a}{a}$. As $\Z \subseteq \mc{O}_{K}$, this also implies that $K$ is the field of fractions of $\mc{O}_{K}$. For the last statement, suppose $\k \in K$. If the minimal polynomial of $\k$ has integer coefficients then $\k$ is automatically an algebraic integer (since the minimal polynomial is monic). So suppose $\k$ is an algebraic integer so that $\k$ is a root of a monic polynomial $f(x) \in \Z[x]$. If $m_{\k}(x) \in \Q[x]$ is the minimal polynomial of $\k$, then $m_{\k}(x)$ divides $f(x)$ and thus all of the roots of $m_{\k}(x)$ algebraic integers too. By Vieta's formulas, the coefficients of $m_{\k}(x)$ algebraic integers as well. But then $m_{\k}(x) \in \Z[x]$. This completes the proof.
+    \end{proof}
+  \section{Traces \& Norms}
+    We will now require norms and traces of free algebras over fields. Let $K$ be a field and let $R$ be a free $K$-algebra of rank $n$. Then the \textbf{trace}\index{trace} and \textbf{norm}\index{norm} of $R$, denoted $\Trace_{R/K}$ and $\Norm_{R/K}$ respectively, are defined by
+    \[
+      \Trace_{R/K}(\rho) = \tr(T_{\rho}) \quad \text{and} \quad \Norm_{R/K}(\rho) = \det(T_{\rho}),
+    \]
+    for any $\rho \in R$, where $T_{\rho}:R \to R$ is the linear operator defined by
+    \[
+      T_{\rho}(x) = \rho x,
+    \]
+    for all $x \in R$. That is, $T_{\rho}$ is the multiplication by $\rho$ map. Letting $f_{\rho}(t)$ denote the characteristic polynomial of $T_{\rho}$, we have
+    \[
+      f_{\rho}(t) = \det(tI-T_{\rho}) = t^{n}-\k_{n-1}t^{n-1}+\cdots+(-1)^{n}\k_{0},
+    \]
+    with $\k_{i} \in K$ for $0 \le i \le n-1$. Then the trace and the norm are given by
+    \begin{equation}\label{equ:trace_and_norm_characteristic_polynomial}
+      \Trace_{R/K}(\rho) = \k_{n-1} \quad \text{and} \quad \Norm_{R/K}(\rho) = \k_{0},
+    \end{equation}
+    and therefore take values in $K$. Moreover, we have
+    \[
+      \Trace_{R/K}(\k\rho) = \k\Trace_{R/K}(\rho) \quad \text{and} \quad \Norm_{R/K}(\k\rho) = \k^{m}\Norm_{R/K}(\rho),
+    \]
+    for all $\k \in K$ because $T_{\k\l} = \k T_{\l}$. As $T_{\l+\nu} = T_{\l}+T_{\nu}$ and $T_{\l \nu} = T_{\l}T_{\nu}$, we obtain homomorphisms
+    \[
+      \Trace_{R/K}:R \to K \quad \text{and} \quad \Norm_{R/K}:R \to K.
+    \]
+    In the case of a degree $n$ extension $L/K$, we call $\Trace_{L/K}$ and $\Norm_{L/K}$ the \textbf{trace}\index{trace} and \textbf{norm}\index{norm} of $L/K$. Moreover, $\Norm(\l) = 0$ if and only if $\l = 0$ because otherwise $T_{\l}$ has inverse $T_{\l^{-1}}$ and hence nonzero determinant. Therefore we obtain homomorphisms
+    \[
+      \Trace_{L/K}:L \to K \quad \text{and} \quad \Norm_{L/K}:L^{\ast} \to K^{\ast}.
+    \]
+    In the specialized setting $K/\Q$ for a number field $K$, we write $\Trace = \Trace_{K/\Q}$ and $\Norm = \Norm_{K/\Q}$. Moreover, for any $\k \in K$ we call $\Trace(\k)$ and $\Norm(\k)$ the \textbf{trace}\index{trace} and \textbf{norm}\index{norm} of $\k$ respectively. More generally, when $L/K$ is separable, we can derive alternative descriptions of the trace and norm of $L/K$. This additional assumption is weak because the only situations we will be interested in are finite extensions of $\Q$ and $\F_{p}$ which are always separable (because both $\Q$ and $\F_{p}$ are perfect). In any case, to do this we need to work in the algebraic closure $\conj{K}$ of $K$. As $L/K$ is a degree $n$ separable extension, there are exactly $n$ distinct $K$-embeddings $\s_{1},\ldots,\s_{n}$ of $L$ into $\conj{K}$ (each given by letting $\t$ be a primitive element for $L$ so that $L = K[\t]$ and sending $\t$ to one of its conjugate roots in the minimal polynomial $m_{\t}(x)$ of $\t$). Clearly $\s_{1},\ldots,\s_{n}$ send $\mc{O}_{K}$ to itself and fix $\mc{O}_{K}$ pointwise. Moreover, we prove the following proposition:
+
+    \begin{proposition}\label{prop:formulas_for_trace_and_norm}
+      Let $L/K$ be a degree $n$ separable extension and let $\s_{1},\ldots,\s_{n}$ denote the $K$-embeddings of $L$ in $\conj{K}$. For any $\l \in L$, the characteristic polynomial $f_{\l}(t)$ of $T_{\l}$ is a power of the minimal polynomial of $\l$ and satisfies
+      \[
+        f_{\l}(t) = \prod_{1 \le i \le n}(t-\s_{i}(\l)).
+      \]
+      In particular,
+      \[
+        \Trace_{L/K}(\l) = \sum_{1 \le i \le n}\s_{i}(\l) \quad \text{and} \quad \Norm_{L/K}(\l) = \prod_{1 \le i \le n}\s_{i}(\l).
+      \]
+    \end{proposition}
+    \begin{proof}
+      Let
+      \[
+        m_{\l}(t) = t^{m}+\k_{m-1}t^{m-1}+\cdots+\k_{0},
+      \]
+      with $\k_{i} \in K$ for $0 \le i \le n-1$, be the minimal polynomial of $\l$ (necessarily $m$ is the degree of $K(\l)/K$). Let $d$ be the degree of $L/K(\l)$. We first show that $f_{\l}(t)$ is a power of $m_{\l}(t)$. Precisely, we claim that
+      \[
+        f_{\l}(t) = m_{\l}(t)^{d}.
+      \]
+      To see this, recall that $\{1,\l,\ldots,\l^{n-1}\}$ is a basis for $K(\l)/K$. If $\{\a_{1},\ldots,\a_{d}\}$ is a basis for $L/K(\l)$, then
+      \[
+        \{\a_{1},\a_{1}\l,\ldots,\a_{1}\l^{m-1},\ldots,\a_{d},\a_{d}\l,\ldots,\a_{d}\l^{m-1}\},
+      \]
+      is a basis for $L/K$. Because the minimal polynomial $m_{\l}(t)$ gives the linear relation
+      \[
+        \l^{m} = -\k_{0}-k_{1}\l-\cdots-\k_{m-1}\l^{m-1},
+      \]
+      the matrix of $T_{\l}$ is block diagonal with $d$ blocks each of the form
+      \[
+        \begin{pmatrix} & 1 & & \\ & & \ddots & \\ & & & 1 \\ -\k_{0} & -\k_{1} & \cdots & -\k_{m-1} \\ \end{pmatrix}.
+      \]
+      This is the companion matrix to $m_{\l}(t)$ and hence the characteristic polynomial is $m_{\l}(t)$ as well. Our claim follows since the matrix of $T_{\l}$ is block diagonal. Since $\l$ is algebraic over $K$ of degree $m$, $K(\l)$ is the splitting field of $m_{\l}(t)$ and there are $m$ distinct $K$-embeddings of $K(\l)$ into $\conj{L}$. Denote these $m$ embeddings by $\tau_{1},\ldots,\tau_{m}$. Then the embeddings $\s_{1},\ldots,\s_{n}$ are partitioned into $m$ many equivalence classes each of size $d$ (because $L/K(\l)$ is degree $d$) where $\s_{i}$ and $\s_{j}$ are in the same class if and only if $\s_{i}(\l) = \s_{j}(\l)$. In particular, a complete set of representatives is $\{\tau_{1},\ldots,\tau_{m}\}$. But then
+      \[
+        f_{\l}(t) = m_{\l}(t)^{d} = \left(\prod_{1 \le i \le m}(t-\tau_{i}(\l))\right)^{d} = \prod_{1 \le i \le n}(t-\s_{i}(\l)).
+      \]
+      This proves the first statement. The formulas for the trace and norm follow from Vieta's formulas and \cref{equ:trace_and_norm_characteristic_polynomial}.
+    \end{proof}
+
+    As a corollary of \cref{prop:formulas_for_trace_and_norm}, we can show how the trace and norm act on algebraic integers for the extension $K/\Q$:
+
+    \begin{corollary}\label{cor:norm_and_trace_of_algebraic_integers}
+      Let $K$ be a number field. If $\k \in K$ is an algebraic integer, then the trace and norm of $\k$ are integers.
+    \end{corollary}
+    \begin{proof}
+      By \cref{prop:field_of_fractions_of_ring_of_integers}, if $\k$ is an algebraic integer then its minimal polynomial $m_{\k}(t)$ has integer coefficients. By \cref{prop:formulas_for_trace_and_norm} the characteristic polynomial $f_{\k}(t)$ is a power of $m_{\k}(t)$. Hence $f_{\k}(t)$ has integer coefficients. From \cref{equ:trace_and_norm_characteristic_polynomial} we conclude that the trace and norm of $\k$ are integers.
+    \end{proof}
+
+    We can also classify the units in $\mc{O}_{K}$ according to their norm:
+
+    \begin{corollary}
+      Let $K$ be a number field. Then $\a \in \mc{O}_{K}$ is a unit if and only if its norm is $\pm 1$.
+    \end{corollary}
+    \begin{proof}
+      Let $\a \in \mc{O}_{K}$. First suppose $\a$ is a unit in $\mc{O}_{K}$. Then $\frac{1}{\a} \in \mc{O}_{K}$ and so
+      \[
+        \Norm(\a)\Norm\left(\frac{1}{\a}\right) = \Norm(1) = 1.
+      \]
+      By \cref{cor:norm_and_trace_of_algebraic_integers}, the norm of $\a$ and $\frac{1}{\a}$ are both integers. Hence they must be $\pm1$ and thus the norm of $\a$ is $\pm1$. Now suppose the norm of $\a$ is $\pm1$. By \cref{prop:field_of_fractions_of_ring_of_integers}, its minimal polynomial $m_{\a}(t)$ has integer coefficients. Moreover, \cref{equ:trace_and_norm_characteristic_polynomial,prop:formulas_for_trace_and_norm} together imply that the constant term is $\pm1$. Letting the degree of $m_{\a}(t)$ be $m$, we have shown that
+      \[
+        m_{\a}(t) = t^{m}+a_{m-1}t^{m-1}+\cdots\pm1,
+      \]
+      with $a_{i} \in \Z$ for $1 \le i \le m-1$. Dividing $m_{\a}(\a)$ by $\a^{m}$, we find that $\frac{1}{\a}$ is a root of the polynomial
+      \[
+        f(x) = \pm t^{m}+a_{1}t^{m-1}+\cdots+1.
+      \]
+      Multiplying by $-1$ if necessary, it follows that $\frac{1}{\a}$ is a root of a monic polynomial with coefficients in $\Z$. Hence $\frac{1}{\a} \in \mc{O}_{K}$ and thus $\a$ is a unit in $\mc{O}_{K}$.
+    \end{proof}
+
+    We can now prove a structure theorem for the ring of integers $\mc{O}_{K}$ of a number field $K$. We show that the ring of integers is a free abelian group with rank equal to the degree of $K$ which clearly is a generalization of the structure of $\Z$ for for the number field $\Q$:
+
+    \begin{theorem}\label{thm:ring_of_integers_finitely_generated}
+      Let $K$ be a number field of degree $n$. Then $\mc{O}_{K}$ is a free abelian group of rank $n$. In particular, $\mc{O}_{K}$ is a finitely generated $\Z$-module.
+    \end{theorem}
+    \begin{proof}
+      Let $\{\k_{1},\ldots,\k_{n}\}$ be a basis for $K$. By \cref{prop:field_of_fractions_of_ring_of_integers}, we have $\k_{i} = \frac{\a_{i}}{a_{i}}$ with $\a_{i} \in \mc{O}_{K}$ and $a_{i} \in \Z$ for $1 \le i \le n$. Hence $\{\a_{1},\ldots,\a_{n}\}$ is a basis for $K$ as well. In particular, any element $\a \in \mc{O}_{K}$ can be expressed as
+      \[
+        \a = \sum_{1 \le i \le n}q_{i}(\a)\a_{i},
+      \]
+      with $q_{i}(\a) \in \Q$. We now show that the denominators of the $q_{i}(\a)$ are uniformly bounded for all $1 \le i \le n$ and all $\a$. Assume this is not the case. Then there is a sequence $(\b_{j})_{j \ge 1}$ of nonzero elements in $\mc{O}_{K}$ where
+      \[
+        \b_{j} = \sum_{1 \le i \le n}q_{i}(\b_{j})\a_{i},
+      \]
+      is such that the greatest denominator of $q_{i}(\b_{j})$ for $1 \le i \le n$ tends to infinity as $j \to \infty$. In terms of the basis $\{\a_{1},\ldots,\a_{n}\}$, $\Norm(\b_{j})$ is the determinant of an $n \x n$ matrix with coefficients in $\Q[q_{i}(\b_{j})]_{1 \le i \le n}$. In particular, it is a homogenous polynomial of degree $n$ in the $q_{i}(\b_{j})$ for $1 \le i \le n$ with coefficients in $\Q$ determined by the basis $\{\a_{1},\ldots,\a_{n}\}$. But $\Norm(\b_{j})$ is an integer by \cref{cor:norm_and_trace_of_algebraic_integers}. It is also nonzero because $\b_{j}$ is nonzero. Hence $|\Norm(\b_{j})| \ge 1$ and thus, by what we have just shown, the greatest denominator of $q_{i}(\b_{j})$ for $1 \le i \le n$ must be bounded as $j \to \infty$. This gives a contradiction. Hence there is an integer $M \ge 1$ such that $Mq_{i}(\a) \in \Z$ for all $1 \le i \le n$ and $\a \in \mc{O}_{K}$. Therefore
+      \[
+        \mc{O}_{K} \subseteq \frac{1}{M}\bigop_{1 \le i \le n}\Z\a_{i}.
+      \]
+      As the group on the right-hand side is a free abelian group so is $\mc{O}_{K}$. Moreover, as $\{\a_{1},\ldots,\a_{n}\}$ is a basis for $K$ we see that $\{\a_{1},\ldots,\a_{n}\}$ is linearly independent over $\Z$ as well. This means that the rank of $\mc{O}_{K}$ must be $n$. The last statement is now clear.
+    \end{proof}
+
+    In accordance with \cref{thm:ring_of_integers_finitely_generated}, we say that $\{\a_{1},\ldots,\a_{n}\}$ is an \textbf{integral basis}\index{integral basis} for $K$ if $\{\a_{1},\ldots,\a_{n}\}$ is a basis for $K$ and $\mc{O}_{K}$ can be expressed as
+    \[
+      \mc{O}_{K} = \Z\a_{1}+\cdots+\Z\a_{n}.
+    \]
+    That is, every $\a \in \mc{O}_{K}$ is a unique integer linear combination of the $\a_{i}$. An integral basis for $K$ always exists by \cref{thm:ring_of_integers_finitely_generated}. In the special case $\mc{O}_{K} = \Z[\a]$ for some $\a \in \mc{O}_{K}$, we say $K$ is \textbf{monogenic}\index{monogenic}. By \cref{thm:ring_of_integers_finitely_generated}, we see that $\{1,\a,\ldots,\a^{n-1}\}$ is an integral basis for $K$. Lastly, we can show that algebraic integers satisfy a slightly weaker condition:
+
+    \begin{proposition}\label{ring_of_integers_algebraically_closed}
+      Let $K$ be a number field. Then $\k \in K$ is an algebraic integer if and only if $\k$ is the root of a monic polynomial with coefficients in $\mc{O}_{K}$.
+    \end{proposition}
+    \begin{proof}
+      If $\k \in K$ is an algebraic integer, then $\k$ is the root of a monic polynomial with coefficients in $\Z$ and hence in $\mc{O}_{K}$ as well. So suppose $\k \in K$ is the root of a monic polynomial $f(x) \in \mc{O}_{K}$. Let $f(x)$ have degree $n$ and write
+      \[
+        f(x) = x^{n}+\a_{n-1}x^{n-1}+\cdots+\a_{0},
+      \]
+      with $\a_{i} \in \mc{O}_{K}$ for $0 \le i \le n-1$. As $f(\k) = 0$, we have
+      \[
+        \k^{n} = -\a_{n-1}\k^{n-1}-\cdots-\a_{0},
+      \]
+      and hence $\mc{O}_{K}[\k]$ is a finitely generated $\Z$-module because $\mc{O}_{K}$ is by \cref{thm:ring_of_integers_finitely_generated}. As $\Z[\k] \subseteq \mc{O}_{K}[\k]$, we see that $\Z[\k]$ must also be a finitely generated $\Z$-module. Hence $\k$ is an algebraic integer by \cref{prop:algebraic_integer_if_finitely_generated}.
+    \end{proof}
+  \section{Discriminants}
+    We will now discuss discriminants of free modules over fields. Let $K$ be a field and $R$ be a free $K$-algebra of rank $n$. If $\{\rho_{1},\ldots,\rho_{n}\}$ is a basis for $R$, we set
+    \[
+      \disc_{R/K}(\rho_{1},\ldots,\rho_{n}) = \det((\Trace_{R/K}(\rho_{i}\rho_{j}))_{i,j}).
+    \]
+    In particular, $\disc_{R/K}(\rho_{1},\ldots,\rho_{n})$ is an element of $K$. It is also independent of the choice of basis up to elements of $(K^{\ast})^{2}$. Indeed, if $\{\rho'_{1},\ldots,\rho'_{n}\}$ is another basis then we have
+    \[
+      \rho'_{i} = \sum_{1 \le j \le m}\k_{i,j}\rho_{j},
+    \]
+    with $\k_{i,j} \in K$ for $1 \le i,j \le n$. Then $(\k_{i,j})_{i,j}$ is the base change matrix from $\{\rho_{1},\ldots,\rho_{n}\}$ to $\{\rho'_{1},\ldots,\rho'_{n}\}$ and so it has nonzero determinant. Thus $\det((\k_{i,j})_{i,j}) \in K^{\ast}$. Moreover, we have
+    \[
+      (\Trace_{R/K}(\rho'_{i}\rho'_{j}))_{i,j} = (\k_{i,j})_{i,j}(\Trace_{R/K}(\rho_{i}\rho_{j}))_{i,j}(\k_{i,j})_{i,j}^{t},
+    \]
+    which, upon taking the determinant, shows that
+    \begin{equation}\label{equ:discriminant_base_change}
+      \disc_{R/K}(\rho'_{1},\ldots,\rho'_{n}) = \det((\k_{i,j})_{i,j})^{2}\disc_{R/K}(\rho_{1},\ldots,\rho_{n}),
+    \end{equation}
+    as claimed. We define the \textbf{discriminant}\index{discriminant} $\disc_{K}(R)$ of $R$ by
+    \[
+      \disc_{K}(R) = \disc_{R/K}(\rho_{1},\ldots,\rho_{n}) \pmod{(K^{\ast})^{2}}.
+    \]
+    for any basis $\{\rho_{1},\ldots,\rho_{n}\}$ of $R$. By what we have shown, $\disc_{K}(R)$ is well-defined. The discriminant is also multiplicative with respect to direct sums:
+
+    \begin{proposition}\label{prop:discriminant_and_direct_sums}
+      Let $K$ be a field and $R$ be a free $K$-algebra of rank $n$. Suppose we have a direct sum decomposition
+      \[
+        R = R_{1} \op R_{2},
+      \]
+      for free $K$-algebras $R_{1}$ and $R_{2}$ of ranks $n_{1}$ and $n_{2}$ respectively. Also let $\{\eta_{1},\ldots,\eta_{n_{1}}\}$ and $\{\g_{1},\ldots,\g_{n_{2}}\}$ be bases of $R_{1}$ and $R_{2}$ respectively. Then
+      \[
+        \disc_{R/K}(\eta_{1},\ldots,\eta_{n_{1}},\g_{1},\ldots,\g_{n_{2}}) = \disc_{R/K}(\eta_{1},\ldots,\eta_{n_{1}})\disc_{R}(\g_{1},\ldots,\g_{n_{2}}).
+      \]
+      In particular,
+      \[
+        \disc_{K}(R) = \disc_{K}(R_{1})\disc_{K}(R_{2}).
+      \]
+    \end{proposition}
+    \begin{proof}
+      The second statement follows immediately from the first. To prove the first statement, write
+      \[
+        \disc_{R/K}(\eta_{1},\ldots,\eta_{n_{1}}) = \det((\Trace_{R/K}(\eta_{i}\eta_{j}))_{i,j}) \quad \text{and} \quad \disc_{R}(\g_{1},\ldots,\g_{n_{2}}) = \det((\Trace_{R/K}(\g_{k}\g_{\ell}))_{k,\ell}).
+      \]
+      As $R$ is the direct sum of $R_{1}$ and $R_{2}$ as $K$-modules, we have $\eta_{i}\g_{k} = 0$ for all $1 \le i \le n_{1}$ and $1 \le k \le n_{2}$. It follows that $\disc_{R/K}(\eta_{1},\ldots,\eta_{n_{1}},\g_{1},\ldots,\g_{n_{2}})$ is the determinant of the block diagonal matrix
+      \[
+        \begin{pmatrix} (\Trace_{R/K}(\eta_{i}\eta_{j}))_{i,j} & \\ & (\Trace_{R/K}(\g_{k}\g_{\ell}))_{k,\ell} \end{pmatrix}.
+      \]
+      Moreover, we have
+      \[
+        \Trace_{R/K}(\rho_{1}) = \Trace_{R_{1}/K}(\rho_{1}) \quad \text{and} \quad \Trace_{R/K}(\rho_{2}) = \Trace_{R_{2}/K}(\rho_{2})
+      \]
+      for any $\rho_{1} \in R_{1}$ and $\rho_{2} \in R_{2}$. Indeed, multiplication by $\rho_{1}$ and $\rho_{2}$ annihilate $R_{2}$ and $R_{1}$ respectively. But then
+      \[
+        \begin{pmatrix} (\Trace_{R/K}(\eta_{i}\eta_{j}))_{i,j} & \\ & (\Trace_{R/K}(\g_{k}\g_{\ell}))_{k,\ell} \end{pmatrix} = \begin{pmatrix} (\Trace_{R_{1}/K}(\eta_{i}\eta_{j}))_{i,j} & \\ & (\Trace_{R_{2}/K}(\g_{k}\g_{\ell}))_{k,\ell} \end{pmatrix}.
+      \]
+      The determinant of the matrix on right-hand side is $\disc_{R/K}(\eta_{1},\ldots,\eta_{n_{1}})\disc_{R}(\g_{1},\ldots,\g_{n_{2}})$. This completes the proof.
+    \end{proof}
+    
+    We now specialize to the setting of a degree $n$ separable extension $L/K$. It turns out that the discriminant is nonzero. To see this, we require a lemma:
+
+    \begin{lemma}\label{lem:trace_is_nondegenerate}
+      Let $L/K$ be a finite separable extension. Then the map
+      \[
+        L \x L \to K \qquad (\l,\eta) \to \Trace_{L/K}(\l\eta),
+      \]
+      is a nondegenerate symmetric bilinear form.
+    \end{lemma}
+    \begin{proof}
+      From the definition of the trace, it is clear that the map is a symmetric bilinear form. To see that is is nondegenerate, suppose $L/K$ is degree $n$. Then for any nonzero $\l \in L$, \cref{prop:formulas_for_trace_and_norm} implies that
+      \[
+        \Trace_{L/K}(\l\l^{-1}) = \Trace_{L/K}(1) = n.
+      \]
+      Hence the symmetric bilinear form is nondegenerate.
+    \end{proof}
+
+    We can now show that the discriminant is never zero:
+
+    \begin{proposition}\label{prop:discriminant_not_zero}
+      Let $L/K$ be a degree $n$ separable extension and let $\{\l_{1},\ldots,\l_{n}\}$ be a basis for $L$. Then we have that $\disc_{K}(\l_{1},\ldots,\l_{n}) \neq 0$. In particular, $\disc_{K}(L) \neq 0$.
+    \end{proposition}
+    \begin{proof}
+      The second statement follows immediately from the first. To prove the first statement, suppose to the contrary that $\disc_{K}(\l_{1},\ldots,\l_{n}) = 0$. Then the matrix $(\Trace_{L/K}(\l_{i}\l_{j}))_{i,j}$ is not invertible. Hence there exists a nonzero column vector $(\k_{1},\ldots,\k_{n})^{t}$ with $\k_{i} \in K$ for $1 \le i \le n$ such that
+      \[
+        (\Trace_{L/K}(\l_{i}\l_{j}))_{i,j}(\k_{1},\ldots,\k_{n})^{t} = \mathbf{0}.
+      \]
+      This is equivalent to the $n$ equations
+      \[
+        \sum_{1 \le j \le n}\k_{j}\Trace_{L/K}(\l_{i}\l_{j}) = 0,
+      \]
+      for all $i$. Setting
+      \[
+        \l = \sum_{1 \le j \le n}\k_{j}\l_{j},
+      \]
+      linearity of the trace implies that these $n$ equations are equivalent to the fact that $\Trace_{L/K}(\l\l_{i}) = 0$ for all $i$. As $\{\l_{1},\ldots,\l_{n}\}$ is a basis for $L$, it follows that $\l \in L$ is a nonzero element for which $\Trace_{L/K}(\l\eta) = 0$ for all $\eta \in L$. This is impossible by \cref{lem:trace_is_nondegenerate}. Hence $\disc_{K}(\l_{1},\ldots,\l_{n}) \neq 0$.
+    \end{proof}
+
+    In addition to $\disc_{K}(\l_{1},\ldots,\l_{n})$ never vanishing, we can also write it in an alternative form. To do this, for any basis $\{\l_{1},\ldots,\l_{n}\}$ of $L$ we define the associated \textbf{embedding matrix}\index{embedding matrix} $M(\l_{1},\ldots,\l_{n})$ by
+    \[
+      M(\l_{1},\ldots,\l_{n}) = (\s_{i}(\l_{j}))_{i,j}.
+    \]
+    Then we have the following result:
+
+    \begin{proposition}\label{disc_as_square_of_embedding_matrix}
+      Let $L/K$ be a degree $n$ separable extension. Then for any basis $\{\l_{1},\ldots,\l_{n}\}$ of $L$, we have
+      \[
+        \disc_{K}(\l_{1},\ldots,\l_{n}) = \det(M(\l_{1},\ldots,\l_{n}))^{2}.
+      \]
+    \end{proposition}
+    \begin{proof}
+      Recalling that the $(i,j)$-entry of $M(\l_{1},\ldots,\l_{n})^{t}M(\l_{1},\ldots,\l_{n})$ is the dot product of the $i$-th and $j$-th columns of $M(\l_{1},\ldots,\l_{n})$, we have
+    \begin{align*}
+      \det(M(\l_{1},\ldots,\l_{n}))^{2} &= \det(M(\l_{1},\ldots,\l_{n})^{t}M(\l{1},\ldots,\l_{n})) \\
+      &= \det\left(\left(\sum_{1 \le k \le n}\s_{k}(\l_{i})\s_{k}(\l_{j})\right)_{i,j}\right) \\
+      &= \det\left(\left(\sum_{1 \le k \le n}\s_{k}(\l_{i}\l_{j})\right)_{i,j}\right) \\
+      &= \det((\Trace_{L/K}(\l_{i}\l_{j}))_{i,j}) \\
+      &= \disc_{L/K}(\l_{1},\ldots,\l_{n}),
+    \end{align*}
+    where the second to last equality follows by \cref{prop:formulas_for_trace_and_norm}, as desired.
+    \end{proof}
+
+    In the specialized case $K/\Q$ for a number field $K$, we define the \textbf{discriminant}\index{discriminant} $\D_{K}$ of $K$ by
+    \[
+      \D_{K} = \disc_{K}(\a_{1},\ldots,\a_{n}),
+    \]
+    for any integral basis $\{\a_{1},\ldots,\a_{n}\}$. As $\D_{K}$ is not defined modulo $(K^{\ast})^{2}$, we need to show that $\D_{K}$ is independent of the choice of integral basis and hence well-defined. Indeed, if $\{\a'_{1},\ldots,\a'_{n}\}$ is another integral basis then the base change matrix, as well as its inverse, both have integer entries (because integral bases are bases for $\mc{O}_{K}$ as a $\Z$-module). This implies that the determinant of the base change matrix is $\pm 1$ and so \cref{equ:discriminant_base_change} shows that $\D_{K}$ is independent of the choice of integral basis. Moreover, $\D_{K}$ is nonzero by \cref{prop:discriminant_not_zero} and
+    \[
+      \D_{K} = \det(M(\a_{1},\ldots,\a_{n}))^{2},
+    \]
+    by \cref{disc_as_square_of_embedding_matrix}.
+  \section{Integral \& Fractional Ideals}
+    For the number field $\Q$, its ring of integers $\Z$ is a unique factorization domain. Indeed, this is just a restatement of the fundamental theorem of arithmetic. Unfortunately, for a general number field $K$ its ring of integers $\mc{O}_{K}$ need not be a unique factorization domain. However, the integral ideals of $\mc{O}_{K}$ do factor into a unique product of prime integral ideals (this is trivial for a unique factorization domain). Our main goal is to prove this. We first introduce some notation. Any nonzero ideal $\mf{a}$ of $\mc{O}_{K}$ is said to be an \textbf{integral ideal}\index{integral ideal} of $K$. As $\mc{O}_{K}$ is a free abelian group of rank $n$ by \cref{thm:ring_of_integers_finitely_generated} and $\a\mc{O}_{K} \subseteq \mf{a}$ for any nonzero $\a \in \mf{a}$, we see that $\mf{a}$ is also a free abelian group of rank $n$ as well. We first show that the quotient ring by an integral ideal is finite:
+
+    \begin{proposition}\label{prop:residue_of_integral_ideal_is_finite}
+      Let $K$ be a number field. Then $\mc{O}_{K}/\mf{a}$ is finite for any integral ideal $\mf{a}$ and
+      \[
+        |\mc{O}_{K}/\mf{a}| = |\det(A)|,
+      \]
+      where $A$ is any base change matrix from a basis of $\mc{O}_{K}$ to a basis of $\mf{a}$. In particular, for any $\a \in \mc{O}_{K}$,
+      \[
+        |\mc{O}_{K}/\a\mc{O}_{K}| = |\Norm(\a)|.
+      \]
+    \end{proposition}
+    \begin{proof}
+      Let the degree of $K$ be $n$ and $\{\a_{1},\ldots,\a_{n}\}$ be an integral basis for $K$. Since $\mf{a}$ is a a free abelian group of rank $n$, there exists a basis $\{\k_{1},\ldots,\k_{n}\}$. Now write
+      \[
+        \k_{i} = \sum_{1 \le j \le n}a_{i,j}\a_{j},
+      \]
+      with $a_{i,j} \in \Z$ for $1 \le i,j \le n$. Then $A = (a_{i,j})_{i,j}$ is the base change matrix from $\{\a_{1},\ldots,\a_{n}\}$ to $\{\k_{1},\ldots,\k_{n}\}$. Putting $A$ in Smith normal form and letting $D$ be the associated diagonal matrix, we see that there exist bases of $\mc{O}_{K}$ and $\mf{a}$ such that the base change matrix is $D$ and $|\det(A)| = |\det(D)|$ (because $A$ has integer entries and hence the invertible matrices in the Smith normal form have determinant $\pm 1$). Letting $a_{1},\ldots,a_{n}$ be the invariant factors, this shows that
+      \[
+        \mc{O}_{K}/\mf{a} \cong \Z/a_{1}\Z \op \cdots \op \Z/a_{n}\Z.
+      \]
+      Thus $|\mc{O}_{K}/\a\mc{O}_{K}| = |a_{1} \cdots a_{n}| = |\det(D)| = |\det(A)|$ is finite. This proves the first statement. For the second statement, letting
+      \[
+        \a = \sum_{1 \le i \le n}a_{i}\a_{i},
+      \]
+      with $a_{i} \in \Z$, we see that $\{a_{1}\a_{1},\ldots,a_{n}\a_{n}\}$ is a basis for $\a\mc{O}_{K}$. Then on the one hand, what we have just proved shows that $|\mc{O}_{K}/\a\mc{O}_{K}| = |a_{1} \cdots a_{n}|$. On the other hand, in terms of the basis $\{a_{1}\a_{1},\ldots,a_{n}\a_{n}\}$ we have
+      \[
+        T_{\a} = \begin{pmatrix} a_{1} & & \\ & \ddots & \\ & & a_{n} \end{pmatrix},
+      \]
+      and so $\Norm(\a) = a_{1} \cdots a_{n}$. Hence
+      \[
+        |\mc{O}_{K}/\a\mc{O}_{K}| = |\Norm(\a)|,
+      \]
+      as desired.
+    \end{proof}
+
+    For an integral ideal $\mf{a}$, we define its \textbf{norm}\index{norm} $\Norm(\mf{a})$ by
+    \[
+      \Norm(\mf{a}) = |\mc{O}_{K}/\mf{a}|.
+    \]
+    By \cref{prop:residue_of_integral_ideal_is_finite}, the norm is finite, necessarily a positive integer, and for every $\a \in \mc{O}_{K}$ we have
+    \[
+      \Norm(\a\mc{O}_{K}) = |\Norm(\a)|.
+    \]
+    We can now show that every prime integral ideal is maximal:
+
+    \begin{proposition}\label{prop:prime_integral_ideals_are_maximal}
+      Let $K$ be a number field. Every prime integral ideal $\mf{p}$ in $\mc{O}_{K}$ is maximal.
+    \end{proposition}
+    \begin{proof}
+      Recall that an ideal is maximal if and only if the quotient ring is a field. Therefore it suffices to show that $\mc{O}_{K}/\mf{p}$ is a field. Let $\a \in \mc{O}_{K}/\mf{p}$ be nonzero. We will show that $\a$ is invertible in $\mc{O}_{K}/\mf{p}$. Since $\mf{p}$ is maximal, $\mc{O}_{K}/\mf{p}$ is an integral domain. Therefore the multiplication map
+      \[
+        \mc{O}_{K}/\mf{p} \to \mc{O}_{K}/\mf{p} \qquad x \mapsto \a x,
+      \]
+      is injective. By \cref{prop:residue_of_integral_ideal_is_finite}, $\mc{O}_{K}/\mf{p}$ is finite and therefore this map must be a bijection. But this means that $\a$ has an inverse in $\mc{O}_{K}/\mf{p}$. Hence $\mc{O}_{K}/\mf{p}$ is a field.
+    \end{proof}
+
+    As prime integral ideals are maximal by \cref{prop:prime_integral_ideals_are_maximal} and distinct maximal ideals are relatively prime, we see that distinct prime integral ideals $\mf{p}$ and $\mf{q}$ are relatively prime. In particular, their powers are relatively prime as well (which follows by induction). We will now being working to show that every integral ideal factors uniquely into a product of prime integral ideals. First we show containment in one direction:
+
+    \begin{lemma}\label{lem:integral_ideal_prime_containment}
+      Let $K$ be a number field. For every integral ideal $\mf{a}$, there exist prime integral ideals $\mf{p}_{1},\ldots,\mf{p}_{k}$ such that
+      \[
+        \mf{p}_{1}\cdots\mf{p}_{k} \subseteq \mf{a}.
+      \]
+    \end{lemma}
+    \begin{proof}
+      Let $\mc{S}$ be the set of integral ideals which do not contain a product of prime integral. Then it suffices to show $\mc{S}$ is empty. Assume otherwise so that there is an integral ideal $\mf{a} \in \mc{S}$. Then $\mf{a}$ cannot be prime for otherwise $\mf{a}$ contains a product of prime integral ideals (namely itself). Since $\mf{a}$ is not prime, there exist $\a_{1},\a_{2} \in \mc{O}_{K}$ with $\a_{1}\a_{2} \in \mf{a}$ and such that $\a_{1},\a_{2} \notin \mf{a}$. Now define integral ideals
+      \[
+        \mf{b}_{1} = \mf{a}+\a_{1}\mc{O}_{K} \quad \text{and} \quad \mf{b}_{2} = \mf{a}+\a_{2}\mc{O}_{K}.
+      \]
+      Note that $\mf{b}_{1}$ and $\mf{b}_{2}$ strictly contain $\mf{a}$ because $\a_{1},\a_{2} \notin \mf{a}$. Moreover, $\mf{b}_{1}\mf{b}_{2} \subseteq \mf{a}$ because
+      \[
+        \mf{b}_{1}\mf{b}_{2} = (\mf{a}+\a_{1}\mc{O}_{K})(\mf{a}+\a_{2}\mc{O}_{K}) = \mf{a}^{2}+\a_{1}\mc{O}_{K}+\a_{2}\mc{O}_{K}+\a_{1}\a_{2}\mc{O}_{K},
+      \]
+      and $\a_{1}\a_{2} \in \mf{a}$. We now show that either $\mf{b}_{1}$ or $\mf{b}_{2}$ belongs to $\mc{S}$. Suppose otherwise. Then there exist prime integral ideals $\mf{p}_{1},\ldots,\mf{p}_{k}$ and $\mf{q}_{1},\ldots,\mf{q}_{\ell}$ such that
+      \[
+        \mf{p}_{1}\cdots\mf{p}_{k} \subseteq \mf{b}_{1} \quad \text{and} \quad \mf{q}_{1}\cdots\mf{q}_{\ell} \subseteq \mf{b}_{2}.
+      \]
+      But then
+      \[
+        \mf{p}_{1}\cdots\mf{p}_{k}\mf{q}_{1}\cdots\mf{q}_{\ell} \subseteq \b_{1}\b_{2} \subseteq \mf{a},
+      \]
+      which contradicts the fact that $\mf{a}$ is in $\mc{S}$. Hence $\mf{b}_{1}$ or $\mf{b}_{2}$ belongs to $\mc{S}$. In total, we have shown that if $\mf{a} \in \mc{S}$, then there exists an integral ideal $\mf{a}_{1} \in \mc{S}$ strictly larger than $\mf{a}$. Thus we obtain a strictly increasing infinite sequence of integral ideals in $\mc{S}$:
+      \[
+        \mf{a} \subset \mf{a}_{1} \subset \mf{a}_{2} \subset \cdots.
+      \]
+      Taking the norm, we obtain a strictly decreasing sequence of positive integers:
+      \[
+        \Norm(\mf{a}) > \Norm(\mf{a}_{1}) > \Norm(\mf{a}_{2}) > \cdots.
+      \]
+      This is impossible since the norm of an integral ideal is a positive integer. Hence $\mc{S}$ is empty and the claim follows.
+    \end{proof}
+
+    In order to obtain the reverse containment in \cref{lem:integral_ideal_prime_containment}, we need to do more work. Precisely, we want to show that every integral ideal factors into a product of prime integral ideals. To accomplish this, we will construct a group containing the ideals. Unfortunately, ideals are not invertible and so we need to work in a slightly more general setting. First observe that an integral ideal $\mf{a}$ is just an $\mc{O}_{K}$-submodule of $\mc{O}_{K}$. Moreover, it is a finitely generated $\mc{O}_{K}$-submodule of $K$ by \cref{thm:ring_of_integers_finitely_generated}. We say $\mf{f}$ is a \textbf{fractional ideal}\index{fractional ideal} of $K$ if $\mf{f}$ a nonzero finitely generated $\mc{O}_{K}$-submodule of $K$. In particular, all integral ideals are fractional ideals. Now let $\k_{1},\ldots,\k_{r} \in K$ be generators for the fractional ideal $\mf{f}$. Since $K$ is the field of fractions of $\mc{O}_{K}$ by \cref{prop:field_of_fractions_of_ring_of_integers}, $\k_{i} = \frac{\a_{i}}{\d_{i}}$ with $\a_{i},\d_{i} \in \mc{O}_{K}$ and where $\d_{i}$ is nonzero for $1 \le i \le r$. Setting $\d = \d_{1} \cdots \d_{r}$, we have that $\d\k_{i} \in \mc{O}_{K}$ for all $i$ and hence $\d\mf{f}$ is an integral ideal. Conversely, if there exists some nonzero $\d \in \mc{O}_{K}$ such that $\d\mf{f}$ is an integral ideal then $\mf{f}$ is a fractional ideal because $\mf{a}$ is a finitely generated $\mc{O}_{K}$-submodule of $K$ and hence $\mf{f}$ is too. Thus for any fractional ideal $\mf{f}$, there exists a nonzero $\d \in \mc{O}_{K}$ and an integral ideal $\mf{a}$ such that
+    \[
+      \mf{f} = \frac{1}{\d}\mf{a}.
+    \]
+    Every fractional ideal is of this form and integral ideals are precisely those for which $\d = 1$. In particular, since $\mf{a}$ is a free abelian group of rank $n$, we see that $\mf{f}$ is a free abelian group of rank $n$ as well. Now let $\mf{p}$ be a prime integral ideal. We define $\mf{p}^{-1}$ by
+    \[
+      \mf{p}^{-1} = \{\k \in K:\k\mf{p} \subseteq \mc{O}_{K}\}.
+    \]
+    It turns out that $\mf{p}^{-1}$ is a fractional ideal. Indeed, since $\mf{p}$ is an integral ideal there exists a nonzero $\a \in \mf{p}$. By definition of $\mf{p}^{-1}$, we have that $\a\mf{p}^{-1} \subseteq \mc{O}_{K}$. Hence $\a\mf{p}^{-1}$ is an integral ideal and therefore $\mf{p}^{-1}$ is a fractional ideal. Unlike integral ideals, $1 \in \mf{p}^{-1}$ so that $\mf{p}^{-1}$ contains units. The following proposition proves a stronger version of this and more:
+
+    \begin{lemma}\label{lem:inverse_for_prime_ideals}
+      Let $K$ be a number field and $\mf{p}$ be a prime integral ideal. Then the following hold:
+      \begin{enumerate}[label=(\roman*)]
+        \item
+        \[
+          \mc{O}_{K} \subset \mf{p}^{-1}.
+        \]
+        \item
+        \[
+          \mf{p}^{-1}\mf{p} = \mc{O}_{K}.
+        \]
+      \end{enumerate}
+    \end{lemma}
+    \begin{proof}
+      We will prove the latter two statement separately:
+      \begin{enumerate}[label=(\roman*)]
+        \item Clearly $\mc{O}_{K} \subseteq \mf{p}^{-1}$ so it suffices to show that $\mf{p}^{-1}$ contains a nonzero element which is not an algebraic integer. Again, let $\a \in \mf{p}$ be nonzero. By \cref{lem:integral_ideal_prime_containment} let $k \ge 1$ be the minimal integer such that there exist prime integral ideals $\mf{p}_{1},\ldots,\mf{p}_{k}$ with
+        \[
+          \mf{p}_{1} \cdots \mf{p}_{k} \subseteq \a\mc{O}_{K}.
+        \]
+        As $\a \in \mf{p}$, we have $\a\mc{O}_{K} \subseteq \mf{p}$. Since $\mf{p}$ is prime, there must be some $i$ with $1 \le i \le k$ such that $\mf{p}_{i} \subseteq \mf{p}$. Without loss of generality, we may assume $\mf{p}_{1} \subseteq \mf{p}$. But by \cref{prop:prime_integral_ideals_are_maximal} prime integral ideals are maximal and thus $\mf{p}_{1} = \mf{p}$. Moreover, since $k$ is minimal we must have
+        \[
+          \mf{p}_{2} \cdots \mf{p}_{k} \not\subseteq \a\mc{O}_{K}.
+        \]
+        Hence there exists a nonzero $\b \in \mf{p}_{2} \cdots \mf{p}_{k}$ with $\b \notin \a\mc{O}_{K}$. We will now show that $\b\a^{-1}$ is a nonzero element in $\mf{p}^{-1}$ that is not an algebraic integer. Clearly $\b\a^{-1}$ is nonzero. Since $\mf{p}_{1} = \mf{p}$, what we have previously shown implies $\b\mf{p} \subseteq \a\mc{O}_{K}$ and hence $\b\a^{-1}\mf{p} \in \mc{O}_{K}$ which means $\b\a^{-1} \in \mf{p}^{-1}$. But as $\b \notin \a\mc{O}_{K}$, we also have $\b\a^{-1} \notin \mc{O}_{K}$ so that $\b\a^{-1}$ is not an algebraic integer. This proves (i).
+        \item By (i) and the definition of $\mf{p}^{-1}$, we have $\mf{p} \subseteq \mf{p}^{-1}\mf{p} \subseteq \mc{O}$. Since $\mf{p}$ is maximal by \cref{prop:prime_integral_ideals_are_maximal}, it follows that $\mf{p}^{-1}\mf{p}$ is either $\mf{p}$ or $\mc{O}_{K}$. So it suffices to show that the first case cannot hold. Assume by contradiction that $\mf{p}^{-1}\mf{p} = \mf{p}$. Let $\{\w_{1},\ldots,\w_{r}\}$ be a set of generators for $\mf{p}$ and let $\a \in \mf{p}^{-1}$ be a nonzero element that is not an algebraic integer which exists by (i). Then $\a\w_{i} \in \mf{p}^{-1}\mf{p}$ for $1 \le i \le r$ and hence $\a\mf{p} \subseteq \mf{p}^{-1}\mf{p}$. By our assumption, this further implies that $\a\mf{p} \subseteq \mf{p}$. But then
+        \[
+          \a\w_{i} = \sum_{1 \le j \le r}\a_{i,j}\w_{j},
+        \]
+        with $\a_{i,j} \in \mc{O}_{K}$ for $1 \le i,j \le r$. We can rewrite this as,
+        \[
+          (\a-\a_{i,i})\w_{i}-\sum_{\substack{1 \le j \le r \\ j \neq i}}\a_{i,j}\w_{j} = 0,
+        \]
+        for all $i$. These $r$ equations are equivalent to the identity
+        \[
+          \begin{pmatrix} \a-\a_{1,1} & \a_{1,2} & \cdots & -\a_{1,r} \\ -\a_{2,1} & \a-\a_{2,2} & & \\ \vdots & & \ddots & \\ -\a_{r,1} & & & \a-\a_{r,r} \end{pmatrix}\begin{pmatrix} \w_{1} \\ \w_{2} \\ \vdots \\ \w_{r} \end{pmatrix} = \mathbf{0}.
+        \]
+        Thus the determinant of the matrix on the left-hand side must be zero. But this means $\a$ is a root of the characteristic polynomial $\det(xI-(\a_{i,j}))$ which is a monic polynomial with coefficients $\mc{O}_{K}$. By \cref{ring_of_integers_algebraically_closed}, $\a$ is an algebraic integer which is a contradiction. Thus $\mf{p}^{-1}\mf{p} = \mc{O}_{K}$.
+      \end{enumerate}
+    \end{proof}
+
+    Let $I_{K}$ denote the collection of fractional ideals of $K$. We call $I_{K}$ the \textbf{ideal group}\index{ideal group} of $K$. The following theorem shows that $I_{K}$ is indeed a group:
+
+    \begin{theorem}
+      Let $K$ be a number field. Then $I_{K}$ is an abelian group with identity $\mc{O}_{K}$.
+    \end{theorem}
+    \begin{proof}
+      Since fractional ideals are finitely generated $\mc{O}_{K}$-submodules of $K$, the product of fractional ideals is a fractional ideal. It is also clear that $I_{K}$ is abelian if it is a group. Moreover, $\mc{O}_{K}$ is the identity since every every fractional ideal is a finitely generated $\mc{O}_{K}$-submodule of $K$. It now suffices to show that every fractional ideal $\mf{f}$ has an inverse in $I_{K}$. By \cref{lem:inverse_for_prime_ideals} (ii), the prime integral ideal $\mf{p}$ has inverse $\mf{p}^{-1}$. We now show that any integral ideal that is not prime has an inverse. Suppose by contradiction that $\mf{a}$ is such an integral ideal with $N(\mf{a})$ minimal. By \cref{prop:prime_integral_ideals_are_maximal}, there exists a prime integral ideal $\mf{p}$ such that $\mf{a} \subset \mf{p}$. This fact together with \cref{lem:inverse_for_prime_ideals} (i) implies that
+      \[
+        \mf{a} \subseteq \mf{p}^{-1}\mf{a} \subseteq \mf{p}^{-1}\mf{p} = \mc{O}_{K}.
+      \]
+      We now claim $\mf{a} \subset \mf{p}^{-1}\mf{a}$. If not, $\mf{a} = \mf{p}^{-1}\mf{a}$. Let $\{\w_{1},\ldots,\w_{r}\}$ be a set of generators for $\mf{a}$. By \cref{lem:inverse_for_prime_ideals}, let $\a \in \mf{p}^{-1}$ be a nonzero element that is not an algebraic integer. Then $\a\w_{i} \in \mf{p}^{-1}\mf{a}$ for $1 \le i \le r$ and hence $\a\mf{a} \subseteq \mf{p}^{-1}\mf{a}$. By our assumption, this further implies that $\a\mf{p} \subseteq \mf{a}$. But then
+      \[
+        \a\w_{i} = \sum_{1 \le j \le r}\a_{i,j}\w_{j},
+      \]
+      with $\a_{i,j} \in \mc{O}_{K}$ for $1 \le i,j \le r$. We can rewrite this as,
+      \[
+        (\a-\a_{i,i})\w_{i}-\sum_{\substack{1 \le j \le r \\ j \neq i}}\a_{i,j}\w_{j} = 0,
+      \]
+      for all $i$. These $r$ equations are equivalent to the identity
+      \[
+        \begin{pmatrix} \a-\a_{1,1} & \a_{1,2} & \cdots & -\a_{1,r} \\ -\a_{2,1} & \a-\a_{2,2} & & \\ \vdots & & \ddots & \\ -\a_{r,1} & & & \a-\a_{r,r} \end{pmatrix}\begin{pmatrix} \w_{1} \\ \w_{2} \\ \vdots \\ \w_{r} \end{pmatrix} = \mathbf{0}.
+      \]
+      Thus the determinant of the matrix on the left-hand side must be zero. But this means $\a$ is a root of the characteristic polynomial $\det(xI-(\a_{i,j}))$ which is a monic polynomial with coefficients $\mc{O}_{K}$. By \cref{ring_of_integers_algebraically_closed}, $\a$ is an algebraic integer which is a contradiction. Thus $\mf{a} \subset \mf{p}^{-1}\mf{a}$. But then $\Norm(\mf{p}^{-1}\mf{a}) < \Norm(\mf{a})$ and by the minimality of $\Norm(\mf{a})$ it follows that the fractional ideal $\mf{p}^{-1}\mf{a}$ is invertible. Let $\mf{b}$ be its inverse. Then $\mf{b}\mf{p}^{-1}\mf{a} = \mc{O}_{K}$ and thus $\mf{a}$ is invertible with inverse $\mf{b}\mf{p}^{-1}$. This is a contradiction, so we conclude that every integral ideal is invertible. We now show that every fractional ideal $\mf{f}$ is invertible. Since $\mf{f}$ is a fractional ideal, there exists a nonzero $\d \in \mc{O}_{K}$ and an integral ideal $\mf{a}$ such that
+      \[
+        \mf{f} = \frac{1}{\d}\mf{a}.
+      \]
+      As $\mf{a}$ is invertible, $\d\mf{a}^{-1}$ is the inverse of $\mf{f}$. This completes the proof.
+    \end{proof}
+
+    Now that we have proved that the ideal group $I_{K}$ of $K$ is indeed a group, we can shown that every integral ideal factors uniquely into a product of prime integral ideals (up to reordering of the factors):
+
+    \begin{theorem}\label{thm:unique_product_prime_ideals}
+      Let $K$ be a number field. Then for every integral ideal $\mf{a}$ there exist prime integral ideals $\mf{p}_{1},\ldots,\mf{p}_{k}$ such that $\mf{a}$ factors as
+      \[
+        \mf{a} = \mf{p}_{1} \cdots \mf{p}_{k}.
+      \]
+      Moreover, this factorization is unique up to reordering of the factors.
+    \end{theorem}
+    \begin{proof}
+      We first prove existence and then uniqueness. For existence, suppose to the contrary that $\mf{a}$ is an integral ideal that does not factor into a product of prime integral ideals and $\mf{a}$ is maximal among all such integral ideals. Necessarily $\mf{a}$ is not prime and by \cref{prop:prime_integral_ideals_are_maximal} there is some prime integral idea $\mf{p}_{1}$ for which $\mf{a} \subset \mf{p}_{1}$. Then by \cref{lem:inverse_for_prime_ideals} (ii), we have $\mf{p}_{1}^{-1}\mf{a} \subset \mc{O}_{K}$ so that $\mf{p}_{1}^{-1}\mf{a}$ is also an integral ideal. Also, \cref{lem:inverse_for_prime_ideals} (i) implies $\mf{a} \subseteq \mf{a}\mf{p}_{1}^{-1}$. Actually, $\mf{a} \subset \mf{a}\mf{p}_{1}^{-1}$ for otherwise $\mf{a} = \mf{a}\mf{p}_{1}^{-1}$ and hence $\mf{p}_{1}^{-1} = {O}_{K}$ which is impossible because $\mf{p}_{1}$ is proper. By maximality, $\mf{a}\mf{p}_{1}^{-1}$ factors into a product of prime integral ideals. That is, there exist prime integral ideals $\mf{p}_{2},\ldots,\mf{p}_{k}$ such that
+      \[
+        \mf{a}\mf{p}_{1}^{-1} = \mf{p}_{2},\ldots,\mf{p}_{k}.
+      \]
+      Hence
+      \[
+        \mf{a} = \mf{p}_{1},\ldots,\mf{p}_{k},
+      \]
+      so that $\mf{a}$ factors into a product of prime integral ideals which is a contradiction. This proves existence of such a factorization. Now we prove uniqueness. Suppose that $\mf{a}$ admits factorizations
+      \[
+        \mf{a} = \mf{p}_{1},\ldots,\mf{p}_{k} \quad \text{and} \quad \mf{a} = \mf{q}_{1},\ldots,\mf{q}_{\ell},
+      \]
+      for prime integral ideals $\mf{p}_{i}$ and $\mf{q}_{j}$ with $1 \le i \le k$ and $1 \le j \le \ell$. Since $\mf{p}_{1}$ is prime, there is some $j$ for which $\mf{q}_{j} \subseteq \mf{p}_{1}$. Without loss of generality, we may assume $\mf{q}_{1} \subseteq \mf{p}_{1}$ and \cref{prop:prime_integral_ideals_are_maximal} we have that $\mf{q}_{1} = \mf{p}_{1}$. Then
+      \[
+        \mf{p}_{2},\ldots,\mf{p}_{k} = \mf{q}_{2},\ldots,\mf{q}_{\ell}.
+      \]
+      Repeating this process, we see that $k = \ell$ and $\mf{q}_{i} = \mf{p}_{i}$ for all $i$. This proves uniqueness of the factorization.
+    \end{proof}
+
+    By \cref{thm:unique_product_prime_ideals}, for any integral ideal $\mf{a}$ there exist distinct prime integral ideal $\mf{p}_{1},\ldots,\mf{p}_{r}$ such that $\mf{a}$ admits a factorization
+    \[
+      \mf{a} = \mf{p}_{1}^{e_{1}} \cdots \mf{p}_{r}^{e_{r}},
+    \]
+    with $e_{i} \ge 1$ for all $i$, called the \textbf{prime factorization}\index{prime factorization} of $\mf{a}$ with \textbf{prime factors}\index{prime factors} $\mf{p}_{1},\ldots,\mf{p}_{r}$. Just as it is common to suppress the fundamental theorem of arithmetic and just state the prime factorization of an integer, we suppress \cref{thm:unique_product_prime_ideals} and state the prime factorization of an integral ideal. Also, as a near immediate corollary of \cref{thm:unique_product_prime_ideals}, all fractional ideal admits a factorization into a product of prime integral ideals and their inverses (up to reordering of the factors):
+
+    \begin{corollary}\label{cor:fractional_ideal_prime_factorization}
+      Let $K$ be a number field. Then for every fractional ideal $\mf{f}$ there exist prime integral ideals $\mf{p}_{1},\ldots,\mf{p}_{k}$ and $\mf{q}_{1},\ldots,\mf{q}_{\ell}$ such that $\mf{f}$ factors as
+      \[
+        \mf{f} = \mf{p}_{1} \cdots \mf{p}_{k}\mf{q}_{1}^{-1},\ldots,\mf{q}_{\ell}^{-1}.
+      \]
+      Moreover, this factorization is unique up to reordering of the factors.
+    \end{corollary}
+    \begin{proof}
+      If $\mf{f}$ is a fractional ideal, then there exists a nonzero $\d \in \mc{O}_{K}$ and an integral ideal $\mf{a}$ such that
+      \[
+        \mf{f} = \frac{1}{\d}\mf{a}.
+      \]
+      In particular, $\mf{a}$ and $\d\mc{O}_{K}$ are integral ideals such that $\d\mc{O}_{K}\mf{f} = \mf{a}$. By \cref{thm:unique_product_prime_ideals}, $\mf{a}$ and $\d\mc{O}_{K}$ admit unique factorizations
+      \[
+        \mf{a} = \mf{p}_{1} \cdots \mf{p}_{k} \quad \text{and} \quad \d\mc{O}_{K} = \mf{q}_{1},\ldots,\mf{q}_{\ell},
+      \]
+      up to reordering of the factors. Hence
+      \[
+        \mf{q}_{1},\ldots,\mf{q}_{\ell}\mf{f} = \mf{p}_{1} \cdots \mf{p}_{k},
+      \]
+      which is equivalent to the factorization for $\mf{f}$.
+    \end{proof}
+
+    With the Chinese remainder theorem, we can now derive some useful consequences of the unique factorization of integral ideals. Indeed, suppose $\mf{a}$ is an integral ideal with prime factorization
+    \[
+      \mf{a} = \mf{p}_{1}^{e_{1}} \cdots \mf{p}_{r}^{e_{r}}.
+    \]
+    Then the integral ideals $\mf{p}_{1}^{e_{1}},\ldots,\mf{p}_{r}^{e_{r}}$ are pairwise relatively prime so that the Chinese remainder theorem gives an isomorphism
+    \[
+      \mc{O}_{K}/\mf{a} \cong \bigop_{1 \le i \le r}\mc{O}_{K}/\mf{p}_{i}^{e_{i}}.
+    \]
+    In particular, for any $\a_{i} \in \mc{O}_{K}$ for all $i$, there exists a unique $\a \in \mc{O}_{K}$ such that
+    \[
+      \a \equiv \a_{i} \pmod{\mf{p}_{i}^{e_{i}}},
+    \]
+    for all $i$. We can now show that any fractional ideal is generated by at most two elements:
+
+    \begin{corollary}\label{cor:fractional_ideal_generated_by_two_elements}
+      Let $K$ be a number field. Then any fractional ideal $\mf{f}$ is generated by at most two elements.
+    \end{corollary}
+    \begin{proof}
+      We first prove the claim for an integral ideal $\mf{a}$. Let $\a \in \mf{a}$ be nonzero and let $\mf{p}_{1},\ldots,\mf{p}_{r}$ be the prime factors of $\a\mc{O}_{K}$. As $\a\mc{O}_{K} \subseteq \mf{a}$, the prime factorization of $\mf{a}$ is
+      \[
+        \mf{a} = \mf{p}_{1}^{e_{1}} \cdots \mf{p}_{r}^{e_{r}},
+      \]
+      with $e_{i} \ge 0$ for $1 \le i \le r$. By uniqueness of the prime factorization of integral ideals, $\mf{p}_{i}^{e_{i}+1} \subset \mf{p}_{i}^{e_{i}}$ for all $i$. Thus there exist nonzero $\b_{i} \in \mf{p}_{i}^{e_{i}}-\mf{p}_{i}^{e_{i}+1}$ for all $i$. Since $\mf{p}_{1}^{e_{1}+1},\ldots,\mf{p}_{r}^{e_{r}+1}$ are pairwise relatively prime, the Chinese remainder theorem implies that there exists $\b \in \mc{O}_{K}$ with 
+      \[
+        b \equiv \b_{i} \tmod{\mf{p}_{i}^{e_{i}+1}},
+      \]
+      for all $i$. As $\b_{i} \in \mf{p}_{i}^{e_{i}}$ for all $i$, we have $\b \in \mf{a}$ and hence $\b\mc{O}_{K} \subseteq \mf{a}$. But as $\b \notin \mf{p}_{i}^{e_{i}+1}$ for all $i$, we see that $\b\mc{O}_{K}\mf{a}^{-1}$ is necessarily an integral ideal relatively prime to $\a\mc{O}_{K}$. This means
+      \[
+        \b\mc{O}_{K}\mf{a}^{-1}+\a\mc{O}_{K} = \mc{O}_{K},
+      \]
+      and hence
+      \[
+        \b\mc{O}_{K}+\a\mf{a} = \mf{a}.
+      \]
+      But as $\a,\b \in \mf{a}$, we have $\b\mc{O}_{K}+\a\mf{a} \subseteq \b\mc{O}_{K}+\a\mc{O}_{K} \subseteq \mf{a}$ and so
+      \[
+        \b\mc{O}_{K}+\a\mc{O}_{K} = \mf{a}.
+      \]
+      This shows that $\mf{a}$ is generated by at most two elements. Now suppose $\mf{f}$ is a fractional ideal. Then there exists a nonzero $\d \in \mc{O}_{K}$ and an integral ideal $\mf{a}$ such that
+      \[
+        \mf{f} = \frac{1}{\d}\mf{a}.
+      \]
+      Since $\mf{a}$ is generated by at most two elements, say $\a$ and $\b$, we have
+      \[
+        \mf{f} = \frac{\a}{\d}\mc{O}_{K}+\frac{\b}{\d}\mc{O}_{K},
+      \]
+      and so $\mf{f}$ is also generated by at most two elements as well.
+    \end{proof}
+
+    \cref{cor:fractional_ideal_generated_by_two_elements} shows that while the the ring of integers $\mc{O}_{K}$ of $K$ may not be a principal ideal domain, it is not far off from one since we every integral ideal needs at most two generators. We will give a more refined interpretation of this when discussing quotients of the ideal group $I_{K}$. For now, we deduce some more properties of the norm of integral ideals and extend this notion to fractional ideals as well. We will need a useful proposition:
+
+    \begin{proposition}\label{prop:isomorphism_of_quotient_by_prime_integral_ideals}
+      Let $K$ be a number field. Then for any prime integral ideal $\mf{p}$ and $n \ge 0$,
+      \[
+        \mc{O}_{K}/\mf{p} \cong \mf{p}^{n}/\mf{p}^{n+1},
+      \]
+      as $\mc{O}_{K}$-modules.
+    \end{proposition}
+    \begin{proof}
+      By the uniqueness of the factorization of integral ideals, there exists $\b \in \mf{p}^{n}-\mf{p}^{n+1}$. Now consider the homomorphism
+      \[
+        \phi:\mc{O}_{K} \to \mf{p}^{n}/\mf{p}^{n+1} \qquad \a \to \a\b \pmod{\mf{p}^{n+1}}.
+      \]
+      By the first isomorphism theorem, it suffices to show $\ker\phi = \mf{p}$ and that $\phi$ is surjective. Let us first show $\ker\phi = \mf{p}$. As $\b \in \mf{p}^{n}$, it is obvious that $\mf{p} \subseteq \ker\phi$. Conversely, suppose $\a \in \mc{O}_{K}$ is such that $\phi(\a) = 0$. Then $\a\b \in \mf{p}^{n+1}$, and as $\b \in \mf{p}^{n}-\mf{p}^{n+1}$ we must have $\a \in \mf{p}$. It follows that $\ker\phi = \mf{p}$. We now show that $\phi$ is surjective. Let $\g \in \mf{p}^{n}$ be a representative of a class in $\mf{p}^{n}/\mf{p}^{n+1}$. As $\b \in \mf{p}^{n}$, we have $\b\mc{O}_{K} \subseteq \mf{p}^{n}$. But since $\b \notin \mf{p}^{n+1}$, we see that $\b\mc{O}_{K}\mf{p}^{-n}$ is necessarily an integral ideal relatively prime to $\mf{p}^{n+1}$. As $\mf{p}^{n+1}$ and $\b\mc{O}_{K}\mf{p}^{-n}$ are relatively prime, the Chinese remainder theorem implies that we can find a unique $\a \in \mc{O}_{K}$ such that
+      \[
+        \a \equiv \g \pmod{\mf{p}^{n+1}} \quad \text{and} \quad \a \equiv 0 \tmod{\b\mc{O}_{K}\mf{p}^{-n}}.
+      \]
+      The second condition implies $\a \in \b\mc{O}_{K}\mf{p}^{-n}$. As $\g \in \mf{p}^{n}$ and $\a$ and $\g$ differ by an element in $\mf{p}^{n+1} \subset \mf{p}^{n}$, we have that $\a \in \b\mc{O}_{K}\mf{p}^{-n} \cap \mf{p}^{n} = \b\mc{O}_{K}$ where the equality holds because the intersection of ideals is equal to their product if the ideals are relatively prime. Thus $\frac{\a}{\b} \in \mc{O}_{K}$ and hence
+      \[
+        \phi\left(\frac{\a}{\b}\right) = \a \equiv \g \tmod{\mf{p}^{n+1}}.
+      \]
+      This shows $\phi$ is surjective completing the proof.
+    \end{proof}
+
+    Now we can show that the norm of an integral ideal is completely multiplicative:
+
+    \begin{proposition}\label{prop:ideal_norm_is_multiplicative}
+      Let $K$ be a number field and let $\mf{a}$ and $\mf{b}$ be integral ideals. Then
+      \[
+        \Norm(\mf{a}\mf{b}) = \Norm(\mf{a})\Norm(\mf{b}).
+      \]
+    \end{proposition}
+    \begin{proof}
+      First suppose $\mf{a}$ and $\mf{b}$ are relatively prime. Then the Chinese remainder theorem implies
+      \[
+        \mc{O}_{K}/\mf{a}\mf{b} \cong \mc{O}_{K}/\mf{a} \op \mc{O}_{K}/\mf{b},
+      \]
+      and hence $|\mc{O}_{K}/\mf{a}\mf{b}| = |\mc{O}_{K}/\mf{a}||\mc{O}_{K}/\mf{b}|$ so that $\Norm(\mf{a}\mf{b}) = \Norm(\mf{a})\Norm(\mf{b})$. It now suffices to show $\Norm(\mf{p}^{n}) = \Norm(\mf{p})^{n}$ for all prime integral ideals $\mf{p}$ and $n \ge 0$. We will prove this by induction. The base case is clear so assume that the claim holds for $n-1$. By the third isomorphism theorem, we have
+      \[
+        \mc{O}_{K}/\mf{p}^{n-1} \cong (\mc{O}_{K}/\mf{p}^{n})/(\mf{p}^{n-1}/\mf{p}^{n}).
+      \]
+      Using \cref{prop:isomorphism_of_quotient_by_prime_integral_ideals}, it follows that
+      \[
+        |\mc{O}_{K}/\mf{p}^{n-1}| = \frac{|\mc{O}_{K}/\mf{p}^{n}|}{|\mf{p}^{n-1}/\mf{p}^{n}|} = \frac{|\mc{O}_{K}/\mf{p}^{n}|}{|\mc{O}_{K}/\mf{p}|}.
+      \]
+      Thus $\Norm(\mf{p}^{n}) = \Norm(\mf{p}^{n-1})\Norm(\mf{p})$ and our induction hypothesis implies $\Norm(\mf{p}^{n}) = \Norm(\mf{p})^{n}$ as desired.
+    \end{proof}
+
+    Note that by \cref{prop:ideal_norm_is_multiplicative}, the norm is a homomorphism from the set of integral ideals into $\Z_{\ge 1}$. As last we can extend the norm to fractional ideals. Let $\mf{f}$ be a fractional ideal. By \cref{cor:fractional_ideal_prime_factorization}, there exist unique integral ideals $\mf{a}$ and $\mf{b}$ such that
+    \[
+      \mf{f} = \mf{a}\mf{b}^{-1}.
+    \]
+    For any fractional ideal $\mf{f}$, we define its \textbf{norm}\index{norm} $\Norm(\mf{f})$ by
+    \[
+      \Norm(\mf{f}) = \frac{\Norm(\mf{a})}{\Norm(\mf{b})}.
+    \]
+    Then we have a homomorphism
+    \[
+      \Norm:I_{K} \to \Q^{\ast} \qquad \mf{f} \mapsto \Norm(\mf{f}).
+    \]
+  \section{Ramification}
+    We now discuss the factorization of prime integral ideals in number fields. First, we need to introduce the concept of prime integral ideals above primes. Let $K$ be a number field and let $\mf{p}$ be a prime integral ideal. Then $\mf{p} \cap \Z$ is a prime integral ideal of $\Q$. Indeed, it is clear that $\mf{p} \cap \Z$ is an integral ideal of $\Q$. It is proper because $1 \notin \mf{p} \cap \Z$ as $\mf{p}$ does not contain units. It is nonzero because $\mc{O}_{K}/\mf{p}$ is a finite field by \cref{prop:prime_integral_ideals_are_maximal} and thus has characteristic dividing $\Norm(\mf{p})$ by definition of the norm so that $\Norm(\mf{p}) \in \mf{p}$. But as $\Norm(\mf{p})$ is also a positive integer, $\Norm(\mf{p}) \in \mf{p} \cap \Z$. To show that $\mf{p} \cap \Z$ is prime, suppose $a$ and $b$ are integers such that $ab \in \mf{p} \cap \Z$. Then $ab \in \mf{p}$ and since $\mf{p}$ is prime either $a \in \mf{p}$ or $b \in \mf{p}$. But then $a \in \mf{p} \cap \Z$ or $b \in \mf{p} \cap \Z$ as desired. We have now shown that $\mf{p} \cap \Z$ is a prime integral ideal of $\Q$. Hence
+    \[
+      \mf{p} \cap \Z = p\Z,
+    \]
+    for some prime integer $p$. Accordingly, we say that $\mf{p}$ is \textbf{above}\index{above} $p$, or equivalently, $p$ is \textbf{below}\index{below} $\mf{p}$. Moreover, if $\mf{p}$ is above $p$, then $\mf{p}$ must be a prime factor of $p\mc{O}_{K}$. Indeed, $p\Z \subseteq \mf{p}$ so that $p\mc{O}_{K} \subseteq \mf{p}$ and then the fact $\mf{p}$ is prime implies that some prime factor of $p\mc{O}_{K}$ is contained in $\mf{p}$. Since prime integral ideals are maximal by \cref{prop:prime_integral_ideals_are_maximal}, this prime factor must be $\mf{p}$ itself. We illustrate these relations by the extension
+
+    \begin{center}
+      \begin{tikzcd}
+        \mf{p} \subset \mc{O}_{K} \subset K \arrow[dash]{d} \\
+        p\Z \subset \Z \subset \Q
+      \end{tikzcd}
+    \end{center}
+
+    Since $\mf{p}$ and $p\Z$ are maximal in $\mc{O}_{K}$ and $\Z$ respectively (by \cref{prop:prime_integral_ideals_are_maximal}), we have the residue fields $\mc{O}_{K}/\mf{p}$ and $\F_{p}$. It turns out that $\mc{O}_{K}/\mf{p}$ is a finite dimensional vector space over $\F_{p}$. To see this, consider the homomorphism
+    \[
+      \phi:\Z \to \mc{O}_{K}/\mf{p} \qquad a \to a \tmod{\mf{p}}.
+    \]
+    Now $\ker\phi = \mf{p} \cap \Z$ and hence $\ker\phi = p\Z$ since $\mf{p}$ is above $p$. By the first isomorphism theorem, $\phi$ induces an injection $\phi:\F_{p} \to \mc{O}_{K}/\mf{p}$. By \cref{prop:residue_of_integral_ideal_is_finite}, $\mc{O}_{K}/\mf{p}$ is finite and thus a finite field containing $\F_{p}$. Necessarily $\mc{O}_{K}/\mf{p}$ is a finite dimensional vector space over $\F_{p}$. Accordingly, we define the \textbf{inertia degree}\index{inertia degree} $f_{\mf{p}}$ of $\mf{p}$ by
+    \[
+      f_{\mf{p}} = [\mc{O}_{K}/\mf{p}:\F_{p}].
+    \]
+    That is, $f_{\mf{p}}$ is the dimension of the residue field $\mc{O}_{K}/\mf{p}$ as a vector space over $\F_{p}$. Then we have
+    \[
+      \Norm(\mf{p}) = |\mc{O}_{K}/\mf{p}| = |\F_{p}|^{f_{\mf{p}}} = p^{f_{\mf{p}}}.
+    \]
+    As we have already noted, $\mf{p}$ is a prime factor of $p\mc{O}_{K}$. The \textbf{ramification index}\index{ramification index} $e_{\mf{p}}$ of $\mf{p}$ is the positive integer such that $p\mc{O}_{K}\mf{p}^{-e_{\mf{p}}}$ is relatively prime to $\mf{p}$. If $p\mc{O}_{K}$ has prime factors $\mf{p}_{1},\ldots,\mf{p}_{r}$, then the prime factorization of $p\mc{O}_{K}$ is
+    \[
+      p\mc{O}_{K} = \mf{p}_{1}^{e_{\mf{p}_{1}}} \cdots \mf{p}_{r}^{e_{\mf{p}_{r}}}.
+    \]
+    We say that $p$ is \textbf{ramified}\index{ramified} if $e_{\mf{p}_{i}} \ge 2$ for some $i$ and \textbf{unramified}\index{unramified} otherwise. In particular,
+    \[
+      p\mc{O}_{K} = \mf{p}_{1} \cdots \mf{p}_{r},
+    \]
+    if and only if $p$ is unramified. We also say $p$ is \textbf{split}\index{split} if $p\mc{O}_{K}$ is not prime. The degree of a number field is connected to the inertia degree and ramification index via the following proposition:
+
+    \begin{proposition}\label{prop:inertia_ramification_relation}
+      Let $K$ be a number field of degree $n$ and let $p$ be a prime. Suppose $p\mc{O}_{K}$ has prime factorization
+      \[
+        p\mc{O}_{K} = \mf{p}_{1}^{e_{\mf{p}_{1}}} \cdots \mf{p}_{r}^{e_{\mf{p}_{r}}}.
+      \]
+      Then
+      \[
+        n = \sum_{1 \le i \le r}e_{\mf{p}_{i}}f_{\mf{p}_{i}}.
+      \]
+    \end{proposition}
+    \begin{proof}
+      Since $p$ is an integer and $K$ is of degree $n$, on the one hand
+      \[
+        \Norm(p\mc{O}_{K}) = \Norm(p) = p^{n}.
+      \]
+      On the other hand, complete multiplicativity of the norm by \cref{prop:ideal_norm_is_multiplicative} implies
+      \[
+        \Norm(p\mc{O}_{K}) = \Norm(\mf{p}_{1})^{e_{\mf{p}_{1}}} \cdots \Norm(\mf{p}_{r})^{e_{\mf{p}_{r}}} = p^{e_{\mf{p}_{1}}f_{\mf{p}_{1}}} \cdots p^{e_{\mf{p}_{r}}f_{\mf{p}_{r}}}.
+      \]
+      Thus
+      \[
+        p^{n} = p^{e_{\mf{p}_{1}}f_{\mf{p}_{1}}} \cdots p^{e_{\mf{p}_{r}}f_{\mf{p}_{r}}},
+      \]
+      and the claim follows upon comparing exponents.
+    \end{proof}
+
+    We now describe some special cases of how $p\mc{O}_{K}$ may factor. If $r = n$, we say $p$ is \textbf{totally split}\index{totally split} and so $e_{\mf{p}} = f_{\mf{p}} = 1$ for all $\mf{p}$ above $p$ by \cref{prop:inertia_ramification_relation}. Equivalently, $p$ is totally split if and only if the number of prime integral ideal above $p$ is equal to the degree of $K$. If $r = 1$, then there is exactly one prime integral ideal $\mf{p}$ above $p$ and so
+    \[
+      p\mc{O}_{K} = \mf{p}^{e_{\mf{p}}}.
+    \]
+    If $e_{\mf{p}} = 1$, so that $p$ does not ramify, we say $p$ is \textbf{inert}\index{inert} and so $f_{\mf{p}} = n$ by \cref{prop:inertia_ramification_relation}. Thus $p$ is inert if and only if $p\mc{O}_{K}$ is prime. If $e_{\mf{p}} \ge 2$, then $p$ ramifies and we say $p$ is \textbf{totally ramified}\index{totally ramified} if $e_{\mf{p}} = n$ so that $f_{\mf{p}} = 1$ by \cref{prop:inertia_ramification_relation}. Equivalently, $p$ is totally ramified if and only if it is the power of a prime integral ideal with power equal to the degree of $K$. The ramification of primes is intimately connected to the discriminant of a number field as the following theorem shows:
+
+    \begin{theorem}\label{thm:ramification_division_equivalence}
+      Let $K$ be a number field. Then $p$ is ramified if and only if $p$ divides $|\D_{K}|$.
+    \end{theorem}
+    \begin{proof}
+      Let $p$ be a prime and suppose $p\mc{O}_{K}$ has prime factorization
+      \[
+        p\mc{O}_{K} = \mf{p}_{1}^{e_{\mf{p}_{1}}} \cdots \mf{p}_{r}^{e_{\mf{p}_{r}}},
+      \]
+      Now let $\{\a_{1},\ldots,\a_{n}\}$ be an integral basis for $K$ and let $\conj{\a} \in \mc{O}_{K}/p\mc{O}_{K}$ denote the reduction of $\a \in \mc{O}_{K}$ modulo $p$. Then $\{\conj{\a_{1}},\ldots,\conj{\a_{n}}\}$ is a basis for $\mc{O}_{K}/p\mc{O}_{K}$ as a vector space over $\F_{p}$. Moreover, the matrix for $T_{\conj{\a}}$ is obtained from $T_{\a}$ by reducing the coefficients modulo $p$. These two facts together give
+      \[
+        \D_{K} = \disc_{K/\Q}(\a_{1},\ldots,\a_{n}) \equiv \disc_{(\mc{O}_{K}/p\Z)/\F_{p}}(\conj{\a_{1}},\ldots,\conj{\a_{n}}) \pmod{p}.
+      \]
+      Recall that $\disc_{(\mc{O}_{K}/p\Z)/\F_{p}}(\conj{\a_{1}},\ldots,\conj{\a_{n}})$ is an element of $\F_{p}$. Then as $\disc_{\F_{p}}(\mc{O}_{K}/p\mc{O}_{K})$ is equivalent to $\disc_{(\mc{O}_{K}/p\Z)/\F_{p}}(\conj{\a_{1}},\ldots,\conj{\a_{n}})$ up to elements of $(\F_{p}^{\ast})^{2}$, it must be the case that $p$ divides $|\D_{K}|$ if and only if $\disc_{\F_{p}}(\mc{O}_{K}/p\mc{O}_{K}) = 0$. By the Chinese remainder theorem,
+      \[
+        \mc{O}_{K}/p\mc{O}_{K} \cong \bigop_{1 \le i \le r}\mc{O}_{K}/\mf{p}_{i}^{e_{i}},
+      \]
+      and so \cref{prop:discriminant_and_direct_sums} further implies
+      \[
+         \D_{K} = \prod_{1 \le i \le r}\disc_{\F_{p}}(\mc{O}_{K}/\mf{p}_{i}^{e_{i}}).
+      \]
+      Hence $p$ divides $|\D_{K}|$ if and only if $\disc_{\F_{p}}(\mc{O}_{K}/\mf{p}_{i}^{e_{i}}) = 0$ for some $i$. It is now sufficient to show that $\disc_{\F_{p}}(\mc{O}_{K}/\mf{p}^{e}) = 0$ for any prime integral ideal $\mf{p}$ above $p$ if and only if $e \ge 2$. First suppose $e \ge 2$. We will prove $\disc_{\F_{p}}(\mc{O}_{K}/\mf{p}^{e}) = 0$. By the uniqueness of the factorization of integral ideals, there exists a nonzero $\a_{1} \in \mf{p}^{e-1}-\mf{p}^{e}$. Then $\a_{1}^{2} \in \mf{p}^{2(e-1)} \subseteq \mf{p}^{e}$ because $e \ge 2$. By construction, $\conj{\a_{1}} \in \mc{O}_{K}/\mf{p}^{e}$ is nonzero and such that $\conj{\a_{1}}^{2} = 0$. Since $\mc{O}_{K}/\mf{p}^{e}$ is an $n$ dimensional vector space over $\F_{p}$, there exists a basis of the form $\{\conj{\a_{1}},\ldots,\conj{\a_{m}}\}$. Now
+      \[
+        \Trace_{(\mc{O}_{K}/\mf{p}^{e})/\F_{p}}(\conj{\a_{1}}\conj{\a_{j}}) = 0,
+      \]
+      for $1 \le j \le n$ because $T_{\conj{\a_{1}}\conj{\a_{i}}}^{2}$ is the zero operator (as $\conj{\a_{1}}^{2} = 0$) and hence all of its eigenvalues are zero. But then the first row of $(\Trace_{(\mc{O}_{K}/\mf{p}^{e})/\F_{p}}(\conj{\a_{i}}\conj{\a_{j}}))_{i,j}$ is zero and hence $\disc_{\F_{p}}(\mc{O}_{K}/\mf{p}^{e}) = 0$. Now suppose $e = 1$. We will prove $\disc_{\F_{p}}(\mc{O}_{K}/\mf{p}) \neq 0$. Recall that $\mc{O}_{K}/\mf{p}$ is a field and a vector space over $\F_{p}$ of dimension $f_{\mf{p}}$. Thus $(\mc{O}_{K}/\mf{p})/\F_{p}$ it is a finite separable extension. Hence $\disc_{\F_{p}}(\mc{O}_{K}/\mf{p})$ is nonzero by \cref{prop:discriminant_not_zero}. We have now shown that $\disc_{\F_{p}}(\mc{O}_{K}/\mf{p}^{e}) = 0$ if and only if $e \ge 2$ which completes the proof.
+    \end{proof}
+
+    As an immediate corollary, we see that only finitely many primes can ramify:
+
+    \begin{corollary}
+      Let $K$ be a number field. Then finitely many primes ramify in $K$.
+    \end{corollary}
+    \begin{proof}
+      There are only finitely many prime divisors of $|\D_{K}|$. Hence finitely many primes ramify by \cref{thm:ramification_division_equivalence}. 
+    \end{proof}
+
+    There is no general way to see how a prime $p$ factors for an arbitrary number field $K$. However, in the case that the ring of integers is monogenic we can describe the factorization explicitly via the \textbf{Dedekind-Kummer theorem}\index{Dedekind-Kummer theorem}:
+
+    \begin{theorem}[Dedekind-Kummer theorem]
+      Let $K$ be a monogenic number field where $\mc{O}_{K} = \Z[\a]$ for $\a \in \mc{O}_{K}$ and let $p$ be a prime. Let $m_{\a}(x)$ be the minimal polynomial for $\a$ and let $\conj{m_{\a}}(x)$ be its reduction modulo $p$. Also let
+      \[
+        \conj{m_{\a}}(x) = \conj{m_{r}}(x)^{e_{r}} \cdots \conj{m_{r}}(x)^{e_{r}}
+      \]
+      with $\conj{m_{i}}(x) \in \F_{p}[x]$ and $e_{i} \ge 0$, be the prime factorization of $\conj{m_{\a}}(x)$ in $\F_{p}[x]$. Let $m_{i}(x) \in \Z[x]$ be any lift of $\conj{m_{i}}(x)$ and set
+      \[
+        \mf{p}_{i} = p\mc{O}_{K}+m_{i}(\a)\mc{O}_{K},
+      \]
+      for all $i$. Then $\mf{p}_{i}$ is a prime integral ideal for all $i$ and
+      \[
+        p\mc{O}_{K} = \mf{p}_{1}^{e_{1}} \cdots \mf{p}_{r}^{e_{r}},
+      \]
+      is the prime factorization of $p\mc{O}_{K}$.
+    \end{theorem}
+    \begin{proof}
+      Since $m_{\a}(x)$ is the minimal polynomial for $\a$, we have an isomorphism $\Z[\a] \cong \Z[x]/m_{\a}(x)\Z[x]$ where the inverse isomorphism is given by evaluation at $\a$. Then we have the chain of isomorphism
+      \[
+        \mc{O}_{K}/p\mc{O}_{K} \cong (\Z[x]/m_{\a}(x)\Z[x])/(p(\Z[x]/m_{\a}(x)\Z[x])) \cong \Z[x]/(p\Z[x]+m_{\a}(x)\Z[x]) \cong \F_{p}[x]/\conj{m_{\a}}(x)\F_{p}[x],
+      \]
+      where the second and third isomorphisms follow by taking $\Z[x]/(p\Z[x]+m_{\a}(x)\Z[x])$ and reducing $\Z[x]$ modulo $m_{\a}(x)$ or $p$ respectively. Therefore the inverse isomorphism is given by sending any representative $\conj{f}(x)$ of a class in $\F_{p}[x]/\conj{m_{\a}}(x)\F_{p}[x]$ to a lift $f(x) \in \Z[x]$ and then to $\conj{f(\a)}$ where $\conj{f(\a)}$ is $f(\a)$ modulo $p\mc{O}_{K}$. Now set $A = \F_{p}[x]/\conj{m_{\a}}(x)\F_{p}[x]$. Then the Chinese remainder theorem gives an isomorphism
+      \[
+        A \cong \bigop_{1 \le i \le r}\F_{p}[x]/\conj{m_{i}}(x)^{e_{i}}\F_{p}[x].
+      \]
+      As $\conj{m_{i}}(x)$ is irreducible, $\conj{m_{i}}(x)\F_{p}[x]$ is maximal and hence $\F_{p}[x]/\conj{m_{i}}(x)\F_{p}[x]$ is a field. By the third isomorphism theorem, $\conj{m_{i}}(x)\F_{p}[x]/\conj{m_{i}}(x)^{e_{i}}\F_{p}[x]$ is a maximal ideal of $\F_{p}[x]/\conj{m_{i}}(x)^{e_{i}}\F_{p}[x]$. It follows that the maximal ideals of $A$ are precisely $\conj{m_{i}}(x)A$ and we have an isomorphism
+      \[
+        A/\conj{m_{i}}(x)A \cong \F_{p}[x]/\conj{m_{i}}(x)\F_{p}[x],
+      \]
+      for all $i$. Via the isomorphism $\mc{O}_{K}/p\mc{O}_{K} \cong A$ described above, the maximal ideals of $\mc{O}_{K}/p\mc{O}_{K}$ are exactly $\conj{m_{i}(\a)}(\mc{O}_{K}/p\mc{O}_{K})$. We now show that the $\mf{p}_{i}$ are prime. To see this, consider the surjective homomorphism
+      \[
+        \pi:\mc{O}_{K} \to \mc{O}_{K}/p\mc{O}_{K} \qquad \a \to \a \pmod{p\mc{O}_{K}}.
+      \]
+      Then the image of $\mf{p}_{i}$ under $\pi$ is $\conj{m_{i}(\a)}(\mc{O}_{K}/p\mc{O}_{K})$. As this ideal is maximal and hence prime, the preimage $\mf{p}_{i}$ is prime too. Moreover, the $\mf{p}_{i}$ are all distinct since the $\conj{m_{i}(\a)}\mc{O}_{K}/p\mc{O}_{K}$ are which are all distinct because the $\conj{m_{i}}(x)A$ are (using the isomorphism $\mc{O}_{K}/p\mc{O}_{K} \cong A$). In particular, they are also relatively prime. By construction, $\mf{p}_{i} \subseteq p\mc{O}_{K}$ so that the $\mf{p}_{i}$ are prime factors of $p\mc{O}_{K}$. These are the only prime factors of $p\mc{O}_{K}$ because the image of any prime integral ideal under $\pi$ and contained in $p\mc{O}_{K}$ must be a maximal ideal of $\mc{O}_{K}/p\mc{O}_{K}$, by \cref{prop:prime_integral_ideals_are_maximal} and the fourth isomorphism theorem, and every maximal ideal is one of the $\conj{m_{i}(\a)}(\mc{O}_{K}/p\mc{O}_{K})$. Together, all of this means that $p\mc{O}_{K}$ admits the prime factorization
+      \[
+        p\mc{O}_{K} = \mf{p}_{1}^{e_{\mf{p}_{1}}} \cdots \mf{p}_{r}^{e_{\mf{p}_{r}}},
+      \]
+      for some ramification indices $e_{\mf{p}_{i}}$ for all $i$. We will be done if we can show that the ramification indices satisfy $e_{\mf{p}_{i}} = e_{i}$. To accomplish this, observe that we have an isomorphism
+      \[
+        \mc{O}_{K}/\mf{p}_{i} \cong (\mc{O}_{K}/p\mc{O}_{K})/(\conj{m_{i}(\a)}(\mc{O}_{K}/p\mc{O}_{K})) \cong \F_{p}[x]/\conj{m_{i}}(x)\F_{p}[x],
+      \]
+      where the first isomorphism follow by taking $\mc{O}_{K}/\mf{p}_{i}$ and reducing $\mc{O}_{K}$ modulo $p$ and the second isomorphism follows from $\mc{O}_{K}/p\mc{O}_{K} \cong A$ and that the image of the maximal ideal $\conj{m_{i}(\a)}(\mc{O}_{K}/p\mc{O}_{K})$ under this isomorphisms is $\conj{m_{i}}(x)A$. Now $\F_{p}[x]/\conj{m_{i}}(x)\F_{p}[x]$ is a vector space over $\F_{p}$ (as it contains $\F_{p}$) of degree $\deg(\conj{m_{i}}(x))$. Hence the inertia degree $f_{\mf{p}_{i}}$ of $\mf{p}_{i}$ satisfies $f_{\mf{p}_{i}} = \deg(\conj{m_{i}}(x))$. The ideal $\conj{m_{i}}(x)^{e_{i}}A$ under the isomorphism $A \cong \mc{O}_{K}/p\mc{O}_{K}$ is the ideal $\conj{m_{i}(\a)}^{e_{i}}(\mc{O}_{K}/p\mc{O}_{K})$. As the image of $\mf{p}_{i}$ under $\pi$ is $\conj{m_{i}(\a)}(\mc{O}_{K}/p\mc{O}_{K})$, we have that $\mf{p}_{i}^{e_{i}}$ is contained in the preimage of $\conj{m_{i}(\a)}^{e_{i}}(\mc{O}_{K}/p\mc{O}_{K})$ under $\pi$. As $\conj{m_{\a}(\a)}(\mc{O}_{K}/p\mc{O}_{K}) = 0$ is the zero ideal, it follows that
+      \[
+        p\mc{O}_{K} = \pi^{-1}(0) \supseteq \mf{p}_{1}^{e_{1}} \cdots \mf{p}_{r}^{e_{r}}.
+      \]
+      Since the $\mf{p}_{i}$ are prime, we have $e_{\mf{p}_{i}} \le e_{i}$ for all $i$. By \cref{prop:inertia_ramification_relation} then gives
+      \[
+        n = \sum_{1 \le i \le r}e_{\mf{p}_{i}}f_{\mf{p}_{i}} \le \sum_{1 \le i \le r}e_{i}f_{\mf{p}_{i}} \le \sum_{1 \le i \le r}e_{i}\deg(\conj{m_{i}}(x)) \le n,
+      \]
+      where the last equality follows by the prime factorization of $\conj{m_{\a}}(x)$ and that $\deg(\conj{m_{\a}}(x)) = \deg(m_{\a}(x))$ because $m_{\a}(x)$ is monic. This shows that $e_{\mf{p}_{i}} = e_{i}$ for all $i$ which completes the proof.
+    \end{proof}
+  \section{Lattices}
+    Before we can continue with the study of number fields, we need to make a detour and discuss some geometry of lattices. This is essential because it will provide us with a geometric interpretation for how the ring of integers $\mc{O}_{K}$ sits inside the number field $K$. We say that $\L \subset \R^{n}$ is a \textbf{lattice}\index{lattice} if $\L$ is a free abelian group of rank $n$. In particular, any lattice $\L$ is of the form
+    \[
+      \L = \Z v_{1}+\cdots+\Z v_{n},
+    \]
+    for some basis $\{v_{1},\ldots,v_{n}\}$. Notice that $\L$ acts on $\R^{n}$ by automorphisms given by translation. That is, we have a group action
+    \[
+      \L \x \R^{n} \to \R^{n} \qquad (\l,x) \to \l+x.
+    \]
+    Moreover, $\L$ acts properly discontinuously on $\R^{n}$ (see \cref{append:Fundamental_Domains}). To see this, let $x \in \R^{n}$ and let $\d_{x}$ be such that $0 < \d_{x} < \min_{1 \le i \le n}(x-v_{i})$. Then taking $U_{x}$ to be the ball of radius $\d_{x}$ about $x$, the intersection $\l+U_{x} \cap U_{x}$ is empty unless $\l = 0$. As $\L$ is also discrete, it follows by \cref{prop:quotient_by_discrete_property_discontinuously} that $\R^{n}/\L$ is also connected Hausdorff (recall that $\R^{n}$ is connected Hausdorff). In particular, $\R^{n}/\L$ admits a fundamental domain
+    \[
+      \mc{P} = \{t_{1}v_{1}+\cdots+t_{n}v_{n} \in \R^{n}:\text{$0 \le t_{i} \le 1$ for $1 \le i \le n$}\}.
+    \]
+    Indeed, since $\L$ acts by translations, it is obvious that $\mc{P}$ is a fundamental domain for $\R^{n}/\L$. Moreover, any translation of $\mc{P}$ by an element of $\L$ is also a fundamental domain. Recall that the volume $\Vol(X)$ of a measurable subset $X \subseteq \R^{n}$ is defined as
+    \[
+      \Vol(X) = \int_{X}\,dx_{1} \cdots dx_{n}.
+    \]
+    Then we define the \textbf{volume}\index{volume} $V_{\L}$ of $\L$ by
+    \[
+      V_{\L} = \mathrm{Vol}(\mc{P}).
+    \]
+    That is, the volume of $\L$ is the volume of the fundamental domain $\mc{P}$. Since the measures $dx_{i}$ for $1 \le i \le n$ are translation invariant, $V_{\L}$ is independent of the choice of fundamental domain. If $\L$ is given by the basis $\{v_{1},\ldots,v_{n}\}$, we write
+    \[
+      v_{i} = \sum_{1 \le i \le n}v_{i,j}e_{j},
+    \]
+    where the $e_{i}$ are the standard basis vectors, and define the \textbf{generator matrix}\index{generator matrix} $P$ of $\L$ by
+    \[
+      P = \begin{pmatrix} v_{1,1} & \cdots & v_{1,n} \\ \vdots & & \vdots \\ v_{n,1} & \cdots & v_{n,n} \end{pmatrix}.
+    \]
+    The following proposition shows that the volume of $\L$ is essentially given by the determinant of the generator matrix:
+
+    \begin{proposition}\label{prop:lattice_volume_generator_matrix}
+      Let $\L$ be a lattice in $\R^{n}$ and $P$ be its generator matrix. Then
+      \[
+        V_{\L} = |\det(P)|.
+      \]
+    \end{proposition}
+    \begin{proof}
+      Making the change of variables $x_{i} \to t_{i}$ for $1 \le i \le n$ where
+      \[
+        x_{1}e_{1}+\cdots+x_{n}e_{n} = t_{1}v_{1}+\cdots+t_{n}v_{n},
+      \]
+      the corresponding Jacobian matrix is $P$ because this is the base change matrix from the standard basis to the basis $\{v_{1},\ldots,v_{n}\}$. Then
+      \[
+        V_{\L} = \int_{\mc{P}}\,dx_{1} \cdots dx_{n} = |\det(P)|\int_{[0,1]^{n}}\,dt_{1} \cdots dt_{n} = |\det(P)|,
+      \]
+      as claimed.
+    \end{proof}
+
+    The crucial result we require is \textbf{Minkowski's lattice point theorem}\index{Minkowski's lattice point theorem} which states that, under some mild conditions, a set of sufficiently large volume contains a nonzero point of a lattice:
+
+    \begin{theorem}[Minkowski's lattice point theorem]
+      Let $\L$ be a lattice in $\R^{n}$. Suppose $X \subset \R^{n}$ is a compact convex symmetric set. If
+      \[
+        \Vol(X) \ge 2^{n}V_{\L},
+      \]
+      then there exists a nonzero $\l \in L$ with $\l \in X$ 
+    \end{theorem}
+    \begin{proof}
+      We will prove the claim depending on if the inequality is strict or not. First suppose $\Vol(X) > 2^{n}V_{\L}$. Consider the linear map
+      \[
+        \phi:\frac{1}{2}X \to \R^{n}/\L \qquad \frac{1}{2}x \mapsto \frac{1}{2}x \pmod{\L}.
+      \]
+      If $\phi$ were injective, then
+      \[
+        \Vol\left(\frac{1}{2}X\right) = \frac{1}{2^{n}}\Vol(X) \le V_{\L}, 
+      \]
+      so that $\Vol(X) \le  2^{n}V_{\L}$. This is a contradiction, so $\phi$ cannot be injective. Hence there exists distinct $x_{1},x_{2} \in \frac{1}{2}X$ such that $\phi(x_{1}) = \phi(x_{2})$. Thus $2x_{1},2x_{2} \in X$. In particular, since $X$ is symmetric we must have $-2x_{2} \in X$. But then the fact that $X$ is convex implies that
+      \[
+        \left(1-\frac{1}{2}\right)2x_{1}+\frac{1}{2}(-2x_{2}) = x_{1}-x_{2} \in X.
+      \]
+      Note that $x_{1}-x_{2} \in \L$ because $\phi(x_{1}) = \phi(x_{2})$ and $\phi$ is linear. Then $\l = x_{1}-x_{2}$ is a nonzero element of $\L$ with $\l \in X$. Now suppose $\Vol(X) = 2^{n}V_{\L}$. Then for any $\e > 0$, we have
+      \[
+        \Vol((1+\e)X) = (1+\e)^{n}\Vol(X) = (1+\e)^{n}2^{n}V_{\L} > 2^{n}V_{\L}.
+      \]
+      So what we have just proved shows that there exists a nonzero $\l_{\e} \in \L$ with $\l_{\e} \in (1+\e)X$. In particular, if $\e \le 1$ then $\l_{\e} \in 2X \cap \L$. The set $2X \cap \L$ is compact and discrete, because $X$ is compact and $\L$ is discrete, and therefore is finite. But as this holds for all $\e \le 1$, the sequence $(\l_{\frac{1}{n}})_{n \ge 1}$ belongs to the finite set $2X \cap \L$ and so must converge to a point $\l$. Since $\L$ is discrete and the $\l_{\frac{1}{n}}$ are nonzero so too is $\l$. As
+      \[
+        \l \in \bigcap_{n \ge 1}\left(1+\frac{1}{n}\right)X,
+      \]
+      and $X$ is closed, $\l \in X$ as well. Thus we have found a nonzero $\l \in L$ with $\l \in X$ and we are done.
+    \end{proof}
+
+    We will now work in the setting of number fields. Let $K$ be number field of degree $n$ and let $\s_{1},\ldots,\s_{n}$ be the $n$ distinct $\Q$-embeddings of $K$ into $\conj{\Q}$. In particular, these embeddings are $\Q$-embeddings of $K$ into $\C$. Let $r_{1}$ and $2r_{2}$ be the number of real and complex embeddings respectively (the complex embeddings occur in pairs of two because if $\s$ is a complex embedding then so is its conjugate $\conj{\s}$). We call the pair $(r_{1},r_{2})$ the \textbf{signature}\index{signature} of $K$. In particular,
+    \[
+      n = r_{1}+2r_{2}.
+    \]
+    Choose one representative for each pair of complex embeddings and fix and ordering of $r_{1}+r_{2}$ distinct $\Q$-embedding where $\s_{1},\ldots,\s_{r_{1}+r_{2}}$ is such that $\s_{1},\ldots,\s_{r_{1}}$ are the real embeddings and $\s_{r_{1}+1},\ldots,\s_{r_{2}}$ are the representative complex embeddings. We define the \textbf{canonical embedding}\index{canonical embedding} $\s$ of $K$ with resect to $\s_{1},\ldots,\s_{r_{1}+r_{2}}$ by
+    \[
+      \s:K \to \R^{n} \qquad \k \to (\s_{1}(\k),\ldots,\s_{r_{1}}(\k),\Re(\s_{r_{1}+1}(\k)),\Im(\s_{r_{1}+1}(\k)),\ldots,\Re(\s_{r_{1}+r_{2}}(\k)),\Im(\s_{r_{1}+r_{2}}(\k))).
+    \]
+    Since $\mc{O}_{K}$ is a free abelian group of rank $n$ by \cref{thm:ring_of_integers_finitely_generated}, so is $\s(\mc{O}_{K})$. Moreover, as $\mc{O}_{K}$ admits an integral basis for $K$, we see that $\s(\mc{O}_{K})$ contains a basis of $\R^{n}$. It follows that $\s(\mc{O}_{K})$ is a lattice in $\R^{n}$. Actually, this holds for any fractional ideal $\mf{f}$. As $\mf{f}$ is a free abelian group of rank $n$, so is $\s(\mf{f})$. Letting $\a \in \mf{f}$ be nonzero, $\a\mc{O}_{K} \subseteq \mf{f}$ and hence $\mf{f}$ contains a basis for $K$ since $\mc{O}_{K}$ admits an integral basis. Therefore $\s(\mf{f})$ contains a basis for $\R^{n}$ and hence $\s(\mf{f})$ is a lattice in $\R^{n}$. We now determine the volume of $\s(\mf{f})$ for any fractional ideal $\mf{f}$: 
+    
+    \begin{proposition}\label{prop:volume_of_fractional_ideal_under_canonical_embedding}
+      Let $K$ be a number field with signature $(r_{1},r_{2})$ and canonical embedding $\s$. Then
+      \[
+        V_{\s(\mc{O}_{K})} = \frac{\sqrt{|\D_{K}|}}{2^{r_{2}}}.
+      \]
+      Moreover, for any fractional ideal $\mf{f}$ we have
+      \[
+        V_{\s(\mf{f})} = \Norm(\mf{f})\frac{\sqrt{|\D_{K}|}}{2^{r_{2}}}.
+      \]
+    \end{proposition}
+    \begin{proof}
+      Let $\mf{f}$ be a fractional ideal with basis $\{\k_{1},\ldots,\k_{n}\}$. Then the generator matrix $P$ for $\s(\mf{f})$ is
+      \[
+        P = \begin{pmatrix} \s_{1}(\k_{1}) & \cdots & \s_{r_{1}}(\k_{1}) & \Re(\s_{r_{1}+1}(\k_{1})) & \Im(\s_{r_{1}+1}(\k_{1})) & \cdots & \Re(\s_{r_{1}+r_{2}}(\k_{1})) & \Im(\s_{r_{1}+r_{2}}(\k_{1})) \\ \vdots & & \vdots & \vdots & \vdots & & \vdots & \vdots \\ \s_{1}(\k_{n}) & \cdots & \s_{r_{1}}(\k_{n}) & \Re(\s_{r_{1}+1}(\k_{n})) & \Im(\s_{r_{1}+1}(\k_{n})) & \cdots & \Re(\s_{r_{1}+r_{2}}(\k_{n})) & \Im(\s_{r_{1}+r_{2}}(\k_{n})) \end{pmatrix}^{t}.
+      \]
+      To compute this determinant, first add an $i$ multiple of the imaginary columns to their corresponding real columns and then apply the identity $\Im(z) = \frac{z-\conj{z}}{2i}$ to the imaginary columns to obtain
+      \[
+        P' = \begin{pmatrix} \s_{1}(\k_{1}) & \cdots & \s_{r_{1}}(\k_{1}) & \s_{r_{1}+1}(\k_{1}) & \frac{\s_{r_{1}+1}(\k_{1})-\conj{\s_{r_{1}+1}(\k_{1})}}{2i} & \cdots & \s_{r_{1}+r_{2}}(\k_{1}) & \frac{\s_{r_{1}+r_{2}}(\k_{1})-\conj{\s_{r_{1}+r_{2}}(\k_{1})}}{2i} \\ \vdots & & \vdots & \vdots & \vdots & & \vdots & \vdots \\ \s_{1}(\k_{n}) & \cdots & \s_{r_{1}}(\k_{n}) & \s_{r_{1}+1}(\k_{n}) & \frac{\s_{r_{1}+1}(\k_{n})-\conj{\s_{r_{1}+1}(\k_{n})}}{2i} & \cdots & \s_{r_{1}+r_{2}}(\k_{n}) & \frac{\s_{r_{1}+r_{2}}(\k_{n})-\conj{\s_{r_{1}+r_{2}}(\k_{n})}}{2i} \end{pmatrix}^{t}.
+      \]
+      Since $P'$ differs from $P$ by column addition, their determinants are the same. Now multiply the imaginary columns of $P'$ by $-2i$ and then adding the corresponding columns to annihilate the negative terms, we get
+      \[
+        P'' = \begin{pmatrix} \s_{1}(\k_{1}) & \cdots & \s_{r_{1}}(\k_{1}) & \s_{r_{1}+1}(\k_{1}) &\conj{\s_{r_{1}+1}(\k_{1})} & \cdots & \s_{r_{1}+r_{2}}(\k_{1}) & \conj{\s_{r_{1}+r_{2}}(\k_{1})} \\ \vdots & & \vdots & \vdots & \vdots & & \vdots & \vdots \\ \s_{1}(\k_{n}) & \cdots & \s_{r_{1}}(\k_{n}) & \s_{r_{1}+1}(\k_{n}) & \conj{\s_{r_{1}+1}(\k_{n})} & \cdots & \s_{r_{1}+r_{2}}(\k_{n}) & \conj{\s_{r_{1}+r_{2}}(\k_{n})} \end{pmatrix}^{t}.
+      \]
+      As $P''$ differs from $P'$ by column addition and column scaling of which there were $r_{2}$ many of factor $-2i$, the determinant of $P''$ is $(-2i)^{-r_{2}}$ that of $P'$. Altogether,
+      \[
+        |\det(P)| = |\det(P')| = |(-2i)^{-r_{2}}\det(P'')| = 2^{-r_{2}}|\det(P'')|.
+      \]
+      Since the complex embeddings occur in conjugate pairs and $\{\k_{1},\ldots,\k_{n}\}$ is also a basis for $K$, we see that $P'' = M(\k_{1},\ldots,\k_{n})$ is the embedding matrix of the basis. Then \cref{prop:lattice_volume_generator_matrix} gives
+      \[
+        V_{\mf{f}} = \frac{|M(\k_{1},\ldots,\k_{n})|}{2^{r_{2}}}.
+      \]
+      In the case of $\mc{O}_{K}$ and an integral basis $\{\a_{1},\ldots,\a_{n}\}$, we get
+      \[
+        V_{\s(\mc{O}_{K})} = \frac{\sqrt{|\D_{K}}|}{2^{r_{2}}},
+      \]
+      which proves the first statement. It now suffices to show that
+      \[
+        M(\k_{1},\ldots,\k_{n}) = \Norm(\mf{f})M(\a_{1},\ldots,\a_{n}).
+      \]
+      Since the $\s_{i}$ are embeddings, this will follow if the absolute value of the determinant of the base change matrix from $\{\a_{1},\ldots,\a_{n}\}$ to $\{\k_{1},\ldots,\k_{n}\}$ is $\Norm(\mf{f})$. To see this, recall that since $\mf{f}$ is fractional there exists a nonzero $\d \in \mc{O}_{K}$ and an integral ideal $\mf{a}$ such that
+      \[
+        \mf{f} = \frac{1}{\d}\mf{a}.
+      \]
+      Then $\{\d\k_{1},\ldots,\d\k_{n}\}$ is a basis for $\mf{a}$. Now write
+      \[
+        \d\k_{i} = \sum_{1 \le i \le n}a_{i,j}\a_{j},
+      \]
+      with $a_{i,j} \in \Z$ for $1 \le i,j \le n$. Then $(a_{i,j})_{i,j}$ is the base change matrix from $\{\a_{1},\ldots,\a_{n}\}$ to $\{\d\k_{1},\ldots,\d\k_{n}\}$. By \cref{prop:residue_of_integral_ideal_is_finite}, it follows that $\Norm(\mf{a}) = \Norm(\mf{f})|\Norm(\mf{\d})|$ is the absolute value of determinant of $(a_{i,j})_{i,j}$. By \cref{prop:residue_of_integral_ideal_is_finite} again, the absolute value of the determinant of the base change matrix from $\{\k_{1},\ldots,\k_{n}\}$ to $\{\d\k_{1},\ldots,\d\k_{n}\}$ is $|\Norm(\d)|$. Combining these two facts, $\Norm(\mf{f})$ is the absolute value of determinant of the base change matrix from $\{\a_{1},\ldots,\a_{n}\}$ to $\{\k_{1},\ldots,\k_{n}\}$ completing the proof.
+    \end{proof}
+  \section{The Ideal Class Group}
+    Let $K$ be a number field. Recall that the ideal group $I_{K}$ is the group of fractional ideals of $K$. We let $P_{K}$ denote the subgroup of $I_{K}$ of principal ideals $\a\mc{O}_{K}$ for nonzero $\a \in K$. Since $I_{K}$ is abelian, $P_{K}$ is normal. The \textbf{ideal class group}\index{ideal class group} $\Cl(K)$ of $K$ is defined to be the quotient group
+    \[
+      \Cl(K) = I_{K}/P_{K},
+    \]
+    of fractional ideals modulo principal ideals. We call an element of $\Cl(K)$ an \textbf{ideal class}\index{ideal class} of $K$. The \textbf{class number}\index{class number} $h_{K}$ of $K$ is defined by
+    \[
+      h_{K} = |\Cl(K)|.
+    \]
+    That is, the class number is the size of the ideal class group. The class number is a measure of how much the ring of integers $\mc{O}_{K}$ fails to be a principal ideal domain. Indeed, if $\mc{O}_{K}$ is a principal ideal domain then every integral ideal is principal and hence every fractional ideal is too (because every fractional ideal $\mf{f}$ is of the form $\frac{1}{\a}\mf{a}$ for some integral ideal $\mf{a}$ and nonzero $\a \in \mc{O}_{K}$). But then $\Cl(K)$ is the trivial group an hence $h_{K} = 1$. Conversely, if $h_{K} = 1$ then every fractional ideal is principal and hence every integral ideal is too so that $\mc{O}_{K}$ is a principal ideal domain. In short, $\mc{O}_{K}$ is a principal ideal domain if and only if $h_{K} = 1$. Our primary goal is to show that the class number is finite:
+
+    \begin{theorem}\label{equ:finitness_of_class_number}
+      Let $K$ be a number field of degree $n$ and signature $(r_{1},r_{2})$. Let $X \subseteq \R^{n}$ be a compact convex symmetric set and set $M = \max_{x \in X}\left(\prod_{1 \le i \le n}|x_{i}|\right)$ where $x = (x_{1},\ldots,x_{n})$. Then every ideal class contains an integral ideal $\mf{a}$ satisfying
+      \[
+        \Norm(\mf{a}) \le \frac{2^{r_{1}+r_{2}}M}{\Vol(X)}\sqrt{|\D_{K}|}.
+      \]
+      Moreover, the ideal class group $\Cl(K)$ is finite so that the class number $h_{K}$ is too.
+    \end{theorem}
+    \begin{proof}
+      Let $\mf{f}$ be a fractional ideal, and set
+      \[
+        \l^{n} = 2^{n}\frac{V_{\s(\mf{f}^{-1})}}{\Vol(X)}.
+      \]
+      Then by construction,
+      \[
+        \Vol(\l X) = \l^{n}\Vol(X) = 2^{n}V_{\s(\mf{f}^{-1})}.
+      \]
+      By Minkowski's lattice point theorem, there exists a nonzero $\a \in \mf{f}^{-1}$ such that $\s(\a) \in \s(\mf{f}^{-1})$ and $\s(\a) \in \l X$. Since $\a \in \mf{f}^{-1}$, $\a\mf{f} \subseteq \mc{O}_{K}$ so that $\a\mf{f}$ is an integral ideal in the same ideal class as $\mf{f}$. Now let $\s_{1},\ldots,\s_{n}$ be the $n$ distinct $\Q$-embeddings of $K$ into $\conj{K}$. Since the norm is completely multiplicative by \cref{prop:ideal_norm_is_multiplicative}, we have
+      \[
+        \Norm(\a\mf{f}) = |\Norm(\a)|\Norm(\mf{f}) = \left|\prod_{1 \le i \le n}\s_{i}(\a)\right|\Norm(\mf{f}) \le \l^{n}M\Norm(\mf{f}),
+      \]
+      where in the first equality we have applied \cref{prop:residue_of_integral_ideal_is_finite}, in the second we have used \cref{prop:formulas_for_trace_and_norm}, and the inequality follows since $\s(\a) \in \l X$. This inequality, our choice of $\l^{n}$, and \cref{prop:volume_of_fractional_ideal_under_canonical_embedding} together give
+      \[
+        \Norm(\a\mf{f}) \le \l^{n}M\Norm(\mf{f}) = 2^{n}MN(\mf{f})\frac{V_{\s(\mf{f}^{-1})}}{\Vol(X)} = 2^{n}M\frac{\sqrt{|\D_{K}|}}{2^{r_{2}}\Vol(X)} = \frac{2^{r_{1}+r_{2}}M}{\Vol(X)}\sqrt{|\D_{K}|},
+      \]
+      which proves the first statement since the fractional ideal $\mf{f}$ was arbitrary. We now prove that the class group is finite. By what we have just proved, we can find a complete set of representatives of $\Cl(K)$ consisting of integral ideals of bounded norm. Since the norm is multiplicative by \cref{prop:ideal_norm_is_multiplicative}, the prime factors of these representatives have bounded norm as well. As we have seen, the norm of a prime integral ideal is exactly the prime $p$ below it. Thus the norms of these prime factors are bounded primes $p$. As there are finitely many prime integral ideals above any prime $p$ (because $p\mc{O}_{K}$ factors into a product of prime integral ideals and these are exactly the prime integral ideals above $p$), it follows that these representatives have finitely many prime factors. Altogether this means that there are finitely many representatives. Hence $\Cl(K)$ is finite and so the class number $h_{K}$ is too.
+    \end{proof}
+
+    We would like to obtain an explicit bound in \cref{equ:finitness_of_class_number} by making a choice for the set $X$. To obtain a bound that is not too large, we need to ensure that the volume of $X$ is large while the constant $M$ is small. The following lemma dictates our choice of $X$ and computes its volume:
+
+    \begin{lemma}\label{lem:Minkowski_bound_lemma}
+      Suppose $n$ is a positive integer and write $n = r_{1}+2r_{2}$ for some nonnegative integers $r_{1}$ and $r_{2}$. Let $X \subset \R^{n}$ to be the compact convex symmetric set given by
+      \[
+        X = \left\{x \in \R^{n}:\sum_{1 \le i \le r_{1}}|x_{i}|+2\sum_{\substack{1 \le j \le r_{2} \\ j \equiv 1 \tmod{2}}}\sqrt{x_{r_{1}+j}^{2}+x_{r_{1}+j+1}^{2}} \le n\right\}.
+      \]
+      Then
+      \[
+        \Vol(X) = \frac{n^{n}}{n!}2^{r_{1}}\left(\frac{\pi}{2}\right)^{r_{2}}.
+      \]
+    \end{lemma}
+    \begin{proof}
+      Making the change of variables $x_{r_{1}+j} \to u_{j}\sin(\t_{j})$ and $x_{r_{1}+j+1} \to u_{j}\cos(\t_{j})$ for all $j$ gives
+      \[
+        \Vol(X) = \int_{X'}u_{1} \cdots u_{r_{2}}\,dx_{1} \cdots dx_{r_{1}}\,du_{1}\t_{1} \cdots du_{r_{2}}\t_{r_{2}},
+      \]
+      where $X'$ is the region
+      \[
+        X' = \left\{(x_{1},\ldots,x_{r_{1}},u_{1},\t_{1},\ldots,u_{r_{2}},\t_{r_{2}}):\sum_{1 \le i \le r_{1}}|x_{i}|+2\sum_{1 \le j \le r_{2}}u_{j} \le n\right\}.
+      \]
+      Since the integrand is independent of the $\t_{j}$, we have
+      \[
+        \Vol(X) = (2\pi)^{r_{2}}\int_{X'}u_{1} \cdots u_{r_{2}}\,dx_{1} \cdots dx_{r_{1}}\,du_{1} \cdots du_{r_{2}}.
+      \]
+      Making the change of variables $u_{j} \to \frac{u_{j}}{2}$ for all $j$ and using the fact that the integrand is symmetric in the $x_{i}$ for all $i$ gives
+      \begin{equation}\label{equ:Minkowski_bound_lemma_1}
+        \Vol(X) = 2^{r_{1}}\left(\frac{\pi}{2}\right)^{r_{2}}\int_{X''}u_{1} \cdots u_{r_{2}}\,dx_{1} \cdots dx_{r_{1}}\,du_{1} \cdots du_{r_{2}},
+      \end{equation}
+      where $X''$ is the region
+      \[
+        X'' = \left\{(x_{1},\ldots,x_{r_{1}},u_{1},\ldots,u_{r_{2}}):\sum_{1 \le i \le r_{1}}x_{i}+\sum_{1 \le j \le r_{2}}u_{j} \le n\right\}.
+      \]
+      To compute the remaining integral, for nonnegative integers $\ell$ and $k$ and $t \ge 0$, we let
+      \[
+        X''_{\ell,k}(t) = \left\{(x_{1},\ldots,x_{\ell},u_{1},\ldots,u_{k}):\sum_{1 \le i \le \ell}x_{i}+\sum_{1 \le j \le k}u_{j} \le t\right\},
+      \]
+      and set 
+      \[
+        I_{\ell,k}(t) = \int_{X''_{\ell,k}(t)}u_{1} \cdots u_{\ell}\,dx_{1} \cdots dx_{n}\,du_{1} \cdots du_{k}.
+      \]
+      Then we have to compute $I_{r_{1},r_{2}}(n)$. To this end, the change of variables $x_{i} \to tx_{i}$ and $u_{j} \to tu_{j}$ for all $i$ and $j$ gives
+      \begin{equation}\label{equ:Minkowski_bound_lemma_2}
+        I_{\ell,k}(t) = t^{\ell+2k}I_{\ell,k}(1).
+      \end{equation}
+      Now note that the condition
+      \[
+        \sum_{1 \le i \le \ell}x_{i}+\sum_{1 \le j \le k}u_{j} \le t,
+      \]
+      is equivalent to
+      \[
+        \sum_{1 \le i \le \ell-1}x_{i}+\sum_{1 \le j \le k}u_{j} \le t-x_{i}.
+      \]
+      This fact together with the dominated convergence theorem and \cref{equ:Minkowski_bound_lemma_2} gives
+      \[
+        I_{\ell,k}(1) = \int_{0}^{1}I_{\ell-1,k}(1-x_{\ell})\,dx_{\ell} = \int_{0}^{1}(1-x_{\ell})^{\ell-1+2k}I_{\ell-1,k}(1)\,dx_{\ell} = \frac{1}{\ell+2k}I_{\ell-1,k}(1).
+      \]
+      Repeating this procedure $\ell-1$ times results in
+      \begin{equation}\label{equ:Minkowski_bound_lemma_3}
+        I_{\ell,k}(1) = \frac{1}{(\ell+2k) \cdots (2k+1)}I_{0,k}(1).
+      \end{equation}
+      Similarly, the condition
+      \[
+        \sum_{1 \le j \le k}u_{j} \le t,
+      \]
+      is equivalent to
+      \[
+        \sum_{1 \le j \le k-1}u_{j} \le t-u_{k}.
+      \]
+      This fact together with the dominated convergence theorem, \cref{equ:Minkowski_bound_lemma_2}, and \cref{prop:integral_reprepsentation_for_beta_function} gives
+      \[
+        I_{0,k}(1) = \int_{0}^{1}u_{k}I_{0,k-1}(1-u_{k})\,du_{k} = \int_{0}^{1}u_{k}(1-u_{k})^{2k-2}I_{0,k-1}(1)\,du_{k} = B(1,2k-1)I_{0,k-1}(1) = \frac{1}{2k}I_{0,k-1}(1).
+      \]
+      Repeating this procedure $k-1$ times results in
+      \begin{equation}\label{equ:Minkowski_bound_lemma_4}
+        I_{0,k}(1) = \frac{1}{k!},
+      \end{equation}
+      since $I_{0,0}(1) = 1$. Combining \cref{equ:Minkowski_bound_lemma_2,equ:Minkowski_bound_lemma_3,equ:Minkowski_bound_lemma_4} we find that
+      \[
+        I_{\ell,k}(t) = t^{\ell+2k}\frac{1}{(\ell+2k)!}.
+      \]
+      In particular, $I_{r_{1},r_{2}}(n) = \frac{n^{n}}{n!}$ and from \cref{equ:Minkowski_bound_lemma_1} we obtain
+      \[
+        \Vol(X) = \frac{n^{n}}{n!}2^{r_{1}}\left(\frac{\pi}{2}\right)^{r_{2}},
+      \]
+      as desired.
+    \end{proof}
+
+    We can now obtain an explicit bound in \cref{equ:finitness_of_class_number} known as the \textbf{Minkowski bound}\index{Minkowski bound}:
+
+    \begin{theorem}[Minkowski bound]
+      Let $K$ be a number field of degree $n$ and signature $(r_{1},r_{2})$. Then every ideal class contains an integral ideal $\mf{a}$ satisfying
+      \[
+        \Norm(\mf{a}) \le \left(\frac{4}{\pi}\right)^{r_{2}}\frac{n!}{n^{n}}\sqrt{|\D_{K}|}.
+      \]
+    \end{theorem}
+    \begin{proof}
+      Choose $X$ in \cref{equ:finitness_of_class_number} to be
+      \[
+        X = \left\{x \in \R^{n}:\sum_{1 \le i \le r_{1}}|x_{i}|+2\sum_{\substack{1 \le j \le r_{2} \\ j \equiv 1 \tmod{2}}}\sqrt{x_{r_{1}+j}^{2}+x_{r_{1}+j+1}^{2}} \le n\right\},
+      \]
+      where $x = (x_{1},\ldots,x_{n})$. Then \cref{lem:Minkowski_bound_lemma} gives
+      \[
+        \Norm(\mf{a}) \le M\left(\frac{4}{\pi}\right)^{r_{2}}\frac{n!}{n^{n}}\sqrt{|\D_{K}|},
+      \]
+      where $M = \max_{x \in X}\left(\prod_{1 \le \ell \le n}|x_{\ell}|\right)$. But for all $x \in X$, the arithmetic geometric inequality gives
+      \[
+        \left(\prod_{1 \le \ell \le n}|x_{\ell}|\right)^{\frac{1}{n}} \le \frac{1}{n}\sum_{1 \le \ell \le n}|x_{\ell}| \le 1,
+      \]
+      where the second inequality holds by the definition of $X$. Hence $M \le 1$ and this completes the proof.
+    \end{proof}
+
+    As a corollary we can obtain a lower bound for the discriminant of a number field and show that every number field other than $\Q$ has a ramified prime:
+
+    \begin{corollary}
+      Let $K$ be a number field of degree $n$. Then
+      \[
+        |\D_{K}| \ge \left(\frac{\pi}{4}\right)^{\frac{n}{2}}\frac{n^{n}}{n!}.
+      \]
+      In particular, every number field of degree at least $2$ contains at least one ramified prime.
+    \end{corollary}
+    \begin{proof}
+      Since the norm of every integral ideal is at least $1$, $\pi < 4$, and $r_{2}$ is at most $n$, the desired inequality follows immediately from Minkowski's bound. Now suppose $n \ge 2$. In the case $n = 2$, the lower bound is larger than $1$ so that $|\D_{K}|$ is at least $2$ for every quadratic number field. As $n^{n} \ge n!$ for all $n \ge 1$ (which easily follows by induction), $\left(\frac{\pi}{4}\right)^{\frac{n}{2}}\frac{n^{n}}{n!}$ is an increasing function in $n$. Therefore $|\D_{K}| \ge 2$ for all $n \ge 2$ so that $|\D_{K}|$ has a prime divisor. Then \cref{thm:ramification_division_equivalence} implies that at least one prime is ramified in $K$.
+    \end{proof}
+  \section{Quadratic Number Fields}
+    We will now classify and discuss the structure of quadratic number fields. We first show that quadratic number fields are exactly those where we adjoint the square-root of a fundamental discriminant:
+
+    \begin{proposition}\label{prop:classification_of_quadratic_number_fields}
+      Every quadratic number field $K$ is of the form $K = \Q(\sqrt{d})$ for some square-free integer $d$ other than $0$ or $1$.
+    \end{proposition}
+    \begin{proof}
+      Suppose $K$ is a quadratic number field. In particular, $K/\Q$ is separable so by the primitive element theorem there exists $\t \in K$ such that $K = \Q(\t)$. The minimal polynomial $m_{\t}(x)$ of $\t$ is of the form
+      \[
+        m_{\t}(x) = x^{2}+ax+b,
+      \]
+      for $a,b \in \Q$. Then the quadratic formula gives
+      \[
+        \t = -\frac{a}{2}\pm\frac{\sqrt{q}}{2},
+      \]
+      where $q = a^{2}-4b \in \Q$. Clearly $q \neq 0$ and $q \neq 1$ for otherwise $\t \in \Q$. It follows that $K = \Q(\sqrt{q})$. Write $q = \frac{n}{m}$ for relatively prime $n,m \in \Z$ and set $d = m^{2}q = nm \in \Z$. Then $d$ is square-free, $d \neq 0$, and $d \neq 1$. Moreover, $\sqrt{d} = m\sqrt{q}$ so that $K = \Q(\sqrt{d})$. 
+    \end{proof}
+
+    From \cref{prop:classification_of_quadratic_number_fields}, we see that the $d$ for a quadratic number field $\Q(\sqrt{d})$ satisfies $d \equiv 1,2,3 \tmod{4}$ (otherwise $d$ is not square-free). Moreover, any element of a quadratic number field is of the form $a+b\sqrt{d}$ with $a,b \in \Q$ and for some square-free $d$ other than $0$ or $1$. We say that a quadratic number field $\Q(\sqrt{d})$ is \textbf{real}\index{real} if $d > 0$ and \textbf{imaginary}\index{imaginary} if $d < 0$. Now $\Q(\sqrt{d})$ is real or imaginary according to if $\sqrt{d}$ is real or purely imaginary so that the two $\Q$-embeddings $\s_{1}$ and $\s_{2}$ of $\Q(\sqrt{d})$ into $\C$ are
+    \[
+      \s_{1}(a+b\sqrt{d}) = a+b\sqrt{d} \quad \text{and} \quad \s_{2}(a+b\sqrt{d}) = a-b\sqrt{d},
+    \]
+    because the roots of the minimal polynomial for $\sqrt{d}$ are $\pm\sqrt{d}$. In particular, the signature is $(2,0)$ or $(0,1)$ according to if $\Q(\sqrt{d})$ is real or imaginary. In either case, \cref{prop:formulas_for_trace_and_norm} shows that the norm and trace of $\k = a+b\sqrt{d} \in \Q(\sqrt{d})$ are given by
+    \[
+      \Trace(\k) = 2a \quad \text{and} \quad \Norm(\k) = a^{2}-b^{2}d.
+    \]
+    We will now begin describing the ring of integers, discriminant, and the factorization of primes in $\Q(\sqrt{d})$. For simplicity, we write $\mc{O}_{d} = \mc{O}_{\Q(\sqrt{d})}$ and $\D_{d} = \D_{\Q(\sqrt{d})}$. The ring of integers has a particularly simple description since it is monogenic as the following proposition shows:
+    
+    \begin{proposition}\label{prop:ring_of_integers_quadratic}
+      Let $\Q(\sqrt{d})$ be a quadratic number field. Then $\Q(\sqrt{d})$ is monogenic and
+      \[
+        \mc{O}_{d} = \begin{cases} \Z\left[\frac{1+\sqrt{d}}{2}\right] & \text{if $d \equiv 1 \tmod{4}$}, \\ \Z[\sqrt{d}] & \text{if $d \equiv 2,3 \tmod{4}$}. \end{cases}
+      \]
+    \end{proposition}
+    \begin{proof}
+      Let $\a = a+b\sqrt{d} \in \Q(\sqrt{d})$ be an algebraic integer. If $b = 0$, then $\a \in \Q$ and since the only elements of $\Q$ that are algebraic integers are the integers themselves we must have that $\a$ is an integer. Now suppose $b \neq 0$. Then the minimal polynomial of $\a$ is
+      \[
+        m_{\a}(x) = x^{2}+2ax+(a^{2}-b^{2}d) = (x-(a+b\sqrt{d}))(x-(a-b\sqrt{d})).
+      \]
+      As $\a$ is an algebraic integer, $2a \in \Z$ and $a^{2}-b^{2}d \in \Z$ (note that these are the trace and norm of $\a$ respectively). In particular, $(2a)^{2}+(2b)^{2}d \in \Z$ and hence $(2b)^{2} \in \Z$ is as well. But as $b \in \Q$, it must be the case that $2b \in \Z$. If $2a = n+1$ is odd then $n$ is even. We compute
+      \[
+        a^{2}-b^{2}d = \left(\frac{n+1}{2}\right)^{2}-b^{2}d = \frac{n^{2}+2n+1+4b^{2}d}{4},
+      \]
+      and since the right-hand side must be an integer $b \notin \Z$. For if $b \in \Z$, the numerator of the right-hand side is equivalent to $1$ modulo $4$ because $n$ is even. As $2b \in \Z$ it follows that $2b$ must be odd so set $2b = m+1$ with $m$ even. Again, we compute
+      \[
+        a^{2}-b^{2}d = \left(\frac{n+1}{2}\right)^{2}-\left(\frac{m+1}{2}\right)^{2}d = \frac{n^{2}+2n+1-d(m^{2}+2m+1)}{4},
+      \]
+      and since the right-hand side must be an integer the numerator must be divisible by $4$. As $n$ and $m$ are even, this is equivalent to $d \equiv 1 \tmod{4}$. So we have shown $2a$ or $2b$ is odd if and only if $d \equiv 1 \tmod{4}$. Thus if $d \equiv 1 \tmod{4}$, we have $a = \frac{a'}{2}$ and $b = \frac{b'}{2}$ for some $a',b' \in \Z$ and hence $\a \in \Z\left[\frac{1+\sqrt{d}}{2}\right]$. Otherwise, $d \equiv 2,3 \tmod{4}$ (because $d$ is square-free) so that $2a$ and $2b$ are both even, $a,b \in \Z$, and therefore $\a \in \Z[\sqrt{d}]$. We have now shown that $\mc{O}_{d} \subseteq \Z\left[\frac{1+\sqrt{d}}{2}\right]$ and $\mc{O}_{d} \subseteq \Z[\sqrt{d}]$ according to if $d \equiv 1 \tmod{4}$ or $d \equiv 2,3 \tmod{4}$ respectively. For the reverse containment, just note that $\sqrt{d}$ is an algebraic integer since its minimal polynomial $m_{\sqrt{d}}(x)$ is
+      \[
+        m_{\sqrt{d}}(x) = x^{2}\pm d,
+      \]
+      according to if $d < 0$ or $d > 0$. The reverse containment now follows by \cref{prop:algebraic_integer_if_finitely_generated} and that all integers are algebraic integers.
+    \end{proof}
+
+    It follows from \cref{prop:ring_of_integers_quadratic} that
+    \[
+      \left\{1,\frac{1+\sqrt{d}}{2}\right\} \quad \text{and} \quad \{1,\sqrt{d}\},
+    \]
+    are integral bases for $\mc{O}_{d}$ according to if $d \equiv 1 \tmod{4}$ or $d \equiv 2,3 \tmod{4}$ respectively. Let us now show that the discriminants quadratic number fields are exactly the fundamental discriminants $D$ other than $1$:
+
+    \begin{proposition}\label{prop:discriminant_quadratic}
+      Let $\Q(\sqrt{d})$ be a quadratic number field. Then
+      \[
+        \D_{d} = \begin{cases} d & \text{if $d \equiv 1 \tmod{4}$}, \\ 4d & \text{if $d \equiv 2,3 \tmod{4}$}. \end{cases}
+      \]
+      In particular, the discriminants quadratic number fields are exactly the fundamental discriminants other than $1$.
+    \end{proposition}
+    \begin{proof}
+      Let $\s_{1}$ and $\s_{2}$ be the two $\Q$-embeddings of $\Q(\sqrt{d})$ into $\C$ where $\s_{1}$ is the identity and $\s_{2}$ is given by sending $\sqrt{d}$ to its conjugate. If $d \equiv 1 \tmod{4}$, an integral basis for $\mc{O}_{d}$ is $\left\{1,\frac{1+\sqrt{d}}{2}\right\}$. In this case, the embedding matrix is
+      \[
+        M\left(1,\frac{1+\sqrt{d}}{2}\right) = \begin{pmatrix} 1 & \frac{1+\sqrt{d}}{2} \\ 1 & \frac{1-\sqrt{d}}{2} \end{pmatrix},
+      \]
+      and thus $\D_{d} = d$. If $d \equiv 2,3 \tmod{4}$, an integral basis for $\mc{O}_{d}$ is $\left\{1,\sqrt{d}\right\}$. In this case, the embedding matrix is
+      \[
+        M(1,\sqrt{d}) = \begin{pmatrix} 1 & \sqrt{d} \\ 1 & -\sqrt{d} \end{pmatrix},
+      \]
+      and hence $\D_{d} = 4d$. This proves the first statement and the second statement is clear since $d$ is square-free and not $0$ or $1$.
+    \end{proof}
+
+    We will now discuss the factorization of a prime $p$ in a quadratic number field $\Q(\sqrt{d})$. Since $\Q(\sqrt{d})$ is a degree $2$ extension, \cref{prop:inertia_ramification_relation} implies that $p$ is ramified if and only if it is totally ramified and if $p$ is split but not ramified then it is totally split. In other words, there are three possible cases for how $p\mc{O}_{d}$ factors:
+    \[
+      p\mc{O}_{d} = \mf{p}, \quad p\mc{O}_{d} = \mf{p}^{2}, \quad \text{and} \quad p\mc{O}_{d} = \mf{p}\mf{q},
+    \]
+    according to if $p$ is inert, totally ramified, or totally split. Since $\Q(\sqrt{d})$ is monogenic by \cref{prop:ring_of_integers_quadratic}, we can describe the factorization using the Dedekind-Kummer theorem and connect it to the quadratic character $\chi_{\D_{d}}$ given by the fundamental discriminant $\D_{d}$:
+
+    \begin{proposition}\label{prop:factorization_of_primes_quadratic}
+      Let $\Q(\sqrt{d})$ be a quadratic number field and let $\chi_{\D_{d}}$ be the quadratic character given by the fundamental discriminant $\D_{d}$. Then for any prime $p$, we have
+      \[
+        \chi_{\D_{d}}(p) = \begin{cases} 1 & \text{if $p$ is split}, \\ -1 & \text{if $p$ is inert}, \\ 0 & \text{if $p$ is ramified}. \end{cases}
+      \]
+    \end{proposition}
+    \begin{proof}
+      By \cref{thm:ramification_division_equivalence}, $p$ is ramified if and only if $p$ divides $|\D_{d}|$ but this is exactly when $\chi_{\D_{d}}(p) = 0$. Therefore it suffices to prove the cases when $p$ is split and inert. First suppose $d \equiv 1 \tmod{4}$ so that $\mc{O}_{d} = \Z\left[\frac{1+\sqrt{d}}{2}\right]$ and $\D_{d} = d$ by \cref{prop:ring_of_integers_quadratic,prop:discriminant_quadratic}. The minimal polynomial $m_{\frac{1+\sqrt{d}}{2}}(x)$ for $\frac{1+\sqrt{d}}{2}$ is
+      \[
+        m_{\frac{1+\sqrt{d}}{2}}(x) = x^{2}-x+\frac{1-d}{4},
+      \]
+      where $\frac{1-d}{4} \in \Z$ because $d \equiv 1 \tmod{4}$. The reduction of $m_{\frac{1+\sqrt{d}}{2}}(x)$ modulo $p$ is either irreducible, factors into two distinct linear factors, or is a square, and Dedekind-Kummer theorem implies that this is equivalent to $p$ being inert, split, or ramified accordingly because the prime factorization is unique. First suppose $p \neq 2$. Then from the quadratic formula, $m_{\frac{1+\sqrt{d}}{2}}(x)$ reduces modulo $p$ as
+      \[
+        m_{\frac{1+\sqrt{d}}{2}}(x) \equiv \left(x-\frac{1+\sqrt{d}}{2}\right)\left(x-\frac{1-\sqrt{d}}{2}\right) \pmod{p},
+      \]
+      if and only if the roots $\frac{1\pm\sqrt{d}}{2}$ are elements of $\F_{p}$ and is otherwise irreducible. As $p \neq 2$, these factors are distinct. Moreover, $\frac{1\pm\sqrt{d}}{2}$ is an element of $\F_{p}$ if and only if $d$ is a square modulo $p$ and hence $p$ is split or inert according to if $\chi_{d}(p) = \pm1$. Now suppose $p = 2$. Since $m_{\frac{1+\sqrt{d}}{2}}(x)$ has a nonzero linear term with an odd coefficient, it reduces modulo $2$ as
+      \[
+        m_{\frac{1+\sqrt{d}}{2}}(x) \equiv x(x-1) \tmod{2},
+      \]
+      if and only if $\frac{1-d}{4} \equiv 0 \tmod{2}$ and is otherwise irreducible. Clearly these factors are distinct. Now observe $\frac{1-d}{4} \equiv 0 \tmod{2}$ is equivalent to $d \equiv 1 \tmod{8}$ provided $d > 0$ and $d \equiv 7 \tmod{8}$ provided $d < 0$ and thus $p$ is split or inert according to if $\chi_{d}(2) = \pm1$. This completes the argument in the case $d \equiv 1 \tmod{4}$. Now suppose $d \equiv 2,3 \tmod{4}$ so that $\mc{O}_{d} = \Z[\sqrt{d}]$ and $\D_{d} = 4d$ by \cref{prop:ring_of_integers_quadratic,prop:discriminant_quadratic}. The minimal polynomial $m_{\sqrt{d}}(x)$ for $\sqrt{d}$ is
+      \[
+        m_{\sqrt{d}}(x) = x^{2}-d.
+      \]
+      As $\D_{d} = 4d$, we see that $2$ is ramified and therefore we may assume $p \neq 2$. Similarly, the reduction of $m_{\sqrt{d}}(x)$ modulo $p$ is either irreducible, factors into two distinct linear factors, or is a square, and Dedekind-Kummer theorem implies that this is equivalent to $p$ being inert, split, or ramified accordingly because the prime factorization is unique. As $p \neq 2$, the quadratic formula implies that $m_{\sqrt{d}}(x)$ reduces modulo $p$ as
+      \[
+        m_{\sqrt{d}}(x) \equiv (x-\sqrt{d})(x+\sqrt{d}) \pmod{p},
+      \]
+      if and only if the roots $\pm\sqrt{d}$ are elements of $\F_{p}$. As $p \neq 2$, these factors are distinct. Moreover, $\sqrt{d}$ is an element of $\F_{p}$ if and only if $d$ and hence $4d$ are squares modulo $p$ so that $p$ is split or inert according to if $\chi_{4d}(p) = \pm1$. This completes the verification in the case $d \equiv 2,3 \tmod{4}$.
+    \end{proof}
+
+    From \cref{prop:factorization_of_primes_quadratic}, we see that the factorization of primes in $\Q(\sqrt{d})$ is controlled by the quadratic character $\chi_{\D_{d}}$ attached to the fundamental discriminant $\D_{d}$. In other words, the factorization of $p$ depends completely upon if $\D_{d}$ is a square modulo $p$.

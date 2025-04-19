@@ -1,0 +1,204 @@
+\chapter{The Katz-Sarnak Philosophy}
+  The Katz-Sarnak philosophy is an idea that certain statistics about families of $L$-functions should match statistics for random matrices coming from some particular compact matrix group. One starts with some class of zeros to look at, say zeros of an individual $L$-function high up the critical strip or zeros of for some collection of $L$-functions low down on the critical strip. Actually, one works with the corresponding unfolded nontrivial zeros since they are evenly spaced on average. Then some class of test functions are introduced to carry out the statistical calculations in order to reveal the similarity with some class of matrices. In the following, we give a loose introduction to the Katz-Sarnak philosophy.
+  \section{The Work of Montgomery \& Dyson}
+    The beginning of the connection between random matrix theory and number theory was at Princeton in the 1970s via discussions between Montgomery and Dyson. They found similarities between statistical information about the nontrivial distribution of the zeros of the Riemann zeta function and calculations in random matrix theory about unitary matrices. To do this, they considered the unfolded nontrivial zeros $\rho_{\text{unf}} = \b+i\w$ of $\z(s)$ with positive ordinate, that is $\w > 0$, and indexed them according to the size of ordinate. So let $\W = (\w_{n})_{n \ge 1}$ denote the increasing sequence of positive ordinates of the unfolded nontrivial zeros of $\z(s)$. Montgomery and Dyson considered the \textbf{two-point correlation function}\index{two-point correlation function} $F(\a,\b;\z,W)$ for $\z(s)$, defined by
+    \[
+      F(\a,\b;\z,W) = \frac{1}{W}|\{(\w_{n},\w_{m}) \in \W^{2}:\text{$\w_{n},\w_{m} \le W$ and $\w_{n}-\w_{m} \in [\a,\b]$}\}|,
+    \]
+    for any real $\a$ and $\b$ with $\a < \b$ and $W > 0$. What this function measures is the probability of how close pairs of zeros tend to be with respect to some fixed distance and up to some fixed height. In other words, the correlation between distances of zeros. They wanted to understand if the limiting distribution
+    \[
+      F(\a,\b;\z) = \lim_{W \to \infty}F(\a,\b;\z,W),
+    \]
+    exists and what can be said about it. The following conjecture made by Montgomery, known as Montgomery's pair correlation conjecture, answers this:
+
+    \begin{conjecture}[Montgomery's pair correlation conjecture]
+      For any $\a$ and $\b$ with $\a < \b$, $F(\a,\b;\z)$ exists provided the Riemann hypothesis for the Riemann zeta function holds. Moreover,
+      \[
+        F(\a,\b;\z) = \int_{\a}^{\b}\left(1-\left(\frac{\sin(\pi x)}{\pi x}\right)^{2}+\d(x)\right)\,dx,
+      \]
+      where $\d(x)$ is the Dirac delta function.
+    \end{conjecture}      
+
+    Montgomery's pair correlation conjecture still remains out of reach, but there is very good numerical evidence supporting it from some unpublished work of Odlyzko (see \cite{odlyzko19921020}). Dyson recognized that Montgomery's pair correlation conjecture models a similar situation in random matrix theory that he had investigated earlier. Consider an $N \x N$ unitary matrix $A \in U(N)$ with eigenphases $\t_{n}$ for $1 \le n \le N$ denoted in increasing order. Clearly the average density of the eigenphases of $A$ in $[0,2\pi)$ is $\frac{N}{2\pi}$. For any eigenphase $\t$, let $\phi$ be the \textbf{unfolded eigenphase}\index{unfolded eigenphase} corresponding to $\t$ be defined by
+    \[ 
+      \phi = \frac{N}{2\pi}\t.
+    \]
+    It follows that the average density of the unfolded eigenphases of $A$ in $[0,N)$ is $1$. Let $\Phi = (\phi_{n})_{1 \le n \le N}$ denote the increasing sequence of unfolded eigenphases of $A$. We consider the \textbf{two-point correlation function}\index{two-point correlation function} $F(\a,\b;A,U(N))$ for $A$, defined by
+    \[
+      F(\a,\b;A,U(N)) = \frac{1}{N}|\{(\phi_{n},\phi_{m}) \in \Phi^{2}:\phi_{n}-\phi_{m} \in [\a,\b]\}|,
+    \]
+    for any real $\a$ and $\b$ with $\a < \b$. Since $U(N)$ has a Haar measure $dA$, we can compute the global distribution of $F(\a,\b;A,U(N))$ over $U(N)$, namely $F(\a,\b;U(N))$, defined by
+    \[
+      F(\a,\b;U(N)) = \int_{U(N)}F(\a,\b;A,U(N))\,dA.
+    \]
+    Analogously, we want to understand if the limiting distribution
+    \[
+      F(\a,\b;U) = \lim_{N \to \infty}F(\a,\b;U(N)),
+    \]
+    exists and what can be said about it. Dyson showed the following (see \cite{dyson1962statistical} for a proof):
+
+    \begin{proposition}\label{prop:Dyson_unitary_distribution}
+      For any real $\a$ and $\b$ with $\a < \b$, $F(\a,\b;U)$ exists. Moreover,
+      \[
+        F(\a,\b;U) = \int_{\a}^{\b}\left(1-\left(\frac{\sin(\pi x)}{\pi x}\right)^{2}+\d(x)\right)\,dx,
+      \]
+      where $\d(x)$ is the Dirac delta function.
+    \end{proposition}
+
+    The right-hand side of \cref{prop:Dyson_unitary_distribution} is exactly the same formula given in Montgomery's pair correlation conjecture. In other words, if Montgomery's pair correlation conjecture is true then the two-point correlation of the unfolded nontrivial zeros of the Riemann zeta function in the limit as we move up the critical line exactly match the two-point correlation of the unfolded eigenphases of unitary matrices in the limit as the size of the matrices increase. In short, statistical information about the Riemann zeta function agrees with statistical information about the eigenvalues of unitary matrices. This is the origin of the Katz-Sarnak philosophy.
+  \section{The Work of Katz \& Sarnak}
+    Katz and Sarnak generalized the work of Montgomery and Dyson by establishing a connection between families of $L$-functions and other compact matrix groups. For the ease of categorization, Katz and Sarnak associated a \textbf{symmetry type}\index{symmetry type} to each compact matrix group that they studied. The underlying compact matrix group associated to each symmetric type is called a \textbf{matrix ensemble}\index{matrix ensemble}. The symmetry types and associated matrix ensembles are described in the following table:
+    \begin{center}
+      \begin{stabular}[1.5]{|c|c|c|}
+        \hline
+        Symmetry Type & Matrix Ensemble \\
+        \hline
+        Unitary ($\mathrm{U}$) & $\U(N)$ \\
+        \hline
+        Orthogonal ($\mathrm{O^{+}}$) & $\SO(2N)$ \\ 
+        \hline
+        Orthogonal ($\mathrm{O^{-}}$) & $\SO(2N+1)$ \\ 
+        \hline
+        Symplectic ($\mathrm{Sp}$) & $\mathrm{USp}(2N)$ \\
+        \hline
+      \end{stabular}
+    \end{center}
+
+    Let $G(N)$ be a matrix ensemble, where $G$ denotes the symmetry type, and let $dA$ denote the Haar measure. For any $A \in G(N)$, let $\Phi = (\phi_{n})_{1 \le n \le N}$ denote the increasing sequence of unfolded eigenphases of $A$. Katz and Sarnak considered two local spacing distributions between the unfolded eigenphases of $A$. The first was the \textbf{two-point correlation function}\index{two-point correlation function} $F(\a,\b;A,G(N))$ for $A$, defined by
+    \[
+      F(\a,\b;A,G(N)) = \frac{1}{N}|\{(\phi_{n},\phi_{m}) \in \Phi^{2}:\phi_{n}-\phi_{m} \in [\a,\b]\}|,
+    \]
+    for any real $\a$ and $\b$ with $\a < \b$. They computed the global distribution of $F(\a,\b;A,G(N))$ over $G(N)$, namely $F(\a,\b;G(N))$, defined by
+    \[
+      F(\a,\b;G(N)) = \int_{G(N)}F(\a,\b;A,G(N))\,dA,
+    \]
+    and sought to understand if the limiting distribution
+    \[
+      F(\a,\b;G) = \lim_{N \to \infty}F(\a,\b;G(N)),
+    \]
+    exists and what can be said about it. Note that in the case $G(N) = U(N)$, this is exactly the two-point correlation function considered by Dyson. Katz and Sarnak succeeded in generalizing Dyson's work (see \cite{katz2023random} for a proof):
+
+    \begin{proposition}\label{prop:Katz_Sarnak_limit_distribution_two_point}
+      For symmetry type $G$ and any real $\a$ and $\b$ with $\a < \b$, $F(\a,\b;G)$ exists. Moreover,
+      \[
+        F(\a,\b;G) = \int_{\a}^{\b}\left(1-\left(\frac{\sin(\pi x)}{\pi x}\right)^{2}+\d(x)\right)\,dx,
+      \]
+      where $\d(x)$ is the Dirac delta function.
+    \end{proposition}
+
+    The second local spacing distribution was the \textbf{$k$-th consecutive spacing function}\index{$k$-th consecutive spacing function} for $A$, defined by
+    \[
+      \mu_{k}(\a,\b;A,G(N)) = \frac{1}{N}|\{1 \le j \le N:\text{$(\phi_{j+k},\phi_{j}) \in \Phi^{2}$ and $\phi_{j+k}-\phi_{j} \in [\a,\b]$}\}|,
+    \]
+    for any real $\a$ and $\b$ with $\a < \b$ and $k \ge 1$. Again, they proceeded to compute the global distribution over $G(N)$, namely $\mu_{k}(\a,\b;G(N))$, defined by
+    \[
+      \mu_{k}(\a,\b;G(N)) = \int_{G(N)}\mu_{k}(\a,\b;A,G(N))\,dA,
+    \]
+    and asked if the limiting distribution
+    \[
+      \mu_{k}(\a,\b;G) = \lim_{N \to \infty}\mu_{k}(\a,\b;G(N)),
+    \]
+    exists and what can be said about it. They were able the show the following (see \cite{katz2023random} for a proof):
+
+    \begin{proposition}\label{prop:Katz_Sarnak_limit_distribution_k_spacing}
+      For any symmetry type $G$ and any real $\a$ and $\b$ with $\a < \b$ and $k \ge 1$, $\mu_{k}(\a,\b;G)$ exists. Moreover, it is independent of the particular symmetry type $G$.
+    \end{proposition}
+
+    In particular, \cref{prop:Katz_Sarnak_limit_distribution_two_point,prop:Katz_Sarnak_limit_distribution_k_spacing} show that the limiting distributions $F(\a,\b;G)$ and $\mu_{k}(\a,\b;G)$ are both independent of the symmetry type $G$. However, this symmetry independence is not true for all limiting distributions. Katz and Sarnak also considered a local and global distributions associated to single eigenphases. The local distribution they considered, associated to a single eigenphase, was the \textbf{one-level density function}\index{one-level density function} $\D(\a,\b;A,G(N))$ for $A$, defined by
+    \[
+      \D(\a,\b;A,G(N)) = |\{\phi \in \Phi:\phi \in [\a,\b]\}|.
+    \]
+    They computed the global distribution, namely $\D(\a,\b;G(N))$, defined by
+    \[
+      \D(\a,\b;G(N)) = \int_{G(N)}\D(\a,\b;A,G(N))\,dA,
+    \]
+    and asked if the limiting distribution
+    \[
+      \D(\a,\b;G) = \lim_{N \to \infty}\D(\a,\b;G(N)),
+    \]
+    exists and what can be said about it. Precisely, they proved the following (see \cite{katz2023random} for a proof):
+
+    \begin{proposition}\label{prop:Katz_Sarnak_limit_distribution_one-level_density}
+      For any symmetry type $G$ and any real $\a$ and $\b$ with $\a < \b$ and $k \ge 1$, $\D(\a,\b;G)$ exists. Moreover, it depends upon the particular symmetry type $G$.
+    \end{proposition}
+    
+    The global distribution they considered, associated to a single eigenphase, was the \textbf{$k$-th eigenphase function}\index{$k$-th eigenphase function} $\nu_{k}(\a,\b,G(N))$ for $G(N)$, defined by
+    \[
+      \nu_{k}(\a,\b;G(N)) = dA\left(\left\{A \in G(N):\phi_{k} \in [\a,\b]\right\}\right),
+    \]
+    for any real $\a$ and $\b$ with $\a < \b$ and $k \ge 1$. Again, they asked if the limiting distribution
+    \[
+      \nu_{k}(\a,\b;G) = \lim_{N \to \infty}\nu_{k}(\a,\b;G(N)),
+    \]
+    exists and what can be said about it. They were able to show the following (see \cite{katz2023random} for a proof):
+
+    \begin{proposition}\label{prop:Katz_Sarnak_limit_distribution_k_eigenphase}
+      For any symmetry type $G$ and any real $\a$ and $\b$ with $\a < \b$ and $k \ge 1$, $\nu_{k}(\a,\b;G)$ exists. Moreover, it depends upon the particular symmetry type $G$.
+    \end{proposition}
+
+    In short, Katz and Sarnak studied four limiting distributions $F(\a,\b;G)$, $\mu_{k}(\a,\b;G)$, $\D(\a,\b;G)$, and $\nu_{k}(\a,\b;G)$. The former two are distributions about collections of eigenphases of unitary matrices and are independent of the symmetry type $G$ while the latter two are distributions about single eigenphases of unitary matrices and depend upon the symmetry type $G$. Analogous distributions can be defined for families of $L$-functions. We say that a collection of $L$-functions $\mc{F} = (L(s_{\a},f_{\a}))_{\a \in I}$, for some infinite indexing set $I \subset \R_{\ge 0}$, is a \textbf{family}\index{family} if it is an ordered set with respect to the analytic conductor and if $\mf{q}(s_{\a},f_{\a}) \to \infty$ as $\a \to \infty$. We say that the family $\mc{F}$ is \textbf{continuous}\index{continuous} if $f_{\a} = f_{\b}$ for all $\a,\b \in I$ and $s_{\a} = \s+it_{\a}$ where $t_{\a}$ is a continuous function of $\a$. Necessarily, $t_{\a} \to \infty$ as $\a \to \infty$ and $I$ is a half-open ray. We say that a family $\mc{F}$ is \textbf{discrete}\index{discrete} if $f_{\a} \neq f_{\b}$ for all distinct $\a,\b \in I$ and $I$ is discrete. Necessarily, $q(f_{\a}) \to \infty$ as $\a \to \infty$ and, reindexing if necessary, $I \subseteq \Z_{\ge 0}$. Katz and Sarnak arrived at a heuristical conjecture known as the \textbf{Katz-Sarnak philosophy}\index{Katz-Sarnak philosophy} in terms of families of $L$-functions:
+
+    \begin{conjecture}[Katz-Sarnak Philosophy]
+      \phantom{ }
+      \begin{enumerate}[label=(\roman*)]
+        \item The statistics about collections of eigenphases of a random matrix belonging to a matrix ensemble of symmetry type $G$, in the limit as the size of the matrix tends to infinity, should model statistics about the nontrivial zeros of a continuous family of $L$-functions as the heights of the nontrivial zeros tends to infinity.
+        \item The statistics about a single eigenphase of a random matrix belonging to a matrix ensemble of symmetry type $G$, in the limit as the size of the matrix tends to infinity, should model statistics about a discrete family of $L$-functions as the size of the conductor tends to infinity.
+      \end{enumerate}
+    \end{conjecture}
+
+    Determining the symmetry type of a family is generally a difficult task. Below are some well-studied families and their symmetry types (see \cite{conrey2005integral} for a determination of the symmetry type):
+    \begin{center}
+      \begin{stabular}[1.5]{|c|c|c|}
+        \hline
+        Symmetry Type & Family \\
+        \hline
+        \multirow{2}{*}{Unitary} & $\{L\left(\s+it,f\right):\text{$L(s,f)$ is of Selberg class}\}$ ordered by $t$ \\& $\{L(s,\chi):\text{$\chi$ is a primitive character modulo $q$}\}$ ordered by $q$ \\
+        \hline
+        \multirow{2}{*}{Orthogonal} & $\{L(s,f):\text{$f \in \mc{S}_{k}(N,\chi)$ is a primitive Hecke newform}\}$ ordered by $k$ \\& $\{L(s,f):\text{$f \in \mc{S}_{k}(N,\chi)$ is a primitive Hecke newform}\}$ ordered by $N$ \\
+        \hline
+        Symplectic & $\{L(s,\chi_{D}):\text{$D$ is a fundamental discriminant}\}$ ordered by $|D|$ \\
+        \hline
+      \end{stabular}
+    \end{center}
+  \section{Characteristic Polynomials of Unitary Matrices}
+    The Katz-Sarnak philosophy conjectures that the statistics about nontrivial zeros of $L$-functions are modeled by the statistics of eigenphases of random unitary matrices. However, there is a striking surface level connection between $L$-functions and the characteristic polynomials of unitary matrices which we now describe. For $A \in U(N)$, let
+    \[
+      L(s,A) = \det(I-sA) = \prod_{1 \le n \le N}(1-se^{i\t_{n}}),
+    \]
+    be the characteristic polynomial of $A$. It will turn out that $L(s,A)$ has strikingly similar properties to an $L$-function. The product expression for $L(s,A)$ is clearly analogous to the Euler product expression for an $L$-function. Upon expanding the product, we obtain
+    \[
+      L(s,A) = \sum_{0 \le n \le N}a_{n}s^{n},
+    \]
+    for some coefficients $a_{n}$. This expression is the analogue to the Dirichlet series representation for an $L$-function. Of course, as $L(s,A)$ is a polynomial it is analytic on $\C$. Moreover, $L(s,A)$ possesses a functional equation of shape $s \to \frac{1}{s}$. To see this, first observe that multiplicativity of the determinant gives
+    \[
+      L(s,A) = (-1)^{N}\det(A)s^{N}\det(I-s^{-1}A^{-1}).
+    \]
+    As $A$ is unitary, $L(s,A^{-1}) = L(s,A^{\ast}) = L(s,\conj{A})$. So the above equation can be expressed as
+    \[
+      L(s,A) = (-1)^{N}\det(A)s^{N}L\left(\frac{1}{s},\conj{A}\right).
+    \]
+    This is the analogue of the functional equation for $L(s,A)$ and it is of shape $s \to \frac{1}{s}$. We identify the analogues of the gamma factor and conductor as $1$ and $N$ respectively. Letting $\L(s,A)$ be defined by
+    \[
+      \L(s,A) = s^{-\frac{N}{2}}L(s,A),
+    \]
+    the functional equation can be expressed as
+    \[
+        \L(s,A) = (-1)^{N}\det(A) \L\left(\frac{1}{s},\conj{A}\right).
+    \]
+    From it, the analogue of root number is seen to be $(-1)^{N}\det(A)$ and $L(s,A)$ has dual $L(s,\conj{A})$. As the transformation $s \to \frac{1}{s}$ leaves the unit circle invariant, the unit circle is the analogue of the critical line. The fixed point of the transformation $s \to \frac{1}{s}$ is $s = 1$ which is the analogue of the central point. Moreover, as the zeros of $L(s,A)$ are precisely the eigenvalues of $A$ which lie on the unit circle, because $A$ is unitary, the analogue of the Riemann hypothesis is true for $L(s,A)$. We also have an analogue of the approximate functional equation. By substituting the polynomial representation of $L(s,A)$ into the functional equation, we obtain
+    \[
+      \sum_{0 \le n \le N}a_{n}s^{n} = (-1)^{N}\det(A)s^{N}\sum_{0 \le n \le N}\conj{a_{n}}s^{-n} = (-1)^{N}\det(A)\sum_{0 \le n \le N}\conj{a_{n}}s^{N-n}.
+    \]
+    Upon comparing coefficients, we find that
+    \[
+      a_{n} = (-1)^{N}\det(A)\conj{a_{N-n}},
+    \]
+    for $0 \le n \le N$. So for odd $N$,
+    \[
+      L(s,A) = \sum_{0 \le n \le \frac{N-1}{2}}a_{n}s^{n}+(-1)^{N}\det(A)s^{N}\sum_{0 \le n \le \frac{N-1}{2}}\conj{a_{n}}s^{-n},
+    \]
+    and for even $N$,
+    \[
+      L(s,A) = a_{\frac{N}{2}}s^{\frac{N}{2}}+\sum_{0 \le n \le \frac{N}{2}-1}a_{n}s^{n}+(-1)^{N}\det(A)s^{N}\sum_{0 \le n \le \frac{N}{2}-1}\conj{a_{n}}s^{-n}.
+    \]
+    These equations together are the analogue of the approximate functional equation. This similarity between $L$-functions and the characteristic polynomials of unitary matrices was heavily exploited by Conrey, Farmer, Keating, Rubinstein, and Snaith to make phenomenal conjectures about the  moments of $L$-functions.
