@@ -690,7 +690,7 @@
     \[
       \Norm(\mf{p}) = |\mc{O}_{K}/\mf{p}| = |\F_{p}|^{f_{\mf{p}}} = p^{f_{\mf{p}}}.
     \]
-    As we have already noted, $\mf{p}$ is a prime factor of $p\mc{O}_{K}$. The \textbf{ramification index}\index{ramification index} $e_{\mf{p}}$ of $\mf{p}$ is the positive integer such that $p\mc{O}_{K}\mf{p}^{-e_{\mf{p}}}$ is relatively prime to $\mf{p}$. If $p\mc{O}_{K}$ has prime factors $\mf{p}_{1},\ldots,\mf{p}_{r}$, then the prime factorization of $p\mc{O}_{K}$ is
+    In particular, the norm of a prime integral ideal is a power of the prime below it. As we have already noted, $\mf{p}$ is a prime factor of $p\mc{O}_{K}$. The \textbf{ramification index}\index{ramification index} $e_{\mf{p}}$ of $\mf{p}$ is the positive integer such that $p\mc{O}_{K}\mf{p}^{-e_{\mf{p}}}$ is relatively prime to $\mf{p}$. If $p\mc{O}_{K}$ has prime factors $\mf{p}_{1},\ldots,\mf{p}_{r}$, then the prime factorization of $p\mc{O}_{K}$ is
     \[
       p\mc{O}_{K} = \mf{p}_{1}^{e_{\mf{p}_{1}}} \cdots \mf{p}_{r}^{e_{\mf{p}_{r}}}.
     \]
@@ -819,6 +819,23 @@
         n = \sum_{1 \le i \le r}e_{\mf{p}_{i}}f_{\mf{p}_{i}} \le \sum_{1 \le i \le r}e_{i}f_{\mf{p}_{i}} \le \sum_{1 \le i \le r}e_{i}\deg(\conj{m_{i}}(x)) \le n,
       \]
       where the last equality follows by the prime factorization of $\conj{m_{\a}}(x)$ and that $\deg(\conj{m_{\a}}(x)) = \deg(m_{\a}(x))$ because $m_{\a}(x)$ is monic. This shows that $e_{\mf{p}_{i}} = e_{i}$ for all $i$ which completes the proof.
+    \end{proof}
+
+    Lastly, we want to show that the number of integral ideals of a given norm is relatively small. Indeed, let $a_{K}(m)$ denote the number of integral ideals of norm $m$. Then we have the following result:
+
+    \begin{proposition}\label{equ:ideals_of_fixed_norm_bound}
+      Let $K$ be a number field of degree $n$. Then $a_{K}(m) \le \s_{0}(m)^{n}$.
+    \end{proposition}
+    \begin{proof}
+      Let $\mf{a}$ be an integral ideal of norm $m$. First suppose $m = p^{k}$ for some prime $p$ and $k \ge 0$. As there are at most $n$ prime integral ideals $\mf{p}_{1},\ldots,\mf{p}_{n}$ above $p$ with inertia degrees $f_{\mf{p}_{1}},\ldots,f_{\mf{p}_{1}}$ respectively, we have
+      \[
+        \Norm(\mf{a}) = p^{e_{1}\mf{f}_{p_{1}}} \cdots p^{e_{n}\mf{f}_{p_{n}}},
+      \]
+      for some integers $0 \le e_{i} \le k$ for $1 \le i \le n$. Therefore the number of possibilities is equivalent to the number of solutions
+      \[
+        e_{1}\mf{f}_{p_{1}}+\cdots+e_{n}\mf{f}_{p_{n}} = k,
+      \]
+      which is at most $\s_{0}(p^{k})^{n} = (k+1)^{n}$. This proves the claim in the case $m$ is a prime power. By multiplicativity of the norm and the divisor function, it follows that the number of integral ideals of norm $m$ is at most $\s_{0}(m)^{n}$ as desired.
     \end{proof}
   \section{Lattices}
     Before we can continue with the study of number fields, we need to make a detour and discuss some geometry of lattices. This is essential because it will provide us with a geometric interpretation for how the ring of integers $\mc{O}_{K}$ sits inside the number field $K$. We say that $\L \subset \R^{n}$ is a \textbf{lattice}\index{lattice} if $\L$ is a free abelian group of rank $n$. In particular, any lattice $\L$ is of the form

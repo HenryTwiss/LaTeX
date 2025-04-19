@@ -1,17 +1,17 @@
 \chapter{Types of \texorpdfstring{$L$}{L}-functions}
   We discuss a variety of $L$-functions: the Riemann zeta function, $L$-functions attached to Dirichlet characters, and Hecke $L$-functions. In the case of Hecke $L$-functions, we also describe a method of Rankin and Selberg for constructing new $L$-functions from old ones.
   \section{The Riemann Zeta Function}
-    \subsection*{The Definition \& Euler Product of \texorpdfstring{$\z(s)$}{\z(s)}}
+    \subsection*{The Definition \& Euler Product}
       The \textbf{Riemann zeta function}\index{Riemann zeta function} $\z(s)$ is defined by the following Dirichlet series:
       \[
         \z(s) = \sum_{n \ge 1}\frac{1}{n^{s}}.
       \]
-      This is the prototypical example of a Dirichlet series as all the coefficients are $1$. We will see that $\z(s)$ is a primitive Selberg class $L$-function. As the coefficients are trivially polynomially bounded, $\z(s)$ is locally absolutely uniformly convergent for $\s > 1$. Also note that $\z(s)$ is necessarily nonzero in this region. Determining the Euler product is also an easy matter. As the coefficients are obviously completely multiplicative, we have the degree $1$ Euler product:
+      This is the prototypical example of a Dirichlet series as all the coefficients are $1$. We will see that $\z(s)$ is a primitive Selberg class $L$-function. As the coefficients are uniformly constant, $\z(s)$ is locally absolutely uniformly convergent for $\s > 1$. Also note that $\z(s)$ is necessarily nonzero in this region. Determining the Euler product is also an easy matter. As the coefficients are obviously completely multiplicative, we have the degree $1$ Euler product:
       \[
         \z(s) = \prod_{p}(1-p^{-s})^{-1},
       \]
       in this region as well. The local factor at $p$ is $\z_{p}(s) = (1-p^{-s})^{-1}$ with local root $1$. As the degree of $\z(s)$ is $1$, it will necessarily be primitive once we show it is Selberg class.
-    \subsection*{The Integral Representation of \texorpdfstring{$\z(s)$}{\z(s)}: Part I}
+    \subsection*{The Integral Representation: Part I}
       We want to find an integral representation for $\z(s)$. To do this, consider the function
       \[
         \w(z) = \sum_{n \ge 1}e^{\pi in^{2}z},
@@ -37,7 +37,7 @@
         \z(s) = \frac{\pi^{\frac{s}{2}}}{\G\left(\frac{s}{2}\right)}\int_{0}^{\infty}\w(iy)y^{\frac{s}{2}}\,\frac{dy}{y}.
       \end{equation}
       Unfortunately, we cannot proceed until we obtain a functional equation for $\w$. So we will make a slight detour and come back to the integral representation after.
-    \subsection*{Jacobi's Theta Function \texorpdfstring{$\vt(z)$}{\vt(z)}}
+    \subsection*{Jacobi's Theta Function}
       \textbf{Jacobi's theta function}\index{Jacobi's theta function} $\vt(z)$ is defined by
       \[
         \vt(z) = \sum_{n \in \Z}e^{2\pi in^{2}z},
@@ -87,7 +87,7 @@
       \end{proof}
 
       We will use this functional equation to analytically continue $\z(s)$.
-    \subsection*{The Integral Representation of \texorpdfstring{$\z(s)$}{\z(s)}: Part II}
+    \subsection*{The Integral Representation: Part II}
       Returning to the Riemann zeta function, we split the integral in \cref{equ:integral_representation_zeta_1} into two pieces
       \begin{equation}\label{equ:symmetric_integral_zeta_split}
         \int_{0}^{\infty}\w(iy)y^{\frac{s}{2}}\,\frac{dy}{y} = \int_{0}^{1}\w(iy)y^{\frac{s}{2}}\,\frac{dy}{y}+\int_{1}^{\infty}\w(iy)y^{\frac{s}{2}}\,\frac{dy}{y}.
@@ -116,7 +116,7 @@
         \z(s) = \frac{\pi^{\frac{s}{2}}}{\G\left(\frac{s}{2}\right)}\left[-\frac{1}{s(1-s)}+\int_{1}^{\infty}\w(iy)y^{\frac{1-s}{2}}\,\frac{dy}{y}+\int_{1}^{\infty}\w(iy)y^{\frac{s}{2}}\,\frac{dy}{y}\right].
       \]
       This integral representation will give analytic continuation. To see this, first observe that everything outside the brackets is entire. Moreover, the two integrals are locally absolutely uniformly convergent on $\C$ by \cref{prop:decay_unbounded_inteval_integral}. The fractional term is holomorphic except for simple poles at $s = 0$ and $s = 1$. The meromorphic continuation to $\C$ follows with possible simple poles at $s = 0$ and $s = 1$. There is no pole at $s = 0$. Indeed, $\g(s,\z)$ has a simple pole coming from the gamma factor there and so its reciprocal has a simple zero. This cancels the corresponding simple pole of $\frac{1}{s(1-s)}$ so that $\z(s)$ has a removable singularity and thus is holomorphic at $s = 0$. At $s = 1$, $\g(s,\z)$ is nonzero, and so $\z(s)$ has a simple pole. Therefore $\z(s)$ has meromorphic continuation to all of $\C$ with a simple pole at $s = 1$. 
-    \subsection*{The Functional Equation, Critical Strip \& Residue of \texorpdfstring{$\z(s)$}{\z(s)}}
+    \subsection*{The Functional Equation}
       An immediate consequence of applying the symmetry $s \to 1-s$ to the integral representation is the following functional equation:
       \[
         \frac{\G\left(\frac{s}{2}\right)}{\pi^{\frac{s}{2}}}\z(s) = \frac{\G\left(\frac{1-s}{2}\right)}{\pi^{\frac{1-s}{2}}}\z(1-s).
@@ -187,7 +187,7 @@
       \]
       because $\Res_{s = 0}\G(s) = 1$. Therefore $\z(0) = -\frac{1}{2}$.
   \section{Dirichlet \texorpdfstring{$L$}{L}-functions}
-    \subsection*{The Definition \& Euler Product of \texorpdfstring{$L(s,\chi)$}{L(s,\chi)}}
+    \subsection*{The Definition \& Euler Product}
       To every Dirichlet character $\chi$ there is an associated $L$-function. Throughout we will let $m$ denote the modulus and $q$ the conductor of $\chi$ respectively. The \textbf{Dirichlet $L$-series}\index{Dirichlet $L$-series} (respectively \textbf{Dirichlet $L$-function}\index{Dirichlet $L$-function} if it is an $L$-function) $L(s,\chi)$ attached to the Dirichlet character $\chi$ is defined by the following Dirichlet series:
       \[
         L(s,\chi) = \sum_{n \ge 1}\frac{\chi(n)}{n^{s}}.
@@ -197,7 +197,7 @@
         L(s,\chi) = \prod_{p}(1-\chi(p)p^{-s})^{-1} = \prod_{p \nmid m}(1-\chi(p)p^{-s})^{-1},
       \]
       in this region as well. The last equality holds because if $p \mid m$ we have $\chi(p) = 0$. So for $p \mid m$, the local factor at $p$ is $L_{p}(s,\chi) = 1$ with local root $0$. For $p \nmid m$ the local factor at $p$ is $L_{p}(s,\chi) = (1-\chi(p)p^{-s})^{-1}$ with local root $\chi(p)$. As the degree of $L(s,\chi)$ is $1$, it will necessarily be primitive once we show it is Selberg class.
-    \subsection*{The Integral Representation of \texorpdfstring{$L(s,\chi)$}{L(s,\chi)}: Part I}
+    \subsection*{The Integral Representation: Part I}
       The integral representation for $L(s,\chi)$ is deduced in a similar way as for $\z(s)$. However, it will depend on if $\chi$ is even or odd. To handle both cases simultaneously let $\mf{a} = 0,1$ according to whether $\chi$ is even or odd. In other words,
       \[
         \mf{a} = \frac{\chi(1)-\chi(-1)}{2}.
@@ -227,7 +227,7 @@
         L(s,\chi) = \frac{\pi^{\frac{s+\mf{a}}{2}}}{\G\left(\frac{s+\mf{a}}{2}\right)}\int_{0}^{\infty}\w_{\chi}(iy)y^{\frac{s+\mf{a}}{2}}\,\frac{dy}{y},
       \end{equation}
       and just as for the Riemann zeta function, we need to find a functional equation for $\w_{\chi}$ before we can proceed.
-    \subsection*{Dirichlet's Theta Function \texorpdfstring{$\vt_{\chi}(z)$}{\vt_{\chi}(z)}}
+    \subsection*{Dirichlet's Theta Function}
       \textbf{Dirichlet's theta function}\index{Dirichlet's theta function} $\vt_{\chi}(z)$ attached to the character $\chi$, is defined by
       \[
         \vt_{\chi}(z) = \sum_{n \in \Z}\chi(n)n^{\mf{a}}e^{2\pi in^{2}z},
@@ -304,7 +304,7 @@
         and the identity theorem finishes the proof.
       \end{proof}
       Notice that the functional equation relates $\vt_{\chi}$ to $\vt_{\cchi}$. Regardless, we will use it to analytically continue $L(s,\chi)$.
-    \subsection*{The Integral Representation of \texorpdfstring{$L(s,\chi)$}{L(s,\chi)}: Part II}
+    \subsection*{The Integral Representation: Part II}
       Returning to $L(s,\chi)$, split the integral in \cref{equ:integral_representation_Dirichlet_L-functions_1} into two pieces
       \begin{equation}\label{equ:symmetric_integral_Dirichlet_L-functions_split}
         \int_{0}^{\infty}\w_{\chi}(iy)y^{\frac{s+\mf{a}}{2}}\,\frac{dy}{y} = \int_{0}^{\frac{1}{q}}\w_{\chi}(iy)y^{\frac{s+\mf{a}}{2}}\,\frac{dy}{y}+\int_{\frac{1}{q}}^{\infty}\w_{\chi}(iy)y^{\frac{s+\mf{a}}{2}}\,\frac{dy}{y}.
@@ -333,7 +333,7 @@
         L(s,\chi) = \frac{\pi^{\frac{s+\mf{a}}{2}}}{\G\left(\frac{s+\mf{a}}{2}\right)}\left[\frac{\e_{\chi}}{i^{\mf{a}}}q^{\frac{1}{2}-s}\int_{\frac{1}{q}}^{\infty}\w_{\cchi}(iy)y^{\frac{(1-s)+\mf{a}}{2}}\,\frac{dy}{y}+\int_{\frac{1}{q}}^{\infty}\w_{\chi}(iy)y^{\frac{s+\mf{a}}{2}}\,\frac{dy}{y}\right].
       \]
       This integral representation will give analytic continuation. Indeed, we know everything outside the brackets is entire. The two integrals are locally absolutely uniformly convergent on $\C$ by \cref{prop:decay_unbounded_inteval_integral}. This gives analytic continuation to all of $\C$. In particular, $L(s,\chi)$ has no poles.
-    \subsection*{The Functional Equation \& Critical Strip of \texorpdfstring{$L(s,\chi)$}{L(s,\chi)}}
+    \subsection*{The Functional Equation}
       An immediate consequence of applying the symmetry $s \to 1-s$ to the integral representation is the following functional equation:
       \[
         q^{\frac{s}{2}}\frac{\G\left(\frac{s+\mf{a}}{2}\right)}{\pi^{\frac{s+\mf{a}}{2}}}L(s,\chi) = \frac{\e_{\chi}}{i^{\mf{a}}}q^{\frac{1-s}{2}}\frac{\G\left(\frac{(1-s)+\mf{a}}{2}\right)}{\pi^{\frac{(1-s)+\mf{a}}{2}}}L(1-s,\cchi).
@@ -374,7 +374,7 @@
           q^{\frac{s}{2}}\pi^{-\frac{s}{2}}\G\left(\frac{s+\mf{a}}{2}\right)L(s,\chi) = \L(s,\chi) = \frac{\e_{\chi}}{i^{\mf{a}}}\L(1-s,\cchi).
         \]
       \end{theorem}
-    \subsection*{Beyond Primitivity of \texorpdfstring{$\chi$}{chi}}
+    \subsection*{Beyond Primitivity}
       We can still obtain meromorphic continuation of the $L$-series $L(s,\chi)$ if $\chi$ is imprimitive. Indeed, if $\chi$ is induced by $\wtilde{\chi}$, then $\chi(p) = \wtilde{\chi}(p)$ if $p \nmid q$ and $\chi(p) = 0$ if $p \mid m$ so that
       \begin{equation}\label{equ:non-primitive_primitive_Dirichlet_L-series_relation}
         L(s,\chi) = \prod_{p \nmid m}(1-\wtilde{\chi}(p)p^{-s})^{-1} = \prod_{p}(1-\wtilde{\chi}(p)p^{-s})^{-1}\prod_{p \mid m}(1-\wtilde{\chi}(p)p^{-s}) = L(s,\wtilde{\chi})\prod_{p \mid m}(1-\wtilde{\chi}(p)p^{-s}).
@@ -388,13 +388,19 @@
         This follows from \cref{thm:zeta_Selberg,thm:primitive_Dirichlet_Selberg,equ:non-primitive_primitive_Dirichlet_L-series_relation}. 
       \end{proof}
   \section{\todo{Dedekind Zeta Functions}}
-    \subsection*{\todo{The Definition \& Euler Product of \texorpdfstring{$\z_{K}(s)$}{\z_K(s)}}}
-    \subsection*{\todo{The Integral Representation of \texorpdfstring{$\z_{K}(s)$}{\z_{K}(s)}: Part I}}
-    \subsection*{\todo{The Number Field Zeta Function \texorpdfstring{$\vt_{K}(z)$}{\vt_{K}(z)}}}
-    \subsection*{\todo{The Integral Representation of \texorpdfstring{$\z_{K}(s)$}{\z_{K}(s)}: Part II}}
-    \subsection*{\todo{The Functional Equation \& Critical Strip of \texorpdfstring{$\z_{K}(s)$}{\z_K(s)}}}
+    \subsection*{\todo{The Definition \& Euler Product}}
+      We can associate and $L$-function to every number field. Let $K$ be a number field of degree $d$ and signature $(r_{1},r_{2})$. The \textbf{Dedekind zeta function}\index{Dedekind zeta function} $\z_{K}(s)$ is defined by the following Dirichlet series
+      \[
+        \z_{K}(s) = \sum_{n \ge 1}\frac{a_{K}(n)}{n^{s}}.
+      \]
+      We will show that $\z_{K}(s)$ is a Selberg class $L$-function. First we show that the coefficients are polynomially bounded. By \cref{equ:ideals_of_fixed_norm_bound}, $a_{K}(n) \le \s_{0}(n)^{d} \ll_{\e} n^{\e}$ (recall \cref{prop:sum_of_divisors_growth_rate}). Therefore $\z_{K}(s)$ is locally absolutely uniformly convergent for $\s > 1$.
+    \subsection*{\todo{The Integral Representation: Part I}}
+    \subsection*{\todo{The Dedekind Theta Function}}
+    \subsection*{\todo{The Integral Representation: Part II}}
+    \subsection*{\todo{The Functional Equation}}
+    \subsection*{\todo{Imprimitivity}}
   \section{Hecke \texorpdfstring{$L$}{L}-functions}
-    \subsection*{The Definition \& Euler Product of \texorpdfstring{$L(s,f)$}{L(s,f)}}
+    \subsection*{The Definition \& Euler Product}
       We will investigate the $L$-functions of holomorphic cusp forms. Let $f \in \mc{S}_{k}(N,\chi)$ and denote its Fourier series by
       \[
         f(z) = \sum_{n \ge 1}a_{f}(n)n^{\frac{k-1}{2}}e^{2\pi inz},
@@ -403,7 +409,7 @@
       \[
         L(s,f) = \sum_{n \ge 1}\frac{a_{f}(n)}{n^{s}}.
       \]
-      We will see that $L(s,f)$ is a Selberg class $L$-function if $f$ is a primitive Hecke eigenform. From now on, we make this assumption about $f$. As we have noted, the Hecke relations and the Ramanujan-Petersson conjecture for holomorphic forms together imply $a_{f}(n) \ll_{\e} n^{\e}$. So $L(s,f)$ is locally absolutely uniformly convergent for $\s > 1+\e$ and hence locally absolutely uniformly convergent for $\s > 1$. The $L$-function will also have an Euler product. Indeed, the Hecke relations imply that the coefficients $a_{f}(n)$ are multiplicative and satisfy
+      We will see that $L(s,f)$ is a Selberg class $L$-function if $f$ is a primitive Hecke eigenform. From now on, we make this assumption about $f$. As we have noted, the Hecke relations and the Ramanujan-Petersson conjecture for holomorphic forms together imply $a_{f}(n) \ll_{\e} n^{\e}$. Therefore $L(s,f)$ is locally absolutely uniformly convergent for $\s > 1$. The $L$-function will also have an Euler product. Indeed, the Hecke relations imply that the coefficients $a_{f}(n)$ are multiplicative and satisfy
       \begin{equation}\label{equ:primitive_Hecke_eigenform_recurrence_for_coefficients_of_holomorphic_L-function}
         a_{f}(p^{n}) = \begin{cases} a_{f}(p^{n-1})a_{f}(p)-\chi(p)a_{f}(p^{n-2}) & \text{if $p \nmid N$}, \\ (a_{f}(p))^{n} & \text{if $p \mid N$}, \end{cases}
       \end{equation}
@@ -446,7 +452,7 @@
       \begin{equation}\label{equ:Hecke_L_function_coefficient_formula}
         a_{f}(p^{n}) = \frac{\a_{1}(p)^{n+1}-\a_{2}(p)^{n+1}}{\a_{1}(p)-\a_{2}(p)}.
       \end{equation}
-    \subsection*{The Integral Representation of \texorpdfstring{$L(s,f)$}{L(s,f)}}
+    \subsection*{The Integral Representation}
       We now want to find an integral representation for $L(s,f)$. Consider the following Mellin transform:
       \[
         \int_{0}^{\infty}f(iy)y^{s+\frac{k-1}{2}}\,\frac{dy}{y}.
@@ -483,7 +489,7 @@
         L(s,f) = \frac{(2\pi)^{s+\frac{k-1}{2}}}{\G\left(s+\frac{k-1}{2}\right)}\left[\w_{N}(f)i^{k}N^{\frac{1}{2}-s}\int_{\frac{1}{\sqrt{N}}}^{\infty}\conj{f}(iy)y^{(1-s)+\frac{k-1}{2}}\,\frac{dy}{y}+\int_{\frac{1}{\sqrt{N}}}^{\infty}f(iy)y^{s+\frac{k-1}{2}}\,\frac{dy}{y}\right].
       \]
       This integral representation will give analytic continuation. To see this, we know everything outside the brackets is entire. The two integrals are locally absolutely uniformly convergent on $\C$ by \cref{prop:decay_unbounded_inteval_integral}. Hence we have analytic continuation to all of $\C$. In particular, we have shown that $L(s,f)$ has no poles.
-    \subsection*{The Functional Equation \& Critical Strip of \texorpdfstring{$L(s,f)$}{L(s,f)}}
+    \subsection*{The Functional Equation}
       An immediate consequence of applying the symmetry $s \to 1-s$ to the integral representation is the following functional equation:
       \[
         N^{\frac{s}{2}}\frac{\G\left(s+\frac{k-1}{2}\right)}{(2\pi)^{s+\frac{k-1}{2}}}L(s,f) = \w_{N}(f)i^{k}N^{\frac{1-s}{2}}\frac{\G\left((1-s)+\frac{k-1}{2}\right)}{(2\pi)^{(1-s)+\frac{k-1}{2}}}L(1-s,\conj{f}).
@@ -530,7 +536,7 @@
           N^{\frac{s}{2}}\pi^{-s}\G\left(\frac{s+\frac{k-1}{2}}{2}\right)\G\left(\frac{s+\frac{k+1}{2}}{2}\right)L(s,f) = \L(s,f) = \w_{N}(f)i^{k}\L(1-s,\conj{f}).
         \]
       \end{theorem}
-    \subsection*{Beyond Primitivity of \texorpdfstring{$f$}{f}}
+    \subsection*{Beyond Primitivity}
       We can still obtain analytic continuation of the $L$-series $L(s,f)$ if $f$ is not a primitive Hecke eigenform. Indeed, since the primitive Hecke eigenforms form a basis for the space of newforms, we can prove the following:
 
       \begin{theorem}\label{thm:analytic_continuation_Hecke}
@@ -544,7 +550,7 @@
         for some $g,h \in \mc{S}_{k}\left(\G_{1}\left(\frac{N}{d}\right)\right)$. Note that $V_{p}h \in \mc{S}_{k}\left(\G_{1}\left(\frac{Np}{d}\right)\right)$ by \cref{lem:twisted_holomorphic_lemma}. Our induction hypothesis then implies that $L(s,g)$ and $L(s,V_{p}^{r}h)$, for all $p^{r} \mid\mid d$, admit analytic continuation to $\C$. Thus so does $L(s,f)$ which completes the proof.
       \end{proof}
   \section{Hecke-Maass \texorpdfstring{$L$}{L}-functions}
-    \subsection*{The Definition \& Euler Product of \texorpdfstring{$L(s,f)$}{L(s,f)}}
+    \subsection*{The Definition \& Euler Product}
       We will investigate the $L$-functions of weight zero Maass cusp forms. Let $f \in \mc{C}_{\nu}(N,\chi)$ and denote its Fourier-Whittaker series by
       \[
         f(z) = \sum_{n \ge 1}a_{f}(n)\left(\sqrt{y}K_{\nu}(2\pi ny)e^{2\pi inx}+\frac{a_{f}(-n)}{a_{f}(n)}\sqrt{y}K_{\nu}(2\pi ny)e^{-2\pi inx}\right),
@@ -557,7 +563,7 @@
       \[
         L(s,f) = \sum_{n \ge 1}\frac{a_{f}(n)}{n^{s}}.
       \]
-      We will see that $L(s,f)$ is a Selberg class $L$-function if $f$ is a primitive Hecke-Maass eigenform. From now on, we make this assumption about $f$. The Ramanujan-Petersson conjecture for Maass forms is not know so $L(s,f)$ has not been proven to be a Selberg class $L$-function. Although, it is conjectured to be, so throughout we will make this additional assumption. As we have noted, the Hecke relations and the Ramanujan-Petersson conjecture for Maass forms together imply $a_{f}(n) \ll_{\e} n^{\e}$. So $L(s,f)$ is locally absolutely uniformly convergent for $\s > 1+\e$ and hence locally absolutely uniformly convergent for $\s > 1$. The $L$-function will have an Euler product. Indeed, the Hecke relations imply that the coefficients $a_{f}(n)$ are multiplicative and satisfy
+      We will see that $L(s,f)$ is a Selberg class $L$-function if $f$ is a primitive Hecke-Maass eigenform. From now on, we make this assumption about $f$. The Ramanujan-Petersson conjecture for Maass forms is not know so $L(s,f)$ has not been proven to be a Selberg class $L$-function. Although, it is conjectured to be, so throughout we will make this additional assumption. As we have noted, the Hecke relations and the Ramanujan-Petersson conjecture for Maass forms together imply $a_{f}(n) \ll_{\e} n^{\e}$. Therefore $L(s,f)$ is locally absolutely uniformly convergent for $\s > 1$. The $L$-function will have an Euler product. Indeed, the Hecke relations imply that the coefficients $a_{f}(n)$ are multiplicative and satisfy
       \begin{equation}\label{equ:primitive_Hecke_eigenform_recurrence_for_coefficients_of_Maass_L-function}
         a_{f}(p^{n}) = \begin{cases} a_{f}(p^{n-1})a_{f}(p)-\chi(p)a_{f}(p^{n-2}) & \text{if $p \nmid N$}, \\ (a_{f}(p))^{n} & \text{if $p \mid N$}, \end{cases}
       \end{equation}
@@ -600,7 +606,7 @@
       \begin{equation}\label{equ:Hecke_Maass_L_function_coefficient_formula}
         a_{f}(p^{n}) = \frac{\a_{1}(p)^{n+1}-\a_{2}(p)^{n+1}}{\a_{1}(p)-\a_{2}(p)}.
       \end{equation}
-    \subsection*{The Integral Representation of \texorpdfstring{$L(s,f)$}{L(s,f)}}
+    \subsection*{The Integral Representation}
       We want to find an integral representation for $L(s,f)$. Recall that $f$ is an eigenfunction for the parity Hecke operator $T_{-1}$ with eigenvalue $\pm 1$. Equivalently, $f$ is even if the eigenvalue is $1$ and odd if the eigenvalue is $-1$. The integral representation will depend upon this parity. To handle both cases simultaneously, let $\mf{a} = 0,1$ according to whether $f$ is even or odd. In other words,
       \[
         \mf{a} = \frac{1-a_{f}(-1)}{2}.
@@ -657,7 +663,7 @@
         &\cdot \left[w_{N}(f)(-1)^{\mf{a}}N^{\frac{1}{2}-s}\int_{\frac{1}{\sqrt{N}}}^{\infty}\left(\left(\frac{\del}{\del x}^{\mf{a}}\right)\conj{f}\right)(iy)y^{(1-s)-\frac{1}{2}+\mf{a}}\,\frac{dy}{y}+\int_{\frac{1}{\sqrt{N}}}^{\infty}\left(\frac{\del}{\del x}^{\mf{a}}f\right)(iy)y^{s-\frac{1}{2}+\mf{a}}\,\frac{dy}{y}\right].
       \end{align*}
       This integral representation will give analytic continuation. Indeed, everything outside the brackets is entire and the two integrals are locally absolutely uniformly convergent on $\C$ by \cref{prop:decay_unbounded_inteval_integral}. Hence we have analytic continuation to all of $\C$. In particular, $L(s,f)$ has no poles.
-    \subsection*{The Functional Equation \& Critical Strip of \texorpdfstring{$L(s,f)$}{L(s,f)}}
+    \subsection*{The Functional Equation}
       An immediate consequence of applying the symmetry $s \to 1-s$ to the integral representation is the following functional equation:
       \[
         N^{\frac{s}{2}}\frac{\G\left(\frac{s+\mf{a}+\nu}{2}\right)\G\left(\frac{s+\mf{a}-\nu}{2}\right)}{2^{2-\mf{a}}\pi^{s}(-i)^{\mf{a}}}L(s,f) = \w_{N}(f)(-1)^{\mf{a}}N^{\frac{1-s}{2}}\frac{\G\left(\frac{(1-s)+\mf{a}+\nu}{2}\right)\G\left(\frac{(1-s)+\mf{a}-\nu}{2}\right)}{2^{2-\mf{a}}\pi^{1-s}(-i)^{\mf{a}}}L(1-s,\conj{f}).
@@ -699,7 +705,7 @@
           N^{\frac{s}{2}}\pi^{-s}\G\left(\frac{s+\mf{a}+\nu}{2}\right)\G\left(\frac{s+\mf{a}-\nu}{2}\right)L(s,f) = \L(s,f) = \w_{N}(f)(-1)^{\mf{a}}\L(1-s,\conj{f}).
         \]
       \end{theorem}
-    \subsection*{Beyond Primitivity of \texorpdfstring{$f$}{f}}
+    \subsection*{Beyond Primitivity}
       We can still obtain analytic continuation of the $L$-series $L(s,f)$ if $f$ is not a primitive Hecke-Maass eigenform. Similarly to the Hecke $L$-function case, this holds because the primitive Hecke-Maass eigenforms form a basis for the space of newforms:
 
       \begin{theorem}\label{thm:analytic_continuation_Hecke-Maass}
@@ -709,7 +715,7 @@
         Argue as in the proof of \cref{thm:analytic_continuation_Hecke}.
       \end{proof}
   \section{The Rankin-Selberg Method}
-    \subsection*{The Definition \& Euler Product of \texorpdfstring{$L(s,f \ox g)$}{L(s,f \ox g)}}
+    \subsection*{The Definition \& Euler Product}
       The Rankin-Selberg method is a process by which we can construct new $L$-functions from old ones. Instead of giving the general definition outright, we first provide a full discussion of the method only in the simplest case. Many technical difficulties arise in the fully general setting. Let $f,g \in \mc{S}_{k}(1)$ be primitive Hecke eigenforms with Fourier series
       \[
         f(z) = \sum_{n \ge 1}a_{f}(n)n^{\frac{k-1}{2}}e^{2\pi inz} \quad \text{and} \quad g(z) = \sum_{n \ge 1}a_{g}(n)n^{\frac{k-1}{2}}e^{2\pi inz}.
@@ -722,7 +728,7 @@
       \[
         L(s,f \ox g) = \sum_{n \ge 1}\frac{a_{f \ox g}(n)}{n^{s}} = \z(2s)L(s,f \x g),
       \]
-      where $a_{f \ox g}(n) = \sum_{n = m\ell^{2}}a_{f}(m)\conj{a_{g}(m)}$. Since $a_{f}(n) \ll_{\e} n^{\e}$ and $a_{g}(n) \ll_{\e} n^{\e}$, $a_{f \x g}(n) \ll_{\e} n^{\e}$ as well. Hence $L(s,f \x g)$ is locally absolutely uniformly convergent for $\s > 1+\e$ and hence locally absolutely uniformly convergent for $\s > 1$. Since $\z(2s)$ is also locally absolutely uniformly convergent in this region, the same follows for $L(s,f \x g)$ too. The $L$-function $L(s,f \x g)$ will also have an Euler product. To see this, let $\a_{j}(p)$ and $\b_{\ell}(p)$ be the local roots at $p$ of $L(s,f)$ and $L(s,g)$ respectively. Since $L(s,f \ox g)$ converges absolutely in the region $\s > 1$, multiplicativity of the Hecke eigenvalues implies
+      where $a_{f \ox g}(n) = \sum_{n = m\ell^{2}}a_{f}(m)\conj{a_{g}(m)}$. Since $a_{f}(n) \ll_{\e} n^{\e}$ and $a_{g}(n) \ll_{\e} n^{\e}$, $a_{f \x g}(n) \ll_{\e} n^{\e}$ as well. Hence $L(s,f \x g)$ is locally absolutely uniformly convergent for $\s > 1$. Since $\z(2s)$ is also locally absolutely uniformly convergent in this region, the same follows for $L(s,f \x g)$ too. The $L$-function $L(s,f \x g)$ will also have an Euler product. To see this, let $\a_{j}(p)$ and $\b_{\ell}(p)$ be the local roots at $p$ of $L(s,f)$ and $L(s,g)$ respectively. Since $L(s,f \ox g)$ converges absolutely in the region $\s > 1$, multiplicativity of the Hecke eigenvalues implies
       \[
         L(s,f \ox g) = \z(2s)L(s,f \x g) = \prod_{p \nmid NM}(1-p^{-2s})^{-1}\prod_{p}\left(\sum_{n \ge 0}\frac{a_{f}(p^{n})\conj{a_{g}(p^{n})}}{p^{ns}}\right),
       \]
@@ -761,7 +767,7 @@
         L(s,f \ox g) = \prod_{p}\prod_{1 \le j,\ell \le 2}\left(1-\a_{j}(p)\conj{\b_{\ell}(p)}p^{-s}\right)^{-1}.
       \]
       The local factor at $p$ is $L_{p}(s,f \ox g) = \prod_{1 \le j,\ell \le 2}\left(1-\a_{j}(p)\conj{\b_{\ell}(p)}p^{-s}\right)^{-1}$.
-    \subsection*{The Integral Representation of \texorpdfstring{$L(s,f \ox g)$}{L(s,f \ox g)}: Part I}
+    \subsection*{The Integral Representation: Part I}
       We now look for an integral representation for $L(s,f \ox g)$. Consider the following integral:
       \[
         \int_{\G_{\infty}\backslash\H}f(z)\conj{g(z)}\Im(z)^{s+k}\,d\mu.
@@ -797,7 +803,7 @@
         L(s,f \x g) =  \frac{(4\pi)^{s+k-1}}{\G(s+k-1)}\int_{\mc{F}}f(z)\conj{g(z)}\Im(z)^{k}E(z,s)\,d\mu.
       \end{equation}
       We cannot investigate the integral any further until we understand the Fourier-Whittaker series of $E(z,s)$ and have a functional equation as $s \to 1-s$. Therefore we will take a necessary detour and return to the integral after.
-    \subsection*{The Fourier-Whittaker Series and Functional Equation of \texorpdfstring{$E(z,s)$}{E(z,s)}}
+    \subsection*{The Integral Representation: Part II}
       We will compute the Fourier-Whittaker series of $E(z,s)$. To do this we will need the following technical lemma:
 
       \begin{lemma}\label{lem:Ramanujan_zeta_relation}
@@ -960,7 +966,7 @@
       \end{proof}
 
       This completes our study of $E(z,s)$.
-    \subsection*{The Integral Representation of \texorpdfstring{$L(s,f \ox g)$}{L(s,f \ox g)}: Part II}
+    \subsection*{The Integral Representation: Part III}
       We can now continue with the Rankin-Selberg convolution $L(s,f \ox g)$. Writing \cref{equ:Rankin-Selberg_integral-reresentation} in terms of $E^{\ast}(z,s)$ and $L(s,f \ox g)$ results in the integral representation
       \[
         L(s,f \ox g) = \frac{(4\pi)^{s+k-1}\pi^{s}}{\G(s+k-1)\G(s)}\int_{\mc{F}}f(z)\conj{g(z)}\Im(z)^{k}E^{\ast}(z,s)\,d\mu.
@@ -977,7 +983,7 @@
         O_{\e}\left(\int_{\mc{F}}f(x+iy)\conj{g(x+iy)}y^{k}\sum_{n \ge 1}4n^{\frac{1}{2}-s+\e}\sqrt{y}e^{-2\pi ny}\,\frac{dx\,dy}{y^{2}}\right).
       \]
       As the sum in the integrand is holomorphic, we can now appeal to \cref{prop:decay_finite_volume_integral}. The meromorphic continuation to the critical strip and hence to all of $\C$ follows. In particular, $L(s,f \ox g)$ has at most simple poles at $s = 0$ and $s = 1$. Actually, there is no pole at $s = 0$. Indeed, $\g(s,f \ox g)$ has a simple pole at $s = 0$ coming from the gamma factors and therefore its reciprocal has a simple zero. This cancels the simple pole at $s = 0$ coming from $E^{\ast}(z,s)$ and therefore $L(s,f \ox g)$ is has a removable singularity at $s = 0$. So there is at worst a simple pole at $s = 1$.
-    \subsection*{The Functional Equation, Critical Strip \& Residues of \texorpdfstring{$L(s,f \ox g)$}{L(s,f \ox g)}}
+    \subsection*{The Functional Equation}
       An immediate consequence of the symmetry of integral representation is the functional equation:
       \[
         \frac{\G(s+k-1)\G(s)}{(4\pi)^{s+k-1}\pi^{s}}L(s,f \ox g) = \frac{\G((1-s)+k-1)\G(1-s)}{(4\pi)^{(1-s)+k-1}\pi^{1-s}}L(1-s,f \ox g).
@@ -1094,7 +1100,7 @@
         \]
       \end{proof}
       
-      The bound in \cref{prop:Ramanujan_Petersson_average} should be compared with the implication $a_{f}(n) \ll_{\e} n^{\e}$ that follows from the corresponding Ramanujan-Petersson conjecture. While \cref{prop:Ramanujan_Petersson_average} is not useful in the holomorphic form case, it is in the Maass form case. Indeed, recall that if $f$ is a primitive Hecke-Maass eigenform we needed to assume the Ramanujan-Petersson conjecture for Maass forms to ensure $a_{f}(n) \ll_{\e} n^{\e}$ so that $L(s,f)$ was locally absolutely uniformly convergent for $\s > 1$. However, \cref{prop:Dirichlet_series_convergence_polynomial_bound_average,prop:Ramanujan_Petersson_average} together imply that $L(s,f)$ is locally absolutely uniformly convergent for $\s > 1+\e$ and hence for $\s > 1$.
+      The bound in \cref{prop:Ramanujan_Petersson_average} should be compared with the implication $a_{f}(n) \ll_{\e} n^{\e}$ that follows from the corresponding Ramanujan-Petersson conjecture. While \cref{prop:Ramanujan_Petersson_average} is not useful in the holomorphic form case, it is in the Maass form case. Indeed, recall that if $f$ is a primitive Hecke-Maass eigenform we needed to assume the Ramanujan-Petersson conjecture for Maass forms to ensure $a_{f}(n) \ll_{\e} n^{\e}$ so that $L(s,f)$ was locally absolutely uniformly convergent for $\s > 1$. However, \cref{prop:Dirichlet_series_convergence_polynomial_bound_average,prop:Ramanujan_Petersson_average} now together imply $L(s,f)$ is locally absolutely uniformly convergent for $\s > 1$.
     \subsection*{Strong Multiplicity One}
       Let $f$ be a primitive Hecke or Hecke-Maass eigenform. Then $f$ is determined by Hecke eigenvalues at primes for fixed weight/type, and level. Using Rankin-Selberg convolutions, we can prove \textbf{strong multiplicity one}\index{strong multiplicity one} for holomorphic or Maass forms which says that $f$ is determined by Hecke eigenvalues at all but finitely many primes:
 
