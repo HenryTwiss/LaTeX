@@ -10,7 +10,11 @@
       \[
         \z(s) = \prod_{p}(1-p^{-s})^{-1},
       \]
-      in this region as well. The local factor at $p$ is $\z_{p}(s) = (1-p^{-s})^{-1}$ with local root $1$. As the degree of $\z(s)$ is $1$, it will necessarily be primitive once we show it is Selberg class.
+      in this region as well. The local factor at $p$ is
+      \[
+        \z_{p}(s) = (1-p^{-s})^{-1},
+      \]
+      with local root $1$. As the degree of $\z(s)$ is $1$, it will necessarily be primitive once we show it is Selberg class.
     \subsection*{The Integral Representation: Part I}
       We want to find an integral representation for $\z(s)$. To do this, consider the function
       \[
@@ -194,9 +198,13 @@
       \]
       Since $\chi(n) = 0$ if $(n,m) > 1$, the above sum can be restricted to all positive integers relatively prime to $m$. We will see that $L(s,\chi)$ is a Selberg class $L$-function if $\chi$ is primitive and of conductor $q > 1$ (in the case $q = 1$, $L(s,\chi) = \z(s)$). From now we make this assumption about $\chi$. As $|\chi(n)| \ll 1$, $L(s,\chi)$ is locally absolutely uniformly convergent for $\s > 1$. Because $\chi$ is completely multiplicative we also have the degree $1$ Euler product:
       \[
-        L(s,\chi) = \prod_{p}(1-\chi(p)p^{-s})^{-1} = \prod_{p \nmid m}(1-\chi(p)p^{-s})^{-1},
+        L(s,\chi) = \prod_{p}(1-\chi(p)p^{-s})^{-1} = \prod_{p \nmid q}(1-\chi(p)p^{-s})^{-1},
       \]
-      in this region as well. The last equality holds because if $p \mid m$ we have $\chi(p) = 0$. So for $p \mid m$, the local factor at $p$ is $L_{p}(s,\chi) = 1$ with local root $0$. For $p \nmid m$ the local factor at $p$ is $L_{p}(s,\chi) = (1-\chi(p)p^{-s})^{-1}$ with local root $\chi(p)$. As the degree of $L(s,\chi)$ is $1$, it will necessarily be primitive once we show it is Selberg class.
+      in this region as well. The last equality holds because if $p \mid q$ we have $\chi(p) = 0$. The local factor at $p$ is
+      \[
+        L_{p}(s,\chi) = 1 \quad \text{or} \quad L_{p}(s,\chi) = (1-\chi(p)p^{-s})^{-1},
+      \]
+      with local root $0$ or $\chi(p)$ respectively and according to if $p \mid q$ or not. As the degree of $L(s,\chi)$ is $1$, it will necessarily be primitive once we show it is Selberg class.
     \subsection*{The Integral Representation: Part I}
       The integral representation for $L(s,\chi)$ is deduced in a similar way as for $\z(s)$. However, it will depend on if $\chi$ is even or odd. To handle both cases simultaneously let $\mf{a} = 0,1$ according to whether $\chi$ is even or odd. In other words,
       \[
@@ -375,7 +383,7 @@
         \]
       \end{theorem}
     \subsection*{Beyond Primitivity}
-      We can still obtain meromorphic continuation of the $L$-series $L(s,\chi)$ if $\chi$ is imprimitive. Indeed, if $\chi$ is induced by $\wtilde{\chi}$, then $\chi(p) = \wtilde{\chi}(p)$ if $p \nmid q$ and $\chi(p) = 0$ if $p \mid m$ so that
+      We can still obtain meromorphic continuation of the $L$-series $L(s,\chi)$ if $\chi$ is imprimitive. Indeed, if $\chi$ is induced by $\wtilde{\chi}$, then $\chi(p) = \wtilde{\chi}(p)$ if $p \nmid q$ and $\chi(p) = 0$ if $p \mid m$. Moreover, $\chi$ is completely multiplicative so we have a degree $1$ Euler product:
       \begin{equation}\label{equ:non-primitive_primitive_Dirichlet_L-series_relation}
         L(s,\chi) = \prod_{p \nmid m}(1-\wtilde{\chi}(p)p^{-s})^{-1} = \prod_{p}(1-\wtilde{\chi}(p)p^{-s})^{-1}\prod_{p \mid m}(1-\wtilde{\chi}(p)p^{-s}) = L(s,\wtilde{\chi})\prod_{p \mid m}(1-\wtilde{\chi}(p)p^{-s}).
       \end{equation}
@@ -388,12 +396,36 @@
         This follows from \cref{thm:zeta_Selberg,thm:primitive_Dirichlet_Selberg,equ:non-primitive_primitive_Dirichlet_L-series_relation}. 
       \end{proof}
   \section{\todo{Dedekind Zeta Functions}}
-    \subsection*{\todo{The Definition \& Euler Product}}
+    \subsection*{The Definition \& Euler Product}
       We can associate and $L$-function to every number field. Let $K$ be a number field of degree $d$ and signature $(r_{1},r_{2})$. The \textbf{Dedekind zeta function}\index{Dedekind zeta function} $\z_{K}(s)$ is defined by the following Dirichlet series
       \[
         \z_{K}(s) = \sum_{n \ge 1}\frac{a_{K}(n)}{n^{s}}.
       \]
-      We will show that $\z_{K}(s)$ is a Selberg class $L$-function. First we show that the coefficients are polynomially bounded. By \cref{equ:ideals_of_fixed_norm_bound}, $a_{K}(n) \le \s_{0}(n)^{d} \ll_{\e} n^{\e}$ (recall \cref{prop:sum_of_divisors_growth_rate}). Therefore $\z_{K}(s)$ is locally absolutely uniformly convergent for $\s > 1$.
+      We will show that $\z_{K}(s)$ is a Selberg class $L$-function. First we show that the coefficients are polynomially bounded. By \cref{equ:ideals_of_fixed_norm_bound}, $a_{K}(n) \le \s_{0}(n)^{d} \ll_{\e} n^{\e}$ (recall \cref{prop:sum_of_divisors_growth_rate}). Therefore $\z_{K}(s)$ is locally absolutely uniformly convergent for $\s > 1$. To determine the Euler product, we need to express $\z_{K}(s)$ in another form. Since $\z_{K}(s)$ converges absolutely, we can write
+      \[
+        \z_{K}(s) = \sum_{\mf{a}}\frac{1}{\Norm(\a)^{s}},
+      \]
+      where the sum is over all integral ideals of $K$. Since the norm is completely multiplicative by \cref{prop:ideal_norm_is_multiplicative}, we can express $\z_{K}(s)$ as the infinite product
+      \[
+        \z_{K}(s) = \prod_{\mf{p}}(1-\Norm(\mf{p})p^{-s})^{-1},
+      \]
+      for $\s > 1$, and where the product is over all prime integral ideals $\mf{p}$ of $K$. Since each such ideal is above a unique prime $p$ and this product is absolutely convergent for $\s > 1$, it can be expressed as
+      \[
+        \z_{K}(s) = \prod_{p}\prod_{\text{$\mf{p}$ above $p$}}(1-\Norm(\mf{p})p^{-s})^{-1} = \prod_{p}\prod_{1 \le i \le r_{p}}(1-p^{-f_{\mf{p}_{i}}s})^{-1},
+      \]
+      where $r_{p}$ is the number of prime integral ideals $\mf{p}_{1},\ldots,\mf{p}_{r_{p}}$ above $p$. As finitely many primes ramify by \cref{thm:ramification_division_equivalence}, \cref{prop:inertia_ramification_relation} implies that all but finitely many primes $p$ satisfy
+      \[
+        n = \sum_{1 \le r_{p}}f_{\mf{p}_{i}}.
+      \]
+      In particular, at least one prime does. Therefore, letting $\w_{p,i}$ be a primitive $f_{\mf{p}_{i}}$-th root of unity, we have the degree $n$ Euler product:
+      \[
+        \z_{K}(s) = \prod_{p}\prod_{\substack{1 \le i \le r_{p} \\ 1 \le k \le f_{\mf{p}_{i}}}}(1-\w_{p,i}^{k}p^{-s})^{-1},
+      \]
+      in this region as well. The local factor at $p$ is
+      \[
+        \z_{K,p}(s) = \prod_{\substack{1 \le i \le r_{p} \\ 1 \le k \le f_{\mf{p}_{i}}}}(1-\w_{p,i}^{k}p^{-s})^{-1},
+      \]
+      with local roots $\w_{p,i}^{k}$.
     \subsection*{\todo{The Integral Representation: Part I}}
     \subsection*{\todo{The Dedekind Theta Function}}
     \subsection*{\todo{The Integral Representation: Part II}}
@@ -444,7 +476,11 @@
       \[
         L(s,f) = \prod_{p}(1-\a_{1}(p)p^{-s})^{-1}(1-\a_{2}(p)p^{-s})^{-1}.
       \]
-      The local factor at $p$ is $L_{p}(s,f) = (1-\a_{1}(p)p^{-s})^{-1}(1-\a_{2}(p)p^{-s})^{-1}$ with local roots $\a_{1}(p)$ and $\a_{2}(p)$. Upon applying partial fraction decomposition to the local factor, we find
+      The local factor at $p$ is 
+      \[
+        L_{p}(s,f) = (1-\a_{1}(p)p^{-s})^{-1}(1-\a_{2}(p)p^{-s})^{-1},
+      \]
+      with local roots $\a_{1}(p)$ and $\a_{2}(p)$. Upon applying partial fraction decomposition to the local factor, we find
       \[
         \frac{1}{1-\a_{1}(p)p^{-s}}\frac{1}{1-\a_{2}(p)p^{-s}} = \frac{\frac{\a_{1}(p)}{\a_{1}(p)-\a_{2}(p)}}{1-\a_{1}(p)p^{-s}}+\frac{\frac{-\a_{2}(p)}{\a_{1}(p)-\a_{2}(p)}}{1-\a_{2}(p)p^{-s}}.
       \]
@@ -598,7 +634,11 @@
       \[
         L(s,f) = \prod_{p}(1-\a_{1}(p)p^{-s})^{-1}(1-\a_{2}(p)p^{-s})^{-1}.
       \]
-      The local factor at $p$ is $L_{p}(s,f) = (1-\a_{1}(p)p^{-s})^{-1}(1-\a_{2}(p)p^{-s})^{-1}$ with local roots $\a_{1}(p)$ and $\a_{2}(p)$. Upon applying partial fraction decomposition to the local factor, we find
+      The local factor at $p$ is 
+      \[
+        L_{p}(s,f) = (1-\a_{1}(p)p^{-s})^{-1}(1-\a_{2}(p)p^{-s})^{-1},
+      \]
+      with local roots $\a_{1}(p)$ and $\a_{2}(p)$. Upon applying partial fraction decomposition to the local factor, we find
       \[
         \frac{1}{1-\a_{1}(p)p^{-s}}\frac{1}{1-\a_{2}(p)p^{-s}} = \frac{\frac{\a_{1}(p)}{\a_{1}(p)-\a_{2}(p)}}{1-\a_{1}(p)p^{-s}}+\frac{\frac{-\a_{2}(p)}{\a_{1}(p)-\a_{2}(p)}}{1-\a_{2}(p)p^{-s}}.
       \]
@@ -766,7 +806,11 @@
       \[
         L(s,f \ox g) = \prod_{p}\prod_{1 \le j,\ell \le 2}\left(1-\a_{j}(p)\conj{\b_{\ell}(p)}p^{-s}\right)^{-1}.
       \]
-      The local factor at $p$ is $L_{p}(s,f \ox g) = \prod_{1 \le j,\ell \le 2}\left(1-\a_{j}(p)\conj{\b_{\ell}(p)}p^{-s}\right)^{-1}$.
+      The local factor at $p$ is 
+      \[
+        L_{p}(s,f \ox g) = \prod_{1 \le j,\ell \le 2}\left(1-\a_{j}(p)\conj{\b_{\ell}(p)}p^{-s}\right)^{-1},
+      \]
+      with local roots $\a_{j}(p)\conj{\b_{\ell}(p)}$.
     \subsection*{The Integral Representation: Part I}
       We now look for an integral representation for $L(s,f \ox g)$. Consider the following integral:
       \[
