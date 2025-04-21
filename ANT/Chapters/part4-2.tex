@@ -41,8 +41,8 @@
         \z(s) = \frac{\pi^{\frac{s}{2}}}{\G\left(\frac{s}{2}\right)}\int_{0}^{\infty}\w(iy)y^{\frac{s}{2}}\,\frac{dy}{y}.
       \end{equation}
       Unfortunately, we cannot proceed until we obtain a functional equation for $\w(z)$. So we will make a slight detour and come back to the integral representation after.
-    \subsection*{Jacobi's Theta Function}
-      \textbf{Jacobi's theta function}\index{Jacobi's theta function} $\vt(z)$ is defined by
+    \subsection*{The Jacobi Theta Function}
+      The \textbf{Jacobi theta function}\index{Jacobi theta function} $\vt(z)$ is defined by
       \[
         \vt(z) = \sum_{n \in \Z}e^{2\pi in^{2}z},
       \]
@@ -50,9 +50,9 @@
       \begin{equation}\label{equ:omega_theta_relationship_for_zeta}
         \w(z) = \frac{\vt\left(\frac{z}{2}\right)-1}{2},
       \end{equation}
-      and so $\vt(z)$ is locally absolutely uniformly convergent in this region and exhibits rapid decay. The essential we will need is the \textbf{functional equation for Jacobi's theta function}\index{functional equation for Jacobi's theta function}:
+      and so $\vt(z)$ is locally absolutely uniformly convergent in this region and exhibits rapid decay. The essential fact we will need is a transformation law for the Jacobi theta function:
 
-      \begin{theorem}[Functional equation for Jacobi's theta function]
+      \begin{theorem}\label{thm:transformation_law_Jacobi_theta}
         For $z \in \H$,
         \[
           \vt(z) = \frac{1}{\sqrt{-2iz}}\vt\left(-\frac{1}{4z}\right).
@@ -61,11 +61,11 @@
       \begin{proof}
         By the identity theorem it suffices to verify this for $z = iy$ with $y > 0$. So set $f(x) = e^{-2\pi x^{2}y}$. Then $f(x)$ is of Schwarz class. We compute its Fourier transform:
         \[
-          \hat{f}(t) = \int_{-\infty}^{\infty}f(x)e^{-2\pi itx}\,dx = \int_{-\infty}^{\infty}e^{-2\pi x^{2}y}e^{-2\pi itx}\,dx = \int_{-\infty}^{\infty}e^{-2\pi(x^{2}y+itx)}\,dx.
+          \hat{f}(t) = \int_{\R}f(x)e^{-2\pi itx}\,dx = \int_{\R}e^{-2\pi x^{2}y}e^{-2\pi itx}\,dx = \int_{\R}e^{-2\pi(x^{2}y+itx)}\,dx.
         \]
         Making the change of variables $x \to \frac{x}{\sqrt{y}}$, the last integral above becomes
         \[
-          \frac{1}{\sqrt{y}}\int_{-\infty}^{\infty}e^{-2\pi\left(x^{2}+\frac{itx}{\sqrt{y}}\right)}.
+          \frac{1}{\sqrt{y}}\int_{\R}e^{-2\pi\left(x^{2}+\frac{itx}{\sqrt{y}}\right)}.
         \]
         Complete the square in the exponent by noticing
         \[
@@ -73,11 +73,11 @@
         \]
         Taking exponentials, this implies that the previous integral is equal to
         \[
-          \frac{e^{-\frac{\pi t^{2}}{2y}}}{\sqrt{y}}\int_{-\infty}^{\infty}e^{-2\pi\left(x+\frac{it}{2\sqrt{y}}\right)^{2}}\,dx.
+          \frac{e^{-\frac{\pi t^{2}}{2y}}}{\sqrt{y}}\int_{\R}e^{-2\pi\left(x+\frac{it}{2\sqrt{y}}\right)^{2}}\,dx.
         \]
         The change of variables $x \to \frac{x}{\sqrt{2}}-\frac{it}{2\sqrt{y}}$ is permitted without affecting the line of integration by viewing the integral as a complex integral, noting that the integrand is entire as a complex function, and shifting the line of integration. This gives
         \[
-          \frac{e^{-\frac{\pi t^{2}}{2y}}}{\sqrt{2y}}\int_{-\infty}^{\infty}e^{-\pi x^{2}}\,dx = \frac{e^{-\frac{\pi t^{2}}{2y}}}{\sqrt{2y}},
+          \frac{e^{-\frac{\pi t^{2}}{2y}}}{\sqrt{2y}}\int_{\R}e^{-\pi x^{2}}\,dx = \frac{e^{-\frac{\pi t^{2}}{2y}}}{\sqrt{2y}},
         \]
         where the last equality follows because the last integral above is $1$ since it is the Gaussian integral (see \cref{append:Special_Integrals}). Thus
         \[
@@ -90,7 +90,7 @@
         and the identity theorem finishes the proof.
       \end{proof}
 
-      We will use this functional equation to analytically continue $\z(s)$.
+      We will use \cref{thm:transformation_law_Jacobi_theta} to analytically continue $\z(s)$.
     \subsection*{The Integral Representation: Part II}
       Returning to the Riemann zeta function, we split the integral in \cref{equ:integral_representation_zeta_1} into two pieces
       \begin{equation}\label{equ:symmetric_integral_zeta_split}
@@ -100,7 +100,7 @@
       \[
         \int_{1}^{\infty}\w\left(\frac{i}{y}\right)y^{-\frac{s}{2}}\,\frac{dy}{y}
       \]
-      Now the functional equation for Jacobi's theta function $\vt(z)$ and \cref{equ:omega_theta_relationship_for_zeta} together imply
+      Now \cref{equ:omega_theta_relationship_for_zeta,thm:transformation_law_Jacobi_theta} together imply
       \begin{align*}
         \w\left(\frac{i}{y}\right) &= \w\left(-\frac{1}{iy}\right) \\
         &= \frac{\vt\left(-\frac{1}{2iy}\right)-1}{2} \\
@@ -235,8 +235,8 @@
         L(s,\chi) = \frac{\pi^{\frac{s+\mf{a}}{2}}}{\G\left(\frac{s+\mf{a}}{2}\right)}\int_{0}^{\infty}\w_{\chi}(iy)y^{\frac{s+\mf{a}}{2}}\,\frac{dy}{y},
       \end{equation}
       and just as for the Riemann zeta function, we need to find a functional equation for $\w_{\chi}(z)$ before we can proceed.
-    \subsection*{Dirichlet's Theta Function}
-      \textbf{Dirichlet's theta function}\index{Dirichlet's theta function} $\vt_{\chi}(z)$ attached to the character $\chi$, is defined by
+    \subsection*{The Dirichlet Theta Function}
+      The \textbf{Dirichlet theta function}\index{Dirichlet theta function} $\vt_{\chi}(z)$ attached to the character $\chi$, is defined by
       \[
         \vt_{\chi}(z) = \sum_{n \in \Z}\chi(n)n^{\mf{a}}e^{2\pi in^{2}z},
       \]
@@ -250,9 +250,9 @@
         \cref{equ:twisted_omega_theta_relationship_for_Dirichlet_L-functions} is a slightly less complex relationship than \cref{equ:omega_theta_relationship_for_zeta}. This is because assuming $q > 1$ means $\chi(0) = 0$.
       \end{remark}
 
-      The essential fact we will need is the \textbf{functional equation for Dirichlet's theta function}\index{functional equation for Dirichlet's theta function}:
+      The essential fact we will need is a transformation law for the Dirichlet theta function:
 
-      \begin{theorem}[Functional equation for Dirichlet's theta function]
+      \begin{theorem}\label{thm:transformation_law_Dirichlet_theta}
         Let $\chi$ be a primitive Dirichlet character of conductor $q > 1$. For $z \in \H$,
         \[
           \vt_{\chi}(z) = \frac{\e_{\chi}}{i^{\mf{a}}(-2qiz)^{\frac{1}{2}+\mf{a}}}\vt_{\cchi}\left(-\frac{1}{4q^{2}z}\right).
@@ -265,11 +265,11 @@
         \]
         Set $f(x) = (xq+a)^{\mf{a}}e^{-2\pi(xq+a)^{2}y}$. Then $f(x)$ is of Schwarz class. We compute its Fourier transform:
         \[
-          \hat{f}(t) = \int_{-\infty}^{\infty}f(x)e^{-2\pi itx}\,dx = \int_{-\infty}^{\infty}(xq+a)^{\mf{a}}e^{-2\pi(xq+a)^{2}y}e^{-2\pi itx}\,dx = \int_{-\infty}^{\infty}(xq+a)^{\mf{a}}e^{-2\pi((xq+a)^{2}y+itx)}\,dx.
+          \hat{f}(t) = \int_{\R}f(x)e^{-2\pi itx}\,dx = \int_{\R}(xq+a)^{\mf{a}}e^{-2\pi(xq+a)^{2}y}e^{-2\pi itx}\,dx = \int_{\R}(xq+a)^{\mf{a}}e^{-2\pi((xq+a)^{2}y+itx)}\,dx.
         \]
         By performing the change of variables $x \to \frac{x}{q\sqrt{y}}-\frac{a}{q}$, the last integral above becomes
         \[
-          \frac{e^{\frac{2\pi iat}{q}}}{qy^{\frac{1+\mf{a}}{2}}}\int_{-\infty}^{\infty}x^{\mf{a}}e^{-2\pi\left(x^{2}+\frac{itx}{q\sqrt{y}}\right)}\,dx.
+          \frac{e^{\frac{2\pi iat}{q}}}{qy^{\frac{1+\mf{a}}{2}}}\int_{\R}x^{\mf{a}}e^{-2\pi\left(x^{2}+\frac{itx}{q\sqrt{y}}\right)}\,dx.
         \]
         Complete the square in the exponent by observing
         \[
@@ -277,25 +277,25 @@
         \]
         Taking exponentials, this implies that the previous integral is equal to
         \[
-          \frac{e^{\frac{2\pi iat}{q}-\frac{\pi t^{2}}{2q^{2}y}}}{qy^{\frac{1+\mf{a}}{2}}}\int_{-\infty}^{\infty}x^{\mf{a}}e^{-2\pi\left(x+\frac{it}{2q\sqrt{y}}\right)^{2}}\,dx.
+          \frac{e^{\frac{2\pi iat}{q}-\frac{\pi t^{2}}{2q^{2}y}}}{qy^{\frac{1+\mf{a}}{2}}}\int_{\R}x^{\mf{a}}e^{-2\pi\left(x+\frac{it}{2q\sqrt{y}}\right)^{2}}\,dx.
         \]
         The change of variables $x \to \frac{x}{\sqrt{2}}-\frac{it}{2q\sqrt{y}}$ is permitted without affecting the line of integration by viewing the integral as a complex integral, noting that the integrand is entire as a complex function, and shifting the line of integration. This gives
         \[
-          \frac{e^{\frac{2\pi iat}{q}-\frac{\pi t^{2}}{2q^{2}y}}}{\sqrt{2}qy^{\frac{1+\mf{a}}{2}}}\int_{-\infty}^{\infty}\left(\frac{x}{\sqrt{2}}-\frac{it}{2q\sqrt{y}}\right)^{\mf{a}}e^{-\pi x^{2}}\,dx = \frac{e^{\frac{2\pi iat}{q}-\frac{\pi t^{2}}{2q^{2}y}}}{\sqrt{2}qy^{\frac{1+\mf{a}}{2}}}\int_{-\infty}^{\infty}\left(\frac{x}{\sqrt{2}}+\frac{t}{2qi\sqrt{y}}\right)^{\mf{a}}e^{-\pi x^{2}}\,dx.
+          \frac{e^{\frac{2\pi iat}{q}-\frac{\pi t^{2}}{2q^{2}y}}}{\sqrt{2}qy^{\frac{1+\mf{a}}{2}}}\int_{\R}\left(\frac{x}{\sqrt{2}}-\frac{it}{2q\sqrt{y}}\right)^{\mf{a}}e^{-\pi x^{2}}\,dx = \frac{e^{\frac{2\pi iat}{q}-\frac{\pi t^{2}}{2q^{2}y}}}{\sqrt{2}qy^{\frac{1+\mf{a}}{2}}}\int_{\R}\left(\frac{x}{\sqrt{2}}+\frac{t}{2qi\sqrt{y}}\right)^{\mf{a}}e^{-\pi x^{2}}\,dx.
         \]
         If $\mf{a} = 0$, we obtain
-        \begin{equation}\label{transformation_law_for_twisted_Jacobi's_theta_function_1}
-          \frac{e^{\frac{2\pi iat}{q}-\frac{\pi t^{2}}{2q^{2}y}}}{\sqrt{2}qy^{\frac{1+\mf{a}}{2}}}\int_{-\infty}^{\infty}e^{-\pi x^{2}}\,dx = \frac{e^{\frac{2\pi iat}{q}-\frac{\pi t^{2}}{2q^{2}y}}}{\sqrt{2}qy^{\frac{1+\mf{a}}{2}}},
+        \begin{equation}\label{transformation_law_for_twisted_Jacobi_theta_function_1}
+          \frac{e^{\frac{2\pi iat}{q}-\frac{\pi t^{2}}{2q^{2}y}}}{\sqrt{2}qy^{\frac{1+\mf{a}}{2}}}\int_{\R}e^{-\pi x^{2}}\,dx = \frac{e^{\frac{2\pi iat}{q}-\frac{\pi t^{2}}{2q^{2}y}}}{\sqrt{2}qy^{\frac{1+\mf{a}}{2}}},
         \end{equation}
         where the equality holds because the integral is $1$ since it is the Gaussian integral (see \cref{append:Special_Integrals}). If $\mf{a} = 1$, then by direct computation
         \[
-          \int_{-\infty}^{\infty}\frac{x}{\sqrt{2}}e^{-\pi x^{2}}\,dx = -\frac{1}{\sqrt{8}\pi}e^{-\pi x^{2}}\bigg|_{-\infty}^{\infty} = 0,
+          \int_{\R}\frac{x}{\sqrt{2}}e^{-\pi x^{2}}\,dx = -\frac{1}{\sqrt{8}\pi}e^{-\pi x^{2}}\bigg|_{-\infty}^{\infty} = 0,
         \]
         and
-        \begin{equation}\label{transformation_law_for_twisted_Jacobi's_theta_function_2}
-          \frac{e^{\frac{2\pi iat}{q}-\frac{\pi t^{2}}{2q^{2}y}}}{\sqrt{2}qy^{\frac{1+\mf{a}}{2}}}\int_{-\infty}^{\infty}\left(\frac{t}{2qi\sqrt{y}}\right)e^{-\pi x^{2}}\,dx = \frac{e^{\frac{2\pi iat}{q}-\frac{\pi t^{2}}{2q^{2}y}}}{\sqrt{2}qy^{\frac{1+\mf{a}}{2}}}\left(\frac{t}{2qi\sqrt{y}}\right)\int_{-\infty}^{\infty}e^{-\pi x^{2}}\,dx = \frac{e^{\frac{2\pi iat}{q}-\frac{\pi t^{2}}{2q^{2}y}}}{\sqrt{2}qy^{\frac{1+\mf{a}}{2}}}\left(\frac{t}{2qi\sqrt{y}}\right),
+        \begin{equation}\label{transformation_law_for_twisted_Jacobi_theta_function_2}
+          \frac{e^{\frac{2\pi iat}{q}-\frac{\pi t^{2}}{2q^{2}y}}}{\sqrt{2}qy^{\frac{1+\mf{a}}{2}}}\int_{\R}\left(\frac{t}{2qi\sqrt{y}}\right)e^{-\pi x^{2}}\,dx = \frac{e^{\frac{2\pi iat}{q}-\frac{\pi t^{2}}{2q^{2}y}}}{\sqrt{2}qy^{\frac{1+\mf{a}}{2}}}\left(\frac{t}{2qi\sqrt{y}}\right)\int_{\R}e^{-\pi x^{2}}\,dx = \frac{e^{\frac{2\pi iat}{q}-\frac{\pi t^{2}}{2q^{2}y}}}{\sqrt{2}qy^{\frac{1+\mf{a}}{2}}}\left(\frac{t}{2qi\sqrt{y}}\right),
         \end{equation}
-        where the last equality follows because the last integral is the Gaussian integral again. Since $\left(\frac{t}{2qi\sqrt{y}}\right)^{\mf{a}} = 1$ if $\mf{a} = 0$, \cref{transformation_law_for_twisted_Jacobi's_theta_function_1,transformation_law_for_twisted_Jacobi's_theta_function_2} together imply
+        where the last equality follows because the last integral is the Gaussian integral again. Since $\left(\frac{t}{2qi\sqrt{y}}\right)^{\mf{a}} = 1$ if $\mf{a} = 0$, \cref{transformation_law_for_twisted_Jacobi_theta_function_1,transformation_law_for_twisted_Jacobi_theta_function_2} together imply
         \[
           \hat{f}(t) = \frac{e^{\frac{2\pi iat}{q}-\frac{\pi t^{2}}{2q^{2}y}}}{\sqrt{2}qy^{\frac{1+\mf{a}}{2}}}\left(\frac{t}{2qi\sqrt{y}}\right)^{\mf{a}}.
         \]
@@ -311,7 +311,8 @@
         \end{align*}
         and the identity theorem finishes the proof.
       \end{proof}
-      Notice that the functional equation relates $\vt_{\chi}(z)$ to $\vt_{\cchi}(z)$. Regardless, we will use it to analytically continue $L(s,\chi)$.
+
+      Notice that the functional equation relates $\vt_{\chi}(z)$ to $\vt_{\cchi}(z)$. Regardless, we will use \cref{thm:transformation_law_Dirichlet_theta} to analytically continue $L(s,\chi)$.
     \subsection*{The Integral Representation: Part II}
       Returning to $L(s,\chi)$, split the integral in \cref{equ:integral_representation_Dirichlet_L-functions_1} into two pieces
       \begin{equation}\label{equ:symmetric_integral_Dirichlet_L-functions_split}
@@ -321,7 +322,7 @@
       \[
         q^{-(s+\mf{a})}\int_{\frac{1}{q}}^{\infty}\w_{\chi}\left(\frac{i}{q^{2}y}\right)y^{-\frac{s+\mf{a}}{2}}\,\frac{dy}{y}.
       \]
-      Now the functional equation for Dirichlet's theta function and \cref{equ:twisted_omega_theta_relationship_for_Dirichlet_L-functions} together imply
+      Now \cref{equ:twisted_omega_theta_relationship_for_Dirichlet_L-functions,thm:transformation_law_Dirichlet_theta} together imply
       \begin{align*}
         \w_{\chi}\left(\frac{i}{q^{2}y}\right) &= \w_{\chi}\left(-\frac{1}{q^{2}iy}\right) \\
         &= \frac{\vt_{\chi}\left(-\frac{1}{2q^{2}iy}\right)}{2} \\
@@ -426,32 +427,12 @@
         \z_{K,p}(s) = \prod_{\substack{1 \le i \le r_{p} \\ 1 \le k \le f_{\mf{p}_{i}}}}(1-\w_{p,i}^{k}p^{-s})^{-1},
       \]
       with local roots $\w_{p,i}^{k}$.
-    \subsection*{The Integral Representation: Part I}
+    \subsection*{\todo{The Integral Representation: Part I}}
       To find an integral representation for $\z_{K}(s)$, consider the function
       \[
-        \w_{K}(z) = \sum_{n \ge 1}a_{K}(n)n^{r_{1}+2r_{2}}e^{\pi in^{2}z},
+        \w_{K}(\mathbf{z}) = \sum_{\mathbf{n} \in \Z_{ \ge 0}^{d}-\{\mathbf{0}\}}\todo{xxx}e^{\pi i|\mathbf{n}|^{2}z},
       \]
-      defined for $z \in \H$. It is locally absolutely uniformly convergent in this region by the ratio test. Moreover, the Taylor series of the $(r_{1}+2r_{2}+1)$-th derivative of $\frac{e^{y}}{1-e^{y}}$ (by taking $\e \le 1$) gives
-      \[
-        \w_{K}(z) = O\left(\sum_{n \ge 1}a_{K}(n)n^{r_{1}+2r_{2}}e^{-\pi n^{2}y}\right) = O\left(\sum_{n \ge 1}n^{r_{1}+2r_{2}+1}e^{-\pi ny}\right) = O(e^{-\pi y}),
-      \]
-      and so $\w_{K}(z)$ exhibits rapid decay. Now consider the following Mellin transform:
-      \[
-        \int_{0}^{\infty}\w_{K}(iy)y^{\frac{s}{2}+\frac{r_{1}}{2}+r_{2}}\,\frac{dy}{y}.
-      \]
-      By the rapid decay of $\w(z)$, this integral exists and defines an analytic function for $\s > 1$. We compute
-      \begin{align*}
-        \int_{0}^{\infty}\w_{K}(iy)y^{\frac{s}{2}+\frac{r_{1}}{2}+r_{2}}\,\frac{dy}{y} &= \int_{0}^{\infty}\sum_{n \ge 1}a_{K}(n)n^{r_{1}+2r_{2}}e^{-\pi n^{2}y}y^{\frac{s}{2}+\frac{r_{1}}{2}+r_{2}}\,\frac{dy}{y} \\
-        &= \sum_{n \ge 1}\int_{0}^{\infty}a_{K}(n)n^{r_{1}+2r_{2}}e^{-\pi n^{2}y}y^{\frac{s}{2}+\frac{r_{1}}{2}+r_{2}}\,\frac{dy}{y} && \text{DCT} \\
-        &= \sum_{n \ge 1}\frac{a_{K}(n)}{\pi^{\frac{s}{2}+\frac{r_{1}}{2}+r_{2}}n^{s}}\int_{0}^{\infty}e^{-y}y^{\frac{s}{2}+\frac{r_{1}}{2}+r_{2}}\,\frac{dy}{y} && \text{$y \to \frac{y}{\pi n^{2}}$} \\
-        &= \frac{\G\left(\frac{s}{2}+\frac{r_{1}}{2}+r_{2}\right)}{\pi^{\frac{s}{2}+\frac{r_{1}}{2}+r_{2}}}\sum_{n \ge 1}\frac{a_{K}(n)}{n^{s}} \\
-        &= \frac{\G\left(\frac{s}{2}+\frac{r_{1}}{2}+r_{2}\right)}{\pi^{\frac{s}{2}+\frac{r_{1}}{2}+r_{2}}}\z_{K}(s).
-      \end{align*}
-      Therefore we have an integral representation
-      \begin{equation}\label{equ:integral_representation_Dedekind_1}
-        \z_{K}(s) = \frac{\pi^{\frac{s}{2}+\frac{r_{1}}{2}+r_{2}}}{\G\left(\frac{s}{2}+\frac{r_{1}}{2}+r_{2}\right)}\int_{0}^{\infty}\w_{K}(iy)y^{\frac{s}{2}+\frac{r_{1}}{2}+r_{2}}\,\frac{dy}{y}.
-      \end{equation}
-      We will now obtain a functional equation for $\w_{K}(z)$ which will allow us to analytically continue $\z_{K}(s)$
+      defined for $\mathbf{z} \in \H^{d}$.
     \subsection*{\todo{The Hecke Theta Function}}
     \subsection*{\todo{The Integral Representation: Part II}}
     \subsection*{\todo{The Functional Equation}}
@@ -939,12 +920,12 @@
         \]
         Then $f(x)$ is absolutely integrable on $\R$ as we have just mentioned. We compute the Fourier transform:
         \begin{align*}
-          \hat{f}(t) = \int_{-\infty}^{\infty}f(x)e^{-2\pi itx}\,dx &= \int_{-\infty}^{\infty}\frac{y^{s}}{|cx+r+icy|^{2s}}e^{-2\pi itx}\,dx \\
-          &= \int_{-\infty}^{\infty}\frac{y^{s}}{((cx+r)^{2}+(cy)^{2})^{s}}e^{-2\pi itx}\,dx \\
-          &= e^{2\pi it\frac{r}{c}}\int_{-\infty}^{\infty}\frac{y^{s}}{((cx)^{2}+(cy)^{2})^{s}}e^{-2\pi itx}\,dx && \text{$x \to x-\frac{r}{c}$} \\
-          &= \frac{e^{2\pi it\frac{r}{c}}}{c^{2s}}\int_{-\infty}^{\infty}\frac{y^{s}}{(x^{2}+y^{2})^{s}}e^{-2\pi itx}\,dx \\
-          &= \frac{e^{2\pi it\frac{r}{c}}}{c^{2s}}\int_{-\infty}^{\infty}\frac{y^{s+1}}{((xy)^{2}+y^{2})^{s}}e^{-2\pi itxy}\,dx && \text{$x \to xy$} \\
-          &= \frac{e^{2\pi it\frac{r}{c}}}{c^{2s}}\int_{-\infty}^{\infty}\frac{y^{1-s}}{(x^{2}+1)^{s}}e^{-2\pi itxy}\,dx.
+          \hat{f}(t) = \int_{\R}f(x)e^{-2\pi itx}\,dx &= \int_{\R}\frac{y^{s}}{|cx+r+icy|^{2s}}e^{-2\pi itx}\,dx \\
+          &= \int_{\R}\frac{y^{s}}{((cx+r)^{2}+(cy)^{2})^{s}}e^{-2\pi itx}\,dx \\
+          &= e^{2\pi it\frac{r}{c}}\int_{\R}\frac{y^{s}}{((cx)^{2}+(cy)^{2})^{s}}e^{-2\pi itx}\,dx && \text{$x \to x-\frac{r}{c}$} \\
+          &= \frac{e^{2\pi it\frac{r}{c}}}{c^{2s}}\int_{\R}\frac{y^{s}}{(x^{2}+y^{2})^{s}}e^{-2\pi itx}\,dx \\
+          &= \frac{e^{2\pi it\frac{r}{c}}}{c^{2s}}\int_{\R}\frac{y^{s+1}}{((xy)^{2}+y^{2})^{s}}e^{-2\pi itxy}\,dx && \text{$x \to xy$} \\
+          &= \frac{e^{2\pi it\frac{r}{c}}}{c^{2s}}\int_{\R}\frac{y^{1-s}}{(x^{2}+1)^{s}}e^{-2\pi itxy}\,dx.
         \end{align*}
         Appealing to \cref{append:Special_Integrals} to compute this latter integral, we see that
         \[
