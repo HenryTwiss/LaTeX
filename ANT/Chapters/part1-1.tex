@@ -1,5 +1,5 @@
   \chapter{Preliminaries}\label{ch:Preliminaries}
-    There is quite a bit of knowledge that most authors assume one is fluent in when writing any text on number theory that is not necessarily standard material every reader knowns. A good selection is the following:
+    A good selection of topics that need some discussion before introducing analytic number theory are the following:
     \begin{itemize}
       \item Asymptotics,
       \item Dirichlet Characters,
@@ -7,7 +7,7 @@
       \item Integration Techniques \& Transforms,
       \item The Gamma Function.
     \end{itemize}
-    This is not an extensive list (depending on whom is writing), but it is a decent one for sure. In the interest of keeping this text mostly self-contained, this chapter is dedicated to the basics of these topics as they are the gadgets that will take center stage in our later investigations. A well-versed reader is encouraged to skim these sections for completeness. On the other hand, readers who are not completely comfortable these topics are encouraged to read this chapter in full and accept the material mentioned without proof as black box. The mathematics presented in this chapter belongs to a number theorist's tool box rather than being pure number theory. In order to improve the readability of the remainder of the text we will use the results presented here without reference unless it is a matter of clarity. As for standard knowledge, we assume familiarity with basic number theory, complex analysis, real analysis, functional analysis, topology, and algebra. We have also outsourced specific subtopics to the appendix and we will reference them when necessary.
+    This is not an extensive list, but it is a decent one. In the interest of keeping this text almost completely self-contained, this chapter is dedicated to the basics of these topics as they are the gadgets that will take center stage in our later investigations. The concepts presented in this chapter are tools in a tool box rather than being pure analytic number theory. In order to improve the readability of the remainder of the text we will use the results presented here without reference unless it is a matter of clarity. As for standard knowledge, we assume familiarity with basic number theory, complex analysis, real analysis, functional analysis, topology, and algebra. We have also outsourced specific subtopics to the appendix and we will reference them when necessary.
     \section{Notational Conventions}
       Here we make some notational conventions throughout the rest of the text unless specified otherwise:
       \begin{itemize}
@@ -16,7 +16,8 @@
         \item The finite field with $p$ elements $\F_{p}$ stands for $\Z/p\Z$.
         \item A prime $p \in \Z$ is always taken to be positive.
         \item The symbol $\e$ denotes a small positive constant ($\e > 0$) that is not necessarily the same from line to line.
-        \item If $a \in (\Z/m\Z)^{\ast}$, we will always let $\conj{a}$ denote the multiplicative inverse. That is, $a\conj{a} \equiv 1 \tmod{m}$.  
+        \item If $a \in (\Z/m\Z)^{\ast}$, we will always let $\conj{a}$ denote the multiplicative inverse. That is, $a\conj{a} \equiv 1 \tmod{m}$.
+        \item All continuous, meromorphic, holomorphic, and analytic functions are assumed to be real or complex valued if they are not already specified as such.
         \item For the complex variables $z$, $s$, and $u$, we write
         \[
           z = x+iy, \quad s = \s+it, \quad \text{and} \quad u = \tau+ir,
@@ -30,7 +31,7 @@
         \item $\d_{a,b}$ will denote the indicator function for $a = b$. That is, $\d_{a,b} = 1,0$ according to if $a = b$ or not.
       \end{itemize}
     \section{Asymptotics}
-      Much of the language of number theory is given in terms of asymptotics (or estimates or bounds) as they allows us to discuss approximate growth and dispense with superfluous constants. For this reason, asymptotics will be the first material that we will present. The asymptotics that we will cover are listed in the following table:
+      Throughout we let $z \in \R$ or $z \in \C$. Much of the language of analytic number theory is given in terms of asymptotics (or estimates or bounds) as they allows us to discuss approximate growth and dispense with superfluous constants. For this reason, asymptotics will be the first material that we will present. The asymptotics that we will cover are listed in the following table:
       \begin{center}
         \begin{stabular}[1.5]{|c|c|c|}
           \hline
@@ -50,10 +51,10 @@
           \hline
         \end{stabular}
       \end{center}
-      Implicit in all of these asymptotics is some limiting process $z \to z_{0}$ where $z_{0}$ is some complex number or $\infty$ (and $\pm \infty$ for the real case respectively). If $z_{0}$ is finite, then it is understood that the asymptotic is assumed to hold for all $z$ such that $|z-z_{0}| < \d$ for some real $\d > 0$. If $z_{0}$ is infinite, then the asymptotic is assumed to hold for all sufficiently large $z$. That is, $|z| > z_{0}$ for some $z_{0}$ (and $z > z_{0}$ or $z < z_{0}$ in the real case for $\pm \infty$ respectively). If the limiting process is not explicitly mentioned, it is assumed to be as $z \to \infty$ (or as $z \to \pm\infty$ for the real case). Often times, asymptotics will hold for all admissible values of $z$ and this will be clear from context although we still might suppress the specific limiting process.
+      Implicit in all of these asymptotics is some limiting process $z \to z_{0}$ where $z_{0}$ is finite or $\infty$. If $z_{0}$ is finite, then it is understood that the asymptotic is assumed to hold for all $z$ sufficiently close to $z_{0}$. If $z_{0}$ is infinite, then the asymptotic is assumed to hold for sufficiently large $z$. If the limiting process is not explicitly mentioned, it is assumed to be as $z \to \infty$. Often times, asymptotics will hold for all admissible values of $z$ and this will be clear from context although we still might suppress the specific limiting process.
 
       \begin{remark}
-        Suppose $f,g:\Z_{\ge 0} \to \C$. Extending $f(x)$ and $g(x)$ by making them piecewise linear so that they are piecewise continuous, we can consider asymptotics with $n$ in place of $z$. All of the following theory still holds. Moreover, if we further take $f(x)$ or $g(x)$ to be a constant function, the following theory will still hold.
+        Suppose $f,g:\Z_{\ge 0} \to \C$. Extending $f(n)$ and $g(n)$ by making them piecewise linear so that they are piecewise continuous, we can consider asymptotics with $n$ in place of $z$. All of the following theory still holds. Moreover, if we further take $f(z)$ or $g(z)$ to be a constant function, the following theory will still hold.
       \end{remark}
 
       Implicit in some asymptotics will there be a constant (such constants are in general not unique and any sufficiently large constant will do). Any such constant is called the \textbf{implicit constant}\index{implicit constant} of the asymptotic. The implicit constant may depend on one or more parameters, $\e$, $\s$, etc. If we wish to make these dependencies known, we use subscripts. If it is possible to choose the implicit constant independent of a certain parameter then we say that the asymptotic is \textbf{uniform}\index{uniform} with respect to that parameter. Moreover, we say that an implicit constant is \textbf{effective}\index{effective} if the constant is numerically computable and \textbf{ineffective}\index{ineffective} otherwise. Moreover, if we are interested in the dependence of an asymptotic on a certain parameter, say $p$, we will refer to the \textbf{$p$-aspect}\index{$p$-aspect} to mean the part of the asymptotic that is dependent upon $p$.
@@ -83,7 +84,7 @@
         \[
           \lim_{z \to z_{0}}\left|\frac{f(z)}{g(z)}\right| = 1,
         \]
-        provided $g(z) \neq 0$ for all $z$ sufficiently close to $z_{0}$. We call this an \textbf{asymptotic}\index{asymptotic} and say that $f(z)$ and $g(z)$ are \textbf{asymptotically equivalent}\index{asymptotically equivalent}. It is useful to think of asymptotic equivalence as $f(z)$ and $g(z)$ being the same size in the limit as $z \to z_{0}$. Immediately from the definition, we see that this is an equivalence relation on functions. In particular, if $f(z) \sim g(z)$ and $g(z) \sim h(z)$ then $f(z) \sim h(z)$. Also, if $f(z) \sim g(z)$ as $z \to z_{0}$, then $f(z) \asymp g(z)$ as $z \to z_{0}$ with $c_{1} \le 1 \le c_{2}$. So asymptotic equivalence is stronger than being of the same order of magnitude. Also note that $f(x) \sim g(x)$ is equivalent to $f(x) = g(x)(1+o(1))$ and hence implies $f(x) = g(x)(1+O(1))$. We say $f(z)$ \textbf{is of larger order than}\index{is of larger order than} $g(z)$ or $f(z)$ is $\W(g(z))$ as $z \to z_{0}$ and write $f(z) = \W(g(z))$ if
+        provided $g(z) \neq 0$ for all $z$ sufficiently close to $z_{0}$. We call this an \textbf{asymptotic}\index{asymptotic} and say that $f(z)$ and $g(z)$ are \textbf{asymptotically equivalent}\index{asymptotically equivalent}. It is useful to think of asymptotic equivalence as $f(z)$ and $g(z)$ being the same size in the limit as $z \to z_{0}$. Immediately from the definition, we see that this is an equivalence relation on functions. In particular, if $f(z) \sim g(z)$ and $g(z) \sim h(z)$ then $f(z) \sim h(z)$. Also, if $f(z) \sim g(z)$ as $z \to z_{0}$, then $f(z) \asymp g(z)$ as $z \to z_{0}$ with $c_{1} \le 1 \le c_{2}$. So asymptotic equivalence is stronger than being of the same order of magnitude. Also note that $f(z) \sim g(z)$ is equivalent to $f(z) = g(z)(1+o(1))$ and hence implies $f(z) = g(z)(1+O(1))$. We say $f(z)$ \textbf{is of larger order than}\index{is of larger order than} $g(z)$ or $f(z)$ is $\W(g(z))$ as $z \to z_{0}$ and write $f(z) = \W(g(z))$ if
         \[
           \limsup_{z \to z_{0}}\left|\frac{f(z)}{g(z)}\right| > 0.
         \]
@@ -104,13 +105,13 @@
             \end{enumerate}
         \end{proposition}
         \begin{proof}
-          Statements (i)-(iii) and (vi) follow immediately from the definition of the $O$-estimate. Statement (iv) follows from the definition and the triangle inequality. Statement (v) follows in the same way as (iv) given that both sums converge. Statement (vii) follows from the definition and the bounds $|x| \le |z|$ and $|y| \le |z|$.
+          Statements (i)-(iii) and (vi) follow immediately from the definition of the $O$-estimate. Statement (iv) follows from the definition and the triangle inequality. Statement (v) follows in the same way as (iv) given that both sums converge. Statement (vii) follows from the definition the $O$-estimate and the bounds $|x| \le |z|$ and $|y| \le |z|$ for any complex $z$.
         \end{proof}
 
         We will also often use \cref{prop:Big_Oh_manipulations} (vi) in the case of the input for a function. The most common instances will be when $z \asymp w$ or $z \sim w$ (the latter case implying the former) where $w$ is a function of $z$ (usually one that is more simple than $z$ itself). Taking $h(z) = w$, \cref{prop:Big_Oh_manipulations} (vi) says that if $f(z) = O(g(z))$ then $f(w) = O(g(w))$. In terms of Vinogradov's symbol, $f(z) \ll g(z)$ implies $f(w) \ll g(w)$. $O$-estimates also behave well with respect to integrals provided the functions involved are of a real variable:
 
         \begin{proposition}
-          Suppose $f(z)$ and $g(z)$ are functions of a real variable, $f(z) = O(g(z))$ as $z \to \infty$, $f(z)$ and $g(z)$ are integrable on the region where this estimate holds, and let $[z_{1},z_{2}]$ belong to this region. Then
+          Suppose $f(z) = O(g(z))$ as $z \to \infty$, $f(z)$ and $g(z)$ are integrable on a domain where this estimate holds, and let $z_{1}$ and $z_{2}$ belong to this region. Then
           \[
             \int_{z_{1}}^{z_{2}}f(z)\,dz = O\left(\int_{z_{1}}^{z_{2}}|g(z)|\,dz\right).
           \]
@@ -122,21 +123,21 @@
         The next proposition is a collection of some useful expressions for simplifying equations involving $O$-estimates:
 
         \begin{proposition}
-          Let $f(z)$ be a function such that $f(z) \to 0$ as $z \to 0$. The following $O$-estimates hold as $z \to 0$:
+          Let $f(z)$ be a function such that $f(z) \to 0$ as $z \to z_{0}$. The following $O$-estimates hold as $z \to z_{0}$:
           \begin{enumerate}[label=(\roman*)]
             \item $\frac{1}{1+O(f(z))} = 1+O(f(z))$.
-            \item $(1+O(f(z)))^{p} = 1+O(f(z))$ for any complex number $p$.
+            \item $(1+O(f(z)))^{z} = 1+O(f(z))$ for any complex $z$.
             \item $\log(1+O(f(z))) = O(f(z))$.
             \item $e^{1+O(f(z))} = 1+O(f(z))$.
           \end{enumerate}
         \end{proposition}
         \begin{proof}
-          Taking the Taylor series truncated after the first term and applying Taylor's theorem, we have the $O$-estimates
+          Taking the Taylor series truncated after the first term and applying Taylor's theorem gives the following $O$-estimates as $x \to 0$:
           \begin{enumerate}[label=(\roman*)]
-            \item $\frac{1}{1+z} = 1+O(z)$.
-            \item $(1+z)^{p} = 1+O(z)$.
-            \item $\log(1+z) = O(z)$.
-            \item $e^{z} = 1+O(z)$.
+            \item $\frac{1}{1+x} = 1+O(x)$.
+            \item $(1+x)^{z} = 1+O(x)$.
+            \item $\log(1+x) = O(x)$.
+            \item $e^{x} = 1+O(x)$.
           \end{enumerate}
           Now apply \cref{prop:Big_Oh_manipulations} (v) to each of these $O$-estimates, and use \cref{prop:Big_Oh_manipulations} (i).
         \end{proof}
@@ -157,7 +158,7 @@
           Statements (i)-(iii) and (v) follow immediately from the definition of the $o$-estimate. Statement (iv) follows from the definition and that $\sum_{1 \le i \le n}|g_{i}(z)| \ge |g_{i}(z)|$.
         \end{proof}
       \subsection*{Growth \& Decay of Functions}
-        We will also be interested in the growth rate of functions. There are many types of growth rates, but we will only recall the ones that are standard. Throughout let $c \ge 1$. First suppose $z \to z_{0}$. If $f(z) \asymp \log^{c}(z)$, we say that $f(z)$ is of \textbf{logarithmic growth}\index{logarithmic growth}. If $f(z) \asymp z^{c}$, we say that $f(z)$ is of \textbf{polynomial growth}\index{polynomial growth}. If $f(z) \asymp e^{cz}$, we say that $f(z)$ is of \textbf{exponential growth}\index{exponential growth}. Now suppose $z \to \infty$ or $z \to \pm\infty$ in the real case. If $f(z) \asymp \log^{-c}(z)$, we say that $f(z)$ is of \textbf{logarithmic decay}\index{logarithmic decay}. If $f(z) \asymp x^{-c}$ for some $c \ge 1$, we say that $f(z)$ is of \textbf{polynomial decay}\index{polynomial decay}. If $f(z) \asymp e^{-cz}$, we say that $f(z)$ is of \textbf{exponential decay}\index{exponential decay}. In all of these cases, we refer to the constant $c$ as the \textbf{order}\index{order} of growth or decay respectively. Our last two growth rates will be the most common ones we will use. Suppose $z \to \infty$ or $z \to \pm\infty$ in the real case. If $f(z) = \W(z^{n})$ for all $n \ge 0$, then we say $f(z)$ is of \textbf{rapid growth}\index{rapid growth}. Alternatively, if $f(z) = o(z^{-n})$ for all $n \ge 0$, then we say $f(z)$ is of \textbf{rapid decay}\index{rapid decay}.
+        We will also be interested in the growth rate of functions. There are many types of growth rates, but we will only recall the ones that are standard. Throughout let $c \ge 1$. First suppose $z \to z_{0}$. If $f(z) \asymp \log^{c}(z)$, we say that $f(z)$ is of \textbf{logarithmic growth}\index{logarithmic growth}. If $f(z) \asymp z^{c}$, we say that $f(z)$ is of \textbf{polynomial growth}\index{polynomial growth}. If $f(z) \asymp e^{cz}$, we say that $f(z)$ is of \textbf{exponential growth}\index{exponential growth}. Now suppose $z \to \infty$. If $f(z) \asymp \log^{-c}(z)$, we say that $f(z)$ is of \textbf{logarithmic decay}\index{logarithmic decay}. If $f(z) \asymp z^{-c}$ for some $c \ge 1$, we say that $f(z)$ is of \textbf{polynomial decay}\index{polynomial decay}. If $f(z) \asymp e^{-cz}$, we say that $f(z)$ is of \textbf{exponential decay}\index{exponential decay}. In all of these cases, we refer to the constant $c$ as the \textbf{order}\index{order} of growth or decay respectively. If $f(z) = \W(z^{n})$ for all $n \ge 0$, then we say $f(z)$ is of \textbf{rapid growth}\index{rapid growth}. Alternatively, if $f(z) = o(z^{-n})$ for all $n \ge 0$, then we say $f(z)$ is of \textbf{rapid decay}\index{rapid decay}.
     \section{Dirichlet Characters}
       The most important multiplicative periodic functions for an analytic number theorist are the Dirichlet characters. A \textbf{Dirichlet character}\index{Dirichlet character} $\chi$ modulo $m \ge 1$ is an $m$-periodic completely multiplicative function $\chi:\Z \to \C$ such that $\chi(a) = 0$ if and only if $(a,m) > 1$. We call $m$ the \textbf{modulus}\index{modulus} of $\chi$. Sometimes we will also write $\chi_{m}$ to denote a Dirichlet character modulo $m$ if we need to express the dependence upon the modulus. For any $m \ge 1$, there is always the \textbf{principal Dirichlet character}\index{principal Dirichlet character} modulo $m$ which we denote by $\chi_{m,0}$ (sometimes also seen as $\chi_{0,m}$ or the ever more confusing $\chi_{0}$) and is defined by
       \[
@@ -311,7 +312,7 @@
 
       It follows from \cref{thm:fundamental_discriminant_character_primitive} that all quadratic Dirichlet characters are induced from some $\chi_{D}$ (including $D = 1$ since this corresponds to the trivial Dirichlet character). In particular, so too are the quadratic Dirichlet characters given by Jacobi symbols.
     \section{Special Sums}
-      Number theory does not come without its class of special sums that appear naturally. They play the role of discrete counterparts to continuous objects (there is a rich underpinning here). Without a sufficient understanding of these sums, they would cause a discrete obstruction to an analytic problem that we wish to solve.
+      Analytic number theory comes with its class of special sums that appear naturally. They play the role of discrete counterparts to continuous objects (there is a rich underpinning here). Without a sufficient understanding of these sums, they would cause a discrete obstruction to an analytic problem that we wish to solve.
       \subsection*{Ramanujan \& Gauss Sums}
         Let's begin with the Ramanujan sum. For $m \ge 1$ and $b \in \Z$, the \textbf{Ramanujan sum}\index{Ramanujan sum} $r(b,m)$ is defined by
         \[
@@ -658,14 +659,14 @@
         If either $n = 0$ or $m = 0$ then the Sali\'e sum reduces to the Ramanujan sum associated to $\chi$.
     \section{Integration Techniques \& Transforms}
       \subsection*{Integration Techniques}
-        Complex integrals are a core backbone of many number theory techniques and all too often the domain we are integrating over is unbounded. Accordingly, the functions we would like to work with should be integrable over these domains. One way to accomplish this would be to require that our functions are bounded and our domains be of finite volume:
+        Complex integrals are a core backbone of many analytic number theory techniques and all too often the domain we are integrating over is unbounded. Accordingly, the functions we would like to work with should be integrable over these domains. One way to accomplish this would be to require that our functions are bounded and our domains be of finite volume:
 
         \begin{proposition}\label{prop:decay_finite_volume_integral}
           Suppose $f(z,w)$ is analytic on $\W \x D$ for some regions $\W$ and $D$ with $D$ of finite volume with respect to a measure $d\mu$. Also suppose that for any $z \in \W$, $f(z,w)$ is bounded on $D$. Then the integral
           \[
             \int_{D}f(z,w)\,d\mu,
           \]
-          is locally absolutely uniformly convergent for any $z \in W$. In particular, is holomorphic in $z$.
+          is locally absolutely uniformly convergent for any $z \in W$. In particular, it is holomorphic in $z$.
         \end{proposition}
         \begin{proof}
           The second statement follows from \cref{thm:analytic_integral}. So it suffices to show that the integral is locally absolutely uniformly convergent. Let $K$ be a compact subset of $\W$. As $f(z,w)$ is bounded on $D$ for any $z$, $f(z,w)$ is locally absolutely uniformly convergent on $K \x D$. Then for $z \in K$, we have
@@ -776,13 +777,13 @@
           and the first statement follows by the definition of $F(x)$. Setting $x = 0$ proves the second statement.
         \end{proof}
 
-        There are two practical settings of interest. The first is when $f(x)$ is of \textbf{Schwarz class}\index{Schwarz class} which means that $f \in C^{\infty}(\R)$ and $f$ along with all of its derivative have rapid decay. For example $e^{-x^{2}}$ is of Schwarz class. If $f(x)$ is of Schwarz class, the rapid decay implies that $f(x)$ and all of its derivatives are absolutely integrable over $\R$ by \cref{prop:decay_unbounded_inteval_integral}. Moreover, this also implies that $F(x)$ and all of its derivatives are locally absolutely uniformly convergent by the Weierstrass $M$-test. The uniform limit theorem then shows that $F(x)$ is smooth and thus the conditions of the Poisson summation formula are satisfied. The second application is when $f(z)$ is some holomorphic function that has at least polynomial decay of order $c > 1$ for any fixed $y$. Then $f(z)$ is absolutely integrable over $\R$ for any fixed $y$. Moreover, $F(z)$ is holomorphic. Then the conditions of the Poisson summation formula are satisfied for $z = iy$ with $y > 0$ and the identity theorem shows that this holds for all $z$. Our primary use of the Poisson summation formula will be to derive very striking transformation laws which are the key ingredient in analytically continuing many important functions.
+        There are two practical settings of interest. The first is when $f(x)$ is of \textbf{Schwarz class}\index{Schwarz class} which means that $f \in C^{\infty}(\R)$ and $f$ along with all of its derivative have rapid decay. For example $e^{-x^{2}}$ is of Schwarz class. If $f(x)$ is of Schwarz class, the rapid decay implies that $f(x)$ and all of its derivatives are absolutely integrable over $\R$ by \cref{prop:decay_unbounded_inteval_integral}. Moreover, this also implies that $F(x)$ and all of its derivatives are locally absolutely uniformly convergent by the Weierstrass $M$-test. The uniform limit theorem implies that $F(x)$ is smooth and thus the conditions of the Poisson summation formula are satisfied. The second application is when $f(z)$ is some holomorphic function that has at least polynomial decay of order $c > 1$ for any fixed $y$. Then $f(z)$ is absolutely integrable over $\R$ for any fixed $y$. Moreover, $F(z)$ is holomorphic. Then the conditions of the Poisson summation formula are satisfied for $z = iy$ with $y > 0$ and the identity theorem shows that this holds for all $z$. Our primary use of the Poisson summation formula will be to derive very striking transformation laws which are the key ingredient in analytically continuing many important functions.
       \subsection*{The Mellin Transform}
-        Like the Fourier transform, the Mellin transform is another type of integral transform. If $f(x)$ is a continuous function, then the \textbf{Mellin transform}\index{Mellin transform} $F(s)$ of $f(x)$ is given by
+        Like the Fourier transform, the Mellin transform is another type of integral transform. If $f(x)$ is a continuous function and $f(\infty) = \lim_{x \to \infty}f(x)$ exists, then the \textbf{Mellin transform}\index{Mellin transform} $F(s)$ of $f(x)$ is given by
         \[
-          F(s) = \int_{0}^{\infty}f(x)x^{s}\,\frac{dx}{x}.
+          F(s) = \int_{0}^{\infty}(f(x)-f(\infty))x^{s}\,\frac{dx}{x}.
         \]
-        If $f(x)$ is a sufficiently nice function then the integral will be bounded in some half-plane in $s$. For example, this happens if $f(x)$ exhibits rapid decay and remains bounded as $x \to 0$. In this case, the integral is locally absolutely uniformly convergent for $\s > 0$. If the Mellin transform $F(s)$ is sufficiently nice, then the initial function can be recovered via means of the \textbf{inverse Mellin transform}\index{inverse Mellin transform} $(\mc{M}^{-1}F)(x)$:
+        In most cases, we assume $f(x)$ has some type of decay so that $f(\infty) = 0$. Moreover, if $f(x)$ is a sufficiently nice function then the integral will be bounded in some half-plane in $s$. For example, this happens if $f(x)$ exhibits rapid decay and remains bounded as $x \to 0$. In this case, the integral is locally absolutely uniformly convergent for $\s > 0$. If the Mellin transform $F(s)$ is sufficiently nice, then the initial function can be recovered via means of the \textbf{inverse Mellin transform}\index{inverse Mellin transform} $(\mc{M}^{-1}F)(x)$:
         \[
           (\mc{M}^{-1}F)(x) = \frac{1}{2\pi i}\int_{(c)}F(s)x^{-s}\,ds.
         \]
@@ -800,7 +801,7 @@
           is locally absolutely uniformly convergent in the vertical strip $a < \s < b$. Then $f(x) = (\mc{M}^{-1}F)(x)$.
         \end{theorem}
     \section{The Gamma Function}
-      The gamma function is ubiquitous in number theory and the more one understands it the better one will be at seeing the forest for the trees in number theory problems. The \textbf{gamma function}\index{gamma function} $\G(s)$ is defined to be the Mellin transform of $e^{-x}$:
+      The gamma function is ubiquitous in analytic number theory and the better one understands this function the better one will be at seeing the forest for the trees. The \textbf{gamma function}\index{gamma function} $\G(s)$ is defined to be the Mellin transform of $e^{-x}$:
       \[
         \G(s) = \int_{0}^{\infty}e^{-x}x^{s-1}\,dx,
       \]
