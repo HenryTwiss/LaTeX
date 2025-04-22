@@ -1,3 +1,267 @@
+\documentclass[12pt,oneside]{book}
+\usepackage{import}
+\input{preamble}
+
+%=================%
+%  Title & Index  %
+%=================%
+\title{Analytic Number Theory}
+\author{Henry Twiss}
+\date{2024}
+\makeindex
+
+\begin{document}
+  \section{\todo{The Kuznetsov Trace Formula}}
+    The Kuznetsov trace formula is an analog of the Petersson trace formula for weight zero Maass forms. From \cref{thm:the_full_spectral_resolution}, $\mc{L}(N,\chi)$ admits an orthonormal basis of Maass forms for the point spectrum (these forms are generally not Hecke-Maass eigenforms because they need not be Hecke normalized or even cuspidal in the case of the discrete spectrum). However, by \cref{prop:residual_forms_weight_zero} and \cref{thm:newforms_characterization_Maass} we make take this orthonormal basis to consist of Hecke-Maass eigenforms and the constant function. Denote this basis by $\{u_{j}\}_{j \ge 0}$ with $u_{0}(z) = 1$ and let $u_{j}$ be of type $\nu_{j}$ for $j \ge 1$. In particular, $\{u_{j}\}_{j \ge 1}$ is an orthonormal basis of Hecke-Maass eigenforms and each such form admits a Fourier series at the $\mf{a}$ cusp given by
+    \[
+      (u_{j}|\s_{\mf{a}})(z) = \sum_{n \neq 0}a_{j,\mf{a}}(n)\sqrt{y}K_{\nu_{j}}(2\pi ny)e^{2\pi inx}.
+    \]
+    The Kuznetsov trace formula is an equation relating the Fourier coefficients $a_{j,\mf{a}}(n)$ and $a_{j,\mf{b}}(n)$ of the basis $\{u_{j}\}_{j \ge 1}$ for two cusps $\mf{a}$ and $\mf{b}$ of $\G_{0}(N)\backslash\H$ to a sum of integral transforms involving test functions and Sali\'e sums. Similar to the Petersson trace formula, we will compute the inner product of two Poincar\'e series $P_{n,\chi,\mf{a}}(z,\psi)(z)$ and $P_{m,\chi,\mf{b}}(z,\vphi)(z)$ in two different ways. The first will be geometric in nature while the second will be spectral. We first need to compute the Fourier series of such a Poincar\'e series. Although we will not need it explicitly, we will work over any congruence subgroup:
+
+    \begin{proposition}
+      Let $m \ge 1$, $\chi$ be Dirichlet character with conductor dividing the level, $\mf{a}$ and $\mf{b}$ be cusps of $\GH$, and $\psi(y)$ be a smooth function such that $\psi(y) \ll_{\e} y^{1+\e}$ as $y \to 0$. The Fourier series of $P_{m,\chi,\mf{a}}(z,\psi)$ on $\GH$ at the $\mf{b}$ cusp is given by
+      \[
+        (P_{m,\chi,\mf{a}}|\s_{\mf{b}})(z,\psi) = \sum_{t \in \Z}\left(\d_{\mf{a},\mf{b}}\d_{m,t}\psi(\Im(z))+\sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}}}}\psi(y,m,t,c)S_{\chi,\mf{a},\mf{b}}(m,t,c)\right)e^{2\pi itz},
+      \]
+      where $\psi(y,m,t,c)$ is the integral transform given by
+      \[
+        \psi(y,m,t,c) = \int_{\Im(z) = y}\psi\left(\frac{y}{|cz|^{2}}\right)e^{-\frac{2\pi im}{c^{2}z}-2\pi itz}\,dz.
+      \]
+    \end{proposition}
+    \begin{proof}
+      From the cocycle condition and \cref{rem:Bruhat_modulo_infity_exact}, we have
+      \[
+        (P_{m,\chi,\mf{a}}|\s_{\mf{b}})(z,\psi) = \d_{\mf{a},\mf{{b}}}\psi(\Im(z))e^{2\pi imz}+\sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}}, d \in \Z \\ d \tmod{c} \in \mc{D}_{\mf{a},\mf{b}}(c)}}\cchi(d)\psi\left(\frac{\Im(z)}{|cz+d|^{2}}\right)e^{2\pi im\left(\frac{a}{c}-\frac{1}{c^{2}z+cd}\right)},
+      \]
+      where $a$ and $b$ are chosen such that $\det\left(\begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix}\right) = 1$ and we have used the fact that
+      \[
+        \frac{a}{c}-\frac{1}{c^{2}z+cd} = \frac{az+b}{cz+d}.
+      \]
+      Summing over all pairs $(c,d)$ with $c \in \mc{C}_{\mf{a},\mf{b}}$, $d \in \Z$, and $d \in \mc{D}_{\mf{a},\mf{b}}(c)$ is the same as summing over all triples $(c,\ell,r)$ with $c \in \mc{C}_{\mf{a},\mf{b}}$, $\ell \in \Z$, and $r$ taken modulo $c$ with $r \in \mc{D}_{\mf{a},\mf{b}}(c)$. Indeed, this is seen by writing $d = c\ell+r$. Moreover, since $ad-bc = 1$ we have $a(c\ell+r)-bc = 1$ which further implies that $ar \equiv 1 \tmod{c}$. So we may take $a$ to be the inverse for $r$ modulo $c$. Then
+      \begin{align*}
+        \sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}}, d \in \Z \\ d \tmod{c} \in \mc{D}_{\mf{a},\mf{b}}(c)}}\cchi(d)\psi\left(\frac{\Im(z)}{|cz+d|^{2}}\right)e^{2\pi im\left(\frac{a}{c}-\frac{1}{c^{2}z+cd}\right)} &= \sum_{(c,\ell,r)}\cchi(c\ell+r)\psi\left(\frac{\Im(z)}{|cz+c\ell+r|^{2}}\right)e^{2\pi im\left(\frac{a}{c}-\frac{1}{c^{2}z+c^{2}\ell+cr}\right)} \\
+        &= \sum_{(c,\ell,r)}\cchi(r)\psi\left(\frac{\Im(z)}{|cz+c\ell+r|^{2}}\right)e^{2\pi im\left(\frac{a}{c}-\frac{1}{c^{2}z+c^{2}\ell+cr}\right)} \\
+        &= \sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}} \\ r \in \mc{D}_{\mf{a},\mf{b}}(c)}}\sum_{\ell \in \Z}\cchi(r)\psi\left(\frac{\Im(z)}{|cz+c\ell+r|^{2}}\right)e^{2\pi im\left(\frac{a}{c}-\frac{1}{c^{2}z+c^{2}\ell+cr}\right)} \\
+        &= \sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}} \\ r \in \mc{D}_{\mf{a},\mf{b}}(c)}}\cchi(r)\sum_{\ell \in \Z}\psi\left(\frac{\Im(z)}{|cz+c\ell+r|^{2}}\right)e^{2\pi im\left(\frac{a}{c}-\frac{1}{c^{2}z+c^{2}\ell+cr}\right)},
+      \end{align*}
+     where on the right-hand side it is understood that we are summing over all triples $(c,\ell,r)$ with the prescribed properties and the second line holds since $\chi$ has conductor diving the level and $d \in \mc{D}_{\mf{a},\mf{b}}(c)$ is determined modulo $c$. Now let
+      \[
+        I_{c,r}(z,\psi) = \sum_{\ell \in \Z}\psi\left(\frac{\Im(z)}{|cz+c\ell+r|^{2}}\right)e^{2\pi im\left(\frac{a}{c}-\frac{1}{c^{2}z+c^{2}\ell+cr}\right)}.
+      \]
+      We apply the Poisson summation formula to $I_{c,r}(z,\psi)$. This is allowed since the summands are absolutely integrable by \cref{prop:decay_unbounded_inteval_integral}, as they exhibit polynomial decay of order $\s > 1$ because $\psi(y) \ll_{\e} y^{1+\e}$ as $y \to 0$, and $I_{c,r}(z,\psi)$ is holomorphic because $(P_{m,\chi,\mf{a}}|\s_{\mf{b}})(z,\psi)$ is. By the identity theorem it suffices to apply the Poisson summation formula for $z = iy$ with $y > 0$. So let $f(x)$ be given by
+      \[
+        f(x) = \psi\left(\frac{y}{|cx+r+icy|^{2}}\right)e^{2\pi im\left(\frac{a}{c}-\frac{1}{c^{2}x+cr+ic^{2}y}\right)}.
+      \]
+      As we have just noted, $f(x)$ is absolutely integrable on $\R$. We compute the Fourier transform:
+      \[
+        \hat{f}(t) = \int_{-\infty}^{\infty}f(x)e^{-2\pi itx}\,dx = \int_{-\infty}^{\infty}\psi\left(\frac{y}{|cx+r+icy|^{2}}\right)e^{2\pi im\left(\frac{a}{c}-\frac{1}{c^{2}x+cr+ic^{2}y}\right)}e^{-2\pi itx}\,dx.
+      \]
+      Complexify the integral to get
+      \[
+        \int_{\Im(z) = 0}\psi\left(\frac{y}{|cz+r+icy|^{2}}\right)e^{2\pi im\left(\frac{a}{c}-\frac{1}{c^{2}z+cr+ic^{2}y}\right)}e^{-2\pi itz}\,dz.
+      \]
+      Now make the change of variables $z \to z-\frac{r}{c}-iy$ to obtain
+      \[
+        e^{2\pi im\frac{a}{c}+2\pi it\frac{r}{c}-2\pi ty}\int_{\Im(z) = y}\psi\left(\frac{y}{|cz|^{2}}\right)e^{-\frac{2\pi im}{c^{2}z}-2\pi itz}\,dz.
+      \]
+      As the remaining integral is $\psi(y,m,t,c)$, it follows that
+      \[
+        \hat{f}(t) = \psi(y,m,t,c)e^{2\pi im\frac{a}{c}+2\pi it\frac{r}{c}-2\pi ty}.
+      \]
+      By the Poisson summation formula and the identity theorem, we have
+      \[
+        I_{c,r}(z,\psi) = \sum_{t \in \Z}(\psi(y,m,t,c)e^{2\pi im\frac{a}{c}+2\pi it\frac{r}{c}})e^{2\pi itz},
+      \]
+      for all $z \in \H$. Substituting this back into the Eisenstein series gives a form of the Fourier series:
+      \begin{align*}
+        (P_{m,\chi,\mf{a}}|\s_{\mf{b}})(z,\psi) &= \d_{\mf{a},\mf{{b}}}\psi(\Im(z))e^{2\pi imz}+\sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}} \\ r \in \mc{D}_{\mf{a},\mf{b}}}}\cchi(r)\sum_{t \in \Z}\psi(y,m,t,c)e^{2\pi im\frac{a}{c}+2\pi it\frac{r}{c}}e^{2\pi itz} \\
+        &= \sum_{t \in \Z}\left(\d_{\mf{a},\mf{b}}\d_{m,t}\psi(\Im(z))+\sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}} \\ r \in \mc{D}_{\mf{a},\mf{b}}}}\cchi(r)\psi(y,m,t,c)e^{2\pi im\frac{a}{c}+2\pi it\frac{r}{c}}\right)e^{2\pi itz} \\
+        &= \sum_{t \in \Z}\left(\d_{\mf{a},\mf{b}}\d_{m,t}\psi(\Im(z))+\sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}}}}\psi(y,m,t,c)\sum_{r \in \mc{D}_{\mf{a},\mf{b}}}\cchi(r)e^{2\pi im\frac{a}{c}+2\pi it\frac{r}{c}}\right)e^{2\pi itz}.
+      \end{align*}
+      We will simplify the innermost sum. Since $a$ is the inverse for $r$ modulo $c$, the innermost sum above becomes
+      \[
+        \sum_{r \in \mc{D}_{\mf{a},\mf{b}}}\cchi(r)e^{2\pi im\frac{a}{c}+2\pi it\frac{r}{c}} = \sum_{r \in \mc{D}_{\mf{a},\mf{b}}}\cchi(\conj{a})e^{2\pi im\frac{a}{c}+2\pi it\frac{\conj{a}}{c}} = \sum_{r \in \mc{D}_{\mf{a},\mf{b}}}\chi(a)e^{\frac{2\pi i(am+\conj{a}t)}{c}} = S_{\chi,\mf{a},\mf{b}}(m,t,c).
+      \]
+      So at last, we obtain our desired Fourier series:
+      \[
+        (P_{m,\chi,\mf{a}}|\s_{\mf{b}})(z) = \sum_{t \in \Z}\left(\d_{\mf{a},\mf{b}}\d_{m,t}\psi(\Im(z))+\sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}}}}\psi(y,m,t,c)S_{\chi,\mf{a},\mf{b}}(m,t,c)\right)e^{2\pi itz}.
+      \]
+    \end{proof}
+
+    We can now derive the first half of the Kuznetsov trace formula by computing the inner product between $P_{n,\chi,\mf{a}}(z,\psi)$ and $P_{m,\chi,\mf{b}}(z,\vphi)$: 
+    \begin{align*}
+      \<P_{n,\chi,\mf{a}}(\cdot,\psi),P_{m,\chi,\mf{b}}(\cdot,\vphi)\> &= \frac{1}{V_{\G_{0}(N)}}\int_{\mc{F}_{\G_{0}(N)}}P_{n,\chi,\mf{a}}(z,\psi)\conj{P_{m,\chi,\mf{b}}(z,\vphi)}\,d\mu \\
+      &= \frac{1}{V_{\G_{0}(N)}}\int_{\mc{F}_{\G_{0}(N)}}\sum_{\g \in \G_{\mf{b}}\backslash\G_{0}(N)}\chi(\g)P_{n,\chi,\mf{a}}(z,\psi)\conj{\vphi(\Im(\s_{\mf{b}}^{-1}\g z))}e^{-2\pi im\conj{\s_{\mf{b}}^{-1}\g z}}\,d\mu \\
+      &= \frac{1}{V_{\G_{0}(N)}}\int_{\mc{F}_{\G_{0}(N)}}\sum_{\g \in \G_{\mf{b}}\backslash\G_{0}(N)}P_{n,\chi,\mf{a}}(\g z,\psi)\conj{\vphi(\Im(\s_{\mf{b}}^{-1}\g z))}e^{-2\pi im\conj{\s_{\mf{b}}^{-1}\g z}}\,d\mu \\
+      &= \frac{1}{V_{\G_{0}(N)}}\int_{\mc{F}_{\s_{\mf{b}}^{-1}\G_{0}(N)\s_{\mf{b}}}}\sum_{\g \in \G_{\mf{b}}\backslash\G_{0}(N)}P_{n,\chi,\mf{a}}(\g\s_{\mf{b}}z,\psi)\conj{\vphi(\Im(\s_{\mf{b}}^{-1}\g\s_{\mf{b}}z))}e^{-2\pi im\conj{\s_{\mf{b}}^{-1}\g\s_{\mf{b}}z}}\,d\mu \\
+      &= \frac{1}{V_{\G_{0}(N)}}\int_{\mc{F}_{\s_{\mf{b}}^{-1}\G_{0}(N)\s_{\mf{b}}}}\sum_{\g \in \G_{\infty}\backslash\s_{\mf{b}}^{-1}\G_{0}(N)\s_{\mf{b}}^{-1}}P_{n,\chi,\mf{a}}(\s_{\mf{b}}\g z,\psi)\conj{\vphi(\Im(\g z))}e^{-2\pi im\conj{\g z}}\,d\mu \\
+      &= \frac{1}{V_{\G_{0}(N)}}\int_{\G_{\infty}\backslash\H}(P_{n,\chi,\mf{a}}|\s_{\mf{b}})(z,\psi)\conj{\vphi(\Im(z))}e^{-2\pi im\conj{z}}\,d\mu,
+    \end{align*}
+    where in the third line we have used the automorphy of $P_{n,\chi,\mf{a}}(z,\psi)$, in the forth and fifth lines we have made the change of variables $z \to \s_{\mf{b}}z$ and $\g \to \s_{\mf{b}}\g\s_{\mf{b}}^{-1}$ respectively, and in the sixth line we have unfolded. Now substitute in the Fourier series of $P_{n,\chi,\mf{a}}(z,\psi)$ at the $\mf{b}$ cusp to obtain
+    \[
+      \frac{1}{V_{\G_{0}(N)}}\int_{\G_{\infty}\backslash\H}\sum_{t \in \Z}\left(\d_{\mf{a},\mf{b}}\d_{n,t}\psi(\Im(z))+\sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}}}}\psi(y,n,t,c)S_{\chi,\mf{a},\mf{b}}(n,t,c)\right)\conj{\vphi(\Im(z))}e^{2\pi itz-2\pi im\conj{z}}\,d\mu,
+    \]
+    which is equivalent to
+    \[
+      \frac{1}{V_{\G_{0}(N)}}\int_{0}^{\infty}\int_{0}^{1}\sum_{t \ge 1}\left(\d_{\mf{a},\mf{b}}\d_{n,t}\psi(y)+\sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}}}}\psi(y,n,t,c)S_{\chi,\mf{a},\mf{b}}(n,t,c)\right)\conj{\vphi(y)}e^{2\pi i(t-m)x}e^{-2\pi(t+m)y}\,\frac{dx\,dy}{y^{2}}.
+    \]
+    By the dominated convergence theorem, we can interchange the sum and the two integrals. Then \cref{equ:Dirac_integral_representation} implies that the inner integral cuts off all of the terms except the diagonal $t = m$. This leaves
+    \[
+      \frac{1}{V_{\G_{0}(N)}}\int_{0}^{\infty}\left(\d_{\mf{a},\mf{b}}\d_{n,m}\psi(y)+\sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}}}}\psi(y,n,m,c)S_{\chi,\mf{a},\mf{b}}(n,m,c)\right)\conj{\vphi(y)}e^{-4\pi my}\,\frac{dy}{y^{2}}.
+    \]
+    Interchanging the integral and the remaining sum by the dominated convergence theorem again, we arrive at
+    \[
+      \<P_{n,\chi,\mf{a}}(\cdot,\psi),P_{m,\chi,\mf{b}}(\cdot,\vphi)\> = \d_{\mf{a},\mf{b}}\d_{n,m}(\psi,\vphi)_{n,m}+\sum_{c \in \mc{C}_{\mf{a},\mf{b}}}S_{\chi,\mf{a},\mf{b}}(n,m,c)V(n,m,c,\psi,\vphi),
+    \]
+    where we have set
+    \[
+      (\psi,\vphi)_{n,m} = \frac{1}{V_{\G_{0}(N)}}\int_{0}^{\infty}\psi(y)\conj{\vphi(y)}e^{-2\pi(n+m)y}\,\frac{dy}{y^{2}},
+    \]
+    and
+    \[
+      V(n,m,c;\psi,\vphi) = \frac{1}{V_{\G_{0}(N)}}\int_{0}^{\infty}\int_{\Im(z) = y}\psi\left(\frac{y}{|cz|^{2}}\right)\conj{\vphi(y)}e^{-\frac{2\pi im}{c^{2}z}-2\pi inz-4\pi my}\,\frac{dz\,dy}{y^{2}}.
+    \]
+    This is the first half of the Kuznetsov trace formula. For the second half, \cref{thm:the_full_spectral_resolution} gives
+    \[
+      P_{n,\chi,\mf{a}}(\cdot,\psi) = \sum_{j \ge 0}\<P_{n,\chi,\mf{a}}(\cdot,\psi),u_{j}\>u_{j}(z)+\sum_{\mf{a}}\frac{1}{4\pi}\int_{-\infty}^{\infty}\left\<P_{n,\chi,\mf{a}}(\cdot,\psi),E_{\mf{a}}\left(\cdot,\frac{1}{2}+ir\right)\right\>E_{\mf{a}}\left(z,\frac{1}{2}+ir\right)\,dr,
+    \]
+    and
+    \[
+      P_{m,\chi,\mf{a}}(\cdot,\vphi) = \sum_{j \ge 0}\<P_{m,\chi,\mf{a}}(\cdot,\vphi),u_{j}\>u_{j}(z)+\sum_{\mf{a}}\frac{1}{4\pi}\int_{-\infty}^{\infty}\left\<P_{m,\chi,\mf{a}}(\cdot,\vphi),E_{\mf{a}}\left(\cdot,\frac{1}{2}+ir\right)\right\>E_{\mf{a}}\left(z,\frac{1}{2}+ir\right)\,dr.
+    \]
+    By orthonormality, it follows that
+    \begin{align*}
+      \<P_{n,\chi,\mf{a}}(\cdot,\psi),P_{m,\chi,\mf{a}}(\cdot,\vphi)\> &= \sum_{j}\<P_{n,\chi,\mf{a}}(\cdot,\psi),u_{j}\>\conj{\<P_{m,\chi,\mf{a}}(\cdot,\vphi),u_{j}\>} \\
+      &+\sum_{\mf{a}}\frac{1}{4\pi}\int_{-\infty}^{\infty}\left\<P_{n,\chi,\mf{a}}(\cdot,\psi),E_{\mf{a}}\left(\cdot,\frac{1}{2}+ir\right)\right\>\conj{\left\<P_{m,\chi,\mf{a}}(\cdot,\vphi),E_{\mf{a}}\left(\cdot,\frac{1}{2}+ir\right)\right\>}\,dr.
+    \end{align*}
+    Now we must simplify the remaining inner products. Let $f \in \mc{L}(N,\chi)$ with Fourier series
+    \[
+      f(z) = a^{+}(0)y^{\frac{1}{2}+\nu}+a^{-}(0)y^{\frac{1}{2}-\nu}+\sum_{n \neq 0}a(n)\sqrt{y}K_{\nu}(2\pi|n|y)e^{2\pi inx}.
+    \]
+    By unfolding the integral in the Petersson inner product and cutting off everything except the diagonal using \cref{equ:Dirac_integral_representation} exactly as in the case for $\<P_{n,\chi,\mf{a}}(\cdot,\psi),P_{m,\chi,\mf{a}}(\cdot,\vphi)\>$, we see that
+    \[
+      \<P_{n,\chi,\mf{a}}(\cdot,\psi),f\> = \frac{1}{V_{\G}}\int_{0}^{\infty}\conj{a(n)\sqrt{y}K_{\nu}(2\pi ny)}\psi(y)e^{-4\pi my}\frac{dy}{y^{2}}.
+    \]
+    Now set
+    \[
+      \w_{\nu}(n,\psi) = \frac{1}{V_{\G}}\int_{0}^{\infty}\sqrt{y}K_{\nu}(2\pi|n|y)\conj{\psi(y)}e^{-4\pi my}\frac{dy}{y^{2}}.
+    \]
+    Then it follows from the Fourier series of cusp forms and Eisenstein series that
+    \[
+      \<P_{n,\chi,\mf{a}}(\cdot,\psi),u_{j}\> = \conj{a_{j}(n)\w_{\nu_{j}}(n,\psi)},
+    \]
+    for $j \ge 1$ and
+    \[
+      \left\<P_{n,\chi,\mf{a}}(\cdot,\psi),E_{\mf{a}}\left(\cdot,\frac{1}{2}+ir\right)\right\> = \conj{\tau_{\mf{a}}\left(n,\frac{1}{2}+ir\right)\w_{ir}(n,\psi)}.
+    \]
+    In particular, $\<P_{n,\chi,\mf{a}}(\cdot,\psi),u_{0}\> = 0$. So we obtain
+    \begin{align*}
+      \<P_{n,\chi,\mf{a}}(\cdot,\psi),P_{m,\chi,\mf{a}}(\cdot,\vphi)\> &= \sum_{j \ge 1}\conj{a_{j}(n)}a_{j}(m)\conj{\w(n,\psi)}\w(m,\vphi) \\
+      &+\sum_{\mf{a}}\frac{1}{4\pi}\int_{-\infty}^{\infty}\conj{\tau_{\mf{a}}\left(n,\frac{1}{2}+ir\right)}\tau_{\mf{a}}\left(m,\frac{1}{2}+ir\right)\conj{\w(n,\psi)}\w(m,\vphi)\,dr.
+    \end{align*}
+    This is the second half of the Kuznetsov trace formula. Equating the first and second halves we get the \textbf{Kuznetsov trace formula}\index{Kuznetsov trace formula}:
+    \begin{align*}
+      \d_{n,m}(\psi,\vphi)+\sum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N}}}\frac{1}{c}S_{\chi}(n,m,c)&V(n,m,c,\psi,\vphi) = \sum_{j \ge 1}\conj{a_{j}(n)}a_{j}(m)\conj{\w(n,\psi)}\w(m,\vphi) \\
+      &+\sum_{\mf{a}}\frac{1}{4\pi}\int_{-\infty}^{\infty}\conj{\tau_{\mf{a}}\left(n,\frac{1}{2}+ir\right)}\tau_{\mf{a}}\left(m,\frac{1}{2}+ir\right)\conj{\w(n,\psi)}\w(m,\vphi)\,dr.
+    \end{align*}
+    The left-hand side is called the \textbf{geometric side}\index{geometric side} and the right-hand side is called the \textbf{spectral side}\index{spectral side}. We collect our work as a theorem:
+
+    \begin{theorem}[Kuznetsov trace formula]
+      Let $\{u_{j}\}_{j \ge 1}$ be an orthonormal basis of Hecke-Maass \\ eigenforms for $\mc{L}(N,\chi)$ of types $\nu_{j}$ with Fourier coefficients $a_{j}(n)$. Then for any positive integers $n,m \ge 1$, we have
+      \begin{align*}
+        \d_{n,m}(\psi,\vphi)+\sum_{\substack{c \ge 1 \\ c \equiv 0 \tmod{N}}}\frac{1}{c}S_{\chi}(n,m,c)&V(n,m,c,\psi,\vphi) = \sum_{j \ge 1}\conj{a_{j}(n)}a_{j}(m)\conj{\w(n,\psi)}\w(m,\vphi) \\
+        &+\sum_{\mf{a}}\frac{1}{4\pi}\int_{-\infty}^{\infty}\conj{\tau_{\mf{a}}\left(n,\frac{1}{2}+ir\right)}\tau_{\mf{a}}\left(m,\frac{1}{2}+ir\right)\conj{\w(n,\psi)}\w(m,\vphi)\,dr.
+      \end{align*}
+    \end{theorem}
+
+  \section{\todo{Dedekind Zeta Functions}}
+    \subsection*{The Definition \& Euler Product}
+      We can associate and $L$-function to every number field. Let $K$ be a number field of degree $d$ and signature $(r_{1},r_{2})$. The \textbf{Dedekind zeta function}\index{Dedekind zeta function} $\z_{K}(s)$ is defined by the following Dirichlet series
+      \[
+        \z_{K}(s) = \sum_{n \ge 1}\frac{a_{K}(n)}{n^{s}}.
+      \]
+      We will see that $\z_{K}(s)$ is a Selberg class $L$-function. We have already shown that the coefficients $a_{K}(n)$ are polynomially bounded, for \cref{equ:ideals_of_fixed_norm_bound} implies $a_{K}(n) \le \s_{0}(n)^{d} \ll_{\e} n^{\e}$ (recall \cref{prop:sum_of_divisors_growth_rate}). Therefore $\z_{K}(s)$ is locally absolutely uniformly convergent for $\s > 1$. To determine the Euler product, we need to express $\z_{K}(s)$ in another form. Since $\z_{K}(s)$ converges absolutely, we can write
+      \[
+        \z_{K}(s) = \sum_{\mf{a}}\frac{1}{\Norm(\a)^{s}},
+      \]
+      where the sum is over all integral ideals of $K$. Since the norm is completely multiplicative by \cref{prop:ideal_norm_is_multiplicative}, the unique factorization of integral ideals implies that we can express $\z_{K}(s)$ as the infinite product
+      \[
+        \z_{K}(s) = \prod_{\mf{p}}(1-\Norm(\mf{p})p^{-s})^{-1},
+      \]
+      for $\s > 1$, and where the product is over all prime integral ideals $\mf{p}$ of $K$. Since each such ideal is above a unique prime $p$ and this product is absolutely convergent for $\s > 1$, it can be expressed as
+      \[
+        \z_{K}(s) = \prod_{p}\prod_{\text{$\mf{p}$ above $p$}}(1-\Norm(\mf{p})p^{-s})^{-1} = \prod_{p}\prod_{1 \le i \le r_{p}}(1-p^{-f_{p}(\mf{p}_{i})s})^{-1},
+      \]
+      where $r_{p}$ is the number of prime integral ideals $\mf{p}_{1},\ldots,\mf{p}_{r_{p}}$ above $p$. As finitely many primes ramify by \cref{thm:ramification_division_equivalence}, \cref{prop:inertia_ramification_relation} implies that all but finitely many primes $p$ satisfy
+      \[
+        d = \sum_{1 \le i \le r_{p}}f_{p}(\mf{p}_{i}).
+      \]
+      In particular, at least one prime does. Therefore, letting $\w_{p,i}$ be a primitive $f_{p}(\mf{p}_{i})$-th root of unity, we have the degree $d$ Euler product:
+      \[
+        \z_{K}(s) = \prod_{p}\prod_{\substack{1 \le i \le r_{p} \\ 1 \le k \le f_{p}(\mf{p}_{i})}}(1-\w_{p,i}^{k}p^{-s})^{-1},
+      \]
+      in this region as well. The local factor at $p$ is
+      \[
+        \z_{K,p}(s) = \prod_{\substack{1 \le i \le r_{p} \\ 1 \le k \le f_{p}(\mf{p}_{i})}}(1-\w_{p,i}^{k}p^{-s})^{-1},
+      \]
+      with local roots $\w_{p,i}^{k}$ and $\sum_{1 \le i \le r_{p}}(e_{p}(\mf{p}_{i})-1)f_{p}(\mf{p}_{i})$ many local roots $0$.
+    \subsection*{\todo{The Integral Representation: Part I}}
+    \subsection*{\todo{The Hecke Theta Function}}
+    \subsection*{\todo{The Integral Representation: Part II}}
+    \subsection*{\todo{The Functional Equation}}
+      \todo{xxx} We identify the gamma factor of $\z_{K}(s)$ to be
+      \[
+        \g(s,\z_{K}) = \pi^{-\frac{ds}{2}}\G\left(\frac{s}{2}\right)^{r_{1}+r_{2}}\Gamma\left(\frac{s+1}{2}\right)^{r_{2}},
+      \]
+      with $\k_{i} = 0$ for $1 \le i \le r_{1}+r_{2}$ and $\k_{i} = 1$ for $r_{1}+r_{2}+1 \le i \le d$ the local roots at infinity. Clearly these satisfy the required bounds. The conductor is $q(\z_{K}) = |\D_{K}|$ and $p$ is ramified if and only if it is ramified in $K$ by \cref{thm:ramification_division_equivalence}. Note that if $p$ is unramified then $\sum_{1 \le i \le r_{p}}(e_{p}(\mf{p}_{i})-1)f_{p}(\mf{p}_{i}) = 0$ so that all local roots are of the form $\w_{p,i}^{k} \neq 0$. The completed Dedekind zeta function is
+      \[
+        \L(s,\z_{K}) = |\D_{K}|^{\frac{s}{2}}\pi^{-\frac{ds}{2}}\G\left(\frac{s}{2}\right)^{r_{1}+r_{2}}\Gamma\left(\frac{s+1}{2}\right)^{r_{2}}\z_{K}(s),
+      \]
+      with functional equation
+      \[
+        \L(s,\z_{K}) = \L(1-s,\z_{K}).
+      \]
+      This is the function equation of $\z_{K}(s)$ and from it we see that the root number is $\e(\z_{K}) = 1$ and that $\z_{K}(s)$ is self-dual. To see that the order is $1$, multiply by $(s-1)$ to clear the polar divisor. As the integrals in the integral representation are locally absolutely uniformly convergent, computing the order amounts to estimating the gamma factor. And because the reciprocal of the gamma function is of order $1$, we have
+      \[
+        \frac{1}{\g(s,\z_{K})} \ll_{\e} e^{|s|^{1+\e}}.
+      \]
+      Therefore the reciprocal of the gamma factor is also of order $1$ and it follows that
+      \[
+        (s-1)\z_{K}(s) \ll_{\e} e^{|s|^{1+\e}}.
+      \]
+      This shows $(s-1)\z_{K}(s)$ is of order $1$ and hence $\z_{K}(s)$ is too after removing the polar divisor. We collect our work in the following theorem:
+
+      \begin{theorem}\label{thm:Dedekind_Selberg}
+        Let $K$ be a number field of degree $d$ and signature $(r_{1},r_{2})$. Then $\z_{K}(s)$ is a Selberg class $L$-function. For $\s > 1$, it has a degree $d$ Euler product given by
+        \[
+          \z_{K}(s) = \prod_{p}\prod_{\substack{1 \le i \le r_{p} \\ 1 \le k \le f_{p}(\mf{p}_{i})}}(1-\w_{p,i}^{k}p^{-s})^{-1},
+        \]
+        Moreover, it admits meromorphic continuation to $\C$, possesses the functional equation
+        \[
+          |\D_{K}|^{\frac{s}{2}}\pi^{-\frac{ds}{2}}\G\left(\frac{s}{2}\right)^{r_{1}+r_{2}}\Gamma\left(\frac{s+1}{2}\right)^{r_{2}}\z_{K}(s) = \L(s,\z_{K}) = \L(1-s,\z_{K}),
+        \]
+        and has a simple pole at $s = 1$.
+      \end{theorem}
+
+      The matter of determining the pole of $\z_{K}(s)$ at $s = 1$ is highly nontrivial and we reserve the argument for later.
+    \subsection*{Imprimitivity}
+      Dedekind zeta functions are generally imprimitive $L$-functions. We illustrate this in the case of quadratic number fields:
+
+      \begin{theorem}
+        Let $K = \Q(\sqrt{d})$ be a quadratic number field and let $\chi_{\D_{d}}$ be the quadratic character given by the Kronecker symbol. Then
+        \[
+          \z_{K}(s) = \z(s)L(s,\chi_{\D_{d}}).
+        \]
+      \end{theorem}
+      \begin{proof}
+        By the identity theorem it suffices to prove this on a set containing a limit point. Therefore we may assume $\s > 1$. By \cref{prop:factorization_of_primes_quadratic}, the Euler product of $\z_{K}$ is given by
+        \begin{align*}
+          \z_{K}(s) &= \prod_{\substack{p \\ \chi_{\D_{d}}(p) = 1}}(1-p^{-s})^{-1}(1-p^{-s})^{-1}\prod_{\substack{p \\ \chi_{\D_{d}}(p) = -1}}(1-p^{-s})^{-1}(1+p^{-s})^{-1}\prod_{\substack{p \\ \chi_{\D_{d}}(p) = 0}}(1-p^{-s})^{-1} \\
+          &= \z(s)\prod_{\substack{p \\ \chi_{\D_{d}}(p) = 1}}(1-p^{-s})^{-1}\prod_{\substack{p \\ \chi_{\D_{d}}(p) = -1}}(1+p^{-s})^{-1}\prod_{\substack{p \\ \chi_{\D_{d}}(p) = 0}}1 \\
+          &= \z(s)L(s,\chi_{\D_{p}}).
+        \end{align*}
+        This claim now follows.
+      \end{proof}
 \chapter{The Theory of Number Fields}
   Introductory analytic number theory is done over $\Q$. The associated set of integers $\Z$ is a ring inside $\Q$. Moreover, the fundamental theorem of arithmetic tells us that prime factorization exists in $\Z$. That is, every integer is uniquely a product of primes (up to reordering of the factors). The study of number fields is concerned with finite extensions of $\Q$ where there might no longer be prime factorization. In the following, we discuss the structure of number fields, their associated ring of integers, and the properties of prime factorization.
   \section{Numbers Fields \& Algebraic Integers}
@@ -837,8 +1101,89 @@
       \]
       which is at most $\s_{0}(p^{k})^{n} = (k+1)^{n}$. This proves the claim in the case $m$ is a prime power. By multiplicativity of $a_{K}(m)$ and the divisor function, it follows that the number of integral ideals of norm $m$ is at most $\s_{0}(m)^{n}$ as desired.
     \end{proof}
-  \section{\todo{Minkowski Space}}
-    Let $K$ be number field of degree $n$ and let $\s_{1},\ldots,\s_{n}$ be the $n$ distinct $\Q$-embeddings of $K$ into $\conj{\Q}$. In particular, these embeddings are $\Q$-embeddings of $K$ into $\C$. Let $r_{1}$ and $2r_{2}$ be the number of real and complex embeddings respectively (the complex embeddings occur in pairs of two because if $\s$ is a complex embedding then so is its conjugate $\conj{\s}$). We call the pair $(r_{1},r_{2})$ the \textbf{signature}\index{signature} of $K$. In particular,
+  \section{Lattices}
+    Before we can continue with the study of number fields, we need to make a detour and discuss some geometry of lattices. This is essential because it will provide us with a geometric interpretation for how the ring of integers $\mc{O}_{K}$ sits inside the number field $K$. We say that $\L \subset \R^{n}$ is a \textbf{lattice}\index{lattice} if $\L$ is a free abelian group of rank $n$. In particular, any lattice $\L$ is of the form
+    \[
+      \L = \Z v_{1}+\cdots+\Z v_{n},
+    \]
+    for some basis $\{v_{1},\ldots,v_{n}\}$. Notice that $\L$ acts on $\R^{n}$ by automorphisms given by translation. That is, we have a group action
+    \[
+      \L \x \R^{n} \to \R^{n} \qquad (\l,x) \to \l+x.
+    \]
+    Moreover, $\L$ acts properly discontinuously on $\R^{n}$ (see \cref{append:Fundamental_Domains}). To see this, let $x \in \R^{n}$ and let $\d_{x}$ be such that $0 < \d_{x} < \min_{1 \le i \le n}(x-v_{i})$. Then taking $U_{x}$ to be the ball of radius $\d_{x}$ about $x$, the intersection $\l+U_{x} \cap U_{x}$ is empty unless $\l = 0$. As $\L$ is also discrete, it follows by \cref{prop:quotient_by_discrete_property_discontinuously} that $\R^{n}/\L$ is also connected Hausdorff (recall that $\R^{n}$ is connected Hausdorff). In particular, $\R^{n}/\L$ admits a fundamental domain
+    \[
+      \mc{P} = \{t_{1}v_{1}+\cdots+t_{n}v_{n} \in \R^{n}:\text{$0 \le t_{i} \le 1$ for $1 \le i \le n$}\}.
+    \]
+    Indeed, since $\L$ acts by translations, it is obvious that $\mc{P}$ is a fundamental domain for $\R^{n}/\L$. Moreover, any translation of $\mc{P}$ by an element of $\L$ is also a fundamental domain. Recall that the volume $\Vol(X)$ of a measurable subset $X \subseteq \R^{n}$ is defined as
+    \[
+      \Vol(X) = \int_{X}\,dx_{1} \cdots dx_{n}.
+    \]
+    Then we define the \textbf{volume}\index{volume} $V_{\L}$ of $\L$ by
+    \[
+      V_{\L} = \mathrm{Vol}(\mc{P}).
+    \]
+    That is, the volume of $\L$ is the volume of the fundamental domain $\mc{P}$. Since the measures $dx_{i}$ for $1 \le i \le n$ are translation invariant, $V_{\L}$ is independent of the choice of fundamental domain. If $\L$ is given by the basis $\{v_{1},\ldots,v_{n}\}$, we write
+    \[
+      v_{i} = \sum_{1 \le i \le n}v_{i,j}e_{j},
+    \]
+    where the $e_{i}$ are the standard basis vectors, and define the \textbf{generator matrix}\index{generator matrix} $P$ of $\L$ by
+    \[
+      P = \begin{pmatrix} v_{1,1} & \cdots & v_{1,n} \\ \vdots & & \vdots \\ v_{n,1} & \cdots & v_{n,n} \end{pmatrix}.
+    \]
+    The following proposition shows that the volume of $\L$ is essentially given by the determinant of the generator matrix:
+
+    \begin{proposition}\label{prop:lattice_volume_generator_matrix}
+      Let $\L$ be a lattice in $\R^{n}$ and $P$ be its generator matrix. Then
+      \[
+        V_{\L} = |\det(P)|.
+      \]
+    \end{proposition}
+    \begin{proof}
+      Making the change of variables $x_{i} \to t_{i}$ for $1 \le i \le n$ where
+      \[
+        x_{1}e_{1}+\cdots+x_{n}e_{n} = t_{1}v_{1}+\cdots+t_{n}v_{n},
+      \]
+      the corresponding Jacobian matrix is $P$ because this is the base change matrix from the standard basis to the basis $\{v_{1},\ldots,v_{n}\}$. Then
+      \[
+        V_{\L} = \int_{\mc{P}}\,dx_{1} \cdots dx_{n} = |\det(P)|\int_{[0,1]^{n}}\,dt_{1} \cdots dt_{n} = |\det(P)|,
+      \]
+      as claimed.
+    \end{proof}
+
+    The crucial result we require is \textbf{Minkowski's lattice point theorem}\index{Minkowski's lattice point theorem} which states that, under some mild conditions, a set of sufficiently large volume contains a nonzero point of a lattice:
+
+    \begin{theorem}[Minkowski's lattice point theorem]
+      Let $\L$ be a lattice in $\R^{n}$. Suppose $X \subset \R^{n}$ is a compact convex symmetric set. If
+      \[
+        \Vol(X) \ge 2^{n}V_{\L},
+      \]
+      then there exists a nonzero $\l \in L$ with $\l \in X$ 
+    \end{theorem}
+    \begin{proof}
+      We will prove the claim depending on if the inequality is strict or not. First suppose $\Vol(X) > 2^{n}V_{\L}$. Consider the linear map
+      \[
+        \phi:\frac{1}{2}X \to \R^{n}/\L \qquad \frac{1}{2}x \mapsto \frac{1}{2}x \pmod{\L}.
+      \]
+      If $\phi$ were injective, then
+      \[
+        \Vol\left(\frac{1}{2}X\right) = \frac{1}{2^{n}}\Vol(X) \le V_{\L}, 
+      \]
+      so that $\Vol(X) \le  2^{n}V_{\L}$. This is a contradiction, so $\phi$ cannot be injective. Hence there exists distinct $x_{1},x_{2} \in \frac{1}{2}X$ such that $\phi(x_{1}) = \phi(x_{2})$. Thus $2x_{1},2x_{2} \in X$. In particular, since $X$ is symmetric we must have $-2x_{2} \in X$. But then the fact that $X$ is convex implies that
+      \[
+        \left(1-\frac{1}{2}\right)2x_{1}+\frac{1}{2}(-2x_{2}) = x_{1}-x_{2} \in X.
+      \]
+      Note that $x_{1}-x_{2} \in \L$ because $\phi(x_{1}) = \phi(x_{2})$ and $\phi$ is linear. Then $\l = x_{1}-x_{2}$ is a nonzero element of $\L$ with $\l \in X$. Now suppose $\Vol(X) = 2^{n}V_{\L}$. Then for any $\e > 0$, we have
+      \[
+        \Vol((1+\e)X) = (1+\e)^{n}\Vol(X) = (1+\e)^{n}2^{n}V_{\L} > 2^{n}V_{\L}.
+      \]
+      So what we have just proved shows that there exists a nonzero $\l_{\e} \in \L$ with $\l_{\e} \in (1+\e)X$. In particular, if $\e \le 1$ then $\l_{\e} \in 2X \cap \L$. The set $2X \cap \L$ is compact and discrete, because $X$ is compact and $\L$ is discrete, and therefore is finite. But as this holds for all $\e \le 1$, the sequence $(\l_{\frac{1}{n}})_{n \ge 1}$ belongs to the finite set $2X \cap \L$ and so must converge to a point $\l$. Since $\L$ is discrete and the $\l_{\frac{1}{n}}$ are nonzero so too is $\l$. As
+      \[
+        \l \in \bigcap_{n \ge 1}\left(1+\frac{1}{n}\right)X,
+      \]
+      and $X$ is closed, $\l \in X$ as well. Thus we have found a nonzero $\l \in L$ with $\l \in X$ and we are done.
+    \end{proof}
+
+    We will now work in the setting of number fields. Let $K$ be number field of degree $n$ and let $\s_{1},\ldots,\s_{n}$ be the $n$ distinct $\Q$-embeddings of $K$ into $\conj{\Q}$. In particular, these embeddings are $\Q$-embeddings of $K$ into $\C$. Let $r_{1}$ and $2r_{2}$ be the number of real and complex embeddings respectively (the complex embeddings occur in pairs of two because if $\s$ is a complex embedding then so is its conjugate $\conj{\s}$). We call the pair $(r_{1},r_{2})$ the \textbf{signature}\index{signature} of $K$. In particular,
     \[
       n = r_{1}+2r_{2}.
     \]
@@ -1059,7 +1404,6 @@
     \begin{proof}
       Since the norm of every integral ideal is at least $1$, $\pi < 4$, and $r_{2}$ is at most $n$, the desired inequality follows immediately from Minkowski's bound. Now suppose $n \ge 2$. In the case $n = 2$, the lower bound is larger than $1$ so that $|\D_{K}|$ is at least $2$ for every quadratic number field. As $n^{n} \ge n!$ for all $n \ge 1$ (which easily follows by induction), $\left(\frac{\pi}{4}\right)^{\frac{n}{2}}\frac{n^{n}}{n!}$ is an increasing function in $n$. Therefore $|\D_{K}| \ge 2$ for all $n \ge 2$ so that $|\D_{K}|$ has a prime divisor. Then \cref{thm:ramification_division_equivalence} implies that at least one prime is ramified in $K$.
     \end{proof}
-  \section{\todo{Dirichlet's Unit Theorem}}
   \section{Quadratic Number Fields}
     We will now classify and discuss the structure of quadratic number fields. We first show that quadratic number fields are exactly those where we adjoint the square-root of a fundamental discriminant:
 
@@ -1177,3 +1521,4 @@
 
     From \cref{prop:factorization_of_primes_quadratic}, we see that the factorization of primes in $\Q(\sqrt{d})$ is controlled by the quadratic character $\chi_{\D_{d}}$ attached to the fundamental discriminant $\D_{d}$. In other words, the factorization of $p$ depends completely upon if $\D_{d}$ is a square modulo $p$.
 
+\end{document}

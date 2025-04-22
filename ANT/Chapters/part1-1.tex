@@ -4,8 +4,10 @@
     \item Asymptotics,
     \item Dirichlet Characters,
     \item Special Sums,
+    \item Lattices,
+    \item The Gamma Function,
+    \item Locally Compact Groups,
     \item Integration Techniques \& Transforms,
-    \item The Gamma Function.
   \end{itemize}
   This is not an extensive list, but it is a decent one. In the interest of keeping this text almost completely self-contained, this chapter is dedicated to the basics of these topics as they are the gadgets that will take center stage in our later investigations. The concepts presented in this chapter are tools in a tool box rather than being pure analytic number theory. In order to improve the readability of the remainder of the text we will use the results presented here without reference unless it is a matter of clarity. As for standard knowledge, we assume familiarity with basic number theory, complex analysis, real analysis, functional analysis, topology, and algebra. We have also outsourced specific subtopics to the appendix and we will reference them when necessary.
   \section{Notational Conventions}
@@ -17,7 +19,8 @@
       \item A prime $p \in \Z$ is always taken to be positive.
       \item The symbol $\e$ denotes a small positive constant ($\e > 0$) that is not necessarily the same from line to line.
       \item If $a \in (\Z/m\Z)^{\ast}$, we will always let $\conj{a}$ denote the multiplicative inverse. That is, $a\conj{a} \equiv 1 \tmod{m}$.
-      \item All continuous, meromorphic, holomorphic, and analytic functions are assumed to be real or complex valued if they are not already specified as such.
+      \item On $\R^{n}$, the inner product and norm are denoted by $\<\cdot,\cdot\>$ and $||\cdot||$ respectively unless specified otherwise.
+      \item By analytic we mean real analytic or complex analytic accordingly.
       \item For the complex variables $z$, $s$, and $u$, we write
       \[
         z = x+iy, \quad s = \s+it, \quad \text{and} \quad u = \tau+ir,
@@ -31,89 +34,89 @@
       \item $\d_{a,b}$ will denote the indicator function for $a = b$. That is, $\d_{a,b} = 1,0$ according to if $a = b$ or not.
     \end{itemize}
   \section{Asymptotics}
-    Throughout we let $z \in \R$ or $z \in \C$. Much of the language of analytic number theory is given in terms of asymptotics (or estimates or bounds) as they allows us to discuss approximate growth and dispense with superfluous constants. For this reason, asymptotics will be the first material that we will present. The asymptotics that we will cover are listed in the following table:
+    Throughout we let $\mathbf{z} \in \R^{n}$ or $\mathbf{z} \in \C^{n}$. Much of the language of analytic number theory is given in terms of asymptotics (or estimates or bounds) as they allows us to discuss approximate growth and dispense with superfluous constants. For this reason, asymptotics will be the first material that we will present. The asymptotics that we will cover are listed in the following table:
     \begin{center}
       \begin{stabular}[1.5]{|c|c|c|}
         \hline
         Asymptotics & Notation \\
         \hline
-        Big O & $f(z) = O(g(z))$ \\
+        Big O & $f(\mathbf{z}) = O(g(\mathbf{z}))$ \\
         \hline
-        Vinogradov's symbol & $f(z) \ll g(z)$ \\
+        Vinogradov's symbol & $f(\mathbf{z}) \ll g(\mathbf{z})$ \\
         \hline
-        Order of magnitude symbol & $f(z) \asymp g(z)$ \\
+        Order of magnitude symbol & $f(\mathbf{z}) \asymp g(\mathbf{z})$ \\
         \hline
-        Little o & $f(z) = o(g(z))$ \\
+        Little o & $f(\mathbf{z}) = o(g(\mathbf{z}))$ \\
         \hline
-        Asymptotic equivalence & $f(z) \sim g(z)$ \\
+        Asymptotic equivalence & $f(\mathbf{z}) \sim g(\mathbf{z})$ \\
         \hline
-        Omega symbol & $f(z) = \W(g(z))$ \\
+        Omega symbol & $f(\mathbf{z}) = \W(g(\mathbf{z}))$ \\
         \hline
       \end{stabular}
     \end{center}
-    Implicit in all of these asymptotics is some limiting process $z \to z_{0}$ where $z_{0}$ is finite or $\infty$. If $z_{0}$ is finite, then it is understood that the asymptotic is assumed to hold for all $z$ sufficiently close to $z_{0}$. If $z_{0}$ is infinite, then the asymptotic is assumed to hold for sufficiently large $z$. If the limiting process is not explicitly mentioned, it is assumed to be as $z \to \infty$. Often times, asymptotics will hold for all admissible values of $z$ and this will be clear from context although we still might suppress the specific limiting process.
+    Implicit in all of these asymptotics is some limiting process $\mathbf{z} \to \mathbf{z}_{0}$ where $\mathbf{z}_{0}$ is finite or $\infty$. If $\mathbf{z}_{0}$ is finite, then it is understood that the asymptotic is assumed to hold for all $\mathbf{z}$ sufficiently close to $\mathbf{z}_{0}$ in norm. If $\mathbf{z}_{0}$ is infinite, then the asymptotic is assumed to hold for sufficiently large $\mathbf{z}$. If the limiting process is not explicitly mentioned, it is assumed to be as $\mathbf{z} \to \infty$. Often times, asymptotics will hold for all admissible values of $\mathbf{z}$ and this will be clear from context although we still might suppress the specific limiting process.
 
     \begin{remark}
-      Suppose $f,g:\Z_{\ge 0} \to \C$. Extending $f(n)$ and $g(n)$ by making them piecewise linear so that they are piecewise continuous, we can consider asymptotics with $n$ in place of $z$. All of the following theory still holds. Moreover, if we further take $f(z)$ or $g(z)$ to be a constant function, the following theory will still hold.
+      Suppose $f,g:\Z_{\ge 0}^{d} \to \C$. Extending $f(\mathbf{n})$ and $g(\mathbf{n})$ by making them piecewise linear so that they are piecewise continuous, we can consider asymptotics with $\mathbf{n}$ in place of $\mathbf{z}$. All of the following theory still holds. Moreover, if we further take $f(\mathbf{z})$ or $g(\mathbf{z})$ to be a constant function, the following theory will still hold.
     \end{remark}
 
     Implicit in some asymptotics will there be a constant (such constants are in general not unique and any sufficiently large constant will do). Any such constant is called the \textbf{implicit constant}\index{implicit constant} of the asymptotic. The implicit constant may depend on one or more parameters, $\e$, $\s$, etc. If we wish to make these dependencies known, we use subscripts. If it is possible to choose the implicit constant independent of a certain parameter then we say that the asymptotic is \textbf{uniform}\index{uniform} with respect to that parameter. Moreover, we say that an implicit constant is \textbf{effective}\index{effective} if the constant is numerically computable and \textbf{ineffective}\index{ineffective} otherwise. Moreover, if we are interested in the dependence of an asymptotic on a certain parameter, say $p$, we will refer to the \textbf{$p$-aspect}\index{$p$-aspect} to mean the part of the asymptotic that is dependent upon $p$.
     \subsection*{\texorpdfstring{$O$}{O}-estimates \& Symbols}
-      We say $f(z)$ \textbf{is of order}\index{is of order} $g(z)$ or $f(z)$ is $O(g(z))$ as $z \to z_{0}$ and write $f(z) = O(g(z))$
+      We say $f(\mathbf{z})$ \textbf{is of order}\index{is of order} $g(\mathbf{z})$ or $f(\mathbf{z})$ is $O(g(\mathbf{z}))$ as $\mathbf{z} \to \mathbf{z}_{0}$ and write $f(\mathbf{z}) = O(g(\mathbf{z}))$
       if there is some positive constant $c$ such that
       \[
-        |f(z)| \le c|g(z)|,
+        |f(\mathbf{z})| \le c|g(\mathbf{z})|,
       \]
-      holds as $z \to z_{0}$. We call this an \textbf{$O$-estimate}\index{$O$-estimate} and say that $f(z)$ has \textbf{growth at most}\index{growth at most} $g(z)$. The $O$-estimate says that for $z$ close to $z_{0}$, the size of $f(z)$ grows like $g(z)$.
+      holds as $\mathbf{z} \to \mathbf{z}_{0}$. We call this an \textbf{$O$-estimate}\index{$O$-estimate} and say that $f(\mathbf{z})$ has \textbf{growth at most}\index{growth at most} $g(\mathbf{z})$. The $O$-estimate says that for $\mathbf{z}$ close to $\mathbf{z}_{0}$, the size of $f(\mathbf{z})$ grows like $g(\mathbf{z})$.
       
       \begin{remark}
-        Many authors assume that $g(z)$ is a nonnegative function so that the absolute values on $g(z)$ can be dropped. As we require asymptotics that will be used more generally, we do not make this assumption since one could very well replace $O(g(z))$ with $O(|g(z)|)$. In practice this deviation causes no issue.
+        Many authors assume that $g(\mathbf{z})$ is a nonnegative function so that the absolute values on $g(\mathbf{z})$ can be dropped. As we require asymptotics that will be used more generally, we do not make this assumption since one could very well replace $O(g(\mathbf{z}))$ with $O(|g(\mathbf{z})|)$. In practice this deviation causes no issue.
       \end{remark}
       
-      As a symbol, let $O(g(z))$ stand for a function $f(z)$ that is $O(g(z))$. Then we may use the $O$-estimates in algebraic equations and inequalities. Note that this extends the definition of the symbol because $f(z) = O(g(z))$ means $f(z)$ is $O(g(z))$. Moreover, in algebraic equations and inequalities involving $O$-estimates it is often customary to refer to such an $O$-estimate as an \textbf{error term}\index{error term}. The symbol $\ll$ is known as \textbf{Vinogradov's symbol}\index{Vinogradov's symbol} and it is an alternative way to express $O$-estimates. We write $f(z) \ll g(z)$ as $z \to z_{0}$ if $f(z) = O(g(z))$ as $z \to z_{0}$. We also write $f(z) \gg g(z)$ as $z \to z_{0}$ to mean $g(z) \ll f(z)$ as $z \to z_{0}$. If there is a dependence of the implicit constant on parameters, we use subscripts to denote dependence on these parameters. If both $f(z) \ll g(z)$ and $g(z) \ll f(z)$ as $z \to z_{0}$, then we say $f(z)$ and $g(z)$ have the \textbf{same order of magnitude}\index{same order of magnitude} and write $f(z) \asymp g(z)$ as $z \to z_{0}$. We also say $f(z)$ has \textbf{growth}\index{growth} $g(z)$. If there is a dependence of the implicit constant on parameters, we use subscripts to denote dependence on these parameters. From the definition of the $O$-estimate, this is equivalent to the existence of positive constants $c_{1}$ and $c_{2}$ such that
+      As a symbol, let $O(g(\mathbf{z}))$ stand for a function $f(\mathbf{z})$ that is $O(g(\mathbf{z}))$. Then we may use the $O$-estimates in algebraic equations and inequalities. Note that this extends the definition of the symbol because $f(\mathbf{z}) = O(g(\mathbf{z}))$ means $f(\mathbf{z})$ is $O(g(\mathbf{z}))$. Moreover, in algebraic equations and inequalities involving $O$-estimates it is often customary to refer to such an $O$-estimate as an \textbf{error term}\index{error term}. The symbol $\ll$ is known as \textbf{Vinogradov's symbol}\index{Vinogradov's symbol} and it is an alternative way to express $O$-estimates. We write $f(\mathbf{z}) \ll g(\mathbf{z})$ as $\mathbf{z} \to \mathbf{z}_{0}$ if $f(\mathbf{z}) = O(g(\mathbf{z}))$ as $\mathbf{z} \to \mathbf{z}_{0}$. We also write $f(\mathbf{z}) \gg g(\mathbf{z})$ as $\mathbf{z} \to \mathbf{z}_{0}$ to mean $g(\mathbf{z}) \ll f(\mathbf{z})$ as $\mathbf{z} \to \mathbf{z}_{0}$. If there is a dependence of the implicit constant on parameters, we use subscripts to denote dependence on these parameters. If both $f(\mathbf{z}) \ll g(\mathbf{z})$ and $g(\mathbf{z}) \ll f(\mathbf{z})$ as $\mathbf{z} \to \mathbf{z}_{0}$, then we say $f(\mathbf{z})$ and $g(\mathbf{z})$ have the \textbf{same order of magnitude}\index{same order of magnitude} and write $f(\mathbf{z}) \asymp g(\mathbf{z})$ as $\mathbf{z} \to \mathbf{z}_{0}$. We also say $f(\mathbf{z})$ has \textbf{growth}\index{growth} $g(\mathbf{z})$. If there is a dependence of the implicit constant on parameters, we use subscripts to denote dependence on these parameters. From the definition of the $O$-estimate, this is equivalent to the existence of positive constants $c_{1}$ and $c_{2}$ such that
       \[
-        c_{1}|g(z)| \le |f(z)| \le c_{2}|g(z)|.
+        c_{1}|g(\mathbf{z})| \le |f(\mathbf{z})| \le c_{2}|g(\mathbf{z})|.
       \]
-      Equivalently, we can interchange $f(z)$ and $g(z)$ in the above equation.
+      Equivalently, we can interchange $f(\mathbf{z})$ and $g(\mathbf{z})$ in the above equation.
     \subsection*{\texorpdfstring{$o$}{o}-estimates \& Symbols}
-      We say $f(z)$ \textbf{is of smaller order than}\index{is of smaller order than} $g(z)$ or $f(z)$ is $o(g(z))$ as $z \to z_{0}$ and write $f(z) = o(g(z))$ if
+      We say $f(\mathbf{z})$ \textbf{is of smaller order than}\index{is of smaller order than} $g(\mathbf{z})$ or $f(\mathbf{z})$ is $o(g(\mathbf{z}))$ as $\mathbf{z} \to \mathbf{z}_{0}$ and write $f(\mathbf{z}) = o(g(\mathbf{z}))$ if
       \[
-        \lim_{z \to z_{0}}\left|\frac{f(z)}{g(z)}\right| = 0,
+        \lim_{\mathbf{z} \to \mathbf{z}_{0}}\left|\frac{f(\mathbf{z})}{g(\mathbf{z})}\right| = 0,
       \]
-      provided $g(z) \neq 0$ for all $z$ sufficiently close to $z_{0}$. We call this an \textbf{$o$-estimate}\index{$o$-estimate} and say that $f(z)$ has \textbf{growth less than}\index{growth less than} $g(z)$. The $o$-estimate says that for $z$ close to $z_{0}$, $g(z)$ dominates $f(z)$. If $f(z) = o(g(z))$ as $z \to z_{0}$, then $f(z) = O(g(z))$ as $z \to z_{0}$ where the implicit constant can be taken arbitrarily small by definition of the $o$-estimate. Therefore, $o$-estimates are stronger than $O$-estimates. As a symbol, let $o(g(z))$ stand for a function $f(z)$ that is $o(g(z))$. Then we may use the $o$-estimates in algebraic equations and inequalities. Note that this extends the definition of the symbol because $f(z) = o(g(z))$ means $f(z)$ is $o(g(z))$. We say $f(z)$ \textbf{is asymptotic to}\index{is asymptotic to} $g(z)$ as $z \to z_{0}$ and write $f(z) \sim g(z)$ if
+      provided $g(\mathbf{z}) \neq 0$ for all $\mathbf{z}$ sufficiently close to $\mathbf{z}_{0}$ in norm. We call this an \textbf{$o$-estimate}\index{$o$-estimate} and say that $f(\mathbf{z})$ has \textbf{growth less than}\index{growth less than} $g(\mathbf{z})$. The $o$-estimate says that for $\mathbf{z}$ close to $\mathbf{z}_{0}$, $g(\mathbf{z})$ dominates $f(\mathbf{z})$. If $f(\mathbf{z}) = o(g(\mathbf{z}))$ as $\mathbf{z} \to \mathbf{z}_{0}$, then $f(\mathbf{z}) = O(g(\mathbf{z}))$ as $\mathbf{z} \to \mathbf{z}_{0}$ where the implicit constant can be taken arbitrarily small by definition of the $o$-estimate. Therefore, $o$-estimates are stronger than $O$-estimates. As a symbol, let $o(g(\mathbf{z}))$ stand for a function $f(\mathbf{z})$ that is $o(g(\mathbf{z}))$. Then we may use the $o$-estimates in algebraic equations and inequalities. Note that this extends the definition of the symbol because $f(\mathbf{z}) = o(g(\mathbf{z}))$ means $f(\mathbf{z})$ is $o(g(\mathbf{z}))$. We say $f(\mathbf{z})$ \textbf{is asymptotic to}\index{is asymptotic to} $g(\mathbf{z})$ as $\mathbf{z} \to \mathbf{z}_{0}$ and write $f(\mathbf{z}) \sim g(\mathbf{z})$ if
       \[
-        \lim_{z \to z_{0}}\left|\frac{f(z)}{g(z)}\right| = 1,
+        \lim_{\mathbf{z} \to \mathbf{z}_{0}}\left|\frac{f(\mathbf{z})}{g(\mathbf{z})}\right| = 1,
       \]
-      provided $g(z) \neq 0$ for all $z$ sufficiently close to $z_{0}$. We call this an \textbf{asymptotic}\index{asymptotic} and say that $f(z)$ and $g(z)$ are \textbf{asymptotically equivalent}\index{asymptotically equivalent}. It is useful to think of asymptotic equivalence as $f(z)$ and $g(z)$ being the same size in the limit as $z \to z_{0}$. Immediately from the definition, we see that this is an equivalence relation on functions. In particular, if $f(z) \sim g(z)$ and $g(z) \sim h(z)$ then $f(z) \sim h(z)$. Also, if $f(z) \sim g(z)$ as $z \to z_{0}$, then $f(z) \asymp g(z)$ as $z \to z_{0}$ with $c_{1} \le 1 \le c_{2}$. So asymptotic equivalence is stronger than being of the same order of magnitude. Also note that $f(z) \sim g(z)$ is equivalent to $f(z) = g(z)(1+o(1))$ and hence implies $f(z) = g(z)(1+O(1))$. We say $f(z)$ \textbf{is of larger order than}\index{is of larger order than} $g(z)$ or $f(z)$ is $\W(g(z))$ as $z \to z_{0}$ and write $f(z) = \W(g(z))$ if
+      provided $g(\mathbf{z}) \neq 0$ for all $\mathbf{z}$ sufficiently close to $\mathbf{z}_{0}$ in norm. We call this an \textbf{asymptotic}\index{asymptotic} and say that $f(\mathbf{z})$ and $g(\mathbf{z})$ are \textbf{asymptotically equivalent}\index{asymptotically equivalent}. It is useful to think of asymptotic equivalence as $f(\mathbf{z})$ and $g(\mathbf{z})$ being the same size in the limit as $\mathbf{z} \to \mathbf{z}_{0}$. Immediately from the definition, we see that this is an equivalence relation on functions. In particular, if $f(\mathbf{z}) \sim g(\mathbf{z})$ and $g(\mathbf{z}) \sim h(\mathbf{z})$ then $f(\mathbf{z}) \sim h(\mathbf{z})$. Also, if $f(\mathbf{z}) \sim g(\mathbf{z})$ as $\mathbf{z} \to \mathbf{z}_{0}$, then $f(\mathbf{z}) \asymp g(\mathbf{z})$ as $\mathbf{z} \to \mathbf{z}_{0}$ with $c_{1} \le 1 \le c_{2}$. So asymptotic equivalence is stronger than being of the same order of magnitude. Also note that $f(\mathbf{z}) \sim g(\mathbf{z})$ is equivalent to $f(\mathbf{z}) = g(\mathbf{z})(1+o(1))$ and hence implies $f(\mathbf{z}) = g(\mathbf{z})(1+O(1))$. We say $f(\mathbf{z})$ \textbf{is of larger order than}\index{is of larger order than} $g(\mathbf{z})$ or $f(\mathbf{z})$ is $\W(g(\mathbf{z}))$ as $\mathbf{z} \to \mathbf{z}_{0}$ and write $f(\mathbf{z}) = \W(g(\mathbf{z}))$ if
       \[
-        \limsup_{z \to z_{0}}\left|\frac{f(z)}{g(z)}\right| > 0.
+        \limsup_{\mathbf{z} \to \mathbf{z}_{0}}\left|\frac{f(\mathbf{z})}{g(\mathbf{z})}\right| > 0.
       \]
-      provided $g(z) \neq 0$ for all $z$ sufficiently close to $z_{0}$. We call this an \textbf{$\W$-estimate}\index{$\W$-estimate} and say that $f(z)$ has \textbf{growth at least}\index{growth at least} $g(z)$. Observe that $f(z) = \W(g(z))$ is precisely the negation of $f(z) = o(g(z))$, so that $f(z) = \W(g(z))$ means $f(z) = o(g(z))$ is false. This is weaker than $f(z) \gg g(z)$ because $f(z) = \W(g(z))$ means $|f(z)| \ge c|g(z)|$ for some values of $z$ arbitrarily close to $z_{0}$ whereas $f(z) \gg g(z)$ means $|f(z)| \ge c|g(z)|$ for all values of $z$ sufficiently close to $z_{0}$.
+      provided $g(\mathbf{z}) \neq 0$ for all $\mathbf{z}$ sufficiently close to $\mathbf{z}_{0}$ in norm. We call this an \textbf{$\W$-estimate}\index{$\W$-estimate} and say that $f(\mathbf{z})$ has \textbf{growth at least}\index{growth at least} $g(\mathbf{z})$. Observe that $f(\mathbf{z}) = \W(g(\mathbf{z}))$ is precisely the negation of $f(\mathbf{z}) = o(g(\mathbf{z}))$, so that $f(\mathbf{z}) = \W(g(\mathbf{z}))$ means $f(\mathbf{z}) = o(g(\mathbf{z}))$ is false. This is weaker than $f(\mathbf{z}) \gg g(\mathbf{z})$ because $f(\mathbf{z}) = \W(g(\mathbf{z}))$ means $|f(\mathbf{z})| \ge c|g(\mathbf{z})|$ for some values of $\mathbf{z}$ arbitrarily close to $\mathbf{z}_{0}$ whereas $f(\mathbf{z}) \gg g(\mathbf{z})$ means $|f(\mathbf{z})| \ge c|g(\mathbf{z})|$ for all values of $\mathbf{z}$ sufficiently close to $\mathbf{z}_{0}$ in norm.
     \subsection*{Algebraic Manipulation for \texorpdfstring{$O$}{O}-estimates and \texorpdfstring{$o$}{o}-estimates}
       Asymptotics become increasingly more useful when we can use them in equations to represent approximations. We catalogue some of the most useful algebraic manipulations for $O$-estimates and $o$-estimates. Most importantly, if an algebraic equation involves a $O$-estimate or $o$-estimate then it is understood that the equation is not symmetric and is interpreted to be read from left to right. That is, any function of the form satisfying the estimate on the left-hand side also satisfies the estimate on the right-hand side too. We begin with $O$-estimates. The trivial algebraic manipulations are collected in the proposition below:
 
       \begin{proposition}\label{prop:Big_Oh_manipulations}
-          The following $O$-estimates hold as $z \to z_{0}$:
+          The following $O$-estimates hold as $\mathbf{z} \to \mathbf{z}_{0}$:
           \begin{enumerate}[label=(\roman*)]
-            \item If $f(z) = O(g(z))$ and $g(z) = O(h(z))$, then $f(z) = O(h(z))$. Equivalently, $O(O(h(z))) = O(h(z))$.
-            \item If $f_{i}(z) = O(g_{i}(z))$ for $i = 1,2$, then $f_{1}(z)f_{2}(z) = O(g_{1}(z)g_{2}(z))$.
-            \item If $f(z) = O(g(z)h(z))$, then $f(z) = g(z)O(h(z))$.
-            \item If $f_{i}(z) = O(g_{i}(z))$ for $i = 1,2,\ldots,n$, then $\sum_{1 \le i \le n}f_{i}(z) = O\left(\sum_{1 \le i \le n}|g_{i}(z)|\right)$.
-            \item If $f_{n}(z) = O(g_{n}(z))$ for $n \ge 1$, then $\sum_{n \ge 1}f_{n}(z) = O\left(\sum_{n \ge 1}|g_{n}(z)|\right)$ provided both $\sum_{n \ge 1}f_{n}(z)$ and $\sum_{n \ge 1}|g_{n}(z)|$ converge.
-            \item If $f(z) = O(g(z))$ as $z \to z_{0}$ and $h(z)$ is such that $h(z) \to z_{0}$ as $z \to z_{0}$, then $(f \circ h)(z) = O((g \circ h)(z))$.
-            \item If $f(z) = O(g(z))$, then $\Re(f(z)) = O(g(z))$ and $\Im(f(z)) = O(g(z))$.
+            \item If $f(\mathbf{z}) = O(g(\mathbf{z}))$ and $g(\mathbf{z}) = O(h(\mathbf{z}))$, then $f(\mathbf{z}) = O(h(\mathbf{z}))$. Equivalently, $O(O(h(\mathbf{z}))) = O(h(\mathbf{z}))$.
+            \item If $f_{i}(\mathbf{z}) = O(g_{i}(\mathbf{z}))$ for $i = 1,2$, then $f_{1}(\mathbf{z})f_{2}(\mathbf{z}) = O(g_{1}(\mathbf{z})g_{2}(\mathbf{z}))$.
+            \item If $f(\mathbf{z}) = O(g(\mathbf{z})h(\mathbf{z}))$, then $f(\mathbf{z}) = g(\mathbf{z})O(h(\mathbf{z}))$.
+            \item If $f_{i}(\mathbf{z}) = O(g_{i}(\mathbf{z}))$ for $i = 1,2,\ldots,n$, then $\sum_{1 \le i \le n}f_{i}(\mathbf{z}) = O\left(\sum_{1 \le i \le n}|g_{i}(\mathbf{z})|\right)$.
+            \item If $f_{n}(\mathbf{z}) = O(g_{n}(\mathbf{z}))$ for $n \ge 1$, then $\sum_{n \ge 1}f_{n}(\mathbf{z}) = O\left(\sum_{n \ge 1}|g_{n}(\mathbf{z})|\right)$ provided both $\sum_{n \ge 1}f_{n}(\mathbf{z})$ and $\sum_{n \ge 1}|g_{n}(\mathbf{z})|$ converge.
+            \item If $f(\mathbf{z}) = O(g(\mathbf{z}))$ as $\mathbf{z} \to \mathbf{z}_{0}$ and $T(\mathbf{z})$ is such that $T(\mathbf{z}) \to \mathbf{z}_{0}$ as $\mathbf{z} \to \mathbf{z}_{0}$, then $(f \circ T)(\mathbf{z}) = O((g \circ T)(\mathbf{z}))$.
+            \item If $f(\mathbf{z}) = O(g(\mathbf{z}))$, then $\Re(f(\mathbf{z})) = O(g(\mathbf{z}))$ and $\Im(f(\mathbf{z})) = O(g(\mathbf{z}))$.
           \end{enumerate}
       \end{proposition}
       \begin{proof}
         Statements (i)-(iii) and (vi) follow immediately from the definition of the $O$-estimate. Statement (iv) follows from the definition and the triangle inequality. Statement (v) follows in the same way as (iv) given that both sums converge. Statement (vii) follows from the definition the $O$-estimate and the bounds $|x| \le |z|$ and $|y| \le |z|$ for any complex $z$.
       \end{proof}
 
-      We will also often use \cref{prop:Big_Oh_manipulations} (vi) in the case of the input for a function. The most common instances will be when $z \asymp w$ or $z \sim w$ (the latter case implying the former) where $w$ is a function of $z$ (usually one that is more simple than $z$ itself). Taking $h(z) = w$, \cref{prop:Big_Oh_manipulations} (vi) says that if $f(z) = O(g(z))$ then $f(w) = O(g(w))$. In terms of Vinogradov's symbol, $f(z) \ll g(z)$ implies $f(w) \ll g(w)$. $O$-estimates also behave well with respect to integrals provided the functions involved are of a real variable:
+      The most common application of \cref{prop:Big_Oh_manipulations} (vi) will be in the single variable case when $z \asymp w$ or $z \sim w$ (the latter case implying the former) where $w$ is a function of $z$ (usually one that is more simple than $x$ itself). Taking $h(z) = w$, \cref{prop:Big_Oh_manipulations} (vi) says that if $f(z) = O(g(z))$ then $f(w) = O(g(w))$. In terms of Vinogradov's symbol, $f(z) \ll g(z)$ implies $f(w) \ll g(w)$. $O$-estimates also behave well with respect to integrals provided the functions involved are of a real variable:
 
       \begin{proposition}
-        Suppose $f(z) = O(g(z))$ as $z \to \infty$, $f(z)$ and $g(z)$ are integrable on a domain where this estimate holds, and let $z_{1}$ and $z_{2}$ belong to this region. Then
+        Suppose $f(\mathbf{z}) = O(g(\mathbf{z}))$ as $\mathbf{z} \to \infty$, $f(\mathbf{z})$ and $g(\mathbf{z})$ are integrable on a domain where this estimate holds, and let $\mathbf{z}_{1}$ and $\mathbf{z}_{2}$ belong to this region. Then
         \[
-          \int_{z_{1}}^{z_{2}}f(z)\,dz = O\left(\int_{z_{1}}^{z_{2}}|g(z)|\,dz\right).
+          \int_{\mathbf{z}_{1}}^{\mathbf{z}_{2}}f(\mathbf{z})\,d\mathbf{z} = O\left(\int_{\mathbf{z}_{1}}^{\mathbf{z}_{2}}|g(\mathbf{z})|\,d\mathbf{z}\right).
         \]
       \end{proposition}
       \begin{proof}
@@ -123,12 +126,12 @@
       The next proposition is a collection of some useful expressions for simplifying equations involving $O$-estimates:
 
       \begin{proposition}
-        Let $f(z)$ be a function such that $f(z) \to 0$ as $z \to z_{0}$. The following $O$-estimates hold as $z \to z_{0}$:
+        Let $f(\mathbf{z})$ be a function such that $f(\mathbf{z}) \to 0$ as $\mathbf{z} \to \mathbf{z}_{0}$. The following $O$-estimates hold as $\mathbf{z} \to \mathbf{z}_{0}$:
         \begin{enumerate}[label=(\roman*)]
-          \item $\frac{1}{1+O(f(z))} = 1+O(f(z))$.
-          \item $(1+O(f(z)))^{w} = 1+O(f(z))$ for any complex $w$.
-          \item $\log(1+O(f(z))) = O(f(z))$.
-          \item $e^{1+O(f(z))} = 1+O(f(z))$.
+          \item $\frac{1}{1+O(f(\mathbf{z}))} = 1+O(f(\mathbf{z}))$.
+          \item $(1+O(f(\mathbf{z})))^{w} = 1+O(f(\mathbf{z}))$ for any complex $w$.
+          \item $\log(1+O(f(\mathbf{z}))) = O(f(\mathbf{z}))$.
+          \item $e^{1+O(f(\mathbf{z}))} = 1+O(f(\mathbf{z}))$.
         \end{enumerate}
       \end{proposition}
       \begin{proof}
@@ -145,20 +148,20 @@
       For $o$-estimates, the following properties are useful:
 
       \begin{proposition}\label{prop:Little_Oh_manipulations}
-          The following $o$-estimates hold as $z \to z_{0}$:
+          The following $o$-estimates hold as $\mathbf{z} \to \mathbf{z}_{0}$:
           \begin{enumerate}[label=(\roman*)]
-            \item If $f(z) = o(g(z))$ and $g(z) = o(h(z))$, then $f(z) = o(h(z))$. Equivalently, $o(o(h(z))) = o(h(z))$.
-            \item If $f_{i}(z) = o(g_{i}(z))$ for $i = 1,2$, then $f_{1}(z)f_{2}(z) = o(g_{1}(z)g_{2}(z))$.
-            \item If $f(z) = o(g(z)h(z))$, then $f(z) = g(z)o(h(z))$.
-            \item If $f_{i}(z) = o(g_{i}(z))$ for $i = 1,2,\ldots,n$, then $\sum_{1 \le i \le n}f_{i}(z) = o\left(\sum_{1 \le i \le n}|g_{i}(z)|\right)$.
-            \item If $f(z) = o(g(z))$ as $z \to z_{0}$ and $h(z)$ is such that $h(z) \to z_{0}$ as $z \to z_{0}$, then $(f \circ h)(z) = o((g \circ h)(z))$.
+            \item If $f(\mathbf{z}) = o(g(\mathbf{z}))$ and $g(\mathbf{z}) = o(h(\mathbf{z}))$, then $f(\mathbf{z}) = o(h(\mathbf{z}))$. Equivalently, $o(o(h(\mathbf{z}))) = o(h(\mathbf{z}))$.
+            \item If $f_{i}(\mathbf{z}) = o(g_{i}(\mathbf{z}))$ for $i = 1,2$, then $f_{1}(\mathbf{z})f_{2}(\mathbf{z}) = o(g_{1}(\mathbf{z})g_{2}(\mathbf{z}))$.
+            \item If $f(\mathbf{z}) = o(g(\mathbf{z})h(\mathbf{z}))$, then $f(\mathbf{z}) = g(\mathbf{z})o(h(\mathbf{z}))$.
+            \item If $f_{i}(\mathbf{z}) = o(g_{i}(\mathbf{z}))$ for $i = 1,2,\ldots,n$, then $\sum_{1 \le i \le n}f_{i}(\mathbf{z}) = o\left(\sum_{1 \le i \le n}|g_{i}(\mathbf{z})|\right)$.
+            \item If $f(\mathbf{z}) = o(g(\mathbf{z}))$ as $\mathbf{z} \to \mathbf{z}_{0}$ and $h(\mathbf{z})$ is such that $h(\mathbf{z}) \to \mathbf{z}_{0}$ as $\mathbf{z} \to \mathbf{z}_{0}$, then $(f \circ h)(\mathbf{z}) = o((g \circ h)(\mathbf{z}))$.
           \end{enumerate}
       \end{proposition}
       \begin{proof}
-        Statements (i)-(iii) and (v) follow immediately from the definition of the $o$-estimate. Statement (iv) follows from the definition and that $\sum_{1 \le i \le n}|g_{i}(z)| \ge |g_{i}(z)|$.
+        Statements (i)-(iii) and (v) follow immediately from the definition of the $o$-estimate. Statement (iv) follows from the definition and that $\sum_{1 \le i \le n}|g_{i}(\mathbf{z})| \ge |g_{i}(\mathbf{z})|$.
       \end{proof}
     \subsection*{Growth \& Decay of Functions}
-      We will also be interested in the growth rate of functions. There are many types of growth rates, but we will only recall the ones that are standard. Throughout let $c \ge 1$. First suppose $z \to z_{0}$. If $f(z) \asymp \log^{c}(z)$, we say that $f(z)$ is of \textbf{logarithmic growth}\index{logarithmic growth}. If $f(z) \asymp z^{c}$, we say that $f(z)$ is of \textbf{polynomial growth}\index{polynomial growth}. If $f(z) \asymp e^{cz}$, we say that $f(z)$ is of \textbf{exponential growth}\index{exponential growth}. Now suppose $z \to \infty$. If $f(z) \asymp \log^{-c}(z)$, we say that $f(z)$ is of \textbf{logarithmic decay}\index{logarithmic decay}. If $f(z) \asymp z^{-c}$ for some $c \ge 1$, we say that $f(z)$ is of \textbf{polynomial decay}\index{polynomial decay}. If $f(z) \asymp e^{-cz}$, we say that $f(z)$ is of \textbf{exponential decay}\index{exponential decay}. In all of these cases, we refer to the constant $c$ as the \textbf{order}\index{order} of growth or decay respectively. If $f(z) = \W(z^{n})$ for all $n \ge 0$, then we say $f(z)$ is of \textbf{rapid growth}\index{rapid growth}. Alternatively, if $f(z) = o(z^{-n})$ for all $n \ge 0$, then we say $f(z)$ is of \textbf{rapid decay}\index{rapid decay}.
+      We will also be interested in the growth rate of functions. There are many types of growth rates, but we will only recall the ones that are standard. Throughout let $c \ge 1$. First suppose $\mathbf{z} \to \mathbf{z}_{0}$. If $f(\mathbf{z}) \asymp \log^{c}||\mathbf{z}||$, we say that $f(\mathbf{z})$ is of \textbf{logarithmic growth}\index{logarithmic growth}. If $f(\mathbf{z}) \asymp ||\mathbf{z}||^{c}$, we say that $f(\mathbf{z})$ is of \textbf{polynomial growth}\index{polynomial growth}. If $f(\mathbf{z}) \asymp e^{c||\mathbf{z}||}$, we say that $f(\mathbf{z})$ is of \textbf{exponential growth}\index{exponential growth}. Now suppose $\mathbf{z} \to \infty$. If $f(\mathbf{z}) \asymp \log^{-c}||\mathbf{z}||$, we say that $f(\mathbf{z})$ is of \textbf{logarithmic decay}\index{logarithmic decay}. If $f(\mathbf{z}) \asymp ||\mathbf{z}||^{-c}$ for some $c \ge 1$, we say that $f(\mathbf{z})$ is of \textbf{polynomial decay}\index{polynomial decay}. If $f(\mathbf{z}) \asymp e^{-c||\mathbf{z}||}$, we say that $f(\mathbf{z})$ is of \textbf{exponential decay}\index{exponential decay}. In all of these cases, we refer to the constant $c$ as the \textbf{order}\index{order} of growth or decay respectively. If $f(\mathbf{z}) = \W(||\mathbf{z}||^{n})$ for all $n \ge 0$, then we say $f(\mathbf{z})$ is of \textbf{rapid growth}\index{rapid growth}. Alternatively, if $f(\mathbf{z}) = o(||\mathbf{z}||^{-n})$ for all $n \ge 0$, then we say $f(\mathbf{z})$ is of \textbf{rapid decay}\index{rapid decay}.
   \section{Dirichlet Characters}
     The most important multiplicative periodic functions for an analytic number theorist are the Dirichlet characters. A \textbf{Dirichlet character}\index{Dirichlet character} $\chi$ modulo $m \ge 1$ is an $m$-periodic completely multiplicative function $\chi:\Z \to \C$ such that $\chi(a) = 0$ if and only if $(a,m) > 1$. We call $m$ the \textbf{modulus}\index{modulus} of $\chi$. Sometimes we will also write $\chi_{m}$ to denote a Dirichlet character modulo $m$ if we need to express the dependence upon the modulus. For any $m \ge 1$, there is always the \textbf{principal Dirichlet character}\index{principal Dirichlet character} modulo $m$ which we denote by $\chi_{m,0}$ (sometimes also seen as $\chi_{0,m}$ or the ever more confusing $\chi_{0}$) and is defined by
     \[
@@ -657,43 +660,94 @@
         S_{\chi}(n,m,c) = \sum_{\substack{a \tmod{c} \\ (a,c) = 1}}\chi(a)e^{\frac{2\pi i(an+\conj{a}m)}{c}} = \psum_{a \tmod{c}}\chi(a)e^{\frac{2\pi i(an+\conj{a}m)}{c}}.
       \]
       If either $n = 0$ or $m = 0$ then the Sali\'e sum reduces to the Ramanujan sum associated to $\chi$.
-  \section{Integration Techniques \& Transforms}
+  \section{Lattices}
+    Lattices are ubiquitous in analytic number theory because they provide a way to study discrete points by geometric methods. Let $V$ be an $n$-dimensional Euclidean vector space and let $\<\cdot,\cdot\>$ be the inner product on $V$ that induces the norm $||\cdot||$. We let $d\l$ be the associated Lebesgue measure on $V$. If $\{v_{1},\ldots,v_{n}\}$ is a basis of $V$ so that any $v \in V$ has the form
+    \[
+      v = t_{1}v_{1}+\cdots+t{n}v_{n},
+    \]
+    for some $t_{i} \in \R$ for $1 \le i \le n$, the Lebesgue measure $d\l$ is $dt_{1} \cdots dt_{n}$. Then
+    \[
+      \Vol(X) = \int_{X}\,d\l = \int_{X}\,dt_{1} \cdots dt_{n},
+    \]
+    is the volume of any measurable subset $X \subseteq V$. We say that $\L \subset V$ is a \textbf{lattice}\index{lattice} if $\L$ is a free abelian group of rank $n$. In particular, any lattice $\L$ is of the form
+    \[
+      \L = \Z v_{1}+\cdots+\Z v_{n},
+    \]
+    for some basis $\{v_{1},\ldots,v_{n}\}$ of $V$. Note that $\L$ acts on $V$ by automorphisms given by translation. That is, we have a group action
+    \[
+      \L \x V \to V \qquad (\l,v) \to \l+v.
+    \]
+    Moreover, $\L$ acts properly discontinuously on $V$ (see \cref{append:Fundamental_Domains}). To see this, let $v \in V$ and let $\d_{v}$ be such that $0 < \d_{v} < \min_{1 \le i \le n}(v-v_{i})$. Then taking $U_{v}$ to be the ball of radius $\d_{v}$ about $v$, the intersection $\l+U_{v} \cap U_{v}$ is empty unless $\l = 0$. As $\L$ is also discrete, it follows by \cref{prop:quotient_by_discrete_property_discontinuously} that $V/\L$ is also connected Hausdorff (recall that $V$ is connected Hausdorff). In particular, $V/\L$ admits a fundamental domain
+    \[
+      \mc{M} = \{t_{1}v_{1}+\cdots+t_{n}v_{n} \in V:\text{$0 \le t_{i} \le 1$ for $1 \le i \le n$}\}.
+    \]
+    Indeed, since $\L$ acts by translations, it is obvious that $\mc{M}$ is a fundamental domain for $V/\L$. Moreover, any translation of $\mc{M}$ by an element of $\L$ is also a fundamental domain. We define the \textbf{covolume}\index{covolume} $V_{\L}$ of $\L$ by
+    \[
+      V_{\L} = \mathrm{Vol}(\mc{M}).
+    \]
+    That is, the covolume of $\L$ is the covolume of the fundamental domain $\mc{M}$. Since $d\l$ is translation invariant (as it is the Lebesgue measure on $V$), $V_{\L}$ is independent of the choice of fundamental domain. If $\L$ is given by the basis $\{v_{1},\ldots,v_{n}\}$, we write
+    \[
+      v_{i} = \sum_{1 \le i \le n}v_{i,j}e_{j},
+    \]
+    where $\{e_{1},\ldots,e_{n}\}$ is an orthonormal basis for $V$, and define the \textbf{generator matrix}\index{generator matrix} $P$ of $\L$ by
+    \[
+      P = \begin{pmatrix} v_{1,1} & \cdots & v_{1,n} \\ \vdots & & \vdots \\ v_{n,1} & \cdots & v_{n,n} \end{pmatrix}.
+    \]
+    By two applications of \cref{prop:base_change_quotient_determinant}, one for a basis for $V$ and the other for a choice of orthonormal basis $\{e_{1},\ldots,e_{n}\}$, we see that $|\det(P)|$ is independent of both bases. The following proposition shows that the covolume of $\L$ is given by $|\det(P)|$:
+
+    \begin{proposition}\label{prop:lattice_volume_generator_matrix}
+      Let $\L$ be a lattice in $V$ and $P$ be its generator matrix. Then
+      \[
+        V_{\L} = |\det(P)|.
+      \]
+    \end{proposition}
+    \begin{proof}
+      Let $\{e_{1},\ldots,e{n}\}$ be an orthonormal basis of $V$. Making the change of variables $x_{i} \to t_{i}$ for $1 \le i \le n$ where
+      \[
+        x_{1}e_{1}+\cdots+x_{n}e_{n} \to t_{1}v_{1}+\cdots+t_{n}v_{n},
+      \]
+      the corresponding Jacobian matrix is $P$. Then
+      \[
+        V_{\L} = \int_{\mc{M}}\,dx_{1} \cdots dx_{n} = |\det(P)|\int_{[0,1]^{n}}\,dt_{1} \cdots dt_{n} = |\det(P)|,
+      \]
+      as claimed.
+    \end{proof}
+
+    The crucial result we require is \textbf{Minkowski's lattice point theorem}\index{Minkowski's lattice point theorem} which states that, under some mild conditions, a set of sufficiently large volume contains a nonzero point of a lattice:
+
+    \begin{theorem}[Minkowski's lattice point theorem]
+      Let $\L$ be a lattice in $\R^{n}$. Suppose $X \subset \R^{n}$ is a compact convex symmetric set. If
+      \[
+        \Vol(X) \ge 2^{n}V_{\L},
+      \]
+      then there exists a nonzero $\l \in L$ with $\l \in X$ 
+    \end{theorem}
+    \begin{proof}
+      We will prove the claim depending on if the inequality is strict or not. First suppose $\Vol(X) > 2^{n}V_{\L}$. Consider the linear map
+      \[
+        \phi:\frac{1}{2}X \to \R^{n}/\L \qquad \frac{1}{2}x \mapsto \frac{1}{2}x \pmod{\L}.
+      \]
+      If $\phi$ were injective, then
+      \[
+        \Vol\left(\frac{1}{2}X\right) = \frac{1}{2^{n}}\Vol(X) \le V_{\L}, 
+      \]
+      so that $\Vol(X) \le  2^{n}V_{\L}$. This is a contradiction, so $\phi$ cannot be injective. Hence there exists distinct $x_{1},x_{2} \in \frac{1}{2}X$ such that $\phi(x_{1}) = \phi(x_{2})$. Thus $2x_{1},2x_{2} \in X$. In particular, since $X$ is symmetric we must have $-2x_{2} \in X$. But then the fact that $X$ is convex implies that
+      \[
+        \left(1-\frac{1}{2}\right)2x_{1}+\frac{1}{2}(-2x_{2}) = x_{1}-x_{2} \in X.
+      \]
+      Note that $x_{1}-x_{2} \in \L$ because $\phi(x_{1}) = \phi(x_{2})$ and $\phi$ is linear. Then $\l = x_{1}-x_{2}$ is a nonzero element of $\L$ with $\l \in X$. Now suppose $\Vol(X) = 2^{n}V_{\L}$. Then for any $\e > 0$, we have
+      \[
+        \Vol((1+\e)X) = (1+\e)^{n}\Vol(X) = (1+\e)^{n}2^{n}V_{\L} > 2^{n}V_{\L}.
+      \]
+      So what we have just proved shows that there exists a nonzero $\l_{\e} \in \L$ with $\l_{\e} \in (1+\e)X$. In particular, if $\e \le 1$ then $\l_{\e} \in 2X \cap \L$. The set $2X \cap \L$ is compact and discrete, because $X$ is compact and $\L$ is discrete, and therefore is finite. But as this holds for all $\e \le 1$, the sequence $(\l_{\frac{1}{n}})_{n \ge 1}$ belongs to the finite set $2X \cap \L$ and so must converge to a point $\l$. Since $\L$ is discrete and the $\l_{\frac{1}{n}}$ are nonzero so too is $\l$. As
+      \[
+        \l \in \bigcap_{n \ge 1}\left(1+\frac{1}{n}\right)X,
+      \]
+      and $X$ is closed, $\l \in X$ as well. Thus we have found a nonzero $\l \in L$ with $\l \in X$ and we are done.
+    \end{proof}
+  \section{\todo{Integration Techniques \& Transforms}}
     \subsection*{Integration Techniques}
-      Complex integrals are a core backbone of many analytic number theory techniques and all too often the domain we are integrating over is unbounded. Accordingly, the functions we would like to work with should be integrable over these domains. One way to accomplish this would be to require that our functions are bounded and our domains be of finite volume:
-
-      \begin{proposition}\label{prop:decay_finite_volume_integral}
-        Suppose $f(z,w)$ is analytic on $\W \x D$ for some regions $\W$ and $D$ with $D$ of finite volume with respect to a measure $d\mu$. Also suppose that for any $z \in \W$, $f(z,w)$ is bounded on $D$. Then the integral
-        \[
-          \int_{D}f(z,w)\,d\mu,
-        \]
-        is locally absolutely uniformly convergent for any $z \in W$. In particular, it is holomorphic in $z$.
-      \end{proposition}
-      \begin{proof}
-        The second statement follows from \cref{thm:analytic_integral}. So it suffices to show that the integral is locally absolutely uniformly convergent. Let $K$ be a compact subset of $\W$. As $f(z,w)$ is bounded on $D$ for any $z$, $f(z,w)$ is locally absolutely uniformly convergent on $K \x D$. Then for $z \in K$, we have
-        \[
-          \int_{D}f(z,w)\,d\mu \ll \int_{D}\,d\mu \ll 1, 
-        \]
-        because $D$ has finite volume with respect to $d\mu$. Therefore the integral is locally absolutely uniformly convergent. 
-      \end{proof}
-
-      We will also need a version of \cref{prop:decay_finite_volume_integral} when the region of integration is an unbounded interval but the integrand has sufficient decay:
-
-      \begin{proposition}\label{prop:decay_unbounded_inteval_integral}
-        Suppose $f(z,w)$ is analytic on $\W \x I$ for some region $\W$ and unbounded interval $I$ with measure $d\mu$. Also suppose that for any $z \in \W$, $f(z,w)$ has at least polynomial decay of order $c > 1$. Then the integral
-        \[
-          \int_{I}f(z,w)\,d\mu,
-        \]
-        is locally absolutely uniformly convergent for any $z \in W$. In particular, is holomorphic in $z$.
-      \end{proposition}
-      \begin{proof}
-        The second statement follows from \cref{thm:analytic_integral}. So it suffices to show that the integral is locally absolutely uniformly convergent. Let $K$ be a compact subset of $\W$. As $f(z,w)$ has at least polynomial decay of order $c > 1$, $f(z,w) = O(w^{-c})$. Therefore $f(z,x)$ is absolutely uniformly bounded on $K \x I$. Then for $z \in K$, we have
-        \[
-          \int_{I}f(z,w)\,d\mu \ll \int_{I}w^{-c}\,d\mu \ll 1, 
-        \]
-        because $c > 1$. Therefore the integral is locally absolutely uniformly convergent. 
-      \end{proof}
-
-      There is also a useful analytic technique called \textbf{shifting the line of integration}\index{shifting the line of integration}:
+      Complex integrals are a core backbone of many analytic number theory techniques. An extremely useful one is called \textbf{shifting the line of integration}\index{shifting the line of integration}:
 
       \begin{theorem}[Shifting the line of integration]
         Suppose we are given an integral
@@ -717,7 +771,7 @@
         \]
       \end{proof}
 
-      A particular application of interest is when the integral in question is real and over the entire real line, the integrand is entire as a complex function, and one is trying to shift the line of integration of the complexified integral to $\Im(z) = a$. In this case, shifting the line of integration amounts to making the change of variables $x \to x-ia$ without affecting the initial line of integration. The last integral technique we will use is when we are summing integrals over a group and is called the \textbf{unfolding/folding method}\index{unfolding/folding method}:
+      A particular application of interest is when the integral in question is real and over the entire real line, the integrand is entire as a complex function, and one is trying to shift the line of integration of the complexified integral to $\Im(z) = a$. In this case, shifting the line of integration amounts to making the change of variables $x \to x-ia$ without affecting the initial line of integration. The second integral technique we will use is when we are summing integrals over a group and is called the \textbf{unfolding/folding method}\index{unfolding/folding method}:
 
       \begin{theorem}[Unfolding/folding method]
         Suppose $f(z)$ is holomorphic on some region $\W$. Moreover, suppose $G$ is a countable group acting by automorphisms on $\W$ and let $D$ and $F$ be regions such that
@@ -777,7 +831,7 @@
         and the first statement follows by the definition of $F(x)$. Setting $x = 0$ proves the second statement.
       \end{proof}
 
-      There are two practical settings of interest. The first is when $f(x)$ is of \textbf{Schwarz class}\index{Schwarz class} which means that $f \in C^{\infty}(\R)$ and $f$ along with all of its derivative have rapid decay. For example $e^{-x^{2}}$ is of Schwarz class. If $f(x)$ is of Schwarz class, the rapid decay implies that $f(x)$ and all of its derivatives are absolutely integrable over $\R$ by \cref{prop:decay_unbounded_inteval_integral}. Moreover, this also implies that $F(x)$ and all of its derivatives are locally absolutely uniformly convergent by the Weierstrass $M$-test. The uniform limit theorem implies that $F(x)$ is smooth and thus the conditions of the Poisson summation formula are satisfied. The second application is when $f(z)$ is some holomorphic function that has at least polynomial decay of order $c > 1$ for any fixed $y$. Then $f(z)$ is absolutely integrable over $\R$ for any fixed $y$. Moreover, $F(z)$ is holomorphic. Then the conditions of the Poisson summation formula are satisfied for $z = iy$ with $y > 0$ and the identity theorem shows that this holds for all $z$. Our primary use of the Poisson summation formula will be to derive very striking transformation laws which are the key ingredient in analytically continuing many important functions.
+      There are two practical settings of interest. The first is when $f(x)$ is of \textbf{Schwarz class}\index{Schwarz class} which means that $f \in C^{\infty}(\R)$ and $f$ along with all of its derivative have rapid decay. For example $e^{-x^{2}}$ is of Schwarz class. If $f(x)$ is of Schwarz class, the rapid decay implies that $f(x)$ and all of its derivatives are absolutely integrable over $\R$. Moreover, this also implies that $F(x)$ and all of its derivatives are locally absolutely uniformly convergent by the Weierstrass $M$-test. The uniform limit theorem implies that $F(x)$ is smooth and thus the conditions of the Poisson summation formula are satisfied. The second application is when $f(z)$ is some holomorphic function that has at least polynomial decay of order $c > 1$ for any fixed $y$. Then $f(z)$ is absolutely integrable over $\R$ for any fixed $y$. Moreover, $F(z)$ is holomorphic. Then the conditions of the Poisson summation formula are satisfied for $z = iy$ with $y > 0$ and the identity theorem shows that this holds for all $z$. Our primary use of the Poisson summation formula will be to derive very striking transformation laws which are the key ingredient in analytically continuing many important functions.
     \subsection*{The Mellin Transform}
       Like the Fourier transform, the Mellin transform is another type of integral transform. If $f(x)$ is a continuous function and $f(\infty) = \lim_{x \to \infty}f(x)$ exists, then the \textbf{Mellin transform}\index{Mellin transform} $F(s)$ of $f(x)$ is given by
       \[
@@ -809,7 +863,7 @@
     \[
       \G(s) = \int_{0}^{1}e^{-x}x^{s-1}\,dx+\int_{1}^{\infty}e^{-x}x^{s-1}\,dx.
     \]
-    By \cref{prop:decay_unbounded_inteval_integral}, the second integral is absolutely uniformly convergent on $K$. As for the first integral, we have
+    The second integral is absolutely uniformly convergent on $K$ since the integrand exhibits rapid decay. As for the first integral, we have
     \[
       \int_{0}^{1}e^{-x}x^{s-1}\,dx \ll \int_{0}^{1}x^{\s-1}\,dx \ll_{\a} 1,
     \]
