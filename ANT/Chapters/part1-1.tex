@@ -745,7 +745,7 @@
       \]
       and $X$ is closed, $\l \in X$ as well. Thus we have found a nonzero $\l \in L$ with $\l \in X$ and we are done.
     \end{proof}
-  \section{\todo{Integration Techniques \& Transforms}}
+  \section{Integration Techniques \& Transforms}
     \subsection*{Integration Techniques}
       Complex integrals are a core backbone of many analytic number theory techniques. An extremely useful one is called \textbf{shifting the line of integration}\index{shifting the line of integration}:
 
@@ -794,65 +794,80 @@
 
       In the unfolding/folding method, we refer to the going from the left-hand side to right-hand as \textbf{unfolding}\index{unfolding} and going from the right-hand to left-hand side as \textbf{folding}\index{folding}.
     \subsection*{The Fourier Transform}
-      The first type of integral transform we will need is the Fourier transform. Suppose $f(x)$ is absolutely integrable on $\R$. The \textbf{Fourier transform}\index{Fourier transform} $\hat{f}(t)$ of $f(x)$ is defined by
+      The first type of integral transform we will need is the Fourier transform. Suppose $f(\mathbf{x})$ is absolutely integrable on $\R^{n}$. The \textbf{Fourier transform}\index{Fourier transform} $(\mc{F}f)(\mathbf{t})$ of $f(\mathbf{x})$ is defined by
       \[
-        \hat{f}(t) = \int_{\R}f(x)e^{-2\pi itx}\,dx.
+        (\mc{F}f)(\mathbf{t}) = \int_{\R^{n}}f(\mathbf{x})e^{-2\pi i\<\mathbf{t},\mathbf{x}\>}\,d\mathbf{x}.
       \]
-      This integral is absolutely convergent precisely because $f(x)$ is absolutely integrable on $\R$. Under some mild conditions on $f(x)$ the \textbf{Poisson summation formula}\index{Poisson summation formula} applies:
+      This integral is absolutely convergent precisely because $f(\mathbf{x})$ is absolutely integrable on $\R^{n}$. The Fourier transform is intimately related to periodic functions. If $f(\mathbf{x})$ is $1$-periodic in each component and integrable on $[0,1]^{n}$, then we define the $\mathbf{n}$-th \textbf{Fourier coefficient}\index{Fourier coefficient} $\hat{f}(\mathbf{n})$ of $f(\mathbf{x})$ to be
+    \[
+      \hat{f}(\mathbf{n}) = \int_{[0,1]^{n}}f(\mathbf{x})e^{-2\pi i\<\mathbf{n},\mathbf{x}\>}\,d\mathbf{x}.
+    \]
+    The \textbf{Fourier series}\index{Fourier series} of $f(\mathbf{x})$ is defined by the series
+    \[
+      \sum_{\mathbf{n} \in \Z^{n}}\hat{f}(\mathbf{n})e^{2\pi i\<\mathbf{n},\mathbf{x}\>}.
+    \]
+    There is the question of whether the Fourier series of $f(\mathbf{x})$ converges at all and if so does it even converge to $f(\mathbf{x})$ itself. Under reasonable conditions this is possible as the following proposition shows (see \cite{grafakos2008classical} for a proof):
 
-      \begin{theorem}[Poisson summation formula]
-        Suppose $f(x)$ is absolutely integrable on $\R$ and the function $\sum_{n \in \Z}f(x+n)$ is locally absolutely uniformly convergent and smooth. Then
-        \[
-          \sum_{n \in \Z}f(x+n) = \sum_{t \in \Z}\hat{f}(t)e^{2\pi itx}.
-        \]
-        In particular,
-        \[
-          \sum_{n \in \Z}f(n) = \sum_{t \in \Z}\hat{f}(t).
-        \]
-      \end{theorem}
-      \begin{proof}
-        Set
-        \[
-          F(x) = \sum_{n \in \Z}f(x+n).
-        \]
-        Then $F(x)$ is smooth by assumption and clearly $1$-periodic. Therefore it admits a Fourier series (see \cref{append:Fourier_Series}). We compute the $t$-th Fourier coefficient of $F(x)$ as follows:
-        \begin{align*}
-          \hat{F}(t) &= \int_{0}^{1}F(x)e^{-2\pi itx}\,dx \\
-          &= \int_{0}^{1}\sum_{n \in \Z}f(x+n)e^{-2\pi itx}\,dx \\
-          &= \sum_{n \in \Z}\int_{0}^{1}f(x+n)e^{-2\pi itx}\,dx && \text{DCT} \\
-          &= \sum_{n \in \Z}\int_{n}^{n+1}f(x)e^{-2\pi itx}\,dx \\
-          &= \int_{\R}f(x)e^{-2\pi itx}\,dx && \text{DCT} \\
-          &= \hat{f}(t).
-        \end{align*}
-        Therefore the Fourier series of $F(x)$ is
-        \[
-          F(x) = \sum_{t \in \Z}\hat{f}(t)e^{2\pi itx},
-        \]
-        and the first statement follows by the definition of $F(x)$. Setting $x = 0$ proves the second statement.
-      \end{proof}
+    \begin{proposition}
+      If $f(\mathbf{x})$ is smooth and $1$-periodic in each component then it converges uniformly to its Fourier series.
+    \end{proposition}
 
-      There are two practical settings of interest. The first is when $f(x)$ is of \textbf{Schwarz class}\index{Schwarz class} which means that $f \in C^{\infty}(\R)$ and $f$ along with all of its derivative have rapid decay. For example $e^{-x^{2}}$ is of Schwarz class. If $f(x)$ is of Schwarz class, the rapid decay implies that $f(x)$ and all of its derivatives are absolutely integrable over $\R$. Moreover, this also implies that $F(x)$ and all of its derivatives are locally absolutely uniformly convergent by the Weierstrass $M$-test. The uniform limit theorem implies that $F(x)$ is smooth and thus the conditions of the Poisson summation formula are satisfied. The second application is when $f(z)$ is some holomorphic function that has at least polynomial decay of order $c > 1$ for any fixed $y$. Then $f(z)$ is absolutely integrable over $\R$ for any fixed $y$. Moreover, $F(z)$ is holomorphic. Then the conditions of the Poisson summation formula are satisfied for $z = iy$ with $y > 0$ and the identity theorem shows that this holds for all $z$. Our primary use of the Poisson summation formula will be to derive very striking transformation laws which are the key ingredient in analytically continuing many important functions.
+    The link between the Fourier transform and Fourier series is given by the \textbf{Poisson summation formula}\index{Poisson summation formula}:
+
+    \begin{theorem}[Poisson summation formula]
+      Suppose $f(\mathbf{x})$ is absolutely integrable on $\R^{n}$ and the function
+      \[
+        F(\mathbf{x}) = \sum_{\mathbf{n} \in \Z^{n}}f(\mathbf{x}+\mathbf{n}),
+      \]
+      is locally absolutely uniformly convergent and smooth. Then
+      \[
+        \sum_{\mathbf{n} \in \Z^{n}}f(\mathbf{x}+\mathbf{n}) = \sum_{\mathbf{t} \in \Z^{n}}(\mc{F}f)(\mathbf{t})e^{2\pi i\<\mathbf{t},\mathbf{x}\>}.
+      \]
+      In particular,
+      \[
+        \sum_{\mathbf{n} \in \Z^{n}}f(\mathbf{n}) = \sum_{\mathbf{t} \in \Z^{n}}(\mc{F}f)(\mathbf{t}).
+      \]
+    \end{theorem}
+    \begin{proof}
+      By assumption $F(\mathbf{x})$ is smooth and it is clearly $1$-periodic in each component. Therefore it admits a Fourier series. We compute the $\mathbf{t}$-th Fourier coefficient of $F(\mathbf{x})$ as follows:
+      \begin{align*}
+        \hat{F}(\mathbf{t}) &= \int_{[0,1]^{n}}F(\mathbf{x})e^{-2\pi i\<\mathbf{t},\mathbf{x}\>}\,d\mathbf{x} \\
+        &= \int_{[0,1]^{n}}\sum_{\mathbf{n} \in \Z^{n}}f(\mathbf{x}+\mathbf{n})e^{-2\pi i\<\mathbf{t},\mathbf{x}\>}\,d\mathbf{x} \\
+        &= \sum_{\mathbf{n} \in \Z^{n}}\int_{[0,1]^{n}}f(\mathbf{x}+\mathbf{n})e^{-2\pi i\<\mathbf{t},\mathbf{x}\>}\,d\mathbf{x} && \text{DCT} \\
+        &= \sum_{\mathbf{n} \in \Z^{n}}\int_{\mathbf{n}+[0,1]^{n}}f(\mathbf{x})e^{-2\pi i\<\mathbf{t},\mathbf{x}\>}\,d\mathbf{x} \\
+        &= \int_{\R^{n}}f(\mathbf{x})e^{-2\pi i\<\mathbf{t},\mathbf{x}\>}\,d\mathbf{x} && \text{DCT} \\
+        &= (\mc{F}f)(\mathbf{t}).
+      \end{align*}
+      Therefore the Fourier series of $F(\mathbf{x})$ is
+      \[
+        F(\mathbf{x}) = \sum_{\mathbf{t} \in \Z^{n}}(\mc{F}f)(\mathbf{t})e^{2\pi i\<\mathbf{t},\mathbf{x}\>}.
+      \]
+      and the first statement follows by the definition of $F(\mathbf{x})$. Setting $\mathbf{x} = \mathbf{0}$ proves the second statement.
+    \end{proof}
+
+    In practical settings, we need a class of functions $f(\mathbf{x})$ for which the assumptions of the Poisson summation formula hold. We say that $f(\mathbf{x})$ is of \textbf{Schwarz class}\index{Schwarz class} if $f \in C^{\infty}(\R^{n})$ and $f(\mathbf{x})$ along with all of its partial derivatives have rapid decay. If $f(\mathbf{x})$ is of Schwarz class, the rapid decay implies that $f(\mathbf{x})$ and all of its derivatives are absolutely integrable over $\R^{n}$. Moreover, this also implies that $F(\mathbf{x})$ and all of its derivatives are locally absolutely uniformly convergent by the Weierstrass $M$-test. The uniform limit theorem then implies $F(\mathbf{x})$ is smooth and thus the conditions of the Poisson summation formula are satisfied. A classical example of a Schwarz class function is $e^{-||\mathbf{x}||^{2}}$.
     \subsection*{The Mellin Transform}
-      Like the Fourier transform, the Mellin transform is another type of integral transform. If $f(x)$ is a continuous function and $f(\infty) = \lim_{x \to \infty}f(x)$ exists, then the \textbf{Mellin transform}\index{Mellin transform} $F(s)$ of $f(x)$ is given by
+      Like the Fourier transform, the Mellin transform is another type of integral transform. If $f(x)$ is a continuous function and $f(\infty) = \lim_{x \to \infty}f(x)$ exists, then the \textbf{Mellin transform}\index{Mellin transform} $(\mc{M}f)(s)$ of $f(x)$ is given by
       \[
-        F(s) = \int_{0}^{\infty}(f(x)-f(\infty))x^{s}\,\frac{dx}{x}.
+        (\mc{M}f)(s) = \int_{0}^{\infty}(f(x)-f(\infty))x^{s}\,\frac{dx}{x}.
       \]
-      In most cases, we assume $f(x)$ has some type of decay so that $f(\infty) = 0$. Moreover, if $f(x)$ is a sufficiently nice function then the integral will be bounded in some half-plane in $s$. For example, this happens if $f(x)$ exhibits rapid decay and remains bounded as $x \to 0$. In this case, the integral is locally absolutely uniformly convergent for $\s > 0$. If the Mellin transform $F(s)$ is sufficiently nice, then the initial function can be recovered via means of the \textbf{inverse Mellin transform}\index{inverse Mellin transform} $(\mc{M}^{-1}F)(x)$:
+      In most cases, we assume $f(x)$ has some type of decay so that $f(\infty) = 0$. Moreover, if $f(x)$ is a sufficiently nice function then the integral will be bounded in some half-plane in $s$. For example, this happens if $f(x)$ exhibits rapid decay and remains bounded as $x \to 0$. In this case, the integral is locally absolutely uniformly convergent for $\s > 0$. There is also an inverse transform. If $g(s)$ holomorphic and tends to zero as $t \to \infty$ in a vertical strip $a < \s < b$, then the inverse \textbf{inverse Mellin transform}\index{inverse Mellin transform} $(\mc{M}^{-1}g)(x)$ of $g(s)$ is given by
       \[
-        (\mc{M}^{-1}F)(x) = \frac{1}{2\pi i}\int_{(c)}F(s)x^{-s}\,ds.
+        (\mc{M}^{-1}g)(x) = \frac{1}{2\pi i}\int_{(c)}g(s)x^{-s}\,ds,
       \]
-      It is not immediately clear that this integral exists and is independent of $c$. The following theorem makes precise what properties $F(s)$ needs to satisfy and for which $c$ the inverse Mellin transform recovers the original function $f(x)$ (see \cite{debnath2002integral} for a proof):
+      for any $a < c < b$.
+      It is not immediately clear that this integral exists and is independent of $c$. The following theorem makes precise what properties $f(x)$ needs to satisfy so that the inverse Mellin transform recovers $f(x)$ (see \cite{debnath2002integral} for a proof):
 
       \begin{theorem}[Mellin inversion formula]
-        Let $a$ and $b$ be reals such that $a < b$. Suppose $F(s)$ is analytic in the strip vertical $a < \s < b$, tends to zero uniformly as $t \to \infty$ along any line $\s = c$ for $a < c < b$, and that the integral of $F(s)$ along this line is locally absolutely uniformly convergent. Then if
+        Let $a < b$ and suppose $g(s)$ is analytic in the strip vertical $a < \s < b$, tends to zero uniformly as $t \to \infty$ along any line $\s = c$ for $a < c < b$, and that the integral of $g(s)$ along this line is locally absolutely uniformly convergent. Then if
         \[
-          f(x) = \frac{1}{2\pi i}\int_{(c)}F(s)x^{-s}\,ds,
+          f(x) = \frac{1}{2\pi i}\int_{(c)}g(s)x^{-s}\,ds,
         \]
-        this integral is independent of $c$ and moreover $F(s) = (\mc{M}f)(s)$. Conversely, suppose $f(x)$ is piecewise continuous such that its value is halfway between the limit values at any jump discontinuity and
+        this integral is independent of $c$ and moreover $g(s) = (\mc{M}f)(s)$. Conversely, suppose $f(x)$ is piecewise continuous such that its value is halfway between the limit values at any jump discontinuity and
         \[
-          F(s) = \int_{0}^{\infty}f(x)x^{s}\,\frac{dx}{x},
+          g(s) = \int_{0}^{\infty}f(x)x^{s}\,\frac{dx}{x},
         \]
-        is locally absolutely uniformly convergent in the vertical strip $a < \s < b$. Then $f(x) = (\mc{M}^{-1}F)(x)$.
+        is locally absolutely uniformly convergent in the vertical strip $a < \s < b$. Then $f(x) = (\mc{M}^{-1}g)(x)$.
       \end{theorem}
   \section{The Gamma Function}
     The gamma function is ubiquitous in analytic number theory and the better one understands this function the better one will be at seeing the forest for the trees. The \textbf{gamma function}\index{gamma function} $\G(s)$ is defined to be the Mellin transform of $e^{-x}$:
