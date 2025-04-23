@@ -178,7 +178,7 @@
       \[
         P(s) = \sum_{k \ge 0}\frac{(s-1)^{k}}{k!}\sum_{n \ge 1}\frac{a(n)(-\log(n))^{k}}{n} = \sum_{k \ge 0}\frac{(1-s)^{k}}{k!}\sum_{n \ge 1}\frac{a(n)(\log(n))^{k}}{n}.
       \]
-      If $s$ is real with $s < 1$, then this last double sum is a sum of positive terms because $a(n) \ge 0$. Moreover, since $D(s)$ is convergent here the two sums can be interchanged by the dominated convergence theorem. Interchanging sums we see that
+      If $s$ is real with $s < 1$, then this last double sum is a sum of positive terms because $a(n) \ge 0$. Moreover, since $P(s)$ is absolutely convergent the two sums can be interchanged by Fubini's theorem. Interchanging sums we see that
       \[
         P(s) = \sum_{n \ge 1}\frac{a(n)}{n}\sum_{k \ge 0}\frac{(1-s)^{k}(\log(n))^{k}}{k!} = \sum_{n \ge 1}\frac{a(n)}{n}e^{(1-s)\log(n)} = \sum_{n \ge 1}\frac{a(n)}{n^{s}} = D(s),
       \]
@@ -313,7 +313,7 @@
       \[
         A'(X) = \sum_{n \ge 1}a(n)\frac{1}{2\pi i}\int_{c-iT}^{c+iT}\frac{X^{s}}{n^{s}}\,\frac{ds}{s}+\sum_{\substack{n \ge 1 \\ n \neq X}}a(n)O\left(\frac{X^{c}}{n^{c}}\min\left(1,\frac{1}{T\left|\log\left(\frac{X}{n}\right)\right|}\right)\right)+\d_{X}a(X)O\left(\frac{c}{T}\right).
       \]
-      Since $D(s)$ converges absolutely, the sum may be moved inside of the first $O$-estimate and then we may combine the resulting two $O$-estimates. The dominated convergence theorem implies we may interchange the sum and the integral, and the statement of the lemma follows.
+      Since $D(s)$ converges absolutely, the sum may be moved inside of the first $O$-estimate and then we may combine the resulting two $O$-estimates. Fubini's theorem implies we may interchange the sum and the integral, and the statement of the lemma follows.
     \end{proof}
 
     There is a slightly weaker variant of truncated Perron's formula that follows as a corollary:
@@ -402,7 +402,7 @@
       \begin{align*}
         A_{\psi}(X) &= \sum_{n \ge 1}a(n)\psi\left(\frac{n}{X}\right) \\
         &= \sum_{n \ge 1}\frac{a(n)}{2\pi i}\int_{(c)}\Psi(s)\left(\frac{n}{X}\right)^{-s}\,ds & \text{Mellin inversion formula} \\
-        &= \frac{1}{2\pi i}\int_{(c)}\sum_{n \ge 1}a(n)\Psi(s)\left(\frac{n}{X}\right)^{-s}\,ds & \text{DCT} \\
+        &= \frac{1}{2\pi i}\int_{(c)}\sum_{n \ge 1}a(n)\Psi(s)\left(\frac{n}{X}\right)^{-s}\,ds & \text{FT} \\
         &= \frac{1}{2\pi i}\int_{(c)}D(s)\Psi(s)X^{s}\,ds. \\
       \end{align*}
       This proves the first statement. For the second statement, take $X = 1$.
@@ -611,7 +611,7 @@
         I(X,s,f) &= \frac{1}{2\pi i}\int_{(a)}\L(s+u,f)\Phi(u)X^{u}\,\frac{du}{u} \\
         &= \frac{1}{2\pi i}\int_{(a)}q(f)^{\frac{s+u}{2}}\g(s+u,f)L(s+u,f)\Phi(u)X^{u}\,\frac{du}{u} \\
         &= \frac{1}{2\pi i}\int_{(a)}\sum_{n \ge 1}\frac{a_{f}(n)}{n^{s+u}}q(f)^{\frac{s+u}{2}}\g(s+u,f)\Phi(u)X^{u}\,\frac{du}{u} \\
-        &= \sum_{n \ge 1}\frac{1}{2\pi i}\int_{(a)}\frac{a_{f}(n)}{n^{s+u}}q(f)^{\frac{s+u}{2}}\g(s+u,f)\Phi(u)X^{u}\,\frac{du}{u} && \text{DCT} \\
+        &= \sum_{n \ge 1}\frac{1}{2\pi i}\int_{(a)}\frac{a_{f}(n)}{n^{s+u}}q(f)^{\frac{s+u}{2}}\g(s+u,f)\Phi(u)X^{u}\,\frac{du}{u} && \text{FT} \\
         &= q(f)^{\frac{s}{2}}\g(s,f)\sum_{n \ge 1}\frac{a_{f}(n)}{n^{s}}\frac{1}{2\pi i}\int_{(a)}\frac{\g(s+u,f)}{\g(s,f)}\Phi(u)\left(\frac{\sqrt{q(f)}X}{n}\right)^{u}\,\frac{du}{u} \\
         &= q(f)^{\frac{s}{2}}\g(s,f)\sum_{n \ge 1}\frac{a_{f}(n)}{n^{s}}V_{s}\left(\frac{n}{\sqrt{q(f)}X}\right).
       \end{align*}
@@ -700,7 +700,7 @@
       \[
         \sum_{n \ge 1}a_{f}(n)\psi(n) = \frac{1}{2\pi i}\int_{(a)}\e(f)q(f)^{s-\frac{1}{2}}\frac{\g(s,f)}{\g(1-s,f)}L(s,\conj{f})\Psi(1-s)\,ds+R\Psi(1).
       \]
-      The proof is complete upon interchanging the sum over the Dirichlet series and the integral by the dominated convergence theorem and factoring out $\frac{\e(f)}{\sqrt{q(f)}}$.
+      The proof is complete upon interchanging the sum over the Dirichlet series and the integral by Fubini's theorem and factoring out $\frac{\e(f)}{\sqrt{q(f)}}$.
     \end{proof}
   \section{The Riemann Hypothesis \& Nontrivial Zeros}
     The zeros of an $L$-function $L(s,f)$ have interesting behavior. Recall that
@@ -867,7 +867,7 @@
       It follows that
       \begin{align*}
         \sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right) &= \sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}\sum_{k \in \Z}\psi_{k}\left(\frac{n}{\sqrt{q(f)}}\right)V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right) \\
-        &= \sum_{k \in \Z}\sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}\psi_{k}\left(\frac{n}{\sqrt{q(f)}}\right)V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right) && \text{DCT} \\
+        &= \sum_{k \in \Z}\sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}\psi_{k}\left(\frac{n}{\sqrt{q(f)}}\right)V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right) && \text{FT} \\
         &\ll_{\e} \sum_{k \in \Z}\left|\sum_{\substack{n \ll \mf{q}(f)^{\frac{1}{2}+\e} \\ 2^{k-1}\sqrt{q(f)} \le n \le 2^{k+1}\sqrt{q(f)}}}\frac{a_{f}(n)}{\sqrt{n}}\psi_{k}\left(\frac{n}{\sqrt{q(f)}}\right)\right| \\
         &\ll_{\e} \sum_{k \ll \log(q(f)^{\frac{\e}{2}})}\left|\sum_{\substack{n \ll \mf{q}(f)^{\frac{1}{2}+\e} \\ 2^{k-1}\sqrt{q(f)} \le n \le 2^{k+1}\sqrt{q(f)}}}\frac{a_{f}(n)}{\sqrt{n}}\psi_{k}\left(\frac{n}{\sqrt{q(f)}}\right)\right|,
       \end{align*}

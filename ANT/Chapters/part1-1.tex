@@ -34,77 +34,77 @@
       \item $\d_{a,b}$ will denote the indicator function for $a = b$. That is, $\d_{a,b} = 1,0$ according to if $a = b$ or not.
     \end{itemize}
   \section{Asymptotics}
-    Throughout we let $\mathbf{z} \in \R^{n}$ or $\mathbf{z} \in \C^{n}$. Much of the language of analytic number theory is given in terms of asymptotics (or estimates or bounds) as they allows us to discuss approximate growth and dispense with superfluous constants. For this reason, asymptotics will be the first material that we will present. The asymptotics that we will cover are listed in the following table:
+    Throughout we assume $f,g:\R^{n} \to \C$. Much of the language of analytic number theory is given in terms of asymptotics (or estimates or bounds) as they allows us to discuss approximate growth and dispense with superfluous constants. For this reason, asymptotics will be the first material that we will present. The asymptotics that we will cover are listed in the following table:
     \begin{center}
       \begin{stabular}[1.5]{|c|c|c|}
         \hline
         Asymptotics & Notation \\
         \hline
-        Big O & $f(\mathbf{z}) = O(g(\mathbf{z}))$ \\
+        Big O & $f(\mathbf{x}) = O(g(\mathbf{x}))$ \\
         \hline
-        Vinogradov's symbol & $f(\mathbf{z}) \ll g(\mathbf{z})$ \\
+        Vinogradov's symbol & $f(\mathbf{x}) \ll g(\mathbf{x})$ \\
         \hline
-        Order of magnitude symbol & $f(\mathbf{z}) \asymp g(\mathbf{z})$ \\
+        Order of magnitude symbol & $f(\mathbf{x}) \asymp g(\mathbf{x})$ \\
         \hline
-        Little o & $f(\mathbf{z}) = o(g(\mathbf{z}))$ \\
+        Little o & $f(\mathbf{x}) = o(g(\mathbf{x}))$ \\
         \hline
-        Asymptotic equivalence & $f(\mathbf{z}) \sim g(\mathbf{z})$ \\
+        Asymptotic equivalence & $f(\mathbf{x}) \sim g(\mathbf{x})$ \\
         \hline
-        Omega symbol & $f(\mathbf{z}) = \W(g(\mathbf{z}))$ \\
+        Omega symbol & $f(\mathbf{x}) = \W(g(\mathbf{x}))$ \\
         \hline
       \end{stabular}
     \end{center}
-    Implicit in all of these asymptotics is some limiting process $\mathbf{z} \to \mathbf{z}_{0}$ where $\mathbf{z}_{0}$ is finite or $\infty$. If $\mathbf{z}_{0}$ is finite, then it is understood that the asymptotic is assumed to hold for all $\mathbf{z}$ sufficiently close to $\mathbf{z}_{0}$ in norm. If $\mathbf{z}_{0}$ is infinite, then the asymptotic is assumed to hold for sufficiently large $\mathbf{z}$. If the limiting process is not explicitly mentioned, it is assumed to be as $\mathbf{z} \to \infty$. Often times, asymptotics will hold for all admissible values of $\mathbf{z}$ and this will be clear from context although we still might suppress the specific limiting process.
+    Implicit in all of these asymptotics is some limiting process $\mathbf{x} \to \mathbf{x}_{0}$ where $\mathbf{x}_{0}$ is finite or $\infty$. If $\mathbf{x}_{0}$ is finite, then it is understood that the asymptotic is assumed to hold for all $\mathbf{x}$ sufficiently close to $\mathbf{x}_{0}$ in norm. If $\mathbf{x}_{0}$ is infinite, then the asymptotic is assumed to hold for sufficiently large $\mathbf{x}$. If the limiting process is not explicitly mentioned, it is assumed to be as $\mathbf{x} \to \infty$. Often times, asymptotics will hold for all admissible values of $\mathbf{x}$ and this will be clear from context although we still might suppress the specific limiting process.
 
     \begin{remark}
-      Suppose $f,g:\Z_{\ge 0}^{d} \to \C$. Extending $f(\mathbf{n})$ and $g(\mathbf{n})$ by making them piecewise linear so that they are piecewise continuous, we can consider asymptotics with $\mathbf{n}$ in place of $\mathbf{z}$. All of the following theory still holds. Moreover, if we further take $f(\mathbf{z})$ or $g(\mathbf{z})$ to be a constant function, the following theory will still hold.
+      If $f,g: \C^{n} \to \C$, then the following theory still holds by identifying $\C^{n} \cong \R^{2n}$. Moreover, if $f,g:\N^{n} \to \C$ then by extending $f(\mathbf{n})$ and $g(\mathbf{n})$ to $\R^{n}$ by making them piecewise linear, so that they are piecewise continuous, the following theory still holds with $\mathbf{n}$ in place of $\mathbf{x}$. In particular, we may take $f(\mathbf{x})$ or $g(\mathbf{x})$ to be a constant function.
     \end{remark}
 
     Implicit in some asymptotics will there be a constant (such constants are in general not unique and any sufficiently large constant will do). Any such constant is called the \textbf{implicit constant}\index{implicit constant} of the asymptotic. The implicit constant may depend on one or more parameters, $\e$, $\s$, etc. If we wish to make these dependencies known, we use subscripts. If it is possible to choose the implicit constant independent of a certain parameter then we say that the asymptotic is \textbf{uniform}\index{uniform} with respect to that parameter. Moreover, we say that an implicit constant is \textbf{effective}\index{effective} if the constant is numerically computable and \textbf{ineffective}\index{ineffective} otherwise. Moreover, if we are interested in the dependence of an asymptotic on a certain parameter, say $p$, we will refer to the \textbf{$p$-aspect}\index{$p$-aspect} to mean the part of the asymptotic that is dependent upon $p$.
     \subsection*{\texorpdfstring{$O$}{O}-estimates \& Symbols}
-      We say $f(\mathbf{z})$ \textbf{is of order}\index{is of order} $g(\mathbf{z})$ or $f(\mathbf{z})$ is $O(g(\mathbf{z}))$ as $\mathbf{z} \to \mathbf{z}_{0}$ and write $f(\mathbf{z}) = O(g(\mathbf{z}))$
+      We say $f(\mathbf{x})$ \textbf{is of order}\index{is of order} $g(\mathbf{x})$ or $f(\mathbf{x})$ is $O(g(\mathbf{x}))$ as $\mathbf{x} \to \mathbf{x}_{0}$ and write $f(\mathbf{x}) = O(g(\mathbf{x}))$
       if there is some positive constant $c$ such that
       \[
-        |f(\mathbf{z})| \le c|g(\mathbf{z})|,
+        |f(\mathbf{x})| \le c|g(\mathbf{x})|,
       \]
-      holds as $\mathbf{z} \to \mathbf{z}_{0}$. We call this an \textbf{$O$-estimate}\index{$O$-estimate} and say that $f(\mathbf{z})$ has \textbf{growth at most}\index{growth at most} $g(\mathbf{z})$. The $O$-estimate says that for $\mathbf{z}$ close to $\mathbf{z}_{0}$, the size of $f(\mathbf{z})$ grows like $g(\mathbf{z})$.
+      holds as $\mathbf{x} \to \mathbf{x}_{0}$. We call this an \textbf{$O$-estimate}\index{$O$-estimate} and say that $f(\mathbf{x})$ has \textbf{growth at most}\index{growth at most} $g(\mathbf{x})$. The $O$-estimate says that for $\mathbf{x}$ close to $\mathbf{x}_{0}$, the size of $f(\mathbf{x})$ grows like $g(\mathbf{x})$.
       
       \begin{remark}
-        Many authors assume that $g(\mathbf{z})$ is a nonnegative function so that the absolute values on $g(\mathbf{z})$ can be dropped. As we require asymptotics that will be used more generally, we do not make this assumption since one could very well replace $O(g(\mathbf{z}))$ with $O(|g(\mathbf{z})|)$. In practice this deviation causes no issue.
+        Many authors assume that $g(\mathbf{x})$ is a nonnegative function so that the absolute values on $g(\mathbf{x})$ can be dropped. As we require asymptotics that will be used more generally, we do not make this assumption since one could very well replace $O(g(\mathbf{x}))$ with $O(|g(\mathbf{x})|)$. In practice this deviation causes no issue.
       \end{remark}
       
-      As a symbol, let $O(g(\mathbf{z}))$ stand for a function $f(\mathbf{z})$ that is $O(g(\mathbf{z}))$. Then we may use the $O$-estimates in algebraic equations and inequalities. Note that this extends the definition of the symbol because $f(\mathbf{z}) = O(g(\mathbf{z}))$ means $f(\mathbf{z})$ is $O(g(\mathbf{z}))$. Moreover, in algebraic equations and inequalities involving $O$-estimates it is often customary to refer to such an $O$-estimate as an \textbf{error term}\index{error term}. The symbol $\ll$ is known as \textbf{Vinogradov's symbol}\index{Vinogradov's symbol} and it is an alternative way to express $O$-estimates. We write $f(\mathbf{z}) \ll g(\mathbf{z})$ as $\mathbf{z} \to \mathbf{z}_{0}$ if $f(\mathbf{z}) = O(g(\mathbf{z}))$ as $\mathbf{z} \to \mathbf{z}_{0}$. We also write $f(\mathbf{z}) \gg g(\mathbf{z})$ as $\mathbf{z} \to \mathbf{z}_{0}$ to mean $g(\mathbf{z}) \ll f(\mathbf{z})$ as $\mathbf{z} \to \mathbf{z}_{0}$. If there is a dependence of the implicit constant on parameters, we use subscripts to denote dependence on these parameters. If both $f(\mathbf{z}) \ll g(\mathbf{z})$ and $g(\mathbf{z}) \ll f(\mathbf{z})$ as $\mathbf{z} \to \mathbf{z}_{0}$, then we say $f(\mathbf{z})$ and $g(\mathbf{z})$ have the \textbf{same order of magnitude}\index{same order of magnitude} and write $f(\mathbf{z}) \asymp g(\mathbf{z})$ as $\mathbf{z} \to \mathbf{z}_{0}$. We also say $f(\mathbf{z})$ has \textbf{growth}\index{growth} $g(\mathbf{z})$. If there is a dependence of the implicit constant on parameters, we use subscripts to denote dependence on these parameters. From the definition of the $O$-estimate, this is equivalent to the existence of positive constants $c_{1}$ and $c_{2}$ such that
+      As a symbol, let $O(g(\mathbf{x}))$ stand for a function $f(\mathbf{x})$ that is $O(g(\mathbf{x}))$. Then we may use the $O$-estimates in algebraic equations and inequalities. Note that this extends the definition of the symbol because $f(\mathbf{x}) = O(g(\mathbf{x}))$ means $f(\mathbf{x})$ is $O(g(\mathbf{x}))$. Moreover, in algebraic equations and inequalities involving $O$-estimates it is often customary to refer to such an $O$-estimate as an \textbf{error term}\index{error term}. The symbol $\ll$ is known as \textbf{Vinogradov's symbol}\index{Vinogradov's symbol} and it is an alternative way to express $O$-estimates. We write $f(\mathbf{x}) \ll g(\mathbf{x})$ as $\mathbf{x} \to \mathbf{x}_{0}$ if $f(\mathbf{x}) = O(g(\mathbf{x}))$ as $\mathbf{x} \to \mathbf{x}_{0}$. We also write $f(\mathbf{x}) \gg g(\mathbf{x})$ as $\mathbf{x} \to \mathbf{x}_{0}$ to mean $g(\mathbf{x}) \ll f(\mathbf{x})$ as $\mathbf{x} \to \mathbf{x}_{0}$. If there is a dependence of the implicit constant on parameters, we use subscripts to denote dependence on these parameters. If both $f(\mathbf{x}) \ll g(\mathbf{x})$ and $g(\mathbf{x}) \ll f(\mathbf{x})$ as $\mathbf{x} \to \mathbf{x}_{0}$, then we say $f(\mathbf{x})$ and $g(\mathbf{x})$ have the \textbf{same order of magnitude}\index{same order of magnitude} and write $f(\mathbf{x}) \asymp g(\mathbf{x})$ as $\mathbf{x} \to \mathbf{x}_{0}$. We also say $f(\mathbf{x})$ has \textbf{growth}\index{growth} $g(\mathbf{x})$. If there is a dependence of the implicit constant on parameters, we use subscripts to denote dependence on these parameters. From the definition of the $O$-estimate, this is equivalent to the existence of positive constants $c_{1}$ and $c_{2}$ such that
       \[
-        c_{1}|g(\mathbf{z})| \le |f(\mathbf{z})| \le c_{2}|g(\mathbf{z})|.
+        c_{1}|g(\mathbf{x})| \le |f(\mathbf{x})| \le c_{2}|g(\mathbf{x})|.
       \]
-      Equivalently, we can interchange $f(\mathbf{z})$ and $g(\mathbf{z})$ in the above equation.
+      Equivalently, we can interchange $f(\mathbf{x})$ and $g(\mathbf{x})$ in the above equation.
     \subsection*{\texorpdfstring{$o$}{o}-estimates \& Symbols}
-      We say $f(\mathbf{z})$ \textbf{is of smaller order than}\index{is of smaller order than} $g(\mathbf{z})$ or $f(\mathbf{z})$ is $o(g(\mathbf{z}))$ as $\mathbf{z} \to \mathbf{z}_{0}$ and write $f(\mathbf{z}) = o(g(\mathbf{z}))$ if
+      We say $f(\mathbf{x})$ \textbf{is of smaller order than}\index{is of smaller order than} $g(\mathbf{x})$ or $f(\mathbf{x})$ is $o(g(\mathbf{x}))$ as $\mathbf{x} \to \mathbf{x}_{0}$ and write $f(\mathbf{x}) = o(g(\mathbf{x}))$ if
       \[
-        \lim_{\mathbf{z} \to \mathbf{z}_{0}}\left|\frac{f(\mathbf{z})}{g(\mathbf{z})}\right| = 0,
+        \lim_{\mathbf{x} \to \mathbf{x}_{0}}\left|\frac{f(\mathbf{x})}{g(\mathbf{x})}\right| = 0,
       \]
-      provided $g(\mathbf{z}) \neq 0$ for all $\mathbf{z}$ sufficiently close to $\mathbf{z}_{0}$ in norm. We call this an \textbf{$o$-estimate}\index{$o$-estimate} and say that $f(\mathbf{z})$ has \textbf{growth less than}\index{growth less than} $g(\mathbf{z})$. The $o$-estimate says that for $\mathbf{z}$ close to $\mathbf{z}_{0}$, $g(\mathbf{z})$ dominates $f(\mathbf{z})$. If $f(\mathbf{z}) = o(g(\mathbf{z}))$ as $\mathbf{z} \to \mathbf{z}_{0}$, then $f(\mathbf{z}) = O(g(\mathbf{z}))$ as $\mathbf{z} \to \mathbf{z}_{0}$ where the implicit constant can be taken arbitrarily small by definition of the $o$-estimate. Therefore, $o$-estimates are stronger than $O$-estimates. As a symbol, let $o(g(\mathbf{z}))$ stand for a function $f(\mathbf{z})$ that is $o(g(\mathbf{z}))$. Then we may use the $o$-estimates in algebraic equations and inequalities. Note that this extends the definition of the symbol because $f(\mathbf{z}) = o(g(\mathbf{z}))$ means $f(\mathbf{z})$ is $o(g(\mathbf{z}))$. We say $f(\mathbf{z})$ \textbf{is asymptotic to}\index{is asymptotic to} $g(\mathbf{z})$ as $\mathbf{z} \to \mathbf{z}_{0}$ and write $f(\mathbf{z}) \sim g(\mathbf{z})$ if
+      provided $g(\mathbf{x}) \neq 0$ for all $\mathbf{x}$ sufficiently close to $\mathbf{x}_{0}$ in norm. We call this an \textbf{$o$-estimate}\index{$o$-estimate} and say that $f(\mathbf{x})$ has \textbf{growth less than}\index{growth less than} $g(\mathbf{x})$. The $o$-estimate says that for $\mathbf{x}$ close to $\mathbf{x}_{0}$, $g(\mathbf{x})$ dominates $f(\mathbf{x})$. If $f(\mathbf{x}) = o(g(\mathbf{x}))$ as $\mathbf{x} \to \mathbf{x}_{0}$, then $f(\mathbf{x}) = O(g(\mathbf{x}))$ as $\mathbf{x} \to \mathbf{x}_{0}$ where the implicit constant can be taken arbitrarily small by definition of the $o$-estimate. Therefore, $o$-estimates are stronger than $O$-estimates. As a symbol, let $o(g(\mathbf{x}))$ stand for a function $f(\mathbf{x})$ that is $o(g(\mathbf{x}))$. Then we may use the $o$-estimates in algebraic equations and inequalities. Note that this extends the definition of the symbol because $f(\mathbf{x}) = o(g(\mathbf{x}))$ means $f(\mathbf{x})$ is $o(g(\mathbf{x}))$. We say $f(\mathbf{x})$ \textbf{is asymptotic to}\index{is asymptotic to} $g(\mathbf{x})$ as $\mathbf{x} \to \mathbf{x}_{0}$ and write $f(\mathbf{x}) \sim g(\mathbf{x})$ if
       \[
-        \lim_{\mathbf{z} \to \mathbf{z}_{0}}\left|\frac{f(\mathbf{z})}{g(\mathbf{z})}\right| = 1,
+        \lim_{\mathbf{x} \to \mathbf{x}_{0}}\left|\frac{f(\mathbf{x})}{g(\mathbf{x})}\right| = 1,
       \]
-      provided $g(\mathbf{z}) \neq 0$ for all $\mathbf{z}$ sufficiently close to $\mathbf{z}_{0}$ in norm. We call this an \textbf{asymptotic}\index{asymptotic} and say that $f(\mathbf{z})$ and $g(\mathbf{z})$ are \textbf{asymptotically equivalent}\index{asymptotically equivalent}. It is useful to think of asymptotic equivalence as $f(\mathbf{z})$ and $g(\mathbf{z})$ being the same size in the limit as $\mathbf{z} \to \mathbf{z}_{0}$. Immediately from the definition, we see that this is an equivalence relation on functions. In particular, if $f(\mathbf{z}) \sim g(\mathbf{z})$ and $g(\mathbf{z}) \sim h(\mathbf{z})$ then $f(\mathbf{z}) \sim h(\mathbf{z})$. Also, if $f(\mathbf{z}) \sim g(\mathbf{z})$ as $\mathbf{z} \to \mathbf{z}_{0}$, then $f(\mathbf{z}) \asymp g(\mathbf{z})$ as $\mathbf{z} \to \mathbf{z}_{0}$ with $c_{1} \le 1 \le c_{2}$. So asymptotic equivalence is stronger than being of the same order of magnitude. Also note that $f(\mathbf{z}) \sim g(\mathbf{z})$ is equivalent to $f(\mathbf{z}) = g(\mathbf{z})(1+o(1))$ and hence implies $f(\mathbf{z}) = g(\mathbf{z})(1+O(1))$. We say $f(\mathbf{z})$ \textbf{is of larger order than}\index{is of larger order than} $g(\mathbf{z})$ or $f(\mathbf{z})$ is $\W(g(\mathbf{z}))$ as $\mathbf{z} \to \mathbf{z}_{0}$ and write $f(\mathbf{z}) = \W(g(\mathbf{z}))$ if
+      provided $g(\mathbf{x}) \neq 0$ for all $\mathbf{x}$ sufficiently close to $\mathbf{x}_{0}$ in norm. We call this an \textbf{asymptotic}\index{asymptotic} and say that $f(\mathbf{x})$ and $g(\mathbf{x})$ are \textbf{asymptotically equivalent}\index{asymptotically equivalent}. It is useful to think of asymptotic equivalence as $f(\mathbf{x})$ and $g(\mathbf{x})$ being the same size in the limit as $\mathbf{x} \to \mathbf{x}_{0}$. Immediately from the definition, we see that this is an equivalence relation on functions. In particular, if $f(\mathbf{x}) \sim g(\mathbf{x})$ and $g(\mathbf{x}) \sim h(\mathbf{x})$ then $f(\mathbf{x}) \sim h(\mathbf{x})$. Also, if $f(\mathbf{x}) \sim g(\mathbf{x})$ as $\mathbf{x} \to \mathbf{x}_{0}$, then $f(\mathbf{x}) \asymp g(\mathbf{x})$ as $\mathbf{x} \to \mathbf{x}_{0}$ with $c_{1} \le 1 \le c_{2}$. So asymptotic equivalence is stronger than being of the same order of magnitude. Also note that $f(\mathbf{x}) \sim g(\mathbf{x})$ is equivalent to $f(\mathbf{x}) = g(\mathbf{x})(1+o(1))$ and hence implies $f(\mathbf{x}) = g(\mathbf{x})(1+O(1))$. We say $f(\mathbf{x})$ \textbf{is of larger order than}\index{is of larger order than} $g(\mathbf{x})$ or $f(\mathbf{x})$ is $\W(g(\mathbf{x}))$ as $\mathbf{x} \to \mathbf{x}_{0}$ and write $f(\mathbf{x}) = \W(g(\mathbf{x}))$ if
       \[
-        \limsup_{\mathbf{z} \to \mathbf{z}_{0}}\left|\frac{f(\mathbf{z})}{g(\mathbf{z})}\right| > 0.
+        \limsup_{\mathbf{x} \to \mathbf{x}_{0}}\left|\frac{f(\mathbf{x})}{g(\mathbf{x})}\right| > 0.
       \]
-      provided $g(\mathbf{z}) \neq 0$ for all $\mathbf{z}$ sufficiently close to $\mathbf{z}_{0}$ in norm. We call this an \textbf{$\W$-estimate}\index{$\W$-estimate} and say that $f(\mathbf{z})$ has \textbf{growth at least}\index{growth at least} $g(\mathbf{z})$. Observe that $f(\mathbf{z}) = \W(g(\mathbf{z}))$ is precisely the negation of $f(\mathbf{z}) = o(g(\mathbf{z}))$, so that $f(\mathbf{z}) = \W(g(\mathbf{z}))$ means $f(\mathbf{z}) = o(g(\mathbf{z}))$ is false. This is weaker than $f(\mathbf{z}) \gg g(\mathbf{z})$ because $f(\mathbf{z}) = \W(g(\mathbf{z}))$ means $|f(\mathbf{z})| \ge c|g(\mathbf{z})|$ for some values of $\mathbf{z}$ arbitrarily close to $\mathbf{z}_{0}$ whereas $f(\mathbf{z}) \gg g(\mathbf{z})$ means $|f(\mathbf{z})| \ge c|g(\mathbf{z})|$ for all values of $\mathbf{z}$ sufficiently close to $\mathbf{z}_{0}$ in norm.
+      provided $g(\mathbf{x}) \neq 0$ for all $\mathbf{x}$ sufficiently close to $\mathbf{x}_{0}$ in norm. We call this an \textbf{$\W$-estimate}\index{$\W$-estimate} and say that $f(\mathbf{x})$ has \textbf{growth at least}\index{growth at least} $g(\mathbf{x})$. Observe that $f(\mathbf{x}) = \W(g(\mathbf{x}))$ is precisely the negation of $f(\mathbf{x}) = o(g(\mathbf{x}))$, so that $f(\mathbf{x}) = \W(g(\mathbf{x}))$ means $f(\mathbf{x}) = o(g(\mathbf{x}))$ is false. This is weaker than $f(\mathbf{x}) \gg g(\mathbf{x})$ because $f(\mathbf{x}) = \W(g(\mathbf{x}))$ means $|f(\mathbf{x})| \ge c|g(\mathbf{x})|$ for some values of $\mathbf{x}$ arbitrarily close to $\mathbf{x}_{0}$ whereas $f(\mathbf{x}) \gg g(\mathbf{x})$ means $|f(\mathbf{x})| \ge c|g(\mathbf{x})|$ for all values of $\mathbf{x}$ sufficiently close to $\mathbf{x}_{0}$ in norm.
     \subsection*{Algebraic Manipulation for \texorpdfstring{$O$}{O}-estimates and \texorpdfstring{$o$}{o}-estimates}
       Asymptotics become increasingly more useful when we can use them in equations to represent approximations. We catalogue some of the most useful algebraic manipulations for $O$-estimates and $o$-estimates. Most importantly, if an algebraic equation involves a $O$-estimate or $o$-estimate then it is understood that the equation is not symmetric and is interpreted to be read from left to right. That is, any function of the form satisfying the estimate on the left-hand side also satisfies the estimate on the right-hand side too. We begin with $O$-estimates. The trivial algebraic manipulations are collected in the proposition below:
 
       \begin{proposition}\label{prop:Big_Oh_manipulations}
-          The following $O$-estimates hold as $\mathbf{z} \to \mathbf{z}_{0}$:
+          The following $O$-estimates hold as $\mathbf{x} \to \mathbf{x}_{0}$:
           \begin{enumerate}[label=(\roman*)]
-            \item If $f(\mathbf{z}) = O(g(\mathbf{z}))$ and $g(\mathbf{z}) = O(h(\mathbf{z}))$, then $f(\mathbf{z}) = O(h(\mathbf{z}))$. Equivalently, $O(O(h(\mathbf{z}))) = O(h(\mathbf{z}))$.
-            \item If $f_{i}(\mathbf{z}) = O(g_{i}(\mathbf{z}))$ for $i = 1,2$, then $f_{1}(\mathbf{z})f_{2}(\mathbf{z}) = O(g_{1}(\mathbf{z})g_{2}(\mathbf{z}))$.
-            \item If $f(\mathbf{z}) = O(g(\mathbf{z})h(\mathbf{z}))$, then $f(\mathbf{z}) = g(\mathbf{z})O(h(\mathbf{z}))$.
-            \item If $f_{i}(\mathbf{z}) = O(g_{i}(\mathbf{z}))$ for $i = 1,2,\ldots,n$, then $\sum_{1 \le i \le n}f_{i}(\mathbf{z}) = O\left(\sum_{1 \le i \le n}|g_{i}(\mathbf{z})|\right)$.
-            \item If $f_{n}(\mathbf{z}) = O(g_{n}(\mathbf{z}))$ for $n \ge 1$, then $\sum_{n \ge 1}f_{n}(\mathbf{z}) = O\left(\sum_{n \ge 1}|g_{n}(\mathbf{z})|\right)$ provided both $\sum_{n \ge 1}f_{n}(\mathbf{z})$ and $\sum_{n \ge 1}|g_{n}(\mathbf{z})|$ converge.
-            \item If $f(\mathbf{z}) = O(g(\mathbf{z}))$ as $\mathbf{z} \to \mathbf{z}_{0}$ and $T(\mathbf{z})$ is such that $T(\mathbf{z}) \to \mathbf{z}_{0}$ as $\mathbf{z} \to \mathbf{z}_{0}$, then $(f \circ T)(\mathbf{z}) = O((g \circ T)(\mathbf{z}))$.
-            \item If $f(\mathbf{z}) = O(g(\mathbf{z}))$, then $\Re(f(\mathbf{z})) = O(g(\mathbf{z}))$ and $\Im(f(\mathbf{z})) = O(g(\mathbf{z}))$.
+            \item If $f(\mathbf{x}) = O(g(\mathbf{x}))$ and $g(\mathbf{x}) = O(h(\mathbf{x}))$, then $f(\mathbf{x}) = O(h(\mathbf{x}))$. Equivalently, $O(O(h(\mathbf{x}))) = O(h(\mathbf{x}))$.
+            \item If $f_{i}(\mathbf{x}) = O(g_{i}(\mathbf{x}))$ for $i = 1,2$, then $f_{1}(\mathbf{x})f_{2}(\mathbf{x}) = O(g_{1}(\mathbf{x})g_{2}(\mathbf{x}))$.
+            \item If $f(\mathbf{x}) = O(g(\mathbf{x})h(\mathbf{x}))$, then $f(\mathbf{x}) = g(\mathbf{x})O(h(\mathbf{x}))$.
+            \item If $f_{i}(\mathbf{x}) = O(g_{i}(\mathbf{x}))$ for $i = 1,2,\ldots,n$, then $\sum_{1 \le i \le n}f_{i}(\mathbf{x}) = O\left(\sum_{1 \le i \le n}|g_{i}(\mathbf{x})|\right)$.
+            \item If $f_{n}(\mathbf{x}) = O(g_{n}(\mathbf{x}))$ for $n \ge 1$, then $\sum_{n \ge 1}f_{n}(\mathbf{x}) = O\left(\sum_{n \ge 1}|g_{n}(\mathbf{x})|\right)$ provided both $\sum_{n \ge 1}f_{n}(\mathbf{x})$ and $\sum_{n \ge 1}|g_{n}(\mathbf{x})|$ converge.
+            \item If $f(\mathbf{x}) = O(g(\mathbf{x}))$ as $\mathbf{x} \to \mathbf{x}_{0}$ and $T(\mathbf{x})$ is such that $T(\mathbf{x}) \to \mathbf{x}_{0}$ as $\mathbf{x} \to \mathbf{x}_{0}$, then $(f \circ T)(\mathbf{x}) = O((g \circ T)(\mathbf{x}))$.
+            \item If $f(\mathbf{x}) = O(g(\mathbf{x}))$, then $\Re(f(\mathbf{x})) = O(g(\mathbf{x}))$ and $\Im(f(\mathbf{x})) = O(g(\mathbf{x}))$.
           \end{enumerate}
       \end{proposition}
       \begin{proof}
@@ -114,9 +114,9 @@
       The most common application of \cref{prop:Big_Oh_manipulations} (vi) will be in the single variable case when $z \asymp w$ or $z \sim w$ (the latter case implying the former) where $w$ is a function of $z$ (usually one that is more simple than $x$ itself). Taking $h(z) = w$, \cref{prop:Big_Oh_manipulations} (vi) says that if $f(z) = O(g(z))$ then $f(w) = O(g(w))$. In terms of Vinogradov's symbol, $f(z) \ll g(z)$ implies $f(w) \ll g(w)$. $O$-estimates also behave well with respect to integrals provided the functions involved are of a real variable:
 
       \begin{proposition}
-        Suppose $f(\mathbf{z}) = O(g(\mathbf{z}))$ as $\mathbf{z} \to \infty$, $f(\mathbf{z})$ and $g(\mathbf{z})$ are integrable on a domain where this estimate holds, and let $\mathbf{z}_{1}$ and $\mathbf{z}_{2}$ belong to this region. Then
+        Suppose $f(\mathbf{x}) = O(g(\mathbf{x}))$ as $\mathbf{x} \to \infty$, $f(\mathbf{x})$ and $g(\mathbf{x})$ are integrable on a domain where this estimate holds, and let $\mathbf{x}_{1}$ and $\mathbf{x}_{2}$ belong to this region. Then
         \[
-          \int_{\mathbf{z}_{1}}^{\mathbf{z}_{2}}f(\mathbf{z})\,d\mathbf{z} = O\left(\int_{\mathbf{z}_{1}}^{\mathbf{z}_{2}}|g(\mathbf{z})|\,d\mathbf{z}\right).
+          \int_{\mathbf{x}_{1}}^{\mathbf{x}_{2}}f(\mathbf{x})\,d\mathbf{x} = O\left(\int_{\mathbf{x}_{1}}^{\mathbf{x}_{2}}|g(\mathbf{x})|\,d\mathbf{x}\right).
         \]
       \end{proposition}
       \begin{proof}
@@ -126,12 +126,12 @@
       The next proposition is a collection of some useful expressions for simplifying equations involving $O$-estimates:
 
       \begin{proposition}
-        Let $f(\mathbf{z})$ be a function such that $f(\mathbf{z}) \to 0$ as $\mathbf{z} \to \mathbf{z}_{0}$. The following $O$-estimates hold as $\mathbf{z} \to \mathbf{z}_{0}$:
+        Let $f(\mathbf{x})$ be a function such that $f(\mathbf{x}) \to 0$ as $\mathbf{x} \to \mathbf{x}_{0}$. The following $O$-estimates hold as $\mathbf{x} \to \mathbf{x}_{0}$:
         \begin{enumerate}[label=(\roman*)]
-          \item $\frac{1}{1+O(f(\mathbf{z}))} = 1+O(f(\mathbf{z}))$.
-          \item $(1+O(f(\mathbf{z})))^{w} = 1+O(f(\mathbf{z}))$ for any complex $w$.
-          \item $\log(1+O(f(\mathbf{z}))) = O(f(\mathbf{z}))$.
-          \item $e^{1+O(f(\mathbf{z}))} = 1+O(f(\mathbf{z}))$.
+          \item $\frac{1}{1+O(f(\mathbf{x}))} = 1+O(f(\mathbf{x}))$.
+          \item $(1+O(f(\mathbf{x})))^{w} = 1+O(f(\mathbf{x}))$ for any complex $w$.
+          \item $\log(1+O(f(\mathbf{x}))) = O(f(\mathbf{x}))$.
+          \item $e^{1+O(f(\mathbf{x}))} = 1+O(f(\mathbf{x}))$.
         \end{enumerate}
       \end{proposition}
       \begin{proof}
@@ -148,20 +148,20 @@
       For $o$-estimates, the following properties are useful:
 
       \begin{proposition}\label{prop:Little_Oh_manipulations}
-          The following $o$-estimates hold as $\mathbf{z} \to \mathbf{z}_{0}$:
+          The following $o$-estimates hold as $\mathbf{x} \to \mathbf{x}_{0}$:
           \begin{enumerate}[label=(\roman*)]
-            \item If $f(\mathbf{z}) = o(g(\mathbf{z}))$ and $g(\mathbf{z}) = o(h(\mathbf{z}))$, then $f(\mathbf{z}) = o(h(\mathbf{z}))$. Equivalently, $o(o(h(\mathbf{z}))) = o(h(\mathbf{z}))$.
-            \item If $f_{i}(\mathbf{z}) = o(g_{i}(\mathbf{z}))$ for $i = 1,2$, then $f_{1}(\mathbf{z})f_{2}(\mathbf{z}) = o(g_{1}(\mathbf{z})g_{2}(\mathbf{z}))$.
-            \item If $f(\mathbf{z}) = o(g(\mathbf{z})h(\mathbf{z}))$, then $f(\mathbf{z}) = g(\mathbf{z})o(h(\mathbf{z}))$.
-            \item If $f_{i}(\mathbf{z}) = o(g_{i}(\mathbf{z}))$ for $i = 1,2,\ldots,n$, then $\sum_{1 \le i \le n}f_{i}(\mathbf{z}) = o\left(\sum_{1 \le i \le n}|g_{i}(\mathbf{z})|\right)$.
-            \item If $f(\mathbf{z}) = o(g(\mathbf{z}))$ as $\mathbf{z} \to \mathbf{z}_{0}$ and $h(\mathbf{z})$ is such that $h(\mathbf{z}) \to \mathbf{z}_{0}$ as $\mathbf{z} \to \mathbf{z}_{0}$, then $(f \circ h)(\mathbf{z}) = o((g \circ h)(\mathbf{z}))$.
+            \item If $f(\mathbf{x}) = o(g(\mathbf{x}))$ and $g(\mathbf{x}) = o(h(\mathbf{x}))$, then $f(\mathbf{x}) = o(h(\mathbf{x}))$. Equivalently, $o(o(h(\mathbf{x}))) = o(h(\mathbf{x}))$.
+            \item If $f_{i}(\mathbf{x}) = o(g_{i}(\mathbf{x}))$ for $i = 1,2$, then $f_{1}(\mathbf{x})f_{2}(\mathbf{x}) = o(g_{1}(\mathbf{x})g_{2}(\mathbf{x}))$.
+            \item If $f(\mathbf{x}) = o(g(\mathbf{x})h(\mathbf{x}))$, then $f(\mathbf{x}) = g(\mathbf{x})o(h(\mathbf{x}))$.
+            \item If $f_{i}(\mathbf{x}) = o(g_{i}(\mathbf{x}))$ for $i = 1,2,\ldots,n$, then $\sum_{1 \le i \le n}f_{i}(\mathbf{x}) = o\left(\sum_{1 \le i \le n}|g_{i}(\mathbf{x})|\right)$.
+            \item If $f(\mathbf{x}) = o(g(\mathbf{x}))$ as $\mathbf{x} \to \mathbf{x}_{0}$ and $h(\mathbf{x})$ is such that $h(\mathbf{x}) \to \mathbf{x}_{0}$ as $\mathbf{x} \to \mathbf{x}_{0}$, then $(f \circ h)(\mathbf{x}) = o((g \circ h)(\mathbf{x}))$.
           \end{enumerate}
       \end{proposition}
       \begin{proof}
-        Statements (i)-(iii) and (v) follow immediately from the definition of the $o$-estimate. Statement (iv) follows from the definition and that $\sum_{1 \le i \le n}|g_{i}(\mathbf{z})| \ge |g_{i}(\mathbf{z})|$.
+        Statements (i)-(iii) and (v) follow immediately from the definition of the $o$-estimate. Statement (iv) follows from the definition and that $\sum_{1 \le i \le n}|g_{i}(\mathbf{x})| \ge |g_{i}(\mathbf{x})|$.
       \end{proof}
     \subsection*{Growth \& Decay of Functions}
-      We will also be interested in the growth rate of functions. There are many types of growth rates, but we will only recall the ones that are standard. Throughout let $c \ge 1$. First suppose $\mathbf{z} \to \mathbf{z}_{0}$. If $f(\mathbf{z}) \asymp \log^{c}||\mathbf{z}||$, we say that $f(\mathbf{z})$ is of \textbf{logarithmic growth}\index{logarithmic growth}. If $f(\mathbf{z}) \asymp ||\mathbf{z}||^{c}$, we say that $f(\mathbf{z})$ is of \textbf{polynomial growth}\index{polynomial growth}. If $f(\mathbf{z}) \asymp e^{c||\mathbf{z}||}$, we say that $f(\mathbf{z})$ is of \textbf{exponential growth}\index{exponential growth}. Now suppose $\mathbf{z} \to \infty$. If $f(\mathbf{z}) \asymp \log^{-c}||\mathbf{z}||$, we say that $f(\mathbf{z})$ is of \textbf{logarithmic decay}\index{logarithmic decay}. If $f(\mathbf{z}) \asymp ||\mathbf{z}||^{-c}$ for some $c \ge 1$, we say that $f(\mathbf{z})$ is of \textbf{polynomial decay}\index{polynomial decay}. If $f(\mathbf{z}) \asymp e^{-c||\mathbf{z}||}$, we say that $f(\mathbf{z})$ is of \textbf{exponential decay}\index{exponential decay}. In all of these cases, we refer to the constant $c$ as the \textbf{order}\index{order} of growth or decay respectively. If $f(\mathbf{z}) = \W(||\mathbf{z}||^{n})$ for all $n \ge 0$, then we say $f(\mathbf{z})$ is of \textbf{rapid growth}\index{rapid growth}. Alternatively, if $f(\mathbf{z}) = o(||\mathbf{z}||^{-n})$ for all $n \ge 0$, then we say $f(\mathbf{z})$ is of \textbf{rapid decay}\index{rapid decay}.
+      We will also be interested in the growth rate of functions. There are many types of growth rates, but we will only recall the ones that are standard. Throughout let $c \ge 1$. First suppose $\mathbf{x} \to \mathbf{x}_{0}$. If $f(\mathbf{x}) \asymp \log^{c}||\mathbf{x}||$, we say that $f(\mathbf{x})$ is of \textbf{logarithmic growth}\index{logarithmic growth}. If $f(\mathbf{x}) \asymp ||\mathbf{x}||^{c}$, we say that $f(\mathbf{x})$ is of \textbf{polynomial growth}\index{polynomial growth}. If $f(\mathbf{x}) \asymp e^{c||\mathbf{x}||}$, we say that $f(\mathbf{x})$ is of \textbf{exponential growth}\index{exponential growth}. Now suppose $\mathbf{x} \to \infty$. If $f(\mathbf{x}) \asymp \log^{-c}||\mathbf{x}||$, we say that $f(\mathbf{x})$ is of \textbf{logarithmic decay}\index{logarithmic decay}. If $f(\mathbf{x}) \asymp ||\mathbf{x}||^{-c}$ for some $c \ge 1$, we say that $f(\mathbf{x})$ is of \textbf{polynomial decay}\index{polynomial decay}. If $f(\mathbf{x}) \asymp e^{-c||\mathbf{x}||}$, we say that $f(\mathbf{x})$ is of \textbf{exponential decay}\index{exponential decay}. In all of these cases, we refer to the constant $c$ as the \textbf{order}\index{order} of growth or decay respectively. If $f(\mathbf{x}) = \W(||\mathbf{x}||^{n})$ for all $n \ge 0$, then we say $f(\mathbf{x})$ is of \textbf{rapid growth}\index{rapid growth}. Alternatively, if $f(\mathbf{x}) = o(||\mathbf{x}||^{-n})$ for all $n \ge 0$, then we say $f(\mathbf{x})$ is of \textbf{rapid decay}\index{rapid decay}.
   \section{Dirichlet Characters}
     The most important multiplicative periodic functions for an analytic number theorist are the Dirichlet characters. A \textbf{Dirichlet character}\index{Dirichlet character} $\chi$ modulo $m \ge 1$ is an $m$-periodic completely multiplicative function $\chi:\Z \to \C$ such that $\chi(a) = 0$ if and only if $(a,m) > 1$. We call $m$ the \textbf{modulus}\index{modulus} of $\chi$. Sometimes we will also write $\chi_{m}$ to denote a Dirichlet character modulo $m$ if we need to express the dependence upon the modulus. For any $m \ge 1$, there is always the \textbf{principal Dirichlet character}\index{principal Dirichlet character} modulo $m$ which we denote by $\chi_{m,0}$ (sometimes also seen as $\chi_{0,m}$ or the ever more confusing $\chi_{0}$) and is defined by
     \[
@@ -782,10 +782,10 @@
         \[
           \int_{F}\sum_{g \in G}f(g z)\,d\mu = \int_{D}f(z)\,d\mu,
         \]
-        provided the sum and or integral on either side are absolutely convergent and absolutely bounded.
+        provided either side is absolutely convergent.
       \end{theorem}
       \begin{proof}
-        First suppose $\int_{F}\sum_{g \in G}f(g z)\,d\mu$ converges absolutely. By the dominated convergence theorem, we may interchange the sum and integral. Upon making the change of variables $z \to g^{-1}z$, the invariance of $d\mu$ implies that the integral takes the form
+        First suppose $\int_{F}\sum_{g \in G}f(g z)\,d\mu$ converges absolutely. By Fubini's theorem, we may interchange the sum and integral. Upon making the change of variables $z \to g^{-1}z$, the invariance of $d\mu$ implies that the integral takes the form
         \[
           \sum_{g \in G}\int_{gF}f(z)\,d\mu.
         \]
@@ -833,9 +833,9 @@
       \begin{align*}
         \hat{F}(\mathbf{t}) &= \int_{[0,1]^{n}}F(\mathbf{x})e^{-2\pi i\<\mathbf{t},\mathbf{x}\>}\,d\mathbf{x} \\
         &= \int_{[0,1]^{n}}\sum_{\mathbf{n} \in \Z^{n}}f(\mathbf{x}+\mathbf{n})e^{-2\pi i\<\mathbf{t},\mathbf{x}\>}\,d\mathbf{x} \\
-        &= \sum_{\mathbf{n} \in \Z^{n}}\int_{[0,1]^{n}}f(\mathbf{x}+\mathbf{n})e^{-2\pi i\<\mathbf{t},\mathbf{x}\>}\,d\mathbf{x} && \text{DCT} \\
+        &= \sum_{\mathbf{n} \in \Z^{n}}\int_{[0,1]^{n}}f(\mathbf{x}+\mathbf{n})e^{-2\pi i\<\mathbf{t},\mathbf{x}\>}\,d\mathbf{x} && \text{FT} \\
         &= \sum_{\mathbf{n} \in \Z^{n}}\int_{\mathbf{n}+[0,1]^{n}}f(\mathbf{x})e^{-2\pi i\<\mathbf{t},\mathbf{x}\>}\,d\mathbf{x} \\
-        &= \int_{\R^{n}}f(\mathbf{x})e^{-2\pi i\<\mathbf{t},\mathbf{x}\>}\,d\mathbf{x} && \text{DCT} \\
+        &= \int_{\R^{n}}f(\mathbf{x})e^{-2\pi i\<\mathbf{t},\mathbf{x}\>}\,d\mathbf{x} && \text{FT} \\
         &= (\mc{F}f)(\mathbf{t}).
       \end{align*}
       Therefore the Fourier series of $F(\mathbf{x})$ is
