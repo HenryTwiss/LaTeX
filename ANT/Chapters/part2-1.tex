@@ -323,32 +323,20 @@
     \]
     by \cref{disc_as_square_of_embedding_matrix}.
   \section{Integral \& Fractional Ideals}
-    For the number field $\Q$, its ring of integers $\Z$ is a unique factorization domain. Indeed, this is just a restatement of the fundamental theorem of arithmetic. Unfortunately, for a general number field $K$ its ring of integers $\mc{O}_{K}$ need not be a unique factorization domain. However, the integral ideals of $\mc{O}_{K}$ do factor into a unique product of prime integral ideals (this is trivial for a unique factorization domain). Our main goal is to prove this. We first introduce some notation. Any nonzero ideal $\mf{a}$ of $\mc{O}_{K}$ is said to be an \textbf{integral ideal}\index{integral ideal} of $K$. As $\mc{O}_{K}$ is a free abelian group of rank $n$ by \cref{thm:ring_of_integers_finitely_generated} and $\a\mc{O}_{K} \subseteq \mf{a}$ for any nonzero $\a \in \mf{a}$, we see that $\mf{a}$ is also a free abelian group of rank $n$ as well. We first show that the quotient ring by an integral ideal is finite:
+    For the number field $\Q$, its ring of integers $\Z$ is a unique factorization domain. Indeed, this is just a restatement of the fundamental theorem of arithmetic. Unfortunately, for a general number field $K$ its ring of integers $\mc{O}_{K}$ need not be a unique factorization domain. However, the integral ideals of $\mc{O}_{K}$ do factor into a unique product of prime integral ideals (this is trivial for a unique factorization domain). Our main goal is to prove this. We first introduce some notation. Any nonzero ideal $\mf{a}$ of $\mc{O}_{K}$ is said to be an \textbf{integral ideal}\index{integral ideal} of $K$. As $\mc{O}_{K}$ is a free abelian group of rank $n$ by \cref{thm:ring_of_integers_finitely_generated}, any subgroup is also free abelian. Since $\a\mc{O}_{K} \subseteq \mf{a}$ for any nonzero $\a \in \mf{a}$, it follows that $\mf{a}$ is also a free abelian group of rank $n$ as well. We first show that the quotient ring by an integral ideal is finite:
 
     \begin{proposition}\label{prop:residue_of_integral_ideal_is_finite}
-      Let $K$ be a number field. Then $\mc{O}_{K}/\mf{a}$ is finite for any integral ideal $\mf{a}$ and
-      \[
-        |\mc{O}_{K}/\mf{a}| = |\det(A)|,
-      \]
-      where $A$ is any base change matrix from a basis of $\mc{O}_{K}$ to a basis of $\mf{a}$. In particular, for any $\a \in \mc{O}_{K}$,
+      Let $K$ be a number field. Then $\mc{O}_{K}/\mf{a}$ is finite for any integral ideal $\mf{a}$. In particular, for any $\a \in \mc{O}_{K}$ we have
       \[
         |\mc{O}_{K}/\a\mc{O}_{K}| = |\Norm(\a)|.
       \]
     \end{proposition}
     \begin{proof}
-      Let the degree of $K$ be $n$ and $\{\a_{1},\ldots,\a_{n}\}$ be an integral basis for $K$. Since $\mf{a}$ is a a free abelian group of rank $n$, there exists a basis $\{\k_{1},\ldots,\k_{n}\}$. Now write
-      \[
-        \k_{i} = \sum_{1 \le j \le n}a_{i,j}\a_{j},
-      \]
-      with $a_{i,j} \in \Z$ for $1 \le i,j \le n$. Then $A = (a_{i,j})_{i,j}$ is the base change matrix from $\{\a_{1},\ldots,\a_{n}\}$ to $\{\k_{1},\ldots,\k_{n}\}$. Putting $A$ in Smith normal form and letting $D$ be the associated diagonal matrix, we see that there exist bases of $\mc{O}_{K}$ and $\mf{a}$ such that the base change matrix is $D$ and $|\det(A)| = |\det(D)|$ (because $A$ has integer entries and hence the invertible matrices in the Smith normal form have determinant $\pm 1$). Letting $a_{1},\ldots,a_{n}$ be the invariant factors, this shows that
-      \[
-        \mc{O}_{K}/\mf{a} \cong \Z/a_{1}\Z \op \cdots \op \Z/a_{n}\Z.
-      \]
-      Thus $|\mc{O}_{K}/\a\mc{O}_{K}| = |a_{1} \cdots a_{n}| = |\det(D)| = |\det(A)|$ is finite. This proves the first statement. For the second statement, letting
+      Since $\mf{a}$ and $\mc{O}_{K}$ are both free abelian groups of rank $n$ (recall \cref{thm:ring_of_integers_finitely_generated}) and $\mf{a}$ is a subgroup, the first statement follows by \cref{prop:base_change_quotient_determinant}. For the second statement, let $\{\a_{1},\ldots,\a_{n}\}$ be an integral basis for $K$. Writing
       \[
         \a = \sum_{1 \le i \le n}a_{i}\a_{i},
       \]
-      with $a_{i} \in \Z$, we see that $\{a_{1}\a_{1},\ldots,a_{n}\a_{n}\}$ is a basis for $\a\mc{O}_{K}$. Then on the one hand, what we have just proved shows that $|\mc{O}_{K}/\a\mc{O}_{K}| = |a_{1} \cdots a_{n}|$. On the other hand, in terms of the basis $\{a_{1}\a_{1},\ldots,a_{n}\a_{n}\}$ we have
+      with $a_{i} \in \Z$, we see that $\{a_{1}\a_{1},\ldots,a_{n}\a_{n}\}$ is a basis for $\a\mc{O}_{K}$. In particular, the base change matrix from $\{\a_{1},\ldots,\a_{n}\}$  to this basis is the diagonal with the $a_{i}$ on the diagonal. Then on the one hand, we have $|\mc{O}_{K}/\a\mc{O}_{K}| = |a_{1} \cdots a_{n}|$ by \cref{prop:base_change_quotient_determinant} again. On the other hand, in terms of the basis $\{a_{1}\a_{1},\ldots,a_{n}\a_{n}\}$ the map $T_{\a}$ is given by
       \[
         T_{\a} = \begin{pmatrix} a_{1} & & \\ & \ddots & \\ & & a_{n} \end{pmatrix},
       \]
@@ -420,7 +408,7 @@
     \[
       \mf{f} = \frac{1}{\d}\mf{a}.
     \]
-    Every fractional ideal is of this form and integral ideals are precisely those for which $\d = 1$. In particular, since $\mf{a}$ is a free abelian group of rank $n$, we see that $\mf{f}$ is a free abelian group of rank $n$ as well. Now let $\mf{p}$ be a prime integral ideal. We define $\mf{p}^{-1}$ by
+    Every fractional ideal is of this form and integral ideals are precisely those for which $\d = 1$. In particular, since $\mf{a}$ is a free abelian group of rank $n$, we see that $\mf{f}$ is a free abelian group of rank $n$ as well. However, $\mf{f}$ is not necessarily a subgroup of $\mc{O}_{K}$. Now let $\mf{p}$ be a prime integral ideal. We define $\mf{p}^{-1}$ by
     \[
       \mf{p}^{-1} = \{\k \in K:\k\mf{p} \subseteq \mc{O}_{K}\}.
     \]
@@ -496,6 +484,23 @@
       As $\mf{a}$ is invertible, $\d\mf{a}^{-1}$ is the inverse of $\mf{f}$. This completes the proof.
     \end{proof}
 
+    We can also deduce the explicit form for the inverse of any fractional ideal:
+
+    \begin{proposition}\label{prop:explicit_inverse_ideal}
+      Let $K$ be a number field and let $\mf{f}$ be a fractional ideal. Then
+      \[
+        \mf{f}^{-1} = \{\k \in K:\k\mf{f} \subseteq \mc{O}_{K}\}.
+      \]
+      In particular, if $\mc{O}_{K} \subseteq \mf{f}$, then $\mf{f}^{-1}$ is an integral ideal.
+    \end{proposition}
+    \begin{proof}
+      Since $\mf{f}\mf{f}^{-1} = \mc{O}_{K}$, we have
+      \[
+        \{\k \in K:\k\mf{f} \subseteq \mc{O}_{K}\} = \{\k \in K:\k\mc{O}_{K} \subseteq \mf{f}^{-1}\} = \mf{f}^{-1}.
+      \]
+      This proves the first statement. For the second statement suppose $\mc{O}_{K} \subseteq \mf{f}$. Then if $\a \in \mf{f}^{-1}$, we have $\a\mf{f} \subseteq \mc{O}_{K}$ and in particular $\a \in \mc{O}_{K}$. Therefore $\mf{f} \subseteq \mc{O}_{K}$. Moreover, $\a\mc{O}_{K} \subseteq \mc{O}_{K} \subseteq \mf{f}$. It follows that $\mf{f}$ is an integral ideal.
+    \end{proof}
+
     Now that we have proved that the ideal group $I_{K}$ of $K$ is indeed a group, we can shown that every integral ideal factors uniquely into a product of prime integral ideals (up to reordering of the factors):
 
     \begin{theorem}\label{thm:unique_product_prime_ideals}
@@ -554,7 +559,7 @@
       which is equivalent to the factorization for $\mf{f}$.
     \end{proof}
 
-    With the Chinese remainder theorem, we can now derive some useful consequences of the unique factorization of integral ideals. Indeed, suppose $\mf{a}$ is an integral ideal with prime factorization
+    We will now discuss applications of the Chinese remainder theorem in the context of integral ideals. With it we can prove some interesting results. Suppose $\mf{a}$ is an integral ideal with prime factorization
     \[
       \mf{a} = \mf{p}_{1}^{e_{1}} \cdots \mf{p}_{r}^{e_{r}}.
     \]
@@ -664,6 +669,36 @@
     \[
       \Norm:I_{K} \to \Q^{\ast} \qquad \mf{f} \mapsto \Norm(\mf{f}).
     \]
+  \section{\todo{Lattices}}
+    Let $K$ be a number field of degree $n$. By \cref{lem:trace_is_nondegenerate}, there is a nondegenerate symmetric bilinear form on $K$ given by
+    \[
+      K \x K \to \Q \qquad (\k,\l) = \Trace(\k\l).
+    \]
+    We call this bilinear form the \textbf{trace form}\index{trace form} on $K$. The trace form makes $K$ into a nondegenerate inner product space over $\Q$. As any fractional ideal is a free abelian group of rank $n$, fractional ideals are lattices in $K$ as a vector space over $\Q$. In particular, integral ideals are also lattice and thus $\mc{O}_{K}$ is a lattice. For a fractional ideal $\mf{f}$, note that the dual lattice $\mf{f}^{\vee}$ is
+    \[
+      \mf{f}^{\vee} = \{\k \in K:\text{$\Trace(\k \a) \in \Z$ for all $\a \in \mf{f}$}\}.
+    \]
+     The following proposition shows that the dual lattice $\mf{f}^{\vee}$ is also a fractional ideal:
+
+    \begin{proposition}\label{prop:dual_lattice_is_fractional}
+      Let $K$ be a number field and $\mf{f}$ be a fractional ideal. Then $\mf{f}^{\vee}$ is a fractional ideal and
+      \[
+        \mf{f}^{\vee} = \mf{f}^{-1}\mc{O}_{K}^{\vee}.
+      \]
+    \end{proposition}
+    \begin{proof}
+      By \cref{prop:dual_lattice_exists}, $\mf{f}$ is a finitely generated $\Z$-module. Therefore it is a finitely generated $\mc{O}_{K}$-submodule of $K$ if it is preserved under multiplication by $\mc{O}_{K}$. Let $\a \in \mc{O}_{K}$ and $\b \in \mf{f}^{\vee}$. Then we must show $\a\b \in \mf{f}^{\vee}$. To see this, observe that $\Trace(\a\b\mf{f}) \subseteq \Trace(\b\mf{f}) \subseteq \Z$ by \cref{cor:norm_and_trace_of_algebraic_integers} since $\a\mf{f} \subseteq \mf{f}$ and $\b \in \mf{f}^{\vee}$. Therefore $\a\b \in \mf{f}^{\vee}$ and hence $\mf{f}^{\vee}$ is a fractional ideal proving the first statement. To prove the second we will show containment in both directions. For the forward containment, first suppose $\a \in \mf{f}^{\vee}$ and $\b \in \mf{f}$. Then $\Trace(\a\b\mc{O}_{K}) \subseteq \Trace(\a\mf{f}) \subseteq \Z$ by \cref{cor:norm_and_trace_of_algebraic_integers} since $\b\mc{O}_{K} \subseteq \mf{f}$ and $\a \in \mf{f}^{\vee}$. Hence $\a\b \in \mc{O}_{K}^{\vee}$ so that $\mf{f}^{\vee}\mf{f} \subseteq \mc{O}_{K}^{\vee}$ and therefore $\mf{f}^{\vee} \subseteq \mf{f}^{-1}\mc{O}_{K}^{\vee}$. This proves the forward containment. For the reverse containment, suppose $\a \in \mf{f}^{-1}$ and $\b \in \mc{O}_{K}^{\vee}$. Then $\Trace(\a\b\mf{f}) \subseteq \Trace(\b\mc{O}_{K}) \subseteq \Z$ by \cref{cor:norm_and_trace_of_algebraic_integers} since $\a\mf{f} \subseteq \mc{O}_{K}$ and $\b \in \mc{O}_{K}^{\vee}$. This shows $\a\b \in \mf{f}^{\vee}$ and hence $\mf{f}^{-1}\mc{O}_{K}^{\vee} \subseteq \mf{f}^{\vee}$ proving the reverse containment and completing the proof.
+    \end{proof}
+
+    We define the \textbf{different ideal}\index{different ideal} $\mf{D}$ of $K$ by
+    \[
+      \mf{D}_{K} = (\mc{O}_{K}^{\vee})^{-1}.  
+    \]
+    This is an integral ideal. Indeed, first note that $\mc{O}_{K} \subseteq \mc{O}_{K}^{\vee}$ by \cref{cor:norm_and_trace_of_algebraic_integers}. It follows from \cref{prop:explicit_inverse_ideal} that $\mc{D}_{K}$ is an integral ideal and
+    \[
+      \mf{D}_{K} = \{\k \in K: \k\mc{O}_{K}^{\vee} \subseteq \mc{O}_{K}\}.  
+    \]
+    \todo{xxx}
   \section{\todo{Ramification \& The Different}}
     We now discuss the factorization of prime integral ideals in number fields. First, we need to introduce the concept of prime integral ideals above primes. Let $K$ be a number field and let $\mf{p}$ be a prime integral ideal. Then $\mf{p} \cap \Z$ is a prime integral ideal of $\Q$. Indeed, it is clear that $\mf{p} \cap \Z$ is an integral ideal of $\Q$. It is proper because $1 \notin \mf{p} \cap \Z$ as $\mf{p}$ does not contain units. It is nonzero because $\mc{O}_{K}/\mf{p}$ is a finite field by \cref{prop:prime_integral_ideals_are_maximal} and thus has characteristic dividing $\Norm(\mf{p})$ by definition of the norm so that $\Norm(\mf{p}) \in \mf{p}$. But as $\Norm(\mf{p})$ is also a positive integer, $\Norm(\mf{p}) \in \mf{p} \cap \Z$. To show that $\mf{p} \cap \Z$ is prime, suppose $a$ and $b$ are integers such that $ab \in \mf{p} \cap \Z$. Then $ab \in \mf{p}$ and since $\mf{p}$ is prime either $a \in \mf{p}$ or $b \in \mf{p}$. But then $a \in \mf{p} \cap \Z$ or $b \in \mf{p} \cap \Z$ as desired. We have now shown that $\mf{p} \cap \Z$ is a prime integral ideal of $\Q$. Hence
     \[
@@ -682,19 +717,19 @@
     \[
       \phi:\Z \to \mc{O}_{K}/\mf{p} \qquad a \to a \tmod{\mf{p}}.
     \]
-    Now $\ker\phi = \mf{p} \cap \Z$ and hence $\ker\phi = p\Z$ since $\mf{p}$ is above $p$. By the first isomorphism theorem, $\phi$ induces an injection $\phi:\F_{p} \to \mc{O}_{K}/\mf{p}$. By \cref{prop:residue_of_integral_ideal_is_finite}, $\mc{O}_{K}/\mf{p}$ is finite and thus a finite field containing $\F_{p}$. Necessarily $\mc{O}_{K}/\mf{p}$ is a finite dimensional vector space over $\F_{p}$. Accordingly, we define the \textbf{inertia degree}\index{inertia degree} $f_{\mf{p}}$ of $\mf{p}$ by
+    Now $\ker\phi = \mf{p} \cap \Z$ and hence $\ker\phi = p\Z$ since $\mf{p}$ is above $p$. By the first isomorphism theorem, $\phi$ induces an injection $\phi:\F_{p} \to \mc{O}_{K}/\mf{p}$. By \cref{prop:residue_of_integral_ideal_is_finite}, $\mc{O}_{K}/\mf{p}$ is finite and thus a finite field containing $\F_{p}$. Necessarily $\mc{O}_{K}/\mf{p}$ is a finite dimensional vector space over $\F_{p}$. Accordingly, we define the \textbf{inertia degree}\index{inertia degree} $f_{p}(\mf{p})$ of $\mf{p}$ by
     \[
-      f_{\mf{p}} = [\mc{O}_{K}/\mf{p}:\F_{p}].
+      f_{p}(\mf{p}) = [\mc{O}_{K}/\mf{p}:\F_{p}].
     \]
-    That is, $f_{\mf{p}}$ is the dimension of the residue field $\mc{O}_{K}/\mf{p}$ as a vector space over $\F_{p}$. Then we have
+    That is, $f_{p}(\mf{p})$ is the dimension of the residue field $\mc{O}_{K}/\mf{p}$ as a vector space over $\F_{p}$. Then we have
     \[
-      \Norm(\mf{p}) = |\mc{O}_{K}/\mf{p}| = |\F_{p}|^{f_{\mf{p}}} = p^{f_{\mf{p}}}.
+      \Norm(\mf{p}) = |\mc{O}_{K}/\mf{p}| = |\F_{p}|^{f_{p}(\mf{p})} = p^{f_{p}(\mf{p})}.
     \]
-    In particular, the norm of a prime integral ideal is a power of the prime below it. As we have already noted, $\mf{p}$ is a prime factor of $p\mc{O}_{K}$. The \textbf{ramification index}\index{ramification index} $e_{\mf{p}}$ of $\mf{p}$ is the positive integer such that $p\mc{O}_{K}\mf{p}^{-e_{\mf{p}}}$ is relatively prime to $\mf{p}$. If $p\mc{O}_{K}$ has prime factors $\mf{p}_{1},\ldots,\mf{p}_{r}$, then the prime factorization of $p\mc{O}_{K}$ is
+    In particular, the norm of a prime integral ideal is a power of the prime below it. As we have already noted, $\mf{p}$ is a prime factor of $p\mc{O}_{K}$. The \textbf{ramification index}\index{ramification index} $e_{p}(\mf{p})$ of $\mf{p}$ is the positive integer such that $p\mc{O}_{K}\mf{p}^{-e_{p}(\mf{p})}$ is relatively prime to $\mf{p}$. If $p\mc{O}_{K}$ has prime factors $\mf{p}_{1},\ldots,\mf{p}_{r}$, then the prime factorization of $p\mc{O}_{K}$ is
     \[
-      p\mc{O}_{K} = \mf{p}_{1}^{e_{\mf{p}_{1}}} \cdots \mf{p}_{r}^{e_{\mf{p}_{r}}}.
+      p\mc{O}_{K} = \mf{p}_{1}^{e_{p}(\mf{p}_{1})} \cdots \mf{p}_{r}^{e_{p}(\mf{p}_{r})}.
     \]
-    We say that $p$ is \textbf{ramified}\index{ramified} if $e_{\mf{p}_{i}} \ge 2$ for some $i$ and \textbf{unramified}\index{unramified} otherwise. In particular,
+    We say that $p$ is \textbf{ramified}\index{ramified} if $e_{p}(\mf{p}_{i}) \ge 2$ for some $i$ and \textbf{unramified}\index{unramified} otherwise. In particular,
     \[
       p\mc{O}_{K} = \mf{p}_{1} \cdots \mf{p}_{r},
     \]
@@ -703,11 +738,11 @@
     \begin{proposition}\label{prop:inertia_ramification_relation}
       Let $K$ be a number field of degree $n$ and let $p$ be a prime. Suppose $p\mc{O}_{K}$ has prime factorization
       \[
-        p\mc{O}_{K} = \mf{p}_{1}^{e_{\mf{p}_{1}}} \cdots \mf{p}_{r}^{e_{\mf{p}_{r}}}.
+        p\mc{O}_{K} = \mf{p}_{1}^{e_{p}(\mf{p}_{1})} \cdots \mf{p}_{r}^{e_{p}(\mf{p}_{r})}.
       \]
       Then
       \[
-        n = \sum_{1 \le i \le r}e_{\mf{p}_{i}}f_{\mf{p}_{i}}.
+        n = \sum_{1 \le i \le r}e_{p}(\mf{p}_{i})f_{p}(\mf{p}_{i}).
       \]
     \end{proposition}
     \begin{proof}
@@ -717,20 +752,20 @@
       \]
       On the other hand, complete multiplicativity of the norm by \cref{prop:ideal_norm_is_multiplicative} implies
       \[
-        \Norm(p\mc{O}_{K}) = \Norm(\mf{p}_{1})^{e_{\mf{p}_{1}}} \cdots \Norm(\mf{p}_{r})^{e_{\mf{p}_{r}}} = p^{e_{\mf{p}_{1}}f_{\mf{p}_{1}}} \cdots p^{e_{\mf{p}_{r}}f_{\mf{p}_{r}}}.
+        \Norm(p\mc{O}_{K}) = \Norm(\mf{p}_{1})^{e_{p}(\mf{p}_{1})} \cdots \Norm(\mf{p}_{r})^{e_{p}(\mf{p}_{r})} = p^{e_{p}(\mf{p}_{1})f_{p}(\mf{p}_{1})} \cdots p^{e_{p}(\mf{p}_{r})f_{p}(\mf{p}_{r})}.
       \]
       Thus
       \[
-        p^{n} = p^{e_{\mf{p}_{1}}f_{\mf{p}_{1}}} \cdots p^{e_{\mf{p}_{r}}f_{\mf{p}_{r}}},
+        p^{n} = p^{e_{p}(\mf{p}_{1})f_{p}(\mf{p}_{1})} \cdots p^{e_{p}(\mf{p}_{r})f_{p}(\mf{p}_{r})},
       \]
       and the claim follows upon comparing exponents.
     \end{proof}
 
-    We now describe some special cases of how $p\mc{O}_{K}$ may factor. If $r = n$, we say $p$ is \textbf{totally split}\index{totally split} and so $e_{\mf{p}} = f_{\mf{p}} = 1$ for all $\mf{p}$ above $p$ by \cref{prop:inertia_ramification_relation}. Equivalently, $p$ is totally split if and only if the number of prime integral ideal above $p$ is equal to the degree of $K$. If $r = 1$, then there is exactly one prime integral ideal $\mf{p}$ above $p$ and so
+    We now describe some special cases of how $p\mc{O}_{K}$ may factor. If $r = n$, we say $p$ is \textbf{totally split}\index{totally split} and so $e_{p}(\mf{p}) = f_{p}(\mf{p}) = 1$ for all $\mf{p}$ above $p$ by \cref{prop:inertia_ramification_relation}. Equivalently, $p$ is totally split if and only if the number of prime integral ideal above $p$ is equal to the degree of $K$. If $r = 1$, then there is exactly one prime integral ideal $\mf{p}$ above $p$ and so
     \[
-      p\mc{O}_{K} = \mf{p}^{e_{\mf{p}}}.
+      p\mc{O}_{K} = \mf{p}^{e_{p}(\mf{p})}.
     \]
-    If $e_{\mf{p}} = 1$, so that $p$ does not ramify, we say $p$ is \textbf{inert}\index{inert} and so $f_{\mf{p}} = n$ by \cref{prop:inertia_ramification_relation}. Thus $p$ is inert if and only if $p\mc{O}_{K}$ is prime. If $e_{\mf{p}} \ge 2$, then $p$ ramifies and we say $p$ is \textbf{totally ramified}\index{totally ramified} if $e_{\mf{p}} = n$ so that $f_{\mf{p}} = 1$ by \cref{prop:inertia_ramification_relation}. Equivalently, $p$ is totally ramified if and only if it is the power of a prime integral ideal with power equal to the degree of $K$. The ramification of primes is intimately connected to the discriminant of a number field as the following theorem shows:
+    If $e_{p}(\mf{p}) = 1$, so that $p$ does not ramify, we say $p$ is \textbf{inert}\index{inert} and so $f_{p}(\mf{p}) = n$ by \cref{prop:inertia_ramification_relation}. Thus $p$ is inert if and only if $p\mc{O}_{K}$ is prime. If $e_{p}(\mf{p}) \ge 2$, then $p$ ramifies and we say $p$ is \textbf{totally ramified}\index{totally ramified} if $e_{p}(\mf{p}) = n$ so that $f_{p}(\mf{p}) = 1$ by \cref{prop:inertia_ramification_relation}. Equivalently, $p$ is totally ramified if and only if it is the power of a prime integral ideal with power equal to the degree of $K$. The ramification of primes is intimately connected to the discriminant of a number field as the following theorem shows:
 
     \begin{theorem}\label{thm:ramification_division_equivalence}
       Let $K$ be a number field. Then $p$ is ramified if and only if $p$ divides $|\D_{K}|$.
@@ -738,7 +773,7 @@
     \begin{proof}
       Let $p$ be a prime and suppose $p\mc{O}_{K}$ has prime factorization
       \[
-        p\mc{O}_{K} = \mf{p}_{1}^{e_{\mf{p}_{1}}} \cdots \mf{p}_{r}^{e_{\mf{p}_{r}}},
+        p\mc{O}_{K} = \mf{p}_{1}^{e_{p}(\mf{p}_{1})} \cdots \mf{p}_{r}^{e_{p}(\mf{p}_{r})},
       \]
       Now let $\{\a_{1},\ldots,\a_{n}\}$ be an integral basis for $K$ and let $\conj{\a} \in \mc{O}_{K}/p\mc{O}_{K}$ denote the reduction of $\a \in \mc{O}_{K}$ modulo $p$. Then $\{\conj{\a_{1}},\ldots,\conj{\a_{n}}\}$ is a basis for $\mc{O}_{K}/p\mc{O}_{K}$ as a vector space over $\F_{p}$. Moreover, the matrix for $T_{\conj{\a}}$ is obtained from $T_{\a}$ by reducing the coefficients modulo $p$. These two facts together give
       \[
@@ -746,17 +781,17 @@
       \]
       Recall that $\disc_{(\mc{O}_{K}/p\Z)/\F_{p}}(\conj{\a_{1}},\ldots,\conj{\a_{n}})$ is an element of $\F_{p}$. Then as $\disc_{\F_{p}}(\mc{O}_{K}/p\mc{O}_{K})$ is equivalent to $\disc_{(\mc{O}_{K}/p\Z)/\F_{p}}(\conj{\a_{1}},\ldots,\conj{\a_{n}})$ up to elements of $(\F_{p}^{\ast})^{2}$, it must be the case that $p$ divides $|\D_{K}|$ if and only if $\disc_{\F_{p}}(\mc{O}_{K}/p\mc{O}_{K}) = 0$. By the Chinese remainder theorem,
       \[
-        \mc{O}_{K}/p\mc{O}_{K} \cong \bigop_{1 \le i \le r}\mc{O}_{K}/\mf{p}_{i}^{e_{\mf{p}_{i}}},
+        \mc{O}_{K}/p\mc{O}_{K} \cong \bigop_{1 \le i \le r}\mc{O}_{K}/\mf{p}_{i}^{e_{p}(\mf{p}_{i})},
       \]
       and so \cref{prop:discriminant_and_direct_sums} further implies
       \[
-         \D_{K} = \prod_{1 \le i \le r}\disc_{\F_{p}}(\mc{O}_{K}/\mf{p}_{i}^{e_{\mf{p}_{i}}}).
+         \D_{K} = \prod_{1 \le i \le r}\disc_{\F_{p}}(\mc{O}_{K}/\mf{p}_{i}^{e_{p}(\mf{p}_{i})}).
       \]
-      Hence $p$ divides $|\D_{K}|$ if and only if $\disc_{\F_{p}}(\mc{O}_{K}/\mf{p}_{i}^{e_{\mf{p}_{i}}}) = 0$ for some $i$. It is now sufficient to show that $\disc_{\F_{p}}(\mc{O}_{K}/\mf{p}^{e_{\mf{p}}}) = 0$ for any prime integral ideal $\mf{p}$ above $p$ if and only if $e_{\mf{p}} \ge 2$. First suppose $e_{\mf{p}} \ge 2$. We will prove $\disc_{\F_{p}}(\mc{O}_{K}/\mf{p}^{e_{\mf{p}}}) = 0$. By the uniqueness of the factorization of integral ideals, there exists a nonzero $\a_{1} \in \mf{p}^{e_{\mf{p}}-1}-\mf{p}^{e_{\mf{p}}}$. Then $\a_{1}^{2} \in \mf{p}^{2(e_{\mf{p}}-1)} \subseteq \mf{p}^{e_{\mf{p}}}$ because $e_{\mf{p}} \ge 2$. By construction, $\conj{\a_{1}} \in \mc{O}_{K}/\mf{p}^{e_{\mf{p}}}$ is nonzero and such that $\conj{\a_{1}}^{2} = 0$. Since $\mc{O}_{K}/\mf{p}^{e_{\mf{p}}}$ is an $n$ dimensional vector space over $\F_{p}$, there exists a basis of the form $\{\conj{\a_{1}},\ldots,\conj{\a_{m}}\}$. Now
+      Hence $p$ divides $|\D_{K}|$ if and only if $\disc_{\F_{p}}(\mc{O}_{K}/\mf{p}_{i}^{e_{p}(\mf{p}_{i})}) = 0$ for some $i$. It is now sufficient to show that $\disc_{\F_{p}}(\mc{O}_{K}/\mf{p}^{e_{p}(\mf{p})}) = 0$ for any prime integral ideal $\mf{p}$ above $p$ if and only if $e_{p}(\mf{p}) \ge 2$. First suppose $e_{p}(\mf{p}) \ge 2$. We will prove $\disc_{\F_{p}}(\mc{O}_{K}/\mf{p}^{e_{p}(\mf{p})}) = 0$. By the uniqueness of the factorization of integral ideals, there exists a nonzero $\a_{1} \in \mf{p}^{e_{p}(\mf{p})-1}-\mf{p}^{e_{p}(\mf{p})}$. Then $\a_{1}^{2} \in \mf{p}^{2(e_{p}(\mf{p})-1)} \subseteq \mf{p}^{e_{p}(\mf{p})}$ because $e_{p}(\mf{p}) \ge 2$. By construction, $\conj{\a_{1}} \in \mc{O}_{K}/\mf{p}^{e_{p}(\mf{p})}$ is nonzero and such that $\conj{\a_{1}}^{2} = 0$. Since $\mc{O}_{K}/\mf{p}^{e_{p}(\mf{p})}$ is an $n$ dimensional vector space over $\F_{p}$, there exists a basis of the form $\{\conj{\a_{1}},\ldots,\conj{\a_{m}}\}$. Now
       \[
-        \Trace_{(\mc{O}_{K}/\mf{p}^{e_{\mf{p}}})/\F_{p}}(\conj{\a_{1}}\conj{\a_{j}}) = 0,
+        \Trace_{(\mc{O}_{K}/\mf{p}^{e_{p}(\mf{p})})/\F_{p}}(\conj{\a_{1}}\conj{\a_{j}}) = 0,
       \]
-      for $1 \le j \le n$ because $T_{\conj{\a_{1}}\conj{\a_{i}}}^{2}$ is the zero operator (as $\conj{\a_{1}}^{2} = 0$) and hence all of its eigenvalues are zero. But then the first row of $(\Trace_{(\mc{O}_{K}/\mf{p}^{e_{\mf{p}}})/\F_{p}}(\conj{\a_{i}}\conj{\a_{j}}))_{i,j}$ is zero and hence $\disc_{\F_{p}}(\mc{O}_{K}/\mf{p}^{e_{\mf{p}}}) = 0$. Now suppose $e_{\mf{p}} = 1$. We will prove $\disc_{\F_{p}}(\mc{O}_{K}/\mf{p}) \neq 0$. Recall that $\mc{O}_{K}/\mf{p}$ is a field and a vector space over $\F_{p}$ of dimension $f_{\mf{p}}$. Thus $(\mc{O}_{K}/\mf{p})/\F_{p}$ it is a finite separable extension. Hence $\disc_{\F_{p}}(\mc{O}_{K}/\mf{p})$ is nonzero by \cref{prop:discriminant_not_zero}. We have now shown that $\disc_{\F_{p}}(\mc{O}_{K}/\mf{p}^{e_{\mf{p}}}) = 0$ if and only if $e_{\mf{p}} \ge 2$ which completes the proof.
+      for $1 \le j \le n$ because $T_{\conj{\a_{1}}\conj{\a_{i}}}^{2}$ is the zero operator (as $\conj{\a_{1}}^{2} = 0$) and hence all of its eigenvalues are zero. But then the first row of $(\Trace_{(\mc{O}_{K}/\mf{p}^{e_{p}(\mf{p})})/\F_{p}}(\conj{\a_{i}}\conj{\a_{j}}))_{i,j}$ is zero and hence $\disc_{\F_{p}}(\mc{O}_{K}/\mf{p}^{e_{p}(\mf{p})}) = 0$. Now suppose $e_{p}(\mf{p}) = 1$. We will prove $\disc_{\F_{p}}(\mc{O}_{K}/\mf{p}) \neq 0$. Recall that $\mc{O}_{K}/\mf{p}$ is a field and a vector space over $\F_{p}$ of dimension $f_{p}(\mf{p})$. Thus $(\mc{O}_{K}/\mf{p})/\F_{p}$ it is a finite separable extension. Hence $\disc_{\F_{p}}(\mc{O}_{K}/\mf{p})$ is nonzero by \cref{prop:discriminant_not_zero}. We have now shown that $\disc_{\F_{p}}(\mc{O}_{K}/\mf{p}^{e_{p}(\mf{p})}) = 0$ if and only if $e_{p}(\mf{p}) \ge 2$ which completes the proof.
     \end{proof}
 
     As an immediate corollary, we see that only finitely many primes can ramify:
@@ -804,21 +839,21 @@
       \]
       Then the image of $\mf{p}_{i}$ under $\pi$ is $\conj{m_{i}(\a)}(\mc{O}_{K}/p\mc{O}_{K})$. As this ideal is maximal and hence prime, the preimage $\mf{p}_{i}$ is prime too. Moreover, the $\mf{p}_{i}$ are all distinct since the $\conj{m_{i}(\a)}\mc{O}_{K}/p\mc{O}_{K}$ are which are all distinct because the $\conj{m_{i}}(x)A$ are (using the isomorphism $\mc{O}_{K}/p\mc{O}_{K} \cong A$). In particular, they are also relatively prime. By construction, $\mf{p}_{i} \subseteq p\mc{O}_{K}$ so that the $\mf{p}_{i}$ are prime factors of $p\mc{O}_{K}$. These are the only prime factors of $p\mc{O}_{K}$ because the image of any prime integral ideal under $\pi$ and contained in $p\mc{O}_{K}$ must be a maximal ideal of $\mc{O}_{K}/p\mc{O}_{K}$, by \cref{prop:prime_integral_ideals_are_maximal} and the fourth isomorphism theorem, and every maximal ideal is one of the $\conj{m_{i}(\a)}(\mc{O}_{K}/p\mc{O}_{K})$. Together, all of this means that $p\mc{O}_{K}$ admits the prime factorization
       \[
-        p\mc{O}_{K} = \mf{p}_{1}^{e_{\mf{p}_{1}}} \cdots \mf{p}_{r}^{e_{\mf{p}_{r}}},
+        p\mc{O}_{K} = \mf{p}_{1}^{e_{p}(\mf{p}_{1})} \cdots \mf{p}_{r}^{e_{p}(\mf{p}_{r})},
       \]
-      for some ramification indices $e_{\mf{p}_{i}}$ for all $i$. We will be done if we can show that the ramification indices satisfy $e_{\mf{p}_{i}} = e_{i}$. To accomplish this, observe that we have an isomorphism
+      for some ramification indices $e_{p}(\mf{p}_{i})$ for all $i$. We will be done if we can show that the ramification indices satisfy $e_{p}(\mf{p}_{i}) = e_{i}$. To accomplish this, observe that we have an isomorphism
       \[
         \mc{O}_{K}/\mf{p}_{i} \cong (\mc{O}_{K}/p\mc{O}_{K})/(\conj{m_{i}(\a)}(\mc{O}_{K}/p\mc{O}_{K})) \cong \F_{p}[x]/\conj{m_{i}}(x)\F_{p}[x],
       \]
-      where the first isomorphism follow by taking $\mc{O}_{K}/\mf{p}_{i}$ and reducing $\mc{O}_{K}$ modulo $p$ and the second isomorphism follows from $\mc{O}_{K}/p\mc{O}_{K} \cong A$ and that the image of the maximal ideal $\conj{m_{i}(\a)}(\mc{O}_{K}/p\mc{O}_{K})$ under this isomorphisms is $\conj{m_{i}}(x)A$. Now $\F_{p}[x]/\conj{m_{i}}(x)\F_{p}[x]$ is a vector space over $\F_{p}$ (as it contains $\F_{p}$) of degree $\deg(\conj{m_{i}}(x))$. Hence the inertia degree $f_{\mf{p}_{i}}$ of $\mf{p}_{i}$ satisfies $f_{\mf{p}_{i}} = \deg(\conj{m_{i}}(x))$. The ideal $\conj{m_{i}}(x)^{e_{i}}A$ under the isomorphism $A \cong \mc{O}_{K}/p\mc{O}_{K}$ is the ideal $\conj{m_{i}(\a)}^{e_{i}}(\mc{O}_{K}/p\mc{O}_{K})$. As the image of $\mf{p}_{i}$ under $\pi$ is $\conj{m_{i}(\a)}(\mc{O}_{K}/p\mc{O}_{K})$, we have that $\mf{p}_{i}^{e_{i}}$ is contained in the preimage of $\conj{m_{i}(\a)}^{e_{i}}(\mc{O}_{K}/p\mc{O}_{K})$ under $\pi$. As $\conj{m_{\a}(\a)}(\mc{O}_{K}/p\mc{O}_{K}) = 0$ is the zero ideal, it follows that
+      where the first isomorphism follow by taking $\mc{O}_{K}/\mf{p}_{i}$ and reducing $\mc{O}_{K}$ modulo $p$ and the second isomorphism follows from $\mc{O}_{K}/p\mc{O}_{K} \cong A$ and that the image of the maximal ideal $\conj{m_{i}(\a)}(\mc{O}_{K}/p\mc{O}_{K})$ under this isomorphisms is $\conj{m_{i}}(x)A$. Now $\F_{p}[x]/\conj{m_{i}}(x)\F_{p}[x]$ is a vector space over $\F_{p}$ (as it contains $\F_{p}$) of degree $\deg(\conj{m_{i}}(x))$. Hence the inertia degree $f_{p}(\mf{p}_{i})$ of $\mf{p}_{i}$ satisfies $f_{p}(\mf{p}_{i}) = \deg(\conj{m_{i}}(x))$. The ideal $\conj{m_{i}}(x)^{e_{i}}A$ under the isomorphism $A \cong \mc{O}_{K}/p\mc{O}_{K}$ is the ideal $\conj{m_{i}(\a)}^{e_{i}}(\mc{O}_{K}/p\mc{O}_{K})$. As the image of $\mf{p}_{i}$ under $\pi$ is $\conj{m_{i}(\a)}(\mc{O}_{K}/p\mc{O}_{K})$, we have that $\mf{p}_{i}^{e_{i}}$ is contained in the preimage of $\conj{m_{i}(\a)}^{e_{i}}(\mc{O}_{K}/p\mc{O}_{K})$ under $\pi$. As $\conj{m_{\a}(\a)}(\mc{O}_{K}/p\mc{O}_{K}) = 0$ is the zero ideal, it follows that
       \[
         p\mc{O}_{K} = \pi^{-1}(0) \supseteq \mf{p}_{1}^{e_{1}} \cdots \mf{p}_{r}^{e_{r}}.
       \]
-      Since the $\mf{p}_{i}$ are prime, we have $e_{\mf{p}_{i}} \le e_{i}$ for all $i$. By \cref{prop:inertia_ramification_relation} then gives
+      Since the $\mf{p}_{i}$ are prime, we have $e_{p}(\mf{p}_{i}) \le e_{i}$ for all $i$. By \cref{prop:inertia_ramification_relation} then gives
       \[
-        n = \sum_{1 \le i \le r}e_{\mf{p}_{i}}f_{\mf{p}_{i}} \le \sum_{1 \le i \le r}e_{i}f_{\mf{p}_{i}} \le \sum_{1 \le i \le r}e_{i}\deg(\conj{m_{i}}(x)) \le n,
+        n = \sum_{1 \le i \le r}e_{p}(\mf{p}_{i})f_{p}(\mf{p}_{i}) \le \sum_{1 \le i \le r}e_{i}f_{p}(\mf{p}_{i}) \le \sum_{1 \le i \le r}e_{i}\deg(\conj{m_{i}}(x)) \le n,
       \]
-      where the last equality follows by the prime factorization of $\conj{m_{\a}}(x)$ and that $\deg(\conj{m_{\a}}(x)) = \deg(m_{\a}(x))$ because $m_{\a}(x)$ is monic. This shows that $e_{\mf{p}_{i}} = e_{i}$ for all $i$ which completes the proof.
+      where the last equality follows by the prime factorization of $\conj{m_{\a}}(x)$ and that $\deg(\conj{m_{\a}}(x)) = \deg(m_{\a}(x))$ because $m_{\a}(x)$ is monic. This shows that $e_{p}(\mf{p}_{i}) = e_{i}$ for all $i$ which completes the proof.
     \end{proof}
 
     Lastly, we want to show that the number of integral ideals of a given norm is relatively small. Indeed, let $a_{K}(m)$ denote the number of integral ideals of norm $m$. Because the norm is multiplicative so is $a_{K}(m)$. Moreover, we have the following result:
@@ -827,13 +862,13 @@
       Let $K$ be a number field of degree $n$. Then $a_{K}(m) \le \s_{0}(m)^{n}$.
     \end{proposition}
     \begin{proof}
-      Let $\mf{a}$ be an integral ideal of norm $m$. First suppose $m = p^{k}$ for some prime $p$ and $k \ge 0$. As there are at most $n$ prime integral ideals $\mf{p}_{1},\ldots,\mf{p}_{n}$ above $p$ with inertia degrees $f_{\mf{p}_{1}},\ldots,f_{\mf{p}_{1}}$ respectively, we have
+      Let $\mf{a}$ be an integral ideal of norm $m$. First suppose $m = p^{k}$ for some prime $p$ and $k \ge 0$. As there are at most $n$ prime integral ideals $\mf{p}_{1},\ldots,\mf{p}_{n}$ above $p$ with inertia degrees $f_{p}(\mf{p}_{1}),\ldots,f_{p}(\mf{p}_{1})$ respectively, we have
       \[
-        \Norm(\mf{a}) = p^{e_{1}f_{\mf{p}_{1}}} \cdots p^{e_{n}f_{\mf{p}_{n}}},
+        \Norm(\mf{a}) = p^{e_{1}f_{p}(\mf{p}_{1})} \cdots p^{e_{n}f_{\mf{p}_{n}}},
       \]
       for some integers $0 \le e_{i} \le k$ for $1 \le i \le n$. Therefore the number of possibilities is equivalent to the number of solutions
       \[
-        e_{1}f_{\mf{p}_{1}}+\cdots+e_{n}f_{\mf{p}_{n}} = k,
+        e_{1}f_{p}(\mf{p}_{1})+\cdots+e_{n}f_{\mf{p}_{n}} = k,
       \]
       which is at most $\s_{0}(p^{k})^{n} = (k+1)^{n}$. This proves the claim in the case $m$ is a prime power. By multiplicativity of $a_{K}(m)$ and the divisor function, it follows that the number of integral ideals of norm $m$ is at most $\s_{0}(m)^{n}$ as desired.
     \end{proof}

@@ -661,7 +661,56 @@
       \]
       If either $n = 0$ or $m = 0$ then the Sali\'e sum reduces to the Ramanujan sum associated to $\chi$.
   \section{Lattices}
-    Lattices are ubiquitous in analytic number theory because they provide a way to study discrete points by geometric methods. Let $V$ be an $n$-dimensional Euclidean vector space and let $\<\cdot,\cdot\>$ be the inner product on $V$ that induces the norm $||\cdot||$. We let $d\l$ be the associated Lebesgue measure on $V$. If $\{v_{1},\ldots,v_{n}\}$ is a basis of $V$ so that any $v \in V$ has the form
+    Lattices are ubiquitous in analytic number theory because they provide a way to study discrete points by geometric methods. Let $V$ be an $n$-dimensional nondegenerate inner product space over a characteristic zero field $F$ with inner product $\<\cdot,\cdot\>$. We say that a subset $\L$ of $V$ is a \textbf{lattice}\index{lattice} if $\L$ is a free abelian group of rank $n$. In particular, any lattice $\L$ is of the form
+    \[
+      \L = \Z v_{1}+\cdots+\Z v_{n},
+    \]
+    for some basis $\{v_{1},\ldots,v_{n}\}$ of $V$. The \textbf{covolume}\index{covolume} $V_{\L}$ of $\L$ is defined to be
+    \[
+      V_{\L} = |V/\L|,
+    \]
+    which is finite by \cref{prop:base_change_quotient_determinant}. Moreover, if $\{e_{1},\ldots,e_{n}\}$ is an orthonormal basis for $V$, write
+    \[
+      v_{i} = \sum_{1 \le i \le n}v_{i,j}e_{j},
+    \]
+    with $v_{i,j} \in F$ for $1 \le i,j \le n$ and define the associated \textbf{generator matrix}\index{generator matrix} $P$ by
+    \[
+      P = \begin{pmatrix} v_{1,1} & \cdots & v_{1,n} \\ \vdots & & \vdots \\ v_{n,1} & \cdots & v_{n,n} \end{pmatrix}.
+    \]
+    Then $P$ is the base change matrix from $\{e_{1},\ldots,e_{n}\}$ to $\{v_{1},\ldots,v_{n}\}$ and so \cref{prop:base_change_quotient_determinant} shows that
+    \[
+      V_{\L} = |\det(P)|,
+    \]
+    We can now introduce the notion of dual lattices. If $\L$ is a lattice in $V$, then the \textbf{dual lattice}\index{dual lattice} $\L^{\vee}$ of $\L$ is defined by
+    \[
+      \L^{\vee} = \{v \in V:\text{$\<\l,v\> \in \Z$ for all $\l \in \L$}\}.
+    \]
+    In other words, $\L^{\vee}$ consists of all of the vectors in $V$ whose inner product with elements of the lattice $\L$ are integers. The dual lattice is indeed a lattice as the following proposition shows:
+
+    \begin{proposition}\label{prop:dual_lattice_exists}
+      If $\<v_{1},\ldots,v_{n}\>$ is a basis for $\L$, then the dual basis $\<v_{1}^{\vee},\ldots,v_{n}^{\vee}\>$ is a basis for $\L^{\vee}$. In particular, $\L^{\vee}$ is a lattice.
+    \end{proposition}
+    \begin{proof}
+      Let $v \in V$ and write
+      \[
+        v = \sum_{1 \le j \le n}a_{i}v_{j}^{\vee},
+      \]
+      with $v_{j}^{\vee} \in \R$ for all $j$. Since $\<v_{i},v_{j}^{\vee}\> = \d_{i,j}$ for $1 \le i,j \le n$, it follows that $v \in \L^{\vee}$ if and only if $v_{j}^{\vee} \in \Z$ for all $j$. This means that $\<v_{1}^{\vee},\ldots,v_{n}^{\vee}\>$ is a free abelian group of rank $n$. Hence $\L^{\vee}$ is a lattice.
+    \end{proof}
+
+    Since the dual of the dual basis of a vector space is the original basis, $(\L^{\vee})^{\vee} = \L$. It also turns out that the covolume of the dual lattice is the inverse of the volume of the original lattice:
+
+    \begin{proposition}
+      Let $\L$ be a lattice in $V$ and let $\L^{\vee}$ be its dual. Then
+      \[
+        V_{\L^{\vee}} = \frac{1}{V_{\L}}.
+      \]
+    \end{proposition}
+    \begin{proof}
+      Let $\{e_{1},\ldots,e_{n}\}$ be an orthonormal basis of $V$ and let $\{v_{1},\ldots,v_{n}\}$ be a basis for $\L$. By \cref{prop:dual_lattice_exists}, $\{v_{1}^{\vee},\ldots,v_{n}^{\vee}\}$ is a basis for $\L^{\vee}$. If $P$ is the associated generator matrix for $\L$, then $P$ is the base change matrix from $\{e_{1},\ldots,e_{n}\}$ to $\{v_{1},\ldots,v_{n}\}$. Hence $(P^{-1})^{t}$ is the base change matrix from $\{e_{1},\ldots,e_{n}\}$ to $\{v_{1}^{\vee},\ldots,v_{n}^{\vee}\}$. The claim follows by \cref{prop:base_change_quotient_determinant}.
+    \end{proof}
+    
+    We now turn to the case when $V$ is an $n$-dimensional vector space over $\R$ and so we have more structure. We let $d\l$ be the associated Lebesgue measure on $V$. If $\{v_{1},\ldots,v_{n}\}$ is a basis of $V$ so that any $v \in V$ has the form
     \[
       v = t_{1}v_{1}+\cdots+t{n}v_{n},
     \]
@@ -669,11 +718,7 @@
     \[
       \Vol(X) = \int_{X}\,d\l = \int_{X}\,dt_{1} \cdots dt_{n},
     \]
-    is the volume of any measurable subset $X \subseteq V$. We say that $\L \subset V$ is a \textbf{lattice}\index{lattice} if $\L$ is a free abelian group of rank $n$. In particular, any lattice $\L$ is of the form
-    \[
-      \L = \Z v_{1}+\cdots+\Z v_{n},
-    \]
-    for some basis $\{v_{1},\ldots,v_{n}\}$ of $V$. Note that $\L$ acts on $V$ by automorphisms given by translation. That is, we have a group action
+    is the volume of any measurable subset $X \subseteq V$. Note that $\L$ acts on $V$ by automorphisms given by translation. That is, we have a group action
     \[
       \L \x V \to V \qquad (\l,v) \to \l+v.
     \]
@@ -681,39 +726,27 @@
     \[
       \mc{M} = \{t_{1}v_{1}+\cdots+t_{n}v_{n} \in V:\text{$0 \le t_{i} \le 1$ for $1 \le i \le n$}\}.
     \]
-    Indeed, since $\L$ acts by translations, it is obvious that $\mc{M}$ is a fundamental domain for $V/\L$. Moreover, any translation of $\mc{M}$ by an element of $\L$ is also a fundamental domain. We define the \textbf{covolume}\index{covolume} $V_{\L}$ of $\L$ by
-    \[
-      V_{\L} = \mathrm{Vol}(\mc{M}).
-    \]
-    That is, the covolume of $\L$ is the covolume of the fundamental domain $\mc{M}$. Since $d\l$ is translation invariant (as it is the Lebesgue measure on $V$), $V_{\L}$ is independent of the choice of fundamental domain. If $\L$ is given by the basis $\{v_{1},\ldots,v_{n}\}$, we write
-    \[
-      v_{i} = \sum_{1 \le i \le n}v_{i,j}e_{j},
-    \]
-    where $\{e_{1},\ldots,e_{n}\}$ is an orthonormal basis for $V$, and define the \textbf{generator matrix}\index{generator matrix} $P$ of $\L$ by
-    \[
-      P = \begin{pmatrix} v_{1,1} & \cdots & v_{1,n} \\ \vdots & & \vdots \\ v_{n,1} & \cdots & v_{n,n} \end{pmatrix}.
-    \]
-    By two applications of \cref{prop:base_change_quotient_determinant}, one for a basis for $V$ and the other for a choice of orthonormal basis $\{e_{1},\ldots,e_{n}\}$, we see that $|\det(P)|$ is independent of both bases. The following proposition shows that the covolume of $\L$ is given by $|\det(P)|$:
+    Indeed, since $\L$ acts by translations, it is obvious that $\mc{M}$ is a fundamental domain for $V/\L$. Moreover, any translation of $\mc{M}$ by an element of $\L$ is also a fundamental domain. As we might expect, the covolume of $\L$ is equal to the volume of $\mc{M}$:
 
     \begin{proposition}\label{prop:lattice_volume_generator_matrix}
-      Let $\L$ be a lattice in $V$ and $P$ be its generator matrix. Then
+      Let $\L$ be a lattice in $V$ and let $\mc{M}$ be a fundamental domain. Then
       \[
-        V_{\L} = |\det(P)|.
+        V_{\L} = \Vol(\mc{M}).
       \]
     \end{proposition}
     \begin{proof}
-      Let $\{e_{1},\ldots,e{n}\}$ be an orthonormal basis of $V$. Making the change of variables $x_{i} \to t_{i}$ for $1 \le i \le n$ where
+      Let $\{e_{1},\ldots,e_{n}\}$ be an orthonormal basis of $V$ and let $\{v_{1},\ldots,v_{n}\}$ be a basis for $\L$. Making the change of variables $x_{i} \to t_{i}$ for $1 \le i \le n$ where
       \[
         x_{1}e_{1}+\cdots+x_{n}e_{n} \to t_{1}v_{1}+\cdots+t_{n}v_{n},
       \]
-      the corresponding Jacobian matrix is $P$. Then
+      the corresponding Jacobian matrix is the generator matrix $P$ for the base change from $\{e_{1},\ldots,e_{n}\}$ to $\{v_{1},\ldots,v_{n}\}$. Then
       \[
-        V_{\L} = \int_{\mc{M}}\,dx_{1} \cdots dx_{n} = |\det(P)|\int_{[0,1]^{n}}\,dt_{1} \cdots dt_{n} = |\det(P)|,
+        \Vol(\mc{M}) = \int_{\mc{M}}\,dx_{1} \cdots dx_{n} = |\det(P)|\int_{[0,1]^{n}}\,dt_{1} \cdots dt_{n} = |\det(P)| = V_{\L},
       \]
-      as claimed.
+      where the last equality follows by \cref{prop:base_change_quotient_determinant}.
     \end{proof}
 
-    The crucial result we require is \textbf{Minkowski's lattice point theorem}\index{Minkowski's lattice point theorem} which states that, under some mild conditions, a set of sufficiently large volume contains a nonzero point of a lattice:
+    The most important result we will require about lattices is \textbf{Minkowski's lattice point theorem}\index{Minkowski's lattice point theorem} which states that, under some mild conditions, a set of sufficiently large volume in $\R^{n}$ contains a nonzero point of a lattice:
 
     \begin{theorem}[Minkowski's lattice point theorem]
       Let $\L$ be a lattice in $\R^{n}$. Suppose $X \subset \R^{n}$ is a compact convex symmetric set. If
