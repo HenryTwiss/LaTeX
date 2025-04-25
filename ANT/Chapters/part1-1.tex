@@ -687,7 +687,7 @@
     In other words, $\L^{\vee}$ consists of all of the vectors in $V$ whose inner product with elements of $\L$ are integers. The dual lattice is indeed a complete lattice as the following proposition shows:
 
     \begin{proposition}\label{prop:dual_lattice_exists}
-      If $\<v_{1},\ldots,v_{n}\>$ is a basis for $\L$, then the dual basis $\<v_{1}^{\vee},\ldots,v_{n}^{\vee}\>$ is a basis for $\L^{\vee}$. In particular, $\L^{\vee}$ is a complete lattice.
+      If $\<v_{1},\ldots,v_{n}\>$ is a basis for the complete lattice $\L$, then the dual basis $\<v_{1}^{\vee},\ldots,v_{n}^{\vee}\>$ is a basis for $\L^{\vee}$. In particular, $\L^{\vee}$ is a complete lattice.
     \end{proposition}
     \begin{proof}
       Let $v \in V$ and write
@@ -728,13 +728,13 @@
     Indeed, since $\L$ acts by translations, it is obvious that $\mc{M}$ is a fundamental domain for $V/\L$. Moreover, any translation of $\mc{M}$ by an element of $\L$ is also a fundamental domain. As we might expect, the covolume of $\L$ is equal to the volume of $\mc{M}$:
 
     \begin{proposition}\label{prop:lattice_volume_generator_matrix}
-      Let $\L$ be a complete lattice in an $n$-dimensional real inner product space $V$ and let $\mc{M}$ be a fundamental domain for $\L$. Then
+      Let $\L$ be a complete lattice in a finite dimensional real inner product space $V$ and let $\mc{M}$ be a fundamental domain for $\L$. Then
       \[
         V_{\L} = \Vol(\mc{M}).
       \]
     \end{proposition}
     \begin{proof}
-      Let $\{e_{1},\ldots,e_{n}\}$ be an orthonormal basis of $V$ and let $\{v_{1},\ldots,v_{n}\}$ be a basis for $\L$. Making the change of variables $x_{i} \to t_{i}$ for $1 \le i \le n$ where
+      Let $n$ be the dimension of $V$, $\{e_{1},\ldots,e_{n}\}$ be an orthonormal basis of $V$, and $\{v_{1},\ldots,v_{n}\}$ be a basis for $\L$. Making the change of variables $x_{i} \to t_{i}$ for $1 \le i \le n$ where
       \[
         x_{1}e_{1}+\cdots+x_{n}e_{n} \to t_{1}v_{1}+\cdots+t_{n}v_{n},
       \]
@@ -745,20 +745,24 @@
       where the last equality follows by \cref{prop:base_change_quotient_determinant}.
     \end{proof}
 
-    It turns out that for subgroups of $V$, being a lattice is equivalent to being discrete:
+    It turns out that for $V$, being a lattice is equivalent to being a discrete subgroup:
 
     \begin{proposition}
-      Let $\L$ be a subgroup of an $n$-dimensional real inner product space $V$. Then $\L$ is a lattice if and only if it is discrete.
+      Let $\L$ be a subset of a finite dimensional real inner product space $V$. Then $\L$ is a lattice if and only if it is a discrete subgroup.
     \end{proposition}
     \begin{proof}
-      First suppose $\L$ is a discrete subgroup. Then $\L$ is closed (since $V$ is a metric space). Let $V'$ be the subspace spanned by $\L$ and let its dimension be $m$. Choosing a basis $\{v'_{1},\ldots,v'_{m}\}$ of $V'$, set
+      It is clear that if $\L$ is a lattice then it is a discrete subgroup. So suppose $\L$ is a discrete subgroup. Then $\L$ is closed (since $V$ is a metric space). Let $V'$ be the subspace spanned by $\L$ and let its dimension be $m$. Choosing a basis $\{v'_{1},\ldots,v'_{m}\}$ of $V'$, set
       \[
         \L' = \Z v'_{1}+\cdots+\Z v'_{m}.
       \]
-      Then $\L'$ is a complete lattice in $V'$ and $\L' \subseteq \L$. We claim that $[\L:\L']$ is finite. \todo{xxx}
+      Then $\L'$ is a complete lattice in $V'$ and $\L' \subseteq \L \subset V$. We claim that $\L/\L'$ is finite. To see this, let $\l$ run over a complete set of representatives for $\L/\L'$ and let $\mc{M}'$ be a fundamental domain for $\L'$ in $V'$. As $\mc{M}'$ is a fundamental domain, there exists unique $w' \in \mc{M}'$ and $\l' \in L$ such that $\l = w'+\l'$ for every $\l$. But then $w' = \l-\l' \in \mc{M}' \cap \L$ and since $\mc{M}' \cap \L$ is closed, discrete, and compact, it must be finite ($\mc{M}'$ is compact and $\L$ is closed and discrete). Hence there are finitely many $w'$ and thus finitely many $\l$. Letting $|\L/\L'| = q$, we have $q\L \subseteq \L'$ and therefore
+      \[
+        \L \subseteq \L' = \Z\frac{1}{q}v'_{1}+\cdots+\Z\frac{1}{q}v'_{m}.
+      \]
+      In particular, $\L$ is a subgroup of a free abelian group and therefore is free abelian. This means $\L$ is a lattice.
     \end{proof}
 
-    The most important result we will require about complete lattices is \textbf{Minkowski's lattice point theorem}\index{Minkowski's lattice point theorem} which states that, under some mild conditions, a set of sufficiently large volume in $\R^{n}$ contains a nonzero point of a complete lattice:
+    The most important result we will require about lattices is \textbf{Minkowski's lattice point theorem}\index{Minkowski's lattice point theorem} which states that, under some mild conditions, a set of sufficiently large volume in $V$ contains a nonzero point of a complete lattice:
 
     \begin{theorem}[Minkowski's lattice point theorem]
       Let $\L$ be a lattice in an $n$-dimensional real inner product space $V$. Suppose $X \subset V$ is a compact convex symmetric set. If
