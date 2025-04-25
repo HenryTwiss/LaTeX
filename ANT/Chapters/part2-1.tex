@@ -987,28 +987,24 @@
       This proves the claim about the inner product.
     \end{proof}
  
-    We call a mapping
+    The \textbf{canonical embedding}\index{canonical embedding} $\s_{K}$ of $K$ is defined by
     \[
-      r:K \to \R^{n} \qquad \k \to (\rho_{1}(\k),\ldots,\rho_{r_{1}},\Re(\tau_{1}(\k)),\Im(\tau_{1}(\k)),\ldots,\Re(\tau_{r_{2}}(\k)),\Im(\tau_{r_{2}}(\k))),
+      \s_{K}:K \to \R^{n} \qquad \k \to (\rho_{1}(\k),\ldots,\rho_{r_{1}}(k),\Re(\tau_{1}(\k)),\Im(\tau_{1}(\k)),\ldots,\Re(\tau_{r_{2}}(\k)),\Im(\tau_{r_{2}}(\k))),
     \]
-    for some choice of real $\Q$-embeddings $\rho_{1},\ldots,\rho_{r_{1}}$ and representatives of pairs of complex $\Q$-embeddings $\tau_{1},\ldots,\tau_{r_{2}}$, a \textbf{realization}\index{realization} of $K$. This is an embedding of $K$ into $\R^{n}$ since it is the composition of the embedding $j$ (whose image under $K$ is in $K_{\R}$ as we have noted) with the map
-    \[
-      K_{\R} \to \prod_{\s}\R \qquad z_{\s} \to x_{\s} = \begin{cases} z_{\s} & \text{if $\s = \rho$}, \\ \Re(z_{\s}) & \text{if $\s = \tau$}, \\ \Im(z_{\s}) & \text{if $\s = \conj{\tau}$}, \end{cases}
-    \]
-    which is an isomorphism by \cref{prop:Minkowski_space_isomorphism}. Now fix a realization $r$ of $K$. Since $r$ is an embedding and any fractional ideal $\mf{f}$ is a lattice, $r(\mf{f})$ is a lattice in $\prod_{\s}\R$. We now determine the covolume of $r(\mf{f})$:
+    where $\rho_{1},\ldots,\rho_{r_{1}}$ are the real $\Q$-embeddings and $\tau_{1},\ldots,\tau_{r_{2}}$ are representatives of pairs of complex $\Q$-embeddings. The canonical embedding $\s_{K}$ is then a $\Q$-embedding of $K$ into $\R^{n}$ since it is the composition of the $\Q$-embedding $j$ (whose image under $K$ is in $K_{\R}$ as we have noted) and the isomorphism established by \cref{prop:Minkowski_space_isomorphism}. It is also independent of the choice of representatives $\tau_{1},\ldots,\tau_{r_{2}}$ since the complex embeddings occur in conjugate pairs. By convention, we will always order the components of the image of $\s_{K}$ by all the real $\Q$-embeddings and then the real and imaginary parts of the complex $\Q$-embeddings respectively. Since $\s_{K}$ is an embedding and any fractional ideal $\mf{f}$ is a lattice, $\s_{K}(\mf{f})$ is a lattice in $\prod_{\s}\R$. We now determine the covolume of $\s_{K}(\mf{f})$:
     
     \begin{proposition}\label{prop:covolume_of_fractional_ideal_under_realization}
-      Let $K$ be a number field with signature $(r_{1},r_{2})$ and let $r$ be a realization of $K$. Then
+      Let $K$ be a number field with signature $(r_{1},r_{2})$. Then
       \[
-        V_{r(\mf{f})} = \Norm(\mf{f})\frac{\sqrt{|\D_{K}|}}{2^{r_{2}}}.
+        V_{\s_{K}(\mf{f})} = \Norm(\mf{f})\frac{\sqrt{|\D_{K}|}}{2^{r_{2}}}.
       \]
       In particular,
       \[
-        V_{r(\mc{O}_{K})} = \frac{\sqrt{|\D_{K}|}}{2^{r_{2}}}.
+        V_{\s_{K}(\mc{O}_{K})} = \frac{\sqrt{|\D_{K}|}}{2^{r_{2}}}.
       \]
     \end{proposition}
     \begin{proof}
-      The second statement follows from the first by taking $\mf{f} = \mc{O}_{K}$ so it suffices to prove the first statement. Let $\mf{f}$ be a fractional ideal with basis $\{\k_{1},\ldots,\k_{n}\}$. Then the associated generator matrix $P$ for $r(\mf{f})$ is
+      The second statement follows from the first by taking $\mf{f} = \mc{O}_{K}$ so it suffices to prove the first statement. Let $\mf{f}$ be a fractional ideal with basis $\{\k_{1},\ldots,\k_{n}\}$. Then the associated generator matrix $P$ for $\s_{K}(\mf{f})$ is
       \[
         P = \begin{pmatrix} \rho_{1}(\k_{1}) & \cdots & \rho_{r_{1}}(\k_{1}) & \Re(\tau_{1}(\k_{1})) & \Im(\tau_{1}(\k_{1})) & \cdots & \Re(\tau_{r_{2}}(\k_{1})) & \Im(\tau_{r_{2}}(\k_{1})) \\ \vdots & & \vdots & \vdots & \vdots & & \vdots & \vdots \\ \rho_{1}(\k_{n}) & \cdots & \rho_{r_{1}}(\k_{n}) & \Re(\tau_{1}(\k_{n})) & \Im(\tau_{1}(\k_{n})) & \cdots & \Re(\tau_{r_{2}}(\k_{n})) & \Im(\tau_{r_{2}}(\k_{n})) \end{pmatrix}^{t}.
       \]
@@ -1024,7 +1020,7 @@
       \[
         V_{\mf{f}} = |\det(P)| = |\det(P')| = |(-2i)^{-r_{2}}\det(P'')| = 2^{-r_{2}}|\det(P'')|.
       \]
-      Since the complex embeddings occur in conjugate pairs and $\{\k_{1},\ldots,\k_{n}\}$ is also a basis for $K$, we see that $P'' = M(\k_{1},\ldots,\k_{n})$ is the embedding matrix of the basis. Hence
+      Since the complex $\Q$-embeddings occur in conjugate pairs and $\{\k_{1},\ldots,\k_{n}\}$ is a basis for $K$, we see that $P'' = M(\k_{1},\ldots,\k_{n})$ is the embedding matrix of the basis. Hence
       \[
         V_{\mf{f}} = \frac{|\det(M(\k_{1},\ldots,\k_{n}))|}{2^{r_{2}}}.
       \]
@@ -1067,19 +1063,19 @@
     \begin{proof}
       Let $\mf{f}$ be a fractional ideal, and set
       \[
-        \l^{n} = 2^{n}\frac{V_{r(\mf{f}^{-1})}}{\Vol(X)}.
+        \l^{n} = 2^{n}\frac{V_{\s_{K}(\mf{f}^{-1})}}{\Vol(X)}.
       \]
       Then by construction,
       \[
-        \Vol(\l X) = \l^{n}\Vol(X) = 2^{n}V_{r(\mf{f}^{-1})}.
+        \Vol(\l X) = \l^{n}\Vol(X) = 2^{n}V_{\s_{K}(\mf{f}^{-1})}.
       \]
-      By Minkowski's lattice point theorem, there exists a nonzero $\a \in \mf{f}^{-1}$ such that $r(\a) \in r(\mf{f}^{-1})$ and $r(\a) \in \l X$. Since $\a \in \mf{f}^{-1}$, $\a\mf{f} \subseteq \mc{O}_{K}$ so that $\a\mf{f}$ is an integral ideal in the same ideal class as $\mf{f}$. Now let $\s$ run over the $n$ distinct $\Q$-embeddings of $K$ into $\conj{K}$. Since the norm is completely multiplicative by \cref{prop:ideal_norm_is_multiplicative}, we have
+      By Minkowski's lattice point theorem, there exists a nonzero $\a \in \mf{f}^{-1}$ such that $\s_{K}(\a) \in \s_{K}(\mf{f}^{-1})$ and $\s_{K}(\a) \in \l X$. Since $\a \in \mf{f}^{-1}$, $\a\mf{f} \subseteq \mc{O}_{K}$ so that $\a\mf{f}$ is an integral ideal in the same ideal class as $\mf{f}$. Now let $\s$ run over the $n$ distinct $\Q$-embeddings of $K$ into $\conj{K}$. Since the norm is completely multiplicative by \cref{prop:ideal_norm_is_multiplicative}, we have
       \[
         \Norm(\a\mf{f}) = |\Norm(\a)|\Norm(\mf{f}) = \left|\prod_{\s}\s(\a)\right|\Norm(\mf{f}) \le \l^{n}M\Norm(\mf{f}),
       \]
-      where in the first equality we have applied \cref{prop:residue_of_integral_ideal_is_finite}, in the second we have used \cref{prop:formulas_for_trace_and_norm}, and the inequality follows since $r(\a) \in \l X$. This inequality, our choice of $\l^{n}$, and \cref{prop:covolume_of_fractional_ideal_under_realization} together give
+      where in the first equality we have applied \cref{prop:residue_of_integral_ideal_is_finite}, in the second we have used \cref{prop:formulas_for_trace_and_norm}, and the inequality follows since $\s_{K}(\a) \in \l X$. This inequality, our choice of $\l^{n}$, and \cref{prop:covolume_of_fractional_ideal_under_realization} together give
       \[
-        \Norm(\a\mf{f}) \le \l^{n}M\Norm(\mf{f}) = 2^{n}MN(\mf{f})\frac{V_{r(\mf{f}^{-1})}}{\Vol(X)} = 2^{n}M\frac{\sqrt{|\D_{K}|}}{2^{r_{2}}\Vol(X)} = \frac{2^{r_{1}+r_{2}}M}{\Vol(X)}\sqrt{|\D_{K}|},
+        \Norm(\a\mf{f}) \le \l^{n}M\Norm(\mf{f}) = 2^{n}MN(\mf{f})\frac{V_{\s_{K}(\mf{f}^{-1})}}{\Vol(X)} = 2^{n}M\frac{\sqrt{|\D_{K}|}}{2^{r_{2}}\Vol(X)} = \frac{2^{r_{1}+r_{2}}M}{\Vol(X)}\sqrt{|\D_{K}|},
       \]
       which proves the first statement since the fractional ideal $\mf{f}$ was arbitrary. We now prove that the class group is finite. By what we have just proved, we can find a complete set of representatives of $\Cl(K)$ consisting of integral ideals of bounded norm. Since the norm is multiplicative by \cref{prop:ideal_norm_is_multiplicative}, the prime factors of these representatives have bounded norm as well. As we have seen, the norm of a prime integral ideal is exactly the prime $p$ below it. Thus the norms of these prime factors are bounded primes $p$. As there are finitely many prime integral ideals above any prime $p$ (because $p\mc{O}_{K}$ factors into a product of prime integral ideals and these are exactly the prime integral ideals above $p$), it follows that these representatives have finitely many prime factors. Altogether this means that there are finitely many representatives. Hence $\Cl(K)$ is finite and so the class number $h_{K}$ is too.
     \end{proof}
