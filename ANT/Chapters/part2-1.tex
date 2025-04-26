@@ -1001,12 +1001,12 @@
     \begin{center}
       \begin{tikzcd}
         K \arrow{d}{\Trace} \arrow{r}{j} & K_{\R} \arrow{d}{\Trace_{K_{\R}}} \arrow{r}{\s_{K}} & \R^{n} \arrow{d}{\Trace_{\R^{n}/\Q}} \\
-        \Q \arrow[hookrightarrow]{r} & \R \arrow[hookrightarrow]{r} & \R
+        \Q \arrow{r} & \R \arrow{r} & \R
       \end{tikzcd}
       \qquad
       \begin{tikzcd}
         K^{\ast} \arrow{d}{\Norm} \arrow{r}{j} & K_{\R} \arrow{d}{\Norm_{K_{\R}}}^{\ast} \arrow{r}{\log_{K}} & \R^{n} \arrow{d}{\Norm_{\R^{n}/\Q}} \\
-        \Q^{\ast} \arrow[hookrightarrow]{r} & \C^{\ast} \arrow{r}{\d_{\s}\log|\cdot|} & \R
+        \Q^{\ast} \arrow{r} & \C^{\ast} \arrow{r}{\d_{\s}\log|\cdot|} & \R
       \end{tikzcd}
     \end{center}
     
@@ -1061,8 +1061,8 @@
       \]
       by \cref{prop:base_change_quotient_determinant} because $|\Norm(\d)|$ is the absolute value of the determinant of the base change matrix from $\{\k_{1},\ldots,\k_{n}\}$ to $\{\d\k_{1},\ldots,\d\k_{n}\}$ (since $\Norm(\d)$ is the determinant of $T_{\d}$). As $\Norm(\mf{f}) = \frac{\Norm(\mf{a})}{|\Norm(\d)|}$ (because $\Norm(\mf{a}) = \Norm(\d\mf{f}) = |\Norm(\d)|\Norm(\mf{a})$ using \cref{prop:residue_of_integral_ideal_is_finite}), these two identities for $|\det(M(\d\k_{1},\ldots,\d\k_{n}))|$ together imply the claim.
     \end{proof}
-  \section{The Ideal Class Group}
-    Let $K$ be a number field. Recall that the ideal group $I_{K}$ is the group of fractional ideals of $K$. We let $P_{K}$ denote the subgroup of $I_{K}$ of principal ideals $\a\mc{O}_{K}$ for nonzero $\a \in K$. Since $I_{K}$ is abelian, $P_{K}$ is normal. The \textbf{ideal class group}\index{ideal class group} $\Cl(K)$ of $K$ is defined to be the quotient group
+  \section{\todo{The Ideal Class \& Unit Groups}}
+    Let $K$ be a number field. We will discuss the structure of two important groups associated to $K$: the ideal class group and the unit group. We will introduce the unit group first. Recall that the ideal group $I_{K}$ is the group of fractional ideals of $K$. We let $P_{K}$ denote the subgroup of $I_{K}$ of principal ideals $\a\mc{O}_{K}$ for nonzero $\a \in K$. Since $I_{K}$ is abelian, $P_{K}$ is normal. The \textbf{ideal class group}\index{ideal class group} $\Cl(K)$ of $K$ is defined to be the quotient group
     \[
       \Cl(K) = I_{K}/P_{K},
     \]
@@ -1070,7 +1070,21 @@
     \[
       h_{K} = |\Cl(K)|.
     \]
-    That is, the class number is the size of the ideal class group. The class number is a measure of how much the ring of integers $\mc{O}_{K}$ fails to be a principal ideal domain. Indeed, if $\mc{O}_{K}$ is a principal ideal domain then every integral ideal is principal and hence every fractional ideal is too (because every fractional ideal $\mf{f}$ is of the form $\frac{1}{\d}\mf{a}$ for some integral ideal $\mf{a}$ and nonzero $\d \in \mc{O}_{K}$). But then $\Cl(K)$ is the trivial group an hence $h_{K} = 1$. Conversely, if $h_{K} = 1$ then every fractional ideal is principal and hence every integral ideal is too so that $\mc{O}_{K}$ is a principal ideal domain. In short, $\mc{O}_{K}$ is a principal ideal domain if and only if $h_{K} = 1$. Our primary goal is to show that the class number is finite:
+    Now for the second group. The \textbf{unit group}\index{unit group} of $K$ is defined to be $\mc{O}_{K}^{\ast}$. That is, the unit group is the group of units in the ring of integers of $K$. By abuse of language, we call any element $\mc{O}_{K}^{\ast}$ a \textbf{unit}\index{unit} of $K$. By \cref{cor:unit_if_and_only_if_absolute_value_norm_1}, we have
+    \[
+      \mc{O}_{K}^{\ast} = \{\e \in \mc{O}_{K}:\Norm(\e) = \pm 1\}.
+    \]
+    The the ideal class and unit groups of $K$ are related via the following exact sequence:
+
+    \begin{center}
+      \begin{tikzcd}
+        1 \arrow{r} & \mc{O}_{K}^{\ast} \arrow{r} & K^{\ast} \arrow{r}{\cdot\mc{O}_{K}} & I_{K} \arrow{r} & \Cl(K) \arrow{r} & 1
+      \end{tikzcd}
+    \end{center}
+
+    Since the middle map takes any $\k \in K^{\ast}$ to its associated principal ideal $\k\mc{O}_{K}$, we can think of this as passing from numbers to ideals. Then exactness means that unit group is measuring the contraction that takes place during this process while the class group is measuring the expansion.
+  \subsection*{The Class Number}
+    The class number is a measure of how much the ring of integers $\mc{O}_{K}$ fails to be a principal ideal domain. Indeed, if $\mc{O}_{K}$ is a principal ideal domain then every integral ideal is principal and hence every fractional ideal is too (because every fractional ideal $\mf{f}$ is of the form $\frac{1}{\d}\mf{a}$ for some integral ideal $\mf{a}$ and nonzero $\d \in \mc{O}_{K}$). But then $\Cl(K)$ is the trivial group an hence $h_{K} = 1$. Conversely, if $h_{K} = 1$ then every fractional ideal is principal and hence every integral ideal is too so that $\mc{O}_{K}$ is a principal ideal domain. In short, $\mc{O}_{K}$ is a principal ideal domain if and only if $h_{K} = 1$. We will show that the class number is finite:
 
     \begin{theorem}\label{equ:finitness_of_class_number}
       Let $K$ be a number field of degree $n$ and signature $(r_{1},r_{2})$. Also, let $X \subseteq \R^{n}$ be a compact convex symmetric set and set $M = \max_{\mathbf{x} \in X}\left(\prod_{1 \le i \le n}|x_{i}|\right)$. Then every ideal class contains an integral ideal $\mf{a}$ satisfying
@@ -1225,11 +1239,7 @@
     \end{proof}
 
     Generally speaking, the class number $h_{K}$ is one of the most difficult pieces of arithmetic data about $K$ to compute. For example, it is still unknown if there are infinitely many number fields of class number $1$ (that is, number fields such that their ring of integers are principal ideal domains).
-  \section{\todo{Dirichlet's Unit Theorem}}
-    By abuse of language, we call any element $\mc{O}_{K}^{\ast}$ a \textbf{unit}\index{unit} of $K$. That is, the units are the elements of the ring of integers $\mc{O}_{K}$ which are themselves invertible in $\mc{O}_{K}$. By \cref{cor:unit_if_and_only_if_absolute_value_norm_1}, we have
-    \[
-      \mc{O}_{K}^{\ast} = \{\e \in \mc{O}_{K}:\Norm(\e) = \pm 1\}.
-    \]
+  \subsection*{Dirichlet's Unit Theorem}
     Another very important piece of arithmetic data about a number field $K$ other than its class number is the structure of $\mc{O}_{K}^{\ast}$. Our goal will be to show that $\mc{O}_{K}^{\ast}$ is a direct product of a subgroup of the roots of unity and a certain finitely generated free group. Determining the exact rank of the free group will be the most difficult part of the proof. We will make use of two subsets
     \[
       S = \{\mathbf{x} \in K_{\R}:\Norm_{K_{\R}}(\mathbf{x}) = \pm 1\} \quad \text{and} \quad H = \{\mathbf{x} \in \R^{n}:\Trace_{\R^{n}/\Q}(\mathbf{x}) = 0\},
