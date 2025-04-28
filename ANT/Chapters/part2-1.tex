@@ -919,7 +919,7 @@
     \[
       K_{\C} = \prod_{\s}\C,
     \]
-    where the product runs over all $\Q$-embeddings of $K$ into $\conj{\Q}$. Moreover, $K_{\C}$ is a complex Hilbert space with respect to the Hermitian inner product $\<\cdot,\cdot\>_{K_{\C}}$ which is the standard inner product on $\C^{n}$. We denote the associated Lebesgue measure by $d\l_{K_{\C}}$. Now there is a $\Q$-embedding
+    where the product runs over all $\Q$-embeddings of $K$ into $\conj{\Q}$. Moreover, $K_{\C}$ is a complex Hilbert space with respect to $\<\cdot,\cdot\>_{K_{\C}}$ which we take to be the standard inner product on $\C^{n}$. We denote the associated Lebesgue measure by $d\l_{K_{\C}}$. Now there is a $\Q$-embedding
     \[
       j:K \to K_{\C} \qquad \k = (\s(\k))_{\s},
     \]
@@ -992,11 +992,11 @@
     \[
       \s_{K}:K \to \R^{n} \qquad \k \to (\rho_{1}(\k),\ldots,\rho_{r_{1}}(k),\Re(\tau_{1}(\k)),\Im(\tau_{1}(\k)),\ldots,\Re(\tau_{r_{2}}(\k)),\Im(\tau_{r_{2}}(\k))),
     \]
-    where $\rho_{1},\ldots,\rho_{r_{1}}$ are the real $\Q$-embeddings and $\tau_{1},\ldots,\tau_{r_{2}}$ are representatives of pairs of complex $\Q$-embeddings. The canonical embedding $\s_{K}$ is then a $\Q$-embedding of $K$ into $\R^{n}$ since it is the composition of the $\Q$-embedding $j$ (whose image under $K$ is in $K_{\R}$ as we have noted), the isomorphism established by \cref{prop:Minkowski_space_isomorphism}, and the isomorphism $\prod_{\s}\R \cong \R^{n}$. It is also independent of the choice of representatives $\tau_{1},\ldots,\tau_{r_{2}}$ since the complex embeddings occur in conjugate pairs. There is an associated map on $K^{\ast}$. We define the \textbf{logarithmic embedding}\index{logarithmic embedding} $\log_{K}$ of $K$ by
+    where $\rho_{1},\ldots,\rho_{r_{1}}$ are the real $\Q$-embeddings and $\tau_{1},\ldots,\tau_{r_{2}}$ are representatives of pairs of complex $\Q$-embeddings. The canonical embedding $\s_{K}$ is then a $\Q$-embedding of $K$ into $\R^{n}$ since it is the composition of the $\Q$-embedding $j$ (whose image under $K$ is in $K_{\R}$ as we have noted), the isomorphism established by \cref{prop:Minkowski_space_isomorphism}, and the isomorphism $\prod_{\s}\R \cong \R^{n}$. It is also independent of the choice of representatives $\tau_{1},\ldots,\tau_{r_{2}}$ since the complex $\Q$-embeddings occur in conjugate pairs. There is an associated map on $K^{\ast}$. We define the \textbf{logarithmic embedding}\index{logarithmic embedding} $\log_{K}$ of $K$ by
     \[
       \log_{K}:K^{\ast} \to \C^{n} \qquad \k \to (\log|\rho_{1}(\k)|,\ldots,\log|\rho_{r_{1}}(\k)|,2\log|\tau_{1}(\k)|,\ldots,2\log|\tau_{r_{2}}(\k)|)
     \]
-    Then $\log_{K}$ is just the restriction of $j$ to $K$ composed with $\d_{\s}\log|\cdot|$ at each component. Since $\d_{\s}\log|\cdot|$ is a homomorphism and $j$ is an embeddings, $\log_{K}$ is a homomorphism. All of these maps are related via the following commutative diagrams:
+    Then $\log_{K}$ is just the restriction of $j$ to $K$ composed with $\d_{\s}\log|\cdot|$ at each component. Since $\d_{\s}\log|\cdot|$ is a homomorphism and $j$ is a $\Q$-embedding, $\log_{K}$ is a homomorphism. All of these maps are related via the following commutative diagrams:
 
     \begin{center}
       \begin{tikzcd}
@@ -1010,7 +1010,7 @@
       \end{tikzcd}
     \end{center}
     
-    Since $\s_{K}$ is an embedding and any fractional ideal $\mf{f}$ is a complete lattice, $\s_{K}(\mf{f})$ is a complete lattice in $\R^{n}$. We now determine the covolume of $\s_{K}(\mf{f})$:
+    Since $j$ is a $\Q$-embedding and any fractional ideal $\mf{f}$ is a complete lattice, $j(\mf{f})$ is a complete lattice in $K_{\R}$. Moreover, as $\s_{K}$ is also a $\Q$-embedding, $\s_{K}(\mf{f})$ is a complete lattice in $\R^{n}$. We now determine the covolume of $\s_{K}(\mf{f})$:
     
     \begin{proposition}\label{prop:covolume_of_fractional_ideal_under_canonical_embedding}
       Let $K$ be a number field with signature $(r_{1},r_{2})$. Then
@@ -1096,9 +1096,9 @@
     \begin{proof}
       Let $\mf{f}$ be a fractional ideal, and set
       \[
-        \l^{n} = 2^{n}\frac{V_{\s_{K}(\mf{f}^{-1})}}{\Vol(X)}.
+        \l^{n} = 2^{n}\frac{V_{\s_{K}(\mf{f}^{-1})}}{\Vol(X)},
       \]
-      Then by construction,
+      for any $n \ge 1$. Then by construction,
       \[
         \Vol(\l X) = \l^{n}\Vol(X) = 2^{n}V_{\s_{K}(\mf{f}^{-1})}.
       \]
@@ -1240,15 +1240,39 @@
 
     Generally speaking, the class number $h_{K}$ is one of the most difficult pieces of arithmetic data about $K$ to compute. For example, it is still unknown if there are infinitely many number fields of class number $1$ (that is, number fields such that their ring of integers are principal ideal domains).
   \subsection*{Dirichlet's Unit Theorem}
-    Another very important piece of arithmetic data about a number field $K$ other than its class number is the structure of $\mc{O}_{K}^{\ast}$. Our goal will be to show that $\mc{O}_{K}^{\ast}$ is a direct product of a subgroup of the roots of unity and a certain finitely generated free group. Determining the exact rank of the free group will be the most difficult part of the proof. We will make use of two subsets
+    Let $K$ be a number field of signature $(r_{1},r_{2})$. Another very important piece of arithmetic data about a number field $K$ other than its class number is the structure of $\mc{O}_{K}^{\ast}$. Let $\W$ denote the group of all roots of unity. We will set $\mu(K) = \mc{O}_{K}^{\ast} \cap \W$ so that $\mu(K)$ is the subgroup of $\mc{O}_{K}^{\ast}$ consisting of all of the roots of unity in $K$. Clearly $\{\pm 1\} \subseteq \mu(K)$. Our goal will be to show that $\mc{O}_{K}^{\ast}$ is a direct product of a $\mu(K)$ and a finitely generated free abelian group of rank $r_{1}+r_{2}-1$. Determining that the rank of the free group is exactly $r_{1}+r_{2}-1$ will be the most difficult part of the proof. We will make use of two subsets
     \[
       S = \{\mathbf{x} \in K_{\R}:\Norm_{K_{\R}}(\mathbf{x}) = \pm 1\} \quad \text{and} \quad H = \{\mathbf{x} \in \R^{n}:\Trace_{\R^{n}/\Q}(\mathbf{x}) = 0\},
     \]
-    called the \textbf{norm-one surface}\index{norm-one surface} and \textbf{trace-zero hyperplane}\index{trace-zero hyperplane} respectively. We set
+    called the \textbf{norm-one surface}\index{norm-one surface} and \textbf{trace-zero hyperplane}\index{trace-zero hyperplane} respectively. Let $\l_{K}$ denote the restriction of $\log_{K}$ to $\mc{O}_{K}^{\ast}$ and set
     \[
       \L = \log_{K}(\mc{O}_{K}^{\ast}),
     \]
-    so that $\L$ is the group of units of $K$ under the logarithmic embedding. Moreover, we have $\L \subset H$ because $\log|\tau(\k)| = \log|\conj{\tau}(\k)|$ and $\log|1| = 0$. \todo{xxx}
+    so that $\L$ is the image of $\l_{K}$. Observe that $\L \subset H$ since the trace of $\l_{K}(\e) = \log_{K}(\e)$, for any $\e \in \mc{O}_{K}^{\ast}$, is just the logarithm of $\Norm(\e) = 1$. We first show that the logarithmic embedding fits into an exact sequence:
+
+    \begin{proposition}
+      Let $K$ be a number field. Then the sequence
+
+      \begin{center}
+        \begin{tikzcd}
+          1 \arrow{r} & \mu(K) \arrow{r} & \mc{O}_{K}^{\ast} \arrow{r}{\l_{K}} & \L \arrow{r} & 0,
+        \end{tikzcd}
+      \end{center}
+
+      is exact.
+    \end{proposition}
+    \begin{proof}
+      Exactness of this sequence means that $\mu_{K}$ is the kernel of $\l_{K}$. If $\w \in \mu_{K}$, then $|\w| = 1$ and it follows that $\l_{K}(\w) = 0$. Therefore $\ker\l_{K}$ contains $\mu(K)$. To see that this is all of $\ker\l_{K}$, suppose $\e \in \mc{O}_{K}^{\ast}$ is such that $\l_{K}(\e) = 0$. But then every component of $j(\e)$ is has absolute value $1$ and therefore belongs to a bounded subset of the Minkowski space $K_{\R}$. Since $\mc{O}_{K}^{\ast}$ is a subgroup of $\mc{O}_{K}$ and $j(\mc{O}_{K})$ is a complete lattice in $K_{\R}$ (as we have already remarked), $j(\mc{O}_{K}^{\ast})$ is a lattice in $K_{\R}$. But then $j(\e)$ belongs to a discrete set by \cref{prop:lattice_if_and_only_if_discrete_subgroup}. Together, $j(\e)$ belongs to a discrete and bounded set and hence is necessarily finite. Since $j$ is an embedding, it follows that the subgroup $\ker\l_{K}$ of $\mc{O}_{K}^{\ast}$ contains finitely many elements and hence only roots of unity because $\ker\l_{K} \subset K \subset \C$. Thus $\ker\l_{K} = \mu(K)$.
+    \end{proof}
+
+    Our aim now is to show that $\L$ is a a finitely generated free abelian group of rank $r_{1}+r_{2}-1$. For this, we will require a lemma:
+
+    \begin{lemma}
+      Let $K$ be a number field. There are finitely many elements in $\mc{O}_{K}$ of a given norm up to multiplication by units.
+    \end{lemma}
+    \begin{proof}
+      Let $n \ge 1$. Recall that $\mc{O}_{K}/n\mc{O}_{K}$ is finite by \cref{prop:residue_of_integral_ideal_is_finite}. We claim that in each of these finitely many cosets, there is at most one element of norm $a$ up to multiplication by units. Indeed, suppose $\a$ and $\b$ are two such representatives of norm $n$. Then $\b = \a+n\g$ for some $n\g \in n\mc{O}_{K}$ and we have \todo{xxx}
+    \end{proof}
   \section{Quadratic Number Fields}
     We will now classify and discuss the structure of quadratic number fields. We first show that quadratic number fields are exactly those where we adjoint the square-root of a fundamental discriminant:
 
