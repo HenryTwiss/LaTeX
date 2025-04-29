@@ -664,11 +664,7 @@
     \[
       \L = \Z v_{1}+\cdots+\Z v_{m},
     \]
-    for some linearly independent subset $\{v_{1},\ldots,v_{m}\}$ of $V$ with $m \le n$. We say $\L$ is \textbf{complete}\index{complete} if $n = m$. Necessarily, $\{v_{1},\ldots,v_{n}\}$ is a basis of $V$. The \textbf{covolume}\index{covolume} $V_{\L}$ of a complete lattice $\L$ is defined to be
-    \[
-      V_{\L} = |V/\L|,
-    \]
-    which is finite by \cref{prop:base_change_quotient_determinant}. Moreover, if $\{e_{1},\ldots,e_{n}\}$ is an orthonormal basis for $V$, write
+    for some linearly independent subset $\{v_{1},\ldots,v_{m}\}$ of $V$ with $m \le n$. We say $\L$ is \textbf{complete}\index{complete} if $n = m$. Necessarily, $\{v_{1},\ldots,v_{n}\}$ is a basis of $V$. If $\{e_{1},\ldots,e_{n}\}$ is an orthonormal basis for $V$, write
     \[
       v_{i} = \sum_{1 \le i \le n}v_{i,j}e_{j},
     \]
@@ -676,11 +672,11 @@
     \[
       P = \begin{pmatrix} v_{1,1} & \cdots & v_{1,n} \\ \vdots & & \vdots \\ v_{n,1} & \cdots & v_{n,n} \end{pmatrix}.
     \]
-    Then $P$ is the base change matrix from $\{e_{1},\ldots,e_{n}\}$ to $\{v_{1},\ldots,v_{n}\}$ and so \cref{prop:base_change_quotient_determinant} shows that
+    Then $P$ is the base change matrix from $\{e_{1},\ldots,e_{n}\}$ to $\{v_{1},\ldots,v_{n}\}$. Then the \textbf{covolume}\index{covolume} $V_{\L}$ of a complete lattice $\L$ is defined to be
     \[
       V_{\L} = |\det(P)|.
     \]
-    We can now introduce the notion of dual lattices. If $\L$ is a complete lattice in $V$, then the \textbf{dual lattice}\index{dual lattice} $\L^{\vee}$ of $\L$ is defined by
+    By \cref{prop:base_change_quotient_determinant} and that the base change matrix between any two orthonormal basses is an orthogonal matrix (hence has determinant $\pm 1$), the covolume is independent of the choice of bases. We can now introduce the notion of dual lattices. If $\L$ is a complete lattice in $V$, then the \textbf{dual lattice}\index{dual lattice} $\L^{\vee}$ of $\L$ is defined by
     \[
       \L^{\vee} = \{v \in V:\text{$\<\l,v\> \in \Z$ for all $\l \in \L$}\}.
     \]
@@ -762,6 +758,23 @@
       In particular, $\L$ is a subgroup of a free abelian group and therefore is free abelian. This means $\L$ is a lattice.
     \end{proof}
 
+    As for complete lattices in $V$, they are equivalent to the existence of a bounded set whose translates cover $V$:
+
+    \begin{proposition}\label{prop:complete_lattice_if_and_only_if_bounded_translates_cover}
+      Let $\L$ be a lattice in a finite dimensional real inner product space $V$. Then $\L$ complete if and only if there exists a bounded subset $M$ of $V$ whose translates by $\L$ cover $V$.
+    \end{proposition}
+    \begin{proof}
+      First suppose $\L$ is complete. Then we may take $M = \mc{M}$ to be the fundamental domain of $\L$ which is bounded and whose translates by $\L$ cover $V$. Now suppose $\L$ is a lattice and there exists a bounded subset $M$ of $V$ whose translates by $\L$ cover $V$. Let $W$ be the subspace of $V$ spanned by $\L$. Then $W$ is closed. Moreover, $\L$ is complete if and only if $V = W$ and this is what we will show. So let $v \in V$. Since the translates of $M$ by $\L$ cover $V$, for every $n \ge 1$ we may write
+      \[
+        nv = w_{n}+\l_{n},
+      \]
+      with $v_{n} \in M$ and $\l_{n} \in L \subset W$. As $M$ is bounded, $\lim_{n \to \infty}\frac{1}{n}v_{n} = 0$. Moreover, $\frac{1}{n}\l_{n} \in W$ for every $n$ and since $W$ is closed we must have that $\lim_{n \to \infty}\frac{1}{n}\l_{n}$ exists. These facts, and that $v$ is independent of $n$, together imply
+      \[
+        v = \lim_{n \to \infty}\frac{1}{n}w_{n}+\lim_{n \to \infty}\frac{1}{n}\l_{n} = \lim_{n \to \infty}\frac{1}{n}\l_{n},
+      \]
+      is an element of $W$. Since $v$ was arbitrary, $V = W$ and hence $\L$ is complete.
+    \end{proof}
+
     The most important result we will require about lattices is \textbf{Minkowski's lattice point theorem}\index{Minkowski's lattice point theorem} which states that, under some mild conditions, a set of sufficiently large volume in $V$ contains a nonzero point of a complete lattice:
 
     \begin{theorem}[Minkowski's lattice point theorem]
@@ -780,17 +793,17 @@
       \[
         \Vol\left(\frac{1}{2}X\right) = \frac{1}{2^{n}}\Vol(X) \le V_{\L}, 
       \]
-      so that $\Vol(X) \le  2^{n}V_{\L}$. This is a contradiction, so $\phi$ cannot be injective. Hence there exists distinct $x_{1},x_{2} \in \frac{1}{2}X$ such that $\phi(x_{1}) = \phi(x_{2})$. Thus $2x_{1},2x_{2} \in X$. In particular, since $X$ is symmetric we must have $-2x_{2} \in X$. But then the fact that $X$ is convex implies that
+      so that $\Vol(X) \le  2^{n}V_{\L}$. This is a contradiction, so $\phi$ cannot be injective. Hence there exists distinct $x_{1},x_{2} \in \frac{1}{2}X$ such that $\phi(x_{1}) = \phi(x_{2})$. Thus $2x_{1},2x_{2} \in X$. In particular, since $X$ is symmetric we must have $-2x_{2} \in X$. But then the fact $X$ is convex implies that
       \[
-        \left(1-\frac{1}{2}\right)2x_{1}+\frac{1}{2}(-2x_{2}) = x_{1}-x_{2} \in X.
+        \left(1-\frac{1}{2}\right)2x_{1}+\frac{1}{2}(-2x_{2}) = x_{1}-x_{2},
       \]
-      Note that $x_{1}-x_{2} \in \L$ because $\phi(x_{1}) = \phi(x_{2})$ and $\phi$ is linear. Then $\l = x_{1}-x_{2}$ is a nonzero element of $\L$ with $\l \in X$. Now suppose $\Vol(X) = 2^{n}V_{\L}$. Then for any $\e > 0$, we have
+      is an element of $X$. Note that $x_{1}-x_{2} \in \L$ because $\phi(x_{1}) = \phi(x_{2})$ and $\phi$ is linear. Then $\l = x_{1}-x_{2}$ is a nonzero element of $\L$ with $\l \in X$. Now suppose $\Vol(X) = 2^{n}V_{\L}$. Then for any $\e > 0$, we have
       \[
         \Vol((1+\e)X) = (1+\e)^{n}\Vol(X) = (1+\e)^{n}2^{n}V_{\L} > 2^{n}V_{\L}.
       \]
-      So what we have just proved shows that there exists a nonzero $\l_{\e} \in \L$ with $\l_{\e} \in (1+\e)X$. In particular, if $\e \le 1$ then $\l_{\e} \in 2X \cap \L$. The set $2X \cap \L$ is compact and discrete, because $X$ is compact and $\L$ is discrete, and therefore is finite. But as this holds for all $\e \le 1$, the sequence $(\l_{\frac{1}{n}})_{n \ge 1}$ belongs to the finite set $2X \cap \L$ and so must converge to a point $\l$. Since $\L$ is discrete and the $\l_{\frac{1}{n}}$ are nonzero so too is $\l$. As
+      So what we have just proved shows that there exists a nonzero $\l_{\e} \in \L$ with $\l_{\e} \in (1+\e)X$. In particular, if $\e \le 1$ then $\l_{\e} \in 2X \cap \L$. The set $2X \cap \L$ is compact and discrete, because $X$ is compact and $\L$ is discrete, and therefore is finite. But as this holds for all $\e \le 1$, the sequence $(\l_{\frac{1}{n}})_{n \ge 1}$ belongs to the finite set $2X \cap \L$ and so must converge to a point $\l$. Since $\L$ is discrete and the $\l_{\frac{1}{n}}$ are nonzero so too is $\l$. As $\l$ is an element of
       \[
-        \l \in \bigcap_{n \ge 1}\left(1+\frac{1}{n}\right)X,
+        \bigcap_{n \ge 1}\left(1+\frac{1}{n}\right)X,
       \]
       and $X$ is closed, $\l \in X$ as well. Thus we have found a nonzero $\l \in L$ with $\l \in X$ and we are done.
     \end{proof}
