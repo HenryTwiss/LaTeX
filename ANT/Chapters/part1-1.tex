@@ -670,13 +670,13 @@
     \]
     with $v_{i,j} \in F$ for $1 \le i,j \le n$ and define the associated \textbf{generator matrix}\index{generator matrix} $P$ by
     \[
-      P = \begin{pmatrix} v_{1,1} & \cdots & v_{1,n} \\ \vdots & & \vdots \\ v_{n,1} & \cdots & v_{n,n} \end{pmatrix}.
+      P = \begin{pmatrix} v_{1,1} & \cdots & v_{n,1} \\ \vdots & & \vdots \\ v_{1,n} & \cdots & v_{n,n} \end{pmatrix}.
     \]
-    Then $P$ is the base change matrix from $\{e_{1},\ldots,e_{n}\}$ to $\{v_{1},\ldots,v_{n}\}$. Then the \textbf{covolume}\index{covolume} $V_{\L}$ of a complete lattice $\L$ is defined to be
+    Then $P$ is the base change matrix from $\{e_{1},\ldots,e_{n}\}$ to $\{v_{1},\ldots,v_{n}\}$. The \textbf{covolume}\index{covolume} $V_{\L}$ of a complete lattice $\L$ is defined to be
     \[
       V_{\L} = |\det(P)|.
     \]
-    By \cref{prop:base_change_quotient_determinant} and that the base change matrix between any two orthonormal basses is an orthogonal matrix (hence has determinant $\pm 1$), the covolume is independent of the choice of bases. We can now introduce the notion of dual lattices. If $\L$ is a complete lattice in $V$, then the \textbf{dual lattice}\index{dual lattice} $\L^{\vee}$ of $\L$ is defined by
+    By \cref{prop:base_change_quotient_determinant} and that the base change matrix between any two orthonormal basses is an orthogonal matrix and hence has determinant $\pm 1$, the covolume is independent of the choice of bases. In particular, if $V$ is a real or complex vector space we may take $\{e_{1},\ldots,e_{n}\}$ to be the standard basis. We now introduce the notion of dual lattices. If $\L$ is a complete lattice in $V$, then the \textbf{dual lattice}\index{dual lattice} $\L^{\vee}$ of $\L$ is defined by
     \[
       \L^{\vee} = \{v \in V:\text{$\<\l,v\> \in \Z$ for all $\l \in \L$}\}.
     \]
@@ -702,7 +702,7 @@
       \]
     \end{proposition}
     \begin{proof}
-      Let $\{e_{1},\ldots,e_{n}\}$ be an orthonormal basis of $V$ and let $\{v_{1},\ldots,v_{n}\}$ be a basis for $\L$. By \cref{prop:dual_lattice_exists}, $\{v_{1}^{\vee},\ldots,v_{n}^{\vee}\}$ is a basis for $\L^{\vee}$. If $P$ is the associated generator matrix for $\L$, then $P$ is the base change matrix from $\{e_{1},\ldots,e_{n}\}$ to $\{v_{1},\ldots,v_{n}\}$. Hence $(P^{-1})^{t}$ is the base change matrix from $\{e_{1},\ldots,e_{n}\}$ to $\{v_{1}^{\vee},\ldots,v_{n}^{\vee}\}$. The claim follows by \cref{prop:base_change_quotient_determinant}.
+      Let $\{e_{1},\ldots,e_{n}\}$ be the standard basis for $V$ and let $\{v_{1},\ldots,v_{n}\}$ be a basis for $\L$. By \cref{prop:dual_lattice_exists}, $\{v_{1}^{\vee},\ldots,v_{n}^{\vee}\}$ is a basis for $\L^{\vee}$. If $P$ is the associated generator matrix for $\L$, then $P$ is the base change matrix from $\{e_{1},\ldots,e_{n}\}$ to $\{v_{1},\ldots,v_{n}\}$. Hence $(P^{-1})^{t}$ is the base change matrix from $\{e_{1},\ldots,e_{n}\}$ to $\{v_{1}^{\vee},\ldots,v_{n}^{\vee}\}$. The claim follows by \cref{prop:base_change_quotient_determinant}.
     \end{proof}
     
     We now turn to the case when $V$ is an $n$-dimensional real inner product space with inner product $\<\cdot,\cdot\>$. We let $d\l$ be the associated Lebesgue measure on $V$. If $\{v_{1},\ldots,v_{n}\}$ is a basis of $V$ so that any $v \in V$ has the form
@@ -723,7 +723,7 @@
     \]
     Indeed, since $\L$ acts by translations, it is obvious that $\mc{M}$ is a fundamental domain for $V/\L$. Moreover, any translation of $\mc{M}$ by an element of $\L$ is also a fundamental domain. As we might expect, the covolume of $\L$ is equal to the volume of $\mc{M}$:
 
-    \begin{proposition}\label{prop:lattice_volume_generator_matrix}
+    \begin{proposition}\label{prop:covolume_equals_volume_of_fundamental_domain}
       Let $\L$ be a complete lattice in a finite dimensional real inner product space $V$ and let $\mc{M}$ be a fundamental domain for $\L$. Then
       \[
         V_{\L} = \Vol(\mc{M}).
@@ -741,7 +741,7 @@
       where the last equality follows by \cref{prop:base_change_quotient_determinant}.
     \end{proof}
 
-    It turns out that for $V$, being a lattice is equivalent to being a discrete subgroup:
+    From \cref{prop:covolume_equals_volume_of_fundamental_domain} we see that the covolume of a complete lattice in a real inner product space is a measure of the density of the lattice. The smaller the covolume the smaller the fundamental domain and the more dense the lattice is. It turns out that for $V$, being a lattice is equivalent to being a discrete subgroup:
 
     \begin{proposition}\label{prop:lattice_if_and_only_if_discrete_subgroup}
       Let $\L$ be a subset of a finite dimensional real inner product space $V$. Then $\L$ is a lattice if and only if it is a discrete subgroup.
