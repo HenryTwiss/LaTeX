@@ -1533,5 +1533,68 @@
       if and only if the roots $\pm\sqrt{d}$ are elements of $\F_{p}$. As $p \neq 2$, these factors are distinct. Moreover, $\sqrt{d}$ is an element of $\F_{p}$ if and only if $d$ and hence $4d$ are squares modulo $p$ so that $p$ is split or inert according to if $\chi_{4d}(p) = \pm1$. This completes the verification in the case $d \equiv 2,3 \tmod{4}$.
     \end{proof}
 
-    From \cref{prop:factorization_of_primes_quadratic}, we see that the factorization of primes in $\Q(\sqrt{d})$ is controlled by the quadratic character $\chi_{\D_{d}}$ attached to the fundamental discriminant $\D_{d}$. In other words, the factorization of $p$ depends completely upon if $\D_{d}$ is a square modulo $p$.
+    From \cref{prop:factorization_of_primes_quadratic}, the factorization of primes in $\Q(\sqrt{d})$ is controlled by the quadratic character $\chi_{\D_{d}}$ attached to the fundamental discriminant $\D_{d}$. In other words, the factorization of $p$ depends completely upon if $\D_{d}$ is a square modulo $p$. While splitting of primes can be explicitly described for quadratic number fields, the class number is a significantly more difficult problem. The \textbf{class number problem}\index{class number problem} was originally introduced by Gauss and aims to classify all quadratic number fields of a given class number:
 
+    \begin{problem}[Class number problem]
+      For a fixed $n \ge 1$, classify all quadratic number fields $\Q(\sqrt{d})$ of class number $n$.
+    \end{problem}
+
+    Some progress has been made toward the class number problem. In 1801, Gauss found nine imaginary quadratic numbers fields of class number $1$ (see \cite{gauss1801disquisitiones}). They are listed according to $d$ as follows:
+    \[
+      d  \in \{-1,-2,-3,-7,-11,-19,-43,-67,-163\}.
+    \]
+    Gauss also conjectured that these are the only imaginary quadratic numbers fields of class number $1$. An argument was presented by Heegner in 1952 (see \cite{heegner1952diophantische}) which was correct up to some minor flaws. Baker and Stark both independently gave independent proofs in the mid 1960's (see \cite{baker1967linear,stark1967complete}) resulting in the following theorem which solves the class number problem for imaginary quadratic number fields in the case $n = 1$:
+
+    \begin{theorem}
+      If $\Q(\sqrt{d})$ is an imaginary quadratic number field of class number $1$, then
+      \[
+        d \in \{-1,-2,-3,-7,-11,-19,-43,-67,-163\}.
+      \]
+      Equivalently, an imaginary quadratic number field $\Q(\sqrt{d})$ has class number $1$ if and only if
+      \[
+        \D_{d} \in \{-3,-4,-7,-8,-11,-19,-43,-67,-163\}.
+      \]
+    \end{theorem}
+
+    As for real quadratic fields, we know much less. In the same 1801 paper of Gauss (see \cite{gauss1801disquisitiones}), he conjectured that there should be infinitely many real quadratic fields and that the class number should remain unbounded:
+
+    \begin{conjecture}
+      There are infinitely many real quadratic fields $\Q(\sqrt{d})$ that have class number $1$. Moreover,
+      \[
+        \lim_{d \to \infty}h(d) = \infty.
+      \]
+    \end{conjecture}
+
+    While the class number problem remains quite out of reach, the structure of the unit group is much easier to classify. Write $\mu(d) = \mu(\Q(\sqrt{d}))$. In fact, by Dirichlet's unit theorem we only need to understand the roots of unity $\mu_{d}$ of $\Q(\sqrt{d})$. In all but two cases, $\mu(d) = \<-1\>$:
+
+    \begin{proposition}
+      Let $\Q(\sqrt{d})$ be a quadratic number field. If $d > 0$, then
+      \[
+        \mc{O}_{d}^{\ast} \cong \<-1\> \x \Z,
+      \]
+      and if $d < 0$, then
+      \[
+        \mc{O}_{d}^{\ast} \cong \mu(d) = \begin{cases} \<i\> & \text{if $d = -1$}, \\ \<\w_{6}\> & \text{if $d = -3$}, \\ \<-1\> & \text{otherwise}. \end{cases}
+      \]
+      where $\w_{6}$ is a primitive $6$-th root of unity.
+    \end{proposition}
+    \begin{proof}
+      First suppose $d > 0$. Then $\Q(\sqrt{d})$ is real and its signature is $(2,0)$. In particular, $\Q(\sqrt{d}) \subset \R$ and thus $\mu(d) = \<-1\>$ since these are the only roots of unity in $\R$ and clearly they are in $\Q(\sqrt{d})$. The claim follows by Dirichlet's unit theorem. Now suppose $d < 0$. Then $\Q(\sqrt{d})$ is imaginary and its signature is $(0,1)$. By \cref{cor:unit_if_and_only_if_absolute_value_norm_1}, $\a \in \mc{O}_{d}$ is a unit if and only if the norm of $\a$ is $\pm 1$. Actually, since $d < 0$ the definition of the norm shows that the norm is always nonnegative. Hence $\a$ is a unit if and only if its norm is $1$. First suppose $d \equiv 2,3 \tmod{4}$. Then \cref{prop:ring_of_integers_quadratic} implies
+      \[
+        \a = a+b\sqrt{d},
+      \]
+      for some $a,b \in \Z$, and $\a$ is a unit if and only if
+      \[
+        \Norm(\a) = a^{2}-b^{2}d = a^{2}+b^{2}|d| = 1.
+      \]
+      Since $|d| \equiv d \equiv 2,3 \tmod{4}$, this happens if and only if $b = 0$ unless $d = -1$. In the former case, $d < 0$ and $\a = a$ is a unit if and only if $a^{2} = 1$ which is to say that $\a = \pm 1$. In the latter case, $d = -1$ and $\a = a+bi$ with $b \neq 0$ (for otherwise we are in the former case) is a unit if and only if $a^{2}+b^{2} = 1$ which means $a = \pm1$ and $b = 0$ or $a = 0$ and $b = \pm 1$ so that $\a$ runs over the $4$-th roots of unity. Altogether, we have shown that $\mu(d) = \<-1\>$ provided $d \equiv 2,3 \tmod{4}$ unless $d = -1$ in which case $\mu(-1) = \<i\>$. Now suppose $d \equiv 1 \tmod{4}$. Then \cref{prop:ring_of_integers_quadratic} implies
+      \[
+        \a = a+b\frac{1+\sqrt{d}}{2} = \frac{2a+b}{2}+\frac{b}{2}\sqrt{d},
+      \]
+      for some $a,b \in \Z$, and $\a$ is a unit if and only if
+      \[
+        \Norm(\a) = \frac{4a^{2}+4ab+b^{2}}{4}-\frac{b^{2}}{4}d = a^{2}+ab+(1+|d|)\frac{b^{2}}{4} = 1.
+      \]
+      Since $|d| \equiv d \equiv 1 \tmod{4}$, this happens if and only if $b = 0$ or $d = -3$ (if $b \neq 0$ then $a^{2}+ab+(1+|d|)\frac{b^{2}}{4} > 1$ for such $d$ unless $d = -3$). In the former case, $\a = a$ is a unit if and only if $a^{2} = 1$ which means $\a = \pm1$. In the latter case, $\a = a+b\frac{1+\sqrt{-3}}{2}$ is a unit if and only if $a^{2}+ab+b^{2} = 1$ which happens if $a = \pm 1$ and $b = 0$, $a = 0$ and $b = \pm 1$, $a = 1$ and $b = -1$, or $a = -1$ and $b = 1$ so that $\a$ runs over the $6$-th roots of unity. This shows $\mu(d) = \<-1\>$ provided $d \equiv 1 \tmod{4}$ unless $d = -3$ in which case $\mu(-3) = \<\w_{6}\>$.
+
+    \end{proof}
