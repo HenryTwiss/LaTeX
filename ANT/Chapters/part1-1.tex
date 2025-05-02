@@ -668,7 +668,7 @@
     \[
       v_{i} = \sum_{1 \le i \le n}v_{i,j}e_{j},
     \]
-    with $v_{i,j} \in F$ for $1 \le i,j \le n$ and define the associated \textbf{generator matrix}\index{generator matrix} $P$ by
+    with $v_{i,j} \in F$ for $1 \le i,j \le n$, and define the associated \textbf{generator matrix}\index{generator matrix} $P$ by
     \[
       P = \begin{pmatrix} v_{1,1} & \cdots & v_{n,1} \\ \vdots & & \vdots \\ v_{1,n} & \cdots & v_{n,n} \end{pmatrix}.
     \]
@@ -676,7 +676,7 @@
     \[
       V_{\L} = |\det(P)|.
     \]
-    By \cref{prop:base_change_quotient_determinant} and that the base change matrix between any two orthonormal basses is an orthogonal matrix and hence has determinant $\pm 1$, the covolume is independent of the choice of bases. In particular, if $V$ is a real or complex vector space we may take $\{e_{1},\ldots,e_{n}\}$ to be the standard basis. We now introduce the notion of dual lattices. If $\L$ is a complete lattice in $V$, then the \textbf{dual lattice}\index{dual lattice} $\L^{\vee}$ of $\L$ is defined by
+    By \cref{prop:base_change_quotient_determinant} and that the base change matrix between any two orthonormal basses is an orthogonal matrix and hence has determinant $\pm 1$, the covolume is independent of the choice of bases. In particular, if $V$ is a real or complex vector space we will take $\{e_{1},\ldots,e_{n}\}$ to be the standard basis. We now introduce the notion of dual lattices. If $\L$ is a complete lattice in $V$, then the \textbf{dual lattice}\index{dual lattice} $\L^{\vee}$ of $\L$ is defined by
     \[
       \L^{\vee} = \{v \in V:\text{$\<\l,v\> \in \Z$ for all $\l \in \L$}\}.
     \]
@@ -693,9 +693,9 @@
       with $v_{j}^{\vee} \in \R$ for all $j$. Since $\<v_{i},v_{j}^{\vee}\> = \d_{i,j}$ for $1 \le i,j \le n$, it follows that $v \in \L^{\vee}$ if and only if $v_{j}^{\vee} \in \Z$ for all $j$. This means that $\<v_{1}^{\vee},\ldots,v_{n}^{\vee}\>$ is a free abelian group of rank $n$. Hence $\L^{\vee}$ is a complete lattice.
     \end{proof}
 
-    Since the dual of the dual basis of a vector space is the original basis, $(\L^{\vee})^{\vee} = \L$. We say that $\L$ is \textbf{self-dual}\index{self-dual} if $\L^{\vee} = \L$. It also turns out that the covolume of the dual lattice is the inverse of the volume of the original lattice:
+    Since the dual of the dual basis of a vector space is the original basis, $(\L^{\vee})^{\vee} = \L$. We say that $\L$ is \textbf{self-dual}\index{self-dual} if $\L^{\vee} = \L$. For example, the lattice $\Z^{n}$ is self-dual because the standard basis is self-dual. It also turns out that the covolume of the dual lattice is the inverse of the volume of the original lattice:
 
-    \begin{proposition}
+    \begin{proposition}\label{prop:covolume_of_dual_is_inverse}
       Let $\L$ be a complete lattice in $V$ and let $\L^{\vee}$ be its dual. Then
       \[
         V_{\L^{\vee}} = \frac{1}{V_{\L}}.
@@ -877,34 +877,64 @@
     The link between the Fourier transform and Fourier series is given by the \textbf{Poisson summation formula}\index{Poisson summation formula}:
 
     \begin{theorem}[Poisson summation formula]
-      Suppose $f(\mathbf{x})$ is absolutely integrable on $\R^{n}$ and the function
+      Suppose $\L$ is a complete lattice in $\R^{n}$, $f(\mathbf{x})$ is absolutely integrable on $\R^{n}$, and the function
+      \[
+        F(\mathbf{x}) = \sum_{\l \in \L}f(\mathbf{x}+\l),
+      \]
+      is locally absolutely uniformly convergent and smooth. Then
+      \[
+        \sum_{\l \in \L}f(\mathbf{x}+\l) = \frac{1}{V_{\L}}\sum_{\l^{\vee} \in \L^{\vee}}(\mc{F}f)(\l^{\vee})e^{2\pi i\<\l^{\vee},\mathbf{x}\>},
+      \]
+      and
+      \[
+        \sum_{\l \in \L}f(\l) = \sum_{\l^{\vee} \in \L^{\vee}}(\mc{F}f)(\l^{\vee}).
+      \]
+    \end{theorem}
+    \begin{proof}
+      Fix a basis $\{\l_{1},\ldots,\l_{n}\}$ for $\L$ and let $P$ be the associated generator matrix. Then $P$ is the base change matrix from the standard basis to $\{\l_{1},\ldots,\l_{n}\}$. In particular, $P$ is an invertible linear transformation on $\R^{n}$ satisfying $\L = P\Z^{n}$ and $\L^{\vee} = (P^{-1})^{t}\Z^{n}$. Letting $ F_{P}(\mathbf{x}) = F(P\mathbf{x})$, we may write
+      \[
+        F_{P}(\mathbf{x}) = \sum_{\mathbf{n} \in \Z^{n}}f(P\mathbf{x}+P\mathbf{n}).
+      \]
+      Now $F_{P}(\mathbf{x})$ is smooth and $1$-periodic in each component because $F(\mathbf{x})$ is smooth and invariant under translation by $\L$. Therefore $F_{P}(\mathbf{x})$ admits a Fourier series. We compute the $\mathbf{t}$-th Fourier coefficient of $F_{P}(\mathbf{x})$ as follows:
+      \begin{align*}
+        \hat{F}_{P}(\mathbf{t}) &= \int_{[0,1]^{n}}F_{P}(\mathbf{x})e^{-2\pi i\<\mathbf{t},\mathbf{x}\>}\,d\mathbf{x} \\
+        &= \int_{[0,1]^{n}}\sum_{\mathbf{n} \in \Z^{n}}f(P\mathbf{x}+P\mathbf{n})e^{-2\pi i\<\mathbf{t},\mathbf{x}\>}\,d\mathbf{x} \\
+        &= \sum_{\mathbf{n} \in \Z^{n}}\int_{[0,1]^{n}}f(P\mathbf{x}+P\mathbf{n})e^{-2\pi i\<\mathbf{t},\mathbf{x}\>}\,d\mathbf{x} && \text{FT} \\
+        &= \frac{1}{V_{\L}}\sum_{\mathbf{n} \in \Z^{n}}\int_{P[0,1]^{n}}f(\mathbf{x}+P\mathbf{n})e^{-2\pi i\<\mathbf{t},P^{-1}\mathbf{x}\>} && \text{$\mathbf{x} \to P^{-1}\mathbf{x}$ and \cref{prop:covolume_of_dual_is_inverse}} \\
+        &= \frac{1}{V_{\L}}\sum_{\mathbf{n} \in \Z^{n}}\int_{P[0,1]^{n}}f(\mathbf{x}+P\mathbf{n})e^{-2\pi i\<\mathbf{t},P^{-1}\mathbf{x}\>}\,d\mathbf{x} \\
+        &= \frac{1}{V_{\L}}\sum_{\mathbf{n} \in \Z^{n}}\int_{P[0,1]^{n}}f(\mathbf{x}+P\mathbf{n})e^{-2\pi i\<(P^{-1})^{t}\mathbf{t},\mathbf{x}\>}\,d\mathbf{x} \\
+        &= \frac{1}{V_{\L}}\int_{\R^{n}}f(\mathbf{x})e^{-2\pi i\<(P^{-1})^{t}\mathbf{t},\mathbf{x}\>}\,d\mathbf{x} && \text{FT} \\
+        &= \frac{1}{V_{\L}}(\mc{F}f)((P^{-1})^{t}\mathbf{t}).
+      \end{align*}
+      Therefore the definition of $F_{P}(\mathbf{x})$ and its representation as a Fourier series together give
+      \[
+        \sum_{\l \in \L}f(P\mathbf{x}+\l) = \frac{1}{V_{\L}}\sum_{\mathbf{t} \in \Z^{n}}(\mc{F}f)((P^{-1})^{t}\mathbf{t})e^{2\pi i\<\mathbf{t},\mathbf{x}\>}.
+      \]
+      Changing variables $\mathbf{x} \to P^{-1}\mathbf{x}$ and using the fact $\L^{\vee} = (P^{-1})^{t}\Z^{n}$ results in
+      \[
+        \sum_{\l \in \L}f(\mathbf{x}+\l) = \frac{1}{V_{\L}}\sum_{\l^{\vee} \in \L^{\vee}}(\mc{F}f)(\l^{\vee})e^{2\pi i\<\l^{\vee},\mathbf{x}\>}.
+      \]
+      This proves the first statement. Setting $\mathbf{x} = \mathbf{0}$ proves the second statement.
+    \end{proof}
+
+    For convenience, we state the Poisson summation formula in the simplified case for the self-dual lattice $\L = \Z^{n}$ as a corollary since it is how the Poisson summation formula is usually applied:
+
+    \begin{corollary}
+      Suppose $f(\mathbf{x})$ is absolutely integrable on $\R^{n}$, and the function
       \[
         F(\mathbf{x}) = \sum_{\mathbf{n} \in \Z^{n}}f(\mathbf{x}+\mathbf{n}),
       \]
       is locally absolutely uniformly convergent and smooth. Then
       \[
-        \sum_{\mathbf{n} \in \Z^{n}}f(\mathbf{x}+\mathbf{n}) = \sum_{\mathbf{t} \in \Z^{n}}(\mc{F}f)(\mathbf{t})e^{2\pi i\<\mathbf{t},\mathbf{x}\>}.
+        \sum_{\mathbf{n} \in \Z^{n}}f(\mathbf{x}+\mathbf{n}) = \sum_{\mathbf{t} \in \Z^{n}}(\mc{F}f)(\mathbf{t})e^{2\pi i\<\mathbf{t},\mathbf{x}\>},
       \]
-      In particular,
+      and
       \[
         \sum_{\mathbf{n} \in \Z^{n}}f(\mathbf{n}) = \sum_{\mathbf{t} \in \Z^{n}}(\mc{F}f)(\mathbf{t}).
       \]
-    \end{theorem}
+    \end{corollary}
     \begin{proof}
-      By assumption $F(\mathbf{x})$ is smooth and it is clearly $1$-periodic in each component. Therefore it admits a Fourier series. We compute the $\mathbf{t}$-th Fourier coefficient of $F(\mathbf{x})$ as follows:
-      \begin{align*}
-        \hat{F}(\mathbf{t}) &= \int_{[0,1]^{n}}F(\mathbf{x})e^{-2\pi i\<\mathbf{t},\mathbf{x}\>}\,d\mathbf{x} \\
-        &= \int_{[0,1]^{n}}\sum_{\mathbf{n} \in \Z^{n}}f(\mathbf{x}+\mathbf{n})e^{-2\pi i\<\mathbf{t},\mathbf{x}\>}\,d\mathbf{x} \\
-        &= \sum_{\mathbf{n} \in \Z^{n}}\int_{[0,1]^{n}}f(\mathbf{x}+\mathbf{n})e^{-2\pi i\<\mathbf{t},\mathbf{x}\>}\,d\mathbf{x} && \text{FT} \\
-        &= \sum_{\mathbf{n} \in \Z^{n}}\int_{\mathbf{n}+[0,1]^{n}}f(\mathbf{x})e^{-2\pi i\<\mathbf{t},\mathbf{x}\>}\,d\mathbf{x} \\
-        &= \int_{\R^{n}}f(\mathbf{x})e^{-2\pi i\<\mathbf{t},\mathbf{x}\>}\,d\mathbf{x} && \text{FT} \\
-        &= (\mc{F}f)(\mathbf{t}).
-      \end{align*}
-      Therefore the Fourier series of $F(\mathbf{x})$ is
-      \[
-        F(\mathbf{x}) = \sum_{\mathbf{t} \in \Z^{n}}(\mc{F}f)(\mathbf{t})e^{2\pi i\<\mathbf{t},\mathbf{x}\>}.
-      \]
-      and the first statement follows by the definition of $F(\mathbf{x})$. Setting $\mathbf{x} = \mathbf{0}$ proves the second statement.
+      This is the Poisson summation formula when $\L = \Z^{n}$ since $\Z^{n}$ is self-dual.
     \end{proof}
 
     In practical settings, we need a class of functions $f(\mathbf{x})$ for which the assumptions of the Poisson summation formula hold. We say that $f(\mathbf{x})$ is of \textbf{Schwarz class}\index{Schwarz class} if $f \in C^{\infty}(\R^{n})$ and $f(\mathbf{x})$ along with all of its partial derivatives have rapid decay. If $f(\mathbf{x})$ is of Schwarz class, the rapid decay implies that $f(\mathbf{x})$ and all of its derivatives are absolutely integrable over $\R^{n}$. Moreover, this also implies that $F(\mathbf{x})$ and all of its derivatives are locally absolutely uniformly convergent by the Weierstrass $M$-test. The uniform limit theorem then implies $F(\mathbf{x})$ is smooth and thus the conditions of the Poisson summation formula are satisfied. A classical example of a Schwarz class function is $e^{-||\mathbf{x}||^{2}}$.
