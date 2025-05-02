@@ -814,7 +814,7 @@
       \[
         L(s,f \ox g) = \sum_{n \ge 1}\frac{a_{f \ox g}(n)}{n^{s}} = \z(2s)L(s,f \x g),
       \]
-      where $a_{f \ox g}(n) = \sum_{n = m\ell^{2}}a_{f}(m)\conj{a_{g}(m)}$. Since $a_{f}(n) \ll_{\e} n^{\e}$ and $a_{g}(n) \ll_{\e} n^{\e}$, $a_{f \x g}(n) \ll_{\e} n^{\e}$ as well. Hence $L(s,f \x g)$ is locally absolutely uniformly convergent for $\s > 1$. Since $\z(2s)$ is also locally absolutely uniformly convergent in this region, the same follows for $L(s,f \x g)$ too. The $L$-function $L(s,f \x g)$ will also have an Euler product. To see this, let $\a_{j}(p)$ and $\b_{\ell}(p)$ be the local roots at $p$ of $L(s,f)$ and $L(s,g)$ respectively. Since $L(s,f \ox g)$ converges absolutely in the region $\s > 1$, multiplicativity of the Hecke eigenvalues implies
+      where $a_{f \ox g}(n) = \sum_{n = m\ell^{2}}a_{f}(m)\conj{a_{g}(m)}$. Our primary aim will be to show that $L(s,f \ox g)$ is the Rankin-Selberg convolution of $L(s,f)$ and $L(s,g)$ and is a Selberg class $L$-function. Since $a_{f}(n) \ll_{\e} n^{\e}$ and $a_{g}(n) \ll_{\e} n^{\e}$, $a_{f \x g}(n) \ll_{\e} n^{\e}$ as well. Hence $L(s,f \x g)$ is locally absolutely uniformly convergent for $\s > 1$. Since $\z(2s)$ is also locally absolutely uniformly convergent in this region, the same follows for $L(s,f \x g)$ too. The $L$-function $L(s,f \x g)$ will also have an Euler product. To see this, let $\a_{j}(p)$ and $\b_{\ell}(p)$ be the local roots at $p$ of $L(s,f)$ and $L(s,g)$ respectively. Since $L(s,f \ox g)$ converges absolutely in the region $\s > 1$, multiplicativity of the Hecke eigenvalues implies
       \[
         L(s,f \ox g) = \z(2s)L(s,f \x g) = \prod_{p \nmid NM}(1-p^{-2s})^{-1}\prod_{p}\left(\sum_{n \ge 0}\frac{a_{f}(p^{n})\conj{a_{g}(p^{n})}}{p^{ns}}\right),
       \]
@@ -893,7 +893,7 @@
         L(s,f \x g) =  \frac{(4\pi)^{s+k-1}}{\G(s+k-1)}\int_{\mc{F}}f(z)\conj{g(z)}\Im(z)^{k}E(z,s)\,d\mu.
       \end{equation}
       We cannot investigate the integral any further until we understand the Fourier-Whittaker series of $E(z,s)$ and have a functional equation as $s \to 1-s$. Therefore we will take a necessary detour and return to the integral after.
-    \subsection*{The Integral Representation: Part II}
+    \subsection*{Explicit Fourier-Whittaker Series of Eisenstein Series}
       We will compute the Fourier-Whittaker series of $E(z,s)$. To do this we will need the following technical lemma:
 
       \begin{lemma}\label{lem:Ramanujan_zeta_relation}
@@ -1056,7 +1056,7 @@
       \end{proof}
 
       This completes our study of $E(z,s)$.
-    \subsection*{The Integral Representation: Part III}
+    \subsection*{The Integral Representation: Part II}
       We can now continue with the Rankin-Selberg convolution $L(s,f \ox g)$. Writing \cref{equ:Rankin-Selberg_integral-reresentation} in terms of $E^{\ast}(z,s)$ and $L(s,f \ox g)$ results in the integral representation
       \[
         L(s,f \ox g) = \frac{(4\pi)^{s+k-1}\pi^{s}}{\G(s+k-1)\G(s)}\int_{\mc{F}}f(z)\conj{g(z)}\Im(z)^{k}E^{\ast}(z,s)\,d\mu.
@@ -1128,7 +1128,7 @@
       Notice that if $f = g$, then $\<f,f\> \neq 0$ and therefore the residue at $s = 1$ is not zero and hence not a removable singularity. Actually, this is the only instance in which there is a pole since \cref{thm:newforms_characterization_holomorphic} implies that the primitive Hecke eigenforms are orthogonal so that $\<f,g\> = 0$ unless $f = g$. We summarize all of our work into the following theorem:
 
       \begin{theorem}
-        For any two primitive Hecke eigenforms $f,g \in \mc{S}_{k}(1)$, $L(s,f \ox g)$ is a Selberg class $L$-function. For $\s > 1$, it has a degree $4$ Euler product given by
+        For any two primitive Hecke eigenforms $f,g \in \mc{S}_{k}(1)$, $L(s,f \ox g)$ is the Rankin-Selberg convolution of $L(s,f)$ and $L(s,g)$ and is a Selberg class $L$-function. For $\s > 1$, it has a degree $4$ Euler product given by
         \[
           L(s,f \ox g) = \prod_{p}\left(\sum_{n \ge 0}\frac{a_{f}(p^{n})\conj{a_{g}(p^{n})}}{p^{ns}}\right).
         \]
@@ -1138,8 +1138,8 @@
         \]
         and there is simple pole at $s = 1$ of residue $\frac{4^{k}\pi^{k+1}V}{2\G(k)}\<f,g\>$ provided $f = g$.
       \end{theorem}
-    \subsection*{The Rankin-Selberg Method}
-      The Rankin-Selberg method is much more complicated in general, but the argument is essentially the same. Let $f$ and $g$ both be primitive Hecke or Heck-Maass eigenforms with Fourier or Fourier-Whittaker coefficients $a_{f}(n)$ and $a_{g}(n)$ respectively. We suppose $f$ has weight $k$/type $\nu$, level $N$, and character $\chi$, and $g$ has weight $\ell$/type $\eta$, level $M$, and character $\psi$. 
+    \subsection*{Beyond Level \texorpdfstring{$1$}{1}}
+      The Rankin-Selberg method is much more complicated for arbitrary primitive Hecke or Hecke-Maass eigenforms, but the argument is essentially the same. Let $f$ and $g$ both be primitive Hecke or Heck-Maass eigenforms with Fourier or Fourier-Whittaker coefficients $a_{f}(n)$ and $a_{g}(n)$ respectively. We suppose $f$ has weight $k$/type $\nu$, level $N$, and character $\chi$, and $g$ has weight $\ell$/type $\eta$, level $M$, and character $\psi$. 
       The $L$-function $L(s,f \x g)$ of $f$ and $g$ is given by the $L$-series
       \[
         L(s,f \x g) = \sum_{n \ge 1}\frac{a_{f \x g}(n)}{n^{s}} = \sum_{n \ge 1}\frac{a_{f}(n)\conj{a_{g}(n)}}{n^{s}}.
@@ -1148,19 +1148,19 @@
       \[
         L(s,f \ox g) = \sum_{n \ge 1}\frac{a_{f \ox g}(n)}{n^{s}} = L(2s,\chi\conj{\psi})L(s,f \x g),
       \]
-      where $a_{f \ox g}(n) = \sum_{n = m\ell^{2}}\chi\conj{\psi}(\ell^{2})a_{f}(m)\conj{a_{g}(m)}$. The following is the \textbf{Rankin-Selberg method}\index{Rankin-Selberg method} (see \todo{cite} for a proof):
+      where $a_{f \ox g}(n) = \sum_{n = m\ell^{2}}\chi\conj{\psi}(\ell^{2})a_{f}(m)\conj{a_{g}(m)}$. The following generalization was obtained by Jacquet in the 1970's as a consequence of a more general framework (see \cite{jacquet1970automorphic,jacquet1972automorphic}):
 
-      \begin{theorem}[Rankin-Selberg method]
+      \begin{theorem}\label{thm:generalization_Rankin_Selberg_method}
         Let $f$ and $b$ both be primitive Hecke or Heck-Maass eigenforms. Also suppose the following: 
         \begin{enumerate}[label=(\roman*)]
           \item $f$ has weight $k$/type $\nu$, level $N$, and character $\chi$.
           \item $g$ has weight $\ell$/type $\eta$, level $M$, and character $\psi$.
           \item The Ramanujan-Petersson conjecture for Maass forms holds if $f$ or $g$ are Heck-Maass eigenforms.
         \end{enumerate}
-        Then the Rankin-Selberg convolution $L(s,f \ox g)$ is a Selberg class $L$-function.
+        Then $L(s,f \ox g)$ is the Rankin-Selberg convolution of $L(s,f)$ and $L(s,g)$ and is a Selberg class $L$-function.
       \end{theorem}
 
-      We make a few remarks about the Rankin-Selberg method. Local absolute uniform convergence for $\s > 1$ are proved in the exactly the same way as we have described. The argument for the Euler product is also similar. However, if either $N > 1$ or $M > 1$, the computation becomes more difficult since the local factors at $p$ for $p \mid NM$ change. Moreover, the situation is increasingly complicated if $(N,M) > 1$ since conductor dropping can occur. The integral representation has a similar argument, but if the weights/types are distinct the resulting Eisenstein series becomes more complicated. In particular, the Eisenstein series is on $\G_{0}(NM)\backslash\H$ and if $NM > 1$, then there is more than just the cusp at $\infty$. Therefore the functional equation of the Eisenstein series at the $\infty$ cusp will reflect into a linear combination of Eisenstein series at the other cusps. This requires the Fourier-Whittaker series of all of these Eisenstein series. Moreover, this procedure can be generalized to remove the primitive Hecke and/or primitive Hecke-Maass eigenform conditions by taking linear combinations, but we won't attempt discussing this further. 
+      We make a few remarks about how \cref{thm:generalization_Rankin_Selberg_method} could be proved analogously to the case of two holomorphic cusp forms of level $1$. Local absolute uniform convergence for $\s > 1$ are proved in the exactly the same way as we have described. The argument for the Euler product is also similar. However, if either $N > 1$ or $M > 1$, the computation becomes more difficult since the local factors at $p$ for $p \mid NM$ change. Moreover, the situation is increasingly complicated if $(N,M) > 1$ since conductor dropping can occur. The integral representation has a similar argument, but if the weights/types are distinct the resulting Eisenstein series becomes more complicated. In particular, the Eisenstein series is on $\G_{0}(NM)\backslash\H$ and if $NM > 1$, then there is more than just the cusp at $\infty$. Therefore the functional equation of the Eisenstein series at the $\infty$ cusp will reflect into a linear combination of Eisenstein series at the other cusps. This requires the Fourier-Whittaker series of all of these Eisenstein series. Moreover, this procedure can be generalized to remove the primitive Hecke and/or primitive Hecke-Maass eigenform conditions by taking linear combinations, but we won't attempt discussing this further. 
   \section{Applications of the Rankin-Selberg Method}
     \subsection*{The Ramanujan-Petersson Conjecture on Average}
       Let $f$ be a Hecke or Hecke-Maass eigenform. Using Rankin-Selberg convolutions, it is possible to show the weaker result that $a_{f}(n) \ll_{\e} n^{\e}$ holds on average without assuming the corresponding Ramanujan-Petersson conjecture:
