@@ -40,7 +40,7 @@
       \begin{equation}\label{equ:integral_representation_zeta_1}
         \z(s) = \frac{\pi^{\frac{s}{2}}}{\G\left(\frac{s}{2}\right)}\int_{0}^{\infty}\w(iy)y^{\frac{s}{2}}\,\frac{dy}{y}.
       \end{equation}
-      Unfortunately, we cannot proceed until we obtain a functional equation for $\w(z)$. So we will make a slight detour and come back to the integral representation after.
+      Unfortunately, we cannot proceed until we obtain a functional equation for $\w(z)$. So we will make a detour and come back to the integral representation after.
     \subsection*{The Jacobi Theta Function}
       The \textbf{Jacobi theta function}\index{Jacobi theta function} $\vt(z)$ is defined by
       \[
@@ -61,11 +61,11 @@
       \begin{proof}
         By the identity theorem it suffices to verify this for $z = iy$ with $y > 0$. So set $f(x) = e^{-2\pi x^{2}y}$. Then $f(x)$ is of Schwarz class. We compute its Fourier transform:
         \[
-          (\mc{F}f)(t) = \int_{\R}f(x)e^{-2\pi itx}\,dx = \int_{\R}e^{-2\pi x^{2}y}e^{-2\pi itx}\,dx = \int_{\R}e^{-2\pi(x^{2}y+itx)}\,dx.
+          (\mc{F}f)(t) = \int_{-\infty}^{\infty}f(x)e^{-2\pi itx}\,dx = \int_{-\infty}^{\infty}e^{-2\pi x^{2}y}e^{-2\pi itx}\,dx = \int_{-\infty}^{\infty}e^{-2\pi(x^{2}y+itx)}\,dx.
         \]
         Making the change of variables $x \to \frac{x}{\sqrt{y}}$, the last integral above becomes
         \[
-          \frac{1}{\sqrt{y}}\int_{\R}e^{-2\pi\left(x^{2}+\frac{itx}{\sqrt{y}}\right)}.
+          \frac{1}{\sqrt{y}}\int_{-\infty}^{\infty}e^{-2\pi\left(x^{2}+\frac{itx}{\sqrt{y}}\right)}.
         \]
         Complete the square in the exponent by noticing
         \[
@@ -73,11 +73,11 @@
         \]
         Taking exponentials, this implies that the previous integral is equal to
         \[
-          \frac{e^{-\frac{\pi t^{2}}{2y}}}{\sqrt{y}}\int_{\R}e^{-2\pi\left(x+\frac{it}{2\sqrt{y}}\right)^{2}}\,dx.
+          \frac{e^{-\frac{\pi t^{2}}{2y}}}{\sqrt{y}}\int_{-\infty}^{\infty}e^{-2\pi\left(x+\frac{it}{2\sqrt{y}}\right)^{2}}\,dx.
         \]
         The change of variables $x \to \frac{x}{\sqrt{2}}-\frac{it}{2\sqrt{y}}$ is permitted without affecting the line of integration by viewing the integral as a complex integral, noting that the integrand is entire as a complex function, and shifting the line of integration. This gives
         \[
-          \frac{e^{-\frac{\pi t^{2}}{2y}}}{\sqrt{2y}}\int_{\R}e^{-\pi x^{2}}\,dx = \frac{e^{-\frac{\pi t^{2}}{2y}}}{\sqrt{2y}},
+          \frac{e^{-\frac{\pi t^{2}}{2y}}}{\sqrt{2y}}\int_{-\infty}^{\infty}e^{-\pi x^{2}}\,dx = \frac{e^{-\frac{\pi t^{2}}{2y}}}{\sqrt{2y}},
         \]
         where the last equality follows because the last integral above is $1$ since it is the Gaussian integral (see \cref{append:Special_Integrals}). Thus
         \[
@@ -202,39 +202,39 @@
       \]
       with local root $0$ or $\chi(p)$ respectively and according to if $p \mid q$ or not. As the degree of $L(s,\chi)$ is $1$, it will necessarily be primitive once we show it is Selberg class.
     \subsection*{The Integral Representation: Part I}
-      The integral representation for $L(s,\chi)$ is deduced in a similar way as for $\z(s)$. However, it will depend on if $\chi$ is even or odd. To handle both cases simultaneously let $\mf{a} = 0,1$ according to whether $\chi$ is even or odd. In other words,
+      The integral representation for $L(s,\chi)$ is deduced in a similar way as for $\z(s)$. However, it will depend on if $\chi$ is even or odd. To handle both cases simultaneously let $\d_{\chi} = 0,1$ according to whether $\chi$ is even or odd. In other words,
       \[
-        \mf{a} = \frac{\chi(1)-\chi(-1)}{2}.
+        \d_{\chi} = \frac{\chi(1)-\chi(-1)}{2}.
       \]
-      We also have $\chi(-1) = (-1)^{\mf{a}}$. Note that $\mf{a}$ takes the same value for both $\chi$ and $\cchi$. To find an integral representation for $L(s,\chi)$, consider the function
+      We also have $\chi(-1) = (-1)^{\d_{\chi}}$. Note that $\d_{\chi}$ takes the same value for both $\chi$ and $\cchi$. To find an integral representation for $L(s,\chi)$, consider the function
       \[
-        \w_{\chi}(z) = \sum_{n \ge 1}\chi(n)n^{\mf{a}}e^{\pi in^{2}z},
+        \w_{\chi}(z) = \sum_{n \ge 1}\chi(n)n^{\d_{\chi}}e^{\pi in^{2}z},
       \]
-      defined for $z \in \H$. It is locally absolutely uniformly convergent in this region by the ratio and Weierstrass $M$-tests. Moreover, the Taylor series of $\frac{e^{y}}{1-e^{y}}$ and its derivative together give
+      defined for $z \in \H$. It is locally absolutely uniformly convergent in this region by the ratio and Weierstrass $M$-tests. Moreover, the Taylor series of the derivative of $\frac{e^{y}}{1-e^{y}}$ gives
       \[
         \w_{\chi}(z) = O\left(\sum_{n \ge 1}ne^{-\pi n^{2}y}\right) = O\left(\sum_{n \ge 1}ne^{-\pi ny}\right) = O(e^{-\pi y}),
       \]
       and so $\w_{\chi}(z)$ exhibits rapid decay. Now consider the following Mellin transform:
       \[
-        \int_{0}^{\infty}\w_{\chi}(iy)y^{\frac{s+\mf{a}}{2}}\,\frac{dy}{y}.
+        \int_{0}^{\infty}\w_{\chi}(iy)y^{\frac{s+\d_{\chi}}{2}}\,\frac{dy}{y}.
       \]
       By the rapid decay of $w_{\chi}$, this integral is locally absolutely uniformly convergent for $\s > 1$ and hence defines an analytic function there. Then we compute
       \begin{align*}
-        \int_{0}^{\infty}\w_{\chi}(iy)y^{\frac{s+\mf{a}}{2}}\,\frac{dy}{y} &= \int_{0}^{\infty}\sum_{n \ge 1}\chi(n)n^{\mf{a}}e^{-\pi n^{2}y}y^{\frac{s+\mf{a}}{2}}\,\frac{dy}{y} \\
-        &= \sum_{n \ge 1}\int_{0}^{\infty}\chi(n)n^{\mf{a}}e^{-\pi n^{2}y}y^{\frac{s+\mf{a}}{2}}\,\frac{dy}{y} && \text{FT} \\
-        &= \sum_{n \ge 1}\frac{\chi(n)}{\pi^{\frac{s+\mf{a}}{2}}n^{s}}\int_{0}^{\infty}e^{-y}y^{\frac{s+\mf{a}}{2}}\,\frac{dy}{y} && \text{$y \to \frac{y}{\pi n^{2}}$} \\
-        &= \frac{\G\left(\frac{s+\mf{a}}{2}\right)}{\pi^{\frac{s+\mf{a}}{2}}}\sum_{n \ge 1}\frac{\chi(n)}{n^{s}} \\
-        &= \frac{\G\left(\frac{s+\mf{a}}{2}\right)}{\pi^{\frac{s+\mf{a}}{2}}}L(s,\chi).
+        \int_{0}^{\infty}\w_{\chi}(iy)y^{\frac{s+\d_{\chi}}{2}}\,\frac{dy}{y} &= \int_{0}^{\infty}\sum_{n \ge 1}\chi(n)n^{\d_{\chi}}e^{-\pi n^{2}y}y^{\frac{s+\d_{\chi}}{2}}\,\frac{dy}{y} \\
+        &= \sum_{n \ge 1}\int_{0}^{\infty}\chi(n)n^{\d_{\chi}}e^{-\pi n^{2}y}y^{\frac{s+\d_{\chi}}{2}}\,\frac{dy}{y} && \text{FT} \\
+        &= \sum_{n \ge 1}\frac{\chi(n)}{\pi^{\frac{s+\d_{\chi}}{2}}n^{s}}\int_{0}^{\infty}e^{-y}y^{\frac{s+\d_{\chi}}{2}}\,\frac{dy}{y} && \text{$y \to \frac{y}{\pi n^{2}}$} \\
+        &= \frac{\G\left(\frac{s+\d_{\chi}}{2}\right)}{\pi^{\frac{s+\d_{\chi}}{2}}}\sum_{n \ge 1}\frac{\chi(n)}{n^{s}} \\
+        &= \frac{\G\left(\frac{s+\d_{\chi}}{2}\right)}{\pi^{\frac{s+\d_{\chi}}{2}}}L(s,\chi).
       \end{align*}
       Therefore we have an integral representation
       \begin{equation}\label{equ:integral_representation_Dirichlet_L-functions_1}
-        L(s,\chi) = \frac{\pi^{\frac{s+\mf{a}}{2}}}{\G\left(\frac{s+\mf{a}}{2}\right)}\int_{0}^{\infty}\w_{\chi}(iy)y^{\frac{s+\mf{a}}{2}}\,\frac{dy}{y},
+        L(s,\chi) = \frac{\pi^{\frac{s+\d_{\chi}}{2}}}{\G\left(\frac{s+\d_{\chi}}{2}\right)}\int_{0}^{\infty}\w_{\chi}(iy)y^{\frac{s+\d_{\chi}}{2}}\,\frac{dy}{y},
       \end{equation}
       and just as for the Riemann zeta function, we need to find a functional equation for $\w_{\chi}(z)$ before we can proceed.
     \subsection*{The Dirichlet Theta Function}
       The \textbf{Dirichlet theta function}\index{Dirichlet theta function} $\vt_{\chi}(z)$ attached to the character $\chi$, is defined by
       \[
-        \vt_{\chi}(z) = \sum_{n \in \Z}\chi(n)n^{\mf{a}}e^{2\pi in^{2}z},
+        \vt_{\chi}(z) = \sum_{n \in \Z}\chi(n)n^{\d_{\chi}}e^{2\pi in^{2}z},
       \]
       for $z \in \H$. The relationship to $\w_{\chi}(z)$ is
       \begin{equation}\label{equ:twisted_omega_theta_relationship_for_Dirichlet_L-functions}
@@ -251,21 +251,21 @@
       \begin{theorem}\label{thm:transformation_law_Dirichlet_theta}
         Let $\chi$ be a primitive Dirichlet character of conductor $q > 1$. For $z \in \H$,
         \[
-          \vt_{\chi}(z) = \frac{\e_{\chi}}{i^{\mf{a}}(-2qiz)^{\frac{1}{2}+\mf{a}}}\vt_{\cchi}\left(-\frac{1}{4q^{2}z}\right).
+          \vt_{\chi}(z) = \frac{\e_{\chi}}{i^{\d_{\chi}}(-2qiz)^{\frac{1}{2}+\d_{\chi}}}\vt_{\cchi}\left(-\frac{1}{4q^{2}z}\right).
         \]
       \end{theorem}
       \begin{proof}
         By the identity theorem it suffices to verify this for $z = iy$ with $y > 0$. Since $\chi$ is $q$-periodic and $\vt_{\chi}(z)$ is absolutely convergent, we can write
         \[
-          \vt_{\chi}(iy) = \sum_{a \tmod{q}}\chi(a)\sum_{m \in \Z}(mq+a)^{\mf{a}}e^{-2\pi(mq+a)^{2}y}.
+          \vt_{\chi}(iy) = \sum_{a \tmod{q}}\chi(a)\sum_{m \in \Z}(mq+a)^{\d_{\chi}}e^{-2\pi(mq+a)^{2}y}.
         \]
-        Set $f(x) = (xq+a)^{\mf{a}}e^{-2\pi(xq+a)^{2}y}$. Then $f(x)$ is of Schwarz class. We compute its Fourier transform:
+        Set $f(x) = (xq+a)^{\d_{\chi}}e^{-2\pi(xq+a)^{2}y}$. Then $f(x)$ is of Schwarz class. We compute its Fourier transform:
         \[
-          (\mc{F}f)(t) = \int_{\R}f(x)e^{-2\pi itx}\,dx = \int_{\R}(xq+a)^{\mf{a}}e^{-2\pi(xq+a)^{2}y}e^{-2\pi itx}\,dx = \int_{\R}(xq+a)^{\mf{a}}e^{-2\pi((xq+a)^{2}y+itx)}\,dx.
+          (\mc{F}f)(t) = \int_{-\infty}^{\infty}f(x)e^{-2\pi itx}\,dx = \int_{-\infty}^{\infty}(xq+a)^{\d_{\chi}}e^{-2\pi(xq+a)^{2}y}e^{-2\pi itx}\,dx = \int_{-\infty}^{\infty}(xq+a)^{\d_{\chi}}e^{-2\pi((xq+a)^{2}y+itx)}\,dx.
         \]
         By performing the change of variables $x \to \frac{x}{q\sqrt{y}}-\frac{a}{q}$, the last integral above becomes
         \[
-          \frac{e^{\frac{2\pi iat}{q}}}{qy^{\frac{1+\mf{a}}{2}}}\int_{\R}x^{\mf{a}}e^{-2\pi\left(x^{2}+\frac{itx}{q\sqrt{y}}\right)}\,dx.
+          \frac{e^{\frac{2\pi iat}{q}}}{qy^{\frac{1+\d_{\chi}}{2}}}\int_{-\infty}^{\infty}x^{\d_{\chi}}e^{-2\pi\left(x^{2}+\frac{itx}{q\sqrt{y}}\right)}\,dx.
         \]
         Complete the square in the exponent by observing
         \[
@@ -273,37 +273,37 @@
         \]
         Taking exponentials, this implies that the previous integral is equal to
         \[
-          \frac{e^{\frac{2\pi iat}{q}-\frac{\pi t^{2}}{2q^{2}y}}}{qy^{\frac{1+\mf{a}}{2}}}\int_{\R}x^{\mf{a}}e^{-2\pi\left(x+\frac{it}{2q\sqrt{y}}\right)^{2}}\,dx.
+          \frac{e^{\frac{2\pi iat}{q}-\frac{\pi t^{2}}{2q^{2}y}}}{qy^{\frac{1+\d_{\chi}}{2}}}\int_{-\infty}^{\infty}x^{\d_{\chi}}e^{-2\pi\left(x+\frac{it}{2q\sqrt{y}}\right)^{2}}\,dx.
         \]
         The change of variables $x \to \frac{x}{\sqrt{2}}-\frac{it}{2q\sqrt{y}}$ is permitted without affecting the line of integration by viewing the integral as a complex integral, noting that the integrand is entire as a complex function, and shifting the line of integration. This gives
         \[
-          \frac{e^{\frac{2\pi iat}{q}-\frac{\pi t^{2}}{2q^{2}y}}}{\sqrt{2}qy^{\frac{1+\mf{a}}{2}}}\int_{\R}\left(\frac{x}{\sqrt{2}}-\frac{it}{2q\sqrt{y}}\right)^{\mf{a}}e^{-\pi x^{2}}\,dx = \frac{e^{\frac{2\pi iat}{q}-\frac{\pi t^{2}}{2q^{2}y}}}{\sqrt{2}qy^{\frac{1+\mf{a}}{2}}}\int_{\R}\left(\frac{x}{\sqrt{2}}+\frac{t}{2qi\sqrt{y}}\right)^{\mf{a}}e^{-\pi x^{2}}\,dx.
+          \frac{e^{\frac{2\pi iat}{q}-\frac{\pi t^{2}}{2q^{2}y}}}{\sqrt{2}qy^{\frac{1+\d_{\chi}}{2}}}\int_{-\infty}^{\infty}\left(\frac{x}{\sqrt{2}}-\frac{it}{2q\sqrt{y}}\right)^{\d_{\chi}}e^{-\pi x^{2}}\,dx = \frac{e^{\frac{2\pi iat}{q}-\frac{\pi t^{2}}{2q^{2}y}}}{\sqrt{2}qy^{\frac{1+\d_{\chi}}{2}}}\int_{-\infty}^{\infty}\left(\frac{x}{\sqrt{2}}+\frac{t}{2qi\sqrt{y}}\right)^{\d_{\chi}}e^{-\pi x^{2}}\,dx.
         \]
-        If $\mf{a} = 0$, we obtain
+        If $\d_{\chi} = 0$, we obtain
         \begin{equation}\label{transformation_law_for_twisted_Jacobi_theta_function_1}
-          \frac{e^{\frac{2\pi iat}{q}-\frac{\pi t^{2}}{2q^{2}y}}}{\sqrt{2}qy^{\frac{1+\mf{a}}{2}}}\int_{\R}e^{-\pi x^{2}}\,dx = \frac{e^{\frac{2\pi iat}{q}-\frac{\pi t^{2}}{2q^{2}y}}}{\sqrt{2}qy^{\frac{1+\mf{a}}{2}}},
+          \frac{e^{\frac{2\pi iat}{q}-\frac{\pi t^{2}}{2q^{2}y}}}{\sqrt{2}qy^{\frac{1+\d_{\chi}}{2}}}\int_{-\infty}^{\infty}e^{-\pi x^{2}}\,dx = \frac{e^{\frac{2\pi iat}{q}-\frac{\pi t^{2}}{2q^{2}y}}}{\sqrt{2}qy^{\frac{1+\d_{\chi}}{2}}},
         \end{equation}
-        where the equality holds because the integral is $1$ since it is the Gaussian integral (see \cref{append:Special_Integrals}). If $\mf{a} = 1$, then by direct computation
+        where the equality holds because the integral is $1$ since it is the Gaussian integral (see \cref{append:Special_Integrals}). If $\d_{\chi} = 1$, then by direct computation
         \[
-          \int_{\R}\frac{x}{\sqrt{2}}e^{-\pi x^{2}}\,dx = -\frac{1}{\sqrt{8}\pi}e^{-\pi x^{2}}\bigg|_{-\infty}^{\infty} = 0,
+          \int_{-\infty}^{\infty}\frac{x}{\sqrt{2}}e^{-\pi x^{2}}\,dx = -\frac{1}{\sqrt{8}\pi}e^{-\pi x^{2}}\bigg|_{-\infty}^{\infty} = 0,
         \]
         and
         \begin{equation}\label{transformation_law_for_twisted_Jacobi_theta_function_2}
-          \frac{e^{\frac{2\pi iat}{q}-\frac{\pi t^{2}}{2q^{2}y}}}{\sqrt{2}qy^{\frac{1+\mf{a}}{2}}}\int_{\R}\left(\frac{t}{2qi\sqrt{y}}\right)e^{-\pi x^{2}}\,dx = \frac{e^{\frac{2\pi iat}{q}-\frac{\pi t^{2}}{2q^{2}y}}}{\sqrt{2}qy^{\frac{1+\mf{a}}{2}}}\left(\frac{t}{2qi\sqrt{y}}\right)\int_{\R}e^{-\pi x^{2}}\,dx = \frac{e^{\frac{2\pi iat}{q}-\frac{\pi t^{2}}{2q^{2}y}}}{\sqrt{2}qy^{\frac{1+\mf{a}}{2}}}\left(\frac{t}{2qi\sqrt{y}}\right),
+          \frac{e^{\frac{2\pi iat}{q}-\frac{\pi t^{2}}{2q^{2}y}}}{\sqrt{2}qy^{\frac{1+\d_{\chi}}{2}}}\int_{-\infty}^{\infty}\left(\frac{t}{2qi\sqrt{y}}\right)e^{-\pi x^{2}}\,dx = \frac{e^{\frac{2\pi iat}{q}-\frac{\pi t^{2}}{2q^{2}y}}}{\sqrt{2}qy^{\frac{1+\d_{\chi}}{2}}}\left(\frac{t}{2qi\sqrt{y}}\right)\int_{-\infty}^{\infty}e^{-\pi x^{2}}\,dx = \frac{e^{\frac{2\pi iat}{q}-\frac{\pi t^{2}}{2q^{2}y}}}{\sqrt{2}qy^{\frac{1+\d_{\chi}}{2}}}\left(\frac{t}{2qi\sqrt{y}}\right),
         \end{equation}
-        where the last equality follows because the last integral is the Gaussian integral again. Since $\left(\frac{t}{2qi\sqrt{y}}\right)^{\mf{a}} = 1$ if $\mf{a} = 0$, \cref{transformation_law_for_twisted_Jacobi_theta_function_1,transformation_law_for_twisted_Jacobi_theta_function_2} together imply
+        where the last equality follows because the last integral is the Gaussian integral again. Since $\left(\frac{t}{2qi\sqrt{y}}\right)^{\d_{\chi}} = 1$ if $\d_{\chi} = 0$, \cref{transformation_law_for_twisted_Jacobi_theta_function_1,transformation_law_for_twisted_Jacobi_theta_function_2} together imply
         \[
-          (\mc{F}f)(t) = \frac{e^{\frac{2\pi iat}{q}-\frac{\pi t^{2}}{2q^{2}y}}}{\sqrt{2}qy^{\frac{1+\mf{a}}{2}}}\left(\frac{t}{2qi\sqrt{y}}\right)^{\mf{a}}.
+          (\mc{F}f)(t) = \frac{e^{\frac{2\pi iat}{q}-\frac{\pi t^{2}}{2q^{2}y}}}{\sqrt{2}qy^{\frac{1+\d_{\chi}}{2}}}\left(\frac{t}{2qi\sqrt{y}}\right)^{\d_{\chi}}.
         \]
         By the Poisson summation formula, we have
         \begin{align*}
-          \vt_{\chi}(iy) &= \sum_{a \tmod{q}}\chi(a)\sum_{t \in \Z}\frac{e^{\frac{2\pi iat}{q}-\frac{\pi t^{2}}{2q^{2}y}}}{\sqrt{2}qy^{\frac{1+\mf{a}}{2}}}\left(\frac{t}{2qi\sqrt{y}}\right)^{\mf{a}} \\
-          &= \frac{1}{i^{\mf{a}}q^{1+\mf{a}}(2y)^{\frac{1}{2}+\mf{a}}}\sum_{a \tmod{q}}\chi(a)\sum_{t \in \Z}t^{\mf{a}}e^{\frac{2\pi iat}{q}-\frac{\pi t^{2}}{2q^{2}y}} \\
-          &= \frac{1}{i^{\mf{a}}q^{1+\mf{a}}(2y)^{\frac{1}{2}+\mf{a}}}\sum_{t \in \Z}t^{\mf{a}}e^{-\frac{\pi t^{2}}{2q^{2}y}}\sum_{a \tmod{q}}\chi(a)e^{\frac{2\pi i at}{q}} \\
-          &= \frac{1}{i^{\mf{a}}q^{1+\mf{a}}(2y)^{\frac{1}{2}+\mf{a}}}\sum_{t \in \Z}t^{\mf{a}}e^{-\frac{\pi t^{2}}{2q^{2}y}}\tau(t,\chi) && \text{definition of $\tau(t,\chi)$} \\
-          &= \frac{\tau(\chi)}{i^{\mf{a}}q^{1+\mf{a}}(2y)^{\frac{1}{2}+\mf{a}}}\sum_{t \in \Z}\cchi(t)t^{\mf{a}}e^{-\frac{\pi t^{2}}{2q^{2}y}} && \text{\cref{cor:gauss_sum_primitive_formula}} \\
-          &= \frac{\e_{\chi}}{i^{\mf{a}}(2qy)^{\frac{1}{2}+\mf{a}}}\sum_{t \in \Z}\cchi(t)t^{\mf{a}}e^{-\frac{\pi t^{2}}{2q^{2}y}} && \text{$\e_{\chi} = \frac{\tau(\chi)}{\sqrt{q}}$} \\
-          &=  \frac{\e_{\chi}}{i^{\mf{a}}(2qy)^{\frac{1}{2}+\mf{a}}}\vt_{\cchi}\left(-\frac{1}{4q^{2}iy}\right),
+          \vt_{\chi}(iy) &= \sum_{a \tmod{q}}\chi(a)\sum_{t \in \Z}\frac{e^{\frac{2\pi iat}{q}-\frac{\pi t^{2}}{2q^{2}y}}}{\sqrt{2}qy^{\frac{1+\d_{\chi}}{2}}}\left(\frac{t}{2qi\sqrt{y}}\right)^{\d_{\chi}} \\
+          &= \frac{1}{i^{\d_{\chi}}q^{1+\d_{\chi}}(2y)^{\frac{1}{2}+\d_{\chi}}}\sum_{a \tmod{q}}\chi(a)\sum_{t \in \Z}t^{\d_{\chi}}e^{\frac{2\pi iat}{q}-\frac{\pi t^{2}}{2q^{2}y}} \\
+          &= \frac{1}{i^{\d_{\chi}}q^{1+\d_{\chi}}(2y)^{\frac{1}{2}+\d_{\chi}}}\sum_{t \in \Z}t^{\d_{\chi}}e^{-\frac{\pi t^{2}}{2q^{2}y}}\sum_{a \tmod{q}}\chi(a)e^{\frac{2\pi i at}{q}} \\
+          &= \frac{1}{i^{\d_{\chi}}q^{1+\d_{\chi}}(2y)^{\frac{1}{2}+\d_{\chi}}}\sum_{t \in \Z}t^{\d_{\chi}}e^{-\frac{\pi t^{2}}{2q^{2}y}}\tau(t,\chi) && \text{definition of $\tau(t,\chi)$} \\
+          &= \frac{\tau(\chi)}{i^{\d_{\chi}}q^{1+\d_{\chi}}(2y)^{\frac{1}{2}+\d_{\chi}}}\sum_{t \in \Z}\cchi(t)t^{\d_{\chi}}e^{-\frac{\pi t^{2}}{2q^{2}y}} && \text{\cref{cor:gauss_sum_primitive_formula}} \\
+          &= \frac{\e_{\chi}}{i^{\d_{\chi}}(2qy)^{\frac{1}{2}+\d_{\chi}}}\sum_{t \in \Z}\cchi(t)t^{\d_{\chi}}e^{-\frac{\pi t^{2}}{2q^{2}y}} && \text{$\e_{\chi} = \frac{\tau(\chi)}{\sqrt{q}}$} \\
+          &=  \frac{\e_{\chi}}{i^{\d_{\chi}}(2qy)^{\frac{1}{2}+\d_{\chi}}}\vt_{\cchi}\left(-\frac{1}{4q^{2}iy}\right),
         \end{align*}
         and the identity theorem finishes the proof.
       \end{proof}
@@ -312,50 +312,50 @@
     \subsection*{The Integral Representation: Part II}
       Returning to $L(s,\chi)$, split the integral in \cref{equ:integral_representation_Dirichlet_L-functions_1} into two pieces
       \begin{equation}\label{equ:symmetric_integral_Dirichlet_L-functions_split}
-        \int_{0}^{\infty}\w_{\chi}(iy)y^{\frac{s+\mf{a}}{2}}\,\frac{dy}{y} = \int_{0}^{\frac{1}{q}}\w_{\chi}(iy)y^{\frac{s+\mf{a}}{2}}\,\frac{dy}{y}+\int_{\frac{1}{q}}^{\infty}\w_{\chi}(iy)y^{\frac{s+\mf{a}}{2}}\,\frac{dy}{y}.
+        \int_{0}^{\infty}\w_{\chi}(iy)y^{\frac{s+\d_{\chi}}{2}}\,\frac{dy}{y} = \int_{0}^{\frac{1}{q}}\w_{\chi}(iy)y^{\frac{s+\d_{\chi}}{2}}\,\frac{dy}{y}+\int_{\frac{1}{q}}^{\infty}\w_{\chi}(iy)y^{\frac{s+\d_{\chi}}{2}}\,\frac{dy}{y}.
       \end{equation}
       We now rewrite the first piece in the same form and symmetrize the result as much as possible. Start by performing a change of variables $y \to \frac{1}{q^{2}y}$ to the first piece to obtain
       \[
-        q^{-(s+\mf{a})}\int_{\frac{1}{q}}^{\infty}\w_{\chi}\left(\frac{i}{q^{2}y}\right)y^{-\frac{s+\mf{a}}{2}}\,\frac{dy}{y}.
+        q^{-(s+\d_{\chi})}\int_{\frac{1}{q}}^{\infty}\w_{\chi}\left(\frac{i}{q^{2}y}\right)y^{-\frac{s+\d_{\chi}}{2}}\,\frac{dy}{y}.
       \]
       Now \cref{equ:twisted_omega_theta_relationship_for_Dirichlet_L-functions,thm:transformation_law_Dirichlet_theta} together imply
       \begin{align*}
         \w_{\chi}\left(\frac{i}{q^{2}y}\right) &= \w_{\chi}\left(-\frac{1}{q^{2}iy}\right) \\
         &= \frac{\vt_{\chi}\left(-\frac{1}{2q^{2}iy}\right)}{2} \\
-        &= \frac{i^{\mf{a}}(qy)^{\frac{1}{2}+\mf{a}}}{\e_{\cchi}}\frac{\vt_{\cchi}\left(\frac{iy}{2}\right)}{2} \\
-        &= \frac{i^{\mf{a}}(qy)^{\frac{1}{2}+\mf{a}}}{\e_{\cchi}}\frac{\vt_{\cchi}\left(\frac{iy}{2}\right)}{2} \\
-        &= \e_{\chi}(-i)^{\mf{a}}(qy)^{\frac{1}{2}+\mf{a}}\frac{\vt_{\cchi}\left(\frac{iy}{2}\right)}{2} && \text{\cref{prop:epsilon_factor_relationship} and $\chi(-1) = (-1)^{\mf{a}}$} \\
-        &= \frac{\e_{\chi}(qy)^{\frac{1}{2}+\mf{a}}}{i^{\mf{a}}}\frac{\vt_{\cchi}\left(\frac{iy}{2}\right)}{2} \\
-        &= \frac{\e_{\chi}(qy)^{\frac{1}{2}+\mf{a}}}{i^{\mf{a}}}\w_{\cchi}(iy).
+        &= \frac{i^{\d_{\chi}}(qy)^{\frac{1}{2}+\d_{\chi}}}{\e_{\cchi}}\frac{\vt_{\cchi}\left(\frac{iy}{2}\right)}{2} \\
+        &= \frac{i^{\d_{\chi}}(qy)^{\frac{1}{2}+\d_{\chi}}}{\e_{\cchi}}\frac{\vt_{\cchi}\left(\frac{iy}{2}\right)}{2} \\
+        &= \e_{\chi}(-i)^{\d_{\chi}}(qy)^{\frac{1}{2}+\d_{\chi}}\frac{\vt_{\cchi}\left(\frac{iy}{2}\right)}{2} && \text{\cref{prop:epsilon_factor_relationship} and $\chi(-1) = (-1)^{\d_{\chi}}$} \\
+        &= \frac{\e_{\chi}(qy)^{\frac{1}{2}+\d_{\chi}}}{i^{\d_{\chi}}}\frac{\vt_{\cchi}\left(\frac{iy}{2}\right)}{2} \\
+        &= \frac{\e_{\chi}(qy)^{\frac{1}{2}+\d_{\chi}}}{i^{\d_{\chi}}}\w_{\cchi}(iy).
       \end{align*}
       This relation gives the first equality in the following chain:
       \begin{align*}
-        q^{-(s+\mf{a})}\int_{\frac{1}{q}}^{\infty}\w_{\chi}\left(\frac{1}{q^{2}y}\right)y^{-\frac{s+\mf{a}}{2}}\,\frac{dy}{y} &= q^{-(s+\mf{a})}\int_{\frac{1}{q}}^{\infty}\left(\frac{\e_{\chi}(qy)^{\frac{1}{2}+\mf{a}}}{i^{\mf{a}}}\w_{\cchi}(iy)\right)y^{-\frac{s+\mf{a}}{2}}\,\frac{dy}{y} \\
-        &= \frac{\e_{\chi}}{i^{\mf{a}}}q^{\frac{1}{2}-s}\int_{\frac{1}{q}}^{\infty}\w_{\cchi}(iy)y^{\frac{(1-s)+\mf{a}}{2}}\,\frac{dy}{y}.
+        q^{-(s+\d_{\chi})}\int_{\frac{1}{q}}^{\infty}\w_{\chi}\left(\frac{1}{q^{2}y}\right)y^{-\frac{s+\d_{\chi}}{2}}\,\frac{dy}{y} &= q^{-(s+\d_{\chi})}\int_{\frac{1}{q}}^{\infty}\left(\frac{\e_{\chi}(qy)^{\frac{1}{2}+\d_{\chi}}}{i^{\d_{\chi}}}\w_{\cchi}(iy)\right)y^{-\frac{s+\d_{\chi}}{2}}\,\frac{dy}{y} \\
+        &= \frac{\e_{\chi}}{i^{\d_{\chi}}}q^{\frac{1}{2}-s}\int_{\frac{1}{q}}^{\infty}\w_{\cchi}(iy)y^{\frac{(1-s)+\d_{\chi}}{2}}\,\frac{dy}{y}.
       \end{align*}
       Substituting this last expression back into \cref{equ:symmetric_integral_Dirichlet_L-functions_split} with \cref{equ:integral_representation_Dirichlet_L-functions_1} gives the integral representation
       \[
-        L(s,\chi) = \frac{\pi^{\frac{s+\mf{a}}{2}}}{\G\left(\frac{s+\mf{a}}{2}\right)}\left[\frac{\e_{\chi}}{i^{\mf{a}}}q^{\frac{1}{2}-s}\int_{\frac{1}{q}}^{\infty}\w_{\cchi}(iy)y^{\frac{(1-s)+\mf{a}}{2}}\,\frac{dy}{y}+\int_{\frac{1}{q}}^{\infty}\w_{\chi}(iy)y^{\frac{s+\mf{a}}{2}}\,\frac{dy}{y}\right].
+        L(s,\chi) = \frac{\pi^{\frac{s+\d_{\chi}}{2}}}{\G\left(\frac{s+\d_{\chi}}{2}\right)}\left[\frac{\e_{\chi}}{i^{\d_{\chi}}}q^{\frac{1}{2}-s}\int_{\frac{1}{q}}^{\infty}\w_{\cchi}(iy)y^{\frac{(1-s)+\d_{\chi}}{2}}\,\frac{dy}{y}+\int_{\frac{1}{q}}^{\infty}\w_{\chi}(iy)y^{\frac{s+\d_{\chi}}{2}}\,\frac{dy}{y}\right].
       \]
       This integral representation will give analytic continuation. Indeed, we know everything outside the brackets is entire. The integrands exhibit rapid decay and therefore the integrals are locally absolutely uniformly convergent on $\C$. This gives analytic continuation to all of $\C$. In particular, $L(s,\chi)$ has no poles.
     \subsection*{The Functional Equation}
       An immediate consequence of applying the symmetry $s \to 1-s$ to the integral representation is the following functional equation:
       \[
-        q^{\frac{s}{2}}\frac{\G\left(\frac{s+\mf{a}}{2}\right)}{\pi^{\frac{s+\mf{a}}{2}}}L(s,\chi) = \frac{\e_{\chi}}{i^{\mf{a}}}q^{\frac{1-s}{2}}\frac{\G\left(\frac{(1-s)+\mf{a}}{2}\right)}{\pi^{\frac{(1-s)+\mf{a}}{2}}}L(1-s,\cchi).
+        q^{\frac{s}{2}}\frac{\G\left(\frac{s+\d_{\chi}}{2}\right)}{\pi^{\frac{s+\d_{\chi}}{2}}}L(s,\chi) = \frac{\e_{\chi}}{i^{\d_{\chi}}}q^{\frac{1-s}{2}}\frac{\G\left(\frac{(1-s)+\d_{\chi}}{2}\right)}{\pi^{\frac{(1-s)+\d_{\chi}}{2}}}L(1-s,\cchi).
       \]
       We identify the gamma factor as
       \[
-        \g(s,\chi) = \pi^{-\frac{s}{2}}\G\left(\frac{s+\mf{a}}{2}\right),
+        \g(s,\chi) = \pi^{-\frac{s}{2}}\G\left(\frac{s+\d_{\chi}}{2}\right),
       \]
-      with $\k = \mf{a}$ the only local root at infinity. Clearly it satisfies the required bounds. The conductor is $q(\chi) = q$ and if $p$ is an unramified prime then the local root is $\chi(p) \neq 0$. The completed $L$-function is
+      with $\k = \d_{\chi}$ the only local root at infinity. Clearly it satisfies the required bounds. The conductor is $q(\chi) = q$ and if $p$ is an unramified prime then the local root is $\chi(p) \neq 0$. The completed $L$-function is
       \[
-        \L(s,\chi) = q^{\frac{s}{2}}\pi^{-\frac{s}{2}}\G\left(\frac{s+\mf{a}}{2}\right)L(s,\chi),
+        \L(s,\chi) = q^{\frac{s}{2}}\pi^{-\frac{s}{2}}\G\left(\frac{s+\d_{\chi}}{2}\right)L(s,\chi),
       \]
       with functional equation
       \[
-        \L(s,\chi) = \frac{\e_{\chi}}{i^{\mf{a}}}\L(1-s,\cchi).
+        \L(s,\chi) = \frac{\e_{\chi}}{i^{\d_{\chi}}}\L(1-s,\cchi).
       \]
-      From it we see that the root number is $\e(\chi) = \frac{\e_{\chi}}{i^{\mf{a}}}$ and that $L(s,\chi)$ has dual $L(s,\cchi)$. We now show that $L(s,\chi)$ is of order $1$. Since $L(s,\chi)$ has no poles, we do not need to clear any polar divisors. As the integrals in the integral representation are locally absolutely uniformly convergent, computing the order amounts to estimating the gamma factor. Since the reciprocal of the gamma function is of order $1$, we have
+      From it we see that the root number is $\e(\chi) = \frac{\e_{\chi}}{i^{\d_{\chi}}}$ and that $L(s,\chi)$ has dual $L(s,\cchi)$. We now show that $L(s,\chi)$ is of order $1$. Since $L(s,\chi)$ has no poles, we do not need to clear any polar divisors. As the integrals in the integral representation are locally absolutely uniformly convergent, computing the order amounts to estimating the gamma factor. Since the reciprocal of the gamma function is of order $1$, we have
       \[
         \frac{1}{\g(s,\chi)} \ll_{\e} e^{|s|^{1+\e}}.
       \]
@@ -372,7 +372,7 @@
         \]
         Moreover, it admits analytic continuation to $\C$ and possesses the functional equation
         \[
-          q^{\frac{s}{2}}\pi^{-\frac{s}{2}}\G\left(\frac{s+\mf{a}}{2}\right)L(s,\chi) = \L(s,\chi) = \frac{\e_{\chi}}{i^{\mf{a}}}\L(1-s,\cchi).
+          q^{\frac{s}{2}}\pi^{-\frac{s}{2}}\G\left(\frac{s+\d_{\chi}}{2}\right)L(s,\chi) = \L(s,\chi) = \frac{\e_{\chi}}{i^{\d_{\chi}}}\L(1-s,\cchi).
         \]
       \end{theorem}
     \subsection*{Beyond Primitivity}
@@ -420,6 +420,39 @@
       \]
       with local roots $\w_{p,i}^{k}$ and $\sum_{1 \le i \le r_{p}}(e_{p}(\mf{p}_{i})-1)f_{p}(\mf{p}_{i})$ many local roots $0$.
     \subsection*{\todo{The Integral Representation: Part I}}
+      We will find an integral representation for $\z_{K}(s)$. To do this, let $\s$ run over a complete set of representatives of the distinct real and pairs of complex $\Q$-embeddings of $K$ into $\conj{\Q}$. We will need to keep track of the real and complex $\Q$-embeddings, so let $\d_{\s} = 0,1$ according to if $\s$ is real or complex. In other words,
+      \[
+        \d_{\s} = N_{\s}-1.
+      \]
+      It will be useful to make the following conventions for any $\mathbf{z} \in \C^{r_{1}+r_{2}}$:
+      \[
+        \mathbf{z}^{\d} = (z_{\s}^{\d_{\s}})_{\s}, \quad ||\mathbf{z}||^{\d} = \prod_{\s}z_{\s}^{\d_{\s}}, \quad \text{and} \quad ||\mathbf{z}||^{N} = \prod_{\s}z_{\s}^{N_{\s}}.
+      \]
+      Consider the function
+      \[
+        \w_{K}(\mathbf{z}) = \sum_{n \ge 1}a_{K}(n)||\mathbf{n}||^{\d}e^{\pi in^{\frac{2}{d}}\<\mathbf{z},\mathbf{2}^{\d}\>},
+      \]
+      defined for $\mathbf{z} \in \H^{r_{1}+r_{2}}$ and where $\mathbf{n} = (n)_{\s}$. It is locally absolutely uniformly convergent in this region by the ratio and Weierstrass $M$-tests. Taking $\e < 1$, the bound $a_{K}(n) \ll_{\e} n^{\e}$ and the Taylor series of the $(r_{2}+1)$-st derivative of $\frac{e^{||\mathbf{y}||}}{1-e^{||\mathbf{y}||}}$ together gives
+      \[
+        \w_{K}(\mathbf{z}) = O\left(\sum_{n \ge 1}n^{r_{2}+1}e^{-\pi n^{\frac{2}{d}}||\mathbf{y}||}\right) = \todo{xxx},
+      \]
+      and so $\w_{K}(\mathbf{z})$ exhibits rapid decay. Now consider the following $(r_{1}+r_{2})$-fold Mellin transform:
+      \[
+        \int_{0}^{\infty} \cdots \int_{0}^{\infty}\w_{K}(i\mathbf{y})||\mathbf{y}||^{\frac{Ns}{2}}\,\frac{d\mathbf{y}}{\mathbf{y}}.
+      \]
+      By the rapid decay of $\w_{K}(\mathbf{z})$, this integral is locally absolutely uniformly convergent for $\s > 1$ and hence defines an analytic function there. Then we compute
+      \begin{align*}
+        \int_{0}^{\infty} \cdots \int_{0}^{\infty}\w_{K}(i\mathbf{y})||\mathbf{y}||^{\frac{Ns}{2}}\,\frac{d\mathbf{y}}{\mathbf{y}} &= \int_{0}^{\infty} \cdots \int_{0}^{\infty}\sum_{n \ge 1}a_{K}(n)||\mathbf{n}||^{\d}e^{-\pi n^{\frac{2}{d}}\<\mathbf{y},\mathbf{2}^{\d}\>}||\mathbf{y}||^{\frac{Ns}{2}}\,\frac{d\mathbf{y}}{\mathbf{y}} \\
+        &= \sum_{n \ge 1}\int_{0}^{\infty} \cdots \int_{0}^{\infty}a_{K}(n)||\mathbf{n}||^{\d}e^{-\pi n^{\frac{2}{d}}\<\mathbf{y},\mathbf{2}^{\d}\>}||\mathbf{y}||^{\frac{Ns}{2}}\,\frac{d\mathbf{y}}{\mathbf{y}} && \text{FT} \\
+        &= \sum_{n \ge 1}\frac{a_{K}(n)}{(2\pi)^{r_{2}s}\pi^{\frac{r_{1}s}{2}}n^{s}}\int_{0}^{\infty} \cdots \int_{0}^{\infty}e^{-\pi\<\mathbf{y},\mathbf{1}\>}||\mathbf{y}||^{\frac{Ns}{2}}\,\frac{d\mathbf{y}}{\mathbf{y}} && \text{$\mathbf{y} \to \frac{\mathbf{y}}{\mathbf{2}^{\d}\pi\mathbf{n}^{\frac{2}{d}}}$} \\
+        &= \frac{\G\left(\frac{s}{2}\right)^{r_{1}}\G\left(s\right)^{r_{2}}}{(2\pi)^{r_{2}s}\pi^{\frac{r_{1}s}{2}}}\sum_{n \ge 1}\frac{a_{K}(n)}{n^{s}} \\
+        &= \frac{\G\left(\frac{s}{2}\right)^{r_{1}}\G\left(s\right)^{r_{2}}}{(2\pi)^{r_{2}s}\pi^{\frac{r_{1}s}{2}}}\z_{K}(s).
+      \end{align*}
+      Therefore we have an integral representation
+      \begin{equation}\label{equ:integral_representation_Dedekind_1}
+        \z_{K}(s) = \frac{(2\pi)^{r_{2}s}\pi^{\frac{r_{1}s}{2}}}{\G\left(\frac{s}{2}\right)^{r_{1}}\G\left(s\right)^{r_{2}}}\int_{0}^{\infty} \cdots \int_{0}^{\infty}\w_{K}(i\mathbf{y})||\mathbf{y}||^{\frac{Ns}{2}}\,\frac{d\mathbf{y}}{\mathbf{y}}.
+      \end{equation}
+      We cannot proceed until we obtain a functional equation for $\w_{K}(i\mathbf{y})$. So we will make a detour and come back to the integral representation after.
     \subsection*{\todo{The Hecke Theta Function}}
     \subsection*{\todo{The Integral Representation: Part II}}
     \subsection*{\todo{The Functional Equation}}
@@ -960,12 +993,12 @@
         \]
         Then $f(x)$ is absolutely integrable on $\R$ as we have just mentioned. We compute the Fourier transform:
         \begin{align*}
-          (\mc{F}f)(t) = \int_{\R}f(x)e^{-2\pi itx}\,dx &= \int_{\R}\frac{y^{s}}{|cx+r+icy|^{2s}}e^{-2\pi itx}\,dx \\
-          &= \int_{\R}\frac{y^{s}}{((cx+r)^{2}+(cy)^{2})^{s}}e^{-2\pi itx}\,dx \\
-          &= e^{2\pi it\frac{r}{c}}\int_{\R}\frac{y^{s}}{((cx)^{2}+(cy)^{2})^{s}}e^{-2\pi itx}\,dx && \text{$x \to x-\frac{r}{c}$} \\
-          &= \frac{e^{2\pi it\frac{r}{c}}}{c^{2s}}\int_{\R}\frac{y^{s}}{(x^{2}+y^{2})^{s}}e^{-2\pi itx}\,dx \\
-          &= \frac{e^{2\pi it\frac{r}{c}}}{c^{2s}}\int_{\R}\frac{y^{s+1}}{((xy)^{2}+y^{2})^{s}}e^{-2\pi itxy}\,dx && \text{$x \to xy$} \\
-          &= \frac{e^{2\pi it\frac{r}{c}}}{c^{2s}}\int_{\R}\frac{y^{1-s}}{(x^{2}+1)^{s}}e^{-2\pi itxy}\,dx.
+          (\mc{F}f)(t) = \int_{-\infty}^{\infty}f(x)e^{-2\pi itx}\,dx &= \int_{-\infty}^{\infty}\frac{y^{s}}{|cx+r+icy|^{2s}}e^{-2\pi itx}\,dx \\
+          &= \int_{-\infty}^{\infty}\frac{y^{s}}{((cx+r)^{2}+(cy)^{2})^{s}}e^{-2\pi itx}\,dx \\
+          &= e^{2\pi it\frac{r}{c}}\int_{-\infty}^{\infty}\frac{y^{s}}{((cx)^{2}+(cy)^{2})^{s}}e^{-2\pi itx}\,dx && \text{$x \to x-\frac{r}{c}$} \\
+          &= \frac{e^{2\pi it\frac{r}{c}}}{c^{2s}}\int_{-\infty}^{\infty}\frac{y^{s}}{(x^{2}+y^{2})^{s}}e^{-2\pi itx}\,dx \\
+          &= \frac{e^{2\pi it\frac{r}{c}}}{c^{2s}}\int_{-\infty}^{\infty}\frac{y^{s+1}}{((xy)^{2}+y^{2})^{s}}e^{-2\pi itxy}\,dx && \text{$x \to xy$} \\
+          &= \frac{e^{2\pi it\frac{r}{c}}}{c^{2s}}\int_{-\infty}^{\infty}\frac{y^{1-s}}{(x^{2}+1)^{s}}e^{-2\pi itxy}\,dx.
         \end{align*}
         Appealing to \cref{append:Special_Integrals} to compute this latter integral, we see that
         \[
@@ -1072,11 +1105,11 @@
       \[
         O_{\e}\left(\int_{\mc{F}}f(x+iy)\conj{g(x+iy)}y^{k}\sum_{n \ge 1}n^{\frac{1}{2}+\e}\sqrt{y}e^{-2\pi ny}\,\frac{dx\,dy}{y^{2}}\right).
       \]
-      The Taylor series of the derivative of $\frac{e^{y}}{1-e^{y}}$ (upon taking $\e \le \frac{1}{2}$) gives
+      Taking $\e < \frac{1}{2}$, the Taylor series of the derivative of $\frac{e^{y}}{1-e^{y}}$ gives
       \[
         \sum_{n \ge 1}n^{\frac{1}{2}+\e}e^{-2\pi ny} = O\left(\sum_{n \ge 1}ne^{-2\pi ny}\right) = O(e^{-2\pi y}),
       \]
-      and thus has rapid decay. Together with the rapid decay of $f$ and $g$, the integrand is bounded and thus is locally absolutely uniformly convergent because we are integrating over a region of finite volume. The meromorphic continuation to the critical strip and hence to all of $\C$ follows. In particular, $L(s,f \ox g)$ has at most simple poles at $s = 0$ and $s = 1$. Actually, there is no pole at $s = 0$. Indeed, $\g(s,f \ox g)$ has a simple pole at $s = 0$ coming from the gamma factors and therefore its reciprocal has a simple zero. This cancels the simple pole at $s = 0$ coming from $E^{\ast}(z,s)$ and therefore $L(s,f \ox g)$ is has a removable singularity at $s = 0$. So there is at worst a simple pole at $s = 1$.
+      and thus the first sum has rapid decay. Together with the rapid decay of $f$ and $g$, the integrand is bounded and thus is locally absolutely uniformly convergent because we are integrating over a region of finite volume. The meromorphic continuation to the critical strip and hence to all of $\C$ follows. In particular, $L(s,f \ox g)$ has at most simple poles at $s = 0$ and $s = 1$. Actually, there is no pole at $s = 0$. Indeed, $\g(s,f \ox g)$ has a simple pole at $s = 0$ coming from the gamma factors and therefore its reciprocal has a simple zero. This cancels the simple pole at $s = 0$ coming from $E^{\ast}(z,s)$ and therefore $L(s,f \ox g)$ is has a removable singularity at $s = 0$. So there is at worst a simple pole at $s = 1$.
     \subsection*{The Functional Equation}
       An immediate consequence of the symmetry of integral representation is the functional equation:
       \[
