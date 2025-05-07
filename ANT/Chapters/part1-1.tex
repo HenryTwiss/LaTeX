@@ -29,7 +29,12 @@
       \[
         \mathbf{z} = \mathbf{x}+i\mathbf{y},
       \]
-      for the real and imaginary parts of $\mathbf{z}$ respectively unless specified otherwise. 
+      for the real and imaginary parts of $\mathbf{z}$ respectively unless specified otherwise.
+      \item If $\mathbf{z} = (z_{1},\ldots,z_{n}) \in \C^{n}$, then
+      \[
+        \a\mathbf{z} = (\a z_{1},\ldots,\a z_{n}), \quad \mathbf{z}^{\a} = (z_{1}^{\a},\ldots,z_{n}^{\a}), \quad \mathbf{z}^{\mathbf{w}} = z_{1}^{w_{1}} \cdots z_{n}^{w_{n}}, \quad \text{and} \quad \mathbf{z}\mathbf{w} = (z_{1}w_{1},\ldots,z_{n}w_{n}),
+      \]
+      for all $\a \in \C$ and $\mathbf{w} = (w_{1},\ldots,w_{n}) \in \C^{n}$ respectively.
       \item If $r \in \Z$ denotes the order of a possible pole of a complex function, $r \ge 0$ if it is a pole and $r \le 0$ if it is a zero.
       \item The nontrivial zeros of an $L$-function will be denoted by $\rho = \b+i\g$ unless specified otherwise.
       \item By $\log$ we will always mean the principal branch of the logarithm.
@@ -669,7 +674,7 @@
     \[
       \L = \Z v_{1}+\cdots+\Z v_{m},
     \]
-    for some linearly independent subset $\{v_{1},\ldots,v_{m}\}$ of $V$ with $m \le n$. We say $\L$ is \textbf{complete}\index{complete} if $n = m$. Necessarily, $\{v_{1},\ldots,v_{n}\}$ is a basis of $V$. If $\{e_{1},\ldots,e_{n}\}$ is an orthonormal basis for $V$, write
+    for some linearly independent vectors $v_{1},\ldots,v_{m}$ of $V$ with $m \le n$. We say $\L$ is \textbf{complete}\index{complete} if $n = m$. Necessarily, $v_{1},\ldots,v_{n}$ is a basis of $V$. If $e_{1},\ldots,e_{n}$ is an orthonormal basis for $V$, write
     \[
       v_{i} = \sum_{1 \le i \le n}v_{i,j}e_{j},
     \]
@@ -677,25 +682,25 @@
     \[
       P = \begin{pmatrix} v_{1,1} & \cdots & v_{n,1} \\ \vdots & & \vdots \\ v_{1,n} & \cdots & v_{n,n} \end{pmatrix}.
     \]
-    Then $P$ is the base change matrix from $\{e_{1},\ldots,e_{n}\}$ to $\{v_{1},\ldots,v_{n}\}$. The \textbf{covolume}\index{covolume} $V_{\L}$ of a complete lattice $\L$ is defined to be
+    Then $P$ is the base change matrix from $e_{1},\ldots,e_{n}$ to $v_{1},\ldots,v_{n}$. The \textbf{covolume}\index{covolume} $V_{\L}$ of a complete lattice $\L$ is defined to be
     \[
       V_{\L} = |\det(P)|.
     \]
-    By \cref{prop:base_change_quotient_determinant} and that the base change matrix between any two orthonormal basses is an orthogonal matrix and hence has determinant $\pm 1$, the covolume is independent of the choice of bases. In particular, if $V$ is a real or complex vector space we will take $\{e_{1},\ldots,e_{n}\}$ to be the standard basis. We now introduce the notion of dual lattices. If $\L$ is a complete lattice in $V$, then the \textbf{dual lattice}\index{dual lattice} $\L^{\vee}$ of $\L$ is defined by
+    By \cref{prop:base_change_quotient_determinant} and that the base change matrix between any two orthonormal basses is an orthogonal matrix and hence has determinant $\pm 1$, the covolume is independent of the choice of bases. In particular, if $V$ is a real or complex vector space we will take $e_{1},\ldots,e_{n}$ to be the standard basis. We now introduce the notion of dual lattices. If $\L$ is a complete lattice in $V$, then the \textbf{dual lattice}\index{dual lattice} $\L^{\vee}$ of $\L$ is defined by
     \[
       \L^{\vee} = \{v \in V:\text{$\<\l,v\> \in \Z$ for all $\l \in \L$}\}.
     \]
     In other words, $\L^{\vee}$ consists of all of the vectors in $V$ whose inner product with elements of $\L$ are integers. The dual lattice is indeed a complete lattice as the following proposition shows:
 
     \begin{proposition}\label{prop:dual_lattice_exists}
-      If $\<v_{1},\ldots,v_{n}\>$ is a basis for the complete lattice $\L$, then the dual basis $\<v_{1}^{\vee},\ldots,v_{n}^{\vee}\>$ is a basis for $\L^{\vee}$. In particular, $\L^{\vee}$ is a complete lattice.
+      If $v_{1},\ldots,v_{n}$ is a basis for the complete lattice $\L$, then the dual basis $v_{1}^{\vee},\ldots,v_{n}^{\vee}$ is a basis for $\L^{\vee}$. In particular, $\L^{\vee}$ is a complete lattice.
     \end{proposition}
     \begin{proof}
       Let $v \in V$ and write
       \[
         v = \sum_{1 \le j \le n}a_{i}v_{j}^{\vee},
       \]
-      with $v_{j}^{\vee} \in \R$ for all $j$. Since $\<v_{i},v_{j}^{\vee}\> = \d_{i,j}$ for $1 \le i,j \le n$, it follows that $v \in \L^{\vee}$ if and only if $v_{j}^{\vee} \in \Z$ for all $j$. This means that $\<v_{1}^{\vee},\ldots,v_{n}^{\vee}\>$ is a free abelian group of rank $n$. Hence $\L^{\vee}$ is a complete lattice.
+      with $v_{j}^{\vee} \in \R$ for all $j$. Since $\<v_{i},v_{j}^{\vee}\> = \d_{i,j}$ for $1 \le i,j \le n$, it follows that $v \in \L^{\vee}$ if and only if $v_{j}^{\vee} \in \Z$ for all $j$. This means that $v_{1}^{\vee},\ldots,v_{n}^{\vee}$ is a free abelian group of rank $n$. Hence $\L^{\vee}$ is a complete lattice.
     \end{proof}
 
     Since the dual of the dual basis of a vector space is the original basis, $(\L^{\vee})^{\vee} = \L$. We say that $\L$ is \textbf{self-dual}\index{self-dual} if $\L^{\vee} = \L$. For example, the lattice $\Z^{n}$ is self-dual because the standard basis is self-dual. It also turns out that the covolume of the dual lattice is the inverse of the volume of the original lattice:
@@ -707,10 +712,10 @@
       \]
     \end{proposition}
     \begin{proof}
-      Let $\{e_{1},\ldots,e_{n}\}$ be the standard basis for $V$ and let $\{v_{1},\ldots,v_{n}\}$ be a basis for $\L$. By \cref{prop:dual_lattice_exists}, $\{v_{1}^{\vee},\ldots,v_{n}^{\vee}\}$ is a basis for $\L^{\vee}$. If $P$ is the associated generator matrix for $\L$, then $P$ is the base change matrix from $\{e_{1},\ldots,e_{n}\}$ to $\{v_{1},\ldots,v_{n}\}$. Hence $(P^{-1})^{t}$ is the base change matrix from $\{e_{1},\ldots,e_{n}\}$ to $\{v_{1}^{\vee},\ldots,v_{n}^{\vee}\}$. The claim follows by \cref{prop:base_change_quotient_determinant}.
+      Let $e_{1},\ldots,e_{n}$ be the standard basis for $V$ and let $v_{1},\ldots,v_{n}$ be a basis for $\L$. By \cref{prop:dual_lattice_exists}, $v_{1}^{\vee},\ldots,v_{n}^{\vee}$ is a basis for $\L^{\vee}$. If $P$ is the associated generator matrix for $\L$, then $P$ is the base change matrix from $e_{1},\ldots,e_{n}$ to $v_{1},\ldots,v_{n}$. Hence $(P^{-1})^{t}$ is the base change matrix from $e_{1},\ldots,e_{n}$ to $v_{1}^{\vee},\ldots,v_{n}^{\vee}$. The claim follows by \cref{prop:base_change_quotient_determinant}.
     \end{proof}
     
-    We now turn to the case when $V$ is an $n$-dimensional real inner product space with inner product $\<\cdot,\cdot\>$. We let $d\l$ be the associated Lebesgue measure on $V$. If $\{v_{1},\ldots,v_{n}\}$ is a basis of $V$ so that any $v \in V$ has the form
+    We now turn to the case when $V$ is an $n$-dimensional real inner product space with inner product $\<\cdot,\cdot\>$. We let $d\l$ be the associated Lebesgue measure on $V$. If $v_{1},\ldots,v_{n}$ is a basis of $V$ so that any $v \in V$ has the form
     \[
       v = t_{1}v_{1}+\cdots+t{n}v_{n},
     \]
@@ -735,11 +740,11 @@
       \]
     \end{proposition}
     \begin{proof}
-      Let $n$ be the dimension of $V$, $\{e_{1},\ldots,e_{n}\}$ be an orthonormal basis of $V$, and $\{v_{1},\ldots,v_{n}\}$ be a basis for $\L$. Making the change of variables $x_{i} \to t_{i}$ for $1 \le i \le n$ where
+      Let $n$ be the dimension of $V$, $e_{1},\ldots,e_{n}$ be an orthonormal basis of $V$, and $v_{1},\ldots,v_{n}$ be a basis for $\L$. Making the change of variables $x_{i} \to t_{i}$ for $1 \le i \le n$ where
       \[
         x_{1}e_{1}+\cdots+x_{n}e_{n} \to t_{1}v_{1}+\cdots+t_{n}v_{n},
       \]
-      the corresponding Jacobian matrix is the generator matrix $P$ for the base change from $\{e_{1},\ldots,e_{n}\}$ to $\{v_{1},\ldots,v_{n}\}$. Then
+      the corresponding Jacobian matrix is the generator matrix $P$ for the base change from $e_{1},\ldots,e_{n}$ to $v_{1},\ldots,v_{n}$. Then
       \[
         \Vol(\mc{M}) = \int_{\mc{M}}\,dx_{1} \cdots dx_{n} = |\det(P)|\int_{[0,1]^{n}}\,dt_{1} \cdots dt_{n} = |\det(P)| = V_{\L},
       \]
@@ -752,7 +757,7 @@
       Let $\L$ be a subset of a finite dimensional real inner product space $V$. Then $\L$ is a lattice if and only if it is a discrete subgroup.
     \end{proposition}
     \begin{proof}
-      It is clear that if $\L$ is a lattice then it is a discrete subgroup. So suppose $\L$ is a discrete subgroup. Then $\L$ is closed (since $V$ is a metric space). Let $V'$ be the subspace spanned by $\L$ and let its dimension be $m$. Choosing a basis $\{v'_{1},\ldots,v'_{m}\}$ of $V'$, set
+      It is clear that if $\L$ is a lattice then it is a discrete subgroup. So suppose $\L$ is a discrete subgroup. Then $\L$ is closed (since $V$ is a metric space). Let $V'$ be the subspace spanned by $\L$ and let its dimension be $m$. Choosing a basis $v'_{1},\ldots,v'_{m}$ of $V'$, set
       \[
         \L' = \Z v'_{1}+\cdots+\Z v'_{m}.
       \]
@@ -896,7 +901,7 @@
       \]
     \end{theorem}
     \begin{proof}
-      Fix a basis $\{\l_{1},\ldots,\l_{n}\}$ for $\L$ and let $P$ be the associated generator matrix. Then $P$ is the base change matrix from the standard basis to $\{\l_{1},\ldots,\l_{n}\}$. In particular, $P$ is an invertible linear transformation on $\R^{n}$ satisfying $\L = P\Z^{n}$ and $\L^{\vee} = (P^{-1})^{t}\Z^{n}$. Letting $ F_{P}(\mathbf{x}) = F(P\mathbf{x})$, we may write
+      Fix a basis $\l_{1},\ldots,\l_{n}$ for $\L$ and let $P$ be the associated generator matrix. Then $P$ is the base change matrix from the standard basis to $\l_{1},\ldots,\l_{n}$. In particular, $P$ is an invertible linear transformation on $\R^{n}$ satisfying $\L = P\Z^{n}$ and $\L^{\vee} = (P^{-1})^{t}\Z^{n}$. Letting $ F_{P}(\mathbf{x}) = F(P\mathbf{x})$, we may write
       \[
         F_{P}(\mathbf{x}) = \sum_{\mathbf{n} \in \Z^{n}}f(P\mathbf{x}+P\mathbf{n}).
       \]
@@ -944,11 +949,11 @@
 
     In practical settings, we need a class of functions $f(\mathbf{x})$ for which the assumptions of the Poisson summation formula hold. We say that $f(\mathbf{x})$ is of \textbf{Schwarz class}\index{Schwarz class} if $f \in C^{\infty}(\R^{n})$ and $f(\mathbf{x})$ along with all of its partial derivatives have rapid decay. If $f(\mathbf{x})$ is of Schwarz class, the rapid decay implies that $f(\mathbf{x})$ and all of its derivatives are absolutely integrable over $\R^{n}$. Moreover, this also implies that $F(\mathbf{x})$ and all of its derivatives are locally absolutely uniformly convergent by the Weierstrass $M$-test. The uniform limit theorem then implies $F(\mathbf{x})$ is smooth and thus the conditions of the Poisson summation formula are satisfied. A classical example of a Schwarz class function is $e^{-||\mathbf{x}||^{2}}$.
     \subsection*{The Mellin Transform}
-      Like the Fourier transform, the Mellin transform is another type of integral transform. If $f(x)$ is a continuous function and $f(\infty) = \lim_{x \to \infty}f(x)$ exists, then the \textbf{Mellin transform}\index{Mellin transform} $(\mc{M}f)(s)$ of $f(x)$ is given by
+      Like the Fourier transform, the Mellin transform is another type of integral transform. If $f(\mathbf{x})$ is a continuous function on $\R_{+}^{n}$ and $f(\infty) = \lim_{\mathbf{x} \to \infty}f(\mathbf{x})$ exists, then the \textbf{Mellin transform}\index{Mellin transform} $(\mc{M}f)(\mathbf{s})$ of $f(\mathbf{x})$ on $\C^{n}$ is given by
       \[
-        (\mc{M}f)(s) = \int_{0}^{\infty}(f(x)-f(\infty))x^{s}\,\frac{dx}{x}.
+        (\mc{M}f)(\mathbf{s}) = \int_{\R_{+}^{n}}(f(\mathbf{x})-f(\infty))\mathbf{x}^{\mathbf{s}}\,\frac{d\mathbf{x}}{\mathbf{x}}.
       \]
-      In most cases, we assume $f(x)$ has some type of decay so that $f(\infty) = 0$. Moreover, if $f(x)$ is a sufficiently nice function then the integral will be bounded in some half-plane in $s$. For example, this happens if $f(x)$ exhibits rapid decay and remains bounded as $x \to 0$. In this case, the integral is locally absolutely uniformly convergent for $\s > 0$. There is also an inverse transform. If $g(s)$ holomorphic and tends to zero as $t \to \infty$ in a vertical strip $a < \s < b$, then the inverse \textbf{inverse Mellin transform}\index{inverse Mellin transform} $(\mc{M}^{-1}g)(x)$ of $g(s)$ is given by
+      We will only be interested in the case when $\mathbf{s} = (s,\ldots,s)$ so that the Mellin transform is a function on $\C$. Moreover, most of the time we will take $n = 1$ so that the initial function we are taking the Mellin transform of is defined on $\R_{+}$. Nevertheless, we assume $f(\mathbf{x})$ has some type of decay so that $f(\infty) = 0$. Moreover, if $f(\mathbf{x})$ is a sufficiently nice function then the integral will be bounded in some half-plane in $s$. For example, this happens if $f(\mathbf{x})$ exhibits rapid decay and remains bounded as $\mathbf{x} \to 0$. In this case, the integral is locally absolutely uniformly convergent for $\s > 0$. Moreover, if $n = 1$ then there is also an inverse transform. If $g(s)$ holomorphic and tends to zero as $t \to \infty$ in a vertical strip $a < \s < b$, then the inverse \textbf{inverse Mellin transform}\index{inverse Mellin transform} $(\mc{M}^{-1}g)(x)$ of $g(s)$ is given by
       \[
         (\mc{M}^{-1}g)(x) = \frac{1}{2\pi i}\int_{(c)}g(s)x^{-s}\,ds,
       \]
