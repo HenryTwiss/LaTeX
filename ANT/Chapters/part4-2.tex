@@ -50,7 +50,7 @@
       \begin{equation}\label{equ:omega_theta_relationship_for_zeta}
         \w(z) = \frac{\vt\left(\frac{z}{2}\right)-1}{2},
       \end{equation}
-      and so $\vt(z)$ is locally absolutely uniformly convergent in this region and exhibits rapid decay. The essential fact we will need is a transformation law for the Jacobi theta function:
+      so that $\vt(z)$ is locally absolutely uniformly convergent in the same region as $\w(z)$ and exhibits rapid decay. The essential fact we will need is a transformation law for the Jacobi theta function:
 
       \begin{theorem}\label{thm:transformation_law_Jacobi_theta}
         For $z \in \H$,
@@ -240,7 +240,7 @@
       \begin{equation}\label{equ:twisted_omega_theta_relationship_for_Dirichlet_L-functions}
         \w_{\chi}(z) = \frac{\vt_{\chi}\left(\frac{z}{2}\right)}{2},
       \end{equation}
-      and so $\vt_{\chi}(z)$ is locally absolutely uniformly convergent in this region and exhibits rapid decay.
+      so that $\vt_{\chi}(z)$ is locally absolutely uniformly convergent in the same region as $\w_{\chi}(z)$ and exhibits rapid decay.
 
       \begin{remark}
         \cref{equ:twisted_omega_theta_relationship_for_Dirichlet_L-functions} is a slightly less complex relationship than \cref{equ:omega_theta_relationship_for_zeta}. This is because assuming $q > 1$ means $\chi(0) = 0$.
@@ -394,15 +394,15 @@
       \[
         \z_{K}(s) = \sum_{n \ge 1}\frac{a_{K}(n)}{n^{s}}.
       \]
-      We will see that $\z_{K}(s)$ is a Selberg class $L$-function. We have already shown that the coefficients $a_{K}(n)$ are polynomially bounded, for \cref{equ:ideals_of_fixed_norm_bound} implies $a_{K}(n) \le \s_{0}(n)^{d} \ll_{\e} n^{\e}$ (recall \cref{prop:sum_of_divisors_growth_rate}). Therefore $\z_{K}(s)$ is locally absolutely uniformly convergent for $\s > 1$. To determine the Euler product, we need to express $\z_{K}(s)$ in another form. Since $\z_{K}(s)$ converges absolutely, we can write
+      We will see that $\z_{K}(s)$ is a Selberg class $L$-function. We have already shown that the coefficients $a_{K}(n)$ are polynomially bounded, for \cref{equ:ideals_of_fixed_norm_bound} implies $a_{K}(n) \le \s_{0}(n)^{d} \ll_{\e} n^{\e}$ (recall \cref{prop:sum_of_divisors_growth_rate}). Therefore $\z_{K}(s)$ is locally absolutely uniformly convergent for $\s > 1$. To determine the Euler product, we need to express $\z_{K}(s)$ in another form. Since $\z_{K}(s)$ converges absolutely, we can sum over integral ideals of $K$ instead and obtain
       \[
-        \z_{K}(s) = \sum_{\mf{a}}\frac{1}{\Norm(\mf{a})^{s}},
+        \z_{K}(s) = \sum_{\text{$\mf{a}$ integral}}\frac{1}{\Norm(\mf{a})^{s}}.
       \]
-      where the sum is over all integral ideals of $K$. Since the norm is completely multiplicative by \cref{prop:ideal_norm_is_multiplicative}, the unique factorization of integral ideals implies that we can express $\z_{K}(s)$ as the infinite product
+      Moreover, as the norm is completely multiplicative by \cref{prop:ideal_norm_is_multiplicative}, the unique factorization of integral ideals implies that we have an infinite product expression over prime integral ideals of $K$ in this region as well given by 
       \[
-        \z_{K}(s) = \prod_{\mf{p}}(1-\Norm(\mf{p})p^{-s})^{-1},
+        \z_{K}(s) = \prod_{\text{$\mf{p}$ prime}}(1-\Norm(\mf{p})p^{-s})^{-1}.
       \]
-      for $\s > 1$, and where the product is over all prime integral ideals $\mf{p}$ of $K$. Since each such ideal is above a unique prime $p$ and this product is absolutely convergent for $\s > 1$, it can be expressed as
+      Since each prime integral ideal is above a unique prime $p$ and this product is absolutely convergent, it can be decomposed as
       \[
         \z_{K}(s) = \prod_{p}\prod_{\text{$\mf{p}$ above $p$}}(1-\Norm(\mf{p})p^{-s})^{-1} = \prod_{p}\prod_{1 \le i \le r_{p}}(1-p^{-f_{p}(\mf{p}_{i})s})^{-1},
       \]
@@ -426,11 +426,11 @@
       \]
       It will be useful to let
       \[
-        \d = (\d_{\s})_{\s}, \quad \mathbf{N} = (N_{\s})_{\s}, \quad \mathbf{2}_{\d} = (2^{\d_{\s}})_{\s}, \quad \text{and} \quad \mathbf{n} = (n)_{\s},
+        \d = (\d_{\s})_{\s}, \quad \mathbf{N} = (N_{\s})_{\s}, \quad \text{and} \quad \mathbf{2}_{\d} = (2^{\d_{\s}})_{\s}.
       \]
-      for $n \ge 1$. Consider the function
+      Consider the function
       \[
-        \w_{K}(\mathbf{z}) = \sum_{n \ge 1}a_{K}(n)\mathbf{n}^{\d}e^{\pi in^{\frac{2}{d}}\<\mathbf{z},\mathbf{2}_{\d}\>},
+        \w_{K}(\mathbf{z}) = \sum_{n \ge 1}a_{K}(n)e^{\pi in^{\frac{2}{d}}\<\mathbf{z},\mathbf{2}_{\d}\>},
       \]
       defined for $\mathbf{z} \in \H^{r_{1}+r_{2}}$. It is locally absolutely uniformly convergent in this region by the ratio and Weierstrass $M$-tests. Taking $\e < 1$, the bound $a_{K}(n) \ll_{\e} n^{\e}$ gives
       \[
@@ -438,31 +438,27 @@
       \]
       where the second equality holds because each term is of smaller order than the next so that the series is bounded by a constant times its first term. Hence $\w_{K}(\mathbf{z})$ exhibits rapid decay. Now consider the following Mellin transform:
       \[
-        \int_{\R_{+}^{r_{1}+r_{2}}}\w_{K}(i\mathbf{y})\mathbf{y}^{\frac{s}{2}\mathbf{N}}\,\frac{d\mathbf{y}}{\mathbf{y}}.
+        \int_{\R_{+}^{r_{1}+r_{2}}}\w_{K}(i\mathbf{y})\mathbf{y}^{\frac{s\mathbf{N}}{2}}\,\frac{d\mathbf{y}}{\mathbf{y}}.
       \]
       By the rapid decay of $\w_{K}(\mathbf{z})$, this integral is locally absolutely uniformly convergent for $\s > 1$ and hence defines an analytic function there. Then we compute
       \begin{align*}
-        \int_{\R_{+}^{r_{1}+r_{2}}}\w_{K}(i\mathbf{y})\mathbf{y}^{\frac{s}{2}\mathbf{N}}\,\frac{d\mathbf{y}}{\mathbf{y}} &= \int_{\R_{+}^{r_{1}+r_{2}}}\sum_{n \ge 1}a_{K}(n)\mathbf{n}^{\d}e^{-\pi n^{\frac{2}{d}}\<\mathbf{y},\mathbf{2}_{\d}\>}\mathbf{y}^{\frac{s}{2}\mathbf{N}}\,\frac{d\mathbf{y}}{\mathbf{y}} \\
-        &= \sum_{n \ge 1}\int_{\R_{+}^{r_{1}+r_{2}}}a_{K}(n)\mathbf{n}^{\d}e^{-\pi n^{\frac{2}{d}}\<\mathbf{y},\mathbf{2}_{\d}\>}\mathbf{y}^{\frac{s}{2}\mathbf{N}}\,\frac{d\mathbf{y}}{\mathbf{y}} && \text{FT} \\
-        &= \sum_{n \ge 1}\frac{a_{K}(n)}{(2\pi)^{r_{2}s}\pi^{\frac{r_{1}s}{2}}n^{s}}\int_{\R_{+}^{r_{1}+r_{2}}}e^{-\pi\<\mathbf{y},\mathbf{1}\>}\mathbf{y}^{\frac{s}{2}\mathbf{N}}\,\frac{d\mathbf{y}}{\mathbf{y}} && \text{$\mathbf{y} \to \frac{\mathbf{y}}{\mathbf{2}_{\d}\pi\mathbf{n}^{\frac{2}{d}}}$} \\
+        \int_{\R_{+}^{r_{1}+r_{2}}}\w_{K}(i\mathbf{y})\mathbf{y}^{\frac{s\mathbf{N}}{2}}\,\frac{d\mathbf{y}}{\mathbf{y}} &= \int_{\R_{+}^{r_{1}+r_{2}}}\sum_{n \ge 1}a_{K}(n)e^{-\pi n^{\frac{2}{d}}\<\mathbf{y},\mathbf{2}_{\d}\>}\mathbf{y}^{\frac{s\mathbf{N}}{2}}\,\frac{d\mathbf{y}}{\mathbf{y}} \\
+        &= \sum_{n \ge 1}\int_{\R_{+}^{r_{1}+r_{2}}}a_{K}(n)e^{-\pi n^{\frac{2}{d}}\<\mathbf{y},\mathbf{2}_{\d}\>}\mathbf{y}^{\frac{s\mathbf{N}}{2}}\,\frac{d\mathbf{y}}{\mathbf{y}} && \text{FT} \\
+        &= \sum_{n \ge 1}\frac{a_{K}(n)}{(2\pi)^{r_{2}s}\pi^{\frac{r_{1}s}{2}}n^{s}}\int_{\R_{+}^{r_{1}+r_{2}}}e^{-\pi\<\mathbf{y},\mathbf{1}\>}\mathbf{y}^{\frac{s\mathbf{N}}{2}}\,\frac{d\mathbf{y}}{\mathbf{y}} && \text{$\mathbf{y} \to \frac{\mathbf{y}}{\mathbf{2}_{\d}\pi\mathbf{n}^{\frac{2}{d}}}$} \\
         &= \frac{\G\left(\frac{s}{2}\right)^{r_{1}}\G\left(s\right)^{r_{2}}}{(2\pi)^{r_{2}s}\pi^{\frac{r_{1}s}{2}}}\sum_{n \ge 1}\frac{a_{K}(n)}{n^{s}} \\
         &= \frac{\G\left(\frac{s}{2}\right)^{r_{1}}\G\left(s\right)^{r_{2}}}{(2\pi)^{r_{2}s}\pi^{\frac{r_{1}s}{2}}}\z_{K}(s).
       \end{align*}
       Therefore we have an integral representation
       \begin{equation}\label{equ:integral_representation_Dedekind_1}
-        \z_{K}(s) = \frac{(2\pi)^{r_{2}s}\pi^{\frac{r_{1}s}{2}}}{\G\left(\frac{s}{2}\right)^{r_{1}}\G\left(s\right)^{r_{2}}}\int_{\R_{+}^{r_{1}+r_{2}}}\w_{K}(i\mathbf{y})\mathbf{y}^{\frac{s}{2}\mathbf{N}}\,\frac{d\mathbf{y}}{\mathbf{y}}.
+        \z_{K}(s) = \frac{(2\pi)^{r_{2}s}\pi^{\frac{r_{1}s}{2}}}{\G\left(\frac{s}{2}\right)^{r_{1}}\G\left(s\right)^{r_{2}}}\int_{\R_{+}^{r_{1}+r_{2}}}\w_{K}(i\mathbf{y})\mathbf{y}^{\frac{s\mathbf{N}}{2}}\,\frac{d\mathbf{y}}{\mathbf{y}}.
       \end{equation}
       We cannot proceed until we obtain a functional equation for $\w_{K}(i\mathbf{y})$. So we will make a detour and come back to the integral representation after.
     \subsection*{\todo{The Hecke Theta Function}}
-      Recall that the ideal class group $\Cl(K)$ is finite by \cref{equ:finitness_of_class_number}. Moreover, if $\mf{a} \in \Cl(K)$ is an integral ideal representative of a class then $\mc{O}_{K}^{\ast}$ acts on $\mf{a}^{\ast}$ by multiplication. Therefore we have an orbit space $\mf{a}^{\ast}/\mc{O}_{K}^{\ast}$. It will be convenient to let
+      Recall that the ideal class group $\Cl(K)$ is finite by \cref{equ:finitness_of_class_number}. Moreover, if $\mf{a} \in \Cl(K)$ is an integral ideal representative of a class then $\mc{O}_{K}^{\ast}$ acts on $\mf{a}^{\ast}$ by multiplication. The \textbf{Hecke theta function}\index{Hecke theta function} $\vt_{K}(z)$ attached to the number field $K$, is defined by
       \[
-        \mathbf{a} = (2^{\d_{\s}}\s(a))_{\s},
+        \vt_{K}(\mathbf{z}) = \sum_{\substack{\mf{a} \in \Cl(K) \\ \text{$\mf{a}$ integral}}}\sum_{a \in \mf{a}^{\ast}/\mc{O}_{K}^{\ast}}e^{2\pi i\Norm(a\mf{a}^{-1})^{\frac{2}{d}}\<\mathbf{z},\mathbf{2}_{\d}\>},
       \]
-      for $a \in \mf{a}^{\ast}/\mc{O}_{K}^{\ast}$. The \textbf{Hecke theta function}\index{Hecke theta function} $\t_{K}(z)$ attached to the number field $K$, is defined by
-      \[
-        \t_{K}(\mathbf{z}) = \sum_{\mf{a} \in \Cl(K)}\sum_{a \in \mf{a}^{\ast}/\mc{O}_{K}^{\ast}}e^{2\pi i\<\mathbf{z},\mathbf{a}\>},
-      \]
-      for $\mathbf{z} \in \H^{r_{1}+r_{2}}$. We first need to show that $\t_{K}(\mathbf{z})$ is well-defined and thus independent of the representatives $mf{a}$ and $a$. To see this, we require a lemma:
+      for $\mathbf{z} \in \H^{r_{1}+r_{2}}$. We first need to verify that $\vt_{K}(\mathbf{z})$ is well-defined. By Minkowski's theorem, every ideal class contains an integral ideal so that the outer sum is defined. We now show that the sums are independent of the representatives $\mf{a}$ and $a$. Clearly the summand is independent of the representative $a$ since the set of representatives $a\mc{O}_{K}^{\ast}$ all have $|\Norm(a)|$ as the absolute value of their norm by \cref{cor:unit_if_and_only_if_absolute_value_norm_1}. To see that the inner sum is independent of the representative $\mf{a}$ requires a lemma:
 
       \begin{lemma}\label{lem:Hecke_theta_function_lemma}
         Let $K$ be a number field. Suppose $\mf{a}$ is an integral ideal and $\mf{K}$ is the ideal class of $\mf{a}^{-1}$. Then there is a bijection
@@ -474,7 +470,24 @@
         We first show that this map is well-defined. If $a \in \mf{a}^{\ast}$, then $a\mf{a}^{-1} = a\mc{O}_{K}\mf{a}^{-1} \subseteq \mc{O}_{K}$ by \cref{prop:explicit_inverse_ideal} so that $a\mf{a}^{-1}$ is an integral ideal belonging to $\mf{K}$ (because it differs from $\mf{a}^{-1}$ by a principal ideal). Therefore the map is well-defined. To show injectivity, suppose $a\mf{a}^{-1} = b\mf{a}^{-1}$ for some $a,b \in \mf{a}^{\ast}/\mc{O}_{K}^{\ast}$. Multiplying by $\mf{a}$, we obtain $a\mc{O}_{K} = b\mc{O}_{K}$ and hence $ab^{-1} \in \mc{O}_{K}^{\ast}$ from which injectivity follows. For surjectivity, the definition of $\mf{K}$ implies that any integral ideal $\mf{b} \in \mf{K}$ satisfies $\mf{b} = a\mf{a}^{-1}$ for some nonzero $a \in \mc{O}_{K}$ but then $a \in \mf{a}\mf{b} \subseteq \mf{a}$.
       \end{proof}
       
-      We can use \cref{lem:Hecke_theta_function_lemma}, to transition between summing over integral ideals and algebraic integers. Indeed, by Minkowski's theorem there is a complete set of representatives $\mf{a}_{1},\ldots,\mf{a}_{h_{K}}$ of $\Cl(K)$ consisting only of integral ideals. As the ideal class group is a group, $\mf{a}_{1}^{-1},\ldots,\mf{a}_{h_{K}}^{-1}$ is also a full set of representatives. By \cref{lem:Hecke_theta_function_lemma}, this shows that every integral ideal is uniquely of the form $a\mf{a}_{i}^{-1}$ for some $1 \le i \le h_{K}$ and $a \in \mf{a}_{i}^{\ast}/\mc{O}_{K}^{\ast}$. Moreover, the corresponding norms are $\frac{|\Norm(\a)|}{\Norm(\a_{i})}$. \todo{xxx}
+      By \cref{lem:Hecke_theta_function_lemma}, the inner sum is independent of the representative $\mf{a}$ because if $\mf{b}$ is another integral ideal belonging to the same ideal class as $\mf{a}$, then they differ by a principal ideal and hence $\mf{a}^{-1}$ and $\mf{b}^{-1}$ belong to the same ideal class. All of this work shows that $\vt_{K}(\mathbf{z})$ is well-defined. Moreover, we can use \cref{lem:Hecke_theta_function_lemma} to transition the double sum to a sum over integral ideals or positive integers. Indeed, as we have previously observed there is a complete set of representatives $\mf{a}_{1},\ldots,\mf{a}_{h_{K}}$ of $\Cl(K)$ consisting only of integral ideals (by Minkowski's theorem). As the ideal class group is a group, we see that $\mf{a}_{1}^{-1},\ldots,\mf{a}_{h_{K}}^{-1}$ is also a complete set of representatives. By \cref{lem:Hecke_theta_function_lemma}, this shows that every integral ideal is uniquely of the form $a\mf{a}_{i}^{-1}$ for some $1 \le i \le h_{K}$ and $a \in \mf{a}_{i}^{\ast}/\mc{O}_{K}^{\ast}$ and thus has norm $\Norm(a\mf{a}_{i}^{-1})$. It follows that the Hecke theta function takes the alternative forms
+      \[
+        \vt_{K}(\mathbf{z}) = \sum_{\text{$\mf{a}$ integral}}e^{2\pi i\Norm(a\mf{a}^{-1})^{\frac{2}{d}}\<\mathbf{z},\mathbf{2}_{\d}\>},
+      \]
+      and
+      \[
+        \vt_{K}(\mathbf{z}) = \sum_{n \ge 1}a_{K}(n)e^{2\pi in^{\frac{2}{d}}\<\mathbf{z},\mathbf{2}_{\d}\>},
+      \]
+      and hence the relationship to $\w_{K}(\mathbf{z})$ is given by
+      \[
+        \w_{K}(\mathbf{z}) = \vt_{K}\left(\frac{\mathbf{z}}{2}\right),
+      \]
+      so that $\vt_{K}(\mathbf{z})$ is locally absolutely uniformly convergent in the same region as $\w_{K}(\mathbf{z})$ and exhibits rapid decay. The essential fact we will need is a transformation law for the Hecke theta function:
+
+      \begin{theorem}
+        Let $K$ be a number field. For $\mathbf{z} \in \H^{r_{1}+r_{2}}$,
+        \todo{xxx}
+      \end{theorem}
     \subsection*{\todo{The Integral Representation: Part II}}
     \subsection*{\todo{The Functional Equation}}
       \todo{xxx} We identify the gamma factor of $\z_{K}(s)$ to be
