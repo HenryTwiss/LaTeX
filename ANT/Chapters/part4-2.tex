@@ -20,11 +20,11 @@
       \[
         \w(z) = \sum_{n \ge 1}e^{\pi in^{2}z},
       \]
-      defined for $z \in \H$. It is locally absolutely uniformly convergent in this region by the ratio and Weierstrass $M$-tests. Moreover, we have
+      defined for $z \in \H$. It is locally absolutely uniformly convergent in this region by Weierstrass $M$-test. Moreover, we have
       \[
         \w(z) = O\left(\sum_{n \ge 1}e^{-\pi n^{2}y}\right) = O(e^{-\pi y}),
       \]
-      where the second equality holds because each term is of smaller order than the next so that the series is bounded by a constant times its first term. It follows that $\w(z)$ exhibits rapid decay. Now consider the following Mellin transform:
+      where the second equality holds because each term is of smaller order than the next so that the series is bounded by a constant times the first term. It follows that $\w(z)$ exhibits rapid decay. Now consider the following Mellin transform:
       \[
         \int_{0}^{\infty}\w(iy)y^{\frac{s}{2}}\,\frac{dy}{y}.
       \]
@@ -46,11 +46,15 @@
       \[
         \vt(z) = \sum_{n \in \Z}e^{2\pi in^{2}z},
       \]
-      for $z \in \H$. Its relation to $\w(z)$ is given by the identity
+      for $z \in \H$. It is locally absolutely uniformly convergent in this region by the Weierstrass $M$-test. Moreover,
+      \[
+        \vt(z)-1 = O\left(\sum_{n \in \Z-\{0\}}e^{-2\pi y}\right) = O(e^{-2\pi y}),
+      \]
+      where the second equality holds because each term is of smaller order than the $n = \pm 1$ terms so that the series is bounded by a constant times the order of these terms. In particular, $\vt(z)-1$ exhibits rapid decay. The relation to $\w(z)$ is
       \begin{equation}\label{equ:omega_theta_relationship_for_zeta}
-        \w(z) = \frac{\vt\left(\frac{z}{2}\right)-1}{2},
+        \w(z) = \frac{\vt\left(\frac{z}{2}\right)-1}{2}.
       \end{equation}
-      so that $\vt(z)$ is locally absolutely uniformly convergent in the same region as $\w(z)$ and exhibits rapid decay. The essential fact we will need is a functional equation for the Jacobi theta function:
+      The essential fact we will need is a functional equation for the Jacobi theta function:
 
       \begin{theorem}\label{thm:functional_equation_Jacobi_theta}
         For $z \in \H$,
@@ -59,7 +63,11 @@
         \]
       \end{theorem}
       \begin{proof}
-        By the identity theorem it suffices to verify this for $z = iy$ with $y > 0$. So set $f(x) = e^{-2\pi x^{2}y}$. Then $f(x)$ is of Schwarz class. We compute its Fourier transform:
+        We will apply the Poisson summation formula to
+        \[
+          \vt(z) = \sum_{n \in \Z}e^{2\pi in^{2}z}.
+        \]
+        By the identity theorem it suffices to verify this for $z = iy$ with $y > 0$. So set $f(x) = e^{-2\pi x^{2}y}$. Then $f(x)$ is of Schwarz class because it exhibits exponential decay. We compute its Fourier transform:
         \[
           (\mc{F}f)(t) = \int_{-\infty}^{\infty}f(x)e^{-2\pi itx}\,dx = \int_{-\infty}^{\infty}e^{-2\pi x^{2}y}e^{-2\pi itx}\,dx = \int_{-\infty}^{\infty}e^{-2\pi(x^{2}y+itx)}\,dx.
         \]
@@ -83,11 +91,10 @@
         \[
           (\mc{F}f)(t) = \frac{e^{-\frac{\pi t^{2}}{2y}}}{\sqrt{2y}}.
         \]
-        By the Poisson summation formula, we have
+        By the Poisson summation formula and the identity theorem, we have
         \[
-          \vt(iy) = \sum_{t \in \Z}\frac{e^{-\frac{\pi t^{2}}{2y}}}{\sqrt{2y}} = \frac{1}{\sqrt{2y}}\sum_{t \in \Z}e^{-\frac{\pi t^{2}}{2y}} = \frac{1}{\sqrt{2y}}\vt\left(-\frac{1}{4iy}\right),
+          \vt(z) = \sum_{n \in \Z}e^{2\pi in^{2}z} = \sum_{t \in \Z}\frac{e^{-\frac{\pi it^{2}}{2z}}}{\sqrt{-2iz}} = \frac{1}{\sqrt{-2iz}}\sum_{t \in \Z}e^{-\frac{\pi it^{2}}{2z}} = \frac{1}{\sqrt{-2iz}}\vt\left(-\frac{1}{4z}\right).
         \]
-        and the identity theorem finishes the proof.
       \end{proof}
 
       We will use \cref{thm:functional_equation_Jacobi_theta} to analytically continue $\z(s)$.
@@ -210,11 +217,11 @@
       \[
         \w_{\chi}(z) = \sum_{n \ge 1}\chi(n)n^{\d_{\chi}}e^{\pi in^{2}z},
       \]
-      defined for $z \in \H$. It is locally absolutely uniformly convergent in this region by the ratio and Weierstrass $M$-tests. Moreover, we have
+      defined for $z \in \H$. It is locally absolutely uniformly convergent in this region by the Weierstrass $M$-test. Moreover, we have
       \[
         \w_{\chi}(z) = O\left(\sum_{n \ge 1}ne^{-\pi ny}\right) = O(e^{-\pi y}),
       \]
-      where the second equality holds because each term is of smaller order than the next so that the series is bounded by a constant times its first term. Hence $\w_{\chi}(z)$ exhibits rapid decay. Now consider the following Mellin transform:
+      where the second equality holds because each term is of smaller order than the next so that the series is bounded by a constant times the first term. Hence $\w_{\chi}(z)$ exhibits rapid decay. Now consider the following Mellin transform:
       \[
         \int_{0}^{\infty}\w_{\chi}(iy)y^{\frac{s+\d_{\chi}}{2}}\,\frac{dy}{y}.
       \]
@@ -236,11 +243,14 @@
       \[
         \vt_{\chi}(z) = \sum_{n \in \Z}\chi(n)n^{\d_{\chi}}e^{2\pi in^{2}z},
       \]
-      for $z \in \H$. The relationship to $\w_{\chi}(z)$ is
+      for $z \in \H$. It is locally absolutely uniformly convergent in this region by the Weierstrass $M$-test. Moreover,
+      \[
+        \vt_{\chi}(z) = O\left(\sum_{n \in \Z}ne^{-2\pi y}\right) = O(e^{-2\pi y}),
+      \]
+      where the second equality holds because each term is of smaller order than the $n = \pm 1$ terms so that the series is bounded by a constant times the order of these terms. In particular, $\vt_{\chi}(z)$ exhibits rapid decay. The relationship to $\w_{\chi}(z)$ is
       \begin{equation}\label{equ:twisted_omega_theta_relationship_for_Dirichlet_L-functions}
-        \w_{\chi}(z) = \frac{\vt_{\chi}\left(\frac{z}{2}\right)}{2},
+        \w_{\chi}(z) = \frac{\vt_{\chi}\left(\frac{z}{2}\right)}{2}.
       \end{equation}
-      so that $\vt_{\chi}(z)$ is locally absolutely uniformly convergent in the same region as $\w_{\chi}(z)$ and exhibits rapid decay.
 
       \begin{remark}
         \cref{equ:twisted_omega_theta_relationship_for_Dirichlet_L-functions} is a slightly less complex relationship than \cref{equ:omega_theta_relationship_for_zeta}. This is because assuming $q > 1$ means $\chi(0) = 0$.
@@ -255,11 +265,15 @@
         \]
       \end{theorem}
       \begin{proof}
-        By the identity theorem it suffices to verify this for $z = iy$ with $y > 0$. Since $\chi$ is $q$-periodic and $\vt_{\chi}(z)$ is absolutely convergent, we can write
+        Since $\chi$ is $q$-periodic and $\vt_{\chi}(z)$ is absolutely convergent, we can write
         \[
-          \vt_{\chi}(iy) = \sum_{a \tmod{q}}\chi(a)\sum_{m \in \Z}(mq+a)^{\d_{\chi}}e^{-2\pi(mq+a)^{2}y}.
+          \vt_{\chi}(z) = \sum_{a \tmod{q}}\chi(a)\sum_{m \in \Z}(mq+a)^{\d_{\chi}}e^{2\pi i(mq+a)^{2}z}.
         \]
-        Set $f(x) = (xq+a)^{\d_{\chi}}e^{-2\pi(xq+a)^{2}y}$. Then $f(x)$ is of Schwarz class. We compute its Fourier transform:
+        Set
+        \[
+          I_{a}(z) = \sum_{m \in \Z}(mq+a)^{\d_{\chi}}e^{2\pi i(mq+a)^{2}z}.
+        \]
+        We will apply the Poisson summation formula to $I_{a}(z)$. By the identity theorem it suffices to verify this for $z = iy$ with $y > 0$. Set $f(x) = (xq+a)^{\d_{\chi}}e^{-2\pi(xq+a)^{2}y}$. Then $f(x)$ is of Schwarz class because it exhibits exponential decay. We compute its Fourier transform:
         \[
           (\mc{F}f)(t) = \int_{-\infty}^{\infty}f(x)e^{-2\pi itx}\,dx = \int_{-\infty}^{\infty}(xq+a)^{\d_{\chi}}e^{-2\pi(xq+a)^{2}y}e^{-2\pi itx}\,dx = \int_{-\infty}^{\infty}(xq+a)^{\d_{\chi}}e^{-2\pi((xq+a)^{2}y+itx)}\,dx.
         \]
@@ -295,17 +309,19 @@
         \[
           (\mc{F}f)(t) = \frac{e^{\frac{2\pi iat}{q}-\frac{\pi t^{2}}{2q^{2}y}}}{\sqrt{2}qy^{\frac{1+\d_{\chi}}{2}}}\left(\frac{t}{2qi\sqrt{y}}\right)^{\d_{\chi}}.
         \]
-        By the Poisson summation formula, we have
+        By the Poisson summation formula and the identity theorem, we have
+        \[
+          I_{a}(z) = \sum_{m \in \Z}(mq+a)^{\d_{\chi}}e^{2\pi i(mq+a)^{2}z} = \sum_{t \in \Z}\frac{e^{\frac{2\pi iat}{q}-\frac{\pi it^{2}}{2q^{2}z}}}{\sqrt{2}q(-iz)^{\frac{1+\d_{\chi}}{2}}}\left(\frac{t}{2qi\sqrt{-iz}}\right)^{\d_{\chi}}.
+        \]
+        Plugging this back into the definition of $\vt_{\chi}(z)$ yields
         \begin{align*}
-          \vt_{\chi}(iy) &= \sum_{a \tmod{q}}\chi(a)\sum_{t \in \Z}\frac{e^{\frac{2\pi iat}{q}-\frac{\pi t^{2}}{2q^{2}y}}}{\sqrt{2}qy^{\frac{1+\d_{\chi}}{2}}}\left(\frac{t}{2qi\sqrt{y}}\right)^{\d_{\chi}} \\
-          &= \frac{1}{i^{\d_{\chi}}q^{1+\d_{\chi}}(2y)^{\frac{1}{2}+\d_{\chi}}}\sum_{a \tmod{q}}\chi(a)\sum_{t \in \Z}t^{\d_{\chi}}e^{\frac{2\pi iat}{q}-\frac{\pi t^{2}}{2q^{2}y}} \\
-          &= \frac{1}{i^{\d_{\chi}}q^{1+\d_{\chi}}(2y)^{\frac{1}{2}+\d_{\chi}}}\sum_{t \in \Z}t^{\d_{\chi}}e^{-\frac{\pi t^{2}}{2q^{2}y}}\sum_{a \tmod{q}}\chi(a)e^{\frac{2\pi i at}{q}} \\
-          &= \frac{1}{i^{\d_{\chi}}q^{1+\d_{\chi}}(2y)^{\frac{1}{2}+\d_{\chi}}}\sum_{t \in \Z}t^{\d_{\chi}}e^{-\frac{\pi t^{2}}{2q^{2}y}}\tau(t,\chi) && \text{definition of $\tau(t,\chi)$} \\
-          &= \frac{\tau(\chi)}{i^{\d_{\chi}}q^{1+\d_{\chi}}(2y)^{\frac{1}{2}+\d_{\chi}}}\sum_{t \in \Z}\cchi(t)t^{\d_{\chi}}e^{-\frac{\pi t^{2}}{2q^{2}y}} && \text{\cref{cor:gauss_sum_primitive_formula}} \\
-          &= \frac{\e_{\chi}}{i^{\d_{\chi}}(2qy)^{\frac{1}{2}+\d_{\chi}}}\sum_{t \in \Z}\cchi(t)t^{\d_{\chi}}e^{-\frac{\pi t^{2}}{2q^{2}y}} && \text{$\e_{\chi} = \frac{\tau(\chi)}{\sqrt{q}}$} \\
-          &=  \frac{\e_{\chi}}{i^{\d_{\chi}}(2qy)^{\frac{1}{2}+\d_{\chi}}}\vt_{\cchi}\left(-\frac{1}{4q^{2}iy}\right),
+          \vt_{\chi}(z) &= \sum_{a \tmod{q}}\chi(a)\sum_{t \in \Z}\frac{e^{\frac{2\pi iat}{q}-\frac{\pi it^{2}}{2q^{2}z}}}{\sqrt{2}q(-iz)^{\frac{1+\d_{\chi}}{2}}}\left(\frac{t}{2qi\sqrt{-iz}}\right)^{\d_{\chi}} \\
+          &= \frac{1}{i^{\d_{\chi}}q^{1+\d_{\chi}}(-2iz)^{\frac{1}{2}+\d_{\chi}}}\sum_{t \in \Z}t^{\d_{\chi}}e^{-\frac{\pi it^{2}}{2q^{2}z}}\sum_{a \tmod{q}}\chi(a)e^{\frac{2\pi i at}{q}} \\
+          &= \frac{1}{i^{\d_{\chi}}q^{1+\d_{\chi}}(-2iz)^{\frac{1}{2}+\d_{\chi}}}\sum_{t \in \Z}t^{\d_{\chi}}e^{-\frac{\pi it^{2}}{2q^{2}z}}\tau(t,\chi) && \text{definition of $\tau(t,\chi)$} \\
+          &= \frac{\tau(\chi)}{i^{\d_{\chi}}q^{1+\d_{\chi}}(-2iz)^{\frac{1}{2}+\d_{\chi}}}\sum_{t \in \Z}\cchi(t)t^{\d_{\chi}}e^{-\frac{\pi it^{2}}{2q^{2}z}} && \text{\cref{cor:gauss_sum_primitive_formula}} \\
+          &= \frac{\e_{\chi}}{i^{\d_{\chi}}(-2qiz)^{\frac{1}{2}+\d_{\chi}}}\sum_{t \in \Z}\cchi(t)t^{\d_{\chi}}e^{-\frac{\pi it^{2}}{2q^{2}z}} && \text{$\e_{\chi} = \frac{\tau(\chi)}{\sqrt{q}}$} \\
+          &=  \frac{\e_{\chi}}{i^{\d_{\chi}}(-2qiz)^{\frac{1}{2}+\d_{\chi}}}\vt_{\cchi}\left(-\frac{1}{4q^{2}z}\right).
         \end{align*}
-        and the identity theorem finishes the proof.
       \end{proof}
 
       Notice that the functional equation relates $\vt_{\chi}(z)$ to $\vt_{\cchi}(z)$. Regardless, we will use \cref{thm:functional_equation_Dirichlet_theta} to analytically continue $L(s,\chi)$.
@@ -432,11 +448,11 @@
       \[
         \w_{K}(\mathbf{z}) = \sum_{n \ge 1}a_{K}(n)e^{\pi in^{\frac{2}{d}}\<\mathbf{z},\mathbf{N}\>},
       \]
-      defined for $\mathbf{z} \in \H^{r_{K}+1}$. It is locally absolutely uniformly convergent in this region by the ratio and Weierstrass $M$-tests. Taking $\e < 1$, the bound $a_{K}(n) \ll_{\e} n^{\e}$ gives
+      defined for $\mathbf{z} \in \H^{r_{K}+1}$. It is locally absolutely uniformly convergent in this region by the Weierstrass $M$-test. Taking $\e < 1$, the bound $a_{K}(n) \ll_{\e} n^{\e}$ gives
       \[
         \w_{K}(\mathbf{z}) = O\left(\sum_{n \ge 1}n^{r_{2}+1}e^{-\pi n^{\frac{2}{d}}||\mathbf{y}||_{\infty}}\right) = O(e^{-\pi||\mathbf{y}||_{\infty}}),
       \]
-      where the second equality holds because each term is of smaller order than the next so that the series is bounded by a constant times its first term. Hence $\w_{K}(\mathbf{z})$ exhibits rapid decay. Now consider the following Mellin transform:
+      where the second equality holds because each term is of smaller order than the next so that the series is bounded by a constant times the first term. Hence $\w_{K}(\mathbf{z})$ exhibits rapid decay. Now consider the following Mellin transform:
       \[
         \int_{\R_{+}^{r_{K}+1}}\w_{K}(i\mathbf{y})\mathbf{y}^{\frac{s\mathbf{N}}{2}}\,\frac{d\mathbf{y}}{\mathbf{y}}.
       \]
@@ -507,7 +523,7 @@
       \[
         \vt_{K}(\mathbf{z}) = \sum_{\substack{\mf{a} \in \Cl(K) \\ \text{$\mf{a}$ integral}}}\sum_{\a \in \mf{a}^{\ast}}e^{2\pi i\Norm(\a\mf{a}^{-1})^{\frac{2}{d}}\left\<t^{\frac{1}{d}}\mathbf{z},\mathbf{N}\right\>},
       \]
-      for $\mathbf{z} \in S$. \todo{Absolute convergence and exponential decay properties}. Establishing the relationship to $\w_{S}(\mathbf{z})$ will require some work. Consider the isomorphism
+      for $\mathbf{z} \in \H^{r_{K}+1}$. \todo{Absolute convergence and exponential decay properties}. Establishing the relationship to $\w_{S}(\mathbf{z})$ will require some work. Consider the isomorphism
       \[
         \log:(\R_{+}^{r_{K}+1})^{\ast} \to \R^{r_{K}+1} \qquad (x_{\s})_{\s} \to (\log(x_{\s}))_{\s}.
       \]
@@ -588,7 +604,7 @@
         \]
       \end{theorem}
       \begin{proof}
-        By the identity theorem it suffices to prove this on a set containing a limit point. Therefore we may assume $\s > 1$. By \cref{prop:factorization_of_primes_quadratic}, the Euler product of $\z_{K}$ is given by
+        By the identity theorem it suffices to prove this for $\s > 1$. By \cref{prop:factorization_of_primes_quadratic}, the Euler product of $\z_{K}$ is given by
         \begin{align*}
           \z_{K}(s) &= \prod_{\substack{p \\ \chi_{\D_{d}}(p) = 1}}(1-p^{-s})^{-1}(1-p^{-s})^{-1}\prod_{\substack{p \\ \chi_{\D_{d}}(p) = -1}}(1-p^{-s})^{-1}(1+p^{-s})^{-1}\prod_{\substack{p \\ \chi_{\D_{d}}(p) = 0}}(1-p^{-s})^{-1} \\
           &= \z(s)\prod_{\substack{p \\ \chi_{\D_{d}}(p) = 1}}(1-p^{-s})^{-1}\prod_{\substack{p \\ \chi_{\D_{d}}(p) = -1}}(1+p^{-s})^{-1}\prod_{\substack{p \\ \chi_{\D_{d}}(p) = 0}}1 \\
@@ -1064,11 +1080,11 @@
         \[
           I_{c,r}(z,s) = \sum_{\ell \in \Z}\frac{\Im(z)^{s}}{|cz+c\ell+r|^{2s}}.
         \]
-        We apply the Poisson summation formula to $I_{c,r}(z,s)$. This is allowed since the summands are absolutely integrable as they exhibit polynomial decay of order $\s > 1$ and $I_{c,r}(z,s)$ is holomorphic (because $E(z,s)$ is). By the identity theorem it suffices to apply the Poisson summation formula for $z = iy$ with $y > 0$. So let $f(x)$ be given by
+        We apply the Poisson summation formula to $I_{c,r}(z,s)$. By the identity theorem it suffices to apply the Poisson summation formula for $z = iy$ with $y > 0$. So let $f(x)$ be given by
         \[
           f(x) = \frac{y^{s}}{|cx+r+icy|^{2s}}.
         \]
-        Then $f(x)$ is absolutely integrable on $\R$ as we have just mentioned. We compute the Fourier transform:
+        Then $f(x)$ is absolutely integrable on $\R$ because it exhibits polynomial decay of order $\s > 1$. We compute the Fourier transform:
         \begin{align*}
           (\mc{F}f)(t) = \int_{-\infty}^{\infty}f(x)e^{-2\pi itx}\,dx &= \int_{-\infty}^{\infty}\frac{y^{s}}{|cx+r+icy|^{2s}}e^{-2\pi itx}\,dx \\
           &= \int_{-\infty}^{\infty}\frac{y^{s}}{((cx+r)^{2}+(cy)^{2})^{s}}e^{-2\pi itx}\,dx \\
@@ -1141,7 +1157,7 @@
       \begin{equation}\label{equ:non-constant_Fourier_coefficient_bound_non-holomorphic_Eisenstein_series}
         \sum_{n \neq 0}2|n|^{s-\frac{1}{2}}\s_{1-2s}(|n|)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y)e^{2\pi inx} \ll_{\e} \sum_{n \ge 1}n^{\frac{1}{2}-s+\e}\sqrt{y}e^{-2\pi ny}.
       \end{equation}
-      This latter series is absolutely uniformly convergent on $K$ by the ratio and Weierstrass $M$-tests. Therefore $E^{\ast}(z,s)$ is absolutely convergent on $K$ for any $z \in \H$ and the meromorphic continuation to $\C$ follows. It remains to investigate the poles and residues. We will accomplish this from direct inspection of the Fourier-Whittaker coefficients:
+      This latter series is absolutely uniformly convergent on $K$ by the Weierstrass $M$-test. Therefore $E^{\ast}(z,s)$ is absolutely convergent on $K$ for any $z \in \H$ and the meromorphic continuation to $\C$ follows. It remains to investigate the poles and residues. We will accomplish this from direct inspection of the Fourier-Whittaker coefficients:
 
       \begin{proposition}\label{equ:completed_real-analytic_Eisenstein_series_residues}
         $E^{\ast}(z,s)$ has simple poles at $s = 0$ and $s = 1$, and
