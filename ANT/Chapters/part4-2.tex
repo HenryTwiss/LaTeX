@@ -452,11 +452,35 @@
       \[
         \z_{K}(s) = \frac{(2\pi)^{r_{2}s}\pi^{\frac{r_{1}s}{2}}}{\G\left(\frac{s}{2}\right)^{r_{1}}\G\left(s\right)^{r_{2}}}\int_{\R_{+}^{r_{K}+1}}\w_{K}(i\mathbf{y})\mathbf{y}^{\frac{s\mathbf{N}}{2}}\,\frac{d\mathbf{y}}{\mathbf{y}}.
       \]
-      We will need to manipulate this integral representation somewhat. For any $\mathbf{y} \in \R_{+}^{r_{K}+1}$, we may write
+      We will need to manipulate this integral representation somewhat. In particular, we will change the sum defining $\w_{K}(\mathbf{z})$ and the region of integration. For the sum, as $\w_{K}(\mathbf{z})$ converges absolutely we may sum over integral ideals of $K$ and obtain
       \[
-        \mathbf{y} = t^{\frac{1}{d}}\mathbf{x}, \quad t = \Norm_{\R^{r_{K}+1}/\R}(\mathbf{y})^{\frac{d}{r_{K}+1}}, \quad \text{and} \quad \mathbf{x} = \frac{\mathbf{y}}{\Norm_{\R^{r_{K}+1}/\R}(\mathbf{y})^{\frac{1}{r_{K}+1}}},
+        \w_{K}(\mathbf{z}) = \sum_{\text{$\mf{a}$ integral}}e^{\pi i\Norm(\mf{a})^{\frac{2}{d}}\<\mathbf{z},\mathbf{2}_{\d}\>},
       \]
-      so that $\R_{+}^{r_{K}+1}$ decomposes as
+      which we will further rewrite. If $\mf{a}$ is an integral ideal, then $\mc{O}_{K}^{\ast}$ acts on $\mf{a}^{\ast}$ by multiplication. Therefore we have an orbit space $\mf{a}^{\ast}/\mc{O}_{K}^{\ast}$. The following lemma establishes a bijection between this orbit space and integral ideals in an ideal class:
+
+      \begin{lemma}\label{lem:Hecke_theta_function_lemma}
+        Let $K$ be a number field. Suppose $\mf{a}$ is an integral ideal and $\mf{K}$ is the ideal class of $\mf{a}^{-1}$. Then there is a bijection
+        \[
+          \mf{a}^{\ast}/\mc{O}_{K}^{\ast} \to \{\mf{b} \in \mf{K}:\text{$\mf{b}$ is an integral ideal}\} \qquad a \to a\mf{a}^{-1}.
+        \]
+      \end{lemma}
+      \begin{proof}
+        We first show that this map is well-defined. If $a \in \mf{a}^{\ast}$, then $a\mf{a}^{-1} = a\mc{O}_{K}\mf{a}^{-1} \subseteq \mc{O}_{K}$ by \cref{prop:explicit_inverse_ideal} so that $a\mf{a}^{-1}$ is an integral ideal belonging to $\mf{K}$ (because it differs from $\mf{a}^{-1}$ by a principal ideal). Therefore the map is well-defined. To show injectivity, suppose $a\mf{a}^{-1} = b\mf{a}^{-1}$ for some $a,b \in \mf{a}^{\ast}/\mc{O}_{K}^{\ast}$. Multiplying by $\mf{a}$, we obtain $a\mc{O}_{K} = b\mc{O}_{K}$ and hence $ab^{-1} \in \mc{O}_{K}^{\ast}$ from which injectivity follows. For surjectivity, the definition of $\mf{K}$ implies that any integral ideal $\mf{b} \in \mf{K}$ satisfies $\mf{b} = a\mf{a}^{-1}$ for some nonzero $a \in \mc{O}_{K}$ but then $a \in \mf{a}\mf{b} \subseteq \mf{a}$.
+      \end{proof}
+
+       By Minkowski theorem, any ideal class is can be represented by an integral ideal $\mf{a}$. So let $\mf{a}_{1},\ldots,\mf{a}_{h_{K}}$ be a complete set of representatives of $\Cl(K)$ consisting only of integral ideals. As the ideal class group is a group, we see that $\mf{a}_{1}^{-1},\ldots,\mf{a}_{h_{K}}^{-1}$ is also a complete set of representatives. By \cref{lem:Hecke_theta_function_lemma}, this shows that every integral ideal is uniquely of the form $a\mf{a}_{i}^{-1}$ for some $1 \le i \le h_{K}$ and $a \in \mf{a}_{i}^{\ast}/\mc{O}_{K}^{\ast}$ and thus has norm $\Norm(a\mf{a}_{i}^{-1})$. Then we may further rewrite $\w_{K}(\mathbf{z})$ as
+       \begin{equation}\label{equ:omega_K_function_special_form}
+        \w_{K}(\mathbf{z}) = \sum_{\substack{\mf{a} \in \Cl(K) \\ \text{$\mf{a}$ integral}}}\sum_{a \in \mf{a}^{\ast}/\mc{O}_{K}^{\ast}}e^{\pi i\Norm(a\mf{a}^{-1})^{\frac{2}{d}}\<\mathbf{z},\mathbf{2}_{\d}\>}.
+      \end{equation}
+      This is our desired form for $\w_{K}(\mathbf{z})$. For the region of integration, any $\mathbf{y} \in \R_{+}^{r_{K}+1}$ can be written in the form
+      \[
+        \mathbf{y} = t^{\frac{1}{d}}\mathbf{x},
+      \]
+      where
+      \[
+        t = \Norm_{\R^{r_{K}+1}/\R}(\mathbf{y})^{\frac{d}{r_{K}+1}} \quad \text{and} \quad \mathbf{x} = \frac{\mathbf{y}}{\Norm_{\R^{r_{K}+1}/\R}(\mathbf{y})^{\frac{1}{r_{K}+1}}}.
+      \]
+      Therefore $\R_{+}^{r_{K}+1}$ decomposes as
       \[
         \R_{+}^{r_{K}+1} = (0,\infty) \x S,
       \]
@@ -474,46 +498,33 @@
       \]
       we see that $\w_{S}(t)$ has exponential decay because $\w_{K}(\mathbf{z})$ does. Indeed, interchange the sum (in the definition of $\w_{K}(it^{\frac{1}{d}}\mathbf{x})$) and integral by Fubini's theorem and then note that each term is of smaller order than the next so that the series is bounded by a constant times its first term. Therefore the double integral can be viewed as the Mellin transform of $\w_{S}(t)$. We cannot proceed until we obtain a functional equation for $\w_{S}(t)$. So we will make a detour and come back to the integral representation after.
     \subsection*{\todo{The Hecke Theta Function}}
-      We will require some further setup before introducing the Hecke theta function. Observe that the map
+       The \textbf{Hecke theta function}\index{Hecke theta function} $\vt_{K}(z)$ attached to the number field $K$, is defined by
       \[
-        \log:(\R_{+}^{r_{K}+1})^{\ast} \to \R^{r_{K}+1} \qquad (x_{\s})_{\s} \to (\log(x_{\s}))_{\s},
+        \vt_{K}(\mathbf{z}) = \todo{xxx},
       \]
-      takes the norm-one surface $S$ into the trace-zero hyperplane $H$. Since $\mc{O}_{K}^{\ast}$ is closed under conjugation, $|\e|^{2} = \e\conj{\e} \in \mc{O}_{K}^{\ast}$ for every $\e \in \mc{O}_{K}^{\ast}$. Accordingly, let $|\mc{O}_{K}^{\ast}|^{2}$ be the subgroup of $\mc{O}_{K}^{\ast}$ defined by
+      for $\mathbf{z} \in \H^{r_{K}+1}$. \todo{Absolute convergence and exponential decay properties}. Establishing the relationship to $\w_{K}(\mathbf{z})$ will require some work. Consider the isomorphism
       \[
-        |\mc{O}_{K}^{\ast}|^{2} = \{|\e|^{2} \in \mc{O}_{K}^{\ast}:\e \in \mc{O}_{K}^{\ast}\}.
+        \log:(\R_{+}^{r_{K}+1})^{\ast} \to \R^{r_{K}+1} \qquad (x_{\s})_{\s} \to (\log(x_{\s}))_{\s}.
       \]
-      \todo{xxx}
-      \iffalse
-      Recall that the ideal class group $\Cl(K)$ is finite by \cref{equ:finitness_of_class_number}. Moreover, if $\mf{a} \in \Cl(K)$ is an integral ideal representative of a class then $\mc{O}_{K}^{\ast}$ acts on $\mf{a}^{\ast}$ by multiplication. Therefore we have an orbit space $\mf{a}^{\ast}/mc{O}_{K}^{\ast}$. The \textbf{Hecke theta function}\index{Hecke theta function} $\vt_{K}(z)$ attached to the number field $K$, is defined by
+      In particular, it restricts to a bijection between the norm-one surface $S$ and the trace-zero hyperplane $H$. By \cref{thm:unit_group_complete_lattice}, $\L$ is a complete lattice in $H$ and therefore has a fundamental domain $\mc{M}$. Then
       \[
-        \vt_{K}(\mathbf{z}) = \sum_{\substack{\mf{a} \in \Cl(K) \\ \text{$\mf{a}$ integral}}}\sum_{a \in \mf{a}^{\ast}/\mc{O}_{K}^{\ast}}e^{2\pi i\Norm(a\mf{a}^{-1})^{\frac{2}{d}}\<\mathbf{z},\mathbf{2}_{\d}\>},
+        H = \bigcup_{\l \in \L}(\mc{M}+\l),
       \]
-      for $\mathbf{z} \in \H^{r_{K}+1}$. We first need to verify that $\vt_{K}(\mathbf{z})$ is well-defined. By Minkowski's theorem, every ideal class contains an integral ideal so that the outer sum is defined. We now show that the sums are independent of the representatives $\mf{a}$ and $a$. Clearly the summand is independent of the representative $a$ since the set of representatives $a\mc{O}_{K}^{\ast}$ all have $|\Norm(a)|$ as the absolute value of their norm by \cref{cor:unit_if_and_only_if_absolute_value_norm_1}. To see that the inner sum is independent of the representative $\mf{a}$ requires a lemma:
-
-      \begin{lemma}\label{lem:Hecke_theta_function_lemma}
-        Let $K$ be a number field. Suppose $\mf{a}$ is an integral ideal and $\mf{K}$ is the ideal class of $\mf{a}^{-1}$. Then there is a bijection
-        \[
-          \mf{a}^{\ast}/\mc{O}_{K}^{\ast} \to \{\mf{b} \in \mf{K}:\text{$\mf{b}$ is an integral ideal}\} \qquad a \to a\mf{a}^{-1}.
-        \]
-      \end{lemma}
-      \begin{proof}
-        We first show that this map is well-defined. If $a \in \mf{a}^{\ast}$, then $a\mf{a}^{-1} = a\mc{O}_{K}\mf{a}^{-1} \subseteq \mc{O}_{K}$ by \cref{prop:explicit_inverse_ideal} so that $a\mf{a}^{-1}$ is an integral ideal belonging to $\mf{K}$ (because it differs from $\mf{a}^{-1}$ by a principal ideal). Therefore the map is well-defined. To show injectivity, suppose $a\mf{a}^{-1} = b\mf{a}^{-1}$ for some $a,b \in \mf{a}^{\ast}/\mc{O}_{K}^{\ast}$. Multiplying by $\mf{a}$, we obtain $a\mc{O}_{K} = b\mc{O}_{K}$ and hence $ab^{-1} \in \mc{O}_{K}^{\ast}$ from which injectivity follows. For surjectivity, the definition of $\mf{K}$ implies that any integral ideal $\mf{b} \in \mf{K}$ satisfies $\mf{b} = a\mf{a}^{-1}$ for some nonzero $a \in \mc{O}_{K}$ but then $a \in \mf{a}\mf{b} \subseteq \mf{a}$.
-      \end{proof}
-      
-      By \cref{lem:Hecke_theta_function_lemma}, the inner sum is independent of the representative $\mf{a}$ because if $\mf{b}$ is another integral ideal belonging to the same ideal class as $\mf{a}$, then they differ by a principal ideal and hence $\mf{a}^{-1}$ and $\mf{b}^{-1}$ belong to the same ideal class. All of this work shows that $\vt_{K}(\mathbf{z})$ is well-defined. Moreover, we can use \cref{lem:Hecke_theta_function_lemma} to transition the double sum to a sum over integral ideals or positive integers. Indeed, as we have previously observed there is a complete set of representatives $\mf{a}_{1},\ldots,\mf{a}_{h_{K}}$ of $\Cl(K)$ consisting only of integral ideals (by Minkowski's theorem). As the ideal class group is a group, we see that $\mf{a}_{1}^{-1},\ldots,\mf{a}_{h_{K}}^{-1}$ is also a complete set of representatives. By \cref{lem:Hecke_theta_function_lemma}, this shows that every integral ideal is uniquely of the form $a\mf{a}_{i}^{-1}$ for some $1 \le i \le h_{K}$ and $a \in \mf{a}_{i}^{\ast}/\mc{O}_{K}^{\ast}$ and thus has norm $\Norm(a\mf{a}_{i}^{-1})$. It follows that the Hecke theta function takes the alternative forms
+      and setting $\mc{F} = \log^{-1}(\mc{M})$ gives
       \[
-        \vt_{K}(\mathbf{z}) = \sum_{\text{$\mf{a}$ integral}}e^{2\pi i\Norm(a\mf{a}^{-1})^{\frac{2}{d}}\<\mathbf{z},\mathbf{2}_{\d}\>},
+        S = \bigcup_{\l \in \L}\log^{-1}(\l)\mc{F}.
       \]
-      and
+      By \cref{prop:exact_sequence_for_Dirichlets_unit_theorem}, we may express this decomposition as
       \[
-        \vt_{K}(\mathbf{z}) = \sum_{n \ge 1}a_{K}(n)e^{2\pi in^{\frac{2}{d}}\<\mathbf{z},\mathbf{2}_{\d}\>},
+        S = \bigcup_{\e \in \mc{O}_{K}^{\ast}/\mu(K)}\log^{-1}\l(\e)\mc{F}.
       \]
-      and hence the relationship to $\w_{K}(\mathbf{z})$ is given by
-      \[
-        \w_{K}(\mathbf{z}) = \vt_{K}\left(\frac{\mathbf{z}}{2}\right),
-      \]
-      so that $\vt_{K}(\mathbf{z})$ is locally absolutely uniformly convergent in the same region as $\w_{K}(\mathbf{z})$ and exhibits rapid decay.
-      \fi
+      Then we compute
+      \begin{align*}
+        \w_{S}(t) &= \int_{S}\w_{K}(it^{\frac{1}{d}}\mathbf{x})\,\frac{d\mathbf{x}}{\mathbf{x}} \\
+        &= \sum_{\e \in \mc{O}_{K}^{\ast}/\mu(K)}\int_{\log^{-1}\l(\e)\mc{F}}\w_{K}(it^{\frac{1}{d}}\mathbf{x})\,\frac{d\mathbf{x}}{\mathbf{x}} \\
+        &= \frac{1}{w_{K}}\sum_{\e \in \mc{O}_{K}^{\ast}}\int_{\mc{F}}\w_{K}(it^{\frac{1}{d}}\log^{-1}\l(\e)\mathbf{x})\,\frac{d\mathbf{x}}{\mathbf{x}} \\
+        &=  \frac{1}{w_{K}}\sum_{\e \in \mc{O}_{K}^{\ast}}\int_{\mc{F}}\sum_{\substack{\mf{a} \in \Cl(K) \\ \text{$\mf{a}$ integral}}}\sum_{a \in \mf{a}^{\ast}/\mc{O}_{K}^{\ast}}e^{\pi i\Norm(a\mf{a}^{-1})^{\frac{2}{d}}\left\<it^{\frac{1}{d}}\log^{-1}\l(\e)\mathbf{x},\mathbf{2}_{\d}\right\>}\,\frac{d\mathbf{x}}{\mathbf{x}} && \text{\cref{equ:omega_K_function_special_form}}
+      \end{align*}
     \subsection*{\todo{The Integral Representation: Part II}}
     \subsection*{\todo{The Functional Equation}}
       \todo{xxx} We identify the gamma factor of $\z_{K}(s)$ to be
