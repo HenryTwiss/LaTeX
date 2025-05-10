@@ -442,9 +442,9 @@
       \]
       It will be useful to let
       \[
-        \d = (\d_{\s})_{\s}, \quad \mathbf{N} = (N_{\s})_{\s}, \quad \text{and} \quad \mathbf{n} = (n)_{\s},
+        \mathbf{N} = (N_{\s})_{\s}, \quad \mathbf{n} = (n)_{\s}, \quad \text{and} \quad \boldsymbol{\a} = (|\s(\a)|^{N_{\s}})_{\s},
       \]
-      for $n \ge 1$. Consider the function
+      for all $n \ge 1$ and $\a \in \mc{O}_{K}$. Consider the function
       \[
         \w_{K}(\mathbf{z}) = \sum_{n \ge 1}a_{K}(n)e^{\pi in^{\frac{2}{d}}\<\mathbf{z},\mathbf{N}\>},
       \]
@@ -468,11 +468,11 @@
       \[
         \z_{K}(s) = \frac{(2\pi)^{r_{2}s}\pi^{\frac{r_{1}s}{2}}}{\G\left(\frac{s}{2}\right)^{r_{1}}\G\left(s\right)^{r_{2}}}\int_{\R_{+}^{r_{K}+1}}\w_{K}(i\mathbf{y})\mathbf{y}^{\frac{s\mathbf{N}}{2}}\,\frac{d\mathbf{y}}{\mathbf{y}}.
       \]
-      We will need to manipulate this integral representation somewhat. In particular, we will change the sum defining $\w_{K}(\mathbf{z})$ and the region of integration. For the sum, as $\w_{K}(\mathbf{z})$ converges absolutely we may sum over integral ideals of $K$ and obtain
+      We will manipulate the remaining integral to write it as a different Mellin transform. This will take a fair amount of work. As $\w_{K}(\mathbf{z})$ converges absolutely we may sum over integral ideals of $K$ and obtain
       \[
-        \w_{K}(\mathbf{z}) = \sum_{\text{$\mf{a}$ integral}}e^{\pi i\Norm(\mf{a})^{\frac{2}{d}}\<\mathbf{z},\mathbf{N}\>},
+        \int_{\R_{+}^{r_{K}+1}}\sum_{\text{$\mf{a}$ integral}}e^{\pi i\Norm(\mf{a})^{\frac{2}{d}}\<i\mathbf{y},\mathbf{N}\>}\mathbf{y}^{\frac{s\mathbf{N}}{2}}\,\frac{d\mathbf{y}}{\mathbf{y}},
       \]
-      which we will further rewrite. If $\mf{a}$ is an integral ideal, then $\mc{O}_{K}^{\ast}$ acts on $\mf{a}^{\ast}$ by multiplication. Therefore we have an orbit space $\mf{a}^{\ast}/\mc{O}_{K}^{\ast}$. The following lemma establishes a bijection between this orbit space and integral ideals in an ideal class:
+      Now if $\mf{a}$ is an integral ideal, then $\mc{O}_{K}^{\ast}$ acts on $\mf{a}^{\ast}$ by multiplication. Therefore we have an orbit space $\mf{a}^{\ast}/\mc{O}_{K}^{\ast}$. The following lemma establishes a bijection between this orbit space and integral ideals in an ideal class:
 
       \begin{lemma}\label{lem:Hecke_theta_function_lemma}
         Let $K$ be a number field. Suppose $\mf{a}$ is an integral ideal and $\mf{K}$ is the ideal class of $\mf{a}^{-1}$. Then there is a bijection
@@ -484,50 +484,39 @@
         We first show that this map is well-defined. If $\a \in \mf{a}^{\ast}$, then $\a\mf{a}^{-1} = \a\mc{O}_{K}\mf{a}^{-1} \subseteq \mc{O}_{K}$ by \cref{prop:explicit_inverse_ideal} so that $\a\mf{a}^{-1}$ is an integral ideal belonging to $\mf{K}$ (because it differs from $\mf{a}^{-1}$ by a principal ideal). Therefore the map is well-defined. To show injectivity, suppose $\a\mf{a}^{-1} = \b\mf{a}^{-1}$ for some $\a,\b \in \mf{a}^{\ast}/\mc{O}_{K}^{\ast}$. Multiplying by $\mf{a}$, we obtain $\a\mc{O}_{K} = \b\mc{O}_{K}$ and hence $\a\b^{-1} \in \mc{O}_{K}^{\ast}$ from which injectivity follows. For surjectivity, the definition of $\mf{K}$ implies that any integral ideal $\mf{b} \in \mf{K}$ satisfies $\mf{b} = \a\mf{a}^{-1}$ for some nonzero $\a \in \mc{O}_{K}$ but then $\a \in \mf{a}\mf{b} \subseteq \mf{a}$.
       \end{proof}
 
-       By Minkowski theorem, any ideal class is can be represented by an integral ideal $\mf{a}$. So let $\mf{a}_{1},\ldots,\mf{a}_{h_{K}}$ be a complete set of representatives of $\Cl(K)$ consisting only of integral ideals. As the ideal class group is a group, we see that $\mf{a}_{1}^{-1},\ldots,\mf{a}_{h_{K}}^{-1}$ is also a complete set of representatives. By \cref{lem:Hecke_theta_function_lemma}, this shows that every integral ideal is uniquely of the form $\a\mf{a}_{i}^{-1}$ for some $1 \le i \le h_{K}$ and $\a \in \mf{a}_{i}^{\ast}/\mc{O}_{K}^{\ast}$ and thus has norm $\Norm(\a\mf{a}_{i}^{-1})$. Then we may further rewrite $\w_{K}(\mathbf{z})$ as
-       \begin{equation}\label{equ:omega_K_function_special_form}
-        \w_{K}(\mathbf{z}) = \sum_{\substack{\mf{a} \in \Cl(K) \\ \text{$\mf{a}$ integral}}}\sum_{\a \in \mf{a}^{\ast}/\mc{O}_{K}^{\ast}}e^{\pi i\Norm(\a\mf{a}^{-1})^{\frac{2}{d}}\<\mathbf{z},\mathbf{N}\>}.
-      \end{equation}
-      This is our desired form for $\w_{K}(\mathbf{z})$. For the region of integration, any $\mathbf{y} \in \R_{+}^{r_{K}+1}$ can be written in the form
+       By Minkowski theorem, any ideal class is can be represented by an integral ideal $\mf{a}$. So let $\mf{a}_{1},\ldots,\mf{a}_{h_{K}}$ be a complete set of representatives of $\Cl(K)$ consisting only of integral ideals. As the ideal class group is a group, we see that $\mf{a}_{1}^{-1},\ldots,\mf{a}_{h_{K}}^{-1}$ is also a complete set of representatives. By \cref{lem:Hecke_theta_function_lemma}, this shows that every integral ideal is uniquely of the form $\a\mf{a}_{i}^{-1}$ for some $1 \le i \le h_{K}$ and $\a \in \mf{a}_{i}^{\ast}/\mc{O}_{K}^{\ast}$ and thus has norm $\Norm(\a\mf{a}_{i}^{-1})$. Then we may further rewrite our integral as
       \[
-        \mathbf{y} = t^{\frac{1}{d}}\mathbf{x},
+        \sum_{\substack{\mf{a} \in \Cl(K) \\ \text{$\mf{a}$ integral}}}\sum_{\a \in \mf{a}^{\ast}/\mc{O}_{K}^{\ast}}\int_{\R_{+}^{r_{K}+1}}e^{\pi i\Norm(\a\mf{a}^{-1})^{\frac{2}{d}}\<i\mathbf{y},\mathbf{N}\>}\mathbf{y}^{\frac{s\mathbf{N}}{2}}\,\frac{d\mathbf{y}}{\mathbf{y}},
+      \]
+      where we have interchange the two sums and integral by Fubini's theorem. Now perform the change of variables $\mathbf{y} \to \boldsymbol{\a}\mathbf{y}$ to obtain
+      \[
+        \sum_{\substack{\mf{a} \in \Cl(K) \\ \text{$\mf{a}$ integral}}}\sum_{\a \in \mf{a}^{\ast}/\mc{O}_{K}^{\ast}}\int_{\R_{+}^{r_{K}+1}}e^{\pi i\Norm(\a\mf{a}^{-1})^{\frac{2}{d}}\<i\boldsymbol{\a}\mathbf{y},\mathbf{N}\>}(\boldsymbol{\a}\mathbf{y})^{\frac{s\mathbf{N}}{2}}\,\frac{d\mathbf{y}}{\mathbf{y}}.
+      \]
+      We will now alter the region of integration. Observe that any $\mathbf{y} \in \R_{+}^{r_{K}+1}$ can be written in the form
+      \[
+        \mathbf{y} = y^{\frac{1}{d}}\mathbf{x},
       \]
       where
       \[
-        t = \Norm_{\R^{r_{K}+1}/\R}(\mathbf{y})^{\frac{d}{r_{K}+1}} \quad \text{and} \quad \mathbf{x} = \frac{\mathbf{y}}{\Norm_{\R^{r_{K}+1}/\R}(\mathbf{y})^{\frac{1}{r_{K}+1}}}.
+        y = \Norm_{\R^{r_{K}+1}/\R}(\mathbf{y})^{\frac{d}{r_{K}+1}} \quad \text{and} \quad \mathbf{x} = \frac{\mathbf{y}}{\Norm_{\R^{r_{K}+1}/\R}(\mathbf{y})^{\frac{1}{r_{K}+1}}}.
       \]
       Therefore $\R_{+}^{r_{K}+1}$ decomposes as
       \[
         \R_{+}^{r_{K}+1} = (0,\infty) \x S,
       \]
-      where $S$ is the norm-one surface of $\R^{r_{K}+1}$. As $S$ is a multiplicative subgroup of $\R_{+}^{r_{K}+1}$, the measure $\frac{d\mathbf{y}}{\mathbf{y}}$ on $\R_{+}^{r_{K}+1}$ factors as
+      where $S$ is the norm-one hypersurface of $\R^{r_{K}+1}$. As $S$ is a multiplicative subgroup of $\R_{+}^{r_{K}+1}$, the measure $\frac{d\mathbf{y}}{\mathbf{y}}$ on $\R_{+}^{r_{K}+1}$ factors as
       \[
-        \frac{d\mathbf{y}}{\mathbf{y}} = \frac{d\mathbf{x}}{\mathbf{x}}\,\frac{dt}{t},
+        \frac{d\mathbf{y}}{\mathbf{y}} = \frac{d\mathbf{x}}{\mathbf{x}}\,\frac{dy}{y},
       \]
-      where $\frac{d\mathbf{x}}{\mathbf{x}}$ is the restriction of the measure $\frac{d\mathbf{y}}{\mathbf{y}}$ to $S$. Therefore we have an integral representation
+      where $\frac{d\mathbf{x}}{\mathbf{x}}$ is the restriction of the measure $\frac{d\mathbf{y}}{\mathbf{y}}$ to $S$. Therefore our expression takes the form
       \[
-        \z_{K}(s) = \frac{(2\pi)^{r_{2}s}\pi^{\frac{r_{1}s}{2}}}{\G\left(\frac{s}{2}\right)^{r_{1}}\G\left(s\right)^{r_{2}}}\int_{0}^{\infty}\int_{S}\w_{K}\left(it^{\frac{1}{d}}\mathbf{x}\right)t^{\frac{s}{2}}\,\frac{d\mathbf{x}}{\mathbf{x}}\,\frac{dt}{t}.
+        \sum_{\substack{\mf{a} \in \Cl(K) \\ \text{$\mf{a}$ integral}}}\sum_{\a \in \mf{a}^{\ast}/\mc{O}_{K}^{\ast}}\int_{0}^{\infty}\int_{S}e^{\pi i\Norm(\a\mf{a}^{-1})^{\frac{2}{d}}\left\<iy^{\frac{1}{d}}\boldsymbol{\a}\mathbf{x},\mathbf{N}\right\>}\boldsymbol{\a}^{\frac{s\mathbf{N}}{2}}y^{\frac{s}{2}}\,\frac{d\mathbf{x}}{\mathbf{x}}\,\frac{dy}{y}.
       \]
-      Letting
+      Now consider the isomorphism
       \[
-        \w_{S}(t) = \int_{S}\w_{K}\left(it^{\frac{1}{d}}\mathbf{x}\right)\,\frac{d\mathbf{x}}{\mathbf{x}},
+        \log:\R_{+}^{r_{K}+1} \to \R^{r_{K}+1} \qquad (x_{\s})_{\s} \to (\log(x_{\s}))_{\s}.
       \]
-      we see that $\w_{S}(t)$ has exponential decay because $\w_{K}(\mathbf{z})$ does. Indeed, interchange the sum (in the definition of $\w_{K}(it^{\frac{1}{d}}\mathbf{x})$) and integral by Fubini's theorem and then note that each term is of smaller order than the next so that the series is bounded by a constant times its first term. Therefore the double integral can be viewed as the Mellin transform of $\w_{S}(t)$. At last, this gives a final integral representation
-      \begin{equation}\label{equ:integral_representation_Dedekind_1}
-        \z_{K}(s) = \frac{(2\pi)^{r_{2}s}\pi^{\frac{r_{1}s}{2}}}{\G\left(\frac{s}{2}\right)^{r_{1}}\G\left(s\right)^{r_{2}}}\int_{0}^{\infty} \w_{S}(t)\,\frac{dt}{t}.
-      \end{equation}
-      
-      We cannot proceed until we obtain a functional equation for $\w_{S}(t)$. So we will make a detour and come back to the integral representation after.
-    \subsection*{\todo{The Hecke Theta Function}}
-       The \textbf{Hecke theta function}\index{Hecke theta function} $\vt_{K}(t)$ attached to the number field $K$, is defined by
-      \[
-        \vt_{K}(\mathbf{z}) = \sum_{\substack{\mf{a} \in \Cl(K) \\ \text{$\mf{a}$ integral}}}\sum_{\a \in \mf{a}^{\ast}}e^{2\pi i\Norm(\a\mf{a}^{-1})^{\frac{2}{d}}\left\<t^{\frac{1}{d}}\mathbf{z},\mathbf{N}\right\>},
-      \]
-      for $\mathbf{z} \in \H^{r_{K}+1}$. \todo{Absolute convergence and exponential decay properties}. Establishing the relationship to $\w_{S}(\mathbf{z})$ will require some work. Consider the isomorphism
-      \[
-        \log:(\R_{+}^{r_{K}+1})^{\ast} \to \R^{r_{K}+1} \qquad (x_{\s})_{\s} \to (\log(x_{\s}))_{\s}.
-      \]
-      In particular, it restricts to a bijection between the norm-one surface $S$ and the trace-zero hyperplane $H$. By \cref{thm:unit_group_complete_lattice}, $\L$ is a complete lattice in $H$ and therefore has a fundamental domain $\mc{M}$. Then
+      In particular, it restricts to a bijection between the norm-one hypersurface $S$ and the trace-zero hyperplane $H$. By \cref{thm:unit_group_complete_lattice}, $\L$ is a complete lattice in $H$ and therefore has a fundamental domain $\mc{M}$. Then
       \[
         H = \bigcup_{\l \in \L}(\mc{M}+\l).
       \]
@@ -537,16 +526,65 @@
       \]
       By \cref{prop:exact_sequence_for_Dirichlets_unit_theorem}, we may express this decomposition as
       \[
-        S = \bigcup_{\e \in \mc{O}_{K}^{\ast}/\mu(K)}\log^{-1}\l(\e)\mc{F},
+        S = \bigcup_{\e \in \mc{O}_{K}^{\ast}/\mu(K)}\log^{-1}\l(\e)\mc{F}.
       \]
-      and folding yields
+      Then folding yields
       \[
-        \w_{S}(t) = \frac{1}{w_{K}}\int_{\mc{F}}\sum_{\e \in \mc{O}_{K}^{\ast}}\w_{K}\left(it^{\frac{1}{d}}\log^{-1}\l(\e)\mathbf{x}\right)\,\frac{d\mathbf{x}}{\mathbf{x}},
+        \frac{1}{w_{K}}\sum_{\substack{\mf{a} \in \Cl(K) \\ \text{$\mf{a}$ integral}}}\sum_{\e \in \mc{O}_{K}^{\ast}}\sum_{\a \in \mf{a}^{\ast}/\mc{O}_{K}^{\ast}}\int_{0}^{\infty}\int_{\mc{F}}e^{\pi i\Norm(\a\mf{a}^{-1})^{\frac{2}{d}}\left\<iy^{\frac{1}{d}}\log^{-1}\l(\e)\boldsymbol{\a}\mathbf{x},\mathbf{N}\right\>}\boldsymbol{\a}^{\frac{s\mathbf{N}}{2}}y^{\frac{s}{2}}\,\frac{d\mathbf{x}}{\mathbf{x}}\,\frac{dy}{y},
       \]
-      because $\log^{-1}\l(\e) = \mathbf{1}$ if $\e \in \mu(K)$. \todo{xxx}. In conclusion, the relationship to $\w_{K}(\mathbf{z})$ is given by
+      because $\log^{-1}\l(\e) = \mathbf{1}$ if $\e \in \mu(K)$ and we have interchanged sums and integrals by Fubini's theorem. As $\boldsymbol{\e}^{\mathbf{N}} = |\Norm(\e)| = 1$ for all $\e \in \mc{O}_{K}^{\ast}$, we can use \cref{cor:unit_if_and_only_if_absolute_value_norm_1} to write our expression as
       \[
-        \w_{S}(t) = \frac{1}{w_{K}}\int_{\mc{F}}\left(\vt_{K}\left(it^{\frac{1}{d}}\frac{\mathbf{x}}{2}\right)-1\right)\,\frac{d\mathbf{x}}{\mathbf{x}}.
+        \frac{1}{w_{K}}\sum_{\substack{\mf{a} \in \Cl(K) \\ \text{$\mf{a}$ integral}}}\sum_{\e \in \mc{O}_{K}^{\ast}}\sum_{\a \in \mf{a}^{\ast}/\mc{O}_{K}^{\ast}}\int_{0}^{\infty}\int_{\mc{F}}e^{\pi i\Norm(\e\a\mf{a}^{-1})^{\frac{2}{d}}\left\<iy^{\frac{1}{d}}\log^{-1}\l(\e)\boldsymbol{\a}\mathbf{x},\mathbf{N}\right\>}(\boldsymbol{\e}\boldsymbol{\a})^{\frac{s\mathbf{N}}{2}}y^{\frac{s}{2}}\,\frac{d\mathbf{x}}{\mathbf{x}}\,\frac{dy}{y}.
       \]
+      By the definition of $\l$, we have $\log^{-1}\l(\e)\boldsymbol{\a} = \boldsymbol{\e\a}$ and therefore we may combine the innermost two sums to obtain
+      \[
+        \frac{1}{w_{K}}\sum_{\substack{\mf{a} \in \Cl(K) \\ \text{$\mf{a}$ integral}}}\sum_{\a \in \mf{a}^{\ast}}\int_{0}^{\infty}\int_{\mc{F}}e^{\pi i\Norm(\a\mf{a}^{-1})^{\frac{2}{d}}\left\<iy^{\frac{1}{d}}\boldsymbol{\a}\mathbf{x},\mathbf{N}\right\>}\boldsymbol{\a}^{\frac{s\mathbf{N}}{2}}y^{\frac{s}{2}}\,\frac{d\mathbf{x}}{\mathbf{x}}\,\frac{dy}{y}.
+      \]
+      Performing the change of variables $y \to \frac{y}{\boldsymbol{\a}^{\mathbf{N}}}$ gives
+      \[
+        \frac{1}{w_{K}}\sum_{\substack{\mf{a} \in \Cl(K) \\ \text{$\mf{a}$ integral}}}\sum_{\a \in \mf{a}^{\ast}}\int_{0}^{\infty}\int_{\mc{F}}e^{\pi i\Norm(\a\mf{a}^{-1})^{\frac{2}{d}}\left\<iy^{\frac{1}{d}}\boldsymbol{\a}\mathbf{x},\mathbf{N}\right\>}y^{\frac{s}{2}}\,\frac{d\mathbf{x}}{\mathbf{x}}\,\frac{dy}{y}.
+      \]
+      By Fubini's theorem again, interchange the two integrals with the two sums to obtain
+      \[
+        \int_{0}^{\infty}\w_{\mc{F}}\left(iy^{\frac{1}{d}}\right)y^{\frac{s}{2}}\,\frac{dy}{y},
+      \] 
+      where we have defined $\w_{\mc{F}}(z)$ by
+      \[
+        \w_{\mc{F}}(z) = \frac{1}{w_{K}}\int_{\mc{F}}\sum_{\substack{\mf{a} \in \Cl(K) \\ \text{$\mf{a}$ integral}}}\sum_{\a \in \mf{a}^{\ast}}e^{\pi i\Norm(\a\mf{a}^{-1})^{\frac{2}{d}}\left\<z\boldsymbol{\a}\mathbf{x},\mathbf{N}\right\>}\frac{d\mathbf{x}}{\mathbf{x}},
+      \]
+      for $z \in \H$. It is locally absolutely uniformly convergent in this region by the Weierstrass $M$-test and that $\mc{F}$ is compact (because $\mc{M}$ is). Moreover, we have
+      \[
+        \w_{\mc{F}}(z) = O\left(\frac{1}{w_{K}}\int_{\mc{F}}\sum_{\substack{\mf{a} \in \Cl(K) \\ \text{$\mf{a}$ integral}}}\sum_{\a \in \mf{a}^{\ast}}e^{-\pi y\Norm(\a\mf{a}^{-1})^{\frac{2}{d}}\left\<\boldsymbol{\a}\mathbf{x},\mathbf{N}\right\>}\frac{d\mathbf{x}}{\mathbf{x}}\right) = O(e^{-\pi y}),
+      \]
+      where the second equality follows by interchanging the sums and integral by Fubini's theorem and then noting that each term is of smaller order than the single term where $\Norm(\a\mf{a}^{-1}) = 1$ corresponding to the integral ideal $\mc{O}_{K}$ (by \cref{lem:Hecke_theta_function_lemma}) so that the double sum is bounded by a constant times this term. In particular, $\w_{\mc{F}}(z)$ exhibits exponential decay. At last, this gives a final integral representation
+      \begin{equation}\label{equ:integral_representation_Dedekind_1}
+        \z_{K}(s) = \frac{(2\pi)^{r_{2}s}\pi^{\frac{r_{1}s}{2}}}{\G\left(\frac{s}{2}\right)^{r_{1}}\G\left(s\right)^{r_{2}}}\int_{0}^{\infty}\w_{\mc{F}}\left(iy^{\frac{1}{d}}\right)y^{\frac{s}{2}}\,\frac{dy}{y},
+      \end{equation}
+      where the integral is a Mellin transform. We cannot proceed until we obtain a functional equation for $\w_{\mc{F}}(z)$. So we will make a detour and come back to the integral representation after.
+    \subsection*{\todo{The Hecke Theta Function}}
+       The \textbf{Hecke theta function}\index{Hecke theta function} $\vt_{K}(\mathbf{z})$ attached to the number field $K$, is defined by
+      \[
+        \vt_{K}(\mathbf{z}) = \sum_{\substack{\mf{a} \in \Cl(K) \\ \text{$\mf{a}$ integral}}}\sum_{\a \in \mf{a}}e^{2\pi i\Norm(\a\mf{a}^{-1})^{\frac{2}{d}}\left\<\boldsymbol{\a}\mathbf{z},\mathbf{N}\right\>},
+      \]
+      for $\mathbf{z} \in \H^{r_{K}+1}$. It is locally absolutely uniformly convergent in this region by the Weierstrass $M$-test. Moreover,
+      \[
+        \vt_{K}(\mathbf{z}) = O\left(\sum_{\substack{\mf{a} \in \Cl(K) \\ \text{$\mf{a}$ integral}}}\sum_{\a \in \mf{a}}e^{-2\pi||\mathbf{y}||_{\infty}\Norm(\a\mf{a}^{-1})^{\frac{2}{d}}\left\<\boldsymbol{\a},\mathbf{N}\right\>}\right) = O(e^{-2\pi ||\mathbf{y}||_{\infty}}),
+      \]
+      where the second equality follows by noting that each term is of smaller order than the single term where $\Norm(\a\mf{a}^{-1}) = 1$ corresponding to the integral ideal $\mc{O}_{K}$ (by \cref{lem:Hecke_theta_function_lemma}) so that the double sum is bounded by a constant times this term. The relationship to $\w_{\mc{F}}(z)$ is given by
+      \[
+        \w_{\mc{F}}(z) = \frac{1}{w_{K}}\int_{\mc{F}}\left(\vt_{K}\left(\frac{z\mathbf{x}}{2}\right)-1\right)\frac{d\mathbf{x}}{\mathbf{x}}.
+      \]
+      The essential fact we will need is a functional equation for the Hecke theta function:
+
+      \begin{theorem}\label{thm:functional_equation_Hecke_theta}
+        For $z \in \H$,
+        \[
+          \vt_{K}(\mathbf{z}) = \todo{xxx}.
+        \]
+      \end{theorem}
+      \begin{proof}
+        \todo{xxx}.
+      \end{proof}
     \subsection*{\todo{The Integral Representation: Part II}}
     \subsection*{\todo{The Functional Equation}}
       \todo{xxx} We identify the gamma factor of $\z_{K}(s)$ to be
