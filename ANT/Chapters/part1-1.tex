@@ -874,11 +874,11 @@
 
       In the unfolding/folding method, we refer to the going from the left-hand side to right-hand as \textbf{unfolding}\index{unfolding} and going from the right-hand to left-hand side as \textbf{folding}\index{folding}.
     \subsection*{The Fourier Transform}
-      The first type of integral transform we will need is the Fourier transform. Suppose $f(\mathbf{x})$ is absolutely integrable on $\R^{n}$. The \textbf{Fourier transform}\index{Fourier transform} $(\mc{F}f)(\mathbf{t})$ of $f(\mathbf{x})$ is defined by
+      The first type of integral transform we will need is the Fourier transform. Suppose $f(\mathbf{x})$ is absolutely integrable on $\R^{n}$. The \textbf{Fourier transform}\index{Fourier transform} $(\mc{F}f)(\boldsymbol{\z})$ of $f(\mathbf{x})$ is defined by
       \[
-        (\mc{F}f)(\mathbf{t}) = \int_{\R^{n}}f(\mathbf{x})e^{-2\pi i\<\mathbf{t},\mathbf{x}\>}\,d\mathbf{x}.
+        (\mc{F}f)(\boldsymbol{\z}) = \int_{\R^{n}}f(\mathbf{x})e^{-2\pi i\<\boldsymbol{\z},\mathbf{x}\>}\,d\mathbf{x}.
       \]
-      This integral is absolutely convergent precisely because $f(\mathbf{x})$ is absolutely integrable on $\R^{n}$. The Fourier transform is intimately related to periodic functions. If $f(\mathbf{x})$ is $1$-periodic in each component and integrable on $[0,1]^{n}$, then we define the $\mathbf{n}$-th \textbf{Fourier coefficient}\index{Fourier coefficient} $\hat{f}(\mathbf{n})$ of $f(\mathbf{x})$ to be
+      This integral is absolutely convergent precisely because $f(\mathbf{x})$ is absolutely integrable on $\R^{n}$. The Fourier transform is intimately related to periodic functions. If $f(\mathbf{x})$ is $1$-periodic in each component and integrable on $[0,1]^{n}$, then we define the $\mathbf{n}$-th \textbf{Fourier coefficient}\index{Fourier coefficient} $\hat{f}(\mathbf{n})$ of $f(\mathbf{x})$ by
     \[
       \hat{f}(\mathbf{n}) = \int_{[0,1]^{n}}f(\mathbf{x})e^{-2\pi i\<\mathbf{n},\mathbf{x}\>}\,d\mathbf{x}.
     \]
@@ -955,7 +955,59 @@
       This is the Poisson summation formula when $\L = \Z^{n}$ since $\Z^{n}$ is self-dual.
     \end{proof}
 
-    In practical settings, we need a class of functions $f(\mathbf{x})$ for which the assumptions of the Poisson summation formula hold. We say that $f(\mathbf{x})$ is of \textbf{Schwarz class}\index{Schwarz class} if $f \in C^{\infty}(\R^{n})$ and $f(\mathbf{x})$ along with all of its partial derivatives have rapid decay. If $f(\mathbf{x})$ is of Schwarz class, the rapid decay implies that $f(\mathbf{x})$ and all of its derivatives are absolutely integrable over $\R^{n}$. Moreover, this also implies that $F(\mathbf{x})$ and all of its derivatives are locally absolutely uniformly convergent by the Weierstrass $M$-test. The uniform limit theorem then implies $F(\mathbf{x})$ is smooth and thus the conditions of the Poisson summation formula are satisfied. A classical example of a Schwarz class function is $e^{-||\mathbf{x}||^{2}}$.
+    In practical settings, we need a class of functions $f(\mathbf{x})$ for which the assumptions of the Poisson summation formula hold. We say that $f(\mathbf{x})$ is of \textbf{Schwarz class}\index{Schwarz class} if $f \in C^{\infty}(\R^{n})$ and $f(\mathbf{x})$ along with all of its partial derivatives have rapid decay. If $f(\mathbf{x})$ is of Schwarz class, the rapid decay implies that $f(\mathbf{x})$ and all of its derivatives are absolutely integrable over $\R^{n}$. Moreover, this also implies that $F(\mathbf{x})$ and all of its derivatives are locally absolutely uniformly convergent by the Weierstrass $M$-test. The uniform limit theorem then implies $F(\mathbf{x})$ is smooth and thus the conditions of the Poisson summation formula are satisfied. The classic example of a Schwarz class function is $e^{-2\pi x^{2}}$. Actually, this function is particularly important because it is its own Fourier transform as the following general lemma shows:
+
+    \begin{lemma}\label{lem:Fourier_transform_of_exponential}
+      Let $\a,\b > 0$, $\g \ge 0$, and $\d \in \{0,1\}$. Then for $f(x) = (\b x+\g)^{\d}e^{-2\pi\a(\b x+\g)^{2}}$, we have
+      \[
+        (\mc{F}f)(\z) = \left(\frac{\z}{2\b i\sqrt{\a}}\right)^{\d}\frac{e^{\frac{2\pi i\g \z}{\b}-\frac{\pi\z^{2}}{2\b^{2}\a}}}{\sqrt{2}\b\a^{\frac{1+\d}{2}}}.
+      \]
+      In particular, $f(x) = e^{-2\pi\a x^{2}}$ gives
+      \[
+        (\mc{F}f)(\z) = \frac{e^{-\frac{\pi\z^{2}}{2\a}}}{\sqrt{2\a}}.
+      \]
+    \end{lemma}
+    \begin{proof}
+        Note that $f(x)$ is absolutely integrable because it exhibits exponential decay. We compute its Fourier transform
+        \[
+          (\mc{F}f)(\z) = \int_{-\infty}^{\infty}f(x)e^{-2\pi i\z x}\,dx = \int_{-\infty}^{\infty}(\b x+\g)^{\d}e^{-2\pi\a(\b x+\g)^{2}}e^{-2\pi i\z x}\,dx = \int_{-\infty}^{\infty}(\b x+\g)^{\d}e^{-2\pi\a((\b x+\g)^{2}+i\z x)}\,dx.
+        \]
+        By performing the change of variables $x \to \frac{x}{\b\sqrt{\a}}-\frac{\g}{\b}$, the last integral becomes
+        \[
+          \frac{e^{\frac{2\pi i\g\z}{\b}}}{\b\a^{\frac{1+\d}{2}}}\int_{-\infty}^{\infty}x^{\d}e^{-2\pi\left(x^{2}+\frac{i\z x}{\b\sqrt{\a}}\right)}\,dx.
+        \]
+        Complete the square in the exponent by observing
+        \[
+          x^{2}+\frac{i\z x}{\b\sqrt{\a}} = \left(x+\frac{i\z}{2\b\sqrt{\a}}\right)^{2}+\frac{\z^{2}}{4\b^{2}\a},
+        \]
+        so that the previous integral is equal to
+        \[
+          \frac{e^{\frac{2\pi i\g\z}{\b}-\frac{\pi\z^{2}}{2\b^{2}\a}}}{\b\a^{\frac{1+\d}{2}}}\int_{-\infty}^{\infty}x^{\d}e^{-2\pi\left(x+\frac{i\z}{2\b\sqrt{\a}}\right)^{2}}\,dx.
+        \]
+        The change of variables $x \to \frac{x}{\sqrt{2}}-\frac{i\z}{2\b\sqrt{\a}}$ is permitted without affecting the line of integration by viewing the integral as a complex integral, noting that the integrand is entire as a complex function, and shifting the line of integration. Then the integral takes the form
+        \[
+          \frac{e^{\frac{2\pi i\g\z}{q}-\frac{\pi\z^{2}}{2\b^{2}\a}}}{\sqrt{2}\b\a^{\frac{1+\d}{2}}}\int_{-\infty}^{\infty}\left(\frac{x}{\sqrt{2}}+\frac{\z}{2i\b\sqrt{\a}}\right)^{\d}e^{-\pi x^{2}}\,dx.
+        \]
+        If $\d = 0$, we obtain
+        \begin{equation}\label{equ:Fourier_transform_of_exponential_1}
+          \frac{e^{\frac{2\pi i\g\z}{q}-\frac{\pi\z^{2}}{2\b^{2}\a}}}{\sqrt{2}\b\a^{\frac{1+\d}{2}}}\int_{-\infty}^{\infty}e^{-\pi x^{2}}\,dx = \frac{e^{\frac{2\pi i\g\z}{q}-\frac{\pi\z^{2}}{2\b^{2}\a}}}{\sqrt{2}\b\a^{\frac{1+\d}{2}}},
+        \end{equation}
+        where the equality holds because the integral is $1$ since it is the Gaussian integral (see \cref{append:Special_Integrals}). If $\d_{\chi} = 1$, then by direct computation
+        \[
+          \int_{-\infty}^{\infty}\frac{x}{\sqrt{2}}e^{-\pi x^{2}}\,dx = -\frac{1}{\sqrt{8}\pi}e^{-\pi x^{2}}\bigg|_{-\infty}^{\infty} = 0,
+        \]
+        and we obtain
+        \begin{equation}\label{equ:Fourier_transform_of_exponential_2}
+          \frac{e^{\frac{2\pi i\g\z}{q}-\frac{\pi\z^{2}}{2\b^{2}\a}}}{\sqrt{2}\b\a^{\frac{1+\d}{2}}}\int_{-\infty}^{\infty}\left(\frac{\z}{2i\b\sqrt{\a}}\right)e^{-\pi x^{2}}\,dx = \frac{e^{\frac{2\pi i\g\z}{q}-\frac{\pi\z^{2}}{2\b^{2}\a}}}{\sqrt{2}\b\a^{\frac{1+\d}{2}}}\left(\frac{\z}{2i\b\sqrt{\a}}\right),
+        \end{equation}
+        where the equality holds because the last integral is a $\left(\frac{\z}{2i\b\sqrt{\a}}\right)$ multiple of the the Gaussian integral. Combining \cref{equ:Fourier_transform_of_exponential_1,equ:Fourier_transform_of_exponential_2} gives
+        \[
+          (\mc{F}f)(t) = \frac{e^{\frac{2\pi i\g\z}{q}-\frac{\pi\z^{2}}{2\b^{2}\a}}}{\sqrt{2}\b\a^{\frac{1+\d}{2}}}\left(\frac{\z}{2i\b\sqrt{\a}}\right)^{\d},
+        \]
+        proving the first claim. The second claim follows from the first by setting $\b = 1$, $\g = 0$, and $\d = 0$.
+    \end{proof}
+
+    Taking $\a = \frac{1}{2}$ in \cref{lem:Fourier_transform_of_exponential} shows that the Fourier transform of $e^{-\pi x^{2}}$ is itself.
     \subsection*{The Mellin Transform}
       Like the Fourier transform, the Mellin transform is another type of integral transform. If $f(\mathbf{x})$ is a continuous function on $\R_{+}^{n}$ and $f(\infty) = \lim_{\mathbf{x} \to \infty}f(\mathbf{x})$ exists, then the \textbf{Mellin transform}\index{Mellin transform} $(\mc{M}f)(\mathbf{s})$ of $f(\mathbf{x})$ on $\C^{n}$ is given by
       \[

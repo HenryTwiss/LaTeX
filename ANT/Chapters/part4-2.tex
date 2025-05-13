@@ -67,31 +67,15 @@
         \[
           \vt(z) = \sum_{n \in \Z}e^{2\pi in^{2}z}.
         \]
-        By the identity theorem it suffices to verify this for $z = iy$ with $y > 0$. So set $f(x) = e^{-2\pi x^{2}y}$. Then $f(x)$ is of Schwarz class because it exhibits exponential decay. We compute its Fourier transform
+        To do this, we compute the Fourier transform of the summands and by the identity theorem it suffices to verify this for $z = iy$ with $y > 0$. So set
         \[
-          (\mc{F}f)(t) = \int_{-\infty}^{\infty}f(x)e^{-2\pi itx}\,dx = \int_{-\infty}^{\infty}e^{-2\pi x^{2}y}e^{-2\pi itx}\,dx = \int_{-\infty}^{\infty}e^{-2\pi(x^{2}y+itx)}\,dx.
+          f(x) = e^{-2\pi x^{2}y}.
         \]
-        Making the change of variables $x \to \frac{x}{\sqrt{y}}$, the last integral becomes
-        \[
-          \frac{1}{\sqrt{y}}\int_{-\infty}^{\infty}e^{-2\pi\left(x^{2}+\frac{itx}{\sqrt{y}}\right)}.
-        \]
-        Complete the square in the exponent by noticing
-        \[
-          x^{2}+\frac{itx}{\sqrt{y}} = \left(x+\frac{it}{2\sqrt{y}}\right)^{2}+\frac{t^{2}}{4y},
-        \]
-        so that the previous integral is equal to
-        \[
-          \frac{e^{-\frac{\pi t^{2}}{2y}}}{\sqrt{y}}\int_{-\infty}^{\infty}e^{-2\pi\left(x+\frac{it}{2\sqrt{y}}\right)^{2}}\,dx.
-        \]
-        The change of variables $x \to \frac{x}{\sqrt{2}}-\frac{it}{2\sqrt{y}}$ is permitted without affecting the line of integration by viewing the integral as a complex integral, noting that the integrand is entire as a complex function, and shifting the line of integration. This gives
-        \[
-          \frac{e^{-\frac{\pi t^{2}}{2y}}}{\sqrt{2y}}\int_{-\infty}^{\infty}e^{-\pi x^{2}}\,dx = \frac{e^{-\frac{\pi t^{2}}{2y}}}{\sqrt{2y}},
-        \]
-        where the last equality follows because the last integral above is $1$ since it is the Gaussian integral (see \cref{append:Special_Integrals}). Thus
+        Then $f(x)$ is of Schwarz class because it exhibits exponential decay. By \cref{lem:Fourier_transform_of_exponential}, we have
         \[
           (\mc{F}f)(t) = \frac{e^{-\frac{\pi t^{2}}{2y}}}{\sqrt{2y}}.
         \]
-        By the Poisson summation formula and the identity theorem, we have
+        Then the Poisson summation formula and the identity theorem together imply
         \[
           \vt(z) = \sum_{n \in \Z}e^{2\pi in^{2}z} = \sum_{t \in \Z}\frac{e^{-\frac{\pi it^{2}}{2z}}}{\sqrt{-2iz}} = \frac{1}{\sqrt{-2iz}}\sum_{t \in \Z}e^{-\frac{\pi it^{2}}{2z}} = \frac{1}{\sqrt{-2iz}}\vt\left(-\frac{1}{4z}\right).
         \]
@@ -273,43 +257,15 @@
         \[
           I_{a}(z) = \sum_{m \in \Z}(mq+a)^{\d_{\chi}}e^{2\pi i(mq+a)^{2}z}.
         \]
-        We will apply the Poisson summation formula to $I_{a}(z)$. By the identity theorem it suffices to verify this for $z = iy$ with $y > 0$. Set $f(x) = (xq+a)^{\d_{\chi}}e^{-2\pi(xq+a)^{2}y}$. Then $f(x)$ is of Schwarz class because it exhibits exponential decay. We compute its Fourier transform
+        We will apply the Poisson summation formula to $I_{a}(z)$. To do this, we compute the Fourier transform of the summands and by the identity theorem it suffices to verify this for $z = iy$ with $y > 0$. So set
         \[
-          (\mc{F}f)(t) = \int_{-\infty}^{\infty}f(x)e^{-2\pi itx}\,dx = \int_{-\infty}^{\infty}(xq+a)^{\d_{\chi}}e^{-2\pi(xq+a)^{2}y}e^{-2\pi itx}\,dx = \int_{-\infty}^{\infty}(xq+a)^{\d_{\chi}}e^{-2\pi((xq+a)^{2}y+itx)}\,dx.
+          f(x) = (xq+a)^{\d_{\chi}}e^{-2\pi(xq+a)^{2}y}.
         \]
-        By performing the change of variables $x \to \frac{x}{q\sqrt{y}}-\frac{a}{q}$, the last integral becomes
-        \[
-          \frac{e^{\frac{2\pi iat}{q}}}{qy^{\frac{1+\d_{\chi}}{2}}}\int_{-\infty}^{\infty}x^{\d_{\chi}}e^{-2\pi\left(x^{2}+\frac{itx}{q\sqrt{y}}\right)}\,dx.
-        \]
-        Complete the square in the exponent by observing
-        \[
-          x^{2}+\frac{itx}{q\sqrt{y}} = \left(x+\frac{it}{2q\sqrt{y}}\right)^{2}+\frac{t^{2}}{4q^{2}y},
-        \]
-        so that the previous integral is equal to
-        \[
-          \frac{e^{\frac{2\pi iat}{q}-\frac{\pi t^{2}}{2q^{2}y}}}{qy^{\frac{1+\d_{\chi}}{2}}}\int_{-\infty}^{\infty}x^{\d_{\chi}}e^{-2\pi\left(x+\frac{it}{2q\sqrt{y}}\right)^{2}}\,dx.
-        \]
-        The change of variables $x \to \frac{x}{\sqrt{2}}-\frac{it}{2q\sqrt{y}}$ is permitted without affecting the line of integration by viewing the integral as a complex integral, noting that the integrand is entire as a complex function, and shifting the line of integration. This gives
-        \[
-          \frac{e^{\frac{2\pi iat}{q}-\frac{\pi t^{2}}{2q^{2}y}}}{\sqrt{2}qy^{\frac{1+\d_{\chi}}{2}}}\int_{-\infty}^{\infty}\left(\frac{x}{\sqrt{2}}-\frac{it}{2q\sqrt{y}}\right)^{\d_{\chi}}e^{-\pi x^{2}}\,dx = \frac{e^{\frac{2\pi iat}{q}-\frac{\pi t^{2}}{2q^{2}y}}}{\sqrt{2}qy^{\frac{1+\d_{\chi}}{2}}}\int_{-\infty}^{\infty}\left(\frac{x}{\sqrt{2}}+\frac{t}{2qi\sqrt{y}}\right)^{\d_{\chi}}e^{-\pi x^{2}}\,dx.
-        \]
-        If $\d_{\chi} = 0$, we obtain
-        \begin{equation}\label{functional_equation_for_twisted_Jacobi_theta_function_1}
-          \frac{e^{\frac{2\pi iat}{q}-\frac{\pi t^{2}}{2q^{2}y}}}{\sqrt{2}qy^{\frac{1+\d_{\chi}}{2}}}\int_{-\infty}^{\infty}e^{-\pi x^{2}}\,dx = \frac{e^{\frac{2\pi iat}{q}-\frac{\pi t^{2}}{2q^{2}y}}}{\sqrt{2}qy^{\frac{1+\d_{\chi}}{2}}},
-        \end{equation}
-        where the equality holds because the integral is $1$ since it is the Gaussian integral (see \cref{append:Special_Integrals}). If $\d_{\chi} = 1$, then by direct computation
-        \[
-          \int_{-\infty}^{\infty}\frac{x}{\sqrt{2}}e^{-\pi x^{2}}\,dx = -\frac{1}{\sqrt{8}\pi}e^{-\pi x^{2}}\bigg|_{-\infty}^{\infty} = 0,
-        \]
-        and
-        \begin{equation}\label{functional_equation_for_twisted_Jacobi_theta_function_2}
-          \frac{e^{\frac{2\pi iat}{q}-\frac{\pi t^{2}}{2q^{2}y}}}{\sqrt{2}qy^{\frac{1+\d_{\chi}}{2}}}\int_{-\infty}^{\infty}\left(\frac{t}{2qi\sqrt{y}}\right)e^{-\pi x^{2}}\,dx = \frac{e^{\frac{2\pi iat}{q}-\frac{\pi t^{2}}{2q^{2}y}}}{\sqrt{2}qy^{\frac{1+\d_{\chi}}{2}}}\left(\frac{t}{2qi\sqrt{y}}\right)\int_{-\infty}^{\infty}e^{-\pi x^{2}}\,dx = \frac{e^{\frac{2\pi iat}{q}-\frac{\pi t^{2}}{2q^{2}y}}}{\sqrt{2}qy^{\frac{1+\d_{\chi}}{2}}}\left(\frac{t}{2qi\sqrt{y}}\right),
-        \end{equation}
-        where the last equality follows because the last integral is the Gaussian integral again. Since $\left(\frac{t}{2qi\sqrt{y}}\right)^{\d_{\chi}} = 1$ if $\d_{\chi} = 0$, \cref{functional_equation_for_twisted_Jacobi_theta_function_1,functional_equation_for_twisted_Jacobi_theta_function_2} together imply
+        Then $f(x)$ is of Schwarz class because it exhibits exponential decay. By \cref{lem:Fourier_transform_of_exponential}, we have
         \[
           (\mc{F}f)(t) = \frac{e^{\frac{2\pi iat}{q}-\frac{\pi t^{2}}{2q^{2}y}}}{\sqrt{2}qy^{\frac{1+\d_{\chi}}{2}}}\left(\frac{t}{2qi\sqrt{y}}\right)^{\d_{\chi}}.
         \]
-        By the Poisson summation formula and the identity theorem, we have
+        Then the Poisson summation formula and the identity theorem together imply
         \[
           I_{a}(z) = \sum_{m \in \Z}(mq+a)^{\d_{\chi}}e^{2\pi i(mq+a)^{2}z} = \sum_{t \in \Z}\frac{e^{\frac{2\pi iat}{q}-\frac{\pi it^{2}}{2q^{2}z}}}{\sqrt{2}q(-iz)^{\frac{1+\d_{\chi}}{2}}}\left(\frac{t}{2qi\sqrt{-iz}}\right)^{\d_{\chi}}.
         \]
