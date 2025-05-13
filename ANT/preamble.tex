@@ -1,0 +1,175 @@
+%===============================%
+%  Packages and basic settings  %
+%===============================%
+\usepackage[headheight=15pt,rmargin=0.5in,lmargin=0.5in,tmargin=0.75in,bmargin=0.75in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{imakeidx}
+\usepackage{framed}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usepackage{enumitem}
+\usepackage{multirow}
+\usepackage{hyperref}
+\usepackage[capitalise,noabbrev]{cleveref}
+\usepackage{appendix}
+\usepackage[hyperref,amsthm,amsmath,thref,framed,thmmarks]{ntheorem}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage{nomencl}\makenomenclature
+\usetikzlibrary{braids,arrows,decorations.markings,calc}
+
+%=======================%
+%  Book style settings  %
+%=======================%
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\nouppercase{\leftmark}}
+\fancyfoot[C]{\thepage}
+\setlength\parindent{0pt}
+\raggedbottom
+
+%====================================%
+%  Theorems, environments & cleveref  %
+%====================================%
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{conjecture}{Conjecture}[section]
+\newtheorem{remark}{Remark}[section]
+\theoremstyle{definition}\newtheorem{problem}{Open Problem}[section]
+\crefname{conjecture}{Conjecture}{Conjectures}
+\crefname{problem}{Open Problem}{Open Problems}
+
+\newenvironment{stabular}[2][1]
+  {\def\arraystretch{#1}\tabular{#2}}
+  {\endtabular}
+
+%==================================%
+%  Custom commands & environments  %
+%==================================%
+\newcommand{\legendre}[2]{\left(\frac{#1}{#2}\right)}
+\newcommand{\dlegendre}[2]{\displaystyle{\left(\frac{#1}{#2}\right)}}
+\newcommand{\tlegendre}[2]{\textstyle{\left(\frac{#1}{#2}\right)}}
+\newcommand{\psum}{\sideset{}{'}\sum}
+\newcommand{\asum}{\sideset{}{^{\ast}}\sum}
+\newcommand{\tmod}[1]{\ \left(\text{mod }#1\right)}
+\newcommand{\xto}[1]{\xrightarrow{#1}}
+\newcommand{\xfrom}[1]{\xleftarrow{#1}}
+\newcommand{\normal}{\mathrel{\unlhd}}
+\newcommand{\mf}{\mathfrak}
+\newcommand{\mc}{\mathcal}
+\newcommand{\ms}{\mathscr}
+
+\newcommand{\Mat}{\mathrm{Mat}}
+\newcommand{\GL}{\mathrm{GL}}
+\newcommand{\SL}{\mathrm{SL}}
+\newcommand{\PSL}{\mathrm{PSL}}
+\renewcommand{\O}{\mathrm{O}}
+\newcommand{\SO}{\mathrm{SO}}
+\newcommand{\U}{\mathrm{U}}
+\newcommand{\Sp}{\mathrm{Sp}}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\renewcommand{\H}{\mathbb{H}}
+\renewcommand{\P}{\mathbb{P}}
+
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\newcommand{\g}{\gamma}
+\renewcommand{\d}{\delta}
+\newcommand{\z}{\zeta}
+\renewcommand{\t}{\theta}
+\renewcommand{\i}{\iota}
+\renewcommand{\k}{\kappa}
+\renewcommand{\l}{\lambda}
+\newcommand{\s}{\sigma}
+\newcommand{\w}{\omega}
+
+\newcommand{\G}{\Gamma}
+\newcommand{\D}{\Delta}
+\renewcommand{\L}{\Lambda}
+\newcommand{\W}{\Omega}
+\newcommand{\scL}{\mathscr{L}}
+
+\newcommand{\e}{\varepsilon}
+\newcommand{\vt}{\vartheta}
+\newcommand{\vphi}{\varphi}
+\newcommand{\emt}{\varnothing}
+
+\newcommand{\x}{\times}
+\newcommand{\ox}{\otimes}
+\newcommand{\op}{\oplus}
+\newcommand{\bigox}{\bigotimes}
+\newcommand{\bigop}{\bigoplus}
+\newcommand{\del}{\partial}
+\newcommand{\<}{\langle}
+\renewcommand{\>}{\rangle}
+\newcommand{\lf}{\lfloor}
+\newcommand{\rf}{\rfloor}
+\newcommand{\wtilde}{\widetilde}
+\newcommand{\what}{\widehat}
+\newcommand{\conj}{\overline}
+\newcommand{\cchi}{\conj{\chi}}
+
+\DeclareMathOperator{\id}{\textrm{id}}
+\DeclareMathOperator{\sgn}{\mathrm{sgn}}
+\DeclareMathOperator{\im}{\mathrm{im}}
+\DeclareMathOperator{\rk}{\mathrm{rk}}
+\DeclareMathOperator{\tr}{\mathrm{trace}}
+\DeclareMathOperator{\nm}{\mathrm{norm}}
+\DeclareMathOperator{\disc}{\mathrm{disc}}
+\DeclareMathOperator{\ord}{\mathrm{ord}}
+\DeclareMathOperator{\Hom}{\mathrm{Hom}}
+\DeclareMathOperator{\End}{\mathrm{End}}
+\DeclareMathOperator{\Aut}{\mathrm{Aut}}
+\DeclareMathOperator{\Tor}{\mathrm{Tor}}
+\DeclareMathOperator{\Ann}{\mathrm{Ann}}
+\DeclareMathOperator{\Gal}{\mathrm{Gal}}
+\DeclareMathOperator{\Trace}{\mathrm{Tr}}
+\DeclareMathOperator{\Norm}{\mathrm{N}}
+\DeclareMathOperator{\Cl}{\mathrm{Cl}}
+\DeclareMathOperator{\Span}{\mathrm{Span}}
+\DeclareMathOperator*{\Res}{\mathrm{Res}}
+\DeclareMathOperator{\Vol}{\mathrm{Vol}}
+\DeclareMathOperator{\Li}{\mathrm{Li}}
+\DeclareMathOperator{\Supp}{\mathrm{Supp}}
+\renewcommand{\Re}{\mathrm{Re}}
+\renewcommand{\Im}{\mathrm{Im}}
+\DeclareMathOperator{\Ph}{\mathrm{Ph}}
+\DeclareMathOperator{\SC}{\mathrm{SC}}
+
+
+\newcommand{\GH}{\G\backslash\H}
+\newcommand{\GG}{\G_{\infty}\backslash\G}
+
+\newenvironment{psmallmatrix}
+  {\left(\begin{smallmatrix}}
+  {\end{smallmatrix}\right)}
+
+%============%
+%  Comments  %
+%============%
+\newcommand{\todo}[1]{\textcolor{red}{\sf Todo: [#1]}}
+
+%===================%
+%  Label reminders  %
+%===================%
+% [label=(\roman*)]
+% [label=(\alph*)]
+% [label=(\arabic{enumi})]
+
+%==================%
+%  Other settings  %
+%==================%
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+\tikzset{->-/.style={decoration={
+  markings,
+  mark=at position .5 with {\arrow{>}}},postaction={decorate}}}
