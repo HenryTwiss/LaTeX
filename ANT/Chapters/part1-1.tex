@@ -1017,9 +1017,9 @@
         \end{enumerate}
       \end{proof}
 
-      The properties in \cref{prop:Fourier_transform_properties} are immensely useful when computing Fourier transforms. We now introduce a examples of Schwarz class functions and compute their Fourier transforms. The classic example of a Schwarz class function is $e^{-2\pi x^{2}}$. This function is particularly important because it is essentially its own Fourier transform:
+      The properties in \cref{prop:Fourier_transform_properties} are immensely useful when computing Fourier transforms. We now introduce examples of Schwarz class functions and compute their Fourier transforms. The classic example of a Schwarz class function is $e^{-2\pi x^{2}}$. This function is particularly important because it is essentially its own Fourier transform:
 
-      \begin{proposition}\label{prop:Fourier_transform_of_exponential}
+      \begin{proposition}\label{prop:Fourier_transform_of_exponential_single_variable}
         Let $\a > 0$ and set $f(x) = e^{-2\pi\a x^{2}}$. Then
         \[
           (\mc{F}f)(\z) = \frac{e^{-\frac{\pi\z^{2}}{2\a}}}{\sqrt{2\a}}.
@@ -1027,27 +1027,40 @@
         In particular, $e^{-\pi x^{2}}$ is its own Fourier transform.
       \end{proposition}
       \begin{proof}
-          Note that $f(x)$ is absolutely integrable because it exhibits exponential decay. We compute its Fourier transform
-          \[
-            (\mc{F}f)(\z) = \int_{-\infty}^{\infty}e^{-2\pi\a x^{2}}e^{-2\pi i\z x}\,dx = \int_{-\infty}^{\infty}e^{-2\pi\a(x^{2}+i\z x)}\,dx.
-          \]
-          By performing the change of variables $x \to \frac{x}{\sqrt{\a}}$, the last integral becomes
-          \[
-            \frac{1}{\sqrt{\a}}\int_{-\infty}^{\infty}e^{-2\pi\left(x^{2}+\frac{i\z x}{\sqrt{\a}}\right)}\,dx.
-          \]
-          Complete the square in the exponent by observing
-          \[
-            x^{2}+\frac{i\z x}{\sqrt{\a}} = \left(x+\frac{i\z}{2\sqrt{\a}}\right)^{2}+\frac{\z^{2}}{4\a},
-          \]
-          so that the previous integral is equal to
-          \[
-            \frac{e^{-\frac{\pi\z^{2}}{2\a}}}{\sqrt{\a}}\int_{-\infty}^{\infty}e^{-2\pi\left(x+\frac{i\z}{2\sqrt{\a}}\right)^{2}}\,dx.
-          \]
-          The change of variables $x \to \frac{x}{\sqrt{2}}-\frac{i\z}{\sqrt{\a}}$ is permitted without affecting the line of integration by viewing the integral as a complex integral, noting that the integrand is entire as a complex function, and shifting the line of integration. Then the integral takes the form
-          \[
-            \frac{e^{-\frac{\pi\z^{2}}{2\a}}}{\sqrt{2\a}}\int_{-\infty}^{\infty}e^{-\pi x^{2}}\,dx = \frac{e^{-\frac{\pi\z^{2}}{2\a}}}{\sqrt{2\a}},
-          \]
-          where the equality holds because the integral is $1$ since it is the Gaussian integral (see \cref{append:Special_Integrals}). This proves the first statement. The second statement follows by taking $\a = \frac{1}{2}$.
+        Note that $f(x)$ is absolutely integrable because it exhibits exponential decay. We compute its Fourier transform
+        \[
+          (\mc{F}f)(\z) = \int_{-\infty}^{\infty}e^{-2\pi\a x^{2}}e^{-2\pi i\z x}\,dx = \int_{-\infty}^{\infty}e^{-2\pi\a(x^{2}+i\z x)}\,dx.
+        \]
+        By performing the change of variables $x \to \frac{x}{\sqrt{\a}}$, the last integral becomes
+        \[
+          \frac{1}{\sqrt{\a}}\int_{-\infty}^{\infty}e^{-2\pi\left(x^{2}+\frac{i\z x}{\sqrt{\a}}\right)}\,dx.
+        \]
+        Complete the square in the exponent by observing
+        \[
+          x^{2}+\frac{i\z x}{\sqrt{\a}} = \left(x+\frac{i\z}{2\sqrt{\a}}\right)^{2}+\frac{\z^{2}}{4\a},
+        \]
+        so that the previous integral is equal to
+        \[
+          \frac{e^{-\frac{\pi\z^{2}}{2\a}}}{\sqrt{\a}}\int_{-\infty}^{\infty}e^{-2\pi\left(x+\frac{i\z}{2\sqrt{\a}}\right)^{2}}\,dx.
+        \]
+        The change of variables $x \to \frac{x}{\sqrt{2}}-\frac{i\z}{\sqrt{\a}}$ is permitted without affecting the line of integration by viewing the integral as a complex integral, noting that the integrand is entire as a complex function, and shifting the line of integration. Then the integral takes the form
+        \[
+          \frac{e^{-\frac{\pi\z^{2}}{2\a}}}{\sqrt{2\a}}\int_{-\infty}^{\infty}e^{-\pi x^{2}}\,dx = \frac{e^{-\frac{\pi\z^{2}}{2\a}}}{\sqrt{2\a}},
+        \]
+        where the equality holds because the integral is $1$ since it is the Gaussian integral (see \cref{append:Special_Integrals}). This proves the first statement. The second statement follows by taking $\a = \frac{1}{2}$.
+      \end{proof}
+
+      The analog of $e^{-2\pi x^{2}}$ on $\R^{n}$ is $e^{-2\pi\<\mathbf{x},\mathbf{x}\>}$ which is clearly Schwarz class because $e^{-2\pi x^{2}}$ is. We also obtain an analog of \cref{prop:Fourier_transform_of_exponential_single_variable} for this Schwarz class function as a corollary:
+
+      \begin{corollary}
+        Let $\a > 0$ and set $f(\mathbf{x}) = e^{-2\pi\a\<\mathbf{x},\mathbf{x}\>}$ on $\R^{n}$. Then
+        \[
+          (\mc{F}f)(\boldsymbol{\z}) = \frac{e^{-\frac{\pi\<\boldsymbol{\z},\boldsymbol{\z}\>}{2\a}}}{(2\a)^{\frac{n}{2}}}.
+        \]
+        In particular, $e^{-\pi\<\mathbf{x},\mathbf{x}\>}$ is its own Fourier transform.
+      \end{corollary}
+      \begin{proof}
+        Applying \cref{prop:Fourier_transform_of_exponential_single_variable} to each variable separately proves the first statement. The second statement follows upon setting $\a = \frac{1}{2}$.
       \end{proof}
     \subsection*{The Mellin Transform}
       Like the Fourier transform, the Mellin transform is another type of integral transform. If $f(\mathbf{x})$ is a continuous function on $\R_{+}^{n}$ and $f(\infty) = \lim_{\mathbf{x} \to \infty}f(\mathbf{x})$ exists, then the \textbf{Mellin transform}\index{Mellin transform} $(\mc{M}f)(\mathbf{s})$ of $f(\mathbf{x})$ on $\C^{n}$ is given by
