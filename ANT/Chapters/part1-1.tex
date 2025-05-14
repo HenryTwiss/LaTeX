@@ -74,7 +74,7 @@
     Implicit in all of these asymptotics is some limiting process $\mathbf{x} \to \mathbf{x}_{0}$ where $\mathbf{x}_{0}$ is finite or $\infty$. If $\mathbf{x}_{0}$ is finite, then it is understood that the asymptotic is assumed to hold for all $\mathbf{x}$ sufficiently close to $\mathbf{x}_{0}$ in norm. If $\mathbf{x}_{0}$ is infinite, then the asymptotic is assumed to hold for sufficiently large $\mathbf{x}$. If the limiting process is not explicitly mentioned, it is assumed to be as $\mathbf{x} \to \infty$. Often times, asymptotics will hold for all admissible values of $\mathbf{x}$ and this will be clear from context although we still might suppress the specific limiting process.
 
     \begin{remark}
-      If $f,g: \C^{n} \to \C$, then the following theory still holds by identifying $\C^{n} \cong \R^{2n}$. Moreover, if $f,g:\N^{n} \to \C$ then by extending $f(\mathbf{n})$ and $g(\mathbf{n})$ to $\R^{n}$ by making them piecewise linear, so that they are piecewise continuous, the following theory still holds with $\mathbf{n}$ in place of $\mathbf{x}$. In particular, we may take $f(\mathbf{x})$ or $g(\mathbf{x})$ to be a constant function.
+      If $f,g: \C^{n} \to \C$, then the following theory still holds by identifying $\C^{n} \cong \R^{2n}$. Moreover, if $f,g:\Z_{+}^{n} \to \C$ then by extending $f(\mathbf{n})$ and $g(\mathbf{n})$ to $\R^{n}$ by making them piecewise linear, so that they are piecewise continuous, the following theory still holds with $\mathbf{n}$ in place of $\mathbf{x}$. In particular, we may take $f(\mathbf{x})$ or $g(\mathbf{x})$ to be a constant function.
     \end{remark}
 
     Implicit in some asymptotics will there be a constant (such constants are in general not unique and any sufficiently large constant will do). Any such constant is called the \textbf{implicit constant}\index{implicit constant} of the asymptotic. The implicit constant may depend on one or more parameters, $\e$, $\s$, etc. If we wish to make these dependencies known, we use subscripts. If it is possible to choose the implicit constant independent of a certain parameter then we say that the asymptotic is \textbf{uniform}\index{uniform} with respect to that parameter. Moreover, we say that an implicit constant is \textbf{effective}\index{effective} if the constant is numerically computable and \textbf{ineffective}\index{ineffective} otherwise. Moreover, if we are interested in the dependence of an asymptotic on a certain parameter, say $p$, we will refer to the \textbf{$p$-aspect}\index{$p$-aspect} to mean the part of the asymptotic that is dependent upon $p$.
@@ -879,135 +879,171 @@
         (\mc{F}f)(\boldsymbol{\z}) = \int_{\R^{n}}f(\mathbf{x})e^{-2\pi i\<\boldsymbol{\z},\mathbf{x}\>}\,d\mathbf{x}.
       \]
       This integral is absolutely convergent precisely because $f(\mathbf{x})$ is absolutely integrable on $\R^{n}$. The Fourier transform is intimately related to periodic functions. If $f(\mathbf{x})$ is $1$-periodic in each component and integrable on $[0,1]^{n}$, then we define the $\mathbf{n}$-th \textbf{Fourier coefficient}\index{Fourier coefficient} $\hat{f}(\mathbf{n})$ of $f(\mathbf{x})$ by
-    \[
-      \hat{f}(\mathbf{n}) = \int_{[0,1]^{n}}f(\mathbf{x})e^{-2\pi i\<\mathbf{n},\mathbf{x}\>}\,d\mathbf{x}.
-    \]
-    The \textbf{Fourier series}\index{Fourier series} of $f(\mathbf{x})$ is defined by the series
-    \[
-      \sum_{\mathbf{n} \in \Z^{n}}\hat{f}(\mathbf{n})e^{2\pi i\<\mathbf{n},\mathbf{x}\>}.
-    \]
-    There is the question of whether the Fourier series of $f(\mathbf{x})$ converges at all and if so does it even converge to $f(\mathbf{x})$ itself. Under reasonable conditions this is possible as the following proposition shows (see \cite{grafakos2008classical} for a proof):
+      \[
+        \hat{f}(\mathbf{n}) = \int_{[0,1]^{n}}f(\mathbf{x})e^{-2\pi i\<\mathbf{n},\mathbf{x}\>}\,d\mathbf{x}.
+      \]
+      The \textbf{Fourier series}\index{Fourier series} of $f(\mathbf{x})$ is defined by the series
+      \[
+        \sum_{\mathbf{n} \in \Z^{n}}\hat{f}(\mathbf{n})e^{2\pi i\<\mathbf{n},\mathbf{x}\>}.
+      \]
+      There is the question of whether the Fourier series of $f(\mathbf{x})$ converges at all and if so does it even converge to $f(\mathbf{x})$ itself. Under reasonable conditions this is possible as the following proposition shows (see \cite{grafakos2008classical} for a proof):
 
-    \begin{proposition}
-      If $f(\mathbf{x})$ is smooth and $1$-periodic in each component then it converges uniformly to its Fourier series.
-    \end{proposition}
+      \begin{proposition}
+        If $f(\mathbf{x})$ is smooth and $1$-periodic in each component then it converges uniformly to its Fourier series.
+      \end{proposition}
 
-    The link between the Fourier transform and Fourier series is given by the \textbf{Poisson summation formula}\index{Poisson summation formula}:
+      The link between the Fourier transform and Fourier series is given by the \textbf{Poisson summation formula}\index{Poisson summation formula}:
 
-    \begin{theorem}[Poisson summation formula]
-      Suppose $\L$ is a complete lattice in $\R^{n}$, $f(\mathbf{x})$ is absolutely integrable on $\R^{n}$, and the function
-      \[
-        F(\mathbf{x}) = \sum_{\l \in \L}f(\mathbf{x}+\l),
-      \]
-      is locally absolutely uniformly convergent and smooth. Then
-      \[
-        \sum_{\l \in \L}f(\mathbf{x}+\l) = \frac{1}{V_{\L}}\sum_{\l^{\vee} \in \L^{\vee}}(\mc{F}f)(\l^{\vee})e^{2\pi i\<\l^{\vee},\mathbf{x}\>},
-      \]
-      and
-      \[
-        \sum_{\l \in \L}f(\l) = \sum_{\l^{\vee} \in \L^{\vee}}(\mc{F}f)(\l^{\vee}).
-      \]
-    \end{theorem}
-    \begin{proof}
-      Fix a basis $\l_{1},\ldots,\l_{n}$ for $\L$ and let $P$ be the associated generator matrix. Then $P$ is the base change matrix from the standard basis to $\l_{1},\ldots,\l_{n}$. In particular, $P$ is an invertible linear transformation on $\R^{n}$ satisfying $\L = P\Z^{n}$ and $\L^{\vee} = (P^{-1})^{t}\Z^{n}$. Letting $ F_{P}(\mathbf{x}) = F(P\mathbf{x})$, we may write
-      \[
-        F_{P}(\mathbf{x}) = \sum_{\mathbf{n} \in \Z^{n}}f(P\mathbf{x}+P\mathbf{n}).
-      \]
-      Now $F_{P}(\mathbf{x})$ is smooth and $1$-periodic in each component because $F(\mathbf{x})$ is smooth and invariant under translation by $\L$. Therefore $F_{P}(\mathbf{x})$ admits a Fourier series. We compute the $\mathbf{t}$-th Fourier coefficient of $F_{P}(\mathbf{x})$ as follows:
-      \begin{align*}
-        \hat{F}_{P}(\mathbf{t}) &= \int_{[0,1]^{n}}F_{P}(\mathbf{x})e^{-2\pi i\<\mathbf{t},\mathbf{x}\>}\,d\mathbf{x} \\
-        &= \int_{[0,1]^{n}}\sum_{\mathbf{n} \in \Z^{n}}f(P\mathbf{x}+P\mathbf{n})e^{-2\pi i\<\mathbf{t},\mathbf{x}\>}\,d\mathbf{x} \\
-        &= \sum_{\mathbf{n} \in \Z^{n}}\int_{[0,1]^{n}}f(P\mathbf{x}+P\mathbf{n})e^{-2\pi i\<\mathbf{t},\mathbf{x}\>}\,d\mathbf{x} && \text{FT} \\
-        &= \frac{1}{V_{\L}}\sum_{\mathbf{n} \in \Z^{n}}\int_{P[0,1]^{n}}f(\mathbf{x}+P\mathbf{n})e^{-2\pi i\<\mathbf{t},P^{-1}\mathbf{x}\>} && \text{$\mathbf{x} \to P^{-1}\mathbf{x}$ and \cref{prop:covolume_of_dual_is_inverse}} \\
-        &= \frac{1}{V_{\L}}\sum_{\mathbf{n} \in \Z^{n}}\int_{P[0,1]^{n}}f(\mathbf{x}+P\mathbf{n})e^{-2\pi i\<\mathbf{t},P^{-1}\mathbf{x}\>}\,d\mathbf{x} \\
-        &= \frac{1}{V_{\L}}\sum_{\mathbf{n} \in \Z^{n}}\int_{P[0,1]^{n}}f(\mathbf{x}+P\mathbf{n})e^{-2\pi i\<(P^{-1})^{t}\mathbf{t},\mathbf{x}\>}\,d\mathbf{x} \\
-        &= \frac{1}{V_{\L}}\int_{\R^{n}}f(\mathbf{x})e^{-2\pi i\<(P^{-1})^{t}\mathbf{t},\mathbf{x}\>}\,d\mathbf{x} && \text{FT} \\
-        &= \frac{1}{V_{\L}}(\mc{F}f)((P^{-1})^{t}\mathbf{t}).
-      \end{align*}
-      Therefore the definition of $F_{P}(\mathbf{x})$ and its representation as a Fourier series together give
-      \[
-        \sum_{\l \in \L}f(P\mathbf{x}+\l) = \frac{1}{V_{\L}}\sum_{\mathbf{t} \in \Z^{n}}(\mc{F}f)((P^{-1})^{t}\mathbf{t})e^{2\pi i\<\mathbf{t},\mathbf{x}\>}.
-      \]
-      Changing variables $\mathbf{x} \to P^{-1}\mathbf{x}$ and using the fact $\L^{\vee} = (P^{-1})^{t}\Z^{n}$ results in
-      \[
-        \sum_{\l \in \L}f(\mathbf{x}+\l) = \frac{1}{V_{\L}}\sum_{\l^{\vee} \in \L^{\vee}}(\mc{F}f)(\l^{\vee})e^{2\pi i\<\l^{\vee},\mathbf{x}\>}.
-      \]
-      This proves the first statement. Setting $\mathbf{x} = \mathbf{0}$ proves the second statement.
-    \end{proof}
-
-    For convenience, we state the Poisson summation formula in the simplified case for the self-dual lattice $\L = \Z^{n}$ as a corollary since it is how the Poisson summation formula is usually applied:
-
-    \begin{corollary}
-      Suppose $f(\mathbf{x})$ is absolutely integrable on $\R^{n}$, and the function
-      \[
-        F(\mathbf{x}) = \sum_{\mathbf{n} \in \Z^{n}}f(\mathbf{x}+\mathbf{n}),
-      \]
-      is locally absolutely uniformly convergent and smooth. Then
-      \[
-        \sum_{\mathbf{n} \in \Z^{n}}f(\mathbf{x}+\mathbf{n}) = \sum_{\mathbf{t} \in \Z^{n}}(\mc{F}f)(\mathbf{t})e^{2\pi i\<\mathbf{t},\mathbf{x}\>},
-      \]
-      and
-      \[
-        \sum_{\mathbf{n} \in \Z^{n}}f(\mathbf{n}) = \sum_{\mathbf{t} \in \Z^{n}}(\mc{F}f)(\mathbf{t}).
-      \]
-    \end{corollary}
-    \begin{proof}
-      This is the Poisson summation formula when $\L = \Z^{n}$ since $\Z^{n}$ is self-dual.
-    \end{proof}
-
-    In practical settings, we need a class of functions $f(\mathbf{x})$ for which the assumptions of the Poisson summation formula hold. We say that $f(\mathbf{x})$ is of \textbf{Schwarz class}\index{Schwarz class} if $f \in C^{\infty}(\R^{n})$ and $f(\mathbf{x})$ along with all of its partial derivatives have rapid decay. If $f(\mathbf{x})$ is of Schwarz class, the rapid decay implies that $f(\mathbf{x})$ and all of its derivatives are absolutely integrable over $\R^{n}$. Moreover, this also implies that $F(\mathbf{x})$ and all of its derivatives are locally absolutely uniformly convergent by the Weierstrass $M$-test. The uniform limit theorem then implies $F(\mathbf{x})$ is smooth and thus the conditions of the Poisson summation formula are satisfied. The classic example of a Schwarz class function is $e^{-2\pi x^{2}}$. Actually, this function is particularly important because it is its own Fourier transform as the following general lemma shows:
-
-    \begin{lemma}\label{lem:Fourier_transform_of_exponential}
-      Let $\a,\b > 0$, $\g \ge 0$, and $\d \in \{0,1\}$. Then for $f(x) = (\b x+\g)^{\d}e^{-2\pi\a(\b x+\g)^{2}}$, we have
-      \[
-        (\mc{F}f)(\z) = \left(\frac{\z}{2\b i\sqrt{\a}}\right)^{\d}\frac{e^{\frac{2\pi i\g \z}{\b}-\frac{\pi\z^{2}}{2\b^{2}\a}}}{\sqrt{2}\b\a^{\frac{1+\d}{2}}}.
-      \]
-      In particular, $f(x) = e^{-2\pi\a x^{2}}$ gives
-      \[
-        (\mc{F}f)(\z) = \frac{e^{-\frac{\pi\z^{2}}{2\a}}}{\sqrt{2\a}}.
-      \]
-    \end{lemma}
-    \begin{proof}
-        Note that $f(x)$ is absolutely integrable because it exhibits exponential decay. We compute its Fourier transform
+      \begin{theorem}[Poisson summation formula]
+        Suppose $\L$ is a complete lattice in $\R^{n}$, $f(\mathbf{x})$ is absolutely integrable on $\R^{n}$, and the function
         \[
-          (\mc{F}f)(\z) = \int_{-\infty}^{\infty}f(x)e^{-2\pi i\z x}\,dx = \int_{-\infty}^{\infty}(\b x+\g)^{\d}e^{-2\pi\a(\b x+\g)^{2}}e^{-2\pi i\z x}\,dx = \int_{-\infty}^{\infty}(\b x+\g)^{\d}e^{-2\pi\a((\b x+\g)^{2}+i\z x)}\,dx.
+          F(\mathbf{x}) = \sum_{\l \in \L}f(\mathbf{x}+\l),
         \]
-        By performing the change of variables $x \to \frac{x}{\b\sqrt{\a}}-\frac{\g}{\b}$, the last integral becomes
+        is locally absolutely uniformly convergent and smooth. Then
         \[
-          \frac{e^{\frac{2\pi i\g\z}{\b}}}{\b\a^{\frac{1+\d}{2}}}\int_{-\infty}^{\infty}x^{\d}e^{-2\pi\left(x^{2}+\frac{i\z x}{\b\sqrt{\a}}\right)}\,dx.
+          \sum_{\l \in \L}f(\mathbf{x}+\l) = \frac{1}{V_{\L}}\sum_{\l^{\vee} \in \L^{\vee}}(\mc{F}f)(\l^{\vee})e^{2\pi i\<\l^{\vee},\mathbf{x}\>},
         \]
-        Complete the square in the exponent by observing
+        and
         \[
-          x^{2}+\frac{i\z x}{\b\sqrt{\a}} = \left(x+\frac{i\z}{2\b\sqrt{\a}}\right)^{2}+\frac{\z^{2}}{4\b^{2}\a},
+          \sum_{\l \in \L}f(\l) = \sum_{\l^{\vee} \in \L^{\vee}}(\mc{F}f)(\l^{\vee}).
         \]
-        so that the previous integral is equal to
+      \end{theorem}
+      \begin{proof}
+        Fix a basis $\l_{1},\ldots,\l_{n}$ for $\L$ and let $P$ be the associated generator matrix. Then $P$ is the base change matrix from the standard basis to $\l_{1},\ldots,\l_{n}$. In particular, $P$ is an invertible linear transformation on $\R^{n}$ satisfying $\L = P\Z^{n}$ and $\L^{\vee} = (P^{-1})^{t}\Z^{n}$. Letting $ F_{P}(\mathbf{x}) = F(P\mathbf{x})$, we may write
         \[
-          \frac{e^{\frac{2\pi i\g\z}{\b}-\frac{\pi\z^{2}}{2\b^{2}\a}}}{\b\a^{\frac{1+\d}{2}}}\int_{-\infty}^{\infty}x^{\d}e^{-2\pi\left(x+\frac{i\z}{2\b\sqrt{\a}}\right)^{2}}\,dx.
+          F_{P}(\mathbf{x}) = \sum_{\mathbf{n} \in \Z^{n}}f(P\mathbf{x}+P\mathbf{n}).
         \]
-        The change of variables $x \to \frac{x}{\sqrt{2}}-\frac{i\z}{2\b\sqrt{\a}}$ is permitted without affecting the line of integration by viewing the integral as a complex integral, noting that the integrand is entire as a complex function, and shifting the line of integration. Then the integral takes the form
+        Now $F_{P}(\mathbf{x})$ is smooth and $1$-periodic in each component because $F(\mathbf{x})$ is smooth and invariant under translation by $\L$. Therefore $F_{P}(\mathbf{x})$ admits a Fourier series. We compute the $\mathbf{t}$-th Fourier coefficient of $F_{P}(\mathbf{x})$ as follows:
+        \begin{align*}
+          \hat{F}_{P}(\mathbf{t}) &= \int_{[0,1]^{n}}F_{P}(\mathbf{x})e^{-2\pi i\<\mathbf{t},\mathbf{x}\>}\,d\mathbf{x} \\
+          &= \int_{[0,1]^{n}}\sum_{\mathbf{n} \in \Z^{n}}f(P\mathbf{x}+P\mathbf{n})e^{-2\pi i\<\mathbf{t},\mathbf{x}\>}\,d\mathbf{x} \\
+          &= \sum_{\mathbf{n} \in \Z^{n}}\int_{[0,1]^{n}}f(P\mathbf{x}+P\mathbf{n})e^{-2\pi i\<\mathbf{t},\mathbf{x}\>}\,d\mathbf{x} && \text{FT} \\
+          &= \frac{1}{V_{\L}}\sum_{\mathbf{n} \in \Z^{n}}\int_{P[0,1]^{n}}f(\mathbf{x}+P\mathbf{n})e^{-2\pi i\<\mathbf{t},P^{-1}\mathbf{x}\>} && \text{$\mathbf{x} \to P^{-1}\mathbf{x}$ and \cref{prop:covolume_of_dual_is_inverse}} \\
+          &= \frac{1}{V_{\L}}\sum_{\mathbf{n} \in \Z^{n}}\int_{P[0,1]^{n}}f(\mathbf{x}+P\mathbf{n})e^{-2\pi i\<\mathbf{t},P^{-1}\mathbf{x}\>}\,d\mathbf{x} \\
+          &= \frac{1}{V_{\L}}\sum_{\mathbf{n} \in \Z^{n}}\int_{P[0,1]^{n}}f(\mathbf{x}+P\mathbf{n})e^{-2\pi i\<(P^{-1})^{t}\mathbf{t},\mathbf{x}\>}\,d\mathbf{x} \\
+          &= \frac{1}{V_{\L}}\int_{\R^{n}}f(\mathbf{x})e^{-2\pi i\<(P^{-1})^{t}\mathbf{t},\mathbf{x}\>}\,d\mathbf{x} && \text{FT} \\
+          &= \frac{1}{V_{\L}}(\mc{F}f)((P^{-1})^{t}\mathbf{t}).
+        \end{align*}
+        Therefore the definition of $F_{P}(\mathbf{x})$ and its representation as a Fourier series together give
         \[
-          \frac{e^{\frac{2\pi i\g\z}{q}-\frac{\pi\z^{2}}{2\b^{2}\a}}}{\sqrt{2}\b\a^{\frac{1+\d}{2}}}\int_{-\infty}^{\infty}\left(\frac{x}{\sqrt{2}}+\frac{\z}{2i\b\sqrt{\a}}\right)^{\d}e^{-\pi x^{2}}\,dx.
+          \sum_{\l \in \L}f(P\mathbf{x}+\l) = \frac{1}{V_{\L}}\sum_{\mathbf{t} \in \Z^{n}}(\mc{F}f)((P^{-1})^{t}\mathbf{t})e^{2\pi i\<\mathbf{t},\mathbf{x}\>}.
         \]
-        If $\d = 0$, we obtain
-        \begin{equation}\label{equ:Fourier_transform_of_exponential_1}
-          \frac{e^{\frac{2\pi i\g\z}{q}-\frac{\pi\z^{2}}{2\b^{2}\a}}}{\sqrt{2}\b\a^{\frac{1+\d}{2}}}\int_{-\infty}^{\infty}e^{-\pi x^{2}}\,dx = \frac{e^{\frac{2\pi i\g\z}{q}-\frac{\pi\z^{2}}{2\b^{2}\a}}}{\sqrt{2}\b\a^{\frac{1+\d}{2}}},
-        \end{equation}
-        where the equality holds because the integral is $1$ since it is the Gaussian integral (see \cref{append:Special_Integrals}). If $\d_{\chi} = 1$, then by direct computation
+        Changing variables $\mathbf{x} \to P^{-1}\mathbf{x}$ and using the fact $\L^{\vee} = (P^{-1})^{t}\Z^{n}$ results in
         \[
-          \int_{-\infty}^{\infty}\frac{x}{\sqrt{2}}e^{-\pi x^{2}}\,dx = -\frac{1}{\sqrt{8}\pi}e^{-\pi x^{2}}\bigg|_{-\infty}^{\infty} = 0,
+          \sum_{\l \in \L}f(\mathbf{x}+\l) = \frac{1}{V_{\L}}\sum_{\l^{\vee} \in \L^{\vee}}(\mc{F}f)(\l^{\vee})e^{2\pi i\<\l^{\vee},\mathbf{x}\>}.
         \]
-        and we obtain
-        \begin{equation}\label{equ:Fourier_transform_of_exponential_2}
-          \frac{e^{\frac{2\pi i\g\z}{q}-\frac{\pi\z^{2}}{2\b^{2}\a}}}{\sqrt{2}\b\a^{\frac{1+\d}{2}}}\int_{-\infty}^{\infty}\left(\frac{\z}{2i\b\sqrt{\a}}\right)e^{-\pi x^{2}}\,dx = \frac{e^{\frac{2\pi i\g\z}{q}-\frac{\pi\z^{2}}{2\b^{2}\a}}}{\sqrt{2}\b\a^{\frac{1+\d}{2}}}\left(\frac{\z}{2i\b\sqrt{\a}}\right),
-        \end{equation}
-        where the equality holds because the last integral is a $\left(\frac{\z}{2i\b\sqrt{\a}}\right)$ multiple of the the Gaussian integral. Combining \cref{equ:Fourier_transform_of_exponential_1,equ:Fourier_transform_of_exponential_2} gives
-        \[
-          (\mc{F}f)(t) = \frac{e^{\frac{2\pi i\g\z}{q}-\frac{\pi\z^{2}}{2\b^{2}\a}}}{\sqrt{2}\b\a^{\frac{1+\d}{2}}}\left(\frac{\z}{2i\b\sqrt{\a}}\right)^{\d},
-        \]
-        proving the first claim. The second claim follows from the first by setting $\b = 1$, $\g = 0$, and $\d = 0$.
-    \end{proof}
+        This proves the first statement. Setting $\mathbf{x} = \mathbf{0}$ proves the second statement.
+      \end{proof}
 
-    Taking $\a = \frac{1}{2}$ in the second statement of \cref{lem:Fourier_transform_of_exponential} shows that the Fourier transform of $e^{-\pi x^{2}}$ is itself.
+      For convenience, we state the Poisson summation formula in the simplified case for the self-dual lattice $\L = \Z^{n}$ as a corollary since it is how the Poisson summation formula is usually applied:
+
+      \begin{corollary}
+        Suppose $f(\mathbf{x})$ is absolutely integrable on $\R^{n}$, and the function
+        \[
+          F(\mathbf{x}) = \sum_{\mathbf{n} \in \Z^{n}}f(\mathbf{x}+\mathbf{n}),
+        \]
+        is locally absolutely uniformly convergent and smooth. Then
+        \[
+          \sum_{\mathbf{n} \in \Z^{n}}f(\mathbf{x}+\mathbf{n}) = \sum_{\mathbf{t} \in \Z^{n}}(\mc{F}f)(\mathbf{t})e^{2\pi i\<\mathbf{t},\mathbf{x}\>},
+        \]
+        and
+        \[
+          \sum_{\mathbf{n} \in \Z^{n}}f(\mathbf{n}) = \sum_{\mathbf{t} \in \Z^{n}}(\mc{F}f)(\mathbf{t}).
+        \]
+      \end{corollary}
+      \begin{proof}
+        This is the Poisson summation formula when $\L = \Z^{n}$ since $\Z^{n}$ is self-dual.
+      \end{proof}
+
+      In practical settings, we need a class of functions $f(\mathbf{x})$ for which the assumptions of the Poisson summation formula hold. We say that $f(\mathbf{x})$ is of \textbf{Schwarz class}\index{Schwarz class} if $f \in C^{\infty}(\R^{n})$ and $f(\mathbf{x})$ along with all of its partial derivatives have rapid decay. If $f(\mathbf{x})$ is of Schwarz class, the rapid decay implies that $f(\mathbf{x})$ and all of its derivatives are absolutely integrable over $\R^{n}$. Moreover, this also implies that $F(\mathbf{x})$ and all of its derivatives are locally absolutely uniformly convergent by the Weierstrass $M$-test. The uniform limit theorem then implies $F(\mathbf{x})$ is smooth and thus the conditions of the Poisson summation formula are satisfied. We will now derive some properties of the Fourier transform including a case specific to Schwarz class functions:
+
+      \begin{proposition}\label{prop:Fourier_transform_properties}
+        Let $f(\mathbf{x})$ be absolutely integrable on $\R^{n}$. Then the following hold:
+        \begin{enumerate}[label=(\roman*)]
+          \item If $g(\mathbf{x}) = f(\mathbf{x}+\boldsymbol{\a})$ for any $\boldsymbol{\a} \in \R^{n}$, then
+          \[
+            (\mc{F}g)(\boldsymbol{\z}) = e^{2\pi i\<\boldsymbol{\a},\boldsymbol{\z}\>}(\mc{F}f)(\boldsymbol{\z}).
+          \]
+          \item If $g(\mathbf{x}) = f(A\mathbf{x})$ for any $A \in \GL_{n}(\R)$, then
+          \[
+            (\mc{F}g)(\boldsymbol{\z}) = \frac{1}{|\det(A)|}(\mc{F}f)((A^{-1})^{t}\boldsymbol{\z}).
+          \]
+          \item If $f(\mathbf{x})$ is of Schwarz class and $g(\mathbf{x}) = \frac{\del}{\del \mathbf{x}}^{\mathbf{k}}f(\mathbf{x})$ for some $\mathbf{k} \in \Z_{\ge 0}^{n}$, then
+          \[
+            (\mc{F}g)(\boldsymbol{\z}) = (2\pi i\boldsymbol{\z})^{\mathbf{k}}(\mc{F}f).
+          \]
+        \end{enumerate}
+      \end{proposition}
+      \begin{proof}
+        We will prove the statements separately:
+        \begin{enumerate}[label=(\roman*)]
+          \item Applying the change of variables $\mathbf{x} \to \mathbf{x}-\boldsymbol{\a}$ to
+          \[
+            (\mc{F}g)(\boldsymbol{\z}) = \int_{\R^{n}}f(\mathbf{x}+\boldsymbol{\a})e^{-2\pi i\<\boldsymbol{\z},\mathbf{x}\>}\,d\mathbf{x}
+          \]
+          gives
+          \[
+            \int_{\R^{n}}f(\mathbf{x})e^{-2\pi i\<\boldsymbol{\z},\mathbf{x}-\boldsymbol{\a}\>}\,d\mathbf{x} = e^{2\pi i\<\boldsymbol{\z},\boldsymbol{\a}\>}\int_{\R^{n}}f(\mathbf{x})e^{-2\pi i\<\boldsymbol{\z},\mathbf{x}\>}\,d\mathbf{x} = e^{2\pi i\<\boldsymbol{\a},\boldsymbol{\z}\>}(\mc{F}f)(\boldsymbol{\z}).
+          \]
+          \item Applying the change of variables $\mathbf{x} \to A^{-1}\mathbf{x}$ to
+          \[
+            (\mc{F}g)(\boldsymbol{\z}) = \int_{\R^{n}}f(A\mathbf{x})e^{-2\pi i\<\boldsymbol{\z},\mathbf{x}\>}\,d\mathbf{x},
+          \]
+          gives
+          \[
+            \frac{1}{|\det(A)|}\int_{\R^{n}}f(\mathbf{x})e^{-2\pi i\<\boldsymbol{\z},A^{-1}\mathbf{x}\>}\,d\mathbf{x} = \frac{1}{|\det(A)|}\int_{\R^{n}}f(\mathbf{x})e^{-2\pi i\<(A^{-1})^{t}\boldsymbol{\z},\mathbf{x}\>}\,d\mathbf{x} = (\mc{F}f)((A^{-1})^{t}\boldsymbol{\z}).
+          \]
+          \item We may assume $\mathbf{k} \neq \mathbf{0}$ for otherwise there is nothing to prove. Since $f(\mathbf{x})$ is of Schwarz class, so is $g(\mathbf{x})$. In particular, $g(\mathbf{x})$ is absolutely integrable on $\R^{n}$ and exhibits exponential decay. First suppose $n = 1$ so that $f(\mathbf{x}) = f(x)$, $g(\mathbf{x}) = g(x)$, and $\mathbf{k} = k \ge 1$. Applying integration by parts to
+          \[
+            (\mc{F}g)(\z) = \int_{-\infty}^{\infty}\frac{d^{k}}{dx^{k}}f(x)e^{-2\pi i\z x}\,dx,
+          \]
+          gives
+          \[
+            \frac{d^{k-1}}{dx^{k-1}}f(x)e^{-2\pi i\z x}\bigg|_{-\infty}^{\infty}+2\pi i\z\int_{-\infty}^{\infty}\frac{d^{k-1}}{dx^{k-1}}f(x)e^{-2\pi i\z x}\,dx = 2\pi i\z\int_{-\infty}^{\infty}\frac{d^{k-1}}{dx^{k-1}}f(x)e^{-2\pi i\z x}\,dx,
+          \]
+          where the first term vanishes because $f(x)$ is of Schwarz class and $|e^{2\pi i\z x}| = 1$. Repeating this procedure $k-1$ times results in
+          \[
+            (2\pi i\z)^{k}\int_{-\infty}^{\infty}f(x)e^{-2\pi i\z x}\,dx = (2\pi i\z)^{k}(\mc{F})(\z),
+          \]
+          proving the case when $n = 1$. The general case follows from what we have shown by applying repeated integration by parts in each variable to
+          \[
+            (\mc{F}g)(\boldsymbol{\z}) = \int_{\R^{n}}\frac{\del}{\del \mathbf{x}}^{\mathbf{k}}f(\mathbf{x})e^{-2\pi i\<\boldsymbol{\z},\mathbf{x}\>}\,d\mathbf{x}.
+          \]
+        \end{enumerate}
+      \end{proof}
+
+      The properties in \cref{prop:Fourier_transform_properties} are immensely useful when computing Fourier transforms. We now introduce a examples of Schwarz class functions and compute their Fourier transforms. The classic example of a Schwarz class function is $e^{-2\pi x^{2}}$. This function is particularly important because it is essentially its own Fourier transform:
+
+      \begin{proposition}\label{prop:Fourier_transform_of_exponential}
+        Let $\a > 0$ and set $f(x) = e^{-2\pi\a x^{2}}$. Then
+        \[
+          (\mc{F}f)(\z) = \frac{e^{-\frac{\pi\z^{2}}{2\a}}}{\sqrt{2\a}}.
+        \]
+        In particular, $e^{-\pi x^{2}}$ is its own Fourier transform.
+      \end{proposition}
+      \begin{proof}
+          Note that $f(x)$ is absolutely integrable because it exhibits exponential decay. We compute its Fourier transform
+          \[
+            (\mc{F}f)(\z) = \int_{-\infty}^{\infty}e^{-2\pi\a x^{2}}e^{-2\pi i\z x}\,dx = \int_{-\infty}^{\infty}e^{-2\pi\a(x^{2}+i\z x)}\,dx.
+          \]
+          By performing the change of variables $x \to \frac{x}{\sqrt{\a}}$, the last integral becomes
+          \[
+            \frac{1}{\sqrt{\a}}\int_{-\infty}^{\infty}e^{-2\pi\left(x^{2}+\frac{i\z x}{\sqrt{\a}}\right)}\,dx.
+          \]
+          Complete the square in the exponent by observing
+          \[
+            x^{2}+\frac{i\z x}{\sqrt{\a}} = \left(x+\frac{i\z}{2\sqrt{\a}}\right)^{2}+\frac{\z^{2}}{4\a},
+          \]
+          so that the previous integral is equal to
+          \[
+            \frac{e^{-\frac{\pi\z^{2}}{2\a}}}{\sqrt{\a}}\int_{-\infty}^{\infty}e^{-2\pi\left(x+\frac{i\z}{2\sqrt{\a}}\right)^{2}}\,dx.
+          \]
+          The change of variables $x \to \frac{x}{\sqrt{2}}-\frac{i\z}{\sqrt{\a}}$ is permitted without affecting the line of integration by viewing the integral as a complex integral, noting that the integrand is entire as a complex function, and shifting the line of integration. Then the integral takes the form
+          \[
+            \frac{e^{-\frac{\pi\z^{2}}{2\a}}}{\sqrt{2\a}}\int_{-\infty}^{\infty}e^{-\pi x^{2}}\,dx = \frac{e^{-\frac{\pi\z^{2}}{2\a}}}{\sqrt{2\a}},
+          \]
+          where the equality holds because the integral is $1$ since it is the Gaussian integral (see \cref{append:Special_Integrals}). This proves the first statement. The second statement follows by taking $\a = \frac{1}{2}$.
+      \end{proof}
     \subsection*{The Mellin Transform}
       Like the Fourier transform, the Mellin transform is another type of integral transform. If $f(\mathbf{x})$ is a continuous function on $\R_{+}^{n}$ and $f(\infty) = \lim_{\mathbf{x} \to \infty}f(\mathbf{x})$ exists, then the \textbf{Mellin transform}\index{Mellin transform} $(\mc{M}f)(\mathbf{s})$ of $f(\mathbf{x})$ on $\C^{n}$ is given by
       \[
