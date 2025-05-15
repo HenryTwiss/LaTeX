@@ -50,10 +50,10 @@
       \[
         \vt(z)-1 = O\left(\sum_{n \in \Z-\{0\}}e^{-2\pi n^{2}y}\right) = O(e^{-2\pi y}),
       \]
-      where the second equality holds because each term is of smaller order than the $n = \pm 1$ terms so that the series is bounded by a constant times the order of these terms. In particular, $\vt(z)-1$ exhibits rapid decay. The relation to $\w(z)$ is
-      \begin{equation}\label{equ:omega_theta_relationship_for_zeta}
+      where the second equality holds because each term is of smaller order than the $n = \pm 1$ terms so that the series is bounded by a constant times the order of these terms. In particular, $\vt(z)-1$ exhibits rapid decay. The relationship to $\w(z)$ is given by
+      \[
         \w(z) = \frac{\vt\left(\frac{z}{2}\right)-1}{2}.
-      \end{equation}
+      \]
       The essential fact we will need is a functional equation for the Jacobi theta function:
 
       \begin{theorem}\label{thm:functional_equation_Jacobi_theta}
@@ -83,7 +83,7 @@
 
       We will use \cref{thm:functional_equation_Jacobi_theta} to analytically continue $\z(s)$.
     \subsection*{The Integral Representation: Part II}
-      Returning to the Riemann zeta function, we split the integral in \cref{equ:integral_representation_zeta_1} into two pieces
+      Returning to the Riemann zeta function, we split the integral in \cref{equ:integral_representation_zeta_1} into two pieces by writing
       \begin{equation}\label{equ:symmetric_integral_zeta_split}
         \int_{0}^{\infty}\w(iy)y^{\frac{s}{2}}\,\frac{dy}{y} = \int_{0}^{1}\w(iy)y^{\frac{s}{2}}\,\frac{dy}{y}+\int_{1}^{\infty}\w(iy)y^{\frac{s}{2}}\,\frac{dy}{y}.
       \end{equation}
@@ -94,19 +94,19 @@
       Now we compute
       \begin{align*}
         \w\left(\frac{i}{y}\right) &= \w\left(-\frac{1}{iy}\right) \\
-        &= \frac{\vt\left(-\frac{1}{2iy}\right)-1}{2} && \text{\cref{equ:omega_theta_relationship_for_zeta}}\\
+        &= \frac{\vt\left(-\frac{1}{2iy}\right)-1}{2} \\
         &= \frac{\sqrt{y}\vt\left(\frac{iy}{2}\right)-1}{2} && \text{\cref{thm:functional_equation_Jacobi_theta}} \\
-        &= \frac{\sqrt{y}(2\w(iy)+1)-1}{2} \\
         &= \sqrt{y}\w(iy)+\frac{\sqrt{y}}{2}-\frac{1}{2}.
       \end{align*}
-      This relation gives the first equality in the following chain:
-      \begin{align*}
-        \int_{1}^{\infty}\w\left(\frac{1}{y}\right)y^{-\frac{s}{2}}\,\frac{dy}{y} &= \int_{1}^{\infty}\left(\sqrt{y}\w(iy)+\frac{\sqrt{y}}{2}-\frac{1}{2}\right)y^{-\frac{s}{2}}\,\frac{dy}{y} \\
-        &= \int_{1}^{\infty}\w(iy)y^{\frac{1-s}{2}}\,\frac{dy}{y}+\int_{1}^{\infty}\frac{x^{\frac{1-s}{2}}}{2}\,\frac{dy}{y}-\int_{1}^{\infty}\frac{y^{-\frac{s}{2}}}{2}\,\frac{dy}{y} \\
-        &= \int_{1}^{\infty}\w(iy)y^{\frac{1-s}{2}}\,\frac{dy}{y}+\frac{1}{1-s}-\frac{1}{s} \\
-        &= \int_{1}^{\infty}\w(iy)y^{\frac{1-s}{2}}\,\frac{dy}{y}-\frac{1}{s(1-s)}.
-      \end{align*}
-      Substituting this result back into \cref{equ:symmetric_integral_zeta_split} with \cref{equ:integral_representation_zeta_1} yields the integral representation
+      This chain implies that our first piece can be expressed as
+      \[
+        \int_{1}^{\infty}\left(\sqrt{y}\w(iy)+\frac{\sqrt{y}}{2}-\frac{1}{2}\right)y^{-\frac{s}{2}}\,\frac{dy}{y},
+      \]
+      which is further equivalent to
+      \[
+        \int_{1}^{\infty}\w(iy)y^{\frac{1-s}{2}}\,\frac{dy}{y}-\frac{1}{s(1-s)},
+      \]
+      because the integral over the last two pieces is $\frac{1}{1-s}-\frac{1}{s} = -\frac{1}{s(1-s)}$. Substituting this result back into \cref{equ:symmetric_integral_zeta_split} and combining with \cref{equ:integral_representation_zeta_1} yields the integral representation
       \[
         \z(s) = \frac{\pi^{\frac{s}{2}}}{\G\left(\frac{s}{2}\right)}\left[-\frac{1}{s(1-s)}+\int_{1}^{\infty}\w(iy)y^{\frac{1-s}{2}}\,\frac{dy}{y}+\int_{1}^{\infty}\w(iy)y^{\frac{s}{2}}\,\frac{dy}{y}\right].
       \]
@@ -231,16 +231,11 @@
       \[
         \vt_{\chi}(z) = O\left(\sum_{n \in \Z}ne^{-2\pi n^{2}y}\right) = O(e^{-2\pi y}),
       \]
-      where the second equality holds because each term is of smaller order than the $n = \pm 1$ terms so that the series is bounded by a constant times the order of these terms. In particular, $\vt_{\chi}(z)$ exhibits rapid decay. The relationship to $\w_{\chi}(z)$ is
-      \begin{equation}\label{equ:twisted_omega_theta_relationship_for_Dirichlet_L-functions}
+      where the second equality holds because each term is of smaller order than the $n = \pm 1$ terms so that the series is bounded by a constant times the order of these terms. In particular, $\vt_{\chi}(z)$ exhibits rapid decay. The relationship to $\w_{\chi}(z)$ is given by
+      \[
         \w_{\chi}(z) = \frac{\vt_{\chi}\left(\frac{z}{2}\right)}{2}.
-      \end{equation}
-
-      \begin{remark}
-        \cref{equ:twisted_omega_theta_relationship_for_Dirichlet_L-functions} is a slightly less complex relationship than \cref{equ:omega_theta_relationship_for_zeta}. This is because assuming $q > 1$ means $\chi(0) = 0$.
-      \end{remark}
-
-      The essential fact we will need is a functional equation for the Dirichlet theta function:
+      \]
+      This is a slightly less complex relationship than the analog for the Jacobi theta function because assuming $q > 1$ means $\chi(0) = 0$. The essential fact we will need is a functional equation for the Dirichlet theta function:
 
       \begin{theorem}\label{thm:functional_equation_Dirichlet_theta}
         Let $\chi$ be a primitive Dirichlet character of conductor $q > 1$. For $z \in \H$,
@@ -284,29 +279,28 @@
 
       Notice that the functional equation relates $\vt_{\chi}(z)$ to $\vt_{\cchi}(z)$. Regardless, we will use \cref{thm:functional_equation_Dirichlet_theta} to analytically continue $L(s,\chi)$.
     \subsection*{The Integral Representation: Part II}
-      Returning to $L(s,\chi)$, split the integral in \cref{equ:integral_representation_Dirichlet_L-functions_1} into two pieces
+      Returning to $L(s,\chi)$, split the integral in \cref{equ:integral_representation_Dirichlet_L-functions_1} into two pieces by writing
       \begin{equation}\label{equ:symmetric_integral_Dirichlet_L-functions_split}
         \int_{0}^{\infty}\w_{\chi}(iy)y^{\frac{s+\d_{\chi}}{2}}\,\frac{dy}{y} = \int_{0}^{\frac{1}{q}}\w_{\chi}(iy)y^{\frac{s+\d_{\chi}}{2}}\,\frac{dy}{y}+\int_{\frac{1}{q}}^{\infty}\w_{\chi}(iy)y^{\frac{s+\d_{\chi}}{2}}\,\frac{dy}{y}.
       \end{equation}
       We now rewrite the first piece in the same form and symmetrize the result as much as possible. Start by performing a change of variables $y \to \frac{1}{q^{2}y}$ to the first piece to obtain
       \[
-        q^{-(s+\d_{\chi})}\int_{\frac{1}{q}}^{\infty}\w_{\chi}\left(\frac{i}{q^{2}y}\right)y^{-\frac{s+\d_{\chi}}{2}}\,\frac{dy}{y}.
+        \int_{\frac{1}{q}}^{\infty}\w_{\chi}\left(\frac{i}{q^{2}y}\right)(q^{2}y)^{-\frac{s+\d_{\chi}}{2}}\,\frac{dy}{y}.
       \]
       Now we compute
       \begin{align*}
         \w_{\chi}\left(\frac{i}{q^{2}y}\right) &= \w_{\chi}\left(-\frac{1}{q^{2}iy}\right) \\
-        &= \frac{\vt_{\chi}\left(-\frac{1}{2q^{2}iy}\right)}{2} && \text{\cref{equ:twisted_omega_theta_relationship_for_Dirichlet_L-functions}} \\
+        &= \frac{\vt_{\chi}\left(-\frac{1}{2q^{2}iy}\right)}{2} \\
         &= \frac{i^{\d_{\chi}}(qy)^{\frac{1}{2}+\d_{\chi}}}{\e_{\cchi}}\frac{\vt_{\cchi}\left(\frac{iy}{2}\right)}{2} && \text{\cref{thm:functional_equation_Dirichlet_theta}} \\
-        &= \e_{\chi}(-i)^{\d_{\chi}}(qy)^{\frac{1}{2}+\d_{\chi}}\frac{\vt_{\cchi}\left(\frac{iy}{2}\right)}{2} && \text{\cref{prop:epsilon_factor_relationship} and $\chi(-1) = (-1)^{\d_{\chi}}$} \\
+        &= \e_{\chi}(-i)^{\d_{\chi}}(qy)^{\frac{1}{2}+\d_{\chi}}\frac{\vt_{\cchi}\left(\frac{iy}{2}\right)}{2} && \text{\cref{prop:epsilon_factor_relationship} and that $\chi(-1) = (-1)^{\d_{\chi}}$} \\
         &= \frac{\e_{\chi}(qy)^{\frac{1}{2}+\d_{\chi}}}{i^{\d_{\chi}}}\frac{\vt_{\cchi}\left(\frac{iy}{2}\right)}{2} \\
         &= \frac{\e_{\chi}(qy)^{\frac{1}{2}+\d_{\chi}}}{i^{\d_{\chi}}}\w_{\cchi}(iy).
       \end{align*}
-      This relation gives the first equality in the following chain:
-      \begin{align*}
-        q^{-(s+\d_{\chi})}\int_{\frac{1}{q}}^{\infty}\w_{\chi}\left(\frac{1}{q^{2}y}\right)y^{-\frac{s+\d_{\chi}}{2}}\,\frac{dy}{y} &= q^{-(s+\d_{\chi})}\int_{\frac{1}{q}}^{\infty}\left(\frac{\e_{\chi}(qy)^{\frac{1}{2}+\d_{\chi}}}{i^{\d_{\chi}}}\w_{\cchi}(iy)\right)y^{-\frac{s+\d_{\chi}}{2}}\,\frac{dy}{y} \\
-        &= \frac{\e_{\chi}}{i^{\d_{\chi}}}q^{\frac{1}{2}-s}\int_{\frac{1}{q}}^{\infty}\w_{\cchi}(iy)y^{\frac{(1-s)+\d_{\chi}}{2}}\,\frac{dy}{y}.
-      \end{align*}
-      Substituting this last expression back into \cref{equ:symmetric_integral_Dirichlet_L-functions_split} with \cref{equ:integral_representation_Dirichlet_L-functions_1} gives the integral representation
+      This chain implies that our first piece can be expressed as
+      \[
+        \frac{\e_{\chi}}{i^{\d_{\chi}}}q^{\frac{1}{2}-s}\int_{\frac{1}{q}}^{\infty}\w_{\cchi}(iy)y^{\frac{(1-s)+\d_{\chi}}{2}}\,\frac{dy}{y}.
+      \]
+      Substituting this expression back into \cref{equ:symmetric_integral_Dirichlet_L-functions_split} and combining with \cref{equ:integral_representation_Dirichlet_L-functions_1} gives the integral representation
       \[
         L(s,\chi) = \frac{\pi^{\frac{s+\d_{\chi}}{2}}}{\G\left(\frac{s+\d_{\chi}}{2}\right)}\left[\frac{\e_{\chi}}{i^{\d_{\chi}}}q^{\frac{1}{2}-s}\int_{\frac{1}{q}}^{\infty}\w_{\cchi}(iy)y^{\frac{(1-s)+\d_{\chi}}{2}}\,\frac{dy}{y}+\int_{\frac{1}{q}}^{\infty}\w_{\chi}(iy)y^{\frac{s+\d_{\chi}}{2}}\,\frac{dy}{y}\right].
       \]
@@ -528,15 +522,15 @@
         \vt_{\mf{f}}(z\mathbf{x})-1 = O\left(\sum_{j(\a) \in j(\mf{f})-\{\mathbf{0}\}}e^{-2\pi y||\mathbf{x}||_{\infty}\Norm(\mf{f}^{-1})^{\frac{2}{d}}\<\boldsymbol{j(\a)},\boldsymbol{j(\a)}\>}\right) = O(e^{-2\pi y||\mathbf{x}||_{\infty}}),
       \]
       where the second equality follows since $\<\boldsymbol{j(\a)},\boldsymbol{j(\a)}\> \ge d|\Norm(\a)|^{\frac{2}{d}}$ by the arithmetic-geometric inequality provided $\a$ is nonzero, and that $|\Norm(\a)|\Norm(\mf{f})$ is a positive integer for all nonzero $\a \in \mf{f}$ (as $\a\mf{f}^{-1}$ is an integral ideal by \cref{prop:explicit_inverse_ideal}), which combined show that each term is of smaller order than the single term where $\Norm(\a\mf{f}^{-1}) = 1$ (when $\a\mf{f}^{-1} = \mc{O}_{K}$) corresponding to $\a = \Norm(\mf{f})$ so that the sum is bounded by a constant times this term. The relationship to $\w_{\mc{F}}(z)$ is given by
-      \[
-        \w_{\mc{F}}(z) = \frac{1}{w_{K}}\int_{\mc{F}}\sum_{\substack{\mf{a} \in \Cl(K) \\ \text{$\mf{a}$ integral}}}\left(\vt_{\mf{a}}\left(\frac{z\mathbf{x}}{2}\right)-1\right)\frac{d\mathbf{x}}{\mathbf{x}}.
-      \]
+      \begin{equation}\label{equ:omega_theta_relationship_for_Dedekind_zeta_functions}
+        \w_{\mc{F}}(z) = \frac{1}{w_{K}}\int_{\mc{F}}\sum_{\substack{\mf{a} \in \Cl(K) \\ \text{$\mf{a}$ integral}}}\vt_{\mf{a}}\left(\frac{z\mathbf{x}}{2}\right)\,\frac{d\mathbf{x}}{\mathbf{x}}-\frac{h_{K}}{w_{K}}\int_{\mc{F}}\,\frac{d\mathbf{x}}{\mathbf{x}}.
+      \end{equation}
       The essential fact we will need is a functional equation for the Hecke theta function:
 
       \begin{theorem}\label{thm:functional_equation_Hecke_theta}
         Let $K$ be a number field of degree $d$ and let $\mf{f}$ be a fractional ideal. For any $z \in \H$ and $\mathbf{x} \in S$,
         \[
-          \vt_{\mf{f}}(z\mathbf{x}) = \frac{1}{(-2|\D_{K}|^{\frac{1}{d}}iz)^{\frac{d}{2}}}\vt_{\mf{f}^{\vee}}\left(-\frac{\mathbf{x}}{4\D_{K}^{\frac{2}{d}}z}\right).
+          \vt_{\mf{f}}(z\mathbf{x}) = \frac{1}{(-2|\D_{K}|^{\frac{1}{d}}iz)^{\frac{d}{2}}}\vt_{\mf{f}^{\vee}}\left(-\frac{\mathbf{x}}{4|\D_{K}|^{\frac{2}{d}}z}\right).
         \]
       \end{theorem}
       \begin{proof}
@@ -560,12 +554,51 @@
           &= \frac{1}{(-2|\D_{K}|^{\frac{1}{d}}iz)^{\frac{d}{2}}}\sum_{\a^{\vee} \in \mf{f}^{\vee}}e^{-\frac{\pi\Norm(\mf{f})^{\frac{2}{d}}\<\boldsymbol{j(\a^{\vee})},\boldsymbol{j(\a^{\vee})}\mathbf{x}\>}{-2iz}} \\
           &= \frac{1}{(-2|\D_{K}|^{\frac{1}{d}}iz)^{\frac{d}{2}}}\sum_{\a^{\vee} \in \mf{f}^{\vee}}e^{-\frac{\pi\left(\Norm((\mf{f}^{\vee})^{-1})|\D|_{K}^{-1}\right)^{\frac{2}{d}}\<\boldsymbol{j(\a^{\vee})},\boldsymbol{j(\a^{\vee})}\mathbf{x}\>}{-2iz}} && \text{\cref{cor:norm_of_different}} \\
           &= \frac{1}{(-2|\D_{K}|^{\frac{1}{d}}iz)^{\frac{d}{2}}}\sum_{\a^{\vee} \in \mf{f}^{\vee}}e^{2\pi i\Norm((\mf{f}^{\vee})^{-1})^{\frac{2}{d}}\left\<\boldsymbol{j(\a^{\vee})},\boldsymbol{j(\a^{\vee})}\left(-\frac{\mathbf{x}}{4|\D_{K}|^{\frac{2}{d}}z}\right\>\right)} \\
-          &= \frac{1}{(-2|\D_{K}|^{\frac{1}{d}}iz)^{\frac{d}{2}}}\vt_{\mf{f}^{\vee}}\left(-\frac{\mathbf{x}}{4\D_{K}^{\frac{2}{d}}z}\right).
+          &= \frac{1}{(-2|\D_{K}|^{\frac{1}{d}}iz)^{\frac{d}{2}}}\vt_{\mf{f}^{\vee}}\left(-\frac{\mathbf{x}}{4|\D_{K}|^{\frac{2}{d}}z}\right).
         \end{align*}
       \end{proof}
 
       We will use \cref{thm:functional_equation_Hecke_theta} to analytically continue $\z_{K}(s)$.
     \subsection*{\todo{The Integral Representation: Part II}}
+      Returning to $\z_{K}(s)$, split the integral in \cref{equ:integral_representation_Dedekind_1} into two pieces by writing
+      \begin{equation}\label{equ:symmetric_integral_Dedekind_L-functions_split}
+        \int_{0}^{\infty}\w_{\mc{F}}\left(iy^{\frac{1}{d}}\right)y^{\frac{s}{2}}\,\frac{dy}{y} = \int_{0}^{\frac{1}{|\D_{K}|}}\w_{\mc{F}}\left(iy^{\frac{1}{d}}\right)y^{\frac{s}{2}}\,\frac{dy}{y}+\int_{\frac{1}{|\D_{K}|}}^{\infty}\w_{\mc{F}}\left(iy^{\frac{1}{d}}\right)y^{\frac{s}{2}}\,\frac{dy}{y}.
+      \end{equation}
+      We will rewrite the first piece in the same form and symmetrize the result as much as possible. Perform the change of variables $y \to \frac{1}{|\D_{K}|^{2}y}$ to the first piece to obtain
+      \[
+        \int_{\frac{1}{|\D_{K}|}}^{\infty}\w_{\mc{F}}\left(\frac{i}{(|\D_{K}|^{2}y)^{\frac{1}{d}}}\right)(|\D_{K}|^{2}y)^{-\frac{s}{2}}\,\frac{dy}{y}.
+      \]
+      Now we compute
+      \begin{align*}
+        \w_{\mc{F}}\left(\frac{i}{(|\D_{K}|^{2}y)^{\frac{1}{d}}}\right) &= \w_{\mc{F}}\left(-\frac{1}{|\D_{K}|^{\frac{2}{d}}iy^{\frac{1}{d}}}\right) \\
+        &= \frac{1}{w_{K}}\int_{\mc{F}}\sum_{\substack{\mf{a} \in \Cl(K) \\ \text{$\mf{a}$ integral}}}\vt_{\mf{a}}\left(-\frac{\mathbf{x}}{2|\D_{K}|^{\frac{2}{d}}iy^{\frac{1}{d}}}\right)\frac{d\mathbf{x}}{\mathbf{x}}-\frac{h_{K}}{w_{K}}\int_{\mc{F}}\,\frac{d\mathbf{x}}{\mathbf{x}} && \text{\cref{equ:omega_theta_relationship_for_Dedekind_zeta_functions}} \\
+        &= \frac{1}{w_{K}}\int_{\mc{F}}\sum_{\substack{\mf{a} \in \Cl(K) \\ \text{$\mf{a}$ integral}}}\sqrt{|\D_{K}|y}\vt_{\mf{a}}\left(\frac{iy^{\frac{1}{d}}\mathbf{x}}{2}\right)\frac{d\mathbf{x}}{\mathbf{x}}-\frac{h_{K}}{w_{K}}\int_{\mc{F}}\,\frac{d\mathbf{x}}{\mathbf{x}} && \text{\cref{thm:functional_equation_Hecke_theta}} \\
+        &= \frac{\sqrt{|\D_{K}|y}}{w_{K}}\int_{\mc{F}}\sum_{\substack{\mf{a} \in \Cl(K) \\ \text{$\mf{a}$ integral}}}\vt_{\mf{a}}\left(\frac{iy^{\frac{1}{d}}\mathbf{x}}{2}\right)\frac{d\mathbf{x}}{\mathbf{x}}-\frac{h_{K}}{w_{K}}\int_{\mc{F}}\,\frac{d\mathbf{x}}{\mathbf{x}} \\
+        &= \sqrt{|\D_{K}|y}\w_{\mc{F}}(iy^{\frac{1}{d}})+\frac{\sqrt{|\D|_{K}y}h_{K}}{w_{K}}\int_{\mc{F}}\,\frac{d\mathbf{x}}{\mathbf{x}}-\frac{h_{K}}{w_{K}}\int_{\mc{F}}\,\frac{d\mathbf{x}}{\mathbf{x}} && \text{\cref{equ:omega_theta_relationship_for_Dedekind_zeta_functions}}.
+      \end{align*}
+      This chain implies that our first piece can be expressed as
+      \[
+        \int_{\frac{1}{|\D_{K}|}}^{\infty}\left(\sqrt{|\D_{K}|y}\w_{\mc{F}}(iy^{\frac{1}{d}})+\frac{\sqrt{|\D|_{K}y}h_{K}}{w_{K}}\int_{\mc{F}}\,\frac{d\mathbf{x}}{\mathbf{x}}-\frac{h_{K}}{w_{K}}\int_{\mc{F}}\,\frac{d\mathbf{x}}{\mathbf{x}}\right)(|\D_{K}|^{2}y)^{-\frac{s}{2}}\,\frac{dy}{y},
+      \]
+      which is further equivalent to
+      \[
+        |\D_{K}|^{\frac{1}{2}-s}\int_{\frac{1}{|\D_{K}|}}^{\infty}\w_{\mc{F}}(iy^{\frac{1}{d}})y^{\frac{1-s}{2}}\,\frac{dy}{y}-\frac{h_{K}}{\w_{K}s(1-s)}\int_{\mc{F}}\,\frac{d\mathbf{x}}{\mathbf{x}},
+      \]
+      since upon interchanging the integrals in the last two pieces by Fubini's theorem the inner integral is $\frac{1}{1-s}-\frac{1}{s} = -\frac{1}{s(1-s)}$. Substituting this expression back into \cref{equ:symmetric_integral_Dedekind_L-functions_split} and combining with \cref{equ:integral_representation_Dedekind_1} gives the integral representation
+      \[
+        \z_{K}(s) = \frac{(2\pi)^{r_{2}s}\pi^{\frac{r_{1}s}{2}}}{\G\left(\frac{s}{2}\right)^{r_{1}}\G\left(s\right)^{r_{2}}}\left[-\frac{h_{K}}{\w_{K}s(1-s)}\int_{\mc{F}}\,\frac{d\mathbf{x}}{\mathbf{x}}+|\D_{K}|^{\frac{1}{2}-s}\int_{\frac{1}{|\D_{K}|}}^{\infty}\w_{\mc{F}}(iy^{\frac{1}{d}})y^{\frac{1-s}{2}}\,\frac{dy}{y}+\int_{\frac{1}{|\D_{K}|}}^{\infty}\w_{\mc{F}}\left(iy^{\frac{1}{d}}\right)y^{\frac{s}{2}}\,\frac{dy}{y}.\right]
+      \]
+      It remains to compute the first integral on the right-hand side. The following lemma gives the result:
+
+      \begin{lemma}
+        Let $K$ be a number field of signature $(r_{1},r_{2})$ and set $\mc{F} = \log^{-1}(\mc{M}) \subset S$ where $\mc{M}$ is a fundamental domain for the unit lattice $\L$ in the trace-zero hyperplane $H$. Then
+        \[
+          \int_{\mc{F}}\,\frac{d\mathbf{x}}{\mathbf{x}} = 2^{r_{1}-1}R_{K}.
+        \]
+      \end{lemma}
+      \begin{proof}
+        \todo{xxx}
+      \end{proof}
     \subsection*{\todo{The Functional Equation}}
       \todo{xxx} We identify the gamma factor of $\z_{K}(s)$ to be
       \[
@@ -704,7 +737,7 @@
       \begin{equation}\label{equ:integral_representation_holomorphic_1}
         L(s,f) = \frac{(2\pi)^{s+\frac{k-1}{2}}}{\G\left(s+\frac{k-1}{2}\right)}\int_{0}^{\infty}f(iy)y^{s+\frac{k-1}{2}}\,\frac{dy}{y}.
       \end{equation}
-      Now split the integral on the right-hand side into two pieces
+      Now split the integral on the right-hand side into two pieces by writing
       \begin{equation}\label{equ:symmetric_integral_holomorphic_split}
         \int_{0}^{\infty}f(iy)y^{s+\frac{k-1}{2}}\,\frac{dy}{y} = \int_{0}^{\frac{1}{\sqrt{N}}}f(iy)y^{s+\frac{k-1}{2}}\,\frac{dy}{y}+\int_{\frac{1}{\sqrt{N}}}^{\infty}f(iy)y^{s+\frac{k-1}{2}}\,\frac{dy}{y}.
       \end{equation}
@@ -719,7 +752,7 @@
         &= \int_{\frac{1}{\sqrt{N}}}^{\infty}\left(\sqrt{N}iy\right)^{k}\w_{N}(f)\conj{f}(iy)(Ny)^{-s-\frac{k-1}{2}}\,\frac{dy}{y} \\
         &= \w_{N}(f)i^{k}N^{\frac{1}{2}-s}\int_{\frac{1}{\sqrt{N}}}^{\infty}\conj{f}(iy)y^{(1-s)-\frac{k-1}{2}}\,\frac{dy}{y}.
       \end{align*}
-      Substituting this result back into \cref{equ:symmetric_integral_holomorphic_split} with \cref{equ:integral_representation_holomorphic_1} yields the integral representation
+      Substituting this result back into \cref{equ:symmetric_integral_holomorphic_split} and combining with \cref{equ:integral_representation_holomorphic_1} yields the integral representation
       \[
         L(s,f) = \frac{(2\pi)^{s+\frac{k-1}{2}}}{\G\left(s+\frac{k-1}{2}\right)}\left[\w_{N}(f)i^{k}N^{\frac{1}{2}-s}\int_{\frac{1}{\sqrt{N}}}^{\infty}\conj{f}(iy)y^{(1-s)+\frac{k-1}{2}}\,\frac{dy}{y}+\int_{\frac{1}{\sqrt{N}}}^{\infty}f(iy)y^{s+\frac{k-1}{2}}\,\frac{dy}{y}\right].
       \]
@@ -866,7 +899,7 @@
       \begin{equation}\label{equ:integral_representation_Maass_1}
         L(s,f) = \frac{2^{2-\d_{f}}\pi^{s}(-i)^{\d_{f}}}{\G\left(\frac{s+\d_{f}+\nu}{2}\right)\G\left(\frac{s+\d_{f}-\nu}{2}\right)}\int_{0}^{\infty}\left(\frac{\del}{\del x}^{\d_{f}}f\right)(iy)y^{s-\frac{1}{2}+\d_{f}}\,\frac{dy}{y}.
       \end{equation}
-      Now split the integral on the right-hand side into two pieces
+      Now split the integral on the right-hand side into two pieces by writing
       \begin{equation}\label{equ:symmetric_integral_Maass_split}
         \int_{0}^{\infty}\left(\frac{\del}{\del x}^{\d_{f}}f\right)(iy)y^{s-\frac{1}{2}+\d_{f}}\,\frac{dy}{y} = \int_{0}^{\frac{1}{\sqrt{N}}}\left(\frac{\del}{\del x}^{\d_{f}}f\right)(iy)y^{s-\frac{1}{2}+\d_{f}}\,\frac{dy}{y}+\int_{\frac{1}{\sqrt{N}}}^{\infty}\left(\frac{\del}{\del x}^{\d_{f}}f\right)(iy)y^{s-\frac{1}{2}+\d_{f}}\,\frac{dy}{y}.
       \end{equation}
@@ -885,14 +918,14 @@
       \[
         \left(\frac{\del}{\del x}^{\d_{f}}f\right)\left(-\frac{1}{Nz}\right) = (-N|z|^{2})^{\d_{f}}\left(\frac{\del}{\del x}^{\d_{f}}\w_{N}f\right)(z),
       \]
-      for all $z \in \H$. Rewriting in terms of the Atkin-Lehner operator and recalling that $\w_{N}f = \w_{N}(f)\conj{f}$ by \cref{prop:Atkin_Lehner_conjugation_Maass}, we find that
+      Using this identity, rewriting in terms of the Atkin-Lehner operator, and recalling that $\w_{N}f = \w_{N}(f)\conj{f}$ by \cref{prop:Atkin_Lehner_conjugation_Maass}, we have
       \begin{align*}
         \int_{\frac{1}{\sqrt{N}}}^{\infty}\left(\frac{\del}{\del x}^{\d_{f}}f\right)\left(\frac{i}{Ny}\right)(Ny)^{-s+\frac{1}{2}-\d_{f}}\,\frac{dy}{y} &= \int_{\frac{1}{\sqrt{N}}}^{\infty}\left(\frac{\del}{\del x}^{\d_{f}}f\right)\left(-\frac{1}{iNy}\right)(Ny)^{-s+\frac{1}{2}-\d_{f}}\,\frac{dy}{y} \\
         &= \int_{\frac{1}{\sqrt{N}}}^{\infty}(-Ny^{2})^{\d_{f}}\left(\left(\frac{\del}{\del x}^{\d_{f}}\right)\w_{N}f\right)(iy)(Ny)^{-s+\frac{1}{2}-\d_{f}}\,\frac{dy}{y} \\
         &= \int_{\frac{1}{\sqrt{N}}}^{\infty}(-Ny^{2})^{\d_{f}}\w_{N}(f)\left(\left(\frac{\del}{\del x}^{\d_{f}}\right)\conj{f}\right)(iy)(Ny)^{-s+\frac{1}{2}-\d_{f}}\,\frac{dy}{y} \\
         &= w_{N}(f)(-1)^{\d_{f}}N^{\frac{1}{2}-s}\int_{\frac{1}{\sqrt{N}}}^{\infty}\left(\left(\frac{\del}{\del x}^{\d_{f}}\right)\conj{f}\right)(iy)y^{(1-s)-\frac{1}{2}+\d_{f}}\,\frac{dy}{y}.
       \end{align*}
-      Substituting this result back into \cref{equ:symmetric_integral_Maass_split} with \cref{equ:integral_representation_Maass_1} gives the integral representation
+      Substituting this result back into \cref{equ:symmetric_integral_Maass_split} and combining with \cref{equ:integral_representation_Maass_1} gives the integral representation
       \begin{align*}
         L(s,f) &= \frac{2^{2-\d_{f}}\pi^{s}(-i)^{\d_{f}}}{\G\left(\frac{s+\d_{f}+\nu}{2}\right)\G\left(\frac{s+\d_{f}-\nu}{2}\right)} \\
         &\cdot \left[w_{N}(f)(-1)^{\d_{f}}N^{\frac{1}{2}-s}\int_{\frac{1}{\sqrt{N}}}^{\infty}\left(\left(\frac{\del}{\del x}^{\d_{f}}\right)\conj{f}\right)(iy)y^{(1-s)-\frac{1}{2}+\d_{f}}\,\frac{dy}{y}+\int_{\frac{1}{\sqrt{N}}}^{\infty}\left(\frac{\del}{\del x}^{\d_{f}}f\right)(iy)y^{s-\frac{1}{2}+\d_{f}}\,\frac{dy}{y}\right].
