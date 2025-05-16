@@ -107,12 +107,12 @@
         \int_{1}^{\infty}\w(iy)y^{\frac{1-s}{2}}\,\frac{dy}{y}-\frac{1}{s(1-s)},
       \]
       because the integral over the last two pieces is $\frac{1}{1-s}-\frac{1}{s} = -\frac{1}{s(1-s)}$. Substituting this result back into \cref{equ:symmetric_integral_zeta_split} and combining with \cref{equ:integral_representation_zeta_1} yields the integral representation
-      \[
+      \begin{equation}\label{equ:integral_representation_zeta_final}
         \z(s) = \frac{\pi^{\frac{s}{2}}}{\G\left(\frac{s}{2}\right)}\left[-\frac{1}{s(1-s)}+\int_{1}^{\infty}\w(iy)y^{\frac{1-s}{2}}\,\frac{dy}{y}+\int_{1}^{\infty}\w(iy)y^{\frac{s}{2}}\,\frac{dy}{y}\right].
-      \]
-      This integral representation will give analytic continuation. To see this, first observe that everything outside the brackets is entire. Moreover, the integrands exhibit exponential decay and therefore the integrals are locally absolutely uniformly convergent on $\C$. The fractional term is holomorphic except for simple poles at $s = 0$ and $s = 1$. The meromorphic continuation to $\C$ follows with possible simple poles at $s = 0$ and $s = 1$. There is no pole at $s = 0$. Indeed, $\G\left(\frac{s}{2}\right)$ has a simple pole at $s = 0$ and so its reciprocal has a simple zero. This cancels the corresponding simple pole of $\frac{1}{s(1-s)}$ so that $\z(s)$ has a removable singularity and thus is holomorphic at $s = 0$. At $s = 1$, $\G\left(\frac{s}{2}\right)$ is nonzero and so $\z(s)$ has a simple pole. Therefore $\z(s)$ has meromorphic continuation to all of $\C$ with a simple pole at $s = 1$.
+      \end{equation}
+      This integral representation will give analytic continuation. To see this, first observe that everything outside the brackets is entire. Moreover, the integrands exhibit exponential decay and therefore the integrals are locally absolutely uniformly convergent on $\C$. The fractional term is holomorphic except for simple poles at $s = 0$ and $s = 1$. The meromorphic continuation to $\C$ follows with possible simple poles at $s = 0$ and $s = 1$. There is no pole at $s = 0$. Indeed, $\G\left(\frac{s}{2}\right)$ has a simple pole at $s = 0$ and so its reciprocal has a simple zero. This cancels the corresponding simple pole of $-\frac{1}{s(1-s)}$ so that $\z(s)$ has a removable singularity and thus is holomorphic at $s = 0$. At $s = 1$, $\G\left(\frac{s}{2}\right)$ is nonzero and so $\z(s)$ has a simple pole. Therefore $\z(s)$ has meromorphic continuation to all of $\C$ with a simple pole at $s = 1$.
     \subsection*{The Functional Equation}
-      An immediate consequence of applying the symmetry $s \to 1-s$ to the integral representation is the following functional equation:
+      An immediate consequence of applying the symmetry $s \to 1-s$ to \cref{equ:integral_representation_zeta_final} is the following functional equation:
       \[
         \frac{\G\left(\frac{s}{2}\right)}{\pi^{\frac{s}{2}}}\z(s) = \frac{\G\left(\frac{1-s}{2}\right)}{\pi^{\frac{1-s}{2}}}\z(1-s).
       \]
@@ -128,7 +128,7 @@
       \[
         \L(s,\z) = \L(1-s,\z).
       \]
-      This is the functional equation of $\z(s)$ and in this case is just a reformulation of the previous functional equation. From it we find that the root number is $\e(\z) = 1$ and that $\z(s)$ is self-dual. We can now show that the order of $\z(s)$ is $1$. As there is only a simple pole at $s = 1$, multiply by $(s-1)$ to clear the polar divisor. As the integrals in the integral representation are locally absolutely uniformly convergent, computing the order amounts to estimating the gamma factor. Since the reciprocal of the gamma function is of order $1$, we have
+      This is the functional equation of $\z(s)$ and in this case is just a reformulation of the previous functional equation. From it we find that the root number is $\e(\z) = 1$ and that $\z(s)$ is self-dual. We can now show that the order of $\z(s)$ is $1$. As there is only a simple pole at $s = 1$, multiply by $(s-1)$ to clear the polar divisor. As the integrals in \cref{equ:integral_representation_zeta_final} are locally absolutely uniformly convergent, computing the order amounts to estimating the gamma factor. Since the reciprocal of the gamma function is of order $1$, we have
       \[
         \frac{1}{\g(s,\z)} \ll_{\e} e^{|s|^{1+\e}}.
       \]
@@ -144,13 +144,13 @@
         \]
       \end{proposition}
       \begin{proof}
-        The only term in the integral representation of $\z(s)$ contributing to the pole is $-\frac{\pi^{\frac{s}{2}}}{\G\left(\frac{s}{2}\right)}\frac{1}{s(1-s)}$. Observe
+        The only term in \cref{equ:integral_representation_zeta_final} contributing to the pole is $-\frac{\pi^{\frac{s}{2}}}{\G\left(\frac{s}{2}\right)}\frac{1}{s(1-s)}$. Observe that
         \[
           \lim_{s \to 1}\frac{\pi^{\frac{s}{2}}}{\G\left(\frac{s}{2}\right)} = 1,
         \]
         because $\G\left(\frac{1}{2}\right) = \sqrt{\pi}$. Therefore
         \[
-          \Res_{s = 1}\z(s) = \Res_{s = 1}-\frac{\pi^{\frac{s}{2}}}{\G\left(\frac{s}{2}\right)}\frac{1}{s(1-s)} = \Res_{s = 1}-\frac{1}{s(1-s)} = \lim_{s \to 1}-\frac{(s-1)}{s(1-s)} = 1.
+          \Res_{s = 1}\z(s) = \Res_{s = 1}\left(-\frac{\pi^{\frac{s}{2}}}{\G\left(\frac{s}{2}\right)}\frac{1}{s(1-s)}\right) = \lim_{s \to 1}\left(\frac{\pi^{\frac{s}{2}}}{\G\left(\frac{s}{2}\right)}\frac{1}{s}\right) = 1.
         \]
       \end{proof}
 
@@ -301,12 +301,12 @@
         \frac{\e_{\chi}}{i^{\d_{\chi}}}q^{\frac{1}{2}-s}\int_{\frac{1}{q}}^{\infty}\w_{\cchi}(iy)y^{\frac{(1-s)+\d_{\chi}}{2}}\,\frac{dy}{y}.
       \]
       Substituting this expression back into \cref{equ:symmetric_integral_Dirichlet_L-functions_split} and combining with \cref{equ:integral_representation_Dirichlet_L-functions_1} gives the integral representation
-      \[
+      \begin{equation}\label{equ:integral_representation_Dirichlet_final}
         L(s,\chi) = \frac{\pi^{\frac{s+\d_{\chi}}{2}}}{\G\left(\frac{s+\d_{\chi}}{2}\right)}\left[\frac{\e_{\chi}}{i^{\d_{\chi}}}q^{\frac{1}{2}-s}\int_{\frac{1}{q}}^{\infty}\w_{\cchi}(iy)y^{\frac{(1-s)+\d_{\chi}}{2}}\,\frac{dy}{y}+\int_{\frac{1}{q}}^{\infty}\w_{\chi}(iy)y^{\frac{s+\d_{\chi}}{2}}\,\frac{dy}{y}\right].
-      \]
+      \end{equation}
       This integral representation will give analytic continuation. Indeed, we know everything outside the brackets is entire. The integrands exhibit exponential decay and therefore the integrals are locally absolutely uniformly convergent on $\C$. This gives analytic continuation to all of $\C$. In particular, $L(s,\chi)$ has no poles.
     \subsection*{The Functional Equation}
-      An immediate consequence of applying the symmetry $s \to 1-s$ to the integral representation is the following functional equation:
+      An immediate consequence of applying the symmetry $s \to 1-s$ to \cref{equ:integral_representation_Dirichlet_final} is the following functional equation:
       \[
         q^{\frac{s}{2}}\frac{\G\left(\frac{s+\d_{\chi}}{2}\right)}{\pi^{\frac{s+\d_{\chi}}{2}}}L(s,\chi) = \frac{\e_{\chi}}{i^{\d_{\chi}}}q^{\frac{1-s}{2}}\frac{\G\left(\frac{(1-s)+\d_{\chi}}{2}\right)}{\pi^{\frac{(1-s)+\d_{\chi}}{2}}}L(1-s,\cchi).
       \]
@@ -322,7 +322,7 @@
       \[
         \L(s,\chi) = \frac{\e_{\chi}}{i^{\d_{\chi}}}\L(1-s,\cchi).
       \]
-      From it we see that the root number is $\e(\chi) = \frac{\e_{\chi}}{i^{\d_{\chi}}}$ and that $L(s,\chi)$ has dual $L(s,\cchi)$. We now show that $L(s,\chi)$ is of order $1$. Since $L(s,\chi)$ has no poles, we do not need to clear any polar divisors. As the integrals in the integral representation are locally absolutely uniformly convergent, computing the order amounts to estimating the gamma factor. Since the reciprocal of the gamma function is of order $1$, we have
+      From it we see that the root number is $\e(\chi) = \frac{\e_{\chi}}{i^{\d_{\chi}}}$ and that $L(s,\chi)$ has dual $L(s,\cchi)$. We now show that $L(s,\chi)$ is of order $1$. Since $L(s,\chi)$ has no poles, we do not need to clear any polar divisors. As the integrals in \cref{equ:integral_representation_Dirichlet_final} are locally absolutely uniformly convergent, computing the order amounts to estimating the gamma factor. Since the reciprocal of the gamma function is of order $1$, we have
       \[
         \frac{1}{\g(s,\chi)} \ll_{\e} e^{|s|^{1+\e}}.
       \]
@@ -361,7 +361,7 @@
       \[
         \z_{K}(s) = \sum_{n \ge 1}\frac{a_{K}(n)}{n^{s}}.
       \]
-      We will see that $\z_{K}(s)$ is a Selberg class $L$-function. We have already shown that the coefficients $a_{K}(n)$ are polynomially bounded, for \cref{equ:ideals_of_fixed_norm_bound} implies $a_{K}(n) \le \s_{0}(n)^{d} \ll_{\e} n^{\e}$ (recall \cref{prop:sum_of_divisors_growth_rate}). Therefore $\z_{K}(s)$ is locally absolutely uniformly convergent for $\s > 1$. To determine the Euler product, we need to express $\z_{K}(s)$ in another form. Since $\z_{K}(s)$ converges absolutely, we can sum over integral ideals of $K$ instead and obtain
+      We will see that $\z_{K}(s)$ is a Selberg class $L$-function (in the case $d = 1$, $\z_{K}(s) = \z(s)$). We have already shown that the coefficients $a_{K}(n)$ are polynomially bounded, for \cref{equ:ideals_of_fixed_norm_bound} implies $a_{K}(n) \le \s_{0}(n)^{d} \ll_{\e} n^{\e}$ (recall \cref{prop:sum_of_divisors_growth_rate}). Therefore $\z_{K}(s)$ is locally absolutely uniformly convergent for $\s > 1$. To determine the Euler product, we need to express $\z_{K}(s)$ in another form. Since $\z_{K}(s)$ converges absolutely, we can sum over integral ideals of $K$ instead and obtain
       \[
         \z_{K}(s) = \sum_{\text{$\mf{a}$ integral}}\frac{1}{\Norm(\mf{a})^{s}}.
       \]
@@ -582,12 +582,13 @@
       \]
       which is further equivalent to
       \[
-        |\D_{K}|^{\frac{1}{2}-s}\int_{\frac{1}{|\D_{K}|}}^{\infty}\w_{\mc{F}}(iy^{\frac{1}{d}})y^{\frac{1-s}{2}}\,\frac{dy}{y}-\frac{h_{K}}{\w_{K}s(1-s)}\int_{\mc{F}}\,\frac{d\mathbf{x}}{\mathbf{x}},
+        |\D_{K}|^{\frac{1}{2}-s}\int_{\frac{1}{|\D_{K}|}}^{\infty}\w_{\mc{F}}(iy^{\frac{1}{d}})y^{\frac{1-s}{2}}\,\frac{dy}{y}-\frac{2h_{K}}{\w_{K}\sqrt{|\D|_{K}}s(1-s)}\int_{\mc{F}}\,\frac{d\mathbf{x}}{\mathbf{x}},
       \]
-      since upon interchanging the integrals in the last two pieces by Fubini's theorem the inner integral is $\frac{1}{1-s}-\frac{1}{s} = -\frac{1}{s(1-s)}$. Substituting this expression back into \cref{equ:symmetric_integral_Dedekind_L-functions_split} and combining with \cref{equ:integral_representation_Dedekind_1} gives the integral representation
-      \[
-        \z_{K}(s) = \frac{\pi^{\frac{r_{1}s}{2}}(2\pi)^{r_{2}s}}{\G\left(\frac{s}{2}\right)^{r_{1}}\G\left(s\right)^{r_{2}}}\left[-\frac{h_{K}}{\w_{K}s(1-s)}\int_{\mc{F}}\,\frac{d\mathbf{x}}{\mathbf{x}}+|\D_{K}|^{\frac{1}{2}-s}\int_{\frac{1}{|\D_{K}|}}^{\infty}\w_{\mc{F}}(iy^{\frac{1}{d}})y^{\frac{1-s}{2}}\,\frac{dy}{y}+\int_{\frac{1}{|\D_{K}|}}^{\infty}\w_{\mc{F}}\left(iy^{\frac{1}{d}}\right)y^{\frac{s}{2}}\,\frac{dy}{y}.\right]
-      \]
+      since, upon interchanging the integrals in the last two pieces by Fubini's theorem, the inner integrals are $\frac{2}{\sqrt{|\D|_{K}}(1-s)}-\frac{2}{\sqrt{|\D|_{K}}s} = -\frac{2}{\sqrt{|\D|_{K}}s(1-s)}$. Substituting this expression back into \cref{equ:symmetric_integral_Dedekind_L-functions_split} and combining with \cref{equ:integral_representation_Dedekind_1} gives the integral representation
+      \begin{align*}
+        \z_{K}(s) &= \frac{\pi^{\frac{r_{1}s}{2}}(2\pi)^{r_{2}s}}{\G\left(\frac{s}{2}\right)^{r_{1}}\G\left(s\right)^{r_{2}}}\Bigg[-\frac{2h_{K}}{\w_{K}\sqrt{|\D|_{K}}s(1-s)}\int_{\mc{F}}\,\frac{d\mathbf{x}}{\mathbf{x}}+|\D_{K}|^{\frac{1}{2}-s}\int_{\frac{1}{|\D_{K}|}}^{\infty}\w_{\mc{F}}(iy^{\frac{1}{d}})y^{\frac{1-s}{2}}\,\frac{dy}{y} \\
+        &+ \int_{\frac{1}{|\D_{K}|}}^{\infty}\w_{\mc{F}}\left(iy^{\frac{1}{d}}\right)y^{\frac{s}{2}}\,\frac{dy}{y}\Bigg].
+      \end{align*}
       It remains to compute the first integral on the right-hand side. The following lemma gives the result:
 
       \begin{lemma}\label{lem:integral_of_fundamental_domain_for_norm-one_hypersurface}
@@ -601,34 +602,37 @@
       \end{proof}
 
       From \cref{lem:integral_of_fundamental_domain_for_norm-one_hypersurface}, we obtain the integral representation
-      \[
-        \z_{K}(s) = \frac{\pi^{\frac{r_{1}s}{2}}(2\pi)^{r_{2}s}}{\G\left(\frac{s}{2}\right)^{r_{1}}\G\left(s\right)^{r_{2}}}\left[-\frac{2^{r_{1}-1}h_{K}R_{K}}{\w_{K}s(1-s)}+|\D_{K}|^{\frac{1}{2}-s}\int_{\frac{1}{|\D_{K}|}}^{\infty}\w_{\mc{F}}(iy^{\frac{1}{d}})y^{\frac{1-s}{2}}\,\frac{dy}{y}+\int_{\frac{1}{|\D_{K}|}}^{\infty}\w_{\mc{F}}\left(iy^{\frac{1}{d}}\right)y^{\frac{s}{2}}\,\frac{dy}{y}.\right]
-      \]
-      This integral representation will give analytic continuation. Indeed, everything outside the brackets is entire. The integrands exhibit exponential decay and therefore are locally absolutely uniformly convergent on $\C$. The fractional term is holomorphic except for simple poles at $s = 0$ and $s = 1$. The meromorphic continuation to $\C$ follows with possible simple poles at $s = 0$ and $s = 1$. Actually, there is no pole at $s = 0$. To see this, observe that $\G\left(\frac{s}{2}\right)^{r_{1}}\G\left(s\right)^{r_{2}}$ has at least a simple pole at $s = 0$ (since $r_{1}$ or $r_{2}$ is positive) and so its reciprocal has at least a simple zero. This cancels the corresponding simple pole of $\frac{2^{r_{1}-1}h_{K}R_{K}}{\w_{K}s(1-s)}$ so that $\z_{K}(s)$ has a removable singularity and thus is holomorphic at $s = 0$. At $s = 1$, $\G\left(\frac{s}{2}\right)^{r_{1}}\G\left(s\right)^{r_{2}}$ is nonzero and so $\z_{K}(s)$ has a simple pole. Therefore $\z_{K}(s)$ has meromorphic continuation to all of $\C$ with a simple pole at $s = 1$. 
+      \begin{equation}\label{equ:integral_representation_Dedekind_final}
+        \begin{aligned}
+          \z_{K}(s) &= \frac{\pi^{\frac{r_{1}s}{2}}(2\pi)^{r_{2}s}}{\G\left(\frac{s}{2}\right)^{r_{1}}\G\left(s\right)^{r_{2}}}\Bigg[-\frac{2^{r_{1}}h_{K}R_{K}}{\w_{K}\sqrt{|\D|_{K}}s(1-s)}+|\D_{K}|^{\frac{1}{2}-s}\int_{\frac{1}{|\D_{K}|}}^{\infty}\w_{\mc{F}}(iy^{\frac{1}{d}})y^{\frac{1-s}{2}}\,\frac{dy}{y} \\
+          &+ \int_{\frac{1}{|\D_{K}|}}^{\infty}\w_{\mc{F}}\left(iy^{\frac{1}{d}}\right)y^{\frac{s}{2}}\,\frac{dy}{y}\Bigg].
+        \end{aligned}
+      \end{equation}
+      This integral representation will give analytic continuation. Indeed, everything outside the brackets is entire. The integrands exhibit exponential decay and therefore are locally absolutely uniformly convergent on $\C$. The fractional term is holomorphic except for simple poles at $s = 0$ and $s = 1$. The meromorphic continuation to $\C$ follows with possible simple poles at $s = 0$ and $s = 1$. Actually, there is no pole at $s = 0$. To see this, observe that $\G\left(\frac{s}{2}\right)^{r_{1}}\G\left(s\right)^{r_{2}}$ has at least a simple pole at $s = 0$ (since $r_{1}$ or $r_{2}$ is positive) and so its reciprocal has at least a simple zero. This cancels the corresponding simple pole of $-\frac{2^{r_{1}-1}h_{K}R_{K}}{\w_{K}s(1-s)}$ so that $\z_{K}(s)$ has a removable singularity and thus is holomorphic at $s = 0$. At $s = 1$, $\G\left(\frac{s}{2}\right)^{r_{1}}\G\left(s\right)^{r_{2}}$ is nonzero and so $\z_{K}(s)$ has a simple pole. Therefore $\z_{K}(s)$ has meromorphic continuation to all of $\C$ with a simple pole at $s = 1$. 
     \subsection*{The Functional Equation}
-      An immediate consequence of applying the symmetry $s \to 1-s$ to the integral representation is the following functional equation:
+      An immediate consequence of applying the symmetry $s \to 1-s$ to \cref{equ:integral_representation_Dedekind_final} is the following functional equation:
       \[
         |\D_{K}|^{\frac{s}{2}}\frac{\G\left(\frac{s}{2}\right)^{r_{1}}\G\left(s\right)^{r_{2}}}{\pi^{\frac{r_{1}s}{2}}(2\pi)^{r_{2}s}}\z_{K}(s) = |\D_{K}|^{\frac{1-s}{2}}\frac{\G\left(\frac{(1-s)}{2}\right)^{r_{1}}\G\left(1-s\right)^{r_{2}}}{\pi^{\frac{r_{1}(1-s)}{2}}(2\pi)^{r_{2}(1-s)}}\z_{K}(1-s).
       \]
       Using the Legendre duplication formula, we see that
       \begin{align*}
-        \frac{\G\left(\frac{s}{2}\right)^{r_{1}}\G\left(s\right)^{r_{2}}}{\pi^{\frac{r_{1}s}{2}}(2\pi)^{r_{2}s}} &= \frac{1}{\pi^{\frac{r_{1}s}{2}}(2\pi)^{r_{2}s}2^{r_{2}(1-s)}\pi^{\frac{r_{2}}{2}}}\G\left(\frac{s}{2}\right)^{r_{K}+1}\G\left(\frac{s+1}{2}\right)^{r_{2}} \\
-        &= \frac{1}{2^{r_{2}}\pi^{\frac{ds}{2}+\frac{r_{2}}{2}}}\G\left(\frac{s}{2}\right)^{r_{K}+1}\G\left(\frac{s+1}{2}\right)^{r_{2}} \\
-        &= \frac{1}{2^{r_{2}}\pi^{\frac{r_{2}}{2}}}\pi^{-\frac{ds}{2}}\G\left(\frac{s}{2}\right)^{r_{K}+1}\G\left(\frac{s+1}{2}\right)^{r_{2}}.
+        \frac{\G\left(\frac{s}{2}\right)^{r_{1}}\G\left(s\right)^{r_{2}}}{\pi^{\frac{r_{1}s}{2}}(2\pi)^{r_{2}s}} &= \frac{1}{\pi^{\frac{r_{1}s}{2}}(2\pi)^{r_{2}s}2^{r_{2}(1-s)}\pi^{\frac{r_{2}}{2}}}\G\left(\frac{s}{2}\right)^{r_{1}+r_{2}}\G\left(\frac{s+1}{2}\right)^{r_{2}} \\
+        &= \frac{1}{2^{r_{2}}\pi^{\frac{ds}{2}+\frac{r_{2}}{2}}}\G\left(\frac{s}{2}\right)^{r_{1}+r_{2}}\G\left(\frac{s+1}{2}\right)^{r_{2}} \\
+        &= \frac{1}{2^{r_{2}}\pi^{\frac{r_{2}}{2}}}\pi^{-\frac{ds}{2}}\G\left(\frac{s}{2}\right)^{r_{1}+r_{2}}\G\left(\frac{s+1}{2}\right)^{r_{2}}.
       \end{align*}
       The constant factor in front is independent of $s$ and so can be canceled in the functional equation. Therefore we identify the gamma factor to be
       \[
-        \g(s,\z_{K}) = \pi^{-\frac{ds}{2}}\G\left(\frac{s}{2}\right)^{r_{K}+1}\Gamma\left(\frac{s+1}{2}\right)^{r_{2}},
+        \g(s,\z_{K}) = \pi^{-\frac{ds}{2}}\G\left(\frac{s}{2}\right)^{r_{1}+r_{2}}\Gamma\left(\frac{s+1}{2}\right)^{r_{2}},
       \]
-      with $\k_{i} = 0$ for $1 \le i \le r_{K}+1$ and $\k_{i} = 1$ for $r_{K}+1+1 \le i \le d$ the local roots at infinity. Clearly these satisfy the required bounds. The conductor is $q(\z_{K}) = |\D_{K}|$ and $p$ is ramified if and only if it is ramified in $K$ by \cref{thm:ramification_division_equivalence}. Note that if $p$ is unramified then $\sum_{1 \le i \le r_{p}}(e_{p}(\mf{p}_{i})-1)f_{p}(\mf{p}_{i}) = 0$ so that all local roots are of the form $\w_{p,i}^{k} \neq 0$. The completed Dedekind zeta function is
+      with $\k_{i} = 0$ for $1 \le i \le r_{1}+r_{2}$ and $\k_{i} = 1$ for $r_{1}+r_{2}+1 \le i \le d$ the local roots at infinity. Clearly these satisfy the required bounds. The conductor is $q(\z_{K}) = |\D_{K}|$ and $p$ is ramified if and only if it is ramified in $K$ by \cref{thm:ramification_division_equivalence}. Note that if $p$ is unramified then $\sum_{1 \le i \le r_{p}}(e_{p}(\mf{p}_{i})-1)f_{p}(\mf{p}_{i}) = 0$ so that all local roots are of the form $\w_{p,i}^{k} \neq 0$. The completed Dedekind zeta function is
       \[
-        \L(s,\z_{K}) = |\D_{K}|^{\frac{s}{2}}\pi^{-\frac{ds}{2}}\G\left(\frac{s}{2}\right)^{r_{K}+1}\Gamma\left(\frac{s+1}{2}\right)^{r_{2}}\z_{K}(s),
+        \L(s,\z_{K}) = |\D_{K}|^{\frac{s}{2}}\pi^{-\frac{ds}{2}}\G\left(\frac{s}{2}\right)^{r_{1}+r_{2}}\Gamma\left(\frac{s+1}{2}\right)^{r_{2}}\z_{K}(s),
       \]
       with functional equation
       \[
         \L(s,\z_{K}) = \L(1-s,\z_{K}).
       \]
-      This is the function equation of $\z_{K}(s)$ and from it we see that the root number is $\e(\z_{K}) = 1$ and that $\z_{K}(s)$ is self-dual. To see that the order is $1$, multiply by $(s-1)$ to clear the polar divisor. As the integrals in the integral representation are locally absolutely uniformly convergent, computing the order amounts to estimating the gamma factor. And because the reciprocal of the gamma function is of order $1$, we have
+      This is the function equation of $\z_{K}(s)$ and from it we see that the root number is $\e(\z_{K}) = 1$ and that $\z_{K}(s)$ is self-dual. To see that the order is $1$, multiply by $(s-1)$ to clear the polar divisor. As the integrals in \cref{equ:integral_representation_Dedekind_final} are locally absolutely uniformly convergent, computing the order amounts to estimating the gamma factor. And because the reciprocal of the gamma function is of order $1$, we have
       \[
         \frac{1}{\g(s,\z_{K})} \ll_{\e} e^{|s|^{1+\e}}.
       \]
@@ -639,16 +643,25 @@
       This shows $(s-1)\z_{K}(s)$ is of order $1$ and hence $\z_{K}(s)$ is too after removing the polar divisor. It now remains to compute the residue of $\z_{K}(s)$ at $s = 1$. This result is known as the infamous \textbf{analytic class number formula}\index{analytic class number formula}:
 
       \begin{theorem}[Analytic class number formula]
-        Let $K$ be a number field with signature $(r_{1},r_{2})$. Then
+        Let $K$ be a number field of signature $(r_{1},r_{2})$. Then
         \[
-          \Res_{s = 1}\z_{K}(s) = \frac{2^{r_{1}}(2\pi)^{r_{2}}R_{K}h_{K}}{w_{K}\sqrt{|\D_{K}|}}.
+          \Res_{s = 1}\z_{K}(s) = \frac{2^{r_{1}}(2\pi)^{r_{2}}h_{K}R_{K}}{w_{K}\sqrt{|\D_{K}|}}.
         \]
       \end{theorem}
       \begin{proof}
-        \todo{xxx}
+        The only term in \cref{equ:integral_representation_Dedekind_final} contributing to the pole is $-\frac{\pi^{\frac{r_{1}s}{2}}(2\pi)^{r_{2}s}}{\G\left(\frac{s}{2}\right)^{r_{1}}\G\left(s\right)^{r_{2}}}\frac{2^{r_{1}}h_{K}R_{K}}{\w_{K}\sqrt{|\D|_{K}}s(1-s)}$. Observe that
+        \[
+          \lim_{s \to 1}\frac{\pi^{\frac{r_{1}s}{2}}(2\pi)^{r_{2}s}}{\G\left(\frac{s}{2}\right)^{r_{1}}\G\left(s\right)^{r_{2}}} = (2\pi)^{r_{2}},
+        \]
+        because $\G\left(\frac{1}{2}\right) = \sqrt{\pi}$ and $\G(1) = 1$. Therefore
+        \begin{align*}
+          \Res_{s = 1}\z(s) &= \Res_{s = 1}\left(-\frac{\pi^{\frac{r_{1}s}{2}}(2\pi)^{r_{2}s}}{\G\left(\frac{s}{2}\right)^{r_{1}}\G\left(s\right)^{r_{2}}}\frac{2^{r_{1}}h_{K}R_{K}}{\w_{K}\sqrt{|\D|_{K}}s(1-s)}\right) \\
+          &= \lim_{s \to 1}\left(\frac{\pi^{\frac{r_{1}s}{2}}(2\pi)^{r_{2}s}}{\G\left(\frac{s}{2}\right)^{r_{1}}\G\left(s\right)^{r_{2}}}\frac{2^{r_{1}}h_{K}R_{K}}{\w_{K}\sqrt{|\D|_{K}}s}\right) \\
+          &= \frac{2^{r_{1}}(2\pi)^{r_{2}}h_{K}R_{K}}{w_{K}\sqrt{|\D_{K}|}}.
+        \end{align*}
       \end{proof}
 
-      We collect our work in the following theorem:
+      The usefulness of the analytic class number formula is that is allows for the estimation of the class number in terms of approximating the residue of the Dedekind zeta function at $s = 1$. We collect our work in the following theorem:
 
       \begin{theorem}\label{thm:Dedekind_Selberg}
         Let $K$ be a number field of degree $d$ and signature $(r_{1},r_{2})$. Then $\z_{K}(s)$ is a Selberg class $L$-function. For $\s > 1$, it has a degree $d$ Euler product given by
@@ -657,27 +670,39 @@
         \]
         Moreover, it admits meromorphic continuation to $\C$, possesses the functional equation
         \[
-          |\D_{K}|^{\frac{s}{2}}\pi^{-\frac{ds}{2}}\G\left(\frac{s}{2}\right)^{r_{K}+1}\Gamma\left(\frac{s+1}{2}\right)^{r_{2}}\z_{K}(s) = \L(s,\z_{K}) = \L(1-s,\z_{K}),
+          |\D_{K}|^{\frac{s}{2}}\pi^{-\frac{ds}{2}}\G\left(\frac{s}{2}\right)^{r_{1}+r_{2}}\Gamma\left(\frac{s+1}{2}\right)^{r_{2}}\z_{K}(s) = \L(s,\z_{K}) = \L(1-s,\z_{K}),
         \]
-        and has a simple pole at $s = 1$ of residue $\frac{2^{r_{1}}(2\pi)^{r_{2}}R_{K}h_{K}}{w_{K}\sqrt{|\D_{K}|}}$.
+        and has a simple pole at $s = 1$ of residue $\frac{2^{r_{1}}(2\pi)^{r_{2}}h_{K}R_{K}}{w_{K}\sqrt{|\D_{K}|}}$.
       \end{theorem}
     \subsection*{Imprimitivity}
       Dedekind zeta functions are generally imprimitive $L$-functions. We illustrate this in the case of quadratic number fields:
 
-      \begin{theorem}
-        Let $K = \Q(\sqrt{d})$ be a quadratic number field and let $\chi_{\D_{d}}$ be the quadratic character given by the Kronecker symbol. Then
+      \begin{theorem}\label{thm:factorization_of_Dedekind_of_quadratic_number_field}
+        Let $\Q(\sqrt{d})$ be a quadratic number field and let $\chi_{\D_{\Q(\sqrt{d})}}$ be the quadratic character given by the Kronecker symbol. Then
         \[
-          \z_{K}(s) = \z(s)L(s,\chi_{\D_{d}}).
+          \z_{\Q(\sqrt{d})}(s) = \z(s)L(s,\chi_{\D_{\Q(\sqrt{d})}}).
         \]
       \end{theorem}
       \begin{proof}
-        By the identity theorem it suffices to prove this for $\s > 1$. By \cref{prop:factorization_of_primes_quadratic}, the Euler product of $\z_{K}$ is given by
+        By the identity theorem it suffices to prove this for $\s > 1$. By \cref{prop:factorization_of_primes_quadratic}, the Euler product of $\z_{\Q(\sqrt{d})}(s)$ is given by
         \begin{align*}
-          \z_{K}(s) &= \prod_{\substack{p \\ \chi_{\D_{d}}(p) = 1}}(1-p^{-s})^{-1}(1-p^{-s})^{-1}\prod_{\substack{p \\ \chi_{\D_{d}}(p) = -1}}(1-p^{-s})^{-1}(1+p^{-s})^{-1}\prod_{\substack{p \\ \chi_{\D_{d}}(p) = 0}}(1-p^{-s})^{-1} \\
-          &= \z(s)\prod_{\substack{p \\ \chi_{\D_{d}}(p) = 1}}(1-p^{-s})^{-1}\prod_{\substack{p \\ \chi_{\D_{d}}(p) = -1}}(1+p^{-s})^{-1}\prod_{\substack{p \\ \chi_{\D_{d}}(p) = 0}}1 \\
-          &= \z(s)L(s,\chi_{\D_{p}}).
+          \z_{K}(s) &= \prod_{\substack{p \\ \chi_{\D_{\Q(\sqrt{d})}}(p) = 1}}(1-p^{-s})^{-1}(1-p^{-s})^{-1}\prod_{\substack{p \\ \chi_{\D_{\Q(\sqrt{d})}}(p) = -1}}(1-p^{-s})^{-1}(1+p^{-s})^{-1}\prod_{\substack{p \\ \chi_{\D_{\Q(\sqrt{d})}}(p) = 0}}(1-p^{-s})^{-1} \\
+          &= \z(s)\prod_{\substack{p \\ \chi_{\D_{\Q(\sqrt{d})}}(p) = 1}}(1-p^{-s})^{-1}\prod_{\substack{p \\ \chi_{\D_{\Q(\sqrt{d})}}(p) = -1}}(1+p^{-s})^{-1}\prod_{\substack{p \\ \chi_{\D_{\Q(\sqrt{d})}}(p) = 0}}1 \\
+          &= \z(s)L(s,\chi_{\D_{\Q(\sqrt{d})}}).
         \end{align*}
         This completes the proof.
+      \end{proof}
+
+      Since the residue of $\z(s)$ at $s = 1$ is $1$, the analytic class number formula gives a relationship between the value of Dirichlet $L$-functions at $s = 1$ and the class number of quadratic number fields:
+
+      \begin{corollary}
+        Let $\Q(\sqrt{d})$ be a quadratic number field of signature $(r_{1},r_{2})$ and let $\chi_{\D_{\Q(\sqrt{d})}}$ be the quadratic character given by the Kronecker symbol. Then
+        \[
+          L(1,\chi_{\D_{\Q(\sqrt{d})}}) = \frac{2^{r_{1}}(2\pi)^{r_{2}}h_{\Q(\sqrt{d})}R_{\Q(\sqrt{d})}}{w_{\Q(\sqrt{d})}\sqrt{|\D_{\Q(\sqrt{d})}|}}.
+        \]
+      \end{corollary}
+      \begin{proof}
+        This is immediate from combining \cref{thm:factorization_of_Dedekind_of_quadratic_number_field} with the analytic class number formula and \cref{prop:zeta_residue}.
       \end{proof}
   \section{Hecke \texorpdfstring{$L$}{L}-functions}
     \subsection*{The Definition \& Euler Product}
@@ -769,12 +794,12 @@
         &= \w_{N}(f)i^{k}N^{\frac{1}{2}-s}\int_{\frac{1}{\sqrt{N}}}^{\infty}\conj{f}(iy)y^{(1-s)-\frac{k-1}{2}}\,\frac{dy}{y}.
       \end{align*}
       Substituting this result back into \cref{equ:symmetric_integral_holomorphic_split} and combining with \cref{equ:integral_representation_holomorphic_1} yields the integral representation
-      \[
+      \begin{equation}\label{equ:integral_representation_holomorphic_final}
         L(s,f) = \frac{(2\pi)^{s+\frac{k-1}{2}}}{\G\left(s+\frac{k-1}{2}\right)}\left[\w_{N}(f)i^{k}N^{\frac{1}{2}-s}\int_{\frac{1}{\sqrt{N}}}^{\infty}\conj{f}(iy)y^{(1-s)+\frac{k-1}{2}}\,\frac{dy}{y}+\int_{\frac{1}{\sqrt{N}}}^{\infty}f(iy)y^{s+\frac{k-1}{2}}\,\frac{dy}{y}\right].
-      \]
+      \end{equation}
       This integral representation will give analytic continuation. To see this, we know everything outside the brackets is entire. The integrands exhibit exponential decay and therefore the integrals are locally absolutely uniformly convergent on $\C$. Hence we have analytic continuation to all of $\C$. In particular, we have shown that $L(s,f)$ has no poles.
     \subsection*{The Functional Equation}
-      An immediate consequence of applying the symmetry $s \to 1-s$ to the integral representation is the following functional equation:
+      An immediate consequence of applying the symmetry $s \to 1-s$ to \cref{equ:integral_representation_holomorphic_final} is the following functional equation:
       \[
         N^{\frac{s}{2}}\frac{\G\left(s+\frac{k-1}{2}\right)}{(2\pi)^{s+\frac{k-1}{2}}}L(s,f) = \w_{N}(f)i^{k}N^{\frac{1-s}{2}}\frac{\G\left((1-s)+\frac{k-1}{2}\right)}{(2\pi)^{(1-s)+\frac{k-1}{2}}}L(1-s,\conj{f}).
       \]
@@ -796,7 +821,7 @@
       \[
         \L(s,f) = \w_{N}(f)i^{k}\L(1-s,\conj{f}).
       \]
-      This is the functional equation of $L(s,f)$. From it, the root number is $\e(f) = \w_{N}(f)i^{k}$ and we see that $L(s,f)$ has dual $L(s,\conj{f})$. We will now show that $L(s,f)$ is of order $1$. Since $L(s,f)$ has no poles, we do not need to clear any polar divisors. As the integrals in the representation is locally absolutely uniformly convergent, computing the order amounts to estimating the gamma factor. Since the reciprocal of the gamma function is of order $1$, we have
+      This is the functional equation of $L(s,f)$. From it, the root number is $\e(f) = \w_{N}(f)i^{k}$ and we see that $L(s,f)$ has dual $L(s,\conj{f})$. We will now show that $L(s,f)$ is of order $1$. Since $L(s,f)$ has no poles, we do not need to clear any polar divisors. As the integrals in \cref{equ:integral_representation_holomorphic_final} are locally absolutely uniformly convergent, computing the order amounts to estimating the gamma factor. Since the reciprocal of the gamma function is of order $1$, we have
       \[
         \frac{1}{\g(s,f)} \ll_{\e} e^{|s|^{1+\e}}.
       \]
@@ -942,13 +967,15 @@
         &= w_{N}(f)(-1)^{\d_{f}}N^{\frac{1}{2}-s}\int_{\frac{1}{\sqrt{N}}}^{\infty}\left(\left(\frac{\del}{\del x}^{\d_{f}}\right)\conj{f}\right)(iy)y^{(1-s)-\frac{1}{2}+\d_{f}}\,\frac{dy}{y}.
       \end{align*}
       Substituting this result back into \cref{equ:symmetric_integral_Maass_split} and combining with \cref{equ:integral_representation_Maass_1} gives the integral representation
-      \begin{align*}
-        L(s,f) &= \frac{2^{2-\d_{f}}\pi^{s}(-i)^{\d_{f}}}{\G\left(\frac{s+\d_{f}+\nu}{2}\right)\G\left(\frac{s+\d_{f}-\nu}{2}\right)} \\
-        &\cdot \left[w_{N}(f)(-1)^{\d_{f}}N^{\frac{1}{2}-s}\int_{\frac{1}{\sqrt{N}}}^{\infty}\left(\left(\frac{\del}{\del x}^{\d_{f}}\right)\conj{f}\right)(iy)y^{(1-s)-\frac{1}{2}+\d_{f}}\,\frac{dy}{y}+\int_{\frac{1}{\sqrt{N}}}^{\infty}\left(\frac{\del}{\del x}^{\d_{f}}f\right)(iy)y^{s-\frac{1}{2}+\d_{f}}\,\frac{dy}{y}\right].
-      \end{align*}
+      \begin{equation}\label{equ:integral_representation_Maass_final}
+        \begin{aligned}
+          L(s,f) &= \frac{2^{2-\d_{f}}\pi^{s}(-i)^{\d_{f}}}{\G\left(\frac{s+\d_{f}+\nu}{2}\right)\G\left(\frac{s+\d_{f}-\nu}{2}\right)}\Bigg[w_{N}(f)(-1)^{\d_{f}}N^{\frac{1}{2}-s}\int_{\frac{1}{\sqrt{N}}}^{\infty}\left(\left(\frac{\del}{\del x}^{\d_{f}}\right)\conj{f}\right)(iy)y^{(1-s)-\frac{1}{2}+\d_{f}}\,\frac{dy}{y} \\
+          &+ \int_{\frac{1}{\sqrt{N}}}^{\infty}\left(\frac{\del}{\del x}^{\d_{f}}f\right)(iy)y^{s-\frac{1}{2}+\d_{f}}\,\frac{dy}{y}\Bigg].
+        \end{aligned}
+      \end{equation}
       This integral representation will give analytic continuation. To see this, note that everything outside the brackets is entire. The integrands exhibit exponential decay and therefore the integrals are locally absolutely uniformly convergent on $\C$. Hence we have analytic continuation to all of $\C$. In particular, $L(s,f)$ has no poles.
     \subsection*{The Functional Equation}
-      An immediate consequence of applying the symmetry $s \to 1-s$ to the integral representation is the following functional equation:
+      An immediate consequence of applying the symmetry $s \to 1-s$ to \cref{equ:integral_representation_Maass_final} is the following functional equation:
       \[
         N^{\frac{s}{2}}\frac{\G\left(\frac{s+\d_{f}+\nu}{2}\right)\G\left(\frac{s+\d_{f}-\nu}{2}\right)}{2^{2-\d_{f}}\pi^{s}(-i)^{\d_{f}}}L(s,f) = \w_{N}(f)(-1)^{\d_{f}}N^{\frac{1-s}{2}}\frac{\G\left(\frac{(1-s)+\d_{f}+\nu}{2}\right)\G\left(\frac{(1-s)+\d_{f}-\nu}{2}\right)}{2^{2-\d_{f}}\pi^{1-s}(-i)^{\d_{f}}}L(1-s,\conj{f}).
       \]
@@ -964,7 +991,7 @@
       \[
         \L(s,f) = \w_{N}(f)(-1)^{\d_{f}}\L(1-s,\conj{f}).
       \]
-      This is the functional equation of $L(s,f)$. From it, the root number is $\e(f) = \w_{N}(f)(-1)^{\d_{f}}$ and we see that $L(s,f)$ has dual $L(s,\conj{f})$. We will now show that $L(s,f)$ is of order $1$. Since $L(s,f)$ has no poles, we do not need to clear any polar divisors. As the integrals in the representation is locally absolutely uniformly convergent, computing the order amounts to estimating the gamma factor. Since the reciprocal of the gamma function is of order $1$, we have
+      This is the functional equation of $L(s,f)$. From it, the root number is $\e(f) = \w_{N}(f)(-1)^{\d_{f}}$ and we see that $L(s,f)$ has dual $L(s,\conj{f})$. We will now show that $L(s,f)$ is of order $1$. Since $L(s,f)$ has no poles, we do not need to clear any polar divisors. As the integrals in \cref{equ:integral_representation_Maass_final} are locally absolutely uniformly convergent, computing the order amounts to estimating the gamma factor. Since the reciprocal of the gamma function is of order $1$, we have
       \[
         \frac{1}{\g(s,f)} \ll_{\e} e^{|s|^{1+\e}}.
       \]
@@ -1171,7 +1198,7 @@
         \]
         Substituting this back into the Eisenstein series gives a form of the Fourier-Whittaker series:
       \begin{align*}
-        E_(z,s) &= y^{s}+\psum_{\substack{c \ge 1 \\ r \tmod{c}}}\left(\frac{y^{1-s}}{c^{2s}}\frac{\sqrt{\pi}\G\left(s-\frac{1}{2}\right)}{\G(s)}+\sum_{t \ge 1}\left(\frac{e^{2\pi it\frac{r}{c}}}{c^{2s}}\frac{2\pi^{s}|t|^{s-\frac{1}{2}}}{\G(s)}\sqrt{y}K_{s-\frac{1}{2}}(2\pi|t|y)\right)e^{2\pi itx}\right) \\
+        E(z,s) &= y^{s}+\psum_{\substack{c \ge 1 \\ r \tmod{c}}}\left(\frac{y^{1-s}}{c^{2s}}\frac{\sqrt{\pi}\G\left(s-\frac{1}{2}\right)}{\G(s)}+\sum_{t \ge 1}\left(\frac{e^{2\pi it\frac{r}{c}}}{c^{2s}}\frac{2\pi^{s}|t|^{s-\frac{1}{2}}}{\G(s)}\sqrt{y}K_{s-\frac{1}{2}}(2\pi|t|y)\right)e^{2\pi itx}\right) \\
         &= y^{s}+y^{1-s}\psum_{\substack{c \ge 1 \\ r \tmod{c}}}\frac{1}{c^{2s}}\frac{\sqrt{\pi}\G\left(s-\frac{1}{2}\right)}{\G(s)}+\sum_{t \ge 1}\left(\psum_{\substack{c \ge 1 \\ r \tmod{c}}}\frac{e^{2\pi it\frac{r}{c}}}{c^{2s}}\frac{2\pi^{s}|t|^{s-\frac{1}{2}}}{\G(s)}\sqrt{y}K_{s-\frac{1}{2}}(2\pi|t|y)\right)e^{2\pi itx} \\
         &= y^{s}+y^{1-s}\sum_{c \ge 1}\frac{r(0,c)}{c^{2s}}\frac{\sqrt{\pi}\G\left(s-\frac{1}{2}\right)}{\G(s)}+\sum_{t \ge 1}\left(\sum_{c \ge 1}\frac{r(t,c)}{c^{2s}}\frac{2\pi^{s}|t|^{s-\frac{1}{2}}}{\G(s)}\sqrt{y}K_{s-\frac{1}{2}}(2\pi|t|y)\right)e^{2\pi itx}.
       \end{align*}
@@ -1252,17 +1279,15 @@
       This completes our study of $E(z,s)$.
     \subsection*{The Integral Representation: Part II}
       We can now continue with the Rankin-Selberg convolution $L(s,f \ox g)$. Writing \cref{equ:Rankin-Selberg_integral-reresentation} in terms of $E^{\ast}(z,s)$ and $L(s,f \ox g)$ results in the integral representation
-      \[
+      \begin{equation}\label{equ:integral_representation_Rankin-Selberg_final}
         L(s,f \ox g) = \frac{(4\pi)^{s+k-1}\pi^{s}}{\G(s+k-1)\G(s)}\int_{\mc{F}}f(z)\conj{g(z)}\Im(z)^{k}E^{\ast}(z,s)\,d\mu.
-      \]
-      This integral representation will give analytic continuation. To see this, note that the gamma factors are analytic for $\s < 0$. By the functional equation for $E^{\ast}(z,s)$, the integral is invariant as $s \to 1-s$. These two facts together give analytic continuation to $\C$ outside of the critical strip. The continuation inside of the critical strip will be meromorphic because of the poles of $E^{\ast}(z,s)$. To see this, taking the integral representation and substituting the Fourier-Whittaker series for $E^{\ast}(z,s)$ gives
-      \begin{equation}\label{equ:integral_representation_Rankin_Selberg}
-        \begin{aligned}
-          L(s,f \ox g) &= \frac{(4\pi)^{s+k-1}\pi^{s}}{\G(s+k-1)\G(s)}\bigg[\int_{\mc{F}}f(x+iy)\conj{g(x+iy)}y^{k}(y^{s}\L(2s,\z)+y^{1-s}\L(2(1-s),\z))\,\frac{dx\,dy}{y^{2}} \\
-          &+\int_{\mc{F}}f(x+iy)\conj{g(x+iy)}y^{k}\sum_{n \neq 0}2|n|^{s-\frac{1}{2}}\s_{1-2s}(|n|)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y)e^{2\pi inx}\,\frac{dx\,dy}{y^{2}}\bigg],
-        \end{aligned}
       \end{equation}
-      and we are reduced to showing that both integrals are locally absolutely uniformly convergent in the critical strip and distance $\e$ away from the poles of $E^{\ast}(z,s)$ . Indeed, the first integral is locally absolutely uniformly convergent in this region since the exponential decay of $f$ and $g$ imply that the integrand is bounded and we are integrating over a region of finite volume. As for the second integral, since $s$ is in the critical strip $0 \le \s \le 1$ and so \cref{equ:non-constant_Fourier_coefficient_bound_non-holomorphic_Eisenstein_series} implies that it is
+      This integral representation will give analytic continuation. To see this, note that the gamma functions are analytic for $\s < 0$. By the functional equation for $E^{\ast}(z,s)$, the integral is invariant as $s \to 1-s$. These two facts together give analytic continuation to $\C$ outside of the critical strip. The continuation inside of the critical strip will be meromorphic because of the poles of $E^{\ast}(z,s)$. To see this, substituting the Fourier-Whittaker series for $E^{\ast}(z,s)$ into \cref{equ:integral_representation_Rankin-Selberg_final} gives
+      \begin{align*}
+        L(s,f \ox g) &= \frac{(4\pi)^{s+k-1}\pi^{s}}{\G(s+k-1)\G(s)}\Bigg[\int_{\mc{F}}f(x+iy)\conj{g(x+iy)}y^{k}(y^{s}\L(2s,\z)+y^{1-s}\L(2(1-s),\z))\,\frac{dx\,dy}{y^{2}} \\
+        &+\int_{\mc{F}}f(x+iy)\conj{g(x+iy)}y^{k}\sum_{n \neq 0}2|n|^{s-\frac{1}{2}}\s_{1-2s}(|n|)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y)e^{2\pi inx}\,\frac{dx\,dy}{y^{2}}\Bigg],
+      \end{align*}
+      and we are reduced to showing that both integrals are locally absolutely uniformly convergent in the critical strip and distance $\e$ away from the poles of $E^{\ast}(z,s)$. Indeed, the first integral is locally absolutely uniformly convergent in this region since the exponential decay of $f$ and $g$ imply that the integrand is bounded and we are integrating over a region of finite volume. As for the second integral, since $s$ is in the critical strip $0 \le \s \le 1$ and so \cref{equ:non-constant_Fourier_coefficient_bound_non-holomorphic_Eisenstein_series} implies that it is
       \[
         O_{\e}\left(\int_{\mc{F}}f(x+iy)\conj{g(x+iy)}y^{k}\sum_{n \ge 1}n^{\frac{1}{2}+\e}\sqrt{y}e^{-2\pi ny}\,\frac{dx\,dy}{y^{2}}\right).
       \]
@@ -1272,18 +1297,16 @@
       \]
       because each term is of smaller order than the next so that the series is bounded by a constant times its first term. It follows that the first sum has exponential decay. Together with the exponential decay of $f$ and $g$, the integrand is bounded and thus is locally absolutely uniformly convergent because we are integrating over a region of finite volume. The meromorphic continuation to the critical strip and hence to all of $\C$ follows. In particular, $L(s,f \ox g)$ has at most simple poles at $s = 0$ and $s = 1$. Actually, there is no pole at $s = 0$. Indeed, $\G(s)$ has a simple pole at $s = 0$ and therefore its reciprocal has a simple zero. This cancels the simple pole at $s = 0$ coming from $E^{\ast}(z,s)$ and therefore $L(s,f \ox g)$ is has a removable singularity at $s = 0$. So there is at worst a simple pole at $s = 1$.
     \subsection*{The Functional Equation}
-      An immediate consequence of the symmetry of integral representation is the functional equation:
+      An immediate consequence of applying the symmetry $s \to 1-s$ to \cref{equ:integral_representation_Rankin-Selberg_final} is the following functional equation:
       \[
         \frac{\G(s+k-1)\G(s)}{(4\pi)^{s+k-1}\pi^{s}}L(s,f \ox g) = \frac{\G((1-s)+k-1)\G(1-s)}{(4\pi)^{(1-s)+k-1}\pi^{1-s}}L(1-s,f \ox g).
       \]
-      Applying the Legendre duplication formula twice, we see that
-      \begin{equation}\label{equ:duplication_for_Rankin-Selberg_gamma_factor}
-        \begin{aligned}
-          \frac{\G(s+k-1)\G(s)}{(4\pi)^{s+k-1}\pi^{s}} &= \frac{2^{2s+k-3}}{(4\pi)^{s+k-1}\pi^{s+1}}\G\left(\frac{s+k-1}{2}\right)\G\left(\frac{s+k}{2}\right)\G\left(\frac{s}{2}\right)\G\left(\frac{s+1}{2}\right) \\
-          &= \frac{1}{2^{k+1}\pi^{k}}\pi^{-2s}\G\left(\frac{s+k-1}{2}\right)\G\left(\frac{s+k}{2}\right)\G\left(\frac{s}{2}\right)\G\left(\frac{s+1}{2}\right).
-        \end{aligned}
-      \end{equation}
-      The factor in front is independent of $s$ and can therefore be canceled in the functional equation. We identify the gamma factor as:
+      Applying the Legendre duplication formula, we see that
+      \begin{align*}
+        \frac{\G(s+k-1)\G(s)}{(4\pi)^{s+k-1}\pi^{s}} &= \frac{2^{2s+k-3}}{(4\pi)^{s+k-1}\pi^{s+1}}\G\left(\frac{s+k-1}{2}\right)\G\left(\frac{s+k}{2}\right)\G\left(\frac{s}{2}\right)\G\left(\frac{s+1}{2}\right) \\
+        &= \frac{1}{2^{k+1}\pi^{k}}\pi^{-2s}\G\left(\frac{s+k-1}{2}\right)\G\left(\frac{s+k}{2}\right)\G\left(\frac{s}{2}\right)\G\left(\frac{s+1}{2}\right).
+      \end{align*}
+      The constant factor in front is independent of $s$ and can therefore be canceled in the functional equation. We identify the gamma factor as:
       \[
         \g(s,f \ox g) = \pi^{-2s}\G\left(\frac{s+k-1}{2}\right)\G\left(\frac{s+k}{2}\right)\G\left(\frac{s}{2}\right)\G\left(\frac{s+1}{2}\right),
       \]
@@ -1295,7 +1318,7 @@
       \[
         \L(s,f \ox g) = \L(1-s,f \ox g),
       \]
-      is the functional equation of $L(s,f \ox g)$. In particular, the root number $\e(f \ox g) = 1$, and $L(s,f \ox g)$ is self-dual. We can now show that $L(s,f \ox g)$ is of order $1$. Since the possible pole at $s = 1$ is simple, multiplying by $(s-1)$ clears the possible polar divisor. As the integrals in the integral representation are locally absolutely uniformly convergent, computing the order amounts to estimating the gamma factor. Since the reciprocal of the gamma function is of order $1$, we have
+      is the functional equation of $L(s,f \ox g)$. In particular, the root number $\e(f \ox g) = 1$, and $L(s,f \ox g)$ is self-dual. We can now show that $L(s,f \ox g)$ is of order $1$. Since the possible pole at $s = 1$ is simple, multiplying by $(s-1)$ clears the possible polar divisor. As the integral in \cref{equ:integral_representation_Rankin-Selberg_final} is locally absolutely uniformly convergent, computing the order amounts to estimating the gamma factor. Since the reciprocal of the gamma function is of order $1$, we have
       \[
         \frac{1}{\g(s,f \ox g)} \ll_{\e} e^{|s|^{1+\e}}.
       \]
