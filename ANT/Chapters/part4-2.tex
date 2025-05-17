@@ -389,7 +389,7 @@
     \subsection*{The Integral Representation: Part I}
       We will find an integral representation for $\z_{K}(s)$. To do this, let $\s$ run over the $n$ distinct $\Q$-embeddings of $K$ into $\conj{\Q}$ and let $\tau$ run over a complete set of representatives for the real and pairs of complex $\Q$-embeddings. Also recall that $N_{\tau} = 1,2$ depending upon if $\tau$ is real or complex. It will be useful to let
       \[
-        \mathbf{N} = (N_{\tau})_{\tau}, \quad \boldsymbol{\a} = (|\tau(\a)|)_{\tau},  \quad \text{and} \quad \boldsymbol{j(\a)} = (|\s(\a)|)_{\s},
+        \mathbf{N} = (N_{\tau})_{\tau}, \quad \mathbf{N}^{\vee} = (3-N_{\tau})_{\tau}, \quad \boldsymbol{\a} = (|\tau(\a)|)_{\tau},  \quad \text{and} \quad \boldsymbol{j(\a)} = (|\s(\a)|)_{\s},
       \]
       for all $\a \in K$. With this notation,
       \[
@@ -397,7 +397,7 @@
       \]
       Now consider the function
       \[
-        \w_{K}(\mathbf{z}) = \sum_{n \ge 1}a_{K}(n)e^{\pi in^{\frac{2}{d}}\<\mathbf{N},\mathbf{z}\>},
+        \w_{K}(\mathbf{z}) = \sum_{n \ge 1}a_{K}(n)e^{\pi in^{\frac{2}{d}}\<\mathbf{z},\mathbf{N}\>},
       \]
       defined for $\mathbf{z} \in \H^{r_{K}+1}$. It is locally absolutely uniformly convergent in this region by the Weierstrass $M$-test. Taking $\e < 1$, the bound $a_{K}(n) \ll_{\e} n^{\e}$ gives
       \[
@@ -409,9 +409,9 @@
       \]
       By the exponential decay of $\w_{K}(\mathbf{z})$, this integral is locally absolutely uniformly convergent for $\s > 1$ and hence defines an analytic function there. Then we compute
       \begin{align*}
-        \int_{\R_{+}^{r_{K}+1}}\w_{K}(i\mathbf{y})\mathbf{y}^{\frac{s\mathbf{N}}{2}}\,\frac{d\mathbf{y}}{\mathbf{y}} &= \int_{\R_{+}^{r_{K}+1}}\sum_{n \ge 1}a_{K}(n)e^{-\pi n^{\frac{2}{d}}\<\mathbf{N},\mathbf{y}\>}\mathbf{y}^{\frac{s\mathbf{N}}{2}}\,\frac{d\mathbf{y}}{\mathbf{y}} \\
-        &= \sum_{n \ge 1}\int_{\R_{+}^{r_{K}+1}}a_{K}(n)e^{-\pi n^{\frac{2}{d}}\<\mathbf{N},\mathbf{y}\>}\mathbf{y}^{\frac{s\mathbf{N}}{2}}\,\frac{d\mathbf{y}}{\mathbf{y}} && \text{FT} \\
-        &= \sum_{n \ge 1}\frac{a_{K}(n)}{\pi^{\frac{r_{1}s}{2}}(2\pi)^{r_{2}s}n^{s}}\int_{\R_{+}^{r_{K}+1}}e^{-\<\mathbf{1},\mathbf{y}\>}\mathbf{y}^{\frac{s\mathbf{N}}{2}}\,\frac{d\mathbf{y}}{\mathbf{y}} && \text{$\mathbf{y} \mapsto \frac{\mathbf{y}}{\mathbf{N}\pi n^{\frac{2}{d}}}$} \\
+        \int_{\R_{+}^{r_{K}+1}}\w_{K}(i\mathbf{y})\mathbf{y}^{\frac{s\mathbf{N}}{2}}\,\frac{d\mathbf{y}}{\mathbf{y}} &= \int_{\R_{+}^{r_{K}+1}}\sum_{n \ge 1}a_{K}(n)e^{-\pi n^{\frac{2}{d}}\<\mathbf{y},\mathbf{N}\>}\mathbf{y}^{\frac{s\mathbf{N}}{2}}\,\frac{d\mathbf{y}}{\mathbf{y}} \\
+        &= \sum_{n \ge 1}\int_{\R_{+}^{r_{K}+1}}a_{K}(n)e^{-\pi n^{\frac{2}{d}}\<\mathbf{y},\mathbf{N}\>}\mathbf{y}^{\frac{s\mathbf{N}}{2}}\,\frac{d\mathbf{y}}{\mathbf{y}} && \text{FT} \\
+        &= \sum_{n \ge 1}\frac{a_{K}(n)}{\pi^{\frac{r_{1}s}{2}}(2\pi)^{r_{2}s}n^{s}}\int_{\R_{+}^{r_{K}+1}}e^{-\<\mathbf{y},\mathbf{1}\>}\mathbf{y}^{\frac{s\mathbf{N}}{2}}\,\frac{d\mathbf{y}}{\mathbf{y}} && \text{$\mathbf{y} \mapsto \frac{\mathbf{y}}{\mathbf{N}\pi n^{\frac{2}{d}}}$} \\
         &= \frac{\G\left(\frac{s}{2}\right)^{r_{1}}\G\left(s\right)^{r_{2}}}{\pi^{\frac{r_{1}s}{2}}(2\pi)^{r_{2}s}}\sum_{n \ge 1}\frac{a_{K}(n)}{n^{s}} \\
         &= \frac{\G\left(\frac{s}{2}\right)^{r_{1}}\G\left(s\right)^{r_{2}}}{\pi^{\frac{r_{1}s}{2}}(2\pi)^{r_{2}s}}\z_{K}(s).
       \end{align*}
@@ -421,7 +421,7 @@
       \]
       We will manipulate the remaining integral to write it as a different Mellin transform. This will take a fair amount of work. As $\w_{K}(\mathbf{z})$ converges absolutely we may sum over integral ideals of $K$ and obtain
       \[
-        \int_{\R_{+}^{r_{K}+1}}\sum_{\text{$\mf{a}$ integral}}e^{\pi i\Norm(\mf{a})^{\frac{2}{d}}\<\mathbf{N},i\mathbf{y}\>}\mathbf{y}^{\frac{s\mathbf{N}}{2}}\,\frac{d\mathbf{y}}{\mathbf{y}}.
+        \int_{\R_{+}^{r_{K}+1}}\sum_{\text{$\mf{a}$ integral}}e^{\pi i\Norm(\mf{a})^{\frac{2}{d}}\<i\mathbf{y},\mathbf{N}\>}\mathbf{y}^{\frac{s\mathbf{N}}{2}}\,\frac{d\mathbf{y}}{\mathbf{y}}.
       \]
       Now if $\mf{a}$ is an integral ideal, then $\mc{O}_{K}^{\ast}$ acts on $\mf{a}-\{0\}$ by multiplication. Therefore we have an orbit space $(\mf{a}-\{0\})/\mc{O}_{K}^{\ast}$. The following lemma establishes a bijection between this orbit space and integral ideals in an ideal class:
 
@@ -437,11 +437,11 @@
 
        By Minkowski theorem, any ideal class is can be represented by an integral ideal $\mf{a}$. So let $\mf{a}_{1},\ldots,\mf{a}_{h_{K}}$ be a complete set of representatives of $\Cl(K)$ consisting only of integral ideals. As the ideal class group is a group, we see that $\mf{a}_{1}^{-1},\ldots,\mf{a}_{h_{K}}^{-1}$ is also a complete set of representatives. By \cref{lem:Hecke_theta_function_lemma}, this shows that every integral ideal is uniquely of the form $\a\mf{a}_{i}^{-1}$ for some $1 \le i \le h_{K}$ and $\a \in \mf{a}_{i}^{\ast}/\mc{O}_{K}^{\ast}$ and thus has norm $\Norm(\a\mf{a}_{i}^{-1})$. Then we may further rewrite our integral as
       \[
-        \sum_{\substack{\mf{a} \in \Cl(K) \\ \text{$\mf{a}$ integral}}}\sum_{\a \in (\mf{a}-\{0\})/\mc{O}_{K}^{\ast}}\int_{\R_{+}^{r_{K}+1}}e^{\pi i\Norm(\a\mf{a}^{-1})^{\frac{2}{d}}\<\mathbf{N},i\mathbf{y}\>}\mathbf{y}^{\frac{s\mathbf{N}}{2}}\,\frac{d\mathbf{y}}{\mathbf{y}},
+        \sum_{\substack{\mf{a} \in \Cl(K) \\ \text{$\mf{a}$ integral}}}\sum_{\a \in (\mf{a}-\{0\})/\mc{O}_{K}^{\ast}}\int_{\R_{+}^{r_{K}+1}}e^{\pi i\Norm(\a\mf{a}^{-1})^{\frac{2}{d}}\<i\mathbf{y},\mathbf{N}\>}\mathbf{y}^{\frac{s\mathbf{N}}{2}}\,\frac{d\mathbf{y}}{\mathbf{y}},
       \]
       where we have interchange the two sums and integral by Fubini's theorem. Now perform the change of variables $\mathbf{y} \mapsto \boldsymbol{\a}^{2}\mathbf{y}$ to obtain
       \[
-        \sum_{\substack{\mf{a} \in \Cl(K) \\ \text{$\mf{a}$ integral}}}\sum_{\a \in (\mf{a}-\{0\})/\mc{O}_{K}^{\ast}}\int_{\R_{+}^{r_{K}+1}}e^{\pi i\Norm(\a\mf{a}^{-1})^{\frac{2}{d}}\<\mathbf{N},\boldsymbol{\a}^{2}i\mathbf{y}\>}(\boldsymbol{\a}^{2}\mathbf{y})^{\frac{s\mathbf{N}}{2}}\,\frac{d\mathbf{y}}{\mathbf{y}}.
+        \sum_{\substack{\mf{a} \in \Cl(K) \\ \text{$\mf{a}$ integral}}}\sum_{\a \in (\mf{a}-\{0\})/\mc{O}_{K}^{\ast}}\int_{\R_{+}^{r_{K}+1}}e^{\pi i\Norm(\a\mf{a}^{-1})^{\frac{2}{d}}\<\boldsymbol{\a}^{2}i\mathbf{y},\mathbf{N}\>}(\boldsymbol{\a}^{2}\mathbf{y})^{\frac{s\mathbf{N}}{2}}\,\frac{d\mathbf{y}}{\mathbf{y}}.
       \]
       We will now alter the region of integration. Observe that any $\mathbf{y} \in \R_{+}^{r_{K}+1}$ can be written in the form
       \[
@@ -461,43 +461,43 @@
       \]
       where $d\mathbf{x}$ (which can also be written as $\frac{d\mathbf{x}}{\mathbf{x}}$ because $\mathbf{x} \in S$) is the restriction of the measure $\frac{d\mathbf{y}}{\mathbf{y}}$ to $S$. Therefore our expression takes the form
       \[
-        \sum_{\substack{\mf{a} \in \Cl(K) \\ \text{$\mf{a}$ integral}}}\sum_{\a \in (\mf{a}-\{0\})/\mc{O}_{K}^{\ast}}\int_{0}^{\infty}\int_{S}e^{\pi i\Norm(\a\mf{a}^{-1})^{\frac{2}{d}}\left\<\mathbf{N},\boldsymbol{\a}^{2}iy^{\frac{1}{d}}\mathbf{x}\right\>}\boldsymbol{\a}^{s\mathbf{N}}y^{\frac{s}{2}}\,\frac{d\mathbf{x}\,dy}{y}.
+        \sum_{\substack{\mf{a} \in \Cl(K) \\ \text{$\mf{a}$ integral}}}\sum_{\a \in (\mf{a}-\{0\})/\mc{O}_{K}^{\ast}}\int_{0}^{\infty}\int_{S}e^{\pi i\Norm(\a\mf{a}^{-1})^{\frac{2}{d}}\left\<\boldsymbol{\a}^{2}iy^{\frac{1}{d}}\mathbf{x},\mathbf{N}\right\>}\boldsymbol{\a}^{s\mathbf{N}}y^{\frac{s}{2}}\,\frac{d\mathbf{x}\,dy}{y}.
       \]
       Now consider the inverse isomorphisms
       \[
         \log:\R_{+}^{r_{K}+1} \to \R^{r_{K}+1} \qquad \text{and} \quad e:\R^{r_{K}+1} \to \R_{+}^{r_{K}+1}.
       \]
-      In particular, they restricts to inverse bijections between the norm-one hypersurface $S$ and the trace-zero hyperplane $H$ ($\log(S) = H$ and $e^{H} = S$). By \cref{thm:unit_group_complete_lattice}, $2\L$ is a complete lattice in $H$ and therefore has fundamental domain $2\mc{M}$ where $\mc{M}$ is a fundamental domain for $\L$. Then
+      In particular, they restricts to inverse bijections between the norm-one hypersurface $S$ and the trace-zero hyperplane $H$ ($\log(S) = H$ and $e^{H} = S$). By Dirichlet's unit theorem, $\mathbf{N}^{\vee}\L$ is a complete lattice in $H$ and therefore has fundamental domain $2\mc{M}$ where $\mc{M}$ is a fundamental domain for $\L$. Then
       \[
-        H = \bigcup_{\l \in \L}(2\mc{M}+2\l).
+        H = \bigcup_{\l \in \L}(\mathbf{N}^{\vee}\mc{M}+\mathbf{N}^{\vee}\l).
       \]
-      Setting $\mc{F} = e^{2\mc{M}}$, we see that $\mc{F}$ is a fundamental domain for the properly discontinuous action of $\L$ on $S$ by multiplication by $e^{2\l}$ for all $\l \in \L$. In particular,
+      Setting $\mc{F} = e^{\mathbf{N}^{\vee}\mc{M}}$, we see that $\mc{F}$ is a fundamental domain for the properly discontinuous action of $\L$ on $S$ by multiplication by $e^{\mathbf{N}^{\vee}\l}$ for all $\l \in \L$. In particular,
       \[
-        S = \bigcup_{\l \in \L}e^{2\l}\mc{F}.
+        S = \bigcup_{\l \in \L}e^{\mathbf{N}^{\vee}\l}\mc{F}.
       \]
       By \cref{prop:exact_sequence_for_Dirichlets_unit_theorem}, we may express this decomposition as
       \[
-        S = \bigcup_{\e \in \mc{O}_{K}^{\ast}/\mu(K)}e^{\l(\e^{2})}\mc{F}.
+        S = \bigcup_{\e \in \mc{O}_{K}^{\ast}/\mu(K)}e^{\mathbf{N}^{\vee}\l(\e)}\mc{F}.
       \]
       Then folding yields
       \[
-        \frac{1}{w_{K}}\sum_{\substack{\mf{a} \in \Cl(K) \\ \text{$\mf{a}$ integral}}}\sum_{\a \in (\mf{a}-\{0\})/\mc{O}_{K}^{\ast}}\sum_{\e \in \mc{O}_{K}^{\ast}}\int_{0}^{\infty}\int_{\mc{F}}e^{\pi i\Norm(\a\mf{a}^{-1})^{\frac{2}{d}}\left\<\mathbf{N},\boldsymbol{\a}^{2}e^{\l(\e^{2})}iy^{\frac{1}{d}}\mathbf{x}\right\>}\boldsymbol{\a}^{s\mathbf{N}}y^{\frac{s}{2}}\,\frac{d\mathbf{x}\,dy}{y},
+        \frac{1}{w_{K}}\sum_{\substack{\mf{a} \in \Cl(K) \\ \text{$\mf{a}$ integral}}}\sum_{\a \in (\mf{a}-\{0\})/\mc{O}_{K}^{\ast}}\sum_{\e \in \mc{O}_{K}^{\ast}}\int_{0}^{\infty}\int_{\mc{F}}e^{\pi i\Norm(\a\mf{a}^{-1})^{\frac{2}{d}}\left\<\boldsymbol{\a}^{2}e^{\mathbf{N}^{\vee}\l(\e)}iy^{\frac{1}{d}}\mathbf{x},\mathbf{N}\right\>}\boldsymbol{\a}^{s\mathbf{N}}y^{\frac{s}{2}}\,\frac{d\mathbf{x}\,dy}{y},
       \]
-      because $e^{\l(\e^{2})} = \mathbf{1}$ if $\e \in \mu(K)$ and we have interchanged the sum and integrals by Fubini's theorem. As $\boldsymbol{\e}^{\mathbf{N}} = |\Norm(\e)| = 1$ for all $\e \in \mc{O}_{K}^{\ast}$, we can use \cref{cor:unit_if_and_only_if_absolute_value_norm_1} to write our expression as
+      because $e^{\mathbf{N}^{\vee}\l(\e)} = \mathbf{1}$ if $\e \in \mu(K)$ and we have interchanged the sum and integrals by Fubini's theorem. As $\boldsymbol{\e}^{\mathbf{N}} = |\Norm(\e)| = 1$ for all $\e \in \mc{O}_{K}^{\ast}$, we can use \cref{cor:unit_if_and_only_if_absolute_value_norm_1} to write our expression as
       \[
-        \frac{1}{w_{K}}\sum_{\substack{\mf{a} \in \Cl(K) \\ \text{$\mf{a}$ integral}}}\sum_{\a \in (\mf{a}-\{0\})/\mc{O}_{K}^{\ast}}\sum_{\e \in \mc{O}_{K}^{\ast}}\int_{0}^{\infty}\int_{\mc{F}}e^{\pi i\Norm(\a\e\mf{a}^{-1})^{\frac{2}{d}}\left\<\mathbf{N},\boldsymbol{\a}^{2}e^{\l(\e^{2})}iy^{\frac{1}{d}}\mathbf{x}\right\>}(\boldsymbol{\a}\boldsymbol{\e})^{s\mathbf{N}}y^{\frac{s}{2}}\,\frac{d\mathbf{x}\,dy}{y}.
+        \frac{1}{w_{K}}\sum_{\substack{\mf{a} \in \Cl(K) \\ \text{$\mf{a}$ integral}}}\sum_{\a \in (\mf{a}-\{0\})/\mc{O}_{K}^{\ast}}\sum_{\e \in \mc{O}_{K}^{\ast}}\int_{0}^{\infty}\int_{\mc{F}}e^{\pi i\Norm(\a\e\mf{a}^{-1})^{\frac{2}{d}}\left\<\boldsymbol{\a}^{2}e^{\mathbf{N}\l(\e^{2})}iy^{\frac{1}{d}}\mathbf{x},\mathbf{N}\right\>}(\boldsymbol{\a}\boldsymbol{\e})^{s\mathbf{N}}y^{\frac{s}{2}}\,\frac{d\mathbf{x}\,dy}{y}.
       \]
-      By the definition of $\l$, we have $\boldsymbol{\a}^{2}e^{\l(\e^{2})} = (\boldsymbol{\a\e})^{2}$ and therefore we may combine the innermost two sums to obtain
+      By the definition of $\l$ and $\mathbf{N}^{\vee}$, we have $\boldsymbol{\a}^{2}e^{\mathbf{N}\l(\e)} = (\boldsymbol{\a\e})^{2}$ and therefore we may combine the innermost two sums to obtain
       \[
-        \frac{1}{w_{K}}\sum_{\substack{\mf{a} \in \Cl(K) \\ \text{$\mf{a}$ integral}}}\sum_{\a \in \mf{a}-\{0\}}\int_{0}^{\infty}\int_{\mc{F}}e^{\pi i\Norm(\a\mf{a}^{-1})^{\frac{2}{d}}\left\<\mathbf{N},\boldsymbol{\a}^{2}iy^{\frac{1}{d}}\mathbf{x}\right\>}\boldsymbol{\a}^{s\mathbf{N}}y^{\frac{s}{2}}\,\frac{d\mathbf{x}\,dy}{y}.
+        \frac{1}{w_{K}}\sum_{\substack{\mf{a} \in \Cl(K) \\ \text{$\mf{a}$ integral}}}\sum_{\a \in \mf{a}-\{0\}}\int_{0}^{\infty}\int_{\mc{F}}e^{\pi i\Norm(\a\mf{a}^{-1})^{\frac{2}{d}}\left\<\boldsymbol{\a}^{2}iy^{\frac{1}{d}}\mathbf{x},\mathbf{N}\right\>}\boldsymbol{\a}^{s\mathbf{N}}y^{\frac{s}{2}}\,\frac{d\mathbf{x}\,dy}{y}.
       \]
       Performing the change of variables $y \mapsto \frac{y}{\boldsymbol{\a}^{2\mathbf{N}}}$ gives
       \[
-        \frac{1}{w_{K}}\sum_{\substack{\mf{a} \in \Cl(K) \\ \text{$\mf{a}$ integral}}}\sum_{\a \in \mf{a}-\{0\}}\int_{0}^{\infty}\int_{\mc{F}}e^{\pi i\Norm(\mf{a}^{-1})^{\frac{2}{d}}\left\<\mathbf{N},\boldsymbol{\a}^{2}iy^{\frac{1}{d}}\mathbf{x}\right\>}y^{\frac{s}{2}}\,\frac{d\mathbf{x}\,dy}{y},
+        \frac{1}{w_{K}}\sum_{\substack{\mf{a} \in \Cl(K) \\ \text{$\mf{a}$ integral}}}\sum_{\a \in \mf{a}-\{0\}}\int_{0}^{\infty}\int_{\mc{F}}e^{\pi i\Norm(\mf{a}^{-1})^{\frac{2}{d}}\left\<\boldsymbol{\a}^{2}iy^{\frac{1}{d}}\mathbf{x},\mathbf{N}\right\>}y^{\frac{s}{2}}\,\frac{d\mathbf{x}\,dy}{y},
       \]
       Interchanging the the two integrals with the two sums by Fubini's theorem and noting that $\<\mathbf{N},\boldsymbol{\a}^{2}\> = \<\boldsymbol{j(\a)},\boldsymbol{j(\a)}\>$, our expression becomes
       \[
-        \int_{0}^{\infty}\int_{\mc{F}}\frac{1}{w_{K}}\sum_{\substack{\mf{a} \in \Cl(K) \\ \text{$\mf{a}$ integral}}}\sum_{j(\a) \in j(\mf{a})-\{\mathbf{0}\}}e^{\pi i\Norm(\mf{a}^{-1})^{\frac{2}{d}}\left\<\boldsymbol{j(\a)},\boldsymbol{j(\a)}iy^{\frac{1}{d}}\mathbf{x}\right\>}y^{\frac{s}{2}}\,\frac{d\mathbf{x}\,dy}{y}.
+        \int_{0}^{\infty}\int_{\mc{F}}\frac{1}{w_{K}}\sum_{\substack{\mf{a} \in \Cl(K) \\ \text{$\mf{a}$ integral}}}\sum_{j(\a) \in j(\mf{a})-\{\mathbf{0}\}}e^{\pi i\Norm(\mf{a}^{-1})^{\frac{2}{d}}\left\<iy^{\frac{1}{d}}\mathbf{x}\boldsymbol{j(\a)},\boldsymbol{j(\a)}\right\>}y^{\frac{s}{2}}\,\frac{d\mathbf{x}\,dy}{y}.
       \]
       We compactly express this as
       \[
@@ -505,7 +505,7 @@
       \] 
       where we have defined $\w_{\mc{F}}(z)$ by
       \[
-        \w_{\mc{F}}(z) = \int_{\mc{F}}\frac{1}{w_{K}}\sum_{\substack{\mf{a} \in \Cl(K) \\ \text{$\mf{a}$ integral}}}\sum_{j(\a) \in j(\mf{a})-\{\mathbf{0}\}}e^{\pi i\Norm(\mf{a}^{-1})^{\frac{2}{d}}\<\boldsymbol{j(\a)},\boldsymbol{j(\a)}z\mathbf{x}\>}\,d\mathbf{x},
+        \w_{\mc{F}}(z) = \int_{\mc{F}}\frac{1}{w_{K}}\sum_{\substack{\mf{a} \in \Cl(K) \\ \text{$\mf{a}$ integral}}}\sum_{j(\a) \in j(\mf{a})-\{\mathbf{0}\}}e^{\pi i\Norm(\mf{a}^{-1})^{\frac{2}{d}}\<z\mathbf{x}\boldsymbol{j(\a)},\boldsymbol{j(\a)}\>}\,d\mathbf{x},
       \]
       for $z \in \H$. It is locally absolutely uniformly convergent in this region by the Weierstrass $M$-test and that $\mc{F}$ is compact (because $2\mc{M}$ is and $\log(\mathbf{x})$ is continuous). At last, this gives a final integral representation
       \begin{equation}\label{equ:integral_representation_Dedekind_1}
@@ -515,7 +515,7 @@
     \subsection*{The Hecke Theta Function}
       The \textbf{Hecke theta function}\index{Hecke theta function} $\vt_{\mf{f}}(z\mathbf{x})$ attached to a fractional ideal $\mf{f}$ of $K$, is defined by
       \[
-        \vt_{\mf{f}}(z\mathbf{x}) = \sum_{j(\a) \in j(\mf{f})}e^{2\pi i\Norm(\mf{f}^{-1})^{\frac{2}{d}}\<\boldsymbol{j(\a)},\boldsymbol{j(\a)}z\mathbf{x}\>},
+        \vt_{\mf{f}}(z\mathbf{x}) = \sum_{j(\a) \in j(\mf{f})}e^{2\pi i\Norm(\mf{f}^{-1})^{\frac{2}{d}}\<z\mathbf{x}\boldsymbol{j(\a)},\boldsymbol{j(\a)}\>},
       \]
       for $z \in \H$ and $\mathbf{x} \in S$. It is locally absolutely uniformly convergent in this region by the Weierstrass $M$-test. Moreover,
       \[
@@ -536,7 +536,7 @@
       \begin{proof}
         We will apply the Poisson summation formula to
         \[
-          \vt_{\mf{f}}(z\mathbf{x}) = \sum_{j(\a) \in j(\mf{f})}e^{2\pi i\Norm(\mf{f}^{-1})^{\frac{2}{d}}\<\boldsymbol{j(\a)},\boldsymbol{j(\a)}z\mathbf{x}\>}.
+          \vt_{\mf{f}}(z\mathbf{x}) = \sum_{j(\a) \in j(\mf{f})}e^{2\pi i\Norm(\mf{f}^{-1})^{\frac{2}{d}}\<z\mathbf{x}\boldsymbol{j(\a)},\boldsymbol{j(\a)}\>}.
         \]
         To do this, we compute the Fourier transform of the summand and by the identity theorem it suffices to verify this for $z = iy$ with $y > 0$ and $\mathbf{x} = \mathbf{1}$. So set
         \[
@@ -548,12 +548,12 @@
         \]
         By the Poisson summation formula and the identity theorem, we compute
         \begin{align*}
-          \vt_{\mf{f}}(z\mathbf{x}) &= \sum_{j(\a) \in j(\mf{f})}e^{2\pi i\Norm(\mf{f}^{-1})^{\frac{2}{d}}\<\boldsymbol{j(\a)},\boldsymbol{j(\a)}z\mathbf{x}\>} \\
-          &= \frac{1}{V_{j(\mf{f})}}\sum_{\a^{\vee} \in \mf{f}^{\vee}}\Norm(\mf{f})\frac{e^{-\frac{\pi\Norm(\mf{f})^{\frac{2}{d}}\<\boldsymbol{j(\a^{\vee})},\boldsymbol{j(\a^{\vee})}\mathbf{x}\>}{-2iz}}}{(-2iz)^{\frac{d}{2}}} \\
-          &= \frac{1}{\Norm(\mf{f})\sqrt{|\D_{K}|}}\sum_{\a^{\vee} \in \mf{f}^{\vee}}\Norm(\mf{f})\frac{e^{-\frac{\pi\Norm(\mf{f})^{\frac{2}{d}}\<\boldsymbol{j(\a^{\vee})},\boldsymbol{j(\a^{\vee})}\mathbf{x}\>}{-2iz}}}{(-2iz)^{\frac{d}{2}}} && \text{\cref{prop:covolume_of_fractional_ideal_under_j}} \\
-          &= \frac{1}{(-2|\D_{K}|^{\frac{1}{d}}iz)^{\frac{d}{2}}}\sum_{\a^{\vee} \in \mf{f}^{\vee}}e^{-\frac{\pi\Norm(\mf{f})^{\frac{2}{d}}\<\boldsymbol{j(\a^{\vee})},\boldsymbol{j(\a^{\vee})}\mathbf{x}\>}{-2iz}} \\
-          &= \frac{1}{(-2|\D_{K}|^{\frac{1}{d}}iz)^{\frac{d}{2}}}\sum_{\a^{\vee} \in \mf{f}^{\vee}}e^{-\frac{\pi\left(\Norm((\mf{f}^{\vee})^{-1})|\D|_{K}^{-1}\right)^{\frac{2}{d}}\<\boldsymbol{j(\a^{\vee})},\boldsymbol{j(\a^{\vee})}\mathbf{x}\>}{-2iz}} && \text{\cref{cor:norm_of_different}} \\
-          &= \frac{1}{(-2|\D_{K}|^{\frac{1}{d}}iz)^{\frac{d}{2}}}\sum_{\a^{\vee} \in \mf{f}^{\vee}}e^{2\pi i\Norm((\mf{f}^{\vee})^{-1})^{\frac{2}{d}}\left\<\boldsymbol{j(\a^{\vee})},\boldsymbol{j(\a^{\vee})}\left(-\frac{\mathbf{x}}{4|\D_{K}|^{\frac{2}{d}}z}\right\>\right)} \\
+          \vt_{\mf{f}}(z\mathbf{x}) &= \sum_{j(\a) \in j(\mf{f})}e^{2\pi i\Norm(\mf{f}^{-1})^{\frac{2}{d}}\<z\mathbf{x}\boldsymbol{j(\a)},\boldsymbol{j(\a)}\>} \\
+          &= \frac{1}{V_{j(\mf{f})}}\sum_{\a^{\vee} \in \mf{f}^{\vee}}\Norm(\mf{f})\frac{e^{-\frac{\pi\Norm(\mf{f})^{\frac{2}{d}}\<z\mathbf{x}\boldsymbol{j(\a^{\vee})},\boldsymbol{j(\a^{\vee})}\>}{-2iz}}}{(-2iz)^{\frac{d}{2}}} \\
+          &= \frac{1}{\Norm(\mf{f})\sqrt{|\D_{K}|}}\sum_{\a^{\vee} \in \mf{f}^{\vee}}\Norm(\mf{f})\frac{e^{-\frac{\pi\Norm(\mf{f})^{\frac{2}{d}}\<z\mathbf{x}\boldsymbol{j(\a^{\vee})},\boldsymbol{j(\a^{\vee})}\>}{-2iz}}}{(-2iz)^{\frac{d}{2}}} && \text{\cref{prop:covolume_of_fractional_ideal_under_j}} \\
+          &= \frac{1}{(-2|\D_{K}|^{\frac{1}{d}}iz)^{\frac{d}{2}}}\sum_{\a^{\vee} \in \mf{f}^{\vee}}e^{-\frac{\pi\Norm(\mf{f})^{\frac{2}{d}}\<z\mathbf{x}\boldsymbol{j(\a^{\vee})},\boldsymbol{j(\a^{\vee})}\>}{-2iz}} \\
+          &= \frac{1}{(-2|\D_{K}|^{\frac{1}{d}}iz)^{\frac{d}{2}}}\sum_{\a^{\vee} \in \mf{f}^{\vee}}e^{-\frac{\pi\left(\Norm((\mf{f}^{\vee})^{-1})|\D|_{K}^{-1}\right)^{\frac{2}{d}}\<z\mathbf{x}\boldsymbol{j(\a^{\vee})},\boldsymbol{j(\a^{\vee})}\>}{-2iz}} && \text{\cref{cor:norm_of_different}} \\
+          &= \frac{1}{(-2|\D_{K}|^{\frac{1}{d}}iz)^{\frac{d}{2}}}\sum_{\a^{\vee} \in \mf{f}^{\vee}}e^{2\pi i\Norm((\mf{f}^{\vee})^{-1})^{\frac{2}{d}}\left\<\left(-\frac{\mathbf{x}}{4|\D_{K}|^{\frac{2}{d}}z}\right)\boldsymbol{j(\a)},\boldsymbol{j(\a)}\right\>} \\
           &= \frac{1}{(-2|\D_{K}|^{\frac{1}{d}}iz)^{\frac{d}{2}}}\vt_{\mf{f}^{\vee}}\left(-\frac{\mathbf{x}}{4|\D_{K}|^{\frac{2}{d}}z}\right).
         \end{align*}
       \end{proof}
@@ -592,21 +592,21 @@
       It remains to compute the first integral on the right-hand side. The following lemma gives the result:
 
       \begin{lemma}\label{lem:integral_of_fundamental_domain_for_norm-one_hypersurface}
-        Let $K$ be a number field of signature $(r_{1},r_{2})$ and set $\mc{F} = e^{2\mc{M}}$ where $\mc{M}$ is a fundamental domain for $\L$ in the trace-zero hyperplane $H$. Then
+        Let $K$ be a number field of signature $(r_{1},r_{2})$ and set $\mc{F} = e^{\mathbf{N}^{\vee}\mc{M}}$ where $\mc{M}$ is a fundamental domain for $\L$ in the trace-zero hyperplane $H$. Then
         \[
           \int_{\mc{F}}\,d\mathbf{x} = 2^{r_{1}-1}R_{K}.
         \]
       \end{lemma}
       \begin{proof}
-        Let $\e_{\tau}$ run over a system of fundamental units for $K$ as $\tau$ runs over a complete set of representatives for the real and pairs of complex $\Q$-embeddings from $K$ into $\conj{\Q}$. Then $\l(\e_{\tau})$ runs over a basis for $\L$ and hence $H$ (by \cref{thm:unit_group_complete_lattice}). As
+        Let $d$ be the degree of $K$. Begin by observing that
         \[
-          e:\R^{r_{K}+1} \to \R_{+}^{r_{K}+1},
+          \int_{\mc{F}}\,d\mathbf{x} \int_{1}^{\e}\int_{\mc{F}}\,\frac{d\mathbf{x}\,dy}{y} = \int_{[1,e] \x \mc{F}}\,\frac{d\mathbf{y}}{\mathbf{y}},
         \]
-        is an isomorphism that restricts to an isomorphism from $H$ to $S$, we obtain an isomorphism
+        in view of the decomposition $\R_{+}^{r_{K}+1} = (0,\infty) \x S$ with $\mathbf{y} = y^{\frac{1}{d}}\mathbf{x}$ and $\frac{d\mathbf{y}}{\mathbf{y}} = \frac{d\mathbf{x}\,dy}{y}$. Under the change of variables $\mathbf{y} \to e^{2\mathbf{y}}$, we obtain
         \[
-          e:H \to S \qquad \sum_{\tau}x_{\tau}\l(\e_{\tau}) \mapsto \prod_{\tau}e^{x_{\tau}\l(e_\tau)}.
+          2^{r_{K}+1}\int_{\left[0,\frac{1}{2}\right] \x \frac{\mc{M}}{\mathbf{N}}}\,d\mathbf{y},
         \]
-        \todo{xxx}
+        because the absolute value of the determinant of the Jacobian matrix is $2^{r_{K}+1}e^{\<\mathbf{y},\mathbf{1}\>}$. The remaining integral is just a $2^{-(r_{2+1})}$ multiple of the volume of $\mc{M}$. Letting $\e_{1},\ldots,\e_{r_{K}}$ be a system of fundamental units for $K$, Dirichlet's unit theorem implies that $\l(\e_{1}),\ldots,\l(\e_{r_{K}})$ is a basis for $\L$. Then by \cref{prop:covolume_equals_volume_of_fundamental_domain}, the volume of $\mc{M}$ is just the absolute value of the determinant of the generator matrix $P$ for $\l(\e_{1}),\ldots,\l(\e_{r_{K}})$. But this is $R_{K}$ by definition of the regulator. It follows that our last expression evaluates to $2^{r_{1}-1}R_{K}$ as claimed.
       \end{proof}
 
       From \cref{lem:integral_of_fundamental_domain_for_norm-one_hypersurface}, we obtain the integral representation
