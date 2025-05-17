@@ -389,9 +389,9 @@
     \subsection*{The Integral Representation: Part I}
       We will find an integral representation for $\z_{K}(s)$. To do this, let $\s$ run over the $n$ distinct $\Q$-embeddings of $K$ into $\conj{\Q}$ and let $\tau$ run over a complete set of representatives for the real and pairs of complex $\Q$-embeddings. Also recall that $N_{\s} = 1,2$ depending upon if $\s$ is real or complex. It will be useful to let
       \[
-        \mathbf{N} = (N_{\tau})_{\tau}, \quad \mathbf{n} = (n)_{\tau}, \quad \boldsymbol{\a} = (|\tau(\a)|)_{\tau},  \quad \text{and} \quad \boldsymbol{j(\a)} = (|\s(\a)|)_{\s},
+        \mathbf{N} = (N_{\tau})_{\tau}, \quad \boldsymbol{\a} = (|\tau(\a)|)_{\tau},  \quad \text{and} \quad \boldsymbol{j(\a)} = (|\s(\a)|)_{\s},
       \]
-      for all $n \ge 1$ and $\a \in K$. With this notation,
+      for all $\a \in K$. With this notation,
       \[
         \boldsymbol{\a}^{\mathbf{N}} = |\Norm(\a)|.
       \]
@@ -411,7 +411,7 @@
       \begin{align*}
         \int_{\R_{+}^{r_{K}+1}}\w_{K}(i\mathbf{y})\mathbf{y}^{\frac{s\mathbf{N}}{2}}\,\frac{d\mathbf{y}}{\mathbf{y}} &= \int_{\R_{+}^{r_{K}+1}}\sum_{n \ge 1}a_{K}(n)e^{-\pi n^{\frac{2}{d}}\<\mathbf{N},\mathbf{y}\>}\mathbf{y}^{\frac{s\mathbf{N}}{2}}\,\frac{d\mathbf{y}}{\mathbf{y}} \\
         &= \sum_{n \ge 1}\int_{\R_{+}^{r_{K}+1}}a_{K}(n)e^{-\pi n^{\frac{2}{d}}\<\mathbf{N},\mathbf{y}\>}\mathbf{y}^{\frac{s\mathbf{N}}{2}}\,\frac{d\mathbf{y}}{\mathbf{y}} && \text{FT} \\
-        &= \sum_{n \ge 1}\frac{a_{K}(n)}{\pi^{\frac{r_{1}s}{2}}(2\pi)^{r_{2}s}n^{s}}\int_{\R_{+}^{r_{K}+1}}e^{-\pi\<\mathbf{1},\mathbf{y}\>}\mathbf{y}^{\frac{s\mathbf{N}}{2}}\,\frac{d\mathbf{y}}{\mathbf{y}} && \text{$\mathbf{y} \to \frac{\mathbf{y}}{\mathbf{N}\pi\mathbf{n}^{\frac{2}{d}}}$} \\
+        &= \sum_{n \ge 1}\frac{a_{K}(n)}{\pi^{\frac{r_{1}s}{2}}(2\pi)^{r_{2}s}n^{s}}\int_{\R_{+}^{r_{K}+1}}e^{-\<\mathbf{1},\mathbf{y}\>}\mathbf{y}^{\frac{s\mathbf{N}}{2}}\,\frac{d\mathbf{y}}{\mathbf{y}} && \text{$\mathbf{y} \to \frac{\mathbf{y}}{\mathbf{N}\pi n^{\frac{2}{d}}}$} \\
         &= \frac{\G\left(\frac{s}{2}\right)^{r_{1}}\G\left(s\right)^{r_{2}}}{\pi^{\frac{r_{1}s}{2}}(2\pi)^{r_{2}s}}\sum_{n \ge 1}\frac{a_{K}(n)}{n^{s}} \\
         &= \frac{\G\left(\frac{s}{2}\right)^{r_{1}}\G\left(s\right)^{r_{2}}}{\pi^{\frac{r_{1}s}{2}}(2\pi)^{r_{2}s}}\z_{K}(s).
       \end{align*}
@@ -522,9 +522,9 @@
         \vt_{\mf{f}}(z\mathbf{x})-1 = O\left(\sum_{j(\a) \in j(\mf{f})-\{\mathbf{0}\}}e^{-2\pi y||\mathbf{x}||_{\infty}\Norm(\mf{f}^{-1})^{\frac{2}{d}}\<\boldsymbol{j(\a)},\boldsymbol{j(\a)}\>}\right) = O(e^{-2\pi y||\mathbf{x}||_{\infty}}),
       \]
       where the second equality follows since $\<\boldsymbol{j(\a)},\boldsymbol{j(\a)}\> \ge d|\Norm(\a)|^{\frac{2}{d}}$ by the arithmetic-geometric inequality provided $\a$ is nonzero, and that $|\Norm(\a)|\Norm(\mf{f})$ is a positive integer for all nonzero $\a \in \mf{f}$ (as $\a\mf{f}^{-1}$ is an integral ideal by \cref{prop:explicit_inverse_ideal}), which combined show that each term is of smaller order than the single term where $\Norm(\a\mf{f}^{-1}) = 1$ (when $\a\mf{f}^{-1} = \mc{O}_{K}$) corresponding to $\a = \Norm(\mf{f})$ so that the sum is bounded by a constant times this term. The relationship to $\w_{\mc{F}}(z)$ is given by
-      \begin{equation}\label{equ:omega_theta_relationship_for_Dedekind_zeta_functions}
+      \[
         \w_{\mc{F}}(z) = \frac{1}{w_{K}}\int_{\mc{F}}\sum_{\substack{\mf{a} \in \Cl(K) \\ \text{$\mf{a}$ integral}}}\vt_{\mf{a}}\left(\frac{z\mathbf{x}}{2}\right)\,d\mathbf{x}-\frac{h_{K}}{w_{K}}\int_{\mc{F}}\,d\mathbf{x}.
-      \end{equation}
+      \]
       The essential fact we will need is a functional equation for the Hecke theta function:
 
       \begin{theorem}\label{thm:functional_equation_Hecke_theta}
@@ -571,10 +571,10 @@
       Now we compute
       \begin{align*}
         \w_{\mc{F}}\left(\frac{i}{(|\D_{K}|^{2}y)^{\frac{1}{d}}}\right) &= \w_{\mc{F}}\left(-\frac{1}{|\D_{K}|^{\frac{2}{d}}iy^{\frac{1}{d}}}\right) \\
-        &= \frac{1}{w_{K}}\int_{\mc{F}}\sum_{\substack{\mf{a} \in \Cl(K) \\ \text{$\mf{a}$ integral}}}\vt_{\mf{a}}\left(-\frac{\mathbf{x}}{2|\D_{K}|^{\frac{2}{d}}iy^{\frac{1}{d}}}\right)d\mathbf{x}-\frac{h_{K}}{w_{K}}\int_{\mc{F}}\,d\mathbf{x} && \text{\cref{equ:omega_theta_relationship_for_Dedekind_zeta_functions}} \\
+        &= \frac{1}{w_{K}}\int_{\mc{F}}\sum_{\substack{\mf{a} \in \Cl(K) \\ \text{$\mf{a}$ integral}}}\vt_{\mf{a}}\left(-\frac{\mathbf{x}}{2|\D_{K}|^{\frac{2}{d}}iy^{\frac{1}{d}}}\right)d\mathbf{x}-\frac{h_{K}}{w_{K}}\int_{\mc{F}}\,d\mathbf{x} \\
         &= \frac{1}{w_{K}}\int_{\mc{F}}\sum_{\substack{\mf{a} \in \Cl(K) \\ \text{$\mf{a}$ integral}}}\sqrt{|\D_{K}|y}\vt_{\mf{a}}\left(\frac{iy^{\frac{1}{d}}\mathbf{x}}{2}\right)d\mathbf{x}-\frac{h_{K}}{w_{K}}\int_{\mc{F}}\,d\mathbf{x} && \text{\cref{thm:functional_equation_Hecke_theta}} \\
         &= \frac{\sqrt{|\D_{K}|y}}{w_{K}}\int_{\mc{F}}\sum_{\substack{\mf{a} \in \Cl(K) \\ \text{$\mf{a}$ integral}}}\vt_{\mf{a}}\left(\frac{iy^{\frac{1}{d}}\mathbf{x}}{2}\right)d\mathbf{x}-\frac{h_{K}}{w_{K}}\int_{\mc{F}}\,d\mathbf{x} \\
-        &= \sqrt{|\D_{K}|y}\w_{\mc{F}}(iy^{\frac{1}{d}})+\frac{\sqrt{|\D|_{K}y}h_{K}}{w_{K}}\int_{\mc{F}}\,d\mathbf{x}-\frac{h_{K}}{w_{K}}\int_{\mc{F}}\,d\mathbf{x} && \text{\cref{equ:omega_theta_relationship_for_Dedekind_zeta_functions}}.
+        &= \sqrt{|\D_{K}|y}\w_{\mc{F}}(iy^{\frac{1}{d}})+\frac{\sqrt{|\D|_{K}y}h_{K}}{w_{K}}\int_{\mc{F}}\,d\mathbf{x}-\frac{h_{K}}{w_{K}}\int_{\mc{F}}\,d\mathbf{x}.
       \end{align*}
       This chain implies that our first piece can be expressed as
       \[
@@ -598,11 +598,7 @@
         \]
       \end{lemma}
       \begin{proof}
-        Under the change of variables $\mathbf{x} \to e^{2\mathbf{x}}$, we have
-        \[
-          \int_{\mc{F}}\,d\mathbf{x} = 2^{r_{K}}\int_{\mc{M}}\,d\mathbf{x},
-        \]
-        because the absolute value of the determinant of the Jacobian matrix is $2^{r_{K}}e^{\<\mathbf{x},\mathbf{1}\>} = 2^{r_{K}}$ (as $\mathbf{x} \in S$). \todo{xxx}
+        \todo{xxx}
       \end{proof}
 
       From \cref{lem:integral_of_fundamental_domain_for_norm-one_hypersurface}, we obtain the integral representation
