@@ -686,31 +686,36 @@
       Dedekind zeta functions are generally imprimitive $L$-functions. We illustrate this in the case of quadratic number fields:
 
       \begin{theorem}\label{thm:factorization_of_Dedekind_of_quadratic_number_field}
-        Let $\Q(\sqrt{d})$ be a quadratic number field and let $\chi_{\D_{\Q(\sqrt{d})}}$ be the quadratic character given by the Kronecker symbol. Then
+        Let $\Q(\sqrt{d})$ be a quadratic number field and let $\chi_{\D_{d}}$ be the quadratic character given by the Kronecker symbol. Then
         \[
-          \z_{\Q(\sqrt{d})}(s) = \z(s)L(s,\chi_{\D_{\Q(\sqrt{d})}}).
+          \z_{\Q(\sqrt{d})}(s) = \z(s)L(s,\chi_{\D_{d}}).
         \]
       \end{theorem}
       \begin{proof}
         By the identity theorem it suffices to prove this for $\s > 1$. By \cref{prop:factorization_of_primes_quadratic}, the Euler product of $\z_{\Q(\sqrt{d})}(s)$ is given by
         \begin{align*}
-          \z_{K}(s) &= \prod_{\substack{p \\ \chi_{\D_{\Q(\sqrt{d})}}(p) = 1}}(1-p^{-s})^{-1}(1-p^{-s})^{-1}\prod_{\substack{p \\ \chi_{\D_{\Q(\sqrt{d})}}(p) = -1}}(1-p^{-s})^{-1}(1+p^{-s})^{-1}\prod_{\substack{p \\ \chi_{\D_{\Q(\sqrt{d})}}(p) = 0}}(1-p^{-s})^{-1} \\
-          &= \z(s)\prod_{\substack{p \\ \chi_{\D_{\Q(\sqrt{d})}}(p) = 1}}(1-p^{-s})^{-1}\prod_{\substack{p \\ \chi_{\D_{\Q(\sqrt{d})}}(p) = -1}}(1+p^{-s})^{-1}\prod_{\substack{p \\ \chi_{\D_{\Q(\sqrt{d})}}(p) = 0}}1 \\
-          &= \z(s)L(s,\chi_{\D_{\Q(\sqrt{d})}}).
+          \z_{\Q(\sqrt{d})}(s) &= \prod_{\substack{p \\ \chi_{\D_{d}}(p) = 1}}(1-p^{-s})^{-1}(1-p^{-s})^{-1}\prod_{\substack{p \\ \chi_{\D_{d}}(p) = -1}}(1-p^{-s})^{-1}(1+p^{-s})^{-1}\prod_{\substack{p \\ \chi_{\D_{d}}(p) = 0}}(1-p^{-s})^{-1} \\
+          &= \z(s)\prod_{\substack{p \\ \chi_{\D_{d}}(p) = 1}}(1-p^{-s})^{-1}\prod_{\substack{p \\ \chi_{\D_{d}}(p) = -1}}(1+p^{-s})^{-1}\prod_{\substack{p \\ \chi_{\D_{d}}(p) = 0}}1 \\
+          &= \z(s)L(s,\chi_{\D_{d}}).
         \end{align*}
         This completes the proof.
       \end{proof}
 
-      Since the residue of $\z(s)$ at $s = 1$ is $1$, the analytic class number formula gives a relationship between the value of Dirichlet $L$-functions at $s = 1$ and the class number of quadratic number fields:
+      Since the residue of $\z(s)$ at $s = 1$ is $1$, the analytic class number formula gives a relationship between the value of Dirichlet $L$-functions at $s = 1$ and the class number of quadratic number fields. This is known as \textbf{Dirichlet's class number formula}\index{Dirichlet's class number formula}:
 
-      \begin{corollary}
-        Let $\Q(\sqrt{d})$ be a quadratic number field of signature $(r_{1},r_{2})$ and let $\chi_{\D_{\Q(\sqrt{d})}}$ be the quadratic character given by the Kronecker symbol. Then
+      \begin{corollary}[Dirichlet's class number formula]
+        Let $\Q(\sqrt{d})$ be a quadratic number field of signature $(r_{1},r_{2})$ and let $\chi_{\D_{d}}$ be the quadratic character given by the Kronecker symbol. Then
         \[
-          L(1,\chi_{\D_{\Q(\sqrt{d})}}) = \frac{2^{r_{1}}(2\pi)^{r_{2}}h_{\Q(\sqrt{d})}R_{\Q(\sqrt{d})}}{w_{\Q(\sqrt{d})}\sqrt{|\D_{\Q(\sqrt{d})}|}}.
+          L(1,\chi_{\D_{d}}) = \frac{2h_{d}\log|\e|}{\sqrt{|\D_{d}|}} \quad \text{or} \quad L(1,\chi_{\D_{d}}) = \frac{2\pi h_{d}}{w_{d}\sqrt{|\D_{d}|}},
         \]
+        where $\e$ is a fundamental unit, according to if $d > 0$ or $d < 0$.
       \end{corollary}
       \begin{proof}
-        This is immediate from combining \cref{thm:factorization_of_Dedekind_of_quadratic_number_field} with the analytic class number formula and \cref{prop:zeta_residue}.
+        Combining \cref{thm:factorization_of_Dedekind_of_quadratic_number_field} with the analytic class number formula and \cref{prop:zeta_residue} gives
+        \[
+          L(1,\chi_{\D_{d}}) = \frac{2^{r_{1}}(2\pi)^{r_{2}}h_{d}R_{d}}{w_{d}\sqrt{|\D_{d}|}}.
+        \]
+        The result follows by \cref{prop:unit_group_quadratic}, \cref{prop:regulator_quadratic}, and that the signature of $\Q(\sqrt{d})$ is $(2,0)$ or $(0,1)$ according to if $d > 0$ or $d < 0$.
       \end{proof}
   \section{Hecke \texorpdfstring{$L$}{L}-functions}
     \subsection*{The Definition \& Euler Product}
