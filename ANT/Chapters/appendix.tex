@@ -1,0 +1,749 @@
+\appendix
+\chapter{Number Theory}
+  \section{Arithmetic Functions}\label{append:Arithmetic_Functions}
+    An arithmetic function $f$ is a function $f:\N \to \C$. That is, it takes the positive integers into the complex numbers. We say that $f$ is \textbf{additive}\index{additive} if $f(nm) = f(n)+f(m)$ for all positive integers $n$ and $m$ such that $(n,m) = 1$. If this condition simply holds for all $n$ and $m$ then we say $f$ is \textbf{completely additive}\index{completely additive}. Similarly, we say that $f$ is \textbf{multiplicative}\index{multiplicative} if $f(nm) = f(n)f(m)$ for all positive integers $n$ and $m$ such that $(n,m) = 1$. If this condition simply holds for all $n$ and $m$ then we say $f$ is \textbf{completely multiplicative}\index{completely multiplicative}. Many important arithmetic functions are either additive, completely additive, multiplicative, or completely multiplicative. Note that if a $f$ is additive or multiplicative then $f$ is uniquely determined by its values on prime powers and if $f$ is completely additive or completely multiplicative then it is uniquely determined by its values on primes. Moreover, if $f$ is additive or completely additive then $f(1) = 0$ and if $f$ is multiplicative or completely multiplicative then $f(1) = 1$. Below is a list defining the most important arithmetic functions (some of these functions are restrictions of common functions but we define them here as arithmetic functions because their domain being $\N$ is important):
+    \begin{enumerate}[label=(\roman*)]
+      \item The \textbf{constant function}\index{constant function}: The function $\mathbf{1}(n)$ restricted to all $n \ge 1$. This function is neither additive or multiplicative.
+      \item The \textbf{unit function}\index{unit function}: The function $e(n)$ defined by
+      \[
+        e(n) = \begin{cases} 1 & \text{if $n = 1$}, \\ 0 & \text{if $n \ge 2$}. \end{cases}
+      \]
+      This function is completely multiplicative.
+      \item The \textbf{identity function}\index{identity function}: The function $\id(n)$ restricted to all $n \ge 1$. This function is completely multiplicative.
+      \item The \textbf{logarithm}\index{logarithm function}: The function $\log(n)$ restricted to all $n \ge 1$. This function is completely additive.
+      \item The \textbf{M\"obius function}\index{M\"obius function}: The function $\mu(n)$ defined by
+      \[
+        \mu(n) = \begin{cases} 1 & \text{if $n$ is square-free with an even number of prime factors}, \\ -1 & \text{if $n$ is square-free with an odd number of prime factors}, \\ 0 & \text{if $n$ is not square-free}, \end{cases}
+      \]
+      for all $n \ge 1$. This function is multiplicative.
+      \item The \textbf{characteristic function of square-free integers}\index{characteristic function of square-free integers}: The square of the M\"obius function $\mu^{2}(n)$ for all $n \ge 1$. This function is multiplicative.
+      \item \textbf{Liouville's function}\index{Liouville's function}: The function $\l(n)$ defined by
+      \[
+        \l(n) = \begin{cases} 1 & \text{if $n = 1$}, \\ (-1)^{k} & \text{if $n$ is composed of $k$ not necessarily distinct prime factors}, \end{cases}
+      \]
+      for all $n \ge 1$. This function is completely multiplicative.
+      \item \textbf{Euler's totient function}\index{Euler's totient function}: The function $\vphi(n)$ defined by
+      \[
+        \vphi(n) = \psum_{m \tmod{n}}1,
+      \]
+      for all $n \ge 1$. This function is multiplicative.
+      \item The \textbf{divisor function}\index{divisor function}: The function $\s_{0}(n)$ defined by
+      \[
+        \s_{0}(n) = \sum_{d \mid n}1,
+      \]
+      for all $n \ge 1$. This function is multiplicative.
+      \item The \textbf{sum of divisors function}\index{sum of divisors function}: The function $\s_{1}(n)$ defined by
+      \[
+        \s_{1}(n) = \sum_{d \mid n}d,
+      \]
+      for all $n \ge 1$. This function is multiplicative.
+      \item The \textbf{generalized sum of divisors function}\index{generalized sum of divisors function}: The function $\s_{s}(n)$ defined by
+      \[
+        \s_{s}(n) = \sum_{d \mid n}d^{s},
+      \]
+      for all $n \ge 1$ and any complex number $s$. This function is multiplicative.
+      \item The \textbf{number of distinct prime factors function}\index{number of distinct prime factors function}: The function $\w(n)$ defined by
+      \[
+        \w(n) = \sum_{p \mid n}1,
+      \]
+      for all $n \ge 1$. This function is additive.
+      \item The \textbf{total number of prime divisors function}\index{total number of prime divisors function}: The function $\W(n)$ defined by
+      \[
+        \W(n) = \sum_{p ^{m} \mid n}1,
+      \]
+      for all $n \ge 1$ and where $m \ge 1$. This function is completely additive.
+      \item The \textbf{von Mangoldt function}\index{von Mangoldt function}: The function $\L(n)$ defined by
+      \[
+        \L(n) = \begin{cases} 0 & \text{if $n$ is not a prime power}, \\ \log(p) & \text{if $n = p^{m}$ for some prime $p$ and integer $m \ge 1$}, \end{cases}
+      \]
+      for all $n \ge 1$. This function is neither additive or multiplicative.
+    \end{enumerate}
+    If $f$ and $g$ are two arithmetic functions, then we can define a new arithmetic function $f \ast g$ called the \textbf{Dirichlet convolution}\index{Dirichlet convolution} of $f$ and $g$ defined by
+    \[
+      (f \ast g)(n) = \sum_{d \mid n}f(d)g\left(\frac{n}{d}\right),
+    \]
+    for all $n \ge 1$. This is especially useful when $f$ and $g$ are multiplicative:
+
+    \begin{proposition}
+      If $f$ and $g$ are multiplicative arithmetic functions, then so is their Dirichlet convolution $f \ast g$.
+    \end{proposition}
+  \section{The M\"obius Function}\label{append:The_Mobius_Function}
+    Recall that the M\"obius function is the arithmetic function $\mu$ defined by
+    \[
+      \mu(n) = \begin{cases} 1 & \text{if $n$ is square-free with an even number of prime factors}, \\ -1 & \text{if $n$ is square-free with an odd number of prime factors}, \\ 0 & \text{if $n$ is not square-free}, \end{cases}
+    \]
+    and it is multiplicative. It also satisfies an important summation property:
+
+    \begin{proposition}\label{prop:Mobius_dirac_delta}
+      \[
+        \sum_{d \mid n}\mu(d) = \d_{n,1}.
+      \]
+    \end{proposition}
+
+    From this property, the important \textbf{M\"obius inversion formula}\index{M\"obius inversion formula} can be derived:
+
+    \begin{theorem}[M\"obius inversion formula]
+      Suppose $f$ and $g$ are arithmetic functions. Then
+      \[
+        g(n) = \sum_{d \mid n}f(d),
+      \]
+      for all $n \ge 1$, if and only if
+      \[
+        f(n) = \sum_{d \mid n}g(d)\mu\left(\frac{n}{d}\right)
+      \]
+      for all $n \ge 1$.
+    \end{theorem}
+
+    In terms of Dirichlet convolution, the M\"obius inversion formula is equivalent to stating that $g = f \ast \mathbf{1}$ if and only if $f = g \ast \mu$. Using M\"obius inversion, the following useful formula can also be derived:
+
+    \begin{proposition}\label{prop:Dirichlet_Mobius_is_zeta_inverse}
+      For $\s > 1$,
+      \[
+        \sum_{n \ge 1}\frac{\mu(n)}{n^{s}} = \z(s)^{-1} = \prod_{p}(1-p^{-s}).
+      \]
+    \end{proposition}
+
+    There is also an important similar statement to the M\"obius inversion formula that we will need:
+
+    \begin{theorem}\label{thm:specially_multiplicative_functions}
+      Let $f$ be an arithmetic function and let $B$ be the completely multiplicative function defined on primes $p$ by
+      \[
+        B(p) = f(p)^{2}-f(p^{2}).
+      \]
+      Then
+      \[
+        f(n)f(m) = \sum_{d \mid (n,m)}B(d)f\left(\frac{nm}{d^{2}}\right),
+      \]
+      for all $n,m \ge 1$, if and only if
+      \[
+        f(nm) = \sum_{d \mid (n,m)}\mu(d)B(d)f\left(\frac{n}{d}\right)f\left(\frac{m}{d}\right),
+      \]
+      for all $n,m \ge 1$.
+    \end{theorem}
+
+    Any arithmetic function $f$ satisfying the conditions of \cref{thm:specially_multiplicative_functions} is said to be \textbf{specially multiplicative}\index{specially multiplicative}.
+  \section{The Sum and Generalized Sum of Divisors Functions}
+    It is very useful to know that $\s_{0}(n)$ grows slowly:
+
+    \begin{proposition}\label{prop:sum_of_divisors_growth_rate}
+      \phantom{ }
+      \[
+        \s_{0}(n) \ll_{\e} n^{\e}.
+      \]
+    \end{proposition} 
+
+    This is all we really need to know for the sum of divisors function. As for the generalized sum of divisors function, it has the remarkable property that it can be written as a product. To state it, recall that $\ord_{p}(n)$ is the positive integer satisfying $p^{\ord_{p}(n)} \mid\mid n$. Then we have the following statement:
+
+    \begin{proposition}\label{prop:generalized_sum_of_divisors_as_product}
+      For $s \neq 0$,
+      \[
+        \s_{s}(n) = \prod_{p \mid n}\frac{p^{(\ord_{p}(n)+1)s}-1}{p^{s}-1}.
+      \]
+    \end{proposition}
+  \section{Quadratic Symbols}\label{append:Quadratic_Symbols}
+    Let $p$ be an odd prime. We are often interested in when the equation $x^{2} = m \tmod{p}$ is solvable for some $m \in \Z$. The \textbf{Legendre symbol}\index{Legendre symbol} $\tlegendre{m}{p}$ keeps track of this:
+    \[
+      \legendre{m}{p} = \begin{cases} 1 & \text{if $x^{2} \equiv m \tmod{p}$ is solvable}, \\ -1 & \text{if $x^{2} \equiv m \tmod{p}$ is not solvable}, \\ 0 & \text{if $m \equiv 0 \tmod{p}$}. \end{cases}
+    \]
+    \textbf{Euler's criterion}\index{Euler's criterion} gives an alternative expression for Legendre symbol when $m$ is coprime to $p$:
+    \begin{proposition}[Euler's criterion]
+      Let $p$ be an odd prime and suppose $m \in \Z$ with $(m,p) = 1$. Then
+      \[
+        \legendre{m}{p} = m^{\frac{p-1}{2}} \tmod{p}.
+      \]
+    \end{proposition}
+    From the definition and Euler's criterion is it not difficult to show that the Legendre symbol satisfies the following properties:
+    \begin{proposition}\label{prop:Legendre_symbol_properties}
+      Let $p$ be an odd prime and let $a,b \in \Z$. Then the following hold:
+      \begin{enumerate}[label=(\roman*)]
+        \item If $a \equiv b \tmod{p}$, then $\tlegendre{a}{p} = \tlegendre{b}{p}$.
+        \item $\tlegendre{ab}{p} = \tlegendre{a}{p}\tlegendre{b}{p}$.
+      \end{enumerate}
+    \end{proposition}
+    From \cref{prop:Legendre_symbol_properties}, to compute the Legendre symbol in general it suffices to know how to compute $\tlegendre{-1}{p}$, $\tlegendre{2}{p}$, and $\tlegendre{q}{p}$ where $q$ is another odd prime. The \textbf{supplemental laws of quadratic reciprocity}\index{supplemental laws of quadratic reciprocity} are formulas for the first two symbols:
+    \begin{proposition}[Supplemental laws of quadratic reciprocity]
+      Let $p$ be an odd prime. Then the following formulas hold:
+      \begin{enumerate}[label=(\roman*)]
+        \item
+        \[
+          \legendre{-1}{p} = (-1)^{\frac{p-1}{2}} = \begin{cases} 1 & \text{if $p \equiv 1 \tmod{4}$}, \\ -1 & \text{if $p \equiv 3 \tmod{4}$}. \end{cases}
+        \]
+        \item
+        \[
+          \legendre{2}{p} = (-1)^{\frac{p^{2}-1}{8}} = \begin{cases} 1 & \text{if $p \equiv 1,7 \tmod{8}$}, \\ -1 & \text{if $p \equiv 3,5 \tmod{8}$}. \end{cases}
+        \]
+      \end{enumerate}
+    \end{proposition}
+    The \textbf{law of quadratic reciprocity}\index{law of quadratic reciprocity} handles the last symbol by relating $\tlegendre{q}{p}$ to $\tlegendre{p}{q}$:
+    \begin{theorem}[Law of quadratic reciprocity]
+      Let $p$ and $q$ be odd primes. Then
+      \[
+        \legendre{p}{q} = (-1)^{\frac{p-1}{2}\frac{q-1}{2}}\legendre{q}{p}.
+      \]
+    \end{theorem}
+    We can generalize the Jacobi symbol further by making it multiplicative in the denominator. Let $n$ be a positive odd integer with prime factorization $n = p_{1}^{r_{1}}p_{2}^{r_{2}} \cdots p_{k}^{r_{k}}$ and let $m \in \Z$. The \textbf{Jacobi symbol}\index{Jacobi symbol} $\tlegendre{m}{n}$ is defined by
+    \[
+      \legendre{m}{n} = \prod_{1 \le i \le k}\legendre{m}{p_{i}}^{r_{i}}.
+    \]
+    When $n = p$ is prime, the Jacobi symbol reduces to the Legendre symbol and the Jacobi symbol is precisely the unique multiplicative extension of the Legendre symbol to all positive odd integers. Accordingly, the Jacobi symbol has the following properties:
+    \begin{proposition}
+      Let $m$ and $n$ be positive odd integers and let $a,b \in \Z$. Then the following hold:
+      \begin{enumerate}[label=(\roman*)]
+        \item If $a \equiv b \tmod{p}$, then $\tlegendre{a}{n} = \tlegendre{b}{n}$.
+        \item $\tlegendre{a}{mn} = \tlegendre{a}{m}\tlegendre{a}{n}$.
+        \item $\tlegendre{ab}{n} = \tlegendre{a}{n}\tlegendre{b}{n}$.
+      \end{enumerate}
+    \end{proposition}
+    There is also an associated reciprocity law:
+    \begin{proposition}
+      Let $m$ and $n$ be positive odd integers. Then
+      \[
+        \legendre{m}{n} = (-1)^{\frac{m-1}{2}\frac{n-1}{2}}\legendre{n}{m}.
+      \]
+    \end{proposition}
+    We can further generalize the Jacobi symbol so that it is valid for all integers. Let $m,n \in \Z$ where $n = up_{1}^{r_{1}}p_{2}^{r_{2}} \cdots p_{k}^{r_{k}}$ is the prime factorization of $n$ with $u = \pm1$. The \textbf{Kronecker symbol}\index{Kronecker symbol} $\tlegendre{m}{n}$ is defined by
+    \[
+      \legendre{m}{n} = \legendre{m}{u}\prod_{1 \le i \le k}\legendre{m}{p_{i}}^{r_{i}},
+    \]
+    where we set
+    \[
+      \legendre{m}{1} = 1, \quad \legendre{m}{-1} = \begin{cases} 1 & \text{if $m \ge 0$}, \\ -1 & \text{if $m < 0$}, \end{cases} \quad \legendre{m}{0} = \begin{cases} 1 & \text{if $m = \pm 1$}, \\ 0 & \text{if $m \neq \pm 1$}, \end{cases}
+    \]
+    and
+    \[
+      \legendre{m}{2} = \begin{cases} 1 & \text{if $m \equiv 1,7 \tmod{8}$}, \\ -1 & \text{if $m \equiv 3,5 \tmod{8}$}, \\ 0 & \text{if $m \equiv 0 \tmod{2}$}. \end{cases}
+    \]
+    When $n$ is a positive odd integer, the Kronecker symbol reduces to the Jacobi symbol. The Kronecker symbol also satisfies a reciprocity law:
+    \begin{proposition}
+      Let $m$ and $n$ be integers. Then
+      \[
+        \legendre{m}{n} = (-1)^{\frac{m^{(2)}-1}{2}\frac{n^{(2)}-1}{2}}\legendre{n}{|m|},
+      \]
+      where $m^{(2)}$ and $n^{(2)}$ are the parts of $m$ and $n$ relatively prime to $2$ respectively.
+    \end{proposition}
+\chapter{Analysis}
+  \section{Local Absolute Uniform Convergence}
+    Throughout, all functions are understood to complex-valued and regions are understood to be those of $\R^{n}$ or $\C^{n}$. Often, we are interested in some series
+    \[
+      \sum_{n \ge 1}f_{n}(\mathbf{x}),
+    \]
+    where of analytic functions $f_{n}(\mathbf{x})$ on some region $D$. We say that the series above is \textbf{locally absolutely uniformly convergent}\index{locally absolutely uniformly convergent} if
+    \[
+      \sum_{n \ge 1}|f_{n}(\mathbf{x})|,
+    \]
+    converges uniformly on compact subsets of $D$. A common method to determine if series is absolutely uniformly convergent is to use the Weierstrass $M$-test:
+
+    \begin{theorem}[Weierstrass $M$-test]
+      Suppose $(f_{n}(\mathbf{x}))_{n \ge 1}$ is a sequence of functions on a region $D$ and there is a nonnegative sequence $(M_{n})_{n \ge 1}$ such that $|f_{n}(\mathbf{x})| \le M_{n}$ for all $n \ge 1$ and
+      \[
+        \sum_{n \ge 1}M_{n},
+      \]
+      converges. Then
+      \[
+        \sum_{n \ge 1}f_{n}(\mathbf{x}),
+      \]
+      is absolutely uniformly convergent on $D$.
+    \end{theorem}
+
+    Applying the Weierstrass $M$-test to arbitrary compact subsets on a region shows that the resulting series is locally absolutely uniformly convergent. This mode of convergence is very useful because it is enough to guarantee the series is analytic on $D$:
+
+    \begin{theorem}
+      Suppose $(f_{n}(\mathbf{x}))_{n \ge 1}$ is a sequence of analytic functions on a region $D$. Then if
+      \[
+        \sum_{n \ge 1}f_{n}(\mathbf{x}),
+      \]
+      is locally absolutely uniformly convergent, it is analytic on $D$.
+    \end{theorem}
+
+    We can also apply this idea in the case of integrals. Suppose we have an integral
+    \[
+      \int_{D}f(\mathbf{x},\mathbf{y})\,d\mathbf{y},
+    \]
+    where $f(\mathbf{x},\mathbf{y})$ is a complex-valued function on some region $D \x S$ and is analytic in $\mathbf{x}$ for every $\mathbf{y}$. The integral is a function of $\mathbf{x}$, and we say that the integral is \textbf{locally absolutely uniformly convergent}\index{locally absolutely uniformly convergent} if
+    \[
+      \int_{S}|f(\mathbf{x},\mathbf{y})|\,d\mathbf{y},
+    \]
+    is uniformly bounded on compact subsets of $D$. Similar to the series case, this mode of convergence is very useful because it guarantees the integral is analytic on $D$:
+
+    \begin{theorem}\label{thm:analytic_integral}
+      Suppose $f(\mathbf{x},\mathbf{y})$ is a complex-valued function on some region $D \x S$ and is analytic in $\mathbf{x}$ for every $\mathbf{y}$. Then if
+      \[
+        \int_{S}|f(\mathbf{x},\mathbf{y})|\,d\mathbf{y},
+      \]
+      is locally absolutely uniformly convergent, it is analytic on $D$.
+    \end{theorem}
+  \section{Interchange of Integrals, Sums \& Derivatives}
+    Often, we would like to interchange a limit and a integral. This process is not always allowed, but in many instances it is. The \textbf{dominated convergence theorem}\index{dominated convergence theorem} (DCT) covers the most well-known sufficient condition:
+
+    \begin{theorem}[Dominated convergence theorem]
+      Let $(f_{n}(\mathbf{x}))_{n \ge 1}$ be a sequence of continuous and integrable functions on some region $D$. Suppose that that the sequence converges pointwise to a function $f(\mathbf{x})$, and that there is some integrable function $g(\mathbf{x})$ on $D$ such that
+      \[
+        |f_{n}(\mathbf{x})| \le g(\mathbf{x})
+      \]
+      for all $n \ge 1$ and all $\mathbf{x} \in D$. Then $f(\mathbf{x})$ is integrable on $D$ and
+      \[
+        \lim_{n \to \infty}\int_{D}f_{n}(\mathbf{x})\,d\mathbf{x} = \int_{D}f(\mathbf{x})\,d\mathbf{x}.
+      \]
+    \end{theorem}
+
+    This theorem is often employed when the underlying sequence is a sequence of partial sums of an absolutely convergent series (the dominating function $g(\mathbf{x})$ will be the absolute series). In this case we have the following result:
+
+    \begin{corollary}\label{cor:DCT_for_series_and_integrals}
+      Suppose $(f_{n}(\mathbf{x}))_{n \ge 1}$ is a sequence of continuous functions that are integrable on some region $D$ and
+      \[
+        \sum_{n \ge 1}f_{n}(\mathbf{x}),
+      \]
+      is absolutely convergent. Then
+      \[
+        \sum_{n \ge 1}\int_{D}f_{n}(\mathbf{x})\,d\mathbf{x} = \int_{D}\sum_{n \ge 1}f_{n}(\mathbf{x})\,d\mathbf{x}.
+      \]
+    \end{corollary}
+
+    More commonly, we would like to interchange two sums, two integrals, or a sum and an integral assuming that one expression is absolutely converges. This is sufficient as given by \textbf{Fubini's theorem}\index{Fubini's theorem} (FT):
+
+    \begin{theorem}[Fubini's theorem]
+      The following hold:
+      \begin{enumerate}[label=(\roman*)]
+        \item If $(f_{n,m}(\mathbf{x}))_{n,m \ge 1}$ is a sequence of continuous functions, then
+        \[
+          \sum_{(n,m) \in \Z}f_{n,m}(\mathbf{x}) = \sum_{n \ge 1}\sum_{m \ge 1}f_{n,m}(\mathbf{x}) = \sum_{m \ge 1}\sum_{n \ge 1}f_{n,m}(\mathbf{x}),
+        \]
+        provided any of the expressions are absolutely convergent.
+        \item If $(f_{n}(\mathbf{x},\mathbf{y}))_{n}$ is a sequence of continuous and integrable functions on some region $D \x S$, then
+        \[
+          \int_{D \x S}f(\mathbf{x},\mathbf{y})\,d(\mathbf{x} \x \mathbf{y}) = \int_{S}\int_{D}f(\mathbf{x},\mathbf{y})\,d\mathbf{x}\,d\mathbf{y} = \int_{D}\int_{S}f(\mathbf{x},\mathbf{y})\,d\mathbf{y}\,d\mathbf{x},
+        \]
+        provided any of the expressions are absolutely convergent.
+        \item If $(f_{n}(\mathbf{x}))_{n \ge 1}$ is a sequence of continuous and integrable functions on some region $D$, then
+        \[
+         \sum_{n \ge 1}\int_{D}f_{n}(\mathbf{x})\,d\mathbf{x} = \int_{D}\sum_{n \ge 1}f_{n}(\mathbf{x})\,d\mathbf{x},
+        \]
+        provided either side is absolutely convergent.
+      \end{enumerate}
+
+
+      Let $(f_{n}(\mathbf{x}))_{n \ge 1}$
+      
+      
+       be a sequence of continuous functions that are integrable on some region $D$, then
+      \[
+         \sum_{n \ge 1}\int_{D}f_{n}(\mathbf{x})\,d\mathbf{x} = \int_{D}\sum_{n \ge 1}f_{n}(\mathbf{x})\,d\mathbf{x},
+      \]
+      provided either side is absolutely convergent.
+    \end{theorem}
+
+    Other times we would also like to interchange a derivative and an integral. The \textbf{Leibniz integral rule}\index{Leibniz integral rule} tells us when this is allowed:
+
+    \begin{theorem}[Leibniz integral rule]
+      Suppose $f(\mathbf{x},t)$ is a function on some region $D \x [a(\mathbf{x}),b(\mathbf{x})]$, for some real-valued functions $a(\mathbf{x})$ and $b(\mathbf{x})$, and such that both $f(\mathbf{x},t)$ and its partial derivative $\frac{\del}{\del x_{i}}f(\mathbf{x},t)$ are continuous in $\mathbf{x}$ and $t$. Also suppose that $a(\mathbf{x})$ and $b(\mathbf{x})$ are continuous with continuous partial derivatives $\frac{\del}{\del x_{i}}a(\mathbf{x})$ and $\frac{\del}{\del x_{i}}b(\mathbf{x})$ for $\mathbf{x} \in D$. Then
+      \[
+        \frac{\del}{\del x_{i}}\left(\int_{a(\mathbf{x})}^{b(\mathbf{x})}f(\mathbf{x},t)\,dt\right) = f(\mathbf{x},b(\mathbf{x}))\frac{\del}{\del x_{i}}b(\mathbf{x})-f(\mathbf{x},a(\mathbf{x}))\frac{\del}{\del x_{i}}a(\mathbf{x})+\int_{a(\mathbf{x})}^{b(\mathbf{x})}\frac{\del}{\del x_{i}}f(\mathbf{x},t)\,dt,
+      \]
+      on $D$.
+    \end{theorem}
+    
+    The Leibniz integral rule is sometimes applied in the case when $a(\mathbf{x}) = a$ and $b(\mathbf{x}) = b$ are constant. In this case, we get the following corollary:
+
+    \begin{corollary}
+      Suppose $f(\mathbf{x},t)$ is a function on some region $D \x [a,b]$, for some $a < b$, and such that both $f(\mathbf{x},t)$ and its partial derivative $\frac{\del}{\del x_{i}}f(\mathbf{x},t)$ are continuous in $\mathbf{x}$ and $t$. Then
+      \[
+        \frac{\del}{\del x_{i}}\left(\int_{a}^{b}f(\mathbf{x},t)\,dt\right) = \int_{a}^{b}\frac{\del}{\del x_{i}}f(\mathbf{x},t)\,dt,
+      \]
+      on $D$.
+    \end{corollary}
+  \section{Summation Formulas}\label{append:Summation_Formulas}
+    The most well-known summation formula is \textbf{summation by parts}\index{summation by parts}:
+
+    \begin{theorem}[Summation by parts]\label{thm:partial_summation}
+      Let $(a_{n})_{n \ge 1}$ and $(b_{n})_{n \ge 1}$ be two sequences of complex numbers. Then for any positive integers $N$ and $M$ with $1 \le M < N$, we have
+      \[
+        \sum_{M \le k \le N}a_{k}(b_{k+1}-b_{k}) = (a_{N}b_{N+1}-a_{M}b_{M})-\sum_{M+1 \le k \le N}b_{k}(a_{k}-a_{k-1}).
+      \]
+    \end{theorem}
+    
+    There is a more useful summation formula as it lets one estimate discrete sums by integrals. For this we need some notation. If $(a_{n})_{n \ge 1}$ is a sequence of complex numbers, for every $X > 0$ set
+    \[
+        A(X) = \sum_{n \le X}a_{n}.
+    \]
+    Note that $A(X) = 0$ unless $X \ge 1$. Then \textbf{Abel's summation formula}\index{Abel's summation formula} is the following:
+
+    \begin{theorem}[Abel's summation formula]
+      Let $(a_{n})_{n \ge 1}$ be a sequence of complex numbers. For every $X$ and $Y$ with $0 \le X < Y$ and continuously differentiable function $\phi:[X,Y] \to \C$, we have
+      \[
+        \sum_{X \le n \le Y}a_{n}\phi(n) = A(Y)\phi(Y)-A(X)\phi(X)-\int_{X}^{Y}A(u)\phi'(u)\,du.
+      \]
+    \end{theorem}
+
+    There are also some useful corollaries. On the one hand, if we let $X = 0$, so that $A(X) = 0$, we get the following:
+
+    \begin{corollary}\label{cor:Abels_summation_formula_zero_version}
+      Let $(a_{n})_{n \ge 1}$ be a sequence of complex numbers. For every $Y > 0$ and continuously differentiable function $\phi(y):[0,Y] \to \C$, we have
+      \[
+        \sum_{n \le Y}a_{n}\phi(n) = A(Y)\phi(Y)-\int_{0}^{Y}A(u)\phi'(u)\,du.
+      \]
+    \end{corollary}
+    
+    On the other hand, if we take the limit as $Y \to \infty$ we obtain:
+
+    \begin{corollary}\label{cor:Abels_summation_formula_limit_version}
+      Let $(a_{n})_{n \ge 1}$ be a sequence of complex numbers. For every $X \ge 0$ and continuously differentiable function $\phi(y):[X,\infty) \to \C$, we have
+      \[
+        \sum_{n \ge X}a_{n}\phi(n) = \lim_{Y \to \infty}A(Y)\phi(Y)-A(X)\phi(X)-\int_{X}^{\infty}A(u)\phi'(u)\,du.
+      \]
+    \end{corollary}
+
+    Lastly, combining these cases by taking $X = 0$ and the limit as $Y \to \infty$, we arrive at the following result:
+
+    \begin{corollary}\label{cor:Abels_summation_formula_limit_version_specialization}
+      Let $(a_{n})_{n \ge 1}$ be a sequence of complex numbers. For every continuously differentiable function $\phi(y):[0,\infty) \to \C$, we have
+      \[
+        \sum_{n \ge 1}a_{n}\phi(n) = \lim_{Y \to \infty}A(Y)\phi(Y)-\int_{1}^{\infty}A(u)\phi'(u)\,du.
+      \]
+    \end{corollary}
+  \section{Factorizations, Order \& Rank}\label{append:Factorizations_and_Finite_Order}
+    The \textbf{elementary factors}\index{elementary factors}, also referred to as \textbf{primary factors}\index{primary factors}, are the entire functions $E_{n}(z)$ defined by
+    \[
+      E_{n}(z) = \begin{cases} 1-z & \text{if } n = 0, \\ (1-z)e^{z+\frac{z^{2}}{2}+\cdots+\frac{z^{n}}{n}} & \text{if } n \neq 0. \end{cases}
+    \]
+    If $f(z)$ is an entire function, then it admits a factorization in terms of its zeros and the elementary factors. This is called the \textbf{Weierstrass factorization}\index{Weierstrass factorization} of $f(z)$:
+
+    \begin{theorem}[Weierstrass factorization]
+      Let $f(z)$ be an entire function with $\{a_{n}\}_{n \ge 1}$ the nonzero zeros of $f(z)$ counted with multiplicity. Also suppose that $f(z)$ has a zero of order $m$ at $z = 0$ where it is understood that if $m = 0$ we mean $f(0) \neq 0$ and if $m < 0$ we mean $f(z)$ has a pole of order $|m|$ at $z = 0$. Then there exists an entire function $g(z)$ and sequence of nonnegative integers $(p_{n})_{n \ge 1}$ such that
+      \[
+        f(z) = z^{m}e^{g(z)}\prod_{n \ge 1}E_{p_{n}}\left(\frac{z}{a_{n}}\right).
+      \]
+    \end{theorem}
+
+    The Weierstrass factorization of $f(z)$ can be strengthened if $f(z)$ does not grow too fast. We say $f(z)$ is of \textbf{finite order}\index{finite order} if there exists a $\rho_{0} > 0$ such that
+    \[
+      f(z) \ll e^{|z|^{\rho_{0}}},
+    \]
+    for all $z \in \C$. The \textbf{order}\index{order} $\rho$ of $f(z)$ is the infimum of the $\rho_{0}$. Let $q = \lf \rho \rf$. If there is no such $\rho_{0}$, $f(z)$ is said to be of \textbf{infinite order}\index{infinite order} and we set $\rho = q = \infty$. Let $\{a_{n}\}_{n \ge 1}$ be the nonzero zeros of $f(z)$ that are not zero and ordered such that $a_{n} \to \infty$ as $n \to \infty$ if there are infinitely many zeros. Then we define the \textbf{rank}\index{rank} of $f(z)$ to be the smallest positive integer $p$ such that the series
+    \[
+      \sum_{n \ge 1}\frac{1}{|a_{n}|^{p+1}},
+    \]
+    converges. If there is no such integer we set $p = \infty$ and if there are finitely many zeros we set $p = 0$. We set $g = \max(p,q)$ and call $g$ the \textbf{genus}\index{genus} of $f(z)$. We can now state the \textbf{Hadamard factorization}\index{Hadamard factorization} of $f(z)$:
+
+    \begin{theorem}[Hadamard factorization]
+      Let $f(z)$ be an entire function of finite order $\rho$. If $p$ is the rank and $g$ is the genus, then $g \le \rho$. Moreover, let $\{a_{n}\}_{n \ge 1}$ be the nonzero zeros of $f(z)$ counted with multiplicity and suppose that $f(z)$ has a zero of order $m$ at $z = 0$ where it is understood that if $m = 0$ we mean $f(0) \neq 0$ and if $m < 0$ we mean $f(z)$ has a pole of order $|m|$ at $z = 0$. Then there exists a polynomial $Q(z)$ of degree at most $q$ such that
+      \[
+        f(z) = z^{m}e^{Q(z)}\prod_{n \ge 1}E_{p}\left(\frac{z}{a_{n}}\right).
+      \]
+      Moreover, the sum
+      \[
+        \sum_{n \ge 1}\frac{1}{|a_{n}|^{\rho+\e}},
+      \]
+      converges.
+    \end{theorem}
+  \section{The Phragm\'en-Lindel\"of Convexity Principle}\label{append:The_Phragmen_Lindelof_Convexity_principle}
+    The \textbf{Phragm\'en-Lindel\"of convexity principle}\index{Phragm\'en-Lindel\"of convexity principle} is a generic name for extending the maximum modulus principle to unbounded regions. The \textbf{Phragm\'en-Lindel\"of convexity principle}\index{Phragm\'en-Lindel\"of convexity principle} for vertical strips is the case when the unbounded region is the vertical strip $a < \s < b$:
+
+    \begin{theorem}[Phragm\'en-Lindel\"of convexity principle, vertical strip version]\label{thm:Phragmen-Lindelof_convexity_principle}
+      Let $f(s)$ be a holomorphic function on an open neighborhood of the vertical strip $a < \s < b$ such that $f(s) \ll e^{|s|^{A}}$ for some $A \ge 0$. Then the following hold:
+      \begin{enumerate}[label=(\roman*)]
+        \item If $|f(s)| \le M$ for $\s = a,b$, that is on the boundary edges of the strip, then $|f(s)| \le M$ for all $s$ in the strip.
+        \item Assume that there is a continuous function $g(t)$ such that
+        \[
+          f(a+it) \ll g(t)^{\a} \quad \text{and} \quad f(b+it) \ll g(t)^{\b},
+        \]
+        for all $t \in \R$. Then
+        \[
+          f(s) \ll g(t)^{\a\ell(\s)+\b(1-\ell(\s))},
+        \]
+        where $\ell$ is the linear function such that $\ell(a) = 1$ and $\ell(b) = 0$.
+      \end{enumerate}
+    \end{theorem}
+
+    We will also need a variant. The \textbf{Phragm\'en-Lindel\"of convexity principle}\index{Phragm\'en-Lindel\"of convexity principle} for vertical half-strips is the case when the unbounded region is the vertical half-strip $a < \s < b$ with $t > c$:
+
+    \begin{theorem}[Phragm\'en-Lindel\"of convexity principle, vertical half-strip version]\label{thm:Phragmen-Lindelof_convexity_principle_half-strip}
+      Let $f(s)$ \\ be a holomorphic function on an open neighborhood of the vertical strip $a < \s < b$ with $t > c$ such that \\ $f(s) \ll e^{|s|^{A}}$ for some $A \ge 0$. Then the following hold:
+      \begin{enumerate}[label=(\roman*)]
+        \item If $|f(s)| \le M$ for $\s = a,b$ with $t \ge c$ and $t = c$ with $a \le \s \le b$, that is on the boundary edges of the half-strip, then $|f(s)| \le M$ for all $s$ in the strip.
+        \item Assume that there is a continuous function $g(t)$ such that
+        \[
+          f(a+it) \ll g(t)^{\a} \quad \text{and} \quad f(b+it) \ll g(t)^{\b},
+        \]
+        for all $t \ge c$. Then
+        \[
+          f(s) \ll g(t)^{\a\ell(\s)+\b(1-\ell(\s))},
+        \]
+        where $\ell$ is the linear function such that $\ell(a) = 1$ and $\ell(b) = 0$.
+      \end{enumerate}
+    \end{theorem}
+  \section{Bessel Functions}\label{append:Bessel_Functions}
+    For any $\nu \in \C$, the \textbf{Bessel equation}\index{Bessel equation} is the ODE
+    \[
+      z^{2}\frac{d^{2}w}{dz^{2}}+z\frac{dw}{dz}+(z^{2}-\nu^{2})w = 0.
+    \]
+    There are two linearly independent solutions to this equation. One solution is the \textbf{Bessel function of the first kind}\index{Bessel function of the first kind} $J_{\nu}(z)$ defined by
+    \[
+      J_{\nu}(z) = \sum_{n \ge 0}\frac{(-1)^{n}}{n!\G(n+\nu+1)}\left(\frac{z}{2}\right)^{2n+\nu}.
+    \]
+    For integers $n$, $J_{n}(z)$ is entire and we have
+    \[
+      J_{n}(z) = (-1)^{n}J_{-n}(z).
+    \]
+    Otherwise, $J_{\nu}(z)$ has a pole at $z = 0$ and $J_{\nu}(z)$ and $J_{-\nu}(z)$ are linearly independent solutions to the Bessel equation. The other solution is the \textbf{Bessel function of the second kind}\index{Bessel function of the second kind} $Y_{\nu}(z)$ defined by
+    \[
+      Y_{\nu}(z) = \frac{J_{\nu}(z)\cos(\nu\pi)-J_{-\nu}(z)}{\sin(\nu\pi)},
+    \]
+    for non-integers $\nu$, and for integers $n$ is
+    \[
+      Y_{n}(z) = \lim_{\nu \to n}Y_{\nu}(z).
+    \]
+    For any integer $n$, we also have
+    \[
+      Y_{n}(z) = (-1)^{n}Y_{-n}(z).
+    \]
+    For the $J$-Bessel function there is also an important integral representation called the \textbf{Schl\"aflin integral representation}\index{Schl\"aflin integral representation}:
+
+    \begin{proposition}[Schl\"aflin integral representation for the $J$-Bessel function]
+      For any $\nu \in \C$,
+      \[
+        J_{\nu}(z) = \frac{1}{2\pi i}\left(\frac{z}{2}\right)^{\nu}\int_{-\infty}^{(0^{+})}t^{-(\nu+1)}e^{t-\frac{z^{2}}{4t}}\,dt,
+      \]
+      provided $|\arg(z)| < \frac{\pi}{2}$ and where the contour is the Hankel contour about the negative real axis.
+    \end{proposition}
+
+    The \textbf{modified Bessel equation}\index{modified Bessel equation} is the ODE
+    \[
+      z^{2}\frac{d^{2}w}{dz^{2}}+z\frac{dw}{dz}-(z^{2}+\nu^{2})w = 0.
+    \]
+    Like the Bessel equation, there are two linearly independent solutions. One solution is the \textbf{modified Bessel function of the first kind}\index{Bessel function of the first kind} $I_{\nu}(x)$ given by
+    \[
+      I_{\nu}(z) = i^{-\nu}J_{\nu}(iz) = \sum_{n \ge 0}\frac{1}{n!\G(n+\nu+1)}\left(\frac{z}{2}\right)^{2n+\nu}.
+    \]
+    For integers $n$, this solution is symmetric in $n$. That is,
+    \[
+      I_{n}(z) = I_{-n}(z).
+    \]
+    We also have a useful integral representation in a half-plane:
+
+    \begin{proposition}\label{prop:integral_representation_I-Bessel_function}
+      For any $\nu \in \C$,
+      \[
+        I_{\nu}(z) = \frac{1}{\pi}\int_{0}^{\pi}e^{z\cos(t)}\cos(\nu t)\,dt-\frac{\sin(\nu\pi)}{\pi}\int_{0}^{\infty}e^{-z\cosh(t)-\nu t}\,dt,
+      \]
+      provided $|\arg(z)| < \frac{\pi}{2}$.
+    \end{proposition}
+
+    From this integral representation we can show the following asymptotic:
+
+    \begin{lemma}\label{lem:I_Bessel_function_asymptotic}
+      For any $\nu \in \C$,
+      \[
+        I_{\nu}(z) \sim_{\e} \sqrt{\frac{1}{2\pi z}}e^{z},
+      \]
+      provided $|\arg(z)| \le \frac{\pi}{2}-\e$ for some $\e > 0$.
+    \end{lemma}
+
+    The other solution is the \textbf{modified Bessel function of the second kind}\index{modified Bessel function of the second kind} $K_{\nu}(z)$ defined by
+    \[
+      K_{\nu}(z) = \frac{\pi}{2}\frac{I_{-\nu}(z)-I_{\nu}(z)}{\sin(\nu\pi)},
+    \]
+    for non-integers $\nu$, and for integers $n$ is
+    \[
+      K_{n}(z)= \lim_{\nu \to n}K_{\nu}(z).
+    \]
+    This is one of the more important types of Bessel functions as they appear in the Fourier coefficients of certain Eisenstein series. This function is symmetric in $\nu$ even when $\nu$ is an integer. That is,
+    \[
+      K_{\nu}(z) = K_{-\nu}(z),
+    \]
+    for all $\nu$. We also have a very useful integral representation in a half-plane:
+
+    \begin{proposition}\label{prop:integral_representation_K-Bessel_function}
+      For any $\nu \in \C$,
+      \[
+        K_{\nu}(z) = \int_{0}^{\infty}e^{-z\cosh(t)}\cosh(\nu t)\,dt,
+      \]
+      provided $|\arg(z)| < \frac{\pi}{2}$.
+    \end{proposition}
+
+    From this integral representation it does not take much to show the following asymptotic:
+
+    \begin{lemma}\label{lem:K_Bessel_function_asymptotic}
+      For any $\nu \in \C$,
+      \[
+        K_{\nu}(z) \sim_{\e} \sqrt{\frac{\pi}{2z}}e^{-z},
+      \]
+      provided $|\arg(z)| \le \frac{\pi}{2}-\e$ for some $\e > 0$.
+    \end{lemma}
+  \section{Whittaker Functions}\label{append:Whittaker_Functions}
+    For $\k,\mu \in \C$, the \textbf{Whittaker equation}\index{Whittaker equation} is the ODE
+    \[
+      \frac{dw}{dz}+\left(\frac{1}{4}-\frac{\k}{z}-\frac{\frac{1}{4}-\mu^{2}}{z^{2}}\right)w = 0.
+    \]
+    There are two linearly independent solutions to this equation provided $-2\mu \notin \Z_{+}$. If we additionally assume that $w(z) = o(e^{2\pi y})$ as $y \to \infty$, then there is only one linearly independent solution. This solution is the \textbf{Whittaker function}\index{Whittaker function} $W_{\k,\mu}(z)$. It can be expressed in the form
+    \[
+      W_{\k,\mu}(z) = z^{\mu+\frac{1}{2}}e^{-\frac{z}{2}}U\left(\mu-\k+\frac{1}{2},1+2\mu,z\right),
+    \]
+    where $U(\a,\b,z)$ is the \textbf{confluent hypergeometric function}\index{confluent hypergeometric function} initially defined by
+    \[
+      U(\a,\b,z) = \frac{1}{\G(\a)}\int_{0}^{\infty}e^{-zu}u^{\a-1}(1+u)^{\b-\a-1}\,du,
+    \]
+    for $\Re(\a) > 0$ and $x > 0$ and then analytically continued to $\C^{3}$. From this integral representation we can show the following asymptotic:
+
+    \begin{lemma}\label{lem:Whittaker_function_asymptotic}
+      For any $\k,\mu \in \C$ with $-2\mu \notin \Z_{+}$,
+      \[
+        W_{\k,\mu}(z) \sim_{\e} z^{\k}e^{-\frac{z}{2}},
+      \]
+      provided $|\arg(z)| \le \frac{\pi}{2}-\e$ for some $\e > 0$.
+    \end{lemma}
+
+    The Whittaker function also satisfies the important symmetry properties
+    \[
+      W_{\k,\mu}(z) = W_{\k,-\mu}(z) \quad \text{and} \quad \conj{W_{\k,\mu}(z)} = W_{\k,-\mu}(\conj{z}).
+    \]
+    In particular, $W_{\k,\mu}(z)$ is conjugate symmetric if $z$ is real. The Whittaker function also has a simplified form in special cases:
+    
+    \begin{theorem}\label{thm:Whittaker_special_cases}
+      For any $\nu,\a \in \C$ with $-2\nu \notin \Z_{+}$,
+      \[
+        W_{0,\nu}(z) = \left(\frac{z}{\pi}\right)^{\frac{1}{2}}K_{\nu}\left(\frac{z}{2}\right) \quad \text{and} \quad W_{\a,\a-\frac{1}{2}}(z) = z^{\a}e^{-\frac{z}{2}}.
+      \]
+    \end{theorem}
+  \section{Lattice Sums}
+    Consider $\R^{d}$ with the standard inner product $\<\cdot,\cdot\>$ and norm $||\cdot||$. We are often interested in series that are obtained by summing over the lattice $\Z^{d} \subset \R^{d}$. In particular, we have the following general result:
+
+    \begin{theorem}
+      Let $d \ge 1$ be an integer. Then
+      \[
+        \sum_{\mathbf{a} \in \Z^{d}-\{\mathbf{0}\}}\frac{1}{||\mathbf{a}||^{s}},
+      \]
+      is locally absolutely uniformly convergent in the region $\s > d$.
+    \end{theorem}
+
+    In a practical setting, we usually restrict to the case $d = 2$. In this setting, with a little more work can show a more useful result:
+
+    \begin{proposition}\label{prop:general_lattice_sum_convergence_for_two_variables}
+      Let $z \in \H$. Then
+      \[
+        \sum_{(n,m) \in \Z^{2}-\{\mathbf{0}\}}\frac{1}{|nz+m|^{s}},
+      \]
+      is locally absolutely uniformly convergent in the region $\s > 2$. In addition, it is locally absolutely uniformly convergent as a function of $z$ provided $\s > 2$.
+    \end{proposition}
+\chapter{Algebra}
+  \section{Finitely Generated Abelian Groups}
+    Let $V$ be a finitely generated abelian group. The following result is the \textbf{structure theorem for finitely generated abelian groups}\index{structure theorem for finitely generated abelian groups}
+
+    \begin{theorem}[Structure theorem for finitely generated abelian groups]
+      Let $V$ be a finitely generated abelian group. Then
+      \[
+        V \cong \Z^{n} \oplus \Z/k_{1}\Z \oplus \cdots \oplus \Z/k_{t}\Z,
+      \]
+      where $k_{i}$ are integers such that $k_{i} \mid k_{i+1}$ for $1 \le i \le t-1$.
+    \end{theorem}
+
+    Let $V$ be a free abelian group of rank $n$ and let $W \le V$ be a subgroup that is also a free abelian group of rank $n$. Let $v_{1},\ldots,v_{n}$ and $w_{1},\ldots,w_{n}$ be bases for $V$ and $W$ respectively so that
+    \[
+      V = \Z v_{1}+\cdots+\Z v_{n} \quad \text{and} \quad W = \Z w_{1}+\cdots+\Z w_{n}.
+    \]
+    Write
+    \[
+      w_{i} = \sum_{1 \le j \le n}w_{i,j}v_{j},
+    \]
+    so that $B = (W_{i,j})_{i,j}$ is the base change matrix from $v_{1},\ldots,v_{n}$ to $w_{1},\ldots,w_{n}$. A consequence of the Smith normal form is that the quotient group is given by the absolute value of the determinant:
+
+    \begin{proposition}\label{prop:base_change_quotient_determinant}
+      Let $V$ be a free abelian group of rank $n$ and let $W \le V$ be a subgroup that is also a free abelian group of rank $n$. Then $|V/W|$ is finite and
+      \[
+        |V/W| = |\det(B)|,
+      \]
+      for any base change matrix $B$ from a basis of $V$ to a basis of $W$.
+    \end{proposition}
+  \section{Character Groups}\label{append:Character_Groups}
+    For any finite abelian group $G$, a \textbf{character}\index{character} $\vphi$ is a homomorphism $\vphi:G \to \C$. They form a group, denoted $\what{G}$, under multiplication called the \textbf{character group}\index{character group} of $G$. If $G$ is an additive group, we say that any $\vphi \in \G$ is a \textbf{additive character}\index{additive character}. Similarly, if $G$ is a multiplicative group, we say that any $\vphi \in \G$ is a \textbf{multiplicative character}\index{multiplicative character}. In any case, if $|G| = n$ then $\vphi(g)^{n} = \vphi(g^{n}) = 1$ so that $\vphi$ takes values in the $n$-th roots of unity. Moreover, to every character $\vphi$ there is its \textbf{conjugate character}\index{conjugate character} $\conj{\vphi}$ defined by $\conj{\vphi}(g) = \conj{\vphi(a)}$. Clearly the conjugate character is also a character. Since $\vphi$ takes its value in the roots of unity, $\conj{\vphi(a)} = \vphi(a)^{-1}$ so that $\conj{\vphi} = \vphi^{-1}$. One of the central theorems about characters is that the character group of $G$ is isomorphic to $G$:
+
+    \begin{proposition}\label{prop:character_group_isomorphim}
+      Any finite abelian group $G$ is isomorphic to its character group. That is,
+      \[
+        G \cong \what{G}.
+      \]
+    \end{proposition}
+
+    The characters also satisfy certain \textbf{orthogonality relations}\index{orthogonality relations}:
+
+    \begin{proposition}[Orthogonality relations]
+      Let $G$ be a finite abelian group.
+      \begin{enumerate}[label=(\roman*)]
+        \item For any two characters $\chi$ and $\psi$ of $G$,
+        \[
+          \frac{1}{|G|}\sum_{g \in G}\chi(g)\conj{\psi}(g) = \d_{\chi,\psi}.
+        \]
+        \item For any $g,h \in G$,
+        \[
+          \frac{1}{|G|}\sum_{\chi \in \what{G}}\chi(g)\cchi(h) = \d_{g,h}.
+        \]
+      \end{enumerate}
+    \end{proposition}
+  \section{Representation Theory}\label{append:Representation_Theory}
+    Let $G$ be a group and $V$ be a vector space over a field $\F$. A \textbf{representation}\index{representation} $(\rho,V)$, or just $\rho$ if the underlying vector space $V$ is clear, of $G$ on $V$ is a map
+    \[
+      \rho:G \x V \to V \qquad (g,v) \mapsto \rho(g,v) = g \cdot v,
+    \]
+    such that the following properties are satisfied:
+    \begin{enumerate}
+      \item For any $g \in G$, the map
+      \[
+        \rho:V \to V \qquad v \mapsto g \cdot v,
+      \]
+      is linear.
+      \item For any $g,h \in G$ and $v \in V$,
+      \[
+        1 \cdot v = v \quad \text{and} \quad g \cdot (h \cdot v) = (gh) \cdot v.
+      \]
+    \end{enumerate}
+    Therefore $\rho$ defines an action of $G$ on $V$. An equivalent definition of a representation of $G$ on $V$ is a homomorphism from $G$ into $\Aut(V)$. By abuse of notation, we also denote this homomorphism by $\rho$. If the dimension of $V$ is $n$, then $(\rho,V)$ is sai to be an \textbf{n-dimensional}\index{n-dimensional}. We say that $(\rho,W)$ is a \textbf{subrepresentation}\index{subrepresentation} of $(V,\rho)$ if $W \subseteq V$ is a $G$-invariant subspace. In particular, $(\rho,W)$ is a representation itself. Lastly, if $(\rho_{1},V_{1})$ and $(\rho_{2},V_{2})$ are two representations, we can form the \textbf{direct sum representation}\index{direct sum representation} $(\rho_{1} \op \rho_{2},V_{1} \op V_{2})$ where $\rho_{1} \op \rho_{2}$ acts diagonally on $V_{1} \op V_{2}$. A natural question to ask is how representation can be decomposed as a direct sum of other representations. We say $(\rho,V)$ is \textbf{irreducible}\index{irreducible} if it contains no proper $G$-invariant subspaces and is \textbf{completely irreducible}\index{completely irreducible} if it decomposes as a direct sum of irreducible subrepresentations.
+
+    We will only need one very useful theorem about representations when $G$ is a finite abelian group and $V$ is a vector space over $\C$. In this case $G$ has a group of characters $\what{G}$, and the underlying vector space $V$ is completely reducible with respect to the characters of $G$:
+
+    \begin{theorem}\label{thm:finite_abelian_representation_is_completely_reducible}
+      Let $V$ be a vector space over $\C$ and let $\Phi$ be a representation of a group $G$ on $V$. If $G$ is a finite abelian group, then
+      \[
+        V = \bigop_{\chi \in \what{G}}V_{\chi},
+      \]
+      where
+      \[
+        V_{\chi} = \{v \in V:g \cdot v = \chi(g)v \text{ for all } g \in G\}.
+      \]
+      In particular, $V$ is completely reducible and every irreducible subrepresentation is $1$-dimensional.
+    \end{theorem}
+\chapter{Topology}
+  \section{Fundamental Domains}\label{append:Fundamental_Domains}
+    Let $G$ be a group acting on a connected Hausdorff space $X$ by automorphisms. Then we can consider the quotient space $X/G$ of $X$ by the action of $G$. We would like the quotient $X/G$ to inherit properties of $G$. For this, we require $G$ to satisfy two properties. The first is that $G$ is a discrete group. For the second, we say $G$ acts \textbf{properly discontinuously}\index{properly discontinuously} if for every $x \in X$ there exists a neighborhood $U_{x}$ of $x$ such that the intersection $gU_{x} \cap U_{x}$ is empty for all $g \in G$ unless $g$ is the identity. In the case $G$ is discrete and acts properly discontinuously, the quotient $X/G$ inherits nice topological properties:
+
+    \begin{proposition}\label{prop:quotient_by_discrete_property_discontinuously}
+      Let $G$ be a group acting on a a connected Hausdorff space $X$ by automorphisms. If $G$ is discrete and acts properly discontinuously, then $X/G$ is connected Hausdorff.
+    \end{proposition}
+
+    In the case of \cref{prop:quotient_by_discrete_property_discontinuously}, we often want to consider a useful set of representatives of $X/G$. A \textbf{fundamental domain}\index{fundamental domain} for $X/G$ is a closed subset $D \subseteq X$ satisfying the following conditions:
+      \begin{enumerate}[label=(\roman*)]
+        \item Any point in $X$ is $G$-equivalent to a point in $D$.
+        \item If two points in $D$ are $G$-equivalent via a non-identity element, then they lie on the boundary of $D$.
+        \item The interior of $D$ is a domain.
+      \end{enumerate}
+      In other words, $D$ is a complete set of representatives (possibly with overlap on the boundary) for $X/G$ that has a nice topological structure with respect to $X$. Note that if $D$ is a fundamental domain then so is $gD$ for any $g \in G$ and moreover
+      \[
+        X = \bigcup_{g \in G}gD.
+      \]
+      In particular, the choice of fundamental domain is not unique. Intuitively, a fundamental domain is a geometric realization of $X/G$ which is often more fruitful than thinking of $X/G$ as an abstract set of equivalence classes. Indeed, if $X$ is a subset of $\R^{n}$ or $\C^{n}$ then property (iii) ensures that we can integrate over $D$.
+\chapter{Miscellaneous}
+  \section{Special Integrals}\label{append:Special_Integrals}
+    Below is a table of well-known integrals that are used throughout the text:
+    \begin{center}
+      \begin{stabular}[3]{|c|c|c|}
+        \hline
+        Reference & Assumptions & Integral \\
+        \hline
+        Gaussian & & $\displaystyle{\int_{-\infty}^{\infty}e^{-\pi x^{2}}\,dx = 1}$ \\
+        \hline
+        \cite{goldfeld2006automorphic} & $s,\nu \in \C, \Re(s+\nu) > -1$ & $\displaystyle{\int_{0}^{\infty}K_{\nu}(y)y^{s}\,\frac{dy}{y} = 2^{s-2}\G\left(\frac{s+\nu}{2}\right)\G\left(\frac{s-\nu}{2}\right)}$ \\
+        \hline
+        \cite{goldfeld2006automorphic} & $n \in \Z$, $s \in \C$, $y > 0$ & $\displaystyle{\int_{-\infty}^{\infty}\frac{e^{-2\pi inxy}}{(x^{2}+1)^{s}}\,dx = \begin{cases} \frac{\sqrt{\pi}\G\left(s-\frac{1}{2}\right)}{\G(s)} & \text{if $n = 0$}, \\ \frac{2\pi^{s}|n|^{s-\frac{1}{2}}y^{s-\frac{1}{2}}}{\G(s)}K_{s-\frac{1}{2}}(2\pi|n|y) & \text{if $n \neq 0$}. \end{cases}}$ \\
+        \hline
+        \cite{davenport1980multiplicative} & $c > 0$ & $\displaystyle{\frac{1}{2\pi i}\int_{(c)}y^{s}\,\frac{ds}{s} = \begin{cases} 0 & \text{if $0 < y < 1$}, \\ \frac{1}{2} & \text{if $y = 1$}, \\ 1 & \text{if $y > 1$}. \end{cases}}$ \\
+        \hline
+      \end{stabular}
+    \end{center}
