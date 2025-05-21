@@ -244,24 +244,24 @@
   \section{Perron Formulas}
     With the Mellin inversion formula, it is not hard to prove a very useful integral expression for the sum of coefficients of a Dirichlet series. First, we setup some general notation. If $D(s)$ is a Dirichlet series with coefficients $a(n)$, then for $X > 0$, we set
     \[
-      A'(X) = \psum_{n \le X}a(n),
+      A^{\ast}(X) = \asum_{n \le X}a(n),
     \]
-    where the $'$ indicates that the last term is multiplied by $\frac{1}{2}$ if $X$ is an integer. We would like to relate $A'(X)$ to an integral involving the entire Dirichlet series $D(s)$. In particular, this integral is a type of inverse Mellin transform. Any formula that relates a finite sum of coefficients of a Dirichlet series to an integral involving the entire Dirichlet series is called a \textbf{Perron-type formula}\index{Perron-type formula}. We will see several of them, the first being \textbf{(classical) Perron's formula}\index{(classical) Perron's formula} which is a consequence of Abel's summation formula and the Mellin inversion formula applied to Dirichlet series:
+    where the $\ast$ indicates that the last term is multiplied by $\frac{1}{2}$ if $X$ is an integer. We would like to relate $A^{\ast}(X)$ to an integral involving the entire Dirichlet series $D(s)$. In particular, this integral is a type of inverse Mellin transform. Any formula that relates a finite sum of coefficients of a Dirichlet series to an integral involving the entire Dirichlet series is called a \textbf{Perron-type formula}\index{Perron-type formula}. We will see several of them, the first being \textbf{(classical) Perron's formula}\index{(classical) Perron's formula} which is a consequence of Abel's summation formula and the Mellin inversion formula applied to Dirichlet series:
 
     \begin{theorem}[Perron's formula, classical version]
       Let $D(s)$ be a Dirichlet series with coefficient $a(n)$ and finite and nonnegative abscissa of absolute convergence $\s_{a}$. Then for any $c > \s_{a}$,
       \[
-        A'(X) = \frac{1}{2\pi i}\int_{(c)}D(s)X^{s}\,\frac{ds}{s}.
+        A^{\ast}(X) = \frac{1}{2\pi i}\int_{(c)}D(s)X^{s}\,\frac{ds}{s}.
       \]
     \end{theorem}
     \begin{proof}
       Let $s$ be such that $\s > \s_{a}$. By Abel's summation formula (see \cref{cor:Abels_summation_formula_limit_version_specialization}),
       \[
-        \sum_{n \ge 1}\frac{a(n)}{n^{s}} = \lim_{Y \to \infty}A'(Y)Y^{-s}+s\int_{1}^{\infty}A'(u)u^{-(s+1)}\,du.
+        \sum_{n \ge 1}\frac{a(n)}{n^{s}} = \lim_{Y \to \infty}A^{\ast}(Y)Y^{-s}+s\int_{1}^{\infty}A^{\ast}(u)u^{-(s+1)}\,du.
       \]
-      Now $A'(Y) \le A(Y)$ and $A(Y) \ll_{\e} Y^{\s_{a}+\e}$ by \cref{prop:Dirichlet_series_coefficient_size_on_average} so that $A'(Y)Y^{-s} \ll_{\e} Y^{\s_{a}+\e-\s}$. Choosing $\e < \s-\s_{a}$, this latter term tends to zero as $Y \to \infty$, which implies that $A'(Y)Y^{-s} \to 0$ as $Y \to \infty$. Therefore we can write the equation above as
+      Now $A^{\ast}(Y) \le A(Y)$ and $A(Y) \ll_{\e} Y^{\s_{a}+\e}$ by \cref{prop:Dirichlet_series_coefficient_size_on_average} so that $A^{\ast}(Y)Y^{-s} \ll_{\e} Y^{\s_{a}+\e-\s}$. Choosing $\e < \s-\s_{a}$, this latter term tends to zero as $Y \to \infty$, which implies that $A^{\ast}(Y)Y^{-s} \to 0$ as $Y \to \infty$. Therefore we can write the equation above as
       \begin{equation}\label{equ:integral_rep_for_Dirichlet_series}
-         \frac{D(s)}{s} = \int_{1}^{\infty}A'(u)u^{-(s+1)}\,du = \int_{0}^{\infty}A'(u)u^{-(s+1)}\,du,
+         \frac{D(s)}{s} = \int_{1}^{\infty}A^{\ast}(u)u^{-(s+1)}\,du = \int_{0}^{\infty}A^{\ast}(u)u^{-(s+1)}\,du,
       \end{equation}
       where the second equality follows because $A(u) = 0$ in the interval $[0,1)$. The Mellin inversion formula immediately gives the result.
     \end{proof}
@@ -271,7 +271,7 @@
     \begin{corollary}\label{cor:integral_rep_for_Dirichlet_series}
       Let $D(s)$ be a Dirichlet series with coefficient $a(n)$ and finite and nonnegative abscissa of absolute convergence $\s_{a}$. Then for $\s > \s_{a}$,
       \[
-        D(s) = s\int_{1}^{\infty}A'(u)u^{-(s+1)}\,du.
+        D(s) = s\int_{1}^{\infty}A^{\ast}(u)u^{-(s+1)}\,du.
       \]
     \end{corollary}
     \begin{proof}
@@ -300,18 +300,18 @@
     \begin{theorem}[Perron's formula, truncated version]
       Let $D(s)$ be a Dirichlet series with coefficient $a(n)$ and finite and nonnegative abscissa of absolute convergence $\s_{a}$. Then for any $c > \s_{a}$ and $T > 0$,
       \[
-        A'(X) = \frac{1}{2\pi i}\int_{c-iT}^{c+iT}D(s)X^{s}\,\frac{ds}{s}+O\left(X^{c}\sum_{\substack{n \ge 1 \\ n \neq X}}\frac{a(n)}{n^{c}}\min\left(1,\frac{1}{T\left|\log\left(\frac{X}{n}\right)\right|}\right)+\d_{X}a(X)\frac{c}{T}\right),
+        A^{\ast}(X) = \frac{1}{2\pi i}\int_{c-iT}^{c+iT}D(s)X^{s}\,\frac{ds}{s}+O\left(X^{c}\sum_{\substack{n \ge 1 \\ n \neq X}}\frac{a(n)}{n^{c}}\min\left(1,\frac{1}{T\left|\log\left(\frac{X}{n}\right)\right|}\right)+\d_{X}a(X)\frac{c}{T}\right),
       \]
       where $\d_{X} = 1,0$ according to if $X$ is an integer or not.
     \end{theorem}
     \begin{proof}
       By \cref{append:Special_Integrals}, we have
       \[
-        A'(X) = \sum_{n \ge 1}a(n)\d\left(\frac{X}{n}\right).
+        A^{\ast}(X) = \sum_{n \ge 1}a(n)\d\left(\frac{X}{n}\right).
       \]
       Using \cref{lem:delta_truncation_estimate}, we may replace $\d\left(\frac{X}{n}\right)$ and obtain
       \[
-        A'(X) = \sum_{n \ge 1}a(n)\frac{1}{2\pi i}\int_{c-iT}^{c+iT}\frac{X^{s}}{n^{s}}\,\frac{ds}{s}+\sum_{\substack{n \ge 1 \\ n \neq X}}a(n)O\left(\frac{X^{c}}{n^{c}}\min\left(1,\frac{1}{T\left|\log\left(\frac{X}{n}\right)\right|}\right)\right)+\d_{X}a(X)O\left(\frac{c}{T}\right).
+        A^{\ast}(X) = \sum_{n \ge 1}a(n)\frac{1}{2\pi i}\int_{c-iT}^{c+iT}\frac{X^{s}}{n^{s}}\,\frac{ds}{s}+\sum_{\substack{n \ge 1 \\ n \neq X}}a(n)O\left(\frac{X^{c}}{n^{c}}\min\left(1,\frac{1}{T\left|\log\left(\frac{X}{n}\right)\right|}\right)\right)+\d_{X}a(X)O\left(\frac{c}{T}\right).
       \]
       Since $D(s)$ converges absolutely, the sum may be moved inside of the first $O$-estimate and then we may combine the resulting two $O$-estimates. Fubini's theorem implies we may interchange the sum and the integral, and the statement of the lemma follows.
     \end{proof}
@@ -321,7 +321,7 @@
     \begin{corollary}
       Let $D(s)$ be a Dirichlet series with coefficient $a(n)$ and finite and nonnegative abscissa of absolute convergence $\s_{a}$. Then for any $c > \s_{a}$ and $T > 0$,
       \[
-        A'(X) = \frac{1}{2\pi i}\int_{c-iT}^{c+iT}D(s)X^{s}\,\frac{ds}{s}+O\left(\frac{X^{c}}{T}\right),
+        A^{\ast}(X) = \frac{1}{2\pi i}\int_{c-iT}^{c+iT}D(s)X^{s}\,\frac{ds}{s}+O\left(\frac{X^{c}}{T}\right),
       \]
     \end{corollary}
     \begin{proof}
