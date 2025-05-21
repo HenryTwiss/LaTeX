@@ -1348,17 +1348,17 @@
       \]
       \end{proof}
   \section{The Burgess Bound for Dirichlet \texorpdfstring{$L$}{L}-functions}
-    Let $\chi$ be a Dirichlet character modulo $m$. We call any sum of the form
+    Let $\chi$ be a Dirichlet character modulo $m$. We call the sum
     \[
-      \sum_{M+1 \le n \le M+N}\chi(n),
+      S_{\chi}(M,N) = \sum_{M+1 \le n \le M+N}\chi(n),
     \]
-    for some $M \ge 0$ and $N \ge 1$, a \textbf{character sum}\index{character sum} of $\chi$. In the case $\chi$ is primitive of conductor $q > 1$, a infamous subconvexity result for the Dirichlet $L$-function $L(s,\chi)$ in the $q$-aspect was achieved by Burgess in the 1960's (see \cite{burgess1963character}). The key idea of his argument lies in improved bounds for character sums in certain ranges of $M$ and $N$ relative to powers of $q$ which we will describe. On the one hand, since $|\chi(n)| \le 1$ for all $n \ge 1$, we have the trivial bound
+    for $M \ge 0$ and $N \ge 1$, the \textbf{character sum}\index{character sum} of $\chi$. If $M = 0$, we write $S_{\chi}(N) = S_{\chi}(0,N)$ for simplicity. In the case $\chi$ is primitive of conductor $q > 1$, a infamous subconvexity result for the Dirichlet $L$-function $L(s,\chi)$ in the $q$-aspect was achieved by Burgess in the 1960's (see \cite{burgess1963character}). The key idea of his argument lies in improved bounds for character sums in certain ranges of $M$ and $N$ relative to powers of $q$ which we will describe. On the one hand, since $|\chi(n)| \le 1$ for all $n \ge 1$, we have the trivial bound
     \begin{equation}\label{equ:character_sum_trivial_bound}
-      \sum_{M+1 \le n \le M+N}\chi(n) \ll N.
+      S_{\chi}(M,N) \ll N.
     \end{equation}
     On the other hand, by the orthogonality relations (\cref{cor:Dirichlet_orthogonality_relations} i) and that $\chi$ is non-principal, we have
     \begin{equation}\label{equ:character_sum_orthogonality_bound}
-      \sum_{M+1 \le n \le M+N}\chi(n) \ll m.
+      S_{\chi}(M,N) \ll m.
     \end{equation}
     Note that \cref{equ:character_sum_orthogonality_bound} is only an improvement upon \cref{equ:character_sum_trivial_bound} when $m \ll N$. It turns out that a much shaper bound than \cref{equ:character_sum_orthogonality_bound} can be obtained with very little work. We will first require a small lemma:
 
@@ -1393,13 +1393,13 @@
     \begin{theorem}[P\'olya-Vinogradov inequality]
       Let $\chi$ be a non-principal Dirichlet character modulo $m$. Then for any $M \ge 0$ and $N \ge 1$,
       \[
-        \sum_{M+1 \le n \le M+N}\chi(n) \ll \sqrt{m}\log(m).
+        S_{\chi}(M,N) \ll \sqrt{m}\log(m).
       \]
     \end{theorem}
     \begin{proof}
       First suppose $\chi$ is primitive of conductor $q > 1$. Using \cref{cor:gauss_sum_primitive_formula}, we have
       \[
-        \sum_{M+1 \le n \le M+N}\chi(n) = \frac{1}{\tau(\cchi)}\sum_{a \tmod{q}}\cchi(a)\sum_{M+1 \le n \le M+N}e^{\frac{2\pi ian}{q}}.
+        S_{\chi}(M,N) = \frac{1}{\tau(\cchi)}\sum_{a \tmod{q}}\cchi(a)\sum_{M+1 \le n \le M+N}e^{\frac{2\pi ian}{q}}.
       \]
       The inner sum is geometric and evaluates to
       \[
@@ -1407,7 +1407,7 @@
       \]
       where in the last equality we have made use of the formula $\sin(x) = \frac{e^{ix}+e^{-ix}}{2i}$. Then \cref{thm:Gauss_sum_modulus}, gives
       \[
-        \sum_{M+1 \le n \le M+N}\chi(n) \ll \frac{1}{\sqrt{q}}\sum_{1 \le a \le q-1}\frac{1}{\sin\left(\frac{\pi a}{q}\right)},
+        S_{\chi}(M,N) \ll \frac{1}{\sqrt{q}}\sum_{1 \le a \le q-1}\frac{1}{\sin\left(\frac{\pi a}{q}\right)},
       \]
       where we recall that $\cchi(0) = 0$. Now the function $\frac{1}{\sin(\pi x)}$ is convex and integrable on $(0,1)$ (its second derivative is $\pi^{2}\frac{1+\cos^{2}(\pi x)}{\sin^{3}(\pi x)} > 0$ on this interval), so from \cref{lem:Polya-Vinogradov_lemma} we get
       \[
@@ -1419,11 +1419,11 @@
       \]
       Therefore
       \[
-        \sum_{M+1 \le n \le M+N}\chi(n) \ll \sqrt{q}\log(q),
+        S_{\chi}(M,N) \ll \sqrt{q}\log(q),
       \]
       as desired. This proves the bound in the case $\chi$ is primitive. Now suppose $\chi$ is induced by the primitive character $\wtilde{\chi}$ of conductor $q > 1$. Then $q \mid m$, and so we may write $m = kq$ for some $k \ge 1$. Rewrite the sum in terms of $\wtilde{\chi}$ as follows:
       \begin{align*}
-        \sum_{M+1 \le n \le M+N}\chi(n) &= \sum_{\substack{M+1 \le n \le M+N \\ (n,k) = 1}}\wtilde{\chi}(n) \\
+        S_{\chi}(M,N) &= \sum_{\substack{M+1 \le n \le M+N \\ (n,k) = 1}}\wtilde{\chi}(n) \\
         &= \sum_{M+1 \le n \le M+N}\wtilde{\chi}(n)\sum_{d \mid (n,k)}\mu(d) && \text{\cref{prop:Mobius_dirac_delta}} \\
         &= \sum_{d \mid k}\mu(d)\sum_{\substack{M+1 \le n \le M+N \\ d \mid n}}\wtilde{\chi}(n) \\
         &= \sum_{d \mid k}\mu(d)\sum_{\frac{M+1}{d} \le n \le \frac{M+N}{d}}\wtilde{\chi}(dn) && \text{$n \to dn$} \\
@@ -1431,11 +1431,11 @@
       \end{align*}
       The inner sum is $O(\sqrt{q}\log(q))$ by the primitive case and so
       \[
-        \sum_{M+1 \le n \le M+N}\chi(n) \ll \sqrt{q}\log(q)\sum_{d \mid k}|\mu(d)| \ll 2^{\w(k)}\sqrt{q}\log(q).
+        S_{\chi}(M,N) \ll \sqrt{q}\log(q)\sum_{d \mid k}|\mu(d)| \ll 2^{\w(k)}\sqrt{q}\log(q).
       \]
       But as $2^{\w(k)} \ll \s_{0}(k) \ll_{\e} k^{\e}$ (see \cref{prop:sum_of_divisors_growth_rate}) and thus $2^{\w(k)} \ll \sqrt{k}$ upon taking $\e = \frac{1}{2}$. This bound together with $\log(q) \le \log(m)$ gives
       \[
-        \sum_{M+1 \le n \le M+N}\chi(n) \ll \sqrt{m}\log(m),
+        S_{\chi}(M,N) \ll \sqrt{m}\log(m),
       \]
       as claimed.
     \end{proof}
@@ -1445,7 +1445,7 @@
     \begin{theorem}\label{thm:MV_bound_character_sum}
       Let $\chi$ be a non-principal Dirichlet character modulo $m$. Then for any $M \ge 0$ and $N \ge 1$,
       \[
-        \sum_{M+1 \le n \le M+N}\chi(n) \ll \sqrt{m}\log(m),
+        S_{\chi}(M,N) \ll \sqrt{m}\log(m),
       \]
       provided the Riemann hypothesis for Dirichlet $L$-functions holds.
     \end{theorem}
@@ -1453,20 +1453,54 @@
     While \cref{thm:MV_bound_character_sum} is not much of an improvement from the P\'olya-Vinogradov inequality, it is sharp due to a result of Paley in 1932 (see \cite{paley1932theorem}). This means that, quite remarkably, the P\'olya-Vinogradov inequality is almost optimal. It is also useful to have an estimate that is sharper when $N$ is small compared to $m$. In 1963, Burgess made progress in this direction by proving the following result (see \cite{burgess1963character} for a proof which is a generalization of his 1962 papers \cite{burgess1962characterL-series} and \cite{burgess1962characterprimitive}):
 
     \begin{theorem}\label{thm:Burgess_inequality}
-      Let $\chi$ be a primitive Dirichlet character modulo $m$ and let $N$, $M$, and $r$ be positive integers. Then for cube-free $m$ or $r = 2$,
+      Let $\chi$ be a non-principal Dirichlet character modulo $m > 1$ and $M \ge 0$, $N \ge 1$, and $r \ge 1$ be integers. Then for cube-free $m$ or $r = 2$,
       \[
-        \sum_{M+1 \le n \le M+N}\chi(n) \ll_{\e} N^{1-\frac{1}{r}}m^{\frac{r+1}{4r^{2}}+\e}.
+        S_{\chi}(M,N) \ll_{\e} N^{1-\frac{1}{r}}m^{\frac{r+1}{4r^{2}}+\e}.
       \]
     \end{theorem}
 
-    \cref{thm:Burgess_inequality} can be thought of as a blend between \cref{equ:character_sum_trivial_bound} and the P\'olya-Vinogradov inequality. Despite the proof being reasonably short, we do not give the proof as it requires some machinery beyond the scope of this text. More importantly, Burgess used \cref{thm:Burgess_inequality} in conjunction with the P\'olya-Vinogradov inequality to prove a subconvexity estimate for Dirichlet $L$-functions in the conductor aspect:
+    \cref{thm:Burgess_inequality} can be thought of as a blend between \cref{equ:character_sum_trivial_bound} and the P\'olya-Vinogradov inequality. Despite the proof being reasonably short, we do not provide the argument as it requires some machinery beyond the scope of this text. More importantly, Burgess used \cref{thm:Burgess_inequality} in conjunction with the P\'olya-Vinogradov inequality to prove a subconvexity estimate for Dirichlet $L$-functions in the conductor-aspect:
 
-    \begin{theorem}
-      Let $\chi$ be a primitive Dirichlet character of conductor $q > 1$. Then
+    \begin{theorem}\label{thm:Burgess_bound_conductor_aspect_Dirichlet}
+      Let $\chi$ be a primitive Dirichlet character of conductor $q > 1$. Then for $0 < \s < 1$, we have
+      \[
+        L(s,\chi) \ll_{\e} \begin{cases} q^{\frac{4-5\s}{8}+\e} & \text{if $0 < \s \le \frac{1}{2}$}, \\ q^{\frac{3-3\s}{8}+\e} & \text{if $\frac{1}{2} \le \s < 1$}. \end{cases}
+      \]
+      In particular,
       \[
         L\left(\frac{1}{2}+it,\chi\right) \ll_{\e} q^{\frac{3}{16}+\e}. 
       \]
     \end{theorem}
     \begin{proof}
-      \todo{xxx}
+      Let $0 < \s < 1$. Summation by parts (see \cref{cor:summation_by_parts_corollary}) gives
+      \[
+        \sum_{n \le N}\frac{\chi(n)}{n^{s}} = S_{\chi}(N)N^{-s}+\sum_{n \le N-1}S_{\chi}(n)(n^{-s}-(n+1)^{-s}),
+      \]
+      for any $N \ge 1$. As $S_{\chi}(N)N^{-s} \to 0$ as $N \to \infty$, taking the limit as $N \to \infty$ results in
+      \[
+        L(s,\chi) = \sum_{n \le N-1}S_{\chi}(n)(n^{-s}-(n+1)^{-s}) \ll \sum_{n \ge 1}\frac{S_{\chi}(n)}{n^{\s+1}},
+      \]
+      where the estimate follows by applying the mean value theorem to $f(x) = \frac{1}{x^{s}}$ on the interval $[n,n+1]$. Letting $M > 2$, $N \ge 1$, and decompose the right-hand side, we obtain
+      \[
+        L(s,\chi) \ll \sum_{1 \le M-1}\frac{S_{\chi}(n)}{n^{\s+1}}+\sum_{M \le n \le N}\frac{S_{\chi}(n)}{n^{\s+1}}+\sum_{n \ge N+1}\frac{S_{\chi}(n)}{n^{\s+1}}.
+      \]
+      Applying \cref{equ:character_sum_trivial_bound} to the first character sum, \cref{thm:Burgess_inequality} (in the case $r = 2$) to the second character sum, and the P\'olya-Vinogradov inequality to the third character sum, gives
+      \[
+        L(s,\chi) \ll_{\e} \sum_{1 \le M-1}\frac{1}{n^{\s}}+q^{\frac{3}{16}+\e}\sum_{M \le n \le N}\frac{1}{n^{\s+\frac{1}{2}}}+q^{\frac{1}{2}+\e}\sum_{n \ge N+1}\frac{1}{n^{\s+1}},
+      \]
+      where we have used that $\log(q) \ll_{\e} q^{\e}$. Upper bounding the first and third sums with an integral and integrating, we get
+      \[
+        L(s,\chi) \ll_{\e} M^{1-\s}+q^{\frac{3}{16}+\e}\sum_{M \le n \le N}\frac{1}{n^{\s+\frac{1}{2}}}+q^{\frac{1}{2}+\e}N^{-\s},
+      \]
+      since $0 < \s < 1$. Performing the same argument with the remaining sum, we see that
+      \[
+        \sum_{M \le n \le N}\frac{1}{n^{\s+\frac{1}{2}}} \ll \begin{cases} N^{\frac{1}{2}-\s} & \text{if $0 < \s < \frac{1}{2}$}, \\ \log(N) & \text{if $\s = \frac{1}{2}$}, \\ M^{\frac{1}{2}-\s} & \text{if $\frac{1}{2} < \s < 1$}. \end{cases}
+      \]
+       Upon setting $M = \lfloor q^{\frac{3}{8}} \rfloor$ and $N = \lceil q^{\frac{5}{8}} \rceil$, we obtain
+      \[
+        L(s,\chi) \ll_{\e} \begin{cases} q^{\frac{4-5\s}{8}+\e} & \text{if $0 < \s \le \frac{1}{2}$}, \\ q^{\frac{3-3\s}{8}+\e} & \text{if $\frac{1}{2} \le \s < \frac{1}{2}$}, \end{cases}
+      \]
+      because the third term dominates for $0 < \s < \frac{1}{2}$, the first term dominates for $\frac{1}{2} < \s < 1$, and at $s = \frac{1}{2}$ the first and third terms are balanced and dominate the second term. This proves the first statement. The second follows by taking $\s = \frac{1}{2}$.
     \end{proof}
+
+    In particular, \cref{thm:Burgess_bound_conductor_aspect_Dirichlet} shows that the Burgess bound in the conductor-aspect holds for Dirichlet $L$-functions. This is how the Burgess bound got it's name as it was the first subconvexity result for Dirichlet $L$-functions in the conductor-aspect.
