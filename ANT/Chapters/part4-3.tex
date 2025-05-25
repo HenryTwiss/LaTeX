@@ -4,7 +4,7 @@
     One of the more well-known arithmetic results proved using $L$-series is \textbf{Dirichlet's theorem on arithmetic progressions}\index{Dirichlet's theorem on arithmetic progressions}:
 
     \begin{theorem}[Dirichlet's theorem on arithmetic progressions]\label{thm:Dirichlet's_theorem_on_primes_in_arithmetic_progressions}
-      Let $a$ and $m$ be positive integers such that $(a,m) = 1$. Then the arithmetic progression $\{a+km \mid k \in \Z_{\ge 0}\}$ contain infinitely many primes.
+      Let $a$ and $m$ be integers such that $m \ge 1$ and $(a,m) = 1$. Then the arithmetic progression $\{a+km \mid k \in \Z_{\ge 0}\}$ contain infinitely many primes.
     \end{theorem}
 
     We will delay the proof for the moment, for it is well-worth understanding the some of the motivation behind why this theorem is interesting and how exactly Dirichlet used the analytic techniques of $L$-series to attack this purely arithmetic statement. We being by recalling Euclid's famous theorem on the infinitude of the primes. Euclid's proof is completely elementary and arithmetic in nature. He argues that if there were finitely many primes $p_{1},p_{2},\ldots,p_{k}$ then a short consideration of $(p_{1}p_{2} \cdots p_{k})+1$ shows that this number must either be divisible by a prime not in our list or must be prime itself. As primes are the multiplicative building blocks of arithmetic, Euclid assures us that we have an ample amount of primes to work with. Now there is a slightly stronger result due to Euler (see \cite{euler1744variae}) requiring analytic techniques:
@@ -69,9 +69,9 @@
           \log(1-\chi(p)p^{-s}) = \sum_{k \ge 1}(-1)^{k-1}\frac{(-\chi(p)p^{-s})^{k}}{k} = \sum_{k \ge 1}(-1)^{2k-1}\frac{\chi(p^{k})}{kp^{ks}},
         \]
         so that
-        \[
+        \begin{equation}\label{equ:Dirichlets_theorem_1}
           \log{L(s,\chi)} = \sum_{p}\sum_{k \ge 1}\frac{\chi(p^{k})}{kp^{ks}}.
-        \]
+        \end{equation}
         The double sum restricted to $k \ge 2$ is uniformly bounded for $\s > 1$. Indeed, first observe
         \[
           \left|\sum_{k \ge 2}\frac{\chi(p^{k})}{kp^{ks}}\right| \ll \sum_{k \ge 2}\frac{1}{p^{k}} = \frac{1}{p^{2}}\sum_{k \ge 0}\frac{1}{p^{k}} = \frac{1}{p^{2}}(1-p^{-1})^{-1} \le \frac{2}{p^{2}},
@@ -80,23 +80,23 @@
         \[
           \left|\sum_{p}\sum_{k \ge 2}\frac{\chi(p^{k})}{kp^{ks}}\right| \le 2\sum_{p}\frac{1}{p^{2}} < 2\sum_{n \ge 1}\frac{1}{n^{2}} = 2\z(2),
         \]
-        as desired. Now write
+        as desired. Now let $a$ and $m$ be integers such that $m \ge 1$ and $(a,m) = 1$. Using \cref{equ:Dirichlets_theorem_1}, we may write
         \[
-          \sum_{\chi \tmod{m}}\cchi(a)\log{L(s,\chi)} = \sum_{\chi \tmod{m}}\sum_{p}\frac{\cchi(a)\chi(p)}{p^{s}}+\sum_{\chi \tmod{m}}\cchi(a)\sum_{p}\sum_{k \ge 2}\frac{\chi(p^{k})}{kp^{ks}}.
+          \sum_{\chi \tmod{m}}\cchi(a)\log{L(s,\chi)} = \sum_{\chi \tmod{m}}\sum_{p}\frac{\cchi(a)\chi(p)}{p^{s}}+\sum_{\chi \tmod{m}}\cchi(a)\sum_{p}\sum_{k \ge 2}\frac{\chi(p^{k})}{kp^{ks}},
         \]
-        By the orthogonality relations (\cref{prop:Dirichlet_orthogonality_relations} (ii)), we find that
+        and by the orthogonality relations (\cref{prop:Dirichlet_orthogonality_relations} (ii)), we have
         \[
-          \sum_{\chi \tmod{m}}\sum_{p}\frac{\cchi(a)\chi(p)}{p^{s}} = \sum_{p}\frac1{p^{s}}\sum_{\chi \tmod{m}}\cchi(a)\chi(p) = \vphi(m)\sum_{p \equiv{a} \tmod{m}}\frac{1}{p^{s}},
+          \sum_{\chi \tmod{m}}\sum_{p}\frac{\cchi(a)\chi(p)}{p^{s}} = \sum_{p}\frac1{p^{s}}\sum_{\chi \tmod{m}}\cchi(a)\chi(p) = \vphi(m)\sum_{p \equiv{a} \tmod{m}}\frac{1}{p^{s}}.
         \]
-        and so
+        Combining these two identities together gives
         \[
           \sum_{\chi \tmod{m}}\cchi(a)\log{L(s,\chi)}-\sum_{\chi \tmod{m}}\cchi(a)\sum_{p}\sum_{k \ge 2}\frac{\chi(p^{k})}{kp^{ks}} = \vphi(m)\sum_{p \equiv{a} \tmod{m}}\frac{1}{p^{s}}.
         \]
-        The triple sum is uniformly bounded for $\s > 1$ because the inner double sum is and there are finitely many Dirichlet characters modulo $m$. Therefore it suffices to show that the first sum on the left-hand side diverges as $s \to 1$. For $\chi = \chi_{m,0}$,
+        The triple sum in this identity is uniformly bounded for $\s > 1$ because the inner double sum is and there are finitely many Dirichlet characters modulo $m$. Therefore it suffices to show that the first sum on the left-hand side diverges as $s \to 1$. We have
         \[
           L(s,\chi_{m,0}) = \z(s)\prod_{p \mid m}(1-p^{-s}),
         \]
-        so the corresponding term in the sum is
+        for $\chi = \chi_{m,0}$, and so the corresponding term in the sum is
         \[
           \conj{\chi_{m,0}}(a)\log L(s,\chi_{m,0}) = \log\z(s)+\sum_{p \mid m}\log(1-p^{-s}),
         \]
