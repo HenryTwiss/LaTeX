@@ -1,5 +1,5 @@
 \chapter{Classical Applications}
-  We will discuss some classical applications surrounding $L$-functions. Our first result is a crowning gem of analytic number theory: Dirichlet's theorem on arithmetic progressions. This result is a consequence of a non-vanishing result for Dirichlet $L$-series at $s = 1$. Next, we discuss Siegel zeros in the case of Dirichlet $L$-functions and as a result obtain a lower bound for Dirichlet $L$-functions at $s = 1$. After these two results, we prove the prime number theorem and its variant for primes restricted to a certain residue class, the Siegel–Walfisz theorem, in the classical manner.
+  We will discuss some classical applications surrounding $L$-functions. Our first result is a crowning gem of analytic number theory: Dirichlet's theorem on arithmetic progressions. This result is a consequence of a non-vanishing result for Dirichlet $L$-series at $s = 1$. Next, we discuss Siegel zeros in the case of Dirichlet $L$-functions and as a result obtain a lower bound for Dirichlet $L$-functions at $s = 1$. After these two results, we discuss estimates for the class number of quadratic number fields. Then we discuss a subconvexity estimate of Burgess about Dirichlet $L$-functions. Lastly, we prove the prime number theorem and its variant for primes restricted to a certain residue class, the Siegel–Walfisz theorem, in the classical manner. 
   \section{Dirichlet's Theorem on Arithmetic Progressions}
     One of the more well-known arithmetic results proved using $L$-series is \textbf{Dirichlet's theorem on arithmetic progressions}\index{Dirichlet's theorem on arithmetic progressions}:
 
@@ -102,73 +102,6 @@
         \]
         which diverges as $s \to 1$ because $\z(s)$ has a simple pole at $s = 1$. We will be done if $\log{L(s,\chi)}$ remains bounded as $s \to 1$ for all $\chi \neq \chi_{m,0}$. So assume $\chi$ is non-principal. Then we must show $L(1,\chi)$ is finite and nonzero. This follows from \cref{thm:non-vanishing_of_Dirichlet_L-functions_at_s=1}.
     \end{proof}
-
-    For primitive $\chi$ of conductor $q > 1$, we know from \cref{thm:non-vanishing_of_Dirichlet_L-functions_at_s=1} that $L(1,\chi)$ is finite and nonzero. It is interesting to know whether or not this value is computable in general. Indeed it is. The computation is fairly straightforward and only requires some basic properties of Ramanujan and Gauss sums that we have already developed. The idea is to rewrite the character values $\chi(n)$ so that we can collapse the infinite series into a Taylor series. Our result is the following:
-    
-    \begin{theorem}\label{thm:Value_of_Dirichlet_L-functions_at_s=1}
-      Let $\chi$ be a primitive Dirichlet character with conductor $q > 1$. Then
-      \[
-        L(1,\chi) = -\frac{\tau(\chi)}{q}\sum_{a \tmod{q}}\cchi(a)\log\left(\sin\left(\frac{\pi a}{q}\right)\right) \quad \text{or} \quad L(1,\chi) = \frac{\tau(\chi)\pi i}{q^{2}}\sum_{a \tmod{q}}\cchi(a)a,
-      \]
-      according to whether $\chi$ is even or odd.
-    \end{theorem}
-    \begin{proof}
-      First compute
-      \begin{align*}
-        \chi(n) &= \frac{1}{\tau(\cchi)}\sum_{a \tmod{q}}\cchi(a)e^{\frac{2\pi ian}{q}} && \text{\cref{cor:gauss_sum_primitive_formula}} \\
-        &= \frac{\chi(-1)}{\conj{\tau(\chi)}}\sum_{a \tmod{q}}\cchi(a)e^{\frac{2\pi ian}{q}} && \text{\cref{prop:Gauss_sum_reduction} (i) and $\chi(-1)^{2} = 1$} \\
-        &= \frac{\chi(-1)\tau(\chi)}{\tau(\chi)\conj{\tau(\chi)}}\sum_{a \tmod{q}}\cchi(a)e^{\frac{2\pi ian}{q}} \\
-        &= \frac{\chi(-1)\tau(\chi)}{q}\sum_{a \tmod{q}}\cchi(a)e^{\frac{2\pi ian}{q}} && \text{\cref{thm:Gauss_sum_modulus}} \\
-        &= \frac{\chi(-1)\tau(\chi)}{q}\sum_{a \tmod{q}}\cchi(a)e^{\frac{2\pi ian}{q}}.
-      \end{align*}
-      Substituting this result into the definition of $L(1,\chi)$, we find that
-      \begin{equation}\label{equ:value_of_Dirichlet_L-functions_at_s=1_1}
-        \begin{aligned}
-          L(1,\chi) &= \sum_{n \ge 1}\frac{1}{n}\left(\frac{\chi(-1)\tau(\chi)}{q}\sum_{a \tmod{q}}\cchi(a)e^{\frac{2\pi ian}{q}}\right) \\
-          &= \frac{\chi(-1)\tau(\chi)}{q}\sum_{a \tmod{q}}\cchi(a)\sum_{n \ge 1}\frac{e^{\frac{2\pi ian}{q}}}{n} \\
-          &= \frac{\chi(-1)\tau(\chi)}{q}\sum_{a \tmod{q}}\cchi(a)\log\left(\left(1-e^{\frac{2\pi ia}{q}}\right)^{-1}\right),
-        \end{aligned}
-      \end{equation}
-      where in the last line we have used the Taylor series of the logarithm. We will now simplify the last expression in \cref{equ:value_of_Dirichlet_L-functions_at_s=1_1}. Since $\sin(x) = \frac{e^{ix}-e^{-ix}}{2i}$, we have
-      \[
-        1-e^{\frac{2\pi ia}{q}} = -2ie^{\frac{\pi ia}{q}}\left(\frac{e^{\frac{\pi ia}{q}}-e^{-\frac{\pi ia}{q}}}{2i}\right) = -2ie^{\frac{\pi ia}{q}}\sin\left(\frac{\pi a}{q}\right).
-      \]
-      Therefore the last expression in \cref{equ:value_of_Dirichlet_L-functions_at_s=1_1} becomes
-      \[
-        \frac{\chi(-1)\tau(\chi)}{q}\sum_{a \tmod{q}}\cchi(a)\log\left(\left(-2ie^{\frac{\pi ia}{q}}\sin\left(\frac{\pi a}{q}\right)\right)^{-1}\right).
-      \]
-      As $a$ is taken modulo $q$, we have $0 < \frac{\pi a}{q} < \pi$ so that $\sin\left(\frac{\pi a}{q}\right)$ is never negative. Therefore we can split up the logarithm term and obtain
-      \[
-        -\frac{\chi(-1)\tau(\chi)}{q}\left(\log(-2i)\sum_{a \tmod{q}}\cchi(a)+\frac{\pi i}{q}\sum_{a \tmod{q}}\cchi(a)a+\sum_{a \tmod{q}}\cchi(a)\log\left(\sin\left(\frac{\pi a}{q}\right)\right)\right).
-      \]
-      By the orthogonality relations (\cref{cor:Dirichlet_orthogonality_relations} (i)), the first sum above vanishes. Therefore
-      \begin{equation}\label{equ:value_of_Dirichlet_L-functions_at_s=1_2}
-        L(1,\chi) = -\frac{\chi(-1)\tau(\chi)}{q}\left(\frac{\pi i}{q}\sum_{a \tmod{q}}\chi(a)a+\sum_{a \tmod{q}}\chi(a)\log\left(\sin\left(\frac{\pi a}{q}\right)\right)\right).
-      \end{equation}
-      \cref{equ:value_of_Dirichlet_L-functions_at_s=1_2} simplifies in that one of the two sums vanish depending on if $\chi$ is even or odd. For the first sum in \cref{equ:value_of_Dirichlet_L-functions_at_s=1_2}, observe that
-      \[
-        \frac{\pi i}{q}\sum_{a \tmod{q}}\chi(a)a = -\frac{\chi(-1)\pi i}{q}\sum_{a \tmod{q}}\chi(-a)(-a).
-      \]
-      As $a \mapsto -a$ is a bijection on $\Z/q\Z$, this sum vanishes if $\chi$ is even. For the second sum in \cref{equ:value_of_Dirichlet_L-functions_at_s=1_2}, we have an analogous relation of the form
-      \[
-        \sum_{a \tmod{q}}\chi(a)\log\left(\sin\left(\frac{\pi a}{q}\right)\right) = \chi(-1)\sum_{a \tmod{q}}\chi(-a)\log\left(\sin\left(\frac{\pi a}{q}\right)\right).
-      \]
-      As $a \mapsto -a$ is a bijection on $\Z/q\Z$, this sum vanishes if $\chi$ is odd. This finishes the proof.
-    \end{proof}
-
-    \cref{thm:Value_of_Dirichlet_L-functions_at_s=1} encodes some interesting identities. For example, if $\chi$ is the non-principal Dirichlet character modulo $4$, then $\chi$ is uniquely defined by $\chi(1) = 1$ and $\chi(3) = \chi(-1) = -1$. In particular, $\chi$ is odd and its conductor is $4$. Now
-    \[
-      \tau(\chi) = \sum_{a \tmod{4}}\chi(a)e^{\frac{2\pi ia}{4}} = e^{\frac{2\pi i}{4}}-e^{\frac{6\pi i}{4}} = i-(-i) = 2i,
-    \]
-    so by \cref{thm:Value_of_Dirichlet_L-functions_at_s=1} we get
-    \[
-      L(1,\chi) = -\frac{\chi(-1)\tau(\chi)\pi i}{16}(1-3) = \frac{\pi}{4}.
-    \]
-    Expanding out $L(1,\chi)$ gives
-    \[
-      1-\frac{1}{3}+\frac{1}{5}-\frac{1}{7}+\cdots = \frac{\pi}{4},
-    \]
-    which is the famous \textbf{Madhava–Leibniz formula}\index{Madhava–Leibniz formula} for $\pi$.
   \section{Siegel's Theorem}
     The discussion of Siegel zeros first arose during the study of zero-free regions for Dirichlet $L$-functions. Refining the argument used in \cref{thm:zero_free_region_generic}, we can show that Siegel zeros only exist when the character $\chi$ is quadratic. But first we improve the zero-free region for the Riemann zeta function:
 
@@ -243,7 +176,7 @@
       Let $\chi$ be a non-principal Dirichlet character modulo $m > 1$. Then $L'(\s,\chi) = O(\log^{2}(m))$ for any $\s$ such that $0 \le 1-\s \le \frac{1}{\log(m)}$.
     \end{lemma}
     \begin{proof}
-      Setting $A(X) = \sum_{n \le X}\chi(n)$ we have $A(X) \ll 1$ by the orthogonality relations (\cref{cor:Dirichlet_orthogonality_relations} (i)) and that $\chi$ is periodic. Therefore $\s_{c} \le 0$ by \cref{prop:Dirichlet_series_convergence_bounded_coefficient_sum}. Hence for $\s$ in the prescribed region, $L(\s,\chi)$ is holomorphic and its derivative is given by
+      Setting $A(X) = \sum_{n \le X}\chi(n)$, we have $A(X) \ll 1$ by the orthogonality relations (\cref{cor:Dirichlet_orthogonality_relations} (i)) and that $\chi$ is periodic. Therefore $\s_{c} \le 0$ by \cref{prop:Dirichlet_series_convergence_bounded_coefficient_sum}. Hence for $\s$ in the prescribed region, $L(\s,\chi)$ is holomorphic and its derivative is given by
       \[
         L'(\s,\chi) = \sum_{n \ge 1}\frac{\chi(n)\log(n)}{n^{\s}} = \sum_{n < m}\frac{\chi(n)\log(n)}{n^{\s}}+\sum_{n \ge m}\frac{\chi(n)\log(n)}{n^{\s}}.
       \]
@@ -499,6 +432,251 @@
     \begin{proof}
       Let $\wtilde{\chi}$ be the primitive character inducing $\chi$. As the zeros of $L(s,\chi)$ and $L(s,\wtilde{\chi})$ differ only on the line $\s = 0$, \cref{thm:improved_zero-free_region_Dirichlet} implies that $\chi$ must be quadratic. Suppose $\chi_{1}$ and $\chi_{2}$ are two distinct character modulo $m$, of conductors $q_{1}$ and $q_{2}$, admitting Siegel zeros $\b_{1}$ and $\b_{2}$. Then $\chi_{1}\chi_{2} \neq \chi_{m,0}$. Moreover, $\b_{1} \ge 1-\frac{c_{1}}{\log(q_{1})}$ and $\b_{2} \ge 1-\frac{c_{2}}{\log(q_{2})}$ for some positive constants $c_{1}$ and $c_{2}$. Taking $c$ smaller, if necessary, we have $\min(\b_{1},\b_{2}) \ge 1-\frac{c}{\log(q_{1}q_{2})}$ which contradicts \cref{prop:product_of_quadratic_Dirichlet_L-functions_has_one_zero}.
     \end{proof}
+  \section{An Explicit Formula for the Class Number of Quadratic Number Fields}
+    Recall that the Dirichlet class number formula gives a relationship between the class number $h_{d}$ of the quadratic number field $\Q(\sqrt{d})$ and the value of the Dirichlet $L$-function $L(s,\chi_{\D_{d}})$ at $s = 1$ where $\chi_{\D_{d}}$ is the quadratic character given by the Kronecker symbol. As $\chi_{\D_{d}}$ is a primitive quadratic character of conductor $|\D_{d}| > 1$ (recall \cref{thm:fundamental_discriminant_character_primitive}), we know from \cref{thm:non-vanishing_of_Dirichlet_L-functions_at_s=1} that $L(1,\chi_{\D_{d}})$ is finite and nonzero. It is interesting to know whether or not this value is computable in general so that we may obtain another formula for the class number. We will actually obtain a formula for $L(1,\chi)$ where $\chi$ is any primitive character $\chi$ of conductor $q > 1$. The computation is fairly straightforward and only requires some basic properties of Ramanujan and Gauss sums that we have already developed. The idea is to rewrite the character values $\chi(n)$ so that we can collapse the infinite series into a Taylor series. Our result is the following:
+    
+    \begin{theorem}\label{thm:Value_of_Dirichlet_L-functions_at_s=1}
+      Let $\chi$ be a primitive Dirichlet character with conductor $q > 1$. Then the Dirichlet series of $L(s,\chi)$ converges at $s = 1$ and 
+      \[
+        L(1,\chi) = -\frac{\tau(\chi)}{q}\sum_{a \tmod{q}}\cchi(a)\log\sin\left(\frac{\pi a}{q}\right) \quad \text{or} \quad L(1,\chi) = \frac{\tau(\chi)\pi i}{q^{2}}\sum_{a \tmod{q}}\cchi(a)a,
+      \]
+      according to whether $\chi$ is even or odd.
+    \end{theorem}
+    \begin{proof}
+      Setting $A(X) = \sum_{n \le X}\chi(n)$, we have $A(X) \ll 1$ by the orthogonality relations (\cref{cor:Dirichlet_orthogonality_relations} (i)) and that $\chi$ is periodic. Therefore $\s_{c} \le 0$ by \cref{prop:Dirichlet_series_convergence_bounded_coefficient_sum}. This shows that the Dirichlet series for $L(s,\chi)$ converges at $s = 1$. For the formulas, first compute
+      \begin{align*}
+        \chi(n) &= \frac{1}{\tau(\cchi)}\sum_{a \tmod{q}}\cchi(a)e^{\frac{2\pi ian}{q}} && \text{\cref{cor:gauss_sum_primitive_formula}} \\
+        &= \frac{\chi(-1)}{\conj{\tau(\chi)}}\sum_{a \tmod{q}}\cchi(a)e^{\frac{2\pi ian}{q}} && \text{\cref{prop:Gauss_sum_reduction} (i) and $\chi(-1)^{2} = 1$} \\
+        &= \frac{\chi(-1)\tau(\chi)}{\tau(\chi)\conj{\tau(\chi)}}\sum_{a \tmod{q}}\cchi(a)e^{\frac{2\pi ian}{q}} \\
+        &= \frac{\chi(-1)\tau(\chi)}{q}\sum_{a \tmod{q}}\cchi(a)e^{\frac{2\pi ian}{q}} && \text{\cref{thm:Gauss_sum_modulus}} \\
+        &= \frac{\chi(-1)\tau(\chi)}{q}\sum_{a \tmod{q}}\cchi(a)e^{\frac{2\pi ian}{q}}.
+      \end{align*}
+      Substituting the above result into the definition of $L(1,\chi)$, we find that
+      \begin{equation}\label{equ:value_of_Dirichlet_L-functions_at_s=1_1}
+        \begin{aligned}
+          L(1,\chi) &= \sum_{n \ge 1}\frac{1}{n}\left(\frac{\chi(-1)\tau(\chi)}{q}\sum_{a \tmod{q}}\cchi(a)e^{\frac{2\pi ian}{q}}\right) \\
+          &= \frac{\chi(-1)\tau(\chi)}{q}\sum_{a \tmod{q}}\cchi(a)\sum_{n \ge 1}\frac{e^{\frac{2\pi ian}{q}}}{n} \\
+          &= \frac{\chi(-1)\tau(\chi)}{q}\sum_{a \tmod{q}}\cchi(a)\log\left(\left(1-e^{\frac{2\pi ia}{q}}\right)^{-1}\right),
+        \end{aligned}
+      \end{equation}
+      where in the last line we have used the Taylor series of the logarithm. We will now simplify the last expression in \cref{equ:value_of_Dirichlet_L-functions_at_s=1_1}. Since $\sin(x) = \frac{e^{ix}-e^{-ix}}{2i}$, we have
+      \[
+        1-e^{\frac{2\pi ia}{q}} = -2ie^{\frac{\pi ia}{q}}\left(\frac{e^{\frac{\pi ia}{q}}-e^{-\frac{\pi ia}{q}}}{2i}\right) = -2ie^{\frac{\pi ia}{q}}\sin\left(\frac{\pi a}{q}\right).
+      \]
+      Therefore the last expression in \cref{equ:value_of_Dirichlet_L-functions_at_s=1_1} becomes
+      \[
+        \frac{\chi(-1)\tau(\chi)}{q}\sum_{a \tmod{q}}\cchi(a)\log\left(\left(-2ie^{\frac{\pi ia}{q}}\sin\left(\frac{\pi a}{q}\right)\right)^{-1}\right).
+      \]
+      As $a$ is taken modulo $q$, we have $0 < \frac{\pi a}{q} < \pi$ so that $\sin\left(\frac{\pi a}{q}\right)$ is never negative. Therefore we can split up the logarithm term and obtain
+      \[
+        -\frac{\chi(-1)\tau(\chi)}{q}\left(\log(-2i)\sum_{a \tmod{q}}\cchi(a)+\frac{\pi i}{q}\sum_{a \tmod{q}}\cchi(a)a+\sum_{a \tmod{q}}\cchi(a)\log\sin\left(\frac{\pi a}{q}\right)\right).
+      \]
+      By the orthogonality relations (\cref{cor:Dirichlet_orthogonality_relations} (i)), the first sum above vanishes. Therefore
+      \begin{equation}\label{equ:value_of_Dirichlet_L-functions_at_s=1_2}
+        L(1,\chi) = -\frac{\chi(-1)\tau(\chi)}{q}\left(\frac{\pi i}{q}\sum_{a \tmod{q}}\chi(a)a+\sum_{a \tmod{q}}\chi(a)\log\sin\left(\frac{\pi a}{q}\right)\right).
+      \end{equation}
+      \cref{equ:value_of_Dirichlet_L-functions_at_s=1_2} simplifies in that one of the two sums vanish depending on if $\chi$ is even or odd. For the first sum in \cref{equ:value_of_Dirichlet_L-functions_at_s=1_2}, observe that
+      \[
+        \frac{\pi i}{q}\sum_{a \tmod{q}}\chi(a)a = -\frac{\chi(-1)\pi i}{q}\sum_{a \tmod{q}}\chi(-a)(-a).
+      \]
+      As $a \mapsto -a$ is a bijection on $\Z/q\Z$, this sum vanishes if $\chi$ is even. For the second sum in \cref{equ:value_of_Dirichlet_L-functions_at_s=1_2}, we have an analogous relation of the form
+      \[
+        \sum_{a \tmod{q}}\chi(a)\log\sin\left(\frac{\pi a}{q}\right) = \chi(-1)\sum_{a \tmod{q}}\chi(-a)\log\sin\left(\frac{\pi a}{q}\right).
+      \]
+      As $a \mapsto -a$ is a bijection on $\Z/q\Z$, this sum vanishes if $\chi$ is odd. This finishes the proof.
+    \end{proof}
+    
+    \begin{remark}
+      \cref{thm:Value_of_Dirichlet_L-functions_at_s=1} encodes some interesting identities. For example, if $\chi$ is the non-principal Dirichlet character modulo $4$, then $\chi$ is uniquely defined by $\chi(1) = 1$ and $\chi(3) = \chi(-1) = -1$. In particular, $\chi$ is odd and its conductor is $4$. Now
+      \[
+        \tau(\chi) = \sum_{a \tmod{4}}\chi(a)e^{\frac{2\pi ia}{4}} = e^{\frac{2\pi i}{4}}-e^{\frac{6\pi i}{4}} = i-(-i) = 2i,
+      \]
+      so by \cref{thm:Value_of_Dirichlet_L-functions_at_s=1} we get
+      \[
+        L(1,\chi) = -\frac{\chi(-1)\tau(\chi)\pi i}{16}(1-3) = \frac{\pi}{4}.
+      \]
+      Expanding $L(1,\chi)$ gives
+      \[
+        1-\frac{1}{3}+\frac{1}{5}-\frac{1}{7}+\cdots = \frac{\pi}{4},
+      \]
+      which is the famous \textbf{Madhava–Leibniz formula}\index{Madhava–Leibniz formula} for $\pi$.
+    \end{remark}
+
+    From the definition of $\chi_{\D_{d}}$, we see that $\chi_{\D_{d}}$ is even or odd according to if $d > 0$ or $d < 0$ (recall \cref{prop:discriminant_quadratic}). This gives an explicit formula for the class number of quadratic number fields:
+
+    \begin{corollary}\label{cor:formula_for_class_number_quadratic_number_field}
+      Let $\Q(\sqrt{d})$ be a quadratic number field. Then,
+      \[
+        h_{d} = \frac{\sqrt{|\D_{d}|}}{2\log|\e|}\left(-\frac{\tau(\chi)}{|\D_{d}|}\sum_{a \tmod{|\D_{d}|}}\cchi(a)\log\sin\left(\frac{\pi a}{|\D_{d}|}\right)\right) \quad \text{or} \quad h_{d} = \frac{w_{d}\sqrt{|\D_{d}|}}{2\pi}\left(\frac{\tau(\chi)\pi i}{|\D_{d}|^{2}}\sum_{a \tmod{|\D_{d}|}}\cchi(a)a\right),
+      \]
+      where $\e$ is a fundamental unit, according to if $d > 0$ or $d < 0$.
+    \end{corollary}
+    \begin{proof}
+      This follows from Dirichlet's unit theorem, \cref{thm:Value_of_Dirichlet_L-functions_at_s=1}, and that $\chi_{\D_{d}}$ is even or odd according to if $d > 0$ or $d < 0$.
+    \end{proof}
+    
+  \section{The Burgess Bound for Dirichlet \texorpdfstring{$L$}{L}-functions}
+    Let $\chi$ be a Dirichlet character modulo $m$. We call the sum
+    \[
+      S_{\chi}(M,N) = \sum_{M+1 \le n \le M+N}\chi(n),
+    \]
+    for $M \ge 0$ and $N \ge 1$, the \textbf{character sum}\index{character sum} of $\chi$. If $M = 0$, we write $S_{\chi}(N) = S_{\chi}(0,N)$ for simplicity. In the case $\chi$ is primitive of conductor $q > 1$, an infamous subconvexity result for the Dirichlet $L$-function $L(s,\chi)$ in the $q$-aspect was achieved by Burgess in the 1960's (see \cite{burgess1963character}). The key idea of his argument lies in improved bounds for character sums in certain ranges of $M$ and $N$ relative to powers of $q$ which we will describe. On the one hand, since $|\chi(n)| \le 1$ for all $n \ge 1$, we have the trivial bound
+    \begin{equation}\label{equ:character_sum_trivial_bound}
+      S_{\chi}(M,N) \ll N.
+    \end{equation}
+    On the other hand, by the orthogonality relations (\cref{cor:Dirichlet_orthogonality_relations} i) and that $\chi$ is non-principal, we have
+    \begin{equation}\label{equ:character_sum_orthogonality_bound}
+      S_{\chi}(M,N) \ll m.
+    \end{equation}
+    Note that \cref{equ:character_sum_orthogonality_bound} is only an improvement upon \cref{equ:character_sum_trivial_bound} when $m \ll N$. It turns out that a much shaper bound than \cref{equ:character_sum_orthogonality_bound} can be obtained with very little work. We will first require a small lemma:
+
+    \begin{lemma}\label{lem:Polya-Vinogradov_lemma}
+      Let $f(x)$ be a integrable convex function on $\left(a-\frac{b}{2},a+\frac{b}{2}\right)$ for some $a \in \R$ and $b > 0$. Then
+      \[
+        f(a) \le \frac{1}{b}\int_{a-\frac{b}{2}}^{a+\frac{b}{2}}f(x)\,dx.
+      \]
+    \end{lemma}
+    \begin{proof}
+      By the definition of convexity,
+      \[
+        f(a) = f\left(\frac{1}{2}x+\frac{1}{2}(2a-x)\right) \le \frac{1}{2}f(x)+\frac{1}{2}f(2a-x).
+      \]
+      Integrating the left-hand side over $\left(a-\frac{b}{2},a+\frac{b}{2}\right)$ yields
+      \[
+        \int_{a-\frac{b}{2}}^{a+\frac{b}{2}}f(a)\,dx = bf(a),
+      \]
+      while integrating the right-hand side over $\left[a-\frac{b}{2},a+\frac{b}{2}\right]$ gives
+      \[
+        \int_{a-\frac{b}{2}}^{a+\frac{b}{2}}\left(\frac{1}{2}f(x)+\frac{1}{2}f(2a-x)\right)\,dx = \frac{1}{2}\int_{a-\frac{b}{2}}^{a+\frac{b}{2}}f(x)\,dx+\int_{a-\frac{b}{2}}^{a+\frac{b}{2}}\frac{1}{2}f(2a-x)\,dx = \int_{a-\frac{b}{2}}^{a+\frac{b}{2}}f(x)\,dx,
+      \]
+      upon making the change of variables $x \mapsto 2a-x$ in the second integral. Hence
+      \[
+        bf(a) \le \int_{a-\frac{b}{2}}^{a+\frac{b}{2}}f(x)\,dx,
+      \]
+      which is equivalent to the claim.
+    \end{proof}
+    
+    We can now improve upon \cref{equ:character_sum_orthogonality_bound}. This result is known as the \textbf{P\'olya-Vinogradov inequality}\index{P\'olya-Vinogradov inequality} as it was proved independently by P\'olya and Vinogradov in 1918 (see \cite{polya1918verteilung} and \cite{vinogradov1918distribution}).
+
+    \begin{theorem}[P\'olya-Vinogradov inequality]
+      Let $\chi$ be a non-principal Dirichlet character modulo $m$. Then for any $M \ge 0$ and $N \ge 1$,
+      \[
+        S_{\chi}(M,N) \ll \sqrt{m}\log(m).
+      \]
+    \end{theorem}
+    \begin{proof}
+      First suppose $\chi$ is primitive of conductor $q > 1$. Using \cref{cor:gauss_sum_primitive_formula}, we have
+      \[
+        S_{\chi}(M,N) = \frac{1}{\tau(\cchi)}\sum_{a \tmod{q}}\cchi(a)\sum_{M+1 \le n \le M+N}e^{\frac{2\pi ian}{q}}.
+      \]
+      The inner sum is geometric and evaluates to
+      \[
+        \sum_{M+1 \le n \le M+N}e^{\frac{2\pi ian}{q}} = e^{\frac{2\pi ia(M+1)}{q}}\left(\frac{1-e^{\frac{2\pi iaN}{q}}}{1-e^{\frac{2\pi ia}{q}}}\right) = e^{\frac{2\pi ia\left(M+\frac{N-1}{2}\right)}{q}}\left(\frac{e^{\frac{\pi iaN}{q}}-e^{-\frac{\pi iaN}{q}}}{e^{\frac{\pi ia}{q}}-e^{-\frac{\pi ia}{q}}}\right) = e^{\frac{2\pi ia\left(M+\frac{N-1}{2}\right)}{q}}\frac{\sin\left(\frac{\pi Na}{q}\right)}{\sin\left(\frac{\pi a}{q}\right)},
+      \]
+      where in the last equality we have made use of the formula $\sin(x) = \frac{e^{ix}+e^{-ix}}{2i}$. Then \cref{thm:Gauss_sum_modulus}, gives
+      \[
+        S_{\chi}(M,N) \ll \frac{1}{\sqrt{q}}\sum_{1 \le a \le q-1}\frac{1}{\sin\left(\frac{\pi a}{q}\right)},
+      \]
+      where we recall that $\cchi(0) = 0$. Now the function $\frac{1}{\sin(\pi x)}$ is convex and integrable on $(0,1)$ (its second derivative is $\pi^{2}\frac{1+\cos^{2}(\pi x)}{\sin^{3}(\pi x)} > 0$ on this interval), so from \cref{lem:Polya-Vinogradov_lemma} we get
+      \[
+        \frac{1}{\sqrt{q}}\sum_{1 \le a \le q-1}\frac{1}{\sin\left(\frac{\pi a}{q}\right)} \le \frac{1}{\sqrt{q}}\sum_{1 \le a \le q-1}q\int_{\frac{a}{q}-\frac{1}{2q}}^{\frac{a}{q}+\frac{1}{2q}}\frac{1}{\sin(\pi x)}\,dx = \sqrt{q}\int_{\frac{1}{2q}}^{1-\frac{1}{2q}}\frac{1}{\sin(\pi x)}\,dx = 2\sqrt{q}\int_{\frac{1}{2q}}^{\frac{1}{2}}\frac{1}{\sin(\pi x)}\,dx,
+      \]
+      where the last equality holds because $\sin(\pi x) = \sin(\pi-\pi x) = \sin(\pi(1-x))$ so that the integral of $\frac{1}{\sin(\pi x)}$ is symmetric over $\left(\frac{1}{2q},\frac{1}{2}\right)$ and $\left(\frac{1}{2},1-\frac{1}{2q}\right)$. Now $\sin(\pi x) \ge 2x$ on the interval $[0,\frac{1}{2}]$ (because $\sin(\pi x) = 2x$ at the boundary and both functions are increasing on the interior), so that
+      \[
+        2\sqrt{q}\int_{\frac{1}{2q}}^{\frac{1}{2}}\frac{1}{\sin(\pi x)}\,dx \le q\int_{\frac{1}{2q}}^{\frac{1}{2}}\frac{1}{x}\,dx \ll \sqrt{q}\log(q).
+      \]
+      Therefore
+      \[
+        S_{\chi}(M,N) \ll \sqrt{q}\log(q),
+      \]
+      as desired. This proves the bound in the case $\chi$ is primitive. Now suppose $\chi$ is induced by the primitive character $\wtilde{\chi}$ of conductor $q > 1$. Then $q \mid m$, and so we may write $m = kq$ for some $k \ge 1$. Rewrite the sum in terms of $\wtilde{\chi}$ as follows:
+      \begin{align*}
+        S_{\chi}(M,N) &= \sum_{\substack{M+1 \le n \le M+N \\ (n,k) = 1}}\wtilde{\chi}(n) \\
+        &= \sum_{M+1 \le n \le M+N}\wtilde{\chi}(n)\sum_{d \mid (n,k)}\mu(d) && \text{\cref{prop:Mobius_dirac_delta}} \\
+        &= \sum_{d \mid k}\mu(d)\sum_{\substack{M+1 \le n \le M+N \\ d \mid n}}\wtilde{\chi}(n) \\
+        &= \sum_{d \mid k}\mu(d)\sum_{\frac{M+1}{d} \le n \le \frac{M+N}{d}}\wtilde{\chi}(dn) && \text{$n \to dn$} \\
+        &= \sum_{d \mid k}\mu(d)\wtilde{\chi}(d)\sum_{\left\lfloor\frac{M+1}{d}\right\rfloor \le n \le \left\lfloor\frac{M+N}{d}\right\rfloor}\wtilde{\chi}(n).
+      \end{align*}
+      The inner sum is $O(\sqrt{q}\log(q))$ by the primitive case and so
+      \[
+        S_{\chi}(M,N) \ll \sqrt{q}\log(q)\sum_{d \mid k}|\mu(d)| \ll 2^{\w(k)}\sqrt{q}\log(q).
+      \]
+      But as $2^{\w(k)} \ll \s_{0}(k) \ll_{\e} k^{\e}$ (see \cref{prop:sum_of_divisors_growth_rate}) and thus $2^{\w(k)} \ll \sqrt{k}$ upon taking $\e = \frac{1}{2}$. This bound together with $\log(q) \le \log(m)$ gives
+      \[
+        S_{\chi}(M,N) \ll \sqrt{m}\log(m),
+      \]
+      as claimed.
+    \end{proof}
+
+    The P\'olya-Vinogradov inequality greatly improves upon \cref{equ:character_sum_orthogonality_bound} and is particularly useful when $N$ is much larger than $m$. A slight improvement was made in 1977 by Montgomery and Vaughn under the Riemann hypothesis for Dirichlet $L$-functions (see \cite{montgomery1977exponential}):
+
+    \begin{theorem}\label{thm:MV_bound_character_sum}
+      Let $\chi$ be a non-principal Dirichlet character modulo $m$. Then for any $M \ge 0$ and $N \ge 1$,
+      \[
+        S_{\chi}(M,N) \ll \sqrt{m}\log(m),
+      \]
+      provided the Riemann hypothesis for Dirichlet $L$-functions holds.
+    \end{theorem}
+    
+    While \cref{thm:MV_bound_character_sum} is not much of an improvement from the P\'olya-Vinogradov inequality, it is sharp due to a result of Paley in 1932 (see \cite{paley1932theorem}). This means that, quite remarkably, the P\'olya-Vinogradov inequality is almost optimal. It is also useful to have an estimate that is sharper when $N$ is small compared to $m$. In 1963, Burgess made progress in this direction by proving the following result (see \cite{burgess1963character} for a proof which is a generalization of his 1962 papers \cite{burgess1962characterL-series} and \cite{burgess1962characterprimitive}):
+
+    \begin{theorem}\label{thm:Burgess_inequality}
+      Let $\chi$ be a non-principal Dirichlet character modulo $m > 1$ and $M \ge 0$, $N \ge 1$, and $r \ge 1$ be integers. Then for any $\e > 0$, we have
+      \[
+        S_{\chi}(M,N) \ll_{\e} N^{1-\frac{1}{r}}m^{\frac{r+1}{4r^{2}}+\e},
+      \]
+      provided $m$ is cube-free or $r = 2$.
+    \end{theorem}
+
+    \cref{thm:Burgess_inequality} can be thought of as a blend between \cref{equ:character_sum_trivial_bound} and the P\'olya-Vinogradov inequality. Despite the proof being reasonably short, we do not provide the argument as it requires some machinery beyond the scope of this text. More importantly, Burgess used \cref{thm:Burgess_inequality} in conjunction with the P\'olya-Vinogradov inequality to prove a subconvexity estimate for Dirichlet $L$-functions in the conductor-aspect:
+
+    \begin{theorem}\label{thm:Burgess_bound_conductor_aspect_Dirichlet}
+      Let $\chi$ be a primitive Dirichlet character of conductor $q > 1$. Then for $0 < \s < 1$ and any $\e > 0$, we have
+      \[
+        L(s,\chi) \ll_{t,\e} \begin{cases} q^{\frac{4-5\s}{8}+\e} & \text{if $0 < \s \le \frac{1}{2}$}, \\ q^{\frac{3-3\s}{8}+\e} & \text{if $\frac{1}{2} \le \s < 1$}. \end{cases}
+      \]
+      In particular,
+      \[
+        L\left(\frac{1}{2}+it,\chi\right) \ll_{\e} q^{\frac{3}{16}+\e}. 
+      \]
+    \end{theorem}
+    \begin{proof}
+      Let $0 < \s < 1$. Summation by parts (see \cref{cor:summation_by_parts_corollary}) gives
+      \[
+        \sum_{n \le N}\frac{\chi(n)}{n^{s}} = S_{\chi}(N)N^{-s}+\sum_{n \le N-1}S_{\chi}(n)(n^{-s}-(n+1)^{-s}),
+      \]
+      for any $N \ge 1$. By applying the mean value theorem to $f(x) = \frac{1}{x^{s}}$ on the interval $[n,n+1]$ we have $(n^{-s}-(n+1)^{-s}) \ll_{t} \frac{1}{n^{\s+1}}$, and thus
+      \[
+        \sum_{n \le N}\frac{\chi(n)}{n^{s}} \ll_{t} |S_{\chi}(N)|N^{-\s}+\sum_{n \le N-1}\frac{|S_{\chi}(n)|}{n^{\s+1}}.
+      \]
+      As $|S_{\chi}(N)||N^{-\s}| \to 0$ as $N \to \infty$ (recall \cref{equ:character_sum_orthogonality_bound}), taking the limit as $N \to \infty$ results in
+      \[
+        L(s,\chi) \ll_{t} \sum_{n \ge 1}\frac{|S_{\chi}(n)|}{n^{\s+1}},
+      \]
+      where the estimate follows  Letting $M > 2$, $N \ge 1$, and decompose the right-hand side, we obtain
+      \[
+        L(s,\chi) \ll_{t} \sum_{1 \le M-1}\frac{|S_{\chi}(n)|}{n^{\s+1}}+\sum_{M \le n \le N}\frac{|S_{\chi}(n)|}{n^{\s+1}}+\sum_{n \ge N+1}\frac{|S_{\chi}(n)|}{n^{\s+1}}.
+      \]
+      Applying \cref{equ:character_sum_trivial_bound} to the first character sum, \cref{thm:Burgess_inequality} (in the case $r = 2$) to the second character sum, and the P\'olya-Vinogradov inequality to the third character sum, gives
+      \[
+        L(s,\chi) \ll_{t,\e} \sum_{1 \le M-1}\frac{1}{n^{\s}}+q^{\frac{3}{16}+\e}\sum_{M \le n \le N}\frac{1}{n^{\s+\frac{1}{2}}}+q^{\frac{1}{2}+\e}\sum_{n \ge N+1}\frac{1}{n^{\s+1}},
+      \]
+      where we have used that $\log(q) \ll_{\e} q^{\e}$. Upper bounding the first and third sums with an integral and integrating, we get
+      \[
+        L(s,\chi) \ll_{t,\e} M^{1-\s}+q^{\frac{3}{16}+\e}\sum_{M \le n \le N}\frac{1}{n^{\s+\frac{1}{2}}}+q^{\frac{1}{2}+\e}N^{-\s},
+      \]
+      since $0 < \s < 1$. Performing the same argument with the remaining sum, we see that
+      \[
+        \sum_{M \le n \le N}\frac{1}{n^{\s+\frac{1}{2}}} \ll \begin{cases} N^{\frac{1}{2}-\s} & \text{if $0 < \s < \frac{1}{2}$}, \\ \log(N) & \text{if $\s = \frac{1}{2}$}, \\ M^{\frac{1}{2}-\s} & \text{if $\frac{1}{2} < \s < 1$}. \end{cases}
+      \]
+       Upon setting $M = \lfloor q^{\frac{3}{8}} \rfloor$ and $N = \lceil q^{\frac{5}{8}} \rceil$, we obtain
+      \[
+        L(s,\chi) \ll_{t,\e} \begin{cases} q^{\frac{4-5\s}{8}+\e} & \text{if $0 < \s \le \frac{1}{2}$}, \\ q^{\frac{3-3\s}{8}+\e} & \text{if $\frac{1}{2} \le \s < \frac{1}{2}$}, \end{cases}
+      \]
+      because the third term dominates for $0 < \s < \frac{1}{2}$, the first term dominates for $\frac{1}{2} < \s < 1$, and at $s = \frac{1}{2}$ the first and third terms are balanced and dominate the second term. This proves the first statement. The second follows by taking $\s = \frac{1}{2}$.
+    \end{proof}
+
+    In particular, \cref{thm:Burgess_bound_conductor_aspect_Dirichlet} shows that the Burgess bound in the conductor-aspect holds for Dirichlet $L$-functions. This is how the Burgess bound got its name as it was the first subconvexity result for Dirichlet $L$-functions in the conductor-aspect.
   \section{The Prime Number Theorem}
     The function $\psi(x)$ is defined by
     \[
@@ -1347,165 +1525,3 @@
         \pi(x;a,m) = \frac{x}{\vphi(m)}+O(\sqrt{x}\log(x)).
       \]
       \end{proof}
-  \section{The Burgess Bound for Dirichlet \texorpdfstring{$L$}{L}-functions}
-    Let $\chi$ be a Dirichlet character modulo $m$. We call the sum
-    \[
-      S_{\chi}(M,N) = \sum_{M+1 \le n \le M+N}\chi(n),
-    \]
-    for $M \ge 0$ and $N \ge 1$, the \textbf{character sum}\index{character sum} of $\chi$. If $M = 0$, we write $S_{\chi}(N) = S_{\chi}(0,N)$ for simplicity. In the case $\chi$ is primitive of conductor $q > 1$, an infamous subconvexity result for the Dirichlet $L$-function $L(s,\chi)$ in the $q$-aspect was achieved by Burgess in the 1960's (see \cite{burgess1963character}). The key idea of his argument lies in improved bounds for character sums in certain ranges of $M$ and $N$ relative to powers of $q$ which we will describe. On the one hand, since $|\chi(n)| \le 1$ for all $n \ge 1$, we have the trivial bound
-    \begin{equation}\label{equ:character_sum_trivial_bound}
-      S_{\chi}(M,N) \ll N.
-    \end{equation}
-    On the other hand, by the orthogonality relations (\cref{cor:Dirichlet_orthogonality_relations} i) and that $\chi$ is non-principal, we have
-    \begin{equation}\label{equ:character_sum_orthogonality_bound}
-      S_{\chi}(M,N) \ll m.
-    \end{equation}
-    Note that \cref{equ:character_sum_orthogonality_bound} is only an improvement upon \cref{equ:character_sum_trivial_bound} when $m \ll N$. It turns out that a much shaper bound than \cref{equ:character_sum_orthogonality_bound} can be obtained with very little work. We will first require a small lemma:
-
-    \begin{lemma}\label{lem:Polya-Vinogradov_lemma}
-      Let $f(x)$ be a integrable convex function on $\left(a-\frac{b}{2},a+\frac{b}{2}\right)$ for some $a \in \R$ and $b > 0$. Then
-      \[
-        f(a) \le \frac{1}{b}\int_{a-\frac{b}{2}}^{a+\frac{b}{2}}f(x)\,dx.
-      \]
-    \end{lemma}
-    \begin{proof}
-      By the definition of convexity,
-      \[
-        f(a) = f\left(\frac{1}{2}x+\frac{1}{2}(2a-x)\right) \le \frac{1}{2}f(x)+\frac{1}{2}f(2a-x).
-      \]
-      Integrating the left-hand side over $\left(a-\frac{b}{2},a+\frac{b}{2}\right)$ yields
-      \[
-        \int_{a-\frac{b}{2}}^{a+\frac{b}{2}}f(a)\,dx = bf(a),
-      \]
-      while integrating the right-hand side over $\left[a-\frac{b}{2},a+\frac{b}{2}\right]$ gives
-      \[
-        \int_{a-\frac{b}{2}}^{a+\frac{b}{2}}\left(\frac{1}{2}f(x)+\frac{1}{2}f(2a-x)\right)\,dx = \frac{1}{2}\int_{a-\frac{b}{2}}^{a+\frac{b}{2}}f(x)\,dx+\int_{a-\frac{b}{2}}^{a+\frac{b}{2}}\frac{1}{2}f(2a-x)\,dx = \int_{a-\frac{b}{2}}^{a+\frac{b}{2}}f(x)\,dx,
-      \]
-      upon making the change of variables $x \mapsto 2a-x$ in the second integral. Hence
-      \[
-        bf(a) \le \int_{a-\frac{b}{2}}^{a+\frac{b}{2}}f(x)\,dx,
-      \]
-      which is equivalent to the claim.
-    \end{proof}
-    
-    We can now improve upon \cref{equ:character_sum_orthogonality_bound}. This result is known as the \textbf{P\'olya-Vinogradov inequality}\index{P\'olya-Vinogradov inequality} as it was proved independently by P\'olya and Vinogradov in 1918 (see \cite{polya1918verteilung} and \cite{vinogradov1918distribution}).
-
-    \begin{theorem}[P\'olya-Vinogradov inequality]
-      Let $\chi$ be a non-principal Dirichlet character modulo $m$. Then for any $M \ge 0$ and $N \ge 1$,
-      \[
-        S_{\chi}(M,N) \ll \sqrt{m}\log(m).
-      \]
-    \end{theorem}
-    \begin{proof}
-      First suppose $\chi$ is primitive of conductor $q > 1$. Using \cref{cor:gauss_sum_primitive_formula}, we have
-      \[
-        S_{\chi}(M,N) = \frac{1}{\tau(\cchi)}\sum_{a \tmod{q}}\cchi(a)\sum_{M+1 \le n \le M+N}e^{\frac{2\pi ian}{q}}.
-      \]
-      The inner sum is geometric and evaluates to
-      \[
-        \sum_{M+1 \le n \le M+N}e^{\frac{2\pi ian}{q}} = e^{\frac{2\pi ia(M+1)}{q}}\left(\frac{1-e^{\frac{2\pi iaN}{q}}}{1-e^{\frac{2\pi ia}{q}}}\right) = e^{\frac{2\pi ia\left(M+\frac{N-1}{2}\right)}{q}}\left(\frac{e^{\frac{\pi iaN}{q}}-e^{-\frac{\pi iaN}{q}}}{e^{\frac{\pi ia}{q}}-e^{-\frac{\pi ia}{q}}}\right) = e^{\frac{2\pi ia\left(M+\frac{N-1}{2}\right)}{q}}\frac{\sin\left(\frac{\pi Na}{q}\right)}{\sin\left(\frac{\pi a}{q}\right)},
-      \]
-      where in the last equality we have made use of the formula $\sin(x) = \frac{e^{ix}+e^{-ix}}{2i}$. Then \cref{thm:Gauss_sum_modulus}, gives
-      \[
-        S_{\chi}(M,N) \ll \frac{1}{\sqrt{q}}\sum_{1 \le a \le q-1}\frac{1}{\sin\left(\frac{\pi a}{q}\right)},
-      \]
-      where we recall that $\cchi(0) = 0$. Now the function $\frac{1}{\sin(\pi x)}$ is convex and integrable on $(0,1)$ (its second derivative is $\pi^{2}\frac{1+\cos^{2}(\pi x)}{\sin^{3}(\pi x)} > 0$ on this interval), so from \cref{lem:Polya-Vinogradov_lemma} we get
-      \[
-        \frac{1}{\sqrt{q}}\sum_{1 \le a \le q-1}\frac{1}{\sin\left(\frac{\pi a}{q}\right)} \le \frac{1}{\sqrt{q}}\sum_{1 \le a \le q-1}q\int_{\frac{a}{q}-\frac{1}{2q}}^{\frac{a}{q}+\frac{1}{2q}}\frac{1}{\sin(\pi x)}\,dx = \sqrt{q}\int_{\frac{1}{2q}}^{1-\frac{1}{2q}}\frac{1}{\sin(\pi x)}\,dx = 2\sqrt{q}\int_{\frac{1}{2q}}^{\frac{1}{2}}\frac{1}{\sin(\pi x)}\,dx,
-      \]
-      where the last equality holds because $\sin(\pi x) = \sin(\pi-\pi x) = \sin(\pi(1-x))$ so that the integral of $\frac{1}{\sin(\pi x)}$ is symmetric over $\left(\frac{1}{2q},\frac{1}{2}\right)$ and $\left(\frac{1}{2},1-\frac{1}{2q}\right)$. Now $\sin(\pi x) \ge 2x$ on the interval $[0,\frac{1}{2}]$ (because $\sin(\pi x) = 2x$ at the boundary and both functions are increasing on the interior), so that
-      \[
-        2\sqrt{q}\int_{\frac{1}{2q}}^{\frac{1}{2}}\frac{1}{\sin(\pi x)}\,dx \le q\int_{\frac{1}{2q}}^{\frac{1}{2}}\frac{1}{x}\,dx \ll \sqrt{q}\log(q).
-      \]
-      Therefore
-      \[
-        S_{\chi}(M,N) \ll \sqrt{q}\log(q),
-      \]
-      as desired. This proves the bound in the case $\chi$ is primitive. Now suppose $\chi$ is induced by the primitive character $\wtilde{\chi}$ of conductor $q > 1$. Then $q \mid m$, and so we may write $m = kq$ for some $k \ge 1$. Rewrite the sum in terms of $\wtilde{\chi}$ as follows:
-      \begin{align*}
-        S_{\chi}(M,N) &= \sum_{\substack{M+1 \le n \le M+N \\ (n,k) = 1}}\wtilde{\chi}(n) \\
-        &= \sum_{M+1 \le n \le M+N}\wtilde{\chi}(n)\sum_{d \mid (n,k)}\mu(d) && \text{\cref{prop:Mobius_dirac_delta}} \\
-        &= \sum_{d \mid k}\mu(d)\sum_{\substack{M+1 \le n \le M+N \\ d \mid n}}\wtilde{\chi}(n) \\
-        &= \sum_{d \mid k}\mu(d)\sum_{\frac{M+1}{d} \le n \le \frac{M+N}{d}}\wtilde{\chi}(dn) && \text{$n \to dn$} \\
-        &= \sum_{d \mid k}\mu(d)\wtilde{\chi}(d)\sum_{\left\lfloor\frac{M+1}{d}\right\rfloor \le n \le \left\lfloor\frac{M+N}{d}\right\rfloor}\wtilde{\chi}(n).
-      \end{align*}
-      The inner sum is $O(\sqrt{q}\log(q))$ by the primitive case and so
-      \[
-        S_{\chi}(M,N) \ll \sqrt{q}\log(q)\sum_{d \mid k}|\mu(d)| \ll 2^{\w(k)}\sqrt{q}\log(q).
-      \]
-      But as $2^{\w(k)} \ll \s_{0}(k) \ll_{\e} k^{\e}$ (see \cref{prop:sum_of_divisors_growth_rate}) and thus $2^{\w(k)} \ll \sqrt{k}$ upon taking $\e = \frac{1}{2}$. This bound together with $\log(q) \le \log(m)$ gives
-      \[
-        S_{\chi}(M,N) \ll \sqrt{m}\log(m),
-      \]
-      as claimed.
-    \end{proof}
-
-    The P\'olya-Vinogradov inequality greatly improves upon \cref{equ:character_sum_orthogonality_bound} and is particularly useful when $N$ is much larger than $m$. A slight improvement was made in 1977 by Montgomery and Vaughn under the Riemann hypothesis for Dirichlet $L$-functions (see \cite{montgomery1977exponential}):
-
-    \begin{theorem}\label{thm:MV_bound_character_sum}
-      Let $\chi$ be a non-principal Dirichlet character modulo $m$. Then for any $M \ge 0$ and $N \ge 1$,
-      \[
-        S_{\chi}(M,N) \ll \sqrt{m}\log(m),
-      \]
-      provided the Riemann hypothesis for Dirichlet $L$-functions holds.
-    \end{theorem}
-    
-    While \cref{thm:MV_bound_character_sum} is not much of an improvement from the P\'olya-Vinogradov inequality, it is sharp due to a result of Paley in 1932 (see \cite{paley1932theorem}). This means that, quite remarkably, the P\'olya-Vinogradov inequality is almost optimal. It is also useful to have an estimate that is sharper when $N$ is small compared to $m$. In 1963, Burgess made progress in this direction by proving the following result (see \cite{burgess1963character} for a proof which is a generalization of his 1962 papers \cite{burgess1962characterL-series} and \cite{burgess1962characterprimitive}):
-
-    \begin{theorem}\label{thm:Burgess_inequality}
-      Let $\chi$ be a non-principal Dirichlet character modulo $m > 1$ and $M \ge 0$, $N \ge 1$, and $r \ge 1$ be integers. Then for any $\e > 0$, we have
-      \[
-        S_{\chi}(M,N) \ll_{\e} N^{1-\frac{1}{r}}m^{\frac{r+1}{4r^{2}}+\e},
-      \]
-      provided $m$ is cube-free or $r = 2$.
-    \end{theorem}
-
-    \cref{thm:Burgess_inequality} can be thought of as a blend between \cref{equ:character_sum_trivial_bound} and the P\'olya-Vinogradov inequality. Despite the proof being reasonably short, we do not provide the argument as it requires some machinery beyond the scope of this text. More importantly, Burgess used \cref{thm:Burgess_inequality} in conjunction with the P\'olya-Vinogradov inequality to prove a subconvexity estimate for Dirichlet $L$-functions in the conductor-aspect:
-
-    \begin{theorem}\label{thm:Burgess_bound_conductor_aspect_Dirichlet}
-      Let $\chi$ be a primitive Dirichlet character of conductor $q > 1$. Then for $0 < \s < 1$ and any $\e > 0$, we have
-      \[
-        L(s,\chi) \ll_{t,\e} \begin{cases} q^{\frac{4-5\s}{8}+\e} & \text{if $0 < \s \le \frac{1}{2}$}, \\ q^{\frac{3-3\s}{8}+\e} & \text{if $\frac{1}{2} \le \s < 1$}. \end{cases}
-      \]
-      In particular,
-      \[
-        L\left(\frac{1}{2}+it,\chi\right) \ll_{\e} q^{\frac{3}{16}+\e}. 
-      \]
-    \end{theorem}
-    \begin{proof}
-      Let $0 < \s < 1$. Summation by parts (see \cref{cor:summation_by_parts_corollary}) gives
-      \[
-        \sum_{n \le N}\frac{\chi(n)}{n^{s}} = S_{\chi}(N)N^{-s}+\sum_{n \le N-1}S_{\chi}(n)(n^{-s}-(n+1)^{-s}),
-      \]
-      for any $N \ge 1$. By applying the mean value theorem to $f(x) = \frac{1}{x^{s}}$ on the interval $[n,n+1]$ we have $(n^{-s}-(n+1)^{-s}) \ll_{t} \frac{1}{n^{\s+1}}$, and thus
-      \[
-        \sum_{n \le N}\frac{\chi(n)}{n^{s}} \ll_{t} |S_{\chi}(N)|N^{-\s}+\sum_{n \le N-1}\frac{|S_{\chi}(n)|}{n^{\s+1}}.
-      \]
-      As $|S_{\chi}(N)||N^{-\s}| \to 0$ as $N \to \infty$ (recall \cref{equ:character_sum_orthogonality_bound}), taking the limit as $N \to \infty$ results in
-      \[
-        L(s,\chi) \ll_{t} \sum_{n \ge 1}\frac{|S_{\chi}(n)|}{n^{\s+1}},
-      \]
-      where the estimate follows  Letting $M > 2$, $N \ge 1$, and decompose the right-hand side, we obtain
-      \[
-        L(s,\chi) \ll_{t} \sum_{1 \le M-1}\frac{|S_{\chi}(n)|}{n^{\s+1}}+\sum_{M \le n \le N}\frac{|S_{\chi}(n)|}{n^{\s+1}}+\sum_{n \ge N+1}\frac{|S_{\chi}(n)|}{n^{\s+1}}.
-      \]
-      Applying \cref{equ:character_sum_trivial_bound} to the first character sum, \cref{thm:Burgess_inequality} (in the case $r = 2$) to the second character sum, and the P\'olya-Vinogradov inequality to the third character sum, gives
-      \[
-        L(s,\chi) \ll_{t,\e} \sum_{1 \le M-1}\frac{1}{n^{\s}}+q^{\frac{3}{16}+\e}\sum_{M \le n \le N}\frac{1}{n^{\s+\frac{1}{2}}}+q^{\frac{1}{2}+\e}\sum_{n \ge N+1}\frac{1}{n^{\s+1}},
-      \]
-      where we have used that $\log(q) \ll_{\e} q^{\e}$. Upper bounding the first and third sums with an integral and integrating, we get
-      \[
-        L(s,\chi) \ll_{t,\e} M^{1-\s}+q^{\frac{3}{16}+\e}\sum_{M \le n \le N}\frac{1}{n^{\s+\frac{1}{2}}}+q^{\frac{1}{2}+\e}N^{-\s},
-      \]
-      since $0 < \s < 1$. Performing the same argument with the remaining sum, we see that
-      \[
-        \sum_{M \le n \le N}\frac{1}{n^{\s+\frac{1}{2}}} \ll \begin{cases} N^{\frac{1}{2}-\s} & \text{if $0 < \s < \frac{1}{2}$}, \\ \log(N) & \text{if $\s = \frac{1}{2}$}, \\ M^{\frac{1}{2}-\s} & \text{if $\frac{1}{2} < \s < 1$}. \end{cases}
-      \]
-       Upon setting $M = \lfloor q^{\frac{3}{8}} \rfloor$ and $N = \lceil q^{\frac{5}{8}} \rceil$, we obtain
-      \[
-        L(s,\chi) \ll_{t,\e} \begin{cases} q^{\frac{4-5\s}{8}+\e} & \text{if $0 < \s \le \frac{1}{2}$}, \\ q^{\frac{3-3\s}{8}+\e} & \text{if $\frac{1}{2} \le \s < \frac{1}{2}$}, \end{cases}
-      \]
-      because the third term dominates for $0 < \s < \frac{1}{2}$, the first term dominates for $\frac{1}{2} < \s < 1$, and at $s = \frac{1}{2}$ the first and third terms are balanced and dominate the second term. This proves the first statement. The second follows by taking $\s = \frac{1}{2}$.
-    \end{proof}
-
-    In particular, \cref{thm:Burgess_bound_conductor_aspect_Dirichlet} shows that the Burgess bound in the conductor-aspect holds for Dirichlet $L$-functions. This is how the Burgess bound got its name as it was the first subconvexity result for Dirichlet $L$-functions in the conductor-aspect.
