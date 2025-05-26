@@ -1,5 +1,5 @@
 \chapter{Classical Applications}
-  We will discuss some classical applications surrounding $L$-functions. Our first result is a crowning gem of analytic number theory: Dirichlet's theorem on arithmetic progressions. This result is a consequence of a non-vanishing result for Dirichlet $L$-series at $s = 1$. Next, we discuss Siegel zeros in the case of Dirichlet $L$-functions and as a result obtain a lower bound for Dirichlet $L$-functions at $s = 1$. After these two results, we discuss estimates for the class number of quadratic number fields. Then we discuss a subconvexity estimate of Burgess about Dirichlet $L$-functions. Lastly, we prove the prime number theorem and its variant for primes restricted to a certain residue class, the Siegel–Walfisz theorem, in the classical manner. 
+  We will discuss some classical applications surrounding $L$-functions. Our first result is a crowning gem of analytic number theory: Dirichlet's theorem on arithmetic progressions. This result is a consequence of a non-vanishing result for Dirichlet $L$-series at $s = 1$. Next, we discuss Siegel zeros in the case of Dirichlet $L$-functions and as a result obtain a lower bound for Dirichlet $L$-functions at $s = 1$. After these two results, we discuss estimates for the class number of quadratic number fields. Then we discuss a subconvexity estimate of Burgess about Dirichlet $L$-functions. Lastly, we prove the prime number theorem and its variant for primes restricted to a certain residue class, the Siegel–Walfisz theorem, in the classical manner.
   \section{Dirichlet's Theorem on Arithmetic Progressions}
     One of the more well-known arithmetic results proved using $L$-series is \textbf{Dirichlet's theorem on arithmetic progressions}\index{Dirichlet's theorem on arithmetic progressions}:
 
@@ -130,7 +130,7 @@
       \[
         \s \ge 1-\frac{c}{\log(q(|t|+3))},
       \]
-      except for possibly one simple real zero $\b_{\chi}$ with $\b_{chi} < 1$ in the case $\chi$ is quadratic.
+      except for possibly one simple real zero $\b_{\chi}$ with $\b_{\chi} < 1$ in the case $\chi$ is quadratic.
     \end{theorem}
     \begin{proof}
       By \cref{thm:zero_free_region_generic} applied to $\z(s)L(s,\chi)$, and shrinking $c$ if necessary, it remains to show that there not a simple real zero $\b_{\chi}$ if $\chi$ is not quadratic. For this, let $L(s,g)$ be the $L$-series defined by
@@ -152,25 +152,20 @@
       where we have also made use of the identity $3+4\cos(x)+\cos(2x) = 2(1+\cos(x))^{2}$. Thus $\Re(\L_{g}(n)) \ge 0$ for $(n,q) = 1$, and the conditions of \cref{lem:non-vanshing_at_1_lemma} are satisfied for $L(s,g)$ (recall \cref{equ:non-primitive_primitive_Dirichlet_L-series_relation} for the $L$-series $L(s,\chi_{q,0})$ and $L(s,\chi^{2})$). On the one hand, if $\b$ be a real nontrivial zero of $L(s,\chi)$ then $L(s,g)$ has a real nontrivial zero at $s = \b$ of order at least $4$. On the other hand, using \cref{equ:non-primitive_primitive_Dirichlet_L-series_relation} and that $\chi^{2} \neq \chi_{q,0}$, $L(s,g)$ has a pole at $s = 1$ of order $3$. Then, upon shrinking $c$ if necessary, \cref{lem:non-vanshing_at_1_lemma} gives a contradiction since $r_{g} = 3$. This completes the proof.
     \end{proof}
 
-    Siegel zeros present an unfortunate obstruction to zero-free region results for Dirichlet $L$-functions when the primitive character $\chi$ is quadratic. However, if we no longer require the constant $c$ in the zero-free region to be effective, we can obtain a much better result for how close the Siegel zero can be to $1$. Ultimately, this improved bound results from a lower bound for $L(1,\chi)$ (recall that this is nonzero from our discussion about Dirichlet's theorem on arithmetic progressions). \textbf{Siegel's theorem}\index{Siegel's theorem} refers to either this lower bound or to the improved zero-free region. In the lower bound version, Siegel's theorem is the following:
+    Siegel zeros present an unfortunate obstruction to zero-free region results for Dirichlet $L$-functions when the primitive character $\chi$ is quadratic. However, if we no longer require the constant $c$ in the zero-free region to be effective, we can obtain a much better result for how close the Siegel zero can be to $1$. This result is known as \textbf{Siegel's theorem}\index{Siegel's theorem}:
 
-    \begin{theorem}[Siegel's theorem, lower bound version]
-      Let $\chi$ be a primitive quadratic Dirichlet character modulo $q > 1$. Then for every $\e > 0$ there exists a positive constant $c_{1}(\e)$ such that
+    \begin{theorem}[Siegel's theorem]
+      Let $\chi$ be a primitive quadratic Dirichlet character $\chi$ of conductor $q > 1$. Then for every $\e > 0$, there exists a positive constant $c_{1}(\e)$ such that
       \[
         L(1,\chi) \ge \frac{c_{1}(\e)}{q^{\e}}.
       \]
-    \end{theorem}
-
-    In the zero-free region version, Siegel's theorem takes the following form:
-
-    \begin{theorem}[Siegel's theorem, zero-free region version]
-      Let $\chi$ be a primitive quadratic Dirichlet character modulo $q > 1$. Then for every $\e > 0$ there exists a positive constant $c_{2}(\e)$ such that $L(s,\chi)$ has no real zeros in the segment
+      In particular, there exists a positive constant $c_{2}(\e)$ such that $L(s,\chi)$ has no real zeros in the segment
       \[
         \s \ge 1-\frac{c_{2}(\e)}{q^{\e}}.
       \]
     \end{theorem}
 
-    The largest defect of Siegel's theorem, in either version, is that the implicit constants $c_{1}(\e)$ and $c_{2}(\e)$ are ineffective (and not necessarily equal). Actually, the lower bound result is slightly stronger as it implies the zero-free region result. We will first prove the zero-free region given the lower bound, and then we will prove the lower bound. Before we begin, we need two small lemmas about the size of $L(\s,\chi)$ and $L'(\s,\chi)$ for $\s$ close to $1$:
+    The largest defect of Siegel's theorem is that the implicit constants $c_{1}(\e)$ and $c_{2}(\e)$ are ineffective (and not necessarily equal). To prove Siegel's theorem, we need two small lemmas about the size of $L(\s,\chi)$ and $L'(\s,\chi)$ for $\s$ close to $1$:
 
     \begin{lemma}\label{lem:Siegels_theorem_first_version_lemma}
       Let $\chi$ be a non-principal Dirichlet character modulo $m > 1$. Then $L(\s,\chi) = O(\log(m))$ for any $\s$ such that $0 \le 1-\s \le \frac{1}{\log(m)}$.
@@ -188,7 +183,7 @@
       \[
         \left|\sum_{n \le m}\frac{\chi(n)}{n^{s}}\right| < e\sum_{n < m}\frac{1}{n} < e\log(m)\int_{1}^{m}\frac{1}{n}\,dn \ll \log(m).
       \]
-      As for the second sum, setting $A(Y) = \sum_{n \le Y}\chi(n)$ we have $A(Y) \ll 1$ by the orthogonality relations (\cref{cor:Dirichlet_orthogonality_relations} (i)) and that $\chi$ is periodic. Thus $A(Y)Y^{-\s} \to 0$ as $Y \to \infty$. Then Abel's summation formula (see \cref{cor:Abels_summation_formula_limit_version}) gives
+      As for the second sum, setting $A(Y) = \sum_{n \le Y}\chi(n)$ we have $A(Y) \ll 1$ by the orthogonality relations (\cref{cor:Dirichlet_orthogonality_relations} (i)) and that $\chi$ is periodic. Thus $A(Y)Y^{-\s} \to 0$ as $Y \to \infty$ and so Abel's summation formula (see \cref{cor:Abels_summation_formula_limit_version}) gives
       \begin{equation}\label{equ:Siegels_theorem_first_version_lemma_1}
         \sum_{n \ge m}\frac{\chi(n)}{n^{\s}} = -A(m)m^{-\s}-\int_{m}^{\infty}A(u)u^{-(\s+1)}\,du.
       \end{equation}
@@ -224,7 +219,7 @@
       \[
         \left|\sum_{n \le m}\frac{\chi(n)\log(n)}{n^{s}}\right| < e\log(m)\sum_{n < m}\frac{1}{n} < e\log(m)\int_{1}^{m}\frac{1}{n}\,dn \ll \log^{2}(m).
       \]
-      For the second sum, $A(Y) \ll 1$ so that $A(Y)\log(Y)Y^{-\s} \to 0$ as $Y \to \infty$. Then Abel's summation formula (see \cref{cor:Abels_summation_formula_limit_version}) gives
+      For the second sum, let $A(Y) = \sum_{n \le Y}\chi(n)$. Then $A(Y) \ll 1$ by the orthogonality relations (\cref{cor:Dirichlet_orthogonality_relations} (i)) and that $\chi$ is periodic. Hence $A(Y)\log(Y)Y^{-\s} \to 0$ as $Y \to \infty$ and Abel's summation formula (see \cref{cor:Abels_summation_formula_limit_version}) gives
       \begin{equation}\label{equ:Siegels_theorem_second_version_lemma_1}
         \sum_{n \ge m}\frac{\chi(n)\log(n)}{n^{\s}} = -A(m)\log(m)m^{-\s}-\int_{m}^{\infty}A(u)(1-\s\log(u))u^{-(\s+1)}\,du.
       \end{equation}
@@ -242,21 +237,7 @@
       where in the fourth line we have used integration by parts and the last line holds because $1-\s \le \frac{1}{\log(m)}$. But $e\log(m) = O(\log^{2}(m))$ so the second sum is also $O(\log^{2}(m))$. Therefore we have shown $L'(\s,\chi) = O(\log^{2}(m))$ as desired. 
     \end{proof}
 
-    We will now prove the zero-free region version of Siegel's theorem, assuming the lower bound version, using \cref{lem:Siegels_theorem_second_version_lemma}:
-
-    \begin{proof}[Proof of Siegel's theorem, zero-free region version]
-      Let $\e > 0$. We we will prove the theorem by contradiction. Clearly the result holds for a single $q$, and notice that the result also holds provided we bound $q$ from above by taking the maximum of all the $c_{2}(\e)$. Therefore we may suppose $q$ is arbitrarily large. In this case, if there was a real zero $\b$ with $\b \ge 1-\frac{c_{2}(\e)}{q^{\e}}$, equivalently $1-\b \le \frac{c_{2}(\e)}{q^{\e}}$, then for large enough $q$ we have $0 \le 1-\b \le \frac{1}{\log(q)}$ so that $L'(\s,\chi) = O(\log^{2}(q))$ for $\b \le \s \le 1$ by \cref{lem:Siegels_theorem_second_version_lemma}. These two estimates and the mean value theorem together give
-      \[
-        L(1,\chi) = L(1,\chi)-L(\b,\chi) = L'(\s,\chi)(1-\b) \ll \frac{\log^{2}(q)}{q^{\e}}.
-      \]
-      Upon taking $\frac{\e}{2}$ in the lower bound version of Siegel's theorem, we obtain
-      \[
-        \frac{1}{q^{\frac{\e}{2}}} \ll L(1,\chi) \ll \frac{\log^{2}(q)}{q^{\e}},
-      \]
-      which is a contradiction for large $q$.
-    \end{proof}
-
-    It remains to prove the lower bound version of Siegel's theorem. The idea is to combine two Dirichlet $L$-series attached to distinct characters with distinct moduli and use this new $L$-series to derivative a lower bound for a single Dirichlet $L$-function at $s = 1$. We first need a lemma:
+    Our path to proving Siegel's theorem will be to show that first statement implies the second and then prove the first statement. For the first statement, we will combine two Dirichlet $L$-series attached to distinct quadratic characters with distinct moduli and use this new $L$-series to derivative a lower bound for a single Dirichlet $L$-function attached to a quadratic character at $s = 1$. To this end, we will make use of the following lemma:
 
     \begin{lemma}\label{lem:Siegel_zero_auxiliary_L-function_lemma}
       Let $\chi_{1}$ and $\chi_{2}$ be two quadratic Dirichlet characters and let $L(s,g)$ be the $L$-series defined by
@@ -273,14 +254,22 @@
       Thus $\L_{g}(n) \ge 0$. It follows immediately from the Euler product of $L(s,g)$ that $a_{g}(n) \ge 0$ too. Also, it is clear from the Euler product of $L(s,g)$ that $a_{g}(0) = 1$.
     \end{proof}
 
-    The key ingredient in the proof of the lower bound version of Siegel's theorem is an estimate for the $L$-series $L(s,g)$ in \cref{lem:Siegel_zero_auxiliary_L-function_lemma} relative to the modulus $q_{1}q_{2}$ in a small interval on the real axis close to $1$. We now prove the theorem:
+    We are now ready to prove Siegel's theorem. The key ingredient in the proof of the lower bound is an estimate for the $L$-series in \cref{lem:Siegel_zero_auxiliary_L-function_lemma} relative to the modulus $q_{1}q_{2}$ in a small interval on the real axis close to $1$:
 
-    \begin{proof}[Proof of Siegel's theorem, lower bound version]
-      Let $\chi_{1}$ and $\chi_{2}$ be two distinct primitive quadratic and non-principal characters modulo $q_{1}$ and $q_{2}$ respectively. Let $L(s,g)$ be the $L$-series defined by
+    \begin{proof}[Proof of Siegel's theorem]
+      We will being by showing that the first statement implies the second. Clearly the second statement holds for a single $q$ and hence for bounded $q$ by taking the maximum of all the constants. Therefore we may assume $q$ arbitrarily large. Now let $\e > 0$ and suppose that the first statement holds. We will prove the second statement by contradiction. For if there was a real zero $\b$ in this segment, then for large enough $q$ we have $0 \le 1-\b \le \frac{1}{\log(q)}$ so that $L'(\s,\chi) = O(\log^{2}(q))$ for $\b \le \s \le 1$ by \cref{lem:Siegels_theorem_second_version_lemma}. These two estimates and the mean value theorem together give
+      \[
+        L(1,\chi) = L(1,\chi)-L(\b,\chi) = L'(\s,\chi)(1-\b) \ll \frac{\log^{2}(q)}{q^{\e}}.
+      \]
+      Upon taking $\frac{\e}{2}$ in the lower bound, we obtain
+      \[
+        \frac{1}{q^{\frac{\e}{2}}} \ll L(1,\chi) \ll \frac{\log^{2}(q)}{q^{\e}},
+      \]
+      which is a contradiction. Therefore the second statement holds provided the first does. We will now prove the first statement which will complete the proof. Let $\chi_{1}$ and $\chi_{2}$ be two distinct primitive quadratic and non-principal characters modulo $q_{1}$ and $q_{2}$ respectively. Let $L(s,g)$ be the $L$-series defined by
       \[
         L(s,g) = \z(s)L(s,\chi_{1})L(s,\chi_{2})L(s,\chi_{1}\chi_{2}).
       \]
-      Observe that $L(s,g)$ is holomorphic on $\C$ except for a simple pole at $s = 1$. Let $\l$ be the residue at this pole so that
+      Observe that $L(s,g)$ is holomorphic except for a simple pole at $s = 1$. Let $\l$ be the residue at this pole so that
       \[
         \l = L(1,\chi_{1})L(1,\chi_{2})L(1,\chi_{1}\chi_{2}).
       \]
@@ -328,7 +317,7 @@
         &\ll q_{1}^{2}q_{2}^{2}\left(\frac{3}{4}\right)^{M} \\
         &\ll q_{1}^{2}q_{2}^{2}e^{-\frac{M}{4}},
       \end{align*}
-      where the last estimate follows because $(\frac{3}{4})^{M} < e^{-\frac{M}{4}}$ (which is equivalent to $\log\left(\frac{3}{4}\right) < -\frac{1}{4}$). Let $c$ be the implicit constant. Using that the $b_{g}(m)$ are nonnegative, $b(0) > 1$, and the previous estimate for the tail, we can estimate $L(s,g)-\frac{\l}{s-1}$ from below for $\frac{7}{8} < s < 1$. Indeed, discarding the $b_{g}(m)$ terms for $1 \le m \le M$, bounding the constant term below by $1$, and use the tail estimate, gives
+      where the last estimate follows because $(\frac{3}{4})^{M} < e^{-\frac{M}{4}}$ (which is equivalent to $\log\left(\frac{3}{4}\right) < -\frac{1}{4}$). Let $c$ be the implicit constant. Using that the $b_{g}(m)$ are nonnegative, $b(0) > 1$, and the previous estimate for the tail, we can estimate $L(s,g)-\frac{\l}{s-1}$ from below for $\frac{7}{8} < s < 1$. Indeed, discarding the $b_{g}(m)$ terms for $1 \le m \le M$, bounding the constant term below by $1$, and using the tail estimate, gives
       \begin{equation}\label{equ:Siegels_theorem_first_version_4}
         L(s,g)-\frac{\l}{s-1} \ge 1-\l\sum_{0 \le m \le M-1}(2-s)^{m}-cq_{1}^{2}q_{2}^{2}e^{-\frac{M}{4}} = 1-\l\frac{(2-s)^{M}-1}{1-s}-cq_{1}^{2}q_{2}^{2}e^{-\frac{M}{4}},
       \end{equation}
@@ -372,10 +361,10 @@
       \[
         \frac{1}{q^{\e}} \ll_{\e} \frac{1}{q^{\frac{\e}{2}}\log(q)} \ll L(1,\chi),
       \]
-      where the first estimate follows because $\log(q) \ll_{\e} q^{\frac{\e}{2}}$ for sufficiently large $q$. This is equivalent to the statement in the theorem.
+      where the first estimate follows because $\log(q) \ll_{\e} q^{\frac{\e}{2}}$. This is equivalent to the desired lower bound.
     \end{proof}
 
-    The part of the proof of the lower bound version of Siegel's theorem which makes $c_{1}(\e)$ (and hence $c_{2}(\e)$) ineffective is the value of $\b_{1}$. The choice of $\b_{1}$ depends upon the existence of a Siegel zero near $1$ and relative to the given $\e$. Since we don't know if Siegel zeros exist, this makes estimating $\b_{1}$ relative to $\e$ ineffective. Many results in analytic number theory make use of Siegel's theorem and hence are also ineffective. Many important problems investigate methods to get around using Siegel's theorem in favor of a weaker result that is effective. So far, no Siegel zero has been shown to exist or not exist for Dirichlet $L$-functions. But some progress has been made to showing that they are rare:
+    The part of the proof in Siegel's theorem which makes $c_{1}(\e)$ (and hence $c_{2}(\e)$) ineffective is the value of $\b_{1}$. The choice of $\b_{1}$ depends upon the existence of a Siegel zero near $1$ relative to the given $\e$. Since we don't know if Siegel zeros exist, this makes estimating $\b_{1}$ relative to $\e$ ineffective. Many results in analytic number theory make use of Siegel's theorem and hence are also ineffective. Moreover, some important problems investigate methods to get around using Siegel's theorem in favor of a weaker result that is effective. So far, no Siegel zero has been shown to exist or not exist for Dirichlet $L$-functions. But some progress has been made to showing that they are rare:
 
     \begin{proposition}\label{prop:product_of_quadratic_Dirichlet_L-functions_has_one_zero}
       Let $\chi_{1}$ and $\chi_{2}$ be two distinct quadratic Dirichlet characters of conductors $q_{1}$ and $q_{2}$. If $L(s,\chi_{1})$ and $L(s,\chi_{2})$ have Siegel zeros $\b_{1}$ and $\b_{2}$ respectively and $\chi_{1}\chi_{2}$ is not principal, then there exists a positive constant $c$ such that
@@ -506,7 +495,7 @@
     \begin{corollary}\label{cor:formula_for_class_number_quadratic_number_field}
       Let $\Q(\sqrt{d})$ be a quadratic number field. Then,
       \[
-        h_{d} = -\frac{\tau(\chi)}{2\log|\e_{d}|\sqrt{|\D_{d}|}}\sum_{a \tmod{|\D_{d}|}}\cchi(a)\log\sin\left(\frac{\pi a}{|\D_{d}|}\right) \quad \text{or} \quad h_{d} = \frac{w_{d}\tau(\chi)i}{2|\D_{d}|^{\frac{3}{2}}}\sum_{a \tmod{|\D_{d}|}}\cchi(a)a,
+        h_{d} = -\frac{\tau(\chi)}{2\log|\e_{d}|\sqrt{|\D_{d}|}}\sum_{a \tmod{|\D_{d}|}}\cchi(a)\log\sin\left(\frac{\pi a}{|\D_{d}|}\right) \quad \text{or} \quad h_{d} = \frac{w_{d}i\tau(\chi)}{2|\D_{d}|^{\frac{3}{2}}}\sum_{a \tmod{|\D_{d}|}}\cchi(a)a,
       \]
       where $\e_{d}$ is a fundamental unit, according to if $d > 0$ or $d < 0$.
     \end{corollary}
@@ -516,15 +505,31 @@
 
     Having given an explicit formula for the class number of quadratic number fields, we now turn to more useful estimates. By what we have seen, it suffices to obtain bounds for Dirichlet $L$-functions at $s = 1$ and the tighter these bounds are the tighter our estimates for the class number will be. Upper bounds are not too difficult to obtain:
 
-    \begin{proposition}
+    \begin{proposition}\label{prop:class_number_upper_bound}
       Let $\Q(\sqrt{d})$ be a quadratic number field. Then
       \[
-        h_{d} \ll \sqrt{d}\log(d).
+        h_{d}\log|\e_{d}| \ll \sqrt{d}\log(d) \quad \text{or} \quad  h_{d} \ll \sqrt{d}\log(d),
       \]
+      where $\e_{d}$ is a fundamental unit, according to if $d > 0$ or $d < 0$.
     \end{proposition}
     \begin{proof}
       This follows from the Dirichlet class number formula and \cref{lem:Siegels_theorem_first_version_lemma} since $\D_{d} \asymp d$ (recall \cref{prop:discriminant_quadratic}).
     \end{proof}
+
+    Effective lower bounds are difficult to obtain. However, if we allow the implicit constant to be ineffective we may use Siegel's theorem:
+
+    \begin{proposition}\label{prop:class_number_lower_bound}
+      Let $\Q(\sqrt{d})$ be a quadratic number field. Then for every $\e > 0$, there exists a positive constant $c(\e)$ such that
+      \[
+        h_{d}\log|\e_{d}| \ge c(\e)d^{\frac{1}{2}-\e} \quad \text{or} \quad  h_{d} \ge c(\e)d^{\frac{1}{2}-\e},
+      \]
+      where $\e_{d}$ is a fundamental unit, according to if $d > 0$ or $d < 0$.
+    \end{proposition}
+    \begin{proof}
+      This follows from the Dirichlet class number formula and Siegel's theorem since $\D_{d} \asymp d$ (recall \cref{prop:discriminant_quadratic}).
+    \end{proof}
+
+    Of course, the constant in \cref{prop:class_number_lower_bound} is ineffective as we have made use of Siegel's theorem.
   \section{The Burgess Bound for Dirichlet \texorpdfstring{$L$}{L}-functions}
     Let $\chi$ be a Dirichlet character modulo $m$. We call the sum
     \[
@@ -1452,7 +1457,7 @@
       \begin{equation}\label{equ:Siegel-Walfisz_11}
         \psi(x;a,m) = \frac{x}{\vphi(m)}-\frac{\cchi_{1}(a)x^{\b_{\chi}}}{\vphi(m)\b_{\chi}}+O\left(xe^{-c\sqrt{\log(x)}}\right),
       \end{equation}
-      where $\chi_{1}$ is the single quadratic character modulo $m$ such that $L(s,\chi_{1})$ admits a Siegel zero if it exists and we have absorbed the second term in the error in \cref{equ:Siegel-Walfisz_4} into the first since $\log(x) \ll_{\e} e^{-\e\sqrt{\log(x)}}$ and $m \ll \log^{N}(x)$. Taking $\e = \frac{1}{2N}$ in the zero-free region version of Siegel's theorem, $m^\frac{1}{2N} \ll \sqrt{\log(x)}$ so that $\b_{\chi} < 1-\frac{c}{\sqrt{\log(x)}}$ for some potentially smaller constant $c$. It follows that $m^{2N}$ Therefore
+      where $\chi_{1}$ is the single quadratic character modulo $m$ such that $L(s,\chi_{1})$ admits a Siegel zero if it exists and we have absorbed the second term in the error in \cref{equ:Siegel-Walfisz_4} into the first since $\log(x) \ll_{\e} e^{-\e\sqrt{\log(x)}}$ and $m \ll \log^{N}(x)$. Taking $\e = \frac{1}{2N}$ in Siegel's theorem, $m^\frac{1}{2N} \ll \sqrt{\log(x)}$ so that $\b_{\chi} < 1-\frac{c}{\sqrt{\log(x)}}$ for some potentially smaller constant $c$. It follows that $m^{2N}$ Therefore
       \begin{equation}\label{equ:Siegel-Walfisz_12}
         x^{\b_{\chi}} < x^{1-\frac{c}{\sqrt{\log(x)}}} = xe^{-c\log(x)}.
       \end{equation}
