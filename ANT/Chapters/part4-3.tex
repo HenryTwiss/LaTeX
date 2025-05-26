@@ -432,13 +432,13 @@
     \begin{proof}
       Let $\wtilde{\chi}$ be the primitive character inducing $\chi$. As the zeros of $L(s,\chi)$ and $L(s,\wtilde{\chi})$ differ only on the line $\s = 0$, \cref{thm:improved_zero-free_region_Dirichlet} implies that $\chi$ must be quadratic. Suppose $\chi_{1}$ and $\chi_{2}$ are two distinct character modulo $m$, of conductors $q_{1}$ and $q_{2}$, admitting Siegel zeros $\b_{1}$ and $\b_{2}$. Then $\chi_{1}\chi_{2} \neq \chi_{m,0}$. Moreover, $\b_{1} \ge 1-\frac{c_{1}}{\log(q_{1})}$ and $\b_{2} \ge 1-\frac{c_{2}}{\log(q_{2})}$ for some positive constants $c_{1}$ and $c_{2}$. Taking $c$ smaller, if necessary, we have $\min(\b_{1},\b_{2}) \ge 1-\frac{c}{\log(q_{1}q_{2})}$ which contradicts \cref{prop:product_of_quadratic_Dirichlet_L-functions_has_one_zero}.
     \end{proof}
-  \section{Estimates for the Class Number of Quadratic Number Fields}
+  \section{Estimating the Class Number of Quadratic Number Fields}
     Recall that the Dirichlet class number formula gives a relationship between the class number $h_{d}$ of the quadratic number field $\Q(\sqrt{d})$ and the value of the Dirichlet $L$-function $L(s,\chi_{\D_{d}})$ at $s = 1$ where $\chi_{\D_{d}}$ is the quadratic character given by the Kronecker symbol. As $\chi_{\D_{d}}$ is a primitive quadratic character of conductor $|\D_{d}| > 1$ (recall \cref{thm:fundamental_discriminant_character_primitive}), we know from \cref{thm:non-vanishing_of_Dirichlet_L-functions_at_s=1} that $L(1,\chi_{\D_{d}})$ is finite and nonzero. It is interesting to know whether or not this value is computable in general so that we may obtain another formula for the class number. We will actually obtain a formula for $L(1,\chi)$ where $\chi$ is any primitive character $\chi$ of conductor $q > 1$. The computation is fairly straightforward and only requires some basic properties of Ramanujan and Gauss sums that we have already developed. The idea is to rewrite the character values $\chi(n)$ so that we can collapse the infinite series into a Taylor series. Our result is the following:
     
     \begin{theorem}\label{thm:Value_of_Dirichlet_L-functions_at_s=1}
       Let $\chi$ be a primitive Dirichlet character with conductor $q > 1$. Then
       \[
-        L(1,\chi) = -\frac{\tau(\chi)}{q}\sum_{a \tmod{q}}\cchi(a)\log\sin\left(\frac{\pi a}{q}\right) \quad \text{or} \quad L(1,\chi) = \frac{\tau(\chi)\pi i}{q^{2}}\sum_{a \tmod{q}}\cchi(a)a,
+        L(1,\chi) = -\frac{\tau(\chi)}{q}\sum_{a \tmod{q}}\cchi(a)\log\sin\left(\frac{\pi a}{q}\right) \quad \text{or} \quad L(1,\chi) = \frac{\pi i\tau(\chi)}{q^{2}}\sum_{a \tmod{q}}\cchi(a)a,
       \]
       according to whether $\chi$ is even or odd.
     \end{theorem}
@@ -448,8 +448,7 @@
         \chi(n) &= \frac{1}{\tau(\cchi)}\sum_{a \tmod{q}}\cchi(a)e^{\frac{2\pi ian}{q}} && \text{\cref{cor:gauss_sum_primitive_formula}} \\
         &= \frac{\chi(-1)}{\conj{\tau(\chi)}}\sum_{a \tmod{q}}\cchi(a)e^{\frac{2\pi ian}{q}} && \text{\cref{prop:Gauss_sum_reduction} (i) and $\chi(-1)^{2} = 1$} \\
         &= \frac{\chi(-1)\tau(\chi)}{\tau(\chi)\conj{\tau(\chi)}}\sum_{a \tmod{q}}\cchi(a)e^{\frac{2\pi ian}{q}} \\
-        &= \frac{\chi(-1)\tau(\chi)}{q}\sum_{a \tmod{q}}\cchi(a)e^{\frac{2\pi ian}{q}} && \text{\cref{thm:Gauss_sum_modulus}} \\
-        &= \frac{\chi(-1)\tau(\chi)}{q}\sum_{a \tmod{q}}\cchi(a)e^{\frac{2\pi ian}{q}}.
+        &= \frac{\chi(-1)\tau(\chi)}{q}\sum_{a \tmod{q}}\cchi(a)e^{\frac{2\pi ian}{q}} && \text{\cref{thm:Gauss_sum_modulus}}.
       \end{align*}
       Substituting the above result into the definition of $L(1,\chi)$, we find that
       \begin{equation}\label{equ:value_of_Dirichlet_L-functions_at_s=1_1}
@@ -479,11 +478,11 @@
       \[
         \frac{\pi i}{q}\sum_{a \tmod{q}}\chi(a)a = -\frac{\chi(-1)\pi i}{q}\sum_{a \tmod{q}}\chi(-a)(-a).
       \]
-      As $a \mapsto -a$ is a bijection on $\Z/q\Z$, this sum vanishes if $\chi$ is even. For the second sum in \cref{equ:value_of_Dirichlet_L-functions_at_s=1_2}, we have an analogous relation of the form
+      As $a \mapsto -a$ is a bijection on $\Z/q\Z$, this sum vanishes if $\chi$ is even. But then $\chi(-1) = 1$ and the claim is is proved in the even case. For the second sum in \cref{equ:value_of_Dirichlet_L-functions_at_s=1_2}, we have an analogous relation of the form
       \[
         \sum_{a \tmod{q}}\chi(a)\log\sin\left(\frac{\pi a}{q}\right) = \chi(-1)\sum_{a \tmod{q}}\chi(-a)\log\sin\left(\frac{\pi a}{q}\right).
       \]
-      As $a \mapsto -a$ is a bijection on $\Z/q\Z$, this sum vanishes if $\chi$ is odd. This finishes the proof.
+      As $a \mapsto -a$ is a bijection on $\Z/q\Z$, this sum vanishes if $\chi$ is odd. But then $\chi(-1) = -1$ and the claim is proved in the odd case. This completes the proof. 
     \end{proof}
     
     \begin{remark}
@@ -491,9 +490,9 @@
       \[
         \tau(\chi) = \sum_{a \tmod{4}}\chi(a)e^{\frac{2\pi ia}{4}} = e^{\frac{2\pi i}{4}}-e^{\frac{6\pi i}{4}} = i-(-i) = 2i,
       \]
-      so by \cref{thm:Value_of_Dirichlet_L-functions_at_s=1} we get
+      and so by \cref{thm:Value_of_Dirichlet_L-functions_at_s=1}, we get
       \[
-        L(1,\chi) = -\frac{\chi(-1)\tau(\chi)\pi i}{16}(1-3) = \frac{\pi}{4}.
+        L(1,\chi) = \frac{\pi i\tau(\chi)}{16}(1-3) = \frac{\pi}{4}.
       \]
       Expanding $L(1,\chi)$ gives
       \[
@@ -507,7 +506,7 @@
     \begin{corollary}\label{cor:formula_for_class_number_quadratic_number_field}
       Let $\Q(\sqrt{d})$ be a quadratic number field. Then,
       \[
-        h_{d} = \frac{\sqrt{|\D_{d}|}}{2\log|\e_{d}|}\left(-\frac{\tau(\chi)}{|\D_{d}|}\sum_{a \tmod{|\D_{d}|}}\cchi(a)\log\sin\left(\frac{\pi a}{|\D_{d}|}\right)\right) \quad \text{or} \quad h_{d} = \frac{w_{d}\sqrt{|\D_{d}|}}{2\pi}\left(\frac{\tau(\chi)\pi i}{|\D_{d}|^{2}}\sum_{a \tmod{|\D_{d}|}}\cchi(a)a\right),
+        h_{d} = -\frac{\tau(\chi)}{2\log|\e_{d}|\sqrt{|\D_{d}|}}\sum_{a \tmod{|\D_{d}|}}\cchi(a)\log\sin\left(\frac{\pi a}{|\D_{d}|}\right) \quad \text{or} \quad h_{d} = \frac{w_{d}\tau(\chi)i}{2|\D_{d}|^{\frac{3}{2}}}\sum_{a \tmod{|\D_{d}|}}\cchi(a)a,
       \]
       where $\e_{d}$ is a fundamental unit, according to if $d > 0$ or $d < 0$.
     \end{corollary}
