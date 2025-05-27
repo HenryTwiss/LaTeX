@@ -1,54 +1,17 @@
-\chapter{Classical Applications}
-  We will discuss some classical applications surrounding $L$-functions. Our first result is a crowning gem of analytic number theory: Dirichlet's theorem on arithmetic progressions. This result is a consequence of a non-vanishing result for Dirichlet $L$-series at $s = 1$. Next, we discuss Siegel zeros in the case of Dirichlet $L$-functions and as a result obtain a lower bound for Dirichlet $L$-functions at $s = 1$. After these two results, we discuss estimates for the class number of quadratic number fields. Then we discuss a subconvexity estimate of Burgess about Dirichlet $L$-functions. Lastly, we prove the prime number theorem and its variant for primes restricted to a certain residue class, the Siegel–Walfisz theorem, in the classical manner.
+\chapter{Applications of \texorpdfstring{$L$}{L}-functions}
+  We will discuss some classical applications of $L$-functions. Our first result is a gem of analytic number theory: Dirichlet's theorem on arithmetic progressions. This result is a consequence of a non-vanishing result for Dirichlet $L$-series at $s = 1$. Next, we discuss Siegel zeros in the case of Dirichlet $L$-functions. After these two results, we discuss estimates for the class number of quadratic number fields. Then we prove a subconvexity estimate of Burgess about Dirichlet $L$-functions. Lastly, we prove the prime number theorem and its variant for primes restricted to a certain residue class, the Siegel–Walfisz theorem, in the classical manner.
   \section{Dirichlet's Theorem on Arithmetic Progressions}
     One of the more well-known arithmetic results proved using $L$-series is \textbf{Dirichlet's theorem on arithmetic progressions}\index{Dirichlet's theorem on arithmetic progressions}:
 
     \begin{theorem}[Dirichlet's theorem on arithmetic progressions]\label{thm:Dirichlet's_theorem_on_primes_in_arithmetic_progressions}
-      Let $a$ and $m$ be integers such that $m \ge 1$ and $(a,m) = 1$. Then the arithmetic progression $\{a+km \mid k \in \Z_{\ge 0}\}$ contain infinitely many primes.
+      Let $a$ and $m$ be integers such that $m \ge 1$ and $(a,m) = 1$. Then the series
+      \[
+        \sum_{p \equiv a \tmod{m}}\frac{1}{p},
+      \]
+      diverges. In particular, the arithmetic progression $\{a+km \mid k \in \Z_{\ge 0}\}$ contain infinitely many primes.
     \end{theorem}
 
-    We will delay the proof for the moment, for it is well-worth understanding the some of the motivation behind why this theorem is interesting and how exactly Dirichlet used the analytic techniques of $L$-series to attack this purely arithmetic statement. We being by recalling Euclid's famous theorem on the infinitude of the primes. Euclid's proof is completely elementary and arithmetic in nature. He argues that if there were finitely many primes $p_{1},p_{2},\ldots,p_{k}$ then a short consideration of $(p_{1}p_{2} \cdots p_{k})+1$ shows that this number must either be divisible by a prime not in our list or must be prime itself. As primes are the multiplicative building blocks of arithmetic, Euclid assures us that we have an ample amount of primes to work with. Now there is a slightly stronger result due to Euler (see \cite{euler1744variae}) requiring analytic techniques:
-
-    \begin{theorem}\label{thm:reciprocial_sum_of_primes_diverges}
-      The series
-      \[
-        \sum_{p}\frac{1}{p},
-      \]
-      diverges.
-    \end{theorem}
-    \begin{proof}
-      For $\s > 1$, we have
-      \[
-        \log\z(s) = -\sum_{p}\log(1-p^{-s}),
-      \]
-      by taking the logarithm of the Euler product of $\z(s)$. The Taylor series of the logarithm gives
-      \[
-        \log(1-p^{-s}) = \sum_{k \ge 1}(-1)^{k-1}\frac{(-p^{-s})^{k}}{k} = \sum_{k \ge 1}(-1)^{2k-1}\frac{1}{kp^{ks}},
-      \]
-      so that
-      \[
-        \log\z(s) = \sum_{p}\sum_{k \ge 1}\frac{1}{kp^{ks}}.
-      \]
-      The double sum restricted to $k \ge 2$ in this expression is uniformly bounded for $\s > 1$. To see this, first observe
-      \[
-        \sum_{k \ge 2}\frac{1}{kp^{ks}} \ll \sum_{k \ge 2}\frac{1}{p^{k}} = \frac{1}{p^{2}}\sum_{k \ge 0}\frac{1}{p^{k}} = \frac{1}{p^{2}}(1-p^{-1})^{-1} \le \frac{2}{p^{2}},
-      \]
-      where the last inequality follows because $p \ge 2$. Then
-      \[
-       \sum_{p}\sum_{k \ge 2}\frac{1}{kp^{ks}} \ll 2\sum_{p}\frac{1}{p^{2}} < 2\sum_{n \ge 1}\frac{1}{n^{2}} = 2\z(2).
-      \]
-      Therefore
-      \[
-        \log\z(s)-\sum_{p}\frac{1}{p^{s}} = \sum_{p}\sum_{k \ge 2}\frac{1}{kp^{ks}},
-      \]
-      and remains bounded as $s \to 1$. The claim now follows since $\z(s)$ has a simple pole at $s = 1$.
-    \end{proof}
-
-    \cref{thm:reciprocial_sum_of_primes_diverges} tells us that there are infinitely many primes but also that the primes are not too sparse in the integers for otherwise the series would converge. The idea Dirichlet used to prove his result on primes in arithmetic progressions was in a very similar spirit. He sought out to prove the divergence of the series
-    \[
-      \sum_{p \equiv a \tmod{m}}\frac{1}{p},
-    \]
-    for positive integers $a$ and $m$ with $(a,m) = 1$ as the divergence immediately implies there are infinitely many primes $p$ of the form $p \equiv a \tmod{m}$. In the case $a = 1$ and $m = 2$ we recover \cref{thm:reciprocial_sum_of_primes_diverges} exactly since every prime is odd. Dirichlet's proof proceeds in a similar way to that of \cref{thm:reciprocial_sum_of_primes_diverges} and this is where Dirichlet used what are now known as Dirichlet characters and Dirichlet $L$-series. The proof can be broken into three steps. The first is to proceed as Euler did, but with the Dirichlet $L$-series $L(s,\chi)$ where $\chi$ has modulus $m$. That is, write $L(s,\chi)$ as a sum over primes and a bounded term as $s \to 1$. The next step is to use the orthogonality relations of the characters to sieve out the correct sum. The last step is to show the non-vanishing result $L(1,\chi) \neq 0$ for all non-principal characters $\chi$. This is the essential part of the proof as it is what assures us that the sum diverges. Luckily, we have done all of the difficult work to prove this already:
+    The proof can be broken into three steps. The first is to estimate the logarithm of a Dirichlet $L$-series $L(s,\chi)$ and show that almost all of the terms are uniformly bounded as $s \to 1$. The next step is to use the orthogonality relations of the characters to sieve out the correct sum. The last step is to show the non-vanishing result $L(1,\chi) \neq 0$ for all non-principal characters $\chi$. This is the essential part of the proof as it is what assures us that the sum diverges. Fortunately, we have done all of the difficult work to prove this already:
 
     \begin{theorem}\label{thm:non-vanishing_of_Dirichlet_L-functions_at_s=1}
       Let $\chi$ be a non-principal Dirichlet character. Then $L(1,\chi)$ is finite and nonzero.
@@ -102,7 +65,7 @@
         \]
         which diverges as $s \to 1$ because $\z(s)$ has a simple pole at $s = 1$. We will be done if $\log{L(s,\chi)}$ remains bounded as $s \to 1$ for all $\chi \neq \chi_{m,0}$. So assume $\chi$ is non-principal. Then we must show $L(1,\chi)$ is finite and nonzero. This follows from \cref{thm:non-vanishing_of_Dirichlet_L-functions_at_s=1}.
     \end{proof}
-  \section{Siegel's Theorem}
+  \section{Siegel's Theorem \& Siegel Zeros}
     The discussion of Siegel zeros first arose during the study of zero-free regions for Dirichlet $L$-functions. Refining the argument used in \cref{thm:zero_free_region_generic}, we can show that Siegel zeros only exist when the character $\chi$ is quadratic. But first we improve the zero-free region for the Riemann zeta function:
 
     \begin{theorem}\label{thm:improved_zero-free_region_zeta}
@@ -254,7 +217,7 @@
       \[
         1 \ll q^{4(1-\b)}\frac{\l}{1-\b}.
       \]
-      By \cref{lem:log_growth_of_Dirichlet_L-series_near_1}, $\l \ll \log^{2}(q)L(1,\chi)$ and thus
+      By \cref{lem:log_growth_of_Dirichlet_L-series_near_1}, $\l \ll \log^{2}(q)L(1,\chi)$ and we have
       \[
         1 \ll q^{4(1-\b)}\frac{\log^{2}(q)L(1,\chi)}{1-\b}.
       \]
@@ -266,7 +229,7 @@
       \[
         \frac{1}{q^{\e}} \ll_{\e} L(1,\chi),
       \]
-      where we have used $\log(q) \ll_{\e} q^{\e}$. This is equivalent to the desired lower bound.
+      where we have used that $\log(q) \ll_{\e} q^{\e}$. This is equivalent to the desired lower bound.
     \end{proof}
 
     The part of the proof in Siegel's theorem which makes $c_{1}(\e)$ and $c_{2}(\e)$ ineffective is the value of $\b$. The choice of $\b$ depends upon the existence of a Siegel zero near $1$ relative to the given $\e$. Since we don't know if Siegel zeros exist, this makes estimating $\b$ relative to $\e$ ineffective and hence the constants $c_{1}(\e)$ and $c_{2}(\e)$ as well. Many results in analytic number theory make use of Siegel's theorem and hence also rely on ineffective constants. Moreover, some important problems investigate methods to get around using Siegel's theorem in favor of a weaker result that is effective. So far, no Siegel zero has been shown to exist or not exist for Dirichlet $L$-functions. But some progress has been made to showing that they are rare:
@@ -451,7 +414,7 @@
     \[
       h_{d} \ge c(\e)d^{\frac{1}{2}-\e},
     \]
-    from \cref{prop:class_number_lower_bound} to reduce this to a finite computation because the constant $c(\e)$ is ineffective. In other words, we cannot obtain lower bound on $d$ as $d \to -\infty$ that tells us when all class numbers are larger than $n$.
+    from \cref{prop:class_number_lower_bound} to reduce this to a finite computation because the constant $c(\e)$ is ineffective. In other words, we cannot obtain lower bound on $d$ as $d \to -\infty$ that tells us when all class numbers are larger than $n$ even though we know such a bound exists.
   \section{The Burgess Bound for Dirichlet \texorpdfstring{$L$}{L}-functions}
     Let $\chi$ be a Dirichlet character modulo $m$. We call the sum
     \[
@@ -799,7 +762,7 @@
     \[
       \pi(x) = \sum_{p \le x}1,
     \]
-    for $x > 0$. Equivalently, $\pi(x)$ counts the number of primes that no larger than $x$. Euclid's infinitude of the primes is equivalent to $\pi(x) \to \infty$ as $x \to \infty$. A more interesting question is to ask how the primes are distributed among the integers. The classical \textbf{prime number theorem}\index{prime number theorem} answers this question and the precise statement is the following:
+    for $x > 0$. Equivalently, $\pi(x)$ counts the number of primes that no larger than $x$. That $\pi(x) \to \infty$ as $x \to \infty$ is equivalent to the existence of infinitely many primes. A more interesting question is to ask how the primes are distributed among the integers. The classical \textbf{prime number theorem}\index{prime number theorem} answers this question and the precise statement is the following:
 
     \begin{theorem}[Prime number theorem, classical version]
       For $x \ge 2$,
@@ -808,35 +771,7 @@
       \]
     \end{theorem}
 
-    We will delay the proof for the moment and give some intuition and historical context to the result. Intuitively, the prime number theorem is a result about how dense the primes are in the integers. To see this, notice that the result is equivalent to the asymptotic
-    \[
-      \frac{\pi(x)}{x} \sim \frac{1}{\log(x)}.
-    \]
-    Letting $x \ge 2$, the left-hand side is the probability that a randomly chosen positive integer no larger than $x$ is prime. Thus the asymptotic result says that for large enough $x$, the probability that a randomly chosen integer no larger than $x$ is prime is approximately $\frac{1}{\log(x)}$. We can also interpret this as saying that the average gap between primes no larger than $x$ is approximately $\frac{1}{\log(x)}$. As a consequence, a positive integer with at most $2n$ digits is about half as likely to be prime than a positive integer with at most $n$ digits. Indeed, there are $10^{n}-1$ numbers with at most $n$ digits, $10^{2n}-1$ with at most $2n$ digits, and $\log(10^{2n}-1)$ is approximately $2\log(10^{n})$. Note that the prime number theorem says nothing about the exact error $\pi(x)-\frac{x}{\log(x)}$ as $x \to \infty$. The theorem only says that the relative error tends to zero:
-    \[
-      \lim_{x \to \infty}\frac{\pi(x)-\frac{x}{\log(x)}}{\frac{x}{\log(x)}} = 0.
-    \]
-    Now for some historical context. While Gauss was not the first to put forth a conjectural form of the prime number theorem, he was known for compiling extensive tables of primes and he suspected that the density of the primes up to $x$ was roughly $\frac{1}{\log(x)}$. How might one suspect this is the correct density? Well, let $d\d_{p}$ be the weighted point measure that assigns $\frac{1}{p}$ at the prime $p$ and zero everywhere else. Then
-    \[
-      \sum_{p \le x}\frac{1}{p} = \int_{1}^{x}\,d\d_{p}(u).
-    \]
-    We can interpret the integral as integrating the density $d\d_{p}$ over $[1,x]$. Let's try and find a more explicit expression for the density $d\d_{p}$. Euler (see \cite{euler1744variae}), argued
-    \[
-      \sum_{p \le x}\frac{1}{p} \sim \log\log(x).
-    \]
-    But notice that
-    \[
-      \log\log(x) = \int_{1}^{\log(x)}\frac{du}{u} = \int_{e}^{x}\frac{1}{u}\,\frac{du}{\log{u}},
-    \]
-    where in the second equality we have made the change of variables $u \mapsto \log(u)$. So altogether,
-    \[
-      \sum_{p \le x}\frac{1}{p} \sim \int_{e}^{x}\frac{1}{u}\,\frac{du}{\log{u}}.
-    \]
-    This is an asymptotic that gives a more explicit representation of the density $d\d_{p}$. Notice that both sides of this asymptotic are weighted the same, the left-hand side by $\frac{1}{p}$, and the right-hand side by $\frac{1}{u}$. If we remove these weight (this is not strictly allowed), then we might hope
-    \[
-      \pi(x) = \sum_{p \le x}1 \sim \int_{e}^{x}\frac{du}{\log(u)}.
-    \]
-    Accordingly, we define the \textbf{logarithmic integral}\index{logarithmic integral} $\Li(x)$ by
+    There is an equivalent statement to the classical prime number theorem. Define the \textbf{logarithmic integral}\index{logarithmic integral} $\Li(x)$ by
     \[
       \Li(x) = \int_{2}^{x}\frac{dt}{\log(t)},
     \]
@@ -853,7 +788,35 @@
       \]
     \end{theorem}
 
-    Interpreting the logarithmic integral as an integral of density, then for large $x$ the density of primes up to $x$ is approximately $\frac{1}{\log(x)}$ which is what both versions of the prime number theorem claim. Legendre was the first to put forth a conjectural form of the prime number theorem. In 1798 (see \cite{legendre1798essai}) he claimed that $\pi(x)$ was of the form
+    For the moment, we will delay the proofs of these two versions of the prime number theorem and give some intuition and historical context to the results. Intuitively, the prime number theorem is a result about how dense the primes are in the integers. To see this, notice that the result is equivalent to the asymptotic
+    \[
+      \frac{\pi(x)}{x} \sim \frac{1}{\log(x)}.
+    \]
+    Letting $x \ge 2$, the left-hand side is the probability that a randomly chosen positive integer no larger than $x$ is prime. Thus the asymptotic result says that for large enough $x$, the probability that a randomly chosen integer no larger than $x$ is prime is approximately $\frac{1}{\log(x)}$. We can also interpret this as saying that the average gap between primes no larger than $x$ is approximately $\frac{1}{\log(x)}$. As a consequence, a positive integer with at most $2n$ digits is half as likely to be prime than a positive integer with at most $n$ digits for large $n$. Indeed, there are $10^{n}-1$ numbers with at most $n$ digits, $10^{2n}-1$ with at most $2n$ digits, and $\log(10^{2n}-1) \sim 2\log(10^{n})$. Note that the prime number theorem says nothing about the exact error $\pi(x)-\frac{x}{\log(x)}$ as $x \to \infty$. It only says that the relative error tends to zero, which is to say
+    \[
+      \lim_{x \to \infty}\frac{\pi(x)-\frac{x}{\log(x)}}{\frac{x}{\log(x)}} = 0.
+    \]
+    Now for some historical context. While Gauss was not the first to put forth a conjectural form of the prime number theorem, he was known for compiling extensive tables of primes and he suspected that the density of the primes up to $x$ was roughly $\frac{1}{\log(x)}$. How might one suspect this is the correct density? Well, let $d\d_{p}$ be the weighted point measure that assigns $\frac{1}{p}$ at the prime $p$ and zero everywhere else. Then
+    \[
+      \sum_{p \le x}\frac{1}{p} = \int_{1}^{x}\,d\d_{p}(u).
+    \]
+    We can interpret the integral as integrating the density $d\d_{p}$ over $[1,x]$. We would like a more explicit description of $d\d_{p}$. Euler (see \cite{euler1744variae}), argued
+    \[
+      \sum_{p \le x}\frac{1}{p} \sim \log\log(x),
+    \]
+    and notice that
+    \[
+      \log\log(x) = \int_{1}^{\log(x)}\frac{du}{u} = \int_{e}^{x}\frac{1}{u}\,\frac{du}{\log{u}},
+    \]
+    where in the second equality we have made the change of variables $u \mapsto \log(u)$. So altogether, we have
+    \[
+      \sum_{p \le x}\frac{1}{p} \sim \int_{e}^{x}\frac{1}{u}\,\frac{du}{\log{u}}.
+    \]
+    This asymptotic gives a more explicit representation of the density $d\d_{p}$. Notice that both sides of this asymptotic are essentially weighted the same with the left-hand side by $\frac{1}{p}$ and the right-hand side by $\frac{1}{u}$. Cancelling these weights (this is not strictly allowed), we might expect
+    \[
+      \pi(x) = \sum_{p \le x}1 \sim \int_{e}^{x}\frac{du}{\log(u)},
+    \]
+    which is simply the logarithmic integral version of the prime number theorem. Legendre was the first to put forth a conjectural form of the prime number theorem. In 1798 (see \cite{legendre1798essai}) he claimed that $\pi(x)$ was of the form
     \[
       \frac{x}{A\log(x)+B},
     \]

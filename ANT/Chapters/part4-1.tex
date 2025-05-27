@@ -18,7 +18,7 @@
       \begin{equation}\label{equ:convergence_of_Dirichlet_series_1}
         \sum_{M \le n \le N}\frac{a(n)}{n^{s}} = R(M)M^{s_{0}-s}-R(N+1)(N+1)^{s_{0}-s}-\sum_{M \le n \le N}R(n+1)(n^{s_{0}-s}-(n+1)^{s_{0}-s}).
       \end{equation}
-      We will now express the sum on the right-hand side as an integral. To do this, observe that
+      We will now express the sum on the right-hand side of \cref{equ:convergence_of_Dirichlet_series_1} as an integral. To do this, observe that
       \[
         n^{s_{0}-s}-(n+1)^{s_{0}-s} = -(s_{0}-s)\int_{n}^{n+1}u^{s_{0}-s-1}\,du.
       \]
@@ -42,7 +42,7 @@
       \[
         \left|\sum_{M \le n \le N}\frac{a(n)}{n^{s}}\right| \le 2\e+\e|s-s_{0}|\int_{M}^{N+1}u^{\s_{0}-\s-1}\,du \le 2\e+\e(H+1)(\s-\s_{0})\int_{M}^{N+1}u^{\s_{0}-\s-1}\,du.
       \]
-      Since the last integral is finite, $\sum_{M \le n \le N}\frac{a(n)}{n^{s}}$ can be made uniformly arbitrarily small for $s$ in the desired sector. The claim now follows by the uniform version of Cauchy's criterion.
+      Since the last integral is finite, $\sum_{M \le n \le N}\frac{a(n)}{n^{s}}$ can be made uniformly arbitrarily small for $s$ in the desired sector. The claim follows by the uniform version of Cauchy's criterion.
     \end{proof}
     
     By taking $H \to \infty$ in \cref{thm:convergence_of_Dirichlet_series} we see that $D(s)$ converges in the region $\s > \s_{0}$. Let $\s_{c}$ be the infimum of all $\s$ for which $D(s)$ converges. We call $\s_{c}$ the \textbf{abscissa of convergence}\index{abscissa of convergence} of $D(s)$. Similarly, let $\s_{a}$ be the infimum of all $\s$ for which $D(s)$ converges absolutely. Since the terms of $D(s)$ are holomorphic, the convergence is locally absolutely uniform (actually uniform in sectors) for $\s > \s_{a}$. It follows that $D(s)$ is holomorphic in the region $\s > \s_{a}$.  We call $\s_{a}$ the \textbf{abscissa of absolute convergence}\index{abscissa of absolute convergence} of $D(s)$. One should think of $\s_{c}$ and $\s_{a}$ as the boundaries of convergence and absolute convergence respectively. Of course, anything can happen at $\s = \s_{c}$ and $\s = \s_{a}$, but to the right of these lines we have convergence and absolute convergence of $D(s)$ respectively. It turns out that $\s_{a}$ is never far from $\s_{c}$ provided $\s_{c}$ is finite:
@@ -156,7 +156,7 @@
       which is also bounded as $N \to \infty$. This finishes the proof.
     \end{proof}
 
-    Do not be fooled; \cref{prop:Dirichlet_series_convergence_polynomial_bound_average} is in general weaker than \cref{prop:Dirichlet_series_convergence_polynomial_bound}. For example, from our comments following \cref{prop:Dirichlet_series_coefficient_size_on_average}, if $D(s)$ is a Dirichlet series with coefficients $a(n)$ and we have the estimate $|A|(X) \ll_{\b} X^{\b}$ for some real $\b$ then \cref{prop:Dirichlet_series_convergence_polynomial_bound_average} only says that $\s_{a} \le \b$. If $\a$ is very small compared to $\b$, this is a significantly worse upper bound for the abscissa of absolute convergence than what \cref{prop:Dirichlet_series_convergence_polynomial_bound} would imply if $a(n) \ll_{\a} n^{\a}$. Actually, the question of sharp polynomial bounds for these coefficients can be very deep. However, if the coefficients $a(n)$ are always nonnegative, then \textbf{Landau's theorem}\index{Landau's theorem} provides a way of obtaining a lower bound for their growth as well as describing a singularity of $D(s)$:
+    In general, \cref{prop:Dirichlet_series_convergence_polynomial_bound_average} is weaker than \cref{prop:Dirichlet_series_convergence_polynomial_bound}. For example, from our comments following \cref{prop:Dirichlet_series_coefficient_size_on_average}, if $D(s)$ is a Dirichlet series with coefficients $a(n)$ and we have the estimate $|A|(X) \ll_{\b} X^{\b}$ for some real $\b$ then \cref{prop:Dirichlet_series_convergence_polynomial_bound_average} only says $\s_{a} \le \b$. This is a significantly worse upper bound for the abscissa of absolute convergence than what \cref{prop:Dirichlet_series_convergence_polynomial_bound} would imply if $a(n) \ll_{\a} n^{\a}$ and $\a$ is very small compared to $\b$. Actually, the question of sharp polynomial bounds for these coefficients can be very deep. However, if the coefficients $a(n)$ are always nonnegative, then \textbf{Landau's theorem}\index{Landau's theorem} provides a way of obtaining a lower bound for their growth as well as locating a singularity of $D(s)$:
 
     \begin{theorem}[Landau's theorem]
       Suppose $D(s)$ is a Dirichlet series with nonnegative coefficients $a(n)$ and finite abscissa of absolute convergence $\s_{a}$. Then $\s_{a}$ is a singularity of $D(s)$.
@@ -166,7 +166,7 @@
       \[
         \mc{D} = \{s \in \C:\s_{a} > 0\} \cup \{s \in \C:|s| < \d\}.
       \]
-      Write $D(s)$ as a power series at $s = 1$:
+      Let $P(s)$ be the power series expansion of $D(s)$ at $s = 1$ so that
       \[
         P(s) = \sum_{k \ge 0}c_{k}(s-1)^{k},
       \]
@@ -184,8 +184,8 @@
       \]
       for $-\d' < s < 1$. As $\d' > 0$, this implies that $D(s)$ converges absolutely (since $a(n)$ is nonnegative) for some $s < 0$ (say $s = -\frac{\d'}{2}$) which contradicts $\s_{a} = 0$.
     \end{proof}
-
-    Landau's theorem is very useful as it implies that if $D(s)$ is a Dirichlet series with nonnegative coefficients then $a(n) \not\ll_{\e} n^{\s_{a}-(1+\e)}$ because otherwise \cref{prop:Dirichlet_series_convergence_polynomial_bound} implies $\s_{a} \le \s_{a}-\e$. Actually, Landau's theorem also implies $|A|(X) \not\ll_{\e} X^{\s_{a}-\e}$ for otherwise \cref{prop:Dirichlet_series_convergence_polynomial_bound_average} would similarly imply $\s_{a} \le \s_{\a}-\e$. When we come across Dirichlet series whose coefficients are of polynomial growth or of polynomial growth on average, we will invoke these results without mention, except for Landau's theorem, as this is also common practice in the literature. Generally speaking, if the coefficients $a(n)$ are chosen at random, $D(s)$ will not possess any good properties outside of convergence in some region (it might not even possess that). However, the Dirichlet series we will encounter, and most of interest in the wild, will have multiplicative coefficients. In this case, the Dirichlet series admits an infinite product expression:
+    
+     Generally speaking, if the coefficients $a(n)$ are chosen at random, $D(s)$ will not possess any good properties outside of convergence in some region (it might not even possess that). However, most of the Dirichlet series we will encounter will have multiplicative coefficients that exhibit polynomial growth. These Dirichlet series admits infinite product expressions:
 
     \begin{proposition}\label{prop:Dirichlet_series_Euler_product}
         Suppose the coefficients $a(n)$ of a Dirichlet series $D(s)$ are multiplicative and satisfy $a(n) \ll_{\a} n^{\a}$ for some real $\a \ge 0$. Then
@@ -229,24 +229,29 @@
         \]
     \end{proof}
 
-    Note that in \cref{prop:Dirichlet_series_Euler_product}, the requirement for a product to define an absolutely convergent Dirichlet series is that the series defining the factors in the product must be absolutely convergent. Thankfully, this is always the case for geometric series. Now suppose $D(s)$ is a Dirichlet series that has the product expression
+    Note that in \cref{prop:Dirichlet_series_Euler_product}, the requirement for a product to define an absolutely convergent Dirichlet series is that the series defining the factors in the product must be absolutely convergent. This is always the case for convergent geometric series and hence Dirichlet series whose coefficients are multiplicative and exhibit polynomial growth. Now suppose $D(s)$ is a Dirichlet series that has the product expression
     \[
       D(s) = \prod_{p}(1-\a_{1}(p)p^{-s})^{-1}(1-\a_{2}(p)p^{-s})^{-1} \cdots (1-\a_{d}(p)p^{-s})^{-1}.
     \]
-    We call this product the \textbf{Euler product}\index{Euler product} of $D(s)$, and it is said to be of \textbf{degree}\index{degree} $d$. In \cref{prop:Dirichlet_series_Euler_product}, complete multiplicativity of the coefficients is enough to guarantee that $D(s)$ has an Euler product of degree $1$, but in general $D(s)$ will admit an Euler product of degree $d > 1$ if the coefficients are only multiplicative but satisfy additional properties like a recurrence relation. When we come across Dirichlet series whose coefficients are multiplicative or we are given an Euler product we will use \cref{prop:Dirichlet_series_Euler_product} without mention as this is common practice in the literature. Lastly, if $D(s)$ has an Euler product then for any $N \ge 1$ we let $D_{(N)}(s)$ denote the Dirichlet series with the factors $p \mid N$ in the Euler product removed. That is,
+    We call this product the \textbf{Euler product}\index{Euler product} of $D(s)$, and it is said to be of \textbf{degree}\index{degree} $d$. In \cref{prop:Dirichlet_series_Euler_product}, complete multiplicativity of the coefficients is enough to guarantee that $D(s)$ has an Euler product of degree $1$, but in general $D(s)$ will admit an Euler product of degree $d > 1$ if the coefficients are only multiplicative but satisfy additional properties like a recurrence relation. If $D(s)$ has an Euler product, then for any $N \ge 1$ we let $D_{(N)}(s)$ denote the Dirichlet series with the factors $p \mid N$ in the Euler product removed. Then
     \[
       D_{(N)}(s) = D(s)\prod_{p \mid N}(1-\a_{1}(p)p^{-s})(1-\a_{2}(p)p^{-s}) \cdots (1-\a_{d}(p)p^{-s}).
     \]
-    Dually, for any $N \ge 1$ we let $D_{N}(s)$ denote the Dirichlet series only consisting of the factors $p \mid N$ in the Euler product. That is,
+    Dually, for any $N \ge 1$ we let $D_{N}(s)$ denote the Dirichlet series only consisting of the factors $p \mid N$ in the Euler product. That is
     \[
       D_{N}(s) = \prod_{p \mid N}(1-\a_{1}(p)p^{-s})^{-1}(1-\a_{2}(p)p^{-s})^{-1} \cdots (1-\a_{d}(p)p^{-s})^{-1}.
     \]
+    With this notation, we have the relationship
+    \[
+      D(s) = D_{(N)}(s)D_{N}(s),
+    \]
+    for any $N \ge 1$.
   \section{Perron Formulas}
     With the Mellin inversion formula, it is not hard to prove a very useful integral expression for the sum of coefficients of a Dirichlet series. First, we setup some general notation. If $D(s)$ is a Dirichlet series with coefficients $a(n)$, then for $X > 0$, we set
     \[
       A^{\ast}(X) = \asum_{n \le X}a(n),
     \]
-    where the $\ast$ indicates that the last term is multiplied by $\frac{1}{2}$ if $X$ is an integer. We would like to relate $A^{\ast}(X)$ to an integral involving the entire Dirichlet series $D(s)$. In particular, this integral is a type of inverse Mellin transform. Any formula that relates a finite sum of coefficients of a Dirichlet series to an integral involving the entire Dirichlet series is called a \textbf{Perron-type formula}\index{Perron-type formula}. We will see several of them, the first being \textbf{(classical) Perron's formula}\index{(classical) Perron's formula} which is a consequence of Abel's summation formula and the Mellin inversion formula applied to Dirichlet series:
+    where the $\ast$ indicates that the last term is multiplied by $\frac{1}{2}$ if $X$ is an integer. We would like to relate $A^{\ast}(X)$ to an integral involving the Dirichlet series $D(s)$ via an inverse Mellin transform. Such a formula is desirable because it allows for the examination of a sum of coefficients of a Dirichlet series, a discrete object, by means of a complex integral where analytic techniques are available. We will prove a few of these types of representations, the first being \textbf{(classical) Perron's formula}\index{(classical) Perron's formula} which is a consequence of Abel's summation formula and the Mellin inversion formula applied to Dirichlet series:
 
     \begin{theorem}[Perron's formula, classical version]
       Let $D(s)$ be a Dirichlet series with coefficient $a(n)$ and finite and nonnegative abscissa of absolute convergence $\s_{a}$. Then for any $c > \s_{a}$,
@@ -266,7 +271,7 @@
       where the second equality follows because $A(u) = 0$ in the interval $[0,1)$. The Mellin inversion formula immediately gives the result.
     \end{proof}
 
-    As a corollary, we obtain an important integral representation for Dirichlet series:
+    As a corollary, we obtain a useful integral representation for Dirichlet series:
 
     \begin{corollary}\label{cor:integral_rep_for_Dirichlet_series}
       Let $D(s)$ be a Dirichlet series with coefficient $a(n)$ and finite and nonnegative abscissa of absolute convergence $\s_{a}$. Then for $\s > \s_{a}$,
@@ -275,10 +280,10 @@
       \]
     \end{corollary}
     \begin{proof}
-      The identity is an equivalent form of the first equality in \cref{equ:integral_rep_for_Dirichlet_series}.
+      The identity follows from \cref{equ:integral_rep_for_Dirichlet_series}.
     \end{proof}
 
-    We would like to relate this sum to an integral involving the entire Dirichlet series $D(s)$. In particular, this integral is a type of inverse Mellin transform. Any formula that resembles Perron's formula is particularly useful because it allows one examine a sum of coefficients of a Dirichlet series, a discrete object, by means of a complex integral where analytic techniques are at our disposal. There is also a truncated version of Perron's formula which is often more useful for estimates rather than abstract results. To state it, we need to setup some notation and will require a lemma. For any $c > 0$, consider the discontinuous integral (see \cite{davenport1980multiplicative})
+    There is also a truncated version of Perron's formula which is often more useful for more subtle estimates. To state it, we need to setup some notation and will require a lemma. For any $c > 0$, consider the discontinuous integral (see \cite{davenport1980multiplicative})
     \[
       \d(y) = \frac{1}{2\pi i}\int_{(c)}y^{s}\,\frac{ds}{s} = \begin{cases} 0 & \text{if $0 < y < 1$}, \\ \frac{1}{2} & \text{if $y = 1$}, \\ 1 & \text{if $y > 1$}. \end{cases}
     \]
@@ -348,11 +353,11 @@
     \[
       A_{\psi}(X) = \sum_{n \ge 1}a(n)\psi\left(\frac{n}{X}\right) = \sum_{n \le X}a(n).
     \]
-    In the second case, we want $\psi(y)$ to dampen the $a(n)$ with a weight other than $1$ or $0$. Sums of this type are called \textbf{weighted}\index{weighted}. In any case, suppose the support of $\psi(y)$ is contained in $[0,M]$. These conditions will force the Mellin transform $\Psi(s)$ of $\psi(y)$ to exist and have nice properties. To see that $\Psi(s)$ exists, let $K$ be a compact set in $\C$ and let $\a = \max_{s \in K}(\s)$ and $\b = \min_{s \in K}\{\s\}$. Note that $\psi(y)$ is bounded because it is compactly supported. Then for $s \in K$,
+    In the second case, we want $\psi(y)$ to dampen the $a(n)$ with a weight other than $1$ or $0$. Sums of this type are called \textbf{weighted}\index{weighted}. In any case, suppose the support of the smooth function $\psi(y)$ is contained in $[0,M]$. These conditions will force the Mellin transform $\Psi(s)$ of $\psi(y)$ to exist and have nice properties. To see that $\Psi(s)$ exists, let $K$ be a compact set in $\C$ and let $\a = \max_{s \in K}(\s)$ and $\b = \min_{s \in K}\{\s\}$. Note that $\psi(y)$ is bounded because it is compactly supported. Then for $s \in K$,
     \[
       \Psi(s) = \int_{0}^{\infty}\psi(y)y^{s}\,\frac{dy}{y} \ll \int_{0}^{M}y^{\s-1}\,dy \ll_{\a,\b} 1.
     \]
-    Therefore $\Psi(s)$ is locally absolutely uniformly convergent for $s \in \C$. In particular, the Mellin inversion formula implies that $\psi(y)$ is the Mellin inverse of $\Psi(s)$. As for nice properties, $\Psi(s)$ does not grow too fast in vertical strips:
+    Therefore $\Psi(s)$ is locally absolutely uniformly convergent for $s \in \C$. In particular, the Mellin inversion formula implies that $\psi(y)$ is the Mellin inverse of $\Psi(s)$. As for nice properties, $\Psi(s)$ exhibit polynomial decay of arbitrarily large order in vertical strips:
 
     \begin{proposition}\label{prop:smoothing_function_Mellin_inverse_vertical_strips}
       Suppose $\psi(y)$ is a bump function and let $\Psi(s)$ denote its Mellin transform. Then for any $N \ge 1$,
@@ -408,7 +413,7 @@
       This proves the first statement. For the second statement, take $X = 1$.
     \end{proof}
 
-    Smoothed Perron's formula is useful because it is often more versatile as the convergence of the integral is improved if $\psi(y)$ is chosen appropriately.
+    Smoothed Perron's formula is useful because it improves the convergence of the integral (in light of \cref{prop:smoothing_function_Mellin_inverse_vertical_strips}) while compensating by weighting the sum of coefficients of the Dirichlet series.
   \section{Analytic Data of \texorpdfstring{$L$}{L}-functions}
     We are now ready to discuss $L$-functions in some generality. In the following, we will denote an $L$-functions by $L(s,f)$, and for the moment, $f$ will carry no formal meaning. It is only used to suggest that the $L$-function is attached to some interesting arithmetic object $f$. When we discuss specific $L$-functions, $f$ will carry a formal meaning. An \textbf{$L$-series}\index{$L$-series} $L(s,f)$ is a Dirichlet series
     \[
@@ -494,7 +499,7 @@
     \[
       \left\{s \in \C:\left|\s-\frac{1}{2}\right| \le \frac{1}{2}\right\}.
     \]
-    Moreover, it is also the region where we cannot determine the value of an $L$-function from its representation as a Dirichlet series or using the functional equation. It turns out that much of the important information about $L$-functions are contained inside of the critical strip. The \textbf{critical line}\index{critical line} is the line left invariant by the transformation $s \mapsto 1-s$ which is the line defined by $\s = \frac{1}{2}$. It is also the line that bisects the critical strip vertically. The \textbf{central point}\index{central point} is the fixed point of the transformation $s \mapsto 1-s$, in other words, the point $s = \frac{1}{2}$. Clearly the central point is also the center of the critical line. The critical strip, critical line, and central point are all displayed in \cref{fig:critical_strip}:
+    Moreover, it is also the region where we cannot determine the value of an $L$-function from its representation as a Dirichlet series or using the functional equation. It turns out that most of the important information about $L$-functions is contained inside of the critical strip. The \textbf{critical line}\index{critical line} is the line left invariant by the transformation $s \mapsto 1-s$ which is the line defined by $\s = \frac{1}{2}$. It is also the line that bisects the critical strip vertically. The \textbf{central point}\index{central point} is the fixed point of the transformation $s \mapsto 1-s$, in other words, the point $s = \frac{1}{2}$. Clearly the central point is also the center of the critical line. The critical strip, critical line, and central point are all displayed in \cref{fig:critical_strip}:
 
     \begin{figure}[ht]
       \centering
@@ -554,7 +559,10 @@
     \begin{equation}\label{equ:digamma_gamma_factor_analytic_conductor_estimate}
       \frac{\g'}{\g}(s,f) \ll_{\e} \log\mf{q}_{\infty}(s,f) \quad \text{and} \quad \log(q(f))+\frac{\g'}{\g}(s,f) \ll_{\e} \log\mf{q}(s,f),
     \end{equation}
-    are valid in the vertical strip $a \le \s \le b$ provided $s$ is distance $\e$ away from the poles of $\g(s,f)$. 
+    are valid in the vertical strip $a \le \s \le b$ provided $s$ is distance $\e$ away from the poles of $\g(s,f)$. Also, our definition of $\mf{q}_{\infty}(s,f)$ ensures
+    \[
+      \log\mf{q}(s,f) \ge \log\mf{q}(f) \ge \log(3) \ge 1.
+    \]
   \section{The Approximate Functional Equation}
     If $L(s,f)$ is an $L$-function, then there is a formula which acts as a compromise between the functional equation for $L(s,f)$ and expressing $L(s,f)$ as a Dirichlet series. This formula is known as the approximate functional equation and it is important because it is valid inside of the critical strip and therefore can be used to obtain data about $L(s,f)$ in that region. First we use \cref{equ:gamma_factor_analytic_conductor_estimate} to show that $L(s,f)$ has polynomial growth in the $t$-aspect in vertical strips:
 
@@ -569,7 +577,7 @@
       Clearly $\mf{q}(s,f)^{\frac{1}{2}-\s}$ is of polynomial growth in the $t$-aspect provided $\s$ is bounded. As $|\s| < \max(a,b)$, we see that $L(s,f)$ is also of polynomial growth in the $t$-aspect for $|t| \ge 1$. Moreover, this estimate also implies $L(s,f)$ is bounded on the line $t = 1$ since $\s$ is bounded. As $L(s,f)$ is holomorphic for $|t| \ge 1$ and of order $1$, we can apply the Phragm\'en-Lindel\"of convexity principle in this region (see \cref{append:The_Phragmen_Lindelof_Convexity_principle}) so that $L(s,f)$ is of polynomial growth in the $t$-aspect in the vertical half-strip $a \le \s \le b$ with $|t| \ge 1$.
     \end{proof}
 
-    \cref{prop:L_function_bounded_in_vertical_strips} is a very important property that $L$-functions possess. It is usually used to estimate Perron type formulas. We can also use it to deduce the \textbf{approximate function equation}\index{approximate function equation}:
+    We now prove the \textbf{approximate function equation}\index{approximate function equation}:
 
     \begin{theorem}[Approximate functional equation]
       Let $L(s,f)$ be an $L$-function, $\Phi(u)$ be an even holomorphic function bounded in the vertical strip $|\tau| < a+1$ for any $a > 1$ such that $\Phi(0) = 1$, and let $X > 0$. Then for $s$ in the critical strip, we have
@@ -630,7 +638,7 @@
     \begin{equation}\label{equ:choice_for_V_decay_estimate}
      \cos^{-4d_{f}M}\left(\frac{\pi u}{4M}\right) = \left(\frac{e^{i\frac{\pi u}{4M}}+e^{-i\frac{\pi u}{4M}}}{2}\right)^{-4d_{f}M} \ll e^{-d_{f}\pi|r|},
     \end{equation}
-    where in the estimate we have used the reverse triangle equality. It follows that $\Phi(u)$ exhibits exponential decay. With this choice of $ \Phi(u)$, we can prove a useful bound for $V_{s}(y)$:
+    where in the estimate we have used the reverse triangle equality. It follows that $\Phi(u)$ exhibits exponential decay and is therefore bounded. With this choice of $ \Phi(u)$, we can prove a useful bound for $V_{s}(y)$:
 
     \begin{proposition}\label{prop:V_function_decay}
       Let $L(s,f)$ be an $L$-function, set $\Phi(u) = \cos^{-4d_{f}M}\left(\frac{\pi u}{4M}\right)$ for some integer $M \ge 1$, and let $V_{s}(y)$ be the inverse Mellin transform defined by
@@ -664,10 +672,10 @@
         &\ll \left(1+\frac{y}{\sqrt{\mf{q}_{\infty}(s,f)}}\right)^{-M}\int_{-\infty}^{\infty}e^{-\frac{\pi}{2}d_{f}|r|}\,dr \\
         &\ll \left(1+\frac{y}{\sqrt{\mf{q}_{\infty}(s,f)}}\right)^{-M},
       \end{align*}
-      where in the third and fourth lines we have used that $cy \ll (1+cy)$ for all $y \ge 0$ and any $c$ and the last line holds since the integrand exhibits exponential decay. This completes the proof.
+      where in the third and fourth lines we have used that $cy \ll (1+cy)$ and the last line holds since the integrand exhibits exponential decay. This completes the proof.
     \end{proof}
 
-    From \cref{prop:V_function_decay} we see that $V_{s}(y)$ is bounded for $y \ll_{\e} \mf{q}_{\infty}(s,f)^{\frac{1}{2}+\e}$ and then starts to exhibit polynomial decay that can be taken arbitrarily large. In a similar spirit to the approximate functional equation, a useful summation formula can be derived from the functional equation of each $L$-function:
+    From \cref{prop:V_function_decay} we see that $V_{s}(y)$ is bounded for $y \ll_{\e} \mf{q}_{\infty}(s,f)^{\frac{1}{2}+\e}$ and then starts to exhibit polynomial decay of arbitrarily large order. In a similar spirit to the approximate functional equation, a useful summation formula can be derived from the functional equation of each $L$-function:
 
     \begin{theorem}
       Let $\psi(y)$ be a bump function and let $\Psi(s)$ denote its Mellin transform. Then for any $L$-function $L(s,f)$, we have
@@ -831,7 +839,7 @@
       L^{(k)}\left(\frac{1}{2}+it,f\right) \ll_{\e} \mf{q}\left(\frac{1}{2}+it,f\right)^{\frac{1}{4}+\e}.
     \]
   \section{Estimating the Central Value}
-    The Lindel\"of hypothesis is concerned with the growth of the $L$-function $L(s,f)$ along the critical line, but sometimes we are only concerned with the size of $L(s,f)$ at the central point. The value of $L(s,f)$ at the central point is called the \textbf{central value}\index{central value} of $L(s,f)$. Many important properties about $L(s,f)$ can be connected to its central value. Any argument used to estimate the central value of an $L$-function is called a \textbf{central value estimate}\index{central value estimate}. We will prove central value estimate which gives a very useful upper bound in the $q(f)$-aspect. To state it, let $\psi(y)$ be a bump function with compact support in $\left[\frac{1}{2},2\right]$. For example,
+    The Lindel\"of hypothesis is concerned with the growth of the $L$-function $L(s,f)$ along the critical line, but sometimes we are only concerned with the size of $L(s,f)$ at the central point. The value of $L(s,f)$ at the central point is called the \textbf{central value}\index{central value} of $L(s,f)$. Many important properties about $L(s,f)$ can be connected to its central value. Any argument used to estimate the central value of an $L$-function is called a \textbf{central value estimate}\index{central value estimate}. We will prove central value estimate which gives a very useful upper bound in the $q(f)$-aspect. To state it, let $\psi(y)$ be a bump function with compact support in $\left[\frac{1}{2},2\right]$. For example, we may take
     \[
       \psi(y) = \begin{cases} e^{-\frac{1}{9-(4y-5)^{2}}} & \text{if $|4y-5| < 3$}, \\ 0 & \text{if $|4y-5| \ge 3$}. \end{cases}
     \]
