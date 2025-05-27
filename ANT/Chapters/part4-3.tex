@@ -123,7 +123,7 @@
       Therefore $\z(s)$ cannot admit a zero for $0 < s < 1$ because then $\eta(s)$ would be zero too. This completes the proof.
     \end{proof}
 
-    \cref{thm:improved_zero-free_region_zeta} shows that $\z(s)$ has no Siegel zeros. Moreover, since $1-2^{1-s} < 0$ for $0 < s < 1$, the proof shows that $\z(s) < 0$ in this interval as well. As for the height of the first zero, it occurs on the critical line (as predicted by the Riemann hypothesis) at height $t \approx 14.134$ (see \cite{davenport1980multiplicative} for a further discussion). The first $15$ zeros were computed by Gram in 1903 (see \cite{gram1903note}). Since then, billions of zeros have been computed and have all been verified to lie on the critical line. The analogous situation for Dirichlet $L$-functions is only slightly different but causes increasing complexity in further study. We first show that if a Siegel zero exists for the Dirichlet $L$-function of a primitive character, then the character is necessarily quadratic:
+    \cref{thm:improved_zero-free_region_zeta} shows that $\z(s)$ has no Siegel zeros. Moreover, since $1-2^{1-s} < 0$ for $0 < s < 1$, the proof shows that $\z(s) < 0$ in this interval as well. As for the height of the first zero, it occurs on the critical line (as predicted by the Riemann hypothesis) at height $t \approx 14.134$ (see \cite{davenport1980multiplicative} for a further discussion). The first $15$ zeros were computed by Gram in 1903 (see \cite{gram1903note}). Since then, billions of zeros have been computed and have all been verified to lie on the critical line. The analogous situation for Dirichlet $L$-functions is only slightly different but causes increasing complexity in further study. We first show that if a Siegel zero exists for the Dirichlet $L$-function associated to a primitive character, then the character is necessarily quadratic:
 
     \begin{theorem}\label{thm:improved_zero-free_region_Dirichlet}
       Let $\chi$ be a primitive Dirichlet character of conductor $q > 1$. Then there exists a constant $c > 0$ such that $L(s,\chi)$ has no zeros in the region
@@ -165,76 +165,37 @@
       \]
     \end{theorem}
 
-    The largest defect of Siegel's theorem is that the implicit constants $c_{1}(\e)$ and $c_{2}(\e)$ are ineffective (and not necessarily equal). To prove Siegel's theorem, we need two small lemmas about the size of $L(\s,\chi)$ and $L'(\s,\chi)$ for $\s$ close to $1$:
+    The largest defect of Siegel's theorem is that the implicit constants $c_{1}(\e)$ and $c_{2}(\e)$ are ineffective (and not necessarily equal). To prove Siegel's theorem, we need a lemma about the size of $L^{(k)}(\s,\chi)$ for $\s$ close to $1$:
 
-    \begin{lemma}\label{lem:Siegels_theorem_first_version_lemma}
-      Let $\chi$ be a non-principal Dirichlet character modulo $m > 1$. Then $L(\s,\chi) = O(\log(m))$ for any $\s$ such that $0 \le 1-\s \le \frac{1}{\log(m)}$.
+    \begin{lemma}\label{lem:log_growth_of_Dirichlet_L-series_near_1}
+      Let $\chi$ be a non-principal Dirichlet character modulo $m > 1$. Then for any for any $k \ge 0$, we have $L^{(k)}(\s,\chi) = O(\log^{k+1}(m))$ provided $\s$ is such that $0 \le 1-\s \le \frac{1}{\log(m)}$.
     \end{lemma}
     \begin{proof}
-      Recall that the Dirichlet $L$-series $L(s,\chi)$ converges for $\s > 0$ and thus for $0 \le 1-\s \le \frac{1}{\log(m)}$. Since
+      Recall that the Dirichlet $L$-series $L(s,\chi)$ converges for $\s > 0$ and thus for $0 \le 1-\s \le \frac{1}{\log(m)}$. As $L(s,\chi)$ admits analytic continuation to $\C$, it is holomorphic for $0 \le 1-\s \le \frac{1}{\log(m)}$ and so its $k$-th derivative is given by
       \[
-        L(\s,\chi) = \sum_{n \ge 1}\frac{\chi(n)}{n^{\s}} = \sum_{n < m}\frac{\chi(n)}{n^{\s}}+\sum_{n \ge m}\frac{\chi(n)}{n^{\s}},
+        L^{(k)}(\s,\chi) = \sum_{n \ge 1}\frac{\chi(n)\log^{k}(n)}{n^{\s}} = \sum_{n < m}\frac{\chi(n)\log^{k}(n)}{n^{\s}}+\sum_{n \ge m}\frac{\chi(n)\log^{k}(n)}{n^{\s}}.
       \]
-      it suffices to show that the last two sums are both $O(\log^{2}(m))$. For the first sum, as $n < m$, we have
+      We will show that the last two sums are both $O(\log^{k+1}(m))$. For the first sum, if $n < m$, we have
       \[
-        \left|\frac{\chi(n)}{n^{\s}}\right| \le \frac{1}{n^{\s}} = \frac{n^{1-\s}}{n} < \frac{m^{1-\s}}{n} < \frac{e}{n},
-      \]
-      where the last inequality follows because $1-\s \le \frac{1}{\log(m)}$. Therefore
-      \[
-        \left|\sum_{n \le m}\frac{\chi(n)}{n^{s}}\right| < e\sum_{n < m}\frac{1}{n} < e\log(m)\int_{1}^{m}\frac{1}{n}\,dn \ll \log(m).
-      \]
-      As for the second sum, setting $A(Y) = \sum_{n \le Y}\chi(n)$ we have $A(Y) \ll 1$ by the orthogonality relations (\cref{cor:Dirichlet_orthogonality_relations} (i)) and that $\chi$ is periodic. Thus $A(Y)Y^{-\s} \to 0$ as $Y \to \infty$ and so Abel's summation formula (see \cref{cor:Abels_summation_formula_limit_version}) gives
-      \begin{equation}\label{equ:Siegels_theorem_first_version_lemma_1}
-        \sum_{n \ge m}\frac{\chi(n)}{n^{\s}} = -A(m)m^{-\s}-\int_{m}^{\infty}A(u)u^{-(\s+1)}\,du.
-      \end{equation}
-      Using the more precise estimate $|A(X)| \le m$, because $\chi$ is $m$-periodic and $|\chi(n)| \le 1$, with \cref{equ:Siegels_theorem_first_version_lemma_1}, we make the following computation:
-      \begin{align*}
-        \left|\sum_{n \ge m}\frac{\chi(n)\log(n)}{n^{\s}}\right| &\le |A(m)|m^{-\s}+\int_{m}^{\infty}|A(u)|u^{-(\s+1)}\,du \\
-        &\le |A(m)|m^{-\s}+\int_{m}^{\infty}|A(u)|\log(u)u^{-(\s+1)}\,du \\
-        &\le m^{1-\s}+m\int_{m}^{\infty}\log(u)u^{-(\s+1)}\,du \\
-        &= m^{1-\s}+m\left(-\log(u)\frac{u^{-\s}}{\s}\bigg|_{m}^{\infty}+\int_{m}^{\infty}\frac{u^{-(\s+1)}}{s}\,du\right) \\
-        &= m^{1-\s}+m\left(-\log(u)\frac{u^{-\s}}{\s}-\frac{u^{-\s}}{\s^{2}}\right)\bigg|_{m}^{\infty} \\
-        &= m^{1-\s}+m\left(\log(m)\frac{m^{-\s}}{\s}+\frac{m^{-\s}}{\s^{2}}\right) \\
-        &\ll m^{1-\s} \\
-        &\ll e,
-      \end{align*}
-      where in the fourth line we have used integration by parts and the last line holds because $1-\s \le \frac{1}{\log(m)}$. But $e = O(\log^{2}(m))$ so the second sum is also $O(\log^{2}(m))$. Therefore we have shown $L(\s,\chi) = O(\log(m))$ which completes the proof.
-    \end{proof}
-
-    The second lemma is proved in much the same way:
-
-    \begin{lemma}\label{lem:Siegels_theorem_second_version_lemma}
-      Let $\chi$ be a non-principal Dirichlet character modulo $m > 1$. Then $L'(\s,\chi) = O(\log^{2}(m))$ for any $\s$ such that $0 \le 1-\s \le \frac{1}{\log(m)}$.
-    \end{lemma}
-    \begin{proof}
-      Recall that the Dirichlet $L$-series $L(s,\chi)$ converges for $\s > 0$ and thus for $0 \le 1-\s \le \frac{1}{\log(m)}$. As $L(s,\chi)$ admits analytic continuation to $\C$, it is holomorphic for $0 \le 1-\s \le \frac{1}{\log(m)}$ and so its derivative is given by
-      \[
-        L'(\s,\chi) = \sum_{n \ge 1}\frac{\chi(n)\log(n)}{n^{\s}} = \sum_{n < m}\frac{\chi(n)\log(n)}{n^{\s}}+\sum_{n \ge m}\frac{\chi(n)\log(n)}{n^{\s}}.
-      \]
-      We will show that the last two sums are both $O(\log^{2}(m))$. For the first sum, if $n < m$, we have
-      \[
-        \left|\frac{\chi(n)\log(n)}{n^{\s}}\right| \le \frac{1}{n^{\s}}\log(n) = \frac{n^{1-\s}}{n}\log(n) < \frac{m^{1-\s}}{n}\log(n) < \frac{e}{n}\log(m),
+        \left|\frac{\chi(n)\log^{k}(n)}{n^{\s}}\right| \le \frac{1}{n^{\s}}\log^{k}(n) = \frac{n^{1-\s}}{n}\log^{k}(n) < \frac{m^{1-\s}}{n}\log^{k}(n) < \frac{e}{n}\log^{k}(m),
       \]
       where the last inequality follows because $1-\s \le \frac{1}{\log(m)}$. Then
       \[
-        \left|\sum_{n \le m}\frac{\chi(n)\log(n)}{n^{s}}\right| < e\log(m)\sum_{n < m}\frac{1}{n} < e\log(m)\int_{1}^{m}\frac{1}{n}\,dn \ll \log^{2}(m).
+        \left|\sum_{n \le m}\frac{\chi(n)\log^{k}(n)}{n^{\s}}\right| < e\log^{k}(m)\sum_{n < m}\frac{1}{n} < e\log^{k}(m)\int_{1}^{m}\frac{1}{n}\,dn \ll \log^{k+1}(m).
       \]
-      For the second sum, let $A(Y) = \sum_{n \le Y}\chi(n)$. Then $A(Y) \ll 1$ by the orthogonality relations (\cref{cor:Dirichlet_orthogonality_relations} (i)) and that $\chi$ is periodic. Hence $A(Y)\log(Y)Y^{-\s} \to 0$ as $Y \to \infty$ and Abel's summation formula (see \cref{cor:Abels_summation_formula_limit_version}) gives
+      For the second sum, let $A(Y) = \sum_{n \le Y}\chi(n)$. Then $|A(Y)| \le m$ by the orthogonality relations (\cref{cor:Dirichlet_orthogonality_relations} (i)) and that $\chi$ is periodic. Hence $A(Y)\log(Y)Y^{-\s} \to 0$ as $Y \to \infty$ and Abel's summation formula (see \cref{cor:Abels_summation_formula_limit_version}) gives
       \begin{equation}\label{equ:Siegels_theorem_second_version_lemma_1}
-        \sum_{n \ge m}\frac{\chi(n)\log(n)}{n^{\s}} = -A(m)\log(m)m^{-\s}-\int_{m}^{\infty}A(u)(1-\s\log(u))u^{-(\s+1)}\,du.
+        \sum_{n \ge m}\frac{\chi(n)\log^{k}(n)}{n^{\s}} = -A(m)\log^{k}(m)m^{-\s}-\int_{m}^{\infty}A(u)(k-\s\log(u))\log^{k-1}(u)u^{-(\s+1)}\,du.
       \end{equation}
-      Since $0 \le 1-\s \le \frac{1}{\log(m)}$, we have $1-\s\log(u) \le \frac{\log(u)}{\log(m)}$. Also, we have the more precise estimate $|A(X)| \le m$ because $\chi$ is $m$-periodic and $|\chi(n)| \le 1$. With these estimates and \cref{equ:Siegels_theorem_second_version_lemma_1} we make the following computation:
+      Since $0 \le 1-\s \le \frac{1}{\log(m)}$, we have $k-\s\log(u) \ll \log(u)$. With this estimate, that $|A(u)| \le m$, and \cref{equ:Siegels_theorem_second_version_lemma_1}, we make the following computation:
       \begin{align*}
-        \left|\sum_{n \ge m}\frac{\chi(n)\log(n)}{n^{\s}}\right| &\le |A(m)|\log(m)m^{-\s}+\int_{m}^{\infty}|A(u)|(1-\s\log(u))u^{-(\s+1)}\,du \\
-        &\le |A(m)|\log(m)m^{-\s}+\log(m)\int_{m}^{\infty}|A(u)|\log(u)u^{-(\s+1)}\,du \\
-        &\le m^{1-\s}\log(m)+m\int_{m}^{\infty}\log(u)u^{-(\s+1)}\,du \\
-        &= m^{1-\s}\log(m)+m\left(-\log(u)\frac{u^{-\s}}{\s}\bigg|_{m}^{\infty}+\int_{m}^{\infty}\frac{u^{-(\s+1)}}{s}\,du\right) \\
-        &= m^{1-\s}\log(m)+m\left(-\log(u)\frac{u^{-\s}}{\s}-\frac{u^{-\s}}{\s^{2}}\right)\bigg|_{m}^{\infty} \\
-        &= m^{1-\s}\log(m)+m\left(\log(m)\frac{m^{-\s}}{\s}+\frac{m^{-\s}}{\s^{2}}\right) \\
-        &\ll m^{1-\s}\log(m) \\
-        &\ll e\log(m),
+        \left|\sum_{n \ge m}\frac{\chi(n)\log^{k}(n)}{n^{\s}}\right| &\le |A(m)|\log^{k}(m)m^{-\s}+\int_{m}^{\infty}|A(u)(k-\s\log(u))|\log^{k-1}(u)u^{-(\s+1)}\,du \\
+        &\ll m^{1-\s}\log^{k}(m)+m\int_{m}^{\infty}\log^{k}(u)u^{-(\s+1)}\,du \\
+        &= m^{1-\s}\log^{k}(m)+\frac{m}{\s}\left(\log^{k}(m)m^{-\s}+\int_{m}^{\infty}\log^{k-1}(u)u^{-(\s+1)}\,du\right) \\
+        &\ll m^{1-\s}\log^{k}(m)+\frac{m^{1-\s}}{\s}\log^{k}(m) \\
+        &\ll \log^{k+1}(m),
       \end{align*}
-      where in the fourth line we have used integration by parts and the last line holds because $1-\s \le \frac{1}{\log(m)}$. But $e\log(m) = O(\log^{2}(m))$ so the second sum is also $O(\log^{2}(m))$. Therefore we have shown $L'(\s,\chi) = O(\log^{2}(m))$ as desired. 
+      where in the third line we have used integration by parts, in the fourth we have used that the remaining integral is bounded by the former, and in the last line we have used that $1-\s \le \frac{1}{\log(m)}$ (which implies that $\frac{1}{\s} \ll \log(m)$). Therefore the second sum is $O(\log^{k+1}(m))$ and hence $L^{(k)}(\s,\chi) = O(\log^{k+1}(m))$.
     \end{proof}
 
     Our path to proving Siegel's theorem will be to show that first statement implies the second and then prove the first statement. For the first statement, we will combine two Dirichlet $L$-series attached to distinct quadratic characters with distinct moduli and use this new $L$-series to derivative a lower bound for a single Dirichlet $L$-function attached to a quadratic character at $s = 1$. To this end, we will make use of the following lemma:
@@ -257,7 +218,7 @@
     We are now ready to prove Siegel's theorem. The key ingredient in the proof of the lower bound is an estimate for the $L$-series in \cref{lem:Siegel_zero_auxiliary_L-function_lemma} relative to the modulus $q_{1}q_{2}$ in a small interval on the real axis close to $1$:
 
     \begin{proof}[Proof of Siegel's theorem]
-      We will being by showing that the first statement implies the second. Clearly the second statement holds for a single $q$ and hence for bounded $q$ by taking the maximum of all the constants. Therefore we may assume $q$ arbitrarily large. Now let $\e > 0$ and suppose that the first statement holds. We will prove the second statement by contradiction. For if there was a real zero $\b$ in this segment, then for large enough $q$ we have $0 \le 1-\b \le \frac{1}{\log(q)}$ so that $L'(\s,\chi) = O(\log^{2}(q))$ for $\b \le \s \le 1$ by \cref{lem:Siegels_theorem_second_version_lemma}. These two estimates and the mean value theorem together give
+      We will being by showing that the first statement implies the second. Clearly the second statement holds for a single $q$ and hence for bounded $q$ by taking the maximum of all the constants. Therefore we may assume $q$ arbitrarily large. Now let $\e > 0$ and suppose that the first statement holds. We will prove the second statement by contradiction. For if there was a real zero $\b$ in this segment, then for large enough $q$ we have $0 \le 1-\b \le \frac{1}{\log(q)}$ so that $L'(\s,\chi) = O(\log^{2}(q))$ for $\b \le \s \le 1$ by \cref{lem:log_growth_of_Dirichlet_L-series_near_1}. These two estimates and the mean value theorem together give
       \[
         L(1,\chi) = L(1,\chi)-L(\b,\chi) = L'(\s,\chi)(1-\b) \ll \frac{\log^{2}(q)}{q^{\e}}.
       \]
@@ -345,7 +306,7 @@
       \begin{equation}\label{equ:Siegels_theorem_first_version_10}
         \l \gg \frac{1-\b_{1}}{(q_{1}q_{2})^{8(1-\b_{1})}}.
       \end{equation}
-      We will now choose $\chi_{2} = \chi$ and hence $q_{2} = q$ as in the statement of the theorem. Notice that, independent of any work we have done, the theorem holds for a single $q$. Moreover, the theorem holds provided we bound $q$ from above by taking the minimum of the $c_{1}(\e)$. Therefore we may assume $q$ is arbitrarily large and in particular that $q > q_{1}$. Using \cref{lem:Siegels_theorem_first_version_lemma} with $\s = 1$ applied to $L(\s,\chi_{1})$ and $L(\s,\chi_{1}\chi)$, we obtain
+      We will now choose $\chi_{2} = \chi$ and hence $q_{2} = q$ as in the statement of the theorem. Notice that, independent of any work we have done, the theorem holds for a single $q$. Moreover, the theorem holds provided we bound $q$ from above by taking the minimum of the $c_{1}(\e)$. Therefore we may assume $q$ is arbitrarily large and in particular that $q > q_{1}$. Using \cref{lem:log_growth_of_Dirichlet_L-series_near_1} applied to $L(\s,\chi_{1})$ and $L(\s,\chi_{1}\chi)$, we obtain
       \begin{equation}\label{equ:Siegels_theorem_first_version_11}
         \l \ll \log(q_{1})\log(q_{1}q)L(1,\chi).
       \end{equation}
@@ -421,7 +382,7 @@
     \begin{proof}
       Let $\wtilde{\chi}$ be the primitive character inducing $\chi$. As the zeros of $L(s,\chi)$ and $L(s,\wtilde{\chi})$ differ only on the line $\s = 0$, \cref{thm:improved_zero-free_region_Dirichlet} implies that $\chi$ must be quadratic. Suppose $\chi_{1}$ and $\chi_{2}$ are two distinct character modulo $m$, of conductors $q_{1}$ and $q_{2}$, admitting Siegel zeros $\b_{1}$ and $\b_{2}$. Then $\chi_{1}\chi_{2} \neq \chi_{m,0}$. Moreover, $\b_{1} \ge 1-\frac{c_{1}}{\log(q_{1})}$ and $\b_{2} \ge 1-\frac{c_{2}}{\log(q_{2})}$ for some positive constants $c_{1}$ and $c_{2}$. Taking $c$ smaller, if necessary, we have $\min(\b_{1},\b_{2}) \ge 1-\frac{c}{\log(q_{1}q_{2})}$ which contradicts \cref{prop:product_of_quadratic_Dirichlet_L-functions_has_one_zero}.
     \end{proof}
-  \section{Estimating the Class Number of Quadratic Number Fields}
+  \section{The Class Number of Quadratic Number Fields}
     Recall that the Dirichlet class number formula gives a relationship between the class number $h_{d}$ of the quadratic number field $\Q(\sqrt{d})$ and the value of the Dirichlet $L$-function $L(s,\chi_{\D_{d}})$ at $s = 1$ where $\chi_{\D_{d}}$ is the quadratic character given by the Kronecker symbol. As $\chi_{\D_{d}}$ is a primitive quadratic character of conductor $|\D_{d}| > 1$ (recall \cref{thm:fundamental_discriminant_character_primitive}), we know from \cref{thm:non-vanishing_of_Dirichlet_L-functions_at_s=1} that $L(1,\chi_{\D_{d}})$ is finite and nonzero. It is interesting to know whether or not this value is computable in general so that we may obtain another formula for the class number. We will actually obtain a formula for $L(1,\chi)$ where $\chi$ is any primitive character $\chi$ of conductor $q > 1$. The computation is fairly straightforward and only requires some basic properties of Ramanujan and Gauss sums that we have already developed. The idea is to rewrite the character values $\chi(n)$ so that we can collapse the infinite series into a Taylor series. Our result is the following:
     
     \begin{theorem}\label{thm:Value_of_Dirichlet_L-functions_at_s=1}
@@ -513,7 +474,7 @@
       where $\e_{d}$ is a fundamental unit, according to if $d > 0$ or $d < 0$.
     \end{proposition}
     \begin{proof}
-      This follows from the Dirichlet class number formula and \cref{lem:Siegels_theorem_first_version_lemma} since $\D_{d} \asymp d$ (recall \cref{prop:discriminant_quadratic}).
+      This follows from the Dirichlet class number formula and \cref{lem:log_growth_of_Dirichlet_L-series_near_1} since $\D_{d} \asymp d$ (recall \cref{prop:discriminant_quadratic}).
     \end{proof}
 
     Effective lower bounds are difficult to obtain. However, if we allow the implicit constant to be ineffective we may use Siegel's theorem:
@@ -529,7 +490,20 @@
       This follows from the Dirichlet class number formula and Siegel's theorem since $\D_{d} \asymp d$ (recall \cref{prop:discriminant_quadratic}).
     \end{proof}
 
-    Of course, the constant in \cref{prop:class_number_lower_bound} is ineffective as we have made use of Siegel's theorem.
+    As a corollary we find that there are only finitely many imaginary quadratic number fields of a fixed class number:
+
+    \begin{corollary}\label{cor:finitely_many_imaginary_quadratic_of_fixed_class_number}
+      Let $n \ge 1$. Then there are finitely many imaginary quadratic number fields $\Q(\sqrt{d})$ of class number $n$.
+    \end{corollary}
+    \begin{proof}
+      By \cref{prop:class_number_lower_bound}, we see that $h_{d} \to \infty$ as $d \to -\infty$. The claim follows at once.
+    \end{proof}
+
+    It is in \cref{cor:finitely_many_imaginary_quadratic_of_fixed_class_number} that we can see where the ineffectiveness of Siegel's theorem becomes apparent. Indeed, although there are finitely many imaginary quadratic number fields of class number $n \ge 1$, we cannot use the bound
+    \[
+      h_{d} \ge c(\e)d^{\frac{1}{2}-\e},
+    \]
+    from \cref{prop:class_number_lower_bound} to reduce this to a finite computation because the constant $c(\e)$ is ineffective. In other words, we cannot obtain lower bound on $d$ as $d \to -\infty$ that tells us when all class numbers are larger than $n$.
   \section{The Burgess Bound for Dirichlet \texorpdfstring{$L$}{L}-functions}
     Let $\chi$ be a Dirichlet character modulo $m$. We call the sum
     \[
