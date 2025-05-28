@@ -128,7 +128,7 @@
       \[
         \L(s,\z) = \L(1-s,\z).
       \]
-      This is the functional equation of $\z(s)$ and in this case is just a reformulation of the previous functional equation. From it we find that the root number is $\e(\z) = 1$ and that $\z(s)$ is self-dual. We can now show that the order of $\z(s)$ is $1$. As there is only a simple pole at $s = 1$, multiply by $(s-1)$ to clear the polar divisor. As the integrals in \cref{equ:integral_representation_zeta_final} are locally absolutely uniformly convergent, computing the order amounts to estimating the gamma factor. Since the reciprocal of the gamma function is of order $1$, we have
+      This is the functional equation of $\z(s)$ and in this case is just a reformulation of the previous functional equation. From it we find that the root number is $\e(\z) = 1$ and that $\z(s)$ is self-dual. We can now show that the order of $\z(s)$ is $1$. Since there is only a simple pole at $s = 1$, multiply by $(s-1)$ to clear the polar divisor. As the integrals in \cref{equ:integral_representation_zeta_final} are locally absolutely uniformly convergent, computing the order amounts to estimating the gamma factor. Since the reciprocal of the gamma function is of order $1$, we have
       \[
         \frac{1}{\g(s,\z)} \ll_{\e} e^{|s|^{1+\e}}.
       \]
@@ -136,25 +136,11 @@
       \[
         (s-1)\z(s) \ll_{\e} e^{|s|^{1+\e}}.
       \]
-      This shows $(s-1)\z(s)$ is of order $1$, and thus $\z(s)$ is as well after removing the polar divisor. We now compute the residue of $\z(s)$ at $s = 1$:
-
-      \begin{proposition}\label{prop:zeta_residue}
-        \[
-          \Res_{s = 1}\z(s) = 1.
-        \]
-      \end{proposition}
-      \begin{proof}
-        The only term in \cref{equ:integral_representation_zeta_final} contributing to the pole is $-\frac{\pi^{\frac{s}{2}}}{\G\left(\frac{s}{2}\right)}\frac{1}{s(1-s)}$. Observe that
-        \[
-          \lim_{s \to 1}\frac{\pi^{\frac{s}{2}}}{\G\left(\frac{s}{2}\right)} = 1,
-        \]
-        because $\G\left(\frac{1}{2}\right) = \sqrt{\pi}$. Therefore
-        \[
-          \Res_{s = 1}\z(s) = \Res_{s = 1}\left(-\frac{\pi^{\frac{s}{2}}}{\G\left(\frac{s}{2}\right)}\frac{1}{s(1-s)}\right) = \lim_{s \to 1}\left(\frac{\pi^{\frac{s}{2}}}{\G\left(\frac{s}{2}\right)}\frac{1}{s}\right) = 1.
-        \]
-      \end{proof}
-
-      We summarize all of our work into the following theorem:
+      This shows $(s-1)\z(s)$ is of order $1$ and thus $\z(s)$ is as well after removing the polar divisor. We now compute the residue of $\z(s)$ at $s = 1$. First observe that the only term in \cref{equ:integral_representation_zeta_final} contributing to the pole is $-\frac{\pi^{\frac{s}{2}}}{\G\left(\frac{s}{2}\right)}\frac{1}{s(1-s)}$. Then
+      \[
+        \Res_{s = 1}\z(s) = \Res_{s = 1}\left(-\frac{\pi^{\frac{s}{2}}}{\G\left(\frac{s}{2}\right)}\frac{1}{s(1-s)}\right) = \lim_{s \to 1}\left(\frac{\pi^{\frac{s}{2}}}{\G\left(\frac{s}{2}\right)}\frac{1}{s}\right) = 1,
+      \]
+      where the second equality follows because $\G\left(\frac{1}{2}\right) = \sqrt{\pi}$. We summarize all of our work into the following theorem:
 
       \begin{theorem}\label{thm:zeta_Selberg}
         $\z(s)$ is a primitive Selberg class $L$-function. For $\s > 1$, it has a degree $1$ Euler product given by
@@ -172,7 +158,7 @@
       \[
         \lim_{s \to 1}(s-1)\L(s,\z) = \Res_{s = 1}\z(s)\lim_{s \to 1}\pi^{-\frac{s}{2}}\G\left(\frac{s}{2}\right) = 1.
       \]
-      In other words, $\L(s,\z)$ has a simple pole at $s = 1$ with residue $1$ too. Since the completed Riemann zeta function is completely symmetric as $s \mapsto 1-s$, it has a simple pole at $s = 0$ with residue $1$. Hence
+      In other words, $\L(s,\z)$ has a simple pole at $s = 1$ of residue $1$ too. It follows that $\L(s,\z)$ also has a simple pole at $s = 0$ of residue $1$. Hence
       \[
         1 = \lim_{s \to 1}(s-1)\L(1-s,\z) = \Res_{s = 1}\G\left(\frac{1-s}{2}\right)\lim_{s \to 1}\pi^{-\frac{1-s}{2}}\z(1-s) = -2\z(0),
       \]
@@ -714,7 +700,7 @@
         This completes the proof.
       \end{proof}
 
-      Since the residue of $\z(s)$ at $s = 1$ is $1$, the analytic class number formula gives a relationship between the value of Dirichlet $L$-functions at $s = 1$ and the class number of quadratic number fields. This is known as the \textbf{Dirichlet class number formula}\index{Dirichlet class number formula}:
+      Since the residue of $\z(s)$ at its pole is $1$, the analytic class number formula gives a relationship between the value of Dirichlet $L$-functions at $s = 1$ and the class number of quadratic number fields. This is known as the \textbf{Dirichlet class number formula}\index{Dirichlet class number formula}:
 
       \begin{corollary}[Dirichlet class number formula]
         Let $\Q(\sqrt{d})$ be a quadratic number field and let $\chi_{\D_{d}}$ be the quadratic character given by the Kronecker symbol. Then
@@ -724,7 +710,7 @@
         where $\e_{d}$ is a fundamental unit, according to if $d > 0$ or $d < 0$.
       \end{corollary}
       \begin{proof}
-        Let $(r_{1},r_{2})$ be the signature of $\Q(\sqrt{d})$. Combining \cref{thm:factorization_of_Dedekind_of_quadratic_number_field} with the analytic class number formula and \cref{prop:zeta_residue} gives
+        Let $(r_{1},r_{2})$ be the signature of $\Q(\sqrt{d})$. Combining \cref{thm:factorization_of_Dedekind_of_quadratic_number_field} with the analytic class number formula and that the residue of $\z(s)$ at its pole is $1$ gives
         \[
           L(1,\chi_{\D_{d}}) = \frac{2^{r_{1}}(2\pi)^{r_{2}}h_{d}R_{d}}{w_{d}\sqrt{|\D_{d}|}}.
         \]
@@ -1294,7 +1280,7 @@
           y^{s}\L(2s,\z)+y^{1-s}\L(2(1-s),\z).
         \end{equation}
         Notice $\L(2s,\z)$ has simple poles at $s = 0$, $s = \frac{1}{2}$ (one from the Riemann zeta function and one from the gamma factor) and no others. It follows that $E^{\ast}(z,s)$ has a simple pole at $s = 0$ coming from the $y^{s}$ term in
-        \cref{equ:constant_coefficient_of_completed_non-holomorphic_Eisenstein_series}, and by the functional equation there is also a pole at $s = 1$ coming from the $y^{1-s}$ term. At $s = \frac{1}{2}$, both terms in \cref{equ:constant_coefficient_of_completed_non-holomorphic_Eisenstein_series} have simple poles and we will show that the singularity there is removable. Recall $\G\left(\frac{1}{2}\right) = \sqrt{\pi}$. Also, by \cref{prop:zeta_residue}, $\Res_{s = \frac{1}{2}}\z(2s) = \frac{1}{2}$ and $\Res_{s = \frac{1}{2}}\z(2(1-s)) = -\frac{1}{2}$. So altogether
+        \cref{equ:constant_coefficient_of_completed_non-holomorphic_Eisenstein_series}, and by the functional equation there is also a pole at $s = 1$ coming from the $y^{1-s}$ term. At $s = \frac{1}{2}$, both terms in \cref{equ:constant_coefficient_of_completed_non-holomorphic_Eisenstein_series} have simple poles and we will show that the singularity there is removable. Since the residues of $\L(s,\z)$ at its poles are both $1$, we have $\Res_{s = \frac{1}{2}}\L(2s) = \frac{1}{2}$ and $\Res_{s = \frac{1}{2}}\L(2(1-s)) = -\frac{1}{2}$. Then
         \[
           \Res_{s = \frac{1}{2}}E^{\ast}(z,s) = \Res_{s = \frac{1}{2}}[y^{s}\L(2s,\z)+y^{1-s}\L(2(1-s),\z)] = \frac{1}{2}y^{\frac{1}{2}}-\frac{1}{2}y^{\frac{1}{2}} = 0.
         \]
@@ -1354,23 +1340,11 @@
       \[
         (s-1)L(s,f \ox g) \ll_{\e} e^{|s|^{1+\e}}.
       \]
-      Thus $(s-1)L(s,f \ox g)$ is of order $1$, and so $L(s,f \ox g)$ is as well after removing the polar divisor. At last, we compute the residue of $L(s,f \ox g)$ at $s = 1$:
-
-      \begin{proposition}
-        Let $f,g \in \mc{S}_{k}(1)$ be primitive Hecke eigenforms. Then
-        \[
-          \Res_{s = 1}L(s,f \ox g) = \frac{4^{k}\pi^{k+1}V}{2\G(k)}\<f,g\>,
-        \]
-        where $\<f,g\>$ is the Petersson inner product.
-      \end{proposition}
-      \begin{proof}
-        As $V = \frac{\pi}{3}$, \cref{equ:completed_real-analytic_Eisenstein_series_residues} implies
-        \[
-          \Res_{s = 1}L(s,f \ox g) = \frac{4^{k}\pi^{k+1}}{\G(k)}\Res_{s = 1}\int_{\mc{F}}f(z)\conj{g(z)}\Im(z)^{k}E^{\ast}(z,s)\,d\mu = \frac{4^{k}\pi^{k+1}V}{2\G(k)}\<f,g\>.
-        \]
-      \end{proof}
-
-      Notice that if $f = g$, then $\<f,f\> \neq 0$ and therefore the residue at $s = 1$ is not zero and hence not a removable singularity. Actually, this is the only instance in which there is a pole since \cref{thm:newforms_characterization_holomorphic} implies that the primitive Hecke eigenforms are orthogonal so that $\<f,g\> = 0$ unless $f = g$. We summarize all of our work into the following theorem:
+      Thus $(s-1)L(s,f \ox g)$ is of order $1$, and so $L(s,f \ox g)$ is as well after removing the polar divisor. We now compute the residue of $L(s,f \ox g)$ at $s = 1$. As $V = \frac{\pi}{3}$, \cref{equ:completed_real-analytic_Eisenstein_series_residues} implies
+      \[
+        \Res_{s = 1}L(s,f \ox g) = \frac{4^{k}\pi^{k+1}}{\G(k)}\int_{\mc{F}}f(z)\conj{g(z)}\Im(z)^{k}\Res_{s = 1}E^{\ast}(z,s)\,d\mu = \frac{4^{k}\pi^{k+1}V}{2\G(k)}\<f,g\>.
+      \]
+      By \cref{thm:newforms_characterization_holomorphic}, $\<f,g\> \neq 0$ if and only if $f = g$. Therefore the pole at $s = 1$ is a removable singularity unless $f = g$. We summarize all of our work into the following theorem:
 
       \begin{theorem}
         For any two primitive Hecke eigenforms $f,g \in \mc{S}_{k}(1)$, $L(s,f \ox g)$ is the Rankin-Selberg convolution of $L(s,f)$ and $L(s,g)$ and is a Selberg class $L$-function. For $\s > 1$, it has a degree $4$ Euler product given by
