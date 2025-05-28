@@ -364,7 +364,7 @@
         \]
       \end{remark}
 
-      We will see that $\z_{K}(s)$ is a Selberg class $L$-function (note that $\z_{K}(s) = \z(s)$ when $d = 1$). We have already shown that the coefficients $a_{K}(n)$ are multiplicative and satisfy $a_{K}(n) \ll_{\e} n^{\e}$ by \cref{equ:ideals_of_fixed_norm_bound} (recall \cref{prop:sum_of_divisors_growth_rate}). By \cref{prop:Dirichlet_series_Euler_product}, $\z_{K}(s)$ is locally absolutely uniformly convergent for $\s > 1$ and admits the following infinite product expression:
+      We will see that $\z_{K}(s)$ is a Selberg class $L$-function (note that $\z_{K}(s) = \z(s)$ when $d = 1$). We have already seen that the coefficients $a_{K}(n)$ are multiplicative and satisfy $a_{K}(n) \ll_{\e} n^{\e}$. By \cref{prop:Dirichlet_series_Euler_product}, $\z_{K}(s)$ is locally absolutely uniformly convergent for $\s > 1$ and admits the following infinite product expression:
       \[
         \z_{K}(s) = \prod_{p}\left(\sum_{n \ge 0}\frac{a_{K}(p^{n})}{p^{hs}}\right).
       \]
@@ -1033,7 +1033,7 @@
       We can still obtain analytic continuation of the $L$-series $L(s,f)$ if $f$ is not a primitive Hecke-Maass eigenform. Similarly to the Hecke $L$-function case, this holds because the primitive Hecke-Maass eigenforms form a basis for the space of newforms:
 
       \begin{theorem}\label{thm:analytic_continuation_Hecke-Maass}
-        For any $f \in \mc{C}_{\nu}(\G_{1}(N))$, $L(s,f)$ is locally absolutely uniformly convergent for $\s > 1$ and admits analytic continuation to $\C$
+        For any $f \in \mc{C}_{\nu}(\G_{1}(N))$, $L(s,f)$ is locally absolutely uniformly convergent for $\s > 1$ and admits analytic continuation to $\C$.
       \end{theorem}
       \begin{proof}
         Argue as in the proof of \cref{thm:analytic_continuation_Hecke}.
@@ -1133,9 +1133,8 @@
       \begin{lemma}\label{lem:Ramanujan_zeta_relation}
         For $\s > 1$ and $b \in \Z$,
         \[
-          \sum_{m \ge 1}\frac{r(b,m)}{m^{2s}} = \begin{cases} \frac{\z(2s-1)}{\z(2s)} & \text{if $b = 0$}, \\ \frac{\s_{1-2s}(|b|)}{\z(2s)} & \text{if $b \neq 0$}, \end{cases}
+          \sum_{m \ge 1}\frac{r(b,m)}{m^{2s}} = \begin{cases} \frac{\z(2s-1)}{\z(2s)} & \text{if $b = 0$}, \\ \frac{\s_{1-2s}(b)}{\z(2s)} & \text{if $b \neq 0$}. \end{cases}
         \]
-        where $\s_{s}(b)$ is the generalized sum of divisors function.
       \end{lemma}
       \begin{proof}
         If $\s > 1$ then the desired evaluation of the sum is locally absolutely uniformly convergent because the Riemann zeta function is in that region. Hence the sum will be too provided we prove the identity. Suppose $b = 0$. Then $r(0,m) = \vphi(m)$. Since $\vphi(m)$ is multiplicative we have
@@ -1162,8 +1161,7 @@
           &= \sum_{\ell \mid b}\ell\sum_{m \ge 1}\frac{\mu(m)}{(m\ell)^{2s}} \\
           &= \left(\sum_{\ell \mid b}\ell^{1-2s}\right)\left(\sum_{m \ge 1}\frac{\mu(m)}{m^{2s}}\right) \\
           &= \s_{1-2s}(b)\sum_{m \ge 1}\frac{\mu(m)}{m^{2s}} \\
-          &= \s_{1-2s}(|b|)\sum_{m \ge 1}\frac{\mu(m)}{m^{2s}} \\
-          &= \frac{\s_{1-2s}(|b|)}{\z(2s)} && \text{\cref{prop:Dirichlet_Mobius_is_zeta_inverse}}.
+          &= \frac{\s_{1-2s}(b)}{\z(2s)} && \text{\cref{prop:Dirichlet_Mobius_is_zeta_inverse}}.
         \end{align*}
       \end{proof}
 
@@ -1172,7 +1170,7 @@
       \begin{proposition}\label{prop:Fourier_coefficients_of_real-analytic_Eisenstein_series}
         The Fourier-Whittaker series of $E(z,s)$ is given by
         \[
-          E(z,s) = y^{s}+y^{1-s}\frac{\sqrt{\pi}\G\left(s-\frac{1}{2}\right)\z(2s-1)}{\G(s)\z(2s)}+\sum_{t \ge 1}\left(\frac{2\pi^{s}|t|^{s-\frac{1}{2}\s_{1-2s}(|t|)}}{\G(s)\z(2s)}\sqrt{y}K_{s-\frac{1}{2}}(2\pi|t|y)\right)e^{2\pi itx}.
+          E(z,s) = y^{s}+y^{1-s}\frac{\sqrt{\pi}\G\left(s-\frac{1}{2}\right)\z(2s-1)}{\G(s)\z(2s)}+\sum_{t \ge 1}\left(\frac{2\pi^{s}|t|^{s-\frac{1}{2}}\s_{1-2s}(t)}{\G(s)\z(2s)}\sqrt{y}K_{s-\frac{1}{2}}(2\pi|t|y)\right)e^{2\pi itx}.
         \]
       \end{proposition}
       \begin{proof}
@@ -1218,7 +1216,7 @@
       \end{align*}
       By applying \cref{lem:Ramanujan_zeta_relation} to compute the Dirichlet series of Ramanujan sums, we obtain the desired Fourier-Whittaker series:
       \[
-        E(z,s) = y^{s}+y^{1-s}\frac{\sqrt{\pi}\G\left(s-\frac{1}{2}\right)\z(2s-1)}{\G(s)\z(2s)}+\sum_{t \ge 1}\left(\frac{2\pi^{s}|t|^{s-\frac{1}{2}\s_{1-2s}(|t|)}}{\G(s)\z(2s)}\sqrt{y}K_{s-\frac{1}{2}}(2\pi|t|y)\right)e^{2\pi itx}.
+        E(z,s) = y^{s}+y^{1-s}\frac{\sqrt{\pi}\G\left(s-\frac{1}{2}\right)\z(2s-1)}{\G(s)\z(2s)}+\sum_{t \ge 1}\left(\frac{2\pi^{s}|t|^{s-\frac{1}{2}}\s_{1-2s}(t)}{\G(s)\z(2s)}\sqrt{y}K_{s-\frac{1}{2}}(2\pi|t|y)\right)e^{2\pi itx}.
       \]
       \end{proof}
 
@@ -1232,31 +1230,31 @@
       \]
        are given by
       \[
-        a^{\ast}(n,y,s) = \begin{cases} y^{s}\pi^{-s}\G(s)\z(2s)+y^{1-s}\pi^{-\left(s-\frac{1}{2}\right)}\G(s-\frac{1}{2})\z(2s-1) & \text{if $n = 0$}, \\ 2|n|^{s-\frac{1}{2}}\s_{1-2s}(|n|)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y) & \text{if $n \neq 0$}. \end{cases}
+        a^{\ast}(n,y,s) = \begin{cases} y^{s}\pi^{-s}\G(s)\z(2s)+y^{1-s}\pi^{-\left(s-\frac{1}{2}\right)}\G(s-\frac{1}{2})\z(2s-1) & \text{if $n = 0$}, \\ 2|n|^{s-\frac{1}{2}}\s_{1-2s}(n)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y) & \text{if $n \neq 0$}. \end{cases}
       \]
       We can now derive a functional equation for $E^{\ast}(z,s)$. Using the definition and functional equation for $\L(2s-1,\z)$, we can rewrite the second term in the constant coefficient to get
       \begin{equation}\label{equ:Fourier_coefficients_for_completed_real-analytic_Eisenstein_series}
-        a^{\ast}(n,y,s) = \begin{cases} y^{s}\L(2s,\z)+y^{1-s}\L(2(1-s),\z) & \text{if $n = 0$}, \\ 2|n|^{s-\frac{1}{2}}\s_{1-2s}(|n|)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y) & \text{if $n \neq 0$}. \end{cases}
+        a^{\ast}(n,y,s) = \begin{cases} y^{s}\L(2s,\z)+y^{1-s}\L(2(1-s),\z) & \text{if $n = 0$}, \\ 2|n|^{s-\frac{1}{2}}\s_{1-2s}(n)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y) & \text{if $n \neq 0$}. \end{cases}
       \end{equation}
-      Now observe that the constant coefficient is invariant under $s \mapsto 1-s$. Each $n \neq 0$ coefficient is also invariant under $s \mapsto 1-s$. To see this we will use two facts. First, from \cref{append:Bessel_Functions}, $K_{s}(y)$ is invariant under $s \mapsto -s$ and so $K_{s-\frac{1}{2}}(2\pi|n|y)$ is invariant as $s \mapsto 1-s$. Second, for $n \ge 1$ we have
+      Now observe that the constant coefficient is invariant under $s \mapsto 1-s$. Each $n \neq 0$ coefficient is also invariant under $s \mapsto 1-s$. To see this we will use two facts. First, from \cref{append:Bessel_Functions}, $K_{s}(y)$ is invariant under $s \mapsto -s$ and so $K_{s-\frac{1}{2}}(2\pi|n|y)$ is invariant as $s \mapsto 1-s$. Second, for $n \neq 0$ we have
       \[
-        n^{s-\frac{1}{2}}\s_{1-2s}(n) = n^{\frac{1}{2}-s}n^{2s-1}\s_{1-2s}(n) = n^{\frac{1}{2}-s}n^{2s-1}\sum_{d \mid n}d^{1-2s} = n^{\frac{1}{2}-s}\sum_{d \mid n}\left(\frac{n}{d}\right)^{2s-1} = n^{\frac{1}{2}-s}\s_{2s-1}(n),
+        |n|^{s-\frac{1}{2}}\s_{1-2s}(n) = |n|^{\frac{1}{2}-s}|n|^{2s-1}\s_{1-2s}(n) = |n|^{\frac{1}{2}-s}|n|^{2s-1}\sum_{d \mid n}d^{1-2s} = |n|^{\frac{1}{2}-s}\sum_{d \mid n}\left(\frac{|n|}{d}\right)^{2s-1} = |n|^{\frac{1}{2}-s}\s_{2s-1}(n),
       \]
-      where the second to last equality follows by writing $n^{2s-1} = \left(\frac{n}{d}\right)^{2s-1}d^{2s-1}$ for each $d \mid n$. These two facts together give the invariance of the $n \neq 0$ coefficients under $s \mapsto 1-s$. Altogether, we have shown the following functional equation for $E^{\ast}(z,s)$:
+      where the second to last equality follows by writing $|n|^{2s-1} = \left(\frac{|n|}{d}\right)^{2s-1}d^{2s-1}$ for each $d \mid n$. These two facts together give the invariance of the $n \neq 0$ coefficients under $s \mapsto 1-s$. Altogether, we have shown the following functional equation for $E^{\ast}(z,s)$:
       \[
         E^{\ast}(z,s) = E^{\ast}(z,1-s).
       \]
       We can now obtain meromorphic continuation of $E^{\ast}(z,s)$ in $s$ to all of $\C$ for any $z \in \H$. We first write $E^{\ast}(z,s)$ as a Fourier-Whittaker series using \cref{equ:Fourier_coefficients_for_completed_real-analytic_Eisenstein_series}:
       \[
-        E^{\ast}(z,s) = y^{s}\L(2s,\z)+y^{1-s}\L(2(1-s),\z)+\sum_{n \neq 0}2|n|^{s-\frac{1}{2}}\s_{1-2s}(|n|)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y)e^{2\pi inx}.
+        E^{\ast}(z,s) = y^{s}\L(2s,\z)+y^{1-s}\L(2(1-s),\z)+\sum_{n \neq 0}2|n|^{s-\frac{1}{2}}\s_{1-2s}(n)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y)e^{2\pi inx}.
       \]
       Since $\L(2s,\z)$ is meromorphic on $\C$, the constant term of $E^{\ast}(z,s)$ is as well. To finish the meromorphic continuation of $E^{\ast}(z,s)$ it now suffices to show
       \[
-        \sum_{n \neq 0}2|n|^{s-\frac{1}{2}}\s_{1-2s}(|n|)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y)e^{2\pi inx},
+        \sum_{n \neq 0}2|n|^{s-\frac{1}{2}}\s_{1-2s}(n)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y)e^{2\pi inx},
       \]
-      is meromorphic on $\C$. We will actually prove it is locally absolutely uniformly convergent. So let $K$ be a compact subset of $\C$. Then we have to show $E^{\ast}(z,s)$ is absolutely convergent on $K$ for any $z \in \H$. To achieve this we need two bounds, one for $\s_{1-2s}(|n|)$ and one for $K_{s-\frac{1}{2}}(2\pi|n|y)$. For the first bound, we use the estimate $\s_{0}(|n|) \ll_{\e} |n|^{\e}$ (recall \cref{prop:sum_of_divisors_growth_rate}). Therefore we have the crude bound
+      is meromorphic on $\C$. We will actually prove it is locally absolutely uniformly convergent. So let $K$ be a compact subset of $\C$. Then we have to show $E^{\ast}(z,s)$ is absolutely convergent on $K$ for any $z \in \H$. To achieve this we need two bounds, one for $\s_{1-2s}(n)$ and one for $K_{s-\frac{1}{2}}(2\pi|n|y)$. For the first bound, we use the estimate $\s_{0}(n) \ll_{\e} n^{\e}$ (recall \cref{prop:sum_of_divisors_growth_rate}) to derive that
       \[
-        \s_{1-2s}(|n|) = \sum_{d \mid n}d^{1-2s} < \s_{0}(|n|)|n|^{1-2s} \ll_{\e}|n|^{1-2s+\e}.
+        \s_{1-2s}(n) = \sum_{d \mid n}d^{1-2s} \ll \s_{0}(n)n^{1-2s} \ll_{\e}n^{1-2s+\e}.
       \]
       For the second bound, \cref{lem:K_Bessel_function_asymptotic} implies
       \[
@@ -1264,7 +1262,7 @@
       \]
       Using these two bounds, we have
       \begin{equation}\label{equ:non-constant_Fourier_coefficient_bound_non-holomorphic_Eisenstein_series}
-        \sum_{n \neq 0}2|n|^{s-\frac{1}{2}}\s_{1-2s}(|n|)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y)e^{2\pi inx} \ll_{\e} \sum_{n \ge 1}n^{\frac{1}{2}-s+\e}\sqrt{y}e^{-2\pi ny}.
+        \sum_{n \neq 0}2|n|^{s-\frac{1}{2}}\s_{1-2s}(n)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y)e^{2\pi inx} \ll_{\e} \sum_{n \ge 1}n^{\frac{1}{2}-s+\e}\sqrt{y}e^{-2\pi ny}.
       \end{equation}
       This latter series is absolutely uniformly convergent on $K$ by the Weierstrass $M$-test. Therefore $E^{\ast}(z,s)$ is absolutely convergent on $K$ for any $z \in \H$ and the meromorphic continuation to $\C$ follows. It remains to investigate the poles and residues. We will accomplish this from direct inspection of the Fourier-Whittaker coefficients:
 
@@ -1299,7 +1297,7 @@
       This integral representation will give analytic continuation. To see this, note that the gamma functions are analytic for $\s < 0$. By the functional equation for $E^{\ast}(z,s)$, the integral is invariant as $s \mapsto 1-s$. These two facts together give analytic continuation to $\C$ outside of the critical strip. The continuation inside of the critical strip will be meromorphic because of the poles of $E^{\ast}(z,s)$. To see this, substituting the Fourier-Whittaker series for $E^{\ast}(z,s)$ into \cref{equ:integral_representation_Rankin-Selberg_final} gives
       \begin{align*}
         L(s,f \ox g) &= \frac{(4\pi)^{s+k-1}\pi^{s}}{\G(s+k-1)\G(s)}\Bigg[\int_{\mc{F}}f(x+iy)\conj{g(x+iy)}y^{k}(y^{s}\L(2s,\z)+y^{1-s}\L(2(1-s),\z))\,\frac{dx\,dy}{y^{2}} \\
-        &+\int_{\mc{F}}f(x+iy)\conj{g(x+iy)}y^{k}\sum_{n \neq 0}2|n|^{s-\frac{1}{2}}\s_{1-2s}(|n|)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y)e^{2\pi inx}\,\frac{dx\,dy}{y^{2}}\Bigg],
+        &+\int_{\mc{F}}f(x+iy)\conj{g(x+iy)}y^{k}\sum_{n \neq 0}2|n|^{s-\frac{1}{2}}\s_{1-2s}(n)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y)e^{2\pi inx}\,\frac{dx\,dy}{y^{2}}\Bigg],
       \end{align*}
       and we are reduced to showing that both integrals are locally absolutely uniformly convergent in the critical strip and distance $\e$ away from the poles of $E^{\ast}(z,s)$. Indeed, the first integral is locally absolutely uniformly convergent in this region since the exponential decay of $f$ and $g$ imply that the integrand is bounded and we are integrating over a region of finite volume. As for the second integral, since $s$ is in the critical strip $0 \le \s \le 1$ and so \cref{equ:non-constant_Fourier_coefficient_bound_non-holomorphic_Eisenstein_series} implies that it is
       \[
