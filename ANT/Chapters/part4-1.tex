@@ -185,18 +185,18 @@
       for $-\d' < s < 1$. As $\d' > 0$, this implies that $D(s)$ converges absolutely (since $a(n)$ is nonnegative) for some $s < 0$ (say $s = -\frac{\d'}{2}$) which contradicts $\s_{a} = 0$.
     \end{proof}
     
-     Generally speaking, if the coefficients $a(n)$ are chosen at random, $D(s)$ will not possess any good properties outside of convergence in some region (it might not even possess that). However, most of the Dirichlet series we will encounter will have multiplicative coefficients that exhibit polynomial growth. These Dirichlet series admits infinite product expressions:
+     Generally speaking, if the coefficients $a(n)$ are chosen at random, $D(s)$ will not possess any good properties outside of convergence in some region (it might not even possess that). However, many Dirichlet series of interest will have coefficients that exhibit polynomial growth and are multiplicative. These Dirichlet series admits infinite product expressions:
 
     \begin{proposition}\label{prop:Dirichlet_series_Euler_product}
-        Suppose the coefficients $a(n)$ of a Dirichlet series $D(s)$ are multiplicative and satisfy $a(n) \ll_{\a} n^{\a}$ for some real $\a \ge 0$. Then
+        Suppose the coefficients $a(n)$ of a Dirichlet series $D(s)$ are multiplicative and satisfy $a(n) \ll_{\a} n^{\a}$ for some real $\a \ge 0$. Then $D(s)$ converges absolutely for $\s > 1+\a$ and admits the infinite product expression
         \[
           D(s) = \prod_{p}\left(\sum_{k \ge 0}\frac{a(p^{k})}{p^{ks}}\right),
         \]
-        for $\s > 1+\a$. Conversely, suppose that there are coefficients $a(n)$ such that
+        in this region. Conversely, suppose that there are coefficients $a(n)$ such that
         \[
           \prod_{p}\left(\sum_{k \ge 0}\left|\frac{a(p^{k})}{p^{ks}}\right|\right),
         \]
-        converges for $\s > 1+\a$. Then the equality above defines a Dirichlet series $D(s)$ that converges absolutely in this region too. Moreover, if the coefficients $a(n)$ are completely multiplicative, then
+        converges for $\s > 1+\a$. Then the Dirichlet series $D(s)$ converges absolutely in this region and satisfies the former infinite product expression. Moreover, if the coefficients $a(n)$ are completely multiplicative in either case, then
         \[
           D(s) = \prod_{p}(1-a(p)p^{-s})^{-1},
         \]
@@ -207,7 +207,7 @@
         \[
           \sum_{k \ge 0}\left|\frac{a(p^{k})}{p^{ks}}\right| < \sum_{n \ge 1}\left|\frac{a(n)}{n^{s}}\right|,
         \]
-        the infinite series on the left converges because the right does by the absolute convergence of $D(s)$. Now let $N > 0$ be an integer. Then by the fundamental theorem of arithmetic
+        the infinite series on the left converges because the right does by the absolute convergence of $D(s)$. Now let $N > 0$ be an integer. By the fundamental theorem of arithmetic
         \begin{equation}\label{equ:Dirichlet_series_Euler_product_1}
           \prod_{p < N}\left(\sum_{k \ge 0}\frac{a(p^{k})}{p^{ks}}\right) = \sum_{n < N}\frac{a(n)}{n^{s}}+\asum_{n \ge N}\frac{a(n)}{n^{s}},
         \end{equation}
@@ -223,17 +223,17 @@
         \[
           \sum_{n \ge 1}\left|\frac{a(n)}{n^{s}}\right|,
         \]
-        and the second sum is part of its tail. So the first sum must convergence hence defining an absolutely convergent Dirichlet series in $\s > 1+\a$, and the second sum must tend to zero. Lastly, if the $a(n)$ are completely multiplicative the formula for a geometric series gives
+        and the second sum is part of its tail. So the first sum must convergence hence defining an absolutely convergent Dirichlet series in $\s > 1+\a$, and the second sum must tend to zero. Lastly, if the $a(n)$ are completely multiplicative we have
         \[
           \prod_{p}\left(\sum_{k \ge 0}\frac{a(p^{k})}{p^{ks}}\right) = \prod_{p}\left(\sum_{k \ge 0}\left(\frac{a(p)}{p^{s}}\right)^{k}\right) = \prod_{p}(1-a(p)p^{-s})^{-1}.
         \]
     \end{proof}
 
-    Note that in \cref{prop:Dirichlet_series_Euler_product}, the requirement for a product to define an absolutely convergent Dirichlet series is that the series defining the factors in the product must be absolutely convergent. This is always the case for convergent geometric series and hence Dirichlet series whose coefficients are multiplicative and exhibit polynomial growth. Now suppose $D(s)$ is a Dirichlet series that has the product expression
+    Now suppose $D(s)$ is a Dirichlet series that has a product expression
     \[
-      D(s) = \prod_{p}(1-\a_{1}(p)p^{-s})^{-1}(1-\a_{2}(p)p^{-s})^{-1} \cdots (1-\a_{d}(p)p^{-s})^{-1}.
+      D(s) = \prod_{p}(1-\a_{1}(p)p^{-s})^{-1}(1-\a_{2}(p)p^{-s})^{-1} \cdots (1-\a_{d}(p)p^{-s})^{-1},
     \]
-    We call this product the \textbf{Euler product}\index{Euler product} of $D(s)$, and it is said to be of \textbf{degree}\index{degree} $d$. In \cref{prop:Dirichlet_series_Euler_product}, complete multiplicativity of the coefficients is enough to guarantee that $D(s)$ has an Euler product of degree $1$, but in general $D(s)$ will admit an Euler product of degree $d > 1$ if the coefficients are only multiplicative but satisfy additional properties like a recurrence relation. If $D(s)$ has an Euler product, then for any $N \ge 1$ we let $D_{(N)}(s)$ denote the Dirichlet series with the factors $p \mid N$ in the Euler product removed. Then
+    for $\s > \s_{a}$ and some $\a_{i}(p) \in \C$ for $1 \le i \le d$ and all primes $p$. We call this product the \textbf{Euler product}\index{Euler product} of $D(s)$, and it is said to be of \textbf{degree}\index{degree} $d$. In \cref{prop:Dirichlet_series_Euler_product}, complete multiplicativity of the coefficients is enough to guarantee that $D(s)$ has an Euler product of degree $1$, but in general $D(s)$ will admit an Euler product of degree $d > 1$ if the coefficients are merely multiplicative but satisfy additional properties like a recurrence relation. If $D(s)$ has an Euler product, then for any $N \ge 1$ we let $D_{(N)}(s)$ denote the Dirichlet series with the factors $p \mid N$ in the Euler product removed. Then
     \[
       D_{(N)}(s) = D(s)\prod_{p \mid N}(1-\a_{1}(p)p^{-s})(1-\a_{2}(p)p^{-s}) \cdots (1-\a_{d}(p)p^{-s}).
     \]

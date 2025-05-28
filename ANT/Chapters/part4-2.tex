@@ -6,11 +6,11 @@
       \[
         \z(s) = \sum_{n \ge 1}\frac{1}{n^{s}}.
       \]
-      This is the prototypical example of a Dirichlet series as all the coefficients are $1$. We will see that $\z(s)$ is a primitive Selberg class $L$-function. As the coefficients are uniformly constant, $\z(s)$ is locally absolutely uniformly convergent for $\s > 1$. Also note that $\z(s)$ is necessarily nonzero in this region. Determining the Euler product is also an easy matter. As the coefficients are obviously completely multiplicative, we have the degree $1$ Euler product:
+      This is the prototypical example of a Dirichlet series as all the coefficients are $1$. We will see that $\z(s)$ is a primitive Selberg class $L$-function. As the coefficients are uniformly bounded and completely multiplicative, $\z(s)$ is locally absolutely uniformly convergent for $\s > 1$ and admits the following degree $1$ Euler product by \cref{prop:Dirichlet_series_Euler_product}:
       \[
-        \z(s) = \prod_{p}(1-p^{-s})^{-1},
+        \z(s) = \prod_{p}(1-p^{-s})^{-1}.
       \]
-      in this region as well. The local factor at $p$ is
+      The local factor at $p$ is
       \[
         \z_{p}(s) = (1-p^{-s})^{-1},
       \]
@@ -183,11 +183,11 @@
       \[
         L(s,\chi) = \sum_{n \ge 1}\frac{\chi(n)}{n^{s}}.
       \]
-      Since $\chi(n) = 0$ if $(n,m) > 1$, the above sum can be restricted to all positive integers relatively prime to $m$. We will see that $L(s,\chi)$ is a Selberg class $L$-function if $\chi$ is primitive and of conductor $q > 1$ (in the case $q = 1$, $L(s,\chi) = \z(s)$). From now we make this assumption about $\chi$. As $|\chi(n)| \ll 1$, $L(s,\chi)$ is locally absolutely uniformly convergent for $\s > 1$. Because $\chi$ is completely multiplicative we also have the degree $1$ Euler product:
+      Since $\chi(n) = 0$ if $(n,m) > 1$, the above sum can be restricted to all positive integers relatively prime to $m$. We will see that $L(s,\chi)$ is a Selberg class $L$-function if $\chi$ is primitive and of conductor $q > 1$ (in the case $q = 1$, $L(s,\chi) = \z(s)$). From now we make this assumption about $\chi$. As the coefficients are uniformly bounded and $\chi$ is completely multiplicative, $L(s,\chi)$ is locally absolutely uniformly convergent for $\s > 1$ and admits the following degree $1$ Euler product by \cref{prop:Dirichlet_series_Euler_product}:
       \[
         L(s,\chi) = \prod_{p}(1-\chi(p)p^{-s})^{-1} = \prod_{p \nmid q}(1-\chi(p)p^{-s})^{-1},
       \]
-      in this region as well. The last equality holds because if $p \mid q$ we have $\chi(p) = 0$. The local factor at $p$ is
+      where the second equality holds because if $p \mid q$ we have $\chi(p) = 0$. The local factor at $p$ is
       \[
         L_{p}(s,\chi) = 1 \quad \text{or} \quad L_{p}(s,\chi) = (1-\chi(p)p^{-s})^{-1},
       \]
@@ -343,14 +343,21 @@
         \]
       \end{theorem}
     \subsection*{Beyond Primitivity}
-      We can still obtain meromorphic continuation of the $L$-series $L(s,\chi)$ if $\chi$ is imprimitive. Indeed, if $\chi$ is induced by $\wtilde{\chi}$, then $\chi(p) = \wtilde{\chi}(p)$ if $p \nmid q$ and $\chi(p) = 0$ if $p \mid m$. Moreover, $\chi$ is completely multiplicative so we have a degree $1$ Euler product:
+      We can still obtain meromorphic continuation of the $L$-series $L(s,\chi)$ if $\chi$ is imprimitive. 
+      
+      
+      Indeed, if $\chi$ is induced by $\wtilde{\chi}$, then $\chi(p) = \wtilde{\chi}(p)$ if $p \nmid q$ and $\chi(p) = 0$ if $p \mid m$. Then just as for primitive characters, \cref{prop:Dirichlet_series_Euler_product} implies that $L(s,\chi)$ is locally absolutely uniformly convergent for $\s > 1$ and admits the following degree $1$ Euler product:
       \begin{equation}\label{equ:non-primitive_primitive_Dirichlet_L-series_relation}
         L(s,\chi) = \prod_{p \nmid m}(1-\wtilde{\chi}(p)p^{-s})^{-1} = \prod_{p}(1-\wtilde{\chi}(p)p^{-s})^{-1}\prod_{p \mid m}(1-\wtilde{\chi}(p)p^{-s}) = L(s,\wtilde{\chi})\prod_{p \mid m}(1-\wtilde{\chi}(p)p^{-s}).
       \end{equation}
       From this relation, we can prove the following:
 
       \begin{theorem}\label{thm:analytic_continuation_Dirichlet}
-        For any Dirichlet character $\chi$ modulo $m$ of conductor $q > 1$, $L(s,\chi)$ admits meromorphic continuation to $\C$ and if $\chi$ is principal there is a simple pole at $s = 1$ of residue $\prod_{p \mid m}(1-\wtilde{\chi}(p)p^{-1})$ where $\wtilde{\chi}$ is the primitive character inducing $\chi$.
+        For any Dirichlet character $\chi$ modulo $m$ of conductor $q > 1$, $L(s,\chi)$ is locally absolutely uniformly convergent for $\s > 1$ with degree $1$ Euler product given by
+        \[
+          L(s,\chi) = \prod_{p \nmid m}(1-\wtilde{\chi}(p)p^{-s})^{-1}.
+        \]
+        Moreover, it admits meromorphic continuation to $\C$ and if $\chi$ is principal there is a simple pole at $s = 1$ of residue $\prod_{p \mid m}(1-\wtilde{\chi}(p)p^{-1})$ where $\wtilde{\chi}$ is the primitive character inducing $\chi$.
       \end{theorem}
       \begin{proof}
         This follows from \cref{thm:zeta_Selberg,thm:primitive_Dirichlet_Selberg,equ:non-primitive_primitive_Dirichlet_L-series_relation}. 
@@ -363,15 +370,19 @@
       \[
         \z_{K}(s) = \sum_{n \ge 1}\frac{a_{K}(n)}{n^{s}}.
       \]
-      We will see that $\z_{K}(s)$ is a Selberg class $L$-function for $d > 1$ (in the case $d = 1$, $\z_{K}(s) = \z(s)$). From now on we make this assumption about $d$. We have already shown that the coefficients $a_{K}(n)$ are polynomially bounded, for \cref{equ:ideals_of_fixed_norm_bound} implies $a_{K}(n) \le \s_{0}(n)^{d} \ll_{\e} n^{\e}$ (recall \cref{prop:sum_of_divisors_growth_rate}). Therefore $\z_{K}(s)$ is locally absolutely uniformly convergent for $\s > 1$. To determine the Euler product, we need to express $\z_{K}(s)$ in another form. Since $\z_{K}(s)$ converges absolutely, we can sum over integral ideals of $K$ instead and obtain
+
+      \begin{remark}
+        If we sum over integral ideals of $K$ instead, we can write
+        \[
+          \z_{K}(s) = \sum_{\text{$\mf{a}$ integral}}\frac{1}{\Norm(\mf{a})^{s}}.
+        \]
+      \end{remark}
+
+      We will see that $\z_{K}(s)$ is a Selberg class $L$-function (note that $\z_{K}(s) = \z(s)$ when $d = 1$). We have already shown that the coefficients $a_{K}(n)$ are multiplicative and satisfy $a_{K}(n) \ll_{\e} n^{\e}$ by \cref{equ:ideals_of_fixed_norm_bound} (recall \cref{prop:sum_of_divisors_growth_rate}). By \cref{prop:Dirichlet_series_Euler_product}, $\z_{K}(s)$ is locally absolutely uniformly convergent for $\s > 1$ and admits the following infinite product expression:
       \[
-        \z_{K}(s) = \sum_{\text{$\mf{a}$ integral}}\frac{1}{\Norm(\mf{a})^{s}}.
+        \z_{K}(s) = \prod_{p}\left(\sum_{n \ge 0}\frac{a_{K}(p^{n})}{p^{hs}}\right).
       \]
-      Moreover, as the norm is completely multiplicative by \cref{prop:ideal_norm_is_multiplicative}, the unique factorization of integral ideals implies that we have an infinite product expression over prime integral ideals of $K$ in this region as well given by 
-      \[
-        \z_{K}(s) = \prod_{\text{$\mf{p}$ prime}}(1-\Norm(\mf{p})p^{-s})^{-1}.
-      \]
-      Since each prime integral ideal is above a unique prime $p$ and this product is absolutely convergent, it can be decomposed as
+      Recall that each prime integral ideal $\mf{p}$ lies above a unique prime $p$ and $\Norm(\mf{p})$ is a power of $p$. As the norm is completely multiplicative by \cref{prop:ideal_norm_is_multiplicative}, the unique factorization of integral ideals implies that our infinite product can be expressed as
       \[
         \z_{K}(s) = \prod_{p}\prod_{\text{$\mf{p}$ above $p$}}(1-\Norm(\mf{p})p^{-s})^{-1} = \prod_{p}\prod_{1 \le i \le r_{p}}(1-p^{-f_{p}(\mf{p}_{i})s})^{-1},
       \]
@@ -379,11 +390,11 @@
       \[
         d = \sum_{1 \le i \le r_{p}}f_{p}(\mf{p}_{i}).
       \]
-      In particular, at least one prime does. Therefore, letting $\w_{p,i}$ be a primitive $f_{p}(\mf{p}_{i})$-th root of unity, we have the degree $d$ Euler product:
+      In particular, at least one prime does. Therefore, letting $\w_{p,i}$ be a primitive $f_{p}(\mf{p}_{i})$-th root of unity, we have the following degree $d$ Euler product:
       \[
-        \z_{K}(s) = \prod_{p}\prod_{\substack{1 \le i \le r_{p} \\ 1 \le k \le f_{p}(\mf{p}_{i})}}(1-\w_{p,i}^{k}p^{-s})^{-1},
+        \z_{K}(s) = \prod_{p}\prod_{\substack{1 \le i \le r_{p} \\ 1 \le k \le f_{p}(\mf{p}_{i})}}(1-\w_{p,i}^{k}p^{-s})^{-1}.
       \]
-      in this region as well. The local factor at $p$ is
+      The local factor at $p$ is
       \[
         \z_{K,p}(s) = \prod_{\substack{1 \le i \le r_{p} \\ 1 \le k \le f_{p}(\mf{p}_{i})}}(1-\w_{p,i}^{k}p^{-s})^{-1},
       \]
@@ -650,7 +661,7 @@
       \[
         (s-1)\z_{K}(s) \ll_{\e} e^{|s|^{1+\e}}.
       \]
-      This shows $(s-1)\z_{K}(s)$ is of order $1$ and hence $\z_{K}(s)$ is too after removing the polar divisor. It now remains to compute the residue of $\z_{K}(s)$ at $s = 1$. This result is known as the \textbf{analytic class number formula}\index{analytic class number formula} (and we include the case $d = 1$):
+      This shows $(s-1)\z_{K}(s)$ is of order $1$ and hence $\z_{K}(s)$ is too after removing the polar divisor. It now remains to compute the residue of $\z_{K}(s)$ at $s = 1$. This result is known as the \textbf{analytic class number formula}\index{analytic class number formula}:
 
       \begin{theorem}[Analytic class number formula]
         Let $K$ be a number field of signature $(r_{1},r_{2})$. Then
@@ -659,7 +670,7 @@
         \]
       \end{theorem}
       \begin{proof}
-        If $d = 1$, the result follows by \cref{prop:zeta_residue} since $\z_{K}(s) = \z(s)$, $r_{1} = 1$, $r_{2} = 0$, $w_{K} = 2$, and every other term is equal to $1$. Now suppose $d > 1$. The only term in \cref{equ:integral_representation_Dedekind_final} contributing to the pole is $-\frac{\pi^{\frac{r_{1}s}{2}}(2\pi)^{r_{2}s}}{\G\left(\frac{s}{2}\right)^{r_{1}}\G\left(s\right)^{r_{2}}}\frac{2^{r_{1}}h_{K}R_{K}}{\w_{K}\sqrt{|\D|_{K}}s(1-s)}$. Observe that
+        The only term in \cref{equ:integral_representation_Dedekind_final} contributing to the pole is $-\frac{\pi^{\frac{r_{1}s}{2}}(2\pi)^{r_{2}s}}{\G\left(\frac{s}{2}\right)^{r_{1}}\G\left(s\right)^{r_{2}}}\frac{2^{r_{1}}h_{K}R_{K}}{\w_{K}\sqrt{|\D|_{K}}s(1-s)}$. Observe that
         \[
           \lim_{s \to 1}\frac{\pi^{\frac{r_{1}s}{2}}(2\pi)^{r_{2}s}}{\G\left(\frac{s}{2}\right)^{r_{1}}\G\left(s\right)^{r_{2}}} = (2\pi)^{r_{2}},
         \]
@@ -674,7 +685,7 @@
       The usefulness of the analytic class number formula is that is allows for the estimation of the class number in terms of approximating the residue of the Dedekind zeta function at $s = 1$. We collect our work in the following theorem:
 
       \begin{theorem}\label{thm:Dedekind_Selberg}
-        Let $K$ be a number field of degree $d > 1$ and signature $(r_{1},r_{2})$. Then $\z_{K}(s)$ is a Selberg class $L$-function. For $\s > 1$, it has a degree $d$ Euler product given by
+        Let $K$ be a number field of degree $d$ and signature $(r_{1},r_{2})$. Then $\z_{K}(s)$ is a Selberg class $L$-function. For $\s > 1$, it has a degree $d$ Euler product given by
         \[
           \z_{K}(s) = \prod_{p}\prod_{\substack{1 \le i \le r_{p} \\ 1 \le k \le f_{p}(\mf{p}_{i})}}(1-\w_{p,i}^{k}p^{-s})^{-1},
         \]
@@ -735,15 +746,15 @@
       \[
         L(s,f) = \sum_{n \ge 1}\frac{a_{f}(n)}{n^{s}}.
       \]
-      We will see that $L(s,f)$ is a Selberg class $L$-function if $f$ is a primitive Hecke eigenform. From now on, we make this assumption about $f$. As we have noted, the Hecke relations and the Ramanujan-Petersson conjecture for holomorphic forms together imply $a_{f}(n) \ll_{\e} n^{\e}$. Therefore $L(s,f)$ is locally absolutely uniformly convergent for $\s > 1$. The $L$-function will also have an Euler product. Indeed, the Hecke relations imply that the coefficients $a_{f}(n)$ are multiplicative and satisfy
+      We will see that $L(s,f)$ is a Selberg class $L$-function if $f$ is a primitive Hecke eigenform. From now on, we make this assumption about $f$. The Hecke relations and the Ramanujan-Petersson conjecture for holomorphic forms together imply that the coefficients $a_{f}(n)$ are multiplicative and satisfy $a_{f}(n) \ll_{\e} n^{\e}$. By \cref{prop:Dirichlet_series_Euler_product}, $L(s,f)$ is locally absolutely uniformly convergent for $\s > 1$ and admits the following infinite product expression:
+      \[
+        L(s,f) = \prod_{p}\left(\sum_{n \ge 0}\frac{a_{f}(p^{n})}{p^{ns}}\right).
+      \]
+      To determine the Euler product, the Hecke relations imply that the coefficients $a_{f}(n)$ satisfy
       \begin{equation}\label{equ:primitive_Hecke_eigenform_recurrence_for_coefficients_of_holomorphic_L-function}
         a_{f}(p^{n}) = \begin{cases} a_{f}(p^{n-1})a_{f}(p)-\chi(p)a_{f}(p^{n-2}) & \text{if $p \nmid N$}, \\ (a_{f}(p))^{n} & \text{if $p \mid N$}, \end{cases}
       \end{equation}
-      for all primes $p$ and $n \ge 2$. Because $L(s,f)$ converges absolutely in the region $\s > 1$, multiplicativity of the Hecke eigenvalues implies
-      \[
-        L(s,f) = \prod_{p}\left(\sum_{n \ge 0}\frac{a_{f}(p^{n})}{p^{ns}}\right),
-      \]
-      in this region. We now simplify the factor inside the product using this \cref{equ:primitive_Hecke_eigenform_recurrence_for_coefficients_of_holomorphic_L-function}. On the one hand, if $p \nmid N$:
+      for all primes $p$ and $n \ge 2$. We now simplify the factor inside the product using this \cref{equ:primitive_Hecke_eigenform_recurrence_for_coefficients_of_holomorphic_L-function}. On the one hand, if $p \nmid N$:
       \begin{align*}
         \sum_{n \ge 0}\frac{a_{f}(p^{n})}{p^{ns}} &= 1+\frac{a_{f}(p)}{p^{s}}+\sum_{n \ge 2}\frac{a_{f}(p^{n})}{p^{ns}} \\
         &= 1+\frac{a_{f}(p)}{p^{s}}+\sum_{n \ge 2}\frac{a_{f}(p^{n-1})a_{f}(p)-\chi(p)a_{f}(p^{n-2})}{p^{ns}} \\
@@ -766,7 +777,7 @@
       \[
         (1-\a_{1}(p)p^{-s})(1-\a_{2}(p)p^{-s}) = (1-a_{f}(p)p^{-s}+\chi(p)p^{-2s}).
       \]
-      If $p \mid N$, let $\a_{1}(p) = a_{f}(p)$ and $\a_{2}(p) = 0$. We can then express $L(s,f)$ as a degree $2$ Euler product:
+      If $p \mid N$, let $\a_{1}(p) = a_{f}(p)$ and $\a_{2}(p) = 0$. We can then express $L(s,f)$ as the following degree $2$ Euler product:
       \[
         L(s,f) = \prod_{p}(1-\a_{1}(p)p^{-s})^{-1}(1-\a_{2}(p)p^{-s})^{-1}.
       \]
@@ -866,7 +877,7 @@
       We can still obtain analytic continuation of the $L$-series $L(s,f)$ if $f$ is not a primitive Hecke eigenform. Indeed, since the primitive Hecke eigenforms form a basis for the space of newforms, we can prove the following:
 
       \begin{theorem}\label{thm:analytic_continuation_Hecke}
-        For any $f \in \mc{S}_{k}(\G_{1}(N))$, $L(s,f)$ admits analytic continuation to $\C$.
+        For any $f \in \mc{S}_{k}(\G_{1}(N))$, $L(s,f)$ is locally absolutely uniformly convergent for $\s > 1$ and admits analytic continuation to $\C$.
       \end{theorem}
       \begin{proof}
         If $f$ is a newform, this follows from \cref{thm:newforms_characterization_holomorphic,thm:primitive_Hecke_Selberg}. We will prove the case for oldforms by induction. The base case is clear since if $N = 1$ there are no oldforms. So assume by induction that the claim holds for all proper divisors of $N$. As $f$ is an oldform, there is a proper divisor $d \mid N$ with $d > 1$ such that
@@ -889,15 +900,15 @@
       \[
         L(s,f) = \sum_{n \ge 1}\frac{a_{f}(n)}{n^{s}}.
       \]
-      We will see that $L(s,f)$ is a Selberg class $L$-function if $f$ is a primitive Hecke-Maass eigenform. From now on, we make this assumption about $f$. The Ramanujan-Petersson conjecture for Maass forms is not know so $L(s,f)$ has not been proven to be a Selberg class $L$-function. Although, it is conjectured to be, so throughout we will make this additional assumption. As we have noted, the Hecke relations and the Ramanujan-Petersson conjecture for Maass forms together imply $a_{f}(n) \ll_{\e} n^{\e}$. Therefore $L(s,f)$ is locally absolutely uniformly convergent for $\s > 1$. The $L$-function will have an Euler product. Indeed, the Hecke relations imply that the coefficients $a_{f}(n)$ are multiplicative and satisfy
+      We will see that $L(s,f)$ is a Selberg class $L$-function if $f$ is a primitive Hecke-Maass eigenform. From now on, we make this assumption about $f$. The Ramanujan-Petersson conjecture for Maass forms is not know so $L(s,f)$ has not been proven to be a Selberg class $L$-function. As it is conjectured to be, throughout we will assume that the Ramanujan-Petersson conjecture for Maass forms holds. The Hecke relations and the Ramanujan-Petersson conjecture for Maass forms together imply that the coefficients $a_{f}(n)$ are multiplicative and satisfy $a_{f}(n) \ll_{\e} n^{\e}$. By \cref{prop:Dirichlet_series_Euler_product}, $L(s,f)$ is locally absolutely uniformly convergent for $\s > 1$ and admits the following infinite product expression:
+      \[
+        L(s,f) = \prod_{p}\left(\sum_{n \ge 0}\frac{a_{f}(p^{n})}{p^{ns}}\right).
+      \]
+      To determine the Euler product, the Hecke relations imply that the coefficients $a_{f}(n)$ satisfy
       \begin{equation}\label{equ:primitive_Hecke_eigenform_recurrence_for_coefficients_of_Maass_L-function}
         a_{f}(p^{n}) = \begin{cases} a_{f}(p^{n-1})a_{f}(p)-\chi(p)a_{f}(p^{n-2}) & \text{if $p \nmid N$}, \\ (a_{f}(p))^{n} & \text{if $p \mid N$}, \end{cases}
       \end{equation}
-      for all primes $p$ and $n \ge 2$. Because $L(s,f)$ converges absolutely in the region $\s > 1$, multiplicativity of the Hecke eigenvalues implies
-      \[
-        L(s,f) = \prod_{p}\left(\sum_{n \ge 0}\frac{a_{f}(p^{n})}{p^{ns}}\right),
-      \]
-      in this region. We now simplify the factor inside the product using this \cref{equ:primitive_Hecke_eigenform_recurrence_for_coefficients_of_Maass_L-function}. On the one hand, if $p \nmid N$:
+      for all primes $p$ and $n \ge 2$. We now simplify the factor inside the product using this \cref{equ:primitive_Hecke_eigenform_recurrence_for_coefficients_of_Maass_L-function}. On the one hand, if $p \nmid N$:
       \begin{align*}
         \sum_{n \ge 0}\frac{a_{f}(p^{n})}{p^{ns}} &= 1+\frac{a_{f}(p)}{p^{s}}+\sum_{n \ge 2}\frac{a_{f}(p^{n})}{p^{ns}} \\
         &= 1+\frac{a_{f}(p)}{p^{s}}+\sum_{n \ge 2}\frac{a_{f}(p^{n-1})a_{f}(p)-\chi(p)a_{f}(p^{n-2})}{p^{ns}} \\
@@ -1036,7 +1047,7 @@
       We can still obtain analytic continuation of the $L$-series $L(s,f)$ if $f$ is not a primitive Hecke-Maass eigenform. Similarly to the Hecke $L$-function case, this holds because the primitive Hecke-Maass eigenforms form a basis for the space of newforms:
 
       \begin{theorem}\label{thm:analytic_continuation_Hecke-Maass}
-        For any $f \in \mc{C}_{\nu}(\G_{1}(N))$, $L(s,f)$ admits analytic continuation to $\C$.
+        For any $f \in \mc{C}_{\nu}(\G_{1}(N))$, $L(s,f)$ is locally absolutely uniformly convergent for $\s > 1$ and admits analytic continuation to $\C$
       \end{theorem}
       \begin{proof}
         Argue as in the proof of \cref{thm:analytic_continuation_Hecke}.
@@ -1055,11 +1066,11 @@
       \[
         L(s,f \ox g) = \sum_{n \ge 1}\frac{a_{f \ox g}(n)}{n^{s}} = \z(2s)L(s,f \x g),
       \]
-      where $a_{f \ox g}(n) = \sum_{n = m\ell^{2}}a_{f}(m)\conj{a_{g}(m)}$. Our primary aim will be to show that $L(s,f \ox g)$ is the Rankin-Selberg convolution of $L(s,f)$ and $L(s,g)$ and is a Selberg class $L$-function. Since $a_{f}(n) \ll_{\e} n^{\e}$ and $a_{g}(n) \ll_{\e} n^{\e}$, $a_{f \x g}(n) \ll_{\e} n^{\e}$ as well. Hence $L(s,f \x g)$ is locally absolutely uniformly convergent for $\s > 1$. Since $\z(2s)$ is also locally absolutely uniformly convergent in this region, the same follows for $L(s,f \x g)$ too. The $L$-function $L(s,f \x g)$ will also have an Euler product. To see this, let $\a_{j}(p)$ and $\b_{\ell}(p)$ be the local roots at $p$ of $L(s,f)$ and $L(s,g)$ respectively. Since $L(s,f \ox g)$ converges absolutely in the region $\s > 1$, multiplicativity of the Hecke eigenvalues implies
+      where $a_{f \ox g}(n) = \sum_{n = m\ell^{2}}a_{f}(m)\conj{a_{g}(m)}$. Our primary aim will be to show that $L(s,f \ox g)$ is the Rankin-Selberg convolution of $L(s,f)$ and $L(s,g)$ and is a Selberg class $L$-function. Since $a_{f}(n)$ and $a_{g}(n)$ are both multiplicative so is $a_{f \ox g}(n) \ll_{\e}$. Moreover, $a_{f \ox g}(n) \ll_{\e} n^{\e}$ because $a_{f}(n) \ll_{\e} n^{\e}$ and $a_{g}(n) \ll_{\e} n^{\e}$. It follows from \cref{prop:Dirichlet_series_Euler_product} that $L(s,f \ox g)$ is locally absolutely uniformly convergent for $\s > 1$ and admits the following infinite product expression:
       \[
-        L(s,f \ox g) = \z(2s)L(s,f \x g) = \prod_{p \nmid NM}(1-p^{-2s})^{-1}\prod_{p}\left(\sum_{n \ge 0}\frac{a_{f}(p^{n})\conj{a_{g}(p^{n})}}{p^{ns}}\right),
+        L(s,f \ox g) = \z(2s)L(s,f \x g) = \prod_{p}(1-p^{-2s})^{-1}\prod_{p}\left(\sum_{n \ge 0}\frac{a_{f}(p^{n})\conj{a_{g}(p^{n})}}{p^{ns}}\right).
       \]
-      in this region. We now simplify the factor inside the latter product using \cref{equ:Hecke_L_function_coefficient_formula}:
+      We now simplify the factor inside the latter product using \cref{equ:Hecke_L_function_coefficient_formula}:
       \begingroup
       \allowdisplaybreaks
           \begin{align*}
@@ -1085,11 +1096,7 @@
       \[
         \sum_{n \ge 0}\frac{a_{f}(p^{n})\conj{a_{g}(p^{n})}}{p^{ns}} = \prod_{1 \le j,\ell \le 2}\left(1-\a_{j}(p)\conj{\b_{\ell}(p)}p^{-s}\right)^{-1}.
       \]
-      Hence
-      \[
-        L(s,f \ox g) = \prod_{p}\left(\sum_{n \ge 0}\frac{a_{f}(p^{n})\conj{a_{g}(p^{n})}}{p^{ns}}\right).
-      \]
-      In total we have a degree $4$ Euler product:
+      Hence we have the following degree $4$ Euler product:
       \[
         L(s,f \ox g) = \prod_{p}\prod_{1 \le j,\ell \le 2}\left(1-\a_{j}(p)\conj{\b_{\ell}(p)}p^{-s}\right)^{-1}.
       \]
