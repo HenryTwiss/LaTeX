@@ -1,5 +1,5 @@
 \chapter{The Theory of \texorpdfstring{$L$}{L}-functions}
-  We start our discussion of $L$-functions with Dirichlet series. Dirichlet series are essential tools in analytic number theory because they are a way of analytically encoding arithmetic information. If the Dirichlet series possesses special properties we call it an $L$-function. From the analytic properties of $L$-functions we can extract number theoretic results. After discussing Dirichlet series we prove several versions of Perron's formula which connect coefficient sums to Dirichlet series via the inverse Mellin transform. Then we define $L$-functions and their associated data. The material following the data of $L$-functions consists of many important discussions about the analytic properties of $L$-functions: the approximate functional equation, the Riemann hypothesis and Lindel\"of hypothesis, the central value, logarithmic derivatives, zero density, zero-free regions, and explicit formulas.
+  We start our discussion of $L$-functions with Dirichlet series. Dirichlet series are essential tools in analytic number theory because they are a way of analytically encoding arithmetic information. If the Dirichlet series possesses special properties we call it an $L$-function. From the analytic properties of $L$-functions we can extract number theoretic results. After discussing Dirichlet series we prove several variants of Perron's formula which connect coefficient sums to Dirichlet series via the inverse Mellin transform. Then we define $L$-functions and their associated data. The material following the data of $L$-functions consists of many important discussions about the analytic properties of $L$-functions: the approximate functional equation, the Riemann hypothesis and Lindel\"of hypothesis, the central value, logarithmic derivatives, zero density, zero-free regions, and explicit formulas.
   \section{Dirichlet Series}
     A \textbf{Dirichlet series}\index{Dirichlet series} $D(s)$ is a sum of the form
     \[
@@ -42,7 +42,7 @@
       \[
         \left|\sum_{M \le n \le N}\frac{a(n)}{n^{s}}\right| \le 2\e+\e|s-s_{0}|\int_{M}^{N+1}u^{\s_{0}-\s-1}\,du \le 2\e+\e(H+1)(\s-\s_{0})\int_{M}^{N+1}u^{\s_{0}-\s-1}\,du.
       \]
-      Since the last integral is finite, $\sum_{M \le n \le N}\frac{a(n)}{n^{s}}$ can be made uniformly arbitrarily small for $s$ in the desired sector. The claim follows by the uniform version of Cauchy's criterion.
+      Since the last integral is finite, $\sum_{M \le n \le N}\frac{a(n)}{n^{s}}$ can be made uniformly arbitrarily small for $s$ in the desired sector. The claim follows by uniform Cauchy's criterion.
     \end{proof}
     
     By taking $H \to \infty$ in \cref{thm:convergence_of_Dirichlet_series} we see that $D(s)$ converges in the region $\s > \s_{0}$. Let $\s_{c}$ be the infimum of all $\s$ for which $D(s)$ converges. We call $\s_{c}$ the \textbf{abscissa of convergence}\index{abscissa of convergence} of $D(s)$. Similarly, let $\s_{a}$ be the infimum of all $\s$ for which $D(s)$ converges absolutely. Since the terms of $D(s)$ are holomorphic, the convergence is locally absolutely uniform (actually uniform in sectors) for $\s > \s_{a}$. It follows that $D(s)$ is holomorphic in the region $\s > \s_{a}$.  We call $\s_{a}$ the \textbf{abscissa of absolute convergence}\index{abscissa of absolute convergence} of $D(s)$. One should think of $\s_{c}$ and $\s_{a}$ as the boundaries of convergence and absolute convergence respectively. Of course, anything can happen at $\s = \s_{c}$ and $\s = \s_{a}$, but to the right of these lines we have convergence and absolute convergence of $D(s)$ respectively. It turns out that $\s_{a}$ is never far from $\s_{c}$ provided $\s_{c}$ is finite:
@@ -251,9 +251,9 @@
     \[
       A^{\ast}(X) = \asum_{n \le X}a(n),
     \]
-    where the $\ast$ indicates that the last term is multiplied by $\frac{1}{2}$ if $X$ is an integer. We would like to relate $A^{\ast}(X)$ to an integral involving the Dirichlet series $D(s)$ via an inverse Mellin transform. Such a formula is desirable because it allows for the examination of a sum of coefficients of a Dirichlet series, a discrete object, by means of a complex integral where analytic techniques are available. We will prove a few of these types of representations, the first being \textbf{(classical) Perron's formula}\index{(classical) Perron's formula} which is a consequence of Abel's summation formula and the Mellin inversion formula applied to Dirichlet series:
+    where the $\ast$ indicates that the last term is multiplied by $\frac{1}{2}$ if $X$ is an integer. We would like to relate $A^{\ast}(X)$ to an integral involving the Dirichlet series $D(s)$ via an inverse Mellin transform. Such a formula is desirable because it allows for the examination of a sum of coefficients of a Dirichlet series, a discrete object, by means of a complex integral where analytic techniques are available. We will prove a few of these types of representations, the first being (classical) \textbf{Perron's formula}\index{Perron's formula} which is a consequence of Abel's summation formula and the Mellin inversion formula applied to Dirichlet series:
 
-    \begin{theorem}[Perron's formula, classical version]
+    \begin{theorem}[Perron's formula, classical]
       Let $D(s)$ be a Dirichlet series with coefficient $a(n)$ and finite and nonnegative abscissa of absolute convergence $\s_{a}$. Then for any $c > \s_{a}$,
       \[
         A^{\ast}(X) = \frac{1}{2\pi i}\int_{(c)}D(s)X^{s}\,\frac{ds}{s}.
@@ -283,7 +283,7 @@
       The identity follows from \cref{equ:integral_rep_for_Dirichlet_series}.
     \end{proof}
 
-    There is also a truncated version of Perron's formula which is often more useful for more subtle estimates. To state it, we need to setup some notation and will require a lemma. For any $c > 0$, consider the discontinuous integral (see \cite{davenport1980multiplicative})
+    There is also a truncated variant of Perron's formula which is often more useful for more subtle estimates. To state it, we need to setup some notation and will require a lemma. For any $c > 0$, consider the discontinuous integral (see \cref{append:Special_Integrals})
     \[
       \d(y) = \frac{1}{2\pi i}\int_{(c)}y^{s}\,\frac{ds}{s} = \begin{cases} 0 & \text{if $0 < y < 1$}, \\ \frac{1}{2} & \text{if $y = 1$}, \\ 1 & \text{if $y > 1$}. \end{cases}
     \]
@@ -300,9 +300,9 @@
       \]
     \end{lemma}
 
-    We can now state and prove \textbf{(truncated) Perron's formula}\index{(truncated) Perron's formula}:
+    We can now state and prove (truncated) \textbf{Perron's formula}\index{Perron's formula}:
 
-    \begin{theorem}[Perron's formula, truncated version]
+    \begin{theorem}[Perron's formula, truncated]
       Let $D(s)$ be a Dirichlet series with coefficient $a(n)$ and finite and nonnegative abscissa of absolute convergence $\s_{a}$. Then for any $c > \s_{a}$ and $T > 0$,
       \[
         A^{\ast}(X) = \frac{1}{2\pi i}\int_{c-iT}^{c+iT}D(s)X^{s}\,\frac{ds}{s}+O\left(X^{c}\sum_{\substack{n \ge 1 \\ n \neq X}}\frac{a(n)}{n^{c}}\min\left(1,\frac{1}{T\left|\log\left(\frac{X}{n}\right)\right|}\right)+\d_{X}a(X)\frac{c}{T}\right),
@@ -337,7 +337,7 @@
       The statement now follows from truncated Perron's formula.
     \end{proof}
 
-    There is also a version of Perron's formula where we add a smoothing function. For any $X > 0$, we set
+    There is also a variant of Perron's formula where we add a smoothing function. For any $X > 0$, we set
     \[
       A_{\psi}(X) = \sum_{n \ge 1}a(n)\psi\left(\frac{n}{X}\right),
     \]
@@ -390,9 +390,9 @@
       where the second to last estimate follows because $a < \s < b$ with $0 < a < b$. So the integral is bounded and the claim follows.
     \end{proof}
     
-    The following theorem is \textbf{(smoothed) Perron's formula}\index{(smoothed) Perron's formula}:
+    The following theorem is (smoothed) \textbf{ Perron's formula}\index{Perron's formula}:
 
-    \begin{theorem}[Perron's formula, smoothed version]
+    \begin{theorem}[Perron's formula, smoothed]
       Let $D(s)$ be a Dirichlet series with coefficient $a(n)$ and finite and nonnegative abscissa of absolute convergence $\s_{a}$. Let $\psi(y)$ be a bump function and denote its Mellin transform by $\Psi(s)$. Then for any $c > \s_{a}$,
       \[
         A_{\psi}(X) = \frac{1}{2\pi i}\int_{(c)}D(s)\Psi(s)X^{s}\,ds.
@@ -470,7 +470,7 @@
       \item[(ii)] The local roots at infinity satisfy $\Re(\k_{j}) \ge 0$.
       \item[(v)] $L(s,f)$ has at most a simple pole at $s = 1$. That is, $r_{f} \le 1$.
     \end{itemize}
-    The adjustment for (i) is called the \textbf{(generalized) Ramanujan-Petersson conjecture}\index{(generalized) Ramanujan-Petersson conjecture} and it forces $a_{f}(n) \ll \s_{0}(n) \ll_{\e} n^{\e}$ (recall \cref{prop:sum_of_divisors_growth_rate}). The adjustment for (ii) is called the \textbf{(generalized) Selberg conjecture}\index{(generalized) Selberg conjecture} and it ensures that $\g(s,f)$ is holomorphic and nonzero for $\s > 0$. As for the adjustment for (v), it is expected that $L(s,f)$ is entire unless $\a_{i}(p) \ge 0$. The Selberg class constitutes a very special class of $L$-functions. Note that the product of two Selberg class $L$-functions is also Selberg class. Accordingly, we say that a Selberg class $L$-function is \textbf{primitive}\index{primitive} if it cannot be factored into a product of two Selberg class $L$-functions of strictly smaller positive degree (positive degree is necessary so that one of the factors cannot be $L(s,\mathbf{1})$). Clearly, any Selberg class $L$-function of degree $1$ is primitive.
+    The adjustment for (i) is called the \textbf{generalized Ramanujan-Petersson conjecture}\index{generalized Ramanujan-Petersson conjecture} and it forces $a_{f}(n) \ll \s_{0}(n) \ll_{\e} n^{\e}$ (recall \cref{prop:sum_of_divisors_growth_rate}). The adjustment for (ii) is called the \textbf{generalized Selberg conjecture}\index{generalized Selberg conjecture} and it ensures that $\g(s,f)$ is holomorphic and nonzero for $\s > 0$. As for the adjustment for (v), it is expected that $L(s,f)$ is entire unless $\a_{i}(p) \ge 0$. The Selberg class constitutes a very special class of $L$-functions. Note that the product of two Selberg class $L$-functions is also Selberg class. Accordingly, we say that a Selberg class $L$-function is \textbf{primitive}\index{primitive} if it cannot be factored into a product of two Selberg class $L$-functions of strictly smaller positive degree (positive degree is necessary so that one of the factors cannot be $L(s,\mathbf{1})$). Clearly, any Selberg class $L$-function of degree $1$ is primitive.
 
     \begin{remark}
       In general, it is a difficult problem to determine when an $L$-function $L(s,f)$ of degree $d_{f} \ge 2$ is primitive.
@@ -758,7 +758,7 @@
 
     The \textbf{Riemann hypothesis}\index{Riemann hypothesis} for $L(s,f)$ says that this symmetry should be as simple as possible:
 
-    \begin{conjecture}[Riemann hypothesis, $L(s,f)$ version]
+    \begin{conjecture}[Riemann hypothesis, $L(s,f)$]
       For the $L$-function $L(s,f)$, all of the nontrivial zeros lie on the line $\s = \frac{1}{2}$.
     \end{conjecture}
 
@@ -800,8 +800,8 @@
     \]
     The \textbf{Lindel\"of hypothesis}\index{Lindel\"of hypothesis} for $L(s,f)$ says that the exponent can be reduced to $\e$:
 
-    \begin{conjecture}[Lindel\"of hypothesis, $L(s,f)$ version]
-      For the $L$-function $L(s,f)$ and any $\e > 0$, we have
+    \begin{conjecture}[Lindel\"of hypothesis, $L(s,f)$]
+      The $L$-function $L(s,f)$ satisfies
       \[
         L\left(\frac{1}{2}+it,f\right) \ll_{\e} \mf{q}\left(\frac{1}{2}+it,f\right)^{\e}.
       \]
@@ -810,7 +810,7 @@
     Just as for the Riemann hypothesis, we do not expect the Lindel\"of hypothesis to hold for just any $L$-function. Accordingly, the \textbf{grand Lindel\"of hypothesis}\index{grand Lindel\"of hypothesis} says that the exponent can be reduced to $\e$ for any $L$-function in the Selberg class and we expect this to hold:
 
     \begin{conjecture}[Grand Lindel\"of hypothesis]
-      For any Selberg class $L$-function $L(s,f)$ and any $\e > 0$, we have
+      Any Selberg class $L$-function $L(s,f)$ satisfies
       \[
         L\left(\frac{1}{2}+it,f\right) \ll_{\e} \mf{q}\left(\frac{1}{2}+it,f\right)^{\e}.
       \]
@@ -846,7 +846,7 @@
     The theorem is the following:
 
     \begin{theorem}
-      Let $L(s,f)$ be an $L$-function and let $\psi(y)$ be a bump function with compact support in $\left[\frac{1}{2},2\right]$. Then for any $\e > 0$, we have
+      Let $L(s,f)$ be an $L$-function and let $\psi(y)$ be a bump function with compact support in $\left[\frac{1}{2},2\right]$. Then
       \[
         L\left(\frac{1}{2},f\right) \ll_{\e} \max_{X \ll_{\e} \mf{q}(f)^{\frac{1}{2}+\e}}\left(\left|\frac{A_{\psi}(X)}{q(f)^{\frac{1}{4}}}\right|\right)+\left|\frac{S}{q(f)^{\frac{1}{4}}}\right|,
       \]
