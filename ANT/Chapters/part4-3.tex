@@ -577,6 +577,56 @@
     \end{proof}
 
     In particular, \cref{thm:Burgess_bound_conductor_aspect_Dirichlet} shows that the Burgess bound in the conductor-aspect holds for Dirichlet $L$-functions. This is how the Burgess bound got its name as it was the first subconvexity result for Dirichlet $L$-functions in the conductor-aspect.
+\section{Strong Multiplicity One \& the Ramanujan-Petersson Conjecture on Average}
+  We will discuss two applications of the Rankin-Selberg method for Hecke and Hecke-Maass eigenforms: strong multiplicity one and the Ramanujan-Petersson conjecture on average. For the former, recall that multiplicity one determines and eigenform, up to a constant, by its Hecke eigenvalues at primes. Using Rankin-Selberg convolutions, we can prove \textbf{strong multiplicity one}\index{strong multiplicity one} for holomorphic or Maass forms which says that eigenforms are determined by their Hecke eigenvalues at all but finitely many primes:
+
+  \begin{theorem}[Strong multiplicity one, holomorphic and Maass]
+    Let $f$ and $g$ both be Hecke or Hecke-Maass eigenforms. If they have the same Hecke eigenvalues for all but finitely many primes $p$, then $f = g$.
+  \end{theorem}
+  \begin{proof}
+    By \cref{thm:newforms_characterization_holomorphic,thm:newforms_characterization_Maass} we may assume that $f$ and $g$ are primitive Hecke eigenforms. Denote the Hecke eigenvalues by $\l_{f}(n)$ and $\l_{g}(n)$ respectively. Let $S$ be the set the primes for which $\l_{f}(p) \neq \l_{g}(p)$ including the primes that ramify for $L(s,f)$ and $L(s,g)$. Then $S$ is finite by assumption. As the local factors of $L(s,f \ox g)$ are holomorphic and nonzero at $s = 1$, the order of the pole of $L(s,f \ox g)$ is the same as the order of the pole of
+    \[
+      L(s,f \ox g)\prod_{p \in S}L_{p}(s,f \ox g)^{-1} = \prod_{p \notin S}L_{p}(s,f \ox g).
+    \]
+    But as $\l_{f}(p) = \l_{g}(p)$ for all $p \notin S$, we have
+    \[
+      \prod_{p \notin S}L_{p}(s,f \ox g) = \prod_{p \notin S}L_{p}(s,f \ox f),
+    \]
+    and so
+    \[
+      L(s,f \ox g)\prod_{p \in S}L_{p}(s,f \ox g)^{-1} = L(s,f \ox f)\prod_{p \in S}L_{p}(s,f \ox f)^{-1}.
+    \]
+    Since $L(s,f \ox f)$ has a simple pole at $s = 1$, it follows that $L(s,f \ox g)$ does too. But then $f = g$.
+  \end{proof}
+  
+  Now we discuss how to obtain the Ramanujan-Petersson conjecture on average using Rankin-Selberg convolutions without assuming the corresponding Ramanujan-Petersson conjecture:
+
+  \begin{proposition}\label{prop:Ramanujan_Petersson_average}
+    Let $f$ be a primitive Hecke or Hecke-Maass eigenform. Then for any $X > 0$, we have
+    \[
+    \sum_{n \le X}|a_{f}(n)| \ll_{\e} X^{1+\e},
+    \]
+  \end{proposition}
+  \begin{proof}
+    By the Cauchy-Schwarz inequality,
+    \begin{equation}\label{equ:Ramanujan_conjecture_on_average_1}
+      \left(\sum_{n \le X}|a_{f}(n)|\right)^{2} \le X\sum_{n \le X}|a_{f}(n)|^{2},
+    \end{equation}
+    The Rankin-Selberg square $L(s,f \ox f)$ is locally absolutely uniformly convergent for $\s > \frac{3}{2}$. Therefore it still admits meromorphic continuation to $\C$ with a simple pole at $s = 1$. By Landau's theorem, the abscissa of absolute convergence of $L(s,f \ox f)$, and hence $L(s,f \x f)$ too, is $1$. By \cref{prop:Dirichlet_series_coefficient_size_on_average}, we have
+    \[
+      \sum_{n \le X}|a_{f}(n)|^{2} \ll_{\e} X^{1+\e}.
+    \]
+    Substituting this bound into \cref{equ:Ramanujan_conjecture_on_average_1}, we obtain
+    \[
+      \left(\sum_{n \le X}|a_{f}(n)|\right)^{2} \ll_{\e} X^{2+\e},
+    \]
+    and taking the square root yields
+    \[
+      \sum_{n \le X}|a_{f}(n)| \ll_{\e} X^{1+\e}.
+    \]
+  \end{proof}
+
+  The bound in \cref{prop:Ramanujan_Petersson_average} should be compared with the implication $a_{f}(n) \ll_{\e} n^{\e}$ that follows from the corresponding Ramanujan-Petersson conjecture. While \cref{prop:Ramanujan_Petersson_average} is not useful in the holomorphic form case, it is in the Maass form case. Indeed, recall that if $f$ is a primitive Hecke-Maass eigenform we needed to assume the Ramanujan-Petersson conjecture for Maass forms to ensure $a_{f}(n) \ll_{\e} n^{\e}$ so that $L(s,f)$ was locally absolutely uniformly convergent for $\s > 1$. However, \cref{prop:Dirichlet_series_convergence_polynomial_bound_average,prop:Ramanujan_Petersson_average} now together imply $L(s,f)$ is locally absolutely uniformly convergent for $\s > 1$ without this assumption. Often \cref{prop:Ramanujan_Petersson_average} is all that is needed for additional applications instead of outright assuming the Ramanujan-Petersson conjecture for Maass forms.
   \section{The Prime Number Theorem}
     The function $\psi(x)$ is defined by
     \[
@@ -687,7 +737,7 @@
       \begin{equation}\label{equ:explicit_formula_zeta_proof_7}
         J(x,T) = x-\sum_{|\g| < T}\frac{x^{\rho}}{\rho}-\frac{\z'}{\z}(0)-\sum_{0 < 2m < U}\frac{x^{-2m}}{-2m}+\frac{1}{2\pi i}\int_{\eta_{2}+\eta_{3}+\eta_{4}}-\frac{\z'}{\z}(s)x^{s}\,\frac{ds}{s},
       \end{equation}
-      where $\rho = \b+i\g$ is a nontrivial zero of $\z$. We will estimate $J(x,T)$ by estimating the remaining integral. By \cref{lem:powerful_L-function_approximation_lemma} (ii) applied to $\z(s)$, the number of nontrivial zeros satisfying $|\g-T| < 1$ is $O(\log(T))$. Among the ordinates of these nontrivial zeros, there must be a gap of size $\gg \frac{1}{\log(T)}$. Upon varying $T$ by a bounded amount (we are varying in the interval $[T-1,T+1]$) so that it belongs to this gap, we can additionally ensure
+      where $\rho = \b+i\g$ is a nontrivial zero of $\z$. We will estimate $J(x,T)$ by estimating the remaining integral. By \cref{lem:powerful_L-function_approximation_lemma} (ii) applied to $\z(s)$, the number of nontrivial zeros satisfying $|\g-T| < 1$ is $O(\log(T))$. Among the ordinates of these nontrivial zeros, there must be a gap of size larger than $O\left(\frac{1}{\log(T)}\right)$. Upon varying $T$ by a bounded amount (we are varying in the interval $[T-1,T+1]$) so that it belongs to this gap, we can additionally ensure
       \[
         \g-T \gg \frac{1}{\log(T)},
       \]
@@ -1089,7 +1139,7 @@
       \begin{equation}\label{equ:explicit_formula_Dirichlet_proof_7'}
         J(x,T,\chi) = -\sum_{|\g| < T}\frac{x^{\rho}}{\rho}-\log(x)-b(\chi)-\sum_{0 < 2m < U}\frac{x^{-2m}}{-2m}+\frac{1}{2\pi i}\int_{\eta_{2}+\eta_{3}+\eta_{4}}-\frac{L'}{L}(s,\chi)x^{s}\,\frac{ds}{s},
       \end{equation}
-      where $\rho = \b+i\g$ is a nontrivial zero of $L(s,\chi)$. We now estimate the remaining integrals in \cref{equ:explicit_formula_Dirichlet_proof_7,equ:explicit_formula_Dirichlet_proof_7'}. For this estimate, the parity of $\chi$ does not matter so we make no such restriction. By \cref{lem:powerful_L-function_approximation_lemma} (ii) applied to $L(s,\chi)$, the number of nontrivial zeros satisfying $|\g-T| < 1$ is $O(\log(qT))$. Among the ordinates of these nontrivial zeros, there must be a gap of size $\gg \frac{1}{\log(qT)}$. Upon varying $T$ by a bounded amount (we are varying in the interval $[T-1,T+1]$) so that it belongs to this gap, we can additionally ensure
+      where $\rho = \b+i\g$ is a nontrivial zero of $L(s,\chi)$. We now estimate the remaining integrals in \cref{equ:explicit_formula_Dirichlet_proof_7,equ:explicit_formula_Dirichlet_proof_7'}. For this estimate, the parity of $\chi$ does not matter so we make no such restriction. By \cref{lem:powerful_L-function_approximation_lemma} (ii) applied to $L(s,\chi)$, the number of nontrivial zeros satisfying $|\g-T| < 1$ is $O(\log(qT))$. Among the ordinates of these nontrivial zeros, there must be a gap of size larger than $O\left(\frac{1}{\log(qT)}\right)$. Upon varying $T$ by a bounded amount (we are varying in the interval $[T-1,T+1]$) so that it belongs to this gap, we can additionally ensure
       \[
         \g-T \gg \frac{1}{\log(qT)},
       \]
