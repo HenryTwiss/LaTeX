@@ -173,37 +173,34 @@
         &+\sum_{\mf{a}}\frac{1}{4\pi}\int_{-\infty}^{\infty}\conj{\tau_{\mf{a}}\left(n,\frac{1}{2}+ir\right)}\tau_{\mf{a}}\left(m,\frac{1}{2}+ir\right)\conj{\w(n,\psi)}\w(m,\vphi)\,dr.
       \end{align*}
     \end{theorem}
-  \section{\todo{The P\'olya-Vinogradov Inequality}}
-    Let $\chi$ be a non-principal character modulo $m$. By the orthogonality relations (\cref{cor:Dirichlet_orthogonality_relations} i), we have
+  \section{Absolute, Relative \& Galois Extensions}
+    The concept of ramification can be extended to more general extensions of number fields. Let $K$ and $L$ be number fields with $K \subseteq L$. We say that $K/\Q$ is an \textbf{absolute extension}\index{absolute extension} and $L/K$ is a \textbf{relative extension}\index{relative extension}. In other words, an absolute extension is simply when the base field is the number field $\Q$. For a relative extension $L/K$, we have rings of integers $\mc{O}_{K} \subseteq \mc{O}_{L}$. Let $\mf{P}$ be a prime integral ideal of $\mc{O}_{L}$. Then $\mf{P} \cap \mc{O}_{K}$ is a prime integral ideal of $K$. It is clear that $\mf{P} \cap \mc{O}_{K}$ is an integral ideal of $\mc{O}_{K}$ and it is proper because $1 \notin \mf{P} \cap \Z \subseteq \mf{P} \cap \mc{O}_{K}$ as $\mf{P}$ does not contain units. Moreover, it is nonzero since any integral ideal contains its norm (as we have noted) and so $\Norm(\mf{P}) \in \mf{P} \cap \Z \subseteq \mf{P} \cap \mc{O}_{K}$. To see that it is prime, suppose $\a,\b \in \mc{O}_{K}$ are such that $\a\b \in \mf{P} \cap \mc{O}_{K}$. Then $\a\b \in \mf{P}$ and since $\mf{P}$ is prime either $\a \in \mf{P}$ or $\b \in \mf{P}$. But then $\a \in \mf{P} \cap \mc{O}_{K}$ or $\b \in \mf{P} \cap \mc{O}_{K}$ as desired. We have shown that $\mf{P} \cap \mc{O}_{K}$ is a prime integral ideal of $\mc{O}_{K}$ and so
     \[
-      \sum_{1 \le n \le m}\chi(n) = 0,
+      \mf{P} \cap \mc{O}_{K} = \mf{p},
     \]
-    and so
-    \[
-      \sum_{M+1 \le n \le M+N}\chi(n) \ll m,
-    \]
-    for any $M \ge 0$ and $N \ge 1$. It turns out that a much shaper bound can be obtained with very little work. This result is known as the \textbf{P\'olya-Vinogradov inequality}\index{P\'olya-Vinogradov inequality} as it was proved independently by P\'olya and Vinogradov in 1918 (see \todo{cite} and \todo{cite}):
+    for some prime integral ideal of $\mc{O}_{K}$. We say that $\mf{P}$ is \textbf{above}\index{above} $\mf{p}$, or equivalently, $\mf{p}$ is \textbf{below}\index{below} $\mf{P}$. If $\mf{P}$ is above $\mf{p}$, then $\mf{P}$ is a prime factor of $\mf{p}\mc{O}_{L}$. Indeed, since $\mf{p} \subseteq \mf{P}$ we have $\mf{p}\mc{O}_{L} \subseteq \mf{P}$ and hence some prime factor of $\mf{p}\mc{O}_{L}$ is contained in $\mf{P}$ since $\mf{P}$ is prime. Since prime integral ideals are maximal by \cref{prop:prime_integral_ideals_are_maximal}, this prime factor must be $\mf{P}$ itself. This situation directly generalizes a prime integral ideal $\mf{P}$ lying over the prime $p$ for the absolute extension $L/\Q$ to the relative extension $L/K$ by replacing $p$ with a prime integral ideal $\mf{p}$. When $K = \Q$, the situations are equivalent since $\Z$ is a principal ideal domain. The situation can be illustrated via the extension
 
-    \begin{theorem}[P\'olya-Vinogradov inequality]
-      Let $\chi$ be a non-principal Dirichlet character modulo $m$. Then for any $M \ge 0$ and $N \ge 1$,
-      \[
-        \sum_{M+1 \le n \le M+N}\chi(n) \ll \sqrt{m}\log(m).
-      \]
-    \end{theorem}
-    \begin{proof}
-      We first reduce to the case when $\chi$ is primitive. Let $\wtilde{\chi}$ be the primitive character of conductor $q$ inducing $\chi$. Then $q \mid m$, and so we may write $m = kq$ for some $k \ge 1$. Then rewrite the sum in terms of $\wtilde{\chi}$ as follows:
-      \begin{align*}
-        \sum_{M+1 \le n \le M+N}\chi(n) &= \sum_{\substack{M+1 \le n \le M+N \\ (n,k) = 1}}\wtilde{\chi}(n) \\
-        &= \sum_{M+1 \le n \le M+N}\wtilde{\chi}(n)\sum_{d \mid (n,k)}\mu(d) && \text{\cref{prop:Mobius_dirac_delta}} \\
-        &= \todo{xxx}
-      \end{align*}
-      \todo{xxx}. Therefore we may assume $\chi$ is primitive of conductor $q$. Then using\cref{cor:gauss_sum_primitive_formula}, we have
-      \[
-        \sum_{M+1 \le n \le M+N}\chi(n) = \frac{1}{\tau(\cchi)}\sum_{a \tmod{q}}\cchi(a)\sum_{M+1 \le n \le M+N}e^{\frac{2\pi ian}{q}}.
-      \]
-      The inner sum is geometric and evaluates to
-      \[
-        \sum_{M+1 \le n \le M+N}e^{\frac{2\pi ian}{q}} = \todo{...}
-      \]
-    \end{proof}
+    \begin{center}
+      \begin{tikzcd}
+        \mf{P} \subset \mc{O}_{L} \subset L \arrow[dash]{d} \\
+        \mf{p} \subset \mc{O}_{K} \subset K \arrow[dash]{d} \\
+        p\Z \subset \Z \subset \Q.
+      \end{tikzcd}
+    \end{center}
+
+    As $\mf{P}$ and $\mf{p}$ are maximal in $\mc{O}_{L}$ and $\mc{O}_{K}$ respectively by \cref{prop:prime_integral_ideals_are_maximal}, we have the residue fields $\mc{O}_{L}/\mf{P}$ and $\mc{O}_{K}/\mf{p}$. As we might expect, $\mc{O}_{L}/\mf{P}$ is a finite dimensional vector space over $\mc{O}_{K}/\mf{p}$ which is itself a finite dimensional vector space over $\F_{p}$. This latter fact we have already established since $\mf{p}$ lies over a prime $p$. As for the former, consider the homomorphism
+    \[
+      \phi:\mc{O}_{K} \to \mc{O}_{L}/\mf{P} \qquad \a \mapsto \a \tmod{\mf{P}}.
+    \]
+    We have $\ker\phi = \mf{P} \cap \mc{O}_{K}$ and so $\ker\phi = \mf{p}$ since $\mf{P}$ is above $\mf{p}$. By the first isomorphism theorem, $\phi$ induces an injection $\phi:\mc{O}_{K}/\mf{p} \to \mc{O}_{L}/\mf{P}$. By \cref{prop:residue_of_integral_ideal_is_finite}, $\mc{O}_{L}/\mf{P}$ is finite and thus a finite field containing $\mc{O}_{K}/\mf{p}$. Therefore $\mc{O}_{L}/\mf{P}$ is a finite dimensional vector space over $\mc{O}_{K}/\mf{p}$ and hence $\F_{p}$ as well. Accordingly, we define the \textbf{inertia degree}\index{inertia degree} $f_{\mf{p}}(\mf{P})$ of $\mf{P}$ by
+    \[
+      f_{\mf{p}}(\mf{P}) = [\mc{O}_{L}/\mf{P}:\mc{O}_{K}/\mf{p}].
+    \]
+    That is, $f_{\mf{p}}(\mf{P})$ is the dimension of the residue field $\mc{O}_{L}/\mf{P}$ as a vector space over $\mc{O}_{K}/\mf{p}$. It follows that
+    \[
+      f_{p}(\mf{P}) = f_{\mf{p}}(\mf{P})f_{p}(\mf{p}).
+    \]
+
+
+
 \end{document}
