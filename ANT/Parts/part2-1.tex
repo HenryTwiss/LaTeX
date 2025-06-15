@@ -1,14 +1,14 @@
 \chapter{The Theory of Number Fields}
   Introductory analytic number theory is done over $\Q$. The associated set of integers $\Z$ is a ring inside $\Q$. Moreover, the fundamental theorem of arithmetic tells us that prime factorization exists in $\Z$. That is, every integer is uniquely a product of primes (up to reordering of the factors). The study of number fields is concerned with finite extensions of $\Q$ where there might no longer be prime factorization. In the following, we discuss the structure of number fields, their associated ring of integers, and the properties of prime factorization.
-  \section{Numbers Fields \& Algebraic Integers}
-    An \textbf{number field}\index{number field} $K$ is a finite extension of $\Q$. That is, $K$ is a finite dimensional vector space over $\Q$. In particular, $K/\Q$ is a finite separable extension, so that the primitive element theorem applies, and is Galois if and only if $K/\Q$ is normal. We say that the \textbf{degree}\index{degree} of $K$ is $[K:\Q]$ which is the dimension of $K$ as a vector space over $\Q$. If $K$ is of degree $2$, $3$, etc. then we say it is \textbf{quadratic}\index{quadratic}, \textbf{cubic}\index{cubic}, etc. Any $\k \in K$ is called an \textbf{algebraic number}\index{algebraic number}. Moreover, we say that $\k$ is an \textbf{algebraic integer}\index{algebraic integer} if it is the root of a monic polynomial $f(x) \in \Z[x]$. If $K = \Q$, it is clear that any integer is an algebraic integer ($n$ is the root of $x-n$.). Moreover, any rational root of a monic polynomial must be an integer by the rational root theorem. In other words, if $f(x) \in \Z[x]$ is monic and $q \in \Q$ is a root of $f(x)$ then $q \in \Z$. Therefore for the number field $\Q$, its algebraic integers are exactly the integers $\Z$. Our first goal in studying number fields is to discuss algebraic integers. Accordingly, we define the \textbf{ring of integers}\index{ring of integers} $\mc{O}_{K}$ of $K$ by
+  \section{Algebraic Integers}
+    A \textbf{number field}\index{number field} $K$ is a finite extension of $\Q$. That is, $K$ is a finite dimensional vector space over $\Q$. In particular, $K/\Q$ is a finite separable extension, so that the primitive element theorem applies, and is Galois if and only if $K/\Q$ is normal. We say that the \textbf{degree}\index{degree} of $K$ is $[K:\Q]$ which is the dimension of $K$ as a vector space over $\Q$. If $K$ is of degree $2$, $3$, etc. then we say it is \textbf{quadratic}\index{quadratic}, \textbf{cubic}\index{cubic}, etc. Any $\k \in K$ is called an \textbf{algebraic number}\index{algebraic number}. Moreover, we say that $\k$ is an \textbf{algebraic integer}\index{algebraic integer} if it is the root of a monic polynomial $f(x) \in \Z[x]$. If $K = \Q$, it is clear that any integer is an algebraic integer ($n$ is the root of $x-n$.). Moreover, any rational root of a monic polynomial must be an integer by the rational root theorem. In other words, if $f(x) \in \Z[x]$ is monic and $q \in \Q$ is a root of $f(x)$ then $q \in \Z$. Therefore for the number field $\Q$, its algebraic integers are exactly the integers $\Z$. Our first goal in studying number fields is to discuss their algebraic integers. Accordingly, we define the \textbf{ring of integers}\index{ring of integers} $\mc{O}_{K}$ of $K$ by
     \[
       \mc{O}_{K} = \{\k \in K:\text{$\k$ is an algebraic integer}\}.
     \]
-    From what we have just shown above, $\Z \subseteq \mc{O}_{K}$. For a general number field $K$, $\mc{O}_{K}$ can be strictly larger than $\Z$. The ring of integers $\mc{O}_{K}$ is the analog of $\Z$ in $\Q$ but for $K$. Our primarily goals will be to show that $\mc{O}_{K}$ is a ring and more precisely a free abelian group of rank equal to the degree of $K$. The following proposition shows that $\mc{O}_{K}$ is indeed a ring:
+    From what we have just shown above, $\Z \subseteq \mc{O}_{K}$. For a general number field $K$, $\mc{O}_{K}$ can be strictly larger than $\Z$. The ring of integers $\mc{O}_{K}$ is to $K$ as $\Z$ is to $\Q$. Our primarily aim will be to show that $\mc{O}_{K}$ is a ring and more precisely a free abelian group of rank equal to the degree of $K$. The following proposition shows that $\mc{O}_{K}$ is indeed a ring:
 
     \begin{proposition}\label{prop:algebraic_integer_if_finitely_generated}
-      Let $K$ be a number field. Then the finitely many elements $\k_{1},\ldots,\k_{n} \in B$ are all algebraic integers if and only if $\Z[\k_{1},\ldots,\k_{n}]$ is a finitely generated $\Z$-module. In particular, $\mc{O}_{K}$ is a ring.
+      Let $K$ be a number field. Then the finitely many elements $\k_{1},\ldots,\k_{n} \in K$ are all algebraic integers if and only if $\Z[\k_{1},\ldots,\k_{n}]$ is a finitely generated $\Z$-module. In particular, $\mc{O}_{K}$ is a ring.
     \end{proposition}
     \begin{proof}
       First suppose $\k \in K$ is an algebraic integer. Then there exists a monic polynomial $f(x) \in \Z[x]$, of say degree $n \ge 1$, such that $f(\k) = 0$. Now for any $g(x) \in \Z[x]$, Euclidean division implies
@@ -19,7 +19,7 @@
       \[
         g(\k) = r(\k) = a_{n-1}\k^{n-1}+\cdots+a_{1}\k+a_{0}.
       \]
-      As $g(x)$ was arbitrary, we see that $\{1,\k,\ldots,\k^{n-1}\}$ is a generating set for $\Z[\k]$ as a $\Z$-module. Now suppose $\k_{1},\ldots,\k_{n} \in K$ are all algebraic integers. We will prove that $\Z[\k_{1},\ldots,\k_{n}]$ is finitely generated as an $\Z$-module by induction. Our previous work implies the base case. So assume by induction that $R = \Z[\k_{1},\ldots,\k_{n-1}]$ is a finitely generated $\Z$-module. Then $R[\k_{n}] = A[\k_{1},\ldots,\k_{n}]$ is a finitely generated $R$-module and hence a finitely generated $\Z$-module as well by our induction hypothesis. Now suppose $A[\k_{1},\ldots,\k_{n}]$ is a finitely generated $\Z$-module. Let $\{\w_{1},\ldots,\w_{r}\}$ be a basis for $A[\k_{1},\ldots,\k_{n}]$. Then for any $\k \in A[\k_{1},\ldots,\k_{n}]$, we have
+      As $g(x)$ was arbitrary, we see that $1,\k,\ldots,\k^{n-1}$ generates $\Z[\k]$ as a $\Z$-module. Now suppose $\k_{1},\ldots,\k_{n} \in K$ are all algebraic integers. We will prove that $\Z[\k_{1},\ldots,\k_{n}]$ is finitely generated as an $\Z$-module by induction. Our previous work implies the base case. So assume by induction that $R = \Z[\k_{1},\ldots,\k_{n-1}]$ is a finitely generated $\Z$-module. Then $R[\k_{n}] = \Z[\k_{1},\ldots,\k_{n}]$ is a finitely generated $R$-module and hence a finitely generated $\Z$-module as well by our induction hypothesis. This proves the forward implication of the first statement. For the reverse implication, suppose $\Z[\k_{1},\ldots,\k_{n}]$ is a finitely generated $\Z$-module. Let $\w_{1},\ldots,\w_{r}$ be a basis for $\Z[\k_{1},\ldots,\k_{n}]$. Then for any $\k \in \Z[\k_{1},\ldots,\k_{n}]$, we have
       \[
         \k\w_{i} = \sum_{1 \le j \le r}a_{i,j}\w_{j},
       \]
@@ -31,7 +31,7 @@
       \[
         \begin{pmatrix} k-a_{1,1} & a_{1,2} & \cdots & -a_{1,r} \\ -a_{2,1} & \k-a_{2,2} & & \\ \vdots & & \ddots & \\ -a_{r,1} & & & \k-a_{r,r} \end{pmatrix}\begin{pmatrix} \w_{1} \\ \w_{2} \\ \vdots \\ \w_{r} \end{pmatrix} = \mathbf{0}.
       \]
-      Thus the determinant of the matrix on the left-hand side must be zero. This shows that $\k$ is the root of the characteristic polynomial $\det(xI-(a_{i,j})_{i,j})$ which is a monic polynomial with coefficients in $\Z$. Hence $\k$ is an algebraic integer. As $\k$ was arbitrary, this shows that the elements $\k_{1},\ldots,\k_{n}$ are all algebraic integers and that the sum and product of algebraic integers are algebraic integers. It follows that $\mc{O}_{K}$ is a ring.
+      Thus the determinant of the matrix on the left-hand side must be zero. This shows that $\k$ is the root of the characteristic polynomial $\det(xI-(a_{i,j})_{i,j})$ which is a monic polynomial with coefficients in $\Z$. Hence $\k$ is an algebraic integer. As $\k$ was arbitrary, this shows that the elements $\k_{1},\ldots,\k_{n}$ are all algebraic integers and that the sum and product of algebraic integers are algebraic integers. This proves the reverse implication and the second statement completing the proof.
     \end{proof}
 
     We can also show that $K$ is the field of fractions of $\mc{O}_{K}$. Actually, the following proposition proves this and more:
@@ -54,8 +54,10 @@
       \]
       where $a'_{i} = a_{i}a^{n-1-i}$ for $0 \le i \le n-1$, and so $a\k$ is the root of a monic polynomial with coefficients in $\Z$. Then $a\k \in \mc{O}_{K}$ and so $a\k = \a$ for some $\a \in \mc{O}_{K}$ which is equivalent to $\k = \frac{\a}{a}$. As $\Z \subseteq \mc{O}_{K}$, this also implies that $K$ is the field of fractions of $\mc{O}_{K}$. For the last statement, suppose $\k \in K$. If the minimal polynomial of $\k$ has integer coefficients then $\k$ is automatically an algebraic integer (since the minimal polynomial is monic). So suppose $\k$ is an algebraic integer so that $\k$ is a root of a monic polynomial $f(x) \in \Z[x]$. If $m_{\k}(x) \in \Q[x]$ is the minimal polynomial of $\k$, then $m_{\k}(x)$ divides $f(x)$ and thus all of the roots of $m_{\k}(x)$ algebraic integers too. By Vieta's formulas, the coefficients of $m_{\k}(x)$ algebraic integers as well. But then $m_{\k}(x) \in \Z[x]$. This completes the proof.
     \end{proof}
+
+    We say that $\mc{O}_{K}$ is \textbf{integrally closed}\index{integrally closed} if $\k \in K$ is an algebraic integer if and only if $\k$ is the root of a monic polynomial $f(x) \in \mc{O}_{K}[x]$. This is a slight strengthening of the last statement in \cref{prop:field_of_fractions_of_ring_of_integers}. We will show that $\mc{O}_{K}$ is always integrally closed but it will take some work to show this as we first need to prove $\mc{O}_{K}$ is a finitely generated $\Z$-module and to do this we will require traces and norms.
   \section{Traces \& Norms}
-    We will now require norms and traces of algebras. Let $K$ be a field and let $R$ be an $n$-dimensional $K$-algebra. Then the \textbf{trace}\index{trace} and \textbf{norm}\index{norm} of $R$, denoted $\Trace_{R/K}$ and $\Norm_{R/K}$ respectively, are defined by
+    We will introduce norms and traces of algebras. Let $K$ be a field and let $R$ be an $n$-dimensional $K$-algebra. Then the \textbf{trace}\index{trace} and \textbf{norm}\index{norm} of $R$, denoted $\Trace_{R/K}$ and $\Norm_{R/K}$ respectively, are defined by
     \[
       \Trace_{R/K}(\rho) = \tr(T_{\rho}) \quad \text{and} \quad \Norm_{R/K}(\rho) = \det(T_{\rho}),
     \]
@@ -63,9 +65,9 @@
     \[
       T_{\rho}(x) = \rho x,
     \]
-    for all $x \in R$. That is, $T_{\rho}$ is the multiplication by $\rho$ map. Letting $f_{\rho}(t)$ denote the characteristic polynomial of $T_{\rho}$, we have
+    for all $x \in R$. That is, $T_{\rho}$ is the multiplication by $\rho$ map. Letting $f_{\rho}(x)$ denote the characteristic polynomial of $T_{\rho}$, we have
     \[
-      f_{\rho}(t) = \det(tI-T_{\rho}) = t^{n}-\k_{n-1}t^{n-1}+\cdots+(-1)^{n}\k_{0},
+      f_{\rho}(x) = \det(xI-T_{\rho}) = x^{n}-\k_{n-1}x^{n-1}+\cdots+(-1)^{n}\k_{0},
     \]
     with $\k_{i} \in K$ for $0 \le i \le n-1$. Then the trace and the norm are given by
     \begin{equation}\label{equ:trace_and_norm_characteristic_polynomial}
@@ -79,12 +81,12 @@
     \[
       \Trace_{L/K}:L \to K \quad \text{and} \quad \Norm_{L/K}:L^{\ast} \to K^{\ast}.
     \]
-    In the specialized setting $K/\Q$ for a number field $K$, we write $\Trace = \Trace_{K/\Q}$ and $\Norm = \Norm_{K/\Q}$ and call these the \textbf{field trace}\index{field trace} and \textbf{field norm}\index{field norm} respectively. Moreover, for any $\k \in K$ we call $\Trace(\k)$ and $\Norm(\k)$ the \textbf{trace}\index{trace} and \textbf{norm}\index{norm} of $\k$ respectively. When $L/K$ is separable, we can derive alternative descriptions of the trace and norm of $L/K$. This additional assumption is weak because the only situations we will be interested in are finite extensions of $\Q$ and $\F_{p}$ which are always separable (because both $\Q$ and $\F_{p}$ are perfect). In any case, to do this we need to work in the algebraic closure $\conj{K}$ of $K$. As $L/K$ is a degree $n$ separable extension, there are exactly $n$ distinct $K$-embeddings $\s_{1},\ldots,\s_{n}$ of $L$ into $\conj{K}$ (each given by letting $\t$ be a primitive element for $L$ so that $L = K[\t]$ and sending $\t$ to one of its conjugate roots in the minimal polynomial $m_{\t}(x)$ of $\t$). Clearly $\s_{1},\ldots,\s_{n}$ send $\mc{O}_{K}$ to itself and fix $\mc{O}_{K}$ pointwise. Moreover, we prove the following proposition:
+    In the specialized setting $K/\Q$ for a number field $K$, we write $\Trace = \Trace_{K/\Q}$ and $\Norm = \Norm_{K/\Q}$ and call these the \textbf{field trace}\index{field trace} and \textbf{field norm}\index{field norm} respectively. Moreover, for any $\k \in K$ we call $\Trace(\k)$ and $\Norm(\k)$ the \textbf{trace}\index{trace} and \textbf{norm}\index{norm} of $\k$ respectively. When $L/K$ is separable, we can derive alternative descriptions of the trace and norm of $L/K$. This additional assumption is weak because the only situations we will be interested in are finite extensions of $\Q$ and $\F_{p}$ which are always separable (because both $\Q$ and $\F_{p}$ are perfect). In any case, to do this we need to work in the algebraic closure $\conj{K}$ of $K$. As $L/K$ is a degree $n$ separable extension, there are exactly $n$ distinct $K$-embeddings $\s_{1},\ldots,\s_{n}$ of $L$ into $\conj{K}$ (each given by letting $\t$ be a primitive element for $L$ so that $L = K[\t]$ and sending $\t$ to one of its conjugate roots in the minimal polynomial $m_{\t}(x)$ of $\t$). Moreover, we prove the following proposition:
 
     \begin{proposition}\label{prop:formulas_for_trace_and_norm}
-      Let $L/K$ be a degree $n$ separable extension and let $\s$ run over all $K$-embeddings $\s$ of $L$ into $\conj{K}$. For any $\l \in L$, the characteristic polynomial $f_{\l}(t)$ of $T_{\l}$ is a power of the minimal polynomial of $\l$ and satisfies
+      Let $L/K$ be a degree $n$ separable extension and let $\s$ run over all $K$-embeddings $\s$ of $L$ into $\conj{K}$. For any $\l \in L$, the characteristic polynomial $f_{\l}(x)$ of $T_{\l}$ is a power of the minimal polynomial $m_{\l}(x)$ of $\l$ and satisfies
       \[
-        f_{\l}(t) = \prod_{\s}(t-\s(\l)).
+        f_{\l}(x) = \prod_{\s}(x-\s(\l)).
       \]
       In particular,
       \[
@@ -94,17 +96,17 @@
     \begin{proof}
       Let
       \[
-        m_{\l}(t) = t^{m}+\k_{m-1}t^{m-1}+\cdots+\k_{0},
+        m_{\l}(x) = x^{m}+\k_{m-1}x^{m-1}+\cdots+\k_{0},
       \]
-      with $\k_{i} \in K$ for $0 \le i \le n-1$, be the minimal polynomial of $\l$ (necessarily $m$ is the degree of $K(\l)/K$). Let $d$ be the degree of $L/K(\l)$. We first show that $f_{\l}(t)$ is a power of $m_{\l}(t)$. Precisely, we claim that
+      with $\k_{i} \in K$ for $0 \le i \le n-1$, be the minimal polynomial of $\l$ (necessarily $m$ is the degree of $K(\l)/K$). Let $d$ be the degree of $L/K(\l)$. We first show that $f_{\l}(x)$ is a power of $m_{\l}(x)$. Precisely, we claim that
       \[
-        f_{\l}(t) = m_{\l}(t)^{d}.
+        f_{\l}(x) = m_{\l}(x)^{d}.
       \]
-      To see this, recall that $\{1,\l,\ldots,\l^{n-1}\}$ is a basis for $K(\l)/K$. If $\{\a_{1},\ldots,\a_{d}\}$ is a basis for $L/K(\l)$, then
+      To see this, recall that $1,\l,\ldots,\l^{n-1}$ is a basis for $K(\l)/K$. If $\a_{1},\ldots,\a_{d}$ is a basis for $L/K(\l)$, then
       \[
-        \{\a_{1},\a_{1}\l,\ldots,\a_{1}\l^{m-1},\ldots,\a_{d},\a_{d}\l,\ldots,\a_{d}\l^{m-1}\},
+        \a_{1},\a_{1}\l,\ldots,\a_{1}\l^{m-1},\ldots,\a_{d},\a_{d}\l,\ldots,\a_{d}\l^{m-1},
       \]
-      is a basis for $L/K$. Because the minimal polynomial $m_{\l}(t)$ gives the linear relation
+      is a basis for $L/K$. Because the minimal polynomial $m_{\l}(x)$ gives the linear relation
       \[
         \l^{m} = -\k_{0}-k_{1}\l-\cdots-\k_{m-1}\l^{m-1},
       \]
@@ -112,50 +114,50 @@
       \[
         \begin{pmatrix} & 1 & & \\ & & \ddots & \\ & & & 1 \\ -\k_{0} & -\k_{1} & \cdots & -\k_{m-1} \\ \end{pmatrix}.
       \]
-      This is the companion matrix to $m_{\l}(t)$ and hence the characteristic polynomial is $m_{\l}(t)$ as well. Our claim follows since the matrix of $T_{\l}$ is block diagonal. Since $\l$ is algebraic over $K$ of degree $m$, $K(\l)$ is the splitting field of $m_{\l}(t)$ and there are $m$ distinct $K$-embeddings of $K(\l)$ into $\conj{K}$. Let $\tau$ be such an $K$embedding. Then the $K$-embeddings $\s$ are partitioned into $m$ many equivalence classes each of size $d$ (because $L/K(\l)$ is degree $d$) where $\s$ and $\s'$ are in the same class if and only if $\s(\l) = \s'(\l)$. In particular, a complete set of representatives is given by the $\tau$. But then
+      This is the companion matrix to $m_{\l}(x)$ and hence the characteristic polynomial is $m_{\l}(x)$ as well. Our claim follows since the matrix of $T_{\l}$ is block diagonal. Since $\l$ is algebraic over $K$ of degree $m$, $K(\l)$ is the splitting field of $m_{\l}(x)$ and there are $m$ distinct $K$-embeddings of $K(\l)$ into $\conj{K}$. Let $\tau$ be such an $K$-embedding. Then the $K$-embeddings $\s$ are partitioned into $m$ many equivalence classes each of size $d$ (because $L/K(\l)$ is degree $d$) where $\s$ and $\s'$ are in the same class if and only if $\s(\l) = \s'(\l)$. In particular, a complete set of representatives is given by the $\tau$. But then
       \[
-        f_{\l}(t) = m_{\l}(t)^{d} = \left(\prod_{\tau}(t-\tau(\l))\right)^{d} = \prod_{\s}(t-\s(\l)),
+        f_{\l}(x) = m_{\l}(x)^{d} = \left(\prod_{\tau}(x-\tau(\l))\right)^{d} = \prod_{\s}(x-\s(\l)),
       \]
       which proves the first statement. The formulas for the trace and norm follow from Vieta's formulas and \cref{equ:trace_and_norm_characteristic_polynomial}.
     \end{proof}
 
-    As a corollary of \cref{prop:formulas_for_trace_and_norm}, we can show how the field trace and field norm act on algebraic integers:
+    As an application of \cref{prop:formulas_for_trace_and_norm}, we can show how the field trace and field norm act on algebraic integers:
 
-    \begin{corollary}\label{cor:norm_and_trace_of_algebraic_integers}
+    \begin{proposition}\label{prop:norm_and_trace_of_algebraic_integers}
       Let $K$ be a number field. If $\k \in K$ is an algebraic integer, then the trace and norm of $\k$ are integers.
-    \end{corollary}
+    \end{proposition}
     \begin{proof}
-      By \cref{prop:field_of_fractions_of_ring_of_integers}, if $\k$ is an algebraic integer then its minimal polynomial $m_{\k}(t)$ has integer coefficients. By \cref{prop:formulas_for_trace_and_norm} the characteristic polynomial $f_{\k}(t)$ is a power of $m_{\k}(t)$. Hence $f_{\k}(t)$ has integer coefficients. From \cref{equ:trace_and_norm_characteristic_polynomial} we conclude that the trace and norm of $\k$ are integers.
+      By \cref{prop:field_of_fractions_of_ring_of_integers}, if $\k$ is an algebraic integer then its minimal polynomial $m_{\k}(x)$ has integer coefficients. By \cref{prop:formulas_for_trace_and_norm}, the characteristic polynomial $f_{\k}(x)$ is a power of $m_{\k}(x)$ and hence $f_{\k}(x)$ has integer coefficients too. From \cref{equ:trace_and_norm_characteristic_polynomial} we conclude that the trace and norm of $\k$ are integers.
     \end{proof}
 
     We can also classify the units in $\mc{O}_{K}$ according to their norm:
 
-    \begin{corollary}\label{cor:unit_if_and_only_if_absolute_value_norm_1}
+    \begin{proposition}\label{prop:unit_if_and_only_if_absolute_value_norm_1}
       Let $K$ be a number field. Then $\a \in \mc{O}_{K}$ is a unit if and only if its norm is $\pm 1$.
-    \end{corollary}
+    \end{proposition}
     \begin{proof}
       Let $\a \in \mc{O}_{K}$. First suppose $\a$ is a unit in $\mc{O}_{K}$. Then $\frac{1}{\a} \in \mc{O}_{K}$ and so
       \[
         \Norm(\a)\Norm\left(\frac{1}{\a}\right) = \Norm(1) = 1.
       \]
-      By \cref{cor:norm_and_trace_of_algebraic_integers}, the norm of $\a$ and $\frac{1}{\a}$ are both integers. Hence they must be $\pm1$ and thus the norm of $\a$ is $\pm1$. Now suppose the norm of $\a$ is $\pm1$. By \cref{prop:field_of_fractions_of_ring_of_integers}, its minimal polynomial $m_{\a}(t)$ has integer coefficients. Moreover, \cref{equ:trace_and_norm_characteristic_polynomial,prop:formulas_for_trace_and_norm} together imply that the constant term is $\pm1$. Letting the degree of $m_{\a}(t)$ be $m$, we have shown that
+      By \cref{prop:norm_and_trace_of_algebraic_integers}, the norm of $\a$ and $\frac{1}{\a}$ are both integers. Hence they must be $\pm1$ and thus the norm of $\a$ is $\pm1$. Now suppose the norm of $\a$ is $\pm1$. By \cref{prop:field_of_fractions_of_ring_of_integers}, its minimal polynomial $m_{\a}(x)$ has integer coefficients. Moreover, \cref{equ:trace_and_norm_characteristic_polynomial,prop:formulas_for_trace_and_norm} together imply that the constant term is $\pm1$. Letting the degree of $m_{\a}(x)$ be $m$, we have shown that
       \[
-        m_{\a}(t) = t^{m}+a_{m-1}t^{m-1}+\cdots\pm1,
+        m_{\a}(x) = x^{m}+a_{m-1}x^{m-1}+\cdots\pm1,
       \]
       with $a_{i} \in \Z$ for $1 \le i \le m-1$. Dividing $m_{\a}(\a)$ by $\a^{m}$, we find that $\frac{1}{\a}$ is a root of the polynomial
       \[
-        f(x) = \pm t^{m}+a_{1}t^{m-1}+\cdots+1.
+        f(x) = \pm x^{m}+a_{1}x^{m-1}+\cdots+1.
       \]
       Multiplying by $-1$ if necessary, it follows that $\frac{1}{\a}$ is a root of a monic polynomial with coefficients in $\Z$. Hence $\frac{1}{\a} \in \mc{O}_{K}$ and thus $\a$ is a unit in $\mc{O}_{K}$.
     \end{proof}
 
-    We can now prove a structure theorem for the ring of integers $\mc{O}_{K}$ of a number field $K$. We show that the ring of integers is a free abelian group with rank equal to the degree of $K$ which clearly is a generalization of the structure of $\Z$ for for the number field $\Q$:
+    We can now prove that the ring of integers $\mc{O}_{K}$ of a number field $K$ is a free abelian group with rank equal to the degree of $K$ which clearly is a generalization of the structure of $\Z$ for for the number field $\Q$:
 
     \begin{theorem}\label{thm:ring_of_integers_finitely_generated}
-      Let $K$ be a number field of degree $n$. Then $\mc{O}_{K}$ is a free abelian group of rank $n$. In particular, $\mc{O}_{K}$ is a finitely generated $\Z$-module.
+      Let $K$ be a number field of degree $n$. Then $\mc{O}_{K}$ is a free abelian group of rank $n$.
     \end{theorem}
     \begin{proof}
-      Let $\{\k_{1},\ldots,\k_{n}\}$ be a basis for $K$. By \cref{prop:field_of_fractions_of_ring_of_integers}, we have $\k_{i} = \frac{\a_{i}}{a_{i}}$ with $\a_{i} \in \mc{O}_{K}$ and $a_{i} \in \Z$ for $1 \le i \le n$. Hence $\{\a_{1},\ldots,\a_{n}\}$ is a basis for $K$ as well. In particular, any element $\a \in \mc{O}_{K}$ can be expressed as
+      Let $\k_{1},\ldots,\k_{n}$ be a basis for $K$. By \cref{prop:field_of_fractions_of_ring_of_integers}, we have $\k_{i} = \frac{\a_{i}}{a_{i}}$ with $\a_{i} \in \mc{O}_{K}$ and $a_{i} \in \Z$ for $1 \le i \le n$. Hence $\a_{1},\ldots,\a_{n}$ is a basis for $K$ as well. In particular, any element $\a \in \mc{O}_{K}$ can be expressed as
       \[
         \a = \sum_{1 \le i \le n}q_{i}(\a)\a_{i},
       \]
@@ -163,24 +165,20 @@
       \[
         \b_{j} = \sum_{1 \le i \le n}q_{i}(\b_{j})\a_{i},
       \]
-      is such that the greatest denominator of $q_{i}(\b_{j})$ for $1 \le i \le n$ tends to infinity as $j \to \infty$. In terms of the basis $\{\a_{1},\ldots,\a_{n}\}$, $\Norm(\b_{j})$ is the determinant of an $n \x n$ matrix with coefficients in $\Q[q_{i}(\b_{j})]_{1 \le i \le n}$. In particular, it is a homogenous polynomial of degree $n$ in the $q_{i}(\b_{j})$ for $1 \le i \le n$ with coefficients in $\Q$ determined by the basis $\{\a_{1},\ldots,\a_{n}\}$. But $\Norm(\b_{j})$ is an integer by \cref{cor:norm_and_trace_of_algebraic_integers}. It is also nonzero because $\b_{j}$ is nonzero. Hence $|\Norm(\b_{j})| \ge 1$ and thus, by what we have just shown, the greatest denominator of $q_{i}(\b_{j})$ for $1 \le i \le n$ must be bounded as $j \to \infty$. This gives a contradiction. Hence there is an integer $M \ge 1$ such that $Mq_{i}(\a) \in \Z$ for all $1 \le i \le n$ and $\a \in \mc{O}_{K}$. Therefore
+      is such that the greatest denominator of $q_{i}(\b_{j})$ for $1 \le i \le n$ tends to infinity as $j \to \infty$. In terms of the basis $\a_{1},\ldots,\a_{n}$, $\Norm(\b_{j})$ is the determinant of an $n \x n$ matrix with coefficients in $\Q[q_{i}(\b_{j})]_{1 \le i \le n}$. In particular, it is a homogenous polynomial of degree $n$ in the $q_{i}(\b_{j})$ for $1 \le i \le n$ with coefficients in $\Q$ determined by the basis $\a_{1},\ldots,\a_{n}$. But $\Norm(\b_{j})$ is an integer by \cref{prop:norm_and_trace_of_algebraic_integers} and is nonzero because $\b_{j}$ is nonzero. Hence $|\Norm(\b_{j})| \ge 1$ and thus, by what we have just shown, the greatest denominator of $q_{i}(\b_{j})$ for $1 \le i \le n$ must be bounded as $j \to \infty$. This gives a contradiction. Hence there is an integer $M \ge 1$ such that $Mq_{i}(\a) \in \Z$ for all $1 \le i \le n$ and $\a \in \mc{O}_{K}$. Therefore
       \[
         \mc{O}_{K} \subseteq \frac{1}{M}\bigop_{1 \le i \le n}\Z\a_{i}.
       \]
-      As the group on the right-hand side is a free abelian group so is $\mc{O}_{K}$. Moreover, as $\{\a_{1},\ldots,\a_{n}\}$ is a basis for $K$ we see that $\{\a_{1},\ldots,\a_{n}\}$ is linearly independent over $\Z$ as well. This means that the rank of $\mc{O}_{K}$ must be $n$. The last statement is now clear.
+      As the group on the right-hand side is a free abelian group so is $\mc{O}_{K}$. Moreover, as $\a_{1},\ldots,\a_{n}$ is a basis for $K$ we see that $\a_{1},\ldots,\a_{n}$ is linearly independent over $\Z$ as well. This means that the rank of $\mc{O}_{K}$ must be $n$. This proves the claim.
     \end{proof}
 
-    In accordance with \cref{thm:ring_of_integers_finitely_generated}, we say that $\{\a_{1},\ldots,\a_{n}\}$ is an \textbf{integral basis}\index{integral basis} for $K$ if $\{\a_{1},\ldots,\a_{n}\}$ is a basis for $K$ and $\mc{O}_{K}$ can be expressed as
-    \[
-      \mc{O}_{K} = \Z\a_{1}+\cdots+\Z\a_{n}.
-    \]
-    That is, every $\a \in \mc{O}_{K}$ is a unique integer linear combination of the $\a_{i}$. An integral basis for $K$ always exists by \cref{thm:ring_of_integers_finitely_generated}. In the special case $\mc{O}_{K} = \Z[\a]$ for some $\a \in \mc{O}_{K}$, we say $K$ is \textbf{monogenic}\index{monogenic}. By \cref{thm:ring_of_integers_finitely_generated}, we see that $\{1,\a,\ldots,\a^{n-1}\}$ is an integral basis for $K$. Lastly, we can show that algebraic integers satisfy a slightly weaker condition:
+    We can now show that $\mc{O}_{K}$ is integrally closed:
 
     \begin{proposition}\label{ring_of_integers_algebraically_closed}
-      Let $K$ be a number field. Then $\k \in K$ is an algebraic integer if and only if $\k$ is the root of a monic polynomial with coefficients in $\mc{O}_{K}$.
+      Let $K$ be a number field. Then $\mc{O}_{K}$ is integrally closed.
     \end{proposition}
     \begin{proof}
-      If $\k \in K$ is an algebraic integer, then $\k$ is the root of a monic polynomial with coefficients in $\Z$ and hence in $\mc{O}_{K}$ as well. So suppose $\k \in K$ is the root of a monic polynomial $f(x) \in \mc{O}_{K}$. Let $f(x)$ have degree $n$ and write
+      We need to show that $\k \in K$ is an algebraic integer if and only if $\k$ is the root of a monic polynomial $f(x) \in \mc{O}_{K}[x]$. If $\k \in K$ is an algebraic integer, then $\k$ is the root of a monic polynomial with coefficients in $\Z$ and hence in $\mc{O}_{K}$ as well. So suppose $\k \in K$ is the root of a monic polynomial $f(x) \in \mc{O}_{K}$. Let $f(x)$ have degree $n$ and write
       \[
         f(x) = x^{n}+\a_{n-1}x^{n-1}+\cdots+\a_{0},
       \]
@@ -190,16 +188,22 @@
       \]
       and hence $\mc{O}_{K}[\k]$ is a finitely generated $\Z$-module because $\mc{O}_{K}$ is by \cref{thm:ring_of_integers_finitely_generated}. As $\Z[\k] \subseteq \mc{O}_{K}[\k]$, we see that $\Z[\k]$ must also be a finitely generated $\Z$-module. Hence $\k$ is an algebraic integer by \cref{prop:algebraic_integer_if_finitely_generated}.
     \end{proof}
+
+    In accordance with \cref{thm:ring_of_integers_finitely_generated}, we say that $\a_{1},\ldots,\a_{n}$ is an \textbf{integral basis}\index{integral basis} for $K$ if $\a_{1},\ldots,\a_{n}$ is a basis for $K$ such that
+    \[
+      \mc{O}_{K} = \Z\a_{1}+\cdots+\Z\a_{n}.
+    \]
+    That is, every $\a \in \mc{O}_{K}$ is a unique integer linear combination of the $\a_{i}$. An integral basis for $K$ always exists by \cref{thm:ring_of_integers_finitely_generated} since any basis for $\mc{O}_{K}$ is necessarily a basis for $K$ by \cref{prop:field_of_fractions_of_ring_of_integers}. In general, it is difficult to produce an explicit integral basis for a general number field $K$. However, there is one particular case of interest where it is possible to produce an explicit integral basis. If $\mc{O}_{K} = \Z[\a]$ for some $\a \in \mc{O}_{K}$, we say $K$ is \textbf{monogenic}\index{monogenic}. Then \cref{thm:ring_of_integers_finitely_generated} implies that $1,\a,\ldots,\a^{n-1}$ is an integral basis for $K$.
   \section{Discriminants}
-    We will now discuss discriminants of algebras. Let $K$ be a field and $R$ be an $n$-dimensional $K$-algebra. If $\{\rho_{1},\ldots,\rho_{n}\}$ is a basis for $R$, we set
+    We will now discuss discriminants of algebras. Let $K$ be a field and $R$ be an $n$-dimensional $K$-algebra. If $\rho_{1},\ldots,\rho_{n}$ is a basis for $R$, we set
     \[
       \disc_{R/K}(\rho_{1},\ldots,\rho_{n}) = \det((\Trace_{R/K}(\rho_{i}\rho_{j}))_{i,j}).
     \]
-    In particular, $\disc_{R/K}(\rho_{1},\ldots,\rho_{n})$ is an element of $K$. It is also independent of the choice of basis up to elements of $(K^{\ast})^{2}$. Indeed, if $\{\rho'_{1},\ldots,\rho'_{n}\}$ is another basis then we have
+    In particular, $\disc_{R/K}(\rho_{1},\ldots,\rho_{n})$ is an element of $K$. It is also independent of the choice of basis up to elements of $(K^{\ast})^{2}$. Indeed, if $\rho'_{1},\ldots,\rho'_{n}$ is another basis then we have
     \[
       \rho'_{i} = \sum_{1 \le j \le m}\k_{i,j}\rho_{j},
     \]
-    with $\k_{i,j} \in K$ for $1 \le i,j \le n$. Then $(\k_{i,j})_{i,j}$ is the base change matrix from $\{\rho_{1},\ldots,\rho_{n}\}$ to $\{\rho'_{1},\ldots,\rho'_{n}\}$ and so it has nonzero determinant. Thus $\det((\k_{i,j})_{i,j}) \in K^{\ast}$. Moreover, we have
+    with $\k_{i,j} \in K$ for $1 \le i,j \le n$. Then $(\k_{i,j})_{i,j}$ is the base change matrix from $\rho_{1},\ldots,\rho_{n}$ to $\rho'_{1},\ldots,\rho'_{n}$ and so has nonzero determinant. Thus $\det((\k_{i,j})_{i,j}) \in K^{\ast}$. Moreover, we have
     \[
       (\Trace_{R/K}(\rho'_{i}\rho'_{j}))_{i,j} = (\k_{i,j})_{i,j}(\Trace_{R/K}(\rho_{i}\rho_{j}))_{i,j}(\k_{i,j})_{i,j}^{t},
     \]
@@ -211,14 +215,14 @@
     \[
       \disc_{K}(R) = \disc_{R/K}(\rho_{1},\ldots,\rho_{n}) \pmod{(K^{\ast})^{2}}.
     \]
-    for any basis $\{\rho_{1},\ldots,\rho_{n}\}$ of $R$. By what we have shown, $\disc_{K}(R)$ is well-defined. The discriminant is also multiplicative with respect to direct sums:
+    for any basis $\rho_{1},\ldots,\rho_{n}$ of $R$. By what we have shown, $\disc_{K}(R)$ is well-defined. The discriminant is also multiplicative with respect to direct sums:
 
     \begin{proposition}\label{prop:discriminant_and_direct_sums}
       Let $K$ be a field and $R$ be an $n$-dimensional $K$-algebra. Suppose we have a direct sum decomposition
       \[
         R = R_{1} \op R_{2},
       \]
-      for $K$-algebras $R_{1}$ and $R_{2}$ of dimensions $n_{1}$ and $n_{2}$ respectively. Also let $\{\eta_{1},\ldots,\eta_{n_{1}}\}$ and $\{\g_{1},\ldots,\g_{n_{2}}\}$ be bases of $R_{1}$ and $R_{2}$ respectively. Then
+      for $K$-algebras $R_{1}$ and $R_{2}$ of dimensions $n_{1}$ and $n_{2}$ respectively. Also let $\eta_{1},\ldots,\eta_{n_{1}}$ and $\g_{1},\ldots,\g_{n_{2}}$ be bases of $R_{1}$ and $R_{2}$ respectively. Then
       \[
         \disc_{R/K}(\eta_{1},\ldots,\eta_{n_{1}},\g_{1},\ldots,\g_{n_{2}}) = \disc_{R/K}(\eta_{1},\ldots,\eta_{n_{1}})\disc_{R}(\g_{1},\ldots,\g_{n_{2}}).
       \]
@@ -267,7 +271,7 @@
     We can now show that the discriminant is never zero:
 
     \begin{proposition}\label{prop:discriminant_not_zero}
-      Let $L/K$ be a degree $n$ separable extension and let $\{\l_{1},\ldots,\l_{n}\}$ be a basis for $L$. Then we have that $\disc_{K}(\l_{1},\ldots,\l_{n}) \neq 0$. In particular, $\disc_{K}(L) \neq 0$.
+      Let $L/K$ be a degree $n$ separable extension and let $\l_{1},\ldots,\l_{n}$ be a basis for $L$. Then we have that $\disc_{K}(\l_{1},\ldots,\l_{n}) \neq 0$. In particular, $\disc_{K}(L) \neq 0$.
     \end{proposition}
     \begin{proof}
       The second statement follows immediately from the first. To prove the first statement, suppose to the contrary that $\disc_{K}(\l_{1},\ldots,\l_{n}) = 0$. Then the matrix $(\Trace_{L/K}(\l_{i}\l_{j}))_{i,j}$ is not invertible. Hence there exists a nonzero column vector $(\k_{1},\ldots,\k_{n})^{t}$ with $\k_{i} \in K$ for $1 \le i \le n$ such that
@@ -282,17 +286,17 @@
       \[
         \l = \sum_{1 \le j \le n}\k_{j}\l_{j},
       \]
-      linearity of the trace implies that these $n$ equations are equivalent to the fact that $\Trace_{L/K}(\l\l_{i}) = 0$ for all $i$. As $\{\l_{1},\ldots,\l_{n}\}$ is a basis for $L$, it follows that $\l \in L$ is a nonzero element for which $\Trace_{L/K}(\l\eta) = 0$ for all $\eta \in L$. This is impossible by \cref{lem:trace_is_nondegenerate}. Hence $\disc_{K}(\l_{1},\ldots,\l_{n}) \neq 0$.
+      linearity of the trace implies that these $n$ equations are equivalent to the fact that $\Trace_{L/K}(\l\l_{i}) = 0$ for all $i$. As $\l_{1},\ldots,\l_{n}$ is a basis for $L$, it follows that $\l \in L$ is a nonzero element for which $\Trace_{L/K}(\l\eta) = 0$ for all $\eta \in L$. This is impossible by \cref{lem:trace_is_nondegenerate}. Hence $\disc_{K}(\l_{1},\ldots,\l_{n}) \neq 0$.
     \end{proof}
 
-    In addition to $\disc_{K}(\l_{1},\ldots,\l_{n})$ never vanishing, we can also write it in an alternative form. To do this, for any basis $\{\l_{1},\ldots,\l_{n}\}$ of $L$ we define the associated \textbf{embedding matrix}\index{embedding matrix} $M(\l_{1},\ldots,\l_{n})$ by
+    In addition to $\disc_{K}(\l_{1},\ldots,\l_{n})$ never vanishing, we can also write it in an alternative form. To do this, for any basis $\l_{1},\ldots,\l_{n}$ of $L$ we define the associated \textbf{embedding matrix}\index{embedding matrix} $M(\l_{1},\ldots,\l_{n})$ by
     \[
       M(\l_{1},\ldots,\l_{n}) = \begin{pmatrix} \s_{1}(\l_{1}) & \cdots & \s_{1}(\l_{n}) \\ \vdots & & \vdots \\ \s_{n}(\l_{1}) & \cdots & \s_{n}(\l_{n}) \end{pmatrix},
     \]
     where $\s_{1},\ldots,\s_{n}$ are the $n$ distinct $K$-embeddings of $L$ into $\conj{K}$. Then we have the following result:
 
     \begin{proposition}\label{disc_as_square_of_embedding_matrix}
-      Let $L/K$ be a degree $n$ separable extension. Then for any basis $\{\l_{1},\ldots,\l_{n}\}$ of $L$, we have
+      Let $L/K$ be a degree $n$ separable extension. Then for any basis $\l_{1},\ldots,\l_{n}$ of $L$, we have
       \[
         \disc_{K}(\l_{1},\ldots,\l_{n}) = \det(M(\l_{1},\ldots,\l_{n}))^{2}.
       \]
@@ -309,11 +313,11 @@
     where the sums run over all $K$-embeddings $\s$ of $L$ into $\conj{K}$ and the second to last equality follows by \cref{prop:formulas_for_trace_and_norm}, as desired.
     \end{proof}
 
-    In the specialized case $K/\Q$ for a number field $K$, we define the \textbf{discriminant}\index{discriminant} $\D_{K}$ of $K$ by
+    For a number field $K$, we define the \textbf{discriminant}\index{discriminant} $\D_{K}$ of $K$ by
     \[
       \D_{K} = \disc_{K}(\a_{1},\ldots,\a_{n}),
     \]
-    for any integral basis $\{\a_{1},\ldots,\a_{n}\}$. As $\D_{K}$ is not defined modulo $(K^{\ast})^{2}$, we need to show that $\D_{K}$ is independent of the choice of integral basis and hence well-defined. Indeed, if $\{\a'_{1},\ldots,\a'_{n}\}$ is another integral basis then the base change matrix, as well as its inverse, both have integer entries (because integral bases are bases for $\mc{O}_{K}$ as a $\Z$-module). This implies that the determinant of the base change matrix is $\pm 1$ and so \cref{equ:discriminant_base_change} shows that $\D_{K}$ is independent of the choice of integral basis. Moreover, $\D_{K}$ is nonzero by \cref{prop:discriminant_not_zero} and
+    for any integral basis $\a_{1},\ldots,\a_{n}$ for $K$. As $\D_{K}$ is not defined modulo $(K^{\ast})^{2}$, we need to show that $\D_{K}$ is independent of the choice of integral basis and hence well-defined. Indeed, if $\a'_{1},\ldots,\a'_{n}$ is another integral basis then the base change matrix, as well as its inverse, both have integer entries because integral bases are bases for $\mc{O}_{K}$ as a $\Z$-module. This implies that the determinant of the base change matrix is $\pm 1$ and so it follows from \cref{equ:discriminant_base_change} that $\D_{K}$ is independent of the choice of integral basis. Moreover, $\D_{K}$ is nonzero by \cref{prop:discriminant_not_zero} and
     \[
       \D_{K} = \det(M(\a_{1},\ldots,\a_{n}))^{2},
     \]
@@ -328,11 +332,11 @@
       \]
     \end{proposition}
     \begin{proof}
-      Since $\mf{a}$ and $\mc{O}_{K}$ are both free abelian groups of rank $n$ (recall \cref{thm:ring_of_integers_finitely_generated}) and $\mf{a}$ is a subgroup, the first statement follows by \cref{prop:base_change_quotient_determinant}. For the second statement, let $\{\a_{1},\ldots,\a_{n}\}$ be an integral basis for $K$. Writing
+      Since $\mf{a}$ and $\mc{O}_{K}$ are both free abelian groups of rank $n$ (recall \cref{thm:ring_of_integers_finitely_generated}) and $\mf{a}$ is a subgroup, the first statement follows by \cref{prop:base_change_quotient_determinant}. For the second statement, let $\a_{1},\ldots,\a_{n}$ be an integral basis for $K$. Writing
       \[
         \a = \sum_{1 \le i \le n}a_{i}\a_{i},
       \]
-      with $a_{i} \in \Z$, we see that $\{a_{1}\a_{1},\ldots,a_{n}\a_{n}\}$ is a basis for $\a\mc{O}_{K}$. In particular, the base change matrix from $\{\a_{1},\ldots,\a_{n}\}$  to this basis is the diagonal with the $a_{i}$ on the diagonal. Then on the one hand, we have $|\mc{O}_{K}/\a\mc{O}_{K}| = |a_{1} \cdots a_{n}|$ by \cref{prop:base_change_quotient_determinant} again. On the other hand, in terms of the basis $\{a_{1}\a_{1},\ldots,a_{n}\a_{n}\}$ the map $T_{\a}$ is given by
+      with $a_{i} \in \Z$, we see that $a_{1}\a_{1},\ldots,a_{n}\a_{n}$ is a basis for $\a\mc{O}_{K}$. In particular, the base change matrix from $\a_{1},\ldots,\a_{n}$  to this basis is the diagonal with the $a_{i}$ on the diagonal. Then on the one hand, we have $|\mc{O}_{K}/\a\mc{O}_{K}| = |a_{1} \cdots a_{n}|$ by \cref{prop:base_change_quotient_determinant} again. On the other hand, in terms of the basis $a_{1}\a_{1},\ldots,a_{n}\a_{n}$ the map $T_{\a}$ is given by
       \[
         T_{\a} = \begin{pmatrix} a_{1} & & \\ & \ddots & \\ & & a_{n} \end{pmatrix},
       \]
@@ -435,7 +439,7 @@
           \mf{p}_{2} \cdots \mf{p}_{k} \not\subseteq \a\mc{O}_{K}.
         \]
         Hence there exists a nonzero $\b \in \mf{p}_{2} \cdots \mf{p}_{k}$ with $\b \notin \a\mc{O}_{K}$. We will now show that $\b\a^{-1}$ is a nonzero element in $\mf{p}^{-1}$ that is not an algebraic integer. Clearly $\b\a^{-1}$ is nonzero. Since $\mf{p}_{1} = \mf{p}$, what we have previously shown implies $\b\mf{p} \subseteq \a\mc{O}_{K}$ and hence $\b\a^{-1}\mf{p} \in \mc{O}_{K}$ which means $\b\a^{-1} \in \mf{p}^{-1}$. But as $\b \notin \a\mc{O}_{K}$, we also have $\b\a^{-1} \notin \mc{O}_{K}$ so that $\b\a^{-1}$ is not an algebraic integer. This proves (i).
-        \item By (i) and the definition of $\mf{p}^{-1}$, we have $\mf{p} \subseteq \mf{p}^{-1}\mf{p} \subseteq \mc{O}$. Since $\mf{p}$ is maximal by \cref{prop:prime_integral_ideals_are_maximal}, it follows that $\mf{p}^{-1}\mf{p}$ is either $\mf{p}$ or $\mc{O}_{K}$. So it suffices to show that the first case cannot hold. Assume by contradiction that $\mf{p}^{-1}\mf{p} = \mf{p}$. Let $\{\w_{1},\ldots,\w_{r}\}$ be a set of generators for $\mf{p}$ and let $\a \in \mf{p}^{-1}$ be a nonzero element that is not an algebraic integer which exists by (i). Then $\a\w_{i} \in \mf{p}^{-1}\mf{p}$ for $1 \le i \le r$ and hence $\a\mf{p} \subseteq \mf{p}^{-1}\mf{p}$. By our assumption, this further implies that $\a\mf{p} \subseteq \mf{p}$. But then
+        \item By (i) and the definition of $\mf{p}^{-1}$, we have $\mf{p} \subseteq \mf{p}^{-1}\mf{p} \subseteq \mc{O}$. Since $\mf{p}$ is maximal by \cref{prop:prime_integral_ideals_are_maximal}, it follows that $\mf{p}^{-1}\mf{p}$ is either $\mf{p}$ or $\mc{O}_{K}$. So it suffices to show that the first case cannot hold. Assume by contradiction that $\mf{p}^{-1}\mf{p} = \mf{p}$. Let $\w_{1},\ldots,\w_{r}$ generate $\mf{p}$ and let $\a \in \mf{p}^{-1}$ be a nonzero element that is not an algebraic integer which exists by (i). Then $\a\w_{i} \in \mf{p}^{-1}\mf{p}$ for $1 \le i \le r$ and hence $\a\mf{p} \subseteq \mf{p}^{-1}\mf{p}$. By our assumption, this further implies that $\a\mf{p} \subseteq \mf{p}$. But then
         \[
           \a\w_{i} = \sum_{1 \le j \le r}\a_{i,j}\w_{j},
         \]
@@ -447,7 +451,7 @@
         \[
           \begin{pmatrix} \a-\a_{1,1} & \a_{1,2} & \cdots & -\a_{1,r} \\ -\a_{2,1} & \a-\a_{2,2} & & \\ \vdots & & \ddots & \\ -\a_{r,1} & & & \a-\a_{r,r} \end{pmatrix}\begin{pmatrix} \w_{1} \\ \w_{2} \\ \vdots \\ \w_{r} \end{pmatrix} = \mathbf{0}.
         \]
-        Thus the determinant of the matrix on the left-hand side must be zero. But this means $\a$ is a root of the characteristic polynomial $\det(xI-(\a_{i,j}))$ which is a monic polynomial with coefficients $\mc{O}_{K}$. By \cref{ring_of_integers_algebraically_closed}, $\a$ is an algebraic integer which is a contradiction. Thus $\mf{p}^{-1}\mf{p} = \mc{O}_{K}$.
+        Thus the determinant of the matrix on the left-hand side must be zero. But this means $\a$ is a root of the characteristic polynomial $\det(xI-(\a_{i,j}))$ which is a monic polynomial with coefficients $\mc{O}_{K}$. As $\mc{O}_{K}$ is integrally closed, $\a$ is an algebraic integer which is a contradiction. Thus $\mf{p}^{-1}\mf{p} = \mc{O}_{K}$.
       \end{enumerate}
     \end{proof}
 
@@ -461,7 +465,7 @@
       \[
         \mf{a} \subseteq \mf{p}^{-1}\mf{a} \subseteq \mf{p}^{-1}\mf{p} = \mc{O}_{K}.
       \]
-      We now claim $\mf{a} \subset \mf{p}^{-1}\mf{a}$. If not, $\mf{a} = \mf{p}^{-1}\mf{a}$. Let $\{\w_{1},\ldots,\w_{r}\}$ be a set of generators for $\mf{a}$. By \cref{lem:inverse_for_prime_ideals}, let $\a \in \mf{p}^{-1}$ be a nonzero element that is not an algebraic integer. Then $\a\w_{i} \in \mf{p}^{-1}\mf{a}$ for $1 \le i \le r$ and hence $\a\mf{a} \subseteq \mf{p}^{-1}\mf{a}$. By our assumption, this further implies that $\a\mf{p} \subseteq \mf{a}$. But then
+      We now claim $\mf{a} \subset \mf{p}^{-1}\mf{a}$. If not, $\mf{a} = \mf{p}^{-1}\mf{a}$. Let $\w_{1},\ldots,\w_{r}$ generate $\mf{a}$. By \cref{lem:inverse_for_prime_ideals}, let $\a \in \mf{p}^{-1}$ be a nonzero element that is not an algebraic integer. Then $\a\w_{i} \in \mf{p}^{-1}\mf{a}$ for $1 \le i \le r$ and hence $\a\mf{a} \subseteq \mf{p}^{-1}\mf{a}$. By our assumption, this further implies that $\a\mf{p} \subseteq \mf{a}$. But then
       \[
         \a\w_{i} = \sum_{1 \le j \le r}\a_{i,j}\w_{j},
       \]
@@ -473,7 +477,7 @@
       \[
         \begin{pmatrix} \a-\a_{1,1} & \a_{1,2} & \cdots & -\a_{1,r} \\ -\a_{2,1} & \a-\a_{2,2} & & \\ \vdots & & \ddots & \\ -\a_{r,1} & & & \a-\a_{r,r} \end{pmatrix}\begin{pmatrix} \w_{1} \\ \w_{2} \\ \vdots \\ \w_{r} \end{pmatrix} = \mathbf{0}.
       \]
-      Thus the determinant of the matrix on the left-hand side must be zero. But this means $\a$ is a root of the characteristic polynomial $\det(xI-(\a_{i,j}))$ which is a monic polynomial with coefficients $\mc{O}_{K}$. By \cref{ring_of_integers_algebraically_closed}, $\a$ is an algebraic integer which is a contradiction. Thus $\mf{a} \subset \mf{p}^{-1}\mf{a}$. But then $\Norm(\mf{p}^{-1}\mf{a}) < \Norm(\mf{a})$ and by the minimality of $\Norm(\mf{a})$ it follows that the fractional ideal $\mf{p}^{-1}\mf{a}$ is invertible. Let $\mf{b}$ be its inverse. Then $\mf{b}\mf{p}^{-1}\mf{a} = \mc{O}_{K}$ and thus $\mf{a}$ is invertible with inverse $\mf{b}\mf{p}^{-1}$. This is a contradiction, so we conclude that every integral ideal is invertible. We now show that every fractional ideal $\mf{f}$ is invertible. Since $\mf{f}$ is a fractional ideal, there exists a nonzero $\d \in \mc{O}_{K}$ and an integral ideal $\mf{a}$ such that
+      Thus the determinant of the matrix on the left-hand side must be zero. But this means $\a$ is a root of the characteristic polynomial $\det(xI-(\a_{i,j}))$ which is a monic polynomial with coefficients $\mc{O}_{K}$. As $\mc{O}_{K}$ is integrally closed, $\a$ is an algebraic integer which is a contradiction. Thus $\mf{a} \subset \mf{p}^{-1}\mf{a}$. But then $\Norm(\mf{p}^{-1}\mf{a}) < \Norm(\mf{a})$ and by the minimality of $\Norm(\mf{a})$ it follows that the fractional ideal $\mf{p}^{-1}\mf{a}$ is invertible. Let $\mf{b}$ be its inverse. Then $\mf{b}\mf{p}^{-1}\mf{a} = \mc{O}_{K}$ and thus $\mf{a}$ is invertible with inverse $\mf{b}\mf{p}^{-1}$. This is a contradiction, so we conclude that every integral ideal is invertible. We now show that every fractional ideal $\mf{f}$ is invertible. Since $\mf{f}$ is a fractional ideal, there exists a nonzero $\d \in \mc{O}_{K}$ and an integral ideal $\mf{a}$ such that
       \[
         \mf{f} = \frac{1}{\d}\mf{a}.
       \]
@@ -688,14 +692,14 @@
       \]
     \end{proposition}
     \begin{proof}
-      By \cref{prop:dual_lattice_exists}, $\mf{f}$ is a finitely generated $\Z$-module. Therefore it is a finitely generated $\mc{O}_{K}$-submodule of $K$ if it is preserved under multiplication by $\mc{O}_{K}$. Let $\a \in \mc{O}_{K}$ and $\b \in \mf{f}^{\vee}$. Then we must show $\a\b \in \mf{f}^{\vee}$. To see this, observe that $\Trace(\a\b\mf{f}) \subseteq \Trace(\b\mf{f}) \subseteq \Z$ by \cref{cor:norm_and_trace_of_algebraic_integers} since $\a\mf{f} \subseteq \mf{f}$ and $\b \in \mf{f}^{\vee}$. Therefore $\a\b \in \mf{f}^{\vee}$ and hence $\mf{f}^{\vee}$ is a fractional ideal proving the first statement. To prove the second we will show containment in both directions. For the forward containment, first suppose $\a \in \mf{f}^{\vee}$ and $\b \in \mf{f}$. Then $\Trace(\a\b\mc{O}_{K}) \subseteq \Trace(\a\mf{f}) \subseteq \Z$ by \cref{cor:norm_and_trace_of_algebraic_integers} since $\b\mc{O}_{K} \subseteq \mf{f}$ and $\a \in \mf{f}^{\vee}$. Hence $\a\b \in \mc{O}_{K}^{\vee}$ so that $\mf{f}^{\vee}\mf{f} \subseteq \mc{O}_{K}^{\vee}$ and therefore $\mf{f}^{\vee} \subseteq \mf{f}^{-1}\mc{O}_{K}^{\vee}$. This proves the forward containment. For the reverse containment, suppose $\a \in \mf{f}^{-1}$ and $\b \in \mc{O}_{K}^{\vee}$. Then $\Trace(\a\b\mf{f}) \subseteq \Trace(\b\mc{O}_{K}) \subseteq \Z$ by \cref{cor:norm_and_trace_of_algebraic_integers} since $\a\mf{f} \subseteq \mc{O}_{K}$ and $\b \in \mc{O}_{K}^{\vee}$. This shows $\a\b \in \mf{f}^{\vee}$ and hence $\mf{f}^{-1}\mc{O}_{K}^{\vee} \subseteq \mf{f}^{\vee}$ proving the reverse containment and completing the proof.
+      By \cref{prop:dual_lattice_exists}, $\mf{f}^{\vee}$ is a finitely generated $\Z$-module. Therefore it is a finitely generated $\mc{O}_{K}$-submodule of $K$ if it is preserved under multiplication by $\mc{O}_{K}$. Let $\a \in \mc{O}_{K}$ and $\b \in \mf{f}^{\vee}$. Then we must show $\a\b \in \mf{f}^{\vee}$. To see this, observe that $\Trace(\a\b\mf{f}) \subseteq \Trace(\b\mf{f}) \subseteq \Z$ by \cref{prop:norm_and_trace_of_algebraic_integers} since $\a\mf{f} \subseteq \mf{f}$ and $\b \in \mf{f}^{\vee}$. Therefore $\a\b \in \mf{f}^{\vee}$ and hence $\mf{f}^{\vee}$ is a fractional ideal proving the first statement. To prove the second we will show containment in both directions. For the forward containment, first suppose $\a \in \mf{f}^{\vee}$ and $\b \in \mf{f}$. Then $\Trace(\a\b\mc{O}_{K}) \subseteq \Trace(\a\mf{f}) \subseteq \Z$ by \cref{prop:norm_and_trace_of_algebraic_integers} since $\b\mc{O}_{K} \subseteq \mf{f}$ and $\a \in \mf{f}^{\vee}$. Hence $\a\b \in \mc{O}_{K}^{\vee}$ so that $\mf{f}^{\vee}\mf{f} \subseteq \mc{O}_{K}^{\vee}$ and therefore $\mf{f}^{\vee} \subseteq \mf{f}^{-1}\mc{O}_{K}^{\vee}$. This proves the forward containment. For the reverse containment, suppose $\a \in \mf{f}^{-1}$ and $\b \in \mc{O}_{K}^{\vee}$. Then $\Trace(\a\b\mf{f}) \subseteq \Trace(\b\mc{O}_{K}) \subseteq \Z$ by \cref{prop:norm_and_trace_of_algebraic_integers} since $\a\mf{f} \subseteq \mc{O}_{K}$ and $\b \in \mc{O}_{K}^{\vee}$. This shows $\a\b \in \mf{f}^{\vee}$ and hence $\mf{f}^{-1}\mc{O}_{K}^{\vee} \subseteq \mf{f}^{\vee}$ proving the reverse containment and completing the proof.
     \end{proof}
 
     We define the \textbf{different}\index{different} $\mf{D}$ of $K$ by
     \[
       \mf{D}_{K} = (\mc{O}_{K}^{\vee})^{-1}.  
     \]
-    This is an integral ideal. Indeed, first note that $\mc{O}_{K} \subseteq \mc{O}_{K}^{\vee}$ by \cref{cor:norm_and_trace_of_algebraic_integers}. It follows from \cref{prop:explicit_inverse_ideal} that $\mc{D}_{K}$ is an integral ideal and
+    This is an integral ideal. Indeed, first note that $\mc{O}_{K} \subseteq \mc{O}_{K}^{\vee}$ by \cref{prop:norm_and_trace_of_algebraic_integers}. It follows from \cref{prop:explicit_inverse_ideal} that $\mc{D}_{K}$ is an integral ideal and
     \[
       \mf{D}_{K} = \{\k \in K: \k\mc{O}_{K}^{\vee} \subseteq \mc{O}_{K}\}.  
     \]
@@ -1098,7 +1102,7 @@
     \[
       h_{K} = |\Cl(K)|.
     \]
-    The \textbf{unit group}\index{unit group} of $K$ is defined to be $\mc{O}_{K}^{\ast}$. That is, the unit group is the group of units in the ring of integers of $K$. By abuse of language, we call any element $\mc{O}_{K}^{\ast}$ a \textbf{unit}\index{unit} of $K$. That is, a unit in $K$ is precisely an algebraic integer that is invertible in the ring of integers. Note that $\mc{O}_{K}^{\ast}$ is closed under conjugation because $\Norm(\a) = \Norm(\conj{\a})$ as a consequence of \cref{prop:formulas_for_trace_and_norm}. By \cref{cor:unit_if_and_only_if_absolute_value_norm_1}, we can express the unit group as
+    The \textbf{unit group}\index{unit group} of $K$ is defined to be $\mc{O}_{K}^{\ast}$. That is, the unit group is the group of units in the ring of integers of $K$. By abuse of language, we call any element $\mc{O}_{K}^{\ast}$ a \textbf{unit}\index{unit} of $K$. That is, a unit in $K$ is precisely an algebraic integer that is invertible in the ring of integers. Note that $\mc{O}_{K}^{\ast}$ is closed under conjugation because $\Norm(\a) = \Norm(\conj{\a})$ as a consequence of \cref{prop:formulas_for_trace_and_norm}. By \cref{prop:unit_if_and_only_if_absolute_value_norm_1}, we can express the unit group as
     \[
       \mc{O}_{K}^{\ast} = \{\e \in \mc{O}_{K}:\Norm(\e) = \pm 1\}.
     \]
@@ -1330,7 +1334,7 @@
         Let $K$ be a number field. There are finitely many elements in $\mc{O}_{K}$ of a given norm up to multiplication by units.
       \end{lemma}
       \begin{proof}
-        Recall that the norm of an algebraic integer is an integer by \cref{cor:norm_and_trace_of_algebraic_integers} and that the elements of norm $\pm1$ are exactly the units by \cref{cor:unit_if_and_only_if_absolute_value_norm_1}. Therefore it suffices to prove the claim for norm $n \ge 2$ (the norm is only zero for zero itself). Further recall that $\mc{O}_{K}/n\mc{O}_{K}$ is finite by \cref{prop:residue_of_integral_ideal_is_finite}. Therefore, it suffices to show that in each coset there is at most one element of norm $n$ up to multiplication by units. To show this, suppose $\a$ and $\b$ are two representatives in the same class are are of norm $n$. Writing $\a = \b+n\g$ for some $n\g \in n\mc{O}_{K}$, we have
+        Recall that the norm of an algebraic integer is an integer by \cref{prop:norm_and_trace_of_algebraic_integers} and that the elements of norm $\pm1$ are exactly the units by \cref{prop:unit_if_and_only_if_absolute_value_norm_1}. Therefore it suffices to prove the claim for norm $n \ge 2$ (the norm is only zero for zero itself). Further recall that $\mc{O}_{K}/n\mc{O}_{K}$ is finite by \cref{prop:residue_of_integral_ideal_is_finite}. Therefore, it suffices to show that in each coset there is at most one element of norm $n$ up to multiplication by units. To show this, suppose $\a$ and $\b$ are two representatives in the same class are are of norm $n$. Writing $\a = \b+n\g$ for some $n\g \in n\mc{O}_{K}$, we have
         \[
           \frac{\a}{\b} = 1+\frac{n}{\b}\g = 1+\frac{\Norm(\b)}{\b}\g,
         \]
@@ -1491,11 +1495,11 @@
       \[
         a^{2}-b^{2}d = \left(\frac{n+1}{2}\right)^{2}-\left(\frac{m+1}{2}\right)^{2}d = \frac{n^{2}+2n+1-d(m^{2}+2m+1)}{4},
       \]
-      and since the right-hand side must be an integer the numerator must be divisible by $4$. As $n$ and $m$ are even, this is equivalent to $d \equiv 1 \tmod{4}$. So we have shown $2a$ or $2b$ is odd if and only if $d \equiv 1 \tmod{4}$. Thus if $d \equiv 1 \tmod{4}$, we have $a = \frac{a'}{2}$ and $b = \frac{b'}{2}$ for some $a',b' \in \Z$ and hence $\a \in \Z\left[\frac{1+\sqrt{d}}{2}\right]$. Otherwise, $d \equiv 2,3 \tmod{4}$ (because $d$ is square-free) so that $2a$ and $2b$ are both even, $a,b \in \Z$, and therefore $\a \in \Z[\sqrt{d}]$. We have now shown that $\mc{O}_{d} \subseteq \Z\left[\frac{1+\sqrt{d}}{2}\right]$ and $\mc{O}_{d} \subseteq \Z[\sqrt{d}]$ according to if $d \equiv 1 \tmod{4}$ or $d \equiv 2,3 \tmod{4}$ respectively. For the reverse containment, just note that $\sqrt{d}$ is an algebraic integer since its minimal polynomial $m_{\sqrt{d}}(x)$ is
+      and since the right-hand side must be an integer the numerator must be divisible by $4$. As $n$ and $m$ are even, this is equivalent to $d \equiv 1 \tmod{4}$. So we have shown $2a$ or $2b$ is odd if and only if $d \equiv 1 \tmod{4}$. Thus if $d \equiv 1 \tmod{4}$, we have $a = \frac{a'}{2}$ and $b = \frac{b'}{2}$ for some $a',b' \in \Z$ and hence $\a \in \Z\left[\frac{1+\sqrt{d}}{2}\right]$. Otherwise, $d \equiv 2,3 \tmod{4}$ (because $d$ is square-free) so that $2a$ and $2b$ are both even, $a,b \in \Z$, and therefore $\a \in \Z[\sqrt{d}]$. We have now shown that $\mc{O}_{d} \subseteq \Z\left[\frac{1+\sqrt{d}}{2}\right]$ and $\mc{O}_{d} \subseteq \Z[\sqrt{d}]$ according to if $d \equiv 1 \tmod{4}$ or $d \equiv 2,3 \tmod{4}$ respectively. For the reverse containment, just note that $\frac{1+\sqrt{d}}{2}$ and $\sqrt{d}$ are algebraic integers according to if $d \equiv 1 \tmod{4}$ or $d \equiv 2,3 \tmod{4}$ respectively since their minimal polynomials are
       \[
-        m_{\sqrt{d}}(x) = x^{2}\pm d,
+        m_{\frac{1+\sqrt{d}}{2}}(x) = x^{2}-x+\frac{1-d}{4} \quad \text{and} \quad m_{\sqrt{d}}(x) = x^{2}-d,
       \]
-      according to if $d < 0$ or $d > 0$. The reverse containment now follows by \cref{prop:algebraic_integer_if_finitely_generated} and that all integers are algebraic integers.
+      where $\frac{1-d}{4} \in \Z$ because $d \equiv 1 \tmod{4}$. Then apply \cref{prop:algebraic_integer_if_finitely_generated}.
     \end{proof}
 
     It follows from \cref{prop:ring_of_integers_quadratic} that
@@ -1605,7 +1609,7 @@
       where $\e_{d}$ is a fundamental unit.
     \end{proposition}
     \begin{proof}
-        First suppose $d > 0$. Then $\Q(\sqrt{d}) \subset \R$ and thus $\mu(d) = \<-1\>$ since these are the only roots of unity in $\R$ and clearly they are in $\Q(\sqrt{d})$. Now suppose $d < 0$. Then $\Q(\sqrt{d})$ is imaginary and its signature is $(0,1)$. By \cref{cor:unit_if_and_only_if_absolute_value_norm_1}, $\a \in \mc{O}_{d}$ is a unit if and only if the norm of $\a$ is $\pm 1$. Actually, since $d < 0$ the definition of the norm shows that the norm is always nonnegative. Hence $\a$ is a unit if and only if its norm is $1$. First suppose $d \equiv 2,3 \tmod{4}$. Then \cref{prop:ring_of_integers_quadratic} implies
+        First suppose $d > 0$. Then $\Q(\sqrt{d}) \subset \R$ and thus $\mu(d) = \<-1\>$ since these are the only roots of unity in $\R$ and clearly they are in $\Q(\sqrt{d})$. Now suppose $d < 0$. Then $\Q(\sqrt{d})$ is imaginary and its signature is $(0,1)$. By \cref{prop:unit_if_and_only_if_absolute_value_norm_1}, $\a \in \mc{O}_{d}$ is a unit if and only if the norm of $\a$ is $\pm 1$. Actually, since $d < 0$ the definition of the norm shows that the norm is always nonnegative. Hence $\a$ is a unit if and only if its norm is $1$. First suppose $d \equiv 2,3 \tmod{4}$. Then \cref{prop:ring_of_integers_quadratic} implies
       \[
         \a = a+b\sqrt{d},
       \]
