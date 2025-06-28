@@ -3,15 +3,15 @@
   \section{Dirichlet's Theorem on Arithmetic Progressions}
     One of the more well-known arithmetic results proved using $L$-series is \textbf{Dirichlet's theorem on arithmetic progressions}\index{Dirichlet's theorem on arithmetic progressions}:
 
-    \begin{theorem}[Dirichlet's theorem on arithmetic progressions]\label{thm:Dirichlet's_theorem_on_primes_in_arithmetic_progressions}
+    \begin{theorem*}[Dirichlet's theorem on arithmetic progressions]\label{thm:Dirichlet's_theorem_on_primes_in_arithmetic_progressions}
       Let $a$ and $m$ be integers such that $m \ge 1$ and $(a,m) = 1$. Then the series
       \[
         \sum_{p \equiv a \tmod{m}}\frac{1}{p},
       \]
       diverges. In particular, the arithmetic progression $\{a+km \mid k \in \Z_{\ge 0}\}$ contain infinitely many primes.
-    \end{theorem}
+    \end{theorem*}
 
-    The proof can be broken into three steps. The first is to estimate the logarithm of a Dirichlet $L$-series $L(s,\chi)$ and show that almost all of the terms are uniformly bounded as $s \to 1$. The next step is to use the orthogonality relations of the characters to sieve out the correct sum. The last step is to show the non-vanishing result $L(1,\chi) \neq 0$ for all non-principal characters $\chi$. This is the essential part of the proof as it is what assures us that the sum diverges. Fortunately, we have done all of the difficult work to prove this already:
+    The proof can be broken into three steps. The first is to estimate the logarithm of a Dirichlet $L$-series $L(s,\chi)$ and show that almost all of the terms are uniformly bounded as $s \to 1$. The next step is to use the Dirichlet orthogonality relations of the characters to sieve out the correct sum. The last step is to show the non-vanishing result $L(1,\chi) \neq 0$ for all non-principal characters $\chi$. This is the essential part of the proof as it is what assures us that the sum diverges. Fortunately, we have done all of the difficult work to prove this already:
 
     \begin{theorem}\label{thm:non-vanishing_of_Dirichlet_L-functions_at_s=1}
       Let $\chi$ be a non-principal Dirichlet character. Then $L(1,\chi)$ is finite and nonzero.
@@ -47,7 +47,7 @@
         \[
           \sum_{\chi \tmod{m}}\cchi(a)\log{L(s,\chi)} = \sum_{\chi \tmod{m}}\sum_{p}\frac{\cchi(a)\chi(p)}{p^{s}}+\sum_{\chi \tmod{m}}\cchi(a)\sum_{p}\sum_{k \ge 2}\frac{\chi(p^{k})}{kp^{ks}},
         \]
-        and by the orthogonality relations (\cref{prop:Dirichlet_orthogonality_relations} (ii)), we have
+        and by the Dirichlet orthogonality relations (namely (ii)), we have
         \[
           \sum_{\chi \tmod{m}}\sum_{p}\frac{\cchi(a)\chi(p)}{p^{s}} = \sum_{p}\frac1{p^{s}}\sum_{\chi \tmod{m}}\cchi(a)\chi(p) = \vphi(m)\sum_{p \equiv{a} \tmod{m}}\frac{1}{p^{s}}.
         \]
@@ -117,7 +117,7 @@
 
     Siegel zeros present an unfortunate obstruction to zero-free region results for Dirichlet $L$-functions when the primitive character $\chi$ is quadratic. However, if we no longer require the constant $c$ in the zero-free region to be effective, we can obtain a much better result for how close the Siegel zero can be to $1$. This result will follow from a lower bound for $L(1,\chi)$ which significantly improves upon \cref{equ:lower_bound_at_1_Dirichlet_real_character}. The result is known as \textbf{Siegel's theorem}\index{Siegel's theorem}:
 
-    \begin{theorem}[Siegel's theorem]
+    \begin{theorem*}[Siegel's theorem]
       Let $\chi$ be a primitive quadratic Dirichlet character $\chi$ of conductor $q > 1$. Then there exists a positive constant $c_{1}(\e)$ such that
       \[
         L(1,\chi) \ge \frac{c_{1}(\e)}{q^{\e}}.
@@ -126,7 +126,7 @@
       \[
         \s \ge 1-\frac{c_{2}(\e)}{q^{\e}}.
       \]
-    \end{theorem}
+    \end{theorem*}
 
     The largest defect of Siegel's theorem is that the implicit constants $c_{1}(\e)$ and $c_{2}(\e)$ are ineffective (and not necessarily equal). To prove Siegel's theorem, we we will require two lemmas. The first is about the size of $L^{(k)}(\s,\chi)$ for $\s$ close to $1$:
 
@@ -146,7 +146,7 @@
       \[
         \left|\sum_{n \le m}\frac{\chi(n)\log^{k}(n)}{n^{\s}}\right| < e\log^{k}(m)\sum_{n < m}\frac{1}{n} < e\log^{k}(m)\int_{1}^{m}\frac{1}{n}\,dn \ll \log^{k+1}(m).
       \]
-      For the second sum, let $A(Y) = \sum_{n \le Y}\chi(n)$. Then $|A(Y)| \le m$ by the orthogonality relations (\cref{cor:Dirichlet_orthogonality_relations} (i)) and that $\chi$ is $m$-periodic. Hence $A(Y)\log(Y)Y^{-\s} \to 0$ as $Y \to \infty$ and Abel's summation formula (see \cref{cor:Abels_summation_formula_limit_version}) gives
+      For the second sum, let $A(Y) = \sum_{n \le Y}\chi(n)$. Then $|A(Y)| \le m$ by the Dirichlet orthogonality relations (namely \cref{cor:Dirichlet_orthogonality_relations} (i)) and that $\chi$ is $m$-periodic. Hence $A(Y)\log(Y)Y^{-\s} \to 0$ as $Y \to \infty$ and Abel's summation formula (see \cref{cor:Abels_summation_formula_limit_version}) gives
       \begin{equation}\label{equ:Siegels_theorem_second_version_lemma_1}
         \sum_{n \ge m}\frac{\chi(n)\log^{k}(n)}{n^{\s}} = -A(m)\log^{k}(m)m^{-\s}-\int_{m}^{\infty}A(u)(k-\s\log(u))\log^{k-1}(u)u^{-(\s+1)}\,du.
       \end{equation}
@@ -331,7 +331,7 @@
       \[
         -\frac{\chi(-1)\tau(\chi)}{q}\left(\log(-2i)\sum_{a \tmod{q}}\cchi(a)+\frac{\pi i}{q}\sum_{a \tmod{q}}\cchi(a)a+\sum_{a \tmod{q}}\cchi(a)\log\sin\left(\frac{\pi a}{q}\right)\right).
       \]
-      By the orthogonality relations (\cref{cor:Dirichlet_orthogonality_relations} (i)), the first sum above vanishes. Therefore
+      By the Dirichlet orthogonality relations (namely \cref{cor:Dirichlet_orthogonality_relations} (i)), the first sum above vanishes. Therefore
       \begin{equation}\label{equ:value_of_Dirichlet_L-functions_at_s=1_2}
         L(1,\chi) = -\frac{\chi(-1)\tau(\chi)}{q}\left(\frac{\pi i}{q}\sum_{a \tmod{q}}\chi(a)a+\sum_{a \tmod{q}}\chi(a)\log\sin\left(\frac{\pi a}{q}\right)\right).
       \end{equation}
@@ -424,7 +424,7 @@
     \begin{equation}\label{equ:character_sum_trivial_bound}
       S_{\chi}(M,N) \ll N.
     \end{equation}
-    On the other hand, by the orthogonality relations (\cref{cor:Dirichlet_orthogonality_relations} i) and that $\chi$ is non-principal, we have
+    On the other hand, by the Dirichlet orthogonality relations (namely \cref{cor:Dirichlet_orthogonality_relations} i) and that $\chi$ is non-principal, we have
     \begin{equation}\label{equ:character_sum_orthogonality_bound}
       S_{\chi}(M,N) \ll m.
     \end{equation}
@@ -458,12 +458,12 @@
     
     We can now improve upon \cref{equ:character_sum_orthogonality_bound}. This result is known as the \textbf{P\'olya-Vinogradov inequality}\index{P\'olya-Vinogradov inequality} as it was proved independently by P\'olya and Vinogradov in 1918 (see \cite{polya1918verteilung} and \cite{vinogradov1918distribution}).
 
-    \begin{theorem}[P\'olya-Vinogradov inequality]
+    \begin{theorem*}[P\'olya-Vinogradov inequality]
       Let $\chi$ be a non-principal Dirichlet character modulo $m$. Then for any $M \ge 0$ and $N \ge 1$,
       \[
         S_{\chi}(M,N) \ll \sqrt{m}\log(m).
       \]
-    \end{theorem}
+    \end{theorem*}
     \begin{proof}
       First suppose $\chi$ is primitive of conductor $q > 1$. Using \cref{cor:gauss_sum_primitive_formula}, we have
       \[
@@ -580,9 +580,9 @@
 \section{Strong Multiplicity One \& the Ramanujan-Petersson Conjecture on Average}
   We will discuss two applications of the Rankin-Selberg method for Hecke and Hecke-Maass eigenforms: strong multiplicity one and the Ramanujan-Petersson conjecture on average. For the former, recall that multiplicity one determines and eigenform, up to a constant, by its Hecke eigenvalues at primes. Using Rankin-Selberg convolutions, we can prove \textbf{strong multiplicity one}\index{strong multiplicity one} for holomorphic or Maass forms which says that eigenforms are determined by their Hecke eigenvalues at all but finitely many primes:
 
-  \begin{theorem}[Strong multiplicity one, holomorphic and Maass]
+  \begin{theorem*}[Strong multiplicity one, holomorphic and Maass]
     Let $f$ and $g$ both be Hecke or Hecke-Maass eigenforms. If they have the same Hecke eigenvalues for all but finitely many primes $p$, then $f = g$.
-  \end{theorem}
+  \end{theorem*}
   \begin{proof}
     By \cref{thm:newforms_characterization_holomorphic,thm:newforms_characterization_Maass} we may assume that $f$ and $g$ are primitive Hecke eigenforms. Denote the Hecke eigenvalues by $\l_{f}(n)$ and $\l_{g}(n)$ respectively. Let $S$ be the set the primes for which $\l_{f}(p) \neq \l_{g}(p)$ including the primes that ramify for $L(s,f)$ and $L(s,g)$. Then $S$ is finite by assumption. As the local factors of $L(s,f \ox g)$ are holomorphic and nonzero at $s = 1$, the order of the pole of $L(s,f \ox g)$ is the same as the order of the pole of
     \[
@@ -638,13 +638,13 @@
     \]
     Equivalently, $\psi_{0}(x)$ is $\psi(x)$ except that its value is halfway between the limit values when $x$ is a prime power. Stated another way, if $x$ is a prime power the last term in the sum for $\psi_{0}(x)$ is multiplied by $\frac{1}{2}$. The \textbf{explicit formula}\index{explicit formula} for $\psi(x)$ is the following:
 
-    \begin{theorem}[Explicit formula for $\psi(x)$]
+    \begin{theorem*}[Explicit formula for $\psi(x)$]
       For $x \ge 2$,
       \[
         \psi_{0}(x) = x-\sum_{\rho}\frac{x^{\rho}}{\rho}-\frac{\z'}{\z}(0)-\frac{1}{2}\log(1-x^{-2}),
       \]
       where the sum is counted with multiplicity and ordered with respect to the size of the ordinate.
-    \end{theorem}
+    \end{theorem*}
 
     A few comments are in order before we prove the explicit formula for $\psi(x)$. First, since $\rho$ is conjectured to be of the form $\rho = \frac{1}{2}+i\g$ via the Riemann hypothesis for the Riemann zeta function, $x$ is conjectured to be the main term in the explicit formula. The constant $\frac{\z'}{\z}(0)$ can be shown to be $\log(2\pi)$ (see \cite{davenport1980multiplicative} for a proof). Also, using the Taylor series of the logarithm, the last term can be expressed as
     \[
@@ -814,12 +814,12 @@
     \]
     for $x > 0$. Equivalently, $\pi(x)$ counts the number of primes that no larger than $x$. That $\pi(x) \to \infty$ as $x \to \infty$ is equivalent to the existence of infinitely many primes. A more interesting question is to ask how the primes are distributed among the integers. The (classical) \textbf{prime number theorem}\index{prime number theorem} answers this question and the precise statement is the following:
 
-    \begin{theorem}[Prime number theorem, classical]
+    \begin{theorem*}[Prime number theorem, classical]
       For $x \ge 2$,
       \[
         \pi(x) \sim \frac{x}{\log(x)}.
       \]
-    \end{theorem}
+    \end{theorem*}
 
     There is an equivalent statement to the classical prime number theorem. Define the \textbf{logarithmic integral}\index{logarithmic integral} $\Li(x)$ by
     \[
@@ -831,12 +831,12 @@
     \]
     where in the second equality we have used  L'H\^opital's rule. So an equivalent statement is the (logarithmic integral) \textbf{prime number theorem}\index{prime number theorem}:
 
-    \begin{theorem}[Prime number theorem, logarithmic integral]
+    \begin{theorem*}[Prime number theorem, logarithmic integral]
       For $x \ge 2$,
       \[
         \pi(x) \sim \Li(x).
       \]
-    \end{theorem}
+    \end{theorem*}
 
     For the moment, we will delay the proofs of these two variants of the prime number theorem and give some intuition and historical context to the results. Intuitively, the prime number theorem is a result about how dense the primes are in the integers. To see this, notice that the result is equivalent to the asymptotic
     \[
@@ -876,12 +876,12 @@
     \]
     where $\lim_{x \to \infty}A(x) \approx 1.08366$. Riemann's 1859 manuscript (see \cite{riemann1859ueber}) contains an outline for how to prove the prime number theorem, but it was not until 1896 that the prime number theorem was proved independently by Hadamard and de la Vall\'ee Poussin (see \cite{hadamard1896distribution} and \cite{poussin1897recherches}). Their proofs, as well as every proof thereon out until 1949, used complex analytic methods in an essential way (there are now elementary proofs due to Erd\"os and Selberg). We are now ready to prove the prime number theorem. Strictly speaking, we will prove the (absolute error) \textbf{prime number theorem}\index{prime number theorem}, due to de la Vall\'ee Poussin, which bounds the absolute error between $\pi(x)$ and $\Li(x)$:
 
-    \begin{theorem}[Prime number theorem, absolute error]
+    \begin{theorem*}[Prime number theorem, absolute error]
       For $x \ge 2$, there exists a positive constant $c$ such that
       \[
         \pi(x) = \Li(x)+O\left(xe^{-c\sqrt{\log(x)}}\right).
       \]
-    \end{theorem}
+    \end{theorem*}
     \begin{proof}
       It suffices to assume $x$ is an integer, because $\pi(x)$ can only change value at integers and the other functions in the statement are increasing. We will first prove
       \begin{equation}\label{equ:prime_number_theorem_zeta_1}
@@ -1031,7 +1031,7 @@
     \]
     Thus $\psi_{0}(x,\chi)$ is $\psi(x,\chi)$ except that its value is halfway between the limit values when $x$ is a prime power. We will also need to define a particular constant that will come up. For a character $\chi$, define $b(\chi)$ to be $\frac{L'}{L}(0,\chi)$ if $\chi$ is odd and to be the constant term in the Laurent series of $\frac{L'}{L}(s,\chi)$ if $\chi$ is even (as in the even case $\frac{L'}{L}(s,\chi)$ has a pole at $s = 0$). The \textbf{explicit formula}\index{explicit formula} for $\psi(x,\chi)$ is the following:
 
-    \begin{theorem}[Explicit formula for $\psi(x,\chi)$]
+    \begin{theorem*}[Explicit formula for $\psi(x,\chi)$]
       Let $\chi$ be a primitive Dirichlet character of conductor $q > 1$. Then for $x \ge 2$,
       \[
         \psi_{0}(x,\chi) = -\sum_{\rho}\frac{x^{\rho}}{\rho}-b(\chi)+\tanh^{-1}(x^{-1}),
@@ -1041,7 +1041,7 @@
         \psi_{0}(x,\chi) = -\sum_{\rho}\frac{x^{\rho}}{\rho}-\log(x)-b(\chi)-\frac{1}{2}\log(1-x^{-2}),
       \]
       if $\chi$ is even, and where in both expressions, $\rho$ runs over the nontrivial zeros of $L(s,\chi)$ counted with multiplicity and ordered with respect to the size of the ordinate.
-    \end{theorem}
+    \end{theorem*}
 
     As for $\psi(x)$, a few comments are in order. Unlike the explicit formula for $\psi(x)$, there is no main term $x$ in the explicit formula for $\psi(x,\chi)$. This is because $L(s,\chi)$ does not have a pole at $s = 1$. The constant $b(\chi)$ can be expressed in terms of $B(\chi)$ (see \cite{davenport1980multiplicative} for a proof). Also, in the case $\chi$ is odd the Taylor series of the inverse hyperbolic tangent lets us write
     \[
@@ -1302,37 +1302,37 @@
     \]
     for $x \ge 1$. This is just $\psi(x)$ restricted to only those terms equivalent to $a$ modulo $m$. As for the asymptotic, the (classical) \textbf{Siegel–Walfisz theorem}\index{Siegel–Walfisz theorem} is the first of them and the precise statement is the following:
 
-    \begin{theorem}[Siegel–Walfisz theorem, classical]
+    \begin{theorem*}[Siegel–Walfisz theorem, classical]
       Let $a$ and $m$ be integers such that $m > 1$ and $(a,m) = 1$. For $x \ge 2$,
       \[
         \pi(x;a,m) \sim \frac{x}{\vphi(m)\log(x)}.
       \]
-    \end{theorem}
+    \end{theorem*}
     
     The (logarithmic integral) \textbf{Siegel–Walfisz theorem}\index{Siegel–Walfisz theorem} is equivalent and sometimes more useful:
 
-    \begin{theorem}[Siegel–Walfisz theorem, logarithmic integral]
+    \begin{theorem*}[Siegel–Walfisz theorem, logarithmic integral]
       Let $a$ and $m$ be integers such that $m > 1$ and $(a,m) = 1$. For $x \ge 2$,
       \[
         \pi(x;a,m) \sim \frac{\Li(x)}{\vphi(m)}.
       \]
-    \end{theorem}
+    \end{theorem*}
     
     We will prove the (absolute error) \textbf{Siegel–Walfisz theorem}\index{Siegel–Walfisz theorem} which is slightly stronger as it bounds the absolute error between $\pi(x;a,m)$ and $\frac{\Li(x)}{\vphi(m)}$:
 
-    \begin{theorem}[Siegel–Walfisz theorem, absolute error]
+    \begin{theorem*}[Siegel–Walfisz theorem, absolute error]
       Let $a$ and $m$ be integers such that $m > 1$ and $(a,m) = 1$. For $N \ge 1$ and $x \ge 2$, there exists a positive constant $c$ such that
       \[
         \pi(x;a,m) = \frac{\Li(x)}{\vphi(m)}+O\left(xe^{-c\sqrt{\log(x)}}\right),
       \]
       provided $m \le \log^{N}(x)$.
-    \end{theorem}
+    \end{theorem*}
     \begin{proof}
       It suffices to assume $x$ is an integer, because $\pi(x;a,m)$ can only change value at integers and the other functions in the statement are increasing. We being with the identity
       \begin{equation}\label{equ:Siegel-Walfisz_1}
         \psi(x;a,m) = \frac{1}{\vphi(m)}\sum_{\chi \tmod{m}}\cchi(a)\psi(x,\chi),
       \end{equation}
-      which holds by the orthogonality relations (\cref{prop:Dirichlet_orthogonality_relations} (ii)). Let $\wtilde{\chi}$ be the primitive character inducing $\chi$. Then \cref{equ:difference_between_Dirichlet-Chebyshevs} implies
+      which holds by the Dirichlet orthogonality relations (namely (ii)). Let $\wtilde{\chi}$ be the primitive character inducing $\chi$. Then \cref{equ:difference_between_Dirichlet-Chebyshevs} implies
       \begin{equation}\label{equ:Siegel-Walfisz_2}
         \psi(x,\chi) = \psi(x,\wtilde{\chi})+O(\log^{2}(xm)).
       \end{equation}

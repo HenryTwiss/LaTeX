@@ -346,7 +346,7 @@
         This follows from \cref{thm:zeta_Selberg,thm:primitive_Dirichlet_Selberg,equ:non-primitive_primitive_Dirichlet_L-series_relation}. 
       \end{proof}
 
-      It is worth noting that for any non-principal Dirichlet character $\chi$ modulo $m$, the $L$-series $L(s,\chi)$ converges for $\s > 0$. Indeed, setting $A(X) = \sum_{n \le X}\chi(n)$ we have $A(X) \le m$ by the orthogonality relations (\cref{cor:Dirichlet_orthogonality_relations} (i)) and that $\chi$ is $m$-periodic, and then the claim follows from \cref{prop:Dirichlet_series_convergence_bounded_coefficient_sum}. While this fact is not too important from an analytic continuation standpoint, it is useful because it allows for the manipulation (without rearrangement since we do not have absolute convergence) of the $L$-series $L(s,\chi)$ in the vertical strip $0 < \s \le 1$.
+      It is worth noting that for any non-principal Dirichlet character $\chi$ modulo $m$, the $L$-series $L(s,\chi)$ converges for $\s > 0$. Indeed, setting $A(X) = \sum_{n \le X}\chi(n)$ we have $A(X) \le m$ by  Dirichlet orthogonality relations (namely (i)) and that $\chi$ is $m$-periodic, and then the claim follows from \cref{prop:Dirichlet_series_convergence_bounded_coefficient_sum}. While this fact is not too important from an analytic continuation standpoint, it is useful because it allows for the manipulation (without rearrangement since we do not have absolute convergence) of the $L$-series $L(s,\chi)$ in the vertical strip $0 < \s \le 1$.
   \section{Dedekind Zeta Functions}
     \subsection*{The Definition \& Euler Product}
       We can associate and $L$-function to every number field. Let $K$ be a number field of degree $d$ and signature $(r_{1},r_{2})$. The \textbf{Dedekind zeta function}\index{Dedekind zeta function} $\z_{K}(s)$ is defined by the following Dirichlet series
@@ -357,7 +357,7 @@
       \begin{remark}
         If we sum over integral ideals of $K$ instead, we can write
         \[
-          \z_{K}(s) = \sum_{\text{$\mf{a}$ integral}}\frac{1}{\Norm(\mf{a})^{s}}.
+          \z_{K}(s) = \sum_{\text{$\mf{a}$ integral}}\frac{1}{\Norm_{K}(\mf{a})^{s}}.
         \]
       \end{remark}
 
@@ -365,11 +365,11 @@
       \[
         \z_{K}(s) = \prod_{p}\left(\sum_{n \ge 0}\frac{a_{K}(p^{n})}{p^{hs}}\right).
       \]
-      Recall that each prime integral ideal $\mf{p}$ lies above a unique prime $p$ and $\Norm(\mf{p})$ is a power of $p$. As the norm is completely multiplicative by \cref{prop:ideal_norm_is_multiplicative}, the unique factorization of integral ideals implies that our infinite product can be expressed as
+      Recall that each prime $\mf{p}$ lies above a prime $p$ and $\Norm_{K}(\mf{p})$ is a power of $p$. As the norm is completely multiplicative, the prime factorization of fractional ideals implies that our infinite product can be expressed as
       \[
-        \z_{K}(s) = \prod_{p}\prod_{\text{$\mf{p}$ above $p$}}(1-\Norm(\mf{p})p^{-s})^{-1} = \prod_{p}\prod_{1 \le i \le r_{p}}(1-p^{-f_{p}(\mf{p}_{i})s})^{-1},
+        \z_{K}(s) = \prod_{p}\prod_{\text{$\mf{p}$ above $p$}}(1-\Norm_{K}(\mf{p})p^{-s})^{-1} = \prod_{p}\prod_{1 \le i \le r_{p}}(1-p^{-f_{p}(\mf{p}_{i})s})^{-1},
       \]
-      where $r_{p}$ is the number of prime integral ideals $\mf{p}_{1},\ldots,\mf{p}_{r_{p}}$ above $p$. As finitely many primes ramify by \cref{thm:ramification_division_equivalence}, \cref{prop:inertia_ramification_relation} implies that all but finitely many primes $p$ satisfy
+      where $r_{p}$ is the number of primes $\mf{p}_{1},\ldots,\mf{p}_{r_{p}}$ above $p$. As finitely many primes ramify (because only those dividing $|\D_{K}|$ do), \cref{prop:inertia_ramification_relation} implies that all but finitely many primes $p$ satisfy
       \[
         d = \sum_{1 \le i \le r_{p}}f_{p}(\mf{p}_{i}).
       \]
@@ -389,7 +389,7 @@
       \]
       for all $\a \in K$. With this notation,
       \[
-        \boldsymbol{\a}^{\mathbf{N}} = |\Norm(\a)|.
+        \boldsymbol{\a}^{\mathbf{N}} = |\Norm_{K}(\a)|.
       \]
       Now consider the function
       \[
@@ -417,7 +417,7 @@
       \]
       We will manipulate the remaining integral to write it as a different Mellin transform. This will take a fair amount of work. As $\w_{K}(\mathbf{z})$ converges absolutely we may sum over integral ideals of $K$ and obtain
       \[
-        \int_{\R_{+}^{r_{K}+1}}\sum_{\text{$\mf{a}$ integral}}e^{\pi i\Norm(\mf{a})^{\frac{2}{d}}\<i\mathbf{y},\mathbf{N}\>}\mathbf{y}^{\frac{s\mathbf{N}}{2}}\,\frac{d\mathbf{y}}{\mathbf{y}}.
+        \int_{\R_{+}^{r_{K}+1}}\sum_{\text{$\mf{a}$ integral}}e^{\pi i\Norm_{K}(\mf{a})^{\frac{2}{d}}\<i\mathbf{y},\mathbf{N}\>}\mathbf{y}^{\frac{s\mathbf{N}}{2}}\,\frac{d\mathbf{y}}{\mathbf{y}}.
       \]
       Now if $\mf{a}$ is an integral ideal, then $\mc{O}_{K}^{\ast}$ acts on $\mf{a}-\{0\}$ by multiplication. Therefore we have an orbit space $(\mf{a}-\{0\})/\mc{O}_{K}^{\ast}$. The following lemma establishes a bijection between this orbit space and integral ideals in an ideal class:
 
@@ -431,13 +431,13 @@
         We first show that this map is well-defined. If $\a \in \mf{a}$ is nonzero, then $\a\mf{a}^{-1} = \a\mc{O}_{K}\mf{a}^{-1} \subseteq \mc{O}_{K}$ by \cref{prop:explicit_inverse_ideal} so that $\a\mf{a}^{-1}$ is an integral ideal belonging to $\mf{K}$ (because it differs from $\mf{a}^{-1}$ by a principal ideal). Therefore the map is well-defined. To show injectivity, suppose $\a\mf{a}^{-1} = \b\mf{a}^{-1}$ for some $\a,\b \in (\mf{a}-\{0\})/\mc{O}_{K}^{\ast}$. Multiplying by $\mf{a}$, we obtain $\a\mc{O}_{K} = \b\mc{O}_{K}$ and hence $\a\b^{-1} \in \mc{O}_{K}^{\ast}$ from which injectivity follows. For surjectivity, the definition of $\mf{K}$ implies that any integral ideal $\mf{b} \in \mf{K}$ satisfies $\mf{b} = \a\mf{a}^{-1}$ for some nonzero $\a \in \mc{O}_{K}$ but then $\a \in \mf{a}\mf{b} \subseteq \mf{a}$.
       \end{proof}
 
-       By Minkowski theorem, any ideal class is can be represented by an integral ideal $\mf{a}$. So let $\mf{a}_{1},\ldots,\mf{a}_{h_{K}}$ be a complete set of representatives of $\Cl(K)$ consisting only of integral ideals. As the ideal class group is a group, we see that $\mf{a}_{1}^{-1},\ldots,\mf{a}_{h_{K}}^{-1}$ is also a complete set of representatives. By \cref{lem:Hecke_theta_function_lemma}, this shows that every integral ideal is uniquely of the form $\a\mf{a}_{i}^{-1}$ for some $1 \le i \le h_{K}$ and $\a \in \mf{a}_{i}^{\ast}/\mc{O}_{K}^{\ast}$ and thus has norm $\Norm(\a\mf{a}_{i}^{-1})$. Then we may further rewrite our integral as
+       By Minkowski theorem, any ideal class is can be represented by an integral ideal $\mf{a}$. So let $\mf{a}_{1},\ldots,\mf{a}_{h_{K}}$ be a complete set of representatives of $\Cl(K)$ consisting only of integral ideals. As the ideal class group is a group, we see that $\mf{a}_{1}^{-1},\ldots,\mf{a}_{h_{K}}^{-1}$ is also a complete set of representatives. By \cref{lem:Hecke_theta_function_lemma}, this shows that every integral ideal is uniquely of the form $\a\mf{a}_{i}^{-1}$ for some $1 \le i \le h_{K}$ and $\a \in \mf{a}_{i}^{\ast}/\mc{O}_{K}^{\ast}$ and thus has norm $\Norm_{K}(\a\mf{a}_{i}^{-1})$. Then we may further rewrite our integral as
       \[
-        \sum_{\substack{\mf{a} \in \Cl(K) \\ \text{$\mf{a}$ integral}}}\sum_{\a \in (\mf{a}-\{0\})/\mc{O}_{K}^{\ast}}\int_{\R_{+}^{r_{K}+1}}e^{\pi i\Norm(\a\mf{a}^{-1})^{\frac{2}{d}}\<i\mathbf{y},\mathbf{N}\>}\mathbf{y}^{\frac{s\mathbf{N}}{2}}\,\frac{d\mathbf{y}}{\mathbf{y}},
+        \sum_{\substack{\mf{a} \in \Cl(K) \\ \text{$\mf{a}$ integral}}}\sum_{\a \in (\mf{a}-\{0\})/\mc{O}_{K}^{\ast}}\int_{\R_{+}^{r_{K}+1}}e^{\pi i\Norm_{K}(\a\mf{a}^{-1})^{\frac{2}{d}}\<i\mathbf{y},\mathbf{N}\>}\mathbf{y}^{\frac{s\mathbf{N}}{2}}\,\frac{d\mathbf{y}}{\mathbf{y}},
       \]
       where we have interchange the two sums and integral by the Fubini–Tonelli theorem. Now perform the change of variables $\mathbf{y} \mapsto \boldsymbol{\a}^{2}\mathbf{y}$ to obtain
       \[
-        \sum_{\substack{\mf{a} \in \Cl(K) \\ \text{$\mf{a}$ integral}}}\sum_{\a \in (\mf{a}-\{0\})/\mc{O}_{K}^{\ast}}\int_{\R_{+}^{r_{K}+1}}e^{\pi i\Norm(\a\mf{a}^{-1})^{\frac{2}{d}}\<\boldsymbol{\a}^{2}i\mathbf{y},\mathbf{N}\>}(\boldsymbol{\a}^{2}\mathbf{y})^{\frac{s\mathbf{N}}{2}}\,\frac{d\mathbf{y}}{\mathbf{y}}.
+        \sum_{\substack{\mf{a} \in \Cl(K) \\ \text{$\mf{a}$ integral}}}\sum_{\a \in (\mf{a}-\{0\})/\mc{O}_{K}^{\ast}}\int_{\R_{+}^{r_{K}+1}}e^{\pi i\Norm_{K}(\a\mf{a}^{-1})^{\frac{2}{d}}\<\boldsymbol{\a}^{2}i\mathbf{y},\mathbf{N}\>}(\boldsymbol{\a}^{2}\mathbf{y})^{\frac{s\mathbf{N}}{2}}\,\frac{d\mathbf{y}}{\mathbf{y}}.
       \]
       We will now alter the region of integration. Observe that any $\mathbf{y} \in \R_{+}^{r_{K}+1}$ can be written in the form
       \[
@@ -457,7 +457,7 @@
       \]
       where $d\mathbf{x}$ (which can also be written as $\frac{d\mathbf{x}}{\mathbf{x}}$ because $\mathbf{x} \in S$) is the restriction of the measure $\frac{d\mathbf{y}}{\mathbf{y}}$ to $S$. Therefore our expression takes the form
       \[
-        \sum_{\substack{\mf{a} \in \Cl(K) \\ \text{$\mf{a}$ integral}}}\sum_{\a \in (\mf{a}-\{0\})/\mc{O}_{K}^{\ast}}\int_{0}^{\infty}\int_{S}e^{\pi i\Norm(\a\mf{a}^{-1})^{\frac{2}{d}}\left\<\boldsymbol{\a}^{2}iy^{\frac{1}{d}}\mathbf{x},\mathbf{N}\right\>}\boldsymbol{\a}^{s\mathbf{N}}y^{\frac{s}{2}}\,\frac{d\mathbf{x}\,dy}{y}.
+        \sum_{\substack{\mf{a} \in \Cl(K) \\ \text{$\mf{a}$ integral}}}\sum_{\a \in (\mf{a}-\{0\})/\mc{O}_{K}^{\ast}}\int_{0}^{\infty}\int_{S}e^{\pi i\Norm_{K}(\a\mf{a}^{-1})^{\frac{2}{d}}\left\<\boldsymbol{\a}^{2}iy^{\frac{1}{d}}\mathbf{x},\mathbf{N}\right\>}\boldsymbol{\a}^{s\mathbf{N}}y^{\frac{s}{2}}\,\frac{d\mathbf{x}\,dy}{y}.
       \]
       Now consider the inverse isomorphisms
       \[
@@ -477,23 +477,23 @@
       \]
       Then folding yields
       \[
-        \frac{1}{w_{K}}\sum_{\substack{\mf{a} \in \Cl(K) \\ \text{$\mf{a}$ integral}}}\sum_{\a \in (\mf{a}-\{0\})/\mc{O}_{K}^{\ast}}\sum_{\e \in \mc{O}_{K}^{\ast}}\int_{0}^{\infty}\int_{\mc{F}}e^{\pi i\Norm(\a\mf{a}^{-1})^{\frac{2}{d}}\left\<\boldsymbol{\a}^{2}e^{\mathbf{N}^{\vee}\l(\e)}iy^{\frac{1}{d}}\mathbf{x},\mathbf{N}\right\>}\boldsymbol{\a}^{s\mathbf{N}}y^{\frac{s}{2}}\,\frac{d\mathbf{x}\,dy}{y},
+        \frac{1}{w_{K}}\sum_{\substack{\mf{a} \in \Cl(K) \\ \text{$\mf{a}$ integral}}}\sum_{\a \in (\mf{a}-\{0\})/\mc{O}_{K}^{\ast}}\sum_{\e \in \mc{O}_{K}^{\ast}}\int_{0}^{\infty}\int_{\mc{F}}e^{\pi i\Norm_{K}(\a\mf{a}^{-1})^{\frac{2}{d}}\left\<\boldsymbol{\a}^{2}e^{\mathbf{N}^{\vee}\l(\e)}iy^{\frac{1}{d}}\mathbf{x},\mathbf{N}\right\>}\boldsymbol{\a}^{s\mathbf{N}}y^{\frac{s}{2}}\,\frac{d\mathbf{x}\,dy}{y},
       \]
-      because $e^{\mathbf{N}^{\vee}\l(\e)} = \mathbf{1}$ if $\e \in \mu(K)$ and we have interchanged the sum and integrals by the Fubini–Tonelli theorem. As $\boldsymbol{\e}^{\mathbf{N}} = |\Norm(\e)| = 1$ and $\Norm(\e) = \pm1$ for all $\e \in \mc{O}_{K}^{\ast}$, we can use multiplicativity of the norm and \cref{prop:ideal_and_field_norms_are_identical} to write our expression as
+      because $e^{\mathbf{N}^{\vee}\l(\e)} = \mathbf{1}$ if $\e \in \mu(K)$ and we have interchanged the sum and integrals by the Fubini–Tonelli theorem. As $\boldsymbol{\e}^{\mathbf{N}} = |\Norm_{K}(\e)| = 1$ and $\Norm_{K}(\e) = \pm1$ for all $\e \in \mc{O}_{K}^{\ast}$, we can use multiplicativity of the norm and \cref{prop:ideal_and_field_norms_are_identical} to write our expression as
       \[
-        \frac{1}{w_{K}}\sum_{\substack{\mf{a} \in \Cl(K) \\ \text{$\mf{a}$ integral}}}\sum_{\a \in (\mf{a}-\{0\})/\mc{O}_{K}^{\ast}}\sum_{\e \in \mc{O}_{K}^{\ast}}\int_{0}^{\infty}\int_{\mc{F}}e^{\pi i\Norm(\a\e\mf{a}^{-1})^{\frac{2}{d}}\left\<\boldsymbol{\a}^{2}e^{\mathbf{N}\l(\e)}iy^{\frac{1}{d}}\mathbf{x},\mathbf{N}\right\>}(\boldsymbol{\a}\boldsymbol{\e})^{s\mathbf{N}}y^{\frac{s}{2}}\,\frac{d\mathbf{x}\,dy}{y}.
+        \frac{1}{w_{K}}\sum_{\substack{\mf{a} \in \Cl(K) \\ \text{$\mf{a}$ integral}}}\sum_{\a \in (\mf{a}-\{0\})/\mc{O}_{K}^{\ast}}\sum_{\e \in \mc{O}_{K}^{\ast}}\int_{0}^{\infty}\int_{\mc{F}}e^{\pi i\Norm_{K}(\a\e\mf{a}^{-1})^{\frac{2}{d}}\left\<\boldsymbol{\a}^{2}e^{\mathbf{N}\l(\e)}iy^{\frac{1}{d}}\mathbf{x},\mathbf{N}\right\>}(\boldsymbol{\a}\boldsymbol{\e})^{s\mathbf{N}}y^{\frac{s}{2}}\,\frac{d\mathbf{x}\,dy}{y}.
       \]
       By the definitions of $\l$ and $\mathbf{N}^{\vee}$, we have $\boldsymbol{\a}^{2}e^{\mathbf{N}\l(\e)} = (\boldsymbol{\a\e})^{2}$ and therefore we may combine the innermost two sums to obtain
       \[
-        \frac{1}{w_{K}}\sum_{\substack{\mf{a} \in \Cl(K) \\ \text{$\mf{a}$ integral}}}\sum_{\a \in \mf{a}-\{0\}}\int_{0}^{\infty}\int_{\mc{F}}e^{\pi i\Norm(\a\mf{a}^{-1})^{\frac{2}{d}}\left\<\boldsymbol{\a}^{2}iy^{\frac{1}{d}}\mathbf{x},\mathbf{N}\right\>}\boldsymbol{\a}^{s\mathbf{N}}y^{\frac{s}{2}}\,\frac{d\mathbf{x}\,dy}{y}.
+        \frac{1}{w_{K}}\sum_{\substack{\mf{a} \in \Cl(K) \\ \text{$\mf{a}$ integral}}}\sum_{\a \in \mf{a}-\{0\}}\int_{0}^{\infty}\int_{\mc{F}}e^{\pi i\Norm_{K}(\a\mf{a}^{-1})^{\frac{2}{d}}\left\<\boldsymbol{\a}^{2}iy^{\frac{1}{d}}\mathbf{x},\mathbf{N}\right\>}\boldsymbol{\a}^{s\mathbf{N}}y^{\frac{s}{2}}\,\frac{d\mathbf{x}\,dy}{y}.
       \]
       Performing the change of variables $y \mapsto \frac{y}{\boldsymbol{\a}^{2\mathbf{N}}}$ gives
       \[
-        \frac{1}{w_{K}}\sum_{\substack{\mf{a} \in \Cl(K) \\ \text{$\mf{a}$ integral}}}\sum_{\a \in \mf{a}-\{0\}}\int_{0}^{\infty}\int_{\mc{F}}e^{\pi i\Norm(\mf{a}^{-1})^{\frac{2}{d}}\left\<\boldsymbol{\a}^{2}iy^{\frac{1}{d}}\mathbf{x},\mathbf{N}\right\>}y^{\frac{s}{2}}\,\frac{d\mathbf{x}\,dy}{y},
+        \frac{1}{w_{K}}\sum_{\substack{\mf{a} \in \Cl(K) \\ \text{$\mf{a}$ integral}}}\sum_{\a \in \mf{a}-\{0\}}\int_{0}^{\infty}\int_{\mc{F}}e^{\pi i\Norm_{K}(\mf{a}^{-1})^{\frac{2}{d}}\left\<\boldsymbol{\a}^{2}iy^{\frac{1}{d}}\mathbf{x},\mathbf{N}\right\>}y^{\frac{s}{2}}\,\frac{d\mathbf{x}\,dy}{y},
       \]
       Interchanging the the two integrals with the two sums by the Fubini–Tonelli theorem and noting that $\<\mathbf{N},\boldsymbol{\a}^{2}\> = \<\boldsymbol{j(\a)},\boldsymbol{j(\a)}\>$, our expression becomes
       \[
-        \int_{0}^{\infty}\int_{\mc{F}}\frac{1}{w_{K}}\sum_{\substack{\mf{a} \in \Cl(K) \\ \text{$\mf{a}$ integral}}}\sum_{j(\a) \in j(\mf{a})-\{\mathbf{0}\}}e^{\pi i\Norm(\mf{a}^{-1})^{\frac{2}{d}}\left\<iy^{\frac{1}{d}}\mathbf{x}\boldsymbol{j(\a)},\boldsymbol{j(\a)}\right\>}y^{\frac{s}{2}}\,\frac{d\mathbf{x}\,dy}{y}.
+        \int_{0}^{\infty}\int_{\mc{F}}\frac{1}{w_{K}}\sum_{\substack{\mf{a} \in \Cl(K) \\ \text{$\mf{a}$ integral}}}\sum_{j(\a) \in j(\mf{a})-\{\mathbf{0}\}}e^{\pi i\Norm_{K}(\mf{a}^{-1})^{\frac{2}{d}}\left\<iy^{\frac{1}{d}}\mathbf{x}\boldsymbol{j(\a)},\boldsymbol{j(\a)}\right\>}y^{\frac{s}{2}}\,\frac{d\mathbf{x}\,dy}{y}.
       \]
       We compactly express this as
       \[
@@ -501,7 +501,7 @@
       \]
       where we have defined $\w_{\mc{F}}(z)$ by
       \[
-        \w_{\mc{F}}(z) = \int_{\mc{F}}\frac{1}{w_{K}}\sum_{\substack{\mf{a} \in \Cl(K) \\ \text{$\mf{a}$ integral}}}\sum_{j(\a) \in j(\mf{a})-\{\mathbf{0}\}}e^{\pi i\Norm(\mf{a}^{-1})^{\frac{2}{d}}\<z\mathbf{x}\boldsymbol{j(\a)},\boldsymbol{j(\a)}\>}\,d\mathbf{x},
+        \w_{\mc{F}}(z) = \int_{\mc{F}}\frac{1}{w_{K}}\sum_{\substack{\mf{a} \in \Cl(K) \\ \text{$\mf{a}$ integral}}}\sum_{j(\a) \in j(\mf{a})-\{\mathbf{0}\}}e^{\pi i\Norm_{K}(\mf{a}^{-1})^{\frac{2}{d}}\<z\mathbf{x}\boldsymbol{j(\a)},\boldsymbol{j(\a)}\>}\,d\mathbf{x},
       \]
       for $z \in \H$. It is locally absolutely uniformly convergent in this region by the Weierstrass $M$-test and that $\mc{F}$ is compact (because $\mathbf{N}^{\vee}\mc{M}$ is and $\log(\mathbf{x})$ is continuous). At last, this gives a final integral representation
       \begin{equation}\label{equ:integral_representation_Dedekind_1}
@@ -511,13 +511,13 @@
     \subsection*{The Hecke Theta Function}
       The \textbf{Hecke theta function}\index{Hecke theta function} $\vt_{\mf{f}}(z\mathbf{x})$ attached to a fractional ideal $\mf{f}$ of $K$, is defined by
       \[
-        \vt_{\mf{f}}(z\mathbf{x}) = \sum_{j(\a) \in j(\mf{f})}e^{2\pi i\Norm(\mf{f}^{-1})^{\frac{2}{d}}\<z\mathbf{x}\boldsymbol{j(\a)},\boldsymbol{j(\a)}\>},
+        \vt_{\mf{f}}(z\mathbf{x}) = \sum_{j(\a) \in j(\mf{f})}e^{2\pi i\Norm_{K}(\mf{f}^{-1})^{\frac{2}{d}}\<z\mathbf{x}\boldsymbol{j(\a)},\boldsymbol{j(\a)}\>},
       \]
       for $z \in \H$ and $\mathbf{x} \in S$. It is locally absolutely uniformly convergent in this region by the Weierstrass $M$-test. Moreover,
       \[
-        \vt_{\mf{f}}(z\mathbf{x})-1 = O\left(\sum_{j(\a) \in j(\mf{f})-\{\mathbf{0}\}}e^{-2\pi y||\mathbf{x}||_{\infty}\Norm(\mf{f}^{-1})^{\frac{2}{d}}\<\boldsymbol{j(\a)},\boldsymbol{j(\a)}\>}\right) = O(e^{-2\pi y||\mathbf{x}||_{\infty}}),
+        \vt_{\mf{f}}(z\mathbf{x})-1 = O\left(\sum_{j(\a) \in j(\mf{f})-\{\mathbf{0}\}}e^{-2\pi y||\mathbf{x}||_{\infty}\Norm_{K}(\mf{f}^{-1})^{\frac{2}{d}}\<\boldsymbol{j(\a)},\boldsymbol{j(\a)}\>}\right) = O(e^{-2\pi y||\mathbf{x}||_{\infty}}),
       \]
-      where the second equality follows since $\<\boldsymbol{j(\a)},\boldsymbol{j(\a)}\> \ge d|\Norm(\a)|^{\frac{2}{d}}$ by the arithmetic-geometric inequality provided $\a$ is nonzero, and that $|\Norm(\a)|\Norm(\mf{f})$ is a positive integer for all nonzero $\a \in \mf{f}$ (as $\a\mf{f}^{-1}$ is an integral ideal by \cref{prop:explicit_inverse_ideal}), which combined show that each term is of smaller order than the single term where $\Norm(\a\mf{f}^{-1}) = 1$ (when $\a\mf{f}^{-1} = \mc{O}_{K}$) corresponding to $\a = \Norm(\mf{f})$ so that the sum is bounded by a constant times this term. The relationship to $\w_{\mc{F}}(z)$ is given by
+      where the second equality follows since $\<\boldsymbol{j(\a)},\boldsymbol{j(\a)}\> \ge d|\Norm_{K}(\a)|^{\frac{2}{d}}$ by the arithmetic-geometric inequality provided $\a$ is nonzero, and that $|\Norm_{K}(\a)|\Norm_{K}(\mf{f})$ is a positive integer for all nonzero $\a \in \mf{f}$ (as $\a\mf{f}^{-1}$ is an integral ideal by \cref{prop:explicit_inverse_ideal}), which combined show that each term is of smaller order than the single term where $\Norm_{K}(\a\mf{f}^{-1}) = 1$ (when $\a\mf{f}^{-1} = \mc{O}_{K}$) corresponding to $\a = \Norm_{K}(\mf{f})$ so that the sum is bounded by a constant times this term. The relationship to $\w_{\mc{F}}(z)$ is given by
       \[
         \w_{\mc{F}}(z) = \frac{1}{w_{K}}\int_{\mc{F}}\sum_{\substack{\mf{a} \in \Cl(K) \\ \text{$\mf{a}$ integral}}}\vt_{\mf{a}}\left(\frac{z\mathbf{x}}{2}\right)\,d\mathbf{x}-\frac{h_{K}}{w_{K}}\int_{\mc{F}}\,d\mathbf{x}.
       \]
@@ -532,22 +532,22 @@
       \begin{proof}
         We will apply the Poisson summation formula to
         \[
-          \vt_{\mf{f}}(z\mathbf{x}) = \sum_{j(\a) \in j(\mf{f})}e^{2\pi i\Norm(\mf{f}^{-1})^{\frac{2}{d}}\<z\mathbf{x}\boldsymbol{j(\a)},\boldsymbol{j(\a)}\>}.
+          \vt_{\mf{f}}(z\mathbf{x}) = \sum_{j(\a) \in j(\mf{f})}e^{2\pi i\Norm_{K}(\mf{f}^{-1})^{\frac{2}{d}}\<z\mathbf{x}\boldsymbol{j(\a)},\boldsymbol{j(\a)}\>}.
         \]
         To do this, we compute the Fourier transform of the summand and by the identity theorem it suffices to verify this for $z = iy$ with $y > 0$ and $\mathbf{x} = \mathbf{1}$. So set
         \[
-          f(\mathbf{x}) = e^{-2\pi y\Norm(\mf{f}^{-1})^{\frac{2}{d}}\<\mathbf{x},\mathbf{x}\>}.
+          f(\mathbf{x}) = e^{-2\pi y\Norm_{K}(\mf{f}^{-1})^{\frac{2}{d}}\<\mathbf{x},\mathbf{x}\>}.
         \]
         Then $f(\mathbf{x})$ is of Schwarz class. By \cref{cor:Fourier_transform_of_exponential_single_variable} and multiplicativity of the norm, we have
         \[
-          (\mc{F}f)(\mathbf{t}) = \Norm(\mf{f})\frac{e^{-\frac{\pi\Norm(\mf{f})^{\frac{2}{d}}\<\mathbf{t},\mathbf{t}\>}{2y}}}{(2y)^{\frac{d}{2}}}.
+          (\mc{F}f)(\mathbf{t}) = \Norm_{K}(\mf{f})\frac{e^{-\frac{\pi\Norm_{K}(\mf{f})^{\frac{2}{d}}\<\mathbf{t},\mathbf{t}\>}{2y}}}{(2y)^{\frac{d}{2}}}.
         \]
         By the Poisson summation formula and the identity theorem, we compute
         \begin{align*}
-          \vt_{\mf{f}}(z\mathbf{x}) &= \sum_{j(\a) \in j(\mf{f})}e^{2\pi i\Norm(\mf{f}^{-1})^{\frac{2}{d}}\<z\mathbf{x}\boldsymbol{j(\a)},\boldsymbol{j(\a)}\>} \\
-          &= \frac{1}{V_{j(\mf{f})}}\sum_{\a^{\vee} \in \mf{f}^{\vee}}\Norm(\mf{f})\frac{e^{-\frac{\pi\Norm(\mf{f})^{\frac{2}{d}}\<z\mathbf{x}\boldsymbol{j(\a^{\vee})},\boldsymbol{j(\a^{\vee})}\>}{-2iz}}}{(-2iz)^{\frac{d}{2}}} \\
-          &= \frac{1}{\Norm(\mf{f})\sqrt{|\D_{K}|}}\sum_{\a^{\vee} \in \mf{f}^{\vee}}\Norm(\mf{f})\frac{e^{-\frac{\pi\Norm(\mf{f})^{\frac{2}{d}}\<z\mathbf{x}\boldsymbol{j(\a^{\vee})},\boldsymbol{j(\a^{\vee})}\>}{-2iz}}}{(-2iz)^{\frac{d}{2}}} && \text{\cref{prop:covolume_of_fractional_ideal_under_j}} \\
-          &= \frac{1}{(-2|\D_{K}|^{\frac{1}{d}}iz)^{\frac{d}{2}}}\sum_{\a^{\vee} \in \mf{f}^{\vee}}e^{-\frac{\pi\Norm(\mf{f})^{\frac{2}{d}}\<z\mathbf{x}\boldsymbol{j(\a^{\vee})},\boldsymbol{j(\a^{\vee})}\>}{-2iz}} \\
+          \vt_{\mf{f}}(z\mathbf{x}) &= \sum_{j(\a) \in j(\mf{f})}e^{2\pi i\Norm_{K}(\mf{f}^{-1})^{\frac{2}{d}}\<z\mathbf{x}\boldsymbol{j(\a)},\boldsymbol{j(\a)}\>} \\
+          &= \frac{1}{V_{j(\mf{f})}}\sum_{\a^{\vee} \in \mf{f}^{\vee}}\Norm_{K}(\mf{f})\frac{e^{-\frac{\pi\Norm_{K}(\mf{f})^{\frac{2}{d}}\<z\mathbf{x}\boldsymbol{j(\a^{\vee})},\boldsymbol{j(\a^{\vee})}\>}{-2iz}}}{(-2iz)^{\frac{d}{2}}} \\
+          &= \frac{1}{\Norm_{K}(\mf{f})\sqrt{|\D_{K}|}}\sum_{\a^{\vee} \in \mf{f}^{\vee}}\Norm_{K}(\mf{f})\frac{e^{-\frac{\pi\Norm_{K}(\mf{f})^{\frac{2}{d}}\<z\mathbf{x}\boldsymbol{j(\a^{\vee})},\boldsymbol{j(\a^{\vee})}\>}{-2iz}}}{(-2iz)^{\frac{d}{2}}} && \text{\cref{prop:covolume_of_fractional_ideal_under_j}} \\
+          &= \frac{1}{(-2|\D_{K}|^{\frac{1}{d}}iz)^{\frac{d}{2}}}\sum_{\a^{\vee} \in \mf{f}^{\vee}}e^{-\frac{\pi\Norm_{K}(\mf{f})^{\frac{2}{d}}\<z\mathbf{x}\boldsymbol{j(\a^{\vee})},\boldsymbol{j(\a^{\vee})}\>}{-2iz}} \\
           &= \frac{1}{(-2|\D_{K}|^{\frac{1}{d}}iz)^{\frac{d}{2}}}\sum_{\a^{\vee} \in \mf{f}^{\vee}}e^{-\frac{\pi\left(\Norm\left((\mf{f}^{\vee})^{-1}\right)|\D|_{K}^{-1}\right)^{\frac{2}{d}}\<z\mathbf{x}\boldsymbol{j(\a^{\vee})},\boldsymbol{j(\a^{\vee})}\>}{-2iz}} && \text{\cref{cor:norm_of_different}} \\
           &= \frac{1}{(-2|\D_{K}|^{\frac{1}{d}}iz)^{\frac{d}{2}}}\sum_{\a^{\vee} \in \mf{f}^{\vee}}e^{2\pi i\Norm\left((\mf{f}^{\vee})^{-1}\right)^{\frac{2}{d}}\left\<\left(-\frac{\mathbf{x}}{4|\D_{K}|^{\frac{2}{d}}z}\right)\boldsymbol{j(\a)},\boldsymbol{j(\a)}\right\>} \\
           &= \frac{1}{(-2|\D_{K}|^{\frac{1}{d}}iz)^{\frac{d}{2}}}\vt_{\mf{f}^{\vee}}\left(-\frac{\mathbf{x}}{4|\D_{K}|^{\frac{2}{d}}z}\right).
@@ -628,7 +628,7 @@
       \[
         \g(s,\z_{K}) = \pi^{-\frac{ds}{2}}\G\left(\frac{s}{2}\right)^{r_{1}+r_{2}}\Gamma\left(\frac{s+1}{2}\right)^{r_{2}},
       \]
-      with $\k_{i} = 0$ for $1 \le i \le r_{1}+r_{2}$ and $\k_{i} = 1$ for $r_{1}+r_{2}+1 \le i \le d$ the local roots at infinity. Clearly these satisfy the required bounds. The conductor is $q(\z_{K}) = |\D_{K}|$ and $p$ is ramified if and only if it is ramified in $K$ by \cref{thm:ramification_division_equivalence}. Note that if $p$ is unramified then $\sum_{1 \le i \le r_{p}}(e_{p}(\mf{p}_{i})-1)f_{p}(\mf{p}_{i}) = 0$ so that all local roots are of the form $\w_{p,i}^{k} \neq 0$. The completed Dedekind zeta function is
+      with $\k_{i} = 0$ for $1 \le i \le r_{1}+r_{2}$ and $\k_{i} = 1$ for $r_{1}+r_{2}+1 \le i \le d$ the local roots at infinity. Clearly these satisfy the required bounds. The conductor is $q(\z_{K}) = |\D_{K}|$ and $p$ is ramified if and only if it is ramified in $\Q$. Note that if $p$ is unramified then $\sum_{1 \le i \le r_{p}}(e_{p}(\mf{p}_{i})-1)f_{p}(\mf{p}_{i}) = 0$ so that all local roots are of the form $\w_{p,i}^{k} \neq 0$. The completed Dedekind zeta function is
       \[
         \L(s,\z_{K}) = |\D_{K}|^{\frac{s}{2}}\pi^{-\frac{ds}{2}}\G\left(\frac{s}{2}\right)^{r_{1}+r_{2}}\Gamma\left(\frac{s+1}{2}\right)^{r_{2}}\z_{K}(s),
       \]
@@ -646,12 +646,12 @@
       \]
       This shows $(s-1)\z_{K}(s)$ is of order $1$ and hence $\z_{K}(s)$ is too after removing the polar divisor. It now remains to compute the residue of $\z_{K}(s)$ at $s = 1$. This result is known as the \textbf{analytic class number formula}\index{analytic class number formula}:
 
-      \begin{theorem}[Analytic class number formula]
+      \begin{theorem*}[Analytic class number formula]
         Let $K$ be a number field of signature $(r_{1},r_{2})$. Then
         \[
           \Res_{s = 1}\z_{K}(s) = \frac{2^{r_{1}}(2\pi)^{r_{2}}h_{K}R_{K}}{w_{K}\sqrt{|\D_{K}|}}.
         \]
-      \end{theorem}
+      \end{theorem*}
       \begin{proof}
         The only term in \cref{equ:integral_representation_Dedekind_final} contributing to the pole is $-\frac{\pi^{\frac{r_{1}s}{2}}(2\pi)^{r_{2}s}}{\G\left(\frac{s}{2}\right)^{r_{1}}\G\left(s\right)^{r_{2}}}\frac{2^{r_{1}}h_{K}R_{K}}{\w_{K}\sqrt{|\D|_{K}}s(1-s)}$. Observe that
         \[
@@ -699,13 +699,13 @@
 
       Since the residue of $\z(s)$ at its pole is $1$, the analytic class number formula gives a relationship between the value of Dirichlet $L$-functions at $s = 1$ and the class number of quadratic number fields. This is known as the \textbf{Dirichlet class number formula}\index{Dirichlet class number formula}:
 
-      \begin{corollary}[Dirichlet class number formula]
+      \begin{corollary*}[Dirichlet class number formula]
         Let $\Q(\sqrt{d})$ be a quadratic number field and let $\chi_{\D_{d}}$ be the quadratic character associated to the fundamental discriminant $\D_{d}$. Then
         \[
           L(1,\chi_{\D_{d}}) = \frac{2h_{d}\log|\e_{d}|}{\sqrt{|\D_{d}|}} \quad \text{or} \quad L(1,\chi_{\D_{d}}) = \frac{2\pi h_{d}}{w_{d}\sqrt{|\D_{d}|}},
         \]
         where $\e_{d}$ is a fundamental unit, according to if $d > 0$ or $d < 0$.
-      \end{corollary}
+      \end{corollary*}
       \begin{proof}
         Let $(r_{1},r_{2})$ be the signature of $\Q(\sqrt{d})$. Combining \cref{thm:factorization_of_Dedekind_of_quadratic_number_field} with the analytic class number formula and that the residue of $\z(s)$ at its pole is $1$ gives
         \[

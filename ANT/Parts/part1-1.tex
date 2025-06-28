@@ -4,7 +4,7 @@
     \item Asymptotics,
     \item Dirichlet Characters,
     \item Exponential Sums,
-    \item Lattices,
+    \item Integral Lattices,
     \item The Gamma Function,
     \item Locally Compact Groups,
     \item Integration Techniques \& Transforms.
@@ -14,7 +14,7 @@
     Here we make some notational conventions that will be used throughout the rest of the text unless specified otherwise:
     \begin{itemize}
       \item The symbols $\subset$ and $\supset$ denote strict containment.
-      \item Any ring is understood to be a commutative ring with $1$.
+      \item Any ring is understood to be a commutative ring with $1$ and a subring is understood to contain $1$.
       \item The finite field with $p$ elements $\F_{p}$ stands for $\Z/p\Z$.
       \item Primes and divisors of integers are taken to be positive.
       \item The symbol $\e$ denotes a small positive constant ($\e > 0$) that is not necessarily the same from line to line.
@@ -184,9 +184,9 @@
     \[
       \chi_{m,0}(a) = \begin{cases} 1 & (a,m) = 1, \\ 0 & (a,m) > 1. \end{cases}
     \]
-    When $m = 1$, the principal Dirichlet character is identically $1$ and we call this the \textbf{trivial Dirichlet character}\index{trivial Dirichlet character}. This is also the only Dirichlet character modulo $1$, so $\chi_{1} = \chi_{1,0}$. In general, we say a Dirichlet character $\chi$ is \textbf{principal}\index{principal} if it only takes values $0$ or $1$. We now discuss some basic facts of Dirichlet characters. Since $a^{\vphi(m)} \equiv 1 \tmod{m}$ by Euler's little theorem, where $\vphi$ is Euler's totient function, the multiplicativity of $\chi$ implies $\chi(a)^{\vphi(m)} = 1$. Therefore the nonzero values of $\chi_{m}$ are $\vphi(m)$-th roots of unity. In particular, there are only finitely many Dirichlet characters of any fixed modulus $m$. Given two Dirichlet character $\chi$ and $\psi$ modulo $m$, we define $\chi\psi$ by $\chi\psi(a) = \chi(a)\psi(a)$. This is also a Dirichlet character modulo $m$, so the Dirichlet characters modulo $m$ form an abelian group denoted by $X_{m}$. If we have a Dirichlet character $\chi$ modulo $m$, then $\cchi$ defined by $\cchi(a) = \conj{\chi(a)}$ is also a Dirichlet character modulo $m$ and is called the \textbf{conjugate Dirichlet character}\index{conjugate Dirichlet character} of $\chi$. Since the nonzero values of $\chi$ are roots of unity, if $(a,m) = 1$ then $\cchi(a) = \chi(a)^{-1}$. So $\cchi$ is the inverse of $\chi$. This is all strikingly similar to characters on $(\Z/m\Z)^{\ast}$ (see \cref{append:Character_Groups}), and there is a connection. To see it, by the periodicity of $\chi$, it's nonzero values are uniquely determined by $(\Z/m\Z)^{\ast}$. Then since $\chi$ is multiplicative, it descends to a character $\chi$ of $(\Z/m\Z)^{\ast}$ (we abuse notation here). Conversely, if we are given a character $\chi$ of $(\Z/m\Z)^{\ast}$ we can extend it to a Dirichlet character by defining it to be $m$-periodic and declaring $\chi(a) = 0$ if $(a,m) > 1$. We call this extension the \textbf{zero extension}\index{zero extension}. So in other words, Dirichlet characters modulo $m$ are the zero extensions of the character group of $(\Z/m\Z)^{\ast}$. Clearly zero-extension respects multiplication of characters. As groups are isomorphic to their character groups (see \cref{prop:character_group_isomorphim}), we deduce that the group of Dirichlet characters modulo $m$ is isomorphic to $(\Z/m\Z)^{\ast}$. That is, $X_{m} \cong \what{(\Z/m\Z)^{\ast}} \cong (\Z/m\Z)^{\ast}$. In particular, there are $\vphi(m)$ Dirichlet characters modulo $m$. From now on we identify Dirichlet characters modulo $m$ with the character group of $(\Z/m\Z)^{\ast}$. We now state two very useful relations called \textbf{orthogonality relations}\index{orthogonality relations} for Dirichlet characters (this follows from the more general orthogonality relations in \cref{append:Character_Groups} but we wish to give a direct proof):
+    When $m = 1$, the principal Dirichlet character is identically $1$ and we call this the \textbf{trivial Dirichlet character}\index{trivial Dirichlet character}. This is also the only Dirichlet character modulo $1$, so $\chi_{1} = \chi_{1,0}$. In general, we say a Dirichlet character $\chi$ is \textbf{principal}\index{principal} if it only takes values $0$ or $1$. We now discuss some basic facts of Dirichlet characters. Since $a^{\vphi(m)} \equiv 1 \tmod{m}$ by Euler's little theorem, where $\vphi$ is Euler's totient function, the multiplicativity of $\chi$ implies $\chi(a)^{\vphi(m)} = 1$. Therefore the nonzero values of $\chi_{m}$ are $\vphi(m)$-th roots of unity. In particular, there are only finitely many Dirichlet characters of any fixed modulus $m$. Given two Dirichlet character $\chi$ and $\psi$ modulo $m$, we define $\chi\psi$ by $\chi\psi(a) = \chi(a)\psi(a)$. This is also a Dirichlet character modulo $m$, so the Dirichlet characters modulo $m$ form an abelian group denoted by $X_{m}$. If we have a Dirichlet character $\chi$ modulo $m$, then $\cchi$ defined by $\cchi(a) = \conj{\chi(a)}$ is also a Dirichlet character modulo $m$ and is called the \textbf{conjugate Dirichlet character}\index{conjugate Dirichlet character} of $\chi$. Since the nonzero values of $\chi$ are roots of unity, if $(a,m) = 1$ then $\cchi(a) = \chi(a)^{-1}$. So $\cchi$ is the inverse of $\chi$. This is all strikingly similar to characters on $(\Z/m\Z)^{\ast}$ (see \cref{append:Character_Groups}) and there is indeed a connection. By the periodicity of $\chi$, the nonzero values are uniquely determined by $(\Z/m\Z)^{\ast}$. As $\chi$ is multiplicative, it descends to a character $\chi$ of $(\Z/m\Z)^{\ast}$. Conversely, if we are given a character $\chi$ of $(\Z/m\Z)^{\ast}$ we can extend it to a Dirichlet character by defining it to be $m$-periodic and declaring $\chi(a) = 0$ if $(a,m) > 1$. We call this extension the \textbf{zero extension}\index{zero extension}. So in other words, Dirichlet characters modulo $m$ are the zero extensions of the character group of $(\Z/m\Z)^{\ast}$. Clearly zero-extension respects multiplication of characters. As groups are isomorphic to their character groups (see \cref{prop:character_group_isomorphim}), we deduce that the group of Dirichlet characters modulo $m$ is isomorphic to $(\Z/m\Z)^{\ast}$. That is, $X_{m} \cong \what{(\Z/m\Z)^{\ast}} \cong (\Z/m\Z)^{\ast}$. In particular, there are $\vphi(m)$ Dirichlet characters modulo $m$. From now on we identify Dirichlet characters modulo $m$ with the character group of $(\Z/m\Z)^{\ast}$. We now state two very useful relations called \textbf{Dirichlet orthogonality relations}\index{Dirichlet orthogonality relations} for Dirichlet characters (this follows from the more general orthogonality relations in \cref{append:Character_Groups} but we wish to give a direct proof):
 
-    \begin{proposition}[Orthogonality relations]\label{prop:Dirichlet_orthogonality_relations}
+    \begin{proposition*}[Dirichlet orthogonality relations]
     \phantom{ }
       \begin{enumerate}[label=(\roman*)]
         \item For any two Dirichlet characters $\chi$ and $\psi$ modulo $m$,
@@ -198,7 +198,7 @@
           \frac{1}{\vphi(m)}\sum_{\chi \tmod{m}}\chi(a)\cchi(b) = \d_{a,b}.
         \]
       \end{enumerate}
-    \end{proposition}
+    \end{proposition*}
     \begin{proof}
       We will prove the statements separately.
       \begin{enumerate}[label=(\roman*)]
@@ -233,7 +233,7 @@
       \end{enumerate}
     \end{proof}
 
-    In many practical settings, the orthogonality relations are often used in the following form:
+    In many practical settings, the Dirichlet orthogonality relations are often used in the following form:
 
     \begin{corollary}\label{cor:Dirichlet_orthogonality_relations}
     \phantom{ }
@@ -249,7 +249,7 @@
       \end{enumerate}
     \end{corollary}
     \begin{proof}
-      For (i), take $\psi = \chi_{m,0}$ in the orthogonality relations (\cref{prop:Dirichlet_orthogonality_relations} (i)). For (ii), take $b \equiv 1 \tmod{m}$ in the orthogonality relations (\cref{prop:Dirichlet_orthogonality_relations} (ii)).
+      For (i), take $\psi = \chi_{m,0}$ in the Dirichlet orthogonality relations (namely (i)). For (ii), take $b \equiv 1 \tmod{m}$ in the Dirichlet orthogonality relations (namely (ii)).
     \end{proof}
 
     We will now describe how Dirichlet characters of a fixed modulus arise from Dirichlet characters of a smaller modulus. Let $\chi_{m_{1}}$ and $\chi_{m_{2}}$ be Dirichlet characters modulo $m_{1}$ and $m_{2}$. If $m_{1} \mid m_{2}$, then $(a,m_{2}) = 1$ implies $(a,m_{1}) = 1$. Accordingly, we say $\chi_{m_{2}}$ is \textbf{induced}\index{induced} from $\chi_{m_{1}}$ (or that $\chi_{m_{1}}$ \textbf{lifts} to $\chi_{m_{2}}$) if
@@ -683,20 +683,20 @@
       \]
       Notice that if either $n = 0$ or $m = 0$ then the Kloosterman sum reduces to a Ramanujan sum. Kloosterman sums have similar properties to those of Ramanujan sums, but we will not need them. The only result we will need is a famous bound, often called the \textbf{Weil bound}\index{Weil bound} for Kloosterman sums, proved by Weil (see \cite{weil1948some} for a proof):
 
-      \begin{theorem}[Weil bound]
+      \begin{theorem*}[Weil bound]
         Let $c \ge 1$ and $n,m \in \Z$. Then
         \[
           |K(n,m,c)| \le \s_{0}(c)\sqrt{(n,m,c)c}.
         \]
-      \end{theorem}
+      \end{theorem*}
 
       Lastly, Sali\'e sums are Kloosterman sums with Dirichlet characters. To be precise, for any $c \ge 1$, $n,m \in \Z$, and a Dirichlet character $\chi$ with conductor $q \mid c$, the \textbf{Sali\'e sum}\index{Sali\'e sum} $S_{\chi}(n,m,c)$ is defined by
       \[
         S_{\chi}(n,m,c) = \sum_{\substack{a \tmod{c} \\ (a,c) = 1}}\chi(a)e^{\frac{2\pi i(an+\conj{a}m)}{c}} = \psum_{a \tmod{c}}\chi(a)e^{\frac{2\pi i(an+\conj{a}m)}{c}}.
       \]
       If either $n = 0$ or $m = 0$ then the Sali\'e sum reduces to the Ramanujan sum associated to $\chi$.
-  \section{Lattices}
-    Lattices are ubiquitous in number theory because they provide a way to study discrete points by geometric methods. Let $V$ be an $n$-dimensional vector space over a characteristic zero field $F$ with nondegenerate symmetric inner product $\<\cdot,\cdot\>$. We say that a subset $\L$ of $V$ is a \textbf{lattice}\index{lattice} if $\L$ is a free abelian group. In particular, any lattice $\L$ is of the form
+  \section{Integral Lattices}
+    Integral Lattices are ubiquitous in number theory because they provide a way to study discrete points by geometric methods. Let $V$ be an $n$-dimensional vector space over a characteristic zero field $F$ with nondegenerate symmetric inner product $\<\cdot,\cdot\>$. We say that a subset $\L$ of $V$ is a \textbf{integral lattice}\index{integral lattice} if $\L$ is a free abelian group. In particular, any integral lattice $\L$ is of the form
     \[
       \L = \Z v_{1}+\cdots+\Z v_{m},
     \]
@@ -708,37 +708,37 @@
     \[
       P = \begin{pmatrix} v_{1,1} & \cdots & v_{n,1} \\ \vdots & & \vdots \\ v_{1,n} & \cdots & v_{n,n} \end{pmatrix}.
     \]
-    Then $P$ is the base change matrix from $e_{1},\ldots,e_{n}$ to $v_{1},\ldots,v_{n}$. The \textbf{covolume}\index{covolume} $V_{\L}$ of a complete lattice $\L$ is defined to be
+    Then $P$ is the base change matrix from $e_{1},\ldots,e_{n}$ to $v_{1},\ldots,v_{n}$. The \textbf{covolume}\index{covolume} $V_{\L}$ of a complete integral lattice $\L$ is defined to be
     \[
       V_{\L} = |\det(P)|.
     \]
-    By \cref{prop:base_change_quotient_determinant} and that the base change matrix between any two orthonormal basses is an orthogonal matrix and hence has determinant $\pm 1$, the covolume is independent of the choice of bases. In particular, if $V$ is a real or complex vector space we will take $e_{1},\ldots,e_{n}$ to be the standard basis. We now introduce the notion of dual lattices. If $\L$ is a complete lattice in $V$, then the \textbf{dual lattice}\index{dual lattice} $\L^{\vee}$ of $\L$ is defined by
+    By \cref{prop:base_change_quotient_determinant} and that the base change matrix between any two orthonormal basses is an orthogonal matrix and hence has determinant $\pm 1$, the covolume is independent of the choice of bases. In particular, if $V$ is a real or complex vector space we will take $e_{1},\ldots,e_{n}$ to be the standard basis. We now introduce the notion of dual integral lattices. If $\L$ is a complete integral lattice in $V$, then the \textbf{dual}\index{dual} $\L^{\vee}$ of $\L$ is defined by
     \[
       \L^{\vee} = \{v \in V:\text{$\<\l,v\> \in \Z$ for all $\l \in \L$}\}.
     \]
-    In other words, $\L^{\vee}$ consists of all of the vectors in $V$ whose inner product with elements of $\L$ are integers. The dual lattice is indeed a complete lattice as the following proposition shows:
+    In other words, $\L^{\vee}$ consists of all of the vectors in $V$ whose inner product with elements of $\L$ are integers. The dual integral lattice is indeed a complete integral lattice as the following proposition shows:
 
-    \begin{proposition}\label{prop:dual_lattice_exists}
-      If $v_{1},\ldots,v_{n}$ is a basis for the complete lattice $\L$, then the dual basis $v_{1}^{\vee},\ldots,v_{n}^{\vee}$ is a basis for $\L^{\vee}$. In particular, $\L^{\vee}$ is a complete lattice.
+    \begin{proposition}\label{prop:dual_integral lattice_exists}
+      If $v_{1},\ldots,v_{n}$ is a basis for the complete integral lattice $\L$, then the dual basis $v_{1}^{\vee},\ldots,v_{n}^{\vee}$ is a basis for $\L^{\vee}$. In particular, $\L^{\vee}$ is a complete integral lattice.
     \end{proposition}
     \begin{proof}
       Let $v \in V$ and write
       \[
         v = \sum_{1 \le j \le n}a_{i}v_{j}^{\vee},
       \]
-      with $v_{j}^{\vee} \in \R$ for all $j$. Since $\<v_{i},v_{j}^{\vee}\> = \d_{i,j}$ for $1 \le i,j \le n$, it follows that $v \in \L^{\vee}$ if and only if $v_{j}^{\vee} \in \Z$ for all $j$. This means that $v_{1}^{\vee},\ldots,v_{n}^{\vee}$ is a free abelian group of rank $n$. Hence $\L^{\vee}$ is a complete lattice.
+      with $v_{j}^{\vee} \in \R$ for all $j$. Since $\<v_{i},v_{j}^{\vee}\> = \d_{i,j}$ for $1 \le i,j \le n$, it follows that $v \in \L^{\vee}$ if and only if $v_{j}^{\vee} \in \Z$ for all $j$. This means that $v_{1}^{\vee},\ldots,v_{n}^{\vee}$ is a free abelian group of rank $n$. Hence $\L^{\vee}$ is a complete integral lattice.
     \end{proof}
 
-    Since the dual of the dual basis of a vector space is the original basis, $(\L^{\vee})^{\vee} = \L$. We say that $\L$ is \textbf{self-dual}\index{self-dual} if $\L^{\vee} = \L$. For example, the lattice $\Z^{n}$ is self-dual because the standard basis is self-dual. It also turns out that the covolume of the dual lattice is the inverse of the volume of the original lattice:
+    Since the dual of the dual basis of a vector space is the original basis, $(\L^{\vee})^{\vee} = \L$. We say that $\L$ is \textbf{self-dual}\index{self-dual} if $\L^{\vee} = \L$. For example, the integral lattice $\Z^{n}$ is self-dual because the standard basis is self-dual. It also turns out that the covolume of the dual integral lattice is the inverse of the volume of the original integral lattice:
 
     \begin{proposition}\label{prop:covolume_of_dual_is_inverse}
-      Let $\L$ be a complete lattice in $V$ and let $\L^{\vee}$ be its dual. Then
+      Let $\L$ be a complete integral lattice in $V$ and let $\L^{\vee}$ be its dual. Then
       \[
         V_{\L^{\vee}} = \frac{1}{V_{\L}}.
       \]
     \end{proposition}
     \begin{proof}
-      Let $e_{1},\ldots,e_{n}$ be the standard basis for $V$ and let $v_{1},\ldots,v_{n}$ be a basis for $\L$. By \cref{prop:dual_lattice_exists}, $v_{1}^{\vee},\ldots,v_{n}^{\vee}$ is a basis for $\L^{\vee}$. If $P$ is the associated generator matrix for $\L$, then $P$ is the base change matrix from $e_{1},\ldots,e_{n}$ to $v_{1},\ldots,v_{n}$. Hence $(P^{-1})^{t}$ is the base change matrix from $e_{1},\ldots,e_{n}$ to $v_{1}^{\vee},\ldots,v_{n}^{\vee}$. The claim follows by \cref{prop:base_change_quotient_determinant}.
+      Let $e_{1},\ldots,e_{n}$ be the standard basis for $V$ and let $v_{1},\ldots,v_{n}$ be a basis for $\L$. By \cref{prop:dual_integral lattice_exists}, $v_{1}^{\vee},\ldots,v_{n}^{\vee}$ is a basis for $\L^{\vee}$. If $P$ is the associated generator matrix for $\L$, then $P$ is the base change matrix from $e_{1},\ldots,e_{n}$ to $v_{1},\ldots,v_{n}$. Hence $(P^{-1})^{t}$ is the base change matrix from $e_{1},\ldots,e_{n}$ to $v_{1}^{\vee},\ldots,v_{n}^{\vee}$. The claim follows by \cref{prop:base_change_quotient_determinant}.
     \end{proof}
     
     We now turn to the case when $V$ is an $n$-dimensional real inner product space with inner product $\<\cdot,\cdot\>$. We let $d\l$ be the associated Lebesgue measure on $V$. If $v_{1},\ldots,v_{n}$ is a basis of $V$ so that any $v \in V$ has the form
@@ -760,7 +760,7 @@
     Indeed, since $\L$ acts by translations, it is obvious that $\mc{M}$ is a fundamental domain for $V/\L$. Moreover, any translation of $\mc{M}$ by an element of $\L$ is also a fundamental domain. As we might expect, the covolume of $\L$ is equal to the volume of $\mc{M}$:
 
     \begin{proposition}\label{prop:covolume_equals_volume_of_fundamental_domain}
-      Let $\L$ be a complete lattice in a finite dimensional real inner product space $V$ and let $\mc{M}$ be a fundamental domain for $\L$. Then
+      Let $\L$ be a complete integral lattice in a finite dimensional real inner product space $V$ and let $\mc{M}$ be a fundamental domain for $\L$. Then
       \[
         V_{\L} = \Vol(\mc{M}).
       \]
@@ -777,30 +777,30 @@
       where the last equality follows by \cref{prop:base_change_quotient_determinant}.
     \end{proof}
 
-    From \cref{prop:covolume_equals_volume_of_fundamental_domain} we see that the covolume of a complete lattice in a real inner product space is a measure of the density of the lattice. The smaller the covolume the smaller the fundamental domain and the more dense the lattice is. It turns out that for $V$, being a lattice is equivalent to being a discrete subgroup:
+    From \cref{prop:covolume_equals_volume_of_fundamental_domain} we see that the covolume of a complete integral lattice in a real inner product space is a measure of the density of the integral lattice. The smaller the covolume the smaller the fundamental domain and the more dense the integral lattice is. It turns out that for $V$, being a integral lattice is equivalent to being a discrete subgroup:
 
-    \begin{proposition}\label{prop:lattice_if_and_only_if_discrete_subgroup}
-      Let $\L$ be a subset of a finite dimensional real inner product space $V$. Then $\L$ is a lattice if and only if it is a discrete subgroup.
+    \begin{proposition}\label{prop:integral lattice_if_and_only_if_discrete_subgroup}
+      Let $\L$ be a subset of a finite dimensional real inner product space $V$. Then $\L$ is a integral lattice if and only if it is a discrete subgroup.
     \end{proposition}
     \begin{proof}
-      It is clear that if $\L$ is a lattice then it is a discrete subgroup. So suppose $\L$ is a discrete subgroup. Then $\L$ is closed (since $V$ is a metric space). Let $V'$ be the subspace spanned by $\L$ and let its dimension be $m$. Choosing a basis $v'_{1},\ldots,v'_{m}$ of $V'$, set
+      It is clear that if $\L$ is a integral lattice then it is a discrete subgroup. So suppose $\L$ is a discrete subgroup. Then $\L$ is closed (since $V$ is a metric space). Let $V'$ be the subspace spanned by $\L$ and let its dimension be $m$. Choosing a basis $v'_{1},\ldots,v'_{m}$ of $V'$, set
       \[
         \L' = \Z v'_{1}+\cdots+\Z v'_{m}.
       \]
-      Then $\L'$ is a complete lattice in $V'$ and $\L' \subseteq \L \subset V$. We claim that $\L/\L'$ is finite. To see this, let $\l$ run over a complete set of representatives for $\L/\L'$ and let $\mc{M}'$ be a fundamental domain for $\L'$ in $V'$. As $\mc{M}'$ is a fundamental domain, there exists unique $w' \in \mc{M}'$ and $\l' \in L$ such that $\l = w'+\l'$ for every $\l$. But then $w' = \l-\l' \in \mc{M}' \cap \L$ and since $\mc{M}' \cap \L$ is closed, discrete, and compact, it must be finite ($\mc{M}'$ is compact and $\L$ is closed and discrete). Hence there are finitely many $w'$ and thus finitely many $\l$. Letting $|\L/\L'| = q$, we have $q\L \subseteq \L'$ and therefore
+      Then $\L'$ is a complete integral lattice in $V'$ and $\L' \subseteq \L \subset V$. We claim that $\L/\L'$ is finite. To see this, let $\l$ run over a complete set of representatives for $\L/\L'$ and let $\mc{M}'$ be a fundamental domain for $\L'$ in $V'$. As $\mc{M}'$ is a fundamental domain, there exists unique $w' \in \mc{M}'$ and $\l' \in L$ such that $\l = w'+\l'$ for every $\l$. But then $w' = \l-\l' \in \mc{M}' \cap \L$ and since $\mc{M}' \cap \L$ is closed, discrete, and compact, it must be finite ($\mc{M}'$ is compact and $\L$ is closed and discrete). Hence there are finitely many $w'$ and thus finitely many $\l$. Letting $|\L/\L'| = q$, we have $q\L \subseteq \L'$ and therefore
       \[
         \L \subseteq \L' = \Z\frac{1}{q}v'_{1}+\cdots+\Z\frac{1}{q}v'_{m}.
       \]
-      In particular, $\L$ is a subgroup of a free abelian group and therefore is free abelian. This means $\L$ is a lattice.
+      In particular, $\L$ is a subgroup of a free abelian group and therefore is free abelian. This means $\L$ is a integral lattice.
     \end{proof}
 
-    As for complete lattices in $V$, they are equivalent to the existence of a bounded set whose translates cover $V$:
+    As for complete integral lattices in $V$, they are equivalent to the existence of a bounded set whose translates cover $V$:
 
-    \begin{proposition}\label{prop:complete_lattice_if_and_only_if_bounded_translates_cover}
-      Let $\L$ be a lattice in a finite dimensional real inner product space $V$. Then $\L$ complete if and only if there exists a bounded subset $M$ of $V$ whose translates by $\L$ cover $V$.
+    \begin{proposition}\label{prop:complete_integral lattice_if_and_only_if_bounded_translates_cover}
+      Let $\L$ be a integral lattice in a finite dimensional real inner product space $V$. Then $\L$ complete if and only if there exists a bounded subset $M$ of $V$ whose translates by $\L$ cover $V$.
     \end{proposition}
     \begin{proof}
-      First suppose $\L$ is complete. Then we may take $M = \mc{M}$ to be the fundamental domain of $\L$ which is bounded and whose translates by $\L$ cover $V$. Now suppose $\L$ is a lattice and there exists a bounded subset $M$ of $V$ whose translates by $\L$ cover $V$. Let $W$ be the subspace of $V$ spanned by $\L$. Then $W$ is closed. Moreover, $\L$ is complete if and only if $V = W$ and this is what we will show. So let $v \in V$. Since the translates of $M$ by $\L$ cover $V$, for every $n \ge 1$ we may write
+      First suppose $\L$ is complete. Then we may take $M = \mc{M}$ to be the fundamental domain of $\L$ which is bounded and whose translates by $\L$ cover $V$. Now suppose $\L$ is a integral lattice and there exists a bounded subset $M$ of $V$ whose translates by $\L$ cover $V$. Let $W$ be the subspace of $V$ spanned by $\L$. Then $W$ is closed. Moreover, $\L$ is complete if and only if $V = W$ and this is what we will show. So let $v \in V$. Since the translates of $M$ by $\L$ cover $V$, for every $n \ge 1$ we may write
       \[
         nv = w_{n}+\l_{n},
       \]
@@ -811,15 +811,15 @@
       is an element of $W$. Since $v$ was arbitrary, $V = W$ and hence $\L$ is complete.
     \end{proof}
 
-    The most important result we will require about lattices is \textbf{Minkowski's lattice point theorem}\index{Minkowski's lattice point theorem} which states that, under some mild conditions, a set of sufficiently large volume in $V$ contains a nonzero point of a complete lattice:
+    The most important result we will require about integral lattices is \textbf{Minkowski's lattice point theorem}\index{Minkowski's lattice point theorem} which states that, under some mild conditions, a set of sufficiently large volume in $V$ contains a nonzero point of a complete integral lattice:
 
-    \begin{theorem}[Minkowski's lattice point theorem]
-      Let $\L$ be a lattice in an $n$-dimensional real inner product space $V$. Suppose $X \subset V$ is a compact convex symmetric set. If
+    \begin{theorem*}[Minkowski's lattice point theorem]
+      Let $\L$ be a integral lattice in an $n$-dimensional real inner product space $V$. Suppose $X \subset V$ is a compact convex symmetric set. If
       \[
         \Vol(X) \ge 2^{n}V_{\L},
       \]
       then there exists a nonzero $\l \in L$ with $\l \in X$ 
-    \end{theorem}
+    \end{theorem*}
     \begin{proof}
       We will prove the claim depending on if the inequality is strict or not. First suppose $\Vol(X) > 2^{n}V_{\L}$. Consider the linear map
       \[
@@ -847,7 +847,7 @@
     \subsection*{Integration Techniques}
       Complex integrals are a core backbone of many number theory techniques. An extremely useful one is called \textbf{shifting the line of integration}\index{shifting the line of integration}:
 
-      \begin{theorem}[Shifting the line of integration]
+      \begin{theorem*}[Shifting the line of integration]
         Suppose we are given an integral
         \[
           \int_{\Re(z) = a}f(z)\,dz \quad \text{or} \quad \int_{\Im(z) = a}f(z)\,dz,
@@ -857,7 +857,7 @@
           \int_{(a)}f(z)\,dz = \int_{(b)}f(z)\,dz+2\pi i\sum_{\rho \in P}\Res_{z = \rho}f(z),
         \]
         where $P$ is the set of poles inside of the strip bounded by the lines $\Re(z) = a,b$ or $\Im(z) = a,b$ respectively.
-      \end{theorem}
+      \end{theorem*}
       \begin{proof}
         To collect these cases, let $(a)$ stand for the line $\Re(z) = a$ or $\Im(z) = a$ respectively with positive orientation. Let $R_{T}$ be a rectangle, of height or width $T$ respectively, given positive orientation, and with its edges on $(a)$ and $(b)$ respectively. Consider the limit
         \[
@@ -871,7 +871,7 @@
 
       A particular application of interest is when the integral in question is real and over the entire real line, the integrand is entire as a complex function, and one is trying to shift the line of integration of the complexified integral to $\Im(z) = a$. In this case, shifting the line of integration amounts to making the change of variables $x \mapsto x-ia$ without affecting the initial line of integration. The second integral technique we will use is when we are summing integrals over a group and is called the \textbf{unfolding/folding method}\index{unfolding/folding method}:
 
-      \begin{theorem}[Unfolding/folding method]
+      \begin{theorem*}[Unfolding/folding method]
         Suppose $f(z)$ is holomorphic on some region $\W$. Moreover, suppose $G$ is a countable group acting by automorphisms on $\W$ and let $D$ and $F$ be regions such that
         \[
           D = \bigcup_{g \in G}gF,
@@ -881,7 +881,7 @@
           \int_{F}\sum_{g \in G}f(g z)\,d\mu = \int_{D}f(z)\,d\mu,
         \]
         provided either side is absolutely convergent.
-      \end{theorem}
+      \end{theorem*}
       \begin{proof}
         First suppose $\int_{F}\sum_{g \in G}f(g z)\,d\mu$ converges absolutely. By the Fubini–Tonelli theorem, we may interchange the sum and integral. Upon making the change of variables $z \mapsto g^{-1}z$, the invariance of $d\mu$ implies that the integral takes the form
         \[
@@ -912,8 +912,8 @@
 
       The link between the Fourier transform and Fourier series is given by the \textbf{Poisson summation formula}\index{Poisson summation formula}:
 
-      \begin{theorem}[Poisson summation formula]
-        Suppose $\L$ is a complete lattice in $\R^{n}$, $f(\mathbf{x})$ is absolutely integrable on $\R^{n}$, and the function
+      \begin{theorem*}[Poisson summation formula]
+        Suppose $\L$ is a complete integral lattice in $\R^{n}$, $f(\mathbf{x})$ is absolutely integrable on $\R^{n}$, and the function
         \[
           F(\mathbf{x}) = \sum_{\l \in \L}f(\mathbf{x}+\l),
         \]
@@ -925,7 +925,7 @@
         \[
           \sum_{\l \in \L}f(\l) = \frac{1}{V_{\L}}\sum_{\l^{\vee} \in \L^{\vee}}(\mc{F}f)(\l^{\vee}).
         \]
-      \end{theorem}
+      \end{theorem*}
       \begin{proof}
         Fix a basis $\l_{1},\ldots,\l_{n}$ for $\L$ and let $P$ be the associated generator matrix. Then $P$ is the base change matrix from the standard basis to $\l_{1},\ldots,\l_{n}$. In particular, $P$ is an invertible linear transformation on $\R^{n}$ satisfying $\L = P\Z^{n}$ and $\L^{\vee} = (P^{-1})^{t}\Z^{n}$. Letting $ F_{P}(\mathbf{x}) = F(P\mathbf{x})$, we may write
         \[
@@ -953,7 +953,7 @@
         This proves the first statement. Setting $\mathbf{x} = \mathbf{0}$ proves the second statement.
       \end{proof}
 
-      For convenience, we state the Poisson summation formula in the simplified case for the self-dual lattice $\L = \Z^{n}$ as a corollary since it is how the Poisson summation formula is usually applied:
+      For convenience, we state the Poisson summation formula in the simplified case for the self-dual integral lattice $\L = \Z^{n}$ as a corollary since it is how the Poisson summation formula is usually applied:
 
       \begin{corollary}
         Suppose $f(\mathbf{x})$ is absolutely integrable on $\R^{n}$, and the function
@@ -1093,7 +1093,7 @@
       for any $a < c < b$.
       It is not immediately clear that this integral converges or is independent of $c$. The following theorem makes precise what properties $f(x)$ needs to satisfy so that the inverse Mellin transform recovers $f(x)$ (see \cite{debnath2002integral} for a proof):
 
-      \begin{theorem}[Mellin inversion formula]
+      \begin{theorem*}[Mellin inversion formula]
         Let $a < b$ and suppose $g(s)$ is analytic in the strip vertical $a < \s < b$, tends to zero uniformly as $t \to \infty$ along any line $\s = c$ for $a < c < b$, and that the integral of $g(s)$ along this line is locally absolutely uniformly convergent. Then if
         \[
           f(x) = \frac{1}{2\pi i}\int_{(c)}g(s)x^{-s}\,ds,
@@ -1103,7 +1103,7 @@
           g(s) = \int_{0}^{\infty}f(x)x^{s}\,\frac{dx}{x},
         \]
         is locally absolutely uniformly convergent in the vertical strip $a < \s < b$. Then $f(x) = (\mc{M}^{-1}g)(x)$.
-      \end{theorem}
+      \end{theorem*}
   \section{The Gamma Function}
     The gamma function is ubiquitous in number theory and the better one understands this function the better one will be at seeing the forest for the trees. The \textbf{gamma function}\index{gamma function} $\G(s)$ is defined to be the Mellin transform of $e^{-x}$:
     \[
@@ -1161,12 +1161,12 @@
 
     In particular, \cref{thm:continuation_of_gamma_function} implies $\Res_{s = 0}\G(s) = 1$ and $\Res_{s = 1}\G(s) = -1$. There are a few other properties of the gamma function that are famous and which we will use frequently. The first of which is the \textbf{Legendre duplication formula}\index{Legendre duplication formula} (see \cite{remmert1998classical} for a proof):
 
-    \begin{theorem}[Legendre duplication formula]
+    \begin{theorem*}[Legendre duplication formula]
       For any $s \in \C-\{0,-1,-2,\ldots\}$,
       \[
         \G(s)\G\left(s+\frac{1}{2}\right) = 2^{1-2s}\sqrt{\pi}\G(2s).
       \]
-    \end{theorem}
+    \end{theorem*}
 
     As a first application, we can use this formula to compute $\G\left(\frac{1}{2}\right)$. Letting $z = \frac{1}{2}$ in the Legendre duplication formula and recalling $\G(1) = 1$, we see that $\G\left(\frac{1}{2}\right) = \sqrt{\pi}$. There is also the important Hadamard factorization of the reciprocal of $\G(s)$ (see \cite{stein2003complex} for a proof):
 
@@ -1201,13 +1201,13 @@
     
     We will also require a well-known approximation for the gamma function known as \textbf{Stirling's formula}\index{Stirling's formula} (see \cite{remmert1998classical} for a proof):
 
-    \begin{theorem}[Stirling's formula]
-    \phantom{}
+    \begin{theorem*}[Stirling's formula]
+      \phantom{}
       \[
         \G(s) \sim_{\e,\d} \sqrt{2\pi}s^{s-\frac{1}{2}}e^{-s},
       \]
       provided $|\arg(s)| < \pi-\e$ and $|s| > \d$ for some $\e,\d > 0$.
-    \end{theorem}
+    \end{theorem*}
 
     If $\s$ is bounded, Stirling's formula gives a useful asymptotic showing that $\G(s)$ decays as $s \to \infty$:
     
