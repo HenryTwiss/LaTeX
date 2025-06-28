@@ -707,6 +707,120 @@
       h_{K} = |\Cl(K)|.
     \]
     The \textbf{unit group}\index{unit group} of $K$ is the unit group of $\mc{O}_{K}$ and we call any element of $\mc{O}_{K}^{\ast}$ a \textbf{unit}\index{unit} of $K$ (with the understanding that every element of $K$ is invertible in $K$). It follows from \cref{thm:ring_of_integers_is_Dedekind,thm:unique_product_prime_ideals} that integral ideals $\mf{a}$ of $K$ admit prime factorizations. One of our core investigations will be to understand how the principal integral ideal $p\mc{O}_{K}$ factors into a product of primes of $K$ for any prime $p$. Moreover, we will be able to leverage geometric tools to show that the class number $h_{K}$ is finite and completely describe the unit group $\mc{O}_{K}^{\ast}$.
+  \section{Ramification}
+    Having discussed the prime factorization of fractional ideals in Dedekind domains, we now turn to discussing how primes factor when considered in a larger Dedekind domain. Let $\smc{O}$ be a Dedekind domain with field of fractions $K$, $L/K$ be a finite separable extension, and $\mc{O}$ be the integral closure of $\smc{O}$ in $L$. We first show that $\mc{O}$ is also a Dedekind domain:
+
+    \begin{proposition}\label{prop:integral_closure_of_Dedekind_is_Dedekind}
+      Let $\smc{O}$ be a Dedekind domain with field of fractions $K$, $L/K$ be a finite separable extension, and $\mc{O}$ be the integral closure of $\smc{O}$ in $L$. Then $\mc{O}$ is a Dedekind domain.
+    \end{proposition}
+    \begin{proof}
+      $\mc{O}$ is an integral domain because it is a subring of $L$ and is integrally closed since it is the integral closure of $\smc{O}$. We now show $\mc{O}$ is noetherian. Let the degree of $L/K$ be $n$ and let $\l_{1},\ldots,\l_{n}$ be a basis for $L/K$. By \cref{prop:field_of_fractions_AKBL} we may multiply by a nonzero element of $\smc{O}$, if necessary, to ensure that this basis lies in $\mc{O}$. Then $d_{L/K}(\l_{1},\ldots,\l_{n})$ is nonzero by \cref{prop:discriminant_not_zero} and \cref{lem:lemma_for_integral_basis_AKBL} implies that
+      \[
+        d_{L/K}(\l_{1},\ldots,\l_{n})\mc{O} \subseteq \smc{O}\l_{1}+\cdots+\smc{O}\l_{n}.
+      \]
+      Thus $\mc{O}$ is a finitely generated $\smc{O}$-module of rank at most $n$. In particular, every ideal of $\mc{O}$ is also a finitely generated $\smc{O}$-module and therefore also a finitely generated $\mc{O}$-module. It remains to show that every nonzero prime ideal is maximal. Letting $\mf{P}$ be a nonzero prime ideal, it suffices to show $\mc{O}/\mf{P}$ is a field. To this end, consider the homomorphism
+      \[
+        \phi:\smc{O} \to \mc{O}/\mf{P} \qquad \a \mapsto \a \tmod{\mf{p}}.
+      \]
+      Then $\ker\phi = \mf{P} \cap \smc{O}$ and we claim $\mf{P} \cap \smc{O}$ is a nonzero prime ideal of $\smc{O}$. It is clearly an ideal of $\smc{O}$ and is prime because $\mf{P}$ is. To see that it is nonzero, let $\a \in \mf{P}$ be nonzero. As $\a$ is algebraic over $\smc{O}$, we have
+      \[
+        \a^{n}+a_{n-1}\a^{n-1}+\cdots+a_{0} = 0,
+      \]
+      for some $n \ge 1$ and $a_{i} \in \smc{O}$ for $0 \le i \le n-1$. Taking $n$ minimal, we have $a_{0} \neq 0$. Isolating $a_{0}$ shows that $a_{0} \in \mf{P}$ and hence $a_{0} \in \mf{P} \cap \smc{O}$. Therefore $\mf{P} \cap \smc{O} = \mf{p}$ for some prime $\mf{p}$. Hence $\ker\phi = \mf{p}$ and by the first isomorphism theorem, $\phi$ induces an injection $\phi:\smc{O}/\mf{p} \to \mc{O}/\mf{P}$. Since $\smc{O}$ is a Dedekind domain, $\mf{p}$ is maximal and thus $\smc{O}/\mf{p}$ is a field. As $\mc{O}$ is the integral closure of $\smc{O}$ in $L$, it is obtained from $\smc{O}$ by forming a polynomial ring with algebraic elements. The latter injection then shows that $\mc{O}/\mf{P}$ is obtained from $\smc{O}/\mf{p}$ by adjoining the images of these algebraic elements modulo $\mf{P}$. These images are still algebraic over $\smc{O}/\mf{p}$ by reducing their minimal polynomials modulo $\mf{P}$. Hence $\mc{O}/\mf{P}$ is obtained from $\smc{O}/\mf{p}$ by adjoining algebraic elements to $\smc{O}/\mf{p}$ (since $(\smc{O}/\mf{p})[\a] = (\smc{O}/\mf{p})(\a)$ if $\a$ is algebraic over $\smc{O}/\mf{p}$) and is therefore a field.
+    \end{proof}
+
+    Under the assumptions of \cref{prop:integral_closure_of_Dedekind_is_Dedekind}, it follows from \cref{prop:field_of_fractions_AKBL} that $L$ is the field of fractions of $\mc{O}$. For brevity, we write $\mc{O}/\smc{O}$ and say that this is a \textbf{Dedekind extension}\index{Dedekind extension} of a finite separable extension $L/K$ if $\mc{O}$ and $\smc{O}$ are Dedekind domains whose field of fractions are $L$ and $K$ respectively and $\mc{O}$ is the integral closure of $\smc{O}$ in $L$. We also say that $\mc{O}/\smc{O}$ admits an \textbf{integral basis}\index{integral basis} if $\mc{O}$ admits an integral basis over $\smc{O}$. With this phrasing, the proof of \cref{prop:integral_closure_of_Dedekind_is_Dedekind} gives the following corollary:
+
+    \begin{corollary}\label{cor:integral_closure_of_Dedekind_is_Dedekind}
+      Let $\mc{O}/\smc{O}$ be a Dedekind extension of a degree $n$ separable extension $L/K$. Then $\mc{O}$ is a finitely generated $\smc{O}$-module of rank at most $n$ and every prime $\mf{P}$ of $\mc{O}$ satisfies
+      \[
+        \mf{P} \cap \smc{O} = \mf{p},
+      \]
+      for some prime $\mf{p}$ of $\smc{O}$. Moreover, $(\mc{O}/\mf{P})/(\smc{O}/\mf{p})$ is a finite extension of degree at most $n$.
+    \end{corollary}
+    \begin{proof}
+      The first statement was deduced in the proof of \cref{prop:integral_closure_of_Dedekind_is_Dedekind} along with the fact that there is an injection of fields $\smc{O}/\mf{p} \to \mc{O}/\mf{P}$. From this injection it follows that $(\mc{O}/\mf{P})/(\smc{O}/\mf{p})$ is an extension and since $\mc{O}$ is a finitely generated $\smc{O}$-module of rank at most $n$, $(\mc{O}/\mf{P})/(\smc{O}/\mf{p})$ is at most $n$ dimensional.
+    \end{proof}
+
+    Continue to let $\mc{O}/\smc{O}$ be a Dedekind extension of a degree $n$ separable extension $L/K$. Let $\mf{P}$ and $\mf{p}$ be primes of $L$ and $K$ respectively. We say that $\mf{P}$ is \textbf{above}\index{above} $\mf{p}$, or equivalently, $\mf{p}$ is \textbf{below}\index{below} $\mf{P}$ if
+    \[
+      \mf{P} \cap \mc{O} = \mf{p}.
+    \]
+    Then \cref{cor:integral_closure_of_Dedekind_is_Dedekind} implies that every prime of $L$ is above exactly one prime of $K$. If $\mf{P}$ is above $\mf{p}$, then $\mf{P} \mid \mf{p}\mc{O}$. Indeed, since $\mf{p} \subseteq \mf{P}$ we have $\mf{p}\mc{O} \subseteq \mf{P}$ which is to say that $\mf{P}$ divides $\mf{p}\mc{O}$. This implies that only finitely many primes $\mf{P}$ can lie above a prime $\mf{p}$ and they are exactly the prime factors of $\mf{p}\mc{O}$. We illustrated the relationship via the extension
+
+    \begin{center}
+      \begin{tikzcd}[row sep=large, column sep=large]
+        \mf{P} \subset \mc{O} \subset L \arrow[dash]{d} \\
+        \mf{p} \subset \smc{O} \subset K.
+      \end{tikzcd}
+    \end{center}
+
+    As primes $\mf{P}$ and $\mf{p}$ are maximal in the Dedekind domains $\mc{O}$ and $\smc{O}$ respectively, we have the residue class fields $\mc{O}/\mf{P}$ and $\smc{O}/\mf{p}$. The former is a finite extension of the latter of degree at most $n$ by \cref{cor:integral_closure_of_Dedekind_is_Dedekind}. Accordingly, we call $(\mc{O}/\mf{P})/(\smc{O}/\mf{p})$ the \textbf{residue class extension}\index{residue class extension} of $\mc{O}/\smc{O}$ for $\mf{P}$. Actually since \cref{cor:integral_closure_of_Dedekind_is_Dedekind} implies $\mc{O}$ is at finitely generated $\smc{O}$-module of rank at most $n$, the quotient ring $\mf{B}/\mf{A}$ is a vector space over $\smc{O}/\mf{p}$ of dimension at most $n$ for any integral ideals $\mf{A}$ and $\mf{B}$ with $\mf{p} \subseteq \mf{A} \subseteq \mf{B}$. In any case, we define the \textbf{inertia degree}\index{inertia degree} $f_{\mf{p}}(\mf{P})$ of $\mf{P}$ relative to $\mf{p}$ by
+    \[
+      f_{\mf{p}}(\mf{P}) = [\mc{O}/\mf{P}:\smc{O}/\mf{p}].
+    \]
+    That is, $f_{\mf{p}}(\mf{P})$ is the dimension of the residue field $\mc{O}/\mf{P}$ as a vector space over $\smc{O}/\mf{p}$. The \textbf{ramification index}\index{ramification index} $e_{\mf{p}}(\mf{P})$ is the power of $\mf{P}$ appearing in the prime factorization of $\mf{p}\mc{O}$. So if $\mf{p}\mc{O}$ has prime factors $\mf{P}_{1},\ldots,\mf{P}_{r}$, then the prime factorization of $\mf{p}\mc{O}$ is
+    \[
+      \mf{p}\mc{O} = \mf{P}_{1}^{e_{\mf{p}}(\mf{P}_{1})} \cdots \mf{P}_{r}^{e_{\mf{p}}(\mf{P}_{r})}.
+    \]
+    The inertia degrees and ramification indices are related via the following result:
+
+    \begin{theorem}\label{prop:inertia_ramification_relation}
+      Let $\mc{O}/\smc{O}$ be a Dedekind extension of a degree $n$ separable extension $L/K$. Suppose $\mf{p}$ is a prime of $K$ and $\mf{p}\mc{O}$ has prime factorization
+      \[
+        \mf{p}\mc{O} = \mf{P}_{1}^{e_{\mf{p}}(\mf{P}_{1})} \cdots \mf{P}_{r}^{e_{\mf{p}}(\mf{P}_{r})}.
+      \]
+      Then
+      \[
+        n = \sum_{1 \le i \le r}e_{\mf{p}}(\mf{P}_{i})f_{\mf{p}}(\mf{P}_{i}).
+      \]
+    \end{theorem}
+    \begin{proof}
+      Since distinct primes are relatively prime, the Chinese remainder theorem implies that
+      \[
+        \mc{O}/\mf{p}\mc{O} \cong \bigoplus_{1 \le i \le r} \mc{O}/\mf{P}_{i}^{e_{\mf{p}}(\mf{P}_{i})}.
+      \]
+      As $\mc{O}/\mf{p}\mc{O}$ and $\mc{O}/\mf{P}_{i}^{e_{\mf{p}}(\mf{P}_{i})}$ are vector spaces over $\smc{O}/\mf{p}$ for all $i$, it suffices to show $\mc{O}/\mf{P}$ is of dimension $n$ and $\mc{O}/\mf{P}_{i}^{e_{\mf{p}}(\mf{P}_{i})}$ is of dimension $e_{\mf{p}}(\mf{P}_{i})f_{\mf{p}}(\mf{P}_{i})$ for all $i$. For $\mc{O}/\mf{p}\mc{O}$, we already know it is a vector space over $\smc{O}/\mf{p}$ of dimension at most $n$ (since $\mc{O}$ is a finitely generated $\smc{O}$-module of rank at most $n$ by \cref{cor:integral_closure_of_Dedekind_is_Dedekind} and $\mf{p} \subseteq \mf{p}\mc{O}$). Therefore we must show that the dimension is exactly $n$. Let $\conj{\l_{1}},\ldots,\conj{\l_{m}}$ be a basis for $\mc{O}/\mf{p}\mc{O}$ as a vector space over $\smc{O}/\mf{p}$ and let $\l_{1},\ldots,\l_{m}$ be any lift of this basis to $\mc{O}$. As $m \le n$, it suffices to show $\l_{1},\ldots,\l_{m}$ spans $L/K$ and hence $m = n$. Let $M = \l_{1}\smc{O}+\cdots+\l_{m}\smc{O}$ and set $N = \mc{O}/M$. Then $\mc{O} = M+\mf{p}\mc{O}$ since $\l_{1},\ldots,\l_{m}$ is a lift a basis for $(\mc{O}/\mf{p}\mc{O})/(\smc{O}/\mf{p})$, and hence $N = \mf{p}N$. As $\mc{O}$ is a finitely generated $\smc{O}$-module of rank at most $n$ by \cref{cor:integral_closure_of_Dedekind_is_Dedekind}, so is $N$. So let $\w_{1},\ldots,\w_{r}$ be generators. As $N = \mf{p}N$, we have
+      \[
+        \w_{i} = \sum_{1 \le j \le r}\a_{i,j}\w_{j},
+      \]
+      for some $\a_{i,j} \in \mf{p}$ for $1 \le i,j \le r$. These $r$ equations are equivalent to the identity
+      \[
+        ((\a_{i,j})_{i,j}-I)(\w_{1},\ldots,\w_{r})^{t} = \mathbf{0}.
+      \]
+      Let $d = \det((\a_{i,j})_{i,j}-I)$. Then $d \neq 0$ because expanding the determinant shows $d \equiv (-1)^{r} \tmod{\mf{p}}$ as $\a_{i,j} \in \mf{p}$ for all $i$ and $j$. Multiplying on the left by the adjugate of $(\a_{i,j})_{i,j}-I$ and recalling that a matrix times its adjugate is its determinant times the identity, we obtain
+      \[
+        d(\w_{1},\ldots,\w_{r})^{t} = \mathbf{0}.
+      \]
+      Hence multiplication by $d$ annihilates $N$ which is to say that $d\mc{O} \subseteq M$. Equivalently,
+      \[
+        d\mc{O} \subseteq \l_{1}\smc{O}+\cdots+\l_{m}\smc{O}.
+      \]
+      By \cref{prop:field_of_fractions_AKBL} and that $d \neq 0$, multiplication by $K$ shows $L = \l_{1}K+\cdots+\l_{m}K$ (as the reverse containment is trivial). Hence $\l_{1},\ldots,\l_{m}$ spans $L/K$ so that $m = n$ and $\mc{O}/\mf{p}\mc{O}$ is an $n$ dimensional vector space over $\smc{O}/\mf{p}$ is $n$. For $\mc{O}/\mf{P}_{i}^{e_{\mf{p}}(\mf{P}_{i})}$, consider the descending chain
+      \[
+        \mc{O}/\mf{P}_{i}^{e_{\mf{p}}(\mf{P}_{i})} \supseteq \mf{P}/\mf{P}_{i}^{e_{\mf{p}}(\mf{P}_{i})} \supseteq \cdots \supseteq \mf{P}^{e_{\mf{p}}(\mf{P}_{i})-1}/\mf{P}_{i}^{e_{\mf{p}}(\mf{P}_{i})},
+      \]
+      of vector spaces over $\smc{O}/\mf{p}$. The dimension of $\mc{O}/\mf{P}_{i}^{e_{\mf{p}}(\mf{P}_{i})}$ as a vector space over $\smc{O}/\mf{p}$ is the sum of the dimensions of the successive quotients in this chain. By the third isomorphism theorem, these quotients are of the form $\mf{P}_{i}^{e}/\mf{P}_{i}^{e+1}$ for $0 \le e \le e_{\mf{p}}(\mf{P}_{i})-1$ and are all isomorphic to $\mc{O}/\mf{P}_{i}$ by \cref{prop:isomorphism_of_quotient_by_prime_integral_ideals}. As the dimension of $\mc{O}/\mf{P}_{i}$ over $\smc{O}/\mf{p}$ is $f_{\mf{p}}(\mf{P}_{i})$ by definition, it follows that $\mc{O}/\mf{P}_{i}^{e_{\mf{p}}(\mf{P}_{i})}$ is an $e_{\mf{p}}(\mf{P}_{i})f_{\mf{p}}(\mf{P}_{i})$ dimensional vector space over $\smc{O}/\mf{p}$. Together with the chinese remainder theorem, our dimension computations combine to give
+      \[
+        n = \sum_{1 \le i \le r}e_{\mf{p}}(\mf{P}_{i})f_{\mf{p}}(\mf{P}_{i}).
+      \]
+    \end{proof}
+
+    We also classify primes according to extremal cases of \cref{prop:inertia_ramification_relation}. We say $\mf{p}$ is \textbf{inert}\index{inert} if $r = 1$ so that there is a single prime $\mf{P}$ above $\mf{p}$ and we have $e_{\mf{p}}(\mf{P}) = 1$ and $f_{\mf{p}}(\mf{P}) = n$ by \cref{prop:inertia_ramification_relation}. Then
+    \[
+      \mf{p}\mc{O} = \mf{P},
+    \]
+    which means $\mf{p}\mc{O}$ is prime. We say $\mf{p}$ is \textbf{totally split}\index{totally split} if $r = n$ so that there are primes $\mf{P}_{i}$ above $\mf{p}$ with $e_{\mf{p}}(\mf{P}_{i}) = f_{\mf{p}}(\mf{P}_{i}) = 1$ for $1 \le i \le n$ by \cref{prop:inertia_ramification_relation}. Hence
+    \[
+      \mf{p}\mc{O} = \mf{P}_{1} \cdots \mf{P}_{n}.
+    \]
+    In terms of the inertia degrees, being inert or totally split are antithetical properties. In particular, the smaller the inertia degrees are the greater the tendency for $\mf{p}\mc{O}$ to factor into distinct primes. Now let us introduce ramification. If $\mf{P}$ is a prime of $L$ above $\mf{p}$, we say that $\mf{P}$ is \textbf{unramified}\index{unramified} if $e_{\mf{p}}(\mf{P}) = 1$ and the residue class extension $(\mc{O}/\mf{P})/(\smc{O}/\mf{p})$ is separable. Otherwise, we say $\mf{P}$ is \textbf{ramified}\index{ramified} or \textbf{totally ramified}\index{totally ramified} if in addition to being ramified we have $f_{\mf{p}}(\mf{P}) = 1$. Similarly, we say that a prime $\mf{p}$ of $K$ is \textbf{unramified}\index{unramified} if every prime $\mf{P}$ above it is unramified and is \textbf{ramified}\index{ramified} otherwise. The extension $L/K$ itself is said to be \textbf{unramified}\index{unramified} if every prime of $K$ is unramified and is said to be \textbf{ramified}\index{ramified} otherwise.
+
+    \begin{remark}
+      We will see that it is an exceptional phenomena for a prime $\mf{p}$ of $K$ to ramify in $K/L$. Therefore it is typical that $\mf{p}$ is either inert or totally split.
+    \end{remark}
+
+    In the case of a number field $K$, every prime $\mf{p}$ of $K$ is above some prime $p$ (recall $\Z$ is a principal ideal domain so we are referring to primes by their generator). Then the residue class extension of $\mc{O}_{K}/\Z$ for $\mf{p}$ is $(\mc{O}_{K}/\mf{p})/\F_{p}$. Also, we write $f_{p}(\mf{p})$ and $e_{p}(\mf{p})$ for the inertia degree and ramification index of $\mf{p}$ relative to $p$ respectively. Moreover, all of the residue class extensions are separable since $\F_{p}$ is a perfect field. This implies that $\mf{p}$ is ramified if and only if $e_{p}(\mf{p}) = 1$.
   \section{Localization}
     Let $\smc{O}$ be an integral domain with field of fractions $K$. If $D \subseteq \smc{O}-\{0\}$ is multiplicative (recall that necessarily $1 \in D$), then the \textbf{localization}\index{localization} $\smc{O}D^{-1}$ of $\smc{O}$ at $D$ is defined by
     \[
@@ -780,7 +894,7 @@
     ALso, localization behaves well with respect to integral closure:
 
     \begin{proposition}\label{prop:localization_of_integral_closure_is_integral_closure}
-      Let $\smc{O}$ be an integral domain with field of fractions $K$, $L/K$ be a finite extension, and $\mc{O}$ be the integral closure of $\smc{O}$ in $L$. Then for any multiplicative set $D \subseteq \smc{O}-\{0\}$, $\mc{O}D^{-1}$ is the integral closure of $\smc{O}D^{-1}$ in $L$.
+      Let $\smc{O}$ be an integral domain with field of fractions $K$, $L/K$ be a finite separable extension, and $\mc{O}$ be the integral closure of $\smc{O}$ in $L$. Then for any multiplicative set $D \subseteq \smc{O}-\{0\}$, $\mc{O}D^{-1}$ is the integral closure of $\smc{O}D^{-1}$ in $L$.
     \end{proposition}
     \begin{proof}
       We need to show that $\mc{O}D^{-1} = \conj{\smc{O}D^{-1}}$. For the forward inclusion, let $\frac{\a}{\d} \in \mc{O}D^{-1}$. As $\mc{O}$ is the integral closure of $\smc{O}$ in $L$, $\a$ is integral over $\smc{O}$ so that
@@ -909,7 +1023,13 @@
       where the middle equality holds because $ \mf{p}\smc{O}_{\mf{q}} = \mf{m}_{\mf{q}}$ as $\smc{O}_{\mf{q}}$ has a unique maximal and nonzero prime ideal (as we have seen). Hence $\mf{p}$ itself must be maximal.
     \end{proof}
 
-    \cref{prop:ring_is_intersection_of_all_localizations,thm:Dedekind_if_and_only_if_all_localizations_are_discrete_valuation_rings} together form a powerful simplification tool for Dedekind domains $\smc{O}$. For if we want to prove a property about a fractional ideal $\mf{f}$ of $\smc{O}$, \cref{prop:ring_is_intersection_of_all_localizations} implies that it suffices to show this property holds for the corresponding fractional ideals $\mf{f}\smc{O}_{\mf{p}}$ in the localizations $\smc{O}_{\mf{p}}$ at all nonzero primes $\mf{p}$ and is preserved under intersections. Moreover, by \cref{thm:Dedekind_if_and_only_if_all_localizations_are_discrete_valuation_rings} the localizations $\smc{O}_{\mf{p}}$ are discrete valuation rings and hence principal ideal domains. This latter fact is often immensely helpful. In this case, let $v_{\mf{p}}$ denote the valuation of $\smc{O}_{\mf{p}}$. Then we call $v_{\mf{p}}$ the \textbf{valuation}\index{valulation} associated to the prime $\mf{p}$ of $\smc{O}$. These valuations are intimately connected to the prime factorization of principal fractional ideals. Indeed, the prime factorization of fractional ideals implies that for any $\k \in K^{\ast}$, we have
+    \cref{prop:ring_is_intersection_of_all_localizations,thm:Dedekind_if_and_only_if_all_localizations_are_discrete_valuation_rings} together form a powerful simplification tool for Dedekind domains $\smc{O}$. For if we want to prove a property about a fractional ideal $\mf{f}$ of $\smc{O}$, \cref{prop:ring_is_intersection_of_all_localizations} implies that it suffices to show this property holds for the corresponding fractional ideals $\mf{f}\smc{O}_{\mf{p}}$ in the localizations $\smc{O}_{\mf{p}}$ at all primes $\mf{p}$ and is preserved under intersections. Moreover, by \cref{thm:Dedekind_if_and_only_if_all_localizations_are_discrete_valuation_rings} the localizations $\smc{O}_{\mf{p}}$ are discrete valuation rings. This latter fact is often immensely helpful since we say that a Dedekind extension $\mc{O}/\smc{O}$ is \textbf{local}\index{local} if $\smc{O}$ is a discrete valuation ring. In this case $\smc{O}$ has a unique prime and therefore $\mc{O}$ has finitely many primes since they all must lie over the prime of $\smc{O}$. By \cref{prop:Dedekind_with_finite_primes_is_PID} this forces $\mc{O}$ to be a principal ideal domain as well. In addition, \cref{thm:integral_basis_AKBL} implies that $\mc{O}/\smc{O}$ admits an integral basis as $\smc{O}$ is also a principal ideal domain.
+
+    \begin{remark}
+      It is possible in a local Dedekind extension $\mc{O}/\smc{O}$ that $\mc{O}$ is also a discrete valuation ring.
+    \end{remark}
+    
+    As $\smc{O}_{\mf{p}}$ is a discrete valuation ring, let $v_{\mf{p}}$ denote the valuation of $\smc{O}_{\mf{p}}$. Then we call $v_{\mf{p}}$ the \textbf{valuation}\index{valulation} associated to the prime $\mf{p}$ of $\smc{O}$. These valuations are intimately connected to the prime factorization of principal fractional ideals. Indeed, the prime factorization of fractional ideals implies that for any $\k \in K^{\ast}$, we have
     \[
       \k\smc{O} = \prod_{\text{$\mf{q}$ prime}}\mf{q}^{e_{\mf{q}}},
     \]
@@ -965,136 +1085,44 @@
       \mc{O}_{K}^{S} = \mc{O}_{K}(X).
     \]
     We call any $\a \in \mc{O}_{K}^{S}$ an \textbf{algebraic $S$-integer}\index{algebraic $S$-integer}. The \textbf{$S$-class group}\index{$S$-class group} $\Cl^{S}(K)$ of $K$ is the ideal class group of $\mc{O}_{K}^{S}$. The \textbf{$S$-class number}\index{$S$-class number} $h_{K}^{S}$ of $K$ is the class number of $\Cl^{S}(K)$. The \textbf{$S$-unit group}\index{$S$-unit group} of $K$ is the unit group $(\mc{O}_{K}^{S})^{\ast}$ of $\mc{O}_{K}^{S}$ and we call any element of $(\mc{O}_{K}^{S})^{\ast}$ an \textbf{$S$-unit}\index{$S$-unit} of $K$.
-  \section{Ramification}
-    Having discussed the prime factorization of fractional ideals in a Dedekind domain, we now turn to discussing how primes factor when considered in a larger Dedekind domain. Let $\smc{O}$ be a Dedekind domain with field of fractions $K$, $L/K$ be a finite separable extension, and $\mc{O}$ be the integral closure of $\smc{O}$ in $L$. We first show that $\mc{O}$ is also a Dedekind domain:
+  \section{\todo{The Ideal Norm}}
+    Let $\mc{O}/\smc{O}$ be a Dedekind extension of a degree $n$ extension $L/K$. If $\mf{P}$ a prime of $L$ is above the prime $\mf{p}$ of $K$, we define the \textbf{norm}\index{norm} $\Norm_{\mc{O}/\smc{O}}(\mf{P})$ of $\mf{P}$ by
+    \[
+      \Norm_{\mc{O}/\smc{O}}(\mf{P}) = \mf{p}^{f_{\mf{p}}(\mf{P})}.
+    \]
+    Setting $\Norm_{\mc{O}/\smc{O}}(\mc{O}) = \smc{O}$, we extend this multiplicatively to all fractional ideals of $\mc{O}$. This induces a homomorphism
+    \[
+      \Norm_{\mc{O}/\smc{O}}:I_{\mc{O}} \to I_{\smc{O}} \qquad \mf{P}_{1}^{e_{1}} \cdots \mf{P}_{r}^{e_{r}} \mapsto \mf{p}_{1}^{e_{1}f_{\mf{p}_{1}}(\mf{P}_{1})} \cdots \mf{p}_{r}^{e_{r}f_{\mf{p}_{r}}(\mf{P}_{r})},
+    \]
+    called the \textbf{ideal norm}\index{ideal norm} of $\mc{O}/\smc{O}$. It follows form \cref{prop:inertia_ramification_relation} and multiplicatively of the ideal norm that
+    \[
+      \Norm_{\mc{O}/\smc{O}}(\mf{f}\mc{O}) = \mf{f}^{n},
+    \]
+    for any fractional ideal $\mf{f}$ of $\smc{O}$. Let us now prove some properties about the ideal norm. We first show that it respects localization:
 
-    \begin{proposition}\label{prop:integral_closure_of_Dedekind_is_Dedekind}
-      Let $\smc{O}$ be a Dedekind domain with field of fractions $K$, $L/K$ be a finite separable extension, and $\mc{O}$ be the integral closure of $\smc{O}$ in $L$. Then $\mc{O}$ is a Dedekind domain.
+    \begin{proposition}\label{prop:ideal_norm_respects_localizations}
+      Let $\mc{O}/\smc{O}$ be a Dedekind extension of separable extension $L/K$ and let $D \subseteq \smc{O}-\{0\}$ be multiplicative. Then for any fractional ideal $\mf{F}$ of $\mc{O}$, we have
+      \[
+        \Norm_{\mc{O}D^{-1}/\smc{O}D^{-1}}(\mf{F}\mc{O}D^{-1}) = \Norm_{\mc{O}/\smc{O}}(\mf{F})\mc{O}D^{-1}.
+      \]
     \end{proposition}
     \begin{proof}
-      $\mc{O}$ is an integral domain because it is a subring of $L$ and is integrally closed since it is the integral closure of $\smc{O}$. We now show $\mc{O}$ is noetherian. Let the degree of $L/K$ be $n$ and let $\l_{1},\ldots,\l_{n}$ be a basis for $L/K$. By \cref{prop:field_of_fractions_AKBL} we may multiply by a nonzero element of $\smc{O}$, if necessary, to ensure that this basis lies in $\mc{O}$. Then $d_{L/K}(\l_{1},\ldots,\l_{n})$ is nonzero by \cref{prop:discriminant_not_zero} and \cref{lem:lemma_for_integral_basis_AKBL} implies that
-      \[
-        d_{L/K}(\l_{1},\ldots,\l_{n})\mc{O} \subseteq \smc{O}\l_{1}+\cdots+\smc{O}\l_{n}.
-      \]
-      Thus $\mc{O}$ is a finitely generated $\smc{O}$-module of rank at most $n$. In particular, every ideal of $\mc{O}$ is also a finitely generated $\smc{O}$-module and therefore also a finitely generated $\mc{O}$-module. It remains to show that every nonzero prime ideal is maximal. Letting $\mf{P}$ be a nonzero prime ideal, it suffices to show $\mc{O}/\mf{P}$ is a field. To this end, consider the homomorphism
-      \[
-        \phi:\smc{O} \to \mc{O}/\mf{P} \qquad \a \mapsto \a \tmod{\mf{p}}.
-      \]
-      Then $\ker\phi = \mf{P} \cap \smc{O}$ and we claim $\mf{P} \cap \smc{O}$ is a nonzero prime ideal of $\smc{O}$. It is clearly an ideal of $\smc{O}$ and is prime because $\mf{P}$ is. To see that it is nonzero, let $\a \in \mf{P}$ be nonzero. As $\a$ is algebraic over $\smc{O}$, we have
-      \[
-        \a^{n}+a_{n-1}\a^{n-1}+\cdots+a_{0} = 0,
-      \]
-      for some $n \ge 1$ and $a_{i} \in \smc{O}$ for $0 \le i \le n-1$. Taking $n$ minimal, we have $a_{0} \neq 0$. Isolating $a_{0}$ shows that $a_{0} \in \mf{P}$ and hence $a_{0} \in \mf{P} \cap \smc{O}$. Therefore $\mf{P} \cap \smc{O} = \mf{p}$ for some prime $\mf{p}$. Hence $\ker\phi = \mf{p}$ and by the first isomorphism theorem, $\phi$ induces an injection $\phi:\smc{O}/\mf{p} \to \mc{O}/\mf{P}$. Since $\smc{O}$ is a Dedekind domain, $\mf{p}$ is maximal and thus $\smc{O}/\mf{p}$ is a field. As $\mc{O}$ is the integral closure of $\smc{O}$ in $L$, it is obtained from $\smc{O}$ by forming a polynomial ring with algebraic elements. The latter injection then shows that $\mc{O}/\mf{P}$ is obtained from $\smc{O}/\mf{p}$ by adjoining the images of these algebraic elements modulo $\mf{P}$. These images are still algebraic over $\smc{O}/\mf{p}$ by reducing their minimal polynomials modulo $\mf{P}$. Hence $\mc{O}/\mf{P}$ is obtained from $\smc{O}/\mf{p}$ by adjoining algebraic elements to $\smc{O}/\mf{p}$ (since $(\smc{O}/\mf{p})[\a] = (\smc{O}/\mf{p})(\a)$ if $\a$ is algebraic over $\smc{O}/\mf{p}$) and is therefore a field.
+      \todo{xxx}
     \end{proof}
 
-    Under the assumptions of \cref{prop:integral_closure_of_Dedekind_is_Dedekind}, it follows from \cref{prop:field_of_fractions_AKBL} that $L$ is the field of fractions of $\mc{O}$. For brevity, we write $\mc{O}/\smc{O}$ and say that this is a \textbf{Dedekind extension}\index{Dedekind extension} for a finite separable extension $L/K$ if $\mc{O}$ and $\smc{O}$ are Dedekind domains whose field of fractions are $L$ and $K$ respectively and $\mc{O}$ is the integral closure of $\smc{O}$ in $L$. We also say that $\mc{O}/\smc{O}$ admits an \textbf{integral basis}\index{integral basis} if $\mc{O}$ admits an integral basis over $\smc{O}$. Moreover, \cref{prop:localization_of_integral_closure_is_integral_closure,prop:localization_of_Dedekind_is_Dedekind} together show $\mc{O}D^{-1}/\smc{O}D^{-1}$ is a Dedekind extension of $L/K$ as well for any multiplicative set $D \subseteq \smc{O}-\{0\}$. With this phrasing, the proof of \cref{prop:integral_closure_of_Dedekind_is_Dedekind} gives the following corollary:
+    We can now show that the ideal norm respects the field trace:
 
-    \begin{corollary}\label{cor:integral_closure_of_Dedekind_is_Dedekind}
-      Let $\mc{O}/\smc{O}$ be a Dedekind extension of a degree $n$ separable extension $L/K$. Then $\mc{O}$ is a finitely generated $\smc{O}$-module of rank at most $n$ and every prime $\mf{P}$ of $\mc{O}$ satisfies
+    \begin{proposition}\label{prop:ideal_norm_respects_field_trace}
+      Let $\mc{O}/\smc{O}$ be a Dedekind extension of separable extension $L/K$. Then for any $\l \in L$, we have
       \[
-        \mf{P} \cap \smc{O} = \mf{p},
+        \Norm_{\mc{O}/\smc{O}}(\l\mc{O}) = \Norm_{L/K}(\l)\smc{O}.
       \]
-      for some prime $\mf{p}$ of $\smc{O}$. Moreover, $(\mc{O}/\mf{P})/(\smc{O}/\mf{p})$ is a finite extension of degree at most $n$.
-    \end{corollary}
+    \end{proposition}
     \begin{proof}
-      The first statement was deduced in the proof of \cref{prop:integral_closure_of_Dedekind_is_Dedekind} along with the fact that there is an injection of fields $\smc{O}/\mf{p} \to \mc{O}/\mf{P}$. From this injection it follows that $(\mc{O}/\mf{P})/(\smc{O}/\mf{p})$ is an extension and since $\mc{O}$ is a finitely generated $\smc{O}$-module of rank at most $n$, $(\mc{O}/\mf{P})/(\smc{O}/\mf{p})$ is at most $n$ dimensional.
+      \todo{xxx}
     \end{proof}
 
-    Continue to let $\mc{O}/\smc{O}$ be a Dedekind extension of a degree $n$ separable extension $L/K$. Let $\mf{P}$ and $\mf{p}$ be primes of $L$ and $K$ respectively. We say that $\mf{P}$ is \textbf{above}\index{above} $\mf{p}$, or equivalently, $\mf{p}$ is \textbf{below}\index{below} $\mf{P}$ if
-    \[
-      \mf{P} \cap \mc{O} = \mf{p}.
-    \]
-    Then \cref{cor:integral_closure_of_Dedekind_is_Dedekind} implies that every prime of $L$ is above exactly one prime of $K$. If $\mf{P}$ is above $\mf{p}$, then $\mf{P} \mid \mf{p}\mc{O}$. Indeed, since $\mf{p} \subseteq \mf{P}$ we have $\mf{p}\mc{O} \subseteq \mf{P}$ which is to say that $\mf{P}$ divides $\mf{p}\mc{O}$. This implies that only finitely many primes $\mf{P}$ can lie above a prime $\mf{p}$ and they are exactly the prime factors of $\mf{p}\mc{O}$. We illustrated the relationship via the extension
-
-    \begin{center}
-      \begin{tikzcd}[row sep=large, column sep=large]
-        \mf{P} \subset \mc{O} \subset L \arrow[dash]{d} \\
-        \mf{p} \subset \smc{O} \subset K.
-      \end{tikzcd}
-    \end{center}
-
-    As primes $\mf{P}$ and $\mf{p}$ are maximal in the Dedekind domains $\mc{O}$ and $\smc{O}$ respectively, we have the residue class fields $\mc{O}/\mf{P}$ and $\smc{O}/\mf{p}$. The former is a finite extension of the latter of degree at most $n$ by \cref{cor:integral_closure_of_Dedekind_is_Dedekind}. Accordingly, we call $(\mc{O}/\mf{P})/(\smc{O}/\mf{p})$ the \textbf{residue class extension}\index{residue class extension} of $\mf{P}$. Actually since \cref{cor:integral_closure_of_Dedekind_is_Dedekind} implies $\mc{O}$ is at finitely generated $\smc{O}$-module of rank at most $n$, the quotient ring $\mf{B}/\mf{A}$ is a vector space over $\smc{O}/\mf{p}$ of dimension at most $n$ for any integral ideals $\mf{A}$ and $\mf{B}$ with $\mf{p} \subseteq \mf{A} \subseteq \mf{B}$. In any case, we define the \textbf{inertia degree}\index{inertia degree} $f_{\mf{p}}(\mf{P})$ of $\mf{P}$ relative to $\mf{p}$ by
-    \[
-      f_{\mf{p}}(\mf{P}) = [\mc{O}/\mf{P}:\smc{O}/\mf{p}].
-    \]
-    That is, $f_{\mf{p}}(\mf{P})$ is the dimension of the residue field $\mc{O}/\mf{P}$ as a vector space over $\smc{O}/\mf{p}$. The \textbf{ramification index}\index{ramification index} $e_{\mf{p}}(\mf{P})$ is the power of $\mf{P}$ appearing in the prime factorization of $\mf{p}\mc{O}$. So if $\mf{p}\mc{O}$ has prime factors $\mf{P}_{1},\ldots,\mf{P}_{r}$, then the prime factorization of $\mf{p}\mc{O}$ is
-    \[
-      \mf{p}\mc{O} = \mf{P}_{1}^{e_{\mf{p}}(\mf{P}_{1})} \cdots \mf{P}_{r}^{e_{\mf{p}}(\mf{P}_{r})}.
-    \]
-    The inertia degrees and ramification indices are related via the following result:
-
-    \begin{theorem}\label{prop:inertia_ramification_relation}
-      Let $\mc{O}/\smc{O}$ be a Dedekind extension of a degree $n$ separable extension $L/K$. Suppose $\mf{p}$ is a prime of $K$ and $\mf{p}\mc{O}$ has prime factorization
-      \[
-        \mf{p}\mc{O} = \mf{P}_{1}^{e_{\mf{p}}(\mf{P}_{1})} \cdots \mf{P}_{r}^{e_{\mf{p}}(\mf{P}_{r})}.
-      \]
-      Then
-      \[
-        n = \sum_{1 \le i \le r}e_{\mf{p}}(\mf{P}_{i})f_{\mf{p}}(\mf{P}_{i}).
-      \]
-    \end{theorem}
-    \begin{proof}
-      Since distinct primes are relatively prime, the Chinese remainder theorem implies that
-      \[
-        \mc{O}/\mf{p}\mc{O} \cong \bigoplus_{1 \le i \le r} \mc{O}/\mf{P}_{i}^{e_{\mf{p}}(\mf{P}_{i})}.
-      \]
-      As $\mc{O}/\mf{p}\mc{O}$ and $\mc{O}/\mf{P}_{i}^{e_{\mf{p}}(\mf{P}_{i})}$ are vector spaces over $\smc{O}/\mf{p}$ for all $i$, it suffices to show $\mc{O}/\mf{P}$ is of dimension $n$ and $\mc{O}/\mf{P}_{i}^{e_{\mf{p}}(\mf{P}_{i})}$ is of dimension $e_{\mf{p}}(\mf{P}_{i})f_{\mf{p}}(\mf{P}_{i})$ for all $i$. For $\mc{O}/\mf{p}\mc{O}$, we already know it is a vector space over $\smc{O}/\mf{p}$ of dimension at most $n$ (since $\mc{O}$ is a finitely generated $\smc{O}$-module of rank at most $n$ by \cref{cor:integral_closure_of_Dedekind_is_Dedekind} and $\mf{p} \subseteq \mf{p}\mc{O}$). Therefore we must show that the dimension is exactly $n$. Let $\conj{\l_{1}},\ldots,\conj{\l_{m}}$ be a basis for $\mc{O}/\mf{p}\mc{O}$ as a vector space over $\smc{O}/\mf{p}$ and let $\l_{1},\ldots,\l_{m}$ be any lift of this basis to $\mc{O}$. As $m \le n$, it suffices to show $\l_{1},\ldots,\l_{m}$ spans $L/K$ and hence $m = n$. Let $M = \l_{1}\smc{O}+\cdots+\l_{m}\smc{O}$ and set $N = \mc{O}/M$. Then $\mc{O} = M+\mf{p}\mc{O}$ since $\l_{1},\ldots,\l_{m}$ is a lift a basis for $(\mc{O}/\mf{p}\mc{O})/(\smc{O}/\mf{p})$, and hence $N = \mf{p}N$. As $\mc{O}$ is a finitely generated $\smc{O}$-module of rank at most $n$ by \cref{cor:integral_closure_of_Dedekind_is_Dedekind}, so is $N$. So let $\w_{1},\ldots,\w_{r}$ be generators. As $N = \mf{p}N$, we have
-      \[
-        \w_{i} = \sum_{1 \le j \le r}\a_{i,j}\w_{j},
-      \]
-      for some $\a_{i,j} \in \mf{p}$ for $1 \le i,j \le r$. These $r$ equations are equivalent to the identity
-      \[
-        ((\a_{i,j})_{i,j}-I)(\w_{1},\ldots,\w_{r})^{t} = \mathbf{0}.
-      \]
-      Let $d = \det((\a_{i,j})_{i,j}-I)$. Then $d \neq 0$ because expanding the determinant shows $d \equiv (-1)^{r} \tmod{\mf{p}}$ as $\a_{i,j} \in \mf{p}$ for all $i$ and $j$. Multiplying on the left by the adjugate of $(\a_{i,j})_{i,j}-I$ and recalling that a matrix times its adjugate is its determinant times the identity, we obtain
-      \[
-        d(\w_{1},\ldots,\w_{r})^{t} = \mathbf{0}.
-      \]
-      Hence multiplication by $d$ annihilates $N$ which is to say that $d\mc{O} \subseteq M$. Equivalently,
-      \[
-        d\mc{O} \subseteq \l_{1}\smc{O}+\cdots+\l_{m}\smc{O}.
-      \]
-      By \cref{prop:field_of_fractions_AKBL} and that $d \neq 0$, multiplication by $K$ shows $L = \l_{1}K+\cdots+\l_{m}K$ (as the reverse containment is trivial). Hence $\l_{1},\ldots,\l_{m}$ spans $L/K$ so that $m = n$ and $\mc{O}/\mf{p}\mc{O}$ is an $n$ dimensional vector space over $\smc{O}/\mf{p}$ is $n$. For $\mc{O}/\mf{P}_{i}^{e_{\mf{p}}(\mf{P}_{i})}$, consider the descending chain
-      \[
-        \mc{O}/\mf{P}_{i}^{e_{\mf{p}}(\mf{P}_{i})} \supseteq \mf{P}/\mf{P}_{i}^{e_{\mf{p}}(\mf{P}_{i})} \supseteq \cdots \supseteq \mf{P}^{e_{\mf{p}}(\mf{P}_{i})-1}/\mf{P}_{i}^{e_{\mf{p}}(\mf{P}_{i})},
-      \]
-      of vector spaces over $\smc{O}/\mf{p}$. The dimension of $\mc{O}/\mf{P}_{i}^{e_{\mf{p}}(\mf{P}_{i})}$ as a vector space over $\smc{O}/\mf{p}$ is the sum of the dimensions of the successive quotients in this chain. By the third isomorphism theorem, these quotients are of the form $\mf{P}_{i}^{e}/\mf{P}_{i}^{e+1}$ for $0 \le e \le e_{\mf{p}}(\mf{P}_{i})-1$ and are all isomorphic to $\mc{O}/\mf{P}_{i}$ by \cref{prop:isomorphism_of_quotient_by_prime_integral_ideals}. As the dimension of $\mc{O}/\mf{P}_{i}$ over $\smc{O}/\mf{p}$ is $f_{\mf{p}}(\mf{P}_{i})$ by definition, it follows that $\mc{O}/\mf{P}_{i}^{e_{\mf{p}}(\mf{P}_{i})}$ is an $e_{\mf{p}}(\mf{P}_{i})f_{\mf{p}}(\mf{P}_{i})$ dimensional vector space over $\smc{O}/\mf{p}$. Together with the chinese remainder theorem, our dimension computations combine to give
-      \[
-        n = \sum_{1 \le i \le r}e_{\mf{p}}(\mf{P}_{i})f_{\mf{p}}(\mf{P}_{i}).
-      \]
-    \end{proof}
-
-    We also classify primes according to extremal cases of \cref{prop:inertia_ramification_relation}. We say $\mf{p}$ is \textbf{inert}\index{inert} if $r = 1$ so that there is a single prime $\mf{P}$ above $\mf{p}$ and we have $e_{\mf{p}}(\mf{P}) = 1$ and $f_{\mf{p}}(\mf{P}) = n$ by \cref{prop:inertia_ramification_relation}. Then
-    \[
-      \mf{p}\mc{O} = \mf{P},
-    \]
-    which means $\mf{p}\mc{O}$ is prime. We say $\mf{p}$ is \textbf{totally split}\index{totally split} if $r = n$ so that there are primes $\mf{P}_{i}$ above $\mf{p}$ with $e_{\mf{p}}(\mf{P}_{i}) = f_{\mf{p}}(\mf{P}_{i}) = 1$ for $1 \le i \le n$ by \cref{prop:inertia_ramification_relation}. Hence
-    \[
-      \mf{p}\mc{O} = \mf{P}_{1} \cdots \mf{P}_{n}.
-    \]
-    In terms of the inertia degrees, being inert or totally split are antithetical properties. In particular, the smaller the inertia degrees are the greater the tendency for $\mf{p}\mc{O}$ to factor into distinct primes. Now let us introduce ramification. If $\mf{P}$ is a prime of $L$ above $\mf{p}$, we say that $\mf{P}$ is \textbf{unramified}\index{unramified} if $e_{\mf{p}}(\mf{P}) = 1$ and the residue class extension $(\mc{O}/\mf{P})/(\smc{O}/\mf{p})$ is separable. Otherwise, we say $\mf{P}$ is \textbf{ramified}\index{ramified} or \textbf{totally ramified}\index{totally ramified} if in addition to being ramified we have $f_{\mf{p}}(\mf{P}) = 1$. Similarly, we say that a prime $\mf{p}$ of $K$ is \textbf{unramified}\index{unramified} if every prime $\mf{P}$ above it is unramified and is \textbf{ramified}\index{ramified} otherwise. The extension $L/K$ itself is said to be \textbf{unramified}\index{unramified} if every prime of $K$ is unramified and is said to be \textbf{ramified}\index{ramified} otherwise.
-
-    \begin{remark}
-      We will see that it is an exceptional phenomena for a prime $\mf{p}$ of $K$ to ramify in $K/L$. Therefore it is typical that $\mf{p}$ is either inert or totally split.
-    \end{remark}
-
-    In the case of a number field $K$, every prime $\mf{p}$ of $K$ is above some prime $p$ (recall $\Z$ is a principal ideal domain so we are referring to primes by their generator). Then the residue class extension of $\mf{p}$ is $(\mc{O}_{K}/\mf{p})/\F_{p}$. Also, we write $f_{p}(\mf{p})$ and $e_{p}(\mf{p})$ for the inertia degree and ramification index of $\mf{p}$ relative to $p$ respectively. Moreover, all of the residue class extensions are separable since $\F_{p}$ is a perfect field. This implies that $\mf{p}$ is ramified if and only if $e_{p}(\mf{p}) = 1$.
-  \section{\todo{The Ideal Norm}}
-    Let $\mc{O}/\smc{O}$ be a Dedekind extension of a degree $n$ extension $L/K$. If $\mf{P}$ a prime of $L$ is above the prime $\mf{p}$ of $K$, we define the \textbf{norm}\index{norm} $\mf{N}_{\mc{O}/\smc{O}}(\mf{P})$ of $\mf{P}$ by
-    \[
-      \mf{N}_{\mc{O}/\smc{O}}(\mf{P}) = \mf{p}^{f_{\mf{p}}(\mf{P})}.
-    \]
-    Setting $\mf{N}_{\mc{O}/\smc{O}}(\mc{O}) = \smc{O}$, we extend this multiplicatively to all fractional ideals of $\mc{O}$. This induces a homomorphism
-    \[
-      \mf{N}_{\mc{O}/\smc{O}}:I_{\mc{O}} \to I_{\smc{O}} \qquad \mf{P}_{1}^{e_{1}} \cdots \mf{P}_{r}^{e_{r}} \mapsto \mf{p}_{1}^{e_{1}f_{\mf{p}_{1}}(\mf{P}_{1})} \cdots \mf{p}_{r}^{e_{r}f_{\mf{p}_{r}}(\mf{P}_{r})},
-    \]
-    called the \textbf{ideal norm}\index{ideal norm} of $\mc{O}/\smc{O}$. If $\mf{P}_{1},\ldots,\mf{P}_{r}$ are the primes above $\mf{p}$, then it follows form \cref{prop:inertia_ramification_relation} that
-    \[
-      \mf{N}_{\mc{O}/\smc{O}}(\mf{p}\mc{O}) = \mf{p}^{n}.
-    \]
-    \todo{xxx}
-
-    In the case of a number field $K$, the \textbf{ideal norm}\index{ideal norm} $\mf{N}_{K}$ of $K$ is the ideal norm of $\mc{O}_{K}/\Z$. As $\Z$ is a principal ideal domain, every fractional ideal is principal. Therefore $\mf{N}_{K}(\mf{f})$ is generated by a nonzero rational for every fractional ideal $\mf{f}$ of $\mc{O}_{K}$. We define the \textbf{norm}\index{norm} $N_{K}(\mf{a})$ of an integral ideal $\mf{a}$ of $K$ by \todo{xxx} 
+    In the case of a number field $K$, the \textbf{ideal norm}\index{ideal norm} $\Norm_{K}$ of $K$ is the ideal norm of $\mc{O}_{K}/\Z$. As $\Z$ is a principal ideal domain, every fractional ideal is principal. Therefore $\Norm_{K}(\mf{f})$ is generated by a nonzero rational for every fractional ideal $\mf{f}$ of $\mc{O}_{K}$. We define the \textbf{norm}\index{norm} $N_{K}(\mf{a})$ of an integral ideal $\mf{a}$ of $K$ by \todo{xxx} 
 
     \todo{xxx}
 
@@ -1222,7 +1250,7 @@
     \begin{proposition}\label{prop:norm_of_different_is_discriminant}
       Let $\mc{O}/\smc{O}$ be a Dedekind extension of a degree $n$ separable extension $L/K$. Then
       \[
-        \mf{d}_{\mc{O}/\smc{O}} = \mf{N}_{\mc{O}/\smc{O}}(\mf{D}_\mc{O}/\smc{O}).
+        \mf{d}_{\mc{O}/\smc{O}} = \Norm_{\mc{O}/\smc{O}}(\mf{D}_\mc{O}/\smc{O}).
       \] 
     \end{proposition}
     \begin{proof}
@@ -1242,6 +1270,9 @@
     \begin{theorem}\label{thm:ramifies_if_and_only_if_divides_the_different}
       Let $\mc{O}/\smc{O}$ be a Dedekind extension of a degree $n$ separable extension $L/K$ and assume that all residue class extensions are separable. Then a prime $\mf{P}$ of $L$ ramifies if and only if $\mf{P}$ divides $\mf{D}_{\mc{O}/\smc{O}}$.
     \end{theorem}
+    \begin{proof}
+      \todo{xxx}
+    \end{proof}
 
     As an almost immediate consequence, a prime $\mf{p}$ of $K$ ramifies if and only if it divides the discriminant $\mf{d}_{\mc{O}/\smc{O}}$ provided the residue class extensions are separable:
 
