@@ -93,7 +93,7 @@
       where $\a'_{i} = \a_{i}\a^{n-1-i}$ for $0 \le i \le n-1$, and so $\a\l$ is the root of a monic polynomial with coefficients in $A$. Then $\a\l \in B$ and so $\a\l = \b$ for some $\b \in B$ which is equivalent to $\l = \frac{\b}{\a}$. As $A \subseteq B$, this also implies that $L$ is the field of fractions of $B$. For the last statement, suppose $\l \in L$. If the minimal polynomial $m_{\l}(x)$ of $\l$ has coefficients in $A$ then $\l$ is automatically integral over $A$ (since the minimal polynomial is monic). So suppose $\l$ is an integral over $A$ so that $\l$ is a root of a monic polynomial $f(x) \in A[x]$. Then $m_{\l}(x)$ divides $f(x)$ and thus all of the roots of $m_{\l}(x)$ are integral over $A$ too. By Vieta's formulas, the coefficients of $m_{\k}(x)$ integral over $A$ as well. But then $m_{\k}(x) \in A[x]$. This completes the proof.
     \end{proof}
 
-    We are now ready to introduce number fields. A \textbf{number field}\index{number field} $K$ is a finite extension of $\Q$. That is, $K$ is a finite dimensional vector space over $\Q$. In particular, $K/\Q$ is a finite separable extension (since $\Q$ is perfect) so that the primitive element theorem applies and is Galois if and only if $K/\Q$ is normal. We say that the \textbf{degree}\index{degree} of $K$ is $[K:\Q]$ which is simply the degree of $K$ as a vector space over $\Q$. If $K$ is of degree $2$, $3$, etc. then we say it is \textbf{quadratic}\index{quadratic}, \textbf{cubic}\index{cubic}, etc. Any $\k \in K$ is called an \textbf{algebraic number}\index{algebraic number}. We define the \textbf{ring of integers}\index{ring of integers} $\mc{O}_{K}$ of $K$ to be the integral closure of $\Z$ in $K$. In other words,
+    We are now ready to introduce number fields. A \textbf{number field}\index{number field} $K$ is a finite extension of $\Q$. That is, $K$ is a finite dimensional $\Q$-vector space. In particular, $K/\Q$ is a finite separable extension (since $\Q$ is perfect) so that the primitive element theorem applies and is Galois if and only if $K/\Q$ is normal. We say that the \textbf{degree}\index{degree} of $K$ is $[K:\Q]$ which is simply the degree of $K$ as a $\Q$-vector space. If $K$ is of degree $2$, $3$, etc. then we say it is \textbf{quadratic}\index{quadratic}, \textbf{cubic}\index{cubic}, etc. Any $\k \in K$ is called an \textbf{algebraic number}\index{algebraic number}. We define the \textbf{ring of integers}\index{ring of integers} $\mc{O}_{K}$ of $K$ to be the integral closure of $\Z$ in $K$. In other words,
     \[
       \mc{O}_{K} = \{\k \in K:\text{$\k$ is integral over $\Z$}\}.
     \]
@@ -119,11 +119,11 @@
     \]
     for all $x \in B$. That is, $T_{\b}$ is the multiplication by $\b$ map. Letting $f_{\b}(x)$ denote the characteristic polynomial of $T_{\b}$, we have
     \[
-      f_{\b}(x) = \det(xI-T_{\b}) = x^{n}-\a_{n-1}x^{n-1}+\cdots+(-1)^{n}\det(T_{\b}),
+      f_{\b}(x) = \det(xI-T_{\b}) = x^{n}-\a_{n-1}x^{n-1}+\cdots+(-1)^{n}\a_{0},
     \]
     with $\a_{i} \in A$ for $0 \le i \le n-1$. Then the trace and the norm are given by
     \begin{equation}\label{equ:trace_and_norm_characteristic_polynomial}
-      \Trace_{B/A}(\b) = \a_{n-1} \quad \text{and} \quad \Norm_{B/A}(\b) = \det(T_{\b}),
+      \Trace_{B/A}(\b) = \a_{n-1} \quad \text{and} \quad \Norm_{B/A}(\b) = \a_{0},
     \end{equation}
     and therefore take values in $A$. Moreover, we have
     \[
@@ -358,11 +358,22 @@
       By the structure theorem of finitely generated modules over principal ideal domains again, $M$ is a free $A$-module of rank at most $n$. To see that the rank is at least $n$, let $\a \in M$ be nonzero and, as before, let $\l_{1},\ldots,\l_{n}$ be a basis for $L/K$ that is contained in $B$. Then $\a\l_{1},\ldots,\a\l_{n}$ is a basis for $L/K$ contained in $M$. Thus the rank of $M$ is at least $n$, and in particular it must be $n$. This completes the proof.
     \end{proof}
 
-    Even if an integral basis for $B$ over $A$ exists, where say $B$ is a free $A$-module of rank $n$, it is very difficult to explicitly write one down. However, there is one instance in which this is possible. We say that $B$ is \textbf{monogenic} over $A$ if $B = A[\b]$ for some $\b \in B$. It follows immediately that $1,\b,\ldots,\b^{n-1}$ is an integral basis for $B$ over $A$ since $B$ is of rank $n$.
-    
-    \begin{proposition}
-      If $B$ is monogenic over $A$, then the integral basis $1,\b,\ldots,\b^{n-1}$ is sometimes called a \textbf{power basis}\index{power basis} for $B$ over $A$.
+    Even if an integral basis for $B$ over $A$ exists, where say $B$ is a free $A$-module of rank $n$, it is very difficult to explicitly write one down. However, there is one instance in which this is possible. We say that $B$ is \textbf{monogenic} over $A$ if $B = A[\b]$ for some $\b \in B$. It follows immediately that $1,\b,\ldots,\b^{n-1}$ is an integral basis for $B$ over $A$ since $B$ is of rank $n$. In addition, the traces $\Trace_{L/K}$ and $\Trace_{B/A}$ and norms $\Norm_{L/K}$ and $\Norm_{B/A}$ agree:
+
+    \begin{proposition}\label{prop:trace_and_norm_reduce_for_integral_basis}
+      Let $A$ be an integrally closed integral domain with field of fractions $K$, $L/K$ be a degree $n$ separable extension, and $B$ be the integral closure of $A$ in $L$. If $B$ admits an integral basis over $A$, then
+      \[
+        \Trace_{L/K}(\b) = \Trace{B/A}(\b) \quad \text{and} \quad \Norm_{L/K}(\b) = \Norm_{B/A}(\b),
+      \]
+      for all $\b \in B$.
     \end{proposition}
+    \begin{proof}
+      Let $\b_{1},\ldots,\b_{n}$ be an integral basis for $B$ over $A$. Then $\b_{1},\ldots,\b_{n}$ is also a basis for $L/K$. It follows that the multiplication by $\b$ map in $L$ has the same matrix representation as it does in $B$. Therefore
+      \[
+        \Trace_{L/K}(\b) = \Trace{B/A}(\b) \quad \text{and} \quad \Norm_{L/K}(\b) = \Norm_{B/A}(\b),
+      \]
+      as desired.
+    \end{proof}
 
     We now turn to the case of a number field $K$ of degree $n$. We write $\Trace_{K} = \Trace_{K/\Q}$ and $\Norm_{K} = \Norm_{K/\Q}$ and call these the \textbf{field trace}\index{field trace} and \textbf{field norm}\index{field norm} of $K$ respectively. Moreover, for any $\k \in K$ we call $\Trace_{K}(\k)$ and $\Norm_{K}(\k)$ the \textbf{trace}\index{trace} and \textbf{norm}\index{norm} of $\k$ respectively. Then from \cref{prop:norm_and_trace_AKBL,prop:unit_if_and_only_if_AKBL} we see that the trace and norm of algebraic integers are themselves integers and $\k \in \mc{O}_{K}$ is a unit if and only if $\Norm_{K}(\k) = \pm 1$ (as these are the only units in $\Z$). Moreover, since $\Z$ is a principal ideal domain \cref{thm:integral_basis_AKBL} implies that $\mc{O}_{K}$ admits an integral basis over $\Z$ of degree $n$. That is, $\mc{O}_{K}$ is a free abelian group of rank $n$. Accordingly, we say that $\a_{1},\ldots,\a_{n}$ is an \textbf{integral basis}\index{integral basis} for $K$ if it is an integral basis of $\mc{O}_{K}$ over $\Z$. Lastly, we say $K$ is \textbf{monogenic} if $\mc{O}_{K}$ is monogenic over $\Z$.
   \section{Dedekind Domains}
@@ -1029,11 +1040,11 @@
       \end{tikzcd}
     \end{center}
 
-    As primes $\mf{P}$ and $\mf{p}$ are maximal in the Dedekind domains $\mc{O}$ and $\smc{O}$ respectively, we have the residue class fields $\mc{O}/\mf{P}$ and $\smc{O}/\mf{p}$. The former is a finite extension of the latter of degree at most $n$ by \cref{cor:integral_closure_of_Dedekind_is_Dedekind}. Accordingly, we call $(\mc{O}/\mf{P})/(\smc{O}/\mf{p})$ the \textbf{residue class extension}\index{residue class extension} of $\mc{O}/\smc{O}$ for $\mf{P}$. Actually since \cref{cor:integral_closure_of_Dedekind_is_Dedekind} implies $\mc{O}$ is at finitely generated $\smc{O}$-module of rank at most $n$, the quotient ring $\mf{B}/\mf{A}$ is a vector space over $\smc{O}/\mf{p}$ of dimension at most $n$ for any integral ideals $\mf{A}$ and $\mf{B}$ with $\mf{p} \subseteq \mf{A} \subseteq \mf{B}$. In any case, we define the \textbf{inertia degree}\index{inertia degree} $f_{\mf{p}}(\mf{P})$ of $\mf{P}$ relative to $\mf{p}$ by
+    As primes $\mf{P}$ and $\mf{p}$ are maximal in the Dedekind domains $\mc{O}$ and $\smc{O}$ respectively, we have the residue class fields $\mc{O}/\mf{P}$ and $\smc{O}/\mf{p}$. The former is a finite extension of the latter of degree at most $n$ by \cref{cor:integral_closure_of_Dedekind_is_Dedekind}. Accordingly, we call $(\mc{O}/\mf{P})/(\smc{O}/\mf{p})$ the \textbf{residue class extension}\index{residue class extension} of $\mc{O}/\smc{O}$ for $\mf{P}$. Actually since \cref{cor:integral_closure_of_Dedekind_is_Dedekind} implies $\mc{O}$ is at finitely generated $\smc{O}$-module of rank at most $n$, the quotient ring $\mf{B}/\mf{A}$ is a $(\smc{O}/\mf{p})$-vector space of dimension at most $n$ for any integral ideals $\mf{A}$ and $\mf{B}$ with $\mf{p} \subseteq \mf{A} \subseteq \mf{B}$. In any case, we define the \textbf{inertia degree}\index{inertia degree} $f_{\mf{p}}(\mf{P})$ of $\mf{P}$ relative to $\mf{p}$ by
     \[
       f_{\mf{p}}(\mf{P}) = [\mc{O}/\mf{P}:\smc{O}/\mf{p}].
     \]
-    That is, $f_{\mf{p}}(\mf{P})$ is the dimension of the residue field $\mc{O}/\mf{P}$ as a vector space over $\smc{O}/\mf{p}$. The \textbf{ramification index}\index{ramification index} $e_{\mf{p}}(\mf{P})$ is the power of $\mf{P}$ appearing in the prime factorization of $\mf{p}\mc{O}$. So if $\mf{p}\mc{O}$ has prime factors $\mf{P}_{1},\ldots,\mf{P}_{r}$, then the prime factorization of $\mf{p}\mc{O}$ is
+    That is, $f_{\mf{p}}(\mf{P})$ is the dimension of the residue field $\mc{O}/\mf{P}$ as a $(\smc{O}/\mf{p})$-vector space. The \textbf{ramification index}\index{ramification index} $e_{\mf{p}}(\mf{P})$ is the power of $\mf{P}$ appearing in the prime factorization of $\mf{p}\mc{O}$. So if $\mf{p}\mc{O}$ has prime factors $\mf{P}_{1},\ldots,\mf{P}_{r}$, then the prime factorization of $\mf{p}\mc{O}$ is
     \[
       \mf{p}\mc{O} = \mf{P}_{1}^{e_{\mf{p}}(\mf{P}_{1})} \cdots \mf{P}_{r}^{e_{\mf{p}}(\mf{P}_{r})}.
     \]
@@ -1094,7 +1105,7 @@
       \[
         \mc{O}/\mf{p}\mc{O} \cong \bigoplus_{1 \le i \le r} \mc{O}/\mf{P}_{i}^{e_{\mf{p}}(\mf{P}_{i})}.
       \]
-      As $\mc{O}/\mf{p}\mc{O}$ and $\mc{O}/\mf{P}_{i}^{e_{\mf{p}}(\mf{P}_{i})}$ are vector spaces over $\smc{O}/\mf{p}$ for all $i$, it suffices to show $\mc{O}/\mf{P}$ is of dimension $n$ and $\mc{O}/\mf{P}_{i}^{e_{\mf{p}}(\mf{P}_{i})}$ is of dimension $e_{\mf{p}}(\mf{P}_{i})f_{\mf{p}}(\mf{P}_{i})$ for all $i$. For $\mc{O}/\mf{p}\mc{O}$, we already know it is a vector space over $\smc{O}/\mf{p}$ of dimension at most $n$ (since $\mc{O}$ is a finitely generated $\smc{O}$-module of rank at most $n$ by \cref{cor:integral_closure_of_Dedekind_is_Dedekind} and $\mf{p} \subseteq \mf{p}\mc{O}$). Therefore we must show that the dimension is exactly $n$. Let $\conj{\l_{1}},\ldots,\conj{\l_{m}}$ be a basis for $\mc{O}/\mf{p}\mc{O}$ as a vector space over $\smc{O}/\mf{p}$ and let $\l_{1},\ldots,\l_{m}$ be any lift of this basis to $\mc{O}$. As $m \le n$, it suffices to show $\l_{1},\ldots,\l_{m}$ spans $L/K$ and hence $m = n$. Let $M = \l_{1}\smc{O}+\cdots+\l_{m}\smc{O}$ and set $N = \mc{O}/M$. Then $\mc{O} = M+\mf{p}\mc{O}$ since $\l_{1},\ldots,\l_{m}$ is a lift a basis for $(\mc{O}/\mf{p}\mc{O})/(\smc{O}/\mf{p})$, and hence $N = \mf{p}N$. As $\mc{O}$ is a finitely generated $\smc{O}$-module of rank at most $n$ by \cref{cor:integral_closure_of_Dedekind_is_Dedekind}, so is $N$. So let $\w_{1},\ldots,\w_{r}$ be generators. As $N = \mf{p}N$, we have
+      As $\mc{O}/\mf{p}\mc{O}$ and $\mc{O}/\mf{P}_{i}^{e_{\mf{p}}(\mf{P}_{i})}$ are $(\smc{O}/\mf{p})$-vector spaces for all $i$, it suffices to show $\mc{O}/\mf{P}$ is of dimension $n$ and $\mc{O}/\mf{P}_{i}^{e_{\mf{p}}(\mf{P}_{i})}$ is of dimension $e_{\mf{p}}(\mf{P}_{i})f_{\mf{p}}(\mf{P}_{i})$ for all $i$. For $\mc{O}/\mf{p}\mc{O}$, we already know it is a $(\smc{O}/\mf{p})$-vector space of dimension at most $n$ (since $\mc{O}$ is a finitely generated $\smc{O}$-module of rank at most $n$ by \cref{cor:integral_closure_of_Dedekind_is_Dedekind} and $\mf{p} \subseteq \mf{p}\mc{O}$). Therefore we must show that the dimension is exactly $n$. Let $\conj{\l_{1}},\ldots,\conj{\l_{m}}$ be a basis for $\mc{O}/\mf{p}\mc{O}$ as a $(\smc{O}/\mf{p})$-vector space and let $\l_{1},\ldots,\l_{m}$ be any lift of this basis to $\mc{O}$. As $m \le n$, it suffices to show $\l_{1},\ldots,\l_{m}$ spans $L/K$ and hence $m = n$. Let $M = \l_{1}\smc{O}+\cdots+\l_{m}\smc{O}$ and set $N = \mc{O}/M$. Then $\mc{O} = M+\mf{p}\mc{O}$ since $\l_{1},\ldots,\l_{m}$ is a lift a basis for $(\mc{O}/\mf{p}\mc{O})/(\smc{O}/\mf{p})$, and hence $N = \mf{p}N$. As $\mc{O}$ is a finitely generated $\smc{O}$-module of rank at most $n$ by \cref{cor:integral_closure_of_Dedekind_is_Dedekind}, so is $N$. So let $\w_{1},\ldots,\w_{r}$ be generators. As $N = \mf{p}N$, we have
       \[
         \w_{i} = \sum_{1 \le j \le r}\a_{i,j}\w_{j},
       \]
@@ -1110,11 +1121,11 @@
       \[
         d\mc{O} \subseteq \l_{1}\smc{O}+\cdots+\l_{m}\smc{O}.
       \]
-      By \cref{prop:field_of_fractions_AKBL} and that $d \neq 0$, multiplication by $K$ shows $L = \l_{1}K+\cdots+\l_{m}K$ (as the reverse containment is trivial). Hence $\l_{1},\ldots,\l_{m}$ spans $L/K$ so that $m = n$ and $\mc{O}/\mf{p}\mc{O}$ is an $n$ dimensional vector space over $\smc{O}/\mf{p}$ is $n$. For $\mc{O}/\mf{P}_{i}^{e_{\mf{p}}(\mf{P}_{i})}$, consider the descending chain
+      By \cref{prop:field_of_fractions_AKBL} and that $d \neq 0$, multiplication by $K$ shows $L = \l_{1}K+\cdots+\l_{m}K$ (as the reverse containment is trivial). Hence $\l_{1},\ldots,\l_{m}$ spans $L/K$ so that $m = n$ and $\mc{O}/\mf{p}\mc{O}$ is an $n$ dimensional $(\smc{O}/\mf{p})$-vector space. For $\mc{O}/\mf{P}_{i}^{e_{\mf{p}}(\mf{P}_{i})}$, consider the descending chain
       \[
         \mc{O}/\mf{P}_{i}^{e_{\mf{p}}(\mf{P}_{i})} \supseteq \mf{P}/\mf{P}_{i}^{e_{\mf{p}}(\mf{P}_{i})} \supseteq \cdots \supseteq \mf{P}^{e_{\mf{p}}(\mf{P}_{i})-1}/\mf{P}_{i}^{e_{\mf{p}}(\mf{P}_{i})},
       \]
-      of vector spaces over $\smc{O}/\mf{p}$. The dimension of $\mc{O}/\mf{P}_{i}^{e_{\mf{p}}(\mf{P}_{i})}$ as a vector space over $\smc{O}/\mf{p}$ is the sum of the dimensions of the successive quotients in this chain. By the third isomorphism theorem, these quotients are of the form $\mf{P}_{i}^{e}/\mf{P}_{i}^{e+1}$ for $0 \le e \le e_{\mf{p}}(\mf{P}_{i})-1$ and are all isomorphic to $\mc{O}/\mf{P}_{i}$ by \cref{prop:isomorphism_of_quotient_by_prime_integral_ideals}. As the dimension of $\mc{O}/\mf{P}_{i}$ over $\smc{O}/\mf{p}$ is $f_{\mf{p}}(\mf{P}_{i})$ by definition, it follows that $\mc{O}/\mf{P}_{i}^{e_{\mf{p}}(\mf{P}_{i})}$ is an $e_{\mf{p}}(\mf{P}_{i})f_{\mf{p}}(\mf{P}_{i})$ dimensional vector space over $\smc{O}/\mf{p}$. Together with the chinese remainder theorem, our dimension computations combine to give
+      of $(\smc{O}/\mf{p})$-vector spaces. The dimension of $\mc{O}/\mf{P}_{i}^{e_{\mf{p}}(\mf{P}_{i})}$ as a $(\smc{O}/\mf{p})$-vector space is the sum of the dimensions of the successive quotients in this chain. By the third isomorphism theorem, these quotients are of the form $\mf{P}_{i}^{e}/\mf{P}_{i}^{e+1}$ for $0 \le e \le e_{\mf{p}}(\mf{P}_{i})-1$ and are all isomorphic to $\mc{O}/\mf{P}_{i}$ by \cref{prop:isomorphism_of_quotient_by_prime_integral_ideals}. As the dimension of $\mc{O}/\mf{P}_{i}$ over $\smc{O}/\mf{p}$ is $f_{\mf{p}}(\mf{P}_{i})$ by definition, it follows that $\mc{O}/\mf{P}_{i}^{e_{\mf{p}}(\mf{P}_{i})}$ is an $e_{\mf{p}}(\mf{P}_{i})f_{\mf{p}}(\mf{P}_{i})$ dimensional $(\smc{O}/\mf{p})$-vector space. Together with the chinese remainder theorem, our dimension computations combine to give
       \[
         n = \sum_{1 \le i \le r}e_{\mf{p}}(\mf{P}_{i})f_{\mf{p}}(\mf{P}_{i}).
       \]
@@ -1176,7 +1187,7 @@
       \[
         \mc{O}_{K}/\mf{p}_{i} \cong (\mc{O}_{K}/p\mc{O}_{K})/(\conj{m_{i}(\a)}(\mc{O}_{K}/p\mc{O}_{K})) \cong \F_{p}[x]/\conj{m_{i}}(x)\F_{p}[x],
       \]
-      where the first isomorphism follow by taking $\mc{O}_{K}/\mf{p}_{i}$ and reducing $\mc{O}_{K}$ modulo $p$ and the second isomorphism follows from $\mc{O}_{K}/p\mc{O}_{K} \cong A$ and that the image of the maximal ideal $\conj{m_{i}(\a)}(\mc{O}_{K}/p\mc{O}_{K})$ under this isomorphisms is $\conj{m_{i}}(x)A$. Now $\F_{p}[x]/\conj{m_{i}}(x)\F_{p}[x]$ is a vector space over $\F_{p}$ of degree $\deg(\conj{m_{i}}(x))$. Hence the inertia degree $f_{p}(\mf{p}_{i})$ of $\mf{p}_{i}$ satisfies $f_{p}(\mf{p}_{i}) = \deg(\conj{m_{i}}(x))$. The ideal $\conj{m_{i}}(x)^{e_{i}}A$ under the isomorphism $A \cong \mc{O}_{K}/p\mc{O}_{K}$ is the ideal $\conj{m_{i}(\a)}^{e_{i}}(\mc{O}_{K}/p\mc{O}_{K})$. As the image of $\mf{p}_{i}$ under $\pi$ is $\conj{m_{i}(\a)}(\mc{O}_{K}/p\mc{O}_{K})$, we have that $\mf{p}_{i}^{e_{i}}$ is contained in the preimage of $\conj{m_{i}(\a)}^{e_{i}}(\mc{O}_{K}/p\mc{O}_{K})$ under $\pi$. As $\conj{m_{\a}(\a)}(\mc{O}_{K}/p\mc{O}_{K}) = 0$ is the zero ideal, it follows that
+      where the first isomorphism follow by taking $\mc{O}_{K}/\mf{p}_{i}$ and reducing $\mc{O}_{K}$ modulo $p$ and the second isomorphism follows from $\mc{O}_{K}/p\mc{O}_{K} \cong A$ and that the image of the maximal ideal $\conj{m_{i}(\a)}(\mc{O}_{K}/p\mc{O}_{K})$ under this isomorphisms is $\conj{m_{i}}(x)A$. Now $\F_{p}[x]/\conj{m_{i}}(x)\F_{p}[x]$ is a $\F_{p}$-vector space of degree $\deg(\conj{m_{i}}(x))$. Hence the inertia degree $f_{p}(\mf{p}_{i})$ of $\mf{p}_{i}$ satisfies $f_{p}(\mf{p}_{i}) = \deg(\conj{m_{i}}(x))$. The ideal $\conj{m_{i}}(x)^{e_{i}}A$ under the isomorphism $A \cong \mc{O}_{K}/p\mc{O}_{K}$ is the ideal $\conj{m_{i}(\a)}^{e_{i}}(\mc{O}_{K}/p\mc{O}_{K})$. As the image of $\mf{p}_{i}$ under $\pi$ is $\conj{m_{i}(\a)}(\mc{O}_{K}/p\mc{O}_{K})$, we have that $\mf{p}_{i}^{e_{i}}$ is contained in the preimage of $\conj{m_{i}(\a)}^{e_{i}}(\mc{O}_{K}/p\mc{O}_{K})$ under $\pi$. As $\conj{m_{\a}(\a)}(\mc{O}_{K}/p\mc{O}_{K}) = 0$ is the zero ideal, it follows that
       \[
         p\mc{O}_{K} = \pi^{-1}(0) \supseteq \mf{p}_{1}^{e_{1}} \cdots \mf{p}_{r}^{e_{r}}.
       \]
@@ -1287,13 +1298,50 @@
       by definition of the different. Applying \cref{prop:localization_of_inverse_is_inverse_of_localization,prop:localization_of_dual_is_dual_of_localization}, we see that the right-had side is equal to the left-hand side as desired. For the second identity, we will show containment in both directions. For the forward inclusion, suppose $\frac{\a_{1}}{\d_{1}},\ldots,\frac{\a_{n}}{\d_{n}}$ is a basis of $L/K$ contained in $\mc{O}D^{-1}$. Setting $\d = \d_{1} \cdots \d_{n}$, we see that $\frac{\a_{1}\d}{\d_{1}},\ldots,\frac{\a_{n}\d}{\d_{n}}$ is a basis of $L/K$ contained in $\mc{O}$. As $D \subset K$ and $d_{L/K}\left(\frac{\a_{1}\d}{\d_{1}},\ldots,\frac{\a_{n}\d}{\d_{n}}\right) \in \mf{d}_{\mc{O}/\smc{O}}$, linearity of the trace implies $d_{L/K}\left(\frac{\a_{1}}{\d_{1}},\ldots,\frac{\a_{n}}{\d_{n}}\right) \in \mf{d}_{\mc{O}/\smc{O}}D^{-1}$. This shows the forward containment. For the reverse containment, suppose $\a_{1},\ldots,\a_{n}$ is a basis of $L/K$ contained in $\mc{O}$ and let $\d \in D^{-1}$. Then $\frac{\a_{1}}{\d},\ldots,\frac{\a_{n}}{\d}$ is a basis for $L/K$ contained in $\mc{O}D^{-1}$. As $D \subseteq K$ and $d_{L/K}\left(\frac{\a_{1}}{\d},\ldots,\frac{\a_{n}}{\d}\right) \in \mf{d}_{\mc{O}D^{-1}/\smc{O}D^{-1}}$, linearity of the trace again implies $d_{L/K}(\a_{1}\ldots,\a_{n}) \in \mf{d}_{\mc{O}D^{-1}/\smc{O}D^{-1}}$ proving the reverse containment.
     \end{proof}
 
-    We will now show that a prime $\mf{P}$ of $L$ ramifies if and only if it divides the different $\mf{D}_{\mc{O}/\smc{O}}$ provided the residue class extensions are separable:
+    We now want to show that a prime $\mf{P}$ of $L$ ramifies if and only if it divides the different $\mf{D}_{\mc{O}/\smc{O}}$ provided the residue class extensions are separable. We first require a lemma:
+
+    \begin{lemma}\label{lem:different_containment_lemma}
+      Let $\mc{O}/\smc{O}$ be a Dedekind extension of a degree $n$ separable extension $L/K$ and let $\mf{A}$ be an integral ideal of $\mc{O}$. Then $\mf{A} \mid \mf{D}_{\mc{O}/\smc{O}}$ if and only if $\Trace_{L/K}(\mf{A}^{-1}) \subseteq \smc{O}$.
+    \end{lemma}
+    \begin{proof}
+      $\mf{A}$ divides $\mf{D}_{\mc{O}/\smc{O}}$ if and only if $\mf{D}_{\mc{O}/\smc{O}} \subseteq \mf{A}$. This equivalent to $(\mc{O}^{\vee})^{-1} \subseteq \mf{A}$ and inverting shows the further equivalence $\mf{A}^{-1} \subseteq \mc{O}^{\vee}$. This last containment is equivalent to $\Trace_{L/K}(\mf{A}^{-1}) \subseteq \smc{O}$ which completes the proof.
+    \end{proof}
+
+    We can now prove the following theorem:
 
     \begin{theorem}\label{thm:ramifies_if_and_only_if_divides_the_different}
-      Let $\mc{O}/\smc{O}$ be a Dedekind extension of a degree $n$ separable extension $L/K$ and assume that all residue class extensions are separable. Then a prime $\mf{P}$ of $L$ ramifies if and only if $\mf{P}$ divides $\mf{D}_{\mc{O}/\smc{O}}$.
+      Let $\mc{O}/\smc{O}$ be a Dedekind extension of a degree $n$ separable extension $L/K$ and assume that all residue class extensions are separable. Then a prime $\mf{P}$ of $L$ ramifies if and only if $\mf{P}$ divides $\mf{D}_{\mc{O}/\smc{O}}$. In particular, if $\mf{P}$ is above $\mf{p}$ then the following hold:
+      \begin{enumerate}[label=(\roman*)]
+        \item $\mf{P}^{e_{\mf{p}}(\mf{P})} \mid \mf{D}_{\mc{O}/\smc{O}}$ if and only if $e_{\mf{p}}(\mf{P}) \equiv 0 \tmod{\mf{p}}$.
+        \item $\mf{P}^{e_{\mf{p}}(\mf{P})-1} \mid\mid \mf{D}_{\mc{O}/\smc{O}}$ if and only if $e_{\mf{p}}(\mf{P}) \not\equiv 0 \tmod{\mf{p}}$.
+      \end{enumerate}
     \end{theorem}
     \begin{proof}
-      \todo{xxx}
+      We first show that (i) and (ii) together imply that $\mf{P}$ ramifies if and only if $\mf{P} \mid \mf{D}_{\mc{O}/\smc{O}}$. Since the residue class extensions are separable by assumption, $\mf{P}$ ramifies if and only if $e_{\mf{p}}(\mf{P}) \ge 2$. Therefore (i) and (ii) together show that $\mf{P}$ ramifies if and only if $\mf{P} \mid \mf{D}_{\mc{O}/\smc{O}}$ (note that $1 \not\equiv 0 \tmod{\mf{p}}$ for any prime $\mf{p}$). Therefore it remains to prove (i) and (ii). In view of \cref{prop:ramification_setup_respects_localization,prop:different_and_discriminant_respect_localization}, it suffices to assume $\mc{O}/\smc{O}$ is a local Dedekind extension. Then $\smc{O}$ is a discrete valuation ring, $\mc{O}$ is a principal ideal domain, and $\mc{O}/\smc{O}$ admits an integral basis $\a_{1},\ldots,\a_{n}$. Moreover, $\mf{p}$ is the unique prime of $\smc{O}$ and $\mf{p} = \pi\smc{O}$ for a uniformizer $\pi$. We will first show $\mf{P}^{e_{\mf{p}}(\mf{P})-1} \mid \mf{D}_{\mc{O}/\smc{O}}$ independent of $e_{\mf{p}}(\mf{P})$ modulo $\mf{p}$ (note that this is satisfied by both (i) and (ii)). To this end, write $\mf{p}\mc{O} = \mf{P}^{e_{\mf{p}}(\mf{P})-1}\mf{A}$ for some integral ideal $\mf{A}$ of $\mc{O}$ so that $\mf{P} \mid\mid \mf{A}$. By \cref{lem:different_containment_lemma}, $\mf{P}^{e_{\mf{p}}(\mf{P})-1} \mid \mf{D}_{\mc{O}/\smc{O}}$ if and only if $\Trace_{L/K}(\mf{P}^{1-e_{\mf{p}}(\mf{P})}) \subseteq \smc{O}$. Since $\mf{P}^{1-e_{\mf{p}}(\mf{P})} = \mf{p}^{-1}\mf{A}$, linearity of the trace implies that this is equivalent to $\Trace_{L/K}(\mf{A}) \subseteq \mf{p}$. By \cref{prop:trace_and_norm_reduce_for_integral_basis}, $\Trace_{K/L}(\mf{A}) = \Trace_{\mc{O}/\smc{O}}(\mf{A})$ and so it is further equivalent to show
+      \[
+        \Trace_{\mc{O}/\smc{O}}(\mf{A}) \subseteq \mf{p},
+      \]
+      Let $\a \in \mf{A}$ and $T_{\a}$ be the multiplication by $\a$ map. Then $\mf{p}\mc{O}$ is $T_{\a}$-invariant because it is an ideal of $\mc{O}$. This induces a multiplication by $\conj{\a}$ map $T_{\conj{\a}}$ on $\mc{O}/\mf{p}\mc{O}$ as a $(\smc{O}/\mf{p})$-vector space where $\conj{\a}$ is the class in $\mc{O}/\mf{p}\mc{O}$ represented by $\a$. As the classes $\conj{\a_{1}},\ldots,\conj{\a_{n}}$ of $\mc{O}/\mf{p}\mc{O}$ represented by the integral basis $\a_{1},\ldots,\a_{n}$ form a basis for $\mc{O}/\mf{p}\mc{O}$ as a $(\smc{O}/\mf{p})$-vector space, it follows that
+      \[
+        \Trace_{\mc{O}/\smc{O}}(\a) \equiv \Trace_{(\mc{O}/\mf{p}\mc{O})/(\smc{O}/\mf{p})}(\conj{\a}) \tmod{\mf{p}}.
+      \]
+      Therefore it is yet further equivalent to show
+      \[
+        \Trace_{(\mc{O}/\mf{p}\mc{O})/(\smc{O}/\mf{p})}(\conj{\a}) \equiv 0 \tmod{\mf{p}},
+      \]
+      for all $\a \in \mf{A}$. To prove this, observe that $\conj{\a}$ belongs to the subring $\mf{A}/\mf{p}\mc{O}$ of $\mc{O}/\mf{p}\mc{O}$ because $\a \in \mf{A}$. By construction, $\mf{A}$ is divisible by every prime factor of $\mf{p}\mc{O}$ and so a power, say $n$, of $\mf{A}$ is divisible by $\mf{p}\mc{O}$. But this means $T_{\conj{\a}}^{n} = 0$ so that $T_{\conj{\a}}$ is nilpotent. As nilpotent maps have trace zero, $\Trace_{(\mc{O}/\mf{p}\mc{O})/(\smc{O}/\mf{p})}(\conj{\a}) = 0$. But then $\Trace_{\mc{O}/\smc{O}}(\a) \equiv 0 \tmod{p}$ and, as $\a$ was arbitrary, the claim is justified. We now prove (i) and (ii):
+      \begin{enumerate}[label=(\roman*)]
+        \item Begin by writing $\mf{p}\mc{O} = \mf{P}^{e_{\mf{p}}(\mf{P})}\mf{A}$ for some integral ideal $\mf{A}$ of $\mc{O}$ so that $\mf{A}$ is relatively prime to $\mf{P}$. Arguing as before, we find that $\mf{P}^{e_{\mf{p}}(\mf{P})} \mid \mf{D}_{\mc{O}/\smc{O}}$ if and only if
+        \[
+          \Trace_{(\mc{O}/\mf{p}\mc{O})/(\smc{O}/\mf{p})}(\conj{\a}) = 0,
+        \]
+        for all $\a \in \mf{A}$. Since $\mf{P}^{e_{\mf{p}}(\mf{P})}$ and $\mf{A}$ are relatively prime, the Chinese remainder theorem implies
+        \[
+          \mc{O}/\mf{p}\mc{O} \cong (\mc{O}/\mf{P}^{e_{\mf{p}}(\mf{P})}) \op (\mc{O}/\mf{A}).
+        \]
+        \todo{xxx}
+      \item As we have already shown $\mf{P}^{e_{\mf{p}}(\mf{P})-1} \mid \mf{D}_{\mc{O}/\smc{O}}$, (ii) follows from (i).
+      \end{enumerate}
     \end{proof}
 
     Similarly, a prime $\mf{p}$ of $K$ ramifies if and only if it divides the discriminant $\mf{d}_{\mc{O}/\smc{O}}$ provided the residue class extensions are separable:
@@ -1421,7 +1469,7 @@
       \]
       Moreover, any $\a \in \mc{O}_{K}$ satisfies
       \[
-        \Norm_{K}(\a\mc{O}_{K}) = |\Norm(\a)|.
+        \Norm_{K}(\a\mc{O}_{K}) = |\Norm_{K}(\a)|.
       \]
     \end{proposition}
     \begin{proof}
@@ -1433,11 +1481,11 @@
     \begin{corollary}\label{cor:norm_of_different}
       Let $K$ be a number field and $\mf{f}$ be a fractional ideal. Then
       \[
-        \Norm(\mf{f}^{\vee}) = \frac{\Norm(\mf{f}^{-1})}{|\D_{K}|}.
+        \Norm_{K}(\mf{f}^{\vee}) = \frac{\Norm_{K}(\mf{f}^{-1})}{|\D_{K}|}.
       \]
     \end{corollary}
     \begin{proof}
-      This follows immediately from $\mf{f}^{\vee} = \mf{f}^{-1}\mf{D}_{K}^{-1}$, complete multiplicativity of the norm, and \cref{prop:norm_of_different_is_discriminant}.
+      This follows immediately from $\mf{f}^{\vee} = \mf{f}^{-1}\mf{D}_{K}^{-1}$, multiplicativity of the norm, and \cref{prop:norm_of_different_is_discriminant}.
     \end{proof}
 
     Lastly, let $a_{K}(m)$ denote the number of integral ideals of norm $m$. Because the ideal norm is multiplicative so is $a_{K}(m)$. Moreover, we have the following result:
