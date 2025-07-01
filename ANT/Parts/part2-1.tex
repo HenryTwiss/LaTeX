@@ -1,14 +1,14 @@
 \chapter{Algebraic Integers}
   Elementary number theory is done over $\Q$. The associated set of integers $\Z$ is a ring inside $\Q$. Moreover, the fundamental theorem of arithmetic tells us that prime factorization exists in $\Z$. That is, every integer is uniquely a product of primes (up to reordering of the factors). The study of number fields is concerned with finite extensions of $\Q$ where there might no longer be prime factorization. In the following, we introduce the primary tools in algebraic number theory. Namely, integrality, traces and norms, Dedekind domains, ramification, localization, and the discriminant and different.
   \section{Integrality}
-    Let $A$ and $B$ be rings with $A \subseteq B$. We say that $b \in B$ is \textbf{integral}\index{integral} over $A$ if $\b$ is the root of a monic polynomial $f(x) \in A[x]$. In other words, $\b$ satisfies
+    Let $B/A$ be an extension of rings. We say that $b \in B$ is \textbf{integral}\index{integral} over $A$ if $\b$ is the root of a monic polynomial $f(x) \in A[x]$. In other words, $\b$ satisfies
     \[
       \b^{n}+\a_{n-1}\b^{n-1}+\cdots+\a_{0} = 0,
     \]
     for some $n \ge 1$ and $\a_{i} \in A$ for $0 \le i \le n-1$. We say that $B$ is \textbf{integral}\index{integral} over $A$ if every element of $B$ is integral over $A$. The following proposition shows that integral elements form a ring:
 
     \begin{proposition}\label{prop:integral_if_finitely_generated}
-      Let $A$ and $B$ be rings with $A \subseteq B$. Then the finitely many elements $\b_{1},\ldots,\b_{n} \in B$ are all integral over $A$ if and only if $A[\b_{1},\ldots,\b_{n}]$ is a finitely generated $A$-module. In particular, the elements of $B$ that are integral over $A$ form a ring.
+      Let $B/A$ be an extension of rings. Then the finitely many elements $\b_{1},\ldots,\b_{n} \in B$ are all integral over $A$ if and only if $A[\b_{1},\ldots,\b_{n}]$ is a finitely generated $A$-module. In particular, the elements of $B$ that are integral over $A$ form a ring.
     \end{proposition}
     \begin{proof}
       First suppose $\b \in B$ is integral over $A$. Then there exists a monic polynomial $f(x) \in A[x]$, of say degree $n \ge 1$, such that $f(\b) = 0$. Now for any $g(x) \in A[x]$, Euclidean division implies
@@ -41,7 +41,7 @@
     Integrality is also transitive via the following statement:
 
     \begin{proposition}\label{prop:integrality_is_transitive}
-      Suppose $A$, $B$, and $C$ are rings with $A \subseteq B \subseteq C$. If $C$ is integral over $B$ and $B$ is integral over $A$, then $C$ is integral over $A$.
+      Let $C/B/A$ be an extension of rings. If $C$ is integral over $B$ and $B$ is integral over $A$ then $C$ is integral over $A$.
     \end{proposition}
     \begin{proof}
       Let $\g \in C$. Since $C$ is integral over $B$, we have
@@ -109,7 +109,7 @@
     \]
     for some $\a \in \mc{O}_{K}$ and nonzero $a \in \Z$. Moreover, $\k \in K$ is an algebraic integers if and only if the minimal polynomial $m_{\k}(x)$ of $\k$ has coefficients in $\Z$.
   \section{Traces \& Norms}
-    We will now introduce norms and traces of free modules. Let $A$ and $B$ be rings such that $A \subseteq B$ and where $B$ is a free $A$-module of rank $n$. Then the \textbf{trace}\index{trace} and \textbf{norm}\index{norm} of $B$ over $A$, denoted $\Trace_{B/A}$ and $\Norm_{B/A}$ respectively, are defined by
+    We will now introduce norms and traces of free modules. Let $B/A$ be an extension of rings such that $B$ is a free $A$-module of rank $n$. Then the \textbf{trace}\index{trace} and \textbf{norm}\index{norm} of $B$ over $A$, denoted $\Trace_{B/A}$ and $\Norm_{B/A}$ respectively, are defined by
     \[
       \Trace_{B/A}(\b) = \tr(T_{\b}) \quad \text{and} \quad \Norm_{B/A}(\b) = \det(T_{\b}),
     \]
@@ -129,7 +129,11 @@
     \[
       \Trace_{B/A}(\a\b) = \a\Trace_{B/A}(\b) \quad \text{and} \quad \Norm_{B/A}(\a\b) = \a^{n}\Norm_{B/A}(\b),
     \]
-    for all $\a \in A$ because $T_{\a\l} = \a T_{\l}$. Also note that $T_{\b+\g} = T_{\b}+T_{\g}$ and $T_{\b\g} = T_{\b}T_{\g}$ for all $\b,\g \in B$. In the case of a degree $n$ extension $L/K$, we call $\Trace_{L/K}$ and $\Norm_{L/K}$ the \textbf{trace}\index{trace} and \textbf{norm}\index{norm} of $L/K$. Moreover, $\Norm_{L/K}(\l) = 0$ if and only if $\l = 0$ because otherwise $T_{\l}$ has inverse $T_{\l^{-1}}$ and hence nonzero determinant. Therefore we obtain homomorphisms
+    for all $\a \in A$ because $T_{\a\l} = \a T_{\l}$. Also note that $T_{\b+\g} = T_{\b}+T_{\g}$ and $T_{\b\g} = T_{\b}T_{\g}$ for all $\b,\g \in B$. Moreover, recall that the trace and determinant of a linear map are additive and multiplicative respectively with respect to direct sums (since any matrix representation of the linear map becomes block diagonal). Then if $B = B_{1} \op B_{2}$, we have
+    \begin{equation}\label{equ:trace_and_norm_direct_sums}
+      \Trace_{B/A}(\b) = \Trace_{B_{1}/A}(\b)+\Trace_{B_{2}/A}(\b) \quad \text{and} \quad \Norm_{B/A}(\b) = \Norm_{B_{1}/A}(\b)\Norm_{B_{2}/A}(\b).
+    \end{equation}
+    In the case of a degree $n$ extension $L/K$, we call $\Trace_{L/K}$ and $\Norm_{L/K}$ the \textbf{trace}\index{trace} and \textbf{norm}\index{norm} of $L/K$. Moreover, $\Norm_{L/K}(\l) = 0$ if and only if $\l = 0$ because otherwise $T_{\l}$ has inverse $T_{\l^{-1}}$ and hence nonzero determinant. Therefore we obtain homomorphisms
     \[
       \Trace_{L/K}:L \to K \quad \text{and} \quad \Norm_{L/K}:L^{\ast} \to K^{\ast}.
     \]
@@ -154,7 +158,7 @@
       \[
         f_{\l}(x) = m_{\l}(x)^{d}.
       \]
-      To see this, recall that $1,\l,\ldots,\l^{n-1}$ is a basis of $K(\l)/K$. If $\a_{1},\ldots,\a_{d}$ is a basis for $L/K(\l)$, then
+      To see this, recall that $1,\l,\ldots,\l^{n-1}$ is a basis of $K(\l)/K$. If $\a_{1},\ldots,\a_{d}$ is a basis for $L/K(\l)$ then
       \[
         \a_{1},\a_{1}\l,\ldots,\a_{1}\l^{m-1},\ldots,\a_{d},\a_{d}\l,\ldots,\a_{d}\l^{m-1},
       \]
@@ -176,16 +180,16 @@
     As an application of \cref{prop:formulas_for_trace_and_norm}, we can show how the field trace and field norm act when $A$ is an integrally closed integral domain with field of fractions $K$, $L/K$ is a finite separable extension, and $B$ is the integral closure of $A$ in $L$:
 
     \begin{proposition}\label{prop:norm_and_trace_AKBL}
-      Let $A$ be an integrally closed integral domain with field of fractions $K$, $L/K$ be a finite separable extension, and $B$ be the integral closure of $A$ in $L$. If $\l \in L$ is integral over $A$, then $\Trace_{L/K}(\l)$ and $\Norm_{L/K}(\l)$ are in $A$.
+      Let $A$ be an integrally closed integral domain with field of fractions $K$, $L/K$ be a finite separable extension, and $B$ be the integral closure of $A$ in $L$. If $\b \in B$ then the trace and norm of $\b$ are in $A$.
     \end{proposition}
     \begin{proof}
-      By \cref{prop:field_of_fractions_AKBL}, if $\l \in L$ is integral over $A$ then its minimal polynomial $m_{\l}(x)$ has coefficients in $A$. By \cref{prop:formulas_for_trace_and_norm}, the characteristic polynomial $f_{\l}(x)$ is a power of $m_{\l}(x)$ and hence $f_{\l}(x)$ has coefficients in $A$ too. From \cref{equ:trace_and_norm_characteristic_polynomial} we conclude that $\Trace_{L/K}(\l)$ and $\Norm_{L/K}(\l)$ are in $A$.
+      By \cref{prop:field_of_fractions_AKBL}, the minimal polynomial $m_{\b}(x)$ of $\b$ has coefficients in $A$. By \cref{prop:formulas_for_trace_and_norm}, the characteristic polynomial $f_{\b}(x)$ is a power of $m_{\b}(x)$ and hence $f_{\b}(x)$ has coefficients in $A$ too. From \cref{equ:trace_and_norm_characteristic_polynomial} we conclude that the trace and norm of $\b$ are in $A$.
     \end{proof}
 
     We can also classify the units of $B$ in terms of the units of $A$:
 
     \begin{proposition}\label{prop:unit_if_and_only_if_AKBL}
-      Let $A$ be an integrally closed integral domain with field of fractions $K$, $L/K$ be a finite separable extension, and $B$ be the integral closure of $A$ in $L$. Then $\b \in B$ is a unit if and only if $\Norm_{L/K}(\l) \in A$ is a unit.
+      Let $A$ be an integrally closed integral domain with field of fractions $K$, $L/K$ be a finite separable extension, and $B$ be the integral closure of $A$ in $L$. Then $\b \in B$ is a unit if and only if $\Norm_{L/K}(\b) \in A$ is a unit
     \end{proposition}
     \begin{proof}
       First suppose $\b \in B$ is a unit. Then $\frac{1}{\b} \in B$ and so
@@ -203,7 +207,7 @@
       Multiplying by $\frac{1}{\a}$, it follows that $\frac{1}{\b}$ is a root of a monic polynomial with coefficients in $A$. Hence $\frac{1}{\b} \in B$ and thus $\b$ is a unit.
     \end{proof}
 
-    Having introduced traces and norms, we discuss discriminants of free modules. Let $A$ and $B$ be rings such that $A \subseteq B$ and where $B$ is a free $A$-module of rank $n$. If $\b_{1},\ldots,\b_{n}$ is a basis for $B$, we define its \textbf{discriminant}\index{discriminant} $d_{B/A}(\b_{1},\ldots,\b_{n})$ by
+    Having introduced traces and norms, we discuss discriminants of free modules. Let $B/A$ be an extension of rings such that $B$ is a free $A$-module of rank $n$. If $\b_{1},\ldots,\b_{n}$ is a basis for $B$, we define its \textbf{discriminant}\index{discriminant} $d_{B/A}(\b_{1},\ldots,\b_{n})$ by
     \[
       d_{B/A}(\b_{1},\ldots,\b_{n}) = \det((\Trace_{B/A}(\b_{i}\b_{j}))_{i,j}).
     \]
@@ -222,13 +226,13 @@
     as claimed. The discriminant is also multiplicative with respect to direct sums:
 
     \begin{proposition}\label{prop:discriminant_and_direct_sums}
-      Let $A$ and $B$ be rings such that $A \subseteq B$ and where $B$ is a free $A$-module of rank $n$. Suppose we have a direct sum decomposition
+      Let $B/A$ be an extension of rings such that $B$ is a free $A$-module of rank $n$. Suppose we have a direct sum decomposition
       \[
         B = B_{1} \op B_{2},
       \]
       for free $A$-modules $B_{1}$ and $B_{2}$ of ranks $n_{1}$ and $n_{2}$ respectively. Also let $\g_{1},\ldots,\g_{n_{1}}$ and $\d_{1},\ldots,\d_{n_{2}}$ be bases of $B_{1}$ and $B_{2}$ respectively. Then
       \[
-        d_{B/A}(\g_{1},\ldots,\g_{n_{1}},\d_{1},\ldots,\d_{n_{2}}) = d_{B_{1}/A}(\g_{1},\ldots,\g_{n_{1}})d_{B_{1}/A}(\d_{1},\ldots,\d_{n_{2}}).
+        d_{B/A}(\g_{1},\ldots,\g_{n_{1}},\d_{1},\ldots,\d_{n_{2}}) = d_{B_{1}/A}(\g_{1},\ldots,\g_{n_{1}})d_{B_{2}/A}(\d_{1},\ldots,\d_{n_{2}}).
       \]
     \end{proposition}
     \begin{proof}
@@ -236,15 +240,15 @@
       \[
         \begin{pmatrix} (\Trace_{B/A}(\g_{i}\g_{j}))_{i,j} & \\ & (\Trace_{B/A}(\d_{k}\d_{\ell}))_{k,\ell} \end{pmatrix}.
       \]
-      Moreover, we have
+      Moreover, \cref{equ:trace_and_norm_direct_sums} implies
       \[
-        \Trace_{B/A}(\b_{1}) = \Trace_{B_{1}/A}(\b_{1}) \quad \text{and} \quad \Trace_{B/A}(\b_{2}) = \Trace_{B_{1}/A}(\b_{2})
+        \Trace_{B/A}(\b_{1}) = \Trace_{B_{1}/A}(\b_{1}) \quad \text{and} \quad \Trace_{B/A}(\b_{2}) = \Trace_{B_{2}/A}(\b_{2})
       \]
       for any $\b_{1} \in B_{1}$ and $\b_{2} \in B_{2}$ since multiplication by $\b_{1}$ and $\b_{2}$ annihilate $B_{2}$ and $B_{1}$ respectively. But then the block diagonal matrix above is equal to
       \[
         \begin{pmatrix} (\Trace_{B_{1}/A}(\g_{i}\g_{j}))_{i,j} & \\ & (\Trace_{B_{1}/A}(\d_{k}\d_{\ell}))_{k,\ell} \end{pmatrix}.
       \]
-      The determinant of this matrix is $d_{B/A}(\g_{1},\ldots,\g_{n_{1}})d_{R}(\d_{1},\ldots,\d_{n_{2}})$ which completes the proof.
+      The determinant of this matrix is $d_{B_{1}/A}(\g_{1},\ldots,\g_{n_{1}})d_{B_{2}/A}(\d_{1},\ldots,\d_{n_{2}})$ which completes the proof.
     \end{proof}
     
     We now specialize to the setting of a degree $n$ separable extension $L/K$. In this case, it turns out that the discriminant of a basis is nonzero. To see this, we require a lemma:
@@ -292,7 +296,7 @@
     where $\s_{1},\ldots,\s_{n}$ are the $n$ distinct $K$-embeddings of $L$ into $\conj{K}$. Then we have the following result:
 
     \begin{proposition}\label{disc_as_square_of_embedding_matrix}
-      Let $L/K$ be a degree $n$ separable extension. Then for any basis $\l_{1},\ldots,\l_{n}$ of $L$, we have
+      Let $L/K$ be a degree $n$ separable extension. Then for any basis $\l_{1},\ldots,\l_{n}$ of $L/K$, we have
       \[
         d_{L/K}(\l_{1},\ldots,\l_{n}) = \det(M(\l_{1},\ldots,\l_{n}))^{2}.
       \]
@@ -312,7 +316,7 @@
     Discriminants of bases are useful because of the following lemma:
 
     \begin{lemma}\label{lem:lemma_for_integral_basis_AKBL}
-      Let $A$ be an integrally closed integral domain with field of fractions $K$, $L/K$ be a degree $n$ separable extension, and $B$ be the integral closure of $A$ in $L$. If $\l_{1},\ldots,\l_{n}$ is a basis for $L/K$ that is contained in $B$, then
+      Let $A$ be an integrally closed integral domain with field of fractions $K$, $L/K$ be a degree $n$ separable extension, and $B$ be the integral closure of $A$ in $L$. If $\l_{1},\ldots,\l_{n}$ is a basis for $L/K$ that is contained in $B$ then
       \[
         d_{L/K}(\l_{1},\ldots,\l_{n})B \subseteq A\l_{1}+\cdots+A\l_{n}.
       \]
@@ -337,7 +341,7 @@
       as desired.
     \end{proof}
 
-    Again suppose $A$ is an integrally closed integral domain with field of fractions $K$, $L/K$ is a degree $n$ separable extension, and $B$ is the integral closure of $A$ in $L$. We say that $\b_{1},\ldots,\b_{n}$ is an \textbf{integral basis}\index{integral basis} for $B$ over $A$ if $\b_{1},\ldots,\b_{n}$ is such that
+    Again suppose $A$ is an integrally closed integral domain with field of fractions $K$, $L/K$ is a degree $n$ separable extension, and $B$ is the integral closure of $A$ in $L$. We say that $\b_{1},\ldots,\b_{n}$ is an \textbf{integral basis}\index{integral basis} for $B/A$ if $\b_{1},\ldots,\b_{n}$ is such that
     \[
       B = A\b_{1}+\cdots+A\b_{n}.
     \]
@@ -358,19 +362,19 @@
       By the structure theorem of finitely generated modules over principal ideal domains again, $M$ is a free $A$-module of rank at most $n$. To see that the rank is at least $n$, let $\a \in M$ be nonzero and, as before, let $\l_{1},\ldots,\l_{n}$ be a basis for $L/K$ that is contained in $B$. Then $\a\l_{1},\ldots,\a\l_{n}$ is a basis for $L/K$ contained in $M$. Thus the rank of $M$ is at least $n$, and in particular it must be $n$. This completes the proof.
     \end{proof}
 
-    Even if an integral basis for $B$ over $A$ exists, where say $B$ is a free $A$-module of rank $n$, it is very difficult to explicitly write one down. However, there is one instance in which this is possible. We say that $B$ is \textbf{monogenic} over $A$ if $B = A[\b]$ for some $\b \in B$. It follows immediately that $1,\b,\ldots,\b^{n-1}$ is an integral basis for $B$ over $A$ since $B$ is of rank $n$. In addition, the traces $\Trace_{L/K}$ and $\Trace_{B/A}$ and norms $\Norm_{L/K}$ and $\Norm_{B/A}$ agree:
+    Even if an integral basis for $B/A$ exists, where say $B$ is a free $A$-module of rank $n$, it is very difficult to explicitly write one down. However, there is one instance in which this is possible. We say that $B$ is \textbf{monogenic} over $A$ if $B = A[\b]$ for some $\b \in B$. It follows immediately that $1,\b,\ldots,\b^{n-1}$ is an integral basis for $B/A$ since $B$ is of rank $n$. In addition, the traces $\Trace_{L/K}$ and $\Trace_{B/A}$ and norms $\Norm_{L/K}$ and $\Norm_{B/A}$ agree:
 
     \begin{proposition}\label{prop:trace_and_norm_reduce_for_integral_basis}
-      Let $A$ be an integrally closed integral domain with field of fractions $K$, $L/K$ be a degree $n$ separable extension, and $B$ be the integral closure of $A$ in $L$. If $B$ admits an integral basis over $A$, then
+      Let $A$ be an integrally closed integral domain with field of fractions $K$, $L/K$ be a degree $n$ separable extension, and $B$ be the integral closure of $A$ in $L$. If $B$ admits an integral basis over $A$ then
       \[
         \Trace_{L/K}(\b) = \Trace{B/A}(\b) \quad \text{and} \quad \Norm_{L/K}(\b) = \Norm_{B/A}(\b),
       \]
       for all $\b \in B$.
     \end{proposition}
     \begin{proof}
-      Let $\b_{1},\ldots,\b_{n}$ be an integral basis for $B$ over $A$. Then $\b_{1},\ldots,\b_{n}$ is also a basis for $L/K$. It follows that the multiplication by $\b$ map in $L$ has the same matrix representation as it does in $B$. Therefore
+      Let $\b_{1},\ldots,\b_{n}$ be an integral basis for $B/A$. Then $\b_{1},\ldots,\b_{n}$ is also a basis for $L/K$. It follows that the multiplication by $\b$ map in $L$ has the same matrix representation as it does in $B$. Therefore
       \[
-        \Trace_{L/K}(\b) = \Trace{B/A}(\b) \quad \text{and} \quad \Norm_{L/K}(\b) = \Norm_{B/A}(\b),
+        \Trace_{L/K}(\b) = \Trace_{B/A}(\b) \quad \text{and} \quad \Norm_{L/K}(\b) = \Norm_{B/A}(\b),
       \]
       as desired.
     \end{proof}
@@ -507,7 +511,7 @@
       Moreover, this factorization is unique up to reordering of the factors.
     \end{corollary}
     \begin{proof}
-      If $\mf{f}$ is a fractional ideal, then there exists a nonzero $\d \in \smc{O}$ and integral ideal $\mf{a}$ such that $\mf{f} = \frac{1}{\d}\mf{a}$. In particular, $\mf{a}$ and $\d\smc{O}$ are integral ideals such that $\d\smc{O}\mf{f} = \mf{a}$. By \cref{thm:unique_product_prime_ideals}, $\mf{a}$ and $\d\smc{O}$ admit unique factorizations
+      If $\mf{f}$ is a fractional ideal then there exists a nonzero $\d \in \smc{O}$ and integral ideal $\mf{a}$ such that $\mf{f} = \frac{1}{\d}\mf{a}$. In particular, $\mf{a}$ and $\d\smc{O}$ are integral ideals such that $\d\smc{O}\mf{f} = \mf{a}$. By \cref{thm:unique_product_prime_ideals}, $\mf{a}$ and $\d\smc{O}$ admit unique factorizations
       \[
         \mf{a} = \mf{p}_{1} \cdots \mf{p}_{k} \quad \text{and} \quad \d\smc{O} = \mf{q}_{1},\ldots,\mf{q}_{\ell},
       \]
@@ -532,7 +536,7 @@
       In the case of a prime $\mf{p}$ and an integral ideal $\mf{a}$, $\mf{p} \mid \mf{a}$ if and only if $\mf{p}$ is a prime factor of $\mf{a}$. Also, $\mf{p}^{e} \mid\mid \mf{a}$ for some $e \ge 1$ if and only if $\mf{p}^{e}$ is exactly the power of $\mf{p}$ appearing in the prime factorization of $\mf{a}$.
     \end{remark}
   
-     Moreover, $\mf{a}$ and $\mf{b}$ are relatively prime if and only if their prime factorizations contain distinct primes. For if $\mf{a}$ and $\mf{b}$ have a prime factor $\mf{p}$ in common, the primality of $\mf{p}$ implies $\mf{a} \subseteq \mf{p}$ and $\mf{b} \subseteq \mf{p}$. Hence $\mf{a}+\mf{b} \subseteq \mf{p}$ so that $\mf{a}$ and $\mf{b}$ are not relatively prime. Conversely, if $\mf{a}+\mf{b} \neq \smc{O}$, then $\mf{a}+\mf{b} \subseteq \mf{p}$ for some prime $\mf{p}$ because primes are maximal in Dedekind domains. But then $\mf{a} \subseteq \mf{p}$ and $\mf{b} \subseteq \mf{p}$ and therefore $\mf{a}$ and $\mf{b}$ both have $\mf{p}$ as a prime factor. In particular, distinct primes and their powers are relatively prime. Just as it is common to suppress the fundamental theorem of arithmetic and just state the prime factorization of an integer, we suppress referencing \cref{thm:unique_product_prime_ideals} and simply state the prime factorization of a fractional ideal. We can now show that for a Dedekind domain, being a principal ideal domain is equivalent to being a unique factorization domain:
+     Moreover, $\mf{a}$ and $\mf{b}$ are relatively prime if and only if their prime factorizations contain distinct primes. For if $\mf{a}$ and $\mf{b}$ have a prime factor $\mf{p}$ in common, the primality of $\mf{p}$ implies $\mf{a} \subseteq \mf{p}$ and $\mf{b} \subseteq \mf{p}$. Hence $\mf{a}+\mf{b} \subseteq \mf{p}$ so that $\mf{a}$ and $\mf{b}$ are not relatively prime. Conversely, if $\mf{a}+\mf{b} \neq \smc{O}$ then $\mf{a}+\mf{b} \subseteq \mf{p}$ for some prime $\mf{p}$ because primes are maximal in Dedekind domains. But then $\mf{a} \subseteq \mf{p}$ and $\mf{b} \subseteq \mf{p}$ and therefore $\mf{a}$ and $\mf{b}$ both have $\mf{p}$ as a prime factor. In particular, distinct primes and their powers are relatively prime. Just as it is common to suppress the fundamental theorem of arithmetic and just state the prime factorization of an integer, we suppress referencing \cref{thm:unique_product_prime_ideals} and simply state the prime factorization of a fractional ideal. We can now show that for a Dedekind domain, being a principal ideal domain is equivalent to being a unique factorization domain:
 
     \begin{proposition}\label{prop:UDF_PID_equivalence_for_Dedekind}
       Let $\smc{O}$ be a Dedekind domain. Then $\smc{O}$ is a principal ideal domain if and only if it is a unique factorization domain.
@@ -614,7 +618,7 @@
     Our second fact is that if a Dedekind domain contains only finitely many primes then it must be a principal ideal domain:
 
     \begin{proposition}\label{prop:Dedekind_with_finite_primes_is_PID}
-      Let $\smc{O}$ be a Dedekind domain. If there are only finitely many primes of $\smc{O}$, then $\smc{O}$ is a principal ideal domain.
+      Let $\smc{O}$ be a Dedekind domain. If there are only finitely many primes of $\smc{O}$ then $\smc{O}$ is a principal ideal domain.
     \end{proposition}
     \begin{proof}
       Let $\mf{p}_{1},\ldots,\mf{p}_{r}$ be the primes of $\smc{O}$. Then for any integral ideal $\mf{a}$, the prime factorization is
@@ -725,7 +729,7 @@
     \]
     The \textbf{unit group}\index{unit group} of $K$ is the unit group of $\mc{O}_{K}$ and we call any element of $\mc{O}_{K}^{\ast}$ a \textbf{unit}\index{unit} of $K$ (with the understanding that every element of $K$ is invertible in $K$). It follows from \cref{thm:ring_of_integers_is_Dedekind,thm:unique_product_prime_ideals} that integral ideals $\mf{a}$ of $K$ admit prime factorizations. One of our core investigations will be to understand how the principal integral ideal $p\mc{O}_{K}$ factors into a product of primes of $K$ for any prime $p$. Moreover, we will be able to leverage geometric tools to show that the class number $h_{K}$ is finite and completely describe the unit group $\mc{O}_{K}^{\ast}$.
   \section{Localization}
-    Let $\smc{O}$ be a noetherian integral domain with field of fractions $K$. If $D \subseteq \smc{O}-\{0\}$ is a multiplicative subset (recall that necessarily $1 \in D$), then the \textbf{localization}\index{localization} $\smc{O}D^{-1}$ of $\smc{O}$ at $D$ is defined by
+    Let $\smc{O}$ be a noetherian integral domain with field of fractions $K$. If $D \subseteq \smc{O}-\{0\}$ is a multiplicative subset (recall that necessarily $1 \in D$) then the \textbf{localization}\index{localization} $\smc{O}D^{-1}$ of $\smc{O}$ at $D$ is defined by
     \[
       \smc{O}D^{-1} = \left\{\frac{\a}{\d} \in K:\text{$\a \in \smc{O}$ and $\d \in D$}\right\}.
     \]
@@ -737,7 +741,7 @@
     \[
       \mf{A} = \mf{a}D^{-1}.
     \]
-    Indeed, the reverse containment is trivial. For the forward containment, if $\frac{\a}{\d} \in \mf{A}$ then $\a \in \mf{a}$ because $\d \in D$ and $\mf{A}$ is an ideal of $\smc{O}D^{-1}$. Hence $\frac{\a}{\d} \in \mf{a}D^{-1}$ as desired. Since $\smc{O}$ is Dedekind, $\mf{a}$ is a finitely generated $\smc{O}$-module and hence $\mf{A}$ is a finitely generated $\smc{O}D^{-1}$-module by the identity we have just proved. Thus $\smc{O}D^{-1}$ is noetherian. It follows that if $\mf{f}$ is a fractional ideal of $\smc{O}$, then $\mf{f}D^{-1}$ is a fractional ideal of $\smc{O}D^{-1}$. We call $\mf{f}D^{-1}$ the \textbf{localization}\index{localization} of $\mf{f}$ at $D$. In the case of primes, we have an exact correspondence:
+    Indeed, the reverse containment is trivial. For the forward containment, if $\frac{\a}{\d} \in \mf{A}$ then $\a \in \mf{a}$ because $\d \in D$ and $\mf{A}$ is an ideal of $\smc{O}D^{-1}$. Hence $\frac{\a}{\d} \in \mf{a}D^{-1}$ as desired. Since $\smc{O}$ is Dedekind, $\mf{a}$ is a finitely generated $\smc{O}$-module and hence $\mf{A}$ is a finitely generated $\smc{O}D^{-1}$-module by the identity we have just proved. Thus $\smc{O}D^{-1}$ is noetherian. It follows that if $\mf{f}$ is a fractional ideal of $\smc{O}$ then $\mf{f}D^{-1}$ is a fractional ideal of $\smc{O}D^{-1}$. We call $\mf{f}D^{-1}$ the \textbf{localization}\index{localization} of $\mf{f}$ at $D$. In the case of primes, we have an exact correspondence:
 
     \begin{proposition}\label{prop:localization_prime_bijection}
       Let $\smc{O}$ be a noetherian integral domain and $D \subseteq \smc{O}-\{0\}$ be a multiplicative subset. Then the maps
@@ -751,11 +755,11 @@
       \[
         \mf{q} = \mf{q}D^{-1} \cap \smc{O}.
       \]
-      The forward inclusion is obvious. For the reverse inclusion, if $\frac{\a}{\d} \in \mf{q}D^{-1} \cap \smc{O}$ then $\a \in \mf{q}$ and hence $\frac{\a}{\d} \in \mf{q}$ because $\mf{q}$ is prime and $\d \notin \mf{q}$ (as $\mf{q}$ is disjoint from $D$). Now suppose $\mf{Q}$ is a prime of $\smc{O}D^{-1}$. We claim that $\mf{Q} \cap \smc{O}$ is a prime of $\smc{O}$ that is disjoint from $D$. It is clearly an integral ideal of $\smc{O}$ and is prime because $\mf{Q}$ is. If $\mf{Q} \cap \smc{O}$ is not disjoint from $D$, then $\d \in \mf{Q} \cap \smc{O}$ with $\d \in D$. Hence $1 \in \mf{Q} \cap \smc{O}$ because $\frac{1}{\d} \in \smc{O}D^{-1}$ and $\mf{Q}$ is an integral ideal of $\smc{O}D^{-1}$. This is impossible since $\mf{Q} \cap \smc{O}$ is prime (hence proper) and therefore must be disjoint from $D$. Moreover, the prime $\mf{Q} \cap \smc{O}$ satisfies
+      The forward inclusion is obvious. For the reverse inclusion, if $\frac{\a}{\d} \in \mf{q}D^{-1} \cap \smc{O}$ then $\a \in \mf{q}$ and hence $\frac{\a}{\d} \in \mf{q}$ because $\mf{q}$ is prime and $\d \notin \mf{q}$ (as $\mf{q}$ is disjoint from $D$). Now suppose $\mf{Q}$ is a prime of $\smc{O}D^{-1}$. We claim that $\mf{Q} \cap \smc{O}$ is a prime of $\smc{O}$ that is disjoint from $D$. It is clearly an integral ideal of $\smc{O}$ and is prime because $\mf{Q}$ is. If $\mf{Q} \cap \smc{O}$ is not disjoint from $D$ then $\d \in \mf{Q} \cap \smc{O}$ with $\d \in D$. Hence $1 \in \mf{Q} \cap \smc{O}$ because $\frac{1}{\d} \in \smc{O}D^{-1}$ and $\mf{Q}$ is an integral ideal of $\smc{O}D^{-1}$. This is impossible since $\mf{Q} \cap \smc{O}$ is prime (hence proper) and therefore must be disjoint from $D$. Moreover, the prime $\mf{Q} \cap \smc{O}$ satisfies
       \[
         \mf{Q} = (\mf{Q} \cap \smc{O})D^{-1}.
       \]
-      The reverse inclusion is obvious since $1 \in D$. For the forward inclusion, if $\frac{\a}{\d} \in \mf{Q}$, then $\a \in \mf{Q} \cap \smc{O}$ and thus $\frac{\a}{\d} \in (\mf{Q} \cap \smc{O})D^{-1}$. All of this together shows that the mappings
+      The reverse inclusion is obvious since $1 \in D$. For the forward inclusion, if $\frac{\a}{\d} \in \mf{Q}$ then $\a \in \mf{Q} \cap \smc{O}$ and thus $\frac{\a}{\d} \in (\mf{Q} \cap \smc{O})D^{-1}$. All of this together shows that the mappings
       \[
         \mf{q} \mapsto \mf{q}D^{-1} \quad \text{and} \quad \mf{Q} \mapsto \mf{Q} \cap \smc{O}.
       \]
@@ -768,7 +772,7 @@
       The bijections in \cref{prop:localization_prime_bijection} need not hold for all integral ideals.
     \end{remark}
     
-    Localization is most useful when we localize at the compliment of a prime or collection of primes. If $\mf{p}$ is a prime of $\smc{O}$, then $\smc{O}-\mf{p} \subset \smc{O}-\{0\}$ is a multiplicative subset. Indeed, the inclusion is obvious, $1 \in \smc{O}-\mf{p}$ because $\mf{p}$ is proper and thus does not contain units, and if $\a,\b \in \smc{O}-\mf{p}$ we have $\a\b \notin \mf{p}$ because $\mf{p}$ is prime so that $\a\b \in \smc{O}-\mf{p}$ and thus $\smc{O}-\mf{p}$ is closed under multiplication. We define the \textbf{localization}\index{localization} $\smc{O}_{\mf{p}}$ of $\smc{O}$ at $\mf{p}$ by
+    Localization is most useful when we localize at the compliment of a prime or collection of primes. If $\mf{p}$ is a prime of $\smc{O}$ then $\smc{O}-\mf{p} \subset \smc{O}-\{0\}$ is a multiplicative subset. Indeed, the inclusion is obvious, $1 \in \smc{O}-\mf{p}$ because $\mf{p}$ is proper and thus does not contain units, and if $\a,\b \in \smc{O}-\mf{p}$ we have $\a\b \notin \mf{p}$ because $\mf{p}$ is prime so that $\a\b \in \smc{O}-\mf{p}$ and thus $\smc{O}-\mf{p}$ is closed under multiplication. We define the \textbf{localization}\index{localization} $\smc{O}_{\mf{p}}$ of $\smc{O}$ at $\mf{p}$ by
     \[
       \smc{O}_{\mf{p}} = \smc{O}(\smc{O}-\mf{p})^{-1}.
     \]
@@ -776,7 +780,7 @@
     \[
       \smc{O}_{\mf{p}} = \left\{\frac{\a}{\d} \in K:\text{$\a,\d \in \smc{O}$ with $\d \not\equiv 0 \tmod{\mf{p}}$}\right\}.
     \]
-    Essentially, localizing at a prime $\mf{p}$ removes all of the algebraic information about $\smc{O}$ that has nothing to do with $\mf{p}$. If $\mf{f}$ is a fractional ideal of $\smc{O}$, then the \textbf{localization}\index{localization} $\mf{f}_{\mf{p}}$ of $\mf{f}$ at $\mf{p}$ is defined to be
+    Essentially, localizing at a prime $\mf{p}$ removes all of the algebraic information about $\smc{O}$ that has nothing to do with $\mf{p}$. If $\mf{f}$ is a fractional ideal of $\smc{O}$ then the \textbf{localization}\index{localization} $\mf{f}_{\mf{p}}$ of $\mf{f}$ at $\mf{p}$ is defined to be
     \[
       \mf{f}_{\mf{p}} = \mf{f}(\smc{O}-\mf{p})^{-1}.
     \]
@@ -796,11 +800,11 @@
     \[
       \smc{O}(X) = \left\{\frac{\a}{\d} \in K:\text{$\a,\d \in \smc{O}$ with $\d \not\equiv 0 \tmod{\mf{p}}$ for some $\mf{p} \in X$}\right\}.
     \]
-    If $\mf{f}$ is a fractional ideal of $\smc{O}$, then the \textbf{localization}\index{localization} $\mf{f}(X)$ of $\mf{f}$ at $X$ is defined to be
+    If $\mf{f}$ is a fractional ideal of $\smc{O}$ then the \textbf{localization}\index{localization} $\mf{f}(X)$ of $\mf{f}$ at $X$ is defined to be
     \[
       \mf{f}(X) = \mf{f}\left(\smc{O}-\bigcup_{\mf{p} \in X}\mf{p}\right)^{-1}.
     \]
-    Note that if $X = \{\mf{p}\}$, then $\smc{O}(X) = \smc{O}_{\mf{p}}$ and $\mf{f}(X) = \mf{f}_{\mf{p}}$. In any case, localizing is a useful tool in algebraic investigations and we quickly collect some useful properties. First, localization respects integral closure:
+    Note that if $X = \{\mf{p}\}$ then $\smc{O}(X) = \smc{O}_{\mf{p}}$ and $\mf{f}(X) = \mf{f}_{\mf{p}}$. In any case, localizing is a useful tool in algebraic investigations and we quickly collect some useful properties. First, localization respects integral closure:
 
     \begin{proposition}\label{prop:localization_of_integral_closure_is_integral_closure}
       Let $\smc{O}$ be a noetherian integral domain with field of fractions $K$, $L/K$ be a finite separable extension, and $\mc{O}$ be the integral closure of $\smc{O}$ in $L$. Then for any multiplicative set $D \subseteq \smc{O}-\{0\}$, $\mc{O}D^{-1}$ is the integral closure of $\smc{O}D^{-1}$ in $L$.
@@ -882,7 +886,7 @@
       By \cref{prop:localization_prime_bijection}, $\mf{p} = \mf{p}_{\mf{p}} \cap \smc{O}$ and therefore this map is an embedding when $n = 1$. As $\mf{p}_{\mf{p}}$ is maximal, $\smc{O}_{\mf{p}}/\mf{p}_{\mf{p}}$ is a field and thus must be the field of fractions of $\smc{O}/\mf{p}$ under this embedding. It remains to prove the last statement so suppose $\mf{p}$ is maximal. We will show $\phi$ is both injective and surjective which will finish the proof. For injectivity, it suffices to prove $\ker\phi = 0$. So let $\a \in \smc{O}$ be a representative of a class in $\smc{O}/\mf{p}$ such that such that $\a \in \mf{p}_{\mf{p}}^{n}$. Then $\a = \frac{\b}{\d}$ with $\b \in \mf{p}^{n}$ and $\d \notin \mf{p}$. Thus $\b$ is a representative of the zero class in $\smc{O}/\mf{p}^{n}$ and so $\a$ must be too which implies $\ker\phi = 0$ and injectivity follows. For surjectivity, we first claim that the image of every $\d \in \smc{O}-\mf{p}$ is a unit in $\smc{O}/\mf{p}^{n}$ which equivalent to the fact that $\mf{p}^{n}+\d\smc{O} = \smc{O}$ since there is then a $\g \in \smc{O}$ such that $\d-\g \in \mf{p}^{n}$. For $n = 1$, maximality of $\mf{p}$ implies $\mf{p}+\d\smc{O} = \smc{O}$. We now argue by induction, so suppose the claim holds for $\smc{O}/\mf{p}^{n-1}$. Then $\mf{p}^{n-1}+\d\smc{O} = \smc{O}$ whence $\mf{p}^{n}+\d\mf{p} = \mf{p}$ and therefore $\mf{p}^{n}+\d\mc{O} = \mc{O}$ by the primality of $\mf{p}$. Now let $\frac{\a}{\d} \in \smc{O}_{\mf{p}}$ be a representative of a class in $\smc{O}_{\mf{p}}/\mf{p}_{\mf{p}}^{n}$. As $\d \notin \mf{p}$, what we have just proved shows that the class represented by $\d$ in $\smc{O}/\mf{p}^{n}$ is invertible. Hence $\frac{\a}{\d}$ represents a class in $\smc{O}/\mf{p^{n}}$ which proves surjectivity.
     \end{proof}
     
-    A \textbf{discrete valuation ring}\index{discrete valuation ring} is a principal ideal domain with a unique maximal integral ideal (recall that principal ideal domains are necessarily noetherian integral domains). In other words, a discrete valuation ring is a local principal ideal domain and is a particularly simple example of a local noetherian integral domain. If $\smc{O}$ is a discrete valuation ring and $\mf{p}$ is its maximal integral ideal (necessarily prime), then $\mf{p}$ is of the form $\mf{p} = \pi\smc{O}$ for some prime $\pi \in \smc{O}$. We call $\pi$ a \textbf{uniformizer}\index{uniformizer} of $\smc{O}$ and it is uniquely defined up to multiplication by units of $\smc{O}$. As every element not in $\mf{p}$ is a unit (since $\smc{O}$ is local) and $\smc{O}$ is a unique factorization domain (because it is a principal ideal domain), it follows that every $\a \in \smc{O}$ is of the form $\a = \e\pi^{n}$ for some $\e \in \smc{O}^{\ast}$ and $n \ge 0$. In particular, $\pi$ is the only prime of $\smc{O}$ up to multiplication by units and every integral ideal of $\smc{O}$ is of the form $\mf{p}^{n}$ for some $n \ge 0$. As $\smc{O}$ is a principal ideal domain, it follows that $\mf{p}$ is also the only prime of $\smc{O}$. Thus $\mf{p}$ is both the unique maximal integral ideal and prime $\smc{O}$. Moreover, if $K$ is the field of fractions of $\smc{O}$ then every nonzero $\k \in K$ can be uniquely expressed as
+    A \textbf{discrete valuation ring}\index{discrete valuation ring} is a principal ideal domain with a unique maximal integral ideal (recall that principal ideal domains are necessarily noetherian integral domains). In other words, a discrete valuation ring is a local principal ideal domain and is a particularly simple example of a local noetherian integral domain. If $\smc{O}$ is a discrete valuation ring and $\mf{p}$ is its maximal integral ideal (necessarily prime) then $\mf{p}$ is of the form $\mf{p} = \pi\smc{O}$ for some prime $\pi \in \smc{O}$. We call $\pi$ a \textbf{uniformizer}\index{uniformizer} of $\smc{O}$ and it is uniquely defined up to multiplication by units of $\smc{O}$. As every element not in $\mf{p}$ is a unit (since $\smc{O}$ is local) and $\smc{O}$ is a unique factorization domain (because it is a principal ideal domain), it follows that every $\a \in \smc{O}$ is of the form $\a = \e\pi^{n}$ for some $\e \in \smc{O}^{\ast}$ and $n \ge 0$. In particular, $\pi$ is the only prime of $\smc{O}$ up to multiplication by units and every integral ideal of $\smc{O}$ is of the form $\mf{p}^{n}$ for some $n \ge 0$. As $\smc{O}$ is a principal ideal domain, it follows that $\mf{p}$ is also the only prime of $\smc{O}$. Thus $\mf{p}$ is both the unique maximal integral ideal and prime $\smc{O}$. Moreover, if $K$ is the field of fractions of $\smc{O}$ then every nonzero $\k \in K$ can be uniquely expressed as
     \[
       \k = \e\pi^{n},
     \]
@@ -890,7 +894,7 @@
     \[
       v:K \to \Z \cup \{\infty\} \qquad \k \mapsto v(\k) = \begin{cases} n & \text{if $\k = \e\pi^{n}$}, \\ \infty & \text{if $\k = 0$}. \end{cases}
     \]
-    We call $v(\k)$ the \textbf{valuation}\index{valuation} of $\k$ with respect to $\smc{O}$. Note that $v(\k) = 0$ if and only if $\k$ is a unit in $\smc{O}$. If $\k \neq 0$, then the $v(\k)$ is characterized by the equation
+    We call $v(\k)$ the \textbf{valuation}\index{valuation} of $\k$ with respect to $\smc{O}$. Note that $v(\k) = 0$ if and only if $\k$ is a unit in $\smc{O}$. If $\k \neq 0$ then the $v(\k)$ is characterized by the equation
     \begin{equation}\label{equ:valuation_characterization}
       \k\smc{O} = \mf{p}^{v(\k)},
     \end{equation}
@@ -1014,7 +1018,7 @@
       for some $n \ge 1$ and $a_{i} \in \smc{O}$ for $0 \le i \le n-1$. Taking $n$ minimal, we have $a_{0} \neq 0$. Isolating $a_{0}$ shows that $a_{0} \in \mf{P}$ and hence $a_{0} \in \mf{P} \cap \smc{O}$. Therefore $\mf{P} \cap \smc{O} = \mf{p}$ for some prime $\mf{p}$. Hence $\ker\phi = \mf{p}$ and by the first isomorphism theorem, $\phi$ induces an injection $\phi:\smc{O}/\mf{p} \to \mc{O}/\mf{P}$. Since $\smc{O}$ is a Dedekind domain, $\mf{p}$ is maximal and thus $\smc{O}/\mf{p}$ is a field. As $\mc{O}$ is the integral closure of $\smc{O}$ in $L$, it is obtained from $\smc{O}$ by forming a polynomial ring with algebraic elements. The latter injection then shows that $\mc{O}/\mf{P}$ is obtained from $\smc{O}/\mf{p}$ by adjoining the images of these algebraic elements modulo $\mf{P}$. These images are still algebraic over $\smc{O}/\mf{p}$ by reducing their minimal polynomials modulo $\mf{P}$. Hence $\mc{O}/\mf{P}$ is obtained from $\smc{O}/\mf{p}$ by adjoining algebraic elements to $\smc{O}/\mf{p}$ (since $(\smc{O}/\mf{p})[\a] = (\smc{O}/\mf{p})(\a)$ if $\a$ is algebraic over $\smc{O}/\mf{p}$) and is therefore a field.
     \end{proof}
 
-    Under the assumptions of \cref{prop:integral_closure_of_Dedekind_is_Dedekind}, it follows from \cref{prop:field_of_fractions_AKBL} that $L$ is the field of fractions of $\mc{O}$. For brevity, we write $\mc{O}/\smc{O}$ and say that this is a \textbf{Dedekind extension}\index{Dedekind extension} of a finite separable extension $L/K$ if $\mc{O}$ and $\smc{O}$ are Dedekind domains whose field of fractions are $L$ and $K$ respectively and $\mc{O}$ is the integral closure of $\smc{O}$ in $L$. We also say that $\mc{O}/\smc{O}$ admits an \textbf{integral basis}\index{integral basis} if $\mc{O}$ admits an integral basis over $\smc{O}$. In light of \cref{prop:localization_of_Dedekind_is_Dedekind}, $\mc{O}D^{-1}/\smc{O}D^{-1}$ is also a Dedekind extension of $L/K$ for any multiplicative subset $D \subseteq \smc{O}-\{0\}$. We call $\mc{O}D^{-1}/\smc{O}D^{-1}$ the \textbf{localization}\index{localization} of $\mc{O}/\smc{O}$ at $D$. In the case $D = \smc{O}-\mf{p}$ for a prime $\mf{p}$ of $\smc{O}$, we call $\mc{O}_{\mf{p}}/\smc{O}_{\mf{p}}$ the \textbf{localization}\index{localization} of $\mc{O}/\smc{O}$ at $\mf{p}$. Moreover, we say that a Dedekind extension $\mc{O}/\smc{O}$ is \textbf{local}\index{local} if $\smc{O}$ is a discrete valuation ring. As $\smc{O}$ is a principal ideal domain, \cref{thm:integral_basis_AKBL} implies that $\mc{O}/\smc{O}$ admits an integral basis. In addition, as $\smc{O}$ has a unique prime we see that $\mc{O}$ has finitely many primes since they all must be above the prime of $\smc{O}$. By \cref{prop:Dedekind_with_finite_primes_is_PID} this forces $\mc{O}$ to be a principal ideal domain as well. In particular, localizing the Dedekind extension $\mc{O}/\smc{O}$ at $\mf{p}$ produces the local Dedekind extension $\mc{O}_{\mf{p}}/\smc{O}_{\mf{p}}$. With this phrasing, the proof of \cref{prop:integral_closure_of_Dedekind_is_Dedekind} gives the following corollary:
+    Under the assumptions of \cref{prop:integral_closure_of_Dedekind_is_Dedekind}, it follows from \cref{prop:field_of_fractions_AKBL} that $L$ is the field of fractions of $\mc{O}$. We say that a ring extension $\mc{O}/\smc{O}$ is a \textbf{Dedekind extension}\index{Dedekind extension} of a finite separable extension $L/K$ if $\mc{O}$ and $\smc{O}$ are Dedekind domains whose field of fractions are $L$ and $K$ respectively and $\mc{O}$ is the integral closure of $\smc{O}$ in $L$. If $\mc{O}$ is also a free $\smc{O}$-module then $\mc{O}/\smc{O}$ admits an integral basis. In light of \cref{prop:localization_of_Dedekind_is_Dedekind}, $\mc{O}D^{-1}/\smc{O}D^{-1}$ is also a Dedekind extension of $L/K$ for any multiplicative subset $D \subseteq \smc{O}-\{0\}$. We call $\mc{O}D^{-1}/\smc{O}D^{-1}$ the \textbf{localization}\index{localization} of $\mc{O}/\smc{O}$ at $D$. In the case $D = \smc{O}-\mf{p}$ for a prime $\mf{p}$ of $\smc{O}$, we call $\mc{O}_{\mf{p}}/\smc{O}_{\mf{p}}$ the \textbf{localization}\index{localization} of $\mc{O}/\smc{O}$ at $\mf{p}$. Moreover, we say that a Dedekind extension $\mc{O}/\smc{O}$ is \textbf{local}\index{local} if $\smc{O}$ is a discrete valuation ring. As $\smc{O}$ is a principal ideal domain, \cref{thm:integral_basis_AKBL} implies that $\mc{O}/\smc{O}$ admits an integral basis. In addition, as $\smc{O}$ has a unique prime we see that $\mc{O}$ has finitely many primes since they all must be above the prime of $\smc{O}$. By \cref{prop:Dedekind_with_finite_primes_is_PID} this forces $\mc{O}$ to be a principal ideal domain as well. In particular, localizing the Dedekind extension $\mc{O}/\smc{O}$ at $\mf{p}$ produces the local Dedekind extension $\mc{O}_{\mf{p}}/\smc{O}_{\mf{p}}$. With this phrasing, the proof of \cref{prop:integral_closure_of_Dedekind_is_Dedekind} gives the following corollary:
 
     \begin{corollary}\label{cor:integral_closure_of_Dedekind_is_Dedekind}
       Let $\mc{O}/\smc{O}$ be a Dedekind extension of a degree $n$ separable extension $L/K$. Then $\mc{O}$ is a finitely generated $\smc{O}$-module of rank at most $n$ and every prime $\mf{P}$ of $\mc{O}$ satisfies
@@ -1031,7 +1035,7 @@
     \[
       \mf{P} \cap \smc{O} = \mf{p}.
     \]
-    Then \cref{cor:integral_closure_of_Dedekind_is_Dedekind} implies that every prime of $L$ is above exactly one prime of $K$. If $\mf{P}$ is above $\mf{p}$, then $\mf{P} \mid \mf{p}\mc{O}$. Indeed, since $\mf{p} \subseteq \mf{P}$ we have $\mf{p}\mc{O} \subseteq \mf{P}$ which is to say that $\mf{P}$ divides $\mf{p}\mc{O}$. This implies that only finitely many primes $\mf{P}$ can lie above a prime $\mf{p}$ and they are exactly the prime factors of $\mf{p}\mc{O}$. We illustrated the relationship via the extension
+    Then \cref{cor:integral_closure_of_Dedekind_is_Dedekind} implies that every prime of $L$ is above exactly one prime of $K$. If $\mf{P}$ is above $\mf{p}$ then $\mf{P} \mid \mf{p}\mc{O}$. Indeed, since $\mf{p} \subseteq \mf{P}$ we have $\mf{p}\mc{O} \subseteq \mf{P}$ which is to say that $\mf{P}$ divides $\mf{p}\mc{O}$. This implies that only finitely many primes $\mf{P}$ can lie above a prime $\mf{p}$ and they are exactly the prime factors of $\mf{p}\mc{O}$. We illustrated the relationship via the extension
 
     \begin{center}
       \begin{tikzcd}[row sep=large, column sep=large]
@@ -1044,7 +1048,7 @@
     \[
       f_{\mf{p}}(\mf{P}) = [\mc{O}/\mf{P}:\smc{O}/\mf{p}].
     \]
-    That is, $f_{\mf{p}}(\mf{P})$ is the dimension of the residue field $\mc{O}/\mf{P}$ as a $(\smc{O}/\mf{p})$-vector space. The \textbf{ramification index}\index{ramification index} $e_{\mf{p}}(\mf{P})$ is the power of $\mf{P}$ appearing in the prime factorization of $\mf{p}\mc{O}$. So if $\mf{p}\mc{O}$ has prime factors $\mf{P}_{1},\ldots,\mf{P}_{r}$, then the prime factorization of $\mf{p}\mc{O}$ is
+    That is, $f_{\mf{p}}(\mf{P})$ is the dimension of the residue field $\mc{O}/\mf{P}$ as a $(\smc{O}/\mf{p})$-vector space. The \textbf{ramification index}\index{ramification index} $e_{\mf{p}}(\mf{P})$ is the power of $\mf{P}$ appearing in the prime factorization of $\mf{p}\mc{O}$. If $\mf{p}\mc{O}$ has prime factors $\mf{P}_{1},\ldots,\mf{P}_{r}$ then the prime factorization of $\mf{p}\mc{O}$ is
     \[
       \mf{p}\mc{O} = \mf{P}_{1}^{e_{\mf{p}}(\mf{P}_{1})} \cdots \mf{P}_{r}^{e_{\mf{p}}(\mf{P}_{r})}.
     \]
