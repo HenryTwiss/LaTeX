@@ -174,129 +174,61 @@
       \end{align*}
     \end{theorem}
   \section{Misc.}
-  \section{\todo{Lattices}}
-    Let $K$ be a number field of degree $n$. By \cref{lem:trace_is_nondegenerate}, there is a nondegenerate symmetric bilinear form on $K$ given by
-    \[
-      \Trace:K \x K \to \Q \qquad (\k,\l) \mapsto \Trace(\k\l).
-    \]
-    We call this bilinear form the \textbf{trace form}\index{trace form} on $K$. The trace form makes $K$ into a nondegenerate inner product space over $\Q$. Since $\mc{O}_{K}$ is a free abelian group of rank $n$ so is any fractional ideal by \cref{thm:integral_basis_AKBL}. Therefore fractional ideals are complete lattices in $K$ as a vector space over $\Q$. In particular, $\mc{O}_{K}$ is a complete lattice in $K$. For a fractional ideal $\mf{f}$, note that the dual lattice $\mf{f}^{\vee}$ is
-    \[
-      \mf{f}^{\vee} = \{\k \in K:\text{$\Trace(\k \a) \in \Z$ for all $\a \in \mf{f}$}\}.
-    \]
-    We call $\mf{f}^{\vee}$ the \textbf{dual ideal}\index{dual ideal} of $\mf{f}$. The following proposition shows that the dual ideal $\mf{f}^{\vee}$ is indeed a fractional ideal:
-
-    \begin{proposition}\label{prop:dual_lattice_is_fractional}
-      Let $K$ be a number field and $\mf{f}$ be a fractional ideal. Then $\mf{f}^{\vee}$ is a fractional ideal and
-      \[
-        \mf{f}^{\vee} = \mf{f}^{-1}\mc{O}_{K}^{\vee}.
-      \]
-    \end{proposition}
-    \begin{proof}
-      By \cref{prop:dual_lattice_exists}, $\mf{f}^{\vee}$ is a finitely generated $\Z$-module. Therefore it is a finitely generated $\mc{O}_{K}$-submodule of $K$ if it is preserved under multiplication by $\mc{O}_{K}$. Let $\a \in \mc{O}_{K}$ and $\b \in \mf{f}^{\vee}$. Then we must show $\a\b \in \mf{f}^{\vee}$. To see this, observe that $\Trace(\a\b\mf{f}) \subseteq \Trace(\b\mf{f}) \subseteq \Z$ since $\a\mf{f} \subseteq \mf{f}$ and $\b \in \mf{f}^{\vee}$. Therefore $\a\b \in \mf{f}^{\vee}$ and hence $\mf{f}^{\vee}$ is a fractional ideal proving the first statement. To prove the second we will show containment in both directions. For the forward containment, first suppose $\a \in \mf{f}^{\vee}$ and $\b \in \mf{f}$. Then $\Trace(\a\b\mc{O}_{K}) \subseteq \Trace(\a\mf{f}) \subseteq \Z$ since $\b\mc{O}_{K} \subseteq \mf{f}$ and $\a \in \mf{f}^{\vee}$. Hence $\a\b \in \mc{O}_{K}^{\vee}$ so that $\mf{f}^{\vee}\mf{f} \subseteq \mc{O}_{K}^{\vee}$ and therefore $\mf{f}^{\vee} \subseteq \mf{f}^{-1}\mc{O}_{K}^{\vee}$. This proves the forward containment. For the reverse containment, suppose $\a \in \mf{f}^{-1}$ and $\b \in \mc{O}_{K}^{\vee}$. Then $\Trace(\a\b\mf{f}) \subseteq \Trace(\b\mc{O}_{K}) \subseteq \Z$ since $\a\mf{f} \subseteq \mc{O}_{K}$ and $\b \in \mc{O}_{K}^{\vee}$. This shows $\a\b \in \mf{f}^{\vee}$ and hence $\mf{f}^{-1}\mc{O}_{K}^{\vee} \subseteq \mf{f}^{\vee}$ proving the reverse containment and completing the proof.
-    \end{proof}
-
-    We define the \textbf{different}\index{different} $\mf{D}$ of $K$ by
-    \[
-      \mf{D}_{K} = (\mc{O}_{K}^{\vee})^{-1}.  
-    \]
-    This is an integral ideal. Indeed, first note that $\mc{O}_{K} \subseteq \mc{O}_{K}^{\vee}$. It follows from \cref{prop:explicit_inverse_ideal} that $\mc{D}_{K}$ is an integral ideal and
-    \[
-      \mf{D}_{K} = \{\k \in K: \k\mc{O}_{K}^{\vee} \subseteq \mc{O}_{K}\}.  
-    \]
-    Also, by \cref{prop:dual_lattice_is_fractional} we can express the dual ideal $\mf{f}^{\vee}$ of a fractional ideal $\mf{f}$ in terms of the different as
-    \[
-      \mf{f}^{\vee} = \mf{f}^{-1}\mf{D}_{K}^{-1}.
-    \]
-    It turns out that the norm of the different is the absolute value of the discriminant:
-
-    \begin{proposition}\label{prop:norm_of_different}
-      Let $K$ be an algebraic number field of degree $n$. Then we have an isomorphism
-      \[
-        \mc{O}_{K}/\mf{D}_{K} \cong \mc{O}_{K}^{\vee}/\mc{O}_{K},
-      \]
-      as $\mc{O}_{K}$-modules. In particular,
-      \[
-        \Norm(\mf{D}_{K}) = |\D_{K}|.
-      \]
-    \end{proposition}
-    \begin{proof}
-      By \cref{prop:explicit_inverse_ideal}, $\mc{O}_{K} \subseteq \mf{D}_{K}^{-1}$. Then the second isomorphism theorem implies
-      \[
-        \mc{O}_{K}/\mf{D}_{K} \cong \mf{D}^{-1}_{K}/\mc{O}_{K} \cong \mc{O}_{K}^{\vee}/\mc{O}_{K},
-      \]
-      which proves the first statement. For the second, this isomorphism shows that $\Norm(\mf{D}_{K}) = |\mc{O}_{K}^{\vee}/\mc{O}_{K}|$. Now let $\a_{1},\ldots,\a_{n}$ be an integral basis for $\mc{O}_{K}$. Then $\a_{1}^{\vee},\ldots,\a_{n}^{\vee}$ is a basis for $\mc{O}_{K}^{\vee}$ and by definition of the dual basis we have
-      \[
-        \a_{i}^{\vee} = \sum_{1 \le j \le n}\Trace(\a_{i}\a_{j})\a_{j}.
-      \]
-      But then the base change matrix from $\a_{1},\ldots,\a_{n}$ to $\a_{1}^{\vee},\ldots,\a_{n}^{\vee}$ is $(\Trace(\a_{i}\a_{j}))_{i,j}$. The claim follows by \cref{prop:base_change_quotient_determinant} and the definition of $\D_{K}$.
-    \end{proof}
-
-    We have already remarked that the different is an integral ideal and that $\mc{O}_{K} \subseteq \mc{O}_{K}^{\vee}$. Therefore we have an inclusion of complete lattices
-    \[
-      \mc{D}_{K} \subseteq \mc{O}_{K} \subseteq \mc{O}_{K}^{\vee}.
-    \]
-    What \cref{prop:norm_of_different} shows is that each complete lattice in chain has index $|\D_{K}|$ in the next one. In particular, $\mc{O}_{K}^{\vee}$ is strictly larger than $\mc{O}_{K}$ if and only if $|\D_{K}| \ge 2$. So we can think of the different $\mc{D}_{K}$ as a measure of the failure of $\mc{O}_{K}$ to be self-dual since $\Norm(\mc{D}_{K}) = 1$ if and only if $\mc{O}_{K}^{\vee} = \mc{O}_{K}$.
   \section{The Ideal Norm}
-    For a number field $K$, we can define a norm for integral ideals of $\mc{O}_{K}$ which will be immensely useful. Since $\mc{O}_{K}$ is a free abelian group of rank $n$ so is any integral ideal $\mf{a}$ by \cref{thm:integral_basis_AKBL}. Therefore $\mc{O}_{K}/\mf{a}$ is finite by \cref{prop:base_change_quotient_determinant}. Accordingly, we define the \textbf{norm}\index{norm} $\Norm(\mf{a})$ of $\mf{a}$ by
-    \[
-      \Norm(\mf{a}) = |\mc{O}_{K}/\mf{a}|.
-    \]
-    We also define the norm of the zero ideal to be zero. Moreover, Lagrange's theorem implies that $\Norm(\mf{a}) \in \mf{a}$ for any integral ideal $\mf{a}$. As we might hope, the norms of $\a$ and $\a\mc{O}_{K}$ are essentially the same for any $\a \in \mc{O}_{K}$:
-    
-    \begin{proposition}\label{prop:ideal_and_field_norms_are_identical}
-      Let $K$ be a number field. Then for any $\a \in \mc{O}_{K}$, we have
+    Let us now prove some properties about the ideal norm. We first show that it respects localization:
+
+    \begin{proposition}\label{prop:ideal_norm_respects_localizations}
+      Let $\mc{O}/\smc{O}$ be a Dedekind extension of separable extension $L/K$ and let $D \subseteq \smc{O}-\{0\}$ be a multiplicative subset. Then for any fractional ideal $\mf{F}$ of $\mc{O}$, we have
       \[
-        \Norm(\a\mc{O}_{K}) = |\Norm(\a)|.
+        \Norm_{\mc{O}D^{-1}/\smc{O}D^{-1}}(\mf{F}D^{-1}) = \Norm_{\mc{O}/\smc{O}}(\mf{F})D^{-1}.
       \]
     \end{proposition}
     \begin{proof}
-      Let $\a_{1},\ldots,\a_{n}$ be an integral basis for $K$. Writing
+      Since the ideal norm is multiplicative, it suffices to prove the claim in the case of a prime $\mf{P}$ of $\mc{O}$. Then we must show
       \[
-        \a = \sum_{1 \le i \le n}a_{i}\a_{i},
+        \Norm_{\mc{O}D^{-1}/\smc{O}D^{-1}}(\mf{P}D^{-1}) = \Norm_{\mc{O}/\smc{O}}(\mf{P})D^{-1}.
       \]
-      with $a_{i} \in \Z$, we see that $a_{1}\a_{1},\ldots,a_{n}\a_{n}$ is a basis for $\a\mc{O}_{K}$. In particular, the base change matrix from $\a_{1},\ldots,\a_{n}$  to this basis is a diagonal matrix with the $a_{i}$ on the diagonal. Then on the one hand, we have $\Norm(\a\mc{O}_{K}) = |a_{1} \cdots a_{n}|$ by \cref{prop:base_change_quotient_determinant}. On the other hand, in terms of the basis $a_{1}\a_{1},\ldots,a_{n}\a_{n}$ the map $T_{\a}$ is given by
-      \[
-        T_{\a} = \begin{pmatrix} a_{1} & & \\ & \ddots & \\ & & a_{n} \end{pmatrix},
-      \]
-      and so $\Norm(\a) = a_{1} \cdots a_{n}$. Hence
-      \[
-        \Norm(\a\mc{O}_{K}) = |\Norm(\a)|,
-      \]
-      as desired.
+      This is immediate from \cref{prop:ramification_setup_respects_localization} and the definition of the ideal norm.
     \end{proof}
 
-    The norm of an integral ideal is also completely multiplicative:
+    The ideal norm is also compatible with the field trace:
 
-    \begin{proposition}\label{prop:ideal_norm_is_multiplicative}
-      Let $K$ be a number field and let $\mf{a}$ and $\mf{b}$ be integral ideals. Then
+    \begin{proposition}\label{prop:ideal_norm_respects_field_trace}
+      Let $\mc{O}/\smc{O}$ be a Dedekind extension of degree $n$ separable extension $L/K$. Then for any $\l \in \mc{O}$, we have
       \[
-        \Norm(\mf{a}\mf{b}) = \Norm(\mf{a})\Norm(\mf{b}).
+        \Norm_{\mc{O}/\smc{O}}(\l\mc{O}) = \Norm_{L/K}(\l)\smc{O}.
       \]
     \end{proposition}
     \begin{proof}
-      First suppose $\mf{a}$ and $\mf{b}$ are relatively prime. Then the Chinese remainder theorem implies
+      In light of \cref{prop:ideal_norm_respects_localizations}, it suffices to assume $\mc{O}/\smc{O}$ is a local Dedekind extension. Therefore $\smc{O}$ is a discrete valuation ring, $\mc{O}$ is a principal ideal domain, and $\mc{O}/\smc{O}$ admits an integral basis $\a_{1},\ldots,\a_{n}$ making $\mc{O}$ a free $\smc{O}$-module of rank $n$. Let $\mf{p}$ be the unique prime of $\smc{O}$ and $\pi$ be a uniformizer so that $\mf{p} = \pi\smc{O}$. Since the ideal norm and the field norm are both multiplicative and $\mc{O}$ and $\smc{O}$ are both unique factorization domains, we may assume that $\l$ is prime. Then $\l\mc{O} = \mf{P}$ for some prime $\mf{P}$ of $\mc{O}$. So on the one hand,
       \[
-        \mc{O}_{K}/\mf{a}\mf{b} \cong \mc{O}_{K}/\mf{a} \op \mc{O}_{K}/\mf{b},
+        \Norm_{\mc{O}/\smc{O}}(\l\mc{O}) = \mf{p}^{f_{\mf{p}}(\mf{P})}.
       \]
-      and hence $|\mc{O}_{K}/\mf{a}\mf{b}| = |\mc{O}_{K}/\mf{a}||\mc{O}_{K}/\mf{b}|$ so that $\Norm(\mf{a}\mf{b}) = \Norm(\mf{a})\Norm(\mf{b})$. As distinct prime integral ideals are relatively prime (because they are maximal), it suffices to show $\Norm(\mf{p}^{n}) = \Norm(\mf{p})^{n}$ for all prime integral ideals $\mf{p}$ and $n \ge 0$. We will prove this by induction. The base case is clear so assume that the claim holds for $n-1$. By the third isomorphism theorem, we have
+      As $\smc{O}$ is a discrete valuation ring, we have the prime factorization $\Norm_{L/K}(\l) = \mu\pi^{f}$. So on the other hand,
       \[
-        \mc{O}_{K}/\mf{p}^{n-1} \cong (\mc{O}_{K}/\mf{p}^{n})/(\mf{p}^{n-1}/\mf{p}^{n}).
+        \Norm_{L/K}(\l)\smc{O} = \mf{p}^{f}.
       \]
-      Using \cref{prop:isomorphism_of_quotient_by_prime_integral_ideals}, it follows that
-      \[
-        |\mc{O}_{K}/\mf{p}^{n-1}| = \frac{|\mc{O}_{K}/\mf{p}^{n}|}{|\mf{p}^{n-1}/\mf{p}^{n}|} = \frac{|\mc{O}_{K}/\mf{p}^{n}|}{|\mc{O}_{K}/\mf{p}|}.
-      \]
-      Thus $\Norm(\mf{p}^{n}) = \Norm(\mf{p}^{n-1})\Norm(\mf{p})$ and our induction hypothesis implies $\Norm(\mf{p}^{n}) = \Norm(\mf{p})^{n}$ as desired.
+      It now suffices to show that $f = f_{\mf{p}}(\mf{P})$. \todo{xxx}
     \end{proof}
 
-    At last we can define the norm to fractional ideals. Let $\mf{f}$ be a fractional ideal. By \cref{cor:fractional_ideal_prime_factorization}, there exist unique integral ideals $\mf{a}$ and $\mf{b}$ such that $\mf{f} = \mf{a}\mf{b}^{-1}$. We define the \textbf{norm}\index{norm} $\Norm(\mf{f})$ of $\mf{f}$ by
-    \[
-      \Norm(\mf{f}) = \frac{\Norm(\mf{a})}{\Norm(\mf{b})}.
-    \]
-    From this definition and \cref{prop:ideal_norm_is_multiplicative} it follows that the norm of a fractional ideal is completely multiplicative. Then upon writing $\mf{f}\mf{b} = \mf{a}$, we have $\Norm(\mf{f})\Norm(\mf{b}) \in \mf{a}$ and hence $\Norm(\mf{f}) \in \mf{f}$ after multiplying by $\frac{1}{\Norm(\mf{b})}$ because $\frac{1}{\Norm(\mf{b})}\mf{a} \subseteq \mf{f}\mc{O} \subseteq \mf{f}$. That is, every fractional ideal contains its norm. We have now established a homomorphism
-    \[
-      \Norm:I_{K} \to \Q^{\ast} \qquad \mf{f} \mapsto \Norm(\mf{f}),
-    \]
-    which we call the \textbf{ideal norm}\index{ideal norm} of $K$.
+    The different and discriminant and related to each other via the ideal norm. In particular, the ideal norm of the different is the discriminant:
+
+    \begin{proposition}\label{prop:norm_of_different_is_discriminant}
+      Let $\mc{O}/\smc{O}$ be a Dedekind extension of a degree $n$ separable extension $L/K$. Then
+      \[
+        \mf{d}_{\mc{O}/\smc{O}} = \Norm_{\mc{O}/\smc{O}}(\mf{D}_\mc{O}/\smc{O}).
+      \] 
+    \end{proposition}
+    \begin{proof}
+      In view of \cref{prop:different_and_discriminant_respect_localization}, we may assume $\mc{O}/\smc{O}$ is a local Dedekind extension. Therefore $\smc{O}$ is a discrete valuation ring, $\mc{O}$ is a principal ideal domain, and $\mc{O}/\smc{O}$ admits an integral basis $\a_{1},\ldots,\a_{n}$ making $\mc{O}$ a free $\smc{O}$-module of rank $n$. Then $\mf{d}_{\mc{O}/\smc{O}}$ is a principal integral ideal where
+      \[
+        \mf{d}_{\mc{O}/\smc{O}} = d_{\smc{O}}(\mc{O})\smc{O}.
+      \]
+      As $\mc{O}$ is a principal ideal domain, every fractional ideal is also principal. So on the one hand, $\mf{C}_{\mc{O}/\smc{O}} = \l\mc{O}$ for some nonzero $\l \in L$ and $\l\a_{1},\ldots,\l\a_{n}$ is a basis of $L/K$ contained in $\mf{C}_{\mc{O}/\smc{O}}$. Moreover,
+      \[
+        d_{L/K}(\l\a_{1},\ldots,\l\a_{n}) = \Norm_{L/K}(\l)^{2}d_{L/K}(\a_{1},\ldots,\a_{n}),
+      \]
+      by \cref{equ:discriminant_base_change} and that base change matrix from $\a_{1},\ldots,\a_{n}$ to $\l\a_{1},\ldots,\l\a_{n}$ is the multiplication by $\l$ map. \todo{xxx}
+    \end{proof}
   
 \end{document}
