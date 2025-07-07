@@ -23,7 +23,7 @@
       \[
         g(\b) = r(\b) = \a_{n-1}\b^{n-1}+\cdots+\a_{1}\b+\a_{0}.
       \]
-      As $g(x)$ was arbitrary, we see that $1,\b,\ldots,\b^{n-1}$ generates $A[\b]$ as a $A$-module. Now suppose $\b_{1},\ldots,\b_{n} \in B$ are all integral over $A$. We will prove that $A[\b_{1},\ldots,\b_{n}]$ is finitely generated as an $A$-module by induction. Our previous work implies the base case. So assume by induction that $R = A[\b_{1},\ldots,\b_{n-1}]$ is a finitely generated $A$-module. Then $R[\b_{n}] = A[\b_{1},\ldots,\b_{n}]$ is a finitely generated $R$-module and hence a finitely generated $\Z$-module as well by our induction hypothesis. This proves the forward implication of the first statement. For the reverse implication, suppose $A[\b_{1},\ldots,\b_{n}]$ is a finitely generated $A$-module. Let $\w_{1},\ldots,\w_{r}$ be a basis of $A[\b_{1},\ldots,\b_{n}]$. Then for any $\b \in A[\b_{1},\ldots,\b_{n}]$, we have
+      As $g(x)$ was arbitrary, we see that $1,\b,\ldots,\b^{n-1}$ generates $A[\b]$ as an $A$-module. Now suppose $\b_{1},\ldots,\b_{n} \in B$ are all integral over $A$. We will prove that $A[\b_{1},\ldots,\b_{n}]$ is finitely generated as an $A$-module by induction. Our previous work implies the base case. So assume by induction that $R = A[\b_{1},\ldots,\b_{n-1}]$ is a finitely generated $A$-module. Then $R[\b_{n}] = A[\b_{1},\ldots,\b_{n}]$ is a finitely generated $R$-module and hence a finitely generated $\Z$-module as well by our induction hypothesis. This proves the forward implication of the first statement. For the reverse implication, suppose $A[\b_{1},\ldots,\b_{n}]$ is a finitely generated $A$-module. Let $\w_{1},\ldots,\w_{r}$ be a basis of $A[\b_{1},\ldots,\b_{n}]$. Then for any $\b \in A[\b_{1},\ldots,\b_{n}]$, we have
       \[
         \b\w_{i} = \sum_{1 \le j \le r}\a_{i,j}\w_{j},
       \]
@@ -603,7 +603,7 @@
     \[
       \a \equiv \a_{i} \pmod{\mf{p}_{i}^{e_{i}}},
     \]
-    for all $i$. We will use the Chinese remainder theorem to prove a few useful lemmas about Dedekind domains. The first of which is regarding the quotient of a Dedekind domain by a prime:
+    for all $i$. We will use the Chinese remainder theorem to prove a few useful lemmas about Dedekind domains. The first lemma is regarding the quotient of a Dedekind domain by a prime:
 
     \begin{lemma}\label{lem:isomorphism_of_quotient_by_prime_integral_ideals}
       Let $\smc{O}$ be a Dedekind domain. Then for any prime $\mf{p}$ and $n \ge 0$, we have an isomorphism
@@ -627,7 +627,28 @@
       This shows $\phi$ is surjective completing the proof.
     \end{proof}
 
-    Our second is that if a Dedekind domain contains only finitely many primes then it must be a principal ideal domain:
+    Our second lemma shows that fractional ideals can be cancelled in quotients:
+
+    \begin{lemma}\label{lem:cancellation_isomorphism}
+      Let $\smc{O}$ be a Dedekind domain and $\mf{f}$, $\mf{g}$, $\mf{h}$ be fractional ideals with $\mf{g} \subseteq \mf{f}$. Then we have an isomorphism
+      \[
+        \mf{f}\mf{h}/\mf{g}\mf{h} \cong \mf{f}/\mf{g}.
+      \]
+    \end{lemma}
+    \begin{proof}
+      We have $\mf{f} = \frac{\mf{a}}{\a}$, $\mf{g} = \frac{\mf{b}}{\b}$, and $\mf{h} = \frac{\mf{c}}{\g}$ for nonzero $\a,\b,\g \in \smc{O}$ and integral ideals $\mf{a}$, $\mf{b}$, and $\mf{c}$. In view of the isomorphisms,
+      \[
+        \mf{f}\mf{h}/\mf{g}\mf{h} \cong \b\mf{a}\mf{c}/\a\mf{b}\mf{c} \quad \text{and} \quad \mf{f}/\mf{g} \cong \b\mf{a}/\a\mf{b},
+      \]
+      it suffices to show
+      \[
+        \mf{a}\mf{c}/\mf{b}\mf{c} \cong \mf{a}/\mf{b}.
+      \]
+      \todo{xxx}
+    \end{proof}
+
+
+    Our third lemma is that if a Dedekind domain contains only finitely many primes then it must be a principal ideal domain:
 
     \begin{lemma}\label{lem:Dedekind_with_finite_primes_is_PID}
       Let $\smc{O}$ be a Dedekind domain. If there are only finitely many primes then $\smc{O}$ is a principal ideal domain.
@@ -722,7 +743,7 @@
     \begin{proof}
       Since $\mc{O}_{K}$ is the integral closure of $\Z$ in $K$, $\mc{O}_{K}$ is automatically an integrally closed integral domain. As $\mc{O}_{K}$ is a free abelian group of finite rank, any ideal is a finitely generated $\Z$-module and hence a finitely generated $\mc{O}_{K}$-module. This proves that $\mc{O}_{K}$ is noetherian. It remains to prove that every prime of $\mc{O}_{K}$ is maximal. Letting $\mf{p}$ be a prime, it suffices to show $\mc{O}_{K}/\mf{p}$ is a field. To this end, consider the homomorphism
       \[
-        \phi:\Z \to \mc{O}_{K}/\mf{p} \qquad \a \mapsto \a \tmod{\mf{p}}.
+        \phi:\Z \to \mc{O}_{K}/\mf{p} \qquad a \mapsto a \tmod{\mf{p}}.
       \]
       Then $\ker\phi = \mf{p} \cap \Z$ and we claim $\mf{p} \cap \Z$ is a prime of $\Z$. It is obviously an ideal of $\Z$ and is prime because $\mf{p}$ is. To see that it is nonzero, let $\a \in \mf{p}$ be nonzero. As $\a$ is an algebraic integer, we have
       \[
@@ -1116,7 +1137,32 @@
       because the first statement implies that the prime factors of $\mf{p}D^{-1}\mc{O}$ correspond to those of $\mf{p}\mc{O}$ and hence their powers must be the same.
     \end{proof}
 
-    The inertia degrees and ramification indices satisfy a simple relationship to the degree of $L/K$. We describe this relationship in the following theorem known as the \textbf{fundamental equality}\index{fundamental equality}:
+    The inertia degrees and ramification indices satisfy a simple relationship to the degree of $L/K$. First, we will prove a useful lemma:
+
+    \begin{lemma}\label{lem:quotient_by_prime_power_isomorphism}
+      Let $\mc{O}/\smc{O}$ be a Dedekind extension of a degree $n$ separable extension $L/K$. Suppose $\mf{P}$ is a prime above $\mf{p}$. Then for any $e \ge 1$, we have
+      \[
+        \mc{O}/\mf{P}^{e} \cong \bigop_{0 \le i \le e-1}\mc{O}/\mf{P}.
+      \]
+      In particular, the dimension of $\mc{O}/\mf{P}^{e}$ as a $(\smc{O}/\mf{p})$-vector space is $ef_{\mf{p}}(\mf{P})$.
+    \end{lemma}
+    \begin{proof}
+      Consider the descending chain
+      \[
+        \mc{O}/\mf{P}^{e} \supseteq \mf{P}/\mf{P}^{e} \supseteq \cdots \supseteq \mf{P}^{e-1}/\mf{P}^{e} \supseteq \mf{P}^{e}/\mf{P}^{e},
+      \]
+      of $(\smc{O}/\mf{p})$-vector spaces. By the third isomorphism theorem, these quotients are of the form $\mf{P}^{i}/\mf{P}^{i+1}$ for $0 \le i \le e-1$ and are all isomorphic to $\mc{O}/\mf{P}$ by \cref{lem:isomorphism_of_quotient_by_prime_integral_ideals}. Therefore we have a decomposition
+      \[
+        \mf{P}^{i}/\mf{P}^{e} \cong (\mc{O}/\mf{P}) \op (\mf{P}^{i+1}/\mf{P}^{e}),
+      \]
+      for all $i$. Iteratively applying this isomorphism $e-1$ times gives
+      \[
+        \mc{O}/\mf{P}^{e} \cong \bigop_{0 \le i \le e-1}\mc{O}/\mf{P}.
+      \]
+      This proves the first statement. Since the dimension of $\mc{O}/\mf{P}$ as a $(\smc{O}/\mf{p})$-vector space is $f_{\mf{p}}(\mf{P})$ by definition, it follows that $\mc{O}/\mf{P}^{e}$ is a $(\smc{O}/\mf{p})$-vector space of dimension $ef_{\mf{p}}(\mf{P})$. This proves the second statement.
+    \end{proof}
+    
+    We now describe the relationship between inertia degrees and ramification indices which is known as the \textbf{fundamental equality}\index{fundamental equality}:
 
     \begin{theorem*}[Fundamental equality]
       Let $\mc{O}/\smc{O}$ be a Dedekind extension of a degree $n$ separable extension $L/K$. Suppose $\mf{p}$ is a prime of $K$ and $\mf{p}\mc{O}$ has prime factorization
@@ -1149,11 +1195,7 @@
       \[
         d\mc{O} \subseteq \l_{1}\smc{O}+\cdots+\l_{m}\smc{O}.
       \]
-      By \cref{prop:field_of_fractions_AKBL} and that $d \neq 0$, multiplication by $K$ shows $L = \l_{1}K+\cdots+\l_{m}K$ (as the reverse containment is trivial). Hence $\l_{1},\ldots,\l_{m}$ spans $L/K$ so that $m = n$ and $\mc{O}/\mf{p}\mc{O}$ is a $(\smc{O}/\mf{p})$-vector space of dimension $n$. For $\mc{O}/\mf{P}_{i}^{e_{\mf{p}}(\mf{P}_{i})}$, consider the descending chain
-      \[
-        \mc{O}/\mf{P}_{i}^{e_{\mf{p}}(\mf{P}_{i})} \supseteq \mf{P}/\mf{P}_{i}^{e_{\mf{p}}(\mf{P}_{i})} \supseteq \cdots \supseteq \mf{P}^{e_{\mf{p}}(\mf{P}_{i})-1}/\mf{P}_{i}^{e_{\mf{p}}(\mf{P}_{i})} \supseteq \mf{P}^{e_{\mf{p}}(\mf{P}_{i})}/\mf{P}_{i}^{e_{\mf{p}}(\mf{P}_{i})},
-      \]
-      of $(\smc{O}/\mf{p})$-vector spaces. The dimension of $\mc{O}/\mf{P}_{i}^{e_{\mf{p}}(\mf{P}_{i})}$ as a $(\smc{O}/\mf{p})$-vector space is the sum of the dimensions of the successive quotients in this chain. By the third isomorphism theorem, these quotients are of the form $\mf{P}_{i}^{e}/\mf{P}_{i}^{e+1}$ for $0 \le e \le e_{\mf{p}}(\mf{P}_{i})-1$ and are all isomorphic to $\mc{O}/\mf{P}_{i}$ by \cref{lem:isomorphism_of_quotient_by_prime_integral_ideals}. As the dimension of $\mc{O}/\mf{P}_{i}$ over $\smc{O}/\mf{p}$ is $f_{\mf{p}}(\mf{P}_{i})$ by definition, it follows that $\mc{O}/\mf{P}_{i}^{e_{\mf{p}}(\mf{P}_{i})}$ is a $(\smc{O}/\mf{p})$-vector space of dimension $e_{\mf{p}}(\mf{P}_{i})f_{\mf{p}}(\mf{P}_{i})$. Together with the Chinese remainder theorem, our dimension computations combine to give
+      By \cref{prop:field_of_fractions_AKBL} and that $d \neq 0$, multiplication by $K$ shows $L = \l_{1}K+\cdots+\l_{m}K$ (as the reverse containment is trivial). Hence $\l_{1},\ldots,\l_{m}$ spans $L/K$ so that $m = n$ and $\mc{O}/\mf{p}\mc{O}$ is a $(\smc{O}/\mf{p})$-vector space of dimension $n$. For $\mc{O}/\mf{P}_{i}^{e_{\mf{p}}(\mf{P}_{i})}$, the dimensionality claim follows from \cref{lem:quotient_by_prime_power_isomorphism}. So our dimension computations combine to give
       \[
         n = \sum_{1 \le i \le r}e_{\mf{p}}(\mf{P}_{i})f_{\mf{p}}(\mf{P}_{i}).
       \]
@@ -1225,13 +1267,13 @@
       \]
       for all $i$. Via the isomorphism $\mc{O}/\mf{p}\mc{O} \cong A$ described above, the maximal ideals of $\mc{O}/\mf{p}\mc{O}$ are exactly $\conj{m_{i}(\t)}(\mc{O}/\mf{p}\mc{O})$. We now show that the $\mf{P}_{i}$ are prime. To see this, consider the surjective homomorphism
       \[
-        \pi:\mc{O} \to \mc{O}/\mf{p}\mc{O} \qquad \t \mapsto \t \pmod{\mf{p}\mc{O}}.
+        \pi:\mc{O} \to \mc{O}/\mf{p}\mc{O} \qquad \a \mapsto \a \pmod{\mf{p}\mc{O}}.
       \]
       Then the image of $\mf{P}_{i}$ under $\pi$ is $\conj{m_{i}(\t)}(\mc{O}/\mf{p}\mc{O})$. As this ideal is maximal and hence prime, the preimage $\mf{P}_{i}$ is prime too. Moreover, the $\mf{P}_{i}$ are all distinct since the $\conj{m_{i}(\t)}\mc{O}/\mf{p}\mc{O}$ are which are all distinct because the $\conj{m_{i}}(x)A$ are (using the isomorphism $\mc{O}/\mf{p}\mc{O} \cong A$). In particular, they are also relatively prime. By construction, $\mf{P}_{i} \subseteq \mf{p}\mc{O}$ so that the $\mf{P}_{i}$ are prime factors of $\mf{p}\mc{O}$. These are the only prime factors of $\mf{p}\mc{O}$ because the image of any prime under $\pi$ contained in $\mf{p}\mc{O}$ must be a maximal ideal of $\mc{O}/\mf{p}\mc{O}$ (since primes are maximal and by the fourth isomorphism theorem) and every maximal ideal is one of the $\conj{m_{i}(\t)}(\mc{O}/\mf{p}\mc{O})$. Together, all of this means that $\mf{p}\mc{O}$ admits the prime factorization
       \[
-        \mf{p}\mc{O} = \mf{P}_{1}^{e_{p}(\mf{P}_{1})} \cdots \mf{P}_{r}^{e_{p}(\mf{P}_{r})},
+        \mf{p}\mc{O} = \mf{P}_{1}^{e_{\mf{p}}(\mf{P}_{1})} \cdots \mf{P}_{r}^{e_{\mf{p}}(\mf{P}_{r})},
       \]
-      for some ramification indices $e_{p}(\mf{P}_{i})$ for all $i$. We will be done if we can show $e_{p}(\mf{P}_{i}) = e_{i}$ for all $i$. To accomplish this, observe that we have an isomorphism
+      for some ramification indices $e_{\mf{p}}(\mf{P}_{i})$ for all $i$. We will be done if we can show $e_{\mf{p}}(\mf{P}_{i}) = e_{i}$ for all $i$. To accomplish this, observe that we have an isomorphism
       \[
         \mc{O}/\mf{P}_{i} \cong (\mc{O}/\mf{p}\mc{O})/(\conj{m_{i}(\t)}(\mc{O}/\mf{p}\mc{O})) \cong (\smc{O}/\mf{p})[x]/\conj{m_{i}}(x)(\smc{O}/\mf{p})[x],
       \]
@@ -1239,11 +1281,11 @@
       \[
         \mf{p}\mc{O} = \pi^{-1}(0) \supseteq \mf{p}_{1}^{e_{1}} \cdots \mf{p}_{r}^{e_{r}}.
       \]
-      Since the $\mf{P}_{i}$ are prime, we have $e_{p}(\mf{P}_{i}) \le e_{i}$ for all $i$. But the fundamental equality then gives
+      Since the $\mf{P}_{i}$ are prime, we have $e_{\mf{p}}(\mf{P}_{i}) \le e_{i}$ for all $i$. But the fundamental equality then gives
       \[
-        n = \sum_{1 \le i \le r}e_{p}(\mf{P}_{i})f_{p}(\mf{P}_{i}) \le \sum_{1 \le i \le r}e_{i}f_{p}(\mf{P}_{i}) \le \sum_{1 \le i \le r}e_{i}\deg(\conj{m_{i}}(x)) \le n,
+        n = \sum_{1 \le i \le r}e_{\mf{p}}(\mf{P}_{i})f_{p}(\mf{P}_{i}) \le \sum_{1 \le i \le r}e_{i}f_{p}(\mf{P}_{i}) \le \sum_{1 \le i \le r}e_{i}\deg(\conj{m_{i}}(x)) \le n,
       \]
-      where the last equality follows by the prime factorization of $\conj{m_{\t}}(x)$ and that $\deg(\conj{m_{\t}}(x)) = \deg(m_{\t}(x))$ because $m_{\t}(x)$ is monic. This shows that $e_{p}(\mf{P}_{i}) = e_{i}$ for all $i$ which completes the proof.
+      where the last equality follows by the prime factorization of $\conj{m_{\t}}(x)$ and that $\deg(\conj{m_{\t}}(x)) = \deg(m_{\t}(x))$ because $m_{\t}(x)$ is monic. This shows $e_{\mf{p}}(\mf{P}_{i}) = e_{i}$ for all $i$ which completes the proof.
     \end{proof}
 
     Let $\mc{O}/\smc{O}$ be a Dedekind extension of a degree $n$ separable extension $L/K$. The Dedekind-Kummer theorem allows us to compute the prime factorization of $\mf{p}\mc{O}$ provided this integral ideal is relatively prime to the conductor $\mf{Q}_{\mc{O}/\smc{O}}$. By the prime factorization of fractional ideals, $\mf{Q}_{\mc{O}/\smc{O}}$ has finitely many prime factors so we only have to avoid finitely many primes of $L$. In fact, if the conductor is $\mc{O}$ then we do not have to avoid any primes at all. This occurs when $\mc{O}/\smc{O}$ is monogenic. Indeed, Suppose $\mc{O} = \smc{O}[\a]$ for some $\a \in \mc{O}$. Then $1,\a,\ldots,\a^{n-1}$ is an integral basis for $\mc{O}/\smc{O}$ and is necessarily a basis for $L/K$. But then $\a$ is also a primitive element for $L/K$ which implies
@@ -1401,15 +1443,7 @@
         \[
           \Trace_{(\mc{O}/\mf{P}^{e_{\mf{p}}(\mf{P})})/(\smc{O}/\mf{p})}(\conj{\b}) = 0,
         \]
-        for all $\b \in \mc{O}$. We will show that this occurs if and only if $e_{\mf{p}}(\mf{P}) \equiv 0 \tmod{\mf{p}}$. So let $\b \in \mc{O}$ and consider the descending chain
-        \[
-          \mc{O}/\mf{P}^{e_{\mf{p}}(\mf{P})} \supseteq \mf{P}/\mf{P}^{e_{\mf{p}}(\mf{P})} \supseteq \cdots \supseteq \mf{P}^{e_{\mf{p}}(\mf{P})-1}/\mf{P}^{e_{\mf{p}}(\mf{P})} \supseteq \mf{P}^{e_{\mf{p}}(\mf{P}_{i})}/\mf{P}_{i}^{e_{\mf{p}}(\mf{P}_{i})},
-        \]
-        of $(\smc{O}/\mf{p})$-vector spaces. As $\mf{P}^{e}/\mf{P}^{e_{\mf{p}}(\mf{P})}$ is an ideal of $\mc{O}/\mf{P}^{e_{\mf{p}}(\mf{P})}$ for $0 \le e \le e_{\mf{p}}(\mf{P})-1$, the multiplication by $\conj{\b}$ map is a linear operator on each $\mf{P}^{e}/\mf{P}^{e_{\mf{p}}(\mf{P})}$. By the third isomorphism theorem, the successive quotients are of the form $\mf{P}^{e}/\mf{P}^{e+1}$ for $0 \le e \le e_{\mf{p}}(\mf{P})-1$ and are all isomorphic to $\mc{O}/\mf{P}$ by \cref{lem:isomorphism_of_quotient_by_prime_integral_ideals}. Therefore we have a decomposition
-        \[
-          \mf{P}^{e}/\mf{P}^{e_{\mf{p}}(\mf{P})} \cong (\mc{O}/\mf{P}) \op (\mf{P}^{e+1}/\mf{P}^{e_{\mf{p}}(\mf{P})}),
-        \]
-        for all $e$. Iteratively applying this isomorphism $e_{\mf{p}}(\mf{P})-1$ times gives
+        for all $\b \in \mc{O}$. We will show that this occurs if and only if $e_{\mf{p}}(\mf{P}) \equiv 0 \tmod{\mf{p}}$. So let $\b \in \mc{O}$. By \cref{lem:quotient_by_prime_power_isomorphism}, we have an isomorphism
         \[
           \mc{O}/\mf{P}^{e_{\mf{p}}(\mf{P})} \cong \bigop_{0 \le e \le e_{\mf{p}}(\mf{P})-1}\mc{O}/\mf{P}.
         \]
@@ -1447,9 +1481,9 @@
       \]
       So $\mf{p}$ divides $\mf{d}_{\mc{O}/\smc{O}}$ if and only if $d_{\smc{O}/\mf{p}}(\mc{O}/\mf{p}\mc{O}) = 0$. Now suppose $\mf{p}\mc{O}$ has prime factorization
       \[
-        \mf{p}\mc{O} = \mf{P}_{1}^{e_{p}(\mf{P}_{1})} \cdots \mf{P}_{r}^{e_{p}(\mf{P}_{r})}.
+        \mf{p}\mc{O} = \mf{P}_{1}^{e_{\mf{p}}(\mf{P}_{1})} \cdots \mf{P}_{r}^{e_{\mf{p}}(\mf{P}_{r})}.
       \]
-      As the $\mf{P}_{1}^{e_{p}(\mf{P}_{1})},\ldots,\mf{P}_{r}^{e_{p}(\mf{P}_{r})}$ are pairwise relatively prime, the Chinese remainder theorem gives
+      As the $\mf{P}_{1}^{e_{\mf{p}}(\mf{P}_{1})},\ldots,\mf{P}_{r}^{e_{\mf{p}}(\mf{P}_{r})}$ are pairwise relatively prime, the Chinese remainder theorem gives
       \[
         \mc{O}/\mf{p}\mc{O} \cong \bigop_{1 \le i \le r} \mc{O}/\mf{P}_{i}^{e_{\mf{p}}(\mf{P}_{i})}.
       \]
@@ -1478,7 +1512,7 @@
       \mf{d}_{K} = \D_{K}\mc{O}_{K}.
     \]
     As all of the residue class extensions are separable, it follows from \cref{thm:ramifies_if_and_only_if_divides_the_different,thm:ramifies_if_and_only_if_divides_the_discriminant} that a prime of $K$ ramifies if and only if it divides $\mf{D}_{K}$ and a prime of $\Q$ ramifies if and only if it divides $|\D_{K}|$. Moreover, finitely many primes of $K$ and $\Q$ ramify by \cref{cor:finitely_many_primes_ramify_L,cor:finitely_many_primes_ramify_K}.
-  \section{\todo{The Ideal Norm}}
+  \section{The Ideal Norm}
     Let $\mc{O}/\smc{O}$ be a Dedekind extension of a degree $n$ extension $L/K$. If $\mf{P}$ a prime of $L$ is above the prime $\mf{p}$ of $K$, we define the \textbf{norm}\index{norm} $\Norm_{\mc{O}/\smc{O}}(\mf{P})$ of $\mf{P}$ by
     \[
       \Norm_{\mc{O}/\smc{O}}(\mf{P}) = \mf{p}^{f_{\mf{p}}(\mf{P})}.
@@ -1512,7 +1546,7 @@
     For an integral ideal $\mf{a}$, there is a simple relationship between the norm $\mf{a}$ and the quotient $\mc{O}_{K}/\mf{a}$:
 
     \begin{proposition}\label{prop:norm_and_field_norms_are_identical}
-      Let $K$ be a number field. Then
+      Let $K$ be a number field of degree $n$. Then for any integral ideal $\mf{a}$, we have
       \[
         \Norm_{K}(\mf{a}) = |\mc{O}_{K}/\mf{a}|.
       \]
@@ -1522,10 +1556,54 @@
       \]
     \end{proposition}
     \begin{proof}
-      \todo{xxx}
+      Since $K$ admits an integral basis, $\mc{O}_{K}$ is a free abelian group of rank $n$ as is any fractional ideal. In particular, $|\mc{O}_{K}/\mf{a}|$ is finite. As the Chinese remainder theorem implies
+      \[
+        |\mc{O}_{K}/\mf{a}\mf{b}| = |\mc{O}_{K}/\mf{a}||\mc{O}_{K}/\mf{b}|,
+      \]
+      whenever $\mf{a}$ and $\mf{b}$ are relatively prime, it suffices to prove the claim in the case of a prime power. So let $\mf{p}$ be a prime of $\mc{O}_{K}$ above $p$ and $e \ge 1$. On the one hand, $\Norm_{K}(\mf{p}^{e}) = p^{ef_{p}(\mf{p})}$ by definition of the norm. On the other hand, \cref{lem:quotient_by_prime_power_isomorphism} implies $\mc{O}_{K}/\mf{p}^{e}$ is an $\F_{p}$-vector space of dimension $ef_{p}(\mf{p})$ so that $|\mc{O}_{K}/\mf{p}^{e}| = p^{ef_{p}(\mf{p})}$. Together, we have
+      \[
+        \Norm_{K}(\mf{p}^{e}) = |\mc{O}_{K}/\mf{p}^{e}|,
+      \]
+      and the first statement follows. For the second statement, we just have to show that $|\Norm_{K}(\a)| = |\mc{O}_{K}/\a\mc{O}_{K}|$. To this end, let $\a_{1},\ldots,\a_{n}$ be an integral basis for $K$. Writing
+      \[
+        \a = \sum_{1 \le i \le n}a_{i}\a_{i},
+      \]
+      with $a_{i} \in \Z$, we see that $a_{1}\a_{1},\ldots,a_{n}\a_{n}$ is a basis for $\a\mc{O}_{K}$. In particular, the base change matrix from $\a_{1},\ldots,\a_{n}$  to this basis is a diagonal matrix with the $a_{i}$ on the diagonal. Then on the one hand, we have $|\mc{O}_{K}/\a\mc{O}_{K}| = |a_{1} \cdots a_{n}|$ by \cref{prop:base_change_quotient_determinant} again. On the other hand, the multiplication by $\a$ map in terms of the basis $a_{1}\a_{1},\ldots,a_{n}\a_{n}$ has matrix representation
+      \[
+        \begin{pmatrix} a_{1} & & \\ & \ddots & \\ & & a_{n} \end{pmatrix},
+      \]
+      and so $\Norm_{K}(\a) = a_{1} \cdots a_{n}$. Hence
+      \[
+        |\mc{O}_{K}/\a\mc{O}_{K}| = |\Norm_{K}(\a)|,
+      \]
+      as desired.
     \end{proof}
 
-    We can also compute the norm of a dual ideal:
+    As a consequence of \cref{prop:norm_and_field_norms_are_identical} and Lagrange's theorem, $\Norm_{K}(\mf{a}) \in \mf{a}$ for any integral ideal $\mf{a}$ and therefore for every fractional ideal as well (recall every such fractional ideal is of the form $\frac{1}{\d}\mf{a}$ for some nonzero $\d \in \Z$ and integral ideal $\mf{a}$). Computing the norm of the discriminant $\D_{K}$ is also an easy matter:
+
+    \begin{proposition}\label{prop:norm_of_different_is_discriminant}
+      Let $K$ be a number field of degree $n$. Then we have an isomorphism
+      \[
+        \mc{O}_{K}/\mf{D}_{K} \cong \mc{O}_{K}^{\vee}/\mc{O}_{K}.
+      \]
+      In particular,
+      \[
+        \Norm_{K}(\mf{D}_{K}) = |\D_{K}|.
+      \]
+    \end{proposition}
+    \begin{proof}
+      By \cref{prop:explicit_inverse_ideal}, $\mc{O}_{K} \subseteq \mf{D}_{K}^{-1}$. So using \cref{lem:cancellation_isomorphism}, we obtain the first isomorphism in the following chain:
+      \[
+        \mc{O}_{K}/\mf{D}_{K} \cong \mf{D}^{-1}_{K}/\mc{O}_{K} \cong \mc{O}_{K}^{\vee}/\mc{O}_{K}.
+      \]
+      This proves the first statement. For the second, this isomorphism shows that $\Norm_{K}(\mf{D}_{K}) = |\mc{O}_{K}^{\vee}/\mc{O}_{K}|$ by \cref{prop:norm_and_field_norms_are_identical}. Now let $\a_{1},\ldots,\a_{n}$ be an integral basis for $\mc{O}_{K}$. Then the dual basis $\a_{1}^{\vee},\ldots,\a_{n}^{\vee}$ is a basis for $\mc{O}_{K}^{\vee}$ and we have
+      \[
+        \a_{i}^{\vee} = \sum_{1 \le j \le n}\Trace_{K}(\a_{i}\a_{j})\a_{j}.
+      \]
+      But then the base change matrix from $\a_{1},\ldots,\a_{n}$ to $\a_{1}^{\vee},\ldots,\a_{n}^{\vee}$ is $(\Trace_{K}(\a_{i}\a_{j}))_{i,j}$. The claim follows by \cref{prop:base_change_quotient_determinant} and the definition of $\D_{K}$.
+    \end{proof}
+
+    We can now compute the norm of a dual ideal:
 
     \begin{corollary}\label{cor:norm_of_different}
       Let $K$ be a number field and $\mf{f}$ be a fractional ideal. Then
@@ -1543,13 +1621,13 @@
       Let $K$ be a number field of degree $n$. Then $a_{K}(m) \le \s_{0}(m)^{n}$.
     \end{proposition}
     \begin{proof}
-      Let $\mf{a}$ be an integral ideal of norm $m$. First suppose $m = p^{k}$ for some prime $p$ and $k \ge 0$. As there are at most $n$ primes $\mf{p}_{1},\ldots,\mf{p}_{n}$ above $p$ with inertia degrees $f_{p}(\mf{p}_{1}),\ldots,f_{p}(\mf{p}_{1})$ respectively, we have
+      Let $\mf{a}$ be an integral ideal of norm $m$. First suppose $m = p^{k}$ for some prime $p$ and $k \ge 0$. As there are at most $n$ primes $\mf{p}_{1},\ldots,\mf{p}_{n}$ above $p$ with inertia degrees $f_{p}(\mf{p}_{1}),\ldots,f_{p}(\mf{p}_{n})$ respectively, we have
       \[
         \Norm_{K}(\mf{a}) = p^{e_{1}f_{p}(\mf{p}_{1})} \cdots p^{e_{n}f_{p}(\mf{p}_{n})},
       \]
       for some integers $0 \le e_{i} \le k$ for $1 \le i \le n$. Therefore the number of possibilities is equivalent to the number of solutions
       \[
-        e_{1}f_{p}(\mf{p}_{1})+\cdots+e_{n}f_{\mf{p}_{n}} = k,
+        e_{1}f_{p}(\mf{p}_{1})+\cdots+e_{n}f_{p}(\mf{p}_{n}) = k,
       \]
       which is at most $\s_{0}(p^{k})^{n} = (k+1)^{n}$. This proves the claim in the case $m$ is a prime power. By multiplicativity of $a_{K}(m)$ and the divisor function, it follows that the number of integral ideals of norm $m$ is at most $\s_{0}(m)^{n}$ as desired.
     \end{proof}
