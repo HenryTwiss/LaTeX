@@ -1352,31 +1352,34 @@
     Accordingly, we say that $\s(\mf{P})$ is \textbf{conjugate}\index{conjugate} to $\mf{P}$. It turns out that the Galois group acts transitively on the set of primes above a given prime:
 
     \begin{proposition}\label{prop:Galois_action_on_primes_is_transitive}
-      Let $\mc{O}/\smc{O}$ be a Dedekind extension of a finite Galois extension $L/K$ and let $\mf{p}$ be a prime of $\smc{O}$. Then $\Gal(L/K)$ acts transitively on the set of primes above $\mf{p}$. That is, the primes above $\mf{p}$ are all conjugates of each other.
+      Let $\mc{O}/\smc{O}$ be a Dedekind extension of a finite Galois extension $L/K$ and let $\mf{p}$ be a prime of $\smc{O}$. Then $\Gal(L/K)$ acts transitively on the set of primes above $\mf{p}$. Moreover, if $\mf{p}\mc{O}$ has prime factorization
+      \[
+        \mf{p}\mc{O} = \mf{P}_{1}^{e_{\mf{p}}(\mf{P}_{1})} \cdots \mf{P}_{r}^{e_{\mf{p}}(\mf{P}_{r})},
+      \]
+      then
+      \[
+        f_{\mf{p}}(\mf{P}_{1}) = \cdots = f_{\mf{p}}(\mf{P}_{r}) \quad \text{and} \quad e_{\mf{p}}(\mf{P}_{1}) = \cdots = e_{\mf{p}}(\mf{P}_{r}).
+      \]
     \end{proposition}
     \begin{proof}
-      Let $\mf{P}$ and $\mf{P}'$ be two primes above $\mf{p}$. Assume by contraction that $\s(\mf{P}) \neq \mf{P}'$ for any $\s \in \Gal(L/K)$. Since distinct primes are relatively prime, the Chinese remainder theorem implies the existence of an $\a \in \mc{O}$ such that
+      Let $\mf{P}_{i}$ and $\mf{P}_{j}$ for $1 \le i < j \le r$ be two primes above $\mf{p}$. Assume by contraction that $\s(\mf{P}_{i}) \neq \mf{P}_{j}$ for any $\s \in \Gal(L/K)$. Since distinct primes are relatively prime, the Chinese remainder theorem implies the existence of an $\a \in \mc{O}$ such that
       \[
-        \a \equiv 0 \tmod{\mf{P}'} \quad \text{and} \quad \a \equiv 1 \tmod{\s(\mf{P})},
+        \a \equiv 1 \tmod{\s(\mf{P}_{i})} \quad \text{and} \quad \a \equiv 0 \tmod{\mf{P}_{j}},
       \]
-      for all $\s \in \Gal(L/K)$. As $\Norm_{L/K}(\a) = \prod_{\s \in \Gal(L/K)}\s(\a)$ by \cref{prop:formulas_for_trace_and_norm} and $\a \in \mf{P}'$, we have $\Norm_{L/K}(\a) \in \mf{P}$. On the other hand, $\a \notin \s(\mf{P})$ and hence $\s(\a) \notin \mf{P}$ for all $\s \in \Gal(L/K)$ (recall $\Gal(L/K)$ is a group so $\s$ has an inverse $\s^{-1}$). But then by \cref{prop:formulas_for_trace_and_norm} and that $\mf{P}$ is prime, $\Norm_{L/K}(\a) \notin \mf{P}$ for otherwise $\s(\a) \in \mf{P}$ for some $\s \in \Gal(L/K)$ by primality. This gives a contradiction and therefore the action is transitive. The last statement is clear.
+      for all $\s \in \Gal(L/K)$. Now recall that $\Norm_{L/K}(\a) = \prod_{\s \in \Gal(L/K)}\s(\a)$ by \cref{prop:formulas_for_trace_and_norm} and $\Norm_{L/K}(\a) \in \smc{O}$ by \cref{prop:trace_and_norm_AKBL}. Moreover,
+      \[
+        \mf{P}_{i} \cap \smc{O} = \mf{p} = \mf{P}_{j} \cap \smc{O}.
+      \]
+      On the one hand, $\a \notin \s(\mf{P}_{i})$ and hence $\s(\a) \notin \mf{P}_{i}$ for all $\s \in \Gal(L/K)$ (recall $\Gal(L/K)$ is a group so $\s$ has an inverse $\s^{-1}$). But then $\Norm_{L/K}(\a) \notin \mf{P}_{i}$ for otherwise $\s(\a) \in \mf{P}_{i}$ for some $\s \in \Gal(L/K)$ by primality of $\mf{P}_{i}$. It must be the case that $\Norm_{L/K}(\a) \notin \mf{p}$ because $\mf{P}_{i}$ is above $\mf{p}$. On the other hand, $\a \in \mf{P}_{j}$ and so $\Norm_{L/K}(\a) \in \mf{P}_{j}$ since $\s(\a) \in \mf{P}_{j}$ when $\s$ is the identity and $\mf{P}_{j}$ is an integral ideal. But then $\Norm_{L/K}(\a) \in \mf{p}$ because $\mf{P}_{j}$ is above $\mf{p}$. This gives a contradiction and therefore the action is transitive. We now show that the inertia degrees and ramification indices of $\mf{P}_{i}$ and $\mf{P}_{j}$ are equal which will complete the proof. By what we have just proved, there exists a $\s \in \Gal(L/K)$ such that $\s(\mf{P}_{i}) = \mf{P}_{j}$. Since $\s$ is an automorphism of $\mc{O}$, it induces an isomorphism
+      \[
+        \mc{O}/\mf{P}_{i} \cong \mc{O}/\mf{P}_{j}.
+      \]
+      Therefore the inertia degrees of $\mf{P}_{i}$ and $\mf{P}_{j}$ are equal. For the ramification indices, recall that $\s$ is an automorphism of $\mc{O}$ fixing $\smc{O}$, and hence $\mf{p}$ too, pointwise. Thus $\s(\mf{p}\mc{O}) = \mf{p}\mc{O}$ which implies that $\mf{P}_{i}^{e} \mid\mid \mf{p}\mc{O}$ if and only if $\mf{P}_{j}^{e} \mid\mid \mf{p}\mc{O}$. Therefore the ramification indices of $\mf{P}_{i}$ and $\mf{P}_{j}$ are equal as well. This completes the proof 
     \end{proof}
 
-    It turns out that the inertia degrees and ramification indices for the primes above $\mf{p}$ are all equal. Equivalently, if $\mf{p}\mc{O}$ has prime factorization
+    Another way to phrase \cref{prop:Galois_action_on_primes_is_transitive} is that the primes above $\mf{p}$ are all conjugate to each other and their inertia degrees and ramification indices are all equal. We call the common inertia degree $f$ the \textbf{inertia degree}\index{inertia degree} of $\mf{p}$ and the common ramification index $e$ the \textbf{ramification index}\index{ramification index} of $\mf{p}$. If there are $r$ primes above $\mf{p}$, the fundamental equality takes the particularly simple form
     \[
-      \mf{p}\mc{O} = \mf{P}_{1}^{e_{\mf{p}}(\mf{P}_{1})} \cdots \mf{P}_{r}^{e_{\mf{p}}(\mf{P}_{r})},
-    \]
-    then
-    \[
-      f_{\mf{p}}(\mf{P}_{1}) = \cdots = f_{\mf{p}}(\mf{P}_{r}) \quad \text{and} \quad e_{\mf{p}}(\mf{P}_{1}) = \cdots = e_{\mf{p}}(\mf{P}_{r}).
-    \]
-    To see this, consider $\mf{P}_{i}$ and $\mf{P}_{j}$ with $1 \le i < j \le r$. By \cref{prop:Galois_action_on_primes_is_transitive}, there exists a $\s \in \Gal(L/K)$ such that $\s(\mf{P}_{i}) = \mf{P}_{j}$. But as $\s$ is an automorphism of $\mc{O}$, this induces an isomorphism
-    \[
-      \mc{O}/\mf{P}_{i} \cong \mc{O}/\mf{P}_{j}.
-    \]
-    Therefore all of the inertia degrees are equal since $i$ and $j$ were arbitrary. For the ramification indices, recall that $\s$ is an automorphism of $\mc{O}$ fixing $\smc{O}$, and hence $\mf{p}$ too, pointwise. Thus $\s(\mf{p}\mc{O}) = \mf{p}\mc{O}$ which implies that $\mf{P}_{i}^{e} \mid\mid \mf{p}\mc{O}$ if and only if $\mf{P}_{j}^{e} \mid\mid \mf{p}\mc{O}$. Therefore all of the ramification indices are equal since $i$ and $j$ were arbitrary. We call the common inertia degree $f$ the \textbf{inertia degree}\index{inertia degree} of $\mf{p}$ and call the common ramification index $e$ the \textbf{ramification index}\index{ramification index} of $\mf{p}$. Then the fundamental equality takes the particularly simple form
-    \[
-      n = ref,
+      n = ref.
     \]
     Continue to let $\mf{P}$ be a prime above $\mf{p}$. We define the \textbf{decomposition group}\index{decomposition group} $D_{\mf{p}}(\mf{P})$ of $\mf{P}$ by
     \[
@@ -1396,7 +1399,7 @@
       \end{tikzcd}
     \end{center}
 
-    Any of the decomposition groups $D_{\mf{p}}(\mf{P})$ encode how $\mf{p}\mc{O}$ splits into distinct prime factors. Indeed, by the orbit-stabilizer theorem the number of cosets in $\Gal(L/K)/D_{\mf{p}}(\mf{P})$ is equal to the size of the orbit of $\mf{P}$ under the action of $\Gal(L/K)$. As the action is transitive by \cref{prop:Galois_action_on_primes_is_transitive}, $\s(\mf{P})$ runs over the distinct primes above $\mf{p}$ as $\s$ runs over a complete set of representatives for this coset space. It follows that the number of prime factors of $\mf{p}\mc{O}$ is equal to the index $[\Gal(L/K):D_{\mf{p}}(\mf{P})]$. In particular, $\mf{p}$ is inert if and only if $D_{\mf{p}}(\mf{P}) = \Gal(L/K)$ which is further equivalent to $L^{D_{\mf{p}}(\mf{P})} = K$. Antithetically, $\mf{p}$ is totally split if and only if $D_{\mf{p}}(\mf{P}) = \{\id\}$ which is further equivalent to $L^{D_{\mf{p}}(\mf{P})} = L$. More generally, the fundamental equality implies $n = ef[\Gal(L/K):D_{\mf{p}}(\mf{P})]$ and therefore
+    Any of the decomposition groups $D_{\mf{p}}(\mf{P})$ encode how $\mf{p}\mc{O}$ splits into distinct prime factors. Indeed, by the orbit-stabilizer theorem the number of cosets in $\Gal(L/K)/D_{\mf{p}}(\mf{P})$ is equal to the size of the orbit of $\mf{P}$ under the action of $\Gal(L/K)$. As the action is transitive by \cref{prop:Galois_action_on_primes_is_transitive}, $\s(\mf{P})$ runs over the primes above $\mf{p}$ as $\s$ runs over a complete set of representatives for this coset space. It follows that the number of prime factors of $\mf{p}\mc{O}$ is equal to the index $[\Gal(L/K):D_{\mf{p}}(\mf{P})]$. In particular, $\mf{p}$ is inert if and only if $D_{\mf{p}}(\mf{P}) = \Gal(L/K)$ which is further equivalent to $L^{D_{\mf{p}}(\mf{P})} = K$. Antithetically, $\mf{p}$ is totally split if and only if $D_{\mf{p}}(\mf{P}) = \{\id\}$ which is further equivalent to $L^{D_{\mf{p}}(\mf{P})} = L$. More generally, the fundamental equality implies $n = ef[\Gal(L/K):D_{\mf{p}}(\mf{P})]$ which is to say that
     \[
       |D_{\mf{p}}(\mf{P})| = ef.
     \]
