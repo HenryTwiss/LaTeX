@@ -1123,8 +1123,8 @@
 
     \begin{center}
       \begin{tikzcd}[row sep=large, column sep=large]
-        \mf{P} \subset \mc{O} \subset L \arrow[dash]{d} \\
-        \mf{p} \subset \smc{O} \subset K.
+        \mf{P} \subset \mc{O} \subseteq L \arrow[dash]{d} \\
+        \mf{p} \subset \smc{O} \subseteq K.
       \end{tikzcd}
     \end{center}
 
@@ -1176,6 +1176,20 @@
       because the first statement implies that the prime factors of $\mf{p}D^{-1}\mc{O}$ correspond to those of $\mf{p}\mc{O}$ and hence their powers must be the same.
     \end{proof}
 
+    Let us now introduce towers of Dedekind extensions. We say that $\mc{O}'/\mc{O}/\smc{O}$ is a \textbf{tower}\index{tower} of Dedekind extensions for a finite separable tower of extensions $M/L/K$ if $\mc{O}'/\mc{O}$ and $\mc{O}/\smc{O}$ are Dedekind extensions for $M/L$ and $L/K$ respectively. Now let $\mf{P}'$, $\mf{P}$, and $\mf{p}$ be primes of $\mc{O}'$, $\mc{O}$, and $\smc{O}$ respectively with $\mf{P}'$ above $\mf{P}$ and $\mf{P}$ above $\mf{p}$. Then we have the reside class field extensions $(\mc{O}'/\mf{P}')/(\mc{O}/\mf{P})$ and $(\mc{O}/\mf{P})/(\smc{O}/\mf{p})$. Moreover, $\mf{P}^{e_{\mf{p}}(\mf{P})} \mid\mid \mf{p}\mc{O}$ and $\mf{P}^{e_{\mf{P}}(\mf{P}')} \mid\mid \mf{P}\mc{O}'$. Then
+    \begin{equation}\label{equ:ramification_and_interia_towers}
+      e_{\mf{p}}(\mf{P}') = e_{\mf{p}}(\mf{P})e_{\mf{P}}(\mf{P}') \quad \text{and} \quad f_{\mf{p}}(\mf{P}') = f_{\mf{p}}(\mf{P})f_{\mf{P}}(\mf{P}').
+    \end{equation}
+    In other words, the ramification indices and inertia degrees are multiplicative with respect to towers of field extensions. We illustrate this relationship via the following tower of extensions:
+
+    \begin{center}
+      \begin{tikzcd}[row sep=large, column sep=large]
+        \mf{P}' \subset \mc{O}' \subseteq M \arrow[dash]{d} \\
+        \mf{P} \subset \mc{O} \subseteq L \arrow[dash]{d} \\
+        \mf{p} \subset \smc{O} \subseteq K.
+      \end{tikzcd}
+    \end{center}
+    
     The inertia degrees and ramification indices satisfy a simple relationship to the degree of $L/K$. First, we will prove a useful lemma:
 
     \begin{lemma}\label{lem:quotient_by_prime_power_isomorphism}
@@ -1389,20 +1403,20 @@
     \[
       L^{D_{\mf{p}}(\mf{P})} = \{\l \in L:\text{$\tau(\l) = \l$ for all $\tau \in D_{\mf{p}}(\mf{P})$}\}.
     \]
-    In other words, the decomposition field of $\mf{P}$ is the fixed field of $D_{\mf{p}}(\mf{P})$. In particular, $L^{D_{\mf{p}}(\mf{P})}$ is an intermediate field of $L/K$. We let $\mc{O}_{D}$ denote the integral closure of $\smc{O}$ in $L^{D_{\mf{p}}(\mf{P})}$ so that $\mc{O}_{D}/\smc{O}$ and $\mc{O}/\mc{O}_{D}$ are Dedekind extensions. Also, we will write $\mf{P}^{D}$ for the prime of $L^{D_{\mf{p}}(\mf{P})}$ below $\mf{P}$. Then we can illustrate this relationship via the following chain of extensions:
+    In other words, the decomposition field of $\mf{P}$ is the fixed field of $D_{\mf{p}}(\mf{P})$. In particular, $L^{D_{\mf{p}}(\mf{P})}$ is an intermediate field of $L/K$. We let $\mc{O}^{D}$ denote the integral closure of $\smc{O}$ in $L^{D_{\mf{p}}(\mf{P})}$ so that $\mc{O}/\mc{O}^{D}/\smc{O}$ is a tower of Dedekind extensions. Also, we will write $\mf{P}^{D}$ for the prime of $L^{D_{\mf{p}}(\mf{P})}$ below $\mf{P}$. Then we can illustrate this relationship via the following tower of extensions:
     
     \begin{center}
       \begin{tikzcd}[row sep=large, column sep=large]
-        \mf{P} \subset L \arrow[dash]{d} \\
-        \mf{P}^{D} \subset L^{D_{\mf{p}}(\mf{P})} \arrow[dash]{d} \\
-        \mf{p} \subset K.
+        \mf{P} \subset \mc{O} \subseteq L \arrow[dash]{d} \\
+        \mf{P}^{D} \subset \mc{O}^{D} \subseteq L^{D_{\mf{p}}(\mf{P})} \arrow[dash]{d} \\
+        \mf{p} \subset \smc{O} \subseteq K.
       \end{tikzcd}
     \end{center}
 
     Any of the decomposition groups $D_{\mf{p}}(\mf{P})$ encode how $\mf{p}\mc{O}$ splits into distinct prime factors. Indeed, by the orbit-stabilizer theorem the number of cosets in $\Gal(L/K)/D_{\mf{p}}(\mf{P})$ is equal to the size of the orbit of $\mf{P}$ under the action of $\Gal(L/K)$. As the action is transitive by \cref{prop:Galois_action_on_primes_is_transitive}, $\s(\mf{P})$ runs over the primes above $\mf{p}$ as $\s$ runs over a complete set of representatives for this coset space. It follows that the number of prime factors of $\mf{p}\mc{O}$ is equal to the index $[\Gal(L/K):D_{\mf{p}}(\mf{P})]$. In particular, $\mf{p}$ is inert in $\mc{O}/\smc{O}$ if and only if $D_{\mf{p}}(\mf{P}) = \Gal(L/K)$ which is further equivalent to $L^{D_{\mf{p}}(\mf{P})} = K$. Antithetically, $\mf{p}$ is totally split in $\mc{O}/\smc{O}$ if and only if $D_{\mf{p}}(\mf{P}) = \{\id\}$ which is further equivalent to $L^{D_{\mf{p}}(\mf{P})} = L$. More generally, the fundamental equality implies $n = ef[\Gal(L/K):D_{\mf{p}}(\mf{P})]$ which is to say that
-    \[
+    \begin{equation}\label{equ:decomposition_group_e_f_relation}
       |D_{\mf{p}}(\mf{P})| = ef.
-    \]
+    \end{equation}
     If $\mf{p}$ inert in $\mc{O}/\smc{O}$ then $n = ef$ implying $e = 1$ and $n = f$ as we have seen. If $\mf{p}$ is totally split in $\mc{O}/\smc{O}$ then $1 = ef$ so that $e = f = 1$ as we have also seen. Moreover, the decomposition group of a conjugate prime $\s(\mf{P})$ to $\mf{P}$ is the conjugate of decomposition group of $\mf{P}$ by $\s$. In other words,
     \[
       D_{\mf{p}}(\s(\mf{P})) = \s D_{\mf{p}}(\mf{P})\s^{-1}.
@@ -1411,23 +1425,32 @@
     \[
       \mf{p}\mc{O} = \left(\prod_{\s \in \Gal(L/K)/D_{\mf{p}}(\mf{P})}\s(\mf{P})\right)^{e}.
     \]
-    The decomposition field is aptly named because it contains all of the information about the different prime factors that $\mf{p}\mc{O}$ split into in $L$. In other words, the primes $\mf{P}^{D}$ are inert in $\mc{O}/\mc{O}_{D}$ as the following proposition shows:
+    The decomposition field is aptly named because it contains all of the information about the different prime factors that $\mf{p}\mc{O}$ split into in $L$. In particular, the primes $\mf{P}^{D}$ are inert in $\mc{O}/\mc{O}^{D}$ as the following proposition shows:
 
     \begin{proposition}
-      Let $\mc{O}/\smc{O}$ be a Dedekind extension of a finite Galois extension $L/K$, let $\mf{p}$ be a prime of $\smc{O}$ with inertia degree $f$ and ramification index $e$, and let $\mf{P}$ be a prime of $\mc{O}$ above $\mf{p}$. Then the following are true:
-      \begin{enumerate}
-        \item $\mf{P}^{D}$ is inert in $\mc{O}/\mc{O}_{D}$.
-        \item $f_{\mf{P}^{D}}(\mf{P}) = f$ and $e_{\mf{P}^{D}}(\mf{P}) = e$.
-        \item $f_{\mf{p}}(\mf{P}^{D}) = e_{\mf{p}}(\mf{P}^{D}) = 1$.
+      Let $\mc{O}/\smc{O}$ be a Dedekind extension of a degree $n$ Galois extension $L/K$, let $\mf{p}$ be a prime of $\smc{O}$ with inertia degree $f$ and ramification index $e$, and let $\mf{P}$ be a prime of $\mc{O}$ above $\mf{p}$. Then the following hold:
+      \begin{enumerate}[label=(\roman*)]
+        \item $\mf{P}^{D}$ is inert in $\mc{O}/\mc{O}^{D}$.
+        \item $e_{\mf{p}}(\mf{P}^{D}) = f_{\mf{p}}(\mf{P}^{D}) = 1$, $e_{\mf{P}^{D}}(\mf{P}) = e$, and $f_{\mf{P}^{D}}(\mf{P}) = f$.
       \end{enumerate}
     \end{proposition}
     \begin{proof}
       We will prove the statements separately:
-      \begin{enumerate}
+      \begin{enumerate}[label=(\roman*)]
         \item By the fundamental theorem of Galois theory, $\Gal(L/L^{D_{\mf{p}}(\mf{P})}) = D_{\mf{p}}(\mf{P})$. It follows from \cref{prop:Galois_action_on_primes_is_transitive} that the primes of $\mc{O}$ above $\mf{P}^{D}$ are of the form $\s(\mf{P})$ for $\s \in D_{\mf{p}}(\mf{P})$. But for these $\s$ we have $\s(\mf{P}) = \mf{P}$. Therefore $\mf{P}^{D}$ is inert. This proves (i).
-        \item \todo{xxx}
+        \item Recall $\Gal(L/L^{D_{\mf{p}}(\mf{P})}) = D_{\mf{p}}(\mf{P})$ by the fundamental theorem of Galois theory. On the one hand, since $|\Gal(L/L^{D_{\mf{p}}(\mf{P})})|$ is the degree of $L/L^{D_{\mf{p}}(\mf{P})}$ and $\mf{P}^{D}$ is inert in $\mc{O}/\mc{O}^{D}$, the fundamental equality gives $|D_{\mf{p}}(\mf{P})| = e_{\mf{P}^{D}}(\mf{P})f_{\mf{P}^{D}}(\mf{P})$. But as $|D_{\mf{p}}(\mf{P})| = ef$ by \cref{equ:decomposition_group_e_f_relation}, we have
+        \[
+          ef = e_{\mf{P}^{D}}(\mf{P})f_{\mf{P}^{D}}(\mf{P}).
+        \]
+       On the other hand, as $\mc{O}/\mc{O}^{D}/\smc{O}$ is a tower of Dedekind extensions, \cref{equ:ramification_and_interia_towers} implies $e = e_{\mf{P}^{D}}(\mf{P})e_{\mf{p}}(\mf{P}^{D})$ and $f = f_{\mf{P}^{D}}(\mf{P})f_{\mf{p}}(\mf{P}^{D})$. Thus
+        \[
+          ef = e_{\mf{P}^{D}}(\mf{P})e_{\mf{p}}(\mf{P}^{D})f_{\mf{P}^{D}}(\mf{P})f_{\mf{p}}(\mf{P}^{D}).
+        \]
+        These two identities together imply $e_{\mf{p}}(\mf{P}^{D}) = f_{\mf{p}}(\mf{P}^{D}) = 1$. It follows that $e_{\mf{P}^{D}}(\mf{P}) = e$ and $f_{\mf{P}^{D}}(\mf{P}) = f$. This proves (ii).
       \end{enumerate}
     \end{proof}
+    
+    \todo{xxx}
   \section{The Different \& Discriminant}
     Let $\mc{O}/\smc{O}$ be a Dedekind extension of a degree $n$ separable extension $L/K$. It is exceptionally rare for a prime $\mf{p}$ of $K$ to ramify. We will construct two integral ideals, one of $\mc{O}$ and the other of $\smc{O}$ which will tell us which primes ramify in $L$ or $K$. These integral ideals are the different and discriminant respectively. To describe them, we will need the concept of lattices in Dedekind domains. We say that $\mf{L}$ is a \textbf{$\smc{O}$-lattice}\index{$\smc{O}$-lattice} if it is a finitely generated $\smc{O}$-submodule of $L$. Moreover, we say that $\mf{L}$ is \textbf{complete}\index{complete} if it spans $L/K$. That is, $\mf{L}$ contains a basis of $L/K$.
 
