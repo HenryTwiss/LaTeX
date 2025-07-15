@@ -605,12 +605,12 @@
     \[
       \a \equiv \a_{i} \pmod{\mf{p}_{i}^{e_{i}}},
     \]
-    for all $i$. We will use the Chinese remainder theorem to prove a few useful lemmas about Dedekind domains. The first lemma is an isomorphism between quotients by primes (and powers thereof):
+    for all $i$. We will use the Chinese remainder theorem to prove a few useful lemmas about Dedekind domains. For convenience, if $\smc{O}$ is a Dedekind domain with prime $\mf{p}$ we will let $\F_{\mf{p}} = \smc{O}/\mf{p}$ be the residue class field of $\smc{O}$ by $\mf{p}$ (recall $\mf{p}$ is maximal). The first lemma is an isomorphism between quotients by primes (and powers thereof):
 
     \begin{lemma}\label{lem:isomorphism_of_quotient_by_prime_integral_ideals}
       Let $\smc{O}$ be a Dedekind domain. Then for any prime $\mf{p}$ and $n \ge 0$, we have an isomorphism
       \[
-        \smc{O}/\mf{p} \cong \mf{p}^{n}/\mf{p}^{n+1}.
+        \F_{\mf{p}} \cong \mf{p}^{n}/\mf{p}^{n+1}.
       \]
     \end{lemma}
     \begin{proof}
@@ -958,7 +958,7 @@
       By \cref{prop:localization_prime_bijection}, $\mf{p} = \mf{p}_{\mf{p}} \cap \smc{O}$ and therefore this map is an embedding when $n = 1$. As $\mf{p}_{\mf{p}}$ is maximal, $\smc{O}_{\mf{p}}/\mf{p}_{\mf{p}}$ is a field and thus must be the field of fractions of $\smc{O}/\mf{p}$ under this embedding. It remains to prove the last statement so suppose $\mf{p}$ is maximal. We will show $\phi$ is both injective and surjective which will finish the proof. For injectivity, it suffices to prove $\ker\phi = 0$. So let $\a \in \smc{O}$ be a representative of a class in $\smc{O}/\mf{p}$ such that such that $\a \in \mf{p}_{\mf{p}}^{n}$. Then $\a = \frac{\b}{\d}$ with $\b \in \mf{p}^{n}$ and $\d \notin \mf{p}$. Thus $\b$ is a representative of the zero class in $\smc{O}/\mf{p}^{n}$ and so $\a$ must be too which implies $\ker\phi = 0$ and injectivity follows. For surjectivity, we first claim that the image of every $\d \in \smc{O}-\mf{p}$ is a unit in $\smc{O}/\mf{p}^{n}$ which equivalent to the fact that $\mf{p}^{n}+\d\smc{O} = \smc{O}$ since there is then a $\g \in \smc{O}$ such that $\d-\g \in \mf{p}^{n}$. For $n = 1$, maximality of $\mf{p}$ implies $\mf{p}+\d\smc{O} = \smc{O}$. We now argue by induction, so suppose the claim holds for $\smc{O}/\mf{p}^{n-1}$. Then $\mf{p}^{n-1}+\d\smc{O} = \smc{O}$ whence $\mf{p}^{n}+\d\mf{p} = \mf{p}$ and therefore $\mf{p}^{n}+\d\mc{O} = \mc{O}$ by the primality of $\mf{p}$. Now let $\frac{\a}{\d} \in \smc{O}_{\mf{p}}$ be a representative of a class in $\smc{O}_{\mf{p}}/\mf{p}_{\mf{p}}^{n}$. As $\d \notin \mf{p}$, what we have just proved shows that the class represented by $\d$ in $\smc{O}/\mf{p}^{n}$ is invertible. Hence $\frac{\a}{\d}$ represents a class in $\smc{O}/\mf{p^{n}}$ which proves surjectivity.
     \end{proof}
     
-    A \textbf{discrete valuation ring}\index{discrete valuation ring} is a principal ideal domain with a unique maximal integral ideal (recall that principal ideal domains are necessarily noetherian integral domains). In other words, a discrete valuation ring is a local principal ideal domain and is a particularly simple example of a local noetherian integral domain. If $\smc{O}$ is a discrete valuation ring and $\mf{p}$ is its maximal integral ideal (necessarily prime) then $\mf{p}$ is of the form $\mf{p} = \pi\smc{O}$ for some prime $\pi \in \smc{O}$. We call $\pi$ a \textbf{uniformizer}\index{uniformizer} of $\smc{O}$ and it is uniquely defined up to multiplication by units of $\smc{O}$. As every element not in $\mf{p}$ is a unit (since $\smc{O}$ is local) and $\smc{O}$ is a unique factorization domain (because it is a principal ideal domain), it follows that every $\a \in \smc{O}$ is of the form $\a = \e\pi^{n}$ for some $\e \in \smc{O}^{\ast}$ and $n \ge 0$. In particular, $\pi$ is the only prime of $\smc{O}$ up to multiplication by units and every integral ideal of $\smc{O}$ is of the form $\mf{p}^{n}$ for some $n \ge 0$. As $\smc{O}$ is a principal ideal domain, it follows that $\mf{p}$ is also the only prime of $\smc{O}$. Thus $\mf{p}$ is both the unique maximal integral ideal and prime $\smc{O}$. Moreover, if $K$ is the field of fractions of $\smc{O}$ then every nonzero $\k \in K$ can be uniquely expressed as
+    A \textbf{discrete valuation ring}\index{discrete valuation ring} is a principal ideal domain with a unique maximal integral ideal (recall that principal ideal domains are necessarily noetherian integral domains). In other words, a discrete valuation ring is a local principal ideal domain and is a particularly simple example of a local noetherian integral domain. As principal ideal domains are integrally closed by \cref{lemma:unique_factorization_domains_are_integrally_closed}, discrete valuation rings are necessarily Dedekind domains. In fact, they are Dedekind domains with exactly one prime by \cref{prop:Dedekind_with_finite_primes_is_PID}. If $\smc{O}$ is a discrete valuation ring and $\mf{p}$ is its maximal integral ideal (necessarily prime) then $\mf{p}$ is of the form $\mf{p} = \pi\smc{O}$ for some prime $\pi \in \smc{O}$. We call $\pi$ a \textbf{uniformizer}\index{uniformizer} of $\smc{O}$ and it is uniquely defined up to multiplication by units of $\smc{O}$. As every element not in $\mf{p}$ is a unit (since $\smc{O}$ is local) and $\smc{O}$ is a unique factorization domain (because it is a principal ideal domain), it follows that every $\a \in \smc{O}$ is of the form $\a = \e\pi^{n}$ for some $\e \in \smc{O}^{\ast}$ and $n \ge 0$. In particular, $\pi$ is the only prime of $\smc{O}$ up to multiplication by units and every integral ideal of $\smc{O}$ is of the form $\mf{p}^{n}$ for some $n \ge 0$. As $\smc{O}$ is a principal ideal domain, it follows that $\mf{p}$ is also the only prime of $\smc{O}$. Thus $\mf{p}$ is both the unique maximal integral ideal and prime $\smc{O}$. Moreover, if $K$ is the field of fractions of $\smc{O}$ then every nonzero $\k \in K$ can be uniquely expressed as
     \[
       \k = \e\pi^{n},
     \]
@@ -1087,7 +1087,7 @@
       \[
         \a^{n}+a_{n-1}\a^{n-1}+\cdots+a_{0} = 0,
       \]
-      for some $n \ge 1$ and $a_{i} \in \smc{O}$ for $0 \le i \le n-1$. Taking $n$ minimal, we have $a_{0} \neq 0$. Isolating $a_{0}$ shows that $a_{0} \in \mf{P}$ and hence $a_{0} \in \mf{P} \cap \smc{O}$. Therefore $\mf{P} \cap \smc{O} = \mf{p}$ for some prime $\mf{p}$. Hence $\ker\phi = \mf{p}$ and by the first isomorphism theorem, $\phi$ induces an injection $\phi:\smc{O}/\mf{p} \to \mc{O}/\mf{P}$. Since $\smc{O}$ is a Dedekind domain, $\mf{p}$ is maximal and thus $\smc{O}/\mf{p}$ is a field. As $\mc{O}$ is the integral closure of $\smc{O}$ in $L$, it is obtained from $\smc{O}$ by forming a polynomial ring with algebraic elements. The latter injection then shows that $\mc{O}/\mf{P}$ is obtained from $\smc{O}/\mf{p}$ by adjoining these algebraic elements taken modulo $\mf{P}$. Their reductions are still algebraic over $\smc{O}/\mf{p}$ by reducing their minimal polynomials modulo $\mf{P}$. Hence $\mc{O}/\mf{P}$ is obtained from $\smc{O}/\mf{p}$ by adjoining algebraic elements to $\smc{O}/\mf{p}$ (since $(\smc{O}/\mf{p})[\conj{\a}] = (\smc{O}/\mf{p})(\conj{\a})$ if $\conj{\a}$ is algebraic over $\smc{O}/\mf{p}$) and is therefore a field.
+      for some $n \ge 1$ and $a_{i} \in \smc{O}$ for $0 \le i \le n-1$. Taking $n$ minimal, we have $a_{0} \neq 0$. Isolating $a_{0}$ shows that $a_{0} \in \mf{P}$ and hence $a_{0} \in \mf{P} \cap \smc{O}$. Therefore $\mf{P} \cap \smc{O} = \mf{p}$ for some prime $\mf{p}$. Hence $\ker\phi = \mf{p}$ and by the first isomorphism theorem, $\phi$ induces an injection $\phi:\F_{\mf{p}} \to \mc{O}/\mf{P}$. As $\mc{O}$ is the integral closure of $\smc{O}$ in $L$, it is obtained from $\smc{O}$ by forming a polynomial ring with algebraic elements. The latter injection then shows that $\mc{O}/\mf{P}$ is obtained from $\F_{\mf{p}}$ by adjoining these algebraic elements taken modulo $\mf{P}$. Their reductions are still algebraic over $\F_{\mf{p}}$ by reducing their minimal polynomials modulo $\mf{P}$. Hence $\mc{O}/\mf{P}$ is obtained from $\F_{\mf{p}}$ by adjoining algebraic elements to $\F_{\mf{p}}$ (since $\F_{\mf{p}}[\conj{\a}] = \F_{\mf{p}}(\conj{\a})$ if $\conj{\a}$ is algebraic over $\F_{\mf{p}}$) and is therefore a field.
     \end{proof}
 
     Under the assumptions of \cref{prop:integral_closure_of_Dedekind_is_Dedekind}, it follows from \cref{prop:field_of_fractions_AKBL} that $L$ is the field of fractions of $\mc{O}$. We say that a ring extension $\mc{O}/\smc{O}$ is a \textbf{Dedekind extension}\index{Dedekind extension} of a finite separable extension $L/K$ if $\mc{O}$ and $\smc{O}$ are Dedekind domains whose field of fractions are $L$ and $K$ respectively and $\mc{O}$ is the integral closure of $\smc{O}$ in $L$. This immediately implies
@@ -1101,10 +1101,10 @@
       \[
         \mf{P} \cap \smc{O} = \mf{p},
       \]
-      for some prime $\mf{p}$ of $\smc{O}$. Moreover, $(\mc{O}/\mf{P})/(\smc{O}/\mf{p})$ is a finite extension of degree at most $n$.
+      for some prime $\mf{p}$ of $\smc{O}$. Moreover, $\F_{\mf{P}}/\F_{\mf{p}}$ is a finite extension of degree at most $n$.
     \end{corollary}
     \begin{proof}
-      The first statement was deduced in the proof of \cref{prop:integral_closure_of_Dedekind_is_Dedekind} along with the fact that there is an injection of fields $\smc{O}/\mf{p} \to \mc{O}/\mf{P}$. From this injection it follows that $(\mc{O}/\mf{P})/(\smc{O}/\mf{p})$ is an extension and since $\mc{O}$ is a finitely generated $\smc{O}$-module of rank at most $n$, $(\mc{O}/\mf{P})/(\smc{O}/\mf{p})$ has degree at most $n$.
+      The first statement was deduced in the proof of \cref{prop:integral_closure_of_Dedekind_is_Dedekind} along with the fact that there is an injection $\F_{\mf{p}} \to \F_{\mf{P}}$. From this injection it follows that $\F_{\mf{P}}/\F_{\mf{p}}$ is an extension and since $\mc{O}$ is a finitely generated $\smc{O}$-module of rank at most $n$, $\F_{\mf{P}}/\F_{\mf{p}}$ has degree at most $n$.
     \end{proof}
 
     Continue to let $\mc{O}/\smc{O}$ be a Dedekind extension of a degree $n$ separable extension $L/K$. Note that if $\mf{f}$ is a fractional ideal of $\smc{O}$ then $\mf{f}\mc{O}$ is a fractional ideal of $\mc{O}$ because $\mf{f}$ is a finitely generated $\smc{O}$-module and hence a finitely generated $\mc{O}$-module. In particular, $\mf{a}\mc{O}$ is an integral ideal of $\mc{O}$ for any integral ideal $\mf{a}$ of $\smc{O}$. Now let $\mf{P}$ and $\mf{p}$ be primes of $\mc{O}$ and $\smc{O}$ respectively. We say that $\mf{P}$ is \textbf{above}\index{above} $\mf{p}$, or equivalently, $\mf{p}$ is \textbf{below}\index{below} $\mf{P}$ if
@@ -1128,11 +1128,11 @@
       \end{tikzcd}
     \end{center}
 
-    As primes $\mf{P}$ and $\mf{p}$ are maximal in the Dedekind domains $\mc{O}$ and $\smc{O}$ respectively, we have the residue class fields $\mc{O}/\mf{P}$ and $\smc{O}/\mf{p}$. The former is a finite extension of the latter of degree at most $n$ by \cref{cor:integral_closure_of_Dedekind_is_Dedekind}. Accordingly, we call $(\mc{O}/\mf{P})/(\smc{O}/\mf{p})$ the \textbf{residue class extension}\index{residue class extension} of $\mc{O}/\smc{O}$ for $\mf{P}$. Actually since \cref{cor:integral_closure_of_Dedekind_is_Dedekind} implies $\mc{O}$ is at finitely generated $\smc{O}$-module of rank at most $n$, the quotient ring $\mf{B}/\mf{A}$ is a $(\smc{O}/\mf{p})$-vector space of dimension at most $n$ for any integral ideals $\mf{A}$ and $\mf{B}$ with $\mf{p} \subseteq \mf{A} \subseteq \mf{B}$. In any case, we define the \textbf{inertia degree}\index{inertia degree} $f_{\mf{p}}(\mf{P})$ of $\mf{P}$ relative to $\mf{p}$ by
+    We have the residue class fields $\F_{\mf{P}}$ and $\F_{\mf{p}}$. The former is a finite extension of the latter of degree at most $n$ by \cref{cor:integral_closure_of_Dedekind_is_Dedekind}. Accordingly, we call $\F_{\mf{P}}/\F_{\mf{p}}$ the \textbf{residue class extension}\index{residue class extension} of $\mc{O}/\smc{O}$ for $\mf{P}$. Actually since \cref{cor:integral_closure_of_Dedekind_is_Dedekind} implies $\mc{O}$ is at finitely generated $\smc{O}$-module of rank at most $n$, the quotient ring $\mf{B}/\mf{A}$ is a $\F_{\mf{p}}$-vector space of dimension at most $n$ for any integral ideals $\mf{A}$ and $\mf{B}$ with $\mf{p} \subseteq \mf{A} \subseteq \mf{B}$. In any case, we define the \textbf{inertia degree}\index{inertia degree} $f_{\mf{p}}(\mf{P})$ of $\mf{P}$ relative to $\mf{p}$ by
     \[
-      f_{\mf{p}}(\mf{P}) = [\mc{O}/\mf{P}:\smc{O}/\mf{p}].
+      f_{\mf{p}}(\mf{P}) = [\F_{\mf{P}}:\F_{\mf{p}}].
     \]
-    That is, $f_{\mf{p}}(\mf{P})$ is the dimension of the residue field $\mc{O}/\mf{P}$ as a $(\smc{O}/\mf{p})$-vector space. The \textbf{ramification index}\index{ramification index} $e_{\mf{p}}(\mf{P})$ is the power of $\mf{P}$ appearing in the prime factorization of $\mf{p}\mc{O}$. If $\mf{p}\mc{O}$ has prime factors $\mf{P}_{1},\ldots,\mf{P}_{r}$ then the prime factorization of $\mf{p}\mc{O}$ is
+    That is, $f_{\mf{p}}(\mf{P})$ is the dimension of the residue field $\F_{\mf{P}}$ as a $\F_{\mf{p}}$-vector space. The \textbf{ramification index}\index{ramification index} $e_{\mf{p}}(\mf{P})$ is the power of $\mf{P}$ appearing in the prime factorization of $\mf{p}\mc{O}$. If $\mf{p}\mc{O}$ has prime factors $\mf{P}_{1},\ldots,\mf{P}_{r}$ then the prime factorization of $\mf{p}\mc{O}$ is
     \[
       \mf{p}\mc{O} = \mf{P}_{1}^{e_{\mf{p}}(\mf{P}_{1})} \cdots \mf{P}_{r}^{e_{\mf{p}}(\mf{P}_{r})}.
     \]
@@ -1141,7 +1141,7 @@
     \begin{proposition}\label{prop:ramification_setup_respects_localization}
       Let $\mc{O}/\smc{O}$ be a Dedekind extension of a finite separable extension $L/K$ and let $D \subseteq \smc{O}-\{0\}$ be a multiplicative subset. Then for the Dedekind extension $\mc{O}D^{-1}/\smc{O}D^{-1}$, $\mf{P}D^{-1}$ is above $\mf{p}D^{-1}$ if and only if $\mf{P}$ is above $\mf{p}$. Moreover, there are isomorphisms
       \[
-        \mc{O}D^{-1}/\mf{P}D^{-1} \cong \mc{O}/\mf{P} \quad \text{and} \quad \smc{O}D^{-1}/\mf{p}D^{-1} \cong \smc{O}/\mf{p}.
+        \F_{\mf{P}D^{-1}} \cong \F_{\mf{P}} \quad \text{and} \quad \F_{\mf{p}D^{-1}} \cong \F_{\mf{p}}.
       \]
       Lastly, we have equalities
       \[
@@ -1159,11 +1159,11 @@
       \]
       (recall $\smc{O} \subseteq \mc{O}$) so that $\mf{P}$ is above $\mf{p}$. This proves the first statement. For the second statement, consider the homomorphisms
       \[
-        \Phi:\mc{O} \to \mc{O}D^{-1}/\mf{P}D^{-1} \qquad \a \mapsto \a \tmod{\mf{P}D^{-1}},
+        \Phi:\mc{O} \to \F_{\mf{P}D^{-1}} \qquad \a \mapsto \a \tmod{\mf{P}D^{-1}},
       \]
       and
       \[
-        \phi:\smc{O} \to \smc{O}D^{-1}/\mf{p}D^{-1} \qquad \a \mapsto \a \tmod{\mf{p}D^{-1}}.
+        \phi:\smc{O} \to \F_{\mf{p}D^{-1}} \qquad \a \mapsto \a \tmod{\mf{p}D^{-1}}.
       \]
       They are surjections since $\mc{O}\mf{P}D^{-1} = \mc{O}D^{-1}\mf{P}D^{-1}$ and $\smc{O}\mf{p}D^{-1} = \smc{O}D^{-1}\mf{p}D^{-1}$. Moreover, $\ker\Phi = \mf{P}$ and $\ker\phi = \mf{p}$. Therefore the isomorphisms follow from the first isomorphism theorem. This proves the second statement. In fact, these two isomorphisms together give
       \[
@@ -1176,7 +1176,7 @@
       because the first statement implies that the prime factors of $\mf{p}D^{-1}\mc{O}$ correspond to those of $\mf{p}\mc{O}$ and hence their powers must be the same.
     \end{proof}
 
-    Let us now introduce towers of Dedekind extensions. We say that $\mc{O}'/\mc{O}/\smc{O}$ is a \textbf{tower}\index{tower} of Dedekind extensions for a finite separable tower of extensions $M/L/K$ if $\mc{O}'/\mc{O}$ and $\mc{O}/\smc{O}$ are Dedekind extensions for $M/L$ and $L/K$ respectively. Now let $\mf{P}'$, $\mf{P}$, and $\mf{p}$ be primes of $\mc{O}'$, $\mc{O}$, and $\smc{O}$ respectively with $\mf{P}'$ above $\mf{P}$ and $\mf{P}$ above $\mf{p}$. Then we have the reside class field extensions $(\mc{O}'/\mf{P}')/(\mc{O}/\mf{P})$ and $(\mc{O}/\mf{P})/(\smc{O}/\mf{p})$. Moreover, $\mf{P}^{e_{\mf{p}}(\mf{P})} \mid\mid \mf{p}\mc{O}$ and $\mf{P}^{e_{\mf{P}}(\mf{P}')} \mid\mid \mf{P}\mc{O}'$. Then
+    Let us now introduce towers of Dedekind extensions. We say that $\mc{O}'/\mc{O}/\smc{O}$ is a \textbf{tower}\index{tower} of Dedekind extensions for a finite separable tower of extensions $M/L/K$ if $\mc{O}'/\mc{O}$ and $\mc{O}/\smc{O}$ are Dedekind extensions for $M/L$ and $L/K$ respectively. Now let $\mf{P}'$, $\mf{P}$, and $\mf{p}$ be primes of $\mc{O}'$, $\mc{O}$, and $\smc{O}$ respectively with $\mf{P}'$ above $\mf{P}$ and $\mf{P}$ above $\mf{p}$. Then we have the residue class field extensions $\F_{\mf{P}'}/\F_{\mf{P}}$ and $\F_{\mf{P}}/\F_{\mf{p}}$. Moreover, $\mf{P}^{e_{\mf{p}}(\mf{P})} \mid\mid \mf{p}\mc{O}$ and $\mf{P}^{e_{\mf{P}}(\mf{P}')} \mid\mid \mf{P}\mc{O}'$. Then
     \begin{equation}\label{equ:ramification_and_interia_towers}
       e_{\mf{p}}(\mf{P}') = e_{\mf{p}}(\mf{P})e_{\mf{P}}(\mf{P}') \quad \text{and} \quad f_{\mf{p}}(\mf{P}') = f_{\mf{p}}(\mf{P})f_{\mf{P}}(\mf{P}').
     \end{equation}
@@ -1195,24 +1195,24 @@
     \begin{lemma}\label{lem:quotient_by_prime_power_isomorphism}
       Let $\mc{O}/\smc{O}$ be a Dedekind extension of a degree $n$ separable extension $L/K$. Suppose $\mf{P}$ is a prime above $\mf{p}$. Then for any $e \ge 1$, we have
       \[
-        \mc{O}/\mf{P}^{e} \cong \bigop_{0 \le i \le e-1}\mc{O}/\mf{P}.
+        \mc{O}/\mf{P}^{e} \cong \bigop_{0 \le i \le e-1}\F_{\mf{P}}.
       \]
-      In particular, the dimension of $\mc{O}/\mf{P}^{e}$ as a $(\smc{O}/\mf{p})$-vector space is $ef_{\mf{p}}(\mf{P})$.
+      In particular, the dimension of $\mc{O}/\mf{P}^{e}$ as a $\F_{\mf{p}}$-vector space is $ef_{\mf{p}}(\mf{P})$.
     \end{lemma}
     \begin{proof}
       Consider the descending chain
       \[
         \mc{O}/\mf{P}^{e} \supseteq \mf{P}/\mf{P}^{e} \supseteq \cdots \supseteq \mf{P}^{e-1}/\mf{P}^{e} \supseteq \mf{P}^{e}/\mf{P}^{e},
       \]
-      of $(\smc{O}/\mf{p})$-vector spaces. By the third isomorphism theorem, these quotients are of the form $\mf{P}^{i}/\mf{P}^{i+1}$ for $0 \le i \le e-1$ and are all isomorphic to $\mc{O}/\mf{P}$ by \cref{lem:isomorphism_of_quotient_by_prime_integral_ideals}. Therefore we have a decomposition
+      of $\F_{\mf{p}}$-vector spaces. By the third isomorphism theorem, these quotients are of the form $\mf{P}^{i}/\mf{P}^{i+1}$ for $0 \le i \le e-1$ and are all isomorphic to $\F_{\mf{P}}$ by \cref{lem:isomorphism_of_quotient_by_prime_integral_ideals}. Therefore we have a decomposition
       \[
-        \mf{P}^{i}/\mf{P}^{e} \cong (\mc{O}/\mf{P}) \op (\mf{P}^{i+1}/\mf{P}^{e}),
+        \mf{P}^{i}/\mf{P}^{e} \cong \F_{\mf{P}} \op (\mf{P}^{i+1}/\mf{P}^{e}),
       \]
       for all $i$. Iteratively applying this isomorphism $e-1$ times gives
       \[
-        \mc{O}/\mf{P}^{e} \cong \bigop_{0 \le i \le e-1}\mc{O}/\mf{P}.
+        \mc{O}/\mf{P}^{e} \cong \bigop_{0 \le i \le e-1}\F_{\mf{P}}.
       \]
-      This proves the first statement. Since the dimension of $\mc{O}/\mf{P}$ as a $(\smc{O}/\mf{p})$-vector space is $f_{\mf{p}}(\mf{P})$ by definition, it follows that $\mc{O}/\mf{P}^{e}$ is a $(\smc{O}/\mf{p})$-vector space of dimension $ef_{\mf{p}}(\mf{P})$. This proves the second statement.
+      This proves the first statement. Since the dimension of $\F_{\mf{P}}$ as a $\F_{\mf{p}}$-vector space is $f_{\mf{p}}(\mf{P})$ by definition, it follows that $\mc{O}/\mf{P}^{e}$ is a $\F_{\mf{p}}$-vector space of dimension $ef_{\mf{p}}(\mf{P})$. This proves the second statement.
     \end{proof}
     
     We now describe the relationship between inertia degrees and ramification indices which is known as the \textbf{fundamental equality}\index{fundamental equality}:
@@ -1232,7 +1232,7 @@
       \[
         \mc{O}/\mf{p}\mc{O} \cong \bigop_{1 \le i \le r} \mc{O}/\mf{P}_{i}^{e_{\mf{p}}(\mf{P}_{i})}.
       \]
-      As $\mc{O}/\mf{p}\mc{O}$ and $\mc{O}/\mf{P}_{i}^{e_{\mf{p}}(\mf{P}_{i})}$ are $(\smc{O}/\mf{p})$-vector spaces for all $i$, it suffices to show $\mc{O}/\mf{P}$ is of dimension $n$ and $\mc{O}/\mf{P}_{i}^{e_{\mf{p}}(\mf{P}_{i})}$ is of dimension $e_{\mf{p}}(\mf{P}_{i})f_{\mf{p}}(\mf{P}_{i})$ for all $i$. For $\mc{O}/\mf{p}\mc{O}$, we already know it is a $(\smc{O}/\mf{p})$-vector space of dimension at most $n$ (since $\mc{O}$ is a finitely generated $\smc{O}$-module of rank at most $n$ by \cref{cor:integral_closure_of_Dedekind_is_Dedekind} and $\mf{p} \subseteq \mf{p}\mc{O}$). Therefore we must show that the dimension is exactly $n$. Let $\conj{\l_{1}},\ldots,\conj{\l_{m}}$ be a basis for $\mc{O}/\mf{p}\mc{O}$ as a $(\smc{O}/\mf{p})$-vector space and let $\l_{1},\ldots,\l_{m}$ be any lift of this basis to $\mc{O}$. As $m \le n$, it suffices to show $\l_{1},\ldots,\l_{m}$ spans $L/K$ and hence $m = n$. Let $M = \l_{1}\smc{O}+\cdots+\l_{m}\smc{O}$ and set $N = \mc{O}/M$. Then $\mc{O} = M+\mf{p}\mc{O}$ since $\l_{1},\ldots,\l_{m}$ is a lift a basis for $(\mc{O}/\mf{p}\mc{O})/(\smc{O}/\mf{p})$, and hence $N = \mf{p}N$. As $\mc{O}$ is a finitely generated $\smc{O}$-module of rank at most $n$ by \cref{cor:integral_closure_of_Dedekind_is_Dedekind}, so is $N$. So let $\w_{1},\ldots,\w_{r}$ be generators. As $N = \mf{p}N$, we have
+      As $\mc{O}/\mf{p}\mc{O}$ and $\mc{O}/\mf{P}_{i}^{e_{\mf{p}}(\mf{P}_{i})}$ are $\F_{\mf{p}}$-vector spaces for all $i$, it suffices to show $\F_{\mf{P}}$ is of dimension $n$ and $\mc{O}/\mf{P}_{i}^{e_{\mf{p}}(\mf{P}_{i})}$ is of dimension $e_{\mf{p}}(\mf{P}_{i})f_{\mf{p}}(\mf{P}_{i})$ for all $i$. For $\mc{O}/\mf{p}\mc{O}$, we already know it is a $\F_{\mf{p}}$-vector space of dimension at most $n$ (since $\mc{O}$ is a finitely generated $\smc{O}$-module of rank at most $n$ by \cref{cor:integral_closure_of_Dedekind_is_Dedekind} and $\mf{p} \subseteq \mf{p}\mc{O}$). Therefore we must show that the dimension is exactly $n$. Let $\conj{\l_{1}},\ldots,\conj{\l_{m}}$ be a basis for $\mc{O}/\mf{p}\mc{O}$ as a $\F_{\mf{p}}$-vector space and let $\l_{1},\ldots,\l_{m}$ be any lift of this basis to $\mc{O}$. As $m \le n$, it suffices to show $\l_{1},\ldots,\l_{m}$ spans $L/K$ and hence $m = n$. Let $M = \l_{1}\smc{O}+\cdots+\l_{m}\smc{O}$ and set $N = \mc{O}/M$. Then $\mc{O} = M+\mf{p}\mc{O}$ since $\l_{1},\ldots,\l_{m}$ is a lift a basis for $(\mc{O}/\mf{p}\mc{O})/\F_{\mf{p}}$, and hence $N = \mf{p}N$. As $\mc{O}$ is a finitely generated $\smc{O}$-module of rank at most $n$ by \cref{cor:integral_closure_of_Dedekind_is_Dedekind}, so is $N$. So let $\w_{1},\ldots,\w_{r}$ be generators. As $N = \mf{p}N$, we have
       \[
         \w_{i} = \sum_{1 \le j \le r}\a_{i,j}\w_{j},
       \]
@@ -1248,7 +1248,7 @@
       \[
         d\mc{O} \subseteq \l_{1}\smc{O}+\cdots+\l_{m}\smc{O}.
       \]
-      By \cref{prop:field_of_fractions_AKBL} and that $d \neq 0$, multiplication by $K$ shows $L = \l_{1}K+\cdots+\l_{m}K$ (as the reverse containment is trivial). Hence $\l_{1},\ldots,\l_{m}$ spans $L/K$ so that $m = n$ and $\mc{O}/\mf{p}\mc{O}$ is a $(\smc{O}/\mf{p})$-vector space of dimension $n$. For $\mc{O}/\mf{P}_{i}^{e_{\mf{p}}(\mf{P}_{i})}$, the dimensionality claim follows from \cref{lem:quotient_by_prime_power_isomorphism}. So our dimension computations combine to give
+      By \cref{prop:field_of_fractions_AKBL} and that $d \neq 0$, multiplication by $K$ shows $L = \l_{1}K+\cdots+\l_{m}K$ (as the reverse containment is trivial). Hence $\l_{1},\ldots,\l_{m}$ spans $L/K$ so that $m = n$ and $\mc{O}/\mf{p}\mc{O}$ is a $\F_{\mf{p}}$-vector space of dimension $n$. For $\mc{O}/\mf{P}_{i}^{e_{\mf{p}}(\mf{P}_{i})}$, the dimensionality claim follows from \cref{lem:quotient_by_prime_power_isomorphism}. So our dimension computations combine to give
       \[
         n = \sum_{1 \le i \le r}e_{\mf{p}}(\mf{P}_{i})f_{\mf{p}}(\mf{P}_{i}).
       \]
@@ -1262,7 +1262,7 @@
     \[
       \mf{p}\mc{O} = \mf{P}_{1} \cdots \mf{P}_{n}.
     \]
-    In terms of the inertia degrees, being inert or totally split in $\mc{O}/\smc{O}$ are antithetical properties. In particular, the smaller the inertia degrees are the greater the tendency for $\mf{p}\mc{O}$ to factor into distinct primes. Now let us introduce ramification. If $\mf{P}$ is a prime of $\mc{O}$ above $\mf{p}$, we say that $\mf{P}$ is \textbf{unramified}\index{unramified} in $\mc{O}/\smc{O}$ if $e_{\mf{p}}(\mf{P}) = 1$ and the residue class extension $(\mc{O}/\mf{P})/(\smc{O}/\mf{p})$ is separable. Otherwise, we say $\mf{P}$ is \textbf{ramified}\index{ramified} in $\mc{O}/\smc{O}$. Moreover, we say $\mf{P}$ is \textbf{totally ramified}\index{totally ramified} in $\mc{O}/\smc{O}$ if in addition to being ramified we have $f_{\mf{p}}(\mf{P}) = 1$. Similarly, we say that a prime $\mf{p}$ of $\smc{O}$ is \textbf{unramified}\index{unramified} in $\mc{O}/\smc{O}$ if every prime $\mf{P}$ above it is unramified and is \textbf{ramified}\index{ramified} in $\mc{O}/\smc{O}$ otherwise. The Dedekind extension $\mc{O}/\smc{O}$ itself is said to be \textbf{unramified}\index{unramified} if every prime of $\smc{O}$ is unramified in $\mc{O}/\smc{O}$ and is said to be \textbf{ramified}\index{ramified} otherwise.
+    In terms of the inertia degrees, being inert or totally split in $\mc{O}/\smc{O}$ are antithetical properties. In particular, the smaller the inertia degrees are the greater the tendency for $\mf{p}\mc{O}$ to factor into distinct primes. Now let us introduce ramification. If $\mf{P}$ is a prime of $\mc{O}$ above $\mf{p}$, we say that $\mf{P}$ is \textbf{unramified}\index{unramified} in $\mc{O}/\smc{O}$ if $e_{\mf{p}}(\mf{P}) = 1$ and the residue class extension $\F_{\mf{P}}/\F_{\mf{p}}$ is separable. Otherwise, we say $\mf{P}$ is \textbf{ramified}\index{ramified} in $\mc{O}/\smc{O}$. Moreover, we say $\mf{P}$ is \textbf{totally ramified}\index{totally ramified} in $\mc{O}/\smc{O}$ if in addition to being ramified we have $f_{\mf{p}}(\mf{P}) = 1$. Similarly, we say that a prime $\mf{p}$ of $\smc{O}$ is \textbf{unramified}\index{unramified} in $\mc{O}/\smc{O}$ if every prime $\mf{P}$ above it is unramified and is \textbf{ramified}\index{ramified} in $\mc{O}/\smc{O}$ otherwise. The Dedekind extension $\mc{O}/\smc{O}$ itself is said to be \textbf{unramified}\index{unramified} if every prime of $\smc{O}$ is unramified in $\mc{O}/\smc{O}$ and is said to be \textbf{ramified}\index{ramified} otherwise.
 
     \begin{remark}
       We will see that it is an exceptional phenomena for a prime $\mf{p}$ of $\smc{O}$ to ramify in $\mc{O}/\smc{O}$. Therefore it is typical that $\mf{p}$ is either inert or totally split in $\mc{O}/\smc{O}$.
@@ -1283,7 +1283,7 @@
       \[
         \conj{m_{\t}}(x) = \conj{m_{1}}(x)^{e_{1}} \cdots \conj{m_{r}}(x)^{e_{r}},
       \]
-      is the prime factorization of $\conj{m_{\t}}(x)$ in $(\smc{O}/\mf{p})[x]$. Let $m_{i}(x)$ be any lift of $\conj{m_{i}}(x)$ to $\smc{O}[x]$ and set
+      is the prime factorization of $\conj{m_{\t}}(x)$ in $\F_{\mf{p}}[x]$. Let $m_{i}(x)$ be any lift of $\conj{m_{i}}(x)$ to $\smc{O}[x]$ and set
       \[
         \mf{P}_{i} = \mf{p}\mc{O}+m_{i}(\t)\mc{O},
       \]
@@ -1308,15 +1308,15 @@
       \]
       Since $m_{\t}(x)$ is the minimal polynomial for $\t$, we have an isomorphism $\smc{O}[x]/m_{\t}(x)\smc{O}[x] \cong \smc{O}[\t]$ given by evaluation at $\t$. Then we have the chain of isomorphism
       \[
-        \smc{O}[\t]/\mf{p}\smc{O}[\t] \cong (\smc{O}[x]/m_{\t}(x)\smc{O}[x])/(\mf{p}(\smc{O}[x]/m_{\t}(x)\smc{O}[x])) \cong \smc{O}[x]/(\mf{p}\smc{O}[x]+m_{\t}(x)\smc{O}[x]) \cong (\smc{O}/\mf{p})[x]/\conj{m_{\t}}(x)(\smc{O}/\mf{p})[x],
+        \smc{O}[\t]/\mf{p}\smc{O}[\t] \cong (\smc{O}[x]/m_{\t}(x)\smc{O}[x])/(\mf{p}(\smc{O}[x]/m_{\t}(x)\smc{O}[x])) \cong \smc{O}[x]/(\mf{p}\smc{O}[x]+m_{\t}(x)\smc{O}[x]) \cong \F_{\mf{p}}[x]/\conj{m_{\t}}(x)\F_{\mf{p}}[x],
       \]
-      where the second and third isomorphisms follow by taking $\smc{O}[x]/(\mf{p}\smc{O}[x]+m_{\t}(x)\smc{O}[x])$ and reducing elements of $\smc{O}[x]$ modulo $m_{\t}(x)$ or their coefficients modulo $\mf{p}$ respectively. Therefore the inverse isomorphism is given by sending any representative $\conj{f}(x)$ of a class in $(\smc{O}/\mf{p})[x]/\conj{m_{\t}}(x)(\smc{O}/\mf{p})[x]$ to a lift $f(x)$ in $\smc{O}[x]$ and then to $\conj{f(\t)}$ by reducing $f(\t)$ modulo $\mf{p}\mc{O}$. Now set $A = (\smc{O}/\mf{p})[x]/\conj{m_{\t}}(x)(\smc{O}/\mf{p})[x]$. The Chinese remainder theorem gives an isomorphism
+      where the second and third isomorphisms follow by taking $\smc{O}[x]/(\mf{p}\smc{O}[x]+m_{\t}(x)\smc{O}[x])$ and reducing elements of $\smc{O}[x]$ modulo $m_{\t}(x)$ or their coefficients modulo $\mf{p}$ respectively. Therefore the inverse isomorphism is given by sending any representative $\conj{f}(x)$ of a class in $\F_{\mf{p}}[x]/\conj{m_{\t}}(x)\F_{\mf{p}}[x]$ to a lift $f(x)$ in $\smc{O}[x]$ and then to $\conj{f(\t)}$ by reducing $f(\t)$ modulo $\mf{p}\mc{O}$. Now set $A = \F_{\mf{p}}[x]/\conj{m_{\t}}(x)\F_{\mf{p}}[x]$. The Chinese remainder theorem gives an isomorphism
       \[
-        A \cong \bigop_{1 \le i \le r}(\smc{O}/\mf{p})[x]/\conj{m_{i}}(x)^{e_{i}}(\smc{O}/\mf{p})[x].
+        A \cong \bigop_{1 \le i \le r}\F_{\mf{p}}[x]/\conj{m_{i}}(x)^{e_{i}}\F_{\mf{p}}[x].
       \]
-      As $\conj{m_{i}}(x)$ is irreducible, $\conj{m_{i}}(x)(\smc{O}/\mf{p})[x]$ is maximal and hence $(\smc{O}/\mf{p})[x]/\conj{m_{i}}(x)(\smc{O}/\mf{p})[x]$ is a field. By the third isomorphism theorem, $\conj{m_{i}}(x)(\smc{O}/\mf{p})[x]/\conj{m_{i}}(x)^{e_{i}}(\smc{O}/\mf{p})[x]$ is a maximal ideal of $(\smc{O}/\mf{p})[x]/\conj{m_{i}}(x)^{e_{i}}(\smc{O}/\mf{p})[x]$. It follows that the maximal ideals of $A$ are precisely the $\conj{m_{i}}(x)A$ and we have an isomorphism
+      As $\conj{m_{i}}(x)$ is irreducible, $\conj{m_{i}}(x)\F_{\mf{p}}[x]$ is maximal and hence $\F_{\mf{p}}[x]/\conj{m_{i}}(x)\F_{\mf{p}}[x]$ is a field. By the third isomorphism theorem, $\conj{m_{i}}(x)\F_{\mf{p}}[x]/\conj{m_{i}}(x)^{e_{i}}\F_{\mf{p}}[x]$ is a maximal ideal of $\F_{\mf{p}}[x]/\conj{m_{i}}(x)^{e_{i}}\F_{\mf{p}}[x]$. It follows that the maximal ideals of $A$ are precisely the $\conj{m_{i}}(x)A$ and we have an isomorphism
       \[
-        A/\conj{m_{i}}(x)A \cong (\smc{O}/\mf{p})[x]/\conj{m_{i}}(x)(\smc{O}/\mf{p})[x],
+        A/\conj{m_{i}}(x)A \cong \F_{\mf{p}}[x]/\conj{m_{i}}(x)\F_{\mf{p}}[x],
       \]
       for all $i$. Via the isomorphism $\mc{O}/\mf{p}\mc{O} \cong A$ described above, the maximal ideals of $\mc{O}/\mf{p}\mc{O}$ are exactly $\conj{m_{i}(\t)}(\mc{O}/\mf{p}\mc{O})$. We now show that the $\mf{P}_{i}$ are prime. To see this, consider the surjective homomorphism
       \[
@@ -1328,9 +1328,9 @@
       \]
       for some ramification indices $e_{\mf{p}}(\mf{P}_{i})$ for all $i$. We will be done if we can show $e_{\mf{p}}(\mf{P}_{i}) = e_{i}$ for all $i$. To accomplish this, observe that we have an isomorphism
       \[
-        \mc{O}/\mf{P}_{i} \cong (\mc{O}/\mf{p}\mc{O})/(\conj{m_{i}(\t)}(\mc{O}/\mf{p}\mc{O})) \cong (\smc{O}/\mf{p})[x]/\conj{m_{i}}(x)(\smc{O}/\mf{p})[x],
+        \F_{\mf{P}_{i}} \cong (\mc{O}/\mf{p}\mc{O})/(\conj{m_{i}(\t)}(\mc{O}/\mf{p}\mc{O})) \cong \F_{\mf{p}}[x]/\conj{m_{i}}(x)\F_{\mf{p}}[x],
       \]
-      where the first isomorphism follow by taking $\mc{O}/\mf{P}_{i}$ and reducing $\mc{O}$ modulo $\mf{p}$ and the second isomorphism follows from $\mc{O}/\mf{p}\mc{O} \cong A$ and that the image of the maximal ideal $\conj{m_{i}(\t)}(\mc{O}/\mf{p}\mc{O})$ under this isomorphism is $\conj{m_{i}}(x)A$. Now $(\smc{O}/\mf{p})[x]/\conj{m_{i}}(x)(\smc{O}/\mf{p})[x]$ is a $(\smc{O}/\mf{p})$-vector space of degree $\deg(\conj{m_{i}}(x))$. Hence the inertia degree $f_{p}(\mf{P}_{i})$ of $\mf{P}_{i}$ satisfies $f_{p}(\mf{P}_{i}) = \deg(\conj{m_{i}}(x))$. The ideal $\conj{m_{i}}(x)^{e_{i}}A$ under the isomorphism $A \cong \mc{O}/\mf{p}\mc{O}$ is the ideal $\conj{m_{i}(\t)}^{e_{i}}(\mc{O}/\mf{p}\mc{O})$. As the image of $\mf{P}_{i}$ under $\pi$ is $\conj{m_{i}(\t)}(\mc{O}/\mf{p}\mc{O})$, we have that $\mf{P}_{i}^{e_{i}}$ is contained in the preimage of $\conj{m_{i}(\t)}^{e_{i}}(\mc{O}/\mf{p}\mc{O})$ under $\pi$. As $\conj{m_{\t}(\t)}(\mc{O}/\mf{p}\mc{O}) = 0$, it follows that
+      where the first isomorphism follow by taking $\F_{\mf{P}_{i}}$ and reducing $\mc{O}$ modulo $\mf{p}$ and the second isomorphism follows from $\mc{O}/\mf{p}\mc{O} \cong A$ and that the image of the maximal ideal $\conj{m_{i}(\t)}(\mc{O}/\mf{p}\mc{O})$ under this isomorphism is $\conj{m_{i}}(x)A$. Now $\F_{\mf{p}}[x]/\conj{m_{i}}(x)\F_{\mf{p}}[x]$ is a $\F_{\mf{p}}$-vector space of degree $\deg(\conj{m_{i}}(x))$. Hence the inertia degree $f_{p}(\mf{P}_{i})$ of $\mf{P}_{i}$ satisfies $f_{p}(\mf{P}_{i}) = \deg(\conj{m_{i}}(x))$. The ideal $\conj{m_{i}}(x)^{e_{i}}A$ under the isomorphism $A \cong \mc{O}/\mf{p}\mc{O}$ is the ideal $\conj{m_{i}(\t)}^{e_{i}}(\mc{O}/\mf{p}\mc{O})$. As the image of $\mf{P}_{i}$ under $\pi$ is $\conj{m_{i}(\t)}(\mc{O}/\mf{p}\mc{O})$, we have that $\mf{P}_{i}^{e_{i}}$ is contained in the preimage of $\conj{m_{i}(\t)}^{e_{i}}(\mc{O}/\mf{p}\mc{O})$ under $\pi$. As $\conj{m_{\t}(\t)}(\mc{O}/\mf{p}\mc{O}) = 0$, it follows that
       \[
         \mf{p}\mc{O} = \pi^{-1}(0) \supseteq \mf{p}_{1}^{e_{1}} \cdots \mf{p}_{r}^{e_{r}}.
       \]
@@ -1345,7 +1345,7 @@
     \[
       \mf{Q}_{\mc{O}/\smc{O}} = \mc{O}.
     \]
-    We now turn to the setting of a number field $K$. Every prime $\mf{p}$ of $K$ is above some prime $p$ (recall $\Z$ is a principal ideal domain so we are referring to primes by their generator). Then the residue class extension of $\mc{O}_{K}/\Z$ for $\mf{p}$ is $(\mc{O}_{K}/\mf{p})/\F_{p}$. Also, we write $f_{p}(\mf{p})$ and $e_{p}(\mf{p})$ for the inertia degree and ramification index of $\mf{p}$ relative to $p$ respectively. Moreover, all of the residue class extensions are separable since $\F_{p}$ is a perfect field. This implies $\mf{p}$ is ramified in $\mc{O}_{K}/\Z$ if and only if $e_{p}(\mf{p}) = 1$. If $\t$ is a primitive element for $K/\Q$ contained in $\mc{O}_{K}$, then the \textbf{conductor}\index{conductor} $\mf{q}_{K}$ of $K$ relative to $\t$ is the conductor of $\mc{O}_{K}/\Z$ relative to $\t$. Even though $K$ admits an integral basis, $\mc{O}_{K}$ is not necessarily monogenic so that $\mf{q}_{K}$ may not be $\mc{O}_{K}$.
+    We now turn to the setting of a number field $K$. Every prime $\mf{p}$ of $K$ is above some prime $p$ (recall $\Z$ is a principal ideal domain so we are referring to primes by their generator). Then the residue class extension of $\mc{O}_{K}/\Z$ for $\mf{p}$ is $\F_{\mf{p}}/\F_{p}$. Also, we write $f_{p}(\mf{p})$ and $e_{p}(\mf{p})$ for the inertia degree and ramification index of $\mf{p}$ relative to $p$ respectively. Moreover, all of the residue class extensions are separable since $\F_{p}$ is a perfect field. This implies $\mf{p}$ is ramified in $\mc{O}_{K}/\Z$ if and only if $e_{p}(\mf{p}) = 1$. If $\t$ is a primitive element for $K/\Q$ contained in $\mc{O}_{K}$, then the \textbf{conductor}\index{conductor} $\mf{q}_{K}$ of $K$ relative to $\t$ is the conductor of $\mc{O}_{K}/\Z$ relative to $\t$. Even though $K$ admits an integral basis, $\mc{O}_{K}$ is not necessarily monogenic so that $\mf{q}_{K}$ may not be $\mc{O}_{K}$.
   \section{\todo{Galois Extensions}}
     Much more can be said about the ramification of primes in a Dedekind extension $\mc{O}/\smc{O}$ when the associated extension $L/K$ is Galois. Since $L/K$ is assumed to be finite and separable, this amounts to further assuming $L/K$ is normal. In this case, the elements of the Galois group $\Gal(L/K)$ are precisely the $K$-embeddings of $L$ into $\conj{K}$. Then by \cref{prop:formulas_for_trace_and_norm}, we have
     \[
@@ -1386,7 +1386,7 @@
       \]
       On the one hand, $\a \notin \s(\mf{P}_{i})$ and hence $\s(\a) \notin \mf{P}_{i}$ for all $\s \in \Gal(L/K)$ (recall $\Gal(L/K)$ is a group so $\s$ has an inverse $\s^{-1}$). But then $\Norm_{L/K}(\a) \notin \mf{P}_{i}$ for otherwise $\s(\a) \in \mf{P}_{i}$ for some $\s \in \Gal(L/K)$ by primality of $\mf{P}_{i}$. It must be the case that $\Norm_{L/K}(\a) \notin \mf{p}$ because $\mf{P}_{i}$ is above $\mf{p}$. On the other hand, $\a \in \mf{P}_{j}$ and so $\Norm_{L/K}(\a) \in \mf{P}_{j}$ since $\s(\a) \in \mf{P}_{j}$ when $\s$ is the identity and $\mf{P}_{j}$ is an integral ideal. But then $\Norm_{L/K}(\a) \in \mf{p}$ because $\mf{P}_{j}$ is above $\mf{p}$. This gives a contradiction and therefore the action is transitive. We now show that the inertia degrees and ramification indices of $\mf{P}_{i}$ and $\mf{P}_{j}$ are equal which will complete the proof. By what we have just proved, there exists a $\s \in \Gal(L/K)$ such that $\s(\mf{P}_{i}) = \mf{P}_{j}$. Since $\s$ is an automorphism of $\mc{O}$, it induces an isomorphism
       \[
-        \mc{O}/\mf{P}_{i} \cong \mc{O}/\mf{P}_{j}.
+        \F_{\mf{P}_{i}} \cong \F_{\mf{P}_{j}}.
       \]
       Therefore the inertia degrees of $\mf{P}_{i}$ and $\mf{P}_{j}$ are equal. For the ramification indices, recall that $\s$ is an automorphism of $\mc{O}$ fixing $\smc{O}$, and hence $\mf{p}$ too, pointwise. Thus $\s(\mf{p}\mc{O}) = \mf{p}\mc{O}$ which implies that $\mf{P}_{i}^{e} \mid\mid \mf{p}\mc{O}$ if and only if $\mf{P}_{j}^{e} \mid\mid \mf{p}\mc{O}$. Therefore the ramification indices of $\mf{P}_{i}$ and $\mf{P}_{j}$ are equal as well. This completes the proof 
     \end{proof}
@@ -1413,7 +1413,7 @@
       \end{tikzcd}
     \end{center}
 
-    Any of the decomposition groups $D_{\mf{p}}(\mf{P})$ encode how $\mf{p}\mc{O}$ splits into distinct prime factors. Indeed, by the orbit-stabilizer theorem the number of cosets in $\Gal(L/K)/D_{\mf{p}}(\mf{P})$ is equal to the size of the orbit of $\mf{P}$ under the action of $\Gal(L/K)$. As the action is transitive by \cref{prop:Galois_action_on_primes_is_transitive}, $\s(\mf{P})$ runs over the primes above $\mf{p}$ as $\s$ runs over a complete set of representatives for this coset space. It follows that the number of prime factors of $\mf{p}\mc{O}$ is equal to the index $[\Gal(L/K):D_{\mf{p}}(\mf{P})]$. In particular, $\mf{p}$ is inert in $\mc{O}/\smc{O}$ if and only if $D_{\mf{p}}(\mf{P}) = \Gal(L/K)$ which is further equivalent to $L^{D_{\mf{p}}(\mf{P})} = K$. Antithetically, $\mf{p}$ is totally split in $\mc{O}/\smc{O}$ if and only if $D_{\mf{p}}(\mf{P}) = \{\id\}$ which is further equivalent to $L^{D_{\mf{p}}(\mf{P})} = L$. More generally, the fundamental equality implies $n = ef[\Gal(L/K):D_{\mf{p}}(\mf{P})]$ which is to say that
+    Any of the decomposition groups $D_{\mf{p}}(\mf{P})$ encode how $\mf{p}\mc{O}$ splits into distinct prime factors in $\mc{O}$. Indeed, by the orbit-stabilizer theorem the number of cosets in $\Gal(L/K)/D_{\mf{p}}(\mf{P})$ is equal to the size of the orbit of $\mf{P}$ under the action of $\Gal(L/K)$. As the action is transitive by \cref{prop:Galois_action_on_primes_is_transitive}, $\s(\mf{P})$ runs over the primes above $\mf{p}$ as $\s$ runs over a complete set of representatives for this coset space. It follows that the number of prime factors of $\mf{p}\mc{O}$ is equal to the index $[\Gal(L/K):D_{\mf{p}}(\mf{P})]$. In particular, $\mf{p}$ is inert in $\mc{O}/\smc{O}$ if and only if $D_{\mf{p}}(\mf{P}) = \Gal(L/K)$ which is further equivalent to $L^{D_{\mf{p}}(\mf{P})} = K$. Antithetically, $\mf{p}$ is totally split in $\mc{O}/\smc{O}$ if and only if $D_{\mf{p}}(\mf{P}) = \{\id\}$ which is further equivalent to $L^{D_{\mf{p}}(\mf{P})} = L$. More generally, the fundamental equality implies $n = ef[\Gal(L/K):D_{\mf{p}}(\mf{P})]$ which is to say that
     \begin{equation}\label{equ:decomposition_group_e_f_relation}
       |D_{\mf{p}}(\mf{P})| = ef.
     \end{equation}
@@ -1425,9 +1425,9 @@
     \[
       \mf{p}\mc{O} = \left(\prod_{\s \in \Gal(L/K)/D_{\mf{p}}(\mf{P})}\s(\mf{P})\right)^{e}.
     \]
-    The decomposition field is aptly named because it contains all of the information about the different prime factors that $\mf{p}\mc{O}$ split into in $L$. In particular, the primes $\mf{P}^{D}$ are inert in $\mc{O}/\mc{O}^{D}$ as the following proposition shows:
+    The decomposition field is aptly named because it contains all of the information about the different prime factors that $\mf{p}\mc{O}$ splits into in $\mc{O}$. In particular, the primes $\mf{P}^{D}$ are inert in $\mc{O}/\mc{O}^{D}$ as the following proposition shows:
 
-    \begin{proposition}
+    \begin{proposition}\label{prop:decomposition_field_controls_decomposition}
       Let $\mc{O}/\smc{O}$ be a Dedekind extension of a degree $n$ Galois extension $L/K$, let $\mf{p}$ be a prime of $\smc{O}$ with inertia degree $f$ and ramification index $e$, and let $\mf{P}$ be a prime of $\mc{O}$ above $\mf{p}$. Then the following hold:
       \begin{enumerate}[label=(\roman*)]
         \item $\mf{P}^{D}$ is inert in $\mc{O}/\mc{O}^{D}$.
@@ -1450,7 +1450,25 @@
       \end{enumerate}
     \end{proof}
     
-    \todo{xxx}
+    We can view \cref{prop:decomposition_field_controls_decomposition} (i) as a statement that $\mf{p}\mc{O}^{D}$ encodes all of the information about the distinct prime factors $\mf{p}\mc{O}$ splits into in $\mc{O}$. Moreover, \cref{prop:decomposition_field_controls_decomposition} (ii) can be interpreted as the fact that $\mc{O}^{D}/\smc{O}$ contains no information about the ramification index or inertia degree of $\mf{p}$ in $\mc{O}/\smc{O}$. All of that information is contained in $\mc{O}/\mc{O}^{D}$. We need to do more work to unpack this information. Continue to let $\mf{P}$ be a prime above $\mf{p}$. Since any $\tau \in D_{\mf{p}}(\mf{P})$ leaves $\mc{O}$ and $\mf{P}$ invariant, it induces an automorphism $\conj{\tau}$ of the residue class field $\mc{O}/\mf{P}$ defined by
+    \[
+      \conj{\tau}:\F_{\mf{P}}\to \F_{\mf{P}}\qquad \a \mapsto \tau(\a) \tmod{\mf{P}}.
+    \]
+    Then we have a surjective homomorphism as the following proposition shows:
+
+    \begin{proposition}
+      Let $\mc{O}/\smc{O}$ be a Dedekind extension of a finite Galois extension $L/K$, let $\mf{p}$ be a prime of $\smc{O}$, and let $\mf{P}$ be a prime of $\mc{O}$ above $\mf{p}$. Then the residue class extension $\F_{\mf{P}}/\F_{\mf{p}}$ is normal. Moreover, we have a surjective homomorphism
+      \[
+        T:D_{\mf{p}}(\mf{P}) \to \Aut_{\F_{\mf{p}}}(\F_{\mf{P}}) \qquad \tau \mapsto \conj{\tau}.
+      \]
+    \end{proposition}
+    \begin{proof}
+      By \cref{prop:decomposition_field_controls_decomposition} (ii), $f_{\mf{p}}(\mf{P}^{D}) = 1$ so that we have an isomorphism $\F_{\mf{P}^{D}} \cong \F_{\mf{p}}$. Under this isomorphism we may assume $L^{D_{\mf{p}}(\mf{P})} = K$ which is to say $D_{\mf{p}}(\mf{P}) = \Gal(L/K)$. We will now prove that $\F_{\mf{P}}/\F_{\mf{p}}$ is normal. So let $\a \in \mc{O}$ and suppose $m_{\a}(x)$ and $m_{\conj{\a}}(x)$ are the minimal polynomials of $\a$ and $\conj{\a}$ over $K$ and $\F_{\mf{p}}$ respectively. As $\a \in \mc{O}$, \cref{prop:field_of_fractions_AKBL} implies $m_{\a}(x)$ has coefficients in $\smc{O}$. As $\a \in \conj{\a}$, we find that $\conj{\a}$ is a root of $\conj{m_{\a}}(x)$ and thus $m_{\conj{\a}}(x)$ divides $\conj{m_{\a}}(x)$. Since $L/K$ is normal (as it is Galois), $m_{\a}(x)$ splits into linear factors over $L$. These linear factors must also belong to $\mc{O}[x]$ since their roots are elements of $\mc{O}$ which itself is integrally closed. It follows that $\conj{m_{\a}}(x)$ splits into linear factors over $\mc{O}/\mf{P}$. As $m_{\conj{\a}}(x)$ divides $\conj{m_{\a}}(x)$, the same is true for $m_{\conj{\a}}(x)$. Thus $\F_{\mf{P}}/\F_{\mf{p}}$ is normal. We now prove the surjectivity of $T$. Consider the maximal separable subextension of $\F_{\mf{P}}/\F_{\mf{p}}$. Since this extension is finite (because the reside class extension is), it is simple by the primitive element theorem. Letting $\t \in \mc{O}$ be such that $\conj{\t}$ is a primitive element, the maximal separable subextension is of the form $\F_{\mf{p}}(\conj{\t})/\F_{\mf{p}}$. We claim
+      \[
+        \Aut_{\F_{\mf{p}}}(\F_{\mf{p}}(\conj{\t})) = \Aut_{\F_{\mf{p}}}(\F_{\mf{P}}).
+      \]
+      \todo{xxx}
+    \end{proof}
   \section{The Different \& Discriminant}
     Let $\mc{O}/\smc{O}$ be a Dedekind extension of a degree $n$ separable extension $L/K$. It is exceptionally rare for a prime $\mf{p}$ of $K$ to ramify. We will construct two integral ideals, one of $\mc{O}$ and the other of $\smc{O}$ which will tell us which primes ramify in $L$ or $K$. These integral ideals are the different and discriminant respectively. To describe them, we will need the concept of lattices in Dedekind domains. We say that $\mf{L}$ is a \textbf{$\smc{O}$-lattice}\index{$\smc{O}$-lattice} if it is a finitely generated $\smc{O}$-submodule of $L$. Moreover, we say that $\mf{L}$ is \textbf{complete}\index{complete} if it spans $L/K$. That is, $\mf{L}$ contains a basis of $L/K$.
 
@@ -1583,19 +1601,19 @@
       \[
         \Trace_{\mc{O}/\smc{O}}(\mf{A}) \subseteq \mf{p},
       \]
-      Let $\a \in \mf{A}$ and $T_{\a}$ be the multiplication by $\a$ map. Then $\mf{p}\mc{O}$ is $T_{\a}$-invariant because it is an ideal of $\mc{O}$. This induces a multiplication by $\conj{\a}$ map $T_{\conj{\a}}$ on $\mc{O}/\mf{p}\mc{O}$ as a $(\smc{O}/\mf{p})$-vector space. As the classes $\conj{\a_{1}},\ldots,\conj{\a_{n}}$ are a basis for $\mc{O}/\mf{p}\mc{O}$ as a $(\smc{O}/\mf{p})$-vector space, it follows that
+      Let $\a \in \mf{A}$ and $T_{\a}$ be the multiplication by $\a$ map. Then $\mf{p}\mc{O}$ is $T_{\a}$-invariant because it is an ideal of $\mc{O}$. This induces a multiplication by $\conj{\a}$ map $T_{\conj{\a}}$ on $\mc{O}/\mf{p}\mc{O}$ as a $\F_{\mf{p}}$-vector space. As the classes $\conj{\a_{1}},\ldots,\conj{\a_{n}}$ are a basis for $\mc{O}/\mf{p}\mc{O}$ as a $\F_{\mf{p}}$-vector space, it follows that
       \[
-        \Trace_{\mc{O}/\smc{O}}(\a) \equiv \Trace_{(\mc{O}/\mf{p}\mc{O})/(\smc{O}/\mf{p})}(\conj{\a}) \tmod{\mf{p}}.
+        \Trace_{\mc{O}/\smc{O}}(\a) \equiv \Trace_{(\mc{O}/\mf{p}\mc{O})/\F_{\mf{p}}}(\conj{\a}) \tmod{\mf{p}}.
       \]
       Therefore it is yet further equivalent to show
       \[
-        \Trace_{(\mc{O}/\mf{p}\mc{O})/(\smc{O}/\mf{p})}(\conj{\a}) \equiv 0 \tmod{\mf{p}},
+        \Trace_{(\mc{O}/\mf{p}\mc{O})/\F_{\mf{p}}}(\conj{\a}) \equiv 0 \tmod{\mf{p}},
       \]
-      for all $\a \in \mf{A}$. To prove this, observe that $\conj{\a}$ runs over to the subring $\mf{A}/\mf{p}\mc{O}$ of $\mc{O}/\mf{p}\mc{O}$ as $\a$ runs over $\mf{A}$. By construction, $\mf{A}$ is divisible by every prime factor of $\mf{p}\mc{O}$ and so a power, say $k$, of $\mf{A}$ is divisible by $\mf{p}\mc{O}$. But this means $T_{\conj{\a}}^{k}$ is the zero operator so that it is nilpotent. As nilpotent maps have trace zero, $\Trace_{(\mc{O}/\mf{p}\mc{O})/(\smc{O}/\mf{p})}(\conj{\a}) = 0$. But then $\Trace_{\mc{O}/\smc{O}}(\a) \equiv 0 \tmod{p}$ and, as $\a$ was arbitrary, the claim is justified. We now prove (i) and (ii):
+      for all $\a \in \mf{A}$. To prove this, observe that $\conj{\a}$ runs over to the subring $\mf{A}/\mf{p}\mc{O}$ of $\mc{O}/\mf{p}\mc{O}$ as $\a$ runs over $\mf{A}$. By construction, $\mf{A}$ is divisible by every prime factor of $\mf{p}\mc{O}$ and so a power, say $k$, of $\mf{A}$ is divisible by $\mf{p}\mc{O}$. But this means $T_{\conj{\a}}^{k}$ is the zero operator so that it is nilpotent. As nilpotent maps have trace zero, $\Trace_{(\mc{O}/\mf{p}\mc{O})/\F_{\mf{p}}}(\conj{\a}) = 0$. But then $\Trace_{\mc{O}/\smc{O}}(\a) \equiv 0 \tmod{p}$ and, as $\a$ was arbitrary, the claim is justified. We now prove (i) and (ii):
       \begin{enumerate}[label=(\roman*)]
         \item Begin by writing $\mf{p}\mc{O} = \mf{P}^{e_{\mf{p}}(\mf{P})}\mf{A}$ for some integral ideal $\mf{A}$ of $\mc{O}$ so that $\mf{A}$ is relatively prime to $\mf{P}$. Arguing as before, we find that $\mf{P}^{e_{\mf{p}}(\mf{P})} \mid \mf{D}_{\mc{O}/\smc{O}}$ if and only if
         \[
-          \Trace_{(\mc{O}/\mf{p}\mc{O})/(\smc{O}/\mf{p})}(\conj{\a}) = 0,
+          \Trace_{(\mc{O}/\mf{p}\mc{O})/\F_{\mf{p}}}(\conj{\a}) = 0,
         \]
         for all $\a \in \mf{A}$. Since $\mf{P}^{e_{\mf{p}}(\mf{P})}$ and $\mf{A}$ are relatively prime, the Chinese remainder theorem implies
         \[
@@ -1603,21 +1621,21 @@
         \]
         So there exists $\b,\g \in \mc{O}$ such that $\b \equiv \a \tmod{\mf{P}^{e_{\mf{p}}(\mf{P})}}$ and $\g \equiv \a \tmod{\mf{A}}$. Then \cref{equ:trace_and_norm_direct_sums} implies
         \[
-          \Trace_{(\mc{O}/\mf{p}\mc{O})/(\smc{O}/\mf{p})}(\conj{\a}) = \Trace_{(\mc{O}/\mf{P}^{e_{\mf{p}}(\mf{P})})/(\smc{O}/\mf{p})}(\conj{\b})+\Trace_{(\mc{O}/\mf{A})/(\smc{O}/\mf{p})}(\conj{\g}).
+          \Trace_{(\mc{O}/\mf{p}\mc{O})/\F_{\mf{p}}}(\conj{\a}) = \Trace_{(\mc{O}/\mf{P}^{e_{\mf{p}}(\mf{P})})/\F_{\mf{p}}}(\conj{\b})+\Trace_{(\mc{O}/\mf{A})/\F_{\mf{p}}}(\conj{\g}).
         \]
-        As $\a \in \mf{A}$, $\conj{\g} = 0$ and so $\Trace_{(\mc{O}/\mf{A})/(\smc{O}/\mf{p})}(\conj{\g}) = 0$. Therefore it is further equivalent to show
+        As $\a \in \mf{A}$, $\conj{\g} = 0$ and so $\Trace_{(\mc{O}/\mf{A})/\F_{\mf{p}}}(\conj{\g}) = 0$. Therefore it is further equivalent to show
         \[
-          \Trace_{(\mc{O}/\mf{P}^{e_{\mf{p}}(\mf{P})})/(\smc{O}/\mf{p})}(\conj{\b}) = 0,
+          \Trace_{(\mc{O}/\mf{P}^{e_{\mf{p}}(\mf{P})})/\F_{\mf{p}}}(\conj{\b}) = 0,
         \]
         for all $\b \in \mc{O}$. We will show that this occurs if and only if $e_{\mf{p}}(\mf{P}) \equiv 0 \tmod{\mf{p}}$. So let $\b \in \mc{O}$. By \cref{lem:quotient_by_prime_power_isomorphism}, we have an isomorphism
         \[
           \mc{O}/\mf{P}^{e_{\mf{p}}(\mf{P})} \cong \bigop_{0 \le e \le e_{\mf{p}}(\mf{P})-1}\mc{O}/\mf{P}.
         \]
-        Therefore there exists $\b_{e} \in \mc{O}$ such that $\b \equiv \b_{e} \tmod{\mf{P}}$ for all $e$. But then $\Trace_{(\mc{O}/\mf{P})/(\smc{O}/\mf{p})}(\conj{\b}_{e}) = \Trace_{(\mc{O}/\mf{P})/(\smc{O}/\mf{p})}(\conj{\b})$ for all $e$, and combining with \cref{equ:trace_and_norm_direct_sums} gives
+        Therefore there exists $\b_{e} \in \mc{O}$ such that $\b \equiv \b_{e} \tmod{\mf{P}}$ for all $e$. But then $\Trace_{\F_{\mf{P}}/\F_{\mf{p}}}(\conj{\b}_{e}) = \Trace_{\F_{\mf{P}}/\F_{\mf{p}}}(\conj{\b})$ for all $e$, and combining with \cref{equ:trace_and_norm_direct_sums} gives
         \[
-          \Trace_{(\mc{O}/\mf{P}^{e_{\mf{p}}(\mf{P})})/(\smc{O}/\mf{p})}(\conj{\b}) = e_{\mf{p}}(\mf{P})\Trace_{(\mc{O}/\mf{P})/(\smc{O}/\mf{p})}(\conj{\b}),
+          \Trace_{(\mc{O}/\mf{P}^{e_{\mf{p}}(\mf{P})})/\F_{\mf{p}}}(\conj{\b}) = e_{\mf{p}}(\mf{P})\Trace_{\F_{\mf{P}}/\F_{\mf{p}}}(\conj{\b}),
         \]
-        which we recall is an element of $\smc{O}/\mf{p}$. As the residue class extensions are assumed to be separable, \cref{lem:trace_is_nondegenerate} implies that $\Trace_{(\mc{O}/\mf{P})/(\smc{O}/\mf{p})}(\conj{\b})$ cannot be zero for all $\b \in \mc{O}$. So it must be the case that $\Trace_{(\mc{O}/\mf{P}^{e_{\mf{p}}(\mf{P})})/(\smc{O}/\mf{p})}(\conj{\b}) = 0$ for all $\b \in \mc{O}$ if and only if $e_{\mf{p}}(\mf{P}) \equiv 0 \tmod{\mf{p}}$. This proves (i).
+        which we recall is an element of $\F_{\mf{p}}$. As the residue class extensions are assumed to be separable, \cref{lem:trace_is_nondegenerate} implies that $\Trace_{\F_{\mf{P}}/\F_{\mf{p}}}(\conj{\b})$ cannot be zero for all $\b \in \mc{O}$. So it must be the case that $\Trace_{(\mc{O}/\mf{P}^{e_{\mf{p}}(\mf{P})})/\F_{\mf{p}}}(\conj{\b}) = 0$ for all $\b \in \mc{O}$ if and only if $e_{\mf{p}}(\mf{P}) \equiv 0 \tmod{\mf{p}}$. This proves (i).
         \item As we have already shown $\mf{P}^{e_{\mf{p}}(\mf{P})-1} \mid \mf{D}_{\mc{O}/\smc{O}}$, (ii) follows from (i).
       \end{enumerate}
     \end{proof}
@@ -1641,11 +1659,11 @@
       \[
         \mf{d}_{\mc{O}/\smc{O}} = d_{\smc{O}}(\mc{O})\smc{O}.
       \]
-      Therefore $\mf{p}$ divides $\mf{d}_{\mc{O}/\smc{O}}$ if and only if $d_{\smc{O}}(\mc{O}) \equiv 0 \tmod{\mf{p}}$. Since $\conj{\a_{1}},\ldots,\conj{\a_{n}}$ is a basis for $\mc{O}/\mf{p}\mc{O}$ as a $(\smc{O}/\mf{p})$-vector space, it follows that
+      Therefore $\mf{p}$ divides $\mf{d}_{\mc{O}/\smc{O}}$ if and only if $d_{\smc{O}}(\mc{O}) \equiv 0 \tmod{\mf{p}}$. Since $\conj{\a_{1}},\ldots,\conj{\a_{n}}$ is a basis for $\mc{O}/\mf{p}\mc{O}$ as a $\F_{\mf{p}}$-vector space, it follows that
       \[
-        d_{\smc{O}}(\mc{O}) \equiv d_{\smc{O}/\mf{p}}(\mc{O}/\mf{p}\mc{O}) \pmod{\mf{p}}.
+        d_{\smc{O}}(\mc{O}) \equiv d_{\F_{\mf{p}}}(\mc{O}/\mf{p}\mc{O}) \pmod{\mf{p}}.
       \]
-      So $\mf{p}$ divides $\mf{d}_{\mc{O}/\smc{O}}$ if and only if $d_{\smc{O}/\mf{p}}(\mc{O}/\mf{p}\mc{O}) = 0$. Now suppose $\mf{p}\mc{O}$ has prime factorization
+      So $\mf{p}$ divides $\mf{d}_{\mc{O}/\smc{O}}$ if and only if $d_{\F_{\mf{p}}}(\mc{O}/\mf{p}\mc{O}) = 0$. Now suppose $\mf{p}\mc{O}$ has prime factorization
       \[
         \mf{p}\mc{O} = \mf{P}_{1}^{e_{\mf{p}}(\mf{P}_{1})} \cdots \mf{P}_{r}^{e_{\mf{p}}(\mf{P}_{r})}.
       \]
@@ -1655,13 +1673,13 @@
       \]
       Then \cref{prop:discriminant_and_direct_sums} further implies
       \[
-        d_{\smc{O}/\mf{p}}(\mc{O}/\mf{p}\mc{O}) = \prod_{1 \le i \le r}d_{\smc{O}/\mf{p}}(\mc{O}/\mf{P}_{i}^{e_{\mf{p}}(\mf{P}_{i})}),
+        d_{\F_{\mf{p}}}(\mc{O}/\mf{p}\mc{O}) = \prod_{1 \le i \le r}d_{\F_{\mf{p}}}(\mc{O}/\mf{P}_{i}^{e_{\mf{p}}(\mf{P}_{i})}),
       \]
-      Therefore $d_{\smc{O}/\mf{p}}(\mc{O}/\mf{p}\mc{O}) = 0$ if and only if $d_{\smc{O}/\mf{p}}(\mc{O}/\mf{P}_{i}^{e_{\mf{p}}(\mf{P}_{i})}) = 0$ for some $i$. We will prove that this occurs if and only if $e_{\mf{p}}(\mf{P}_{i}) \ge 2$ which will complete the proof because this is exactly when $\mf{p}$ ramifies. So let $\mf{P}$ be above $\mf{p}$ and first suppose $e_{\mf{p}}(\mf{P}) \ge 2$. Then we need to show $d_{\smc{O}/\mf{p}}(\mc{O}/\mf{P}^{e_{\mf{p}}(\mf{P})}) = 0$. By uniqueness of prime factorizations of fractional ideals, there exists $\b_{1} \in \mf{P}^{e_{\mf{p}}(\mf{P})-1}-\mf{P}^{e_{\mf{p}}(\mf{P})}$. Then $\b_{1}^{2} \in \mf{P}^{2(e_{\mf{p}}(\mf{P})-1)} \subseteq \mf{P}^{e_{\mf{p}}(\mf{P})}$ because $e_{\mf{p}}(\mf{P}) \ge 2$. By construction, $\conj{\b_{1}}$ in $\mc{O}/\mf{P}^{e_{\mf{p}}(\mf{P})}$ is nonzero and such that $\conj{\b_{1}}^{2} = 0$. Since $\mc{O}/\mf{P}^{e_{\mf{p}}(\mf{P})}$ is a $(\smc{O}/\mf{p})$-vector space of dimension $f_{\mf{p}}(\mf{P})$, there exists a basis of the form $\conj{\b_{1}},\ldots,\conj{\b_{f_{\mf{p}}(\mf{P})}}$. Now
+      Therefore $d_{\F_{\mf{p}}}(\mc{O}/\mf{p}\mc{O}) = 0$ if and only if $d_{\F_{\mf{p}}}(\mc{O}/\mf{P}_{i}^{e_{\mf{p}}(\mf{P}_{i})}) = 0$ for some $i$. We will prove that this occurs if and only if $e_{\mf{p}}(\mf{P}_{i}) \ge 2$ which will complete the proof because this is exactly when $\mf{p}$ ramifies. So let $\mf{P}$ be above $\mf{p}$ and first suppose $e_{\mf{p}}(\mf{P}) \ge 2$. Then we need to show $d_{\F_{\mf{p}}}(\mc{O}/\mf{P}^{e_{\mf{p}}(\mf{P})}) = 0$. By uniqueness of prime factorizations of fractional ideals, there exists $\b_{1} \in \mf{P}^{e_{\mf{p}}(\mf{P})-1}-\mf{P}^{e_{\mf{p}}(\mf{P})}$. Then $\b_{1}^{2} \in \mf{P}^{2(e_{\mf{p}}(\mf{P})-1)} \subseteq \mf{P}^{e_{\mf{p}}(\mf{P})}$ because $e_{\mf{p}}(\mf{P}) \ge 2$. By construction, $\conj{\b_{1}}$ in $\mc{O}/\mf{P}^{e_{\mf{p}}(\mf{P})}$ is nonzero and such that $\conj{\b_{1}}^{2} = 0$. Since $\mc{O}/\mf{P}^{e_{\mf{p}}(\mf{P})}$ is a $\F_{\mf{p}}$-vector space of dimension $f_{\mf{p}}(\mf{P})$, there exists a basis of the form $\conj{\b_{1}},\ldots,\conj{\b_{f_{\mf{p}}(\mf{P})}}$. Now
       \[
-        \Trace_{(\mc{O}/\mf{P}^{e_{\mf{p}}(\mf{P})})/(\smc{O}/\mf{p})}(\conj{\b_{1}\b_{j}}) = 0,
+        \Trace_{(\mc{O}/\mf{P}^{e_{\mf{p}}(\mf{P})})/\F_{\mf{p}}}(\conj{\b_{1}\b_{j}}) = 0,
       \]
-      for $1 \le j \le f_{\mf{p}}(\mf{P})$ since $T_{\conj{\b_{1}}\conj{\b_{j}}}$ is nilpotent because $T_{\conj{\b_{1}}\conj{\b_{j}}}^{2}$ is the zero operator as $\conj{\b_{1}}^{2} = 0$. But then the first row of $(\Trace_{(\mc{O}/\mf{P}^{e_{\mf{p}}(\mf{P})})/(\smc{O}/\mf{p})}(\conj{\b_{i}\b_{j}}))_{i,j}$ is zero and hence $d_{\smc{O}/\mf{p}}(\mc{O}/\mf{P}^{e_{\mf{p}}(\mf{P})}) = 0$. Now suppose $e_{\mf{p}}(\mf{P}) = 1$. Then it remains to show $d_{\smc{O}/\mf{p}}(\mc{O}/\mf{P}) \neq 0$. Since the reside class extension $(\mc{O}/\mf{P})/(\smc{O}/\mf{p})$ is separable by assumption, \cref{prop:discriminant_not_zero} implies $d_{\smc{O}/\mf{p}}(\mc{O}/\mf{P}) \neq 0$. This completes the proof.
+      for $1 \le j \le f_{\mf{p}}(\mf{P})$ since $T_{\conj{\b_{1}}\conj{\b_{j}}}$ is nilpotent because $T_{\conj{\b_{1}}\conj{\b_{j}}}^{2}$ is the zero operator as $\conj{\b_{1}}^{2} = 0$. But then the first row of $(\Trace_{(\mc{O}/\mf{P}^{e_{\mf{p}}(\mf{P})})/\F_{\mf{p}}}(\conj{\b_{i}\b_{j}}))_{i,j}$ is zero and hence $d_{\F_{\mf{p}}}(\mc{O}/\mf{P}^{e_{\mf{p}}(\mf{P})}) = 0$. Now suppose $e_{\mf{p}}(\mf{P}) = 1$. Then it remains to show $d_{\F_{\mf{p}}}(\F_{\mf{P}}) \neq 0$. Since the residue class extension $\F_{\mf{P}}/\F_{\mf{p}}$ is separable by assumption, \cref{prop:discriminant_not_zero} implies $d_{\F_{\mf{p}}}(\F_{\mf{P}}) \neq 0$. This completes the proof.
     \end{proof}
 
     As a corollary of \cref{thm:ramifies_if_and_only_if_divides_the_discriminant} we see that only finitely many primes can ramify in $K$:
