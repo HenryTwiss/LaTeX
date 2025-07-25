@@ -93,7 +93,7 @@
       where $\a'_{i} = \a_{i}\a^{n-1-i}$ for $0 \le i \le n-1$, and so $\a\l$ is the root of a monic polynomial with coefficients in $A$. Then $\a\l \in B$ and so $\a\l = \b$ for some $\b \in B$ which is equivalent to $\l = \frac{\b}{\a}$. As $A \subseteq B$, this also implies that $L$ is the field of fractions of $B$. For the last statement, suppose $\l \in L$. If the minimal polynomial $m_{\l}(x)$ of $\l$ over $K$ has coefficients in $A$ then $\l$ is automatically integral over $A$ (since minimal polynomials are monic). So suppose $\l$ is an integral over $A$ so that $\l$ is a root of a monic polynomial $f(x) \in A[x]$. Then $m_{\l}(x)$ divides $f(x)$ in $A[x]$ and thus all of the roots of $m_{\l}(x)$ are integral over $A$ too. By Vieta's formulas, the coefficients of $m_{\k}(x)$ integral over $A$ as well. But then $m_{\k}(x) \in A[x]$. This completes the proof.
     \end{proof}
 
-    We are now ready to introduce number fields. A \textbf{number field}\index{number field} $K$ is a finite extension of $\Q$. That is, $K$ is a finite dimensional $\Q$-vector space. In particular, $K/\Q$ is a finite separable extension (since $\Q$ is perfect) so that the primitive element theorem applies and is Galois if and only if $K/\Q$ is normal. We say that the \textbf{degree}\index{degree} of $K$ is $[K:\Q]$ which is simply the degree of $K$ as a $\Q$-vector space. If $K$ is of degree $2$, $3$, etc. then we say it is \textbf{quadratic}\index{quadratic}, \textbf{cubic}\index{cubic}, etc. Any $\k \in K$ is called an \textbf{algebraic number}\index{algebraic number}. We define the \textbf{ring of integers}\index{ring of integers} $\mc{O}_{K}$ of $K$ to be the integral closure of $\Z$ in $K$. In other words,
+    We are now ready to introduce number fields. A \textbf{number field}\index{number field} $K$ is a finite extension of $\Q$. That is, $K$ is a finite dimensional $\Q$-vector space. In particular, $K/\Q$ is a finite separable extension since $\Q$ is perfect so that the primitive element theorem applies. Moreover, $K/\Q$ is Galois if and only if it is normal. We say that the \textbf{degree}\index{degree} of $K$ is $[K:\Q]$ which is simply the degree of $K$ as a $\Q$-vector space. If $K$ is of degree $2$, $3$, etc. then we say it is \textbf{quadratic}\index{quadratic}, \textbf{cubic}\index{cubic}, etc. Any $\k \in K$ is called an \textbf{algebraic number}\index{algebraic number}. We define the \textbf{ring of integers}\index{ring of integers} $\mc{O}_{K}$ of $K$ to be the integral closure of $\Z$ in $K$. In other words,
     \[
       \mc{O}_{K} = \{\k \in K:\text{$\k$ is integral over $\Z$}\}.
     \]
@@ -317,7 +317,15 @@
       where the sums run over all $K$-embeddings $\s$ of $L$ into $\conj{K}$ and the second to last equality follows by \cref{prop:formulas_for_trace_and_norm}, as desired.
     \end{proof}
 
-    Discriminants of bases are useful because of the following lemma:
+    When the degree $n$ separable extension $L/K$ admits a basis of the form $1,\l,\ldots,\l^{n-1}$ (in fact such a basis always exists by choosing $\l$ to be a primitive element for $L/K$) $d_{L/K}(1,\l,\ldots,\l^{n-1})$ can be easily computed. Indeed, the embedding matrix becomes
+    \[
+      M(1,\l,\ldots,\l^{n-1}) = \begin{pmatrix} 1 & \s_{1}(\l) & \cdots & \s_{1}(\l)^{n-1} \\ \vdots & \vdots & & \vdots \\ 1 & \s_{n}(\l) & \cdots & \s_{n}(\l)^{n-1} \end{pmatrix},
+    \]
+    which is a Vandermonde matrix. Then
+    \begin{equation}\label{equ:Vandermonde_determinant_for_discriminant}
+      d_{L/K}(1,\l,\ldots,\l^{n-1}) = \prod_{1 \le i < j \le n}(\s_{i}(\l)-\s_{j}(\l)),
+    \end{equation}
+    which is the square of the Vandermonde determinant of $M(1,\l,\ldots,\l^{n-1})$, by \cref{disc_as_square_of_embedding_matrix}. In any case, discriminants of bases are useful because of the following lemma:
 
     \begin{lemma}\label{lem:lemma_for_integral_basis_AKBL}
       Let $A$ be an integrally closed integral domain with field of fractions $K$, $L/K$ be a degree $n$ separable extension, and $B$ be the integral closure of $A$ in $L$. If $\l_{1},\ldots,\l_{n}$ is a basis for $L/K$ that is contained in $B$ then
@@ -366,12 +374,12 @@
       By the structure theorem of finitely generated modules over principal ideal domains again, $M$ is a free $A$-module of rank at most $n$. To see that the rank is at least $n$, let $\a \in M$ be nonzero and, as before, let $\l_{1},\ldots,\l_{n}$ be a basis for $L/K$ that is contained in $B$. Then $\a\l_{1},\ldots,\a\l_{n}$ is a basis for $L/K$ contained in $M$. Thus the rank of $M$ is at least $n$, and in particular it must be $n$. This completes the proof.
     \end{proof}
 
-    Even if an integral basis for $B/A$ exists, where say $B$ is a free $A$-module of rank $n$, it is very difficult to explicitly write one down. However, there is one instance in which this is possible. We say that $B$ is \textbf{monogenic}\index{monogenic} over $A$ if $B = A[\b]$ for some $\b \in B$. It follows immediately that $1,\b,\ldots,\b^{n-1}$ is an integral basis for $B/A$ since $B$ is of rank $n$. In addition, the traces $\Trace_{L/K}$ and $\Trace_{B/A}$ and norms $\Norm_{L/K}$ and $\Norm_{B/A}$ agree:
+    Even if an integral basis for $B/A$ exists, where say $B$ is a free $A$-module of rank $n$, it is very difficult to explicitly write one down. However, there is one instance in which this is possible. We say that $B$ is \textbf{monogenic}\index{monogenic} over $A$ if $B = A[\b]$ for some $\b \in B$. It follows immediately that $1,\b,\ldots,\b^{n-1}$ is an integral basis for $B/A$ since $B$ is of rank $n$. The discriminant of this basis is then given by \cref{equ:Vandermonde_determinant_for_discriminant}. In addition, the traces $\Trace_{L/K}$ and $\Trace_{B/A}$ and norms $\Norm_{L/K}$ and $\Norm_{B/A}$ agree:
 
     \begin{proposition}\label{prop:trace_and_norm_reduce_for_integral_basis}
       Let $A$ be an integrally closed integral domain with field of fractions $K$, $L/K$ be a degree $n$ separable extension, and $B$ be the integral closure of $A$ in $L$. If $B$ admits an integral basis over $A$ then
       \[
-        \Trace_{L/K}(\b) = \Trace{B/A}(\b) \quad \text{and} \quad \Norm_{L/K}(\b) = \Norm_{B/A}(\b),
+        \Trace_{L/K}(\b) = \Trace_{B/A}(\b) \quad \text{and} \quad \Norm_{L/K}(\b) = \Norm_{B/A}(\b),
       \]
       for all $\b \in B$.
     \end{proposition}
@@ -1425,7 +1433,7 @@
     \[
       D_{\mf{p}}(\s(\mf{P})) = \s D_{\mf{p}}(\mf{P})\s^{-1}.
     \]
-    This is simply because $\tau(\mf{P}) = \mf{P}$ if and only if $\s\tau\s^{-1}(\s(\mf{P})) = \s(\mf{P})$. Also, the fundamental theorem of Galois theory implies $D_{\mf{p}}(\s(\mf{P}))$ is normal if and only if $L^{D_{\mf{p}}(\s(\mf{P}))}/K$ is Galois in which case
+    This is simply because $\tau(\mf{P}) = \mf{P}$ if and only if $\s\tau\s^{-1}(\s(\mf{P})) = \s(\mf{P})$. Also, the fundamental theorem of Galois theory implies that $D_{\mf{p}}(\s(\mf{P}))$ is normal if and only if $L^{D_{\mf{p}}(\s(\mf{P}))}/K$ is Galois in which case
     \[
       \Gal(L^{D_{\mf{p}}(\s(\mf{P}))}/K) \cong \Gal(L/K)/D_{\mf{p}}(\s(\mf{P})).
     \]
