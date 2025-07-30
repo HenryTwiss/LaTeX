@@ -211,21 +211,25 @@
       Multiplying by $\frac{1}{\a}$, it follows that $\frac{1}{\b}$ is a root of a monic polynomial with coefficients in $A$. Hence $\frac{1}{\b} \in B$ and thus $\b$ is a unit.
     \end{proof}
 
-    Having introduced traces and norms, we discuss discriminants of free modules. Let $B/A$ be an extension of rings such that $B$ is a free $A$-module of rank $n$. If $\b_{1},\ldots,\b_{n}$ is a basis for $B$, we define its \textbf{discriminant}\index{discriminant} $d_{B/A}(\b_{1},\ldots,\b_{n})$ by
+    Having introduced traces and norms, we discuss discriminants of free modules. Let $B/A$ be an extension of rings such that $B$ is a free $A$-module of rank $n$. If $\b_{1},\ldots,\b_{n}$ is a basis for $B$, we define its \textbf{trace matrix}\index{trace matrix} $\Trace_{B/A}(\b_{1},\ldots,\b_{n})$ by
     \[
-      d_{B/A}(\b_{1},\ldots,\b_{n}) = \det((\Trace_{B/A}(\b_{i}\b_{j}))_{i,j}).
+      \Trace_{B/A}(\b_{1},\ldots,\b_{n}) = \begin{pmatrix} \Trace_{B/A}(\b_{1}\b_{1}) & \cdots & \Trace_{B/A}(\b_{1}\b_{n}) \\ \vdots & & \vdots \\ \Trace_{B/A}(\b_{n}\b_{1}) & \cdots & \Trace_{B/A}(\b_{n}\b_{n}) \end{pmatrix}.
     \]
-    In particular, the discriminant $d_{B/A}(\b_{1},\ldots,\b_{n})$ is an element of $A$. It is also independent of the choice of basis up to elements of $(A^{\ast})^{2}$. For if $\b'_{1},\ldots,\b'_{n}$ is another basis, we have
+    The trace matrix will play a prominent role in the theory. Most importantly is the \textbf{discriminant}\index{discriminant} $d_{B/A}(\b_{1},\ldots,\b_{n})$ of $\b_{1},\ldots,\b_{n}$ defined by
     \[
-      \b'_{i} = \sum_{1 \le j \le m}\a_{i,j}\b_{j},
+      d_{B/A}(\b_{1},\ldots,\b_{n}) = \det(\Trace_{B/A}(\b_{1},\ldots,\b_{n})).
     \]
-    with $\a_{i,j} \in A$ for $1 \le i,j \le n$. Then $(\a_{i,j})_{i,j}$ is the base change matrix from $\b_{1},\ldots,\b_{n}$ to $\b'_{1},\ldots,\b'_{n}$ and so has nonzero determinant. Thus $\det((\a_{i,j})_{i,j}) \in A^{\ast}$. Moreover,
+    Equivalently, the discriminant is the determinant of the trace matrix. In particular, the discriminant $d_{B/A}(\b_{1},\ldots,\b_{n})$ is an element of $A$. It is also independent of the choice of basis up to elements of $(A^{\ast})^{2}$. For if $\b_{1}',\ldots,\b_{n}'$ is another basis, we have
     \[
-      (\Trace_{B/A}(\b'_{i}\b'_{j}))_{i,j} = (\a_{i,j})_{i,j}(\Trace_{B/A}(\b_{i}\b_{j}))_{i,j}(\a_{i,j})_{i,j}^{t},
+      \b_{i}' = \sum_{1 \le j \le m}\a_{i,j}\b_{j},
+    \]
+    with $\a_{i,j} \in A$ for $1 \le i,j \le n$. Then $(\a_{i,j})_{i,j}$ is the base change matrix from $\b_{1},\ldots,\b_{n}$ to $\b_{1}',\ldots,\b_{n}'$ and so has nonzero determinant. Thus $\det((\a_{i,j})_{i,j}) \in A^{\ast}$. Moreover,
+    \[
+      \Trace_{B/A}(\b_{1}',\ldots,\b_{n}') = (\a_{i,j})_{i,j}\Trace_{B/A}(\b_{1},\ldots,\b_{n})(\a_{i,j})_{i,j}^{t},
     \]
     which, upon taking the determinant, shows that
     \begin{equation}\label{equ:discriminant_base_change}
-      d_{B/A}(\b'_{1},\ldots,\b'_{n}) = \det((\a_{i,j})_{i,j})^{2}d_{B/A}(\b_{1},\ldots,\b_{n}),
+      d_{B/A}(\b_{1}',\ldots,\b_{n}') = \det((\a_{i,j})_{i,j})^{2}d_{B/A}(\b_{1},\ldots,\b_{n}),
     \end{equation}
     as claimed. Accordingly, we define the \textbf{discriminant}\index{discriminant} $d_{A}(B)$ of $B/A$ to be the class in $A/(A^{\ast})^{2}$ represented by any discriminant $d_{B/A}(\b_{1},\ldots,\b_{n})$. In other words,
     \[
@@ -244,9 +248,9 @@
       \]
     \end{proposition}
     \begin{proof}
-      Clearly $\b_{1,1},\ldots,\b_{n_{1},1},\b_{1,2},\ldots,\b_{n_{2},2}$ is a basis for $B$. We also have $\b_{i,1}\b_{j,2} = 0$ for all $1 \le i \le n_{1}$ and $1 \le j \le n_{2}$. Letting $1 \le k \le n_{1}$ and $1 \le \ell \le n_{2}$, it follows that $d_{B/A}(\b_{1,1},\ldots,\b_{n_{1},1},\b_{1,2},\ldots,\b_{n_{2},2},)$ is the determinant of the block diagonal matrix
+      Clearly $\b_{1,1},\ldots,\b_{n_{1},1},\b_{1,2},\ldots,\b_{n_{2},2}$ is a basis for $B$. We also have $\b_{i,1}\b_{j,2} = 0$ for all $1 \le i \le n_{1}$ and $1 \le j \le n_{2}$. It follows that $d_{B/A}(\b_{1,1},\ldots,\b_{n_{1},1},\b_{1,2},\ldots,\b_{n_{2},2},)$ is the determinant of the block diagonal matrix
       \[
-        \begin{pmatrix} (\Trace_{B/A}(\b_{i,1}\b_{k,1}))_{i,k} & \\ & (\Trace_{B/A}(\b_{j,2}\b_{\ell,2}))_{j,\ell} \end{pmatrix}.
+        \begin{pmatrix} \Trace_{B/A}(\b_{1,1},\ldots,\b_{n_{1},1}) & \\ & \Trace_{B/A}(\b_{1,2},\ldots,\b_{n_{2},2}) \end{pmatrix}.
       \]
       Moreover, \cref{equ:trace_and_norm_direct_sums} implies
       \[
@@ -254,7 +258,7 @@
       \]
       for any $\b_{1} \in B_{1}$ and $\b_{2} \in B_{2}$ since multiplication by $\b_{1}$ and $\b_{2}$ annihilate $B_{2}$ and $B_{1}$ respectively. But then the block diagonal matrix above is equal to
       \[
-        \begin{pmatrix} (\Trace_{B_{1}/A}(\b_{i,1}\b_{k,1}))_{i,k} & \\ & (\Trace_{B_{2}/A}(\b_{j,2}\b_{\ell,2}))_{j,\ell} \end{pmatrix}.
+        \begin{pmatrix} \Trace_{B_{1}/A}(\b_{1,1},\ldots,\b_{n_{1},1}) & \\ & \Trace_{B_{2}/A}(\b_{1,2},\ldots,\b_{n_{2},2}) \end{pmatrix}.
       \]
       The determinant of this matrix is $d_{B_{1}/A}(\b_{1,1},\ldots,\b_{n_{1},1})d_{B_{2}/A}(\b_{1,2},\ldots,\b_{n_{2},2},)$ which completes the proof.
     \end{proof}
@@ -282,9 +286,9 @@
       Let $L/K$ be a degree $n$ separable extension and let $\l_{1},\ldots,\l_{n}$ be a basis for $L/K$. Then $d_{L/K}(\l_{1},\ldots,\l_{n}) \neq 0$.
     \end{proposition}
     \begin{proof}
-      Suppose by contradiction that $d_{L/K}(\l_{1},\ldots,\l_{n}) = 0$. Then the matrix $(\Trace_{L/K}(\l_{i}\l_{j}))_{i,j}$ is not invertible. Hence there exists a nonzero column vector $(\k_{1},\ldots,\k_{n})^{t}$ with $\k_{i} \in K$ for $1 \le i \le n$ such that
+      Suppose by contradiction that $d_{L/K}(\l_{1},\ldots,\l_{n}) = 0$. Then the matrix $\Trace_{L/K}(\l_{1},\ldots,\l_{n})$ is not invertible. Hence there exists $\k_{i} \in K$ for $1 \le i \le n$ such that
       \[
-        (\Trace_{L/K}(\l_{i}\l_{j}))_{i,j}(\k_{1},\ldots,\k_{n})^{t} = \mathbf{0}.
+        \Trace_{L/K}(\l_{1},\ldots,\l_{n})\begin{pmatrix} \k_{1} \\ \vdots \\ \k_{n} \end{pmatrix} = \mathbf{0}.
       \]
       This is equivalent to the $n$ equations
       \[
@@ -315,7 +319,7 @@
         \det(M(\l_{1},\ldots,\l_{n}))^{2} &= \det(M(\l_{1},\ldots,\l_{n})^{t}M(\l_{1},\ldots,\l_{n})) \\
         &= \det\left(\left(\sum_{\s \in \Hom_{K}(L,\conj{K})}\s(\l_{i})\s(\l_{j})\right)_{i,j}\right) \\
         &= \det\left(\left(\sum_{\s \in \Hom_{K}(L,\conj{K})}\s(\l_{i}\l_{j})\right)_{i,j}\right) \\
-        &= \det((\Trace_{L/K}(\l_{i}\l_{j}))_{i,j}) \\
+        &= \det(\Trace_{L/K}(\l_{1},\ldots,\l_{n})) \\
         &= d_{L/K}(\l_{1},\ldots,\l_{n}),
       \end{align*}
       where the second to last equality follows by \cref{prop:formulas_for_trace_and_norm}, as desired.
@@ -344,13 +348,13 @@
       \]
       for $1 \le i \le n$. These $n$ equations are equivalent to the identity
       \[
-        (\Trace_{L/K}(\l_{i}\l_{j}))_{i,j}(\k_{1},\ldots,\k_{n})^{t} = (\Trace_{L/K}(\b\l_{1}),\ldots,\Trace_{L/K}(\b\l_{n}))^{t}.
+        \Trace_{L/K}(\l_{1},\ldots,\l_{n})\begin{pmatrix} \k_{1} \\ \vdots \\ \k_{n} \end{pmatrix} = \begin{pmatrix} \Trace_{L/K}(\b\l_{1}) \\ \vdots \\ \Trace_{L/K}(\b\l_{n}) \end{pmatrix}.
       \]
-      Multiplying on the left by the adjugate of $(\Trace_{L/K}(\l_{i}\l_{j}))_{i,j}$ and recalling that a matrix times its adjugate is its determinant times the identity, we see that
+      Multiplying on the left by the adjugate $\adj(\Trace_{L/K}(\l_{1},\ldots,\l_{n}))$ of $\Trace_{L/K}(\l_{1},\ldots,\l_{n})$ and recalling that a matrix times its adjugate is its determinant times the identity, we see that
       \[
-        \k_{i} = \frac{\Trace_{L/K}(\b\l_{i})}{d_{L/K}(\l_{1},\ldots,\l_{n})},
+       d_{L/K}(\l_{1},\ldots,\l_{n})\begin{pmatrix} \k_{1} \\ \vdots \\ \k_{n} \end{pmatrix} = \adj(\Trace_{L/K}(\l_{1},\ldots,\l_{n}))\begin{pmatrix} \Trace_{L/K}(\b\l_{1}) \\ \vdots \\ \Trace_{L/K}(\b\l_{n}) \end{pmatrix}.
       \]
-      for all $i$ since $d_{L/K}(\l_{1},\ldots,\l_{n})$ is nonzero by \cref{prop:discriminant_not_zero}. From \cref{prop:trace_and_norm_AKBL}, $\Trace_{L/K}(\b\l_{i}) \in A$ for all $i$ and therefore $d_{L/K}(\l_{1},\ldots,\l_{n})\k_{i} \in A$ for all $i$. But then
+      Since $\l_{1},\ldots,\l_{n}$ is a basis for $L/K$ that is contained in $B$, the matrix $\Trace_{L/K}(\l_{1},\ldots,\l_{n})$ has entries in $A$ by \cref{prop:trace_and_norm_AKBL} and therefore $\adj(\Trace_{L/K}(\l_{1},\ldots,\l_{n}))$ does too. Moreover, \cref{prop:trace_and_norm_AKBL} again implies $\Trace_{L/K}(\b\l_{i}) \in A$ for all $i$. So the right-hand side has entires in $A$ and hence the left-hand side must as well. This means $d_{L/K}(\l_{1},\ldots,\l_{n})\k_{i} \in A$ for all $i$. But then
       \[
         d_{L/K}(\l_{1},\ldots,\l_{n})B \subseteq A\l_{1}+\cdots+A\l_{n},
       \]
@@ -361,7 +365,7 @@
     \[
       B = A\b_{1}+\cdots+A\b_{n}.
     \]
-    Equivalently, $B$ is a free $A$-module of rank $n$. An integral basis is necessarily a basis for $L/K$ by \cref{prop:field_of_fractions_AKBL}. However, an integral basis need not always exist. For if $\l_{1},\ldots,\l_{n}$ is a basis of $L/K$, \cref{prop:field_of_fractions_AKBL} implies that we can multiply by a nonzero element of $A$ to ensure that this basis lies in $B$. However, $\l_{1},\ldots,\l_{n}$ need not also be a basis of $B$ as an $A$-module. Nevertheless, if $A$ is a principal ideal domain then we can ensure the existence of an integral basis:
+    Equivalently, $B$ is a free $A$-module of rank $n$. An integral basis is necessarily a basis for $L/K$ by \cref{prop:field_of_fractions_AKBL}. However, an integral basis need not always exist. For if $\l_{1},\ldots,\l_{n}$ is a basis of $L/K$, \cref{prop:field_of_fractions_AKBL} implies that we can multiply by a nonzero element of $A$ to ensure that this basis is contained in $B$. However, $\l_{1},\ldots,\l_{n}$ need not also be a basis of $B$ as an $A$-module. Nevertheless, if $A$ is a principal ideal domain then we can ensure the existence of an integral basis:
     
     \begin{theorem}\label{thm:integral_basis_AKBL}
       Let $A$ be a principal ideal domain with field of fractions $K$, let $L/K$ be a degree $n$ separable extension, and let $B$ be the integral closure of $A$ in $L$. Then $B$ admits an integral basis over $A$. Moreover, every finitely generated nonzero $B$-submodule of $L$ is a free $A$-module of rank $n$.
@@ -417,11 +421,7 @@
       \]
       respectively are equivalent to the identities
       \[
-        \begin{pmatrix} \s_{1,1}(\b_{1,1}) & \cdots & \s_{1,1}(\b_{n_{1},1}) \\ \vdots & & \vdots \\ \s_{n_{1},1}(\b_{1,1}) & \cdots & \s_{n_{1},1}(\b_{n_{1},1}) \end{pmatrix}\begin{pmatrix} \a_{1,1} \\ \vdots \\ \a_{n_{1},1} \end{pmatrix} = \begin{pmatrix} \s_{1,1}(\l) \\ \vdots \\ \s_{n_{1},1}(\l) \end{pmatrix},
-      \]
-      and
-      \[
-        \begin{pmatrix} \s_{1,2}(\b_{1,2}) & \cdots & \s_{1,2}(\b_{n_{2},2}) \\ \vdots & & \vdots \\ \s_{n_{2},2}(\b_{1,2}) & \cdots & \s_{n_{2},2}(\b_{n_{2},2}) \end{pmatrix}\begin{pmatrix} \a_{1,2} \\ \vdots \\ \a_{n_{2},2} \end{pmatrix} = \begin{pmatrix} \s_{1,2}(\l) \\ \vdots \\ \s_{n_{2},2}(\l) \end{pmatrix},
+        M(\b_{1,1},\ldots,\b_{n_{1}},1)\begin{pmatrix} \a_{1,1} \\ \vdots \\ \a_{n_{1},1} \end{pmatrix} = \begin{pmatrix} \s_{1,1}(\l) \\ \vdots \\ \s_{n_{1},1}(\l) \end{pmatrix} \quad \text{and} \quad M(\b_{1,2},\ldots,\b_{n_{2}},2)\begin{pmatrix} \a_{1,2} \\ \vdots \\ \a_{n_{2},2} \end{pmatrix} = \begin{pmatrix} \s_{1,2}(\l) \\ \vdots \\ \s_{n_{2},2}(\l) \end{pmatrix},
       \]
       respectively. \todo{xxx}
     \end{proof}
@@ -1135,7 +1135,7 @@
       Let $\smc{O}$ be a Dedekind domain with field of fractions $K$, $L/K$ be a finite separable extension, and $\mc{O}$ be the integral closure of $\smc{O}$ in $L$. Then $\mc{O}$ is a Dedekind domain.
     \end{proposition}
     \begin{proof}
-      $\mc{O}$ is an integral domain because it is a subring of $L$ and is integrally closed since it is the integral closure of $\smc{O}$. We now show $\mc{O}$ is noetherian. Let the degree of $L/K$ be $n$ and let $\l_{1},\ldots,\l_{n}$ be a basis for $L/K$. By \cref{prop:field_of_fractions_AKBL} we may multiply by a nonzero element of $\smc{O}$, if necessary, to ensure that this basis lies in $\mc{O}$. Then $d_{L/K}(\l_{1},\ldots,\l_{n})$ is nonzero by \cref{prop:discriminant_not_zero} and \cref{lem:lemma_for_integral_basis_AKBL} implies that
+      $\mc{O}$ is an integral domain because it is a subring of $L$ and is integrally closed since it is the integral closure of $\smc{O}$. We now show $\mc{O}$ is noetherian. Let the degree of $L/K$ be $n$ and let $\l_{1},\ldots,\l_{n}$ be a basis for $L/K$. By \cref{prop:field_of_fractions_AKBL} we may multiply by a nonzero element of $\smc{O}$, if necessary, to ensure that this basis is contained in $\mc{O}$. Then $d_{L/K}(\l_{1},\ldots,\l_{n})$ is nonzero by \cref{prop:discriminant_not_zero} and \cref{lem:lemma_for_integral_basis_AKBL} implies that
       \[
         d_{L/K}(\l_{1},\ldots,\l_{n})\mc{O} \subseteq \smc{O}\l_{1}+\cdots+\smc{O}\l_{n}.
       \]
@@ -1298,11 +1298,11 @@
       \]
       for some $\a_{i,j} \in \mf{p}$ for $1 \le i,j \le r$. These $r$ equations are equivalent to the identity
       \[
-        ((\a_{i,j})_{i,j}-I)(\w_{1},\ldots,\w_{r})^{t} = \mathbf{0}.
+        ((\a_{i,j})_{i,j}-I)\begin{pmatrix} \w_{1} \\ \vdots \\ \w_{r} \end{pmatrix} = \mathbf{0}.
       \]
-      Let $d = \det((\a_{i,j})_{i,j}-I)$. Then $d \neq 0$ because expanding the determinant shows $d \equiv (-1)^{r} \tmod{\mf{p}}$ as $\a_{i,j} \in \mf{p}$ for all $i$ and $j$. Multiplying on the left by the adjugate of $(\a_{i,j})_{i,j}-I$ and recalling that a matrix times its adjugate is its determinant times the identity, we obtain
+      Let $d = \det((\a_{i,j})_{i,j}-I)$. Then $d \neq 0$ because expanding the determinant shows $d \equiv (-1)^{r} \tmod{\mf{p}}$ as $\a_{i,j} \in \mf{p}$ for all $i$ and $j$. Multiplying on the left by the adjugate $\adj(\a_{i,j})_{i,j}-I)$ of $(\a_{i,j})_{i,j}-I$ and recalling that a matrix times its adjugate is its determinant times the identity, we obtain
       \[
-        d(\w_{1},\ldots,\w_{r})^{t} = \mathbf{0}.
+        d\begin{pmatrix} \w_{1} \\ \vdots \\ \w_{r} \end{pmatrix} = \mathbf{0}.
       \]
       Hence multiplication by $d$ annihilates $N$ which is to say that $d\mc{O} \subseteq M$. Equivalently,
       \[
@@ -1630,7 +1630,7 @@
       A $\Z$-lattice is an integral lattice and a complete $\Z$-lattice is a complete integral lattice.
     \end{remark}
 
-    A $\smc{O}$-lattice $\mf{L}$ need not be a fractional ideal of $\smc{O}$ since it does not need to be a $\mc{O}$-submodule of $L$. However, every fractional ideal $\mf{F}$ of $\mc{O}$ is a complete $\smc{O}$-lattice. Indeed, by \cref{cor:integral_closure_of_Dedekind_is_Dedekind} $\mc{O}$ is a finitely generated $\smc{O}$-module and so $\mf{F}$ is a finitely generated $\smc{O}$-module as well. Moreover, $\mf{F}$ contains a basis of $L/K$. For if $\l_{1},\ldots,\l_{n}$ is a basis for $L/K$ we may use \cref{prop:field_of_fractions_AKBL} to multiply by a nonzero element of $\smc{O}$, if necessary, to ensure that this basis lies in $\mc{O}$. Choosing any nonzero $\a \in \mf{F}$, $\a\l_{1},\ldots,\a\l_{n}$ is a basis for $L/K$ inside $\mf{F}$.
+    A $\smc{O}$-lattice $\mf{L}$ need not be a fractional ideal of $\smc{O}$ since it does not need to be a $\mc{O}$-submodule of $L$. However, every fractional ideal $\mf{F}$ of $\mc{O}$ is a complete $\smc{O}$-lattice. Indeed, by \cref{cor:integral_closure_of_Dedekind_is_Dedekind} $\mc{O}$ is a finitely generated $\smc{O}$-module and so $\mf{F}$ is a finitely generated $\smc{O}$-module as well. Moreover, $\mf{F}$ contains a basis of $L/K$. For if $\l_{1},\ldots,\l_{n}$ is a basis for $L/K$ we may use \cref{prop:field_of_fractions_AKBL} to multiply by a nonzero element of $\smc{O}$, if necessary, to ensure that this basis is contained in $\mc{O}$. Choosing any nonzero $\a \in \mf{F}$, $\a\l_{1},\ldots,\a\l_{n}$ is a basis for $L/K$ inside $\mf{F}$.
 
     \begin{remark}
       A $\smc{O}$-lattice $\mc{L}$ need not be a free $\smc{O}$-submodule of $L$. Indeed, we are only guaranteed that $\mc{L}$ is a finitely generated $\smc{O}$-submodule of $L$ not that it is a free finitely generated $\smc{O}$-submodule of $L$.
@@ -1657,19 +1657,19 @@
       \]
     \end{proposition}
     \begin{proof}
-      We will first show that $\mf{F}^{\vee}$ is a finitely generated $\smc{O}$-submodule of $L$. Let $\l_{1},\ldots,\l_{n}$ be a basis for $L/K$. Using \cref{prop:field_of_fractions_AKBL} to multiply by a nonzero element of $\smc{O}$, if necessary, we can ensure that this basis lies in $\mc{O}$. Now choose some nonzero $\a \in \mf{F} \cap \smc{O}$ (such an element exists since every prime $\mf{P}$ of $\mc{O}$ is above a prime $\mf{p}$ of $\smc{O}$ and $\mf{F}$ is of the form $\mf{F} = \frac{1}{\d}\mf{A}$ for some nonzero $\d \in \mc{O}$ and integral ideal $\mf{A}$ so that $\mf{A} \subseteq \mf{F}$). Now suppose $\l \in \mf{F}^{\vee}$ and write $\l = \k_{1}\l_{1}+\cdots+\k_{n}\l_{n}$ with $\k_{i} \in K$ for $1 \le i \le n$. Then linearity of the trace implies
+      We will first show that $\mf{F}^{\vee}$ is a finitely generated $\smc{O}$-submodule of $L$. Let $\l_{1},\ldots,\l_{n}$ be a basis for $L/K$. Using \cref{prop:field_of_fractions_AKBL} to multiply by a nonzero element of $\smc{O}$, if necessary, we can ensure that this basis is contained in $\mc{O}$. Now choose some nonzero $\a \in \mf{F} \cap \smc{O}$ (such an element exists since every prime $\mf{P}$ of $\mc{O}$ is above a prime $\mf{p}$ of $\smc{O}$ and $\mf{F}$ is of the form $\mf{F} = \frac{1}{\d}\mf{A}$ for some nonzero $\d \in \mc{O}$ and integral ideal $\mf{A}$ so that $\mf{A} \subseteq \mf{F}$). Now suppose $\l \in \mf{F}^{\vee}$ and write $\l = \k_{1}\l_{1}+\cdots+\k_{n}\l_{n}$ with $\k_{i} \in K$ for $1 \le i \le n$. Then linearity of the trace implies
       \[
         \sum_{1 \le j \le n}\a\k_{j}\Trace_{L/K}(\l_{i}\l_{j}) = \Trace_{L/K}(\a\l_{i}\l),
       \]
       for $1 \le i \le n$. These $n$ equations are equivalent to the identity
       \[
-        (\Trace_{L/K}(\l_{i}\l_{j}))_{i,j}(\a\k_{1},\ldots,\a\k_{n})^{t} = (\Trace_{L/K}(\a\l_{1}\l),\ldots,\Trace_{L/K}(\a\l_{n}\l))^{t}.
+        \Trace_{L/K}(\l_{1},\ldots,\l_{n})\begin{pmatrix} \a\k_{1} \\ \vdots \\ \a\k_{n} \end{pmatrix} = \begin{pmatrix} \Trace_{L/K}(\a\l_{1}\l) \\ \vdots \\ \Trace_{L/K}(\a\l_{n}\l) \end{pmatrix}.
       \]
-      Multiplying on the left by the adjugate of $(\Trace_{L/K}(\l_{i}\l_{j}))_{i,j}$ and recalling that a matrix times its adjugate is its determinant times the identity, we see that
+      Multiplying on the left by the adjugate $\adj(\Trace_{L/K}(\l_{1},\ldots,\l_{n}))$ of $\Trace_{L/K}(\l_{1},\ldots,\l_{n})$ and recalling that a matrix times its adjugate is its determinant times the identity, we see that
       \[
-        \a\k_{i} = \frac{\Trace_{L/K}(\a\l_{i}\l)}{d_{L/K}(\l_{1},\ldots,\l_{n})},
+        d_{L/K}(\l_{1},\ldots,\l_{n})\begin{pmatrix} \a\k_{1} \\ \vdots \\ \a\k_{n} \end{pmatrix} = \adj(\Trace_{L/K}(\l_{1},\ldots,\l_{n}))\begin{pmatrix} \Trace_{L/K}(\a\l_{1}\l) \\ \vdots \\ \Trace_{L/K}(\a\l_{n}\l) \end{pmatrix}.
       \]
-      for all $i$ since $d_{L/K}(\l_{1},\ldots,\l_{n})$ is nonzero by \cref{prop:discriminant_not_zero}. As $\a\l_{i} \in \mf{F}$ (because $\l_{j} \in \mc{O}$ for all $j$) and $\l \in \mf{F}^{\vee}$, $\Trace_{L/K}(\a\l_{i}\l) \in \smc{O}$ for all $i$. Since $\l \in \mf{F}^{\vee}$ was arbitrary, we have
+      Since $\l_{1},\ldots,\l_{n}$ is a basis for $L/K$ that is contained in $\mc{O}$, the matrix $\Trace_{L/K}(\l_{1},\ldots,\l_{n})$ has entries in $\smc{O}$ by \cref{prop:trace_and_norm_AKBL} and therefore $\adj(\Trace_{L/K}(\l_{1},\ldots,\l_{n}))$ does too. As $\a\l_{i} \in \mf{F}$ (because $\l_{j} \in \mc{O}$ for all $j$) and $\l \in \mf{F}^{\vee}$, \cref{prop:trace_and_norm_AKBL} again implies $\Trace_{L/K}(\a\l_{i}\l) \in \smc{O}$ for all $i$. So the right-hand side has entires in $\smc{O}$ and hence the left-hand side must as well. This means $d_{L/K}(\l_{1},\ldots,\l_{n})\a\k_{i} \in A$ for all $i$. Since $\l \in \mf{F}^{\vee}$ was arbitrary, we have
       \[
         \a d_{L/K}(\l_{1},\ldots,\l_{n})\mf{F}^{\vee} \subseteq \mc{O}.
       \]
@@ -1833,7 +1833,7 @@
       \[
         \Trace_{(\mc{O}/\mf{P}^{e_{\mf{p}}(\mf{P})})/\F_{\mf{p}}}(\conj{\b_{1}\b_{j}}) = 0,
       \]
-      for $1 \le j \le f_{\mf{p}}(\mf{P})$ since $T_{\conj{\b_{1}}\conj{\b_{j}}}$ is nilpotent because $T_{\conj{\b_{1}}\conj{\b_{j}}}^{2}$ is the zero operator as $\conj{\b_{1}}^{2} = 0$. But then the first row of $(\Trace_{(\mc{O}/\mf{P}^{e_{\mf{p}}(\mf{P})})/\F_{\mf{p}}}(\conj{\b_{i}\b_{j}}))_{i,j}$ is zero and hence $d_{\F_{\mf{p}}}(\mc{O}/\mf{P}^{e_{\mf{p}}(\mf{P})}) = 0$. Now suppose $e_{\mf{p}}(\mf{P}) = 1$. Then it remains to show $d_{\F_{\mf{p}}}(\F_{\mf{P}}) \neq 0$. Since the residue class extension $\F_{\mf{P}}/\F_{\mf{p}}$ is separable by assumption, \cref{prop:discriminant_not_zero} implies $d_{\F_{\mf{p}}}(\F_{\mf{P}}) \neq 0$. This completes the proof.
+      for $1 \le j \le f_{\mf{p}}(\mf{P})$ since $T_{\conj{\b_{1}}\conj{\b_{j}}}$ is nilpotent because $T_{\conj{\b_{1}}\conj{\b_{j}}}^{2}$ is the zero operator as $\conj{\b_{1}}^{2} = 0$. But then the first row of $\Trace_{(\mc{O}/\mf{P}^{e_{\mf{p}}(\mf{P})})/\F_{\mf{p}}}(\conj{\b_{1}},\ldots,\conj{\b_{f_{\mf{p}}(\mf{P})}})$ is zero and hence $d_{\F_{\mf{p}}}(\mc{O}/\mf{P}^{e_{\mf{p}}(\mf{P})}) = 0$. Now suppose $e_{\mf{p}}(\mf{P}) = 1$. Then it remains to show $d_{\F_{\mf{p}}}(\F_{\mf{P}}) \neq 0$. Since the residue class extension $\F_{\mf{P}}/\F_{\mf{p}}$ is separable by assumption, \cref{prop:discriminant_not_zero} implies $d_{\F_{\mf{p}}}(\F_{\mf{P}}) \neq 0$. This completes the proof.
     \end{proof}
 
     As a corollary of \cref{thm:ramifies_if_and_only_if_divides_the_discriminant} we see that only finitely many primes can ramify in $K$:
@@ -1930,7 +1930,7 @@
       \[
         \a_{i}^{\vee} = \sum_{1 \le j \le n}\Trace_{K}(\a_{i}\a_{j})\a_{j}.
       \]
-      But then the base change matrix from $\a_{1},\ldots,\a_{n}$ to $\a_{1}^{\vee},\ldots,\a_{n}^{\vee}$ is $(\Trace_{K}(\a_{i}\a_{j}))_{i,j}$. The claim follows by \cref{prop:base_change_quotient_determinant} and the definition of $\D_{K}$.
+      But then the base change matrix from $\a_{1},\ldots,\a_{n}$ to $\a_{1}^{\vee},\ldots,\a_{n}^{\vee}$ is $\Trace_{K}(\a_{1},\ldots,\a_{n})$. The claim follows by \cref{prop:base_change_quotient_determinant} and the definition of $\D_{K}$.
     \end{proof}
 
     We can now compute the norm of a dual ideal:
