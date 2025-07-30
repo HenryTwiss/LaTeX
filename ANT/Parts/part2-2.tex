@@ -1,7 +1,7 @@
 \chapter{Geometry of Number Fields}
   We can apply geometric tools to a number field $K$ by leveraging the distinct embeddings of $K$ into $\conj{\Q}$. This theory is developed under the umbrella of Minkowski space and we will use it to prove two crucial results about number fields: finiteness of the class number and Dirichlet's unit theorem.
   \section{Minkowski Space}
-    Let $K$ be number field of degree $n$ and let $\s$ be a $\Q$-embedding of $K$ into $\conj{\Q}$. Then either $\s$ is real or complex and if it is complex it has a paired $\Q$-embedding $\conj{\s}$ given by the conjugate of $\s$. Accordingly, let $r_{1}$ and $2r_{2}$ be the number of real and complex $\Q$-embeddings respectively. We call the pair $(r_{1},r_{2})$ the \textbf{signature}\index{signature} of $K$ and it satisfies the relation
+    Let $K$ be number field of degree $n$ and let $\s \in \Hom_{\Q}(K,\conj{\Q})$. Then either $\s$ is real or complex and if it is complex it has a paired $\Q$-embedding $\conj{\s} \in \Hom_{\Q}(K,\conj{\Q})$ given by the conjugate of $\s$. Accordingly, let $r_{1}$ and $2r_{2}$ be the number of real and complex $\Q$-embeddings of $K$ into $\conj{\Q}$ respectively. We call the pair $(r_{1},r_{2})$ the \textbf{signature}\index{signature} of $K$ and it satisfies the relation
     \[
       n = r_{1}+2r_{2}.
     \]
@@ -13,7 +13,7 @@
     \[
       j:K \to K_{\C} \qquad \k \mapsto (\s(\k))_{\s},
     \]
-    where $\s$ runs over the $n$ distinct $\Q$-embeddings of $K$ into $\conj{\Q}$. Consider the conjugation map
+    where $\s$ runs over $\Hom_{\Q}(K,\conj{\Q})$. Consider the conjugation map
     \[
       F:\C \to \C \qquad z \mapsto \conj{z}.
     \]
@@ -25,7 +25,7 @@
     \[
       \<F(\mathbf{z}),F(\mathbf{z})\>_{K_{\C}} = \<(\conj{z_{\conj{\s}}})_{\s},(\conj{w_{\conj{\s}}})_{\s}\>_{K_{\C}} = \sum_{\s}\conj{z_{\conj{\s}}w_{\conj{\s}}} = \conj{\sum_{\s}z_{\s}w_{\s}} = F(\<\mathbf{z},\mathbf{w}\>_{K_{\C}}),
     \]
-    where in the third equality we have used the fact that the complex $\Q$-embeddings come in conjugate pairs. On $K_{\C}$ we also have linear maps
+    where in the third equality we have used the fact that the complex $\Q$-embeddings of $K$ into $\conj{\Q}$ come in conjugate pairs. On $K_{\C}$ we also have linear maps
     \[
       \Trace_{K_{\C}}((z_{\s})_{\s}) = \sum_{\s}z_{\s} \quad \text{and} \quad \Norm_{K_{\C}}((z_{\s})_{\s}) = \prod_{\s}z_{\s},
     \]
@@ -49,14 +49,14 @@
     \[
       \Trace_{K_{\R}}:K_{\R} \to \R \quad \text{and} \quad \Norm_{K_{\R}}:K_{\R}^{\ast} \to \R^{\ast},
     \]
-    $\mathbf{z} \in K_{\R}$ if and only if $z_{\conj{\s}} = \conj{z_{\s}}$ for all $\s$. As $j(K) \subset K_{\R}$, the compositions of $j$ with the Minkowski trace and Minkowski norm are the field trace and field norm respectively. We can now give a more explicit description of $K_{\R}$ and to do this we setup some notation. Let $\rho$ run over the real $\Q$-embeddings and let $\tau$ run over a complete set of representatives of the pairs of complex $\Q$-embeddings. For any $\Q$-embedding $\s$, let $N_{\s} = 1,2$ according to if $\s$ is real or complex respectively. So $N_{\rho} = 1$ and $N_{\tau} = 2$. As $K_{\R}$ consists of exactly the $F$-invariant points of $K_{\C}$, we have
+    $\mathbf{z} \in K_{\R}$ if and only if $z_{\conj{\s}} = \conj{z_{\s}}$ for all $\s$. As $j(K) \subset K_{\R}$, the compositions of $j$ with the Minkowski trace and Minkowski norm are the field trace and field norm respectively. We can now give a more explicit description of $K_{\R}$ and to do this we setup some notation. Let $\rho$ run over the real $\Q$-embeddings of $\Hom_{\Q}(K,\conj{\Q})$ and let $\tau$ run over a complete set of representatives of the pairs of complex $\Q$-embeddings of $\Hom_{\Q}(K,\conj{\Q})$. For any $\s \in \Hom_{\Q}(K,\conj{\Q})$, let $N_{\s} = 1,2$ according to if $\s$ is real or complex respectively. So $N_{\rho} = 1$ and $N_{\tau} = 2$. As $K_{\R}$ consists of exactly the $F$-invariant points of $K_{\C}$, we have
     \[
       K_{\R} = \{(z_{\s})_{\s} \in K_{\C}:\text{$z_{\rho} \in \R$ and $z_{\conj{\tau}} = \conj{z_{\tau}}$ for all $\rho$ and $\tau$}\}.
     \]
     We now describe an explicit isomorphism from the Minkowski space and $\R^{n}$:
     
     \begin{proposition}\label{prop:Minkowski_space_isomorphism}
-      Let $K$ be a number field of degree $n$ and signature $(r_{1},r_{2})$. Also let $\s$ run over the $n$ distinct $\Q$-embeddings of $K$ into $\conj{\Q}$, $\rho$ run over all such real $\Q$-embeddings, and $\tau$ run over a complete set of representatives of all such pairs of complex $\Q$-embeddings. Then there is an isomorphism
+      Let $K$ be a number field of degree $n$ and signature $(r_{1},r_{2})$. Also let $\s$ run over $\Hom_{\Q}(K,\conj{\Q})$, $\rho$ run over all such real $\Q$-embeddings, and $\tau$ run over a complete set of representatives of all such pairs of complex $\Q$-embeddings. Then there is an isomorphism
       \[
         K_{\R} \to \R^{n} \qquad z_{\s} \mapsto x_{\s} = \begin{cases} z_{\s} & \text{if $\s = \rho$}, \\ \Re(z_{\s}) & \text{if $\s = \tau$}, \\ \Im(z_{\s}) & \text{if $\s = \conj{\tau}$}. \end{cases}
       \]
@@ -67,7 +67,7 @@
       for any $\mathbf{x},\mathbf{x}' \in \R^{n}$.
     \end{proposition}
     \begin{proof}
-      This map is an isomorphism since it is invertible and linear in each component. Since there are $n$ such $\Q$-embeddings $\s$ we see that $K_{\R}$ is an $n$-dimensional real vector space. We will now prove the statement about the inner product. Let $(z_{\s})_{\s}$ and $(z'_{\s})_{\s}$ be elements of $K_{\R}$ and let $(x_{\s})_{\s}$ and $(x'_{\s})_{\s}$ be the corresponding elements in $\R^{n}$. If $\s = \rho$ then
+      This map is an isomorphism since it is invertible and linear in each component. Since there are $n$  elements of $\Hom_{\Q}(K,\conj{\Q})$, we see that $K_{\R}$ is an $n$-dimensional real vector space. We will now prove the statement about the inner product. Let $(z_{\s})_{\s}$ and $(z'_{\s})_{\s}$ be elements of $K_{\R}$ and let $(x_{\s})_{\s}$ and $(x'_{\s})_{\s}$ be the corresponding elements in $\R^{n}$. If $\s = \rho$ then
       \[
         x_{\rho} = z_{\rho} \quad \text{and} \quad x'_{\rho} = z'_{\rho},
       \]
@@ -90,7 +90,7 @@
     \[
       \s_{K}:K \to \R^{n} \qquad \k \mapsto (\rho_{1}(\k),\ldots,\rho_{r_{1}}(k),\Re(\tau_{1}(\k)),\Im(\tau_{1}(\k)),\ldots,\Re(\tau_{r_{2}}(\k)),\Im(\tau_{r_{2}}(\k))),
     \]
-    where $\rho_{1},\ldots,\rho_{r_{1}}$ are the real $\Q$-embeddings of $K$ into $\conj{\Q}$ and $\tau_{1},\ldots,\tau_{r_{2}}$ are representatives of pairs of complex $\Q$-embeddings of $K$ into $\conj{\Q}$. The Minkowski embedding $\s_{K}$ is then a $\Q$-embedding of $K$ into $\R^{n}$ since it is the composition of the canonical embedding $j$ (whose image under $K$ is in $K_{\R}$ as we have noted) and the isomorphism established by \cref{prop:Minkowski_space_isomorphism}. It is also independent of the choice of representatives $\tau_{1},\ldots,\tau_{r_{2}}$ since the complex $\Q$-embeddings occur in conjugate pairs. As $j$ is a $\Q$-embedding and any fractional ideal $\mf{f}$ is a complete lattice, $j(\mf{f})$ is a complete lattice in $K_{\R}$. We now determine the covolume of $j(\mf{f})$:
+    where $\rho_{1},\ldots,\rho_{r_{1}}$ are the real $\Q$-embeddings of $\Hom_{\Q}(K,\conj{\Q}) $and $\tau_{1},\ldots,\tau_{r_{2}}$ are representatives of pairs of complex $\Q$-embeddings of $\Hom_{\Q}(K,\conj{\Q})$. The Minkowski embedding $\s_{K}$ is then a $\Q$-embedding of $K$ into $\R^{n}$ since it is the composition of the canonical embedding $j$ (whose image under $K$ is in $K_{\R}$ as we have noted) and the isomorphism established by \cref{prop:Minkowski_space_isomorphism}. It is also independent of the choice of representatives $\tau_{1},\ldots,\tau_{r_{2}}$ since the complex $\Q$-embeddings of $\Hom_{\Q}(K,\conj{\Q})$ occur in conjugate pairs. As $j$ is a $\Q$-embedding and any fractional ideal $\mf{f}$ is a complete lattice, $j(\mf{f})$ is a complete lattice in $K_{\R}$. We now determine the covolume of $j(\mf{f})$:
 
     \begin{proposition}\label{prop:covolume_of_fractional_ideal_under_j}
       Let $K$ be a number field with signature $(r_{1},r_{2})$. Then $V_{j(\mf{f})}$ is the absolute value of the determinant of any embedding matrix for $\mf{f}$. In particular,
@@ -103,7 +103,7 @@
       \]
     \end{proposition}
     \begin{proof}
-      The last statement follows from the first two by taking $\mf{f} = \mc{O}_{K}$ so it suffices to prove the first two statements. Let $\k_{1},\ldots,\k_{n}$ be a basis for $\mf{f}$ and let $\s_{1},\ldots,\s_{n}$ be the $n$ distinct $\Q$-embedding of $K$ into $\conj{\Q}$. Then the associated generator matrix $P$ for $j(\mf{f})$ is given by
+      The last statement follows from the first two by taking $\mf{f} = \mc{O}_{K}$ so it suffices to prove the first two statements. Let $\k_{1},\ldots,\k_{n}$ be a basis for $\mf{f}$ and let $\s_{1},\ldots,\s_{n}$ be the elements of $\Hom_{\Q}(K,\conj{\Q})$. Then the associated generator matrix $P$ for $j(\mf{f})$ is given by
       \[
         P = \begin{pmatrix} \s_{1}(\k_{1}) & \cdots & \s_{1}(\k_{n}) \\ \vdots & & \vdots & \\ \s_{n}(\k_{1}) & \cdots & \s_{n}(\k_{n}) \end{pmatrix} = M(\k_{1},\ldots,\k_{n}),
       \]
@@ -143,7 +143,7 @@
       \]
     \end{corollary}
     \begin{proof}
-      The second statement follows from the first by taking $\mf{f} = \mc{O}_{K}$ so it suffices to prove the first statement. Let $\k_{1},\ldots,\k_{n}$ be a basis for $\mf{f}$, $\rho_{1},\ldots,\rho_{r_{1}}$ be the real $\Q$-embeddings of $K$ into $\conj{\Q}$, and $\tau_{1},\ldots,\tau_{r_{2}}$ be a complete set of representatives of pairs of complex $\Q$-embeddings of $K$ into $\conj{\Q}$. Then the associated generator matrix $P$ for $\s_{K}(\mf{f})$ is
+      The second statement follows from the first by taking $\mf{f} = \mc{O}_{K}$ so it suffices to prove the first statement. Let $\k_{1},\ldots,\k_{n}$ be a basis for $\mf{f}$, $\rho_{1},\ldots,\rho_{r_{1}}$ be the real $\Q$-embeddings of $\Hom_{\Q}(K,\conj{\Q})$ and $\tau_{1},\ldots,\tau_{r_{2}}$ be a complete set of representatives of pairs of complex $\Q$-embeddings of $\Hom_{\Q}(K,\conj{\Q})$. Then the associated generator matrix $P$ for $\s_{K}(\mf{f})$ is
       \[
         P = \begin{pmatrix} \rho_{1}(\k_{1}) & \cdots & \rho_{r_{1}}(\k_{1}) & \Re(\tau_{1}(\k_{1})) & \Im(\tau_{1}(\k_{1})) & \cdots & \Re(\tau_{r_{2}}(\k_{1})) & \Im(\tau_{r_{2}}(\k_{1})) \\ \vdots & & \vdots & \vdots & \vdots & & \vdots & \vdots \\ \rho_{1}(\k_{n}) & \cdots & \rho_{r_{1}}(\k_{n}) & \Re(\tau_{1}(\k_{n})) & \Im(\tau_{1}(\k_{n})) & \cdots & \Re(\tau_{r_{2}}(\k_{n})) & \Im(\tau_{r_{2}}(\k_{n})) \end{pmatrix}^{t}.
       \]
@@ -159,7 +159,7 @@
       \[
         V_{\mf{f}} = |\det(P)| = |\det(P')| = |(-2i)^{-r_{2}}\det(P'')| = 2^{-r_{2}}|\det(P'')|.
       \]
-      Since the complex $\Q$-embeddings occur in conjugate pairs and $\k_{1},\ldots,\k_{n}$ is a basis for $K$, we see that $P'' = M(\k_{1},\ldots,\k_{n})$ is an embedding matrix for $\mf{f}$.
+      Since the complex $\Q$-embeddings of $\Hom_{\Q}(K,\conj{\Q})$ occur in conjugate pairs and $\k_{1},\ldots,\k_{n}$ is a basis for $K$, we see that $P'' = M(\k_{1},\ldots,\k_{n})$ is an embedding matrix for $\mf{f}$.
     \end{proof}
   \section{Finiteness of the Class Number}
     Recall that the class number $h_{K}$ is a measure of how much the ring of integers $\mc{O}_{K}$ fails to be a principal ideal domain. From \cref{rem:general_class_number_not_finite}, the class number of an arbitrary Dedekind domain need not be finite. However, we will show that the class number $h_{K}$ for a number field $K$ is always finite and thus $\mc{O}_{K}$ only has finite failure from being a principal ideal domain:
@@ -180,7 +180,7 @@
       \[
         \Vol(\l X) = \l^{n}\Vol(X) = 2^{n}V_{\s_{K}(\mf{f}^{-1})}.
       \]
-      By Minkowski's lattice point theorem, there exists a nonzero $\a \in \mf{f}^{-1}$ such that $\s_{K}(\a) \in \s_{K}(\mf{f}^{-1})$ and $\s_{K}(\a) \in \l X$. Since $\a \in \mf{f}^{-1}$, $\a\mf{f} \subseteq \mc{O}_{K}$ so that $\a\mf{f}$ is an integral ideal in the same ideal class as $\mf{f}$. Now let $\s$ run over the $n$ distinct $\Q$-embeddings of $K$ into $\conj{K}$. Since the norm is multiplicative, we have
+      By Minkowski's lattice point theorem, there exists a nonzero $\a \in \mf{f}^{-1}$ such that $\s_{K}(\a) \in \s_{K}(\mf{f}^{-1})$ and $\s_{K}(\a) \in \l X$. Since $\a \in \mf{f}^{-1}$, $\a\mf{f} \subseteq \mc{O}_{K}$ so that $\a\mf{f}$ is an integral ideal in the same ideal class as $\mf{f}$. Now let $\s$ run over $\Hom_{\Q}(K,\conj{\Q})$. Since the norm is multiplicative, we have
       \[
         \Norm_{K}(\a\mf{f}) = |\Norm_{K}(\a)|\Norm_{K}(\mf{f}) = \left|\prod_{\s}\s(\a)\right|\Norm_{K}(\mf{f}) \le \l^{n}M\Norm_{K}(\mf{f}),
       \]
@@ -330,7 +330,7 @@
     \[
       w_{K} = |\mu(K)|.
     \]
-    Our goal will be to show that $\mc{O}_{K}^{\ast}$ is a direct product of $\mu(K)$ and a free abelian group of rank $r_{K}$. Determining that the rank of the free group is exactly $r_{K}$ will be the most difficult part of the proof. We will require a map on $K^{\ast}$ that transitions between the field trace and the field norm. Let $\rho_{1},\ldots,\rho_{r_{1}}$ be the real $\Q$-embeddings of $K$ into $\conj{\Q}$ and let $\tau_{1},\ldots,\tau_{r_{2}}$ be a complete set of representatives of pairs of complex $\Q$-embeddings of $K$ into $\conj{\Q}$. First consider the map
+    Our goal will be to show that $\mc{O}_{K}^{\ast}$ is a direct product of $\mu(K)$ and a free abelian group of rank $r_{K}$. Determining that the rank of the free group is exactly $r_{K}$ will be the most difficult part of the proof. We will require a map on $K^{\ast}$ that transitions between the field trace and the field norm. Let $\rho_{1},\ldots,\rho_{r_{1}}$ be the real $\Q$-embeddings of $\Hom_{\Q}(K,\conj{\Q})$ and $\tau_{1},\ldots,\tau_{r_{2}}$ be a complete set of representatives of pairs of complex $\Q$-embeddings of $\Hom_{\Q}(K,\conj{\Q})$. First consider the map
     \[
       \ell:K_{\R}^{\ast} \to \R^{r_{K}+1} \qquad (z_{\s})_{\s} \mapsto (\log|z_{\rho_{1}}|,\ldots,\log|z_{\rho_{r_{1}}}|,2\log|z_{\tau_{1}}|,\ldots,2\log|z_{\tau_{r_{2}}}|).
     \]
@@ -396,7 +396,7 @@
       Let $K$ be a number field of degree $n$ and signature $(r_{1},r_{2})$. Then the unit lattice $\L$ is a complete lattice in the trace-zero hyperplane $H$ of $\R^{r_{K}+1}$. In particular, $\L$ is a free abelian group of rank $r_{K}$.
     \end{theorem}
     \begin{proof}
-      Throughout, let $\s$ run over the $n$ distinct $\Q$-embeddings of $K$ into $\conj{\Q}$, $\rho$ run over all such real $\Q$-embeddings, and $\tau$ run over a complete set of representatives of all such pairs of complex $\Q$-embeddings. We first prove $\L$ is a lattice in $H$. Since $\l$ is a homomorphism (because $\log_{K}$ is), $\L$ is a subgroup of $H$. So by \cref{prop:integral lattice_if_and_only_if_discrete_subgroup}, $\L$ is a lattice if and only if it is discrete. In particular, we will show that for any $c > 0$, the bounded region
+      Throughout, let $\s$ run over $\Hom_{\Q}(K,\conj{\Q})$, $\rho$ run over all such real $\Q$-embeddings, and $\tau$ run over a complete set of representatives of all such pairs of complex $\Q$-embeddings. We first prove $\L$ is a lattice in $H$. Since $\l$ is a homomorphism (because $\log_{K}$ is), $\L$ is a subgroup of $H$. So by \cref{prop:integral lattice_if_and_only_if_discrete_subgroup}, $\L$ is a lattice if and only if it is discrete. In particular, we will show that for any $c > 0$, the bounded region
       \[
         X = \{\mathbf{x} \in \R^{r_{K}+1}:\text{$|x_{\rho}| \le c$ and $|x_{\tau}| \le 2c$ for all $\rho$ and $\tau$}\},
       \]
