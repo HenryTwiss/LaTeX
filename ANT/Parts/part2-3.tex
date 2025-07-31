@@ -156,7 +156,7 @@
       \]
       where $\w_{6}$ is primitive $6$-th root of unity. In particular,
       \[
-        \mc{O}_{d}^{\ast} = \begin{cases} \mu(d) \op \<\e_{d}\> & \text{if $d > 0$}, \\ \mu(d) & \text{if $d < 0$}, \end{cases}
+        \mc{O}_{d}^{\ast} = \begin{cases} \mu(d) \x \<\e_{d}\> & \text{if $d > 0$}, \\ \mu(d) & \text{if $d < 0$}, \end{cases}
       \]
       where $\e_{d}$ is a fundamental unit.
     \end{proposition}
@@ -192,7 +192,7 @@
     \begin{proof}
       If $d > 0$ then \cref{prop:unit_group_quadratic} implies that a system of fundamental units for $\Q(\sqrt{d})$ is given by a single fundamental unit $\e_{d}$. Since the signature of $\Q(\sqrt{d})$ is $(2,0)$, we have $\l(\e_{d}) = (\log|\e_{d}|,\log|\e_{d}|)$ and therefore $R_{K} = \log|\e_{d}|$. If $d < 0$ then \cref{prop:unit_group_quadratic} implies that there are no fundamental units and thus $R_{K} = 1$.
     \end{proof}
-  \section{\todo{Cyclotomic Number Fields}}
+  \section{Cyclotomic Number Fields}
     Let $\w$ be a primitive $n$-th root of unity. We call $\Q(\w)$ the $n$-th \textbf{cyclotomic field}\index{cyclotomic field}. Note that $\Q(\w)$ is independent of the choice of primitive root $\w$ since $\Q(\w)$ contains all $n$-th roots of unity. As $\w$ is a root of $x^{n}-1$, we see that $\Q(\w)/\Q$ is a finite extension of degree at most $n$. In particular, $\Q(\w)$ is a number field. More generally, we say that a number field $K$ is \textbf{cyclotomic}\index{cyclotomic} if $K$ is the $n$-th cyclotomic field for some $n \ge 1$. That is, $K = \Q(\w)$ for some primitive $n$-th root of unity $\w$. In any case, our aim is to study the structure of cyclotomic number fields $\Q(\w)$. Our first step is to compute the degree of $\Q(\w)$ which is the degree of the minimal polynomial of $\w$ over $\Q$. Accordingly, we define the $n$-th \textbf{cyclotomic polynomial}\index{cyclotomic polynomial} $\Phi_{n}(x)$ by
     \[
       \Phi_{n}(x) = \prod_{k \in (\Z/n\Z)^{\ast}}(x-\w^{k}).
@@ -231,11 +231,11 @@
       \[
         \conj{g}(x^{p}) \equiv \conj{g}(x)^{p} \equiv \conj{f}(x)\conj{h}(x) \pmod{p},
       \]
-      where the first congruence holds since $\conj{g}(x^{p}) = \conj{g}(x)^{p}$ in $\F_{p}[x]$ (recall Fermat's little theorem and that the characteristic of $\F_{p}$ is $p$). As $p \ge 2$, this equivalence shows that $\conj{f}(x)$ and $\conj{h}(x)$ must have a common factor. In other words, $\conj{g}(x^{p})$ has a multiple root and therefore $\conj{g}(x)$ does as well. Reducing the factorization for $\Phi_{n}(x)$ modulo $p$ gives
+      where the first congruence holds since $\conj{g}(x^{p}) = \conj{g}(x)^{p}$ in $\F_{p}[x]$ (recall Fermat's little theorem and that the characteristic of $\F_{p}$ is $p$). As $p \ge 2$, this equivalence shows that $\conj{f}(x)$ and $\conj{h}(x)$ must have a common factor. In other words, $\conj{g}(x^{p})$ has a multiple root in $\F_{p}$ and therefore $\conj{g}(x)$ does as well. Reducing the factorization for $\Phi_{n}(x)$ modulo $p$ gives
       \[
         \conj{\Phi_{n}}(x) \equiv \conj{f}(x)\conj{g}(x) \pmod{p}.
       \]
-      Then $\conj{\Phi_{n}}(x)$ has a multiple root since $\conj{g}(x)$ does. Since $\conj{\Phi_{n}}(x)$ divides $x^{n}-1$ (because $\Phi_{n}(x)$ does and $x^{n}-1$ is itself reduced modulo $p$), it follows that $x^{n}-1$ has a multiple root over $\F_{p}$. This is impossible since $x^{n}-1$ has $n$ distinct roots as $p$ does not divide $n$ (recall that the derivative of $x^{n}-1$ is $nx^{n-1}$ which is relatively prime to $p$). It follows that $\w^{p}$ cannot be a root of $g(x)$ and is therefore a root of $f(x)$. Now let $k \in (\Z/n\Z)^{\ast}$ and write $k = p_{1}p_{2} \cdots p_{k}$ as a product of primes not dividing $n$. Then $\w^{k} = \w^{p_{1}p_{2} \cdots p_{k}}$ is a root of $f(x)$ and hence every primitive $n$-th root of unity is a root of $f(x)$. Thus $f(x) = \Phi_{n}(x)$ which proves $\Phi_{n}(x)$ is irreducible over $\Z$.
+      Then $\conj{\Phi_{n}}(x)$ has a multiple root in $\F_{p}$ since $\conj{g}(x)$ does. As $\conj{\Phi_{n}}(x)$ divides $x^{n}-1$ (because $\Phi_{n}(x)$ does and $x^{n}-1$ is itself reduced modulo $p$), it follows that $x^{n}-1$ has a multiple root in $\F_{p}$. This is impossible since $x^{n}-1$ has $n$ distinct roots in $\conj{\F_{p}}$ as $p$ does not divide $n$ (recall that the derivative of $x^{n}-1$ is $nx^{n-1}$ which is relatively prime to $p$). It follows that $\w^{p}$ cannot be a root of $g(x)$ and is therefore a root of $f(x)$. Now let $k \in (\Z/n\Z)^{\ast}$ and write $k = p_{1}p_{2} \cdots p_{k}$ as a product of primes not dividing $n$. Then $\w^{k} = \w^{p_{1}p_{2} \cdots p_{k}}$ is a root of $f(x)$ and hence every primitive $n$-th root of unity is a root of $f(x)$. Thus $f(x) = \Phi_{n}(x)$ which proves $\Phi_{n}(x)$ is irreducible over $\Z$.
     \end{proof}
 
     Since $\Phi_{n}(x)$ is monic, \cref{prop:cyclotomic_is_irreducible} implies that $\Phi_{n}(x)$ is the minimal polynomial of $\w$ over $\Q$ and hence of every primitive $n$-th root of unity over $\Q$. It follows that the degree of $\Q(\w)$ is $\vphi(n)$ because this is the degree of $\Phi_{n}(x)$. This implies $\Q(\w)$ is the splitting field of $\Phi_{n}(x)$ over $\Q$ because if one primitive $n$-th root of unity belongs to a field then they all do (as they are powers of each other). In particular, $\Q(\w)/\Q$ is normal and hence Galois. Moreover, every primitive $n$-root of unity is an algebraic integer since $\Phi_{n}(x)$ also has coefficients in $\Z$ by \cref{prop:cyclotomic_is_irreducible}. We now turn to the question of the ring of integers of $\Q(\w)$. For convenience write $\mc{O}_{\w} = \mc{O}_{\Q(\w)}$ and set
@@ -360,7 +360,7 @@
       \[
         \Q(\w_{1}) \cdots \Q(\w_{i-1}) \cap \Q(\w_{i}) = \Q,
       \]
-      for all $i$ (since the degree of $(\Q(\w_{1}) \cdots \Q(\w_{i-1}) \cap \Q(\w_{i}))/\Q$ must divide both $ p_{1}^{e_{1}} \cdots p_{i-1}^{e_{i-1}}$ and $p_{i}^{e_{i}}$ and thus is $1$). This also implies $\Q(\w_{1}) \cdots \Q(\w_{i-1})$ and $\Q(\w_{i})$ are linearly disjoint over $\Q$ in $\conj{\Q}$ for all $i$ because $\Q(\w_{1}) \cdots \Q(\w_{i-1})/\Q$ and $\Q(\w_{i})/\Q$ are both Galois (recall that if $K_{1}/\Q$ and $K_{2}/\Q$ are finite Galois extensions then $K_{1}$ and $K_{2}$ are linearly disjoint over $\Q$ in $\conj{\Q}$ if and only if $K_{1} \cap K_{2} = \Q$). As the discriminants of $d_{\Q(\w_{1})/\Q}(1,\w_{1},\ldots,\w_{1}^{\vphi(p_{1}^{e_{1}})-1}),\ldots,d_{\Q(\w_{r})/\Q}(1,\w_{r},\ldots,\w_{r}^{\vphi(p_{r}^{e_{r}})-1})$ are pairwise relatively prime, successive applications of \cref{prop:linearly_disjoint_integral_basis} shows that $1,\w,\ldots,\w^{\vphi(n)-1}$ is an integral basis for $\Q(\w)$. This means
+      for all $i$ (since the degree of $(\Q(\w_{1}) \cdots \Q(\w_{i-1}) \cap \Q(\w_{i}))/\Q$ must divide both $ p_{1}^{e_{1}} \cdots p_{i-1}^{e_{i-1}}$ and $p_{i}^{e_{i}}$ and thus is $1$). This also implies $\Q(\w_{1}) \cdots \Q(\w_{i-1})$ and $\Q(\w_{i})$ are linearly disjoint over $\Q$ in $\conj{\Q}$ for all $i$ by \cref{prop:Galois_linearly_disjoint} because $\Q(\w_{1}) \cdots \Q(\w_{i-1})/\Q$ and $\Q(\w_{i})/\Q$ are both Galois. As the discriminants of $d_{\Q(\w_{1})/\Q}(1,\w_{1},\ldots,\w_{1}^{\vphi(p_{1}^{e_{1}})-1}),\ldots,d_{\Q(\w_{r})/\Q}(1,\w_{r},\ldots,\w_{r}^{\vphi(p_{r}^{e_{r}})-1})$ are pairwise relatively prime, successive applications of \cref{prop:linearly_disjoint_integral_basis} shows that $1,\w,\ldots,\w^{\vphi(n)-1}$ is an integral basis for $\Q(\w)$. This means
       \[
         \mc{O}_{\w} = \Z[\w],
       \]
@@ -384,5 +384,37 @@
       \]
     \end{proposition}
     \begin{proof}
-      Since $\Q(\w)$ is monogenic by \cref{prop:cyclotomic_is_monogenic}, the conductor of $\Q(\w)$ is $\mc{O}_{\w}$. Therefore we may apply the Dedekind-Kummer theorem to every prime $p$. \todo{xxx}
+      Since $\Q(\w)$ is monogenic by \cref{prop:cyclotomic_is_monogenic}, the conductor of $\Q(\w)$ relative to $\w$ is $\mc{O}_{\w}$. Therefore we may apply the Dedekind-Kummer theorem to every prime $p$ and as $\Phi_{n}(x)$ is the minimal polynomial for $\w$ over $\Q$, we simply have to show the prime factorization
+      \[
+        \conj{\Phi_{n}}(x) = (\conj{m_{1}}(x) \cdots \conj{m_{r}}(x))^{\vphi(p^{e_{p}})},
+      \]
+      in $\F_{p}[x]$ for distinct irreducibles $\conj{m_{1}}(x),\ldots,\conj{m_{r}}(x)$ of degree $f_{p}$. To this end, let $n = p^{e}m$ and let $\xi$ and $\eta$ be primitive $p^{e}$-th and $m$-th roots of unity respectively. Then $\Phi_{n}(x)$ can be expressed as
+      \[
+        \Phi_{n}(x) = \prod_{\substack{k \in (\Z/p^{e}\Z)^{\ast} \\ \ell \in (\Z/m\Z)^{\ast}}}(x-\xi^{k}\eta^{\ell}).
+      \]
+      Recall that
+      \[
+        (x-1)^{p^{e_{p}}} \equiv x^{p^{e_{p}}}-1 \tmod{p}.
+      \]
+      Taking $x = \xi$ gives $(\xi-1)^{p^{e_{p}}} \equiv 0 \tmod{p}$ and thus $\xi \equiv 1 \tmod{p}$. Then from our expression of $\Phi_{n}(x)$, we find that
+      \[
+        \Phi_{n}(x) \equiv \prod_{1 \le \ell \le (\Z/m\Z)^{\ast}}(1-\eta^{\ell})^{\vphi(p^{e})} \equiv \Phi_{m}(x)^{\vphi(p^{e_{p}})} \tmod{p}.
+      \]
+      This is to say
+      \[
+        \conj{\Phi_{n}}(x) = \conj{\Phi_{m}}(x)^{\vphi(p^{e_{p}})}.
+      \]
+      Therefore it suffices to show
+      \[
+        \conj{\Phi_{m}}(x) = \conj{m_{1}}(x) \cdots \conj{m_{r}}(x),
+      \]
+      and that $\conj{m_{1}}(x),\ldots,\conj{m_{r}}(x)$ are all of degree $f_{p}$. Now let $\mf{p}$ be a prime above $p$. Then $\F_{\mf{p}}$ is an $\F_{p}$-vector space and therefore has characteristic $p$. It follows that $x^{m}-1$ has $m$ distinct roots in in $\conj{\F_{p}}$ since $p$ does not divide $m$ (recall that the derivative of $x^{m}-1$ is $mx^{m-1}$ which is relatively prime to $p$). Therefore $x^{m}-1$ does not have a multiple root in $\F_{\mf{p}}$. As $\mc{O}_{\w}$ contains all the $m$-th roots of unity by \cref{prop:cyclotomic_is_monogenic} and that $m$ divides $n$, it follows that $\F_{\mf{p}}$ does as well so the surjective homomorphism
+      \[
+        \pi:\mc{O}_{\w} \to \mc{O}_{\w}/\mf{p} \qquad \a \mapsto \a \tmod{\mf{p}},
+      \]
+      maps the primitive $m$-th roots of unity onto themselves bijectively. This implies that the roots of $\conj{\Phi_{m}}(x)$ are exactly the primitive $m$-th roots of unity. Now the smallest extension of $\F_{p}$ containing all the primitive $m$-th roots of unity is $\F_{p^{f_{p}}}$ because its multiplicative group $\F_{p^{f_{p}}}^{\ast}$ is cyclic (as the multiplicative group of any finite field is cyclic), of order $p^{f_{p}}-1$ dividing $m$ by assumption, and with $f_{p}$ minimal. As $\conj{\Phi_{m}}(x)$ divides $x^{n}-1$ in $\F_{p}[x]$ (because $\Phi_{m}(x)$ divides $x^{m}-1$ in $\Z[x]$), $\conj{\Phi_{m}}(x)$ has no multiple roots in $\F_{p}$. Therefore it factors as
+      \[
+        \conj{\Phi_{m}}(x) = \conj{m_{1}}(x) \cdots \conj{m_{r}}(x),
+      \]
+      in $\F_{p}[x]$ for distinct irreducibles $\conj{m_{1}}(x),\ldots,\conj{m_{r}}(x)$. These are also necessarily monic because $\Phi_{m}(x)$, and hence $\conj{\Phi_{m}}(x)$, is. Moreover, as the roots of $\conj{\Phi_{m}}(x)$ are the primitive $m$-th roots of unity, each factor $\conj{m_{i}}(x)$ is the minimal polynomial of a primitive $m$-th root of unity in $\F_{p^{f_{p}}}$ for $1 \le i \le r$. The degree of this minimal polynomial is necessarily the degree of $\F_{p^{f_{p}}}/\F_{p}$ which is $f_{p}$. Therefore $\conj{m_{1}}(x),\ldots,\conj{m_{r}}(x)$ are all of degree $f_{p}$ completing the proof.
     \end{proof}

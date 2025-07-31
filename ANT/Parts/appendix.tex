@@ -662,6 +662,48 @@
       \]
       for any base change matrix $A$ from a basis of $M$ to a basis of $N$.
     \end{proposition}
+  \section{Galois Theory}\label{append:Galois Theory}
+    Let $E/F$ be an algebraic extension. We say that $E/F$ is \textbf{Galois}\index{Galois} if it is both normal and separable. Actually, there are several equivalent conditions for $E/F$ to be Galois provided $E/F$ is finite:
+
+    \begin{proposition}
+      Let $E/F$ be a finite extension. Then the following are equivalent:
+      \begin{enumerate}[label=(\roman*)]
+        \item $E/F$ is Galois.
+        \item $E$ is the splitting field of some polynomial in $F[x]$.
+        \item $|\Aut_{F}(E)| = |E/F|$.
+      \end{enumerate}
+    \end{proposition}
+
+    If $E/F$ is Galois, we define \textbf{Galois group}\index{Galois group} $\Gal(E/F)$ by
+    \[
+      \Gal(E/F) = \Aut_{F}(E).
+    \]
+    In other words, $\Gal(E/F)$ is the group of automorphism of $E$ that fix $F$ pointwise. Now if $H$ is a subgroup of $\Gal(E/F)$, we define the \textbf{fixed field}\index{fixed field} $E^{H}$ of $E$ by $H$ to be
+    \[
+      E^{H} = \{\a \in E:\text{$\s(\a) = \a$ for all $\s \in H$}\}.
+    \] 
+    In other words, $E^{H}$ is the intermediate field of $E/F$ that consists of those elements that are fixed pointwise by every automorphism in $H$. If $E/F$ is finite, say of degree $n$, then being separable means the primitive element theorem applies and so $E = F(\t)$ for some $\t \in E$. The minimal polynomial $m_{\t}(x)$ of $\t$ over $F$ is necessarily of degree $n$ and $\t$ has $n$ conjugates $\t_{1},\ldots,\t_{n}$, with say $\t_{1} = \t$, which are the roots of $m_{\t}(x)$. The automorphisms of $\Gal(E/F)$ are then the induced by mapping $\t$ to one of its conjugates $\t_{1},\ldots,\t_{n}$. The most important result of Galois theory is the \textbf{fundamental theorem of Galois theory}\index{fundamental theorem of Galois theory} which relates intermediate fields of $E/F$ to subgroups of the Galois group provided $E/F$ is finite:
+
+    \begin{theorem}[Fundamental theorem of Galois theory]
+      Let $E/F$ be a finite Galois extension and let $K$ be an intermediate field. Then $E/K$ is Galois. Moreover, the maps
+      \[
+        K \to \Gal(E/K) \quad \text{and} \quad H \to E^{H},
+      \]
+      are inclusion-reversing bijections between the intermediate fields of $E/F$ and the subgroups of $\Gal(E/F)$. We have
+      \[
+        \frac{|\Gal(E/F)|}{|H|} = |E^{H}/F|.
+      \]
+      In addition, $E^{H}/F$ is Galois if and only if $H$ is a normal subgroup of $\Gal(E/F)$ and in this case there is an isomorphism
+      \[
+        \Gal(E^{H}/F) \cong \Gal(E/F)/H.
+      \]
+    \end{theorem}
+
+    Galois groups also behave nicely with respect to composite fields:
+
+    \begin{proposition}\label{prop:Galois_linearly_disjoint}
+      Let $E_{1}/F$ and $E_{2}/F$ be finite Galois extensions and let $E$ be the composite of $E_{1}$ and $E_{2}$. Then $E/F$ is Galois. Moreover, $E_{1}$ and $E_{2}$ are linearly disjoint over $F$ in $\conj{F}$ if and only if $E_{1} \cap E_{2} = F$.
+    \end{proposition}
   \section{Character Groups}\label{append:Character_Groups}
     For any finite abelian group $G$, a \textbf{character}\index{character} $\vphi$ is a homomorphism $\vphi:G \to \C$. They form a group, denoted $\what{G}$, under multiplication called the \textbf{character group}\index{character group} of $G$. If $G$ is an additive group, we say that any $\vphi \in \G$ is a \textbf{additive character}\index{additive character}. Similarly, if $G$ is a multiplicative group, we say that any $\vphi \in \G$ is a \textbf{multiplicative character}\index{multiplicative character}. In any case, if $|G| = n$ then $\vphi(g)^{n} = \vphi(g^{n}) = 1$ so that $\vphi$ takes values in the $n$-th roots of unity. Moreover, to every character $\vphi$ there is its \textbf{conjugate character}\index{conjugate character} $\conj{\vphi}$ defined by $\conj{\vphi}(g) = \conj{\vphi(a)}$. Clearly the conjugate character is also a character. Since $\vphi$ takes its value in the roots of unity, $\conj{\vphi(a)} = \vphi(a)^{-1}$ so that $\conj{\vphi} = \vphi^{-1}$. One of the central theorems about characters is that the character group of $G$ is isomorphic to $G$:
 
