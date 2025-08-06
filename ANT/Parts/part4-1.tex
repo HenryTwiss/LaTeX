@@ -231,15 +231,15 @@
 
     Now suppose $D(s)$ is a Dirichlet series that has a product expression
     \[
-      D(s) = \prod_{p}(1-\a_{1}(p)p^{-s})^{-1}(1-\a_{2}(p)p^{-s})^{-1} \cdots (1-\a_{d}(p)p^{-s})^{-1},
+      D(s) = \prod_{p}\prod_{1 \le i \le d}(1-\a_{i}(p)p^{-s})^{-1},
     \]
-    for $\s > \s_{a}$ and some $\a_{i}(p) \in \C$ for $1 \le i \le d$ and all primes $p$. We call this product the \textbf{Euler product}\index{Euler product} of $D(s)$, and it is said to be of \textbf{degree}\index{degree} $d$. In \cref{prop:Dirichlet_series_Euler_product}, complete multiplicativity of the coefficients is enough to guarantee that $D(s)$ has an Euler product of degree $1$, but in general $D(s)$ will admit an Euler product of degree $d > 1$ if the coefficients are merely multiplicative but satisfy additional properties like a recurrence relation. If $D(s)$ has an Euler product then for any $N \ge 1$ we let $D_{(N)}(s)$ denote the Dirichlet series with the factors $p \mid N$ in the Euler product removed. Then
+    for $\s > \s_{a}$ and some $\a_{i}(p) \in \C$ for all $i$ and all primes $p$. We call this product the \textbf{Euler product}\index{Euler product} of $D(s)$, and it is said to be of \textbf{degree}\index{degree} $d$. In \cref{prop:Dirichlet_series_Euler_product}, complete multiplicativity of the coefficients is enough to guarantee that $D(s)$ has an Euler product of degree $1$, but in general $D(s)$ will admit an Euler product of degree $d > 1$ if the coefficients are merely multiplicative but satisfy additional properties like a recurrence relation. If $D(s)$ has an Euler product then for any $N \ge 1$ we let $D_{(N)}(s)$ denote the Dirichlet series with the factors $p \mid N$ in the Euler product removed. Then
     \[
-      D_{(N)}(s) = D(s)\prod_{p \mid N}(1-\a_{1}(p)p^{-s})(1-\a_{2}(p)p^{-s}) \cdots (1-\a_{d}(p)p^{-s}).
+      D_{(N)}(s) = D(s)\prod_{p \mid N}\prod_{1 \le i \le d}(1-\a_{i}(p)p^{-s}).
     \]
     Dually, for any $N \ge 1$ we let $D_{N}(s)$ denote the Dirichlet series only consisting of the factors $p \mid N$ in the Euler product. That is
     \[
-      D_{N}(s) = \prod_{p \mid N}(1-\a_{1}(p)p^{-s})^{-1}(1-\a_{2}(p)p^{-s})^{-1} \cdots (1-\a_{d}(p)p^{-s})^{-1}.
+      D_{N}(s) = \prod_{p \mid N}\prod_{1 \le i \le d}(1-\a_{i}(p)p^{-s})^{-1}.
     \]
     With this notation, we have the relationship
     \[
@@ -423,11 +423,11 @@
     \begin{enumerate}[label=(\roman*)]
       \item $L(s,f)$ is locally absolutely uniformly convergent for $\s > 1$ and admits a degree $d_{f}$ Euler product:
       \[
-        L(s,f) = \sum_{n \ge 1}\frac{a_{f}(n)}{n^{s}} = \prod_{p}(1-\a_{1}(p)p^{-s})^{-1}(1-\a_{2}(p)p^{-s})^{-1} \cdots (1-\a_{d_{f}}(p)p^{-s})^{-1},
+        L(s,f) = \sum_{n \ge 1}\frac{a_{f}(n)}{n^{s}} = \prod_{p}\prod_{1 \le j \le d_{f}}(1-\a_{j}(p)p^{-s})^{-1},
       \]
-      with $a_{f}(n),\a_{j}(p) \in \C$, $a_{f}(1) = 1$, and $|\a_{j}(p)| \le p$ for all primes $p$. We call
+      with $a_{f}(n),\a_{j}(p) \in \C$, $a_{f}(1) = 1$, and $|\a_{j}(p)| \le p$ for all $j$ and primes $p$. We call
       \[
-        L_{p}(s,f) = (1-\a_{1}(p)p^{-s})^{-1}(1-\a_{2}(p)p^{-s})^{-1} \cdots (1-\a_{d_{f}}(p)p^{-s})^{-1},
+        L_{p}(s,f) = \prod_{1 \le j \le d_{f}}(1-\a_{j}(p)p^{-s})^{-1},
       \]
       the \textbf{local factor}\index{local factor} at $p$, and the $\a_{j}(p)$ are called the \textbf{local roots}\index{local roots} (or \textbf{local parameters}\index{local parameters}) at $p$.
       \item There exists a factor
@@ -476,14 +476,14 @@
       In general, it is a difficult problem to determine when an $L$-function $L(s,f)$ of degree $d_{f} \ge 2$ is primitive.
     \end{remark}
 
-    Let $L(s,f)$ be an $L$-function with local roots $\a_{j}(p)$ at $p$ and let $k \ge 1$. We say that an $L$-function $L(s,\sym^{k}f)$ of degree $d_{f}$ is the $k$-th \textbf{symmetric power}\index{symmetric power} of $L(s,f)$ if it satisfies the following adjustment:
+    Let $L(s,f)$ be an $L$-function with local roots $\a_{j}(p)$ at $p$ and let $k \ge 1$. We say that an $L$-function $L(s,\sym^{k}f)$ of degree $\binom{d_{f}+k-1}{k}$ is the $k$-th \textbf{symmetric power}\index{symmetric power} of $L(s,f)$ if it satisfies the following adjustment:
     \begin{itemize}
       \item[(i)] The Euler product of $L(s,\sym^{k}f)$ takes the form
       \[
         L(s,\sym^{k}f) = \prod_{p}\prod_{1 \le j_{1} \le \cdots \le j_{k} \le d_{f}}(1-\a_{j_{1}}(p) \cdots \a_{j_{k}}(p)p^{-s})^{-1}.
       \]
     \end{itemize}
-    When $k$ is $2$, $3$, etc. we simply refer to $L(s,\sym^{k}f)$ as the \textbf{symmetric square}\index{symmetric square}, \textbf{symmetric cube}\index{symmetric cube}, etc. When $k \le d_{f}$, we say that an $L$-function $L(s,\ext^{k}f)$ of degree $d_{f}$ is the $k$-th \textbf{exterior power}\index{exterior power} of $L(s,f)$ if it satisfies the following adjustment:
+    When $k$ is $2$, $3$, etc. we simply refer to $L(s,\sym^{k}f)$ as the \textbf{symmetric square}\index{symmetric square}, \textbf{symmetric cube}\index{symmetric cube}, etc. When $k \le d_{f}$, we say that an $L$-function $L(s,\ext^{k}f)$ of degree $\binom{d_{f}}{k}$ is the $k$-th \textbf{exterior power}\index{exterior power} of $L(s,f)$ if it satisfies the following adjustment:
     \begin{itemize}
       \item[(i)] The Euler product of $L(s,\ext^{k}f)$ takes the form
       \[
@@ -500,8 +500,9 @@
     \begin{itemize}
       \item[(i)] The Euler product of $L(s,f \ox g)$ takes the form
       \[
-        L(s,f \ox g) = \prod_{p}\prod_{\substack{1 \le j \le d_{f} \\ 1 \le \ell \le d_{g}}}\left(1-\a_{j}(p)\conj{\b_{\ell}(p)}p^{-s}\right)^{-1}.
+        L(s,f \ox g) = \prod_{p \nmid q(f)q(g)}\prod_{\substack{1 \le j \le d_{f} \\ 1 \le \ell \le d_{g}}}\left(1-\a_{j}(p)\conj{\b_{\ell}(p)}p^{-s}\right)^{-1}\prod_{p \mid q(f)q(g)}\prod_{1 \le i \le d_{f}d_{g}}\left(1-\g_{i}(p)p^{-s}\right)^{-1},
       \]
+      with $\g_{j}(p) \in \C$, $\g_{j}(1) = 1$, and $|\g_{j}(p)| \le p$ for all $i$ and primes $p \mid q(f)q(g)$. 
     \end{itemize}
     We now introduce some important concepts associated to $L$-functions. The \textbf{critical strip}\index{critical strip} is the vertical strip left invariant by the transformation $s \mapsto 1-s$, that is, the region defined by
     \[
@@ -721,7 +722,7 @@
   \section{The Riemann Hypothesis \& Nontrivial Zeros}
     The zeros of an $L$-function $L(s,f)$ have interesting behavior. Recall that
     \[
-      L(s,f) = \prod_{p}(1-\a_{1}(p)p^{-s})^{-1}(1-\a_{2}(p)p^{-s})^{-1} \cdots (1-\a_{d_{f}}(p)p^{-s})^{-1},
+      L(s,f) = \prod_{p}\prod_{1 \le j \le d_{f}}(1-\a_{j}(p)p^{-s})^{-1},
     \]
     for $\s > 1$. This product vanishes if and only if one of its factors are zero. As $\s > 1$, this is impossible so that $L(s,f)$ has no zeros in this region. The functional equation will allow us to understand more about the zeros of $L(s,f)$. Rewrite the functional equation for $L(s,f)$ as
     \begin{equation}\label{equ:fun_eq_for_zeros}
