@@ -156,11 +156,11 @@
 
       Lastly, we note that by virtue of the functional equation we can also compute $\z(0)$. Indeed, since $\Res_{s = 1}\z(s) = 1$, we have
       \[
-        \lim_{s \to 1}(s-1)\L(s,\z) = \Res_{s = 1}\z(s)\lim_{s \to 1}\pi^{-\frac{s}{2}}\G\left(\frac{s}{2}\right) = 1.
+        \lim_{s \to 1}(s-1)\L(s,\z) = \left(\Res_{s = 1}\z(s)\right)\left(\lim_{s \to 1}\pi^{-\frac{s}{2}}\G\left(\frac{s}{2}\right)\right) = 1.
       \]
       In other words, $\L(s,\z)$ has a simple pole at $s = 1$ of residue $1$ too. It follows that $\L(s,\z)$ also has a simple pole at $s = 0$ of residue $1$. Hence
       \[
-        1 = \lim_{s \to 1}(s-1)\L(1-s,\z) = \Res_{s = 1}\G\left(\frac{1-s}{2}\right)\lim_{s \to 1}\pi^{-\frac{1-s}{2}}\z(1-s) = -2\z(0),
+        1 = \lim_{s \to 1}(s-1)\L(1-s,\z) = \left(\Res_{s = 1}\G\left(\frac{1-s}{2}\right)\right)\left(\lim_{s \to 1}\pi^{-\frac{1-s}{2}}\z(1-s)\right) = -2\z(0),
       \]
       because $\Res_{s = 0}\G(s) = 1$. Therefore $\z(0) = -\frac{1}{2}$.
   \section{Dirichlet \texorpdfstring{$L$}{L}-functions}
@@ -659,7 +659,7 @@
         \]
         because $\G\left(\frac{1}{2}\right) = \sqrt{\pi}$ and $\G(1) = 1$. Therefore
         \begin{align*}
-          \Res_{s = 1}\z(s) &= \Res_{s = 1}\left(-\frac{\pi^{\frac{r_{1}s}{2}}(2\pi)^{r_{2}s}}{\G\left(\frac{s}{2}\right)^{r_{1}}\G\left(s\right)^{r_{2}}}\frac{2^{r_{1}}h_{K}R_{K}}{\w_{K}\sqrt{|\D|_{K}}s(1-s)}\right) \\
+          \Res_{s = 1}\z_{K}(s) &= \Res_{s = 1}\left(-\frac{\pi^{\frac{r_{1}s}{2}}(2\pi)^{r_{2}s}}{\G\left(\frac{s}{2}\right)^{r_{1}}\G\left(s\right)^{r_{2}}}\frac{2^{r_{1}}h_{K}R_{K}}{\w_{K}\sqrt{|\D|_{K}}s(1-s)}\right) \\
           &= \lim_{s \to 1}\left(\frac{\pi^{\frac{r_{1}s}{2}}(2\pi)^{r_{2}s}}{\G\left(\frac{s}{2}\right)^{r_{1}}\G\left(s\right)^{r_{2}}}\frac{2^{r_{1}}h_{K}R_{K}}{\w_{K}\sqrt{|\D|_{K}}s}\right) \\
           &= \frac{2^{r_{1}}(2\pi)^{r_{2}}h_{K}R_{K}}{w_{K}\sqrt{|\D_{K}|}}.
         \end{align*}
@@ -1269,7 +1269,7 @@
         Notice $\L(2s,\z)$ has simple poles at $s = 0$, $s = \frac{1}{2}$ (one from the Riemann zeta function and one from the gamma factor) and no others. It follows that $E^{\ast}(z,s)$ has a simple pole at $s = 0$ coming from the $y^{s}$ term in
         \cref{equ:constant_coefficient_of_completed_non-holomorphic_Eisenstein_series}, and by the functional equation there is also a pole at $s = 1$ coming from the $y^{1-s}$ term. At $s = \frac{1}{2}$, both terms in \cref{equ:constant_coefficient_of_completed_non-holomorphic_Eisenstein_series} have simple poles and we will show that the singularity there is removable. Since the residues of $\L(s,\z)$ at its poles are both $1$, we have $\Res_{s = \frac{1}{2}}\L(2s) = \frac{1}{2}$ and $\Res_{s = \frac{1}{2}}\L(2(1-s)) = -\frac{1}{2}$. Then
         \[
-          \Res_{s = \frac{1}{2}}E^{\ast}(z,s) = \Res_{s = \frac{1}{2}}[y^{s}\L(2s,\z)+y^{1-s}\L(2(1-s),\z)] = \frac{1}{2}y^{\frac{1}{2}}-\frac{1}{2}y^{\frac{1}{2}} = 0.
+          \Res_{s = \frac{1}{2}}E^{\ast}(z,s) = \Res_{s = \frac{1}{2}}y^{s}\L(2s,\z)+\Res_{s = \frac{1}{2}}y^{1-s}\L(2(1-s),\z) = \frac{1}{2}y^{\frac{1}{2}}-\frac{1}{2}y^{\frac{1}{2}} = 0.
         \]
         Hence the singularity at $s = \frac{1}{2}$ is removable. As for the residues at $s = 0$ and $s = 1$, the functional equation implies that they are negatives of each other. So it suffices to compute the residue at $s = 0$. Recall $\z(0) = -\frac{1}{2}$ and $\Res_{s = 0}\G(s) = 1$. Then together we find
         \[
@@ -1329,7 +1329,7 @@
       \]
       Thus $(s-1)L(s,f \ox g)$ is of order $1$, and so $L(s,f \ox g)$ is as well after removing the polar divisor. We now compute the residue of $L(s,f \ox g)$ at $s = 1$. As $V = \frac{\pi}{3}$, \cref{equ:completed_real-analytic_Eisenstein_series_residues} implies
       \[
-        \Res_{s = 1}L(s,f \ox g) = \frac{4^{k}\pi^{k+1}}{\G(k)}\int_{\mc{F}}f(z)\conj{g(z)}\Im(z)^{k}\Res_{s = 1}E^{\ast}(z,s)\,d\mu = \frac{4^{k}\pi^{k+1}V}{2\G(k)}\<f,g\>.
+        \Res_{s = 1}L(s,f \ox g) = \frac{4^{k}\pi^{k+1}}{\G(k)}\int_{\mc{F}}f(z)\conj{g(z)}\Im(z)^{k}(\Res_{s = 1}E^{\ast}(z,s))\,d\mu = \frac{4^{k}\pi^{k+1}V}{2\G(k)}\<f,g\>.
       \]
       By \cref{thm:newforms_characterization_holomorphic}, $\<f,g\> \neq 0$ if and only if $f = g$. Therefore the pole at $s = 1$ is a removable singularity unless $f = g$. We summarize all of our work into the following theorem:
 
