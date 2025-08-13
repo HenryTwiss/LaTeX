@@ -1,0 +1,650 @@
+\chapter{\texorpdfstring{$L$}{L}-functions of Holomorphic, Automorphic, and Maass Forms}
+  We discuss the $L$-functions associated to holomorphic, automorphic, and Maass forms. In particular, we develop the theory of Hecke and Hecke-Maass $L$-functions. We also discuss the Rankin-Selberg method associated to these $L$-functions.
+  \section{Hecke \texorpdfstring{$L$}{L}-functions}
+    \subsection*{The Definition and Euler Product}
+      We will investigate the $L$-functions of holomorphic cusp forms. Let $f \in \mc{S}_{k}(N,\chi)$ and denote its Fourier series by
+      \[
+        f(z) = \sum_{n \ge 1}a_{f}(n)n^{\frac{k-1}{2}}e^{2\pi inz},
+      \]
+      with $a_{f}(1) = 1$. Thus if $f$ is a Hecke eigenform, the $a_{f}(n)$ are the Hecke eigenvalues of $f$ normalized so that they are constant on average. The \textbf{Hecke $L$-series}\index{Hecke $L$-series} (respectively \textbf{Hecke $L$-function}\index{Hecke $L$-function} if it is an $L$-function) $L(s,f)$ of $f$ is defined by the following Dirichlet series:
+      \[
+        L(s,f) = \sum_{n \ge 1}\frac{a_{f}(n)}{n^{s}}.
+      \]
+      We will see that $L(s,f)$ is a Selberg class $L$-function if $f$ is a primitive Hecke eigenform. From now on, we make this assumption about $f$. The Hecke relations and the Ramanujan-Petersson conjecture for holomorphic forms together imply that the coefficients $a_{f}(n)$ are multiplicative and satisfy $a_{f}(n) \ll_{\e} n^{\e}$. By \cref{prop:Dirichlet_series_Euler_product}, $L(s,f)$ is locally absolutely uniformly convergent for $\s > 1$ and admits the following infinite product expression:
+      \[
+        L(s,f) = \prod_{p}\left(\sum_{n \ge 0}\frac{a_{f}(p^{n})}{p^{ns}}\right).
+      \]
+      To determine the Euler product, the Hecke relations imply that the coefficients $a_{f}(n)$ satisfy
+      \begin{equation}\label{equ:primitive_Hecke_eigenform_recurrence_for_coefficients_of_holomorphic_L-function}
+        a_{f}(p^{n}) = \begin{cases} a_{f}(p^{n-1})a_{f}(p)-\chi(p)a_{f}(p^{n-2}) & \text{if $p \nmid N$}, \\ (a_{f}(p))^{n} & \text{if $p \mid N$}, \end{cases}
+      \end{equation}
+      for all primes $p$ and $n \ge 2$. We now simplify the factor inside the product using this \cref{equ:primitive_Hecke_eigenform_recurrence_for_coefficients_of_holomorphic_L-function}. On the one hand, if $p \nmid N$:
+      \begin{align*}
+        \sum_{n \ge 0}\frac{a_{f}(p^{n})}{p^{ns}} &= 1+\frac{a_{f}(p)}{p^{s}}+\sum_{n \ge 2}\frac{a_{f}(p^{n})}{p^{ns}} \\
+        &= 1+\frac{a_{f}(p)}{p^{s}}+\sum_{n \ge 2}\frac{a_{f}(p^{n-1})a_{f}(p)-\chi(p)a_{f}(p^{n-2})}{p^{ns}} \\
+        &= 1+\frac{a_{f}(p)}{p^{s}}+\frac{a_{f}(p)}{p^{s}}\sum_{n \ge 1}\frac{a_{f}(p^{n})}{p^{ns}}-\frac{\chi(p)}{p^{2s}}\sum_{n \ge 0}\frac{a_{f}(p^{n})}{p^{ns}} \\
+        &= 1+\left(\frac{a_{f}(p)}{p^{s}}-\frac{\chi(p)}{p^{2s}}\right)\sum_{n \ge 0}\frac{a_{f}(p^{n})}{p^{ns}}.
+      \end{align*}
+      By isolating the sum we find
+      \[
+        \sum_{n \ge 0}\frac{a_{f}(p^{n})}{p^{ns}} = \left(1-\frac{a_{f}(p)}{p^{s}}+\frac{\chi(p)}{p^{2s}}\right)^{-1}.
+      \]
+      On the other hand, if $p \mid N$ we have
+      \[
+        \sum_{n \ge 0}\frac{a_{f}(p^{n})}{p^{ns}} = \sum_{n \ge 0}\frac{(a_{f}(p))^{n}}{p^{ns}} = \left(1-a_{f}(p)p^{-s}\right)^{-1}.
+      \]
+      Therefore
+      \[
+        L(s,f) = \prod_{p \nmid N}(1-a_{f}(p)p^{-s}+\chi(p)p^{-2s})^{-1}\prod_{p \mid N}(1-a_{f}(p)p^{-s})^{-1}.
+      \]
+      Letting $\a_{1}(p)$ and $\a_{2}(p)$ be the $p$-th Hecke roots of $f$, we can express $L(s,f)$ as the following degree $2$ Euler product:
+      \[
+        L(s,f) = \prod_{p}(1-\a_{1}(p)p^{-s})^{-1}(1-\a_{2}(p)p^{-s})^{-1}.
+      \]
+      The local factor at $p$ is 
+      \[
+        L_{p}(s,f) = (1-\a_{1}(p)p^{-s})^{-1}(1-\a_{2}(p)p^{-s})^{-1},
+      \]
+      with local roots $\a_{1}(p)$ and $\a_{2}(p)$. Upon applying partial fraction decomposition to the local factor, we find
+      \[
+        \frac{1}{1-\a_{1}(p)p^{-s}}\frac{1}{1-\a_{2}(p)p^{-s}} = \frac{\frac{\a_{1}(p)}{\a_{1}(p)-\a_{2}(p)}}{1-\a_{1}(p)p^{-s}}+\frac{\frac{-\a_{2}(p)}{\a_{1}(p)-\a_{2}(p)}}{1-\a_{2}(p)p^{-s}}.
+      \]
+      Expanding both sides as series in $p^{-s}$, and comparing coefficients gives
+      \begin{equation}\label{equ:Hecke_L_function_coefficient_formula}
+        a_{f}(p^{n}) = \frac{\a_{1}(p)^{n+1}-\a_{2}(p)^{n+1}}{\a_{1}(p)-\a_{2}(p)}.
+      \end{equation}
+    \subsection*{The Integral Representation}
+      We now want to find an integral representation for $L(s,f)$. Consider the following Mellin transform:
+      \[
+        \int_{0}^{\infty}f(iy)y^{s+\frac{k-1}{2}}\,\frac{dy}{y}.
+      \]
+      As $f$ has exponential decay at the cusps, this integral is locally absolutely uniformly convergent for $\s > 1$ and hence defines an analytic function there. Then we compute
+      \begin{align*}
+        \int_{0}^{\infty}f(iy)y^{s+\frac{k-1}{2}}\,\frac{dy}{y} &= \int_{0}^{\infty}\sum_{n \ge 1}a_{f}(n)n^{\frac{k-1}{2}}e^{-2\pi ny}y^{s+\frac{k-1}{2}}\,\frac{dy}{y} \\
+        &= \sum_{n \ge 1}a_{f}(n)n^{\frac{k-1}{2}}\int_{0}^{\infty}e^{-2\pi ny}y^{s+\frac{k-1}{2}}\,\frac{dy}{y} &&\text{FTT} \\
+        &= \sum_{n \ge 1}\frac{a_{f}(n)}{(2\pi)^{s+\frac{k-1}{2}}n^{s}}\int_{0}^{\infty}e^{-y}y^{s+\frac{k-1}{2}}\,\frac{dy}{y} &&\text{$y \mapsto \frac{y}{2\pi n}$} \\
+        &= \frac{\G\left(s+\frac{k-1}{2}\right)}{(2\pi)^{s+\frac{k-1}{2}}}\sum_{n \ge 1}\frac{a_{f}(n)}{n^{s}} \\
+        &= \frac{\G\left(s+\frac{k-1}{2}\right)}{(2\pi)^{s+\frac{k-1}{2}}}L(s,f).
+      \end{align*}
+      Rewriting, we have an integral representation
+      \begin{equation}\label{equ:integral_representation_holomorphic_1}
+        L(s,f) = \frac{(2\pi)^{s+\frac{k-1}{2}}}{\G\left(s+\frac{k-1}{2}\right)}\int_{0}^{\infty}f(iy)y^{s+\frac{k-1}{2}}\,\frac{dy}{y}.
+      \end{equation}
+      Now split the integral on the right-hand side into two pieces by writing
+      \begin{equation}\label{equ:symmetric_integral_holomorphic_split}
+        \int_{0}^{\infty}f(iy)y^{s+\frac{k-1}{2}}\,\frac{dy}{y} = \int_{0}^{\frac{1}{\sqrt{N}}}f(iy)y^{s+\frac{k-1}{2}}\,\frac{dy}{y}+\int_{\frac{1}{\sqrt{N}}}^{\infty}f(iy)y^{s+\frac{k-1}{2}}\,\frac{dy}{y}.
+      \end{equation}
+      Now we will rewrite the first piece in the same form and symmetrize the result as much as possible. Begin by performing the change of variables $y \mapsto \frac{1}{Ny}$ to the first piece to obtain
+      \[
+        \int_{\frac{1}{\sqrt{N}}}^{\infty}f\left(\frac{i}{Ny}\right)(Ny)^{-s-\frac{k-1}{2}}\,\frac{dy}{y}.
+      \]
+      Rewriting in terms of the Atkin-Lehner operator and recalling that $\w_{N}f = \w_{N}(f)\conj{f}$ by \cref{prop:Atkin_Lehner_conjugation_holomorphic}, we have
+      \begin{align*}
+        \int_{\frac{1}{\sqrt{N}}}^{\infty}f\left(\frac{i}{Ny}\right)(Ny)^{-s-\frac{k-1}{2}}\,\frac{dy}{y} &= \int_{\frac{1}{\sqrt{N}}}^{\infty}f\left(-\frac{1}{iNy}\right)(Ny)^{-s-\frac{k-1}{2}}\,\frac{dy}{y} \\
+        &= \int_{\frac{1}{\sqrt{N}}}^{\infty}\left(\sqrt{N}iy\right)^{k}(\w_{N}f)(iy)(Ny)^{-s-\frac{k-1}{2}}\,\frac{dy}{y} \\
+        &= \int_{\frac{1}{\sqrt{N}}}^{\infty}\left(\sqrt{N}iy\right)^{k}\w_{N}(f)\conj{f}(iy)(Ny)^{-s-\frac{k-1}{2}}\,\frac{dy}{y} \\
+        &= \w_{N}(f)i^{k}N^{\frac{1}{2}-s}\int_{\frac{1}{\sqrt{N}}}^{\infty}\conj{f}(iy)y^{(1-s)-\frac{k-1}{2}}\,\frac{dy}{y}.
+      \end{align*}
+      Substituting this result back into \cref{equ:symmetric_integral_holomorphic_split} and combining with \cref{equ:integral_representation_holomorphic_1} yields the integral representation
+      \begin{equation}\label{equ:integral_representation_holomorphic_final}
+        L(s,f) = \frac{(2\pi)^{s+\frac{k-1}{2}}}{\G\left(s+\frac{k-1}{2}\right)}\left[\w_{N}(f)i^{k}N^{\frac{1}{2}-s}\int_{\frac{1}{\sqrt{N}}}^{\infty}\conj{f}(iy)y^{(1-s)+\frac{k-1}{2}}\,\frac{dy}{y}+\int_{\frac{1}{\sqrt{N}}}^{\infty}f(iy)y^{s+\frac{k-1}{2}}\,\frac{dy}{y}\right].
+      \end{equation}
+      This integral representation will give analytic continuation. To see this, we know everything outside the brackets is entire. The integrands exhibit exponential decay and therefore the integrals are locally absolutely uniformly convergent on $\C$. Hence we have analytic continuation to all of $\C$. In particular, we have shown that $L(s,f)$ has no poles.
+    \subsection*{The Functional Equation}
+      An immediate consequence of applying the symmetry $s \mapsto 1-s$ to \cref{equ:integral_representation_holomorphic_final} is the following functional equation:
+      \[
+        N^{\frac{s}{2}}\frac{\G\left(s+\frac{k-1}{2}\right)}{(2\pi)^{s+\frac{k-1}{2}}}L(s,f) = \w_{N}(f)i^{k}N^{\frac{1-s}{2}}\frac{\G\left((1-s)+\frac{k-1}{2}\right)}{(2\pi)^{(1-s)+\frac{k-1}{2}}}L(1-s,\conj{f}).
+      \]
+      Using the Legendre duplication formula, we find that
+      \begin{align*}
+        \frac{\G\left(s+\frac{k-1}{2}\right)}{(2\pi)^{s+\frac{k-1}{2}}} &= \frac{1}{(2\pi)^{s+\frac{k-1}{2}}2^{1-\left(s+\frac{k-1}{2}\right)}\sqrt{\pi}}\G\left(\frac{s+\frac{k-1}{2}}{2}\right)\G\left(\frac{s+\frac{k+1}{2}}{2}\right) \\
+        &= \frac{1}{2\pi^{s+\frac{1}{2}}}\G\left(\frac{s+\frac{k-1}{2}}{2}\right)\G\left(\frac{s+\frac{k+1}{2}}{2}\right) \\ 
+        &= \frac{1}{\sqrt{4\pi}}\pi^{-s}\G\left(\frac{s+\frac{k-1}{2}}{2}\right)\G\left(\frac{s+\frac{k+1}{2}}{2}\right).
+      \end{align*}
+      The constant factor in front is independent of $s$ and so can be canceled in the functional equation. Therefore we identify the gamma factor as
+      \[
+        \g(s,f) = \pi^{-s}\G\left(\frac{s+\frac{k-1}{2}}{2}\right)\G\left(\frac{s+\frac{k+1}{2}}{2}\right),
+      \]
+      with $\k_{1} = k-1$ and $\k_{2} = k+1$ the local roots at infinity. The conductor is $q(f) = N$, so the primes dividing the level ramify, and by the Ramanujan-Petersson conjecture for holomorphic forms, $\a_{1}(p) \neq 0$ and $\a_{2}(p) \neq 0$ for all primes $p \nmid N$. The completed $L$-function is
+      \[
+        \L(s,f) = N^{\frac{s}{2}}\pi^{-s}\G\left(\frac{s+\frac{k-1}{2}}{2}\right)\G\left(\frac{s+\frac{k+1}{2}}{2}\right)L(s,f),
+      \]
+      with functional equation
+      \[
+        \L(s,f) = \w_{N}(f)i^{k}\L(1-s,\conj{f}).
+      \]
+      This is the functional equation of $L(s,f)$. From it, the root number is $\e(f) = \w_{N}(f)i^{k}$ and we see that $L(s,f)$ has dual $L(s,\conj{f})$. We will now show that $L(s,f)$ is of order $1$. Since $L(s,f)$ has no poles, we do not need to clear any polar divisors. As the integrals in \cref{equ:integral_representation_holomorphic_final} are locally absolutely uniformly convergent, computing the order amounts to estimating the gamma factor. Since the reciprocal of the gamma function is of order $1$, we have
+      \[
+        \frac{1}{\g(s,f)} \ll_{\e} e^{|s|^{1+\e}}.
+      \]
+      So the reciprocal of the gamma factor is also of order $1$. Then
+      \[
+        L(s,f) \ll_{\e} e^{|s|^{1+\e}}.
+      \]
+      So $L(s,f)$ is of order $1$. We summarize all of our work into the following theorem:
+
+      \begin{theorem}\label{thm:primitive_Hecke_Selberg}
+        Let $f \in \mc{S}_{k}(N,\chi)$ be a primitive Hecke eigenform and for every prime $p$ let $\a_{1}(p)$ and $\a_{2}(p)$ be the $p$-th Hecke roots of $f$. Then $L(s,f)$ is a Selberg class $L$-function with degree $2$ Euler product given by 
+        \[
+          L(s,f) = \prod_{p}(1-\a_{1}(p)p^{-s})^{-1}(1-\a_{2}(p)p^{-s})^{-1}.
+        \]
+        Moreover, it admits analytic continuation to $\C$ and possesses the functional equation
+        \[
+          N^{\frac{s}{2}}\pi^{-s}\G\left(\frac{s+\frac{k-1}{2}}{2}\right)\G\left(\frac{s+\frac{k+1}{2}}{2}\right)L(s,f) = \L(s,f) = \w_{N}(f)i^{k}\L(1-s,\conj{f}).
+        \]
+      \end{theorem}
+    \subsection*{Beyond Primitivity}
+      We can still obtain analytic continuation of the $L$-series $L(s,f)$ if $f$ is not a primitive Hecke eigenform. Indeed, since the primitive Hecke eigenforms form a basis for the space of newforms, we can prove the following:
+
+      \begin{theorem}\label{thm:analytic_continuation_Hecke}
+        For any $f \in \mc{S}_{k}(\G_{1}(N))$, $L(s,f)$ is locally absolutely uniformly convergent for $\s > 1$ and admits analytic continuation to $\C$.
+      \end{theorem}
+      \begin{proof}
+        If $f$ is a newform, this follows from \cref{thm:newforms_characterization_holomorphic,thm:primitive_Hecke_Selberg}. We will prove the case for oldforms by induction. The base case is clear since if $N = 1$ there are no oldforms. So assume by induction that the claim holds for all proper divisors of $N$. As $f$ is an oldform, there is a proper divisor $d \mid N$ with $d > 1$ such that
+        \[
+          f(z) = g(z)+d^{k-1}h(dz) = g(z)+\prod_{p^{r} \mid\mid d}(V_{p}^{r}h)(z),
+        \]
+        for some $g,h \in \mc{S}_{k}\left(\G_{1}\left(\frac{N}{d}\right)\right)$. Note that $V_{p}h \in \mc{S}_{k}\left(\G_{1}\left(\frac{Np}{d}\right)\right)$ by \cref{lem:twisted_holomorphic_lemma}. Our induction hypothesis then implies that $L(s,g)$ and $L(s,V_{p}^{r}h)$, for all $p^{r} \mid\mid d$, admit analytic continuation to $\C$. Thus so does $L(s,f)$ which completes the proof.
+      \end{proof}
+  \section{Hecke-Maass \texorpdfstring{$L$}{L}-functions}
+    \subsection*{The Definition and Euler Product}
+      We will investigate the $L$-functions of weight zero Maass cusp forms. Let $f \in \mc{C}_{\nu}(N,\chi)$ and denote its Fourier-Whittaker series by
+      \[
+        f(z) = \sum_{n \ge 1}a_{f}(n)\left(\sqrt{y}K_{\nu}(2\pi ny)e^{2\pi inx}+\frac{a_{f}(-n)}{a_{f}(n)}\sqrt{y}K_{\nu}(2\pi ny)e^{-2\pi inx}\right),
+      \]
+      with $a_{f}(1) = 1$. Thus if $f$ is a Hecke eigenform then as $f$ is even or odd by \cref{prop:Hecke_Maass_eigenform_even_or_odd}, the Fourier-Whittaker series takes the form
+      \[
+        f(z) = \sum_{n \ge 1}a_{f}(n)\sqrt{y}K_{\nu}(2\pi ny)\SC(2\pi nx),
+      \]
+      and the $a_{f}(n)$ are the Hecke eigenvalues of $f$ normalized so that they are constant on average. The \textbf{Hecke-Maass $L$-series}\index{Hecke-Maass $L$-series} (respectively \textbf{Hecke-Maass $L$-function}\index{Hecke-Maass $L$-function} if it is an $L$-function) $L(s,f)$ of $f$ is defined by the following Dirichlet series:
+      \[
+        L(s,f) = \sum_{n \ge 1}\frac{a_{f}(n)}{n^{s}}.
+      \]
+      We will see that $L(s,f)$ is a Selberg class $L$-function if $f$ is a primitive Hecke-Maass eigenform. From now on, we make this assumption about $f$. The Ramanujan-Petersson conjecture for Maass forms is not know so $L(s,f)$ has not been proven to be a Selberg class $L$-function. As it is conjectured to be, throughout we will assume that the Ramanujan-Petersson conjecture for Maass forms holds. The Hecke relations and the Ramanujan-Petersson conjecture for Maass forms together imply that the coefficients $a_{f}(n)$ are multiplicative and satisfy $a_{f}(n) \ll_{\e} n^{\e}$. By \cref{prop:Dirichlet_series_Euler_product}, $L(s,f)$ is locally absolutely uniformly convergent for $\s > 1$ and admits the following infinite product expression:
+      \[
+        L(s,f) = \prod_{p}\left(\sum_{n \ge 0}\frac{a_{f}(p^{n})}{p^{ns}}\right).
+      \]
+      To determine the Euler product, the Hecke relations imply that the coefficients $a_{f}(n)$ satisfy
+      \begin{equation}\label{equ:primitive_Hecke_eigenform_recurrence_for_coefficients_of_Maass_L-function}
+        a_{f}(p^{n}) = \begin{cases} a_{f}(p^{n-1})a_{f}(p)-\chi(p)a_{f}(p^{n-2}) & \text{if $p \nmid N$}, \\ (a_{f}(p))^{n} & \text{if $p \mid N$}, \end{cases}
+      \end{equation}
+      for all primes $p$ and $n \ge 2$. We now simplify the factor inside the product using this \cref{equ:primitive_Hecke_eigenform_recurrence_for_coefficients_of_Maass_L-function}. On the one hand, if $p \nmid N$:
+      \begin{align*}
+        \sum_{n \ge 0}\frac{a_{f}(p^{n})}{p^{ns}} &= 1+\frac{a_{f}(p)}{p^{s}}+\sum_{n \ge 2}\frac{a_{f}(p^{n})}{p^{ns}} \\
+        &= 1+\frac{a_{f}(p)}{p^{s}}+\sum_{n \ge 2}\frac{a_{f}(p^{n-1})a_{f}(p)-\chi(p)a_{f}(p^{n-2})}{p^{ns}} \\
+        &= 1+\frac{a_{f}(p)}{p^{s}}+\frac{a_{f}(p)}{p^{s}}\sum_{n \ge 1}\frac{a_{f}(p^{n})}{p^{ns}}-\frac{\chi(p)}{p^{2s}}\sum_{n \ge 0}\frac{a_{f}(p^{n})}{p^{ns}} \\
+        &= 1+\left(\frac{a_{f}(p)}{p^{s}}-\frac{\chi(p)}{p^{2s}}\right)\sum_{n \ge 0}\frac{a_{f}(p^{n})}{p^{ns}}.
+      \end{align*}
+      By isolating the sum we find
+      \[
+        \sum_{n \ge 0}\frac{a_{f}(p^{n})}{p^{ns}} = \left(1-\frac{a_{f}(p)}{p^{s}}+\frac{\chi(p)}{p^{2s}}\right)^{-1}.
+      \]
+      On the other hand, if $p \mid N$ we have
+      \[
+        \sum_{n \ge 0}\frac{a_{f}(p^{n})}{p^{ns}} = \sum_{n \ge 0}\frac{(a_{f}(p))^{n}}{p^{ns}} = \left(1-a_{f}(p)p^{-s}\right)^{-1}.
+      \]
+      Therefore
+      \[
+        L(s,f) = \prod_{p \nmid N}(1-a_{f}(p)p^{-s}+\chi(p)p^{-2s})^{-1}\prod_{p \mid N}(1-a_{f}(p)p^{-s})^{-1}.
+      \]
+      Letting $\a_{1}(p)$ and $\a_{2}(p)$ be the $p$-th Hecke roots of $f$, we can express $L(s,f)$ as the following degree $2$ Euler product:
+      \[
+        L(s,f) = \prod_{p}(1-\a_{1}(p)p^{-s})^{-1}(1-\a_{2}(p)p^{-s})^{-1}.
+      \]
+      The local factor at $p$ is 
+      \[
+        L_{p}(s,f) = (1-\a_{1}(p)p^{-s})^{-1}(1-\a_{2}(p)p^{-s})^{-1},
+      \]
+      with local roots $\a_{1}(p)$ and $\a_{2}(p)$. Upon applying partial fraction decomposition to the local factor, we find
+      \[
+        \frac{1}{1-\a_{1}(p)p^{-s}}\frac{1}{1-\a_{2}(p)p^{-s}} = \frac{\frac{\a_{1}(p)}{\a_{1}(p)-\a_{2}(p)}}{1-\a_{1}(p)p^{-s}}+\frac{\frac{-\a_{2}(p)}{\a_{1}(p)-\a_{2}(p)}}{1-\a_{2}(p)p^{-s}}.
+      \]
+      Expanding both sides as series in $p^{-s}$, and comparing coefficients gives
+      \begin{equation}\label{equ:Hecke_Maass_L_function_coefficient_formula}
+        a_{f}(p^{n}) = \frac{\a_{1}(p)^{n+1}-\a_{2}(p)^{n+1}}{\a_{1}(p)-\a_{2}(p)}.
+      \end{equation}
+    \subsection*{The Integral Representation}
+      We want to find an integral representation for $L(s,f)$. Recall that $f$ is an eigenfunction for the parity Hecke operator $T_{-1}$ with eigenvalue $\pm 1$. Equivalently, $f$ is even if the eigenvalue is $1$ and odd if the eigenvalue is $-1$. The integral representation will depend upon this parity. To handle both cases simultaneously, let $\d_{f} = 0,1$ according to whether $f$ is even or odd. In other words,
+      \[
+        \d_{f} = \frac{1-a_{f}(-1)}{2}.
+      \]
+      Now consider the following Mellin transform:
+      \[
+        \int_{0}^{\infty}\left(\frac{\del}{\del x}^{\d_{f}}f\right)(iy)y^{s-\frac{1}{2}+\d_{f}}\,\frac{dy}{y}.
+      \]
+      As $f$ has exponential decay at the cusps, this integral is locally absolutely uniformly convergent for $\s > 1$ and hence defines an analytic function there. The derivative operator is present because $\SC(x) = i\sin(x)$ if $f$ is odd. In any case, the smoothness of $f$ implies that we may differentiate its Fourier-Whittaker series termwise to obtain
+      \[
+        \left(\frac{\del}{\del x}^{\d_{f}}f\right)(z) = \sum_{n \ge 1}a_{f}(n)(2\pi in)^{\d_{f}}\sqrt{y}K_{\nu}(2\pi ny)\cos(2\pi nx).
+      \]
+      Therefore regardless if $f$ is even or odd, the Fourier-Whittaker series of $\left(\frac{\del}{\del x}^{\d_{f}}f\right)(z)$ has $\SC(x) = \cos(x)$ and the integral does not vanish identically. Then we compute
+      \begin{align*}
+        \int_{0}^{\infty}\left(\frac{\del}{\del x}^{\d_{f}}f\right)(iy)y^{s-\frac{1}{2}+\d_{f}}\,\frac{dy}{y} &= \int_{0}^{\infty}\sum_{n \ge 1}a_{f}(n)(2\pi in)^{\d_{f}}K_{\nu}(2\pi ny)y^{s+\d_{f}}\,\frac{dy}{y} \\
+        &= \sum_{n \ge 1}a_{f}(n)(2\pi in)^{\d_{f}}\int_{0}^{\infty}K_{\nu}(2\pi ny)y^{s+\d_{f}}\,\frac{dy}{y} &&\text{FTT} \\
+        &= \sum_{n \ge 1}\frac{a_{f}(n)}{(2\pi)^{s}n^{s}}i^{\d_{f}}\int_{0}^{\infty}K_{\nu}(y)y^{s+\d_{f}}\,\frac{dy}{y} &&\text{$y \mapsto \frac{y}{2\pi n}$} \\
+        &= \frac{\G\left(\frac{s+\d_{f}+\nu}{2}\right)\G\left(\frac{s+\d_{f}-\nu}{2}\right)}{2^{2-\d_{f}}\pi^{s}(-i)^{\d_{f}}}\sum_{n \ge 1}\frac{a_{f}(n)}{n^{s}} && \text{\cref{append:Special_Integrals}} \\
+        &= \frac{\G\left(\frac{s+\d_{f}+\nu}{2}\right)\G\left(\frac{s+\d_{f}-\nu}{2}\right)}{2^{2-\d_{f}}\pi^{s}(-i)^{\d_{f}}}L(s,f).
+      \end{align*}
+      Rewriting, we have an integral representation
+      \begin{equation}\label{equ:integral_representation_Maass_1}
+        L(s,f) = \frac{2^{2-\d_{f}}\pi^{s}(-i)^{\d_{f}}}{\G\left(\frac{s+\d_{f}+\nu}{2}\right)\G\left(\frac{s+\d_{f}-\nu}{2}\right)}\int_{0}^{\infty}\left(\frac{\del}{\del x}^{\d_{f}}f\right)(iy)y^{s-\frac{1}{2}+\d_{f}}\,\frac{dy}{y}.
+      \end{equation}
+      Now split the integral on the right-hand side into two pieces by writing
+      \begin{equation}\label{equ:symmetric_integral_Maass_split}
+        \int_{0}^{\infty}\left(\frac{\del}{\del x}^{\d_{f}}f\right)(iy)y^{s-\frac{1}{2}+\d_{f}}\,\frac{dy}{y} = \int_{0}^{\frac{1}{\sqrt{N}}}\left(\frac{\del}{\del x}^{\d_{f}}f\right)(iy)y^{s-\frac{1}{2}+\d_{f}}\,\frac{dy}{y}+\int_{\frac{1}{\sqrt{N}}}^{\infty}\left(\frac{\del}{\del x}^{\d_{f}}f\right)(iy)y^{s-\frac{1}{2}+\d_{f}}\,\frac{dy}{y}.
+      \end{equation}
+      Now we will rewrite the first piece in the same form and symmetrize the result as much as possible. Performing the change of variables $y \mapsto \frac{1}{Ny}$ to the first piece to obtain
+      \[
+        \int_{\frac{1}{\sqrt{N}}}^{\infty}\left(\frac{\del}{\del x}^{\d_{f}}f\right)\left(\frac{i}{Ny}\right)(Ny)^{-s+\frac{1}{2}-\d_{f}}\,\frac{dy}{y}.
+      \]
+      We will rewrite this in terms of the Atkin-Lehner operator. But first we require an identity that relates $\frac{\del}{\del x}^{\d_{f}}$ with the Atkin-Lehner operator $\w_{N}$. By the identity theorem it suffices verify this for $z \in \H$ with $|z|$ fixed. Observe that $-\frac{1}{Nz} = \frac{-x}{N|z|^{2}}+\frac{iy}{N|z|^{2}}$. Now differentiate termwise to see that
+      \begin{align*}
+        \left(\frac{\del}{\del x}^{\d_{f}}\w_{N}f\right)(z) &= \left(\frac{\del}{\del x}^{\d_{f}}\right)f\left(-\frac{1}{Nz}\right) \\
+         &= \left(\frac{\del}{\del x}^{\d_{f}}\right)\sum_{n \ge 1}a_{f}(n)\sqrt{\frac{y}{N|z|^{2}}}K_{\nu}(2\pi ny)\SC\left(-2\pi n\frac{x}{N|z|^{2}}\right) \\
+        &= (-N|z|^{2})^{-\d_{f}}\sum_{n \ge 1}a_{f}(n)(2\pi in)^{\d_{f}}\sqrt{\frac{y}{N|z|^{2}}}K_{\nu}\left(2\pi n\frac{y}{N|z|^{2}}\right)\cos\left(-2\pi n\frac{x}{N|z|^{2}}\right) \\
+        &= (-N|z|^{2})^{-\d_{f}}\left(\frac{\del}{\del x}^{\d_{f}}f\right)\left(-\frac{1}{Nz}\right).
+      \end{align*}
+      By the identity theorem, we have
+      \[
+        \left(\frac{\del}{\del x}^{\d_{f}}f\right)\left(-\frac{1}{Nz}\right) = (-N|z|^{2})^{\d_{f}}\left(\frac{\del}{\del x}^{\d_{f}}\w_{N}f\right)(z),
+      \]
+      Using this identity, rewriting in terms of the Atkin-Lehner operator, and recalling that $\w_{N}f = \w_{N}(f)\conj{f}$ by \cref{prop:Atkin_Lehner_conjugation_Maass}, we have
+      \begin{align*}
+        \int_{\frac{1}{\sqrt{N}}}^{\infty}\left(\frac{\del}{\del x}^{\d_{f}}f\right)\left(\frac{i}{Ny}\right)(Ny)^{-s+\frac{1}{2}-\d_{f}}\,\frac{dy}{y} &= \int_{\frac{1}{\sqrt{N}}}^{\infty}\left(\frac{\del}{\del x}^{\d_{f}}f\right)\left(-\frac{1}{iNy}\right)(Ny)^{-s+\frac{1}{2}-\d_{f}}\,\frac{dy}{y} \\
+        &= \int_{\frac{1}{\sqrt{N}}}^{\infty}(-Ny^{2})^{\d_{f}}\left(\left(\frac{\del}{\del x}^{\d_{f}}\right)\w_{N}f\right)(iy)(Ny)^{-s+\frac{1}{2}-\d_{f}}\,\frac{dy}{y} \\
+        &= \int_{\frac{1}{\sqrt{N}}}^{\infty}(-Ny^{2})^{\d_{f}}\w_{N}(f)\left(\left(\frac{\del}{\del x}^{\d_{f}}\right)\conj{f}\right)(iy)(Ny)^{-s+\frac{1}{2}-\d_{f}}\,\frac{dy}{y} \\
+        &= w_{N}(f)(-1)^{\d_{f}}N^{\frac{1}{2}-s}\int_{\frac{1}{\sqrt{N}}}^{\infty}\left(\left(\frac{\del}{\del x}^{\d_{f}}\right)\conj{f}\right)(iy)y^{(1-s)-\frac{1}{2}+\d_{f}}\,\frac{dy}{y}.
+      \end{align*}
+      Substituting this result back into \cref{equ:symmetric_integral_Maass_split} and combining with \cref{equ:integral_representation_Maass_1} gives the integral representation
+      \begin{equation}\label{equ:integral_representation_Maass_final}
+        \begin{aligned}
+          L(s,f) &= \frac{2^{2-\d_{f}}\pi^{s}(-i)^{\d_{f}}}{\G\left(\frac{s+\d_{f}+\nu}{2}\right)\G\left(\frac{s+\d_{f}-\nu}{2}\right)}\Bigg[w_{N}(f)(-1)^{\d_{f}}N^{\frac{1}{2}-s}\int_{\frac{1}{\sqrt{N}}}^{\infty}\left(\left(\frac{\del}{\del x}^{\d_{f}}\right)\conj{f}\right)(iy)y^{(1-s)-\frac{1}{2}+\d_{f}}\,\frac{dy}{y} \\
+          &+ \int_{\frac{1}{\sqrt{N}}}^{\infty}\left(\frac{\del}{\del x}^{\d_{f}}f\right)(iy)y^{s-\frac{1}{2}+\d_{f}}\,\frac{dy}{y}\Bigg].
+        \end{aligned}
+      \end{equation}
+      This integral representation will give analytic continuation. To see this, note that everything outside the brackets is entire. The integrands exhibit exponential decay and therefore the integrals are locally absolutely uniformly convergent on $\C$. Hence we have analytic continuation to all of $\C$. In particular, $L(s,f)$ has no poles.
+    \subsection*{The Functional Equation}
+      An immediate consequence of applying the symmetry $s \mapsto 1-s$ to \cref{equ:integral_representation_Maass_final} is the following functional equation:
+      \[
+        N^{\frac{s}{2}}\frac{\G\left(\frac{s+\d_{f}+\nu}{2}\right)\G\left(\frac{s+\d_{f}-\nu}{2}\right)}{2^{2-\d_{f}}\pi^{s}(-i)^{\d_{f}}}L(s,f) = \w_{N}(f)(-1)^{\d_{f}}N^{\frac{1-s}{2}}\frac{\G\left(\frac{(1-s)+\d_{f}+\nu}{2}\right)\G\left(\frac{(1-s)+\d_{f}-\nu}{2}\right)}{2^{2-\d_{f}}\pi^{1-s}(-i)^{\d_{f}}}L(1-s,\conj{f}).
+      \]
+      The constant factor in the denominator is independent of $s$ and so can be canceled in the functional equation. Therefore we identify the gamma factor as
+      \[
+        \g(s,f) = \pi^{-s}\G\left(\frac{s+\d_{f}+\nu}{2}\right)\G\left(\frac{s+\d_{f}-\nu}{2}\right),
+      \]
+      with $\k_{1} = \d_{f}+\nu$ and $\k_{2} = \d_{f}-\nu$ the local roots at infinity (these are conjugates because $\nu$ is either purely imaginary of real). The conductor is $q(f) = N$, so the primes dividing the level ramify, and by the Ramanujan-Petersson conjecture for Maass forms, $\a_{1}(p) \neq 0$ and $\a_{2}(p) \neq 0$  for all primes $p \nmid N$. The completed $L$-function is
+      \[
+        \L(s,f) = N^{\frac{s}{2}}\pi^{-s}\G\left(\frac{s+\d_{f}+\nu}{2}\right)\G\left(\frac{s+\d_{f}-\nu}{2}\right)L(s,f),
+      \]
+      with functional equation
+      \[
+        \L(s,f) = \w_{N}(f)(-1)^{\d_{f}}\L(1-s,\conj{f}).
+      \]
+      This is the functional equation of $L(s,f)$. From it, the root number is $\e(f) = \w_{N}(f)(-1)^{\d_{f}}$ and we see that $L(s,f)$ has dual $L(s,\conj{f})$. We will now show that $L(s,f)$ is of order $1$. Since $L(s,f)$ has no poles, we do not need to clear any polar divisors. As the integrals in \cref{equ:integral_representation_Maass_final} are locally absolutely uniformly convergent, computing the order amounts to estimating the gamma factor. Since the reciprocal of the gamma function is of order $1$, we have
+      \[
+        \frac{1}{\g(s,f)} \ll_{\e} e^{|s|^{1+\e}}.
+      \]
+      So the reciprocal of the gamma factor is also of order $1$. Then
+      \[
+        L(s,f) \ll_{\e} e^{|s|^{1+\e}}.
+      \]
+      So $L(s,f)$ is of order $1$. We summarize all of our work into the following theorem:
+
+      \begin{theorem}\label{equ:thm:primitive_Hecke-Maass_Selberg}
+        For any primitive Hecke-Maass eigenform Let $f \in \mc{C}_{\nu}(N,\chi)$ be a primitive Hecke-Maass eigenform and for every prime $p$ let $\a_{1}(p)$ and $\a_{2}(p)$ be the $p$-th Hecke roots of $f$. Then $L(s,f)$ is a Selberg class $L$-function, provided the Ramanujan-Petersson conjecture for Maass forms holds, with degree $2$ Euler product given by 
+        \[
+          L(s,f) = \prod_{p}(1-\a_{1}(p)p^{-s})^{-1}(1-\a_{2}(p)p^{-s})^{-1}.
+        \]
+        Moreover, it admits analytic continuation to $\C$ and possesses the functional equation
+        \[
+          N^{\frac{s}{2}}\pi^{-s}\G\left(\frac{s+\d_{f}+\nu}{2}\right)\G\left(\frac{s+\d_{f}-\nu}{2}\right)L(s,f) = \L(s,f) = \w_{N}(f)(-1)^{\d_{f}}\L(1-s,\conj{f}).
+        \]
+      \end{theorem}
+    \subsection*{Beyond Primitivity}
+      We can still obtain analytic continuation of the $L$-series $L(s,f)$ if $f$ is not a primitive Hecke-Maass eigenform. Similarly to the Hecke $L$-function case, this holds because the primitive Hecke-Maass eigenforms form a basis for the space of newforms:
+
+      \begin{theorem}\label{thm:analytic_continuation_Hecke-Maass}
+        For any $f \in \mc{C}_{\nu}(\G_{1}(N))$, $L(s,f)$ is locally absolutely uniformly convergent for $\s > 1$ and admits analytic continuation to $\C$ provided the Ramanujan-Petersson conjecture for Maass forms holds.
+      \end{theorem}
+      \begin{proof}
+        Argue as in the proof of \cref{thm:analytic_continuation_Hecke}.
+      \end{proof}
+  \section{The Rankin-Selberg Method}
+    \subsection*{The Definition and Euler Product}
+      The Rankin-Selberg method is a process by which we can construct new $L$-functions from old ones. Instead of giving the general definition outright, we first provide a full discussion of the method only in the simplest case. Many technical difficulties arise in the fully general setting. Let $f,g \in \mc{S}_{k}(1)$ be primitive Hecke eigenforms with Fourier series
+      \[
+        f(z) = \sum_{n \ge 1}a_{f}(n)n^{\frac{k-1}{2}}e^{2\pi inz} \quad \text{and} \quad g(z) = \sum_{n \ge 1}a_{g}(n)n^{\frac{k-1}{2}}e^{2\pi inz}.
+      \]
+      The $L$-series $L(s,f \x g)$ of $f$ and $g$ is defined by
+      \[
+        L(s,f \x g) = \sum_{n \ge 1}\frac{a_{f \x g}(n)}{n^{s}} = \sum_{n \ge 1}\frac{a_{f}(n)\conj{a_{g}(n)}}{n^{s}} = \sum_{n \ge 1}\frac{a_{f}(n)\conj{a_{g}(n)}}{n^{s}}.
+      \]
+      The \textbf{Rankin-Selberg convolution}\index{Rankin-Selberg convolution} $L(s,f \ox g)$ of $f$ and $g$ is defined by
+      \[
+        L(s,f \ox g) = \sum_{n \ge 1}\frac{a_{f \ox g}(n)}{n^{s}} = \z(2s)L(s,f \x g),
+      \]
+      where $a_{f \ox g}(n) = \sum_{n = m\ell^{2}}a_{f}(m)\conj{a_{g}(m)}$. Our primary aim will be to show that $L(s,f \ox g)$ is the Rankin-Selberg convolution of $L(s,f)$ and $L(s,g)$ and is a Selberg class $L$-function. Since $a_{f}(n)$ and $a_{g}(n)$ are both multiplicative so is $a_{f \ox g}(n)$. Moreover, $a_{f \ox g}(n) \ll_{\e} n^{\e}$ because $a_{f}(n) \ll_{\e} n^{\e}$ and $a_{g}(n) \ll_{\e} n^{\e}$. It follows from \cref{prop:Dirichlet_series_Euler_product} that $L(s,f \ox g)$ is locally absolutely uniformly convergent for $\s > 1$ and admits the following infinite product expression:
+      \[
+        L(s,f \ox g) = \z(2s)L(s,f \x g) = \prod_{p}(1-p^{-2s})^{-1}\prod_{p}\left(\sum_{n \ge 0}\frac{a_{f}(p^{n})\conj{a_{g}(p^{n})}}{p^{ns}}\right).
+      \]
+      Now let $\a_{1}(p)$ and $\a_{2}(p)$ be the $p$-th Hecke roots of $f$ while $\b_{1}(p)$ and $\b_{2}(p)$ are the $p$-th Hecke roots of $g$. We will simplify the factor inside the latter product using \cref{equ:Hecke_L_function_coefficient_formula}:
+      \begingroup
+      \allowdisplaybreaks
+          \begin{align*}
+            \sum_{n \ge 0}\frac{a_{f}(p^{n})\conj{a_{g}(p^{n})}}{p^{ns}} &= \sum_{n \ge 0}\left(\frac{\a_{1}(p)^{n+1}-\a_{2}(p)^{n+1}}{\a_{1}(p)-\a_{2}(p)}\right)\left(\frac{(\conj{\b_{1}(p)})^{n+1}-(\conj{\b_{2}(p)})^{n+1}}{\conj{\b_{1}(p)}-\conj{\b_{2}(p)}}\right)p^{-ns} \\
+            &= (\a_{1}(p)-\a_{2}(p))^{-1}\left(\conj{\b_{1}(p)}-\conj{\b_{2}(p)}\right)^{-1} \\
+            &\cdot \bigg[\sum_{n \ge 1}\frac{\a_{1}(p)^{n}(\conj{\b_{1}(p)})^{n}}{p^{(n-1)s}}+\frac{\a_{2}(p)^{n}(\conj{\b_{2}(p)})^{n}}{p^{(n-1)s}}-\frac{\a_{1}(p)^{n}(\conj{\b_{2}(p)})^{n}}{p^{(n-1)s}}-\frac{\a_{2}(p)^{n}(\conj{\b_{1}(p)})^{n}}{p^{(n-1)s}}\bigg] \\
+            &= (\a_{1}(p)-\a_{2}(p))^{-1}\left(\conj{\b_{1}(p)}-\conj{\b_{2}(p)}\right)^{-1}\bigg[\a_{1}(p)\conj{\b_{1}(p)}\left(1-\a_{1}(p)\conj{\b_{1}(p)}p^{-s}\right)^{-1} \\
+            &+\a_{2}(p)\conj{\b_{2}(p)}\left(1-\a_{2}(p)\conj{\b_{2}(p)}p^{-s}\right)^{-1}-\a_{1}(p)\conj{\b_{2}(p)}\left(1-\a_{1}(p)\conj{\b_{2}(p)}p^{-s}\right)^{-1} \\
+            &-\a_{2}(p)\conj{\b_{1}(p)}\left(1-\a_{2}(p)\conj{\b_{1}(p)}p^{-s}\right)^{-1}\bigg] \\
+            &= (\a_{1}(p)-\a_{2}(p))^{-1}\left(\conj{\b_{1}(p)}-\conj{\b_{2}(p)}\right)^{-1}\left(1-\a_{1}(p)\conj{\b_{1}(p)}p^{-s}\right)^{-1} \\
+            &\cdot\left(1-\a_{2}(p)\conj{\b_{2}(p)}p^{-s}\right)^{-1}\left(1-\a_{1}(p)\conj{\b_{2}(p)}p^{-s}\right)^{-1}\left(1-\a_{2}(p)\conj{\b_{1}(p)}p^{-s}\right)^{-1} \\
+            &\cdot\bigg[\a_{1}(p)\conj{\b_{1}(p)}\left(1-\a_{2}(p)\conj{\b_{2}(p)}p^{-s}\right)\left(1-\a_{1}(p)\conj{\b_{2}(p)}p^{-s}\right)\left(1-\a_{2}(p)\conj{\b_{1}(p)}p^{-s}\right) \\
+            &+\a_{2}(p)\conj{\b_{2}(p)}\left(1-\a_{1}(p)\conj{\b_{1}(p)}p^{-s}\right)\left(1-\a_{1}(p)\conj{\b_{2}(p)}p^{-s}\right)\left(1-\a_{2}(p)\conj{\b_{1}(p)}p^{-s}\right) \\
+            &-\a_{1}(p)\conj{\b_{2}(p)}\left(1-\a_{1}(p)\conj{\b_{1}(p)}p^{-s}\right)\left(1-\a_{2}(p)\conj{\b_{2}(p)}p^{-s}\right)\left(1-\a_{2}(p)\conj{\b_{1}(p)}p^{-s}\right) \\
+            &-\a_{2}(p)\conj{\b_{1}(p)}\left(1-\a_{1}(p)\conj{\b_{1}(p)}p^{-s}\right)\left(1-\a_{2}(p)\conj{\b_{2}(p)}p^{-s}\right)\left(1-\a_{1}(p)\conj{\b_{2}(p)}p^{-s}\right)\bigg].
+          \end{align*}
+      \endgroup
+      The term in the brackets simplifies to
+      \[
+        \left(1-\a_{1}(p)\a_{2}(p)\conj{\b_{1}(p)}\conj{\b_{2}(p)}p^{-2s}\right)(\a_{1}(p)-\a_{2}(p))\left(\conj{\b_{1}(p)}-\conj{\b_{2}(p)}\right),
+      \]
+      because all of the other terms are annihilated by symmetry in $\a_{1}(p)$, $\a_{2}(p)$, $\conj{\b_{1}(p)}$, and $\conj{\b_{2}(p)}$. The Ramanujan-Petersson conjecture for holomorphic forms implies $\a_{1}(p)\a_{2}(p)\conj{\b_{1}(p)}\conj{\b_{2}(p)} = 1$. Therefore the corresponding factor above is $(1-p^{-2s})$. This factor cancels the local factor at $p$ in the Euler product of $\z(2s)$, so that
+      \[
+        \sum_{n \ge 0}\frac{a_{f}(p^{n})\conj{a_{g}(p^{n})}}{p^{ns}} = \prod_{1 \le j,\ell \le 2}\left(1-\a_{j}(p)\conj{\b_{\ell}(p)}p^{-s}\right)^{-1}.
+      \]
+      Hence we have the following degree $4$ Euler product:
+      \[
+        L(s,f \ox g) = \prod_{p}\prod_{1 \le j,\ell \le 2}\left(1-\a_{j}(p)\conj{\b_{\ell}(p)}p^{-s}\right)^{-1}.
+      \]
+      The local factor at $p$ is 
+      \[
+        L_{p}(s,f \ox g) = \prod_{1 \le j,\ell \le 2}\left(1-\a_{j}(p)\conj{\b_{\ell}(p)}p^{-s}\right)^{-1},
+      \]
+      with local roots $\a_{j}(p)\conj{\b_{\ell}(p)}$.
+    \subsection*{The Integral Representation: Part I}
+      We now look for an integral representation for $L(s,f \ox g)$. Consider the following integral:
+      \[
+        \int_{\G_{\infty}\backslash\H}f(z)\conj{g(z)}\Im(z)^{s+k}\,d\mu.
+      \]
+      This will turn out to be a Mellin transform as we will soon see. Since $f$ and $g$ have exponential decay, this integral is locally absolutely uniformly convergent for $\s > 1$ and hence defines an analytic function there. We have
+      \begin{align*}
+        \int_{\G_{\infty}\backslash\H}f(z)\conj{g(z)}\Im(z)^{s+k}\,d\mu &= \int_{0}^{\infty}\int_{0}^{1}f(x+iy)\conj{g(x+iy)}y^{s+k}\,\frac{dx\,dy}{y^{2}} \\
+        &= \int_{0}^{\infty}\int_{0}^{1}\sum_{n,m \ge 1}a_{f}(n)\conj{a_{g}(m)}(nm)^{\frac{k-1}{2}}e^{2\pi i(n-m)x}e^{-2\pi(n+m)y}y^{s+k}\,\frac{dx\,dy}{y^{2}} \\
+        &= \int_{0}^{\infty}\sum_{n,m \ge 1}\int_{0}^{1}a_{f}(n)\conj{a_{g}(m)}(nm)^{\frac{k-1}{2}}e^{2\pi i(n-m)x}e^{-2\pi(n+m)y}y^{s+k}\,\frac{dx\,dy}{y^{2}} && \text{FTT} \\
+        &= \int_{0}^{\infty}\sum_{n \ge 1}a_{f}(n)\conj{a_{g}(n)}n^{k-1}e^{-4\pi ny}y^{s+k}\,\frac{dy}{y^{2}},
+      \end{align*}
+      where the last line follows by \cref{equ:Dirac_integral_representation}. Observe that this last integral is a Mellin transform. The rest is a computation:
+      \begin{align*}
+        \int_{0}^{\infty}\sum_{n \ge 1}a_{f}(n)\conj{a_{g}(n)}n^{k-1}e^{-4\pi ny}y^{s+k}\,\frac{dy}{y^{2}} &= \sum_{n \ge 1}a_{f}(n)\conj{a_{g}(n)}n^{k-1}\int_{0}^{\infty}e^{-4\pi ny}y^{s+k}\,\frac{dy}{y^{2}} &&\text{FTT} \\
+        &= \sum_{n \ge 1}\frac{a_{f}(n)\conj{a_{g}(n)}}{(4\pi)^{s+k-1}n^{s}}\int_{0}^{\infty}e^{-y}y^{s+k-1}\,\frac{dy}{y} &&\text{$y \mapsto \frac{y}{4\pi n}$} \\
+        &= \frac{\G\left(s+k-1\right)}{(4\pi)^{s+k-1}}\sum_{n \ge 1}\frac{a_{f}(n)\conj{a_{g}(n)}}{n^{s}} \\
+        &= \frac{\G\left(s+k-1\right)}{(4\pi)^{s+k-1}}L(s,f \x g).
+      \end{align*}
+      Rewriting, we have an integral representation
+      \[
+        L(s,f \x g) = \frac{(4\pi)^{s+k-1}}{\G(s+k-1)}\int_{\G_{\infty}\backslash\H}f(z)\conj{g(z)}\Im(z)^{s+k}\,d\mu.
+      \]
+      We rewrite the integral as follows:
+      \begin{align*}
+        \int_{\G_{\infty}\backslash\H}f(z)\conj{g(z)}\Im(z)^{s+k}\,d\mu &= \int_{\mc{F}}\sum_{\g \in \GG}f(\g z)\conj{g(\g z)}\Im(\g z)^{s+k}\,d\mu && \text{folding} \\
+        &= \int_{\mc{F}}\sum_{\g \in \GG}j(\g,z)^{k}\conj{j(\g,z)^{k}}f(z)\conj{g(z)}\Im(\g z)^{s+k}\,d\mu && \text{modularity} \\
+        &= \int_{\mc{F}}f(z)\conj{g(z)}\sum_{\g \in \GG}|j(\g,z)|^{2k}\Im(\g z)^{s+k}\,d\mu \\
+        &= \int_{\mc{F}}f(z)\conj{g(z)}\Im(z)^{k}\sum_{\g \in \GG}\Im(\g z)^{s}\,d\mu \\
+        &= \int_{\mc{F}}f(z)\conj{g(z)}\Im(z)^{k}E(z,s)\,d\mu.
+      \end{align*}
+      Note that $E(z,s)$ is the weight zero Eisenstein series on $\G_{1}(1)\backslash\H$ at the $\infty$ cusp. Altogether, this gives the integral representation
+      \begin{equation}\label{equ:Rankin-Selberg_integral-reresentation}
+        L(s,f \x g) =  \frac{(4\pi)^{s+k-1}}{\G(s+k-1)}\int_{\mc{F}}f(z)\conj{g(z)}\Im(z)^{k}E(z,s)\,d\mu.
+      \end{equation}
+      We cannot investigate the integral any further until we understand the Fourier-Whittaker series of $E(z,s)$ and obtain a functional equation. Therefore we will take a necessary detour and return to the integral after.
+    \subsection*{Explicit Fourier-Whittaker Series of Eisenstein Series}
+      We will compute the Fourier-Whittaker series of $E(z,s)$. To do this we will need the following technical lemma:
+
+      \begin{lemma}\label{lem:Ramanujan_zeta_relation}
+        For $\s > 1$ and $b \in \Z$,
+        \[
+          \sum_{m \ge 1}\frac{r(b,m)}{m^{2s}} = \begin{cases} \frac{\z(2s-1)}{\z(2s)} & \text{if $b = 0$}, \\ \frac{\s_{1-2s}(b)}{\z(2s)} & \text{if $b \neq 0$}. \end{cases}
+        \]
+      \end{lemma}
+      \begin{proof}
+        If $\s > 1$ then the desired evaluation of the sum is locally absolutely uniformly convergent because the Riemann zeta function is in that region. Hence the sum will be too provided we prove the identity. Suppose $b = 0$. Then $r(0,m) = \vphi(m)$. Since $\vphi(m)$ is multiplicative we have
+        \begin{equation}\label{equ:Ramanujan_zeta_relation_1}
+          \sum_{m \ge 1}\frac{\vphi(m)}{m^{2s}} = \prod_{p}\left(\sum_{k \ge 0}\frac{\vphi(p^{k})}{p^{k(2s)}}\right).
+        \end{equation}
+        Recalling that $\vphi(p^{k}) = p^{k}-p^{k-1}$ for $k \ge 1$, make the following computation:
+        \begin{equation}\label{equ:Ramanujan_zeta_relation_2}
+          \begin{aligned}
+            \sum_{k \ge 0}\frac{\vphi(p^{k})}{p^{k(2s)}} &= 1+\sum_{k \ge 1}\frac{p^{k}-p^{k-1}}{p^{k(2s)}} \\
+            &= \sum_{k \ge 0}\frac{1}{p^{k(2s-1)}}-\frac{1}{p}\sum_{k \ge 1}\frac{1}{p^{k(2s-1)}} \\
+            &= \sum_{k \ge 0}\frac{1}{p^{k(2s-1)}}-p^{-2s}\sum_{k \ge 0}\frac{1}{p^{k(2s-1)}} \\
+            &= (1-p^{-2s})\sum_{k \ge 0}\frac{1}{p^{k(2s-1)}} \\
+            &= \frac{1-p^{-2s}}{1-p^{-(2s-1)}}.
+          \end{aligned}
+        \end{equation}
+        Combining \cref{equ:Ramanujan_zeta_relation_1,equ:Ramanujan_zeta_relation_2} gives
+        \[
+          \sum_{m \ge 1}\frac{\vphi(m)}{m^{2s}} = \frac{\z(2s-1)}{\z(2s)}.
+        \]
+        Now suppose $b \neq 0$, \cref{prop:Ramanujan_sum_evaluation} gives the first equality in the following chain:
+        \begin{align*}
+          \sum_{m \ge 1}\frac{r(b,m)}{m^{2s}} &= \sum_{m \ge 1}m^{-2s}\sum_{\ell \mid (b,m)}\ell\mu\left(\frac{m}{\ell}\right) \\
+          &= \sum_{\ell \mid b}\ell\sum_{m \ge 1}\frac{\mu(m)}{(m\ell)^{2s}} \\
+          &= \left(\sum_{\ell \mid b}\ell^{1-2s}\right)\left(\sum_{m \ge 1}\frac{\mu(m)}{m^{2s}}\right) \\
+          &= \s_{1-2s}(b)\sum_{m \ge 1}\frac{\mu(m)}{m^{2s}} \\
+          &= \frac{\s_{1-2s}(b)}{\z(2s)} && \text{\cref{prop:Dirichlet_Mobius_is_zeta_inverse}}.
+        \end{align*}
+      \end{proof}
+
+      We can now compute the Fourier-Whittaker series of $E(z,s)$:
+
+      \begin{proposition}\label{prop:Fourier_coefficients_of_real-analytic_Eisenstein_series}
+        The Fourier-Whittaker series of $E(z,s)$ is given by
+        \[
+          E(z,s) = y^{s}+y^{1-s}\frac{\sqrt{\pi}\G\left(s-\frac{1}{2}\right)\z(2s-1)}{\G(s)\z(2s)}+\sum_{t \ge 1}\left(\frac{2\pi^{s}|t|^{s-\frac{1}{2}}\s_{1-2s}(t)}{\G(s)\z(2s)}\sqrt{y}K_{s-\frac{1}{2}}(2\pi|t|y)\right)e^{2\pi itx}.
+        \]
+      \end{proposition}
+      \begin{proof}
+        Fix $s$ with $\s > 1$. By the Bruhat decomposition for $\G_{1}(1)$ and \cref{rem:Bruhat_modulo_infity_exact}, we have
+        \[
+          E(z,s) = \Im(z)^{s}+\sum_{\substack{c \ge 1, d \in \Z \\ (c,d) = 1}}\frac{\Im(z)^{s}}{|cz+d|^{2s}}.
+        \]
+        Summing over all pairs $(c,d) \in \Z^{2}-\{\mathbf{0}\}$ with $c \ge 1$, $d \in \Z$, and $(c,d) = 1$ is the same as summing over all triples $(c,\ell,r)$ with $c \ge 1$, $\ell \in \Z$, $r$ taken modulo $c$, and $(r,c) = 1$. This is seen by writing $d = c\ell+r$. Therefore
+        \[
+          \sum_{\substack{c \ge 1, d \in \Z \\ (c,d) = 1}}\frac{\Im(z)^{s}}{|cx+icy+d|^{2s}} = \sum_{(c,\ell,r)}\frac{\Im(z)^{s}}{|cz+c\ell+r|^{2s}} = \psum_{\substack{c \ge 1 \\ r \tmod{c}}}\sum_{\ell \in \Z}\frac{\Im(z)^{s}}{|cz+c\ell+r|^{2s}}.
+        \]
+         where on the right-hand side it is understood that we are summing over all triples $(c,\ell,r)$ with the prescribed properties. Now let
+        \[
+          I_{c,r}(z,s) = \sum_{\ell \in \Z}\frac{\Im(z)^{s}}{|cz+c\ell+r|^{2s}}.
+        \]
+        We apply the Poisson summation formula to $I_{c,r}(z,s)$. By the identity theorem it suffices to apply the Poisson summation formula for $z = iy$ with $y > 0$. So let $f(x)$ be given by
+        \[
+          f(x) = \frac{y^{s}}{|cx+r+icy|^{2s}}.
+        \]
+        Then $f(x)$ is absolutely integrable on $\R$ because it exhibits polynomial decay of order $\s > 1$. We compute the Fourier transform
+        \begin{align*}
+          (\mc{F}f)(t) &= \int_{-\infty}^{\infty}f(x)e^{-2\pi itx}\,dx \\
+          &= \int_{-\infty}^{\infty}\frac{y^{s}}{|cx+r+icy|^{2s}}e^{-2\pi itx}\,dx \\
+          &= \int_{-\infty}^{\infty}\frac{y^{s}}{((cx+r)^{2}+(cy)^{2})^{s}}e^{-2\pi itx}\,dx \\
+          &= e^{2\pi it\frac{r}{c}}\int_{-\infty}^{\infty}\frac{y^{s}}{((cx)^{2}+(cy)^{2})^{s}}e^{-2\pi itx}\,dx && \text{$x \mapsto x-\frac{r}{c}$} \\
+          &= \frac{e^{2\pi it\frac{r}{c}}}{c^{2s}}\int_{-\infty}^{\infty}\frac{y^{s}}{(x^{2}+y^{2})^{s}}e^{-2\pi itx}\,dx \\
+          &= \frac{e^{2\pi it\frac{r}{c}}}{c^{2s}}\int_{-\infty}^{\infty}\frac{y^{s+1}}{((xy)^{2}+y^{2})^{s}}e^{-2\pi itxy}\,dx && \text{$x \mapsto xy$} \\
+          &= \frac{e^{2\pi it\frac{r}{c}}}{c^{2s}}\int_{-\infty}^{\infty}\frac{y^{1-s}}{(x^{2}+1)^{s}}e^{-2\pi itxy}\,dx.
+        \end{align*}
+        Appealing to \cref{append:Special_Integrals} to compute this latter integral, we see that
+        \[
+          (\mc{F}f)(t) = \begin{cases} \frac{y^{1-s}}{c^{2s}}\frac{\sqrt{\pi}\G\left(s-\frac{1}{2}\right)}{\G(s)} & \text{if $t = 0$}, \\ \frac{e^{2\pi it\frac{r}{c}}}{c^{2s}}\frac{2\pi^{s}|t|^{s-\frac{1}{2}}}{\G(s)}\sqrt{y}K_{s-\frac{1}{2}}(2\pi|t|y) & \text{if $t \neq 0$}. \end{cases}
+        \]
+        By the Poisson summation formula and the identity theorem, we have
+        \[
+          I_{c,r}(z,s) = \frac{y^{1-s}}{c^{2s}}\frac{\sqrt{\pi}\G\left(s-\frac{1}{2}\right)}{\G(s)}+\sum_{t \neq 0}\left(\frac{e^{2\pi it\frac{r}{c}}}{c^{2s}}\frac{2\pi^{s}|t|^{s-\frac{1}{2}}}{\G(s)}\sqrt{y}K_{s-\frac{1}{2}}(2\pi|t|y)\right)e^{2\pi itx}.
+        \]
+        Substituting this back into the Eisenstein series gives a form of the Fourier-Whittaker series:
+      \begin{align*}
+        E(z,s) &= y^{s}+\psum_{\substack{c \ge 1 \\ r \tmod{c}}}\left(\frac{y^{1-s}}{c^{2s}}\frac{\sqrt{\pi}\G\left(s-\frac{1}{2}\right)}{\G(s)}+\sum_{t \ge 1}\left(\frac{e^{2\pi it\frac{r}{c}}}{c^{2s}}\frac{2\pi^{s}|t|^{s-\frac{1}{2}}}{\G(s)}\sqrt{y}K_{s-\frac{1}{2}}(2\pi|t|y)\right)e^{2\pi itx}\right) \\
+        &= y^{s}+y^{1-s}\psum_{\substack{c \ge 1 \\ r \tmod{c}}}\frac{1}{c^{2s}}\frac{\sqrt{\pi}\G\left(s-\frac{1}{2}\right)}{\G(s)}+\sum_{t \ge 1}\left(\psum_{\substack{c \ge 1 \\ r \tmod{c}}}\frac{e^{2\pi it\frac{r}{c}}}{c^{2s}}\frac{2\pi^{s}|t|^{s-\frac{1}{2}}}{\G(s)}\sqrt{y}K_{s-\frac{1}{2}}(2\pi|t|y)\right)e^{2\pi itx} \\
+        &= y^{s}+y^{1-s}\sum_{c \ge 1}\frac{r(0,c)}{c^{2s}}\frac{\sqrt{\pi}\G\left(s-\frac{1}{2}\right)}{\G(s)}+\sum_{t \ge 1}\left(\sum_{c \ge 1}\frac{r(t,c)}{c^{2s}}\frac{2\pi^{s}|t|^{s-\frac{1}{2}}}{\G(s)}\sqrt{y}K_{s-\frac{1}{2}}(2\pi|t|y)\right)e^{2\pi itx}.
+      \end{align*}
+      By applying \cref{lem:Ramanujan_zeta_relation} to compute the Dirichlet series of Ramanujan sums, we obtain the desired Fourier-Whittaker series:
+      \[
+        E(z,s) = y^{s}+y^{1-s}\frac{\sqrt{\pi}\G\left(s-\frac{1}{2}\right)\z(2s-1)}{\G(s)\z(2s)}+\sum_{t \ge 1}\left(\frac{2\pi^{s}|t|^{s-\frac{1}{2}}\s_{1-2s}(t)}{\G(s)\z(2s)}\sqrt{y}K_{s-\frac{1}{2}}(2\pi|t|y)\right)e^{2\pi itx}.
+      \]
+      \end{proof}
+
+      Having computed the Fourier-Whittaker series, we would like to obtain a functional equation for $E(z,s)$ under the symmetry $s \mapsto 1-s$. To this end, we define $E^{\ast}(z,s)$ by
+      \[
+        E^{\ast}(z,s) = \L(2s,\z)E(z,s) = \pi^{-s}\G(s)\z(2s)E(z,s).
+      \]
+      From \cref{prop:Fourier_coefficients_of_real-analytic_Eisenstein_series}, the Fourier coefficients $a^{\ast}(n,y,s)$ of $E^{\ast}(z,s)$ in the Fourier series
+      \[
+        E^{\ast}(z,s) = a^{\ast}(0,y,s)+\sum_{n \neq 0}a^{\ast}(n,y,s)e^{2\pi inx},
+      \]
+       are given by
+      \[
+        a^{\ast}(n,y,s) = \begin{cases} y^{s}\pi^{-s}\G(s)\z(2s)+y^{1-s}\pi^{-\left(s-\frac{1}{2}\right)}\G(s-\frac{1}{2})\z(2s-1) & \text{if $n = 0$}, \\ 2|n|^{s-\frac{1}{2}}\s_{1-2s}(n)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y) & \text{if $n \neq 0$}. \end{cases}
+      \]
+      We can now derive a functional equation for $E^{\ast}(z,s)$. Using the definition and functional equation for $\L(2s-1,\z)$, we can rewrite the second term in the constant coefficient to get
+      \begin{equation}\label{equ:Fourier_coefficients_for_completed_real-analytic_Eisenstein_series}
+        a^{\ast}(n,y,s) = \begin{cases} y^{s}\L(2s,\z)+y^{1-s}\L(2(1-s),\z) & \text{if $n = 0$}, \\ 2|n|^{s-\frac{1}{2}}\s_{1-2s}(n)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y) & \text{if $n \neq 0$}. \end{cases}
+      \end{equation}
+      Now observe that the constant coefficient is invariant under $s \mapsto 1-s$. Each $n \neq 0$ coefficient is also invariant under $s \mapsto 1-s$. To see this we will use two facts. First, from \cref{append:Bessel_Functions}, $K_{s}(y)$ is invariant under $s \mapsto -s$ and so $K_{s-\frac{1}{2}}(2\pi|n|y)$ is invariant as $s \mapsto 1-s$. Second, for $n \neq 0$ we have
+      \[
+        |n|^{s-\frac{1}{2}}\s_{1-2s}(n) = |n|^{\frac{1}{2}-s}|n|^{2s-1}\s_{1-2s}(n) = |n|^{\frac{1}{2}-s}|n|^{2s-1}\sum_{d \mid n}d^{1-2s} = |n|^{\frac{1}{2}-s}\sum_{d \mid n}\left(\frac{|n|}{d}\right)^{2s-1} = |n|^{\frac{1}{2}-s}\s_{2s-1}(n),
+      \]
+      where the second to last equality follows by writing $|n|^{2s-1} = \left(\frac{|n|}{d}\right)^{2s-1}d^{2s-1}$ for each $d \mid n$. These two facts together give the invariance of the $n \neq 0$ coefficients under $s \mapsto 1-s$. Altogether, we have shown the following functional equation for $E^{\ast}(z,s)$:
+      \[
+        E^{\ast}(z,s) = E^{\ast}(z,1-s).
+      \]
+      We can now obtain meromorphic continuation of $E^{\ast}(z,s)$ in $s$ to all of $\C$ for any $z \in \H$. We first write $E^{\ast}(z,s)$ as a Fourier-Whittaker series using \cref{equ:Fourier_coefficients_for_completed_real-analytic_Eisenstein_series}:
+      \[
+        E^{\ast}(z,s) = y^{s}\L(2s,\z)+y^{1-s}\L(2(1-s),\z)+\sum_{n \neq 0}2|n|^{s-\frac{1}{2}}\s_{1-2s}(n)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y)e^{2\pi inx}.
+      \]
+      Since $\L(2s,\z)$ is meromorphic on $\C$, the constant term of $E^{\ast}(z,s)$ is as well. To finish the meromorphic continuation of $E^{\ast}(z,s)$ it now suffices to show
+      \[
+        \sum_{n \neq 0}2|n|^{s-\frac{1}{2}}\s_{1-2s}(n)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y)e^{2\pi inx},
+      \]
+      is meromorphic on $\C$. We will actually prove it is locally absolutely uniformly convergent. So let $K$ be a compact subset of $\C$. Then we have to show $E^{\ast}(z,s)$ is absolutely convergent on $K$ for any $z \in \H$. To achieve this we need two bounds, one for $\s_{1-2s}(n)$ and one for $K_{s-\frac{1}{2}}(2\pi|n|y)$. For the first bound, we use the estimate $\s_{0}(n) \ll_{\e} n^{\e}$ (recall \cref{prop:sum_of_divisors_growth_rate}) to derive that
+      \[
+        \s_{1-2s}(n) = \sum_{d \mid n}d^{1-2s} \ll \s_{0}(n)n^{1-2s} \ll_{\e}n^{1-2s+\e}.
+      \]
+      For the second bound, \cref{lem:K_Bessel_function_asymptotic} implies
+      \[
+        K_{s-\frac{1}{2}}(2\pi|n|y) \ll e^{-2\pi|n|y}.
+      \]
+      Using these two bounds, we have
+      \begin{equation}\label{equ:non-constant_Fourier_coefficient_bound_non-holomorphic_Eisenstein_series}
+        \sum_{n \neq 0}2|n|^{s-\frac{1}{2}}\s_{1-2s}(n)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y)e^{2\pi inx} \ll_{\e} \sum_{n \ge 1}n^{\frac{1}{2}-s+\e}\sqrt{y}e^{-2\pi ny}.
+      \end{equation}
+      This latter series is absolutely uniformly convergent on $K$ by the Weierstrass $M$-test. Therefore $E^{\ast}(z,s)$ is absolutely convergent on $K$ for any $z \in \H$ and the meromorphic continuation to $\C$ follows. It remains to investigate the poles and residues. We will accomplish this from direct inspection of the Fourier-Whittaker coefficients:
+
+      \begin{proposition}\label{equ:completed_real-analytic_Eisenstein_series_residues}
+        $E^{\ast}(z,s)$ has simple poles at $s = 0$ and $s = 1$, and
+        \[
+          \Res_{s = 0}E^{\ast}(z,s) = -\frac{1}{2} \quad \text{and} \quad \Res_{s = 1}E^{\ast}(z,s) = \frac{1}{2}.
+        \]
+      \end{proposition}
+      \begin{proof}
+        Since the constant term in the Fourier-Whittaker series of $E^{\ast}(z,s)$ is the only non-holomorphic term, poles of $E^{\ast}(z,s)$ can only come from that term. So we are reduced to understanding the poles of
+        \begin{equation}\label{equ:constant_coefficient_of_completed_non-holomorphic_Eisenstein_series}
+          y^{s}\L(2s,\z)+y^{1-s}\L(2(1-s),\z).
+        \end{equation}
+        Notice $\L(2s,\z)$ has simple poles at $s = 0$, $s = \frac{1}{2}$ (one from the Riemann zeta function and one from the gamma factor) and no others. It follows that $E^{\ast}(z,s)$ has a simple pole at $s = 0$ coming from the $y^{s}$ term in
+        \cref{equ:constant_coefficient_of_completed_non-holomorphic_Eisenstein_series}, and by the functional equation there is also a pole at $s = 1$ coming from the $y^{1-s}$ term. At $s = \frac{1}{2}$, both terms in \cref{equ:constant_coefficient_of_completed_non-holomorphic_Eisenstein_series} have simple poles and we will show that the singularity there is removable. Since the residues of $\L(s,\z)$ at its poles are both $1$, we have $\Res_{s = \frac{1}{2}}\L(2s) = \frac{1}{2}$ and $\Res_{s = \frac{1}{2}}\L(2(1-s)) = -\frac{1}{2}$. Then
+        \[
+          \Res_{s = \frac{1}{2}}E^{\ast}(z,s) = \Res_{s = \frac{1}{2}}y^{s}\L(2s,\z)+\Res_{s = \frac{1}{2}}y^{1-s}\L(2(1-s),\z) = \frac{1}{2}y^{\frac{1}{2}}-\frac{1}{2}y^{\frac{1}{2}} = 0.
+        \]
+        Hence the singularity at $s = \frac{1}{2}$ is removable. As for the residues at $s = 0$ and $s = 1$, the functional equation implies that they are negatives of each other. So it suffices to compute the residue at $s = 0$. Recall $\z(0) = -\frac{1}{2}$ and $\Res_{s = 0}\G(s) = 1$. Then together we find
+        \[
+          \Res_{s = 0}E^{\ast}(z,s) = \Res_{s = 0}y^{s}\L(2s,\z) = -\frac{1}{2}.
+        \]
+      \end{proof}
+
+      This completes our study of $E(z,s)$.
+    \subsection*{The Integral Representation: Part II}
+      We can now continue with the Rankin-Selberg convolution $L(s,f \ox g)$. Writing \cref{equ:Rankin-Selberg_integral-reresentation} in terms of $E^{\ast}(z,s)$ and $L(s,f \ox g)$ results in the integral representation
+      \begin{equation}\label{equ:integral_representation_Rankin-Selberg_final}
+        L(s,f \ox g) = \frac{(4\pi)^{s+k-1}\pi^{s}}{\G(s+k-1)\G(s)}\int_{\mc{F}}f(z)\conj{g(z)}\Im(z)^{k}E^{\ast}(z,s)\,d\mu.
+      \end{equation}
+      This integral representation will give analytic continuation. To see this, note that the gamma functions are analytic for $\s < 0$. By the functional equation for $E^{\ast}(z,s)$, the integral is invariant as $s \mapsto 1-s$. These two facts together give analytic continuation to $\C$ outside of the critical strip. The continuation inside of the critical strip will be meromorphic because of the poles of $E^{\ast}(z,s)$. To see this, substituting the Fourier-Whittaker series for $E^{\ast}(z,s)$ into \cref{equ:integral_representation_Rankin-Selberg_final} gives
+      \begin{align*}
+        L(s,f \ox g) &= \frac{(4\pi)^{s+k-1}\pi^{s}}{\G(s+k-1)\G(s)}\Bigg[\int_{\mc{F}}f(x+iy)\conj{g(x+iy)}y^{k}(y^{s}\L(2s,\z)+y^{1-s}\L(2(1-s),\z))\,\frac{dx\,dy}{y^{2}} \\
+        &+\int_{\mc{F}}f(x+iy)\conj{g(x+iy)}y^{k}\sum_{n \neq 0}2|n|^{s-\frac{1}{2}}\s_{1-2s}(n)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y)e^{2\pi inx}\,\frac{dx\,dy}{y^{2}}\Bigg],
+      \end{align*}
+      and we are reduced to showing that both integrals are locally absolutely uniformly convergent in the critical strip and distance $\e$ away from the poles of $E^{\ast}(z,s)$. Indeed, the first integral is locally absolutely uniformly convergent in this region since the exponential decay of $f$ and $g$ imply that the integrand is bounded and we are integrating over a region of finite volume. As for the second integral, since $s$ is in the critical strip $0 \le \s \le 1$ and so \cref{equ:non-constant_Fourier_coefficient_bound_non-holomorphic_Eisenstein_series} implies that it is
+      \[
+        O_{\e}\left(\int_{\mc{F}}f(x+iy)\conj{g(x+iy)}y^{k}\sum_{n \ge 1}n^{\frac{1}{2}+\e}\sqrt{y}e^{-2\pi ny}\,\frac{dx\,dy}{y^{2}}\right).
+      \]
+      But then
+      \[
+        \sum_{n \ge 1}n^{\frac{1}{2}+\e}e^{-2\pi ny} = O(e^{-2\pi y}),
+      \]
+      because each term is of smaller order than the next so that the series is bounded by a constant times its first term. It follows that the first sum has exponential decay. Together with the exponential decay of $f$ and $g$, the integrand is bounded and thus is locally absolutely uniformly convergent because we are integrating over a region of finite volume. The meromorphic continuation to the critical strip and hence to all of $\C$ follows. In particular, $L(s,f \ox g)$ has at most simple poles at $s = 0$ and $s = 1$. Actually, there is no pole at $s = 0$. Indeed, $\G(s)$ has a simple pole at $s = 0$ and therefore its reciprocal has a simple zero. This cancels the simple pole at $s = 0$ coming from $E^{\ast}(z,s)$ and therefore $L(s,f \ox g)$ is has a removable singularity at $s = 0$. So there is at worst a simple pole at $s = 1$.
+    \subsection*{The Functional Equation}
+      An immediate consequence of applying the symmetry $s \mapsto 1-s$ to \cref{equ:integral_representation_Rankin-Selberg_final} is the following functional equation:
+      \[
+        \frac{\G(s+k-1)\G(s)}{(4\pi)^{s+k-1}\pi^{s}}L(s,f \ox g) = \frac{\G((1-s)+k-1)\G(1-s)}{(4\pi)^{(1-s)+k-1}\pi^{1-s}}L(1-s,f \ox g).
+      \]
+      Applying the Legendre duplication formula, we see that
+      \begin{align*}
+        \frac{\G(s+k-1)\G(s)}{(4\pi)^{s+k-1}\pi^{s}} &= \frac{2^{2s+k-3}}{(4\pi)^{s+k-1}\pi^{s+1}}\G\left(\frac{s+k-1}{2}\right)\G\left(\frac{s+k}{2}\right)\G\left(\frac{s}{2}\right)\G\left(\frac{s+1}{2}\right) \\
+        &= \frac{1}{2^{k+1}\pi^{k}}\pi^{-2s}\G\left(\frac{s+k-1}{2}\right)\G\left(\frac{s+k}{2}\right)\G\left(\frac{s}{2}\right)\G\left(\frac{s+1}{2}\right).
+      \end{align*}
+      The constant factor in front is independent of $s$ and can therefore be canceled in the functional equation. We identify the gamma factor as:
+      \[
+        \g(s,f \ox g) = \pi^{-2s}\G\left(\frac{s+k-1}{2}\right)\G\left(\frac{s+k}{2}\right)\G\left(\frac{s}{2}\right)\G\left(\frac{s+1}{2}\right),
+      \]
+      with $\mu_{1,1} = k-1$, $\mu_{2,2} = k$, $\mu_{1,2} = 0$, and $\mu_{2,1} = 1$ the local roots at infinity. The completed $L$-function is
+      \[
+        \L(s,f \ox g) = \pi^{-2s}\G\left(\frac{s+k-1}{2}\right)\G\left(\frac{s+k}{2}\right)\G\left(\frac{s}{2}\right)\G\left(\frac{s+1}{2}\right)L(s,f \ox g),
+      \]
+      so the conductor is $q(f \ox g) = 1$ and no primes ramify. Then
+      \[
+        \L(s,f \ox g) = \L(1-s,f \ox g),
+      \]
+      is the functional equation of $L(s,f \ox g)$. In particular, the root number $\e(f \ox g) = 1$, and $L(s,f \ox g)$ is self-dual. We can now show that $L(s,f \ox g)$ is of order $1$. Since the possible pole at $s = 1$ is simple, multiplying by $(s-1)$ clears the possible polar divisor. As the integral in \cref{equ:integral_representation_Rankin-Selberg_final} is locally absolutely uniformly convergent, computing the order amounts to estimating the gamma factor. Since the reciprocal of the gamma function is of order $1$, we have
+      \[
+        \frac{1}{\g(s,f \ox g)} \ll_{\e} e^{|s|^{1+\e}}.
+      \]
+      So the reciprocal of the gamma factor is also of order $1$. Then we find that
+      \[
+        (s-1)L(s,f \ox g) \ll_{\e} e^{|s|^{1+\e}}.
+      \]
+      Thus $(s-1)L(s,f \ox g)$ is of order $1$, and so $L(s,f \ox g)$ is as well after removing the polar divisor. We now compute the residue of $L(s,f \ox g)$ at $s = 1$. As $V = \frac{\pi}{3}$, \cref{equ:completed_real-analytic_Eisenstein_series_residues} implies
+      \[
+        \Res_{s = 1}L(s,f \ox g) = \frac{4^{k}\pi^{k+1}}{\G(k)}\int_{\mc{F}}f(z)\conj{g(z)}\Im(z)^{k}(\Res_{s = 1}E^{\ast}(z,s))\,d\mu = \frac{4^{k}\pi^{k+1}V}{2\G(k)}\<f,g\>.
+      \]
+      By \cref{thm:newforms_characterization_holomorphic}, $\<f,g\> \neq 0$ if and only if $f = g$. Therefore the pole at $s = 1$ is a removable singularity unless $f = g$. We summarize all of our work into the following theorem:
+
+      \begin{theorem}
+        Let $f,g \in \mc{S}_{k}(1)$ be primitive Hecke eigenforms and for every prime $p$ let $\a_{1}(p)$ and $\a_{2}(p)$ be the $p$-th Hecke roots of $f$ while $\b_{1}(p)$ and $\b_{2}(p)$ are the $p$-th Hecke roots of $g$. Then $L(s,f \ox g)$ is the Rankin-Selberg convolution of $L(s,f)$ and $L(s,g)$ and is a Selberg class $L$-function with degree $4$ Euler product given by
+        \[
+          L(s,f \ox g) = \prod_{p}\prod_{1 \le j,\ell \le 2}\left(1-\a_{j}(p)\conj{\b_{\ell}(p)}p^{-s}\right)^{-1}.
+        \]
+        Moreover, it admits meromorphic continuation to $\C$, possesses the functional equation
+        \[
+          \pi^{-2s}\G\left(\frac{s+k-1}{2}\right)\G\left(\frac{s+k}{2}\right)\G\left(\frac{s}{2}\right)\G\left(\frac{s+1}{2}\right)L(s,f \ox g) = \L(s,f \ox g) = \L(1-s,f \ox g),
+        \]
+        and has a simple pole at $s = 1$ of residue $\frac{4^{k}\pi^{k+1}V}{2\G(k)}\<f,g\>$ provided $f = g$.
+      \end{theorem}
+    \subsection*{Beyond Level \texorpdfstring{$1$}{1}}
+      The Rankin-Selberg method is much more complicated for arbitrary primitive Hecke or Hecke-Maass eigenforms, but the argument is essentially the same. Let $f$ and $g$ both be primitive Hecke or Heck-Maass eigenforms with Fourier or Fourier-Whittaker coefficients $a_{f}(n)$ and $a_{g}(n)$ respectively. We suppose $f$ has weight $k$/type $\nu$, level $N$, and character $\chi$, and $g$ has weight $\ell$/type $\eta$, level $M$, and character $\psi$. 
+      The $L$-series $L(s,f \x g)$ of $f$ and $g$ is defined by
+      \[
+        L(s,f \x g) = \sum_{n \ge 1}\frac{a_{f \x g}(n)}{n^{s}} = \sum_{n \ge 1}\frac{a_{f}(n)\conj{a_{g}(n)}}{n^{s}}.
+      \]
+      The \textbf{Rankin-Selberg convolution}\index{Rankin-Selberg convolution} $L(s,f \ox g)$ of $f$ and $g$ is defined by
+      \[
+        L(s,f \ox g) = \sum_{n \ge 1}\frac{a_{f \ox g}(n)}{n^{s}} = L(2s,\chi\conj{\psi})L(s,f \x g),
+      \]
+      where $a_{f \ox g}(n) = \sum_{n = m\ell^{2}}\chi\conj{\psi}(\ell^{2})a_{f}(m)\conj{a_{g}(m)}$. The following generalization was obtained by Jacquet in the 1970's as a consequence of a more general framework (see \cite{jacquet1970automorphic,jacquet1972automorphic}):
+
+      \begin{theorem}\label{thm:generalization_Rankin_Selberg_method}
+        Let $f$ and $b$ both be primitive Hecke or Heck-Maass eigenforms. Also suppose the following: 
+        \begin{enumerate}[label*=(\roman*)]
+          \item $f$ has weight $k$/type $\nu$, level $N$, and character $\chi$.
+          \item $g$ has weight $\ell$/type $\eta$, level $M$, and character $\psi$.
+          \item The Ramanujan-Petersson conjecture for Maass forms holds if $f$ or $g$ are Heck-Maass eigenforms.
+        \end{enumerate}
+        Then $L(s,f \ox g)$ is the Rankin-Selberg convolution of $L(s,f)$ and $L(s,g)$ and is a Selberg class $L$-function.
+      \end{theorem}
+
+      We make a few remarks about how \cref{thm:generalization_Rankin_Selberg_method} could be proved analogously to the case of two holomorphic cusp forms of level $1$. Local absolute uniform convergence for $\s > 1$ are proved in the exactly the same way as we have described. The argument for the Euler product is also similar. However, if either $N > 1$ or $M > 1$, the computation becomes more difficult since the local factors at $p$ for $p \mid NM$ change. Moreover, the situation is increasingly complicated if $(N,M) > 1$. The integral representation has a similar argument, but if the weights/types are distinct the resulting Eisenstein series becomes more complicated. In particular, the Eisenstein series is on $\G_{0}(NM)\backslash\H$ and if $NM > 1$ then there is more than just the cusp at $\infty$. Therefore the functional equation of the Eisenstein series at the $\infty$ cusp will reflect into a linear combination of Eisenstein series at the other cusps. This requires the Fourier-Whittaker series of all of these Eisenstein series. Moreover, this procedure can be generalized to remove the primitive Hecke and/or primitive Hecke-Maass eigenform conditions by taking linear combinations, but we won't attempt discussing this further.
