@@ -1,6 +1,6 @@
 \chapter{The Theory of Dirichlet Series}
   We start our discussion of number theory with Dirichlet series. Dirichlet series are essential tools because they are a way of analytically encoding arithmetic information. We discuss basic properties of Dirichlet series such as convergence properties and Euler products. Then we prove several variants of Perron's formula which connects coefficient sums to Dirichlet series via the inverse Mellin transform.
-  \section{Convergence and Euler Products of Dirichlet Series}
+  \section{Convergence of Dirichlet Series}
     A \textbf{Dirichlet series}\index{Dirichlet series} $D(s)$ is a sum of the form
     \[
       D(s) = \sum_{n \ge 1}\frac{a(n)}{n^{s}},
@@ -47,7 +47,7 @@
     
     By taking $H \to \infty$ in \cref{thm:convergence_of_Dirichlet_series} we see that $D(s)$ converges in the region $\s > \s_{0}$. Let $\s_{c}$ be the infimum of all $\s$ for which $D(s)$ converges. We call $\s_{c}$ the \textbf{abscissa of convergence}\index{abscissa of convergence} of $D(s)$. Similarly, let $\s_{a}$ be the infimum of all $\s$ for which $D(s)$ converges absolutely. Since the terms of $D(s)$ are holomorphic, the convergence is locally absolutely uniform (actually uniform in sectors) for $\s > \s_{a}$. It follows that $D(s)$ is holomorphic in the region $\s > \s_{a}$.  We call $\s_{a}$ the \textbf{abscissa of absolute convergence}\index{abscissa of absolute convergence} of $D(s)$. One should think of $\s_{c}$ and $\s_{a}$ as the boundaries of convergence and absolute convergence respectively. Of course, anything can happen at $\s = \s_{c}$ and $\s = \s_{a}$, but to the right of these lines we have convergence and absolute convergence of $D(s)$ respectively. It turns out that $\s_{a}$ is never far from $\s_{c}$ provided $\s_{c}$ is finite:
 
-    \begin{theorem}
+    \begin{theorem}\label{thm:abscissa_of_absolute_convergence_bound}
       If $D(s)$ is a Dirichlet series with finite abscissa of convergence $\s_{c}$ then
       \[
         \s_{c} \le \s_{a} \le \s_{c}+1.
@@ -55,6 +55,35 @@
     \end{theorem}
     \begin{proof}
       The first inequality is trivial since absolute convergence implies convergence. For the second inequality, since $D(s)$ converges at $\s_{c}+\e$, the terms $a(n)n^{-(\s_{c}+\e)}$ tend to zero as $n \to \infty$. Therefore $a(n) \ll_{\e} n^{\s_{c}+\e}$ where the implicit constant is independent of $n$. But then $a(n)n^{-(\s_{c}+\e)} \ll_{\e} 1$ which implies $\sum_{n \ge 1}a(n)n^{-(\s_{c}+1+2\e)}$ is absolutely convergent by the comparison test with respect to $\sum_{n \ge 1}n^{-(1+\e)}$. In terms of $D(s)$, this means $\s_{a} \le \s_{c}+1+2\e$ and taking $\e \to 0$ gives the second inequality.
+    \end{proof}
+
+    It turns out that the coefficients of Dirichlet series are uniquely determined:
+
+    \begin{proposition}\label{prop:coefficients_of_Dirichlet_series_are_unique}
+      Suppose $D(s)$ is a Dirichlet series with finite abscissa of convergence $\s_{c}$ such that
+      \[
+        D(s) = \sum_{n \ge 1}\frac{a(n)}{n^{s}} \quad \text{and} \quad D(s) = \sum_{n \ge 1}\frac{b(n)}{n^{s}}.
+      \]
+      Then $a(n) = b(n)$ for all $n \ge 1$.
+    \end{proposition}
+    \begin{proof}
+      If $\s \ge \s_{c}+1$ then $D(s)$ converges absolutely by \cref{thm:abscissa_of_absolute_convergence_bound}. Letting $\s \to \infty$, the dominated convergence theorem implies that
+      \[
+        \lim_{\s \to \infty}D(\s) = a(1) \quad \text{and} \quad \lim_{\s \to \infty}D(\s) = b(1),
+      \]
+      because every term other than the first tends to zero as $\s \to \infty$. Therefore $a(1) = b(1)$. Now assume by induction that the claim holds for $n \le N$ and set $c(n) = a(n)-b(n)$ for all $n \ge 1$. Then by assumption and our induction hypothesis, we have
+      \[
+        \sum_{n > N}\frac{c(n)}{n^{s}} = 0.
+      \]
+      Moreover, the sum on the left-hand side has abscissa of convergence at most $\s_{c}$ since $D(s)$ does. It follows that
+      \[
+        c(N+1) = -\sum_{n > N}c(n)\left(\frac{N}{n}\right)^{\s},
+      \]
+      where the sum on the right-hand side has abscissa of convergence $\s_{c}$ as well. By \cref{thm:abscissa_of_absolute_convergence_bound} again, this sum converges absolutely for $\s \ge \s_{c}+1$. Letting $\s \to \infty$, the dominated convergence theorem implies that
+      \[
+        \lim_{\s \to \infty}\left(-\sum_{n > N}c(n)\left(\frac{N}{n}\right)^{\s}\right) = 0,
+      \]
+      because every term tends to zero as $\s \to \infty$ since $n > N$. Hence $c(N+1) = 0$ as well which completes the proof.
     \end{proof}
 
     We will now introduce several convergence theorems for Dirichlet series. It will be useful to setup some notation first. If $D(s)$ is a Dirichlet series with coefficients $a(n)$ then for $X > 0$, we set
@@ -184,7 +213,7 @@
       \]
       for $-\d' < s < 1$. As $\d' > 0$, this implies that $D(s)$ converges absolutely (since $a(n)$ is nonnegative) for some $s < 0$ (say $s = -\frac{\d'}{2}$) which contradicts $\s_{a} = 0$.
     \end{proof}
-    
+  \section{Euler Products}
     Generally speaking, if the coefficients $a(n)$ are chosen at random, $D(s)$ will not possess any good properties outside of convergence in some region (it might not even possess that). However, many Dirichlet series of interest will have coefficients that exhibit polynomial growth and are multiplicative. These Dirichlet series admits infinite product expressions:
 
     \begin{proposition}\label{prop:Dirichlet_series_Euler_product}
@@ -207,19 +236,19 @@
         \[
           \sum_{k \ge 0}\left|\frac{a(p^{k})}{p^{ks}}\right| < \sum_{n \ge 1}\left|\frac{a(n)}{n^{s}}\right|,
         \]
-        the infinite series on the left converges because the right does by the absolute convergence of $D(s)$. Now let $N > 0$ be an integer. By the fundamental theorem of arithmetic
+        the infinite series on the left converges because the right does by the absolute convergence of $D(s)$. Now let $N \ge 1$. By the fundamental theorem of arithmetic
         \begin{equation}\label{equ:Dirichlet_series_Euler_product_1}
-          \prod_{p < N}\left(\sum_{k \ge 0}\frac{a(p^{k})}{p^{ks}}\right) = \sum_{n < N}\frac{a(n)}{n^{s}}+\asum_{n \ge N}\frac{a(n)}{n^{s}},
+          \prod_{p \le N}\left(\sum_{k \ge 0}\frac{a(p^{k})}{p^{ks}}\right) = \sum_{n \le N}\frac{a(n)}{n^{s}}+\asum_{n > N}\frac{a(n)}{n^{s}},
         \end{equation}
-        where the $\ast$ denotes that we are summing over only those additional terms $\frac{a(n)}{n^{s}}$ that appear in the expanded product on the left-hand side with $n \ge N$. As $N \to \infty$, the first sum on the right-hand side tends to $D(s)$ and the second sum tends to zero because it is part of the tail of $D(s)$ (which tends to zero by convergence). This proves that the product converges, and is equal to $D(s)$. \cref{equ:Dirichlet_series_Euler_product_1} also holds absolutely in the sense that
+        where the $\ast$ denotes that we are summing over only those additional terms $\frac{a(n)}{n^{s}}$ that appear in the expanded product on the left-hand side with $n > N$. As $N \to \infty$, the first sum on the right-hand side tends to $D(s)$ and the second sum tends to zero because it is part of the tail of $D(s)$ (which tends to zero by convergence). This proves that the product converges, and is equal to $D(s)$. \cref{equ:Dirichlet_series_Euler_product_1} also holds absolutely in the sense that
         \begin{equation}\label{equ:Dirichlet_series_Euler_product_2}
-          \prod_{p < N}\left(\sum_{k \ge 0}\left|\frac{a(p^{k})}{p^{ks}}\right|\right) = \sum_{n < N}\left|\frac{a(n)}{n^{s}}\right|+\asum_{n \ge N}\left|\frac{a(n)}{n^{s}}\right|,
+          \prod_{p \le N}\left(\sum_{k \ge 0}\left|\frac{a(p^{k})}{p^{ks}}\right|\right) = \sum_{n \le N}\left|\frac{a(n)}{n^{s}}\right|+\asum_{n > N}\left|\frac{a(n)}{n^{s}}\right|,
         \end{equation}
         since $D(s)$ converges absolutely. For the converse statement, since the product
         \[
           \prod_{p}\left(\sum_{k \ge 0}\left|\frac{a(p^{k})}{p^{ks}}\right|\right),
         \]
-        converges for $\s > 1+\a$ each factor is necessarily finite. That is, for each prime $p$ the series $\sum_{k \ge 0}\frac{a(p^{k})}{p^{ks}}$ converges absolutely in this region. Now fix an integer $N > 0$. Then \cref{equ:Dirichlet_series_Euler_product_2} holds. Taking $N \to \infty$ in \cref{equ:Dirichlet_series_Euler_product_2}, the left-hand side converges by assumption. Therefore the right-hand sides does too. But the first sum on the right-hand side tends to
+        converges for $\s > 1+\a$ each factor is necessarily finite. That is, for each prime $p$ the series $\sum_{k \ge 0}\frac{a(p^{k})}{p^{ks}}$ converges absolutely in this region. Now fix an $N \ge 1$. Then \cref{equ:Dirichlet_series_Euler_product_2} holds. Taking $N \to \infty$ in \cref{equ:Dirichlet_series_Euler_product_2}, the left-hand side converges by assumption. Therefore the right-hand sides does too. But the first sum on the right-hand side tends to
         \[
           \sum_{n \ge 1}\left|\frac{a(n)}{n^{s}}\right|,
         \]
@@ -246,7 +275,7 @@
       D(s) = D_{(N)}(s)D_{N}(s),
     \]
     for any $N \ge 1$.
-  \section{Perron's Formula}
+  \section{Perron Formulas}
     With the Mellin inversion formula, it is not hard to prove a very useful integral expression for the sum of coefficients of a Dirichlet series. First, we setup some general notation. If $D(s)$ is a Dirichlet series with coefficients $a(n)$ then for $X > 0$, we set
     \[
       A^{\ast}(X) = \asum_{n \le X}a(n),

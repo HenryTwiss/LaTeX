@@ -6,8 +6,9 @@
       \[
         \z_{K}(s) = \sum_{n \ge 1}\frac{a_{K}(n)}{n^{s}}.
       \]
+      We say $\z_{K}(s)$ is \textbf{quadratic}\index{quadratic}, \textbf{cubic}\index{cubic}, etc. if $K$ is. Similarly, we say $\z_{K}(s)$ is \textbf{cyclotomic}\index{cyclotomic} if $K$ is.
 
-      \begin{remark}
+      \begin{remark}\label{rem:alternative_expression_for_Dirichlet_series_of_Dedekind_zeta_function}
         If we sum over integral ideals of $K$ instead, we can write
         \[
           \z_{K}(s) = \sum_{\text{$\mf{a}$ integral}}\frac{1}{\Norm_{K}(\mf{a})^{s}}.
@@ -331,47 +332,59 @@
         \]
         and has a simple pole at $s = 1$ of residue $\frac{2^{r_{1}}(2\pi)^{r_{2}}h_{K}R_{K}}{w_{K}\sqrt{|\D_{K}|}}$.
       \end{theorem}
-    \subsection*{Imprimitivity}
-      Dedekind zeta functions are generally imprimitive $L$-functions. We illustrate this in the case of quadratic number fields:
+  \section{Quadratic Dedekind Zeta Functions}
+    Given our discussion of quadratic number fields, it is a simple matter to determine quadratic Dedekind zeta function explicitly:
 
-      \begin{theorem}\label{thm:factorization_of_Dedekind_of_quadratic_number_field}
-        Let $\Q(\sqrt{d})$ be a quadratic number field and let $\chi_{\D_{d}}$ be the quadratic character associated to the fundamental discriminant $\D_{d}$. Then
-        \[
-          \z_{\Q(\sqrt{d})}(s) = \z(s)L(s,\chi_{\D_{d}}).
-        \]
-      \end{theorem}
-      \begin{proof}
-        By the identity theorem it suffices to prove this for $\s > 1$. Using \cref{prop:factorization_of_primes_quadratic}, the Euler product of $\z_{\Q(\sqrt{d})}(s)$ is given by
-        \begin{align*}
-          \z_{\Q(\sqrt{d})}(s) &= \prod_{\substack{p \\ \chi_{\D_{d}}(p) = 1}}(1-p^{-s})^{-1}(1-p^{-s})^{-1}\prod_{\substack{p \\ \chi_{\D_{d}}(p) = -1}}(1-p^{-s})^{-1}(1+p^{-s})^{-1}\prod_{\substack{p \\ \chi_{\D_{d}}(p) = 0}}(1-p^{-s})^{-1} \\
-          &= \z(s)\prod_{\substack{p \\ \chi_{\D_{d}}(p) = 1}}(1-p^{-s})^{-1}\prod_{\substack{p \\ \chi_{\D_{d}}(p) = -1}}(1+p^{-s})^{-1}\prod_{\substack{p \\ \chi_{\D_{d}}(p) = 0}}1 \\
-          &= \z(s)L(s,\chi_{\D_{d}}).
-        \end{align*}
-        This completes the proof.
-      \end{proof}
+    \begin{theorem}\label{thm:factorization_of_Dedekind_of_quadratic_number_field}
+      Let $\Q(\sqrt{d})$ be a quadratic number field and let $\chi_{\D_{d}}$ be the quadratic character associated to the fundamental discriminant $\D_{d}$. Then
+      \[
+        \z_{\Q(\sqrt{d})}(s) = \z(s)L(s,\chi_{\D_{d}}).
+      \]
+    \end{theorem}
+    \begin{proof}
+      By the identity theorem it suffices to prove this for $\s > 1$. Using \cref{prop:factorization_of_primes_quadratic}, the Euler product of $\z_{\Q(\sqrt{d})}(s)$ is given by
+      \begin{align*}
+        \z_{\Q(\sqrt{d})}(s) &= \prod_{\substack{p \\ \chi_{\D_{d}}(p) = 1}}(1-p^{-s})^{-1}(1-p^{-s})^{-1}\prod_{\substack{p \\ \chi_{\D_{d}}(p) = -1}}(1-p^{-s})^{-1}(1+p^{-s})^{-1}\prod_{\substack{p \\ \chi_{\D_{d}}(p) = 0}}(1-p^{-s})^{-1} \\
+        &= \z(s)\prod_{\substack{p \\ \chi_{\D_{d}}(p) = 1}}(1-p^{-s})^{-1}\prod_{\substack{p \\ \chi_{\D_{d}}(p) = -1}}(1+p^{-s})^{-1}\prod_{\substack{p \\ \chi_{\D_{d}}(p) = 0}}1 \\
+        &= \z(s)L(s,\chi_{\D_{d}}).
+      \end{align*}
+      This completes the proof.
+    \end{proof}
 
-      Since the residue of $\z(s)$ at its pole is $1$, the analytic class number formula gives a relationship between the value of Dirichlet $L$-functions at $s = 1$ and the class number of quadratic number fields. This is known as the \textbf{Dirichlet class number formula}\index{Dirichlet class number formula}:
+    Almost immediately, we can prove an interesting expression for $a_{\Q(\sqrt{d})}(n)$:
 
-      \begin{corollary*}[Dirichlet class number formula]
-        Let $\Q(\sqrt{d})$ be a quadratic number field and let $\chi_{\D_{d}}$ be the quadratic character associated to the fundamental discriminant $\D_{d}$. Then
-        \[
-          L(1,\chi_{\D_{d}}) = \frac{2h_{d}\log|\e_{d}|}{\sqrt{|\D_{d}|}} \quad \text{or} \quad L(1,\chi_{\D_{d}}) = \frac{2\pi h_{d}}{w_{d}\sqrt{|\D_{d}|}},
-        \]
-        where $\e_{d}$ is a fundamental unit, according to if $d > 0$ or $d < 0$.
-      \end{corollary*}
-      \begin{proof}
-        Let $(r_{1},r_{2})$ be the signature of $\Q(\sqrt{d})$. Combining \cref{thm:factorization_of_Dedekind_of_quadratic_number_field} with the analytic class number formula and that the residue of $\z(s)$ at its pole is $1$ gives
-        \[
-          L(1,\chi_{\D_{d}}) = \frac{2^{r_{1}}(2\pi)^{r_{2}}h_{d}R_{d}}{w_{d}\sqrt{|\D_{d}|}}.
-        \]
-        The result follows by \cref{prop:unit_group_quadratic}, \cref{prop:regulator_quadratic}, and that $(r_{1},r_{2})$ is $(2,0)$ or $(0,1)$ according to if $d > 0$ or $d < 0$.
-      \end{proof}
-      
-      Since $h_{d} \ge 1$ and $w_{d} \le 6$ (by \cref{prop:unit_group_quadratic}), the Dirichlet class number formula gives the estimate
-      \begin{equation}\label{equ:lower_bound_at_1_Dirichlet_real_character}
-        L(1,\chi_{\D_{d}}) \gg \frac{\log|\e_{d}|}{\sqrt{\D_{d}}} \quad \text{or} \quad L(1,\chi_{\D_{d}}) \gg \frac{1}{\sqrt{\D_{d}}},
-      \end{equation}
-      where $\e_{d}$ is a fundamental unit, according to if $d > 0$ or $d < 0$. By \cref{thm:fundamental_discriminant_character_primitive}, this is really a result about Dirichlet $L$-functions attached to primitive quadratic characters. Note that while \cref{equ:lower_bound_at_1_Dirichlet_real_character} is significantly weaker than Siegel's theorem, the implicit constant is not ineffective.
+    \begin{proposition}
+      Let $\Q(\sqrt{d})$ be a quadratic number field and let $\chi_{\D_{d}}$ be the quadratic character associated to the fundamental discriminant $\D_{d}$. Then
+      \[
+        a_{\Q(\sqrt{d})}(n) = \sum_{d \mid n}\chi_{\D_{d}}(d).
+      \]
+    \end{proposition}
+    \begin{proof}
+      This follows from \cref{prop:coefficients_of_Dirichlet_series_are_unique} and \cref{rem:alternative_expression_for_Dirichlet_series_of_Dedekind_zeta_function} since the coefficients of the $L$-series of $\z(s)L(s,\chi_{\D_{d}})$ are $\sum_{d \mid n}\chi_{\D_{d}}(d)$.
+    \end{proof}
+
+    Since the residue of $\z(s)$ at its pole is $1$, the analytic class number formula gives a relationship between the value of Dirichlet $L$-functions at $s = 1$ and the class number of quadratic number fields. This is known as the \textbf{Dirichlet class number formula}\index{Dirichlet class number formula}:
+
+    \begin{corollary*}[Dirichlet class number formula]
+      Let $\Q(\sqrt{d})$ be a quadratic number field and let $\chi_{\D_{d}}$ be the quadratic character associated to the fundamental discriminant $\D_{d}$. Then
+      \[
+        L(1,\chi_{\D_{d}}) = \frac{2h_{d}\log|\e_{d}|}{\sqrt{|\D_{d}|}} \quad \text{or} \quad L(1,\chi_{\D_{d}}) = \frac{2\pi h_{d}}{w_{d}\sqrt{|\D_{d}|}},
+      \]
+      where $\e_{d}$ is a fundamental unit, according to if $d > 0$ or $d < 0$.
+    \end{corollary*}
+    \begin{proof}
+      Let $(r_{1},r_{2})$ be the signature of $\Q(\sqrt{d})$. Combining \cref{thm:factorization_of_Dedekind_of_quadratic_number_field} with the analytic class number formula and that the residue of $\z(s)$ at its pole is $1$ gives
+      \[
+        L(1,\chi_{\D_{d}}) = \frac{2^{r_{1}}(2\pi)^{r_{2}}h_{d}R_{d}}{w_{d}\sqrt{|\D_{d}|}}.
+      \]
+      The result follows by \cref{prop:unit_group_quadratic}, \cref{prop:regulator_quadratic}, and that $(r_{1},r_{2})$ is $(2,0)$ or $(0,1)$ according to if $d > 0$ or $d < 0$.
+    \end{proof}
+    
+    As $h_{d} \ge 1$ and $w_{d} \le 6$ (by \cref{prop:unit_group_quadratic}), the Dirichlet class number formula gives the estimate
+    \begin{equation}\label{equ:lower_bound_at_1_Dirichlet_real_character}
+      L(1,\chi_{\D_{d}}) \gg \frac{\log|\e_{d}|}{\sqrt{\D_{d}}} \quad \text{or} \quad L(1,\chi_{\D_{d}}) \gg \frac{1}{\sqrt{\D_{d}}},
+    \end{equation}
+    where $\e_{d}$ is a fundamental unit, according to if $d > 0$ or $d < 0$. By \cref{thm:fundamental_discriminant_character_primitive}, this is really a result about Dirichlet $L$-functions attached to primitive quadratic characters. Note that while \cref{equ:lower_bound_at_1_Dirichlet_real_character} is significantly weaker than Siegel's theorem, the implicit constant is not ineffective.
   \section{The Class Number of Quadratic Number Fields}
     The Dirichlet class number formula gives a relationship between the class number $h_{d}$ of the quadratic number field $\Q(\sqrt{d})$ and the value of the Dirichlet $L$-function $L(s,\chi_{\D_{d}})$ at $s = 1$ where $\chi_{\D_{d}}$ is the quadratic character given by the Kronecker symbol. As $\chi_{\D_{d}}$ is a primitive quadratic character of conductor $|\D_{d}| > 1$ (recall \cref{thm:fundamental_discriminant_character_primitive}), we know from \cref{thm:non-vanishing_of_Dirichlet_L-functions_at_s=1} that $L(1,\chi_{\D_{d}})$ is finite and nonzero. It is interesting to know whether or not this value is computable in general so that we may obtain another formula for the class number. We will actually obtain a formula for $L(1,\chi)$ where $\chi$ is any primitive character $\chi$ of conductor $q > 1$. The computation is fairly straightforward and only requires some basic properties of Ramanujan and Gauss sums that we have already developed. The idea is to rewrite the character values $\chi(n)$ so that we can collapse the infinite series into a Taylor series. Our result is the following:
     
