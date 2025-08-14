@@ -171,13 +171,13 @@
       \]
       Since $\chi(n) = 0$ if $(n,m) > 1$, the above sum can be restricted to all positive integers relatively prime to $m$. We will see that $L(s,\chi)$ is a Selberg class $L$-function if $\chi$ is primitive and of conductor $q > 1$ (in the case $q = 1$, $L(s,\chi) = \z(s)$). From now we make this assumption about $\chi$. As the coefficients are uniformly bounded and completely multiplicative, $L(s,\chi)$ is locally absolutely uniformly convergent for $\s > 1$ and admits the following degree $1$ Euler product by \cref{prop:Dirichlet_series_Euler_product}:
       \[
-        L(s,\chi) = \prod_{p}(1-\chi(p)p^{-s})^{-1} = \prod_{p \nmid q}(1-\chi(p)p^{-s})^{-1},
+        L(s,\chi) = \prod_{p}(1-\chi(p)p^{-s})^{-1}.
       \]
-      where the second equality holds because if $p \mid q$ we have $\chi(p) = 0$. The local factor at $p$ is
+      The local factor at $p$ is
       \[
-        L_{p}(s,\chi) = 1 \quad \text{or} \quad L_{p}(s,\chi) = (1-\chi(p)p^{-s})^{-1},
+        L_{p}(s,\chi) = (1-\chi(p)p^{-s})^{-1},
       \]
-      with local root $0$ or $\chi(p)$ respectively and according to if $p \mid q$ or not.
+      with local root $\chi(p)$.
     \subsection*{The Integral Representation: Part I}
       The integral representation for $L(s,\chi)$ is deduced in a similar way as for $\z(s)$. However, it will depend on if $\chi$ is even or odd. To handle both cases simultaneously let $\d_{\chi} = 0,1$ according to whether $\chi$ is even or odd. In other words,
       \[
@@ -330,10 +330,14 @@
       \end{theorem}
     \subsection*{Beyond Primitivity}
       We can still obtain meromorphic continuation of the $L$-series $L(s,\chi)$ if $\chi$ is imprimitive. Indeed, if $\chi$ is induced by $\wtilde{\chi}$ then $\chi(p) = \wtilde{\chi}(p)$ if $p \nmid q$ and $\chi(p) = 0$ if $p \mid m$. Then just as for primitive characters, \cref{prop:Dirichlet_series_Euler_product} implies that $L(s,\chi)$ is locally absolutely uniformly convergent for $\s > 1$ and admits the following degree $1$ Euler product:
-      \begin{equation}\label{equ:non-primitive_primitive_Dirichlet_L-series_relation}
-        L(s,\chi) = \prod_{p \nmid m}(1-\wtilde{\chi}(p)p^{-s})^{-1} = \prod_{p}(1-\wtilde{\chi}(p)p^{-s})^{-1}\prod_{p \mid m}(1-\wtilde{\chi}(p)p^{-s}) = L(s,\wtilde{\chi})\prod_{p \mid m}(1-\wtilde{\chi}(p)p^{-s}).
+      \begin{equation}\label{equ:non-primitive_Dirichlet_series_Euler_product}
+        L(s,\chi) = \prod_{p \nmid m}(1-\wtilde{\chi}(p)p^{-s})^{-1}.
       \end{equation}
-      From this relation, we can prove the following:
+      In particular, it follows that
+      \begin{equation}\label{equ:non-primitive_primitive_Dirichlet_L-series_relation}
+        L(s,\chi) = \prod_{p}(1-\wtilde{\chi}(p)p^{-s})^{-1}\prod_{p \mid m}(1-\wtilde{\chi}(p)p^{-s}) = L(s,\wtilde{\chi})\prod_{p \mid m}(1-\wtilde{\chi}(p)p^{-s}).
+      \end{equation}
+      We collect this discussion in the following theorem:
 
       \begin{theorem}\label{thm:analytic_continuation_Dirichlet}
         For any Dirichlet character $\chi$ modulo $m$, let $\wtilde{\chi}$ be the primitive character inducing $\chi$. Then $L(s,\chi)$ is locally absolutely uniformly convergent for $\s > 1$ with degree $1$ Euler product given by
@@ -343,7 +347,7 @@
         Moreover, it admits meromorphic continuation to $\C$ and if $\chi$ is principal there is a simple pole at $s = 1$ of residue $\prod_{p \mid m}(1-\wtilde{\chi}(p)p^{-1})$.
       \end{theorem}
       \begin{proof}
-        This follows from \cref{thm:zeta_Selberg,thm:primitive_Dirichlet_Selberg,equ:non-primitive_primitive_Dirichlet_L-series_relation}. 
+        This follows from \cref{thm:zeta_Selberg,thm:primitive_Dirichlet_Selberg,equ:non-primitive_Dirichlet_series_Euler_product}. 
       \end{proof}
 
       It is worth noting that for any non-principal Dirichlet character $\chi$ modulo $m$, the $L$-series $L(s,\chi)$ converges for $\s > 0$. Indeed, setting $A(X) = \sum_{n \le X}\chi(n)$ we have $A(X) \le m$ by  Dirichlet orthogonality relations (namely (i)) and that $\chi$ is $m$-periodic, and then the claim follows from \cref{prop:Dirichlet_series_convergence_bounded_coefficient_sum}. While this fact is not too important from an analytic continuation standpoint, it is useful because it allows for the manipulation (without rearrangement since we do not have absolute convergence) of the $L$-series $L(s,\chi)$ in the vertical strip $0 < \s \le 1$.
@@ -588,7 +592,7 @@
       \]
     \end{proposition}
     \begin{proof}
-        We may assume $\chi_{1}$ and $\chi_{2}$ are primitive since if $\wtilde{\chi_{i}}$ is the primitive character inducing $\chi_{i}$, for $i = 1,2$, the only difference in zeros between $L(s,\chi_{i})$ and $L(s,\wtilde{\chi}_{i})$ occur on the line $\s = 0$. Now let $\wtilde{\chi}$ be the primitive character of conductor $q$ inducing $\chi_{1}\chi_{2}$. From \cref{equ:non-primitive_primitive_Dirichlet_L-series_relation} with $\chi_{1}\chi_{2}$ in place of $\chi$, we find that
+        We may assume $\chi_{1}$ and $\chi_{2}$ are primitive since if $\wtilde{\chi_{i}}$ is the primitive character inducing $\chi_{i}$, for $i = 1,2$, the only difference in zeros between $L(s,\chi_{i})$ and $L(s,\wtilde{\chi}_{i})$ occur on the line $\s = 0$. Now let $\wtilde{\chi}$ be the primitive character of conductor $q$ inducing $\chi_{1}\chi_{2}$. From \cref{equ:non-primitive_primitive_Dirichlet_L-series_relation}, we find that
         \begin{equation}\label{equ:product_of_quadratic_Dirichlet_L-functions_has_one_zero_1}
           \left|\frac{L'}{L}(s,\chi_{1}\chi_{2})-\frac{L'}{L}(s,\wtilde{\chi})\right| = \left|\sum_{p \mid q_{1}q_{2}}\frac{\wtilde{\chi}(p)\log(p)p^{-s}}{1-\wtilde{\chi}(p)p^{-s}}\right| \le \sum_{p \mid q_{1}q_{2}}\frac{\log(p)p^{-\s}}{1-p^{-\s}} \le \sum_{p \mid q_{1}q_{2}}\log(p) \le \log(q_{1}q_{2}).
         \end{equation}
