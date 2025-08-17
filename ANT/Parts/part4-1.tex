@@ -54,7 +54,13 @@
     \[
       \G_{0}(N) = \left\{\begin{pmatrix} a & b \\ c & d \end{pmatrix} \in \PSL_{2}(\Z):\begin{pmatrix} a & b \\ c & d \end{pmatrix} \equiv \begin{pmatrix} \ast & \ast \\ 0 & \ast \end{pmatrix} \tmod{N}\right\},
     \]
-    are particularly important and are congruence subgroups of level $N$. The latter subgroup is called the \textbf{Hecke congruence subgroup}\index{Hecke congruence subgroup} of level $N$. Note that $\G(N) \le \G_{1}(N) \le \G_{0}(N)$. If $\G$ is a general congruence subgroup, it is useful to find a generating set for $\G$ in order to reduce results about $\G$ to that of the generators. This is usually achieved by performing some sort of Euclidean division argument on the entries of a matrix $\g \in \G$ using the supposed generating set to construct the inverse for $\g$. We will also require a useful lemma which says that congruence subgroups are preserved under conjugation by elements of $\GL_{2}^{+}(\Q)$ provided we restrict to those elements in $\PSL_{2}(\Z)$:
+    are particularly important and are congruence subgroups of level $N$. The latter subgroup is called the \textbf{Hecke congruence subgroup}\index{Hecke congruence subgroup} of level $N$. Note that $\G(N) \le \G_{1}(N) \le \G_{0}(N)$. 
+    
+    \begin{remark}
+      If $\G$ is a general congruence subgroup, it is useful to find a generating set for $\G$ in order to reduce results about $\G$ to that of the generators. This is usually achieved by performing some sort of Euclidean division argument on the entries of a matrix $\g \in \G$ using the supposed generating set to construct the inverse for $\g$. 
+    \end{remark}
+    
+    Now we discuss double cosets associated to congruence subgroups. We first a useful lemma which says that congruence subgroups are preserved under conjugation by elements of $\GL_{2}^{+}(\Q)$ provided we restrict to those elements in $\PSL_{2}(\Z)$:
 
     \begin{lemma}\label{lem:coset_lemma_1}
       Let $\G$ be a congruence subgroup and let $\a \in \GL_{2}^{+}(\Q)$. Then $\a^{-1}\G\a \cap \PSL_{2}(\Z)$ is a congruence subgroup.
@@ -75,7 +81,49 @@
       and intersecting with $\PSL_{2}(\Z)$ completes the proof.
     \end{proof}
 
-    Note that by \cref{lem:coset_lemma_1}, if $\a^{-1}\G\a \subset \PSL_{2}(\Z)$ then $\a^{-1}\G\a$ is a congruence subgroup if $\G$ is. Moreover, since congruence subgroups are closed under intersection, \cref{lem:coset_lemma_1} further implies that $\a^{-1}\G_{1}\a \cap \G_{2}$ is a congruence subgroup for and two congruence subgroups $\G_{1}$ and $\G_{2}$ any any $\a \in \GL_{2}^{+}(\Q)$.
+    Note that by \cref{lem:coset_lemma_1}, if $\a^{-1}\G\a \subset \PSL_{2}(\Z)$ then $\a^{-1}\G\a$ is a congruence subgroup if $\G$ is. Moreover, since congruence subgroups are closed under intersection, \cref{lem:coset_lemma_1} further implies that $\a^{-1}\G_{1}\a \cap \G_{2}$ is a congruence subgroup for and two congruence subgroups $\G_{1}$ and $\G_{2}$ any any $\a \in \GL_{2}^{+}(\Q)$. Now for any two congruence subgroups $\G_{1}$ and $\G_{2}$ (not necessarily of the same level) and any $\a \in \GL_{2}^{+}(\Q)$, consider the double coset
+    \[
+      \G_{1}\a\G_{2} = \{\g_{1}\a\g_{2}:\text{$\g_{1} \in \G_{1}$ and $\g_{2} \in \G_{2}$}\}.
+    \]
+    Note that $\G_{1}$ acts on $\G_{1}\a\G_{2}$ by left multiplication so that it decomposes into a disjoin union of orbit spaces. Thus
+    \[
+      \G_{1}\a\G_{2} = \bigcup_{\b \in \G_{1}\backslash\G_{1}\a\G_{2}}\G_{1}\b,
+    \]
+    where the sum is over the orbit representatives $\b$. It turns out that this orbit decomposition is a finite union. To see this we need a lemma which gives a way to describe the orbit representatives for $\G_{1}\a\G_{2}$ in terms of coset representatives:
+
+    \begin{lemma}\label{lem:coset_lemma_2}
+      Let $\G_{1}$ and $\G_{2}$ be congruence subgroups and let $\a \in \GL_{2}^{+}(\Q)$. Then left multiplication map
+      \[
+        \G_{2} \to \G_{1}\a\G_{2} \qquad \g_{2} \mapsto \a\g_{2},
+      \]
+      induces a bijection from the coset space $(\a^{-1}\G_{1}\a \cap \G_{2})\backslash\G_{2}$ to the orbit space $\G_{1}\backslash\G_{1}\a\G_{2}$.
+    \end{lemma}
+    \begin{proof}
+      We will show that the induced map is both surjective and injective. For surjectivity, the orbit representatives $\b$ of $\G_{1}\backslash\G_{1}\a\G_{2}$ are of the form $\b = \g_{1}\a\g_{2}$ for some $\g_{1} \in \G_{1}$ and $\g_{2} \in \G_{2}$. Since $\G_{1}$ is acting on $\G_{1}\a\G_{2}$ by left multiplication, $\b$ can be written as $\b = \a\g'_{2}$ for some $\g'_{2} \in \G_{2}$. This shows that the induced map is a surjection. To prove injectivity, let $\g_{2},\g'_{2} \in \G_{2}$ be such that the orbit space representatives $\a\g_{2}$ and $\a\g'_{2}$ are equivalent. That is,
+      \[
+        \G_{1}\a\g_{2} = \G_{1}\a\g'_{2}.
+      \]
+      This implies $\a\g_{2}(\g'_{2})^{-1} \in \G_{1}\a$ and so $\g_{2}(\g'_{2})^{-1} \in \a^{-1}\G_{1}\a$. But we also have $\g_{2}(\g'_{2})^{-1} \in \G_{2}$ and these two facts together imply that $\g_{2}(\g'_{2})^{-1} \in \a^{-1}\G_{1}\a \cap \G_{2}$. Hence
+      \[
+        (\a^{-1}\G_{1}\a \cap \G_{2})\g_{2} = (\a^{-1}\G_{1}\a \cap \G_{2})\g'_{2},
+      \]
+      which shows that the induced map is also an injection.
+    \end{proof}
+
+    With this lemma in hand, we can prove that the orbit decomposition of $\G_{1}\a\G_{2}$ is finite:
+
+    \begin{proposition}\label{prop:double_congruence_subgroup_coset_decomposition_is_finite}
+      Let $\G_{1}$ and $\G_{2}$ be congruence subgroups and let $\a \in \GL_{2}^{+}(\Q)$. Then the orbit decomposition
+      \[
+        \G_{1}\a\G_{2} = \bigcup_{j}\G_{1}\b_{j},
+      \]
+      with respect to the action of $\G_{1}$ by left multiplication, is a finite union.
+    \end{proposition}
+    \begin{proof}
+      Observe that $\a^{-1}\G_{1}\a \cap \G_{2}$ acts on $\G_{2}$ by left multiplication. By \cref{lem:coset_lemma_2}, the number of orbits of $\G_{1}\backslash\G_{1}\a\G_{2}$ is the same as the number of cosets of $(\a^{-1}\G_{1}\a \cap \G_{2})\backslash\G_{2}$ which is $[\G_{2}:\a^{-1}\G_{1}\a \cap \G_{2}]$. By \cref{lem:coset_lemma_1}, $\a^{-1}\G_{1}\a \cap \PSL_{2}(\Z)$ is a congruence subgroup and hence $[\PSL_{2}(\Z):\a^{-1}\G_{1}\a \cap \PSL_{2}(\Z)]$ is finite. As $\G_{2} = \PSL_{2}(\Z) \cap \G_{2}$ and $\a^{-1}\G_{1}\a \cap \G_{2} = \a^{-1}\G_{1}\a \cap \PSL_{2}(\Z) \cap \G_{2}$, it follows that $[\G_{2}:\a^{-1}\G_{1}\a \cap \G_{2}] \le [\PSL_{2}(\Z):\a^{-1}\G_{1}\a \cap \PSL_{2}(\Z)]$ completing the proof.
+    \end{proof}
+
+    In light of \cref{prop:double_congruence_subgroup_coset_decomposition_is_finite}, we will denote the orbit representatives by $\b_{j}$ to make it clear that there are finitely many.
   \section{Modular Curves}
     Recall that $\GL_{2}^{+}(\Q)$ naturally acts on the Riemann sphere $\hat{\C}$ by M\"obius transformations. Explicitly, any $\g = \begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix} \in \GL_{2}^{+}(\Q)$ acts on $z \in \hat{\C}$ by
     \[
