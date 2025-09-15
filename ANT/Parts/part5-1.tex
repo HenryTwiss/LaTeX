@@ -1,164 +1,204 @@
-\chapter{Subconvexity Results}
-  We discuss a classical subconvexity result for Dirichlet $L$-functions due to Burgess which relies upon subtle estimates for sums of Dirichlet characters. Necessary to this discussion is the infamous P\'olya-Vinogradov inequality which we also prove.
-  \section{The Burgess Bound for Dirichlet \texorpdfstring{$L$}{L}-functions}
-    Let $\chi$ be a Dirichlet character modulo $m$. We call the sum
+\chapter{The Katz-Sarnak Philosophy}
+  The Katz-Sarnak philosophy is an idea that certain statistics about families of $L$-functions should match statistics for random matrices coming from some particular compact matrix group. One starts with some class of zeros to look at, say zeros of an individual $L$-function high up the critical strip or zeros of for some collection of $L$-functions low down on the critical strip. Actually, one works with the corresponding unfolded nontrivial zeros since they are evenly spaced on average. Then some class of test functions are introduced to carry out the statistical calculations in order to reveal the similarity with some class of matrices. In the following, we give a loose introduction to the Katz-Sarnak philosophy.
+  \section{Montgomery's Pair Correlation Conjecture}
+    The beginning of the connection between random matrix theory and analytic number theory was at Princeton in the 1970s via discussions between Montgomery and Dyson. They found similarities between statistical information about the nontrivial distribution of the zeros of the Riemann zeta function and calculations in random matrix theory about unitary matrices. To do this, they considered the unfolded nontrivial zeros $\rho_{\text{unf}} = \b+i\w$ of $\z(s)$ with positive ordinate, that is $\w > 0$, and indexed them according to the size of ordinate. So let $\W = (\w_{n})_{n \ge 1}$ denote the increasing sequence of positive ordinates of the unfolded nontrivial zeros of $\z(s)$. Montgomery and Dyson considered the \textbf{two-point correlation function}\index{two-point correlation function} $F(\a,\b;\z,W)$ for $\z(s)$, defined by
     \[
-      S_{\chi}(M,N) = \sum_{M+1 \le n \le M+N}\chi(n),
+      F(\a,\b;\z,W) = \frac{1}{W}|\{(\w_{n},\w_{m}) \in \W^{2}:\text{$\w_{n},\w_{m} \le W$ and $\w_{n}-\w_{m} \in [\a,\b]$}\}|,
     \]
-    for $M \ge 0$ and $N \ge 1$, the \textbf{character sum}\index{character sum} of $\chi$. If $M = 0$, we write $S_{\chi}(N) = S_{\chi}(0,N)$ for simplicity. In the case $\chi$ is primitive of conductor $q > 1$, an infamous subconvexity estimate for the Dirichlet $L$-function $L(s,\chi)$ in the $q$-aspect was achieved by Burgess in the 1960's (see \cite{burgess1963character}). The key idea of his argument lies in improved bounds for character sums in certain ranges of $M$ and $N$ relative to powers of $q$ which we will describe. On the one hand, since $|\chi(n)| \le 1$ for all $n \ge 1$, we have the trivial bound
-    \begin{equation}\label{equ:character_sum_trivial_bound}
-      S_{\chi}(M,N) \ll N.
-    \end{equation}
-    On the other hand, by the Dirichlet orthogonality relations (namely \cref{cor:Dirichlet_orthogonality_relations} i) and that $\chi$ is non-principal, we have
-    \begin{equation}\label{equ:character_sum_orthogonality_bound}
-      S_{\chi}(M,N) \ll m.
-    \end{equation}
-    Note that \cref{equ:character_sum_orthogonality_bound} is only an improvement upon \cref{equ:character_sum_trivial_bound} when $m \ll N$. It turns out that a much shaper bound than \cref{equ:character_sum_orthogonality_bound} can be obtained with very little work. We will first require a small lemma:
+    for any real $\a$ and $\b$ with $\a < \b$ and $W > 0$. What this function measures is the probability of how close pairs of zeros tend to be with respect to some fixed distance and up to some fixed height. In other words, the correlation between distances of zeros. They wanted to understand if the limiting distribution
+    \[
+      F(\a,\b;\z) = \lim_{W \to \infty}F(\a,\b;\z,W),
+    \]
+    exists and what can be said about it. The following conjecture made by Montgomery, known as Montgomery's pair correlation conjecture, answers this:
 
-    \begin{lemma}\label{lem:Polya-Vinogradov_lemma}
-      Let $f(x)$ be a integrable convex function on $\left(a-\frac{b}{2},a+\frac{b}{2}\right)$ for some $a \in \R$ and $b > 0$. Then
+    \begin{conjecture*}[Montgomery's pair correlation conjecture]
+      For any $\a$ and $\b$ with $\a < \b$, $F(\a,\b;\z)$ exists provided the Riemann hypothesis for the Riemann zeta function holds. Moreover,
       \[
-        f(a) \le \frac{1}{b}\int_{a-\frac{b}{2}}^{a+\frac{b}{2}}f(x)\,dx.
+        F(\a,\b;\z) = \int_{\a}^{\b}\left(1-\left(\frac{\sin(\pi x)}{\pi x}\right)^{2}+\d(x)\right)\,dx,
       \]
-    \end{lemma}
-    \begin{proof}
-      By the definition of convexity,
+      where $\d(x)$ is the Dirac delta function.
+    \end{conjecture*}      
+
+    Montgomery's pair correlation conjecture still remains out of reach, but there is very good numerical evidence supporting it from some unpublished work of Odlyzko (see \cite{odlyzko19921020}). Dyson recognized that Montgomery's pair correlation conjecture models a similar situation in random matrix theory that he had investigated earlier. Consider an $N \x N$ unitary matrix $A \in U(N)$ with eigenphases $\t_{n}$ for $1 \le n \le N$ denoted in increasing order. Clearly the average density of the eigenphases of $A$ in $[0,2\pi)$ is $\frac{N}{2\pi}$. For any eigenphase $\t$, let $\phi$ be the \textbf{unfolded eigenphase}\index{unfolded eigenphase} corresponding to $\t$ be defined by
+    \[ 
+      \phi = \frac{N}{2\pi}\t.
+    \]
+    It follows that the average density of the unfolded eigenphases of $A$ in $[0,N)$ is $1$. Let $\Phi = (\phi_{n})_{1 \le n \le N}$ denote the increasing sequence of unfolded eigenphases of $A$. We consider the \textbf{two-point correlation function}\index{two-point correlation function} $F(\a,\b;A,U(N))$ for $A$, defined by
+    \[
+      F(\a,\b;A,U(N)) = \frac{1}{N}|\{(\phi_{n},\phi_{m}) \in \Phi^{2}:\phi_{n}-\phi_{m} \in [\a,\b]\}|,
+    \]
+    for any real $\a$ and $\b$ with $\a < \b$. Since $U(N)$ has a Haar measure $dA$, we can compute the global distribution of $F(\a,\b;A,U(N))$ over $U(N)$, namely $F(\a,\b;U(N))$, defined by
+    \[
+      F(\a,\b;U(N)) = \int_{U(N)}F(\a,\b;A,U(N))\,dA.
+    \]
+    Analogously, we want to understand if the limiting distribution
+    \[
+      F(\a,\b;U) = \lim_{N \to \infty}F(\a,\b;U(N)),
+    \]
+    exists and what can be said about it. Dyson showed the following (see \cite{dyson1962statistical} for a proof):
+
+    \begin{proposition}\label{prop:Dyson_unitary_distribution}
+      For any real $\a$ and $\b$ with $\a < \b$, $F(\a,\b;U)$ exists. Moreover,
       \[
-        f(a) = f\left(\frac{1}{2}x+\frac{1}{2}(2a-x)\right) \le \frac{1}{2}f(x)+\frac{1}{2}f(2a-x).
+        F(\a,\b;U) = \int_{\a}^{\b}\left(1-\left(\frac{\sin(\pi x)}{\pi x}\right)^{2}+\d(x)\right)\,dx,
       \]
-      Integrating the left-hand side over $\left(a-\frac{b}{2},a+\frac{b}{2}\right)$ yields
+      where $\d(x)$ is the Dirac delta function.
+    \end{proposition}
+
+    The right-hand side of \cref{prop:Dyson_unitary_distribution} is exactly the same formula given in Montgomery's pair correlation conjecture. In other words, if Montgomery's pair correlation conjecture is true then the two-point correlation of the unfolded nontrivial zeros of the Riemann zeta function in the limit as we move up the critical line exactly match the two-point correlation of the unfolded eigenphases of unitary matrices in the limit as the size of the matrices increase. In short, statistical information about the Riemann zeta function agrees with statistical information about the eigenvalues of unitary matrices. This is the origin of the Katz-Sarnak philosophy.
+  \section{Symmetry Types and Families}
+    Katz and Sarnak generalized the work of Montgomery and Dyson by establishing a connection between families of $L$-functions and other compact matrix groups. For the ease of categorization, Katz and Sarnak associated a \textbf{symmetry type}\index{symmetry type} to each compact matrix group that they studied. The underlying compact matrix group associated to each symmetric type is called a \textbf{matrix ensemble}\index{matrix ensemble}. The symmetry types and associated matrix ensembles are described in the following table:
+    \begin{center}
+      \begin{stabular}[1.5]{|c|c|c|}
+        \hline
+        Symmetry Type & Matrix Ensemble \\
+        \hline
+        Unitary ($\mathrm{U}$) & $\U(N)$ \\
+        \hline
+        Orthogonal ($\mathrm{O^{+}}$) & $\SO(2N)$ \\ 
+        \hline
+        Orthogonal ($\mathrm{O^{-}}$) & $\SO(2N+1)$ \\ 
+        \hline
+        Symplectic ($\mathrm{Sp}$) & $\mathrm{USp}(2N)$ \\
+        \hline
+      \end{stabular}
+    \end{center}
+
+    Let $G(N)$ be a matrix ensemble, where $G$ denotes the symmetry type, and let $dA$ denote the Haar measure. For any $A \in G(N)$, let $\Phi = (\phi_{n})_{1 \le n \le N}$ denote the increasing sequence of unfolded eigenphases of $A$. Katz and Sarnak considered two local spacing distributions between the unfolded eigenphases of $A$. The first was the \textbf{two-point correlation function}\index{two-point correlation function} $F(\a,\b;A,G(N))$ for $A$, defined by
+    \[
+      F(\a,\b;A,G(N)) = \frac{1}{N}|\{(\phi_{n},\phi_{m}) \in \Phi^{2}:\phi_{n}-\phi_{m} \in [\a,\b]\}|,
+    \]
+    for any real $\a$ and $\b$ with $\a < \b$. They computed the global distribution of $F(\a,\b;A,G(N))$ over $G(N)$, namely $F(\a,\b;G(N))$, defined by
+    \[
+      F(\a,\b;G(N)) = \int_{G(N)}F(\a,\b;A,G(N))\,dA,
+    \]
+    and sought to understand if the limiting distribution
+    \[
+      F(\a,\b;G) = \lim_{N \to \infty}F(\a,\b;G(N)),
+    \]
+    exists and what can be said about it. Note that in the case $G(N) = U(N)$, this is exactly the two-point correlation function considered by Dyson. Katz and Sarnak succeeded in generalizing Dyson's work (see \cite{katz2023random} for a proof):
+
+    \begin{proposition}\label{prop:Katz_Sarnak_limit_distribution_two_point}
+      For symmetry type $G$ and any real $\a$ and $\b$ with $\a < \b$, $F(\a,\b;G)$ exists. Moreover,
       \[
-        \int_{a-\frac{b}{2}}^{a+\frac{b}{2}}f(a)\,dx = bf(a),
+        F(\a,\b;G) = \int_{\a}^{\b}\left(1-\left(\frac{\sin(\pi x)}{\pi x}\right)^{2}+\d(x)\right)\,dx,
       \]
-      while integrating the right-hand side over $\left[a-\frac{b}{2},a+\frac{b}{2}\right]$ gives
-      \[
-        \int_{a-\frac{b}{2}}^{a+\frac{b}{2}}\left(\frac{1}{2}f(x)+\frac{1}{2}f(2a-x)\right)\,dx = \frac{1}{2}\int_{a-\frac{b}{2}}^{a+\frac{b}{2}}f(x)\,dx+\int_{a-\frac{b}{2}}^{a+\frac{b}{2}}\frac{1}{2}f(2a-x)\,dx = \int_{a-\frac{b}{2}}^{a+\frac{b}{2}}f(x)\,dx,
-      \]
-      upon making the change of variables $x \mapsto 2a-x$ in the second integral. Hence
-      \[
-        bf(a) \le \int_{a-\frac{b}{2}}^{a+\frac{b}{2}}f(x)\,dx,
-      \]
-      which is equivalent to the claim.
-    \end{proof}
+      where $\d(x)$ is the Dirac delta function.
+    \end{proposition}
+
+    The second local spacing distribution was the $k$-th \textbf{consecutive spacing function}\index{consecutive spacing function} for $A$, defined by
+    \[
+      \mu_{k}(\a,\b;A,G(N)) = \frac{1}{N}|\{1 \le j \le N:\text{$(\phi_{j+k},\phi_{j}) \in \Phi^{2}$ and $\phi_{j+k}-\phi_{j} \in [\a,\b]$}\}|,
+    \]
+    for any real $\a$ and $\b$ with $\a < \b$ and $k \ge 1$. Again, they proceeded to compute the global distribution over $G(N)$, namely $\mu_{k}(\a,\b;G(N))$, defined by
+    \[
+      \mu_{k}(\a,\b;G(N)) = \int_{G(N)}\mu_{k}(\a,\b;A,G(N))\,dA,
+    \]
+    and asked if the limiting distribution
+    \[
+      \mu_{k}(\a,\b;G) = \lim_{N \to \infty}\mu_{k}(\a,\b;G(N)),
+    \]
+    exists and what can be said about it. They were able the show the following (see \cite{katz2023random} for a proof):
+
+    \begin{proposition}\label{prop:Katz_Sarnak_limit_distribution_k_spacing}
+      For any symmetry type $G$ and any real $\a$ and $\b$ with $\a < \b$ and $k \ge 1$, $\mu_{k}(\a,\b;G)$ exists. Moreover, it is independent of the particular symmetry type $G$.
+    \end{proposition}
+
+    In particular, \cref{prop:Katz_Sarnak_limit_distribution_two_point,prop:Katz_Sarnak_limit_distribution_k_spacing} show that the limiting distributions $F(\a,\b;G)$ and $\mu_{k}(\a,\b;G)$ are both independent of the symmetry type $G$. However, this symmetry independence is not true for all limiting distributions. Katz and Sarnak also considered a local and global distributions associated to single eigenphases. The local distribution they considered, associated to a single eigenphase, was the \textbf{one-level density function}\index{one-level density function} $\D(\a,\b;A,G(N))$ for $A$, defined by
+    \[
+      \D(\a,\b;A,G(N)) = |\{\phi \in \Phi:\phi \in [\a,\b]\}|.
+    \]
+    They computed the global distribution, namely $\D(\a,\b;G(N))$, defined by
+    \[
+      \D(\a,\b;G(N)) = \int_{G(N)}\D(\a,\b;A,G(N))\,dA,
+    \]
+    and asked if the limiting distribution
+    \[
+      \D(\a,\b;G) = \lim_{N \to \infty}\D(\a,\b;G(N)),
+    \]
+    exists and what can be said about it. Precisely, they proved the following (see \cite{katz2023random} for a proof):
+
+    \begin{proposition}\label{prop:Katz_Sarnak_limit_distribution_one-level_density}
+      For any symmetry type $G$ and any real $\a$ and $\b$ with $\a < \b$ and $k \ge 1$, $\D(\a,\b;G)$ exists. Moreover, it depends upon the particular symmetry type $G$.
+    \end{proposition}
     
-    We can now improve upon \cref{equ:character_sum_orthogonality_bound}. This result is known as the \textbf{P\'olya-Vinogradov inequality}\index{P\'olya-Vinogradov inequality} as it was proved independently by P\'olya and Vinogradov in 1918 (see \cite{polya1918verteilung} and \cite{vinogradov1918distribution}).
+    The global distribution they considered, associated to a single eigenphase, was the \textbf{$k$-th eigenphase function}\index{$k$-th eigenphase function} $\nu_{k}(\a,\b,G(N))$ for $G(N)$, defined by
+    \[
+      \nu_{k}(\a,\b;G(N)) = dA\left(\left\{A \in G(N):\phi_{k} \in [\a,\b]\right\}\right),
+    \]
+    for any real $\a$ and $\b$ with $\a < \b$ and $k \ge 1$. Again, they asked if the limiting distribution
+    \[
+      \nu_{k}(\a,\b;G) = \lim_{N \to \infty}\nu_{k}(\a,\b;G(N)),
+    \]
+    exists and what can be said about it. They were able to show the following (see \cite{katz2023random} for a proof):
 
-    \begin{theorem*}[P\'olya-Vinogradov inequality]
-      Let $\chi$ be a non-principal Dirichlet character modulo $m$. Then for any $M \ge 0$ and $N \ge 1$,
-      \[
-        S_{\chi}(M,N) \ll \sqrt{m}\log(m).
-      \]
-    \end{theorem*}
-    \begin{proof}
-      First suppose $\chi$ is primitive of conductor $q > 1$. Using \cref{cor:gauss_sum_primitive_formula}, we have
-      \[
-        S_{\chi}(M,N) = \frac{1}{\tau(\cchi)}\sum_{a \tmod{q}}\cchi(a)\sum_{M+1 \le n \le M+N}e^{\frac{2\pi ian}{q}}.
-      \]
-      The inner sum is geometric and evaluates to
-      \[
-        \sum_{M+1 \le n \le M+N}e^{\frac{2\pi ian}{q}} = e^{\frac{2\pi ia(M+1)}{q}}\left(\frac{1-e^{\frac{2\pi iaN}{q}}}{1-e^{\frac{2\pi ia}{q}}}\right) = e^{\frac{2\pi ia\left(M+\frac{N-1}{2}\right)}{q}}\left(\frac{e^{\frac{\pi iaN}{q}}-e^{-\frac{\pi iaN}{q}}}{e^{\frac{\pi ia}{q}}-e^{-\frac{\pi ia}{q}}}\right) = e^{\frac{2\pi ia\left(M+\frac{N-1}{2}\right)}{q}}\frac{\sin\left(\frac{\pi Na}{q}\right)}{\sin\left(\frac{\pi a}{q}\right)},
-      \]
-      where in the last equality we have made use of the formula $\sin(x) = \frac{e^{ix}+e^{-ix}}{2i}$. Then \cref{thm:Gauss_sum_modulus}, gives
-      \[
-        S_{\chi}(M,N) \ll \frac{1}{\sqrt{q}}\sum_{1 \le a \le q-1}\frac{1}{\sin\left(\frac{\pi a}{q}\right)},
-      \]
-      where we recall that $\cchi(0) = 0$. Now the function $\frac{1}{\sin(\pi x)}$ is convex and integrable on $(0,1)$ (its second derivative is $\pi^{2}\frac{1+\cos^{2}(\pi x)}{\sin^{3}(\pi x)} > 0$ on this interval), so from \cref{lem:Polya-Vinogradov_lemma} we get
-      \[
-        \frac{1}{\sqrt{q}}\sum_{1 \le a \le q-1}\frac{1}{\sin\left(\frac{\pi a}{q}\right)} \le \frac{1}{\sqrt{q}}\sum_{1 \le a \le q-1}q\int_{\frac{a}{q}-\frac{1}{2q}}^{\frac{a}{q}+\frac{1}{2q}}\frac{1}{\sin(\pi x)}\,dx = \sqrt{q}\int_{\frac{1}{2q}}^{1-\frac{1}{2q}}\frac{1}{\sin(\pi x)}\,dx = 2\sqrt{q}\int_{\frac{1}{2q}}^{\frac{1}{2}}\frac{1}{\sin(\pi x)}\,dx,
-      \]
-      where the last equality holds because $\sin(\pi x) = \sin(\pi-\pi x) = \sin(\pi(1-x))$ so that the integral of $\frac{1}{\sin(\pi x)}$ is symmetric over $\left(\frac{1}{2q},\frac{1}{2}\right)$ and $\left(\frac{1}{2},1-\frac{1}{2q}\right)$. Now $\sin(\pi x) \ge 2x$ on the interval $[0,\frac{1}{2}]$ (because $\sin(\pi x) = 2x$ at the boundary and both functions are increasing on the interior), so that
-      \[
-        2\sqrt{q}\int_{\frac{1}{2q}}^{\frac{1}{2}}\frac{1}{\sin(\pi x)}\,dx \le q\int_{\frac{1}{2q}}^{\frac{1}{2}}\frac{1}{x}\,dx \ll \sqrt{q}\log(q).
-      \]
-      Therefore
-      \[
-        S_{\chi}(M,N) \ll \sqrt{q}\log(q),
-      \]
-      as desired. This proves the bound in the case $\chi$ is primitive. Now suppose $\chi$ is induced by the primitive character $\wtilde{\chi}$ of conductor $q > 1$. Then $q \mid m$, and so we may write $m = kq$ for some $k \ge 1$. Rewrite the sum in terms of $\wtilde{\chi}$ as follows:
-      \begin{align*}
-        S_{\chi}(M,N) &= \sum_{\substack{M+1 \le n \le M+N \\ (n,k) = 1}}\wtilde{\chi}(n) \\
-        &= \sum_{M+1 \le n \le M+N}\wtilde{\chi}(n)\sum_{d \mid (n,k)}\mu(d) && \text{\cref{prop:Mobius_dirac_delta}} \\
-        &= \sum_{d \mid k}\mu(d)\sum_{\substack{M+1 \le n \le M+N \\ d \mid n}}\wtilde{\chi}(n) \\
-        &= \sum_{d \mid k}\mu(d)\sum_{\frac{M+1}{d} \le n \le \frac{M+N}{d}}\wtilde{\chi}(dn) && \text{$n \to dn$} \\
-        &= \sum_{d \mid k}\mu(d)\wtilde{\chi}(d)\sum_{\left\lfloor\frac{M+1}{d}\right\rfloor \le n \le \left\lfloor\frac{M+N}{d}\right\rfloor}\wtilde{\chi}(n).
-      \end{align*}
-      The inner sum is $O(\sqrt{q}\log(q))$ by the primitive case and so
-      \[
-        S_{\chi}(M,N) \ll \sqrt{q}\log(q)\sum_{d \mid k}|\mu(d)| \ll 2^{\w(k)}\sqrt{q}\log(q).
-      \]
-      Since $2^{\w(k)} \ll \s_{0}(k) \ll_{\e} k^{\e}$ (see \cref{prop:sum_of_divisors_growth_rate}) it follows that $2^{\w(k)} \ll \sqrt{k}$ upon taking $\e = \frac{1}{2}$. This bound together with $\log(q) \le \log(m)$ gives
-      \[
-        S_{\chi}(M,N) \ll \sqrt{m}\log(m),
-      \]
-      as claimed.
-    \end{proof}
+    \begin{proposition}\label{prop:Katz_Sarnak_limit_distribution_k_eigenphase}
+      For any symmetry type $G$ and any real $\a$ and $\b$ with $\a < \b$ and $k \ge 1$, $\nu_{k}(\a,\b;G)$ exists. Moreover, it depends upon the particular symmetry type $G$.
+    \end{proposition}
 
-    The P\'olya-Vinogradov inequality greatly improves upon \cref{equ:character_sum_orthogonality_bound} and is particularly useful when $N$ is much larger than $m$. A slight improvement was made in 1977 by Montgomery and Vaughn under the Riemann hypothesis for Dirichlet $L$-functions (see \cite{montgomery1977exponential}):
+    In short, Katz and Sarnak studied four limiting distributions $F(\a,\b;G)$, $\mu_{k}(\a,\b;G)$, $\D(\a,\b;G)$, and $\nu_{k}(\a,\b;G)$. The former two are distributions about collections of eigenphases of unitary matrices and are independent of the symmetry type $G$ while the latter two are distributions about single eigenphases of unitary matrices and depend upon the symmetry type $G$. Analogous distributions can be defined for families of $L$-functions. We say that a collection of $L$-functions $\mc{F} = (L(s_{\a},f_{\a}))_{\a \in F}$, for some infinite indexing set $F \subset \R_{\ge 0}$, is a \textbf{family}\index{family} if it is an ordered set with respect to the analytic conductor and if $\mf{q}(s_{\a},f_{\a}) \to \infty$ as $\a \to \infty$. We say that the family $\mc{F}$ is \textbf{continuous}\index{continuous} if $f_{\a} = f_{\b}$ for all $\a,\b \in F$ and $s_{\a} = \s+it_{\a}$ where $t_{\a}$ is a continuous function of $\a$. Necessarily, $t_{\a} \to \infty$ as $\a \to \infty$ and $F$ is a half-open ray. We say that a family $\mc{F}$ is \textbf{discrete}\index{discrete} if $f_{\a} \neq f_{\b}$ for all distinct $\a,\b \in F$ and $F$ is discrete. Necessarily, $q(f_{\a}) \to \infty$ as $\a \to \infty$ and, reindexing if necessary, $F \subseteq \Z_{+}$. Katz and Sarnak arrived at a heuristical conjecture known as the \textbf{Katz-Sarnak philosophy}\index{Katz-Sarnak philosophy} in terms of families of $L$-functions:
 
-    \begin{theorem}\label{thm:MV_bound_character_sum}
-      Let $\chi$ be a non-principal Dirichlet character modulo $m$. Then for any $M \ge 0$ and $N \ge 1$,
-      \[
-        S_{\chi}(M,N) \ll \sqrt{m}\log{\log(m)},
-      \]
-      provided the Riemann hypothesis for Dirichlet $L$-functions holds.
-    \end{theorem}
-    
-    While \cref{thm:MV_bound_character_sum} is not much of an improvement from the P\'olya-Vinogradov inequality, it is sharp due to a result of Paley in 1932 (see \cite{paley1932theorem}). This means that, quite remarkably, the P\'olya-Vinogradov inequality is almost optimal. It is also useful to have an estimate that is sharper when $N$ is small compared to $m$. In 1963, Burgess made progress in this direction by proving the following result (see \cite{burgess1963character} for a proof which is a generalization of his 1962 papers \cite{burgess1962characterL-series} and \cite{burgess1962characterprimitive}):
+    \begin{conjecture*}[Katz-Sarnak Philosophy]
+      \phantom{ }
+      \begin{enumerate}[label*=(\roman*)]
+        \item The statistics about collections of eigenphases of a random matrix belonging to a matrix ensemble of symmetry type $G$, in the limit as the size of the matrix tends to infinity, should model statistics about the nontrivial zeros of a continuous family of $L$-functions as the heights of the nontrivial zeros tends to infinity.
+        \item The statistics about a single eigenphase of a random matrix belonging to a matrix ensemble of symmetry type $G$, in the limit as the size of the matrix tends to infinity, should model statistics about a discrete family of $L$-functions as the size of the conductor tends to infinity.
+      \end{enumerate}
+    \end{conjecture*}
 
-    \begin{theorem}\label{thm:Burgess_inequality}
-      Let $\chi$ be a non-principal Dirichlet character modulo $m > 1$ and $M \ge 0$, $N \ge 1$, and $r \ge 1$ be integers. Then
-      \[
-        S_{\chi}(M,N) \ll_{\e} N^{1-\frac{1}{r}}m^{\frac{r+1}{4r^{2}}+\e},
-      \]
-      provided $m$ is cube-free or $r = 2$.
-    \end{theorem}
-
-    \cref{thm:Burgess_inequality} can be thought of as a blend between \cref{equ:character_sum_trivial_bound} and the P\'olya-Vinogradov inequality. Despite the proof being reasonably short, we do not provide the argument as it requires some machinery beyond the scope of this text. More importantly, Burgess used \cref{thm:Burgess_inequality} in conjunction with the P\'olya-Vinogradov inequality to prove a subconvexity estimate for Dirichlet $L$-functions in the conductor-aspect:
-
-    \begin{theorem}\label{thm:Burgess_bound_conductor_aspect_Dirichlet}
-      Let $\chi$ be a primitive Dirichlet character of conductor $q > 1$. Then for $0 < \s < 1$, we have
-      \[
-        L(s,\chi) \ll_{t,\e} \begin{cases} q^{\frac{4-5\s}{8}+\e} & \text{if $0 < \s \le \frac{1}{2}$}, \\ q^{\frac{3-3\s}{8}+\e} & \text{if $\frac{1}{2} \le \s < 1$}. \end{cases}
-      \]
-      In particular,
-      \[
-        L\left(\frac{1}{2}+it,\chi\right) \ll_{\e} q^{\frac{3}{16}+\e}. 
-      \]
-    \end{theorem}
-    \begin{proof}
-      Let $0 < \s < 1$. Summation by parts (see \cref{cor:summation_by_parts_corollary}) gives
-      \[
-        \sum_{n \le N}\frac{\chi(n)}{n^{s}} = S_{\chi}(N)N^{-s}+\sum_{n \le N-1}S_{\chi}(n)(n^{-s}-(n+1)^{-s}),
-      \]
-      for any $N \ge 1$. By applying the mean value theorem to $f(x) = \frac{1}{x^{s}}$ on the interval $[n,n+1]$ we have $(n^{-s}-(n+1)^{-s}) \ll_{t} \frac{1}{n^{\s+1}}$, and thus
-      \[
-        \sum_{n \le N}\frac{\chi(n)}{n^{s}} \ll_{t} |S_{\chi}(N)|N^{-\s}+\sum_{n \le N-1}\frac{|S_{\chi}(n)|}{n^{\s+1}}.
-      \]
-      As $|S_{\chi}(N)||N^{-\s}| \to 0$ as $N \to \infty$ (recall \cref{equ:character_sum_orthogonality_bound}), taking the limit as $N \to \infty$ results in
-      \[
-        L(s,\chi) \ll_{t} \sum_{n \ge 1}\frac{|S_{\chi}(n)|}{n^{\s+1}},
-      \]
-      where the estimate follows  Letting $M > 2$, $N \ge 1$, and decompose the right-hand side, we obtain
-      \[
-        L(s,\chi) \ll_{t} \sum_{1 \le M-1}\frac{|S_{\chi}(n)|}{n^{\s+1}}+\sum_{M \le n \le N}\frac{|S_{\chi}(n)|}{n^{\s+1}}+\sum_{n \ge N+1}\frac{|S_{\chi}(n)|}{n^{\s+1}}.
-      \]
-      Applying \cref{equ:character_sum_trivial_bound} to the first character sum, \cref{thm:Burgess_inequality} (in the case $r = 2$) to the second character sum, and the P\'olya-Vinogradov inequality to the third character sum, gives
-      \[
-        L(s,\chi) \ll_{t,\e} \sum_{1 \le M-1}\frac{1}{n^{\s}}+q^{\frac{3}{16}+\e}\sum_{M \le n \le N}\frac{1}{n^{\s+\frac{1}{2}}}+q^{\frac{1}{2}+\e}\sum_{n \ge N+1}\frac{1}{n^{\s+1}},
-      \]
-      where we have used that $\log(q) \ll_{\e} q^{\e}$. Upper bounding the first and third sums with an integral and integrating, we get
-      \[
-        L(s,\chi) \ll_{t,\e} M^{1-\s}+q^{\frac{3}{16}+\e}\sum_{M \le n \le N}\frac{1}{n^{\s+\frac{1}{2}}}+q^{\frac{1}{2}+\e}N^{-\s},
-      \]
-      since $0 < \s < 1$. Performing the same argument with the remaining sum, we see that
-      \[
-        \sum_{M \le n \le N}\frac{1}{n^{\s+\frac{1}{2}}} \ll \begin{cases} N^{\frac{1}{2}-\s} & \text{if $0 < \s < \frac{1}{2}$}, \\ \log(N) & \text{if $\s = \frac{1}{2}$}, \\ M^{\frac{1}{2}-\s} & \text{if $\frac{1}{2} < \s < 1$}. \end{cases}
-      \]
-       Upon setting $M = \lfloor q^{\frac{3}{8}} \rfloor$ and $N = \lceil q^{\frac{5}{8}} \rceil$, we obtain
-      \[
-        L(s,\chi) \ll_{t,\e} \begin{cases} q^{\frac{4-5\s}{8}+\e} & \text{if $0 < \s \le \frac{1}{2}$}, \\ q^{\frac{3-3\s}{8}+\e} & \text{if $\frac{1}{2} \le \s < \frac{1}{2}$}, \end{cases}
-      \]
-      because the third term dominates for $0 < \s < \frac{1}{2}$, the first term dominates for $\frac{1}{2} < \s < 1$, and at $s = \frac{1}{2}$ the first and third terms are balanced and dominate the second term. This proves the first statement. The second follows by taking $\s = \frac{1}{2}$.
-    \end{proof}
-
-    In particular, \cref{thm:Burgess_bound_conductor_aspect_Dirichlet} shows that the Burgess bound in the conductor-aspect holds for Dirichlet $L$-functions. This is how the Burgess bound got its name as it was the first subconvexity estimate for Dirichlet $L$-functions in the conductor-aspect.
+    Determining the symmetry type of a family is generally a difficult task. Below are some well-studied families and their symmetry types (see \cite{conrey2005integral} for a determination of the symmetry type):
+    \begin{center}
+      \begin{stabular}[1.5]{|c|c|c|}
+        \hline
+        Symmetry Type & Family \\
+        \hline
+        \multirow{2}{*}{Unitary} & $\{L\left(\s+it,f\right):\text{$L(s,f)$ is of Selberg class}\}$ ordered by $t$ \\& $\{L(s,\chi):\text{$\chi$ is a primitive character modulo $q$}\}$ ordered by $q$ \\
+        \hline
+        \multirow{2}{*}{Orthogonal} & $\{L(s,f):\text{$f \in \mc{S}_{k}(N,\chi)$ is a primitive Hecke eigenform}\}$ ordered by $k$ \\& $\{L(s,f):\text{$f \in \mc{S}_{k}(N,\chi)$ is a primitive Hecke eigenform}\}$ ordered by $N$ \\
+        \hline
+        Symplectic & $\{L(s,\chi_{\D_{d}}):\text{$\D_{d}$ is a fundamental discriminant}\}$ ordered by $|\D_{d}|$ \\
+        \hline
+      \end{stabular}
+    \end{center}
+  \section{Characteristic Polynomials of Unitary Matrices}
+    The Katz-Sarnak philosophy conjectures that the statistics about nontrivial zeros of $L$-functions are modeled by the statistics of eigenphases of random unitary matrices. However, there is a striking surface level connection between $L$-functions and the characteristic polynomials of unitary matrices which we now describe. For $A \in U(N)$, let
+    \[
+      L(s,A) = \det(I-sA) = \prod_{1 \le n \le N}(1-se^{i\t_{n}}),
+    \]
+    be the characteristic polynomial of $A$. It will turn out that $L(s,A)$ has strikingly similar properties to an $L$-function. The product expression for $L(s,A)$ is clearly analogous to the Euler product expression for an $L$-function. Upon expanding the product, we obtain
+    \[
+      L(s,A) = \sum_{0 \le n \le N}a_{n}s^{n},
+    \]
+    for some coefficients $a_{n}$. This expression is analogous to the $L$-series of an $L$-function. Of course, as $L(s,A)$ is a polynomial it is analytic on $\C$. Moreover, $L(s,A)$ possesses a functional equation as $s \mapsto \frac{1}{s}$. To see this, first observe that multiplicativity of the determinant gives
+    \[
+      L(s,A) = (-1)^{N}\det(A)s^{N}\det(I-s^{-1}A^{-1}).
+    \]
+    As $A$ is unitary, $L(s,A^{-1}) = L(s,A^{\ast}) = L(s,\conj{A})$. So the above equation can be expressed as
+    \[
+      L(s,A) = (-1)^{N}\det(A)s^{N}L\left(\frac{1}{s},\conj{A}\right).
+    \]
+    This is the analog of the functional equation for an $L$-function under the symmetry $s \mapsto 1-s$. We identify the analogs of the gamma factor and conductor as $1$ and $N$ respectively. Letting $\L(s,A)$ be defined by
+    \[
+      \L(s,A) = s^{-\frac{N}{2}}L(s,A),
+    \]
+    the functional equation can be expressed as
+    \[
+        \L(s,A) = (-1)^{N}\det(A) \L\left(\frac{1}{s},\conj{A}\right).
+    \]
+    From it, the analog of root number is seen to be $(-1)^{N}\det(A)$ and $L(s,A)$ has dual $L(s,\conj{A})$. As the symmetry $s \mapsto \frac{1}{s}$ leaves the unit circle invariant, the unit circle is the analog of the critical line. The fixed point of the symmetry $s \mapsto \frac{1}{s}$ is $s = 1$ which is the analog of the central point. Moreover, as the zeros of $L(s,A)$ are precisely the eigenvalues of $A$ which lie on the unit circle, because $A$ is unitary, the analog of the Riemann hypothesis is true for $L(s,A)$. We also have an analog of the approximate functional equation. By substituting the polynomial representation of $L(s,A)$ into the functional equation, we obtain
+    \[
+      \sum_{0 \le n \le N}a_{n}s^{n} = (-1)^{N}\det(A)s^{N}\sum_{0 \le n \le N}\conj{a_{n}}s^{-n} = (-1)^{N}\det(A)\sum_{0 \le n \le N}\conj{a_{n}}s^{N-n}.
+    \]
+    Comparing coefficients shows that
+    \[
+      a_{n} = (-1)^{N}\det(A)\conj{a_{N-n}},
+    \]
+    for $0 \le n \le N$. Then
+    \[
+      L(s,A) = a_{\frac{N}{2}}s^{\frac{N}{2}}+\sum_{0 \le n \le \frac{N}{2}-1}a_{n}s^{n}+(-1)^{N}\det(A)s^{N}\sum_{0 \le n \le \frac{N}{2}-1}\conj{a_{n}}s^{-n},
+    \]
+    or
+    \[
+      L(s,A) = \sum_{0 \le n \le \frac{N-1}{2}}a_{n}s^{n}+(-1)^{N}\det(A)s^{N}\sum_{0 \le n \le \frac{N-1}{2}}\conj{a_{n}}s^{-n},
+    \]
+    according to if $N$ is even or odd. These equations together are the analog of the approximate functional equation. This similarity between $L$-functions and the characteristic polynomials of unitary matrices was heavily exploited by Conrey, Farmer, Keating, Rubinstein, and Snaith to make phenomenal conjectures about the  moments of $L$-functions.

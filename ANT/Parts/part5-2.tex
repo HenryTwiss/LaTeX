@@ -1,204 +1,197 @@
-\chapter{The Katz-Sarnak Philosophy}
-  The Katz-Sarnak philosophy is an idea that certain statistics about families of $L$-functions should match statistics for random matrices coming from some particular compact matrix group. One starts with some class of zeros to look at, say zeros of an individual $L$-function high up the critical strip or zeros of for some collection of $L$-functions low down on the critical strip. Actually, one works with the corresponding unfolded nontrivial zeros since they are evenly spaced on average. Then some class of test functions are introduced to carry out the statistical calculations in order to reveal the similarity with some class of matrices. In the following, we give a loose introduction to the Katz-Sarnak philosophy.
-  \section{Montgomery's Pair Correlation Conjecture}
-    The beginning of the connection between random matrix theory and analytic number theory was at Princeton in the 1970s via discussions between Montgomery and Dyson. They found similarities between statistical information about the nontrivial distribution of the zeros of the Riemann zeta function and calculations in random matrix theory about unitary matrices. To do this, they considered the unfolded nontrivial zeros $\rho_{\text{unf}} = \b+i\w$ of $\z(s)$ with positive ordinate, that is $\w > 0$, and indexed them according to the size of ordinate. So let $\W = (\w_{n})_{n \ge 1}$ denote the increasing sequence of positive ordinates of the unfolded nontrivial zeros of $\z(s)$. Montgomery and Dyson considered the \textbf{two-point correlation function}\index{two-point correlation function} $F(\a,\b;\z,W)$ for $\z(s)$, defined by
-    \[
-      F(\a,\b;\z,W) = \frac{1}{W}|\{(\w_{n},\w_{m}) \in \W^{2}:\text{$\w_{n},\w_{m} \le W$ and $\w_{n}-\w_{m} \in [\a,\b]$}\}|,
-    \]
-    for any real $\a$ and $\b$ with $\a < \b$ and $W > 0$. What this function measures is the probability of how close pairs of zeros tend to be with respect to some fixed distance and up to some fixed height. In other words, the correlation between distances of zeros. They wanted to understand if the limiting distribution
-    \[
-      F(\a,\b;\z) = \lim_{W \to \infty}F(\a,\b;\z,W),
-    \]
-    exists and what can be said about it. The following conjecture made by Montgomery, known as Montgomery's pair correlation conjecture, answers this:
+\chapter{The Theory of Moments}
+  The study of moments of $L$-functions is essentially the method of studying a single $L$-function, or a family of $L$-functions, on average. While this approach leads to weaker results for a single $L$-function, it is often more malleable and sheds light on the general behavior of these objects. In the following we introduce moments of a single $L$-function, moments of families, and discuss some of their longstanding conjectures.
+\section{Continuous and Discrete Moments}
+  One of the longstanding goal in the study of $L$-functions is to prove the Riemann hypothesis for the Riemann zeta function. More generally, we wish to prove the Riemann hypothesis for different types of $L$-functions. Another longstanding goal would be to prove the Lindel\"of hypothesis for the Riemann zeta function, or more generally, any Selberg class $L$-function. While both the Riemann and Lindel\"of hypotheses remain out of reach for any Selberg class $L$-function $L(s,f)$, the latter is more tractable because the convexity bound gives the estimate
+  \[
+    L\left(\frac{1}{2}+it,f\right) \ll_{\e} \mf{q}\left(\frac{1}{2}+it,f\right)^{\d+\e},
+  \]
+  with $\d = \frac{1}{4}$ whereas the Lindel\"of hypothesis claims that we can take $\d = 0$. As we have already mentioned, breaking the convexity bound $\d = \frac{1}{4}$ is a very daunting task requiring extremely modern techniques and has only been successful in a few cases. This approach of breaking convexity to study the Lindel\"of hypothesis is quite direct. There is another approach to study the Lindel\"of hypothesis that is more indirect by considering averages of the $L$-function in question. This is the study of moments of $L$-functions. For any $L$-function $L(s,f)$ and $k \ge 1$, we define the $k$-th \textbf{moment}\index{moment} of $L(s,f)$, namely $M_{k}(T,f)$, to be
+  \[
+    M_{k}(T,f) = \int_{0}^{T}\left|L\left(\frac{1}{2}+it,f\right)\right|^{k}\,dt,
+  \]
+  for any $T > 0$. More generally, we can define moments for any continuous or discrete family $\mc{F}$ of $L$-functions. For any $k \ge 1$, we define the $k$-th \textbf{moment}\index{moment} of $\mc{F}$, namely $M_{k}(T,\mc{F};\s)$ or $M_{k}(Q,\mc{F};s)$, to be
+  \[
+    M_{k}(T,\mc{F};\s) = \int_{0}^{T}|L\left(\s+it,f\right)|^{k}\,dt \quad \text{or} \quad M_{k}(Q,\mc{F};s) = \sum_{\substack{f \in \mc{F} \\ q(f) \le Q}}|L\left(s,f\right)|^{k},
+  \]
+  according to if $\mc{F}$ is continuous or discrete. We call these moments \textbf{continuous}\index{continuous} and \textbf{discrete}\index{discrete} respectively. Note that continuous moments only depend upon $\s$ while discrete moments may depend upon $s$. Moreover, we suppress the dependence upon $\s$ or $s$ respectively if $\s = \frac{1}{2}$ or $s = \frac{1}{2}$. So for a continuous family, $M_{k}(T,\mc{F}) = M_{k}(T,f)$. Generally speaking, we are usually interested in proving asymptotics for moments in terms of the parameter of the analytic conductor that is approaching infinity for the particular family. For continuous families this parameter is $t$ and for discrete families it is $q(f)$. In the case of $M_{k}(T,f)$, it is useful to think of this moment as essentially a $k$-power average version of the Lindel\"of hypothesis for $L(s,f)$. There is actually a close connection to the Lindel\"of hypothesis since sufficient estimates for $M_{2k}(T,f)$ in $T$ for all $k \ge 1$ is equivalent to the Lindel\"of hypothesis as the following proposition shows:
 
-    \begin{conjecture*}[Montgomery's pair correlation conjecture]
-      For any $\a$ and $\b$ with $\a < \b$, $F(\a,\b;\z)$ exists provided the Riemann hypothesis for the Riemann zeta function holds. Moreover,
+  \begin{proposition}\label{prop:equivalence_Lindelof_hypothesis_and_moments}
+    Let $L(s,f)$ be an $L$-function. The truth of the Lindel\"of hypothesis for $L(s,f)$ is equivalent to the estimate
+    \[
+      M_{2k}(T,f) \ll_{\e} T^{1+\e},
+    \]
+    for all $k \ge 1$.
+  \end{proposition}
+  \begin{proof}
+    First suppose the Lindel\"of hypothesis for $L(s,f)$ holds. As $\mf{q}\left(\frac{1}{2}+it,f\right) \ll t^{d_{f}}$, the Lindel\"of hypothesis for $L(s,f)$ implies
+    \[
+      M_{2k}(T,f) \ll \int_{0}^{T}t^{\e}\,dt \ll T^{1+\e},
+    \]
+    as desired. Now suppose that $M_{2k}(T,f) \ll_{\e} T^{1+\e}$ for all $k \ge 1$. If the Lindel\"of hypothesis for $L(s,f)$ is false then there is some $0 < \l < 1$ and positive unbounded real sequence $(t_{n})_{n \ge 1}$ such that
+    \[
+      \left|L\left(\frac{1}{2}+it_{n},f\right)\right| > C\mf{q}\left(\frac{1}{2}+it_{n},f\right)^{\l},
+    \]
+    for any $C > 0$. In particular,
       \[
-        F(\a,\b;\z) = \int_{\a}^{\b}\left(1-\left(\frac{\sin(\pi x)}{\pi x}\right)^{2}+\d(x)\right)\,dx,
-      \]
-      where $\d(x)$ is the Dirac delta function.
-    \end{conjecture*}      
+      \left|L\left(\frac{1}{2}+it,f\right)\right| > Ct_{n}^{d_{f}\l}.
+    \]
+    Now the convexity bound for $L'(s,f)$ implies the weaker estimate $L'\left(\frac{1}{2}+it\right) \le C't^{d_{f}}$ for some $C' > 0$ and $t$ bounded away from zero. Then
+    \[
+      \left|L\left(\frac{1}{2}+it,f\right)-L\left(\frac{1}{2}+it_{n},f\right)\right| = \left|\int_{t_{n}}^{t}L'\left(\frac{1}{2}+ir,f\right)\,dr\right| < C't_{n}^{d_{f}}|t-t_{n}| < \frac{C}{2}t_{n}^{d_{f}\l},
+    \]
+    provided $|t-t_{n}| \le t_{n}^{d_{f}(\l-1)}$ which is valid for sufficiently large $n$ (and thus $t_{n}$ and $t$ are bounded away from zero). For such $t$ and $n$, the previous two bounds together imply
+    \[
+      \left|L\left(\frac{1}{2}+it,f\right)\right| > \frac{C}{2}t_{n}^{d_{f}\l}.
+    \]
+    Now take $T = \frac{4}{3}t_{n}$ so that the interval $(t_{n}-t_{n}^{d_{f}(\l-1)},t_{n}+t_{n}^{d_{f}(\l-1)})$ is contained in $\left(\frac{T}{2},T\right)$ provided we take $n$ larger if necessary. It follows that
+    \[
+      \int_{\frac{T}{2}}^{T}\left|L\left(\frac{1}{2}+it,f\right)\right|^{2k}\,dt > \int_{t_{n}-t_{n}^{d_{f}(\l-1)}}^{t_{n}+t_{n}^{d_{f}(\l-1)}}\left|L\left(\frac{1}{2}+it,f\right)\right|^{2k}\,dt > 2\left(\frac{C}{2}\right)^{2k}t_{n}^{(2k+1)d_{f}\l-d_{f}},
+    \]
+    and hence
+    \[
+      M_{2k}(T,f) > 2\left(\frac{C}{2}\right)^{2k}\left(\frac{3}{4}\right)^{(2k+1)d_{f}\l-d_{f}}T^{(2k+1)d_{f}\l-d_{f}}.
+    \]
+    This is a contradiction for sufficiently large $k$ which completes the proof.
+  \end{proof}
 
-    Montgomery's pair correlation conjecture still remains out of reach, but there is very good numerical evidence supporting it from some unpublished work of Odlyzko (see \cite{odlyzko19921020}). Dyson recognized that Montgomery's pair correlation conjecture models a similar situation in random matrix theory that he had investigated earlier. Consider an $N \x N$ unitary matrix $A \in U(N)$ with eigenphases $\t_{n}$ for $1 \le n \le N$ denoted in increasing order. Clearly the average density of the eigenphases of $A$ in $[0,2\pi)$ is $\frac{N}{2\pi}$. For any eigenphase $\t$, let $\phi$ be the \textbf{unfolded eigenphase}\index{unfolded eigenphase} corresponding to $\t$ be defined by
-    \[ 
-      \phi = \frac{N}{2\pi}\t.
-    \]
-    It follows that the average density of the unfolded eigenphases of $A$ in $[0,N)$ is $1$. Let $\Phi = (\phi_{n})_{1 \le n \le N}$ denote the increasing sequence of unfolded eigenphases of $A$. We consider the \textbf{two-point correlation function}\index{two-point correlation function} $F(\a,\b;A,U(N))$ for $A$, defined by
-    \[
-      F(\a,\b;A,U(N)) = \frac{1}{N}|\{(\phi_{n},\phi_{m}) \in \Phi^{2}:\phi_{n}-\phi_{m} \in [\a,\b]\}|,
-    \]
-    for any real $\a$ and $\b$ with $\a < \b$. Since $U(N)$ has a Haar measure $dA$, we can compute the global distribution of $F(\a,\b;A,U(N))$ over $U(N)$, namely $F(\a,\b;U(N))$, defined by
-    \[
-      F(\a,\b;U(N)) = \int_{U(N)}F(\a,\b;A,U(N))\,dA.
-    \]
-    Analogously, we want to understand if the limiting distribution
-    \[
-      F(\a,\b;U) = \lim_{N \to \infty}F(\a,\b;U(N)),
-    \]
-    exists and what can be said about it. Dyson showed the following (see \cite{dyson1962statistical} for a proof):
+  The usefulness of \cref{prop:equivalence_Lindelof_hypothesis_and_moments} is that the difficulty of proving the Lindel\"of hypothesis for $L(s,f)$ has been transferred to proving sufficient asymptotics for the moments $M_{2k}(T,f)$ each of which should, heuristically speaking, be an easier problem to resolve on its own.
+\section{The Moment Conjectures}
+  Hardy and Littlewood were the first to introduce moments and they did so in the context of the Riemann zeta function. In 1918, they proved an asymptotic for the second moment (see \cite{hardy1916contributions} for a proof):
+  \[
+    M_{2}(T,\zeta) \sim T\log(T).
+  \]
+  In 1926, Ingham obtained an asymptotic for the fourth moment (see \cite{ingham1928mean} for a proof):
+  \[
+    M_{4}(T,\zeta) \sim \frac{1}{2\pi^{2}}T\log^{4}(T).
+  \]
+  Observe that both of these asymptotics are stronger than those in \cref{prop:equivalence_Lindelof_hypothesis_and_moments}. In other words, this is evidence in support of the truth of the Lindel\"of hypotheses for $\z(s)$. Unfortunately, this is where progress significantly halts. No analogous formula have been obtained for moments of any $L$-function when $k > 2$. In fact, the problem is so intractable that, until recently, there were not even conjectures about what the asymptotics should be. In 2000, Keating and Snaith used the Katz-Sarnak philosophy to put forth a precise conjecture for the asymptotics of the moments of the Riemann zeta function (see \cite{keating2000random} for details):
 
-    \begin{proposition}\label{prop:Dyson_unitary_distribution}
-      For any real $\a$ and $\b$ with $\a < \b$, $F(\a,\b;U)$ exists. Moreover,
-      \[
-        F(\a,\b;U) = \int_{\a}^{\b}\left(1-\left(\frac{\sin(\pi x)}{\pi x}\right)^{2}+\d(x)\right)\,dx,
-      \]
-      where $\d(x)$ is the Dirac delta function.
-    \end{proposition}
+  \begin{conjecture}\label{conj:KS_conjectures_zeta}
+    For all $k \ge 1$,
+    \[
+      M_{2k}(T,\zeta) \sim \frac{g_{k}}{(k^{2})!}a_{k}T\log^{k^{2}}(T),
+    \]
+    with
+    \[
+      g_{k} = (k^{2})!\prod_{0 \le j \le k-1}\frac{j!}{(j+k)!},
+    \]
+    and
+    \[
+      a_{k} = \prod_{p}\left((1-p^{-1})^{(k-1)^{2}}\sum_{0 \le j \le k-1}\binom{k-1}{j}^{2}p^{-j}\right).
+    \]
+  \end{conjecture}
+  
+  \cref{conj:KS_conjectures_zeta} agrees with the results of Hardy and Littlewood for $k = 1$ (note that $g_{1} = 1$ and $a_{1} = 1$) and Ingham for $k = 2$ (note that $g_{2} = 2$ and $a_{2} = \zeta(2)^{-1} = \frac{6}{\pi^{2}}$ because it is the sum of the reciprocals of squares). Monumental progress was made in 2005 when Conrey, Farmer, Keating, Rubinstein, and Snaith used random matrix theory to put forth a procedure for deducing conjectured asymptotic formulas, not just moments of the Riemann zeta function, for many families of $L$-functions (see \cite{conrey2005integral}). Moreover, they proved that analogous statistics hold for the associated symmetry types of the families which is in agreement with the Katz-Sarnak philosophy. We will describe some of their conjectures. For a unitary example, they predicted a refined asymptotic for the Riemann zeta function:
 
-    The right-hand side of \cref{prop:Dyson_unitary_distribution} is exactly the same formula given in Montgomery's pair correlation conjecture. In other words, if Montgomery's pair correlation conjecture is true then the two-point correlation of the unfolded nontrivial zeros of the Riemann zeta function in the limit as we move up the critical line exactly match the two-point correlation of the unfolded eigenphases of unitary matrices in the limit as the size of the matrices increase. In short, statistical information about the Riemann zeta function agrees with statistical information about the eigenvalues of unitary matrices. This is the origin of the Katz-Sarnak philosophy.
-  \section{Symmetry Types and Families}
-    Katz and Sarnak generalized the work of Montgomery and Dyson by establishing a connection between families of $L$-functions and other compact matrix groups. For the ease of categorization, Katz and Sarnak associated a \textbf{symmetry type}\index{symmetry type} to each compact matrix group that they studied. The underlying compact matrix group associated to each symmetric type is called a \textbf{matrix ensemble}\index{matrix ensemble}. The symmetry types and associated matrix ensembles are described in the following table:
-    \begin{center}
-      \begin{stabular}[1.5]{|c|c|c|}
-        \hline
-        Symmetry Type & Matrix Ensemble \\
-        \hline
-        Unitary ($\mathrm{U}$) & $\U(N)$ \\
-        \hline
-        Orthogonal ($\mathrm{O^{+}}$) & $\SO(2N)$ \\ 
-        \hline
-        Orthogonal ($\mathrm{O^{-}}$) & $\SO(2N+1)$ \\ 
-        \hline
-        Symplectic ($\mathrm{Sp}$) & $\mathrm{USp}(2N)$ \\
-        \hline
-      \end{stabular}
-    \end{center}
+  \begin{conjecture}\label{conj:CFKRS_conjectures_zeta}
+    For all $k \ge 1$ and $T \ge 1$,
+    \[
+      M_{2k}(T,\zeta) = TP_{k}(\log(T))+O_{\e}\left(T^{\frac{1}{2}+\e}\right),
+    \]
+    where $P_{k}$ is a polynomial of degree $k^{2}$ with leading coefficient $\frac{g_{k}}{(k^{2})!}a_{k}$ and we have
+    \[
+      g_{k} = (k^{2})!\prod_{0 \le j \le k-1}\frac{j!}{(j+k)!},
+    \]
+    and
+    \[
+      a_{k} = \prod_{p}\left((1-p^{-1})^{(k-1)^{2}}\sum_{0 \le j \le k-1}\binom{k-1}{j}^{2}p^{-j}\right).
+    \]
+  \end{conjecture}
 
-    Let $G(N)$ be a matrix ensemble, where $G$ denotes the symmetry type, and let $dA$ denote the Haar measure. For any $A \in G(N)$, let $\Phi = (\phi_{n})_{1 \le n \le N}$ denote the increasing sequence of unfolded eigenphases of $A$. Katz and Sarnak considered two local spacing distributions between the unfolded eigenphases of $A$. The first was the \textbf{two-point correlation function}\index{two-point correlation function} $F(\a,\b;A,G(N))$ for $A$, defined by
-    \[
-      F(\a,\b;A,G(N)) = \frac{1}{N}|\{(\phi_{n},\phi_{m}) \in \Phi^{2}:\phi_{n}-\phi_{m} \in [\a,\b]\}|,
-    \]
-    for any real $\a$ and $\b$ with $\a < \b$. They computed the global distribution of $F(\a,\b;A,G(N))$ over $G(N)$, namely $F(\a,\b;G(N))$, defined by
-    \[
-      F(\a,\b;G(N)) = \int_{G(N)}F(\a,\b;A,G(N))\,dA,
-    \]
-    and sought to understand if the limiting distribution
-    \[
-      F(\a,\b;G) = \lim_{N \to \infty}F(\a,\b;G(N)),
-    \]
-    exists and what can be said about it. Note that in the case $G(N) = U(N)$, this is exactly the two-point correlation function considered by Dyson. Katz and Sarnak succeeded in generalizing Dyson's work (see \cite{katz2023random} for a proof):
+  \cref{conj:CFKRS_conjectures_zeta} has been proven in the cases $k = 1,2$ (see \cite{conrey2005integral} for comments). Moreover, this result is clearly stronger than \cref{conj:KS_conjectures_zeta} and it gives an exact error of order $O(T^{\frac{1}{2}+\e})$. This error is roughly on the order of the square-root of the main term. For an orthogonal example, they predicted an asymptotic for a family of Hecke $L$-functions:
 
-    \begin{proposition}\label{prop:Katz_Sarnak_limit_distribution_two_point}
-      For symmetry type $G$ and any real $\a$ and $\b$ with $\a < \b$, $F(\a,\b;G)$ exists. Moreover,
-      \[
-        F(\a,\b;G) = \int_{\a}^{\b}\left(1-\left(\frac{\sin(\pi x)}{\pi x}\right)^{2}+\d(x)\right)\,dx,
-      \]
-      where $\d(x)$ is the Dirac delta function.
-    \end{proposition}
+  \begin{conjecture}\label{conj:CFKRS_conjectures_holomorphic}
+    Let $\mc{H}$ be the family of bases of primitive Hecke eigenforms for the space of newforms of weight $2$, square-free level $q$, and ordered by $q$. For all $k \ge 1$, and $Q \ge 1$,
+    \[
+      M_{k}(Q,\mc{H}) = \frac{1}{3}QR_{k}(\log(Q))+O_{\e}\left(Q^{\frac{1}{2}+\e}\right),
+    \]
+    where $R_{k}$ is a polynomial of degree $\frac{1}{2}k(k-1)$ with leading coefficient $\frac{g_{k}}{\left(\frac{1}{2}k(k-1)\right)!}a_{k}$ and we have
+    \[
+      g_{k} = 2^{k-1}\left(\frac{1}{2}k(k-1)\right)!\prod_{1 \le j \le k-1}\frac{j!}{(2j)!},
+    \]
+    and
+    \[
+      a_{k} = \prod_{p \nmid Q}(1-p^{-1})^{\frac{1}{2}k(k-1)}\frac{2}{\pi}\int_{0}^{\pi}\sin^{2}\left(\t\left(\frac{e^{i\t}(1-e^{i\t}p^{-\frac{1}{2}})^{-1}-e^{-i\t}(1-e^{i\t}p^{-\frac{1}{2}})^{-1}}{e^{i\t}-e^{-i\t}}\right)^{k}\right)\,d\t.
+    \]
+  \end{conjecture}
 
-    The second local spacing distribution was the $k$-th \textbf{consecutive spacing function}\index{consecutive spacing function} for $A$, defined by
-    \[
-      \mu_{k}(\a,\b;A,G(N)) = \frac{1}{N}|\{1 \le j \le N:\text{$(\phi_{j+k},\phi_{j}) \in \Phi^{2}$ and $\phi_{j+k}-\phi_{j} \in [\a,\b]$}\}|,
-    \]
-    for any real $\a$ and $\b$ with $\a < \b$ and $k \ge 1$. Again, they proceeded to compute the global distribution over $G(N)$, namely $\mu_{k}(\a,\b;G(N))$, defined by
-    \[
-      \mu_{k}(\a,\b;G(N)) = \int_{G(N)}\mu_{k}(\a,\b;A,G(N))\,dA,
-    \]
-    and asked if the limiting distribution
-    \[
-      \mu_{k}(\a,\b;G) = \lim_{N \to \infty}\mu_{k}(\a,\b;G(N)),
-    \]
-    exists and what can be said about it. They were able the show the following (see \cite{katz2023random} for a proof):
+  The main term in \cref{conj:CFKRS_conjectures_holomorphic} has been proved in the cases $k = 1,2,3,4$ when $q$ is prime (see \cite{conrey2005integral} for comments). For an symplectic example, they predicted an asymptotic for a family of Dirichlet $L$-functions:
 
-    \begin{proposition}\label{prop:Katz_Sarnak_limit_distribution_k_spacing}
-      For any symmetry type $G$ and any real $\a$ and $\b$ with $\a < \b$ and $k \ge 1$, $\mu_{k}(\a,\b;G)$ exists. Moreover, it is independent of the particular symmetry type $G$.
-    \end{proposition}
+  \begin{conjecture}\label{conj:CFKRS_conjectures_Dirichlet}
+    Let $\mc{D}$ be the family of Dirichlet $L$-functions attached to the quadratic characters $\chi_{\D_{d}}$ associated to the fundamental discriminants $\D_{d}$ and ordered by $|\D_{d}|$. For all $k \ge 1$ and $D \ge 1$,
+    \[
+      M_{k}(D,\mc{D}) = \frac{6}{\pi^{2}}DQ_{k}(\log(D))+O_{\e}\left(D^{\frac{1}{2}+\e}\right),
+    \]
+    where $Q_{k}$ is a polynomial of degree $\frac{1}{2}k(k+1)$ with leading coefficient $\frac{g_{k}}{\left(\frac{1}{2}k(k+1)\right)!}a_{k}$ and we have
+    \[
+      g_{k} = \left(\frac{1}{2}k(k+1)\right)!\prod_{1 \le j \le k-1}\frac{j!}{(2j)!},
+    \]
+    and
+    \[
+      a_{k} = \prod_{p}\frac{(1-p^{-1})^{\frac{1}{2}k(k+1)}}{(1+p^{-1})}\left(\frac{(1-p^{-\frac{1}{2}})^{-k}+(1+p^{-\frac{1}{2}})^{-k}}{2}+p^{-1}\right).
+    \]
+  \end{conjecture}
 
-    In particular, \cref{prop:Katz_Sarnak_limit_distribution_two_point,prop:Katz_Sarnak_limit_distribution_k_spacing} show that the limiting distributions $F(\a,\b;G)$ and $\mu_{k}(\a,\b;G)$ are both independent of the symmetry type $G$. However, this symmetry independence is not true for all limiting distributions. Katz and Sarnak also considered a local and global distributions associated to single eigenphases. The local distribution they considered, associated to a single eigenphase, was the \textbf{one-level density function}\index{one-level density function} $\D(\a,\b;A,G(N))$ for $A$, defined by
-    \[
-      \D(\a,\b;A,G(N)) = |\{\phi \in \Phi:\phi \in [\a,\b]\}|.
-    \]
-    They computed the global distribution, namely $\D(\a,\b;G(N))$, defined by
-    \[
-      \D(\a,\b;G(N)) = \int_{G(N)}\D(\a,\b;A,G(N))\,dA,
-    \]
-    and asked if the limiting distribution
-    \[
-      \D(\a,\b;G) = \lim_{N \to \infty}\D(\a,\b;G(N)),
-    \]
-    exists and what can be said about it. Precisely, they proved the following (see \cite{katz2023random} for a proof):
+  The main term in \cref{conj:CFKRS_conjectures_Dirichlet} has been proved in the cases $k = 1,2,3$ (see \cite{conrey2005integral} for comments). We will now describe \textbf{moment recipe}\index{moment recipe} in \cite{conrey2005integral} used to predict the $2k$-th moment of a family $\mc{F}$ of primitive $L$-functions:
 
-    \begin{proposition}\label{prop:Katz_Sarnak_limit_distribution_one-level_density}
-      For any symmetry type $G$ and any real $\a$ and $\b$ with $\a < \b$ and $k \ge 1$, $\D(\a,\b;G)$ exists. Moreover, it depends upon the particular symmetry type $G$.
-    \end{proposition}
-    
-    The global distribution they considered, associated to a single eigenphase, was the \textbf{$k$-th eigenphase function}\index{$k$-th eigenphase function} $\nu_{k}(\a,\b,G(N))$ for $G(N)$, defined by
+  \begin{enumerate}[label*=(\roman*)]
+    \item Let $f \in \mc{F}$ and set
     \[
-      \nu_{k}(\a,\b;G(N)) = dA\left(\left\{A \in G(N):\phi_{k} \in [\a,\b]\right\}\right),
+      L(s;\a_{1},\ldots,\a_{2k},f) = L(s+\a_{1},f) \cdots L(s+\a_{k},f)L(1-s-\a_{k+1},f) \cdots L(1-s-\a_{2k},f),
     \]
-    for any real $\a$ and $\b$ with $\a < \b$ and $k \ge 1$. Again, they asked if the limiting distribution
+    with $\a_{\ell} \in \C$ for $1 \le \ell \le 2k$.
+    \item Replace each $L$-function with its two sums from the approximate function equation, ignoring the function $V_{s}(y)$ and possible residue term, and multiply out all of the sums to obtain $2^{2k}$ many terms. That is, make the substitutions
     \[
-      \nu_{k}(\a,\b;G) = \lim_{N \to \infty}\nu_{k}(\a,\b;G(N)),
+      L(s+\a_{\ell},f) \mapsto \sum_{n \ge 1}\frac{a_{f}(n)}{n^{s+\a_{\ell}}}+\e(s+\a_{\ell},f)\sum_{n \ge 1}\frac{\conj{a_{f}(n)}}{n^{1-s-\a_{\ell}}},
     \]
-    exists and what can be said about it. They were able to show the following (see \cite{katz2023random} for a proof):
-
-    \begin{proposition}\label{prop:Katz_Sarnak_limit_distribution_k_eigenphase}
-      For any symmetry type $G$ and any real $\a$ and $\b$ with $\a < \b$ and $k \ge 1$, $\nu_{k}(\a,\b;G)$ exists. Moreover, it depends upon the particular symmetry type $G$.
-    \end{proposition}
-
-    In short, Katz and Sarnak studied four limiting distributions $F(\a,\b;G)$, $\mu_{k}(\a,\b;G)$, $\D(\a,\b;G)$, and $\nu_{k}(\a,\b;G)$. The former two are distributions about collections of eigenphases of unitary matrices and are independent of the symmetry type $G$ while the latter two are distributions about single eigenphases of unitary matrices and depend upon the symmetry type $G$. Analogous distributions can be defined for families of $L$-functions. We say that a collection of $L$-functions $\mc{F} = (L(s_{\a},f_{\a}))_{\a \in F}$, for some infinite indexing set $F \subset \R_{\ge 0}$, is a \textbf{family}\index{family} if it is an ordered set with respect to the analytic conductor and if $\mf{q}(s_{\a},f_{\a}) \to \infty$ as $\a \to \infty$. We say that the family $\mc{F}$ is \textbf{continuous}\index{continuous} if $f_{\a} = f_{\b}$ for all $\a,\b \in F$ and $s_{\a} = \s+it_{\a}$ where $t_{\a}$ is a continuous function of $\a$. Necessarily, $t_{\a} \to \infty$ as $\a \to \infty$ and $F$ is a half-open ray. We say that a family $\mc{F}$ is \textbf{discrete}\index{discrete} if $f_{\a} \neq f_{\b}$ for all distinct $\a,\b \in F$ and $F$ is discrete. Necessarily, $q(f_{\a}) \to \infty$ as $\a \to \infty$ and, reindexing if necessary, $F \subseteq \Z_{+}$. Katz and Sarnak arrived at a heuristical conjecture known as the \textbf{Katz-Sarnak philosophy}\index{Katz-Sarnak philosophy} in terms of families of $L$-functions:
-
-    \begin{conjecture*}[Katz-Sarnak Philosophy]
-      \phantom{ }
-      \begin{enumerate}[label*=(\roman*)]
-        \item The statistics about collections of eigenphases of a random matrix belonging to a matrix ensemble of symmetry type $G$, in the limit as the size of the matrix tends to infinity, should model statistics about the nontrivial zeros of a continuous family of $L$-functions as the heights of the nontrivial zeros tends to infinity.
-        \item The statistics about a single eigenphase of a random matrix belonging to a matrix ensemble of symmetry type $G$, in the limit as the size of the matrix tends to infinity, should model statistics about a discrete family of $L$-functions as the size of the conductor tends to infinity.
-      \end{enumerate}
-    \end{conjecture*}
-
-    Determining the symmetry type of a family is generally a difficult task. Below are some well-studied families and their symmetry types (see \cite{conrey2005integral} for a determination of the symmetry type):
-    \begin{center}
-      \begin{stabular}[1.5]{|c|c|c|}
-        \hline
-        Symmetry Type & Family \\
-        \hline
-        \multirow{2}{*}{Unitary} & $\{L\left(\s+it,f\right):\text{$L(s,f)$ is of Selberg class}\}$ ordered by $t$ \\& $\{L(s,\chi):\text{$\chi$ is a primitive character modulo $q$}\}$ ordered by $q$ \\
-        \hline
-        \multirow{2}{*}{Orthogonal} & $\{L(s,f):\text{$f \in \mc{S}_{k}(N,\chi)$ is a primitive Hecke eigenform}\}$ ordered by $k$ \\& $\{L(s,f):\text{$f \in \mc{S}_{k}(N,\chi)$ is a primitive Hecke eigenform}\}$ ordered by $N$ \\
-        \hline
-        Symplectic & $\{L(s,\chi_{\D_{d}}):\text{$\D_{d}$ is a fundamental discriminant}\}$ ordered by $|\D_{d}|$ \\
-        \hline
-      \end{stabular}
-    \end{center}
-  \section{Characteristic Polynomials of Unitary Matrices}
-    The Katz-Sarnak philosophy conjectures that the statistics about nontrivial zeros of $L$-functions are modeled by the statistics of eigenphases of random unitary matrices. However, there is a striking surface level connection between $L$-functions and the characteristic polynomials of unitary matrices which we now describe. For $A \in U(N)$, let
+    for $1 \le \ell \le k$ and
     \[
-      L(s,A) = \det(I-sA) = \prod_{1 \le n \le N}(1-se^{i\t_{n}}),
+      L(1-s-\a_{\ell},f) \mapsto \sum_{n \ge 1}\frac{a_{f}(n)}{n^{1-s-\a_{\ell}}}+\e(1-s-\a_{\ell},f)\sum_{n \ge 1}\frac{\conj{a_{f}(n)}}{n^{s+\a_{\ell}}},
     \]
-    be the characteristic polynomial of $A$. It will turn out that $L(s,A)$ has strikingly similar properties to an $L$-function. The product expression for $L(s,A)$ is clearly analogous to the Euler product expression for an $L$-function. Upon expanding the product, we obtain
+    for $k+1 \le \ell \le 2k$ respectively. Then expand all of the terms into the form
     \[
-      L(s,A) = \sum_{0 \le n \le N}a_{n}s^{n},
+      \prod_{i \in \conj{I}}\e(s+\a_{i},f)\prod_{j \in \conj{J}}\e(1-s-\a_{j},f)\sum_{n_{1},\ldots,n_{2k} \ge 1}\frac{\prod_{i \in I}a_{f}(n_{i})\prod_{i \in \conj{I}}\conj{a_{f}(n_{i})}\prod_{j \in J}a_{f}(n_{j})\prod_{j \in \conj{J}}\conj{a_{f}(n_{j})}}{\prod_{i \in I}n_{i}^{s+\a_{i}}\prod_{i \in \conj{I}}n_{i}^{1-s-\a_{i}}\prod_{j \in J}n_{j}^{1-s-\a_{j}}\prod_{j \in \conj{J}}n_{j}^{s+\a_{j}}},
     \]
-    for some coefficients $a_{n}$. This expression is analogous to the $L$-series of an $L$-function. Of course, as $L(s,A)$ is a polynomial it is analytic on $\C$. Moreover, $L(s,A)$ possesses a functional equation as $s \mapsto \frac{1}{s}$. To see this, first observe that multiplicativity of the determinant gives
+    where $I \cup \conj{I} = \{1,\ldots,k\}$ and $J \cup \conj{J} = \{k+1,\ldots,2k\}$ are partitions.
+    \item Retain only the $\binom{2k}{k} = \sum_{0 \le m \le k}\binom{k}{m}^{2}$ terms for which $|\conj{I}| = |\conj{J}|$ (the size $m$ of these subsets satisfies $0 \le m \le k$ and there are $\binom{k}{m}$ many choices for each subset of size $m$). Then apply Stirling's formula to simplify the remaining ratios of gamma factors by replacing them with their asymptotics.
+    \item In each of the $\binom{2k}{k}$ terms, retain only the diagonal term from the sum. That is, keep the summands for which $n_{1} = n_{2} = \cdots = n_{2k}$. In other words, only retain
     \[
-      L(s,A) = (-1)^{N}\det(A)s^{N}\det(I-s^{-1}A^{-1}).
+      \prod_{i \in \conj{I}}\e(s+\a_{i},f)\prod_{j \in \conj{J}}\e(1-s-\a_{j},f)\sum_{n \ge 1}\frac{\prod_{i \in I}a_{f}(n)\prod_{i \in \conj{I}}\conj{a_{f}(n)}\prod_{j \in J}a_{f}(n)\prod_{j \in \conj{J}}\conj{a_{f}(n)}}{\prod_{i \in I}n^{s+\a_{i}}\prod_{i \in \conj{I}}n^{1-s-\a_{i}}\prod_{j \in J}n^{1-s-\a_{j}}\prod_{j \in \conj{J}}n^{s+\a_{j}}}.
     \]
-    As $A$ is unitary, $L(s,A^{-1}) = L(s,A^{\ast}) = L(s,\conj{A})$. So the above equation can be expressed as
+    Let $M(s;\a_{1},\ldots,\a_{2k},f)$ denote the resulting function.
+    \item Then for any $T \ge 1$ or $Q \ge 1$, the moment recipe predicts that
     \[
-      L(s,A) = (-1)^{N}\det(A)s^{N}L\left(\frac{1}{s},\conj{A}\right).
-    \]
-    This is the analog of the functional equation for an $L$-function under the symmetry $s \mapsto 1-s$. We identify the analogs of the gamma factor and conductor as $1$ and $N$ respectively. Letting $\L(s,A)$ be defined by
-    \[
-      \L(s,A) = s^{-\frac{N}{2}}L(s,A),
-    \]
-    the functional equation can be expressed as
-    \[
-        \L(s,A) = (-1)^{N}\det(A) \L\left(\frac{1}{s},\conj{A}\right).
-    \]
-    From it, the analog of root number is seen to be $(-1)^{N}\det(A)$ and $L(s,A)$ has dual $L(s,\conj{A})$. As the symmetry $s \mapsto \frac{1}{s}$ leaves the unit circle invariant, the unit circle is the analog of the critical line. The fixed point of the symmetry $s \mapsto \frac{1}{s}$ is $s = 1$ which is the analog of the central point. Moreover, as the zeros of $L(s,A)$ are precisely the eigenvalues of $A$ which lie on the unit circle, because $A$ is unitary, the analog of the Riemann hypothesis is true for $L(s,A)$. We also have an analog of the approximate functional equation. By substituting the polynomial representation of $L(s,A)$ into the functional equation, we obtain
-    \[
-      \sum_{0 \le n \le N}a_{n}s^{n} = (-1)^{N}\det(A)s^{N}\sum_{0 \le n \le N}\conj{a_{n}}s^{-n} = (-1)^{N}\det(A)\sum_{0 \le n \le N}\conj{a_{n}}s^{N-n}.
-    \]
-    Comparing coefficients shows that
-    \[
-      a_{n} = (-1)^{N}\det(A)\conj{a_{N-n}},
-    \]
-    for $0 \le n \le N$. Then
-    \[
-      L(s,A) = a_{\frac{N}{2}}s^{\frac{N}{2}}+\sum_{0 \le n \le \frac{N}{2}-1}a_{n}s^{n}+(-1)^{N}\det(A)s^{N}\sum_{0 \le n \le \frac{N}{2}-1}\conj{a_{n}}s^{-n},
+      M_{2k}\left(T,\mc{F},\frac{1}{2}\right) = \lim_{\a_{1},\ldots,\a_{2k} \to 0}\int_{0}^{T}M\left(\frac{1}{2}+it;\a_{1},\ldots,\a_{2k},f\right)\left(1+O\left(T^{\frac{1}{2}+\e}\right)\right)\,dt,
     \]
     or
     \[
-      L(s,A) = \sum_{0 \le n \le \frac{N-1}{2}}a_{n}s^{n}+(-1)^{N}\det(A)s^{N}\sum_{0 \le n \le \frac{N-1}{2}}\conj{a_{n}}s^{-n},
+       M_{2k}\left(Q,\mc{F},\frac{1}{2}\right) = \lim_{\a_{1},\ldots,\a_{2k} \to 0}\sum_{\substack{f \in \mc{F} \\ q(f) \le Q}}M\left(\frac{1}{2};\a_{1},\ldots,\a_{2k},f\right)\left(1+O\left(T^{\frac{1}{2}+\e}\right)\right),
     \]
-    according to if $N$ is even or odd. These equations together are the analog of the approximate functional equation. This similarity between $L$-functions and the characteristic polynomials of unitary matrices was heavily exploited by Conrey, Farmer, Keating, Rubinstein, and Snaith to make phenomenal conjectures about the  moments of $L$-functions.
+    according to if $\mc{F}$ is continuous or discrete.
+  \end{enumerate}
+
+  A couple of comments about the moment recipe are necessary. First, while this procedure produces heuristics for the $2k$-moment, we expect the resulting identities in step (v) to hold for the $k$-moment as well because if $k$ is odd we have $2\left(\frac{k-1}{2}\right) < k < 2\left(\frac{k+1}{2}\right)$. The reason for only retaining the $\binom{2k}{k}$ terms for which $|\conj{I}| = |\conj{J}|$ in step (iii) is because the terms for which $|\conj{I}| \neq |\conj{J}|$ are expected to be near zero. Indeed, Stirling's formula implies
+  \[
+    \frac{\G(1-s)}{\G(s)} \sim -s^{1-2s}e^{2s-1} \quad \text{and} \quad \frac{\G(s)}{\G(1-s)} \sim -s^{2s-1}e^{1-2s},
+  \]
+  provided $|\arg(s)| < \pi-\e$ and $|s| > \d$ for some $\e,\d > 0$. It follows from the definition of $\e(s,f)$ that
+  \[
+    \e(s,f) \sim -q(f)^{2s-1}\left(\frac{s}{\pi e}\right)^{d_{f}\left(\frac{1}{2}-s\right)} \quad \text{and} \quad \e(1-s,f) \sim -q(f)^{1-2s}\left(\frac{s}{\pi e}\right)^{d_{f}\left(s-\frac{1}{2}\right)}.
+  \]
+  Because of the presence of the $e^{d_{f}s}$ and $e^{-d_{f}s}$ factors in these asymptotics and that
+  \[
+    \int_{0}^{2\pi}e^{it}\,dt = 0,
+  \]
+  we expect the terms for which $|\conj{I}| \neq |\conj{J}|$ to be near zero when integrating from $0$ to $T$. In the case $|\conj{I}| = |\conj{J}|$, these exponential factors cancel, in the limit as $\a_{i} \to 0$ for all $i$, and therefore we do not expect these terms to be near zero. The two equalities in part (v) are known as the \textbf{moment conjectures}\index{moment conjectures}:
+
+  \begin{conjecture}[Moment conjectures]
+    Let $\mc{F}$ be a family of primitive $L$-functions with $f \in \mc{F}$. Then
+    \[
+      M_{2k}\left(T,\mc{F},\frac{1}{2}\right) = \lim_{\a_{1},\ldots,\a_{2k} \to 0}\int_{0}^{T}M\left(\frac{1}{2}+it;\a_{1},\ldots,\a_{2k},f\right)\left(1+O\left(T^{\frac{1}{2}+\e}\right)\right)\,dt,
+    \]
+    or
+    \[
+       M_{2k}\left(Q,\mc{F},\frac{1}{2}\right) = \lim_{\a_{1},\ldots,\a_{2k} \to 0}\sum_{\substack{f \in \mc{F} \\ q(f) \le Q}}M\left(\frac{1}{2};\a_{1},\ldots,\a_{2k},f\right)\left(1+O\left(T^{\frac{1}{2}+\e}\right)\right),
+    \]
+    according to if $\mc{F}$ is continuous or discrete.
+  \end{conjecture}
