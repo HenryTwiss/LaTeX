@@ -177,7 +177,7 @@
     \begin{theorem*}[Approximate functional equation]
       Let $L(s,f)$ be an $L$-function, $\Phi(u)$ be an even holomorphic function bounded in the vertical strip $|\tau| < a+1$ for any $a > 1$ such that $\Phi(0) = 1$, and let $X > 0$. Then for $s$ in the critical strip, we have
       \[
-        L(s,f) = \sum_{n \ge 1}\frac{a_{f}(n)}{n^{s}}V_{s}\left(\frac{n}{\sqrt{q(f)}X}\right)+\e(s,f)\sum_{n \ge 1}\frac{\conj{a_{f}(n)}}{n^{1-s}}V_{1-s}\left(\frac{nX}{\sqrt{q(f)}}\right)+\frac{R(s)}{q(f)^{\frac{s}{2}}\g(s,f)},
+        L(s,f) = \sum_{n \ge 1}\frac{a_{f}(n)}{n^{s}}V_{s}\left(\frac{n}{\sqrt{q(f)}X}\right)+\e(s,f)\sum_{n \ge 1}\frac{\conj{a_{f}(n)}}{n^{1-s}}V_{1-s}\left(\frac{nX}{\sqrt{q(f)}}\right)+\frac{R(s,X,f)}{q(f)^{\frac{s}{2}}\g(s,f)},
       \]
       where $V_{s}(y)$ is the inverse Mellin transform defined by
       \[
@@ -187,9 +187,9 @@
       \[
         \e(s,f) = \e(f)q(f)^{\frac{1}{2}-s}\frac{\g(1-s,f)}{\g(s,f)}.
       \]
-      Moreover, $R(s)$ is zero if $\L(s,f)$ is entire, and otherwise
+      Moreover, $R(s,X,f)$ is zero if $\L(s,f)$ is entire, and otherwise
       \[
-        R(s) = \Res_{u = 1-s}\frac{\L(s+u,f)\Phi(u)X^{u}}{u}+\Res_{u = -s}\frac{\L(s+u,f)\Phi(u)X^{u}}{u}.
+        R(s,X,f) = \Res_{u = 1-s}\frac{\L(s+u,f)\Phi(u)X^{u}}{u}+\Res_{u = -s}\frac{\L(s+u,f)\Phi(u)X^{u}}{u}.
       \]
     \end{theorem*}
     \begin{proof}
@@ -199,15 +199,15 @@
       \]
       $L(s,f)$ has polynomial growth in the $t$-aspect by \cref{prop:L_function_bounded_in_vertical_strips}. From \cref{equ:modified_gamma_estimates} we see that $\g(s+u,f)$ exhibits exponential decay. Since $\Phi(u)$ is bounded, it follows that the integrand exhibits exponential decay in a vertical strip containing $|\tau| \le a$. Therefore the integral is locally absolutely uniformly convergent. Moreover, we may shift the line of integration to $(-a)$. In doing so, we pass by a simple pole at $u = 0$ and possible poles at $u = 1-s$ and $u = -s$, giving
       \[
-        I(X,s,f) = \frac{1}{2\pi i}\int_{(-a)}\L(s+u,f)\Phi(u)X^{u}\,\frac{du}{u}+\L(s,f)+R(s).
+        I(X,s,f) = \frac{1}{2\pi i}\int_{(-a)}\L(s+u,f)\Phi(u)X^{u}\,\frac{du}{u}+\L(s,f)+R(s,X,f).
       \]
       Applying the functional equation to $\L(s+u,f)$ and performing the change of variables $u \mapsto -u$, we obtain
       \[
-        I(X,s,f) = -\e(f)I(X^{-1},1-s,\conj{f})+\L(s,f)-R(s),
+        I(X,s,f) = -\e(f)I(X^{-1},1-s,\conj{f})+\L(s,f)-R(s,X,f),
       \]
       since $\Phi(u)$ is even. This equation is equivalent to
       \[
-        \L(s,f) = I(X,s,f)+\e(f)I(X^{-1},1-s,\conj{f})+R(s).
+        \L(s,f) = I(X,s,f)+\e(f)I(X^{-1},1-s,\conj{f})+R(s,X,f).
       \]
       Since $\Re(s+u) > 1$, we can expand the $L$-function $L(s,f)$ inside of $I(X,s,f)$ as a Dirichlet series:
       \begin{align*}
@@ -219,9 +219,10 @@
         &= q(f)^{\frac{s}{2}}\g(s,f)\sum_{n \ge 1}\frac{a_{f}(n)}{n^{s}}V_{s}\left(\frac{n}{\sqrt{q(f)}X}\right).
       \end{align*}
       Performing the same computation for $I(X^{-1},1-s,\conj{f})$ and substituting in the results, we arrive at
-      \[
-        \L(s,f) = q(f)^{\frac{s}{2}}\g(s,f)\sum_{n \ge 1}\frac{a_{f}(n)}{n^{s}}V_{s}\left(\frac{n}{\sqrt{q(f)}X}\right)+\e(f)q(f)^{\frac{1-s}{2}}\g(1-s,f)\sum_{n \ge 1}\frac{a_{f}(n)}{n^{1-s}}V_{1-s}\left(\frac{nX}{\sqrt{q(f)}}\right)+R(s).
-      \]
+      \begin{align*}
+        \L(s,f) &= q(f)^{\frac{s}{2}}\g(s,f)\sum_{n \ge 1}\frac{a_{f}(n)}{n^{s}}V_{s}\left(\frac{n}{\sqrt{q(f)}X}\right) \\
+        &+ \e(f)q(f)^{\frac{1-s}{2}}\g(1-s,f)\sum_{n \ge 1}\frac{\conj{a_{f}(n)}}{n^{1-s}}V_{1-s}\left(\frac{nX}{\sqrt{q(f)}}\right)+R(s,X,f).
+      \end{align*}
       Diving by $q(f)^{\frac{s}{2}}\g(s,f)$ completes the proof.
     \end{proof}
 
@@ -275,15 +276,15 @@
     \begin{theorem}
       Let $\psi(y)$ be a bump function and let $\Psi(s)$ denote its Mellin transform. Then for any $L$-function $L(s,f)$, we have
       \[
-        \sum_{n \ge 1}a_{f}(n)\psi(n) = \frac{\e(f)}{\sqrt{q(f)}}\sum_{n \ge 1}a_{\conj{f}}(n)\phi(n)+R\Psi(1),
+        \sum_{n \ge 1}a_{f}(n)\psi(n) = \frac{\e(f)}{\sqrt{q(f)}}\sum_{n \ge 1}a_{\conj{f}}(n)\phi(n)+R(f)\Psi(1),
       \]
       where $\phi(y)$ is the inverse Mellin transform defined by
       \[
         \phi(y) = \frac{1}{2\pi i}\int_{(a)}q(f)^{s}\frac{\g(s,f)}{\g(1-s,f)}y^{-s}\Psi(1-s)\,ds,
       \]
-      for any $a > 1$. Moreover, $R$ is zero if $L(s,f)$ is entire, and otherwise
+      for any $a > 1$. Moreover, $R(f)$ is zero if $L(s,f)$ is entire, and otherwise
       \[
-        R = \Res_{s = 1}L(s,f).
+        R(f) = \Res_{s = 1}L(s,f).
       \]
     \end{theorem}
     \begin{proof}
@@ -293,15 +294,15 @@
       \]
       By \cref{prop:smoothing_function_Mellin_inverse_vertical_strips,prop:L_function_bounded_in_vertical_strips}, the integrand has polynomial decay of arbitrarily larger order and therefore is locally absolutely uniformly convergent. Shifting the line of integration to $(1-a)$, we pass by a potential pole at $s = 1$ from $L(s,f)$ and obtain
       \[
-        \sum_{n \ge 1}a_{f}(n)\psi(n) = \frac{1}{2\pi i}\int_{(1-a)}L(s,f)\Psi(s)\,ds+R\Psi(1).
+        \sum_{n \ge 1}a_{f}(n)\psi(n) = \frac{1}{2\pi i}\int_{(1-a)}L(s,f)\Psi(s)\,ds+R(f)\Psi(1).
       \]
       Applying the functional equation, we further have
       \[
-        \sum_{n \ge 1}a_{f}(n)\psi(n) = \frac{1}{2\pi i}\int_{(1-a)}\e(f)q(f)^{\frac{1}{2}-s}\frac{\g(1-s,f)}{\g(s,f)}L(1-s,\conj{f})\Psi(s)\,ds+R\Psi(1).
+        \sum_{n \ge 1}a_{f}(n)\psi(n) = \frac{1}{2\pi i}\int_{(1-a)}\e(f)q(f)^{\frac{1}{2}-s}\frac{\g(1-s,f)}{\g(s,f)}L(1-s,\conj{f})\Psi(s)\,ds+R(f)\Psi(1).
       \]
       Performing the change of variables $s \mapsto 1-s$ in this latter integral gives
       \[
-        \sum_{n \ge 1}a_{f}(n)\psi(n) = \frac{1}{2\pi i}\int_{(a)}\e(f)q(f)^{s-\frac{1}{2}}\frac{\g(s,f)}{\g(1-s,f)}L(s,\conj{f})\Psi(1-s)\,ds+R\Psi(1).
+        \sum_{n \ge 1}a_{f}(n)\psi(n) = \frac{1}{2\pi i}\int_{(a)}\e(f)q(f)^{s-\frac{1}{2}}\frac{\g(s,f)}{\g(1-s,f)}L(s,\conj{f})\Psi(1-s)\,ds+R(f)\Psi(1).
       \]
       The proof is complete upon interchanging the sum over the Dirichlet series and the integral by the Fubini–Tonelli theorem and factoring out $\frac{\e(f)}{\sqrt{q(f)}}$.
     \end{proof}
@@ -443,21 +444,21 @@
     \begin{theorem}
       Let $L(s,f)$ be an $L$-function and let $\psi(y)$ be a bump function with compact support in $\left[\frac{1}{2},2\right]$. Then
       \[
-        L\left(\frac{1}{2},f\right) \ll_{\e} \max_{X \ll_{\e} \mf{q}(f)^{\frac{1}{2}+\e}}\left(\left|\frac{A_{\psi}(X)}{q(f)^{\frac{1}{4}}}\right|\right)+\left|\frac{R}{q(f)^{\frac{1}{4}}}\right|,
+        L\left(\frac{1}{2},f\right) \ll_{\e} \max_{X \ll_{\e} \mf{q}(f)^{\frac{1}{2}+\e}}\left(\left|\frac{A_{\psi}(X)}{q(f)^{\frac{1}{4}}}\right|\right)+\left|\frac{R(f)}{q(f)^{\frac{1}{4}}}\right|,
       \]
-      where $R$ is zero if $\L(s,f)$ is entire, and otherwise
+      where $R(f)$ is zero if $\L(s,f)$ is entire, and otherwise
       \[
-        R = \Res_{u = \frac{1}{2}}\L\left(\frac{1}{2}+u,f\right)+\Res_{u = -\frac{1}{2}}\L\left(\frac{1}{2}+u,f\right).
+        R(f) = \Res_{u = \frac{1}{2}}\L\left(\frac{1}{2}+u,f\right)+\Res_{u = -\frac{1}{2}}\L\left(\frac{1}{2}+u,f\right).
       \]
     \end{theorem}
     \begin{proof}
-      Taking $s = \frac{1}{2}$, $X = 1$, and $\Phi(u) = \cos^{-4dM}\left(\frac{\pi u}{4M}\right)$ with $M \gg 1$ in the approximate functional equation gives
+      Taking $s = \frac{1}{2}$, $X = 1$, and $\Phi(u) = \cos^{-4d_{f}M}\left(\frac{\pi u}{4M}\right)$ for some integer $M \ge 1$ in the approximate functional equation gives
       \[
-        L\left(\frac{1}{2},f\right) = \sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right)+\e(f)\sum_{n \ge 1}\frac{\conj{a_{f}(n)}}{\sqrt{n}}V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right)+\frac{R\left(\frac{1}{2}\right)}{q(f)^{\frac{1}{4}}\g\left(\frac{1}{2},f\right)}.
+        L\left(\frac{1}{2},f\right) = \sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right)+\e(f)\sum_{n \ge 1}\frac{\conj{a_{f}(n)}}{\sqrt{n}}V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right)+\frac{R\left(\frac{1}{2},1,f\right)}{q(f)^{\frac{1}{4}}\g\left(\frac{1}{2},f\right)}.
       \]
       We then obtain the weaker estimate
       \[
-        L\left(\frac{1}{2},f\right) \ll \left|\sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right)\right|+\left|\frac{R}{q(f)^{\frac{1}{4}}}\right|.
+        L\left(\frac{1}{2},f\right) \ll \left|\sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right)\right|+\left|\frac{R(f)}{q(f)^{\frac{1}{4}}}\right|.
       \]
       Now consider the set of functions $\left\{\psi\left(\frac{y}{2^{k}}\right)\right\}_{k \in \Z}$. Since $\psi\left(\frac{y}{2^{k}}\right)$ has support in $[2^{k-1},2^{k+1}]$, the sum $\s(y) = \sum_{k \in \Z}\psi\left(\frac{y}{2^{k}}\right)$, defined for $y > 0$, is finite since at most finitely many terms are nonzero for every $y$. It is also bounded away from zero since for any $y > 0$ there is some $k \in \Z$ for which $2^{k} \le y \le 3 \cdot 2^{k-1}$ so that $\frac{y}{2^{k}}$ is at least distance $\frac{1}{2}$ from the endpoints of $\left[\frac{1}{2},2\right]$. Defining $\psi_{k}(y) = \psi\left(\frac{y}{2^{k}}\right)\s(y)^{-1}$, it follows that $\left\{\psi_{k}(y)\right\}_{k \in \Z}$ satisfies
       \[
