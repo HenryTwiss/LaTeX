@@ -10,9 +10,21 @@
       \]
     \end{theorem}
     \begin{proof}
-      Taking $\s = \frac{1}{2}$, $X = \sqrt{t}$ for $t > 2$, and $\Phi(u) = \cos^{-4M}\left(\frac{\pi u}{4M}\right)$ with $M \ge 1$ in the approximate functional equation gives
+      Taking $\s = \frac{1}{2}$, $X = \sqrt{\frac{t}{\log(t)}}$ for $t > 2$, and $\Phi(u) = \cos^{-4M}\left(\frac{\pi u}{4M}\right)$ with $M \ge 1$ in the approximate functional equation gives
+      \begin{align*}
+        \z\left(\frac{1}{2}+it\right) &= \sum_{n \ge 1}\frac{1}{n^{\frac{1}{2}+it}}V_{\frac{1}{2}+it}\left(n\sqrt{\frac{\log(t)}{t}}\right) \\
+        &+ \e\left(\frac{1}{2}+it,\z\right)\sum_{n \ge 1}\frac{1}{n^{\frac{1}{2}-it}}V_{\frac{1}{2}-it}\left(n\sqrt{\frac{t}{\log(t)}}\right)+\frac{R\left(\frac{1}{2}+it,\sqrt{\frac{t}{\log(t)}},\z\right)}{\g\left(\frac{1}{2}+it,\z\right)}.
+      \end{align*}
+      By \cref{prop:V_function_decay}, we find that $V_{\frac{1}{2}+it}\left(n\sqrt{\frac{\log(t)}{t}}\right)$ and $V_{\frac{1}{2}-it}\left(n\sqrt{\frac{t}{\log(t)}}\right)$ are bounded for $n \ll_{\e} \frac{t^{1+\e}}{\sqrt{\log(t)}}$ and $n \ll_{\e} t^{\e}\sqrt{\log(t)}$ respectively and then starts to exhibit polynomial decay of arbitrarily large order. Moreover, \cref{equ:modified_gamma_estimates,equ:choice_for_V_decay_estimate} together imply that the last term on the right-hand side exhibits exponential decay and is therefore absolutely bounded. Lastly, $\e\left(\frac{1}{2}+it,\z\right)$ is absolutely bounded by \cref{equ:gamma_factor_analytic_conductor_estimate}. Altogether, this means
       \[
-        \z\left(\frac{1}{2}+it\right) = \sum_{n \ge 1}\frac{1}{n^{\frac{1}{2}+it}}V_{\frac{1}{2}+it}\left(\frac{n}{\sqrt{t}}\right)+\e\left(\frac{1}{2}+it,\z\right)\sum_{n \ge 1}\frac{1}{n^{\frac{1}{2}-it}}V_{\frac{1}{2}-it}(n\sqrt{t})+\frac{R\left(\frac{1}{2}+it,\sqrt{t},\z\right)}{\g\left(\frac{1}{2}+it,\z\right)}.
+        \z\left(\frac{1}{2}+it\right) = \sum_{n \ll_{\e} \frac{t^{1+\e}}{\sqrt{\log(t)}}}\frac{1}{\sqrt{n}}+\sum_{n \ll_{\e} t^{\e}\sqrt{\log(t)}}\frac{1}{\sqrt{n}}+O_{\e}(1).
       \]
-      By \cref{prop:V_function_decay}, we find that $V_{\frac{1}{2}+it}\left(\frac{n}{\sqrt{t}}\right)$ and $V_{\frac{1}{2}-it}(n\sqrt{t})$ are bounded for $n \ll_{\e} t^{1+\e}$ and $n \ll_{\e} t^{\e}$ respectively and then starts to exhibit polynomial decay of arbitrarily large order. Therefore \todo{xxx}
+      Using the weak estimate
+      \[
+        \sum_{n \ll_{\e} t^{\e}\sqrt{\log(t)}}\frac{1}{\sqrt{n}} \ll_{\e} \int_{1}^{t^{\e}\sqrt{\log(t)}}\frac{1}{\sqrt{x}}\,dx \ll_{\e} t^{\e}\log^{\frac{1}{4}}(t),
+      \]
+      we arrive at
+      \[
+        \z\left(\frac{1}{2}+it\right) = \sum_{n \ll_{\e} \frac{t^{1+\e}}{\sqrt{\log(t)}}}\frac{1}{\sqrt{n}}+O_{\e}\left(t^{\e}\log^{\frac{1}{4}}(t)\right).
+      \]
     \end{proof}
