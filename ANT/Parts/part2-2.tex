@@ -444,7 +444,7 @@
     \begin{theorem}
       Let $L(s,f)$ be an $L$-function and let $\psi(y)$ be a bump function with compact support in $\left[\frac{1}{2},2\right]$. Then
       \[
-        L\left(\frac{1}{2},f\right) \ll_{\e} \max_{X \ll \sqrt{q(f)}}\left(\left|\frac{A_{\psi}(X)}{\sqrt{X}}\right|\right)+\left|\frac{R(f)}{q(f)^{\frac{1}{4}}}\right|,
+        L\left(\frac{1}{2},f\right) \ll_{\e} \max_{X \ll \sqrt{q(f)}}\left(\left|\frac{A_{\psi}(X)}{q(f)^{\frac{1}{4}}}\right|\right)+\left|\frac{R(f)}{q(f)^{\frac{1}{4}}}\right|,
       \]
       where $R(f)$ is zero if $\L(s,f)$ is entire, and otherwise
       \[
@@ -460,7 +460,7 @@
       \[
         L\left(\frac{1}{2},f\right) \ll \left|\sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right)\right|+\left|\frac{R(f)}{q(f)^{\frac{1}{4}}}\right|.
       \]
-      Now consider the set of functions $\left\{\psi\left(\frac{y}{2^{k}}\right)\right\}_{k \in \Z}$. Since $\psi\left(\frac{y}{2^{k}}\right)$ has support in $[2^{k-1},2^{k+1}]$, the sum $\s(y) = \sum_{k \in \Z}\psi\left(\frac{y}{2^{k}}\right)$, defined for $y > 0$, is finite since at most finitely many terms are nonzero for every $y$. It is also bounded away from zero since for any $y > 0$ there is some $k \in \Z$ for which $2^{k} \le y \le 3 \cdot 2^{k-1}$ so that $\frac{y}{2^{k}}$ is at least distance $\frac{1}{2}$ from the endpoints of $\left[\frac{1}{2},2\right]$. Defining $\psi_{k}(y) = \psi\left(\frac{y}{2^{k}}\right)\s(y)^{-1}$, it follows that $\left\{\psi_{k}(y)\right\}_{k \in \Z}$ satisfies
+      It remains to estimate the first term on the right-hand side. To this end, consider the set of functions $\left\{\psi\left(\frac{y}{2^{k}}\right)\right\}_{k \in \Z}$. Since $\psi\left(\frac{y}{2^{k}}\right)$ has support in $[2^{k-1},2^{k+1}]$, the sum $\s(y) = \sum_{k \in \Z}\psi\left(\frac{y}{2^{k}}\right)$, defined for $y > 0$, is finite since at most finitely many terms are nonzero for every $y$. It is also bounded away from zero since for any $y > 0$ there is some $k \in \Z$ for which $2^{k} \le y \le 3 \cdot 2^{k-1}$ so that $\frac{y}{2^{k}}$ is at least distance $\frac{1}{2}$ from the endpoints of $\left[\frac{1}{2},2\right]$. Defining $\psi_{k}(y) = \psi\left(\frac{y}{2^{k}}\right)\s(y)^{-1}$, it follows that $\left\{\psi_{k}(y)\right\}_{k \in \Z}$ satisfies
       \[
         \sum_{k \in \Z}\psi_{k}(y) = 1,
       \]
@@ -477,24 +477,21 @@
       \end{align*}
       where in the second to last line we have used that $V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right)$ is bounded for $n \ll \sqrt{\mf{q}\left(\frac{1}{2},f\right)} \ll \sqrt{q(f)}$, and then exhibits polynomial decay of arbitrarily large order thereafter by \cref{prop:V_function_decay}, and in the last line we have used that $\psi_{k}(y)$ has compact support in $[2^{k-1},2^{k+1}]$. Since $\s(y)$ is bounded away from zero and $\log(y) \ll y$, we obtain the crude bound
       \[
-         \sum_{k \ll 1}\left|\sum_{2^{k-1}\sqrt{q(f)} \le n \le 2^{k+1}\sqrt{q(f)}}\frac{a_{f}(n)}{\sqrt{n}}\psi_{k}\left(\frac{n}{\sqrt{q(f)}}\right)\right| \ll \max_{X \ll \sqrt{q(f)}}\left(\left|\sum_{\frac{X}{2} \le n \le 2X}\frac{a_{f}(n)}{\sqrt{n}}\psi\left(\frac{n}{X}\right)\right|\right).
+         \sum_{k \ll 1}\left|\sum_{2^{k-1}\sqrt{q(f)} \le n \le 2^{k+1}\sqrt{q(f)}}\frac{a_{f}(n)}{\sqrt{n}}\psi_{k}\left(\frac{n}{\sqrt{q(f)}}\right)\right| \ll \max_{X \ll \sqrt{q(f)}}\left(\left|\sum_{\frac{X}{2} \le n \le 2X}\frac{a_{f}(n)}{q(f)^{\frac{1}{4}}}\psi\left(\frac{n}{X}\right)\right|\right).
       \]
-      We will estimate this latter sum. Abel's summation formula (see \cref{{append:Summation_Formulas}}) gives
+      By Abel's summation formula (see \cref{{append:Summation_Formulas}}), the inner sum is
       \[
-        \sum_{\frac{X}{2} \le n \le 2X}\frac{a_{f}(n)}{\sqrt{n}}\psi\left(\frac{n}{X}\right) = \frac{A_{\psi}(2X)}{\sqrt{2X}}-\frac{A_{\psi}\left(\frac{X}{2}\right)}{\sqrt{\frac{X}{2}}}+\frac{1}{2}\int_{\frac{X}{2}}^{2X}A_{\psi}(u)u^{-\frac{3}{2}}\,du.
+        \sum_{\frac{X}{2} \le n \le 2X}\frac{a_{f}(n)}{q(f)^{\frac{1}{4}}}\psi\left(\frac{n}{X}\right) = \frac{A_{\psi}(2X)}{q(f)^{\frac{1}{4}}}-\frac{A_{\psi}\left(\frac{X}{2}\right)}{q(f)^{\frac{1}{4}}}.
       \]
-      But as
+      Hence
       \[
-        \frac{1}{2}\int_{\frac{X}{2}}^{2X}A_{\psi}(u)u^{-\frac{3}{2}}\,du \ll X\max_{\frac{X}{2} \le u \le 2X}\left(\left|A_{\psi}(u)u^{-\frac{3}{2}}\right|\right) \ll \max_{\frac{X}{2} \le u \le 2X}\left(\left|\frac{A_{\psi}(u)}{\sqrt{u}}\right|\right),
+        \max_{X \ll \sqrt{q(f)}}\left(\left|\sum_{\frac{X}{2} \le n \le 2X}\frac{a_{f}(n)}{q(f)^{\frac{1}{4}}}\psi\left(\frac{n}{X}\right)\right|\right) \ll \max_{X \ll \sqrt{q(f)}}\left(\left|\frac{A_{\psi}(X)}{q(f)^{\frac{1}{4}}}\right|\right).
       \]
-      we find that
+      Putting everything together, we find that
       \[
-        \max_{X \ll \sqrt{q(f)}}\left(\left|\sum_{\frac{X}{2} \le n \le 2X}\frac{a_{f}(n)}{\sqrt{n}}\psi\left(\frac{n}{X}\right)\right|\right) \ll \max_{X \ll \sqrt{q(f)}}\left(\left|\frac{A_{\psi}(X)}{\sqrt{X}}\right|\right).
+        \sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right) \ll \max_{X \ll \sqrt{q(f)}}\left(\left|\frac{A_{\psi}(X)}{q(f)^{\frac{1}{4}}}\right|\right),
       \]
-      Putting everything together gives
-      \[
-        \sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right) \ll \max_{X \ll \sqrt{q(f)}}\left(\left|\frac{A_{\psi}(X)}{\sqrt{X}}\right|\right).
-      \]
+      completing the proof.
     \end{proof}
   \section{Logarithmic Derivatives}
     There is an incredibly useful formula for the logarithmic derivative of any $L$-function which is often the starting point for deeper analytic investigations. To deduce it, we will need a more complete understanding of $\L(s,f)$. First observe that the zeros $\rho$ of $\L(s,f)$ are contained inside of the critical strip. Indeed, we have already remarked that $L(s,f)$ has no zeros for $\s > 0$ and clearly $\g(s,f)$ does not have zeros in this region as well. Therefore $\L(s,f)$ is nonzero for $\s > 1$. By the functional equation, $\L(s,f)$ is also nonzero for $\s < 0$ too. In other words, the zeros of $\L(s,f)$ are the nontrivial zeros of $L(s,f)$. Before we state our result, we setup some notation. For an $L$-function $L(s,f)$ we define
