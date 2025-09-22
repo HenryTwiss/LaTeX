@@ -152,7 +152,7 @@
     \]
     is valid in the vertical strip $a \le \s \le b$ provided $s$ is distance $\e$ away from the poles of $\G(s)$. It follows from the definition of $\g(s,f)$ that the estimates
     \begin{equation}\label{equ:digamma_gamma_factor_analytic_conductor_estimate}
-      \frac{\g'}{\g}(s,f) \ll_{\e} \log\mf{q}_{\infty}(s,f) \quad \text{and} \quad \log(q(f))+\frac{\g'}{\g}(s,f) \ll_{\e} \log\mf{q}(s,f),
+      \frac{\g'}{\g}(s,f) \ll_{\e} \log\mf{q}_{\infty}(s,f) \quad \text{and} \quad \log{q(f)}+\frac{\g'}{\g}(s,f) \ll_{\e} \log\mf{q}(s,f),
     \end{equation}
     are valid in the vertical strip $a \le \s \le b$ provided $s$ is distance $\e$ away from the poles of $\g(s,f)$. Also, our definition of $\mf{q}_{\infty}(s,f)$ ensures
     \[
@@ -271,7 +271,7 @@
       where in the third and fourth lines we have used that $cy \ll (1+cy)$ and the last line holds since the integrand exhibits exponential decay. This completes the proof.
     \end{proof}
 
-    From \cref{prop:V_function_decay} we see that $V_{s}(y)$ is bounded for $y \ll_{\e} \mf{q}_{\infty}(s,f)^{\frac{1}{2}+\e}$ and then starts to exhibit polynomial decay of arbitrarily large order. In a similar spirit to the approximate functional equation, a useful summation formula can be derived from the functional equation of each $L$-function:
+    From \cref{prop:V_function_decay} we see that $V_{s}(y)$ is bounded for $y \ll \sqrt{\mf{q}_{\infty}(s,f)}$ and then starts to exhibit polynomial decay of arbitrarily large order (recall that $y \sim \sqrt{\mf{q}_{\infty}(s,f)}$ implies $y \ll \sqrt{\mf{q}_{\infty}(s,f)}$). In a similar spirit to the approximate functional equation, a useful summation formula can be derived from the functional equation of each $L$-function:
 
     \begin{theorem}
       Let $\psi(y)$ be a bump function and let $\Psi(s)$ denote its Mellin transform. Then for any $L$-function $L(s,f)$, we have
@@ -444,7 +444,7 @@
     \begin{theorem}
       Let $L(s,f)$ be an $L$-function and let $\psi(y)$ be a bump function with compact support in $\left[\frac{1}{2},2\right]$. Then
       \[
-        L\left(\frac{1}{2},f\right) \ll_{\e} \max_{X \ll_{\e} \mf{q}(f)^{\frac{1}{2}+\e}}\left(\left|\frac{A_{\psi}(X)}{q(f)^{\frac{1}{4}}}\right|\right)+\left|\frac{R(f)}{q(f)^{\frac{1}{4}}}\right|,
+        L\left(\frac{1}{2},f\right) \ll_{\e} \max_{X \ll \sqrt{q(f)}}\left(\left|\frac{A_{\psi}(X)}{\sqrt{X}}\right|\right)+\left|\frac{R(f)}{q(f)^{\frac{1}{4}}}\right|,
       \]
       where $R(f)$ is zero if $\L(s,f)$ is entire, and otherwise
       \[
@@ -472,12 +472,12 @@
       \begin{align*}
         \sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right) &= \sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}\sum_{k \in \Z}\psi_{k}\left(\frac{n}{\sqrt{q(f)}}\right)V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right) \\
         &= \sum_{k \in \Z}\sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}\psi_{k}\left(\frac{n}{\sqrt{q(f)}}\right)V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right) && \text{FTT} \\
-        &\ll_{\e} \sum_{k \in \Z}\left|\sum_{\substack{n \ll_{\e} \mf{q}(f)^{\frac{1}{2}+\e} \\ 2^{k-1}\sqrt{q(f)} \le n \le 2^{k+1}\sqrt{q(f)}}}\frac{a_{f}(n)}{\sqrt{n}}\psi_{k}\left(\frac{n}{\sqrt{q(f)}}\right)\right| \\
-        &\ll_{\e} \sum_{k \ll \log(q(f)^{\frac{\e}{2}})}\left|\sum_{\substack{n \ll_{\e} \mf{q}(f)^{\frac{1}{2}+\e} \\ 2^{k-1}\sqrt{q(f)} \le n \le 2^{k+1}\sqrt{q(f)}}}\frac{a_{f}(n)}{\sqrt{n}}\psi_{k}\left(\frac{n}{\sqrt{q(f)}}\right)\right|,
+        &\ll \sum_{k \in \Z}\left|\sum_{n \ll \sqrt{q(f)}}\frac{a_{f}(n)}{\sqrt{n}}\psi_{k}\left(\frac{n}{\sqrt{q(f)}}\right)\right| \\
+        &\ll \sum_{k \ll 1}\left|\sum_{2^{k-1}\sqrt{q(f)} \le n \le 2^{k+1}\sqrt{q(f)}}\frac{a_{f}(n)}{\sqrt{n}}\psi_{k}\left(\frac{n}{\sqrt{q(f)}}\right)\right|,
       \end{align*}
-      where in the second to last line we have used that $V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right)$ is bounded for $n \ll_{\e} \mf{q}\left(\frac{1}{2},f\right)^{\frac{1}{2}+\e} \ll_{\e} \mf{q}(f)^{\frac{1}{2}+\e}$ (and then exhibits polynomial decay thereafter) by \cref{prop:V_function_decay} and in the last line we have used that $\psi_{k}(y)$ has compact support in $[2^{k-1},2^{k+1}]$ (recall $k \in \Z$). Since $\s(y)$ is bounded away from zero and $\log(y) \ll y$, we obtain the crude bound
+      where in the second to last line we have used that $V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right)$ is bounded for $n \ll \sqrt{\mf{q}\left(\frac{1}{2},f\right)} \ll \sqrt{q(f)}$, and then exhibits polynomial decay of arbitrarily large order thereafter by \cref{prop:V_function_decay}, and in the last line we have used that $\psi_{k}(y)$ has compact support in $[2^{k-1},2^{k+1}]$. Since $\s(y)$ is bounded away from zero and $\log(y) \ll y$, we obtain the crude bound
       \[
-        \sum_{k \ll \log(q(f)^{\frac{\e}{2}})}\left|\sum_{\substack{n \ll_{\e} \mf{q}(f)^{\frac{1}{2}+\e} \\ 2^{k-1}\sqrt{q(f)} \le n \le 2^{k+1}\sqrt{q(f)}}}\frac{a_{f}(n)}{\sqrt{n}}\psi_{k}\left(\frac{n}{\sqrt{q(f)}}\right)\right| \ll_{\e} q(f)^{\frac{\e}{2}}\max_{X \ll_{\e} \mf{q}(f)^{\frac{1}{2}+\e}}\left(\left|\sum_{\frac{X}{2} \le n \le 2X}\frac{a_{f}(n)}{\sqrt{n}}\psi\left(\frac{n}{X}\right)\right|\right).
+         \sum_{k \ll 1}\left|\sum_{2^{k-1}\sqrt{q(f)} \le n \le 2^{k+1}\sqrt{q(f)}}\frac{a_{f}(n)}{\sqrt{n}}\psi_{k}\left(\frac{n}{\sqrt{q(f)}}\right)\right| \ll \max_{X \ll \sqrt{q(f)}}\left(\left|\sum_{\frac{X}{2} \le n \le 2X}\frac{a_{f}(n)}{\sqrt{n}}\psi\left(\frac{n}{X}\right)\right|\right).
       \]
       We will estimate this latter sum. Abel's summation formula (see \cref{{append:Summation_Formulas}}) gives
       \[
@@ -487,15 +487,14 @@
       \[
         \frac{1}{2}\int_{\frac{X}{2}}^{2X}A_{\psi}(u)u^{-\frac{3}{2}}\,du \ll X\max_{\frac{X}{2} \le u \le 2X}\left(\left|A_{\psi}(u)u^{-\frac{3}{2}}\right|\right) \ll \max_{\frac{X}{2} \le u \le 2X}\left(\left|\frac{A_{\psi}(u)}{\sqrt{u}}\right|\right),
       \]
-      we obtain the bound
+      we find that
       \[
-        \max_{X \ll_{\e} \mf{q}(f)^{\frac{1}{2}+\e}}\left(\left|\sum_{\frac{X}{2} \le n \le 2X}\frac{a_{f}(n)}{\sqrt{n}}\psi\left(\frac{n}{X}\right)\right|\right) \ll \max_{X \ll_{\e} \mf{q}(f)^{\frac{1}{2}+\e}}\left(\left|\frac{A_{\psi}(X)}{\sqrt{X}}\right|\right).
+        \max_{X \ll \sqrt{q(f)}}\left(\left|\sum_{\frac{X}{2} \le n \le 2X}\frac{a_{f}(n)}{\sqrt{n}}\psi\left(\frac{n}{X}\right)\right|\right) \ll \max_{X \ll \sqrt{q(f)}}\left(\left|\frac{A_{\psi}(X)}{\sqrt{X}}\right|\right).
       \]
       Putting everything together gives
       \[
-        \sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right) \ll_{\e} q(f)^{\frac{\e}{2}}\max_{X \ll_{\e} \mf{q}(f)^{\frac{1}{2}+\e}}\left(\left|\frac{A_{\psi}(X)}{\sqrt{X}}\right|\right) \ll_{\e} \max_{X \ll_{\e} \mf{q}(f)^{\frac{1}{2}+\e}}\left(\left|\frac{A_{\psi}(X)}{q(f)^{\frac{1}{4}}}\right|\right),
+        \sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right) \ll \max_{X \ll \sqrt{q(f)}}\left(\left|\frac{A_{\psi}(X)}{\sqrt{X}}\right|\right).
       \]
-      where in the last estimate we may replace $X$ with $q(f)^{\frac{1}{2}+\e}$ because $X \ge 1$ so that $X$ is bounded away from zero.
     \end{proof}
   \section{Logarithmic Derivatives}
     There is an incredibly useful formula for the logarithmic derivative of any $L$-function which is often the starting point for deeper analytic investigations. To deduce it, we will need a more complete understanding of $\L(s,f)$. First observe that the zeros $\rho$ of $\L(s,f)$ are contained inside of the critical strip. Indeed, we have already remarked that $L(s,f)$ has no zeros for $\s > 0$ and clearly $\g(s,f)$ does not have zeros in this region as well. Therefore $\L(s,f)$ is nonzero for $\s > 1$. By the functional equation, $\L(s,f)$ is also nonzero for $\s < 0$ too. In other words, the zeros of $\L(s,f)$ are the nontrivial zeros of $L(s,f)$. Before we state our result, we setup some notation. For an $L$-function $L(s,f)$ we define
@@ -867,7 +866,7 @@
       \]
       This gives an estimate for the contribution of the local factors of $L(s,f)$ corresponding to unramified primes. For the contribution of the local factors corresponding to ramified primes, we use \cref{equ:log_derivaive_direct_computation} to compute
       \[
-        \Re\left(\frac{L'_{q(f)}}{L_{q(f)}}(\s,f)\right) \le \left|\frac{L'_{q(f)}}{L_{q(f)}}(\s,f)\right| = \left|\sum_{p \mid q(f)}\sum_{1 \le j \le d_{f}}\frac{\a_{j}(p)\log(p)}{(1-\a_{j}(p)p^{-\s})p^{\s}}\right| \le d_{f}\sum_{p \mid q(f)}\log(p) \le d_{f}\log(q(f)),
+        \Re\left(\frac{L'_{q(f)}}{L_{q(f)}}(\s,f)\right) \le \left|\frac{L'_{q(f)}}{L_{q(f)}}(\s,f)\right| = \left|\sum_{p \mid q(f)}\sum_{1 \le j \le d_{f}}\frac{\a_{j}(p)\log(p)}{(1-\a_{j}(p)p^{-\s})p^{\s}}\right| \le d_{f}\sum_{p \mid q(f)}\log(p) \le d_{f}\log{q(f)},
       \]
       where in the second inequality we have made use of the assumption $|\a_{j}(p)| \le \frac{p}{2}$ for ramified primes $p$ to conclude that $\left|\frac{\a_{j}(p)}{(1-\a_{j}(p)p^{-\s})p^{\s}}\right| \le 1$. These estimates together imply
       \[
