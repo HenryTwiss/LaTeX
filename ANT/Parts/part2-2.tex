@@ -276,7 +276,7 @@
     \begin{theorem}
       Let $\psi(y)$ be a bump function and let $\Psi(s)$ denote its Mellin transform. Then for any $L$-function $L(s,f)$, we have
       \[
-        \sum_{n \ge 1}a_{f}(n)\psi(n) = \frac{\e(f)}{\sqrt{q(f)}}\sum_{n \ge 1}a_{\conj{f}}(n)\phi(n)+R(f)\Psi(1),
+        \sum_{n \ge 1}a_{f}(n)\psi(n) = \frac{\e(f)}{\sqrt{q(f)}}\sum_{n \ge 1}\conj{a_{f}(n)}\phi(n)+R(f)\Psi(1),
       \]
       where $\phi(y)$ is the inverse Mellin transform defined by
       \[
@@ -458,9 +458,9 @@
       \]
       We then obtain the weaker estimate
       \[
-        L\left(\frac{1}{2},f\right) \ll \left|\sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right)\right|+\left|\frac{R(f)}{q(f)^{\frac{1}{4}}}\right|.
+        L\left(\frac{1}{2},f\right) \ll \left|\sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right)\right|+\left|\sum_{n \ge 1}\frac{\conj{a_{f}(n)}}{\sqrt{n}}V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right)\right|+\left|\frac{R(f)}{q(f)^{\frac{1}{4}}}\right|.
       \]
-      It remains to estimate the first term on the right-hand side. To this end, consider the set of functions $\left\{\psi\left(\frac{y}{2^{k}}\right)\right\}_{k \in \Z}$. Since $\psi\left(\frac{y}{2^{k}}\right)$ has support in $[2^{k-1},2^{k+1}]$, the sum $\s(y) = \sum_{k \in \Z}\psi\left(\frac{y}{2^{k}}\right)$, defined for $y > 0$, is finite since at most finitely many terms are nonzero for every $y$. It is also bounded away from zero since for any $y > 0$ there is some $k \in \Z$ for which $2^{k} \le y \le 3 \cdot 2^{k-1}$ so that $\frac{y}{2^{k}}$ is at least distance $\frac{1}{2}$ from the endpoints of $\left[\frac{1}{2},2\right]$. Defining $\psi_{k}(y) = \psi\left(\frac{y}{2^{k}}\right)\s(y)^{-1}$, it follows that $\left\{\psi_{k}(y)\right\}_{k \in \Z}$ satisfies
+      It remains to estimate the first two term on the right-hand side. To this end, consider the set of functions $\left\{\psi\left(\frac{y}{2^{k}}\right)\right\}_{k \in \Z}$. Since $\psi\left(\frac{y}{2^{k}}\right)$ has support in $[2^{k-1},2^{k+1}]$, the sum $\s(y) = \sum_{k \in \Z}\psi\left(\frac{y}{2^{k}}\right)$, defined for $y > 0$, is finite since at most finitely many terms are nonzero for every $y$. It is also bounded away from zero since for any $y > 0$ there is some $k \in \Z$ for which $2^{k} \le y \le 3 \cdot 2^{k-1}$ so that $\frac{y}{2^{k}}$ is at least distance $\frac{1}{2}$ from the endpoints of $\left[\frac{1}{2},2\right]$. Defining $\psi_{k}(y) = \psi\left(\frac{y}{2^{k}}\right)\s(y)^{-1}$, it follows that $\left\{\psi_{k}(y)\right\}_{k \in \Z}$ satisfies
       \[
         \sum_{k \in \Z}\psi_{k}(y) = 1,
       \]
@@ -468,18 +468,19 @@
       \[
         V_{s}(y) = \sum_{k \in \Z}\psi_{k}(y)V_{s}(y).
       \]
-      It follows that
+      Then, for the first term, we have
       \begin{align*}
         \sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right) &= \sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}\sum_{k \in \Z}\psi_{k}\left(\frac{n}{\sqrt{q(f)}}\right)V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right) \\
         &= \sum_{k \in \Z}\sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}\psi_{k}\left(\frac{n}{\sqrt{q(f)}}\right)V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right) && \text{FTT} \\
         &\ll \sum_{k \in \Z}\left|\sum_{n \ll \sqrt{q(f)}}\frac{a_{f}(n)}{\sqrt{n}}\psi_{k}\left(\frac{n}{\sqrt{q(f)}}\right)\right| \\
-        &\ll \sum_{k \ll 1}\left|\sum_{2^{k-1}\sqrt{q(f)} \le n \le 2^{k+1}\sqrt{q(f)}}\frac{a_{f}(n)}{\sqrt{n}}\psi_{k}\left(\frac{n}{\sqrt{q(f)}}\right)\right|,
+        &\ll \sum_{k \ll 1}\left|\sum_{2^{k-1}\sqrt{q(f)} \le n \le 2^{k+1}\sqrt{q(f)}}\frac{a_{f}(n)}{\sqrt{n}}\psi_{k}\left(\frac{n}{\sqrt{q(f)}}\right)\right| \\
+        &\ll \max_{X \ll \sqrt{q(f)}}\left(\left|\sum_{\frac{X}{2} \le n \le 2X}\frac{a_{f}(n)}{q(f)^{\frac{1}{4}}}\psi\left(\frac{n}{X}\right)\right|\right),
       \end{align*}
-      where in the second to last line we have used that $V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right)$ is bounded for $n \ll \sqrt{\mf{q}\left(\frac{1}{2},f\right)} \ll \sqrt{q(f)}$, and then exhibits polynomial decay of arbitrarily large order thereafter by \cref{prop:V_function_decay}, and in the last line we have used that $\psi_{k}(y)$ has compact support in $[2^{k-1},2^{k+1}]$. Since $\s(y)$ is bounded away from zero and $\log(y) \ll y$, we obtain the crude bound
+      where in the third line we have used that $V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right)$ is bounded for $n \ll \sqrt{\mf{q}\left(\frac{1}{2},f\right)} \ll \sqrt{q(f)}$, and then exhibits polynomial decay of arbitrarily large order thereafter by \cref{prop:V_function_decay}, in the second to last line we have used that $\psi_{k}(y)$ has compact support in $[2^{k-1},2^{k+1}]$, and in the last line we have used that $\s(y)$ is bounded away from zero and that $\log(y) \ll y$. In view of the fact that
       \[
-         \sum_{k \ll 1}\left|\sum_{2^{k-1}\sqrt{q(f)} \le n \le 2^{k+1}\sqrt{q(f)}}\frac{a_{f}(n)}{\sqrt{n}}\psi_{k}\left(\frac{n}{\sqrt{q(f)}}\right)\right| \ll \max_{X \ll \sqrt{q(f)}}\left(\left|\sum_{\frac{X}{2} \le n \le 2X}\frac{a_{f}(n)}{q(f)^{\frac{1}{4}}}\psi\left(\frac{n}{X}\right)\right|\right).
+        \left|\sum_{n \ge 1}\frac{\conj{a_{f}(n)}}{\sqrt{n}}V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right)\right| = \left|\sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}\conj{V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right)}\right|,
       \]
-      By Abel's summation formula (see \cref{{append:Summation_Formulas}}), the inner sum is
+      the same estimate holds for the second term as well. By Abel's summation formula (see \cref{{append:Summation_Formulas}}), we have
       \[
         \sum_{\frac{X}{2} \le n \le 2X}\frac{a_{f}(n)}{q(f)^{\frac{1}{4}}}\psi\left(\frac{n}{X}\right) = \frac{A_{\psi}(2X)}{q(f)^{\frac{1}{4}}}-\frac{A_{\psi}\left(\frac{X}{2}\right)}{q(f)^{\frac{1}{4}}}.
       \]
