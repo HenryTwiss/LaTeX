@@ -434,17 +434,21 @@
     \[
       L^{(k)}\left(\frac{1}{2}+it,f\right) \ll_{\e} \mf{q}\left(\frac{1}{2}+it,f\right)^{\frac{1}{4}+\e}.
     \]
-  \section{Estimating the Central Value}
-    The Lindel\"of hypothesis is concerned with the growth of the $L$-function $L(s,f)$ along the critical line, but sometimes we are only concerned with the size of $L(s,f)$ at the central point. The value of $L(s,f)$ at the central point is called the \textbf{central value}\index{central value} of $L(s,f)$. Many important properties about $L(s,f)$ can be connected to its central value. Any argument used to estimate the central value of an $L$-function is called a \textbf{central value estimate}\index{central value estimate}. We will prove central value estimate which gives a very useful upper bound in the $q(f)$-aspect. To state it, let $\psi(y)$ be a bump function with compact support in $\left[\frac{1}{2},2\right]$. For example, we may take
+  \section{A Central Value Estimate}
+    The Lindel\"of hypothesis is concerned with the growth of the $L$-function $L(s,f)$ along the critical line, but sometimes we are only concerned with the size of $L(s,f)$ at the central point. The value of $L(s,f)$ at the central point is called the \textbf{central value}\index{central value} of $L(s,f)$. Many important properties about $L(s,f)$ can be connected to its central value. Any argument used to estimate the central value of an $L$-function is called a \textbf{central value estimate}\index{central value estimate}. We will prove a result which provides a very useful way to obtain central value estimates. To state it, we need some notation. For an $L$-function $L(s,f)$ and $X > 0$, we set
+    \[
+      A_{\psi}(X,f) = \sum_{n \ge 1}a_{f}(n)\psi\left(\frac{n}{X}\right),
+    \]
+    where $\psi(y)$ is a bump function with compact support in $\left[\frac{1}{2},2\right]$. For example, we may take
     \[
       \psi(y) = \begin{cases} e^{-\frac{1}{9-(4y-5)^{2}}} & \text{if $|4y-5| < 3$}, \\ 0 & \text{if $|4y-5| \ge 3$}. \end{cases}
     \]
     The theorem is the following:
 
-    \begin{theorem}
+    \begin{theorem}\label{thm:central_value_estimate}
       Let $L(s,f)$ be an $L$-function and let $\psi(y)$ be a bump function with compact support in $\left[\frac{1}{2},2\right]$. Then
       \[
-        L\left(\frac{1}{2},f\right) \ll_{\e} \max_{X \ll \sqrt{q(f)}}\left(\left|\frac{A_{\psi}(X)}{q(f)^{\frac{1}{4}}}\right|\right)+\left|\frac{R(f)}{q(f)^{\frac{1}{4}}}\right|,
+        L\left(\frac{1}{2},f\right) \ll_{\e} \max_{X \ll \sqrt{q(f)}}\left(\left|\frac{A_{\psi}(X,f)}{q(f)^{\frac{1}{4}}}\right|\right)+\left|\frac{R(f)}{q(f)^{\frac{1}{4}}}\right|,
       \]
       where $R(f)$ is zero if $\L(s,f)$ is entire, and otherwise
       \[
@@ -486,14 +490,16 @@
       \]
       Hence
       \[
-        \max_{X \ll \sqrt{q(f)}}\left(\left|\sum_{\frac{X}{2} \le n \le 2X}\frac{a_{f}(n)}{q(f)^{\frac{1}{4}}}\psi\left(\frac{n}{X}\right)\right|\right) \ll \max_{X \ll \sqrt{q(f)}}\left(\left|\frac{A_{\psi}(X)}{q(f)^{\frac{1}{4}}}\right|\right).
+        \max_{X \ll \sqrt{q(f)}}\left(\left|\sum_{\frac{X}{2} \le n \le 2X}\frac{a_{f}(n)}{q(f)^{\frac{1}{4}}}\psi\left(\frac{n}{X}\right)\right|\right) \ll \max_{X \ll \sqrt{q(f)}}\left(\left|\frac{A_{\psi}(X,f)}{q(f)^{\frac{1}{4}}}\right|\right).
       \]
       Putting everything together, we find that
       \[
-        \sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right) \ll \max_{X \ll \sqrt{q(f)}}\left(\left|\frac{A_{\psi}(X)}{q(f)^{\frac{1}{4}}}\right|\right),
+        \sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right) \ll \max_{X \ll \sqrt{q(f)}}\left(\left|\frac{A_{\psi}(X,f)}{q(f)^{\frac{1}{4}}}\right|\right),
       \]
       completing the proof.
     \end{proof}
+
+    In view of \cref{thm:central_value_estimate}, it suffices to bound $A_{\psi}(X,f)$ for $X \ll \sqrt{q(f)}$ to estimate the central value of $L(s,f)$.
   \section{Logarithmic Derivatives}
     There is an incredibly useful formula for the logarithmic derivative of any $L$-function which is often the starting point for deeper analytic investigations. To deduce it, we will need a more complete understanding of $\L(s,f)$. First observe that the zeros $\rho$ of $\L(s,f)$ are contained inside of the critical strip. Indeed, we have already remarked that $L(s,f)$ has no zeros for $\s > 0$ and clearly $\g(s,f)$ does not have zeros in this region as well. Therefore $\L(s,f)$ is nonzero for $\s > 1$. By the functional equation, $\L(s,f)$ is also nonzero for $\s < 0$ too. In other words, the zeros of $\L(s,f)$ are the nontrivial zeros of $L(s,f)$. Before we state our result, we setup some notation. For an $L$-function $L(s,f)$ we define
     \[
