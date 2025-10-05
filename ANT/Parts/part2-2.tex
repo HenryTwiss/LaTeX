@@ -271,7 +271,7 @@
       where in the third and fourth lines we have used that $cy \ll (1+cy)$ and the last line holds since the integrand exhibits exponential decay. This completes the proof.
     \end{proof}
 
-    From \cref{prop:V_function_decay} we see that $V_{s}(y)$ is bounded for $y \ll \sqrt{\mf{q}_{\infty}(s,f)}$ and then starts to exhibit polynomial decay of arbitrarily large order (recall that $y \sim \sqrt{\mf{q}_{\infty}(s,f)}$ implies $y \ll \sqrt{\mf{q}_{\infty}(s,f)}$). In a similar spirit to the approximate functional equation, a useful summation formula can be derived from the functional equation of each $L$-function:
+    From \cref{prop:V_function_decay} we see that $V_{s}(y)$ is bounded for $y \ll \sqrt{\mf{q}_{\infty}(s,f)}$ and then exhibits polynomial decay of arbitrarily large order thereafter (by taking $M$ arbitrarily large). More simply, this holds for $y \ll \sqrt{\mf{q}(s,f)}$ as well. In a similar spirit to the approximate functional equation, a useful summation formula can be derived from the functional equation of each $L$-function:
 
     \begin{theorem}
       Let $\psi(y)$ be a bump function and let $\Psi(s)$ denote its Mellin transform. Then for any $L$-function $L(s,f)$, we have
@@ -448,11 +448,7 @@
     \begin{theorem}\label{thm:critical_line_estimate}
       Let $L(s,f)$ be an $L$-function and let $\psi(y)$ be a bump function with compact support in $\left[\frac{1}{2},2\right]$. Then
       \[
-        L\left(\frac{1}{2}+it,f\right) \ll \max_{X \ll \sqrt{\mf{q}\left(\frac{1}{2}+it,f\right)}}\left(\left|\frac{A_{\psi}(X,t,f)}{\mf{q}\left(\frac{1}{2}+it,f\right)^{\frac{1}{4}}}\right|\right)+\left|\frac{R\left(\frac{1}{2}+it,f\right)}{q(f)^{\frac{1}{4}}\g\left(\frac{1}{2}+it,f\right)}\right|,
-      \]
-      where $R(s,f)$ is zero if $\L(s,f)$ is entire, and otherwise
-      \[
-        R(s,f) = \Res_{u = 1-s}\frac{\L\left(s+u,f\right)}{u}+\Res_{u = -s}\frac{\L\left(s+u,f\right)}{u}.
+        L\left(\frac{1}{2}+it,f\right) \ll \max_{X \ll \sqrt{\mf{q}\left(\frac{1}{2}+it,f\right)}}\left(\left|\frac{A_{\psi}(X,t,f)}{\mf{q}\left(\frac{1}{2}+it,f\right)^{\frac{1}{4}}}\right|\right).
       \]
     \end{theorem}
     \begin{proof}
@@ -465,7 +461,11 @@
       \[
         L\left(\frac{1}{2}+it,f\right) \ll \left|\sum_{n \ge 1}\frac{a_{f}(n)n^{-it}}{\sqrt{n}}V_{\frac{1}{2}+it}\left(\frac{n}{\sqrt{q(f)}}\right)\right|+\left|\sum_{n \ge 1}\frac{\conj{a_{f}(n)}n^{it}}{\sqrt{n}}V_{\frac{1}{2}-it}\left(\frac{n}{\sqrt{q(f)}}\right)\right|+\left|\frac{R\left(\frac{1}{2}+it,f\right)}{q(f)^{\frac{1}{4}}\g\left(\frac{1}{2}+it,f\right)}\right|.
       \]
-      It remains to estimate the first two term on the right-hand side. To this end, consider the set of functions $\left\{\psi\left(\frac{y}{2^{k}}\right)\right\}_{k \in \Z}$. Since $\psi\left(\frac{y}{2^{k}}\right)$ has support in $[2^{k-1},2^{k+1}]$, the sum $\s(y) = \sum_{k \in \Z}\psi\left(\frac{y}{2^{k}}\right)$, defined for $y > 0$, is bounded since at most finitely many terms are nonzero for every $y$. It is also bounded away from zero since for any $y > 0$ there is some $k \in \Z$ for which $2^{k} \le y \le 3 \cdot 2^{k-1}$ so that $\frac{y}{2^{k}}$ is at least distance $\frac{1}{2}$ from the endpoints of $\left[\frac{1}{2},2\right]$. Together these facts mean that $\s(y) \asymp 1$. Defining $\psi_{k}(y) = \psi\left(\frac{y}{2^{k}}\right)\s(y)^{-1}$, it follows that $\left\{\psi_{k}(y)\right\}_{k \in \Z}$ satisfies
+      \cref{equ:modified_gamma_estimates,equ:choice_for_V_decay_estimate} together imply that the third term exhibits exponential decay and is therefore absolutely bounded. Hence
+      \[
+        L\left(\frac{1}{2}+it,f\right) \ll \left|\sum_{n \ge 1}\frac{a_{f}(n)n^{-it}}{\sqrt{n}}V_{\frac{1}{2}+it}\left(\frac{n}{\sqrt{q(f)}}\right)\right|+\left|\sum_{n \ge 1}\frac{\conj{a_{f}(n)}n^{it}}{\sqrt{n}}V_{\frac{1}{2}-it}\left(\frac{n}{\sqrt{q(f)}}\right)\right|.
+      \]
+      It remains to estimate the two term on the right-hand side. To this end, consider the set of functions $\left\{\psi\left(\frac{y}{2^{k}}\right)\right\}_{k \in \Z}$. Since $\psi\left(\frac{y}{2^{k}}\right)$ has support in $[2^{k-1},2^{k+1}]$, the sum $\s(y) = \sum_{k \in \Z}\psi\left(\frac{y}{2^{k}}\right)$, defined for $y > 0$, is bounded since at most finitely many terms are nonzero for every $y$. It is also bounded away from zero since for any $y > 0$ there is some $k \in \Z$ for which $2^{k} \le y \le 3 \cdot 2^{k-1}$ so that $\frac{y}{2^{k}}$ is at least distance $\frac{1}{2}$ from the endpoints of $\left[\frac{1}{2},2\right]$. Together these facts mean that $\s(y) \asymp 1$. Defining $\psi_{k}(y) = \psi\left(\frac{y}{2^{k}}\right)\s(y)^{-1}$, it follows that $\left\{\psi_{k}(y)\right\}_{k \in \Z}$ satisfies
       \[
         \sum_{k \in \Z}\psi_{k}(y) = 1,
       \]
@@ -495,21 +495,21 @@
       \]
       Putting everything together, we find that
       \[
-       \left|\sum_{n \ge 1}\frac{a_{f}(n)n^{-it}}{\sqrt{n}}V_{\frac{1}{2}+it}\left(\frac{n}{\sqrt{q(f)}}\right)\right|+\left|\sum_{n \ge 1}\frac{\conj{a_{f}(n)}n^{it}}{\sqrt{n}}V_{\frac{1}{2}-it}\left(\frac{n}{\sqrt{q(f)}}\right)\right| \ll\max_{X \ll \sqrt{\mf{q}\left(\frac{1}{2}+it,f\right)}}\left(\left|\frac{A_{\psi}(X,t,f)}{\mf{q}\left(\frac{1}{2}+it,f\right)^{\frac{1}{4}}}\right|\right),
+       \left|\sum_{n \ge 1}\frac{a_{f}(n)n^{-it}}{\sqrt{n}}V_{\frac{1}{2}+it}\left(\frac{n}{\sqrt{q(f)}}\right)\right|+\left|\sum_{n \ge 1}\frac{\conj{a_{f}(n)}n^{it}}{\sqrt{n}}V_{\frac{1}{2}-it}\left(\frac{n}{\sqrt{q(f)}}\right)\right| \ll \max_{X \ll \sqrt{\mf{q}\left(\frac{1}{2}+it,f\right)}}\left(\left|\frac{A_{\psi}(X,t,f)}{\mf{q}\left(\frac{1}{2}+it,f\right)^{\frac{1}{4}}}\right|\right),
       \]
       completing the proof.
     \end{proof}
 
-    In view of \cref{thm:central_value_estimate}, it suffices to bound $A_{\psi}(X,t,f)$ for $X \ll \sqrt{\mf{q}\left(\frac{1}{2}+it,f\right)}$ to estimate $L\left(\frac{1}{2}+it,f\right)$. Sometimes, however, we are only concerned with the size of $L(s,f)$ at the central point. The value of $L(s,f)$ at the central point is called the \textbf{central value}\index{central value} of $L(s,f)$. Many important properties about $L(s,f)$ can be connected to its central value. Any argument used to estimate the central value of an $L$-function is called a \textbf{central value estimate}\index{central value estimate}. Taking $t = 0$ in \cref{thm:critical_line_estimate} gives a way to obtain central value estimates:
+    In view of \cref{thm:central_value_estimate}, it suffices to bound $A_{\psi}(X,t,f)$ for $X \ll \sqrt{\mf{q}\left(\frac{1}{2}+it,f\right)}$ to estimate $L\left(\frac{1}{2}+it,f\right)$. Moreover, we obtain the convexity bound from \cref{thm:central_value_estimate} by using that $a_{f}(n) \ll_{\e} n^{\e}$ to obtain the estimate
+    \[
+      \max_{X \ll \sqrt{\mf{q}\left(\frac{1}{2}+it,f\right)}}|A_{\psi}(X,t,f)| \ll_{\e} \int_{\frac{1}{2}\sqrt{\mf{q}\left(\frac{1}{2}+it,f\right)}}^{2\sqrt{\mf{q}\left(\frac{1}{2}+it,f\right)}}x^{\e}\,dx \ll_{\e} \mf{q}\left(\frac{1}{2}+it,f\right)^{\frac{1}{2}+\e}.
+    \]
+    Sometimes, however, we are only concerned with the size of $L(s,f)$ at the central point. The value of $L(s,f)$ at the central point is called the \textbf{central value}\index{central value} of $L(s,f)$. Many important properties about $L(s,f)$ can be connected to its central value. Any argument used to estimate the central value of an $L$-function is called a \textbf{central value estimate}\index{central value estimate}. Taking $t = 0$ in \cref{thm:critical_line_estimate} gives a way to obtain central value estimates:
 
     \begin{theorem}\label{thm:central_value_estimate}
       Let $L(s,f)$ be an $L$-function and let $\psi(y)$ be a bump function with compact support in $\left[\frac{1}{2},2\right]$. Then
       \[
-        L\left(\frac{1}{2},f\right) \ll \max_{X \ll \sqrt{q(f)}}\left(\left|\frac{A_{\psi}(X,f)}{q(f)^{\frac{1}{4}}}\right|\right)+\left|\frac{R\left(\frac{1}{2},f\right)}{q(f)^{\frac{1}{4}}\g\left(\frac{1}{2},f\right)}\right|,
-      \]
-      where $R(s,f)$ is zero if $\L(s,f)$ is entire, and otherwise
-      \[
-        R(s,f) = \Res_{u = 1-s}\frac{\L\left(s+u,f\right)}{u}+\Res_{u = -s}\frac{\L\left(s+u,f\right)}{u}.
+        L\left(\frac{1}{2},f\right) \ll \max_{X \ll \sqrt{q(f)}}\left(\left|\frac{A_{\psi}(X,f)}{q(f)^{\frac{1}{4}}}\right|\right).
       \]
     \end{theorem}
     \begin{proof}
