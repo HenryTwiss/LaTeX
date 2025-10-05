@@ -434,37 +434,38 @@
     \[
       L^{(k)}\left(\frac{1}{2}+it,f\right) \ll_{\e} \mf{q}\left(\frac{1}{2}+it,f\right)^{\frac{1}{4}+\e}.
     \]
-  \section{A Central Value Estimate}
-    The Lindel\"of hypothesis is concerned with the growth of the $L$-function $L(s,f)$ along the critical line, but sometimes we are only concerned with the size of $L(s,f)$ at the central point. The value of $L(s,f)$ at the central point is called the \textbf{central value}\index{central value} of $L(s,f)$. Many important properties about $L(s,f)$ can be connected to its central value. Any argument used to estimate the central value of an $L$-function is called a \textbf{central value estimate}\index{central value estimate}. We will prove a result which provides a very useful way to obtain central value estimates. To state it, we need some notation. For an $L$-function $L(s,f)$ and $X > 0$, we set
-    \[
-      A_{\psi}(X,f) = \sum_{n \ge 1}a_{f}(n)\psi\left(\frac{n}{X}\right),
-    \]
-    where $\psi(y)$ is a bump function with compact support in $\left[\frac{1}{2},2\right]$. For example, we may take
+  \section{Estimate on the Critical Line}
+    The Lindel\"of hypothesis is concerned with the growth of the $L$-function $L(s,f)$ along the critical line. Here we provide a way to obtain estimates for $L(s,f)$ at $s = \frac{1}{2}+it$ in terms of finite sums. First, let $\psi(y)$ is a bump function with compact support in $\left[\frac{1}{2},2\right]$. For example, we may take
     \[
       \psi(y) = \begin{cases} e^{-\frac{1}{9-(4y-5)^{2}}} & \text{if $|4y-5| < 3$}, \\ 0 & \text{if $|4y-5| \ge 3$}. \end{cases}
     \]
-    The theorem is the following:
+    Now for an $L$-function $L(s,f)$, $t \in \R$, and $X > 0$, we set
+    \[
+      A_{\psi}(X,t,f) = \sum_{n \ge 1}a_{f}(n)n^{-it}\psi\left(\frac{n}{X}\right),
+    \]
+    and we will suppress the dependence upon $t$ if $t = 0$. Our result is the following:
 
-    \begin{theorem}\label{thm:central_value_estimate}
+    \begin{theorem}\label{thm:critical_line_estimate}
       Let $L(s,f)$ be an $L$-function and let $\psi(y)$ be a bump function with compact support in $\left[\frac{1}{2},2\right]$. Then
       \[
-        L\left(\frac{1}{2},f\right) \ll_{\e} \max_{X \ll \sqrt{q(f)}}\left(\left|\frac{A_{\psi}(X,f)}{q(f)^{\frac{1}{4}}}\right|\right)+\left|\frac{R(f)}{q(f)^{\frac{1}{4}}}\right|,
+        L\left(\frac{1}{2}+it,f\right) \ll \max_{X \ll \sqrt{\mf{q}\left(\frac{1}{2}+it,f\right)}}\left(\left|\frac{A_{\psi}(X,t,f)}{\mf{q}\left(\frac{1}{2}+it,f\right)^{\frac{1}{4}}}\right|\right)+\left|\frac{R\left(\frac{1}{2}+it,f\right)}{q(f)^{\frac{1}{4}}\g\left(\frac{1}{2}+it,f\right)}\right|,
       \]
-      where $R(f)$ is zero if $\L(s,f)$ is entire, and otherwise
+      where $R(s,f)$ is zero if $\L(s,f)$ is entire, and otherwise
       \[
-        R(f) = \Res_{u = \frac{1}{2}}\L\left(\frac{1}{2}+u,f\right)+\Res_{u = -\frac{1}{2}}\L\left(\frac{1}{2}+u,f\right).
+        R(s,f) = \Res_{u = 1-s}\frac{\L\left(s+u,f\right)}{u}+\Res_{u = -s}\frac{\L\left(s+u,f\right)}{u}.
       \]
     \end{theorem}
     \begin{proof}
-      Taking $s = \frac{1}{2}$, $X = 1$, and $\Phi(u) = \cos^{-4d_{f}M}\left(\frac{\pi u}{4M}\right)$ for some integer $M \ge 1$ in the approximate functional equation gives
+      Taking $s = \frac{1}{2}+it$, $X = 1$, and $\Phi(u) = \cos^{-4d_{f}M}\left(\frac{\pi u}{4M}\right)$ for some integer $M \ge 1$ in the approximate functional equation gives
+      \begin{align*}
+        L\left(\frac{1}{2}+it,f\right) &= \sum_{n \ge 1}\frac{a_{f}(n)}{n^{\frac{1}{2}+it}}V_{\frac{1}{2}+it}\left(\frac{n}{\sqrt{q(f)}}\right) \\
+        &+ \e\left(\frac{1}{2}+it,f\right)\sum_{n \ge 1}\frac{\conj{a_{f}(n)}}{n^{\frac{1}{2}-it}}V_{\frac{1}{2}-it}\left(\frac{n}{\sqrt{q(f)}}\right)+\frac{R\left(\frac{1}{2}+it,1,f\right)}{q(f)^{\frac{1}{4}}\g\left(\frac{1}{2}+it,f\right)}.
+      \end{align*}
+      By \cref{equ:gamma_factor_analytic_conductor_estimate}, we have $\e\left(\frac{1}{2}+it,f\right) \ll 1$ and therefore we obtain the weaker estimate
       \[
-        L\left(\frac{1}{2},f\right) = \sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right)+\e(f)\sum_{n \ge 1}\frac{\conj{a_{f}(n)}}{\sqrt{n}}V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right)+\frac{R\left(\frac{1}{2},1,f\right)}{q(f)^{\frac{1}{4}}\g\left(\frac{1}{2},f\right)}.
+        L\left(\frac{1}{2}+it,f\right) \ll \left|\sum_{n \ge 1}\frac{a_{f}(n)n^{-it}}{\sqrt{n}}V_{\frac{1}{2}+it}\left(\frac{n}{\sqrt{q(f)}}\right)\right|+\left|\sum_{n \ge 1}\frac{\conj{a_{f}(n)}n^{it}}{\sqrt{n}}V_{\frac{1}{2}-it}\left(\frac{n}{\sqrt{q(f)}}\right)\right|+\left|\frac{R\left(\frac{1}{2}+it,f\right)}{q(f)^{\frac{1}{4}}\g\left(\frac{1}{2}+it,f\right)}\right|.
       \]
-      We then obtain the weaker estimate
-      \[
-        L\left(\frac{1}{2},f\right) \ll \left|\sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right)\right|+\left|\sum_{n \ge 1}\frac{\conj{a_{f}(n)}}{\sqrt{n}}V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right)\right|+\left|\frac{R(f)}{q(f)^{\frac{1}{4}}}\right|.
-      \]
-      It remains to estimate the first two term on the right-hand side. To this end, consider the set of functions $\left\{\psi\left(\frac{y}{2^{k}}\right)\right\}_{k \in \Z}$. Since $\psi\left(\frac{y}{2^{k}}\right)$ has support in $[2^{k-1},2^{k+1}]$, the sum $\s(y) = \sum_{k \in \Z}\psi\left(\frac{y}{2^{k}}\right)$, defined for $y > 0$, is finite since at most finitely many terms are nonzero for every $y$. It is also bounded away from zero since for any $y > 0$ there is some $k \in \Z$ for which $2^{k} \le y \le 3 \cdot 2^{k-1}$ so that $\frac{y}{2^{k}}$ is at least distance $\frac{1}{2}$ from the endpoints of $\left[\frac{1}{2},2\right]$. Defining $\psi_{k}(y) = \psi\left(\frac{y}{2^{k}}\right)\s(y)^{-1}$, it follows that $\left\{\psi_{k}(y)\right\}_{k \in \Z}$ satisfies
+      It remains to estimate the first two term on the right-hand side. To this end, consider the set of functions $\left\{\psi\left(\frac{y}{2^{k}}\right)\right\}_{k \in \Z}$. Since $\psi\left(\frac{y}{2^{k}}\right)$ has support in $[2^{k-1},2^{k+1}]$, the sum $\s(y) = \sum_{k \in \Z}\psi\left(\frac{y}{2^{k}}\right)$, defined for $y > 0$, is bounded since at most finitely many terms are nonzero for every $y$. It is also bounded away from zero since for any $y > 0$ there is some $k \in \Z$ for which $2^{k} \le y \le 3 \cdot 2^{k-1}$ so that $\frac{y}{2^{k}}$ is at least distance $\frac{1}{2}$ from the endpoints of $\left[\frac{1}{2},2\right]$. Together these facts mean that $\s(y) \asymp 1$. Defining $\psi_{k}(y) = \psi\left(\frac{y}{2^{k}}\right)\s(y)^{-1}$, it follows that $\left\{\psi_{k}(y)\right\}_{k \in \Z}$ satisfies
       \[
         \sum_{k \in \Z}\psi_{k}(y) = 1,
       \]
@@ -474,32 +475,48 @@
       \]
       For the first term, it follows that
       \begin{align*}
-        \sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right) &= \sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}\sum_{k \in \Z}\psi_{k}\left(\frac{n}{\sqrt{q(f)}}\right)V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right) \\
-        &= \sum_{k \in \Z}\sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}\psi_{k}\left(\frac{n}{\sqrt{q(f)}}\right)V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right) && \text{FTT} \\
-        &\ll \sum_{k \in \Z}\left|\sum_{n \ll \sqrt{q(f)}}\frac{a_{f}(n)}{\sqrt{n}}\psi_{k}\left(\frac{n}{\sqrt{q(f)}}\right)\right| \\
-        &\ll \sum_{k \ll 1}\left|\sum_{2^{k-1}\sqrt{q(f)} \le n \le 2^{k+1}\sqrt{q(f)}}\frac{a_{f}(n)}{\sqrt{n}}\psi_{k}\left(\frac{n}{\sqrt{q(f)}}\right)\right| \\
-        &\ll \max_{X \ll \sqrt{q(f)}}\left(\left|\sum_{\frac{X}{2} \le n \le 2X}\frac{a_{f}(n)}{q(f)^{\frac{1}{4}}}\psi\left(\frac{n}{X}\right)\right|\right),
+        \sum_{n \ge 1}\frac{a_{f}(n)n^{-it}}{\sqrt{n}}V_{\frac{1}{2}+it}\left(\frac{n}{\sqrt{q(f)}}\right) &= \sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}\sum_{k \in \Z}\psi_{k}\left(\frac{n}{\sqrt{q(f)}}\right)V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right) \\
+        &= \sum_{k \in \Z}\sum_{n \ge 1}\frac{a_{f}(n)n^{-it}}{\sqrt{n}}\psi_{k}\left(\frac{n}{\sqrt{q(f)}}\right)V_{\frac{1}{2}+it}\left(\frac{n}{\sqrt{q(f)}}\right) && \text{FTT} \\
+        &\ll \sum_{k \in \Z}\left|\sum_{n \ll \sqrt{\mf{q}\left(\frac{1}{2}+it,f\right)}}\frac{a_{f}(n)n^{-it}}{\sqrt{n}}\psi_{k}\left(\frac{n}{\sqrt{q(f)}}\right)\right| \\
+        &\ll \sum_{k \ll \log{\mf{q}_{\infty}\left(\frac{1}{2}+it\right)}}\left|\sum_{2^{k-1}\sqrt{q(f)} \le n \le 2^{k+1}\sqrt{q(f)}}\frac{a_{f}(n)n^{-it}}{\sqrt{n}}\psi_{k}\left(\frac{n}{\sqrt{q(f)}}\right)\right| \\
+        &\ll \max_{X \ll \sqrt{\mf{q}\left(\frac{1}{2}+it,f\right)}}\left(\left|\sum_{\frac{X}{2} \le n \le 2X}\frac{a_{f}(n)n^{-it}}{\mf{q}\left(\frac{1}{2}+it,f\right)^{\frac{1}{4}}}\psi\left(\frac{n}{X}\right)\right|\right),
       \end{align*}
-      where in the third line we have used that $V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right)$ is bounded for $n \ll \sqrt{\mf{q}\left(\frac{1}{2},f\right)} \ll \sqrt{q(f)}$ and then exhibits polynomial decay of arbitrarily large order thereafter by \cref{prop:V_function_decay}, in the second to last line we have used that $\psi_{k}(y)$ has compact support in $[2^{k-1},2^{k+1}]$, and in the last line we have used that $\s(y)$ is bounded away from zero and that $\log(y) \ll y$. In view of the fact that
+      where in the third line we have used that $V_{\frac{1}{2}+it}\left(\frac{n}{\sqrt{q(f)}}\right)$ is bounded for $n \ll \sqrt{\mf{q}\left(\frac{1}{2}+it,f\right)}$ and then exhibits polynomial decay of arbitrarily large order thereafter by \cref{prop:V_function_decay}, in the second to last line we have used that $\psi_{k}(y)$ has compact support in $[2^{k-1},2^{k+1}]$, and in the last line we have used that $\s(y) \asymp 1$. In view of the fact that
       \[
-        \left|\sum_{n \ge 1}\frac{\conj{a_{f}(n)}}{\sqrt{n}}V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right)\right| = \left|\sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}\conj{V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right)}\right|,
+        \left|\sum_{n \ge 1}\frac{\conj{a_{f}(n)}n^{it}}{\sqrt{n}}V_{\frac{1}{2}-it}\left(\frac{n}{\sqrt{q(f)}}\right)\right| = \left|\sum_{n \ge 1}\frac{a_{f}(n)n^{-it}}{\sqrt{n}}\conj{V_{\frac{1}{2}-it}\left(\frac{n}{\sqrt{q(f)}}\right)}\right|,
       \]
       the same estimate holds for the second term as well. By Abel's summation formula (see \cref{{append:Summation_Formulas}}), we have
       \[
-        \sum_{\frac{X}{2} \le n \le 2X}\frac{a_{f}(n)}{q(f)^{\frac{1}{4}}}\psi\left(\frac{n}{X}\right) = \frac{A_{\psi}(2X)}{q(f)^{\frac{1}{4}}}-\frac{A_{\psi}\left(\frac{X}{2}\right)}{q(f)^{\frac{1}{4}}}.
+        \sum_{\frac{X}{2} \le n \le 2X}\frac{a_{f}(n)n^{-it}}{\mf{q}\left(\frac{1}{2}+it,f\right)^{\frac{1}{4}}}\psi\left(\frac{n}{X}\right) = \frac{A_{\psi}(2X,t,f)}{\mf{q}\left(\frac{1}{2}+it,f\right)^{\frac{1}{4}}}-\frac{A_{\psi}\left(\frac{X}{2},t,f\right)}{\mf{q}\left(\frac{1}{2}+it,f\right)^{\frac{1}{4}}}.
       \]
       Hence
       \[
-        \max_{X \ll \sqrt{q(f)}}\left(\left|\sum_{\frac{X}{2} \le n \le 2X}\frac{a_{f}(n)}{q(f)^{\frac{1}{4}}}\psi\left(\frac{n}{X}\right)\right|\right) \ll \max_{X \ll \sqrt{q(f)}}\left(\left|\frac{A_{\psi}(X,f)}{q(f)^{\frac{1}{4}}}\right|\right).
+        \max_{X \ll \sqrt{\mf{q}\left(\frac{1}{2}+it,f\right)}}\left(\left|\sum_{\frac{X}{2} \le n \le 2X}\frac{a_{f}(n)n^{-it}}{\mf{q}\left(\frac{1}{2}+it,f\right)^{\frac{1}{4}}}\psi\left(\frac{n}{X}\right)\right|\right) \ll \max_{X \ll \sqrt{\mf{q}\left(\frac{1}{2}+it,f\right)}}\left(\left|\frac{A_{\psi}(X,t,f)}{\mf{q}\left(\frac{1}{2}+it,f\right)^{\frac{1}{4}}}\right|\right).
       \]
       Putting everything together, we find that
       \[
-        \sum_{n \ge 1}\frac{a_{f}(n)}{\sqrt{n}}V_{\frac{1}{2}}\left(\frac{n}{\sqrt{q(f)}}\right) \ll \max_{X \ll \sqrt{q(f)}}\left(\left|\frac{A_{\psi}(X,f)}{q(f)^{\frac{1}{4}}}\right|\right),
+       \left|\sum_{n \ge 1}\frac{a_{f}(n)n^{-it}}{\sqrt{n}}V_{\frac{1}{2}+it}\left(\frac{n}{\sqrt{q(f)}}\right)\right|+\left|\sum_{n \ge 1}\frac{\conj{a_{f}(n)}n^{it}}{\sqrt{n}}V_{\frac{1}{2}-it}\left(\frac{n}{\sqrt{q(f)}}\right)\right| \ll\max_{X \ll \sqrt{\mf{q}\left(\frac{1}{2}+it,f\right)}}\left(\left|\frac{A_{\psi}(X,t,f)}{\mf{q}\left(\frac{1}{2}+it,f\right)^{\frac{1}{4}}}\right|\right),
       \]
       completing the proof.
     \end{proof}
 
-    In view of \cref{thm:central_value_estimate}, it suffices to bound $A_{\psi}(X,f)$ for $X \ll \sqrt{q(f)}$ to estimate the central value of $L(s,f)$.
+    In view of \cref{thm:central_value_estimate}, it suffices to bound $A_{\psi}(X,t,f)$ for $X \ll \sqrt{\mf{q}\left(\frac{1}{2}+it,f\right)}$ to estimate $L\left(\frac{1}{2}+it,f\right)$. Sometimes, however, we are only concerned with the size of $L(s,f)$ at the central point. The value of $L(s,f)$ at the central point is called the \textbf{central value}\index{central value} of $L(s,f)$. Many important properties about $L(s,f)$ can be connected to its central value. Any argument used to estimate the central value of an $L$-function is called a \textbf{central value estimate}\index{central value estimate}. Taking $t = 0$ in \cref{thm:critical_line_estimate} gives a way to obtain central value estimates:
+
+    \begin{theorem}\label{thm:central_value_estimate}
+      Let $L(s,f)$ be an $L$-function and let $\psi(y)$ be a bump function with compact support in $\left[\frac{1}{2},2\right]$. Then
+      \[
+        L\left(\frac{1}{2},f\right) \ll \max_{X \ll \sqrt{q(f)}}\left(\left|\frac{A_{\psi}(X,f)}{q(f)^{\frac{1}{4}}}\right|\right)+\left|\frac{R\left(\frac{1}{2},f\right)}{q(f)^{\frac{1}{4}}\g\left(\frac{1}{2},f\right)}\right|,
+      \]
+      where $R(s,f)$ is zero if $\L(s,f)$ is entire, and otherwise
+      \[
+        R(s,f) = \Res_{u = 1-s}\frac{\L\left(s+u,f\right)}{u}+\Res_{u = -s}\frac{\L\left(s+u,f\right)}{u}.
+      \]
+    \end{theorem}
+    \begin{proof}
+      Take $t = 0$ in \cref{thm:critical_line_estimate} and recall that $\mf{q}\left(\frac{1}{2},f\right) \asymp q(f)$.
+    \end{proof}
+
+    Indeed, \cref{thm:central_value_estimate} showed that it suffices to bound $A_{\psi}(X,f)$ for $X \ll \sqrt{q(f)}$ to estimate the central value of $L(s,f)$.
   \section{Logarithmic Derivatives}
     There is an incredibly useful formula for the logarithmic derivative of any $L$-function which is often the starting point for deeper analytic investigations. To deduce it, we will need a more complete understanding of $\L(s,f)$. First observe that the zeros $\rho$ of $\L(s,f)$ are contained inside of the critical strip. Indeed, we have already remarked that $L(s,f)$ has no zeros for $\s > 0$ and clearly $\g(s,f)$ does not have zeros in this region as well. Therefore $\L(s,f)$ is nonzero for $\s > 1$. By the functional equation, $\L(s,f)$ is also nonzero for $\s < 0$ too. In other words, the zeros of $\L(s,f)$ are the nontrivial zeros of $L(s,f)$. Before we state our result, we setup some notation. For an $L$-function $L(s,f)$ we define
     \[
