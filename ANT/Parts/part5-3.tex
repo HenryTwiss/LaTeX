@@ -19,32 +19,51 @@
       \[
         \z\left(\frac{1}{2}+it\right) = \sum_{n \ll \frac{t}{\sqrt{\log(t)}}}\frac{1}{n^{\frac{1}{2}+it}}+O\left(\sum_{n \ll \sqrt{\log(t)}}\frac{1}{\sqrt{n}}\right)+O(1).
       \]
-      and using the weak estimate
+      and using the estimate
       \[
         \sum_{n \ll \sqrt{\log(t)}}\frac{1}{\sqrt{n}} = O\left(\int_{1}^{\sqrt{\log(t)}}\frac{1}{\sqrt{x}}\,dx\right) = O\left(\log^{\frac{1}{4}}(t)\right),
       \]
       we arrive at
-      \[
+      \begin{equation}\label{equ:second_moment_zeta_1}
         \z\left(\frac{1}{2}+it\right) = \sum_{n \ll \frac{t}{\sqrt{\log(t)}}}\frac{1}{n^{\frac{1}{2}+it}}+O\left(\log^{\frac{1}{4}}(t)\right).
-      \]
-      It follows that
-      \[
-        M_{2}(T,\z) = \int_{0}^{T}\sum_{n,m \ll \frac{t}{\sqrt{\log(t)}}}\frac{1}{(nm)^{\frac{1}{2}+it}}\,dt+O\left(\int_{0}^{T}\sum_{n \ll \frac{t}{\sqrt{\log(t)}}}\frac{\log^{\frac{1}{4}}(t)}{\sqrt{n}}\,dt\right)+O\left(\int_{0}^{T}\log^{\frac{1}{2}}(t)\,dt\right).
-      \]
-      In light of the estimates
-      \[
-        \int_{0}^{T}\sum_{n \ll \frac{t}{\sqrt{\log(t)}}}\frac{\log^{\frac{1}{4}}(t)}{\sqrt{n}}\,dt = O\left(\int_{0}^{T}\sum_{n,m \ll \frac{t}{\sqrt{\log(t)}}}\frac{1}{\sqrt{nm}}\,dt\right),
-      \]
-      and
+      \end{equation}
+      Applying \cref{equ:second_moment_zeta_1} to the definition of $M_{2}(T,\z)$ yields
+      \begin{equation}\label{equ:second_moment_zeta_2}
+        \begin{aligned}
+          M_{2}(T,\z) &= \int_{0}^{T}\left|\sum_{n \ll \frac{t}{\sqrt{\log(t)}}}\frac{1}{n^{\frac{1}{2}+it}}\right|^{2}\,dt \\
+          &+ O\left(\int_{0}^{T}\left|\sum_{n \ll \frac{t}{\sqrt{\log(t)}}}\frac{1}{n^{\frac{1}{2}+it}}\right|\log^{\frac{1}{4}}(t)\,dt\right)+O\left(\int_{0}^{T}\log^{\frac{1}{2}}(t)\,dt\right).
+        \end{aligned}
+      \end{equation}
+      We will now simplify \cref{equ:second_moment_zeta_2}. For the second term, the Cauchy-Schwarz inequality gives
+      \begin{align*}
+        \int_{0}^{T}\left|\sum_{n \ll \frac{t}{\sqrt{\log(t)}}}\frac{1}{n^{\frac{1}{2}+it}}\right|\log^{\frac{1}{4}}(t)\,dt &= O\left(\left(\int_{0}^{T}\left|\sum_{n \ll \frac{t}{\sqrt{\log(t)}}}\frac{1}{n^{\frac{1}{2}+it}}\right|^{2}\int_{0}^{T}\log^{\frac{1}{2}}(t)\,dt\right)^{\frac{1}{2}}\right) \\
+        &= O\left(\left(\int_{0}^{T}\left|\sum_{n \ll \frac{t}{\sqrt{\log(t)}}}\frac{1}{n^{\frac{1}{2}+it}}\right|^{2}\,dt\right)^{\frac{1}{2}}\sqrt{T}\log^{\frac{1}{2}}(T)\right).
+      \end{align*}
+      This estimate together with
       \[
         O\left(\int_{0}^{T}\log^{\frac{1}{2}}(t)\,dt\right) = O\left(\int_{1}^{T}\log(t)\,dt\right) = O(T\log(T)),
       \]
-      we obtain the simplified asymptotic
+      for the third term, implies
+      \begin{equation}\label{equ:second_moment_zeta_3}
+        \begin{aligned}
+          M_{2}(T,\z) &= O\left(\int_{0}^{T}\left|\sum_{n \ll \frac{t}{\sqrt{\log(t)}}}\frac{1}{n^{\frac{1}{2}+it}}\right|^{2}\,dt\right) \\
+          &+ O\left(\left(\int_{0}^{T}\left|\sum_{n \ll \frac{t}{\sqrt{\log(t)}}}\frac{1}{n^{\frac{1}{2}+it}}\right|^{2}\,dt\right)^{\frac{1}{2}}\sqrt{T}\log^{\frac{1}{2}}(T)\right)+O(T\log(T)).
+        \end{aligned}
+      \end{equation}
+      Therefore, it suffices to show that the remaining integral is $O(T\log(T))$. We compute
+      \begin{align*}
+        \left|\sum_{n \ll \frac{t}{\sqrt{\log(t)}}}\frac{1}{n^{\frac{1}{2}+it}}\right|^{2} &= \int_{0}^{T}\sum_{n,m \ll \frac{t}{\sqrt{\log(t)}}}\frac{1}{n^{\frac{1}{2}+it}m^{\frac{1}{2}-it}}\,dt \\
+        &= \sum_{n,m \ll \frac{T}{\sqrt{\log(T)}}}\int_{\max(m,n)}^{T}\frac{1}{n^{\frac{1}{2}+it}m^{\frac{1}{2}-it}}\,dt && \text{FTT} \\
+        &= \sum_{n \ll \frac{T}{\sqrt{\log(T)}}}\frac{T-n}{n}+ \sum_{\substack{n,m \ll \frac{T}{\sqrt{\log(T)}} \\ n \neq m}}\frac{1}{\sqrt{nm}}\int_{\max(n,m)}^{T}\left(\frac{m}{n}\right)^{it}\,dt \\
+        &= T\sum_{n \ll \frac{T}{\sqrt{\log(T)}}}\frac{1}{n}+O\left(\sum_{n \ll \frac{T}{\sqrt{\log(T)}}}1\right)+\left(\sum_{\substack{n,m \ll \frac{T}{\sqrt{\log(T)}} \\ n \neq m}}\frac{1}{\sqrt{nm}\log\left(\frac{m}{n}\right)}\right),
+      \end{align*}
+      where in the second to last line we have separated the terms for which $m = n$ or not. We now estimate all of the remaining terms individually. For the first term, we have
       \[
-        M_{2}(T,\z) = O\left(\int_{0}^{T}\sum_{n,m \ll \frac{t}{\sqrt{\log(t)}}}\frac{1}{(nm)^{\frac{1}{2}+it}}\,dt\right)+O(T\log(T)).
+        T\sum_{n \ll \frac{T}{\sqrt{\log(T)}}}\frac{1}{n} = O\left(T\int_{1}^{\frac{T}{\sqrt{\log(T)}}}\frac{1}{x}\,dx\right) = O\left(T\log\left(\frac{T}{\sqrt{\log(T)}}\right)\right) = O(T\log(T)).
       \]
-      Therefore, it suffices to show that the remaining integral is $O(T\log(T))$. By the Fubini–Tonelli theorem, we may interchange the sum and integral so that
+      The second term is easier since
       \[
-        \int_{0}^{T}\sum_{n,m \ll \frac{t}{\sqrt{\log(t)}}}\frac{1}{(nm)^{\frac{1}{2}+it}}\,dt = \sum_{n,m \ll \frac{T}{\sqrt{\log(T)}}}\int_{\max(m,n)}^{T}\frac{1}{(nm)^{\frac{1}{2}+it}}\,dt.
+        \sum_{n \ll \frac{T}{\sqrt{\log(T)}}}1 = O\left(\frac{T}{\sqrt{\log(T)}}\right) = O(T).
       \]
+      For the last term \todo{xxx}
     \end{proof}
