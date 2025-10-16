@@ -1,16 +1,24 @@
 \chapter{Moment Results}
   Obtaining any type of moment result is, generally speaking, a very difficult task requiring delicate analytic techniques. Since moments of $L$-functions are still a modern topic of research, there is not yet a universal theory to obtain such results. Even worse, currently methods almost only work when $k \le 4$. So, rather than trying to develop a general theory, we highlight some infamous moment results and their techniques.
   \section{The Second Moment of the Riemann Zeta Function}
-    We will prove the infamous result of Hardy and Littlewood (see \cite{hardy1916contributions}) about the second moment of the Riemann zeta function. This is one of the simplest moment results to obtain since the only real tool we will need is the approximate functional equation. Precisely, we prove the following:
+    We will prove the infamous result of Hardy and Littlewood (see \cite{hardy1916contributions}) about the second moment of the Riemann zeta function. This is one of the simplest moment results to obtain since the only real tool we will need is the approximate functional equation. It will also be useful to recall that
+    \begin{equation}\label{equ:approximation_for_harmonic_sums}
+      \sum_{n \ll N}\frac{1}{n} = \log(N)+O(1),
+    \end{equation}
+    for any $N \ge 1$, which follows from the identity
+    \[
+      \sum_{n \le N}\frac{1}{n} = \log(N)+\g_{N},
+    \]
+    where $\g_{N}$ approaches the Euler-Mascheroni constant $\g$ as $N \to \infty$. Precisely, we prove the following:
 
-    \begin{theorem}
+    \begin{theorem}\label{thm:second_moment_of_Riemann_zeta}
       For $T > 2$,
       \[
         M_{2}(T,\z) \sim T\log(T).
       \]
     \end{theorem}
     \begin{proof}
-      Taking $\s = \frac{1}{2}+it$, $X = \sqrt{\frac{t}{\log(t)}}$ for $t > 2$, and $\Phi(u) = \cos^{-4M}\left(\frac{\pi u}{4M}\right)$ with $M \ge 1$ in the approximate functional equation gives
+      Taking $\s = \frac{1}{2}+it$, $X = \sqrt{\frac{t}{\log(t)}}$ for $t \ge 2$, and $\Phi(u) = \cos^{-4M}\left(\frac{\pi u}{4M}\right)$ with $M \ge 1$ in the approximate functional equation gives
       \begin{align*}
         \z\left(\frac{1}{2}+it\right) &= \sum_{n \ge 1}\frac{1}{n^{\frac{1}{2}+it}}V_{\frac{1}{2}+it}\left(n\sqrt{\frac{\log(t)}{t}}\right) \\
         &+ \e\left(\frac{1}{2}+it,\z\right)\sum_{n \ge 1}\frac{1}{n^{\frac{1}{2}-it}}V_{\frac{1}{2}-it}\left(n\sqrt{\frac{t}{\log(t)}}\right)+\frac{R\left(\frac{1}{2}+it,\sqrt{\frac{t}{\log(t)}},\z\right)}{\g\left(\frac{1}{2}+it,\z\right)}.
@@ -27,7 +35,7 @@
       \begin{equation}\label{equ:second_moment_zeta_1}
         \z\left(\frac{1}{2}+it\right) = \sum_{n \ll \frac{t}{\sqrt{\log(t)}}}\frac{1}{n^{\frac{1}{2}+it}}+O\left(\log^{\frac{1}{4}}(t)\right),
       \end{equation}
-      since $1 = O(\log^{\frac{1}{4}}(t))$. Applying \cref{equ:second_moment_zeta_1} to the definition of $M_{2}(T,\z)$ and recalling that $\z\left(\frac{1}{2}+it\right)$ is absolutely bounded for $0 \le t \le 2$, yields
+      since $1 = O(\log^{\frac{1}{4}}(t))$ for $t \ge 2$. Applying \cref{equ:second_moment_zeta_1} to the definition of $M_{2}(T,\z)$ and recalling that $\z\left(\frac{1}{2}+it\right)$ is absolutely bounded for $0 \le t \le 2$, yields
       \begin{equation}\label{equ:second_moment_zeta_2}
         \begin{aligned}
           M_{2}(T,\z) &= \int_{2}^{T}\left|\sum_{n \ll \frac{t}{\sqrt{\log(t)}}}\frac{1}{n^{\frac{1}{2}+it}}\right|^{2}\,dt \\
@@ -59,7 +67,7 @@
           &= T\sum_{n \ll \frac{T}{\sqrt{\log(T)}}}\frac{1}{n}+O\left(\sum_{n \ll \frac{T}{\sqrt{\log(T)}}}1\right)+\left(\sum_{\substack{n,m \ll \frac{T}{\sqrt{\log(T)}} \\ n \neq m}}\frac{1}{\sqrt{nm}\log\left(\frac{m}{n}\right)}\right),
         \end{aligned}
       \end{equation}
-      where in the second to last line we have separated the terms for which $n = m$ or not. We now estimate all of the remaining terms in \cref{equ:second_moment_zeta_4}. For the first term, the partial sums of the harmonic series gives
+      where in the second to last line we have separated the terms for which $n = m$ or not. We now estimate all of the remaining terms in \cref{equ:second_moment_zeta_4}. For the first term, by \cref{equ:approximation_for_harmonic_sums} we have
       \begin{equation}\label{equ:second_moment_zeta_5}
         T\sum_{n \ll \frac{T}{\sqrt{\log(T)}}}\frac{1}{n} = T\log\left(\frac{T}{\sqrt{\log(T)}}\right)+O(T) = T\log(T)+o(T\log(T)).
       \end{equation}
@@ -87,7 +95,7 @@
       \[
         \sum_{\substack{n,m \ll \frac{T}{\sqrt{\log(T)}} \\ n \ge \frac{m}{2} \\ n \neq m}}\frac{1}{\sqrt{nm}\log\left(\frac{m}{n}\right)} = O\left(\sum_{m \ll \frac{T}{\sqrt{\log(T)}}}\sum_{r \le \frac{m}{2}}\frac{m}{r\sqrt{m(m-r)}}\right) = O\left(\sum_{m \ll \frac{T}{\sqrt{\log(T)}}}\sum_{r \le \frac{m}{2}}\frac{1}{r}\right).
       \]
-      To estimate the double sum, using the partial sums of the harmonic series again, we have
+      To estimate the double sum, using \cref{equ:approximation_for_harmonic_sums} again, we have
       \[
         \sum_{r \le \frac{m}{2}}\frac{1}{r} = \log(m)+O(1).
       \]
@@ -113,3 +121,13 @@
       \]
       which implies the desired asymptotic.
     \end{proof}
+    
+    A few comments about the proof of \cref{thm:second_moment_of_Riemann_zeta} are in order. The main analytic data being fed into \cref{thm:second_moment_of_Riemann_zeta} is the approximate functional equation for the Riemann zeta function (apart from some general asymptotics such as \cref{equ:approximation_for_harmonic_sums} and an application of the Cauchy-Schwarz inequality). The main term from the resulting asymptotic, namely \cref{equ:second_moment_zeta_1}, in $M_{2}(T,\z)$ is the $T\log(T)$ which comes from the diagonal contribution in
+    \[
+      \left|\sum_{n \ll \frac{t}{\sqrt{\log(t)}}}\frac{1}{n^{\frac{1}{2}+it}}\right|^{2} = \int_{2}^{T}\sum_{n,m \ll \frac{t}{\sqrt{\log(t)}}}\frac{1}{n^{\frac{1}{2}+it}m^{\frac{1}{2}-it}}\,dt,
+    \]
+    occurring when $n = m$, as computed in \cref{equ:second_moment_zeta_4}. This sum is
+    \[
+      T\sum_{n \ll \frac{T}{\sqrt{\log(T)}}}\frac{1}{n},
+    \]
+    and it is estimated in \cref{equ:second_moment_zeta_5}. This is the key obstruction in the proof of \cref{thm:second_moment_of_Riemann_zeta} as this is the longest sum coming from \cref{equ:second_moment_zeta_2} of the highest order (because of the factor of $T$).
