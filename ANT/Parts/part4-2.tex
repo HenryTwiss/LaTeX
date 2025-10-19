@@ -210,7 +210,7 @@
     \begin{proposition}\label{prop:Fourier_series_Poincare_holomorphic}
       Let $m \ge 1$, $k \ge 3$, $\chi$ be Dirichlet character with conductor dividing the level, and $\mf{a}$ and $\mf{b}$ be cusps of $\GH$. The Fourier series of $P_{m,k,\chi,\mf{a}}(z)$ on $\GH$ at the $\mf{b}$ cusp is given by
       \[
-        (P_{m,k,\chi,\mf{a}}|\s_{\mf{b}})(z) = \sum_{t \ge 1}\left(\d_{\mf{a},\mf{b}}\d_{m,t}+\left(\frac{\sqrt{t}}{\sqrt{m}}\right)^{k-1}\sum_{c \in \mc{C}_{\mf{a},\mf{b}}}\frac{2\pi i^{-k}S_{\chi,\mf{a},\mf{b}}(m,t,c)}{c}J_{k-1}\left(\frac{4\pi\sqrt{mt}}{c}\right)\right)e^{2\pi itz}.
+        (P_{m,k,\chi,\mf{a}}|\s_{\mf{b}})(z) = \sum_{t \ge 1}\left(\d_{\mf{a},\mf{b}}\d_{m,t}+2\pi i^{-k}\left(\frac{\sqrt{t}}{\sqrt{m}}\right)^{k-1}\sum_{c \in \mc{C}_{\mf{a},\mf{b}}}\frac{S_{\chi,\mf{a},\mf{b}}(m,t,c)}{c}J_{k-1}\left(\frac{4\pi\sqrt{mt}}{c}\right)\right)e^{2\pi itz}.
       \]
     \end{proposition}
     \begin{proof}
@@ -256,31 +256,31 @@
       The first expression has polynomial decay, the second expression is bounded, and the third expression exhibits exponential decay if and only if $t < 0$ and when $t = 0$ it is bounded. So when $t \le 0$ we may take the limit as $\Im(w) \to \infty$ by shifting the line of integration and conclude that the integral vanishes. It remains to compute the integral for $t \ge 1$. To do this, make the change of variables $w \mapsto -\frac{w}{2\pi it}$ to the last integral to rewrite it as
       \begin{align*}
         -\frac{1}{2\pi it}\int_{(2\pi ty)}\frac{e^{-\frac{4\pi^{2}mt}{c^{2}w}}}{\left(-\frac{cw}{2\pi it}\right)^{k}}e^{w}\,dw &= -\frac{1}{2\pi it}\int_{(2\pi ty)}\frac{e^{w-\frac{4\pi^{2}mt}{c^{2}w}}}{\left(-\frac{cw}{2\pi it}\right)^{k}}\,dw \\
-        &= \frac{(-2\pi it)^{k-1}}{c^{k}}\int_{(2\pi ty)}\frac{e^{w-\frac{4\pi^{2}mt}{c^{2}w}}}{w^{k}}\,dw \\
-        &= \frac{(-2\pi it)^{k-1}}{c^{k}}\int_{-\infty}^{(0^{+})}\frac{e^{w-\frac{4\pi^{2}mt}{c^{2}w}}}{w^{k}}\,dw \\
-        &= \frac{2\pi i^{-k}}{c}\left(\frac{\sqrt{t}}{\sqrt{m}}\right)^{k-1}J_{k-1}\left(\frac{4\pi\sqrt{mt}}{c}\right),
+        &= (-2\pi it)^{k-1}\frac{1}{c^{k}}\int_{(2\pi ty)}\frac{e^{w-\frac{4\pi^{2}mt}{c^{2}w}}}{w^{k}}\,dw \\
+        &= (-2\pi it)^{k-1}\frac{1}{c^{k}}int_{-\infty}^{(0^{+})}\frac{e^{w-\frac{4\pi^{2}mt}{c^{2}w}}}{w^{k}}\,dw \\
+        &= 2\pi i^{-k}\left(\frac{\sqrt{t}}{\sqrt{m}}\right)^{k-1}\frac{1}{c}J_{k-1}\left(\frac{4\pi\sqrt{mt}}{c}\right),
       \end{align*}
       where in the second to last line we have homotoped the line of integration to a Hankel contour about the negative real axis and in the last line we have used the Schl\"aflin integral representation for the $J$-Bessel function (see \cref{append:Bessel_Functions}). So in total we obtain
       \[
-        (\mc{F}f)(t) = \begin{cases} \left(\frac{2\pi i^{-k}}{c}\left(\frac{\sqrt{t}}{\sqrt{m}}\right)^{k-1}J_{k-1}\left(\frac{4\pi\sqrt{mt}}{c}\right)e^{2\pi im\frac{a}{c}+2\pi it\frac{r}{c}}\right)e^{-2\pi ty} & \text{if $t \ge 1$}, \\ 0 & \text{if $t \le 0$}. \end{cases}
+        (\mc{F}f)(t) = \begin{cases} \left(2\pi i^{-k}\left(\frac{\sqrt{t}}{\sqrt{m}}\right)^{k-1}\frac{e^{2\pi im\frac{a}{c}+2\pi it\frac{r}{c}}}{c}J_{k-1}\left(\frac{4\pi\sqrt{mt}}{c}\right)\right)e^{-2\pi ty} & \text{if $t \ge 1$}, \\ 0 & \text{if $t \le 0$}. \end{cases}
       \]
       By the Poisson summation formula and the identity theorem, we have
       \[
-        I_{c,r}(z) = \sum_{t \ge 1}\left(\frac{2\pi i^{-k}}{c}\left(\frac{\sqrt{t}}{\sqrt{m}}\right)^{k-1}J_{k-1}\left(\frac{4\pi\sqrt{mt}}{c}\right)e^{2\pi im\frac{a}{c}+2\pi it\frac{r}{c}}\right)e^{2\pi itz}.
+        I_{c,r}(z) = \sum_{t \ge 1}\left(2\pi i^{-k}\left(\frac{\sqrt{t}}{\sqrt{m}}\right)^{k-1}\frac{e^{2\pi im\frac{a}{c}+2\pi it\frac{r}{c}}}{c}J_{k-1}\left(\frac{4\pi\sqrt{mt}}{c}\right)\right)e^{2\pi itz}.
       \]
       Plugging this back into the Poincar\'e series gives a form of the Fourier series:
       \begin{align*}
-        (P_{m,k,\chi,\mf{a}}|\s_{\mf{b}})(z) &= \d_{\mf{a},\mf{b}}e^{2\pi imz}+\sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}} \\ r \in \mc{D}_{\mf{a},\mf{b}}}}\cchi(r)\sum_{t \ge 1}\left(\frac{2\pi i^{-k}}{c}\left(\frac{\sqrt{t}}{\sqrt{m}}\right)^{k-1}J_{k-1}\left(\frac{4\pi\sqrt{mt}}{c}\right)e^{2\pi im\frac{a}{c}+2\pi it\frac{r}{c}}\right)e^{2\pi itz} \\
-        &= \sum_{t \ge 1}\left(\d_{\mf{a},\mf{b}}\d_{m,t}+\left(\frac{\sqrt{t}}{\sqrt{m}}\right)^{k-1}\sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}} \\ r \in \mc{D}_{\mf{a},\mf{b}}}}\cchi(r)\frac{2\pi i^{-k}}{c}J_{k-1}\left(\frac{4\pi\sqrt{mt}}{c}\right)e^{2\pi im\frac{a}{c}+2\pi it\frac{r}{c}}\right)e^{2\pi itz} \\
-        &= \sum_{t \ge 1}\left(\d_{\mf{a},\mf{b}}\d_{m,t}+\left(\frac{\sqrt{t}}{\sqrt{m}}\right)^{k-1}\sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}}}}\frac{2\pi i^{-k}}{c}J_{k-1}\left(\frac{4\pi\sqrt{mt}}{c}\right)\sum_{r \in \mc{D}_{\mf{a},\mf{b}}}\cchi(r)e^{2\pi im\frac{a}{c}+2\pi it\frac{r}{c}}\right)e^{2\pi itz}.
+        (P_{m,k,\chi,\mf{a}}|\s_{\mf{b}})(z) &= \d_{\mf{a},\mf{b}}e^{2\pi imz}+\sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}} \\ r \in \mc{D}_{\mf{a},\mf{b}}(c)}}\cchi(r)\sum_{t \ge 1}\left(2\pi i^{-k}\left(\frac{\sqrt{t}}{\sqrt{m}}\right)^{k-1}\frac{e^{2\pi im\frac{a}{c}+2\pi it\frac{r}{c}}}{c}J_{k-1}\left(\frac{4\pi\sqrt{mt}}{c}\right)\right)e^{2\pi itz} \\
+        &= \sum_{t \ge 1}\left(\d_{\mf{a},\mf{b}}\d_{m,t}+2\pi i^{-k}\left(\frac{\sqrt{t}}{\sqrt{m}}\right)^{k-1}\sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}} \\ r \in \mc{D}_{\mf{a},\mf{b}}(c)}}\cchi(r)\frac{e^{2\pi im\frac{a}{c}+2\pi it\frac{r}{c}}}{c}J_{k-1}\left(\frac{4\pi\sqrt{mt}}{c}\right)\right)e^{2\pi itz} \\
+        &= \sum_{t \ge 1}\left(\d_{\mf{a},\mf{b}}\d_{m,t}+2\pi i^{-k}\left(\frac{\sqrt{t}}{\sqrt{m}}\right)^{k-1}\sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}}}}\frac{J_{k-1}\left(\frac{4\pi\sqrt{mt}}{c}\right)}{c}\sum_{r \in \mc{D}_{\mf{a},\mf{b}}(c)}\cchi(r)e^{2\pi im\frac{a}{c}+2\pi it\frac{r}{c}}\right)e^{2\pi itz}.
       \end{align*}
       We will simplify the innermost sum. Since $a$ is the inverse for $r$ modulo $c$, the innermost sum above becomes
       \[
-        \sum_{r \in \mc{D}_{\mf{a},\mf{b}}}\cchi(r)e^{2\pi im\frac{a}{c}+2\pi it\frac{r}{c}} = \sum_{r \in \mc{D}_{\mf{a},\mf{b}}}\cchi(\conj{a})e^{2\pi im\frac{a}{c}+2\pi it\frac{\conj{a}}{c}} = \sum_{r \in \mc{D}_{\mf{a},\mf{b}}}\chi(a)e^{\frac{2\pi i(am+\conj{a}t)}{c}} = S_{\chi,\mf{a},\mf{b}}(m,t,c).
+        \sum_{r \in \mc{D}_{\mf{a},\mf{b}}(c)}\cchi(r)e^{2\pi im\frac{a}{c}+2\pi it\frac{r}{c}} = \sum_{r \in \mc{D}_{\mf{a},\mf{b}}(c)}\cchi(\conj{a})e^{2\pi im\frac{a}{c}+2\pi it\frac{\conj{a}}{c}} = \sum_{r \in \mc{D}_{\mf{a},\mf{b}}(c)}\chi(a)e^{\frac{2\pi i(am+\conj{a}t)}{c}} = S_{\chi,\mf{a},\mf{b}}(m,t,c).
       \]
       So at last, we obtain our desired Fourier series:
       \[
-        (P_{m,k,\chi,\mf{a}}|\s_{\mf{b}})(z) = \sum_{t \ge 1}\left(\d_{\mf{a},\mf{b}}\d_{m,t}+\left(\frac{\sqrt{t}}{\sqrt{m}}\right)^{k-1}\sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}}}}\frac{2\pi i^{-k}S_{\chi,\mf{a},\mf{b}}(m,t,c)}{c}J_{k-1}\left(\frac{4\pi\sqrt{mt}}{c}\right)\right)e^{2\pi itz}.
+        (P_{m,k,\chi,\mf{a}}|\s_{\mf{b}})(z) = \sum_{t \ge 1}\left(\d_{\mf{a},\mf{b}}\d_{m,t}+2\pi i^{-k}\left(\frac{\sqrt{t}}{\sqrt{m}}\right)^{k-1}\sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}}}}\frac{S_{\chi,\mf{a},\mf{b}}(m,t,c)}{c}J_{k-1}\left(\frac{4\pi\sqrt{mt}}{c}\right)\right)e^{2\pi itz}.
       \]
     \end{proof}
 
@@ -289,7 +289,7 @@
     \begin{proposition}\label{prop:Fourier_series_Eisenstein_holomorphic}
       Let $k \ge 3$, $\chi$ be Dirichlet character with conductor dividing the level, and $\mf{a}$ and $\mf{b}$ be cusps of $\GH$. The Fourier series of $E_{k,\chi,\mf{a}}(z)$ on $\GH$ at the $\mf{b}$ cusp is given by
       \[
-        (E_{k,\chi,\mf{a}}|\s_{\mf{b}})(z) = \d_{\mf{a},\mf{b}}+\sum_{t \ge 1}\left(\sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}}}}\frac{(-2\pi it)^{k}S_{\chi,\mf{a},\mf{b}}(0,t,c)}{(k-1)!c^{k}}\right)e^{2\pi itz}.
+        (E_{k,\chi,\mf{a}}|\s_{\mf{b}})(z) = \d_{\mf{a},\mf{b}}+\sum_{t \ge 1}\left(\frac{(-2\pi it)^{k}}{(k-1)!}\sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}}}}\frac{S_{\chi,\mf{a},\mf{b}}(0,t,c)}{c^{k}}\right)e^{2\pi itz}.
       \]
     \end{proposition}
     \begin{proof}
@@ -350,25 +350,25 @@
       \]
       The first expression has polynomial decay while the second expression exhibits exponential decay provided $\Re(w) < 0$. Therefore we make take the limit as $\Re(w) \to \infty$ by shifting the line of integration again and conclude that the latter integral vanishes. Altogether, we have show that
       \[
-        (\mc{F}f)(t) = \begin{cases} \left(\frac{(-2\pi it)^{k}}{(k-1)!c^{k}}e^{2\pi it\frac{r}{c}}\right)e^{-2\pi ty} & \text{if $t \ge 1$}, \\ 0 & \text{if $t \le 0$}. \end{cases}
+        (\mc{F}f)(t) = \begin{cases} \left(\frac{(-2\pi it)^{k}}{(k-1)!}\frac{e^{2\pi it\frac{r}{c}}}{c^{k}}\right)e^{-2\pi ty} & \text{if $t \ge 1$}, \\ 0 & \text{if $t \le 0$}. \end{cases}
       \]
       By the Poisson summation formula and the identity theorem, we have
       \[
-        I_{c,r}(z) = \sum_{t \ge 1}\left(\frac{(-2\pi it)^{k}}{(k-1)!c^{k}}e^{2\pi it\frac{r}{c}}\right)e^{2\pi itz}.
+        I_{c,r}(z) = \sum_{t \ge 1}\left(\frac{(-2\pi it)^{k}}{(k-1)!}\frac{e^{2\pi it\frac{r}{c}}}{c^{k}}\right)e^{2\pi itz}.
       \]
       Substituting this back into the Eisenstein series gives a form of the Fourier series:
       \begin{align*}
-        (E_{k,\chi,\mf{a}}|\s_{\mf{b}})(z) &= \d_{\mf{a},\mf{b}}+\sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}} \\ r \in \mc{D}_{\mf{a},\mf{b}}}}\cchi(r)\sum_{t \ge 1}\left(\frac{(-2\pi it)^{k}}{(k-1)!c^{k}}e^{2\pi it\frac{r}{c}}\right)e^{2\pi itz} \\
-        &= \d_{\mf{a},\mf{b}}+\sum_{t \ge 1}\left(\sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}} \\ r \in \mc{D}_{\mf{a},\mf{b}}}}\cchi(r)\frac{(-2\pi it)^{k}}{(k-1)!c^{k}}e^{2\pi it\frac{r}{c}}\right)e^{2\pi itz} \\
-        &= \d_{\mf{a},\mf{b}}+\sum_{t \ge 1}\left(\sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}}}}\frac{(-2\pi it)^{k}}{(k-1)!c^{k}}\sum_{r \in \mc{D}_{\mf{a},\mf{b}}}\cchi(r)e^{2\pi it\frac{r}{c}}\right)e^{2\pi itz}.
+        (E_{k,\chi,\mf{a}}|\s_{\mf{b}})(z) &= \d_{\mf{a},\mf{b}}+\sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}} \\ r \in \mc{D}_{\mf{a},\mf{b}}(c)}}\cchi(r)\sum_{t \ge 1}\left(\frac{(-2\pi it)^{k}}{(k-1)!}\frac{e^{2\pi it\frac{r}{c}}}{c^{k}}\right)e^{2\pi itz} \\
+        &= \d_{\mf{a},\mf{b}}+\sum_{t \ge 1}\left(\frac{(-2\pi it)^{k}}{(k-1)!}\sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}} \\ r \in \mc{D}_{\mf{a},\mf{b}}(c)}}\cchi(r)\frac{e^{2\pi it\frac{r}{c}}}{c^{k}}\right)e^{2\pi itz} \\
+        &= \d_{\mf{a},\mf{b}}+\sum_{t \ge 1}\left(\frac{(-2\pi it)^{k}}{(k-1)!}\sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}}}}\frac{1}{c^{k}}\sum_{r \in \mc{D}_{\mf{a},\mf{b}}(c)}\cchi(r)e^{2\pi it\frac{r}{c}}\right)e^{2\pi itz}.
       \end{align*}
       We will simplify the innermost sum. Since $a$ is the inverse for $r$ modulo $c$, the innermost sum above becomes
       \[
-        \sum_{r \in \mc{D}_{\mf{a},\mf{b}}}\cchi(r)e^{2\pi it\frac{r}{c}} = \sum_{r \in \mc{D}_{\mf{a},\mf{b}}}\cchi(\conj{a})e^{2\pi it\frac{\conj{a}}{c}} = \sum_{r \in \mc{D}_{\mf{a},\mf{b}}}\chi(a)e^{\frac{2\pi i\conj{a}t}{c}} = S_{\chi,\mf{a},\mf{b}}(0,t,c).
+        \sum_{r \in \mc{D}_{\mf{a},\mf{b}}(c)}\cchi(r)e^{2\pi it\frac{r}{c}} = \sum_{r \in \mc{D}_{\mf{a},\mf{b}}(c)}\cchi(\conj{a})e^{2\pi it\frac{\conj{a}}{c}} = \sum_{r \in \mc{D}_{\mf{a},\mf{b}}(c)}\chi(a)e^{\frac{2\pi i\conj{a}t}{c}} = S_{\chi,\mf{a},\mf{b}}(0,t,c).
       \]
       So at last, we obtain our desired Fourier series:
       \[
-        (E_{k,\chi,\mf{a}}|\s_{\mf{b}})(z) = \d_{\mf{a},\mf{b}}+\sum_{t \ge 1}\left(\sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}}}}\frac{(-2\pi it)^{k}S_{\chi,\mf{a},\mf{b}}(0,t,c)}{(k-1)!c^{k}}\right)e^{2\pi itz}.
+        (E_{k,\chi,\mf{a}}|\s_{\mf{b}})(z) = \d_{\mf{a},\mf{b}}+\sum_{t \ge 1}\frac{(-2\pi it)^{k}}{(k-1)!}\left(\sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}}}}\frac{S_{\chi,\mf{a},\mf{b}}(0,t,c)}{c^{k}}\right)e^{2\pi itz}.
       \]
     \end{proof}
 

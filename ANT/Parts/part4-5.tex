@@ -438,10 +438,10 @@
       \begin{proposition}\label{prop:Fourier_coefficients_of_real-analytic_Eisenstein_series}
         The Fourier-Whittaker series of $E(z,s)$ is given by
         \[
-          E(z,s) = y^{s}+y^{1-s}\frac{\sqrt{\pi}\G\left(s-\frac{1}{2}\right)\z(2s-1)}{\G(s)\z(2s)}+\sum_{t \ge 1}\left(\frac{2\pi^{s}|t|^{s-\frac{1}{2}}\s_{1-2s}(t)}{\G(s)\z(2s)}\sqrt{y}K_{s-\frac{1}{2}}(2\pi|t|y)\right)e^{2\pi itx}.
+          E(z,s) = y^{s}+\frac{\sqrt{\pi}\G\left(s-\frac{1}{2}\right)\z(2s-1)}{\G(s)\z(2s)}y^{1-s}+\sum_{t \ge 1}\frac{2\pi^{s}|t|^{s-\frac{1}{2}}\s_{1-2s}(t)}{\G(s)\z(2s)}\sqrt{y}K_{s-\frac{1}{2}}(2\pi|t|y)e^{2\pi itx}.
         \]
       \end{proposition}
-      \begin{proof}
+      \iffalse\begin{proof}
         Fix $s$ with $\s > 1$. By the Bruhat decomposition for $\G_{1}(1)$ and \cref{rem:Bruhat_modulo_infity_exact}, we have
         \[
           E(z,s) = \Im(z)^{s}+\sum_{\substack{c \ge 1, d \in \Z \\ (c,d) = 1}}\frac{\Im(z)^{s}}{|cz+d|^{2s}}.
@@ -477,16 +477,41 @@
           I_{c,r}(z,s) = \frac{y^{1-s}}{c^{2s}}\frac{\sqrt{\pi}\G\left(s-\frac{1}{2}\right)}{\G(s)}+\sum_{t \neq 0}\left(\frac{e^{2\pi it\frac{r}{c}}}{c^{2s}}\frac{2\pi^{s}|t|^{s-\frac{1}{2}}}{\G(s)}\sqrt{y}K_{s-\frac{1}{2}}(2\pi|t|y)\right)e^{2\pi itx}.
         \]
         Substituting this back into the Eisenstein series gives a form of the Fourier-Whittaker series:
-      \begin{align*}
-        E(z,s) &= y^{s}+\psum_{\substack{c \ge 1 \\ r \tmod{c}}}\left(\frac{y^{1-s}}{c^{2s}}\frac{\sqrt{\pi}\G\left(s-\frac{1}{2}\right)}{\G(s)}+\sum_{t \ge 1}\left(\frac{e^{2\pi it\frac{r}{c}}}{c^{2s}}\frac{2\pi^{s}|t|^{s-\frac{1}{2}}}{\G(s)}\sqrt{y}K_{s-\frac{1}{2}}(2\pi|t|y)\right)e^{2\pi itx}\right) \\
-        &= y^{s}+y^{1-s}\psum_{\substack{c \ge 1 \\ r \tmod{c}}}\frac{1}{c^{2s}}\frac{\sqrt{\pi}\G\left(s-\frac{1}{2}\right)}{\G(s)}+\sum_{t \ge 1}\left(\psum_{\substack{c \ge 1 \\ r \tmod{c}}}\frac{e^{2\pi it\frac{r}{c}}}{c^{2s}}\frac{2\pi^{s}|t|^{s-\frac{1}{2}}}{\G(s)}\sqrt{y}K_{s-\frac{1}{2}}(2\pi|t|y)\right)e^{2\pi itx} \\
-        &= y^{s}+y^{1-s}\sum_{c \ge 1}\frac{r(0,c)}{c^{2s}}\frac{\sqrt{\pi}\G\left(s-\frac{1}{2}\right)}{\G(s)}+\sum_{t \ge 1}\left(\sum_{c \ge 1}\frac{r(t,c)}{c^{2s}}\frac{2\pi^{s}|t|^{s-\frac{1}{2}}}{\G(s)}\sqrt{y}K_{s-\frac{1}{2}}(2\pi|t|y)\right)e^{2\pi itx}.
-      \end{align*}
-      By applying \cref{lem:Ramanujan_zeta_relation} to compute the Dirichlet series of Ramanujan sums, we obtain the desired Fourier-Whittaker series:
-      \[
-        E(z,s) = y^{s}+y^{1-s}\frac{\sqrt{\pi}\G\left(s-\frac{1}{2}\right)\z(2s-1)}{\G(s)\z(2s)}+\sum_{t \ge 1}\left(\frac{2\pi^{s}|t|^{s-\frac{1}{2}}\s_{1-2s}(t)}{\G(s)\z(2s)}\sqrt{y}K_{s-\frac{1}{2}}(2\pi|t|y)\right)e^{2\pi itx}.
-      \]
+        \begin{align*}
+          E(z,s) &= y^{s}+\psum_{\substack{c \ge 1 \\ r \tmod{c}}}\left(\frac{y^{1-s}}{c^{2s}}\frac{\sqrt{\pi}\G\left(s-\frac{1}{2}\right)}{\G(s)}+\sum_{t \ge 1}\left(\frac{e^{2\pi it\frac{r}{c}}}{c^{2s}}\frac{2\pi^{s}|t|^{s-\frac{1}{2}}}{\G(s)}\sqrt{y}K_{s-\frac{1}{2}}(2\pi|t|y)\right)e^{2\pi itx}\right) \\
+          &= y^{s}+y^{1-s}\psum_{\substack{c \ge 1 \\ r \tmod{c}}}\frac{1}{c^{2s}}\frac{\sqrt{\pi}\G\left(s-\frac{1}{2}\right)}{\G(s)}+\sum_{t \ge 1}\left(\psum_{\substack{c \ge 1 \\ r \tmod{c}}}\frac{e^{2\pi it\frac{r}{c}}}{c^{2s}}\frac{2\pi^{s}|t|^{s-\frac{1}{2}}}{\G(s)}\sqrt{y}K_{s-\frac{1}{2}}(2\pi|t|y)\right)e^{2\pi itx} \\
+          &= y^{s}+y^{1-s}\sum_{c \ge 1}\frac{r(0,c)}{c^{2s}}\frac{\sqrt{\pi}\G\left(s-\frac{1}{2}\right)}{\G(s)}+\sum_{t \ge 1}\left(\sum_{c \ge 1}\frac{r(t,c)}{c^{2s}}\frac{2\pi^{s}|t|^{s-\frac{1}{2}}}{\G(s)}\sqrt{y}K_{s-\frac{1}{2}}(2\pi|t|y)\right)e^{2\pi itx}.
+        \end{align*}
+        By applying \cref{lem:Ramanujan_zeta_relation} to compute the Dirichlet series of Ramanujan sums, we obtain the desired Fourier-Whittaker series:
+        \[
+          E(z,s) = y^{s}+y^{1-s}\frac{\sqrt{\pi}\G\left(s-\frac{1}{2}\right)\z(2s-1)}{\G(s)\z(2s)}+\sum_{t \ge 1}\left(\frac{2\pi^{s}|t|^{s-\frac{1}{2}}\s_{1-2s}(t)}{\G(s)\z(2s)}\sqrt{y}K_{s-\frac{1}{2}}(2\pi|t|y)\right)e^{2\pi itx}.
+        \]
+      \end{proof}\fi
+      
+      \begin{proof}
+        By \cref{prop:Fourier_Whittaker_series_Eisenstein_Maass} and \cref{thm:Whittaker_special_cases}, we have
+        \[
+          (E_{k,\chi,\mf{a}}|\s_{\mf{b}})(z,s) = y^{s}+\tau(s)y^{1-s}+\sum_{t \neq 0}\tau(s,t)\sqrt{4|t|y}K_{\frac{1}{2}-s}(2\pi|t|y)e^{2\pi itx},
+        \]
+        where
+        \[
+          \tau(s) = \frac{4\pi\G(2s-1)}{2^{2s}\G\left(s\right)^{2}}\sum_{c \ge 1}\frac{r(0,c)}{c^{2s}},
+        \]
+        and
+        \[
+          \tau(s,t) = \frac{\pi^{s}i^{-k}|t|^{s-1}}{\G(s)}\sum_{c \ge 1}\frac{r(t,c)}{c^{2s}}.
+        \]
+        We now compute the remaining sums. From \cref{lem:Ramanujan_zeta_relation}, it follows that
+        \[
+          \tau(s) = \frac{4\pi\G(2s-1)\z(2s-1)}{2^{2s}\G\left(s\right)^{2}\z(2s)} = \frac{\sqrt{\pi}\G\left(s-\frac{1}{2}\right)\z(2s-1)}{\G(s)\z(2s)},
+        \]
+        where we have used the Legendre duplication formula, and
+        \[
+          \tau(s,t) = \frac{\pi^{s}i^{-k}|t|^{s-1}\s_{1-2s}(t)}{\G(s)\z(2s)}.
+        \]
+        The desired Fourier-Whittaker series follows.
       \end{proof}
+
 
       Having computed the Fourier-Whittaker series, we would like to obtain a functional equation for $E(z,s)$ under the symmetry $s \mapsto 1-s$. To this end, we define $E^{\ast}(z,s)$ by
       \[
@@ -498,11 +523,11 @@
       \]
        are given by
       \[
-        a^{\ast}(n,y,s) = \begin{cases} y^{s}\pi^{-s}\G(s)\z(2s)+y^{1-s}\pi^{-\left(s-\frac{1}{2}\right)}\G(s-\frac{1}{2})\z(2s-1) & \text{if $n = 0$}, \\ 2|n|^{s-\frac{1}{2}}\s_{1-2s}(n)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y) & \text{if $n \neq 0$}. \end{cases}
+        a^{\ast}(n,y,s) = \begin{cases} \pi^{-s}\G(s)\z(2s)y^{s}+\pi^{-\left(s-\frac{1}{2}\right)}\G(s-\frac{1}{2})\z(2s-1)y^{1-s} & \text{if $n = 0$}, \\ 2|n|^{s-\frac{1}{2}}\s_{1-2s}(n)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y) & \text{if $n \neq 0$}. \end{cases}
       \]
       We can now derive a functional equation for $E^{\ast}(z,s)$. Using the definition and functional equation for $\L(2s-1,\z)$, we can rewrite the second term in the constant coefficient to get
       \begin{equation}\label{equ:Fourier_coefficients_for_completed_real-analytic_Eisenstein_series}
-        a^{\ast}(n,y,s) = \begin{cases} y^{s}\L(2s,\z)+y^{1-s}\L(2(1-s),\z) & \text{if $n = 0$}, \\ 2|n|^{s-\frac{1}{2}}\s_{1-2s}(n)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y) & \text{if $n \neq 0$}. \end{cases}
+        a^{\ast}(n,y,s) = \begin{cases} \L(2s,\z)y^{s}+\L(2(1-s),\z)y^{1-s} & \text{if $n = 0$}, \\ 2|n|^{s-\frac{1}{2}}\s_{1-2s}(n)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y) & \text{if $n \neq 0$}. \end{cases}
       \end{equation}
       Now observe that the constant coefficient is invariant under $s \mapsto 1-s$. Each $n \neq 0$ coefficient is also invariant under $s \mapsto 1-s$. To see this we will use two facts. First, from \cref{append:Bessel_Functions}, $K_{s}(y)$ is invariant under $s \mapsto -s$ and so $K_{s-\frac{1}{2}}(2\pi|n|y)$ is invariant as $s \mapsto 1-s$. Second, for $n \neq 0$ we have
       \[
@@ -514,7 +539,7 @@
       \]
       We can now obtain meromorphic continuation of $E^{\ast}(z,s)$ in $s$ to all of $\C$ for any $z \in \H$. We first write $E^{\ast}(z,s)$ as a Fourier-Whittaker series using \cref{equ:Fourier_coefficients_for_completed_real-analytic_Eisenstein_series}:
       \[
-        E^{\ast}(z,s) = y^{s}\L(2s,\z)+y^{1-s}\L(2(1-s),\z)+\sum_{n \neq 0}2|n|^{s-\frac{1}{2}}\s_{1-2s}(n)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y)e^{2\pi inx}.
+        E^{\ast}(z,s) = \L(2s,\z)y^{s}+\L(2(1-s),\z)y^{1-s}+\sum_{n \neq 0}2|n|^{s-\frac{1}{2}}\s_{1-2s}(n)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y)e^{2\pi inx}.
       \]
       Since $\L(2s,\z)$ is meromorphic on $\C$, the constant term of $E^{\ast}(z,s)$ is as well. To finish the meromorphic continuation of $E^{\ast}(z,s)$ it now suffices to show
       \[
@@ -543,16 +568,16 @@
       \begin{proof}
         Since the constant term in the Fourier-Whittaker series of $E^{\ast}(z,s)$ is the only non-holomorphic term, poles of $E^{\ast}(z,s)$ can only come from that term. So we are reduced to understanding the poles of
         \begin{equation}\label{equ:constant_coefficient_of_completed_non-holomorphic_Eisenstein_series}
-          y^{s}\L(2s,\z)+y^{1-s}\L(2(1-s),\z).
+          \L(2s,\z)y^{s}+\L(2(1-s),\z)y^{1-s}.
         \end{equation}
         Notice $\L(2s,\z)$ has simple poles at $s = 0$, $s = \frac{1}{2}$ (one from the Riemann zeta function and one from the gamma factor) and no others. It follows that $E^{\ast}(z,s)$ has a simple pole at $s = 0$ coming from the $y^{s}$ term in
         \cref{equ:constant_coefficient_of_completed_non-holomorphic_Eisenstein_series}, and by the functional equation there is also a pole at $s = 1$ coming from the $y^{1-s}$ term. At $s = \frac{1}{2}$, both terms in \cref{equ:constant_coefficient_of_completed_non-holomorphic_Eisenstein_series} have simple poles and we will show that the singularity there is removable. Since the residues of $\L(s,\z)$ at its poles are both $1$, we have $\Res_{s = \frac{1}{2}}\L(2s) = \frac{1}{2}$ and $\Res_{s = \frac{1}{2}}\L(2(1-s)) = -\frac{1}{2}$. Then
         \[
-          \Res_{s = \frac{1}{2}}E^{\ast}(z,s) = \Res_{s = \frac{1}{2}}y^{s}\L(2s,\z)+\Res_{s = \frac{1}{2}}y^{1-s}\L(2(1-s),\z) = \frac{1}{2}y^{\frac{1}{2}}-\frac{1}{2}y^{\frac{1}{2}} = 0.
+          \Res_{s = \frac{1}{2}}E^{\ast}(z,s) = \Res_{s = \frac{1}{2}}\L(2s,\z)y^{s}+\Res_{s = \frac{1}{2}}\L(2(1-s),\z)y^{1-s} = \frac{1}{2}y^{\frac{1}{2}}-\frac{1}{2}y^{\frac{1}{2}} = 0.
         \]
         Hence the singularity at $s = \frac{1}{2}$ is removable. As for the residues at $s = 0$ and $s = 1$, the functional equation implies that they are negatives of each other. So it suffices to compute the residue at $s = 0$. Recall $\z(0) = -\frac{1}{2}$ and $\Res_{s = 0}\G(s) = 1$. Then together we find
         \[
-          \Res_{s = 0}E^{\ast}(z,s) = \Res_{s = 0}y^{s}\L(2s,\z) = -\frac{1}{2}.
+          \Res_{s = 0}E^{\ast}(z,s) = \Res_{s = 0}\L(2s,\z)y^{s} = -\frac{1}{2}.
         \]
       \end{proof}
 
@@ -564,7 +589,7 @@
       \end{equation}
       This integral representation will give analytic continuation. To see this, note that the gamma functions are analytic for $\s < 0$. By the functional equation for $E^{\ast}(z,s)$, the integral is invariant as $s \mapsto 1-s$. These two facts together give analytic continuation to $\C$ outside of the critical strip. The continuation inside of the critical strip will be meromorphic because of the poles of $E^{\ast}(z,s)$. To see this, substituting the Fourier-Whittaker series for $E^{\ast}(z,s)$ into \cref{equ:integral_representation_Rankin-Selberg_final} gives
       \begin{align*}
-        L(s,f \ox g) &= \frac{(4\pi)^{s+k-1}\pi^{s}}{\G(s+k-1)\G(s)}\Bigg[\int_{\mc{F}}f(x+iy)\conj{g(x+iy)}y^{k}(y^{s}\L(2s,\z)+y^{1-s}\L(2(1-s),\z))\,\frac{dx\,dy}{y^{2}} \\
+        L(s,f \ox g) &= \frac{(4\pi)^{s+k-1}\pi^{s}}{\G(s+k-1)\G(s)}\Bigg[\int_{\mc{F}}f(x+iy)\conj{g(x+iy)}y^{k}(\L(2s,\z)y^{s}+\L(2(1-s),\z)y^{1-s})\,\frac{dx\,dy}{y^{2}} \\
         &+\int_{\mc{F}}f(x+iy)\conj{g(x+iy)}y^{k}\sum_{n \neq 0}2|n|^{s-\frac{1}{2}}\s_{1-2s}(n)\sqrt{y}K_{s-\frac{1}{2}}(2\pi|n|y)e^{2\pi inx}\,\frac{dx\,dy}{y^{2}}\Bigg],
       \end{align*}
       and we are reduced to showing that both integrals are locally absolutely uniformly convergent in the critical strip and distance $\e$ away from the poles of $E^{\ast}(z,s)$. Indeed, the first integral is locally absolutely uniformly convergent in this region since the exponential decay of $f$ and $g$ imply that the integrand is bounded and we are integrating over a region of finite volume. As for the second integral, since $s$ is in the critical strip $0 \le \s \le 1$ and so \cref{equ:non-constant_Fourier_coefficient_bound_non-holomorphic_Eisenstein_series} implies that it is

@@ -282,7 +282,7 @@
     \begin{proposition}\label{prop:Fourier_series_Poincare_automorphic}
       Let $m \ge 1$, $k \ge 0$, $\chi$ be Dirichlet character with conductor dividing the level, and $\mf{a}$ and $\mf{b}$ be cusps of $\GH$. The Fourier series of $P_{m,k,\chi,\mf{a}}(z,s)$ on $\GH$ at the $\mf{b}$ cusp is given by
       \[
-        (P_{m,k,\chi,\mf{a}}|\s_{\mf{b}})(z,s) = \sum_{t \in \Z}\left(\d_{\mf{a},\mf{b}}\d_{m,t}y^{s}e^{-2\pi my}+y^{1-s}\sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}}}}\frac{i^{-k}S_{\chi,\mf{a},\mf{b}}(m,t,c)}{c^{2s}}A(y,s,m,t,c)\right)e^{2\pi itx},
+        (P_{m,k,\chi,\mf{a}}|\s_{\mf{b}})(z,s) = \sum_{t \in \Z}\left(\d_{\mf{a},\mf{b}}\d_{m,t}y^{s}e^{-2\pi my}+i^{-k}y^{1-s}\sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}}}}\frac{S_{\chi,\mf{a},\mf{b}}(m,t,c)}{c^{2s}}A(y,s,m,t,c)\right)e^{2\pi itx},
       \]
       where $A(s,y,m,t,c)$ is the integral transform given by
       \[
@@ -327,44 +327,51 @@
       \]
       Making another change of variables $x \to xy$ gives
       \[
-        \frac{y^{1-2s}}{c^{2s}}e^{2\pi im\frac{a}{c}+2\pi it\frac{r}{c}}\int_{-\infty}^{\infty}\frac{e^{-2\pi im\left(\frac{1}{c^{2}y(x+i)}\right)}}{(x+i)^{s+\frac{k}{2}}(x-i)^{s-\frac{k}{2}}}e^{-2\pi itxy}\,dx,
+        y^{1-2s}\frac{e^{2\pi im\frac{a}{c}+2\pi it\frac{r}{c}}}{c^{2s}}\int_{-\infty}^{\infty}\frac{e^{-2\pi im\left(\frac{1}{c^{2}y(x+i)}\right)}}{(x+i)^{s+\frac{k}{2}}(x-i)^{s-\frac{k}{2}}}e^{-2\pi itxy}\,dx,
       \]
       which we can further rewrite as
       \[
-        y^{1-2s}\frac{i^{-k}}{c^{2s}}e^{2\pi im\frac{a}{c}+2\pi it\frac{r}{c}}\int_{-\infty}^{\infty}\frac{e^{-2\pi im\left(\frac{1}{c^{2}y(x+i)}\right)}}{(1-ix)^{s+\frac{k}{2}}(1+ix)^{s-\frac{k}{2}}}e^{-2\pi itxy}\,dx.
+        y^{1-2s}i^{-k}\frac{e^{2\pi im\frac{a}{c}+2\pi it\frac{r}{c}}}{c^{2s}}\int_{-\infty}^{\infty}\frac{e^{-2\pi im\left(\frac{1}{c^{2}y(x+i)}\right)}}{(1-ix)^{s+\frac{k}{2}}(1+ix)^{s-\frac{k}{2}}}e^{-2\pi itxy}\,dx.
       \]
       So in total we obtain
       \[
-        (\mc{F}f)(t) = y^{1-2s}\frac{i^{-k}}{c^{2s}}A(y,s,m,t,c)e^{2\pi im\frac{a}{c}+2\pi it\frac{r}{c}}.
+        (\mc{F}f)(t) = y^{1-2s}i^{-k}\frac{e^{2\pi im\frac{a}{c}+2\pi it\frac{r}{c}}}{c^{2s}}A(y,s,m,t,c).
       \]
       By the Poisson summation formula and the identity theorem, we have
       \[
-        I_{c,r}(z,s) = \sum_{t \in \Z}\left(y^{1-2s}\frac{i^{-k}}{c^{2s}}A(y,s,m,t,c)e^{2\pi im\frac{a}{c}+2\pi it\frac{r}{c}}\right)e^{2\pi itx}.
+        I_{c,r}(z,s) = \sum_{t \in \Z}\left(y^{1-2s}i^{-k}\frac{e^{2\pi im\frac{a}{c}+2\pi it\frac{r}{c}}}{c^{2s}}A(y,s,m,t,c)\right)e^{2\pi itx}.
       \]
       Plugging this back into the Poincar\'e series gives a form of the Fourier series:
       \begin{align*}
-        (P_{m,k,\chi,\mf{a}}|\s_{\mf{b}})(z,s) &= \d_{\mf{a},\mf{b}}y^{s}e^{2\pi imz}+\sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}} \\ r \in \mc{D}_{\mf{a},\mf{b}}}}\cchi(r)y^{s}\sum_{t \in \Z}\left(y^{1-2s}\frac{i^{-k}}{c^{2s}}A(y,s,m,t,c)e^{2\pi im\frac{a}{c}+2\pi it\frac{r}{c}}\right)e^{2\pi itx} \\
-        &= \sum_{t \in \Z}\left(\d_{\mf{a},\mf{b}}\d_{m,t}y^{s}e^{-2\pi my}+y^{1-s}\sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}} \\ r \in \mc{D}_{\mf{a},\mf{b}}}}\cchi(r)\frac{i^{-k}}{c^{2s}}A(y,s,m,t,c)e^{2\pi im\frac{a}{c}+2\pi it\frac{r}{c}}\right)e^{2\pi itx} \\
-        &= \sum_{t \in \Z}\left(\d_{\mf{a},\mf{b}}\d_{m,t}y^{s}e^{-2\pi my}+y^{1-s}\sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}}}}\frac{i^{-k}}{c^{2s}}A(y,s,m,t,c)\sum_{r \in \mc{D}_{\mf{a},\mf{b}}}\cchi(r)e^{2\pi im\frac{a}{c}+2\pi it\frac{r}{c}}\right)e^{2\pi itx}.
+        (P_{m,k,\chi,\mf{a}}|\s_{\mf{b}})(z,s) &= \d_{\mf{a},\mf{b}}y^{s}e^{2\pi imz}+\sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}} \\ r \in \mc{D}_{\mf{a},\mf{b}}(c)}}\cchi(r)y^{s}\sum_{t \in \Z}\left(y^{1-2s}i^{-k}\frac{e^{2\pi im\frac{a}{c}+2\pi it\frac{r}{c}}}{c^{2s}}A(y,s,m,t,c)\right)e^{2\pi itx} \\
+        &= \sum_{t \in \Z}\left(\d_{\mf{a},\mf{b}}\d_{m,t}y^{s}e^{-2\pi my}+i^{-k}y^{1-s}\sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}} \\ r \in \mc{D}_{\mf{a},\mf{b}}(c)}}\cchi(r)\frac{e^{2\pi im\frac{a}{c}+2\pi it\frac{r}{c}}}{c^{2s}}A(y,s,m,t,c)\right)e^{2\pi itx} \\
+        &= \sum_{t \in \Z}\left(\d_{\mf{a},\mf{b}}\d_{m,t}y^{s}e^{-2\pi my}+i^{-k}y^{1-s}\sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}}}}\frac{A(y,s,m,t,c)}{c^{2s}}\sum_{r \in \mc{D}_{\mf{a},\mf{b}}(c)}\cchi(r)e^{2\pi im\frac{a}{c}+2\pi it\frac{r}{c}}\right)e^{2\pi itx}.
       \end{align*}
       We will simplify the innermost sum. Since $a$ is the inverse for $r$ modulo $c$, the innermost sum above becomes
       \[
-        \sum_{r \in \mc{D}_{\mf{a},\mf{b}}}\cchi(r)e^{2\pi im\frac{a}{c}+2\pi it\frac{r}{c}} = \sum_{r \in \mc{D}_{\mf{a},\mf{b}}}\cchi(\conj{a})e^{2\pi im\frac{a}{c}+2\pi it\frac{\conj{a}}{c}} = \sum_{r \in \mc{D}_{\mf{a},\mf{b}}}\chi(a)e^{\frac{2\pi i(am+\conj{a}t)}{c}} = S_{\chi,\mf{a},\mf{b}}(m,t,c).
+        \sum_{r \in \mc{D}_{\mf{a},\mf{b}}(c)}\cchi(r)e^{2\pi im\frac{a}{c}+2\pi it\frac{r}{c}} = \sum_{r \in \mc{D}_{\mf{a},\mf{b}}(c)}\cchi(\conj{a})e^{2\pi im\frac{a}{c}+2\pi it\frac{\conj{a}}{c}} = \sum_{r \in \mc{D}_{\mf{a},\mf{b}}(c)}\chi(a)e^{\frac{2\pi i(am+\conj{a}t)}{c}} = S_{\chi,\mf{a},\mf{b}}(m,t,c).
       \]
       So at last, we obtain our desired Fourier series:
       \[
-        (P_{m,k,\chi,\mf{a}}|\s_{\mf{b}})(z,s) = \sum_{t \in \Z}\left(\d_{\mf{a},\mf{b}}\d_{m,t}y^{s}e^{-2\pi my}+y^{1-s}\sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}}}}\frac{i^{-k}S_{\chi,\mf{a},\mf{b}}(m,t,c)}{c^{2s}}A(y,s,m,t,c)\right)e^{2\pi itx}.
+        (P_{m,k,\chi,\mf{a}}|\s_{\mf{b}})(z,s) = \sum_{t \in \Z}\left(\d_{\mf{a},\mf{b}}\d_{m,t}y^{s}e^{-2\pi my}+i^{-k}y^{1-s}\sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}}}}\frac{S_{\chi,\mf{a},\mf{b}}(m,t,c)}{c^{2s}}A(y,s,m,t,c)\right)e^{2\pi itx}.
       \]
     \end{proof}
 
     In a similar manner, we can obtain the Fourier-Whittaker series of the Eisenstein series too:
 
-    \begin{proposition}\label{prop:Fourier_series_Eisenstein_Maass}
+    \begin{proposition}\label{prop:Fourier_Whittaker_series_Eisenstein_Maass}
       Let $k \ge 0$, $\chi$ be Dirichlet character with conductor dividing the level, and $\mf{a}$ and $\mf{b}$ be cusps of $\GH$. The Fourier series of $E_{k,\chi,\mf{a}}(z,s)$ on $\GH$ at the $\mf{b}$ cusp is given by
-      \begin{align*}
-        (E_{k,\chi,\mf{a}}|\s_{\mf{b}})(z,s) &= \d_{\mf{a},\mf{{b}}}y^{s}+\frac{\G(2s-1)}{\G\left(s+\frac{k}{2}\right)\G\left(s-\frac{k}{2}\right)}\left(\sum_{c \in \mc{C}_{\mf{a},\mf{b}}}\frac{4\pi i^{-k}S_{\chi,\mf{a},\mf{b}}(0,0,c)}{(2c)^{2s}}\right)y^{1-s} \\
-        &+ \sum_{t \neq 0}\frac{|t|^{s-1}}{\G\left(s+\sgn(t)\frac{k}{2}\right)}\left(\sum_{c \in \mc{C}_{\mf{a},\mf{b}}}\frac{\pi^{s}i^{-k}S_{\chi,\mf{a},\mf{b}}(0,t,c)}{c^{2s}}\right)W_{\sgn(t)\frac{k}{2},\frac{1}{2}-s}(4\pi|t|y)e^{2\pi itx}.
-    \end{align*}
+      \[
+        (E_{k,\chi,\mf{a}}|\s_{\mf{b}})(z,s) = \d_{\mf{a},\mf{{b}}}y^{s}+\tau_{\mf{a},\mf{b}}(s)y^{1-s}+\sum_{t \neq 0}\tau_{\mf{a},\mf{b}}(s,t)W_{\sgn(t)\frac{k}{2},\frac{1}{2}-s}(4\pi|t|y)e^{2\pi itx},
+      \]
+      where
+      \[
+        \tau_{\mf{a},\mf{b}}(s) = \frac{4\pi i^{-k}\G(2s-1)}{2^{2s}\G\left(s+\frac{k}{2}\right)\G\left(s-\frac{k}{2}\right)}\sum_{c \in \mc{C}_{\mf{a},\mf{b}}}\frac{S_{\chi,\mf{a},\mf{b}}(0,0,c)}{c^{2s}},
+      \]
+      and
+      \[
+        \tau_{\mf{a},\mf{b}}(s,t) = \frac{\pi^{s}i^{-k}|t|^{s-1}}{\G\left(s+\sgn(t)\frac{k}{2}\right)}\sum_{c \in \mc{C}_{\mf{a},\mf{b}}}\frac{S_{\chi,\mf{a},\mf{b}}(0,t,c)}{c^{2s}}.
+      \]
     \end{proposition}
     \begin{proof}
       From the cocycle condition, the Bruhat decomposition for $\s_{\mf{a}}^{-1}\G\s_{\mf{b}}$, and \cref{rem:Bruhat_modulo_infity_exact}, we have
@@ -404,47 +411,46 @@
       \]
       Making another change of variables $x \to xy$ results in
       \[
-        \frac{y^{1-2s}}{c^{2s}}e^{2\pi it\frac{r}{c}}\int_{-\infty}^{\infty}\frac{e^{-2\pi itxy}}{(x+i)^{s+\frac{k}{2}}(x-i)^{s-\frac{k}{2}}}\,dx,
+        y^{1-2s}\frac{e^{2\pi it\frac{r}{c}}}{c^{2s}}\int_{-\infty}^{\infty}\frac{e^{-2\pi itxy}}{(x+i)^{s+\frac{k}{2}}(x-i)^{s-\frac{k}{2}}}\,dx,
       \]
       which we can further rewrite as
       \[
-        y^{1-2s}\frac{i^{-k}}{c^{2s}}e^{2\pi it\frac{r}{c}}\int_{-\infty}^{\infty}\frac{e^{-2\pi itxy}}{(1-ix)^{s+\frac{k}{2}}(1+ix)^{s-\frac{k}{2}}}\,dx.
+        y^{1-2s}i^{-k}\frac{e^{2\pi it\frac{r}{c}}}{c^{2s}}\int_{-\infty}^{\infty}\frac{e^{-2\pi itxy}}{(1-ix)^{s+\frac{k}{2}}(1+ix)^{s-\frac{k}{2}}}\,dx.
       \]
       Appealing to \cref{append:Special_Integrals}, we recognize this last integral as
       \[
-        \int_{-\infty}^{\infty}\frac{e^{-2\pi itxy}}{(1-ix)^{s+\frac{k}{2}}(1+ix)^{s-\frac{k}{2}}}\,dx = \begin{cases} \frac{\pi}{2^{2s-2}}\frac{\G(2s-1)}{\G\left(s+\frac{k}{2}\right)\G\left(s-\frac{k}{2}\right)} & \text{if $t = 0$,} \\ \frac{\pi(\pi|t|y)^{s-1}}{\G\left(s+\sgn(t)\frac{k}{2}\right)}W_{\sgn(t)\frac{k}{2},\frac{1}{2}-s}(4\pi|t|y) & \text{if $t \neq 0$.} \end{cases}.
+        \int_{-\infty}^{\infty}\frac{e^{-2\pi itxy}}{(1-ix)^{s+\frac{k}{2}}(1+ix)^{s-\frac{k}{2}}}\,dx = \begin{cases} \frac{4\pi\G(2s-1)}{2^{2s}\G\left(s+\frac{k}{2}\right)\G\left(s-\frac{k}{2}\right)} & \text{if $t = 0$,} \\ \frac{\pi(\pi|t|y)^{s-1}}{\G\left(s+\sgn(t)\frac{k}{2}\right)}W_{\sgn(t)\frac{k}{2},\frac{1}{2}-s}(4\pi|t|y) & \text{if $t \neq 0$.} \end{cases}.
       \]
       So in total we obtain
       \[
-        (\mc{F}f)(t) = \begin{cases} y^{1-2s}\frac{4\pi i^{-k}}{(2c)^{2s}}\frac{\G(2s-1)}{\G\left(s+\frac{k}{2}\right)\G\left(s-\frac{k}{2}\right)} & \text{if $t = 0$,} \\ y^{-s}\frac{\pi^{s}i^{-k}}{c^{2s}}\frac{|t|^{s-1}}{\G\left(s+\sgn(t)\frac{k}{2}\right)}W_{\sgn(t)\frac{k}{2},\frac{1}{2}-s}(4\pi|t|y)e^{2\pi it\frac{r}{c}} & \text{if $t \neq 0$.} \end{cases}
+        (\mc{F}f)(t) = \begin{cases} y^{1-2s}\frac{4\pi i^{-k}\G(2s-1)}{2^{2s}\G\left(s+\frac{k}{2}\right)\G\left(s-\frac{k}{2}\right)}\frac{1}{c^{2s}} & \text{if $t = 0$,} \\ y^{-s}\frac{\pi^{s}i^{-k}|t|^{s-1}}{\G\left(s+\sgn(t)\frac{k}{2}\right)}\frac{e^{2\pi it\frac{r}{c}}}{c^{2s}}W_{\sgn(t)\frac{k}{2},\frac{1}{2}-s}(4\pi|t|y) & \text{if $t \neq 0$.} \end{cases}
       \]
       By the Poisson summation formula and the identity theorem, we have
       \begin{align*}
-        I_{c,r}(z,s) &= y^{1-2s}\frac{4\pi i^{-k}}{(2c)^{2s}}\frac{\G(2s-1)}{\G\left(s+\frac{k}{2}\right)\G\left(s-\frac{k}{2}\right)} \\
-        &+ \sum_{t \neq 0}\left(y^{-s}\frac{\pi^{s}i^{-k}}{c^{2s}}\frac{|t|^{s-1}}{\G\left(s+\sgn(t)\frac{k}{2}\right)}W_{\sgn(t)\frac{k}{2},\frac{1}{2}-s}(4\pi|t|y)e^{2\pi it\frac{r}{c}}\right)e^{2\pi itx}.
+        I_{c,r}(z,s) &= y^{1-2s}\frac{4\pi i^{-k}\G(2s-1)}{2^{2s}\G\left(s+\frac{k}{2}\right)\G\left(s-\frac{k}{2}\right)}\frac{1}{c^{2s}} \\
+        &+ \sum_{t \neq 0}\left(y^{-s}\frac{\pi^{s}i^{-k}|t|^{s-1}}{\G\left(s+\sgn(t)\frac{k}{2}\right)}\frac{e^{2\pi it\frac{r}{c}}}{c^{2s}}W_{\sgn(t)\frac{k}{2},\frac{1}{2}-s}(4\pi|t|y)\right)e^{2\pi itx}.
       \end{align*}
       Plugging this back into the Eisenstein series gives a form of the Fourier-Whittaker series:
     \begin{align*}
-      (E_{k,\chi,\mf{a}}|\s_{\mf{b}})(z,s) &= \d_{\mf{a},\mf{{b}}}y^{s}+y^{s}\sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}} \\ r \in \mc{D}_{\mf{a},\mf{b}}(c)}}\cchi(r)y^{1-2s}\frac{4\pi i^{-k}}{(2c)^{2s}}\frac{\G(2s-1)}{\G\left(s+\frac{k}{2}\right)\G\left(s-\frac{k}{2}\right)} \\
-      &+y^{s}\sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}} \\ r \in \mc{D}_{\mf{a},\mf{b}}(c)}}\cchi(r)\sum_{t \neq 0}\left(y^{-s}\frac{\pi^{s}i^{-k}}{c^{2s}}\frac{|t|^{s-1}}{\G\left(s+\sgn(t)\frac{k}{2}\right)}W_{\sgn(t)\frac{k}{2},\frac{1}{2}-s}(4\pi|t|y)e^{2\pi it\frac{r}{c}}\right)e^{2\pi itx} \\
-      &= \d_{\mf{a},\mf{{b}}}y^{s}+\frac{\G(2s-1)}{\G\left(s+\frac{k}{2}\right)\G\left(s-\frac{k}{2}\right)}\left(\sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}} \\ r \in \mc{D}_{\mf{a},\mf{b}}(c)}}\cchi(r)\frac{4\pi i^{-k}}{(2c)^{2s}}\right)y^{1-s} \\
-      &+ \sum_{t \neq 0}\left(\sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}} \\ r \in \mc{D}_{\mf{a},\mf{b}}(c)}}\cchi(r)\frac{\pi^{s}i^{-k}}{c^{2s}}\frac{|t|^{s-1}}{\G\left(s+\sgn(t)\frac{k}{2}\right)}e^{2\pi it\frac{r}{c}}\right)W_{\sgn(t)\frac{k}{2},\frac{1}{2}-s}(4\pi|t|y)e^{2\pi itx} \\
-      &= \d_{\mf{a},\mf{{b}}}y^{s}+\frac{\G(2s-1)}{\G\left(s+\frac{k}{2}\right)\G\left(s-\frac{k}{2}\right)}\left(\sum_{c \in \mc{C}_{\mf{a},\mf{b}}}\frac{4\pi i^{-k}}{(2c)^{2s}}\sum_{r \in \mc{D}_{\mf{a},\mf{b}}(c)}\cchi(r)\right)y^{1-s} \\
-      &+ \sum_{t \neq 0}\frac{|t|^{s-1}}{\G\left(s+\sgn(t)\frac{k}{2}\right)}\left(\sum_{c \in \mc{C}_{\mf{a},\mf{b}}}\frac{\pi^{s}i^{-k}}{c^{2s}}\sum_{r \in \mc{D}_{\mf{a},\mf{b}}(c)}\cchi(r)e^{2\pi it\frac{r}{c}}\right)W_{\sgn(t)\frac{k}{2},\frac{1}{2}-s}(4\pi|t|y)e^{2\pi itx}.
+      (E_{k,\chi,\mf{a}}|\s_{\mf{b}})(z,s) &= \d_{\mf{a},\mf{{b}}}y^{s}+y^{s}\sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}} \\ r \in \mc{D}_{\mf{a},\mf{b}}(c)}}\cchi(r)y^{1-2s}\frac{4\pi i^{-k}\G(2s-1)}{2^{2s}\G\left(s+\frac{k}{2}\right)\G\left(s-\frac{k}{2}\right)}\frac{1}{c^{2s}} \\
+      &+y^{s}\sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}} \\ r \in \mc{D}_{\mf{a},\mf{b}}(c)}}\cchi(r)\sum_{t \neq 0}\left(y^{-s}\frac{\pi^{s}i^{-k}|t|^{s-1}}{\G\left(s+\sgn(t)\frac{k}{2}\right)}\frac{e^{2\pi it\frac{r}{c}}}{c^{2s}}W_{\sgn(t)\frac{k}{2},\frac{1}{2}-s}(4\pi|t|y)\right)e^{2\pi itx} \\
+      &= \d_{\mf{a},\mf{{b}}}y^{s}+\frac{4\pi i^{-k}\G(2s-1)}{2^{2s}\G\left(s+\frac{k}{2}\right)\G\left(s-\frac{k}{2}\right)}\left(\sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}} \\ r \in \mc{D}_{\mf{a},\mf{b}}(c)}}\frac{\cchi(r)}{c^{2s}}\right)y^{1-s} \\
+      &+ \sum_{t \neq 0}\frac{\pi^{s}i^{-k}|t|^{s-1}}{\G\left(s+\sgn(t)\frac{k}{2}\right)}\left(\sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}} \\ r \in \mc{D}_{\mf{a},\mf{b}}(c)}}\frac{\cchi(r)}{c^{2s}}e^{2\pi it\frac{r}{c}}\right)W_{\sgn(t)\frac{k}{2},\frac{1}{2}-s}(4\pi|t|y)e^{2\pi itx} \\
+      &= \d_{\mf{a},\mf{{b}}}y^{s}+\frac{4\pi i^{-k}\G(2s-1)}{2^{2s}\G\left(s+\frac{k}{2}\right)\G\left(s-\frac{k}{2}\right)}\left(\sum_{c \in \mc{C}_{\mf{a},\mf{b}}}\frac{1}{c^{2s}}\sum_{r \in \mc{D}_{\mf{a},\mf{b}}(c)}\cchi(r)\right)y^{1-s} \\
+      &+ \sum_{t \neq 0}\frac{\pi^{s}i^{-k}|t|^{s-1}}{\G\left(s+\sgn(t)\frac{k}{2}\right)}\left(\sum_{c \in \mc{C}_{\mf{a},\mf{b}}}\frac{1}{c^{2s}}\sum_{r \in \mc{D}_{\mf{a},\mf{b}}(c)}\cchi(r)e^{2\pi it\frac{r}{c}}\right)W_{\sgn(t)\frac{k}{2},\frac{1}{2}-s}(4\pi|t|y)e^{2\pi itx}.
     \end{align*}
     We will simplify the innermost sums. Since $a$ is the inverse for $r$ modulo $c$, the innermost sum in the third term above becomes
     \[
-      \sum_{r \in \mc{D}_{\mf{a},\mf{b}}}\cchi(r)e^{2\pi it\frac{r}{c}} = \sum_{r \in \mc{D}_{\mf{a},\mf{b}}}\cchi(\conj{a})e^{2\pi it\frac{\conj{a}}{c}} = \sum_{r \in \mc{D}_{\mf{a},\mf{b}}}\chi(a)e^{\frac{2\pi i(am+\conj{a}t)}{c}} = S_{\chi,\mf{a},\mf{b}}(0,t,c).
+      \sum_{r \in \mc{D}_{\mf{a},\mf{b}}(c)}\cchi(r)e^{2\pi it\frac{r}{c}} = \sum_{r \in \mc{D}_{\mf{a},\mf{b}}(c)}\cchi(\conj{a})e^{2\pi it\frac{\conj{a}}{c}} = \sum_{r \in \mc{D}_{\mf{a},\mf{b}}(c)}\chi(a)e^{\frac{2\pi i(am+\conj{a}t)}{c}} = S_{\chi,\mf{a},\mf{b}}(0,t,c).
     \]
     Similarly, we have
     \[
-      \sum_{r \in \mc{D}_{\mf{a},\mf{b}}}\cchi(r) = \sum_{r \in \mc{D}_{\mf{a},\mf{b}}}\cchi(\conj{a}) = \sum_{r \in \mc{D}_{\mf{a},\mf{b}}}\chi(a) = S_{\chi,\mf{a},\mf{b}}(0,0,c),
+      \sum_{r \in \mc{D}_{\mf{a},\mf{b}}(c)}\cchi(r) = \sum_{r \in \mc{D}_{\mf{a},\mf{b}}(c)}\cchi(\conj{a}) = \sum_{r \in \mc{D}_{\mf{a},\mf{b}}(c)}\chi(a) = S_{\chi,\mf{a},\mf{b}}(0,0,c),
     \]
     for the second term. We then obtain our desired Fourier-Whittaker series:
-    \begin{align*}
-      (E_{k,\chi,\mf{a}}|\s_{\mf{b}})(z,s) &= \d_{\mf{a},\mf{{b}}}y^{s}+\frac{\G(2s-1)}{\G\left(s+\frac{k}{2}\right)\G\left(s-\frac{k}{2}\right)}\left(\sum_{c \in \mc{C}_{\mf{a},\mf{b}}}\frac{4\pi i^{-k}S_{\chi,\mf{a},\mf{b}}(0,0,c)}{(2c)^{2s}}\right)y^{1-s} \\
-      &+ \sum_{t \neq 0}\frac{|t|^{s-1}}{\G\left(s+\sgn(t)\frac{k}{2}\right)}\left(\sum_{c \in \mc{C}_{\mf{a},\mf{b}}}\frac{\pi^{s}i^{-k}S_{\chi,\mf{a},\mf{b}}(0,t,c)}{c^{2s}}\right)W_{\sgn(t)\frac{k}{2},\frac{1}{2}-s}(4\pi|t|y)e^{2\pi itx}.
-    \end{align*}
+    \[
+      (E_{k,\chi,\mf{a}}|\s_{\mf{b}})(z,s) = \d_{\mf{a},\mf{{b}}}y^{s}+\tau_{\mf{a},\mf{b}}(s)y^{1-s}+\sum_{t \neq 0}\tau_{\mf{a},\mf{b}}(s,t)W_{\sgn(t)\frac{k}{2},\frac{1}{2}-s}(4\pi|t|y)e^{2\pi itx}.
+    \]
     \end{proof}
   \section{Inner Product Spaces of Automorphic Functions}
     Let $\mc{A}_{k}(\G,\chi)$ denote the complex vector space of all weight $k$ automorphic functions with character $\chi$ on $\GH$ and let $\mc{A}_{k,\l}(\G,\chi)$, $\mc{M}_{k,\l}(\G,\chi)$, and $\mc{C}_{k,\l}(\G,\chi)$ denote the associated subspaces of automorphic functions, Maass forms, and cusp forms of eigenvalue $\l$ respectively. If $k = 0$ or $\chi$ is the trivial character, we will suppress these dependencies. Note that if $\G_{1}$ and $\G_{2}$ are two congruence subgroups such that $\G_{1} \le \G_{2}$ then we have the inclusion
@@ -655,12 +661,12 @@
     \begin{theorem}\label{thm:meromorphic_continuation_of_Eisenstein_series}
       Let $\mf{a}$ and $\mf{b}$ be cusps of $\GH$. The Eisenstein series $E_{k,\chi,\mf{a}}(z,s)$ admits meromorphic continuation to $\C$, via a Fourier-Whittaker series at the $\mf{b}$ cusp given by
       \[
-        E_{k,\chi,\mf{a}}(\s_{\mf{b}}z,s) = \d_{\mf{a},\mf{b}}y^{s}+\tau_{\mf{a},\mf{b}}(s)y^{1-s}+\sum_{n \neq 0}\tau_{\mf{a},\mf{b}}(s,n)W_{\sgn(n)\frac{k}{2},s-\frac{1}{2}}(4\pi|n|y)e^{2\pi inx},
+        (E_{k,\chi,\mf{a}}|\s_{\mf{b}})(z,s) = \d_{\mf{a},\mf{b}}y^{s}+\tau_{\mf{a},\mf{b}}(s)y^{1-s}+\sum_{n \neq 0}\tau_{\mf{a},\mf{b}}(s,n)W_{\sgn(n)\frac{k}{2},s-\frac{1}{2}}(4\pi|n|y)e^{2\pi inx},
       \]
       where $\tau_{\mf{a},\mf{b}}(s)$ and $\tau_{\mf{a},\mf{b}}(s,n)$ are meromorphic functions.
     \end{theorem}
 
-    The Eisenstein series $E_{k,\chi,\mf{a}}(z,s)$ also satisfy a functional equation. To state it we need some notation. Fix an ordering of the cusps $\mf{a}$ of $\GH$ and define
+    Note that we have the Fourier-Whittaker series in \cref{thm:meromorphic_continuation_of_Eisenstein_series} already from \cref{prop:Fourier_Whittaker_series_Eisenstein_Maass}. Therefore \cref{thm:meromorphic_continuation_of_Eisenstein_series} really amounts to the fact that $\tau_{\mf{a},\mf{b}}(s)$ and $\tau_{\mf{a},\mf{b}}(s,n)$ admit meromorphic continuation to $\C$. The Eisenstein series $E_{k,\chi,\mf{a}}(z,s)$ also satisfy a functional equation. To state it we need some notation. Fix an ordering of the cusps $\mf{a}$ of $\GH$ and define
     \[
       \mc{E}(z,s) = (E_{k,\chi,\mf{a}}(z,s))_{\mf{a}}^{t} \quad \text{and} \quad \Phi(s) = (\tau_{\mf{a},\mf{b}}(s))_{\mf{a},\mf{b}}.
     \]
@@ -678,7 +684,7 @@
       Moreover, it is unitary on the line $\s = \frac{1}{2}$ and Hermitian if $s$ is real.
     \end{theorem}
 
-    As $\Phi(s)$ is symmetric by \cref{thm:functional_equation_of_Eisenstein_series}, if $\mf{a} = \infty$ or $\mf{b} = \infty$, we will suppress these dependencies for $\tau_{\mf{a},\mf{b}}$. Understanding the poles of $\tau_{\mf{a},\mf{b}}$ are also important for understanding the poles of the Eisenstein series $E_{k,\chi,\mf{a}}(z,s)$ (see \cite{iwaniec2002spectral} for a proof in the weight zero case and \cite{duke2002subconvexity} for notes on the general case):
+    As $\Phi(s)$ is symmetric by \cref{thm:functional_equation_of_Eisenstein_series}, if $\mf{a} = \infty$ or $\mf{b} = \infty$, we will suppress these dependencies for $\tau_{\mf{a},\mf{b}}(s)$ and $\tau_{\mf{a},\mf{b}}(s,n)$. Understanding the poles of $\tau_{\mf{a},\mf{b}}(s)$ are also important for understanding the poles of the Eisenstein series $E_{k,\chi,\mf{a}}(z,s)$ (see \cite{iwaniec2002spectral} for a proof in the weight zero case and \cite{duke2002subconvexity} for notes on the general case):
 
     \begin{theorem}\label{thm:residues_of_Eisenstein_series}
       The functions $\tau_{\mf{a},\mf{b}}(s)$ are meromorphic for $\s \ge \frac{1}{2}$ with a finite number of simple poles in the interval $(\frac{1}{2},1]$. A pole of $\tau_{\mf{a},\mf{b}}(s)$ is also a pole of $\tau_{\mf{a},\mf{a}}(s)$. Moreover, the poles of $E_{k,\chi,\mf{a}}(z,s)$ are among the poles of $\tau_{\mf{a},\mf{a}}(s)$, $E_{k,\chi,\mf{a}}(z,s)$ has no poles on the line $\s = \frac{1}{2}$, and the residues of $E_{k,\chi,\mf{a}}(z,s)$ are Maass forms in $\mc{E}_{k}(\G,\chi)$.
