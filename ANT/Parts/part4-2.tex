@@ -210,7 +210,7 @@
     \begin{proposition}\label{prop:Fourier_series_Poincare_holomorphic}
       Let $m \ge 1$, $k \ge 3$, $\chi$ be Dirichlet character with conductor dividing the level, and $\mf{a}$ and $\mf{b}$ be cusps of $\GH$. The Fourier series of $P_{m,k,\chi,\mf{a}}(z)$ on $\GH$ at the $\mf{b}$ cusp is given by
       \[
-        (P_{m,k,\chi,\mf{a}}|\s_{\mf{b}})(z) = \sum_{t \ge 1}\left(\d_{\mf{a},\mf{b}}\d_{m,t}+\left(\frac{\sqrt{t}}{\sqrt{m}}\right)^{k-1}\sum_{c \in \mc{C}_{\mf{a},\mf{b}}}\frac{2\pi i^{-k}}{c}J_{k-1}\left(\frac{4\pi\sqrt{mt}}{c}\right)S_{\chi,\mf{a},\mf{b}}(m,t,c)\right)e^{2\pi itz}.
+        (P_{m,k,\chi,\mf{a}}|\s_{\mf{b}})(z) = \sum_{t \ge 1}\left(\d_{\mf{a},\mf{b}}\d_{m,t}+\left(\frac{\sqrt{t}}{\sqrt{m}}\right)^{k-1}\sum_{c \in \mc{C}_{\mf{a},\mf{b}}}\frac{2\pi i^{-k}S_{\chi,\mf{a},\mf{b}}(m,t,c)}{c}J_{k-1}\left(\frac{4\pi\sqrt{mt}}{c}\right)\right)e^{2\pi itz}.
       \]
     \end{proposition}
     \begin{proof}
@@ -280,7 +280,7 @@
       \]
       So at last, we obtain our desired Fourier series:
       \[
-        (P_{m,k,\chi,\mf{a}}|\s_{\mf{b}})(z) = \sum_{t \ge 1}\left(\d_{\mf{a},\mf{b}}\d_{m,t}+\left(\frac{\sqrt{t}}{\sqrt{m}}\right)^{k-1}\sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}}}}\frac{2\pi i^{-k}}{c}J_{k-1}\left(\frac{4\pi\sqrt{mt}}{c}\right)S_{\chi,\mf{a},\mf{b}}(m,t,c)\right)e^{2\pi itz}.
+        (P_{m,k,\chi,\mf{a}}|\s_{\mf{b}})(z) = \sum_{t \ge 1}\left(\d_{\mf{a},\mf{b}}\d_{m,t}+\left(\frac{\sqrt{t}}{\sqrt{m}}\right)^{k-1}\sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}}}}\frac{2\pi i^{-k}S_{\chi,\mf{a},\mf{b}}(m,t,c)}{c}J_{k-1}\left(\frac{4\pi\sqrt{mt}}{c}\right)\right)e^{2\pi itz}.
       \]
     \end{proof}
 
@@ -289,7 +289,7 @@
     \begin{proposition}\label{prop:Fourier_series_Eisenstein_holomorphic}
       Let $k \ge 3$, $\chi$ be Dirichlet character with conductor dividing the level, and $\mf{a}$ and $\mf{b}$ be cusps of $\GH$. The Fourier series of $E_{k,\chi,\mf{a}}(z)$ on $\GH$ at the $\mf{b}$ cusp is given by
       \[
-        (E_{k,\chi,\mf{a}}|\s_{\mf{b}})(z) = \sum_{t \ge 0}\left(\d_{\mf{a},\mf{b}}+\sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}}}}\frac{(-2\pi it)^{k}}{(k-1)!c^{k}}S_{\chi,\mf{a},\mf{b}}(0,t,c)\right)e^{2\pi itz}.
+        (E_{k,\chi,\mf{a}}|\s_{\mf{b}})(z) = \d_{\mf{a},\mf{b}}+\sum_{t \ge 1}\left(\sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}}}}\frac{(-2\pi it)^{k}S_{\chi,\mf{a},\mf{b}}(0,t,c)}{(k-1)!c^{k}}\right)e^{2\pi itz}.
       \]
     \end{proposition}
     \begin{proof}
@@ -359,8 +359,8 @@
       Substituting this back into the Eisenstein series gives a form of the Fourier series:
       \begin{align*}
         (E_{k,\chi,\mf{a}}|\s_{\mf{b}})(z) &= \d_{\mf{a},\mf{b}}+\sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}} \\ r \in \mc{D}_{\mf{a},\mf{b}}}}\cchi(r)\sum_{t \ge 1}\left(\frac{(-2\pi it)^{k}}{(k-1)!c^{k}}e^{2\pi it\frac{r}{c}}\right)e^{2\pi itz} \\
-        &= \sum_{t \ge 0}\left(\d_{\mf{a},\mf{b}}+\sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}} \\ r \in \mc{D}_{\mf{a},\mf{b}}}}\cchi(r)\frac{(-2\pi it)^{k}}{(k-1)!c^{k}}e^{2\pi it\frac{r}{c}}\right)e^{2\pi itz} \\
-        &= \sum_{t \ge 0}\left(\d_{\mf{a},\mf{b}}+\sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}}}}\frac{(-2\pi it)^{k}}{(k-1)!c^{k}}\sum_{r \in \mc{D}_{\mf{a},\mf{b}}}\cchi(r)e^{2\pi it\frac{r}{c}}\right)e^{2\pi itz}.
+        &= \d_{\mf{a},\mf{b}}+\sum_{t \ge 1}\left(\sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}} \\ r \in \mc{D}_{\mf{a},\mf{b}}}}\cchi(r)\frac{(-2\pi it)^{k}}{(k-1)!c^{k}}e^{2\pi it\frac{r}{c}}\right)e^{2\pi itz} \\
+        &= \d_{\mf{a},\mf{b}}+\sum_{t \ge 1}\left(\sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}}}}\frac{(-2\pi it)^{k}}{(k-1)!c^{k}}\sum_{r \in \mc{D}_{\mf{a},\mf{b}}}\cchi(r)e^{2\pi it\frac{r}{c}}\right)e^{2\pi itz}.
       \end{align*}
       We will simplify the innermost sum. Since $a$ is the inverse for $r$ modulo $c$, the innermost sum above becomes
       \[
@@ -368,7 +368,7 @@
       \]
       So at last, we obtain our desired Fourier series:
       \[
-        (E_{k,\chi,\mf{a}}|\s_{\mf{b}})(z) = \sum_{t \ge 0}\left(\d_{\mf{a},\mf{b}}+\sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}}}}\frac{(-2\pi it)^{k}}{(k-1)!c^{k}}S_{\chi,\mf{a},\mf{b}}(0,t,c)\right)e^{2\pi itz}.
+        (E_{k,\chi,\mf{a}}|\s_{\mf{b}})(z) = \d_{\mf{a},\mf{b}}+\sum_{t \ge 1}\left(\sum_{\substack{c \in \mc{C}_{\mf{a},\mf{b}}}}\frac{(-2\pi it)^{k}S_{\chi,\mf{a},\mf{b}}(0,t,c)}{(k-1)!c^{k}}\right)e^{2\pi itz}.
       \]
     \end{proof}
 
