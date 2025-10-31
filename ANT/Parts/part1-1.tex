@@ -2,6 +2,7 @@
   A good selection of topics that need some discussion before studying number theory are the following:
   \begin{itemize}
     \item Asymptotics,
+    \item Arithmetic Functions
     \item Dirichlet Characters,
     \item Exponential Sums,
     \item Integral Lattices,
@@ -179,6 +180,191 @@
       \end{proof}
     \subsection*{Growth and Decay of Functions}
       We will also be interested in the growth rate of functions. There are many types of growth rates, but we will only recall the ones that are standard. Throughout let $c \ge 1$. First suppose $\mathbf{x} \to \mathbf{x}_{0}$. If $f(\mathbf{x}) \asymp \log^{c}||\mathbf{x}||_{\infty}$, we say that $f(\mathbf{x})$ is of \textbf{logarithmic growth}\index{logarithmic growth}. If $f(\mathbf{x}) \asymp ||\mathbf{x}||_{\infty}^{c}$, we say that $f(\mathbf{x})$ is of \textbf{polynomial growth}\index{polynomial growth}. If $f(\mathbf{x}) \asymp e^{c||\mathbf{x}||_{\infty}}$, we say that $f(\mathbf{x})$ is of \textbf{exponential growth}\index{exponential growth}. Now suppose $\mathbf{x} \to \infty$. If $f(\mathbf{x}) \asymp \log^{-c}||\mathbf{x}||_{\infty}$, we say that $f(\mathbf{x})$ is of \textbf{logarithmic decay}\index{logarithmic decay}. If $f(\mathbf{x}) \asymp ||\mathbf{x}||_{\infty}^{-c}$ for some $c \ge 1$, we say that $f(\mathbf{x})$ is of \textbf{polynomial decay}\index{polynomial decay}. If $f(\mathbf{x}) \asymp e^{-c||\mathbf{x}||_{\infty}}$, we say that $f(\mathbf{x})$ is of \textbf{exponential decay}\index{exponential decay}. In all of these cases, we refer to the constant $c$ as the \textbf{order}\index{order} of growth or decay respectively. If $f(\mathbf{x}) = \W(||\mathbf{x}||_{\infty}^{n})$ for all $n \ge 0$ then we say $f(\mathbf{x})$ is of \textbf{rapid growth}\index{rapid growth}. Alternatively, if $f(\mathbf{x}) = o(||\mathbf{x}||_{\infty}^{-n})$ for all $n \ge 0$ then we say $f(\mathbf{x})$ is of \textbf{rapid decay}\index{rapid decay}.
+  \section{Arithmetic Functions}
+    An arithmetic function $f$ is a function $f:\N \to \C$. That is, it takes the positive integers into the complex numbers. We say that $f$ is \textbf{additive}\index{additive} if $f(nm) = f(n)+f(m)$ for all positive integers $n$ and $m$ such that $(n,m) = 1$. If this condition simply holds for all $n$ and $m$ then we say $f$ is \textbf{completely additive}\index{completely additive}. Similarly, we say that $f$ is \textbf{multiplicative}\index{multiplicative} if $f(nm) = f(n)f(m)$ for all positive integers $n$ and $m$ such that $(n,m) = 1$. If this condition simply holds for all $n$ and $m$ then we say $f$ is \textbf{completely multiplicative}\index{completely multiplicative}. Many important arithmetic functions are either additive, completely additive, multiplicative, or completely multiplicative. Note that if a $f$ is additive or multiplicative then $f$ is uniquely determined by its values on prime powers and if $f$ is completely additive or completely multiplicative then it is uniquely determined by its values on primes. Moreover, if $f$ is additive or completely additive then $f(1) = 0$ and if $f$ is multiplicative or completely multiplicative then $f(1) = 1$. Below is a list defining the most important arithmetic functions (some of these functions are restrictions of common functions but we define them here as arithmetic functions because their domain being $\N$ is important):
+    \begin{enumerate}[label*=(\roman*)]
+      \item The \textbf{constant function}\index{constant function}: The function $\mathbf{1}(n)$ restricted to all $n \ge 1$. This function is neither additive or multiplicative.
+      \item The \textbf{indicator function}\index{indicator function}: The function $\d(n)$ defined by
+      \[
+        \d(n) = \begin{cases} 1 & \text{if $n = 1$}, \\ 0 & \text{if $n \ge 2$}. \end{cases}
+      \]
+      This function is completely multiplicative.
+      \item The \textbf{identity function}\index{identity function}: The function $\id(n)$ restricted to all $n \ge 1$. This function is completely multiplicative.
+      \item The \textbf{logarithm}\index{logarithm function}: The function $\log(n)$ restricted to all $n \ge 1$. This function is completely additive.
+      \item The \textbf{M\"obius function}\index{M\"obius function}: The function $\mu(n)$ defined by
+      \[
+        \mu(n) = \begin{cases} 1 & \text{if $n$ is square-free with an even number of prime factors}, \\ -1 & \text{if $n$ is square-free with an odd number of prime factors}, \\ 0 & \text{if $n$ is not square-free}, \end{cases}
+      \]
+      for all $n \ge 1$. This function is multiplicative.
+      \item The \textbf{characteristic function of square-free integers}\index{characteristic function of square-free integers}: The square of the M\"obius function $\mu^{2}(n)$ for all $n \ge 1$. This function is multiplicative.
+      \item \textbf{Liouville's function}\index{Liouville's function}: The function $\l(n)$ defined by
+      \[
+        \l(n) = \begin{cases} 1 & \text{if $n = 1$}, \\ (-1)^{k} & \text{if $n$ is composed of $k$ not necessarily distinct prime factors}, \end{cases}
+      \]
+      for all $n \ge 1$. This function is completely multiplicative.
+      \item \textbf{Euler's totient function}\index{Euler's totient function}: The function $\vphi(n)$ defined by
+      \[
+        \vphi(n) = \psum_{m \tmod{n}}1,
+      \]
+      for all $n \ge 1$. This function is multiplicative.
+      \item The \textbf{divisor function}\index{divisor function}: The function $\s_{0}(n)$ defined by
+      \[
+        \s_{0}(n) = \sum_{d \mid n}1,
+      \]
+      for all $n \ge 1$. This function is multiplicative.
+      \item The \textbf{sum of divisors function}\index{sum of divisors function}: The function $\s_{1}(n)$ defined by
+      \[
+        \s_{1}(n) = \sum_{d \mid n}d,
+      \]
+      for all $n \ge 1$. This function is multiplicative.
+      \item The \textbf{generalized sum of divisors function}\index{generalized sum of divisors function}: The function $\s_{s}(n)$ defined by
+      \[
+        \s_{s}(n) = \sum_{d \mid n}d^{s},
+      \]
+      for all $n \ge 1$ and any $s \in \C$. This function is multiplicative.
+      \item The \textbf{number of distinct prime factors function}\index{number of distinct prime factors function}: The function $\w(n)$ defined by
+      \[
+        \w(n) = \sum_{p \mid n}1,
+      \]
+      for all $n \ge 1$. This function is additive.
+      \item The \textbf{total number of prime divisors function}\index{total number of prime divisors function}: The function $\W(n)$ defined by
+      \[
+        \W(n) = \sum_{p ^{m} \mid n}1,
+      \]
+      for all $n \ge 1$ and where $m \ge 1$. This function is completely additive.
+      \item The \textbf{von Mangoldt function}\index{von Mangoldt function}: The function $\L(n)$ defined by
+      \[
+        \L(n) = \begin{cases} 0 & \text{if $n$ is not a prime power}, \\ \log(p) & \text{if $n = p^{m}$ for some prime $p$ and integer $m \ge 1$}, \end{cases}
+      \]
+      for all $n \ge 1$. This function is neither additive or multiplicative.
+    \end{enumerate}
+    If $f$ and $g$ are two arithmetic functions then we can define a new arithmetic function $f \ast g$ called the \textbf{Dirichlet convolution}\index{Dirichlet convolution} of $f$ and $g$ defined by
+    \[
+      (f \ast g)(n) = \sum_{d \mid n}f(d)g\left(\frac{n}{d}\right),
+    \]
+    for all $n \ge 1$. Note that $f \ast g = g \ast f$. This is especially useful when $f$ and $g$ are multiplicative:
+
+    \begin{proposition}\label{prop:Dirichlet_convolution_of_multiplicative_functions}
+      If $f$ and $g$ are multiplicative arithmetic functions then so is their Dirichlet convolution $f \ast g$.
+    \end{proposition}
+    \begin{proof}
+      Let $n,m \ge 1$ be such that $(n,m) = 1$. Then every $d \mid nm$ is of the form $d = d'd''$ with $d' \mid n$, $d'' \mid m$, and $(d',d'') = 1$. Then
+      \begin{align*}
+        (f \ast g)(nm) &= \sum_{d \mid nm}f(d)g\left(\frac{nm}{d}\right) \\
+        &= \sum_{\substack{d' \mid n \\ d'' \mid m \\ (d',d'') = 1}}f(d'd'')g\left(\frac{nm}{d'd''}\right) \\
+        &= \sum_{\substack{d' \mid n \\ d'' \mid m \\ (d',d'') = 1}}f(d')f(d'')g\left(\frac{n}{d'}\right)g\left(\frac{m}{d''}\right) \\
+        &= \left(\sum_{d' \mid n}f(d')g\left(\frac{n}{d'}\right)\right)\left(\sum_{d'' \mid m}f(d'')g\left(\frac{m}{d''}\right)\right) \\
+        &= (f \ast g)(n)(f \ast g)(m).
+      \end{align*}
+      This completes the proof.
+    \end{proof}
+
+    From \cref{prop:Dirichlet_convolution_of_multiplicative_functions} we see that Dirichlet convolution makes the set of multiplicative functions into a semigroup. In fact, it is a monoid since the indicator function $\d$ acts as an identity. Indeed, for any multiplicative function $f$, we have
+    \[
+      (f \ast \d)(n) = \sum_{d \mid n}f(d)\d\left(\frac{n}{d}\right) = f(n).
+    \]
+    Therefore
+    \[
+      f \ast \d = f.
+    \]
+    A certain case of interest for Dirichlet convolution is when the M\"obius function is convolved with the constant function:
+
+      \begin{proposition}\label{prop:Mobius_indicator}
+      We have
+      \[
+        \sum_{d \mid n}\mu(d) = \begin{cases} 1 & \text{if $n = 1$}, \\ 0 & \text{if $n \ge 2$}. \end{cases}
+      \]
+      In particular,
+      \[
+        \mu \ast \mathbf{1} = \d = \mathbf{1} \ast \mu.
+      \]
+      \end{proposition}
+      \begin{proof}
+        In terms of Dirichlet convolutions, the second statement is equivalent to the first (actually just $\mu \ast \mathbf{1} = \d$ or $\d = \mathbf{1} \ast \mu$ since Dirichlet convolution is associative). So it suffices to prove the first statement only. By \cref{prop:Dirichlet_convolution_of_multiplicative_functions}, $\sum_{d \mid n}\mu(d)$ is multiplicative so we may assume that $n = p^{r}$ for some prime $p$ and $r \ge 0$. When $r = 0$, $d = 1$ and so the sum is $1$. For $r \ge 1$, $d$ runs over $1,p,\ldots,p^{r}$ and the only $d$ for which $\mu(d) \neq 0$ is $d = 1$ and $d = p$. But $\mu(1)+\mu(p) = 0$ so that the sum is zero in this case. This completes the proof. 
+      \end{proof}
+
+      With \cref{prop:Mobius_indicator}, we can prove the infamous \textbf{M\"obius inversion formula}\index{M\"obius inversion formula}:
+
+      \begin{theorem*}[M\"obius inversion formula]
+        Suppose $f$ and $g$ are arithmetic functions. Then
+        \[
+          g(n) = \sum_{d \mid n}f(d),
+        \]
+        for all $n \ge 1$, if and only if
+        \[
+          f(n) = \sum_{d \mid n}g(d)\mu\left(\frac{n}{d}\right),
+        \]
+        for all $n \ge 1$.
+      \end{theorem*}
+      \begin{proof}
+        In terms of Dirichlet convolutions, it is equivalent to show that
+        \[
+          g = f \ast \mathbf{1},
+        \]
+        if and only if
+        \[
+          f = g \ast \mu.
+        \]
+        Convolving the first formula with $\mu$ gives
+        \[
+          g \ast \mu = f \ast \mathbf{1} \ast \mu = f \ast \d = f,
+        \]
+        with the last two equalities following from \cref{prop:Mobius_indicator} and that $\d$ is the identity for Dirichlet convolution.
+      \end{proof}
+
+      Using M\"obius inversion, the following useful formula can also be derived:
+
+      \begin{proposition}\label{prop:Dirichlet_Mobius_is_zeta_inverse}
+        For $\s > 1$,
+        \[
+          \sum_{n \ge 1}\frac{\mu(n)}{n^{s}} = \z(s)^{-1} = \prod_{p}(1-p^{-s}).
+        \]
+      \end{proposition}
+
+      There is also an important similar statement to the M\"obius inversion formula that we will need:
+
+      \begin{theorem}\label{thm:specially_multiplicative_functions}
+        Let $f$ be an arithmetic function and let $B$ be the completely multiplicative function defined on primes $p$ by
+        \[
+          B(p) = f(p)^{2}-f(p^{2}).
+        \]
+        Then
+        \[
+          f(n)f(m) = \sum_{d \mid (n,m)}B(d)f\left(\frac{nm}{d^{2}}\right),
+        \]
+        for all $n,m \ge 1$, if and only if
+        \[
+          f(nm) = \sum_{d \mid (n,m)}\mu(d)B(d)f\left(\frac{n}{d}\right)f\left(\frac{m}{d}\right),
+        \]
+        for all $n,m \ge 1$.
+      \end{theorem}
+      \begin{proof}
+        \todo{xxx}
+      \end{proof}
+
+      Any arithmetic function $f$ satisfying the conditions of \cref{thm:specially_multiplicative_functions} is said to be \textbf{specially multiplicative}\index{specially multiplicative}.
+    \subsection*{The Divisor, Sum of Divisors, and Generalized Sum of Divisors Functions}
+      We generalize $\s_{0}(n)$, $\s_{1}(n)$, and $\s_{s}(n)$ to all nonzero $n \in \Z$ by setting
+      \[
+        \s_{0}(n) = \s_{0}(|n|), \quad \s_{1}(n) = \s_{1}(|n|), \quad \text{and} \quad \s_{s}(n) = \s_{s}(|n|),
+      \]
+      for all $s \in \C$. It is very useful to know that $\s_{0}(n)$ grows slowly:
+
+      \begin{proposition}\label{prop:sum_of_divisors_growth_rate}
+        \phantom{ }
+        \[
+          \s_{0}(n) \ll_{\e} n^{\e}.
+        \]
+      \end{proposition}
+
+      This is all we really need to know for the sum of divisors function. As for the generalized sum of divisors function, it has the remarkable property that it can be written as a product. To state it, recall that $\ord_{p}(n)$ is the positive integer satisfying $p^{\ord_{p}(n)} \mid\mid n$. Then we have the following statement:
+
+      \begin{proposition}\label{prop:generalized_sum_of_divisors_as_product}
+        For $s \neq 0$,
+        \[
+          \s_{s}(n) = \prod_{p \mid n}\frac{p^{(\ord_{p}(n)+1)s}-1}{p^{s}-1}.
+        \]
+      \end{proposition}
   \section{Dirichlet Characters}
     The most important multiplicative periodic functions for an analytic number theorist are the Dirichlet characters. A \textbf{Dirichlet character}\index{Dirichlet character} $\chi$ modulo $m \ge 1$ is an $m$-periodic homomorphism $\chi:\Z \to \C$ such that $\chi(a) = 0$ if and only if $(a,m) > 1$. Note that any Dirichlet character is necessarily a completely multiplicative arithmetic function when restricted $\N$. We call $m$ the \textbf{modulus}\index{modulus} of $\chi$. Sometimes we will also write $\chi_{m}$ to denote a Dirichlet character modulo $m$ if we need to express the dependence upon the modulus. For any $m \ge 1$, there is always the \textbf{principal Dirichlet character}\index{principal Dirichlet character} modulo $m$ which we denote by $\chi_{m,0}$ (sometimes also seen as $\chi_{0,m}$ or the ever more confusing $\chi_{0}$) and is defined by
     \[
@@ -344,32 +530,32 @@
   \section{Exponential Sums}
     Number theory comes with its class of exponential sums that appear naturally. They play the role of discrete counterparts to continuous objects (there is a rich underpinning here). Without a sufficient understanding of these sums, they would cause a discrete obstruction to an analytic problem that we wish to solve.
     \subsection*{Ramanujan and Gauss Sums}
-      Let's begin with the Ramanujan sum. For $m \ge 1$ and $b \in \Z$, the \textbf{Ramanujan sum}\index{Ramanujan sum} $r(b,m)$ is defined by
+      Let's begin with the Ramanujan sum. For $m \ge 1$ and $n \in \Z$, the \textbf{Ramanujan sum}\index{Ramanujan sum} $r(n,m)$ is defined by
       \[
-        r(b,m) = \psum_{a \tmod{m}}e^{\frac{2\pi iab}{m}}.
+        r(n,m) = \psum_{a \tmod{m}}e^{\frac{2\pi ian}{m}}.
       \]
-      Note that the Ramanujan sum is a finite sum of $m$-th roots of unity on the unit circle. Clearly we have $r(0,m) = \vphi(m)$. Ramanujan sums can be computed explicitly by means of the M\"obius function (see \cref{append:Arithmetic_Functions}):
+      Note that the Ramanujan sum is a finite sum of $m$-th roots of unity on the unit circle. Clearly we have $r(0,m) = \vphi(m)$. Ramanujan sums can be computed explicitly by means of the M\"obius function:
 
       \begin{proposition}\label{prop:Ramanujan_sum_evaluation}
-        For any $m \ge 1$ and any nonzero $b \in \Z$,
+        For any $m \ge 1$ and any nonzero $n \in \Z$,
         \[
-          r(b,m) = \sum_{\ell \mid (b,m)}\ell\mu\left(\frac{m}{\ell}\right).
+          r(n,m) = \sum_{d \mid (n,m)}d\mu\left(\frac{m}{d}\right).
         \]
       \end{proposition}
       \begin{proof}
-        This is a computation:
-        \begin{align*}
-          r(b,m) &= \psum_{a \tmod{m}}e^{\frac{2\pi iab}{m}} \\
-          &= \sum_{a \tmod{m}}e^{\frac{2\pi iab}{m}}\sum_{d \mid (a,m)}\mu(d) && \text{\cref{prop:Mobius_dirac_delta}} \\
-          &= \sum_{d \mid m}\mu(d)\sum_{\substack{a \tmod{m} \\ d \mid a}}e^{\frac{2\pi iab}{m}} \\
-          &= \sum_{d \mid m}\mu(d)\sum_{kd \tmod{m}}e^{\frac{2\pi ikdb}{m}} && \text{$a \mapsto kd$} \\
-          &= \sum_{d \mid m}\mu(d)\sum_{k \tmod{\frac{m}{d}}}e^{\frac{2\pi ik b}{\frac{m}{d}}}.
-        \end{align*}
-        Now if $\frac{m}{d} \mid b$ the inner sum is $\frac{m}{d}$, and otherwise it is zero because the change of variables $k \mapsto k\conj{b}$ shows that the sum is over all $\left(\frac{m}{d}\right)$-th roots of unity. So the double sum above reduces to
+        Summing $r(n,d)$ over the divisors $d$ of $m$ yields
         \[
-          \sum_{\substack{\frac{m}{d} \mid b \\ d \mid m}}\frac{m}{d}\mu(d) = \sum_{\ell \mid (b,m)}\ell\mu\left(\frac{m}{\ell}\right),
+          \sum_{d \mid m}r(n,d) = \sum_{d \mid m}\psum_{a \tmod{d}}e^{\frac{2\pi ian}{d}} = \sum_{d \mid m}\psum_{a \tmod{\frac{m}{d}}}e^{\frac{2\pi iadn}{m}} = \sum_{b \tmod{m}}e^{\frac{2\pi ibn}{m}} ,
         \]
-        upon performing the change of variables $\frac{m}{d} \mapsto \ell$. This completes the proof.
+        where the second equality follows by making the change of variables $d \to \frac{m}{d}$ and the third equality holds by observing that every integer $b$ modulo $m$ is of the form $b = ad$ for some $d \mid m$ and $a$ taken modulo $\frac{m}{d}$ with $\left(a,\frac{m}{d}\right) = 1$. Indeed, this is seen upon taking $d = (b,m)$. If $m \mid n$ the inner sum is $m$ and otherwise it is zero because it is the sum of all the $m$-th roots of unity. Thus
+        \[
+          \sum_{d \mid m}r(n,d) = \begin{cases} m & \text{if $m \mid n$}, \\ 0 & \text{if $m \nmid n$}. \end{cases}
+        \]
+        By the M\"obius inversion formula, we have
+        \[
+          r(n,m) = \sum_{d \mid (n,m)}d\mu\left(\frac{m}{d}\right),
+        \]
+        as desired.
       \end{proof}
       We can also define a Ramanujan sum associated to Dirichlet characters. Let $\chi$ be a Dirichlet character modulo $m$. For any $b \in \Z$, the \textbf{Ramanujan sum}\index{Ramanujan sum} $\tau(b,\chi)$ associated to $\chi$ is given by
       \[
