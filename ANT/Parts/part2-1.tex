@@ -163,7 +163,7 @@
     A way to think about \cref{prop:Dirichlet_series_coefficient_size_on_average} is that if the abscissa of absolute convergence is $\s_{a} \ge 0$ then the size of the coefficients $a(n)$ is at most $n^{\s_{a}+\e}$ on average. Of corse, if $a(n) \ll_{\a} n^{\a}$ then \cref{prop:Dirichlet_series_convergence_polynomial_bound} implies that $\s_{a} \le 1+\a$ and so \cref{prop:Dirichlet_series_coefficient_size_on_average} gives the significantly weaker estimate $A(X) \ll_{\e} X^{1+\a+\e}$. However, if we have a bound of the form $|A|(X) \ll_{\a} X^{\a}$ we can still obtain an upper estimate for the abscissa of absolute convergence:
 
     \begin{proposition}\label{prop:Dirichlet_series_convergence_polynomial_bound_average}
-      Suppose $D(s)$ is a Dirichlet series such that $|A|(X) \ll_{\a} X^{\a}$ for some real $\a \ge 0$. Then the abscissa of absolute convergence satisfies $\s_{a} \le \a$.
+      Suppose $D(s)$ is a Dirichlet series such that $|A|(X) \ll_{\a} X^{\a}$ for some $\a \ge 0$. Then the abscissa of absolute convergence satisfies $\s_{a} \le \a$.
     \end{proposition}
     \begin{proof}
       It suffices to show that $D(s)$ is absolutely convergent in the region $\s > \a$. Let $s$ be in this region. Then
@@ -213,11 +213,11 @@
       \]
       for $-\d' < s < 1$. As $\d' > 0$, this implies that $D(s)$ converges absolutely (since $a(n)$ is nonnegative) for some $s < 0$ (say $s = -\frac{\d'}{2}$) which contradicts $\s_{a} = 0$.
     \end{proof}
-  \section{Euler Products}
+  \section{Euler Products \& Dirichlet Convolutions}
     Generally speaking, if the coefficients $a(n)$ are chosen at random, $D(s)$ will not possess any good properties outside of convergence in some region (it might not even possess that). However, many Dirichlet series of interest will have coefficients that exhibit polynomial growth and are multiplicative. These Dirichlet series admits infinite product expressions:
 
     \begin{proposition}\label{prop:Dirichlet_series_Euler_product}
-        Suppose the coefficients $a(n)$ of a Dirichlet series $D(s)$ are multiplicative and satisfy $a(n) \ll_{\a} n^{\a}$ for some real $\a \ge 0$. Then $D(s)$ converges absolutely for $\s > 1+\a$ and admits the infinite product expression
+        Suppose the coefficients $a(n)$ of a Dirichlet series $D(s)$ are multiplicative and satisfy $a(n) \ll_{\a} n^{\a}$ for some $\a \ge 0$. Then $D(s)$ converges absolutely for $\s > 1+\a$ and admits the infinite product expression
         \[
           D(s) = \prod_{p}\left(\sum_{k \ge 0}\frac{a(p^{k})}{p^{ks}}\right),
         \]
@@ -272,9 +272,24 @@
     \]
     With this notation, we have the relationship
     \[
-      D(s) = D_{(N)}(s)D_{N}(s),
+      D(s) = D_{(N)}(s)D_{N}(s).
     \]
-    for any $N \ge 1$.
+    We now turn to discussing how Dirichlet series behave with respect to products. Let $D_{f}(s)$ and $D_{g}(s)$ be the Dirichlet series defined by
+    \[
+      D_{f}(s) = \sum_{n \ge 1}\frac{f(n)}{n^{s}} \quad \text{and} \quad D_{g}(s) = \sum_{n \ge 1}\frac{g(n)}{n^{s}},
+    \]
+    for some arithmetic functions $f$ and $g$. We also assume $f(n) \ll_{\a} n^{\a}$ and $g(n) \ll_{\a} n^{\a}$ for some $\a \ge 0$. This ensures $D_{f}(s)$ and $D_{g}(s)$ both converge absolutely for $\s > 1+\a$. As every $n \ge 1$ is of the form $n = d\frac{n}{d}$ for some divisor $d$ of $n$, we see that
+    \begin{equation}\label{equ:Dirichlet_convolution_of_Dirichlet_series}
+      D_{f}(s)D_{g}(s) = \sum_{n \ge 1}\frac{\sum_{d \mid n}f(d)g\left(\frac{n}{d}\right)}{n^{s}} = \sum_{n \ge 1}\frac{(f \ast g)(n)}{n^{s}} = D_{f \ast g}(s),
+    \end{equation}
+    for $\s > 1+\a$. In other words, $D_{f}(s)D_{g}(s)$ is again a Dirichlet series whose coefficients are given by $(f \ast g)(n)$. In particular, $D_{f \ast g}(s)$ converges absolutely for $\s > 1+\a$ as well since $D_{f}(s)$ and $D_{g}(s)$ both do. That is, if both $f(n)$ and $g(n)$ are multiplicative. Also, \cref{prop:Dirichlet_convolution_of_multiplicative_functions} shows that $D_{f \ast g}(s)$ has multiplicative coefficients if both $D_{f}(s)$ and $D_{g}(s)$ do. Moreover, from the M\"obius inversion formula we immediately find that
+    \[
+      D_{g}(s) = D_{f \ast \mathbf{1}}(s),
+    \]
+    if and only if
+    \[
+      D_{f}(s) = D_{g \ast \mu}(s).
+    \]
   \section{Perron Formulas}
     With the Mellin inversion formula, it is not hard to prove a very useful integral expression for the sum of coefficients of a Dirichlet series. First, we setup some general notation. If $D(s)$ is a Dirichlet series with coefficients $a(n)$ then for $X > 0$, we set
     \[

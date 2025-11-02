@@ -269,102 +269,145 @@
     \]
     A certain case of interest for Dirichlet convolution is when the M\"obius function is convolved with the constant function:
 
-      \begin{proposition}\label{prop:Mobius_indicator}
-      We have
+    \begin{proposition}\label{prop:Mobius_indicator}
+    We have
+    \[
+      \sum_{d \mid n}\mu(d) = \sum_{d \mid n}\mu\left(\frac{n}{d}\right) = \begin{cases} 1 & \text{if $n = 1$}, \\ 0 & \text{if $n \ge 2$}. \end{cases}
+    \]
+    In particular,
+    \[
+      \mu \ast \mathbf{1} = \mathbf{1} \ast \mu = \d.
+    \]
+    \end{proposition}
+    \begin{proof}
+      In terms of Dirichlet convolutions, the second statement is equivalent to the first (actually just $\mu \ast \mathbf{1} = \d$ or $\d = \mathbf{1} \ast \mu$ since Dirichlet convolution is associative). So it suffices to prove the first statement only. By \cref{prop:Dirichlet_convolution_of_multiplicative_functions}, $\sum_{d \mid n}\mu(d)$ is multiplicative so we may assume that $n = p^{r}$ for some prime $p$ and $r \ge 0$. When $r = 0$, $d = 1$ and so the sum is $1$. For $r \ge 1$, $d$ runs over $1,p,\ldots,p^{r}$ and the only $d$ for which $\mu(d) \neq 0$ is $d = 1$ and $d = p$. But $\mu(1)+\mu(p) = 0$ so that the sum is zero in this case. This completes the proof. 
+    \end{proof}
+
+    With \cref{prop:Mobius_indicator}, we can prove the infamous \textbf{M\"obius inversion formula}\index{M\"obius inversion formula}:
+
+    \begin{theorem*}[M\"obius inversion formula]
+      Suppose $f$ and $g$ are arithmetic functions. Then
       \[
-        \sum_{d \mid n}\mu(d) = \begin{cases} 1 & \text{if $n = 1$}, \\ 0 & \text{if $n \ge 2$}. \end{cases}
+        g(n) = \sum_{d \mid n}f(d),
       \]
-      In particular,
+      for all $n \ge 1$, if and only if
       \[
-        \mu \ast \mathbf{1} = \d = \mathbf{1} \ast \mu.
+        f(n) = \sum_{d \mid n}g(d)\mu\left(\frac{n}{d}\right),
       \]
-      \end{proposition}
-      \begin{proof}
-        In terms of Dirichlet convolutions, the second statement is equivalent to the first (actually just $\mu \ast \mathbf{1} = \d$ or $\d = \mathbf{1} \ast \mu$ since Dirichlet convolution is associative). So it suffices to prove the first statement only. By \cref{prop:Dirichlet_convolution_of_multiplicative_functions}, $\sum_{d \mid n}\mu(d)$ is multiplicative so we may assume that $n = p^{r}$ for some prime $p$ and $r \ge 0$. When $r = 0$, $d = 1$ and so the sum is $1$. For $r \ge 1$, $d$ runs over $1,p,\ldots,p^{r}$ and the only $d$ for which $\mu(d) \neq 0$ is $d = 1$ and $d = p$. But $\mu(1)+\mu(p) = 0$ so that the sum is zero in this case. This completes the proof. 
-      \end{proof}
-
-      With \cref{prop:Mobius_indicator}, we can prove the infamous \textbf{M\"obius inversion formula}\index{M\"obius inversion formula}:
-
-      \begin{theorem*}[M\"obius inversion formula]
-        Suppose $f$ and $g$ are arithmetic functions. Then
-        \[
-          g(n) = \sum_{d \mid n}f(d),
-        \]
-        for all $n \ge 1$, if and only if
-        \[
-          f(n) = \sum_{d \mid n}g(d)\mu\left(\frac{n}{d}\right),
-        \]
-        for all $n \ge 1$.
-      \end{theorem*}
-      \begin{proof}
-        In terms of Dirichlet convolutions, it is equivalent to show that
-        \[
-          g = f \ast \mathbf{1},
-        \]
-        if and only if
-        \[
-          f = g \ast \mu.
-        \]
-        Convolving the first formula with $\mu$ gives
-        \[
-          g \ast \mu = f \ast \mathbf{1} \ast \mu = f \ast \d = f,
-        \]
-        with the last two equalities following from \cref{prop:Mobius_indicator} and that $\d$ is the identity for Dirichlet convolution.
-      \end{proof}
-
-      Using M\"obius inversion, the following useful formula can also be derived:
-
-      \begin{proposition}\label{prop:Dirichlet_Mobius_is_zeta_inverse}
-        For $\s > 1$,
-        \[
-          \sum_{n \ge 1}\frac{\mu(n)}{n^{s}} = \z(s)^{-1} = \prod_{p}(1-p^{-s}).
-        \]
-      \end{proposition}
-
-      There is also an important similar statement to the M\"obius inversion formula that we will need:
-
-      \begin{theorem}\label{thm:specially_multiplicative_functions}
-        Let $f$ be an arithmetic function and let $B$ be the completely multiplicative function defined on primes $p$ by
-        \[
-          B(p) = f(p)^{2}-f(p^{2}).
-        \]
-        Then
-        \[
-          f(n)f(m) = \sum_{d \mid (n,m)}B(d)f\left(\frac{nm}{d^{2}}\right),
-        \]
-        for all $n,m \ge 1$, if and only if
-        \[
-          f(nm) = \sum_{d \mid (n,m)}\mu(d)B(d)f\left(\frac{n}{d}\right)f\left(\frac{m}{d}\right),
-        \]
-        for all $n,m \ge 1$.
-      \end{theorem}
-      \begin{proof}
-        \todo{xxx}
-      \end{proof}
-
-      Any arithmetic function $f$ satisfying the conditions of \cref{thm:specially_multiplicative_functions} is said to be \textbf{specially multiplicative}\index{specially multiplicative}.
-    \subsection*{The Divisor, Sum of Divisors, and Generalized Sum of Divisors Functions}
-      We generalize $\s_{0}(n)$, $\s_{1}(n)$, and $\s_{s}(n)$ to all nonzero $n \in \Z$ by setting
+      for all $n \ge 1$. In particular,
       \[
-        \s_{0}(n) = \s_{0}(|n|), \quad \s_{1}(n) = \s_{1}(|n|), \quad \text{and} \quad \s_{s}(n) = \s_{s}(|n|),
+        g = f \ast \mathbf{1},
       \]
-      for all $s \in \C$. It is very useful to know that $\s_{0}(n)$ grows slowly:
+      if and only if
+      \[
+        f = g \ast \mu.
+      \]
+    \end{theorem*}
+    \begin{proof}
+      In terms of Dirichlet convolutions, the second statement is equivalent to the first. So it suffices to prove the second statement.
+      Convolving the first formula with $\mu$ gives
+      \[
+        g \ast \mu = f \ast \mathbf{1} \ast \mu = f \ast \d = f,
+      \]
+      with the last two equalities following from \cref{prop:Mobius_indicator} and that $\d$ is the identity for Dirichlet convolution. This proves the forward implication. The reverse implication follows by convolving the second formula with $\mathbf{1}$ and arguing analogously. 
+    \end{proof}
 
-      \begin{proposition}\label{prop:sum_of_divisors_growth_rate}
-        \phantom{ }
-        \[
-          \s_{0}(n) \ll_{\e} n^{\e}.
-        \]
-      \end{proposition}
+    Let $f$ be multiplicative. We associate to $f$ the completely multiplicative function $f_{A}$ defined on primes $p$ by
+    \[
+      f_{A}(p) = f(p^{2})-f(p)^{2}.
+    \]
+    We say that $f$ is \textbf{specially multiplicative}\index{specially multiplicative} if
+    \[
+        f(n)f(m) = \sum_{d \mid (n,m)}f_{A}(d)f\left(\frac{nm}{d^{2}}\right),
+    \]
+    for all $n,m \ge 1$. In fact, this is equivalent to the identity
+    \[
+        f(nm) = \sum_{d \mid (n,m)}\mu(d)f_{A}(d)f\left(\frac{n}{d}\right)f\left(\frac{m}{d}\right),
+    \]
+    for all $n,m \ge 1$ as the following proposition shows:
 
-      This is all we really need to know for the sum of divisors function. As for the generalized sum of divisors function, it has the remarkable property that it can be written as a product. To state it, recall that $\ord_{p}(n)$ is the positive integer satisfying $p^{\ord_{p}(n)} \mid\mid n$. Then we have the following statement:
+    \begin{proposition}\label{prop:specially_multiplicative_functions}
+      Let $f$ be a multiplicative function. Then
+      \[
+        f(n)f(m) = \sum_{d \mid (n,m)}f_{A}(d)f\left(\frac{nm}{d^{2}}\right),
+      \]
+      for all $n,m \ge 1$, if and only if
+      \[
+        f(nm) = \sum_{d \mid (n,m)}\mu(d)f_{A}(d)f\left(\frac{n}{d}\right)f\left(\frac{m}{d}\right),
+      \]
+      for all $n,m \ge 1$.
+    \end{proposition}
+    \begin{proof}
+      Suppose the first identity holds. Then by \cref{prop:Mobius_indicator}, we have
+      \begin{align*}
+        f(nm) &= \sum_{d \mid (n,m)}f_{A}(d)f\left(\frac{nm}{d^{2}}\right)\sum_{e \mid d}\mu\left(\frac{d}{e}\right) \\
+        &= \sum_{\substack{d \mid (n,m) \\ e \mid d}}\mu\left(\frac{d}{e}\right)f_{A}(d)f\left(\frac{nm}{d^{2}}\right) \\
+        &= \sum_{\substack{d \mid (n,m) \\ e \mid \left(\frac{n}{d},\frac{m}{d}\right)}}\mu(d)f_{A}(de)f\left(\frac{nm}{(de)^{2}}\right) && \text{$d \to de$} \\
+        &= \sum_{d \mid (n,m)}\mu(d)f_{A}(d)\sum_{e \mid \left(\frac{n}{d},\frac{m}{d}\right)}f_{A}(e)f\left(\frac{\frac{n}{d}\frac{m}{d}}{e^{2}}\right) \\
+        &= \sum_{d \mid (n,m)}\mu(d)f_{A}(d)f\left(\frac{n}{d}\right)f\left(\frac{m}{d}\right),
+      \end{align*}
+      where the last equality holds by the first identity. This proves the forward implication. For the reverse implication, suppose the second identity holds. By \cref{prop:Mobius_indicator} again, we have
+      \begin{align*}
+        f(n)f(m) &= \sum_{d \mid (n,m)}f_{A}(d)f\left(\frac{n}{d}\right)f\left(\frac{m}{d}\right)\sum_{e \mid d}\mu(e) \\
+        &= \sum_{\substack{d \mid (n,m) \\ e \mid d}}\mu(e)f_{A}(d)f\left(\frac{n}{d}\right)f\left(\frac{m}{d}\right) \\
+        &= \sum_{\substack{d \mid (n,m) \\ e \mid \left(\frac{n}{d},\frac{m}{d}\right)}}\mu(e)f_{A}(de)f\left(\frac{n}{de}\right)f\left(\frac{m}{de}\right) && \text{$d \to de$} \\
+        &= \sum_{d \mid (n,m)}f_{A}(d)\sum_{e \mid \left(\frac{n}{d},\frac{m}{d}\right)}\mu(e)f_{A}(e)f\left(\frac{\frac{n}{d}}{e}\right)f\left(\frac{\frac{m}{d}}{e}\right) \\
+        &= \sum_{d \mid (n,m)}f_{A}(d)\sum_{e \mid \left(\frac{n}{d},\frac{m}{d}\right)}f\left(\frac{nm}{d^{2}}\right),
+      \end{align*}
+      where the last equality holds by the second identity. This proves the reverse implication completing the proof.
+    \end{proof}
 
-      \begin{proposition}\label{prop:generalized_sum_of_divisors_as_product}
-        For $s \neq 0$,
-        \[
-          \s_{s}(n) = \prod_{p \mid n}\frac{p^{(\ord_{p}(n)+1)s}-1}{p^{s}-1}.
-        \]
-      \end{proposition}
+    Lastly, we generalize $\s_{0}(n)$, $\s_{1}(n)$, and $\s_{s}(n)$ to all nonzero $n \in \Z$ by setting
+    \[
+      \s_{0}(n) = \s_{0}(|n|), \quad \s_{1}(n) = \s_{1}(|n|), \quad \text{and} \quad \s_{s}(n) = \s_{s}(|n|),
+    \]
+    for all $s \in \C$. It is very useful to know that $\s_{0}(n)$ grows slowly:
+
+    \begin{proposition}\label{prop:sum_of_divisors_growth_rate}
+      \phantom{ }
+      \[
+        \s_{0}(n) \ll_{\e} n^{\e}.
+      \]
+    \end{proposition}
+    \begin{proof}
+      Let $n = p_{1}^{r_{1}} \cdots p_{k}^{r_{k}}$ be the prime factorization of $n$. As $\s_{0}(p^{r_{i}}) = r_{i}+1$ for $1 \le i \le k$, multiplicativity implies $\s_{0}(n) = (r_{1}+1) \cdots (r_{k}+1)$. Then
+      \[
+        \frac{\s_{0}(n)}{n^{\e}} = \prod_{1 \le i \le r}\frac{r_{i}+1}{p_{i}^{r_{i}\e}}.
+      \]
+      It suffices to show that the right-hand side is bounded by a positive constant $c(\e)$. For a prime $p$, consider the nonnegative continuous function $f_{p,\e}(x)$ defined by
+      \[
+        f_{p,\e}(x) = \frac{x+1}{p^{x\e}},
+      \]
+      for $x \ge -1$. The derivative is given by
+      \[
+        f_{p,\e}'(x) = \frac{1-\log(p^{\e})(x+1)}{p^{x\e}},
+      \]
+      which is negative for $1 < \log(p^{\e})(x+1)$ or equivalently $\frac{1}{\log(p^{\e})}-1 < x$. Therefore $f_{p,\e}(x)$ is eventually decreasing and so attains a maximum positive value. In particular, it attains a maximal positive integral value for some $a_{p} \ge 0$ because $f_{p,\e}(-1) = 0$ and $f_{p,\e}(x)$ is positive for $x > -1$. Then the inequalities $f_{p,\e}(a_{p}-1) \le f_{p,\e}(a_{p})$ and $f_{p,\e}(a_{p}+1) \le f_{p,\e}(a_{p})$ are
+      \[
+        \frac{a_{p}}{p^{(a_{p}-1)\e}} \le \frac{a_{p}+1}{p^{a_{p}\e}} \quad \text{and} \quad \frac{a_{p}+2}{p^{(a_{p}+1)\e}} \le \frac{a_{p}+1}{p^{a_{p}\e}},
+      \]
+      respectively. Upon isolating $a_{p}$ to obtain an upper bound in the first inequality and a lower bound in the second inequality, we find that
+      \[
+        \frac{1}{p^{\e}-1}-1 \le a_{p} \le \frac{1}{p^{\e}-1}.
+      \]
+      Therefore we may take $a_{p} = \left\lfloor \frac{1}{p^{\e}-1}-1 \right\rfloor$. Moreover,
+      \[
+        \frac{\frac{1}{p^{\e}-1}}{p^{\e\left(\frac{1}{p^{\e}-1}-1\right)}} \le f_{p}(a_{p}) \le \frac{\frac{1}{p^{\e}-1}+1}{p^{\e\left(\frac{1}{p^{\e}-1}\right)}},
+      \]
+      and taking the logarithm yields
+      \[
+        \log\left(\frac{1}{p^{\e}-1}\right)-\log(p^{\e})\left(\frac{1}{p^{\e}-1}-1\right) \le \log(f_{p}(a_{p})) \le \log\left(\frac{1}{p^{\e}-1}+1\right)-\log(p^{\e})\left(\frac{1}{p^{\e}-1}\right),
+      \]
+      which can be further expressed as
+      \[
+        \log(p^{\e})-\log(p^{\e}-1)-\log(p^{\e})\left(\frac{1}{p^{\e}-1}\right) \le \log(f_{p}(a_{p})) \le \log(p^{\e})-\log(p^{\e}-1)-\log(p^{\e})\left(\frac{1}{p^{\e}-1}\right),
+      \]
+      Taking the limit as $p \to \infty$ and using L'H\^opital's rule for the $\log(p^{\e})\left(\frac{1}{p^{\e}-1}\right)$ terms, the left-hand and right-hand sides both tend to zero. Therefore $\log(f_{p}(a_{p})) \to 0$ and hence $f_{p}(a_{p}) \to 1$. This guarantees that the infinite product $\prod_{p}f_{p,\e}(a_{p})$ converges to some positive value $c(\e)$. But then
+      \[
+        \prod_{1 \le i \le r}\frac{r_{i}+1}{p_{i}^{r_{i}\e}} \le c(\e),
+      \]
+      from which the claim follows.
+    \end{proof}
   \section{Dirichlet Characters}
     The most important multiplicative periodic functions for an analytic number theorist are the Dirichlet characters. A \textbf{Dirichlet character}\index{Dirichlet character} $\chi$ modulo $m \ge 1$ is an $m$-periodic homomorphism $\chi:\Z \to \C$ such that $\chi(a) = 0$ if and only if $(a,m) > 1$. Note that any Dirichlet character is necessarily a completely multiplicative arithmetic function when restricted $\N$. We call $m$ the \textbf{modulus}\index{modulus} of $\chi$. Sometimes we will also write $\chi_{m}$ to denote a Dirichlet character modulo $m$ if we need to express the dependence upon the modulus. For any $m \ge 1$, there is always the \textbf{principal Dirichlet character}\index{principal Dirichlet character} modulo $m$ which we denote by $\chi_{m,0}$ (sometimes also seen as $\chi_{0,m}$ or the ever more confusing $\chi_{0}$) and is defined by
     \[
