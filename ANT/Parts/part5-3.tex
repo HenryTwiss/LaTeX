@@ -1,7 +1,7 @@
 \chapter{Moment Results}
   Obtaining any type of moment result is, generally speaking, a very difficult task requiring delicate analytic techniques. Since moments of $L$-functions are still a modern topic of research, there is not yet a universal theory to obtain such results. Even worse, currently methods almost only work when $k \le 4$. So, rather than trying to develop a general theory, we highlight some infamous moment results and their techniques.
   \section{The Second Moment of the Riemann Zeta Function}
-    We will prove the infamous result of Hardy and Littlewood (see \cite{hardy1916contributions}) about the second moment of the Riemann zeta function. This is one of the simplest moment results to obtain since the only real tool we will need is the approximate functional equation. It will also be useful to recall that
+    We will discuss some results concerning the second moment of the Riemann zeta function. In particular, will prove a series of increasingly stronger asymptotic results about the second moment of the Riemann zeta function. This approach, we hope, will highlight what additional analytic data is needed in order to refine the results which we obtain. Throughout, it will be useful to recall that
     \begin{equation}\label{equ:approximation_for_harmonic_sums}
       \sum_{n \ll N}\frac{1}{n} = \log(N)+O(1),
     \end{equation}
@@ -9,9 +9,21 @@
     \[
       \sum_{n \le N}\frac{1}{n} = \log(N)+\g_{N},
     \]
-    with $\g_{N} \to \g$, where $\g$ is the Euler-Mascheroni constant, as $N \to \infty$. Precisely, we prove the following:
+    with $\g_{N} \to \g$, where $\g$ is the Euler-Mascheroni constant, as $N \to \infty$. Our first result only uses partial summation \todo{xxx}
 
-    \begin{theorem}\label{thm:second_moment_of_Riemann_zeta}
+    \begin{theorem}\label{thm:second_moment_of_Riemann_zeta_big_O}
+      For $T > 2$,
+      \[
+        M_{2}(T,\z) = O\left(T\log(T)\right).
+      \]
+    \end{theorem}
+    \begin{proof}
+      \todo{xxx}
+    \end{proof}
+    
+    Our second result in the most well-known as it is the infamous result of Hardy and Littlewood (see \cite{hardy1916contributions}). Precisely, we prove the following:
+
+    \begin{theorem}\label{thm:second_moment_of_Riemann_zeta_asymptotic_equivalence}
       For $T > 2$,
       \[
         M_{2}(T,\z) \sim T\log(T).
@@ -122,7 +134,7 @@
       which implies the desired asymptotic.
     \end{proof}
     
-    A few comments about the proof of \cref{thm:second_moment_of_Riemann_zeta} are in order. The main analytic data being fed into \cref{thm:second_moment_of_Riemann_zeta} is the approximate functional equation for the Riemann zeta function (apart from some general asymptotics such as \cref{equ:approximation_for_harmonic_sums} and an application of the Cauchy-Schwarz inequality). The main term from the resulting asymptotic, namely \cref{equ:second_moment_zeta_1}, in $M_{2}(T,\z)$ is the $T\log(T)$ which comes from the diagonal contribution in
+    A few comments about the proof of \cref{thm:second_moment_of_Riemann_zeta_asymptotic_equivalence} are in order. The main analytic data being fed into \cref{thm:second_moment_of_Riemann_zeta_asymptotic_equivalence} is the approximate functional equation for the Riemann zeta function (apart from some general asymptotics such as \cref{equ:approximation_for_harmonic_sums} and an application of the Cauchy-Schwarz inequality). The main term from the resulting asymptotic, namely \cref{equ:second_moment_zeta_1}, in $M_{2}(T,\z)$ is the $T\log(T)$ which comes from the diagonal contribution in
     \[
       \left|\sum_{n \ll \frac{t}{\sqrt{\log(t)}}}\frac{1}{n^{\frac{1}{2}+it}}\right|^{2} = \int_{2}^{T}\sum_{n,m \ll \frac{t}{\sqrt{\log(t)}}}\frac{1}{n^{\frac{1}{2}+it}m^{\frac{1}{2}-it}}\,dt,
     \]

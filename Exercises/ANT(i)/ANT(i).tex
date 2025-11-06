@@ -1,0 +1,138 @@
+\documentclass[12pt,oneside]{article}
+\usepackage{import}
+\input{preamble}
+
+%=================%
+%  Title & Index  %
+%=================%
+\title{ANT i}
+\author{Henry Twiss}
+\date{2025}
+\makeindex
+
+\begin{document}
+  You will do a series of exercises on Mellin transforms, the Riemann zeta function, and Poisson summation. The exercises build on each other so try to do them in order. \\
+
+  If $f(x)$ is a continuous function on $\R_{+}$ then the \textbf{Mellin transform}\index{Mellin transform} $(\mc{M}f)(s)$ of $f(x)$ is defined by
+  \[
+    (\mc{M}f)(s) = \int_{(0,\infty)}f(x)x^{s}\,\frac{dx}{x},
+  \]
+  for $s \in \C$. However, this integral is not guaranteed to converge unless specific conditions upon $f(x)$ are imposed. For example, if $f(x)$ exhibits rapid decay and remains bounded as $x \to 0$ then the integral is locally absolutely uniformly convergent for $\s > 0$. The \textbf{gamma function} $\G(s)$ is defined to be the Mellin transform of $e^{-x}$.
+  \begin{enumerate}[label*=(\roman*)]
+    \item Write down the definition of the gamma function. Show $\G(1) = 1$ and that $\G(s+1) = s\G(s)$. Use these facts to prove $\G(n) = (n-1)!$.
+    \item Consider the function
+    \[
+      \w(z) = \sum_{n \ge 1}e^{\pi in^{2}z},
+    \]
+    which is defined for $z \in \H$. Use the Weierstrass $M$-test to show that $\w(z)$ is locally absolutely uniformly convergent for $z \in \H$.
+    \item Compute the following Mellin transform:
+    \[
+      \int_{0}^{\infty}\w(iy)y^{\frac{s}{2}}\,\frac{dy}{y},
+    \]
+    using the fact that you may freely interchange sums and integrals since $\w(z)$ is locally absolutely uniformly convergent (Fubini-Tonelli theorem). Deduce an integral representation for $\z(s)$.
+    \item Using the integral representation derived in part (iii) and the identity
+    \begin{equation}\label{equ:1}
+      \w\left(\frac{i}{y}\right) = \sqrt{y}\w(iy)+\frac{\sqrt{y}}{2}-\frac{1}{2},
+    \end{equation}
+    derive the following integral representation:
+    \[
+        \z(s) = \frac{\pi^{\frac{s}{2}}}{\G\left(\frac{s}{2}\right)}\left[-\frac{1}{s(1-s)}+\int_{1}^{\infty}\w(iy)y^{\frac{1-s}{2}}\,\frac{dy}{y}+\int_{1}^{\infty}\w(iy)y^{\frac{s}{2}}\,\frac{dy}{y}\right].
+   \]
+   Deduce that $\z(s)$ admits analytic continuation to $\C$.
+   \item Using part (iv), derive the following functional equation:
+   \[
+      \frac{\G\left(\frac{s}{2}\right)}{\pi^{\frac{s}{2}}}\z(s) = \frac{\G\left(\frac{1-s}{2}\right)}{\pi^{\frac{1-s}{2}}}\z(1-s).
+    \]
+    Compute $\Res_{s = 1}\z(s)$ using the functional equation and the fact that
+    \[
+      \Res_{s = 1}\z(s) = \lim_{s \to 1}(1-s)\z(s).
+    \]
+  \end{enumerate}
+
+We now introduce Fourier transforms and Fourier coefficients. Suppose $f(x)$ is absolutely integrable on $\R$. The \textbf{Fourier transform}\index{Fourier transform} $(\mc{F}f)(\xi)$ of $f(x)$ is defined by
+\[
+  (\mc{F}f)(\xi) = \int_{\R}f(x)e^{-2\pi i\xi x}\,dx,
+\]
+for $\xi \in \R$. This integral is absolutely convergent precisely because $f(x)$ is absolutely integrable on $\R$. The Fourier transform is intimately related to periodic functions. If $f(x)$ is $1$-periodic and integrable on $[0,1]$ then we define the $n$-th \textbf{Fourier coefficient}\index{Fourier coefficient} $\hat{f}(n)$ of $f(x)$ by
+\[
+  \hat{f}(n) = \int_{0}^{1}f(x)e^{-2\pi inx}\,dx.
+\]
+The \textbf{Fourier series}\index{Fourier series} of $f(x)$ is defined by the series
+\[
+  \sum_{n \in \Z^{n}}\hat{f}(n)e^{2\pi inx}.
+\]
+There is the question of whether the Fourier series of $f(x)$ converges at all and if so does it even converge to $f(x)$ itself. Under reasonable conditions this is possible:
+
+\begin{proposition}
+  If $f(x)$ is smooth and $1$-periodic then it converges uniformly to its Fourier series.
+\end{proposition}
+
+The link between the Fourier transform and Fourier series is given by the \textbf{Poisson summation formula}\index{Poisson summation formula}:
+
+\begin{theorem*}[Poisson summation formula]
+  Suppose $f(x)$ is absolutely integrable on $\R$, and the function
+  \[
+    F(x) = \sum_{n \in \Z}f(x+n),
+  \]
+  is locally absolutely uniformly convergent and smooth. Then
+  \[
+    \sum_{n \in \Z}f(x+n) = \sum_{t \in \Z}(\mc{F}f)(t)e^{2\pi itx},
+  \]
+  and
+  \[
+    \sum_{n \in \Z}f(n) = \sum_{t \in \Z}(\mc{F}f)(t).
+  \]
+\end{theorem*}
+
+\begin{enumerate}[label*=(\roman*)]
+  \item Prove the Poisson summation formula. (\textit{hint}: can you compute the Fourier coefficients of $F(x)$? What is it's Fourier series?)
+  \item There are two ways of building a periodic function from an absolutely integrable function on $\R$. What does the Poisson summation formula say about these periodic functions?
+\end{enumerate}
+
+Now we develop some basic properties of Fourier transforms. In practical settings, we need a class of functions $f(x)$ for which the assumptions of the Poisson summation formula hold. We say that $f(x)$ is of \textbf{Schwarz class}\index{Schwarz class} if $f \in C^{\infty}(\R)$ and $f(x)$ along with all of its partial derivatives have \textbf{rapid decay}. This means $f(x) = o(|x|^{-n})$ for all $n \ge 0$. If $f(x)$ is of Schwarz class, the rapid decay implies that $f(x)$ and all of its derivatives are absolutely integrable over $\R$. Moreover, this also implies that $F(x) = \sum_{n \in \Z}f(x+n)$ and all of its derivatives are locally absolutely uniformly convergent by the Weierstrass $M$-test. The uniform limit theorem then implies $F(x)$ is smooth and thus the conditions of the Poisson summation formula are satisfied. We will now derive some properties of the Fourier transform including a case specific to Schwarz class functions: \\
+
+Let $f(x)$ and $g(x)$ be absolutely integrable on $\R$. Prove the following:
+\begin{enumerate}[label*=(\roman*)]
+  \item For any $\a,\b \in \R$, we have
+  \[
+    (\mc{F}(\a f+\b g))(\xi) = \a(\mc{F}f)(\xi)+\b(\mc{F}g)(\xi).
+  \]
+  \item If $g(x) = f(x+\a)$ for any $\a \in \R$ then
+  \[
+    (\mc{F}g)(\xi) = e^{2\pi i\<\a,\xi\>}(\mc{F}f)(\xi).
+  \]
+  \item If $g(x) = f(\a x)$ for any $\a \in \R^{\ast}$ then
+  \[
+    (\mc{F}g)(\xi) = \frac{1}{|\a|}(\mc{F}f)\left(\frac{\xi}{\a}\right).
+  \]
+  \item If $f(x)$ is of Schwarz class and $g(x) = \frac{\del}{\del x}^{k}f(x)$ for some $k \ge 0$ then
+  \[
+    (\mc{F}g)(\xi) = (2\pi i\xi)^{k}(\mc{F}f).
+  \]
+  \item Show that
+    \[
+      (\mc{F}f)(\z) = \frac{e^{-\frac{\pi\z^{2}}{2\a}}}{\sqrt{2\a}}.
+    \]
+    In particular, what function is its own Fourier transform?
+\end{enumerate}
+
+You will now derive \cref{equ:1} using the theory of Fourier transforms and Poisson summation. Consider the function
+\[
+  \vt(z) = \sum_{n \in \Z}e^{2\pi in^{2}z},
+\]
+defined for $\z \in \H$. We will use this function to prove \cref{equ:1}:
+
+\begin{enumerate}[label*=(\roman*)]
+  \item Apply the Poisson summation formula to $\vt(z)$ to prove
+  \[
+    \vt(z) = \frac{1}{\sqrt{-2iz}}\vt\left(-\frac{1}{4z}\right).
+  \]
+  You may use the identity theorem to assume $z = iy$ for $y > 0$.
+  \item Show that 
+  \[
+    \w(z) = \frac{\vt\left(\frac{z}{2}\right)-1}{2}.
+  \]
+  \item Deduce \cref{equ:1}.
+\end{enumerate}
+
+\end{document}
