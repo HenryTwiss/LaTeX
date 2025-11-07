@@ -11,7 +11,7 @@
 \makeindex
 
 \begin{document}
-  \section{\todo{The Kuznetsov Trace Formula}}
+  \section{The Kuznetsov Trace Formula}
     The Kuznetsov trace formula is an analog of the Petersson trace formula for weight zero Maass forms. From \cref{thm:the_full_spectral_resolution}, $\mc{L}(N,\chi)$ admits an orthonormal basis of Maass forms for the point spectrum (these forms are generally not Hecke-Maass eigenforms because they need not be Hecke normalized or even cuspidal in the case of the discrete spectrum). However, by \cref{prop:residual_forms_weight_zero} and \cref{thm:newforms_characterization_Maass} we make take this orthonormal basis to consist of Hecke-Maass eigenforms and the constant function. Denote this basis by $\{u_{j}\}_{j \ge 0}$ with $u_{0}(z) = 1$ and let $u_{j}$ be of type $\nu_{j}$ for $j \ge 1$. In particular, $\{u_{j}\}_{j \ge 1}$ is an orthonormal basis of Hecke-Maass eigenforms and each such form admits a Fourier series at the $\mf{a}$ cusp given by
     \[
       (u_{j}|\s_{\mf{a}})(z) = \sum_{n \neq 0}a_{j,\mf{a}}(n)\sqrt{y}K_{\nu_{j}}(2\pi ny)e^{2\pi inx}.
@@ -228,6 +228,58 @@
         d_{L/K}(\l\a_{1},\ldots,\l\a_{n}) = \Norm_{L/K}(\l)^{2}d_{L/K}(\a_{1},\ldots,\a_{n}),
       \]
       by \cref{equ:discriminant_base_change} and that base change matrix from $\a_{1},\ldots,\a_{n}$ to $\l\a_{1},\ldots,\l\a_{n}$ is the multiplication by $\l$ map. \todo{xxx}
+    \end{proof}
+  \section{Moments}
+    Our first result only uses partial summation. We first prove a useful lemma:
+
+    \begin{lemma}\label{lem:weak_approximate_functional_equation_Riemann_zeta}
+      For $x \ge 1$ and $\s > 0$, we have
+      \[
+        \z(s) = \sum_{n < x}\frac{1}{n^{s}}-\frac{s}{(1-s)x^{s-1}}-s\int_{x}^{\infty}\frac{\{u\}}{u^{s+1}}\,du.
+      \]
+    \end{lemma}
+    \begin{proof}
+      First suppose $\s > 1$ and consider
+      \[
+        \z(s)-\sum_{n < x}\frac{1}{n^{s}} = \sum_{n \ge x}\frac{1}{n^{s}}.
+      \]
+      Applying Abel's summation formula (see \cref{cor:Abels_summation_formula_limit_version}) to the right-hand side gives
+      \[
+        \z(s)-\sum_{n < x}\frac{1}{n^{s}} = \lim_{Y \to \infty}A(Y)Y^{-s}+s\int_{x}^{\infty}A(u)u^{-(s+1)}\,du.
+      \]
+      But as $A(x) = \lfloor x \rfloor$ and $\s > 1$, we find that $A(Y)Y^{-s} \to 0$ as $Y \to \infty$. In particular,
+      \[
+        \z(s)-\sum_{n < x}\frac{1}{n^{s}} = s\int_{x}^{\infty}\frac{\lfloor u \rfloor}{u^{s+1}}\,du.
+      \]
+      Isolating $\z(s)$ and noting that $\lfloor u \rfloor = u-\{u\}$ gives
+      \[
+        \z(s) = \sum_{n < x}\frac{1}{n^{s}}+s\int_{x}^{\infty}\frac{u-\{u\}}{u^{s+1}}\,du.
+      \]
+      But since
+      \[
+        s\int_{x}^{\infty}\frac{u}{u^{s+1}}\,du = s\int_{x}^{\infty}\frac{1}{u^{s}}\,du = -\frac{s}{(1-s)x^{s-1}},
+      \]
+      we obtain
+      \[
+        \z(s) = \sum_{n < x}\frac{1}{n^{s}}-\frac{s}{(1-s)x^{s-1}}-s\int_{x}^{\infty}\frac{\{u\}}{u^{s+1}}\,du,
+      \]
+      for $\s > 1$. Since this is the desired formula, it remains to show that the right-hand side is meromorphic for $\s > 0$. Indeed, the first two terms are, with the second term having a simple pole at $s = 1$, so it suffices to show that the integral is. To do so we will show that the integral is locally absolutely uniformly convergent in this region. Indeed, let $K$ is a compact subset in this region and set $\a = \min_{s \in K}(\s)$ and $\b = \max_{s \in K}(|s|)$. Then we have to show that the integral is absolutely uniformly convergent on $K$. As $0 < \{u\} < 1$, we have
+      \[
+        s\int_{x}^{\infty}\frac{\{u\}}{u^{s+1}}\,du \ll \b\int_{x}^{\infty}\frac{1}{u^{\a+1}}\,du = \frac{\b}{x^{\a}} \ll_{\a,\b} 1,
+      \]
+      as desired. Therefore the formula holds for $\s > 0$.
+    \end{proof}
+
+    We can now prove our first result concerning the second moment of the Riemann zeta function:
+
+    \begin{theorem}\label{thm:second_moment_of_Riemann_zeta_big_O}
+      For $T > 2$,
+      \[
+        M_{2}(T,\z) = O\left(T\log(T)\right).
+      \]
+    \end{theorem}
+    \begin{proof}
+      \todo{xxx}
     \end{proof}
   \section{Misc.}
     \begin{itemize}

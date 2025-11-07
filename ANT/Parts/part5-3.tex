@@ -1,7 +1,7 @@
 \chapter{Moment Results}
   Obtaining any type of moment result is, generally speaking, a very difficult task requiring delicate analytic techniques. Since moments of $L$-functions are still a modern topic of research, there is not yet a universal theory to obtain such results. Even worse, currently methods almost only work when $k \le 4$. So, rather than trying to develop a general theory, we highlight some infamous moment results and their techniques.
   \section{The Second Moment of the Riemann Zeta Function}
-    We will discuss some results concerning the second moment of the Riemann zeta function. In particular, will prove a series of increasingly stronger asymptotic results about the second moment of the Riemann zeta function. This approach, we hope, will highlight what additional analytic data is needed in order to refine the results which we obtain. Throughout, it will be useful to recall that
+    We will discuss the second moment of the Riemann zeta function. In particular, will prove the infamous result of Hardy and Littlewood (see \cite{hardy1916contributions}). Throughout, it will be useful to recall that
     \begin{equation}\label{equ:approximation_for_harmonic_sums}
       \sum_{n \ll N}\frac{1}{n} = \log(N)+O(1),
     \end{equation}
@@ -9,26 +9,7 @@
     \[
       \sum_{n \le N}\frac{1}{n} = \log(N)+\g_{N},
     \]
-    with $\g_{N} \to \g$, where $\g$ is the Euler-Mascheroni constant, as $N \to \infty$. Our first result only uses partial summation
-
-    \begin{theorem}\label{thm:second_moment_of_Riemann_zeta_big_O}
-      For $T > 2$,
-      \[
-        M_{2}(T,\z) = O\left(T\log(T)\right).
-      \]
-    \end{theorem}
-    \begin{proof}
-      Let $x \ge 1$ and consider
-      \[
-        \z(s)-\sum_{n < x}\frac{1}{n^{s}} = \sum_{n \ge x}\frac{1}{n^{s}}.
-      \]
-      Applying Abel's summation formula (see \cref{cor:Abels_summation_formula_limit_version}) to the right-hand side gives
-      \[
-        \z(s)-\sum_{n < x}\frac{1}{n^{s}} = \todo{xxx}
-      \]
-    \end{proof}
-    
-    Our second result in the most well-known as it is the infamous result of Hardy and Littlewood (see \cite{hardy1916contributions}). Precisely, we prove the following:
+    with $\g_{N} \to \g$, where $\g$ is the Euler-Mascheroni constant, as $N \to \infty$. Precisely, we prove the following:
 
     \begin{theorem}\label{thm:second_moment_of_Riemann_zeta_asymptotic_equivalence}
       For $T > 2$,
@@ -51,17 +32,17 @@
         \sum_{n \ll \sqrt{\log(t)}}\frac{1}{\sqrt{n}} = O\left(\int_{1}^{\sqrt{\log(t)}}\frac{1}{\sqrt{x}}\,dx\right) = O\left(\log^{\frac{1}{4}}(t)\right),
       \]
       we arrive at
-      \begin{equation}\label{equ:second_moment_zeta_1}
+      \begin{equation}\label{equ:second_moment_zeta_asymptotic_equivalence_1}
         \z\left(\frac{1}{2}+it\right) = \sum_{n \ll \frac{t}{\sqrt{\log(t)}}}\frac{1}{n^{\frac{1}{2}+it}}+O\left(\log^{\frac{1}{4}}(t)\right),
       \end{equation}
-      since $1 = O(\log^{\frac{1}{4}}(t))$ for $t \ge 2$. Applying \cref{equ:second_moment_zeta_1} to the definition of $M_{2}(T,\z)$ and recalling that $\z\left(\frac{1}{2}+it\right)$ is absolutely bounded for $0 \le t \le 2$, yields
-      \begin{equation}\label{equ:second_moment_zeta_2}
+      since $1 = O(\log^{\frac{1}{4}}(t))$ for $t \ge 2$. Applying \cref{equ:second_moment_zeta_asymptotic_equivalence_1} to the definition of $M_{2}(T,\z)$ and recalling that $\z\left(\frac{1}{2}+it\right)$ is absolutely bounded for $0 \le t \le 2$, yields
+      \begin{equation}\label{equ:second_moment_zeta_asymptotic_equivalence_2}
         \begin{aligned}
           M_{2}(T,\z) &= \int_{2}^{T}\left|\sum_{n \ll \frac{t}{\sqrt{\log(t)}}}\frac{1}{n^{\frac{1}{2}+it}}\right|^{2}\,dt \\
           &+ O\left(\int_{2}^{T}\left|\sum_{n \ll \frac{t}{\sqrt{\log(t)}}}\frac{1}{n^{\frac{1}{2}+it}}\right|\log^{\frac{1}{4}}(t)\,dt\right)+O\left(\int_{2}^{T}\log^{\frac{1}{2}}(t)\,dt\right).
         \end{aligned}
       \end{equation}
-      We will now simplify \cref{equ:second_moment_zeta_2}. For the second term, the Cauchy-Schwarz inequality gives
+      We will now simplify \cref{equ:second_moment_zeta_asymptotic_equivalence_2}. For the second term, the Cauchy-Schwarz inequality gives
       \begin{align*}
         \int_{2}^{T}\left|\sum_{n \ll \frac{t}{\sqrt{\log(t)}}}\frac{1}{n^{\frac{1}{2}+it}}\right|\log^{\frac{1}{4}}(t)\,dt &= O\left(\left(\int_{2}^{T}\left|\sum_{n \ll \frac{t}{\sqrt{\log(t)}}}\frac{1}{n^{\frac{1}{2}+it}}\right|^{2}\int_{2}^{T}\log^{\frac{1}{2}}(t)\,dt\right)^{\frac{1}{2}}\right) \\
         &= O\left(\left(\int_{2}^{T}\left|\sum_{n \ll \frac{t}{\sqrt{\log(t)}}}\frac{1}{n^{\frac{1}{2}+it}}\right|^{2}\,dt\right)^{\frac{1}{2}}\sqrt{T}\log^{\frac{1}{4}}(T)\right),
@@ -70,15 +51,15 @@
       \[
         \int_{2}^{T}\log^{\frac{1}{2}}(t)\,dt = T\log^{\frac{1}{2}}(T)+O\left(\int_{2}^{T}\frac{1}{\log^{\frac{1}{2}}(t)}\,dt\right) = T\log^{\frac{1}{2}}(T)+O(T) = O(T\log^{\frac{1}{2}}(T)),
       \]
-      which follows from an application of integration by parts. In fact, this estimate shows that the integral is also $o(T\log(T))$. Applying this latter estimate to third term as well, \cref{equ:second_moment_zeta_2} becomes
-      \begin{equation}\label{equ:second_moment_zeta_3}
+      which follows from an application of integration by parts. In fact, this estimate shows that the integral is also $o(T\log(T))$. Applying this latter estimate to third term as well, \cref{equ:second_moment_zeta_asymptotic_equivalence_2} becomes
+      \begin{equation}\label{equ:second_moment_zeta_asymptotic_equivalence_3}
         \begin{aligned}
           M_{2}(T,\z) &= \int_{2}^{T}\left|\sum_{n \ll \frac{t}{\sqrt{\log(t)}}}\frac{1}{n^{\frac{1}{2}+it}}\right|^{2}\,dt \\
           &+ O\left(\left(\int_{2}^{T}\left|\sum_{n \ll \frac{t}{\sqrt{\log(t)}}}\frac{1}{n^{\frac{1}{2}+it}}\right|^{2}\,dt\right)^{\frac{1}{2}}\sqrt{T}\log^{\frac{1}{4}}(T)\right)+o(T\log(T)).
         \end{aligned}
       \end{equation}
       Therefore, it suffices to show that the remaining integral is asymptotically equivalent to $T\log(T)$. We compute
-      \begin{equation}\label{equ:second_moment_zeta_4}
+      \begin{equation}\label{equ:second_moment_zeta_asymptotic_equivalence_4}
         \begin{aligned}
           \left|\sum_{n \ll \frac{t}{\sqrt{\log(t)}}}\frac{1}{n^{\frac{1}{2}+it}}\right|^{2} &= \int_{2}^{T}\sum_{n,m \ll \frac{t}{\sqrt{\log(t)}}}\frac{1}{n^{\frac{1}{2}+it}m^{\frac{1}{2}-it}}\,dt \\
           &= \sum_{n,m \ll \frac{T}{\sqrt{\log(T)}}}\int_{\max(m,n,2)}^{T}\frac{1}{n^{\frac{1}{2}+it}m^{\frac{1}{2}-it}}\,dt && \text{FTT} \\
@@ -86,19 +67,19 @@
           &= T\sum_{n \ll \frac{T}{\sqrt{\log(T)}}}\frac{1}{n}+O\left(\sum_{n \ll \frac{T}{\sqrt{\log(T)}}}1\right)+\left(\sum_{\substack{n,m \ll \frac{T}{\sqrt{\log(T)}} \\ n \neq m}}\frac{1}{\sqrt{nm}\log\left(\frac{m}{n}\right)}\right),
         \end{aligned}
       \end{equation}
-      where in the second to last line we have separated the terms for which $n = m$ or not. We now estimate all of the remaining terms in \cref{equ:second_moment_zeta_4}. For the first term, by \cref{equ:approximation_for_harmonic_sums} we have
-      \begin{equation}\label{equ:second_moment_zeta_5}
+      where in the second to last line we have separated the terms for which $n = m$ or not. We now estimate all of the remaining terms in \cref{equ:second_moment_zeta_asymptotic_equivalence_4}. For the first term, by \cref{equ:approximation_for_harmonic_sums} we have
+      \begin{equation}\label{equ:second_moment_zeta_asymptotic_equivalence_5}
         T\sum_{n \ll \frac{T}{\sqrt{\log(T)}}}\frac{1}{n} = T\log\left(\frac{T}{\sqrt{\log(T)}}\right)+O(T) = T\log(T)+o(T\log(T)).
       \end{equation}
       The second term is easier since
-      \begin{equation}\label{equ:second_moment_zeta_6}
+      \begin{equation}\label{equ:second_moment_zeta_asymptotic_equivalence_6}
         \sum_{n \ll \frac{T}{\sqrt{\log(T)}}}1 = O\left(\frac{T}{\sqrt{\log(T)}}\right) = O(T) = o(T\log(T)).
       \end{equation}
       For the last term, separate the sum into the terms for which $n < \frac{m}{2}$ or not, so that
-      \begin{equation}\label{equ:second_moment_zeta_7}
+      \begin{equation}\label{equ:second_moment_zeta_asymptotic_equivalence_7}
         \sum_{\substack{n,m \ll \frac{T}{\sqrt{\log(T)}} \\ n \neq m}}\frac{1}{\sqrt{nm}\log\left(\frac{m}{n}\right)} = \sum_{\substack{n,m \ll \frac{T}{\sqrt{\log(T)}} \\ n < \frac{m}{2}}}\frac{1}{\sqrt{nm}\log\left(\frac{m}{n}\right)}+\sum_{\substack{n,m \ll \frac{T}{\sqrt{\log(T)}} \\ n \ge \frac{m}{2} \\ n \neq m}}\frac{1}{\sqrt{nm}\log\left(\frac{m}{n}\right)}.
       \end{equation}
-      In the first sum on the right-hand side of \cref{equ:second_moment_zeta_7} we have $\log\left(\frac{m}{n}\right) \ge \log\left(2\right)$ so that $\log\left(\frac{m}{n}\right)$ is bounded from below. Hence
+      In the first sum on the right-hand side of \cref{equ:second_moment_zeta_asymptotic_equivalence_7} we have $\log\left(\frac{m}{n}\right) \ge \log\left(2\right)$ so that $\log\left(\frac{m}{n}\right)$ is bounded from below. Hence
       \[
         \sum_{\substack{n,m \ll \frac{T}{\sqrt{\log(T)}} \\ n < \frac{m}{2}}}\frac{1}{\sqrt{nm}\log\left(\frac{m}{n}\right)} = O\left(\sum_{\substack{n,m \ll \frac{T}{\sqrt{\log(T)}} \\ n < \frac{m}{2}}}\frac{1}{\sqrt{nm}}\right) = O\left(\left(\sum_{n \ll \frac{T}{\sqrt{\log(T)}}}\frac{1}{\sqrt{n}}\right)^{2}\right).
       \]
@@ -107,7 +88,7 @@
         \sum_{n \ll \frac{T}{\sqrt{\log(T)}}}\frac{1}{\sqrt{n}} = O\left(\int_{1}^{\frac{T}{\sqrt{\log(T)}}}\frac{1}{\sqrt{x}}\,dx\right) = O\left(\frac{\sqrt{T}}{\log^{\frac{1}{4}}(T)}\right),
       \]
       we find that
-      \begin{equation}\label{equ:second_moment_zeta_8}
+      \begin{equation}\label{equ:second_moment_zeta_asymptotic_equivalence_8}
         \sum_{\substack{n,m \ll \frac{T}{\sqrt{\log(T)}} \\ n < \frac{m}{2}}}\frac{1}{\sqrt{nm}\log\left(\frac{m}{n}\right)} = O\left(\frac{T}{\log^{\frac{1}{2}}(T)}\right) = o(T\log(T)).
       \end{equation}
       For the second sum, write $n = m-r$ where $1 \le r \le \frac{m}{2}$ so that $\log\left(\frac{m}{n}\right) = \log\left(\frac{m}{m-r}\right) = -\log(1-\frac{r}{m}) \ge \frac{r}{m}$ where the inequality follows from the Taylor series of the logarithm. Whence
@@ -123,30 +104,30 @@
         \sum_{m \ll \frac{T}{\sqrt{\log(T)}}}\log(m)+O(1) = \frac{T}{\sqrt{\log(T)}}\log\left(\frac{T}{\sqrt{\log(T)}}\right)+O\left(\frac{T}{\sqrt{\log(T)}}\right) = o(T\log(T)),
       \]
       gives
-      \begin{equation}\label{equ:second_moment_zeta_9}
+      \begin{equation}\label{equ:second_moment_zeta_asymptotic_equivalence_9}
         \sum_{\substack{n,m \ll \frac{T}{\sqrt{\log(T)}} \\ n \ge \frac{m}{2} \\ n \neq m}}\frac{1}{\sqrt{nm}\log\left(\frac{m}{n}\right)} = T\log(T)+o(T\log(T)).
       \end{equation}
-      Substituting \cref{equ:second_moment_zeta_8,equ:second_moment_zeta_9} into \cref{equ:second_moment_zeta_7} yields
-      \begin{equation}\label{equ:second_moment_zeta_10}
+      Substituting \cref{equ:second_moment_zeta_asymptotic_equivalence_8,equ:second_moment_zeta_asymptotic_equivalence_9} into \cref{equ:second_moment_zeta_asymptotic_equivalence_7} yields
+      \begin{equation}\label{equ:second_moment_zeta_asymptotic_equivalence_10}
         \sum_{\substack{n,m \ll \frac{T}{\sqrt{\log(T)}} \\ n \neq m}}\frac{1}{\sqrt{nm}\log\left(\frac{m}{n}\right)} = T\log(T)+o(T\log(T)).
       \end{equation}
-      Then \cref{equ:second_moment_zeta_5,equ:second_moment_zeta_6,equ:second_moment_zeta_10} together with \cref{equ:second_moment_zeta_4} yields
-      \begin{equation}\label{equ:second_moment_zeta_11}
+      Then \cref{equ:second_moment_zeta_asymptotic_equivalence_5,equ:second_moment_zeta_asymptotic_equivalence_6,equ:second_moment_zeta_asymptotic_equivalence_10} together with \cref{equ:second_moment_zeta_asymptotic_equivalence_4} yields
+      \begin{equation}\label{equ:second_moment_zeta_asymptotic_equivalence_11}
         \left|\sum_{n \ll \frac{t}{\sqrt{\log(t)}}}\frac{1}{n^{\frac{1}{2}+it}}\right|^{2} = T\log(T)+o(T\log(T)).
       \end{equation}
-      Applying \cref{equ:second_moment_zeta_11} to \cref{equ:second_moment_zeta_3}, we at last obtain
+      Applying \cref{equ:second_moment_zeta_asymptotic_equivalence_11} to \cref{equ:second_moment_zeta_asymptotic_equivalence_3}, we at last obtain
       \[
         M_{2}(T,\z) = T\log(T)+O(T\log^{\frac{3}{4}}(T))+o(T\log(T)) = T\log(T)+o(T\log(T)),
       \]
       which implies the desired asymptotic.
     \end{proof}
     
-    A few comments about the proof of \cref{thm:second_moment_of_Riemann_zeta_asymptotic_equivalence} are in order. The main analytic data being fed into \cref{thm:second_moment_of_Riemann_zeta_asymptotic_equivalence} is the approximate functional equation for the Riemann zeta function (apart from some general asymptotics such as \cref{equ:approximation_for_harmonic_sums} and an application of the Cauchy-Schwarz inequality). The main term from the resulting asymptotic, namely \cref{equ:second_moment_zeta_1}, in $M_{2}(T,\z)$ is the $T\log(T)$ which comes from the diagonal contribution in
+    A few comments about the proof of \cref{thm:second_moment_of_Riemann_zeta_asymptotic_equivalence} are in order. The main analytic data being fed into \cref{thm:second_moment_of_Riemann_zeta_asymptotic_equivalence} is the approximate functional equation for the Riemann zeta function (apart from some general asymptotics such as \cref{equ:approximation_for_harmonic_sums} and an application of the Cauchy-Schwarz inequality). The main term from the resulting asymptotic, namely \cref{equ:second_moment_zeta_asymptotic_equivalence_1}, in $M_{2}(T,\z)$ is the $T\log(T)$ which comes from the diagonal contribution in
     \[
       \left|\sum_{n \ll \frac{t}{\sqrt{\log(t)}}}\frac{1}{n^{\frac{1}{2}+it}}\right|^{2} = \int_{2}^{T}\sum_{n,m \ll \frac{t}{\sqrt{\log(t)}}}\frac{1}{n^{\frac{1}{2}+it}m^{\frac{1}{2}-it}}\,dt,
     \]
-    occurring when $n = m$, as computed in \cref{equ:second_moment_zeta_4}. This sum is
+    occurring when $n = m$, as computed in \cref{equ:second_moment_zeta_asymptotic_equivalence_4}. This sum is
     \[
       T\sum_{n \ll \frac{T}{\sqrt{\log(T)}}}\frac{1}{n},
     \]
-    and it is estimated in \cref{equ:second_moment_zeta_5}. This is the longest sum coming from \cref{equ:second_moment_zeta_2} of highest order (because of the factor of $T$).
+    and it is estimated in \cref{equ:second_moment_zeta_asymptotic_equivalence_5}. This is the longest sum coming from \cref{equ:second_moment_zeta_asymptotic_equivalence_2} of highest order (because of the factor of $T$).
