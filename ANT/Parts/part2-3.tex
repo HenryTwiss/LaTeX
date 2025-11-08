@@ -504,23 +504,23 @@
     \begin{proof}
       Recall that the Dirichlet $L$-series $L(s,\chi)$ converges for $\s > 0$ and thus for $0 \le 1-\s \le \frac{1}{\log(m)}$. As $L(s,\chi)$ admits analytic continuation to $\C$, it is holomorphic for $0 \le 1-\s \le \frac{1}{\log(m)}$ and so its $k$-th derivative is given by
       \[
-        L^{(k)}(\s,\chi) = \sum_{n \ge 1}\frac{\chi(n)\log^{k}(n)}{n^{\s}} = \sum_{n < m}\frac{\chi(n)\log^{k}(n)}{n^{\s}}+\sum_{n \ge m}\frac{\chi(n)\log^{k}(n)}{n^{\s}}.
+        L^{(k)}(\s,\chi) = \sum_{n \ge 1}\frac{\chi(n)\log^{k}(n)}{n^{\s}} = \sum_{n \le m}\frac{\chi(n)\log^{k}(n)}{n^{\s}}+\sum_{n > m}\frac{\chi(n)\log^{k}(n)}{n^{\s}}.
       \]
-      We will show that the last two sums are both $O(\log^{k+1}(m))$. For the first sum, if $n < m$, we have
+      We will show that the last two sums are both $O(\log^{k+1}(m))$. For the first sum, if $n \le m$, we have
       \[
         \left|\frac{\chi(n)\log^{k}(n)}{n^{\s}}\right| \le \frac{1}{n^{\s}}\log^{k}(n) = \frac{n^{1-\s}}{n}\log^{k}(n) < \frac{m^{1-\s}}{n}\log^{k}(n) < \frac{e}{n}\log^{k}(m),
       \]
       where the last inequality follows because $1-\s \le \frac{1}{\log(m)}$. Then
       \[
-        \left|\sum_{n \le m}\frac{\chi(n)\log^{k}(n)}{n^{\s}}\right| < e\log^{k}(m)\sum_{n < m}\frac{1}{n} < e\log^{k}(m)\int_{1}^{m}\frac{1}{n}\,dn \ll \log^{k+1}(m).
+        \left|\sum_{n \le m}\frac{\chi(n)\log^{k}(n)}{n^{\s}}\right| < e\log^{k}(m)\sum_{n \le m}\frac{1}{n} < e\log^{k}(m)\int_{1}^{m}\frac{1}{n}\,dn \ll \log^{k+1}(m).
       \]
-      For the second sum, let $A(Y) = \sum_{n \le Y}\chi(n)$. Then $|A(Y)| \le m$ by the Dirichlet orthogonality relations (namely \cref{cor:Dirichlet_orthogonality_relations} (i)) and that $\chi$ is $m$-periodic. Hence $A(Y)\log(Y)Y^{-\s} \to 0$ as $Y \to \infty$ and Abel's summation formula (see \cref{cor:Abels_summation_formula_limit_version}) gives
+      For the second sum, let $A(Y) = \sum_{n \le Y}\chi(n)$. Then $|A(Y)| \le m$ by the Dirichlet orthogonality relations (namely \cref{cor:Dirichlet_orthogonality_relations} (i)) and that $\chi$ is $m$-periodic. Hence $A(Y)\log(Y)Y^{-\s} \to 0$ as $Y \to \infty$ and \cref{cor:Abels_summation_formula_limit_version} gives
       \begin{equation}\label{equ:Siegels_theorem_second_version_lemma_1}
-        \sum_{n \ge m}\frac{\chi(n)\log^{k}(n)}{n^{\s}} = -A(m)\log^{k}(m)m^{-\s}-\int_{m}^{\infty}A(u)(k-\s\log(u))\log^{k-1}(u)u^{-(\s+1)}\,du.
+        \sum_{n > m}\frac{\chi(n)\log^{k}(n)}{n^{\s}} = -A(m)\log^{k}(m)m^{-\s}-\int_{m}^{\infty}A(u)(k-\s\log(u))\log^{k-1}(u)u^{-(\s+1)}\,du.
       \end{equation}
       Since $0 \le 1-\s \le \frac{1}{\log(m)}$, we have $k-\s\log(u) \ll \log(u)$. With this estimate, that $|A(u)| \le m$, and \cref{equ:Siegels_theorem_second_version_lemma_1}, we make the following computation:
       \begin{align*}
-        \left|\sum_{n \ge m}\frac{\chi(n)\log^{k}(n)}{n^{\s}}\right| &\le |A(m)|\log^{k}(m)m^{-\s}+\int_{m}^{\infty}|A(u)(k-\s\log(u))|\log^{k-1}(u)u^{-(\s+1)}\,du \\
+        \left|\sum_{n > m}\frac{\chi(n)\log^{k}(n)}{n^{\s}}\right| &\le |A(m)|\log^{k}(m)m^{-\s}+\int_{m}^{\infty}|A(u)(k-\s\log(u))|\log^{k-1}(u)u^{-(\s+1)}\,du \\
         &\ll m^{1-\s}\log^{k}(m)+m\int_{m}^{\infty}\log^{k}(u)u^{-(\s+1)}\,du \\
         &= m^{1-\s}\log^{k}(m)+\frac{m}{\s}\left(\log^{k}(m)m^{-\s}+\int_{m}^{\infty}\log^{k-1}(u)u^{-(\s+1)}\,du\right) \\
         &\ll m^{1-\s}\log^{k}(m)+\frac{m^{1-\s}}{\s}\log^{k}(m) \\
@@ -787,7 +787,7 @@
       \]
     \end{theorem}
     \begin{proof}
-      Let $0 < \s < 1$. Summation by parts (see \cref{cor:summation_by_parts_corollary}) gives
+      Let $0 < \s < 1$. Partial sum summation by parts (see \cref{cor:partial_sum_summation_by_parts_corollary}) gives
       \[
         \sum_{n \le N}\frac{\chi(n)}{n^{s}} = S_{\chi}(N)N^{-s}+\sum_{n \le N-1}S_{\chi}(n)(n^{-s}-(n+1)^{-s}),
       \]
@@ -1070,9 +1070,9 @@
     \[
       \frac{x}{\log(x)+A(x)},
     \]
-    where $\lim_{x \to \infty}A(x) \approx 1.08366$. Riemann's 1859 manuscript (see \cite{riemann1859ueber}) contains an outline for how to prove the prime number theorem, but it was not until 1896 that the prime number theorem was proved independently by Hadamard and de la Vall\'ee Poussin (see \cite{hadamard1896distribution} and \cite{poussin1897recherches}). Their proofs, as well as every proof thereon out until 1949, used complex analytic methods in an essential way (there are now elementary proofs due to Erd\"os and Selberg). We are now ready to prove the prime number theorem. Strictly speaking, we will prove the (absolute error) \textbf{prime number theorem}\index{prime number theorem}, due to de la Vall\'ee Poussin, which bounds the absolute error between $\pi(x)$ and $\Li(x)$:
+    where $\lim_{x \to \infty}A(x) \approx 1.08366$. Riemann's 1859 manuscript (see \cite{riemann1859ueber}) contains an outline for how to prove the prime number theorem, but it was not until 1896 that the prime number theorem was proved independently by Hadamard and de la Vall\'ee Poussin (see \cite{hadamard1896distribution} and \cite{poussin1897recherches}). Their proofs, as well as every proof thereon out until 1949, used complex analytic methods in an essential way (there are now elementary proofs due to Erd\"os and Selberg). We are now ready to prove the prime number theorem. Strictly speaking, we will prove the (asymptotic formula) \textbf{prime number theorem}\index{prime number theorem}, due to de la Vall\'ee Poussin, which gives an asymptotic formula for $\pi(x)$ with $\Li(x)$ as the main term:
 
-    \begin{theorem*}[Prime number theorem, absolute error]
+    \begin{theorem*}[Prime number theorem, asymptotic formula]
       For $x \ge 2$, there exists a positive constant $c$ such that
       \[
         \pi(x) = \Li(x)+O\left(xe^{-c\sqrt{\log(x)}}\right).
@@ -1170,7 +1170,7 @@
     The proof of the classical and logarithmic integral variants of the prime number theorem are immediate:
 
     \begin{proof}[Proof of prime number theorem, classical and logarithmic integral]
-      From the absolute error prime number theorem, we have
+      The asymptotic formula prime number theorem is equivalent to
       \[
         \pi(x) = \Li(x)\left(1+O\left(\frac{xe^{-c\sqrt{\log(x)}}}{\Li(x)}\right)\right).
       \]
@@ -1187,7 +1187,7 @@
       $\pi(x)-\Li(x)$ changes sign infinitely often as $x \to \infty$.
     \end{proposition}
 
-    So in addition, \cref{thm:Littlewood_Li_approximation_theorem} implies that $\Li(x)$ never underestimates or overestimates $\pi(x)$ continuously. On the other hand, the exact error $\pi(x)-\frac{x}{\log(x)}$ is positive provided $x \ge 17$ (see \cite{rosser1962approximate}). It is also worthwhile to note that in 1901 Koch showed that the Riemann hypothesis improves the error term in the absolute error prime number theorem (see \cite{von1901distribution}):
+    So in addition, \cref{thm:Littlewood_Li_approximation_theorem} implies that $\Li(x)$ never underestimates or overestimates $\pi(x)$ continuously. On the other hand, the exact error $\pi(x)-\frac{x}{\log(x)}$ is positive provided $x \ge 17$ (see \cite{rosser1962approximate}). It is also worthwhile to note that in 1901 Koch showed that the Riemann hypothesis improves the error term in the asymptotic formula prime number theorem (see \cite{von1901distribution}):
 
     \begin{proposition}\label{prop:Riemann_hypothesis_prime_number_theorem}
       For $x \ge 2$,
@@ -1197,7 +1197,7 @@
       provided the Riemann hypothesis for the Riemann zeta function holds.
     \end{proposition}
     \begin{proof}
-      If $\rho$ is a nontrivial zero of $\z(s)$, the Riemann hypothesis implies $|x^{\rho}| = \sqrt{x}$. Therefore as in the proof of the absolute error prime number theorem,
+      If $\rho$ is a nontrivial zero of $\z(s)$, the Riemann hypothesis implies $|x^{\rho}| = \sqrt{x}$. Therefore as in the proof of the asymptotic formula prime number theorem,
       \[
         \sum_{|\g| < T}\frac{x^{\rho}}{\rho} \ll \sqrt{x}\log^{2}(T),
       \]
@@ -1215,7 +1215,7 @@
       \]
     \end{proof}
 
-    In fact, an improvement in the zero-free region for the Riemann zeta function will give an error term in between the absolute error prime number theorem and \cref{prop:Riemann_hypothesis_prime_number_theorem}. So it is the strength of the zero-free region which controls the size of the error term.
+    In fact, an improvement in the zero-free region for the Riemann zeta function will give an error term in between the asymptotic formula prime number theorem and \cref{prop:Riemann_hypothesis_prime_number_theorem}. So it is the strength of the zero-free region which controls the size of the error term.
   \section{The Siegel-Walfisz Theorem}
     Let $\chi$ be a Dirichlet character modulo $m > 1$. The function $\psi(x,\chi)$ is defined by
     \[
@@ -1514,9 +1514,9 @@
       \]
     \end{theorem*}
     
-    We will prove the (absolute error) \textbf{Siegel–Walfisz theorem}\index{Siegel–Walfisz theorem} which is slightly stronger as it bounds the absolute error between $\pi(x;a,m)$ and $\frac{\Li(x)}{\vphi(m)}$:
+    We will prove the (asymptotic formula) \textbf{Siegel–Walfisz theorem}\index{Siegel–Walfisz theorem} which is slightly stronger as gives an asymptotic formula for $\pi(x;a,m)$ with $\frac{\Li(x)}{\vphi(m)}$ as the main term:
 
-    \begin{theorem*}[Siegel–Walfisz theorem, absolute error]
+    \begin{theorem*}[Siegel–Walfisz theorem, asymptotic formula]
       Let $a$ and $m$ be integers such that $m > 1$ and $(a,m) = 1$. For $N \ge 1$ and $x \ge 2$, there exists a positive constant $c$ such that
       \[
         \pi(x;a,m) = \frac{\Li(x)}{\vphi(m)}+O\left(xe^{-c\sqrt{\log(x)}}\right),
@@ -1633,7 +1633,7 @@
     It is interesting to note that the constant $c$ in the Siegel-Walfisz theorem is ineffective because of the use of Siegel's theorem (it also depends upon $N$). This is unlike the prime number theorem, where the constant $c$ can be made to be effective. The proof of the classical and logarithmic integral variants of the Siegel-Walfisz theorem are immediate:
 
     \begin{proof}[Proof of Siegel-Walfisz theorem, classical and logarithmic integral]
-      From the absolute error Siegel-Walfisz theorem, we have
+      The asymptotic formula Siegel-Walfisz theorem is equivalent to
       \[
         \pi(x;a,m) = \frac{\Li(x)}{\vphi(m)}\left(1+O\left(\frac{\vphi(m)xe^{-c\sqrt{\log(x)}}}{\Li(x)}\right)\right),
       \]
@@ -1654,7 +1654,7 @@
       provided $m \le x$ and the Riemann hypothesis for Dirichlet $L$-functions holds.
     \end{proposition}
     \begin{proof}
-      Let $\chi$ be a Dirichlet character modulo $m$. If $\rho$ is a nontrivial zero of $L(s,\chi)$, the Riemann hypothesis for Dirichlet $L$-functions implies $|x^{\rho}| = \sqrt{x}$ and that Siegel zeros do not exist so we may merely assume $m \le x$. Therefore as in the proof of the absolute error Siegel-Walfisz theorem,
+      Let $\chi$ be a Dirichlet character modulo $m$. If $\rho$ is a nontrivial zero of $L(s,\chi)$, the Riemann hypothesis for Dirichlet $L$-functions implies $|x^{\rho}| = \sqrt{x}$ and that Siegel zeros do not exist so we may merely assume $m \le x$. Therefore as in the proof of the asymptotic formula Siegel-Walfisz theorem,
       \[
         \sum_{|\g| < T}\frac{x^{\rho}}{\rho} \ll \sqrt{x}\log^{2}(x),
       \]
@@ -1672,4 +1672,4 @@
       \]
       \end{proof}
 
-      Just like in the prime number theorem, an improvement in the zero-free region for Dirichlet L-functions will give an error term in between the absolute error Siegel-Walfisz theorem and \cref{prop:Riemann_hypothesis_Siegel-Walfisz_theorem}. So again it is the strength of the zero-free region which controls the size of the error term.
+      Just like in the prime number theorem, an improvement in the zero-free region for Dirichlet L-functions will give an error term in between the asymptotic formula Siegel-Walfisz theorem and \cref{prop:Riemann_hypothesis_Siegel-Walfisz_theorem}. So again it is the strength of the zero-free region which controls the size of the error term.

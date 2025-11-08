@@ -6,9 +6,9 @@
     \item Dirichlet Characters,
     \item Exponential Sums,
     \item Integral Lattices,
-    \item The Gamma Function,
-    \item Locally Compact Groups,
-    \item Integration Techniques and Transforms.
+    \item Summation Formulas,
+    \item Integration Techniques and Transforms,
+    \item The Gamma Function.
   \end{itemize}
   In the interest of keeping this text almost completely self-contained, this chapter is dedicated to the basics of these topics as they are essential tools that we will require in our investigations. The concepts presented in this chapter are tools in a toolbox rather than pure number theory. In order to improve the readability of the remainder of the text we will use the results presented here without reference unless it is a matter of clarity. As for standard knowledge, we assume familiarity with basic number theory, complex analysis, real analysis, functional analysis, topology, and algebra. We have also outsourced specific subtopics to the appendix and we will reference them when necessary.
   \section{Notational Conventions}
@@ -86,13 +86,13 @@
       \[
         |f(\mathbf{x})| \le c|g(\mathbf{x})|,
       \]
-      holds as $\mathbf{x} \to \mathbf{x}_{0}$. We call this an \textbf{$O$-estimate}\index{$O$-estimate} and say that $f(\mathbf{x})$ has \textbf{growth at most}\index{growth at most} $g(\mathbf{x})$. The $O$-estimate says that for $\mathbf{x}$ close to $\mathbf{x}_{0}$, the size of $f(\mathbf{x})$ grows like $g(\mathbf{x})$.
+      as $\mathbf{x} \to \mathbf{x}_{0}$. We call this an \textbf{$O$-estimate}\index{$O$-estimate} and say that $f(\mathbf{x})$ has \textbf{growth at most}\index{growth at most} $g(\mathbf{x})$. The $O$-estimate says that for $\mathbf{x}$ close to $\mathbf{x}_{0}$, the size of $f(\mathbf{x})$ grows like $g(\mathbf{x})$.
       
       \begin{remark}
         Many authors assume that $g(\mathbf{x})$ is a nonnegative function so that the absolute value on $g(\mathbf{x})$ can be dropped. As we require asymptotics that will be used more generally, we do not make this assumption since one could very well replace $O(g(\mathbf{x}))$ with $O(|g(\mathbf{x})|)$. In practice this deviation causes no issue.
       \end{remark}
       
-      As a symbol, let $O(g(\mathbf{x}))$ stand for a function $f(\mathbf{x})$ that is $O(g(\mathbf{x}))$. Then we may use the $O$-estimates in algebraic equations and inequalities. Note that this extends the definition of the symbol because $f(\mathbf{x}) = O(g(\mathbf{x}))$ means $f(\mathbf{x})$ is $O(g(\mathbf{x}))$. Moreover, in algebraic equations and inequalities involving $O$-estimates it is often customary to refer to such an $O$-estimate as an \textbf{error term}\index{error term}. The symbol $\ll$ is known as \textbf{Vinogradov's symbol}\index{Vinogradov's symbol} and it is an alternative way to express $O$-estimates. We write $f(\mathbf{x}) \ll g(\mathbf{x})$ as $\mathbf{x} \to \mathbf{x}_{0}$ if $f(\mathbf{x}) = O(g(\mathbf{x}))$ as $\mathbf{x} \to \mathbf{x}_{0}$. We also write $f(\mathbf{x}) \gg g(\mathbf{x})$ as $\mathbf{x} \to \mathbf{x}_{0}$ to mean $g(\mathbf{x}) \ll f(\mathbf{x})$ as $\mathbf{x} \to \mathbf{x}_{0}$. If there is a dependence of the implicit constant on parameters, we use subscripts to denote dependence on these parameters. If both $f(\mathbf{x}) \ll g(\mathbf{x})$ and $g(\mathbf{x}) \ll f(\mathbf{x})$ as $\mathbf{x} \to \mathbf{x}_{0}$ then we say $f(\mathbf{x})$ and $g(\mathbf{x})$ have the \textbf{same order of magnitude}\index{same order of magnitude} and write $f(\mathbf{x}) \asymp g(\mathbf{x})$ as $\mathbf{x} \to \mathbf{x}_{0}$. We also say $f(\mathbf{x})$ has \textbf{growth}\index{growth} $g(\mathbf{x})$. If there is a dependence of the implicit constant on parameters, we use subscripts to denote dependence on these parameters. From the definition of the $O$-estimate, this is equivalent to the existence of positive constants $c_{1}$ and $c_{2}$ such that
+      As a symbol, let $O(g(\mathbf{x}))$ stand for a function $f(\mathbf{x})$ that is $O(g(\mathbf{x}))$. Then we may use the $O$-estimates in algebraic equations and inequalities. Note that this extends the definition of the symbol because $f(\mathbf{x}) = O(g(\mathbf{x}))$ means $f(\mathbf{x})$ is $O(g(\mathbf{x}))$. The symbol $\ll$ is known as \textbf{Vinogradov's symbol}\index{Vinogradov's symbol} and it is an alternative way to express $O$-estimates. We write $f(\mathbf{x}) \ll g(\mathbf{x})$ as $\mathbf{x} \to \mathbf{x}_{0}$ if $f(\mathbf{x}) = O(g(\mathbf{x}))$ as $\mathbf{x} \to \mathbf{x}_{0}$. We also write $f(\mathbf{x}) \gg g(\mathbf{x})$ as $\mathbf{x} \to \mathbf{x}_{0}$ to mean $g(\mathbf{x}) \ll f(\mathbf{x})$ as $\mathbf{x} \to \mathbf{x}_{0}$. If there is a dependence of the implicit constant on parameters, we use subscripts to denote dependence on these parameters. If both $f(\mathbf{x}) \ll g(\mathbf{x})$ and $g(\mathbf{x}) \ll f(\mathbf{x})$ as $\mathbf{x} \to \mathbf{x}_{0}$ then we say $f(\mathbf{x})$ and $g(\mathbf{x})$ have the \textbf{same order of magnitude}\index{same order of magnitude} and write $f(\mathbf{x}) \asymp g(\mathbf{x})$ as $\mathbf{x} \to \mathbf{x}_{0}$. We also say $f(\mathbf{x})$ has \textbf{growth}\index{growth} $g(\mathbf{x})$. If there is a dependence of the implicit constant on parameters, we use subscripts to denote dependence on these parameters. From the definition of the $O$-estimate, this is equivalent to the existence of positive constants $c_{1}$ and $c_{2}$ such that
       \[
         c_{1}|g(\mathbf{x})| \le |f(\mathbf{x})| \le c_{2}|g(\mathbf{x})|.
       \]
@@ -102,11 +102,29 @@
       \[
         \lim_{\mathbf{x} \to \mathbf{x}_{0}}\left|\frac{f(\mathbf{x})}{g(\mathbf{x})}\right| = 0,
       \]
-      provided $g(\mathbf{x}) \neq 0$ for all $\mathbf{x}$ sufficiently close to $\mathbf{x}_{0}$ in norm. We call this an \textbf{$o$-estimate}\index{$o$-estimate} and say that $f(\mathbf{x})$ has \textbf{growth less than}\index{growth less than} $g(\mathbf{x})$. The $o$-estimate says that for $\mathbf{x}$ close to $\mathbf{x}_{0}$, $g(\mathbf{x})$ dominates $f(\mathbf{x})$. If $f(\mathbf{x}) = o(g(\mathbf{x}))$ as $\mathbf{x} \to \mathbf{x}_{0}$ then $f(\mathbf{x}) = O(g(\mathbf{x}))$ as $\mathbf{x} \to \mathbf{x}_{0}$ where the implicit constant can be taken arbitrarily small by definition of the $o$-estimate. Therefore, $o$-estimates are stronger than $O$-estimates. As a symbol, let $o(g(\mathbf{x}))$ stand for a function $f(\mathbf{x})$ that is $o(g(\mathbf{x}))$. Then we may use the $o$-estimates in algebraic equations and inequalities. Note that this extends the definition of the symbol because $f(\mathbf{x}) = o(g(\mathbf{x}))$ means $f(\mathbf{x})$ is $o(g(\mathbf{x}))$. We say $f(\mathbf{x})$ \textbf{is asymptotic to}\index{is asymptotic to} $g(\mathbf{x})$ as $\mathbf{x} \to \mathbf{x}_{0}$ and write $f(\mathbf{x}) \sim g(\mathbf{x})$ if
+      provided $g(\mathbf{x}) \neq 0$ for all $\mathbf{x}$ sufficiently close to $\mathbf{x}_{0}$ in norm. We call this an \textbf{$o$-estimate}\index{$o$-estimate} and say that $f(\mathbf{x})$ has \textbf{growth less than}\index{growth less than} $g(\mathbf{x})$. The $o$-estimate says that for $\mathbf{x}$ close to $\mathbf{x}_{0}$, $g(\mathbf{x})$ dominates $f(\mathbf{x})$. If $f(\mathbf{x}) = o(g(\mathbf{x}))$ as $\mathbf{x} \to \mathbf{x}_{0}$ then $f(\mathbf{x}) = O(g(\mathbf{x}))$ as $\mathbf{x} \to \mathbf{x}_{0}$ where the implicit constant can be taken arbitrarily small by definition of the $o$-estimate. Therefore, $o$-estimates are stronger than $O$-estimates. As a symbol, let $o(g(\mathbf{x}))$ stand for a function $f(\mathbf{x})$ that is $o(g(\mathbf{x}))$. Then we may use the $o$-estimates in algebraic equations and inequalities. Note that this extends the definition of the symbol because $f(\mathbf{x}) = o(g(\mathbf{x}))$ means $f(\mathbf{x})$ is $o(g(\mathbf{x}))$. Moreover, a \textbf{asymptotic formula}\index{asymptotic formula} for $f(\mathbf{x})$ as $\mathbf{x} \to \mathbf{x}_{0}$ is an equation of shape
+      \[
+        f(\mathbf{x}) = M(\mathbf{x})+O(E(\mathbf{x})),
+      \]
+      as $\mathbf{x} \to \mathbf{x}_{0}$ such that $E(\mathbf{x}) = o(M(\mathbf{x}))$ as $\mathbf{x} \to \mathbf{x}_{0}$ too. Accordingly, we call $M(\mathbf{x})$ the \textbf{main term}\index{main term} and $E(\mathbf{x})$ the \textbf{error term}\index{error term} respectively.
+
+      \begin{remark}
+        The asymptotic formula
+        \[
+          f(\mathbf{x}) = M(\mathbf{x})+O(E(\mathbf{x})),
+        \]
+        as $\mathbf{x} \to \mathbf{x}_{0}$ is equivalent to
+        \[
+          f(\mathbf{x})-M(\mathbf{x}) = O(E(\mathbf{x})),
+        \]
+        as $\mathbf{x} \to \mathbf{x}_{0}$ which shows that the absolute error between $f(\mathbf{x})$ and $M(\mathbf{x})$ is $O(E(\mathbf{x}))$ as $\mathbf{x} \to \mathbf{x}_{0}$.
+      \end{remark}
+      
+      We say $f(\mathbf{x})$ \textbf{is asymptotic to}\index{is asymptotic to} $g(\mathbf{x})$ as $\mathbf{x} \to \mathbf{x}_{0}$ and write $f(\mathbf{x}) \sim g(\mathbf{x})$ if
       \[
         \lim_{\mathbf{x} \to \mathbf{x}_{0}}\frac{f(\mathbf{x})}{g(\mathbf{x})} = 1,
       \]
-      provided $g(\mathbf{x}) \neq 0$ for all $\mathbf{x}$ sufficiently close to $\mathbf{x}_{0}$ in norm. We call this an \textbf{asymptotic}\index{asymptotic} and say that $f(\mathbf{x})$ and $g(\mathbf{x})$ are \textbf{asymptotically equivalent}\index{asymptotically equivalent}. It is useful to think of asymptotic equivalence as $f(\mathbf{x})$ and $g(\mathbf{x})$ being the same size in the limit as $\mathbf{x} \to \mathbf{x}_{0}$. Immediately from the definition, we see that this is an equivalence relation on functions. In particular, if $f(\mathbf{x}) \sim g(\mathbf{x})$ and $g(\mathbf{x}) \sim h(\mathbf{x})$ then $f(\mathbf{x}) \sim h(\mathbf{x})$. Also, if $f(\mathbf{x}) \sim g(\mathbf{x})$ as $\mathbf{x} \to \mathbf{x}_{0}$ then $f(\mathbf{x}) \asymp g(\mathbf{x})$ as $\mathbf{x} \to \mathbf{x}_{0}$ with $c_{1} \le 1 \le c_{2}$. So asymptotic equivalence is stronger than being of the same order of magnitude. Also note that $f(\mathbf{x}) \sim g(\mathbf{x})$ is equivalent to $f(\mathbf{x}) = g(\mathbf{x})(1+o(1))$ and hence implies $f(\mathbf{x}) = g(\mathbf{x})(1+O(1))$. We say $f(\mathbf{x})$ \textbf{is of larger order than}\index{is of larger order than} $g(\mathbf{x})$ or $f(\mathbf{x})$ is $\W(g(\mathbf{x}))$ as $\mathbf{x} \to \mathbf{x}_{0}$ and write $f(\mathbf{x}) = \W(g(\mathbf{x}))$ if
+      provided $g(\mathbf{x}) \neq 0$ for all $\mathbf{x}$ sufficiently close to $\mathbf{x}_{0}$ in norm. We call this an \textbf{asymptotic equivalence}\index{asymptotic equivalence} and say that $f(\mathbf{x})$ and $g(\mathbf{x})$ are \textbf{asymptotically equivalent}\index{asymptotically equivalent}. It is useful to think of asymptotic equivalence as $f(\mathbf{x})$ and $g(\mathbf{x})$ being the same size in the limit as $\mathbf{x} \to \mathbf{x}_{0}$. Immediately from the definition, we see that this is an equivalence relation on functions. In particular, if $f(\mathbf{x}) \sim g(\mathbf{x})$ and $g(\mathbf{x}) \sim h(\mathbf{x})$ then $f(\mathbf{x}) \sim h(\mathbf{x})$. Also, if $f(\mathbf{x}) \sim g(\mathbf{x})$ as $\mathbf{x} \to \mathbf{x}_{0}$ then $f(\mathbf{x}) \asymp g(\mathbf{x})$ as $\mathbf{x} \to \mathbf{x}_{0}$ with $c_{1} \le 1 \le c_{2}$. So asymptotic equivalence is stronger than being of the same order of magnitude. In addition, if we have an asymptotic formula for $f(\mathbf{x})$ with main term $M(\mathbf{x})$ and $M(\mathbf{x}) \neq 0$ for all $\mathbf{x}$ sufficiently close to $\mathbf{x}_{0}$ in norm then $f(\mathbf{x}) \sim M(\mathbf{x})$. Therefore an asymptotic formula is stronger than asymptotic equality. Also note that $f(\mathbf{x}) \sim g(\mathbf{x})$ is equivalent to $f(\mathbf{x}) = g(\mathbf{x})(1+o(1))$ and hence implies $f(\mathbf{x}) = g(\mathbf{x})(1+O(1))$. We say $f(\mathbf{x})$ \textbf{is of larger order than}\index{is of larger order than} $g(\mathbf{x})$ or $f(\mathbf{x})$ is $\W(g(\mathbf{x}))$ as $\mathbf{x} \to \mathbf{x}_{0}$ and write $f(\mathbf{x}) = \W(g(\mathbf{x}))$ if
       \[
         \limsup_{\mathbf{x} \to \mathbf{x}_{0}}\left|\frac{f(\mathbf{x})}{g(\mathbf{x})}\right| > 0.
       \]
@@ -1077,6 +1095,120 @@
       \]
       and $X$ is closed, $\l \in X$ as well. Thus we have found a nonzero $\l \in L$ with $\l \in X$ and we are done.
     \end{proof}
+  \section{Summation Formulas}\label{append:Summation_Formulas}
+    Summation formulas are important because they often allow for a difficult to estimate sums to be replaced with one that is much easier to estimate. In fact, the most useful summation formulas replace a discrete sum with an integral of a continuous function. This allows for much more precise estimation of the original sum. We first setup some notation. If $(a_{n})_{n \ge 1}$ is a sequence of complex numbers for every $X \ge 0$ let
+    \[
+        A(X) = \sum_{n \le X}a_{n}.
+    \]
+    Note that $A(X) = 0$ unless $X \ge 1$. The most well-known summation formula is (classical) \textbf{summation by parts}\index{summation by parts}:
+
+    \begin{theorem*}[Summation by parts, classical]
+      Let $(a_{n})_{n \ge 1}$ and $(b_{n})_{n \ge 1}$ be two sequences of complex numbers. Then for any positive integers $N$ and $M$ with $1 \le M \le N$, we have
+      \[
+        \sum_{M \le n \le N}a_{n}(b_{n+1}-b_{n}) = (a_{N+1}b_{N+1}-a_{M}b_{M})-\sum_{M \le n \le N}b_{n+1}(a_{n+1}-a_{n}).
+      \]
+    \end{theorem*}
+    \begin{proof}
+      It is equivalent to prove that
+      \[
+        \sum_{M \le n \le N}a_{n}(b_{n+1}-b_{n})+\sum_{M \le n \le N}b_{n+1}(a_{n+1}-a_{n}) = (a_{N+1}b_{N+1}-a_{M}b_{M}).
+      \]
+      This is just a computation:
+      \begin{align*}
+        \sum_{M \le n \le N}a_{n}(b_{n+1}-b_{n})+\sum_{M \le n \le N}b_{n+1}(a_{n+1}-a_{n}) &= \sum_{M \le n \le N}a_{n}b_{n+1}-a_{n}b_{n}+a_{n+1}b_{n+1}-a_{n}b_{n+1} \\
+        &= \sum_{M \le n \le N}a_{n+1}b_{n+1}-a_{n}b_{n} \\
+        &= a_{N+1}b_{N+1}-a_{M}b_{M}.
+      \end{align*}
+    \end{proof}
+
+    Replacing the sequences $(a_{n})_{n \ge 1}$ and $(b_{n})_{n \ge 1}$ with $(b_{n})_{n \ge 0}$ and $(A(n-1))_{n \ge 1}$ respectively gives (partial sum) \textbf{summation by parts}\index{summation by parts}:
+
+    \begin{theorem*}[Summation by parts, partial sum]
+      Let $(a_{n})_{n \ge 1}$ and $(b_{n})_{n \ge 0}$ be two sequences of complex numbers. Then for any integers $M$ and $N$ with $0 \le M \le N$, we have
+      \[
+        \sum_{M+1 \le n \le N}a_{n}b_{n} = A(N)b_{N}-A(M)b_{M}-\sum_{M \le n \le N-1}A(n)(b_{n+1}-b_{n}).
+      \]
+    \end{theorem*}
+    \begin{proof}
+      Classical summation by parts gives
+      \[
+        \sum_{M+1 \le n \le N}b_{n}(A(n)-A(n-1)) = A(N)b_{N+1}-A(M)b_{M+1}-\sum_{M+1 \le n \le N}A(n)(b_{n+1}-b_{n}).
+      \]
+      As $A(n)-A(n-1) = a_{n}$, this formula becomes
+      \[
+        \sum_{M+1 \le n \le N}a_{n}b_{n} = A(N)b_{N+1}-A(M)b_{M+1}-\sum_{M+1 \le n \le N}A(n)(b_{n+1}-b_{n}),
+      \]
+      which we can rewrite as
+      \[
+        \sum_{M+1 \le n \le N}a_{n}b_{n} = A(N)b_{N}-A(M)b_{M}-\sum_{M \le n \le N-1}A(n)(b_{n+1}-b_{n}).
+      \]
+      This is the desired formula so the proof is complete.
+    \end{proof}
+    
+    Taking $M = 0$ gives a useful corollary:
+
+    \begin{corollary}\label{cor:partial_sum_summation_by_parts_corollary}
+      Let $(a_{n})_{n \ge 1}$ and $(b_{n})_{n \ge 0}$ be two sequences of complex numbers. Then for any positive integer $N \ge 1$, we have
+      \[
+        \sum_{n \le N}a_{n}b_{n} = A(N)b_{N}-\sum_{n \le N-1}A(n)(b_{n+1}-b_{n}).
+      \]
+    \end{corollary}
+    \begin{proof}
+      Taking $M = 0$ in partial sum summation by parts and observing that $A(M) = 0$ gives the result.
+    \end{proof}
+    
+    There is another useful summation formula known as \textbf{Abel's summation formula}\index{Abel's summation formula} that lets one estimate discrete sums by integrals:
+
+    \begin{theorem*}[Abel's summation formula]
+      Let $(a_{n})_{n \ge 1}$ be a sequence of complex numbers. For every $X$ and $Y$ with $0 \le X < Y$ and continuously differentiable function $\phi:[X,Y] \to \C$, we have
+      \[
+        \sum_{X < n \le Y}a_{n}\phi(n) = A(Y)\phi(Y)-A(X)\phi(X)-\int_{X}^{Y}A(u)\phi'(u)\,du.
+      \]
+    \end{theorem*}
+    \begin{proof}
+      First suppose $X = M$ and $Y = N$ with $0 \le M \le N$. From partial sum summation by parts, we have
+      \[
+        \sum_{M+1 \le n \le N}a_{n}\phi(n) = A(N)\phi(N)-A(M)\phi(M)-\sum_{M \le n \le N-1}A(n)(\phi(n+1)-\phi(n)).
+      \]
+      As $\phi$ is continuously differentiable, we can express the sum on the right-hand side as
+      \begin{align*}
+        \sum_{M \le n \le N-1}A(n)(\phi(n+1)-\phi(n)) &= \sum_{M \le n \le N-1}A(n)\int_{n}^{n+1}\phi'(u)\,du \\
+        &= \sum_{M \le n \le N-1}\int_{n}^{n+1}A(u)\phi'(u)\,du \\
+        &= \int_{M}^{N}A(u)\phi'(u)\,du,
+      \end{align*}
+      where in the second equality we have used that $A(n)$ is constant on the interval $[n,n+1)$. Thus 
+      \[
+        \sum_{M+1 < n \le N}a_{n}\phi(n) = A(N)\phi(N)-A(M)\phi(M)-\int_{M}^{N}A(u)\phi'(u)\,du.
+      \]
+      In fact, the formula holds upon replacing $M$ with $X$ and $M$ with $Y$ since $M+1 \le n$ if and only if $X < n$ and that $A(u)$ is constant on the intervals $[n,n+1)$ for all $n \ge 0$.
+    \end{proof}
+
+    There are also some useful corollaries. On the one hand, if we let $X = 0$, so that $A(X) = 0$, we get the following:
+
+    \begin{corollary}\label{cor:Abels_summation_formula_zero_version}
+      Let $(a_{n})_{n \ge 1}$ be a sequence of complex numbers. For every $Y > 0$ and continuously differentiable function $\phi:[0,Y] \to \C$, we have
+      \[
+        \sum_{n \le Y}a_{n}\phi(n) = A(Y)\phi(Y)-\int_{0}^{Y}A(u)\phi'(u)\,du.
+      \]
+    \end{corollary}
+    
+    On the other hand, if we take the limit as $Y \to \infty$ we obtain:
+
+    \begin{corollary}\label{cor:Abels_summation_formula_limit_version}
+      Let $(a_{n})_{n \ge 1}$ be a sequence of complex numbers. For every $X \ge 0$ and continuously differentiable function $\phi:[X,\infty) \to \C$, we have
+      \[
+        \sum_{n > X}a_{n}\phi(n) = \lim_{Y \to \infty}A(Y)\phi(Y)-A(X)\phi(X)-\int_{X}^{\infty}A(u)\phi'(u)\,du.
+      \]
+    \end{corollary}
+
+    Lastly, combining these cases by taking $X = 0$ and the limit as $Y \to \infty$, we arrive at the following result:
+
+    \begin{corollary}\label{cor:Abels_summation_formula_limit_version_specialization}
+      Let $(a_{n})_{n \ge 1}$ be a sequence of complex numbers. For every continuously differentiable function $\phi:[0,\infty) \to \C$, we have
+      \[
+        \sum_{n \ge 1}a_{n}\phi(n) = \lim_{Y \to \infty}A(Y)\phi(Y)-\int_{1}^{\infty}A(u)\phi'(u)\,du.
+      \]
+    \end{corollary}
   \section{Integration Techniques and Transforms}
     \subsection*{Integration Techniques}
       Complex integrals are a core backbone of many number theory techniques. An extremely useful one is called \textbf{shifting the line of integration}\index{shifting the line of integration}:
