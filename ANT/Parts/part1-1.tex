@@ -1166,9 +1166,9 @@
       \]
     \end{theorem*}
     \begin{proof}
-      First suppose $X = M$ and $Y = N$ with $0 \le M \le N$. From partial sum summation by parts, we have
+      Let $M = \lfloor X \rfloor$ and $N = \lfloor Y \rfloor$ so that $0 \le M \le N$. From partial sum summation by parts, we have
       \[
-        \sum_{M+1 \le n \le N}a_{n}\phi(n) = A(N)\phi(N)-A(M)\phi(M)-\sum_{M \le n \le N-1}A(n)(\phi(n+1)-\phi(n)).
+        \sum_{X < n \le Y}a_{n}\phi(n) = \sum_{M+1 \le n \le N}a_{n}\phi(n) = A(N)\phi(N)-A(M)\phi(M)-\sum_{M \le n \le N-1}A(n)(\phi(n+1)-\phi(n)).
       \]
       As $\phi$ is continuously differentiable, we can express the sum on the right-hand side as
       \begin{align*}
@@ -1176,11 +1176,22 @@
         &= \sum_{M \le n \le N-1}\int_{n}^{n+1}A(u)\phi'(u)\,du \\
         &= \int_{M}^{N}A(u)\phi'(u)\,du,
       \end{align*}
-      where in the second equality we have used that $A(n)$ is constant on the interval $[n,n+1)$. Thus 
+      where in the second equality we have used that $A(n)$ is constant on the interval $[n,n+1)$ for every $n \ge 0$. Thus
       \[
-        \sum_{M+1 < n \le N}a_{n}\phi(n) = A(N)\phi(N)-A(M)\phi(M)-\int_{M}^{N}A(u)\phi'(u)\,du.
+        \sum_{X < n \le Y}a_{n}\phi(n) = A(N)\phi(N)-A(M)\phi(M)-\int_{M}^{N}A(u)\phi'(u)\,du.
       \]
-      In fact, the formula holds upon replacing $M$ with $X$ and $M$ with $Y$ since $M+1 \le n$ if and only if $X < n$ and that $A(u)$ is constant on the intervals $[n,n+1)$ for all $n \ge 0$.
+      Using again the fact that $A(n)$ is constant on the interval $[n,n+1)$ for every $n \ge 0$, we can express the integral as
+      \begin{align*}
+        \int_{M}^{N}A(u)\phi'(u)\,du &= \int_{X}^{Y}A(u)\phi'(u)\,du+\int_{M}^{X}A(u)\phi'(u)\,du-\int_{N}^{Y}A(u)\phi'(u)\,du \\
+        &= \int_{X}^{Y}A(u)\phi'(u)\,du+A(M)\int_{M}^{X}\phi'(u)\,du-A(N)\int_{N}^{Y}\phi'(u)\,du \\
+        &= \int_{X}^{Y}A(u)\phi'(u)\,du+A(M)\phi(X)-A(M)\phi(M)-A(N)\phi(Y)+A(N)\phi(N) \\
+        &= \int_{X}^{Y}A(u)\phi'(u)\,du+A(X)\phi(X)-A(M)\phi(M)-A(Y)\phi(Y)+A(N)\phi(N).
+      \end{align*}
+      Substituting this result gives 
+      \[
+        \sum_{X < n \le Y}a_{n}\phi(n) = A(Y)\phi(Y)-A(X)\phi(X)-\int_{X}^{Y}A(u)\phi'(u)\,du,
+      \]
+      which is the desired formula.
     \end{proof}
 
     There are also some useful corollaries. On the one hand, if we let $X = 0$, so that $A(X) = 0$, we get the following:
