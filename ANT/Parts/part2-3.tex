@@ -779,45 +779,49 @@
     \begin{theorem}\label{thm:Burgess_bound_conductor_aspect_Dirichlet}
       Let $\chi$ be a primitive Dirichlet character of conductor $q > 1$. Then for $0 < \s < 1$, we have
       \[
-        L(s,\chi) \ll_{t,\e} \begin{cases} q^{\frac{4-5\s}{8}+\e} & \text{if $0 < \s \le \frac{1}{2}$}, \\ q^{\frac{3-3\s}{8}+\e} & \text{if $\frac{1}{2} \le \s < 1$}. \end{cases}
+        L(s,\chi) \ll_{s,\e} \begin{cases} q^{\frac{4-5\s}{8}+\e} & \text{if $0 < \s \le \frac{1}{2}$}, \\ q^{\frac{3-3\s}{8}+\e} & \text{if $\frac{1}{2} \le \s < 1$}. \end{cases}
       \]
       In particular,
       \[
-        L\left(\frac{1}{2}+it,\chi\right) \ll_{\e} q^{\frac{3}{16}+\e}. 
+        L\left(\frac{1}{2}+it,\chi\right) \ll_{t,\e} q^{\frac{3}{16}+\e}. 
       \]
     \end{theorem}
     \begin{proof}
-      Let $0 < \s < 1$. Partial sum summation by parts (see \cref{cor:partial_sum_summation_by_parts_corollary}) gives
+      Let $0 < \s < 1$. \cref{cor:partial_sum_summation_by_parts_corollary} gives
       \[
         \sum_{n \le N}\frac{\chi(n)}{n^{s}} = S_{\chi}(N)N^{-s}+\sum_{n \le N-1}S_{\chi}(n)(n^{-s}-(n+1)^{-s}),
       \]
-      for any $N \ge 1$. By applying the mean value theorem to $f(x) = \frac{1}{x^{s}}$ on the interval $[n,n+1]$ we have $(n^{-s}-(n+1)^{-s}) \ll_{t} \frac{1}{n^{\s+1}}$, and thus
+      for any $N \ge 1$. Applying the mean value theorem to $f(x) = \frac{1}{x^{s}}$ on the interval $[n,n+1]$ yields $(n^{-s}-(n+1)^{-s}) \ll_{t} \frac{1}{n^{\s+1}}$, and thus
       \[
         \sum_{n \le N}\frac{\chi(n)}{n^{s}} \ll_{t} |S_{\chi}(N)|N^{-\s}+\sum_{n \le N-1}\frac{|S_{\chi}(n)|}{n^{\s+1}}.
       \]
       As $|S_{\chi}(N)||N^{-\s}| \to 0$ as $N \to \infty$ (recall \cref{equ:character_sum_orthogonality_bound}), taking the limit as $N \to \infty$ results in
       \[
-        L(s,\chi) \ll_{t} \sum_{n \ge 1}\frac{|S_{\chi}(n)|}{n^{\s+1}},
+        L(s,\chi) \ll_{t} \sum_{n \ge 1}\frac{|S_{\chi}(n)|}{n^{\s+1}}.
       \]
-      where the estimate follows  Letting $M > 2$, $N \ge 1$, and decompose the right-hand side, we obtain
+      Now let $M > 2$, $N \ge 1$, and decompose the right-hand side in the form
       \[
         L(s,\chi) \ll_{t} \sum_{1 \le M-1}\frac{|S_{\chi}(n)|}{n^{\s+1}}+\sum_{M \le n \le N}\frac{|S_{\chi}(n)|}{n^{\s+1}}+\sum_{n \ge N+1}\frac{|S_{\chi}(n)|}{n^{\s+1}}.
       \]
-      Applying \cref{equ:character_sum_trivial_bound} to the first character sum, \cref{thm:Burgess_inequality} (in the case $r = 2$) to the second character sum, and the P\'olya-Vinogradov inequality to the third character sum, gives
+      Applying \cref{equ:character_sum_trivial_bound} to the first character sum, \cref{thm:Burgess_inequality} (in the case $r = 2$) to the second character sum, and the P\'olya-Vinogradov inequality to the third character sum, we obtain
       \[
         L(s,\chi) \ll_{t,\e} \sum_{1 \le M-1}\frac{1}{n^{\s}}+q^{\frac{3}{16}+\e}\sum_{M \le n \le N}\frac{1}{n^{\s+\frac{1}{2}}}+q^{\frac{1}{2}+\e}\sum_{n \ge N+1}\frac{1}{n^{\s+1}},
       \]
-      where we have used that $\log(q) \ll_{\e} q^{\e}$. Upper bounding the first and third sums with an integral and integrating, we get
+      where we have used that $\log(q) \ll_{\e} q^{\e}$. Now observe that
       \[
-        L(s,\chi) \ll_{t,\e} M^{1-\s}+q^{\frac{3}{16}+\e}\sum_{M \le n \le N}\frac{1}{n^{\s+\frac{1}{2}}}+q^{\frac{1}{2}+\e}N^{-\s},
+        \sum_{1 \le M-1}\frac{1}{n^{\s}} \ll \int_{1}^{M-1}\frac{1}{x^{\s}}\,dx \ll_{\s} M^{1-\s} \quad \text{and} \quad \sum_{n \ge N+1}\frac{1}{n^{\s+1}} \ll \int_{N+1}^{\infty}\frac{1}{x^{\s+1}}\,dx \ll_{\s} N^{-\s}.
       \]
-      since $0 < \s < 1$. Performing the same argument with the remaining sum, we see that
+      Applying these estimates gives
       \[
-        \sum_{M \le n \le N}\frac{1}{n^{\s+\frac{1}{2}}} \ll \begin{cases} N^{\frac{1}{2}-\s} & \text{if $0 < \s < \frac{1}{2}$}, \\ \log(N) & \text{if $\s = \frac{1}{2}$}, \\ M^{\frac{1}{2}-\s} & \text{if $\frac{1}{2} < \s < 1$}. \end{cases}
+        L(s,\chi) \ll_{s,\e} M^{1-\s}+q^{\frac{3}{16}+\e}\sum_{M \le n \le N}\frac{1}{n^{\s+\frac{1}{2}}}+q^{\frac{1}{2}+\e}N^{-\s},
+      \]
+      since $0 < \s < 1$. Similarly, we see that
+      \[
+        \sum_{M \le n \le N}\frac{1}{n^{\s+\frac{1}{2}}} \ll \int_{M}^{N}\frac{1}{n^{\s+\frac{1}{2}}}\,dx \ll_{\s} \begin{cases} N^{\frac{1}{2}-\s} & \text{if $0 < \s < \frac{1}{2}$}, \\ \log(N) & \text{if $\s = \frac{1}{2}$}, \\ M^{\frac{1}{2}-\s} & \text{if $\frac{1}{2} < \s < 1$}. \end{cases}
       \]
        Upon setting $M = \lfloor q^{\frac{3}{8}} \rfloor$ and $N = \lceil q^{\frac{5}{8}} \rceil$, we obtain
       \[
-        L(s,\chi) \ll_{t,\e} \begin{cases} q^{\frac{4-5\s}{8}+\e} & \text{if $0 < \s \le \frac{1}{2}$}, \\ q^{\frac{3-3\s}{8}+\e} & \text{if $\frac{1}{2} \le \s < \frac{1}{2}$}, \end{cases}
+        L(s,\chi) \ll_{s,\e} \begin{cases} q^{\frac{4-5\s}{8}+\e} & \text{if $0 < \s \le \frac{1}{2}$}, \\ q^{\frac{3-3\s}{8}+\e} & \text{if $\frac{1}{2} \le \s < \frac{1}{2}$}, \end{cases}
       \]
       because the third term dominates for $0 < \s < \frac{1}{2}$, the first term dominates for $\frac{1}{2} < \s < 1$, and at $s = \frac{1}{2}$ the first and third terms are balanced and dominate the second term. This proves the first statement. The second follows by taking $\s = \frac{1}{2}$.
     \end{proof}

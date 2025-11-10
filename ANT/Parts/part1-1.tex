@@ -1157,7 +1157,7 @@
       Taking $M = 0$ in partial sum summation by parts and observing that $A(M) = 0$ gives the result.
     \end{proof}
     
-    There is another useful summation formula known as \textbf{Abel's summation formula}\index{Abel's summation formula} that lets one estimate discrete sums by integrals:
+    Both classical and partial sum summation by parts give ways of rewriting finite sums. If we want to express a finite sum in the form of an integral, we need to do more work. One of the most well-known results of this type is known as \textbf{Abel's summation formula}\index{Abel's summation formula}:
 
     \begin{theorem*}[Abel's summation formula]
       Let $(a_{n})_{n \ge 1}$ be a sequence of complex numbers. For every $X$ and $Y$ with $0 \le X < Y$ and continuously differentiable function $\phi:[X,Y] \to \C$, we have
@@ -1166,9 +1166,9 @@
       \]
     \end{theorem*}
     \begin{proof}
-      Let $M = \lfloor X \rfloor$ and $N = \lfloor Y \rfloor$ so that $0 \le M \le N$. From partial sum summation by parts, we have
+      Let $M = \lfloor X \rfloor$ and $N = \lfloor Y \rfloor$ so that $0 \le M \le B$. Then $X < n \le Y$ if and only if $M+1 \le n \le N$, so that partial sum summation by parts gives
       \[
-        \sum_{X < n \le Y}a_{n}\phi(n) = \sum_{M+1 \le n \le N}a_{n}\phi(n) = A(N)\phi(N)-A(M)\phi(M)-\sum_{M \le n \le N-1}A(n)(\phi(n+1)-\phi(n)).
+        \sum_{X < n \le Y}a_{n}\phi(n) = A(N)\phi(N)-A(M)\phi(M)-\sum_{M \le n \le N-1}A(n)(\phi(n+1)-\phi(n)).
       \]
       As $\phi$ is continuously differentiable, we can express the sum on the right-hand side as
       \begin{align*}
@@ -1176,11 +1176,11 @@
         &= \sum_{M \le n \le N-1}\int_{n}^{n+1}A(u)\phi'(u)\,du \\
         &= \int_{M}^{N}A(u)\phi'(u)\,du,
       \end{align*}
-      where in the second equality we have used that $A(n)$ is constant on the interval $[n,n+1)$ for every $n \ge 0$. Thus
+      where in the second equality we have used that $A(u)$ is constant on the interval $[n,n+1)$ for every $n \ge 0$. Thus
       \[
         \sum_{X < n \le Y}a_{n}\phi(n) = A(N)\phi(N)-A(M)\phi(M)-\int_{M}^{N}A(u)\phi'(u)\,du.
       \]
-      Using again the fact that $A(n)$ is constant on the interval $[n,n+1)$ for every $n \ge 0$, we can express the integral as
+      Using again the fact that $A(u)$ is constant on the interval $[n,n+1)$ for every $n \ge 0$, we can express the integral as
       \begin{align*}
         \int_{M}^{N}A(u)\phi'(u)\,du &= \int_{X}^{Y}A(u)\phi'(u)\,du+\int_{M}^{X}A(u)\phi'(u)\,du-\int_{N}^{Y}A(u)\phi'(u)\,du \\
         &= \int_{X}^{Y}A(u)\phi'(u)\,du+A(M)\int_{M}^{X}\phi'(u)\,du-A(N)\int_{N}^{Y}\phi'(u)\,du \\
@@ -1220,6 +1220,91 @@
         \sum_{n \ge 1}a_{n}\phi(n) = \lim_{Y \to \infty}A(Y)\phi(Y)-\int_{1}^{\infty}A(u)\phi'(u)\,du.
       \]
     \end{corollary}
+
+    Abel's summation formula and its corollaries are immensely useful for approximating finite or infinite sums by integrals. In the special case where $a_{n} = 1$ for $n \ge 1$, we are really estimating the sum of a continuously differentiable function at integer values. We can very well use Abel's summation formula here, but it's possible to improve the result by appealing to integration by parts. If we do this, we obtain a result known as the \textbf{Euler–Maclaurin summation formula}\index{Euler–Maclaurin summation formula}:
+
+    \begin{theorem*}[Euler–Maclaurin summation formula]
+      For every $X$ and $Y$ with $0 \le X < Y$ and continuously differentiable function $\phi:[X,Y] \to \C$, we have
+      \[
+        \sum_{X < n \le Y}\phi(n) = \left(X-\lfloor X \rfloor-\frac{1}{2}\right)\phi(X)-\left(Y-\lfloor Y \rfloor-\frac{1}{2}\right)\phi(Y)+\int_{X}^{Y}\phi(u)+\left(u-\lfloor u \rfloor-\frac{1}{2}\right)\phi'(u)\,du.
+      \]
+    \end{theorem*}
+    \begin{proof}
+      Let $M = \lfloor X \rfloor$ and $N = \lfloor Y \rfloor$ so that $0 \le M \le B$. Then $X < n \le Y$ if and only if $M+1 \le n \le N$, so that partial sum summation by parts gives
+      \[
+        \sum_{X < n \le Y}\phi(n) = N\phi(N)-M\phi(M)-\sum_{M \le n \le N-1}n(\phi(n+1)-\phi(n)).
+      \]
+      Now observe that
+      \[
+        \sum_{M \le n \le N-1}(n-M-1)(\phi(n+1)-\phi(n)) = (M+1)\phi(M)-(M+1)\phi(N)+\sum_{M \le n \le N-1}n(\phi(n+1)-\phi(n)),
+      \]
+      since the sum on the left-hand side telescopes. Using this identity to replace the sum above, we obtain
+      \[
+        \sum_{X < n \le Y}\phi(n) = (N-M-1)\phi(N)+\phi(M)-\sum_{M \le n \le N-1}(n-M-1)(\phi(n+1)-\phi(n)).
+      \]
+      As $\phi$ is continuously differentiable, we can express the sum on the right-hand side as
+      \begin{align*}
+       \sum_{M \le n \le N-1}(n-M-1)(\phi(n+1)-\phi(n)) &= \sum_{M \le n \le N-1}(n-M-1)\int_{n}^{n+1}\phi'(u)\,du \\
+        &= \sum_{M \le n \le N-1}\int_{n}^{n+1}(\lfloor u \rfloor-M-1)\phi'(u)\,du \\
+        &= \int_{M}^{N}(\lfloor u \rfloor-M-1)\phi'(u)\,du \\
+        &= -(M+1)\int_{M}^{N}\phi'(u)\,du+\int_{M}^{N}\lfloor u \rfloor\phi'(u)\,du \\
+        &= (M+1)\phi(M)-(M+1)\phi(N)+\int_{M}^{N}\lfloor u \rfloor\phi'(u)\,du,
+      \end{align*}
+      where in the second equality we have used that $\lfloor u \rfloor$ is constant on the interval $[n,n+1)$ for every $n \ge 0$. Thus
+      \[
+        \sum_{X < n \le Y}\phi(n) = N\phi(N)-M\phi(M)-\int_{M}^{N}\lfloor u \rfloor\phi'(u)\,du.
+      \]
+      We will continue to rewrite the right-hand side. Integration by parts shows that
+      \[
+        \int_{M}^{N}u\phi'(u)\,du = N\phi(N)-M\phi(M)-\int_{M}^{N}\phi(u)\,du,
+      \]
+      and therefore our previous identity becomes
+      \begin{align*}
+        \sum_{X < n \le Y}\phi(n) = \int_{M}^{N}\phi(u)+(u-\lfloor u \rfloor)\phi'(u)\,du.
+      \end{align*}
+      Using the identity
+      \[
+        \frac{\phi(N)-\phi(M)}{2} = \int_{M}^{N}\frac{1}{2}\phi'(u)\,du,
+      \]
+      we get
+      \[
+        \sum_{X < n \le Y}\phi(n) = \frac{\phi(N)-\phi(M)}{2}+\int_{M}^{N}\phi(u)+\left(u-\lfloor u \rfloor-\frac{1}{2}\right)\phi'(u)\,du.
+      \]
+      Using again that $\lfloor u \rfloor$ is constant on the interval $[n,n+1)$ for every $n \ge 0$, we can express the integral as
+      \begin{align*}
+        \int_{M}^{N}\phi(u)+\left(u-\lfloor u \rfloor-\frac{1}{2}\right)\phi'(u)\,du &= \int_{X}^{Y}\phi(u)+\left(u-\lfloor u \rfloor-\frac{1}{2}\right)\phi'(u)\,du \\
+        &+ \int_{M}^{X}\phi(u)+\left(u-\lfloor u \rfloor-\frac{1}{2}\right)\phi'(u)\,du \\
+        &- \int_{N}^{Y}\phi(u)+\left(u-\lfloor u \rfloor-\frac{1}{2}\right)\phi'(u)\,du \\
+        &= \int_{X}^{Y}\phi(u)+\left(u-\lfloor u \rfloor-\frac{1}{2}\right)\phi'(u)\,du \\
+        &+M\phi(M)-M\phi(X)+\frac{\phi(M)-\phi(X)}{2}+\int_{M}^{X}\phi(u)+u\phi'(u)\,du \\
+        &+N\phi(Y)-N\phi(N)+\frac{\phi(Y)-\phi(N)}{2}-\int_{N}^{Y}\phi(u)+u\phi'(u)\,du \\
+        &= \int_{X}^{Y}\phi(u)+\left(u-\lfloor u \rfloor-\frac{1}{2}\right)\phi'(u)\,du \\
+        &+M\phi(M)-M\phi(X)+\frac{\phi(M)-\phi(X)}{2}+\int_{M}^{X}\phi(u)\,du+\int_{M}^{X}u\phi'(u)\,du \\
+        &+N\phi(Y)-N\phi(N)+\frac{\phi(Y)-\phi(N)}{2}-\int_{N}^{Y}\phi(u)\,du-\int_{N}^{Y}u\phi'(u)\,du.
+      \end{align*}
+      Two more applications of integration by parts shows that
+      \[
+        \int_{M}^{X}u\phi'(u)\,du = X\phi(X)-M\phi(M)-\int_{M}^{X}\phi(u)\,du,
+      \]
+      and
+      \[
+        \int_{N}^{Y}u\phi'(u)\,du = Y\phi(Y)-N\phi(N)-\int_{N}^{Y}\phi(u)\,du,
+      \]
+      whence
+      \begin{align*}
+        \int_{M}^{N}\phi(u)+\left(u-\lfloor u \rfloor-\frac{1}{2}\right)\phi'(u)\,du &= \frac{\phi(M)-\phi(N)}{2}+\left(X-M-\frac{1}{2}\right)\phi(X)-\left(Y-N-\frac{1}{2}\right)\phi(Y) \\
+        &+ \int_{X}^{Y}\phi(u)+\left(u-\lfloor u \rfloor-\frac{1}{2}\right)\phi'(u)\,du.
+      \end{align*}
+      Substituting this result back into our formula above gives
+      \[
+        \sum_{X < n \le Y}\phi(n) = \left(X-M-\frac{1}{2}\right)\phi(X)-\left(Y-N-\frac{1}{2}\right)\phi(Y)+\int_{X}^{Y}\phi(u)+\left(u-\lfloor u \rfloor-\frac{1}{2}\right)\phi'(u)\,du,
+      \]
+      which is equivalent to
+      \[
+        \sum_{X < n \le Y}\phi(n) = \left(X-\lfloor X \rfloor-\frac{1}{2}\right)\phi(X)-\left(Y-\lfloor Y \rfloor-\frac{1}{2}\right)\phi(Y)+\int_{X}^{Y}\phi(u)+\left(u-\lfloor u \rfloor-\frac{1}{2}\right)\phi'(u)\,du,
+      \]
+      since $M = \lfloor X \rfloor$ and $N = \lfloor Y \rfloor$, thus completing the proof.
+    \end{proof}
   \section{Integration Techniques and Transforms}
     \subsection*{Integration Techniques}
       Complex integrals are a core backbone of many number theory techniques. An extremely useful one is called \textbf{shifting the line of integration}\index{shifting the line of integration}:
