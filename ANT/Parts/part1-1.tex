@@ -1160,13 +1160,13 @@
     Both classical and partial sum summation by parts give ways of rewriting finite sums. If we want to express a finite sum in the form of an integral, we need to do more work. One of the most well-known results of this type is known as \textbf{Abel's summation formula}\index{Abel's summation formula}:
 
     \begin{theorem*}[Abel's summation formula]
-      Let $(a_{n})_{n \ge 1}$ be a sequence of complex numbers. For every $X$ and $Y$ with $0 \le X < Y$ and continuously differentiable function $\phi:[X,Y] \to \C$, we have
+      Let $(a_{n})_{n \ge 1}$ be a sequence of complex numbers. For any $X$ and $Y$ with $0 \le X < Y$ and continuously differentiable function $\phi:[X,Y] \to \C$, we have
       \[
         \sum_{X < n \le Y}a_{n}\phi(n) = A(Y)\phi(Y)-A(X)\phi(X)-\int_{X}^{Y}A(u)\phi'(u)\,du.
       \]
     \end{theorem*}
     \begin{proof}
-      Let $M = \lfloor X \rfloor$ and $N = \lfloor Y \rfloor$ so that $0 \le M \le B$. Then $X < n \le Y$ if and only if $M+1 \le n \le N$, so that partial sum summation by parts gives
+      Let $M = \lfloor X \rfloor$ and $N = \lfloor Y \rfloor$ so that $0 \le M \le N$. Then $X < n \le Y$ if and only if $M+1 \le n \le N$, so that partial sum summation by parts gives
       \[
         \sum_{X < n \le Y}a_{n}\phi(n) = A(N)\phi(N)-A(M)\phi(M)-\sum_{M \le n \le N-1}A(n)(\phi(n+1)-\phi(n)).
       \]
@@ -1194,43 +1194,52 @@
       which is the desired formula.
     \end{proof}
 
-    There are also some useful corollaries. On the one hand, if we let $X = 0$, so that $A(X) = 0$, we get the following:
+    There are also some useful corollaries. The first is when we sum every term up to $Y$:
 
     \begin{corollary}\label{cor:Abels_summation_formula_zero_version}
-      Let $(a_{n})_{n \ge 1}$ be a sequence of complex numbers. For every $Y > 0$ and continuously differentiable function $\phi:[0,Y] \to \C$, we have
+      Let $(a_{n})_{n \ge 1}$ be a sequence of complex numbers. For any $Y > 0$ and continuously differentiable function $\phi:(0,Y] \to \C$, we have
       \[
-        \sum_{n \le Y}a_{n}\phi(n) = A(Y)\phi(Y)-\int_{0}^{Y}A(u)\phi'(u)\,du.
+        \sum_{n \le Y}a_{n}\phi(n) = A(Y)\phi(Y)-\int_{1}^{Y}A(u)\phi'(u)\,du.
       \]
     \end{corollary}
+    \begin{proof}
+      This follows from Abel's summation formula upon letting $0 < X < 1$ and noting that $A(u) = 0$ on the interval $[0,1)$.
+    \end{proof}
     
-    On the other hand, if we take the limit as $Y \to \infty$ we obtain:
+    The second corollary is useful as it extends Abel's summation formula to infinite sums:
 
     \begin{corollary}\label{cor:Abels_summation_formula_limit_version}
-      Let $(a_{n})_{n \ge 1}$ be a sequence of complex numbers. For every $X \ge 0$ and continuously differentiable function $\phi:[X,\infty) \to \C$, we have
+      Let $(a_{n})_{n \ge 1}$ be a sequence of complex numbers. For any $X \ge 0$ and continuously differentiable function $\phi:[X,\infty) \to \C$, we have
       \[
         \sum_{n > X}a_{n}\phi(n) = \lim_{Y \to \infty}A(Y)\phi(Y)-A(X)\phi(X)-\int_{X}^{\infty}A(u)\phi'(u)\,du.
       \]
     \end{corollary}
+    \begin{proof}
+      This follows from Abel's summation formula upon taking the limit as $Y \to \infty$.
+    \end{proof}
 
-    Lastly, combining these cases by taking $X = 0$ and the limit as $Y \to \infty$, we arrive at the following result:
+    The last corollary is a combination of the former two:
 
     \begin{corollary}\label{cor:Abels_summation_formula_limit_version_specialization}
-      Let $(a_{n})_{n \ge 1}$ be a sequence of complex numbers. For every continuously differentiable function $\phi:[0,\infty) \to \C$, we have
+      Let $(a_{n})_{n \ge 1}$ be a sequence of complex numbers. For any continuously differentiable function $\phi:(0,\infty) \to \C$, we have
       \[
         \sum_{n \ge 1}a_{n}\phi(n) = \lim_{Y \to \infty}A(Y)\phi(Y)-\int_{1}^{\infty}A(u)\phi'(u)\,du.
       \]
     \end{corollary}
+    \begin{proof}
+       This follows from \cref{cor:Abels_summation_formula_zero_version} upon taking the limit as $Y \to \infty$.
+    \end{proof}
 
     Abel's summation formula and its corollaries are immensely useful for approximating finite or infinite sums by integrals. In the special case where $a_{n} = 1$ for $n \ge 1$, we are really estimating the sum of a continuously differentiable function at integer values. We can very well use Abel's summation formula here, but it's possible to improve the result by appealing to integration by parts. If we do this, we obtain a result known as the \textbf{Euler–Maclaurin summation formula}\index{Euler–Maclaurin summation formula}:
 
     \begin{theorem*}[Euler–Maclaurin summation formula]
-      For every $X$ and $Y$ with $0 \le X < Y$ and continuously differentiable function $\phi:[X,Y] \to \C$, we have
+      For any $X$ and $Y$ with $0 \le X < Y$ and continuously differentiable function $\phi:[X,Y] \to \C$, we have
       \[
         \sum_{X < n \le Y}\phi(n) = \left(X-\lfloor X \rfloor-\frac{1}{2}\right)\phi(X)-\left(Y-\lfloor Y \rfloor-\frac{1}{2}\right)\phi(Y)+\int_{X}^{Y}\phi(u)+\left(u-\lfloor u \rfloor-\frac{1}{2}\right)\phi'(u)\,du.
       \]
     \end{theorem*}
     \begin{proof}
-      Let $M = \lfloor X \rfloor$ and $N = \lfloor Y \rfloor$ so that $0 \le M \le B$. Then $X < n \le Y$ if and only if $M+1 \le n \le N$, so that partial sum summation by parts gives
+      Let $M = \lfloor X \rfloor$ and $N = \lfloor Y \rfloor$ so that $0 \le M \le N$. Then $X < n \le Y$ if and only if $M+1 \le n \le N$, so that partial sum summation by parts gives
       \[
         \sum_{X < n \le Y}\phi(n) = N\phi(N)-M\phi(M)-\sum_{M \le n \le N-1}n(\phi(n+1)-\phi(n)).
       \]
@@ -1305,6 +1314,30 @@
       \]
       since $M = \lfloor X \rfloor$ and $N = \lfloor Y \rfloor$, thus completing the proof.
     \end{proof}
+
+    Like Abel's summation formula, there are some useful corollaries. The first one is in the special case where both $X$ and $Y$ are integers:
+
+    \begin{corollary}\label{cor:Euler_Maclaurin_summation_formula_integer_version}
+      For any integers $M$ and $N$ with $0 \le M < N$ and continuously differentiable function $\phi:[M,N] \to \C$, we have
+      \[
+        \sum_{M < n \le N}\phi(n) = \frac{\phi(M)-\phi(N)}{2}+\int_{M}^{N}\phi(u)+\left(u-\lfloor u \rfloor-\frac{1}{2}\right)\phi'(u)\,du.
+      \]
+    \end{corollary}
+    \begin{proof}
+      This follows immediately from the Euler–Maclaurin summation formula since $M-\lfloor M \rfloor = 0$ and $N-\lfloor N \rfloor = 0$.
+    \end{proof}
+
+    The second corollary deals with infinite sums:
+
+    \begin{corollary}\label{cor:Euler_Maclaurin_summation_formula_integer_limit_version_specialization}
+      For any integer $M \ge 0$ and continuously differentiable function $\phi:[M,\infty) \to \C$, we have
+      \[
+        \sum_{n > M}\phi(n) = \lim_{N \to \infty}\frac{\phi(M)-\phi(N)}{2}+\int_{M}^{\infty}\phi(u)+\left(u-\lfloor u \rfloor-\frac{1}{2}\right)\phi'(u)\,du.
+      \]
+    \end{corollary}
+    \begin{proof}
+      This follows from \cref{cor:Euler_Maclaurin_summation_formula_integer_version} upon taking the limit as $N \to \infty$.
+    \end{proof} 
   \section{Integration Techniques and Transforms}
     \subsection*{Integration Techniques}
       Complex integrals are a core backbone of many number theory techniques. An extremely useful one is called \textbf{shifting the line of integration}\index{shifting the line of integration}:

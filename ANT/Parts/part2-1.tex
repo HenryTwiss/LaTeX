@@ -131,7 +131,7 @@
     \begin{proof}
       \cref{cor:Abels_summation_formula_zero_version} yields
       \begin{equation}\label{prop:Dirichlet_series_coefficient_size_on_average_1}
-        \sum_{n \le X}\frac{a(n)}{n^{\s_{a}+\e}} = A(X)X^{-(\s_{a}+\e)}+(\s_{a}+\e)\int_{0}^{X}A(u)u^{-(\s_{a}+\e+1)}\,du.
+        \sum_{n \le X}\frac{a(n)}{n^{\s_{a}+\e}} = A(X)X^{-(\s_{a}+\e)}+(\s_{a}+\e)\int_{1}^{X}A(u)u^{-(\s_{a}+\e+1)}\,du.
       \end{equation}
       If we set $R(u) = \sum_{n \ge u}\frac{a(n)}{n^{\s_{a}+\e}}$ then $a(n) = (R(n)-R(n+1))n^{\s_{a}+\e}$ and it follows that
       \[
@@ -139,23 +139,23 @@
       \]
       Substituting this into \cref{prop:Dirichlet_series_coefficient_size_on_average_1}, we obtain
       \[
-        \int_{0}^{X}\sum_{n \le u}(R(n)-R(n+1))n^{\s_{a}+\e}u^{-(\s_{a}+\e+1)}\,du.
+        \int_{1}^{X}\sum_{n \le u}(R(n)-R(n+1))n^{\s_{a}+\e}u^{-(\s_{a}+\e+1)}\,du.
       \]
-      As $R(n)$ is constant on the interval $[n,n+1)$, linearity of the integral implies
+      As $R(n)$ is constant on the interval $[n,n+1)$, we have
       \[
-        \int_{0}^{X}\sum_{n \le u}(R(n)-R(n+1))n^{\s_{a}+\e}u^{-(\s_{a}+\e+1)}\,du = \sum_{0 \le n \le X}(R(n)-R(n+1))n^{\s_{a}+\e}\int_{n}^{n+1}u^{-(\s_{a}+\e+1)}+O_{\e}(1),
+        \int_{1}^{X}\sum_{n \le u}(R(n)-R(n+1))n^{\s_{a}+\e}u^{-(\s_{a}+\e+1)}\,du = \sum_{1 \le n \le X}(R(n)-R(n+1))n^{\s_{a}+\e}\int_{n}^{n+1}u^{-(\s_{a}+\e+1)}+O_{\e}(1),
       \]
-      where the $O$-estimate is present since $X$ may not be an integer. Now $R(n) \ll_{\e} 1$ since it is the tail of $D(\s_{a}+\e)$ and moreover,
+      where the $O$-estimate is present as $X$ may not be an integer. Now $R(n) \ll_{\e} 1$ since it is the tail of $D(\s_{a}+\e)$ and moreover,
       \[
         \int_{n}^{n+1}u^{-(\s_{a}+\e+1)} = \frac{n^{-(\s_{a}+\e)}}{\s_{a}+\e}-\frac{(n+1)^{-(\s_{a}+\e)}}{\s_{a}+\e} \ll_{\e} 1,
       \]
       because $\s_{a}+\e > 0$. So
       \[
-        \int_{0}^{X}A(u)u^{-(\s_{a}+\e+1)}\,du = \int_{0}^{X}\sum_{n \le u}(R(n)-R(n+1))n^{\s_{a}+\e}u^{-(\s_{a}+\e+1)}\,du \ll_{\e} 1.
+        \int_{1}^{X}A(u)u^{-(\s_{a}+\e+1)}\,du = \int_{1}^{X}\sum_{n \le u}(R(n)-R(n+1))n^{\s_{a}+\e}u^{-(\s_{a}+\e+1)}\,du \ll_{\e} 1.
       \]
       Also, $\sum_{n \le X}\frac{a(n)}{n^{\s_{a}+\e}} \ll_{\e} 1$ because $D(\s_{a}+\e)$ converges. We conclude
       \[
-        A(X)X^{-(\s_{a}+\e)} = \sum_{n \le X}\frac{a(n)}{n^{\s_{a}+\e}}-(\s_{a}+\e)\int_{0}^{X}A(u)u^{-(\s_{a}+\e+1)}\,du. \ll_{\e} 1,
+        A(X)X^{-(\s_{a}+\e)} = \sum_{n \le X}\frac{a(n)}{n^{\s_{a}+\e}}-(\s_{a}+\e)\int_{1}^{X}A(u)u^{-(\s_{a}+\e+1)}\,du. \ll_{\e} 1,
       \]
       which is equivalent to the desired estimate.
     \end{proof}
@@ -170,9 +170,9 @@
       \[
         D(s) \ll \sum_{n \ge 1}\left|\frac{a(n)}{n^{s}}\right| = \sum_{n \ge 1}\frac{|a(n)|}{n^{\s}}.
       \]
-      Abel's summation formula gives
+      \cref{cor:Abels_summation_formula_zero_version} implies
       \[
-        \sum_{n \le N}\frac{|a(n)|}{n^{\s}} = |a(N)|N^{-\s}-|a(1)|+\s\int_{1}^{N}|A|(u)u^{-(\s+1)}\,du,
+        \sum_{n \le N}\frac{|a(n)|}{n^{\s}} = |a(N)|N^{-\s}+\s\int_{1}^{N}|A|(u)u^{-(\s+1)}\,du,
       \]
       By assumption $|A|(u) \ll_{\a} u^{\a}$ and so $a(N) \ll_{\a} N^{\a}$. Thus
       \[
