@@ -230,44 +230,67 @@
       by \cref{equ:discriminant_base_change} and that base change matrix from $\a_{1},\ldots,\a_{n}$ to $\l\a_{1},\ldots,\l\a_{n}$ is the multiplication by $\l$ map. \todo{xxx}
     \end{proof}
   \section{Moments}
-    Our first result only uses partial summation. We first prove a useful lemma:
+    Our first result only uses the Euler-Maclaurin summation formula summation and we use this summation formula to prove a useful lemma:
 
     \begin{lemma}\label{lem:weak_approximate_functional_equation_Riemann_zeta}
-      For $x \ge 1$ and $\s > 0$, we have
+      For any integer $N \ge 1$ and $\s > 0$, we have
       \[
-        \z(s) = \sum_{n < x}\frac{1}{n^{s}}-\frac{s}{(1-s)x^{s-1}}-s\int_{x}^{\infty}\frac{\{u\}}{u^{s+1}}\,du.
+        \z(s) = \sum_{n \le N}\frac{1}{n^{s}}+\frac{N^{-s}}{2}-\frac{N^{1-s}}{1-s}-s\int_{N}^{\infty}\left(u-\lfloor u \rfloor-\frac{1}{2}\right)u^{-(s+1)}\,du.
       \]
     \end{lemma}
     \begin{proof}
       First suppose $\s > 1$ and consider
       \[
-        \z(s)-\sum_{n < x}\frac{1}{n^{s}} = \sum_{n \ge x}\frac{1}{n^{s}}.
+        \z(s)-\sum_{n \le N}\frac{1}{n^{s}} = \sum_{n > N}\frac{1}{n^{s}}.
       \]
-      Applying Abel's summation formula (see \cref{cor:Abels_summation_formula_limit_version}) to the right-hand side gives
+      By \cref{cor:Euler_Maclaurin_summation_formula_integer_limit_version_specialization}, we can rewrite the sum on the right-hand side as
       \[
-        \z(s)-\sum_{n < x}\frac{1}{n^{s}} = \lim_{Y \to \infty}A(Y)Y^{-s}+s\int_{x}^{\infty}A(u)u^{-(s+1)}\,du.
+        \sum_{n > N}\frac{1}{n^{s}} = \lim_{M \to \infty}\frac{N^{-s}-M^{-s}}{2}+\int_{N}^{\infty}u^{-s}-s\left(u-\lfloor u \rfloor-\frac{1}{2}\right)u^{-(s+1)}\,du.
       \]
-      But as $A(x) = \lfloor x \rfloor$ and $\s > 1$, we find that $A(Y)Y^{-s} \to 0$ as $Y \to \infty$. In particular,
+      As $\s > 1$, $M^{-\s} \to 0$ as $M \to \infty$ so that
       \[
-        \z(s)-\sum_{n < x}\frac{1}{n^{s}} = s\int_{x}^{\infty}\frac{\lfloor u \rfloor}{u^{s+1}}\,du.
+        \sum_{n > N}\frac{1}{n^{s}} = \frac{N^{-s}}{2}+\int_{N}^{\infty}u^{-s}+\left(u-\lfloor u \rfloor-\frac{1}{2}\right)-su^{-(s+1)}\,du.
       \]
-      Isolating $\z(s)$ and noting that $\lfloor u \rfloor = u-\{u\}$ gives
+      Since
       \[
-        \z(s) = \sum_{n < x}\frac{1}{n^{s}}+s\int_{x}^{\infty}\frac{u-\{u\}}{u^{s+1}}\,du.
+        \int_{N}^{\infty}u^{-s}\,du = -\frac{N^{1-s}}{1-s},
       \]
-      But since
+      we further have
       \[
-        s\int_{x}^{\infty}\frac{u}{u^{s+1}}\,du = s\int_{x}^{\infty}\frac{1}{u^{s}}\,du = -\frac{s}{(1-s)x^{s-1}},
+        \sum_{n > N}\frac{1}{n^{s}} = \frac{N^{-s}}{2}-\frac{N^{1-s}}{1-s}-s\int_{N}^{\infty}\left(u-\lfloor u \rfloor-\frac{1}{2}\right)u^{-(s+1)}\,du.
       \]
-      we obtain
+      Therefore we arrive at
       \[
-        \z(s) = \sum_{n < x}\frac{1}{n^{s}}-\frac{s}{(1-s)x^{s-1}}-s\int_{x}^{\infty}\frac{\{u\}}{u^{s+1}}\,du,
+        \z(s) = \sum_{n \le N}\frac{1}{n^{s}}+\frac{N^{-s}}{2}-\frac{N^{1-s}}{1-s}-s\int_{N}^{\infty}\left(u-\lfloor u \rfloor-\frac{1}{2}\right)u^{-(s+1)}\,du,
       \]
-      for $\s > 1$. Since this is the desired formula, it remains to show that the right-hand side is meromorphic for $\s > 0$. Indeed, the first two terms are, with the second term having a simple pole at $s = 1$, so it suffices to show that the integral is. To do so we will show that the integral is locally absolutely uniformly convergent in this region. Indeed, let $K$ is a compact subset in this region and set $\a = \min_{s \in K}(\s)$ and $\b = \max_{s \in K}(|s|)$. Then we have to show that the integral is absolutely uniformly convergent on $K$. As $0 < \{u\} < 1$, we have
+      for $\s > 1$. Since this is the desired formula, it remains to show that the right-hand side is meromorphic for $\s > 0$. Indeed, the first three terms are, with the third term having a simple pole at $s = 1$, so it suffices to show that the integral is. To do so we will show that the integral is locally absolutely uniformly convergent in this region. Indeed, let $K$ is a compact subset in this region and set $\a = \min_{s \in K}(\s)$ and $\b = \max_{s \in K}(|s|)$. Then we have to show that the integral is absolutely uniformly convergent on $K$. As $\lfloor u \rfloor-u-\frac{1}{2} \ll 1$, we have
       \[
-        s\int_{x}^{\infty}\frac{\{u\}}{u^{s+1}}\,du \ll \b\int_{x}^{\infty}\frac{1}{u^{\a+1}}\,du = \frac{\b}{x^{\a}} \ll_{\a,\b} 1,
+        s\int_{N}^{\infty}\left(u-\lfloor u \rfloor-\frac{1}{2}\right)u^{-(s+1)}\,du \ll \b\int_{x}^{\infty}\frac{1}{u^{\a+1}}\,du = \frac{\b}{x^{\a}} \ll_{\a,\b} 1,
       \]
       as desired. Therefore the formula holds for $\s > 0$.
+    \end{proof}
+    
+    Our first result shows that $M_{2}(T,\z)$ satisfies the bound required for \cref{prop:equivalence_Lindelof_hypothesis_and_moments}:
+
+    \begin{theorem}\label{thm:second_moment_of_Riemann_zeta_big_O}
+      For $T > 2$,
+      \[
+        M_{2}(T,\z) = O(T\log(T)).
+      \]
+    \end{theorem}
+    \begin{proof}
+      From \cref{lem:weak_approximate_functional_equation_Riemann_zeta}, we have
+      \[
+        \z(s) = \sum_{n \le N}\frac{1}{n^{s}}+\frac{N^{-s}}{2}-\frac{N^{1-s}}{1-s}-s\int_{N}^{\infty}\left(u-\lfloor u \rfloor-\frac{1}{2}\right)u^{-(s+1)}\,du,
+      \]
+      for $\s > 0$. As $\lfloor u \rfloor-u-\frac{1}{2} \ll 1$, we have 
+      \[
+        s\int_{N}^{\infty}\left(u-\lfloor u \rfloor-\frac{1}{2}\right)u^{-(s+1)}\,du = O\left(|s|\int_{N}^{\infty}u^{-(\s+1)}\,du\right) = O\left(\frac{|s|N^{-\s}}{\s}\right).
+      \]
+      Taking $s = \frac{1}{2}+it$ and $N = t$ for $t \ge 2$, we obtain the estimate
+      \[
+        \z\left(\frac{1}{2}+it\right) = \sum_{n \le t}\frac{1}{n^{\frac{1}{2}+it}}+O\left(\frac{1}{\sqrt{t}}\right)+
+      \]
     \end{proof}
 
     We can now prove our first result concerning the second moment of the Riemann zeta function:
