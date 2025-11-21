@@ -1,0 +1,42 @@
+\documentclass[12pt,oneside]{article}
+\usepackage{import}
+\input{preamble}
+
+%=================%
+%  Title & Index  %
+%=================%
+\title{ANT i}
+\author{Henry Twiss}
+\date{2025}
+\makeindex
+
+\begin{document}
+
+Here is a series of exercises proving various summation formulas. For any sequence $(a_{n})_{n \ge 1}$ of complex numbers and $X > 0$, set
+$X \ge 0$ let
+\[
+    A(X) = \sum_{n \le X}a_{n}.
+\]
+\begin{enumerate}
+  \item Summation by parts: Let $(a_{n})_{n \ge 1}$ and $(b_{n})_{n \ge 1}$ be two sequences of complex numbers. Then for any positive integers $N$ and $M$ with $1 \le M \le N$, prove that
+  \[
+    \sum_{M \le n \le N}a_{n}(b_{n+1}-b_{n}) = (a_{N+1}b_{N+1}-a_{M}b_{M})-\sum_{M \le n \le N}b_{n+1}(a_{n+1}-a_{n}).
+  \]
+  \item Summation by parts: Let $(a_{n})_{n \ge 1}$ and $(b_{n})_{n \ge 0}$ be two sequences of complex numbers. Then for any integers $M$ and $N$ with $0 \le M \le N$, prove that
+  \[
+    \sum_{M+1 \le n \le N}a_{n}b_{n} = A(N)b_{N}-A(M)b_{M}-\sum_{M \le n \le N-1}A(n)(b_{n+1}-b_{n}).
+  \]
+  \item Abel's summation formula: Let $(a_{n})_{n \ge 1}$ be a sequence of complex numbers. For any $X$ and $Y$ with $0 \le X < Y$ and continuously differentiable function $\phi:[X,Y] \to \C$, prove that
+  \[
+    \sum_{X < n \le Y}a_{n}\phi(n) = A(Y)\phi(Y)-A(X)\phi(X)-\int_{X}^{Y}A(u)\phi'(u)\,du.
+  \]
+  \textit{Hint: First prove in the case $X = M$ and $Y = N$. Then try to generalize by letting $M = \lfloor X \rfloor$ and $N = \lfloor Y \rfloor$. For the first case, start by using summation by parts.}
+  \item Euler-Maclaurin summation formula: For any $X$ and $Y$ with $0 \le X < Y$ and continuously differentiable function $\phi:[X,Y] \to \C$, we have
+  \[
+    \sum_{X < n \le Y}\phi(n) = \left(X-\lfloor X \rfloor-\frac{1}{2}\right)\phi(X)-\left(Y-\lfloor Y \rfloor-\frac{1}{2}\right)\phi(Y)+\int_{X}^{Y}\phi(u)+\left(u-\lfloor u \rfloor-\frac{1}{2}\right)\phi'(u)\,du.
+  \]
+  \textit{Hint: Start as you would in proving Abel's summation formula but then try applying integration by parts.}
+  \item Use the Euler-Maclaurin summation formula to obtain an integral representation for $\z(s)$ that is meromorphic for $\s > 0$. Could you continue further? How?
+\end{enumerate}
+
+\end{document}
