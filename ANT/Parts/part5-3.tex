@@ -1,7 +1,7 @@
 \chapter{Moment Results}
   Obtaining any type of moment result is, generally speaking, a very difficult task requiring delicate analytic techniques. Since moments of $L$-functions are still a modern topic of research, there is not yet a universal theory to obtain such results. Even worse, currently methods almost only work when $k \le 4$. So, rather than trying to develop a general theory, we highlight some infamous moment results and their techniques.
   \section{The Second Moment of the Riemann Zeta Function}
-    We will discuss two results of increasing strength concerning the second moment of the Riemann zeta function. The primary aim here is to illustrate how inputting more refined analytic data results in improved asymptotics. In particular, will prove the infamous result of Hardy and Littlewood (see \cite{hardy1916contributions}). Throughout, it will be useful to recall that
+    We will discuss the second moment of the Riemann zeta function. Of primary importance is to prove the infamous result of Hardy and Littlewood (see \cite{hardy1916contributions}). Of secondary importance is to illustrate where the primary obstructions appear in the proof and how inputting more refined analytic data will lead to improved asymptotics. Throughout, it will be useful to recall that
     \begin{equation}\label{equ:approximation_for_harmonic_sums}
       \sum_{n \ll N}\frac{1}{n} = \log(N)+O(1),
     \end{equation}
@@ -9,190 +9,14 @@
     \[
       \g = \lim_{N \to \infty}\left(\sum_{n \le N}\frac{1}{n}-\log(N)\right).
     \]
-    Our first result will only require the Euler-Maclaurin summation formula. However, we first need the following lemma:
-
-    \begin{lemma}\label{lem:weak_approximate_functional_equation_Riemann_zeta}
-      For any $X > 0$ and fixed $\d > 0$, we have
-      \[
-        \z(s) = \sum_{n \le X}\frac{1}{n^{s}}-\frac{X^{1-s}}{1-s}+O\left(\frac{1}{X^{\s}}\right),
-      \]
-      provided $\d < \s < 1$ and $t \ll X$.
-    \end{lemma}
-    \begin{proof}
-      Let $N$ be an integer such that $N > X$, take $\s > 1$, and consider
-      \[
-        \z(s)-\sum_{n \le N}\frac{1}{n^{s}} = \sum_{n > N}\frac{1}{n^{s}}.
-      \]
-      As $A(M) \le M$ and $\s > 1$, we have $A(M)M^{-s} \to 0$ as $M \to \infty$. Then \cref{cor:Euler_Maclaurin_summation_formula_integer_limit_version_specialization} implies that we can rewrite the sum on the right-hand side as
-      \[
-        \sum_{n > N}\frac{1}{n^{s}} = \frac{N^{-s}}{2}+\int_{N}^{\infty}u^{-s}+\left(u-\lfloor u \rfloor-\frac{1}{2}\right)-su^{-(s+1)}\,du.
-      \]
-      Since
-      \[
-        \int_{N}^{\infty}u^{-s}\,du = -\frac{N^{1-s}}{1-s},
-      \]
-      we further have
-      \[
-        \sum_{n > N}\frac{1}{n^{s}} = \frac{N^{-s}}{2}-\frac{N^{1-s}}{1-s}-s\int_{N}^{\infty}\left(u-\lfloor u \rfloor-\frac{1}{2}\right)u^{-(s+1)}\,du.
-      \]
-      Therefore we arrive at
-      \begin{equation}\label{equ:weak_approximate_functional_equation_Riemann_zeta_1}
-        \z(s) = \sum_{n \le N}\frac{1}{n^{s}}+\frac{N^{-s}}{2}-\frac{N^{1-s}}{1-s}-s\int_{N}^{\infty}\left(u-\lfloor u \rfloor-\frac{1}{2}\right)u^{-(s+1)}\,du,
-      \end{equation}
-      for $\s > 1$. In fact, the right-hand side of \cref{equ:weak_approximate_functional_equation_Riemann_zeta_1} is meromorphic for $\s > 0$. Indeed, as the first three terms are with the third term having a simple pole at $s = 1$, so it suffices to show that the integral is as well. To do so we will show that the integral is locally absolutely uniformly convergent in this region. Indeed, let $K$ is a compact subset in this region and set $\a = \min_{s \in K}(\s)$ and $\b = \max_{s \in K}(|s|)$. Then we have to show that the integral is absolutely uniformly convergent on $K$. As $\lfloor u \rfloor-u-\frac{1}{2} \ll 1$, we have
-      \[
-        s\int_{N}^{\infty}\left(u-\lfloor u \rfloor-\frac{1}{2}\right)u^{-(s+1)}\,du \ll \b\int_{x}^{\infty}\frac{1}{u^{\a+1}}\,du = \frac{\b}{\a x^{\a}} \ll_{\a,\b} 1,
-      \]
-      as desired. Therefore \cref{equ:weak_approximate_functional_equation_Riemann_zeta_1} for $\s > 0$. Now let $\d < \s < 1$ and $t \ll X$. Then $|s| \ll X$ and $\s$ is bounded away from zero. From the analogous estimate
-      \begin{equation}\label{equ:weak_approximate_functional_equation_Riemann_zeta_2}
-        s\int_{N}^{\infty}\left(u-\lfloor u \rfloor-\frac{1}{2}\right)u^{-(s+1)}\,du \ll |s|\int_{N}^{\infty}\frac{1}{u^{\s+1}}\,du \ll \frac{|s|}{N^{\s}},
-      \end{equation}
-      and \cref{equ:weak_approximate_functional_equation_Riemann_zeta_1}, we arrive at
-      \begin{equation}\label{equ:weak_approximate_functional_equation_Riemann_zeta_3}
-        \z(s) = \sum_{n \le N}\frac{1}{n^{s}}-\frac{N^{1-s}}{1-s}+O\left(\frac{|s|+1}{N^{\s}}\right).
-      \end{equation}
-      We will refine \cref{equ:weak_approximate_functional_equation_Riemann_zeta_3} by truncating the remaining sum. Write
-      \[
-        \sum_{n \le N}\frac{1}{n^{s}} = \sum_{n \le X}\frac{1}{n^{s}}+\sum_{X < n \le N}\frac{1}{n^{s}}.
-      \]
-      Applying the Euler-Maclaurin summation formula to the last sum gives
-      \begin{equation}\label{equ:weak_approximate_functional_equation_Riemann_zeta_4}
-        \begin{aligned}
-          \sum_{X < n \le N}\frac{1}{n^{s}} &= \left(X-\lfloor X \rfloor-\frac{1}{2}\right)X^{-s}+\frac{1}{2}N^{-s} \\
-          &+ \int_{X}^{N}u^{-s}\,du-s\int_{X}^{N}\left(u-\lfloor u \rfloor-\frac{1}{2}\right)u^{-(s+1)}\,du.
-        \end{aligned}
-      \end{equation}
-      Now observe
-      \begin{equation}\label{equ:weak_approximate_functional_equation_Riemann_zeta_5}
-        \int_{X}^{N}u^{-s}\,du = \frac{N^{1-s}}{1-s}-\frac{X^{1-s}}{1-s}.
-      \end{equation}
-      Inserting the estimates in \cref{equ:weak_approximate_functional_equation_Riemann_zeta_2,equ:weak_approximate_functional_equation_Riemann_zeta_5} into \cref{equ:weak_approximate_functional_equation_Riemann_zeta_4} yields
-      \begin{equation}\label{equ:weak_approximate_functional_equation_Riemann_zeta_6}
-        \sum_{X < n \le N}\frac{1}{n^{s}} = \frac{N^{1-s}}{1-s}-\frac{X^{1-s}}{1-s}+O\left(\frac{|s|}{N^{\s}}+\frac{1}{X^{\s}}\right),
-      \end{equation}
-      where we have also used the fact that $\left(X-\lfloor X \rfloor-\frac{1}{2}\right)X^{-s} \ll \frac{1}{X^{\s}}$. Upon combining \cref{equ:weak_approximate_functional_equation_Riemann_zeta_3,equ:weak_approximate_functional_equation_Riemann_zeta_6}, we have
-      \[
-        \z(s) = \sum_{n \le X}\frac{1}{n^{s}}-\frac{X^{1-s}}{1-s}+O\left(\frac{|s|}{N^{\s}}+\frac{1}{X^{\s}}\right).
-      \]
-      Taking the limit as $N \to \infty$ completes the proof.
-    \end{proof}
-    
-    \cref{lem:weak_approximate_functional_equation_Riemann_zeta} can be thought of as a weak approximate functional equation for the Riemann zeta function. Our first result bounds the growth rate of $M_{2}(T,\z)$ only using \cref{lem:weak_approximate_functional_equation_Riemann_zeta}:
-
-    \begin{theorem}\label{thm:second_moment_of_Riemann_zeta_big_O}
-      For $T > 2$,
-      \[
-        M_{2}(T,\z) = O(T\log(T)).
-      \]
-    \end{theorem}
-    \begin{proof}
-      Taking $s = \frac{1}{2}+it$ and $X = t$ for $t \ge 2$ in \cref{lem:weak_approximate_functional_equation_Riemann_zeta} gives
-      \[
-        \z\left(\frac{1}{2}+it\right) = \sum_{n \le t}\frac{1}{n^{\frac{1}{2}+it}}-\frac{t^{\frac{1}{2}-it}}{\frac{1}{2}-it}+O\left(\frac{1}{\sqrt{t}}\right).
-      \]
-      This implies the weaker estimate
-      \begin{equation}\label{equ:second_moment_of_Riemann_zeta_big_O_1}
-        \z\left(\frac{1}{2}+it\right) = \sum_{n \le t}\frac{1}{n^{\frac{1}{2}+it}}+O\left(\frac{1}{\sqrt{t}}\right).
-      \end{equation}
-      Applying \cref{equ:second_moment_of_Riemann_zeta_big_O_1} to the definition of $M_{2}(T,\z)$ and recalling that $\z\left(\frac{1}{2}+it\right)$ is absolutely bounded for $0 \le t \le 2$, yields
-      \begin{equation}\label{equ:second_moment_of_Riemann_zeta_big_O_2}
-        \begin{aligned}
-          M_{2}(T,\z) &= \int_{2}^{T}\left|\sum_{n \le t}\frac{1}{n^{\frac{1}{2}+it}}\right|^{2}\,dt \\
-          &+ O\left(\int_{2}^{T}\left|\sum_{n \le t}\frac{1}{n^{\frac{1}{2}+it}}\right|\frac{1}{\sqrt{t}}\,dt\right)+O\left(\int_{2}^{T}\frac{1}{t}\,dt\right).
-        \end{aligned}
-      \end{equation}
-      We will now simplify \cref{equ:second_moment_of_Riemann_zeta_big_O_2}. For the second term, the Cauchy-Schwarz inequality gives
-      \begin{align*}
-        \int_{2}^{T}\left|\sum_{n \le t}\frac{1}{n^{\frac{1}{2}+it}}\right|\frac{1}{\sqrt{t}}\,dt &= O\left(\left(\int_{2}^{T}\left|\sum_{n \le t}\frac{1}{n^{\frac{1}{2}+it}}\right|^{2}\int_{2}^{T}\frac{1}{t}\,dt\right)^{\frac{1}{2}}\right) \\
-        &= O\left(\left(\int_{2}^{T}\left|\sum_{n \le t}\frac{1}{n^{\frac{1}{2}+it}}\right|^{2}\,dt\right)^{\frac{1}{2}}\sqrt{\log(T)}\right),
-      \end{align*}
-      where in the second line we have made use of the estimate
-      \[
-        \int_{2}^{T}\frac{1}{t}\,dt = O(\log(T)).
-      \]
-      Applying this latter estimate to third term as well, \cref{equ:second_moment_of_Riemann_zeta_big_O_2} becomes
-      \begin{equation}\label{equ:second_moment_of_Riemann_zeta_big_O_3}
-        \begin{aligned}
-          M_{2}(T,\z) &= \int_{2}^{T}\left|\sum_{n \le t}\frac{1}{n^{\frac{1}{2}+it}}\right|^{2}\,dt \\
-          &+ O\left(\left(\int_{2}^{T}\left|\sum_{n \le t}\frac{1}{n^{\frac{1}{2}+it}}\right|^{2}\,dt\right)^{\frac{1}{2}}\sqrt{\log(T)}\right)+O(\log(T)).
-        \end{aligned}
-      \end{equation}
-      Therefore, it suffices to show that the remaining integral is $O\left(T\log(T)\right)$. We first expand the sum and interchange it with the integral by the Fubini-Tonelli theorem:
-      \begin{equation}\label{equ:second_moment_of_Riemann_zeta_big_O_4}
-        \begin{aligned}
-           \int_{2}^{T}\left|\sum_{n \le t}\frac{1}{n^{\frac{1}{2}+it}}\right|^{2} &= \int_{2}^{T}\sum_{n,m \le t}\frac{1}{n^{\frac{1}{2}+it}m^{\frac{1}{2}-it}}\,dt \\
-          &= \sum_{n,m \le T}\int_{\max(m,n,2)}^{T}\frac{1}{n^{\frac{1}{2}+it}m^{\frac{1}{2}-it}}\,dt \\
-          &= \sum_{n \le T}\frac{T-n}{n}+ \sum_{\substack{n,m \le T \\ n \neq m}}\frac{1}{\sqrt{nm}}\int_{\max(n,m,2)}^{T}\left(\frac{m}{n}\right)^{it}\,dt \\
-          &= T\sum_{n \le T}\frac{1}{n}+O\left(\sum_{n \le T}1\right)+\left(\sum_{\substack{n,m \le T \\ n \neq m}}\frac{1}{\sqrt{nm}\log\left(\frac{m}{n}\right)}\right),
-        \end{aligned}
-      \end{equation}
-      where in the second to last line we have separated the terms for which $n = m$ or not. We now estimate all of the remaining terms in \cref{equ:second_moment_of_Riemann_zeta_big_O_4}. For the first term, by \cref{equ:approximation_for_harmonic_sums} we have
-      \begin{equation}\label{equ:second_moment_of_Riemann_zeta_big_O_5}
-        T\sum_{n \le T}\frac{1}{n} = T\log(T)+O(T) = O(T\log(T)).
-      \end{equation}
-      The second term is easier since
-      \begin{equation}\label{equ:second_moment_of_Riemann_zeta_big_O_6}
-        \sum_{n \le T}1 = O(T) = O(T\log(T)).
-      \end{equation}
-      For the last term, separate the sum into the terms for which $n < \frac{m}{2}$ or not, so that
-      \begin{equation}\label{equ:second_moment_of_Riemann_zeta_big_O_7}
-        \sum_{\substack{n,m \le T \\ n \neq m}}\frac{1}{\sqrt{nm}\log\left(\frac{m}{n}\right)} = \sum_{\substack{n,m \le T \\ n < \frac{m}{2}}}\frac{1}{\sqrt{nm}\log\left(\frac{m}{n}\right)}+\sum_{\substack{n,m \le T \\ n \ge \frac{m}{2} \\ n \neq m}}\frac{1}{\sqrt{nm}\log\left(\frac{m}{n}\right)}.
-      \end{equation}
-      In the first sum on the right-hand side of \cref{equ:second_moment_of_Riemann_zeta_big_O_7} we have $\log\left(\frac{m}{n}\right) \ge \log\left(2\right)$ so that $\log\left(\frac{m}{n}\right)$ is bounded from below. Hence
-      \[
-        \sum_{\substack{n,m \le T \\ n < \frac{m}{2}}}\frac{1}{\sqrt{nm}\log\left(\frac{m}{n}\right)} = O\left(\sum_{\substack{n,m \le T \\ n < \frac{m}{2}}}\frac{1}{\sqrt{nm}}\right) = O\left(\left(\sum_{n \le T}\frac{1}{\sqrt{n}}\right)^{2}\right).
-      \]
-      But as
-      \[
-        \sum_{n \le T}\frac{1}{\sqrt{n}} = O\left(\int_{1}^{T}\frac{1}{\sqrt{x}}\,dx\right) = O(\sqrt{T}),
-      \]
-      we find that
-      \begin{equation}\label{equ:second_moment_of_Riemann_zeta_big_O_8}
-        \sum_{\substack{n,m \le T \\ n < \frac{m}{2}}}\frac{1}{\sqrt{nm}\log\left(\frac{m}{n}\right)} = O(T) = O(T\log(T)).
-      \end{equation}
-      For the second sum, write $n = m-r$ where $1 \le r \le \frac{m}{2}$ so that $\log\left(\frac{m}{n}\right) = \log\left(\frac{m}{m-r}\right) = -\log(1-\frac{r}{m}) \ge \frac{r}{m}$ where the inequality follows from the Taylor series of the logarithm. Whence
-      \[
-        \sum_{\substack{n,m \le T \\ n \ge \frac{m}{2} \\ n \neq m}}\frac{1}{\sqrt{nm}\log\left(\frac{m}{n}\right)} = O\left(\sum_{m \le T}\sum_{r \le \frac{m}{2}}\frac{m}{r\sqrt{m(m-r)}}\right) = O\left(\sum_{m \le T}\sum_{r \le \frac{m}{2}}\frac{1}{r}\right).
-      \]
-      To estimate the double sum, using \cref{equ:approximation_for_harmonic_sums} again, we have
-      \[
-        \sum_{r \le \frac{m}{2}}\frac{1}{r} = \log(m)+O(1).
-      \]
-      This estimate together with
-      \[
-        \sum_{m \le T}\log(m)+O(1) = T\log(T)+O(T) = O(T\log(T)),
-      \]
-      gives
-      \begin{equation}\label{equ:second_moment_of_Riemann_zeta_big_O_9}
-        \sum_{\substack{n,m \le T \\ n \ge \frac{m}{2} \\ n \neq m}}\frac{1}{\sqrt{nm}\log\left(\frac{m}{n}\right)} = O(T\log(T)).
-      \end{equation}
-      Substituting \cref{equ:second_moment_of_Riemann_zeta_big_O_8,equ:second_moment_of_Riemann_zeta_big_O_9} into \cref{equ:second_moment_of_Riemann_zeta_big_O_7} yields
-      \begin{equation}\label{equ:second_moment_of_Riemann_zeta_big_O_10}
-        \sum_{\substack{n,m \le T \\ n \neq m}}\frac{1}{\sqrt{nm}\log\left(\frac{m}{n}\right)} = O(T\log(T)).
-      \end{equation}
-      Then \cref{equ:second_moment_of_Riemann_zeta_big_O_5,equ:second_moment_of_Riemann_zeta_big_O_6,equ:second_moment_of_Riemann_zeta_big_O_10} together with \cref{equ:second_moment_of_Riemann_zeta_big_O_4} yields
-      \begin{equation}\label{equ:second_moment_of_Riemann_zeta_big_O_11}
-        \int_{2}^{T}\left|\sum_{n \le t}\frac{1}{n^{\frac{1}{2}+it}}\right|^{2} = O(T\log(T)).
-      \end{equation}
-      Applying \cref{equ:second_moment_of_Riemann_zeta_big_O_11} to \cref{equ:second_moment_of_Riemann_zeta_big_O_3}, we at last obtain
-      \[
-        M_{2}(T,\z) = O(T\log(T))+O(\sqrt{T}\log(T))+O(T) = O(T\log(T)),
-      \]
-      as desired.
-    \end{proof}
-
-    As $\log(T) \ll_{\e} T^{\e}$, \cref{thm:second_moment_of_Riemann_zeta_big_O} already implies the required estimate needed for the second moment in \cref{prop:equivalence_Lindelof_hypothesis_and_moments} in the case of the Riemann zeta function. We can also improve \cref{thm:second_moment_of_Riemann_zeta_big_O} to asymptotic equivalence, but this requires the approximate functional equation for the Riemann zeta function. The essential reason is that the main contributions from the resulting the asymptotic, namely \cref{equ:second_moment_of_Riemann_zeta_big_O_1}, in $M_{2}(T,\z)$ come from the terms in
-    \[
-      \int_{2}^{T}\left|\sum_{n \le t}\frac{1}{n^{\frac{1}{2}+it}}\right|^{2} = \int_{2}^{T}\sum_{n,m \le t}\frac{1}{n^{\frac{1}{2}+it}m^{\frac{1}{2}-it}}\,dt,
-    \]
-    when $n = m$ and when $n \ge \frac{m}{2}$ but $n \neq m$. The corresponding sums are
-    \[
-      T\sum_{n \le T}\frac{1}{n} \quad \text{and} \quad \sum_{\substack{n,m \le T \\ n \ge \frac{m}{2} \\ n \neq m}}\frac{1}{\sqrt{nm}\log\left(\frac{m}{n}\right)},
-    \]
-    and are estimated in \cref{equ:second_moment_of_Riemann_zeta_big_O_5,equ:second_moment_of_Riemann_zeta_big_O_9} respectively. In order to obtain asymptotic equivalence we need to shorten these sums so that one of them is $o(T\log(T))$. In effect, the sum in \cref{lem:weak_approximate_functional_equation_Riemann_zeta} must be shortened. We will demonstrate this by improving \cref{thm:second_moment_of_Riemann_zeta_big_O} to the infamous result of Hardy and Littlewood (see \cite{hardy1916contributions}):
+    The aforementioned result of Hardy and Littlewood (see \cite{hardy1916contributions}) is an asymptotic equivalence for $M_{2}(T,\z)$. Actually, we prove something slightly stronger:
 
     \begin{theorem}\label{thm:second_moment_of_Riemann_zeta_asymptotic_equivalence}
       For $T > 2$,
+      \[
+        M_{2}(T,\z) = T\log(T)+O\left(T\log^{\frac{3}{4}}(T)\right).
+      \]
+      In particular,
       \[
         M_{2}(T,\z) \sim T\log(T).
       \]
@@ -231,14 +55,14 @@
       \[
         \int_{2}^{T}\sqrt{\log(t)}\,dt = T\sqrt{\log(T)}+O\left(\int_{2}^{T}\frac{1}{\sqrt{\log(t)}}\,dt\right) = T\sqrt{\log(T)}+O(T) = O\left(T\sqrt{\log(T)}\right),
       \]
-      which follows from an application of integration by parts. In fact, this estimate shows that the integral is also $o(T\log(T))$. Applying this latter estimate to third term as well, \cref{equ:second_moment_zeta_asymptotic_equivalence_2} becomes
+      which follows from an application of integration by parts. Applying this estimate to third term as well, \cref{equ:second_moment_zeta_asymptotic_equivalence_2} becomes
       \begin{equation}\label{equ:second_moment_zeta_asymptotic_equivalence_3}
         \begin{aligned}
           M_{2}(T,\z) &= \int_{2}^{T}\left|\sum_{n \ll \frac{t}{\sqrt{\log(t)}}}\frac{1}{n^{\frac{1}{2}+it}}\right|^{2}\,dt \\
-          &+ O\left(\left(\int_{2}^{T}\left|\sum_{n \ll \frac{t}{\sqrt{\log(t)}}}\frac{1}{n^{\frac{1}{2}+it}}\right|^{2}\,dt\right)^{\frac{1}{2}}\sqrt{T}\log^{\frac{1}{4}}(T)\right)+o(T\log(T)).
+          &+ O\left(\left(\int_{2}^{T}\left|\sum_{n \ll \frac{t}{\sqrt{\log(t)}}}\frac{1}{n^{\frac{1}{2}+it}}\right|^{2}\,dt\right)^{\frac{1}{2}}\sqrt{T}\log^{\frac{1}{4}}(T)\right)+O\left(T\sqrt{\log(T)}\right).
         \end{aligned}
       \end{equation}
-      Therefore, it suffices to show that the remaining integral is asymptotically equivalent to $T\log(T)$. We first expand the sum and interchange it with the integral by the Fubini-Tonelli theorem:
+      We now show that the remaining integral is asymptotically equivalent to $T\log(T)$. We first expand the sum and interchange it with the integral by the Fubini-Tonelli theorem to get
       \begin{equation}\label{equ:second_moment_zeta_asymptotic_equivalence_4}
         \begin{aligned}
            \int_{2}^{T}\left|\sum_{n \ll \frac{t}{\sqrt{\log(t)}}}\frac{1}{n^{\frac{1}{2}+it}}\right|^{2} &= \int_{2}^{T}\sum_{n,m \ll \frac{t}{\sqrt{\log(t)}}}\frac{1}{n^{\frac{1}{2}+it}m^{\frac{1}{2}-it}}\,dt \\
@@ -249,11 +73,11 @@
       \end{equation}
       where in the third line we have separated the terms for which $n = m$ or not. We now estimate all of the remaining terms in \cref{equ:second_moment_zeta_asymptotic_equivalence_4}. For the first term, by \cref{equ:approximation_for_harmonic_sums} we have
       \begin{equation}\label{equ:second_moment_zeta_asymptotic_equivalence_5}
-        T\sum_{n \ll \frac{T}{\sqrt{\log(T)}}}\frac{1}{n} = T\log\left(\frac{T}{\sqrt{\log(T)}}\right)+O(T) = T\log(T)+o(T\log(T)).
+        T\sum_{n \ll \frac{T}{\sqrt{\log(T)}}}\frac{1}{n} = T\log\left(\frac{T}{\sqrt{\log(T)}}\right)+O(T) = T\log(T)+O(T\log\log(T)).
       \end{equation}
       The second term is easier since
       \begin{equation}\label{equ:second_moment_zeta_asymptotic_equivalence_6}
-        \sum_{n \ll \frac{T}{\sqrt{\log(T)}}}1 = O\left(\frac{T}{\sqrt{\log(T)}}\right) = O(T) = o(T\log(T)).
+        \sum_{n \ll \frac{T}{\sqrt{\log(T)}}}1 = O\left(\frac{T}{\sqrt{\log(T)}}\right) = O(T).
       \end{equation}
       For the last term, separate the sum into the terms for which $n < \frac{m}{2}$ or not, so that
       \begin{equation}\label{equ:second_moment_zeta_asymptotic_equivalence_7}
@@ -267,9 +91,9 @@
       \[
         \sum_{n \ll \frac{T}{\sqrt{\log(T)}}}\frac{1}{\sqrt{n}} = O\left(\int_{1}^{\frac{T}{\sqrt{\log(T)}}}\frac{1}{\sqrt{x}}\,dx\right) = O\left(\frac{\sqrt{T}}{\log^{\frac{1}{4}}(T)}\right),
       \]
-      we find that
+      upon combining the previous two estimates, we find that
       \begin{equation}\label{equ:second_moment_zeta_asymptotic_equivalence_8}
-        \sum_{\substack{n,m \ll \frac{T}{\sqrt{\log(T)}} \\ n < \frac{m}{2}}}\frac{1}{\sqrt{nm}\log\left(\frac{m}{n}\right)} = O\left(\frac{T}{\sqrt{\log(T)}}\right) = o(T\log(T)).
+        \sum_{\substack{n,m \ll \frac{T}{\sqrt{\log(T)}} \\ n < \frac{m}{2}}}\frac{1}{\sqrt{nm}\log\left(\frac{m}{n}\right)} = O\left(\frac{T}{\sqrt{\log(T)}}\right).
       \end{equation}
       For the second sum, write $n = m-r$ where $1 \le r \le \frac{m}{2}$ so that $\log\left(\frac{m}{n}\right) = \log\left(\frac{m}{m-r}\right) = -\log(1-\frac{r}{m}) \ge \frac{r}{m}$ where the inequality follows from the Taylor series of the logarithm. Whence
       \[
@@ -281,28 +105,34 @@
       \]
       This estimate together with
       \[
-        \sum_{m \ll \frac{T}{\sqrt{\log(T)}}}\log(m)+O(1) = \frac{T}{\sqrt{\log(T)}}\log\left(\frac{T}{\sqrt{\log(T)}}\right)+O\left(\frac{T}{\sqrt{\log(T)}}\right) = o(T\log(T)),
+        \sum_{m \ll \frac{T}{\sqrt{\log(T)}}}\log(m)+O(1) = \frac{T}{\sqrt{\log(T)}}\log\left(\frac{T}{\sqrt{\log(T)}}\right)+O\left(\frac{T}{\sqrt{\log(T)}}\right) = O\left(T\sqrt{\log(T)}\right),
       \]
       gives
       \begin{equation}\label{equ:second_moment_zeta_asymptotic_equivalence_9}
-        \sum_{\substack{n,m \ll \frac{T}{\sqrt{\log(T)}} \\ n \ge \frac{m}{2} \\ n \neq m}}\frac{1}{\sqrt{nm}\log\left(\frac{m}{n}\right)} = o(T\log(T)).
+        \sum_{\substack{n,m \ll \frac{T}{\sqrt{\log(T)}} \\ n \ge \frac{m}{2} \\ n \neq m}}\frac{1}{\sqrt{nm}\log\left(\frac{m}{n}\right)} = O\left(T\sqrt{\log(T)}\right).
       \end{equation}
       Substituting \cref{equ:second_moment_zeta_asymptotic_equivalence_8,equ:second_moment_zeta_asymptotic_equivalence_9} into \cref{equ:second_moment_zeta_asymptotic_equivalence_7} yields
       \begin{equation}\label{equ:second_moment_zeta_asymptotic_equivalence_10}
-        \sum_{\substack{n,m \ll \frac{T}{\sqrt{\log(T)}} \\ n \neq m}}\frac{1}{\sqrt{nm}\log\left(\frac{m}{n}\right)} = o(T\log(T)).
+        \sum_{\substack{n,m \ll \frac{T}{\sqrt{\log(T)}} \\ n \neq m}}\frac{1}{\sqrt{nm}\log\left(\frac{m}{n}\right)} = O\left(T\sqrt{\log(T)}\right),
       \end{equation}
-      Then \cref{equ:second_moment_zeta_asymptotic_equivalence_5,equ:second_moment_zeta_asymptotic_equivalence_6,equ:second_moment_zeta_asymptotic_equivalence_10} together with \cref{equ:second_moment_zeta_asymptotic_equivalence_4} yields
+      because $O\left(T\sqrt{\log(T)}\right)$ is the largest of the present $O$-estimates. Then \cref{equ:second_moment_zeta_asymptotic_equivalence_5,equ:second_moment_zeta_asymptotic_equivalence_6,equ:second_moment_zeta_asymptotic_equivalence_10} together with \cref{equ:second_moment_zeta_asymptotic_equivalence_4} yields
       \begin{equation}\label{equ:second_moment_zeta_asymptotic_equivalence_11}
-        \int_{2}^{T}\left|\sum_{n \ll \frac{t}{\sqrt{\log(t)}}}\frac{1}{n^{\frac{1}{2}+it}}\right|^{2} = T\log(T)+o(T\log(T)).
+        \int_{2}^{T}\left|\sum_{n \ll \frac{t}{\sqrt{\log(t)}}}\frac{1}{n^{\frac{1}{2}+it}}\right|^{2} = T\log(T)+O\left(T\sqrt{\log(T)}\right),
       \end{equation}
-      Applying \cref{equ:second_moment_zeta_asymptotic_equivalence_11} to \cref{equ:second_moment_zeta_asymptotic_equivalence_3}, we at last obtain
+      again because $O\left(T\sqrt{\log(T)}\right)$ is the largest of all the present $O$-estimates. Applying \cref{equ:second_moment_zeta_asymptotic_equivalence_11} to \cref{equ:second_moment_zeta_asymptotic_equivalence_3}, we at last obtain
       \[
-        M_{2}(T,\z) = T\log(T)+O(T\log^{\frac{3}{4}}(T))+o(T\log(T)) = T\log(T)+o(T\log(T)),
+        M_{2}(T,\z) = T\log(T)+O\left(T\log^{\frac{3}{4}}(T)\right)+O\left(T\sqrt{\log(T)}\right) = T\log(T)+O\left(T\log^{\frac{3}{4}}(T)\right).
       \]
-      which implies the desired asymptotic.
+      which is the desired asymptotic formula. The asymptotic equivalence follows from the asymptotic formula since $T\log^{\frac{3}{4}}(T) = o(T\log(T))$.
     \end{proof}
     
-    A few comments about the proof of \cref{thm:second_moment_of_Riemann_zeta_asymptotic_equivalence} are in order. The main analytic data being fed into \cref{thm:second_moment_of_Riemann_zeta_asymptotic_equivalence} is the approximate functional equation for the Riemann zeta function. The main contribution from the resulting asymptotic, namely \cref{equ:second_moment_zeta_asymptotic_equivalence_1}, in $M_{2}(T,\z)$ is the $T\log(T)$ which comes from the diagonal contribution in
+    A few comments about the proof of \cref{thm:second_moment_of_Riemann_zeta_asymptotic_equivalence} are in order. The error term in the asymptotic formula only saves $\log^{\frac{1}{4}}(T)$ from the main term so not much is saved at all. In fact, this is much weaker than the $k = 1$ case in \cref{conj:CFKRS_conjectures_zeta}. As this conjecture has been verified for $k = 1$ (actually $k = 2$ as well as we have already noted), it is possible to do much better. See \cite{titchmarsh1986theory} for a detailed discussion of these estimates and the increasingly refined analytic techniques that are necessary to obtain them. Nevertheless, as $\log(T) \ll_{\e} T^{\e}$, the asymptotic equivalence implies that the necessary bound for the Riemann zeta function is satisfied for \cref{prop:equivalence_Lindelof_hypothesis_and_moments} in the case $k = 1$.
+
+    \begin{remark}
+      As far as the truth of the Lindel\"of hypothesis is concerned, \cref{prop:equivalence_Lindelof_hypothesis_and_moments} implies that we do not even need to obtain asymptotic formulas for the $2k$-th moments of $L$-functions. 
+    \end{remark}
+    
+    The main analytic data being fed into \cref{thm:second_moment_of_Riemann_zeta_asymptotic_equivalence} is the approximate functional equation for the Riemann zeta function. The main contribution from the resulting asymptotic, namely \cref{equ:second_moment_zeta_asymptotic_equivalence_1}, in $M_{2}(T,\z)$ is $T\log(T)$ which comes from the diagonal contribution in
     \[
       \int_{2}^{T}\left|\sum_{n \ll \frac{t}{\sqrt{\log(t)}}}\frac{1}{n^{\frac{1}{2}+it}}\right|^{2} = \int_{2}^{T}\sum_{n,m \ll \frac{t}{\sqrt{\log(t)}}}\frac{1}{n^{\frac{1}{2}+it}m^{\frac{1}{2}-it}}\,dt,
     \]
@@ -310,4 +140,9 @@
     \[
       T\sum_{n \ll \frac{T}{\sqrt{\log(T)}}}\frac{1}{n},
     \]
-    and it is estimated in \cref{equ:second_moment_zeta_asymptotic_equivalence_5}. This is the longest sum coming from \cref{equ:second_moment_zeta_asymptotic_equivalence_2} of highest order (because of the factor of $T$).
+    and it is estimated in \cref{equ:second_moment_zeta_asymptotic_equivalence_5}. This is the longest sum coming from \cref{equ:second_moment_zeta_asymptotic_equivalence_2} of highest order (because of the factor of $T$). It should also be observed that the contribution for those terms when $n \neq m$ and $n \ge \frac{m}{2}$ comes very close to the main term. This sum is
+    \[
+      \sum_{\substack{n,m \ll \frac{T}{\sqrt{\log(T)}} \\ n \ge \frac{m}{2} \\ n \neq m}}\frac{1}{\sqrt{nm}\log\left(\frac{m}{n}\right)},
+    \]
+    and it is estimated in \cref{equ:second_moment_zeta_asymptotic_equivalence_9} to be $O\left(T\sqrt{\log(T)}\right)$. If the length of our sum in \cref{equ:second_moment_zeta_asymptotic_equivalence_1} was increased by a factor of $\sqrt{\log(t)}$ from $\frac{t}{\sqrt{\log(t)}}$ to $t$, then this term would contribute $O\left(T\log(T)\right)$ which would ruin both the asymptotic formula and asymptotic equivalence. In essence, this means that the choice of the length of our sum in the proof of \cref{thm:second_moment_of_Riemann_zeta_asymptotic_equivalence} is essentially optimal.
+    

@@ -230,24 +230,21 @@
       by \cref{equ:discriminant_base_change} and that base change matrix from $\a_{1},\ldots,\a_{n}$ to $\l\a_{1},\ldots,\l\a_{n}$ is the multiplication by $\l$ map. \todo{xxx}
     \end{proof}
   \section{Moments}
-    Our first result only uses the Euler-Maclaurin summation formula summation and we use this summation formula to prove a useful lemma:
+     Our first result will only require the Euler-Maclaurin summation formula. However, we first need the following lemma:
 
     \begin{lemma}\label{lem:weak_approximate_functional_equation_Riemann_zeta}
-      For any integer $N \ge 1$ and $\s > 0$, we have
+      For any $X > 0$ and fixed $\d > 0$, we have
       \[
-        \z(s) = \sum_{n \le N}\frac{1}{n^{s}}+\frac{N^{-s}}{2}-\frac{N^{1-s}}{1-s}-s\int_{N}^{\infty}\left(u-\lfloor u \rfloor-\frac{1}{2}\right)u^{-(s+1)}\,du.
+        \z(s) = \sum_{n \le X}\frac{1}{n^{s}}-\frac{X^{1-s}}{1-s}+O\left(\frac{1}{X^{\s}}\right),
       \]
+      provided $\d < \s < 1$ and $|t| \le X$.
     \end{lemma}
     \begin{proof}
-      First suppose $\s > 1$ and consider
+      Let $N$ be an integer such that $N > X$, take $\s > 1$, and consider
       \[
         \z(s)-\sum_{n \le N}\frac{1}{n^{s}} = \sum_{n > N}\frac{1}{n^{s}}.
       \]
-      By \cref{cor:Euler_Maclaurin_summation_formula_integer_limit_version_specialization}, we can rewrite the sum on the right-hand side as
-      \[
-        \sum_{n > N}\frac{1}{n^{s}} = \lim_{M \to \infty}\frac{N^{-s}-M^{-s}}{2}+\int_{N}^{\infty}u^{-s}-s\left(u-\lfloor u \rfloor-\frac{1}{2}\right)u^{-(s+1)}\,du.
-      \]
-      As $\s > 1$, $M^{-\s} \to 0$ as $M \to \infty$ so that
+      As $A(M) \le M$ and $\s > 1$, we have $A(M)M^{-s} \to 0$ as $M \to \infty$. So \cref{cor:Euler_Maclaurin_summation_formula_integer_limit_version_specialization} implies that we can rewrite the sum on the right-hand side as
       \[
         \sum_{n > N}\frac{1}{n^{s}} = \frac{N^{-s}}{2}+\int_{N}^{\infty}u^{-s}+\left(u-\lfloor u \rfloor-\frac{1}{2}\right)-su^{-(s+1)}\,du.
       \]
@@ -260,17 +257,52 @@
         \sum_{n > N}\frac{1}{n^{s}} = \frac{N^{-s}}{2}-\frac{N^{1-s}}{1-s}-s\int_{N}^{\infty}\left(u-\lfloor u \rfloor-\frac{1}{2}\right)u^{-(s+1)}\,du.
       \]
       Therefore we arrive at
-      \[
+      \begin{equation}\label{equ:weak_approximate_functional_equation_Riemann_zeta_1}
         \z(s) = \sum_{n \le N}\frac{1}{n^{s}}+\frac{N^{-s}}{2}-\frac{N^{1-s}}{1-s}-s\int_{N}^{\infty}\left(u-\lfloor u \rfloor-\frac{1}{2}\right)u^{-(s+1)}\,du,
-      \]
-      for $\s > 1$. Since this is the desired formula, it remains to show that the right-hand side is meromorphic for $\s > 0$. Indeed, the first three terms are, with the third term having a simple pole at $s = 1$, so it suffices to show that the integral is. To do so we will show that the integral is locally absolutely uniformly convergent in this region. Indeed, let $K$ is a compact subset in this region and set $\a = \min_{s \in K}(\s)$ and $\b = \max_{s \in K}(|s|)$. Then we have to show that the integral is absolutely uniformly convergent on $K$. As $\lfloor u \rfloor-u-\frac{1}{2} \ll 1$, we have
+      \end{equation}
+      for $\s > 1$. In fact, the right-hand side of \cref{equ:weak_approximate_functional_equation_Riemann_zeta_1} is meromorphic for $\s > 0$. Indeed, as the first three terms are with the third term having a simple pole at $s = 1$, so it suffices to show that the integral is as well. To do so we will show that the integral is locally absolutely uniformly convergent in this region. Indeed, let $K$ is a compact subset in this region and set $\a = \min_{s \in K}(\s)$ and $\b = \max_{s \in K}(|s|)$. Then we have to show that the integral is absolutely uniformly convergent on $K$. As $\lfloor u \rfloor-u-\frac{1}{2} \ll 1$, we have
       \[
-        s\int_{N}^{\infty}\left(u-\lfloor u \rfloor-\frac{1}{2}\right)u^{-(s+1)}\,du \ll \b\int_{x}^{\infty}\frac{1}{u^{\a+1}}\,du = \frac{\b}{x^{\a}} \ll_{\a,\b} 1,
+        s\int_{N}^{\infty}\left(u-\lfloor u \rfloor-\frac{1}{2}\right)u^{-(s+1)}\,du \ll \b\int_{x}^{\infty}\frac{1}{u^{\a+1}}\,du = \frac{\b}{\a x^{\a}} \ll_{\a,\b} 1,
       \]
-      as desired. Therefore the formula holds for $\s > 0$.
+      as desired. Therefore \cref{equ:weak_approximate_functional_equation_Riemann_zeta_1} for $\s > 0$. Now let $\d < \s < 1$ and $|t| \le X$. Then $|s|$ is absolutely bounded and $\s$ is bounded away from zero. From the analogous estimate
+      \[
+        s\int_{N}^{\infty}\left(u-\lfloor u \rfloor-\frac{1}{2}\right)u^{-(s+1)}\,du = O\left(|s|\int_{N}^{\infty}\frac{1}{u^{\s+1}}\,du\right) = O\left(\frac{|s|}{N^{\s}}\right),
+      \]
+      and \cref{equ:weak_approximate_functional_equation_Riemann_zeta_1}, we get
+      \begin{equation}\label{equ:weak_approximate_functional_equation_Riemann_zeta_2}
+        \z(s) = \sum_{n \le N}\frac{1}{n^{s}}-\frac{N^{1-s}}{1-s}+O\left(\frac{|s|+1}{N^{\s}}\right).
+      \end{equation}
+      We will refine \cref{equ:weak_approximate_functional_equation_Riemann_zeta_2} by truncating the remaining sum. Write
+      \[
+        \sum_{n \le N}\frac{1}{n^{s}} = \sum_{n \le X}\frac{1}{n^{s}}+\sum_{X < n \le N}\frac{1}{n^{s}}.
+      \]
+      Applying the Euler-Maclaurin summation formula to the last sum gives
+      \begin{equation}\label{equ:weak_approximate_functional_equation_Riemann_zeta_3}
+        \begin{aligned}
+          \sum_{X < n \le N}\frac{1}{n^{s}} &= \left(X-\lfloor X \rfloor-\frac{1}{2}\right)X^{-s}+\frac{1}{2}N^{-s} \\
+          &+ \int_{X}^{N}u^{-s}\,du-s\int_{X}^{N}\left(u-\lfloor u \rfloor-\frac{1}{2}\right)u^{-(s+1)}\,du.
+        \end{aligned}
+      \end{equation}
+      Now observe that
+      \begin{equation}\label{equ:weak_approximate_functional_equation_Riemann_zeta_4}
+        \int_{X}^{N}u^{-s}\,du = \frac{N^{1-s}}{1-s}-\frac{X^{1-s}}{1-s},
+      \end{equation}
+      and
+      \begin{equation}\label{equ:weak_approximate_functional_equation_Riemann_zeta_5}
+        s\int_{N}^{X}\left(u-\lfloor u \rfloor-\frac{1}{2}\right)u^{-(s+1)}\,du = O\left(|s|\int_{N}^{X}\frac{1}{u^{\s+1}}\,du\right) = O\left(\frac{|s|}{X^{\s}}\right)+O\left(\frac{|s|}{N^{\s}}\right),
+      \end{equation}
+      Inserting the estimates in \cref{equ:weak_approximate_functional_equation_Riemann_zeta_4,equ:weak_approximate_functional_equation_Riemann_zeta_5} into \cref{equ:weak_approximate_functional_equation_Riemann_zeta_3} yields
+      \begin{equation}\label{equ:weak_approximate_functional_equation_Riemann_zeta_6}
+        \sum_{X < n \le N}\frac{1}{n^{s}} = \frac{N^{1-s}}{1-s}-\frac{X^{1-s}}{1-s}+O\left(\frac{|s|+1}{N^{\s}}\right)+O\left(\frac{|s|+1}{X^{\s}}\right),
+      \end{equation}
+      where we have also used the fact that $\left(X-\lfloor X \rfloor-\frac{1}{2}\right)X^{-s} O =\left(\frac{1}{X^{\s}}\right)$. Upon combining \cref{equ:weak_approximate_functional_equation_Riemann_zeta_3,equ:weak_approximate_functional_equation_Riemann_zeta_6}, we have
+      \[
+        \z(s) = \sum_{n \le X}\frac{1}{n^{s}}-\frac{X^{1-s}}{1-s}+O\left(\frac{|s|+1}{N^{\s}}\right)+O\left(\frac{|s|+1}{X^{\s}}\right).
+      \]
+      Taking the limit as $N \to \infty$ completes the proof. \todo{this proof needs correction}
     \end{proof}
     
-    Our first result shows that $M_{2}(T,\z)$ satisfies the bound required for \cref{prop:equivalence_Lindelof_hypothesis_and_moments}:
+    \cref{lem:weak_approximate_functional_equation_Riemann_zeta} can be thought of as a weak approximate functional equation for the Riemann zeta function. Our first result bounds the growth rate of $M_{2}(T,\z)$ only using \cref{lem:weak_approximate_functional_equation_Riemann_zeta}:
 
     \begin{theorem}\label{thm:second_moment_of_Riemann_zeta_big_O}
       For $T > 2$,
@@ -279,18 +311,99 @@
       \]
     \end{theorem}
     \begin{proof}
-      From \cref{lem:weak_approximate_functional_equation_Riemann_zeta}, we have
+      Taking $s = \frac{1}{2}+it$ and $X = t$ for $t \ge 2$ in \cref{lem:weak_approximate_functional_equation_Riemann_zeta} gives
       \[
-        \z(s) = \sum_{n \le N}\frac{1}{n^{s}}+\frac{N^{-s}}{2}-\frac{N^{1-s}}{1-s}-s\int_{N}^{\infty}\left(u-\lfloor u \rfloor-\frac{1}{2}\right)u^{-(s+1)}\,du,
+        \z\left(\frac{1}{2}+it\right) = \sum_{n \le t}\frac{1}{n^{\frac{1}{2}+it}}-\frac{t^{\frac{1}{2}-it}}{\frac{1}{2}-it}+O\left(\frac{1}{\sqrt{t}}\right).
       \]
-      for $\s > 0$. As $\lfloor u \rfloor-u-\frac{1}{2} \ll 1$, we have 
+      This implies the weaker estimate
+      \begin{equation}\label{equ:second_moment_of_Riemann_zeta_big_O_1}
+        \z\left(\frac{1}{2}+it\right) = \sum_{n \le t}\frac{1}{n^{\frac{1}{2}+it}}+O\left(\frac{1}{\sqrt{t}}\right).
+      \end{equation}
+      Applying \cref{equ:second_moment_of_Riemann_zeta_big_O_1} to the definition of $M_{2}(T,\z)$ and recalling that $\z\left(\frac{1}{2}+it\right)$ is absolutely bounded for $0 \le t \le 2$, yields
+      \begin{equation}\label{equ:second_moment_of_Riemann_zeta_big_O_2}
+        \begin{aligned}
+          M_{2}(T,\z) &= \int_{2}^{T}\left|\sum_{n \le t}\frac{1}{n^{\frac{1}{2}+it}}\right|^{2}\,dt \\
+          &+ O\left(\int_{2}^{T}\left|\sum_{n \le t}\frac{1}{n^{\frac{1}{2}+it}}\right|\frac{1}{\sqrt{t}}\,dt\right)+O\left(\int_{2}^{T}\frac{1}{t}\,dt\right).
+        \end{aligned}
+      \end{equation}
+      We will now simplify \cref{equ:second_moment_of_Riemann_zeta_big_O_2}. For the second term, the Cauchy-Schwarz inequality gives
+      \begin{align*}
+        \int_{2}^{T}\left|\sum_{n \le t}\frac{1}{n^{\frac{1}{2}+it}}\right|\frac{1}{\sqrt{t}}\,dt &= O\left(\left(\int_{2}^{T}\left|\sum_{n \le t}\frac{1}{n^{\frac{1}{2}+it}}\right|^{2}\int_{2}^{T}\frac{1}{t}\,dt\right)^{\frac{1}{2}}\right) \\
+        &= O\left(\left(\int_{2}^{T}\left|\sum_{n \le t}\frac{1}{n^{\frac{1}{2}+it}}\right|^{2}\,dt\right)^{\frac{1}{2}}\sqrt{\log(T)}\right),
+      \end{align*}
+      where in the second line we have made use of the estimate
       \[
-        s\int_{N}^{\infty}\left(u-\lfloor u \rfloor-\frac{1}{2}\right)u^{-(s+1)}\,du = O\left(|s|\int_{N}^{\infty}u^{-(\s+1)}\,du\right) = O\left(\frac{|s|N^{-\s}}{\s}\right).
+        \int_{2}^{T}\frac{1}{t}\,dt = O(\log(T)).
       \]
-      Taking $s = \frac{1}{2}+it$ and $N = t$ for $t \ge 2$, we obtain the estimate
+      Applying this latter estimate to third term as well, \cref{equ:second_moment_of_Riemann_zeta_big_O_2} becomes
+      \begin{equation}\label{equ:second_moment_of_Riemann_zeta_big_O_3}
+        \begin{aligned}
+          M_{2}(T,\z) &= \int_{2}^{T}\left|\sum_{n \le t}\frac{1}{n^{\frac{1}{2}+it}}\right|^{2}\,dt \\
+          &+ O\left(\left(\int_{2}^{T}\left|\sum_{n \le t}\frac{1}{n^{\frac{1}{2}+it}}\right|^{2}\,dt\right)^{\frac{1}{2}}\sqrt{\log(T)}\right)+O(\log(T)).
+        \end{aligned}
+      \end{equation}
+      Therefore, it suffices to show that the remaining integral is $O\left(T\log(T)\right)$. We first expand the sum and interchange it with the integral by the Fubini-Tonelli theorem:
+      \begin{equation}\label{equ:second_moment_of_Riemann_zeta_big_O_4}
+        \begin{aligned}
+           \int_{2}^{T}\left|\sum_{n \le t}\frac{1}{n^{\frac{1}{2}+it}}\right|^{2} &= \int_{2}^{T}\sum_{n,m \le t}\frac{1}{n^{\frac{1}{2}+it}m^{\frac{1}{2}-it}}\,dt \\
+          &= \sum_{n,m \le T}\int_{\max(m,n,2)}^{T}\frac{1}{n^{\frac{1}{2}+it}m^{\frac{1}{2}-it}}\,dt \\
+          &= \sum_{n \le T}\frac{T-n}{n}+ \sum_{\substack{n,m \le T \\ n \neq m}}\frac{1}{\sqrt{nm}}\int_{\max(n,m,2)}^{T}\left(\frac{m}{n}\right)^{it}\,dt \\
+          &= T\sum_{n \le T}\frac{1}{n}+O\left(\sum_{n \le T}1\right)+\left(\sum_{\substack{n,m \le T \\ n \neq m}}\frac{1}{\sqrt{nm}\log\left(\frac{m}{n}\right)}\right),
+        \end{aligned}
+      \end{equation}
+      where in the second to last line we have separated the terms for which $n = m$ or not. We now estimate all of the remaining terms in \cref{equ:second_moment_of_Riemann_zeta_big_O_4}. For the first term, by \cref{equ:approximation_for_harmonic_sums} we have
+      \begin{equation}\label{equ:second_moment_of_Riemann_zeta_big_O_5}
+        T\sum_{n \le T}\frac{1}{n} = T\log(T)+O(T) = O(T\log(T)).
+      \end{equation}
+      The second term is easier since
+      \begin{equation}\label{equ:second_moment_of_Riemann_zeta_big_O_6}
+        \sum_{n \le T}1 = O(T) = O(T\log(T)).
+      \end{equation}
+      For the last term, separate the sum into the terms for which $n < \frac{m}{2}$ or not, so that
+      \begin{equation}\label{equ:second_moment_of_Riemann_zeta_big_O_7}
+        \sum_{\substack{n,m \le T \\ n \neq m}}\frac{1}{\sqrt{nm}\log\left(\frac{m}{n}\right)} = \sum_{\substack{n,m \le T \\ n < \frac{m}{2}}}\frac{1}{\sqrt{nm}\log\left(\frac{m}{n}\right)}+\sum_{\substack{n,m \le T \\ n \ge \frac{m}{2} \\ n \neq m}}\frac{1}{\sqrt{nm}\log\left(\frac{m}{n}\right)}.
+      \end{equation}
+      In the first sum on the right-hand side of \cref{equ:second_moment_of_Riemann_zeta_big_O_7} we have $\log\left(\frac{m}{n}\right) \ge \log\left(2\right)$ so that $\log\left(\frac{m}{n}\right)$ is bounded from below. Hence
       \[
-        \z\left(\frac{1}{2}+it\right) = \sum_{n \le t}\frac{1}{n^{\frac{1}{2}+it}}+O\left(\frac{1}{\sqrt{t}}\right)+
+        \sum_{\substack{n,m \le T \\ n < \frac{m}{2}}}\frac{1}{\sqrt{nm}\log\left(\frac{m}{n}\right)} = O\left(\sum_{\substack{n,m \le T \\ n < \frac{m}{2}}}\frac{1}{\sqrt{nm}}\right) = O\left(\left(\sum_{n \le T}\frac{1}{\sqrt{n}}\right)^{2}\right).
       \]
+      But as
+      \[
+        \sum_{n \le T}\frac{1}{\sqrt{n}} = O\left(\int_{1}^{T}\frac{1}{\sqrt{x}}\,dx\right) = O(\sqrt{T}),
+      \]
+      we find that
+      \begin{equation}\label{equ:second_moment_of_Riemann_zeta_big_O_8}
+        \sum_{\substack{n,m \le T \\ n < \frac{m}{2}}}\frac{1}{\sqrt{nm}\log\left(\frac{m}{n}\right)} = O(T) = O(T\log(T)).
+      \end{equation}
+      For the second sum, write $n = m-r$ where $1 \le r \le \frac{m}{2}$ so that $\log\left(\frac{m}{n}\right) = \log\left(\frac{m}{m-r}\right) = -\log(1-\frac{r}{m}) \ge \frac{r}{m}$ where the inequality follows from the Taylor series of the logarithm. Whence
+      \[
+        \sum_{\substack{n,m \le T \\ n \ge \frac{m}{2} \\ n \neq m}}\frac{1}{\sqrt{nm}\log\left(\frac{m}{n}\right)} = O\left(\sum_{m \le T}\sum_{r \le \frac{m}{2}}\frac{m}{r\sqrt{m(m-r)}}\right) = O\left(\sum_{m \le T}\sum_{r \le \frac{m}{2}}\frac{1}{r}\right).
+      \]
+      To estimate the double sum, using \cref{equ:approximation_for_harmonic_sums} again, we have
+      \[
+        \sum_{r \le \frac{m}{2}}\frac{1}{r} = \log(m)+O(1).
+      \]
+      This estimate together with
+      \[
+        \sum_{m \le T}\log(m)+O(1) = T\log(T)+O(T) = O(T\log(T)),
+      \]
+      gives
+      \begin{equation}\label{equ:second_moment_of_Riemann_zeta_big_O_9}
+        \sum_{\substack{n,m \le T \\ n \ge \frac{m}{2} \\ n \neq m}}\frac{1}{\sqrt{nm}\log\left(\frac{m}{n}\right)} = O(T\log(T)).
+      \end{equation}
+      Substituting \cref{equ:second_moment_of_Riemann_zeta_big_O_8,equ:second_moment_of_Riemann_zeta_big_O_9} into \cref{equ:second_moment_of_Riemann_zeta_big_O_7} yields
+      \begin{equation}\label{equ:second_moment_of_Riemann_zeta_big_O_10}
+        \sum_{\substack{n,m \le T \\ n \neq m}}\frac{1}{\sqrt{nm}\log\left(\frac{m}{n}\right)} = O(T\log(T)).
+      \end{equation}
+      Then \cref{equ:second_moment_of_Riemann_zeta_big_O_5,equ:second_moment_of_Riemann_zeta_big_O_6,equ:second_moment_of_Riemann_zeta_big_O_10} together with \cref{equ:second_moment_of_Riemann_zeta_big_O_4} yields
+      \begin{equation}\label{equ:second_moment_of_Riemann_zeta_big_O_11}
+        \int_{2}^{T}\left|\sum_{n \le t}\frac{1}{n^{\frac{1}{2}+it}}\right|^{2} = O(T\log(T)).
+      \end{equation}
+      Applying \cref{equ:second_moment_of_Riemann_zeta_big_O_11} to \cref{equ:second_moment_of_Riemann_zeta_big_O_3}, we at last obtain
+      \[
+        M_{2}(T,\z) = O(T\log(T))+O(\sqrt{T}\log(T))+O(T) = O(T\log(T)),
+      \]
+      as desired.
     \end{proof}
   \section{Misc.}
     \begin{itemize}
