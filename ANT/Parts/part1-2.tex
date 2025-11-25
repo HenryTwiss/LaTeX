@@ -1,0 +1,756 @@
+\chapter{Arithmetic Tools}
+  A good selection of arithmetic topics that need some discussion before studying number theory are the following:
+  \begin{itemize}
+    \item Arithmetic Functions,
+    \item Dirichlet Characters,
+    \item Exponential Sums.
+  \end{itemize}
+  This chapter is dedicated to the basics of these topics as they are essential tools that we will require in our investigations.
+  \section{Arithmetic Functions}
+    An arithmetic function $f$ is a function $f:\N \to \C$. That is, it takes the positive integers into the complex numbers. We say that $f$ is \textbf{additive}\index{additive} if $f(nm) = f(n)+f(m)$ for all positive integers $n$ and $m$ such that $(n,m) = 1$. If this condition simply holds for all $n$ and $m$ then we say $f$ is \textbf{completely additive}\index{completely additive}. Similarly, we say that $f$ is \textbf{multiplicative}\index{multiplicative} if $f(nm) = f(n)f(m)$ for all positive integers $n$ and $m$ such that $(n,m) = 1$. If this condition simply holds for all $n$ and $m$ then we say $f$ is \textbf{completely multiplicative}\index{completely multiplicative}. Many important arithmetic functions are either additive, completely additive, multiplicative, or completely multiplicative. Note that if a $f$ is additive or multiplicative then $f$ is uniquely determined by its values on prime powers and if $f$ is completely additive or completely multiplicative then it is uniquely determined by its values on primes. Moreover, if $f$ is additive or completely additive then $f(1) = 0$ and if $f$ is multiplicative or completely multiplicative then $f(1) = 1$. Below is a list defining the most important arithmetic functions (some of these functions are restrictions of common functions but we define them here as arithmetic functions because their domain being $\N$ is important):
+    \begin{enumerate}[label*=(\roman*)]
+      \item The \textbf{constant function}\index{constant function}: The function $\mathbf{1}(n)$ restricted to all $n \ge 1$. This function is neither additive or multiplicative.
+      \item The \textbf{indicator function}\index{indicator function}: The function $\d(n)$ defined by
+      \[
+        \d(n) = \begin{cases} 1 & \text{if $n = 1$}, \\ 0 & \text{if $n \ge 2$}. \end{cases}
+      \]
+      This function is completely multiplicative.
+      \item The \textbf{identity function}\index{identity function}: The function $\id(n)$ restricted to all $n \ge 1$. This function is completely multiplicative.
+      \item The \textbf{logarithm}\index{logarithm function}: The function $\log(n)$ restricted to all $n \ge 1$. This function is completely additive.
+      \item The \textbf{M\"obius function}\index{M\"obius function}: The function $\mu(n)$ defined by
+      \[
+        \mu(n) = \begin{cases} 1 & \text{if $n$ is square-free with an even number of prime factors}, \\ -1 & \text{if $n$ is square-free with an odd number of prime factors}, \\ 0 & \text{if $n$ is not square-free}, \end{cases}
+      \]
+      for all $n \ge 1$. This function is multiplicative.
+      \item The \textbf{characteristic function of square-free integers}\index{characteristic function of square-free integers}: The square of the M\"obius function $\mu^{2}(n)$ for all $n \ge 1$. This function is multiplicative.
+      \item \textbf{Liouville's function}\index{Liouville's function}: The function $\l(n)$ defined by
+      \[
+        \l(n) = \begin{cases} 1 & \text{if $n = 1$}, \\ (-1)^{k} & \text{if $n$ is composed of $k$ not necessarily distinct prime factors}, \end{cases}
+      \]
+      for all $n \ge 1$. This function is completely multiplicative.
+      \item \textbf{Euler's totient function}\index{Euler's totient function}: The function $\vphi(n)$ defined by
+      \[
+        \vphi(n) = \psum_{m \tmod{n}}1,
+      \]
+      for all $n \ge 1$. This function is multiplicative.
+      \item The \textbf{divisor function}\index{divisor function}: The function $\s_{0}(n)$ defined by
+      \[
+        \s_{0}(n) = \sum_{d \mid n}1,
+      \]
+      for all $n \ge 1$. This function is multiplicative.
+      \item The \textbf{sum of divisors function}\index{sum of divisors function}: The function $\s_{1}(n)$ defined by
+      \[
+        \s_{1}(n) = \sum_{d \mid n}d,
+      \]
+      for all $n \ge 1$. This function is multiplicative.
+      \item The \textbf{generalized sum of divisors function}\index{generalized sum of divisors function}: The function $\s_{s}(n)$ defined by
+      \[
+        \s_{s}(n) = \sum_{d \mid n}d^{s},
+      \]
+      for all $n \ge 1$ and any $s \in \C$. This function is multiplicative.
+      \item The \textbf{number of distinct prime factors function}\index{number of distinct prime factors function}: The function $\w(n)$ defined by
+      \[
+        \w(n) = \sum_{p \mid n}1,
+      \]
+      for all $n \ge 1$. This function is additive.
+      \item The \textbf{total number of prime divisors function}\index{total number of prime divisors function}: The function $\W(n)$ defined by
+      \[
+        \W(n) = \sum_{p ^{m} \mid n}1,
+      \]
+      for all $n \ge 1$ and where $m \ge 1$. This function is completely additive.
+      \item The \textbf{von Mangoldt function}\index{von Mangoldt function}: The function $\L(n)$ defined by
+      \[
+        \L(n) = \begin{cases} 0 & \text{if $n$ is not a prime power}, \\ \log(p) & \text{if $n = p^{m}$ for some prime $p$ and integer $m \ge 1$}, \end{cases}
+      \]
+      for all $n \ge 1$. This function is neither additive or multiplicative.
+    \end{enumerate}
+    If $f$ and $g$ are two arithmetic functions then we can define a new arithmetic function $f \ast g$ called the \textbf{Dirichlet convolution}\index{Dirichlet convolution} of $f$ and $g$ defined by
+    \[
+      (f \ast g)(n) = \sum_{d \mid n}f(d)g\left(\frac{n}{d}\right),
+    \]
+    for all $n \ge 1$. Note that $f \ast g = g \ast f$. This is especially useful when $f$ and $g$ are multiplicative:
+
+    \begin{proposition}\label{prop:Dirichlet_convolution_of_multiplicative_functions}
+      If $f$ and $g$ are multiplicative arithmetic functions then so is their Dirichlet convolution $f \ast g$.
+    \end{proposition}
+    \begin{proof}
+      Let $n,m \ge 1$ be such that $(n,m) = 1$. Then every $d \mid nm$ is of the form $d = d'd''$ with $d' \mid n$, $d'' \mid m$, and $(d',d'') = 1$. Then
+      \begin{align*}
+        (f \ast g)(nm) &= \sum_{d \mid nm}f(d)g\left(\frac{nm}{d}\right) \\
+        &= \sum_{\substack{d' \mid n \\ d'' \mid m \\ (d',d'') = 1}}f(d'd'')g\left(\frac{nm}{d'd''}\right) \\
+        &= \sum_{\substack{d' \mid n \\ d'' \mid m \\ (d',d'') = 1}}f(d')f(d'')g\left(\frac{n}{d'}\right)g\left(\frac{m}{d''}\right) \\
+        &= \left(\sum_{d' \mid n}f(d')g\left(\frac{n}{d'}\right)\right)\left(\sum_{d'' \mid m}f(d'')g\left(\frac{m}{d''}\right)\right) \\
+        &= (f \ast g)(n)(f \ast g)(m).
+      \end{align*}
+      This completes the proof.
+    \end{proof}
+
+    From \cref{prop:Dirichlet_convolution_of_multiplicative_functions} we see that Dirichlet convolution makes the set of multiplicative functions into a semigroup. In fact, it is a monoid since the indicator function $\d$ acts as an identity. Indeed, for any multiplicative function $f$, we have
+    \[
+      (f \ast \d)(n) = \sum_{d \mid n}f(d)\d\left(\frac{n}{d}\right) = f(n).
+    \]
+    Therefore
+    \[
+      f \ast \d = f.
+    \]
+    A certain case of interest for Dirichlet convolution is when the M\"obius function is convolved with the constant function:
+
+    \begin{proposition}\label{prop:Mobius_indicator}
+    We have
+    \[
+      \sum_{d \mid n}\mu(d) = \sum_{d \mid n}\mu\left(\frac{n}{d}\right) = \begin{cases} 1 & \text{if $n = 1$}, \\ 0 & \text{if $n \ge 2$}. \end{cases}
+    \]
+    In particular,
+    \[
+      \mu \ast \mathbf{1} = \mathbf{1} \ast \mu = \d.
+    \]
+    \end{proposition}
+    \begin{proof}
+      In terms of Dirichlet convolutions, the second statement is equivalent to the first (actually just $\mu \ast \mathbf{1} = \d$ or $\d = \mathbf{1} \ast \mu$ since Dirichlet convolution is associative). So it suffices to prove the first statement only. By \cref{prop:Dirichlet_convolution_of_multiplicative_functions}, $\sum_{d \mid n}\mu(d)$ is multiplicative so we may assume that $n = p^{r}$ for some prime $p$ and $r \ge 0$. When $r = 0$, $d = 1$ and so the sum is $1$. For $r \ge 1$, $d$ runs over $1,p,\ldots,p^{r}$ and the only $d$ for which $\mu(d) \neq 0$ is $d = 1$ and $d = p$. But $\mu(1)+\mu(p) = 0$ so that the sum is zero in this case. This completes the proof. 
+    \end{proof}
+
+    With \cref{prop:Mobius_indicator}, we can prove the infamous \textbf{M\"obius inversion formula}\index{M\"obius inversion formula}:
+
+    \begin{theorem*}[M\"obius inversion formula]
+      Suppose $f$ and $g$ are arithmetic functions. Then
+      \[
+        g(n) = \sum_{d \mid n}f(d),
+      \]
+      for all $n \ge 1$, if and only if
+      \[
+        f(n) = \sum_{d \mid n}g(d)\mu\left(\frac{n}{d}\right),
+      \]
+      for all $n \ge 1$. In particular,
+      \[
+        g = f \ast \mathbf{1},
+      \]
+      if and only if
+      \[
+        f = g \ast \mu.
+      \]
+    \end{theorem*}
+    \begin{proof}
+      In terms of Dirichlet convolutions, the second statement is equivalent to the first. So it suffices to prove the second statement.
+      Convolving the first formula with $\mu$ gives
+      \[
+        g \ast \mu = f \ast \mathbf{1} \ast \mu = f \ast \d = f,
+      \]
+      with the last two equalities following from \cref{prop:Mobius_indicator} and that $\d$ is the identity for Dirichlet convolution. This proves the forward implication. The reverse implication follows by convolving the second formula with $\mathbf{1}$ and arguing analogously. 
+    \end{proof}
+
+    Let $f$ be multiplicative. We associate to $f$ the completely multiplicative function $f_{A}$ defined on primes $p$ by
+    \[
+      f_{A}(p) = f(p^{2})-f(p)^{2}.
+    \]
+    We say that $f$ is \textbf{specially multiplicative}\index{specially multiplicative} if
+    \[
+        f(n)f(m) = \sum_{d \mid (n,m)}f_{A}(d)f\left(\frac{nm}{d^{2}}\right),
+    \]
+    for all $n,m \ge 1$. In fact, this is equivalent to the identity
+    \[
+        f(nm) = \sum_{d \mid (n,m)}\mu(d)f_{A}(d)f\left(\frac{n}{d}\right)f\left(\frac{m}{d}\right),
+    \]
+    for all $n,m \ge 1$ as the following proposition shows:
+
+    \begin{proposition}\label{prop:specially_multiplicative_functions}
+      Let $f$ be a multiplicative function. Then
+      \[
+        f(n)f(m) = \sum_{d \mid (n,m)}f_{A}(d)f\left(\frac{nm}{d^{2}}\right),
+      \]
+      for all $n,m \ge 1$, if and only if
+      \[
+        f(nm) = \sum_{d \mid (n,m)}\mu(d)f_{A}(d)f\left(\frac{n}{d}\right)f\left(\frac{m}{d}\right),
+      \]
+      for all $n,m \ge 1$.
+    \end{proposition}
+    \begin{proof}
+      Suppose the first identity holds. Then by \cref{prop:Mobius_indicator}, we have
+      \begin{align*}
+        f(nm) &= \sum_{d \mid (n,m)}f_{A}(d)f\left(\frac{nm}{d^{2}}\right)\sum_{e \mid d}\mu\left(\frac{d}{e}\right) \\
+        &= \sum_{\substack{d \mid (n,m) \\ e \mid d}}\mu\left(\frac{d}{e}\right)f_{A}(d)f\left(\frac{nm}{d^{2}}\right) \\
+        &= \sum_{\substack{d \mid (n,m) \\ e \mid \left(\frac{n}{d},\frac{m}{d}\right)}}\mu(d)f_{A}(de)f\left(\frac{nm}{(de)^{2}}\right) && \text{$d \to de$} \\
+        &= \sum_{d \mid (n,m)}\mu(d)f_{A}(d)\sum_{e \mid \left(\frac{n}{d},\frac{m}{d}\right)}f_{A}(e)f\left(\frac{\frac{n}{d}\frac{m}{d}}{e^{2}}\right) \\
+        &= \sum_{d \mid (n,m)}\mu(d)f_{A}(d)f\left(\frac{n}{d}\right)f\left(\frac{m}{d}\right),
+      \end{align*}
+      where the last equality holds by the first identity. This proves the forward implication. For the reverse implication, suppose the second identity holds. By \cref{prop:Mobius_indicator} again, we have
+      \begin{align*}
+        f(n)f(m) &= \sum_{d \mid (n,m)}f_{A}(d)f\left(\frac{n}{d}\right)f\left(\frac{m}{d}\right)\sum_{e \mid d}\mu(e) \\
+        &= \sum_{\substack{d \mid (n,m) \\ e \mid d}}\mu(e)f_{A}(d)f\left(\frac{n}{d}\right)f\left(\frac{m}{d}\right) \\
+        &= \sum_{\substack{d \mid (n,m) \\ e \mid \left(\frac{n}{d},\frac{m}{d}\right)}}\mu(e)f_{A}(de)f\left(\frac{n}{de}\right)f\left(\frac{m}{de}\right) && \text{$d \to de$} \\
+        &= \sum_{d \mid (n,m)}f_{A}(d)\sum_{e \mid \left(\frac{n}{d},\frac{m}{d}\right)}\mu(e)f_{A}(e)f\left(\frac{\frac{n}{d}}{e}\right)f\left(\frac{\frac{m}{d}}{e}\right) \\
+        &= \sum_{d \mid (n,m)}f_{A}(d)\sum_{e \mid \left(\frac{n}{d},\frac{m}{d}\right)}f\left(\frac{nm}{d^{2}}\right),
+      \end{align*}
+      where the last equality holds by the second identity. This proves the reverse implication completing the proof.
+    \end{proof}
+
+    Lastly, we generalize $\s_{0}(n)$, $\s_{1}(n)$, and $\s_{s}(n)$ to all nonzero $n \in \Z$ by setting
+    \[
+      \s_{0}(n) = \s_{0}(|n|), \quad \s_{1}(n) = \s_{1}(|n|), \quad \text{and} \quad \s_{s}(n) = \s_{s}(|n|),
+    \]
+    for all $s \in \C$. It is very useful to know that $\s_{0}(n)$ grows slowly:
+
+    \begin{proposition}\label{prop:sum_of_divisors_growth_rate}
+      \phantom{ }
+      \[
+        \s_{0}(n) \ll_{\e} n^{\e}.
+      \]
+    \end{proposition}
+    \begin{proof}
+      Let $n = p_{1}^{r_{1}} \cdots p_{k}^{r_{k}}$ be the prime factorization of $n$. As $\s_{0}(p^{r_{i}}) = r_{i}+1$ for $1 \le i \le k$, multiplicativity implies $\s_{0}(n) = (r_{1}+1) \cdots (r_{k}+1)$. Then
+      \[
+        \frac{\s_{0}(n)}{n^{\e}} = \prod_{1 \le i \le r}\frac{r_{i}+1}{p_{i}^{r_{i}\e}}.
+      \]
+      It suffices to show that the right-hand side is bounded by a positive constant $c(\e)$. For a prime $p$, consider the nonnegative continuous function $f_{p,\e}(x)$ defined by
+      \[
+        f_{p,\e}(x) = \frac{x+1}{p^{x\e}},
+      \]
+      for $x \ge -1$. The derivative is given by
+      \[
+        f_{p,\e}'(x) = \frac{1-\log(p^{\e})(x+1)}{p^{x\e}},
+      \]
+      which is negative for $1 < \log(p^{\e})(x+1)$ or equivalently $\frac{1}{\log(p^{\e})}-1 < x$. Therefore $f_{p,\e}(x)$ is eventually decreasing and so attains a maximum positive value. In particular, it attains a maximal positive integral value for some $a_{p} \ge 0$ because $f_{p,\e}(-1) = 0$ and $f_{p,\e}(x)$ is positive for $x > -1$. Then the inequalities $f_{p,\e}(a_{p}-1) \le f_{p,\e}(a_{p})$ and $f_{p,\e}(a_{p}+1) \le f_{p,\e}(a_{p})$ are
+      \[
+        \frac{a_{p}}{p^{(a_{p}-1)\e}} \le \frac{a_{p}+1}{p^{a_{p}\e}} \quad \text{and} \quad \frac{a_{p}+2}{p^{(a_{p}+1)\e}} \le \frac{a_{p}+1}{p^{a_{p}\e}},
+      \]
+      respectively. Upon isolating $a_{p}$ to obtain an upper bound in the first inequality and a lower bound in the second inequality, we find that
+      \[
+        \frac{1}{p^{\e}-1}-1 \le a_{p} \le \frac{1}{p^{\e}-1}.
+      \]
+      Therefore we may take $a_{p} = \left\lfloor \frac{1}{p^{\e}-1}-1 \right\rfloor$. Moreover,
+      \[
+        \frac{\frac{1}{p^{\e}-1}}{p^{\e\left(\frac{1}{p^{\e}-1}-1\right)}} \le f_{p}(a_{p}) \le \frac{\frac{1}{p^{\e}-1}+1}{p^{\e\left(\frac{1}{p^{\e}-1}\right)}},
+      \]
+      and taking the logarithm yields
+      \[
+        \log\left(\frac{1}{p^{\e}-1}\right)-\log(p^{\e})\left(\frac{1}{p^{\e}-1}-1\right) \le \log(f_{p}(a_{p})) \le \log\left(\frac{1}{p^{\e}-1}+1\right)-\log(p^{\e})\left(\frac{1}{p^{\e}-1}\right),
+      \]
+      which can be further expressed as
+      \[
+        \log(p^{\e})-\log(p^{\e}-1)-\log(p^{\e})\left(\frac{1}{p^{\e}-1}\right) \le \log(f_{p}(a_{p})) \le \log(p^{\e})-\log(p^{\e}-1)-\log(p^{\e})\left(\frac{1}{p^{\e}-1}\right),
+      \]
+      Taking the limit as $p \to \infty$ and using L'H\^opital's rule for the $\log(p^{\e})\left(\frac{1}{p^{\e}-1}\right)$ terms, the left-hand and right-hand sides both tend to zero. Therefore $\log(f_{p}(a_{p})) \to 0$ and hence $f_{p}(a_{p}) \to 1$. This guarantees that the infinite product $\prod_{p}f_{p,\e}(a_{p})$ converges to some positive value $c(\e)$. But then
+      \[
+        \prod_{1 \le i \le r}\frac{r_{i}+1}{p_{i}^{r_{i}\e}} \le c(\e),
+      \]
+      from which the claim follows.
+    \end{proof}
+  \section{Dirichlet Characters}
+    The most important multiplicative periodic functions for an analytic number theorist are the Dirichlet characters. A \textbf{Dirichlet character}\index{Dirichlet character} $\chi$ modulo $m \ge 1$ is an $m$-periodic homomorphism $\chi:\Z \to \C$ such that $\chi(a) = 0$ if and only if $(a,m) > 1$. Note that any Dirichlet character is necessarily a completely multiplicative arithmetic function when restricted $\N$. We call $m$ the \textbf{modulus}\index{modulus} of $\chi$. Sometimes we will also write $\chi_{m}$ to denote a Dirichlet character modulo $m$ if we need to express the dependence upon the modulus. For any $m \ge 1$, there is always the \textbf{principal Dirichlet character}\index{principal Dirichlet character} modulo $m$ which we denote by $\chi_{m,0}$ (sometimes also seen as $\chi_{0,m}$ or the ever more confusing $\chi_{0}$) and is defined by
+    \[
+      \chi_{m,0}(a) = \begin{cases} 1 & (a,m) = 1, \\ 0 & (a,m) > 1. \end{cases}
+    \]
+    When $m = 1$, the principal Dirichlet character is identically $1$ and we call this the \textbf{trivial Dirichlet character}\index{trivial Dirichlet character}. This is also the only Dirichlet character modulo $1$, so $\chi_{1} = \chi_{1,0}$. In general, we say a Dirichlet character $\chi$ is \textbf{principal}\index{principal} if it only takes values $0$ or $1$. We now discuss some basic facts of Dirichlet characters. By Euler's little, $a^{\vphi(m)} \equiv 1 \tmod{m}$ provided $(a,m) = 1$ and so the multiplicativity of $\chi$ implies that $\chi(a)^{\vphi(m)} = 1$. Therefore the nonzero values of $\chi_{m}$ are $\vphi(m)$-th roots of unity. In particular, there are only finitely many Dirichlet characters of any fixed modulus $m$. Given two Dirichlet character $\chi$ and $\psi$ modulo $m$, we define $\chi\psi$ by $\chi\psi(a) = \chi(a)\psi(a)$. This is also a Dirichlet character modulo $m$, so the Dirichlet characters modulo $m$ form an abelian group denoted by $X_{m}$. If we have a Dirichlet character $\chi$ modulo $m$ then $\cchi$ defined by $\cchi(a) = \conj{\chi(a)}$ is also a Dirichlet character modulo $m$ and is called the \textbf{conjugate Dirichlet character}\index{conjugate Dirichlet character} of $\chi$. Since the nonzero values of $\chi$ are roots of unity, if $(a,m) = 1$ then $\cchi(a) = \chi(a)^{-1}$. So $\cchi$ is the inverse of $\chi$. This is all strikingly similar to characters of $(\Z/m\Z)^{\ast}$ (see \cref{append:Character_Groups}) and there is indeed a connection. By the periodicity of $\chi$, the nonzero values are uniquely determined by $(\Z/m\Z)^{\ast}$. As $\chi$ is multiplicative, it descends to a character $\chi$ of $(\Z/m\Z)^{\ast}$. Conversely, if we are given a character $\chi$ of $(\Z/m\Z)^{\ast}$ we can extend it to a Dirichlet character by defining it to be $m$-periodic and declaring $\chi(a) = 0$ if $(a,m) > 1$. We call this extension the \textbf{zero extension}\index{zero extension}. So in other words, Dirichlet characters modulo $m$ are the zero extensions of the character group of $(\Z/m\Z)^{\ast}$. As groups are isomorphic to their character groups (see \cref{prop:character_group_isomorphim}), we deduce that the group of Dirichlet characters modulo $m$ is isomorphic to $(\Z/m\Z)^{\ast}$. That is, $X_{m} \cong \what{(\Z/m\Z)^{\ast}} \cong (\Z/m\Z)^{\ast}$. In particular, there are $\vphi(m)$ Dirichlet characters modulo $m$ and we identify them with the character group of $(\Z/m\Z)^{\ast}$. We now state two very useful relations called \textbf{Dirichlet orthogonality relations}\index{Dirichlet orthogonality relations} for Dirichlet characters (this follows from the more general orthogonality relations in \cref{append:Character_Groups} but we wish to give a direct proof):
+
+    \begin{proposition*}[Dirichlet orthogonality relations]
+    \phantom{ }
+      \begin{enumerate}[label*=(\roman*)]
+        \item For any two Dirichlet characters $\chi$ and $\psi$ modulo $m$,
+        \[
+          \frac{1}{\vphi(m)}\psum_{a \tmod{m}}\chi(a)\conj{\psi}(a) = \d_{\chi,\psi}.
+        \]
+        \item For any $a,b \in (\Z/m\Z)^{\ast}$,
+        \[
+          \frac{1}{\vphi(m)}\sum_{\chi \tmod{m}}\chi(a)\cchi(b) = \d_{a,b}.
+        \]
+      \end{enumerate}
+    \end{proposition*}
+    \begin{proof}
+      We will prove the statements separately.
+      \begin{enumerate}[label*=(\roman*)]
+        \item Denote the left-hand side by $S$ and let $b$ be such that $(b,m) = 1$. Then
+        \begin{align*}
+          \chi(b)\conj{\psi}(b)S &= \frac{\chi(b)\conj{\psi}(b)}{\vphi(m)}\psum_{a \tmod{m}}\chi(a)\conj{\psi}(a) \\
+          &= \frac{1}{\vphi(m)}\psum_{a \tmod{m}}\chi(ab)\conj{\psi}(ab) \\
+          &= \frac{1}{\vphi(m)}\psum_{a \tmod{m}}\chi(a)\conj{\psi}(a) && \text{$a \mapsto a\conj{b}$} \\
+          &= S.
+        \end{align*}
+        Consequently $S = 0$ unless $\chi(b)\conj{\psi}(b) = 1$ for all $b$ such that $(b,m) = 1$. This happens if and only if $\psi = \chi$ in which case $S = 1$ proving (i).
+        \item Denote the left-hand side by $S$. Let $\psi$ be any Dirichlet character modulo $m$. Then
+        \begin{align*}
+          \psi(a)\conj{\psi}(b)S &= \frac{\psi(a)\conj{\psi}(b)}{\vphi(m)}\sum_{\chi \tmod{m}}\chi(a)\cchi(b) \\
+          &= \frac{1}{\vphi(m)}\sum_{\chi \tmod{m}}\chi\psi(a)\conj{\chi\psi}(b) \\
+          &= \frac{1}{\vphi(m)}\sum_{\chi \tmod{m}}\chi(a)\cchi(b) && \text{$\chi \mapsto \chi\conj{\psi}$} \\
+          &= S.
+        \end{align*}
+        Thus $S = 0$ unless $\psi(a)\conj{\psi}(b) = \psi(a\conj{b}) = 1$ for all Dirichlet characters $\psi$ modulo $m$. If this happens then $a\conj{b} = 1 \tmod{m}$. To see this, let $m = p_{1}^{r_{1}} \cdots p_{k}^{r_{k}}$ be the prime factorization of $m$. By the structure theorem for finite abelian groups, we have
+        \[
+          (\Z/m\Z)^{\ast} \cong (\Z/p_{1}^{r_{1}}\Z)^{\ast} \x \cdots \x (\Z/p_{k}^{r_{k}}\Z)^{\ast}.
+        \]
+        Under this isomorphism, any $n$ taken modulo $m$ with $(n,m) = 1$ may be written uniquely as $n = n_{1} \cdots n_{k}$ where $n_{i}$ is taken modulo $p_{i}^{r_{i}}$ with $(n_{i},p_{i}^{r_{i}}) = 1$ for $1 \le i \le k$. Let $\w_{i}$ be a primitive $p_{i}^{r_{i}}$-th root of unity for all $i$ and set
+        \[
+          \psi(n) = \w_{1}^{n_{1}} \cdots \w_{k}^{n_{k}}.
+        \]
+        Clearly $\psi$ is a character of $(\Z/m\Z)^{\ast}$ and is therefore a Dirichlet character modulo $m$. Writing $a = e_{1} \cdots e_{k}$ and $b = f_{1} \cdots f_{k}$ under this isomorphism, it follows that
+        \[
+          1 = \w_{1}^{e_{1}\conj{f_{1}}} \cdots \w_{k}^{e_{k}\conj{f_{k}}},
+        \]
+        since $\psi(a\conj{b}) = 1$. As $\w_{i}$ has order $p_{i}^{r_{i}}$ and $1 \le e_{i},f_{i} \le p_{i}^{r_{i}}-1$ for all $i$, the only way the above identity holds is if $e_{i} \equiv f_{i} \tmod{p_{i}^{r_{i}}}$ for all $i$. This implies $a\conj{b} = 1 \tmod{m}$. But then $S = 1$ and (ii) follows.
+      \end{enumerate}
+    \end{proof}
+
+    In many practical settings, the Dirichlet orthogonality relations are often used in the following form:
+
+    \begin{corollary}\label{cor:Dirichlet_orthogonality_relations}
+    \phantom{ }
+      \begin{enumerate}[label*=(\roman*)]
+        \item For any Dirichlet character $\chi$ modulo $m$,
+        \[
+          \frac{1}{\vphi(m)}\psum_{a \tmod{m}}\chi(a) = \d_{\chi,\chi_{m,0}}.
+        \]
+        \item For any $a \in (\Z/m\Z)^{\ast}$,
+        \[
+          \frac{1}{\vphi(m)}\sum_{\chi \tmod{m}}\chi(a) = \d_{a,1}.
+        \]
+      \end{enumerate}
+    \end{corollary}
+    \begin{proof}
+      For (i), take $\psi = \chi_{m,0}$ in the Dirichlet orthogonality relations (namely (i)). For (ii), take $b \equiv 1 \tmod{m}$ in the Dirichlet orthogonality relations (namely (ii)).
+    \end{proof}
+
+    We will now describe how Dirichlet characters of a fixed modulus arise from Dirichlet characters of a smaller modulus. Let $\chi_{m_{1}}$ and $\chi_{m_{2}}$ be Dirichlet characters modulo $m_{1}$ and $m_{2}$. If $m_{1} \mid m_{2}$ then $(a,m_{2}) = 1$ implies $(a,m_{1}) = 1$. Accordingly, we say $\chi_{m_{2}}$ is \textbf{induced}\index{induced} from $\chi_{m_{1}}$ (or that $\chi_{m_{1}}$ \textbf{lifts} to $\chi_{m_{2}}$) if
+    \[
+      \chi_{m_{2}}(a) = \begin{cases} \chi_{m_{1}}(a) & \text{if $(a,m_{2}) = 1$}, \\ 0 & \text{if $(a,m_{2}) > 1$}. \end{cases}
+    \]
+    All this means is that $\chi_{m_{2}}$ is a Dirichlet character modulo $m_{2}$ whose values are given by those of $\chi_{m_{1}}$. Clearly every Dirichlet character is induced from itself. On the other hand, if there is a prime $p$ dividing $m_{2}$ and not $m_{1}$ (so $m_{2}$ is a larger modulus), $\chi_{m_{2}}$ will be different from $\chi_{m_{1}}$ since $\chi_{m_{2}}(p) = 0$ but $\chi_{m_{1}}(p) \neq 0$. In general, we say a Dirichlet character is \textbf{primitive}\index{primitive} if it is not induced by any character other than itself and \textbf{imprimitive}\index{imprimitive} otherwise. Notice that the principal Dirichlet characters are precisely those Dirichlet characters induced from the trivial Dirichlet character, and the only primitive one is the trivial Dirichlet character. It is not a hard matter to determine when Dirichlet characters are induced:
+
+    \begin{proposition}\label{prop:Dirichlet_character_induction_classification}
+      A Dirichlet character $\chi_{m_{2}}$ is induced from a Dirichlet character $\chi_{m_{1}}$ if and only if $\chi_{m_{2}}$ is constant on the residue classes in $(\Z/m_{2}\Z)^{\ast}$ that are congruent modulo $m_{1}$. When this happens, $\chi_{m_{1}}$ is uniquely determined.
+    \end{proposition}
+    \begin{proof}
+      For the forward implication, if $\chi_{m_{2}}$ is induced from $\chi_{m_{1}}$ then $\chi_{m_{2}}$ is constant on the residue classes in $(\Z/m_{2}\Z)^{\ast}$ that are congruent modulo $m_{1}$ because $\chi_{m_{1}}$ is. For the reverse implication, first note that the surjective homomorphism $\Z/m_{2}\Z \to \Z/m_{1}\Z$ given by reduction modulo $m_{1}$ induces a surjective homomorphism $(\Z/m_{2}\Z)^{\ast} \to (\Z/m_{1}\Z)^{\ast}$ (because reduction modulo $m_{1}$ preserve inverses). Now suppose $\chi_{m_{2}}$ is constant on the residue classes in $(\Z/m_{2}\Z)^{\ast}$ that are congruent modulo $m_{1}$. Surjectivity of the previously mentioned map implies that $\chi_{m_{2}}$ induces a unique character on $(\Z/m_{1}\Z)^{\ast}$ and hence a unique Dirichlet character modulo $m_{1}$. By construction $\chi_{m_{2}}$ is induced from $\chi_{m_{1}}$.
+    \end{proof}
+
+    We are interested in primitive Dirichlet characters because they are the building blocks for all Dirichlet characters:
+
+    \begin{theorem}\label{thm:Dirichlet_character_conductor_existance}
+      Every Dirichlet character $\chi$ is induced from a primitive Dirichlet character $\wtilde{\chi}$ that is uniquely determined by $\chi$.
+    \end{theorem}
+    \begin{proof}
+      Let the modulus of $\chi$ be $m$. Define a partial ordering on the set of Dirichlet characters where $\psi \le \chi$ if $\chi$ is induced from $\psi$. This ordering is clearly reflexive, and it is transitive by \cref{prop:Dirichlet_character_induction_classification}. Set
+      \[
+        X = \left\{\psi \in \bigcup_{d \mid m}X_{d}:\psi \le \chi\right\}
+      \]
+      This set is nonempty and finite by \cref{prop:Dirichlet_character_induction_classification}. Now suppose $\chi_{m_{1}},\chi_{m_{2}} \in X$. Set $m_{3} = (m_{1},m_{2})$. Also from \cref{prop:Dirichlet_character_induction_classification}, $\chi$ is constant on the residue classes of $(\Z/m\Z)^{\ast}$ that are congruent modulo $m_{1}$ or $m_{2}$ and hence also $m_{3}$. Therefore \cref{prop:Dirichlet_character_induction_classification} implies there is a unique Dirichlet character $\chi_{m_{3}}$ modulo $m_{3}$ that lifts to $\chi_{m_{1}}$ and $\chi_{m_{2}}$. We have now shown that every pair $\chi_{m_{1}},\chi_{m_{2}} \in X$ has a lower bound $\chi_{m_{3}}$. Hence $X$ contains a primitive Dirichlet character $\wtilde{\chi}$ that is minimal with respect to this partial ordering. There is only one such element. Indeed, since $m_{3} \le m_{1},m_{2}$ the partial ordering is compatible with the total ordering by modulus. Thus $\wtilde{\chi}$ is unique.
+    \end{proof}
+
+    In light of \cref{thm:Dirichlet_character_conductor_existance}, we define \textbf{conductor}\index{conductor} $q$ of a Dirichlet character $\chi$ modulo $m$ to be the modulus of the unique primitive character $\wtilde{\chi}$ that induces $\chi$. This is the most important data of a Dirichlet character since it tells us how $\chi$ is built. Note that $\chi$ is primitive if and only if its conductor and modulus are equal. Also observe that if $\chi$ has conductor $q$ then $\chi$ is actually $q$-periodic, we must have $q \mid m$, and the nonzero values of $\chi$ are all $q$-th roots of unity because those are the nonzero values of $\wtilde{\chi}$. Note that $\chi = \wtilde{\chi}\chi_{\frac{m}{q},0}$ by the definition of induced Dirichlet characters. Moreover, we have the formula
+    \[
+      \phi(m) = \sum_{d \mid m}N(d),
+    \]
+    where $N(d)$ is the number of primitive Dirichlet characters modulo $d$. Indeed, the right-hand side counts the number of Dirichlet characters modulo $m$ since every such Dirichlet character is induced from a unique primitive Dirichlet character by \cref{thm:Dirichlet_character_conductor_existance} whose modulus must divide $m$ as we have already mentioned. The right-hand side also counts the number of Dirichlet characters modulo $m$ since we have already seen that there are $\phi(m)$ of them (because the group of Dirichlet characters is isomorphic to the character group of $(\Z/m\Z)^{\ast}$). Primitive Dirichlet characters also behave well with respect to multiplication if the conductors are relatively prime as the following proposition shows:
+
+    \begin{proposition}\label{prop:primitive_characters_multiplicative_relatively_prime}
+      Suppose $\chi_{1}$ and $\chi_{2}$ are Dirichlet characters modulo $q_{1}$ and $q_{2}$ respectively with $q_{1}$ and $q_{2}$ relatively prime. Set $\chi = \chi_{1}\chi_{2}$ so that $\chi$ is a Dirichlet character modulo $q_{1}q_{2}$. Then $\chi$ is a primitive if and only if $\chi_{1}$ and $\chi_{2}$ are both primitive.
+    \end{proposition}
+    \begin{proof}
+      First suppose $\chi$ is primitive of conductor $q$. If $d_{1}$ and $d_{2}$ are the conductors of $\chi_{1}$ and $\chi_{2}$ respectively then $\chi$ is $d_{1}d_{2}$-periodic and primitivity further implies that $q \mid d_{1}d_{2}$. But as $d_{1} \mid q_{1}$, $d_{2} \mid q_{2}$, and $q = q_{1}q_{2}$, we must have $q = d_{1}d_{2}$ and hence $d_{1} = q_{1}$ and $d_{2} = q_{2}$. It follows that $\chi_{1}$ and $\chi_{2}$ are both primitive. Conversely, suppose $\chi_{1}$ and $\chi_{2}$ are both primitive. If $d$ is the conductor of $\chi$, set $d_{1} = (d,q_{1})$ and $d_{2} = (d,q_{2})$. As $(q_{1},q_{2}) = 1$ and $q = q_{1}q_{2}$, we must have $(d_{1},d_{2}) = 1$ and $d_{1}d_{2} = q$. But then $d_{1} = q_{1}$ and $d_{2} = q_{2}$. Hence $d = q_{1}q_{2}$ which implies that $\chi$ is primitive.
+    \end{proof}
+    
+    We would now like to distinguish Dirichlet characters whose nonzero values are either real or imaginary. We say $\chi$ is \textbf{real}\index{real} if it is real-valued. Hence the nonzero values of $\chi$ are $1$ or $-1$ since they must be roots of unity. We say $\chi$ is an \textbf{complex}\index{complex} if it is not real. More commonly, we distinguish Dirichlet characters modulo $m$ by their order as an element of $(\Z/m\Z)^{\ast}$. If $\chi$ is of order $2$, $3$, etc.\ in $(\Z/m\Z)^{\ast}$ then we say it is \textbf{quadratic}\index{quadratic}, \textbf{cubic}\index{cubic}, etc. In particular, a Dirichlet character is quadratic if and only if it is real. For any Dirichlet character $\chi$, $\chi(-1) = \pm 1$ because $\chi(-1)^{2} = 1$. We would like to distinguish this parity. Accordingly, we say $\chi$ is \textbf{even}\index{even} if $\chi(-1) = 1$ and \textbf{odd}\index{odd} if $\chi(-1) = -1$. Clearly even Dirichlet characters are even functions and odd Dirichlet characters are odd functions. Moreover, $\chi$ and $\cchi$ have the same parity and any lift of $\chi$ has the same parity as $\chi$. Also note that
+    \[
+      \frac{\chi(1)-\chi(-1)}{2} = \begin{cases} 0 & \text{if $\chi$ is even}, \\ 1 & \text{if $\chi$ is odd}. \end{cases}
+    \]
+    Lastly, we would like to discuss quadratic Dirichlet characters. We can construct quadratic Dirichlet characters using Jacobi symbols. If $m \ge 1$ is odd, consider
+    \[
+      \chi_{m}(n) = \tlegendre{n}{m}.
+    \]
+    Clearly $\chi_{m}$ a quadratic Dirichlet character modulo $m$ because the Jacobi symbol is multiplicative, nonzero if and only if $(n,m) = 1$, and determined modulo $m$. However, quadratic Dirichlet characters given by Jacobi symbols do not exhaust all possible quadratic Dirichlet characters. For this, we need to use Kronecker symbols. We say that $D \in \Z$ is a \textbf{fundamental discriminant}\index{fundamental discriminant} if $D$ is of the form
+    \[
+      D = \begin{cases} d & \text{if $D \equiv 1 \tmod{4}$}, \\ 4d & \text{if $\frac{D}{4} \equiv 2,3 \tmod{4}$}, \end{cases}
+    \]
+    for some square-free $d \in \Z$. Necessarily $d \equiv 1 \tmod{4}$ or $d \equiv 2,3 \tmod{4}$ respectively and thus nonzero. We define the \textbf{quadratic Dirichlet character} $\chi_{D}$ associated to the fundamental discriminant $D$ by
+    \[
+      \chi_{D}(m) = \legendre{D}{m}.
+    \]
+    It turns out that $\chi_{D}$ defines a primitive quadratic Dirichlet character, and exhausts all primitive quadratic Dirichlet characters, as the following theorem shows:
+
+    \begin{theorem}\label{thm:fundamental_discriminant_character_primitive}
+      If $D$ is a fundamental discriminant and $D \neq 1$ then $\chi_{D}$ is a primitive quadratic Dirichlet character of conductor $|D|$. Moreover, all primitive quadratic Dirichlet characters are of this form.
+    \end{theorem}
+    \begin{proof}
+      We first show that $\chi_{D}$ is a quadratic Dirichlet character of conductor $|D|$. If $D \equiv 1 \tmod{4}$, the sign in quadratic reciprocity is always $1$ so that
+      \[
+        \chi_{D}(m) = \legendre{m}{|D|},
+      \]
+      and hence is a quadratic Dirichlet character modulo $|D|$ because it is given by the Jacobi symbol. If $\frac{D}{4} \equiv 3 \tmod{4}$, the sign in quadratic reciprocity is $\tlegendre{-1}{m}$ which is the primitive quadratic Dirichlet character modulo $4$ (there are only two Dirichlet characters modulo $4$ since $\vphi(4) = 2$ and clearly $\legendre{-1}{m}$ is not principal) so that
+      \[
+        \chi_{D}(m) = \legendre{-1}{m}\legendre{m}{\left|\frac{D}{4}\right|},
+      \]
+      and hence is a Dirichlet character modulo $|D|$. If $\frac{D}{4} \equiv 2 \tmod{16}$, first observe that $\tlegendre{D}{m} = \tlegendre{8}{m}\tlegendre{\frac{D}{8}}{m}$ where $\tlegendre{8}{m}$ is one of the two primitive quadratic Dirichlet character modulo $8$ (the other is $\tlegendre{-8}{m}$ as there are four Dirichlet character modulo $8$ because $\vphi(8) = 4$ and the other two are the principal Dirichlet character and the Dirichlet character induced from $\legendre{-1}{m}$ as mentioned previously). As $\frac{D}{8} \equiv 1,3 \tmod{4}$, the sign in quadratic reciprocity is either $1$ or $\tlegendre{-1}{m}$ according to these two cases. Thus
+      \[
+        \chi_{D}(m) = \legendre{8}{m}\legendre{m}{\left|\frac{D}{8}\right|} \quad \text{or} \quad \chi_{D}(m) = \legendre{-8}{m}\legendre{m}{\left|\frac{D}{8}\right|},
+      \]
+      according to if $\frac{D}{8} \equiv 1,3 \tmod{4}$ respectively, and hence is a quadratic Dirichlet character modulo $|D|$. We can compactly express all of these cases as follows:
+      \[
+        \chi_{D}(m) = \begin{cases} \legendre{m}{|D|} & \text{if $D \equiv 1 \tmod{4}$}, \\ \legendre{-1}{m}\legendre{m}{\left|\frac{D}{4}\right|} & \text{if $\frac{D}{4} \equiv 3 \tmod{4}$}, \\ \legendre{8}{m}\legendre{m}{\left|\frac{D}{8}\right|} & \text{if $\frac{D}{8} \equiv 1 \tmod{4}$}, \\ \legendre{-8}{m}\legendre{m}{\left|\frac{D}{8}\right|} & \text{if $\frac{D}{8} \equiv 3 \tmod{4}$}. \end{cases}
+      \]
+      This shows that $\chi_{D}$ is a quadratic Dirichlet characters modulo $|D|$. It easily follows from the above that $\chi_{D}$ is primitive. Indeed, we have already mentioned that the characters $\tlegendre{-1}{m}$, $\tlegendre{8}{m}$, and $\tlegendre{-8}{m}$ are all primitive. Therefore, since $D$, $\frac{D}{4}$, and $\frac{D}{8}$ are square-free according to their equivalences modulo $4$ as given above, and $D \neq 1$, it suffices to show by \cref{prop:primitive_characters_multiplicative_relatively_prime} that $\chi_{p}$ is primitive for all primes $p$ with $p \neq 2$. This is immediate since $p$ is prime and clearly $\chi_{p}$ is not principal. We now show that every primitive quadratic Dirichlet character is of the form $\chi_{D}$ for some fundamental discriminant $D$. By \cref{prop:primitive_characters_multiplicative_relatively_prime}, it suffices to consider primitive quadratic Dirichlet character modulo $q = p^{m}$ for some prime $p$ and $m \ge 1$. First suppose that $p \neq 2$. Then $(\Z/q\Z)^{\ast}$ is cyclic and so every $n \in (\Z/p^{m}\Z)^{\ast}$ is of the form $n = v^{\nu}$ for some $\nu \in (\Z/\vphi(p^{m})\Z)$ and where $v$ is a generator of $(\Z/p^{m}\Z)^{\ast}$. It follows that every Dirichlet character $\chi$ modulo $p^{m}$ is of the form
+      \[
+        \chi(n) = e^{\frac{2\pi ik\nu}{\vphi(p^{m})}},
+      \]
+      where $0 \le k \le \vphi(q)-1$. Indeed, this is a unique Dirichlet character for every such $k$ and there are $\vphi(p^{m})$ Dirichlet characters modulo $p^{m}$ which is the same number of choices for $k$. Moreover, $\chi$ is primitive if and only if $p \nmid k$ for otherwise $\chi$ is a Dirichlet character modulo $p^{m-1}$. Similarly, $\chi$ is quadratic if and only if $\frac{k}{\vphi(p^{m})}$ has at most $2$ in its denominator which is equivalent to $k \equiv \frac{\vphi(p^{m})}{2} \tmod{\vphi(p^{m})}$ and hence such a $k$ exists and is unique because $p \neq 2$. We also see that if $\chi$ is quadratic, it is imprimitive unless $m = 1$ for then $\vphi(p) = p-1$ is not a multiple of $p$. All of this is to say that there is a unique quadratic Dirichlet character modulo $q$ and it is primitive if and only if $q = p$. Necessarily, this unique primitive quadratic Dirichlet character modulo $p$ is given by $\chi_{D}$ for the fundamental discriminant $D = p$ if $p \equiv 1 \tmod{4}$ and $D = -p$ if $p \equiv 3 \tmod{4}$. Now suppose $p = 2$ so that $q = 2^{m}$ for some $m \ge 1$. If $m = 1$, $\vphi(2) = 1$ and there are no primitive quadratic Dirichlet characters as the only Dirichlet character is principal. If $m = 2$, $\vphi(4) = 2$ so that there are two Dirichlet characters. They are both quadratic but only one is primitive, namely the principal Dirichlet character as well as the aforementioned primitive quadratic Dirichlet character $\tlegendre{-1}{m}$. For $m \ge 3$, $(\Z/2^{m}\Z)^{\ast} \cong C_{2} \x C_{2^{m-2}}$ where $C_{2}$ and $C_{2^{m-2}}$ are the cyclic groups of order $2$ and $2^{m-2}$ respectively. Therefore every $n \in (\Z/2^{m}\Z)^{\ast}$ is of the form $n = (-1)^{\mu}5^{\nu}$ for $\mu \in \Z/2\Z$ and $\nu \in \Z/2^{m-2}\Z$ (because the orders of $-1$ and $5$ modulo $2^{m}$ are $2$ and $2^{m-2}$ respectively, with the latter case following by induction for $m \ge 3$, and that $\<-1\> \cap \<5\> = \{1\}$). Then every Dirichlet character $\chi$ modulo $2^{m}$, for $m \ge 3$, is of the form
+      \[
+        \chi(n) = e^{\frac{2\pi ij\mu}{2}}e^{\frac{2\pi ik\nu}{2^{m-2}}},
+      \]
+      where $0 \le j \le 1$ and $0 \le k \le 2^{m-2}-1$. Indeed, this is a unique Dirichlet character for every such choice of $j$ and $k$ and there are $2^{m-1}$ Dirichlet characters modulo $2^{m}$ which is the same number of choices for $j$ and $k$. Similarly to the case for $p \neq 2$, $\chi$ is primitive if and only if $2^{m-2} \nmid k$, or equivalently, $k$ is odd. Moreover, $\chi$ is quadratic if and only if $\frac{k}{2^{m-2}}$ has at most $2$ in its denominator which is to say that $2^{m-3} \mid k$. Therefore for a primitive quadratic Dirichlet to exist we must have $k$ odd and $2^{m-3} \mid k$ which can happen if and only if $m = 3$. Then $\phi(8) = 4$, so that there are four Dirichlet characters. They are all quadratic but only two are primitive, namely the principal Dirichlet character, the Dirichlet character induced from $\tlegendre{-1}{m}$, and the two aforementioned primitive quadratic Dirichlet characters given by $\tlegendre{8}{m}$ and $\tlegendre{-8}{m}$. These three primitive quadratic Dirichlet characters are given by $\chi_{D}$ for the fundamental discriminants $D = -4$, $D = 8$, and $D = -8$ respectively. We have now shown that all primitive quadratic Dirichlet characters of prime power modulus are given by $\chi_{D}$ for some fundamental discriminant $D$ and thus the same follows for all primitive quadratic Dirichlet characters by \cref{prop:primitive_characters_multiplicative_relatively_prime}. This completes the proof.
+    \end{proof}
+
+    It follows from \cref{thm:fundamental_discriminant_character_primitive} that all quadratic Dirichlet characters are induced from some $\chi_{D}$ (including $D = 1$ since this corresponds to the trivial Dirichlet character). In particular, so too are the quadratic Dirichlet characters given by Jacobi symbols.
+  \section{Exponential Sums}
+    Number theory comes with its class of exponential sums that appear naturally. They play the role of discrete counterparts to continuous objects (there is a rich underpinning here). Without a sufficient understanding of these sums, they would cause a discrete obstruction to an analytic problem that we wish to solve.
+    \subsection*{Ramanujan and Gauss Sums}
+      Let's begin with the Ramanujan sum. For $m \ge 1$ and $n \in \Z$, the \textbf{Ramanujan sum}\index{Ramanujan sum} $r(n,m)$ is defined by
+      \[
+        r(n,m) = \psum_{a \tmod{m}}e^{\frac{2\pi ian}{m}}.
+      \]
+      Note that the Ramanujan sum is a finite sum of $m$-th roots of unity on the unit circle. Clearly we have $r(0,m) = \vphi(m)$. Ramanujan sums can be computed explicitly by means of the M\"obius function:
+
+      \begin{proposition}\label{prop:Ramanujan_sum_evaluation}
+        For any $m \ge 1$ and any nonzero $n \in \Z$,
+        \[
+          r(n,m) = \sum_{d \mid (n,m)}d\mu\left(\frac{m}{d}\right).
+        \]
+      \end{proposition}
+      \begin{proof}
+        Summing $r(n,d)$ over the divisors $d$ of $m$ yields
+        \[
+          \sum_{d \mid m}r(n,d) = \sum_{d \mid m}\psum_{a \tmod{d}}e^{\frac{2\pi ian}{d}} = \sum_{d \mid m}\psum_{a \tmod{\frac{m}{d}}}e^{\frac{2\pi iadn}{m}} = \sum_{b \tmod{m}}e^{\frac{2\pi ibn}{m}} ,
+        \]
+        where the second equality follows by making the change of variables $d \to \frac{m}{d}$ and the third equality holds by observing that every integer $b$ modulo $m$ is of the form $b = ad$ for some $d \mid m$ and $a$ taken modulo $\frac{m}{d}$ with $\left(a,\frac{m}{d}\right) = 1$. Indeed, this is seen upon taking $d = (b,m)$. If $m \mid n$ the inner sum is $m$ and otherwise it is zero because it is the sum of all the $m$-th roots of unity. Thus
+        \[
+          \sum_{d \mid m}r(n,d) = \begin{cases} m & \text{if $m \mid n$}, \\ 0 & \text{if $m \nmid n$}. \end{cases}
+        \]
+        By the M\"obius inversion formula, we have
+        \[
+          r(n,m) = \sum_{d \mid (n,m)}d\mu\left(\frac{m}{d}\right),
+        \]
+        as desired.
+      \end{proof}
+      We can also define a Ramanujan sum associated to Dirichlet characters. Let $\chi$ be a Dirichlet character modulo $m$. For any $b \in \Z$, the \textbf{Ramanujan sum}\index{Ramanujan sum} $\tau(b,\chi)$ associated to $\chi$ is given by
+      \[
+        \tau(b,\chi) = \sum_{a \tmod{m}}\chi(a)e^{\frac{2\pi iab}{m}}.
+      \]
+      If $b = 1$ we will write $\tau(\chi)$ instead. That is, $\tau(\chi) = \tau(1,\chi)$. We call $\tau(\chi)$ the \textbf{Gauss sum}\index{Gauss sum} associated to $\chi$. Observe that if $m = 1$ then $\chi$ is the trivial character and $\tau(b,\chi) = 1$. So the interesting cases are when $m \ge 2$. There are some basic properties of these sums which are very useful:
+
+      \begin{proposition}\label{prop:Gauss_sum_reduction}
+        Let $\chi$ and $\psi$ be nontrivial Dirichlet characters modulo $m$ and $n$ respectively and let $b \in \Z$. Then the following hold:
+        \begin{enumerate}[label*=(\roman*)]
+          \item $\conj{\tau(b,\cchi)} = \chi(-1)\tau(b,\chi)$.
+          \item If $(b,m) = 1$ then $\tau(b,\chi) = \cchi(b)\tau(\chi)$.
+          \item If $(b,m) > 1$ and $\chi$ is primitive then $\tau(b,\chi) = 0$.
+          \item If $(m,n) = 1$ then $\tau(b,\chi\psi) = \chi(n)\psi(m)\tau(b,\chi)\tau(b,\psi)$.
+          \item Let $q$ be the conductor of $\chi$ and let $\wtilde{\chi}$ be the primitive Dirichlet character that lifts to $\chi$. Then
+          \[
+            \tau(\chi) = \mu\left(\frac{m}{q}\right)\wtilde{\chi}\left(\frac{m}{q}\right)\tau(\wtilde{\chi}).
+          \]
+        \end{enumerate}
+      \end{proposition}
+      \begin{proof}
+        We will prove the statements separately.
+        \begin{enumerate}[label*=(\roman*)]
+          \item We compute
+          \begin{align*}
+            \conj{\tau(b,\cchi)} &= \conj{\sum_{a \tmod{m}}\cchi(a)e^{\frac{2\pi iab}{m}}} \\
+            &= \sum_{a \tmod{m}}\chi(a)e^{-\frac{2\pi iab}{m}} \\
+            &= \sum_{a \tmod{m}}\chi(-a)e^{\frac{2\pi iab}{m}} && \text{$a \mapsto -a$} \\
+            &= \chi(-1)\sum_{a \tmod{m}}\chi(a)e^{\frac{2\pi iab}{m}} \\
+            &= \chi(-1)\tau(b,\chi).
+          \end{align*}
+          This proves (i).
+          \item We compute
+          \begin{align*}
+            \tau(b,\chi) &= \sum_{a \tmod{m}}\chi(a)e^{\frac{2\pi iab}{m}} \\
+            &= \sum_{a \tmod{m}}\chi(a\conj{b})e^{\frac{2\pi ia}{m}} && \text{$a \mapsto a\conj{b}$} \\
+            &= \cchi(b)\sum_{a \tmod{m}}\chi(a)e^{\frac{2\pi ia}{m}} \\
+            &= \cchi(b)\tau(\chi).
+          \end{align*}
+          This proves (ii).
+          \item Suppose $d$ is a proper divisor of $m$ and $c$ is an integer $c$ such that $c \equiv 1 \tmod{m}$. Then necessarily $(c,m) = 1$. Also note that as $d \mid m$, $c \equiv 1 \tmod{d}$ and $(c,d) = 1$. Moreover, there is such a $c$ with the additional property that $\chi(c) \neq 1$. For if not, $\chi$ is induced from $\chi_{d,0}$ which contradicts $\chi$ being primitive. Now take $d = \frac{m}{(b,m)}$ and choose $c$ as above. Then
+          \[
+            \chi(c)\tau(b,\chi) = \sum_{a \tmod{m}}\chi(ac)e^{\frac{2\pi iab}{m}} = \sum_{a \tmod{m}}\chi(a)e^{\frac{2\pi iab\conj{c}}{m}} = \tau(b,\chi)
+          \]
+          upon making the change of variables $a \mapsto a\conj{c}$ and where the last equality holds because $\conj{c} \equiv 1 \tmod{d}$ and $e^{\frac{2\pi ib}{m}}$ is a $d$-th root of unity. So altogether $\chi(c)\tau(b,\chi) = \tau(b,\chi)$. Since $\chi(c) \neq 1$, we conclude $\tau(b,\chi) = 0$ and (iii) follows.
+          \item Since $(m,n) = 1$, the Chinese remainder theorem implies that we have an isomorphism
+          \[
+            (\Z/m\Z) \op (\Z/n\Z) \to (\Z/mn\Z) \qquad a \oplus a' \mapsto an+a'm.
+          \]
+          Under this isomorphism, we make the following computation:
+          \begin{align*}
+            \tau(b,\chi\psi) &= \sum_{an+a'm \tmod{mn}}\chi\psi(an+a'm)e^{\frac{2\pi i(an+a'm)b}{mn}} \\
+            &= \sum_{a\tmod{m}}\sum_{a'\tmod{n}}\chi\psi(an+a'm)e^{\frac{2\pi i(an+a'm)b}{mn}} \\
+            &= \sum_{a\tmod{m}}\sum_{a'\tmod{n}}\chi(an)\psi(a'm)e^{\frac{2\pi iab}{m}}e^{\frac{2\pi ia'b}{n}} \\
+            &= \chi(n)\psi(m)\sum_{a\tmod{m}}\chi(a)e^{\frac{2\pi iab}{m}}\sum_{a'\tmod{n}}\psi(a')e^{\frac{2\pi ia'b}{n}} \\
+            &= \chi(n)\psi(m)\tau(b,\chi)\tau(b,\psi).
+          \end{align*}
+          This proves (iv).
+          \item If $\left(\frac{m}{q},q\right) > 1$ then $\wtilde{\chi}\left(\frac{m}{q}\right) = 0$ so we need to show $\tau(\chi) = 0$. As $\left(\frac{m}{q},q\right) > 1$, there exists a prime $p$ such that $p \mid \frac{m}{q}$ and $p \mid q$. By Euclidean division we may write any $a$ modulo $m$ in the form $a = a'\frac{m}{p}+a''$ with $a'$ taken modulo $p$ and $a''$ taken modulo $\frac{m}{p}$. Then
+          \begin{equation}\label{equ:Gauss_sum_reduction_1}
+            \tau(\chi) = \sum_{a \tmod{m}}\chi(a)e^{\frac{2\pi ia}{m}} = \sum_{\substack{a' \tmod{p} \\ a'' \tmod{\frac{m}{p}}}}\chi\left(a'\frac{m}{p}+a''\right)e^{\frac{2\pi i\left(a'\frac{m}{p}+a''\right)}{m}}.
+          \end{equation}
+          Since $p \mid \left(\frac{m}{q},q\right)$, we have $p^{2} \mid m$. Therefore $\left(a'\frac{m}{p}+a'',m\right) = 1$ if and only if $\left(a'\frac{m}{p}+a'',\frac{m}{p}\right) = 1$ and this latter condition is equivalent to $\left(a'',\frac{m}{p}\right) = 1$. Thus the last sum in \cref{equ:Gauss_sum_reduction_1} is
+          \[
+            \sum_{\substack{a' \tmod{p} \\ a'' \tmod{\frac{m}{p}} \\ \left(a'',\frac{m}{p}\right) = 1}}\chi\left(a'\frac{m}{p}+a''\right)e^{\frac{2\pi i\left(a'\frac{m}{p}+a''\right)}{m}}.
+          \]
+          As $p \mid \frac{m}{q}$, we know $q \mid \frac{m}{p}$ so that $a'\frac{m}{p}+a'' \equiv a'' \tmod{q}$. Then \cref{prop:Dirichlet_character_induction_classification} implies $\chi\left(a'\frac{m}{p}+a''\right) = \wtilde{\chi}(a'')$ and this sum is further reduced to
+          \begin{equation}\label{equ:Gauss_sum_reduction_2}
+            \psum_{a'' \tmod{\frac{m}{p}}}\wtilde{\chi}(a'')e^{\frac{2\pi ia''}{m}}\sum_{a' \tmod{p}}e^{\frac{2\pi ia'}{p}}.
+          \end{equation}
+          The inner sum in \cref{equ:Gauss_sum_reduction_2} vanishes since it is the sum over all $p$-th roots of unity and thus $\tau(\chi) = 0$. Now suppose $\left(\frac{m}{q},q\right) = 1$. Then (iv) implies
+          \[
+            \tau(\chi) = \tau(\wtilde{\chi}\chi_{\frac{m}{q},0}) = \wtilde{\chi}\left(\frac{m}{q}\right)\chi_{\frac{m}{q},0}(q)\tau(\wtilde{\chi})\tau(\chi_{\frac{m}{q},0}) = \tau(\chi_{\frac{m}{q},0})\wtilde{\chi}\left(\frac{m}{q}\right)\tau(\wtilde{\chi}).
+          \]
+          Now observe that $\tau(\chi_{\frac{m}{q},0}) = r\left(1,\frac{m}{q}\right)$. By \cref{prop:Ramanujan_sum_evaluation} we see that $r\left(1,\frac{m}{q}\right) = \mu\left(\frac{m}{q}\right)$ and
+          \[
+            \tau(\chi) = \mu\left(\frac{m}{q}\right)\wtilde{\chi}\left(\frac{m}{q}\right)\tau(\wtilde{\chi}),
+          \]
+          as claimed. This proves (v).
+        \end{enumerate}
+      \end{proof}
+
+      Notice that \cref{prop:Gauss_sum_reduction} reduces the evaluation of the Ramanujan sum $\tau(b,\chi)$ to that of the Gauss sum $\tau(\chi)$ at least when $\chi$ is primitive. When $\chi$ is imprimitive and $(b,m) > 1$ we need to appeal to evaluating $\tau(b,\chi)$ by more direct means. Evaluating $\tau(\chi)$ for general characters $\chi$ turns out to be a very difficult problem and is still open. However, it is not difficult to determine the modulus of $\tau(\chi)$ when $\chi$ is primitive:
+
+      \begin{theorem}\label{thm:Gauss_sum_modulus}
+        Let $\chi$ be a primitive Dirichlet character of conductor $q$. Then
+        \[
+          |\tau(\chi)| = \sqrt{q}.
+        \]
+      \end{theorem}
+      \begin{proof}
+        If $\chi$ is the trivial character this is obvious since $\tau(\chi) = 1$. So we may assume $\chi$ is nontrivial. Now this is just a computation:
+        \begin{align*}
+          |\tau(\chi)|^{2} &= \tau(\chi)\conj{\tau(\chi)} \\
+          &= \sum_{a \tmod{q}}\tau(\chi)\cchi(a)e^{-\frac{2\pi ia}{q}} \\
+          &=  \sum_{a \tmod{q}}\tau(a,\chi)e^{-\frac{2\pi ia}{q}} & \text{\cref{prop:Gauss_sum_reduction} (ii)} \\
+          &= \sum_{a \tmod{q}}\left(\sum_{a' \tmod{q}}\chi(a')e^{\frac{2\pi iaa'}{q}}\right)e^{-\frac{2\pi ia}{q}} \\
+          &= \sum_{a,a' \tmod{q}}\chi(a')e^{\frac{2\pi ia(a'-1)}{q}} \\
+          &= \sum_{a' \tmod{q}}\chi(a')\left(\sum_{a \tmod{q}}e^{\frac{2\pi ia(a'-1)}{q}}\right).
+        \end{align*}
+        Let $S(a')$ denote the inner sum. For the $a'$ such that $a'-1 \equiv 0 \tmod{q}$, we have $S(a') = q$. Otherwise, the change of variables $a \mapsto a\conj{(a'-1)}$ shows that $S(a') = 0$ because it is the sum of all $q$-th roots of unity. It follows that the double sum is $\chi(1)q = q$. So altogether $|\tau(\chi)|^{2} = q$ and hence $|\tau(\chi)| = \sqrt{q}$.
+      \end{proof}
+
+      As an almost immediate corollary to \cref{thm:Gauss_sum_modulus}, we deduce a useful expression for primitive Dirichlet characters of conductor $q$:
+
+      \begin{corollary}\label{cor:gauss_sum_primitive_formula}
+        Let $\chi$ be a primitive Dirichlet character of conductor $q$. Then
+        \[
+          \tau(n,\chi) = \cchi(n)\tau(\chi),
+        \]
+        for all $n \in \Z$. In particular,
+        \[
+          \chi(n) = \frac{1}{\tau(\cchi)}\sum_{a \tmod{q}}\cchi(a)e^{\frac{2\pi ian}{q}},
+        \]
+        for all $n \in \Z$.
+      \end{corollary}
+      \begin{proof}
+        If $\chi$ is the trivial character this is obvious since $\tau(n,\chi) = 1$. So assume $\chi$ is nontrivial. If $(n,q) = 1$ then the first identity is \cref{prop:Gauss_sum_reduction} (ii). If $(n,q) > 1$ then the first identity follows from \cref{prop:Gauss_sum_reduction} (iii) and that $\cchi(n) = 0$. This proves the first identity in full. For the second identity, first note that $\tau(\chi) \neq 0$ by \cref{thm:Gauss_sum_modulus}. Replacing $\chi$ with $\cchi$, dividing the first identity by $\tau(\chi)$, and expanding the Ramanujan sum, gives the second identity.
+      \end{proof}
+
+      In light of \cref{thm:Gauss_sum_modulus} we define the \textbf{epsilon factor}\index{epsilon factor} $\e_{\chi}$ for a Dirichlet character $\chi$ modulo $m$ by
+      \[
+        \e_{\chi} = \frac{\tau(\chi)}{\sqrt{m}}.
+      \]
+      \cref{thm:Gauss_sum_modulus} says that this value lies on the unit circle when $\chi$ is primitive and not the trivial character. The question of the evaluation of Gauss sums boils down to determining what value the epsilon factor is. This is the real difficultly as the epsilon factor is quite difficult to calculate and its value is not known for general Dirichlet characters. However, when $\chi$ is primitive there is a simple relationship between $\e_{\chi}$ and $\e_{\cchi}$:
+
+      \begin{proposition}\label{prop:epsilon_factor_relationship}
+        Let $\chi$ be a primitive Dirichlet character of conductor $q$. Then
+        \[
+          \e_{\chi}\e_{\cchi} = \chi(-1).
+        \]
+      \end{proposition}
+      \begin{proof}
+        If $\chi$ is trivial this is obvious since $\e_{\chi} = \e_{\cchi} = 1$. So assume $\chi$ is nontrivial. By \cref{prop:Gauss_sum_reduction} (i) and that $\e_{\chi}$ lies on the unit circle, we have
+        \[
+          \e_{\chi} = \frac{\tau(\chi)}{\sqrt{q}} = \chi(-1)\conj{\frac{\tau(\chi)}{\sqrt{q}}} = \chi(-1)\e_{\cchi}^{-1},
+        \]
+        from whence the statement follows.
+      \end{proof}
+    \subsection*{Quadratic Gauss Sums}
+      Another important sum is the quadratic Gauss sum. For any $m \ge 1$ and any $b \in \Z$, the \textbf{quadratic Gauss sum}\index{quadratic Gauss sum} $g(b,m)$ is defined by
+      \[
+        g(b,m) = \sum_{a \tmod{m}}e^{\frac{2\pi ia^{2}b}{m}}.
+      \]
+      If $b = 1$ we write $g(m)$ instead. That is, $g(m) = g(1,m)$. It turns out that if $\chi_{m}$ is the quadratic Dirichlet character given by the Jacobi symbol then $\tau(b,\chi_{m}) = g(b,m)$ provided $m$ is square-free. This will take a little work to prove. We first reduce to the case when $(b,m) = 1$:
+
+      \begin{proposition}\label{prop:quadratic_Gauss_sum_relatively_prime_reduction}
+        Let $m \ge 1$ be odd and let $b \in \Z$. Then
+        \[
+          g(b,m) = (b,m)g\left(\frac{b}{(b,m)},\frac{m}{(b,m)}\right).
+        \]
+      \end{proposition}
+      \begin{proof}
+        By Euclidean division write any $a$ modulo $m$ in the form $a = a'\frac{m}{(b,m)}+a''$ with $a'$ take modulo $(b,m)$ and $a''$ take modulo $\frac{m}{(b,m)}$. Then
+        \begin{align*}
+          g(b,m) &= \sum_{a \tmod{m}}e^{\frac{2\pi ia^{2}b}{m}} \\
+          &= \sum_{\substack{a' \tmod{(b,m)} \\ a'' \tmod{\frac{m}{(b,m)}}}}e^{\frac{2\pi i\left(a'\frac{m}{(b,m)}+a''\right)^{2}b}{m}} \\
+          &= \sum_{a'' \tmod{\frac{m}{(b,m)}}}e^{\frac{2\pi i(a'')^{2}b}{m}}\sum_{a' \tmod{(b,m)}}e^{\frac{2\pi i\left(2a''a'\frac{m}{(b,m)}+\left(a'\frac{m}{(b,m)}\right)^{2}\right)b}{m}} \\
+          &= \sum_{a'' \tmod{\frac{m}{(b,m)}}}e^{\frac{2\pi i(a'')^{2}\frac{b}{(b,m)}}{\frac{m}{(b,m)}}}\sum_{a' \tmod{(b,m)}}e^{\frac{2\pi i\left(2a''a'\frac{m}{(b,m)}+\left(a'\frac{m}{(b,m)}\right)^{2}\right)\frac{b}{(b,m)}}{\frac{m}{(b,m)}}} \\
+          &= (b,m)\sum_{a'' \tmod{\frac{m}{(b,m)}}}e^{\frac{2\pi i(a'')^{2}\frac{b}{(b,m)}}{\frac{m}{(b,m)}}},
+        \end{align*}
+        where the last line follows because $\left(2a''a'\frac{m}{(b,m)}+\left(a'\frac{m}{(b,m)}\right)^{2}\right) \equiv 0 \tmod{\frac{m}{(b,m)}}$ and thus the inner sum is $(b,m)$. The remaining sum is $g\left(\frac{b}{(b,m)},\frac{m}{(b,m)}\right)$ which finishes the proof.
+      \end{proof}
+
+      As a consequence of \cref{prop:quadratic_Gauss_sum_relatively_prime_reduction}, we may always assume $(b,m) = 1$. Now we give an equivalent formulation of the Ramanujan sum associated to quadratic Dirichlet characters given by Jacobi symbols and show that in the case $m = p$ an odd prime, the Ramanujan and quadratic Gauss sums agree:
+
+      \begin{proposition}\label{prop:Gauss_sum_equivalence_for_primes}
+        Let $m \ge 1$ and $b \in \Z$ be such that $(b,m) = 1$. Also let $\chi_{m}$ be the quadratic Dirichlet character given by the Jacobi symbol. Then
+        \[
+          \tau(b,\chi_{m}) = \sum_{a \tmod{m}}\left(1+\legendre{a}{m}\right)e^{\frac{2\pi iab}{m}}.
+        \]
+        Moreover, when $m = p$ is prime,
+        \[
+          \tau(b,\chi_{p}) = g(b,p).
+        \]
+      \end{proposition}
+      \begin{proof}
+        If $m = 1$ the claim is obvious since $\tau(b,\chi_{1}) = 1$ so assume $m > 1$. To prove the first statement, observe that
+        \[
+          \sum_{a \tmod{m}}\left(1+\legendre{a}{m}\right)e^{\frac{2\pi iab}{m}} = \sum_{a \tmod{m}}e^{\frac{2\pi iab}{m}}+\sum_{a \tmod{m}}\legendre{a}{m}e^{\frac{2\pi iab}{m}}.
+        \]
+        The first sum on the right-hand side is zero as it is the sum over all $m$-th roots of unity since $(b,m) = 1$. This proves the first claim. Now let $m = p$ be an odd prime. From the definition of the Jacobi symbol we see that $1+\tlegendre{a}{p} = 2,0$ depending on if $a$ is a quadratic residue modulo $p$ or not provided $a \not\equiv 0 \tmod{p}$. If $a \equiv 0 \tmod{p}$ then $1+\tlegendre{a}{p} = 1$. Moreover, if $a$ is a quadratic residue modulo $p$ then $a \equiv (a')^{2} \tmod{p}$ for some $a'$. So one the one hand,
+        \[
+          \tau(b,\chi_{p}) = \sum_{a \tmod{p}}\left(1+\legendre{a}{p}\right)e^{\frac{2\pi iab}{p}} = 1+2\sum_{\substack{a \tmod{p} \\ a \equiv (a')^{2} \tmod{p} \\ a \not\equiv 0 \tmod{p}}}e^{\frac{2\pi i(a')^{2}b}{p}}.
+        \]
+        On the other hand,
+        \[
+          g(b,p) = 1+\sum_{\substack{a \tmod{p} \\ a \not\equiv 0 \tmod{p}}}e^{\frac{2\pi ia^{2}b}{p}},
+        \]
+        but this last sum counts every quadratic residue twice because $(-a)^{2} = a^{2}$. Hence the previous two sums are equal completing the proof.
+      \end{proof}
+
+      We would like to generalize the second statement in \cref{prop:Gauss_sum_equivalence_for_primes} to when $m$ is square-free. In this direction, a series of reduction properties will be helpful:
+
+      \begin{proposition}\label{prop:quadratic_Gauss_sum_reduction}
+        Let $m,n \ge 1$, $p$ be an odd prime, and $b \in \Z$. Then the following hold:
+        \begin{enumerate}[label*=(\roman*)]
+          \item If $(b,p) = 1$ then $g(b,p^{r}) = pg(b,p^{r-2})$ for all $r \in \Z$ with $r \ge 2$.
+          \item If $(m,n) = 1$ and $(b,mn) = 1$ then $g(b,mn) = g(bn,m)g(bm,n)$.
+          \item If $m$ is odd and $(b,m) = 1$ then $g(b,m) = \tlegendre{b}{m}g(m)$ where $\tlegendre{b}{m}$ is the Jacobi symbol.
+        \end{enumerate}
+      \end{proposition}
+      \begin{proof}
+        We will prove the statements separately.
+        \begin{enumerate}[label*=(\roman*)]
+          \item First notice that
+          \[
+            g(b,p^{r}) = \sum_{a \tmod{p^{r}}}e^{\frac{2\pi ia^{2}b}{p^{r}}} = \psum_{a \tmod{p^{r}}}e^{\frac{2\pi ia^{2}b}{p^{r}}}+\sum_{a \tmod{p^{r-1}}}e^{\frac{2\pi ia^{2}b}{p^{r-2}}},
+          \]
+          since every $a$ modulo $p$ satisfies $(a,p) = 1$ or not. By Euclidean division every element $a$ modulo $p^{r-1}$ is of the form $a = a'p^{r-2}+a''$ with $a'$ taken modulo $p$ and $a''$ taken modulo $p^{r-2}$. Since $(a'p^{r-2}+a'') \equiv a'' \tmod{p^{r-2}}$, every $a''$ is counted $p$ times modulo $p^{r-2}$. Along with the fact that $(a'p^{r-2}+a'')^{2} \equiv (a'')^{2} \tmod{p^{r-2}}$, we have
+          \[
+            \sum_{a \tmod{p^{r-1}}}e^{\frac{2\pi ia^{2}b}{p^{r-2}}} = \sum_{\substack{a' \tmod{p} \\ a'' \tmod{p^{r-2}}}}e^{\frac{2\pi i\left(a'p^{r-2}+a''\right)^{2}b}{p^{r-2}}} = p\sum_{a'' \tmod{p}}e^{\frac{2\pi i(a'')^{2}b}{p^{r-2}}} = pg(b,p^{r-2}).
+          \]
+          It remains to show that the sum
+          \[
+            \psum_{a \tmod{p^{r}}}e^{\frac{2\pi ia^{2}b}{p^{r}}},
+          \]
+          is zero. As this sum is exactly $r(b,p^{r})$, \cref{prop:Ramanujan_sum_evaluation} implies
+          \[
+            \psum_{a \tmod{p^{r}}}e^{\frac{2\pi ia^{2}b}{p^{r}}} = \mu(p^{r}) = 0,
+          \]
+          because $(b,p) = 1$ and $r \ge 2$. This proves (i).
+          \item Observe that
+            \[
+              g(bn,m)g(bm,n) = \left(\sum_{a \tmod{m}}e^{\frac{2\pi ia^{2}bn}{m}}\right)\left(\sum_{a' \tmod{n}}e^{\frac{2\pi i(a')^{2}bm}{n}}\right) = \sum_{\substack{a \tmod{m} \\ a' \tmod{n}}}e^{\frac{2\pi i\left((an)^{2}+(a'm)^{2}\right)b}{mn}}.
+            \]
+            Since $(m,n) = 1$, the Chinese remainder theorem gives an isomorphism
+            \[
+              (\Z/m\Z) \op (\Z/n\Z) \to (\Z/mn\Z) \qquad a \oplus a' \mapsto an+a'm.
+            \]
+            Set $a'' = an+a'm$ so that $(a'')^{2} \equiv (an)^{2}+(a'm)^{2} \tmod{mn}$. Under this isomorphism, the last sum above is then equal to
+            \[
+              \sum_{a'' \tmod{mn}}e^{\frac{2\pi i(a'')^{2}b}{mn}},
+            \]
+            which is precisely $g(b,mn)$. This proves (ii).
+          \item The claim is obvious if $m = 1$ because $g(b,1) = 1$ so assume $m > 1$. If $m = p$ then \cref{prop:Gauss_sum_equivalence_for_primes}, \cref{prop:Gauss_sum_reduction} (ii), and that quadratic Dirichlet characters are their own conjugate altogether imply the claim. Now let $r \ge 1$ and assume by induction that the claim holds when $m = p^{r'}$ for all positive integers $r'$ such that $r' < r$. Then by (i), we have
+          \begin{equation}\label{equ:quadratic_Gauss_sum_reduction_1}
+            g(b,p^{r}) = pg(b,p^{r-2}) = \legendre{b}{p^{r-2}}pg(p^{r-2}) = \legendre{b}{p^{r-2}}g(p^{r}) = \legendre{b}{p^{r}}g(p^{r}).
+          \end{equation}
+          It now suffices to prove the claim when $m = p^{r}q^{s}$ where $q$ is another odd prime and $s \ge 1$. Then by (ii) and \cref{equ:quadratic_Gauss_sum_reduction_1}, we compute
+          \begin{align*}
+            g(b,p^{r}q^{s}) &= g(bq^{s},p^{r})g(bp^{r},q^{s}) \\
+            &= \legendre{bq^{s}}{p^{r}}\legendre{bp^{r}}{q^{s}}g(p^{r})g(q^{s}) \\
+            &= \legendre{b}{p^{r}q^{s}}\legendre{q^{s}}{p^{r}}\legendre{p^{r}}{q^{s}}g(p^{r})g(q^{s}) \\
+            &= \legendre{b}{p^{r}q^{s}}g(q^{s},p^{r})g(p^{r},q^{s}) \\
+            &= \legendre{b}{p^{r}q^{s}}g(p^{r}q^{s}).
+          \end{align*}
+          This proves (iii).
+        \end{enumerate}
+      \end{proof}
+
+      At last we can prove that our Ramanujan and quadratic Gauss sums agree for square-free $m$:
+
+      \begin{theorem}
+        Suppose $m \ge 1$ be square-free and odd and let $\chi_{m}$ be the quadratic Dirichlet character given by the Jacobi symbol. Let $b \in \mathbb{Z}$ such that $(b,m) = 1$. Then
+        \[
+          \tau(b,\chi_{m}) = g(b,m).
+        \]
+      \end{theorem}
+      \begin{proof}
+        The claim is obvious if $m = 1$ because $\tau(b,\chi_{1}) = 1$ and $g(b,1) = 1$ so assume $m > 1$. Since $\chi_{m}$ is quadratic, it suffices to assume $b = 1$ by \cref{prop:Gauss_sum_reduction} (ii) and \cref{prop:quadratic_Gauss_sum_reduction} (iii). Now let $m = p_{1}p_{2} \cdots p_{k}$ be the prime decomposition of $m$. Repeated application of \cref{prop:Gauss_sum_reduction} (iv) gives the first equality in the following chain:
+        \begin{align*}
+          \tau(\chi) &= \prod_{1 \le i < j \le k}\chi_{p_{i}}(p_{j})\chi_{p_{j}}(p_{i})\tau(\chi_{p_{i}})\tau(\chi_{p_{j}}) \\
+          &= \prod_{1 \le i < j \le k}\chi_{p_{i}}(p_{j})\chi_{p_{j}}(p_{i})g(p_{i})g(p_{j}) \\
+          &= \prod_{1 \le i < j \le k}g(p_{j},p_{i})g(p_{i},p_{j}) \\
+          &= g(q).
+        \end{align*}
+        This completes the proof.
+      \end{proof}
+
+      Now let's turn to \cref{prop:quadratic_Gauss_sum_reduction} and the evaluation of the quadratic Gauss sum. \cref{prop:quadratic_Gauss_sum_reduction} (ii) and (iii) reduce the evaluation of $g(b,m)$ for odd $m$ and $(b,m) = 1$ to computing $g(p)$ for $p$ an odd prime. As with the Gauss sum, it is not difficult to compute the modulus of the quadratic Gauss sum:
+
+      \begin{theorem}\label{thm:quadratic_Gauss_sum_modulus}
+        Let $m \ge 1$ be odd. Then
+        \[
+          |g(m)| = \sqrt{m}.
+        \]
+      \end{theorem}
+      \begin{proof}
+        By \cref{prop:quadratic_Gauss_sum_reduction} (ii), it suffices to assume $m = p^{r}$ is a power of an odd prime. By Euclidean division write $r = 2n+r'$ for some positive integer $n$ and with $r' = 0,1$ depending on if $r$ is even or odd respectively. Then \cref{prop:quadratic_Gauss_sum_reduction} (i) implies
+        \[
+          |g(p^{r})|^{2} = p^{2n}|g(p^{r'})|^{2}.
+        \]
+        If $r' = 0$ then $2n = r$ so that $p^{2n} = p^{r}$. Thus $|g(p^{r})| = \sqrt{p^{r}}$. If $r' = 1$ then \cref{thm:Gauss_sum_modulus,prop:Gauss_sum_equivalence_for_primes} together imply $|g(p^{r'})|^{2} = p$ so that the right-hand side above is $p^{2n+1} = p^{r}$ and again we have $|g(p^{r})| = \sqrt{p^{r}}$.
+      \end{proof}
+
+      Accordingly, we define the \textbf{epsilon factor}\index{epsilon factor} $\e_{m}$ for any $m \ge 1$ by
+      \[
+        \e_{m} = \frac{g(m)}{\sqrt{m}}.
+      \]
+      \cref{thm:quadratic_Gauss_sum_modulus} says that this value lies on the unit circle when $m$ is odd. Thus the question of the evaluation of quadratic Gauss sums reduces to determining what the epsilon factor is. This was completely resolved and the original proof is due to Gauss in 1808 (see \cite{Gauss1808summatio}) while more modern proofs uses analytic techniques (see \cite{lang1994algebraic}). The precise statement is the following:
+
+      \begin{theorem}\label{thm:Gauss's_evaluation}
+        Let $m \ge 1$. Then
+        \[
+          \e_{m} = \begin{cases} (1+i) & \text{if $m \equiv 0 \tmod{4}$}, \\ 1 & \text{if $m \equiv 1 \tmod{4}$}, \\ 0 & \text{if $m \equiv 2 \tmod{4}$}, \\ i & \text{if $m \equiv 3 \tmod{4}$}. \end{cases}
+        \]
+      \end{theorem}
+
+      As an immediate corollary, this implies the evaluation of the epsilon factor $\e_{\chi_{p}}$ where $\chi_{p}$ is the quadratic Dirichlet character given by the Jacobi symbol for an odd prime $p$:
+
+      \begin{corollary}
+        Let $p$ be an odd prime and $\chi_{p}$ be the quadratic Dirichlet character given by the Jacobi symbol. Then
+        \[
+          \e_{\chi_{p}} = \begin{cases} 1 & \text{if $p \equiv 1 \tmod{4}$}, \\ i & \text{if $p \equiv 3 \tmod{4}$}. \end{cases}
+        \]
+      \end{corollary}
+      \begin{proof}
+        The statement follows immediately from \cref{thm:Gauss's_evaluation,prop:Gauss_sum_equivalence_for_primes}.
+      \end{proof}
+    \subsection*{Kloosterman and Sali\'e Sums}
+      Our last class of sums generalize both types of Ramanujan sums. For any $c \ge 1$ and $n,m \in \Z$, the \textbf{Kloosterman sum}\index{Kloosterman sum} $K(n,m,c)$ is defined by
+      \[
+        K(n,m,c) = \sum_{\substack{a \tmod{c} \\ (a,c) = 1}}e^{\frac{2\pi i(an+\conj{a}m)}{c}} = \psum_{a \tmod{c}}e^{\frac{2\pi i(an+\conj{a}m)}{c}}.
+      \]
+      Notice that if either $n = 0$ or $m = 0$ then the Kloosterman sum reduces to a Ramanujan sum. Kloosterman sums have similar properties to those of Ramanujan sums, but we will not need them. The only result we will need is a famous bound, often called the \textbf{Weil bound}\index{Weil bound} for Kloosterman sums, proved by Weil (see \cite{weil1948some} for a proof):
+
+      \begin{theorem*}[Weil bound]
+        Let $c \ge 1$ and $n,m \in \Z$. Then
+        \[
+          |K(n,m,c)| \le \s_{0}(c)\sqrt{(n,m,c)c}.
+        \]
+      \end{theorem*}
+
+      Lastly, Sali\'e sums are Kloosterman sums with Dirichlet characters. To be precise, for any $c \ge 1$, $n,m \in \Z$, and a Dirichlet character $\chi$ with conductor $q \mid c$, the \textbf{Sali\'e sum}\index{Sali\'e sum} $S_{\chi}(n,m,c)$ is defined by
+      \[
+        S_{\chi}(n,m,c) = \sum_{\substack{a \tmod{c} \\ (a,c) = 1}}\chi(a)e^{\frac{2\pi i(an+\conj{a}m)}{c}} = \psum_{a \tmod{c}}\chi(a)e^{\frac{2\pi i(an+\conj{a}m)}{c}}.
+      \]
+      If either $n = 0$ or $m = 0$ then the Sali\'e sum reduces to the Ramanujan sum associated to $\chi$.
