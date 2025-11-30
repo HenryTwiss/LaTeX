@@ -286,7 +286,7 @@
       \[
         \sum_{g \in G}\int_{gF}f(z)\,d\mu.
       \]
-      As $G$ is countable and the intersections $gF \cap hF$ are measure zero, the overlap in $\bigcup_{g \in G}gF$ is also measure zero. As $D = \bigcup_{g \in G}gF$, the result follows. Of course, there is equality everywhere so we can also run the procedure in reverse provided $\int_{D}f(z)\,d\mu$ converges absolutely.
+      As $G$ is countable and the intersections $gF \cap hF$ are measure zero, the overlap in $\bigcup_{g \in G}gF$ is also measure zero. As $D = \bigcup_{g \in G}gF$, the result follows. Moreover, we can run the argument in reverse provided $\int_{D}f(z)\,d\mu$ converges absolutely. This completes the proof.
     \end{proof}
 
     In the unfolding/folding method, we refer to the going from the left-hand side to right-hand as \textbf{unfolding}\index{unfolding} and going from the right-hand to left-hand side as \textbf{folding}\index{folding}.
@@ -306,17 +306,39 @@
     There is the question of whether the Fourier series of $f(\mathbf{x})$ converges at all and if so does it even converge to $f(\mathbf{x})$ itself. Under reasonable conditions this is possible as the following proposition shows (see \cite{grafakos2008classical} for a proof):
 
     \begin{theorem}\label{thm:existance_of_Fourier_series}
-      Suppose $f(\mathbf{x})$ is smooth and $1$-periodic in each component. Then the Fourier series of $f(\mathbf{x})$ converges uniformly everywhere to $f(\mathbf{x})$.
+      Suppose $f(\mathbf{x})$ is a smooth function on $\R^{n}$ and is $1$-periodic in each component. Then the Fourier series of $f(\mathbf{x})$ converges uniformly everywhere to $f(\mathbf{x})$.
     \end{theorem}
 
-    The link between the Fourier transform and Fourier series is given by the \textbf{Poisson summation formula}\index{Poisson summation formula}:
+    In the case of $1$-periodic functions of a single variable, we can do better:
+
+    \begin{theorem}\label{thm:existance_of_Fourier_series_Dirichlet}
+      Suppose $f(x)$ is a function on $\R$ that is $1$-periodic and satisfies the following conditions:
+      \begin{enumerate}[label*=(\roman*)]
+        \item $f(x)$ is absolutely integrable on $[0,1]$.
+        \item $f(x)$ has a finite number of local extrema on $[0,1]$.
+        \item $f(x)$ is continuous on $[0,1]$ except for at most a finite number of jump discontinuities.
+      \end{enumerate}
+      Then the Fourier series of $f(x)$ converges locally uniformly to $f(x)$ on every set where $f(x)$ is continuous. Moreover, at any jump discontinuity, the Fourier series of $f(x)$ converges to the average of the left-hand and right-hand limits of $f(x)$.
+    \end{theorem}
+
+    The properties (i)-(iii) in \cref{thm:existance_of_Fourier_series_Dirichlet} are known as the \textbf{Dirichlet conditions}\index{Dirichlet conditions}.
+
+    \begin{remark}
+      More generally, the Dirichlet conditions in \cref{thm:existance_of_Fourier_series_Dirichlet} can be weakened to only supposing that $f(x)$ is of bounded variation.
+    \end{remark}
+    
+    Returning to the general setting, suppose $f(\mathbf{x})$ is an absolutely integrable function on $\R^{n}$. There are two ways of building a function from $f(\mathbf{x})$ that is $1$-periodic in each component. Namely, averaging $f(\mathbf{x})$ over all unit translates of $\Z^{n}$ or considering the Fourier series of $f(\mathbf{x})$:
+    \[
+      \sum_{\mathbf{n} \in \Z^{n}}f(\mathbf{x}+\mathbf{n}) \quad \text{or} \quad \sum_{\mathbf{t} \in \Z^{n}}(\mc{F}f)(\mathbf{t})e^{2\pi i\<\mathbf{t},\mathbf{x}\>}.
+    \]
+    The link between the Fourier transform and Fourier series is given by the \textbf{Poisson summation formula}\index{Poisson summation formula} which says that these two expressions are the same under some mild assumptions. In fact, we may replace $\Z^{n}$ with any complete integral lattice $\L$ in $\R^{n}$:
 
     \begin{theorem*}[Poisson summation formula]
       Suppose $\L$ is a complete integral lattice in $\R^{n}$, $f(\mathbf{x})$ is absolutely integrable on $\R^{n}$, and the function
       \[
         F(\mathbf{x}) = \sum_{\l \in \L}f(\mathbf{x}+\l),
       \]
-      is locally absolutely uniformly convergent and smooth. Then
+      is smooth. Then
       \[
         \sum_{\l \in \L}f(\mathbf{x}+\l) = \frac{1}{V_{\L}}\sum_{\l^{\vee} \in \L^{\vee}}(\mc{F}f)(\l^{\vee})e^{2\pi i\<\l^{\vee},\mathbf{x}\>},
       \]
@@ -330,7 +352,7 @@
       \[
         F_{P}(\mathbf{x}) = \sum_{\mathbf{n} \in \Z^{n}}f(P\mathbf{x}+P\mathbf{n}).
       \]
-      Now $F_{P}(\mathbf{x})$ is smooth and $1$-periodic in each component because $F(\mathbf{x})$ is smooth and invariant under translation by $\L$. Therefore $F_{P}(\mathbf{x})$ admits a Fourier series converging uniformly everywhere to $F_{P}(\mathbf{x})$ by \cref{thm:existance_of_Fourier_series}. We compute the $\mathbf{t}$-th Fourier coefficient of $F_{P}(\mathbf{x})$ as follows:
+      Now $F_{P}(\mathbf{x})$ is smooth and $1$-periodic in each component because $F(\mathbf{x})$ is smooth and invariant under translation by $\L$. Therefore $F_{P}(\mathbf{x})$ admits a Fourier series converging uniformly everywhere to $F_{P}(\mathbf{x})$ by \cref{thm:existance_of_Fourier_series}. Moreover, $F_{P}(\mathbf{x})$ is absolutely integrable on $[0,1]^{n}$ since it is smooth. We compute the $\mathbf{t}$-th Fourier coefficient of $F_{P}(\mathbf{x})$ as follows:
       \begin{align*}
         \hat{F}_{P}(\mathbf{t}) &= \int_{[0,1]^{n}}F_{P}(\mathbf{x})e^{-2\pi i\<\mathbf{t},\mathbf{x}\>}\,d\mathbf{x} \\
         &= \int_{[0,1]^{n}}\sum_{\mathbf{n} \in \Z^{n}}f(P\mathbf{x}+P\mathbf{n})e^{-2\pi i\<\mathbf{t},\mathbf{x}\>}\,d\mathbf{x} \\
@@ -338,10 +360,10 @@
         &= \frac{1}{V_{\L}}\sum_{\mathbf{n} \in \Z^{n}}\int_{P[0,1]^{n}}f(\mathbf{x}+P\mathbf{n})e^{-2\pi i\<\mathbf{t},P^{-1}\mathbf{x}\>} && \text{$\mathbf{x} \mapsto P^{-1}\mathbf{x}$ and \cref{prop:covolume_of_dual_is_inverse}} \\
         &= \frac{1}{V_{\L}}\sum_{\mathbf{n} \in \Z^{n}}\int_{P[0,1]^{n}}f(\mathbf{x}+P\mathbf{n})e^{-2\pi i\<\mathbf{t},P^{-1}\mathbf{x}\>}\,d\mathbf{x} \\
         &= \frac{1}{V_{\L}}\sum_{\mathbf{n} \in \Z^{n}}\int_{P[0,1]^{n}}f(\mathbf{x}+P\mathbf{n})e^{-2\pi i\left\<(P^{-1})^{t}\mathbf{t},\mathbf{x}\right\>}\,d\mathbf{x} \\
-        &= \frac{1}{V_{\L}}\int_{\R^{n}}f(\mathbf{x})e^{-2\pi i\left\<(P^{-1})^{t}\mathbf{t},\mathbf{x}\right\>}\,d\mathbf{x} && \text{FTT} \\
+        &= \frac{1}{V_{\L}}\int_{\R^{n}}f(\mathbf{x})e^{-2\pi i\left\<(P^{-1})^{t}\mathbf{t},\mathbf{x}\right\>}\,d\mathbf{x} \\
         &= \frac{1}{V_{\L}}(\mc{F}f)\left((P^{-1})^{t}\mathbf{t}\right).
       \end{align*}
-      Therefore the definition of $F_{P}(\mathbf{x})$ and its representation as a Fourier series together give
+      Therefore the definition of $F_{P}(\mathbf{x})$ and its representation as a Fourier series together gives
       \[
         \sum_{\l \in \L}f(P\mathbf{x}+\l) = \frac{1}{V_{\L}}\sum_{\mathbf{t} \in \Z^{n}}(\mc{F}f)\left((P^{-1})^{t}\mathbf{t}\right)e^{2\pi i\<\mathbf{t},\mathbf{x}\>}.
       \]
@@ -359,7 +381,7 @@
       \[
         F(\mathbf{x}) = \sum_{\mathbf{n} \in \Z^{n}}f(\mathbf{x}+\mathbf{n}),
       \]
-      is locally absolutely uniformly convergent and smooth. Then
+      is smooth. Then
       \[
         \sum_{\mathbf{n} \in \Z^{n}}f(\mathbf{x}+\mathbf{n}) = \sum_{\mathbf{t} \in \Z^{n}}(\mc{F}f)(\mathbf{t})e^{2\pi i\<\mathbf{t},\mathbf{x}\>},
       \]
@@ -372,7 +394,39 @@
       This is the Poisson summation formula when $\L = \Z^{n}$ since $\Z^{n}$ is self-dual.
     \end{proof}
 
-    In practical settings, we need a class of functions $f(\mathbf{x})$ for which the assumptions of the Poisson summation formula hold. We say that $f(\mathbf{x})$ is of \textbf{Schwarz class}\index{Schwarz class} if $f \in C^{\infty}(\R^{n})$ and $f(\mathbf{x})$ along with all of its partial derivatives have rapid decay. If $f(\mathbf{x})$ is of Schwarz class, the rapid decay implies that $f(\mathbf{x})$ and all of its derivatives are absolutely integrable over $\R^{n}$. Moreover, this also implies that $F(\mathbf{x}) = \sum_{\mathbf{n} \in \Z^{n}}f(\mathbf{x}+\mathbf{n})$ and all of its derivatives are locally absolutely uniformly convergent by the Weierstrass $M$-test. The uniform limit theorem then implies $F(\mathbf{x})$ is smooth and thus the conditions of the Poisson summation formula are satisfied. We will now derive some properties of the Fourier transform including a case specific to Schwarz class functions:
+    Using the Dirichlet conditions, we can prove a slightly stronger form of the Poisson summation formula in the single variable setting:
+
+    \begin{theorem}
+      Suppose $f(x)$ is absolutely integrable on $\R$, and the function
+      \[
+        F(x) = \asum_{n \in \Z}f(x+n),
+      \]
+      satisfies the Dirichlet conditions, where the $\ast$ indicates that $f(x+n)$ is meant to represent the average of the left-hand and right-hand limits at jump discontinuities. Then
+      \[
+        \asum_{n \in \Z}f(x+n) = \sum_{t \in \Z}(\mc{F}f)(t)e^{2\pi inx},
+      \]
+      and
+      \[
+        \asum_{n \in \Z}f(n) = \sum_{t \in \Z}(\mc{F}f)(t).
+      \]
+    \end{theorem}
+    \begin{proof}
+      Observe that $F(x)$ is $1$-periodic. As $F(x)$ satisfies the Dirichlet conditions by assumption, it admits a Fourier series converging locally uniformly to $F(x)$ wherever $F(x)$ is continuous by \cref{thm:existance_of_Fourier_series_Dirichlet}. In fact, by the construction of $F(x)$ and that the Fourier series of $F(x)$ converges to the average of the left-hand and right-hand limits at jump discontinuities, the Fourier series of $F(x)$ converges uniformly to $F(x)$ everywhere (not just locally since $F(x)$ is $1$-periodic and there are at most finitely many jump discontinuities). Moreover, $F(x)$ is absolutely integrable on $[0,1]$ since it is smooth. We compute the $t$-th Fourier coefficient of $F(x)$ as follows:
+      \begin{align*}
+        \hat{F}(t) &= \int_{0}^{1}F(x)e^{-2\pi itx}\,dx \\
+        &= \int_{0}^{1}\sum_{n \in \Z}f(x+n)e^{-2\pi itx}\,dx \\
+        &= \sum_{n \in \Z}\int_{0}^{1}f(x+n)e^{-2\pi itx}\,dx && \text{FTT} \\
+        &= \int_{-\infty}^{\infty}f(x)e^{-2\pi itx}\,dx \\
+        &= (\mc{F}f)(t).
+      \end{align*}
+      Therefore the definition of $F(x)$ and its representation as a Fourier series together gives
+      \[
+        \asum_{n \in \Z}f(x+n) = \sum_{t \in \Z}(\mc{F}f)(t)e^{2\pi itx}.
+      \]
+      This proves the first statement. Setting $x = 0$ proves the second statement.
+    \end{proof}
+
+    In practical settings, we need a class of functions $f(\mathbf{x})$ for which the assumptions of the Poisson summation formula hold. We say that $f(\mathbf{x})$ is of \textbf{Schwarz class}\index{Schwarz class} if $f \in C^{\infty}(\R^{n})$ and $f(\mathbf{x})$ along with all of its partial derivatives have rapid decay. If $f(\mathbf{x})$ is of Schwarz class, the rapid decay implies that $f(\mathbf{x})$ and all of its derivatives are absolutely integrable over $\R^{n}$. Moreover, this also implies $F(\mathbf{x}) = \sum_{\mathbf{n} \in \Z^{n}}f(\mathbf{x}+\mathbf{n})$ and all of its derivatives are locally absolutely uniformly convergent by the Weierstrass $M$-test. The uniform limit theorem then implies $F(\mathbf{x})$ is smooth and thus the conditions of the Poisson summation formula are satisfied. We will now derive some properties of the Fourier transform including a case specific to Schwarz class functions:
 
     \begin{proposition}\label{prop:Fourier_transform_properties}
       Let $f(\mathbf{x})$ and $g(\mathbf{x})$ be absolutely integrable on $\R^{n}$. Then the following hold:
