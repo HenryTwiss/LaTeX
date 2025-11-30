@@ -317,7 +317,7 @@
     \[
       \e_{m} = \frac{g(m)}{\sqrt{m}}.
     \]
-    \cref{thm:quadratic_Gauss_sum_modulus} says that this value lies on the unit circle when $m$ is odd. Thus the question of the evaluation of quadratic Gauss sums reduces to determining what the epsilon factor is. This was completely resolved and the original proof is due to Gauss in 1808 (see \cite{Gauss1808summatio}) while more modern proofs uses analytic techniques (see \cite{lang1994algebraic}). The precise statement is the following:
+    \cref{thm:quadratic_Gauss_sum_modulus} says that this value lies on the unit circle when $m$ is odd. Thus the question of the evaluation of quadratic Gauss sums reduces to determining what the epsilon factor is. This was completely resolved and the original proof is due to Gauss in 1808 (see \cite{Gauss1808summatio}) while more modern proofs use analytic techniques. The essential idea is to rewrite $g(m)$ in a form where \cref{thm:Poisson_summation_formula_Dirichlet-Jordan_test} can be applied. The precise statement is the following:
 
     \begin{theorem}\label{thm:Gauss's_evaluation}
       Let $m \ge 1$. Then
@@ -325,6 +325,65 @@
         \e_{m} = \begin{cases} (1+i) & \text{if $m \equiv 0 \tmod{4}$}, \\ 1 & \text{if $m \equiv 1 \tmod{4}$}, \\ 0 & \text{if $m \equiv 2 \tmod{4}$}, \\ i & \text{if $m \equiv 3 \tmod{4}$}. \end{cases}
       \]
     \end{theorem}
+    \begin{proof}
+      Consider the function
+      \[
+        f(x) = \begin{cases} e^{\frac{2\pi ix^{2}}{m}} & \text{if $x \in [0,m]$,} \\ 0 & \text{if $x \notin [0,m]$.} \end{cases}
+      \]
+      Necessarily $f(x)$ is absolutely integrable on $\R$ as it is compactly supported. It is also continuously differentiable with a finite number of jump discontinuities (they are at $x = 0$ and $x = m$). Then so is
+      \[
+        \asum_{n \in \Z}f(x+n)
+      \]
+      because finitely many of the summands are nonzero. In particular, this sum satisfies the Dirichlet-Jordan test. By \cref{thm:Poisson_summation_formula_Dirichlet-Jordan_test}, we have
+      \[
+        \asum_{n \in \Z}f(n) = \sum_{t \in \Z}(\mc{F}f)(t),
+      \]
+      where the $\ast$ indicates that $f(x+n)$ is meant to represent the average of the left-hand and right-hand limits at jump discontinuities. But from the definition of $f(x)$, we find that
+      \[
+        \asum_{n \in \Z}f(n) = \sum_{a \tmod{m}}f(a) = g(m),
+      \]
+      and hence
+      \[
+        g(m) = \sum_{t \in \Z}(\mc{F}f)(t).
+      \]
+      It remains to compute the Fourier transform of $f(x)$ which is
+      \[
+        (\mc{F}f)(t) = \int_{-\infty}^{\infty}f(x)e^{-2\pi itx} = \int_{0}^{m}e^{2\pi i\left(\frac{x^{2}}{m}-tx\right)}\,dx.
+      \]
+      By performing the change of variables $x \mapsto \sqrt{m}x$, the last integral becomes
+      \[
+        \sqrt{m}\int_{0}^{\sqrt{m}}e^{2\pi i(x^{2}-t\sqrt{m}x)}\,dx.
+      \]
+      Complete the square in the exponent by observing
+      \[
+        x^{2}-t\sqrt{m}x = \left(x+\frac{t\sqrt{m}}{2}\right)^{2}-\frac{t^{2}m}{4},
+      \]
+      so that the previous integral is equal to
+      \[
+        \sqrt{m}e^{-\frac{2\pi it^{2}m}{4}}\int_{0}^{\sqrt{m}}e^{2\pi i\left(x+\frac{t\sqrt{m}}{2}\right)^{2}}\,dx.
+      \]
+      Changing variables $x \mapsto x-\frac{t\sqrt{m}}{2}$ yields
+      \[
+        \sqrt{m}e^{-\frac{2\pi it^{2}m}{4}}\int_{\frac{t\sqrt{m}}{2}}^{\sqrt{m}+\frac{t\sqrt{m}}{2}}e^{2\pi ix^{2}}\,dx.
+      \]
+      As $t \equiv 0,1 \tmod{4}$ according to if $t$ is even or odd, we have
+      \[
+        \sum_{\substack{t \in \Z \\ \text{$t$ even}}}(\mc{F}f)(t) = \sqrt{m}\int_{-\infty}^{\infty}e^{2\pi ix^{2}}\,dx \quad \text{and} \quad \sum_{\substack{t \in \Z \\ \text{$t$ odd}}}(\mc{F}f)(t) = \sqrt{m}e^{-\frac{2\pi im}{4}}\int_{-\infty}^{\infty}e^{2\pi ix^{2}}\,dx.
+      \]
+      Whence
+      \[
+        g(m) = \sqrt{m}\left(1+e^{-\frac{2\pi im}{4}}\right)\int_{-\infty}^{\infty}e^{2\pi ix^{2}}\,dx.
+      \]
+      To compute the integral, as $g(1) = 1$ and $e^{-\frac{2\pi i}{4}} = -i$, taking $m = 1$ yields
+      \[
+        \int_{-\infty}^{\infty}e^{2\pi ix^{2}}\,dx = \frac{1}{1-i}.
+      \]
+      Therefore
+      \[
+        \e_{m} = \frac{g(m)}{\sqrt{m}} = \frac{1+e^{-\frac{2\pi im}{4}}}{1-i} = \begin{cases} (1+i) & \text{if $m \equiv 0 \tmod{4}$}, \\ 1 & \text{if $m \equiv 1 \tmod{4}$}, \\ 0 & \text{if $m \equiv 2 \tmod{4}$}, \\ i & \text{if $m \equiv 3 \tmod{4}$}, \end{cases}
+      \]
+      as desired.
+    \end{proof}
 
     As an immediate corollary, this implies the evaluation of the epsilon factor $\e_{\chi_{p}}$ where $\chi_{p}$ is the quadratic Dirichlet character given by the Jacobi symbol for an odd prime $p$:
 

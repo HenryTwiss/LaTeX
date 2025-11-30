@@ -309,24 +309,12 @@
       Suppose $f(\mathbf{x})$ is a smooth function on $\R^{n}$ and is $1$-periodic in each component. Then the Fourier series of $f(\mathbf{x})$ converges uniformly everywhere to $f(\mathbf{x})$.
     \end{theorem}
 
-    In the case of $1$-periodic functions of a single variable, we can do better:
+    In the case of $1$-periodic functions of a single variable, we can do better. This is known as the \textbf{Dirichlet-Jordan test}\index{Dirichlet-Jordan test} (see \cite{zygmund2002trigonometric} for a proof):
 
-    \begin{theorem}\label{thm:existance_of_Fourier_series_Dirichlet}
-      Suppose $f(x)$ is a function on $\R$ that is $1$-periodic and satisfies the following conditions:
-      \begin{enumerate}[label*=(\roman*)]
-        \item $f(x)$ is absolutely integrable on $[0,1]$.
-        \item $f(x)$ has a finite number of local extrema on $[0,1]$.
-        \item $f(x)$ is continuous on $[0,1]$ except for at most a finite number of jump discontinuities.
-      \end{enumerate}
-      Then the Fourier series of $f(x)$ converges locally uniformly to $f(x)$ on every set where $f(x)$ is continuous. Moreover, at any jump discontinuity, the Fourier series of $f(x)$ converges to the average of the left-hand and right-hand limits of $f(x)$.
+    \begin{theorem}[Dirichlet-Jodan test]
+      Suppose $f(x)$ is a function on $\R$ that is $1$-periodic and of bounded variation. Then the Fourier series of $f(x)$ converges locally uniformly to $f(x)$ on every set where $f(x)$ is continuous. Moreover, at any jump discontinuity, the Fourier series of $f(x)$ converges to the average of the left-hand and right-hand limits of $f(x)$. In particular, this holds for all continuously differentiable functions with at most a finite number of jump discontinuities.
     \end{theorem}
 
-    The properties (i)-(iii) in \cref{thm:existance_of_Fourier_series_Dirichlet} are known as the \textbf{Dirichlet conditions}\index{Dirichlet conditions}.
-
-    \begin{remark}
-      More generally, the Dirichlet conditions in \cref{thm:existance_of_Fourier_series_Dirichlet} can be weakened to only supposing that $f(x)$ is of bounded variation.
-    \end{remark}
-    
     Returning to the general setting, suppose $f(\mathbf{x})$ is an absolutely integrable function on $\R^{n}$. There are two ways of building a function from $f(\mathbf{x})$ that is $1$-periodic in each component. Namely, averaging $f(\mathbf{x})$ over all unit translates of $\Z^{n}$ or considering the Fourier series of $f(\mathbf{x})$:
     \[
       \sum_{\mathbf{n} \in \Z^{n}}f(\mathbf{x}+\mathbf{n}) \quad \text{or} \quad \sum_{\mathbf{t} \in \Z^{n}}(\mc{F}f)(\mathbf{t})e^{2\pi i\<\mathbf{t},\mathbf{x}\>}.
@@ -394,14 +382,14 @@
       This is the Poisson summation formula when $\L = \Z^{n}$ since $\Z^{n}$ is self-dual.
     \end{proof}
 
-    Using the Dirichlet conditions, we can prove a slightly stronger form of the Poisson summation formula in the single variable setting:
+    Using the Dirichlet-Jordan test, we can prove a slightly stronger form of the Poisson summation formula in the single variable setting:
 
-    \begin{theorem}
+    \begin{theorem}\label{thm:Poisson_summation_formula_Dirichlet-Jordan_test}
       Suppose $f(x)$ is absolutely integrable on $\R$, and the function
       \[
         F(x) = \asum_{n \in \Z}f(x+n),
       \]
-      satisfies the Dirichlet conditions, where the $\ast$ indicates that $f(x+n)$ is meant to represent the average of the left-hand and right-hand limits at jump discontinuities. Then
+      satisfies the Dirichlet-Jordan test, where the $\ast$ indicates that $f(x+n)$ is meant to represent the average of the left-hand and right-hand limits at jump discontinuities. Then
       \[
         \asum_{n \in \Z}f(x+n) = \sum_{t \in \Z}(\mc{F}f)(t)e^{2\pi inx},
       \]
@@ -411,7 +399,7 @@
       \]
     \end{theorem}
     \begin{proof}
-      Observe that $F(x)$ is $1$-periodic. As $F(x)$ satisfies the Dirichlet conditions by assumption, it admits a Fourier series converging locally uniformly to $F(x)$ wherever $F(x)$ is continuous by \cref{thm:existance_of_Fourier_series_Dirichlet}. In fact, by the construction of $F(x)$ and that the Fourier series of $F(x)$ converges to the average of the left-hand and right-hand limits at jump discontinuities, the Fourier series of $F(x)$ converges uniformly to $F(x)$ everywhere (not just locally since $F(x)$ is $1$-periodic and there are at most finitely many jump discontinuities). Moreover, $F(x)$ is absolutely integrable on $[0,1]$ since it is smooth. We compute the $t$-th Fourier coefficient of $F(x)$ as follows:
+      Observe that $F(x)$ is $1$-periodic. As $F(x)$ satisfies the Dirichlet-Jordan test by assumption, it admits a Fourier series converging locally uniformly to $F(x)$ wherever $F(x)$ is continuous. In fact, by the construction of $F(x)$ and that the Fourier series of $F(x)$ converges to the average of the left-hand and right-hand limits at jump discontinuities, the Fourier series of $F(x)$ converges locally uniformly to $F(x)$ everywhere. Moreover, $F(x)$ is absolutely integrable on $[0,1]$ since it is smooth. We compute the $t$-th Fourier coefficient of $F(x)$ as follows:
       \begin{align*}
         \hat{F}(t) &= \int_{0}^{1}F(x)e^{-2\pi itx}\,dx \\
         &= \int_{0}^{1}\sum_{n \in \Z}f(x+n)e^{-2\pi itx}\,dx \\
@@ -497,7 +485,7 @@
     \begin{proof}
       Note that $f(x)$ is absolutely integrable because it exhibits exponential decay. We compute its Fourier transform
       \[
-        (\mc{F}f)(\z) = \int_{-\infty}^{\infty}e^{-2\pi\a x^{2}}e^{-2\pi i\z x}\,dx = \int_{-\infty}^{\infty}e^{-2\pi\a(x^{2}+i\z x)}\,dx.
+        (\mc{F}f)(\z) = \int_{-\infty}^{\infty}e^{-2\pi\a x^{2}}e^{-2\pi i\z x}\,dx = \int_{-\infty}^{\infty}e^{-2\pi(\a x^{2}+i\z x)}\,dx.
       \]
       By performing the change of variables $x \mapsto \frac{x}{\sqrt{\a}}$, the last integral becomes
       \[
