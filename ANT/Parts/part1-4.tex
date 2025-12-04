@@ -649,31 +649,36 @@
     If $\s$ is bounded, Stirling's formula gives a useful asymptotic showing that $\G(s)$ decays as $s \to \infty$:
     
     \begin{corollary}\label{equ:weaker_Stirling_formula}
-    Let $|\arg(s)| < \pi-\e$ and $|s| > \d$ for some $\e,\d > 0$. Then if $\s$ is bounded, we have
+    Let $|\arg(s)| < \pi-\e$ and $|s| > \d$ for some $\e,\d > 0$. Then for bounded $\s$, we have
       \[
-        \G(s) \sim \sqrt{2\pi}t^{\s-\frac{1}{2}}e^{-\frac{\pi}{2}|t|}.
+        \G(s) \sim \sqrt{2\pi}|t|^{\s-\frac{1}{2}}e^{-\frac{\pi}{2}|t|}.
       \]
     \end{corollary}
     \begin{proof}
       Stirling's formula can be equivalently expressed as
       \[
-        \G(s) \sim \sqrt{2\pi}(\s+it)^{\s-\frac{1}{2}+it}e^{-\s-it}.
+        \G(s) \sim \sqrt{2\pi}e^{\left(s-\frac{1}{2}\right)\log(s)}e^{-s}.
       \]
-      Since $\s$ is bounded, $e^{-\s-it} \ll 1$ and we obtain the simplified asymptotic
+      Writing $\log(s) = \log|s|+i\arg(s)$ (since $|\arg(s)| < \pi-\e$ the logarithm is defined), this asymptotic becomes
       \[
-        \G(s) \sim \sqrt{2\pi}(it)^{\s-\frac{1}{2}+it}.
+        \G(s) \sim \sqrt{2\pi}e^{\left(s-\frac{1}{2}\right)\log|s|}e^{\left(s-\frac{1}{2}\right)i\arg(s)}e^{-s},
       \]
-      Similarly, $x$ being bounded implies $i^{\s-\frac{1}{2}} \ll 1$ and we compute
+      from which it follows that
       \[
-        (it)^{it} = e^{i|t|\log(i|t|)} = e^{i|t|(\log(i)+\log|t|)} = e^{-\frac{\pi}{2}|t|+i|t|\log|t|} \sim e^{-\frac{\pi}{2}|t|},
+        \G(s) \sim \sqrt{2\pi}e^{\left(s-\frac{1}{2}\right)\log|s|}e^{-(t\arg(s)+\s)},
       \]
-      where we have used the fact that $\log(i) = i\frac{\pi}{2}$. Together, we obtain the further simplified asymptotic
+      upon taking the absolute value of the right-hand side (which is permitted because we are considering asymptotic equivalence). Since $\s$ is bounded, we have $|s| \sim |t|$, $\arg(s) \sim \sgn(t)\frac{\pi}{2}$, and $t\sgn(t) = |t|$. In particular, $-(t\arg(s)+\s) \sim -|t|\frac{\pi}{2}$. Hence
       \[
-        \G(s) \sim \sqrt{2\pi}t^{\s-\frac{1}{2}}e^{-\frac{\pi}{2}|t|},
+        \G(s) \sim \sqrt{2\pi}e^{\left(s-\frac{1}{2}\right)\log|t|}e^{-\frac{\pi}{2}|t|}.
       \]
-      which is the desired result
+      But this is equivalent to
+      \[
+        \G(s) \sim \sqrt{2\pi}|t|^{s-\frac{1}{2}}e^{-\frac{\pi}{2}|t|},
+      \]
+      which is the desired asymptotic.
     \end{proof}
-    Equivalent to Stirling's formula is the asymptotic
+
+    Note that \cref{equ:weaker_Stirling_formula} only tells us how $\G(s)$ grows for large $t$ when $\s$ is bounded. Regardless, Stirling's formula also implies the asymptotic
     \begin{equation}\label{equ:Stirlings_formula_equivalent_version}
         \G(s) = \sqrt{2\pi}s^{s-\frac{1}{2}}e^{-s}(1+O_{\e,\d}(1)),
     \end{equation}
