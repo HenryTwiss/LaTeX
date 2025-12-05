@@ -554,7 +554,7 @@
     \[
       \int_{0}^{1}e^{-x}x^{s-1}\,dx \ll \int_{0}^{1}x^{\s-1}\,dx \ll_{\a} 1,
     \]
-    so that this integral is absolutely uniformly convergent on $K$ too. Thus $\G(s)$ is absolutely uniformly convergent on $K$. Also note that $\G(s)$ is real for $s > 0$. The most basic properties of $\G(s)$ are the following:
+    so that this integral is absolutely uniformly convergent on $K$ too. Thus $\G(s)$ is absolutely uniformly convergent on $K$. In particular, $\G(s)$ is holomorphic for $\s > 0$. Also note that $\G(s)$ is real for $s > 0$. The most basic properties of $\G(s)$ are collected in the following result:
 
     \begin{proposition}\label{prop:Factorial_properties_of_gamma_function}
       $\G(s)$ satisfies the following properties:
@@ -576,27 +576,72 @@
       For (iii), since $\G(s)$ is real for $s >0$ we have $\G(\conj{s}) = \conj{\G(s)}$ on this half-line and then the identity theorem implies that this holds everywhere.
     \end{proof}
 
-    From \cref{prop:Factorial_properties_of_gamma_function} we see that for $s = n$ a positive integer, $\G(n) = (n-1)!$. So $\G(s)$ can be thought of as a holomorphic extension of the factorial function. We can use property (ii) of \cref{prop:Factorial_properties_of_gamma_function} to extended $\G(s)$ to a meromorphic function on all of $\C$:
+    Putting \cref{prop:Factorial_properties_of_gamma_function} (i) and (ii) together we see that $\G(n) = (n-1)!$ for any integer $n \ge 0$. So $\G(s)$ can be thought of as a holomorphic extension of the factorial function. Another special value of the gamma function is
+    \begin{equation}\label{equ:gamma_function_at_1/2}
+      \G\left(\frac{1}{2}\right) = \int_{0}^{\infty}\frac{e^{-x}}{\sqrt{x}}\,dx = 2\sqrt{\pi}\int_{0}^{\infty}e^{-\pi x^{2}}\,dx = \pi\int_{-\infty}^{\infty}e^{-\pi x^{2}}\,dx = \sqrt{\pi}.
+    \end{equation}
+    where in the second equality we have made the change of variables $x \mapsto \pi x^{2}$ and recognized the last integral as the Gaussian integral (see \cref{append:Special_Integrals}). We can also use \cref{prop:Factorial_properties_of_gamma_function} (ii) to extended $\G(s)$ to a meromorphic function on all of $\C$:
 
     \begin{theorem}\label{thm:continuation_of_gamma_function}
       $\G(s)$ admits meromorphic continuation to $\C$ with poles at $s = -n$ for $n \ge 0$. All of these poles are simple and with residue $\frac{(-1)^{n}}{n!}$ at $s = -n$.
     \end{theorem}
     \begin{proof}
-      Using \cref{prop:Factorial_properties_of_gamma_function}, (ii) repeatedly, for any integer $n \ge 0$ we have
+      Using \cref{prop:Factorial_properties_of_gamma_function} (ii) repeatedly, we have
       \[
-        \G(s) = \frac{\G(s+1+n)}{s(s+1) \cdots (s+n)}.
+        \G(s) = \frac{\G(s+1+n)}{s(s+1) \cdots (s+n)},
       \]
-      The right-hand side defines an meromorphic function in the region $\s > -n$ and away from the points $0,-1,\ldots,-n$. Letting $n$ be arbitrary, we see that $\G(s)$ has meromorphic continuation to $\C$ with poles at $0,-1,-2,\ldots$. We now compute the residue at $s = -n$. Around this point $\G(s)$ admits meromorphic continuation with representation
+      for any integer $n \ge 0$. The right-hand side defines an meromorphic function in the region $\s > -n$ and away from the points $0,-1,\ldots,-n$. Letting $n$ be arbitrary, we see that $\G(s)$ has meromorphic continuation to $\C$ with poles at $s = -n$. We now compute the residue at $s = -n$. Around this point $\G(s)$ admits meromorphic continuation with representation
       \[
         \frac{\G(s+1+n)}{s(s+1) \cdots (s+n)},
       \]
-      where all of the factors except for $s+n$ are holomorphic at $s = -n$. Thus the pole is simple, and
+      where all of the factors except for $s+n$ are holomorphic at $s = -n$. Thus the pole is simple and
       \[
         \Res_{s = -n}\G(s) = \lim_{z \to -n}\frac{\G(s+1+n)(s+n)}{s(s+1) \cdots (s+n)} = \frac{\G(1)}{(-n)(1-n) \cdots (-1)} = \frac{(-1)^{n}}{n!}.
       \]
     \end{proof}
 
-    In particular, \cref{thm:continuation_of_gamma_function} implies $\Res_{s = 0}\G(s) = 1$ and $\Res_{s = 1}\G(s) = -1$. There are a few other properties of the gamma function that are famous and which we will use frequently. The first of which is the \textbf{Legendre duplication formula}\index{Legendre duplication formula} (see \cite{remmert1998classical} for a proof):
+    In particular, \cref{thm:continuation_of_gamma_function} implies $\Res_{s = 0}\G(s) = 1$ and $\Res_{s = 1}\G(s) = -1$. Now that we have deduced the meromorphic continuation of $\G(s)$, we need to introduce a related function. We define the \textbf{beta function}\index{beta function} $B(s,u)$ by
+    \[
+        B(s,u) = \int_{0}^{1}t^{s-1}(1-t)^{u-1}\,dt,
+    \]
+    for $\s > 0$ and $\tau > 0$. The integral is locally absolutely uniformly convergent in this region. Indeed, let $K \x L$ be a compact subset in this region and set $\a = \min_{s \in K}(\s)$ and $\b = \min_{u \in L}(\tau)$. Then we have to show that $B(s,u)$ is absolutely uniformly convergent on $K \x L$. Observe
+    \[
+      \int_{0}^{1}t^{s-1}(1-t)^{u-1}\,dt \ll \int_{0}^{1}t^{\a-1}(1-t)^{\b-1}\,dt \ll_{\a,\b} 1,
+    \]
+    so that this integral is absolutely uniformly convergent on $K \x L$. Thus $B(s,u)$ is absolutely uniformly convergent on $K \x L$. This means $B(s,u)$ is holomorphic for $\s > 0$ and $\tau > 0$. Most importantly, the beta function is related to the gamma function in this region:
+    
+    \begin{proposition}\label{prop:integral_reprepsentation_for_beta_function}
+      For $\Re(s) > 0$ and $\Re(u) > 0$, we have
+      \[
+        \G(s)\G(u) = B(s,u)\G(s+u).
+      \]
+    \end{proposition}
+    \begin{proof}
+      First use the Fubini–Tonelli theorem to write
+      \begin{align*}
+        \G(s)\G(u) = \left(\int_{0}^{\infty}e^{-x}x^{s-1}\,dx\right)\left(\int_{0}^{\infty}e^{-y}y^{u-1}\,dy\right) = \int_{0}^{\infty}\int_{0}^{\infty}e^{-(x+y)}x^{s-1}y^{u-1}\,dx\,dy.
+      \end{align*}
+      Performing the change of variables $(x,y) \mapsto (x,y-x)$, the last double integral becomes
+      \[
+        \int_{0}^{\infty}\int_{0}^{y}e^{-y}x^{s-1}(y-x)^{u-1}\,dx\,dy,
+      \]
+      because the absolute value of the determinant of the Jacobian matrix is $1$.
+      The further change of variables $x \mapsto xy$ gives
+      \[
+        \int_{0}^{\infty}\int_{0}^{1}e^{-y}(xy)^{s-1}(y-xy)^{u-1}\,dx\,dy.
+      \]
+      Using the Fubini–Tonelli theorem again, we recognize this double integral as
+      \begin{align*}
+        \int_{0}^{\infty}\int_{0}^{1}e^{-y}(xy)^{s-1}(y-xy)^{u-1}\,dx\,dy = \left(\int_{0}^{1}x^{s-1}(1-x)^{u-1}\,dx\right)\left(\int_{0}^{\infty}e^{-y}y^{s+u-1}\,dy\right) = B(s,u)\G(s+u).
+      \end{align*}
+      Therefore
+      \[
+        \G(s)\G(u) = B(s,u)\G(s+u),
+      \]
+      as claimed.
+    \end{proof}
+
+    There are a few other properties of the gamma function that are famous and which we will use frequently. The first of which is the \textbf{Legendre duplication formula}\index{Legendre duplication formula} (see \cite{remmert1998classical} for a proof):
 
     \begin{theorem*}[Legendre duplication formula]
       For any $s \in \C-\{0,-1,-2,\ldots\}$,
@@ -605,7 +650,7 @@
       \]
     \end{theorem*}
 
-    As a first application, we can use this formula to compute $\G\left(\frac{1}{2}\right)$. Letting $z = \frac{1}{2}$ in the Legendre duplication formula and recalling $\G(1) = 1$, we see that $\G\left(\frac{1}{2}\right) = \sqrt{\pi}$. There is also the important Hadamard factorization of the reciprocal of $\G(s)$ (see \cite{stein2003complex} for a proof):
+    There is also the important Hadamard factorization of the reciprocal of $\G(s)$ (see \cite{stein2003complex} for a proof):
 
     \begin{proposition}\label{prop:Hadamard_factorization_for_reciprocial_of_gamma}
       For all $s \in \C$,
@@ -710,22 +755,3 @@
       \]
       where the last estimate follows because $\log\G(u)-g(u) = O_{\e,\d}\left(\frac{1}{u}\right)$ and $u \asymp_{\e,\d} s$.
     \end{proof}
-
-    Lastly, we introduce a useful function related to the Gamma function. We define the \textbf{beta function}\index{beta function} $B(s,u)$ by
-    \[
-        B(s,u) = \int_{0}^{1}t^{s-1}(1-t)^{u-1}\,dt,
-    \]
-    for $\s > 0$ and $\tau > 0$. The integral is locally absolutely uniformly convergent in this region. Indeed, let $K \x L$ be a compact subset in this region and set $\a = \min_{s \in K}(\s)$ and $\b = \min_{u \in L}(\tau)$. Then we have to show that $B(s,u)$ is absolutely uniformly convergent on $K \x L$. Observe
-    \[
-      \int_{0}^{1}t^{s-1}(1-t)^{u-1}\,dt \ll \int_{0}^{1}t^{\a-1}(1-t)^{\b-1}\,dt \ll_{\a,\b} 1,
-    \]
-    so that this integral is absolutely uniformly convergent on $K \x L$. Thus $B(s,u)$ is absolutely uniformly convergent on $K \x L$. Most importantly, the beta function is related to the gamma function in this region (see \cite{remmert1998classical} for a proof):
-    
-    \begin{proposition}\label{prop:integral_reprepsentation_for_beta_function}
-      For $\Re(s) > 0$ and $\Re(u) > 0$,
-      \[
-        B(s,u) = \frac{\G(s)\G(u)}{\G(s+u)}.
-      \]
-    \end{proposition}
-
-    In particular, \cref{prop:integral_reprepsentation_for_beta_function} shows that $B(s,u)$ has meromorphic continuation to $\C^{2}$ since the gamma function does by \cref{thm:continuation_of_gamma_function}.
