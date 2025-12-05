@@ -639,11 +639,14 @@
     We will also require a well-known approximation for the gamma function known as \textbf{Stirling's formula}\index{Stirling's formula} (see \cite{remmert1998classical} for a proof):
 
     \begin{theorem*}[Stirling's formula]
-      \phantom{}
+      Let $|\arg(s)| < \pi-\e$ and $|s| > \d$ for some $\e,\d > 0$. Then
       \[
-        \G(s) \sim \sqrt{2\pi}s^{s-\frac{1}{2}}e^{-s},
+        \G(s) = \sqrt{2\pi}s^{s-\frac{1}{2}}e^{-s}\left(1+O_{\e,\d}\left(\frac{1}{s}\right)\right).
       \]
-      provided $|\arg(s)| < \pi-\e$ and $|s| > \d$ for some $\e,\d > 0$.
+      In particular,
+      \[
+        \G(s) \sim \sqrt{2\pi}s^{s-\frac{1}{2}}e^{-s}.
+      \]
     \end{theorem*}
 
     If $\s$ is bounded, Stirling's formula gives a useful asymptotic showing that $\G(s)$ decays as $s \to \infty$:
@@ -655,7 +658,7 @@
       \]
     \end{corollary}
     \begin{proof}
-      Stirling's formula can be equivalently expressed as
+      From Stirling's formula, we have
       \[
         \G(s) \sim \sqrt{2\pi}e^{\left(s-\frac{1}{2}\right)\log(s)}e^{-s}.
       \]
@@ -678,38 +681,34 @@
       which is the desired asymptotic.
     \end{proof}
 
-    Note that \cref{equ:weaker_Stirling_formula} only tells us how $\G(s)$ grows for large $t$ when $\s$ is bounded. Regardless, Stirling's formula also implies the asymptotic
-    \begin{equation}\label{equ:Stirlings_formula_equivalent_version}
-        \G(s) = \sqrt{2\pi}s^{s-\frac{1}{2}}e^{-s}(1+O_{\e,\d}(1)),
-    \end{equation}
-    provided $|\arg(s)| < \pi-\e$ and $|s| > \d$ for some $\e,\d > 0$. Taking the logarithm (since $|\arg(s)| < \pi-\e$ the logarithm is defined) of this asymptotic gives
+    Note that \cref{equ:weaker_Stirling_formula} only tells us how $\G(s)$ grows for large $t$ when $\s$ is bounded. In any case, taking the logarithm of Stirling's formula (since $|\arg(s)| < \pi-\e$ the logarithm is defined) gives
     \begin{equation}\label{equ:log_gamma_estimate}
-      \log\G(s) = \frac{1}{2}\log(2\pi)+\left(s-\frac{1}{2}\right)\log(s)-s+O_{\e,\d}\left(1\right),
+      \log\G(s) = \frac{1}{2}\log(2\pi)+\left(s-\frac{1}{2}\right)\log(s)-s+O_{\e,\d}\left(\frac{1}{s}\right),
     \end{equation}
     which will be useful. In fact, from \cref{equ:log_gamma_estimate} we can obtain another useful estimate formula for the digamma function:
 
     \begin{proposition}\label{equ:approximtion_for_digamma}
+    Let $|\arg(s)| < \pi-\e$ and $|s| > \d$ for some $\e,\d > 0$. Then
     \[
-      \frac{\G'}{\G}(s) = \log(s)+O_{\e,\d}(1),
+      \frac{\G'}{\G}(s) = \log(s)+O_{\e,\d}\left(\frac{1}{s}\right).
     \]
-    provided $|\arg(s)| < \pi-\e$ and $|s| > \d$ for some $\e,\d > 0$.
     \end{proposition}
     \begin{proof}
-      \cref{equ:log_gamma_estimate} give the simplified estimate
+      Set $g(s) = \frac{1}{2}\log(2\pi)+\left(s-\frac{1}{2}\right)\log(s)-s$. Then \cref{equ:log_gamma_estimate} implies
       \[
-        \log\G(s) = \frac{1}{2}\log(2\pi)+s\log(s)-s+O_{\e,\d}(1).
+        \log\G(s) = g(s)+O_{\e,\d}\left(\frac{1}{s}\right).
       \]
-      Set $g(s) = \frac{1}{2}\log(2\pi)+s\log(s)-s$ so that $\log\G(s) = g(s)+O_{\e,\d}(1)$. Then $\log\G(s)-g(s) = O_{\e,\d}(1)$, and by Cauchy's integral formula, we have
+      By Cauchy's integral formula, we have
       \begin{align*}
-        \frac{\G'}{\G}(s) &= \frac{d}{ds}\left(g(s)+O_{\e,\d}(1)\right) \\
+        \frac{\G'}{\G}(s) &= \frac{d}{ds}(g(s)+\log\G(s)-g(s)) \\
         &= g'(s)+\frac{d}{ds}(\log\G(s)-g(s)) \\
         &= \log(s)+\frac{1}{2\pi i}\int_{C}\frac{\log\G(u)-g(u)}{(u-s)^{2}}\,du,
       \end{align*}
-      where $C$ is the circle about $s$ of sufficiently small radius $\eta$ depending upon $\e$ and $\d$. Therefore
+      where $C$ is a circle about $s$ of sufficiently small radius $\eta$ depending upon $\e$ and $\d$. Therefore
       \[
-        \left|\frac{\G'}{\G}(s)-\log(s)\right| \le \frac{1}{2\pi}\int_{C}\frac{|\log\G(u)-g(u)|}{\eta^{2}}\,|du| \ll_{\e,\d} 1,
+        \left|\frac{\G'}{\G}(s)-\log(s)\right| \le \frac{1}{2\pi}\int_{C}\frac{|\log\G(u)-g(u)|}{\eta^{2}}\,|du| \ll_{\e,\d} \frac{1}{s},
       \]
-      where the last estimate follows because $\log\G(s)-g(s) = O_{\e,\d}(1)$.
+      where the last estimate follows because $\log\G(u)-g(u) = O_{\e,\d}\left(\frac{1}{u}\right)$ and $u \asymp_{\e,\d} s$.
     \end{proof}
 
     Lastly, we introduce a useful function related to the Gamma function. We define the \textbf{beta function}\index{beta function} $B(s,u)$ by
