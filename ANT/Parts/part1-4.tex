@@ -576,21 +576,25 @@
       For (iii), since $\G(s)$ is real for $s >0$ we have $\G(\conj{s}) = \conj{\G(s)}$ on this half-line and then the identity theorem implies that this holds everywhere.
     \end{proof}
 
-    Putting \cref{prop:Factorial_properties_of_gamma_function} (i) and (ii) together we see that $\G(n) = (n-1)!$ for any integer $n \ge 0$. So $\G(s)$ can be thought of as a holomorphic extension of the factorial function. Another special value of the gamma function is
+    Putting \cref{prop:Factorial_properties_of_gamma_function} (i) and (ii) together we see that $\G(n) = (n-1)!$ for any integer $n \ge 1$. So $\G(s)$ can be thought of as a holomorphic extension of the factorial function. Another special value of the gamma function is
     \begin{equation}\label{equ:gamma_function_at_1/2}
       \G\left(\frac{1}{2}\right) = \int_{0}^{\infty}\frac{e^{-x}}{\sqrt{x}}\,dx = 2\sqrt{\pi}\int_{0}^{\infty}e^{-\pi x^{2}}\,dx = \pi\int_{-\infty}^{\infty}e^{-\pi x^{2}}\,dx = \sqrt{\pi}.
     \end{equation}
     where in the second equality we have made the change of variables $x \mapsto \pi x^{2}$ and recognized the last integral as the Gaussian integral (see \cref{append:Special_Integrals}). We can also use \cref{prop:Factorial_properties_of_gamma_function} (ii) to extended $\G(s)$ to a meromorphic function on all of $\C$:
 
     \begin{theorem}\label{thm:continuation_of_gamma_function}
-      $\G(s)$ admits meromorphic continuation to $\C$ with poles at $s = -n$ for $n \ge 0$. All of these poles are simple and with residue $\frac{(-1)^{n}}{n!}$ at $s = -n$.
+      For any $n \ge 0$, $\G(s)$ admits meromorphic continuation to the region $\s > -n$ given by
+      \[
+        \G(s) = \frac{\G(s+1+n)}{s(s+1) \cdots (s+n)}.
+      \]
+      In particular, $\G(s)$ admits meromorphic continuation to $\C$ with poles at $s = -n$ for $n \ge 0$. All of these poles are simple and with residue $\frac{(-1)^{n}}{n!}$ at $s = -n$.
     \end{theorem}
     \begin{proof}
       Using \cref{prop:Factorial_properties_of_gamma_function} (ii) repeatedly, we have
       \[
         \G(s) = \frac{\G(s+1+n)}{s(s+1) \cdots (s+n)},
       \]
-      for any integer $n \ge 0$. The right-hand side defines an meromorphic function in the region $\s > -n$ and away from the points $0,-1,\ldots,-n$. Letting $n$ be arbitrary, we see that $\G(s)$ has meromorphic continuation to $\C$ with poles at $s = -n$. We now compute the residue at $s = -n$. Around this point $\G(s)$ admits meromorphic continuation with representation
+      for any integer $n \ge 0$. The right-hand side defines an meromorphic function in the region $\s > -n$ and away from $0,-1,\ldots,-n$. Letting $n$ be arbitrary, we see that $\G(s)$ has meromorphic continuation to $\C$ with poles at $s = -n$. We now compute the residue at $s = -n$. Around this point $\G(s)$ admits meromorphic continuation with representation
       \[
         \frac{\G(s+1+n)}{s(s+1) \cdots (s+n)},
       \]
@@ -602,13 +606,17 @@
 
     In particular, \cref{thm:continuation_of_gamma_function} implies $\Res_{s = 0}\G(s) = 1$ and $\Res_{s = 1}\G(s) = -1$. Now that we have deduced the meromorphic continuation of $\G(s)$, we need to introduce a related function. We define the \textbf{beta function}\index{beta function} $B(s,u)$ by
     \[
-        B(s,u) = \int_{0}^{1}t^{s-1}(1-t)^{u-1}\,dt,
+        B(s,u) = \int_{0}^{1}x^{s-1}(1-x)^{u-1}\,dx,
     \]
     for $\s > 0$ and $\tau > 0$. The integral is locally absolutely uniformly convergent in this region. Indeed, let $K \x L$ be a compact subset in this region and set $\a = \min_{s \in K}(\s)$ and $\b = \min_{u \in L}(\tau)$. Then we have to show that $B(s,u)$ is absolutely uniformly convergent on $K \x L$. Observe
     \[
-      \int_{0}^{1}t^{s-1}(1-t)^{u-1}\,dt \ll \int_{0}^{1}t^{\a-1}(1-t)^{\b-1}\,dt \ll_{\a,\b} 1,
+      \int_{0}^{1}x^{s-1}(1-x)^{u-1}\,dx \ll \int_{0}^{1}x^{\a-1}(1-x)^{\b-1}\,dx \ll_{\a,\b} 1,
     \]
-    so that this integral is absolutely uniformly convergent on $K \x L$. Thus $B(s,u)$ is absolutely uniformly convergent on $K \x L$. This means $B(s,u)$ is holomorphic for $\s > 0$ and $\tau > 0$. Most importantly, the beta function is related to the gamma function in this region:
+    so that this integral is absolutely uniformly convergent on $K \x L$. Thus $B(s,u)$ is absolutely uniformly convergent on $K \x L$. This means $B(s,u)$ is holomorphic for $\s > 0$ and $\tau > 0$. We now turn to basic properties of the beta function. Making the change of variables $x \to 1-x$ in the integral defining $B(s,u)$, we see that
+    \[
+        B(s,u) = \int_{0}^{1}x^{s-1}(1-x)^{u-1}\,dx = \int_{0}^{1}x^{u-1}(1-x)^{s-1}\,dx = B(u,s),
+    \]
+    which is to say that the beta function is symmetric in $s$ and $u$. The most important property of the beta function is that it is related to the gamma function:
     
     \begin{proposition}\label{prop:integral_reprepsentation_for_beta_function}
       For $\Re(s) > 0$ and $\Re(u) > 0$, we have
@@ -641,10 +649,136 @@
       as claimed.
     \end{proof}
 
-    There are a few other properties of the gamma function that are famous and which we will use frequently. The first of which is the \textbf{Legendre duplication formula}\index{Legendre duplication formula} (see \cite{remmert1998classical} for a proof):
+    We can use \cref{prop:integral_reprepsentation_for_beta_function} to prove some infamous properties of the gamma function. The first is the \textbf{Euler reflection formula}\index{Euler reflection formula}:
+
+    \begin{theorem*}[Euler reflection formula]
+      For any $s \in \C-\{0,-1,-2,\ldots\}$, we have
+      \[
+        \G(s)\G(1-s) = \frac{\pi}{\sin(\pi s)}.
+      \]
+    \end{theorem*}
+    \begin{proof}
+      By the identity theorem it suffices to prove this for real $s$ with $0 < s < 1$. Then \cref{prop:integral_reprepsentation_for_beta_function} gives
+      \[
+        \G(s)\G(1-s) = B(s,1-s)\G(1),
+      \]
+      and by the definition of the beta function together with \cref{prop:Factorial_properties_of_gamma_function} (i), we further have
+      \[
+        \G(s)\G(1-s) = \int_{0}^{1}x^{s-1}(1-x)^{-s}\,dx.
+      \]
+      So it suffices to show that the remaining integral is $\frac{\pi}{\sin(\pi s)}$. First make the change of variables $x \mapsto \frac{x}{1+x}$ so that the integral becomes
+      \begin{align*}
+        \G(s)\G(1-s) &= \int_{0}^{\infty}\left(\frac{x}{x+1}\right)^{s-1}\left(1-\frac{x}{x+1}\right)^{-s}\frac{1}{(x+1)^{2}}\,dx \\
+        &= \int_{0}^{\infty}\left(\frac{x}{x+1}\right)^{s-1}\left(\frac{1}{x+1}\right)^{-s}\frac{1}{(x+1)^{2}}\,dx \\
+        &= \int_{0}^{\infty}\frac{x^{s-1}}{x+1}\,dx.
+      \end{align*}
+      We will evaluate this last integral by contour integration. Complexify the integral so that it takes the form
+      \[
+        \int_{\Im(z) = 0}\frac{z^{s-1}}{z+1}\,dz.
+      \]
+
+      \begin{figure}[ht]
+        \centering
+        \begin{tikzpicture}[scale=3]
+          \def\xmin{-2} \def\xmax{2}
+          \def\ymin{-2} \def\ymax{2}
+          \draw[thick] (\xmin,0) -- (\xmax,0);
+          \draw[thick] (0,\ymin) -- (0,\ymax);
+          
+          \draw[->-] ({asin(0.1/2/0.2)}:0.2) -- node[above] {\tiny{$\eta_{1}$}} ({asin(0.1/2/1.5)}:1.5);
+          \draw[->-] ({asin(0.1/2/1.5)}:1.5) arc ({asin(0.1/2/1.5)}:{360-asin(0.1/2/1.5)}:1.5);
+          \node at (-1,0) [above left] {\tiny{$\eta_{2}$}};
+          \draw[->-] ({-asin(0.1/2/1.5)}:1.5) -- node[below] {\tiny{$\eta_{3}$}} ({-asin(0.1/2/0.2)}:0.2);
+          \draw[->-] ({-asin(0.1/2/0.2)}:0.2) arc ({-asin(0.1/2/0.2)}:{asin(0.1/2/0.2)-360}:0.2);
+          \node at (-0.2,0) [below left] {\tiny{$\eta_{4}$}};
+
+          \node at ({asin(0.1/2/0.2)}:0.2) [circle,fill,inner sep=1pt]{};
+          \node at ({asin(0.1/2/0.2)}:0.2) [above right] {\tiny{$\e e^{i\d_{R,\e}}$}};
+
+          \node at ({asin(0.1/2/1.5)}:1.5) [circle,fill,inner sep=1pt]{};
+          \node at ({asin(0.1/2/1.5)}:1.5) [above right] {\tiny{$Re^{i\d_{R,\e}}$}};
+          
+          \node at ({-asin(0.1/2/0.2)}:0.2) [circle,fill,inner sep=1pt]{};
+          \node at ({-asin(0.1/2/0.2)}:0.2) [below right] {\tiny{$\e e^{i\left(2\pi-\d_{R,\e}\right)}$}};
+
+          \node at ({-asin(0.1/2/1.5)}:1.5) [circle,fill,inner sep=1pt]{};
+          \node at ({-asin(0.1/2/1.5)}:1.5) [below right] {\tiny{$Re^{-i\d_{R,\e}}$}};
+        \end{tikzpicture}
+        \caption{A keyhole contour.}
+        \label{fig:reflection_formula_contour}
+      \end{figure}
+
+      Let $\eta = \sum_{1 \le i \le 4}\eta_{i}$ be the contour in \cref{fig:reflection_formula_contour} for some $R > 1$ and $0 < \e < 1$ with corresponding angle $\d_{R,\e} > 0$. Define integrals
+      \[
+        I_{i}(R,\e) = \int_{\eta_{i}}\frac{z^{s-1}}{z+1}\,dz,
+      \]
+      for $1 \le i \le 4$, so that
+      \begin{equation}\label{equ:Euler_reflection_formula_1}
+        \int_{\eta}\frac{z^{s-1}}{z+1}\,dz = I_{1}(R,\e)+I_{2}(R,\e)+I_{3}(R,\e)+I_{4}(R,\e).
+      \end{equation}
+      We will now evaluate the integral in the left-hand side of \cref{equ:Euler_reflection_formula_1} using the residue theorem and take the limits of the integrals on the right-hand of \cref{equ:Euler_reflection_formula_1} as $\e \to 0$ and $R \to \infty$. On the one hand, the only poles of the integrand enclosed by the contour $\eta$ is a simple pole at $z = -1$. So the residue theorem implies
+      \begin{equation}\label{equ:Euler_reflection_formula_2}
+        \int_{\eta}\frac{z^{s-1}}{z+1}\,dz = \Res_{z = -1}\left(\frac{z^{s-1}}{z+1}\right) = 2\pi i(-1)^{s-1} = 2\pi ie^{(s-1)\log_{0}(-1)} = 2\pi ie^{\pi i(s-1)},
+      \end{equation}
+      where in the last equality we have used that $\log_{0}(-1) = i\pi$ (since this is the branch cut of the logarithm along the positive real axis). Now for $I_{1}(R,\e)$, we clearly have
+      \begin{equation}\label{equ:Euler_reflection_formula_3}
+        \lim_{\e \to 0}\lim_{R \to \infty}I_{1}(R,\e) = \int_{\Im(z) = 0}\frac{z^{s-1}}{z+1}\,dz.
+      \end{equation}
+      For $I_{3}(R,\e)$, the argument of $s$ along $\eta_{3}$ is $2\pi$ that of it along $\eta_{1}$. Hence
+      \[
+        I_{3}(R,\e) = \int_{\eta_{3}}\frac{z^{s-1}}{z+1}\,dz = \int_{-\eta_{1}}\frac{(e^{2\pi i}z)^{s-1}}{e^{2\pi i}z+1}\,dz = -e^{2\pi i(s-1)}\int_{\eta_{1}}\frac{z^{s-1}}{z+1}\,dz = -e^{2\pi i(s-1)}I_{1}(R,\e),
+      \]
+      and it follows from \cref{equ:Euler_reflection_formula_3} that
+      \begin{equation}\label{equ:Euler_reflection_formula_4}
+        \lim_{\e \to 0}\lim_{R \to \infty}I_{3}(R,\e) = e^{2\pi i(s-1)}\int_{\Im(z) = 0}\frac{z^{s-1}}{z+1}\,dz.
+      \end{equation}
+      For $I_{2}(R,\e)$, make the change of variables $s \mapsto Re^{i\t}$ for $\t \in [\d_{R,\e},2\pi-\d_{R,\e}]$ to see that
+      \[
+        |I_{2}(R,\e)| \le \left|\int_{\d_{R,\e}}^{2\pi-\d_{R,\e}}\frac{(Re^{i\t})^{(s-1)}}{Re^{i\t}+1}iRe^{i\t}\,d\t\right| \le \int_{\d_{R,\e}}^{2\pi-\d_{R,\e}}\frac{R^{s}}{R-1}\,d\t \le 2\pi\frac{R^{s}}{R-1},
+      \]
+      where we have applied the reverse triangle inequality to get $|Re^{i\t}+1| \ge R-1$. This estimate implies
+      \[
+        \lim_{R \to \infty}|I_{2}(R,\e)| \le \lim_{R \to \infty}2\pi\frac{R^{s}}{R-1} = \lim_{R \to \infty}2\pi sR^{s-1} = 0,
+      \]
+      where in the first equality we have used L'H\^opital's rule and the second equality follows since $0 < s < 1$. Thus
+      \begin{equation}\label{equ:Euler_reflection_formula_5}
+        \lim_{\e \to 0}\lim_{R \to \infty}I_{2}(R,\e) = 0.
+      \end{equation}
+      For $I_{4}(R,\e)$, the change of variables $s \mapsto \e e^{i\t}$ for $\t \in [\d_{R,\e},2\pi-\d_{R,\e}]$ implies
+       \[
+        |I_{4}(R,\e)| \le \left|\int_{\d_{R,\e}}^{2\pi-\d_{R,\e}}\frac{(\e e^{i\t})^{(s-1)}}{\e e^{i\t}+1}i\e e^{i\t}\,d\t\right| \le \int_{\d_{R,\e}}^{2\pi-\d_{R,\e}}\frac{\e^{s}}{1-\e}\,d\t \le 2\pi\frac{\e^{s}}{1-\e},
+      \]
+       where we have applied the reverse triangle inequality to get $|\e e^{i\t}+1| \ge 1-\e$. Note that this estimate is independent of $R$ and implies
+       \[
+        \lim_{\e \to 0}|I_{4}(R,\e)| \le \lim_{\e \to 0}2\pi\frac{\e^{s}}{1-\e} = 0.
+       \]
+       Hence
+      \begin{equation}\label{equ:Euler_reflection_formula_6}
+        \lim_{\e \to 0}\lim_{R \to \infty}I_{4}(R,\e) = 0.
+      \end{equation}
+      Substituting \cref{equ:Euler_reflection_formula_2,equ:Euler_reflection_formula_3,equ:Euler_reflection_formula_4,equ:Euler_reflection_formula_5,equ:Euler_reflection_formula_6} into \cref{equ:Euler_reflection_formula_1} yields
+      \[
+       (1-e^{2\pi i(s-1)})\int_{\Im(z) = 0}\frac{z^{s-1}}{z+1}\,dz = 2\pi ie^{\pi i(s-1)}.
+      \]
+      Using the formula $\sin(z) = \frac{e^{iz}+e^{-iz}}{2i}$, we find that
+      \[
+        \int_{\Im(z) = 0}\frac{z^{s-1}}{z+1}\,dz = \frac{2\pi ie^{\pi i(s-1)}}{1-e^{2\pi i(s-1)}} = \pi\frac{2i}{e^{i\pi s}-e^{-i\pi s}} = \frac{\pi}{\sin(\pi s)},
+      \]
+      for $0 < s < 1$ as claimed. The identity theorem finishes the proof.
+    \end{proof}
+
+    The Euler reflection formula can be used to show that the gamma function has no zeros. Indeed, the Euler reflection formula implies
+    \[
+      \G(s)\G(1-s)\frac{\sin(\pi s)}{\pi} = 1,
+    \]
+    provided $s$ is not a nonpositive integer. Since $\sin(\pi s)$ is nonzero provided $s$ is not an integer, the above identity implies that $\G(s)$ is also nonzero except possibly at positive integers. But for any $n \ge 1$, we have $\G(n) = (n-1)!$ which is clearly nonzero. In short, $\G(s)$ has no zeros and so $\frac{1}{\G(s)}$ is entire. This is an essential fact about the gama function. As a nice consequence, it follows from \cref{prop:integral_reprepsentation_for_beta_function} that we may write
+    \[
+      B(s,u) = \frac{\G(s)\G(u)}{\G(s+u)},
+    \]
+    for all $\s > 0$ and $\t > 0$. Moreover, this also shows that the beta function admits meromorphic continuation to $\C^{2}$. The second infamous property of the gamma function is the \textbf{Legendre duplication formula}\index{Legendre duplication formula} (see \cite{remmert1998classical} for a proof):
 
     \begin{theorem*}[Legendre duplication formula]
-      For any $s \in \C-\{0,-1,-2,\ldots\}$,
+      For any $s \in \C-\{0,-1,-2,\ldots\}$, we have
       \[
         \G(s)\G\left(s+\frac{1}{2}\right) = 2^{1-2s}\sqrt{\pi}\G(2s).
       \]
@@ -667,7 +801,7 @@
     If we take the logarithmic derivative of the Hadamard factorization for $\frac{1}{s\G(s)}$, we obtain a useful expression for the digamma function:
 
     \begin{corollary}\label{cor:logarithmic_derivative_of_gamma}
-      For all $s \in \C$,
+      For all $s \in \C$, we have
       \[
         \frac{\G'}{\G}(s+1) = -\g+\sum_{n \ge 1}\left(\frac{1}{n}-\frac{1}{s+n}\right),
       \]
@@ -707,7 +841,7 @@
       \[
         \G(s) \sim \sqrt{2\pi}e^{\left(s-\frac{1}{2}\right)\log(s)}e^{-s}.
       \]
-      Writing $\log(s) = \log|s|+i\arg(s)$ (since $|\arg(s)| < \pi-\e$ the logarithm is defined), this asymptotic becomes
+      Writing $\log(s) = \log|s|+i\arg(s)$, this asymptotic becomes
       \[
         \G(s) \sim \sqrt{2\pi}e^{\left(s-\frac{1}{2}\right)\log|s|}e^{\left(s-\frac{1}{2}\right)i\arg(s)}e^{-s},
       \]
@@ -726,11 +860,11 @@
       which is the desired asymptotic.
     \end{proof}
 
-    Note that \cref{equ:weaker_Stirling_formula} only tells us how $\G(s)$ grows for large $t$ when $\s$ is bounded. In any case, taking the logarithm of Stirling's formula (since $|\arg(s)| < \pi-\e$ the logarithm is defined) gives
+    Note that \cref{equ:weaker_Stirling_formula} only tells us how $\G(s)$ grows for large $t$ when $\s$ is bounded. In any case, taking the logarithm of Stirling's formula gives
     \begin{equation}\label{equ:log_gamma_estimate}
       \log\G(s) = \frac{1}{2}\log(2\pi)+\left(s-\frac{1}{2}\right)\log(s)-s+O_{\e,\d}\left(\frac{1}{s}\right),
     \end{equation}
-    which will be useful. In fact, from \cref{equ:log_gamma_estimate} we can obtain another useful estimate formula for the digamma function:
+    provided $|\arg(s)| < \pi-\e$ and $|s| > \d$ for some $\e,\d > 0$, which will be useful. In fact, from \cref{equ:log_gamma_estimate} we can obtain a useful estimate for the digamma function:
 
     \begin{proposition}\label{equ:approximtion_for_digamma}
     Let $|\arg(s)| < \pi-\e$ and $|s| > \d$ for some $\e,\d > 0$. Then
