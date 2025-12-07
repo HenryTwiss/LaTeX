@@ -415,4 +415,38 @@
       \item[(iii)] The root number $q(f \ox g)$ satisfies $q(f \ox g) \mid q(f)^{d_{f}}q(g)^{d_{g}}$. If $q(f \ox g)$ is a proper divisor of $q(f)^{d_{f}}q(g)^{d_{g}}$, we say that $L(s,f \ox g)$ exhibits \textbf{conductor dropping}\index{conductor dropping}.
       \item[(v)] $L(s,f \ox g)$ has a pole of order $r_{f \ox g} \ge 1$ at $s = 1$ if $f = g$.
     \end{itemize}
+
+        \begin{proof}
+      We first additionally suppose $s$ is real and hence $s > \d$. Observe that
+      \[
+        \G(s+1) = \int_{0}^{\infty}e^{-x}e^{s\log(x)}\,dx
+      \]
+      The change of variables $x \to sx$ yields
+      \[
+        \G(s+1) = s^{s+1}\int_{0}^{\infty}e^{s(\log(x)-x)}\,dx = s^{s+1}\int_{0}^{2}e^{s(\log(x)-x)}\,dx+s^{s+1}\int_{2}^{\infty}e^{s(\log(x)-x)}\,dx.
+      \]
+      To estimate the second to last integral, notice
+      \[
+        \frac{d}{dx}(\log(x)-x) = \frac{1}{x}-1 \quad \text{and} \quad \frac{d^{2}}{dx^{2}}(\log(x)-x) = -\frac{1}{x^{2}}.
+      \]
+      At $x = 1$, the first derivative is zero and the second derivative is negative. Therefore $\log(x)-x$ has a local maximum at $x = 1$. In fact, this is the only point where the derivative is zero so the maximum must be global. Taking the Taylor series of $\log(x)-x$ at $x = 1$ and truncating after the second term gives
+      \[
+        \log(x)-x = -1-\frac{1}{2}(x-1)^{2}+O((x-1)^{3}).
+      \]
+      Thus
+      \begin{align*}
+        e^{s(\log(x)-x)} &= e^{s\left(-1-\frac{1}{2}(x-1)^{2}+O((x-1)^{3})\right)} \\
+        &= e^{s\left(-1-\frac{1}{2}(x-1)^{2}\right)}e^{O(s(x-1)^{3})} \\
+        &= e^{s\left(-1-\frac{1}{2}(x-1)^{2}\right)}+O\left(se^{s\left(-1-\frac{1}{2}(x-1)^{2}\right)}(x-1)^{3}\right) \\
+        &= e^{s\left(-1-\frac{1}{2}(x-1)^{2}\right)}+O\left(se^{-s}(x-1)^{3}\right).
+      \end{align*}
+      This estimate gives the first line in the following chain:
+      \begin{align*}
+        s^{s+1}\int_{0}^{2}e^{s(\log(x)-x)}\,dx &= s^{s+1}\int_{0}^{2}e^{s\left(-1-\frac{1}{2}(x-1)^{2}\right)}\,dx+O\left(s^{s+2}e^{-s}\int_{0}^{2}(x-1)^{3}\,dx\right) \\
+        &= s^{s+1}\int_{0}^{2}e^{s\left(-1-\frac{1}{2}(x-1)^{2}\right)}\,dx+O\left(s^{s+2}e^{-s}\right) \\
+        &= s^{s+1}\int_{0}^{2}e^{s\left(-1-\frac{1}{2}(x-1)^{2}\right)}\,dx+O\left(s^{s+2}e^{-s}\right) \\
+        &= s^{s+1}e^{-s}\int_{0}^{2}e^{-\frac{1}{2}(x-1)^{2}}\,dx+O\left(s^{s+2}e^{-s}\right)
+      \end{align*}
+
+    \end{proof}
 \end{document}
