@@ -856,7 +856,7 @@
       \[
        \frac{n^{s}\G(n-s)}{\G(n)} = \frac{n^{s}B(s,n-s)}{\G(s)} = \frac{1}{\G(s)}n^{s}\int_{0}^{\infty}\frac{x^{s-1}}{(x+1)^{n}}\,dx = \frac{1}{\G(s)}\int_{0}^{\infty}\frac{x^{s-1}}{\left(\frac{x}{n}+1\right)^{n}}\,dx,
       \]
-      where in the last equality we have made the change of variables $x \to \frac{x}{n}$. By \cref{equ:limit_form_of_exponential} and that $\left(\frac{x}{n}+1\right)^{n}$ is monotonically increasing in $n$, we can employ the monotone convergence theorem to obtain 
+      where in the last equality we have made the change of variables $x \mapsto \frac{x}{n}$. By \cref{equ:limit_form_of_exponential} and that $\left(\frac{x}{n}+1\right)^{n}$ is monotonically increasing in $n$, we can employ the monotone convergence theorem to obtain 
       \[
         \lim_{n \to \infty}\frac{n^{s}\G(n-s)}{\G(n)} = \frac{1}{\G(s)}\int_{0}^{\infty}\lim_{n \to \infty}\frac{x^{s-1}}{\left(\frac{x}{n}+1\right)^{n}}\,dx = \frac{1}{\G(s)}\int_{0}^{\infty}e^{-x}x^{s-1}\,dx = 1.
       \]
@@ -899,18 +899,121 @@
       as desired.
     \end{proof}
     
-    From \cref{thm:Hadamard_factorization_for_reciprocial_of_gamma}, we immediately see that $\frac{1}\G(s)$ is of order $1$ (see \cref{append:Factorizations_and_Finite_Order}). In particular, this means $\G(s)$ is of order $1$ for $\s > 0$. We will also require a well-known approximation for the gamma function known as \textbf{Stirling's formula}\index{Stirling's formula} (see \cite{remmert1998classical} for a proof):
+    From \cref{thm:Hadamard_factorization_for_reciprocial_of_gamma}, we immediately see that $\frac{1}\G(s)$ is of order $1$ (see \cref{append:Factorizations_and_Finite_Order}). In particular, this means $\G(s)$ is of order $1$ for $\s > 0$. We will also require a well-known approximation for the gamma function known as \textbf{Stirling's formula}\index{Stirling's formula}:
 
     \begin{theorem*}[Stirling's formula]
       Let $|\arg(s)| < \pi-\e$ and $|s| > \d$ for some $\e,\d > 0$. Then
       \[
-        \G(s) = \sqrt{2\pi}s^{s-\frac{1}{2}}e^{-s}\left(1+O_{\e,\d}\left(\frac{1}{s}\right)\right).
+        \G(s) = \sqrt{2\pi}s^{s-\frac{1}{2}}e^{-s}\left(1+O\left(\frac{1}{s}\right)\right).
       \]
       In particular,
       \[
         \G(s) \sim \sqrt{2\pi}s^{s-\frac{1}{2}}e^{-s}.
       \]
     \end{theorem*}
+    \begin{proof}
+      We first additionally suppose $\s > 0$. Complexify the integral defining $\G(s+1)$ and observe that
+      \[
+        \G(s+1) = \int_{0}^{\infty}e^{-z}e^{s\log(z)}\,dz.
+      \]
+      Now change variables $z \to s(1+z)$ to see that
+      \[
+        \G(s+1) = s\int_{-1}^{\infty}e^{-s(1+z)}e^{s\log(s(1+z))}\,dz = s^{s+1}e^{-s}\int_{-1}^{\infty}e^{s(\log(1+z)-z)}\,dz,
+      \]
+      where we have homotoping the transformed contour to $(-1,\infty)$. We will now estimate the remaining integral. Being by defining integrals
+      \[
+        I(s) = \int_{-1}^{\infty}e^{s(\log(1+z)-z)}\,dz, \quad I_{1}(s) = \int_{-1}^{1}e^{s(\log(1+z)-z)}\,dz, \quad \text{and} \quad I_{2}(s) = \int_{1}^{\infty}e^{s(\log(1+z)-z)}\,dz,
+      \]
+      so that
+      \begin{equation}\label{equ:Stirlings_formula_1}
+        \G(s+1) = s^{s+1}e^{-s}I(s),
+      \end{equation}
+      and
+      \[
+        I(s) = I_{1}(s)+I_{2}(s).
+      \]
+      Making the change of variables $z \mapsto 2+z$ to $I_{2}(s)$ shows
+      \[
+        I_{2}(s) = e^{-2s}\int_{1}^{\infty}e^{s(\log(3+z)-z)}\,dz,
+      \]
+      and using the fact $\log(3+z) = \log(1+z)+O(1)$ gives
+      \[
+        I_{2}(s) = e^{-2s}\int_{-1}^{\infty}e^{s(\log(1+z)+O(1)-z)}\,dz = e^{-2s}\int_{-1}^{\infty}e^{s(\log(1+z)-z)}(1+O(1))\,dz = I(s)(e^{-2s}+O(e^{-2s})).
+      \]
+      Whence
+      \[
+        I(s) = I_{1}(s)+I(s)(e^{-2s}+O(e^{-2s})).
+      \]
+      Now isolate $I(s)$ to see that
+      \[
+        I(s) = \frac{1}{(1-e^{-2s})}\left(I_{1}(s)+O(I(s)e^{-2s})\right) = I_{1}(s)+O(I(s)e^{-2s}) = I_{1}(s)+O(I_{1}(s)e^{-2s})+O(I_{2}(s)e^{-2s}).
+      \]
+      But we also have $I_{2}(s) = O(1)$ by the exponential decay of the integrand, so that the previous estimate gives
+      \begin{equation}\label{equ:Stirlings_formula_2}
+        I(s) = I_{1}(s)+O(I_{1}(s)e^{-2s})+O(e^{-2s}).
+      \end{equation}
+      Therefore it remains to estimate $I_{1}(s)$. To this end, notice
+      \[
+        \frac{d}{dz}(\log(1+z)-z) = \frac{1}{1+z}-1 \quad \text{and} \quad \frac{d^{2}}{dz^{2}}(\log(z)-z) = -\frac{1}{(1+z)^{2}}.
+      \]
+      At $z = 0$, the first derivative is zero and the second derivative is negative. Taking the Taylor series of $\log(1+z)-z$ and truncating after the third term gives
+      \[
+        \log(1+z)-z = -\frac{1}{2}z^{2}+\frac{1}{3}z^{3}+O(z^{4}).
+      \]
+      Using this estimate in the previous integral results in
+      \[
+        I_{1}(s) = \int_{-1}^{1}e^{s\left(-\frac{1}{2}z^{2}+\frac{1}{3}z^{3}+O(z^{4})\right)}\,dz = \int_{-1}^{1}e^{-\frac{s}{2}z^{2}}e^{\frac{1}{3}sz^{3}+O(sz^{4})}\,dz.
+      \]
+       Considering the Taylor series of $e^{z}$ and truncating after the second term, we find that
+      \[
+        e^{\frac{1}{3}sz^{3}+O(sz^{4})} = 1+\frac{1}{3}sz^{3}+O(sz^{4})+O(s^{2}z^{6}).
+      \]
+      Plugging this estimate into the previous integral yields
+      \[
+        I_{1}(s) = \int_{-1}^{1}e^{-\frac{s}{2}z^{2}}\left(1+\frac{1}{3}sz^{3}+O(sz^{4})+O(s^{2}z^{6})\right)\,dz.
+      \]
+      Since the first and second terms in the asymptotic are even and odd in $z$ respectively, symmetry gives
+      \[
+        I_{1}(s) = 2\int_{0}^{1}e^{-\frac{s}{2}z^{2}}\left(1+O(sz^{4})+O(s^{2}z^{6})\right)\,dz.
+      \]
+      Performing the change of variables $z \mapsto \sqrt{\frac{2z}{s}}$, and noting that $z$ is bounded (so that the $O$-estimates are independent of $z$), results in
+      \begin{equation}\label{equ:Stirlings_formula_3}
+        I_{1}(s) = \sqrt{2}s^{-\frac{1}{2}}\int_{0}^{\frac{|s|}{2}}e^{-z}z^{-\frac{1}{2}}\left(1+O\left(\frac{1}{s}\right)\right)\,dz = \sqrt{2}s^{-\frac{1}{2}}\int_{0}^{\frac{|s|}{2}}e^{-z}z^{-\frac{1}{2}}\,dz\left(1+O\left(\frac{1}{s}\right)\right),
+      \end{equation}
+      where we have homotoped the transformed contour to $\left(0,\frac{|s|}{2}\right)$. We now estimate the remaining integral in \cref{equ:Stirlings_formula_3}. To do this, observe
+      \[
+        \int_{0}^{\frac{|s|}{2}}e^{-z}z^{-\frac{1}{2}}\,dz = \int_{0}^{\infty}e^{-z}z^{-\frac{1}{2}}\,dz-\int_{\frac{|s|}{2}}^{\infty}e^{-z}z^{-\frac{1}{2}}\,dz = \sqrt{\pi}-\int_{\frac{|s|}{2}}^{\infty}e^{-z}z^{-\frac{1}{2}}\,dz,
+      \]
+      because the first integral in the middle expression is $\G\left(\frac{1}{2}\right) = \sqrt{\pi}$. By the exponential decay of the integrand, we have say
+      \[
+        \int_{\frac{|s|}{2}}^{\infty}e^{-z}z^{-\frac{1}{2}}\,dz = O\left(\int_{\frac{|s|}{2}}^{\infty}\frac{1}{z^{3}}\,dz\right) = O\left(\frac{1}{s^{2}}\right),
+      \]
+      so that 
+      \begin{equation}\label{equ:Stirlings_formula_4}
+        \int_{0}^{\frac{|s|}{2}}e^{-z}z^{-\frac{1}{2}}\,dz = \sqrt{\pi}+O\left(\frac{1}{s^{2}}\right).
+      \end{equation}
+      Substituting \cref{equ:Stirlings_formula_4} into \cref{equ:Stirlings_formula_3} gives
+      \begin{equation}\label{equ:Stirlings_formula_5}
+        I_{1}(s) = \sqrt{2\pi}s^{-\frac{1}{2}}\left(1+O\left(\frac{1}{s}\right)\right).
+      \end{equation}
+      Combining \cref{equ:Stirlings_formula_1,equ:Stirlings_formula_2,equ:Stirlings_formula_5} yields
+      \[
+        \G(s+1) = \sqrt{2\pi}s^{s+\frac{1}{2}}e^{-s}\left(1+O\left(\frac{1}{s}\right)\right).
+      \]
+      Now apply \cref{prop:Factorial_properties_of_gamma_function} (ii) to get
+      \[
+        \G(s) = \sqrt{2\pi}s^{s-\frac{1}{2}}e^{-s}\left(1+O\left(\frac{1}{s}\right)\right).
+      \]
+      This proves the claim in the case $\s > 0$. In fact, applying \cref{prop:Factorial_properties_of_gamma_function} (ii) repeatedly shows
+      \[
+        \G(s-n) = \sqrt{2\pi}\frac{s^{s-\frac{1}{2}}}{(s-1)(s-2) \ldots (s-n)}e^{-s}\left(1+O\left(\frac{1}{s}\right)\right),
+      \]
+      for any $n \ge 0$. Since $\frac{1}{s-k} = \frac{1}{s}+O\left(\frac{1}{s^{2}}\right)$ for $1 \le k \le n$, it follows that
+      \[
+        \G(s-n) = \sqrt{2\pi}s^{s-n-\frac{1}{2}}e^{-s}\left(1+O\left(\frac{1}{s}\right)\right).
+      \]
+      As $n$ was arbitrary, this proves the claim for $\s \le 0$ as well which completes the proof.
+    \end{proof}
 
     If $\s$ is bounded, Stirling's formula gives a useful asymptotic showing that $\G(s)$ decays as $s \to \infty$:
     
@@ -967,20 +1070,20 @@
     
     As for estimates involving the digamma function, taking the logarithm of Stirling's formula gives
     \begin{equation}\label{equ:log_gamma_estimate}
-      \log\G(s) = \frac{1}{2}\log(2\pi)+\left(s-\frac{1}{2}\right)\log(s)-s+O_{\e,\d}\left(\frac{1}{s}\right),
+      \log\G(s) = \frac{1}{2}\log(2\pi)+\left(s-\frac{1}{2}\right)\log(s)-s+O\left(\frac{1}{s}\right),
     \end{equation}
     provided $|\arg(s)| < \pi-\e$ and $|s| > \d$ for some $\e,\d > 0$. We can obtain a useful estimate for the digamma function by using \cref{equ:log_gamma_estimate}:
 
     \begin{proposition}\label{equ:approximtion_for_digamma}
     Let $|\arg(s)| < \pi-\e$ and $|s| > \d$ for some $\e,\d > 0$. Then
     \[
-      \frac{\G'}{\G}(s) = \log(s)+O_{\e,\d}\left(\frac{1}{s}\right).
+      \frac{\G'}{\G}(s) = \log(s)+O\left(\frac{1}{s}\right).
     \]
     \end{proposition}
     \begin{proof}
       Set $g(s) = \frac{1}{2}\log(2\pi)+\left(s-\frac{1}{2}\right)\log(s)-s$. Then \cref{equ:log_gamma_estimate} implies
       \[
-        \log\G(s) = g(s)+O_{\e,\d}\left(\frac{1}{s}\right).
+        \log\G(s) = g(s)+O\left(\frac{1}{s}\right).
       \]
       By Cauchy's integral formula, we have
       \begin{align*}
@@ -990,7 +1093,7 @@
       \end{align*}
       where $C$ is a circle about $s$ of sufficiently small radius $\eta$ depending upon $\e$ and $\d$. Therefore
       \[
-        \left|\frac{\G'}{\G}(s)-\log(s)\right| \le \frac{1}{2\pi}\int_{C}\frac{|\log\G(u)-g(u)|}{\eta^{2}}\,|du| \ll_{\e,\d} \frac{1}{s},
+        \left|\frac{\G'}{\G}(s)-\log(s)\right| \le \frac{1}{2\pi}\int_{C}\frac{|\log\G(u)-g(u)|}{\eta^{2}}\,|du| \ll \frac{1}{s},
       \]
-      where the last estimate follows because $\log\G(u)-g(u) = O_{\e,\d}\left(\frac{1}{u}\right)$ and $u \asymp_{\e,\d} s$.
+      where the last estimate follows because $\log\G(u)-g(u) = O\left(\frac{1}{u}\right)$ and $u \asymp s$.
     \end{proof}
