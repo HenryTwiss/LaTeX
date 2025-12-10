@@ -697,12 +697,16 @@
     \[
       N(T,f) = |\{\rho = \b+i\g \in \C:\text{$L(\rho,f) = 0$ with $0 \le \b \le 1$ and $|\g| \le T$}\}|.
     \]
-    In other words, $N(T,f)$ is the number of nontrivial zeros of $L(s,f)$ with ordinate in $[-T,T]$. We will prove the following:
+    In other words, $N(T,f)$ is the number of nontrivial zeros of $L(s,f)$ with ordinate in $[-T,T]$. We will prove the following asymptotic formula for $N(T,f)$:
 
     \begin{theorem}\label{thm:zero_counting}
       For any $L$-function $L(s,f)$ and $T \ge 1$,
       \[
         N(T,f) = \frac{T}{\pi}\log\left(\frac{q(f)T^{d_{f}}}{(2\pi e)^{d_{f}}}\right)+O(\log{\mf{q}(iT,f)}).
+      \]
+      In particular,
+      \[
+        \frac{N(T,f)}{T} \sim \frac{1}{\pi}\log\left(\frac{q(f)T^{d_{f}}}{(2\pi e)^{d_{f}}}\right).
       \]
     \end{theorem}
     \begin{proof}
@@ -830,26 +834,10 @@
       \[
         N'(T,f) = \frac{T}{2\pi}\log\left(\frac{T^{d_{f}}}{(2\pi e)^{d_{f}}}\right)+O(\log{\mf{q}(iT,f)}),
       \]
-      The claim follows immediately from this estimate and that the same exact estimate holds for $N'(T,\conj{f})$ by using the $L$-function $L(s,\conj{f})$.
+      The asymptotic formula follows from this estimate and that the same exact estimate holds for $N'(T,\conj{f})$ by using the $L$-function $L(s,\conj{f})$. We obtain the asymptotic equality at once from the asymptotic formula.
     \end{proof}
 
-    It is worth noting that the main term in the proof of \cref{thm:zero_counting} comes from the change in argument of $q(f)^{\frac{s}{2}}\g(s,f)$ along $\eta_{3}$ (equivalently $\eta_{4}$). Moreover, the contribution from $L(s,f)$ is only to the error term. This is a good example of how analytic information of an $L$-function is intrinsically connected to its gamma factor. Also, with \cref{thm:zero_counting} we can now derive our zero density estimate:
-
-    \begin{corollary}\label{cor:zero_density}
-      For and $L$-function $L(s,f)$ and $T \ge 1$,
-      \[
-        \frac{N(T,f)}{T} \sim \frac{1}{\pi}\log\left(\frac{q(f)T^{d_{f}}}{(2\pi e)^{d_{f}}}\right).
-      \]
-    \end{corollary}
-    \begin{proof}
-      From \cref{thm:zero_counting},
-      \[
-        \frac{N(T,f)}{T} = \frac{1}{\pi}\log\left(\frac{q(f)T^{d_{f}}}{(2\pi e)^{d_{f}}}\right)\left(1+O\left(\frac{\log{\mf{q}(iT,f)}}{\log\left(\frac{q(f)T^{d_{f}}}{(2\pi e)^{d_{f}}}\right)T}\right)\right) = \frac{1}{\pi}\log\left(\frac{q(f)T^{d_{f}}}{(2\pi e)^{d_{f}}}\right)\left(1+O\left(\frac{1}{T}\right)\right).
-      \]
-      Since $O\left(\frac{1}{T}\right) = o(1)$, the result follows.
-    \end{proof}
-
-    \cref{cor:zero_density} can be interpreted as saying that for large $T$ the density of $N(T,f)$ is approximately $\frac{1}{\pi}\log\left(\frac{q(f)T^{d_{f}}}{(2\pi e)^{d_{f}}}\right)$. Since this grows as $T \to \infty$, we see that the nontrivial zeros tend to accumulate farther up the critical strip with logarithmic growth. We can dispense with this accumulation. If $\rho = \b+i\g$ is a nontrivial zero of $L(s,f)$ then we call $\rho_{\text{unf}} = \b+i\w$ the \textbf{unfolded nontrivial zero}\index{unfolded nontrivial zero} corresponding to $\rho$ where
+    It is worth noting that the main term in the proof of \cref{thm:zero_counting} comes from the change in argument of $q(f)^{\frac{s}{2}}\g(s,f)$ along $\eta_{3}$ (equivalently $\eta_{4}$). Moreover, the contribution from $L(s,f)$ is only to the error term. This is a good example of how analytic information of an $L$-function is intrinsically connected to its gamma factor. Also, with \cref{thm:zero_counting} we can derive our zero density estimate. The asymptotic equivalence in \cref{thm:zero_counting} can be interpreted as saying that for large $T$ the density of $N(T,f)$ is approximately $\frac{1}{\pi}\log\left(\frac{q(f)T^{d_{f}}}{(2\pi e)^{d_{f}}}\right)$. Since this grows as $T \to \infty$, we see that the nontrivial zeros tend to accumulate farther up the critical strip with logarithmic growth. We can dispense with this accumulation. If $\rho = \b+i\g$ is a nontrivial zero of $L(s,f)$ then we call $\rho_{\text{unf}} = \b+i\w$ the \textbf{unfolded nontrivial zero}\index{unfolded nontrivial zero} corresponding to $\rho$ where
     \[
       \w = \frac{\g}{\pi}\log\left(\frac{q(f)|\g|^{d_{f}}}{(2\pi e)^{d_{f}}}\right).
     \]
@@ -870,14 +858,14 @@
       \[
         f(t) = \frac{t}{\pi}\log\left(\frac{q(f)|t|^{d_{f}}}{(2\pi e)^{d_{f}}}\right),
       \]
-      for real $t$. Since $f(t)$ is a strictly increasing continuous function, it has an inverse $g(w)$ for real $w$. It follows that $|\w| \le W$ if and only if $|\rho| \le g(W)$ and so $N_{\text{unf}}(W,f) = N(g(W),f)$. But by \cref{cor:zero_density} and that $g(w)$ is the inverse of $f(t)$, we have $N(g(W),f) \sim W$. Then
+      for real $t$. Since $f(t)$ is a strictly increasing continuous function, it has an inverse $g(w)$ for real $w$. It follows that $|\w| \le W$ if and only if $|\rho| \le g(W)$ and so $N_{\text{unf}}(W,f) = N(g(W),f)$. But by \cref{thm:zero_counting} and that $g(w)$ is the inverse of $f(t)$, we have $N(g(W),f) \sim W$. Then
       \[
         N_{\text{unf}}(W,f) \sim W,
       \]
       which is equivalent to the claim.
     \end{proof}
 
-    We interpret \cref{prop:unfolded_zeros_are_evenly_spaced} as saying that the unfolded nontrivial zeros are evenly spaced opposed to \cref{cor:zero_density} which says that they tend to accumulate up the critical strip.
+    We interpret \cref{prop:unfolded_zeros_are_evenly_spaced} as saying that the unfolded nontrivial zeros are evenly spaced opposed to \cref{thm:zero_counting} which say that they tend to accumulate up the critical strip.
   \section{A Zero-free Region}
     Although the Riemann hypothesis remains out of reach, some progress has been made to understand regions inside of the critical strip for which $L$-functions are nonzero except for possibly one real exception. Such regions are known as \textbf{zero-free regions}\index{zero-free regions} and there is great interest in improving the breadth of such regions. We will derive a standard zero-free region for any $L$-function under some mild assumptions. First a useful lemma:
 

@@ -1042,11 +1042,11 @@
     \[
       \frac{\pi(x)}{x} \sim \frac{1}{\log(x)}.
     \]
-    Letting $x \ge 2$, the left-hand side is the probability that a randomly chosen positive integer no larger than $x$ is prime. Thus the asymptotic result says that for large enough $x$, the probability that a randomly chosen integer no larger than $x$ is prime is approximately $\frac{1}{\log(x)}$. We can also interpret this as saying that the average gap between primes no larger than $x$ is approximately $\frac{1}{\log(x)}$. As a consequence, a positive integer with at most $2n$ digits is half as likely to be prime than a positive integer with at most $n$ digits for large $n$. Indeed, there are $10^{n}-1$ numbers with at most $n$ digits, $10^{2n}-1$ with at most $2n$ digits, and $\log(10^{2n}-1) \sim 2\log(10^{n})$. Note that the prime number theorem says nothing about the exact error $\pi(x)-\frac{x}{\log(x)}$ as $x \to \infty$. It only says that the relative error tends to zero, which is to say
+    Letting $x \ge 2$, the left-hand side is the probability that a randomly chosen positive integer no larger than $x$ is prime. Thus the asymptotic result says that for large enough $x$, the probability that a randomly chosen integer no larger than $x$ is prime is approximately $\frac{1}{\log(x)}$. We can also interpret this as saying that the average gap between primes no larger than $x$ is approximately $\frac{1}{\log(x)}$. As a consequence, a positive integer with at most $2n$ digits is half as likely to be prime than a positive integer with at most $n$ digits for large $n$. Indeed, there are $10^{n}-1$ numbers with at most $n$ digits, $10^{2n}-1$ with at most $2n$ digits, and $\log(10^{2n}-1) \sim 2\log(10^{n})$. Note that the prime number theorem says nothing about the exact error $\pi(x)-\frac{x}{\log(x)}$ as $x \to \infty$. It only says that the relative error tends to zero, which we recall can be expressed in the form
     \[
-      \lim_{x \to \infty}\frac{\pi(x)-\frac{x}{\log(x)}}{\frac{x}{\log(x)}} = 0.
+      \pi(x) = \frac{x}{\log(x)}(1+o(1)),
     \]
-    Now for some historical context. While Gauss was not the first to put forth a conjectural form of the prime number theorem, he was known for compiling extensive tables of primes and he conjectured that the density of the primes up to $x$ was roughly $\frac{1}{\log(x)}$. This raises the question of how might one expect Gauss's conjecture to be true. To see this, let $d\d_{p}$ be the weighted point measure that assigns $\frac{1}{p}$ at the prime $p$ and zero otherwise. Then
+    as this is equivalent to asymptotic equivalence. Now for some historical context. While Gauss was not the first to put forth a conjectural form of the prime number theorem, he was known for compiling extensive tables of primes and he conjectured that the density of the primes up to $x$ was roughly $\frac{1}{\log(x)}$. This raises the question of how might one expect Gauss's conjecture to be true. To see this, let $d\d_{p}$ be the weighted point measure that assigns $\frac{1}{p}$ at the prime $p$ and zero otherwise. Then
     \[
       \sum_{p \le x}\frac{1}{p} = \int_{1}^{x}\,d\d_{p}(u).
     \]
@@ -1095,7 +1095,7 @@
       \begin{equation}\label{equ:prime_number_theorem_zeta_3}
         \sum_{|\g| < T}\frac{1}{\rho} \ll \sum_{\g_{1} \le |\g| < T}\frac{1}{\g} \ll \int_{\g_{1}}^{T}\frac{dN(t)}{t} = \frac{N(T)}{T}+\int_{\g_{1}}^{T}\frac{N(t)}{t^{2}}\,dt \ll \log^{2}(T),
       \end{equation}
-      where in the last estimate we have used that $N(t) \ll t\log(t)$ which follows from \cref{cor:zero_density}. Putting \cref{equ:prime_number_theorem_zeta_2,equ:prime_number_theorem_zeta_3} together gives
+      where in the last estimate we have used that $N(t) \ll t\log(t)$ which follows from \cref{thm:zero_counting}. Putting \cref{equ:prime_number_theorem_zeta_2,equ:prime_number_theorem_zeta_3} together gives
       \begin{equation}\label{equ:prime_number_theorem_zeta_4}
         \sum_{|\g| < T}\frac{x^{\rho}}{\rho} \ll x\log^{2}(T)e^{-c\frac{\log(x)}{\log(T)}}.
       \end{equation}
@@ -1556,7 +1556,7 @@
       \begin{equation}\label{equ:Siegel-Walfisz_7}
         \sum_{1 < |\g| < T}\frac{1}{\rho} \ll \sum_{1 < |\g| < T}\frac{1}{\g} \ll \int_{1}^{T}\frac{dN(t,\wtilde{\chi})}{t} = \frac{N(T,\wtilde{\chi})}{T}+\int_{1}^{T}\frac{N(t,\wtilde{\chi})}{t^{2}}\,dt \ll \log^{2}(mT) \ll \log^{2}(xm),
       \end{equation}
-      where in the second to last estimate we have used that $N(t,\wtilde{\chi}) \ll t\log(qt) \ll t\log(mt)$ which follows from \cref{cor:zero_density} applied to $L(s,\wtilde{\chi})$ and that $q \le m$ and in the last estimate we have used the bound $T \le x$. For the remaining terms with $|\g| \le 1$ (that do not correspond to real nontrivial zeros), \cref{equ:explicit_formula_Dirichlet_corollary_8} along with $q \le m$ gives
+      where in the second to last estimate we have used that $N(t,\wtilde{\chi}) \ll t\log(qt) \ll t\log(mt)$ which follows from \cref{thm:zero_counting} applied to $L(s,\wtilde{\chi})$ and that $q \le m$ and in the last estimate we have used the bound $T \le x$. For the remaining terms with $|\g| \le 1$ (that do not correspond to real nontrivial zeros), \cref{equ:explicit_formula_Dirichlet_corollary_8} along with $q \le m$ gives
       \begin{equation}\label{equ:Siegel-Walfisz_8}
         \asum_{|\g| \le 1}\frac{1}{\rho} \ll \log^{2}(m).
       \end{equation}

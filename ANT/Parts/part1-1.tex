@@ -91,22 +91,26 @@
       \[
         \lim_{\mathbf{x} \to \mathbf{x}_{0}}\left|\frac{f(\mathbf{x})}{g(\mathbf{x})}\right| = 0,
       \]
-      provided $g(\mathbf{x}) \neq 0$ for all $\mathbf{x}$ sufficiently close to $\mathbf{x}_{0}$ in norm. We call this an \textbf{$o$-estimate}\index{$o$-estimate} and say that $f(\mathbf{x})$ has \textbf{growth less than}\index{growth less than} $g(\mathbf{x})$. The $o$-estimate says that for $\mathbf{x}$ close to $\mathbf{x}_{0}$, $g(\mathbf{x})$ dominates $f(\mathbf{x})$. If $f(\mathbf{x}) = o(g(\mathbf{x}))$ as $\mathbf{x} \to \mathbf{x}_{0}$ then $f(\mathbf{x}) = O(g(\mathbf{x}))$ as $\mathbf{x} \to \mathbf{x}_{0}$ where the implicit constant can be taken arbitrarily small by definition of the $o$-estimate. Therefore, $o$-estimates are stronger than $O$-estimates. As a symbol, let $o(g(\mathbf{x}))$ stand for a function $f(\mathbf{x})$ that is $o(g(\mathbf{x}))$. Then we may use the $o$-estimates in algebraic equations and inequalities. Note that this extends the definition of the symbol because $f(\mathbf{x}) = o(g(\mathbf{x}))$ means $f(\mathbf{x})$ is $o(g(\mathbf{x}))$. Moreover, a \textbf{asymptotic formula}\index{asymptotic formula} for $f(\mathbf{x})$ as $\mathbf{x} \to \mathbf{x}_{0}$ is an equation of shape
+      provided $g(\mathbf{x}) \neq 0$ for all $\mathbf{x}$ sufficiently close to $\mathbf{x}_{0}$ in norm. We call this an \textbf{$o$-estimate}\index{$o$-estimate} and say that $f(\mathbf{x})$ has \textbf{growth less than}\index{growth less than} $g(\mathbf{x})$. The $o$-estimate says that for $\mathbf{x}$ close to $\mathbf{x}_{0}$, $g(\mathbf{x})$ dominates $f(\mathbf{x})$. If $f(\mathbf{x}) = o(g(\mathbf{x}))$ as $\mathbf{x} \to \mathbf{x}_{0}$ then $f(\mathbf{x}) = O(g(\mathbf{x}))$ as $\mathbf{x} \to \mathbf{x}_{0}$ where the implicit constant can be taken arbitrarily small by definition of the $o$-estimate. Therefore, $o$-estimates are stronger than $O$-estimates. As a symbol, let $o(g(\mathbf{x}))$ stand for a function $f(\mathbf{x})$ that is $o(g(\mathbf{x}))$. Then we may use the $o$-estimates in algebraic equations and inequalities. Note that this extends the definition of the symbol because $f(\mathbf{x}) = o(g(\mathbf{x}))$ means $f(\mathbf{x})$ is $o(g(\mathbf{x}))$. Moreover, we say that $f(\mathbf{x})$ admits an \textbf{asymptotic formula}\index{asymptotic formula} as $\mathbf{x} \to \mathbf{x}_{0}$ if $f(\mathbf{x})$ is nonzero for all $\mathbf{x}$ sufficiently close $\mathbf{x}$ in norm and there exists functions $M(\mathbf{x})$, $E(\mathbf{x})$, and $R(\mathbf{x})$ such that
       \[
-        f(\mathbf{x}) = M(\mathbf{x})+O(E(\mathbf{x})),
+        f(\mathbf{x}) = M(\mathbf{x})+O(E(\mathbf{x})) \quad \text{or} \quad f(\mathbf{x}) = M(\mathbf{x})\left(1+O(R(\mathbf{x}))\right),
       \]
-      as $\mathbf{x} \to \mathbf{x}_{0}$ such that $E(\mathbf{x}) = o(M(\mathbf{x}))$ as $\mathbf{x} \to \mathbf{x}_{0}$ too. Accordingly, we call $M(\mathbf{x})$ the \textbf{main term}\index{main term} and $E(\mathbf{x})$ the \textbf{error term}\index{error term} respectively.
-
+      as $\mathbf{x} \to \mathbf{x}_{0}$ where $E(\mathbf{x}) = o(M(\mathbf{x}))$ or $R(\mathbf{x}) = o(1)$ as $\mathbf{x} \to \mathbf{x}_{0}$ too. Accordingly, we call $M(\mathbf{x})$ the \textbf{main term}\index{main term}, $E(\mathbf{x})$ the \textbf{(absolute) error term}\index{(absolute) error term}, and $R(\mathbf{x})$ the \textbf{(relative) error term}\index{(relative) error term} respectively. These formulas are equivalent since $E(\mathbf{x})$ and $R(\mathbf{x})$ can be obtained from each other via the relation
+      \[
+        E(\mathbf{x}) = M(\mathbf{x})R(\mathbf{x}),
+      \]
+      as $M(\mathbf{x}) \neq 0$ for all $\mathbf{x}$ sufficiently close to $\mathbf{x}_{0}$ in norm because the same is assumed of $f(\mathbf{x})$. Therefore we only need to specify one of these formulas.
+    
       \begin{remark}
-        The asymptotic formula
+        The asymptotic formulas
         \[
-          f(\mathbf{x}) = M(\mathbf{x})+O(E(\mathbf{x})),
+          f(\mathbf{x}) = M(\mathbf{x})+O(E(\mathbf{x})) \quad \text{and} \quad f(\mathbf{x}) = M(\mathbf{x})\left(1+O(R(\mathbf{x}))\right),
         \]
-        as $\mathbf{x} \to \mathbf{x}_{0}$ is equivalent to
+        are equivalent to
         \[
-          f(\mathbf{x})-M(\mathbf{x}) = O(E(\mathbf{x})),
+          f(\mathbf{x})-M(\mathbf{x}) = O(E(\mathbf{x})) \quad \text{and} \quad \frac{f(\mathbf{x})}{M(\mathbf{x})} = 1+O(R(\mathbf{x})),
         \]
-        as $\mathbf{x} \to \mathbf{x}_{0}$ which shows that the absolute error between $f(\mathbf{x})$ and $M(\mathbf{x})$ is $O(E(\mathbf{x}))$ as $\mathbf{x} \to \mathbf{x}_{0}$.
+        which shows that the absolute and relative errors between $f(\mathbf{x})$ and $M(\mathbf{x})$ are $O(E(\mathbf{x}))$ and $O(R(\mathbf{x}))$ respectively.
       \end{remark}
       
       We say $f(\mathbf{x})$ \textbf{is asymptotic to}\index{is asymptotic to} $g(\mathbf{x})$ as $\mathbf{x} \to \mathbf{x}_{0}$ and write $f(\mathbf{x}) \sim g(\mathbf{x})$ if
