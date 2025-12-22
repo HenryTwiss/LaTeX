@@ -291,11 +291,11 @@
       D_{f}(s) = D_{g \ast \mu}(s).
     \]
   \section{Perron Formulas}
-    With the Mellin inversion formula, it is not hard to prove a very useful integral expression for the sum of coefficients of a Dirichlet series. First, we setup some general notation. If $D(s)$ is a Dirichlet series with coefficients $a(n)$ then for $X > 0$, we set
+    With the Mellin inversion formula, it is not hard to prove very useful integral representations for the sum of coefficients of a Dirichlet series. Such formulas are desirable because it allows for the examination of a sum of coefficients of a Dirichlet series, a discrete object, by means of a complex integral where analytic techniques are available. This idea is a cornerstone of analytic number theory because it makes the methods of complex analysis readily available to applications in number theory. First, we setup some general notation. If $D(s)$ is a Dirichlet series with coefficients $a(n)$ then for $X > 0$, we set
     \[
       A^{\ast}(X) = \asum_{n \le X}a(n),
     \]
-    where the $\ast$ indicates that the last term is multiplied by $\frac{1}{2}$ if $X$ is an integer. We would like to relate $A^{\ast}(X)$ to an integral involving the Dirichlet series $D(s)$ via an inverse Mellin transform. Such a formula is desirable because it allows for the examination of a sum of coefficients of a Dirichlet series, a discrete object, by means of a complex integral where analytic techniques are available. We will prove a few of these types of representations, the first being (classical) \textbf{Perron's formula}\index{Perron's formula} which is a consequence of Abel's summation formula and the Mellin inversion formula applied to Dirichlet series:
+    where the $\ast$ indicates that the last term is multiplied by $\frac{1}{2}$ if $X$ is an integer. We would like to relate $A^{\ast}(X)$ to an integral involving the Dirichlet series $D(s)$ via an inverse Mellin transform. We will prove a few of these types of representations, the first being (classical) \textbf{Perron's formula}\index{Perron's formula} which is a consequence of Abel's summation formula and the Mellin inversion formula applied to Dirichlet series:
 
     \begin{theorem*}[Perron's formula, classical]
       Let $D(s)$ be a Dirichlet series with coefficient $a(n)$ and finite and nonnegative abscissa of absolute convergence $\s_{a}$. Then for any $c > \s_{a}$,
@@ -315,7 +315,7 @@
       where the second equality follows because $A(u) = 0$ in the interval $[0,1)$. The Mellin inversion formula immediately gives the result.
     \end{proof}
 
-    As a corollary, we obtain a useful integral representation for Dirichlet series:
+    As a corollary of classical Perron's formula, we obtain a useful integral representation for Dirichlet series:
 
     \begin{corollary}\label{cor:integral_rep_for_Dirichlet_series}
       Let $D(s)$ be a Dirichlet series with coefficient $a(n)$ and finite and nonnegative abscissa of absolute convergence $\s_{a}$. Then for $\s > \s_{a}$,
@@ -327,7 +327,7 @@
       The identity follows from \cref{equ:integral_rep_for_Dirichlet_series}.
     \end{proof}
 
-    There is also a truncated variant of Perron's formula which is often more useful for more subtle estimates. To state it, we will need to setup some notation and prove a lemma. For any $c > 0$ and $T > 0$, consider the integrals
+    Classical Perron's formula is not always useful for applications because the integral need not be absolutely bounded. In effect, this can make estimating the integral difficult even if we have alternative representations for the Dirichlet series. There are two ways to correct for this defect each of which leads to a different variant of Perron's formula. The first is to truncate the integral while the latter is to introduce a smoothing function. Both variants can be equally useful to classical Perron's formula. The choice of which variant, if any, to use depends on how one is approaching the particular application and how much analytic information is known about the Dirichlet series under investigation. Let us first focus on the truncated variant. To state it, we will need to setup some notation and prove a lemma. For any $c > 0$ and $T > 0$, consider the integrals
     \[
       \d(y) = \frac{1}{2\pi i}\int_{(c)}y^{s}\,\frac{ds}{s} \quad \text{and} \quad I(y,T) = \frac{1}{2\pi i}\int_{c-iT}^{c+iT}y^{s}\,\frac{ds}{s}.
     \]
@@ -344,11 +344,11 @@
       \]
     \end{lemma}
     \begin{proof}
-      First observe that
+      Since
       \[
-        \lim_{T \to \infty}I(y,T) = \d(y).
+        \lim_{T \to \infty}I(y,T) = \d(y),
       \]
-      Consider the case $y = 1$. We compute
+      it suffices to estimate $I(y,T)$ and then take the limit as $T \to \infty$. First consider the case $y = 1$. We compute
       \begin{align*}
         I(1,T) &= \frac{1}{2\pi i}\int_{c-iT}^{c+iT}\frac{ds}{s} \\
         &= \frac{1}{2\pi i}\int_{-T}^{T}\frac{dt}{c+it} \\
@@ -358,7 +358,7 @@
       \end{align*}
       Truncating the Laurent series of the inverse tangent after the first term gives $\tan^{-1}(t) = \frac{\pi}{2}+O\left(\frac{1}{t}\right)$. Thus $I(1,T) = \frac{1}{2}+O\left(\frac{c}{T}\right)$ and $\d(y) = \frac{1}{2}$. This proves everything when $y = 1$. Now suppose $y < 1$ and let $d > c$. Let $\eta = \sum_{1 \le i \le 4}\eta_{i}$ be the contour in \cref{fig:discontinuous_integral_contour_1}.
 
-      \begin{figure}[h]
+      \begin{figure}[ht]
         \centering
         \begin{tikzpicture}[scale=3]
           \def\xmin{-0.5} \def\xmax{3}
@@ -416,7 +416,7 @@
       \]
       Since $y < 1$, taking the limit as $d \to \infty$ implies $I(y,T) = O\left(\frac{y^{c}}{\log(y)T}\right)$ and thus $\d(y) = 0$. Now let $\g = \g_{1}+\g_{2}$ be the contour in \cref{fig:discontinuous_integral_contour_2}. 
       
-      \begin{figure}[h]
+      \begin{figure}[ht]
         \centering
         \begin{tikzpicture}[scale=3]
           \def\xmin{-0.5} \def\xmax{1.5}
@@ -510,8 +510,9 @@
       \[
         I(y,T) = 1+O\left(\frac{y^{c}}{\log(y)T}\right)+O\left(y^{-d}\log(T)\right).
       \]
+      Since $y > 1$, taking the limit as $d \to \infty$ implies $I(y,T) = 1+O\left(\frac{y^{c}}{\log(y)T}\right)$ and thus $\d(y) = 1$. Now let $\g = \g_{1}+\g_{2}$ be the contour in \cref{fig:discontinuous_integral_contour_4}. 
       
-      \begin{figure}[ht]
+      \begin{figure}[h]
         \centering
         \begin{tikzpicture}[scale=3]
           \def\xmin{-1.25} \def\xmax{0.75}
@@ -535,7 +536,7 @@
         \label{fig:discontinuous_integral_contour_4}
       \end{figure}
 
-      Since $y > 1$, taking the limit as $d \to \infty$ implies $I(y,T) = 1+O\left(\frac{y^{c}}{\log(y)T}\right)$ and thus $\d(y) = 1$. Now let $\g = \g_{1}+\g_{2}$ be the contour in \cref{fig:discontinuous_integral_contour_4}. This time
+      This time
       \[
         I(y,T) = \frac{1}{2\pi i}\int_{\g_{1}}y^{s}\,\frac{ds}{s}.
       \]
@@ -571,7 +572,7 @@
       Since $D(s)$ converges absolutely, the sum may be moved inside of the first $O$-estimate and then we may combine the resulting two $O$-estimates. By the Fubini–Tonelli theorem, we may interchange the sum and the integral and the statement of the lemma follows.
     \end{proof}
 
-    There is a slightly weaker variant of truncated Perron's formula that follows as a corollary:
+    Since the integral in truncated Perron's formula is over a finite vertical line, the integral is automatically absolutely bounded. There is a slightly weaker variant of truncated Perron's formula that follows as a corollary:
 
     \begin{corollary}
       Let $D(s)$ be a Dirichlet series with coefficient $a(n)$ and finite and nonnegative abscissa of absolute convergence $\s_{a}$. Then for any $c > \s_{a}$ and $T > 0$,
@@ -587,7 +588,7 @@
       The statement now follows from truncated Perron's formula.
     \end{proof}
 
-    There is also a variant of Perron's formula where we add a smoothing function. For any $X > 0$, we set
+    Having discussed truncated Perron's formula, we turn to the variant where we instead introduce a smoothing function. For any $X > 0$, we set
     \[
       A_{\psi}(X) = \sum_{n \ge 1}a(n)\psi\left(\frac{n}{X}\right),
     \]
@@ -663,4 +664,4 @@
       This proves the first statement. For the second statement, take $X = 1$.
     \end{proof}
 
-    Smoothed Perron's formula is useful because it improves the convergence of the integral (in light of \cref{prop:smoothing_function_Mellin_inverse_vertical_strips}) while compensating by weighting the sum of coefficients of the Dirichlet series.
+    In light of \cref{prop:smoothing_function_Mellin_inverse_vertical_strips} and that the Dirichlet series is absolute bounded for $c > \s_{a}$, the integral in smoothed Perron's formula is also absolutely bounded. The compensation for the convergence is that we have introduced a weighting factor to the sum of coefficients of the Dirichlet series.
