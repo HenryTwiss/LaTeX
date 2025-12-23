@@ -133,11 +133,22 @@
     \[
       \Im(\g z) = \Im\left(\frac{az+b}{cz+d}\right) = \Im\left(\frac{az+b}{cz+d}\frac{c\conj{z}+d}{c\conj{z}+d}\right) = \Im\left(\frac{ac|z|^{2}+adz+bc\conj{z}+bd}{|cz+d|^{2}}\right) = \det(\g)\frac{\Im(z)}{|cz+d|^{2}},
     \]
-    where the last equality follows because $\Im(\conj{z}) = -\Im(z)$ and $\det(\g) = ad-bc$. Since $\deg(\g) > 0$ and $|cz+d|^{2} > 0$, $\g$ preserves the sign of the imaginary part of $z$. So $\g$ preserves the upper half-space $\H$, the lower half-space $\conj{\H}$, and the extended real line $\hat{\R}$ respectively. Moreover, $\g$ restricts to an automorphism on these subspaces since M\"obius transformations are automorphisms. In particular, $\PSL_{2}(\Z)$ naturally acts on $\hat{\C}$ by M\"obius transformations and preserves the upper half-space. Certain actions of subgroups of $\PSL_{2}(\Z)$ also play important roles. A \textbf{Fuchsian group}\index{Fuchsian group} is any discrete subgroup of $\PSL_{2}(\R)$ that acts properly discontinuously on $\H$ (see \cref{append:Fundamental_Domains}). It turns out that the modular group is a Fuchsian group (see \cite{diamond2005first} for a proof):
+    where the last equality follows because $\Im(\conj{z}) = -\Im(z)$ and $\det(\g) = ad-bc$. Since $\deg(\g) > 0$ and $|cz+d|^{2} > 0$, $\g$ preserves the sign of the imaginary part of $z$. So $\g$ preserves the upper half-space $\H$, the lower half-space $\conj{\H}$, and the extended real line $\hat{\R}$ respectively. Moreover, $\g$ restricts to an automorphism on these subspaces since M\"obius transformations are automorphisms. In particular, $\PSL_{2}(\Z)$ naturally acts on $\hat{\C}$ by M\"obius transformations and preserves the upper half-space. In fact, for $\g \in \PSL_{2}(\Z)$ we have the simplified identity
+    \[
+      \Im(\g z) = \frac{\Im(z)}{|cz+d|^{2}}.
+    \]
+    Certain actions of subgroups of $\PSL_{2}(\Z)$ also play important roles. A \textbf{Fuchsian group}\index{Fuchsian group} is any discrete subgroup of $\PSL_{2}(\R)$ that acts properly discontinuously on $\H$:
 
     \begin{proposition}\label{prop:modular_group_is_Fuchsian}
       The modular group is a Fuchsian group.
     \end{proposition}
+    \begin{proof}
+      $\PSL_{2}(\Z)$ is discrete in $\PSL_{2}(\R)$ because $\Z$ is discrete in $\R$ (recall that the topology on $\PSL_{2}(\R)$ is the quotient topology obtained from the metric topology on $\SL_{2}(\R)$ viewed as a subset of $\R^{4}$). So it remains to show that $\PSL_{2}(\Z)$ acts properly discontinuously on $\H$. Let $z \in \H$ and $\g = \begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix} \in \PSL_{2}(\Z)$. Then
+      \[
+        \Im(\g z) = \frac{\Im(z)}{|cz+d|^{2}} = \frac{y}{(cx+d)^{2}+(cy)^{2}}.
+      \]
+      Since $\det(\g) = 1$ we cannot have $c = d = 0$. As $y \neq 0$, this chain of equalities shows that $|cz+d|^{2}$ is bounded away from zero and there are finitely many pairs $(c,d)$ such that $|cz+d|^{2} \le M$ for any $M > 0$. In particular, there are finitely many $\g \in \PSL_{2}(\Z)$ for which $\Im(\g z) \le \Im(z)+1$ say. Since there are only finitely many such $\g$, we can find a sufficiently small neighborhood $U_{z}$ about $z$ such that $\g U_{z} \cap U_{z}$ is empty except for $\g = I$. This proves $\PSL_{2}(\Z)$ acts properly discontinuously on $\H$ which completes the proof.
+    \end{proof}
 
     Note that \cref{prop:modular_group_is_Fuchsian} immediately implies that any subgroup of the modular group is also Fuchsian. In particular, all congruence subgroups are Fuchsian. A \textbf{modular curve}\index{modular curve} is a quotient $\GH$ of the upper half-space $\H$ by the action of a congruence subgroup $\G$. Since $\G$ is Fuchsian and acts on $\H$ by automorphisms \cref{prop:quotient_by_discrete_property_discontinuously} implies that $\GH$ is also connected Hausdorff (recall that $\H$ is connected Hausdorff). In particular, $\GH$ admits the fundamental domain
     \[
@@ -149,11 +160,11 @@
       $\mc{F}$ is a fundamental domain for $\PSL_{2}(\Z)$.
     \end{proposition}
     \begin{proof}
-      Set $\PSL_{2}(\Z) = \<S,T\>$ where $S$ and $T$ are as in \cref{prop:PSL_generator}. We first show any point in $\H$ is $\PSL_{2}(\Z)$-equivalent to a point in $\mc{F}$. Then for any $\g = \begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix} \in \PSL_{2}(\Z)$, we have
+      Set $\PSL_{2}(\Z) = \<S,T\>$ where $S$ and $T$ are as in \cref{prop:PSL_generator}. We first show any point in $\H$ is $\PSL_{2}(\Z)$-equivalent to a point in $\mc{F}$. So let $z \in \H$ and $\g = \begin{psmallmatrix} a & b \\ c & d \end{psmallmatrix} \in \PSL_{2}(\Z)$. Then
       \[
         \Im(\g z) = \frac{\Im(z)}{|cz+d|^{2}} = \frac{y}{(cx+d)^{2}+(cy)^{2}}.
       \]
-      Since $\det(\g) = 1$ we cannot have $c = d = 0$. Then as $y \neq 0$, $|cz+d|^{2}$ is bounded away from zero and moreover there are finitely many pairs $(c,d)$ such that $|cz+d|^{2}$ is less than any given upper bound. Therefore there exists $\g_{0} \in \PSL_{2}(\Z)$ that minimizes $|cz+d|^{2}$ and hence maximizes $\Im(\g_{0}z)$. In particular,
+      Since $\det(\g) = 1$ we cannot have $c = d = 0$. As $y \neq 0$, this chain of equalities shows that $|cz+d|^{2}$ is bounded away from zero and there are finitely many pairs $(c,d)$ such that $|cz+d|^{2} \le M$ for any $M > 0$. Therefore there exists $\g_{0} \in \PSL_{2}(\Z)$ that minimizes $|cz+d|^{2}$ and hence maximizes $\Im(\g_{0}z)$. In particular,
       \[
         \Im(S\g_{0}z) = \frac{\Im(\g_{0}z)}{|\g_{0}z|^{2}} \le \Im(\g_{0}z).
       \]
